@@ -21,6 +21,23 @@ Phase 0 foundation work from later production modules.
 | P0-REQ-006 | P0 | Produce normalized camera registry seed from fixtures | `tools/sentinel_cctv_probe.py registry-export` |
 | P0-REQ-007 | P0 | Maintain offline tests and CI | `tests/`, `.github/workflows/python-ci.yml` |
 | P0-REQ-008 | P0 | Define Phase 1 entry criteria | `docs/phase-0/acceptance-checklist.md` |
+| P0-REQ-009 | P0 | Capture official portal constraints and distinguish requirements from access authorization | `docs/phase-0/official-constraints-intake.md` |
+
+## Official Challenge Requirements
+
+- Treat Model 1, Centralised CCTV Registry and GIS Foundation, as mandatory.
+- Combine Model 1 with viewing, federation, central VMS/AI, or an approved
+  hybrid/custom architecture for the complete challenge solution.
+- Use open-source technologies and an open, modular, secure, scalable,
+  standards-based, vendor-neutral design.
+- Plan heterogeneous integration across analog/IP cameras, multiple VMS
+  platforms, RTSP, ONVIF, vendor SDKs, and documented APIs.
+- Support the organizer's approximately 50-camera synchronized simulated-live
+  sandbox and plan for approximately 80,000 cameras statewide.
+- Demonstrate real working software; concept-only mock-ups and animations do not
+  satisfy the official demo requirement.
+- Keep Government database integrations interface-ready but disconnected until
+  credentials, data, and handling authorization are officially supplied.
 
 ## Platform Functional Requirements
 
@@ -29,6 +46,10 @@ Phase 0 foundation work from later production modules.
 - Register cameras with stable internal IDs and external source IDs.
 - Store camera metadata, location labels, stream paths, stream delivery type,
   codec, container, status, and source provenance.
+- Store GIS-ready coordinates, department, ownership, camera type,
+  connectivity, storage, health, and maintenance metadata required by Model 1.
+- Support bulk, manual, and API-based onboarding with metadata validation and
+  audit trails.
 - Support RTSP, HTTP progressive streams, HLS, and future official API adapters.
 - Track stream health separately from camera metadata.
 - Keep adapters isolated so Sentinel reference data can be replaced by official
@@ -93,7 +114,8 @@ Phase 0 foundation work from later production modules.
 - Reliability: stream failures must be reported as state data rather than
   crashing operators or batch jobs.
 - Scalability: architecture should support edge processing, distributed
-  inference, event-driven pipelines, and large camera fleets.
+  inference, event-driven pipelines, and a documented path to approximately
+  80,000 cameras.
 - Testability: offline tests must cover deterministic behavior without requiring
   live CCTV access.
 - Portability: Phase 0 tools should run on a developer laptop with Python

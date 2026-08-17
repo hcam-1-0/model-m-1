@@ -36,7 +36,8 @@ Goal: model normalized camera records based on `hcam.camera_registry.seed.v1`.
 Acceptance:
 
 - model includes camera ID, source, external ID, display name, location, status,
-  stream metadata, and provenance
+  department, ownership, camera type, GIS-ready location, connectivity, storage,
+  maintenance, stream metadata, and provenance
 - validation rejects malformed camera IDs and missing source IDs
 - tests cover valid and invalid records
 
@@ -63,6 +64,18 @@ Acceptance:
 - `GET /cameras/{camera_id}` returns one camera
 - missing camera returns a clear 404
 - tests cover list, detail, and missing cases
+
+### HCAM-013: Add Model 1 registry filtering contract
+
+Goal: support the official Model 1 search dimensions without implementing the
+GIS user interface yet.
+
+Acceptance:
+
+- camera list can filter by department, camera type, health/status, and source
+- coordinate fields use validated latitude/longitude ranges
+- missing official values remain explicit unknowns rather than invented data
+- tests cover filters, invalid coordinates, and null handling
 
 ## Epic 3: Stream State
 

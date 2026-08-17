@@ -129,10 +129,10 @@ class Phase0DocsTests(unittest.TestCase):
         required_terms = [
             "ready_for_owner_review",
             "manual gates remain",
-            "Confirm official challenge constraints",
+            "Official portal constraints were captured",
             "Do not treat this report or a passing readiness command as approval",
             "python tools/phase0_readiness.py --run-validation",
-            "issues #10, #11, #12, and",
+            "issues #10, #12, and #13",
         ]
         for term in required_terms:
             with self.subTest(term=term):
@@ -154,12 +154,15 @@ class Phase0DocsTests(unittest.TestCase):
     def test_official_constraints_intake_is_conservative(self):
         constraints = (PHASE0 / "official-constraints-intake.md").read_text(encoding="utf-8")
         required_terms = [
-            "Current status: official source intake is not complete.",
+            "Current status: official public portal intake is complete for Phase 0 planning.",
             "attached official PDF files",
-            "Public Source Scan",
+            "Official Source Snapshot",
+            "Mandatory Model 1",
+            "50 cameras",
+            "approximately 80,000 cameras",
             "Do not commit CCTV video",
             "government database",
-            "Label demo data as synthetic",
+            "synthetic/representative",
         ]
         for term in required_terms:
             with self.subTest(term=term):

@@ -46,7 +46,7 @@ Phase 0 is accepted when every required gate has current evidence.
 ## Phase 0 Exit Review
 
 - [ ] Review Phase 0 docs with project owner.
-- [ ] Confirm official challenge constraints and dataset rules before any
+- [x] Confirm official challenge constraints and dataset rules before any
   sensitive integration.
 - [x] Propose Phase 1 repository structure and backend stack in
   `phase-1-handoff.md`.

@@ -27,7 +27,7 @@ class Phase0ReadinessTests(unittest.TestCase):
         report = phase0_readiness.build_readiness_report(run_validation=False)
         self.assertEqual(report.failures, 0)
         self.assertEqual(report.status, "ready_for_owner_review")
-        self.assertEqual(report.manual_gates, 4)
+        self.assertEqual(report.manual_gates, 3)
         check_names = {check.name for check in report.checks}
         self.assertIn("manual_gate_artifacts", check_names)
 
