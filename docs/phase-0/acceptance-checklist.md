@@ -55,6 +55,8 @@ Phase 0 is accepted when every required gate has current evidence.
 - [x] Prepare owner review packet in `owner-review.md`.
 - [x] Prepare official constraints intake packet in
   `official-constraints-intake.md`.
+- [x] Track manual Phase 0 gates as GitHub issues in
+  `manual-gate-issues.md`.
 - [ ] Approve, revise, or reject proposed Phase 1 decisions in
   `decision-records.md`.
 - [ ] Start camera registry backend implementation after Phase 1 is approved.

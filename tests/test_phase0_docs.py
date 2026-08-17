@@ -24,6 +24,7 @@ REQUIRED_DOCS = [
     "readiness-report.md",
     "owner-review.md",
     "official-constraints-intake.md",
+    "manual-gate-issues.md",
 ]
 
 
@@ -44,6 +45,7 @@ REQUIRED_README_LINKS = [
     "readiness-report.md",
     "owner-review.md",
     "official-constraints-intake.md",
+    "manual-gate-issues.md",
 ]
 
 
@@ -75,6 +77,7 @@ class Phase0DocsTests(unittest.TestCase):
             "decision-records.md",
             "owner-review.md",
             "official-constraints-intake.md",
+            "manual-gate-issues.md",
             "Start camera registry backend implementation",
         ]
         for item in required_items:
@@ -129,6 +132,7 @@ class Phase0DocsTests(unittest.TestCase):
             "Confirm official challenge constraints",
             "Do not treat this report or a passing readiness command as approval",
             "python tools/phase0_readiness.py --run-validation",
+            "issues #10, #11, #12, and",
         ]
         for term in required_terms:
             with self.subTest(term=term):
@@ -160,6 +164,21 @@ class Phase0DocsTests(unittest.TestCase):
         for term in required_terms:
             with self.subTest(term=term):
                 self.assertIn(term, constraints)
+
+    def test_manual_gate_issue_index_links_live_issues(self):
+        manual_issues = (PHASE0 / "manual-gate-issues.md").read_text(encoding="utf-8")
+        required_terms = [
+            "Manual Gate Issues",
+            "https://github.com/mayankthakor227/h-cam-2.0/issues/10",
+            "https://github.com/mayankthakor227/h-cam-2.0/issues/11",
+            "https://github.com/mayankthakor227/h-cam-2.0/issues/12",
+            "https://github.com/mayankthakor227/h-cam-2.0/issues/13",
+            "Do not close a manual gate issue because tests pass",
+            "Issue #13 is the final Phase 1 entry gate",
+        ]
+        for term in required_terms:
+            with self.subTest(term=term):
+                self.assertIn(term, manual_issues)
 
 
 if __name__ == "__main__":

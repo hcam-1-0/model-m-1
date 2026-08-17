@@ -43,6 +43,7 @@ are explicit.
 | [Readiness Report](readiness-report.md) | Automated Phase 0 evidence, manual gates, and full validation command | Started |
 | [Owner Review](owner-review.md) | Project-owner review packet for accepting, revising, or rejecting Phase 0 | Started |
 | [Official Constraints Intake](official-constraints-intake.md) | Source capture packet for challenge rules, datasets, demos, and sensitive data | Started |
+| [Manual Gate Issues](manual-gate-issues.md) | GitHub issue index for the four remaining Phase 0 manual gates | Started |
 
 ## Current Build Artifacts
 
@@ -86,3 +87,4 @@ Before coding Phase 1, review:
 - [Readiness Report](readiness-report.md)
 - [Owner Review](owner-review.md)
 - [Official Constraints Intake](official-constraints-intake.md)
+- [Manual Gate Issues](manual-gate-issues.md)

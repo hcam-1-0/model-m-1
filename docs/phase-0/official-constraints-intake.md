@@ -10,6 +10,8 @@ submission claims.
 
 Current status: official source intake is not complete.
 
+Live tracking issue: https://github.com/mayankthakor227/h-cam-2.0/issues/11
+
 The user previously instructed the assistant not to read the attached official
 PDF files for now. Until that changes, this repository should treat the
 attached official PDFs as available but unread evidence.

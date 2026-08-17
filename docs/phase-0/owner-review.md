@@ -49,6 +49,13 @@ Decision notes:
 These gates are still open until the project owner or official challenge
 materials provide an answer.
 
+Live tracking:
+
+- Owner review: https://github.com/mayankthakor227/h-cam-2.0/issues/10
+- Official constraints: https://github.com/mayankthakor227/h-cam-2.0/issues/11
+- Phase 1 decision approval: https://github.com/mayankthakor227/h-cam-2.0/issues/12
+- Phase 1 entry authorization: https://github.com/mayankthakor227/h-cam-2.0/issues/13
+
 ### 1. Review Phase 0 Docs With Project Owner
 
 Required action:
