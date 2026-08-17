@@ -23,6 +23,10 @@ def test_phase1_contract_and_safety_checks_pass() -> None:
         phase1_readiness.check_safety_documentation().status
         == phase1_readiness.PASS
     )
+    assert (
+        phase1_readiness.check_owner_review_packet().status
+        == phase1_readiness.PASS
+    )
 
 
 def test_phase1_json_report_is_machine_readable() -> None:

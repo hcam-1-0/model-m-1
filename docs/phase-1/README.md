@@ -161,6 +161,8 @@ The existing Phase 0 readiness tool remains available:
 ## Phase 1 Gate
 
 Engineering evidence is tracked in [acceptance-checklist.md](acceptance-checklist.md)
-and [readiness-report.md](readiness-report.md). Phase 2 planning requires explicit
-project-owner acceptance. AI inference, production video ingestion, biometrics,
-real watchlists, and Government integrations remain out of scope.
+and [readiness-report.md](readiness-report.md). The evidence and exact decision
+statement are consolidated in [owner-review.md](owner-review.md). Phase 2 planning
+requires explicit project-owner acceptance. AI inference, production video
+ingestion, biometrics, real watchlists, and Government integrations remain out
+of scope.
