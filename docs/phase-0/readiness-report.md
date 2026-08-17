@@ -12,7 +12,8 @@ manual gates are answered.
 Automated readiness means:
 
 - Phase 0 product, requirements, architecture, governance, validation, roadmap,
-  Sentinel environment, handoff, backlog, and team workflow documents exist.
+  Sentinel environment, handoff, backlog, team workflow, owner review, and
+  official constraints intake documents exist.
 - The Sentinel CCTV probe is implemented as a read-only, metadata-oriented
   environment tool.
 - Offline tests cover the Sentinel probe behavior, Phase 0 document structure,
@@ -79,6 +80,8 @@ authorization and policy.
 | Phase 1 handoff | `docs/phase-0/phase-1-handoff.md` |
 | Phase 1 backlog | `docs/phase-0/phase-1-backlog.md` |
 | Team workflow | `docs/phase-0/team-workflow.md` |
+| Owner review | `docs/phase-0/owner-review.md` |
+| Official constraints intake | `docs/phase-0/official-constraints-intake.md` |
 | Acceptance checklist | `docs/phase-0/acceptance-checklist.md` |
 | Readiness verifier | `python tools/phase0_readiness.py --run-validation` |
 | Offline regression suite | `python -m unittest discover -s tests -v` |

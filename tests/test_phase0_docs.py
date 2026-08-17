@@ -22,6 +22,8 @@ REQUIRED_DOCS = [
     "cctv-environment.md",
     "team-workflow.md",
     "readiness-report.md",
+    "owner-review.md",
+    "official-constraints-intake.md",
 ]
 
 
@@ -40,6 +42,8 @@ REQUIRED_README_LINKS = [
     "cctv-environment.md",
     "team-workflow.md",
     "readiness-report.md",
+    "owner-review.md",
+    "official-constraints-intake.md",
 ]
 
 
@@ -69,6 +73,8 @@ class Phase0DocsTests(unittest.TestCase):
             "phase-1-handoff.md",
             "phase-1-backlog.md",
             "decision-records.md",
+            "owner-review.md",
+            "official-constraints-intake.md",
             "Start camera registry backend implementation",
         ]
         for item in required_items:
@@ -127,6 +133,33 @@ class Phase0DocsTests(unittest.TestCase):
         for term in required_terms:
             with self.subTest(term=term):
                 self.assertIn(term, report)
+
+    def test_owner_review_packet_tracks_manual_gate_decisions(self):
+        owner_review = (PHASE0 / "owner-review.md").read_text(encoding="utf-8")
+        required_terms = [
+            "Review Outcome",
+            "Manual Gates",
+            "Approve, revise, or reject",
+            "continue to next phase",
+            "Phase 1 starts only after manual review",
+        ]
+        for term in required_terms:
+            with self.subTest(term=term):
+                self.assertIn(term, owner_review)
+
+    def test_official_constraints_intake_is_conservative(self):
+        constraints = (PHASE0 / "official-constraints-intake.md").read_text(encoding="utf-8")
+        required_terms = [
+            "Current status: official source intake is not complete.",
+            "attached official PDF files",
+            "Public Source Scan",
+            "Do not commit CCTV video",
+            "government database",
+            "Label demo data as synthetic",
+        ]
+        for term in required_terms:
+            with self.subTest(term=term):
+                self.assertIn(term, constraints)
 
 
 if __name__ == "__main__":

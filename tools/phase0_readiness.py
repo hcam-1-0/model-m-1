@@ -42,6 +42,8 @@ REQUIRED_PHASE0_DOCS = [
     "cctv-environment.md",
     "team-workflow.md",
     "readiness-report.md",
+    "owner-review.md",
+    "official-constraints-intake.md",
 ]
 
 REQUIRED_README_LINKS = [
@@ -59,6 +61,8 @@ REQUIRED_README_LINKS = [
     "cctv-environment.md",
     "team-workflow.md",
     "readiness-report.md",
+    "owner-review.md",
+    "official-constraints-intake.md",
 ]
 
 REQUIRED_SENTINEL_COMMANDS = [
@@ -306,6 +310,53 @@ def check_validation_plan() -> CheckResult:
     )
 
 
+def check_manual_gate_artifacts() -> CheckResult:
+    owner_review = read_text(PHASE0 / "owner-review.md")
+    constraints = read_text(PHASE0 / "official-constraints-intake.md")
+    missing: list[str] = []
+    missing.extend(
+        missing_terms(
+            owner_review,
+            [
+                "Review Outcome",
+                "Manual Gates",
+                "Review Phase 0 Docs With Project Owner",
+                "Approve, Revise, Or Reject Phase 1 Decisions",
+                "Phase 1 starts only after manual review",
+            ],
+        )
+    )
+    missing.extend(
+        missing_terms(
+            constraints,
+            [
+                "Current status: official source intake is not complete.",
+                "attached official PDF files",
+                "Public Source Scan",
+                "Required Official Answers",
+                "Do not commit CCTV video",
+                "watchlist",
+                "government database",
+            ],
+        )
+    )
+
+    if missing:
+        return result(
+            "manual_gate_artifacts",
+            FAIL,
+            f"missing owner-review or source-intake terms: {', '.join(missing)}",
+            [rel(PHASE0 / "owner-review.md"), rel(PHASE0 / "official-constraints-intake.md")],
+        )
+
+    return result(
+        "manual_gate_artifacts",
+        PASS,
+        "Owner review and official constraints intake packets are present for the remaining manual gates.",
+        [rel(PHASE0 / "owner-review.md"), rel(PHASE0 / "official-constraints-intake.md")],
+    )
+
+
 def check_acceptance_checklist() -> CheckResult:
     checklist_path = PHASE0 / "acceptance-checklist.md"
     items = parse_checklist_items(read_text(checklist_path))
@@ -361,6 +412,7 @@ def build_readiness_report(run_validation: bool = False) -> ReadinessReport:
         check_fixture_policy(),
         check_github_governance(),
         check_validation_plan(),
+        check_manual_gate_artifacts(),
         check_acceptance_checklist(),
     ]
     if run_validation:

@@ -41,6 +41,8 @@ are explicit.
 | [CCTV Environment](cctv-environment.md) | Sentinel reference environment and probe workflow | Implemented |
 | [Team Workflow](team-workflow.md) | Six-person GitHub workflow, PR rules, issue templates, and safety gates | Started |
 | [Readiness Report](readiness-report.md) | Automated Phase 0 evidence, manual gates, and full validation command | Started |
+| [Owner Review](owner-review.md) | Project-owner review packet for accepting, revising, or rejecting Phase 0 | Started |
+| [Official Constraints Intake](official-constraints-intake.md) | Source capture packet for challenge rules, datasets, demos, and sensitive data | Started |
 
 ## Current Build Artifacts
 
@@ -82,3 +84,5 @@ Before coding Phase 1, review:
 - [Review Questions](review-questions.md)
 - [Team Workflow](team-workflow.md)
 - [Readiness Report](readiness-report.md)
+- [Owner Review](owner-review.md)
+- [Official Constraints Intake](official-constraints-intake.md)

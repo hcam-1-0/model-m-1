@@ -52,6 +52,9 @@ Phase 0 is accepted when every required gate has current evidence.
   `phase-1-handoff.md`.
 - [x] Convert Phase 1 starter work into backlog items in `phase-1-backlog.md`.
 - [x] Capture Phase 1 review questions in `review-questions.md`.
+- [x] Prepare owner review packet in `owner-review.md`.
+- [x] Prepare official constraints intake packet in
+  `official-constraints-intake.md`.
 - [ ] Approve, revise, or reject proposed Phase 1 decisions in
   `decision-records.md`.
 - [ ] Start camera registry backend implementation after Phase 1 is approved.

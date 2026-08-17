@@ -15,6 +15,8 @@ These questions should be answered before Phase 1 coding starts.
 ## Data And Authorization
 
 - What official datasets are allowed for the hackathon or challenge submission?
+- Can the attached official PDFs now be read and treated as requirements
+  evidence?
 - Are any government database integrations authorized now, or only simulated?
 - Are watchlists allowed in the demo, and if yes, must they be synthetic?
 - What retention rules apply to clips, frames, metadata, model outputs, and
