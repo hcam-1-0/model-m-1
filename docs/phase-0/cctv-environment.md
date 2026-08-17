@@ -79,6 +79,7 @@ python tools/sentinel_cctv_probe.py metadata
 python tools/sentinel_cctv_probe.py state --camera-id 1
 python tools/sentinel_cctv_probe.py stream-test --camera-id 1
 python tools/sentinel_cctv_probe.py snapshot
+python tools/sentinel_cctv_probe.py offline-summary
 python tools/sentinel_cctv_probe.py all
 ```
 
@@ -132,6 +133,10 @@ fixtures/sentinel/
 
 Generated fixtures are for local offline planning and repeatable development.
 They include camera metadata and selected camera state JSON only.
+
+`offline-summary` reads those local fixture files and summarizes the saved
+camera metadata, selected camera states, stream URL availability, snapshot
+timestamp, and prepare status. It performs no network calls.
 
 ## Offline Regression Tests
 
