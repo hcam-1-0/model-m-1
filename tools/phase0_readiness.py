@@ -333,10 +333,12 @@ def check_manual_gate_artifacts() -> CheckResult:
         missing_terms(
             constraints,
             [
-                "Current status: official source intake is not complete.",
+                "Current status: official public portal intake is complete for Phase 0 planning.",
                 "attached official PDF files",
-                "Public Source Scan",
-                "Required Official Answers",
+                "Official Source Snapshot",
+                "Confirmed Challenge Requirements",
+                "Mandatory Model 1",
+                "50 cameras",
                 "Do not commit CCTV video",
                 "watchlist",
                 "government database",

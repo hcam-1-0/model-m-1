@@ -71,10 +71,14 @@ Approval evidence:
 
 ### 2. Confirm Official Challenge Constraints And Dataset Rules
 
+Status: satisfied for Phase 0 planning from the official public portal on
+2026-08-18. Sensitive integrations remain blocked pending separate access and
+handling authorization.
+
 Required action:
 
-- Capture official challenge rules, eligibility, allowed data, live-feed access,
-  demo rules, submission rules, and judging criteria.
+- Review the captured official challenge rules, eligibility, allowed data,
+  live-feed access, demo rules, submission rules, and judging criteria.
 - Confirm whether the attached official PDFs can be read and used as Phase 0
   requirements.
 - Keep government data, police records, watchlists, owner details, biometric

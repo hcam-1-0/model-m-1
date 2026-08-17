@@ -14,8 +14,8 @@ Automated readiness means:
 - Phase 0 product, requirements, architecture, governance, validation, roadmap,
   Sentinel environment, handoff, backlog, team workflow, owner review, and
   official constraints intake documents exist.
-- The remaining manual gates are tracked as GitHub issues #10, #11, #12, and
-  #13.
+- The remaining owner gates are tracked as GitHub issues #10, #12, and #13.
+- Official portal constraints were captured on 2026-08-18 under issue #11.
 - The Sentinel CCTV probe is implemented as a read-only, metadata-oriented
   environment tool.
 - Offline tests cover the Sentinel probe behavior, Phase 0 document structure,
@@ -60,10 +60,12 @@ That status means automated gates pass, but manual gates remain.
 These items cannot be truthfully completed by code alone:
 
 - Review Phase 0 docs with the project owner.
-- Confirm official challenge constraints and dataset rules before sensitive
-  integration.
 - Approve, revise, or reject the proposed Phase 1 decisions.
 - Start camera registry backend implementation only after Phase 1 is approved.
+
+Official public challenge constraints and the dataset boundary are now
+captured. Sensitive integration remains separately blocked because published
+requirements are not data-access authorization.
 
 These gates protect the project from accidentally moving into real police data,
 watchlists, government database integrations, or CCTV storage without explicit

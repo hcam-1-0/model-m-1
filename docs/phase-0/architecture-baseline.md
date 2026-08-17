@@ -4,6 +4,24 @@ H-CAM should be built as a modular public-safety platform. Phase 0 does not
 implement the full platform, but it defines the boundaries that Phase 1 should
 respect.
 
+## Official Model Alignment
+
+The official challenge requires Model 1, Centralised CCTV Registry and GIS
+Foundation, in every submission. H-CAM therefore uses a registry-first hybrid
+architecture:
+
+```text
+Mandatory Model 1 Registry And GIS Foundation
+  + Model 2 Unified Viewing And Selective Analytics
+  + Model 3 VMS Federation And Middleware
+  + Model 4 capabilities where central VMS/AI is justified
+  = H-CAM Hybrid Platform
+```
+
+Phase 1 starts with the mandatory Model 1 backend contract. Later phases add
+feed integration, federation, AI, and operator surfaces without replacing the
+registry foundation.
+
 ## Architecture Principle
 
 Raw video is not the primary product object. The platform should convert video
@@ -51,7 +69,15 @@ Minimum fields:
 - `display_name`
 - `number`
 - `location.label`
+- `location.latitude`
+- `location.longitude`
 - `location.timezone`
+- `department`
+- `ownership`
+- `camera.type`
+- `connectivity`
+- `storage`
+- `maintenance`
 - `status.metadata`
 - `status.state`
 - `stream.delivery`
@@ -112,3 +138,6 @@ The current `registry-export` command produces this as
 Phase 1 can start as a single repository and simple runtime, but boundaries
 should be service-ready. Later phases may split services or packages as load,
 team ownership, and deployment needs become clear.
+
+The statewide design target is approximately 80,000 cameras. That target is a
+capacity-planning requirement, not a claim that Phase 1 will ingest that volume.

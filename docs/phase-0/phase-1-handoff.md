@@ -11,6 +11,10 @@ state model proven by the Sentinel probe.
 
 The Camera Registry is the first core backend domain.
 
+This implements the backend foundation of the challenge's mandatory Model 1.
+It does not claim that Model 1 is complete until GIS, onboarding, health,
+search, audit, export, and gap-analysis capabilities are delivered.
+
 The first implementation should accept the generated
 `hcam.camera_registry.seed.v1` JSON and expose normalized camera records through
 a tested backend boundary.
@@ -21,6 +25,8 @@ Included:
 
 - project structure for backend code, tests, and configuration
 - camera registry domain model
+- GIS-ready location, department, ownership, camera type, connectivity,
+  storage, health, and maintenance fields
 - importer for `hcam.camera_registry.seed.v1`
 - local development database
 - API endpoints for cameras and stream state
@@ -39,6 +45,7 @@ Excluded:
 - watchlist matching
 - production authentication provider integration
 - operator UI implementation
+- GIS map UI and gap-analysis reports
 
 ## Recommended Backend Stack
 
@@ -100,8 +107,10 @@ h-cam-2.0/
 5. Add registry importer that reads a local generated seed file.
 6. Add `GET /cameras` and `GET /cameras/{camera_id}`.
 7. Add stream state fields and source provenance.
-8. Add audit table/interface for future sensitive actions.
-9. Add tests and CI commands.
+8. Add department, GIS, ownership, connectivity, storage, and maintenance
+   fields without requiring real Government data.
+9. Add audit table/interface for future sensitive actions.
+10. Add tests and CI commands.
 
 ## Phase 1 Done Criteria
 

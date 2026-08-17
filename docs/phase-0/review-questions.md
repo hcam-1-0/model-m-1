@@ -14,14 +14,23 @@ These questions should be answered before Phase 1 coding starts.
 
 ## Data And Authorization
 
-- What official datasets are allowed for the hackathon or challenge submission?
 - Can the attached official PDFs now be read and treated as requirements
   evidence?
-- Are any government database integrations authorized now, or only simulated?
-- Are watchlists allowed in the demo, and if yes, must they be synthetic?
+- Which authenticated organizer resources and APIs become available after the
+  project owner signs in?
+- Are any Government database integrations separately authorized, or should
+  they remain interface-ready simulations?
 - What retention rules apply to clips, frames, metadata, model outputs, and
   evidence exports?
 - Who approves sensitive data use?
+
+Official portal answers already captured:
+
+- The sandbox uses approximately 12 hours from each of 50 cameras across five
+  departments, replayed as synchronized simulated-live streams.
+- Teams may create representative watchlist data for the demonstration.
+- The public portal does not grant production CCTV or real Government database
+  access, so those integrations remain blocked.
 
 ## Technical Direction
 
@@ -31,6 +40,8 @@ These questions should be answered before Phase 1 coding starts.
 - Should registry import use generated fixture files, a checked sample fixture,
   or both?
 - Should API contracts be documented as OpenAPI first, or generated from code?
+- Should PostGIS be introduced in Phase 1, or should SQLite retain validated
+  latitude/longitude fields until the GIS phase?
 
 ## Team Workflow
 
@@ -41,8 +52,13 @@ These questions should be answered before Phase 1 coding starts.
 
 ## Demo Direction
 
-- Will the demo use Sentinel reference streams, synthetic video, uploaded test
-  clips, or an official sandbox?
 - What must be shown in the first demo: camera registry, live stream probe,
   dashboard, AI detection, alerts, or investigation search?
 - What must never be shown or stored in demo material?
+
+Official portal answers already captured:
+
+- The challenge requires working demonstrations on both participant-owned feeds
+  and Government-provided sandbox feeds.
+- Mock-ups, animations, and concept-only videos are not accepted as working
+  demonstrations.
