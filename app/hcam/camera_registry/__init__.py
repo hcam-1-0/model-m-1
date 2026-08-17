@@ -1,0 +1,1 @@
+"""Normalized camera registry domain."""

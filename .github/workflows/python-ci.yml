@@ -11,8 +11,8 @@ permissions:
   contents: read
 
 jobs:
-  sentinel-probe:
-    name: Sentinel probe offline checks
+  python-tests:
+    name: Backend and offline checks
     runs-on: ubuntu-latest
 
     steps:
@@ -24,8 +24,22 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Compile Phase 0 tools
+      - name: Install backend and test dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Compile Python sources
+        run: python -m compileall -q app tools
+
+      - name: Preserve Phase 0 compile check
         run: python -m py_compile tools/sentinel_cctv_probe.py tools/phase0_readiness.py
 
-      - name: Run offline tests
+      - name: Verify database migration
+        env:
+          HCAM_DATABASE_URL: sqlite:///./var/ci-hcam.db
+        run: alembic upgrade head
+
+      - name: Run backend and offline tests
+        run: pytest
+
+      - name: Preserve Phase 0 unittest check
         run: python -m unittest discover -s tests -v

@@ -1,0 +1,81 @@
+{
+  "schema": "hcam.camera_registry.seed.v1",
+  "generated_at": "2026-08-18T00:00:00Z",
+  "source": {
+    "adapter": "synthetic-reference",
+    "base_url": "https://camera.example.invalid",
+    "safe_use": "Synthetic test metadata only. No CCTV video or Government data."
+  },
+  "summary": {
+    "camera_count": 2,
+    "synthetic": true
+  },
+  "cameras": [
+    {
+      "camera_id": "synthetic:cctv-001",
+      "source": "synthetic-reference",
+      "external_id": "cctv-001",
+      "display_name": "Synthetic Junction Camera",
+      "location": {
+        "label": "Synthetic Junction A",
+        "timezone": "Asia/Kolkata",
+        "latitude": 23.0225,
+        "longitude": 72.5714
+      },
+      "status": {
+        "metadata": "available",
+        "state": "online"
+      },
+      "stream": {
+        "stream_path": "/streams/1?token=remove-me",
+        "selected_url": "https://operator:secret@camera.example.invalid/streams/1?token=remove-me",
+        "delivery": "progressive",
+        "codec": "h264",
+        "container": "mp4",
+        "reachability": "reachable",
+        "last_checked_at": "2026-08-18T00:01:00Z"
+      },
+      "department": "traffic",
+      "ownership": "synthetic-agency",
+      "camera_type": "fixed",
+      "connectivity_status": "online",
+      "storage_status": "metadata-only",
+      "health_status": "healthy",
+      "maintenance_status": "not-due"
+    },
+    {
+      "camera_id": "synthetic:cctv-002",
+      "source": "synthetic-reference",
+      "external_id": "cctv-002",
+      "display_name": "Synthetic Facility Camera",
+      "location": {
+        "label": "Synthetic Facility B",
+        "timezone": null,
+        "latitude": null,
+        "longitude": null
+      },
+      "status": {
+        "metadata": "available",
+        "state": "offline"
+      },
+      "stream": {
+        "stream_path": null,
+        "hls_path": null,
+        "selected_url": null,
+        "delivery": null,
+        "codec": null,
+        "container": null,
+        "duration_seconds": null,
+        "reachability": "unreachable",
+        "last_checked_at": "2026-08-18T00:01:00Z"
+      },
+      "department": null,
+      "ownership": null,
+      "camera_type": "fixed",
+      "connectivity_status": "offline",
+      "storage_status": null,
+      "health_status": "degraded",
+      "maintenance_status": null
+    }
+  ]
+}
