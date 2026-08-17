@@ -1,6 +1,13 @@
 # h-cam-2.0
 mayank repo of h cam experiment
 
+## Phase 0 foundation
+
+Phase 0 defines the H-CAM product baseline, requirements, architecture,
+governance, validation gates, and Phase 1 entry plan.
+
+Start here: [docs/phase-0/README.md](docs/phase-0/README.md)
+
 ## Sentinel CCTV environment probe
 
 This repository includes a safe, read-only probe for the Sentinel Gujarat CCTV
