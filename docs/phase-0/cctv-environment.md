@@ -133,6 +133,20 @@ fixtures/sentinel/
 Generated fixtures are for local offline planning and repeatable development.
 They include camera metadata and selected camera state JSON only.
 
+## Offline Regression Tests
+
+The repository includes unit tests for deterministic adapter behavior. These
+tests do not call the live Sentinel site and do not require `ffprobe` to be
+installed because subprocess behavior is mocked.
+
+```powershell
+python -m py_compile tools/sentinel_cctv_probe.py
+python -m unittest discover -s tests -v
+```
+
+GitHub Actions runs the same offline checks on pushes to `main`, pull requests,
+and manual workflow dispatches.
+
 ## Known Risks
 
 - The live site may be unavailable or change endpoints.

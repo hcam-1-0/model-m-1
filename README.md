@@ -17,5 +17,12 @@ python tools/sentinel_cctv_probe.py all
 
 Default target: `https://live.sentinelgujarat.in`
 
+Offline regression checks:
+
+```powershell
+python -m py_compile tools/sentinel_cctv_probe.py
+python -m unittest discover -s tests -v
+```
+
 See [docs/phase-0/cctv-environment.md](docs/phase-0/cctv-environment.md) for
 the observed API shape, safety rules, and test workflow.
