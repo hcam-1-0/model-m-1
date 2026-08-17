@@ -7,8 +7,9 @@ before moving into product implementation.
 
 | Category | Command Or Evidence | Purpose |
 | --- | --- | --- |
-| Python compile | `python -m py_compile tools/sentinel_cctv_probe.py` | Catch syntax/runtime import issues |
+| Python compile | `python -m py_compile tools/sentinel_cctv_probe.py tools/phase0_readiness.py` | Catch syntax/runtime import issues |
 | Unit tests | `python -m unittest discover -s tests -v` | Verify deterministic logic and docs structure |
+| Phase 0 readiness | `python tools/phase0_readiness.py --run-validation` | Confirm automated gates and list manual owner/official gates |
 | Live metadata | `python tools/sentinel_cctv_probe.py metadata --json` | Confirm Sentinel metadata endpoint shape |
 | Live state | `python tools/sentinel_cctv_probe.py state --camera-id 1` | Confirm selected camera state shape |
 | Stream metadata | `python tools/sentinel_cctv_probe.py stream-test --camera-id 1` | Confirm metadata-only stream probing works |
@@ -25,6 +26,8 @@ before moving into product implementation.
 - Registry export produces `hcam.camera_registry.seed.v1`.
 - Phase 0 docs are present and linked.
 - Data governance constraints are documented.
+- Phase 0 readiness reports `ready_for_owner_review` until manual gates are
+  approved.
 
 ## Live-Site Caveat
 

@@ -21,6 +21,7 @@ REQUIRED_DOCS = [
     "review-questions.md",
     "cctv-environment.md",
     "team-workflow.md",
+    "readiness-report.md",
 ]
 
 
@@ -38,6 +39,7 @@ REQUIRED_README_LINKS = [
     "review-questions.md",
     "cctv-environment.md",
     "team-workflow.md",
+    "readiness-report.md",
 ]
 
 
@@ -112,6 +114,19 @@ class Phase0DocsTests(unittest.TestCase):
         for term in required_terms:
             with self.subTest(term=term):
                 self.assertIn(term, workflow)
+
+    def test_readiness_report_separates_manual_gates(self):
+        report = (PHASE0 / "readiness-report.md").read_text(encoding="utf-8")
+        required_terms = [
+            "ready_for_owner_review",
+            "manual gates remain",
+            "Confirm official challenge constraints",
+            "Do not treat this report or a passing readiness command as approval",
+            "python tools/phase0_readiness.py --run-validation",
+        ]
+        for term in required_terms:
+            with self.subTest(term=term):
+                self.assertIn(term, report)
 
 
 if __name__ == "__main__":

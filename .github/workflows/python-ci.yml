@@ -24,8 +24,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Compile Sentinel probe
-        run: python -m py_compile tools/sentinel_cctv_probe.py
+      - name: Compile Phase 0 tools
+        run: python -m py_compile tools/sentinel_cctv_probe.py tools/phase0_readiness.py
 
       - name: Run offline tests
         run: python -m unittest discover -s tests -v

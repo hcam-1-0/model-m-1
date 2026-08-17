@@ -40,11 +40,14 @@ are explicit.
 | [Review Questions](review-questions.md) | Questions to answer before coding Phase 1 | Started |
 | [CCTV Environment](cctv-environment.md) | Sentinel reference environment and probe workflow | Implemented |
 | [Team Workflow](team-workflow.md) | Six-person GitHub workflow, PR rules, issue templates, and safety gates | Started |
+| [Readiness Report](readiness-report.md) | Automated Phase 0 evidence, manual gates, and full validation command | Started |
 
 ## Current Build Artifacts
 
 - `tools/sentinel_cctv_probe.py`: read-only Sentinel CCTV metadata/state/stream
   probe.
+- `tools/phase0_readiness.py`: offline Phase 0 readiness verifier and local
+  validation runner.
 - `fixtures/sentinel/`: local ignored snapshot output location.
 - `tests/`: offline regression tests for probe behavior and Phase 0 docs.
 - `.github/workflows/python-ci.yml`: CI gate for Python compile and unit tests.
@@ -56,8 +59,9 @@ are explicit.
 ## Phase 0 Commands
 
 ```powershell
-python -m py_compile tools/sentinel_cctv_probe.py
+python -m py_compile tools/sentinel_cctv_probe.py tools/phase0_readiness.py
 python -m unittest discover -s tests -v
+python tools/phase0_readiness.py --run-validation
 python tools/sentinel_cctv_probe.py metadata --json
 python tools/sentinel_cctv_probe.py snapshot
 python tools/sentinel_cctv_probe.py offline-summary
@@ -77,3 +81,4 @@ Before coding Phase 1, review:
 - [Phase 1 Backlog](phase-1-backlog.md)
 - [Review Questions](review-questions.md)
 - [Team Workflow](team-workflow.md)
+- [Readiness Report](readiness-report.md)

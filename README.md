@@ -29,9 +29,13 @@ Default target: `https://live.sentinelgujarat.in`
 Offline regression checks:
 
 ```powershell
-python -m py_compile tools/sentinel_cctv_probe.py
+python -m py_compile tools/sentinel_cctv_probe.py tools/phase0_readiness.py
 python -m unittest discover -s tests -v
+python tools/phase0_readiness.py --run-validation
 ```
 
 See [docs/phase-0/cctv-environment.md](docs/phase-0/cctv-environment.md) for
 the observed API shape, safety rules, and test workflow.
+
+See [docs/phase-0/readiness-report.md](docs/phase-0/readiness-report.md) for
+the automated Phase 0 evidence map and remaining manual approval gates.
