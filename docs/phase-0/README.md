@@ -34,6 +34,10 @@ are explicit.
 | [Validation Plan](validation-plan.md) | Test strategy and evidence expected before moving phases | Started |
 | [Roadmap](roadmap.md) | Phase 0 milestones and Phase 1 entry plan | Started |
 | [Acceptance Checklist](acceptance-checklist.md) | Exit gates for Phase 0 | Started |
+| [Phase 1 Handoff](phase-1-handoff.md) | First implementation scope, stack direction, and done criteria | Started |
+| [Decision Records](decision-records.md) | Phase 0 architecture decisions and proposed Phase 1 decisions | Started |
+| [Phase 1 Backlog](phase-1-backlog.md) | Implementation backlog for the first backend foundation | Started |
+| [Review Questions](review-questions.md) | Questions to answer before coding Phase 1 | Started |
 | [CCTV Environment](cctv-environment.md) | Sentinel reference environment and probe workflow | Implemented |
 
 ## Current Build Artifacts
@@ -60,3 +64,10 @@ python tools/sentinel_cctv_probe.py registry-export --output fixtures/sentinel/r
 Phase 1 should not start until the Phase 0 acceptance checklist is reviewed.
 The first implementation phase should build the platform foundation around the
 camera registry and stream state model proven by the Sentinel probe.
+
+Before coding Phase 1, review:
+
+- [Phase 1 Handoff](phase-1-handoff.md)
+- [Decision Records](decision-records.md)
+- [Phase 1 Backlog](phase-1-backlog.md)
+- [Review Questions](review-questions.md)
