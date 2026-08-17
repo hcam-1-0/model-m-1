@@ -1,0 +1,74 @@
+name: Phase Task
+description: Track implementation, documentation, validation, or research work for an H-CAM phase.
+title: "[Phase Task]: "
+labels:
+  - phase-task
+body:
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Phase
+      description: Select the project phase this task belongs to.
+      options:
+        - Phase 0 - foundation and validation
+        - Phase 1 - platform foundation
+        - Phase 2 - camera and video ingestion
+        - Phase 3 - AI analytics engine
+        - Phase 4 - intelligence and correlation
+        - Phase 5 - operator applications
+        - Phase 6 - production readiness
+        - Phase 7 - validation and delivery
+    validations:
+      required: true
+  - type: input
+    id: backlog_id
+    attributes:
+      label: Backlog ID
+      description: Use the existing ID when available, for example HCAM-001.
+      placeholder: HCAM-000
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Intended Outcome
+      description: Describe the useful result this task should produce.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: List the observable conditions that make this task complete.
+      placeholder: |
+        - ...
+        - ...
+    validations:
+      required: true
+  - type: textarea
+    id: safety
+    attributes:
+      label: Safety And Data Handling
+      description: State whether this touches CCTV video, government data, police records, credentials, PII, or generated fixtures.
+      placeholder: No CCTV video, credentials, government data, police records, or personally sensitive data will be committed.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation Plan
+      description: List commands, review steps, screenshots, or evidence needed.
+      placeholder: |
+        python -m unittest discover -s tests -v
+        git diff --check
+    validations:
+      required: true
+  - type: input
+    id: owner
+    attributes:
+      label: Owner
+      description: Name the owner or team responsible for this task.
+      placeholder: Backend, AI, frontend, DevOps, data/GIS, product
+  - type: textarea
+    id: links
+    attributes:
+      label: Related Docs Or Decisions
+      description: Link related Phase 0 docs, PRs, decision records, or review questions.
