@@ -80,6 +80,7 @@ python tools/sentinel_cctv_probe.py state --camera-id 1
 python tools/sentinel_cctv_probe.py stream-test --camera-id 1
 python tools/sentinel_cctv_probe.py snapshot
 python tools/sentinel_cctv_probe.py offline-summary
+python tools/sentinel_cctv_probe.py registry-export --output fixtures/sentinel/registry-seed.json
 python tools/sentinel_cctv_probe.py all
 ```
 
@@ -137,6 +138,13 @@ They include camera metadata and selected camera state JSON only.
 `offline-summary` reads those local fixture files and summarizes the saved
 camera metadata, selected camera states, stream URL availability, snapshot
 timestamp, and prepare status. It performs no network calls.
+
+`registry-export` converts those local fixtures into a normalized
+`hcam.camera_registry.seed.v1` JSON document. It is intended as an H-CAM camera
+registry seed for later backend work and includes Sentinel external ids,
+display names, status, location labels, stream paths, resolved stream URLs,
+codec/container metadata, and Sentinel timing fields. It performs no network
+calls and stores no video.
 
 ## Offline Regression Tests
 

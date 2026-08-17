@@ -293,6 +293,132 @@ class SentinelProbeTests(unittest.TestCase):
             with self.assertRaises(probe.ProbeError):
                 probe.build_offline_summary(Path(temp_dir))
 
+    def test_build_registry_export_normalizes_snapshot_for_hcam(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            fixture_dir = Path(temp_dir)
+            probe.write_json(
+                fixture_dir / "cameras.json",
+                {
+                    "cameras": [
+                        {
+                            "id": 1,
+                            "number": "CAM-001",
+                            "name": "Bridge",
+                            "location": "Metadata Location",
+                            "status": "live",
+                            "codec": "h264",
+                            "container": "mp4",
+                            "delivery": "progressive",
+                            "duration": 43200.0,
+                            "detail": "sample",
+                        },
+                        {
+                            "id": 13,
+                            "location": "Metadata Road",
+                            "status": "live",
+                            "codec": "h264",
+                            "container": "mkv",
+                            "delivery": "progressive",
+                        },
+                    ]
+                },
+            )
+            probe.write_json(
+                fixture_dir / "snapshot-summary.json",
+                {
+                    "created_at": "2026-08-17T20:00:00+00:00",
+                    "base_url": "https://live.sentinelgujarat.in/",
+                },
+            )
+            probe.write_json(
+                fixture_dir / "camera-1-state.json",
+                {
+                    "id": 1,
+                    "location": "State Location",
+                    "status": "live",
+                    "stream_url": "/stream/1",
+                    "hls_url": None,
+                    "timezone": "Asia/Kolkata",
+                    "slot_seconds": 43200.0,
+                    "slot_offset": 11.5,
+                    "server_epoch": 1786997824.0,
+                },
+            )
+            probe.write_json(
+                fixture_dir / "camera-13-state.json",
+                {
+                    "id": 13,
+                    "location": "State Road",
+                    "status": "live",
+                    "stream_url": "/stream/13",
+                    "hls_url": "/hls/13/index.m3u8",
+                    "timezone": "Asia/Kolkata",
+                },
+            )
+
+            registry = probe.build_registry_export(fixture_dir)
+
+        self.assertEqual(registry["schema"], "hcam.camera_registry.seed.v1")
+        self.assertEqual(registry["source"]["base_url"], "https://live.sentinelgujarat.in")
+        self.assertEqual(registry["summary"]["camera_count"], 2)
+        self.assertEqual(registry["summary"]["state_count"], 2)
+
+        first_camera = registry["cameras"][0]
+        self.assertEqual(first_camera["camera_id"], "sentinel:1")
+        self.assertEqual(first_camera["external_id"], "1")
+        self.assertEqual(first_camera["display_name"], "Bridge")
+        self.assertEqual(first_camera["location"]["label"], "State Location")
+        self.assertEqual(first_camera["location"]["timezone"], "Asia/Kolkata")
+        self.assertEqual(first_camera["status"], {"metadata": "live", "state": "live"})
+        self.assertEqual(
+            first_camera["stream"]["stream_url"],
+            "https://live.sentinelgujarat.in/stream/1",
+        )
+        self.assertIsNone(first_camera["stream"]["hls_url"])
+        self.assertEqual(
+            first_camera["stream"]["selected_url"],
+            first_camera["stream"]["stream_url"],
+        )
+        self.assertEqual(first_camera["sentinel"]["slot_offset"], 11.5)
+
+        second_camera = registry["cameras"][1]
+        self.assertEqual(second_camera["camera_id"], "sentinel:13")
+        self.assertEqual(second_camera["stream"]["delivery"], "hls")
+        self.assertEqual(
+            second_camera["stream"]["selected_url"],
+            "https://live.sentinelgujarat.in/hls/13/index.m3u8",
+        )
+
+    def test_cmd_registry_export_can_write_output_file(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            fixture_dir = Path(temp_dir) / "fixtures"
+            output_path = Path(temp_dir) / "registry.json"
+            probe.write_json(
+                fixture_dir / "cameras.json",
+                {
+                    "cameras": [
+                        {
+                            "id": 1,
+                            "status": "live",
+                            "codec": "h264",
+                            "container": "mp4",
+                            "delivery": "progressive",
+                        }
+                    ]
+                },
+            )
+            args = argparse.Namespace(fixture_dir=str(fixture_dir), output=str(output_path))
+            output = io.StringIO()
+            with redirect_stdout(output):
+                exit_code = probe.cmd_registry_export(args)
+
+            payload = json.loads(output_path.read_text(encoding="utf-8"))
+
+        self.assertEqual(exit_code, 0)
+        self.assertIn("registry_file:", output.getvalue())
+        self.assertEqual(payload["schema"], "hcam.camera_registry.seed.v1")
+        self.assertEqual(payload["cameras"][0]["camera_id"], "sentinel:1")
+
 
 if __name__ == "__main__":
     unittest.main()

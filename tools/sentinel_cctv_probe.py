@@ -350,6 +350,125 @@ def build_offline_summary(fixture_dir: Path) -> dict[str, Any]:
     return summary
 
 
+def snapshot_base_url(snapshot: dict[str, Any]) -> str:
+    snapshot_summary = snapshot.get("snapshot_summary")
+    if isinstance(snapshot_summary, dict):
+        base_url = snapshot_summary.get("base_url")
+        if isinstance(base_url, str) and base_url.strip():
+            return normalized_base_url(base_url)
+    return DEFAULT_BASE_URL
+
+
+def camera_display_name(camera: dict[str, Any], external_id: str) -> str:
+    for field in ("name", "number", "location"):
+        value = camera.get(field)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    return f"Sentinel camera {external_id}"
+
+
+def state_map_from_snapshot(snapshot: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    states: dict[str, dict[str, Any]] = {}
+    for entry in snapshot.get("states", []):
+        if not isinstance(entry, dict):
+            continue
+        state = entry.get("state")
+        if not isinstance(state, dict):
+            continue
+        state_id = state.get("id")
+        if state_id is not None:
+            states[str(state_id)] = state
+    return states
+
+
+def normalize_camera_for_registry(
+    camera: dict[str, Any],
+    state: dict[str, Any] | None,
+    base_url: str,
+) -> dict[str, Any]:
+    external_id = str(camera.get("id"))
+    state = state or {}
+    stream_path = state.get("stream_url")
+    hls_path = state.get("hls_url")
+    delivery, resolved_stream_url = stream_url_from_state(base_url, state)
+
+    stream: dict[str, Any] = {
+        "delivery": delivery or camera.get("delivery"),
+        "codec": camera.get("codec"),
+        "container": camera.get("container"),
+        "duration_seconds": camera.get("duration"),
+        "stream_path": stream_path,
+        "hls_path": hls_path,
+        "stream_url": url_join(base_url, stream_path) if isinstance(stream_path, str) else None,
+        "hls_url": url_join(base_url, hls_path) if isinstance(hls_path, str) else None,
+        "selected_url": resolved_stream_url,
+    }
+
+    return {
+        "camera_id": f"sentinel:{external_id}",
+        "external_id": external_id,
+        "source": "sentinel-gujarat",
+        "display_name": camera_display_name(camera, external_id),
+        "number": camera.get("number"),
+        "name": camera.get("name"),
+        "location": {
+            "label": state.get("location") or camera.get("location"),
+            "timezone": state.get("timezone"),
+        },
+        "status": {
+            "metadata": camera.get("status"),
+            "state": state.get("status"),
+        },
+        "stream": stream,
+        "sentinel": {
+            "detail": camera.get("detail"),
+            "loop": state.get("loop"),
+            "slot_seconds": state.get("slot_seconds"),
+            "slot_offset": state.get("slot_offset"),
+            "server_epoch": state.get("server_epoch"),
+            "wall_time": state.get("wall_time"),
+        },
+    }
+
+
+def build_registry_export(fixture_dir: Path) -> dict[str, Any]:
+    snapshot = read_snapshot_dir(fixture_dir)
+    base_url = snapshot_base_url(snapshot)
+    states = state_map_from_snapshot(snapshot)
+    cameras = [
+        normalize_camera_for_registry(camera, states.get(str(camera.get("id"))), base_url)
+        for camera in snapshot["cameras"]
+    ]
+    camera_summary = summarize_cameras(snapshot["cameras"])
+    state_summary = summarize_states(snapshot["states"])
+
+    source: dict[str, Any] = {
+        "adapter": "sentinel-gujarat",
+        "base_url": base_url,
+        "fixture_dir": str(fixture_dir),
+        "safe_use": "Metadata/state-derived registry seed only. No CCTV video is stored.",
+    }
+    snapshot_summary = snapshot.get("snapshot_summary")
+    if isinstance(snapshot_summary, dict):
+        source["snapshot_created_at"] = snapshot_summary.get("created_at")
+        source["snapshot_safe_use"] = snapshot_summary.get("safe_use")
+
+    return {
+        "schema": "hcam.camera_registry.seed.v1",
+        "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        "source": source,
+        "summary": {
+            "camera_count": camera_summary["camera_count"],
+            "state_count": state_summary["state_count"],
+            "status": camera_summary["status"],
+            "codec": camera_summary["codec"],
+            "container": camera_summary["container"],
+            "delivery": camera_summary["delivery"],
+        },
+        "cameras": cameras,
+    }
+
+
 def print_offline_summary(summary: dict[str, Any]) -> None:
     print("Sentinel offline snapshot")
     print(f"fixture_dir: {summary['fixture_dir']}")
@@ -422,6 +541,19 @@ def cmd_offline_summary(args: argparse.Namespace) -> int:
         print_json(summary)
     else:
         print_offline_summary(summary)
+    return 0
+
+
+def cmd_registry_export(args: argparse.Namespace) -> int:
+    fixture_dir = Path(args.fixture_dir)
+    registry = build_registry_export(fixture_dir)
+    if args.output:
+        output_path = Path(args.output)
+        write_json(output_path, registry)
+        print(f"registry_file: {output_path}")
+        print(f"camera_count: {len(registry['cameras'])}")
+    else:
+        print_json(registry)
     return 0
 
 
@@ -535,6 +667,21 @@ def build_parser() -> argparse.ArgumentParser:
     )
     offline_summary.add_argument("--json", action="store_true", help="Print machine-readable JSON.")
     offline_summary.set_defaults(func=cmd_offline_summary)
+
+    registry_export = subparsers.add_parser(
+        "registry-export",
+        help="Build a normalized H-CAM camera registry seed from snapshot JSON.",
+    )
+    registry_export.add_argument(
+        "--fixture-dir",
+        default="fixtures/sentinel",
+        help="Directory containing snapshot JSON files.",
+    )
+    registry_export.add_argument(
+        "--output",
+        help="Optional output JSON path. If omitted, registry JSON is printed.",
+    )
+    registry_export.set_defaults(func=cmd_registry_export)
 
     all_cmd = subparsers.add_parser("all", help="Run metadata, state, and stream checks.")
     add_common_args(all_cmd)
