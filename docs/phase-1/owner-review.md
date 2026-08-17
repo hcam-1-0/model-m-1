@@ -30,7 +30,9 @@ Alternative decisions:
 | [Post-merge `main` validation run](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32078165287) | Passed against the merge commit |
 | [Manual gate issue #20](https://github.com/mayankthakor227/h-cam-2.0/issues/20) | Open pending owner decision |
 | `python tools/phase1_readiness.py --run-validation` | `ready_for_owner_review`, zero failures, one manual gate |
-| Backend tests | 77 tests and 119 subtests passed |
+| Backend tests | 104 tests and 119 subtests passed with more than 91% branch-aware package coverage |
+| Build artifacts | Wheel and source distribution built; wheel passed isolated installation smoke checks |
+| Dependency audit | 60 installed dependencies checked with zero known vulnerabilities during hardening validation |
 
 The CI evidence covers source compilation, migration upgrade and drift checks,
 backend and offline tests, Phase 1 evidence verification, and preserved Phase 0
@@ -47,6 +49,11 @@ checks.
 - Development-only header authentication that is forbidden in production.
 - ETag and `If-Match` optimistic concurrency for updates.
 - Sanitized stream references and synthetic offline test fixtures.
+- Migration-head readiness and database-level camera integrity constraints.
+- Streaming-safe request size limits and no-store registry cache policy.
+- Audited failure and no-op write behavior.
+- Python 3.12, 3.13, and 3.14 CI with coverage, lint, dependency, migration,
+  and package artifact gates.
 
 ## Safety Boundaries
 

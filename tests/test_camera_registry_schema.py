@@ -66,3 +66,18 @@ def test_stream_reference_sanitizer_removes_credentials_and_tokens() -> None:
     ) == "https://example.invalid/live/1"
     assert sanitize_stream_reference("/live/1?token=secret") == "/live/1"
     assert sanitize_stream_reference("file:///private/video.mp4") is None
+
+
+@pytest.mark.parametrize(
+    "reference",
+    [
+        "http://example.invalid:bad/live",
+        "http://[broken/live",
+        "https://example.invalid/line\nbreak",
+        "x" * 4097,
+    ],
+)
+def test_stream_reference_sanitizer_never_raises_for_malformed_input(
+    reference: str,
+) -> None:
+    assert sanitize_stream_reference(reference) is None

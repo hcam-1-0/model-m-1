@@ -12,6 +12,24 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 from sqlalchemy.types import TypeDecorator
 
 
+CURRENT_SCHEMA_REVISION = "0003_camera_integrity"
+REQUIRED_CAMERA_COLUMNS = frozenset(
+    {
+        "camera_id",
+        "version_id",
+        "source_id",
+        "external_id",
+        "display_name",
+        "latitude",
+        "longitude",
+        "duration_seconds",
+        "provenance",
+        "created_at",
+        "updated_at",
+    }
+)
+
+
 class Base(DeclarativeBase):
     pass
 
@@ -67,14 +85,21 @@ def build_engine(database_url: str) -> Engine:
         def enable_foreign_keys(dbapi_connection, _connection_record) -> None:
             cursor = dbapi_connection.cursor()
             cursor.execute("PRAGMA foreign_keys=ON")
+            cursor.execute("PRAGMA busy_timeout=5000")
             cursor.close()
 
     return engine
 
 
 class Database:
-    def __init__(self, database_url: str) -> None:
+    def __init__(
+        self,
+        database_url: str,
+        *,
+        allow_unversioned_schema: bool = False,
+    ) -> None:
         self.engine = build_engine(database_url)
+        self.allow_unversioned_schema = allow_unversioned_schema
         self.session_factory = sessionmaker(
             bind=self.engine,
             class_=Session,
@@ -87,11 +112,30 @@ class Database:
     def check_ready(self) -> None:
         with self.engine.connect() as connection:
             connection.execute(text("SELECT 1"))
-            table_names = set(inspect(connection).get_table_names())
+            inspector = inspect(connection)
+            table_names = set(inspector.get_table_names())
+            camera_columns = (
+                {column["name"] for column in inspector.get_columns("cameras")}
+                if "cameras" in table_names
+                else set()
+            )
         required_tables = {"cameras", "audit_events"}
         missing_tables = required_tables - table_names
-        if missing_tables:
+        missing_columns = REQUIRED_CAMERA_COLUMNS - camera_columns
+        if missing_tables or missing_columns:
             raise DatabaseNotReadyError("database migrations are not current")
+        if self.allow_unversioned_schema:
+            return
+        if "alembic_version" not in table_names:
+            raise DatabaseNotReadyError("database migration revision is unavailable")
+        with self.engine.connect() as connection:
+            revisions = set(
+                connection.execute(text("SELECT version_num FROM alembic_version"))
+                .scalars()
+                .all()
+            )
+        if revisions != {CURRENT_SCHEMA_REVISION}:
+            raise DatabaseNotReadyError("database migration revision is not current")
 
     def dispose(self) -> None:
         self.engine.dispose()

@@ -19,6 +19,7 @@ SourceId = Annotated[
     Field(min_length=1, max_length=64, pattern=r"^[a-z][a-z0-9-]*$"),
 ]
 NonEmptyText = Annotated[str, Field(min_length=1)]
+StreamReference = Annotated[str, Field(max_length=4096)]
 
 
 class LocationSeed(BaseModel):
@@ -46,11 +47,11 @@ class CameraStatusSeed(BaseModel):
 class StreamSeed(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    stream_path: str | None = None
-    hls_path: str | None = None
-    stream_url: str | None = None
-    hls_url: str | None = None
-    selected_url: str | None = None
+    stream_path: StreamReference | None = None
+    hls_path: StreamReference | None = None
+    stream_url: StreamReference | None = None
+    hls_url: StreamReference | None = None
+    selected_url: StreamReference | None = None
     delivery: str | None = Field(default=None, max_length=80)
     codec: str | None = Field(default=None, max_length=80)
     container: str | None = Field(default=None, max_length=80)
@@ -114,11 +115,11 @@ class CameraStatusPatch(BaseModel):
 class StreamPatch(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    stream_path: str | None = None
-    hls_path: str | None = None
-    stream_url: str | None = None
-    hls_url: str | None = None
-    selected_url: str | None = None
+    stream_path: StreamReference | None = None
+    hls_path: StreamReference | None = None
+    stream_url: StreamReference | None = None
+    hls_url: StreamReference | None = None
+    selected_url: StreamReference | None = None
     delivery: str | None = Field(default=None, max_length=80)
     codec: str | None = Field(default=None, max_length=80)
     container: str | None = Field(default=None, max_length=80)

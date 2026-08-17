@@ -25,6 +25,8 @@ at `http://127.0.0.1:8000/docs` after startup.
 Registry endpoints require explicit local development identity headers. See
 [Phase 1 security and management](docs/phase-1/security-and-management.md) for
 the role matrix, write API, ETag, audit, and production identity boundaries.
+See [Phase 1 build and test](docs/phase-1/build-and-test.md) for the interpreter
+matrix, coverage, lint, migration, dependency-audit, and artifact checks.
 
 ## Phase 0 foundation
 
