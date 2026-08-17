@@ -1,0 +1,31 @@
+name: Python CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sentinel-probe:
+    name: Sentinel probe offline checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile Sentinel probe
+        run: python -m py_compile tools/sentinel_cctv_probe.py
+
+      - name: Run offline tests
+        run: python -m unittest discover -s tests -v
