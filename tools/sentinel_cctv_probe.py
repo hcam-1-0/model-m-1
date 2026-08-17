@@ -267,6 +267,113 @@ def write_json(path: Path, payload: Any) -> None:
     path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
+def read_json_file(path: Path) -> Any:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError as exc:
+        raise ProbeError(f"Fixture file not found: {path}") from exc
+    except json.JSONDecodeError as exc:
+        raise ProbeError(f"Invalid JSON fixture {path}: {exc}") from exc
+
+
+def read_snapshot_dir(fixture_dir: Path) -> dict[str, Any]:
+    cameras_payload = read_json_file(fixture_dir / "cameras.json")
+    if not isinstance(cameras_payload, dict) or not isinstance(
+        cameras_payload.get("cameras"), list
+    ):
+        raise ProbeError(f"Invalid cameras fixture: {fixture_dir / 'cameras.json'}")
+
+    states = []
+    for state_path in sorted(fixture_dir.glob("camera-*-state.json")):
+        state = read_json_file(state_path)
+        if isinstance(state, dict):
+            states.append({"file": state_path.name, "state": state})
+
+    prepare_status = None
+    prepare_path = fixture_dir / "prepare-status.json"
+    if prepare_path.exists():
+        prepare_status = read_json_file(prepare_path)
+
+    snapshot_summary = None
+    summary_path = fixture_dir / "snapshot-summary.json"
+    if summary_path.exists():
+        snapshot_summary = read_json_file(summary_path)
+
+    return {
+        "fixture_dir": str(fixture_dir),
+        "cameras": cameras_payload["cameras"],
+        "states": states,
+        "prepare_status": prepare_status,
+        "snapshot_summary": snapshot_summary,
+    }
+
+
+def summarize_states(states: list[dict[str, Any]]) -> dict[str, Any]:
+    state_payloads = [entry["state"] for entry in states]
+    hls_count = sum(1 for state in state_payloads if state.get("hls_url"))
+    stream_count = sum(1 for state in state_payloads if state.get("stream_url"))
+    return {
+        "state_count": len(state_payloads),
+        "status": counter_from(state_payloads, "status"),
+        "timezone": counter_from(state_payloads, "timezone"),
+        "with_hls_url": hls_count,
+        "with_stream_url": stream_count,
+        "sample_states": [
+            {
+                "file": entry["file"],
+                "id": str(entry["state"].get("id")),
+                "location": entry["state"].get("location"),
+                "status": entry["state"].get("status"),
+                "stream_url": entry["state"].get("stream_url"),
+                "hls_url": entry["state"].get("hls_url"),
+                "timezone": entry["state"].get("timezone"),
+                "slot_offset": entry["state"].get("slot_offset"),
+                "server_epoch": entry["state"].get("server_epoch"),
+            }
+            for entry in states[:10]
+        ],
+    }
+
+
+def build_offline_summary(fixture_dir: Path) -> dict[str, Any]:
+    snapshot = read_snapshot_dir(fixture_dir)
+    summary = {
+        "fixture_dir": snapshot["fixture_dir"],
+        "camera_summary": summarize_cameras(snapshot["cameras"]),
+        "state_summary": summarize_states(snapshot["states"]),
+        "prepare_status": snapshot["prepare_status"],
+    }
+    if isinstance(snapshot["snapshot_summary"], dict):
+        summary["snapshot_created_at"] = snapshot["snapshot_summary"].get("created_at")
+        summary["snapshot_base_url"] = snapshot["snapshot_summary"].get("base_url")
+        summary["snapshot_safe_use"] = snapshot["snapshot_summary"].get("safe_use")
+    return summary
+
+
+def print_offline_summary(summary: dict[str, Any]) -> None:
+    print("Sentinel offline snapshot")
+    print(f"fixture_dir: {summary['fixture_dir']}")
+    if summary.get("snapshot_created_at"):
+        print(f"created_at: {summary['snapshot_created_at']}")
+    if summary.get("snapshot_base_url"):
+        print(f"base_url: {summary['snapshot_base_url']}")
+
+    camera_summary = summary["camera_summary"]
+    print(f"camera_count: {camera_summary['camera_count']}")
+    for key in ("status", "codec", "container", "delivery"):
+        values = ", ".join(f"{name}={count}" for name, count in camera_summary[key].items())
+        print(f"camera_{key}: {values or 'none'}")
+
+    state_summary = summary["state_summary"]
+    print(f"state_count: {state_summary['state_count']}")
+    state_status = ", ".join(
+        f"{name}={count}" for name, count in state_summary["status"].items()
+    )
+    print(f"state_status: {state_status or 'none'}")
+    print(f"states_with_stream_url: {state_summary['with_stream_url']}")
+    print(f"states_with_hls_url: {state_summary['with_hls_url']}")
+
+
 def cmd_snapshot(args: argparse.Namespace) -> int:
     camera_ids = parse_camera_ids(args.camera_ids)
     output_dir = Path(args.output_dir)
@@ -305,6 +412,16 @@ def cmd_snapshot(args: argparse.Namespace) -> int:
         print("state_errors:")
         for camera_id, message in errors.items():
             print(f"  {camera_id}: {message}")
+    return 0
+
+
+def cmd_offline_summary(args: argparse.Namespace) -> int:
+    fixture_dir = Path(args.fixture_dir)
+    summary = build_offline_summary(fixture_dir)
+    if args.json:
+        print_json(summary)
+    else:
+        print_offline_summary(summary)
     return 0
 
 
@@ -407,6 +524,17 @@ def build_parser() -> argparse.ArgumentParser:
         help="Output directory for generated JSON fixtures.",
     )
     snapshot.set_defaults(func=cmd_snapshot)
+
+    offline_summary = subparsers.add_parser(
+        "offline-summary", help="Summarize previously saved snapshot JSON without network calls."
+    )
+    offline_summary.add_argument(
+        "--fixture-dir",
+        default="fixtures/sentinel",
+        help="Directory containing snapshot JSON files.",
+    )
+    offline_summary.add_argument("--json", action="store_true", help="Print machine-readable JSON.")
+    offline_summary.set_defaults(func=cmd_offline_summary)
 
     all_cmd = subparsers.add_parser("all", help="Run metadata, state, and stream checks.")
     add_common_args(all_cmd)

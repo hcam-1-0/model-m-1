@@ -195,6 +195,104 @@ class SentinelProbeTests(unittest.TestCase):
                 '{\n  "a": 1,\n  "b": 2\n}\n',
             )
 
+    def test_build_offline_summary_reads_snapshot_without_network(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            fixture_dir = Path(temp_dir)
+            probe.write_json(
+                fixture_dir / "cameras.json",
+                {
+                    "cameras": [
+                        {
+                            "id": 1,
+                            "status": "live",
+                            "codec": "h264",
+                            "container": "mp4",
+                            "delivery": "progressive",
+                        },
+                        {
+                            "id": 13,
+                            "status": "live",
+                            "codec": "h264",
+                            "container": "mkv",
+                            "delivery": "progressive",
+                        },
+                    ]
+                },
+            )
+            probe.write_json(fixture_dir / "prepare-status.json", {"done": False})
+            probe.write_json(
+                fixture_dir / "snapshot-summary.json",
+                {
+                    "created_at": "2026-08-17T20:00:00+00:00",
+                    "base_url": "https://live.sentinelgujarat.in",
+                    "safe_use": "Metadata and state JSON only.",
+                },
+            )
+            probe.write_json(
+                fixture_dir / "camera-1-state.json",
+                {
+                    "id": 1,
+                    "location": "Bridge",
+                    "status": "live",
+                    "stream_url": "/stream/1",
+                    "hls_url": None,
+                    "timezone": "Asia/Kolkata",
+                },
+            )
+            probe.write_json(
+                fixture_dir / "camera-13-state.json",
+                {
+                    "id": 13,
+                    "location": "Road",
+                    "status": "live",
+                    "stream_url": "/stream/13",
+                    "hls_url": "/hls/13/index.m3u8",
+                    "timezone": "Asia/Kolkata",
+                },
+            )
+
+            summary = probe.build_offline_summary(fixture_dir)
+
+        self.assertEqual(summary["camera_summary"]["camera_count"], 2)
+        self.assertEqual(summary["camera_summary"]["container"], {"mkv": 1, "mp4": 1})
+        self.assertEqual(summary["state_summary"]["state_count"], 2)
+        self.assertEqual(summary["state_summary"]["with_stream_url"], 2)
+        self.assertEqual(summary["state_summary"]["with_hls_url"], 1)
+        self.assertEqual(summary["prepare_status"], {"done": False})
+        self.assertEqual(summary["snapshot_base_url"], "https://live.sentinelgujarat.in")
+
+    def test_cmd_offline_summary_can_print_json(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            fixture_dir = Path(temp_dir)
+            probe.write_json(
+                fixture_dir / "cameras.json",
+                {
+                    "cameras": [
+                        {
+                            "id": 1,
+                            "status": "live",
+                            "codec": "h264",
+                            "container": "mp4",
+                            "delivery": "progressive",
+                        }
+                    ]
+                },
+            )
+            args = argparse.Namespace(fixture_dir=str(fixture_dir), json=True)
+            output = io.StringIO()
+            with redirect_stdout(output):
+                exit_code = probe.cmd_offline_summary(args)
+
+        payload = json.loads(output.getvalue())
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["camera_summary"]["camera_count"], 1)
+        self.assertEqual(payload["state_summary"]["state_count"], 0)
+
+    def test_offline_summary_rejects_missing_cameras_fixture(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            with self.assertRaises(probe.ProbeError):
+                probe.build_offline_summary(Path(temp_dir))
+
 
 if __name__ == "__main__":
     unittest.main()
