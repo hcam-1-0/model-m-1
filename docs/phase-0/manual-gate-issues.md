@@ -1,16 +1,16 @@
 # Manual Gate Issues
 
-These GitHub issues track the Phase 0 gates and their current state. The open
-owner gates must close before H-CAM moves into Phase 1 implementation.
+These GitHub issues track the Phase 0 gates and their current state. The project
+owner approved all remaining gates on 2026-08-18.
 
 ## Gate Issue Index
 
 | Gate | Issue | Status | Required Evidence |
 | --- | --- | --- | --- |
-| Review Phase 0 docs with project owner | [#10](https://github.com/mayankthakor227/h-cam-2.0/issues/10) | Open | Owner review outcome recorded in `owner-review.md` or linked PR/issue comment |
+| Review Phase 0 docs with project owner | [#10](https://github.com/mayankthakor227/h-cam-2.0/issues/10) | Owner-approved for closure on 2026-08-18 | Owner review outcome recorded in `owner-review.md` or linked PR/issue comment |
 | Confirm official challenge constraints and dataset rules | [#11](https://github.com/mayankthakor227/h-cam-2.0/issues/11) | Closed on 2026-08-17 through [PR #15](https://github.com/mayankthakor227/h-cam-2.0/pull/15) | Official rules, dataset policy, sensitive-data policy, demo rules, and source evidence recorded in `official-constraints-intake.md` |
-| Approve, revise, or reject proposed Phase 1 decisions | [#12](https://github.com/mayankthakor227/h-cam-2.0/issues/12) | Open | DR-0004 and DR-0005 resolved in `decision-records.md`, with follow-up docs updated |
-| Authorize Phase 1 camera registry implementation start | [#13](https://github.com/mayankthakor227/h-cam-2.0/issues/13) | Open | Previous gate issues closed and explicit owner/user instruction to move to Phase 1 |
+| Approve, revise, or reject proposed Phase 1 decisions | [#12](https://github.com/mayankthakor227/h-cam-2.0/issues/12) | DR-0004 and DR-0005 owner-approved for closure on 2026-08-18 | DR-0004 and DR-0005 resolved in `decision-records.md`, with follow-up docs updated |
+| Authorize Phase 1 camera registry implementation start | [#13](https://github.com/mayankthakor227/h-cam-2.0/issues/13) | Owner-authorized for closure on 2026-08-18 | Previous gate issues closed and explicit owner/user instruction to move to Phase 1 |
 
 ## Labels
 
@@ -30,7 +30,6 @@ are satisfied and the corresponding Phase 0 document is updated.
 
 ## Phase 1 Guardrail
 
-Issue #13 is the final Phase 1 entry gate. Official intake issue #11 is closed.
-Phase 1 should not start until the remaining owner gates #10 and #12 are closed
-and the project owner explicitly approves Phase 1 camera registry backend
-implementation.
+The project owner accepted Phase 0, approved DR-0004 and DR-0005, and explicitly
+authorized Phase 1. Issues #10, #12, and #13 can close with the merged acceptance
+evidence. Sensitive integrations remain separately blocked until authorized.

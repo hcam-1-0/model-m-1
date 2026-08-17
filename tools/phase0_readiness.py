@@ -325,7 +325,8 @@ def check_manual_gate_artifacts() -> CheckResult:
                 "Manual Gates",
                 "Review Phase 0 Docs With Project Owner",
                 "Approve, Revise, Or Reject Phase 1 Decisions",
-                "Phase 1 starts only after owner review",
+                "Project owner (user)",
+                "I accept Phase 0, approve DR-0004 and DR-0005, and continue to next phase.",
             ],
         )
     )

@@ -26,8 +26,8 @@ before moving into product implementation.
 - Registry export produces `hcam.camera_registry.seed.v1`.
 - Phase 0 docs are present and linked.
 - Data governance constraints are documented.
-- Phase 0 readiness reports `ready_for_owner_review` until manual gates are
-  approved.
+- Phase 0 readiness reports `complete` after the project owner approves every
+  manual gate.
 
 ## Live-Site Caveat
 

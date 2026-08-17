@@ -61,7 +61,7 @@ Consequences:
 
 ## DR-0004: Start As Single Repo, Keep Service Boundaries Explicit
 
-Status: proposed.
+Status: accepted by the project owner on 2026-08-18.
 
 Decision: Phase 1 should stay in `mayankthakor227/h-cam-2.0` while maintaining
 clear module boundaries for future split-out.
@@ -79,7 +79,7 @@ Consequences:
 
 ## DR-0005: Python Backend For Phase 1
 
-Status: proposed.
+Status: accepted by the project owner on 2026-08-18.
 
 Decision: Use Python with FastAPI-style architecture for the first backend
 foundation.
