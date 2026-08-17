@@ -53,6 +53,7 @@ class Phase0ReadinessTests(unittest.TestCase):
         self.assertEqual(result.status, phase0_readiness.PASS)
         self.assertIn("owner-review.md", result.evidence[0])
         self.assertIn("official-constraints-intake.md", result.evidence[1])
+        self.assertIn("manual-gate-issues.md", result.evidence[2])
 
     def test_strict_mode_fails_while_manual_gates_remain(self):
         buffer = io.StringIO()

@@ -44,6 +44,7 @@ REQUIRED_PHASE0_DOCS = [
     "readiness-report.md",
     "owner-review.md",
     "official-constraints-intake.md",
+    "manual-gate-issues.md",
 ]
 
 REQUIRED_README_LINKS = [
@@ -63,6 +64,7 @@ REQUIRED_README_LINKS = [
     "readiness-report.md",
     "owner-review.md",
     "official-constraints-intake.md",
+    "manual-gate-issues.md",
 ]
 
 REQUIRED_SENTINEL_COMMANDS = [
@@ -313,6 +315,7 @@ def check_validation_plan() -> CheckResult:
 def check_manual_gate_artifacts() -> CheckResult:
     owner_review = read_text(PHASE0 / "owner-review.md")
     constraints = read_text(PHASE0 / "official-constraints-intake.md")
+    manual_issues = read_text(PHASE0 / "manual-gate-issues.md")
     missing: list[str] = []
     missing.extend(
         missing_terms(
@@ -340,20 +343,41 @@ def check_manual_gate_artifacts() -> CheckResult:
             ],
         )
     )
+    missing.extend(
+        missing_terms(
+            manual_issues,
+            [
+                "Manual Gate Issues",
+                "https://github.com/mayankthakor227/h-cam-2.0/issues/10",
+                "https://github.com/mayankthakor227/h-cam-2.0/issues/11",
+                "https://github.com/mayankthakor227/h-cam-2.0/issues/12",
+                "https://github.com/mayankthakor227/h-cam-2.0/issues/13",
+                "Do not close a manual gate issue because tests pass",
+            ],
+        )
+    )
 
     if missing:
         return result(
             "manual_gate_artifacts",
             FAIL,
-            f"missing owner-review or source-intake terms: {', '.join(missing)}",
-            [rel(PHASE0 / "owner-review.md"), rel(PHASE0 / "official-constraints-intake.md")],
+            f"missing manual gate artifact terms: {', '.join(missing)}",
+            [
+                rel(PHASE0 / "owner-review.md"),
+                rel(PHASE0 / "official-constraints-intake.md"),
+                rel(PHASE0 / "manual-gate-issues.md"),
+            ],
         )
 
     return result(
         "manual_gate_artifacts",
         PASS,
-        "Owner review and official constraints intake packets are present for the remaining manual gates.",
-        [rel(PHASE0 / "owner-review.md"), rel(PHASE0 / "official-constraints-intake.md")],
+        "Owner review, official constraints intake, and GitHub manual-gate issue index are present.",
+        [
+            rel(PHASE0 / "owner-review.md"),
+            rel(PHASE0 / "official-constraints-intake.md"),
+            rel(PHASE0 / "manual-gate-issues.md"),
+        ],
     )
 
 
