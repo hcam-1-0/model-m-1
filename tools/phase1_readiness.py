@@ -39,6 +39,7 @@ REQUIRED_FILES = [
     "docs/phase-1/security-and-management.md",
     "docs/phase-1/acceptance-checklist.md",
     "docs/phase-1/readiness-report.md",
+    "docs/phase-1/owner-review.md",
     "tests/fixtures/camera-registry-seed.json",
     "tests/test_camera_registry_api.py",
     "tests/test_camera_registry_import.py",
@@ -219,6 +220,34 @@ def check_acceptance_gate() -> CheckResult:
     return CheckResult("acceptance_gate", PASS, "Phase 1 owner gate is accepted.", [path])
 
 
+def check_owner_review_packet() -> CheckResult:
+    path = "docs/phase-1/owner-review.md"
+    content = _read(path)
+    required = [
+        "I accept Phase 1 and authorize Phase 2 planning under the documented safety boundaries.",
+        "Implementation PR #21",
+        "Post-merge `main` validation run",
+        "Manual gate issue #20",
+        "production CCTV access",
+        "Government database",
+        "AI processing of real people",
+    ]
+    missing = _missing_terms(content, required)
+    if missing:
+        return CheckResult(
+            "owner_review_packet",
+            FAIL,
+            f"missing owner-review terms: {', '.join(missing)}",
+            [path],
+        )
+    return CheckResult(
+        "owner_review_packet",
+        PASS,
+        "Owner decision, published evidence, and safety boundaries are documented.",
+        [path],
+    )
+
+
 def _run(command: list[str], *, env: dict[str, str] | None = None) -> tuple[str, str | None]:
     completed = subprocess.run(
         command,
@@ -276,6 +305,7 @@ def build_readiness_report(run_validation: bool = False) -> ReadinessReport:
         check_required_files(),
         check_api_and_security_contracts(),
         check_safety_documentation(),
+        check_owner_review_packet(),
         check_acceptance_gate(),
     ]
     if run_validation:

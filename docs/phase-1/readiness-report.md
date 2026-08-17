@@ -18,6 +18,19 @@ The remaining gate is explicit project-owner acceptance of Phase 1 and
 authorization to plan Phase 2. Passing tests cannot close that gate.
 
 Manual gate: [GitHub issue #20](https://github.com/mayankthakor227/h-cam-2.0/issues/20).
+Owner decision packet: [owner-review.md](owner-review.md).
+
+## Published Evidence
+
+- Phase 1 implementation merged through
+  [PR #21](https://github.com/mayankthakor227/h-cam-2.0/pull/21) at commit
+  `d842f80d92f730b60917ae81061f4db90095a7ea`.
+- The [PR validation run](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32078089691)
+  passed.
+- The [post-merge `main` validation run](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32078165287)
+  passed against that merge commit.
+- The owner gate remains open; published engineering evidence does not imply
+  owner acceptance.
 
 ## Evidence Map
 
@@ -33,6 +46,7 @@ Manual gate: [GitHub issue #20](https://github.com/mayankthakor227/h-cam-2.0/iss
 | Automated tests | `tests/` |
 | CI | `.github/workflows/python-ci.yml` |
 | Safety and operations | `docs/phase-1/README.md`, `security-and-management.md` |
+| Owner decision | `docs/phase-1/owner-review.md`, GitHub issue #20 |
 
 ## Phase Boundary
 
