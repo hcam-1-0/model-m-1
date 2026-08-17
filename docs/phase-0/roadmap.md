@@ -10,8 +10,9 @@ Milestones:
 - 0.2 Offline fixtures and summary: complete.
 - 0.3 Registry seed export: complete.
 - 0.4 Phase 0 product, requirements, architecture, governance, validation, and
-  acceptance docs: started in this package.
-- 0.5 Phase 1 implementation plan: next.
+  acceptance docs: complete as a baseline.
+- 0.5 Phase 1 implementation plan and backlog: started in
+  `phase-1-handoff.md` and `phase-1-backlog.md`.
 
 ## Phase 1: Core Platform Foundation
 

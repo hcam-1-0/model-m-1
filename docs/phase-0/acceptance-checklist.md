@@ -48,6 +48,10 @@ Phase 0 is accepted when every required gate has current evidence.
 - [ ] Review Phase 0 docs with project owner.
 - [ ] Confirm official challenge constraints and dataset rules before any
   sensitive integration.
-- [ ] Decide Phase 1 repository structure and backend stack.
-- [ ] Create Phase 1 implementation issues.
-- [ ] Start camera registry backend implementation.
+- [x] Propose Phase 1 repository structure and backend stack in
+  `phase-1-handoff.md`.
+- [x] Convert Phase 1 starter work into backlog items in `phase-1-backlog.md`.
+- [x] Capture Phase 1 review questions in `review-questions.md`.
+- [ ] Approve, revise, or reject proposed Phase 1 decisions in
+  `decision-records.md`.
+- [ ] Start camera registry backend implementation after Phase 1 is approved.
