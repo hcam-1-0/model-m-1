@@ -30,7 +30,7 @@ class LocationSeed(BaseModel):
     longitude: float | None = Field(default=None, ge=-180, le=180)
 
     @model_validator(mode="after")
-    def coordinates_are_a_pair(self) -> "LocationSeed":
+    def coordinates_are_a_pair(self) -> LocationSeed:
         if (self.latitude is None) != (self.longitude is None):
             raise ValueError("latitude and longitude must be supplied together")
         return self
@@ -79,6 +79,84 @@ class CameraSeed(BaseModel):
     maintenance_status: str | None = Field(default=None, max_length=80)
 
 
+class CameraCreate(CameraSeed):
+    model_config = ConfigDict(extra="forbid")
+
+
+class LocationPatch(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    label: str | None = Field(default=None, max_length=500)
+    timezone: str | None = Field(default=None, max_length=80)
+    latitude: float | None = Field(default=None, ge=-90, le=90)
+    longitude: float | None = Field(default=None, ge=-180, le=180)
+
+    @model_validator(mode="after")
+    def contains_a_change(self) -> LocationPatch:
+        if not self.model_fields_set:
+            raise ValueError("at least one location field must be supplied")
+        return self
+
+
+class CameraStatusPatch(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    metadata: str | None = Field(default=None, max_length=80)
+    state: str | None = Field(default=None, max_length=80)
+
+    @model_validator(mode="after")
+    def contains_a_change(self) -> CameraStatusPatch:
+        if not self.model_fields_set:
+            raise ValueError("at least one status field must be supplied")
+        return self
+
+
+class StreamPatch(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    stream_path: str | None = None
+    hls_path: str | None = None
+    stream_url: str | None = None
+    hls_url: str | None = None
+    selected_url: str | None = None
+    delivery: str | None = Field(default=None, max_length=80)
+    codec: str | None = Field(default=None, max_length=80)
+    container: str | None = Field(default=None, max_length=80)
+    duration_seconds: float | None = Field(default=None, ge=0)
+    reachability: str | None = Field(default=None, max_length=80)
+    last_checked_at: datetime | None = None
+
+    @model_validator(mode="after")
+    def contains_a_change(self) -> StreamPatch:
+        if not self.model_fields_set:
+            raise ValueError("at least one stream field must be supplied")
+        return self
+
+
+class CameraPatch(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    display_name: Annotated[str, Field(min_length=1, max_length=255)] | None = None
+    location: LocationPatch | None = None
+    status: CameraStatusPatch | None = None
+    stream: StreamPatch | None = None
+    department: str | None = Field(default=None, max_length=120)
+    ownership: str | None = Field(default=None, max_length=120)
+    camera_type: str | None = Field(default=None, max_length=80)
+    connectivity_status: str | None = Field(default=None, max_length=80)
+    storage_status: str | None = Field(default=None, max_length=80)
+    health_status: str | None = Field(default=None, max_length=80)
+    maintenance_status: str | None = Field(default=None, max_length=80)
+
+    @model_validator(mode="after")
+    def contains_a_change(self) -> CameraPatch:
+        if not self.model_fields_set:
+            raise ValueError("at least one camera field must be supplied")
+        if "display_name" in self.model_fields_set and self.display_name is None:
+            raise ValueError("display_name cannot be null")
+        return self
+
+
 class SeedSource(BaseModel):
     model_config = ConfigDict(extra="allow")
 
@@ -99,7 +177,7 @@ class RegistrySeed(BaseModel):
     cameras: list[CameraSeed]
 
     @model_validator(mode="after")
-    def camera_keys_are_unique(self) -> "RegistrySeed":
+    def camera_keys_are_unique(self) -> RegistrySeed:
         camera_ids: set[str] = set()
         source_keys: set[tuple[str, str]] = set()
         for camera in self.cameras:
@@ -155,6 +233,7 @@ class ProvenanceResponse(BaseModel):
 
 class CameraResponse(BaseModel):
     camera_id: str
+    version: int
     source: str
     external_id: str
     display_name: str

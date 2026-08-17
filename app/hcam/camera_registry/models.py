@@ -1,16 +1,16 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
-from typing import Any
+from datetime import UTC, datetime
+from typing import Any, ClassVar
 
-from sqlalchemy import JSON, Float, String, Text, UniqueConstraint
+from sqlalchemy import JSON, Float, Integer, String, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 
 from hcam.database import Base, UTCDateTime
 
 
 def utc_now() -> datetime:
-    return datetime.now(timezone.utc)
+    return datetime.now(UTC)
 
 
 class Camera(Base):
@@ -20,6 +20,7 @@ class Camera(Base):
     )
 
     camera_id: Mapped[str] = mapped_column(String(160), primary_key=True)
+    version_id: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
     source_id: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
     external_id: Mapped[str] = mapped_column(String(255), nullable=False)
     display_name: Mapped[str] = mapped_column(String(255), nullable=False)
@@ -62,3 +63,5 @@ class Camera(Base):
     updated_at: Mapped[datetime] = mapped_column(
         UTCDateTime(), nullable=False, default=utc_now, onupdate=utc_now
     )
+
+    __mapper_args__: ClassVar[dict[str, Any]] = {"version_id_col": version_id}

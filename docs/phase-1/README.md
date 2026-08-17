@@ -18,7 +18,11 @@ backlog. It does not claim the complete CCTV integration or analytics platform.
 - validated local registry seed adapter
 - idempotent camera upsert with import audit events
 - `GET /cameras` and `GET /cameras/{camera_id}`
+- audited `POST /cameras` and `PATCH /cameras/{camera_id}` management APIs
+- administrator-only `POST /camera-imports` bulk API onboarding
 - source, department, type, health, and operational-status filters
+- fail-closed role and department authorization boundary
+- ETag-based optimistic concurrency for camera updates
 - liveness and database/schema readiness checks
 - synthetic fixtures and automated tests
 
@@ -49,6 +53,8 @@ Create and migrate the local database:
 
 ```powershell
 $env:HCAM_DATABASE_URL = "sqlite:///./var/hcam.db"
+$env:HCAM_ENVIRONMENT = "development"
+$env:HCAM_DEV_AUTH_ENABLED = "true"
 .\.venv\Scripts\alembic upgrade head
 ```
 
@@ -80,6 +86,21 @@ Useful URLs:
 - `http://127.0.0.1:8000/health/ready`
 - `http://127.0.0.1:8000/cameras`
 - `http://127.0.0.1:8000/docs`
+
+The local development authenticator requires explicit headers. Example:
+
+```powershell
+$headers = @{
+  "X-HCAM-Actor" = "local-operator"
+  "X-HCAM-Roles" = "camera.viewer"
+  "X-HCAM-Departments" = "*"
+}
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/cameras" -Headers $headers
+```
+
+These headers are not production credentials. The application rejects local
+development authentication in production mode. See
+[security-and-management.md](security-and-management.md).
 
 ## Camera API
 
@@ -117,6 +138,10 @@ The importer accepts only schema `hcam.camera_registry.seed.v1`. It validates:
 Repeated import is idempotent. Each successful or failed attempt produces an
 audit event; failure context contains only a filename and error type.
 
+Manual/API onboarding and controlled bulk API import are documented in
+[security-and-management.md](security-and-management.md). Camera updates require
+the current response ETag in `If-Match` and a reason in `X-HCAM-Reason`.
+
 ## Validation
 
 ```powershell
@@ -130,12 +155,12 @@ The existing Phase 0 readiness tool remains available:
 
 ```powershell
 .\.venv\Scripts\python tools/phase0_readiness.py --run-validation --strict
+.\.venv\Scripts\python tools/phase1_readiness.py --run-validation
 ```
 
-## Next Controlled Work
+## Phase 1 Gate
 
-The next increment may add camera create/update APIs, authentication/RBAC,
-source-adapter scheduling, and PostgreSQL deployment design only after their
-contracts and authorization boundaries are reviewed. AI inference, production
-video ingestion, biometrics, real watchlists, and Government integrations remain
-out of scope.
+Engineering evidence is tracked in [acceptance-checklist.md](acceptance-checklist.md)
+and [readiness-report.md](readiness-report.md). Phase 2 planning requires explicit
+project-owner acceptance. AI inference, production video ingestion, biometrics,
+real watchlists, and Government integrations remain out of scope.

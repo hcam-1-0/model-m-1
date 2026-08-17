@@ -12,6 +12,8 @@ Start here: [docs/phase-1/README.md](docs/phase-1/README.md)
 python -m venv .venv
 .\.venv\Scripts\python -m pip install -e ".[dev]"
 $env:HCAM_DATABASE_URL = "sqlite:///./var/hcam.db"
+$env:HCAM_ENVIRONMENT = "development"
+$env:HCAM_DEV_AUTH_ENABLED = "true"
 .\.venv\Scripts\alembic upgrade head
 .\.venv\Scripts\hcam import-registry tests/fixtures/camera-registry-seed.json
 .\.venv\Scripts\python -m uvicorn hcam.main:app --reload
@@ -19,6 +21,10 @@ $env:HCAM_DATABASE_URL = "sqlite:///./var/hcam.db"
 
 The synthetic seed above is for local development only. OpenAPI is available
 at `http://127.0.0.1:8000/docs` after startup.
+
+Registry endpoints require explicit local development identity headers. See
+[Phase 1 security and management](docs/phase-1/security-and-management.md) for
+the role matrix, write API, ETag, audit, and production identity boundaries.
 
 ## Phase 0 foundation
 

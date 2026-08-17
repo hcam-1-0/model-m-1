@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from collections.abc import Callable
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Protocol
 from urllib.parse import urlsplit, urlunsplit
@@ -53,6 +53,19 @@ class JsonFileRegistryAdapter:
                 f"registry seed does not match hcam.camera_registry.seed.v1: "
                 f"{self.path.name}"
             ) from exc
+
+
+class PayloadRegistryAdapter:
+    def __init__(self, seed: RegistrySeed, reference: str = "api-payload") -> None:
+        self.seed = seed
+        self._reference = reference
+
+    @property
+    def reference(self) -> str:
+        return self._reference
+
+    def load(self) -> RegistrySeed:
+        return self.seed
 
 
 def sanitize_stream_reference(value: str | None) -> str | None:
@@ -111,7 +124,7 @@ CAMERA_MUTABLE_FIELDS = (
 def _comparable_value(value: Any) -> Any:
     if isinstance(value, datetime):
         if value.tzinfo is not None:
-            return value.astimezone(timezone.utc).replace(tzinfo=None)
+            return value.astimezone(UTC).replace(tzinfo=None)
         return value
     return value
 
@@ -167,24 +180,36 @@ class RegistryImporter:
     def import_file(self, path: str | Path) -> RegistryImportResult:
         return self.import_adapter(JsonFileRegistryAdapter(path))
 
-    def import_adapter(self, adapter: RegistrySourceAdapter) -> RegistryImportResult:
+    def import_adapter(
+        self,
+        adapter: RegistrySourceAdapter,
+        *,
+        actor_id: str | None = None,
+        reason: str = "Phase 1 local registry seed import",
+    ) -> RegistryImportResult:
         try:
             seed = adapter.load()
         except Exception as exc:
-            self._record_failure(adapter.reference, exc)
+            self._record_failure(adapter.reference, exc, actor_id, reason)
             if isinstance(exc, RegistryImportError):
                 raise
             raise RegistryImportError("registry adapter failed") from exc
 
         try:
-            return self._persist(seed, adapter.reference)
+            return self._persist(seed, adapter.reference, actor_id, reason)
         except Exception as exc:
-            self._record_failure(adapter.reference, exc)
+            self._record_failure(adapter.reference, exc, actor_id, reason)
             if isinstance(exc, RegistryImportError):
                 raise
             raise RegistryImportError("registry import failed") from exc
 
-    def _persist(self, seed: RegistrySeed, reference: str) -> RegistryImportResult:
+    def _persist(
+        self,
+        seed: RegistrySeed,
+        reference: str,
+        actor_id: str | None,
+        reason: str,
+    ) -> RegistryImportResult:
         created = 0
         updated = 0
         unchanged = 0
@@ -215,11 +240,12 @@ class RegistryImporter:
                 updated += 1
 
             audit_event = AuditRepository(session).record(
+                actor_id=actor_id,
                 action="camera_registry.import",
                 target_type="camera_registry",
                 target_id=seed.source.adapter,
                 source="hcam.registry_importer",
-                reason="Phase 1 local registry seed import",
+                reason=reason,
                 outcome="success",
                 context={
                     "file": reference,
@@ -242,14 +268,21 @@ class RegistryImporter:
             audit_event_id=audit_event_id,
         )
 
-    def _record_failure(self, reference: str, error: Exception) -> None:
+    def _record_failure(
+        self,
+        reference: str,
+        error: Exception,
+        actor_id: str | None,
+        reason: str,
+    ) -> None:
         try:
             with self.session_factory() as session, session.begin():
                 AuditRepository(session).record(
+                    actor_id=actor_id,
                     action="camera_registry.import",
                     target_type="camera_registry",
                     source="hcam.registry_importer",
-                    reason="Phase 1 local registry seed import",
+                    reason=reason,
                     outcome="failure",
                     context={
                         "file": reference,
