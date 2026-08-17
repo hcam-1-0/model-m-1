@@ -45,7 +45,7 @@ Phase 0 is accepted when every required gate has current evidence.
 
 ## Phase 0 Exit Review
 
-- [ ] Review Phase 0 docs with project owner.
+- [x] Review Phase 0 docs with project owner.
 - [x] Confirm official challenge constraints and dataset rules before any
   sensitive integration.
 - [x] Propose Phase 1 repository structure and backend stack in
@@ -57,6 +57,6 @@ Phase 0 is accepted when every required gate has current evidence.
   `official-constraints-intake.md`.
 - [x] Track manual Phase 0 gates as GitHub issues in
   `manual-gate-issues.md`.
-- [ ] Approve, revise, or reject proposed Phase 1 decisions in
+- [x] Approve, revise, or reject proposed Phase 1 decisions in
   `decision-records.md`.
-- [ ] Start camera registry backend implementation after Phase 1 is approved.
+- [x] Start camera registry backend implementation after Phase 1 is approved.

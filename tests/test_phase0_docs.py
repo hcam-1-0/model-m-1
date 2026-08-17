@@ -127,12 +127,12 @@ class Phase0DocsTests(unittest.TestCase):
     def test_readiness_report_separates_manual_gates(self):
         report = (PHASE0 / "readiness-report.md").read_text(encoding="utf-8")
         required_terms = [
-            "ready_for_owner_review",
-            "manual gates remain",
-            "Official portal constraints were captured",
-            "Do not treat this report or a passing readiness command as approval",
-            "python tools/phase0_readiness.py --run-validation",
-            "issues #10, #12, and #13",
+            "Phase 0 is complete and accepted by the project owner",
+            "Manual gates: 0",
+            "DR-0004",
+            "DR-0005",
+            "python tools/phase0_readiness.py --run-validation --strict",
+            "Issue #13",
         ]
         for term in required_terms:
             with self.subTest(term=term):
@@ -145,7 +145,8 @@ class Phase0DocsTests(unittest.TestCase):
             "Manual Gates",
             "Approve, revise, or reject",
             "continue to next phase",
-            "Phase 1 starts only after owner review",
+            "Project owner (user)",
+            "Phase 0 is accepted",
         ]
         for term in required_terms:
             with self.subTest(term=term):
@@ -177,7 +178,7 @@ class Phase0DocsTests(unittest.TestCase):
             "https://github.com/mayankthakor227/h-cam-2.0/issues/12",
             "https://github.com/mayankthakor227/h-cam-2.0/issues/13",
             "Do not close a manual gate issue because tests pass",
-            "Issue #13 is the final Phase 1 entry gate",
+            "Issues #10, #12, and #13 can close",
         ]
         for term in required_terms:
             with self.subTest(term=term):
