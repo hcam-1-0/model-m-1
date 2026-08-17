@@ -2,7 +2,7 @@
 
 ## Phase 0: Product And Environment Foundation
 
-Status: started.
+Status: complete and accepted on 2026-08-18.
 
 Milestones:
 
@@ -11,10 +11,12 @@ Milestones:
 - 0.3 Registry seed export: complete.
 - 0.4 Phase 0 product, requirements, architecture, governance, validation, and
   acceptance docs: complete as a baseline.
-- 0.5 Phase 1 implementation plan and backlog: started in
+- 0.5 Phase 1 implementation plan and backlog: complete in
   `phase-1-handoff.md` and `phase-1-backlog.md`.
 
 ## Phase 1: Core Platform Foundation
+
+Status: implementation complete; project-owner acceptance is pending.
 
 Primary goal: build the first H-CAM backend foundation around the camera
 registry.
@@ -29,6 +31,19 @@ Recommended first build order:
 6. Minimal API for listing cameras and stream state.
 7. Auth/RBAC placeholder with clear production requirements.
 8. Audit log foundation.
+
+Delivered evidence:
+
+- normalized camera registry and stream-state model
+- local and API seed onboarding
+- read, create, and partial-update APIs
+- fail-closed authentication boundary with local-only test identity
+- role and department authorization
+- optimistic concurrency and audited writes
+- SQLite migrations with a PostgreSQL-compatible ORM boundary
+- automated Phase 1 readiness verification
+
+Phase 2 planning remains blocked until the owner accepts the Phase 1 gate.
 
 ## Phase 2: Video Ingestion And Stream Management
 

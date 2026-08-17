@@ -6,9 +6,11 @@ from fastapi import FastAPI
 
 from hcam.audit import models as _audit_models  # noqa: F401
 from hcam.camera_registry import models as _camera_models  # noqa: F401
+from hcam.camera_registry.import_routes import router as import_router
 from hcam.camera_registry.routes import router as camera_router
 from hcam.database import Database
 from hcam.health.routes import router as health_router
+from hcam.security.auth import build_authenticator
 from hcam.settings import Settings
 
 
@@ -31,8 +33,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     )
     application.state.settings = resolved_settings
     application.state.database = database
+    application.state.authenticator = build_authenticator(resolved_settings)
     application.include_router(health_router)
     application.include_router(camera_router)
+    application.include_router(import_router)
     return application
 
 

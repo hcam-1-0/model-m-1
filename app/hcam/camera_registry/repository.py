@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from sqlalchemy import func, select
+from sqlalchemy import false, func, select
 from sqlalchemy.orm import Session
 
 from hcam.camera_registry.models import Camera
@@ -23,11 +23,13 @@ class CameraFilters:
     camera_type: str | None = None
     health_status: str | None = None
     operational_status: str | None = None
+    allowed_departments: frozenset[str] | None = None
 
 
 def camera_to_response(camera: Camera) -> CameraResponse:
     return CameraResponse(
         camera_id=camera.camera_id,
+        version=camera.version_id,
         source=camera.source_id,
         external_id=camera.external_id,
         display_name=camera.display_name,
@@ -96,6 +98,11 @@ class CameraRepository:
             conditions.append(Camera.health_status == filters.health_status)
         if filters.operational_status is not None:
             conditions.append(Camera.operational_status == filters.operational_status)
+        if filters.allowed_departments is not None:
+            if filters.allowed_departments:
+                conditions.append(Camera.department.in_(filters.allowed_departments))
+            else:
+                conditions.append(false())
 
         count_statement = select(func.count()).select_from(Camera).where(*conditions)
         total = int(self.session.scalar(count_statement) or 0)

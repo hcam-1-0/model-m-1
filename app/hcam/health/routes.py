@@ -30,4 +30,9 @@ def readiness(request: Request) -> HealthResponse:
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail="Database is not ready",
         ) from exc
+    if not request.app.state.authenticator.ready:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Authentication provider is not ready",
+        )
     return HealthResponse(status="ready")

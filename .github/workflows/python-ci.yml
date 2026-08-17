@@ -28,7 +28,7 @@ jobs:
         run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
 
       - name: Compile Python sources
-        run: python -m compileall -q app tools
+        run: python -m compileall -q app tools migrations
 
       - name: Preserve Phase 0 compile check
         run: python -m py_compile tools/sentinel_cctv_probe.py tools/phase0_readiness.py
@@ -40,6 +40,9 @@ jobs:
 
       - name: Run backend and offline tests
         run: pytest
+
+      - name: Verify Phase 1 evidence
+        run: python tools/phase1_readiness.py
 
       - name: Preserve Phase 0 unittest check
         run: python -m unittest discover -s tests -v
