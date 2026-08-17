@@ -28,6 +28,8 @@ class Phase0ReadinessTests(unittest.TestCase):
         self.assertEqual(report.failures, 0)
         self.assertEqual(report.status, "ready_for_owner_review")
         self.assertEqual(report.manual_gates, 4)
+        check_names = {check.name for check in report.checks}
+        self.assertIn("manual_gate_artifacts", check_names)
 
     def test_acceptance_checklist_only_leaves_allowed_manual_gates(self):
         result = phase0_readiness.check_acceptance_checklist()
@@ -44,6 +46,13 @@ class Phase0ReadinessTests(unittest.TestCase):
         output = buffer.getvalue()
         self.assertIn('"status": "ready_for_owner_review"', output)
         self.assertIn('"name": "phase0_documents"', output)
+        self.assertIn('"name": "manual_gate_artifacts"', output)
+
+    def test_manual_gate_artifacts_are_present(self):
+        result = phase0_readiness.check_manual_gate_artifacts()
+        self.assertEqual(result.status, phase0_readiness.PASS)
+        self.assertIn("owner-review.md", result.evidence[0])
+        self.assertIn("official-constraints-intake.md", result.evidence[1])
 
     def test_strict_mode_fails_while_manual_gates_remain(self):
         buffer = io.StringIO()
