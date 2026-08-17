@@ -13,6 +13,7 @@ python tools/sentinel_cctv_probe.py state --camera-id 1
 python tools/sentinel_cctv_probe.py stream-test --camera-id 1
 python tools/sentinel_cctv_probe.py snapshot
 python tools/sentinel_cctv_probe.py offline-summary
+python tools/sentinel_cctv_probe.py registry-export --output fixtures/sentinel/registry-seed.json
 python tools/sentinel_cctv_probe.py all
 ```
 
