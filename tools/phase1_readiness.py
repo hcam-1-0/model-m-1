@@ -9,6 +9,7 @@ import os
 import re
 import subprocess
 import sys
+import tarfile
 import tempfile
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -22,9 +23,11 @@ MANUAL = "manual"
 
 REQUIRED_FILES = [
     "pyproject.toml",
+    "MANIFEST.in",
     "alembic.ini",
     "app/hcam/main.py",
     "app/hcam/security/auth.py",
+    "app/hcam/security/request_limits.py",
     "app/hcam/camera_registry/models.py",
     "app/hcam/camera_registry/schemas.py",
     "app/hcam/camera_registry/importer.py",
@@ -35,8 +38,10 @@ REQUIRED_FILES = [
     "app/hcam/audit/models.py",
     "migrations/versions/0001_camera_registry.py",
     "migrations/versions/0002_camera_version.py",
+    "migrations/versions/0003_camera_integrity.py",
     "docs/phase-1/README.md",
     "docs/phase-1/security-and-management.md",
+    "docs/phase-1/build-and-test.md",
     "docs/phase-1/acceptance-checklist.md",
     "docs/phase-1/readiness-report.md",
     "docs/phase-1/owner-review.md",
@@ -46,6 +51,10 @@ REQUIRED_FILES = [
     "tests/test_camera_management_api.py",
     "tests/test_camera_import_api.py",
     "tests/test_security.py",
+    "tests/test_database_integrity.py",
+    "tests/test_cli.py",
+    "tests/test_package_metadata.py",
+    "tests/test_request_limits.py",
 ]
 
 
@@ -97,6 +106,7 @@ def check_api_and_security_contracts() -> CheckResult:
     routes = _read("app/hcam/camera_registry/routes.py")
     imports = _read("app/hcam/camera_registry/import_routes.py")
     security = _read("app/hcam/security/auth.py")
+    request_limits = _read("app/hcam/security/request_limits.py")
     models = _read("app/hcam/camera_registry/models.py")
     missing: list[str] = []
     missing.extend(
@@ -128,6 +138,17 @@ def check_api_and_security_contracts() -> CheckResult:
             ],
         )
     )
+    missing.extend(
+        _missing_terms(
+            request_limits,
+            [
+                "RequestBodyLimitMiddleware",
+                "SensitiveResponseHeadersMiddleware",
+                "Cache-Control",
+                "no-store",
+            ],
+        )
+    )
     missing.extend(_missing_terms(models, ["version_id_col", "version_id"]))
     if missing:
         return CheckResult(
@@ -138,6 +159,7 @@ def check_api_and_security_contracts() -> CheckResult:
                 "app/hcam/camera_registry/routes.py",
                 "app/hcam/camera_registry/import_routes.py",
                 "app/hcam/security/auth.py",
+                "app/hcam/security/request_limits.py",
                 "app/hcam/camera_registry/models.py",
             ],
         )
@@ -149,6 +171,7 @@ def check_api_and_security_contracts() -> CheckResult:
             "app/hcam/camera_registry/routes.py",
             "app/hcam/camera_registry/import_routes.py",
             "app/hcam/security/auth.py",
+            "app/hcam/security/request_limits.py",
             "app/hcam/camera_registry/models.py",
         ],
     )
@@ -188,6 +211,42 @@ def check_safety_documentation() -> CheckResult:
             "docs/phase-1/security-and-management.md",
             "docs/phase-1/readiness-report.md",
         ],
+    )
+
+
+def check_database_integrity_contracts() -> CheckResult:
+    database = _read("app/hcam/database.py")
+    models = _read("app/hcam/camera_registry/models.py")
+    migration = _read("migrations/versions/0003_camera_integrity.py")
+    missing = _missing_terms(
+        "\n".join([database, models, migration]),
+        [
+            "0003_camera_integrity",
+            "REQUIRED_CAMERA_COLUMNS",
+            "ck_cameras_coordinate_pair",
+            "ck_cameras_latitude_range",
+            "ck_cameras_longitude_range",
+            "ck_cameras_duration_nonnegative",
+            "ck_cameras_version_positive",
+        ],
+    )
+    evidence = [
+        "app/hcam/database.py",
+        "app/hcam/camera_registry/models.py",
+        "migrations/versions/0003_camera_integrity.py",
+    ]
+    if missing:
+        return CheckResult(
+            "database_integrity_contracts",
+            FAIL,
+            f"missing database integrity terms: {', '.join(missing)}",
+            evidence,
+        )
+    return CheckResult(
+        "database_integrity_contracts",
+        PASS,
+        "Migration-head readiness and camera database invariants are present.",
+        evidence,
     )
 
 
@@ -248,6 +307,43 @@ def check_owner_review_packet() -> CheckResult:
     )
 
 
+def check_build_quality_contracts() -> CheckResult:
+    pyproject = _read("pyproject.toml")
+    workflow = _read(".github/workflows/python-ci.yml")
+    build_docs = _read("docs/phase-1/build-and-test.md")
+    missing = _missing_terms(
+        "\n".join([pyproject, workflow, build_docs]),
+        [
+            "pytest-cov",
+            "pip-audit",
+            "ruff",
+            "python -m build",
+            "python-version: [\"3.12\", \"3.13\", \"3.14\"]",
+            "--cov-fail-under=90",
+            "Install wheel in an isolated environment",
+        ],
+    )
+    evidence = [
+        "pyproject.toml",
+        ".github/workflows/python-ci.yml",
+        "MANIFEST.in",
+        "docs/phase-1/build-and-test.md",
+    ]
+    if missing:
+        return CheckResult(
+            "build_quality_contracts",
+            FAIL,
+            f"missing build quality terms: {', '.join(missing)}",
+            evidence,
+        )
+    return CheckResult(
+        "build_quality_contracts",
+        PASS,
+        "Interpreter matrix, build, coverage, lint, and audit gates are present.",
+        evidence,
+    )
+
+
 def _run(command: list[str], *, env: dict[str, str] | None = None) -> tuple[str, str | None]:
     completed = subprocess.run(
         command,
@@ -271,7 +367,18 @@ def run_validation_commands() -> CheckResult:
     failures: list[str] = []
     commands = [
         [sys.executable, "-m", "compileall", "-q", "app", "tools", "migrations"],
-        [sys.executable, "-m", "pytest", "-q"],
+        [sys.executable, "-m", "ruff", "check", "app", "tests", "tools", "migrations"],
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "-q",
+            "--cov=hcam",
+            "--cov-report=term-missing",
+            "--cov-fail-under=90",
+        ],
+        [sys.executable, "-m", "pip", "check"],
+        [sys.executable, "-m", "pip_audit", "--skip-editable"],
         ["git", "diff", "--check"],
     ]
     for command in commands:
@@ -290,6 +397,82 @@ def run_validation_commands() -> CheckResult:
             if failure:
                 failures.append(failure)
 
+        for arguments in (["downgrade", "base"], ["upgrade", "head"], ["check"]):
+            command = [sys.executable, "-m", "alembic", *arguments]
+            command_evidence, failure = _run(command, env=migration_env)
+            evidence.append(command_evidence)
+            if failure:
+                failures.append(failure)
+
+    with tempfile.TemporaryDirectory(prefix="hcam-build-") as temp_dir:
+        artifact_dir = Path(temp_dir) / "dist"
+        command = [
+            sys.executable,
+            "-m",
+            "build",
+            "--outdir",
+            str(artifact_dir),
+        ]
+        command_evidence, failure = _run(command)
+        evidence.append(command_evidence)
+        if failure:
+            failures.append(failure)
+        else:
+            wheels = sorted(artifact_dir.glob("*.whl"))
+            source_distributions = sorted(artifact_dir.glob("*.tar.gz"))
+            if len(wheels) != 1 or len(source_distributions) != 1:
+                failures.append("build did not produce exactly one wheel and one sdist")
+            else:
+                with tarfile.open(source_distributions[0], mode="r:gz") as archive:
+                    source_names = archive.getnames()
+                required_source_suffixes = [
+                    "/alembic.ini",
+                    "/migrations/env.py",
+                    "/migrations/versions/0003_camera_integrity.py",
+                    "/docs/phase-1/build-and-test.md",
+                    "/tests/fixtures/camera-registry-seed.json",
+                ]
+                missing_source_files = [
+                    suffix
+                    for suffix in required_source_suffixes
+                    if not any(name.endswith(suffix) for name in source_names)
+                ]
+                if missing_source_files:
+                    failures.append(
+                        "source distribution is missing: "
+                        + ", ".join(missing_source_files)
+                    )
+                install_dir = Path(temp_dir) / "installed"
+                install_command = [
+                    sys.executable,
+                    "-m",
+                    "pip",
+                    "install",
+                    "--no-deps",
+                    "--target",
+                    str(install_dir),
+                    str(wheels[0]),
+                ]
+                command_evidence, failure = _run(install_command)
+                evidence.append(command_evidence)
+                if failure:
+                    failures.append(failure)
+                smoke_env = {**os.environ, "PYTHONPATH": str(install_dir)}
+                smoke_command = [
+                    sys.executable,
+                    "-c",
+                    "from importlib.metadata import version; "
+                    "from pathlib import Path; import hcam; "
+                    "from hcam.main import create_app; "
+                    "assert version('hcam-core') == '0.1.0'; "
+                    "assert create_app().version == '0.1.0'; "
+                    f"assert Path(hcam.__file__).resolve().is_relative_to(Path(r'{install_dir}').resolve())",
+                ]
+                command_evidence, failure = _run(smoke_command, env=smoke_env)
+                evidence.append(command_evidence)
+                if failure:
+                    failures.append(failure)
+
     if failures:
         return CheckResult("validation_commands", FAIL, "; ".join(failures), evidence)
     return CheckResult(
@@ -304,8 +487,10 @@ def build_readiness_report(run_validation: bool = False) -> ReadinessReport:
     checks = [
         check_required_files(),
         check_api_and_security_contracts(),
+        check_database_integrity_contracts(),
         check_safety_documentation(),
         check_owner_review_packet(),
+        check_build_quality_contracts(),
         check_acceptance_gate(),
     ]
     if run_validation:

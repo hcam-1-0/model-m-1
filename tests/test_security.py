@@ -47,6 +47,17 @@ def test_local_development_auth_is_forbidden_in_production(tmp_path: Path) -> No
         )
 
 
+def test_automatic_schema_creation_is_forbidden_in_production(tmp_path: Path) -> None:
+    with pytest.raises(RuntimeError, match="schema creation is forbidden"):
+        create_app(
+            Settings(
+                database_url=f"sqlite:///{(tmp_path / 'production.db').as_posix()}",
+                create_schema=True,
+                environment="production",
+            )
+        )
+
+
 def test_department_scope_filters_and_hides_records(imported_app) -> None:
     scoped_headers = {
         "X-HCAM-Actor": "traffic-viewer",
@@ -63,6 +74,21 @@ def test_department_scope_filters_and_hides_records(imported_app) -> None:
     assert camera_list.json()["total"] == 1
     assert camera_list.json()["items"][0]["camera_id"] == "synthetic:cctv-001"
     assert hidden_detail.status_code == 404
+
+
+def test_scoped_viewer_without_departments_sees_no_registry_records(
+    imported_app,
+) -> None:
+    headers = {
+        "X-HCAM-Actor": "unassigned-viewer",
+        "X-HCAM-Roles": "camera.viewer",
+    }
+    with TestClient(imported_app) as client:
+        response = client.get("/cameras", headers=headers)
+
+    assert response.status_code == 200
+    assert response.json()["total"] == 0
+    assert response.json()["items"] == []
 
 
 def test_invalid_local_department_scope_is_rejected(app) -> None:

@@ -12,8 +12,12 @@ permissions:
 
 jobs:
   python-tests:
-    name: Backend and offline checks
+    name: Backend checks (Python ${{ matrix.python-version }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13", "3.14"]
 
     steps:
       - name: Check out repository
@@ -22,13 +26,17 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: "3.12"
+          python-version: ${{ matrix.python-version }}
+          cache: pip
 
       - name: Install backend and test dependencies
         run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
 
       - name: Compile Python sources
         run: python -m compileall -q app tools migrations
+
+      - name: Run static bug checks
+        run: ruff check app tests tools migrations
 
       - name: Preserve Phase 0 compile check
         run: python -m py_compile tools/sentinel_cctv_probe.py tools/phase0_readiness.py
@@ -39,10 +47,45 @@ jobs:
         run: alembic upgrade head
 
       - name: Run backend and offline tests
-        run: pytest
+        run: pytest --cov=hcam --cov-report=term-missing --cov-fail-under=90
+
+      - name: Verify installed dependencies
+        run: python -m pip check
+
+      - name: Audit installed dependencies
+        if: matrix.python-version == '3.12'
+        run: pip-audit --skip-editable
 
       - name: Verify Phase 1 evidence
         run: python tools/phase1_readiness.py
 
       - name: Preserve Phase 0 unittest check
+        if: matrix.python-version == '3.12'
         run: python -m unittest discover -s tests -v
+
+  package-build:
+    name: Build and install package artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install build frontend
+        run: python -m pip install --upgrade pip build
+
+      - name: Build wheel and source distribution
+        run: python -m build
+
+      - name: Install wheel in an isolated environment
+        run: |
+          python -m venv "$RUNNER_TEMP/hcam-artifact"
+          "$RUNNER_TEMP/hcam-artifact/bin/python" -m pip install dist/*.whl
+          "$RUNNER_TEMP/hcam-artifact/bin/python" -c "from importlib.metadata import version; from hcam.main import create_app; assert version('hcam-core') == '0.1.0'; assert create_app().version == '0.1.0'"
+          "$RUNNER_TEMP/hcam-artifact/bin/hcam" --help

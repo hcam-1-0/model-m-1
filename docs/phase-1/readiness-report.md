@@ -42,9 +42,11 @@ Owner decision packet: [owner-review.md](owner-review.md).
 | Read and management APIs | `app/hcam/camera_registry/routes.py` |
 | Bulk API import | `app/hcam/camera_registry/import_routes.py` |
 | Identity and role boundary | `app/hcam/security/auth.py` |
+| Request and cache controls | `app/hcam/security/request_limits.py` |
 | Audit foundation | `app/hcam/audit/` |
 | Automated tests | `tests/` |
 | CI | `.github/workflows/python-ci.yml` |
+| Build and quality | `docs/phase-1/build-and-test.md`, `pyproject.toml`, `MANIFEST.in` |
 | Safety and operations | `docs/phase-1/README.md`, `security-and-management.md` |
 | Owner decision | `docs/phase-1/owner-review.md`, GitHub issue #20 |
 
@@ -53,3 +55,22 @@ Owner decision packet: [owner-review.md](owner-review.md).
 Phase 1 does not authorize or implement production video ingestion, recording,
 AI inference, biometrics, real watchlists, Government database access, or a
 production identity provider. These remain separate gated capabilities.
+
+## Hardening Validation
+
+The current Phase 1 hardening set adds migration-head verification, database
+integrity constraints, total stream-reference sanitization, bounded request
+bodies, no-store registry responses, audited failure/no-op behavior, package
+artifact checks, and Python 3.12 through 3.14 CI coverage.
+
+Local validation on Python 3.14 and an independent clean Python 3.13
+environment passes 104 tests and 119 subtests with more than 91% branch-aware
+`hcam` package coverage. The full verifier also builds one wheel and one source
+distribution, installs the wheel outside the source package path, and completes
+an Alembic upgrade, drift check, downgrade, re-upgrade, and final drift check.
+
+An existing revision `0002` database upgraded to `0003` with all 33 camera
+records preserved and all five integrity constraints present. A real Uvicorn
+smoke test returned readiness `200`, listed two synthetic cameras with
+`Cache-Control: no-store`, created a camera with a sanitized RTSP reference,
+and rejected a no-op patch with `422`; the listener was then stopped.

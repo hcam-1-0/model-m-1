@@ -14,8 +14,11 @@ def test_camera_list_and_detail_return_normalized_records(
         )
 
     assert list_response.status_code == 200
+    assert list_response.headers["cache-control"] == "no-store"
+    assert "Authorization" in list_response.headers["vary"]
     assert list_response.json()["total"] == 2
     assert detail_response.status_code == 200
+    assert detail_response.headers["cache-control"] == "no-store"
     camera = detail_response.json()
     assert camera["camera_id"] == "synthetic:cctv-001"
     assert camera["version"] == 1
@@ -81,5 +84,6 @@ def test_missing_camera_and_invalid_pagination_are_clear(
         )
 
     assert missing.status_code == 404
+    assert missing.headers["cache-control"] == "no-store"
     assert missing.json() == {"detail": "Camera not found"}
     assert invalid_limit.status_code == 422

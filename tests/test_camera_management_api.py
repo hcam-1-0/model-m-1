@@ -72,6 +72,33 @@ def test_viewer_cannot_create_camera(app, viewer_headers: dict[str, str]) -> Non
     assert response.status_code == 403
 
 
+def test_scoped_editor_create_outside_department_is_rejected_and_audited(
+    app,
+) -> None:
+    headers = {
+        "X-HCAM-Actor": "traffic-editor",
+        "X-HCAM-Roles": "camera.editor",
+        "X-HCAM-Departments": "traffic",
+        "X-HCAM-Reason": "Test controlled department boundary",
+    }
+    payload = camera_payload()
+    payload["department"] = "operations"
+
+    with TestClient(app) as client:
+        response = client.post("/cameras", json=payload, headers=headers)
+
+    assert response.status_code == 403
+    with app.state.database.session_factory() as session:
+        event = session.scalars(
+            select(AuditEvent).where(
+                AuditEvent.action == "camera_registry.camera.create",
+                AuditEvent.outcome == "failure",
+            )
+        ).one()
+    assert event.actor_id == "traffic-editor"
+    assert event.context == {"error_type": "CameraAccessError"}
+
+
 def test_write_reason_cannot_be_blank(app, editor_headers: dict[str, str]) -> None:
     headers = {**editor_headers, "X-HCAM-Reason": "        "}
     with TestClient(app) as client:
@@ -215,3 +242,75 @@ def test_empty_nested_patch_and_weak_etag_are_rejected(
 
     assert empty_patch.status_code == 422
     assert weak_etag.status_code == 400
+
+
+def test_malformed_stream_reference_is_discarded_without_server_error(
+    app, editor_headers: dict[str, str]
+) -> None:
+    payload = camera_payload()
+    payload["camera_id"] = "manual:camera-malformed"
+    payload["external_id"] = "camera-malformed"
+    payload["stream"]["selected_url"] = "http://example.invalid:bad/live"
+
+    with TestClient(app) as client:
+        response = client.post("/cameras", json=payload, headers=editor_headers)
+
+    assert response.status_code == 201
+    assert response.json()["stream"]["selected_url"] is None
+
+
+def test_oversized_stream_reference_is_rejected(
+    app, editor_headers: dict[str, str]
+) -> None:
+    payload = camera_payload()
+    payload["camera_id"] = "manual:camera-oversized"
+    payload["external_id"] = "camera-oversized"
+    payload["stream"]["selected_url"] = "x" * 4097
+
+    with TestClient(app) as client:
+        response = client.post("/cameras", json=payload, headers=editor_headers)
+
+    assert response.status_code == 422
+
+
+def test_missing_and_no_op_updates_are_rejected_and_audited(
+    imported_app, editor_headers: dict[str, str]
+) -> None:
+    with TestClient(imported_app) as client:
+        missing = client.patch(
+            "/cameras/synthetic:missing",
+            json={"display_name": "Missing Camera"},
+            headers={**editor_headers, "If-Match": '"1"'},
+        )
+        no_op = client.patch(
+            "/cameras/synthetic:cctv-001",
+            json={"display_name": "Synthetic Junction Camera"},
+            headers={**editor_headers, "If-Match": '"1"'},
+        )
+        current = client.get(
+            "/cameras/synthetic:cctv-001",
+            headers={
+                "X-HCAM-Actor": "test-viewer",
+                "X-HCAM-Roles": "camera.viewer",
+                "X-HCAM-Departments": "*",
+            },
+        )
+
+    assert missing.status_code == 404
+    assert no_op.status_code == 422
+    assert no_op.json() == {"detail": "Camera update does not change registry data"}
+    assert current.json()["version"] == 1
+
+    with imported_app.state.database.session_factory() as session:
+        failures = session.scalars(
+            select(AuditEvent)
+            .where(
+                AuditEvent.action == "camera_registry.camera.update",
+                AuditEvent.outcome == "failure",
+            )
+            .order_by(AuditEvent.occurred_at)
+        ).all()
+    assert [event.context["error_type"] for event in failures] == [
+        "CameraNotFoundError",
+        "CameraValidationError",
+    ]

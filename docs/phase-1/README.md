@@ -25,6 +25,8 @@ backlog. It does not claim the complete CCTV integration or analytics platform.
 - ETag-based optimistic concurrency for camera updates
 - liveness and database/schema readiness checks
 - synthetic fixtures and automated tests
+- Python package build, isolated installation, coverage, lint, and dependency
+  audit gates
 
 ## Safety Boundary
 
@@ -101,6 +103,9 @@ Invoke-RestMethod -Uri "http://127.0.0.1:8000/cameras" -Headers $headers
 These headers are not production credentials. The application rejects local
 development authentication in production mode. See
 [security-and-management.md](security-and-management.md).
+
+Build and quality commands are defined in
+[build-and-test.md](build-and-test.md).
 
 ## Camera API
 

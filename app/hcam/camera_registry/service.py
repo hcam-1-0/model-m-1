@@ -40,6 +40,33 @@ class CameraValidationError(RuntimeError):
     pass
 
 
+CAMERA_EDITABLE_MODEL_FIELDS = (
+    "display_name",
+    "location_label",
+    "timezone_name",
+    "latitude",
+    "longitude",
+    "department",
+    "ownership",
+    "camera_type",
+    "connectivity_status",
+    "storage_status",
+    "health_status",
+    "maintenance_status",
+    "metadata_status",
+    "operational_status",
+    "stream_path",
+    "hls_path",
+    "selected_url",
+    "delivery_type",
+    "codec",
+    "container",
+    "duration_seconds",
+    "reachability",
+    "last_checked_at",
+)
+
+
 def _stream_values(stream: StreamSeed) -> dict[str, Any]:
     selected_url = stream.selected_url or stream.hls_url or stream.stream_url
     return {
@@ -160,10 +187,22 @@ class CameraService:
                 if camera.version_id != expected_version:
                     raise CameraPreconditionError("Camera version does not match")
 
+                previous_values = {
+                    field: getattr(camera, field)
+                    for field in CAMERA_EDITABLE_MODEL_FIELDS
+                }
                 changed_fields = self._apply_patch(camera, payload)
                 if not principal.can_access_department(camera.department):
                     raise CameraAccessError(
                         "Updated camera department is outside the actor scope"
+                    )
+                current_values = {
+                    field: getattr(camera, field)
+                    for field in CAMERA_EDITABLE_MODEL_FIELDS
+                }
+                if previous_values == current_values:
+                    raise CameraValidationError(
+                        "Camera update does not change registry data"
                     )
 
                 camera.updated_at = utc_now()

@@ -111,6 +111,12 @@ This sanitization is not a secret vault. Future production adapters must store
 credentials in a dedicated secret manager and reference them by opaque secret
 ID rather than embedding credentials in registry URLs.
 
+Successful registry responses use `Cache-Control: no-store` and vary on identity
+headers so camera metadata is not retained or mixed by HTTP caches. Request
+bodies are capped at 8 MiB by default, including streamed bodies without a
+`Content-Length` header. Override the cap only with a positive
+`HCAM_MAX_REQUEST_BODY_BYTES` value and a documented deployment reason.
+
 ## Production Identity Requirements
 
 Before production use, replace the local authenticator with an approved OpenID
