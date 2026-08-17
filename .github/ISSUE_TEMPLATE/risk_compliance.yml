@@ -1,0 +1,66 @@
+name: Risk Or Compliance Item
+description: Track security, privacy, compliance, audit, or operational risk.
+title: "[Risk]: "
+labels:
+  - risk
+  - compliance
+body:
+  - type: dropdown
+    id: risk_class
+    attributes:
+      label: Risk Class
+      options:
+        - Security
+        - Privacy
+        - Legal or authorization
+        - Data retention
+        - Auditability
+        - Operational reliability
+        - Model safety
+        - Deployment readiness
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Critical
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+  - type: textarea
+    id: risk
+    attributes:
+      label: Risk Statement
+      description: Describe the risk and the failure mode.
+    validations:
+      required: true
+  - type: textarea
+    id: data_involved
+    attributes:
+      label: Data Involved
+      description: Identify any CCTV video, metadata, government data, police records, PII, credentials, generated fixtures, or synthetic data.
+    validations:
+      required: true
+  - type: textarea
+    id: controls
+    attributes:
+      label: Required Controls
+      description: Define access, audit, encryption, retention, approval, masking, testing, or review controls.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation Evidence
+      description: Describe how the control will be proven.
+    validations:
+      required: true
+  - type: textarea
+    id: owner
+    attributes:
+      label: Owner And Follow-up
+      description: Name the owner, expected resolution, and linked work items.

@@ -39,6 +39,7 @@ are explicit.
 | [Phase 1 Backlog](phase-1-backlog.md) | Implementation backlog for the first backend foundation | Started |
 | [Review Questions](review-questions.md) | Questions to answer before coding Phase 1 | Started |
 | [CCTV Environment](cctv-environment.md) | Sentinel reference environment and probe workflow | Implemented |
+| [Team Workflow](team-workflow.md) | Six-person GitHub workflow, PR rules, issue templates, and safety gates | Started |
 
 ## Current Build Artifacts
 
@@ -47,6 +48,10 @@ are explicit.
 - `fixtures/sentinel/`: local ignored snapshot output location.
 - `tests/`: offline regression tests for probe behavior and Phase 0 docs.
 - `.github/workflows/python-ci.yml`: CI gate for Python compile and unit tests.
+- `.github/ISSUE_TEMPLATE/`: issue forms for phase tasks, decisions, risks, and
+  review questions.
+- `.github/PULL_REQUEST_TEMPLATE.md`: PR review baseline for scope, safety, and
+  validation evidence.
 
 ## Phase 0 Commands
 
@@ -71,3 +76,4 @@ Before coding Phase 1, review:
 - [Decision Records](decision-records.md)
 - [Phase 1 Backlog](phase-1-backlog.md)
 - [Review Questions](review-questions.md)
+- [Team Workflow](team-workflow.md)

@@ -20,6 +20,7 @@ REQUIRED_DOCS = [
     "phase-1-backlog.md",
     "review-questions.md",
     "cctv-environment.md",
+    "team-workflow.md",
 ]
 
 
@@ -36,6 +37,7 @@ REQUIRED_README_LINKS = [
     "phase-1-backlog.md",
     "review-questions.md",
     "cctv-environment.md",
+    "team-workflow.md",
 ]
 
 
@@ -97,6 +99,19 @@ class Phase0DocsTests(unittest.TestCase):
         for item in required_items:
             with self.subTest(item=item):
                 self.assertIn(item, backlog)
+
+    def test_team_workflow_preserves_phase0_gate(self):
+        workflow = (PHASE0 / "team-workflow.md").read_text(encoding="utf-8")
+        required_terms = [
+            "No direct pushes to `main`",
+            "Do not start Phase 1 product implementation",
+            "six-person H-CAM team",
+            "CCTV video",
+            "Discuss anywhere, decide in a durable document, implement through GitHub",
+        ]
+        for term in required_terms:
+            with self.subTest(term=term):
+                self.assertIn(term, workflow)
 
 
 if __name__ == "__main__":
