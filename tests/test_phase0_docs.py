@@ -145,7 +145,7 @@ class Phase0DocsTests(unittest.TestCase):
             "Manual Gates",
             "Approve, revise, or reject",
             "continue to next phase",
-            "Phase 1 starts only after manual review",
+            "Phase 1 starts only after owner review",
         ]
         for term in required_terms:
             with self.subTest(term=term):

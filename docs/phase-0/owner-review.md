@@ -26,6 +26,15 @@ Decision notes:
 
 ```
 
+Engineering recommendation, not owner approval:
+
+- Accept the Phase 0 foundation.
+- Accept DR-0004: use one repository while preserving explicit module and
+  service boundaries.
+- Accept DR-0005: use Python/FastAPI for the Phase 1 camera-registry backend.
+- Keep production CCTV, Government databases, real watchlists, biometrics, and
+  sensitive records blocked until separately authorized.
+
 ## Required Review Documents
 
 | Document | Review Question | Outcome |
@@ -46,15 +55,15 @@ Decision notes:
 
 ## Manual Gates
 
-These gates are still open until the project owner or official challenge
-materials provide an answer.
+Two owner decisions and the final Phase 1 entry gate remain open. The official
+constraints gate is closed.
 
 Live tracking:
 
-- Owner review: https://github.com/mayankthakor227/h-cam-2.0/issues/10
-- Official constraints: https://github.com/mayankthakor227/h-cam-2.0/issues/11
-- Phase 1 decision approval: https://github.com/mayankthakor227/h-cam-2.0/issues/12
-- Phase 1 entry authorization: https://github.com/mayankthakor227/h-cam-2.0/issues/13
+- Owner review (open): https://github.com/mayankthakor227/h-cam-2.0/issues/10
+- Official constraints (closed): https://github.com/mayankthakor227/h-cam-2.0/issues/11
+- Phase 1 decision approval (open): https://github.com/mayankthakor227/h-cam-2.0/issues/12
+- Phase 1 entry authorization (open): https://github.com/mayankthakor227/h-cam-2.0/issues/13
 
 ### 1. Review Phase 0 Docs With Project Owner
 
@@ -71,9 +80,9 @@ Approval evidence:
 
 ### 2. Confirm Official Challenge Constraints And Dataset Rules
 
-Status: satisfied for Phase 0 planning from the official public portal on
-2026-08-18. Sensitive integrations remain blocked pending separate access and
-handling authorization.
+Status: closed through PR #15 after official public portal intake on 2026-08-18.
+Sensitive integrations remain blocked pending separate access and handling
+authorization.
 
 Required action:
 
@@ -136,5 +145,5 @@ Approval evidence:
 ## Phase Movement Statement
 
 Passing tests means the repository is ready for review. It does not mean Phase 1
-is approved. Phase 1 starts only after manual review, official constraints, and
-decision approval are complete.
+is approved. Phase 1 starts only after owner review, decision approval, and an
+explicit phase-movement instruction are complete.

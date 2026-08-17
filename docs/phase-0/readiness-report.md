@@ -9,6 +9,9 @@ Phase 0 is ready for owner review from an automated engineering perspective.
 It is not approved for Phase 1 product implementation until the remaining
 manual gates are answered.
 
+Official-source intake is complete. The remaining gates are owner decisions,
+not missing automated engineering work.
+
 Automated readiness means:
 
 - Phase 0 product, requirements, architecture, governance, validation, roadmap,
@@ -96,4 +99,6 @@ authorization and policy.
 
 Do not treat this report or a passing readiness command as approval to begin
 Phase 1. A passing command proves repository readiness. Phase movement still
-requires project-owner review and official dataset/authorization confirmation.
+requires project-owner review, approval of the proposed Phase 1 decisions, and
+an explicit instruction to continue to the next phase. Sensitive integrations
+also require separate access and handling authorization.
