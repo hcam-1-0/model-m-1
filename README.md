@@ -1,6 +1,25 @@
 # h-cam-2.0
 mayank repo of h cam experiment
 
+## Phase 1 camera registry backend
+
+Phase 1 begins with the normalized camera registry, stream-state contract,
+health endpoints, local SQLite database, migration, and import audit trail.
+
+Start here: [docs/phase-1/README.md](docs/phase-1/README.md)
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python -m pip install -e ".[dev]"
+$env:HCAM_DATABASE_URL = "sqlite:///./var/hcam.db"
+.\.venv\Scripts\alembic upgrade head
+.\.venv\Scripts\hcam import-registry tests/fixtures/camera-registry-seed.json
+.\.venv\Scripts\python -m uvicorn hcam.main:app --reload
+```
+
+The synthetic seed above is for local development only. OpenAPI is available
+at `http://127.0.0.1:8000/docs` after startup.
+
 ## Phase 0 foundation
 
 Phase 0 defines the H-CAM product baseline, requirements, architecture,
@@ -38,4 +57,4 @@ See [docs/phase-0/cctv-environment.md](docs/phase-0/cctv-environment.md) for
 the observed API shape, safety rules, and test workflow.
 
 See [docs/phase-0/readiness-report.md](docs/phase-0/readiness-report.md) for
-the automated Phase 0 evidence map and remaining manual approval gates.
+the completed Phase 0 evidence map.
