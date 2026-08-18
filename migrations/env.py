@@ -9,6 +9,7 @@ from hcam.audit import models as _audit_models  # noqa: F401
 from hcam.camera_registry import models as _camera_models  # noqa: F401
 from hcam.database import Base, ensure_sqlite_parent
 from hcam.settings import database_url_from_environment
+from hcam.streams import models as _stream_models  # noqa: F401
 
 
 config = context.config

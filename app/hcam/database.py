@@ -12,7 +12,7 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 from sqlalchemy.types import TypeDecorator
 
 
-CURRENT_SCHEMA_REVISION = "0003_camera_integrity"
+CURRENT_SCHEMA_REVISION = "0004_stream_management"
 REQUIRED_CAMERA_COLUMNS = frozenset(
     {
         "camera_id",
@@ -40,6 +40,19 @@ REQUIRED_AUDIT_COLUMNS = frozenset(
         "reason",
         "outcome",
         "context",
+    }
+)
+REQUIRED_STREAM_COLUMNS = frozenset(
+    {
+        "stream_id",
+        "camera_id",
+        "version_id",
+        "adapter_kind",
+        "protocol",
+        "locator",
+        "is_primary",
+        "probe_due_at",
+        "lease_until",
     }
 )
 
@@ -138,11 +151,29 @@ class Database:
                 if "audit_events" in table_names
                 else set()
             )
-        required_tables = {"cameras", "audit_events"}
+            stream_columns = (
+                {column["name"] for column in inspector.get_columns("stream_endpoints")}
+                if "stream_endpoints" in table_names
+                else set()
+            )
+        required_tables = {
+            "cameras",
+            "audit_events",
+            "stream_endpoints",
+            "stream_health_current",
+            "stream_probe_runs",
+            "stream_event_outbox",
+        }
         missing_tables = required_tables - table_names
         missing_columns = REQUIRED_CAMERA_COLUMNS - camera_columns
         missing_audit_columns = REQUIRED_AUDIT_COLUMNS - audit_columns
-        if missing_tables or missing_columns or missing_audit_columns:
+        missing_stream_columns = REQUIRED_STREAM_COLUMNS - stream_columns
+        if (
+            missing_tables
+            or missing_columns
+            or missing_audit_columns
+            or missing_stream_columns
+        ):
             raise DatabaseNotReadyError("database migrations are not current")
         if self.allow_unversioned_schema:
             return
