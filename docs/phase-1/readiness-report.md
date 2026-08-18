@@ -1,6 +1,6 @@
 # Phase 1 Readiness Report
 
-Current status: `ready_for_owner_review`.
+Current status: `complete`.
 
 Automated evidence is produced by:
 
@@ -8,16 +8,17 @@ Automated evidence is produced by:
 python tools/phase1_readiness.py --run-validation
 ```
 
-Expected result before owner review:
+Current result after owner acceptance:
 
 - automated failures: `0`
-- manual gates: `1`
-- status: `ready_for_owner_review`
+- manual gates: `0`
+- status: `complete`
 
-The remaining gate is explicit project-owner acceptance of Phase 1 and
-authorization to plan Phase 2. Passing tests cannot close that gate.
+The project owner supplied the exact acceptance statement on 2026-08-18. The
+previous `ready_for_owner_review` state is therefore complete and Phase 2
+planning is authorized under the unchanged safety boundaries.
 
-Manual gate: [GitHub issue #20](https://github.com/mayankthakor227/h-cam-2.0/issues/20).
+Manual gate record: [GitHub issue #20](https://github.com/mayankthakor227/h-cam-2.0/issues/20).
 Owner decision packet: [owner-review.md](owner-review.md).
 
 ## Published Evidence
@@ -29,8 +30,8 @@ Owner decision packet: [owner-review.md](owner-review.md).
   passed.
 - The [post-merge `main` validation run](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32078165287)
   passed against that merge commit.
-- The owner gate remains open; published engineering evidence does not imply
-  owner acceptance.
+- The owner accepted Phase 1 on 2026-08-18 using the exact decision statement
+  in the owner-review packet.
 - Operational hardening and its cross-platform evidence are published in
   [PR #24](https://github.com/mayankthakor227/h-cam-2.0/pull/24).
 - Deployment and resilience evidence is published in
