@@ -29,7 +29,11 @@ See [Phase 1 build and test](docs/phase-1/build-and-test.md) for the interpreter
 matrix, coverage, lint, migration, dependency-audit, and artifact checks.
 See [Phase 1 operations and observability](docs/phase-1/operations-and-observability.md)
 for request IDs, metadata-only access events, SQLite backup/recovery,
-PostgreSQL integration, and the synthetic performance smoke.
+PostgreSQL integration, protected Prometheus metrics, synthetic performance,
+and concurrent load smokes. See
+[Phase 1 service objectives](docs/phase-1/service-objectives.md) for metric
+labels, regression objectives, and the Grafana dashboard, and
+[deployment validation](deploy/README.md) for the non-root container stack.
 
 Local SQLite recovery commands never overwrite existing files:
 
@@ -37,6 +41,7 @@ Local SQLite recovery commands never overwrite existing files:
 .\.venv\Scripts\hcam backup-database .\backups\hcam-phase1.db
 .\.venv\Scripts\hcam verify-backup .\backups\hcam-phase1.db
 .\.venv\Scripts\hcam restore-backup .\backups\hcam-phase1.db .\var\hcam-restored.db
+.\.venv\Scripts\hcam recovery-drill .\backups\drill-001
 ```
 
 ## Phase 0 foundation

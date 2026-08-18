@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import logging
 import re
+from typing import Protocol
 from time import perf_counter
 from uuid import uuid4
 
@@ -15,6 +16,17 @@ REQUEST_ID_HEADER = "X-Request-ID"
 _REQUEST_ID_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$")
 _ACCESS_LOGGER = logging.getLogger("hcam.access")
 _ERROR_LOGGER = logging.getLogger("hcam.error")
+
+
+class MetricsRecorder(Protocol):
+    def observe(
+        self,
+        *,
+        method: str,
+        route: str,
+        status_code: int,
+        duration_seconds: float,
+    ) -> None: ...
 
 
 def _incoming_request_id(scope: Scope) -> str | None:
@@ -40,9 +52,16 @@ def request_id_from_scope(scope: Scope) -> str | None:
 class RequestContextMiddleware:
     """Attach a request ID and emit metadata-only structured access events."""
 
-    def __init__(self, app: ASGIApp, *, access_log_enabled: bool = True) -> None:
+    def __init__(
+        self,
+        app: ASGIApp,
+        *,
+        access_log_enabled: bool = True,
+        metrics_recorder: MetricsRecorder | None = None,
+    ) -> None:
         self.app = app
         self.access_log_enabled = access_log_enabled
+        self.metrics_recorder = metrics_recorder
 
     async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
         if scope["type"] != "http":
@@ -85,11 +104,19 @@ class RequestContextMiddleware:
             )
             await response(scope, receive, correlated_send)
         finally:
+            elapsed_seconds = perf_counter() - started
+            route = scope.get("route")
+            route_template = getattr(route, "path", "<unmatched>")
+            if self.metrics_recorder is not None:
+                self.metrics_recorder.observe(
+                    method=scope.get("method", "UNKNOWN"),
+                    route=route_template,
+                    status_code=response_status,
+                    duration_seconds=elapsed_seconds,
+                )
             if self.access_log_enabled:
-                route = scope.get("route")
-                route_template = getattr(route, "path", "<unmatched>")
                 event = {
-                    "duration_ms": round((perf_counter() - started) * 1000, 3),
+                    "duration_ms": round(elapsed_seconds * 1000, 3),
                     "event": "http.request.completed",
                     "method": scope.get("method", "UNKNOWN"),
                     "request_id": request_id,

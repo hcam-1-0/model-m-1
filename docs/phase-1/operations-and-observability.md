@@ -4,6 +4,19 @@ This document defines the operational controls added to the local camera
 registry foundation. They handle metadata only and do not authorize live CCTV,
 video storage, Government data, or production deployment.
 
+## File-Mounted Secrets
+
+`HCAM_DATABASE_URL_FILE` supplies the database URL from a UTF-8, single-value
+file. It is mutually exclusive with `HCAM_DATABASE_URL`. Production environment
+loading fails when neither is explicitly provided. `HCAM_METRICS_TOKEN_FILE`
+is the only environment-loading path for the internal scrape credential.
+
+Secret files are limited to 16 KiB and reject empty, multiline, NUL-containing,
+or invalid UTF-8 content. Database URLs and metrics tokens are excluded from
+the settings representation. File mounting limits accidental environment and
+repository exposure; an approved deployment must still provide a secret
+manager, access policy, encryption, rotation, revocation, and audit.
+
 ## Request Correlation
 
 Every HTTP response includes `X-Request-ID`.
@@ -118,12 +131,61 @@ claim, or evidence for city-scale deployment. Production performance criteria
 require approved hardware, realistic metadata volumes, concurrent workloads,
 PostgreSQL tuning, and a separately reviewed test plan.
 
+## Concurrent Loopback Load Smoke
+
+Run the bounded concurrent test:
+
+```powershell
+python tools/phase1_load.py --cameras 1000 --requests 400 --concurrency 16 --json
+```
+
+The tool starts a real Uvicorn server on an ephemeral loopback port, imports
+generated metadata into a temporary SQLite database, and mixes list and detail
+requests through 16 worker threads. CI permits no request errors and requires
+aggregate p95 latency below 1,500 milliseconds. It closes the listener,
+database, temporary directory, and worker thread after the run.
+
+This is a bounded concurrency regression check. It uses no external network,
+video, Government data, or durable output and is not evidence of production
+throughput, write contention, PostgreSQL sizing, or city-scale capacity.
+
 ## Recovery Exercise
 
 The automated suite creates a migrated database, imports the two-camera
 synthetic fixture, creates and verifies a backup, restores it to a new path,
 checks record counts, and runs application readiness against the restored file.
-It also verifies backup/manifest mismatch detection and overwrite refusal. A
-real deployment must add scheduled restore drills, recovery-time and
-recovery-point objectives,
-off-device copies, encryption, and operator approval records.
+It also verifies backup/manifest mismatch detection and overwrite refusal.
+
+Run an operator-visible drill against the configured SQLite database:
+
+```powershell
+hcam recovery-drill .\backups\drill-2026-08-18 --max-recovery-seconds 60
+```
+
+The destination must not exist. The command exclusively creates backup,
+manifest, restored database, and `report.json` artifacts; then verifies the
+restored application database and records measured recovery time. On POSIX,
+the directory uses mode `0700` and files use mode `0600`; Windows operators
+must choose an ACL-restricted destination. It returns nonzero when the
+objective is missed or any operation fails. The report omits database URLs,
+absolute paths, camera records, and user information.
+
+The measured time covers one local SQLite snapshot, verification, restore, and
+readiness check. It is not a production recovery-time or recovery-point claim.
+A real deployment still requires a scheduler, off-device encrypted copies,
+retention, PostgreSQL-specific recovery, failure-domain testing, operator
+approval records, and approved RTO/RPO values.
+
+## Metrics And Deployment Validation
+
+Protected Prometheus metrics, bounded labels, dashboard queries, and objective
+limits are defined in [service-objectives.md](service-objectives.md). The
+digest-pinned non-root image and disposable PostgreSQL validation stack are
+defined in [deployment validation](../../deploy/README.md).
+
+The metrics implementation follows the official
+[Prometheus Python client](https://prometheus.github.io/client_python/) model.
+The container follows Docker's
+[non-root `USER` guidance](https://docs.docker.com/build/building/best-practices/)
+and FastAPI's
+[container deployment guidance](https://fastapi.tiangolo.com/deployment/docker/).

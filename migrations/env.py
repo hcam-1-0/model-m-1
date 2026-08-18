@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 from logging.config import fileConfig
 
 from alembic import context
@@ -9,13 +8,14 @@ from sqlalchemy import engine_from_config, pool
 from hcam.audit import models as _audit_models  # noqa: F401
 from hcam.camera_registry import models as _camera_models  # noqa: F401
 from hcam.database import Base, ensure_sqlite_parent
+from hcam.settings import database_url_from_environment
 
 
 config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name, disable_existing_loggers=False)
 
-database_url = os.getenv("HCAM_DATABASE_URL", config.get_main_option("sqlalchemy.url"))
+database_url = database_url_from_environment(config.get_main_option("sqlalchemy.url"))
 config.set_main_option("sqlalchemy.url", database_url)
 ensure_sqlite_parent(database_url)
 target_metadata = Base.metadata

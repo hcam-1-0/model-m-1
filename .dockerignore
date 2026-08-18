@@ -1,0 +1,10 @@
+**
+!Dockerfile
+!pyproject.toml
+!README.md
+!MANIFEST.in
+!alembic.ini
+!app/
+!app/**
+!migrations/
+!migrations/**

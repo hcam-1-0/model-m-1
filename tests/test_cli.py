@@ -81,3 +81,10 @@ def test_cli_backup_verify_and_restore_commands(
     assert main(["restore-backup", str(backup_path), str(restored_path)]) == 0
     restore_output = json.loads(capsys.readouterr().out)
     assert restore_output["restored"]["camera_count"] == 2
+
+    drill_path = tmp_path / "cli-recovery-drill"
+    assert main(["recovery-drill", str(drill_path)]) == 0
+    drill_output = json.loads(capsys.readouterr().out)
+    assert drill_output["schema"] == "hcam.phase1.recovery-drill.v1"
+    assert drill_output["passed"] is True
+    assert (drill_path / "report.json").is_file()

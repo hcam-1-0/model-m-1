@@ -24,12 +24,16 @@ MANUAL = "manual"
 REQUIRED_FILES = [
     "pyproject.toml",
     "MANIFEST.in",
+    "Dockerfile",
+    ".dockerignore",
     "alembic.ini",
     "app/hcam/main.py",
     "app/hcam/observability.py",
+    "app/hcam/metrics.py",
     "app/hcam/security/auth.py",
     "app/hcam/security/request_limits.py",
     "app/hcam/operations/database_backup.py",
+    "app/hcam/operations/recovery_drill.py",
     "app/hcam/camera_registry/models.py",
     "app/hcam/camera_registry/schemas.py",
     "app/hcam/camera_registry/importer.py",
@@ -44,6 +48,7 @@ REQUIRED_FILES = [
     "docs/phase-1/README.md",
     "docs/phase-1/security-and-management.md",
     "docs/phase-1/operations-and-observability.md",
+    "docs/phase-1/service-objectives.md",
     "docs/phase-1/build-and-test.md",
     "docs/phase-1/acceptance-checklist.md",
     "docs/phase-1/readiness-report.md",
@@ -59,10 +64,19 @@ REQUIRED_FILES = [
     "tests/test_package_metadata.py",
     "tests/test_request_limits.py",
     "tests/test_observability.py",
+    "tests/test_metrics.py",
     "tests/test_database_backup.py",
+    "tests/test_recovery_drill.py",
+    "tests/test_resilience.py",
     "tests/test_phase1_performance.py",
+    "tests/test_phase1_load.py",
+    "tests/test_deployment_artifacts.py",
     "tests/test_postgres_integration.py",
     "tools/phase1_performance.py",
+    "tools/phase1_load.py",
+    "deploy/README.md",
+    "deploy/compose.phase1.yaml",
+    "deploy/observability/hcam-phase1-overview.json",
 ]
 
 
@@ -315,6 +329,71 @@ def check_operational_contracts() -> CheckResult:
     )
 
 
+def check_deployment_resilience_contracts() -> CheckResult:
+    settings = _read("app/hcam/settings.py")
+    metrics = _read("app/hcam/metrics.py")
+    recovery = _read("app/hcam/operations/recovery_drill.py")
+    load = _read("tools/phase1_load.py")
+    dockerfile = _read("Dockerfile")
+    compose = _read("deploy/compose.phase1.yaml")
+    objectives = _read("docs/phase-1/service-objectives.md")
+    dashboard = _read("deploy/observability/hcam-phase1-overview.json")
+    workflow = _read(".github/workflows/python-ci.yml")
+    missing = _missing_terms(
+        "\n".join(
+            [
+                settings,
+                metrics,
+                recovery,
+                load,
+                dockerfile,
+                compose,
+                objectives,
+                dashboard,
+                workflow,
+            ]
+        ),
+        [
+            "HCAM_DATABASE_URL_FILE",
+            "database_url_from_environment",
+            "HCAM_METRICS_TOKEN_FILE",
+            "hcam_http_requests_total",
+            "hcam_http_request_duration_seconds",
+            "hcam.phase1.recovery-drill.v1",
+            "hcam.phase1.concurrent-load.v1",
+            "USER ${HCAM_UID}:${HCAM_GID}",
+            "condition: service_completed_successfully",
+            "no-new-privileges:true",
+            "hcam-phase1-overview",
+            "Non-root container and Compose validation",
+        ],
+    )
+    evidence = [
+        "app/hcam/settings.py",
+        "app/hcam/metrics.py",
+        "app/hcam/operations/recovery_drill.py",
+        "tools/phase1_load.py",
+        "Dockerfile",
+        "deploy/compose.phase1.yaml",
+        "deploy/observability/hcam-phase1-overview.json",
+        "docs/phase-1/service-objectives.md",
+        ".github/workflows/python-ci.yml",
+    ]
+    if missing:
+        return CheckResult(
+            "deployment_resilience_contracts",
+            FAIL,
+            f"missing deployment or resilience terms: {', '.join(missing)}",
+            evidence,
+        )
+    return CheckResult(
+        "deployment_resilience_contracts",
+        PASS,
+        "Secret-file configuration, metrics, recovery, load, and non-root container contracts are present.",
+        evidence,
+    )
+
+
 def check_acceptance_gate() -> CheckResult:
     path = "docs/phase-1/acceptance-checklist.md"
     content = _read(path)
@@ -388,6 +467,8 @@ def check_build_quality_contracts() -> CheckResult:
             "Install wheel in an isolated environment",
             "postgres:18-alpine",
             "phase1_performance.py",
+            "phase1_load.py",
+            "container-validation:",
             "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
             "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
         ],
@@ -457,6 +538,17 @@ def run_validation_commands() -> CheckResult:
             "100",
             "--json",
         ],
+        [
+            sys.executable,
+            "tools/phase1_load.py",
+            "--cameras",
+            "1000",
+            "--requests",
+            "400",
+            "--concurrency",
+            "16",
+            "--json",
+        ],
         ["git", "diff", "--check"],
     ]
     for command in commands:
@@ -509,8 +601,15 @@ def run_validation_commands() -> CheckResult:
                     "/migrations/versions/0003_camera_integrity.py",
                     "/docs/phase-1/build-and-test.md",
                     "/docs/phase-1/operations-and-observability.md",
+                    "/docs/phase-1/service-objectives.md",
                     "/app/hcam/operations/database_backup.py",
+                    "/app/hcam/operations/recovery_drill.py",
+                    "/app/hcam/metrics.py",
                     "/tools/phase1_performance.py",
+                    "/tools/phase1_load.py",
+                    "/Dockerfile",
+                    "/deploy/compose.phase1.yaml",
+                    "/deploy/observability/hcam-phase1-overview.json",
                     "/tests/fixtures/camera-registry-seed.json",
                 ]
                 missing_source_files = [
@@ -570,6 +669,7 @@ def build_readiness_report(run_validation: bool = False) -> ReadinessReport:
         check_api_and_security_contracts(),
         check_database_integrity_contracts(),
         check_operational_contracts(),
+        check_deployment_resilience_contracts(),
         check_safety_documentation(),
         check_owner_review_packet(),
         check_build_quality_contracts(),

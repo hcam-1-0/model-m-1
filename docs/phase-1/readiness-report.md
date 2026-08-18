@@ -33,6 +33,10 @@ Owner decision packet: [owner-review.md](owner-review.md).
   owner acceptance.
 - Operational hardening and its cross-platform evidence are published in
   [PR #24](https://github.com/mayankthakor227/h-cam-2.0/pull/24).
+- Deployment and resilience evidence is published in
+  [PR #25](https://github.com/mayankthakor227/h-cam-2.0/pull/25); its
+  [seven-job validation run](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32110322671)
+  passed, including the live non-root PostgreSQL Compose stack.
 
 ## Evidence Map
 
@@ -46,12 +50,17 @@ Owner decision packet: [owner-review.md](owner-review.md).
 | Identity and role boundary | `app/hcam/security/auth.py` |
 | Request and cache controls | `app/hcam/security/request_limits.py` |
 | Request correlation and access events | `app/hcam/observability.py` |
+| Prometheus metrics and scrape protection | `app/hcam/metrics.py`, `tests/test_metrics.py` |
 | SQLite backup and recovery | `app/hcam/operations/database_backup.py`, `tests/test_database_backup.py` |
+| Measured recovery drill | `app/hcam/operations/recovery_drill.py`, `tests/test_recovery_drill.py` |
 | Audit foundation | `app/hcam/audit/` |
 | Automated tests | `tests/` |
 | CI | `.github/workflows/python-ci.yml` |
 | Build and quality | `docs/phase-1/build-and-test.md`, `pyproject.toml`, `MANIFEST.in` |
 | PostgreSQL and performance | `tests/test_postgres_integration.py`, `tools/phase1_performance.py` |
+| Concurrent load and dependency failure | `tools/phase1_load.py`, `tests/test_resilience.py` |
+| Container deployment validation | `Dockerfile`, `deploy/compose.phase1.yaml`, `deploy/README.md` |
+| SLO dashboard and objectives | `deploy/observability/hcam-phase1-overview.json`, `service-objectives.md` |
 | Safety and operations | `docs/phase-1/README.md`, `security-and-management.md` |
 | Owner decision | `docs/phase-1/owner-review.md`, GitHub issue #20 |
 
@@ -69,8 +78,8 @@ bodies, no-store registry responses, audited failure/no-op behavior, package
 artifact checks, and Python 3.12 through 3.14 CI coverage.
 
 The earlier hardening validation passed on Python 3.14 and an independent clean
-Python 3.13 environment. The current operational suite passes 138 tests and 119
-subtests locally with 91.36% branch-aware `hcam` package coverage; its one local
+Python 3.13 environment. The current operational suite passes 166 tests and 119
+subtests locally with 91.64% branch-aware `hcam` package coverage; its one local
 skip is the PostgreSQL integration test that runs against the isolated CI
 service. The full verifier also builds one wheel and one source
 distribution, installs the wheel outside the source package path, and completes
@@ -96,3 +105,17 @@ destinations are rejected; the manifest is explicitly not treated as a digital
 signature. The PostgreSQL job is isolated in GitHub Actions and
 uses only synthetic registry metadata. Performance results are environment
 evidence and are not production capacity claims.
+
+## Deployment And Resilience Validation
+
+The extended Phase 1 evidence adds file-mounted secret handling, protected
+Prometheus metrics, a version-controlled Grafana dashboard, an actual loopback
+Uvicorn concurrency test, database-outage behavior, and a measured SQLite
+recovery drill. The deployment job builds a digest-pinned image, verifies its
+non-root user, renders the Compose model, runs PostgreSQL migrations through a
+separate one-shot service, and probes the live API and metrics endpoint.
+
+These controls prove package deployability and bounded failure behavior in a
+disposable engineering environment. They do not approve production identity,
+TLS, external network exposure, high availability, production secrets,
+production CCTV, or Government integrations.

@@ -12,3 +12,7 @@ var/
 *.db
 *.db-shm
 *.db-wal
+.env
+.env.*
+secrets/
+*.secret

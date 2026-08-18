@@ -13,6 +13,7 @@ from hcam.operations.database_backup import (
     restore_sqlite_backup,
     verify_sqlite_backup,
 )
+from hcam.operations.recovery_drill import run_sqlite_recovery_drill
 from hcam.settings import Settings
 
 
@@ -39,12 +40,23 @@ def build_parser() -> argparse.ArgumentParser:
     )
     restore_parser.add_argument("backup_file")
     restore_parser.add_argument("destination")
+    drill_parser = subparsers.add_parser(
+        "recovery-drill",
+        help="Run a measured backup, restore, and readiness drill for SQLite",
+    )
+    drill_parser.add_argument("destination")
+    drill_parser.add_argument(
+        "--max-recovery-seconds",
+        type=float,
+        default=60.0,
+    )
     return parser
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     settings = Settings.from_environment()
+    exit_code = 0
     try:
         if args.command == "import-registry":
             database = Database(settings.database_url)
@@ -68,10 +80,18 @@ def main(argv: Sequence[str] | None = None) -> int:
                 args.destination,
                 active_database_url=settings.database_url,
             ).to_dict()
+        elif args.command == "recovery-drill":
+            report = run_sqlite_recovery_drill(
+                settings.database_url,
+                args.destination,
+                max_recovery_seconds=args.max_recovery_seconds,
+            )
+            output = report.to_dict()
+            exit_code = 0 if report.passed else 1
         else:
             return 2
         print(json.dumps(output, indent=2, sort_keys=True))
-        return 0
+        return exit_code
     except (RegistryImportError, DatabaseBackupError) as exc:
         operation = (
             "registry import" if args.command == "import-registry" else args.command

@@ -1,11 +1,16 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 import pytest
+from alembic import command
+from alembic.config import Config
 from sqlalchemy import text, update
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import StaleDataError
 
 from hcam.camera_registry.models import Camera
+from hcam.database import Database
 
 
 @pytest.mark.parametrize(
@@ -53,3 +58,23 @@ def test_sqlite_connection_has_bounded_write_wait(imported_app) -> None:
         timeout_ms = connection.scalar(text("PRAGMA busy_timeout"))
 
     assert timeout_ms == 5000
+
+
+def test_alembic_uses_file_mounted_database_url(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    database_path = tmp_path / "file-mounted-migration.db"
+    database_url = f"sqlite:///{database_path.as_posix()}"
+    secret_file = tmp_path / "database-url"
+    secret_file.write_text(database_url + "\n", encoding="utf-8")
+    monkeypatch.delenv("HCAM_DATABASE_URL", raising=False)
+    monkeypatch.setenv("HCAM_DATABASE_URL_FILE", str(secret_file))
+
+    command.upgrade(Config("alembic.ini"), "head")
+
+    database = Database(database_url)
+    try:
+        database.check_ready()
+    finally:
+        database.dispose()
