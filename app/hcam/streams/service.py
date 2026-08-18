@@ -376,6 +376,12 @@ class StreamService:
                 principal, "stream.probe.queue", stream_id, reason, exc, request_id
             )
             raise
+        except StaleDataError as exc:
+            error = StreamConflictError("Stream changed while queueing the probe")
+            self._record_failure(
+                principal, "stream.probe.queue", stream_id, reason, error, request_id
+            )
+            raise error from exc
 
     def _record_failure(
         self,

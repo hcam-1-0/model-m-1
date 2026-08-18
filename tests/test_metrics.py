@@ -87,6 +87,9 @@ def test_metrics_use_bounded_route_labels_and_exclude_sensitive_values(
     body = metrics.text
     assert "hcam_http_requests_total" in body
     assert "hcam_http_request_duration_seconds_bucket" in body
+    assert "hcam_stream_health_state_total" in body
+    assert "hcam_stream_probe_due_total" in body
+    assert "hcam_stream_outbox_unpublished_total" in body
     assert 'route="/cameras/{camera_id}"' in body
     assert 'route="&lt;unmatched&gt;"' not in body
     assert 'route="<unmatched>"' in body

@@ -128,3 +128,12 @@ class ProbeQueuedResponse(BaseModel):
     stream_id: StreamId
     status: Literal["queued"] = "queued"
     probe_due_at: datetime
+
+
+class PlaybackSessionResponse(BaseModel):
+    session_id: Annotated[str, Field(pattern=r"^pbs_[0-9a-f]{32}$")]
+    stream_id: StreamId
+    playback_url: str
+    access_token: str
+    token_type: Literal["Bearer"]
+    expires_at: datetime

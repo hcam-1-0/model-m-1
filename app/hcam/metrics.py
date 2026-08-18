@@ -11,6 +11,11 @@ from prometheus_client import (
     Histogram,
     generate_latest,
 )
+from sqlalchemy import func, or_, select
+from sqlalchemy.orm import Session
+
+from hcam.camera_registry.models import utc_now
+from hcam.streams.models import StreamEndpoint, StreamEventOutbox, StreamHealthCurrent
 
 
 router = APIRouter(prefix="/internal", tags=["internal"])
@@ -41,6 +46,22 @@ class RequestMetrics:
             registry=self.registry,
         )
         self.info.labels(service=service_name, version=version).set(1)
+        self.stream_health = Gauge(
+            "hcam_stream_health_state_total",
+            "Current number of streams in each bounded health state.",
+            ("state",),
+            registry=self.registry,
+        )
+        self.stream_probe_due = Gauge(
+            "hcam_stream_probe_due_total",
+            "Current number of enabled streams due for a metadata probe.",
+            registry=self.registry,
+        )
+        self.stream_outbox_pending = Gauge(
+            "hcam_stream_outbox_unpublished_total",
+            "Current number of unpublished stream state events.",
+            registry=self.registry,
+        )
 
     def observe(
         self,
@@ -57,6 +78,44 @@ class RequestMetrics:
             status_class=status_class,
         ).inc()
         self.duration.labels(method=method, route=route).observe(duration_seconds)
+
+    def refresh_stream_metrics(self, session: Session) -> None:
+        counts = dict(
+            session.execute(
+                select(StreamHealthCurrent.state, func.count()).group_by(
+                    StreamHealthCurrent.state
+                )
+            ).all()
+        )
+        for state in (
+            "unknown",
+            "healthy",
+            "degraded",
+            "offline",
+            "unauthorized",
+            "misconfigured",
+            "unsupported",
+        ):
+            self.stream_health.labels(state=state).set(counts.get(state, 0))
+        now = utc_now()
+        due = session.scalar(
+            select(func.count())
+            .select_from(StreamEndpoint)
+            .where(
+                StreamEndpoint.enabled.is_(True),
+                or_(
+                    StreamEndpoint.probe_due_at.is_(None),
+                    StreamEndpoint.probe_due_at <= now,
+                ),
+            )
+        )
+        pending = session.scalar(
+            select(func.count())
+            .select_from(StreamEventOutbox)
+            .where(StreamEventOutbox.published_at.is_(None))
+        )
+        self.stream_probe_due.set(int(due or 0))
+        self.stream_outbox_pending.set(int(pending or 0))
 
 
 def _bearer_token(request: Request) -> str | None:
@@ -80,6 +139,8 @@ def prometheus_metrics(request: Request) -> Response:
             detail="Metrics authentication required",
             headers={"WWW-Authenticate": "Bearer"},
         )
+    with request.app.state.database.session_factory() as session:
+        request.app.state.request_metrics.refresh_stream_metrics(session)
     return Response(
         generate_latest(request.app.state.request_metrics.registry),
         media_type=CONTENT_TYPE_LATEST,

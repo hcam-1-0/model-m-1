@@ -1,6 +1,22 @@
 # h-cam-2.0
 mayank repo of h cam experiment
 
+## Phase 2 camera and video ingestion
+
+Phase 2 adds stream endpoint management, metadata-only health workers, a
+controlled ONVIF simulator, short-lived HLS authorization, and a disposable
+50-stream synthetic lab. It does not connect real CCTV or record video.
+
+Start here: [docs/phase-2/README.md](docs/phase-2/README.md)
+
+```powershell
+python tools/phase2_lab.py prepare
+python tools/phase2_lab.py config
+python tools/phase2_lab.py start
+python tools/phase2_lab.py verify --timeout 360
+python tools/phase2_lab.py stop
+```
+
 ## Phase 1 camera registry backend
 
 Phase 1 begins with the normalized camera registry, stream-state contract,

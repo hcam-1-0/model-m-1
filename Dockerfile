@@ -9,7 +9,7 @@ ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PYTHONDONTWRITEBYTECODE=1
 WORKDIR /build
 
-COPY pyproject.toml README.md MANIFEST.in ./
+COPY pyproject.toml README.md ./
 COPY app ./app
 RUN python -m pip install --no-cache-dir "build>=1.5.0,<2.0" \
     && python -m build --wheel --outdir /dist
@@ -21,7 +21,7 @@ ARG HCAM_GID=10001
 ARG VCS_REF=unknown
 
 LABEL org.opencontainers.image.title="H-CAM Core" \
-      org.opencontainers.image.description="Phase 1 camera registry foundation" \
+      org.opencontainers.image.description="Phase 2 camera and video ingestion foundation" \
       org.opencontainers.image.source="https://github.com/mayankthakor227/h-cam-2.0" \
       org.opencontainers.image.revision="${VCS_REF}"
 
@@ -31,6 +31,10 @@ ENV HCAM_ENVIRONMENT=production \
     PIP_NO_CACHE_DIR=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
+
+RUN apt-get update \
+    && apt-get install --no-install-recommends --yes ca-certificates ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd --gid "${HCAM_GID}" hcam \
     && useradd --uid "${HCAM_UID}" --gid "${HCAM_GID}" --no-log-init \

@@ -174,3 +174,23 @@ class StreamEventOutbox(Base):
     occurred_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False, index=True)
     payload: Mapped[dict[str, Any]] = mapped_column(JSON, nullable=False)
     published_at: Mapped[datetime | None] = mapped_column(UTCDateTime(), index=True)
+
+
+class PlaybackSession(Base):
+    __tablename__ = "playback_sessions"
+
+    session_id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    stream_id: Mapped[str] = mapped_column(
+        ForeignKey("stream_endpoints.stream_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    actor_id: Mapped[str] = mapped_column(String(160), nullable=False, index=True)
+    path: Mapped[str] = mapped_column(String(255), nullable=False)
+    token_jti_hash: Mapped[str] = mapped_column(String(64), nullable=False, unique=True)
+    created_at: Mapped[datetime] = mapped_column(
+        UTCDateTime(), nullable=False, default=utc_now, index=True
+    )
+    expires_at: Mapped[datetime] = mapped_column(
+        UTCDateTime(), nullable=False, index=True
+    )

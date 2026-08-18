@@ -12,7 +12,7 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 from sqlalchemy.types import TypeDecorator
 
 
-CURRENT_SCHEMA_REVISION = "0004_stream_management"
+CURRENT_SCHEMA_REVISION = "0005_playback_sessions"
 REQUIRED_CAMERA_COLUMNS = frozenset(
     {
         "camera_id",
@@ -163,6 +163,7 @@ class Database:
             "stream_health_current",
             "stream_probe_runs",
             "stream_event_outbox",
+            "playback_sessions",
         }
         missing_tables = required_tables - table_names
         missing_columns = REQUIRED_CAMERA_COLUMNS - camera_columns

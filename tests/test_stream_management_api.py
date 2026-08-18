@@ -1,10 +1,16 @@
 from __future__ import annotations
 
+from datetime import UTC, datetime, timedelta
+
 from fastapi.testclient import TestClient
+import pytest
 from sqlalchemy import select
+from sqlalchemy.orm.exc import StaleDataError
 
 from hcam.audit.models import AuditEvent
+from hcam.security.auth import Principal
 from hcam.streams.models import StreamEndpoint, StreamHealthCurrent
+from hcam.streams.service import StreamConflictError, StreamService
 
 
 def stream_payload(**overrides: object) -> dict[str, object]:
@@ -199,3 +205,163 @@ def test_stream_tables_have_current_health_for_every_endpoint(imported_app) -> N
         health_ids = set(session.scalars(select(StreamHealthCurrent.stream_id)).all())
     assert endpoint_ids
     assert endpoint_ids == health_ids
+
+
+def test_stream_routes_enforce_lookup_etag_and_primary_invariants(
+    imported_app, editor_headers: dict[str, str]
+) -> None:
+    missing_id = "str_" + "f" * 32
+    with TestClient(imported_app) as client:
+        listed = client.get("/streams", headers=editor_headers).json()["items"]
+        primary = listed[0]
+        stream_id = primary["stream_id"]
+
+        assert client.get(f"/streams/{missing_id}", headers=editor_headers).status_code == 404
+        assert (
+            client.get(f"/streams/{missing_id}/health", headers=editor_headers).status_code
+            == 404
+        )
+        assert (
+            client.get(f"/streams/{missing_id}/probes", headers=editor_headers).status_code
+            == 404
+        )
+
+        malformed = client.patch(
+            f"/streams/{stream_id}",
+            json={"name": "changed"},
+            headers={**editor_headers, "If-Match": "1"},
+        )
+        stale = client.patch(
+            f"/streams/{stream_id}",
+            json={"name": "changed"},
+            headers={**editor_headers, "If-Match": '"99"'},
+        )
+        no_change = client.patch(
+            f"/streams/{stream_id}",
+            json={"name": primary["name"]},
+            headers={**editor_headers, "If-Match": '"1"'},
+        )
+        demote = client.patch(
+            f"/streams/{stream_id}",
+            json={"is_primary": False},
+            headers={**editor_headers, "If-Match": '"1"'},
+        )
+
+    assert malformed.status_code == 400
+    assert stale.status_code == 412
+    assert no_change.status_code == 422
+    assert demote.status_code == 422
+
+
+def test_stream_mutations_reject_conflicts_disabled_probes_and_bad_locators(
+    imported_app, editor_headers: dict[str, str]
+) -> None:
+    with TestClient(imported_app) as client:
+        existing = client.get("/streams", headers=editor_headers).json()["items"][0]
+        stream_id = existing["stream_id"]
+        duplicate_primary = client.post(
+            "/cameras/synthetic:cctv-001/streams",
+            json=stream_payload(locator="rtsp://mediamtx:8554/duplicate"),
+            headers=editor_headers,
+        )
+        missing_camera = client.post(
+            "/cameras/missing-camera/streams",
+            json=stream_payload(),
+            headers=editor_headers,
+        )
+        protocol_mismatch = client.post(
+            "/cameras/synthetic:cctv-002/streams",
+            json=stream_payload(protocol="hls", locator="rtsp://mediamtx/live"),
+            headers=editor_headers,
+        )
+        disabled = client.patch(
+            f"/streams/{stream_id}",
+            json={"enabled": False},
+            headers={**editor_headers, "If-Match": '"1"'},
+        )
+        queue_disabled = client.post(
+            f"/streams/{stream_id}/probe", headers=editor_headers
+        )
+
+    assert duplicate_primary.status_code == 409
+    assert missing_camera.status_code == 404
+    assert protocol_mismatch.status_code == 422
+    assert disabled.status_code == 200
+    assert queue_disabled.status_code == 422
+
+    with imported_app.state.database.session_factory.begin() as session:
+        endpoint = session.get(StreamEndpoint, stream_id)
+        assert endpoint is not None
+        endpoint.enabled = True
+        endpoint.lease_owner = "worker-active"
+        endpoint.lease_until = datetime.now(UTC) + timedelta(minutes=1)
+
+    with TestClient(imported_app) as client:
+        busy = client.post(f"/streams/{stream_id}/probe", headers=editor_headers)
+        filtered = client.get(
+            "/streams?protocol=hls&state=unknown&enabled=true",
+            headers=editor_headers,
+        )
+    assert busy.status_code == 409
+    assert filtered.status_code == 200
+    assert filtered.json()["total"] == 0
+
+
+def test_hls_stream_update_requires_tcp_and_matching_locator(
+    imported_app, editor_headers: dict[str, str]
+) -> None:
+    with TestClient(imported_app) as client:
+        created = client.post(
+            "/cameras/synthetic:cctv-002/streams",
+            json=stream_payload(
+                adapter_kind="hls",
+                protocol="hls",
+                locator="https://media.example.invalid/live.m3u8",
+                is_primary=False,
+            ),
+            headers=editor_headers,
+        )
+        assert created.status_code == 201
+        stream_id = created.json()["stream_id"]
+        etag = created.headers["etag"]
+        bad_transport = client.patch(
+            f"/streams/{stream_id}",
+            json={"transport": "udp"},
+            headers={**editor_headers, "If-Match": etag},
+        )
+        bad_locator = client.patch(
+            f"/streams/{stream_id}",
+            json={"locator": "rtsp://media.example.invalid/live"},
+            headers={**editor_headers, "If-Match": etag},
+        )
+    assert bad_transport.status_code == 422
+    assert bad_locator.status_code == 422
+
+
+def test_queue_probe_normalizes_worker_version_race_to_conflict() -> None:
+    class BeginRaisesStaleData:
+        def __enter__(self):
+            raise StaleDataError("simulated worker race")
+
+        def __exit__(self, *_args) -> None:
+            return None
+
+    class SessionStub:
+        def begin(self) -> BeginRaisesStaleData:
+            return BeginRaisesStaleData()
+
+    service = StreamService(SessionStub())  # type: ignore[arg-type]
+    service._record_failure = lambda *_args, **_kwargs: None  # type: ignore[method-assign]
+    principal = Principal(
+        actor_id="test-editor",
+        roles=frozenset({"camera.editor"}),
+        departments=frozenset({"*"}),
+        authentication_method="test",
+    )
+    with pytest.raises(StreamConflictError, match="queueing"):
+        service.queue_probe(
+            "str_" + "a" * 32,
+            principal=principal,
+            reason="Authorized synthetic probe race",
+            request_id="request-test",
+        )

@@ -1,0 +1,25 @@
+groups:
+  - name: hcam-phase2-streams
+    interval: 30s
+    rules:
+      - alert: HcamStreamFleetUnhealthy
+        expr: sum(hcam_stream_health_state_total{state=~"offline|unauthorized|misconfigured|unsupported"}) > 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: One or more H-CAM streams are in a terminal or offline state
+      - alert: HcamStreamProbeQueueBacklog
+        expr: hcam_stream_probe_due_total > 50
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM stream probe queue exceeds the Phase 2 lab fleet size
+      - alert: HcamStreamOutboxBacklog
+        expr: hcam_stream_outbox_unpublished_total > 100
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM stream event outbox requires dispatcher attention

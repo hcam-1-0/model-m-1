@@ -10,7 +10,14 @@ from hcam.database import get_session
 from hcam.observability import request_id_from_scope
 from hcam.security.auth import CAMERA_EDITOR, CAMERA_VIEWER, PLATFORM_ADMIN, Principal, RoleGuard
 from hcam.streams.repository import StreamFilters, StreamRepository, stream_to_response
+from hcam.streams.playback import (
+    PlaybackConfigurationError,
+    PlaybackService,
+    PlaybackSigner,
+    PlaybackUnavailableError,
+)
 from hcam.streams.schemas import (
+    PlaybackSessionResponse,
     ProbeQueuedResponse,
     StreamEndpointCreate,
     StreamEndpointListResponse,
@@ -219,3 +226,44 @@ def queue_stream_probe(
         _raise_service_error(exc)
         raise
     return ProbeQueuedResponse(stream_id=endpoint.stream_id, probe_due_at=endpoint.probe_due_at)
+
+
+@router.post(
+    "/streams/{stream_id}/playback-sessions",
+    response_model=PlaybackSessionResponse,
+    status_code=status.HTTP_201_CREATED,
+)
+def create_playback_session(
+    stream_id: str,
+    request: Request,
+    response: Response,
+    session: SessionDependency,
+    principal: ViewerPrincipal,
+    reason: ReasonHeader,
+) -> PlaybackSessionResponse:
+    try:
+        result = PlaybackService(session, request.app.state.settings).create_session(
+            stream_id,
+            principal=principal,
+            reason=reason,
+            request_id=request_id_from_scope(request.scope),
+        )
+    except PlaybackConfigurationError as exc:
+        raise HTTPException(503, "Playback signing is not configured") from exc
+    except PlaybackUnavailableError as exc:
+        code = 404 if str(exc) == "Stream not found" else 409
+        raise HTTPException(code, str(exc)) from exc
+    response.headers["Cache-Control"] = "no-store"
+    response.headers["Pragma"] = "no-cache"
+    return result
+
+
+@router.get("/internal/playback-jwks.json", include_in_schema=False)
+def playback_jwks(request: Request, response: Response) -> dict[str, object]:
+    try:
+        signer = PlaybackSigner.from_settings(request.app.state.settings)
+    except PlaybackConfigurationError as exc:
+        raise HTTPException(503, "Playback signing is not configured") from exc
+    response.headers["Cache-Control"] = "no-store"
+    response.headers["Pragma"] = "no-cache"
+    return signer.jwks()
