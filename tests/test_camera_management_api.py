@@ -96,7 +96,8 @@ def test_scoped_editor_create_outside_department_is_rejected_and_audited(
             )
         ).one()
     assert event.actor_id == "traffic-editor"
-    assert event.context == {"error_type": "CameraAccessError"}
+    assert event.context["error_type"] == "CameraAccessError"
+    assert event.context["request_id"] == response.headers["X-Request-ID"]
 
 
 def test_write_reason_cannot_be_blank(app, editor_headers: dict[str, str]) -> None:
@@ -125,7 +126,8 @@ def test_duplicate_camera_create_returns_conflict(
             )
         ).one()
     assert failure.actor_id == "test-editor"
-    assert failure.context == {"error_type": "CameraConflictError"}
+    assert failure.context["error_type"] == "CameraConflictError"
+    assert failure.context["request_id"] == duplicate.headers["X-Request-ID"]
 
 
 def test_update_requires_current_etag_and_increments_version(

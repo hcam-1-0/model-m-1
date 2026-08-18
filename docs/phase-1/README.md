@@ -27,6 +27,12 @@ backlog. It does not claim the complete CCTV integration or analytics platform.
 - synthetic fixtures and automated tests
 - Python package build, isolated installation, coverage, lint, and dependency
   audit gates
+- validated request IDs, metadata-only JSON access events, and mutation-audit
+  correlation
+- SQLite online backup, integrity manifest, verification, and restore-to-new-file
+  recovery checks
+- isolated PostgreSQL 18 migration/API integration and a bounded synthetic
+  performance regression smoke in CI
 
 ## Safety Boundary
 
@@ -106,6 +112,9 @@ development authentication in production mode. See
 
 Build and quality commands are defined in
 [build-and-test.md](build-and-test.md).
+Backup, recovery, request correlation, PostgreSQL validation, and performance
+smoke behavior are defined in
+[operations-and-observability.md](operations-and-observability.md).
 
 ## Camera API
 

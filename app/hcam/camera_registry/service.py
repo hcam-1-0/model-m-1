@@ -125,6 +125,7 @@ class CameraService:
         *,
         principal: Principal,
         reason: str,
+        request_id: str | None = None,
     ) -> Camera:
         if not principal.can_access_department(payload.department):
             error = CameraAccessError("Camera department is outside the actor scope")
@@ -134,6 +135,7 @@ class CameraService:
                 target_id=payload.camera_id,
                 reason=reason,
                 error=error,
+                request_id=request_id,
             )
             raise error
 
@@ -155,6 +157,7 @@ class CameraService:
                         "source": camera.source_id,
                         "version": camera.version_id,
                     },
+                    request_id=request_id,
                 )
             return camera
         except IntegrityError as exc:
@@ -165,6 +168,7 @@ class CameraService:
                 target_id=payload.camera_id,
                 reason=reason,
                 error=error,
+                request_id=request_id,
             )
             raise error from exc
 
@@ -176,6 +180,7 @@ class CameraService:
         expected_version: int,
         principal: Principal,
         reason: str,
+        request_id: str | None = None,
     ) -> Camera:
         try:
             with self.session.begin():
@@ -227,6 +232,7 @@ class CameraService:
                         "previous_version": expected_version,
                         "version": camera.version_id,
                     },
+                    request_id=request_id,
                 )
             return camera
         except (
@@ -242,6 +248,7 @@ class CameraService:
                 target_id=camera_id,
                 reason=reason,
                 error=exc,
+                request_id=request_id,
             )
             raise
         except StaleDataError as exc:
@@ -252,6 +259,7 @@ class CameraService:
                 target_id=camera_id,
                 reason=reason,
                 error=error,
+                request_id=request_id,
             )
             raise error from exc
         except IntegrityError as exc:
@@ -262,6 +270,7 @@ class CameraService:
                 target_id=camera_id,
                 reason=reason,
                 error=error,
+                request_id=request_id,
             )
             raise error from exc
 
@@ -273,6 +282,7 @@ class CameraService:
         target_id: str,
         reason: str,
         error: Exception,
+        request_id: str | None,
     ) -> None:
         try:
             with self.session.begin():
@@ -285,6 +295,7 @@ class CameraService:
                     reason=reason.strip(),
                     outcome="failure",
                     context={"error_type": type(error).__name__},
+                    request_id=request_id,
                 )
         except SQLAlchemyError:
             return

@@ -5,6 +5,7 @@ from pathlib import Path
 
 from hcam.cli import main
 from hcam.database import Database
+from hcam.operations.database_backup import manifest_path_for
 
 
 def _create_cli_database(database_url: str) -> None:
@@ -48,3 +49,35 @@ def test_cli_reports_missing_registry_seed(
     assert exit_code == 1
     assert "registry import failed" in error
     assert "missing.json" in error
+
+
+def test_cli_backup_verify_and_restore_commands(
+    tmp_path: Path,
+    seed_file: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    from alembic import command
+    from alembic.config import Config
+
+    database_path = tmp_path / "cli-migrated.db"
+    database_url = f"sqlite:///{database_path.as_posix()}"
+    monkeypatch.setenv("HCAM_DATABASE_URL", database_url)
+    command.upgrade(Config("alembic.ini"), "head")
+    assert main(["import-registry", str(seed_file)]) == 0
+    capsys.readouterr()
+
+    backup_path = tmp_path / "cli-backup.db"
+    assert main(["backup-database", str(backup_path)]) == 0
+    backup_output = json.loads(capsys.readouterr().out)
+    assert backup_output["backup"]["camera_count"] == 2
+    assert manifest_path_for(backup_path).is_file()
+
+    assert main(["verify-backup", str(backup_path)]) == 0
+    verify_output = json.loads(capsys.readouterr().out)
+    assert verify_output["backup"]["sha256"] == backup_output["backup"]["sha256"]
+
+    restored_path = tmp_path / "cli-restored.db"
+    assert main(["restore-backup", str(backup_path), str(restored_path)]) == 0
+    restore_output = json.loads(capsys.readouterr().out)
+    assert restore_output["restored"]["camera_count"] == 2

@@ -6,6 +6,7 @@ from alembic import command
 from alembic.config import Config
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
+from sqlalchemy import text
 
 from hcam.main import create_app
 from hcam.settings import Settings
@@ -74,3 +75,14 @@ def test_readiness_rejects_stale_migration_and_accepts_current_head(
     assert stale.json() == {"detail": "Database is not ready"}
     assert current.status_code == 200
     assert current.json() == {"status": "ready"}
+
+
+def test_readiness_rejects_missing_audit_columns(app: FastAPI) -> None:
+    with app.state.database.engine.begin() as connection:
+        connection.execute(text("ALTER TABLE audit_events DROP COLUMN reason"))
+
+    with TestClient(app) as client:
+        response = client.get("/health/ready")
+
+    assert response.status_code == 503
+    assert response.json() == {"detail": "Database is not ready"}

@@ -28,6 +28,10 @@ def test_phase1_contract_and_safety_checks_pass() -> None:
         == phase1_readiness.PASS
     )
     assert (
+        phase1_readiness.check_operational_contracts().status
+        == phase1_readiness.PASS
+    )
+    assert (
         phase1_readiness.check_owner_review_packet().status
         == phase1_readiness.PASS
     )

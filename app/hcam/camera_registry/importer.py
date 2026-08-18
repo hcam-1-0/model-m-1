@@ -205,19 +205,20 @@ class RegistryImporter:
         *,
         actor_id: str | None = None,
         reason: str = "Phase 1 local registry seed import",
+        request_id: str | None = None,
     ) -> RegistryImportResult:
         try:
             seed = adapter.load()
         except Exception as exc:
-            self._record_failure(adapter.reference, exc, actor_id, reason)
+            self._record_failure(adapter.reference, exc, actor_id, reason, request_id)
             if isinstance(exc, RegistryImportError):
                 raise
             raise RegistryImportError("registry adapter failed") from exc
 
         try:
-            return self._persist(seed, adapter.reference, actor_id, reason)
+            return self._persist(seed, adapter.reference, actor_id, reason, request_id)
         except Exception as exc:
-            self._record_failure(adapter.reference, exc, actor_id, reason)
+            self._record_failure(adapter.reference, exc, actor_id, reason, request_id)
             if isinstance(exc, RegistryImportError):
                 raise
             raise RegistryImportError("registry import failed") from exc
@@ -228,6 +229,7 @@ class RegistryImporter:
         reference: str,
         actor_id: str | None,
         reason: str,
+        request_id: str | None,
     ) -> RegistryImportResult:
         created = 0
         updated = 0
@@ -274,6 +276,7 @@ class RegistryImporter:
                     "unchanged": unchanged,
                     "total": len(seed.cameras),
                 },
+                request_id=request_id,
             )
             audit_event_id = audit_event.event_id
 
@@ -293,6 +296,7 @@ class RegistryImporter:
         error: Exception,
         actor_id: str | None,
         reason: str,
+        request_id: str | None,
     ) -> None:
         try:
             with self.session_factory() as session, session.begin():
@@ -307,6 +311,7 @@ class RegistryImporter:
                         "file": reference,
                         "error_type": type(error).__name__,
                     },
+                    request_id=request_id,
                 )
         except SQLAlchemyError:
             # A missing/unavailable database must not hide the original import error.
