@@ -33,6 +33,10 @@ Owner decision packet: [owner-review.md](owner-review.md).
   owner acceptance.
 - Operational hardening and its cross-platform evidence are published in
   [PR #24](https://github.com/mayankthakor227/h-cam-2.0/pull/24).
+- Deployment and resilience evidence is published in
+  [PR #25](https://github.com/mayankthakor227/h-cam-2.0/pull/25); its
+  [seven-job validation run](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32110322671)
+  passed, including the live non-root PostgreSQL Compose stack.
 
 ## Evidence Map
 

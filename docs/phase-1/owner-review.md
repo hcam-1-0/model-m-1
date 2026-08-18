@@ -31,6 +31,8 @@ Alternative decisions:
 | [Phase 1 hardening PR #23](https://github.com/mayankthakor227/h-cam-2.0/pull/23) | Merged at commit `f961c2a2b07ef040b0f680b879528cd0a927e497` |
 | [Hardening post-merge validation](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32081764470) | Passed Python 3.12-3.14, package, migration, and audit gates |
 | [Operational hardening PR #24](https://github.com/mayankthakor227/h-cam-2.0/pull/24) | Request correlation, recovery, PostgreSQL 18, performance, and pinned-action evidence |
+| [Deployment and resilience PR #25](https://github.com/mayankthakor227/h-cam-2.0/pull/25) | Secret files, metrics, concurrent load, recovery drill, non-root image, and Compose evidence |
+| [Deployment and resilience validation](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32110322671) | Passed all seven jobs, including PostgreSQL 18 and the live non-root Compose stack |
 | [Manual gate issue #20](https://github.com/mayankthakor227/h-cam-2.0/issues/20) | Open pending owner decision |
 | `python tools/phase1_readiness.py --run-validation` | `ready_for_owner_review`, zero failures, one manual gate |
 | Backend tests | 166 tests and 119 subtests passed locally with 91.64% branch-aware package coverage; the PostgreSQL test is isolated in CI |
