@@ -5,7 +5,6 @@ from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Protocol
-from urllib.parse import urlsplit, urlunsplit
 
 from pydantic import ValidationError
 from sqlalchemy.exc import SQLAlchemyError
@@ -14,13 +13,12 @@ from sqlalchemy.orm import Session
 from hcam.audit.repository import AuditRepository
 from hcam.camera_registry.models import Camera, utc_now
 from hcam.camera_registry.schemas import CameraSeed, RegistryImportResult, RegistrySeed
+from hcam.streams.locator import sanitize_stream_reference
+from hcam.streams.service import ensure_primary_endpoint_from_camera
 
 
 class RegistryImportError(RuntimeError):
     pass
-
-
-MAX_STREAM_REFERENCE_LENGTH = 4096
 
 
 class RegistrySourceAdapter(Protocol):
@@ -69,43 +67,6 @@ class PayloadRegistryAdapter:
 
     def load(self) -> RegistrySeed:
         return self.seed
-
-
-def sanitize_stream_reference(value: str | None) -> str | None:
-    if not value:
-        return None
-
-    normalized = value.strip()
-    if (
-        not normalized
-        or len(normalized) > MAX_STREAM_REFERENCE_LENGTH
-        or any(ord(character) < 32 or ord(character) == 127 for character in normalized)
-    ):
-        return None
-
-    try:
-        parsed = urlsplit(normalized)
-    except ValueError:
-        return None
-    if not parsed.scheme and not parsed.netloc:
-        return parsed.path or None
-
-    if parsed.scheme.lower() not in {"http", "https", "rtsp", "rtsps"}:
-        return None
-    try:
-        hostname = parsed.hostname
-        port = parsed.port
-    except ValueError:
-        return None
-    if hostname is None:
-        return None
-
-    host = hostname
-    if ":" in host and not host.startswith("["):
-        host = f"[{host}]"
-    if port is not None:
-        host = f"{host}:{port}"
-    return urlunsplit((parsed.scheme.lower(), host, parsed.path, "", ""))
 
 
 CAMERA_MUTABLE_FIELDS = (
@@ -241,7 +202,10 @@ class RegistryImporter:
                 values = _camera_values(seed, seed_camera)
                 camera = session.get(Camera, seed_camera.camera_id)
                 if camera is None:
-                    session.add(Camera(**values, imported_at=now))
+                    camera = Camera(**values, imported_at=now)
+                    session.add(camera)
+                    session.flush()
+                    ensure_primary_endpoint_from_camera(session, camera)
                     created += 1
                     continue
 
@@ -251,6 +215,7 @@ class RegistryImporter:
                     for field in CAMERA_MUTABLE_FIELDS
                 )
                 if not changed:
+                    ensure_primary_endpoint_from_camera(session, camera)
                     unchanged += 1
                     continue
 
@@ -258,6 +223,7 @@ class RegistryImporter:
                     setattr(camera, field, values[field])
                 camera.imported_at = now
                 camera.updated_at = now
+                ensure_primary_endpoint_from_camera(session, camera)
                 updated += 1
 
             audit_event = AuditRepository(session).record(

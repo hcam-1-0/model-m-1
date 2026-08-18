@@ -71,3 +71,25 @@ def test_grafana_dashboard_is_valid_and_uses_bounded_hcam_metrics() -> None:
     )
     assert "camera_id" not in json.dumps(dashboard)
     assert "synthetic:cctv" not in json.dumps(dashboard)
+
+
+def test_phase2_dashboard_and_alerts_use_only_bounded_stream_metrics() -> None:
+    dashboard_path = (
+        ROOT / "deploy" / "observability" / "hcam-phase2-streams.json"
+    )
+    alerts_path = ROOT / "deploy" / "observability" / "hcam-phase2-alerts.yml"
+    dashboard = json.loads(dashboard_path.read_text(encoding="utf-8"))
+    alerts = alerts_path.read_text(encoding="utf-8")
+    serialized = json.dumps(dashboard)
+
+    assert dashboard["uid"] == "hcam-phase2-streams"
+    assert dashboard["editable"] is False
+    assert len(dashboard["panels"]) == 5
+    assert "hcam_stream_health_state_total" in serialized
+    assert "hcam_stream_probe_due_total" in serialized
+    assert "hcam_stream_outbox_unpublished_total" in serialized
+    assert "camera_id" not in serialized + alerts
+    assert "stream_id" not in serialized + alerts
+    assert "HcamStreamFleetUnhealthy" in alerts
+    assert "HcamStreamProbeQueueBacklog" in alerts
+    assert "HcamStreamOutboxBacklog" in alerts

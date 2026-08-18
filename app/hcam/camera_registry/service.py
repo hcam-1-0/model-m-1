@@ -18,6 +18,7 @@ from hcam.camera_registry.schemas import (
     StreamSeed,
 )
 from hcam.security.auth import Principal
+from hcam.streams.service import ensure_primary_endpoint_from_camera
 
 
 class CameraConflictError(RuntimeError):
@@ -144,6 +145,8 @@ class CameraService:
                 camera = Camera(**_create_values(payload))
                 self.session.add(camera)
                 self.session.flush()
+                ensure_primary_endpoint_from_camera(self.session, camera)
+                self.session.flush()
                 AuditRepository(self.session).record(
                     actor_id=principal.actor_id,
                     action="camera_registry.camera.create",
@@ -217,6 +220,7 @@ class CameraService:
                 provenance["adapter"] = "hcam-api"
                 provenance["safe_use"] = "Authorized camera registry metadata only."
                 camera.provenance = provenance
+                ensure_primary_endpoint_from_camera(self.session, camera)
                 self.session.flush()
 
                 AuditRepository(self.session).record(

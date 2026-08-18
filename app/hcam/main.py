@@ -19,6 +19,8 @@ from hcam.security.request_limits import (
     SensitiveResponseHeadersMiddleware,
 )
 from hcam.settings import Settings
+from hcam.streams import models as _stream_models  # noqa: F401
+from hcam.streams.routes import router as stream_router
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
@@ -43,7 +45,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     application = FastAPI(
         title=resolved_settings.service_name,
         version=__version__,
-        description="Phase 1 camera registry backend foundation.",
+        description="H-CAM camera registry and stream management foundation.",
         lifespan=lifespan,
     )
     application.state.settings = resolved_settings
@@ -67,6 +69,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     application.include_router(metrics_router)
     application.include_router(camera_router)
     application.include_router(import_router)
+    application.include_router(stream_router)
     return application
 
 

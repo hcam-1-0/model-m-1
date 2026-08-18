@@ -1,0 +1,73 @@
+# Architecture and Contracts
+
+## Runtime Flow
+
+```text
+synthetic publishers -> MediaMTX RTSP gateway -> FFprobe health workers
+                              |
+                              +-> JWT-protected, on-demand fMP4 HLS
+
+operator -> H-CAM API -> PostgreSQL
+                     -> short-lived ES256 playback token
+                     -> MediaMTX JWKS contract
+```
+
+The API is the control plane. MediaMTX is the media gateway. Workers inspect
+stream metadata and never persist frames. PostgreSQL owns endpoint definitions,
+health projections, bounded probe history, playback session audit records, and
+transactional state-change events.
+
+## Module Boundaries
+
+| Module | Responsibility |
+|---|---|
+| `hcam.streams.service` | Endpoint mutation, ETags, primary projection, audit |
+| `hcam.streams.repository` | Department-scoped reads and probe history |
+| `hcam.streams.probe` | Bounded FFprobe execution and media summary |
+| `hcam.streams.worker` | Leases, schedules, hysteresis, history, outbox |
+| `hcam.streams.outbox` | At-least-once event delivery and sink boundary |
+| `hcam.streams.onvif` | Explicit SOAP `GetStreamUri`; no discovery |
+| `hcam.streams.playback` | ES256 tokens, JWKS, playback session records |
+| `hcam.streams.lab` | Guarded deterministic synthetic fixtures |
+
+## HTTP Contract
+
+| Method | Path | Minimum role | Purpose |
+|---|---|---|---|
+| `GET` | `/streams` | `camera.viewer` | Filtered stream inventory |
+| `POST` | `/cameras/{camera_id}/streams` | `camera.editor` | Add endpoint |
+| `GET` | `/streams/{stream_id}` | `camera.viewer` | Endpoint and health |
+| `PATCH` | `/streams/{stream_id}` | `camera.editor` | ETag-protected update |
+| `GET` | `/streams/{stream_id}/health` | `camera.viewer` | Current health |
+| `GET` | `/streams/{stream_id}/probes` | `camera.viewer` | Bounded probe history |
+| `POST` | `/streams/{stream_id}/probe` | `camera.editor` | Queue immediate probe |
+| `POST` | `/streams/{stream_id}/playback-sessions` | `camera.viewer` | Issue 60-second HLS grant |
+
+Mutations and playback grants require `X-HCAM-Reason`. Stream updates require
+the quoted integer `If-Match` ETag. Access remains department-scoped. Source
+locators cannot contain user information, passwords, query strings, or
+fragments; credentials are referenced or mounted separately.
+
+## Data Contracts
+
+- `stream_endpoints`: adapter, protocol, credential-free locator, scheduling,
+  lease, primary status, optimistic version.
+- `stream_health_current`: one current projection per endpoint.
+- `stream_probe_runs`: metadata-only history retained for seven days.
+- `stream_event_outbox`: transactional `hcam.stream.health.changed.v1` events.
+- `playback_sessions`: actor, path, expiry, and SHA-256 JTI hash; never token.
+
+The legacy camera stream columns remain a temporary compatibility projection.
+The primary endpoint is authoritative and updates that projection.
+
+## Decisions
+
+- **DR-0006:** MediaMTX `1.19.3-ffmpeg`, pinned by OCI digest, is the Phase 2
+  gateway because it supports RTSP ingest, on-demand fMP4 HLS, JWT/JWKS, API,
+  and metrics without introducing a custom media server.
+- **DR-0007:** FFprobe performs metadata-only checks in a bounded subprocess.
+  H-CAM does not decode, store, or bulk-download video in this phase.
+- **DR-0008:** Playback uses 60-second ES256 JWTs with exact MediaMTX `read`
+  permission for `hcam/{stream_id}`. Tokens are returned once and not stored.
+- **DR-0009:** Scale evidence is a disposable 50-stream synthetic lab. ONVIF is
+  limited to one explicit simulator and does not use WS-Discovery.
