@@ -1,25 +1,20 @@
 # Phase 1 Owner Review
 
-Current status: `ready_for_owner_review`.
+Current status: `complete`.
 
 This packet is the project-owner decision surface for the Phase 1 camera
 registry foundation. Engineering implementation and automated validation are
-complete. Phase 2 remains blocked until the owner makes the explicit decision
-recorded below.
+complete. The owner accepted Phase 1 on 2026-08-18 and authorized Phase 2
+planning under the safety boundaries recorded below.
 
-## Decision Requested
+## Decision Recorded
 
-To accept Phase 1 and authorize Phase 2 planning, state exactly:
+The project owner stated exactly:
 
 > I accept Phase 1 and authorize Phase 2 planning under the documented safety boundaries.
 
 This statement authorizes planning and safe test-environment design. It does
 not authorize Phase 2 production implementation or access to sensitive systems.
-
-Alternative decisions:
-
-- Request changes and identify the Phase 1 evidence or behavior to revise.
-- Do not accept Phase 1; keep the project at the Phase 1 gate.
 
 ## Merged Evidence
 
@@ -33,8 +28,8 @@ Alternative decisions:
 | [Operational hardening PR #24](https://github.com/mayankthakor227/h-cam-2.0/pull/24) | Request correlation, recovery, PostgreSQL 18, performance, and pinned-action evidence |
 | [Deployment and resilience PR #25](https://github.com/mayankthakor227/h-cam-2.0/pull/25) | Secret files, metrics, concurrent load, recovery drill, non-root image, and Compose evidence |
 | [Deployment and resilience validation](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32110322671) | Passed all seven jobs, including PostgreSQL 18 and the live non-root Compose stack |
-| [Manual gate issue #20](https://github.com/mayankthakor227/h-cam-2.0/issues/20) | Open pending owner decision |
-| `python tools/phase1_readiness.py --run-validation` | `ready_for_owner_review`, zero failures, one manual gate |
+| [Manual gate issue #20](https://github.com/mayankthakor227/h-cam-2.0/issues/20) | Owner decision recorded; gate closed |
+| `python tools/phase1_readiness.py --run-validation` | `complete`, zero failures, zero manual gates |
 | Backend tests | 166 tests and 119 subtests passed locally with 91.64% branch-aware package coverage; the PostgreSQL test is isolated in CI |
 | Build artifacts | Wheel and source distribution built; wheel passed isolated installation smoke checks |
 | Dependency audit | Base and optional PostgreSQL dependencies checked with zero known vulnerabilities during hardening validation |
@@ -89,12 +84,8 @@ Acceptance does not authorize:
 Phase 1 stores registry metadata only. No CCTV footage, frames, clips, passwords,
 URL credentials, query tokens, or fragments are stored by the registry.
 
-## Acceptance Procedure
+## Acceptance Record
 
-After the owner provides the exact acceptance statement:
-
-1. Mark the manual item in `acceptance-checklist.md` complete.
-2. Change the Phase 1 readiness state from `ready_for_owner_review` to
-   `complete` and record the decision date.
-3. Add the decision evidence to GitHub issue #20 and close it.
-4. Begin Phase 2 planning only, preserving every safety boundary above.
+The checklist and readiness state were updated on 2026-08-18. The decision is
+recorded in GitHub issue #20, and Phase 2 planning may proceed while preserving
+every safety boundary above.

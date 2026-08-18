@@ -6,11 +6,11 @@ from contextlib import redirect_stdout
 from tools import phase1_readiness
 
 
-def test_phase1_report_is_ready_for_owner_review() -> None:
+def test_phase1_report_is_complete() -> None:
     report = phase1_readiness.build_readiness_report(run_validation=False)
     assert report.failures == 0
-    assert report.manual_gates == 1
-    assert report.status == "ready_for_owner_review"
+    assert report.manual_gates == 0
+    assert report.status == "complete"
 
 
 def test_phase1_contract_and_safety_checks_pass() -> None:
@@ -50,12 +50,12 @@ def test_phase1_json_report_is_machine_readable() -> None:
     with redirect_stdout(output):
         exit_code = phase1_readiness.main(["--json"])
     assert exit_code == 0
-    assert '"status": "ready_for_owner_review"' in output.getvalue()
+    assert '"status": "complete"' in output.getvalue()
 
 
-def test_phase1_strict_mode_preserves_owner_gate() -> None:
+def test_phase1_strict_mode_passes_after_owner_acceptance() -> None:
     output = io.StringIO()
     with redirect_stdout(output):
         exit_code = phase1_readiness.main(["--strict"])
-    assert exit_code == 2
-    assert "Manual gates: 1" in output.getvalue()
+    assert exit_code == 0
+    assert "Manual gates: 0" in output.getvalue()

@@ -67,7 +67,7 @@
 
 ## Manual Phase Gate
 
-- [ ] Owner accepts Phase 1 and authorizes Phase 2 planning. This approval
+- [x] Owner accepted Phase 1 on 2026-08-18 and authorized Phase 2 planning. This approval
   authorizes architecture and safe adapter test planning only; it does not
   authorize production CCTV access, uncontrolled recording, Government data,
   biometrics, watchlists, or AI processing of real people. Track this gate in

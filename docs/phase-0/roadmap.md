@@ -16,7 +16,7 @@ Milestones:
 
 ## Phase 1: Core Platform Foundation
 
-Status: implementation complete; project-owner acceptance is pending.
+Status: complete and accepted on 2026-08-18.
 
 Primary goal: build the first H-CAM backend foundation around the camera
 registry.
@@ -43,7 +43,8 @@ Delivered evidence:
 - SQLite migrations with a PostgreSQL-compatible ORM boundary
 - automated Phase 1 readiness verification
 
-Phase 2 planning remains blocked until the owner accepts the Phase 1 gate.
+The owner accepted the Phase 1 gate on 2026-08-18. Phase 2 planning is
+authorized under the documented safety boundaries.
 
 ## Phase 2: Video Ingestion And Stream Management
 
