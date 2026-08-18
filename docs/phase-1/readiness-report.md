@@ -31,6 +31,8 @@ Owner decision packet: [owner-review.md](owner-review.md).
   passed against that merge commit.
 - The owner gate remains open; published engineering evidence does not imply
   owner acceptance.
+- Operational hardening and its cross-platform evidence are published in
+  [PR #24](https://github.com/mayankthakor227/h-cam-2.0/pull/24).
 
 ## Evidence Map
 
