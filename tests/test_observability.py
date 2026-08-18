@@ -216,6 +216,7 @@ def test_import_audit_event_contains_request_id(
         ("HCAM_DEV_AUTH_ENABLED", "enabled"),
         ("HCAM_CREATE_SCHEMA", "sometimes"),
         ("HCAM_ACCESS_LOG_ENABLED", "logging"),
+        ("HCAM_METRICS_ENABLED", "maybe"),
     ],
 )
 def test_invalid_boolean_environment_values_fail_fast(
@@ -234,3 +235,96 @@ def test_environment_and_service_name_are_validated() -> None:
         Settings(environment="staging")
     with pytest.raises(ValueError, match="HCAM_SERVICE_NAME"):
         Settings(service_name="  ")
+
+
+def test_database_url_can_be_loaded_from_secret_file(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    database_url = "postgresql+psycopg://hcam:secret@db/hcam"
+    secret_file = tmp_path / "database-url"
+    secret_file.write_text(database_url + "\n", encoding="utf-8")
+    monkeypatch.delenv("HCAM_DATABASE_URL", raising=False)
+    monkeypatch.setenv("HCAM_DATABASE_URL_FILE", str(secret_file))
+
+    settings = Settings.from_environment()
+
+    assert settings.database_url == database_url
+    assert database_url not in repr(settings)
+
+
+def test_direct_and_file_database_urls_are_mutually_exclusive(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    secret_file = tmp_path / "database-url"
+    secret_file.write_text("sqlite:///secret.db\n", encoding="utf-8")
+    monkeypatch.setenv("HCAM_DATABASE_URL", "sqlite:///direct.db")
+    monkeypatch.setenv("HCAM_DATABASE_URL_FILE", str(secret_file))
+
+    with pytest.raises(ValueError, match="mutually exclusive"):
+        Settings.from_environment()
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [b"", b"first\nsecond\n", b"invalid\x00value", b"\xff"],
+)
+def test_secret_files_reject_invalid_content(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    payload: bytes,
+) -> None:
+    secret_file = tmp_path / "invalid-secret"
+    secret_file.write_bytes(payload)
+    monkeypatch.delenv("HCAM_DATABASE_URL", raising=False)
+    monkeypatch.setenv("HCAM_DATABASE_URL_FILE", str(secret_file))
+
+    with pytest.raises(ValueError, match="HCAM_DATABASE_URL_FILE"):
+        Settings.from_environment()
+
+
+def test_metrics_require_a_file_mounted_bearer_secret(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("HCAM_METRICS_ENABLED", "true")
+    with pytest.raises(ValueError, match="HCAM_METRICS_TOKEN_FILE"):
+        Settings.from_environment()
+
+    token = "metrics-secret-0123456789abcdefghijkl"
+    token_file = tmp_path / "metrics-token"
+    token_file.write_text(token + "\n", encoding="utf-8")
+    monkeypatch.setenv("HCAM_METRICS_TOKEN_FILE", str(token_file))
+
+    settings = Settings.from_environment()
+
+    assert settings.metrics_enabled is True
+    assert settings.metrics_token == token
+    assert token not in repr(settings)
+
+
+def test_production_environment_requires_explicit_database_configuration(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("HCAM_ENVIRONMENT", "production")
+    monkeypatch.delenv("HCAM_DATABASE_URL", raising=False)
+    monkeypatch.delenv("HCAM_DATABASE_URL_FILE", raising=False)
+
+    with pytest.raises(ValueError, match="required in production"):
+        Settings.from_environment()
+
+
+def test_secret_file_size_and_metrics_token_format_are_bounded(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    oversized = tmp_path / "oversized-secret"
+    oversized.write_bytes(b"x" * (16 * 1024 + 1))
+    monkeypatch.delenv("HCAM_DATABASE_URL", raising=False)
+    monkeypatch.setenv("HCAM_DATABASE_URL_FILE", str(oversized))
+    with pytest.raises(ValueError, match="small regular file"):
+        Settings.from_environment()
+
+    with pytest.raises(ValueError, match="bearer-safe"):
+        Settings(metrics_enabled=True, metrics_token="too-short")

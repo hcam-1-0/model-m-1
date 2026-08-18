@@ -33,7 +33,7 @@ Alternative decisions:
 | [Operational hardening PR #24](https://github.com/mayankthakor227/h-cam-2.0/pull/24) | Request correlation, recovery, PostgreSQL 18, performance, and pinned-action evidence |
 | [Manual gate issue #20](https://github.com/mayankthakor227/h-cam-2.0/issues/20) | Open pending owner decision |
 | `python tools/phase1_readiness.py --run-validation` | `ready_for_owner_review`, zero failures, one manual gate |
-| Backend tests | 138 tests and 119 subtests passed locally with 91.36% branch-aware package coverage; the PostgreSQL test is isolated in CI |
+| Backend tests | 165 tests and 119 subtests passed locally with 91.63% branch-aware package coverage; the PostgreSQL test is isolated in CI |
 | Build artifacts | Wheel and source distribution built; wheel passed isolated installation smoke checks |
 | Dependency audit | Base and optional PostgreSQL dependencies checked with zero known vulnerabilities during hardening validation |
 
@@ -64,6 +64,13 @@ checks.
 - Isolated PostgreSQL migration/API integration and bounded synthetic
   performance regression evidence.
 - Exact-commit pinning for third-party GitHub Actions.
+- File-mounted database and scrape secrets with redacted settings output.
+- Protected Prometheus metrics with bounded route-template labels and a
+  version-controlled Grafana service dashboard.
+- Concurrent loopback load and database-outage failure evidence.
+- Measured, non-overwriting SQLite recovery-drill evidence.
+- Digest-pinned, non-root OCI image and hardened disposable PostgreSQL Compose
+  validation.
 
 ## Safety Boundaries
 

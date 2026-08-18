@@ -125,6 +125,22 @@ query strings, bodies, headers, identity claims, client addresses, camera IDs,
 stream references, and exception text. See
 [operations-and-observability.md](operations-and-observability.md).
 
+## Configuration And Metrics Secrets
+
+Database URLs may be provided through `HCAM_DATABASE_URL_FILE`; direct and
+file-based database configuration cannot be enabled together. The internal
+Prometheus endpoint is disabled by default and, when enabled, requires a
+32-to-256-character bearer value loaded from `HCAM_METRICS_TOKEN_FILE`.
+
+Settings representations redact both values. Metrics use route templates and
+status classes rather than camera IDs, actors, departments, queries, headers,
+or client addresses. The scrape credential is a narrow service secret, not a
+human identity or replacement for the future production identity provider.
+
+Mounted files are an integration boundary for Docker, Kubernetes, or a future
+secret manager. Phase 1 does not implement secret creation, distribution,
+rotation, revocation, or production vault policy.
+
 ## Production Identity Requirements
 
 Before production use, replace the local authenticator with an approved OpenID

@@ -1,0 +1,73 @@
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def test_container_runtime_is_pinned_non_root_and_health_checked() -> None:
+    dockerfile = (ROOT / "Dockerfile").read_text(encoding="utf-8")
+
+    assert "python:3.12.12-slim-bookworm@sha256:" in dockerfile
+    assert "USER ${HCAM_UID}:${HCAM_GID}" in dockerfile
+    assert "ARG HCAM_UID=10001" in dockerfile
+    assert "HEALTHCHECK" in dockerfile
+    assert "/health/live" in dockerfile
+    assert "--no-access-log" in dockerfile
+    assert "HCAM_ENVIRONMENT=production" in dockerfile
+    assert "psycopg[binary]" in dockerfile
+    assert 'CMD ["python", "-m", "uvicorn"' in dockerfile
+
+
+def test_docker_context_excludes_unnecessary_or_sensitive_paths() -> None:
+    dockerignore = (ROOT / ".dockerignore").read_text(encoding="utf-8")
+
+    assert dockerignore.startswith("**\n")
+    assert "!app/**" in dockerignore
+    assert "!migrations/**" in dockerignore
+    assert "!.env" not in dockerignore
+    assert "!tests" not in dockerignore
+    assert "!fixtures" not in dockerignore
+    assert "!.git" not in dockerignore
+
+
+def test_compose_stack_uses_files_for_secrets_and_hardened_api_runtime() -> None:
+    compose = (ROOT / "deploy" / "compose.phase1.yaml").read_text(
+        encoding="utf-8"
+    )
+
+    assert "postgres:18-alpine@sha256:" in compose
+    assert "HCAM_DATABASE_URL_FILE: /run/secrets/database_url" in compose
+    assert "HCAM_METRICS_TOKEN_FILE: /run/secrets/metrics_token" in compose
+    assert "POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password" in compose
+    assert "condition: service_completed_successfully" in compose
+    assert "read_only: true" in compose
+    assert "no-new-privileges:true" in compose
+    assert "cap_drop:" in compose
+    assert "max-size: 10m" in compose
+    assert "127.0.0.1:${HCAM_PORT:-8000}:8000" in compose
+    assert "POSTGRES_PASSWORD:" not in compose
+    assert "phase1-local-postgres-password" not in compose
+
+
+def test_grafana_dashboard_is_valid_and_uses_bounded_hcam_metrics() -> None:
+    path = ROOT / "deploy" / "observability" / "hcam-phase1-overview.json"
+    dashboard = json.loads(path.read_text(encoding="utf-8"))
+    expressions = [
+        target["expr"]
+        for panel in dashboard["panels"]
+        for target in panel.get("targets", [])
+    ]
+
+    assert dashboard["uid"] == "hcam-phase1-overview"
+    assert dashboard["editable"] is False
+    assert len(dashboard["panels"]) == 5
+    assert any("hcam_http_requests_total" in expression for expression in expressions)
+    assert any(
+        "hcam_http_request_duration_seconds_bucket" in expression
+        for expression in expressions
+    )
+    assert "camera_id" not in json.dumps(dashboard)
+    assert "synthetic:cctv" not in json.dumps(dashboard)

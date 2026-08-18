@@ -33,6 +33,13 @@ backlog. It does not claim the complete CCTV integration or analytics platform.
   recovery checks
 - isolated PostgreSQL 18 migration/API integration and a bounded synthetic
   performance regression smoke in CI
+- file-mounted database and metrics secret support with fail-fast validation
+- protected Prometheus request metrics using bounded route-template labels
+- measured, non-overwriting SQLite backup/restore/readiness drills
+- bounded concurrent load and database-outage behavior checks
+- digest-pinned, non-root OCI image and disposable PostgreSQL Compose validation
+- version-controlled Grafana service dashboard and explicit regression
+  objectives
 
 ## Safety Boundary
 
@@ -115,6 +122,9 @@ Build and quality commands are defined in
 Backup, recovery, request correlation, PostgreSQL validation, and performance
 smoke behavior are defined in
 [operations-and-observability.md](operations-and-observability.md).
+Service indicators and objective boundaries are defined in
+[service-objectives.md](service-objectives.md). Container validation is defined
+in [deployment validation](../../deploy/README.md).
 
 ## Camera API
 

@@ -33,6 +33,7 @@ Verify the environment before testing:
 .\.venv\Scripts\python tools\phase0_readiness.py --run-validation --strict
 .\.venv\Scripts\python tools\phase1_readiness.py --run-validation
 .\.venv\Scripts\python tools\phase1_performance.py --cameras 1000 --iterations 100 --json
+.\.venv\Scripts\python tools\phase1_load.py --cameras 1000 --requests 400 --concurrency 16 --json
 ```
 
 Coverage is a regression floor, not proof that behavior is correct. The suite
@@ -84,6 +85,9 @@ Every pull request and `main` push must pass:
 - migration upgrade and drift checks;
 - Phase 0 and Phase 1 readiness checks;
 - isolated wheel installation and command smoke tests.
+- bounded sequential and concurrent synthetic load checks;
+- measured SQLite recovery drill;
+- digest-pinned, non-root image and hardened Compose runtime validation.
 
 Third-party GitHub Actions are pinned to reviewed commit SHAs while retaining
 their release-version comments. Dependency consistency and vulnerability
@@ -121,3 +125,22 @@ SQLite backup/restore and synthetic performance commands are documented in
 [operations-and-observability.md](operations-and-observability.md). The
 performance threshold is a regression guard for CI, not a production SLO or
 capacity statement.
+
+Run a disposable recovery drill after migrating and seeding a local SQLite
+database:
+
+```powershell
+.\.venv\Scripts\hcam recovery-drill .\backups\phase1-drill
+```
+
+Validate the container model and image when Docker is available:
+
+```powershell
+docker build --check .
+docker build --build-arg "VCS_REF=$(git rev-parse HEAD)" -t hcam-core:phase1 .
+```
+
+The authoritative CI container job additionally renders the Compose model,
+starts PostgreSQL 18, runs migrations separately, starts the API as UID/GID
+10001 with a read-only root filesystem and dropped capabilities, and probes
+liveness, readiness, registry authorization, and protected metrics.

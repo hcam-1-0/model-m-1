@@ -11,6 +11,7 @@ from hcam.camera_registry.import_routes import router as import_router
 from hcam.camera_registry.routes import router as camera_router
 from hcam.database import Database
 from hcam.health.routes import router as health_router
+from hcam.metrics import RequestMetrics, router as metrics_router
 from hcam.observability import RequestContextMiddleware
 from hcam.security.auth import build_authenticator
 from hcam.security.request_limits import (
@@ -48,6 +49,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     application.state.settings = resolved_settings
     application.state.database = database
     application.state.authenticator = build_authenticator(resolved_settings)
+    application.state.request_metrics = RequestMetrics(
+        service_name=resolved_settings.service_name,
+        version=__version__,
+    )
     application.add_middleware(
         RequestBodyLimitMiddleware,
         max_bytes=resolved_settings.max_request_body_bytes,
@@ -56,8 +61,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     application.add_middleware(
         RequestContextMiddleware,
         access_log_enabled=resolved_settings.access_log_enabled,
+        metrics_recorder=application.state.request_metrics,
     )
     application.include_router(health_router)
+    application.include_router(metrics_router)
     application.include_router(camera_router)
     application.include_router(import_router)
     return application

@@ -48,6 +48,22 @@
 - [x] A bounded 1,000-camera synthetic performance smoke guards import and API
   latency against severe regressions without claiming production capacity.
 - [x] Third-party GitHub Actions are pinned to exact reviewed release commits.
+- [x] Database URLs and metrics credentials can be supplied through mutually
+  validated secret files without appearing in settings representations.
+- [x] Prometheus metrics require an explicit bearer secret and use only method,
+  route-template, and status-class labels.
+- [x] A version-controlled Grafana dashboard covers request rate, 5xx ratio,
+  registry p95 latency, readiness, and response classes.
+- [x] A concurrent loopback smoke sends 400 synthetic registry requests at
+  concurrency 16 with bounded latency and zero allowed errors.
+- [x] Database-outage tests prove readiness fails and API errors remain generic
+  and correlated without leaking database paths, queries, or actor details.
+- [x] The recovery-drill command produces exclusive, non-overwriting JSON evidence
+  after backup, verification, restore, and restored-application readiness.
+- [x] The digest-pinned OCI image builds, runs as UID/GID 10001, and passes
+  liveness, readiness, registry, metrics, and PostgreSQL migration checks in a
+  hardened disposable Compose stack.
+- [x] Dependabot monitors Python, GitHub Actions, and Docker dependencies.
 
 ## Manual Phase Gate
 

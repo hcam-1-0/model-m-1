@@ -98,9 +98,9 @@ jobs:
           "$RUNNER_TEMP/hcam-artifact/bin/hcam" backup-database --help
 
   operational-smoke:
-    name: Synthetic operational and performance smoke
+    name: Synthetic performance, load, and recovery smoke
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
       - name: Check out repository
@@ -117,6 +117,79 @@ jobs:
 
       - name: Run bounded synthetic performance smoke
         run: python tools/phase1_performance.py --cameras 1000 --iterations 100 --json
+
+      - name: Run bounded concurrent loopback load smoke
+        run: python tools/phase1_load.py --cameras 1000 --requests 400 --concurrency 16 --json
+
+      - name: Run SQLite recovery drill
+        env:
+          HCAM_DATABASE_URL: sqlite:///./var/recovery-source.db
+        run: |
+          alembic upgrade head
+          hcam import-registry tests/fixtures/camera-registry-seed.json
+          hcam recovery-drill "$RUNNER_TEMP/hcam-recovery-drill" --max-recovery-seconds 60
+
+  container-validation:
+    name: Non-root container and Compose validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Create synthetic validation secrets
+        shell: bash
+        run: |
+          printf '%s' 'phase1-local-postgres-password' > "$RUNNER_TEMP/postgres-password"
+          printf '%s' 'postgresql+psycopg://hcam_phase1:phase1-local-postgres-password@database:5432/hcam_phase1' > "$RUNNER_TEMP/database-url"
+          printf '%s' 'phase1-metrics-token-0123456789abcdef' > "$RUNNER_TEMP/metrics-token"
+          {
+            echo "HCAM_POSTGRES_PASSWORD_FILE=$RUNNER_TEMP/postgres-password"
+            echo "HCAM_DATABASE_URL_SECRET_FILE=$RUNNER_TEMP/database-url"
+            echo "HCAM_METRICS_TOKEN_SECRET_FILE=$RUNNER_TEMP/metrics-token"
+            echo "HCAM_VCS_REF=$GITHUB_SHA"
+          } >> "$GITHUB_ENV"
+
+      - name: Validate Dockerfile and Compose model
+        run: |
+          docker build --check .
+          docker compose -f deploy/compose.phase1.yaml config -q
+
+      - name: Build and inspect the runtime image
+        run: |
+          docker build --build-arg "VCS_REF=$GITHUB_SHA" --tag hcam-core:phase1 .
+          test "$(docker image inspect --format '{{.Config.User}}' hcam-core:phase1)" = "10001:10001"
+          docker run --rm --entrypoint python hcam-core:phase1 -c "import os; assert os.getuid() == 10001 and os.getgid() == 10001"
+          docker run --rm hcam-core:phase1 hcam --help
+
+      - name: Start the disposable validation stack
+        run: docker compose -f deploy/compose.phase1.yaml up --build --wait --wait-timeout 180
+
+      - name: Verify container runtime behavior
+        shell: bash
+        run: |
+          curl --fail --silent --show-error http://127.0.0.1:8000/health/live
+          curl --fail --silent --show-error http://127.0.0.1:8000/health/ready
+          curl --fail --silent --show-error \
+            --header 'X-HCAM-Actor: container-validator' \
+            --header 'X-HCAM-Roles: camera.viewer' \
+            --header 'X-HCAM-Departments: *' \
+            http://127.0.0.1:8000/cameras
+          curl --fail --silent --show-error \
+            --header 'Authorization: Bearer phase1-metrics-token-0123456789abcdef' \
+            http://127.0.0.1:8000/internal/metrics \
+            | grep --fixed-strings 'hcam_http_requests_total'
+          docker compose -f deploy/compose.phase1.yaml exec -T api \
+            python -c "import os; assert os.getuid() == 10001 and os.getgid() == 10001"
+
+      - name: Capture stack diagnostics
+        if: failure()
+        run: docker compose -f deploy/compose.phase1.yaml logs --no-color
+
+      - name: Stop the disposable validation stack
+        if: always()
+        run: docker compose -f deploy/compose.phase1.yaml down --volumes --remove-orphans
 
   postgres-integration:
     name: PostgreSQL 18 integration
