@@ -37,17 +37,23 @@ class LabHttpError(LabError):
 
 
 def _write_secret(path: Path, value: str, *, force: bool) -> None:
-    if path.exists() and not force:
-        return
-    path.write_text(value, encoding="ascii")
+    if force or not path.exists():
+        path.write_text(value, encoding="ascii")
     try:
-        path.chmod(0o600)
+        # Linux Compose file secrets preserve host ownership. The private
+        # parent directory protects the files on the host, while 0644 lets
+        # the fixed non-root container UID read its service-specific mount.
+        path.chmod(0o644)
     except OSError:
         pass
 
 
 def prepare(secret_root: Path, *, force: bool = False) -> dict[str, object]:
     secret_root.mkdir(parents=True, exist_ok=True)
+    try:
+        secret_root.chmod(0o700)
+    except OSError:
+        pass
     password = secrets.token_urlsafe(32)
     _write_secret(secret_root / "postgres-password", password, force=force)
     stored_password = (secret_root / "postgres-password").read_text(encoding="ascii")
@@ -68,6 +74,11 @@ def prepare(secret_root: Path, *, force: bool = False) -> dict[str, object]:
             serialization.NoEncryption(),
         ).decode("ascii")
         _write_secret(key_path, key_pem, force=True)
+    else:
+        try:
+            key_path.chmod(0o644)
+        except OSError:
+            pass
     private_key = serialization.load_pem_private_key(
         key_path.read_bytes(), password=None
     )

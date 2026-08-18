@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import subprocess
 from pathlib import Path
 
@@ -51,6 +52,15 @@ def test_phase2_lab_secret_preparation_does_not_return_secret_values(
     assert phase2_lab.load_metrics_token(secret_root) == (
         secret_root / "metrics-token"
     ).read_text(encoding="ascii")
+    if os.name == "posix":
+        assert secret_root.stat().st_mode & 0o777 == 0o700
+        assert all(
+            path.stat().st_mode & 0o777 == 0o644 for path in secret_root.iterdir()
+        )
+        key_path = secret_root / "playback-signing-key.pem"
+        key_path.chmod(0o600)
+        prepare(secret_root)
+        assert key_path.stat().st_mode & 0o777 == 0o644
 
 
 def test_metrics_token_loader_rejects_missing_or_empty_secret(tmp_path: Path) -> None:

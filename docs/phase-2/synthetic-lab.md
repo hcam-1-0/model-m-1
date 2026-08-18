@@ -44,5 +44,9 @@ successful probe rounds across the complete 50-stream fleet and fails unless
 every stream returns `healthy`.
 
 Secrets are generated under ignored `var/phase2-lab-secrets/`. They are local
-test credentials, not production credentials. `stop` removes the disposable
-database volume.
+test credentials, not production credentials. On POSIX hosts the directory is
+mode `0700`; its files are mode `0644` because Linux Compose preserves host
+ownership for file-backed secrets and the fixed non-root application UID must
+read the service-specific mounts. Other host users cannot traverse the private
+directory, and each container receives only the secrets declared for that
+service. `stop` removes the disposable database volume.
