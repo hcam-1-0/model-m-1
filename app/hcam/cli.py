@@ -7,6 +7,12 @@ from collections.abc import Sequence
 
 from hcam.camera_registry.importer import RegistryImportError, RegistryImporter
 from hcam.database import Database
+from hcam.operations.database_backup import (
+    DatabaseBackupError,
+    create_sqlite_backup,
+    restore_sqlite_backup,
+    verify_sqlite_backup,
+)
 from hcam.settings import Settings
 
 
@@ -17,24 +23,61 @@ def build_parser() -> argparse.ArgumentParser:
         "import-registry", help="Import a local hcam.camera_registry.seed.v1 file"
     )
     import_parser.add_argument("seed_file")
+    backup_parser = subparsers.add_parser(
+        "backup-database",
+        help="Create a verified online backup of the configured SQLite database",
+    )
+    backup_parser.add_argument("destination")
+    verify_parser = subparsers.add_parser(
+        "verify-backup",
+        help="Verify a SQLite backup against its integrity manifest",
+    )
+    verify_parser.add_argument("backup_file")
+    restore_parser = subparsers.add_parser(
+        "restore-backup",
+        help="Restore a verified SQLite backup into a new database file",
+    )
+    restore_parser.add_argument("backup_file")
+    restore_parser.add_argument("destination")
     return parser
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     settings = Settings.from_environment()
-    database = Database(settings.database_url)
     try:
         if args.command == "import-registry":
-            result = RegistryImporter(database.session_factory).import_file(args.seed_file)
-            print(json.dumps(result.model_dump(mode="json"), indent=2, sort_keys=True))
-            return 0
-    except RegistryImportError as exc:
-        print(f"registry import failed: {exc}", file=sys.stderr)
+            database = Database(settings.database_url)
+            try:
+                result = RegistryImporter(database.session_factory).import_file(
+                    args.seed_file
+                )
+            finally:
+                database.dispose()
+            output = result.model_dump(mode="json")
+        elif args.command == "backup-database":
+            output = create_sqlite_backup(
+                settings.database_url,
+                args.destination,
+            ).to_dict()
+        elif args.command == "verify-backup":
+            output = verify_sqlite_backup(args.backup_file).to_dict()
+        elif args.command == "restore-backup":
+            output = restore_sqlite_backup(
+                args.backup_file,
+                args.destination,
+                active_database_url=settings.database_url,
+            ).to_dict()
+        else:
+            return 2
+        print(json.dumps(output, indent=2, sort_keys=True))
+        return 0
+    except (RegistryImportError, DatabaseBackupError) as exc:
+        operation = (
+            "registry import" if args.command == "import-registry" else args.command
+        )
+        print(f"{operation} failed: {exc}", file=sys.stderr)
         return 1
-    finally:
-        database.dispose()
-    return 2
 
 
 if __name__ == "__main__":

@@ -10,10 +10,15 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: python-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   python-tests:
     name: Backend checks (Python ${{ matrix.python-version }})
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
@@ -21,10 +26,10 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
@@ -66,13 +71,14 @@ jobs:
   package-build:
     name: Build and install package artifacts
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
           cache: pip
@@ -87,5 +93,77 @@ jobs:
         run: |
           python -m venv "$RUNNER_TEMP/hcam-artifact"
           "$RUNNER_TEMP/hcam-artifact/bin/python" -m pip install dist/*.whl
-          "$RUNNER_TEMP/hcam-artifact/bin/python" -c "from importlib.metadata import version; from hcam.main import create_app; assert version('hcam-core') == '0.1.0'; assert create_app().version == '0.1.0'"
+          "$RUNNER_TEMP/hcam-artifact/bin/python" -c "from importlib.metadata import version; import hcam; from hcam.main import create_app; assert version('hcam-core') == hcam.__version__; assert create_app().version == hcam.__version__"
           "$RUNNER_TEMP/hcam-artifact/bin/hcam" --help
+          "$RUNNER_TEMP/hcam-artifact/bin/hcam" backup-database --help
+
+  operational-smoke:
+    name: Synthetic operational and performance smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install backend and test dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+
+      - name: Run bounded synthetic performance smoke
+        run: python tools/phase1_performance.py --cameras 1000 --iterations 100 --json
+
+  postgres-integration:
+    name: PostgreSQL 18 integration
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:18-alpine
+        env:
+          POSTGRES_DB: hcam_test
+          POSTGRES_USER: hcam_test
+          POSTGRES_PASSWORD: synthetic-ci-password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U hcam_test -d hcam_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      HCAM_DATABASE_URL: postgresql+psycopg://hcam_test:synthetic-ci-password@localhost:5432/hcam_test
+      HCAM_POSTGRES_TEST_URL: postgresql+psycopg://hcam_test:synthetic-ci-password@localhost:5432/hcam_test
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install PostgreSQL integration dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -e ".[dev,postgres]"
+
+      - name: Upgrade and verify PostgreSQL schema
+        run: alembic upgrade head && alembic check
+
+      - name: Run PostgreSQL registry integration
+        run: pytest -q -m postgres tests/test_postgres_integration.py
+
+      - name: Verify PostgreSQL migration round trip
+        run: alembic downgrade base && alembic upgrade head && alembic check
+
+      - name: Verify installed dependencies
+        run: python -m pip check
+
+      - name: Audit PostgreSQL integration dependencies
+        run: pip-audit --skip-editable

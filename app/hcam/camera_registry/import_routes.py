@@ -10,6 +10,7 @@ from hcam.camera_registry.importer import (
     RegistryImporter,
 )
 from hcam.camera_registry.schemas import RegistryImportResult, RegistrySeed
+from hcam.observability import request_id_from_scope
 from hcam.security.auth import PLATFORM_ADMIN, Principal, RoleGuard
 
 
@@ -46,6 +47,7 @@ def import_camera_registry(
             PayloadRegistryAdapter(seed),
             actor_id=principal.actor_id,
             reason=reason.strip(),
+            request_id=request_id_from_scope(request.scope),
         )
     except RegistryImportError as exc:
         raise HTTPException(

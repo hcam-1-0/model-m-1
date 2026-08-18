@@ -25,6 +25,9 @@ dev = [
   "pytest-cov>=7.1.0,<8.0",
   "ruff>=0.16.0,<0.17",
 ]
+postgres = [
+  "psycopg[binary]>=3.3.0,<4.0",
+]
 
 [project.scripts]
 hcam = "hcam.cli:main"
@@ -42,6 +45,9 @@ where = ["app"]
 addopts = "-ra"
 pythonpath = [".", "app"]
 testpaths = ["tests"]
+markers = [
+  "postgres: integration tests that require HCAM_POSTGRES_TEST_URL",
+]
 
 [tool.coverage.run]
 branch = true

@@ -28,11 +28,14 @@ Alternative decisions:
 | [Implementation PR #21](https://github.com/mayankthakor227/h-cam-2.0/pull/21) | Merged on 2026-08-17 at commit `d842f80d92f730b60917ae81061f4db90095a7ea` |
 | [PR validation run](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32078089691) | Passed |
 | [Post-merge `main` validation run](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32078165287) | Passed against the merge commit |
+| [Phase 1 hardening PR #23](https://github.com/mayankthakor227/h-cam-2.0/pull/23) | Merged at commit `f961c2a2b07ef040b0f680b879528cd0a927e497` |
+| [Hardening post-merge validation](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32081764470) | Passed Python 3.12-3.14, package, migration, and audit gates |
+| [Operational hardening PR #24](https://github.com/mayankthakor227/h-cam-2.0/pull/24) | Request correlation, recovery, PostgreSQL 18, performance, and pinned-action evidence |
 | [Manual gate issue #20](https://github.com/mayankthakor227/h-cam-2.0/issues/20) | Open pending owner decision |
 | `python tools/phase1_readiness.py --run-validation` | `ready_for_owner_review`, zero failures, one manual gate |
-| Backend tests | 104 tests and 119 subtests passed with more than 91% branch-aware package coverage |
+| Backend tests | 138 tests and 119 subtests passed locally with 91.36% branch-aware package coverage; the PostgreSQL test is isolated in CI |
 | Build artifacts | Wheel and source distribution built; wheel passed isolated installation smoke checks |
-| Dependency audit | 60 installed dependencies checked with zero known vulnerabilities during hardening validation |
+| Dependency audit | Base and optional PostgreSQL dependencies checked with zero known vulnerabilities during hardening validation |
 
 The CI evidence covers source compilation, migration upgrade and drift checks,
 backend and offline tests, Phase 1 evidence verification, and preserved Phase 0
@@ -54,6 +57,13 @@ checks.
 - Audited failure and no-op write behavior.
 - Python 3.12, 3.13, and 3.14 CI with coverage, lint, dependency, migration,
   and package artifact gates.
+- Validated request IDs, metadata-only structured access events, and mutation
+  audit correlation.
+- Verified SQLite backup and restore-to-new-file recovery with tamper and
+  overwrite protection.
+- Isolated PostgreSQL migration/API integration and bounded synthetic
+  performance regression evidence.
+- Exact-commit pinning for third-party GitHub Actions.
 
 ## Safety Boundaries
 

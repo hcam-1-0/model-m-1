@@ -27,6 +27,17 @@ Registry endpoints require explicit local development identity headers. See
 the role matrix, write API, ETag, audit, and production identity boundaries.
 See [Phase 1 build and test](docs/phase-1/build-and-test.md) for the interpreter
 matrix, coverage, lint, migration, dependency-audit, and artifact checks.
+See [Phase 1 operations and observability](docs/phase-1/operations-and-observability.md)
+for request IDs, metadata-only access events, SQLite backup/recovery,
+PostgreSQL integration, and the synthetic performance smoke.
+
+Local SQLite recovery commands never overwrite existing files:
+
+```powershell
+.\.venv\Scripts\hcam backup-database .\backups\hcam-phase1.db
+.\.venv\Scripts\hcam verify-backup .\backups\hcam-phase1.db
+.\.venv\Scripts\hcam restore-backup .\backups\hcam-phase1.db .\var\hcam-restored.db
+```
 
 ## Phase 0 foundation
 

@@ -28,6 +28,20 @@ REQUIRED_CAMERA_COLUMNS = frozenset(
         "updated_at",
     }
 )
+REQUIRED_AUDIT_COLUMNS = frozenset(
+    {
+        "event_id",
+        "actor_id",
+        "action",
+        "target_type",
+        "target_id",
+        "occurred_at",
+        "source",
+        "reason",
+        "outcome",
+        "context",
+    }
+)
 
 
 class Base(DeclarativeBase):
@@ -119,10 +133,16 @@ class Database:
                 if "cameras" in table_names
                 else set()
             )
+            audit_columns = (
+                {column["name"] for column in inspector.get_columns("audit_events")}
+                if "audit_events" in table_names
+                else set()
+            )
         required_tables = {"cameras", "audit_events"}
         missing_tables = required_tables - table_names
         missing_columns = REQUIRED_CAMERA_COLUMNS - camera_columns
-        if missing_tables or missing_columns:
+        missing_audit_columns = REQUIRED_AUDIT_COLUMNS - audit_columns
+        if missing_tables or missing_columns or missing_audit_columns:
             raise DatabaseNotReadyError("database migrations are not current")
         if self.allow_unversioned_schema:
             return

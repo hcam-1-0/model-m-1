@@ -26,8 +26,10 @@ REQUIRED_FILES = [
     "MANIFEST.in",
     "alembic.ini",
     "app/hcam/main.py",
+    "app/hcam/observability.py",
     "app/hcam/security/auth.py",
     "app/hcam/security/request_limits.py",
+    "app/hcam/operations/database_backup.py",
     "app/hcam/camera_registry/models.py",
     "app/hcam/camera_registry/schemas.py",
     "app/hcam/camera_registry/importer.py",
@@ -41,6 +43,7 @@ REQUIRED_FILES = [
     "migrations/versions/0003_camera_integrity.py",
     "docs/phase-1/README.md",
     "docs/phase-1/security-and-management.md",
+    "docs/phase-1/operations-and-observability.md",
     "docs/phase-1/build-and-test.md",
     "docs/phase-1/acceptance-checklist.md",
     "docs/phase-1/readiness-report.md",
@@ -55,6 +58,11 @@ REQUIRED_FILES = [
     "tests/test_cli.py",
     "tests/test_package_metadata.py",
     "tests/test_request_limits.py",
+    "tests/test_observability.py",
+    "tests/test_database_backup.py",
+    "tests/test_phase1_performance.py",
+    "tests/test_postgres_integration.py",
+    "tools/phase1_performance.py",
 ]
 
 
@@ -223,6 +231,7 @@ def check_database_integrity_contracts() -> CheckResult:
         [
             "0003_camera_integrity",
             "REQUIRED_CAMERA_COLUMNS",
+            "REQUIRED_AUDIT_COLUMNS",
             "ck_cameras_coordinate_pair",
             "ck_cameras_latitude_range",
             "ck_cameras_longitude_range",
@@ -246,6 +255,62 @@ def check_database_integrity_contracts() -> CheckResult:
         "database_integrity_contracts",
         PASS,
         "Migration-head readiness and camera database invariants are present.",
+        evidence,
+    )
+
+
+def check_operational_contracts() -> CheckResult:
+    observability = _read("app/hcam/observability.py")
+    backup = _read("app/hcam/operations/database_backup.py")
+    settings = _read("app/hcam/settings.py")
+    workflow = _read(".github/workflows/python-ci.yml")
+    performance = _read("tools/phase1_performance.py")
+    operations_docs = _read("docs/phase-1/operations-and-observability.md")
+    missing = _missing_terms(
+        "\n".join(
+            [
+                observability,
+                backup,
+                settings,
+                workflow,
+                performance,
+                operations_docs,
+            ]
+        ),
+        [
+            "RequestContextMiddleware",
+            "X-Request-ID",
+            "hcam.access",
+            "HCAM_ACCESS_LOG_ENABLED",
+            "hcam.sqlite-backup.v1",
+            "create_sqlite_backup",
+            "verify_sqlite_backup",
+            "restore_sqlite_backup",
+            "postgres:18-alpine",
+            "HCAM_POSTGRES_TEST_URL",
+            "hcam.phase1.performance.v1",
+            "production service-level objective",
+        ],
+    )
+    evidence = [
+        "app/hcam/observability.py",
+        "app/hcam/operations/database_backup.py",
+        "app/hcam/settings.py",
+        ".github/workflows/python-ci.yml",
+        "tools/phase1_performance.py",
+        "docs/phase-1/operations-and-observability.md",
+    ]
+    if missing:
+        return CheckResult(
+            "operational_contracts",
+            FAIL,
+            f"missing operational terms: {', '.join(missing)}",
+            evidence,
+        )
+    return CheckResult(
+        "operational_contracts",
+        PASS,
+        "Request correlation, recovery, PostgreSQL, and performance contracts are present.",
         evidence,
     )
 
@@ -321,6 +386,10 @@ def check_build_quality_contracts() -> CheckResult:
             "python-version: [\"3.12\", \"3.13\", \"3.14\"]",
             "--cov-fail-under=90",
             "Install wheel in an isolated environment",
+            "postgres:18-alpine",
+            "phase1_performance.py",
+            "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
         ],
     )
     evidence = [
@@ -379,6 +448,15 @@ def run_validation_commands() -> CheckResult:
         ],
         [sys.executable, "-m", "pip", "check"],
         [sys.executable, "-m", "pip_audit", "--skip-editable"],
+        [
+            sys.executable,
+            "tools/phase1_performance.py",
+            "--cameras",
+            "1000",
+            "--iterations",
+            "100",
+            "--json",
+        ],
         ["git", "diff", "--check"],
     ]
     for command in commands:
@@ -430,6 +508,9 @@ def run_validation_commands() -> CheckResult:
                     "/migrations/env.py",
                     "/migrations/versions/0003_camera_integrity.py",
                     "/docs/phase-1/build-and-test.md",
+                    "/docs/phase-1/operations-and-observability.md",
+                    "/app/hcam/operations/database_backup.py",
+                    "/tools/phase1_performance.py",
                     "/tests/fixtures/camera-registry-seed.json",
                 ]
                 missing_source_files = [
@@ -464,8 +545,8 @@ def run_validation_commands() -> CheckResult:
                     "from importlib.metadata import version; "
                     "from pathlib import Path; import hcam; "
                     "from hcam.main import create_app; "
-                    "assert version('hcam-core') == '0.1.0'; "
-                    "assert create_app().version == '0.1.0'; "
+                    "assert version('hcam-core') == hcam.__version__; "
+                    "assert create_app().version == hcam.__version__; "
                     f"assert Path(hcam.__file__).resolve().is_relative_to(Path(r'{install_dir}').resolve())",
                 ]
                 command_evidence, failure = _run(smoke_command, env=smoke_env)
@@ -488,6 +569,7 @@ def build_readiness_report(run_validation: bool = False) -> ReadinessReport:
         check_required_files(),
         check_api_and_security_contracts(),
         check_database_integrity_contracts(),
+        check_operational_contracts(),
         check_safety_documentation(),
         check_owner_review_packet(),
         check_build_quality_contracts(),

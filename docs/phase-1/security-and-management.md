@@ -117,6 +117,14 @@ bodies are capped at 8 MiB by default, including streamed bodies without a
 `Content-Length` header. Override the cap only with a positive
 `HCAM_MAX_REQUEST_BODY_BYTES` value and a documented deployment reason.
 
+Every response also receives a validated `X-Request-ID`. Mutation audit events
+store that same identifier so an authorized reviewer can correlate an API
+outcome with its audit record. Structured application access events contain
+only request ID, method, route template, status, and duration; they exclude
+query strings, bodies, headers, identity claims, client addresses, camera IDs,
+stream references, and exception text. See
+[operations-and-observability.md](operations-and-observability.md).
+
 ## Production Identity Requirements
 
 Before production use, replace the local authenticator with an approved OpenID

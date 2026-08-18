@@ -22,7 +22,11 @@ class AuditRepository:
         actor_id: str | None = None,
         target_id: str | None = None,
         context: dict[str, Any] | None = None,
+        request_id: str | None = None,
     ) -> AuditEvent:
+        event_context = dict(context or {})
+        if request_id is not None:
+            event_context["request_id"] = request_id
         event = AuditEvent(
             actor_id=actor_id,
             action=action,
@@ -31,7 +35,7 @@ class AuditRepository:
             source=source,
             reason=reason,
             outcome=outcome,
-            context=context or {},
+            context=event_context,
         )
         self.session.add(event)
         self.session.flush()

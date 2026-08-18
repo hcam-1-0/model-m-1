@@ -11,6 +11,7 @@ from hcam.camera_registry.import_routes import router as import_router
 from hcam.camera_registry.routes import router as camera_router
 from hcam.database import Database
 from hcam.health.routes import router as health_router
+from hcam.observability import RequestContextMiddleware
 from hcam.security.auth import build_authenticator
 from hcam.security.request_limits import (
     RequestBodyLimitMiddleware,
@@ -39,7 +40,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         database.dispose()
 
     application = FastAPI(
-        title="H-CAM Core API",
+        title=resolved_settings.service_name,
         version=__version__,
         description="Phase 1 camera registry backend foundation.",
         lifespan=lifespan,
@@ -52,6 +53,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         max_bytes=resolved_settings.max_request_body_bytes,
     )
     application.add_middleware(SensitiveResponseHeadersMiddleware)
+    application.add_middleware(
+        RequestContextMiddleware,
+        access_log_enabled=resolved_settings.access_log_enabled,
+    )
     application.include_router(health_router)
     application.include_router(camera_router)
     application.include_router(import_router)

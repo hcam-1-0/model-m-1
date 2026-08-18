@@ -35,6 +35,19 @@
 - [x] Ruff, dependency consistency, and vulnerability audit gates are enabled.
 - [x] Wheel and source distributions build, contain required evidence, and pass
   isolated wheel installation smoke tests.
+- [x] Every HTTP response has a validated request ID and structured access logs
+  exclude request payloads, identity claims, query strings, and entity IDs.
+- [x] Create, update, and API import audit records can be correlated to request
+  IDs without storing request bodies or credentials.
+- [x] Invalid environment flags and unsupported environment names fail fast.
+- [x] SQLite online backup, integrity-manifest mismatch detection, overwrite
+  refusal, owner-only POSIX permissions, and restore-to-new-file recovery are
+  tested without claiming cryptographic authenticity.
+- [x] Current migrations and registry behavior are exercised against an
+  isolated PostgreSQL 18 service in CI.
+- [x] A bounded 1,000-camera synthetic performance smoke guards import and API
+  latency against severe regressions without claiming production capacity.
+- [x] Third-party GitHub Actions are pinned to exact reviewed release commits.
 
 ## Manual Phase Gate
 

@@ -3,7 +3,16 @@ from __future__ import annotations
 import re
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, Header, HTTPException, Query, Response, status
+from fastapi import (
+    APIRouter,
+    Depends,
+    Header,
+    HTTPException,
+    Query,
+    Request,
+    Response,
+    status,
+)
 from sqlalchemy.orm import Session
 
 from hcam.camera_registry.repository import (
@@ -26,6 +35,7 @@ from hcam.camera_registry.service import (
     CameraValidationError,
 )
 from hcam.database import get_session
+from hcam.observability import request_id_from_scope
 from hcam.security.auth import (
     CAMERA_EDITOR,
     CAMERA_VIEWER,
@@ -121,6 +131,7 @@ def list_cameras(
 @router.post("", response_model=CameraResponse, status_code=status.HTTP_201_CREATED)
 def create_camera(
     payload: CameraCreate,
+    request: Request,
     response: Response,
     session: SessionDependency,
     principal: EditorPrincipal,
@@ -131,6 +142,7 @@ def create_camera(
             payload,
             principal=principal,
             reason=reason,
+            request_id=request_id_from_scope(request.scope),
         )
     except RuntimeError as exc:
         _raise_service_error(exc)
@@ -161,6 +173,7 @@ def get_camera(
 def update_camera(
     camera_id: str,
     payload: CameraPatch,
+    request: Request,
     response: Response,
     session: SessionDependency,
     principal: EditorPrincipal,
@@ -174,6 +187,7 @@ def update_camera(
             expected_version=_expected_version(if_match),
             principal=principal,
             reason=reason,
+            request_id=request_id_from_scope(request.scope),
         )
     except RuntimeError as exc:
         _raise_service_error(exc)
