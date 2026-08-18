@@ -355,6 +355,7 @@ def check_deployment_resilience_contracts() -> CheckResult:
         ),
         [
             "HCAM_DATABASE_URL_FILE",
+            "database_url_from_environment",
             "HCAM_METRICS_TOKEN_FILE",
             "hcam_http_requests_total",
             "hcam_http_request_duration_seconds",

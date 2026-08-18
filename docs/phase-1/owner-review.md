@@ -33,7 +33,7 @@ Alternative decisions:
 | [Operational hardening PR #24](https://github.com/mayankthakor227/h-cam-2.0/pull/24) | Request correlation, recovery, PostgreSQL 18, performance, and pinned-action evidence |
 | [Manual gate issue #20](https://github.com/mayankthakor227/h-cam-2.0/issues/20) | Open pending owner decision |
 | `python tools/phase1_readiness.py --run-validation` | `ready_for_owner_review`, zero failures, one manual gate |
-| Backend tests | 165 tests and 119 subtests passed locally with 91.63% branch-aware package coverage; the PostgreSQL test is isolated in CI |
+| Backend tests | 166 tests and 119 subtests passed locally with 91.64% branch-aware package coverage; the PostgreSQL test is isolated in CI |
 | Build artifacts | Wheel and source distribution built; wheel passed isolated installation smoke checks |
 | Dependency audit | Base and optional PostgreSQL dependencies checked with zero known vulnerabilities during hardening validation |
 

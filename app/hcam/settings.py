@@ -75,6 +75,14 @@ def _environment_value_or_file(
     return default
 
 
+def database_url_from_environment(default: str) -> str:
+    return _environment_value_or_file(
+        "HCAM_DATABASE_URL",
+        "HCAM_DATABASE_URL_FILE",
+        default,
+    )
+
+
 @dataclass(frozen=True, slots=True)
 class Settings:
     database_url: str = field(default="sqlite:///./var/hcam.db", repr=False)
@@ -126,11 +134,7 @@ class Settings:
                 "HCAM_DATABASE_URL or HCAM_DATABASE_URL_FILE is required in production"
             )
         return cls(
-            database_url=_environment_value_or_file(
-                "HCAM_DATABASE_URL",
-                "HCAM_DATABASE_URL_FILE",
-                defaults.database_url,
-            ),
+            database_url=database_url_from_environment(defaults.database_url),
             create_schema=_environment_flag("HCAM_CREATE_SCHEMA"),
             dev_auth_enabled=_environment_flag("HCAM_DEV_AUTH_ENABLED"),
             service_name=os.getenv("HCAM_SERVICE_NAME", defaults.service_name),

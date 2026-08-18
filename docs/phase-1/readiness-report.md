@@ -74,8 +74,8 @@ bodies, no-store registry responses, audited failure/no-op behavior, package
 artifact checks, and Python 3.12 through 3.14 CI coverage.
 
 The earlier hardening validation passed on Python 3.14 and an independent clean
-Python 3.13 environment. The current operational suite passes 165 tests and 119
-subtests locally with 91.63% branch-aware `hcam` package coverage; its one local
+Python 3.13 environment. The current operational suite passes 166 tests and 119
+subtests locally with 91.64% branch-aware `hcam` package coverage; its one local
 skip is the PostgreSQL integration test that runs against the isolated CI
 service. The full verifier also builds one wheel and one source
 distribution, installs the wheel outside the source package path, and completes
