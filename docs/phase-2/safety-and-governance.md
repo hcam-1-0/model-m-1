@@ -22,6 +22,8 @@
   analytics;
 - bypassing stream authentication or broadening the network allowlist with a
   wildcard;
+- using environment proxies, redirects, or implicit hostname DNS to escape the
+  adapter egress boundary;
 - representing synthetic results as deployment approval.
 
 The Sentinel adapter remains a separate, read-only Phase 0 reference utility.

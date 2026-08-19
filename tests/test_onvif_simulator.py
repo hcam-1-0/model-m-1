@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-from http.server import ThreadingHTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from threading import Thread
+from time import sleep
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
@@ -67,6 +68,77 @@ class _Response:
         return self.payload
 
 
+def test_onvif_resolver_disables_proxies_and_redirects(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    handlers: list[object] = []
+    payload = b"<Envelope><Uri>rtsp://127.0.0.1:8554/live</Uri></Envelope>"
+
+    class _Opener:
+        def open(self, _request, *, timeout: float):
+            assert timeout == 3
+            return _Response(payload)
+
+    def fake_build_opener(*configured_handlers):
+        handlers.extend(configured_handlers)
+        return _Opener()
+
+    monkeypatch.setattr(onvif, "build_opener", fake_build_opener)
+    assert OnvifStreamResolver(timeout_seconds=3).resolve(
+        "http://camera/onvif/media_service"
+    ) == "rtsp://127.0.0.1:8554/live"
+    assert any(
+        isinstance(handler, onvif.ProxyHandler) and handler.proxies == {}
+        for handler in handlers
+    )
+    assert any(isinstance(handler, onvif._NoRedirectHandler) for handler in handlers)
+
+
+def test_onvif_resolver_does_not_follow_redirects() -> None:
+    class RedirectHandler(BaseHTTPRequestHandler):
+        target_requests = 0
+
+        def do_POST(self) -> None:
+            self.send_response(302)
+            self.send_header("Location", "/redirect-target")
+            self.end_headers()
+
+        def do_GET(self) -> None:
+            type(self).target_requests += 1
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(
+                b"<Envelope><Uri>rtsp://127.0.0.1:8554/live</Uri></Envelope>"
+            )
+
+        def log_message(self, *_args) -> None:
+            return
+
+    server = ThreadingHTTPServer(("127.0.0.1", 0), RedirectHandler)
+    thread = Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    try:
+        host, port = server.server_address
+        error: OnvifResolutionError | None = None
+        for _attempt in range(3):
+            with pytest.raises(OnvifResolutionError) as captured:
+                OnvifStreamResolver(timeout_seconds=2).resolve(
+                    f"http://{host}:{port}/onvif/media_service"
+                )
+            error = captured.value
+            if error.reason_code != "unreachable":
+                break
+            sleep(0.05)
+    finally:
+        server.shutdown()
+        server.server_close()
+        thread.join(timeout=2)
+
+    assert error is not None
+    assert error.reason_code == "onvif_redirect_denied"
+    assert RedirectHandler.target_requests == 0
+
+
 @pytest.mark.parametrize(
     ("exception", "reason"),
     [
@@ -83,7 +155,7 @@ def test_onvif_resolver_normalizes_transport_failures(
     def fail(*_args, **_kwargs):
         raise exception
 
-    monkeypatch.setattr(onvif, "urlopen", fail)
+    monkeypatch.setattr(onvif, "_open_request", fail)
     with pytest.raises(OnvifResolutionError) as error:
         OnvifStreamResolver().resolve("http://camera/onvif/media_service")
     assert error.value.reason_code == reason
@@ -108,7 +180,9 @@ def test_onvif_resolver_rejects_bounded_or_unsafe_payloads(
     max_bytes: int,
     reason: str,
 ) -> None:
-    monkeypatch.setattr(onvif, "urlopen", lambda *_args, **_kwargs: _Response(payload))
+    monkeypatch.setattr(
+        onvif, "_open_request", lambda *_args, **_kwargs: _Response(payload)
+    )
     with pytest.raises(OnvifResolutionError) as error:
         OnvifStreamResolver(max_response_bytes=max_bytes).resolve(
             "http://camera/onvif/media_service"

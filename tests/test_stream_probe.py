@@ -2,10 +2,14 @@ from __future__ import annotations
 
 import json
 import subprocess
+import sys
 from pathlib import Path
+from threading import Event
+from time import perf_counter
 
 import pytest
 
+from hcam.streams import probe as probe_module
 from hcam.streams.network import (
     StreamNetworkPolicy,
     StreamNetworkPolicyError,
@@ -19,8 +23,11 @@ from hcam.streams.probe import (
     ProbeToolError,
     StreamProbeAdapter,
     _frame_rate,
+    _drain_bounded_pipe,
     _media_summary,
     _positive_integer,
+    _run_bounded_process,
+    _terminate_process,
 )
 
 
@@ -57,7 +64,7 @@ def test_ffprobe_runner_extracts_bounded_video_metadata(
         assert kwargs["stdin"] is subprocess.DEVNULL
         return _completed(stdout=json.dumps(payload).encode())
 
-    monkeypatch.setattr(subprocess, "run", fake_run)
+    monkeypatch.setattr(probe_module, "_run_bounded_process", fake_run)
     result = FfprobeRunner(timeout_seconds=3).probe(
         "rtsp://127.0.0.1:8554/cam-01",
         protocol="rtsp",
@@ -93,8 +100,8 @@ def test_ffprobe_runner_classifies_failures_without_returning_stderr(
     reason: str,
 ) -> None:
     monkeypatch.setattr(
-        subprocess,
-        "run",
+        probe_module,
+        "_run_bounded_process",
         lambda *_args, **_kwargs: _completed(returncode=1, stderr=stderr),
     )
 
@@ -113,28 +120,160 @@ def test_ffprobe_runner_treats_missing_binary_as_runtime_failure(
     def missing(*_args, **_kwargs):
         raise FileNotFoundError
 
-    monkeypatch.setattr(subprocess, "run", missing)
+    monkeypatch.setattr(probe_module, "_run_bounded_process", missing)
     with pytest.raises(ProbeToolError, match="unavailable"):
         FfprobeRunner(executable="missing-ffprobe").probe(
             "http://127.0.0.1/video.m3u8", protocol="hls", transport="tcp"
         )
 
 
-def test_network_policy_defaults_to_loopback_and_supports_exact_allowlist(
+@pytest.mark.parametrize("stream_name", ["stdout", "stderr"])
+def test_bounded_process_terminates_during_output_flood(stream_name: str) -> None:
+    script = (
+        "import sys,time; "
+        f"stream=sys.{stream_name}.buffer; "
+        "stream.write(b'x' * (2 * 1024 * 1024)); stream.flush(); time.sleep(10)"
+    )
+    started = perf_counter()
+
+    with pytest.raises(ProbeToolError, match="safety limit"):
+        _run_bounded_process(
+            [sys.executable, "-c", script],
+            stdin=subprocess.DEVNULL,
+            capture_output=True,
+            timeout=8,
+            check=False,
+            shell=False,
+        )
+
+    assert perf_counter() - started < 5
+
+
+def test_bounded_process_rejects_unbounded_or_shell_execution() -> None:
+    arguments = {
+        "stdin": subprocess.DEVNULL,
+        "timeout": 1,
+        "check": False,
+        "shell": False,
+    }
+    with pytest.raises(ValueError, match="captured output"):
+        _run_bounded_process(
+            [sys.executable, "-c", "pass"],
+            capture_output=False,
+            **arguments,
+        )
+    with pytest.raises(ValueError, match="forbids a command shell"):
+        _run_bounded_process(
+            [sys.executable, "-c", "pass"],
+            capture_output=True,
+            **{**arguments, "shell": True},
+        )
+
+
+def test_bounded_process_kills_and_reaps_on_timeout() -> None:
+    started = perf_counter()
+    with pytest.raises(subprocess.TimeoutExpired):
+        _run_bounded_process(
+            [sys.executable, "-c", "import time; time.sleep(10)"],
+            stdin=subprocess.DEVNULL,
+            capture_output=True,
+            timeout=0.05,
+            check=False,
+            shell=False,
+        )
+    assert perf_counter() - started < 3
+
+
+def test_bounded_process_preserves_output_and_check_semantics() -> None:
+    completed = _run_bounded_process(
+        [
+            sys.executable,
+            "-c",
+            "import sys; sys.stdout.write('out'); sys.stderr.write('err')",
+        ],
+        stdin=subprocess.DEVNULL,
+        capture_output=True,
+        timeout=2,
+        check=False,
+        shell=False,
+    )
+    assert completed.stdout == b"out"
+    assert completed.stderr == b"err"
+
+    with pytest.raises(subprocess.CalledProcessError):
+        _run_bounded_process(
+            [sys.executable, "-c", "raise SystemExit(7)"],
+            stdin=subprocess.DEVNULL,
+            capture_output=True,
+            timeout=2,
+            check=True,
+            shell=False,
+        )
+
+
+def test_bounded_pipe_reader_normalizes_read_failure_and_stopped_process() -> None:
+    class ProcessStub:
+        def __init__(self, returncode: int | None) -> None:
+            self.returncode = returncode
+            self.killed = False
+
+        def poll(self) -> int | None:
+            return self.returncode
+
+        def kill(self) -> None:
+            self.killed = True
+            self.returncode = -1
+
+    class BrokenPipe:
+        def read(self, _size: int) -> bytes:
+            raise OSError("pipe failed")
+
+    stopped = ProcessStub(0)
+    _terminate_process(stopped)  # type: ignore[arg-type]
+    assert stopped.killed is False
+
+    running = ProcessStub(None)
+    errors: list[OSError] = []
+    _drain_bounded_pipe(
+        BrokenPipe(),  # type: ignore[arg-type]
+        [],
+        process=running,  # type: ignore[arg-type]
+        output_limit_exceeded=Event(),
+        reader_errors=errors,
+    )
+    assert running.killed is True
+    assert len(errors) == 1
+
+
+def test_network_policy_defaults_to_loopback_and_supports_exact_allowlist() -> None:
+    policy = StreamNetworkPolicy()
+    policy.validate("rtsp://127.0.0.1/live")
+    policy.validate("rtsp://[::1]/live")
+    with pytest.raises(StreamNetworkPolicyError, match="explicitly allowlisted"):
+        policy.validate("http://localhost/live/index.m3u8")
+    with pytest.raises(StreamNetworkPolicyError, match="explicitly allowlisted"):
+        policy.validate("rtsp://camera.internal/live")
+    with pytest.raises(StreamNetworkPolicyError, match="outside"):
+        policy.validate("rtsp://10.20.30.40/live")
+    allowlisted = StreamNetworkPolicy(frozenset({"camera.internal", "localhost"}))
+    allowlisted.validate("rtsp://camera.internal/live")
+    allowlisted.validate("http://localhost/live/index.m3u8")
+
+
+def test_network_policy_does_not_trust_dns_loopback_for_unlisted_hostnames(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
+    lookups: list[str] = []
+
     def fake_lookup(host: str, _port):
-        address = "127.0.0.1" if host == "localhost" else "10.20.30.40"
-        return [(2, 1, 6, "", (address, 0))]
+        lookups.append(host)
+        return [(2, 1, 6, "", ("127.0.0.1", 0))]
 
     monkeypatch.setattr("socket.getaddrinfo", fake_lookup)
-    policy = StreamNetworkPolicy()
-    policy.validate("http://localhost/live/index.m3u8")
-    with pytest.raises(StreamNetworkPolicyError, match="outside"):
-        policy.validate("rtsp://camera.internal/live")
-    StreamNetworkPolicy(frozenset({"camera.internal"})).validate(
-        "rtsp://camera.internal/live"
-    )
+    with pytest.raises(StreamNetworkPolicyError, match="explicitly allowlisted"):
+        StreamNetworkPolicy().validate("rtsp://rebinding.example/live")
+
+    assert lookups == []
 
 
 def test_network_allowlist_rejects_wildcards() -> None:
@@ -206,7 +345,7 @@ def test_ffprobe_runner_injects_ephemeral_access_token_only_at_execution(
         captured.extend(command)
         return _completed(stdout=json.dumps(payload).encode())
 
-    monkeypatch.setattr(subprocess, "run", fake_run)
+    monkeypatch.setattr(probe_module, "_run_bounded_process", fake_run)
     result = FfprobeRunner().probe(
         locator,
         protocol=protocol,
@@ -225,15 +364,15 @@ def test_ffprobe_runner_handles_timeout_output_and_document_boundaries(
     def timed_out(*_args, **_kwargs):
         raise subprocess.TimeoutExpired("ffprobe", 1)
 
-    monkeypatch.setattr(subprocess, "run", timed_out)
+    monkeypatch.setattr(probe_module, "_run_bounded_process", timed_out)
     result = FfprobeRunner(timeout_seconds=0.01).probe(
         "http://127.0.0.1/live", protocol="http", transport="tcp"
     )
     assert result.reason_code == "timeout"
 
     monkeypatch.setattr(
-        subprocess,
-        "run",
+        probe_module,
+        "_run_bounded_process",
         lambda *_args, **_kwargs: _completed(stdout=b"x" * (1024 * 1024 + 1)),
     )
     with pytest.raises(ProbeToolError, match="safety limit"):
@@ -243,8 +382,8 @@ def test_ffprobe_runner_handles_timeout_output_and_document_boundaries(
 
     for payload in (b"not-json", b"[]"):
         monkeypatch.setattr(
-            subprocess,
-            "run",
+            probe_module,
+            "_run_bounded_process",
             lambda *_args, payload=payload, **_kwargs: _completed(stdout=payload),
         )
         with pytest.raises(ProbeToolError, match="invalid"):
@@ -253,8 +392,8 @@ def test_ffprobe_runner_handles_timeout_output_and_document_boundaries(
             )
 
     monkeypatch.setattr(
-        subprocess,
-        "run",
+        probe_module,
+        "_run_bounded_process",
         lambda *_args, **_kwargs: _completed(stdout=b'{"streams": []}'),
     )
     unsupported = FfprobeRunner().probe(
@@ -413,17 +552,11 @@ def test_stream_probe_adapter_enforces_credentials_network_and_onvif_boundaries(
     assert resolved_denied.reason_code == "network_policy_denied"
 
 
-def test_network_policy_rejects_missing_unresolvable_and_empty_destinations(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
+def test_network_policy_rejects_missing_unlisted_and_empty_destinations() -> None:
     policy = StreamNetworkPolicy()
     with pytest.raises(StreamNetworkPolicyError, match="no host"):
         policy.validate("relative/path")
 
-    def lookup_failure(*_args, **_kwargs):
-        raise OSError("dns unavailable")
-
-    monkeypatch.setattr("socket.getaddrinfo", lookup_failure)
-    with pytest.raises(StreamNetworkPolicyError, match="not resolvable"):
+    with pytest.raises(StreamNetworkPolicyError, match="explicitly allowlisted"):
         policy.validate("rtsp://unresolvable.internal/live")
     assert parse_allowed_hosts(None) == frozenset()

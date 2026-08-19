@@ -30,6 +30,7 @@ _TERMINAL_STATES = {
     "network_policy_denied": "misconfigured",
     "onvif_invalid_response": "misconfigured",
     "onvif_invalid_stream_uri": "misconfigured",
+    "onvif_redirect_denied": "misconfigured",
     "onvif_response_too_large": "misconfigured",
     "unsupported": "unsupported",
 }

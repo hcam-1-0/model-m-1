@@ -4,8 +4,9 @@ import json
 import subprocess
 from dataclasses import dataclass, field
 from fractions import Fraction
+from threading import Event, Thread
 from time import perf_counter
-from typing import Any
+from typing import Any, BinaryIO
 from urllib.parse import quote, urlsplit, urlunsplit
 
 from hcam.streams.models import StreamEndpoint
@@ -18,6 +19,124 @@ _MAX_FFPROBE_OUTPUT_BYTES = 1024 * 1024
 
 class ProbeToolError(RuntimeError):
     pass
+
+
+def _terminate_process(process: subprocess.Popen[bytes]) -> None:
+    if process.poll() is not None:
+        return
+    try:
+        process.kill()
+    except OSError:
+        pass
+
+
+def _drain_bounded_pipe(
+    pipe: BinaryIO,
+    chunks: list[bytes],
+    *,
+    process: subprocess.Popen[bytes],
+    output_limit_exceeded: Event,
+    reader_errors: list[OSError],
+) -> None:
+    total = 0
+    try:
+        while chunk := pipe.read(64 * 1024):
+            total += len(chunk)
+            if total > _MAX_FFPROBE_OUTPUT_BYTES:
+                output_limit_exceeded.set()
+                _terminate_process(process)
+                return
+            chunks.append(chunk)
+    except OSError as exc:
+        reader_errors.append(exc)
+        _terminate_process(process)
+
+
+def _run_bounded_process(
+    command: list[str],
+    *,
+    stdin: int,
+    capture_output: bool,
+    timeout: float,
+    check: bool,
+    shell: bool,
+) -> subprocess.CompletedProcess[bytes]:
+    if not capture_output:
+        raise ValueError("bounded process execution requires captured output")
+    if shell:
+        raise ValueError("bounded process execution forbids a command shell")
+    process = subprocess.Popen(
+        command,
+        stdin=stdin,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        shell=shell,
+    )
+    if process.stdout is None or process.stderr is None:
+        _terminate_process(process)
+        raise ProbeToolError("ffprobe output pipes could not be created")
+
+    stdout_chunks: list[bytes] = []
+    stderr_chunks: list[bytes] = []
+    output_limit_exceeded = Event()
+    reader_errors: list[OSError] = []
+    readers = [
+        Thread(
+            target=_drain_bounded_pipe,
+            args=(process.stdout, stdout_chunks),
+            kwargs={
+                "process": process,
+                "output_limit_exceeded": output_limit_exceeded,
+                "reader_errors": reader_errors,
+            },
+            name="ffprobe-stdout-reader",
+        ),
+        Thread(
+            target=_drain_bounded_pipe,
+            args=(process.stderr, stderr_chunks),
+            kwargs={
+                "process": process,
+                "output_limit_exceeded": output_limit_exceeded,
+                "reader_errors": reader_errors,
+            },
+            name="ffprobe-stderr-reader",
+        ),
+    ]
+    for reader in readers:
+        reader.start()
+
+    timeout_error: subprocess.TimeoutExpired | None = None
+    try:
+        returncode = process.wait(timeout=timeout)
+    except subprocess.TimeoutExpired as exc:
+        timeout_error = exc
+        _terminate_process(process)
+        returncode = process.wait()
+    finally:
+        if process.poll() is None:
+            _terminate_process(process)
+            process.wait()
+        for reader in readers:
+            reader.join()
+        process.stdout.close()
+        process.stderr.close()
+
+    if output_limit_exceeded.is_set():
+        raise ProbeToolError("ffprobe output exceeded the safety limit")
+    if reader_errors:
+        raise ProbeToolError("ffprobe output could not be captured") from reader_errors[0]
+    if timeout_error is not None:
+        raise timeout_error
+
+    completed = subprocess.CompletedProcess(
+        command,
+        returncode,
+        stdout=b"".join(stdout_chunks),
+        stderr=b"".join(stderr_chunks),
+    )
+    if check:
+        completed.check_returncode()
+    return completed
 
 
 @dataclass(frozen=True, slots=True)
@@ -168,7 +287,7 @@ class FfprobeRunner:
         )
         started = perf_counter()
         try:
-            completed = subprocess.run(
+            completed = _run_bounded_process(
                 command,
                 stdin=subprocess.DEVNULL,
                 capture_output=True,

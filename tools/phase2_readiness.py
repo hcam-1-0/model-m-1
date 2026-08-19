@@ -205,6 +205,25 @@ def build_report(run_validation: bool) -> dict[str, object]:
             ],
         ),
         _contract_check(
+            "adapter_egress_hardening",
+            [
+                "app/hcam/streams/network.py",
+                "app/hcam/streams/onvif.py",
+                "app/hcam/streams/probe.py",
+                "tests/test_onvif_simulator.py",
+                "tests/test_stream_probe.py",
+            ],
+            [
+                "stream hostname must be explicitly allowlisted",
+                "ProxyHandler({})",
+                "_NoRedirectHandler",
+                "onvif_redirect_denied",
+                "_run_bounded_process",
+                "test_bounded_process_terminates_during_output_flood",
+                "test_onvif_resolver_does_not_follow_redirects",
+            ],
+        ),
+        _contract_check(
             "event_delivery",
             [
                 "app/hcam/streams/outbox.py",
