@@ -314,6 +314,12 @@ def verify(
         "X-HCAM-Roles": "camera.viewer",
         "X-HCAM-Departments": "*",
     }
+    editor_headers = {
+        "X-HCAM-Actor": "phase2-lab-verifier",
+        "X-HCAM-Roles": "camera.editor",
+        "X-HCAM-Departments": "*",
+        "X-HCAM-Reason": "Authorized synthetic ONVIF capability verification",
+    }
     deadline = monotonic() + timeout_seconds
     latest: dict[str, object] = {}
     while monotonic() < deadline:
@@ -336,6 +342,37 @@ def verify(
 
     items = latest["items"]
     assert isinstance(items, list)
+    onvif_item = next(
+        (
+            item
+            for item in items
+            if isinstance(item, dict) and item.get("adapter_kind") == "onvif"
+        ),
+        None,
+    )
+    if not isinstance(onvif_item, dict) or not isinstance(
+        onvif_item.get("stream_id"), str
+    ):
+        raise LabError("ONVIF synthetic stream is unavailable for capability discovery")
+    capability_report = _json_request(
+        f"{api_url.rstrip('/')}/streams/{onvif_item['stream_id']}/capabilities/discover",
+        method="POST",
+        headers=editor_headers,
+    )
+    media_capabilities = capability_report.get("media")
+    if not isinstance(media_capabilities, dict):
+        raise LabError("ONVIF capability response is incomplete")
+    profiles = media_capabilities.get("profiles")
+    if (
+        capability_report.get("source") != "onvif_media_service"
+        or media_capabilities.get("maximum_profiles") != 8
+        or not isinstance(profiles, list)
+        or len(profiles) != 2
+        or not isinstance(profiles[0], dict)
+        or profiles[0].get("video_encoding") != "H264"
+        or profiles[0].get("ptz_configured") is not True
+    ):
+        raise LabError("ONVIF capability response did not match the synthetic contract")
     first = items[0]
     assert isinstance(first, dict)
     stream_id = first.get("stream_id")
@@ -395,6 +432,8 @@ def verify(
         "passed": True,
         "healthy_streams": 50,
         "onvif_simulator_streams": 1,
+        "onvif_capability_profiles": 2,
+        "onvif_capability_discovery": "validated",
         "playback_jwt": "validated-by-mediamtx",
         "anonymous_playback_denied": True,
         "cross_stream_token_denied": True,

@@ -224,6 +224,29 @@ def build_report(run_validation: bool) -> dict[str, object]:
             ],
         ),
         _contract_check(
+            "camera_capability_discovery",
+            [
+                "app/hcam/streams/onvif.py",
+                "app/hcam/streams/onvif_simulator.py",
+                "app/hcam/streams/routes.py",
+                "app/hcam/streams/service.py",
+                "app/hcam/streams/schemas.py",
+                "deploy/compose.phase2.yaml",
+                "tests/test_onvif_simulator.py",
+                "tests/test_stream_management_api.py",
+            ],
+            [
+                "GetServiceCapabilities",
+                "GetProfiles",
+                "OnvifCapabilityDiscovery",
+                "/streams/{stream_id}/capabilities/discover",
+                "stream.capabilities.discover",
+                "HCAM_STREAM_PROBE_ALLOWED_HOSTS: onvif-simulator",
+                "test_controlled_onvif_simulator_discovers_media_capabilities",
+                "test_editor_discovers_onvif_camera_capabilities_and_audits",
+            ],
+        ),
+        _contract_check(
             "event_delivery",
             [
                 "app/hcam/streams/outbox.py",

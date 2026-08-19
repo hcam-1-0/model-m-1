@@ -7,6 +7,7 @@
 - explicit 50-stream scale tests;
 - metadata-only FFprobe checks;
 - one explicit ONVIF simulator;
+- read-only capability queries against its configured media-service URL;
 - authenticated HLS manifest checks;
 - synthetic camera and audit records.
 
@@ -14,7 +15,7 @@
 
 - real cameras or CCTV feeds;
 - real-person footage of any kind;
-- LAN or internet camera discovery;
+- LAN or internet camera discovery, host enumeration, or WS-Discovery;
 - production Sentinel/Government endpoints in the lab;
 - Government databases or identity records;
 - bulk video download, recording, evidence retention, or frame export;

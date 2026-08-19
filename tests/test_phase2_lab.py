@@ -90,6 +90,8 @@ def test_phase2_compose_keeps_media_ports_local_and_recording_disabled() -> None
     assert "authJWTIssuer: hcam-core" in mediamtx
     assert "moq: false" in mediamtx
     assert "live.sentinelgujarat.in" not in compose + mediamtx
+    assert compose.count("HCAM_STREAM_PROBE_ALLOWED_HOSTS:") == 2
+    assert "HCAM_STREAM_PROBE_ALLOWED_HOSTS: onvif-simulator" in compose
 
 
 def test_failure_drill_requires_full_fleet_recovery() -> None:

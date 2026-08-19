@@ -2,8 +2,9 @@
 
 Phase 2 turns the Phase 1 camera registry into a safe, testable stream-control
 plane. It manages stream endpoints, performs metadata-only health probes,
-resolves one controlled ONVIF simulator, and issues short-lived authorization
-for live HLS playback through MediaMTX.
+resolves streams and discovers normalized media capabilities from one
+controlled ONVIF simulator, and issues short-lived authorization for live HLS
+playback through MediaMTX.
 
 This phase is an engineering foundation, not production CCTV authorization.
 All integration and scale evidence uses generated test video. It does not

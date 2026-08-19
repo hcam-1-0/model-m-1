@@ -8,7 +8,8 @@
 - [x] DNS-rebinding, environment-proxy, and ONVIF redirect denial controls
 - [x] Metadata-only FFprobe runner with bounded execution
 - [x] Execution-time stdout/stderr ceilings that terminate output floods
-- [x] Controlled ONVIF simulator without discovery
+- [x] Controlled ONVIF simulator without network discovery
+- [x] Scoped, audited, bounded ONVIF media capability discovery
 - [x] PostgreSQL leases and SQLite single-worker boundary
 - [x] Health hysteresis, backoff, projection, history, and outbox events
 - [x] At-least-once outbox dispatcher and explicit production sink boundary

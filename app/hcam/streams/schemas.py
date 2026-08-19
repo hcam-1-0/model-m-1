@@ -130,6 +130,39 @@ class ProbeQueuedResponse(BaseModel):
     probe_due_at: datetime
 
 
+class OnvifMediaProfileResponse(BaseModel):
+    token: Annotated[str, Field(min_length=1, max_length=255)]
+    name: Annotated[str, Field(max_length=255)] | None
+    fixed: bool | None
+    video_encoding: Annotated[str, Field(max_length=255)] | None
+    width: Annotated[int, Field(ge=1, le=1_000_000)] | None
+    height: Annotated[int, Field(ge=1, le=1_000_000)] | None
+    frame_rate_limit: Annotated[int, Field(ge=1, le=1_000_000)] | None
+    audio_encoding: Annotated[str, Field(max_length=255)] | None
+    ptz_configured: bool
+    analytics_configured: bool
+    metadata_configured: bool
+
+
+class OnvifMediaCapabilitiesResponse(BaseModel):
+    snapshot_uri: bool | None
+    rotation: bool | None
+    video_source_mode: bool | None
+    osd: bool | None
+    temporary_osd_text: bool | None
+    exi_compression: bool | None
+    maximum_profiles: Annotated[int, Field(ge=1, le=1_000_000)] | None
+    profiles: Annotated[list[OnvifMediaProfileResponse], Field(max_length=64)]
+
+
+class CameraCapabilityDiscoveryResponse(BaseModel):
+    stream_id: StreamId
+    camera_id: str
+    discovered_at: datetime
+    source: Literal["onvif_media_service"] = "onvif_media_service"
+    media: OnvifMediaCapabilitiesResponse
+
+
 class PlaybackSessionResponse(BaseModel):
     session_id: Annotated[str, Field(pattern=r"^pbs_[0-9a-f]{32}$")]
     stream_id: StreamId

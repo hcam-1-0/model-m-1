@@ -26,7 +26,7 @@ transactional state-change events.
 | `hcam.streams.probe` | Bounded FFprobe execution and media summary |
 | `hcam.streams.worker` | Leases, schedules, hysteresis, history, outbox |
 | `hcam.streams.outbox` | At-least-once event delivery and sink boundary |
-| `hcam.streams.onvif` | Explicit SOAP `GetStreamUri`; no discovery |
+| `hcam.streams.onvif` | Bounded stream resolution and media capability queries; no network discovery |
 | `hcam.streams.playback` | ES256 tokens, JWKS, playback session records |
 | `hcam.streams.lab` | Guarded deterministic synthetic fixtures |
 
@@ -41,12 +41,13 @@ transactional state-change events.
 | `GET` | `/streams/{stream_id}/health` | `camera.viewer` | Current health |
 | `GET` | `/streams/{stream_id}/probes` | `camera.viewer` | Bounded probe history |
 | `POST` | `/streams/{stream_id}/probe` | `camera.editor` | Queue immediate probe |
+| `POST` | `/streams/{stream_id}/capabilities/discover` | `camera.editor` | Query configured ONVIF media capabilities |
 | `POST` | `/streams/{stream_id}/playback-sessions` | `camera.viewer` | Issue 60-second HLS grant |
 
-Mutations and playback grants require `X-HCAM-Reason`. Stream updates require
-the quoted integer `If-Match` ETag. Access remains department-scoped. Source
-locators cannot contain user information, passwords, query strings, or
-fragments; credentials are referenced or mounted separately.
+Mutations, capability queries, and playback grants require `X-HCAM-Reason`.
+Stream updates require the quoted integer `If-Match` ETag. Access remains
+department-scoped. Source locators cannot contain user information, passwords,
+query strings, or fragments; credentials are referenced or mounted separately.
 
 ## Data Contracts
 
@@ -75,3 +76,7 @@ The primary endpoint is authoritative and updates that projection.
   allowlist entry, ONVIF bypasses environment proxies and rejects redirects,
   returned stream URIs are revalidated, and FFprobe output is bounded while the
   process is running rather than after capture.
+- **DR-0011:** Camera capability discovery is an explicit, audited, read-only
+  query against one configured ONVIF media-service URL. It normalizes bounded
+  `GetServiceCapabilities` and `GetProfiles` responses and does not perform
+  WS-Discovery, host enumeration, camera mutation, or authoritative persistence.

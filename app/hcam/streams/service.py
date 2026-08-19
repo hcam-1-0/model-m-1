@@ -13,7 +13,18 @@ from hcam.camera_registry.models import Camera, utc_now
 from hcam.security.auth import Principal
 from hcam.streams.locator import sanitize_stream_reference
 from hcam.streams.models import StreamEndpoint, StreamHealthCurrent
-from hcam.streams.schemas import StreamEndpointCreate, StreamEndpointPatch
+from hcam.streams.network import StreamNetworkPolicy, StreamNetworkPolicyError
+from hcam.streams.onvif import (
+    OnvifCapabilityDiscovery,
+    OnvifResolutionError,
+)
+from hcam.streams.schemas import (
+    CameraCapabilityDiscoveryResponse,
+    OnvifMediaCapabilitiesResponse,
+    OnvifMediaProfileResponse,
+    StreamEndpointCreate,
+    StreamEndpointPatch,
+)
 
 
 class StreamNotFoundError(RuntimeError):
@@ -34,6 +45,12 @@ class StreamPreconditionError(RuntimeError):
 
 class StreamValidationError(RuntimeError):
     pass
+
+
+class StreamCapabilityDiscoveryError(RuntimeError):
+    def __init__(self, reason_code: str) -> None:
+        super().__init__(reason_code)
+        self.reason_code = reason_code
 
 
 def _validate_locator(locator: str, protocol: str) -> str:
@@ -382,6 +399,133 @@ class StreamService:
                 principal, "stream.probe.queue", stream_id, reason, error, request_id
             )
             raise error from exc
+
+    def discover_capabilities(
+        self,
+        stream_id: str,
+        *,
+        principal: Principal,
+        reason: str,
+        request_id: str | None,
+        network_policy: StreamNetworkPolicy,
+        discovery: OnvifCapabilityDiscovery,
+    ) -> CameraCapabilityDiscoveryResponse:
+        try:
+            with self.session.begin():
+                endpoint = self.session.get(StreamEndpoint, stream_id)
+                if endpoint is None:
+                    raise StreamNotFoundError("Stream not found")
+                camera = self.session.get(Camera, endpoint.camera_id)
+                if camera is None or not principal.can_access_department(
+                    camera.department
+                ):
+                    raise StreamNotFoundError("Stream not found")
+                if endpoint.adapter_kind != "onvif":
+                    raise StreamValidationError(
+                        "Capability discovery requires an ONVIF stream"
+                    )
+                if endpoint.protocol not in {"http", "https"}:
+                    raise StreamValidationError(
+                        "ONVIF capability discovery requires HTTP(S)"
+                    )
+                if endpoint.secret_ref is not None:
+                    raise StreamValidationError(
+                        "ONVIF credentials are not available in Phase 2"
+                    )
+                if not endpoint.enabled:
+                    raise StreamValidationError(
+                        "Disabled streams cannot initiate capability discovery"
+                    )
+                camera_id = endpoint.camera_id
+                locator = endpoint.locator
+
+            try:
+                network_policy.validate(locator)
+            except StreamNetworkPolicyError as exc:
+                raise StreamValidationError(
+                    "ONVIF endpoint is outside the configured network allowlist"
+                ) from exc
+            try:
+                capabilities = discovery.discover(locator)
+            except OnvifResolutionError as exc:
+                raise StreamCapabilityDiscoveryError(exc.reason_code) from exc
+
+            discovered_at = utc_now()
+            profiles = [
+                OnvifMediaProfileResponse(
+                    token=profile.token,
+                    name=profile.name,
+                    fixed=profile.fixed,
+                    video_encoding=profile.video_encoding,
+                    width=profile.width,
+                    height=profile.height,
+                    frame_rate_limit=profile.frame_rate_limit,
+                    audio_encoding=profile.audio_encoding,
+                    ptz_configured=profile.ptz_configured,
+                    analytics_configured=profile.analytics_configured,
+                    metadata_configured=profile.metadata_configured,
+                )
+                for profile in capabilities.profiles
+            ]
+            response = CameraCapabilityDiscoveryResponse(
+                stream_id=stream_id,
+                camera_id=camera_id,
+                discovered_at=discovered_at,
+                media=OnvifMediaCapabilitiesResponse(
+                    snapshot_uri=capabilities.snapshot_uri,
+                    rotation=capabilities.rotation,
+                    video_source_mode=capabilities.video_source_mode,
+                    osd=capabilities.osd,
+                    temporary_osd_text=capabilities.temporary_osd_text,
+                    exi_compression=capabilities.exi_compression,
+                    maximum_profiles=capabilities.maximum_profiles,
+                    profiles=profiles,
+                ),
+            )
+            configured_features = sorted(
+                {
+                    feature
+                    for profile in capabilities.profiles
+                    for feature, configured in (
+                        ("audio", profile.audio_encoding is not None),
+                        ("ptz", profile.ptz_configured),
+                        ("analytics", profile.analytics_configured),
+                        ("metadata", profile.metadata_configured),
+                    )
+                    if configured
+                }
+            )
+            with self.session.begin():
+                AuditRepository(self.session).record(
+                    actor_id=principal.actor_id,
+                    action="stream.capabilities.discover",
+                    target_type="stream_endpoint",
+                    target_id=stream_id,
+                    source="hcam.api",
+                    reason=reason.strip(),
+                    outcome="success",
+                    context={
+                        "camera_id": camera_id,
+                        "profile_count": len(capabilities.profiles),
+                        "configured_features": configured_features,
+                    },
+                    request_id=request_id,
+                )
+            return response
+        except (
+            StreamCapabilityDiscoveryError,
+            StreamNotFoundError,
+            StreamValidationError,
+        ) as exc:
+            self._record_failure(
+                principal,
+                "stream.capabilities.discover",
+                stream_id,
+                reason,
+                exc,
+                request_id,
+            )
+            raise
 
     def _record_failure(
         self,

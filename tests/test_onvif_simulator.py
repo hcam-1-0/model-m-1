@@ -9,7 +9,11 @@ from urllib.request import Request, urlopen
 import pytest
 
 from hcam.streams import onvif
-from hcam.streams.onvif import OnvifResolutionError, OnvifStreamResolver
+from hcam.streams.onvif import (
+    OnvifCapabilityDiscovery,
+    OnvifResolutionError,
+    OnvifStreamResolver,
+)
 from hcam.streams.onvif_simulator import handler_for, main
 
 
@@ -29,6 +33,71 @@ def test_controlled_onvif_simulator_resolves_stream_uri() -> None:
         thread.join(timeout=2)
 
     assert actual == expected
+
+
+def test_controlled_onvif_simulator_discovers_media_capabilities() -> None:
+    server = ThreadingHTTPServer(
+        ("127.0.0.1", 0), handler_for("rtsp://127.0.0.1:8554/synthetic-01")
+    )
+    thread = Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    try:
+        host, port = server.server_address
+        capabilities = OnvifCapabilityDiscovery(timeout_seconds=2).discover(
+            f"http://{host}:{port}/onvif/media_service"
+        )
+    finally:
+        server.shutdown()
+        server.server_close()
+        thread.join(timeout=2)
+
+    assert capabilities.snapshot_uri is True
+    assert capabilities.rotation is True
+    assert capabilities.video_source_mode is False
+    assert capabilities.osd is True
+    assert capabilities.maximum_profiles == 8
+    assert len(capabilities.profiles) == 2
+    main_profile, sub_profile = capabilities.profiles
+    assert (
+        main_profile.token,
+        main_profile.name,
+        main_profile.video_encoding,
+        main_profile.width,
+        main_profile.height,
+        main_profile.frame_rate_limit,
+        main_profile.audio_encoding,
+    ) == ("hcam-main", "Main", "H264", 1920, 1080, 25, "AAC")
+    assert main_profile.ptz_configured is True
+    assert main_profile.analytics_configured is True
+    assert main_profile.metadata_configured is True
+    assert sub_profile.video_encoding == "H265"
+    assert sub_profile.audio_encoding is None
+    assert sub_profile.ptz_configured is False
+
+
+def test_capability_discovery_accepts_optional_and_attribute_forms(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    payloads = iter(
+        (
+            b'<Envelope><Capabilities MaximumNumberOfProfiles="4" /></Envelope>',
+            b'<Envelope><Profiles token="minimal" fixed="0" /></Envelope>',
+        )
+    )
+    monkeypatch.setattr(
+        onvif,
+        "_open_request",
+        lambda *_args, **_kwargs: _Response(next(payloads)),
+    )
+
+    capabilities = OnvifCapabilityDiscovery().discover(
+        "http://camera/onvif/media_service"
+    )
+
+    assert capabilities.maximum_profiles == 4
+    assert capabilities.snapshot_uri is None
+    assert capabilities.profiles[0].fixed is False
+    assert capabilities.profiles[0].video_encoding is None
 
 
 def test_onvif_resolver_rejects_non_stream_response() -> None:
@@ -190,6 +259,71 @@ def test_onvif_resolver_rejects_bounded_or_unsafe_payloads(
     assert error.value.reason_code == reason
 
 
+@pytest.mark.parametrize(
+    ("capability_payload", "profile_payload", "reason"),
+    [
+        (
+            b"<Envelope />",
+            b"<Envelope />",
+            "onvif_invalid_capabilities",
+        ),
+        (
+            b'<Envelope><Capabilities SnapshotUri="sometimes" /></Envelope>',
+            b"<Envelope />",
+            "onvif_invalid_capabilities",
+        ),
+        (
+            b"<Envelope><Capabilities><MaximumNumberOfProfiles>many"
+            b"</MaximumNumberOfProfiles></Capabilities></Envelope>",
+            b"<Envelope />",
+            "onvif_invalid_capabilities",
+        ),
+        (
+            b"<Envelope><Capabilities><MaximumNumberOfProfiles>0"
+            b"</MaximumNumberOfProfiles></Capabilities></Envelope>",
+            b"<Envelope />",
+            "onvif_invalid_capabilities",
+        ),
+        (
+            b'<Envelope><Capabilities SnapshotUri="true" /></Envelope>',
+            b"<Envelope>"
+            + b'<Profiles token="profile" />' * 65
+            + b"</Envelope>",
+            "onvif_too_many_profiles",
+        ),
+        (
+            b'<Envelope><Capabilities SnapshotUri="true" /></Envelope>',
+            b'<Envelope><Profiles token="" /></Envelope>',
+            "onvif_invalid_capabilities",
+        ),
+        (
+            b'<Envelope><Capabilities SnapshotUri="true" /></Envelope>',
+            b'<Envelope><Profiles token="profile"><Name>'
+            + b"x" * 256
+            + b"</Name></Profiles></Envelope>",
+            "onvif_invalid_capabilities",
+        ),
+    ],
+)
+def test_capability_discovery_rejects_unbounded_or_invalid_documents(
+    monkeypatch: pytest.MonkeyPatch,
+    capability_payload: bytes,
+    profile_payload: bytes,
+    reason: str,
+) -> None:
+    payloads = iter((capability_payload, profile_payload))
+    monkeypatch.setattr(
+        onvif,
+        "_open_request",
+        lambda *_args, **_kwargs: _Response(next(payloads)),
+    )
+
+    with pytest.raises(OnvifResolutionError) as error:
+        OnvifCapabilityDiscovery().discover("http://camera/onvif/media_service")
+
+    assert error.value.reason_code == reason
+
+
 def test_simulator_handler_rejects_wrong_path_and_invalid_body() -> None:
     server = ThreadingHTTPServer(
         ("127.0.0.1", 0), handler_for("rtsp://127.0.0.1:8554/live")
@@ -201,6 +335,7 @@ def test_simulator_handler_rejects_wrong_path_and_invalid_body() -> None:
         for path, body, expected in (
             ("/wrong", b"x", 404),
             ("/onvif/media_service", b"", 400),
+            ("/onvif/media_service", b"<Unknown />", 400),
         ):
             request = Request(f"http://{host}:{port}{path}", data=body, method="POST")
             with pytest.raises(HTTPError) as error:
