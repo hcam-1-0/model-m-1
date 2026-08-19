@@ -10,6 +10,8 @@ from hcam.database import get_session
 from hcam.observability import request_id_from_scope
 from hcam.security.auth import CAMERA_EDITOR, CAMERA_VIEWER, PLATFORM_ADMIN, Principal, RoleGuard
 from hcam.streams.repository import StreamFilters, StreamRepository, stream_to_response
+from hcam.streams.network import StreamNetworkPolicy
+from hcam.streams.onvif import OnvifCapabilityDiscovery
 from hcam.streams.playback import (
     PlaybackConfigurationError,
     PlaybackService,
@@ -17,6 +19,7 @@ from hcam.streams.playback import (
     PlaybackUnavailableError,
 )
 from hcam.streams.schemas import (
+    CameraCapabilityDiscoveryResponse,
     PlaybackSessionResponse,
     ProbeQueuedResponse,
     StreamEndpointCreate,
@@ -27,6 +30,7 @@ from hcam.streams.schemas import (
     StreamProbeListResponse,
 )
 from hcam.streams.service import (
+    StreamCapabilityDiscoveryError,
     StreamConflictError,
     StreamNotFoundError,
     StreamPreconditionError,
@@ -72,6 +76,11 @@ def _raise_service_error(error: RuntimeError) -> None:
         raise HTTPException(409, str(error)) from error
     if isinstance(error, StreamValidationError):
         raise HTTPException(422, str(error)) from error
+    if isinstance(error, StreamCapabilityDiscoveryError):
+        raise HTTPException(
+            502,
+            f"ONVIF capability discovery failed ({error.reason_code})",
+        ) from error
     raise error
 
 
@@ -226,6 +235,38 @@ def queue_stream_probe(
         _raise_service_error(exc)
         raise
     return ProbeQueuedResponse(stream_id=endpoint.stream_id, probe_due_at=endpoint.probe_due_at)
+
+
+@router.post(
+    "/streams/{stream_id}/capabilities/discover",
+    response_model=CameraCapabilityDiscoveryResponse,
+)
+def discover_camera_capabilities(
+    stream_id: str,
+    request: Request,
+    response: Response,
+    session: SessionDependency,
+    principal: EditorPrincipal,
+    reason: ReasonHeader,
+) -> CameraCapabilityDiscoveryResponse:
+    settings = request.app.state.settings
+    try:
+        result = StreamService(session).discover_capabilities(
+            stream_id,
+            principal=principal,
+            reason=reason,
+            request_id=request_id_from_scope(request.scope),
+            network_policy=StreamNetworkPolicy(settings.stream_probe_allowed_hosts),
+            discovery=OnvifCapabilityDiscovery(
+                timeout_seconds=settings.stream_probe_timeout_seconds
+            ),
+        )
+    except RuntimeError as exc:
+        _raise_service_error(exc)
+        raise
+    response.headers["Cache-Control"] = "no-store"
+    response.headers["Pragma"] = "no-cache"
+    return result
 
 
 @router.post(

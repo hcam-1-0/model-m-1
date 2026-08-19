@@ -4,17 +4,18 @@ import argparse
 from collections.abc import Sequence
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlsplit
+from xml.sax.saxutils import escape
 
 from hcam.streams.locator import sanitize_stream_reference
 
 
-def _soap_response(stream_uri: str) -> bytes:
+def _stream_uri_response(stream_uri: str) -> bytes:
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope"
  xmlns:trt="http://www.onvif.org/ver10/media/wsdl"
  xmlns:tt="http://www.onvif.org/ver10/schema">
  <s:Body><trt:GetStreamUriResponse><trt:MediaUri>
-  <tt:Uri>{stream_uri}</tt:Uri>
+  <tt:Uri>{escape(stream_uri)}</tt:Uri>
   <tt:InvalidAfterConnect>false</tt:InvalidAfterConnect>
   <tt:InvalidAfterReboot>false</tt:InvalidAfterReboot>
   <tt:Timeout>PT60S</tt:Timeout>
@@ -22,8 +23,68 @@ def _soap_response(stream_uri: str) -> bytes:
 </s:Envelope>""".encode("utf-8")
 
 
+def _service_capabilities_response() -> bytes:
+    return b"""<?xml version="1.0" encoding="UTF-8"?>
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope"
+ xmlns:trt="http://www.onvif.org/ver10/media/wsdl"
+ xmlns:tt="http://www.onvif.org/ver10/schema">
+ <s:Body><trt:GetServiceCapabilitiesResponse>
+  <trt:Capabilities SnapshotUri="true" Rotation="true"
+   VideoSourceMode="false" OSD="true" TemporaryOSDText="false"
+   EXICompression="false">
+   <tt:ProfileCapabilities>
+    <tt:MaximumNumberOfProfiles>8</tt:MaximumNumberOfProfiles>
+   </tt:ProfileCapabilities>
+  </trt:Capabilities>
+ </trt:GetServiceCapabilitiesResponse></s:Body>
+</s:Envelope>"""
+
+
+def _profiles_response() -> bytes:
+    return b"""<?xml version="1.0" encoding="UTF-8"?>
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope"
+ xmlns:trt="http://www.onvif.org/ver10/media/wsdl"
+ xmlns:tt="http://www.onvif.org/ver10/schema">
+ <s:Body><trt:GetProfilesResponse>
+  <trt:Profiles token="hcam-main" fixed="true">
+   <tt:Name>Main</tt:Name>
+   <tt:VideoEncoderConfiguration token="video-main">
+    <tt:Name>Main H264</tt:Name><tt:UseCount>1</tt:UseCount>
+    <tt:Encoding>H264</tt:Encoding>
+    <tt:Resolution><tt:Width>1920</tt:Width><tt:Height>1080</tt:Height></tt:Resolution>
+    <tt:Quality>4</tt:Quality>
+    <tt:RateControl><tt:FrameRateLimit>25</tt:FrameRateLimit>
+     <tt:EncodingInterval>1</tt:EncodingInterval><tt:BitrateLimit>4096</tt:BitrateLimit>
+    </tt:RateControl>
+   </tt:VideoEncoderConfiguration>
+   <tt:AudioEncoderConfiguration token="audio-main">
+    <tt:Name>Main AAC</tt:Name><tt:UseCount>1</tt:UseCount>
+    <tt:Encoding>AAC</tt:Encoding>
+   </tt:AudioEncoderConfiguration>
+   <tt:PTZConfiguration token="ptz-main" />
+   <tt:VideoAnalyticsConfiguration token="analytics-main" />
+   <tt:MetadataConfiguration token="metadata-main" />
+  </trt:Profiles>
+  <trt:Profiles token="hcam-sub" fixed="true">
+   <tt:Name>Sub</tt:Name>
+   <tt:VideoEncoderConfiguration token="video-sub">
+    <tt:Name>Sub H265</tt:Name><tt:UseCount>1</tt:UseCount>
+    <tt:Encoding>H265</tt:Encoding>
+    <tt:Resolution><tt:Width>640</tt:Width><tt:Height>360</tt:Height></tt:Resolution>
+    <tt:Quality>3</tt:Quality>
+    <tt:RateControl><tt:FrameRateLimit>15</tt:FrameRateLimit>
+     <tt:EncodingInterval>1</tt:EncodingInterval><tt:BitrateLimit>768</tt:BitrateLimit>
+    </tt:RateControl>
+   </tt:VideoEncoderConfiguration>
+  </trt:Profiles>
+ </trt:GetProfilesResponse></s:Body>
+</s:Envelope>"""
+
+
 def handler_for(stream_uri: str) -> type[BaseHTTPRequestHandler]:
-    payload = _soap_response(stream_uri)
+    stream_payload = _stream_uri_response(stream_uri)
+    capability_payload = _service_capabilities_response()
+    profiles_payload = _profiles_response()
 
     class OnvifSimulatorHandler(BaseHTTPRequestHandler):
         server_version = "HCAM-ONVIF-Simulator/1"
@@ -37,12 +98,20 @@ def handler_for(stream_uri: str) -> type[BaseHTTPRequestHandler]:
             if content_length < 0 or content_length > 256 * 1024:
                 self.send_error(400)
                 return
-            if content_length:
-                self.rfile.read(content_length)
+            body = self.rfile.read(content_length) if content_length else b""
             if self.path != "/onvif/media_service":
                 self.send_error(404)
                 return
             if content_length < 1:
+                self.send_error(400)
+                return
+            if b"GetStreamUri" in body:
+                payload = stream_payload
+            elif b"GetServiceCapabilities" in body:
+                payload = capability_payload
+            elif b"GetProfiles" in body:
+                payload = profiles_payload
+            else:
                 self.send_error(400)
                 return
             self.send_response(200)

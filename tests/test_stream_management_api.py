@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
+from http.server import ThreadingHTTPServer
+from threading import Thread
 
 from fastapi.testclient import TestClient
 import pytest
@@ -10,6 +12,8 @@ from sqlalchemy.orm.exc import StaleDataError
 from hcam.audit.models import AuditEvent
 from hcam.security.auth import Principal
 from hcam.streams.models import StreamEndpoint, StreamHealthCurrent
+from hcam.streams.onvif import OnvifCapabilityDiscovery, OnvifResolutionError
+from hcam.streams.onvif_simulator import handler_for
 from hcam.streams.service import StreamConflictError, StreamService
 
 
@@ -125,6 +129,231 @@ def test_viewer_cannot_create_or_queue_stream(
 
     assert create_response.status_code == 403
     assert queue_response.status_code == 403
+
+
+def test_editor_discovers_onvif_camera_capabilities_and_audits(
+    imported_app, editor_headers: dict[str, str]
+) -> None:
+    server = ThreadingHTTPServer(
+        ("127.0.0.1", 0), handler_for("rtsp://127.0.0.1:8554/synthetic-01")
+    )
+    thread = Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    host, port = server.server_address
+    try:
+        with TestClient(imported_app) as client:
+            created = client.post(
+                "/cameras/synthetic:cctv-002/streams",
+                json=stream_payload(
+                    adapter_kind="onvif",
+                    protocol="http",
+                    locator=f"http://{host}:{port}/onvif/media_service",
+                ),
+                headers=editor_headers,
+            )
+            stream_id = created.json()["stream_id"]
+            response = client.post(
+                f"/streams/{stream_id}/capabilities/discover",
+                headers=editor_headers,
+            )
+    finally:
+        server.shutdown()
+        server.server_close()
+        thread.join(timeout=2)
+
+    assert response.status_code == 200
+    assert response.headers["cache-control"] == "no-store"
+    payload = response.json()
+    assert payload["stream_id"] == stream_id
+    assert payload["camera_id"] == "synthetic:cctv-002"
+    assert payload["source"] == "onvif_media_service"
+    assert payload["media"]["maximum_profiles"] == 8
+    assert len(payload["media"]["profiles"]) == 2
+    assert payload["media"]["profiles"][0]["video_encoding"] == "H264"
+    assert payload["media"]["profiles"][0]["ptz_configured"] is True
+
+    with imported_app.state.database.session_factory() as session:
+        event = session.scalars(
+            select(AuditEvent).where(
+                AuditEvent.action == "stream.capabilities.discover",
+                AuditEvent.outcome == "success",
+            )
+        ).one()
+    assert event.target_id == stream_id
+    assert event.context["camera_id"] == "synthetic:cctv-002"
+    assert event.context["profile_count"] == 2
+    assert event.context["configured_features"] == [
+        "analytics",
+        "audio",
+        "metadata",
+        "ptz",
+    ]
+    assert isinstance(event.context["request_id"], str)
+    assert "locator" not in event.context
+
+
+def test_capability_discovery_enforces_role_adapter_and_network_policy(
+    imported_app,
+    editor_headers: dict[str, str],
+    viewer_headers: dict[str, str],
+) -> None:
+    with TestClient(imported_app) as client:
+        synthetic = client.post(
+            "/cameras/synthetic:cctv-002/streams",
+            json=stream_payload(),
+            headers=editor_headers,
+        ).json()
+        wrong_adapter = client.post(
+            f"/streams/{synthetic['stream_id']}/capabilities/discover",
+            headers=editor_headers,
+        )
+        denied = client.post(
+            "/cameras/synthetic:cctv-001/streams",
+            json=stream_payload(
+                name="onvif-unlisted",
+                adapter_kind="onvif",
+                protocol="http",
+                locator="http://unlisted.example.invalid/onvif/media_service",
+                is_primary=False,
+            ),
+            headers=editor_headers,
+        ).json()
+        network_denied = client.post(
+            f"/streams/{denied['stream_id']}/capabilities/discover",
+            headers=editor_headers,
+        )
+        viewer_denied = client.post(
+            f"/streams/{denied['stream_id']}/capabilities/discover",
+            headers={
+                **viewer_headers,
+                "X-HCAM-Reason": "Viewer cannot initiate device discovery",
+            },
+        )
+
+    assert wrong_adapter.status_code == 422
+    assert network_denied.status_code == 422
+    assert "allowlist" in network_denied.text
+    assert viewer_denied.status_code == 403
+
+
+def test_capability_discovery_requires_reason_and_department_scope(
+    imported_app,
+    editor_headers: dict[str, str],
+) -> None:
+    with TestClient(imported_app) as client:
+        traffic_stream = next(
+            item
+            for item in client.get("/streams", headers=editor_headers).json()["items"]
+            if item["camera_id"] == "synthetic:cctv-001"
+        )
+        missing_reason = client.post(
+            f"/streams/{traffic_stream['stream_id']}/capabilities/discover",
+            headers={
+                key: value
+                for key, value in editor_headers.items()
+                if key != "X-HCAM-Reason"
+            },
+        )
+        outside_department = client.post(
+            f"/streams/{traffic_stream['stream_id']}/capabilities/discover",
+            headers={
+                "X-HCAM-Actor": "operations-editor",
+                "X-HCAM-Roles": "camera.editor",
+                "X-HCAM-Departments": "operations",
+                "X-HCAM-Reason": "Authorized scoped capability query",
+            },
+        )
+
+    assert missing_reason.status_code == 422
+    assert outside_department.status_code == 404
+
+
+@pytest.mark.parametrize(
+    ("overrides", "detail"),
+    [
+        (
+            {
+                "protocol": "rtsp",
+                "locator": "rtsp://127.0.0.1:8554/onvif",
+            },
+            "requires HTTP(S)",
+        ),
+        (
+            {
+                "protocol": "http",
+                "locator": "http://127.0.0.1:1/onvif/media_service",
+                "secret_ref": "vault/camera-002",
+            },
+            "credentials are not available",
+        ),
+        (
+            {
+                "protocol": "http",
+                "locator": "http://127.0.0.1:1/onvif/media_service",
+                "enabled": False,
+            },
+            "Disabled streams",
+        ),
+    ],
+)
+def test_capability_discovery_rejects_ineligible_onvif_streams(
+    imported_app,
+    editor_headers: dict[str, str],
+    overrides: dict[str, object],
+    detail: str,
+) -> None:
+    with TestClient(imported_app) as client:
+        created = client.post(
+            "/cameras/synthetic:cctv-002/streams",
+            json=stream_payload(adapter_kind="onvif", **overrides),
+            headers=editor_headers,
+        ).json()
+        response = client.post(
+            f"/streams/{created['stream_id']}/capabilities/discover",
+            headers=editor_headers,
+        )
+
+    assert response.status_code == 422
+    assert detail in response.json()["detail"]
+
+
+def test_capability_discovery_normalizes_transport_failure_and_audits(
+    imported_app,
+    editor_headers: dict[str, str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def fail_discovery(
+        _discovery: OnvifCapabilityDiscovery, _service_url: str
+    ) -> None:
+        raise OnvifResolutionError("unreachable")
+
+    monkeypatch.setattr(OnvifCapabilityDiscovery, "discover", fail_discovery)
+    with TestClient(imported_app) as client:
+        created = client.post(
+            "/cameras/synthetic:cctv-002/streams",
+            json=stream_payload(
+                adapter_kind="onvif",
+                protocol="http",
+                locator="http://127.0.0.1:1/onvif/media_service",
+            ),
+            headers=editor_headers,
+        ).json()
+        response = client.post(
+            f"/streams/{created['stream_id']}/capabilities/discover",
+            headers=editor_headers,
+        )
+
+    assert response.status_code == 502
+    assert response.json()["detail"].endswith("(unreachable)")
+    with imported_app.state.database.session_factory() as session:
+        event = session.scalars(
+            select(AuditEvent).where(
+                AuditEvent.action == "stream.capabilities.discover",
+                AuditEvent.outcome == "failure",
+            )
+        ).one()
+    assert event.context["error_type"] == "StreamCapabilityDiscoveryError"
+    assert isinstance(event.context["request_id"], str)
 
 
 def test_stream_update_requires_etag_and_promotes_new_primary(

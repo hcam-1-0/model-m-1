@@ -68,6 +68,7 @@ services:
       HCAM_PLAYBACK_PUBLIC_BASE_URL: http://127.0.0.1:${HCAM_HLS_PORT:-8888}
       HCAM_PLAYBACK_SIGNING_KEY_FILE: /run/secrets/playback_signing_key
       HCAM_PLAYBACK_TOKEN_TTL_SECONDS: "60"
+      HCAM_STREAM_PROBE_ALLOWED_HOSTS: onvif-simulator
     secrets: [database_url, metrics_token, playback_signing_key]
     depends_on:
       database:

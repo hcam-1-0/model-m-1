@@ -10,8 +10,8 @@ gate is explicit owner acceptance.
 | Area | Evidence |
 |---|---|
 | Schema | Alembic `0004` and `0005`, drift and round-trip tests |
-| API | Stream management, health/history, queued probes, playback sessions |
-| Adapters | RTSP/HLS/HTTP, legacy, synthetic, controlled ONVIF |
+| API | Stream management, health/history, queued probes, capability queries, playback sessions |
+| Adapters | RTSP/HLS/HTTP, legacy, synthetic, controlled ONVIF stream and capability operations |
 | Health | FFprobe worker, leases, hysteresis, backoff, history, retention |
 | Events | Transactional outbox, at-least-once dispatcher, validation sink |
 | Playback | ES256, JWKS, 60-second exact-path permission, no token storage |
@@ -28,7 +28,9 @@ failure drill.
 
 Validated on 2026-08-19:
 
-- 252 tests passed, 1 local PostgreSQL-URL test skipped, 90.15% branch coverage;
+- 268 tests passed, 1 local PostgreSQL-URL test skipped, 90.67% branch coverage;
+- configured ONVIF media capability discovery returned two normalized synthetic
+  profiles without network discovery or raw XML persistence;
 - PostgreSQL 18 lab reached 50 healthy streams with two worker replicas;
 - path-scoped JWT playback passed while anonymous and cross-stream reads failed;
 - the ONVIF outage completed `healthy -> degraded -> offline` and recovered via

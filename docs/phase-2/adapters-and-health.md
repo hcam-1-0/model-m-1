@@ -15,7 +15,8 @@ Supported Phase 2 adapters:
 - `rtsp`, `hls`, and `http`: direct FFprobe metadata inspection;
 - `legacy`: compatibility endpoint created from Phase 1 camera records;
 - `synthetic`: controlled lab RTSP path;
-- `onvif`: explicit SOAP `GetStreamUri` against the local simulator only.
+- `onvif`: explicit SOAP `GetStreamUri`, `GetServiceCapabilities`, and
+  `GetProfiles` against a configured media-service URL.
 
 ONVIF requests use a dedicated opener with environment proxies disabled and
 HTTP redirects denied. Both the configured ONVIF URL and the returned RTSP URI
@@ -23,6 +24,23 @@ must independently pass the exact network policy.
 
 There is no LAN scan, WS-Discovery, camera provisioning, PTZ control, firmware
 management, or production secret-manager adapter in this phase.
+
+## Camera Capability Discovery
+
+`POST /streams/{stream_id}/capabilities/discover` performs a live, read-only
+query for an enabled, credential-free ONVIF endpoint. It requires
+`camera.editor`, department access, and `X-HCAM-Reason`. The action is audited
+without storing the locator, raw XML, or profile tokens in the audit context.
+
+The normalized response includes media-service flags, maximum profile count,
+and up to 64 configured profiles with video encoding, resolution, frame-rate
+limit, audio encoding, and whether PTZ, analytics, or metadata configuration is
+attached. Each SOAP response is limited to 256 KiB. Results use `no-store` and
+are not persisted as authoritative camera configuration.
+
+This is capability discovery for one already configured device endpoint. It is
+not network discovery: H-CAM does not enumerate hosts, probe address ranges, or
+use WS-Discovery.
 
 ## FFprobe Controls
 
