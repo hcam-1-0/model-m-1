@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import ipaddress
-import socket
 from dataclasses import dataclass
 from urllib.parse import urlsplit
 
@@ -24,18 +23,18 @@ class StreamNetworkPolicy:
         if normalized in self.allowed_hosts:
             return
         try:
-            addresses = {
-                ipaddress.ip_address(item[4][0])
-                for item in socket.getaddrinfo(normalized, None)
-            }
-        except (OSError, ValueError) as exc:
-            raise StreamNetworkPolicyError(
-                "stream host is not resolvable or explicitly allowed"
-            ) from exc
-        if not addresses or not all(address.is_loopback for address in addresses):
+            address = ipaddress.ip_address(normalized)
+        except ValueError:
+            address = None
+        if address is not None:
+            if address.is_loopback:
+                return
             raise StreamNetworkPolicyError(
                 "stream host is outside the probe network allowlist"
             )
+        raise StreamNetworkPolicyError(
+            "stream hostname must be explicitly allowlisted"
+        )
 
 
 def parse_allowed_hosts(value: str | None) -> frozenset[str]:

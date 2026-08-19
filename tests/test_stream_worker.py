@@ -144,7 +144,10 @@ def test_three_transient_failures_move_stream_offline_with_backoff(imported_app)
         assert endpoint.probe_due_at == clock.current - timedelta(seconds=1)
 
 
-def test_terminal_failure_is_immediate_and_scheduled_at_five_minutes() -> None:
+@pytest.mark.parametrize("reason", ["network_policy_denied", "onvif_redirect_denied"])
+def test_terminal_failure_is_immediate_and_scheduled_at_five_minutes(
+    reason: str,
+) -> None:
     current = StreamHealthCurrent(
         stream_id="str_" + "a" * 32,
         state="unknown",
@@ -152,9 +155,7 @@ def test_terminal_failure_is_immediate_and_scheduled_at_five_minutes() -> None:
         consecutive_failures=0,
     )
 
-    transition = transition_health(
-        current, ProbeResult("failure", "network_policy_denied", 0.0)
-    )
+    transition = transition_health(current, ProbeResult("failure", reason, 0.0))
 
     assert transition.state == "misconfigured"
     assert transition.next_probe_delay == timedelta(minutes=5)

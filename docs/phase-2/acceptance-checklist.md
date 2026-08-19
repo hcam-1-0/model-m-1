@@ -5,7 +5,9 @@
 - [x] Stream endpoint schema, migration, legacy backfill, and constraints
 - [x] Department-scoped read/write API, reasons, audit, and ETags
 - [x] Credential-free locator validation and exact network allowlist
+- [x] DNS-rebinding, environment-proxy, and ONVIF redirect denial controls
 - [x] Metadata-only FFprobe runner with bounded execution
+- [x] Execution-time stdout/stderr ceilings that terminate output floods
 - [x] Controlled ONVIF simulator without discovery
 - [x] PostgreSQL leases and SQLite single-worker boundary
 - [x] Health hysteresis, backoff, projection, history, and outbox events

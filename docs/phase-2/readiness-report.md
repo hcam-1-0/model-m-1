@@ -16,7 +16,7 @@ gate is explicit owner acceptance.
 | Events | Transactional outbox, at-least-once dispatcher, validation sink |
 | Playback | ES256, JWKS, 60-second exact-path permission, no token storage |
 | Scale | 50 synthetic streams, two workers, on-demand fMP4 HLS |
-| Security | RBAC, department scope, audit reasons, loopback exposure, allowlist |
+| Security | RBAC, department scope, audit reasons, fail-closed egress, allowlist |
 | Operations | protected bounded metrics, Grafana dashboard, Prometheus alert rules |
 | Governance | synthetic-only, no recording, no real CCTV or Government data |
 
@@ -26,9 +26,9 @@ failure drill.
 
 ## Local Validation Evidence
 
-Validated on 2026-08-18:
+Validated on 2026-08-19:
 
-- 242 tests passed, 1 local PostgreSQL-URL test skipped, 90.15% branch coverage;
+- 252 tests passed, 1 local PostgreSQL-URL test skipped, 90.15% branch coverage;
 - PostgreSQL 18 lab reached 50 healthy streams with two worker replicas;
 - path-scoped JWT playback passed while anonymous and cross-stream reads failed;
 - the ONVIF outage completed `healthy -> degraded -> offline` and recovered via

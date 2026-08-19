@@ -71,3 +71,7 @@ The primary endpoint is authoritative and updates that projection.
   permission for `hcam/{stream_id}`. Tokens are returned once and not stored.
 - **DR-0009:** Scale evidence is a disposable 50-stream synthetic lab. ONVIF is
   limited to one explicit simulator and does not use WS-Discovery.
+- **DR-0010:** Adapter egress is fail-closed. Hostnames require an exact
+  allowlist entry, ONVIF bypasses environment proxies and rejects redirects,
+  returned stream URIs are revalidated, and FFprobe output is bounded while the
+  process is running rather than after capture.

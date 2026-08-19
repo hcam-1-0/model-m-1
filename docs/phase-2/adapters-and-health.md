@@ -3,10 +3,12 @@
 ## Adapter Contract
 
 Stored locators are credential-free and limited to explicit HTTP(S), HLS, and
-RTSP(S) schemes. The worker defaults to loopback destinations. Every non-loopback
-host must appear exactly in `HCAM_STREAM_PROBE_ALLOWED_HOSTS`; wildcards are
-rejected. This prevents an authorized endpoint record from silently becoming
-an unrestricted server-side request primitive.
+RTSP(S) schemes. The worker implicitly trusts only loopback IP literals. Every
+hostname, including `localhost`, and every non-loopback IP must appear exactly
+in `HCAM_STREAM_PROBE_ALLOWED_HOSTS`; wildcards are rejected. Unlisted hostnames
+are denied without DNS resolution, closing the validate-then-resolve rebinding
+window. This prevents an authorized endpoint record from silently becoming an
+unrestricted server-side request primitive.
 
 Supported Phase 2 adapters:
 
@@ -14,6 +16,10 @@ Supported Phase 2 adapters:
 - `legacy`: compatibility endpoint created from Phase 1 camera records;
 - `synthetic`: controlled lab RTSP path;
 - `onvif`: explicit SOAP `GetStreamUri` against the local simulator only.
+
+ONVIF requests use a dedicated opener with environment proxies disabled and
+HTTP redirects denied. Both the configured ONVIF URL and the returned RTSP URI
+must independently pass the exact network policy.
 
 There is no LAN scan, WS-Discovery, camera provisioning, PTZ control, firmware
 management, or production secret-manager adapter in this phase.
@@ -23,7 +29,8 @@ management, or production secret-manager adapter in this phase.
 - exec-form argument list with `shell=False` and closed stdin;
 - 8-second default process and network timeout;
 - 100 ms analysis window and 32 KiB probe size;
-- 1 MiB stdout/stderr safety ceiling;
+- execution-time 1 MiB ceiling on each stdout/stderr pipe; FFprobe is terminated
+  as soon as either ceiling is exceeded;
 - selected video/format fields only;
 - no frame extraction and no output media file;
 - normalized reason codes; raw stderr is not persisted or returned.

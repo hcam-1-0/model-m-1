@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_opener
 from xml.etree import ElementTree
 
 from hcam.streams.locator import sanitize_stream_reference
@@ -26,6 +26,18 @@ class OnvifResolutionError(RuntimeError):
         self.reason_code = reason_code
 
 
+class _NoRedirectHandler(HTTPRedirectHandler):
+    def redirect_request(
+        self, _request, response, code, _message, headers, new_url
+    ):
+        raise HTTPError(new_url, code, "ONVIF redirects are denied", headers, response)
+
+
+def _open_request(request: Request, *, timeout: float):
+    opener = build_opener(ProxyHandler({}), _NoRedirectHandler())
+    return opener.open(request, timeout=timeout)
+
+
 @dataclass(frozen=True, slots=True)
 class OnvifStreamResolver:
     timeout_seconds: float = 5.0
@@ -42,11 +54,13 @@ class OnvifStreamResolver:
             },
         )
         try:
-            with urlopen(request, timeout=self.timeout_seconds) as response:
+            with _open_request(request, timeout=self.timeout_seconds) as response:
                 payload = response.read(self.max_response_bytes + 1)
         except HTTPError as exc:
             if exc.code in {401, 403}:
                 raise OnvifResolutionError("unauthorized") from exc
+            if 300 <= exc.code < 400:
+                raise OnvifResolutionError("onvif_redirect_denied") from exc
             raise OnvifResolutionError("onvif_http_error") from exc
         except (TimeoutError, URLError, OSError) as exc:
             raise OnvifResolutionError("unreachable") from exc

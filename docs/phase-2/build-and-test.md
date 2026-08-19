@@ -14,10 +14,11 @@ python tools/phase2_readiness.py --run-validation
 
 Tests cover API authorization and ETags, locator sanitization, migration
 backfill and round trip, FFprobe parsing/classification, real local generated
-media inspection, network policy, ONVIF simulator resolution, leases,
+media inspection, execution-time output flood termination, fail-closed network
+policy, ONVIF proxy/redirect denial and simulator resolution, leases,
 hysteresis/backoff, outbox creation and delivery rollback, history retention,
 camera projection, ES256/JWKS/path scope, lab seeding, and Compose safety
-properties. The 2026-08-18 local run passed 242 tests with one expected
+properties. The 2026-08-19 local run passed 252 tests with one expected
 PostgreSQL-URL skip and 90.15% branch coverage; the container lab separately
 exercised PostgreSQL 18.
 
