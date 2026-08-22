@@ -209,9 +209,10 @@ def _failure_detail(
     return _redact(detail, secret_values)
 
 
-def _sha256(path: Path) -> str | None:
+def _canonical_text_sha256(path: Path) -> str | None:
     try:
-        return hashlib.sha256(path.read_bytes()).hexdigest()
+        content = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        return hashlib.sha256(content).hexdigest()
     except OSError:
         return None
 
@@ -230,10 +231,16 @@ def _parse_timestamp(value: object) -> datetime | None:
 
 def _source_identity() -> tuple[dict[str, str | None], dict[str, str | None]]:
     contracts = {
-        "openapi_sha256": _sha256(ROOT / "contracts/phase-2/openapi.json"),
-        "database_sha256": _sha256(ROOT / "contracts/phase-2/database.json"),
+        "openapi_sha256": _canonical_text_sha256(
+            ROOT / "contracts/phase-2/openapi.json"
+        ),
+        "database_sha256": _canonical_text_sha256(
+            ROOT / "contracts/phase-2/database.json"
+        ),
     }
-    dependencies = {"uv_lock_sha256": _sha256(ROOT / "uv.lock")}
+    dependencies = {
+        "uv_lock_sha256": _canonical_text_sha256(ROOT / "uv.lock")
+    }
     return contracts, dependencies
 
 

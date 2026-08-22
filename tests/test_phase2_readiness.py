@@ -201,15 +201,15 @@ def test_phase2_extension_gate_verifies_local_runtime_artifact(
         "eligible": True,
         "errors": [],
         "contracts": {
-            "openapi_sha256": publication_evidence._sha256(
+            "openapi_sha256": publication_evidence._canonical_text_sha256(
                 publication_evidence.ROOT / "contracts/phase-2/openapi.json"
             ),
-            "database_sha256": publication_evidence._sha256(
+            "database_sha256": publication_evidence._canonical_text_sha256(
                 publication_evidence.ROOT / "contracts/phase-2/database.json"
             ),
         },
         "dependencies": {
-            "uv_lock_sha256": publication_evidence._sha256(
+            "uv_lock_sha256": publication_evidence._canonical_text_sha256(
                 publication_evidence.ROOT / "uv.lock"
             )
         },

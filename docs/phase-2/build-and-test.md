@@ -53,9 +53,10 @@ the extension.
 
 The publication evidence runner treats a clean Git commit, reviewed contract
 hashes, and the exact `uv.lock` SHA-256 as part of the evidence identity.
-PostgreSQL downgrade and
-Compose startup are separately guarded by explicit disposable/synthetic
-confirmations. Command output is reduced to bounded, credential-redacted
+Those text-file hashes canonicalize CRLF and LF line endings, keeping evidence
+portable across Windows review workstations and Linux CI runners.
+PostgreSQL downgrade and Compose startup are separately guarded by explicit
+disposable/synthetic confirmations. Command output is reduced to bounded, credential-redacted
 failure details. The PostgreSQL gate proves major version 18, the Compose gate
 requires a structured Linux server, and cleanup runs after every stack-start
 attempt.

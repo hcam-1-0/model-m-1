@@ -246,9 +246,26 @@ def test_source_state_binds_dependency_lock_hash() -> None:
     state = evidence.source_state(FakeExecutor(_passing_response))
 
     assert state["dependencies"] == {
-        "uv_lock_sha256": evidence._sha256(evidence.ROOT / "uv.lock")
+        "uv_lock_sha256": evidence._canonical_text_sha256(evidence.ROOT / "uv.lock")
     }
     assert state["eligible"] is True
+
+
+def test_source_identity_hashes_are_independent_of_checkout_line_endings(
+    monkeypatch, tmp_path: Path
+) -> None:
+    contracts = tmp_path / "contracts" / "phase-2"
+    contracts.mkdir(parents=True)
+    (contracts / "openapi.json").write_bytes(b'{\r\n  "openapi": "3.1.0"\r\n}\r\n')
+    (contracts / "database.json").write_bytes(b'{\r\n  "tables": []\r\n}\r\n')
+    (tmp_path / "uv.lock").write_bytes(b'version = 1\r\nrevision = 3\r\n')
+    monkeypatch.setattr(evidence, "ROOT", tmp_path)
+
+    windows_contracts, windows_dependencies = evidence._source_identity()
+    for path in (*contracts.iterdir(), tmp_path / "uv.lock"):
+        path.write_bytes(path.read_bytes().replace(b"\r\n", b"\n"))
+
+    assert evidence._source_identity() == (windows_contracts, windows_dependencies)
 
 
 def test_source_state_fails_closed_without_dependency_lock(

@@ -16,6 +16,10 @@ Every runtime report contains:
 - the SHA-256 hash of the reviewed `uv.lock` dependency graph;
 - UTC generation time, bounded command outcomes, and safety declarations.
 
+Text identities use LF-canonicalized bytes so the same committed contracts and
+lock file produce identical evidence on Windows and Linux checkouts. Any other
+content change still changes the recorded SHA-256.
+
 `P2-G1` and `P2-G2` refuse to run unless the worktree is clean and committed.
 This prevents evidence from being attached to a commit that does not contain
 the tested source. Generated files default to `var/evidence/`, which is ignored
