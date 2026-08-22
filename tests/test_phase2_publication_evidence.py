@@ -39,6 +39,21 @@ def _completed(
     return subprocess.CompletedProcess(command, code, stdout, stderr)
 
 
+def test_default_executor_uses_resilient_utf8_decoding(monkeypatch) -> None:
+    captured: dict[str, object] = {}
+
+    def run(command, **kwargs):
+        captured.update(kwargs)
+        return _completed(command)
+
+    monkeypatch.setattr(evidence.subprocess, "run", run)
+
+    evidence._default_executor(["example"], None, 10)
+
+    assert captured["encoding"] == "utf-8"
+    assert captured["errors"] == "replace"
+
+
 def _clean_git_response(
     command: list[str], _environment: dict[str, str] | None
 ) -> subprocess.CompletedProcess[str] | None:
