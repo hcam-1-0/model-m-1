@@ -59,9 +59,7 @@ backlog. It does not claim the complete CCTV integration or analytics platform.
 Use Python 3.12 or later.
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python -m pip install --upgrade pip
-.\.venv\Scripts\python -m pip install -e ".[dev]"
+uv sync --locked --extra dev
 ```
 
 Create and migrate the local database:
@@ -181,6 +179,9 @@ The existing Phase 0 readiness tool remains available:
 .\.venv\Scripts\python tools/phase0_readiness.py --run-validation --strict
 .\.venv\Scripts\python tools/phase1_readiness.py --run-validation
 ```
+
+The original `HCAM-*` work items and the continuing maintenance checks are
+mapped in [backlog traceability](backlog-traceability.md).
 
 ## Phase 1 Gate
 

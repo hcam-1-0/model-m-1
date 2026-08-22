@@ -23,10 +23,14 @@ MANUAL = "manual"
 
 REQUIRED_FILES = [
     "pyproject.toml",
+    "uv.lock",
     "MANIFEST.in",
     "Dockerfile",
     ".dockerignore",
     "alembic.ini",
+    "contracts/phase-2/README.md",
+    "contracts/phase-2/openapi.json",
+    "contracts/phase-2/database.json",
     "app/hcam/main.py",
     "app/hcam/observability.py",
     "app/hcam/metrics.py",
@@ -62,6 +66,7 @@ REQUIRED_FILES = [
     "tests/test_database_integrity.py",
     "tests/test_cli.py",
     "tests/test_package_metadata.py",
+    "tests/test_release_contracts.py",
     "tests/test_request_limits.py",
     "tests/test_observability.py",
     "tests/test_metrics.py",
@@ -74,6 +79,7 @@ REQUIRED_FILES = [
     "tests/test_postgres_integration.py",
     "tools/phase1_performance.py",
     "tools/phase1_load.py",
+    "tools/release_contracts.py",
     "deploy/README.md",
     "deploy/compose.phase1.yaml",
     "deploy/observability/hcam-phase1-overview.json",
@@ -454,14 +460,20 @@ def check_owner_review_packet() -> CheckResult:
 def check_build_quality_contracts() -> CheckResult:
     pyproject = _read("pyproject.toml")
     workflow = _read(".github/workflows/python-ci.yml")
+    manifest = _read("MANIFEST.in")
+    package_tests = _read("tests/test_package_metadata.py")
     build_docs = _read("docs/phase-1/build-and-test.md")
     missing = _missing_terms(
-        "\n".join([pyproject, workflow, build_docs]),
+        "\n".join([pyproject, workflow, manifest, package_tests, build_docs]),
         [
             "pytest-cov",
             "pip-audit",
             "ruff",
-            "python -m build",
+            "[tool.uv]",
+            'required-version = "==0.12.3"',
+            "python -m build --no-isolation",
+            "uv sync --locked",
+            "uv.lock",
             "python-version: [\"3.12\", \"3.13\", \"3.14\"]",
             "--cov-fail-under=90",
             "Install wheel in an isolated environment",
@@ -469,14 +481,25 @@ def check_build_quality_contracts() -> CheckResult:
             "phase1_performance.py",
             "phase1_load.py",
             "container-validation:",
+            "release_contracts.py check",
+            "contracts/phase-2/openapi.json",
             "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
             "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+            "astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+            "include uv.lock",
+            "recursive-include .github *.md *.yaml *.yml",
+            "recursive-include fixtures *.md .gitignore",
+            "test_source_manifest_includes_governance_assets_used_by_tests",
         ],
     )
     evidence = [
         "pyproject.toml",
         ".github/workflows/python-ci.yml",
         "MANIFEST.in",
+        "tools/release_contracts.py",
+        "contracts/phase-2/openapi.json",
+        "contracts/phase-2/database.json",
+        "tests/test_package_metadata.py",
         "docs/phase-1/build-and-test.md",
     ]
     if missing:
@@ -516,8 +539,10 @@ def run_validation_commands() -> CheckResult:
     evidence: list[str] = []
     failures: list[str] = []
     commands = [
+        ["uv", "lock", "--check"],
         [sys.executable, "-m", "compileall", "-q", "app", "tools", "migrations"],
         [sys.executable, "-m", "ruff", "check", "app", "tests", "tools", "migrations"],
+        [sys.executable, "tools/release_contracts.py", "check"],
         [
             sys.executable,
             "-m",
@@ -527,8 +552,8 @@ def run_validation_commands() -> CheckResult:
             "--cov-report=term-missing",
             "--cov-fail-under=90",
         ],
-        [sys.executable, "-m", "pip", "check"],
-        [sys.executable, "-m", "pip_audit", "--skip-editable"],
+        ["uv", "pip", "check"],
+        ["uv", "run", "--locked", "--extra", "dev", "pip-audit", "--skip-editable"],
         [
             sys.executable,
             "tools/phase1_performance.py",
@@ -577,9 +602,15 @@ def run_validation_commands() -> CheckResult:
     with tempfile.TemporaryDirectory(prefix="hcam-build-") as temp_dir:
         artifact_dir = Path(temp_dir) / "dist"
         command = [
-            sys.executable,
+            "uv",
+            "run",
+            "--locked",
+            "--extra",
+            "dev",
+            "python",
             "-m",
             "build",
+            "--no-isolation",
             "--outdir",
             str(artifact_dir),
         ]
@@ -607,10 +638,16 @@ def run_validation_commands() -> CheckResult:
                     "/app/hcam/metrics.py",
                     "/tools/phase1_performance.py",
                     "/tools/phase1_load.py",
+                    "/tools/release_contracts.py",
+                    "/contracts/phase-2/openapi.json",
+                    "/contracts/phase-2/database.json",
+                    "/uv.lock",
                     "/Dockerfile",
                     "/deploy/compose.phase1.yaml",
                     "/deploy/observability/hcam-phase1-overview.json",
                     "/tests/fixtures/camera-registry-seed.json",
+                    "/fixtures/sentinel/.gitignore",
+                    "/fixtures/sentinel/README.md",
                 ]
                 missing_source_files = [
                     suffix

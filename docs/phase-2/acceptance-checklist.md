@@ -8,9 +8,27 @@
 - [x] DNS-rebinding, environment-proxy, and ONVIF redirect denial controls
 - [x] Metadata-only FFprobe runner with bounded execution
 - [x] Execution-time stdout/stderr ceilings that terminate output floods
-- [x] Controlled ONVIF simulator without network discovery
+- [x] Controlled ONVIF simulator with Media, Imaging, Events, and PTZ services
 - [x] Scoped, audited, bounded ONVIF media capability discovery
+- [x] Explicit device-service configuration and four ONVIF authentication modes
+- [x] Per-attempt secret resolution, rotation, confinement, and redaction tests
+- [x] Verified TLS/private CA support and exact scheme/host/port/address egress
+- [x] Background refresh API, priority, deduplication, cooldown, and safe status
+- [x] 24-hour jittered schedule, 36-hour freshness, and 90-day history retention
+- [x] Stable fingerprint deduplication and capability-change outbox event
+- [x] Transient retries, 90-second lease recovery, and disabled-stream denial
+- [x] Partial-result normalization and hostile service-URL rejection
+- [x] Deprecated synchronous compatibility and media-only snapshot behavior
+- [x] Low-cardinality capability metrics and operational alerts
+- [x] Controlled private-camera metadata harness disabled by default
+- [x] Read-only imaging inspection and bounded pull-point event lifecycle
+- [x] Dedicated controller role plus global and administrator-set stream gates
+- [x] PTZ velocity/duration limits, per-stream leases, and continuous auto-stop
+- [x] Admin-only WS-Discovery bound to an exact interface and private CIDRs
+- [x] Discovery fixtures prove unsafe XAddrs are filtered and never contacted
+- [x] Safe ONVIF operation records, audit events, and low-cardinality metrics
 - [x] PostgreSQL leases and SQLite single-worker boundary
+- [x] Two-worker PostgreSQL claim test and 50-stream scheduled-load test
 - [x] Health hysteresis, backoff, projection, history, and outbox events
 - [x] At-least-once outbox dispatcher and explicit production sink boundary
 - [x] ES256 JWKS and 60-second path-scoped HLS authorization
@@ -22,9 +40,16 @@
 - [x] Phase 0 and Phase 1 regression suite preserved
 - [x] Readiness verifier and CI phase gate
 
-## Owner Gate
+## Core Owner Gate
 
-- [ ] Owner reviews the Phase 2 evidence and explicitly accepts or rejects it
+- [x] Owner reviewed the Phase 2 evidence and explicitly accepted it on
+  2026-08-21
 
-Until the final owner checkbox is accepted, Phase 2 status is
-`ready_for_owner_review`. Phase 3 remains blocked.
+Phase 2 core status is `accepted`. Phase 3 planning is authorized. This
+acceptance does not authorize real CCTV, Government data, biometrics,
+watchlists, or production deployment.
+
+The authenticated capability-management and controlled ONVIF operations work
+was added after core acceptance. Its current publication and acceptance state
+is tracked separately in
+[extension-publication-checklist.md](extension-publication-checklist.md).

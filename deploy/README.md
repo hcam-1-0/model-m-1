@@ -63,3 +63,16 @@ audit.
 Secret and recovery files use owner-only modes on POSIX systems. On Windows,
 place them in an ACL-restricted directory because POSIX mode bits do not provide
 equivalent access control.
+
+## Phase 2 Capability Worker
+
+`deploy/compose.phase2.yaml` adds one capability worker and mounts
+`deploy/onvif-egress.phase2.json` read-only. The lab enables HTTP only for the
+exact synthetic simulator hostname and private Docker IPv4/IPv6 ranges. The
+worker performs read-only ONVIF metadata operations and persists normalized
+change snapshots; it never captures images or records video.
+
+Production must use verified HTTPS, the smallest approved device address
+ranges, infrastructure egress controls, and an approved external implementation
+of `CameraSecretProvider`. `HCAM_CAMERA_SECRET_PROVIDER=file` and
+`HCAM_ONVIF_LAB_HTTP_ENABLED=true` are rejected in production.

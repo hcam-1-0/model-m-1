@@ -11,8 +11,11 @@ from hcam.settings import Settings
 
 CAMERA_VIEWER = "camera.viewer"
 CAMERA_EDITOR = "camera.editor"
+CAMERA_CONTROLLER = "camera.controller"
 PLATFORM_ADMIN = "platform.admin"
-KNOWN_ROLES = frozenset({CAMERA_VIEWER, CAMERA_EDITOR, PLATFORM_ADMIN})
+KNOWN_ROLES = frozenset(
+    {CAMERA_VIEWER, CAMERA_EDITOR, CAMERA_CONTROLLER, PLATFORM_ADMIN}
+)
 _ACTOR_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:@-]{0,159}$")
 _DEPARTMENT_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 ._-]{0,119}$")
 

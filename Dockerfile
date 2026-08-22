@@ -1,18 +1,26 @@
 # syntax=docker/dockerfile:1.7
 
 ARG PYTHON_IMAGE=python:3.12.12-slim-bookworm@sha256:593bd06efe90efa80dc4eee3948be7c0fde4134606dd40d8dd8dbcade98e669c
+ARG UV_VERSION=0.12.3
 
 FROM ${PYTHON_IMAGE} AS builder
+
+ARG UV_VERSION
 
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PIP_NO_CACHE_DIR=1 \
     PYTHONDONTWRITEBYTECODE=1
 WORKDIR /build
 
-COPY pyproject.toml README.md ./
+COPY pyproject.toml README.md uv.lock ./
 COPY app ./app
-RUN python -m pip install --no-cache-dir "build>=1.5.0,<2.0" \
-    && python -m build --wheel --outdir /dist
+RUN mkdir -p /dist \
+    && python -m pip install --no-cache-dir "uv==${UV_VERSION}" \
+    && uv sync --locked --extra dev --no-install-project \
+    && uv export --locked --no-dev --extra postgres --no-emit-project \
+        --format requirements-txt --output-file /dist/requirements.txt \
+    && uv run --locked --extra dev python -m build --no-isolation \
+        --wheel --outdir /dist
 
 FROM ${PYTHON_IMAGE} AS runtime
 
@@ -44,7 +52,9 @@ RUN groupadd --gid "${HCAM_GID}" hcam \
 
 WORKDIR /opt/hcam
 COPY --from=builder /dist /tmp/dist
-RUN python -m pip install --no-cache-dir /tmp/dist/*.whl "psycopg[binary]>=3.3.0,<4.0" \
+RUN python -m pip install --no-cache-dir --require-hashes \
+        --requirement /tmp/dist/requirements.txt \
+    && python -m pip install --no-cache-dir --no-deps /tmp/dist/*.whl \
     && rm -rf /tmp/dist
 COPY --chown=${HCAM_UID}:${HCAM_GID} alembic.ini ./alembic.ini
 COPY --chown=${HCAM_UID}:${HCAM_GID} migrations ./migrations

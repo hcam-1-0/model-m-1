@@ -12,7 +12,7 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 from sqlalchemy.types import TypeDecorator
 
 
-CURRENT_SCHEMA_REVISION = "0005_playback_sessions"
+CURRENT_SCHEMA_REVISION = "0007_onvif_operations"
 REQUIRED_CAMERA_COLUMNS = frozenset(
     {
         "camera_id",
@@ -53,6 +53,13 @@ REQUIRED_STREAM_COLUMNS = frozenset(
         "is_primary",
         "probe_due_at",
         "lease_until",
+        "management_locator",
+        "onvif_auth_mode",
+        "capability_refresh_enabled",
+        "capability_due_at",
+        "onvif_control_enabled",
+        "onvif_max_velocity",
+        "onvif_max_move_seconds",
     }
 )
 
@@ -164,6 +171,10 @@ class Database:
             "stream_probe_runs",
             "stream_event_outbox",
             "playback_sessions",
+            "stream_capability_snapshots",
+            "stream_capability_refreshes",
+            "onvif_control_leases",
+            "onvif_operation_runs",
         }
         missing_tables = required_tables - table_names
         missing_columns = REQUIRED_CAMERA_COLUMNS - camera_columns

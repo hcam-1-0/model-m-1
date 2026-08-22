@@ -1,5 +1,7 @@
 # Phase 0 Foundation
 
+Status: complete and accepted on 2026-08-18.
+
 Phase 0 converts the H-CAM idea into a controlled engineering baseline. The goal
 is to define what we are building, what is out of scope, what must be proven
 before implementation, and what safety boundaries must exist before connecting
@@ -27,23 +29,24 @@ are explicit.
 
 | Deliverable | Purpose | Status |
 | --- | --- | --- |
-| [Product Brief](product-brief.md) | Defines mission, users, product surfaces, outcomes, non-goals | Started |
-| [Requirements](requirements.md) | Functional and non-functional requirements for H-CAM | Started |
-| [Architecture Baseline](architecture-baseline.md) | Modular system architecture and first service boundaries | Started |
-| [Data Governance](data-governance.md) | Safety, privacy, data classes, retention, audit, and access policy | Started |
-| [Validation Plan](validation-plan.md) | Test strategy and evidence expected before moving phases | Started |
-| [Roadmap](roadmap.md) | Phase 0 milestones and Phase 1 entry plan | Started |
-| [Acceptance Checklist](acceptance-checklist.md) | Exit gates for Phase 0 | Started |
-| [Phase 1 Handoff](phase-1-handoff.md) | First implementation scope, stack direction, and done criteria | Started |
-| [Decision Records](decision-records.md) | Phase 0 architecture decisions and proposed Phase 1 decisions | Started |
-| [Phase 1 Backlog](phase-1-backlog.md) | Implementation backlog for the first backend foundation | Started |
-| [Review Questions](review-questions.md) | Questions to answer before coding Phase 1 | Started |
+| [Product Brief](product-brief.md) | Defines mission, users, product surfaces, outcomes, non-goals | Complete |
+| [Requirements](requirements.md) | Functional and non-functional requirements for H-CAM | Complete |
+| [Architecture Baseline](architecture-baseline.md) | Modular system architecture and first service boundaries | Complete |
+| [Data Governance](data-governance.md) | Safety, privacy, data classes, retention, audit, and access policy | Complete |
+| [Validation Plan](validation-plan.md) | Test strategy and evidence expected before moving phases | Complete |
+| [Roadmap](roadmap.md) | Phase 0 milestones and Phase 1 entry plan | Complete |
+| [Acceptance Checklist](acceptance-checklist.md) | Exit gates for Phase 0 | Accepted |
+| [Phase 1 Handoff](phase-1-handoff.md) | First implementation scope, stack direction, and done criteria | Complete |
+| [Decision Records](decision-records.md) | Phase 0 architecture decisions and proposed Phase 1 decisions | Accepted |
+| [Phase 1 Backlog](phase-1-backlog.md) | Implementation backlog for the first backend foundation | Delivered |
+| [Backlog Traceability](backlog-traceability.md) | Maps Phase 0 deliverables and remaining review work | Current |
+| [Review Questions](review-questions.md) | Questions answered or deferred before Phase 1 | Complete |
 | [CCTV Environment](cctv-environment.md) | Sentinel reference environment and probe workflow | Implemented |
-| [Team Workflow](team-workflow.md) | Six-person GitHub workflow, PR rules, issue templates, and safety gates | Started |
-| [Readiness Report](readiness-report.md) | Automated Phase 0 evidence, manual gates, and full validation command | Started |
-| [Owner Review](owner-review.md) | Project-owner review packet for accepting, revising, or rejecting Phase 0 | Started |
-| [Official Constraints Intake](official-constraints-intake.md) | Source capture packet for challenge rules, datasets, demos, and sensitive data | Started |
-| [Manual Gate Issues](manual-gate-issues.md) | GitHub issue index for the four remaining Phase 0 manual gates | Started |
+| [Team Workflow](team-workflow.md) | Six-person GitHub workflow, PR rules, issue templates, and safety gates | Complete |
+| [Readiness Report](readiness-report.md) | Automated Phase 0 evidence, manual gates, and full validation command | Complete |
+| [Owner Review](owner-review.md) | Project-owner acceptance record | Accepted |
+| [Official Constraints Intake](official-constraints-intake.md) | Source capture packet for challenge rules, datasets, demos, and sensitive data | Accepted baseline |
+| [Manual Gate Issues](manual-gate-issues.md) | GitHub issue index for the four resolved Phase 0 manual gates | Closed |
 
 ## Current Build Artifacts
 
@@ -73,11 +76,11 @@ python tools/sentinel_cctv_probe.py registry-export --output fixtures/sentinel/r
 
 ## Phase 1 Entry Rule
 
-Phase 1 should not start until the Phase 0 acceptance checklist is reviewed.
-The first implementation phase should build the platform foundation around the
-camera registry and stream state model proven by the Sentinel probe.
+Phase 1 began after the Phase 0 acceptance checklist was approved and is now
+complete. The links below remain the authoritative handoff and historical
+decision record for the camera registry and stream-state foundation.
 
-Before coding Phase 1, review:
+Phase 0 maintenance review:
 
 - [Phase 1 Handoff](phase-1-handoff.md)
 - [Decision Records](decision-records.md)
@@ -88,3 +91,4 @@ Before coding Phase 1, review:
 - [Owner Review](owner-review.md)
 - [Official Constraints Intake](official-constraints-intake.md)
 - [Manual Gate Issues](manual-gate-issues.md)
+- [Backlog Traceability](backlog-traceability.md)

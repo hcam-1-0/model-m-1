@@ -10,7 +10,7 @@ from sqlalchemy.orm.exc import StaleDataError
 
 from hcam.audit.repository import AuditRepository
 from hcam.camera_registry.models import Camera, utc_now
-from hcam.security.auth import Principal
+from hcam.security.auth import PLATFORM_ADMIN, Principal
 from hcam.streams.locator import sanitize_stream_reference
 from hcam.streams.models import StreamEndpoint, StreamHealthCurrent
 from hcam.streams.network import StreamNetworkPolicy, StreamNetworkPolicyError
@@ -73,6 +73,45 @@ def _validate_locator(locator: str, protocol: str) -> str:
     if parsed.hostname is None or parsed.scheme.lower() not in allowed_schemes[protocol]:
         raise StreamValidationError("Stream locator does not match its protocol")
     return sanitized
+
+
+def _validate_management_configuration(
+    endpoint: StreamEndpoint,
+) -> None:
+    if endpoint.adapter_kind != "onvif" and (
+        endpoint.management_locator is not None
+        or endpoint.onvif_auth_mode != "none"
+        or endpoint.capability_refresh_enabled
+        or endpoint.onvif_control_enabled
+    ):
+        raise StreamValidationError(
+            "ONVIF management settings require an ONVIF adapter"
+        )
+    if endpoint.management_locator is not None:
+        normalized = endpoint.management_locator.strip()
+        parsed = urlsplit(normalized)
+        if (
+            normalized != endpoint.management_locator
+            or parsed.scheme.lower() not in {"http", "https"}
+            or parsed.hostname is None
+            or parsed.username is not None
+            or parsed.password is not None
+            or parsed.query
+            or parsed.fragment
+        ):
+            raise StreamValidationError(
+                "Management locator must be a credential-free HTTP(S) URL"
+            )
+    if endpoint.onvif_auth_mode != "none" and endpoint.secret_ref is None:
+        raise StreamValidationError(
+            "Authenticated ONVIF access requires a secret reference"
+        )
+    if endpoint.capability_refresh_enabled and endpoint.management_locator is None:
+        raise StreamValidationError(
+            "Scheduled capability refresh requires a management locator"
+        )
+    if endpoint.onvif_control_enabled and endpoint.management_locator is None:
+        raise StreamValidationError("ONVIF control requires a management locator")
 
 
 def _sync_camera_projection(
@@ -172,6 +211,10 @@ class StreamService:
                 is_primary = payload.is_primary or primary is None
                 if payload.is_primary and primary is not None:
                     raise StreamConflictError("Camera already has a primary stream")
+                if payload.onvif_control_enabled and PLATFORM_ADMIN not in principal.roles:
+                    raise StreamValidationError(
+                        "Only a platform administrator can enable ONVIF control"
+                    )
                 endpoint = StreamEndpoint(
                     stream_id=stream_id,
                     camera_id=camera_id,
@@ -180,11 +223,21 @@ class StreamService:
                     protocol=payload.protocol,
                     locator=locator,
                     secret_ref=payload.secret_ref,
+                    management_locator=payload.management_locator,
+                    onvif_auth_mode=payload.onvif_auth_mode,
+                    capability_refresh_enabled=payload.capability_refresh_enabled,
+                    capability_due_at=(
+                        utc_now() if payload.capability_refresh_enabled else None
+                    ),
+                    onvif_control_enabled=payload.onvif_control_enabled,
+                    onvif_max_velocity=payload.onvif_max_velocity,
+                    onvif_max_move_seconds=payload.onvif_max_move_seconds,
                     transport=payload.transport,
                     is_primary=is_primary,
                     enabled=payload.enabled,
                     probe_due_at=utc_now() if payload.enabled else None,
                 )
+                _validate_management_configuration(endpoint)
                 health = StreamHealthCurrent(stream_id=stream_id)
                 self.session.add_all([endpoint, health])
                 if is_primary:
@@ -249,6 +302,12 @@ class StreamService:
                     endpoint.name,
                     endpoint.locator,
                     endpoint.secret_ref,
+                    endpoint.management_locator,
+                    endpoint.onvif_auth_mode,
+                    endpoint.capability_refresh_enabled,
+                    endpoint.onvif_control_enabled,
+                    endpoint.onvif_max_velocity,
+                    endpoint.onvif_max_move_seconds,
                     endpoint.transport,
                     endpoint.is_primary,
                     endpoint.enabled,
@@ -262,6 +321,42 @@ class StreamService:
                     )
                 if "secret_ref" in changes:
                     endpoint.secret_ref = payload.secret_ref
+                if "management_locator" in changes:
+                    endpoint.management_locator = payload.management_locator
+                if "onvif_auth_mode" in changes and payload.onvif_auth_mode is not None:
+                    endpoint.onvif_auth_mode = payload.onvif_auth_mode
+                if (
+                    "capability_refresh_enabled" in changes
+                    and payload.capability_refresh_enabled is not None
+                ):
+                    endpoint.capability_refresh_enabled = (
+                        payload.capability_refresh_enabled
+                    )
+                    endpoint.capability_due_at = (
+                        utc_now() if payload.capability_refresh_enabled else None
+                    )
+                if (
+                    "onvif_control_enabled" in changes
+                    and payload.onvif_control_enabled is not None
+                ):
+                    if (
+                        payload.onvif_control_enabled
+                        and PLATFORM_ADMIN not in principal.roles
+                    ):
+                        raise StreamValidationError(
+                            "Only a platform administrator can enable ONVIF control"
+                        )
+                    endpoint.onvif_control_enabled = payload.onvif_control_enabled
+                if (
+                    "onvif_max_velocity" in changes
+                    and payload.onvif_max_velocity is not None
+                ):
+                    endpoint.onvif_max_velocity = payload.onvif_max_velocity
+                if (
+                    "onvif_max_move_seconds" in changes
+                    and payload.onvif_max_move_seconds is not None
+                ):
+                    endpoint.onvif_max_move_seconds = payload.onvif_max_move_seconds
                 if "transport" in changes and payload.transport is not None:
                     if endpoint.protocol not in {"rtsp", "rtsps"} and payload.transport != "tcp":
                         raise StreamValidationError(
@@ -296,10 +391,17 @@ class StreamService:
                     endpoint.name,
                     endpoint.locator,
                     endpoint.secret_ref,
+                    endpoint.management_locator,
+                    endpoint.onvif_auth_mode,
+                    endpoint.capability_refresh_enabled,
+                    endpoint.onvif_control_enabled,
+                    endpoint.onvif_max_velocity,
+                    endpoint.onvif_max_move_seconds,
                     endpoint.transport,
                     endpoint.is_primary,
                     endpoint.enabled,
                 )
+                _validate_management_configuration(endpoint)
                 if before == after:
                     raise StreamValidationError("Stream update does not change data")
                 endpoint.updated_at = utc_now()
@@ -461,6 +563,7 @@ class StreamService:
                     height=profile.height,
                     frame_rate_limit=profile.frame_rate_limit,
                     audio_encoding=profile.audio_encoding,
+                    video_source_token=profile.video_source_token,
                     ptz_configured=profile.ptz_configured,
                     analytics_configured=profile.analytics_configured,
                     metadata_configured=profile.metadata_configured,

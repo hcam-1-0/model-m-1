@@ -314,12 +314,6 @@ def verify(
         "X-HCAM-Roles": "camera.viewer",
         "X-HCAM-Departments": "*",
     }
-    editor_headers = {
-        "X-HCAM-Actor": "phase2-lab-verifier",
-        "X-HCAM-Roles": "camera.editor",
-        "X-HCAM-Departments": "*",
-        "X-HCAM-Reason": "Authorized synthetic ONVIF capability verification",
-    }
     deadline = monotonic() + timeout_seconds
     latest: dict[str, object] = {}
     while monotonic() < deadline:
@@ -354,17 +348,32 @@ def verify(
         onvif_item.get("stream_id"), str
     ):
         raise LabError("ONVIF synthetic stream is unavailable for capability discovery")
-    capability_report = _json_request(
-        f"{api_url.rstrip('/')}/streams/{onvif_item['stream_id']}/capabilities/discover",
-        method="POST",
-        headers=editor_headers,
+    capability_url = (
+        f"{api_url.rstrip('/')}/streams/{onvif_item['stream_id']}/capabilities"
     )
+    capability_report: dict[str, object] = {}
+    while monotonic() < deadline:
+        try:
+            capability_report = _json_request(
+                capability_url,
+                headers=viewer_headers,
+            )
+            if capability_report.get("fresh") is True:
+                break
+        except LabHttpError as exc:
+            if exc.status_code != 404:
+                raise
+        sleep(1)
+    else:
+        raise LabError("background ONVIF capability refresh did not complete")
     media_capabilities = capability_report.get("media")
     if not isinstance(media_capabilities, dict):
         raise LabError("ONVIF capability response is incomplete")
     profiles = media_capabilities.get("profiles")
     if (
-        capability_report.get("source") != "onvif_media_service"
+        capability_report.get("source") != "device_and_media"
+        or not isinstance(capability_report.get("device"), dict)
+        or capability_report["device"].get("model") != "Phase 2 Simulator"
         or media_capabilities.get("maximum_profiles") != 8
         or not isinstance(profiles, list)
         or len(profiles) != 2
@@ -373,6 +382,12 @@ def verify(
         or profiles[0].get("ptz_configured") is not True
     ):
         raise LabError("ONVIF capability response did not match the synthetic contract")
+    capability_history = _json_request(
+        f"{api_url.rstrip('/')}/streams/{onvif_item['stream_id']}/capability-snapshots",
+        headers=viewer_headers,
+    )
+    if capability_history.get("total") != 1:
+        raise LabError("ONVIF capability change history did not match the synthetic contract")
     first = items[0]
     assert isinstance(first, dict)
     stream_id = first.get("stream_id")
@@ -433,7 +448,8 @@ def verify(
         "healthy_streams": 50,
         "onvif_simulator_streams": 1,
         "onvif_capability_profiles": 2,
-        "onvif_capability_discovery": "validated",
+        "onvif_capability_discovery": "background-worker-validated",
+        "onvif_capability_history": "validated",
         "playback_jwt": "validated-by-mediamtx",
         "anonymous_playback_denied": True,
         "cross_stream_token_denied": True,

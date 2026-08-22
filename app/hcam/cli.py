@@ -27,6 +27,11 @@ from hcam.streams.outbox import (
 )
 from hcam.streams.probe import FfprobeRunner, ProbeToolError, StreamProbeAdapter
 from hcam.streams.worker import StreamHealthWorker
+from hcam.streams.capabilities import build_capability_discovery_engine
+from hcam.streams.capability_worker import (
+    CapabilityRefreshWorker,
+    CapabilityWorkerRuntimeError,
+)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -73,6 +78,13 @@ def build_parser() -> argparse.ArgumentParser:
     )
     worker_parser.add_argument("--poll-seconds", type=float, default=2.0)
     worker_parser.add_argument("--worker-id")
+    capability_worker_parser = subparsers.add_parser(
+        "capability-worker",
+        help="Run the read-only ONVIF capability refresh worker",
+    )
+    capability_worker_parser.add_argument("--once", action="store_true")
+    capability_worker_parser.add_argument("--poll-seconds", type=float, default=2.0)
+    capability_worker_parser.add_argument("--worker-id")
     dispatcher_parser = subparsers.add_parser(
         "stream-event-dispatcher",
         help="Deliver transactional stream events to the configured sink",
@@ -169,6 +181,29 @@ def main(argv: Sequence[str] | None = None) -> int:
                     output = seed_synthetic_lab(session, count=args.count)
             finally:
                 database.dispose()
+        elif args.command == "capability-worker":
+            if args.poll_seconds <= 0:
+                raise ValueError("--poll-seconds must be positive")
+            database = Database(settings.database_url)
+            worker_id = args.worker_id or f"{socket.gethostname()}:{os.getpid()}"
+            worker = CapabilityRefreshWorker(
+                database.session_factory,
+                build_capability_discovery_engine(settings),
+                worker_id=worker_id,
+            )
+            try:
+                database.check_ready()
+                if args.once:
+                    output = {"processed": worker.run_once(), "worker_id": worker_id}
+                else:
+                    heartbeat = os.getenv("HCAM_CAPABILITY_WORKER_HEARTBEAT_FILE")
+                    worker.run(
+                        poll_seconds=args.poll_seconds,
+                        heartbeat_file=Path(heartbeat) if heartbeat else None,
+                    )
+                    return 0
+            finally:
+                database.dispose()
         elif args.command == "stream-event-dispatcher":
             if args.poll_seconds <= 0:
                 raise ValueError("--poll-seconds must be positive")
@@ -199,6 +234,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         DatabaseBackupError,
         ProbeToolError,
         StreamEventDeliveryError,
+        CapabilityWorkerRuntimeError,
         SyntheticLabError,
         ValueError,
     ) as exc:

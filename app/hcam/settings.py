@@ -1,12 +1,18 @@
 from __future__ import annotations
 
+import ipaddress
 import os
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlsplit
 
-from hcam.streams.network import parse_allowed_hosts
+from hcam.streams.network import (
+    OnvifEgressRule,
+    load_onvif_egress_rules,
+    parse_allowed_hosts,
+    parse_private_ipv4_networks,
+)
 
 
 _MAX_SECRET_FILE_BYTES = 16 * 1024
@@ -132,6 +138,17 @@ class Settings:
     stream_probe_timeout_seconds: float = 8.0
     stream_probe_allowed_hosts: frozenset[str] = frozenset()
     stream_probe_token: str | None = field(default=None, repr=False)
+    onvif_egress_rules: tuple[OnvifEgressRule, ...] = ()
+    onvif_lab_http_enabled: bool = False
+    onvif_ca_bundle: Path | None = None
+    onvif_control_enabled: bool = False
+    onvif_discovery_enabled: bool = False
+    onvif_discovery_interface: str | None = None
+    onvif_discovery_allowed_networks: tuple[ipaddress.IPv4Network, ...] = ()
+    onvif_discovery_timeout_seconds: float = 2.0
+    onvif_discovery_max_results: int = 32
+    camera_secret_provider: str = "unconfigured"
+    camera_secret_root: Path | None = field(default=None, repr=False)
     playback_signing_key: str | None = field(default=None, repr=False)
     playback_public_base_url: str = "http://127.0.0.1:8888"
     playback_token_ttl_seconds: int = 60
@@ -164,6 +181,92 @@ class Settings:
             raise ValueError("HCAM_FFPROBE_EXECUTABLE must not be empty")
         if self.stream_probe_timeout_seconds <= 0:
             raise ValueError("HCAM_STREAM_PROBE_TIMEOUT_SECONDS must be positive")
+        if self.camera_secret_provider not in {"unconfigured", "file"}:
+            raise ValueError(
+                "HCAM_CAMERA_SECRET_PROVIDER must be unconfigured or file"
+            )
+        if self.camera_secret_provider == "file" and self.camera_secret_root is None:
+            raise ValueError(
+                "HCAM_CAMERA_SECRET_ROOT is required for the file secret provider"
+            )
+        if self.camera_secret_provider != "file" and self.camera_secret_root is not None:
+            raise ValueError(
+                "HCAM_CAMERA_SECRET_ROOT requires HCAM_CAMERA_SECRET_PROVIDER=file"
+            )
+        if environment == "production" and self.camera_secret_provider == "file":
+            raise ValueError("the file camera secret provider is forbidden in production")
+        if environment == "production" and self.onvif_lab_http_enabled:
+            raise ValueError("ONVIF lab HTTP is forbidden in production")
+        if environment == "production" and self.onvif_control_enabled:
+            raise ValueError("ONVIF control is forbidden in production")
+        if environment == "production" and self.onvif_discovery_enabled:
+            raise ValueError("ONVIF WS-Discovery is forbidden in production")
+        if environment == "production" and any(
+            rule.scheme == "http" for rule in self.onvif_egress_rules
+        ):
+            raise ValueError("production ONVIF egress rules must use HTTPS")
+        if self.onvif_ca_bundle is not None:
+            ca_bundle = self.onvif_ca_bundle.expanduser().resolve()
+            if not ca_bundle.is_file():
+                raise ValueError("HCAM_ONVIF_CA_BUNDLE must identify a regular file")
+            object.__setattr__(self, "onvif_ca_bundle", ca_bundle)
+        if self.onvif_discovery_enabled:
+            if self.onvif_discovery_interface is None:
+                raise ValueError(
+                    "HCAM_ONVIF_DISCOVERY_INTERFACE is required when discovery is enabled"
+                )
+            if not self.onvif_discovery_allowed_networks:
+                raise ValueError(
+                    "HCAM_ONVIF_DISCOVERY_ALLOWED_NETWORKS is required when discovery is enabled"
+                )
+        if self.onvif_discovery_interface is not None:
+            try:
+                discovery_interface = ipaddress.ip_address(
+                    self.onvif_discovery_interface.strip()
+                )
+            except ValueError as exc:
+                raise ValueError(
+                    "HCAM_ONVIF_DISCOVERY_INTERFACE must be an IPv4 address"
+                ) from exc
+            if not isinstance(discovery_interface, ipaddress.IPv4Address):
+                raise ValueError(
+                    "HCAM_ONVIF_DISCOVERY_INTERFACE must be an IPv4 address"
+                )
+            if discovery_interface.is_loopback:
+                if environment not in {"development", "test"}:
+                    raise ValueError("loopback ONVIF discovery is lab-only")
+            elif (
+                not discovery_interface.is_private
+                or discovery_interface.is_link_local
+                or discovery_interface.is_multicast
+                or discovery_interface.is_unspecified
+            ):
+                raise ValueError(
+                    "HCAM_ONVIF_DISCOVERY_INTERFACE must be a private address"
+                )
+            if self.onvif_discovery_allowed_networks and not any(
+                discovery_interface in network
+                for network in self.onvif_discovery_allowed_networks
+            ):
+                raise ValueError(
+                    "ONVIF discovery interface must belong to an approved network"
+                )
+            object.__setattr__(
+                self, "onvif_discovery_interface", str(discovery_interface)
+            )
+        if not 0.1 <= self.onvif_discovery_timeout_seconds <= 5.0:
+            raise ValueError(
+                "HCAM_ONVIF_DISCOVERY_TIMEOUT_SECONDS must be between 0.1 and 5"
+            )
+        if not 1 <= self.onvif_discovery_max_results <= 64:
+            raise ValueError(
+                "HCAM_ONVIF_DISCOVERY_MAX_RESULTS must be between 1 and 64"
+            )
+        if self.camera_secret_root is not None:
+            secret_root = self.camera_secret_root.expanduser().resolve()
+            if not secret_root.is_dir():
+                raise ValueError("HCAM_CAMERA_SECRET_ROOT must identify a directory")
+            object.__setattr__(self, "camera_secret_root", secret_root)
         playback_url = urlsplit(self.playback_public_base_url)
         if (
             playback_url.scheme not in {"http", "https"}
@@ -228,6 +331,47 @@ class Settings:
                 os.getenv("HCAM_STREAM_PROBE_ALLOWED_HOSTS")
             ),
             stream_probe_token=_read_secret_file("HCAM_STREAM_PROBE_TOKEN_FILE"),
+            onvif_egress_rules=load_onvif_egress_rules(
+                os.getenv("HCAM_ONVIF_EGRESS_RULES_FILE")
+            ),
+            onvif_lab_http_enabled=_environment_flag(
+                "HCAM_ONVIF_LAB_HTTP_ENABLED"
+            ),
+            onvif_ca_bundle=(
+                Path(value)
+                if (value := os.getenv("HCAM_ONVIF_CA_BUNDLE"))
+                else None
+            ),
+            onvif_control_enabled=_environment_flag(
+                "HCAM_ONVIF_CONTROL_ENABLED"
+            ),
+            onvif_discovery_enabled=_environment_flag(
+                "HCAM_ONVIF_DISCOVERY_ENABLED"
+            ),
+            onvif_discovery_interface=(
+                value.strip()
+                if (value := os.getenv("HCAM_ONVIF_DISCOVERY_INTERFACE"))
+                else None
+            ),
+            onvif_discovery_allowed_networks=parse_private_ipv4_networks(
+                os.getenv("HCAM_ONVIF_DISCOVERY_ALLOWED_NETWORKS")
+            ),
+            onvif_discovery_timeout_seconds=_positive_environment_number(
+                "HCAM_ONVIF_DISCOVERY_TIMEOUT_SECONDS",
+                defaults.onvif_discovery_timeout_seconds,
+            ),
+            onvif_discovery_max_results=_positive_environment_integer(
+                "HCAM_ONVIF_DISCOVERY_MAX_RESULTS",
+                defaults.onvif_discovery_max_results,
+            ),
+            camera_secret_provider=os.getenv(
+                "HCAM_CAMERA_SECRET_PROVIDER", defaults.camera_secret_provider
+            ).strip().lower(),
+            camera_secret_root=(
+                Path(value)
+                if (value := os.getenv("HCAM_CAMERA_SECRET_ROOT"))
+                else None
+            ),
             playback_signing_key=_read_pem_secret_file(
                 "HCAM_PLAYBACK_SIGNING_KEY_FILE"
             ),

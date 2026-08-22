@@ -1,0 +1,1921 @@
+{
+  "alembic_heads": [
+    "0007_onvif_operations"
+  ],
+  "contract_format": "hcam.database.contract.v1",
+  "dialect": "sqlite",
+  "tables": [
+    {
+      "check_constraints": [],
+      "columns": [
+        {
+          "default": null,
+          "name": "version_num",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(32)"
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [],
+      "name": "alembic_version",
+      "primary_key": {
+        "columns": [
+          "version_num"
+        ],
+        "name": "alembic_version_pkc"
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [],
+      "columns": [
+        {
+          "default": null,
+          "name": "event_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "actor_id",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "action",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "target_type",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "target_id",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(255)"
+        },
+        {
+          "default": null,
+          "name": "occurred_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "source",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "reason",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "outcome",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(40)"
+        },
+        {
+          "default": null,
+          "name": "context",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "columns": [
+            "action"
+          ],
+          "name": "ix_audit_events_action",
+          "unique": false
+        },
+        {
+          "columns": [
+            "occurred_at"
+          ],
+          "name": "ix_audit_events_occurred_at",
+          "unique": false
+        }
+      ],
+      "name": "audit_events",
+      "primary_key": {
+        "columns": [
+          "event_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_cameras_coordinate_pair",
+          "sql": "(latitude IS NULL AND longitude IS NULL) OR (latitude IS NOT NULL AND longitude IS NOT NULL)"
+        },
+        {
+          "name": "ck_cameras_duration_nonnegative",
+          "sql": "duration_seconds IS NULL OR duration_seconds >= 0"
+        },
+        {
+          "name": "ck_cameras_latitude_range",
+          "sql": "latitude IS NULL OR (latitude >= -90 AND latitude <= 90)"
+        },
+        {
+          "name": "ck_cameras_longitude_range",
+          "sql": "longitude IS NULL OR (longitude >= -180 AND longitude <= 180)"
+        },
+        {
+          "name": "ck_cameras_version_positive",
+          "sql": "version_id >= 1"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "source_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "external_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(255)"
+        },
+        {
+          "default": null,
+          "name": "display_name",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(255)"
+        },
+        {
+          "default": null,
+          "name": "location_label",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(500)"
+        },
+        {
+          "default": null,
+          "name": "timezone_name",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "latitude",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "longitude",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "ownership",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "camera_type",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "connectivity_status",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "storage_status",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "health_status",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "maintenance_status",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "metadata_status",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "operational_status",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "stream_path",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "hls_path",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "selected_url",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "delivery_type",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "codec",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "container",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "duration_seconds",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "reachability",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "last_checked_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "source_schema",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "source_generated_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "provenance",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "imported_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "updated_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": "1",
+          "name": "version_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "columns": [
+            "camera_type"
+          ],
+          "name": "ix_cameras_camera_type",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_cameras_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "health_status"
+          ],
+          "name": "ix_cameras_health_status",
+          "unique": false
+        },
+        {
+          "columns": [
+            "operational_status"
+          ],
+          "name": "ix_cameras_operational_status",
+          "unique": false
+        },
+        {
+          "columns": [
+            "source_id"
+          ],
+          "name": "ix_cameras_source_id",
+          "unique": false
+        }
+      ],
+      "name": "cameras",
+      "primary_key": {
+        "columns": [
+          "camera_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "source_id",
+            "external_id"
+          ],
+          "name": "uq_camera_source_external"
+        }
+      ]
+    },
+    {
+      "check_constraints": [],
+      "columns": [
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "lease_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "actor_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "acquired_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "expires_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "actor_id"
+          ],
+          "name": "ix_onvif_control_leases_actor_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "expires_at"
+          ],
+          "name": "ix_onvif_control_leases_expires_at",
+          "unique": false
+        }
+      ],
+      "name": "onvif_control_leases",
+      "primary_key": {
+        "columns": [
+          "stream_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "lease_id"
+          ],
+          "name": null
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_onvif_operation_lifecycle",
+          "sql": "(outcome = 'pending' AND finished_at IS NULL AND duration_ms IS NULL) OR (outcome IN ('success', 'failure') AND finished_at IS NOT NULL AND duration_ms >= 0)"
+        },
+        {
+          "name": "ck_onvif_operation_outcome",
+          "sql": "outcome IN ('pending', 'success', 'failure')"
+        },
+        {
+          "name": "ck_onvif_operation_type",
+          "sql": "operation_type IN ('imaging_inspect', 'event_pull', 'ptz_stop', 'ptz_continuous', 'ptz_relative', 'ptz_absolute', 'ptz_goto_preset', 'ws_discovery', 'capability_discover_sync')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "operation_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "actor_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "operation_type",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(40)"
+        },
+        {
+          "default": null,
+          "name": "outcome",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "reason_code",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "parameters",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "audit_reason",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(500)"
+        },
+        {
+          "default": null,
+          "name": "request_id",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "requested_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "finished_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "duration_ms",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "actor_id"
+          ],
+          "name": "ix_onvif_operation_runs_actor_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "operation_type"
+          ],
+          "name": "ix_onvif_operation_runs_operation_type",
+          "unique": false
+        },
+        {
+          "columns": [
+            "outcome"
+          ],
+          "name": "ix_onvif_operation_runs_outcome",
+          "unique": false
+        },
+        {
+          "columns": [
+            "requested_at"
+          ],
+          "name": "ix_onvif_operation_runs_requested_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_onvif_operation_runs_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "onvif_operation_runs",
+      "primary_key": {
+        "columns": [
+          "operation_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [],
+      "columns": [
+        {
+          "default": null,
+          "name": "session_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "actor_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "path",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(255)"
+        },
+        {
+          "default": null,
+          "name": "token_jti_hash",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "expires_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "actor_id"
+          ],
+          "name": "ix_playback_sessions_actor_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "created_at"
+          ],
+          "name": "ix_playback_sessions_created_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "expires_at"
+          ],
+          "name": "ix_playback_sessions_expires_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_playback_sessions_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "playback_sessions",
+      "primary_key": {
+        "columns": [
+          "session_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "token_jti_hash"
+          ],
+          "name": null
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_stream_capability_refresh_attempts",
+          "sql": "attempt_count >= 0 AND max_attempts >= 1"
+        },
+        {
+          "name": "ck_stream_capability_refresh_completeness",
+          "sql": "result_completeness IS NULL OR result_completeness IN ('complete', 'partial')"
+        },
+        {
+          "name": "ck_stream_capability_refresh_duration",
+          "sql": "duration_ms IS NULL OR duration_ms >= 0"
+        },
+        {
+          "name": "ck_stream_capability_refresh_source",
+          "sql": "source IN ('manual', 'scheduled')"
+        },
+        {
+          "name": "ck_stream_capability_refresh_status",
+          "sql": "status IN ('queued', 'running', 'succeeded', 'failed')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "refresh_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "status",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "source",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": "0",
+          "name": "priority",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "requested_by",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "request_id",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "audit_reason",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(500)"
+        },
+        {
+          "default": "0",
+          "name": "attempt_count",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": "3",
+          "name": "max_attempts",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "next_attempt_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "lease_owner",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "lease_until",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "reason_code",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "duration_ms",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "result_completeness",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "snapshot_id",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "queued_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "started_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "finished_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "updated_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "snapshot_id"
+          ],
+          "name": null,
+          "ondelete": "SET NULL",
+          "onupdate": null,
+          "referred_columns": [
+            "snapshot_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_capability_snapshots"
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "status",
+            "next_attempt_at",
+            "priority"
+          ],
+          "name": "ix_stream_capability_refresh_claim",
+          "unique": false
+        },
+        {
+          "columns": [
+            "finished_at"
+          ],
+          "name": "ix_stream_capability_refreshes_finished_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "lease_until"
+          ],
+          "name": "ix_stream_capability_refreshes_lease_until",
+          "unique": false
+        },
+        {
+          "columns": [
+            "next_attempt_at"
+          ],
+          "name": "ix_stream_capability_refreshes_next_attempt_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "queued_at"
+          ],
+          "name": "ix_stream_capability_refreshes_queued_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "requested_by"
+          ],
+          "name": "ix_stream_capability_refreshes_requested_by",
+          "unique": false
+        },
+        {
+          "columns": [
+            "snapshot_id"
+          ],
+          "name": "ix_stream_capability_refreshes_snapshot_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "source"
+          ],
+          "name": "ix_stream_capability_refreshes_source",
+          "unique": false
+        },
+        {
+          "columns": [
+            "status"
+          ],
+          "name": "ix_stream_capability_refreshes_status",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_stream_capability_refreshes_stream_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "uq_stream_capability_refresh_active",
+          "unique": true
+        }
+      ],
+      "name": "stream_capability_refreshes",
+      "primary_key": {
+        "columns": [
+          "refresh_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_stream_capability_snapshot_completeness",
+          "sql": "completeness IN ('complete', 'partial')"
+        },
+        {
+          "name": "ck_stream_capability_snapshot_source",
+          "sql": "source IN ('device_and_media', 'media_only')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "snapshot_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "fingerprint",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "source",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(32)"
+        },
+        {
+          "default": null,
+          "name": "completeness",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "payload",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "first_observed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "last_observed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "stream_id",
+            "last_observed_at"
+          ],
+          "name": "ix_stream_capability_snapshot_latest",
+          "unique": false
+        },
+        {
+          "columns": [
+            "fingerprint"
+          ],
+          "name": "ix_stream_capability_snapshots_fingerprint",
+          "unique": false
+        },
+        {
+          "columns": [
+            "first_observed_at"
+          ],
+          "name": "ix_stream_capability_snapshots_first_observed_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "last_observed_at"
+          ],
+          "name": "ix_stream_capability_snapshots_last_observed_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_stream_capability_snapshots_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "stream_capability_snapshots",
+      "primary_key": {
+        "columns": [
+          "snapshot_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_stream_onvif_auth_mode",
+          "sql": "onvif_auth_mode IN ('none', 'wsse_password_digest', 'http_digest', 'wsse_and_http_digest')"
+        },
+        {
+          "name": "ck_stream_onvif_max_move_seconds",
+          "sql": "onvif_max_move_seconds >= 0.1 AND onvif_max_move_seconds <= 10"
+        },
+        {
+          "name": "ck_stream_onvif_max_velocity",
+          "sql": "onvif_max_velocity > 0 AND onvif_max_velocity <= 1"
+        },
+        {
+          "name": "ck_stream_transport",
+          "sql": "transport IN ('tcp', 'udp', 'auto')"
+        },
+        {
+          "name": "ck_stream_version_positive",
+          "sql": "version_id >= 1"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": "1",
+          "name": "version_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "name",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "adapter_kind",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(32)"
+        },
+        {
+          "default": null,
+          "name": "protocol",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "locator",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "secret_ref",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(255)"
+        },
+        {
+          "default": "'tcp'",
+          "name": "transport",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": "0",
+          "name": "is_primary",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BOOLEAN"
+        },
+        {
+          "default": "1",
+          "name": "enabled",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BOOLEAN"
+        },
+        {
+          "default": null,
+          "name": "probe_due_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "lease_owner",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "lease_until",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "updated_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "management_locator",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": "'none'",
+          "name": "onvif_auth_mode",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(32)"
+        },
+        {
+          "default": "0",
+          "name": "capability_refresh_enabled",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BOOLEAN"
+        },
+        {
+          "default": null,
+          "name": "capability_due_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": "0",
+          "name": "onvif_control_enabled",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BOOLEAN"
+        },
+        {
+          "default": "0.5",
+          "name": "onvif_max_velocity",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": "2.0",
+          "name": "onvif_max_move_seconds",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "camera_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "cameras"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "adapter_kind"
+          ],
+          "name": "ix_stream_endpoints_adapter_kind",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_stream_endpoints_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "capability_due_at"
+          ],
+          "name": "ix_stream_endpoints_capability_due_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "enabled"
+          ],
+          "name": "ix_stream_endpoints_enabled",
+          "unique": false
+        },
+        {
+          "columns": [
+            "lease_until"
+          ],
+          "name": "ix_stream_endpoints_lease_until",
+          "unique": false
+        },
+        {
+          "columns": [
+            "probe_due_at"
+          ],
+          "name": "ix_stream_endpoints_probe_due_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "protocol"
+          ],
+          "name": "ix_stream_endpoints_protocol",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "uq_stream_primary_camera",
+          "unique": true
+        }
+      ],
+      "name": "stream_endpoints",
+      "primary_key": {
+        "columns": [
+          "stream_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "camera_id",
+            "name"
+          ],
+          "name": "uq_stream_camera_name"
+        }
+      ]
+    },
+    {
+      "check_constraints": [],
+      "columns": [
+        {
+          "default": null,
+          "name": "event_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "event_type",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "schema_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "occurred_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "payload",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "published_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_stream_event_outbox_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "event_type"
+          ],
+          "name": "ix_stream_event_outbox_event_type",
+          "unique": false
+        },
+        {
+          "columns": [
+            "occurred_at"
+          ],
+          "name": "ix_stream_event_outbox_occurred_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "published_at"
+          ],
+          "name": "ix_stream_event_outbox_published_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_stream_event_outbox_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "stream_event_outbox",
+      "primary_key": {
+        "columns": [
+          "event_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_stream_health_counts_nonnegative",
+          "sql": "consecutive_successes >= 0 AND consecutive_failures >= 0"
+        },
+        {
+          "name": "ck_stream_health_latency_nonnegative",
+          "sql": "probe_latency_ms IS NULL OR probe_latency_ms >= 0"
+        },
+        {
+          "name": "ck_stream_health_state",
+          "sql": "state IN ('unknown', 'healthy', 'degraded', 'offline', 'unauthorized', 'misconfigured', 'unsupported')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": "'unknown'",
+          "name": "state",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(32)"
+        },
+        {
+          "default": null,
+          "name": "reason_code",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "observed_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": "0",
+          "name": "consecutive_successes",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": "0",
+          "name": "consecutive_failures",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "probe_latency_ms",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "codec",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "container",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "width",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "height",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "frame_rate",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "last_success_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "last_failure_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "updated_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "observed_at"
+          ],
+          "name": "ix_stream_health_current_observed_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "state"
+          ],
+          "name": "ix_stream_health_current_state",
+          "unique": false
+        }
+      ],
+      "name": "stream_health_current",
+      "primary_key": {
+        "columns": [
+          "stream_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_stream_probe_latency_nonnegative",
+          "sql": "latency_ms >= 0"
+        },
+        {
+          "name": "ck_stream_probe_outcome",
+          "sql": "outcome IN ('success', 'failure')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "probe_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "worker_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "started_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "finished_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "outcome",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "reason_code",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "latency_ms",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "media",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "outcome"
+          ],
+          "name": "ix_stream_probe_runs_outcome",
+          "unique": false
+        },
+        {
+          "columns": [
+            "started_at"
+          ],
+          "name": "ix_stream_probe_runs_started_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_stream_probe_runs_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "stream_probe_runs",
+      "primary_key": {
+        "columns": [
+          "probe_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    }
+  ]
+}

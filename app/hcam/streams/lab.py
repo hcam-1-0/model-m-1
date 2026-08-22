@@ -74,6 +74,13 @@ def seed_synthetic_lab(session: Session, *, count: int = 50) -> dict[str, object
                     adapter_kind="onvif" if is_onvif_fixture else "synthetic",
                     protocol="http" if is_onvif_fixture else "rtsp",
                     locator=locator,
+                    management_locator=(
+                        "http://onvif-simulator:8081/onvif/device_service"
+                        if is_onvif_fixture
+                        else None
+                    ),
+                    capability_refresh_enabled=is_onvif_fixture,
+                    capability_due_at=now if is_onvif_fixture else None,
                     transport="tcp",
                     is_primary=True,
                     enabled=True,
