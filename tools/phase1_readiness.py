@@ -1,0 +1,764 @@
+#!/usr/bin/env python3
+"""Offline Phase 1 evidence and validation verifier."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import re
+import subprocess
+import sys
+import tarfile
+import tempfile
+from dataclasses import asdict, dataclass
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+PHASE1 = ROOT / "docs" / "phase-1"
+PASS = "pass"
+FAIL = "fail"
+MANUAL = "manual"
+
+REQUIRED_FILES = [
+    "pyproject.toml",
+    "uv.lock",
+    "MANIFEST.in",
+    "Dockerfile",
+    ".dockerignore",
+    "alembic.ini",
+    "contracts/phase-2/README.md",
+    "contracts/phase-2/openapi.json",
+    "contracts/phase-2/database.json",
+    "app/hcam/main.py",
+    "app/hcam/observability.py",
+    "app/hcam/metrics.py",
+    "app/hcam/security/auth.py",
+    "app/hcam/security/request_limits.py",
+    "app/hcam/operations/database_backup.py",
+    "app/hcam/operations/recovery_drill.py",
+    "app/hcam/camera_registry/models.py",
+    "app/hcam/camera_registry/schemas.py",
+    "app/hcam/camera_registry/importer.py",
+    "app/hcam/camera_registry/repository.py",
+    "app/hcam/camera_registry/service.py",
+    "app/hcam/camera_registry/routes.py",
+    "app/hcam/camera_registry/import_routes.py",
+    "app/hcam/audit/models.py",
+    "migrations/versions/0001_camera_registry.py",
+    "migrations/versions/0002_camera_version.py",
+    "migrations/versions/0003_camera_integrity.py",
+    "docs/phase-1/README.md",
+    "docs/phase-1/security-and-management.md",
+    "docs/phase-1/operations-and-observability.md",
+    "docs/phase-1/service-objectives.md",
+    "docs/phase-1/build-and-test.md",
+    "docs/phase-1/acceptance-checklist.md",
+    "docs/phase-1/readiness-report.md",
+    "docs/phase-1/owner-review.md",
+    "tests/fixtures/camera-registry-seed.json",
+    "tests/test_camera_registry_api.py",
+    "tests/test_camera_registry_import.py",
+    "tests/test_camera_management_api.py",
+    "tests/test_camera_import_api.py",
+    "tests/test_security.py",
+    "tests/test_database_integrity.py",
+    "tests/test_cli.py",
+    "tests/test_package_metadata.py",
+    "tests/test_release_contracts.py",
+    "tests/test_request_limits.py",
+    "tests/test_observability.py",
+    "tests/test_metrics.py",
+    "tests/test_database_backup.py",
+    "tests/test_recovery_drill.py",
+    "tests/test_resilience.py",
+    "tests/test_phase1_performance.py",
+    "tests/test_phase1_load.py",
+    "tests/test_deployment_artifacts.py",
+    "tests/test_postgres_integration.py",
+    "tools/phase1_performance.py",
+    "tools/phase1_load.py",
+    "tools/release_contracts.py",
+    "deploy/README.md",
+    "deploy/compose.phase1.yaml",
+    "deploy/observability/hcam-phase1-overview.json",
+]
+
+
+@dataclass(frozen=True)
+class CheckResult:
+    name: str
+    status: str
+    detail: str
+    evidence: list[str]
+
+
+@dataclass(frozen=True)
+class ReadinessReport:
+    status: str
+    failures: int
+    manual_gates: int
+    checks: list[CheckResult]
+
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "status": self.status,
+            "failures": self.failures,
+            "manual_gates": self.manual_gates,
+            "checks": [asdict(check) for check in self.checks],
+        }
+
+
+def _read(relative_path: str) -> str:
+    return (ROOT / relative_path).read_text(encoding="utf-8")
+
+
+def _missing_terms(content: str, terms: list[str]) -> list[str]:
+    return [term for term in terms if term not in content]
+
+
+def check_required_files() -> CheckResult:
+    missing = [path for path in REQUIRED_FILES if not (ROOT / path).is_file()]
+    if missing:
+        return CheckResult("required_files", FAIL, f"missing: {', '.join(missing)}", missing)
+    return CheckResult(
+        "required_files",
+        PASS,
+        f"{len(REQUIRED_FILES)} Phase 1 implementation and evidence files are present.",
+        REQUIRED_FILES,
+    )
+
+
+def check_api_and_security_contracts() -> CheckResult:
+    routes = _read("app/hcam/camera_registry/routes.py")
+    imports = _read("app/hcam/camera_registry/import_routes.py")
+    security = _read("app/hcam/security/auth.py")
+    request_limits = _read("app/hcam/security/request_limits.py")
+    models = _read("app/hcam/camera_registry/models.py")
+    missing: list[str] = []
+    missing.extend(
+        _missing_terms(
+            routes,
+            [
+                "@router.get(",
+                "@router.post(",
+                "@router.patch(",
+                '"/{camera_id}"',
+                "If-Match",
+                "X-HCAM-Reason",
+                "allowed_departments",
+            ],
+        )
+    )
+    missing.extend(
+        _missing_terms(imports, ["MAX_SYNCHRONOUS_CAMERAS", "PLATFORM_ADMIN"])
+    )
+    missing.extend(
+        _missing_terms(
+            security,
+            [
+                "UnconfiguredAuthenticator",
+                "Local development authentication is forbidden in production",
+                "camera.viewer",
+                "camera.editor",
+                "platform.admin",
+            ],
+        )
+    )
+    missing.extend(
+        _missing_terms(
+            request_limits,
+            [
+                "RequestBodyLimitMiddleware",
+                "SensitiveResponseHeadersMiddleware",
+                "Cache-Control",
+                "no-store",
+            ],
+        )
+    )
+    missing.extend(_missing_terms(models, ["version_id_col", "version_id"]))
+    if missing:
+        return CheckResult(
+            "api_security_contracts",
+            FAIL,
+            f"missing contract terms: {', '.join(missing)}",
+            [
+                "app/hcam/camera_registry/routes.py",
+                "app/hcam/camera_registry/import_routes.py",
+                "app/hcam/security/auth.py",
+                "app/hcam/security/request_limits.py",
+                "app/hcam/camera_registry/models.py",
+            ],
+        )
+    return CheckResult(
+        "api_security_contracts",
+        PASS,
+        "Read, write, import, authorization, and concurrency contracts are present.",
+        [
+            "app/hcam/camera_registry/routes.py",
+            "app/hcam/camera_registry/import_routes.py",
+            "app/hcam/security/auth.py",
+            "app/hcam/security/request_limits.py",
+            "app/hcam/camera_registry/models.py",
+        ],
+    )
+
+
+def check_safety_documentation() -> CheckResult:
+    content = "\n".join(
+        [
+            _read("docs/phase-1/README.md"),
+            _read("docs/phase-1/security-and-management.md"),
+            _read("docs/phase-1/readiness-report.md"),
+        ]
+    )
+    required = [
+        "No CCTV footage",
+        "not production credentials",
+        "No production identity integration",
+        "Government",
+        "biometrics",
+        "watchlists",
+        "ready_for_owner_review",
+    ]
+    missing = _missing_terms(content, required)
+    if missing:
+        return CheckResult(
+            "safety_documentation",
+            FAIL,
+            f"missing safety terms: {', '.join(missing)}",
+            ["docs/phase-1/README.md", "docs/phase-1/security-and-management.md"],
+        )
+    return CheckResult(
+        "safety_documentation",
+        PASS,
+        "Phase 1 safety, identity, and future-integration boundaries are documented.",
+        [
+            "docs/phase-1/README.md",
+            "docs/phase-1/security-and-management.md",
+            "docs/phase-1/readiness-report.md",
+        ],
+    )
+
+
+def check_database_integrity_contracts() -> CheckResult:
+    database = _read("app/hcam/database.py")
+    models = _read("app/hcam/camera_registry/models.py")
+    migration = _read("migrations/versions/0003_camera_integrity.py")
+    missing = _missing_terms(
+        "\n".join([database, models, migration]),
+        [
+            "0003_camera_integrity",
+            "REQUIRED_CAMERA_COLUMNS",
+            "REQUIRED_AUDIT_COLUMNS",
+            "ck_cameras_coordinate_pair",
+            "ck_cameras_latitude_range",
+            "ck_cameras_longitude_range",
+            "ck_cameras_duration_nonnegative",
+            "ck_cameras_version_positive",
+        ],
+    )
+    evidence = [
+        "app/hcam/database.py",
+        "app/hcam/camera_registry/models.py",
+        "migrations/versions/0003_camera_integrity.py",
+    ]
+    if missing:
+        return CheckResult(
+            "database_integrity_contracts",
+            FAIL,
+            f"missing database integrity terms: {', '.join(missing)}",
+            evidence,
+        )
+    return CheckResult(
+        "database_integrity_contracts",
+        PASS,
+        "Migration-head readiness and camera database invariants are present.",
+        evidence,
+    )
+
+
+def check_operational_contracts() -> CheckResult:
+    observability = _read("app/hcam/observability.py")
+    backup = _read("app/hcam/operations/database_backup.py")
+    settings = _read("app/hcam/settings.py")
+    workflow = _read(".github/workflows/python-ci.yml")
+    performance = _read("tools/phase1_performance.py")
+    operations_docs = _read("docs/phase-1/operations-and-observability.md")
+    missing = _missing_terms(
+        "\n".join(
+            [
+                observability,
+                backup,
+                settings,
+                workflow,
+                performance,
+                operations_docs,
+            ]
+        ),
+        [
+            "RequestContextMiddleware",
+            "X-Request-ID",
+            "hcam.access",
+            "HCAM_ACCESS_LOG_ENABLED",
+            "hcam.sqlite-backup.v1",
+            "create_sqlite_backup",
+            "verify_sqlite_backup",
+            "restore_sqlite_backup",
+            "postgres:18-alpine",
+            "HCAM_POSTGRES_TEST_URL",
+            "hcam.phase1.performance.v1",
+            "production service-level objective",
+        ],
+    )
+    evidence = [
+        "app/hcam/observability.py",
+        "app/hcam/operations/database_backup.py",
+        "app/hcam/settings.py",
+        ".github/workflows/python-ci.yml",
+        "tools/phase1_performance.py",
+        "docs/phase-1/operations-and-observability.md",
+    ]
+    if missing:
+        return CheckResult(
+            "operational_contracts",
+            FAIL,
+            f"missing operational terms: {', '.join(missing)}",
+            evidence,
+        )
+    return CheckResult(
+        "operational_contracts",
+        PASS,
+        "Request correlation, recovery, PostgreSQL, and performance contracts are present.",
+        evidence,
+    )
+
+
+def check_deployment_resilience_contracts() -> CheckResult:
+    settings = _read("app/hcam/settings.py")
+    metrics = _read("app/hcam/metrics.py")
+    recovery = _read("app/hcam/operations/recovery_drill.py")
+    load = _read("tools/phase1_load.py")
+    dockerfile = _read("Dockerfile")
+    compose = _read("deploy/compose.phase1.yaml")
+    objectives = _read("docs/phase-1/service-objectives.md")
+    dashboard = _read("deploy/observability/hcam-phase1-overview.json")
+    workflow = _read(".github/workflows/python-ci.yml")
+    missing = _missing_terms(
+        "\n".join(
+            [
+                settings,
+                metrics,
+                recovery,
+                load,
+                dockerfile,
+                compose,
+                objectives,
+                dashboard,
+                workflow,
+            ]
+        ),
+        [
+            "HCAM_DATABASE_URL_FILE",
+            "database_url_from_environment",
+            "HCAM_METRICS_TOKEN_FILE",
+            "hcam_http_requests_total",
+            "hcam_http_request_duration_seconds",
+            "hcam.phase1.recovery-drill.v1",
+            "hcam.phase1.concurrent-load.v1",
+            "USER ${HCAM_UID}:${HCAM_GID}",
+            "condition: service_completed_successfully",
+            "no-new-privileges:true",
+            "hcam-phase1-overview",
+            "Non-root container and Compose validation",
+        ],
+    )
+    evidence = [
+        "app/hcam/settings.py",
+        "app/hcam/metrics.py",
+        "app/hcam/operations/recovery_drill.py",
+        "tools/phase1_load.py",
+        "Dockerfile",
+        "deploy/compose.phase1.yaml",
+        "deploy/observability/hcam-phase1-overview.json",
+        "docs/phase-1/service-objectives.md",
+        ".github/workflows/python-ci.yml",
+    ]
+    if missing:
+        return CheckResult(
+            "deployment_resilience_contracts",
+            FAIL,
+            f"missing deployment or resilience terms: {', '.join(missing)}",
+            evidence,
+        )
+    return CheckResult(
+        "deployment_resilience_contracts",
+        PASS,
+        "Secret-file configuration, metrics, recovery, load, and non-root container contracts are present.",
+        evidence,
+    )
+
+
+def check_acceptance_gate() -> CheckResult:
+    path = "docs/phase-1/acceptance-checklist.md"
+    content = _read(path)
+    unchecked = [
+        match.group(1).strip()
+        for match in re.finditer(r"^- \[ \] (.+(?:\n  .+)*)", content, re.MULTILINE)
+    ]
+    unexpected = [
+        item
+        for item in unchecked
+        if not item.startswith("Owner accepts Phase 1 and authorizes Phase 2 planning")
+    ]
+    if unexpected:
+        return CheckResult(
+            "acceptance_gate",
+            FAIL,
+            f"unexpected incomplete checklist items: {', '.join(unexpected)}",
+            [path],
+        )
+    if unchecked:
+        return CheckResult(
+            "acceptance_gate",
+            MANUAL,
+            "Project-owner Phase 1 acceptance is pending.",
+            [item.replace("\n", " ") for item in unchecked],
+        )
+    return CheckResult("acceptance_gate", PASS, "Phase 1 owner gate is accepted.", [path])
+
+
+def check_owner_review_packet() -> CheckResult:
+    path = "docs/phase-1/owner-review.md"
+    content = _read(path)
+    required = [
+        "I accept Phase 1 and authorize Phase 2 planning under the documented safety boundaries.",
+        "Implementation PR #21",
+        "Post-merge `main` validation run",
+        "Manual gate issue #20",
+        "production CCTV access",
+        "Government database",
+        "AI processing of real people",
+    ]
+    missing = _missing_terms(content, required)
+    if missing:
+        return CheckResult(
+            "owner_review_packet",
+            FAIL,
+            f"missing owner-review terms: {', '.join(missing)}",
+            [path],
+        )
+    return CheckResult(
+        "owner_review_packet",
+        PASS,
+        "Owner decision, published evidence, and safety boundaries are documented.",
+        [path],
+    )
+
+
+def check_build_quality_contracts() -> CheckResult:
+    pyproject = _read("pyproject.toml")
+    workflow = _read(".github/workflows/python-ci.yml")
+    manifest = _read("MANIFEST.in")
+    package_tests = _read("tests/test_package_metadata.py")
+    build_docs = _read("docs/phase-1/build-and-test.md")
+    missing = _missing_terms(
+        "\n".join([pyproject, workflow, manifest, package_tests, build_docs]),
+        [
+            "pytest-cov",
+            "pip-audit",
+            "ruff",
+            "[tool.uv]",
+            'required-version = "==0.12.3"',
+            "python -m build --no-isolation",
+            "uv sync --locked",
+            "uv.lock",
+            "python-version: [\"3.12\", \"3.13\", \"3.14\"]",
+            "--cov-fail-under=90",
+            "Install wheel in an isolated environment",
+            "postgres:18-alpine",
+            "phase1_performance.py",
+            "phase1_load.py",
+            "container-validation:",
+            "release_contracts.py check",
+            "contracts/phase-2/openapi.json",
+            "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+            "astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+            "include uv.lock",
+            "recursive-include .github *.md *.yaml *.yml",
+            "recursive-include fixtures *.md .gitignore",
+            "test_source_manifest_includes_governance_assets_used_by_tests",
+        ],
+    )
+    evidence = [
+        "pyproject.toml",
+        ".github/workflows/python-ci.yml",
+        "MANIFEST.in",
+        "tools/release_contracts.py",
+        "contracts/phase-2/openapi.json",
+        "contracts/phase-2/database.json",
+        "tests/test_package_metadata.py",
+        "docs/phase-1/build-and-test.md",
+    ]
+    if missing:
+        return CheckResult(
+            "build_quality_contracts",
+            FAIL,
+            f"missing build quality terms: {', '.join(missing)}",
+            evidence,
+        )
+    return CheckResult(
+        "build_quality_contracts",
+        PASS,
+        "Interpreter matrix, build, coverage, lint, and audit gates are present.",
+        evidence,
+    )
+
+
+def _run(command: list[str], *, env: dict[str, str] | None = None) -> tuple[str, str | None]:
+    completed = subprocess.run(
+        command,
+        cwd=ROOT,
+        env=env,
+        text=True,
+        capture_output=True,
+        timeout=180,
+        check=False,
+    )
+    rendered = " ".join(command)
+    evidence = f"{rendered} -> exit {completed.returncode}"
+    if completed.returncode == 0:
+        return evidence, None
+    detail = completed.stderr.strip() or completed.stdout.strip()
+    return evidence, f"{rendered}: {detail}"
+
+
+def run_validation_commands() -> CheckResult:
+    evidence: list[str] = []
+    failures: list[str] = []
+    commands = [
+        ["uv", "lock", "--check"],
+        [sys.executable, "-m", "compileall", "-q", "app", "tools", "migrations"],
+        [sys.executable, "-m", "ruff", "check", "app", "tests", "tools", "migrations"],
+        [sys.executable, "tools/release_contracts.py", "check"],
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "-q",
+            "--cov=hcam",
+            "--cov-report=term-missing",
+            "--cov-fail-under=90",
+        ],
+        ["uv", "pip", "check"],
+        ["uv", "run", "--locked", "--extra", "dev", "pip-audit", "--skip-editable"],
+        [
+            sys.executable,
+            "tools/phase1_performance.py",
+            "--cameras",
+            "1000",
+            "--iterations",
+            "100",
+            "--json",
+        ],
+        [
+            sys.executable,
+            "tools/phase1_load.py",
+            "--cameras",
+            "1000",
+            "--requests",
+            "400",
+            "--concurrency",
+            "16",
+            "--json",
+        ],
+        ["git", "diff", "--check"],
+    ]
+    for command in commands:
+        command_evidence, failure = _run(command)
+        evidence.append(command_evidence)
+        if failure:
+            failures.append(failure)
+
+    with tempfile.TemporaryDirectory(prefix="hcam-phase1-") as temp_dir:
+        database_path = (Path(temp_dir) / "migration.db").as_posix()
+        migration_env = {**os.environ, "HCAM_DATABASE_URL": f"sqlite:///{database_path}"}
+        for arguments in (["upgrade", "head"], ["check"]):
+            command = [sys.executable, "-m", "alembic", *arguments]
+            command_evidence, failure = _run(command, env=migration_env)
+            evidence.append(command_evidence)
+            if failure:
+                failures.append(failure)
+
+        for arguments in (["downgrade", "base"], ["upgrade", "head"], ["check"]):
+            command = [sys.executable, "-m", "alembic", *arguments]
+            command_evidence, failure = _run(command, env=migration_env)
+            evidence.append(command_evidence)
+            if failure:
+                failures.append(failure)
+
+    with tempfile.TemporaryDirectory(prefix="hcam-build-") as temp_dir:
+        artifact_dir = Path(temp_dir) / "dist"
+        command = [
+            "uv",
+            "run",
+            "--locked",
+            "--extra",
+            "dev",
+            "python",
+            "-m",
+            "build",
+            "--no-isolation",
+            "--outdir",
+            str(artifact_dir),
+        ]
+        command_evidence, failure = _run(command)
+        evidence.append(command_evidence)
+        if failure:
+            failures.append(failure)
+        else:
+            wheels = sorted(artifact_dir.glob("*.whl"))
+            source_distributions = sorted(artifact_dir.glob("*.tar.gz"))
+            if len(wheels) != 1 or len(source_distributions) != 1:
+                failures.append("build did not produce exactly one wheel and one sdist")
+            else:
+                with tarfile.open(source_distributions[0], mode="r:gz") as archive:
+                    source_names = archive.getnames()
+                required_source_suffixes = [
+                    "/alembic.ini",
+                    "/migrations/env.py",
+                    "/migrations/versions/0003_camera_integrity.py",
+                    "/docs/phase-1/build-and-test.md",
+                    "/docs/phase-1/operations-and-observability.md",
+                    "/docs/phase-1/service-objectives.md",
+                    "/app/hcam/operations/database_backup.py",
+                    "/app/hcam/operations/recovery_drill.py",
+                    "/app/hcam/metrics.py",
+                    "/tools/phase1_performance.py",
+                    "/tools/phase1_load.py",
+                    "/tools/release_contracts.py",
+                    "/contracts/phase-2/openapi.json",
+                    "/contracts/phase-2/database.json",
+                    "/uv.lock",
+                    "/Dockerfile",
+                    "/deploy/compose.phase1.yaml",
+                    "/deploy/observability/hcam-phase1-overview.json",
+                    "/tests/fixtures/camera-registry-seed.json",
+                    "/fixtures/sentinel/.gitignore",
+                    "/fixtures/sentinel/README.md",
+                ]
+                missing_source_files = [
+                    suffix
+                    for suffix in required_source_suffixes
+                    if not any(name.endswith(suffix) for name in source_names)
+                ]
+                if missing_source_files:
+                    failures.append(
+                        "source distribution is missing: "
+                        + ", ".join(missing_source_files)
+                    )
+                install_dir = Path(temp_dir) / "installed"
+                install_command = [
+                    sys.executable,
+                    "-m",
+                    "pip",
+                    "install",
+                    "--no-deps",
+                    "--target",
+                    str(install_dir),
+                    str(wheels[0]),
+                ]
+                command_evidence, failure = _run(install_command)
+                evidence.append(command_evidence)
+                if failure:
+                    failures.append(failure)
+                smoke_env = {**os.environ, "PYTHONPATH": str(install_dir)}
+                smoke_command = [
+                    sys.executable,
+                    "-c",
+                    "from importlib.metadata import version; "
+                    "from pathlib import Path; import hcam; "
+                    "from hcam.main import create_app; "
+                    "assert version('hcam-core') == hcam.__version__; "
+                    "assert create_app().version == hcam.__version__; "
+                    f"assert Path(hcam.__file__).resolve().is_relative_to(Path(r'{install_dir}').resolve())",
+                ]
+                command_evidence, failure = _run(smoke_command, env=smoke_env)
+                evidence.append(command_evidence)
+                if failure:
+                    failures.append(failure)
+
+    if failures:
+        return CheckResult("validation_commands", FAIL, "; ".join(failures), evidence)
+    return CheckResult(
+        "validation_commands",
+        PASS,
+        "Compile, tests, migration upgrade/drift, and diff checks passed.",
+        evidence,
+    )
+
+
+def build_readiness_report(run_validation: bool = False) -> ReadinessReport:
+    checks = [
+        check_required_files(),
+        check_api_and_security_contracts(),
+        check_database_integrity_contracts(),
+        check_operational_contracts(),
+        check_deployment_resilience_contracts(),
+        check_safety_documentation(),
+        check_owner_review_packet(),
+        check_build_quality_contracts(),
+        check_acceptance_gate(),
+    ]
+    if run_validation:
+        checks.append(run_validation_commands())
+
+    failures = sum(check.status == FAIL for check in checks)
+    manual_gates = sum(1 for check in checks if check.status == MANUAL)
+    if failures:
+        status_name = "not_ready"
+    elif manual_gates:
+        status_name = "ready_for_owner_review"
+    else:
+        status_name = "complete"
+    return ReadinessReport(status_name, failures, manual_gates, checks)
+
+
+def print_text_report(report: ReadinessReport) -> None:
+    print(f"Phase 1 readiness: {report.status}")
+    print(f"Failures: {report.failures}")
+    print(f"Manual gates: {report.manual_gates}")
+    print()
+    for check in report.checks:
+        print(f"[{check.status}] {check.name}: {check.detail}")
+        for item in check.evidence:
+            print(f"  - {item}")
+        print()
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Verify H-CAM Phase 1 readiness.")
+    parser.add_argument("--json", action="store_true")
+    parser.add_argument("--run-validation", action="store_true")
+    parser.add_argument("--strict", action="store_true")
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+    report = build_readiness_report(run_validation=args.run_validation)
+    if args.json:
+        print(json.dumps(report.to_dict(), indent=2, sort_keys=True))
+    else:
+        print_text_report(report)
+    if report.failures:
+        return 1
+    if args.strict and report.manual_gates:
+        return 2
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
