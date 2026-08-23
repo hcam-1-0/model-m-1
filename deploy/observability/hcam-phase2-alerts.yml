@@ -23,3 +23,54 @@ groups:
           severity: warning
         annotations:
           summary: H-CAM stream event outbox requires dispatcher attention
+      - alert: HcamCapabilityRefreshBacklog
+        expr: hcam_capability_refresh_queue_depth{status="queued"} > 1000
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM capability refresh queue is backlogged
+      - alert: HcamCapabilitySnapshotsStale
+        expr: hcam_capability_snapshot_stale_total > 0
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM capability inventory contains stale snapshots
+      - alert: HcamCapabilityAuthenticationFailures
+        expr: hcam_capability_refresh_failures_retained_total{category=~"authentication|secret_provider"} > 5
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM capability authentication failures require review
+      - alert: HcamCapabilityWorkerLeaseRecovery
+        expr: >-
+          (hcam_capability_refresh_expired_leases_total > 0)
+          or (hcam_capability_refresh_lease_recoveries_recent_total > 0)
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM capability jobs require expired-lease recovery
+      - alert: HcamOnvifOperationFailureSpike
+        expr: sum(hcam_onvif_operation_failures_recent_total) > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM ONVIF operation failures require review
+      - alert: HcamOnvifControlLeaseSustained
+        expr: hcam_onvif_control_leases_active_total > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: H-CAM ONVIF control activity exceeded the bounded command window
+      - alert: HcamOnvifOperationPending
+        expr: hcam_onvif_operations_retained_total{outcome="pending"} > 0
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM ONVIF operation completion evidence is pending

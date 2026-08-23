@@ -12,7 +12,14 @@ from sqlalchemy.exc import IntegrityError
 
 from hcam.camera_registry.models import Camera
 from hcam.database import Database
-from hcam.streams.models import StreamEndpoint, StreamHealthCurrent
+from hcam.streams.models import (
+    OnvifControlLease,
+    OnvifOperationRun,
+    StreamCapabilityRefresh,
+    StreamCapabilitySnapshot,
+    StreamEndpoint,
+    StreamHealthCurrent,
+)
 
 
 def _upgrade(database_url: str, revision: str) -> None:
@@ -63,6 +70,26 @@ def test_stream_migration_backfills_and_round_trips(
             session.add(_legacy_camera())
 
         _upgrade(database_url, "head")
+        inspector = inspect(database.engine)
+        table_names = set(inspector.get_table_names())
+        stream_columns = {
+            column["name"] for column in inspector.get_columns("stream_endpoints")
+        }
+        assert {
+            "management_locator",
+            "onvif_auth_mode",
+            "capability_refresh_enabled",
+            "capability_due_at",
+            "onvif_control_enabled",
+            "onvif_max_velocity",
+            "onvif_max_move_seconds",
+        }.issubset(stream_columns)
+        assert {
+            OnvifControlLease.__tablename__,
+            OnvifOperationRun.__tablename__,
+            StreamCapabilitySnapshot.__tablename__,
+            StreamCapabilityRefresh.__tablename__,
+        }.issubset(table_names)
         expected_stream_id = "str_" + hashlib.sha256(
             b"legacy:cctv-001"
         ).hexdigest()[:32]
@@ -73,9 +100,38 @@ def test_stream_migration_backfills_and_round_trips(
             assert endpoint.protocol == "hls"
             assert endpoint.is_primary is True
             assert endpoint.probe_due_at is not None
+            assert endpoint.management_locator is None
+            assert endpoint.onvif_auth_mode == "none"
+            assert endpoint.capability_refresh_enabled is False
+            assert endpoint.onvif_control_enabled is False
+            assert endpoint.onvif_max_velocity == 0.5
+            assert endpoint.onvif_max_move_seconds == 2.0
             assert health is not None
             assert health.state == "healthy"
             assert health.codec == "h264"
+
+            operation_id = "ovf_" + "c" * 32
+            session.add(
+                OnvifOperationRun(
+                    operation_id=operation_id,
+                    stream_id=expected_stream_id,
+                    actor_id="migration-test",
+                    operation_type="capability_discover_sync",
+                    outcome="pending",
+                    reason_code=None,
+                    parameters={"compatibility_endpoint": True},
+                    audit_reason="Validate synchronous discovery lifecycle schema",
+                    request_id="migration-request",
+                    requested_at=datetime.now(UTC),
+                    finished_at=None,
+                    duration_ms=None,
+                )
+            )
+            session.commit()
+            operation = session.get(OnvifOperationRun, operation_id)
+            assert operation is not None
+            assert operation.operation_type == "capability_discover_sync"
+            assert operation.outcome == "pending"
 
             session.add(
                 StreamEndpoint(

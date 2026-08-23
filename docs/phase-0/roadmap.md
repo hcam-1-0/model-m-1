@@ -48,17 +48,28 @@ authorized under the documented safety boundaries.
 
 ## Phase 2: Video Ingestion And Stream Management
 
-- RTSP/ONVIF and HTTP/HLS adapters.
-- Stream health worker.
-- Camera grouping, location metadata, and operator-ready status.
-- Recording policy design, not uncontrolled recording.
+Status: complete and accepted on 2026-08-21.
+
+Delivered evidence includes RTSP/ONVIF and HTTP/HLS endpoint management,
+metadata-only health workers, controlled playback, a synthetic 50-stream lab,
+and authenticated background ONVIF capability inventory. Phase 2 does not
+perform camera control, image capture, recording, network discovery, or AI
+analytics.
 
 ## Phase 3: AI Analytics
+
+Status: planning baseline ready for owner review. Implementation is not yet
+authorized.
 
 - Model pipeline interface.
 - Detection and tracking event schemas.
 - Initial vehicle/person/object detection proof with test media.
 - Confidence, model versioning, and human review metadata.
+
+The detailed planning package is in `docs/phase-3/README.md`. Phase 3 is limited
+to synthetic or explicitly authorized media and anonymous per-camera analytics.
+Cross-camera identity, watchlists, Government matching, and operational alerts
+remain Phase 4 or later work.
 
 ## Phase 4: Intelligence And Alerts
 

@@ -4,6 +4,7 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 
+from hcam.audit.repository import AuditRepository
 from hcam.camera_registry.importer import RegistryImporter
 from hcam.main import create_app
 from hcam.settings import Settings
@@ -65,6 +66,16 @@ def test_metrics_use_bounded_route_labels_and_exclude_sensitive_values(
     )
     application.state.database.create_schema()
     RegistryImporter(application.state.database.session_factory).import_file(seed_file)
+    with application.state.database.session_factory.begin() as session:
+        AuditRepository(session).record(
+            action="stream.capability_refresh.lease_recovered",
+            target_type="stream_capability_refresh",
+            target_id="sensitive-refresh-id-must-not-appear",
+            source="hcam.capability-worker",
+            reason="Expired capability refresh worker lease recovered",
+            outcome="success",
+            context={"stream_id": "sensitive-stream-id-must-not-appear"},
+        )
     try:
         with TestClient(application) as client:
             camera = client.get(
@@ -90,6 +101,21 @@ def test_metrics_use_bounded_route_labels_and_exclude_sensitive_values(
     assert "hcam_stream_health_state_total" in body
     assert "hcam_stream_probe_due_total" in body
     assert "hcam_stream_outbox_unpublished_total" in body
+    assert "hcam_capability_refresh_jobs_retained_total" in body
+    assert "hcam_capability_refresh_queue_depth" in body
+    assert "hcam_capability_refresh_duration_milliseconds" in body
+    assert "hcam_capability_refresh_retries_retained_total" in body
+    assert "hcam_capability_snapshot_stale_total" in body
+    assert "hcam_capability_refresh_expired_leases_total" in body
+    assert "hcam_capability_refresh_lease_recoveries_recent_total 1.0" in body
+    assert "hcam_capability_refresh_failures_retained_total" in body
+    assert "hcam_onvif_operations_retained_total" in body
+    assert (
+        'hcam_onvif_operations_retained_total{operation="capability_discover_sync",'
+        'outcome="pending"} 0.0'
+    ) in body
+    assert "hcam_onvif_control_leases_active_total" in body
+    assert "hcam_onvif_operation_failures_recent_total" in body
     assert 'route="/cameras/{camera_id}"' in body
     assert 'route="&lt;unmatched&gt;"' not in body
     assert 'route="<unmatched>"' in body
@@ -97,5 +123,7 @@ def test_metrics_use_bounded_route_labels_and_exclude_sensitive_values(
     assert "synthetic:cctv-001" not in body
     assert "random-sensitive-path-123" not in body
     assert "must-not-appear" not in body
+    assert "sensitive-refresh-id-must-not-appear" not in body
+    assert "sensitive-stream-id-must-not-appear" not in body
     assert viewer_headers["X-HCAM-Actor"] not in body
     assert METRICS_TOKEN not in body

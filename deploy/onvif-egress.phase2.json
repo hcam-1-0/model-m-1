@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "scheme": "http",
+      "host": "onvif-simulator",
+      "port": 8081,
+      "approved_addresses": ["172.16.0.0/12", "fc00::/7"]
+    }
+  ]
+}

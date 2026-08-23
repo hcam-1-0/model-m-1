@@ -88,3 +88,23 @@ def test_cli_backup_verify_and_restore_commands(
     assert drill_output["schema"] == "hcam.phase1.recovery-drill.v1"
     assert drill_output["passed"] is True
     assert (drill_path / "report.json").is_file()
+
+
+def test_cli_capability_worker_once_is_safe_when_queue_is_empty(
+    tmp_path: Path,
+    monkeypatch,
+    capsys,
+) -> None:
+    from alembic import command
+    from alembic.config import Config
+
+    database_url = f"sqlite:///{(tmp_path / 'capability-worker.db').as_posix()}"
+    monkeypatch.setenv("HCAM_DATABASE_URL", database_url)
+    monkeypatch.setenv("HCAM_ENVIRONMENT", "test")
+    command.upgrade(Config("alembic.ini"), "head")
+
+    assert main(["capability-worker", "--once", "--worker-id", "cli-test"]) == 0
+    output = json.loads(capsys.readouterr().out)
+    assert output == {"processed": False, "worker_id": "cli-test"}
+    assert main(["capability-worker", "--poll-seconds", "0"]) == 1
+    assert "must be positive" in capsys.readouterr().err

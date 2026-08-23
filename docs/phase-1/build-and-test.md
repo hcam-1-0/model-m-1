@@ -12,28 +12,38 @@ added to CI before the project claims support for it.
 ## Clean Development Install
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python -m pip install --upgrade pip
-.\.venv\Scripts\python -m pip install -e ".[dev]"
+uv sync --locked --extra dev
 ```
+
+The repository requires uv `0.12.3`. `uv.lock` is the reviewed universal
+dependency graph for Python 3.12-3.14; local, CI, package, and container checks
+must not silently regenerate it.
 
 Verify the environment before testing:
 
 ```powershell
-.\.venv\Scripts\python -m pip check
-.\.venv\Scripts\pip-audit --skip-editable
+uv lock --check
+uv pip check
+uv run --locked --extra dev pip-audit --skip-editable
 ```
+
+The source distribution includes the Python test suite and JSON fixtures used
+by its readiness tools, in addition to deployment, contract, documentation,
+and GitHub governance assets. This allows an extracted sdist to reproduce the
+offline governance checks instead of depending on files only present in a Git
+checkout.
 
 ## Static And Automated Tests
 
 ```powershell
-.\.venv\Scripts\ruff check app tests tools migrations
-.\.venv\Scripts\python -m compileall -q app tools migrations
-.\.venv\Scripts\pytest --cov=hcam --cov-report=term-missing --cov-fail-under=90
-.\.venv\Scripts\python tools\phase0_readiness.py --run-validation --strict
-.\.venv\Scripts\python tools\phase1_readiness.py --run-validation
-.\.venv\Scripts\python tools\phase1_performance.py --cameras 1000 --iterations 100 --json
-.\.venv\Scripts\python tools\phase1_load.py --cameras 1000 --requests 400 --concurrency 16 --json
+uv run --locked --extra dev ruff check app tests tools migrations
+uv run --locked --extra dev python -m compileall -q app tools migrations
+uv run --locked --extra dev python tools\release_contracts.py check
+uv run --locked --extra dev pytest --cov=hcam --cov-report=term-missing --cov-fail-under=90
+uv run --locked --extra dev python tools\phase0_readiness.py --run-validation --strict
+uv run --locked --extra dev python tools\phase1_readiness.py --run-validation
+uv run --locked --extra dev python tools\phase1_performance.py --cameras 1000 --iterations 100 --json
+uv run --locked --extra dev python tools\phase1_load.py --cameras 1000 --requests 400 --concurrency 16 --json
 ```
 
 Coverage is a regression floor, not proof that behavior is correct. The suite
@@ -41,17 +51,28 @@ also includes API authorization, audit, malformed input, direct database
 constraint, optimistic concurrency, migration-head readiness, CLI, and
 migration round-trip tests.
 
+The reviewed Phase 0-2 release baseline is stored in
+`contracts/phase-2/openapi.json` and `contracts/phase-2/database.json`. The
+contract check renders the real FastAPI schema and upgrades a disposable
+SQLite database through Alembic before comparing exact normalized metadata.
+Intentional changes require API, RBAC, migration, index, foreign-key, and
+constraint review before running:
+
+```powershell
+uv run --locked --extra dev python tools\release_contracts.py write --acknowledge-reviewed-change
+```
+
 ## Migration Lifecycle
 
 Use a disposable database for the destructive round trip:
 
 ```powershell
 $env:HCAM_DATABASE_URL = "sqlite:///./var/phase1-migration-test.db"
-.\.venv\Scripts\alembic upgrade head
-.\.venv\Scripts\alembic check
-.\.venv\Scripts\alembic downgrade base
-.\.venv\Scripts\alembic upgrade head
-.\.venv\Scripts\alembic check
+uv run --locked --extra dev alembic upgrade head
+uv run --locked --extra dev alembic check
+uv run --locked --extra dev alembic downgrade base
+uv run --locked --extra dev alembic upgrade head
+uv run --locked --extra dev alembic check
 ```
 
 The readiness endpoint rejects databases that are missing required camera
@@ -63,13 +84,18 @@ Automatic `create_all` schema creation is forbidden in production.
 Build both standard Python artifacts:
 
 ```powershell
-.\.venv\Scripts\python -m build
+uv run --locked --extra dev python -m build --no-isolation
 ```
 
 The source distribution includes the Alembic configuration, migration chain,
-documentation, and synthetic seed fixture. CI installs the wheel into a new
-virtual environment and verifies package metadata, application creation, and
-the `hcam` command before accepting the build.
+reviewed contracts, documentation, synthetic seed fixture, and the Markdown/YAML
+GitHub governance assets exercised by repository tests. CI installs the wheel
+into a new virtual environment and verifies package metadata, application
+creation, and the `hcam` command before accepting the build.
+
+When a dependency constraint intentionally changes, run `uv lock`, review the
+complete `uv.lock` diff, run `uv lock --check`, and include the lock change in
+the same review as `pyproject.toml`. Do not hand-edit the lock file.
 
 Build output under `dist/`, coverage data, local databases, and generated
 Sentinel fixtures are ignored by Git.
@@ -82,7 +108,9 @@ Every pull request and `main` push must pass:
 - Ruff error and bug checks;
 - at least 90% branch-aware `hcam` package coverage;
 - dependency consistency and vulnerability audit;
+- immutable `setup-uv` action pinning and `uv.lock` enforcement;
 - migration upgrade and drift checks;
+- reviewed OpenAPI and database contract drift checks;
 - Phase 0 and Phase 1 readiness checks;
 - isolated wheel installation and command smoke tests.
 - bounded sequential and concurrent synthetic load checks;
@@ -101,7 +129,7 @@ or police data.
 The optional PostgreSQL test dependency is installed with:
 
 ```powershell
-.\.venv\Scripts\python -m pip install -e ".[dev,postgres]"
+uv sync --locked --extra dev --extra postgres
 ```
 
 GitHub Actions owns the authoritative Phase 1 PostgreSQL integration run. It
@@ -112,8 +140,8 @@ re-upgrade. Local execution requires an explicitly disposable database URL:
 ```powershell
 $env:HCAM_DATABASE_URL = "postgresql+psycopg://.../disposable_hcam_test"
 $env:HCAM_POSTGRES_TEST_URL = $env:HCAM_DATABASE_URL
-.\.venv\Scripts\alembic upgrade head
-.\.venv\Scripts\pytest -q -m postgres tests/test_postgres_integration.py
+uv run --locked --extra dev --extra postgres alembic upgrade head
+uv run --locked --extra dev --extra postgres pytest -q -m postgres tests/test_postgres_integration.py
 ```
 
 Never point these destructive migration-round-trip commands at a shared or

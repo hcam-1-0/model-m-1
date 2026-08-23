@@ -17,7 +17,15 @@ def test_container_runtime_is_pinned_non_root_and_health_checked() -> None:
     assert "/health/live" in dockerfile
     assert "--no-access-log" in dockerfile
     assert "HCAM_ENVIRONMENT=production" in dockerfile
-    assert "psycopg[binary]" in dockerfile
+    assert "COPY pyproject.toml README.md uv.lock ./" in dockerfile
+    assert '"uv==${UV_VERSION}"' in dockerfile
+    assert "RUN mkdir -p /dist" in dockerfile
+    assert "uv sync --locked --extra dev --no-install-project" in dockerfile
+    assert "uv export --locked --no-dev --extra postgres --no-emit-project" in dockerfile
+    assert "python -m build --no-isolation" in dockerfile
+    assert "--wheel --outdir /dist" in dockerfile
+    assert "--require-hashes" in dockerfile
+    assert "--no-deps /tmp/dist/*.whl" in dockerfile
     assert 'CMD ["python", "-m", "uvicorn"' in dockerfile
 
 
@@ -27,6 +35,7 @@ def test_docker_context_excludes_unnecessary_or_sensitive_paths() -> None:
     assert dockerignore.startswith("**\n")
     assert "!app/**" in dockerignore
     assert "!migrations/**" in dockerignore
+    assert "!uv.lock" in dockerignore
     assert "!.env" not in dockerignore
     assert "!tests" not in dockerignore
     assert "!fixtures" not in dockerignore
@@ -84,12 +93,18 @@ def test_phase2_dashboard_and_alerts_use_only_bounded_stream_metrics() -> None:
 
     assert dashboard["uid"] == "hcam-phase2-streams"
     assert dashboard["editable"] is False
-    assert len(dashboard["panels"]) == 5
+    assert len(dashboard["panels"]) == 8
     assert "hcam_stream_health_state_total" in serialized
     assert "hcam_stream_probe_due_total" in serialized
     assert "hcam_stream_outbox_unpublished_total" in serialized
+    assert "hcam_capability_refresh_queue_depth" in serialized
+    assert "hcam_capability_snapshot_stale_total" in serialized
+    assert "hcam_capability_refresh_expired_leases_total" in serialized
+    assert "hcam_capability_refresh_lease_recoveries_recent_total" in serialized
     assert "camera_id" not in serialized + alerts
     assert "stream_id" not in serialized + alerts
     assert "HcamStreamFleetUnhealthy" in alerts
     assert "HcamStreamProbeQueueBacklog" in alerts
     assert "HcamStreamOutboxBacklog" in alerts
+    assert "HcamCapabilityWorkerLeaseRecovery" in alerts
+    assert "hcam_capability_refresh_lease_recoveries_recent_total" in alerts

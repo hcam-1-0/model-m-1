@@ -8,11 +8,14 @@ import pytest
 from sqlalchemy import func, select
 
 from hcam.camera_registry.models import Camera
+from hcam.settings import Settings
 from hcam.streams import lab_publisher
 from hcam.streams.lab import SyntheticLabError, seed_synthetic_lab, synthetic_stream_id
 from hcam.streams.models import StreamEndpoint
 from tools import phase2_lab
+from tools import phase2_private_camera
 from tools.phase2_lab import prepare
+from hcam.streams.capabilities import CapabilityDiscoveryResult
 
 
 def test_synthetic_lab_seed_is_bounded_idempotent_and_onvif_aware(app) -> None:
@@ -33,6 +36,10 @@ def test_synthetic_lab_seed_is_bounded_idempotent_and_onvif_aware(app) -> None:
     assert onvif is not None
     assert onvif.stream_id == synthetic_stream_id(1)
     assert onvif.locator == "http://onvif-simulator:8081/onvif/media_service"
+    assert onvif.management_locator == (
+        "http://onvif-simulator:8081/onvif/device_service"
+    )
+    assert onvif.capability_refresh_enabled is True
 
 
 def test_phase2_lab_secret_preparation_does_not_return_secret_values(
@@ -92,6 +99,68 @@ def test_phase2_compose_keeps_media_ports_local_and_recording_disabled() -> None
     assert "live.sentinelgujarat.in" not in compose + mediamtx
     assert compose.count("HCAM_STREAM_PROBE_ALLOWED_HOSTS:") == 2
     assert "HCAM_STREAM_PROBE_ALLOWED_HOSTS: onvif-simulator" in compose
+    assert "capability-worker:" in compose
+    assert "HCAM_ONVIF_LAB_HTTP_ENABLED" in compose
+    assert "onvif-egress.phase2.json" in compose
+
+
+def test_private_camera_lab_is_explicit_metadata_only(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    manifest = tmp_path / "private-camera.json"
+    manifest.write_text(
+        """{
+  "version": 1,
+  "authorization": {
+    "owned_or_authorized": true,
+    "operator": "test-owner",
+    "scope": "metadata-only"
+  },
+  "camera": {
+    "stream_id": "str_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "camera_id": "private-lab:camera-01",
+    "locator": "https://10.0.0.8/onvif/media_service",
+    "protocol": "https",
+    "management_locator": "https://10.0.0.8/onvif/device_service",
+    "onvif_auth_mode": "none",
+    "secret_ref": null
+  }
+}""",
+        encoding="utf-8",
+    )
+
+    class Engine:
+        def discover(self, endpoint):
+            assert endpoint.secret_ref is None
+            return CapabilityDiscoveryResult(
+                source="device_and_media",
+                completeness="complete",
+                payload={"device": {}, "services": [], "media": {}, "warnings": []},
+                duration_ms=1.0,
+            )
+
+    settings = Settings(environment="test")
+    monkeypatch.delenv("HCAM_PRIVATE_CAMERA_LAB_ENABLED", raising=False)
+    with pytest.raises(phase2_private_camera.PrivateCameraLabError, match="required"):
+        phase2_private_camera.run(manifest, settings=settings, engine=Engine())
+    monkeypatch.setenv("HCAM_PRIVATE_CAMERA_LAB_ENABLED", "true")
+    report = phase2_private_camera.run(manifest, settings=settings, engine=Engine())
+    assert report["captures_images"] is False
+    assert report["records_video"] is False
+    assert report["performs_network_discovery"] is False
+    assert "locator" not in report
+
+
+def test_private_camera_manifest_rejects_missing_authorization(
+    tmp_path: Path,
+) -> None:
+    manifest = tmp_path / "bad-private-camera.json"
+    manifest.write_text(
+        '{"version":1,"authorization":{},"camera":{}}', encoding="utf-8"
+    )
+    with pytest.raises(phase2_private_camera.PrivateCameraLabError):
+        phase2_private_camera.load_manifest(manifest)
 
 
 def test_failure_drill_requires_full_fleet_recovery() -> None:

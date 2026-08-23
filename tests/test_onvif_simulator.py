@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from http.client import HTTPConnection, HTTPException
+from http.server import ThreadingHTTPServer
 from threading import Thread
-from time import sleep
+from time import monotonic, sleep
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
@@ -17,11 +18,29 @@ from hcam.streams.onvif import (
 from hcam.streams.onvif_simulator import handler_for, main
 
 
+def _wait_for_http_server(server: ThreadingHTTPServer) -> None:
+    host, port = server.server_address
+    deadline = monotonic() + 2
+    while monotonic() < deadline:
+        connection = HTTPConnection(host, port, timeout=0.25)
+        try:
+            connection.request("HEAD", "/ready")
+            response = connection.getresponse()
+            response.read()
+            return
+        except (HTTPException, OSError):
+            sleep(0.02)
+        finally:
+            connection.close()
+    raise AssertionError("synthetic ONVIF HTTP server did not become ready")
+
+
 def test_controlled_onvif_simulator_resolves_stream_uri() -> None:
     expected = "rtsp://127.0.0.1:8554/synthetic-01"
     server = ThreadingHTTPServer(("127.0.0.1", 0), handler_for(expected))
     thread = Thread(target=server.serve_forever, daemon=True)
     thread.start()
+    _wait_for_http_server(server)
     try:
         host, port = server.server_address
         actual = OnvifStreamResolver(timeout_seconds=2).resolve(
@@ -41,6 +60,7 @@ def test_controlled_onvif_simulator_discovers_media_capabilities() -> None:
     )
     thread = Thread(target=server.serve_forever, daemon=True)
     thread.start()
+    _wait_for_http_server(server)
     try:
         host, port = server.server_address
         capabilities = OnvifCapabilityDiscovery(timeout_seconds=2).discover(
@@ -106,6 +126,7 @@ def test_onvif_resolver_rejects_non_stream_response() -> None:
     )
     thread = Thread(target=server.serve_forever, daemon=True)
     thread.start()
+    _wait_for_http_server(server)
     try:
         host, port = server.server_address
         with pytest.raises(OnvifResolutionError, match="onvif_invalid_stream_uri"):
@@ -163,49 +184,34 @@ def test_onvif_resolver_disables_proxies_and_redirects(
     assert any(isinstance(handler, onvif._NoRedirectHandler) for handler in handlers)
 
 
-def test_onvif_resolver_does_not_follow_redirects() -> None:
-    class RedirectHandler(BaseHTTPRequestHandler):
-        target_requests = 0
+def test_onvif_resolver_does_not_follow_redirects(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    handlers: list[object] = []
 
-        def do_POST(self) -> None:
-            self.send_response(302)
-            self.send_header("Location", "/redirect-target")
-            self.end_headers()
-
-        def do_GET(self) -> None:
-            type(self).target_requests += 1
-            self.send_response(200)
-            self.end_headers()
-            self.wfile.write(
-                b"<Envelope><Uri>rtsp://127.0.0.1:8554/live</Uri></Envelope>"
+    class RedirectOpener:
+        def open(self, request: Request, *, timeout: float):
+            assert timeout == 2
+            raise HTTPError(
+                request.full_url,
+                302,
+                "Found",
+                {"Location": "http://camera/redirect-target"},
+                None,
             )
 
-        def log_message(self, *_args) -> None:
-            return
+    def fake_build_opener(*configured_handlers):
+        handlers.extend(configured_handlers)
+        return RedirectOpener()
 
-    server = ThreadingHTTPServer(("127.0.0.1", 0), RedirectHandler)
-    thread = Thread(target=server.serve_forever, daemon=True)
-    thread.start()
-    try:
-        host, port = server.server_address
-        error: OnvifResolutionError | None = None
-        for _attempt in range(3):
-            with pytest.raises(OnvifResolutionError) as captured:
-                OnvifStreamResolver(timeout_seconds=2).resolve(
-                    f"http://{host}:{port}/onvif/media_service"
-                )
-            error = captured.value
-            if error.reason_code != "unreachable":
-                break
-            sleep(0.05)
-    finally:
-        server.shutdown()
-        server.server_close()
-        thread.join(timeout=2)
+    monkeypatch.setattr(onvif, "build_opener", fake_build_opener)
+    with pytest.raises(OnvifResolutionError) as captured:
+        OnvifStreamResolver(timeout_seconds=2).resolve(
+            "http://camera/onvif/media_service"
+        )
 
-    assert error is not None
-    assert error.reason_code == "onvif_redirect_denied"
-    assert RedirectHandler.target_requests == 0
+    assert captured.value.reason_code == "onvif_redirect_denied"
+    assert any(isinstance(handler, onvif._NoRedirectHandler) for handler in handlers)
 
 
 @pytest.mark.parametrize(
@@ -330,6 +336,7 @@ def test_simulator_handler_rejects_wrong_path_and_invalid_body() -> None:
     )
     thread = Thread(target=server.serve_forever, daemon=True)
     thread.start()
+    _wait_for_http_server(server)
     host, port = server.server_address
     try:
         for path, body, expected in (
@@ -387,3 +394,38 @@ def test_simulator_main_validates_arguments_and_closes_server(
     )
     assert main(["--port", "8082"]) == 0
     assert server.closed is True
+
+
+def test_simulator_authenticated_mode_requires_safe_secret_file(
+    tmp_path,
+) -> None:
+    with pytest.raises(SystemExit, match="requires --username"):
+        main(["--auth-mode", "http_digest"])
+    with pytest.raises(SystemExit, match="small UTF-8"):
+        main(
+            [
+                "--auth-mode",
+                "http_digest",
+                "--username",
+                "operator",
+                "--password-file",
+                str(tmp_path / "missing"),
+            ]
+        )
+    password = tmp_path / "password"
+    password.write_text("", encoding="utf-8")
+    with pytest.raises(SystemExit, match="non-empty"):
+        main(
+            [
+                "--auth-mode",
+                "http_digest",
+                "--username",
+                "operator",
+                "--password-file",
+                str(password),
+            ]
+        )
+    with pytest.raises(ValueError, match="unsupported"):
+        handler_for("rtsp://127.0.0.1/live", auth_mode="invalid")
+    with pytest.raises(ValueError, match="requires credentials"):
+        handler_for("rtsp://127.0.0.1/live", auth_mode="http_digest")

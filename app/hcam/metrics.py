@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import timedelta
 from hmac import compare_digest
 
 from fastapi import APIRouter, HTTPException, Request, Response, status
@@ -14,8 +15,17 @@ from prometheus_client import (
 from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
+from hcam.audit.models import AuditEvent
 from hcam.camera_registry.models import utc_now
-from hcam.streams.models import StreamEndpoint, StreamEventOutbox, StreamHealthCurrent
+from hcam.streams.models import (
+    OnvifControlLease,
+    OnvifOperationRun,
+    StreamCapabilityRefresh,
+    StreamCapabilitySnapshot,
+    StreamEndpoint,
+    StreamEventOutbox,
+    StreamHealthCurrent,
+)
 
 
 router = APIRouter(prefix="/internal", tags=["internal"])
@@ -60,6 +70,68 @@ class RequestMetrics:
         self.stream_outbox_pending = Gauge(
             "hcam_stream_outbox_unpublished_total",
             "Current number of unpublished stream state events.",
+            registry=self.registry,
+        )
+        self.capability_jobs = Gauge(
+            "hcam_capability_refresh_jobs_retained_total",
+            "Retained capability refresh jobs by bounded state and configuration.",
+            ("status", "source", "auth_mode"),
+            registry=self.registry,
+        )
+        self.capability_queue = Gauge(
+            "hcam_capability_refresh_queue_depth",
+            "Capability refresh jobs waiting or running.",
+            ("status",),
+            registry=self.registry,
+        )
+        self.capability_duration = Gauge(
+            "hcam_capability_refresh_duration_milliseconds",
+            "Average retained capability refresh duration by outcome.",
+            ("status",),
+            registry=self.registry,
+        )
+        self.capability_retries = Gauge(
+            "hcam_capability_refresh_retries_retained_total",
+            "Retained capability refresh retry attempts by authentication mode.",
+            ("auth_mode",),
+            registry=self.registry,
+        )
+        self.capability_stale = Gauge(
+            "hcam_capability_snapshot_stale_total",
+            "Streams whose latest capability snapshot is older than 36 hours.",
+            registry=self.registry,
+        )
+        self.capability_expired_leases = Gauge(
+            "hcam_capability_refresh_expired_leases_total",
+            "Running capability refresh jobs whose worker lease has expired.",
+            registry=self.registry,
+        )
+        self.capability_lease_recoveries = Gauge(
+            "hcam_capability_refresh_lease_recoveries_recent_total",
+            "Capability refresh leases recovered during the last 15 minutes.",
+            registry=self.registry,
+        )
+        self.capability_failures = Gauge(
+            "hcam_capability_refresh_failures_retained_total",
+            "Retained bounded capability failures by category.",
+            ("category",),
+            registry=self.registry,
+        )
+        self.onvif_operations = Gauge(
+            "hcam_onvif_operations_retained_total",
+            "Retained ONVIF operations by bounded type and outcome.",
+            ("operation", "outcome"),
+            registry=self.registry,
+        )
+        self.onvif_control_leases = Gauge(
+            "hcam_onvif_control_leases_active_total",
+            "Current unexpired ONVIF PTZ control leases.",
+            registry=self.registry,
+        )
+        self.onvif_recent_failures = Gauge(
+            "hcam_onvif_operation_failures_recent_total",
+            "ONVIF operation failures observed during the last 15 minutes.",
+            ("operation",),
             registry=self.registry,
         )
 
@@ -116,6 +188,204 @@ class RequestMetrics:
         )
         self.stream_probe_due.set(int(due or 0))
         self.stream_outbox_pending.set(int(pending or 0))
+        self._refresh_capability_metrics(session, now)
+        self._refresh_onvif_operation_metrics(session, now)
+
+    def _refresh_onvif_operation_metrics(self, session: Session, now) -> None:
+        operation_types = (
+            "imaging_inspect",
+            "event_pull",
+            "ptz_stop",
+            "ptz_continuous",
+            "ptz_relative",
+            "ptz_absolute",
+            "ptz_goto_preset",
+            "ws_discovery",
+            "capability_discover_sync",
+        )
+        outcomes = ("pending", "success", "failure")
+        counts = {
+            (operation, outcome): count
+            for operation, outcome, count in session.execute(
+                select(
+                    OnvifOperationRun.operation_type,
+                    OnvifOperationRun.outcome,
+                    func.count(),
+                ).group_by(
+                    OnvifOperationRun.operation_type,
+                    OnvifOperationRun.outcome,
+                )
+            ).all()
+        }
+        for operation in operation_types:
+            for outcome in outcomes:
+                self.onvif_operations.labels(
+                    operation=operation, outcome=outcome
+                ).set(counts.get((operation, outcome), 0))
+        recent_failures = dict(
+            session.execute(
+                select(OnvifOperationRun.operation_type, func.count())
+                .where(
+                    OnvifOperationRun.outcome == "failure",
+                    OnvifOperationRun.requested_at >= now - timedelta(minutes=15),
+                )
+                .group_by(OnvifOperationRun.operation_type)
+            ).all()
+        )
+        for operation in operation_types:
+            self.onvif_recent_failures.labels(operation=operation).set(
+                recent_failures.get(operation, 0)
+            )
+        active_leases = session.scalar(
+            select(func.count())
+            .select_from(OnvifControlLease)
+            .where(OnvifControlLease.expires_at > now)
+        )
+        self.onvif_control_leases.set(int(active_leases or 0))
+
+    def _refresh_capability_metrics(self, session: Session, now) -> None:
+        statuses = ("queued", "running", "succeeded", "failed")
+        sources = ("manual", "scheduled")
+        auth_modes = (
+            "none",
+            "wsse_password_digest",
+            "http_digest",
+            "wsse_and_http_digest",
+        )
+        rows = session.execute(
+            select(
+                StreamCapabilityRefresh.status,
+                StreamCapabilityRefresh.source,
+                StreamEndpoint.onvif_auth_mode,
+                func.count(),
+            )
+            .join(
+                StreamEndpoint,
+                StreamEndpoint.stream_id == StreamCapabilityRefresh.stream_id,
+            )
+            .group_by(
+                StreamCapabilityRefresh.status,
+                StreamCapabilityRefresh.source,
+                StreamEndpoint.onvif_auth_mode,
+            )
+        ).all()
+        counts = {(status, source, auth): count for status, source, auth, count in rows}
+        for status_value in statuses:
+            queue_count = 0
+            if status_value in {"queued", "running"}:
+                queue_count = sum(
+                    counts.get((status_value, source, auth), 0)
+                    for source in sources
+                    for auth in auth_modes
+                )
+            self.capability_queue.labels(status=status_value).set(queue_count)
+            for source in sources:
+                for auth_mode in auth_modes:
+                    self.capability_jobs.labels(
+                        status=status_value,
+                        source=source,
+                        auth_mode=auth_mode,
+                    ).set(counts.get((status_value, source, auth_mode), 0))
+
+        durations = dict(
+            session.execute(
+                select(
+                    StreamCapabilityRefresh.status,
+                    func.avg(StreamCapabilityRefresh.duration_ms),
+                )
+                .where(StreamCapabilityRefresh.duration_ms.is_not(None))
+                .group_by(StreamCapabilityRefresh.status)
+            ).all()
+        )
+        for status_value in statuses:
+            self.capability_duration.labels(status=status_value).set(
+                float(durations.get(status_value) or 0)
+            )
+
+        retry_counts = {auth_mode: 0 for auth_mode in auth_modes}
+        for auth_mode, attempts in session.execute(
+            select(
+                StreamEndpoint.onvif_auth_mode,
+                StreamCapabilityRefresh.attempt_count,
+            ).join(
+                StreamEndpoint,
+                StreamEndpoint.stream_id == StreamCapabilityRefresh.stream_id,
+            )
+        ):
+            retry_counts[auth_mode] += max(0, attempts - 1)
+        for auth_mode, count in retry_counts.items():
+            self.capability_retries.labels(auth_mode=auth_mode).set(count)
+
+        latest = (
+            select(
+                StreamCapabilitySnapshot.stream_id,
+                func.max(StreamCapabilitySnapshot.last_observed_at).label("observed_at"),
+            )
+            .group_by(StreamCapabilitySnapshot.stream_id)
+            .subquery()
+        )
+        stale = session.scalar(
+            select(func.count())
+            .select_from(latest)
+            .where(latest.c.observed_at < now - timedelta(hours=36))
+        )
+        self.capability_stale.set(int(stale or 0))
+        expired_leases = session.scalar(
+            select(func.count())
+            .select_from(StreamCapabilityRefresh)
+            .where(
+                StreamCapabilityRefresh.status == "running",
+                StreamCapabilityRefresh.lease_until.is_not(None),
+                StreamCapabilityRefresh.lease_until <= now,
+            )
+        )
+        self.capability_expired_leases.set(int(expired_leases or 0))
+        lease_recoveries = session.scalar(
+            select(func.count())
+            .select_from(AuditEvent)
+            .where(
+                AuditEvent.action == "stream.capability_refresh.lease_recovered",
+                AuditEvent.outcome == "success",
+                AuditEvent.occurred_at >= now - timedelta(minutes=15),
+            )
+        )
+        self.capability_lease_recoveries.set(int(lease_recoveries or 0))
+        reason_counts = dict(
+            session.execute(
+                select(StreamCapabilityRefresh.reason_code, func.count())
+                .where(
+                    StreamCapabilityRefresh.status == "failed",
+                    StreamCapabilityRefresh.reason_code.is_not(None),
+                )
+                .group_by(StreamCapabilityRefresh.reason_code)
+            ).all()
+        )
+        secret_reasons = {
+            "camera_secret_provider_unconfigured",
+            "camera_secret_invalid_reference",
+            "camera_secret_invalid_file",
+            "camera_secret_unavailable",
+            "camera_secret_invalid_payload",
+            "credentials_unavailable",
+        }
+        categories = {
+            "authentication": reason_counts.get("unauthorized", 0),
+            "secret_provider": sum(
+                reason_counts.get(reason, 0) for reason in secret_reasons
+            ),
+            "network_policy": reason_counts.get("network_policy_denied", 0),
+            "transport": sum(
+                reason_counts.get(reason, 0)
+                for reason in ("unreachable", "onvif_http_error")
+            ),
+            "other": 0,
+        }
+        categories["other"] = max(
+            0,
+            sum(reason_counts.values()) - sum(categories.values()),
+        )
+        for category, count in categories.items():
+            self.capability_failures.labels(category=category).set(count)
 
 
 def _bearer_token(request: Request) -> str | None:

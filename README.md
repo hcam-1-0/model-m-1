@@ -1,13 +1,27 @@
 # h-cam-2.0
 mayank repo of h cam experiment
 
+## Phase 3 AI analytics planning
+
+Phase 3 planning defines anonymous detection, per-camera tracking, line/zone
+events, synthetic ANPR, runtime selection, data/model governance, security, and
+validation. It adds planning documents only: no AI runtime, model, dataset, or
+real CCTV analytics has been implemented or authorized.
+
+Start here: [docs/phase-3/README.md](docs/phase-3/README.md)
+
 ## Phase 2 camera and video ingestion
 
 Phase 2 adds stream endpoint management, metadata-only health workers, a
-controlled ONVIF simulator, short-lived HLS authorization, and a disposable
-50-stream synthetic lab. It does not connect real CCTV or record video.
+controlled ONVIF simulator, authenticated background capability inventory,
+short-lived HLS authorization, and a disposable 50-stream synthetic lab. It
+does not discover camera networks, control cameras, capture images, or record
+video.
 
 Start here: [docs/phase-2/README.md](docs/phase-2/README.md)
+
+Reviewed OpenAPI and migrated-database baselines are documented in
+[contracts/phase-2/README.md](contracts/phase-2/README.md).
 
 ```powershell
 python tools/phase2_lab.py prepare
@@ -15,6 +29,15 @@ python tools/phase2_lab.py config
 python tools/phase2_lab.py start
 python tools/phase2_lab.py verify --timeout 360
 python tools/phase2_lab.py stop
+```
+
+Capability refresh is opt-in for each ONVIF stream. The worker and detailed
+contract are documented in
+[ONVIF capability management](docs/phase-2/capability-management.md):
+
+```powershell
+hcam capability-worker --once
+hcam capability-worker --poll-seconds 5
 ```
 
 ## Phase 1 camera registry backend
@@ -25,14 +48,13 @@ health endpoints, local SQLite database, migration, and import audit trail.
 Start here: [docs/phase-1/README.md](docs/phase-1/README.md)
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python -m pip install -e ".[dev]"
+uv sync --locked --extra dev
 $env:HCAM_DATABASE_URL = "sqlite:///./var/hcam.db"
 $env:HCAM_ENVIRONMENT = "development"
 $env:HCAM_DEV_AUTH_ENABLED = "true"
-.\.venv\Scripts\alembic upgrade head
-.\.venv\Scripts\hcam import-registry tests/fixtures/camera-registry-seed.json
-.\.venv\Scripts\python -m uvicorn hcam.main:app --reload
+uv run --locked --extra dev alembic upgrade head
+uv run --locked --extra dev hcam import-registry tests/fixtures/camera-registry-seed.json
+uv run --locked --extra dev python -m uvicorn hcam.main:app --reload
 ```
 
 The synthetic seed above is for local development only. OpenAPI is available

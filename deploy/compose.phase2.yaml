@@ -69,6 +69,10 @@ services:
       HCAM_PLAYBACK_SIGNING_KEY_FILE: /run/secrets/playback_signing_key
       HCAM_PLAYBACK_TOKEN_TTL_SECONDS: "60"
       HCAM_STREAM_PROBE_ALLOWED_HOSTS: onvif-simulator
+      HCAM_ONVIF_EGRESS_RULES_FILE: /etc/hcam/onvif-egress.json
+      HCAM_ONVIF_LAB_HTTP_ENABLED: "true"
+    volumes:
+      - ./onvif-egress.phase2.json:/etc/hcam/onvif-egress.json:ro
     secrets: [database_url, metrics_token, playback_signing_key]
     depends_on:
       database:
@@ -207,6 +211,36 @@ services:
       retries: 20
     deploy:
       replicas: 2
+    restart: unless-stopped
+
+  capability-worker:
+    <<: *hcam-runtime
+    command: [hcam, capability-worker, --poll-seconds, "1"]
+    environment:
+      HCAM_CAPABILITY_WORKER_HEARTBEAT_FILE: /tmp/capability-worker-heartbeat
+      HCAM_DATABASE_URL_FILE: /run/secrets/database_url
+      HCAM_ENVIRONMENT: test
+      HCAM_ONVIF_EGRESS_RULES_FILE: /etc/hcam/onvif-egress.json
+      HCAM_ONVIF_LAB_HTTP_ENABLED: "true"
+      HCAM_STREAM_PROBE_TIMEOUT_SECONDS: "8"
+    secrets: [database_url]
+    volumes:
+      - ./onvif-egress.phase2.json:/etc/hcam/onvif-egress.json:ro
+    depends_on:
+      lab-seed:
+        condition: service_completed_successfully
+      onvif-simulator:
+        condition: service_started
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import os,time; assert time.time()-os.path.getmtime('/tmp/capability-worker-heartbeat') < 10"
+      interval: 5s
+      timeout: 5s
+      retries: 20
     restart: unless-stopped
 
   stream-event-dispatcher:

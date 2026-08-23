@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import ipaddress
+from dataclasses import replace
 from datetime import UTC, datetime, timedelta
 from http.server import ThreadingHTTPServer
 from threading import Thread
@@ -7,11 +9,20 @@ from threading import Thread
 from fastapi.testclient import TestClient
 import pytest
 from sqlalchemy import select
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm.exc import StaleDataError
 
 from hcam.audit.models import AuditEvent
+from hcam.audit.repository import AuditRepository
 from hcam.security.auth import Principal
-from hcam.streams.models import StreamEndpoint, StreamHealthCurrent
+from hcam.streams.capabilities import CapabilityDiscoveryEngine
+from hcam.streams.models import (
+    OnvifOperationRun,
+    StreamCapabilitySnapshot,
+    StreamEndpoint,
+    StreamHealthCurrent,
+)
+from hcam.streams.network import OnvifEgressRule
 from hcam.streams.onvif import OnvifCapabilityDiscovery, OnvifResolutionError
 from hcam.streams.onvif_simulator import handler_for
 from hcam.streams.service import StreamConflictError, StreamService
@@ -29,6 +40,23 @@ def stream_payload(**overrides: object) -> dict[str, object]:
     }
     payload.update(overrides)
     return payload
+
+
+def _allow_loopback_onvif(app, port: int):
+    previous = app.state.settings
+    app.state.settings = replace(
+        previous,
+        onvif_egress_rules=(
+            OnvifEgressRule(
+                scheme="http",
+                host="127.0.0.1",
+                port=port,
+                approved_addresses=(ipaddress.ip_network("127.0.0.1/32"),),
+            ),
+        ),
+        onvif_lab_http_enabled=True,
+    )
+    return previous
 
 
 def test_registry_import_creates_legacy_primary_stream(
@@ -140,6 +168,7 @@ def test_editor_discovers_onvif_camera_capabilities_and_audits(
     thread = Thread(target=server.serve_forever, daemon=True)
     thread.start()
     host, port = server.server_address
+    previous_settings = _allow_loopback_onvif(imported_app, port)
     try:
         with TestClient(imported_app) as client:
             created = client.post(
@@ -157,6 +186,7 @@ def test_editor_discovers_onvif_camera_capabilities_and_audits(
                 headers=editor_headers,
             )
     finally:
+        imported_app.state.settings = previous_settings
         server.shutdown()
         server.server_close()
         thread.join(timeout=2)
@@ -179,6 +209,12 @@ def test_editor_discovers_onvif_camera_capabilities_and_audits(
                 AuditEvent.outcome == "success",
             )
         ).one()
+        run = session.scalars(
+            select(OnvifOperationRun).where(
+                OnvifOperationRun.stream_id == stream_id,
+                OnvifOperationRun.operation_type == "capability_discover_sync",
+            )
+        ).one()
     assert event.target_id == stream_id
     assert event.context["camera_id"] == "synthetic:cctv-002"
     assert event.context["profile_count"] == 2
@@ -189,7 +225,23 @@ def test_editor_discovers_onvif_camera_capabilities_and_audits(
         "ptz",
     ]
     assert isinstance(event.context["request_id"], str)
+    assert event.context["operation_id"] == run.operation_id
+    assert run.outcome == "success"
+    assert run.reason_code is None
+    assert run.finished_at is not None
+    assert run.duration_ms is not None
     assert "locator" not in event.context
+    with imported_app.state.database.session_factory() as session:
+        requested = session.scalars(
+            select(AuditEvent).where(
+                AuditEvent.action == "stream.capabilities.discover.requested",
+                AuditEvent.outcome == "pending",
+            )
+        ).one()
+    assert requested.target_id == stream_id
+    assert requested.context["camera_id"] == "synthetic:cctv-002"
+    assert requested.context["operation_id"] == run.operation_id
+    assert "locator" not in requested.context
 
 
 def test_capability_discovery_enforces_role_adapter_and_network_policy(
@@ -232,7 +284,7 @@ def test_capability_discovery_enforces_role_adapter_and_network_policy(
 
     assert wrong_adapter.status_code == 422
     assert network_denied.status_code == 422
-    assert "allowlist" in network_denied.text
+    assert "network_policy_denied" in network_denied.text
     assert viewer_denied.status_code == 403
 
 
@@ -328,6 +380,69 @@ def test_capability_discovery_normalizes_transport_failure_and_audits(
         raise OnvifResolutionError("unreachable")
 
     monkeypatch.setattr(OnvifCapabilityDiscovery, "discover", fail_discovery)
+    previous_settings = _allow_loopback_onvif(imported_app, 1)
+    try:
+        with TestClient(imported_app) as client:
+            created = client.post(
+                "/cameras/synthetic:cctv-002/streams",
+                json=stream_payload(
+                    adapter_kind="onvif",
+                    protocol="http",
+                    locator="http://127.0.0.1:1/onvif/media_service",
+                ),
+                headers=editor_headers,
+            ).json()
+            response = client.post(
+                f"/streams/{created['stream_id']}/capabilities/discover",
+                headers=editor_headers,
+            )
+    finally:
+        imported_app.state.settings = previous_settings
+
+    assert response.status_code == 502
+    assert response.json()["detail"].endswith("(unreachable)")
+    with imported_app.state.database.session_factory() as session:
+        event = session.scalars(
+            select(AuditEvent).where(
+                AuditEvent.action == "stream.capabilities.discover",
+                AuditEvent.outcome == "failure",
+            )
+        ).one()
+        run = session.scalars(
+            select(OnvifOperationRun).where(
+                OnvifOperationRun.stream_id == created["stream_id"],
+                OnvifOperationRun.operation_type == "capability_discover_sync",
+            )
+        ).one()
+    assert event.context["error_type"] == "CapabilityDiscoveryError"
+    assert isinstance(event.context["request_id"], str)
+    assert event.context["operation_id"] == run.operation_id
+    assert run.outcome == "failure"
+    assert run.reason_code == "unreachable"
+    assert run.finished_at is not None
+
+
+def test_capability_discovery_fails_closed_before_network_when_intent_audit_fails(
+    imported_app,
+    editor_headers: dict[str, str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    network_called = False
+    original_record = AuditRepository.record
+
+    def fail_requested_audit(self, **kwargs):
+        if kwargs["action"] == "stream.capabilities.discover.requested":
+            raise SQLAlchemyError("synthetic requested-audit failure")
+        return original_record(self, **kwargs)
+
+    def unexpected_discovery(self, endpoint):
+        nonlocal network_called
+        network_called = True
+        raise AssertionError("discovery must not run without durable intent")
+
+    monkeypatch.setattr(AuditRepository, "record", fail_requested_audit)
+    monkeypatch.setattr(CapabilityDiscoveryEngine, "discover", unexpected_discovery)
+
     with TestClient(imported_app) as client:
         created = client.post(
             "/cameras/synthetic:cctv-002/streams",
@@ -344,16 +459,138 @@ def test_capability_discovery_normalizes_transport_failure_and_audits(
         )
 
     assert response.status_code == 502
-    assert response.json()["detail"].endswith("(unreachable)")
+    assert response.json()["detail"].endswith("(capability_audit_unavailable)")
+    assert network_called is False
     with imported_app.state.database.session_factory() as session:
+        runs = session.scalars(
+            select(OnvifOperationRun).where(
+                OnvifOperationRun.stream_id == created["stream_id"],
+                OnvifOperationRun.operation_type == "capability_discover_sync",
+            )
+        ).all()
+    assert runs == []
+
+
+def test_capability_discovery_sanitizes_unexpected_adapter_failure(
+    imported_app,
+    editor_headers: dict[str, str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def fail_unexpectedly(self, endpoint):
+        raise RuntimeError("camera-password-must-not-leak")
+
+    monkeypatch.setattr(CapabilityDiscoveryEngine, "discover", fail_unexpectedly)
+    with TestClient(imported_app) as client:
+        created = client.post(
+            "/cameras/synthetic:cctv-002/streams",
+            json=stream_payload(
+                adapter_kind="onvif",
+                protocol="http",
+                locator="http://127.0.0.1:1/onvif/media_service",
+            ),
+            headers=editor_headers,
+        ).json()
+        response = client.post(
+            f"/streams/{created['stream_id']}/capabilities/discover",
+            headers=editor_headers,
+        )
+
+    assert response.status_code == 502
+    assert response.json()["detail"].endswith("(capability_discovery_error)")
+    assert "camera-password-must-not-leak" not in response.text
+    with imported_app.state.database.session_factory() as session:
+        run = session.scalars(
+            select(OnvifOperationRun).where(
+                OnvifOperationRun.stream_id == created["stream_id"],
+                OnvifOperationRun.operation_type == "capability_discover_sync",
+            )
+        ).one()
         event = session.scalars(
             select(AuditEvent).where(
                 AuditEvent.action == "stream.capabilities.discover",
-                AuditEvent.outcome == "failure",
+                AuditEvent.target_id == created["stream_id"],
             )
         ).one()
-    assert event.context["error_type"] == "StreamCapabilityDiscoveryError"
-    assert isinstance(event.context["request_id"], str)
+    assert run.outcome == "failure"
+    assert run.reason_code == "capability_discovery_error"
+    assert event.context["error_type"] == "CapabilityDiscoveryError"
+    assert "camera-password-must-not-leak" not in str(event.context)
+
+
+def test_capability_discovery_leaves_pending_intent_when_completion_audit_fails(
+    imported_app,
+    editor_headers: dict[str, str],
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    server = ThreadingHTTPServer(
+        ("127.0.0.1", 0), handler_for("rtsp://127.0.0.1:8554/synthetic-01")
+    )
+    thread = Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    host, port = server.server_address
+    previous_settings = _allow_loopback_onvif(imported_app, port)
+    original_record = AuditRepository.record
+
+    def fail_completion_audit(self, **kwargs):
+        if kwargs["action"] == "stream.capabilities.discover":
+            raise SQLAlchemyError("synthetic completion-audit failure")
+        return original_record(self, **kwargs)
+
+    monkeypatch.setattr(AuditRepository, "record", fail_completion_audit)
+    try:
+        with TestClient(imported_app) as client:
+            created = client.post(
+                "/cameras/synthetic:cctv-002/streams",
+                json=stream_payload(
+                    adapter_kind="onvif",
+                    protocol="http",
+                    locator=f"http://{host}:{port}/onvif/media_service",
+                ),
+                headers=editor_headers,
+            ).json()
+            response = client.post(
+                f"/streams/{created['stream_id']}/capabilities/discover",
+                headers=editor_headers,
+            )
+    finally:
+        imported_app.state.settings = previous_settings
+        server.shutdown()
+        server.server_close()
+        thread.join(timeout=2)
+
+    assert response.status_code == 502
+    assert response.json()["detail"].endswith("(capability_audit_unavailable)")
+    with imported_app.state.database.session_factory() as session:
+        requested = session.scalars(
+            select(AuditEvent).where(
+                AuditEvent.action == "stream.capabilities.discover.requested",
+                AuditEvent.target_id == created["stream_id"],
+            )
+        ).one()
+        completed = session.scalars(
+            select(AuditEvent).where(
+                AuditEvent.action == "stream.capabilities.discover",
+                AuditEvent.target_id == created["stream_id"],
+            )
+        ).all()
+        run = session.scalars(
+            select(OnvifOperationRun).where(
+                OnvifOperationRun.stream_id == created["stream_id"],
+                OnvifOperationRun.operation_type == "capability_discover_sync",
+            )
+        ).one()
+        snapshots = session.scalars(
+            select(StreamCapabilitySnapshot).where(
+                StreamCapabilitySnapshot.stream_id == created["stream_id"]
+            )
+        ).all()
+    assert requested.outcome == "pending"
+    assert requested.context["operation_id"] == run.operation_id
+    assert run.outcome == "pending"
+    assert run.finished_at is None
+    assert run.duration_ms is None
+    assert snapshots == []
+    assert completed == []
 
 
 def test_stream_update_requires_etag_and_promotes_new_primary(
