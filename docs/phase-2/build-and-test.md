@@ -38,12 +38,13 @@ controller-role separation, control leases, private-CIDR discovery filtering,
 retention semantics,
 outbox delivery, playback scope, and Compose safety.
 
-The 2026-08-21 local run passed 413 tests with four expected PostgreSQL-URL
-skips and 90.42% branch coverage. Compile, Ruff, Phase 1
+The 2026-08-23 clean-commit run passed 415 tests with four expected
+PostgreSQL-URL skips in the general suite and 90.41% branch coverage. Compile,
+Ruff, Phase 1
 regression, SQLite migration upgrade/drift, lab prepare, lab configuration,
-and `git diff --check` all passed. Readiness has zero automated failures;
-`--strict` intentionally exits `2` while the grouped extension publication
-gate remains open.
+and `git diff --check` all passed. After owner acceptance and linked publication
+evidence, readiness has zero automated failures and zero manual gates;
+`--strict` exits `0`.
 
 Publication readiness also validates the named `P2-G1` through `P2-G4`
 gate schema. Checking a gate without a Markdown evidence link, using an unsafe
@@ -68,19 +69,14 @@ interfaces, does not fetch logs, removes its temporary download, and returns a
 blocked result for authentication or network failures rather than trusting a
 run URL.
 
-The earlier PostgreSQL 18 run passed both integration tests, including two
-concurrent capability workers, and completed a drift-free downgrade/upgrade/
-check round trip through migration `0006`. Migration `0007` is covered by the
-SQLite upgrade/downgrade test, but current PostgreSQL and Compose revalidation
-was not run because Docker Desktop's Linux server was unavailable, its service
-and WSL distribution were stopped, and the engine pipe returned HTTP 500. A
-normal background launch started Desktop processes but did not start the
-service, WSL distribution, or server within the three-minute readiness window.
-That environment gap must be cleared before publication.
-Lowering Docker API negotiation to 1.47 and 1.45 returned the same engine-pipe
-HTTP 500, so the current failure is not a client API-version mismatch. No local
-PostgreSQL service, `psql` command, port 5432 listener, or
-`HCAM_POSTGRES_TEST_URL` was available as a non-Docker fallback.
+The 2026-08-23 P2-G1 run passed seven PostgreSQL 18 checks, including migration
+`0007` upgrade, drift, four PostgreSQL integration tests, downgrade, restored
+upgrade, and final drift. The P2-G2 run passed all six guarded synthetic checks,
+including 50-stream health/security, outage recovery, and cleanup. Both local
+artifacts and the matching remote artifacts were independently verified as
+`valid`. An earlier attempt had been blocked by a Docker engine HTTP 500 with no
+local PostgreSQL fallback; that environment issue was superseded by the current
+successful runs.
 
 ## Container Checks
 
@@ -107,3 +103,10 @@ offline readiness checks from extracted source, including the reviewed lock.
 The PostgreSQL 18 and synthetic-lab jobs generate guarded P2-G1/P2-G2 JSON,
 bind it to the PR head, upload it under commit-specific names for seven days,
 and preserve unconditional synthetic-stack cleanup.
+
+For reviewed source `dd58590877957d4d07c1acc0b4a24ce206731c42`, all eight
+repository checks passed in
+[Actions run 32551095462](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32551095462).
+Pull request #31 then merged the source as
+`cc0d247e80e4eb9c9f320160028e3c9104770fa9` after explicit scoped owner
+acceptance.

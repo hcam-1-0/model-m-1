@@ -32,11 +32,11 @@ Government data, run biometrics, or add AI analytics.
 
 ## Phase Boundary
 
-Phase 2 core was accepted by the owner on 2026-08-21. Phase 3 AI analytics
-planning is authorized, but implementation remains subject to the Phase 3
-dataset, model, safety, architecture, and validation gates. The later
-authenticated capability-management and controlled ONVIF operations extension
-is locally implemented but still requires current PostgreSQL/Compose evidence,
-green remote CI, and explicit owner acceptance. No Phase 2 result authorizes
-real CCTV, production police use, Government database access, face recognition,
-watchlists, or real-person footage.
+Phase 2 core was accepted by the owner on 2026-08-21. The later authenticated
+capability-management and controlled ONVIF operations extension was separately
+accepted and merged through pull request #31 on 2026-08-23. Phase 3 AI
+analytics planning is authorized, but implementation remains subject to its
+own dataset, model, safety, architecture, and validation gates. No Phase 2
+result authorizes physical-camera control, recording, real CCTV, production
+police use, Government database access, analytics, face recognition,
+watchlists, deployment, or real-person footage.

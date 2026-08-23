@@ -49,7 +49,14 @@ Phase 2 core status is `accepted`. Phase 3 planning is authorized. This
 acceptance does not authorize real CCTV, Government data, biometrics,
 watchlists, or production deployment.
 
-The authenticated capability-management and controlled ONVIF operations work
-was added after core acceptance. Its current publication and acceptance state
-is tracked separately in
-[extension-publication-checklist.md](extension-publication-checklist.md).
+## Controlled Extension Owner Gate
+
+- [x] Owner separately accepted the authenticated capability-management and
+  controlled ONVIF operations extension on 2026-08-23.
+- [x] The exact reviewed source was merged through
+  [pull request #31](https://github.com/mayankthakor227/h-cam-2.0/pull/31).
+
+The extension publication evidence and exact acceptance boundary are recorded
+in [extension-publication-checklist.md](extension-publication-checklist.md) and
+[owner-review.md](owner-review.md). This acceptance does not authorize
+physical-camera control, recording, Government data, analytics, or deployment.

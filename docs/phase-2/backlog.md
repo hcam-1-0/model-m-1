@@ -1,7 +1,7 @@
 # Phase 2 Build And Review Backlog
 
-Status: accepted core; authenticated capability management and controlled
-ONVIF operations are implemented locally and pending publication review.
+Status: complete. Phase 2 core and the separately reviewed controlled ONVIF
+extension are accepted and merged under their documented safety boundaries.
 
 ## Delivered Core
 
@@ -13,32 +13,29 @@ ONVIF operations are implemented locally and pending publication review.
 - P2-06 deterministic 50-stream synthetic lab and outage recovery;
 - P2-07 capability jobs, cache/history, metrics, alerts, and private-lab harness.
 
-## Active Publication Review
+## Completed Publication Review
 
-- P2-R1 review migration, secret provider, authentication, and egress changes;
-- P2-R2 review jobs, leases, retries, history, APIs, audit, and event contracts;
-- P2-R3 rerun full Python, PostgreSQL, Docker, C50, outage, security, package,
-  dependency-lock, and vulnerability evidence;
-- P2-R4 publish through a reviewable PR and require green remote CI;
-- P2-R5 synchronize accepted documentation with the merged commit.
+- [x] P2-R1 reviewed migration, secret provider, authentication, egress, TLS,
+  DNS pinning, and redaction changes with no blocking finding.
+- [x] P2-R2 reviewed jobs, leases, retries, history, APIs, audit, controlled
+  operation lifecycles, events, and metrics with no blocking finding.
+- [x] P2-R3 reran full Python, PostgreSQL 18, Docker, C50, outage, security,
+  package, dependency-lock, contract, and vulnerability evidence.
+- [x] P2-R4 published [pull request #31](https://github.com/mayankthakor227/h-cam-2.0/pull/31) with eight successful repository checks.
+- [x] P2-R5 synchronized accepted documentation with implementation merge
+  commit `cc0d247e80e4eb9c9f320160028e3c9104770fa9`.
 
-The exact completion conditions for P2-R3 through P2-R5 are recorded in
-`extension-publication-checklist.md`. The earlier closure of issue #27 applies
-to the merged core and is not evidence that this extension was published.
+The exact completion evidence for P2-R3 through P2-R5 is recorded in
+`extension-publication-checklist.md`. The extension source commit was
+`dd58590877957d4d07c1acc0b4a24ce206731c42`; the PostgreSQL 18 and synthetic
+50-stream jobs passed in Actions run `32551095462`, their commit-named artifacts
+were independently verified, and the owner recorded scoped acceptance before
+the merge.
 
-The CI implementation for P2-R3 is prepared locally: PostgreSQL and Compose
-jobs call the guarded evidence runner, bind pull-request evidence to the PR
-head, upload commit-specific JSON for seven days, and fail on a missing report.
-The jobs use the reviewed universal `uv.lock`; runtime evidence records its
-SHA-256 so dependency drift invalidates an artifact.
-This automation does not complete P2-R3 until it is committed and a remote run
-passes for the reviewed source.
-
-Remote P2-G1/P2-G2 review is now fail-closed through `verify-run`: reviewers
-must validate run, job, artifact, and payload identity from a clean checkout of
-the reviewed commit before linking an Actions run. The verifier is read-only,
-does not fetch logs, and does not replace P2-R4 pull-request or P2-R5 owner
-acceptance evidence.
+Remote P2-G1/P2-G2 review remains fail-closed through `verify-run`: reviewers
+validate run, job, artifact, and payload identity from a clean checkout of the
+reviewed commit. The verifier is read-only, does not fetch logs, and does not
+replace pull-request review or owner acceptance evidence.
 
 ## Delivered Controlled ONVIF Operations
 

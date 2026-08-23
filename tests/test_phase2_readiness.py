@@ -9,21 +9,20 @@ from tools import phase2_readiness
 from tools import phase2_publication_evidence as publication_evidence
 
 
-def test_phase2_report_preserves_core_acceptance_and_pending_extension() -> None:
+def test_phase2_report_is_complete_after_extension_acceptance() -> None:
     report = phase2_readiness.build_report(run_validation=False)
 
     assert report["failures"] == 0
-    assert report["manual_gates"] == 1
-    assert report["status"] == "accepted_core_extension_pending"
+    assert report["manual_gates"] == 0
+    assert report["status"] == "complete"
 
 
-def test_phase2_extension_publication_gate_lists_remaining_evidence() -> None:
+def test_phase2_extension_publication_gate_accepts_recorded_evidence() -> None:
     check = phase2_readiness.check_extension_publication()
 
-    assert check.status == phase2_readiness.MANUAL
-    assert "4 controlled ONVIF extension publication gates remain" in check.detail
+    assert check.status == phase2_readiness.PASS
+    assert "publication is accepted" in check.detail
     assert check.evidence[0].endswith("extension-publication-checklist.md")
-    assert check.evidence[1].startswith("P2-G1:")
 
 
 def test_phase2_extension_gate_rejects_checked_gate_without_evidence(
@@ -31,7 +30,13 @@ def test_phase2_extension_gate_rejects_checked_gate_without_evidence(
 ) -> None:
     original_read = phase2_readiness._read
     content = original_read("docs/phase-2/extension-publication-checklist.md")
-    content = content.replace("- [ ] `P2-G1`", "- [x] `P2-G1`", 1)
+    content = content.replace(
+        "  Evidence: [Actions run 32551095462](https://github.com/"
+        "mayankthakor227/h-cam-2.0/actions/runs/32551095462) "
+        "(`PostgreSQL 18 integration`, job `96977846483`)",
+        "  Evidence: `pending`",
+        1,
+    )
 
     def read(path: str) -> str:
         if path == "docs/phase-2/extension-publication-checklist.md":
@@ -269,14 +274,14 @@ Status: `accepted`
     assert check.status == phase2_readiness.PASS
 
 
-def test_phase2_strict_mode_stops_at_extension_publication_gate() -> None:
+def test_phase2_strict_mode_passes_after_extension_acceptance() -> None:
     output = io.StringIO()
     with redirect_stdout(output):
         exit_code = phase2_readiness.main(["--strict"])
 
-    assert exit_code == 2
-    assert "Phase 2 readiness: accepted_core_extension_pending" in output.getvalue()
-    assert "Manual gates: 1" in output.getvalue()
+    assert exit_code == 0
+    assert "Phase 2 readiness: complete" in output.getvalue()
+    assert "Manual gates: 0" in output.getvalue()
 
 
 def test_phase2_json_status_is_machine_readable() -> None:
@@ -285,4 +290,4 @@ def test_phase2_json_status_is_machine_readable() -> None:
         exit_code = phase2_readiness.main(["--json"])
 
     assert exit_code == 0
-    assert '"status": "accepted_core_extension_pending"' in output.getvalue()
+    assert '"status": "complete"' in output.getvalue()

@@ -1,11 +1,12 @@
 # Phase 2 Readiness Report
 
-Status: `accepted_core_extension_pending`
+Status: `complete`
 
 The repository owner accepted the merged Phase 2 core on 2026-08-21 and
 authorized Phase 3 AI analytics planning. The later authenticated capability
-management and controlled ONVIF operations extension has complete local
-offline evidence, but is not yet published or owner-accepted.
+management and controlled ONVIF operations extension passed its separate
+publication gates, was explicitly accepted on 2026-08-23, and was merged
+through pull request #31.
 
 ## Evidence Summary
 
@@ -31,28 +32,45 @@ failure drill.
 
 ## Local Validation Evidence
 
-Latest offline validation on 2026-08-21:
+Latest clean-commit validation on 2026-08-23:
 
-- 413 tests passed, 4 PostgreSQL-URL tests skipped, and branch coverage passed
-  at 90.42%;
-- Phase 2 readiness reported `accepted_core_extension_pending` with zero
-automated failures and one grouped publication gate;
-- publication completion is fail-closed behind named `P2-G1` through `P2-G4`
-  gates, each requiring a validated Markdown evidence reference;
+- 415 tests passed, 4 PostgreSQL-URL tests were skipped only in the general
+  suite because its default PostgreSQL URL was intentionally absent, and branch
+  coverage passed at 90.41%;
+- Phase 2 readiness reports `complete` with zero automated failures and zero
+  manual gates after the linked `P2-G1` through `P2-G4` records were accepted;
 - compile, Ruff, Phase 1 regressions, SQLite upgrade/drift, lab preparation,
   lab configuration, and `git diff --check` passed;
+- the dependency audit reported no known vulnerabilities;
 - dependency locking is enforced in readiness, CI, source distributions, and
   the runtime image; publication artifacts include the current lock hash;
 - synthetic Media, Imaging, Events, and PTZ operations passed, including
   pull-point cleanup, every bounded PTZ action, controller-role separation,
   movement leases, automatic stop, audit records, and safe metrics;
 - manual capability refresh admission passed completion-anchored cooldown and
-  active-job race recovery tests; the PostgreSQL two-request race test is
-  present but awaits the current PostgreSQL publication gate;
+  active-job race recovery tests, including the PostgreSQL publication gate;
 - terminal refresh processing passed 90-day job/history pruning while retaining
   the newest stale inventory snapshot for each stream;
 - WS-Discovery fixtures passed exact-interface/CIDR filtering, unsafe-XAddr
   rejection, result bounds, role enforcement, and success/failure audit.
+
+Current publication validation on 2026-08-23:
+
+- `P2-G1` passed all seven PostgreSQL 18 checks: server version, migration
+  upgrade, schema drift, four PostgreSQL integration tests, downgrade, restored
+  upgrade, and final drift;
+- `P2-G2` passed all six guarded synthetic checks: preparation, Compose
+  validation/start, 50-stream health and security, outage recovery, and cleanup;
+- 50 of 50 streams were healthy, playback remained path-isolated, capability
+  history was present, protected metrics passed, and the unpublished outbox
+  backlog was zero;
+- the outage drill completed `healthy -> degraded -> offline -> degraded ->
+  healthy`, and all 50 streams recovered;
+- local `P2-G1` and `P2-G2` artifacts and the two remote commit-named artifacts
+  were independently verified as `valid`;
+- Docker Desktop 4.51.0, Docker Engine 28.5.2, and Compose 2.40.3 were healthy;
+- no camera, image, recording, Government data, external dataset, real video,
+  or physical PTZ action was used.
 
 Historic container evidence from 2026-08-19:
 
@@ -69,20 +87,12 @@ Historic container evidence from 2026-08-19:
 - all unhealthy state gauges and unpublished outbox backlog returned zero;
 - no recording, real video, Government data, or media segment download was used.
 
-Current PostgreSQL/Compose revalidation is pending. Docker Desktop 28.5.2 and
-Compose 2.40.3 are installed, but the Linux engine returned HTTP 500 with no
-server version, and both its WSL distribution and service were stopped. No
-process was force-killed and no system service was changed. A normal background
-launch created Desktop processes, but the service, WSL distribution, and server
-remained unavailable after the three-minute readiness window. Migration `0007`
-therefore still needs the current PostgreSQL and Compose gates after Docker is
-repaired.
-Rechecking with Docker API 1.47 and 1.45 produced the same HTTP 500, ruling out
-API negotiation as the cause. The laptop also had no local PostgreSQL service,
-`psql` executable, port 5432 listener, or configured PostgreSQL test URL. GitHub
-CLI authentication for the repository was valid, but no pull request exists
-for `codex/phase2-onvif-capability-management`, so no unpublished-extension CI
-result can be treated as current evidence.
+An earlier 2026-08-21 revalidation attempt was blocked when Docker Desktop's
+Linux engine returned HTTP 500 and its WSL distribution and service were
+stopped. API 1.47 and 1.45 checks ruled out negotiation, and no local PostgreSQL
+fallback was available. This remains useful environment history, but it was
+superseded by the successful 2026-08-23 PostgreSQL and Compose publication
+validation above.
 
 `tools/phase2_publication_evidence.py` now provides a read-only preflight and
 guarded `P2-G1`/`P2-G2` evidence runs. It rejects dirty source, validates
@@ -105,18 +115,20 @@ extra-file, authentication-blocked, or token-bearing error cases are covered by
 synthetic tests. A valid verifier report is required before a remote P2-G1 or
 P2-G2 run is linked.
 
-The local CI workflow now routes its PostgreSQL 18 and 50-stream jobs through
+The CI workflow routes its PostgreSQL 18 and 50-stream jobs through
 the guarded runner and uploads seven-day, PR-head-bound `phase2-p2-g1-*` and
 `phase2-p2-g2-*` artifacts using an immutable action commit. Workflow structure
 tests protect the source checkout, confirmation flags, output paths, retention,
 read-only permissions, locked installs, hashed artifact installation, and
-defensive cleanup. This branch still has no pull
-request or remote run, so the configuration is readiness evidence rather than
-completed P2-G1/P2-G2 runtime evidence.
+defensive cleanup. [Actions run 32551095462](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32551095462)
+passed all eight repository checks for reviewed source
+`dd58590877957d4d07c1acc0b4a24ce206731c42`; its P2-G1/P2-G2 artifacts were
+verified from a clean checkout and remained unexpired at owner acceptance.
 
-The remaining extension publication conditions are authoritative in
-`extension-publication-checklist.md`: current PostgreSQL validation, current
-Compose validation, green remote PR checks, and explicit owner acceptance.
+The completed extension publication record is authoritative in
+`extension-publication-checklist.md`. Pull request #31 merged the exact reviewed
+source as `cc0d247e80e4eb9c9f320160028e3c9104770fa9` after green remote checks and
+explicit scoped owner acceptance.
 
 The private-camera harness is implemented and synthetically tested, but no
 physical-camera run was performed because no owned/authorized camera, exact
