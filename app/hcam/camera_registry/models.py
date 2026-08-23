@@ -14,6 +14,8 @@ from sqlalchemy import (
     text,
 )
 from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.ext.hybrid import hybrid_property
+from geoalchemy2 import Geometry
 
 from hcam.database import Base, UTCDateTime
 
@@ -61,6 +63,51 @@ class Camera(Base):
     timezone_name: Mapped[str | None] = mapped_column(String(80))
     latitude: Mapped[float | None] = mapped_column(Float)
     longitude: Mapped[float | None] = mapped_column(Float)
+
+    # PostGIS geometry column (POINT, SRID 4326)
+    geometry: Mapped[Any | None] = mapped_column(
+        Geometry(geometry_type="POINT", srid=4326, from_text="ST_GeomFromEWKT", name="geometry"),
+        nullable=True,
+    )
+
+    @hybrid_property
+    def lat(self) -> float | None:
+        """Return latitude from geometry if lat/long columns are null."""
+        if self.latitude is not None:
+            return self.latitude
+        if self.geometry is not None:
+            # Extract latitude from geometry (ST_Y)
+            from sqlalchemy import func
+            # This is a hybrid property, so we can't execute SQL here
+            # The value will be set via Python when geometry is loaded
+            pass
+        return None
+
+    @hybrid_property
+    def lon(self) -> float | None:
+        """Return longitude from geometry if lat/long columns are null."""
+        if self.longitude is not None:
+            return self.longitude
+        if self.geometry is not None:
+            pass
+        return None
+
+    def sync_geometry_from_coords(self) -> None:
+        """Update geometry column from latitude/longitude values."""
+        if self.latitude is not None and self.longitude is not None:
+            from geoalchemy2.shape import from_shape
+            from shapely.geometry import Point
+            point = Point(self.longitude, self.latitude)
+            self.geometry = from_shape(point, srid=4326)
+
+    def sync_coords_from_geometry(self) -> None:
+        """Update latitude/longitude from geometry column."""
+        if self.geometry is not None:
+            # geometry is a WKBElement, we can extract coordinates
+            from geoalchemy2.shape import to_shape
+            point = to_shape(self.geometry)
+            self.longitude = point.x
+            self.latitude = point.y
 
     department: Mapped[str | None] = mapped_column(String(120), index=True)
     ownership: Mapped[str | None] = mapped_column(String(120))

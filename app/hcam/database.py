@@ -12,7 +12,7 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 from sqlalchemy.types import TypeDecorator
 
 
-CURRENT_SCHEMA_REVISION = "0007_onvif_operations"
+CURRENT_SCHEMA_REVISION = "0008_postgis_gis"
 REQUIRED_CAMERA_COLUMNS = frozenset(
     {
         "camera_id",
@@ -22,6 +22,7 @@ REQUIRED_CAMERA_COLUMNS = frozenset(
         "display_name",
         "latitude",
         "longitude",
+        "geometry",
         "duration_seconds",
         "provenance",
         "created_at",
@@ -109,10 +110,27 @@ def _is_sqlite(database_url: str) -> bool:
     return urlsplit(database_url).scheme.startswith("sqlite")
 
 
-def build_engine(database_url: str) -> Engine:
+def build_engine(
+    database_url: str,
+    pool_size: int = 5,
+    max_overflow: int = 10,
+    pool_timeout: float = 30.0,
+    pool_recycle: int = 1800,
+) -> Engine:
     ensure_sqlite_parent(database_url)
     connect_args = {"check_same_thread": False} if _is_sqlite(database_url) else {}
-    engine = create_engine(database_url, connect_args=connect_args, pool_pre_ping=True)
+    if _is_sqlite(database_url):
+        engine = create_engine(database_url, connect_args=connect_args, pool_pre_ping=True)
+    else:
+        engine = create_engine(
+            database_url,
+            connect_args=connect_args,
+            pool_pre_ping=True,
+            pool_size=pool_size,
+            max_overflow=max_overflow,
+            pool_timeout=pool_timeout,
+            pool_recycle=pool_recycle,
+        )
 
     if _is_sqlite(database_url):
         @event.listens_for(engine, "connect")
@@ -131,8 +149,18 @@ class Database:
         database_url: str,
         *,
         allow_unversioned_schema: bool = False,
+        pool_size: int = 5,
+        max_overflow: int = 10,
+        pool_timeout: float = 30.0,
+        pool_recycle: int = 1800,
     ) -> None:
-        self.engine = build_engine(database_url)
+        self.engine = build_engine(
+            database_url,
+            pool_size=pool_size,
+            max_overflow=max_overflow,
+            pool_timeout=pool_timeout,
+            pool_recycle=pool_recycle,
+        )
         self.allow_unversioned_schema = allow_unversioned_schema
         self.session_factory = sessionmaker(
             bind=self.engine,

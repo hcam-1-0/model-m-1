@@ -264,3 +264,35 @@ class RegistryImportResult(BaseModel):
     unchanged: int
     total: int
     audit_event_id: str
+
+
+class GeoJSONGeometry(BaseModel):
+    type: Literal["Point"]
+    coordinates: list[float]  # [lon, lat]
+
+
+class CameraGeoProperties(BaseModel):
+    camera_id: str
+    display_name: str
+    location_label: str | None = None
+    department: str | None = None
+    ownership: str | None = None
+    camera_type: str | None = None
+    connectivity_status: str | None = None
+    storage_status: str | None = None
+    health_status: str | None = None
+    maintenance_status: str | None = None
+    operational_status: str | None = None
+    timezone_name: str | None = None
+
+
+class CameraGeoOut(BaseModel):
+    type: Literal["Feature"] = "Feature"
+    geometry: GeoJSONGeometry | None = None
+    properties: CameraGeoProperties
+    id: str
+
+
+class CameraGeoCollection(BaseModel):
+    type: Literal["FeatureCollection"] = "FeatureCollection"
+    features: list[CameraGeoOut]

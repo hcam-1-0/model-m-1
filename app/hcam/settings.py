@@ -155,6 +155,18 @@ class Settings:
     playback_issuer: str = "hcam-core"
     playback_audience: str = "mediamtx"
 
+    # GIS / PostGIS settings
+    postgis_enabled: bool = False
+    db_pool_size: int = 5
+    db_max_overflow: int = 10
+    db_pool_timeout: float = 30.0
+    db_pool_recycle: int = 1800
+    gis_tile_extent: int = 4096
+    gis_tile_buffer: int = 256
+    gis_max_features_per_tile: int = 10000
+    gis_cluster_min_zoom: int = 0
+    gis_cluster_max_zoom: int = 20
+
     def __post_init__(self) -> None:
         environment = self.environment.strip().lower()
         if environment not in {"development", "test", "production"}:
@@ -279,6 +291,27 @@ class Settings:
             raise ValueError("HCAM_PLAYBACK_TOKEN_TTL_SECONDS must be between 10 and 300")
         if not self.playback_issuer.strip() or not self.playback_audience.strip():
             raise ValueError("playback issuer and audience must not be empty")
+
+        # GIS / PostGIS validation
+        if self.postgis_enabled and self.database_url.startswith("sqlite"):
+            raise ValueError("PostGIS requires PostgreSQL database (not SQLite)")
+        if self.db_pool_size < 1:
+            raise ValueError("HCAM_DB_POOL_SIZE must be >= 1")
+        if self.db_max_overflow < 0:
+            raise ValueError("HCAM_DB_MAX_OVERFLOW must be >= 0")
+        if self.db_pool_timeout <= 0:
+            raise ValueError("HCAM_DB_POOL_TIMEOUT must be positive")
+        if self.db_pool_recycle < 0:
+            raise ValueError("HCAM_DB_POOL_RECYCLE must be >= 0")
+        if self.gis_tile_extent < 256 or self.gis_tile_extent > 8192:
+            raise ValueError("HCAM_GIS_TILE_EXTENT must be between 256 and 8192")
+        if self.gis_tile_buffer < 0 or self.gis_tile_buffer > 1024:
+            raise ValueError("HCAM_GIS_TILE_BUFFER must be between 0 and 1024")
+        if self.gis_max_features_per_tile < 100 or self.gis_max_features_per_tile > 50000:
+            raise ValueError("HCAM_GIS_MAX_FEATURES_PER_TILE must be between 100 and 50000")
+        if not (0 <= self.gis_cluster_min_zoom <= self.gis_cluster_max_zoom <= 22):
+            raise ValueError("GIS cluster zoom range must be 0-22 with min <= max")
+
         object.__setattr__(self, "environment", environment)
         object.__setattr__(self, "database_url", self.database_url.strip())
         object.__setattr__(self, "service_name", self.service_name.strip())
@@ -387,5 +420,33 @@ class Settings:
             ),
             playback_audience=os.getenv(
                 "HCAM_PLAYBACK_AUDIENCE", defaults.playback_audience
+            ),
+            postgis_enabled=_environment_flag("HCAM_POSTGIS_ENABLED", defaults.postgis_enabled),
+            db_pool_size=_positive_environment_integer(
+                "HCAM_DB_POOL_SIZE", defaults.db_pool_size
+            ),
+            db_max_overflow=_positive_environment_integer(
+                "HCAM_DB_MAX_OVERFLOW", defaults.db_max_overflow
+            ),
+            db_pool_timeout=_positive_environment_number(
+                "HCAM_DB_POOL_TIMEOUT", defaults.db_pool_timeout
+            ),
+            db_pool_recycle=_positive_environment_integer(
+                "HCAM_DB_POOL_RECYCLE", defaults.db_pool_recycle
+            ),
+            gis_tile_extent=_positive_environment_integer(
+                "HCAM_GIS_TILE_EXTENT", defaults.gis_tile_extent
+            ),
+            gis_tile_buffer=_positive_environment_integer(
+                "HCAM_GIS_TILE_BUFFER", defaults.gis_tile_buffer
+            ),
+            gis_max_features_per_tile=_positive_environment_integer(
+                "HCAM_GIS_MAX_FEATURES_PER_TILE", defaults.gis_max_features_per_tile
+            ),
+            gis_cluster_min_zoom=_positive_environment_integer(
+                "HCAM_GIS_CLUSTER_MIN_ZOOM", defaults.gis_cluster_min_zoom
+            ),
+            gis_cluster_max_zoom=_positive_environment_integer(
+                "HCAM_GIS_CLUSTER_MAX_ZOOM", defaults.gis_cluster_max_zoom
             ),
         )

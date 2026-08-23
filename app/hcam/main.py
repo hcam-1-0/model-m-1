@@ -33,6 +33,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     database = Database(
         resolved_settings.database_url,
         allow_unversioned_schema=resolved_settings.create_schema,
+        pool_size=resolved_settings.db_pool_size,
+        max_overflow=resolved_settings.db_max_overflow,
+        pool_timeout=resolved_settings.db_pool_timeout,
+        pool_recycle=resolved_settings.db_pool_recycle,
     )
 
     @asynccontextmanager

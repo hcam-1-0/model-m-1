@@ -15,6 +15,7 @@ from fastapi import (
 )
 from sqlalchemy.orm import Session
 
+from hcam.camera_registry import gis_routes
 from hcam.camera_registry.repository import (
     CameraFilters,
     CameraRepository,
@@ -46,6 +47,7 @@ from hcam.security.auth import (
 
 
 router = APIRouter(prefix="/cameras", tags=["camera-registry"])
+router.include_router(gis_routes.router)
 SessionDependency = Annotated[Session, Depends(get_session)]
 ViewerPrincipal = Annotated[
     Principal,
