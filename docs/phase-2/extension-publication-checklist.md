@@ -1,11 +1,11 @@
 # Controlled ONVIF Extension Publication Checklist
 
-Status: `pending`
+Status: `accepted`
 
 Phase 2 core was accepted and merged before the authenticated capability
-management and controlled ONVIF operations extension was implemented. This
-checklist prevents that earlier decision from being treated as acceptance of
-the unpublished extension.
+management and controlled ONVIF operations extension was implemented. The
+extension was separately reviewed, explicitly accepted for its exact source
+commit, and merged through pull request #31 on 2026-08-23.
 
 ## Local Implementation Evidence
 
@@ -36,18 +36,18 @@ the unpublished extension.
 
 ## Publication Gates
 
-- [ ] `P2-G1` Migration `0007` passes the current PostgreSQL 18 upgrade, drift,
+- [x] `P2-G1` Migration `0007` passes the current PostgreSQL 18 upgrade, drift,
   downgrade, concurrent-worker, and concurrent queue-admission gates.
-  Evidence: `pending`
-- [ ] `P2-G2` The current Phase 2 Compose stack passes C50 health, playback isolation,
+  Evidence: [Actions run 32551095462](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32551095462) (`PostgreSQL 18 integration`, job `96977846483`)
+- [x] `P2-G2` The current Phase 2 Compose stack passes C50 health, playback isolation,
   outage recovery, protected metrics, and zero-outbox-backlog checks.
-  Evidence: `pending`
-- [ ] `P2-G3` A reviewable pull request for the extension completes with green required
+  Evidence: [Actions run 32551095462](https://github.com/mayankthakor227/h-cam-2.0/actions/runs/32551095462) (`Phase 2 synthetic 50-stream lab`, job `96977846377`)
+- [x] `P2-G3` A reviewable pull request for the extension completes with green required
   remote CI checks.
-  Evidence: `pending`
-- [ ] `P2-G4` The repository owner explicitly accepts the controlled ONVIF extension
+  Evidence: [Pull request #31](https://github.com/mayankthakor227/h-cam-2.0/pull/31)
+- [x] `P2-G4` The repository owner explicitly accepts the controlled ONVIF extension
   under its default-off safety boundaries.
-  Evidence: `pending`
+  Evidence: [Owner review](owner-review.md)
 
 ## Evidence Rules
 
@@ -77,7 +77,12 @@ result before checking a gate. Use its `verify` command before attaching or
 promoting a local artifact, or its `verify-run` command before linking a remote
 Actions run. The default maximum age is seven days.
 
-Until all publication gates are checked with linked evidence, the machine
-status is `accepted_core_extension_pending`. Phase 2 core acceptance and Phase
-3 planning authorization remain valid, but the extension is not accepted or
-published.
+All publication gates are checked with linked evidence. The reviewed source
+commit `dd58590877957d4d07c1acc0b4a24ce206731c42` was merged by pull request
+#31 as `cc0d247e80e4eb9c9f320160028e3c9104770fa9`. The Phase 2 machine status is
+therefore `complete`.
+
+This publication acceptance is limited to the controlled ONVIF extension under
+its documented default-off boundaries. It does not authorize physical-camera
+control, recording, Government data, analytics, or deployment. Phase 3 owner
+decisions remain separate.
