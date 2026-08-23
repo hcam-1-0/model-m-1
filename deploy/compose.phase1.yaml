@@ -1,0 +1,102 @@
+name: hcam-phase1-validation
+
+services:
+  database:
+    image: postgres:18-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2
+    environment:
+      POSTGRES_DB: hcam_phase1
+      POSTGRES_USER: hcam_phase1
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+    secrets:
+      - postgres_password
+    volumes:
+      - hcam_phase1_database:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+    restart: unless-stopped
+
+  migrate:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        VCS_REF: ${HCAM_VCS_REF:-local-validation}
+    command: ["alembic", "upgrade", "head"]
+    environment:
+      HCAM_DATABASE_URL_FILE: /run/secrets/database_url
+      HCAM_ENVIRONMENT: test
+    secrets:
+      - database_url
+    depends_on:
+      database:
+        condition: service_healthy
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+    restart: "no"
+
+  api:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        VCS_REF: ${HCAM_VCS_REF:-local-validation}
+    environment:
+      HCAM_ACCESS_LOG_ENABLED: "true"
+      HCAM_DATABASE_URL_FILE: /run/secrets/database_url
+      HCAM_DEV_AUTH_ENABLED: "true"
+      HCAM_ENVIRONMENT: test
+      HCAM_METRICS_ENABLED: "true"
+      HCAM_METRICS_TOKEN_FILE: /run/secrets/metrics_token
+    secrets:
+      - database_url
+      - metrics_token
+    depends_on:
+      database:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    ports:
+      - "127.0.0.1:${HCAM_PORT:-8000}:8000"
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    init: true
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+    restart: unless-stopped
+
+secrets:
+  postgres_password:
+    file: ${HCAM_POSTGRES_PASSWORD_FILE:?set HCAM_POSTGRES_PASSWORD_FILE}
+  database_url:
+    file: ${HCAM_DATABASE_URL_SECRET_FILE:?set HCAM_DATABASE_URL_SECRET_FILE}
+  metrics_token:
+    file: ${HCAM_METRICS_TOKEN_SECRET_FILE:?set HCAM_METRICS_TOKEN_SECRET_FILE}
+
+volumes:
+  hcam_phase1_database:

@@ -1,0 +1,282 @@
+name: hcam-phase2-validation
+
+x-hcam-runtime: &hcam-runtime
+  image: hcam-core:phase2-lab
+  build:
+    context: ..
+    dockerfile: Dockerfile
+    args:
+      VCS_REF: ${HCAM_VCS_REF:-local-validation}
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  init: true
+  logging:
+    driver: json-file
+    options:
+      max-size: 10m
+      max-file: "3"
+
+services:
+  database:
+    image: postgres:18-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2
+    environment:
+      POSTGRES_DB: hcam_phase2
+      POSTGRES_USER: hcam_phase2
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+    secrets: [postgres_password]
+    volumes:
+      - hcam_phase2_database:/var/lib/postgresql
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+    restart: unless-stopped
+
+  migrate:
+    <<: *hcam-runtime
+    command: [alembic, upgrade, head]
+    environment:
+      HCAM_DATABASE_URL_FILE: /run/secrets/database_url
+      HCAM_ENVIRONMENT: test
+    secrets: [database_url]
+    depends_on:
+      database:
+        condition: service_healthy
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    healthcheck:
+      disable: true
+    restart: "no"
+
+  api:
+    <<: *hcam-runtime
+    environment:
+      HCAM_ACCESS_LOG_ENABLED: "true"
+      HCAM_DATABASE_URL_FILE: /run/secrets/database_url
+      HCAM_DEV_AUTH_ENABLED: "true"
+      HCAM_ENVIRONMENT: test
+      HCAM_METRICS_ENABLED: "true"
+      HCAM_METRICS_TOKEN_FILE: /run/secrets/metrics_token
+      HCAM_PLAYBACK_AUDIENCE: mediamtx
+      HCAM_PLAYBACK_ISSUER: hcam-core
+      HCAM_PLAYBACK_PUBLIC_BASE_URL: http://127.0.0.1:${HCAM_HLS_PORT:-8888}
+      HCAM_PLAYBACK_SIGNING_KEY_FILE: /run/secrets/playback_signing_key
+      HCAM_PLAYBACK_TOKEN_TTL_SECONDS: "60"
+      HCAM_STREAM_PROBE_ALLOWED_HOSTS: onvif-simulator
+      HCAM_ONVIF_EGRESS_RULES_FILE: /etc/hcam/onvif-egress.json
+      HCAM_ONVIF_LAB_HTTP_ENABLED: "true"
+    volumes:
+      - ./onvif-egress.phase2.json:/etc/hcam/onvif-egress.json:ro
+    secrets: [database_url, metrics_token, playback_signing_key]
+    depends_on:
+      database:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    ports:
+      - 127.0.0.1:${HCAM_API_PORT:-8000}:8000
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    restart: unless-stopped
+
+  mediamtx:
+    image: bluenviron/mediamtx:1.19.3-ffmpeg@sha256:e8eda6a884bbb2eaebf0c0454200ddc8087f428e091bae10d20e330a08558778
+    user: 65534:65534
+    volumes:
+      - ./mediamtx.phase2.yml:/mediamtx.yml:ro
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - 127.0.0.1:${HCAM_HLS_PORT:-8888}:8888
+    read_only: true
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      test: [CMD, wget, -q, -O, -, http://127.0.0.1:9997/v3/config/global/get]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+    restart: unless-stopped
+
+  onvif-simulator:
+    <<: *hcam-runtime
+    command:
+      - python
+      - -m
+      - hcam.streams.onvif_simulator
+      - --bind
+      - 0.0.0.0
+      - --port
+      - "8081"
+      - --stream-uri
+      - rtsp://mediamtx:8554/hcam/str_00000000000000000000000000000001
+      - --allow-non-loopback
+    depends_on:
+      mediamtx:
+        condition: service_healthy
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import socket; socket.create_connection(('127.0.0.1', 8081), 2).close()"
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+
+  lab-seed:
+    <<: *hcam-runtime
+    command: [hcam, seed-phase2-lab, --count, "50"]
+    environment:
+      HCAM_ALLOW_SYNTHETIC_LAB: "true"
+      HCAM_DATABASE_URL_FILE: /run/secrets/database_url
+      HCAM_ENVIRONMENT: test
+    secrets: [database_url]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    healthcheck:
+      disable: true
+    restart: "no"
+
+  publisher:
+    <<: *hcam-runtime
+    command:
+      - python
+      - -m
+      - hcam.streams.lab_publisher
+      - --count
+      - "50"
+      - --heartbeat-file
+      - /tmp/publisher-heartbeat
+    environment:
+      HCAM_ALLOW_SYNTHETIC_LAB: "true"
+    depends_on:
+      mediamtx:
+        condition: service_healthy
+    tmpfs: ["/tmp:size=128m,mode=1777"]
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import os,time; assert time.time()-os.path.getmtime('/tmp/publisher-heartbeat') < 10"
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  stream-worker:
+    <<: *hcam-runtime
+    command: [hcam, stream-worker, --poll-seconds, "1"]
+    environment:
+      HCAM_DATABASE_URL_FILE: /run/secrets/database_url
+      HCAM_ENVIRONMENT: test
+      HCAM_STREAM_WORKER_HEARTBEAT_FILE: /tmp/stream-worker-heartbeat
+      HCAM_STREAM_PROBE_ALLOWED_HOSTS: mediamtx,onvif-simulator
+      HCAM_STREAM_PROBE_TIMEOUT_SECONDS: "8"
+      HCAM_STREAM_PROBE_TOKEN_FILE: /run/secrets/probe_token
+    secrets: [database_url, probe_token]
+    depends_on:
+      lab-seed:
+        condition: service_completed_successfully
+      onvif-simulator:
+        condition: service_started
+      publisher:
+        condition: service_started
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import os,time; assert time.time()-os.path.getmtime('/tmp/stream-worker-heartbeat') < 10"
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    deploy:
+      replicas: 2
+    restart: unless-stopped
+
+  capability-worker:
+    <<: *hcam-runtime
+    command: [hcam, capability-worker, --poll-seconds, "1"]
+    environment:
+      HCAM_CAPABILITY_WORKER_HEARTBEAT_FILE: /tmp/capability-worker-heartbeat
+      HCAM_DATABASE_URL_FILE: /run/secrets/database_url
+      HCAM_ENVIRONMENT: test
+      HCAM_ONVIF_EGRESS_RULES_FILE: /etc/hcam/onvif-egress.json
+      HCAM_ONVIF_LAB_HTTP_ENABLED: "true"
+      HCAM_STREAM_PROBE_TIMEOUT_SECONDS: "8"
+    secrets: [database_url]
+    volumes:
+      - ./onvif-egress.phase2.json:/etc/hcam/onvif-egress.json:ro
+    depends_on:
+      lab-seed:
+        condition: service_completed_successfully
+      onvif-simulator:
+        condition: service_started
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import os,time; assert time.time()-os.path.getmtime('/tmp/capability-worker-heartbeat') < 10"
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  stream-event-dispatcher:
+    <<: *hcam-runtime
+    command: [hcam, stream-event-dispatcher, --poll-seconds, "1"]
+    environment:
+      HCAM_DATABASE_URL_FILE: /run/secrets/database_url
+      HCAM_ENVIRONMENT: test
+      HCAM_STREAM_DISPATCHER_HEARTBEAT_FILE: /tmp/stream-dispatcher-heartbeat
+    secrets: [database_url]
+    depends_on:
+      lab-seed:
+        condition: service_completed_successfully
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import os,time; assert time.time()-os.path.getmtime('/tmp/stream-dispatcher-heartbeat') < 10"
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+secrets:
+  postgres_password:
+    file: ${HCAM_POSTGRES_PASSWORD_FILE:?set HCAM_POSTGRES_PASSWORD_FILE}
+  database_url:
+    file: ${HCAM_DATABASE_URL_SECRET_FILE:?set HCAM_DATABASE_URL_SECRET_FILE}
+  metrics_token:
+    file: ${HCAM_METRICS_TOKEN_SECRET_FILE:?set HCAM_METRICS_TOKEN_SECRET_FILE}
+  playback_signing_key:
+    file: ${HCAM_PLAYBACK_SIGNING_KEY_SECRET_FILE:?set HCAM_PLAYBACK_SIGNING_KEY_SECRET_FILE}
+  probe_token:
+    file: ${HCAM_STREAM_PROBE_TOKEN_SECRET_FILE:?set HCAM_STREAM_PROBE_TOKEN_SECRET_FILE}
+
+volumes:
+  hcam_phase2_database:

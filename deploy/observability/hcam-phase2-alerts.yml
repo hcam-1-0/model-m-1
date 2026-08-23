@@ -1,0 +1,76 @@
+groups:
+  - name: hcam-phase2-streams
+    interval: 30s
+    rules:
+      - alert: HcamStreamFleetUnhealthy
+        expr: sum(hcam_stream_health_state_total{state=~"offline|unauthorized|misconfigured|unsupported"}) > 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: One or more H-CAM streams are in a terminal or offline state
+      - alert: HcamStreamProbeQueueBacklog
+        expr: hcam_stream_probe_due_total > 50
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM stream probe queue exceeds the Phase 2 lab fleet size
+      - alert: HcamStreamOutboxBacklog
+        expr: hcam_stream_outbox_unpublished_total > 100
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM stream event outbox requires dispatcher attention
+      - alert: HcamCapabilityRefreshBacklog
+        expr: hcam_capability_refresh_queue_depth{status="queued"} > 1000
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM capability refresh queue is backlogged
+      - alert: HcamCapabilitySnapshotsStale
+        expr: hcam_capability_snapshot_stale_total > 0
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM capability inventory contains stale snapshots
+      - alert: HcamCapabilityAuthenticationFailures
+        expr: hcam_capability_refresh_failures_retained_total{category=~"authentication|secret_provider"} > 5
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM capability authentication failures require review
+      - alert: HcamCapabilityWorkerLeaseRecovery
+        expr: >-
+          (hcam_capability_refresh_expired_leases_total > 0)
+          or (hcam_capability_refresh_lease_recoveries_recent_total > 0)
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM capability jobs require expired-lease recovery
+      - alert: HcamOnvifOperationFailureSpike
+        expr: sum(hcam_onvif_operation_failures_recent_total) > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM ONVIF operation failures require review
+      - alert: HcamOnvifControlLeaseSustained
+        expr: hcam_onvif_control_leases_active_total > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: H-CAM ONVIF control activity exceeded the bounded command window
+      - alert: HcamOnvifOperationPending
+        expr: hcam_onvif_operations_retained_total{outcome="pending"} > 0
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: H-CAM ONVIF operation completion evidence is pending
