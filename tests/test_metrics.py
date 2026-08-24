@@ -52,6 +52,7 @@ def test_metrics_use_bounded_route_labels_and_exclude_sensitive_values(
     tmp_path: Path,
     seed_file: Path,
     viewer_headers: dict[str, str],
+    editor_headers: dict[str, str],
 ) -> None:
     application = create_app(
         Settings(
@@ -78,6 +79,52 @@ def test_metrics_use_bounded_route_labels_and_exclude_sensitive_values(
         )
     try:
         with TestClient(application) as client:
+            stream_id = client.get("/streams", headers=viewer_headers).json()[
+                "items"
+            ][0]["stream_id"]
+            assignment = client.post(
+                f"/streams/{stream_id}/analytics-assignments",
+                json={
+                    "capability": "object_detection",
+                    "pipeline": {
+                        "id": "metrics-pipeline",
+                        "version": "sha256:" + "a" * 64,
+                    },
+                    "models": [
+                        {
+                            "id": "metrics-detector-must-not-appear",
+                            "version": "sha256:" + "b" * 64,
+                        }
+                    ],
+                    "taxonomy_version": "hcam.object.v1",
+                    "policy_version": "sha256:" + "c" * 64,
+                    "configuration_digest": "sha256:" + "d" * 64,
+                    "minimum_confidence": 0.65,
+                    "sampling_fps": 5.0,
+                    "maximum_queue_age_ms": 2_000,
+                    "geometry_refs": [],
+                    "retention_class": "derived.analytics.standard",
+                    "approval_record_id": "DR-P3.0-METRICS",
+                },
+                headers={
+                    **editor_headers,
+                    "X-HCAM-Reason": "Validate bounded analytics metrics",
+                },
+            )
+            rejected_update = client.patch(
+                f"/analytics-assignments/{assignment.json()['assignment_id']}",
+                json={
+                    "minimum_confidence": 0.7,
+                    "configuration_digest": "sha256:" + "e" * 64,
+                },
+                headers={
+                    **editor_headers,
+                    "If-Match": assignment.headers["ETag"],
+                    "X-HCAM-Reason": (
+                        "Use https://credential-must-not-appear.invalid/config"
+                    ),
+                },
+            )
             camera = client.get(
                 "/cameras/synthetic:cctv-001?token=must-not-appear",
                 headers=viewer_headers,
@@ -91,6 +138,9 @@ def test_metrics_use_bounded_route_labels_and_exclude_sensitive_values(
         application.state.database.dispose()
 
     assert camera.status_code == 200
+    assert assignment.status_code == 201
+    assert rejected_update.status_code == 422
+    assert "credential-must-not-appear" not in rejected_update.text
     assert not_found.status_code == 404
     assert metrics.status_code == 200
     assert metrics.headers["Cache-Control"] == "no-store"
@@ -116,6 +166,18 @@ def test_metrics_use_bounded_route_labels_and_exclude_sensitive_values(
     ) in body
     assert "hcam_onvif_control_leases_active_total" in body
     assert "hcam_onvif_operation_failures_recent_total" in body
+    assert "hcam_analytics_assignments_total 1.0" in body
+    assert "hcam_analytics_assignments_blocked_total 1.0" in body
+    assert "hcam_analytics_assignment_revisions_retained_total 1.0" in body
+    assert "hcam_analytics_outbox_unpublished_total 1.0" in body
+    assert (
+        'hcam_analytics_assignment_failures_recent_total{operation="create"} 0.0'
+        in body
+    )
+    assert (
+        'hcam_analytics_assignment_failures_recent_total{operation="update"} 1.0'
+        in body
+    )
     assert 'route="/cameras/{camera_id}"' in body
     assert 'route="&lt;unmatched&gt;"' not in body
     assert 'route="<unmatched>"' in body
@@ -125,5 +187,8 @@ def test_metrics_use_bounded_route_labels_and_exclude_sensitive_values(
     assert "must-not-appear" not in body
     assert "sensitive-refresh-id-must-not-appear" not in body
     assert "sensitive-stream-id-must-not-appear" not in body
+    assert "metrics-detector-must-not-appear" not in body
+    assert "credential-must-not-appear" not in body
+    assert assignment.json()["assignment_id"] not in body
     assert viewer_headers["X-HCAM-Actor"] not in body
     assert METRICS_TOKEN not in body

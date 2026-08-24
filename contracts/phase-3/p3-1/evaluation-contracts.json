@@ -1,0 +1,2875 @@
+{
+  "canonical_json": "utf8_sorted_keys_compact_ascii_no_nan",
+  "contract_format": "hcam.analytics.evaluation-contract-bundle.v1",
+  "digest_algorithm": "sha256",
+  "maximum_record_bytes": 1048576,
+  "prohibited_fields": [
+    "biometric",
+    "credential",
+    "face_embedding",
+    "face_template",
+    "government_data",
+    "image_bytes",
+    "local_path",
+    "media_bytes",
+    "owner_record",
+    "password",
+    "person_embedding",
+    "secret",
+    "secret_ref",
+    "stream_url",
+    "token",
+    "video",
+    "video_bytes",
+    "watchlist_match"
+  ],
+  "records": {
+    "hcam.analytics.annotation-specification.v1": {
+      "$defs": {
+        "AnnotationRuleSetV1": {
+          "additionalProperties": false,
+          "properties": {
+            "coordinate_system": {
+              "const": "normalized_top_left",
+              "default": "normalized_top_left",
+              "title": "Coordinate System",
+              "type": "string"
+            },
+            "geometry_types": {
+              "items": {
+                "enum": [
+                  "bounding_box",
+                  "line",
+                  "polygon",
+                  "text_region"
+                ],
+                "type": "string"
+              },
+              "maxItems": 4,
+              "minItems": 1,
+              "title": "Geometry Types",
+              "type": "array"
+            },
+            "ignore_rules": {
+              "items": {
+                "maxLength": 1000,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 64,
+              "minItems": 1,
+              "title": "Ignore Rules",
+              "type": "array"
+            },
+            "normalization_rules": {
+              "items": {
+                "maxLength": 1000,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 64,
+              "minItems": 1,
+              "title": "Normalization Rules",
+              "type": "array"
+            },
+            "occlusion_values": {
+              "items": {
+                "enum": [
+                  "none",
+                  "partial",
+                  "heavy",
+                  "unknown"
+                ],
+                "type": "string"
+              },
+              "maxItems": 4,
+              "minItems": 4,
+              "title": "Occlusion Values",
+              "type": "array"
+            },
+            "synthetic_plate_rules": {
+              "items": {
+                "maxLength": 1000,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 64,
+              "minItems": 1,
+              "title": "Synthetic Plate Rules",
+              "type": "array"
+            },
+            "track_lifecycle_rules": {
+              "items": {
+                "maxLength": 1000,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 64,
+              "minItems": 1,
+              "title": "Track Lifecycle Rules",
+              "type": "array"
+            },
+            "truncated_rule": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "title": "Truncated Rule",
+              "type": "string"
+            },
+            "uncertain_rule": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "title": "Uncertain Rule",
+              "type": "string"
+            }
+          },
+          "required": [
+            "geometry_types",
+            "ignore_rules",
+            "uncertain_rule",
+            "occlusion_values",
+            "truncated_rule",
+            "track_lifecycle_rules",
+            "synthetic_plate_rules",
+            "normalization_rules"
+          ],
+          "title": "AnnotationRuleSetV1",
+          "type": "object"
+        },
+        "ApprovalRecordV1": {
+          "additionalProperties": false,
+          "properties": {
+            "decided_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Decided At"
+            },
+            "owner_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Owner Id",
+              "type": "string"
+            },
+            "reason": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "record_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Record Id",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "pending",
+                "owner_recorded",
+                "owner_approved"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "record_id",
+            "owner_id",
+            "status",
+            "reason"
+          ],
+          "title": "ApprovalRecordV1",
+          "type": "object"
+        },
+        "AttributeDefinitionV1": {
+          "additionalProperties": false,
+          "properties": {
+            "allowed_values": {
+              "items": {
+                "maxLength": 256,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 64,
+              "title": "Allowed Values",
+              "type": "array"
+            },
+            "name": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Name",
+              "type": "string"
+            },
+            "required": {
+              "title": "Required",
+              "type": "boolean"
+            },
+            "value_type": {
+              "enum": [
+                "boolean",
+                "enum",
+                "integer",
+                "number",
+                "text"
+              ],
+              "title": "Value Type",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "value_type",
+            "required"
+          ],
+          "title": "AttributeDefinitionV1",
+          "type": "object"
+        },
+        "ManifestReferenceV1": {
+          "additionalProperties": false,
+          "properties": {
+            "digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Digest",
+              "type": "string"
+            },
+            "record_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Record Id",
+              "type": "string"
+            },
+            "version": {
+              "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "record_id",
+            "version",
+            "digest"
+          ],
+          "title": "ManifestReferenceV1",
+          "type": "object"
+        },
+        "QualityPolicyV1": {
+          "additionalProperties": false,
+          "properties": {
+            "adjudication_required": {
+              "title": "Adjudication Required",
+              "type": "boolean"
+            },
+            "automated_checks": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 3,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "maxItems": 128,
+              "minItems": 1,
+              "title": "Automated Checks",
+              "type": "array"
+            },
+            "calibration_evidence_required": {
+              "const": true,
+              "default": true,
+              "title": "Calibration Evidence Required",
+              "type": "boolean"
+            },
+            "duplicate_annotation_basis_points": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Duplicate Annotation Basis Points",
+              "type": "integer"
+            },
+            "proposed_error_rate_ceiling": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Proposed Error Rate Ceiling",
+              "type": "number"
+            },
+            "qa_sample_basis_points": {
+              "maximum": 10000,
+              "minimum": 1,
+              "title": "Qa Sample Basis Points",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "automated_checks",
+            "qa_sample_basis_points",
+            "duplicate_annotation_basis_points",
+            "adjudication_required",
+            "proposed_error_rate_ceiling"
+          ],
+          "title": "QualityPolicyV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "approval": {
+          "$ref": "#/$defs/ApprovalRecordV1"
+        },
+        "attributes": {
+          "items": {
+            "$ref": "#/$defs/AttributeDefinitionV1"
+          },
+          "maxItems": 128,
+          "minItems": 1,
+          "title": "Attributes",
+          "type": "array"
+        },
+        "contract_type": {
+          "const": "hcam.analytics.annotation-specification.v1",
+          "default": "hcam.analytics.annotation-specification.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "export_format": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Export Format",
+          "type": "string"
+        },
+        "import_format": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Import Format",
+          "type": "string"
+        },
+        "quality_policy": {
+          "$ref": "#/$defs/QualityPolicyV1"
+        },
+        "rules": {
+          "$ref": "#/$defs/AnnotationRuleSetV1"
+        },
+        "semantic_version": {
+          "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$",
+          "title": "Semantic Version",
+          "type": "string"
+        },
+        "specification_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Specification Digest",
+          "type": "string"
+        },
+        "specification_id": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Specification Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "approved",
+            "retired"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "tasks": {
+          "items": {
+            "enum": [
+              "detection",
+              "tracking",
+              "geometry",
+              "synthetic_plate"
+            ],
+            "type": "string"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "title": "Tasks",
+          "type": "array"
+        },
+        "taxonomy_version": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Taxonomy Version",
+          "type": "string"
+        },
+        "version_history": {
+          "items": {
+            "$ref": "#/$defs/ManifestReferenceV1"
+          },
+          "maxItems": 64,
+          "title": "Version History",
+          "type": "array"
+        }
+      },
+      "required": [
+        "specification_id",
+        "semantic_version",
+        "specification_digest",
+        "status",
+        "taxonomy_version",
+        "tasks",
+        "rules",
+        "attributes",
+        "import_format",
+        "export_format",
+        "quality_policy",
+        "approval",
+        "created_at"
+      ],
+      "title": "AnnotationSpecificationV1",
+      "type": "object"
+    },
+    "hcam.analytics.candidate-artifact-manifest.v1": {
+      "$defs": {
+        "ApprovalRecordV1": {
+          "additionalProperties": false,
+          "properties": {
+            "decided_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Decided At"
+            },
+            "owner_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Owner Id",
+              "type": "string"
+            },
+            "reason": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "record_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Record Id",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "pending",
+                "owner_recorded",
+                "owner_approved"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "record_id",
+            "owner_id",
+            "status",
+            "reason"
+          ],
+          "title": "ApprovalRecordV1",
+          "type": "object"
+        },
+        "ArtifactLicenseV1": {
+          "additionalProperties": false,
+          "properties": {
+            "commercial_or_government_use": {
+              "enum": [
+                "allowed",
+                "restricted",
+                "prohibited",
+                "unresolved"
+              ],
+              "title": "Commercial Or Government Use",
+              "type": "string"
+            },
+            "component": {
+              "enum": [
+                "code",
+                "weights",
+                "training_data",
+                "font",
+                "runtime"
+              ],
+              "title": "Component",
+              "type": "string"
+            },
+            "license_id": {
+              "$ref": "#/$defs/ResolutionFieldV1"
+            },
+            "notice_required": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Notice Required"
+            },
+            "redistribution": {
+              "enum": [
+                "allowed",
+                "restricted",
+                "prohibited",
+                "unresolved"
+              ],
+              "title": "Redistribution",
+              "type": "string"
+            }
+          },
+          "required": [
+            "component",
+            "license_id",
+            "redistribution",
+            "commercial_or_government_use"
+          ],
+          "title": "ArtifactLicenseV1",
+          "type": "object"
+        },
+        "ResearchReferenceV1": {
+          "additionalProperties": false,
+          "properties": {
+            "accessed_on": {
+              "format": "date",
+              "title": "Accessed On",
+              "type": "string"
+            },
+            "evidence_kind": {
+              "enum": [
+                "official_documentation",
+                "official_repository",
+                "official_release",
+                "license_text",
+                "research_paper"
+              ],
+              "title": "Evidence Kind",
+              "type": "string"
+            },
+            "no_download_performed": {
+              "const": true,
+              "default": true,
+              "title": "No Download Performed",
+              "type": "boolean"
+            },
+            "publisher": {
+              "maxLength": 256,
+              "minLength": 1,
+              "title": "Publisher",
+              "type": "string"
+            },
+            "reference_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Reference Id",
+              "type": "string"
+            },
+            "supports_claim": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "title": "Supports Claim",
+              "type": "string"
+            },
+            "title": {
+              "maxLength": 256,
+              "minLength": 1,
+              "title": "Title",
+              "type": "string"
+            },
+            "url": {
+              "format": "uri",
+              "maxLength": 2083,
+              "minLength": 1,
+              "title": "Url",
+              "type": "string"
+            }
+          },
+          "required": [
+            "reference_id",
+            "url",
+            "title",
+            "publisher",
+            "accessed_on",
+            "evidence_kind",
+            "supports_claim"
+          ],
+          "title": "ResearchReferenceV1",
+          "type": "object"
+        },
+        "ResolutionFieldV1": {
+          "additionalProperties": false,
+          "properties": {
+            "blocker": {
+              "anyOf": [
+                {
+                  "maxLength": 128,
+                  "minLength": 3,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Blocker"
+            },
+            "digest": {
+              "anyOf": [
+                {
+                  "pattern": "^sha256:[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Digest"
+            },
+            "state": {
+              "enum": [
+                "resolved",
+                "unresolved"
+              ],
+              "title": "State",
+              "type": "string"
+            },
+            "value": {
+              "anyOf": [
+                {
+                  "maxLength": 256,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Value"
+            }
+          },
+          "required": [
+            "state"
+          ],
+          "title": "ResolutionFieldV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "approval": {
+          "$ref": "#/$defs/ApprovalRecordV1"
+        },
+        "artifact_identity": {
+          "$ref": "#/$defs/ResolutionFieldV1"
+        },
+        "blockers": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 3,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Blockers",
+          "type": "array"
+        },
+        "candidate_id": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.analytics.candidate-artifact-manifest.v1",
+          "default": "hcam.analytics.candidate-artifact-manifest.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "eligibility": {
+          "enum": [
+            "blocked",
+            "research_only",
+            "eligible",
+            "retired"
+          ],
+          "title": "Eligibility",
+          "type": "string"
+        },
+        "export_expectations": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 3,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Export Expectations",
+          "type": "array"
+        },
+        "intended_role": {
+          "enum": [
+            "detector_reference",
+            "detector_low_compute",
+            "detector_balanced",
+            "detector_accuracy",
+            "stream_local_tracker",
+            "ocr_latin_small",
+            "ocr_latin_medium",
+            "ocr_devanagari",
+            "ocr_gujarati_fast",
+            "ocr_gujarati_best",
+            "plate_region_detector"
+          ],
+          "title": "Intended Role",
+          "type": "string"
+        },
+        "known_limits": {
+          "items": {
+            "maxLength": 1000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Known Limits",
+          "type": "array"
+        },
+        "licenses": {
+          "items": {
+            "$ref": "#/$defs/ArtifactLicenseV1"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Licenses",
+          "type": "array"
+        },
+        "lineage": {
+          "$ref": "#/$defs/ResolutionFieldV1"
+        },
+        "manifest_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Manifest Digest",
+          "type": "string"
+        },
+        "model_card": {
+          "$ref": "#/$defs/ResolutionFieldV1"
+        },
+        "recorded_at": {
+          "format": "date-time",
+          "title": "Recorded At",
+          "type": "string"
+        },
+        "runtime_expectations": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 3,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Runtime Expectations",
+          "type": "array"
+        },
+        "sbom": {
+          "$ref": "#/$defs/ResolutionFieldV1"
+        },
+        "semantic_version": {
+          "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$",
+          "title": "Semantic Version",
+          "type": "string"
+        },
+        "source_reference": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ResearchReferenceV1"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "source_revision": {
+          "$ref": "#/$defs/ResolutionFieldV1"
+        },
+        "source_tier": {
+          "enum": [
+            "S0",
+            "S3"
+          ],
+          "title": "Source Tier",
+          "type": "string"
+        },
+        "supported_taxonomy": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 3,
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+            "type": "string"
+          },
+          "maxItems": 128,
+          "title": "Supported Taxonomy",
+          "type": "array"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "semantic_version",
+        "manifest_digest",
+        "intended_role",
+        "source_tier",
+        "source_revision",
+        "artifact_identity",
+        "licenses",
+        "lineage",
+        "model_card",
+        "sbom",
+        "supported_taxonomy",
+        "runtime_expectations",
+        "export_expectations",
+        "known_limits",
+        "eligibility",
+        "blockers",
+        "approval",
+        "recorded_at"
+      ],
+      "title": "CandidateArtifactManifestV1",
+      "type": "object"
+    },
+    "hcam.analytics.dataset-manifest.v1": {
+      "$defs": {
+        "ApprovalRecordV1": {
+          "additionalProperties": false,
+          "properties": {
+            "decided_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Decided At"
+            },
+            "owner_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Owner Id",
+              "type": "string"
+            },
+            "reason": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "record_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Record Id",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "pending",
+                "owner_recorded",
+                "owner_approved"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "record_id",
+            "owner_id",
+            "status",
+            "reason"
+          ],
+          "title": "ApprovalRecordV1",
+          "type": "object"
+        },
+        "ContentInventoryItemV1": {
+          "additionalProperties": false,
+          "properties": {
+            "artifact_name": {
+              "pattern": "^[a-z0-9][a-z0-9_.-]{2,127}$",
+              "title": "Artifact Name",
+              "type": "string"
+            },
+            "class_ids": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 3,
+                "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+                "type": "string"
+              },
+              "maxItems": 128,
+              "title": "Class Ids",
+              "type": "array"
+            },
+            "content_type": {
+              "enum": [
+                "generated_metadata",
+                "programmatic_asset",
+                "annotation",
+                "prediction",
+                "metric_report",
+                "research_record"
+              ],
+              "title": "Content Type",
+              "type": "string"
+            },
+            "count": {
+              "maximum": 10000000,
+              "minimum": 1,
+              "title": "Count",
+              "type": "integer"
+            },
+            "digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Digest",
+              "type": "string"
+            },
+            "group_key": {
+              "anyOf": [
+                {
+                  "maxLength": 128,
+                  "minLength": 3,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Group Key"
+            },
+            "item_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Item Id",
+              "type": "string"
+            },
+            "sequence_id": {
+              "anyOf": [
+                {
+                  "maxLength": 128,
+                  "minLength": 3,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Sequence Id"
+            },
+            "slices": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 3,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "maxItems": 128,
+              "title": "Slices",
+              "type": "array"
+            },
+            "split": {
+              "enum": [
+                "train",
+                "validation",
+                "test",
+                "none"
+              ],
+              "title": "Split",
+              "type": "string"
+            }
+          },
+          "required": [
+            "item_id",
+            "content_type",
+            "artifact_name",
+            "digest",
+            "count",
+            "split"
+          ],
+          "title": "ContentInventoryItemV1",
+          "type": "object"
+        },
+        "ManifestReferenceV1": {
+          "additionalProperties": false,
+          "properties": {
+            "digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Digest",
+              "type": "string"
+            },
+            "record_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Record Id",
+              "type": "string"
+            },
+            "version": {
+              "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "record_id",
+            "version",
+            "digest"
+          ],
+          "title": "ManifestReferenceV1",
+          "type": "object"
+        },
+        "ResearchReferenceV1": {
+          "additionalProperties": false,
+          "properties": {
+            "accessed_on": {
+              "format": "date",
+              "title": "Accessed On",
+              "type": "string"
+            },
+            "evidence_kind": {
+              "enum": [
+                "official_documentation",
+                "official_repository",
+                "official_release",
+                "license_text",
+                "research_paper"
+              ],
+              "title": "Evidence Kind",
+              "type": "string"
+            },
+            "no_download_performed": {
+              "const": true,
+              "default": true,
+              "title": "No Download Performed",
+              "type": "boolean"
+            },
+            "publisher": {
+              "maxLength": 256,
+              "minLength": 1,
+              "title": "Publisher",
+              "type": "string"
+            },
+            "reference_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Reference Id",
+              "type": "string"
+            },
+            "supports_claim": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "title": "Supports Claim",
+              "type": "string"
+            },
+            "title": {
+              "maxLength": 256,
+              "minLength": 1,
+              "title": "Title",
+              "type": "string"
+            },
+            "url": {
+              "format": "uri",
+              "maxLength": 2083,
+              "minLength": 1,
+              "title": "Url",
+              "type": "string"
+            }
+          },
+          "required": [
+            "reference_id",
+            "url",
+            "title",
+            "publisher",
+            "accessed_on",
+            "evidence_kind",
+            "supports_claim"
+          ],
+          "title": "ResearchReferenceV1",
+          "type": "object"
+        },
+        "RetentionPolicyV1": {
+          "additionalProperties": false,
+          "properties": {
+            "access_roles": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 3,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "maxItems": 8,
+              "minItems": 1,
+              "title": "Access Roles",
+              "type": "array"
+            },
+            "data_class": {
+              "enum": [
+                "generated.analytics.fixture",
+                "generated.analytics.annotation",
+                "generated.analytics.report",
+                "research.metadata.only"
+              ],
+              "title": "Data Class",
+              "type": "string"
+            },
+            "deletion_proof": {
+              "const": "audited_metadata_only",
+              "default": "audited_metadata_only",
+              "title": "Deletion Proof",
+              "type": "string"
+            },
+            "export_allowed": {
+              "const": false,
+              "default": false,
+              "title": "Export Allowed",
+              "type": "boolean"
+            },
+            "maximum_retention_hours": {
+              "maximum": 2160,
+              "minimum": 0,
+              "title": "Maximum Retention Hours",
+              "type": "integer"
+            },
+            "training_reuse_allowed": {
+              "const": false,
+              "default": false,
+              "title": "Training Reuse Allowed",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "data_class",
+            "maximum_retention_hours",
+            "access_roles"
+          ],
+          "title": "RetentionPolicyV1",
+          "type": "object"
+        },
+        "SourceEvidenceV1": {
+          "additionalProperties": false,
+          "properties": {
+            "allowed_uses": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 3,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "maxItems": 32,
+              "minItems": 1,
+              "title": "Allowed Uses",
+              "type": "array"
+            },
+            "authorization_record_id": {
+              "anyOf": [
+                {
+                  "maxLength": 128,
+                  "minLength": 3,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Authorization Record Id"
+            },
+            "authorization_state": {
+              "enum": [
+                "authorized",
+                "planning_only",
+                "research_only",
+                "prohibited"
+              ],
+              "title": "Authorization State",
+              "type": "string"
+            },
+            "license_id": {
+              "maxLength": 256,
+              "minLength": 1,
+              "title": "License Id",
+              "type": "string"
+            },
+            "method": {
+              "enum": [
+                "deterministic_generation",
+                "team_created",
+                "public_research",
+                "private_lab",
+                "prohibited_reference"
+              ],
+              "title": "Method",
+              "type": "string"
+            },
+            "no_download_performed": {
+              "title": "No Download Performed",
+              "type": "boolean"
+            },
+            "no_external_input": {
+              "title": "No External Input",
+              "type": "boolean"
+            },
+            "privacy_classification": {
+              "enum": [
+                "generated_non_personal",
+                "consent_required",
+                "review_required",
+                "prohibited"
+              ],
+              "title": "Privacy Classification",
+              "type": "string"
+            },
+            "prohibited_uses": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 3,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "maxItems": 32,
+              "minItems": 1,
+              "title": "Prohibited Uses",
+              "type": "array"
+            },
+            "references": {
+              "items": {
+                "$ref": "#/$defs/ResearchReferenceV1"
+              },
+              "maxItems": 16,
+              "title": "References",
+              "type": "array"
+            },
+            "source_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Source Id",
+              "type": "string"
+            },
+            "source_tier": {
+              "enum": [
+                "S0",
+                "S1",
+                "S2",
+                "S3",
+                "S4",
+                "S5"
+              ],
+              "title": "Source Tier",
+              "type": "string"
+            },
+            "source_version": {
+              "maxLength": 256,
+              "minLength": 1,
+              "title": "Source Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "source_id",
+            "source_tier",
+            "source_version",
+            "method",
+            "authorization_state",
+            "license_id",
+            "allowed_uses",
+            "prohibited_uses",
+            "privacy_classification",
+            "no_external_input",
+            "no_download_performed"
+          ],
+          "title": "SourceEvidenceV1",
+          "type": "object"
+        },
+        "SplitPolicyV1": {
+          "additionalProperties": false,
+          "properties": {
+            "allowed_splits": {
+              "items": {
+                "enum": [
+                  "train",
+                  "validation",
+                  "test"
+                ],
+                "type": "string"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "title": "Allowed Splits",
+              "type": "array"
+            },
+            "cross_split_group_count": {
+              "maximum": 1000000,
+              "minimum": 0,
+              "title": "Cross Split Group Count",
+              "type": "integer"
+            },
+            "exact_duplicate_count": {
+              "maximum": 1000000,
+              "minimum": 0,
+              "title": "Exact Duplicate Count",
+              "type": "integer"
+            },
+            "final_test_access_count": {
+              "maximum": 1000000,
+              "minimum": 0,
+              "title": "Final Test Access Count",
+              "type": "integer"
+            },
+            "final_test_frozen": {
+              "title": "Final Test Frozen",
+              "type": "boolean"
+            },
+            "leakage_status": {
+              "enum": [
+                "pass",
+                "fail",
+                "not_run"
+              ],
+              "title": "Leakage Status",
+              "type": "string"
+            },
+            "method": {
+              "const": "grouped_immutable",
+              "default": "grouped_immutable",
+              "title": "Method",
+              "type": "string"
+            },
+            "required_group_keys": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 3,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "maxItems": 16,
+              "minItems": 1,
+              "title": "Required Group Keys",
+              "type": "array"
+            }
+          },
+          "required": [
+            "allowed_splits",
+            "required_group_keys",
+            "final_test_frozen",
+            "final_test_access_count",
+            "exact_duplicate_count",
+            "cross_split_group_count",
+            "leakage_status"
+          ],
+          "title": "SplitPolicyV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "annotation_specification": {
+          "$ref": "#/$defs/ManifestReferenceV1"
+        },
+        "approval": {
+          "$ref": "#/$defs/ApprovalRecordV1"
+        },
+        "contract_type": {
+          "const": "hcam.analytics.dataset-manifest.v1",
+          "default": "hcam.analytics.dataset-manifest.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "dataset_id": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Dataset Id",
+          "type": "string"
+        },
+        "exclusions": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 3,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "maxItems": 128,
+          "minItems": 1,
+          "title": "Exclusions",
+          "type": "array"
+        },
+        "inventory": {
+          "items": {
+            "$ref": "#/$defs/ContentInventoryItemV1"
+          },
+          "maxItems": 10000,
+          "minItems": 1,
+          "title": "Inventory",
+          "type": "array"
+        },
+        "known_gaps": {
+          "items": {
+            "maxLength": 1000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 128,
+          "minItems": 1,
+          "title": "Known Gaps",
+          "type": "array"
+        },
+        "manifest_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Manifest Digest",
+          "type": "string"
+        },
+        "parents": {
+          "items": {
+            "$ref": "#/$defs/ManifestReferenceV1"
+          },
+          "maxItems": 16,
+          "title": "Parents",
+          "type": "array"
+        },
+        "purpose": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Purpose",
+          "type": "string"
+        },
+        "retention": {
+          "$ref": "#/$defs/RetentionPolicyV1"
+        },
+        "review_due_on": {
+          "format": "date",
+          "title": "Review Due On",
+          "type": "string"
+        },
+        "semantic_version": {
+          "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$",
+          "title": "Semantic Version",
+          "type": "string"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/$defs/SourceEvidenceV1"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Sources",
+          "type": "array"
+        },
+        "split_policy": {
+          "$ref": "#/$defs/SplitPolicyV1"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "approved",
+            "retired"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "taxonomy_version": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Taxonomy Version",
+          "type": "string"
+        },
+        "transformations": {
+          "items": {
+            "$ref": "#/$defs/ManifestReferenceV1"
+          },
+          "maxItems": 64,
+          "title": "Transformations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "dataset_id",
+        "semantic_version",
+        "manifest_digest",
+        "status",
+        "purpose",
+        "sources",
+        "inventory",
+        "taxonomy_version",
+        "annotation_specification",
+        "retention",
+        "split_policy",
+        "known_gaps",
+        "exclusions",
+        "approval",
+        "created_at",
+        "review_due_on"
+      ],
+      "title": "DatasetManifestV1",
+      "type": "object"
+    },
+    "hcam.analytics.evaluation-run-manifest.v1": {
+      "$defs": {
+        "ApprovalRecordV1": {
+          "additionalProperties": false,
+          "properties": {
+            "decided_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Decided At"
+            },
+            "owner_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Owner Id",
+              "type": "string"
+            },
+            "reason": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "record_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Record Id",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "pending",
+                "owner_recorded",
+                "owner_approved"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "record_id",
+            "owner_id",
+            "status",
+            "reason"
+          ],
+          "title": "ApprovalRecordV1",
+          "type": "object"
+        },
+        "CommandInvocationV1": {
+          "additionalProperties": false,
+          "properties": {
+            "arguments": {
+              "items": {
+                "maxLength": 256,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 64,
+              "title": "Arguments",
+              "type": "array"
+            },
+            "executable": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Executable",
+              "type": "string"
+            },
+            "gpu_access": {
+              "const": "denied",
+              "default": "denied",
+              "title": "Gpu Access",
+              "type": "string"
+            },
+            "network_access": {
+              "const": "denied",
+              "default": "denied",
+              "title": "Network Access",
+              "type": "string"
+            },
+            "secrets_required": {
+              "const": false,
+              "default": false,
+              "title": "Secrets Required",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "executable"
+          ],
+          "title": "CommandInvocationV1",
+          "type": "object"
+        },
+        "HardwareProfileV1": {
+          "additionalProperties": false,
+          "properties": {
+            "authorized_claims": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 3,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "maxItems": 32,
+              "minItems": 1,
+              "title": "Authorized Claims",
+              "type": "array"
+            },
+            "container_engine": {
+              "maxLength": 256,
+              "minLength": 1,
+              "title": "Container Engine",
+              "type": "string"
+            },
+            "cpu": {
+              "maxLength": 256,
+              "minLength": 1,
+              "title": "Cpu",
+              "type": "string"
+            },
+            "gpu": {
+              "maxLength": 256,
+              "minLength": 1,
+              "title": "Gpu",
+              "type": "string"
+            },
+            "logical_processors": {
+              "maximum": 4096,
+              "minimum": 1,
+              "title": "Logical Processors",
+              "type": "integer"
+            },
+            "memory_mib": {
+              "maximum": 16777216,
+              "minimum": 256,
+              "title": "Memory Mib",
+              "type": "integer"
+            },
+            "os": {
+              "maxLength": 256,
+              "minLength": 1,
+              "title": "Os",
+              "type": "string"
+            },
+            "profile_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Profile Id",
+              "type": "string"
+            },
+            "prohibited_claims": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 3,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "maxItems": 32,
+              "minItems": 1,
+              "title": "Prohibited Claims",
+              "type": "array"
+            },
+            "python_version": {
+              "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+              "title": "Python Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "profile_id",
+            "cpu",
+            "logical_processors",
+            "memory_mib",
+            "gpu",
+            "os",
+            "python_version",
+            "container_engine",
+            "authorized_claims",
+            "prohibited_claims"
+          ],
+          "title": "HardwareProfileV1",
+          "type": "object"
+        },
+        "ManifestReferenceV1": {
+          "additionalProperties": false,
+          "properties": {
+            "digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Digest",
+              "type": "string"
+            },
+            "record_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Record Id",
+              "type": "string"
+            },
+            "version": {
+              "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "record_id",
+            "version",
+            "digest"
+          ],
+          "title": "ManifestReferenceV1",
+          "type": "object"
+        },
+        "RunArtifactV1": {
+          "additionalProperties": false,
+          "properties": {
+            "artifact_name": {
+              "pattern": "^[a-z0-9][a-z0-9_.-]{2,127}$",
+              "title": "Artifact Name",
+              "type": "string"
+            },
+            "digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Digest",
+              "type": "string"
+            },
+            "media_free": {
+              "const": true,
+              "default": true,
+              "title": "Media Free",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "artifact_name",
+            "digest"
+          ],
+          "title": "RunArtifactV1",
+          "type": "object"
+        },
+        "SourceRevisionV1": {
+          "additionalProperties": false,
+          "properties": {
+            "commit": {
+              "pattern": "^[0-9a-f]{40}(?:[0-9a-f]{24})?$",
+              "title": "Commit",
+              "type": "string"
+            },
+            "dirty_worktree": {
+              "title": "Dirty Worktree",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "commit",
+            "dirty_worktree"
+          ],
+          "title": "SourceRevisionV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "approval": {
+          "$ref": "#/$defs/ApprovalRecordV1"
+        },
+        "batch_size": {
+          "maximum": 100000,
+          "minimum": 1,
+          "title": "Batch Size",
+          "type": "integer"
+        },
+        "candidate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ManifestReferenceV1"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "command": {
+          "$ref": "#/$defs/CommandInvocationV1"
+        },
+        "concurrency": {
+          "maximum": 10000,
+          "minimum": 1,
+          "title": "Concurrency",
+          "type": "integer"
+        },
+        "configuration_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Configuration Digest",
+          "type": "string"
+        },
+        "container_profile_digest": {
+          "anyOf": [
+            {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Container Profile Digest"
+        },
+        "contract_type": {
+          "const": "hcam.analytics.evaluation-run-manifest.v1",
+          "default": "hcam.analytics.evaluation-run-manifest.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "dataset": {
+          "$ref": "#/$defs/ManifestReferenceV1"
+        },
+        "dependency_lock_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Dependency Lock Digest",
+          "type": "string"
+        },
+        "executed_at": {
+          "format": "date-time",
+          "title": "Executed At",
+          "type": "string"
+        },
+        "failed_gates": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 3,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "maxItems": 128,
+          "title": "Failed Gates",
+          "type": "array"
+        },
+        "fixture_suite": {
+          "$ref": "#/$defs/ManifestReferenceV1"
+        },
+        "hardware": {
+          "$ref": "#/$defs/HardwareProfileV1"
+        },
+        "manifest_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Manifest Digest",
+          "type": "string"
+        },
+        "maximum_memory_mib": {
+          "maximum": 16777216,
+          "minimum": 1,
+          "title": "Maximum Memory Mib",
+          "type": "integer"
+        },
+        "metric_suite_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Metric Suite Digest",
+          "type": "string"
+        },
+        "operator_id": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Operator Id",
+          "type": "string"
+        },
+        "pipeline_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Pipeline Digest",
+          "type": "string"
+        },
+        "precision": {
+          "enum": [
+            "not_applicable",
+            "float32",
+            "float16",
+            "int8"
+          ],
+          "title": "Precision",
+          "type": "string"
+        },
+        "repetitions": {
+          "maximum": 100000,
+          "minimum": 1,
+          "title": "Repetitions",
+          "type": "integer"
+        },
+        "reproducibility_status": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_run"
+          ],
+          "title": "Reproducibility Status",
+          "type": "string"
+        },
+        "result_artifacts": {
+          "items": {
+            "$ref": "#/$defs/RunArtifactV1"
+          },
+          "maxItems": 128,
+          "minItems": 1,
+          "title": "Result Artifacts",
+          "type": "array"
+        },
+        "run_id": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "seed": {
+          "maximum": 2147483647,
+          "minimum": 0,
+          "title": "Seed",
+          "type": "integer"
+        },
+        "semantic_version": {
+          "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$",
+          "title": "Semantic Version",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/SourceRevisionV1"
+        },
+        "taxonomy_version": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Taxonomy Version",
+          "type": "string"
+        },
+        "timeout_seconds": {
+          "maximum": 86400,
+          "minimum": 1,
+          "title": "Timeout Seconds",
+          "type": "integer"
+        },
+        "warmup_iterations": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Warmup Iterations",
+          "type": "integer"
+        },
+        "warnings": {
+          "items": {
+            "maxLength": 1000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 128,
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "run_id",
+        "semantic_version",
+        "manifest_digest",
+        "executed_at",
+        "source",
+        "operator_id",
+        "command",
+        "seed",
+        "dataset",
+        "fixture_suite",
+        "pipeline_digest",
+        "taxonomy_version",
+        "metric_suite_digest",
+        "configuration_digest",
+        "hardware",
+        "dependency_lock_digest",
+        "precision",
+        "warmup_iterations",
+        "repetitions",
+        "batch_size",
+        "concurrency",
+        "timeout_seconds",
+        "maximum_memory_mib",
+        "result_artifacts",
+        "reproducibility_status",
+        "approval"
+      ],
+      "title": "EvaluationRunManifestV1",
+      "type": "object"
+    },
+    "hcam.analytics.fixture-manifest.v1": {
+      "$defs": {
+        "ApprovalRecordV1": {
+          "additionalProperties": false,
+          "properties": {
+            "decided_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Decided At"
+            },
+            "owner_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Owner Id",
+              "type": "string"
+            },
+            "reason": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "record_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Record Id",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "pending",
+                "owner_recorded",
+                "owner_approved"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "record_id",
+            "owner_id",
+            "status",
+            "reason"
+          ],
+          "title": "ApprovalRecordV1",
+          "type": "object"
+        },
+        "FileHashV1": {
+          "additionalProperties": false,
+          "properties": {
+            "artifact_name": {
+              "pattern": "^[a-z0-9][a-z0-9_.-]{2,127}$",
+              "title": "Artifact Name",
+              "type": "string"
+            },
+            "bytes": {
+              "maximum": 1048576,
+              "minimum": 1,
+              "title": "Bytes",
+              "type": "integer"
+            },
+            "digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Digest",
+              "type": "string"
+            },
+            "record_count": {
+              "maximum": 1000000,
+              "minimum": 1,
+              "title": "Record Count",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "artifact_name",
+            "digest",
+            "bytes",
+            "record_count"
+          ],
+          "title": "FileHashV1",
+          "type": "object"
+        },
+        "FixtureCoverageV1": {
+          "additionalProperties": false,
+          "properties": {
+            "class_id": {
+              "anyOf": [
+                {
+                  "maxLength": 128,
+                  "minLength": 3,
+                  "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Class Id"
+            },
+            "domain": {
+              "enum": [
+                "detection",
+                "tracking",
+                "geometry",
+                "synthetic_plate",
+                "misuse"
+              ],
+              "title": "Domain",
+              "type": "string"
+            },
+            "expected_outcome": {
+              "enum": [
+                "pass",
+                "reject",
+                "abstain"
+              ],
+              "title": "Expected Outcome",
+              "type": "string"
+            },
+            "scenario": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Scenario",
+              "type": "string"
+            },
+            "script": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "Latin",
+                    "Devanagari",
+                    "Gujarati"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Script"
+            }
+          },
+          "required": [
+            "domain",
+            "scenario",
+            "expected_outcome"
+          ],
+          "title": "FixtureCoverageV1",
+          "type": "object"
+        },
+        "GeneratorIdentityV1": {
+          "additionalProperties": false,
+          "properties": {
+            "code_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Code Digest",
+              "type": "string"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "external_inputs": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 3,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "maxItems": 16,
+              "title": "External Inputs",
+              "type": "array"
+            },
+            "generator_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Generator Id",
+              "type": "string"
+            },
+            "generator_version": {
+              "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$",
+              "title": "Generator Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "generator_id",
+            "generator_version",
+            "code_digest",
+            "configuration_digest"
+          ],
+          "title": "GeneratorIdentityV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "approval": {
+          "$ref": "#/$defs/ApprovalRecordV1"
+        },
+        "contract_type": {
+          "const": "hcam.analytics.fixture-manifest.v1",
+          "default": "hcam.analytics.fixture-manifest.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "coverage": {
+          "items": {
+            "$ref": "#/$defs/FixtureCoverageV1"
+          },
+          "maxItems": 2000,
+          "minItems": 1,
+          "title": "Coverage",
+          "type": "array"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "declared_omissions": {
+          "items": {
+            "maxLength": 1000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 128,
+          "minItems": 1,
+          "title": "Declared Omissions",
+          "type": "array"
+        },
+        "expected_contracts": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 3,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Expected Contracts",
+          "type": "array"
+        },
+        "expected_failure_codes": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 3,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Expected Failure Codes",
+          "type": "array"
+        },
+        "files": {
+          "items": {
+            "$ref": "#/$defs/FileHashV1"
+          },
+          "maxItems": 256,
+          "minItems": 1,
+          "title": "Files",
+          "type": "array"
+        },
+        "fixture_suite_id": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Fixture Suite Id",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "generator": {
+          "$ref": "#/$defs/GeneratorIdentityV1"
+        },
+        "manifest_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Manifest Digest",
+          "type": "string"
+        },
+        "prohibited_sources_absent": {
+          "const": true,
+          "default": true,
+          "title": "Prohibited Sources Absent",
+          "type": "boolean"
+        },
+        "seeds": {
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 256,
+          "minItems": 1,
+          "title": "Seeds",
+          "type": "array"
+        },
+        "semantic_version": {
+          "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$",
+          "title": "Semantic Version",
+          "type": "string"
+        },
+        "template_digests": {
+          "items": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "maxItems": 256,
+          "minItems": 1,
+          "title": "Template Digests",
+          "type": "array"
+        }
+      },
+      "required": [
+        "fixture_suite_id",
+        "semantic_version",
+        "manifest_digest",
+        "generator",
+        "seeds",
+        "template_digests",
+        "expected_contracts",
+        "expected_failure_codes",
+        "coverage",
+        "declared_omissions",
+        "files",
+        "approval",
+        "created_at"
+      ],
+      "title": "FixtureManifestV1",
+      "type": "object"
+    },
+    "hcam.analytics.metric-report.v1": {
+      "$defs": {
+        "ApprovalRecordV1": {
+          "additionalProperties": false,
+          "properties": {
+            "decided_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Decided At"
+            },
+            "owner_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Owner Id",
+              "type": "string"
+            },
+            "reason": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "record_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Record Id",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "pending",
+                "owner_recorded",
+                "owner_approved"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "record_id",
+            "owner_id",
+            "status",
+            "reason"
+          ],
+          "title": "ApprovalRecordV1",
+          "type": "object"
+        },
+        "HardGateResultV1": {
+          "additionalProperties": false,
+          "properties": {
+            "comparator": {
+              "enum": [
+                "gte",
+                "lte",
+                "eq"
+              ],
+              "title": "Comparator",
+              "type": "string"
+            },
+            "gate_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Gate Id",
+              "type": "string"
+            },
+            "metric_name": {
+              "maxLength": 128,
+              "minLength": 2,
+              "pattern": "^[a-z][a-z0-9_.-]*$",
+              "title": "Metric Name",
+              "type": "string"
+            },
+            "observed": {
+              "title": "Observed",
+              "type": "number"
+            },
+            "outcome": {
+              "enum": [
+                "pass",
+                "fail",
+                "proposal_only"
+              ],
+              "title": "Outcome",
+              "type": "string"
+            },
+            "owner_approved": {
+              "title": "Owner Approved",
+              "type": "boolean"
+            },
+            "threshold": {
+              "title": "Threshold",
+              "type": "number"
+            }
+          },
+          "required": [
+            "gate_id",
+            "metric_name",
+            "comparator",
+            "threshold",
+            "observed",
+            "outcome",
+            "owner_approved"
+          ],
+          "title": "HardGateResultV1",
+          "type": "object"
+        },
+        "ManifestReferenceV1": {
+          "additionalProperties": false,
+          "properties": {
+            "digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Digest",
+              "type": "string"
+            },
+            "record_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Record Id",
+              "type": "string"
+            },
+            "version": {
+              "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "record_id",
+            "version",
+            "digest"
+          ],
+          "title": "ManifestReferenceV1",
+          "type": "object"
+        },
+        "MetricValueV1": {
+          "additionalProperties": false,
+          "properties": {
+            "denominator": {
+              "anyOf": [
+                {
+                  "maximum": 1000000000,
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Denominator"
+            },
+            "domain": {
+              "enum": [
+                "detection",
+                "tracking",
+                "geometry",
+                "synthetic_anpr",
+                "system"
+              ],
+              "title": "Domain",
+              "type": "string"
+            },
+            "metric_name": {
+              "maxLength": 128,
+              "minLength": 2,
+              "pattern": "^[a-z][a-z0-9_.-]*$",
+              "title": "Metric Name",
+              "type": "string"
+            },
+            "numerator": {
+              "anyOf": [
+                {
+                  "maximum": 1000000000,
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Numerator"
+            },
+            "outcome": {
+              "enum": [
+                "pass",
+                "fail",
+                "reported"
+              ],
+              "title": "Outcome",
+              "type": "string"
+            },
+            "population_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Population Id",
+              "type": "string"
+            },
+            "uncertainty": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Uncertainty"
+            },
+            "unit": {
+              "enum": [
+                "ratio",
+                "count",
+                "milliseconds",
+                "characters",
+                "events_per_stream_hour"
+              ],
+              "title": "Unit",
+              "type": "string"
+            },
+            "value": {
+              "title": "Value",
+              "type": "number"
+            }
+          },
+          "required": [
+            "metric_name",
+            "domain",
+            "population_id",
+            "value",
+            "unit",
+            "outcome"
+          ],
+          "title": "MetricValueV1",
+          "type": "object"
+        },
+        "PopulationDefinitionV1": {
+          "additionalProperties": false,
+          "properties": {
+            "class_id": {
+              "anyOf": [
+                {
+                  "maxLength": 128,
+                  "minLength": 3,
+                  "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Class Id"
+            },
+            "description": {
+              "maxLength": 1000,
+              "minLength": 1,
+              "title": "Description",
+              "type": "string"
+            },
+            "population_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Population Id",
+              "type": "string"
+            },
+            "sample_count": {
+              "maximum": 1000000000,
+              "minimum": 0,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "slice_id": {
+              "anyOf": [
+                {
+                  "maxLength": 128,
+                  "minLength": 3,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Slice Id"
+            }
+          },
+          "required": [
+            "population_id",
+            "description",
+            "sample_count"
+          ],
+          "title": "PopulationDefinitionV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "abstention_handling": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Abstention Handling",
+          "type": "string"
+        },
+        "approval": {
+          "$ref": "#/$defs/ApprovalRecordV1"
+        },
+        "baseline_report": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ManifestReferenceV1"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "contract_type": {
+          "const": "hcam.analytics.metric-report.v1",
+          "default": "hcam.analytics.metric-report.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "failed_gates": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 3,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Failed Gates",
+          "type": "array"
+        },
+        "generated_at": {
+          "format": "date-time",
+          "title": "Generated At",
+          "type": "string"
+        },
+        "hard_gates": {
+          "items": {
+            "$ref": "#/$defs/HardGateResultV1"
+          },
+          "maxItems": 1000,
+          "title": "Hard Gates",
+          "type": "array"
+        },
+        "invalid_prediction_handling": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Invalid Prediction Handling",
+          "type": "string"
+        },
+        "metric_suite_id": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Metric Suite Id",
+          "type": "string"
+        },
+        "metric_suite_version": {
+          "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$",
+          "title": "Metric Suite Version",
+          "type": "string"
+        },
+        "metrics": {
+          "items": {
+            "$ref": "#/$defs/MetricValueV1"
+          },
+          "maxItems": 100000,
+          "minItems": 1,
+          "title": "Metrics",
+          "type": "array"
+        },
+        "missing_prediction_handling": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Missing Prediction Handling",
+          "type": "string"
+        },
+        "populations": {
+          "items": {
+            "$ref": "#/$defs/PopulationDefinitionV1"
+          },
+          "maxItems": 10000,
+          "minItems": 1,
+          "title": "Populations",
+          "type": "array"
+        },
+        "regressions": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 3,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Regressions",
+          "type": "array"
+        },
+        "report_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Report Digest",
+          "type": "string"
+        },
+        "report_id": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Report Id",
+          "type": "string"
+        },
+        "semantic_version": {
+          "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+(?:-[a-z0-9.-]+)?$",
+          "title": "Semantic Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "report_id",
+        "semantic_version",
+        "report_digest",
+        "metric_suite_id",
+        "metric_suite_version",
+        "generated_at",
+        "populations",
+        "metrics",
+        "invalid_prediction_handling",
+        "abstention_handling",
+        "missing_prediction_handling",
+        "approval"
+      ],
+      "title": "MetricReportV1",
+      "type": "object"
+    }
+  },
+  "source_tiers": {
+    "S0": "authorized_generated_only",
+    "S1": "planning_only_exact_owner_record",
+    "S2": "research_only_no_download",
+    "S3": "research_only_no_download",
+    "S4": "prohibited_new_authorization_required",
+    "S5": "prohibited"
+  }
+}

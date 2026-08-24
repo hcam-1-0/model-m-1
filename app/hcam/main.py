@@ -3,8 +3,11 @@ from __future__ import annotations
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
+from fastapi.exceptions import RequestValidationError
 
 from hcam import __version__
+from hcam.analytics import models as _analytics_models  # noqa: F401
+from hcam.analytics.routes import router as analytics_router
 from hcam.audit import models as _audit_models  # noqa: F401
 from hcam.camera_registry import models as _camera_models  # noqa: F401
 from hcam.camera_registry.import_routes import router as import_router
@@ -14,6 +17,7 @@ from hcam.health.routes import router as health_router
 from hcam.metrics import RequestMetrics, router as metrics_router
 from hcam.observability import RequestContextMiddleware
 from hcam.security.auth import build_authenticator
+from hcam.security.errors import sanitized_request_validation_error
 from hcam.security.request_limits import (
     RequestBodyLimitMiddleware,
     SensitiveResponseHeadersMiddleware,
@@ -55,6 +59,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         service_name=resolved_settings.service_name,
         version=__version__,
     )
+    application.add_exception_handler(
+        RequestValidationError,
+        sanitized_request_validation_error,
+    )
     application.add_middleware(
         RequestBodyLimitMiddleware,
         max_bytes=resolved_settings.max_request_body_bytes,
@@ -70,6 +78,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     application.include_router(camera_router)
     application.include_router(import_router)
     application.include_router(stream_router)
+    application.include_router(analytics_router)
     return application
 
 

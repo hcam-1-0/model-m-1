@@ -1,0 +1,24 @@
+{
+  "contract_type": "hcam.analytics.split-validation-report.v1",
+  "cross_split_group_count": 0,
+  "exact_duplicate_count": 0,
+  "final_test_accesses": [],
+  "final_test_frozen": true,
+  "generated_at": "2026-08-24T13:00:00Z",
+  "issues": [],
+  "item_count": 6,
+  "missing_group_key_count": 0,
+  "report_digest": "sha256:5aaafc3b2785b83c7723635855338c21ee35be6ae63879847b0e8a3d0c55603f",
+  "report_id": "p31-generated-split-validation-v1",
+  "required_group_keys": [
+    "generator-group",
+    "seed-group",
+    "template-group"
+  ],
+  "split_counts": {
+    "test": 2,
+    "train": 2,
+    "validation": 2
+  },
+  "status": "pass"
+}

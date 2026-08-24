@@ -1,0 +1,5978 @@
+{
+  "contract_format": "hcam.openapi.contract.v1",
+  "schema": {
+    "components": {
+      "schemas": {
+        "AnalyticsAssignmentCreate": {
+          "additionalProperties": false,
+          "properties": {
+            "approval_record_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Approval Record Id",
+              "type": "string"
+            },
+            "capability": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+              "title": "Capability",
+              "type": "string"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "desired_state": {
+              "const": "paused",
+              "default": "paused",
+              "title": "Desired State",
+              "type": "string"
+            },
+            "geometry_refs": {
+              "items": {
+                "$ref": "#/components/schemas/VersionedConfiguration"
+              },
+              "maxItems": 64,
+              "title": "Geometry Refs",
+              "type": "array"
+            },
+            "maximum_queue_age_ms": {
+              "maximum": 60000.0,
+              "minimum": 50.0,
+              "title": "Maximum Queue Age Ms",
+              "type": "integer"
+            },
+            "minimum_confidence": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Minimum Confidence",
+              "type": "number"
+            },
+            "models": {
+              "items": {
+                "$ref": "#/components/schemas/VersionedArtifact"
+              },
+              "maxItems": 8,
+              "title": "Models",
+              "type": "array"
+            },
+            "pipeline": {
+              "$ref": "#/components/schemas/VersionedArtifact"
+            },
+            "policy_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Policy Version",
+              "type": "string"
+            },
+            "retention_class": {
+              "enum": [
+                "derived.analytics.standard",
+                "derived.analytics.restricted"
+              ],
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "sampling_fps": {
+              "exclusiveMinimum": 0.0,
+              "maximum": 60.0,
+              "title": "Sampling Fps",
+              "type": "number"
+            },
+            "taxonomy_version": {
+              "maxLength": 128,
+              "pattern": "^hcam\\.[a-z][a-z0-9_.-]*\\.v[1-9][0-9]*$",
+              "title": "Taxonomy Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "capability",
+            "pipeline",
+            "taxonomy_version",
+            "policy_version",
+            "configuration_digest",
+            "minimum_confidence",
+            "sampling_fps",
+            "maximum_queue_age_ms",
+            "retention_class",
+            "approval_record_id"
+          ],
+          "title": "AnalyticsAssignmentCreate",
+          "type": "object"
+        },
+        "AnalyticsAssignmentListResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/AnalyticsAssignmentResponse"
+              },
+              "title": "Items",
+              "type": "array"
+            },
+            "limit": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "offset": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "total": {
+              "title": "Total",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "items",
+            "total",
+            "limit",
+            "offset"
+          ],
+          "title": "AnalyticsAssignmentListResponse",
+          "type": "object"
+        },
+        "AnalyticsAssignmentPatch": {
+          "additionalProperties": false,
+          "properties": {
+            "approval_record_id": {
+              "anyOf": [
+                {
+                  "maxLength": 128,
+                  "minLength": 1,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Approval Record Id"
+            },
+            "configuration_digest": {
+              "anyOf": [
+                {
+                  "pattern": "^sha256:[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Configuration Digest"
+            },
+            "desired_state": {
+              "anyOf": [
+                {
+                  "const": "paused",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Desired State"
+            },
+            "geometry_refs": {
+              "anyOf": [
+                {
+                  "items": {
+                    "$ref": "#/components/schemas/VersionedConfiguration"
+                  },
+                  "maxItems": 64,
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Geometry Refs"
+            },
+            "maximum_queue_age_ms": {
+              "anyOf": [
+                {
+                  "maximum": 60000.0,
+                  "minimum": 50.0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Maximum Queue Age Ms"
+            },
+            "minimum_confidence": {
+              "anyOf": [
+                {
+                  "maximum": 1.0,
+                  "minimum": 0.0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Minimum Confidence"
+            },
+            "models": {
+              "anyOf": [
+                {
+                  "items": {
+                    "$ref": "#/components/schemas/VersionedArtifact"
+                  },
+                  "maxItems": 8,
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Models"
+            },
+            "pipeline": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/VersionedArtifact"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "policy_version": {
+              "anyOf": [
+                {
+                  "pattern": "^sha256:[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Policy Version"
+            },
+            "retention_class": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "derived.analytics.standard",
+                    "derived.analytics.restricted"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Retention Class"
+            },
+            "sampling_fps": {
+              "anyOf": [
+                {
+                  "exclusiveMinimum": 0.0,
+                  "maximum": 60.0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Sampling Fps"
+            },
+            "taxonomy_version": {
+              "anyOf": [
+                {
+                  "maxLength": 128,
+                  "pattern": "^hcam\\.[a-z][a-z0-9_.-]*\\.v[1-9][0-9]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Taxonomy Version"
+            }
+          },
+          "title": "AnalyticsAssignmentPatch",
+          "type": "object"
+        },
+        "AnalyticsAssignmentResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "activation_eligible": {
+              "const": false,
+              "default": false,
+              "title": "Activation Eligible",
+              "type": "boolean"
+            },
+            "actor_id": {
+              "maxLength": 160,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:@-]*$",
+              "title": "Actor Id",
+              "type": "string"
+            },
+            "approval_record_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Approval Record Id",
+              "type": "string"
+            },
+            "assignment_id": {
+              "pattern": "^ana_[0-9a-f]{32}$",
+              "title": "Assignment Id",
+              "type": "string"
+            },
+            "blocking_reasons": {
+              "items": {
+                "enum": [
+                  "runtime_unconfigured",
+                  "taxonomy_unapproved",
+                  "retention_policy_unapproved"
+                ],
+                "type": "string"
+              },
+              "title": "Blocking Reasons",
+              "type": "array"
+            },
+            "camera_id": {
+              "maxLength": 160,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "capability": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+              "title": "Capability",
+              "type": "string"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "contract_type": {
+              "const": "hcam.analytics.assignment.v1",
+              "default": "hcam.analytics.assignment.v1",
+              "title": "Contract Type",
+              "type": "string"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "department": {
+              "maxLength": 120,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ._-]*$",
+              "title": "Department",
+              "type": "string"
+            },
+            "desired_state": {
+              "enum": [
+                "enabled",
+                "paused"
+              ],
+              "title": "Desired State",
+              "type": "string"
+            },
+            "geometry_refs": {
+              "items": {
+                "$ref": "#/components/schemas/VersionedConfiguration"
+              },
+              "maxItems": 64,
+              "title": "Geometry Refs",
+              "type": "array"
+            },
+            "lifecycle_state": {
+              "const": "blocked",
+              "default": "blocked",
+              "title": "Lifecycle State",
+              "type": "string"
+            },
+            "maximum_queue_age_ms": {
+              "maximum": 60000.0,
+              "minimum": 50.0,
+              "title": "Maximum Queue Age Ms",
+              "type": "integer"
+            },
+            "minimum_confidence": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Minimum Confidence",
+              "type": "number"
+            },
+            "models": {
+              "items": {
+                "$ref": "#/components/schemas/VersionedArtifact"
+              },
+              "maxItems": 8,
+              "title": "Models",
+              "type": "array"
+            },
+            "pipeline": {
+              "$ref": "#/components/schemas/VersionedArtifact"
+            },
+            "policy_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Policy Version",
+              "type": "string"
+            },
+            "reason": {
+              "maxLength": 500,
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "reason_code": {
+              "const": "owner_gates_pending",
+              "default": "owner_gates_pending",
+              "title": "Reason Code",
+              "type": "string"
+            },
+            "retention_class": {
+              "enum": [
+                "derived.analytics.standard",
+                "derived.analytics.restricted"
+              ],
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "sampling_fps": {
+              "exclusiveMinimum": 0.0,
+              "maximum": 60.0,
+              "title": "Sampling Fps",
+              "type": "number"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "taxonomy_version": {
+              "maxLength": 128,
+              "pattern": "^hcam\\.[a-z][a-z0-9_.-]*\\.v[1-9][0-9]*$",
+              "title": "Taxonomy Version",
+              "type": "string"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "version": {
+              "maximum": 2147483647.0,
+              "minimum": 1.0,
+              "title": "Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "assignment_id",
+            "department",
+            "stream_id",
+            "camera_id",
+            "capability",
+            "desired_state",
+            "version",
+            "pipeline",
+            "taxonomy_version",
+            "policy_version",
+            "configuration_digest",
+            "minimum_confidence",
+            "sampling_fps",
+            "maximum_queue_age_ms",
+            "retention_class",
+            "actor_id",
+            "reason",
+            "approval_record_id",
+            "updated_at",
+            "blocking_reasons",
+            "created_at"
+          ],
+          "title": "AnalyticsAssignmentResponse",
+          "type": "object"
+        },
+        "AnalyticsAssignmentRevisionListResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/AnalyticsAssignmentRevisionResponse"
+              },
+              "title": "Items",
+              "type": "array"
+            },
+            "limit": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "offset": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "total": {
+              "title": "Total",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "items",
+            "total",
+            "limit",
+            "offset"
+          ],
+          "title": "AnalyticsAssignmentRevisionListResponse",
+          "type": "object"
+        },
+        "AnalyticsAssignmentRevisionResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "actor_id": {
+              "title": "Actor Id",
+              "type": "string"
+            },
+            "assignment_id": {
+              "title": "Assignment Id",
+              "type": "string"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "recorded_at": {
+              "format": "date-time",
+              "title": "Recorded At",
+              "type": "string"
+            },
+            "snapshot": {
+              "$ref": "#/components/schemas/AnalyticsAssignmentV1"
+            },
+            "version": {
+              "title": "Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "assignment_id",
+            "version",
+            "snapshot",
+            "actor_id",
+            "reason",
+            "recorded_at"
+          ],
+          "title": "AnalyticsAssignmentRevisionResponse",
+          "type": "object"
+        },
+        "AnalyticsAssignmentV1": {
+          "additionalProperties": false,
+          "properties": {
+            "actor_id": {
+              "maxLength": 160,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:@-]*$",
+              "title": "Actor Id",
+              "type": "string"
+            },
+            "approval_record_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Approval Record Id",
+              "type": "string"
+            },
+            "assignment_id": {
+              "pattern": "^ana_[0-9a-f]{32}$",
+              "title": "Assignment Id",
+              "type": "string"
+            },
+            "camera_id": {
+              "maxLength": 160,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "capability": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+              "title": "Capability",
+              "type": "string"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "contract_type": {
+              "const": "hcam.analytics.assignment.v1",
+              "default": "hcam.analytics.assignment.v1",
+              "title": "Contract Type",
+              "type": "string"
+            },
+            "department": {
+              "maxLength": 120,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ._-]*$",
+              "title": "Department",
+              "type": "string"
+            },
+            "desired_state": {
+              "enum": [
+                "enabled",
+                "paused"
+              ],
+              "title": "Desired State",
+              "type": "string"
+            },
+            "geometry_refs": {
+              "items": {
+                "$ref": "#/components/schemas/VersionedConfiguration"
+              },
+              "maxItems": 64,
+              "title": "Geometry Refs",
+              "type": "array"
+            },
+            "maximum_queue_age_ms": {
+              "maximum": 60000.0,
+              "minimum": 50.0,
+              "title": "Maximum Queue Age Ms",
+              "type": "integer"
+            },
+            "minimum_confidence": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Minimum Confidence",
+              "type": "number"
+            },
+            "models": {
+              "items": {
+                "$ref": "#/components/schemas/VersionedArtifact"
+              },
+              "maxItems": 8,
+              "title": "Models",
+              "type": "array"
+            },
+            "pipeline": {
+              "$ref": "#/components/schemas/VersionedArtifact"
+            },
+            "policy_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Policy Version",
+              "type": "string"
+            },
+            "reason": {
+              "maxLength": 500,
+              "minLength": 1,
+              "title": "Reason",
+              "type": "string"
+            },
+            "retention_class": {
+              "enum": [
+                "derived.analytics.standard",
+                "derived.analytics.restricted"
+              ],
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "sampling_fps": {
+              "exclusiveMinimum": 0.0,
+              "maximum": 60.0,
+              "title": "Sampling Fps",
+              "type": "number"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "taxonomy_version": {
+              "maxLength": 128,
+              "pattern": "^hcam\\.[a-z][a-z0-9_.-]*\\.v[1-9][0-9]*$",
+              "title": "Taxonomy Version",
+              "type": "string"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "version": {
+              "maximum": 2147483647.0,
+              "minimum": 1.0,
+              "title": "Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "assignment_id",
+            "department",
+            "stream_id",
+            "camera_id",
+            "capability",
+            "desired_state",
+            "version",
+            "pipeline",
+            "taxonomy_version",
+            "policy_version",
+            "configuration_digest",
+            "minimum_confidence",
+            "sampling_fps",
+            "maximum_queue_age_ms",
+            "retention_class",
+            "actor_id",
+            "reason",
+            "approval_record_id",
+            "updated_at"
+          ],
+          "title": "AnalyticsAssignmentV1",
+          "type": "object"
+        },
+        "CameraCapabilityDiscoveryResponse": {
+          "properties": {
+            "camera_id": {
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "discovered_at": {
+              "format": "date-time",
+              "title": "Discovered At",
+              "type": "string"
+            },
+            "media": {
+              "$ref": "#/components/schemas/OnvifMediaCapabilitiesResponse"
+            },
+            "source": {
+              "const": "onvif_media_service",
+              "default": "onvif_media_service",
+              "title": "Source",
+              "type": "string"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "stream_id",
+            "camera_id",
+            "discovered_at",
+            "media"
+          ],
+          "title": "CameraCapabilityDiscoveryResponse",
+          "type": "object"
+        },
+        "CameraCreate": {
+          "additionalProperties": false,
+          "properties": {
+            "camera_id": {
+              "maxLength": 160,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "camera_type": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Camera Type"
+            },
+            "connectivity_status": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Connectivity Status"
+            },
+            "department": {
+              "anyOf": [
+                {
+                  "maxLength": 120,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Department"
+            },
+            "display_name": {
+              "maxLength": 255,
+              "minLength": 1,
+              "title": "Display Name",
+              "type": "string"
+            },
+            "external_id": {
+              "maxLength": 255,
+              "minLength": 1,
+              "title": "External Id",
+              "type": "string"
+            },
+            "health_status": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Health Status"
+            },
+            "location": {
+              "$ref": "#/components/schemas/LocationSeed"
+            },
+            "maintenance_status": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Maintenance Status"
+            },
+            "ownership": {
+              "anyOf": [
+                {
+                  "maxLength": 120,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Ownership"
+            },
+            "source": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-z][a-z0-9-]*$",
+              "title": "Source",
+              "type": "string"
+            },
+            "status": {
+              "$ref": "#/components/schemas/CameraStatusSeed"
+            },
+            "storage_status": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Storage Status"
+            },
+            "stream": {
+              "$ref": "#/components/schemas/StreamSeed"
+            }
+          },
+          "required": [
+            "camera_id",
+            "source",
+            "external_id",
+            "display_name"
+          ],
+          "title": "CameraCreate",
+          "type": "object"
+        },
+        "CameraListResponse": {
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/CameraResponse"
+              },
+              "title": "Items",
+              "type": "array"
+            },
+            "limit": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "offset": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "total": {
+              "title": "Total",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "items",
+            "total",
+            "limit",
+            "offset"
+          ],
+          "title": "CameraListResponse",
+          "type": "object"
+        },
+        "CameraPatch": {
+          "additionalProperties": false,
+          "properties": {
+            "camera_type": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Camera Type"
+            },
+            "connectivity_status": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Connectivity Status"
+            },
+            "department": {
+              "anyOf": [
+                {
+                  "maxLength": 120,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Department"
+            },
+            "display_name": {
+              "anyOf": [
+                {
+                  "maxLength": 255,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Display Name"
+            },
+            "health_status": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Health Status"
+            },
+            "location": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/LocationPatch"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "maintenance_status": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Maintenance Status"
+            },
+            "ownership": {
+              "anyOf": [
+                {
+                  "maxLength": 120,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Ownership"
+            },
+            "status": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/CameraStatusPatch"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "storage_status": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Storage Status"
+            },
+            "stream": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/StreamPatch"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "title": "CameraPatch",
+          "type": "object"
+        },
+        "CameraResponse": {
+          "properties": {
+            "camera_id": {
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "camera_type": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Camera Type"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "department": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Department"
+            },
+            "display_name": {
+              "title": "Display Name",
+              "type": "string"
+            },
+            "external_id": {
+              "title": "External Id",
+              "type": "string"
+            },
+            "location": {
+              "$ref": "#/components/schemas/LocationResponse"
+            },
+            "ownership": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Ownership"
+            },
+            "provenance": {
+              "$ref": "#/components/schemas/ProvenanceResponse"
+            },
+            "source": {
+              "title": "Source",
+              "type": "string"
+            },
+            "state": {
+              "$ref": "#/components/schemas/StateResponse"
+            },
+            "stream": {
+              "$ref": "#/components/schemas/StreamResponse"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "version": {
+              "title": "Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "camera_id",
+            "version",
+            "source",
+            "external_id",
+            "display_name",
+            "department",
+            "ownership",
+            "camera_type",
+            "location",
+            "state",
+            "stream",
+            "provenance",
+            "created_at",
+            "updated_at"
+          ],
+          "title": "CameraResponse",
+          "type": "object"
+        },
+        "CameraSeed": {
+          "properties": {
+            "camera_id": {
+              "maxLength": 160,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "camera_type": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Camera Type"
+            },
+            "connectivity_status": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Connectivity Status"
+            },
+            "department": {
+              "anyOf": [
+                {
+                  "maxLength": 120,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Department"
+            },
+            "display_name": {
+              "maxLength": 255,
+              "minLength": 1,
+              "title": "Display Name",
+              "type": "string"
+            },
+            "external_id": {
+              "maxLength": 255,
+              "minLength": 1,
+              "title": "External Id",
+              "type": "string"
+            },
+            "health_status": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Health Status"
+            },
+            "location": {
+              "$ref": "#/components/schemas/LocationSeed"
+            },
+            "maintenance_status": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Maintenance Status"
+            },
+            "ownership": {
+              "anyOf": [
+                {
+                  "maxLength": 120,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Ownership"
+            },
+            "source": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-z][a-z0-9-]*$",
+              "title": "Source",
+              "type": "string"
+            },
+            "status": {
+              "$ref": "#/components/schemas/CameraStatusSeed"
+            },
+            "storage_status": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Storage Status"
+            },
+            "stream": {
+              "$ref": "#/components/schemas/StreamSeed"
+            }
+          },
+          "required": [
+            "camera_id",
+            "source",
+            "external_id",
+            "display_name"
+          ],
+          "title": "CameraSeed",
+          "type": "object"
+        },
+        "CameraStatusPatch": {
+          "additionalProperties": false,
+          "properties": {
+            "metadata": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Metadata"
+            },
+            "state": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "State"
+            }
+          },
+          "title": "CameraStatusPatch",
+          "type": "object"
+        },
+        "CameraStatusSeed": {
+          "additionalProperties": false,
+          "properties": {
+            "metadata": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Metadata"
+            },
+            "state": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "State"
+            }
+          },
+          "title": "CameraStatusSeed",
+          "type": "object"
+        },
+        "CapabilityDeviceResponse": {
+          "properties": {
+            "clock_offset_seconds": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Clock Offset Seconds"
+            },
+            "firmware_version": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Firmware Version"
+            },
+            "hardware_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hardware Id"
+            },
+            "manufacturer": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Manufacturer"
+            },
+            "model": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Model"
+            },
+            "serial_number": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Serial Number"
+            }
+          },
+          "title": "CapabilityDeviceResponse",
+          "type": "object"
+        },
+        "CapabilityRefreshResponse": {
+          "properties": {
+            "attempt_count": {
+              "title": "Attempt Count",
+              "type": "integer"
+            },
+            "completeness": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "complete",
+                    "partial"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Completeness"
+            },
+            "deduplicated": {
+              "default": false,
+              "title": "Deduplicated",
+              "type": "boolean"
+            },
+            "finished_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Finished At"
+            },
+            "max_attempts": {
+              "title": "Max Attempts",
+              "type": "integer"
+            },
+            "next_attempt_at": {
+              "format": "date-time",
+              "title": "Next Attempt At",
+              "type": "string"
+            },
+            "queued_at": {
+              "format": "date-time",
+              "title": "Queued At",
+              "type": "string"
+            },
+            "reason_code": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Reason Code"
+            },
+            "refresh_id": {
+              "pattern": "^cpr_[0-9a-f]{32}$",
+              "title": "Refresh Id",
+              "type": "string"
+            },
+            "snapshot_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Snapshot Id"
+            },
+            "source": {
+              "enum": [
+                "manual",
+                "scheduled"
+              ],
+              "title": "Source",
+              "type": "string"
+            },
+            "started_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Started At"
+            },
+            "status": {
+              "enum": [
+                "queued",
+                "running",
+                "succeeded",
+                "failed"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "refresh_id",
+            "stream_id",
+            "status",
+            "source",
+            "attempt_count",
+            "max_attempts",
+            "reason_code",
+            "completeness",
+            "snapshot_id",
+            "queued_at",
+            "started_at",
+            "finished_at",
+            "next_attempt_at"
+          ],
+          "title": "CapabilityRefreshResponse",
+          "type": "object"
+        },
+        "CapabilitySnapshotListResponse": {
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/CapabilitySnapshotResponse"
+              },
+              "title": "Items",
+              "type": "array"
+            },
+            "limit": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "offset": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "total": {
+              "title": "Total",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "items",
+            "total",
+            "limit",
+            "offset"
+          ],
+          "title": "CapabilitySnapshotListResponse",
+          "type": "object"
+        },
+        "CapabilitySnapshotResponse": {
+          "properties": {
+            "camera_id": {
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "completeness": {
+              "enum": [
+                "complete",
+                "partial"
+              ],
+              "title": "Completeness",
+              "type": "string"
+            },
+            "device": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/CapabilityDeviceResponse"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "fresh": {
+              "title": "Fresh",
+              "type": "boolean"
+            },
+            "media": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/OnvifMediaCapabilitiesResponse"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "services": {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "maxItems": 64,
+              "title": "Services",
+              "type": "array"
+            },
+            "snapshot_id": {
+              "title": "Snapshot Id",
+              "type": "string"
+            },
+            "source": {
+              "enum": [
+                "device_and_media",
+                "media_only"
+              ],
+              "title": "Source",
+              "type": "string"
+            },
+            "stale_at": {
+              "format": "date-time",
+              "title": "Stale At",
+              "type": "string"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "warnings": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 16,
+              "title": "Warnings",
+              "type": "array"
+            }
+          },
+          "required": [
+            "snapshot_id",
+            "stream_id",
+            "camera_id",
+            "source",
+            "completeness",
+            "fresh",
+            "observed_at",
+            "stale_at"
+          ],
+          "title": "CapabilitySnapshotResponse",
+          "type": "object"
+        },
+        "HTTPValidationError": {
+          "properties": {
+            "detail": {
+              "items": {
+                "$ref": "#/components/schemas/ValidationError"
+              },
+              "title": "Detail",
+              "type": "array"
+            }
+          },
+          "title": "HTTPValidationError",
+          "type": "object"
+        },
+        "HealthResponse": {
+          "properties": {
+            "status": {
+              "enum": [
+                "live",
+                "ready"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status"
+          ],
+          "title": "HealthResponse",
+          "type": "object"
+        },
+        "LocationPatch": {
+          "additionalProperties": false,
+          "properties": {
+            "label": {
+              "anyOf": [
+                {
+                  "maxLength": 500,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Label"
+            },
+            "latitude": {
+              "anyOf": [
+                {
+                  "maximum": 90.0,
+                  "minimum": -90.0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Latitude"
+            },
+            "longitude": {
+              "anyOf": [
+                {
+                  "maximum": 180.0,
+                  "minimum": -180.0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Longitude"
+            },
+            "timezone": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Timezone"
+            }
+          },
+          "title": "LocationPatch",
+          "type": "object"
+        },
+        "LocationResponse": {
+          "properties": {
+            "label": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Label"
+            },
+            "latitude": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Latitude"
+            },
+            "longitude": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Longitude"
+            },
+            "timezone": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Timezone"
+            }
+          },
+          "required": [
+            "label",
+            "timezone",
+            "latitude",
+            "longitude"
+          ],
+          "title": "LocationResponse",
+          "type": "object"
+        },
+        "LocationSeed": {
+          "additionalProperties": false,
+          "properties": {
+            "label": {
+              "anyOf": [
+                {
+                  "maxLength": 500,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Label"
+            },
+            "latitude": {
+              "anyOf": [
+                {
+                  "maximum": 90.0,
+                  "minimum": -90.0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Latitude"
+            },
+            "longitude": {
+              "anyOf": [
+                {
+                  "maximum": 180.0,
+                  "minimum": -180.0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Longitude"
+            },
+            "timezone": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Timezone"
+            }
+          },
+          "title": "LocationSeed",
+          "type": "object"
+        },
+        "OnvifDiscoveryMatchResponse": {
+          "properties": {
+            "endpoint_reference": {
+              "anyOf": [
+                {
+                  "maxLength": 500,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Endpoint Reference"
+            },
+            "scopes": {
+              "items": {
+                "maxLength": 500,
+                "type": "string"
+              },
+              "maxItems": 32,
+              "title": "Scopes",
+              "type": "array"
+            },
+            "types": {
+              "items": {
+                "maxLength": 255,
+                "type": "string"
+              },
+              "maxItems": 16,
+              "title": "Types",
+              "type": "array"
+            },
+            "xaddrs": {
+              "items": {
+                "maxLength": 4096,
+                "type": "string"
+              },
+              "maxItems": 16,
+              "title": "Xaddrs",
+              "type": "array"
+            }
+          },
+          "title": "OnvifDiscoveryMatchResponse",
+          "type": "object"
+        },
+        "OnvifDiscoveryResponse": {
+          "properties": {
+            "interface_address": {
+              "title": "Interface Address",
+              "type": "string"
+            },
+            "matches": {
+              "items": {
+                "$ref": "#/components/schemas/OnvifDiscoveryMatchResponse"
+              },
+              "maxItems": 64,
+              "title": "Matches",
+              "type": "array"
+            },
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "operation_id": {
+              "pattern": "^ovf_[0-9a-f]{32}$",
+              "title": "Operation Id",
+              "type": "string"
+            },
+            "result_count": {
+              "title": "Result Count",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "operation_id",
+            "interface_address",
+            "result_count",
+            "matches",
+            "observed_at"
+          ],
+          "title": "OnvifDiscoveryResponse",
+          "type": "object"
+        },
+        "OnvifEventMessageResponse": {
+          "properties": {
+            "data": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "title": "Data",
+              "type": "object"
+            },
+            "property_operation": {
+              "anyOf": [
+                {
+                  "maxLength": 64,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Property Operation"
+            },
+            "topic": {
+              "anyOf": [
+                {
+                  "maxLength": 500,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Topic"
+            },
+            "utc_time": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Utc Time"
+            }
+          },
+          "title": "OnvifEventMessageResponse",
+          "type": "object"
+        },
+        "OnvifEventPullRequest": {
+          "additionalProperties": false,
+          "properties": {
+            "message_limit": {
+              "default": 16,
+              "maximum": 32.0,
+              "minimum": 1.0,
+              "title": "Message Limit",
+              "type": "integer"
+            },
+            "timeout_seconds": {
+              "default": 1.0,
+              "maximum": 5.0,
+              "minimum": 0.1,
+              "title": "Timeout Seconds",
+              "type": "number"
+            }
+          },
+          "title": "OnvifEventPullRequest",
+          "type": "object"
+        },
+        "OnvifEventPullResponse": {
+          "properties": {
+            "camera_id": {
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "messages": {
+              "items": {
+                "$ref": "#/components/schemas/OnvifEventMessageResponse"
+              },
+              "maxItems": 32,
+              "title": "Messages",
+              "type": "array"
+            },
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "operation_id": {
+              "pattern": "^ovf_[0-9a-f]{32}$",
+              "title": "Operation Id",
+              "type": "string"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "subscription_terminated": {
+              "title": "Subscription Terminated",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "operation_id",
+            "stream_id",
+            "camera_id",
+            "subscription_terminated",
+            "messages",
+            "observed_at"
+          ],
+          "title": "OnvifEventPullResponse",
+          "type": "object"
+        },
+        "OnvifImagingInspectionRequest": {
+          "additionalProperties": false,
+          "properties": {
+            "profile_token": {
+              "maxLength": 255,
+              "minLength": 1,
+              "title": "Profile Token",
+              "type": "string"
+            }
+          },
+          "required": [
+            "profile_token"
+          ],
+          "title": "OnvifImagingInspectionRequest",
+          "type": "object"
+        },
+        "OnvifImagingInspectionResponse": {
+          "properties": {
+            "brightness": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Brightness"
+            },
+            "camera_id": {
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "color_saturation": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Color Saturation"
+            },
+            "contrast": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Contrast"
+            },
+            "exposure_mode": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Exposure Mode"
+            },
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "operation_id": {
+              "pattern": "^ovf_[0-9a-f]{32}$",
+              "title": "Operation Id",
+              "type": "string"
+            },
+            "profile_token": {
+              "title": "Profile Token",
+              "type": "string"
+            },
+            "sharpness": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Sharpness"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "video_source_token": {
+              "title": "Video Source Token",
+              "type": "string"
+            }
+          },
+          "required": [
+            "operation_id",
+            "stream_id",
+            "camera_id",
+            "profile_token",
+            "video_source_token",
+            "observed_at"
+          ],
+          "title": "OnvifImagingInspectionResponse",
+          "type": "object"
+        },
+        "OnvifMediaCapabilitiesResponse": {
+          "properties": {
+            "exi_compression": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Exi Compression"
+            },
+            "maximum_profiles": {
+              "anyOf": [
+                {
+                  "maximum": 1000000.0,
+                  "minimum": 1.0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Maximum Profiles"
+            },
+            "osd": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Osd"
+            },
+            "profiles": {
+              "items": {
+                "$ref": "#/components/schemas/OnvifMediaProfileResponse"
+              },
+              "maxItems": 64,
+              "title": "Profiles",
+              "type": "array"
+            },
+            "rotation": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Rotation"
+            },
+            "snapshot_uri": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Snapshot Uri"
+            },
+            "temporary_osd_text": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Temporary Osd Text"
+            },
+            "video_source_mode": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Video Source Mode"
+            }
+          },
+          "required": [
+            "snapshot_uri",
+            "rotation",
+            "video_source_mode",
+            "osd",
+            "temporary_osd_text",
+            "exi_compression",
+            "maximum_profiles",
+            "profiles"
+          ],
+          "title": "OnvifMediaCapabilitiesResponse",
+          "type": "object"
+        },
+        "OnvifMediaProfileResponse": {
+          "properties": {
+            "analytics_configured": {
+              "title": "Analytics Configured",
+              "type": "boolean"
+            },
+            "audio_encoding": {
+              "anyOf": [
+                {
+                  "maxLength": 255,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Audio Encoding"
+            },
+            "fixed": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Fixed"
+            },
+            "frame_rate_limit": {
+              "anyOf": [
+                {
+                  "maximum": 1000000.0,
+                  "minimum": 1.0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Frame Rate Limit"
+            },
+            "height": {
+              "anyOf": [
+                {
+                  "maximum": 1000000.0,
+                  "minimum": 1.0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Height"
+            },
+            "metadata_configured": {
+              "title": "Metadata Configured",
+              "type": "boolean"
+            },
+            "name": {
+              "anyOf": [
+                {
+                  "maxLength": 255,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
+            },
+            "ptz_configured": {
+              "title": "Ptz Configured",
+              "type": "boolean"
+            },
+            "token": {
+              "maxLength": 255,
+              "minLength": 1,
+              "title": "Token",
+              "type": "string"
+            },
+            "video_encoding": {
+              "anyOf": [
+                {
+                  "maxLength": 255,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Video Encoding"
+            },
+            "video_source_token": {
+              "anyOf": [
+                {
+                  "maxLength": 255,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Video Source Token"
+            },
+            "width": {
+              "anyOf": [
+                {
+                  "maximum": 1000000.0,
+                  "minimum": 1.0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Width"
+            }
+          },
+          "required": [
+            "token",
+            "name",
+            "fixed",
+            "video_encoding",
+            "width",
+            "height",
+            "frame_rate_limit",
+            "audio_encoding",
+            "ptz_configured",
+            "analytics_configured",
+            "metadata_configured"
+          ],
+          "title": "OnvifMediaProfileResponse",
+          "type": "object"
+        },
+        "OnvifPtzCommandRequest": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "enum": [
+                "stop",
+                "continuous",
+                "relative",
+                "absolute",
+                "goto_preset"
+              ],
+              "title": "Action",
+              "type": "string"
+            },
+            "duration_seconds": {
+              "anyOf": [
+                {
+                  "maximum": 10.0,
+                  "minimum": 0.1,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Duration Seconds"
+            },
+            "pan": {
+              "anyOf": [
+                {
+                  "maximum": 1.0,
+                  "minimum": -1.0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Pan"
+            },
+            "preset_token": {
+              "anyOf": [
+                {
+                  "maxLength": 255,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Preset Token"
+            },
+            "profile_token": {
+              "maxLength": 255,
+              "minLength": 1,
+              "title": "Profile Token",
+              "type": "string"
+            },
+            "speed": {
+              "anyOf": [
+                {
+                  "exclusiveMinimum": 0.0,
+                  "maximum": 1.0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Speed"
+            },
+            "tilt": {
+              "anyOf": [
+                {
+                  "maximum": 1.0,
+                  "minimum": -1.0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Tilt"
+            },
+            "zoom": {
+              "anyOf": [
+                {
+                  "maximum": 1.0,
+                  "minimum": -1.0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Zoom"
+            }
+          },
+          "required": [
+            "action",
+            "profile_token"
+          ],
+          "title": "OnvifPtzCommandRequest",
+          "type": "object"
+        },
+        "OnvifPtzCommandResponse": {
+          "properties": {
+            "action": {
+              "enum": [
+                "stop",
+                "continuous",
+                "relative",
+                "absolute",
+                "goto_preset"
+              ],
+              "title": "Action",
+              "type": "string"
+            },
+            "auto_stopped": {
+              "title": "Auto Stopped",
+              "type": "boolean"
+            },
+            "camera_id": {
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "finished_at": {
+              "format": "date-time",
+              "title": "Finished At",
+              "type": "string"
+            },
+            "operation_id": {
+              "pattern": "^ovf_[0-9a-f]{32}$",
+              "title": "Operation Id",
+              "type": "string"
+            },
+            "outcome": {
+              "const": "success",
+              "default": "success",
+              "title": "Outcome",
+              "type": "string"
+            },
+            "started_at": {
+              "format": "date-time",
+              "title": "Started At",
+              "type": "string"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "operation_id",
+            "stream_id",
+            "camera_id",
+            "action",
+            "auto_stopped",
+            "started_at",
+            "finished_at"
+          ],
+          "title": "OnvifPtzCommandResponse",
+          "type": "object"
+        },
+        "PlaybackSessionResponse": {
+          "properties": {
+            "access_token": {
+              "title": "Access Token",
+              "type": "string"
+            },
+            "expires_at": {
+              "format": "date-time",
+              "title": "Expires At",
+              "type": "string"
+            },
+            "playback_url": {
+              "title": "Playback Url",
+              "type": "string"
+            },
+            "session_id": {
+              "pattern": "^pbs_[0-9a-f]{32}$",
+              "title": "Session Id",
+              "type": "string"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "token_type": {
+              "const": "Bearer",
+              "title": "Token Type",
+              "type": "string"
+            }
+          },
+          "required": [
+            "session_id",
+            "stream_id",
+            "playback_url",
+            "access_token",
+            "token_type",
+            "expires_at"
+          ],
+          "title": "PlaybackSessionResponse",
+          "type": "object"
+        },
+        "ProbeQueuedResponse": {
+          "properties": {
+            "probe_due_at": {
+              "format": "date-time",
+              "title": "Probe Due At",
+              "type": "string"
+            },
+            "status": {
+              "const": "queued",
+              "default": "queued",
+              "title": "Status",
+              "type": "string"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "stream_id",
+            "probe_due_at"
+          ],
+          "title": "ProbeQueuedResponse",
+          "type": "object"
+        },
+        "ProvenanceResponse": {
+          "properties": {
+            "adapter": {
+              "title": "Adapter",
+              "type": "string"
+            },
+            "details": {
+              "additionalProperties": true,
+              "title": "Details",
+              "type": "object"
+            },
+            "generated_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Generated At"
+            },
+            "imported_at": {
+              "format": "date-time",
+              "title": "Imported At",
+              "type": "string"
+            },
+            "schema_name": {
+              "title": "Schema Name",
+              "type": "string"
+            }
+          },
+          "required": [
+            "schema_name",
+            "adapter",
+            "generated_at",
+            "imported_at",
+            "details"
+          ],
+          "title": "ProvenanceResponse",
+          "type": "object"
+        },
+        "RegistryImportResult": {
+          "properties": {
+            "audit_event_id": {
+              "title": "Audit Event Id",
+              "type": "string"
+            },
+            "created": {
+              "title": "Created",
+              "type": "integer"
+            },
+            "schema_name": {
+              "title": "Schema Name",
+              "type": "string"
+            },
+            "source": {
+              "title": "Source",
+              "type": "string"
+            },
+            "total": {
+              "title": "Total",
+              "type": "integer"
+            },
+            "unchanged": {
+              "title": "Unchanged",
+              "type": "integer"
+            },
+            "updated": {
+              "title": "Updated",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "schema_name",
+            "source",
+            "created",
+            "updated",
+            "unchanged",
+            "total",
+            "audit_event_id"
+          ],
+          "title": "RegistryImportResult",
+          "type": "object"
+        },
+        "RegistrySeed": {
+          "additionalProperties": false,
+          "properties": {
+            "cameras": {
+              "items": {
+                "$ref": "#/components/schemas/CameraSeed"
+              },
+              "title": "Cameras",
+              "type": "array"
+            },
+            "generated_at": {
+              "format": "date-time",
+              "title": "Generated At",
+              "type": "string"
+            },
+            "schema": {
+              "const": "hcam.camera_registry.seed.v1",
+              "title": "Schema",
+              "type": "string"
+            },
+            "source": {
+              "$ref": "#/components/schemas/SeedSource"
+            },
+            "summary": {
+              "additionalProperties": true,
+              "title": "Summary",
+              "type": "object"
+            }
+          },
+          "required": [
+            "schema",
+            "generated_at",
+            "source",
+            "cameras"
+          ],
+          "title": "RegistrySeed",
+          "type": "object"
+        },
+        "SeedSource": {
+          "additionalProperties": true,
+          "properties": {
+            "adapter": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-z][a-z0-9-]*$",
+              "title": "Adapter",
+              "type": "string"
+            },
+            "base_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Base Url"
+            },
+            "safe_use": {
+              "minLength": 1,
+              "title": "Safe Use",
+              "type": "string"
+            },
+            "snapshot_created_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Snapshot Created At"
+            },
+            "snapshot_safe_use": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Snapshot Safe Use"
+            }
+          },
+          "required": [
+            "adapter",
+            "safe_use"
+          ],
+          "title": "SeedSource",
+          "type": "object"
+        },
+        "StateResponse": {
+          "properties": {
+            "connectivity": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Connectivity"
+            },
+            "health": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Health"
+            },
+            "maintenance": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Maintenance"
+            },
+            "metadata": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Metadata"
+            },
+            "operational": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Operational"
+            },
+            "storage": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Storage"
+            }
+          },
+          "required": [
+            "metadata",
+            "operational",
+            "connectivity",
+            "health",
+            "storage",
+            "maintenance"
+          ],
+          "title": "StateResponse",
+          "type": "object"
+        },
+        "StreamEndpointCreate": {
+          "additionalProperties": false,
+          "properties": {
+            "adapter_kind": {
+              "enum": [
+                "rtsp",
+                "hls",
+                "http",
+                "onvif",
+                "synthetic",
+                "legacy"
+              ],
+              "title": "Adapter Kind",
+              "type": "string"
+            },
+            "capability_refresh_enabled": {
+              "default": false,
+              "title": "Capability Refresh Enabled",
+              "type": "boolean"
+            },
+            "enabled": {
+              "default": true,
+              "title": "Enabled",
+              "type": "boolean"
+            },
+            "is_primary": {
+              "default": false,
+              "title": "Is Primary",
+              "type": "boolean"
+            },
+            "locator": {
+              "maxLength": 4096,
+              "minLength": 1,
+              "title": "Locator",
+              "type": "string"
+            },
+            "management_locator": {
+              "anyOf": [
+                {
+                  "maxLength": 4096,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Management Locator"
+            },
+            "name": {
+              "maxLength": 120,
+              "minLength": 1,
+              "title": "Name",
+              "type": "string"
+            },
+            "onvif_auth_mode": {
+              "default": "none",
+              "enum": [
+                "none",
+                "wsse_password_digest",
+                "http_digest",
+                "wsse_and_http_digest"
+              ],
+              "title": "Onvif Auth Mode",
+              "type": "string"
+            },
+            "onvif_control_enabled": {
+              "default": false,
+              "title": "Onvif Control Enabled",
+              "type": "boolean"
+            },
+            "onvif_max_move_seconds": {
+              "default": 2.0,
+              "maximum": 10.0,
+              "minimum": 0.1,
+              "title": "Onvif Max Move Seconds",
+              "type": "number"
+            },
+            "onvif_max_velocity": {
+              "default": 0.5,
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "title": "Onvif Max Velocity",
+              "type": "number"
+            },
+            "protocol": {
+              "enum": [
+                "rtsp",
+                "rtsps",
+                "hls",
+                "http",
+                "https"
+              ],
+              "title": "Protocol",
+              "type": "string"
+            },
+            "secret_ref": {
+              "anyOf": [
+                {
+                  "maxLength": 255,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Secret Ref"
+            },
+            "transport": {
+              "default": "tcp",
+              "enum": [
+                "tcp",
+                "udp",
+                "auto"
+              ],
+              "title": "Transport",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "adapter_kind",
+            "protocol",
+            "locator"
+          ],
+          "title": "StreamEndpointCreate",
+          "type": "object"
+        },
+        "StreamEndpointListResponse": {
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/StreamEndpointResponse"
+              },
+              "title": "Items",
+              "type": "array"
+            },
+            "limit": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "offset": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "total": {
+              "title": "Total",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "items",
+            "total",
+            "limit",
+            "offset"
+          ],
+          "title": "StreamEndpointListResponse",
+          "type": "object"
+        },
+        "StreamEndpointPatch": {
+          "additionalProperties": false,
+          "properties": {
+            "capability_refresh_enabled": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Capability Refresh Enabled"
+            },
+            "enabled": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Enabled"
+            },
+            "is_primary": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Is Primary"
+            },
+            "locator": {
+              "anyOf": [
+                {
+                  "maxLength": 4096,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Locator"
+            },
+            "management_locator": {
+              "anyOf": [
+                {
+                  "maxLength": 4096,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Management Locator"
+            },
+            "name": {
+              "anyOf": [
+                {
+                  "maxLength": 120,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Name"
+            },
+            "onvif_auth_mode": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "none",
+                    "wsse_password_digest",
+                    "http_digest",
+                    "wsse_and_http_digest"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Onvif Auth Mode"
+            },
+            "onvif_control_enabled": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Onvif Control Enabled"
+            },
+            "onvif_max_move_seconds": {
+              "anyOf": [
+                {
+                  "maximum": 10.0,
+                  "minimum": 0.1,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Onvif Max Move Seconds"
+            },
+            "onvif_max_velocity": {
+              "anyOf": [
+                {
+                  "exclusiveMinimum": 0.0,
+                  "maximum": 1.0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Onvif Max Velocity"
+            },
+            "secret_ref": {
+              "anyOf": [
+                {
+                  "maxLength": 255,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Secret Ref"
+            },
+            "transport": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "tcp",
+                    "udp",
+                    "auto"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Transport"
+            }
+          },
+          "title": "StreamEndpointPatch",
+          "type": "object"
+        },
+        "StreamEndpointResponse": {
+          "properties": {
+            "adapter_kind": {
+              "enum": [
+                "rtsp",
+                "hls",
+                "http",
+                "onvif",
+                "synthetic",
+                "legacy"
+              ],
+              "title": "Adapter Kind",
+              "type": "string"
+            },
+            "camera_id": {
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "capability_due_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Capability Due At"
+            },
+            "capability_refresh_enabled": {
+              "title": "Capability Refresh Enabled",
+              "type": "boolean"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "enabled": {
+              "title": "Enabled",
+              "type": "boolean"
+            },
+            "health": {
+              "$ref": "#/components/schemas/StreamHealthResponse"
+            },
+            "is_primary": {
+              "title": "Is Primary",
+              "type": "boolean"
+            },
+            "locator": {
+              "title": "Locator",
+              "type": "string"
+            },
+            "management_locator": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Management Locator"
+            },
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "onvif_auth_mode": {
+              "enum": [
+                "none",
+                "wsse_password_digest",
+                "http_digest",
+                "wsse_and_http_digest"
+              ],
+              "title": "Onvif Auth Mode",
+              "type": "string"
+            },
+            "onvif_control_enabled": {
+              "title": "Onvif Control Enabled",
+              "type": "boolean"
+            },
+            "onvif_max_move_seconds": {
+              "title": "Onvif Max Move Seconds",
+              "type": "number"
+            },
+            "onvif_max_velocity": {
+              "title": "Onvif Max Velocity",
+              "type": "number"
+            },
+            "protocol": {
+              "enum": [
+                "rtsp",
+                "rtsps",
+                "hls",
+                "http",
+                "https"
+              ],
+              "title": "Protocol",
+              "type": "string"
+            },
+            "secret_configured": {
+              "title": "Secret Configured",
+              "type": "boolean"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "transport": {
+              "enum": [
+                "tcp",
+                "udp",
+                "auto"
+              ],
+              "title": "Transport",
+              "type": "string"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "version": {
+              "title": "Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "stream_id",
+            "camera_id",
+            "version",
+            "name",
+            "adapter_kind",
+            "protocol",
+            "locator",
+            "secret_configured",
+            "management_locator",
+            "onvif_auth_mode",
+            "capability_refresh_enabled",
+            "capability_due_at",
+            "onvif_control_enabled",
+            "onvif_max_velocity",
+            "onvif_max_move_seconds",
+            "transport",
+            "is_primary",
+            "enabled",
+            "health",
+            "created_at",
+            "updated_at"
+          ],
+          "title": "StreamEndpointResponse",
+          "type": "object"
+        },
+        "StreamHealthResponse": {
+          "properties": {
+            "codec": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Codec"
+            },
+            "consecutive_failures": {
+              "title": "Consecutive Failures",
+              "type": "integer"
+            },
+            "consecutive_successes": {
+              "title": "Consecutive Successes",
+              "type": "integer"
+            },
+            "container": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Container"
+            },
+            "frame_rate": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Frame Rate"
+            },
+            "height": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Height"
+            },
+            "last_failure_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Last Failure At"
+            },
+            "last_success_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Last Success At"
+            },
+            "observed_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Observed At"
+            },
+            "probe_latency_ms": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Probe Latency Ms"
+            },
+            "reason_code": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Reason Code"
+            },
+            "state": {
+              "enum": [
+                "unknown",
+                "healthy",
+                "degraded",
+                "offline",
+                "unauthorized",
+                "misconfigured",
+                "unsupported"
+              ],
+              "title": "State",
+              "type": "string"
+            },
+            "width": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Width"
+            }
+          },
+          "required": [
+            "state",
+            "reason_code",
+            "observed_at",
+            "consecutive_successes",
+            "consecutive_failures",
+            "probe_latency_ms",
+            "codec",
+            "container",
+            "width",
+            "height",
+            "frame_rate",
+            "last_success_at",
+            "last_failure_at"
+          ],
+          "title": "StreamHealthResponse",
+          "type": "object"
+        },
+        "StreamPatch": {
+          "additionalProperties": false,
+          "properties": {
+            "codec": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Codec"
+            },
+            "container": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Container"
+            },
+            "delivery": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Delivery"
+            },
+            "duration_seconds": {
+              "anyOf": [
+                {
+                  "minimum": 0.0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Duration Seconds"
+            },
+            "hls_path": {
+              "anyOf": [
+                {
+                  "maxLength": 4096,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hls Path"
+            },
+            "hls_url": {
+              "anyOf": [
+                {
+                  "maxLength": 4096,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hls Url"
+            },
+            "last_checked_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Last Checked At"
+            },
+            "reachability": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Reachability"
+            },
+            "selected_url": {
+              "anyOf": [
+                {
+                  "maxLength": 4096,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Selected Url"
+            },
+            "stream_path": {
+              "anyOf": [
+                {
+                  "maxLength": 4096,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Stream Path"
+            },
+            "stream_url": {
+              "anyOf": [
+                {
+                  "maxLength": 4096,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Stream Url"
+            }
+          },
+          "title": "StreamPatch",
+          "type": "object"
+        },
+        "StreamProbeListResponse": {
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/StreamProbeResponse"
+              },
+              "title": "Items",
+              "type": "array"
+            },
+            "limit": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "offset": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "total": {
+              "title": "Total",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "items",
+            "total",
+            "limit",
+            "offset"
+          ],
+          "title": "StreamProbeListResponse",
+          "type": "object"
+        },
+        "StreamProbeResponse": {
+          "properties": {
+            "finished_at": {
+              "format": "date-time",
+              "title": "Finished At",
+              "type": "string"
+            },
+            "latency_ms": {
+              "title": "Latency Ms",
+              "type": "number"
+            },
+            "media": {
+              "additionalProperties": true,
+              "title": "Media",
+              "type": "object"
+            },
+            "outcome": {
+              "enum": [
+                "success",
+                "failure"
+              ],
+              "title": "Outcome",
+              "type": "string"
+            },
+            "probe_id": {
+              "title": "Probe Id",
+              "type": "string"
+            },
+            "reason_code": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Reason Code"
+            },
+            "started_at": {
+              "format": "date-time",
+              "title": "Started At",
+              "type": "string"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "worker_id": {
+              "title": "Worker Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "probe_id",
+            "stream_id",
+            "worker_id",
+            "started_at",
+            "finished_at",
+            "outcome",
+            "reason_code",
+            "latency_ms",
+            "media"
+          ],
+          "title": "StreamProbeResponse",
+          "type": "object"
+        },
+        "StreamResponse": {
+          "properties": {
+            "codec": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Codec"
+            },
+            "container": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Container"
+            },
+            "delivery": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Delivery"
+            },
+            "duration_seconds": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Duration Seconds"
+            },
+            "hls_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hls Path"
+            },
+            "last_checked_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Last Checked At"
+            },
+            "reachability": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Reachability"
+            },
+            "selected_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Selected Url"
+            },
+            "stream_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Stream Path"
+            }
+          },
+          "required": [
+            "stream_path",
+            "hls_path",
+            "selected_url",
+            "delivery",
+            "codec",
+            "container",
+            "duration_seconds",
+            "reachability",
+            "last_checked_at"
+          ],
+          "title": "StreamResponse",
+          "type": "object"
+        },
+        "StreamSeed": {
+          "additionalProperties": false,
+          "properties": {
+            "codec": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Codec"
+            },
+            "container": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Container"
+            },
+            "delivery": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Delivery"
+            },
+            "duration_seconds": {
+              "anyOf": [
+                {
+                  "minimum": 0.0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Duration Seconds"
+            },
+            "hls_path": {
+              "anyOf": [
+                {
+                  "maxLength": 4096,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hls Path"
+            },
+            "hls_url": {
+              "anyOf": [
+                {
+                  "maxLength": 4096,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Hls Url"
+            },
+            "last_checked_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Last Checked At"
+            },
+            "reachability": {
+              "anyOf": [
+                {
+                  "maxLength": 80,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Reachability"
+            },
+            "selected_url": {
+              "anyOf": [
+                {
+                  "maxLength": 4096,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Selected Url"
+            },
+            "stream_path": {
+              "anyOf": [
+                {
+                  "maxLength": 4096,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Stream Path"
+            },
+            "stream_url": {
+              "anyOf": [
+                {
+                  "maxLength": 4096,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Stream Url"
+            }
+          },
+          "title": "StreamSeed",
+          "type": "object"
+        },
+        "ValidationError": {
+          "properties": {
+            "ctx": {
+              "title": "Context",
+              "type": "object"
+            },
+            "input": {
+              "title": "Input"
+            },
+            "loc": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "title": "Location",
+              "type": "array"
+            },
+            "msg": {
+              "title": "Message",
+              "type": "string"
+            },
+            "type": {
+              "title": "Error Type",
+              "type": "string"
+            }
+          },
+          "required": [
+            "loc",
+            "msg",
+            "type"
+          ],
+          "title": "ValidationError",
+          "type": "object"
+        },
+        "VersionedArtifact": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Id",
+              "type": "string"
+            },
+            "version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "title": "VersionedArtifact",
+          "type": "object"
+        },
+        "VersionedConfiguration": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Id",
+              "type": "string"
+            },
+            "version": {
+              "maximum": 2147483647.0,
+              "minimum": 1.0,
+              "title": "Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "title": "VersionedConfiguration",
+          "type": "object"
+        }
+      }
+    },
+    "info": {
+      "description": "H-CAM camera registry and stream management foundation.",
+      "title": "H-CAM Core",
+      "version": "0.2.0"
+    },
+    "openapi": "3.1.0",
+    "paths": {
+      "/analytics-assignments": {
+        "get": {
+          "operationId": "list_analytics_assignments_analytics_assignments_get",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "stream_id",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 64,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Stream Id"
+              }
+            },
+            {
+              "in": "query",
+              "name": "camera_id",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 160,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Camera Id"
+              }
+            },
+            {
+              "in": "query",
+              "name": "capability",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 128,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Capability"
+              }
+            },
+            {
+              "in": "query",
+              "name": "desired_state",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 16,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Desired State"
+              }
+            },
+            {
+              "in": "query",
+              "name": "lifecycle_state",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 16,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Lifecycle State"
+              }
+            },
+            {
+              "in": "query",
+              "name": "limit",
+              "required": false,
+              "schema": {
+                "default": 100,
+                "maximum": 500,
+                "minimum": 1,
+                "title": "Limit",
+                "type": "integer"
+              }
+            },
+            {
+              "in": "query",
+              "name": "offset",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "minimum": 0,
+                "title": "Offset",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AnalyticsAssignmentListResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "List Analytics Assignments",
+          "tags": [
+            "analytics-control-plane"
+          ]
+        }
+      },
+      "/analytics-assignments/{assignment_id}": {
+        "get": {
+          "operationId": "get_analytics_assignment_analytics_assignments__assignment_id__get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "assignment_id",
+              "required": true,
+              "schema": {
+                "title": "Assignment Id",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AnalyticsAssignmentResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Get Analytics Assignment",
+          "tags": [
+            "analytics-control-plane"
+          ]
+        },
+        "patch": {
+          "operationId": "update_analytics_assignment_analytics_assignments__assignment_id__patch",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "assignment_id",
+              "required": true,
+              "schema": {
+                "title": "Assignment Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "If-Match",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "If-Match"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsAssignmentPatch"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AnalyticsAssignmentResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Update Analytics Assignment",
+          "tags": [
+            "analytics-control-plane"
+          ]
+        }
+      },
+      "/analytics-assignments/{assignment_id}/revisions": {
+        "get": {
+          "operationId": "list_analytics_assignment_revisions_analytics_assignments__assignment_id__revisions_get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "assignment_id",
+              "required": true,
+              "schema": {
+                "title": "Assignment Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "limit",
+              "required": false,
+              "schema": {
+                "default": 100,
+                "maximum": 500,
+                "minimum": 1,
+                "title": "Limit",
+                "type": "integer"
+              }
+            },
+            {
+              "in": "query",
+              "name": "offset",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "minimum": 0,
+                "title": "Offset",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AnalyticsAssignmentRevisionListResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "List Analytics Assignment Revisions",
+          "tags": [
+            "analytics-control-plane"
+          ]
+        }
+      },
+      "/camera-imports": {
+        "post": {
+          "operationId": "import_camera_registry_camera_imports_post",
+          "parameters": [
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegistrySeed"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RegistryImportResult"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Import Camera Registry",
+          "tags": [
+            "camera-registry"
+          ]
+        }
+      },
+      "/cameras": {
+        "get": {
+          "operationId": "list_cameras_cameras_get",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "source",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 64,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Source"
+              }
+            },
+            {
+              "in": "query",
+              "name": "department",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 120,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Department"
+              }
+            },
+            {
+              "in": "query",
+              "name": "camera_type",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 80,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Camera Type"
+              }
+            },
+            {
+              "in": "query",
+              "name": "health_status",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 80,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Health Status"
+              }
+            },
+            {
+              "in": "query",
+              "name": "status",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 80,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Status"
+              }
+            },
+            {
+              "in": "query",
+              "name": "limit",
+              "required": false,
+              "schema": {
+                "default": 100,
+                "maximum": 500,
+                "minimum": 1,
+                "title": "Limit",
+                "type": "integer"
+              }
+            },
+            {
+              "in": "query",
+              "name": "offset",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "minimum": 0,
+                "title": "Offset",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CameraListResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "List Cameras",
+          "tags": [
+            "camera-registry"
+          ]
+        },
+        "post": {
+          "operationId": "create_camera_cameras_post",
+          "parameters": [
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CameraCreate"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CameraResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Create Camera",
+          "tags": [
+            "camera-registry"
+          ]
+        }
+      },
+      "/cameras/{camera_id}": {
+        "get": {
+          "operationId": "get_camera_cameras__camera_id__get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "camera_id",
+              "required": true,
+              "schema": {
+                "title": "Camera Id",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CameraResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Get Camera",
+          "tags": [
+            "camera-registry"
+          ]
+        },
+        "patch": {
+          "operationId": "update_camera_cameras__camera_id__patch",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "camera_id",
+              "required": true,
+              "schema": {
+                "title": "Camera Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "If-Match",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "If-Match"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CameraPatch"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CameraResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Update Camera",
+          "tags": [
+            "camera-registry"
+          ]
+        }
+      },
+      "/cameras/{camera_id}/streams": {
+        "post": {
+          "operationId": "create_stream_cameras__camera_id__streams_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "camera_id",
+              "required": true,
+              "schema": {
+                "title": "Camera Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamEndpointCreate"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StreamEndpointResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Create Stream",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      },
+      "/capability-refreshes/{refresh_id}": {
+        "get": {
+          "operationId": "get_capability_refresh_capability_refreshes__refresh_id__get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "refresh_id",
+              "required": true,
+              "schema": {
+                "title": "Refresh Id",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CapabilityRefreshResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Get Capability Refresh",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      },
+      "/health/live": {
+        "get": {
+          "operationId": "liveness_health_live_get",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HealthResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "Liveness",
+          "tags": [
+            "health"
+          ]
+        }
+      },
+      "/health/ready": {
+        "get": {
+          "operationId": "readiness_health_ready_get",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HealthResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "Readiness",
+          "tags": [
+            "health"
+          ]
+        }
+      },
+      "/onvif/discovery-runs": {
+        "post": {
+          "operationId": "run_onvif_discovery_onvif_discovery_runs_post",
+          "parameters": [
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OnvifDiscoveryResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Run Onvif Discovery",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      },
+      "/streams": {
+        "get": {
+          "operationId": "list_streams_streams_get",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "camera_id",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 160,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Camera Id"
+              }
+            },
+            {
+              "in": "query",
+              "name": "protocol",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 16,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Protocol"
+              }
+            },
+            {
+              "in": "query",
+              "name": "state",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 32,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "State"
+              }
+            },
+            {
+              "in": "query",
+              "name": "enabled",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Enabled"
+              }
+            },
+            {
+              "in": "query",
+              "name": "limit",
+              "required": false,
+              "schema": {
+                "default": 100,
+                "maximum": 500,
+                "minimum": 1,
+                "title": "Limit",
+                "type": "integer"
+              }
+            },
+            {
+              "in": "query",
+              "name": "offset",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "minimum": 0,
+                "title": "Offset",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StreamEndpointListResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "List Streams",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      },
+      "/streams/{stream_id}": {
+        "get": {
+          "operationId": "get_stream_streams__stream_id__get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "stream_id",
+              "required": true,
+              "schema": {
+                "title": "Stream Id",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StreamEndpointResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Get Stream",
+          "tags": [
+            "stream-management"
+          ]
+        },
+        "patch": {
+          "operationId": "update_stream_streams__stream_id__patch",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "stream_id",
+              "required": true,
+              "schema": {
+                "title": "Stream Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "If-Match",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "If-Match"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamEndpointPatch"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StreamEndpointResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Update Stream",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      },
+      "/streams/{stream_id}/analytics-assignments": {
+        "post": {
+          "operationId": "create_analytics_assignment_streams__stream_id__analytics_assignments_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "stream_id",
+              "required": true,
+              "schema": {
+                "title": "Stream Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsAssignmentCreate"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AnalyticsAssignmentResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Create Analytics Assignment",
+          "tags": [
+            "analytics-control-plane"
+          ]
+        }
+      },
+      "/streams/{stream_id}/capabilities": {
+        "get": {
+          "operationId": "get_latest_capabilities_streams__stream_id__capabilities_get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "stream_id",
+              "required": true,
+              "schema": {
+                "title": "Stream Id",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CapabilitySnapshotResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Get Latest Capabilities",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      },
+      "/streams/{stream_id}/capabilities/discover": {
+        "post": {
+          "operationId": "discover_camera_capabilities_streams__stream_id__capabilities_discover_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "stream_id",
+              "required": true,
+              "schema": {
+                "title": "Stream Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CameraCapabilityDiscoveryResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Discover Camera Capabilities",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      },
+      "/streams/{stream_id}/capability-refreshes": {
+        "post": {
+          "operationId": "queue_capability_refresh_streams__stream_id__capability_refreshes_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "stream_id",
+              "required": true,
+              "schema": {
+                "title": "Stream Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "202": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CapabilityRefreshResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Queue Capability Refresh",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      },
+      "/streams/{stream_id}/capability-snapshots": {
+        "get": {
+          "operationId": "list_capability_snapshots_streams__stream_id__capability_snapshots_get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "stream_id",
+              "required": true,
+              "schema": {
+                "title": "Stream Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "limit",
+              "required": false,
+              "schema": {
+                "default": 50,
+                "maximum": 100,
+                "minimum": 1,
+                "title": "Limit",
+                "type": "integer"
+              }
+            },
+            {
+              "in": "query",
+              "name": "offset",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "minimum": 0,
+                "title": "Offset",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CapabilitySnapshotListResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "List Capability Snapshots",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      },
+      "/streams/{stream_id}/health": {
+        "get": {
+          "operationId": "get_stream_health_streams__stream_id__health_get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "stream_id",
+              "required": true,
+              "schema": {
+                "title": "Stream Id",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StreamHealthResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Get Stream Health",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      },
+      "/streams/{stream_id}/onvif/event-pulls": {
+        "post": {
+          "operationId": "pull_onvif_events_streams__stream_id__onvif_event_pulls_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "stream_id",
+              "required": true,
+              "schema": {
+                "title": "Stream Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OnvifEventPullRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OnvifEventPullResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Pull Onvif Events",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      },
+      "/streams/{stream_id}/onvif/imaging-inspections": {
+        "post": {
+          "operationId": "inspect_onvif_imaging_streams__stream_id__onvif_imaging_inspections_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "stream_id",
+              "required": true,
+              "schema": {
+                "title": "Stream Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OnvifImagingInspectionRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OnvifImagingInspectionResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Inspect Onvif Imaging",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      },
+      "/streams/{stream_id}/onvif/ptz-commands": {
+        "post": {
+          "operationId": "execute_onvif_ptz_command_streams__stream_id__onvif_ptz_commands_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "stream_id",
+              "required": true,
+              "schema": {
+                "title": "Stream Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OnvifPtzCommandRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OnvifPtzCommandResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Execute Onvif Ptz Command",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      },
+      "/streams/{stream_id}/playback-sessions": {
+        "post": {
+          "operationId": "create_playback_session_streams__stream_id__playback_sessions_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "stream_id",
+              "required": true,
+              "schema": {
+                "title": "Stream Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/PlaybackSessionResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Create Playback Session",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      },
+      "/streams/{stream_id}/probe": {
+        "post": {
+          "operationId": "queue_stream_probe_streams__stream_id__probe_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "stream_id",
+              "required": true,
+              "schema": {
+                "title": "Stream Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "202": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProbeQueuedResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Queue Stream Probe",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      },
+      "/streams/{stream_id}/probes": {
+        "get": {
+          "operationId": "list_stream_probes_streams__stream_id__probes_get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "stream_id",
+              "required": true,
+              "schema": {
+                "title": "Stream Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "limit",
+              "required": false,
+              "schema": {
+                "default": 100,
+                "maximum": 500,
+                "minimum": 1,
+                "title": "Limit",
+                "type": "integer"
+              }
+            },
+            {
+              "in": "query",
+              "name": "offset",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "minimum": 0,
+                "title": "Offset",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/StreamProbeListResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "List Stream Probes",
+          "tags": [
+            "stream-management"
+          ]
+        }
+      }
+    }
+  }
+}

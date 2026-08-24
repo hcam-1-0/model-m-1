@@ -5,6 +5,7 @@ from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
+from hcam.analytics import models as _analytics_models  # noqa: F401
 from hcam.audit import models as _audit_models  # noqa: F401
 from hcam.camera_registry import models as _camera_models  # noqa: F401
 from hcam.database import Base, ensure_sqlite_parent

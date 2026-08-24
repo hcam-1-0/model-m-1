@@ -11,6 +11,7 @@ import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import delete, func, select
 
+from hcam.analytics.models import AnalyticsAssignment, AnalyticsAssignmentRevision
 from hcam.audit.models import AuditEvent
 from hcam.camera_registry.importer import RegistryImporter
 from hcam.camera_registry.models import Camera
@@ -27,6 +28,7 @@ from hcam.streams.models import (
     StreamCapabilityRefresh,
     StreamCapabilitySnapshot,
     StreamEndpoint,
+    StreamEventOutbox,
 )
 
 
@@ -38,6 +40,131 @@ pytestmark = [
         reason="HCAM_POSTGRES_TEST_URL is required for PostgreSQL integration",
     ),
 ]
+
+
+def test_postgres_analytics_assignment_control_plane() -> None:
+    assert POSTGRES_TEST_URL is not None
+    database = Database(POSTGRES_TEST_URL)
+    now = datetime.now(UTC)
+    camera_id = "synthetic:postgres-analytics"
+    stream_id = "str_0000000000000000000000000000a301"
+    digest_a = "sha256:" + "a" * 64
+    digest_b = "sha256:" + "b" * 64
+    digest_c = "sha256:" + "c" * 64
+    digest_d = "sha256:" + "d" * 64
+    try:
+        database.check_ready()
+        with database.session_factory.begin() as session:
+            existing = session.get(Camera, camera_id)
+            if existing is not None:
+                session.delete(existing)
+                session.flush()
+            session.add(
+                Camera(
+                    camera_id=camera_id,
+                    source_id="postgres-analytics-test",
+                    external_id="camera-analytics-01",
+                    display_name="PostgreSQL Analytics Control Plane Test",
+                    department="Engineering Lab",
+                    source_schema="hcam.synthetic.test.v1",
+                    provenance={"synthetic": True, "media_access": False},
+                    imported_at=now,
+                    created_at=now,
+                    updated_at=now,
+                )
+            )
+            session.flush()
+            session.add(
+                StreamEndpoint(
+                    stream_id=stream_id,
+                    camera_id=camera_id,
+                    name="analytics-control-plane",
+                    adapter_kind="synthetic",
+                    protocol="rtsp",
+                    locator="rtsp://mediamtx:8554/hcam/postgres-analytics",
+                    transport="tcp",
+                    is_primary=True,
+                    enabled=True,
+                    created_at=now,
+                    updated_at=now,
+                )
+            )
+
+        application = create_app(
+            Settings(
+                database_url=POSTGRES_TEST_URL,
+                dev_auth_enabled=True,
+                environment="test",
+                access_log_enabled=False,
+            )
+        )
+        headers = {
+            "X-HCAM-Actor": "postgres-analytics-editor",
+            "X-HCAM-Roles": "camera.editor",
+            "X-HCAM-Departments": "Engineering Lab",
+            "X-HCAM-Reason": "PostgreSQL synthetic analytics control validation",
+        }
+        payload = {
+            "capability": "object_detection",
+            "desired_state": "paused",
+            "pipeline": {"id": "hcam-object-pipeline", "version": digest_a},
+            "models": [{"id": "yolo11n-detector", "version": digest_b}],
+            "taxonomy_version": "hcam.object.v1",
+            "policy_version": digest_c,
+            "configuration_digest": digest_d,
+            "minimum_confidence": 0.65,
+            "sampling_fps": 5.0,
+            "maximum_queue_age_ms": 2_000,
+            "geometry_refs": [],
+            "retention_class": "derived.analytics.standard",
+            "approval_record_id": "DR-P3.0-001",
+        }
+        with TestClient(application) as client:
+            created = client.post(
+                f"/streams/{stream_id}/analytics-assignments",
+                json=payload,
+                headers=headers,
+            )
+            assignment_id = created.json()["assignment_id"]
+            updated = client.patch(
+                f"/analytics-assignments/{assignment_id}",
+                json={
+                    "minimum_confidence": 0.7,
+                    "configuration_digest": digest_a,
+                },
+                headers={**headers, "If-Match": created.headers["ETag"]},
+            )
+
+        assert created.status_code == 201
+        assert created.json()["activation_eligible"] is False
+        assert updated.status_code == 200
+        assert updated.headers["ETag"] == '"2"'
+        assert updated.json()["desired_state"] == "paused"
+        assert updated.json()["lifecycle_state"] == "blocked"
+
+        with database.session_factory() as session:
+            assignment = session.get(AnalyticsAssignment, assignment_id)
+            revision_count = session.scalar(
+                select(func.count())
+                .select_from(AnalyticsAssignmentRevision)
+                .where(AnalyticsAssignmentRevision.assignment_id == assignment_id)
+            )
+            outbox_count = session.scalar(
+                select(func.count())
+                .select_from(StreamEventOutbox)
+                .where(
+                    StreamEventOutbox.stream_id == stream_id,
+                    StreamEventOutbox.event_type
+                    == "hcam.analytics.model.deployment.changed.v1",
+                )
+            )
+        assert assignment is not None
+        assert assignment.version_id == 2
+        assert assignment.lifecycle_state == "blocked"
+        assert revision_count == 2
+        assert outbox_count == 2
+    finally:
+        database.dispose()
 
 
 def test_postgres_migrations_registry_and_audit_contracts(seed_file: Path) -> None:

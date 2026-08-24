@@ -61,6 +61,12 @@ jobs:
       - name: Verify reviewed API and database contracts
         run: python tools/release_contracts.py check
 
+      - name: Verify reviewed Phase 3 analytics contracts
+        run: python tools/analytics_contracts.py check
+
+      - name: Verify generated-only Phase 3 P3.1 evidence
+        run: python tools/phase31_contracts.py check
+
       - name: Run backend and offline tests
         run: pytest --cov=hcam --cov-report=term-missing --cov-fail-under=90
 
@@ -77,6 +83,18 @@ jobs:
       - name: Verify Phase 2 evidence
         if: matrix.python-version == '3.12'
         run: python tools/phase2_readiness.py --run-validation
+
+      - name: Verify Phase 3 P3.0 evidence
+        if: matrix.python-version == '3.12'
+        run: python tools/phase3_readiness.py --run-validation
+
+      - name: Verify Phase 3 P3.1 planning authorization
+        if: matrix.python-version == '3.12'
+        run: python tools/phase31_readiness.py --strict
+
+      - name: Verify Phase 3 P3.1 implementation evidence
+        if: matrix.python-version == '3.12'
+        run: python tools/phase31_implementation_readiness.py
 
       - name: Preserve Phase 0 unittest check
         if: matrix.python-version == '3.12'

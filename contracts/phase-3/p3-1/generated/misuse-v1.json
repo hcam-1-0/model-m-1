@@ -1,0 +1,86 @@
+{
+  "contract_type": "hcam.analytics.generated-fixture-suite.v1",
+  "external_inputs": [],
+  "generated_only": true,
+  "records": [
+    {
+      "case_id": "misuse-01",
+      "contains_sensitive_value": false,
+      "expected_failure_code": "local-path-denied",
+      "payload_kind": "path",
+      "prohibited_field": "path"
+    },
+    {
+      "case_id": "misuse-02",
+      "contains_sensitive_value": false,
+      "expected_failure_code": "unapproved-source-url",
+      "payload_kind": "url",
+      "prohibited_field": "source-url"
+    },
+    {
+      "case_id": "misuse-03",
+      "contains_sensitive_value": false,
+      "expected_failure_code": "credential-field-denied",
+      "payload_kind": "credential",
+      "prohibited_field": "credential"
+    },
+    {
+      "case_id": "misuse-04",
+      "contains_sensitive_value": false,
+      "expected_failure_code": "media-field-denied",
+      "payload_kind": "media",
+      "prohibited_field": "image-bytes"
+    },
+    {
+      "case_id": "misuse-05",
+      "contains_sensitive_value": false,
+      "expected_failure_code": "media-field-denied",
+      "payload_kind": "media",
+      "prohibited_field": "video"
+    },
+    {
+      "case_id": "misuse-06",
+      "contains_sensitive_value": false,
+      "expected_failure_code": "biometric-field-denied",
+      "payload_kind": "biometric",
+      "prohibited_field": "face-template"
+    },
+    {
+      "case_id": "misuse-07",
+      "contains_sensitive_value": false,
+      "expected_failure_code": "owner-field-denied",
+      "payload_kind": "owner",
+      "prohibited_field": "owner-record"
+    },
+    {
+      "case_id": "misuse-08",
+      "contains_sensitive_value": false,
+      "expected_failure_code": "government-field-denied",
+      "payload_kind": "government",
+      "prohibited_field": "government-data"
+    },
+    {
+      "case_id": "misuse-09",
+      "contains_sensitive_value": false,
+      "expected_failure_code": "watchlist-field-denied",
+      "payload_kind": "watchlist",
+      "prohibited_field": "watchlist-match"
+    },
+    {
+      "case_id": "misuse-10",
+      "contains_sensitive_value": false,
+      "expected_failure_code": "payload-too-large",
+      "payload_kind": "oversized",
+      "prohibited_field": "oversized-payload"
+    },
+    {
+      "case_id": "misuse-11",
+      "contains_sensitive_value": false,
+      "expected_failure_code": "digest-mismatch",
+      "payload_kind": "invalid_digest",
+      "prohibited_field": "manifest-digest"
+    }
+  ],
+  "seed": 31001,
+  "suite": "misuse-v1"
+}

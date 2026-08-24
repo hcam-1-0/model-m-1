@@ -76,3 +76,16 @@ Production must use verified HTTPS, the smallest approved device address
 ranges, infrastructure egress controls, and an approved external implementation
 of `CameraSecretProvider`. `HCAM_CAMERA_SECRET_PROVIDER=file` and
 `HCAM_ONVIF_LAB_HTTP_ENABLED=true` are rejected in production.
+
+## Phase 3 Control-Plane Observability
+
+`deploy/observability/hcam-phase3-control-plane.json` contains a five-panel
+Grafana dashboard for aggregate assignment, blocked-state, revision, outbox, and
+recent-failure health. Prometheus-compatible rules are provided in
+`deploy/observability/hcam-phase3-control-plane-alerts.yml`.
+
+The metrics and queries use no assignment, camera, stream, actor, model, or
+locator labels. The invariant alert treats any assignment outside the P3.0
+`paused/blocked` state as critical. These files do not deploy an analytics
+worker, route notifications, or authorize activation; operators must provision
+an approved metrics backend and notification policy separately.

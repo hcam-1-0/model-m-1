@@ -1,0 +1,92 @@
+{
+  "approval": {
+    "decided_at": null,
+    "owner_id": "mayank-admin",
+    "reason": "Exact artifact remains research-only and unavailable",
+    "record_id": "pending-plate-d0",
+    "status": "pending"
+  },
+  "artifact_identity": {
+    "blocker": "derived-artifact-not-implemented",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "blockers": [
+    "derived-artifact-not-implemented",
+    "detector-family-not-promoted",
+    "training-data-not-approved",
+    "model-card-unresolved",
+    "sbom-unresolved"
+  ],
+  "candidate_id": "PLATE-D0",
+  "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+  "eligibility": "blocked",
+  "export_expectations": [
+    "not-implemented"
+  ],
+  "intended_role": "plate_region_detector",
+  "known_limits": [
+    "No plate-region detector artifact exists",
+    "Only generated or separately authorized plate-region data may be used"
+  ],
+  "licenses": [
+    {
+      "commercial_or_government_use": "allowed",
+      "component": "code",
+      "license_id": {
+        "blocker": null,
+        "digest": null,
+        "state": "resolved",
+        "value": "proposed-internal"
+      },
+      "notice_required": true,
+      "redistribution": "allowed"
+    },
+    {
+      "commercial_or_government_use": "unresolved",
+      "component": "weights",
+      "license_id": {
+        "blocker": "weights-license-unverified",
+        "digest": null,
+        "state": "unresolved",
+        "value": null
+      },
+      "notice_required": null,
+      "redistribution": "unresolved"
+    }
+  ],
+  "lineage": {
+    "blocker": "training-lineage-unverified",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "manifest_digest": "sha256:85fde521a6ee1bc7f90a3738e607e17b1bb00d7bedb9cccee07173e2e366a91e",
+  "model_card": {
+    "blocker": "model-card-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "recorded_at": "2026-08-24T12:45:00Z",
+  "runtime_expectations": [
+    "promoted-hcam-detector-family"
+  ],
+  "sbom": {
+    "blocker": "sbom-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "semantic_version": "1.0.0",
+  "source_reference": null,
+  "source_revision": {
+    "blocker": "internal-source-revision-not-created",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "source_tier": "S0",
+  "supported_taxonomy": []
+}

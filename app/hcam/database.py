@@ -12,7 +12,7 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 from sqlalchemy.types import TypeDecorator
 
 
-CURRENT_SCHEMA_REVISION = "0007_onvif_operations"
+CURRENT_SCHEMA_REVISION = "0008_analytics_assignments"
 REQUIRED_CAMERA_COLUMNS = frozenset(
     {
         "camera_id",
@@ -60,6 +60,23 @@ REQUIRED_STREAM_COLUMNS = frozenset(
         "onvif_control_enabled",
         "onvif_max_velocity",
         "onvif_max_move_seconds",
+    }
+)
+REQUIRED_ANALYTICS_ASSIGNMENT_COLUMNS = frozenset(
+    {
+        "assignment_id",
+        "version_id",
+        "department",
+        "stream_id",
+        "camera_id",
+        "capability",
+        "desired_state",
+        "lifecycle_state",
+        "reason_code",
+        "configuration_digest",
+        "approval_record_id",
+        "created_at",
+        "updated_at",
     }
 )
 
@@ -163,6 +180,14 @@ class Database:
                 if "stream_endpoints" in table_names
                 else set()
             )
+            analytics_assignment_columns = (
+                {
+                    column["name"]
+                    for column in inspector.get_columns("analytics_assignments")
+                }
+                if "analytics_assignments" in table_names
+                else set()
+            )
         required_tables = {
             "cameras",
             "audit_events",
@@ -175,16 +200,22 @@ class Database:
             "stream_capability_refreshes",
             "onvif_control_leases",
             "onvif_operation_runs",
+            "analytics_assignments",
+            "analytics_assignment_revisions",
         }
         missing_tables = required_tables - table_names
         missing_columns = REQUIRED_CAMERA_COLUMNS - camera_columns
         missing_audit_columns = REQUIRED_AUDIT_COLUMNS - audit_columns
         missing_stream_columns = REQUIRED_STREAM_COLUMNS - stream_columns
+        missing_analytics_assignment_columns = (
+            REQUIRED_ANALYTICS_ASSIGNMENT_COLUMNS - analytics_assignment_columns
+        )
         if (
             missing_tables
             or missing_columns
             or missing_audit_columns
             or missing_stream_columns
+            or missing_analytics_assignment_columns
         ):
             raise DatabaseNotReadyError("database migrations are not current")
         if self.allow_unversioned_schema:

@@ -1,0 +1,147 @@
+{
+  "assertions": {
+    "candidate_count": 11,
+    "candidate_eligible_count": 0,
+    "external_downloads": 0,
+    "generated_only": true,
+    "gpu_required": false,
+    "media_artifacts": 0,
+    "model_artifacts": 0,
+    "network_required": false,
+    "secrets_required": false,
+    "unresolved_candidate_blockers": 18
+  },
+  "baseline_version": "1.0.0",
+  "contract_format": "hcam.analytics.p3-1-evidence-index.v1",
+  "dirty_worktree": true,
+  "generated_at": "2026-08-24T13:00:00Z",
+  "index_digest": "sha256:a0749032a6adf581220c117df85dc08616066bd4ebf58ed70fd4be0b97fecd3b",
+  "known_limitations": [
+    "Generated evidence does not establish real-world model accuracy",
+    "No model artifact dataset font or media source was downloaded",
+    "Numeric gates remain proposal only",
+    "P3.2 remains blocked until an exact detector artifact and dataset are approved"
+  ],
+  "owner_acceptance": {
+    "required_record": "D-P3.1-ACCEPTANCE",
+    "status": "pending"
+  },
+  "p3_2_status": "blocked_pending_exact_artifact_and_dataset_approval",
+  "records": [
+    {
+      "artifact_name": "dataset-manifest-v1.json",
+      "contract_type": "hcam.analytics.dataset-manifest.v1",
+      "record_digest": "sha256:f40ecfe7d92935236936df48a7799d99dc9f0d83795fa8b27bec34e39ea40179",
+      "record_id": "p31-generated-evaluation-dataset-v1"
+    },
+    {
+      "artifact_name": "fixture-manifest-v1.json",
+      "contract_type": "hcam.analytics.fixture-manifest.v1",
+      "record_digest": "sha256:6b97a305a593d6443b83fb31bc30597670a472d562b98830c8a84a4621074e55",
+      "record_id": "p31-generated-fixtures-v1"
+    },
+    {
+      "artifact_name": "annotation-specification-v1.json",
+      "contract_type": "hcam.analytics.annotation-specification.v1",
+      "record_digest": "sha256:c7b9e79d77d7ec9101dad0262ff8dcdbf9f298c51186618d29037ebcbbbe800b",
+      "record_id": "p31-generated-annotation-specification-v1"
+    },
+    {
+      "artifact_name": "annotation-qa-report-v1.json",
+      "contract_type": "hcam.analytics.annotation-qa-report.v1",
+      "record_digest": "sha256:f69bcbf578f212d6a0bcbc8aa60cb23cf66521a299ac071ec8b281ba5811ae1e",
+      "record_id": "p31-generated-annotation-qa-v1"
+    },
+    {
+      "artifact_name": "split-validation-report-v1.json",
+      "contract_type": "hcam.analytics.split-validation-report.v1",
+      "record_digest": "sha256:5aaafc3b2785b83c7723635855338c21ee35be6ae63879847b0e8a3d0c55603f",
+      "record_id": "p31-generated-split-validation-v1"
+    },
+    {
+      "artifact_name": "metric-report-v1.json",
+      "contract_type": "hcam.analytics.metric-report.v1",
+      "record_digest": "sha256:4022bb7a3a64f29f690a3961eca94698e6bbf3218e1d2ab8cda4487bb7afb0d7",
+      "record_id": "p31-generated-golden-metrics-v1"
+    },
+    {
+      "artifact_name": "evaluation-run-v1.json",
+      "contract_type": "hcam.analytics.evaluation-run-manifest.v1",
+      "record_digest": "sha256:318b1472843f501f858a858082cc48c945d3ccb4b6a2dce0b11c37b9b7f363db",
+      "record_id": "p31-generated-baseline-v1"
+    },
+    {
+      "artifact_name": "source-research-dossier-v1.json",
+      "contract_type": "hcam.analytics.source-research-dossier.v1",
+      "record_digest": "sha256:5f689cc588ac09e0c48256e42fcb5c922ccaf85190d67cf3894f9440dd61a06c",
+      "record_id": "p31-model-source-research-v1"
+    },
+    {
+      "artifact_name": "candidate-det-a1.json",
+      "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+      "record_digest": "sha256:8b34812f7503424f7e8200f460c02eab9e116e5bb1ae910a110d9dc035c30992",
+      "record_id": "DET-A1"
+    },
+    {
+      "artifact_name": "candidate-det-b1.json",
+      "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+      "record_digest": "sha256:d660042b0f95d86ecf9119114a38703ca8f61c92a7b07ccc3dff8d1c060a4e87",
+      "record_id": "DET-B1"
+    },
+    {
+      "artifact_name": "candidate-det-e1.json",
+      "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+      "record_digest": "sha256:515cc1b643a93f78d2bd37e4c6c23b85b2014d83cd92f42c74c26036a3934483",
+      "record_id": "DET-E1"
+    },
+    {
+      "artifact_name": "candidate-det-r0.json",
+      "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+      "record_digest": "sha256:99cc7d70e34f2b5da37f86c763359b44ecf63c0524fb0a0098c5d25980cf4a19",
+      "record_id": "DET-R0"
+    },
+    {
+      "artifact_name": "candidate-ocr-d0.json",
+      "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+      "record_digest": "sha256:4da5e2855573873aa56a60f11626ff296486db816e9087b26c0cf22339b55af6",
+      "record_id": "OCR-D0"
+    },
+    {
+      "artifact_name": "candidate-ocr-g0.json",
+      "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+      "record_digest": "sha256:1ab5a6b7a11dfafed5f0b4ce8de43b3c1c1f43a9e1112925d417ba64a899ccd1",
+      "record_id": "OCR-G0"
+    },
+    {
+      "artifact_name": "candidate-ocr-g1.json",
+      "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+      "record_digest": "sha256:d1b70c219c1d52e83ea144ef7b3697b62da23bd6e1020f53efcdcc8a3bc1a27c",
+      "record_id": "OCR-G1"
+    },
+    {
+      "artifact_name": "candidate-ocr-l0.json",
+      "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+      "record_digest": "sha256:2fec3b2188306437b12a93db462e580db9cb4b6d4716e86676b693bac492343b",
+      "record_id": "OCR-L0"
+    },
+    {
+      "artifact_name": "candidate-ocr-l1.json",
+      "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+      "record_digest": "sha256:bcadc82091c15a6e16c9d4efdee849c99b888f3aa3d37f51de1348c16751257a",
+      "record_id": "OCR-L1"
+    },
+    {
+      "artifact_name": "candidate-plate-d0.json",
+      "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+      "record_digest": "sha256:85fde521a6ee1bc7f90a3738e607e17b1bb00d7bedb9cccee07173e2e366a91e",
+      "record_id": "PLATE-D0"
+    },
+    {
+      "artifact_name": "candidate-trk-r0.json",
+      "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+      "record_digest": "sha256:2af8b4b3bb4855b186f4bef4aba023e70c449e2fb738a987658cc5e0bebee505",
+      "record_id": "TRK-R0"
+    }
+  ],
+  "source_commit": "1a6d4179fe07914c3e192f4090f42b3dc2927352"
+}

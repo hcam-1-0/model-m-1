@@ -3,7 +3,7 @@ include README.md
 include Dockerfile
 include .dockerignore
 include uv.lock
-recursive-include .github *.md *.yaml *.yml
+recursive-include .github *.md *.yml
 recursive-include migrations *.py *.mako
 recursive-include contracts *.md *.json
 recursive-include docs *.md

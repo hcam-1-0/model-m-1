@@ -1,0 +1,117 @@
+{
+  "approval": {
+    "decided_at": "2026-08-24T12:00:00Z",
+    "owner_id": "mayank-admin",
+    "reason": "Record generated baseline evidence without accepting P3.1 or approving numeric promotion gates",
+    "record_id": "D-P3.1-001",
+    "status": "owner_recorded"
+  },
+  "batch_size": 1,
+  "candidate": null,
+  "command": {
+    "arguments": [
+      "tools/phase31_contracts.py",
+      "check"
+    ],
+    "executable": "python",
+    "gpu_access": "denied",
+    "network_access": "denied",
+    "secrets_required": false
+  },
+  "concurrency": 1,
+  "configuration_digest": "sha256:ba512fa7b43129dab602afe82d966dbc9b3fe5d9442b8db8969352314a77470f",
+  "container_profile_digest": null,
+  "contract_type": "hcam.analytics.evaluation-run-manifest.v1",
+  "dataset": {
+    "digest": "sha256:f40ecfe7d92935236936df48a7799d99dc9f0d83795fa8b27bec34e39ea40179",
+    "record_id": "p31-generated-evaluation-dataset-v1",
+    "version": "1.0.0"
+  },
+  "dependency_lock_digest": "sha256:aee188fe28a736bb642f7f8ea316489e4a697c2e3cd50576b9b69870e58e53a7",
+  "executed_at": "2026-08-24T13:00:00Z",
+  "failed_gates": [],
+  "fixture_suite": {
+    "digest": "sha256:6b97a305a593d6443b83fb31bc30597670a472d562b98830c8a84a4621074e55",
+    "record_id": "p31-generated-fixtures-v1",
+    "version": "1.0.0"
+  },
+  "hardware": {
+    "authorized_claims": [
+      "contract-correctness",
+      "generated-fixture-determinism",
+      "metric-golden-correctness",
+      "small-cpu-baseline"
+    ],
+    "container_engine": "Docker Engine 28.5.2",
+    "cpu": "Intel Core i5-8365U",
+    "gpu": "Intel UHD Graphics 620 no discrete accelerator",
+    "logical_processors": 8,
+    "memory_mib": 7373,
+    "os": "Microsoft Windows 10 Pro 10.0.19045 build 19045",
+    "profile_id": "LAB-LAPTOP-01",
+    "prohibited_claims": [
+      "production-throughput",
+      "gpu-parity",
+      "c10-c50-capacity",
+      "real-camera-performance",
+      "statewide-sizing"
+    ],
+    "python_version": "3.14.6"
+  },
+  "manifest_digest": "sha256:318b1472843f501f858a858082cc48c945d3ccb4b6a2dce0b11c37b9b7f363db",
+  "maximum_memory_mib": 2048,
+  "metric_suite_digest": "sha256:827944796ee2d2d48ee91efd5ce2da7725f4f026b296d670db3efff8d1ee8757",
+  "operator_id": "mayank-admin",
+  "pipeline_digest": "sha256:044e28f4af78fba6db12a83e04eca58d5fcb7cd8b440a4669cdfbaaee20e8f96",
+  "precision": "not_applicable",
+  "repetitions": 2,
+  "reproducibility_status": "pass",
+  "result_artifacts": [
+    {
+      "artifact_name": "annotation-qa-report-v1.json",
+      "digest": "sha256:f69bcbf578f212d6a0bcbc8aa60cb23cf66521a299ac071ec8b281ba5811ae1e",
+      "media_free": true
+    },
+    {
+      "artifact_name": "split-validation-report-v1.json",
+      "digest": "sha256:5aaafc3b2785b83c7723635855338c21ee35be6ae63879847b0e8a3d0c55603f",
+      "media_free": true
+    },
+    {
+      "artifact_name": "metric-report-v1.json",
+      "digest": "sha256:4022bb7a3a64f29f690a3961eca94698e6bbf3218e1d2ab8cda4487bb7afb0d7",
+      "media_free": true
+    },
+    {
+      "artifact_name": "fixture-manifest-v1.json",
+      "digest": "sha256:6b97a305a593d6443b83fb31bc30597670a472d562b98830c8a84a4621074e55",
+      "media_free": true
+    },
+    {
+      "artifact_name": "dataset-manifest-v1.json",
+      "digest": "sha256:f40ecfe7d92935236936df48a7799d99dc9f0d83795fa8b27bec34e39ea40179",
+      "media_free": true
+    },
+    {
+      "artifact_name": "source-research-dossier-v1.json",
+      "digest": "sha256:5f689cc588ac09e0c48256e42fcb5c922ccaf85190d67cf3894f9440dd61a06c",
+      "media_free": true
+    }
+  ],
+  "run_id": "p31-generated-baseline-v1",
+  "seed": 31001,
+  "semantic_version": "1.0.0",
+  "source": {
+    "commit": "1a6d4179fe07914c3e192f4090f42b3dc2927352",
+    "dirty_worktree": true
+  },
+  "taxonomy_version": "hcam.analytics.taxonomy.v1",
+  "timeout_seconds": 120,
+  "warmup_iterations": 0,
+  "warnings": [
+    "Generated-only baseline has no external-validity or model-performance claim",
+    "No candidate model data media decoder inference or GPU runtime was used",
+    "P3.2 remains blocked pending exact artifact and dataset owner approval",
+    "Baseline source worktree was dirty and must be rerun from the accepted commit"
+  ]
+}

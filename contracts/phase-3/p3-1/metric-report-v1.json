@@ -1,0 +1,173 @@
+{
+  "abstention_handling": "Count abstentions explicitly and exclude them from exact-match denominator",
+  "approval": {
+    "decided_at": "2026-08-24T12:00:00Z",
+    "owner_id": "mayank-admin",
+    "reason": "Record generated metric baseline without approving promotion gates",
+    "record_id": "D-P3.1-001",
+    "status": "owner_recorded"
+  },
+  "baseline_report": null,
+  "contract_type": "hcam.analytics.metric-report.v1",
+  "failed_gates": [],
+  "generated_at": "2026-08-24T12:40:00Z",
+  "hard_gates": [
+    {
+      "comparator": "gte",
+      "gate_id": "proposal-generated-detection-f1",
+      "metric_name": "detection.f1",
+      "observed": 0.6666666666666667,
+      "outcome": "proposal_only",
+      "owner_approved": false,
+      "threshold": 0.5
+    },
+    {
+      "comparator": "gte",
+      "gate_id": "proposal-generated-tracking-idf1",
+      "metric_name": "tracking.idf1",
+      "observed": 1.0,
+      "outcome": "proposal_only",
+      "owner_approved": false,
+      "threshold": 0.9
+    }
+  ],
+  "invalid_prediction_handling": "Reject malformed records and count them outside valid metric populations",
+  "metric_suite_id": "p31-generated-metrics",
+  "metric_suite_version": "1.0.0",
+  "metrics": [
+    {
+      "denominator": 8,
+      "domain": "detection",
+      "metric_name": "detection.precision",
+      "numerator": 7,
+      "outcome": "reported",
+      "population_id": "detection-generated",
+      "uncertainty": null,
+      "unit": "ratio",
+      "value": 0.875
+    },
+    {
+      "denominator": 13,
+      "domain": "detection",
+      "metric_name": "detection.recall",
+      "numerator": 7,
+      "outcome": "reported",
+      "population_id": "detection-generated",
+      "uncertainty": null,
+      "unit": "ratio",
+      "value": 0.5384615384615384
+    },
+    {
+      "denominator": null,
+      "domain": "detection",
+      "metric_name": "detection.map50",
+      "numerator": null,
+      "outcome": "reported",
+      "population_id": "detection-generated",
+      "uncertainty": null,
+      "unit": "ratio",
+      "value": 0.619047619047619
+    },
+    {
+      "denominator": null,
+      "domain": "tracking",
+      "metric_name": "tracking.idf1",
+      "numerator": null,
+      "outcome": "reported",
+      "population_id": "tracking-generated",
+      "uncertainty": null,
+      "unit": "ratio",
+      "value": 1.0
+    },
+    {
+      "denominator": null,
+      "domain": "tracking",
+      "metric_name": "tracking.identity_switches",
+      "numerator": null,
+      "outcome": "reported",
+      "population_id": "tracking-generated",
+      "uncertainty": null,
+      "unit": "count",
+      "value": 1.0
+    },
+    {
+      "denominator": 8,
+      "domain": "geometry",
+      "metric_name": "geometry.precision",
+      "numerator": 8,
+      "outcome": "reported",
+      "population_id": "geometry-generated",
+      "uncertainty": null,
+      "unit": "ratio",
+      "value": 1.0
+    },
+    {
+      "denominator": 8,
+      "domain": "geometry",
+      "metric_name": "geometry.recall",
+      "numerator": 8,
+      "outcome": "reported",
+      "population_id": "geometry-generated",
+      "uncertainty": null,
+      "unit": "ratio",
+      "value": 1.0
+    },
+    {
+      "denominator": 3,
+      "domain": "synthetic_anpr",
+      "metric_name": "synthetic_anpr.exact_match",
+      "numerator": 2,
+      "outcome": "reported",
+      "population_id": "synthetic-anpr-generated",
+      "uncertainty": null,
+      "unit": "ratio",
+      "value": 0.6666666666666666
+    },
+    {
+      "denominator": 38,
+      "domain": "synthetic_anpr",
+      "metric_name": "synthetic_anpr.character_error_rate",
+      "numerator": 11,
+      "outcome": "reported",
+      "population_id": "synthetic-anpr-generated",
+      "uncertainty": null,
+      "unit": "ratio",
+      "value": 0.2894736842105263
+    }
+  ],
+  "missing_prediction_handling": "Count unmatched truth records as false negatives",
+  "populations": [
+    {
+      "class_id": null,
+      "description": "All valid generated detection cases",
+      "population_id": "detection-generated",
+      "sample_count": 13,
+      "slice_id": null
+    },
+    {
+      "class_id": null,
+      "description": "All generated tracking associations",
+      "population_id": "tracking-generated",
+      "sample_count": 30,
+      "slice_id": null
+    },
+    {
+      "class_id": null,
+      "description": "All generated expected geometry events",
+      "population_id": "geometry-generated",
+      "sample_count": 8,
+      "slice_id": null
+    },
+    {
+      "class_id": null,
+      "description": "Valid generated plate strings only",
+      "population_id": "synthetic-anpr-generated",
+      "sample_count": 4,
+      "slice_id": null
+    }
+  ],
+  "regressions": [],
+  "report_digest": "sha256:4022bb7a3a64f29f690a3961eca94698e6bbf3218e1d2ab8cda4487bb7afb0d7",
+  "report_id": "p31-generated-golden-metrics-v1",
+  "semantic_version": "1.0.0"
+}

@@ -108,3 +108,39 @@ def test_phase2_dashboard_and_alerts_use_only_bounded_stream_metrics() -> None:
     assert "HcamStreamOutboxBacklog" in alerts
     assert "HcamCapabilityWorkerLeaseRecovery" in alerts
     assert "hcam_capability_refresh_lease_recoveries_recent_total" in alerts
+
+
+def test_phase3_control_plane_dashboard_and_alerts_are_identifier_free() -> None:
+    dashboard_path = (
+        ROOT / "deploy" / "observability" / "hcam-phase3-control-plane.json"
+    )
+    alerts_path = (
+        ROOT
+        / "deploy"
+        / "observability"
+        / "hcam-phase3-control-plane-alerts.yml"
+    )
+    dashboard = json.loads(dashboard_path.read_text(encoding="utf-8"))
+    alerts = alerts_path.read_text(encoding="utf-8")
+    serialized = json.dumps(dashboard)
+
+    assert dashboard["uid"] == "hcam-phase3-control-plane"
+    assert dashboard["editable"] is False
+    assert len(dashboard["panels"]) == 5
+    assert "hcam_analytics_assignments_total" in serialized
+    assert "hcam_analytics_assignments_blocked_total" in serialized
+    assert "hcam_analytics_assignment_revisions_retained_total" in serialized
+    assert "hcam_analytics_outbox_unpublished_total" in serialized
+    assert "hcam_analytics_assignment_failures_recent_total" in serialized
+    assert "HcamAnalyticsAssignmentInvariantViolation" in alerts
+    assert "HcamAnalyticsOutboxBacklog" in alerts
+    assert "HcamAnalyticsAssignmentFailureSpike" in alerts
+    for prohibited_label in (
+        "assignment_id",
+        "camera_id",
+        "stream_id",
+        "actor_id",
+        "model_id",
+        "locator",
+    ):
+        assert prohibited_label not in serialized + alerts

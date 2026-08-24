@@ -1,0 +1,155 @@
+{
+  "contract_type": "hcam.analytics.generated-annotation-suite.v1",
+  "external_inputs": [],
+  "generated_only": true,
+  "records": [
+    {
+      "annotated_at": "2026-08-24T13:00:00Z",
+      "annotations": [
+        {
+          "annotation_id": "annotation-object-person-001",
+          "attributes": {
+            "source-generated": true,
+            "visibility": "full"
+          },
+          "bbox": {
+            "height": 0.4,
+            "width": 0.3,
+            "x": 0.1,
+            "y": 0.2
+          },
+          "class_id": "object.person",
+          "geometry_id": null,
+          "ignore": false,
+          "occlusion": "none",
+          "plate_script": null,
+          "plate_text": null,
+          "task": "detection",
+          "track_id": null,
+          "truncated": false,
+          "uncertain": false
+        }
+      ],
+      "annotator_id": "generator-p31",
+      "frame_sequence": 0,
+      "generator_family": "p31-generated-annotation",
+      "item_id": "annotation-detection-001",
+      "normalization_version": "hcam-normalization-v1",
+      "seed_group": "seed-31001",
+      "sequence_id": "annotation-sequence-detection",
+      "split": "validation",
+      "template_group": "template-detection",
+      "tool_version": "hcam-generated-annotation-v1"
+    },
+    {
+      "annotated_at": "2026-08-24T13:00:00Z",
+      "annotations": [
+        {
+          "annotation_id": "annotation-object-track-001",
+          "attributes": {
+            "source-generated": true,
+            "visibility": "partial"
+          },
+          "bbox": {
+            "height": 0.4,
+            "width": 0.3,
+            "x": 0.1,
+            "y": 0.2
+          },
+          "class_id": "vehicle.car",
+          "geometry_id": null,
+          "ignore": false,
+          "occlusion": "partial",
+          "plate_script": null,
+          "plate_text": null,
+          "task": "tracking",
+          "track_id": "track-generated-001",
+          "truncated": false,
+          "uncertain": false
+        }
+      ],
+      "annotator_id": "generator-p31",
+      "frame_sequence": 0,
+      "generator_family": "p31-generated-annotation",
+      "item_id": "annotation-tracking-001",
+      "normalization_version": "hcam-normalization-v1",
+      "seed_group": "seed-31001",
+      "sequence_id": "annotation-sequence-tracking",
+      "split": "validation",
+      "template_group": "template-tracking",
+      "tool_version": "hcam-generated-annotation-v1"
+    },
+    {
+      "annotated_at": "2026-08-24T13:00:00Z",
+      "annotations": [
+        {
+          "annotation_id": "annotation-object-geometry-001",
+          "attributes": {
+            "event-expected": true,
+            "source-generated": true
+          },
+          "bbox": null,
+          "class_id": null,
+          "geometry_id": "zone-generated-001",
+          "ignore": false,
+          "occlusion": "unknown",
+          "plate_script": null,
+          "plate_text": null,
+          "task": "geometry",
+          "track_id": null,
+          "truncated": false,
+          "uncertain": false
+        }
+      ],
+      "annotator_id": "generator-p31",
+      "frame_sequence": 0,
+      "generator_family": "p31-generated-annotation",
+      "item_id": "annotation-geometry-001",
+      "normalization_version": "hcam-normalization-v1",
+      "seed_group": "seed-31001",
+      "sequence_id": "annotation-sequence-geometry",
+      "split": "validation",
+      "template_group": "template-geometry",
+      "tool_version": "hcam-generated-annotation-v1"
+    },
+    {
+      "annotated_at": "2026-08-24T13:00:00Z",
+      "annotations": [
+        {
+          "annotation_id": "annotation-object-plate-001",
+          "attributes": {
+            "source-generated": true
+          },
+          "bbox": {
+            "height": 0.4,
+            "width": 0.3,
+            "x": 0.1,
+            "y": 0.2
+          },
+          "class_id": null,
+          "geometry_id": null,
+          "ignore": false,
+          "occlusion": "unknown",
+          "plate_script": "Latin",
+          "plate_text": "GJ01AB1234",
+          "task": "synthetic_plate",
+          "track_id": null,
+          "truncated": false,
+          "uncertain": false
+        }
+      ],
+      "annotator_id": "generator-p31",
+      "frame_sequence": 0,
+      "generator_family": "p31-generated-annotation",
+      "item_id": "annotation-plate-001",
+      "normalization_version": "hcam-normalization-v1",
+      "seed_group": "seed-31001",
+      "sequence_id": "annotation-sequence-plate",
+      "split": "validation",
+      "template_group": "template-plate",
+      "tool_version": "hcam-generated-annotation-v1"
+    }
+  ],
+  "seed": 31001,
+  "suite": "annotation-items-v1"
+}

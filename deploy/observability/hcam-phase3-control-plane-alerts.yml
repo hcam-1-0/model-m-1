@@ -1,0 +1,25 @@
+groups:
+  - name: hcam-phase3-control-plane
+    interval: 30s
+    rules:
+      - alert: HcamAnalyticsAssignmentInvariantViolation
+        expr: hcam_analytics_assignments_total != hcam_analytics_assignments_blocked_total
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: An analytics assignment is outside the P3.0 blocked state
+      - alert: HcamAnalyticsOutboxBacklog
+        expr: hcam_analytics_outbox_unpublished_total > 100
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: Analytics deployment metadata is waiting for outbox delivery
+      - alert: HcamAnalyticsAssignmentFailureSpike
+        expr: sum(hcam_analytics_assignment_failures_recent_total) > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: Rejected analytics assignment mutations require review

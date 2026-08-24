@@ -1,14 +1,40 @@
 # h-cam-2.0
 mayank repo of h cam experiment
 
-## Phase 3 AI analytics planning
+## Phase 3 AI analytics
 
 Phase 3 planning defines anonymous detection, per-camera tracking, line/zone
 events, synthetic ANPR, runtime selection, data/model governance, security, and
-validation. It adds planning documents only: no AI runtime, model, dataset, or
-real CCTV analytics has been implemented or authorized.
+validation. The authorized P3.0 foundation now adds model-independent contracts,
+deterministic fixtures, prohibited-data guardrails, and a durable assignment
+control plane with RBAC, ETags, revisions, audit, and transactional outbox.
+Assignments are forced to `paused/blocked`; no activation API, AI runtime, model,
+dataset, media processing, or real CCTV analytics has been implemented or
+authorized. Bounded Prometheus metrics, a Grafana control-plane dashboard, and
+fail-closed alerts cover the implemented metadata path.
+
+P3.1 planning and its generated-only implementation boundary are authorized
+under `D-P3.1-001`. The technical evidence package is implemented and verifies
+with zero failures; clean-source regeneration and explicit P3.1 owner acceptance
+remain pending. External datasets, model artifacts, inference, cameras, real
+media, P3.2, and deployment remain unauthorized.
 
 Start here: [docs/phase-3/README.md](docs/phase-3/README.md)
+
+Contract snapshots and their review workflow are documented in
+[contracts/phase-3/README.md](contracts/phase-3/README.md).
+
+Generate the machine-readable P3.0 readiness report without activating any
+analytics runtime:
+
+```powershell
+uv run --locked --extra dev python tools/phase3_readiness.py
+uv run --locked --extra dev python tools/phase3_readiness.py --json
+uv run --locked --extra dev python tools/phase31_readiness.py --strict
+uv run --locked --extra dev python tools/phase31_readiness.py --json --strict
+uv run --locked --extra dev python tools/phase31_contracts.py check
+uv run --locked --extra dev python tools/phase31_implementation_readiness.py --json
+```
 
 ## Phase 2 camera and video ingestion
 
@@ -20,8 +46,9 @@ video.
 
 Start here: [docs/phase-2/README.md](docs/phase-2/README.md)
 
-Reviewed OpenAPI and migrated-database baselines are documented in
-[contracts/phase-2/README.md](contracts/phase-2/README.md).
+The accepted Phase 2 OpenAPI and database snapshots remain preserved in
+[contracts/phase-2/README.md](contracts/phase-2/README.md); the additive current
+baseline is under `contracts/phase-3/`.
 
 ```powershell
 python tools/phase2_lab.py prepare

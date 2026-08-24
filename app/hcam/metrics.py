@@ -15,6 +15,7 @@ from prometheus_client import (
 from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
+from hcam.analytics.models import AnalyticsAssignment, AnalyticsAssignmentRevision
 from hcam.audit.models import AuditEvent
 from hcam.camera_registry.models import utc_now
 from hcam.streams.models import (
@@ -134,6 +135,32 @@ class RequestMetrics:
             ("operation",),
             registry=self.registry,
         )
+        self.analytics_assignments = Gauge(
+            "hcam_analytics_assignments_total",
+            "Current analytics assignments retained by the control plane.",
+            registry=self.registry,
+        )
+        self.analytics_assignments_blocked = Gauge(
+            "hcam_analytics_assignments_blocked_total",
+            "Analytics assignments blocked by P3.0 owner gates.",
+            registry=self.registry,
+        )
+        self.analytics_assignment_revisions = Gauge(
+            "hcam_analytics_assignment_revisions_retained_total",
+            "Immutable analytics assignment revisions retained.",
+            registry=self.registry,
+        )
+        self.analytics_outbox_pending = Gauge(
+            "hcam_analytics_outbox_unpublished_total",
+            "Unpublished analytics model-deployment metadata events.",
+            registry=self.registry,
+        )
+        self.analytics_assignment_failures = Gauge(
+            "hcam_analytics_assignment_failures_recent_total",
+            "Rejected analytics assignment mutations during the last 15 minutes.",
+            ("operation",),
+            registry=self.registry,
+        )
 
     def observe(
         self,
@@ -190,6 +217,58 @@ class RequestMetrics:
         self.stream_outbox_pending.set(int(pending or 0))
         self._refresh_capability_metrics(session, now)
         self._refresh_onvif_operation_metrics(session, now)
+        self._refresh_analytics_metrics(session, now)
+
+    def _refresh_analytics_metrics(self, session: Session, now) -> None:
+        assignment_count = session.scalar(
+            select(func.count()).select_from(AnalyticsAssignment)
+        )
+        blocked_count = session.scalar(
+            select(func.count())
+            .select_from(AnalyticsAssignment)
+            .where(
+                AnalyticsAssignment.desired_state == "paused",
+                AnalyticsAssignment.lifecycle_state == "blocked",
+                AnalyticsAssignment.reason_code == "owner_gates_pending",
+            )
+        )
+        revision_count = session.scalar(
+            select(func.count()).select_from(AnalyticsAssignmentRevision)
+        )
+        pending_outbox = session.scalar(
+            select(func.count())
+            .select_from(StreamEventOutbox)
+            .where(
+                StreamEventOutbox.event_type
+                == "hcam.analytics.model.deployment.changed.v1",
+                StreamEventOutbox.published_at.is_(None),
+            )
+        )
+        self.analytics_assignments.set(int(assignment_count or 0))
+        self.analytics_assignments_blocked.set(int(blocked_count or 0))
+        self.analytics_assignment_revisions.set(int(revision_count or 0))
+        self.analytics_outbox_pending.set(int(pending_outbox or 0))
+
+        recent_failures = dict(
+            session.execute(
+                select(AuditEvent.action, func.count())
+                .where(
+                    AuditEvent.action.in_(
+                        (
+                            "analytics.assignment.create",
+                            "analytics.assignment.update",
+                        )
+                    ),
+                    AuditEvent.outcome == "failure",
+                    AuditEvent.occurred_at >= now - timedelta(minutes=15),
+                )
+                .group_by(AuditEvent.action)
+            ).all()
+        )
+        for operation in ("create", "update"):
+            self.analytics_assignment_failures.labels(operation=operation).set(
+                recent_failures.get(f"analytics.assignment.{operation}", 0)
+            )
 
     def _refresh_onvif_operation_metrics(self, session: Session, now) -> None:
         operation_types = (

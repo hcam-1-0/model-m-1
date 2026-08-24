@@ -1,0 +1,111 @@
+# Phase 3: AI Analytics
+
+Status: P3.0 accepted under `D-P3.0-001` on 2026-08-24. P3.1 data-and-
+evaluation-foundation planning is authorized under `D-P3.1-001`, and its
+technical evidence is implemented with zero verifier failures. Clean-source
+regeneration and explicit P3.1 owner acceptance remain pending.
+
+Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
+turn authorized video into anonymous, versioned, reviewable observations and
+per-camera events. It deliberately stops before identity matching, cross-camera
+correlation, watchlists, Government database access, alerts, cases, or
+autonomous enforcement.
+
+## Planning Package
+
+| Document | Purpose |
+| --- | --- |
+| [Product scope](product-scope.md) | Goals, users, boundaries, outputs, and Phase 4 handoff |
+| [Architecture](architecture.md) | Control plane, analytics data plane, failure behavior, and deployment shapes |
+| [Analytics catalog](analytics-catalog.md) | Ordered capability tiers and risk-specific entry gates |
+| [Event contracts](event-contracts.md) | Versioned observation, track, analytic-event, and deployment contracts |
+| [Taxonomy, geometry, and runtime contracts](taxonomy-geometry-runtime-contracts.md) | Draft class hierarchy, normalized geometry/time, and fail-closed adapter boundary |
+| [Model portfolio](model-portfolio.md) | Role-based detector, tracker, OCR, ANPR candidates and promotion funnel |
+| [Runtime and deployment](runtime-and-deployment.md) | Portable baseline, candidate accelerators, capacity tiers, and selection criteria |
+| [Data and model governance](data-and-model-governance.md) | Dataset provenance, annotation, model registry, promotion, rollback, and drift |
+| [Security, privacy, and safety](security-privacy-and-safety.md) | Threats, prohibited functions, controls, and human-review policy |
+| [Validation and benchmarks](validation-and-benchmark-plan.md) | Accuracy, latency, resilience, slice, and scale evidence |
+| [Implementation backlog](implementation-backlog.md) | Ordered work packages, ownership, dependencies, and exit evidence |
+| [Decision register](decision-register.md) | Inherited constraints, proposed decisions, and unresolved ADRs |
+| [Research references](research-references.md) | Primary-source technology and governance references |
+| [Acceptance checklist](acceptance-checklist.md) | Planning and future implementation gates |
+| [Owner review](owner-review.md) | Review questions and explicit authorization language |
+| [Build and test](build-and-test.md) | P3.0 implementation scope, evidence, and remaining gates |
+| [Assignment control plane](assignment-control-plane.md) | Durable fail-closed assignments, APIs, audit, revisions, and outbox |
+| [P3.0 readiness report](readiness-report.md) | Machine-verifiable evidence and explicit owner gates |
+| [P3.0 owner decisions](p3-0-owner-decisions.md) | Accepted G1-G4 and accountable-owner review policy for later gates |
+| [P3.1 plan](p3-1-plan.md) | Generated-only contracts, fixtures, QA, metrics, work packages, risks, and exits |
+| [P3.1 hardware profile](p3-1-hardware-profile.md) | Developer baseline and prohibited performance claims |
+| [P3.1 authorization](p3-1-authorization.md) | Human owner authorization and explicit non-authorization |
+| [P3.1 readiness report](p3-1-readiness-report.md) | Evidence-backed planning gates and pending implementation exits |
+| [P3.1 implementation readiness](p3-1-implementation-readiness-report.md) | Implemented evidence, validation results, package digest, and two manual exit gates |
+
+## Non-Negotiable Boundary
+
+Phase 3 may process only synthetic, generated, or explicitly authorized and
+license-reviewed media. The Sentinel reference site remains metadata-only and
+must not become a training-data or video-ingestion source.
+
+Phase 3 track IDs are anonymous and scoped to one stream and one tracker epoch.
+They are not identities. Face recognition, person re-identification,
+cross-camera identity, watchlists, vehicle-owner lookup, and Government data
+matching remain out of scope.
+
+## Phase 3 Outcome
+
+The intended outcome is a reproducible analytics subsystem that can:
+
+1. consume a controlled internal stream or authorized test clip;
+2. run a declared, immutable model version;
+3. emit bounded, versioned observations and per-camera track updates;
+4. evaluate configured line and zone rules;
+5. preserve model, pipeline, timing, confidence, and review provenance;
+6. degrade safely under overload or dependency failure; and
+7. prove behavior with synthetic tests and benchmark evidence.
+
+The role-based evaluation portfolio in `model-portfolio.md` is selected for
+planning. No exact artifact, champion model, runtime, dataset, infrastructure,
+evaluation, media processing, or deployment is approved merely because this
+planning package or the P3.0 contract code exists.
+
+## Current Implementation
+
+The model-independent `hcam.analytics` package defines the assignment contract,
+four analytics event envelopes, bounded canonical serialization, immutable
+lineage fields, prohibited-data inspection, producer/consumer compatibility
+rules, draft taxonomy and geometry definitions, weekly time windows, a guarded
+runtime adapter protocol, and deterministic generated fixtures. The P3.0
+control plane now persists assignments and immutable revisions, exposes scoped
+RBAC/ETag APIs, records audit evidence, and emits validated deployment-change
+metadata through the existing transactional outbox. CI rejects unreviewed
+analytics, OpenAPI, or migrated-database contract drift. Request-validation
+errors omit rejected values, and identifier-free metrics, a Grafana dashboard,
+and Prometheus alerts expose blocked-state, revision, outbox, and failure health.
+
+P3.0 still has no geometry evaluator, decoder, executable inference adapter,
+model, dataset, or media path. Assignments are forced to `paused/blocked` by
+request schemas, service logic, and database constraints; there is no activation
+endpoint. The exact taxonomy, intended use, metadata policy, and review roles are
+owner approved. P3-G4 permits accountable-owner self-review when the named
+reviewer is unavailable, and P3.0 is accepted.
+
+Separate-person review is also disabled for later model promotion, operational
+geometry, datasets, and deployment. The accountable owner may approve those
+records, but all evidence, safety, authorization, and non-activation boundaries
+remain in force.
+
+The control-plane migration has also passed PostgreSQL 18 upgrade, schema-drift,
+full downgrade-to-base, restore-to-head, and five synthetic integration tests.
+
+P3.1 implements six immutable record families, seven generated suites,
+annotation/QA and grouped split/leakage checks, hand-computable metric goldens,
+11 blocked candidate records, and a deterministic 28-artifact evidence package.
+Only deterministic generated metadata and programmatic assets are used. The
+implementation verifier reports `technical_evidence_ready_with_manual_gates`:
+technical failures are zero, while clean-source regeneration and explicit
+accountable-owner acceptance remain pending. P3.2 remains blocked.
+
+Accepted planning snapshot digest:
+`57D2F541C4AA9AB8988A5DF7FC228DA4047BF471B64AD704BDB478308FDC3898`.
+Post-decision synchronization changes are recorded separately and do not alter
+the scope accepted in that snapshot.

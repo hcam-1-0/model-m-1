@@ -1,0 +1,461 @@
+{
+  "contract_type": "hcam.analytics.generated-fixture-suite.v1",
+  "external_inputs": [],
+  "generated_only": true,
+  "records": [
+    {
+      "case_id": "det-class-01",
+      "expected_outcome": "match",
+      "frame_height": 360,
+      "frame_width": 640,
+      "predictions": [
+        {
+          "bbox": {
+            "height": 0.1998,
+            "width": 0.2327,
+            "x": 0.2259,
+            "y": 0.4989
+          },
+          "class_id": "object.person",
+          "confidence": 0.98,
+          "prediction_id": "prediction-01"
+        }
+      ],
+      "scenario": "approved-class",
+      "slices": [
+        "class-coverage",
+        "object-person"
+      ],
+      "truths": [
+        {
+          "bbox": {
+            "height": 0.1998,
+            "width": 0.2327,
+            "x": 0.2259,
+            "y": 0.4989
+          },
+          "class_id": "object.person",
+          "object_id": "truth-01",
+          "occlusion": "none",
+          "truncated": false
+        }
+      ]
+    },
+    {
+      "case_id": "det-class-02",
+      "expected_outcome": "match",
+      "frame_height": 360,
+      "frame_width": 640,
+      "predictions": [
+        {
+          "bbox": {
+            "height": 0.2868,
+            "width": 0.2249,
+            "x": 0.0887,
+            "y": 0.5272
+          },
+          "class_id": "vehicle.bicycle",
+          "confidence": 0.97,
+          "prediction_id": "prediction-02"
+        }
+      ],
+      "scenario": "approved-class",
+      "slices": [
+        "class-coverage",
+        "vehicle-bicycle"
+      ],
+      "truths": [
+        {
+          "bbox": {
+            "height": 0.2868,
+            "width": 0.2249,
+            "x": 0.0887,
+            "y": 0.5272
+          },
+          "class_id": "vehicle.bicycle",
+          "object_id": "truth-02",
+          "occlusion": "none",
+          "truncated": false
+        }
+      ]
+    },
+    {
+      "case_id": "det-class-03",
+      "expected_outcome": "match",
+      "frame_height": 360,
+      "frame_width": 640,
+      "predictions": [
+        {
+          "bbox": {
+            "height": 0.1813,
+            "width": 0.14,
+            "x": 0.1863,
+            "y": 0.0645
+          },
+          "class_id": "vehicle.motorcycle",
+          "confidence": 0.96,
+          "prediction_id": "prediction-03"
+        }
+      ],
+      "scenario": "approved-class",
+      "slices": [
+        "class-coverage",
+        "vehicle-motorcycle"
+      ],
+      "truths": [
+        {
+          "bbox": {
+            "height": 0.1813,
+            "width": 0.14,
+            "x": 0.1863,
+            "y": 0.0645
+          },
+          "class_id": "vehicle.motorcycle",
+          "object_id": "truth-03",
+          "occlusion": "none",
+          "truncated": false
+        }
+      ]
+    },
+    {
+      "case_id": "det-class-04",
+      "expected_outcome": "match",
+      "frame_height": 360,
+      "frame_width": 640,
+      "predictions": [
+        {
+          "bbox": {
+            "height": 0.214,
+            "width": 0.2355,
+            "x": 0.6554,
+            "y": 0.0678
+          },
+          "class_id": "vehicle.car",
+          "confidence": 0.95,
+          "prediction_id": "prediction-04"
+        }
+      ],
+      "scenario": "approved-class",
+      "slices": [
+        "class-coverage",
+        "vehicle-car"
+      ],
+      "truths": [
+        {
+          "bbox": {
+            "height": 0.214,
+            "width": 0.2355,
+            "x": 0.6554,
+            "y": 0.0678
+          },
+          "class_id": "vehicle.car",
+          "object_id": "truth-04",
+          "occlusion": "none",
+          "truncated": false
+        }
+      ]
+    },
+    {
+      "case_id": "det-class-05",
+      "expected_outcome": "match",
+      "frame_height": 360,
+      "frame_width": 640,
+      "predictions": [
+        {
+          "bbox": {
+            "height": 0.1714,
+            "width": 0.1877,
+            "x": 0.448,
+            "y": 0.4398
+          },
+          "class_id": "vehicle.bus",
+          "confidence": 0.94,
+          "prediction_id": "prediction-05"
+        }
+      ],
+      "scenario": "approved-class",
+      "slices": [
+        "class-coverage",
+        "vehicle-bus"
+      ],
+      "truths": [
+        {
+          "bbox": {
+            "height": 0.1714,
+            "width": 0.1877,
+            "x": 0.448,
+            "y": 0.4398
+          },
+          "class_id": "vehicle.bus",
+          "object_id": "truth-05",
+          "occlusion": "none",
+          "truncated": false
+        }
+      ]
+    },
+    {
+      "case_id": "det-class-06",
+      "expected_outcome": "match",
+      "frame_height": 360,
+      "frame_width": 640,
+      "predictions": [
+        {
+          "bbox": {
+            "height": 0.2833,
+            "width": 0.1476,
+            "x": 0.352,
+            "y": 0.2285
+          },
+          "class_id": "vehicle.truck",
+          "confidence": 0.93,
+          "prediction_id": "prediction-06"
+        }
+      ],
+      "scenario": "approved-class",
+      "slices": [
+        "class-coverage",
+        "vehicle-truck"
+      ],
+      "truths": [
+        {
+          "bbox": {
+            "height": 0.2833,
+            "width": 0.1476,
+            "x": 0.352,
+            "y": 0.2285
+          },
+          "class_id": "vehicle.truck",
+          "object_id": "truth-06",
+          "occlusion": "none",
+          "truncated": false
+        }
+      ]
+    },
+    {
+      "case_id": "det-class-07",
+      "expected_outcome": "match",
+      "frame_height": 360,
+      "frame_width": 640,
+      "predictions": [
+        {
+          "bbox": {
+            "height": 0.2513,
+            "width": 0.1449,
+            "x": 0.7109,
+            "y": 0.6083
+          },
+          "class_id": "object.unknown",
+          "confidence": 0.92,
+          "prediction_id": "prediction-07"
+        }
+      ],
+      "scenario": "approved-class",
+      "slices": [
+        "class-coverage",
+        "object-unknown"
+      ],
+      "truths": [
+        {
+          "bbox": {
+            "height": 0.2513,
+            "width": 0.1449,
+            "x": 0.7109,
+            "y": 0.6083
+          },
+          "class_id": "object.unknown",
+          "object_id": "truth-07",
+          "occlusion": "none",
+          "truncated": false
+        }
+      ]
+    },
+    {
+      "case_id": "det-empty-scene",
+      "expected_outcome": "empty",
+      "frame_height": 360,
+      "frame_width": 640,
+      "predictions": [],
+      "scenario": "empty-scene",
+      "slices": [
+        "empty-scene"
+      ],
+      "truths": []
+    },
+    {
+      "case_id": "det-overlap",
+      "expected_outcome": "miss",
+      "frame_height": 360,
+      "frame_width": 640,
+      "predictions": [],
+      "scenario": "overlap",
+      "slices": [
+        "overlap",
+        "occlusion-partial"
+      ],
+      "truths": [
+        {
+          "bbox": {
+            "height": 0.4,
+            "width": 0.2,
+            "x": 0.2,
+            "y": 0.2
+          },
+          "class_id": "object.person",
+          "object_id": "truth-overlap-a",
+          "occlusion": "partial",
+          "truncated": false
+        },
+        {
+          "bbox": {
+            "height": 0.3,
+            "width": 0.3,
+            "x": 0.3,
+            "y": 0.35
+          },
+          "class_id": "vehicle.motorcycle",
+          "object_id": "truth-overlap-b",
+          "occlusion": "partial",
+          "truncated": false
+        }
+      ]
+    },
+    {
+      "case_id": "det-truncated",
+      "expected_outcome": "miss",
+      "frame_height": 360,
+      "frame_width": 640,
+      "predictions": [],
+      "scenario": "truncation",
+      "slices": [
+        "truncation"
+      ],
+      "truths": [
+        {
+          "bbox": {
+            "height": 0.5,
+            "width": 0.35,
+            "x": 0.0,
+            "y": 0.4
+          },
+          "class_id": "vehicle.bus",
+          "object_id": "truth-truncated",
+          "occlusion": "none",
+          "truncated": true
+        }
+      ]
+    },
+    {
+      "case_id": "det-heavy-occlusion",
+      "expected_outcome": "miss",
+      "frame_height": 360,
+      "frame_width": 640,
+      "predictions": [],
+      "scenario": "occlusion",
+      "slices": [
+        "occlusion-heavy"
+      ],
+      "truths": [
+        {
+          "bbox": {
+            "height": 0.2335,
+            "width": 0.1743,
+            "x": 0.436,
+            "y": 0.4232
+          },
+          "class_id": "vehicle.car",
+          "object_id": "truth-occluded",
+          "occlusion": "heavy",
+          "truncated": false
+        }
+      ]
+    },
+    {
+      "case_id": "det-small-object",
+      "expected_outcome": "miss",
+      "frame_height": 1080,
+      "frame_width": 1920,
+      "predictions": [],
+      "scenario": "small-object",
+      "slices": [
+        "small-object"
+      ],
+      "truths": [
+        {
+          "bbox": {
+            "height": 0.03,
+            "width": 0.02,
+            "x": 0.3244,
+            "y": 0.8227
+          },
+          "class_id": "vehicle.bicycle",
+          "object_id": "truth-small",
+          "occlusion": "none",
+          "truncated": false
+        }
+      ]
+    },
+    {
+      "case_id": "det-low-contrast",
+      "expected_outcome": "miss",
+      "frame_height": 360,
+      "frame_width": 640,
+      "predictions": [],
+      "scenario": "low-contrast",
+      "slices": [
+        "low-contrast"
+      ],
+      "truths": [
+        {
+          "bbox": {
+            "height": 0.1895,
+            "width": 0.2026,
+            "x": 0.693,
+            "y": 0.1353
+          },
+          "class_id": "object.person",
+          "object_id": "truth-low-contrast",
+          "occlusion": "none",
+          "truncated": false
+        }
+      ]
+    },
+    {
+      "case_id": "det-false-positive",
+      "expected_outcome": "false_positive",
+      "frame_height": 360,
+      "frame_width": 640,
+      "predictions": [
+        {
+          "bbox": {
+            "height": 0.2542,
+            "width": 0.2026,
+            "x": 0.5966,
+            "y": 0.6089
+          },
+          "class_id": "vehicle.truck",
+          "confidence": 0.51,
+          "prediction_id": "prediction-false"
+        }
+      ],
+      "scenario": "false-positive",
+      "slices": [
+        "false-positive"
+      ],
+      "truths": []
+    },
+    {
+      "case_id": "det-malformed-prediction",
+      "expected_outcome": "reject",
+      "frame_height": 360,
+      "frame_width": 640,
+      "predictions": [],
+      "scenario": "malformed-prediction",
+      "slices": [
+        "invalid-input"
+      ],
+      "truths": []
+    }
+  ],
+  "seed": 31001,
+  "suite": "detection-v1"
+}
