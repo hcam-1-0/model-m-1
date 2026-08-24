@@ -1,0 +1,79 @@
+{
+  "accountable_owner_id": "mayank-admin",
+  "contract_format": "hcam.phase3.p3_2.entry-gates.v1",
+  "decisions": [
+    {
+      "authorization_effect": "none_until_owner_approval",
+      "decision_id": "D-P3.2-001",
+      "status": "pending",
+      "subject": "bounded_official_source_metadata_research"
+    },
+    {
+      "authorization_effect": "none_until_exact_artifact_approval",
+      "decision_id": "D-P3.2-002",
+      "status": "blocked_pending_evidence",
+      "subject": "exact_detector_artifact"
+    },
+    {
+      "authorization_effect": "none_until_exact_source_approval",
+      "decision_id": "D-P3.2-003",
+      "status": "blocked_pending_evidence",
+      "subject": "evaluation_dataset_and_generated_fixtures"
+    },
+    {
+      "authorization_effect": "none_until_owner_approval",
+      "decision_id": "D-P3.2-004",
+      "status": "planned_not_approved",
+      "subject": "cpu_reference_and_export_contract"
+    },
+    {
+      "authorization_effect": "none",
+      "decision_id": "D-P3.2-START",
+      "requires": [
+        "D-P3.2-001",
+        "D-P3.2-002",
+        "D-P3.2-003",
+        "D-P3.2-004"
+      ],
+      "status": "not_authorized",
+      "subject": "explicit_implementation_start"
+    }
+  ],
+  "dependencies": {
+    "p3_0": {
+      "record_id": "D-P3.0-001",
+      "status": "accepted"
+    },
+    "p3_1": {
+      "evidence_package_digest": "956F6521E21BF0FB43741F97768194617DE881B1BD1644E03DDC33ED5FDC0618",
+      "record_id": "D-P3.1-ACCEPTANCE",
+      "status": "accepted"
+    }
+  },
+  "non_authorization": [
+    "p3_2_implementation",
+    "model_or_dataset_acquisition",
+    "training_finetuning_export_or_inference",
+    "decoder_or_gpu_execution",
+    "camera_sentinel_or_media_access",
+    "government_private_scraped_or_unreviewed_data",
+    "identity_watchlist_or_owner_lookup",
+    "operational_alerting_or_autonomous_action",
+    "pilot_production_or_statewide_deployment",
+    "remote_git_push_pull_request_or_merge"
+  ],
+  "planned_reference": {
+    "artifact_downloads": 0,
+    "artifact_eligibility": "blocked",
+    "artifact_execution": false,
+    "candidate_id": "DET-R0",
+    "family": "YOLOX-Tiny",
+    "input_size": 416,
+    "runtime": "onnxruntime_cpu",
+    "runtime_status": "planned_not_approved"
+  },
+  "prepared_on": "2026-08-24",
+  "record_id": "P3.2-ENTRY-2026-08-24",
+  "start_authorization": "not_authorized",
+  "status": "blocked_pending_owner_decisions"
+}

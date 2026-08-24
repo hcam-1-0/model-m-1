@@ -96,6 +96,10 @@ jobs:
         if: matrix.python-version == '3.12'
         run: python tools/phase31_implementation_readiness.py --strict
 
+      - name: Verify Phase 3 P3.2 remains entry blocked
+        if: matrix.python-version == '3.12'
+        run: python tools/phase32_entry_readiness.py
+
       - name: Preserve Phase 0 unittest check
         if: matrix.python-version == '3.12'
         run: python -m unittest discover -s tests -v

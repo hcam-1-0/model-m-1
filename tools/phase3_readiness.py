@@ -47,6 +47,7 @@ REQUIRED_FILES = (
     "contracts/phase-3/openapi.json",
     "contracts/phase-3/database.json",
     "contracts/phase-3/p3-0-owner-decisions.json",
+    "contracts/phase-3/p3-2-entry-gates.json",
     "contracts/phase-3/fixtures/assignment-v1.json",
     "contracts/phase-3/fixtures/observation-created-v1.json",
     "contracts/phase-3/fixtures/track-updated-v1.json",
@@ -68,6 +69,7 @@ REQUIRED_FILES = (
     "docs/phase-3/implementation-backlog.md",
     "docs/phase-3/owner-review.md",
     "docs/phase-3/p3-0-owner-decisions.md",
+    "docs/phase-3/p3-2-entry-decision-packet.md",
     "docs/phase-3/readiness-report.md",
     "docs/phase-3/security-privacy-and-safety.md",
     "tests/test_analytics_assignment_api.py",
@@ -77,9 +79,11 @@ REQUIRED_FILES = (
     "tests/test_analytics_runtime.py",
     "tests/test_analytics_taxonomy.py",
     "tests/test_phase3_readiness.py",
+    "tests/test_phase32_entry_readiness.py",
     "tests/test_validation_errors.py",
     "tools/analytics_contracts.py",
     "tools/phase3_readiness.py",
+    "tools/phase32_entry_readiness.py",
     "tools/release_contracts.py",
 )
 

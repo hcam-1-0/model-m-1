@@ -125,6 +125,25 @@ hardware profile, expiry, non-authorizations, and exit gates.
 
 Current state: `not_authorized`.
 
+## Machine Verification
+
+The exact blocked state is recorded in
+[`p3-2-entry-gates.json`](../../contracts/phase-3/p3-2-entry-gates.json).
+Validate it without changing state:
+
+```powershell
+uv run --locked --extra dev python tools/phase32_entry_readiness.py
+uv run --locked --extra dev python tools/phase32_entry_readiness.py --json
+```
+
+A valid default run exits `0` while reporting
+`blocked_pending_owner_decisions`, zero technical failures, and five manual
+gates. `--strict` intentionally fails while any owner gate remains pending
+(the verifier returns `2`, although a command runner may expose a generic
+nonzero status). CI uses the default command to prove the block is intact; CI
+does not treat pending owner decisions as authorization or implementation
+readiness.
+
 ## Recommended Sequence
 
 1. Approve only `D-P3.2-001` for bounded official-source metadata research.

@@ -33,6 +33,9 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-1-acceptance.json`: the exact `D-P3.1-ACCEPTANCE` owner decision bound to
   the unchanged 28-artifact package digest, clean baseline commit, reviewed
   repository head, accepted limitations, and explicit non-authorization.
+- `p3-2-entry-gates.json`: the tamper-evident pre-entry state for five ordered
+  P3.2 decisions. It keeps every decision pending, binds the accepted P3.1
+  digest, keeps `DET-R0` blocked, and records `D-P3.2-START` as unauthorized.
 
 Verify all tracked snapshots:
 
@@ -42,6 +45,7 @@ uv run --locked --extra dev python tools/release_contracts.py check
 uv run --locked --extra dev python tools/phase31_readiness.py --strict
 uv run --locked --extra dev python tools/phase31_contracts.py check --require-clean-source
 uv run --locked --extra dev python tools/phase31_implementation_readiness.py --strict
+uv run --locked --extra dev python tools/phase32_entry_readiness.py
 ```
 
 Rewriting snapshots requires an explicit review acknowledgement:

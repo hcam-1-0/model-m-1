@@ -54,6 +54,7 @@ uv run --locked --extra dev python tools/phase3_readiness.py --run-validation
 uv run --locked --extra dev python tools/phase31_readiness.py --run-validation --strict
 uv run --locked --extra dev python tools/phase31_contracts.py check --require-clean-source
 uv run --locked --extra dev python tools/phase31_implementation_readiness.py --run-validation --strict
+uv run --locked --extra dev python tools/phase32_entry_readiness.py
 uv run --locked --extra dev pytest tests/test_analytics_evaluation_contracts.py tests/test_analytics_generated_evaluation.py tests/test_phase31_evidence_contracts.py tests/test_phase31_implementation_readiness.py --cov=hcam.analytics.evaluation --cov-branch --cov-report=term-missing --cov-fail-under=90
 uv run --locked --extra dev pytest tests/test_analytics_contracts.py tests/test_analytics_taxonomy.py tests/test_analytics_geometry.py tests/test_analytics_runtime.py tests/test_analytics_assignment_api.py tests/test_analytics_assignment_migration.py --cov=hcam.analytics --cov-branch --cov-report=term-missing --cov-fail-under=90
 uv run --locked --extra dev pytest --cov=hcam --cov-branch --cov-report=term-missing --cov-fail-under=90
@@ -205,6 +206,28 @@ The baseline was regenerated from clean implementation commit
 `dirty_worktree=false`. `mayank-admin` accepted that exact generated-only
 package and its limitations under `D-P3.1-ACCEPTANCE`. P3.1 is accepted; this
 does not authorize P3.2.
+
+## P3.2 Blocked-Entry Governance Validation
+
+The pre-P3.2 entry state is machine-readable under canonical record digest
+`382A5ACB82760A434B6373F19DCE42A98564D48A34519F8B6EE8766B736885F2`.
+The verifier reports `blocked_pending_owner_decisions`, zero technical
+failures, and five manual owner gates. Default mode exits successfully only
+when the blocked record, accepted P3.0/P3.1 dependencies, blocked `DET-R0`
+candidate, documentation links, and CI command remain intact. Strict mode
+intentionally fails while those owner gates remain unresolved.
+
+Ten dedicated tests cover current state, JSON/strict CLI behavior, unauthorized
+start, decision promotion, removed non-authorization, P3.1 digest drift,
+candidate eligibility, documentation links, and CI integration. The combined
+readiness/documentation slice passed 51 tests and 88 subtests. The complete
+repository run passed 601 tests with five expected PostgreSQL-only skips, the
+same pre-existing Starlette `httpx` deprecation warning, and 92.18% total
+branch coverage.
+
+This is governance validation, not P3.2 readiness or authorization. No model,
+dataset, runtime, camera, media, Government/private data, or deployment path
+was added or exercised.
 
 ## Snapshot Review
 

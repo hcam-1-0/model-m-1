@@ -35,7 +35,12 @@ uv run --locked --extra dev python tools/phase31_readiness.py --strict
 uv run --locked --extra dev python tools/phase31_readiness.py --json --strict
 uv run --locked --extra dev python tools/phase31_contracts.py check --require-clean-source
 uv run --locked --extra dev python tools/phase31_implementation_readiness.py --json --strict
+uv run --locked --extra dev python tools/phase32_entry_readiness.py --json
 ```
+
+The P3.2 entry command should report `blocked_pending_owner_decisions` with
+zero technical failures and five manual gates. Its `--strict` mode intentionally
+exits nonzero until the owner records all required P3.2 entry decisions.
 
 ## Phase 2 camera and video ingestion
 
