@@ -40,6 +40,7 @@ autonomous enforcement.
 | [P3.1 readiness report](p3-1-readiness-report.md) | Evidence-backed planning gates and pending implementation exits |
 | [P3.1 implementation readiness](p3-1-implementation-readiness-report.md) | Accepted implementation evidence, validation results, and package digest |
 | [P3.1 owner acceptance](p3-1-acceptance.md) | Digest-bound `D-P3.1-ACCEPTANCE` record and continuing exclusions |
+| [P3.2 entry decision packet](p3-2-entry-decision-packet.md) | Blocked pre-entry decisions and evidence required before any P3.2 start |
 
 ## Non-Negotiable Boundary
 

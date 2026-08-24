@@ -248,6 +248,10 @@ recorded in `D-P3.1-ACCEPTANCE`; P3.1 is accepted.
 
 ## Decisions Required During P3.1 Or Before P3.2
 
+The [P3.2 entry decision packet](p3-2-entry-decision-packet.md) converts these
+open items into ordered, fail-closed owner records. It is planning evidence
+only; `D-P3.2-START` remains `not_authorized`.
+
 | Decision | Evidence required | Blocks |
 | --- | --- | --- |
 | Exact `S1`-`S4` source use | Consent/license, provenance, privacy, retention, hash, and owner record | Any non-generated P3.1 input |

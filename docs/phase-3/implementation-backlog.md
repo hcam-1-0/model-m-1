@@ -118,6 +118,12 @@ inference, P3.2, and deployment are not authorized.
 
 Dependencies: P3.0 and P3.1; approved detector artifact.
 
+Entry status: `blocked_pending_owner_decisions`. The
+[P3.2 entry decision packet](p3-2-entry-decision-packet.md) defines the exact
+artifact, evaluation-source, CPU/export-contract, and explicit-start evidence
+required before implementation. Preparing that packet is not P3.2
+authorization.
+
 Deliverables:
 
 - bounded decoder/sampler boundary using controlled Phase 2 media access;
