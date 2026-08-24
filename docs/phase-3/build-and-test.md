@@ -52,11 +52,11 @@ uv run --locked --extra dev python tools/release_contracts.py check
 uv run --locked --extra dev python tools/analytics_contracts.py check
 uv run --locked --extra dev python tools/phase3_readiness.py --run-validation
 uv run --locked --extra dev python tools/phase31_readiness.py --run-validation --strict
-uv run --locked --extra dev python tools/phase31_contracts.py check
-uv run --locked --extra dev python tools/phase31_implementation_readiness.py --run-validation
+uv run --locked --extra dev python tools/phase31_contracts.py check --require-clean-source
+uv run --locked --extra dev python tools/phase31_implementation_readiness.py --run-validation --strict
 uv run --locked --extra dev pytest tests/test_analytics_evaluation_contracts.py tests/test_analytics_generated_evaluation.py tests/test_phase31_evidence_contracts.py tests/test_phase31_implementation_readiness.py --cov=hcam.analytics.evaluation --cov-branch --cov-report=term-missing --cov-fail-under=90
 uv run --locked --extra dev pytest tests/test_analytics_contracts.py tests/test_analytics_taxonomy.py tests/test_analytics_geometry.py tests/test_analytics_runtime.py tests/test_analytics_assignment_api.py tests/test_analytics_assignment_migration.py --cov=hcam.analytics --cov-branch --cov-report=term-missing --cov-fail-under=90
-uv run --locked --extra dev pytest --cov=hcam --cov-report=term-missing --cov-fail-under=90
+uv run --locked --extra dev pytest --cov=hcam --cov-branch --cov-report=term-missing --cov-fail-under=90
 uv run --locked --extra dev python -m build --no-isolation
 uv run --locked --extra dev uv pip check
 ```
@@ -179,24 +179,32 @@ evidence-index records. The evidence index binds 19 digest-bearing records and
 records zero downloads, zero model/media artifacts, no network/GPU/secrets, and
 zero eligible candidates.
 
-The focused implementation suite passed 70 tests with 97.01% branch coverage
-for `hcam.analytics.evaluation`. Snapshot regeneration, Ruff, and `git diff
---check` also passed. After clean-source regeneration, the implementation
-verifier reports zero failures and one manual gate under package digest
+The post-acceptance focused implementation suite passed 72 tests with 91.88%
+combined branch coverage; the evaluation package retained approximately 97%
+coverage. Snapshot regeneration, Ruff, and `git diff --check` also passed.
+After clean-source regeneration, the implementation
+verifier reports zero failures and zero manual gates under owner-accepted
+package digest
 `956F6521E21BF0FB43741F97768194617DE881B1BD1644E03DDC33ED5FDC0618`.
 
-The subsequent full repository run passed 589 tests and 119 subtests with five
+The subsequent pre-acceptance full repository run passed 589 tests and 119
+subtests with five
 expected PostgreSQL skips, one pre-existing Starlette `httpx` deprecation
 warning, and 92.18% total branch coverage. A fresh temporary SQLite database
 upgraded through Alembic `0008` and `alembic check` found no drift. The locked
 66-package environment passed dependency consistency checks, and source and
 wheel artifacts built successfully.
 
+The final acceptance-closure run passed 591 tests with five expected
+PostgreSQL-only skips, the same pre-existing warning, and 92.18% total branch
+coverage. The skips reflect an unconfigured `HCAM_POSTGRES_TEST_URL`; they do
+not claim a new local PostgreSQL run.
+
 The baseline was regenerated from clean implementation commit
 `be7749d4315f46a49370b65f14c6e583e51a0c6e` with
-`dirty_worktree=false`. The only remaining gate is explicit acceptance of the
-evidence and limitations by `mayank-admin`. This is not P3.1 acceptance and does
-not authorize P3.2.
+`dirty_worktree=false`. `mayank-admin` accepted that exact generated-only
+package and its limitations under `D-P3.1-ACCEPTANCE`. P3.1 is accepted; this
+does not authorize P3.2.
 
 ## Snapshot Review
 
@@ -204,7 +212,7 @@ Check snapshots without modifying them:
 
 ```powershell
 uv run --locked --extra dev python tools/analytics_contracts.py check
-uv run --locked --extra dev python tools/phase31_contracts.py check
+uv run --locked --extra dev python tools/phase31_contracts.py check --require-clean-source
 ```
 
 Regeneration is an explicit review operation:

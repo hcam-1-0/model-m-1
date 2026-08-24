@@ -99,12 +99,11 @@ P3.1 implementation or acceptance.
 - [x] Proposed numeric gates are recorded as `proposal_only` and are not treated
   as promotion approval.
 - [x] Regenerate and validate the baseline from the accepted clean source commit.
-- [ ] `mayank-admin` explicitly accepts the final P3.1 evidence and limitations
+- [x] `mayank-admin` explicitly accepts the final P3.1 evidence and limitations
   in `D-P3.1-ACCEPTANCE`.
 
-Implementation status: `technical_evidence_ready_with_manual_gates`. Technical
-failures: zero. The only manual gate is accountable-owner exit acceptance. P3.2
-remains blocked.
+Implementation status: `accepted`. Technical failures: zero. Manual gates:
+zero. P3.2 remains blocked and requires separate artifact and dataset approval.
 
 ## Tier A Implementation Acceptance
 

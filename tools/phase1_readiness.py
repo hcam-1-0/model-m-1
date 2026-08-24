@@ -487,7 +487,7 @@ def check_build_quality_contracts() -> CheckResult:
             "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
             "astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
             "include uv.lock",
-            "recursive-include .github *.md *.yaml *.yml",
+            "recursive-include .github *.md *.yml",
             "recursive-include fixtures *.md .gitignore",
             "test_source_manifest_includes_governance_assets_used_by_tests",
         ],

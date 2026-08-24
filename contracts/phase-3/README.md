@@ -30,6 +30,9 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   suites, 11 metadata-only blocked candidate manifests, source dossier, metric
   golden report, baseline run, and evidence index. All artifacts are JSON,
   bounded to one MiB, canonical, hashed, media-free, and reproducible offline.
+- `p3-1-acceptance.json`: the exact `D-P3.1-ACCEPTANCE` owner decision bound to
+  the unchanged 28-artifact package digest, clean baseline commit, reviewed
+  repository head, accepted limitations, and explicit non-authorization.
 
 Verify all tracked snapshots:
 
@@ -37,8 +40,8 @@ Verify all tracked snapshots:
 uv run --locked --extra dev python tools/analytics_contracts.py check
 uv run --locked --extra dev python tools/release_contracts.py check
 uv run --locked --extra dev python tools/phase31_readiness.py --strict
-uv run --locked --extra dev python tools/phase31_contracts.py check
-uv run --locked --extra dev python tools/phase31_implementation_readiness.py
+uv run --locked --extra dev python tools/phase31_contracts.py check --require-clean-source
+uv run --locked --extra dev python tools/phase31_implementation_readiness.py --strict
 ```
 
 Rewriting snapshots requires an explicit review acknowledgement:

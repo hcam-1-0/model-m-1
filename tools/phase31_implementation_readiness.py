@@ -34,9 +34,52 @@ except ModuleNotFoundError:  # Direct script execution adds tools/, not the repo
 
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE_ROOT = ROOT / "contracts" / "phase-3" / "p3-1"
+ACCEPTANCE_PATH = ROOT / "contracts" / "phase-3" / "p3-1-acceptance.json"
 PASS = "pass"
 FAIL = "fail"
 MANUAL = "manual"
+
+ACCEPTED_PACKAGE_DIGEST = "956F6521E21BF0FB43741F97768194617DE881B1BD1644E03DDC33ED5FDC0618"
+ACCEPTED_REPOSITORY_HEAD = "ccaef84993cbe3dee3e78692dd40a305bc2baea4"
+BASELINE_SOURCE_COMMIT = "be7749d4315f46a49370b65f14c6e583e51a0c6e"
+CLEAN_EVIDENCE_COMMIT = "e379ff028882295d82fbc82cff33aa11a100008e"
+ACCEPTANCE_STATEMENT = (
+    "I, mayank-admin, accept D-P3.1-ACCEPTANCE for package digest "
+    f"{ACCEPTED_PACKAGE_DIGEST}, including its generated-only evidence and documented "
+    "limitations. This does not authorize P3.2, model or dataset downloads, inference, "
+    "cameras or media, Government/private data, or deployment."
+)
+ACCEPTANCE_RECORD = {
+    "accepted_by": "mayank-admin",
+    "accepted_on": "2026-08-24",
+    "accepted_repository_head": ACCEPTED_REPOSITORY_HEAD,
+    "baseline_source_commit": BASELINE_SOURCE_COMMIT,
+    "clean_evidence_commit": CLEAN_EVIDENCE_COMMIT,
+    "contract_format": "hcam.phase3.p3_1.acceptance.v1",
+    "documented_limitations_accepted": True,
+    "evidence_package_digest": ACCEPTED_PACKAGE_DIGEST,
+    "evidence_profile": {
+        "external_downloads": 0,
+        "generated_only": True,
+        "gpu_required": False,
+        "media_artifacts": 0,
+        "model_artifacts": 0,
+        "network_required": False,
+        "secrets_required": False,
+    },
+    "non_authorization": [
+        "p3_2",
+        "model_or_dataset_downloads",
+        "inference",
+        "cameras_or_media",
+        "government_or_private_data",
+        "deployment",
+    ],
+    "record_id": "D-P3.1-ACCEPTANCE",
+    "scope": "phase3.p3_1.data_and_evaluation_foundation.implementation",
+    "statement": ACCEPTANCE_STATEMENT,
+    "status": "accepted",
+}
 
 ROOT_ARTIFACTS = (
     "annotation-qa-report-v1.json",
@@ -88,6 +131,8 @@ IMPLEMENTATION_FILES = (
     "tests/test_phase31_evidence_contracts.py",
     "tests/test_phase31_implementation_readiness.py",
     "docs/phase-3/p3-1-implementation-readiness-report.md",
+    "docs/phase-3/p3-1-acceptance.md",
+    "contracts/phase-3/p3-1-acceptance.json",
     ".github/workflows/python-ci.yml",
 )
 
@@ -434,19 +479,23 @@ def check_ci_integration() -> CheckResult:
         )
     except OSError as exc:
         return CheckResult("ci_integration", FAIL, f"CI workflow is unavailable: {exc}", [])
-    command = "python tools/phase31_contracts.py check"
-    if command not in workflow:
+    commands = (
+        "python tools/phase31_contracts.py check --require-clean-source",
+        "python tools/phase31_implementation_readiness.py --strict",
+    )
+    missing = [command for command in commands if command not in workflow]
+    if missing:
         return CheckResult(
             "ci_integration",
             FAIL,
-            "CI does not verify P3.1 generated evidence drift.",
-            [command],
+            "CI does not enforce the accepted P3.1 evidence state.",
+            missing,
         )
     return CheckResult(
         "ci_integration",
         PASS,
-        "Python CI verifies P3.1 evidence without adding data, model, media, network, GPU, or secret inputs.",
-        [command, "pytest --cov=hcam --cov-fail-under=90"],
+        "Python CI verifies clean P3.1 evidence and fails closed if acceptance regresses.",
+        [*commands, "pytest --cov=hcam --cov-fail-under=90"],
     )
 
 
@@ -474,22 +523,43 @@ def check_clean_source_baseline() -> CheckResult:
 
 def check_owner_acceptance() -> CheckResult:
     try:
-        document = _read_json(EVIDENCE_ROOT / "evidence-index.json")
-        acceptance = document["owner_acceptance"]
+        index = _read_json(EVIDENCE_ROOT / "evidence-index.json")
+        requirement = index["owner_acceptance"]
+        acceptance = _read_json(ACCEPTANCE_PATH)
+        digest, _manifest = package_digest()
     except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as exc:
         return CheckResult("owner_acceptance", FAIL, f"Owner acceptance state is invalid: {exc}", [])
-    if acceptance.get("status") != "owner_approved":
+    if requirement != {"required_record": "D-P3.1-ACCEPTANCE", "status": "pending"}:
         return CheckResult(
             "owner_acceptance",
-            MANUAL,
-            "Accountable owner must explicitly accept the final P3.1 evidence and limitations.",
-            [f"status={acceptance.get('status', 'missing')}", "required_record=D-P3.1-ACCEPTANCE"],
+            FAIL,
+            "Evidence package acceptance requirement was altered.",
+            [f"requirement={requirement!r}"],
+        )
+    if digest != ACCEPTED_PACKAGE_DIGEST:
+        return CheckResult(
+            "owner_acceptance",
+            FAIL,
+            "Current evidence package does not match the owner-accepted digest.",
+            [f"accepted_digest={ACCEPTED_PACKAGE_DIGEST}", f"current_digest={digest}"],
+        )
+    if acceptance != ACCEPTANCE_RECORD:
+        return CheckResult(
+            "owner_acceptance",
+            FAIL,
+            "Owner acceptance record does not match the exact digest-bound decision.",
+            [f"record={acceptance.get('record_id', 'missing')}"],
         )
     return CheckResult(
         "owner_acceptance",
         PASS,
-        "Accountable owner acceptance is recorded.",
-        [f"record={acceptance.get('record_id', 'missing')}"],
+        "Accountable owner acceptance is recorded and bound to the unchanged evidence package.",
+        [
+            f"record={acceptance['record_id']}",
+            f"accepted_by={acceptance['accepted_by']}",
+            f"package_digest={digest}",
+            f"accepted_repository_head={acceptance['accepted_repository_head']}",
+        ],
     )
 
 
@@ -527,7 +597,12 @@ def _run(command: list[str]) -> tuple[str, str | None]:
 
 def run_validation_commands() -> CheckResult:
     commands = [
-        [sys.executable, "tools/phase31_contracts.py", "check"],
+        [
+            sys.executable,
+            "tools/phase31_contracts.py",
+            "check",
+            "--require-clean-source",
+        ],
         [
             sys.executable,
             "-m",

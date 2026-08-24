@@ -1,6 +1,6 @@
 # P3.1 Implementation Readiness Report
 
-Status: `technical_evidence_ready_with_manual_gates`
+Status: `accepted`
 
 Captured: 2026-08-24
 
@@ -10,7 +10,7 @@ Accountable owner: `mayank-admin`
 
 Technical failures: `0`
 
-Manual gates: `1`
+Manual gates: `0`
 
 Evidence package digest:
 `956F6521E21BF0FB43741F97768194617DE881B1BD1644E03DDC33ED5FDC0618`
@@ -36,25 +36,28 @@ Evidence package digest:
 
 ## Validation
 
-The focused implementation suite passed 70 tests with 97.01% branch coverage
-for `hcam.analytics.evaluation`. Ruff, deterministic snapshot checking, and
-`git diff --check` passed. The implementation verifier completed its full
-offline validation cycle with zero failures.
+The post-acceptance focused implementation suite passed 72 tests with 91.88%
+combined branch coverage; the evaluation package retained approximately 97%
+coverage. Ruff, deterministic snapshot checking, and `git diff --check`
+passed. The implementation verifier completed its full offline validation
+cycle with zero failures and zero manual gates.
 
-Repository-wide validation passed 589 tests and 119 subtests with 92.18%
-branch coverage; five PostgreSQL-only tests were skipped because no
+The pre-acceptance repository-wide validation passed 589 tests and 119
+subtests with 92.18% branch coverage. The final acceptance-closure run passed
+591 tests with the same 92.18% branch coverage; five PostgreSQL-only tests were
+skipped because no
 `HCAM_POSTGRES_TEST_URL` was configured. Dependency locking and dependency
 health checks passed. A fresh SQLite database upgraded through migration
 `0008_analytics_assignments` with no Alembic drift, and the source distribution
 and wheel both built successfully.
 
 ```powershell
-uv run --locked --extra dev python tools/phase31_contracts.py check
+uv run --locked --extra dev python tools/phase31_contracts.py check --require-clean-source
 uv run --locked --extra dev pytest tests/test_analytics_evaluation_contracts.py tests/test_analytics_generated_evaluation.py tests/test_phase31_evidence_contracts.py tests/test_phase31_implementation_readiness.py --cov=hcam.analytics.evaluation --cov-branch --cov-report=term-missing --cov-fail-under=90
-uv run --locked --extra dev python tools/phase31_implementation_readiness.py --run-validation
+uv run --locked --extra dev python tools/phase31_implementation_readiness.py --run-validation --strict
 uv lock --check
 uv pip check
-uv run --locked --extra dev pytest
+uv run --locked --extra dev pytest --cov=hcam --cov-branch --cov-report=term-missing --cov-fail-under=90
 uv run --locked alembic upgrade head
 uv run --locked alembic check
 uv run --locked --extra dev python -m build --no-isolation
@@ -67,10 +70,11 @@ The recorded baseline source commit is
 `dirty_worktree=false`. The deterministic evidence package was regenerated from
 that clean implementation commit.
 
-## Manual Gate
+## Owner Acceptance
 
-After reviewing the clean package, `mayank-admin` must explicitly accept the
-evidence and limitations in `D-P3.1-ACCEPTANCE`.
+After reviewing the clean package, `mayank-admin` explicitly accepted the
+evidence and limitations in `D-P3.1-ACCEPTANCE`. The separate decision record
+binds the unchanged package digest and reviewed repository head.
 
 No separate-person review is required. Evidence requirements remain mandatory.
 
@@ -81,5 +85,5 @@ downloaded. No training, export, inference, decoding, GPU, camera, Sentinel,
 Government/private data, identity, alert, pilot, deployment, or P3.2 activity
 was performed or authorized.
 
-P3.1 is not accepted until both manual gates pass. P3.2 remains blocked until an
-exact detector artifact and dataset receive separate owner approval.
+P3.1 is accepted. P3.2 remains blocked until an exact detector artifact and
+dataset receive separate owner approval.

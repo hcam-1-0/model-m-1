@@ -15,6 +15,12 @@ planning and authorizes only the generated-only implementation scope in
 It does not accept P3.1 implementation or authorize downloads, inference,
 cameras/media, P3.2, pilots, or deployment.
 
+Owner acceptance: `D-P3.1-ACCEPTANCE` recorded on 2026-08-24 against package
+digest `956F6521E21BF0FB43741F97768194617DE881B1BD1644E03DDC33ED5FDC0618`.
+It accepts the generated-only P3.1 evidence and documented limitations. It does
+not authorize P3.2 or any excluded data, artifact, runtime, media, camera, or
+deployment activity.
+
 ## Decisions
 
 ### DR-0014: Anonymous Analytics Boundary
@@ -237,8 +243,8 @@ All 11 candidate records remain blocked, every numeric threshold is
 
 The baseline is bound to clean implementation commit
 `be7749d4315f46a49370b65f14c6e583e51a0c6e`. This is not a new authorization or
-an acceptance decision. One decision remains: record explicit accountable-owner
-P3.1 exit acceptance as `D-P3.1-ACCEPTANCE`.
+an authorization for later work. Accountable-owner P3.1 exit acceptance is
+recorded in `D-P3.1-ACCEPTANCE`; P3.1 is accepted.
 
 ## Decisions Required During P3.1 Or Before P3.2
 

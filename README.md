@@ -15,9 +15,10 @@ fail-closed alerts cover the implemented metadata path.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
-with zero failures. Clean-source regeneration is complete; explicit P3.1 owner
-acceptance remains pending. External datasets, model artifacts, inference,
-cameras, real media, P3.2, and deployment remain unauthorized.
+with zero failures. Clean-source regeneration is complete, and `mayank-admin`
+accepted the exact evidence package under `D-P3.1-ACCEPTANCE`. External
+datasets, model artifacts, inference, cameras, real media, P3.2, and deployment
+remain unauthorized.
 
 Start here: [docs/phase-3/README.md](docs/phase-3/README.md)
 
@@ -32,8 +33,8 @@ uv run --locked --extra dev python tools/phase3_readiness.py
 uv run --locked --extra dev python tools/phase3_readiness.py --json
 uv run --locked --extra dev python tools/phase31_readiness.py --strict
 uv run --locked --extra dev python tools/phase31_readiness.py --json --strict
-uv run --locked --extra dev python tools/phase31_contracts.py check
-uv run --locked --extra dev python tools/phase31_implementation_readiness.py --json
+uv run --locked --extra dev python tools/phase31_contracts.py check --require-clean-source
+uv run --locked --extra dev python tools/phase31_implementation_readiness.py --json --strict
 ```
 
 ## Phase 2 camera and video ingestion

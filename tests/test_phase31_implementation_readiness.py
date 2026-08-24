@@ -5,38 +5,33 @@ import io
 import json
 from contextlib import redirect_stdout
 
-from hcam.analytics.evaluation.contracts import EvaluationRunManifestV1, seal_record
 from tools import phase31_implementation_readiness as readiness
 
 
-def test_current_implementation_has_only_owner_acceptance_manual() -> None:
+def test_current_implementation_is_accepted() -> None:
     report = readiness.build_readiness_report(run_validation=False)
 
-    assert report.status == "technical_evidence_ready_with_manual_gates"
+    assert report.status == "accepted"
     assert report.scope == "phase3.p3_1.data_and_evaluation_foundation.implementation"
     assert report.failures == 0
-    assert report.manual_gates == 1
+    assert report.manual_gates == 0
     assert len(report.package_digest) == 64
     statuses = {check.name: check.status for check in report.checks}
     assert statuses["clean_source_baseline"] == readiness.PASS
-    assert statuses["owner_acceptance"] == readiness.MANUAL
-    assert all(
-        status == readiness.PASS
-        for name, status in statuses.items()
-        if name != "owner_acceptance"
-    )
+    assert statuses["owner_acceptance"] == readiness.PASS
+    assert all(status == readiness.PASS for status in statuses.values())
 
 
-def test_json_report_is_machine_readable_and_strict_blocks_manual_gates() -> None:
+def test_json_report_is_machine_readable_and_strict_accepts_closed_gate() -> None:
     output = io.StringIO()
     with redirect_stdout(output):
         exit_code = readiness.main(["--json", "--strict"])
 
     payload = json.loads(output.getvalue())
-    assert exit_code == 2
-    assert payload["status"] == "technical_evidence_ready_with_manual_gates"
+    assert exit_code == 0
+    assert payload["status"] == "accepted"
     assert payload["failures"] == 0
-    assert payload["manual_gates"] == 1
+    assert payload["manual_gates"] == 0
 
 
 def test_structured_technical_checks_pass() -> None:
@@ -50,6 +45,7 @@ def test_structured_technical_checks_pass() -> None:
         readiness.check_candidate_dossier(),
         readiness.check_run_safety(),
         readiness.check_ci_integration(),
+        readiness.check_owner_acceptance(),
         readiness.check_package_digest(),
     )
 
@@ -154,25 +150,37 @@ def test_run_check_rejects_manifest_tampering(monkeypatch) -> None:
     assert "invalid" in result.detail
 
 
-def test_clean_source_and_owner_gates_can_pass_with_exact_records(monkeypatch) -> None:
+def test_clean_source_and_owner_gates_pass_with_exact_records() -> None:
+    assert readiness.check_clean_source_baseline().status == readiness.PASS
+    assert readiness.check_owner_acceptance().status == readiness.PASS
+
+
+def test_owner_acceptance_rejects_record_tampering(monkeypatch) -> None:
     original = readiness._read_json
 
     def changed(path):
         document = copy.deepcopy(original(path))
-        if path.name == "evaluation-run-v1.json":
-            document["source"]["dirty_worktree"] = False
-            return seal_record(EvaluationRunManifestV1, document).model_dump(mode="json")
-        if path.name == "evidence-index.json":
-            document["owner_acceptance"] = {
-                "status": "owner_approved",
-                "record_id": "D-P3.1-ACCEPTANCE",
-            }
+        if path == readiness.ACCEPTANCE_PATH:
+            document["evidence_package_digest"] = "0" * 64
         return document
 
     monkeypatch.setattr(readiness, "_read_json", changed)
 
-    assert readiness.check_clean_source_baseline().status == readiness.PASS
-    assert readiness.check_owner_acceptance().status == readiness.PASS
+    assert readiness.check_owner_acceptance().status == readiness.FAIL
+
+
+def test_owner_acceptance_rejects_altered_package_requirement(monkeypatch) -> None:
+    original = readiness._read_json
+
+    def changed(path):
+        document = copy.deepcopy(original(path))
+        if path.name == "evidence-index.json":
+            document["owner_acceptance"]["required_record"] = "different-record"
+        return document
+
+    monkeypatch.setattr(readiness, "_read_json", changed)
+
+    assert readiness.check_owner_acceptance().status == readiness.FAIL
 
 
 def test_ci_check_rejects_missing_command(monkeypatch) -> None:

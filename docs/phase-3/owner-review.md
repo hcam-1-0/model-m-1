@@ -16,9 +16,10 @@ The later explicit instruction `start to build on phase 3` opened the bounded
 P3.0 contracts-and-guardrails implementation gate on 2026-08-24. It does not
 open model, dataset, inference, camera-media, real-camera, or deployment gates.
 
-Current review scope: P3.0 is accepted. P3.1 planning and its bounded
-generated-only implementation scope are authorized under `D-P3.1-001`. This is
-not P3.1 implementation acceptance, Phase 3 completion, or production approval.
+Current review scope: P3.0 and the bounded generated-only P3.1 foundation are
+accepted. P3.1 is bound to the exact package digest in
+`D-P3.1-ACCEPTANCE`. This is not Phase 3 completion, P3.2 authorization, or
+production approval.
 
 ## Questions For The Owner
 
@@ -66,11 +67,11 @@ not P3.1 implementation acceptance, Phase 3 completion, or production approval.
 > under the documented synthetic-data, privacy, security, and Phase 4
 > boundaries.
 
-The planning baseline and P3.0 are accepted. P3.1 planning authorization now
-permits contracts, deterministic generated fixtures, validation/metric tooling,
-metadata-only candidate records, and no-download source research. P3.1
-implementation exits and all P3.2 model, runtime, media, and numeric-promotion
-gates remain pending.
+The planning baseline, P3.0, and the generated-only P3.1 foundation are
+accepted. P3.1 contains contracts, deterministic generated fixtures,
+validation/metric tooling, metadata-only blocked candidate records, and
+no-download source research. All P3.2 model, runtime, media, and
+numeric-promotion gates remain pending.
 
 ## Remaining Owner Decisions
 
