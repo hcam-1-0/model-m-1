@@ -98,13 +98,13 @@ P3.1 implementation or acceptance.
 - [x] Offline, GPU-free, secret-free CI drift verification is configured.
 - [x] Proposed numeric gates are recorded as `proposal_only` and are not treated
   as promotion approval.
-- [ ] Regenerate and validate the baseline from the accepted clean source commit.
+- [x] Regenerate and validate the baseline from the accepted clean source commit.
 - [ ] `mayank-admin` explicitly accepts the final P3.1 evidence and limitations
   in `D-P3.1-ACCEPTANCE`.
 
 Implementation status: `technical_evidence_ready_with_manual_gates`. Technical
-failures: zero. Manual gates: clean-source baseline and accountable-owner exit
-acceptance. P3.2 remains blocked.
+failures: zero. The only manual gate is accountable-owner exit acceptance. P3.2
+remains blocked.
 
 ## Tier A Implementation Acceptance
 

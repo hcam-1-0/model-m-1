@@ -3,7 +3,7 @@
 Status: P3.0 accepted under `D-P3.0-001` on 2026-08-24. P3.1 data-and-
 evaluation-foundation planning is authorized under `D-P3.1-001`, and its
 technical evidence is implemented with zero verifier failures. Clean-source
-regeneration and explicit P3.1 owner acceptance remain pending.
+regeneration is complete; explicit P3.1 owner acceptance remains pending.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -102,8 +102,9 @@ annotation/QA and grouped split/leakage checks, hand-computable metric goldens,
 11 blocked candidate records, and a deterministic 28-artifact evidence package.
 Only deterministic generated metadata and programmatic assets are used. The
 implementation verifier reports `technical_evidence_ready_with_manual_gates`:
-technical failures are zero, while clean-source regeneration and explicit
-accountable-owner acceptance remain pending. P3.2 remains blocked.
+technical failures are zero, the clean-source gate passes, and explicit
+accountable-owner acceptance is the only remaining manual gate. P3.2 remains
+blocked.
 
 Accepted planning snapshot digest:
 `57D2F541C4AA9AB8988A5DF7FC228DA4047BF471B64AD704BDB478308FDC3898`.

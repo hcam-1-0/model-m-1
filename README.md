@@ -15,9 +15,9 @@ fail-closed alerts cover the implemented metadata path.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
-with zero failures; clean-source regeneration and explicit P3.1 owner acceptance
-remain pending. External datasets, model artifacts, inference, cameras, real
-media, P3.2, and deployment remain unauthorized.
+with zero failures. Clean-source regeneration is complete; explicit P3.1 owner
+acceptance remains pending. External datasets, model artifacts, inference,
+cameras, real media, P3.2, and deployment remain unauthorized.
 
 Start here: [docs/phase-3/README.md](docs/phase-3/README.md)
 

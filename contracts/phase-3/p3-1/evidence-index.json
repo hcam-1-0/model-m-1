@@ -13,9 +13,9 @@
   },
   "baseline_version": "1.0.0",
   "contract_format": "hcam.analytics.p3-1-evidence-index.v1",
-  "dirty_worktree": true,
+  "dirty_worktree": false,
   "generated_at": "2026-08-24T13:00:00Z",
-  "index_digest": "sha256:a0749032a6adf581220c117df85dc08616066bd4ebf58ed70fd4be0b97fecd3b",
+  "index_digest": "sha256:6fb797798479dba1fd8ab4dcacd12b0024a90e5b652a339fb1bffaf5bb503b15",
   "known_limitations": [
     "Generated evidence does not establish real-world model accuracy",
     "No model artifact dataset font or media source was downloaded",
@@ -67,7 +67,7 @@
     {
       "artifact_name": "evaluation-run-v1.json",
       "contract_type": "hcam.analytics.evaluation-run-manifest.v1",
-      "record_digest": "sha256:318b1472843f501f858a858082cc48c945d3ccb4b6a2dce0b11c37b9b7f363db",
+      "record_digest": "sha256:6d7e67c3f86df4f813a8c4360dba484ba2cf3f735d0b51d047ed167433324d00",
       "record_id": "p31-generated-baseline-v1"
     },
     {
@@ -143,5 +143,5 @@
       "record_id": "TRK-R0"
     }
   ],
-  "source_commit": "1a6d4179fe07914c3e192f4090f42b3dc2927352"
+  "source_commit": "be7749d4315f46a49370b65f14c6e583e51a0c6e"
 }

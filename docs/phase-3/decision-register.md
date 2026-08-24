@@ -231,13 +231,14 @@ promotion.
 
 The bounded `D-P3.1-001` implementation now has zero technical verifier
 failures under evidence package digest
-`CB292BC04A87D532D3520EF183AB6C94F0611058FEF29558115E902C4B9829BF`.
+`956F6521E21BF0FB43741F97768194617DE881B1BD1644E03DDC33ED5FDC0618`.
 All 11 candidate records remain blocked, every numeric threshold is
 `proposal_only`, downloaded artifacts remain zero, and P3.2 remains blocked.
 
-This is not a new authorization or an acceptance decision. Two decisions remain:
-regenerate the baseline from the accepted clean source commit, then record
-explicit accountable-owner P3.1 exit acceptance as `D-P3.1-ACCEPTANCE`.
+The baseline is bound to clean implementation commit
+`be7749d4315f46a49370b65f14c6e583e51a0c6e`. This is not a new authorization or
+an acceptance decision. One decision remains: record explicit accountable-owner
+P3.1 exit acceptance as `D-P3.1-ACCEPTANCE`.
 
 ## Decisions Required During P3.1 Or Before P3.2
 

@@ -2,9 +2,9 @@
 
 Status: P3.0 is accepted. P3.1 planning and bounded generated-only
 implementation authorization are complete under `D-P3.1-001`. P3.1 technical
-evidence is implemented with zero verifier failures; a clean-source rerun and
-explicit accountable-owner exit acceptance remain pending. Every later
-milestone remains subject to its applicable gates.
+evidence is implemented with zero verifier failures, and its clean-source rerun
+is complete. Explicit accountable-owner exit acceptance remains pending. Every
+later milestone remains subject to its applicable gates.
 
 ## Six-Person Ownership Model
 
@@ -104,9 +104,8 @@ seven generated suites, 11 blocked candidate manifests, annotation-QA and split
 reports, hand-computable metric goldens, CI drift enforcement, and a complete
 evidence index.
 
-Remaining exit evidence: regenerate from the accepted clean source commit and
-record explicit owner acceptance. Numeric thresholds remain proposal-only; no
-model promotion gate is approved by P3.1.
+Remaining exit evidence: record explicit owner acceptance. Numeric thresholds
+remain proposal-only; no model promotion gate is approved by P3.1.
 
 Direct source use is limited to deterministic `S0` generated metadata and
 programmatic assets. Public datasets/fonts and model artifacts are

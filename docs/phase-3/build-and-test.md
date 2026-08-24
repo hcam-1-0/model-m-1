@@ -181,9 +181,9 @@ zero eligible candidates.
 
 The focused implementation suite passed 70 tests with 97.01% branch coverage
 for `hcam.analytics.evaluation`. Snapshot regeneration, Ruff, and `git diff
---check` also passed. The implementation verifier reports zero failures and two
-manual gates under package digest
-`CB292BC04A87D532D3520EF183AB6C94F0611058FEF29558115E902C4B9829BF`.
+--check` also passed. After clean-source regeneration, the implementation
+verifier reports zero failures and one manual gate under package digest
+`956F6521E21BF0FB43741F97768194617DE881B1BD1644E03DDC33ED5FDC0618`.
 
 The subsequent full repository run passed 589 tests and 119 subtests with five
 expected PostgreSQL skips, one pre-existing Starlette `httpx` deprecation
@@ -192,11 +192,11 @@ upgraded through Alembic `0008` and `alembic check` found no drift. The locked
 66-package environment passed dependency consistency checks, and source and
 wheel artifacts built successfully.
 
-The remaining gates are precise: the recorded baseline source
-`1a6d4179fe07914c3e192f4090f42b3dc2927352` had a dirty worktree and must be
-regenerated from the accepted clean commit, then `mayank-admin` must explicitly
-accept the evidence and limitations. This is not P3.1 acceptance and does not
-authorize P3.2.
+The baseline was regenerated from clean implementation commit
+`be7749d4315f46a49370b65f14c6e583e51a0c6e` with
+`dirty_worktree=false`. The only remaining gate is explicit acceptance of the
+evidence and limitations by `mayank-admin`. This is not P3.1 acceptance and does
+not authorize P3.2.
 
 ## Snapshot Review
 

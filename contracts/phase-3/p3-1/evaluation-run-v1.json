@@ -58,7 +58,7 @@
     ],
     "python_version": "3.14.6"
   },
-  "manifest_digest": "sha256:318b1472843f501f858a858082cc48c945d3ccb4b6a2dce0b11c37b9b7f363db",
+  "manifest_digest": "sha256:6d7e67c3f86df4f813a8c4360dba484ba2cf3f735d0b51d047ed167433324d00",
   "maximum_memory_mib": 2048,
   "metric_suite_digest": "sha256:827944796ee2d2d48ee91efd5ce2da7725f4f026b296d670db3efff8d1ee8757",
   "operator_id": "mayank-admin",
@@ -102,8 +102,8 @@
   "seed": 31001,
   "semantic_version": "1.0.0",
   "source": {
-    "commit": "1a6d4179fe07914c3e192f4090f42b3dc2927352",
-    "dirty_worktree": true
+    "commit": "be7749d4315f46a49370b65f14c6e583e51a0c6e",
+    "dirty_worktree": false
   },
   "taxonomy_version": "hcam.analytics.taxonomy.v1",
   "timeout_seconds": 120,
@@ -111,7 +111,6 @@
   "warnings": [
     "Generated-only baseline has no external-validity or model-performance claim",
     "No candidate model data media decoder inference or GPU runtime was used",
-    "P3.2 remains blocked pending exact artifact and dataset owner approval",
-    "Baseline source worktree was dirty and must be rerun from the accepted commit"
+    "P3.2 remains blocked pending exact artifact and dataset owner approval"
   ]
 }

@@ -10,10 +10,10 @@ Accountable owner: `mayank-admin`
 
 Technical failures: `0`
 
-Manual gates: `2`
+Manual gates: `1`
 
 Evidence package digest:
-`CB292BC04A87D532D3520EF183AB6C94F0611058FEF29558115E902C4B9829BF`
+`956F6521E21BF0FB43741F97768194617DE881B1BD1644E03DDC33ED5FDC0618`
 
 ## Implemented Evidence
 
@@ -60,14 +60,17 @@ uv run --locked alembic check
 uv run --locked --extra dev python -m build --no-isolation
 ```
 
-## Manual Gates
+## Clean-Source Gate
 
-1. The recorded baseline source commit is
-   `1a6d4179fe07914c3e192f4090f42b3dc2927352`, with
-   `dirty_worktree=true`. After the implementation is committed on the isolated
-   branch, regenerate the evidence and run the strict clean-source check.
-2. After reviewing that clean package, `mayank-admin` must explicitly accept
-   the evidence and limitations in `D-P3.1-ACCEPTANCE`.
+The recorded baseline source commit is
+`be7749d4315f46a49370b65f14c6e583e51a0c6e`, with
+`dirty_worktree=false`. The deterministic evidence package was regenerated from
+that clean implementation commit.
+
+## Manual Gate
+
+After reviewing the clean package, `mayank-admin` must explicitly accept the
+evidence and limitations in `D-P3.1-ACCEPTANCE`.
 
 No separate-person review is required. Evidence requirements remain mandatory.
 
