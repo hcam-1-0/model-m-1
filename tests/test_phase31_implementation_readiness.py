@@ -9,21 +9,21 @@ from hcam.analytics.evaluation.contracts import EvaluationRunManifestV1, seal_re
 from tools import phase31_implementation_readiness as readiness
 
 
-def test_current_implementation_has_only_two_explicit_manual_gates() -> None:
+def test_current_implementation_has_only_owner_acceptance_manual() -> None:
     report = readiness.build_readiness_report(run_validation=False)
 
     assert report.status == "technical_evidence_ready_with_manual_gates"
     assert report.scope == "phase3.p3_1.data_and_evaluation_foundation.implementation"
     assert report.failures == 0
-    assert report.manual_gates == 2
+    assert report.manual_gates == 1
     assert len(report.package_digest) == 64
     statuses = {check.name: check.status for check in report.checks}
-    assert statuses["clean_source_baseline"] == readiness.MANUAL
+    assert statuses["clean_source_baseline"] == readiness.PASS
     assert statuses["owner_acceptance"] == readiness.MANUAL
     assert all(
         status == readiness.PASS
         for name, status in statuses.items()
-        if name not in {"clean_source_baseline", "owner_acceptance"}
+        if name != "owner_acceptance"
     )
 
 
@@ -36,7 +36,7 @@ def test_json_report_is_machine_readable_and_strict_blocks_manual_gates() -> Non
     assert exit_code == 2
     assert payload["status"] == "technical_evidence_ready_with_manual_gates"
     assert payload["failures"] == 0
-    assert payload["manual_gates"] == 2
+    assert payload["manual_gates"] == 1
 
 
 def test_structured_technical_checks_pass() -> None:
