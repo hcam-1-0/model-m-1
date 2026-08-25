@@ -126,9 +126,8 @@ entry audit. `D-P3.2-001` through `D-P3.2-004` are evidence-bound, and the
 [P3.2 start authorization](p3-2-start-authorization.md) permits only the exact
 generated-input, local/CI, ONNX Runtime CPU work packages.
 
-Implementation status: `implemented_pending_owner_exit_acceptance`. The exact
-generated-only CPU slice is built and locally validated; its readiness verifier
-must bind the final package digest before owner acceptance. The accepted P3.1
+Implementation status: `accepted`. The exact generated-only CPU slice is built,
+validated, and accepted under `D-P3.2-ACCEPTANCE`. The accepted P3.1
 candidate record stays historically blocked and the later exact artifact
 approval remains separate. Public or real-media datasets, accuracy claims,
 cameras, training, GPU/networked inference, deployment, artifact redistribution,
@@ -151,6 +150,12 @@ report and real-media benchmark require separate future data authorization.
 ## P3.3: Per-Camera Tracking
 
 Dependencies: stable P3.2 observations.
+
+Implementation status: `implemented_pending_owner_exit_acceptance` under
+`D-P3.3-WORK-AUTH`. The generated-only stream-local tracker, lifecycle v2,
+persistence, APIs, retention, observability, evaluation, and fail-closed
+resource controls are implemented. Clean-source evidence and exact-digest owner
+acceptance remain before P3.3 closes. P3.4 is not authorized.
 
 Deliverables:
 

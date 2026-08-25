@@ -7,6 +7,7 @@ from fastapi.exceptions import RequestValidationError
 
 from hcam import __version__
 from hcam.analytics.bootstrap import build_analytics_runtime
+from hcam.analytics.tracking import GeneratedTrackingLaneStore
 from hcam.analytics import models as _analytics_models  # noqa: F401
 from hcam.analytics.routes import router as analytics_router
 from hcam.audit import models as _audit_models  # noqa: F401
@@ -60,6 +61,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         application.state.analytics_runtime,
         application.state.analytics_frame_leases,
     ) = build_analytics_runtime(resolved_settings)
+    application.state.analytics_tracking_lanes = GeneratedTrackingLaneStore()
     application.state.request_metrics = RequestMetrics(
         service_name=resolved_settings.service_name,
         version=__version__,

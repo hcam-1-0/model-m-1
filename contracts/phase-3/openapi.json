@@ -2047,6 +2047,220 @@
           "title": "GeneratedAnalyticsRunResponse",
           "type": "object"
         },
+        "GeneratedTrackingRunCreate": {
+          "additionalProperties": false,
+          "properties": {
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "scenario_id": {
+              "enum": [
+                "single-object",
+                "two-crossing",
+                "short-occlusion",
+                "long-occlusion",
+                "all-tier-a",
+                "discontinuity",
+                "overload"
+              ],
+              "title": "Scenario Id",
+              "type": "string"
+            },
+            "seed": {
+              "default": 0,
+              "maximum": 4294967295.0,
+              "minimum": 0.0,
+              "title": "Seed",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "scenario_id",
+            "observed_at"
+          ],
+          "title": "GeneratedTrackingRunCreate",
+          "type": "object"
+        },
+        "GeneratedTrackingRunResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "assignment_id": {
+              "pattern": "^ana_[0-9a-f]{32}$",
+              "title": "Assignment Id",
+              "type": "string"
+            },
+            "assignment_version": {
+              "title": "Assignment Version",
+              "type": "integer"
+            },
+            "completed_at": {
+              "format": "date-time",
+              "title": "Completed At",
+              "type": "string"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "duration_ms": {
+              "maximum": 60000.0,
+              "minimum": 0.0,
+              "title": "Duration Ms",
+              "type": "integer"
+            },
+            "execution_scope": {
+              "const": "generated_only",
+              "default": "generated_only",
+              "title": "Execution Scope",
+              "type": "string"
+            },
+            "failure_code": {
+              "anyOf": [
+                {
+                  "const": "resource_exhausted",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Failure Code"
+            },
+            "frame_count": {
+              "maximum": 10000.0,
+              "minimum": 0.0,
+              "title": "Frame Count",
+              "type": "integer"
+            },
+            "generator_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Generator Id",
+              "type": "string"
+            },
+            "generator_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Generator Version",
+              "type": "string"
+            },
+            "input_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Input Sha256",
+              "type": "string"
+            },
+            "metrics": {
+              "$ref": "#/components/schemas/TrackingMetricsResponse"
+            },
+            "pipeline_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Pipeline Id",
+              "type": "string"
+            },
+            "pipeline_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Pipeline Version",
+              "type": "string"
+            },
+            "retention_class": {
+              "enum": [
+                "derived.analytics.standard",
+                "derived.analytics.restricted"
+              ],
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "reused": {
+              "default": false,
+              "title": "Reused",
+              "type": "boolean"
+            },
+            "run_id": {
+              "pattern": "^trun_[0-9a-f]{32}$",
+              "title": "Run Id",
+              "type": "string"
+            },
+            "scenario_id": {
+              "enum": [
+                "single-object",
+                "two-crossing",
+                "short-occlusion",
+                "long-occlusion",
+                "all-tier-a",
+                "discontinuity",
+                "overload"
+              ],
+              "title": "Scenario Id",
+              "type": "string"
+            },
+            "seed": {
+              "title": "Seed",
+              "type": "integer"
+            },
+            "started_at": {
+              "format": "date-time",
+              "title": "Started At",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "succeeded",
+                "failed"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "tracker_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Tracker Id",
+              "type": "string"
+            },
+            "tracker_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Tracker Version",
+              "type": "string"
+            },
+            "transition_count": {
+              "maximum": 1000000.0,
+              "minimum": 0.0,
+              "title": "Transition Count",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "run_id",
+            "assignment_id",
+            "assignment_version",
+            "scenario_id",
+            "seed",
+            "input_sha256",
+            "generator_id",
+            "generator_version",
+            "tracker_id",
+            "tracker_version",
+            "pipeline_id",
+            "pipeline_version",
+            "configuration_digest",
+            "status",
+            "failure_code",
+            "frame_count",
+            "transition_count",
+            "duration_ms",
+            "metrics",
+            "retention_class",
+            "started_at",
+            "completed_at"
+          ],
+          "title": "GeneratedTrackingRunResponse",
+          "type": "object"
+        },
         "HTTPValidationError": {
           "properties": {
             "detail": {
@@ -2245,6 +2459,43 @@
             }
           },
           "title": "LocationSeed",
+          "type": "object"
+        },
+        "NormalizedBoundingBox": {
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "title": "Height",
+              "type": "number"
+            },
+            "width": {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "title": "Width",
+              "type": "number"
+            },
+            "x": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "title": "NormalizedBoundingBox",
           "type": "object"
         },
         "OnvifDiscoveryMatchResponse": {
@@ -4494,6 +4745,832 @@
           "title": "StreamSeed",
           "type": "object"
         },
+        "TrackLifecycleListResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/TrackLifecycleResponse"
+              },
+              "title": "Items",
+              "type": "array"
+            },
+            "limit": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "offset": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "total": {
+              "title": "Total",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "items",
+            "total",
+            "limit",
+            "offset"
+          ],
+          "title": "TrackLifecycleListResponse",
+          "type": "object"
+        },
+        "TrackLifecyclePayloadV2": {
+          "additionalProperties": false,
+          "properties": {
+            "age_frames": {
+              "maximum": 2147483647.0,
+              "minimum": 1.0,
+              "title": "Age Frames",
+              "type": "integer"
+            },
+            "bbox": {
+              "$ref": "#/components/schemas/NormalizedBoundingBox"
+            },
+            "camera_id": {
+              "maxLength": 160,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "class_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+              "title": "Class Id",
+              "type": "string"
+            },
+            "confidence": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Confidence",
+              "type": "number"
+            },
+            "first_observed_at": {
+              "format": "date-time",
+              "title": "First Observed At",
+              "type": "string"
+            },
+            "first_sequence": {
+              "maximum": 9.223372036854776e+18,
+              "minimum": 0.0,
+              "title": "First Sequence",
+              "type": "integer"
+            },
+            "last_visible_at": {
+              "format": "date-time",
+              "title": "Last Visible At",
+              "type": "string"
+            },
+            "last_visible_sequence": {
+              "maximum": 9.223372036854776e+18,
+              "minimum": 0.0,
+              "title": "Last Visible Sequence",
+              "type": "integer"
+            },
+            "latest_observation_id": {
+              "pattern": "^obs_[0-9a-f]{32}$",
+              "title": "Latest Observation Id",
+              "type": "string"
+            },
+            "lineage": {
+              "$ref": "#/components/schemas/ProcessingLineage"
+            },
+            "missed_frames": {
+              "maximum": 2147483647.0,
+              "minimum": 0.0,
+              "title": "Missed Frames",
+              "type": "integer"
+            },
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "reason": {
+              "enum": [
+                "confirmed",
+                "matched",
+                "recovered",
+                "temporarily_unmatched",
+                "lost_timeout",
+                "explicit_reset",
+                "sequence_gap",
+                "sequence_regression",
+                "timestamp_regression",
+                "configuration_change",
+                "source_change",
+                "worker_restart",
+                "resource_exhausted"
+              ],
+              "title": "Reason",
+              "type": "string"
+            },
+            "retention_class": {
+              "enum": [
+                "derived.analytics.standard",
+                "derived.analytics.restricted"
+              ],
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "source_sequence": {
+              "maximum": 9.223372036854776e+18,
+              "minimum": 0.0,
+              "title": "Source Sequence",
+              "type": "integer"
+            },
+            "state": {
+              "enum": [
+                "started",
+                "updated",
+                "lost",
+                "ended"
+              ],
+              "title": "State",
+              "type": "string"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "track_id": {
+              "pattern": "^trk_[0-9a-f]{32}$",
+              "title": "Track Id",
+              "type": "string"
+            },
+            "tracker": {
+              "$ref": "#/components/schemas/VersionedArtifact"
+            },
+            "tracker_epoch": {
+              "pattern": "^epoch_[0-9a-f]{32}$",
+              "title": "Tracker Epoch",
+              "type": "string"
+            },
+            "visible_frames": {
+              "maximum": 2147483647.0,
+              "minimum": 1.0,
+              "title": "Visible Frames",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "track_id",
+            "tracker_epoch",
+            "stream_id",
+            "camera_id",
+            "state",
+            "reason",
+            "first_observed_at",
+            "first_sequence",
+            "observed_at",
+            "source_sequence",
+            "last_visible_at",
+            "last_visible_sequence",
+            "latest_observation_id",
+            "class_id",
+            "bbox",
+            "confidence",
+            "age_frames",
+            "visible_frames",
+            "missed_frames",
+            "tracker",
+            "lineage",
+            "retention_class"
+          ],
+          "title": "TrackLifecyclePayloadV2",
+          "type": "object"
+        },
+        "TrackLifecycleResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "event_id": {
+              "pattern": "^evt_[0-9a-f]{32}$",
+              "title": "Event Id",
+              "type": "string"
+            },
+            "lifecycle_id": {
+              "pattern": "^lfc_[0-9a-f]{32}$",
+              "title": "Lifecycle Id",
+              "type": "string"
+            },
+            "payload": {
+              "$ref": "#/components/schemas/TrackLifecyclePayloadV2"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "retention_class": {
+              "enum": [
+                "derived.analytics.standard",
+                "derived.analytics.restricted"
+              ],
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "run_id": {
+              "pattern": "^trun_[0-9a-f]{32}$",
+              "title": "Run Id",
+              "type": "string"
+            },
+            "state": {
+              "enum": [
+                "started",
+                "updated",
+                "lost",
+                "ended"
+              ],
+              "title": "State",
+              "type": "string"
+            },
+            "transition_index": {
+              "minimum": 0.0,
+              "title": "Transition Index",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "lifecycle_id",
+            "event_id",
+            "run_id",
+            "transition_index",
+            "state",
+            "reason",
+            "payload",
+            "retention_class",
+            "created_at"
+          ],
+          "title": "TrackLifecycleResponse",
+          "type": "object"
+        },
+        "TrackListResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/TrackResponse"
+              },
+              "title": "Items",
+              "type": "array"
+            },
+            "limit": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "offset": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "total": {
+              "title": "Total",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "items",
+            "total",
+            "limit",
+            "offset"
+          ],
+          "title": "TrackListResponse",
+          "type": "object"
+        },
+        "TrackResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "age_frames": {
+              "minimum": 1.0,
+              "title": "Age Frames",
+              "type": "integer"
+            },
+            "bbox_height": {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "title": "Bbox Height",
+              "type": "number"
+            },
+            "bbox_width": {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "title": "Bbox Width",
+              "type": "number"
+            },
+            "bbox_x": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Bbox X",
+              "type": "number"
+            },
+            "bbox_y": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Bbox Y",
+              "type": "number"
+            },
+            "class_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+              "title": "Class Id",
+              "type": "string"
+            },
+            "confidence": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Confidence",
+              "type": "number"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "epoch_id": {
+              "pattern": "^epoch_[0-9a-f]{32}$",
+              "title": "Epoch Id",
+              "type": "string"
+            },
+            "first_observed_at": {
+              "format": "date-time",
+              "title": "First Observed At",
+              "type": "string"
+            },
+            "first_sequence": {
+              "minimum": 0.0,
+              "title": "First Sequence",
+              "type": "integer"
+            },
+            "last_visible_at": {
+              "format": "date-time",
+              "title": "Last Visible At",
+              "type": "string"
+            },
+            "last_visible_sequence": {
+              "minimum": 0.0,
+              "title": "Last Visible Sequence",
+              "type": "integer"
+            },
+            "latest_observation_id": {
+              "pattern": "^obs_[0-9a-f]{32}$",
+              "title": "Latest Observation Id",
+              "type": "string"
+            },
+            "latest_observed_at": {
+              "format": "date-time",
+              "title": "Latest Observed At",
+              "type": "string"
+            },
+            "latest_sequence": {
+              "minimum": 0.0,
+              "title": "Latest Sequence",
+              "type": "integer"
+            },
+            "local_track_number": {
+              "minimum": 1.0,
+              "title": "Local Track Number",
+              "type": "integer"
+            },
+            "missed_frames": {
+              "minimum": 0.0,
+              "title": "Missed Frames",
+              "type": "integer"
+            },
+            "pipeline_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Pipeline Id",
+              "type": "string"
+            },
+            "pipeline_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Pipeline Version",
+              "type": "string"
+            },
+            "retention_class": {
+              "enum": [
+                "derived.analytics.standard",
+                "derived.analytics.restricted"
+              ],
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "run_id": {
+              "pattern": "^trun_[0-9a-f]{32}$",
+              "title": "Run Id",
+              "type": "string"
+            },
+            "state": {
+              "enum": [
+                "started",
+                "updated",
+                "lost",
+                "ended"
+              ],
+              "title": "State",
+              "type": "string"
+            },
+            "taxonomy_version": {
+              "maxLength": 128,
+              "pattern": "^hcam\\.[a-z][a-z0-9_.-]*\\.v[1-9][0-9]*$",
+              "title": "Taxonomy Version",
+              "type": "string"
+            },
+            "track_id": {
+              "pattern": "^trk_[0-9a-f]{32}$",
+              "title": "Track Id",
+              "type": "string"
+            },
+            "tracker_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Tracker Id",
+              "type": "string"
+            },
+            "tracker_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Tracker Version",
+              "type": "string"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "visible_frames": {
+              "minimum": 1.0,
+              "title": "Visible Frames",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "track_id",
+            "epoch_id",
+            "run_id",
+            "local_track_number",
+            "class_id",
+            "state",
+            "first_observed_at",
+            "first_sequence",
+            "latest_observed_at",
+            "latest_sequence",
+            "last_visible_at",
+            "last_visible_sequence",
+            "latest_observation_id",
+            "bbox_x",
+            "bbox_y",
+            "bbox_width",
+            "bbox_height",
+            "confidence",
+            "age_frames",
+            "visible_frames",
+            "missed_frames",
+            "tracker_id",
+            "tracker_version",
+            "pipeline_id",
+            "pipeline_version",
+            "taxonomy_version",
+            "configuration_digest",
+            "retention_class",
+            "created_at",
+            "updated_at"
+          ],
+          "title": "TrackResponse",
+          "type": "object"
+        },
+        "TrackingClassMetricResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "association_accuracy": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Association Accuracy",
+              "type": "number"
+            },
+            "detection_accuracy": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Detection Accuracy",
+              "type": "number"
+            },
+            "hota": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Hota",
+              "type": "number"
+            },
+            "id_false_negatives": {
+              "minimum": 0.0,
+              "title": "Id False Negatives",
+              "type": "integer"
+            },
+            "id_false_positives": {
+              "minimum": 0.0,
+              "title": "Id False Positives",
+              "type": "integer"
+            },
+            "id_precision": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Id Precision",
+              "type": "number"
+            },
+            "id_recall": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Id Recall",
+              "type": "number"
+            },
+            "id_true_positives": {
+              "minimum": 0.0,
+              "title": "Id True Positives",
+              "type": "integer"
+            },
+            "identity_switches": {
+              "minimum": 0.0,
+              "title": "Identity Switches",
+              "type": "integer"
+            },
+            "idf1": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Idf1",
+              "type": "number"
+            },
+            "localization_accuracy": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Localization Accuracy",
+              "type": "number"
+            }
+          },
+          "required": [
+            "hota",
+            "detection_accuracy",
+            "association_accuracy",
+            "localization_accuracy",
+            "idf1",
+            "id_precision",
+            "id_recall",
+            "id_true_positives",
+            "id_false_positives",
+            "id_false_negatives",
+            "identity_switches"
+          ],
+          "title": "TrackingClassMetricResponse",
+          "type": "object"
+        },
+        "TrackingEpochListResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/TrackingEpochResponse"
+              },
+              "title": "Items",
+              "type": "array"
+            },
+            "limit": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "offset": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "total": {
+              "title": "Total",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "items",
+            "total",
+            "limit",
+            "offset"
+          ],
+          "title": "TrackingEpochListResponse",
+          "type": "object"
+        },
+        "TrackingEpochResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "end_reason": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "explicit_reset",
+                    "sequence_gap",
+                    "sequence_regression",
+                    "timestamp_regression",
+                    "configuration_change",
+                    "source_change",
+                    "worker_restart",
+                    "resource_exhausted"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "End Reason"
+            },
+            "end_sequence": {
+              "anyOf": [
+                {
+                  "minimum": 0.0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "End Sequence"
+            },
+            "ended_at": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Ended At"
+            },
+            "epoch_id": {
+              "pattern": "^epoch_[0-9a-f]{32}$",
+              "title": "Epoch Id",
+              "type": "string"
+            },
+            "epoch_index": {
+              "minimum": 1.0,
+              "title": "Epoch Index",
+              "type": "integer"
+            },
+            "run_id": {
+              "pattern": "^trun_[0-9a-f]{32}$",
+              "title": "Run Id",
+              "type": "string"
+            },
+            "start_sequence": {
+              "minimum": 0.0,
+              "title": "Start Sequence",
+              "type": "integer"
+            },
+            "started_at": {
+              "format": "date-time",
+              "title": "Started At",
+              "type": "string"
+            },
+            "tracker_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Tracker Id",
+              "type": "string"
+            },
+            "tracker_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Tracker Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "epoch_id",
+            "run_id",
+            "epoch_index",
+            "tracker_id",
+            "tracker_version",
+            "configuration_digest",
+            "start_sequence",
+            "end_sequence",
+            "started_at",
+            "ended_at",
+            "end_reason"
+          ],
+          "title": "TrackingEpochResponse",
+          "type": "object"
+        },
+        "TrackingMetricsResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "association_accuracy": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Association Accuracy",
+              "type": "number"
+            },
+            "detection_accuracy": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Detection Accuracy",
+              "type": "number"
+            },
+            "hota": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Hota",
+              "type": "number"
+            },
+            "id_false_negatives": {
+              "minimum": 0.0,
+              "title": "Id False Negatives",
+              "type": "integer"
+            },
+            "id_false_positives": {
+              "minimum": 0.0,
+              "title": "Id False Positives",
+              "type": "integer"
+            },
+            "id_precision": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Id Precision",
+              "type": "number"
+            },
+            "id_recall": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Id Recall",
+              "type": "number"
+            },
+            "id_true_positives": {
+              "minimum": 0.0,
+              "title": "Id True Positives",
+              "type": "integer"
+            },
+            "identity_switches": {
+              "minimum": 0.0,
+              "title": "Identity Switches",
+              "type": "integer"
+            },
+            "idf1": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Idf1",
+              "type": "number"
+            },
+            "localization_accuracy": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Localization Accuracy",
+              "type": "number"
+            },
+            "per_class": {
+              "patternProperties": {
+                "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$": {
+                  "$ref": "#/components/schemas/TrackingClassMetricResponse"
+                }
+              },
+              "propertyNames": {
+                "maxLength": 128,
+                "minLength": 3
+              },
+              "title": "Per Class",
+              "type": "object"
+            }
+          },
+          "required": [
+            "hota",
+            "detection_accuracy",
+            "association_accuracy",
+            "localization_accuracy",
+            "idf1",
+            "id_precision",
+            "id_recall",
+            "id_true_positives",
+            "id_false_positives",
+            "id_false_negatives",
+            "identity_switches",
+            "per_class"
+          ],
+          "title": "TrackingMetricsResponse",
+          "type": "object"
+        },
         "ValidationError": {
           "properties": {
             "ctx": {
@@ -4985,6 +6062,70 @@
           ]
         }
       },
+      "/analytics-assignments/{assignment_id}/generated-tracking-runs": {
+        "post": {
+          "operationId": "execute_generated_tracking_run_analytics_assignments__assignment_id__generated_tracking_runs_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "assignment_id",
+              "required": true,
+              "schema": {
+                "title": "Assignment Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneratedTrackingRunCreate"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GeneratedTrackingRunResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Execute Generated Tracking Run",
+          "tags": [
+            "analytics-control-plane"
+          ]
+        }
+      },
       "/analytics-assignments/{assignment_id}/pause": {
         "post": {
           "operationId": "pause_analytics_assignment_analytics_assignments__assignment_id__pause_post",
@@ -5222,6 +6363,243 @@
             }
           },
           "summary": "List Generated Analytics Observations",
+          "tags": [
+            "analytics-control-plane"
+          ]
+        }
+      },
+      "/analytics-tracking-runs/{run_id}": {
+        "get": {
+          "operationId": "get_generated_tracking_run_analytics_tracking_runs__run_id__get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "run_id",
+              "required": true,
+              "schema": {
+                "title": "Run Id",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GeneratedTrackingRunResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Get Generated Tracking Run",
+          "tags": [
+            "analytics-control-plane"
+          ]
+        }
+      },
+      "/analytics-tracking-runs/{run_id}/epochs": {
+        "get": {
+          "operationId": "list_generated_tracking_epochs_analytics_tracking_runs__run_id__epochs_get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "run_id",
+              "required": true,
+              "schema": {
+                "title": "Run Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "limit",
+              "required": false,
+              "schema": {
+                "default": 100,
+                "maximum": 500,
+                "minimum": 1,
+                "title": "Limit",
+                "type": "integer"
+              }
+            },
+            {
+              "in": "query",
+              "name": "offset",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "minimum": 0,
+                "title": "Offset",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TrackingEpochListResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "List Generated Tracking Epochs",
+          "tags": [
+            "analytics-control-plane"
+          ]
+        }
+      },
+      "/analytics-tracking-runs/{run_id}/lifecycle": {
+        "get": {
+          "operationId": "list_generated_tracking_lifecycle_analytics_tracking_runs__run_id__lifecycle_get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "run_id",
+              "required": true,
+              "schema": {
+                "title": "Run Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "limit",
+              "required": false,
+              "schema": {
+                "default": 100,
+                "maximum": 1000,
+                "minimum": 1,
+                "title": "Limit",
+                "type": "integer"
+              }
+            },
+            {
+              "in": "query",
+              "name": "offset",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "minimum": 0,
+                "title": "Offset",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TrackLifecycleListResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "List Generated Tracking Lifecycle",
+          "tags": [
+            "analytics-control-plane"
+          ]
+        }
+      },
+      "/analytics-tracking-runs/{run_id}/tracks": {
+        "get": {
+          "operationId": "list_generated_tracking_tracks_analytics_tracking_runs__run_id__tracks_get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "run_id",
+              "required": true,
+              "schema": {
+                "title": "Run Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "limit",
+              "required": false,
+              "schema": {
+                "default": 100,
+                "maximum": 500,
+                "minimum": 1,
+                "title": "Limit",
+                "type": "integer"
+              }
+            },
+            {
+              "in": "query",
+              "name": "offset",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "minimum": 0,
+                "title": "Offset",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TrackListResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "List Generated Tracking Tracks",
           "tags": [
             "analytics-control-plane"
           ]

@@ -26,6 +26,11 @@ def test_release_contracts_cover_phase0_to_phase3_boundaries() -> None:
     assert "/streams/{stream_id}/analytics-assignments" in paths
     assert "/analytics-assignments/{assignment_id}" in paths
     assert "/analytics-assignments/{assignment_id}/revisions" in paths
+    assert "/analytics-assignments/{assignment_id}/generated-tracking-runs" in paths
+    assert "/analytics-tracking-runs/{run_id}" in paths
+    assert "/analytics-tracking-runs/{run_id}/epochs" in paths
+    assert "/analytics-tracking-runs/{run_id}/tracks" in paths
+    assert "/analytics-tracking-runs/{run_id}/lifecycle" in paths
 
     tables = {table["name"]: table for table in database["tables"]}
     assert {
@@ -37,6 +42,10 @@ def test_release_contracts_cover_phase0_to_phase3_boundaries() -> None:
         "onvif_operation_runs",
         "analytics_assignments",
         "analytics_assignment_revisions",
+        "analytics_tracking_runs",
+        "analytics_tracker_epochs",
+        "analytics_tracks",
+        "analytics_track_lifecycle",
     }.issubset(tables)
     operation_checks = " ".join(
         str(item["sql"])

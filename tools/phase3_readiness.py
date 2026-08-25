@@ -227,10 +227,13 @@ def check_contract_snapshots() -> CheckResult:
     allowed_heads = {
         ("0008_analytics_assignments",),
         ("0009_generated_analytics",),
+        ("0010_generated_tracking",),
     }
     heads = database.get("alembic_heads")
     if not isinstance(heads, list) or tuple(heads) not in allowed_heads:
-        failures.append("database snapshot is not at an approved P3.0/P3.2 revision")
+        failures.append(
+            "database snapshot is not at an approved P3.0 through P3.3 revision"
+        )
     raw_tables = database.get("tables")
     tables = (
         {
@@ -269,7 +272,7 @@ def check_contract_snapshots() -> CheckResult:
         for name, expressions in allowed_constraints.items():
             if constraints.get(name) not in expressions:
                 failures.append(f"database guard is missing or changed: {name}")
-        if heads == ["0009_generated_analytics"]:
+        if heads in (["0009_generated_analytics"], ["0010_generated_tracking"]):
             if constraints.get("ck_analytics_assignment_execution_scope") != (
                 "execution_scope = 'generated_only'"
             ):

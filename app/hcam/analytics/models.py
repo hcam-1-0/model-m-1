@@ -360,3 +360,324 @@ class AnalyticsObservation(Base):
     created_at: Mapped[datetime] = mapped_column(
         UTCDateTime(), nullable=False, default=utc_now, index=True
     )
+
+
+class AnalyticsTrackingRun(Base):
+    __tablename__ = "analytics_tracking_runs"
+    __table_args__ = (
+        CheckConstraint(
+            "assignment_version >= 1",
+            name="ck_analytics_tracking_run_assignment_version",
+        ),
+        CheckConstraint(
+            "seed >= 0 AND seed <= 4294967295",
+            name="ck_analytics_tracking_run_seed",
+        ),
+        CheckConstraint(
+            "scenario_id IN ('single-object', 'two-crossing', 'short-occlusion', "
+            "'long-occlusion', 'all-tier-a', 'discontinuity', 'overload')",
+            name="ck_analytics_tracking_run_scenario",
+        ),
+        CheckConstraint(
+            "status IN ('succeeded', 'failed')",
+            name="ck_analytics_tracking_run_status",
+        ),
+        CheckConstraint(
+            "(status = 'succeeded' AND failure_code IS NULL) OR "
+            "(status = 'failed' AND failure_code = 'resource_exhausted')",
+            name="ck_analytics_tracking_run_failure_consistency",
+        ),
+        CheckConstraint(
+            "frame_count >= 0 AND frame_count <= 10000",
+            name="ck_analytics_tracking_run_frame_count",
+        ),
+        CheckConstraint(
+            "transition_count >= 0 AND transition_count <= 1000000",
+            name="ck_analytics_tracking_run_transition_count",
+        ),
+        CheckConstraint(
+            "duration_ms >= 0 AND duration_ms <= 60000",
+            name="ck_analytics_tracking_run_duration",
+        ),
+        CheckConstraint(
+            "length(input_sha256) = 64 AND lower(input_sha256) = input_sha256",
+            name="ck_analytics_tracking_run_input_digest",
+        ),
+        CheckConstraint(
+            "retention_class IN ('derived.analytics.standard', "
+            "'derived.analytics.restricted')",
+            name="ck_analytics_tracking_run_retention_class",
+        ),
+        UniqueConstraint(
+            "assignment_id",
+            "scenario_id",
+            "seed",
+            "input_sha256",
+            "configuration_digest",
+            name="uq_analytics_tracking_run_input",
+        ),
+        Index(
+            "ix_analytics_tracking_run_department_completed",
+            "department",
+            "completed_at",
+        ),
+    )
+
+    run_id: Mapped[str] = mapped_column(String(37), primary_key=True)
+    assignment_id: Mapped[str] = mapped_column(
+        String(36),
+        ForeignKey("analytics_assignments.assignment_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    assignment_version: Mapped[int] = mapped_column(Integer, nullable=False)
+    department: Mapped[str] = mapped_column(String(120), nullable=False, index=True)
+    stream_id: Mapped[str] = mapped_column(
+        ForeignKey("stream_endpoints.stream_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    camera_id: Mapped[str] = mapped_column(
+        ForeignKey("cameras.camera_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    scenario_id: Mapped[str] = mapped_column(String(32), nullable=False, index=True)
+    seed: Mapped[int] = mapped_column(BigInteger, nullable=False)
+    input_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    generator_id: Mapped[str] = mapped_column(String(128), nullable=False)
+    generator_version: Mapped[str] = mapped_column(String(71), nullable=False)
+    tracker_id: Mapped[str] = mapped_column(String(128), nullable=False)
+    tracker_version: Mapped[str] = mapped_column(String(71), nullable=False)
+    pipeline_id: Mapped[str] = mapped_column(String(128), nullable=False)
+    pipeline_version: Mapped[str] = mapped_column(String(71), nullable=False)
+    configuration_digest: Mapped[str] = mapped_column(String(71), nullable=False)
+    status: Mapped[str] = mapped_column(String(16), nullable=False)
+    failure_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    frame_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    transition_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    duration_ms: Mapped[int] = mapped_column(Integer, nullable=False)
+    metrics: Mapped[dict[str, Any]] = mapped_column(JSON, nullable=False)
+    retention_class: Mapped[str] = mapped_column(String(64), nullable=False)
+    started_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False)
+    completed_at: Mapped[datetime] = mapped_column(
+        UTCDateTime(), nullable=False, index=True
+    )
+
+
+class AnalyticsTrackerEpoch(Base):
+    __tablename__ = "analytics_tracker_epochs"
+    __table_args__ = (
+        CheckConstraint(
+            "start_sequence >= 0 AND (end_sequence IS NULL OR end_sequence >= 0)",
+            name="ck_analytics_tracker_epoch_sequence",
+        ),
+        CheckConstraint(
+            "end_reason IS NULL OR end_reason IN ('explicit_reset', 'sequence_gap', "
+            "'sequence_regression', 'timestamp_regression', "
+            "'configuration_change', 'source_change', 'worker_restart', "
+            "'resource_exhausted')",
+            name="ck_analytics_tracker_epoch_end_reason",
+        ),
+        CheckConstraint(
+            "(ended_at IS NULL AND end_sequence IS NULL AND end_reason IS NULL) OR "
+            "(ended_at IS NOT NULL AND end_sequence IS NOT NULL AND "
+            "end_reason IS NOT NULL)",
+            name="ck_analytics_tracker_epoch_end_consistency",
+        ),
+        UniqueConstraint(
+            "run_id",
+            "epoch_index",
+            name="uq_analytics_tracker_epoch_run_index",
+        ),
+        Index(
+            "ix_analytics_tracker_epoch_scope",
+            "department",
+            "stream_id",
+            "started_at",
+        ),
+    )
+
+    epoch_id: Mapped[str] = mapped_column(String(38), primary_key=True)
+    run_id: Mapped[str] = mapped_column(
+        ForeignKey("analytics_tracking_runs.run_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    assignment_id: Mapped[str] = mapped_column(String(36), nullable=False, index=True)
+    department: Mapped[str] = mapped_column(String(120), nullable=False, index=True)
+    stream_id: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
+    camera_id: Mapped[str] = mapped_column(String(160), nullable=False, index=True)
+    epoch_index: Mapped[int] = mapped_column(Integer, nullable=False)
+    tracker_id: Mapped[str] = mapped_column(String(128), nullable=False)
+    tracker_version: Mapped[str] = mapped_column(String(71), nullable=False)
+    configuration_digest: Mapped[str] = mapped_column(String(71), nullable=False)
+    start_sequence: Mapped[int] = mapped_column(BigInteger, nullable=False)
+    end_sequence: Mapped[int | None] = mapped_column(BigInteger, nullable=True)
+    started_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False)
+    ended_at: Mapped[datetime | None] = mapped_column(UTCDateTime(), nullable=True)
+    end_reason: Mapped[str | None] = mapped_column(String(64), nullable=True)
+
+
+class AnalyticsTrack(Base):
+    __tablename__ = "analytics_tracks"
+    __table_args__ = (
+        CheckConstraint(
+            "class_id IN ('object.person', 'vehicle.bicycle', 'vehicle.car', "
+            "'vehicle.motorcycle', 'vehicle.bus', 'vehicle.truck', "
+            "'object.unknown')",
+            name="ck_analytics_track_tier_a_class",
+        ),
+        CheckConstraint(
+            "state IN ('started', 'updated', 'lost', 'ended')",
+            name="ck_analytics_track_state",
+        ),
+        CheckConstraint(
+            "local_track_number >= 1 AND age_frames >= 1 AND visible_frames >= 1 "
+            "AND visible_frames <= age_frames AND missed_frames >= 0",
+            name="ck_analytics_track_counters",
+        ),
+        CheckConstraint(
+            "first_sequence >= 0 AND latest_sequence >= 0 AND "
+            "last_visible_sequence >= 0",
+            name="ck_analytics_track_sequences",
+        ),
+        CheckConstraint(
+            "confidence >= 0 AND confidence <= 1",
+            name="ck_analytics_track_confidence",
+        ),
+        CheckConstraint(
+            "bbox_x >= 0 AND bbox_x <= 1 AND bbox_y >= 0 AND bbox_y <= 1 AND "
+            "bbox_width > 0 AND bbox_width <= 1 AND bbox_height > 0 AND "
+            "bbox_height <= 1 AND bbox_x + bbox_width <= 1 AND "
+            "bbox_y + bbox_height <= 1",
+            name="ck_analytics_track_bbox",
+        ),
+        CheckConstraint(
+            "retention_class IN ('derived.analytics.standard', "
+            "'derived.analytics.restricted')",
+            name="ck_analytics_track_retention_class",
+        ),
+        UniqueConstraint(
+            "epoch_id",
+            "local_track_number",
+            name="uq_analytics_track_epoch_local_number",
+        ),
+        Index(
+            "ix_analytics_track_scope_state",
+            "department",
+            "stream_id",
+            "state",
+        ),
+    )
+
+    track_id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    epoch_id: Mapped[str] = mapped_column(
+        ForeignKey("analytics_tracker_epochs.epoch_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    run_id: Mapped[str] = mapped_column(
+        ForeignKey("analytics_tracking_runs.run_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    assignment_id: Mapped[str] = mapped_column(String(36), nullable=False, index=True)
+    department: Mapped[str] = mapped_column(String(120), nullable=False, index=True)
+    stream_id: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
+    camera_id: Mapped[str] = mapped_column(String(160), nullable=False, index=True)
+    local_track_number: Mapped[int] = mapped_column(Integer, nullable=False)
+    class_id: Mapped[str] = mapped_column(String(128), nullable=False, index=True)
+    state: Mapped[str] = mapped_column(String(16), nullable=False, index=True)
+    first_observed_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False)
+    first_sequence: Mapped[int] = mapped_column(BigInteger, nullable=False)
+    latest_observed_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False)
+    latest_sequence: Mapped[int] = mapped_column(BigInteger, nullable=False)
+    last_visible_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False)
+    last_visible_sequence: Mapped[int] = mapped_column(BigInteger, nullable=False)
+    latest_observation_id: Mapped[str] = mapped_column(String(36), nullable=False)
+    bbox_x: Mapped[float] = mapped_column(Float, nullable=False)
+    bbox_y: Mapped[float] = mapped_column(Float, nullable=False)
+    bbox_width: Mapped[float] = mapped_column(Float, nullable=False)
+    bbox_height: Mapped[float] = mapped_column(Float, nullable=False)
+    confidence: Mapped[float] = mapped_column(Float, nullable=False)
+    age_frames: Mapped[int] = mapped_column(Integer, nullable=False)
+    visible_frames: Mapped[int] = mapped_column(Integer, nullable=False)
+    missed_frames: Mapped[int] = mapped_column(Integer, nullable=False)
+    tracker_id: Mapped[str] = mapped_column(String(128), nullable=False)
+    tracker_version: Mapped[str] = mapped_column(String(71), nullable=False)
+    pipeline_id: Mapped[str] = mapped_column(String(128), nullable=False)
+    pipeline_version: Mapped[str] = mapped_column(String(71), nullable=False)
+    taxonomy_version: Mapped[str] = mapped_column(String(128), nullable=False)
+    configuration_digest: Mapped[str] = mapped_column(String(71), nullable=False)
+    retention_class: Mapped[str] = mapped_column(String(64), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False)
+
+
+class AnalyticsTrackLifecycle(Base):
+    __tablename__ = "analytics_track_lifecycle"
+    __table_args__ = (
+        CheckConstraint(
+            "transition_index >= 0",
+            name="ck_analytics_track_lifecycle_index",
+        ),
+        CheckConstraint(
+            "state IN ('started', 'updated', 'lost', 'ended')",
+            name="ck_analytics_track_lifecycle_state",
+        ),
+        CheckConstraint(
+            "reason IN ('confirmed', 'matched', 'recovered', "
+            "'temporarily_unmatched', 'lost_timeout', 'explicit_reset', "
+            "'sequence_gap', 'sequence_regression', 'timestamp_regression', "
+            "'configuration_change', 'source_change', 'worker_restart', "
+            "'resource_exhausted')",
+            name="ck_analytics_track_lifecycle_reason",
+        ),
+        UniqueConstraint(
+            "event_id",
+            name="uq_analytics_track_lifecycle_event",
+        ),
+        UniqueConstraint(
+            "run_id",
+            "transition_index",
+            name="uq_analytics_track_lifecycle_run_index",
+        ),
+        Index(
+            "ix_analytics_track_lifecycle_scope",
+            "department",
+            "stream_id",
+            "occurred_at",
+        ),
+    )
+
+    lifecycle_id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    event_id: Mapped[str] = mapped_column(String(36), nullable=False)
+    run_id: Mapped[str] = mapped_column(
+        ForeignKey("analytics_tracking_runs.run_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    epoch_id: Mapped[str] = mapped_column(
+        ForeignKey("analytics_tracker_epochs.epoch_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    track_id: Mapped[str] = mapped_column(
+        ForeignKey("analytics_tracks.track_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    assignment_id: Mapped[str] = mapped_column(String(36), nullable=False, index=True)
+    department: Mapped[str] = mapped_column(String(120), nullable=False, index=True)
+    stream_id: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
+    camera_id: Mapped[str] = mapped_column(String(160), nullable=False, index=True)
+    transition_index: Mapped[int] = mapped_column(Integer, nullable=False)
+    state: Mapped[str] = mapped_column(String(16), nullable=False)
+    reason: Mapped[str] = mapped_column(String(64), nullable=False)
+    occurred_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False)
+    source_sequence: Mapped[int] = mapped_column(BigInteger, nullable=False)
+    latest_observation_id: Mapped[str] = mapped_column(String(36), nullable=False)
+    payload: Mapped[dict[str, Any]] = mapped_column(JSON, nullable=False)
+    retention_class: Mapped[str] = mapped_column(String(64), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False)

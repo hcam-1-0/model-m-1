@@ -1,0 +1,50 @@
+{
+  "acquired_on": "2026-08-25",
+  "archive": {
+    "bytes": 168312,
+    "sha256": "435f0e6d865918332155f8104a98a04d50c2c3de5b985b96c8a71a0f5b62a0ac",
+    "url": "https://codeload.github.com/JonathonLuiten/TrackEval/tar.gz/12c8791b303e0a0b50f753af204249e622d0281a"
+  },
+  "artifact_id": "EVAL-TRACKEVAL-12C8791",
+  "canonical_selected_source_digest": "sha256:180c8cbaba1e59a048617398467f639808392beed2993583a481e4ae856b8544",
+  "commit": "12c8791b303e0a0b50f753af204249e622d0281a",
+  "license": "MIT",
+  "license_review": "accepted_for_development_only_metric_oracle",
+  "repository": "https://github.com/JonathonLuiten/TrackEval",
+  "runtime_dependency": false,
+  "schema_version": "1.0.0",
+  "selected_files": [
+    {
+      "path": "LICENSE",
+      "sha256": "f7e548c5729e464d878dd4abf691e323bbea028a756d08395d88b83e43dd2d86"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "723b53083028feb00c709faa36d2af8cbfb982b6d595653d805a5d592b135b77"
+    },
+    {
+      "path": "trackeval/_timing.py",
+      "sha256": "62e60638efc675bccc35c7da65158f0f19ce31f332121efe7cc748bd92ad2b30"
+    },
+    {
+      "path": "trackeval/metrics/_base_metric.py",
+      "sha256": "dac8b87bf3801269aa280b1cf91184f483de4f4e5c158bd07a4b1733b1a5722b"
+    },
+    {
+      "path": "trackeval/metrics/clear.py",
+      "sha256": "ab3963eac401073fe1b2957c734af1e531368f42fca49627c14422350b2744f0"
+    },
+    {
+      "path": "trackeval/metrics/hota.py",
+      "sha256": "c582255c3d36bdb49c3ceeb2a5bd912cee009190dfcfe465b4173d03aaa97d6a"
+    },
+    {
+      "path": "trackeval/metrics/identity.py",
+      "sha256": "e76b1bdcbf5b193662431596a984cf70a5be32e903eb5f2a3d9921b4762f93ba"
+    }
+  ],
+  "selection_authority": "D-P3.3-WORK-AUTH",
+  "status": "selected_and_hash_verified",
+  "upstream_dependencies_accepted": false,
+  "upstream_dependency_reason": "The historical full benchmark stack is unnecessary for the HOTA and identity oracle and is incompatible with the approved Python profile."
+}

@@ -4,9 +4,9 @@ Status: P3.0 accepted under `D-P3.0-001` on 2026-08-24. P3.1 data-and-
 evaluation-foundation planning is authorized under `D-P3.1-001`, and its
 technical evidence is implemented with zero verifier failures. Clean-source
 regeneration is complete, and P3.1 is accepted under `D-P3.1-ACCEPTANCE`.
-P3.2 entry decisions are complete, and `D-P3.2-START` authorizes only the exact
-generated-input, local/CI, CPU reference implementation. That implementation is
-validated and ready for owner review; P3.2 owner exit acceptance is pending.
+P3.2 is accepted under `D-P3.2-ACCEPTANCE`. P3.3 generated-only, anonymous,
+stream-local tracking is implemented under `D-P3.3-WORK-AUTH`; final clean-source
+evidence and exact-digest owner acceptance are pending.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -48,6 +48,9 @@ autonomous enforcement.
 | [P3.2 start authorization](p3-2-start-authorization.md) | Generated-only CPU implementation work packages and explicit non-authorizations |
 | [P3.2 implementation](p3-2-implementation.md) | Exact activation contract, runtime, generated execution, persistence, APIs, retention, and evidence |
 | [P3.2 implementation readiness](p3-2-implementation-readiness-report.md) | Final tests, PostgreSQL, packaging, dependency audit, generated E2E, and owner gate |
+| [P3.3 plan](p3-3-plan.md) | Anonymous stream-local lifecycle, evidence, resource, and safety design |
+| [P3.3 implementation](p3-3-implementation.md) | Exact tracker adaptation, generated scenarios, persistence, API, and boundaries |
+| [P3.3 implementation readiness](p3-3-implementation-readiness-report.md) | Validation results, package digest, and final owner gate |
 
 ## Non-Negotiable Boundary
 
@@ -120,8 +123,15 @@ generated-input implementation packages. The
 adapter, generated execution API, normalized observation/outbox persistence,
 lifecycle controls, retention, metrics, and local E2E harness. Cameras, real
 media, public datasets, accuracy claims, training, deployment, artifact
-redistribution, and remote Git actions remain prohibited; P3.2 exit acceptance
-is still pending.
+redistribution, and remote Git actions remain prohibited. P3.2 is accepted under
+`D-P3.2-ACCEPTANCE` for that bounded result.
+
+P3.3 adds a default-off, production-forbidden ByteTrack-style association layer
+over sealed generated structured observations. It persists explicit epochs,
+anonymous stream-local tracks, lifecycle v2 records, and transactional outbox
+events. Generated HOTA/IDF1 and pinned TrackEval parity pass, but no real-media,
+cross-camera, identity, alerting, or deployment claim is made. Final P3.3 owner
+acceptance remains pending until the clean package digest is presented.
 
 Accepted planning snapshot digest:
 `57D2F541C4AA9AB8988A5DF7FC228DA4047BF471B64AD704BDB478308FDC3898`.

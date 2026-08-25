@@ -293,7 +293,7 @@ representativeness, model promotion, media access, or deployment readiness.
 
 ### DR-0031: Exact Generated-Only CPU Detection Slice
 
-Status: implemented under `D-P3.2-START`; owner exit acceptance pending.
+Status: accepted under `D-P3.2-ACCEPTANCE` on 2026-08-25.
 
 The only activatable P3.2 assignment is the exact `DET-R0` artifact, approved
 Tier A taxonomy, generated-data policy, ONNX Runtime CPU contract, and
@@ -305,6 +305,22 @@ normalized anonymous metadata and transactional outbox events persist.
 Reason: an exact digest-bound activation contract prevents the generic P3.0
 assignment API from becoming an implicit model, data, or deployment
 authorization. See [P3.2 implementation](p3-2-implementation.md).
+
+### DR-0032: Generated-Only Anonymous Stream-Local Tracking
+
+Status: implemented under `D-P3.3-WORK-AUTH`; owner exit acceptance pending.
+
+P3.3 adapts the motion/IoU association structure of exact pinned ByteTrack
+source behind an H-CAM-owned tracker interface. Inputs are sealed generated
+structured Tier A observations. Tracks are scoped to one stream and epoch, with
+no appearance features, identity, ReID, plate data, cross-camera key, media, or
+external dataset. Runtime activation is default-off and production-forbidden.
+
+The full historical ByteTrack runtime is rejected. TrackEval is used only as a
+pinned evidence oracle, and SciPy supplies the runtime assignment solver. Exact
+source manifests, license notices, generated parity reports, SBOM, PostgreSQL
+evidence, and final package binding remain mandatory. P3.4, real media,
+deployment, and remote Git actions are not authorized by this decision.
 
 ## Decisions Explicitly Deferred
 

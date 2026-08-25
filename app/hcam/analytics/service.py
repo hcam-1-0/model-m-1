@@ -327,6 +327,7 @@ class AnalyticsAssignmentService:
         *,
         activate: bool,
         runtime_configured: bool,
+        tracking_runtime_configured: bool = False,
         expected_version: int,
         principal: Principal,
         reason: str,
@@ -346,6 +347,7 @@ class AnalyticsAssignmentService:
                     assessment = assess_generated_activation(
                         assignment,
                         runtime_configured=runtime_configured,
+                        tracking_runtime_configured=tracking_runtime_configured,
                     )
                     if not assessment.eligible:
                         raise AnalyticsAssignmentValidationError(

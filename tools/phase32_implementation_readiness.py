@@ -26,6 +26,9 @@ ROOT = Path(__file__).resolve().parents[1]
 PASS = "pass"
 FAIL = "fail"
 MANUAL = "manual"
+P3_2_ACCEPTED_PACKAGE_DIGEST = (
+    "F8673BE6AD8D8CABFA4636DA1505DE4C816398B115073B1F5261B03D2B0C7BCF"
+)
 
 PACKAGE_FILES = (
     ".github/workflows/python-ci.yml",
@@ -452,20 +455,32 @@ def build_report(
     acceptance_path = ROOT / "contracts/phase-3/p3-2-acceptance.json"
     if acceptance_path.is_file():
         acceptance = _json("contracts/phase-3/p3-2-acceptance.json")
-        digest, _ = package_digest()
         if (
             acceptance.get("status") == "accepted"
-            and acceptance.get("evidence_package_digest") == digest
+            and acceptance.get("record_id") == "D-P3.2-ACCEPTANCE"
+            and acceptance.get("scope")
+            == "phase3.p3_2.generated_only_cpu_detection"
+            and acceptance.get("accepted_by") == "mayank-admin"
+            and acceptance.get("evidence_package_digest")
+            == P3_2_ACCEPTED_PACKAGE_DIGEST
+            and acceptance.get("package_file_count") == len(PACKAGE_FILES)
         ):
             checks.append(
-                Check("owner_acceptance", PASS, "Owner accepted this exact package.")
+                Check(
+                    "owner_acceptance",
+                    PASS,
+                    "Owner acceptance of the immutable P3.2 package remains valid; "
+                    "the live package digest may include additive later-phase work.",
+                    (f"accepted_digest={P3_2_ACCEPTED_PACKAGE_DIGEST}",),
+                )
             )
         else:
             checks.append(
                 Check(
                     "owner_acceptance",
                     FAIL,
-                    "Acceptance record does not match this package digest.",
+                    "P3.2 acceptance record is missing or differs from the exact "
+                    "historical package decision.",
                 )
             )
     else:

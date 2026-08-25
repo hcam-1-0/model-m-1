@@ -32,6 +32,24 @@ P3_2_POSTPROCESSING_VERSION = (
 )
 P3_2_TAXONOMY_VERSION = "hcam.objects.tier_a.v1"
 P3_2_AUTHORIZATION_EXPIRES_ON = date(2026, 9, 24)
+P3_3_APPROVAL_RECORD_ID = "D-P3.3-WORK-AUTH"
+P3_3_CAPABILITY = "stream_local_tracking"
+P3_3_TRACKER_ID = "TRK-R0-BYTETRACK-D1BF0191"
+P3_3_TRACKER_VERSION = (
+    "sha256:12bb7ce90e1089a1e160d5a15cd0c268f27a3083e4df37aef2cd042ae1160438"
+)
+P3_3_PIPELINE_ID = "hcam.trk-r0.generated"
+P3_3_PIPELINE_VERSION = (
+    "sha256:8dfd2fd221a9736cab33124f3fef4c1a2f65de7c74d0965a0d60b5fe750fe0e3"
+)
+P3_3_POLICY_VERSION = (
+    "sha256:30e1940b2e74bb86629833499e27fb2c5bc204ddf56a5010071d086bbab1d0cc"
+)
+P3_3_CONFIGURATION_VERSION = (
+    "sha256:f7149f15f3682d12638af5e92ac4a81730831977e19f992456630e1e64afd5be"
+)
+P3_3_TAXONOMY_VERSION = P3_2_TAXONOMY_VERSION
+P3_3_AUTHORIZATION_EXPIRES_ON = date(2026, 9, 24)
 
 
 @dataclass(frozen=True, slots=True)
@@ -44,8 +62,15 @@ def assess_generated_activation(
     assignment: AnalyticsAssignment,
     *,
     runtime_configured: bool,
+    tracking_runtime_configured: bool = False,
     now: datetime | None = None,
 ) -> ActivationAssessment:
+    if assignment.capability == P3_3_CAPABILITY:
+        return _assess_generated_tracking_activation(
+            assignment,
+            runtime_configured=tracking_runtime_configured,
+            now=now,
+        )
     blockers: list[str] = []
     expected_model = {"id": P3_2_MODEL_ID, "version": P3_2_MODEL_VERSION}
     scope_unapproved = (
@@ -67,6 +92,43 @@ def assess_generated_activation(
         assignment.policy_version != P3_2_POLICY_VERSION
         or assignment.retention_class != "derived.analytics.standard"
         or assignment.geometry_refs
+        or assignment.sampling_fps > 1
+        or assignment.maximum_queue_age_ms > 1_000
+    ):
+        blockers.append("retention_policy_unapproved")
+    if scope_unapproved and not blockers:
+        blockers.append("implementation_scope_unapproved")
+    return ActivationAssessment(not blockers, tuple(blockers))
+
+
+def _assess_generated_tracking_activation(
+    assignment: AnalyticsAssignment,
+    *,
+    runtime_configured: bool,
+    now: datetime | None,
+) -> ActivationAssessment:
+    blockers: list[str] = []
+    expected_tracker = {"id": P3_3_TRACKER_ID, "version": P3_3_TRACKER_VERSION}
+    scope_unapproved = (
+        assignment.execution_scope != P3_2_EXECUTION_SCOPE
+        or assignment.pipeline_id != P3_3_PIPELINE_ID
+        or assignment.pipeline_version != P3_3_PIPELINE_VERSION
+        or assignment.models != [expected_tracker]
+        or assignment.approval_record_id != P3_3_APPROVAL_RECORD_ID
+        or assignment.configuration_digest != P3_3_CONFIGURATION_VERSION
+    )
+    if not runtime_configured:
+        blockers.append("runtime_unconfigured")
+    observed_now = now or datetime.now(UTC)
+    if observed_now.date() > P3_3_AUTHORIZATION_EXPIRES_ON:
+        blockers.append("authorization_expired")
+    if assignment.taxonomy_version != P3_3_TAXONOMY_VERSION:
+        blockers.append("taxonomy_unapproved")
+    if (
+        assignment.policy_version != P3_3_POLICY_VERSION
+        or assignment.retention_class != "derived.analytics.standard"
+        or assignment.geometry_refs
+        or assignment.minimum_confidence != 0.25
         or assignment.sampling_fps > 1
         or assignment.maximum_queue_age_ms > 1_000
     ):

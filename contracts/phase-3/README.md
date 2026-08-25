@@ -3,16 +3,17 @@
 This directory contains reviewed, deterministic snapshots for the additive
 Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary:
 
-- `analytics-contracts.json`: JSON schemas for assignment, four versioned
-  metadata events, draft taxonomy, normalized geometry/schedules, and the
-  runtime adapter boundary;
+- `analytics-contracts.json`: JSON schemas for assignment, versioned metadata
+  events including stream-local lifecycle v2, draft taxonomy, normalized
+  geometry/schedules, and the runtime adapter boundary;
 - `fixtures/`: generated-only golden documents used for producer/consumer
   compatibility and deterministic serialization tests, including an explicitly
   unconfigured runtime result.
 - `openapi.json`: the current FastAPI contract, including the activation-blocked
   analytics-assignment API;
-- `database.json`: the current Alembic `0008_analytics_assignments` schema,
-  including assignment, immutable revision, and database guard constraints.
+- `database.json`: the current Alembic `0010_generated_tracking` schema,
+  including assignments, generated runs, anonymous stream-local tracking, and
+  database guard constraints.
 - `p3-0-owner-decisions.json`: the machine-readable owner approval record for
   P3-G1 through P3-G3, including the exact Tier A scope, synthetic-lab metadata
   policy, accountable owner, optional reviewer, and non-authorization boundary.
@@ -33,9 +34,15 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-1-acceptance.json`: the exact `D-P3.1-ACCEPTANCE` owner decision bound to
   the unchanged 28-artifact package digest, clean baseline commit, reviewed
   repository head, accepted limitations, and explicit non-authorization.
-- `p3-2-entry-gates.json`: the tamper-evident pre-entry state for five ordered
-  P3.2 decisions. It keeps every decision pending, binds the accepted P3.1
-  digest, keeps `DET-R0` blocked, and records `D-P3.2-START` as unauthorized.
+- `p3-2-acceptance.json`: the exact accepted generated-input CPU detection
+  package and continuing non-authorization boundary.
+- `p3-3-*-source.json`, policy/runtime/generated-suite manifests, and
+  `p3-3/evaluation-report.json`: exact tracker/evaluator provenance and
+  generated-only parity evidence.
+- `p3-3-sbom.cdx.json`: deterministic CycloneDX runtime inventory generated
+  from the audited lock.
+- `p3-3-validation-evidence.json`: bounded local test, PostgreSQL, coverage,
+  package, audit, and prohibited-input results.
 
 Verify all tracked snapshots:
 
@@ -46,6 +53,10 @@ uv run --locked --extra dev python tools/phase31_readiness.py --strict
 uv run --locked --extra dev python tools/phase31_contracts.py check --require-clean-source
 uv run --locked --extra dev python tools/phase31_implementation_readiness.py --strict
 uv run --locked --extra dev python tools/phase32_entry_readiness.py
+uv run --locked --extra dev --extra analytics python tools/phase32_implementation_readiness.py
+uv run --locked --extra dev --extra analytics python tools/phase33_tracking_evidence.py check
+uv run --locked --extra dev --extra analytics python tools/phase33_sbom.py check
+uv run --locked --extra dev --extra analytics python tools/phase33_implementation_readiness.py
 ```
 
 Rewriting snapshots requires an explicit review acknowledgement:
@@ -56,10 +67,8 @@ uv run --locked --extra dev python tools/release_contracts.py write --acknowledg
 uv run --locked --extra dev python tools/phase31_contracts.py write --acknowledge-generated-only-evidence
 ```
 
-Taxonomy and geometry fixtures are `draft`, the runtime fixture is
-`configured: false`, and persisted assignments are constrained to
-`desired_state=paused`, `lifecycle_state=blocked`, and
-`reason_code=owner_gates_pending`. These contracts contain metadata only. They
-do not approve a taxonomy or geometry, and they do not authorize or implement
-model downloads, inference, camera access, raw-media persistence, identity,
-Government matching, alerts, or deployment.
+Taxonomy and geometry fixtures remain `draft`. The accepted P3.2 and authorized
+P3.3 runtime slices are generated-only, default-off, and production-forbidden.
+These contracts do not authorize camera access, raw-media persistence, external
+datasets, identity, cross-camera association, Government matching, alerts,
+deployment, or P3.4.

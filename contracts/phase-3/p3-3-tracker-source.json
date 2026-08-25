@@ -1,0 +1,45 @@
+{
+  "acquired_on": "2026-08-25",
+  "archive": {
+    "bytes": 65372743,
+    "sha256": "a04446567ebd13bb611849029222cd4edcc9ec009bd6f1e92fa5f4281c95359c",
+    "url": "https://codeload.github.com/FoundationVision/ByteTrack/tar.gz/d1bf0191adff59bc8fcfeaa0b33d3d1642552a99"
+  },
+  "artifact_id": "TRK-R0-BYTETRACK-D1BF0191",
+  "canonical_selected_source_digest": "sha256:12bb7ce90e1089a1e160d5a15cd0c268f27a3083e4df37aef2cd042ae1160438",
+  "commit": "d1bf0191adff59bc8fcfeaa0b33d3d1642552a99",
+  "license": "MIT",
+  "license_review": "accepted_for_attributed_minimal_adaptation",
+  "repository": "https://github.com/FoundationVision/ByteTrack",
+  "schema_version": "1.0.0",
+  "selected_files": [
+    {
+      "path": "LICENSE",
+      "sha256": "e9d83751678cbaba6dfba902ea39215c423d93425e58f8450d6001f7261696f9"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "a8a918225d5385b9db03f7dd030dc37cf8f4f80655d655b3dee4a2bcfae7709e"
+    },
+    {
+      "path": "yolox/tracker/basetrack.py",
+      "sha256": "c938afcf7c516bba4a77155c2499fcae6f926df7a2faa6f73a4be1b073f9bb2d"
+    },
+    {
+      "path": "yolox/tracker/byte_tracker.py",
+      "sha256": "7cecdcdd7998103969a4ba1772f4c9fb5560fd5eef05ca03e0d2df28346ca50b"
+    },
+    {
+      "path": "yolox/tracker/kalman_filter.py",
+      "sha256": "9842d0dd9957c97e312d42e5789441add55082066d87cc051ac768143a46eb39"
+    },
+    {
+      "path": "yolox/tracker/matching.py",
+      "sha256": "2f54bf0c183f577087391901562ae2bcd3c01633a3e077bd5d4168fafbd899a6"
+    }
+  ],
+  "selection_authority": "D-P3.3-WORK-AUTH",
+  "status": "selected_and_hash_verified",
+  "upstream_dependencies_accepted": false,
+  "upstream_dependency_reason": "The unpinned historical stack includes detector, image, training, Torch, OpenCV, LAP, and obsolete runtime versions outside the H-CAM tracker boundary."
+}

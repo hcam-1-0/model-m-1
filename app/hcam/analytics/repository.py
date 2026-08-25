@@ -68,11 +68,13 @@ def assignment_to_response(
     assignment: AnalyticsAssignment,
     *,
     runtime_configured: bool = False,
+    tracking_runtime_configured: bool = False,
 ) -> AnalyticsAssignmentResponse:
     contract = assignment_to_contract(assignment)
     assessment = assess_generated_activation(
         assignment,
         runtime_configured=runtime_configured,
+        tracking_runtime_configured=tracking_runtime_configured,
     )
     return AnalyticsAssignmentResponse(
         **contract.model_dump(),
@@ -129,6 +131,7 @@ class AnalyticsAssignmentRepository:
         limit: int,
         offset: int,
         runtime_configured: bool = False,
+        tracking_runtime_configured: bool = False,
     ) -> AnalyticsAssignmentListResponse:
         query = self._authorized_query(filters.allowed_departments)
         for field, value in (
@@ -153,7 +156,11 @@ class AnalyticsAssignmentRepository:
         ).all()
         return AnalyticsAssignmentListResponse(
             items=[
-                assignment_to_response(row, runtime_configured=runtime_configured)
+                assignment_to_response(
+                    row,
+                    runtime_configured=runtime_configured,
+                    tracking_runtime_configured=tracking_runtime_configured,
+                )
                 for row in rows
             ],
             total=total,

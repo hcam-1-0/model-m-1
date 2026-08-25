@@ -9,6 +9,22 @@ from tools import phase2_readiness
 from tools import phase2_publication_evidence as publication_evidence
 
 
+def test_phase2_validation_timeout_accommodates_the_full_suite(monkeypatch) -> None:
+    observed: dict[str, object] = {}
+
+    def run(command: list[str], **kwargs: object):
+        observed.update(kwargs)
+        return phase2_readiness.subprocess.CompletedProcess(command, 0, "", "")
+
+    monkeypatch.setattr(phase2_readiness.subprocess, "run", run)
+
+    _evidence, error = phase2_readiness._run([sys.executable, "-m", "pytest"])
+
+    assert error is None
+    assert observed["timeout"] == phase2_readiness.VALIDATION_COMMAND_TIMEOUT_SECONDS
+    assert phase2_readiness.VALIDATION_COMMAND_TIMEOUT_SECONDS >= 600
+
+
 def test_phase2_report_is_complete_after_extension_acceptance() -> None:
     report = phase2_readiness.build_report(run_validation=False)
 

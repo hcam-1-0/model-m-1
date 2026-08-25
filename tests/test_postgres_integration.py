@@ -11,7 +11,25 @@ import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import delete, func, select
 
-from hcam.analytics.models import AnalyticsAssignment, AnalyticsAssignmentRevision
+from hcam.analytics.activation import (
+    P3_3_APPROVAL_RECORD_ID,
+    P3_3_CAPABILITY,
+    P3_3_CONFIGURATION_VERSION,
+    P3_3_PIPELINE_ID,
+    P3_3_PIPELINE_VERSION,
+    P3_3_POLICY_VERSION,
+    P3_3_TAXONOMY_VERSION,
+    P3_3_TRACKER_ID,
+    P3_3_TRACKER_VERSION,
+)
+from hcam.analytics.models import (
+    AnalyticsAssignment,
+    AnalyticsAssignmentRevision,
+    AnalyticsTrackerEpoch,
+    AnalyticsTrack,
+    AnalyticsTrackLifecycle,
+    AnalyticsTrackingRun,
+)
 from hcam.audit.models import AuditEvent
 from hcam.camera_registry.importer import RegistryImporter
 from hcam.camera_registry.models import Camera
@@ -19,6 +37,7 @@ from hcam.database import Database
 from hcam.main import create_app
 from hcam.security.auth import Principal
 from hcam.settings import Settings
+from hcam.streams.lab import seed_synthetic_lab, synthetic_stream_id
 from hcam.streams.capabilities import CapabilityDiscoveryResult, CapabilityService
 from hcam.streams.capability_worker import (
     CapabilityRefreshWorker,
@@ -483,6 +502,128 @@ def test_postgres_concurrent_capability_queue_reuses_single_active_job(
         assert active_count == 1
         assert total_count == 1
     finally:
+        database.dispose()
+
+
+def test_postgres_generated_tracking_transaction_and_replay() -> None:
+    assert POSTGRES_TEST_URL is not None
+    database = Database(POSTGRES_TEST_URL)
+    stream_id = synthetic_stream_id(99)
+    try:
+        database.check_ready()
+        with database.session_factory.begin() as session:
+            session.execute(
+                delete(AnalyticsAssignment).where(
+                    AnalyticsAssignment.stream_id == stream_id
+                )
+            )
+        with database.session_factory() as session:
+            seed_synthetic_lab(session, count=99)
+
+        application = create_app(
+            Settings(
+                database_url=POSTGRES_TEST_URL,
+                dev_auth_enabled=True,
+                environment="test",
+                access_log_enabled=False,
+                analytics_generated_tracking_enabled=True,
+            )
+        )
+        headers = {
+            "X-HCAM-Actor": "postgres-tracking-editor",
+            "X-HCAM-Roles": "camera.editor",
+            "X-HCAM-Departments": "Engineering Lab",
+            "X-HCAM-Reason": "PostgreSQL generated tracking validation",
+        }
+        assignment_payload = {
+            "capability": P3_3_CAPABILITY,
+            "desired_state": "paused",
+            "pipeline": {
+                "id": P3_3_PIPELINE_ID,
+                "version": P3_3_PIPELINE_VERSION,
+            },
+            "models": [
+                {"id": P3_3_TRACKER_ID, "version": P3_3_TRACKER_VERSION}
+            ],
+            "taxonomy_version": P3_3_TAXONOMY_VERSION,
+            "policy_version": P3_3_POLICY_VERSION,
+            "configuration_digest": P3_3_CONFIGURATION_VERSION,
+            "minimum_confidence": 0.25,
+            "sampling_fps": 1.0,
+            "maximum_queue_age_ms": 1_000,
+            "geometry_refs": [],
+            "retention_class": "derived.analytics.standard",
+            "approval_record_id": P3_3_APPROVAL_RECORD_ID,
+        }
+        run_payload = {
+            "scenario_id": "all-tier-a",
+            "seed": 99,
+            "observed_at": "2026-08-25T12:00:00Z",
+        }
+        with TestClient(application) as client:
+            created = client.post(
+                f"/streams/{stream_id}/analytics-assignments",
+                json=assignment_payload,
+                headers=headers,
+            )
+            assert created.status_code == 201
+            assignment_id = created.json()["assignment_id"]
+            activated = client.post(
+                f"/analytics-assignments/{assignment_id}/activate",
+                headers={**headers, "If-Match": created.headers["ETag"]},
+            )
+            assert activated.status_code == 200
+            executed = client.post(
+                f"/analytics-assignments/{assignment_id}/generated-tracking-runs",
+                json=run_payload,
+                headers=headers,
+            )
+            replay = client.post(
+                f"/analytics-assignments/{assignment_id}/generated-tracking-runs",
+                json=run_payload,
+                headers=headers,
+            )
+
+        assert executed.status_code == 201
+        assert executed.json()["status"] == "succeeded"
+        assert replay.status_code == 201
+        assert replay.json()["reused"] is True
+        run_id = executed.json()["run_id"]
+        with database.session_factory() as session:
+            assert session.get(AnalyticsTrackingRun, run_id) is not None
+            assert session.scalar(
+                select(func.count())
+                .select_from(AnalyticsTrackerEpoch)
+                .where(AnalyticsTrackerEpoch.run_id == run_id)
+            ) == 1
+            assert session.scalar(
+                select(func.count())
+                .select_from(AnalyticsTrack)
+                .where(AnalyticsTrack.run_id == run_id)
+            ) == 7
+            lifecycle_count = session.scalar(
+                select(func.count())
+                .select_from(AnalyticsTrackLifecycle)
+                .where(AnalyticsTrackLifecycle.run_id == run_id)
+            )
+            outbox_count = session.scalar(
+                select(func.count())
+                .select_from(StreamEventOutbox)
+                .where(
+                    StreamEventOutbox.stream_id == stream_id,
+                    StreamEventOutbox.event_type
+                    == "hcam.analytics.track.lifecycle.v2",
+                )
+            )
+        assert lifecycle_count == executed.json()["transition_count"]
+        assert outbox_count == lifecycle_count
+    finally:
+        with database.session_factory.begin() as session:
+            session.execute(
+                delete(AnalyticsAssignment).where(
+                    AnalyticsAssignment.stream_id == stream_id
+                )
+            )
         database.dispose()
 
 

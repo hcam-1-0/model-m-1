@@ -104,6 +104,13 @@ jobs:
         if: matrix.python-version == '3.12'
         run: python tools/phase32_implementation_readiness.py
 
+      - name: Verify Phase 3 P3.3 generated tracking evidence
+        if: matrix.python-version == '3.12'
+        run: |
+          python tools/phase33_tracking_evidence.py check
+          python tools/phase33_sbom.py check
+          python tools/phase33_implementation_readiness.py --require-clean-source
+
       - name: Preserve Phase 0 unittest check
         if: matrix.python-version == '3.12'
         run: python -m unittest discover -s tests -v

@@ -260,6 +260,67 @@ class TrackPayloadV1(ContractModel):
         return self
 
 
+class TrackLifecyclePayloadV2(ContractModel):
+    track_id: TrackId
+    tracker_epoch: TrackerEpoch
+    stream_id: StreamId
+    camera_id: CameraId
+    state: Literal["started", "updated", "lost", "ended"]
+    reason: Literal[
+        "confirmed",
+        "matched",
+        "recovered",
+        "temporarily_unmatched",
+        "lost_timeout",
+        "explicit_reset",
+        "sequence_gap",
+        "sequence_regression",
+        "timestamp_regression",
+        "configuration_change",
+        "source_change",
+        "worker_restart",
+        "resource_exhausted",
+    ]
+    first_observed_at: UtcDateTime
+    first_sequence: Annotated[int, Field(ge=0, le=9_223_372_036_854_775_807)]
+    observed_at: UtcDateTime
+    source_sequence: Annotated[int, Field(ge=0, le=9_223_372_036_854_775_807)]
+    last_visible_at: UtcDateTime
+    last_visible_sequence: Annotated[
+        int, Field(ge=0, le=9_223_372_036_854_775_807)
+    ]
+    latest_observation_id: ObservationId
+    class_id: ClassId
+    bbox: NormalizedBoundingBox
+    confidence: Confidence
+    age_frames: Annotated[int, Field(ge=1, le=2_147_483_647)]
+    visible_frames: Annotated[int, Field(ge=1, le=2_147_483_647)]
+    missed_frames: Annotated[int, Field(ge=0, le=2_147_483_647)]
+    tracker: VersionedArtifact
+    lineage: ProcessingLineage
+    retention_class: Literal[
+        "derived.analytics.standard",
+        "derived.analytics.restricted",
+    ]
+
+    @model_validator(mode="after")
+    def chronology_and_counts_are_consistent(self) -> TrackLifecyclePayloadV2:
+        if self.visible_frames > self.age_frames:
+            raise ValueError("visible_frames cannot exceed age_frames")
+        if not (
+            self.first_observed_at <= self.last_visible_at <= self.observed_at
+        ):
+            raise ValueError("track lifecycle timestamps are not chronological")
+        if self.first_sequence > self.last_visible_sequence:
+            raise ValueError("track lifecycle sequences are not chronological")
+        if (
+            self.reason != "sequence_regression"
+            and self.first_sequence > self.source_sequence
+        ):
+            raise ValueError("track transition sequence precedes the track")
+        return self
+
+
 class AnalyticEventPayloadV1(ContractModel):
     analytic_event_id: AnalyticEventId
     stream_id: StreamId
@@ -357,6 +418,21 @@ class AnalyticsEventBase(ContractModel):
         return self
 
 
+class AnalyticsEventBaseV2(ContractModel):
+    event_id: EventId
+    schema_version: Literal[2] = 2
+    stream_id: StreamId
+    camera_id: CameraId
+    partition_key: StreamId
+    occurred_at: UtcDateTime
+
+    @model_validator(mode="after")
+    def partition_matches_stream(self) -> AnalyticsEventBaseV2:
+        if self.partition_key != self.stream_id:
+            raise ValueError("partition_key must equal stream_id")
+        return self
+
+
 class ObservationCreatedV1(AnalyticsEventBase):
     event_type: Literal["hcam.analytics.observation.created.v1"] = (
         "hcam.analytics.observation.created.v1"
@@ -377,6 +453,18 @@ class TrackUpdatedV1(AnalyticsEventBase):
 
     @model_validator(mode="after")
     def payload_scope_matches_envelope(self) -> TrackUpdatedV1:
+        _require_matching_scope(self, self.payload)
+        return self
+
+
+class TrackLifecycleV2(AnalyticsEventBaseV2):
+    event_type: Literal["hcam.analytics.track.lifecycle.v2"] = (
+        "hcam.analytics.track.lifecycle.v2"
+    )
+    payload: TrackLifecyclePayloadV2
+
+    @model_validator(mode="after")
+    def payload_scope_matches_envelope(self) -> TrackLifecycleV2:
         _require_matching_scope(self, self.payload)
         return self
 
@@ -408,12 +496,14 @@ class ModelDeploymentChangedV1(AnalyticsEventBase):
 AnalyticsEvent: TypeAlias = (
     ObservationCreatedV1
     | TrackUpdatedV1
+    | TrackLifecycleV2
     | AnalyticEventCreatedV1
     | ModelDeploymentChangedV1
 )
 AnalyticsEventModel: TypeAlias = type[
     ObservationCreatedV1
     | TrackUpdatedV1
+    | TrackLifecycleV2
     | AnalyticEventCreatedV1
     | ModelDeploymentChangedV1
 ]
@@ -421,15 +511,17 @@ AnalyticsEventModel: TypeAlias = type[
 ANALYTICS_EVENT_MODELS: dict[str, AnalyticsEventModel] = {
     "hcam.analytics.observation.created.v1": ObservationCreatedV1,
     "hcam.analytics.track.updated.v1": TrackUpdatedV1,
+    "hcam.analytics.track.lifecycle.v2": TrackLifecycleV2,
     "hcam.analytics.event.created.v1": AnalyticEventCreatedV1,
     "hcam.analytics.model.deployment.changed.v1": ModelDeploymentChangedV1,
 }
 
 
 def _require_matching_scope(
-    envelope: AnalyticsEventBase,
+    envelope: AnalyticsEventBase | AnalyticsEventBaseV2,
     payload: ObservationPayloadV1
     | TrackPayloadV1
+    | TrackLifecyclePayloadV2
     | AnalyticEventPayloadV1
     | ModelDeploymentPayloadV1,
 ) -> None:

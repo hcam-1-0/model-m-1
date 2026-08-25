@@ -75,12 +75,16 @@ def test_analytics_assignment_migration_round_trip_and_constraints(
         _check(database_url)
         inspector = inspect(database.engine)
         tables = set(inspector.get_table_names())
-        assert CURRENT_SCHEMA_REVISION == "0009_generated_analytics"
+        assert CURRENT_SCHEMA_REVISION == "0010_generated_tracking"
         assert {
             "analytics_assignments",
             "analytics_assignment_revisions",
             "analytics_generated_runs",
             "analytics_observations",
+            "analytics_tracking_runs",
+            "analytics_tracker_epochs",
+            "analytics_tracks",
+            "analytics_track_lifecycle",
         }.issubset(tables)
         assignment_columns = {
             column["name"] for column in inspector.get_columns("analytics_assignments")
@@ -181,6 +185,10 @@ def test_analytics_assignment_migration_round_trip_and_constraints(
             "analytics_assignment_revisions",
             "analytics_generated_runs",
             "analytics_observations",
+            "analytics_tracking_runs",
+            "analytics_tracker_epochs",
+            "analytics_tracks",
+            "analytics_track_lifecycle",
         }.issubset(set(inspect(database.engine).get_table_names()))
         database.check_ready()
     finally:

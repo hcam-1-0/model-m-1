@@ -96,6 +96,7 @@ def test_assignment_fixture_is_strict_and_deterministic() -> None:
             "hcam.analytics.observation.created.v1",
         ),
         ("track-updated-v1.json", "hcam.analytics.track.updated.v1"),
+        ("track-lifecycle-v2.json", "hcam.analytics.track.lifecycle.v2"),
         ("analytic-event-created-v1.json", "hcam.analytics.event.created.v1"),
         (
             "model-deployment-changed-v1.json",

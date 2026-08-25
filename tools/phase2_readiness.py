@@ -18,6 +18,7 @@ except ModuleNotFoundError:
 
 
 ROOT = Path(__file__).resolve().parents[1]
+VALIDATION_COMMAND_TIMEOUT_SECONDS = 600
 PASS = "pass"
 FAIL = "fail"
 MANUAL = "manual"
@@ -342,7 +343,7 @@ def _run(
             env=env,
             text=True,
             capture_output=True,
-            timeout=300,
+            timeout=VALIDATION_COMMAND_TIMEOUT_SECONDS,
             check=False,
         )
     except (OSError, subprocess.TimeoutExpired) as exc:

@@ -1,0 +1,27 @@
+{
+  "approval_authority": "D-P3.3-WORK-AUTH",
+  "capability": "stream_local_tracking",
+  "configuration_version": "sha256:f7149f15f3682d12638af5e92ac4a81730831977e19f992456630e1e64afd5be",
+  "execution_scope": "generated_only",
+  "input_contract": "generated_structured_tier_a_observations",
+  "pipeline_id": "hcam.trk-r0.generated",
+  "policy_version": "sha256:30e1940b2e74bb86629833499e27fb2c5bc204ddf56a5010071d086bbab1d0cc",
+  "prohibited_inputs": [
+    "camera",
+    "external_dataset",
+    "image",
+    "media_locator",
+    "private_or_government_data",
+    "video"
+  ],
+  "prohibited_processing": [
+    "appearance_embedding",
+    "biometric_processing",
+    "cross_camera_linkage",
+    "global_identity",
+    "reidentification"
+  ],
+  "schema_version": "1.0.0",
+  "tracker_id": "TRK-R0-BYTETRACK-D1BF0191",
+  "tracker_version": "sha256:12bb7ce90e1089a1e160d5a15cd0c268f27a3083e4df37aef2cd042ae1160438"
+}

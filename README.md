@@ -8,17 +8,18 @@ events, synthetic ANPR, runtime selection, data/model governance, security, and
 validation. The authorized P3.0 foundation now adds model-independent contracts,
 deterministic fixtures, prohibited-data guardrails, and a durable assignment
 control plane with RBAC, ETags, revisions, audit, and transactional outbox.
-Assignments are forced to `paused/blocked`; no activation API, AI runtime, model,
-dataset, media processing, or real CCTV analytics has been implemented or
-authorized. Bounded Prometheus metrics, a Grafana control-plane dashboard, and
-fail-closed alerts cover the implemented metadata path.
+P3.2 adds an accepted, default-off generated-input detector reference. P3.3 adds
+an implemented, generated-only anonymous stream-local tracker that is awaiting
+exact-digest owner acceptance. Neither milestone adds a real CCTV media path.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
 with zero failures. Clean-source regeneration is complete, and `mayank-admin`
 accepted the exact evidence package under `D-P3.1-ACCEPTANCE`. External
-datasets, model artifacts, inference, cameras, real media, P3.2, and deployment
-remain unauthorized.
+P3.2 is accepted under `D-P3.2-ACCEPTANCE`. P3.3 implementation is authorized
+under `D-P3.3-WORK-AUTH`; cameras, real media, external datasets, identity,
+cross-camera linkage, operational alerts, P3.4, and deployment remain
+unauthorized.
 
 Start here: [docs/phase-3/README.md](docs/phase-3/README.md)
 
@@ -36,11 +37,15 @@ uv run --locked --extra dev python tools/phase31_readiness.py --json --strict
 uv run --locked --extra dev python tools/phase31_contracts.py check --require-clean-source
 uv run --locked --extra dev python tools/phase31_implementation_readiness.py --json --strict
 uv run --locked --extra dev python tools/phase32_entry_readiness.py --json
+uv run --locked --extra dev --extra analytics python tools/phase32_implementation_readiness.py
+uv run --locked --extra dev --extra analytics python tools/phase33_tracking_evidence.py check
+uv run --locked --extra dev --extra analytics python tools/phase33_sbom.py check
+uv run --locked --extra dev --extra analytics python tools/phase33_implementation_readiness.py --json
 ```
 
-The P3.2 entry command should report `blocked_pending_owner_decisions` with
-zero technical failures and five manual gates. Its `--strict` mode intentionally
-exits nonzero until the owner records all required P3.2 entry decisions.
+The P3.3 readiness command should report `ready_for_owner_acceptance` with zero
+technical failures and one manual gate until `mayank-admin` accepts the exact
+clean package digest.
 
 ## Phase 2 camera and video ingestion
 

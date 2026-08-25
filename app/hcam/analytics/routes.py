@@ -21,6 +21,7 @@ from hcam.analytics.repository import (
     assignment_to_response,
 )
 from hcam.analytics.execution import GeneratedAnalyticsExecutionService
+from hcam.analytics.tracking_execution import GeneratedTrackingExecutionService
 from hcam.analytics.schemas import (
     AnalyticsObservationListResponse,
     AnalyticsAssignmentCreate,
@@ -30,6 +31,11 @@ from hcam.analytics.schemas import (
     AnalyticsAssignmentRevisionListResponse,
     GeneratedAnalyticsRunCreate,
     GeneratedAnalyticsRunResponse,
+    GeneratedTrackingRunCreate,
+    GeneratedTrackingRunResponse,
+    TrackLifecycleListResponse,
+    TrackListResponse,
+    TrackingEpochListResponse,
 )
 from hcam.analytics.service import (
     AnalyticsAssignmentConflictError,
@@ -103,6 +109,10 @@ def _runtime_configured(request: Request) -> bool:
     return bool(request.app.state.analytics_runtime.descriptor.configured)
 
 
+def _tracking_runtime_configured(request: Request) -> bool:
+    return bool(request.app.state.settings.analytics_generated_tracking_enabled)
+
+
 @router.get(
     "/analytics-assignments",
     response_model=AnalyticsAssignmentListResponse,
@@ -133,6 +143,7 @@ def list_analytics_assignments(
         limit=limit,
         offset=offset,
         runtime_configured=_runtime_configured(request),
+        tracking_runtime_configured=_tracking_runtime_configured(request),
     )
 
 
@@ -167,6 +178,7 @@ def create_analytics_assignment(
     return assignment_to_response(
         assignment,
         runtime_configured=_runtime_configured(request),
+        tracking_runtime_configured=_tracking_runtime_configured(request),
     )
 
 
@@ -192,6 +204,7 @@ def get_analytics_assignment(
     return assignment_to_response(
         assignment,
         runtime_configured=_runtime_configured(request),
+        tracking_runtime_configured=_tracking_runtime_configured(request),
     )
 
 
@@ -226,6 +239,7 @@ def update_analytics_assignment(
     return assignment_to_response(
         assignment,
         runtime_configured=_runtime_configured(request),
+        tracking_runtime_configured=_tracking_runtime_configured(request),
     )
 
 
@@ -247,6 +261,7 @@ def activate_analytics_assignment(
             assignment_id,
             activate=True,
             runtime_configured=_runtime_configured(request),
+            tracking_runtime_configured=_tracking_runtime_configured(request),
             expected_version=_expected_version(if_match),
             principal=principal,
             reason=reason,
@@ -260,6 +275,7 @@ def activate_analytics_assignment(
     return assignment_to_response(
         assignment,
         runtime_configured=_runtime_configured(request),
+        tracking_runtime_configured=_tracking_runtime_configured(request),
     )
 
 
@@ -281,6 +297,7 @@ def pause_analytics_assignment(
             assignment_id,
             activate=False,
             runtime_configured=_runtime_configured(request),
+            tracking_runtime_configured=_tracking_runtime_configured(request),
             expected_version=_expected_version(if_match),
             principal=principal,
             reason=reason,
@@ -294,6 +311,7 @@ def pause_analytics_assignment(
     return assignment_to_response(
         assignment,
         runtime_configured=_runtime_configured(request),
+        tracking_runtime_configured=_tracking_runtime_configured(request),
     )
 
 
@@ -407,6 +425,168 @@ def list_generated_analytics_observations(
     )
     try:
         result = service.list_observations(
+            run_id,
+            principal=principal,
+            limit=limit,
+            offset=offset,
+        )
+    except RuntimeError as exc:
+        _raise_service_error(exc)
+        raise
+    _no_store(response)
+    return result
+
+
+@router.post(
+    "/analytics-assignments/{assignment_id}/generated-tracking-runs",
+    response_model=GeneratedTrackingRunResponse,
+    status_code=status.HTTP_201_CREATED,
+)
+def execute_generated_tracking_run(
+    assignment_id: str,
+    payload: GeneratedTrackingRunCreate,
+    request: Request,
+    response: Response,
+    session: SessionDependency,
+    principal: EditorPrincipal,
+    reason: ReasonHeader,
+) -> GeneratedTrackingRunResponse:
+    service = GeneratedTrackingExecutionService(
+        session,
+        runtime_configured=_tracking_runtime_configured(request),
+        lanes=request.app.state.analytics_tracking_lanes,
+    )
+    try:
+        result = service.execute(
+            assignment_id,
+            payload,
+            principal=principal,
+            reason=reason,
+            request_id=request_id_from_scope(request.scope),
+        )
+    except RuntimeError as exc:
+        _raise_service_error(exc)
+        raise
+    request.app.state.request_metrics.analytics_tracking_lanes_active.set(
+        request.app.state.analytics_tracking_lanes.active_lanes
+    )
+    request.app.state.request_metrics.analytics_tracking_queue.set(
+        request.app.state.analytics_tracking_lanes.queued_batches
+    )
+    response.headers["Location"] = f"/analytics-tracking-runs/{result.run_id}"
+    _no_store(response)
+    return result
+
+
+@router.get(
+    "/analytics-tracking-runs/{run_id}",
+    response_model=GeneratedTrackingRunResponse,
+)
+def get_generated_tracking_run(
+    run_id: str,
+    request: Request,
+    response: Response,
+    session: SessionDependency,
+    principal: ViewerPrincipal,
+) -> GeneratedTrackingRunResponse:
+    service = GeneratedTrackingExecutionService(
+        session,
+        runtime_configured=_tracking_runtime_configured(request),
+        lanes=request.app.state.analytics_tracking_lanes,
+    )
+    try:
+        result = service.get_run(run_id, principal=principal)
+    except RuntimeError as exc:
+        _raise_service_error(exc)
+        raise
+    _no_store(response)
+    return result
+
+
+@router.get(
+    "/analytics-tracking-runs/{run_id}/epochs",
+    response_model=TrackingEpochListResponse,
+)
+def list_generated_tracking_epochs(
+    run_id: str,
+    request: Request,
+    response: Response,
+    session: SessionDependency,
+    principal: ViewerPrincipal,
+    limit: Annotated[int, Query(ge=1, le=500)] = 100,
+    offset: Annotated[int, Query(ge=0)] = 0,
+) -> TrackingEpochListResponse:
+    service = GeneratedTrackingExecutionService(
+        session,
+        runtime_configured=_tracking_runtime_configured(request),
+        lanes=request.app.state.analytics_tracking_lanes,
+    )
+    try:
+        result = service.list_epochs(
+            run_id,
+            principal=principal,
+            limit=limit,
+            offset=offset,
+        )
+    except RuntimeError as exc:
+        _raise_service_error(exc)
+        raise
+    _no_store(response)
+    return result
+
+
+@router.get(
+    "/analytics-tracking-runs/{run_id}/tracks",
+    response_model=TrackListResponse,
+)
+def list_generated_tracking_tracks(
+    run_id: str,
+    request: Request,
+    response: Response,
+    session: SessionDependency,
+    principal: ViewerPrincipal,
+    limit: Annotated[int, Query(ge=1, le=500)] = 100,
+    offset: Annotated[int, Query(ge=0)] = 0,
+) -> TrackListResponse:
+    service = GeneratedTrackingExecutionService(
+        session,
+        runtime_configured=_tracking_runtime_configured(request),
+        lanes=request.app.state.analytics_tracking_lanes,
+    )
+    try:
+        result = service.list_tracks(
+            run_id,
+            principal=principal,
+            limit=limit,
+            offset=offset,
+        )
+    except RuntimeError as exc:
+        _raise_service_error(exc)
+        raise
+    _no_store(response)
+    return result
+
+
+@router.get(
+    "/analytics-tracking-runs/{run_id}/lifecycle",
+    response_model=TrackLifecycleListResponse,
+)
+def list_generated_tracking_lifecycle(
+    run_id: str,
+    request: Request,
+    response: Response,
+    session: SessionDependency,
+    principal: ViewerPrincipal,
+    limit: Annotated[int, Query(ge=1, le=1000)] = 100,
+    offset: Annotated[int, Query(ge=0)] = 0,
+) -> TrackLifecycleListResponse:
+    service = GeneratedTrackingExecutionService(
+        session,
+        runtime_configured=_tracking_runtime_configured(request),
+        lanes=request.app.state.analytics_tracking_lanes,
+    )
+    try:
+        result = service.list_lifecycle(
             run_id,
             principal=principal,
             limit=limit,

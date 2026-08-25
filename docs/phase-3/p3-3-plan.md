@@ -1,7 +1,12 @@
 # P3.3 Per-Camera Tracking Plan
 
-Status: planning complete; owner entry decisions and implementation start are
-pending.
+Historical planning status: planning complete; owner entry decisions and
+implementation start were pending at this plan freeze.
+
+Current status overlay: implementation is authorized under
+`D-P3.3-WORK-AUTH`, is technically validated, and awaits clean-source
+exact-digest owner acceptance. This overlay does not rewrite the planning
+decisions below.
 
 Planning authority: `D-P3.3-PLAN-AUTH`.
 

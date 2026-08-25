@@ -155,6 +155,7 @@ class Settings:
     playback_issuer: str = "hcam-core"
     playback_audience: str = "mediamtx"
     analytics_generated_runtime_enabled: bool = False
+    analytics_generated_tracking_enabled: bool = False
     analytics_artifact_root: Path | None = field(default=None, repr=False)
     analytics_model_relative_path: Path = Path(
         "DET-R0-ONNX-UPSTREAM-0.1.1RC0/yolox_tiny.onnx"
@@ -211,6 +212,10 @@ class Settings:
         if environment == "production" and self.analytics_generated_runtime_enabled:
             raise ValueError(
                 "the generated analytics runtime is forbidden in production"
+            )
+        if environment == "production" and self.analytics_generated_tracking_enabled:
+            raise ValueError(
+                "the generated tracking runtime is forbidden in production"
             )
         if environment == "production" and any(
             rule.scheme == "http" for rule in self.onvif_egress_rules
@@ -417,6 +422,9 @@ class Settings:
             ),
             analytics_generated_runtime_enabled=_environment_flag(
                 "HCAM_ANALYTICS_GENERATED_RUNTIME_ENABLED"
+            ),
+            analytics_generated_tracking_enabled=_environment_flag(
+                "HCAM_ANALYTICS_GENERATED_TRACKING_ENABLED"
             ),
             analytics_artifact_root=(
                 Path(value)

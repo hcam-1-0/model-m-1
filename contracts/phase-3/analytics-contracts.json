@@ -1118,6 +1118,371 @@
       "title": "ObservationCreatedV1",
       "type": "object"
     },
+    "hcam.analytics.track.lifecycle.v2": {
+      "$defs": {
+        "NormalizedBoundingBox": {
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Height",
+              "type": "number"
+            },
+            "width": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Width",
+              "type": "number"
+            },
+            "x": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "title": "NormalizedBoundingBox",
+          "type": "object"
+        },
+        "ProcessingLineage": {
+          "additionalProperties": false,
+          "properties": {
+            "code_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Code Version",
+              "type": "string"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "pipeline": {
+              "$ref": "#/$defs/VersionedArtifact"
+            },
+            "policy_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Policy Version",
+              "type": "string"
+            },
+            "postprocessing_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Postprocessing Version",
+              "type": "string"
+            },
+            "preprocessing_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Preprocessing Version",
+              "type": "string"
+            },
+            "runtime": {
+              "$ref": "#/$defs/RuntimeReference"
+            },
+            "taxonomy_version": {
+              "maxLength": 128,
+              "pattern": "^hcam\\.[a-z][a-z0-9_.-]*\\.v[1-9][0-9]*$",
+              "title": "Taxonomy Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code_version",
+            "pipeline",
+            "preprocessing_version",
+            "postprocessing_version",
+            "taxonomy_version",
+            "policy_version",
+            "runtime",
+            "configuration_digest"
+          ],
+          "title": "ProcessingLineage",
+          "type": "object"
+        },
+        "RuntimeReference": {
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Name",
+              "type": "string"
+            },
+            "version": {
+              "maxLength": 128,
+              "minLength": 1,
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "version"
+          ],
+          "title": "RuntimeReference",
+          "type": "object"
+        },
+        "TrackLifecyclePayloadV2": {
+          "additionalProperties": false,
+          "properties": {
+            "age_frames": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Age Frames",
+              "type": "integer"
+            },
+            "bbox": {
+              "$ref": "#/$defs/NormalizedBoundingBox"
+            },
+            "camera_id": {
+              "maxLength": 160,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "class_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+              "title": "Class Id",
+              "type": "string"
+            },
+            "confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Confidence",
+              "type": "number"
+            },
+            "first_observed_at": {
+              "format": "date-time",
+              "title": "First Observed At",
+              "type": "string"
+            },
+            "first_sequence": {
+              "maximum": 9223372036854775807,
+              "minimum": 0,
+              "title": "First Sequence",
+              "type": "integer"
+            },
+            "last_visible_at": {
+              "format": "date-time",
+              "title": "Last Visible At",
+              "type": "string"
+            },
+            "last_visible_sequence": {
+              "maximum": 9223372036854775807,
+              "minimum": 0,
+              "title": "Last Visible Sequence",
+              "type": "integer"
+            },
+            "latest_observation_id": {
+              "pattern": "^obs_[0-9a-f]{32}$",
+              "title": "Latest Observation Id",
+              "type": "string"
+            },
+            "lineage": {
+              "$ref": "#/$defs/ProcessingLineage"
+            },
+            "missed_frames": {
+              "maximum": 2147483647,
+              "minimum": 0,
+              "title": "Missed Frames",
+              "type": "integer"
+            },
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "reason": {
+              "enum": [
+                "confirmed",
+                "matched",
+                "recovered",
+                "temporarily_unmatched",
+                "lost_timeout",
+                "explicit_reset",
+                "sequence_gap",
+                "sequence_regression",
+                "timestamp_regression",
+                "configuration_change",
+                "source_change",
+                "worker_restart",
+                "resource_exhausted"
+              ],
+              "title": "Reason",
+              "type": "string"
+            },
+            "retention_class": {
+              "enum": [
+                "derived.analytics.standard",
+                "derived.analytics.restricted"
+              ],
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "source_sequence": {
+              "maximum": 9223372036854775807,
+              "minimum": 0,
+              "title": "Source Sequence",
+              "type": "integer"
+            },
+            "state": {
+              "enum": [
+                "started",
+                "updated",
+                "lost",
+                "ended"
+              ],
+              "title": "State",
+              "type": "string"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "track_id": {
+              "pattern": "^trk_[0-9a-f]{32}$",
+              "title": "Track Id",
+              "type": "string"
+            },
+            "tracker": {
+              "$ref": "#/$defs/VersionedArtifact"
+            },
+            "tracker_epoch": {
+              "pattern": "^epoch_[0-9a-f]{32}$",
+              "title": "Tracker Epoch",
+              "type": "string"
+            },
+            "visible_frames": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Visible Frames",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "track_id",
+            "tracker_epoch",
+            "stream_id",
+            "camera_id",
+            "state",
+            "reason",
+            "first_observed_at",
+            "first_sequence",
+            "observed_at",
+            "source_sequence",
+            "last_visible_at",
+            "last_visible_sequence",
+            "latest_observation_id",
+            "class_id",
+            "bbox",
+            "confidence",
+            "age_frames",
+            "visible_frames",
+            "missed_frames",
+            "tracker",
+            "lineage",
+            "retention_class"
+          ],
+          "title": "TrackLifecyclePayloadV2",
+          "type": "object"
+        },
+        "VersionedArtifact": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Id",
+              "type": "string"
+            },
+            "version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "title": "VersionedArtifact",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "camera_id": {
+          "maxLength": 160,
+          "minLength": 3,
+          "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Camera Id",
+          "type": "string"
+        },
+        "event_id": {
+          "pattern": "^evt_[0-9a-f]{32}$",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "event_type": {
+          "const": "hcam.analytics.track.lifecycle.v2",
+          "default": "hcam.analytics.track.lifecycle.v2",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "occurred_at": {
+          "format": "date-time",
+          "title": "Occurred At",
+          "type": "string"
+        },
+        "partition_key": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Partition Key",
+          "type": "string"
+        },
+        "payload": {
+          "$ref": "#/$defs/TrackLifecyclePayloadV2"
+        },
+        "schema_version": {
+          "const": 2,
+          "default": 2,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_id",
+        "stream_id",
+        "camera_id",
+        "partition_key",
+        "occurred_at",
+        "payload"
+      ],
+      "title": "TrackLifecycleV2",
+      "type": "object"
+    },
     "hcam.analytics.track.updated.v1": {
       "$defs": {
         "TrackPayloadV1": {

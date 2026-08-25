@@ -1,0 +1,28 @@
+{
+  "approval_authority": "D-P3.3-WORK-AUTH",
+  "classes": [
+    "object.person",
+    "vehicle.bicycle",
+    "vehicle.car",
+    "vehicle.motorcycle",
+    "vehicle.bus",
+    "vehicle.truck",
+    "object.unknown"
+  ],
+  "generator_id": "DATA-TRK-GEN-R0",
+  "input_kind": "generated_structured_observations_and_ground_truth",
+  "media_present": false,
+  "scenario_ids": [
+    "single-object",
+    "two-crossing",
+    "short-occlusion",
+    "long-occlusion",
+    "all-tier-a",
+    "discontinuity",
+    "overload"
+  ],
+  "schema_version": "1.0.0",
+  "seed_minimum": 0,
+  "seed_maximum": 4294967295,
+  "source_data": "code_generated_only"
+}

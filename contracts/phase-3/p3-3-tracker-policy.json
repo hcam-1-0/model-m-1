@@ -1,0 +1,50 @@
+{
+  "accountable_owner_id": "mayank-admin",
+  "approval_authority": "D-P3.3-WORK-AUTH",
+  "association": {
+    "appearance_features": false,
+    "class_partition": "exact_hcam_tier_a_class",
+    "family": "bytetrack_two_stage_iou_motion",
+    "first_match_cost_limit": 0.8,
+    "high_confidence_threshold": 0.25,
+    "interpolation": false,
+    "low_confidence_floor": 0.1,
+    "minimum_confirmations": 2,
+    "new_track_margin": 0.1,
+    "second_match_cost_limit": 0.5,
+    "tentative_match_cost_limit": 0.7
+  },
+  "evaluation_gates": {
+    "challenge_hota_minimum": 0.85,
+    "challenge_idf1_minimum": 0.9,
+    "golden_hota_minimum": 1.0,
+    "golden_idf1_minimum": 1.0,
+    "isolation_violations_maximum": 0,
+    "metric_regression_maximum": 0.02,
+    "per_class_hota_minimum": 0.8,
+    "per_class_idf1_minimum": 0.85
+  },
+  "execution_scope": "generated_only",
+  "forbidden_capabilities": [
+    "appearance_embedding",
+    "biometric_processing",
+    "cross_camera_linkage",
+    "global_identity",
+    "media_input",
+    "reidentification"
+  ],
+  "resource_limits": {
+    "association_budget_ms": 250,
+    "incremental_worker_memory_mib": 256,
+    "maximum_detections_per_frame": 300,
+    "maximum_gap_ms": 3000,
+    "maximum_lost_frames": 30,
+    "maximum_queued_batches_per_stream": 64,
+    "maximum_queue_age_ms": 1000,
+    "maximum_stream_lanes_per_worker": 32,
+    "maximum_tracks_per_class": 512
+  },
+  "schema_version": "1.0.0",
+  "status": "owner_authorized",
+  "tracker_id": "TRK-R0-BYTETRACK-D1BF0191"
+}

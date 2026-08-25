@@ -20,6 +20,10 @@ from hcam.analytics.models import (
     AnalyticsAssignmentRevision,
     AnalyticsGeneratedRun,
     AnalyticsObservation,
+    AnalyticsTrackerEpoch,
+    AnalyticsTrack,
+    AnalyticsTrackLifecycle,
+    AnalyticsTrackingRun,
 )
 from hcam.audit.models import AuditEvent
 from hcam.camera_registry.models import utc_now
@@ -200,6 +204,45 @@ class RequestMetrics:
             "Generated frame leases currently held in memory.",
             registry=self.registry,
         )
+        self.analytics_tracking_runs = Gauge(
+            "hcam_analytics_tracking_runs_retained_total",
+            "Generated-only tracking runs retained by bounded outcome.",
+            ("status",),
+            registry=self.registry,
+        )
+        self.analytics_tracking_duration = Gauge(
+            "hcam_analytics_tracking_run_duration_milliseconds",
+            "Average generated-only tracking run duration by bounded outcome.",
+            ("status",),
+            registry=self.registry,
+        )
+        self.analytics_tracking_epochs_open = Gauge(
+            "hcam_analytics_tracking_epochs_open_total",
+            "Generated-only tracker epochs without a terminal reset.",
+            registry=self.registry,
+        )
+        self.analytics_tracking_tracks = Gauge(
+            "hcam_analytics_tracks_retained_total",
+            "Anonymous stream-local tracks retained by lifecycle state.",
+            ("state",),
+            registry=self.registry,
+        )
+        self.analytics_tracking_transitions = Gauge(
+            "hcam_analytics_track_transitions_retained_total",
+            "Anonymous lifecycle transitions retained by bounded state and reason.",
+            ("state", "reason"),
+            registry=self.registry,
+        )
+        self.analytics_tracking_lanes_active = Gauge(
+            "hcam_analytics_tracking_lanes_active",
+            "Active process-local generated tracking stream lanes.",
+            registry=self.registry,
+        )
+        self.analytics_tracking_queue = Gauge(
+            "hcam_analytics_tracking_queue_depth",
+            "Generated tracking batches waiting for a bounded stream lane.",
+            registry=self.registry,
+        )
 
     def observe(
         self,
@@ -376,6 +419,79 @@ class RequestMetrics:
             select(func.count()).select_from(AnalyticsObservation)
         )
         self.analytics_observations.set(int(observation_count or 0))
+        tracking_counts = dict(
+            session.execute(
+                select(AnalyticsTrackingRun.status, func.count()).group_by(
+                    AnalyticsTrackingRun.status
+                )
+            ).all()
+        )
+        tracking_durations = dict(
+            session.execute(
+                select(
+                    AnalyticsTrackingRun.status,
+                    func.avg(AnalyticsTrackingRun.duration_ms),
+                ).group_by(AnalyticsTrackingRun.status)
+            ).all()
+        )
+        for status_value in ("succeeded", "failed"):
+            self.analytics_tracking_runs.labels(status=status_value).set(
+                tracking_counts.get(status_value, 0)
+            )
+            self.analytics_tracking_duration.labels(status=status_value).set(
+                float(tracking_durations.get(status_value) or 0)
+            )
+        open_epochs = session.scalar(
+            select(func.count())
+            .select_from(AnalyticsTrackerEpoch)
+            .where(AnalyticsTrackerEpoch.ended_at.is_(None))
+        )
+        self.analytics_tracking_epochs_open.set(int(open_epochs or 0))
+        track_counts = dict(
+            session.execute(
+                select(AnalyticsTrack.state, func.count()).group_by(
+                    AnalyticsTrack.state
+                )
+            ).all()
+        )
+        for state in ("started", "updated", "lost", "ended"):
+            self.analytics_tracking_tracks.labels(state=state).set(
+                track_counts.get(state, 0)
+            )
+        transition_counts = {
+            (state, reason): count
+            for state, reason, count in session.execute(
+                select(
+                    AnalyticsTrackLifecycle.state,
+                    AnalyticsTrackLifecycle.reason,
+                    func.count(),
+                ).group_by(
+                    AnalyticsTrackLifecycle.state,
+                    AnalyticsTrackLifecycle.reason,
+                )
+            ).all()
+        }
+        reasons = (
+            "confirmed",
+            "matched",
+            "recovered",
+            "temporarily_unmatched",
+            "lost_timeout",
+            "explicit_reset",
+            "sequence_gap",
+            "sequence_regression",
+            "timestamp_regression",
+            "configuration_change",
+            "source_change",
+            "worker_restart",
+            "resource_exhausted",
+        )
+        for state in ("started", "updated", "lost", "ended"):
+            for reason in reasons:
+                self.analytics_tracking_transitions.labels(
+                    state=state,
+                    reason=reason,
+                ).set(transition_counts.get((state, reason), 0))
 
     def _refresh_onvif_operation_metrics(self, session: Session, now) -> None:
         operation_types = (
