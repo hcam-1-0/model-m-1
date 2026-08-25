@@ -48,11 +48,11 @@ def test_python_jobs_use_pinned_uv_and_the_reviewed_lock() -> None:
     workflow = _workflow()
     pinned_action = f"astral-sh/setup-uv@{SETUP_UV_SHA} # v9.0.0"
 
-    assert workflow.count(pinned_action) == 5
+    assert workflow.count(pinned_action) == 6
     assert "astral-sh/setup-uv@v" not in workflow
-    assert workflow.count('version: "0.12.3"') == 5
-    assert workflow.count("cache-dependency-glob: uv.lock") == 5
-    assert workflow.count("uv sync --locked") == 5
+    assert workflow.count('version: "0.12.3"') == 6
+    assert workflow.count("cache-dependency-glob: uv.lock") == 6
+    assert workflow.count("uv sync --locked") == 6
     assert "pip install -e" not in workflow
 
 
@@ -61,7 +61,7 @@ def test_package_job_builds_and_installs_from_locked_hashes() -> None:
 
     assert "uv sync --locked --extra dev" in job
     assert "python -m build --no-isolation" in job
-    assert "uv export --locked --no-dev --no-emit-project" in job
+    assert "uv export --locked --extra analytics --no-dev --no-emit-project" in job
     assert "pip install --require-hashes" in job
     assert "pip install --no-deps dist/*.whl" in job
 

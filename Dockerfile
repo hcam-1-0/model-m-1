@@ -17,7 +17,7 @@ COPY app ./app
 RUN mkdir -p /dist \
     && python -m pip install --no-cache-dir "uv==${UV_VERSION}" \
     && uv sync --locked --extra dev --no-install-project \
-    && uv export --locked --no-dev --extra postgres --no-emit-project \
+    && uv export --locked --no-dev --extra analytics --extra postgres --no-emit-project \
         --format requirements-txt --output-file /dist/requirements.txt \
     && uv run --locked --extra dev python -m build --no-isolation \
         --wheel --outdir /dist

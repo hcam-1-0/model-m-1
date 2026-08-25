@@ -1,0 +1,85 @@
+name: hcam-phase3-validation
+
+x-hcam-runtime: &hcam-runtime
+  image: hcam-core:phase3-lab
+  build:
+    context: ..
+    dockerfile: Dockerfile
+    args:
+      VCS_REF: ${HCAM_VCS_REF:-local-phase3-validation}
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  init: true
+
+services:
+  database:
+    image: postgis/postgis:18-3.6-alpine@sha256:eb2e8b8afd9b0ecee83bc20fd01aca62a5071bada2c0f38763174b653f8eed42
+    environment:
+      POSTGRES_DB: hcam_phase3
+      POSTGRES_USER: hcam_phase3
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+    secrets: [postgres_password]
+    volumes:
+      - hcam_phase3_database:/var/lib/postgresql
+    ports:
+      - 127.0.0.1:${HCAM_PHASE3_POSTGIS_PORT:-55434}:5432
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB} &&
+          psql -U $${POSTGRES_USER} -d $${POSTGRES_DB} -tAc
+          'SELECT postgis_lib_version()' >/dev/null
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+    restart: unless-stopped
+
+  migrate:
+    <<: *hcam-runtime
+    command: [alembic, upgrade, head]
+    environment:
+      HCAM_DATABASE_URL_FILE: /run/secrets/database_url
+      HCAM_ENVIRONMENT: test
+    secrets: [database_url]
+    depends_on:
+      database:
+        condition: service_healthy
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    healthcheck:
+      disable: true
+    restart: "no"
+
+  api:
+    <<: *hcam-runtime
+    environment:
+      HCAM_ACCESS_LOG_ENABLED: "true"
+      HCAM_ANALYTICS_GENERATED_GEOMETRY_ENABLED: "true"
+      HCAM_DATABASE_URL_FILE: /run/secrets/database_url
+      HCAM_DEV_AUTH_ENABLED: "true"
+      HCAM_ENVIRONMENT: test
+      HCAM_METRICS_ENABLED: "true"
+      HCAM_METRICS_TOKEN_FILE: /run/secrets/metrics_token
+    secrets: [database_url, metrics_token]
+    depends_on:
+      database:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    ports:
+      - 127.0.0.1:${HCAM_PHASE3_API_PORT:-8003}:8000
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    restart: unless-stopped
+
+secrets:
+  postgres_password:
+    file: ${HCAM_POSTGRES_PASSWORD_FILE:?set HCAM_POSTGRES_PASSWORD_FILE}
+  database_url:
+    file: ${HCAM_DATABASE_URL_SECRET_FILE:?set HCAM_DATABASE_URL_SECRET_FILE}
+  metrics_token:
+    file: ${HCAM_METRICS_TOKEN_SECRET_FILE:?set HCAM_METRICS_TOKEN_SECRET_FILE}
+
+volumes:
+  hcam_phase3_database:

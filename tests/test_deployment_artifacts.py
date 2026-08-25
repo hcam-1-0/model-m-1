@@ -22,7 +22,8 @@ def test_container_runtime_is_pinned_non_root_and_health_checked() -> None:
     assert "RUN mkdir -p /dist" in dockerfile
     assert "uv sync --locked --extra dev --no-install-project" in dockerfile
     assert (
-        "uv export --locked --no-dev --extra postgres --no-emit-project" in dockerfile
+        "uv export --locked --no-dev --extra analytics --extra postgres "
+        "--no-emit-project" in dockerfile
     )
     assert "python -m build --no-isolation" in dockerfile
     assert "--wheel --outdir /dist" in dockerfile
