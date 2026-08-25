@@ -63,6 +63,9 @@ autonomous enforcement.
 | [P3.4 owner decisions](p3-4-owner-decisions.md) | Accepted hybrid geometry, visual/CEL rules, time, and persistence selections |
 | [P3.4 start authorization](p3-4-start-authorization.md) | Exact generated-only local implementation boundary and continuing exclusions |
 | [P3.4 planning readiness](p3-4-planning-readiness-report.md) | Machine-verified package digest, technical checks, and manual gates |
+| [P3.4 implementation](p3-4-implementation.md) | Hybrid geometry, constrained rules, deterministic events, persistence, APIs, and boundaries |
+| [P3.4 third-party notices](p3-4-third-party-notices.md) | Exact direct dependencies, licenses, native runtimes, and vulnerability boundary |
+| [P3.4 implementation readiness](p3-4-implementation-readiness-report.md) | Tests, coverage, migrations, packaging, Docker evidence, deployment block, and owner gate |
 
 ## Non-Negotiable Boundary
 
@@ -145,15 +148,15 @@ events. Generated HOTA/IDF1 and pinned TrackEval parity pass, but no real-media,
 cross-camera, identity, alerting, or deployment claim is made. The exact package
 is accepted under `D-P3.3-ACCEPTANCE`.
 
-P3.4 planning now defines immutable normalized geometry and rule versions,
+P3.4 now implements immutable normalized geometry and rule versions,
 line/zone/dwell/occupancy state machines, event-time ordering, bounded lateness,
 deterministic replay, transactional events, resource ceilings, retention, and a
-generated C10 validation suite. It installs no geometry dependency and adds no
-runtime evaluator. The four technical decisions select hybrid
+generated C10 validation suite. The four technical decisions select hybrid
 PostGIS/Shapely geometry, a visual typed rule graph with constrained CEL, the
 balanced deterministic time policy, and bounded PostgreSQL/PostGIS persistence.
-`D-P3.4-START` now authorizes the bounded generated-only implementation. It does
-not grant final implementation acceptance or authorize any broader capability.
+The bounded implementation is technically validated under `D-P3.4-START`; it
+does not have final owner acceptance and authorizes no broader capability. The
+PostGIS image is blocked from deployment pending remediation and rescan.
 
 Accepted planning snapshot digest:
 `57D2F541C4AA9AB8988A5DF7FC228DA4047BF471B64AD704BDB478308FDC3898`.

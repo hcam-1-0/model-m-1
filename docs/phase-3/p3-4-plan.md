@@ -28,10 +28,13 @@ P3.4 planning defines:
 - deterministic generated-only scenarios and acceptance evidence;
 - exact dependency, source, license, SBOM, and rollback gates.
 
-This planning package does not authorize implementation, dependency changes,
-migrations, APIs, workers, generated inference execution, cameras, media,
+At the planning checkpoint, this package did not authorize implementation,
+dependency changes, migrations, APIs, workers, or execution. The later explicit
+`D-P3.4-START` decision authorized only the bounded, default-off,
+production-forbidden, generated-only implementation and local evidence now
+described in [P3.4 implementation](p3-4-implementation.md). Cameras, media,
 external data, identity, ReID, cross-camera linkage, watchlists, alerts,
-autonomous action, deployment, P3.5, or remote Git actions.
+autonomous action, deployment, P3.5, and remote Git actions remain prohibited.
 
 ## Existing Foundation
 

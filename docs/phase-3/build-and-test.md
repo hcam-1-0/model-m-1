@@ -248,3 +248,36 @@ uv run --locked --extra dev python tools/phase31_contracts.py write --acknowledg
 Review the schema and fixture diff before accepting a rewrite. Generated
 fixtures are synthetic metadata only and must remain free of media, credentials,
 camera locators, biometric templates, Government data, and owner records.
+
+## P3.4 Implementation Validation
+
+The generated-only geometry/event package passed 707 tests and 119 subtests
+with seven PostgreSQL tests skipped in the general local suite, one pre-existing
+Starlette warning, and 90.22% total branch coverage. Focused evaluator branch
+coverage is 94.32%. Five sealed C10 groups have exact logic agreement and 20
+stable replays per scenario.
+
+SQLite and pinned PostGIS validation both passed `0011 -> 0010 -> 0011`. The
+PostGIS behavior test passed on PostgreSQL 18.6, PostGIS 3.6.4, GEOS 3.14.1,
+and PROJ 9.8.1. A fresh loopback Compose stack validated database initialization,
+migration, non-root API health/readiness, metrics, and all P3.4 route families.
+Its database healthcheck was hardened after the first empty-volume run exposed
+the PostGIS bootstrap-server readiness race.
+
+The source distribution and wheel build. A hash-locked isolated Python 3.14.6
+install starts the application and CLI with Shapely 2.1.2, local GEOS 3.13.1,
+NumPy 2.5.2, and CEL 0.1.3. Archive scans found no media, model, or secret
+payloads. The Python audit checked 76 packages with no known vulnerabilities.
+
+The PostGIS image scan records 54 unresolved findings, including 2 critical and
+21 high, so deployment remains blocked. These results authorize no camera,
+media, external data, identity, alert, deployment, P3.5, or remote Git action.
+
+Verify the bounded evidence without granting owner acceptance:
+
+```powershell
+uv run --locked --extra dev python tools/phase34_readiness.py --strict
+uv run --locked --extra dev --extra analytics python tools/phase34_c10_evidence.py check
+uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.py check
+uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source
+```

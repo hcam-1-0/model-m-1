@@ -11,9 +11,9 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   unconfigured runtime result.
 - `openapi.json`: the current FastAPI contract, including the activation-blocked
   analytics-assignment API;
-- `database.json`: the current Alembic `0010_generated_tracking` schema,
-  including assignments, generated runs, anonymous stream-local tracking, and
-  database guard constraints.
+- `database.json`: the current Alembic `0011_geometry_events` schema, including
+  assignments, generated runs, anonymous stream-local tracking, normalized
+  geometry/rules/events, and database guard constraints.
 - `p3-0-owner-decisions.json`: the machine-readable owner approval record for
   P3-G1 through P3-G3, including the exact Tier A scope, synthetic-lab metadata
   policy, accountable owner, optional reviewer, and non-authorization boundary.
@@ -55,6 +55,13 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   continuing non-authorization.
 - `p3-4-start-authorization.json`: exact baseline-bound generated-only local
   implementation authorization, authorized work, and continuing exclusions.
+- `p3-4-c10-evidence.json`: five sealed generated geometry/event scenarios,
+  expected outputs, state traces, and deterministic replay hashes.
+- `p3-4-dependencies.json`, `p3-4-sbom.cdx.json`, and
+  `p3-4-container-vulnerability-review.json`: exact Python/native provenance,
+  SBOM, and the unresolved PostGIS image deployment block.
+- `p3-4-validation-evidence.json`: test, coverage, migration, packaging,
+  dependency-audit, Docker, and prohibited-input evidence.
 
 Verify all tracked snapshots:
 
@@ -70,6 +77,9 @@ uv run --locked --extra dev --extra analytics python tools/phase33_tracking_evid
 uv run --locked --extra dev --extra analytics python tools/phase33_sbom.py check
 uv run --locked --extra dev --extra analytics python tools/phase33_implementation_readiness.py --require-clean-source --require-acceptance
 uv run --locked --extra dev python tools/phase34_readiness.py --strict
+uv run --locked --extra dev --extra analytics python tools/phase34_c10_evidence.py check
+uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.py check
+uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source
 ```
 
 Rewriting snapshots requires an explicit review acknowledgement:
@@ -82,8 +92,9 @@ uv run --locked --extra dev python tools/phase31_contracts.py write --acknowledg
 
 Taxonomy and geometry fixtures remain `draft`. The accepted P3.2 and P3.3
 runtime slices are generated-only, default-off, and production-forbidden.
-P3.4 generated-only local implementation is authorized by `D-P3.4-START` under
-the accepted decisions. Final implementation acceptance remains pending.
+P3.4 generated-only local implementation is built and technically validated
+under `D-P3.4-START`. Exact-digest final implementation acceptance remains
+pending, and the PostGIS validation image remains deployment-blocked.
 These contracts do not authorize camera access, raw-media persistence, external
 datasets, identity, cross-camera association, Government matching, alerts,
-deployment, or P3.4 implementation.
+deployment, or P3.5 work.

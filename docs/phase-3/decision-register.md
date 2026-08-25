@@ -325,8 +325,9 @@ deployment, and remote Git actions are not authorized by this decision.
 
 ### DR-0033: P3.4 Geometry And Event Planning Baseline
 
-Status: planning authorized under `D-P3.4-PLAN-AUTH` on 2026-08-25;
-implementation pending owner decisions.
+Status: planning and technical decisions accepted; bounded generated-only
+implementation completed under `D-P3.4-START`; exact-digest owner acceptance
+pending.
 
 P3.4 planning uses accepted anonymous stream-local P3.3 lifecycle v2 as its only
 observation dependency. The recommended baseline uses normalized image-space
@@ -347,6 +348,11 @@ It permits local generated-only implementation and exact dependency evidence.
 It grants no final acceptance, camera/media/data access, identity, cross-camera
 linkage, Government matching, operational alerting, deployment, P3.5, or remote
 Git action.
+
+The implemented package now passes generated C10 replay, SQLite/PostGIS
+migration, full-suite coverage, packaging, audit, and Docker/Compose evidence.
+The PostGIS image has unresolved critical/high findings and remains explicitly
+deployment-blocked. `D-P3.4-ACCEPTANCE` is still an independent owner decision.
 
 ## Decisions Explicitly Deferred
 
