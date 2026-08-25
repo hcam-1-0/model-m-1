@@ -1,7 +1,7 @@
 # P3.4 Geometry And Event Primitives Plan
 
 Status: planning complete; technical decisions `D-P3.4-001` through
-`D-P3.4-004` accepted; `D-P3.4-START` pending.
+`D-P3.4-004` accepted; `D-P3.4-START` authorized; final acceptance pending.
 
 Planning authority: `D-P3.4-PLAN-AUTH`.
 
@@ -104,8 +104,7 @@ indexing, and administrative queries. Exact Shapely 2.1.2 is the real-time
 worker predicate candidate over immutable locally cached geometry. Per-track
 evaluation does not require a database round trip.
 
-No dependency can be added until `D-P3.4-START` is accepted. Before
-installation, the implementation package must bind:
+Under `D-P3.4-START`, before installation the implementation package must bind:
 
 - exact PostgreSQL/PostGIS image or package version, artifact URL, SHA-256, and
   platform tag;
@@ -358,7 +357,7 @@ duplicate outbox messages, or resurrect closed state.
 
 ## Persistence Plan
 
-Only after `D-P3.4-START`, additive migration design may create:
+The authorized additive migration design may create:
 
 | Store | Purpose | Principal constraints |
 | --- | --- | --- |
@@ -496,8 +495,8 @@ scale, legal approval, or deployment readiness.
 
 ## Delivery Sequence
 
-1. Preserve accepted decisions `D-P3.4-001` through `D-P3.4-004` and obtain
-   explicit `D-P3.4-START` authorization.
+1. Completed: preserve accepted decisions `D-P3.4-001` through `D-P3.4-004` and
+   record explicit `D-P3.4-START` authorization.
 2. Acquire and audit the exact geometry dependency; generate lock, SBOM,
    notices, and source evidence.
 3. Add immutable contracts, fixtures, canonicalization, and generated C10
@@ -540,8 +539,8 @@ The owner accepted the four technical decisions on 2026-08-25:
 3. `D-P3.4-003`: balanced deterministic ordering and lateness default;
 4. `D-P3.4-004`: bounded PostgreSQL/PostGIS state, outbox, retention, C10.
 
-P3.4 implementation remains blocked only by `D-P3.4-START`, the explicit
-generated-only implementation authorization.
+P3.4 generated-only implementation is authorized by `D-P3.4-START`. Final
+acceptance remains separately gated by clean-source exact-digest evidence.
 
 The machine-readable source is
 [`p3-4-entry-gates.json`](../../contracts/phase-3/p3-4-entry-gates.json), and the

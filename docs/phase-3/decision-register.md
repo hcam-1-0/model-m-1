@@ -341,11 +341,12 @@ Shapely 2.1.2 as the worker candidate, a visual rule graph compiled to typed
 temporal nodes and constrained CEL, the balanced deterministic time policy, and
 bounded PostgreSQL/PostGIS state with transactional outbox and C10 evidence.
 
-The engines and CEL remain uninstalled architecture selections. Only
-`D-P3.4-START` remains pending. These decisions authorize no runtime
-implementation, dependency acquisition, camera/media/data access, identity,
-cross-camera linkage, Government matching, operational alerting, deployment,
-P3.5, or remote Git action.
+`D-P3.4-START` was authorized by `mayank-admin` on 2026-08-25 against planning
+digest `E3D0D0DEB5AE20D68AF6A5CE72229BDC63AE55B4200C7E2A011CFA834AFBEBF0`.
+It permits local generated-only implementation and exact dependency evidence.
+It grants no final acceptance, camera/media/data access, identity, cross-camera
+linkage, Government matching, operational alerting, deployment, P3.5, or remote
+Git action.
 
 ## Decisions Explicitly Deferred
 

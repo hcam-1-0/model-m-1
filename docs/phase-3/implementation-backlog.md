@@ -176,8 +176,9 @@ Planning status: authorized under `D-P3.4-PLAN-AUTH`; primary-source research,
 technical planning, and the owner decision packet are complete. The owner
 accepted `D-P3.4-001` hybrid PostGIS/Shapely geometry, `D-P3.4-002` visual typed
 rule graph with constrained CEL, `D-P3.4-003` balanced deterministic time, and
-`D-P3.4-004` bounded PostgreSQL/PostGIS persistence. Implementation is not
-authorized; only `D-P3.4-START` remains pending.
+`D-P3.4-004` bounded PostgreSQL/PostGIS persistence. Generated-only local
+implementation is authorized under `D-P3.4-START`; implementation evidence and
+exact-digest final acceptance remain pending.
 
 Deliverables:
 

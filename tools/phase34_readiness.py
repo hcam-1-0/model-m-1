@@ -21,6 +21,7 @@ MANUAL = "manual"
 AUTHORIZATION = "contracts/phase-3/p3-4-planning-authorization.json"
 ENTRY_GATES = "contracts/phase-3/p3-4-entry-gates.json"
 OWNER_DECISIONS = "contracts/phase-3/p3-4-owner-decisions.json"
+START_AUTHORIZATION = "contracts/phase-3/p3-4-start-authorization.json"
 P3_3_ACCEPTANCE = "contracts/phase-3/p3-3-acceptance.json"
 P3_3_ACCEPTED_DIGEST = (
     "0BE4154E28A4D1A18AC8DA9F8D018CDBEB18F0457DDD1ECC2109D60A956ACA96"
@@ -36,7 +37,10 @@ DECISION_IDS = (
     "D-P3.4-START",
 )
 APPROVED_DECISION_IDS = DECISION_IDS[:4]
-PENDING_DECISION_IDS = ("D-P3.4-START",)
+P3_4_ACCEPTED_PLANNING_DIGEST = (
+    "E3D0D0DEB5AE20D68AF6A5CE72229BDC63AE55B4200C7E2A011CFA834AFBEBF0"
+)
+P3_4_TECHNICAL_BASELINE_HEAD = "f9a798f5103da1249ecc5b3e86eb4de7166d8fb9"
 SELECTED_OPTIONS = {
     "D-P3.4-001": "hybrid_shapely_2_1_2_runtime_and_postgis_authoritative_geometry",
     "D-P3.4-002": "visual_rule_graph_typed_temporal_nodes_and_constrained_cel",
@@ -77,6 +81,7 @@ PACKAGE_FILES = (
     AUTHORIZATION,
     ENTRY_GATES,
     OWNER_DECISIONS,
+    START_AUTHORIZATION,
     "docs/phase-3/README.md",
     "docs/phase-3/decision-register.md",
     "docs/phase-3/implementation-backlog.md",
@@ -85,6 +90,7 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-4-owner-decisions.md",
     "docs/phase-3/p3-4-planning-authorization.md",
     "docs/phase-3/p3-4-research-record.md",
+    "docs/phase-3/p3-4-start-authorization.md",
     "pyproject.toml",
     "tests/test_phase34_readiness.py",
     "tools/phase34_readiness.py",
@@ -268,8 +274,61 @@ def check_owner_decisions() -> Check:
     return Check(
         "owner_technical_decisions",
         PASS,
-        "Four exact owner-selected technical options are accepted without implementation authorization.",
+        "Four exact owner-selected technical options are accepted and remain independently recorded.",
         APPROVED_DECISION_IDS,
+    )
+
+
+def check_start_authorization() -> Check:
+    try:
+        record = _read_json(START_AUTHORIZATION)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("implementation_authorization", FAIL, str(exc))
+
+    required_work = {
+        "exact_dependency_acquisition_and_supply_chain_evidence",
+        "local_default_off_production_forbidden_geometry_rule_and_event_implementation",
+        "additive_postgresql_postgis_migration_and_sqlite_compatibility",
+        "generated_only_contract_fixture_and_c10_execution",
+        "bounded_api_rbac_audit_metrics_outbox_and_retention_implementation",
+        "local_tests_evidence_documentation_and_checkpoint_commits",
+    }
+    prohibited = {
+        "physical_camera_onvif_media_or_sentinel_stream_access",
+        "real_public_private_government_police_or_scraped_media",
+        "external_dataset_download_training_finetuning_or_accuracy_claims",
+        "face_biometric_identity_reidentification_or_cross_camera_linkage",
+        "watchlists_vehicle_owner_lookup_or_government_database_matching",
+        "operational_alerting_autonomous_action_or_enforcement",
+        "pilot_production_statewide_deployment_or_performance_claims",
+        "remote_git_push_pull_request_or_merge",
+        "p3_5_or_later_work",
+    }
+    if (
+        record.get("authorization_id") != "D-P3.4-START"
+        or record.get("decision_id") != "D-P3.4-START"
+        or record.get("status") != "authorized"
+        or record.get("authorized_by") != "mayank-admin"
+        or record.get("owner_statement_received") != "I authorize D-P3.4-START"
+        or record.get("baseline_planning_digest")
+        != P3_4_ACCEPTED_PLANNING_DIGEST
+        or record.get("baseline_repository_head") != P3_4_TECHNICAL_BASELINE_HEAD
+        or record.get("selected_technical_baseline_record")
+        != "p3-4-owner-decisions.json"
+        or record.get("implementation_authorized") is not True
+        or record.get("final_acceptance_granted") is not False
+        or not required_work.issubset(set(record.get("authorized_work", [])))
+        or not prohibited.issubset(set(record.get("prohibited_work", [])))
+    ):
+        return Check(
+            "implementation_authorization",
+            FAIL,
+            "D-P3.4-START identity, scope, baseline, or exclusions changed.",
+        )
+    return Check(
+        "implementation_authorization",
+        PASS,
+        "D-P3.4-START authorizes bounded local generated-only implementation without final acceptance.",
     )
 
 
@@ -296,15 +355,21 @@ def check_entry_gates() -> Check:
         if isinstance(decision, dict)
         and decision.get("decision_id") in APPROVED_DECISION_IDS
     }
+    start = decisions[-1] if decisions and isinstance(decisions[-1], dict) else {}
     if (
         actual_ids != DECISION_IDS
-        or statuses != ("owner_approved",) * 4 + ("pending_owner_decision",)
+        or statuses != ("owner_approved",) * 5
         or selections != SELECTED_OPTIONS
-        or record.get("status") != "pending_implementation_authorization"
-        or record.get("manual_gate_count") != 1
+        or start.get("selected_option")
+        != "authorize_generated_only_implementation_after_gates_001_through_004"
+        or start.get("decided_by") != "mayank-admin"
+        or record.get("status") != "implementation_authorized_generated_only"
+        or record.get("manual_gate_count") != 0
         or record.get("owner_decisions_completed") != 4
         or record.get("owner_decision_record") != "p3-4-owner-decisions.json"
-        or record.get("implementation_authorized") is not False
+        or record.get("implementation_authorization_record")
+        != "p3-4-start-authorization.json"
+        or record.get("implementation_authorized") is not True
     ):
         return Check(
             "entry_gates",
@@ -313,9 +378,9 @@ def check_entry_gates() -> Check:
         )
     return Check(
         "entry_gates",
-        MANUAL,
-        "The four technical decisions are accepted; D-P3.4-START remains pending.",
-        PENDING_DECISION_IDS,
+        PASS,
+        "All four technical decisions and D-P3.4-START are explicitly owner approved.",
+        DECISION_IDS,
     )
 
 
@@ -370,7 +435,7 @@ def check_plan_contract() -> Check:
         "16,384",
         "DATA-GEO-EVT-GEN-C10",
         "alert_state: not_evaluated",
-        "implementation remains blocked",
+        "acceptance remains separately gated",
     )
     missing = tuple(token for token in required_plan_tokens if token not in plan)
     missing += tuple(decision for decision in DECISION_IDS if decision not in packet)
@@ -394,22 +459,22 @@ def check_dependency_boundary() -> Check:
     compose = (
         _read("deploy/compose.phase1.yaml") + _read("deploy/compose.phase2.yaml")
     ).lower()
-    if (
+    selected_present = (
         "shapely" in pyproject
         or 'name = "shapely"' in lock
         or "cel-python" in pyproject
         or 'name = "cel-python"' in lock
         or "postgis/postgis" in compose
-    ):
-        return Check(
-            "dependency_boundary",
-            FAIL,
-            "A selected P3.4 engine was added before implementation authorization.",
-        )
+    )
+    detail = (
+        "Selected P3.4 dependency acquisition has started under D-P3.4-START."
+        if selected_present
+        else "Selected P3.4 dependencies are authorized but not yet installed."
+    )
     return Check(
         "dependency_boundary",
         PASS,
-        "Selected PostGIS, Shapely, and CEL paths remain architecture-only and are not installed.",
+        detail,
     )
 
 
@@ -483,6 +548,7 @@ def build_readiness_report(*, require_clean_source: bool = False) -> Report:
         check_planning_authorization(),
         check_accepted_dependency(),
         check_owner_decisions(),
+        check_start_authorization(),
         check_entry_gates(),
         check_research_sources(),
         check_plan_contract(),
@@ -504,10 +570,10 @@ def build_readiness_report(*, require_clean_source: bool = False) -> Report:
         digest = "UNAVAILABLE"
     status = "invalid"
     if failures == 0:
-        status = "ready_for_implementation_authorization" if manual_gates else "ready"
+        status = "implementation_authorized_generated_only"
     return Report(
         status=status,
-        scope="phase3.p3_4.geometry_and_event_primitives.planning_only",
+        scope="phase3.p3_4.geometry_and_event_primitives.generated_only_start",
         package_digest=digest,
         failures=failures,
         manual_gates=manual_gates,

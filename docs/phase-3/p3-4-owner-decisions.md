@@ -1,7 +1,7 @@
 # P3.4 Owner Technical Decisions
 
 Status: `D-P3.4-001` through `D-P3.4-004` accepted by `mayank-admin` on
-2026-08-25. `D-P3.4-START` remains pending.
+2026-08-25. `D-P3.4-START` is now separately authorized.
 
 Machine-readable record:
 [`p3-4-owner-decisions.json`](../../contracts/phase-3/p3-4-owner-decisions.json).
@@ -85,7 +85,7 @@ outbox**.
 
 ## Remaining Gate
 
-These four selections freeze the technical baseline but do not authorize any
-implementation. `D-P3.4-START` must separately authorize dependency acquisition,
-contracts, migration, evaluator, API, generated execution, tests, evidence, and
-local checkpoint work under the continuing exclusions.
+These four selections freeze the technical baseline. `D-P3.4-START` now
+separately authorizes dependency acquisition, contracts, migration, evaluator,
+API, generated execution, tests, evidence, and local checkpoint work under the
+continuing exclusions. Final implementation acceptance remains pending.

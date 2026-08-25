@@ -1,7 +1,7 @@
 # P3.4 Owner Decision Packet
 
 Status: technical decisions `D-P3.4-001` through `D-P3.4-004` accepted;
-`D-P3.4-START` pending.
+`D-P3.4-START` authorized. Final implementation acceptance remains pending.
 
 Planning authority: `D-P3.4-PLAN-AUTH`.
 
@@ -233,8 +233,7 @@ Owner selection recorded on 2026-08-25.
 ### Recommended Option
 
 Decisions `D-P3.4-001` through `D-P3.4-004` are accepted and recorded.
-Implementation still requires explicit authorization. The authorized
-implementation would be limited to:
+`D-P3.4-START` now authorizes implementation limited to:
 
 - exact dependency acquisition and supply-chain evidence for the approved
   geometry engine;

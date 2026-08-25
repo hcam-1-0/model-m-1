@@ -1,5 +1,5 @@
 {
-  "contract_format": "hcam.phase3.p3_4.entry_gates.v2",
+  "contract_format": "hcam.phase3.p3_4.entry_gates.v3",
   "decisions": [
     {
       "decided_by": "mayank-admin",
@@ -34,16 +34,19 @@
       "topic": "persistence_resources_retention_and_validation"
     },
     {
+      "decided_by": "mayank-admin",
+      "decided_on": "2026-08-25",
       "decision_id": "D-P3.4-START",
-      "recommended_option": "authorize_generated_only_implementation_after_gates_001_through_004",
-      "status": "pending_owner_decision",
+      "selected_option": "authorize_generated_only_implementation_after_gates_001_through_004",
+      "status": "owner_approved",
       "topic": "implementation_authorization"
     }
   ],
-  "implementation_authorized": false,
-  "manual_gate_count": 1,
+  "implementation_authorized": true,
+  "implementation_authorization_record": "p3-4-start-authorization.json",
+  "manual_gate_count": 0,
   "owner_decision_record": "p3-4-owner-decisions.json",
   "owner_decisions_completed": 4,
   "scope": "phase3.p3_4.geometry_and_event_primitives.generated_only_entry",
-  "status": "pending_implementation_authorization"
+  "status": "implementation_authorized_generated_only"
 }
