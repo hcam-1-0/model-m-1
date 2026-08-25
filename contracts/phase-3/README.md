@@ -47,8 +47,12 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   generated-only P3.3 package and its continuing non-authorization boundary.
 - `p3-4-planning-authorization.json`: exact planning-only authorization,
   accepted P3.3 baseline, deliverables, and prohibited actions.
-- `p3-4-entry-gates.json`: pending geometry engine, semantics, event-time,
-  persistence/evidence, and separate implementation-start decisions.
+- `p3-4-entry-gates.json`: accepted geometry-engine, rule-semantics,
+  event-time, and persistence/evidence decisions plus the pending separate
+  implementation-start gate.
+- `p3-4-owner-decisions.json`: exact owner-selected hybrid geometry,
+  visual/CEL rules, deterministic time, and bounded persistence baseline with
+  continuing non-authorization.
 
 Verify all tracked snapshots:
 
@@ -76,7 +80,8 @@ uv run --locked --extra dev python tools/phase31_contracts.py write --acknowledg
 
 Taxonomy and geometry fixtures remain `draft`. The accepted P3.2 and P3.3
 runtime slices are generated-only, default-off, and production-forbidden.
-P3.4 is planning-only and has no installed geometry engine or evaluator.
+P3.4 is planning-only and has no installed PostGIS, Shapely, CEL, or evaluator
+path. `D-P3.4-001` through `D-P3.4-004` are accepted; `D-P3.4-START` is pending.
 These contracts do not authorize camera access, raw-media persistence, external
 datasets, identity, cross-camera association, Government matching, alerts,
 deployment, or P3.4 implementation.

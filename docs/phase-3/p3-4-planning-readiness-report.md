@@ -1,15 +1,16 @@
 # P3.4 Planning Readiness Report
 
-Status: `ready_for_owner_decisions`.
+Status: `ready_for_implementation_authorization`.
 
 Generated on: 2026-08-25.
 
 Scope: `phase3.p3_4.geometry_and_event_primitives.planning_only`.
 
 Canonical planning-package digest:
-`8EA8423EE301BBBDC1AE37E5A45173D2D0A6563025E4ACD7DE235EB8E66B7D3D`.
+`E3D0D0DEB5AE20D68AF6A5CE72229BDC63AE55B4200C7E2A011CFA834AFBEBF0`.
 
-The digest covers 17 authorization, accepted-dependency, planning,
+The digest covers 19 authorization, accepted-dependency, owner-decision,
+planning,
 documentation-index, verifier, test, CI, and unchanged dependency-manifest
 files. This report is intentionally excluded from its own digest.
 
@@ -18,16 +19,14 @@ files. This report is intentionally excluded from its own digest.
 | Result | Count |
 | --- | ---: |
 | Technical failures | 0 |
-| Manual owner gates | 5 |
-| Focused verifier tests | 12 passed |
-| Full repository tests | 672 passed |
-| Full repository subtests | 119 passed |
-| Skipped PostgreSQL integration tests | 6 |
+| Accepted technical decisions | 4 |
+| Manual owner gates | 1 |
+| Focused P3.4 verifier tests | 14 passed |
+| Cross-phase readiness regression tests | 77 passed |
 
-The six PostgreSQL tests require `HCAM_POSTGRES_TEST_URL` and were skipped in
-the full local suite. Accepted P3.3 PostgreSQL evidence remains unchanged. The
-full run also reported one existing Starlette deprecation warning concerning
-the compatibility test client; it is not introduced by P3.4 planning.
+The accepted P3.3 PostgreSQL evidence and previous full-suite baseline remain
+unchanged. No P3.4 database extension, migration, dependency, runtime, or
+generated execution was added by the technical-decision synchronization.
 
 ## Technical Checks
 
@@ -35,24 +34,25 @@ the compatibility test client; it is not introduced by P3.4 planning.
 - `D-P3.4-PLAN-AUTH` authorizes planning only and preserves every prohibited
   action;
 - the exact accepted P3.3 package digest and accepted repository head match;
-- all five P3.4 entry gates remain pending and implementation remains false;
+- `D-P3.4-001` binds hybrid authoritative PostGIS geometry and exact Shapely
+  2.1.2 worker architecture;
+- `D-P3.4-002` binds a visual typed rule graph and constrained CEL;
+- `D-P3.4-003` binds the balanced deterministic time and replay defaults;
+- `D-P3.4-004` binds bounded PostgreSQL/PostGIS state, transactional outbox,
+  inherited retention, and C10 evidence;
+- only `D-P3.4-START` remains pending and implementation remains false;
 - research links resolve only to the recorded primary-source host allowlist;
 - geometry, state-machine, event-time, idempotency, persistence, resource,
   retention, evidence, and claim boundaries are explicit;
-- Shapely remains a researched candidate and is absent from `pyproject.toml`
-  and `uv.lock`;
+- PostGIS, Shapely, and CEL remain uninstalled architecture selections;
 - root documentation, Phase 3 index, backlog, decision register, contract index,
   and Python CI contain the P3.4 planning boundary and verifier command;
 - historical P3.0, P3.1, P3.2, and accepted P3.3 readiness checks remain at
   zero technical failures.
 
-## Pending Owner Gates
+## Pending Owner Gate
 
-1. `D-P3.4-001`: geometry engine and precision model.
-2. `D-P3.4-002`: spatial and event semantics.
-3. `D-P3.4-003`: event time, schedules, replay, and deduplication.
-4. `D-P3.4-004`: persistence, limits, retention, and validation.
-5. `D-P3.4-START`: separate generated-only implementation authorization.
+`D-P3.4-START`: separate generated-only implementation authorization.
 
 See [the owner decision packet](p3-4-decision-packet.md) for the recommended
 options and exact response language.
@@ -62,7 +62,7 @@ options and exact response language.
 ```powershell
 uv run --locked --extra dev python tools/phase34_readiness.py --strict --json
 uv run --locked --extra dev pytest tests/test_phase34_readiness.py -q
-uv run --locked --extra dev --extra analytics pytest -q
+uv run --locked --extra dev --extra analytics pytest tests/test_phase3_readiness.py tests/test_phase31_readiness.py tests/test_phase31_implementation_readiness.py tests/test_phase32_entry_readiness.py tests/test_phase32_implementation_readiness.py tests/test_phase33_implementation_readiness.py tests/test_phase34_readiness.py -q
 ```
 
 `--strict` fails only on technical planning errors. Add `--require-decisions`

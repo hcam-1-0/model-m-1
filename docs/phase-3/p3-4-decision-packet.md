@@ -1,40 +1,50 @@
 # P3.4 Owner Decision Packet
 
-Status: five owner decisions pending.
+Status: technical decisions `D-P3.4-001` through `D-P3.4-004` accepted;
+`D-P3.4-START` pending.
 
 Planning authority: `D-P3.4-PLAN-AUTH`.
 
 Accepted dependency: P3.3 under `D-P3.3-ACCEPTANCE`, package digest
 `0BE4154E28A4D1A18AC8DA9F8D018CDBEB18F0457DDD1ECC2109D60A956ACA96`.
 
-This packet presents the decisions required before any P3.4 implementation.
-Accepting decisions `D-P3.4-001` through `D-P3.4-004` freezes the technical
-baseline. It does not start implementation unless `D-P3.4-START` is also
-accepted explicitly.
+This packet records the selected technical baseline and the remaining decision
+required before any P3.4 implementation. The machine-readable selections are in
+[`p3-4-owner-decisions.json`](../../contracts/phase-3/p3-4-owner-decisions.json).
+They do not start implementation unless `D-P3.4-START` is accepted explicitly.
 
 ## D-P3.4-001: Geometry Engine And Precision
 
-### Recommended Option
+### Selected Option
 
-Approve `shapely_2_1_2_with_exact_geos_and_license_binding`.
+`hybrid_shapely_2_1_2_runtime_and_postgis_authoritative_geometry`.
 
-The implementation would use exact Shapely 2.1.2 for validated two-dimensional
-predicates, prepared geometry, and immutable `STRtree` candidate selection. The
-exact wheel, bundled GEOS version, transitive dependencies, hashes, platform
-compatibility, licenses, SBOM entries, and notices must be captured before the
-dependency is added. No download is authorized by this planning decision.
+PostgreSQL/PostGIS is the authoritative approved-geometry, validation, spatial
+indexing, version-history, and administrative-query layer. Exact Shapely 2.1.2
+is the real-time worker candidate for prepared predicates and immutable
+`STRtree` candidate selection over locally cached approved geometry. Per-track
+evaluation does not require a database round trip.
+
+Canonical normalized JSON, WKB, precision policy, and SHA-256 bind the same
+geometry version across PostGIS and workers. Generated parity tests must detect
+semantic or engine-version drift. Exact PostGIS, Shapely, GEOS, NumPy, and
+transitive artifacts, hashes, platform compatibility, licenses, lock entries,
+SBOM entries, and notices must be captured before any dependency is added. No
+download is authorized by this technical decision.
 
 The H-CAM coordinate model remains normalized image space. A fixed decimal
 precision grid may be used only after validation proves that the geometry
 remains valid and non-empty. Geometry that collapses, self-intersects, leaves
 the normalized range, or changes type after precision reduction is rejected.
 
-### Why This Is Recommended
+### Why This Was Selected
 
 - DE-9IM-backed predicates give explicit interior, boundary, and exterior
   semantics.
-- Prepared geometry and `STRtree` support bounded repeated evaluation without
-  turning the database into the per-frame execution engine.
+- PostGIS provides centralized geometry validation, version administration,
+  indexed queries, and an enterprise investigation surface.
+- Prepared geometry and `STRtree` keep bounded repeated evaluation local rather
+  than turning the database into the per-frame execution engine.
 - A pinned library is safer than growing the current validation helper into a
   topology engine.
 - Exact version, GEOS, license, and hash binding preserves supply-chain review.
@@ -43,27 +53,33 @@ the normalized range, or changes type after precision reduction is rejected.
 
 | Option | Benefit | Cost or risk |
 | --- | --- | --- |
-| Hand-written predicates | No new runtime dependency | Robust polygon topology, boundary cases, and maintenance become H-CAM's responsibility |
-| PostGIS evaluation | Strong durable spatial platform | Adds database round trips and coupling to a latency-sensitive stream-local state machine |
-| Defer geometry engine | No dependency decision now | Blocks reliable line, zone, dwell, and occupancy implementation |
+| Shapely only | Lowest runtime complexity | Weaker centralized spatial administration and querying |
+| PostGIS only | One authoritative engine | Adds database round trips and coupling to a latency-sensitive stream-local state machine |
+| Asynchronous dual verification | Independent discrepancy evidence | Creates provisional outcomes and reconciliation complexity |
 
-### Owner Response
-
-- Accept: `Accept D-P3.4-001 recommended option.`
-- Change: specify the engine, exact version, precision policy, and review gates.
-- Defer: `Defer D-P3.4-001.`
+Owner selection recorded on 2026-08-25.
 
 ## D-P3.4-002: Spatial And Event Semantics
 
-### Recommended Option
+### Selected Option
 
-Approve `versioned_anchor_hysteresis_and_typed_event_state_machines`.
+`visual_rule_graph_typed_temporal_nodes_and_constrained_cel`.
 
 Geometry definitions remain immutable, versioned normalized lines or simple
 polygons. A separate immutable `GeometryRuleV1` binds one geometry version to
 an event type, class filter, anchor policy, schedule, thresholds, boundary
 policy, and hysteresis parameters. Changing any behavior creates a new rule
 version and configuration digest.
+
+An enterprise visual rule graph compiles to an immutable, versioned, typed
+H-CAM AST. Typed nodes own spatial and temporal state. Constrained CEL evaluates
+stateless Boolean conditions over an approved typed context. The control plane
+must parse, type-check, allowlist functions, estimate cost, canonicalize, and
+digest the compiled rule before approval.
+
+CEL receives no direct coordinate, SQL, network, file, secret, external lookup,
+camera-control, alert, or enforcement capability. Loops, recursion, mutation,
+arbitrary functions, dynamic code, and user extensions remain prohibited.
 
 The default track anchor is the bottom-center of the latest visible bounding
 box. `bbox_center` is permitted only as an explicit rule setting. Each event
@@ -83,12 +99,14 @@ loss do not silently become crossings. `lost` pauses bounded dwell continuity;
 `ended`, epoch reset, assignment stop, and schedule close terminate state with a
 bounded reason and do not manufacture spatial exit events.
 
-### Why This Is Recommended
+### Why This Was Selected
 
 - The rule version records every semantic choice used to produce an event.
 - Hysteresis prevents repeated events from small tracker jitter at a boundary.
-- Typed state machines are easier to test and audit than a generic predicate
-  expression language.
+- Typed state machines preserve deterministic spatial and temporal behavior;
+  the constrained expression layer adds composition without arbitrary scripts.
+- Visual authoring plus a canonical typed AST supports enterprise usability,
+  review, versioning, and replay.
 - Bottom-center better approximates ground contact for people and vehicles
   while preserving image-space limitations.
 
@@ -98,22 +116,16 @@ bounded reason and do not manufacture spatial exit events.
 | --- | --- | --- |
 | Center anchor only | Simpler | Less stable for ground-oriented zones and line crossings |
 | Raw predicate per frame | Minimal state | Boundary jitter creates duplicate and contradictory events |
-| General rule-expression DSL | Broad future flexibility | Larger security, validation, and explainability surface before core semantics are proven |
+| Unrestricted rule-expression DSL | Broad theoretical flexibility | Unbounded security, validation, cost, and explainability surface |
 | Emit exit on lost/end | Easy state cleanup | Falsely claims a spatial transition that was not observed |
 
-### Owner Response
-
-- Accept: `Accept D-P3.4-002 recommended option.`
-- Change: specify anchor, boundary, initial-state, hysteresis, or event-kind
-  changes.
-- Defer: `Defer D-P3.4-002.`
+Owner selection recorded on 2026-08-25.
 
 ## D-P3.4-003: Event Time, Schedules, Replay, And Deduplication
 
-### Recommended Option
+### Selected Option
 
-Approve
-`event_time_sequence_ordering_bounded_lateness_and_deterministic_replay`.
+`balanced_event_time_sequence_ordering_bounded_lateness_and_deterministic_replay`.
 
 P3.4 would evaluate P3.3 lifecycle observations by tracker epoch,
 `source_sequence`, and UTC event timestamp. Wall-clock arrival time is used for
@@ -153,24 +165,21 @@ and outbox insertion occur in one transaction.
 | Drop every out-of-order input | Strong bound | Small recoverable reordering loses valid transitions |
 | Random event UUIDs | Easy generation | Retries and replay can create duplicate events |
 
-### Owner Response
-
-- Accept: `Accept D-P3.4-003 recommended option.`
-- Change: specify different buffer, lateness, schedule, or deduplication rules.
-- Defer: `Defer D-P3.4-003.`
+Owner selection recorded on 2026-08-25.
 
 ## D-P3.4-004: Persistence, Resources, Retention, And Validation
 
-### Recommended Option
+### Selected Option
 
-Approve
-`bounded_state_transactional_outbox_inherited_retention_and_c10_evidence`.
+`bounded_postgresql_postgis_state_transactional_outbox_inherited_retention_and_c10_evidence`.
 
-The proposed implementation uses additive stores for immutable rule versions,
-evaluator runs, current track-rule state, and append-only typed analytic events.
-It reuses the accepted transactional outbox. No raw trajectories, bounding-box
-history beyond approved causal references, images, video, identity, embeddings,
-plate text, owner data, or cross-camera entity keys may be added.
+The proposed implementation uses bounded PostgreSQL stores, PostGIS geometry
+columns and indexes where spatial administration requires them, immutable rule
+versions, evaluator runs, current track-rule state, and append-only typed
+analytic events. It reuses the accepted transactional outbox. No raw
+trajectories, bounding-box history beyond approved causal references, images,
+video, identity, embeddings, plate text, owner data, or cross-camera entity keys
+may be added.
 
 Initial ceilings:
 
@@ -217,19 +226,15 @@ claim.
 | Unbounded rules/states | Flexible configuration | Memory and latency exhaustion become uncontrolled |
 | Set a latency SLA before baseline | Early numeric target | Produces an unsupported hardware/deployment claim |
 
-### Owner Response
-
-- Accept: `Accept D-P3.4-004 recommended option.`
-- Change: specify persistence, limit, retention, or evidence changes.
-- Defer: `Defer D-P3.4-004.`
+Owner selection recorded on 2026-08-25.
 
 ## D-P3.4-START: Generated-Only Implementation Authorization
 
 ### Recommended Option
 
-Authorize implementation only after decisions `D-P3.4-001` through
-`D-P3.4-004` are accepted and recorded. The authorized implementation would be
-limited to:
+Decisions `D-P3.4-001` through `D-P3.4-004` are accepted and recorded.
+Implementation still requires explicit authorization. The authorized
+implementation would be limited to:
 
 - exact dependency acquisition and supply-chain evidence for the approved
   geometry engine;
@@ -249,13 +254,13 @@ autonomous action, deployment, P3.5, or remote Git actions.
 After accepting or changing the four technical gates, the exact recommended
 authorization is:
 
-> I, mayank-admin, accept D-P3.4-001 through D-P3.4-004 as documented and
-> authorize D-P3.4-START for local, default-off, production-forbidden,
-> generated-only geometry and analytic-event implementation, validation,
-> documentation, and local checkpoint commits. This does not authorize cameras,
-> media, external data, identity, ReID, cross-camera linkage, Government
-> database matching, operational alerts, autonomous action, deployment, P3.5,
-> or remote Git actions.
+> I, mayank-admin, authorize D-P3.4-START using the accepted D-P3.4-001 through
+> D-P3.4-004 technical baseline for local, default-off,
+> production-forbidden, generated-only geometry and analytic-event
+> implementation, validation, documentation, and local checkpoint commits.
+> This does not authorize cameras, media, external data, identity, ReID,
+> cross-camera linkage, Government database matching, operational alerts,
+> autonomous action, deployment, P3.5, or remote Git actions.
 
 Any shorter response must still identify `D-P3.4-START`; `continue` or acceptance
 of a technical decision alone does not authorize implementation.

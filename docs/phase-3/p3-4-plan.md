@@ -1,7 +1,7 @@
 # P3.4 Geometry And Event Primitives Plan
 
-Status: planning complete; owner decisions and implementation authorization
-pending.
+Status: planning complete; technical decisions `D-P3.4-001` through
+`D-P3.4-004` accepted; `D-P3.4-START` pending.
 
 Planning authority: `D-P3.4-PLAN-AUTH`.
 
@@ -53,6 +53,17 @@ promoted into a general topology implementation.
 ## Architecture
 
 ```text
+Visual rule authoring + constrained CEL
+        |
+        v
+Typed AST compiler + approval ----> PostGIS authoritative geometry/rule store
+        |                                      |
+        +------ approved WKB/JSON/AST/digests -+
+                                               |
+                                               v
+                                      Immutable worker cache
+                                               |
+                                               v
 Accepted P3.3 lifecycle v2
         |
         v
@@ -87,13 +98,20 @@ boundary.
 
 ## Geometry Engine
 
-The recommended candidate is exact Shapely 2.1.2. Implementation cannot add it
-until `D-P3.4-001` and `D-P3.4-START` are accepted. Before installation, the
-implementation package must bind:
+`D-P3.4-001` selects a hybrid architecture. PostgreSQL/PostGIS is authoritative
+for approved geometry persistence, validation, version history, spatial
+indexing, and administrative queries. Exact Shapely 2.1.2 is the real-time
+worker predicate candidate over immutable locally cached geometry. Per-track
+evaluation does not require a database round trip.
 
-- exact package version, artifact URL, SHA-256, and platform tag;
-- bundled or linked GEOS version and artifact evidence;
-- Shapely, GEOS, NumPy, and all transitive runtime licenses;
+No dependency can be added until `D-P3.4-START` is accepted. Before
+installation, the implementation package must bind:
+
+- exact PostgreSQL/PostGIS image or package version, artifact URL, SHA-256, and
+  platform tag;
+- exact Shapely wheel version, URL, SHA-256, and platform tag;
+- bundled or linked GEOS versions and compatibility evidence for both paths;
+- PostGIS, Shapely, GEOS, NumPy, and all transitive runtime licenses;
 - deterministic lockfile, SBOM, third-party notices, and vulnerability review;
 - Python 3.12 CI and current developer-interpreter compatibility;
 - a fallback/rollback path that disables P3.4 without changing P3.3.
@@ -114,7 +132,10 @@ Geometry validation must reject:
 - geometry whose canonical representation exceeds the approved contract size.
 
 Canonical geometry JSON uses stable key order, decimal representation, vertex
-order, and SHA-256 digest. Approved geometry versions are immutable.
+order, and SHA-256 digest. Canonical WKB and the normalized JSON digest bind the
+PostGIS row and worker cache to one approved immutable version. Invalid geometry
+is rejected, not silently repaired. A generated dual-engine suite must fail on
+predicate, boundary, precision, serialization, or engine-version drift.
 
 ## Rule Contract
 
@@ -137,6 +158,30 @@ The planned fields are:
 Rules cannot contain arbitrary executable expressions, SQL, code, URLs, media,
 identity fields, external lookup instructions, or alert actions. Rule type
 determines a closed schema; irrelevant fields are rejected.
+
+## Visual Rule Graph And Constrained CEL
+
+`D-P3.4-002` selects a visual rule graph compiled into an immutable, versioned,
+typed H-CAM AST. The AST composes approved spatial and temporal nodes; it is the
+canonical persisted and executed representation. The visual document is an
+authoring projection and cannot independently change runtime behavior.
+
+Typed H-CAM nodes own state for crossing, entry, exit, presence, dwell,
+occupancy, ordered sequence, bounded `within`, `for_at_least`, cooldown, and
+repeat-limit semantics. Constrained CEL evaluates stateless Boolean conditions
+over a closed typed context containing approved class, confidence, direction,
+schedule, count, and prior typed-node results.
+
+The control plane must parse, type-check, allowlist functions, estimate static
+cost, enforce depth/node/window limits, canonicalize the checked AST, and bind a
+digest before approval. Workers execute only that approved representation.
+
+CEL has no coordinate, SQL, network, file, environment, secret, external
+lookup, camera-control, alert, or enforcement access. Loops, recursion,
+mutation, arbitrary functions, dynamic code, user extensions, and runtime
+compilation of unapproved text are prohibited. An exact CEL implementation,
+source, artifact, license, hash, conformance profile, and SBOM binding remain
+implementation evidence gated by `D-P3.4-START`.
 
 ## Anchor Semantics
 
@@ -317,7 +362,8 @@ Only after `D-P3.4-START`, additive migration design may create:
 
 | Store | Purpose | Principal constraints |
 | --- | --- | --- |
-| `analytics_geometry_rules` | Immutable rule versions and canonical digests | Closed schemas, approved geometry version, one status transition path |
+| `analytics_geometries` | Authoritative PostGIS geometry and canonical normalized representation | Immutable versions, validity constraint, normalized non-geographic policy, GiST administration index |
+| `analytics_geometry_rules` | Immutable typed AST, checked CEL, versions, and canonical digests | Closed nodes/functions, approved geometry version, static cost, one status transition path |
 | `analytics_geometry_evaluator_runs` | Stream/assignment/epoch execution boundary | One open run per scope, bounded close reason, exact configuration digest |
 | `analytics_track_rule_states` | Current bounded state machine snapshot | Composite local scope, optimistic/versioned updates, no trajectory or identity |
 | `analytics_events` | Append-only typed events | Deterministic unique event ID, causal references, retention class |
@@ -330,10 +376,11 @@ standard at most 168 hours and restricted at most 24 hours.
 
 ## API And Control Plan
 
-P3.4 reuses the assignment control plane. Planned APIs are limited to rule
-authoring/versioning, assignment binding, generated-scenario execution, and
-department-scoped reads. There is no arbitrary observation, coordinate-stream,
-media, URL, file-path, camera, alert, or action-submission API.
+P3.4 reuses the assignment control plane. Planned APIs are limited to geometry
+and visual-rule authoring/versioning, compile/type-check preview, approval,
+assignment binding, generated-scenario execution, and department-scoped reads.
+There is no arbitrary observation, coordinate-stream, media, URL, file-path,
+camera, alert, or action-submission API.
 
 Mutations require department scope, `camera.editor` or `platform.admin`,
 `If-Match` for mutable control records, and `X-HCAM-Reason`. Reads require
@@ -449,8 +496,8 @@ scale, legal approval, or deployment readiness.
 
 ## Delivery Sequence
 
-1. Freeze decisions `D-P3.4-001` through `D-P3.4-004` and record explicit
-   `D-P3.4-START` authorization.
+1. Preserve accepted decisions `D-P3.4-001` through `D-P3.4-004` and obtain
+   explicit `D-P3.4-START` authorization.
 2. Acquire and audit the exact geometry dependency; generate lock, SBOM,
    notices, and source evidence.
 3. Add immutable contracts, fixtures, canonicalization, and generated C10
@@ -479,19 +526,23 @@ or from a prior technical decision.
 | Track loss becomes false exit | Close state with reason; never infer unobserved spatial movement |
 | Schedule ambiguity | UTC event time, IANA `zoneinfo`, fold evidence, versioned schedules |
 | New dependency adds supply-chain risk | Exact artifacts, hashes, licenses, SBOM, lock, vulnerability review |
+| PostGIS and Shapely disagree | Canonical geometry binding, pinned engines, generated parity suite, fail-closed activation |
+| DSL permits unsafe or expensive work | Typed AST, constrained CEL, allowlist, static cost and hard execution ceilings |
 | Analytic events become alerts implicitly | `alert_state: not_evaluated`, no alert/action API, separate future gate |
 | Generated evidence is overstated | Explicit claim boundary and separate real-data/deployment authorization |
 
 ## Entry Gates
 
-P3.4 implementation remains blocked by:
+The owner accepted the four technical decisions on 2026-08-25:
 
-1. `D-P3.4-001`: geometry engine and precision model;
-2. `D-P3.4-002`: spatial and event semantics;
-3. `D-P3.4-003`: event time, schedule, replay, and deduplication;
-4. `D-P3.4-004`: persistence, limits, retention, and validation;
-5. `D-P3.4-START`: explicit generated-only implementation authorization.
+1. `D-P3.4-001`: hybrid Shapely worker plus authoritative PostGIS geometry;
+2. `D-P3.4-002`: visual rule graph, typed temporal nodes, constrained CEL;
+3. `D-P3.4-003`: balanced deterministic ordering and lateness default;
+4. `D-P3.4-004`: bounded PostgreSQL/PostGIS state, outbox, retention, C10.
+
+P3.4 implementation remains blocked only by `D-P3.4-START`, the explicit
+generated-only implementation authorization.
 
 The machine-readable source is
 [`p3-4-entry-gates.json`](../../contracts/phase-3/p3-4-entry-gates.json), and the
-owner options are in [the decision packet](p3-4-decision-packet.md).
+record is in [P3.4 owner technical decisions](p3-4-owner-decisions.md).

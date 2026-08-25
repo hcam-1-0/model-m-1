@@ -20,6 +20,7 @@ MANUAL = "manual"
 
 AUTHORIZATION = "contracts/phase-3/p3-4-planning-authorization.json"
 ENTRY_GATES = "contracts/phase-3/p3-4-entry-gates.json"
+OWNER_DECISIONS = "contracts/phase-3/p3-4-owner-decisions.json"
 P3_3_ACCEPTANCE = "contracts/phase-3/p3-3-acceptance.json"
 P3_3_ACCEPTED_DIGEST = (
     "0BE4154E28A4D1A18AC8DA9F8D018CDBEB18F0457DDD1ECC2109D60A956ACA96"
@@ -34,6 +35,14 @@ DECISION_IDS = (
     "D-P3.4-004",
     "D-P3.4-START",
 )
+APPROVED_DECISION_IDS = DECISION_IDS[:4]
+PENDING_DECISION_IDS = ("D-P3.4-START",)
+SELECTED_OPTIONS = {
+    "D-P3.4-001": "hybrid_shapely_2_1_2_runtime_and_postgis_authoritative_geometry",
+    "D-P3.4-002": "visual_rule_graph_typed_temporal_nodes_and_constrained_cel",
+    "D-P3.4-003": "balanced_event_time_sequence_ordering_bounded_lateness_and_deterministic_replay",
+    "D-P3.4-004": "bounded_postgresql_postgis_state_transactional_outbox_inherited_retention_and_c10_evidence",
+}
 
 REQUIRED_PROHIBITIONS = {
     "runtime_geometry_or_event_implementation",
@@ -67,11 +76,13 @@ PACKAGE_FILES = (
     "contracts/phase-3/p3-3-acceptance.json",
     AUTHORIZATION,
     ENTRY_GATES,
+    OWNER_DECISIONS,
     "docs/phase-3/README.md",
     "docs/phase-3/decision-register.md",
     "docs/phase-3/implementation-backlog.md",
     "docs/phase-3/p3-4-decision-packet.md",
     "docs/phase-3/p3-4-plan.md",
+    "docs/phase-3/p3-4-owner-decisions.md",
     "docs/phase-3/p3-4-planning-authorization.md",
     "docs/phase-3/p3-4-research-record.md",
     "pyproject.toml",
@@ -210,6 +221,58 @@ def check_accepted_dependency() -> Check:
     )
 
 
+def check_owner_decisions() -> Check:
+    try:
+        record = _read_json(OWNER_DECISIONS)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("owner_technical_decisions", FAIL, str(exc))
+
+    decisions = record.get("decisions")
+    if not isinstance(decisions, list):
+        return Check(
+            "owner_technical_decisions",
+            FAIL,
+            "P3.4 owner decisions must be an array.",
+        )
+    actual = {
+        decision.get("decision_id"): decision.get("selected_option")
+        for decision in decisions
+        if isinstance(decision, dict)
+    }
+    required_prohibitions = {
+        "dependency_package_or_model_download",
+        "runtime_geometry_rule_or_event_implementation",
+        "database_extension_migration_or_api_addition",
+        "physical_camera_onvif_media_or_sentinel_stream_access",
+        "identity_biometric_reidentification_or_cross_camera_linkage",
+        "operational_alerting_autonomous_action_or_enforcement",
+        "remote_git_push_pull_request_or_merge",
+        "p3_5_or_later_work",
+    }
+    if (
+        record.get("record_id") != "D-P3.4-TECHNICAL-DECISIONS"
+        or record.get("status") != "accepted"
+        or record.get("accepted_by") != "mayank-admin"
+        or tuple(record.get("decision_ids", ())) != APPROVED_DECISION_IDS
+        or actual != SELECTED_OPTIONS
+        or record.get("implementation_authorized") is not False
+        or record.get("start_decision_id") != "D-P3.4-START"
+        or record.get("start_status") != "pending_owner_authorization"
+        or not required_prohibitions.issubset(set(record.get("non_authorization", [])))
+    ):
+        return Check(
+            "owner_technical_decisions",
+            FAIL,
+            "P3.4 selected technical baseline or continuing boundary changed.",
+        )
+    return Check(
+        "owner_technical_decisions",
+        PASS,
+        "Four exact owner-selected technical options are accepted without implementation authorization.",
+        APPROVED_DECISION_IDS,
+    )
+
+
 def check_entry_gates() -> Check:
     try:
         record = _read_json(ENTRY_GATES)
@@ -227,11 +290,20 @@ def check_entry_gates() -> Check:
     statuses = tuple(
         decision.get("status") for decision in decisions if isinstance(decision, dict)
     )
+    selections = {
+        decision.get("decision_id"): decision.get("selected_option")
+        for decision in decisions
+        if isinstance(decision, dict)
+        and decision.get("decision_id") in APPROVED_DECISION_IDS
+    }
     if (
         actual_ids != DECISION_IDS
-        or statuses != ("pending_owner_decision",) * len(DECISION_IDS)
-        or record.get("status") != "pending_owner_decisions"
-        or record.get("manual_gate_count") != len(DECISION_IDS)
+        or statuses != ("owner_approved",) * 4 + ("pending_owner_decision",)
+        or selections != SELECTED_OPTIONS
+        or record.get("status") != "pending_implementation_authorization"
+        or record.get("manual_gate_count") != 1
+        or record.get("owner_decisions_completed") != 4
+        or record.get("owner_decision_record") != "p3-4-owner-decisions.json"
         or record.get("implementation_authorized") is not False
     ):
         return Check(
@@ -242,8 +314,8 @@ def check_entry_gates() -> Check:
     return Check(
         "entry_gates",
         MANUAL,
-        "Five explicit owner decisions remain; implementation is not authorized.",
-        DECISION_IDS,
+        "The four technical decisions are accepted; D-P3.4-START remains pending.",
+        PENDING_DECISION_IDS,
     )
 
 
@@ -283,7 +355,9 @@ def check_plan_contract() -> Check:
 
     required_plan_tokens = (
         "normalized image-space",
+        "PostgreSQL/PostGIS is authoritative",
         "GeometryRuleV1",
+        "Visual Rule Graph And Constrained CEL",
         "bottom_center",
         "line.crossing",
         "zone.entry",
@@ -317,32 +391,53 @@ def check_plan_contract() -> Check:
 def check_dependency_boundary() -> Check:
     pyproject = _read("pyproject.toml").lower()
     lock = _read("uv.lock").lower()
-    if "shapely" in pyproject or 'name = "shapely"' in lock:
+    compose = (
+        _read("deploy/compose.phase1.yaml") + _read("deploy/compose.phase2.yaml")
+    ).lower()
+    if (
+        "shapely" in pyproject
+        or 'name = "shapely"' in lock
+        or "cel-python" in pyproject
+        or 'name = "cel-python"' in lock
+        or "postgis/postgis" in compose
+    ):
         return Check(
             "dependency_boundary",
             FAIL,
-            "Shapely was added before P3.4 implementation authorization.",
+            "A selected P3.4 engine was added before implementation authorization.",
         )
     return Check(
         "dependency_boundary",
         PASS,
-        "The recommended geometry engine remains research-only and is not installed.",
+        "Selected PostGIS, Shapely, and CEL paths remain architecture-only and are not installed.",
     )
 
 
 def check_documentation_sync() -> Check:
     required = {
-        "README.md": "tools/phase34_readiness.py",
-        "docs/phase-3/README.md": "[P3.4 plan](p3-4-plan.md)",
-        "docs/phase-3/implementation-backlog.md": "D-P3.4-PLAN-AUTH",
-        "docs/phase-3/decision-register.md": "DR-0033",
-        "contracts/phase-3/README.md": "p3-4-entry-gates.json",
-        ".github/workflows/python-ci.yml": "python tools/phase34_readiness.py --strict",
+        "README.md": ("tools/phase34_readiness.py", "D-P3.4-START"),
+        "docs/phase-3/README.md": (
+            "[P3.4 plan](p3-4-plan.md)",
+            "[P3.4 owner decisions](p3-4-owner-decisions.md)",
+        ),
+        "docs/phase-3/implementation-backlog.md": (
+            "D-P3.4-PLAN-AUTH",
+            "D-P3.4-START",
+        ),
+        "docs/phase-3/decision-register.md": ("DR-0033", "D-P3.4-START"),
+        "contracts/phase-3/README.md": (
+            "p3-4-entry-gates.json",
+            "p3-4-owner-decisions.json",
+        ),
+        ".github/workflows/python-ci.yml": (
+            "python tools/phase34_readiness.py --strict",
+        ),
     }
     missing: list[str] = []
-    for relative_path, token in required.items():
+    for relative_path, tokens in required.items():
         try:
-            if token not in _read(relative_path):
+            document = _read(relative_path)
+            if any(token not in document for token in tokens):
                 missing.append(relative_path)
         except OSError:
             missing.append(relative_path)
@@ -387,6 +482,7 @@ def build_readiness_report(*, require_clean_source: bool = False) -> Report:
         check_required_files(),
         check_planning_authorization(),
         check_accepted_dependency(),
+        check_owner_decisions(),
         check_entry_gates(),
         check_research_sources(),
         check_plan_contract(),
@@ -408,7 +504,7 @@ def build_readiness_report(*, require_clean_source: bool = False) -> Report:
         digest = "UNAVAILABLE"
     status = "invalid"
     if failures == 0:
-        status = "ready_for_owner_decisions" if manual_gates else "ready"
+        status = "ready_for_implementation_authorization" if manual_gates else "ready"
     return Report(
         status=status,
         scope="phase3.p3_4.geometry_and_event_primitives.planning_only",

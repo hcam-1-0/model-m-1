@@ -50,9 +50,10 @@ The P3.3 readiness command should report `accepted` with zero technical
 failures and zero manual gates while the exact historical package acceptance
 record remains valid.
 
-The P3.4 planning command should report `ready_for_owner_decisions`, zero
-technical failures, and five manual owner gates. That result does not authorize
-implementation.
+The P3.4 planning command should report
+`ready_for_implementation_authorization`, zero technical failures, and one
+manual gate: `D-P3.4-START`. The four technical decisions are accepted, but that
+result does not authorize implementation.
 
 ## Phase 2 camera and video ingestion
 

@@ -173,11 +173,11 @@ occlusion/reconnect tests, and approved tracking metrics.
 Dependencies: P3.3 tracks and approved geometry contracts.
 
 Planning status: authorized under `D-P3.4-PLAN-AUTH`; primary-source research,
-technical planning, and the owner decision packet are complete. Implementation
-is not authorized. Pending gates are `D-P3.4-001` geometry engine and precision,
-`D-P3.4-002` spatial/event semantics, `D-P3.4-003` event time and idempotency,
-`D-P3.4-004` persistence/resources/retention/validation, and the separate
-`D-P3.4-START` generated-only implementation authorization.
+technical planning, and the owner decision packet are complete. The owner
+accepted `D-P3.4-001` hybrid PostGIS/Shapely geometry, `D-P3.4-002` visual typed
+rule graph with constrained CEL, `D-P3.4-003` balanced deterministic time, and
+`D-P3.4-004` bounded PostgreSQL/PostGIS persistence. Implementation is not
+authorized; only `D-P3.4-START` remains pending.
 
 Deliverables:
 

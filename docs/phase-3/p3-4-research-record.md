@@ -3,6 +3,10 @@
 Status: primary-source planning research complete on 2026-08-25. No package,
 dataset, model, or runtime dependency was downloaded.
 
+Decision overlay: `D-P3.4-001` selects a hybrid PostGIS authority and Shapely
+worker path. `D-P3.4-002` selects a visual typed rule graph with constrained CEL.
+These selections add no dependency or implementation authorization.
+
 ## Existing H-CAM Baseline
 
 H-CAM already provides normalized line and simple-polygon contracts, IANA time
@@ -29,9 +33,11 @@ extend these contracts rather than create a separate GIS or event platform.
 
 ## Conclusions
 
-1. Use a proven two-dimensional topology engine. The recommended implementation
-   candidate is exact Shapely 2.1.2, with its wheel, bundled GEOS version,
-   licenses, hashes, SBOM, and platform compatibility verified before addition.
+1. Use a proven two-dimensional topology engine. Exact Shapely 2.1.2 is the
+   selected worker candidate, while PostGIS is the authoritative geometry,
+   validation, indexing, history, and administrative-query layer. Both paths
+   require exact version, license, hash, SBOM, compatibility, and parity evidence
+   before addition.
 2. Keep H-CAM coordinates normalized and image-space only. P3.4 must make no
    geospatial distance, speed, map, or real-world location claim.
 3. Use a versioned anchor policy and state machine around predicates. A raw
@@ -49,9 +55,9 @@ extend these contracts rather than create a separate GIS or event platform.
 - Extending the current hand-written segment helper into a full topology engine
   is rejected because robustness, boundary semantics, and maintenance burden
   exceed the helper's validation-only purpose.
-- PostGIS-first evaluation is deferred. P3.4 state is stream-local and
-  latency-sensitive; PostgreSQL remains durability and deduplication storage,
-  not the per-transition geometry execution engine.
+- PostGIS-only per-transition evaluation is rejected. P3.4 state is stream-local
+  and latency-sensitive; PostGIS is authoritative storage and administration,
+  while the worker evaluates locally cached immutable geometry.
 - GeoPandas is not needed for bounded per-stream rule evaluation.
 - Perspective calibration, homography, world coordinates, GIS layers, speed,
   route inference, and cross-camera geometry are deferred to separately

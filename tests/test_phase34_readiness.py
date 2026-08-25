@@ -9,13 +9,13 @@ from contextlib import redirect_stdout
 from tools import phase34_readiness as readiness
 
 
-def test_current_planning_state_is_valid_with_five_owner_gates() -> None:
+def test_current_planning_state_is_valid_with_only_start_gate_pending() -> None:
     report = readiness.build_readiness_report()
 
-    assert report.status == "ready_for_owner_decisions"
+    assert report.status == "ready_for_implementation_authorization"
     assert report.scope == "phase3.p3_4.geometry_and_event_primitives.planning_only"
     assert report.failures == 0
-    assert report.manual_gates == 5
+    assert report.manual_gates == 1
     assert re.fullmatch(r"[0-9A-F]{64}", report.package_digest)
 
 
@@ -28,9 +28,9 @@ def test_default_and_strict_cli_allow_pending_manual_decisions() -> None:
     payload = json.loads(output.getvalue().split("Phase 3 P3.4")[0])
     assert default_exit == 0
     assert strict_exit == 0
-    assert payload["status"] == "ready_for_owner_decisions"
+    assert payload["status"] == "ready_for_implementation_authorization"
     assert payload["failures"] == 0
-    assert payload["manual_gates"] == 5
+    assert payload["manual_gates"] == 1
 
 
 def test_require_decisions_reports_manual_gate_exit() -> None:
@@ -42,6 +42,7 @@ def test_all_technical_checks_pass_and_entry_gate_is_manual() -> None:
         readiness.check_required_files(),
         readiness.check_planning_authorization(),
         readiness.check_accepted_dependency(),
+        readiness.check_owner_decisions(),
         readiness.check_entry_gates(),
         readiness.check_research_sources(),
         readiness.check_plan_contract(),
@@ -113,6 +114,38 @@ def test_dependency_check_rejects_p3_3_digest_drift(monkeypatch) -> None:
     assert "identity changed" in result.detail
 
 
+def test_owner_decisions_reject_hybrid_geometry_drift(monkeypatch) -> None:
+    original = readiness._read_json
+
+    def changed(relative_path: str):
+        value = copy.deepcopy(original(relative_path))
+        if relative_path == readiness.OWNER_DECISIONS:
+            value["decisions"][0]["selected_option"] = "shapely_only"
+        return value
+
+    monkeypatch.setattr(readiness, "_read_json", changed)
+    result = readiness.check_owner_decisions()
+
+    assert result.status == readiness.FAIL
+    assert "technical baseline" in result.detail
+
+
+def test_owner_decisions_reject_unbounded_dsl_drift(monkeypatch) -> None:
+    original = readiness._read_json
+
+    def changed(relative_path: str):
+        value = copy.deepcopy(original(relative_path))
+        if relative_path == readiness.OWNER_DECISIONS:
+            value["decisions"][1]["selected_option"] = "unrestricted_dsl"
+        return value
+
+    monkeypatch.setattr(readiness, "_read_json", changed)
+    result = readiness.check_owner_decisions()
+
+    assert result.status == readiness.FAIL
+    assert "technical baseline" in result.detail
+
+
 def test_entry_gates_reject_silent_implementation_authorization(monkeypatch) -> None:
     original = readiness._read_json
 
@@ -159,7 +192,7 @@ def test_dependency_boundary_rejects_early_shapely_addition(monkeypatch) -> None
     result = readiness.check_dependency_boundary()
 
     assert result.status == readiness.FAIL
-    assert "before P3.4 implementation authorization" in result.detail
+    assert "before implementation authorization" in result.detail
 
 
 def test_documentation_sync_rejects_missing_ci_command(monkeypatch) -> None:

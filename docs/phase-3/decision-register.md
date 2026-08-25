@@ -335,11 +335,17 @@ semantics, hysteresis-backed line/zone/dwell/occupancy state machines, UTC event
 time, IANA schedules, bounded lateness, deterministic event IDs, transactional
 outbox, inherited short retention, and sealed generated C10 evidence.
 
-Shapely 2.1.2 is the researched geometry-engine candidate, not an installed or
-authorized dependency. Decisions `D-P3.4-001` through `D-P3.4-004` and
-`D-P3.4-START` remain pending. This record authorizes no runtime implementation,
-camera/media/data access, identity, cross-camera linkage, Government matching,
-operational alerting, deployment, P3.5, or remote Git action.
+On 2026-08-25, `mayank-admin` accepted `D-P3.4-001` through `D-P3.4-004`.
+The selected baseline uses authoritative PostgreSQL/PostGIS geometry with exact
+Shapely 2.1.2 as the worker candidate, a visual rule graph compiled to typed
+temporal nodes and constrained CEL, the balanced deterministic time policy, and
+bounded PostgreSQL/PostGIS state with transactional outbox and C10 evidence.
+
+The engines and CEL remain uninstalled architecture selections. Only
+`D-P3.4-START` remains pending. These decisions authorize no runtime
+implementation, dependency acquisition, camera/media/data access, identity,
+cross-camera linkage, Government matching, operational alerting, deployment,
+P3.5, or remote Git action.
 
 ## Decisions Explicitly Deferred
 

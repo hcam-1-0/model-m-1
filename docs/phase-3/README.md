@@ -6,9 +6,11 @@ technical evidence is implemented with zero verifier failures. Clean-source
 regeneration is complete, and P3.1 is accepted under `D-P3.1-ACCEPTANCE`.
 P3.2 is accepted under `D-P3.2-ACCEPTANCE`. P3.3 generated-only, anonymous,
 stream-local tracking is accepted under `D-P3.3-ACCEPTANCE`. P3.4 planning is
-authorized under `D-P3.4-PLAN-AUTH`; its five owner entry gates and
-implementation authorization remain pending. All broader media, identity,
-correlation, alerting, and deployment work remains unauthorized.
+authorized under `D-P3.4-PLAN-AUTH`; technical decisions `D-P3.4-001` through
+`D-P3.4-004` are accepted. Only the
+separate `D-P3.4-START` implementation authorization remains pending. All
+broader media, identity, correlation, alerting, and deployment work remains
+unauthorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -58,6 +60,7 @@ autonomous enforcement.
 | [P3.4 research record](p3-4-research-record.md) | Primary-source geometry, time, idempotency, and testing research |
 | [P3.4 plan](p3-4-plan.md) | Geometry, event state, replay, persistence, resource, and generated-validation design |
 | [P3.4 owner decision packet](p3-4-decision-packet.md) | Four technical decisions and separate implementation-start gate |
+| [P3.4 owner decisions](p3-4-owner-decisions.md) | Accepted hybrid geometry, visual/CEL rules, time, and persistence selections |
 | [P3.4 planning readiness](p3-4-planning-readiness-report.md) | Machine-verified package digest, technical checks, and manual gates |
 
 ## Non-Negotiable Boundary
@@ -145,8 +148,10 @@ P3.4 planning now defines immutable normalized geometry and rule versions,
 line/zone/dwell/occupancy state machines, event-time ordering, bounded lateness,
 deterministic replay, transactional events, resource ceilings, retention, and a
 generated C10 validation suite. It installs no geometry dependency and adds no
-runtime evaluator. Decisions `D-P3.4-001` through `D-P3.4-004` and the separate
-`D-P3.4-START` implementation authorization remain pending.
+runtime evaluator. The four technical decisions select hybrid
+PostGIS/Shapely geometry, a visual typed rule graph with constrained CEL, the
+balanced deterministic time policy, and bounded PostgreSQL/PostGIS persistence.
+Only `D-P3.4-START` remains pending.
 
 Accepted planning snapshot digest:
 `57D2F541C4AA9AB8988A5DF7FC228DA4047BF471B64AD704BDB478308FDC3898`.

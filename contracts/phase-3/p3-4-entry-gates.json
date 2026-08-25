@@ -1,28 +1,36 @@
 {
-  "contract_format": "hcam.phase3.p3_4.entry_gates.v1",
+  "contract_format": "hcam.phase3.p3_4.entry_gates.v2",
   "decisions": [
     {
+      "decided_by": "mayank-admin",
+      "decided_on": "2026-08-25",
       "decision_id": "D-P3.4-001",
-      "recommended_option": "shapely_2_1_2_with_exact_geos_and_license_binding",
-      "status": "pending_owner_decision",
+      "selected_option": "hybrid_shapely_2_1_2_runtime_and_postgis_authoritative_geometry",
+      "status": "owner_approved",
       "topic": "geometry_engine_and_precision_model"
     },
     {
+      "decided_by": "mayank-admin",
+      "decided_on": "2026-08-25",
       "decision_id": "D-P3.4-002",
-      "recommended_option": "versioned_anchor_hysteresis_and_typed_event_state_machines",
-      "status": "pending_owner_decision",
+      "selected_option": "visual_rule_graph_typed_temporal_nodes_and_constrained_cel",
+      "status": "owner_approved",
       "topic": "spatial_and_event_semantics"
     },
     {
+      "decided_by": "mayank-admin",
+      "decided_on": "2026-08-25",
       "decision_id": "D-P3.4-003",
-      "recommended_option": "event_time_sequence_ordering_bounded_lateness_and_deterministic_replay",
-      "status": "pending_owner_decision",
+      "selected_option": "balanced_event_time_sequence_ordering_bounded_lateness_and_deterministic_replay",
+      "status": "owner_approved",
       "topic": "time_schedule_replay_and_deduplication"
     },
     {
+      "decided_by": "mayank-admin",
+      "decided_on": "2026-08-25",
       "decision_id": "D-P3.4-004",
-      "recommended_option": "bounded_state_transactional_outbox_inherited_retention_and_c10_evidence",
-      "status": "pending_owner_decision",
+      "selected_option": "bounded_postgresql_postgis_state_transactional_outbox_inherited_retention_and_c10_evidence",
+      "status": "owner_approved",
       "topic": "persistence_resources_retention_and_validation"
     },
     {
@@ -33,7 +41,9 @@
     }
   ],
   "implementation_authorized": false,
-  "manual_gate_count": 5,
+  "manual_gate_count": 1,
+  "owner_decision_record": "p3-4-owner-decisions.json",
+  "owner_decisions_completed": 4,
   "scope": "phase3.p3_4.geometry_and_event_primitives.generated_only_entry",
-  "status": "pending_owner_decisions"
+  "status": "pending_implementation_authorization"
 }
