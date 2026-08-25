@@ -676,6 +676,11 @@ def analytics_contract_bundle() -> dict[str, Any]:
         RuntimeBatchRequestV2,
         RuntimeBatchResultV1,
     )
+    from hcam.analytics.spatial.contracts import (
+        GeometryRuleV1,
+        RuleGraphV1,
+        RuleNodeV1,
+    )
     from hcam.analytics.taxonomy import TaxonomyManifestV1
 
     return {
@@ -699,6 +704,11 @@ def analytics_contract_bundle() -> dict[str, Any]:
             "request": RuntimeBatchRequestV1.model_json_schema(mode="validation"),
             "request_v2": RuntimeBatchRequestV2.model_json_schema(mode="validation"),
             "result": RuntimeBatchResultV1.model_json_schema(mode="validation"),
+        },
+        "spatial": {
+            "geometry_rule": GeometryRuleV1.model_json_schema(mode="validation"),
+            "rule_graph": RuleGraphV1.model_json_schema(mode="validation"),
+            "rule_node": RuleNodeV1.model_json_schema(mode="validation"),
         },
         "taxonomy": TaxonomyManifestV1.model_json_schema(mode="validation"),
         "delivery": {

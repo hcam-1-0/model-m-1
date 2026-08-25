@@ -19,11 +19,16 @@ from hcam.analytics.models import (
     AnalyticsAssignment,
     AnalyticsAssignmentRevision,
     AnalyticsGeneratedRun,
+    AnalyticsEvent,
+    AnalyticsGeometry,
+    AnalyticsGeometryEvaluatorRun,
+    AnalyticsGeometryRule,
     AnalyticsObservation,
     AnalyticsTrackerEpoch,
     AnalyticsTrack,
     AnalyticsTrackLifecycle,
     AnalyticsTrackingRun,
+    AnalyticsTrackRuleState,
 )
 from hcam.audit.models import AuditEvent
 from hcam.camera_registry.models import utc_now
@@ -241,6 +246,47 @@ class RequestMetrics:
         self.analytics_tracking_queue = Gauge(
             "hcam_analytics_tracking_queue_depth",
             "Generated tracking batches waiting for a bounded stream lane.",
+            registry=self.registry,
+        )
+        self.analytics_geometries = Gauge(
+            "hcam_analytics_geometries_total",
+            "Immutable geometry versions by bounded kind and status.",
+            ("kind", "status"),
+            registry=self.registry,
+        )
+        self.analytics_geometry_rules = Gauge(
+            "hcam_analytics_geometry_rules_total",
+            "Immutable geometry rule versions by bounded status and event kind.",
+            ("status", "event_kind"),
+            registry=self.registry,
+        )
+        self.analytics_geometry_runs = Gauge(
+            "hcam_analytics_geometry_runs_total",
+            "Generated-only geometry evaluator runs by bounded outcome.",
+            ("status", "close_reason"),
+            registry=self.registry,
+        )
+        self.analytics_geometry_duration = Gauge(
+            "hcam_analytics_geometry_run_duration_milliseconds",
+            "Average generated geometry run duration by bounded outcome.",
+            ("status",),
+            registry=self.registry,
+        )
+        self.analytics_geometry_events = Gauge(
+            "hcam_analytics_geometry_events_total",
+            "Typed geometry events retained by bounded event kind.",
+            ("event_kind",),
+            registry=self.registry,
+        )
+        self.analytics_geometry_states = Gauge(
+            "hcam_analytics_geometry_track_rule_states_total",
+            "Current bounded anonymous track-rule states retained.",
+            registry=self.registry,
+        )
+        self.analytics_geometry_resource_high_water = Gauge(
+            "hcam_analytics_geometry_resource_high_water",
+            "Maximum retained generated-run resource observation by bounded resource.",
+            ("resource",),
             registry=self.registry,
         )
 
@@ -492,6 +538,124 @@ class RequestMetrics:
                     state=state,
                     reason=reason,
                 ).set(transition_counts.get((state, reason), 0))
+        self._refresh_geometry_event_metrics(session)
+
+    def _refresh_geometry_event_metrics(self, session: Session) -> None:
+        geometry_counts = {
+            (kind, status): count
+            for kind, status, count in session.execute(
+                select(
+                    AnalyticsGeometry.kind,
+                    AnalyticsGeometry.status,
+                    func.count(),
+                ).group_by(AnalyticsGeometry.kind, AnalyticsGeometry.status)
+            ).all()
+        }
+        for kind in ("line", "zone"):
+            for status_value in ("draft", "approved", "retired"):
+                self.analytics_geometries.labels(
+                    kind=kind,
+                    status=status_value,
+                ).set(geometry_counts.get((kind, status_value), 0))
+        event_kinds = (
+            "hcam.analytics.line.crossing.v1",
+            "hcam.analytics.zone.entry.v1",
+            "hcam.analytics.zone.exit.v1",
+            "hcam.analytics.zone.dwell.threshold_met.v1",
+            "hcam.analytics.zone.occupancy.threshold_entered.v1",
+            "hcam.analytics.zone.occupancy.threshold_exited.v1",
+        )
+        rule_counts = {
+            (status_value, event_kind): count
+            for status_value, event_kind, count in session.execute(
+                select(
+                    AnalyticsGeometryRule.status,
+                    AnalyticsGeometryRule.event_kind,
+                    func.count(),
+                ).group_by(
+                    AnalyticsGeometryRule.status,
+                    AnalyticsGeometryRule.event_kind,
+                )
+            ).all()
+        }
+        for status_value in ("draft", "approved", "retired"):
+            for event_kind in event_kinds:
+                self.analytics_geometry_rules.labels(
+                    status=status_value,
+                    event_kind=event_kind,
+                ).set(rule_counts.get((status_value, event_kind), 0))
+        run_counts = {
+            (status_value, close_reason or "none"): count
+            for status_value, close_reason, count in session.execute(
+                select(
+                    AnalyticsGeometryEvaluatorRun.status,
+                    AnalyticsGeometryEvaluatorRun.close_reason,
+                    func.count(),
+                ).group_by(
+                    AnalyticsGeometryEvaluatorRun.status,
+                    AnalyticsGeometryEvaluatorRun.close_reason,
+                )
+            ).all()
+        }
+        close_reasons = (
+            "none",
+            "completed",
+            "sequence_conflict",
+            "reorder_buffer_overflow",
+            "candidate_limit",
+            "state_limit",
+            "scope_mismatch",
+            "timezone_unavailable",
+            "persistence_conflict",
+        )
+        for status_value in ("succeeded", "failed"):
+            for close_reason in close_reasons:
+                self.analytics_geometry_runs.labels(
+                    status=status_value,
+                    close_reason=close_reason,
+                ).set(run_counts.get((status_value, close_reason), 0))
+        durations = dict(
+            session.execute(
+                select(
+                    AnalyticsGeometryEvaluatorRun.status,
+                    func.avg(AnalyticsGeometryEvaluatorRun.duration_ms),
+                ).group_by(AnalyticsGeometryEvaluatorRun.status)
+            ).all()
+        )
+        for status_value in ("succeeded", "failed"):
+            self.analytics_geometry_duration.labels(status=status_value).set(
+                float(durations.get(status_value) or 0)
+            )
+        event_counts = dict(
+            session.execute(
+                select(AnalyticsEvent.event_kind, func.count()).group_by(
+                    AnalyticsEvent.event_kind
+                )
+            ).all()
+        )
+        for event_kind in event_kinds:
+            self.analytics_geometry_events.labels(event_kind=event_kind).set(
+                event_counts.get(event_kind, 0)
+            )
+        state_count = session.scalar(
+            select(func.count()).select_from(AnalyticsTrackRuleState)
+        )
+        self.analytics_geometry_states.set(int(state_count or 0))
+        resources = {
+            "buffer": session.scalar(
+                select(func.max(AnalyticsGeometryEvaluatorRun.maximum_buffer_depth))
+            ),
+            "candidates": session.scalar(
+                select(func.max(AnalyticsGeometryEvaluatorRun.maximum_candidate_count))
+            ),
+            "states": session.scalar(
+                select(func.max(AnalyticsGeometryEvaluatorRun.maximum_state_count))
+            ),
+        }
+        for resource, value in resources.items():
+            self.analytics_geometry_resource_high_water.labels(resource=resource).set(
+                int(value or 0)
+            )
 
     def _refresh_onvif_operation_metrics(self, session: Session, now) -> None:
         operation_types = (

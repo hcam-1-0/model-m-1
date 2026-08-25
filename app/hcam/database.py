@@ -12,7 +12,7 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 from sqlalchemy.types import TypeDecorator
 
 
-CURRENT_SCHEMA_REVISION = "0010_generated_tracking"
+CURRENT_SCHEMA_REVISION = "0011_geometry_events"
 REQUIRED_CAMERA_COLUMNS = frozenset(
     {
         "camera_id",
@@ -213,6 +213,11 @@ class Database:
             "analytics_tracker_epochs",
             "analytics_tracks",
             "analytics_track_lifecycle",
+            "analytics_geometries",
+            "analytics_geometry_rules",
+            "analytics_geometry_evaluator_runs",
+            "analytics_track_rule_states",
+            "analytics_events",
         }
         missing_tables = required_tables - table_names
         missing_columns = REQUIRED_CAMERA_COLUMNS - camera_columns

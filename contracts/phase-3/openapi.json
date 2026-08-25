@@ -3,6 +3,136 @@
   "schema": {
     "components": {
       "schemas": {
+        "AnalyticEventListResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/AnalyticEventResponse"
+              },
+              "title": "Items",
+              "type": "array"
+            },
+            "limit": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "offset": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "total": {
+              "title": "Total",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "items",
+            "total",
+            "limit",
+            "offset"
+          ],
+          "title": "AnalyticEventListResponse",
+          "type": "object"
+        },
+        "AnalyticEventResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "alert_state": {
+              "const": "not_evaluated",
+              "title": "Alert State",
+              "type": "string"
+            },
+            "assignment_id": {
+              "title": "Assignment Id",
+              "type": "string"
+            },
+            "camera_id": {
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "department": {
+              "title": "Department",
+              "type": "string"
+            },
+            "epoch_id": {
+              "title": "Epoch Id",
+              "type": "string"
+            },
+            "event_id": {
+              "pattern": "^evt_[0-9a-f]{32}$",
+              "title": "Event Id",
+              "type": "string"
+            },
+            "event_kind": {
+              "enum": [
+                "hcam.analytics.line.crossing.v1",
+                "hcam.analytics.zone.entry.v1",
+                "hcam.analytics.zone.exit.v1",
+                "hcam.analytics.zone.dwell.threshold_met.v1",
+                "hcam.analytics.zone.occupancy.threshold_entered.v1",
+                "hcam.analytics.zone.occupancy.threshold_exited.v1"
+              ],
+              "title": "Event Kind",
+              "type": "string"
+            },
+            "lifecycle_id": {
+              "title": "Lifecycle Id",
+              "type": "string"
+            },
+            "occurred_at": {
+              "format": "date-time",
+              "title": "Occurred At",
+              "type": "string"
+            },
+            "payload": {
+              "additionalProperties": true,
+              "title": "Payload",
+              "type": "object"
+            },
+            "retention_class": {
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "source_sequence": {
+              "title": "Source Sequence",
+              "type": "integer"
+            },
+            "stream_id": {
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "track_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Track Id"
+            }
+          },
+          "required": [
+            "event_id",
+            "event_kind",
+            "occurred_at",
+            "department",
+            "assignment_id",
+            "stream_id",
+            "camera_id",
+            "epoch_id",
+            "track_id",
+            "lifecycle_id",
+            "source_sequence",
+            "payload",
+            "retention_class",
+            "alert_state"
+          ],
+          "title": "AnalyticEventResponse",
+          "type": "object"
+        },
         "AnalyticsAssignmentCreate": {
           "additionalProperties": false,
           "properties": {
@@ -2047,6 +2177,189 @@
           "title": "GeneratedAnalyticsRunResponse",
           "type": "object"
         },
+        "GeneratedGeometryRunCreate": {
+          "additionalProperties": false,
+          "properties": {
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "rule_record_ids": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 64,
+              "minItems": 1,
+              "title": "Rule Record Ids",
+              "type": "array"
+            },
+            "scenario_id": {
+              "enum": [
+                "c10-line-crossing",
+                "c10-zone-lifecycle",
+                "c10-dwell",
+                "c10-occupancy",
+                "c10-out-of-order"
+              ],
+              "title": "Scenario Id",
+              "type": "string"
+            },
+            "seed": {
+              "default": 0,
+              "maximum": 4294967295.0,
+              "minimum": 0.0,
+              "title": "Seed",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "scenario_id",
+            "rule_record_ids",
+            "observed_at"
+          ],
+          "title": "GeneratedGeometryRunCreate",
+          "type": "object"
+        },
+        "GeneratedGeometryRunResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "assignment_id": {
+              "pattern": "^ana_[0-9a-f]{32}$",
+              "title": "Assignment Id",
+              "type": "string"
+            },
+            "close_reason": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Close Reason"
+            },
+            "completed_at": {
+              "format": "date-time",
+              "title": "Completed At",
+              "type": "string"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "duplicate_count": {
+              "title": "Duplicate Count",
+              "type": "integer"
+            },
+            "duration_ms": {
+              "title": "Duration Ms",
+              "type": "integer"
+            },
+            "event_count": {
+              "title": "Event Count",
+              "type": "integer"
+            },
+            "execution_scope": {
+              "const": "generated_only",
+              "title": "Execution Scope",
+              "type": "string"
+            },
+            "input_count": {
+              "title": "Input Count",
+              "type": "integer"
+            },
+            "input_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Input Sha256",
+              "type": "string"
+            },
+            "late_count": {
+              "title": "Late Count",
+              "type": "integer"
+            },
+            "maximum_buffer_depth": {
+              "title": "Maximum Buffer Depth",
+              "type": "integer"
+            },
+            "maximum_candidate_count": {
+              "title": "Maximum Candidate Count",
+              "type": "integer"
+            },
+            "maximum_state_count": {
+              "title": "Maximum State Count",
+              "type": "integer"
+            },
+            "retention_class": {
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "reused": {
+              "default": false,
+              "title": "Reused",
+              "type": "boolean"
+            },
+            "run_id": {
+              "pattern": "^grun_[0-9a-f]{32}$",
+              "title": "Run Id",
+              "type": "string"
+            },
+            "scenario_id": {
+              "enum": [
+                "c10-line-crossing",
+                "c10-zone-lifecycle",
+                "c10-dwell",
+                "c10-occupancy",
+                "c10-out-of-order"
+              ],
+              "title": "Scenario Id",
+              "type": "string"
+            },
+            "seed": {
+              "title": "Seed",
+              "type": "integer"
+            },
+            "started_at": {
+              "format": "date-time",
+              "title": "Started At",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "succeeded",
+                "failed"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "run_id",
+            "assignment_id",
+            "execution_scope",
+            "scenario_id",
+            "seed",
+            "input_sha256",
+            "configuration_digest",
+            "status",
+            "close_reason",
+            "input_count",
+            "event_count",
+            "duplicate_count",
+            "late_count",
+            "maximum_buffer_depth",
+            "maximum_candidate_count",
+            "maximum_state_count",
+            "duration_ms",
+            "retention_class",
+            "started_at",
+            "completed_at"
+          ],
+          "title": "GeneratedGeometryRunResponse",
+          "type": "object"
+        },
         "GeneratedTrackingRunCreate": {
           "additionalProperties": false,
           "properties": {
@@ -2261,6 +2574,865 @@
           "title": "GeneratedTrackingRunResponse",
           "type": "object"
         },
+        "GeometryApproval": {
+          "additionalProperties": false,
+          "properties": {
+            "approval_record_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Approval Record Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "approval_record_id"
+          ],
+          "title": "GeometryApproval",
+          "type": "object"
+        },
+        "GeometryCreate": {
+          "additionalProperties": false,
+          "properties": {
+            "geometry_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Geometry Id",
+              "type": "string"
+            },
+            "intended_use": {
+              "maxLength": 500,
+              "minLength": 1,
+              "title": "Intended Use",
+              "type": "string"
+            },
+            "policy_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Policy Version",
+              "type": "string"
+            },
+            "schedule": {
+              "$ref": "#/components/schemas/GeometryScheduleV1"
+            },
+            "shape": {
+              "discriminator": {
+                "mapping": {
+                  "line": "#/components/schemas/LineGeometryV1",
+                  "zone": "#/components/schemas/ZoneGeometryV1"
+                },
+                "propertyName": "kind"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/LineGeometryV1"
+                },
+                {
+                  "$ref": "#/components/schemas/ZoneGeometryV1"
+                }
+              ],
+              "title": "Shape"
+            },
+            "version": {
+              "maximum": 2147483647.0,
+              "minimum": 1.0,
+              "title": "Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "geometry_id",
+            "version",
+            "shape",
+            "intended_use",
+            "policy_version"
+          ],
+          "title": "GeometryCreate",
+          "type": "object"
+        },
+        "GeometryListResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/GeometryResponse"
+              },
+              "title": "Items",
+              "type": "array"
+            },
+            "limit": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "offset": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "total": {
+              "title": "Total",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "items",
+            "total",
+            "limit",
+            "offset"
+          ],
+          "title": "GeometryListResponse",
+          "type": "object"
+        },
+        "GeometryResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "approval_record_id": {
+              "anyOf": [
+                {
+                  "maxLength": 128,
+                  "minLength": 1,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Approval Record Id"
+            },
+            "camera_id": {
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "department": {
+              "title": "Department",
+              "type": "string"
+            },
+            "geometry_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Geometry Id",
+              "type": "string"
+            },
+            "geometry_record_id": {
+              "pattern": "^geom_[0-9a-f]{32}$",
+              "title": "Geometry Record Id",
+              "type": "string"
+            },
+            "geos_version": {
+              "title": "Geos Version",
+              "type": "string"
+            },
+            "intended_use": {
+              "title": "Intended Use",
+              "type": "string"
+            },
+            "owner_id": {
+              "title": "Owner Id",
+              "type": "string"
+            },
+            "policy_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Policy Version",
+              "type": "string"
+            },
+            "record_version": {
+              "minimum": 1.0,
+              "title": "Record Version",
+              "type": "integer"
+            },
+            "schedule": {
+              "$ref": "#/components/schemas/GeometryScheduleV1"
+            },
+            "shape": {
+              "discriminator": {
+                "mapping": {
+                  "line": "#/components/schemas/LineGeometryV1",
+                  "zone": "#/components/schemas/ZoneGeometryV1"
+                },
+                "propertyName": "kind"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/LineGeometryV1"
+                },
+                {
+                  "$ref": "#/components/schemas/ZoneGeometryV1"
+                }
+              ],
+              "title": "Shape"
+            },
+            "shapely_version": {
+              "title": "Shapely Version",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "draft",
+                "approved",
+                "retired"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "stream_id": {
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "version": {
+              "minimum": 1.0,
+              "title": "Version",
+              "type": "integer"
+            },
+            "wkb_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Wkb Sha256",
+              "type": "string"
+            }
+          },
+          "required": [
+            "geometry_record_id",
+            "record_version",
+            "geometry_id",
+            "version",
+            "department",
+            "stream_id",
+            "camera_id",
+            "status",
+            "shape",
+            "schedule",
+            "intended_use",
+            "policy_version",
+            "configuration_digest",
+            "wkb_sha256",
+            "shapely_version",
+            "geos_version",
+            "owner_id",
+            "approval_record_id",
+            "created_at",
+            "updated_at"
+          ],
+          "title": "GeometryResponse",
+          "type": "object"
+        },
+        "GeometryRuleApproval": {
+          "additionalProperties": false,
+          "properties": {
+            "approval_record_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Approval Record Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "approval_record_id"
+          ],
+          "title": "GeometryRuleApproval",
+          "type": "object"
+        },
+        "GeometryRuleCreate": {
+          "additionalProperties": false,
+          "properties": {
+            "anchor_policy": {
+              "default": "bottom_center",
+              "enum": [
+                "bottom_center",
+                "bbox_center"
+              ],
+              "title": "Anchor Policy",
+              "type": "string"
+            },
+            "assignment_id": {
+              "pattern": "^ana_[0-9a-f]{32}$",
+              "title": "Assignment Id",
+              "type": "string"
+            },
+            "boundary_policy": {
+              "default": "inside_inclusive",
+              "enum": [
+                "inside_inclusive",
+                "inside_exclusive"
+              ],
+              "title": "Boundary Policy",
+              "type": "string"
+            },
+            "cel_condition": {
+              "default": "true",
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Cel Condition",
+              "type": "string"
+            },
+            "class_filter": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 3,
+                "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+                "type": "string"
+              },
+              "maxItems": 7,
+              "minItems": 1,
+              "title": "Class Filter",
+              "type": "array"
+            },
+            "deadband": {
+              "anyOf": [
+                {
+                  "maximum": 0.1,
+                  "minimum": 0.0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Deadband"
+            },
+            "dwell_threshold_ms": {
+              "anyOf": [
+                {
+                  "maximum": 3600000.0,
+                  "minimum": 100.0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Dwell Threshold Ms"
+            },
+            "effective_from": {
+              "format": "date-time",
+              "title": "Effective From",
+              "type": "string"
+            },
+            "effective_until": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Effective Until"
+            },
+            "event_kind": {
+              "enum": [
+                "hcam.analytics.line.crossing.v1",
+                "hcam.analytics.zone.entry.v1",
+                "hcam.analytics.zone.exit.v1",
+                "hcam.analytics.zone.dwell.threshold_met.v1",
+                "hcam.analytics.zone.occupancy.threshold_entered.v1",
+                "hcam.analytics.zone.occupancy.threshold_exited.v1"
+              ],
+              "title": "Event Kind",
+              "type": "string"
+            },
+            "graph": {
+              "$ref": "#/components/schemas/RuleGraphV1"
+            },
+            "line_direction": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "both",
+                    "a_to_b",
+                    "b_to_a"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Line Direction"
+            },
+            "occlusion_grace_ms": {
+              "default": 0,
+              "maximum": 60000.0,
+              "minimum": 0.0,
+              "title": "Occlusion Grace Ms",
+              "type": "integer"
+            },
+            "occupancy_enter_threshold": {
+              "anyOf": [
+                {
+                  "maximum": 512.0,
+                  "minimum": 1.0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Occupancy Enter Threshold"
+            },
+            "occupancy_reset_threshold": {
+              "anyOf": [
+                {
+                  "maximum": 511.0,
+                  "minimum": 0.0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Occupancy Reset Threshold"
+            },
+            "rearm_distance": {
+              "anyOf": [
+                {
+                  "exclusiveMinimum": 0.0,
+                  "maximum": 0.2,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Rearm Distance"
+            },
+            "retention_class": {
+              "enum": [
+                "derived.analytics.standard",
+                "derived.analytics.restricted"
+              ],
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "rule_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Rule Id",
+              "type": "string"
+            },
+            "version": {
+              "maximum": 2147483647.0,
+              "minimum": 1.0,
+              "title": "Version",
+              "type": "integer"
+            },
+            "zone_hysteresis": {
+              "anyOf": [
+                {
+                  "maximum": 0.1,
+                  "minimum": 0.0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Zone Hysteresis"
+            }
+          },
+          "required": [
+            "rule_id",
+            "version",
+            "assignment_id",
+            "event_kind",
+            "class_filter",
+            "graph",
+            "retention_class",
+            "effective_from"
+          ],
+          "title": "GeometryRuleCreate",
+          "type": "object"
+        },
+        "GeometryRuleListResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/GeometryRuleResponse"
+              },
+              "title": "Items",
+              "type": "array"
+            },
+            "limit": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "offset": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "total": {
+              "title": "Total",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "items",
+            "total",
+            "limit",
+            "offset"
+          ],
+          "title": "GeometryRuleListResponse",
+          "type": "object"
+        },
+        "GeometryRuleResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "anchor_policy": {
+              "enum": [
+                "bottom_center",
+                "bbox_center"
+              ],
+              "title": "Anchor Policy",
+              "type": "string"
+            },
+            "approval_record_id": {
+              "anyOf": [
+                {
+                  "maxLength": 128,
+                  "minLength": 1,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Approval Record Id"
+            },
+            "assignment_id": {
+              "title": "Assignment Id",
+              "type": "string"
+            },
+            "boundary_policy": {
+              "enum": [
+                "inside_inclusive",
+                "inside_exclusive"
+              ],
+              "title": "Boundary Policy",
+              "type": "string"
+            },
+            "camera_id": {
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "cel_condition": {
+              "title": "Cel Condition",
+              "type": "string"
+            },
+            "checked_cel_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Checked Cel Digest",
+              "type": "string"
+            },
+            "class_filter": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 3,
+                "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+                "type": "string"
+              },
+              "title": "Class Filter",
+              "type": "array"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "deadband": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Deadband"
+            },
+            "department": {
+              "title": "Department",
+              "type": "string"
+            },
+            "dwell_threshold_ms": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Dwell Threshold Ms"
+            },
+            "effective_from": {
+              "format": "date-time",
+              "title": "Effective From",
+              "type": "string"
+            },
+            "effective_until": {
+              "anyOf": [
+                {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Effective Until"
+            },
+            "event_kind": {
+              "enum": [
+                "hcam.analytics.line.crossing.v1",
+                "hcam.analytics.zone.entry.v1",
+                "hcam.analytics.zone.exit.v1",
+                "hcam.analytics.zone.dwell.threshold_met.v1",
+                "hcam.analytics.zone.occupancy.threshold_entered.v1",
+                "hcam.analytics.zone.occupancy.threshold_exited.v1"
+              ],
+              "title": "Event Kind",
+              "type": "string"
+            },
+            "geometry_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Geometry Id",
+              "type": "string"
+            },
+            "geometry_record_id": {
+              "pattern": "^geom_[0-9a-f]{32}$",
+              "title": "Geometry Record Id",
+              "type": "string"
+            },
+            "geometry_version": {
+              "minimum": 1.0,
+              "title": "Geometry Version",
+              "type": "integer"
+            },
+            "graph": {
+              "$ref": "#/components/schemas/RuleGraphV1"
+            },
+            "initial_state_policy": {
+              "const": "initialize_without_event",
+              "title": "Initial State Policy",
+              "type": "string"
+            },
+            "line_direction": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "both",
+                    "a_to_b",
+                    "b_to_a"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Line Direction"
+            },
+            "occlusion_grace_ms": {
+              "title": "Occlusion Grace Ms",
+              "type": "integer"
+            },
+            "occupancy_enter_threshold": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Occupancy Enter Threshold"
+            },
+            "occupancy_reset_threshold": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Occupancy Reset Threshold"
+            },
+            "owner_id": {
+              "title": "Owner Id",
+              "type": "string"
+            },
+            "rearm_distance": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Rearm Distance"
+            },
+            "record_version": {
+              "minimum": 1.0,
+              "title": "Record Version",
+              "type": "integer"
+            },
+            "retention_class": {
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "rule_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Rule Id",
+              "type": "string"
+            },
+            "rule_record_id": {
+              "pattern": "^rule_[0-9a-f]{32}$",
+              "title": "Rule Record Id",
+              "type": "string"
+            },
+            "static_cost": {
+              "title": "Static Cost",
+              "type": "integer"
+            },
+            "status": {
+              "enum": [
+                "draft",
+                "approved",
+                "retired"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "stream_id": {
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "updated_at": {
+              "format": "date-time",
+              "title": "Updated At",
+              "type": "string"
+            },
+            "version": {
+              "minimum": 1.0,
+              "title": "Version",
+              "type": "integer"
+            },
+            "zone_hysteresis": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Zone Hysteresis"
+            }
+          },
+          "required": [
+            "rule_record_id",
+            "record_version",
+            "geometry_record_id",
+            "geometry_id",
+            "geometry_version",
+            "rule_id",
+            "version",
+            "status",
+            "department",
+            "assignment_id",
+            "stream_id",
+            "camera_id",
+            "event_kind",
+            "class_filter",
+            "anchor_policy",
+            "boundary_policy",
+            "initial_state_policy",
+            "line_direction",
+            "deadband",
+            "rearm_distance",
+            "zone_hysteresis",
+            "dwell_threshold_ms",
+            "occlusion_grace_ms",
+            "occupancy_enter_threshold",
+            "occupancy_reset_threshold",
+            "cel_condition",
+            "graph",
+            "configuration_digest",
+            "checked_cel_digest",
+            "static_cost",
+            "retention_class",
+            "owner_id",
+            "approval_record_id",
+            "effective_from",
+            "effective_until",
+            "created_at",
+            "updated_at"
+          ],
+          "title": "GeometryRuleResponse",
+          "type": "object"
+        },
+        "GeometryScheduleV1": {
+          "additionalProperties": false,
+          "properties": {
+            "mode": {
+              "default": "always",
+              "enum": [
+                "always",
+                "weekly"
+              ],
+              "title": "Mode",
+              "type": "string"
+            },
+            "timezone": {
+              "default": "UTC",
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^(?:UTC|[A-Za-z][A-Za-z0-9._+-]*(?:/[A-Za-z0-9._+-]+)+)$",
+              "title": "Timezone",
+              "type": "string"
+            },
+            "windows": {
+              "items": {
+                "$ref": "#/components/schemas/WeeklyWindowV1"
+              },
+              "maxItems": 64,
+              "title": "Windows",
+              "type": "array"
+            }
+          },
+          "title": "GeometryScheduleV1",
+          "type": "object"
+        },
         "HTTPValidationError": {
           "properties": {
             "detail": {
@@ -2289,6 +3461,39 @@
             "status"
           ],
           "title": "HealthResponse",
+          "type": "object"
+        },
+        "LineGeometryV1": {
+          "additionalProperties": false,
+          "properties": {
+            "crossing_direction": {
+              "default": "both",
+              "enum": [
+                "both",
+                "start_to_end",
+                "end_to_start"
+              ],
+              "title": "Crossing Direction",
+              "type": "string"
+            },
+            "end": {
+              "$ref": "#/components/schemas/NormalizedPoint"
+            },
+            "kind": {
+              "const": "line",
+              "default": "line",
+              "title": "Kind",
+              "type": "string"
+            },
+            "start": {
+              "$ref": "#/components/schemas/NormalizedPoint"
+            }
+          },
+          "required": [
+            "start",
+            "end"
+          ],
+          "title": "LineGeometryV1",
           "type": "object"
         },
         "LocationPatch": {
@@ -2496,6 +3701,29 @@
             "height"
           ],
           "title": "NormalizedBoundingBox",
+          "type": "object"
+        },
+        "NormalizedPoint": {
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ],
+          "title": "NormalizedPoint",
           "type": "object"
         },
         "OnvifDiscoveryMatchResponse": {
@@ -3457,6 +4685,177 @@
             "cameras"
           ],
           "title": "RegistrySeed",
+          "type": "object"
+        },
+        "RuleCompilePreview": {
+          "additionalProperties": false,
+          "properties": {
+            "accepted": {
+              "const": true,
+              "default": true,
+              "title": "Accepted",
+              "type": "boolean"
+            },
+            "cel_static_cost": {
+              "title": "Cel Static Cost",
+              "type": "integer"
+            },
+            "checked_cel_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Checked Cel Digest",
+              "type": "string"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "geometry_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Geometry Digest",
+              "type": "string"
+            },
+            "graph_static_cost": {
+              "title": "Graph Static Cost",
+              "type": "integer"
+            },
+            "total_static_cost": {
+              "title": "Total Static Cost",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "configuration_digest",
+            "checked_cel_digest",
+            "cel_static_cost",
+            "graph_static_cost",
+            "total_static_cost",
+            "geometry_digest"
+          ],
+          "title": "RuleCompilePreview",
+          "type": "object"
+        },
+        "RuleGraphV1": {
+          "additionalProperties": false,
+          "properties": {
+            "graph_type": {
+              "const": "hcam.analytics.rule_graph.v1",
+              "default": "hcam.analytics.rule_graph.v1",
+              "title": "Graph Type",
+              "type": "string"
+            },
+            "nodes": {
+              "items": {
+                "$ref": "#/components/schemas/RuleNodeV1"
+              },
+              "maxItems": 64,
+              "minItems": 1,
+              "title": "Nodes",
+              "type": "array"
+            },
+            "output_node_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Output Node Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "nodes",
+            "output_node_id"
+          ],
+          "title": "RuleGraphV1",
+          "type": "object"
+        },
+        "RuleNodeV1": {
+          "additionalProperties": false,
+          "properties": {
+            "duration_ms": {
+              "anyOf": [
+                {
+                  "maximum": 3600000.0,
+                  "minimum": 1.0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Duration Ms"
+            },
+            "inputs": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "maxItems": 8,
+              "title": "Inputs",
+              "type": "array"
+            },
+            "kind": {
+              "enum": [
+                "spatial",
+                "all",
+                "any",
+                "not",
+                "sequence",
+                "within",
+                "for_at_least",
+                "cooldown",
+                "repeat_limit"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "node_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Node Id",
+              "type": "string"
+            },
+            "repeat_limit": {
+              "anyOf": [
+                {
+                  "maximum": 100.0,
+                  "minimum": 1.0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Repeat Limit"
+            },
+            "signal": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "line_crossing",
+                    "zone_entry",
+                    "zone_exit",
+                    "zone_presence",
+                    "zone_dwell_threshold",
+                    "zone_occupancy_entered",
+                    "zone_occupancy_exited"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Signal"
+            }
+          },
+          "required": [
+            "node_id",
+            "kind"
+          ],
+          "title": "RuleNodeV1",
           "type": "object"
         },
         "RuntimeReference": {
@@ -5657,6 +7056,82 @@
           ],
           "title": "VersionedConfiguration",
           "type": "object"
+        },
+        "WeeklyWindowV1": {
+          "additionalProperties": false,
+          "properties": {
+            "days": {
+              "items": {
+                "enum": [
+                  "monday",
+                  "tuesday",
+                  "wednesday",
+                  "thursday",
+                  "friday",
+                  "saturday",
+                  "sunday"
+                ],
+                "type": "string"
+              },
+              "maxItems": 7,
+              "minItems": 1,
+              "title": "Days",
+              "type": "array"
+            },
+            "end_minute": {
+              "maximum": 1440.0,
+              "minimum": 1.0,
+              "title": "End Minute",
+              "type": "integer"
+            },
+            "start_minute": {
+              "maximum": 1439.0,
+              "minimum": 0.0,
+              "title": "Start Minute",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "days",
+            "start_minute",
+            "end_minute"
+          ],
+          "title": "WeeklyWindowV1",
+          "type": "object"
+        },
+        "ZoneGeometryV1": {
+          "additionalProperties": false,
+          "properties": {
+            "boundary_policy": {
+              "default": "inside_inclusive",
+              "enum": [
+                "inside_inclusive",
+                "inside_exclusive"
+              ],
+              "title": "Boundary Policy",
+              "type": "string"
+            },
+            "kind": {
+              "const": "zone",
+              "default": "zone",
+              "title": "Kind",
+              "type": "string"
+            },
+            "vertices": {
+              "items": {
+                "$ref": "#/components/schemas/NormalizedPoint"
+              },
+              "maxItems": 128,
+              "minItems": 3,
+              "title": "Vertices",
+              "type": "array"
+            }
+          },
+          "required": [
+            "vertices"
+          ],
+          "title": "ZoneGeometryV1",
+          "type": "object"
         }
       }
     },
@@ -5995,6 +7470,70 @@
           "summary": "Activate Analytics Assignment",
           "tags": [
             "analytics-control-plane"
+          ]
+        }
+      },
+      "/analytics-assignments/{assignment_id}/generated-geometry-runs": {
+        "post": {
+          "operationId": "execute_generated_geometry_run_analytics_assignments__assignment_id__generated_geometry_runs_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "assignment_id",
+              "required": true,
+              "schema": {
+                "title": "Assignment Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneratedGeometryRunCreate"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GeneratedGeometryRunResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Execute Generated Geometry Run",
+          "tags": [
+            "analytics-geometry-control-plane"
           ]
         }
       },
@@ -6365,6 +7904,653 @@
           "summary": "List Generated Analytics Observations",
           "tags": [
             "analytics-control-plane"
+          ]
+        }
+      },
+      "/analytics-geometries": {
+        "get": {
+          "operationId": "list_geometries_analytics_geometries_get",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "stream_id",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 64,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Stream Id"
+              }
+            },
+            {
+              "in": "query",
+              "name": "status",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 16,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Status"
+              }
+            },
+            {
+              "in": "query",
+              "name": "limit",
+              "required": false,
+              "schema": {
+                "default": 100,
+                "maximum": 500,
+                "minimum": 1,
+                "title": "Limit",
+                "type": "integer"
+              }
+            },
+            {
+              "in": "query",
+              "name": "offset",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "minimum": 0,
+                "title": "Offset",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GeometryListResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "List Geometries",
+          "tags": [
+            "analytics-geometry-control-plane"
+          ]
+        }
+      },
+      "/analytics-geometries/{record_id}": {
+        "get": {
+          "operationId": "get_geometry_analytics_geometries__record_id__get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "record_id",
+              "required": true,
+              "schema": {
+                "title": "Record Id",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GeometryResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Get Geometry",
+          "tags": [
+            "analytics-geometry-control-plane"
+          ]
+        }
+      },
+      "/analytics-geometries/{record_id}/approve": {
+        "post": {
+          "operationId": "approve_geometry_analytics_geometries__record_id__approve_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "record_id",
+              "required": true,
+              "schema": {
+                "title": "Record Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "If-Match",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "If-Match"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeometryApproval"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GeometryResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Approve Geometry",
+          "tags": [
+            "analytics-geometry-control-plane"
+          ]
+        }
+      },
+      "/analytics-geometries/{record_id}/rule-compile-previews": {
+        "post": {
+          "operationId": "preview_rule_analytics_geometries__record_id__rule_compile_previews_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "record_id",
+              "required": true,
+              "schema": {
+                "title": "Record Id",
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeometryRuleCreate"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/RuleCompilePreview"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Preview Rule",
+          "tags": [
+            "analytics-geometry-control-plane"
+          ]
+        }
+      },
+      "/analytics-geometries/{record_id}/rules": {
+        "post": {
+          "operationId": "create_rule_analytics_geometries__record_id__rules_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "record_id",
+              "required": true,
+              "schema": {
+                "title": "Record Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeometryRuleCreate"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GeometryRuleResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Create Rule",
+          "tags": [
+            "analytics-geometry-control-plane"
+          ]
+        }
+      },
+      "/analytics-geometry-rules": {
+        "get": {
+          "operationId": "list_rules_analytics_geometry_rules_get",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "assignment_id",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 64,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Assignment Id"
+              }
+            },
+            {
+              "in": "query",
+              "name": "status",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "maxLength": 16,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Status"
+              }
+            },
+            {
+              "in": "query",
+              "name": "limit",
+              "required": false,
+              "schema": {
+                "default": 100,
+                "maximum": 500,
+                "minimum": 1,
+                "title": "Limit",
+                "type": "integer"
+              }
+            },
+            {
+              "in": "query",
+              "name": "offset",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "minimum": 0,
+                "title": "Offset",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GeometryRuleListResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "List Rules",
+          "tags": [
+            "analytics-geometry-control-plane"
+          ]
+        }
+      },
+      "/analytics-geometry-rules/{record_id}": {
+        "get": {
+          "operationId": "get_rule_analytics_geometry_rules__record_id__get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "record_id",
+              "required": true,
+              "schema": {
+                "title": "Record Id",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GeometryRuleResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Get Rule",
+          "tags": [
+            "analytics-geometry-control-plane"
+          ]
+        }
+      },
+      "/analytics-geometry-rules/{record_id}/approve": {
+        "post": {
+          "operationId": "approve_rule_analytics_geometry_rules__record_id__approve_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "record_id",
+              "required": true,
+              "schema": {
+                "title": "Record Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "If-Match",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "If-Match"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeometryRuleApproval"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GeometryRuleResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Approve Rule",
+          "tags": [
+            "analytics-geometry-control-plane"
+          ]
+        }
+      },
+      "/analytics-geometry-runs/{run_id}": {
+        "get": {
+          "operationId": "get_generated_geometry_run_analytics_geometry_runs__run_id__get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "run_id",
+              "required": true,
+              "schema": {
+                "title": "Run Id",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GeneratedGeometryRunResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Get Generated Geometry Run",
+          "tags": [
+            "analytics-geometry-control-plane"
+          ]
+        }
+      },
+      "/analytics-geometry-runs/{run_id}/events": {
+        "get": {
+          "operationId": "list_generated_geometry_events_analytics_geometry_runs__run_id__events_get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "run_id",
+              "required": true,
+              "schema": {
+                "title": "Run Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "limit",
+              "required": false,
+              "schema": {
+                "default": 100,
+                "maximum": 1000,
+                "minimum": 1,
+                "title": "Limit",
+                "type": "integer"
+              }
+            },
+            {
+              "in": "query",
+              "name": "offset",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "minimum": 0,
+                "title": "Offset",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AnalyticEventListResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "List Generated Geometry Events",
+          "tags": [
+            "analytics-geometry-control-plane"
           ]
         }
       },
@@ -7471,6 +9657,70 @@
           "summary": "Create Analytics Assignment",
           "tags": [
             "analytics-control-plane"
+          ]
+        }
+      },
+      "/streams/{stream_id}/analytics-geometries": {
+        "post": {
+          "operationId": "create_geometry_streams__stream_id__analytics_geometries_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "stream_id",
+              "required": true,
+              "schema": {
+                "title": "Stream Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeometryCreate"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GeometryResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Create Geometry",
+          "tags": [
+            "analytics-geometry-control-plane"
           ]
         }
       },

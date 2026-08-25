@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import Annotated, Literal, TypeAlias
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from pydantic import Field, field_validator, model_validator
 
@@ -176,6 +177,10 @@ class GeometryScheduleV1(ContractModel):
                 ):
                     raise ValueError("weekly schedule windows must not overlap")
                 intervals.append((window.start_minute, window.end_minute))
+        try:
+            ZoneInfo(self.timezone)
+        except ZoneInfoNotFoundError as exc:
+            raise ValueError("schedule timezone must be available in IANA tzdata") from exc
         return self
 
 

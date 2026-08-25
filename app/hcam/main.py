@@ -10,6 +10,7 @@ from hcam.analytics.bootstrap import build_analytics_runtime
 from hcam.analytics.tracking import GeneratedTrackingLaneStore
 from hcam.analytics import models as _analytics_models  # noqa: F401
 from hcam.analytics.routes import router as analytics_router
+from hcam.analytics.spatial.routes import router as analytics_spatial_router
 from hcam.audit import models as _audit_models  # noqa: F401
 from hcam.camera_registry import models as _camera_models  # noqa: F401
 from hcam.camera_registry.import_routes import router as import_router
@@ -86,6 +87,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     application.include_router(import_router)
     application.include_router(stream_router)
     application.include_router(analytics_router)
+    application.include_router(analytics_spatial_router)
     return application
 
 

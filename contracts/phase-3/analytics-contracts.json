@@ -2795,6 +2795,678 @@
       "type": "object"
     }
   },
+  "spatial": {
+    "geometry_rule": {
+      "$defs": {
+        "RuleGraphV1": {
+          "additionalProperties": false,
+          "properties": {
+            "graph_type": {
+              "const": "hcam.analytics.rule_graph.v1",
+              "default": "hcam.analytics.rule_graph.v1",
+              "title": "Graph Type",
+              "type": "string"
+            },
+            "nodes": {
+              "items": {
+                "$ref": "#/$defs/RuleNodeV1"
+              },
+              "maxItems": 64,
+              "minItems": 1,
+              "title": "Nodes",
+              "type": "array"
+            },
+            "output_node_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Output Node Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "nodes",
+            "output_node_id"
+          ],
+          "title": "RuleGraphV1",
+          "type": "object"
+        },
+        "RuleNodeV1": {
+          "additionalProperties": false,
+          "properties": {
+            "duration_ms": {
+              "anyOf": [
+                {
+                  "maximum": 3600000,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Duration Ms"
+            },
+            "inputs": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "maxItems": 8,
+              "title": "Inputs",
+              "type": "array"
+            },
+            "kind": {
+              "enum": [
+                "spatial",
+                "all",
+                "any",
+                "not",
+                "sequence",
+                "within",
+                "for_at_least",
+                "cooldown",
+                "repeat_limit"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "node_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Node Id",
+              "type": "string"
+            },
+            "repeat_limit": {
+              "anyOf": [
+                {
+                  "maximum": 100,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Repeat Limit"
+            },
+            "signal": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "line_crossing",
+                    "zone_entry",
+                    "zone_exit",
+                    "zone_presence",
+                    "zone_dwell_threshold",
+                    "zone_occupancy_entered",
+                    "zone_occupancy_exited"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Signal"
+            }
+          },
+          "required": [
+            "node_id",
+            "kind"
+          ],
+          "title": "RuleNodeV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "anchor_policy": {
+          "default": "bottom_center",
+          "enum": [
+            "bottom_center",
+            "bbox_center"
+          ],
+          "title": "Anchor Policy",
+          "type": "string"
+        },
+        "approval_record_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Approval Record Id"
+        },
+        "assignment_id": {
+          "pattern": "^ana_[0-9a-f]{32}$",
+          "title": "Assignment Id",
+          "type": "string"
+        },
+        "boundary_policy": {
+          "default": "inside_inclusive",
+          "enum": [
+            "inside_inclusive",
+            "inside_exclusive"
+          ],
+          "title": "Boundary Policy",
+          "type": "string"
+        },
+        "camera_id": {
+          "maxLength": 160,
+          "minLength": 3,
+          "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Camera Id",
+          "type": "string"
+        },
+        "cel_condition": {
+          "default": "true",
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Cel Condition",
+          "type": "string"
+        },
+        "class_filter": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 3,
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+            "type": "string"
+          },
+          "maxItems": 7,
+          "minItems": 1,
+          "title": "Class Filter",
+          "type": "array"
+        },
+        "configuration_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Configuration Digest",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.analytics.geometry_rule.v1",
+          "default": "hcam.analytics.geometry_rule.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "deadband": {
+          "anyOf": [
+            {
+              "maximum": 0.1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Deadband"
+        },
+        "department": {
+          "maxLength": 120,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9 ._-]*$",
+          "title": "Department",
+          "type": "string"
+        },
+        "dwell_threshold_ms": {
+          "anyOf": [
+            {
+              "maximum": 3600000,
+              "minimum": 100,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dwell Threshold Ms"
+        },
+        "effective_from": {
+          "format": "date-time",
+          "title": "Effective From",
+          "type": "string"
+        },
+        "effective_until": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Effective Until"
+        },
+        "event_kind": {
+          "enum": [
+            "hcam.analytics.line.crossing.v1",
+            "hcam.analytics.zone.entry.v1",
+            "hcam.analytics.zone.exit.v1",
+            "hcam.analytics.zone.dwell.threshold_met.v1",
+            "hcam.analytics.zone.occupancy.threshold_entered.v1",
+            "hcam.analytics.zone.occupancy.threshold_exited.v1"
+          ],
+          "title": "Event Kind",
+          "type": "string"
+        },
+        "geometry_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Geometry Id",
+          "type": "string"
+        },
+        "geometry_version": {
+          "maximum": 2147483647,
+          "minimum": 1,
+          "title": "Geometry Version",
+          "type": "integer"
+        },
+        "graph": {
+          "$ref": "#/$defs/RuleGraphV1"
+        },
+        "initial_state_policy": {
+          "const": "initialize_without_event",
+          "default": "initialize_without_event",
+          "title": "Initial State Policy",
+          "type": "string"
+        },
+        "line_direction": {
+          "anyOf": [
+            {
+              "enum": [
+                "both",
+                "a_to_b",
+                "b_to_a"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Line Direction"
+        },
+        "occlusion_grace_ms": {
+          "default": 0,
+          "maximum": 60000,
+          "minimum": 0,
+          "title": "Occlusion Grace Ms",
+          "type": "integer"
+        },
+        "occupancy_enter_threshold": {
+          "anyOf": [
+            {
+              "maximum": 512,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Occupancy Enter Threshold"
+        },
+        "occupancy_reset_threshold": {
+          "anyOf": [
+            {
+              "maximum": 511,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Occupancy Reset Threshold"
+        },
+        "owner_id": {
+          "maxLength": 160,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:@-]*$",
+          "title": "Owner Id",
+          "type": "string"
+        },
+        "rearm_distance": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 0.2,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rearm Distance"
+        },
+        "retention_class": {
+          "enum": [
+            "derived.analytics.standard",
+            "derived.analytics.restricted"
+          ],
+          "title": "Retention Class",
+          "type": "string"
+        },
+        "rule_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "approved",
+            "retired"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        },
+        "version": {
+          "maximum": 2147483647,
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "zone_hysteresis": {
+          "anyOf": [
+            {
+              "maximum": 0.1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Zone Hysteresis"
+        }
+      },
+      "required": [
+        "rule_id",
+        "version",
+        "status",
+        "department",
+        "assignment_id",
+        "stream_id",
+        "camera_id",
+        "geometry_id",
+        "geometry_version",
+        "event_kind",
+        "class_filter",
+        "graph",
+        "configuration_digest",
+        "retention_class",
+        "owner_id",
+        "effective_from",
+        "created_at",
+        "updated_at"
+      ],
+      "title": "GeometryRuleV1",
+      "type": "object"
+    },
+    "rule_graph": {
+      "$defs": {
+        "RuleNodeV1": {
+          "additionalProperties": false,
+          "properties": {
+            "duration_ms": {
+              "anyOf": [
+                {
+                  "maximum": 3600000,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Duration Ms"
+            },
+            "inputs": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "maxItems": 8,
+              "title": "Inputs",
+              "type": "array"
+            },
+            "kind": {
+              "enum": [
+                "spatial",
+                "all",
+                "any",
+                "not",
+                "sequence",
+                "within",
+                "for_at_least",
+                "cooldown",
+                "repeat_limit"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "node_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Node Id",
+              "type": "string"
+            },
+            "repeat_limit": {
+              "anyOf": [
+                {
+                  "maximum": 100,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Repeat Limit"
+            },
+            "signal": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "line_crossing",
+                    "zone_entry",
+                    "zone_exit",
+                    "zone_presence",
+                    "zone_dwell_threshold",
+                    "zone_occupancy_entered",
+                    "zone_occupancy_exited"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Signal"
+            }
+          },
+          "required": [
+            "node_id",
+            "kind"
+          ],
+          "title": "RuleNodeV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "graph_type": {
+          "const": "hcam.analytics.rule_graph.v1",
+          "default": "hcam.analytics.rule_graph.v1",
+          "title": "Graph Type",
+          "type": "string"
+        },
+        "nodes": {
+          "items": {
+            "$ref": "#/$defs/RuleNodeV1"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Nodes",
+          "type": "array"
+        },
+        "output_node_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Output Node Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "nodes",
+        "output_node_id"
+      ],
+      "title": "RuleGraphV1",
+      "type": "object"
+    },
+    "rule_node": {
+      "additionalProperties": false,
+      "properties": {
+        "duration_ms": {
+          "anyOf": [
+            {
+              "maximum": 3600000,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Duration Ms"
+        },
+        "inputs": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "maxItems": 8,
+          "title": "Inputs",
+          "type": "array"
+        },
+        "kind": {
+          "enum": [
+            "spatial",
+            "all",
+            "any",
+            "not",
+            "sequence",
+            "within",
+            "for_at_least",
+            "cooldown",
+            "repeat_limit"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "node_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "repeat_limit": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Repeat Limit"
+        },
+        "signal": {
+          "anyOf": [
+            {
+              "enum": [
+                "line_crossing",
+                "zone_entry",
+                "zone_exit",
+                "zone_presence",
+                "zone_dwell_threshold",
+                "zone_occupancy_entered",
+                "zone_occupancy_exited"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Signal"
+        }
+      },
+      "required": [
+        "node_id",
+        "kind"
+      ],
+      "title": "RuleNodeV1",
+      "type": "object"
+    }
+  },
   "taxonomy": {
     "$defs": {
       "TaxonomyClassV1": {

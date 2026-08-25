@@ -11,6 +11,7 @@ from sqlalchemy import (
     ForeignKey,
     Index,
     Integer,
+    LargeBinary,
     String,
     Text,
     UniqueConstraint,
@@ -20,6 +21,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from hcam.camera_registry.models import utc_now
 from hcam.database import Base, UTCDateTime
+from hcam.analytics.spatial.sql_types import image_geometry_type
 
 
 class AnalyticsAssignment(Base):
@@ -681,3 +683,313 @@ class AnalyticsTrackLifecycle(Base):
     payload: Mapped[dict[str, Any]] = mapped_column(JSON, nullable=False)
     retention_class: Mapped[str] = mapped_column(String(64), nullable=False)
     created_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False)
+
+
+class AnalyticsGeometry(Base):
+    __tablename__ = "analytics_geometries"
+    __table_args__ = (
+        CheckConstraint("record_version >= 1", name="ck_analytics_geometry_record_version"),
+        CheckConstraint(
+            "status IN ('draft', 'approved', 'retired')",
+            name="ck_analytics_geometry_status",
+        ),
+        CheckConstraint(
+            "kind IN ('line', 'zone')",
+            name="ck_analytics_geometry_kind",
+        ),
+        CheckConstraint(
+            "length(configuration_digest) = 71",
+            name="ck_analytics_geometry_digest",
+        ),
+        UniqueConstraint(
+            "department",
+            "geometry_id",
+            "geometry_version",
+            name="uq_analytics_geometry_department_version",
+        ),
+        Index(
+            "ix_analytics_geometry_scope_status",
+            "department",
+            "stream_id",
+            "status",
+        ),
+    )
+
+    geometry_record_id: Mapped[str] = mapped_column(String(37), primary_key=True)
+    record_version: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=1, server_default=text("1")
+    )
+    department: Mapped[str] = mapped_column(String(120), nullable=False, index=True)
+    stream_id: Mapped[str] = mapped_column(
+        ForeignKey("stream_endpoints.stream_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    camera_id: Mapped[str] = mapped_column(
+        ForeignKey("cameras.camera_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    geometry_id: Mapped[str] = mapped_column(String(128), nullable=False, index=True)
+    geometry_version: Mapped[int] = mapped_column(Integer, nullable=False)
+    status: Mapped[str] = mapped_column(String(16), nullable=False)
+    kind: Mapped[str] = mapped_column(String(16), nullable=False)
+    shape: Mapped[dict[str, Any]] = mapped_column(JSON, nullable=False)
+    schedule: Mapped[dict[str, Any]] = mapped_column(JSON, nullable=False)
+    canonical_json: Mapped[str] = mapped_column(Text, nullable=False)
+    canonical_wkb: Mapped[bytes] = mapped_column(LargeBinary, nullable=False)
+    spatial_geometry: Mapped[bytes] = mapped_column(image_geometry_type(), nullable=False)
+    configuration_digest: Mapped[str] = mapped_column(String(71), nullable=False, index=True)
+    wkb_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    shapely_version: Mapped[str] = mapped_column(String(32), nullable=False)
+    geos_version: Mapped[str] = mapped_column(String(32), nullable=False)
+    intended_use: Mapped[str] = mapped_column(Text, nullable=False)
+    policy_version: Mapped[str] = mapped_column(String(71), nullable=False)
+    owner_id: Mapped[str] = mapped_column(String(160), nullable=False, index=True)
+    approval_record_id: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    last_change_reason: Mapped[str] = mapped_column(Text, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(
+        UTCDateTime(), nullable=False, default=utc_now, index=True
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        UTCDateTime(), nullable=False, default=utc_now, onupdate=utc_now, index=True
+    )
+
+    __mapper_args__: ClassVar[dict[str, Any]] = {"version_id_col": record_version}
+
+
+class AnalyticsGeometryRule(Base):
+    __tablename__ = "analytics_geometry_rules"
+    __table_args__ = (
+        CheckConstraint("record_version >= 1", name="ck_analytics_geometry_rule_record_version"),
+        CheckConstraint(
+            "status IN ('draft', 'approved', 'retired')",
+            name="ck_analytics_geometry_rule_status",
+        ),
+        CheckConstraint(
+            "static_cost >= 1 AND static_cost <= 320",
+            name="ck_analytics_geometry_rule_static_cost",
+        ),
+        CheckConstraint(
+            "retention_class IN ('derived.analytics.standard', "
+            "'derived.analytics.restricted')",
+            name="ck_analytics_geometry_rule_retention",
+        ),
+        UniqueConstraint(
+            "department",
+            "rule_id",
+            "rule_version",
+            name="uq_analytics_geometry_rule_department_version",
+        ),
+        Index(
+            "ix_analytics_geometry_rule_scope_status",
+            "department",
+            "assignment_id",
+            "stream_id",
+            "status",
+        ),
+    )
+
+    rule_record_id: Mapped[str] = mapped_column(String(37), primary_key=True)
+    record_version: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=1, server_default=text("1")
+    )
+    geometry_record_id: Mapped[str] = mapped_column(
+        ForeignKey("analytics_geometries.geometry_record_id", ondelete="RESTRICT"),
+        nullable=False,
+        index=True,
+    )
+    department: Mapped[str] = mapped_column(String(120), nullable=False, index=True)
+    assignment_id: Mapped[str] = mapped_column(
+        ForeignKey("analytics_assignments.assignment_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    stream_id: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
+    camera_id: Mapped[str] = mapped_column(String(160), nullable=False, index=True)
+    rule_id: Mapped[str] = mapped_column(String(128), nullable=False, index=True)
+    rule_version: Mapped[int] = mapped_column(Integer, nullable=False)
+    status: Mapped[str] = mapped_column(String(16), nullable=False)
+    event_kind: Mapped[str] = mapped_column(String(128), nullable=False, index=True)
+    configuration: Mapped[dict[str, Any]] = mapped_column(JSON, nullable=False)
+    visual_graph: Mapped[dict[str, Any]] = mapped_column(JSON, nullable=False)
+    checked_cel: Mapped[bytes] = mapped_column(LargeBinary, nullable=False)
+    checked_cel_digest: Mapped[str] = mapped_column(String(71), nullable=False)
+    configuration_digest: Mapped[str] = mapped_column(String(71), nullable=False, index=True)
+    static_cost: Mapped[int] = mapped_column(Integer, nullable=False)
+    retention_class: Mapped[str] = mapped_column(String(64), nullable=False)
+    owner_id: Mapped[str] = mapped_column(String(160), nullable=False, index=True)
+    approval_record_id: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    last_change_reason: Mapped[str] = mapped_column(Text, nullable=False)
+    effective_from: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False)
+    effective_until: Mapped[datetime | None] = mapped_column(UTCDateTime(), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        UTCDateTime(), nullable=False, default=utc_now, index=True
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        UTCDateTime(), nullable=False, default=utc_now, onupdate=utc_now, index=True
+    )
+
+    __mapper_args__: ClassVar[dict[str, Any]] = {"version_id_col": record_version}
+
+
+class AnalyticsGeometryEvaluatorRun(Base):
+    __tablename__ = "analytics_geometry_evaluator_runs"
+    __table_args__ = (
+        CheckConstraint(
+            "execution_scope = 'generated_only'",
+            name="ck_analytics_geometry_run_scope",
+        ),
+        CheckConstraint(
+            "status IN ('succeeded', 'failed')",
+            name="ck_analytics_geometry_run_status",
+        ),
+        CheckConstraint(
+            "close_reason IS NULL OR close_reason IN ('completed', 'sequence_conflict', "
+            "'reorder_buffer_overflow', 'candidate_limit', 'state_limit', "
+            "'scope_mismatch', 'timezone_unavailable', 'persistence_conflict')",
+            name="ck_analytics_geometry_run_close_reason",
+        ),
+        CheckConstraint(
+            "retention_class IN ('derived.analytics.standard', "
+            "'derived.analytics.restricted')",
+            name="ck_analytics_geometry_run_retention",
+        ),
+        UniqueConstraint(
+            "assignment_id",
+            "scenario_id",
+            "seed",
+            "input_sha256",
+            "configuration_digest",
+            name="uq_analytics_geometry_run_input",
+        ),
+        Index(
+            "ix_analytics_geometry_run_scope_completed",
+            "department",
+            "stream_id",
+            "completed_at",
+        ),
+    )
+
+    run_id: Mapped[str] = mapped_column(String(37), primary_key=True)
+    assignment_id: Mapped[str] = mapped_column(
+        ForeignKey("analytics_assignments.assignment_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    department: Mapped[str] = mapped_column(String(120), nullable=False, index=True)
+    stream_id: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
+    camera_id: Mapped[str] = mapped_column(String(160), nullable=False, index=True)
+    epoch_id: Mapped[str] = mapped_column(String(38), nullable=False, index=True)
+    execution_scope: Mapped[str] = mapped_column(String(32), nullable=False)
+    scenario_id: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
+    seed: Mapped[int] = mapped_column(BigInteger, nullable=False)
+    input_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    configuration_digest: Mapped[str] = mapped_column(String(71), nullable=False)
+    status: Mapped[str] = mapped_column(String(16), nullable=False)
+    close_reason: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    input_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    event_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    duplicate_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    late_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    maximum_buffer_depth: Mapped[int] = mapped_column(Integer, nullable=False)
+    maximum_candidate_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    maximum_state_count: Mapped[int] = mapped_column(Integer, nullable=False)
+    duration_ms: Mapped[int] = mapped_column(Integer, nullable=False)
+    retention_class: Mapped[str] = mapped_column(String(64), nullable=False)
+    started_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False)
+    completed_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False, index=True)
+
+
+class AnalyticsTrackRuleState(Base):
+    __tablename__ = "analytics_track_rule_states"
+    __table_args__ = (
+        CheckConstraint("version_id >= 1", name="ck_analytics_track_rule_state_version"),
+        UniqueConstraint(
+            "evaluator_run_id",
+            "rule_record_id",
+            "track_id",
+            name="uq_analytics_track_rule_state_scope",
+        ),
+        Index(
+            "ix_analytics_track_rule_state_scope",
+            "department",
+            "stream_id",
+            "updated_at",
+        ),
+    )
+
+    state_id: Mapped[str] = mapped_column(String(37), primary_key=True)
+    version_id: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=1, server_default=text("1")
+    )
+    evaluator_run_id: Mapped[str] = mapped_column(
+        ForeignKey("analytics_geometry_evaluator_runs.run_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    rule_record_id: Mapped[str] = mapped_column(
+        ForeignKey("analytics_geometry_rules.rule_record_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    department: Mapped[str] = mapped_column(String(120), nullable=False, index=True)
+    stream_id: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
+    epoch_id: Mapped[str] = mapped_column(String(38), nullable=False, index=True)
+    track_id: Mapped[str] = mapped_column(String(36), nullable=False, index=True)
+    state: Mapped[dict[str, Any]] = mapped_column(JSON, nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False, default=utc_now)
+
+    __mapper_args__: ClassVar[dict[str, Any]] = {"version_id_col": version_id}
+
+
+class AnalyticsEvent(Base):
+    __tablename__ = "analytics_events"
+    __table_args__ = (
+        CheckConstraint(
+            "alert_state = 'not_evaluated'",
+            name="ck_analytics_event_alert_state",
+        ),
+        CheckConstraint(
+            "retention_class IN ('derived.analytics.standard', "
+            "'derived.analytics.restricted')",
+            name="ck_analytics_event_retention",
+        ),
+        Index(
+            "ix_analytics_event_scope_occurred",
+            "department",
+            "stream_id",
+            "occurred_at",
+        ),
+    )
+
+    event_id: Mapped[str] = mapped_column(String(36), primary_key=True)
+    evaluator_run_id: Mapped[str] = mapped_column(
+        ForeignKey("analytics_geometry_evaluator_runs.run_id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    rule_record_id: Mapped[str] = mapped_column(
+        ForeignKey("analytics_geometry_rules.rule_record_id", ondelete="RESTRICT"),
+        nullable=False,
+        index=True,
+    )
+    geometry_record_id: Mapped[str] = mapped_column(
+        ForeignKey("analytics_geometries.geometry_record_id", ondelete="RESTRICT"),
+        nullable=False,
+        index=True,
+    )
+    department: Mapped[str] = mapped_column(String(120), nullable=False, index=True)
+    assignment_id: Mapped[str] = mapped_column(String(36), nullable=False, index=True)
+    stream_id: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
+    camera_id: Mapped[str] = mapped_column(String(160), nullable=False, index=True)
+    epoch_id: Mapped[str] = mapped_column(String(38), nullable=False, index=True)
+    track_id: Mapped[str | None] = mapped_column(String(36), nullable=True, index=True)
+    lifecycle_id: Mapped[str] = mapped_column(String(36), nullable=False)
+    source_sequence: Mapped[int] = mapped_column(BigInteger, nullable=False)
+    event_kind: Mapped[str] = mapped_column(String(128), nullable=False, index=True)
+    occurred_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False, index=True)
+    payload: Mapped[dict[str, Any]] = mapped_column(JSON, nullable=False)
+    retention_class: Mapped[str] = mapped_column(String(64), nullable=False)
+    alert_state: Mapped[str] = mapped_column(String(32), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime(), nullable=False, default=utc_now)

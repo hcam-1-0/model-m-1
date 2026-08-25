@@ -75,7 +75,7 @@ def test_analytics_assignment_migration_round_trip_and_constraints(
         _check(database_url)
         inspector = inspect(database.engine)
         tables = set(inspector.get_table_names())
-        assert CURRENT_SCHEMA_REVISION == "0010_generated_tracking"
+        assert CURRENT_SCHEMA_REVISION == "0011_geometry_events"
         assert {
             "analytics_assignments",
             "analytics_assignment_revisions",
@@ -85,6 +85,11 @@ def test_analytics_assignment_migration_round_trip_and_constraints(
             "analytics_tracker_epochs",
             "analytics_tracks",
             "analytics_track_lifecycle",
+            "analytics_geometries",
+            "analytics_geometry_rules",
+            "analytics_geometry_evaluator_runs",
+            "analytics_track_rule_states",
+            "analytics_events",
         }.issubset(tables)
         assignment_columns = {
             column["name"] for column in inspector.get_columns("analytics_assignments")

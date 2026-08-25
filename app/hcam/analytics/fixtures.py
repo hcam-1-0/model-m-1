@@ -41,6 +41,7 @@ from hcam.analytics.runtime import (
     RuntimeInputDescriptorV1,
     UnavailableAnalyticsRuntimeAdapter,
 )
+from hcam.analytics.spatial.contracts import GeometryRuleV1, RuleGraphV1, RuleNodeV1
 from hcam.analytics.taxonomy import TaxonomyClassV1, TaxonomyManifestV1
 
 
@@ -327,6 +328,39 @@ def golden_contract_fixtures() -> dict[str, BaseModel]:
         created_at=OBSERVED_AT,
         updated_at=OBSERVED_AT,
     )
+    geometry_rule = GeometryRuleV1(
+        rule_id="line-crossing-vehicle",
+        version=1,
+        status="draft",
+        department="phase3-lab",
+        assignment_id="ana_11111111111111111111111111111111",
+        stream_id=STREAM_ID,
+        camera_id=CAMERA_ID,
+        geometry_id=line_geometry.geometry_id,
+        geometry_version=line_geometry.version,
+        event_kind="hcam.analytics.line.crossing.v1",
+        class_filter=["vehicle.car"],
+        line_direction="both",
+        deadband=0.01,
+        rearm_distance=0.04,
+        cel_condition="confidence >= 0.5 && class_id == 'vehicle.car'",
+        graph=RuleGraphV1(
+            nodes=[
+                RuleNodeV1(
+                    node_id="crossing",
+                    kind="spatial",
+                    signal="line_crossing",
+                )
+            ],
+            output_node_id="crossing",
+        ),
+        configuration_digest=f"sha256:{'c' * 64}",
+        retention_class="derived.analytics.standard",
+        owner_id="phase3-owner",
+        effective_from=OBSERVED_AT,
+        created_at=OBSERVED_AT,
+        updated_at=OBSERVED_AT,
+    )
     runtime_adapter = RuntimeAdapterDescriptorV1(
         adapter_id="contract-only-runtime",
         adapter_version=f"sha256:{'b' * 64}",
@@ -378,6 +412,7 @@ def golden_contract_fixtures() -> dict[str, BaseModel]:
         "taxonomy-draft-v1.json": taxonomy,
         "geometry-line-draft-v1.json": line_geometry,
         "geometry-zone-draft-v1.json": zone_geometry,
+        "geometry-rule-draft-v1.json": geometry_rule,
         "runtime-adapter-unconfigured-v1.json": runtime_adapter,
         "runtime-request-v1.json": runtime_request,
         "runtime-request-v2.json": runtime_request_v2,
