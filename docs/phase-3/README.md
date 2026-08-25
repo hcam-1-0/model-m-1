@@ -5,8 +5,9 @@ evaluation-foundation planning is authorized under `D-P3.1-001`, and its
 technical evidence is implemented with zero verifier failures. Clean-source
 regeneration is complete, and P3.1 is accepted under `D-P3.1-ACCEPTANCE`.
 P3.2 is accepted under `D-P3.2-ACCEPTANCE`. P3.3 generated-only, anonymous,
-stream-local tracking is implemented under `D-P3.3-WORK-AUTH`; final clean-source
-evidence and exact-digest owner acceptance are pending.
+stream-local tracking is accepted under `D-P3.3-ACCEPTANCE`; P3.4 and all
+broader media, identity, correlation, alerting, and deployment work remain
+unauthorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -51,6 +52,7 @@ autonomous enforcement.
 | [P3.3 plan](p3-3-plan.md) | Anonymous stream-local lifecycle, evidence, resource, and safety design |
 | [P3.3 implementation](p3-3-implementation.md) | Exact tracker adaptation, generated scenarios, persistence, API, and boundaries |
 | [P3.3 implementation readiness](p3-3-implementation-readiness-report.md) | Validation results, package digest, and final owner gate |
+| [P3.3 owner acceptance](p3-3-acceptance.md) | Exact-digest `D-P3.3-ACCEPTANCE` record and continuing exclusions |
 
 ## Non-Negotiable Boundary
 

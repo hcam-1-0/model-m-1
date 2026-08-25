@@ -9,15 +9,15 @@ validation. The authorized P3.0 foundation now adds model-independent contracts,
 deterministic fixtures, prohibited-data guardrails, and a durable assignment
 control plane with RBAC, ETags, revisions, audit, and transactional outbox.
 P3.2 adds an accepted, default-off generated-input detector reference. P3.3 adds
-an implemented, generated-only anonymous stream-local tracker that is awaiting
-exact-digest owner acceptance. Neither milestone adds a real CCTV media path.
+an accepted, generated-only anonymous stream-local tracker under
+`D-P3.3-ACCEPTANCE`. Neither milestone adds a real CCTV media path.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
 with zero failures. Clean-source regeneration is complete, and `mayank-admin`
 accepted the exact evidence package under `D-P3.1-ACCEPTANCE`. External
-P3.2 is accepted under `D-P3.2-ACCEPTANCE`. P3.3 implementation is authorized
-under `D-P3.3-WORK-AUTH`; cameras, real media, external datasets, identity,
+P3.2 is accepted under `D-P3.2-ACCEPTANCE`, and P3.3 is accepted under
+`D-P3.3-ACCEPTANCE`. Cameras, real media, external datasets, identity,
 cross-camera linkage, operational alerts, P3.4, and deployment remain
 unauthorized.
 
@@ -40,12 +40,12 @@ uv run --locked --extra dev python tools/phase32_entry_readiness.py --json
 uv run --locked --extra dev --extra analytics python tools/phase32_implementation_readiness.py
 uv run --locked --extra dev --extra analytics python tools/phase33_tracking_evidence.py check
 uv run --locked --extra dev --extra analytics python tools/phase33_sbom.py check
-uv run --locked --extra dev --extra analytics python tools/phase33_implementation_readiness.py --json
+uv run --locked --extra dev --extra analytics python tools/phase33_implementation_readiness.py --require-clean-source --require-acceptance --json
 ```
 
-The P3.3 readiness command should report `ready_for_owner_acceptance` with zero
-technical failures and one manual gate until `mayank-admin` accepts the exact
-clean package digest.
+The P3.3 readiness command should report `accepted` with zero technical
+failures and zero manual gates while the exact historical package acceptance
+record remains valid.
 
 ## Phase 2 camera and video ingestion
 

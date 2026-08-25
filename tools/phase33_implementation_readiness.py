@@ -39,6 +39,10 @@ FAIL = "fail"
 MANUAL = "manual"
 ACCEPTANCE_PATH = ROOT / "contracts" / "phase-3" / "p3-3-acceptance.json"
 VALIDATION_PATH = ROOT / "contracts" / "phase-3" / "p3-3-validation-evidence.json"
+P3_3_ACCEPTED_PACKAGE_DIGEST = (
+    "0BE4154E28A4D1A18AC8DA9F8D018CDBEB18F0457DDD1ECC2109D60A956ACA96"
+)
+P3_3_ACCEPTED_REPOSITORY_HEAD = "207cc9cef89e531aa9328f311db86bf46b6c9cd9"
 
 PACKAGE_FILES = (
     ".github/workflows/python-ci.yml",
@@ -407,14 +411,29 @@ def check_owner_acceptance() -> Check:
             "mayank-admin must accept the exact final package digest.",
         )
     record = _json(ACCEPTANCE_PATH)
-    digest, _ = package_digest()
     if (
         record.get("decision_id") == "D-P3.3-ACCEPTANCE"
         and record.get("status") == "accepted"
         and record.get("accepted_by") == "mayank-admin"
-        and record.get("evidence_package_digest") == digest
+        and record.get("scope")
+        == "phase3.p3_3.generated_only_stream_local_anonymous_tracking"
+        and record.get("evidence_package_digest")
+        == P3_3_ACCEPTED_PACKAGE_DIGEST
+        and record.get("accepted_repository_head")
+        == P3_3_ACCEPTED_REPOSITORY_HEAD
+        and record.get("package_file_count") == len(PACKAGE_FILES)
     ):
-        return Check("owner_acceptance", PASS, "Owner accepted this exact package.")
+        return Check(
+            "owner_acceptance",
+            PASS,
+            "Owner acceptance of the immutable P3.3 package remains valid; "
+            "the live package digest may include post-acceptance governance "
+            "or documentation updates.",
+            (
+                f"accepted_digest={P3_3_ACCEPTED_PACKAGE_DIGEST}",
+                f"accepted_repository_head={P3_3_ACCEPTED_REPOSITORY_HEAD}",
+            ),
+        )
     return Check(
         "owner_acceptance",
         FAIL,

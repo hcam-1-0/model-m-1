@@ -151,11 +151,11 @@ report and real-media benchmark require separate future data authorization.
 
 Dependencies: stable P3.2 observations.
 
-Implementation status: `implemented_pending_owner_exit_acceptance` under
-`D-P3.3-WORK-AUTH`. The generated-only stream-local tracker, lifecycle v2,
+Implementation status: `accepted` under `D-P3.3-ACCEPTANCE`. The generated-only
+stream-local tracker, lifecycle v2,
 persistence, APIs, retention, observability, evaluation, and fail-closed
-resource controls are implemented. Clean-source evidence and exact-digest owner
-acceptance remain before P3.3 closes. P3.4 is not authorized.
+resource controls are implemented and accepted against the immutable package
+digest. P3.4 is not authorized.
 
 Deliverables:
 

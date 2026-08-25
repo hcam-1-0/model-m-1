@@ -127,12 +127,12 @@ def test_generated_tracking_runtime_is_default_off_and_production_forbidden() ->
         )
 
 
-def test_p3_3_static_package_is_ready_for_owner_acceptance() -> None:
+def test_p3_3_static_package_is_accepted() -> None:
     report = readiness.build_report(require_clean_source=False)
 
-    assert report.status == "ready_for_owner_acceptance"
+    assert report.status == "accepted"
     assert report.failures == 0
-    assert report.manual_gates == 1
+    assert report.manual_gates == 0
     assert len(report.package_digest) == 64
     assert report.package_digest == report.package_digest.upper()
     assert {check.name for check in report.checks} == {
@@ -145,6 +145,31 @@ def test_p3_3_static_package_is_ready_for_owner_acceptance() -> None:
         "validation_evidence",
         "owner_acceptance",
     }
+    acceptance = next(
+        check for check in report.checks if check.name == "owner_acceptance"
+    )
+    assert acceptance.status == readiness.PASS
+    assert acceptance.evidence == (
+        f"accepted_digest={readiness.P3_3_ACCEPTED_PACKAGE_DIGEST}",
+        f"accepted_repository_head={readiness.P3_3_ACCEPTED_REPOSITORY_HEAD}",
+    )
+
+
+def test_p3_3_acceptance_rejects_a_different_digest(monkeypatch) -> None:
+    original_json = readiness._json
+
+    def load(path: Path) -> dict[str, object]:
+        record = original_json(path)
+        if path == readiness.ACCEPTANCE_PATH:
+            record["evidence_package_digest"] = "0" * 64
+        return record
+
+    monkeypatch.setattr(readiness, "_json", load)
+
+    check = readiness.check_owner_acceptance()
+
+    assert check.status == readiness.FAIL
+    assert "does not match" in check.detail
 
 
 def test_p3_3_package_digest_is_deterministic_and_path_relative() -> None:

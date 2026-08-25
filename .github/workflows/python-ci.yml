@@ -109,7 +109,7 @@ jobs:
         run: |
           python tools/phase33_tracking_evidence.py check
           python tools/phase33_sbom.py check
-          python tools/phase33_implementation_readiness.py --require-clean-source
+          python tools/phase33_implementation_readiness.py --require-clean-source --require-acceptance
 
       - name: Preserve Phase 0 unittest check
         if: matrix.python-version == '3.12'

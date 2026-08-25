@@ -43,6 +43,8 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   from the audited lock.
 - `p3-3-validation-evidence.json`: bounded local test, PostgreSQL, coverage,
   package, audit, and prohibited-input results.
+- `p3-3-acceptance.json`: exact-digest owner acceptance of the immutable
+  generated-only P3.3 package and its continuing non-authorization boundary.
 
 Verify all tracked snapshots:
 
@@ -56,7 +58,7 @@ uv run --locked --extra dev python tools/phase32_entry_readiness.py
 uv run --locked --extra dev --extra analytics python tools/phase32_implementation_readiness.py
 uv run --locked --extra dev --extra analytics python tools/phase33_tracking_evidence.py check
 uv run --locked --extra dev --extra analytics python tools/phase33_sbom.py check
-uv run --locked --extra dev --extra analytics python tools/phase33_implementation_readiness.py
+uv run --locked --extra dev --extra analytics python tools/phase33_implementation_readiness.py --require-clean-source --require-acceptance
 ```
 
 Rewriting snapshots requires an explicit review acknowledgement:

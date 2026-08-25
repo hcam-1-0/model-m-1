@@ -308,7 +308,7 @@ authorization. See [P3.2 implementation](p3-2-implementation.md).
 
 ### DR-0032: Generated-Only Anonymous Stream-Local Tracking
 
-Status: implemented under `D-P3.3-WORK-AUTH`; owner exit acceptance pending.
+Status: accepted under `D-P3.3-ACCEPTANCE` on 2026-08-25.
 
 P3.3 adapts the motion/IoU association structure of exact pinned ByteTrack
 source behind an H-CAM-owned tracker interface. Inputs are sealed generated
@@ -319,7 +319,8 @@ external dataset. Runtime activation is default-off and production-forbidden.
 The full historical ByteTrack runtime is rejected. TrackEval is used only as a
 pinned evidence oracle, and SciPy supplies the runtime assignment solver. Exact
 source manifests, license notices, generated parity reports, SBOM, PostgreSQL
-evidence, and final package binding remain mandatory. P3.4, real media,
+evidence, and final package binding are accepted under the exact historical
+package digest. P3.4, real media,
 deployment, and remote Git actions are not authorized by this decision.
 
 ## Decisions Explicitly Deferred
