@@ -303,8 +303,6 @@
           "additionalProperties": false,
           "properties": {
             "activation_eligible": {
-              "const": false,
-              "default": false,
               "title": "Activation Eligible",
               "type": "boolean"
             },
@@ -332,7 +330,9 @@
                 "enum": [
                   "runtime_unconfigured",
                   "taxonomy_unapproved",
-                  "retention_policy_unapproved"
+                  "retention_policy_unapproved",
+                  "implementation_scope_unapproved",
+                  "authorization_expired"
                 ],
                 "type": "string"
               },
@@ -384,6 +384,12 @@
               "title": "Desired State",
               "type": "string"
             },
+            "execution_scope": {
+              "const": "generated_only",
+              "default": "generated_only",
+              "title": "Execution Scope",
+              "type": "string"
+            },
             "geometry_refs": {
               "items": {
                 "$ref": "#/components/schemas/VersionedConfiguration"
@@ -393,8 +399,13 @@
               "type": "array"
             },
             "lifecycle_state": {
-              "const": "blocked",
-              "default": "blocked",
+              "enum": [
+                "blocked",
+                "paused",
+                "running",
+                "degraded",
+                "failed"
+              ],
               "title": "Lifecycle State",
               "type": "string"
             },
@@ -433,8 +444,13 @@
               "type": "string"
             },
             "reason_code": {
-              "const": "owner_gates_pending",
-              "default": "owner_gates_pending",
+              "enum": [
+                "owner_gates_pending",
+                "manual_pause",
+                "generated_runtime_active",
+                "runtime_degraded",
+                "runtime_failed"
+              ],
               "title": "Reason Code",
               "type": "string"
             },
@@ -495,6 +511,9 @@
             "reason",
             "approval_record_id",
             "updated_at",
+            "lifecycle_state",
+            "reason_code",
+            "activation_eligible",
             "blocking_reasons",
             "created_at"
           ],
@@ -735,6 +754,179 @@
             "updated_at"
           ],
           "title": "AnalyticsAssignmentV1",
+          "type": "object"
+        },
+        "AnalyticsObservationListResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/components/schemas/AnalyticsObservationResponse"
+              },
+              "title": "Items",
+              "type": "array"
+            },
+            "limit": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "offset": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "total": {
+              "title": "Total",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "items",
+            "total",
+            "limit",
+            "offset"
+          ],
+          "title": "AnalyticsObservationListResponse",
+          "type": "object"
+        },
+        "AnalyticsObservationResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "assignment_id": {
+              "pattern": "^ana_[0-9a-f]{32}$",
+              "title": "Assignment Id",
+              "type": "string"
+            },
+            "bbox_height": {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "title": "Bbox Height",
+              "type": "number"
+            },
+            "bbox_width": {
+              "exclusiveMinimum": 0.0,
+              "maximum": 1.0,
+              "title": "Bbox Width",
+              "type": "number"
+            },
+            "bbox_x": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Bbox X",
+              "type": "number"
+            },
+            "bbox_y": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Bbox Y",
+              "type": "number"
+            },
+            "candidate_index": {
+              "exclusiveMaximum": 300.0,
+              "minimum": 0.0,
+              "title": "Candidate Index",
+              "type": "integer"
+            },
+            "class_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+              "title": "Class Id",
+              "type": "string"
+            },
+            "confidence": {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "title": "Confidence",
+              "type": "number"
+            },
+            "created_at": {
+              "format": "date-time",
+              "title": "Created At",
+              "type": "string"
+            },
+            "lineage": {
+              "$ref": "#/components/schemas/ProcessingLineage"
+            },
+            "model_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Model Id",
+              "type": "string"
+            },
+            "model_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Model Version",
+              "type": "string"
+            },
+            "observation_id": {
+              "pattern": "^obs_[0-9a-f]{32}$",
+              "title": "Observation Id",
+              "type": "string"
+            },
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "processed_at": {
+              "format": "date-time",
+              "title": "Processed At",
+              "type": "string"
+            },
+            "retention_class": {
+              "enum": [
+                "derived.analytics.standard",
+                "derived.analytics.restricted"
+              ],
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "run_id": {
+              "pattern": "^run_[0-9a-f]{32}$",
+              "title": "Run Id",
+              "type": "string"
+            },
+            "source_height": {
+              "maximum": 32768.0,
+              "minimum": 1.0,
+              "title": "Source Height",
+              "type": "integer"
+            },
+            "source_sequence": {
+              "title": "Source Sequence",
+              "type": "integer"
+            },
+            "source_width": {
+              "maximum": 32768.0,
+              "minimum": 1.0,
+              "title": "Source Width",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "observation_id",
+            "run_id",
+            "assignment_id",
+            "candidate_index",
+            "observed_at",
+            "processed_at",
+            "source_sequence",
+            "source_width",
+            "source_height",
+            "model_id",
+            "model_version",
+            "class_id",
+            "confidence",
+            "bbox_x",
+            "bbox_y",
+            "bbox_width",
+            "bbox_height",
+            "lineage",
+            "retention_class",
+            "created_at"
+          ],
+          "title": "AnalyticsObservationResponse",
           "type": "object"
         },
         "CameraCapabilityDiscoveryResponse": {
@@ -1689,6 +1881,170 @@
             "stale_at"
           ],
           "title": "CapabilitySnapshotResponse",
+          "type": "object"
+        },
+        "GeneratedAnalyticsRunCreate": {
+          "additionalProperties": false,
+          "properties": {
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "seed": {
+              "default": 0,
+              "maximum": 4294967295.0,
+              "minimum": 0.0,
+              "title": "Seed",
+              "type": "integer"
+            },
+            "sequence": {
+              "maximum": 9.223372036854776e+18,
+              "minimum": 0.0,
+              "title": "Sequence",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "sequence",
+            "observed_at"
+          ],
+          "title": "GeneratedAnalyticsRunCreate",
+          "type": "object"
+        },
+        "GeneratedAnalyticsRunResponse": {
+          "additionalProperties": false,
+          "properties": {
+            "assignment_id": {
+              "pattern": "^ana_[0-9a-f]{32}$",
+              "title": "Assignment Id",
+              "type": "string"
+            },
+            "assignment_version": {
+              "title": "Assignment Version",
+              "type": "integer"
+            },
+            "candidate_count": {
+              "maximum": 300.0,
+              "minimum": 0.0,
+              "title": "Candidate Count",
+              "type": "integer"
+            },
+            "completed_at": {
+              "format": "date-time",
+              "title": "Completed At",
+              "type": "string"
+            },
+            "duration_ms": {
+              "maximum": 60000.0,
+              "minimum": 0.0,
+              "title": "Duration Ms",
+              "type": "integer"
+            },
+            "execution_scope": {
+              "const": "generated_only",
+              "default": "generated_only",
+              "title": "Execution Scope",
+              "type": "string"
+            },
+            "failure_code": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "artifact_rejected",
+                    "deadline_exceeded",
+                    "input_expired",
+                    "invalid_input",
+                    "resource_exhausted",
+                    "runtime_internal",
+                    "runtime_unconfigured",
+                    "unsupported_capability"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Failure Code"
+            },
+            "generator_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Generator Id",
+              "type": "string"
+            },
+            "generator_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Generator Version",
+              "type": "string"
+            },
+            "input_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "title": "Input Sha256",
+              "type": "string"
+            },
+            "retention_class": {
+              "enum": [
+                "derived.analytics.standard",
+                "derived.analytics.restricted"
+              ],
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "reused": {
+              "default": false,
+              "title": "Reused",
+              "type": "boolean"
+            },
+            "run_id": {
+              "pattern": "^run_[0-9a-f]{32}$",
+              "title": "Run Id",
+              "type": "string"
+            },
+            "source_observed_at": {
+              "format": "date-time",
+              "title": "Source Observed At",
+              "type": "string"
+            },
+            "source_sequence": {
+              "title": "Source Sequence",
+              "type": "integer"
+            },
+            "started_at": {
+              "format": "date-time",
+              "title": "Started At",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "succeeded",
+                "degraded",
+                "failed"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "run_id",
+            "assignment_id",
+            "assignment_version",
+            "source_sequence",
+            "source_observed_at",
+            "generator_id",
+            "generator_version",
+            "input_sha256",
+            "status",
+            "failure_code",
+            "candidate_count",
+            "duration_ms",
+            "retention_class",
+            "started_at",
+            "completed_at"
+          ],
+          "title": "GeneratedAnalyticsRunResponse",
           "type": "object"
         },
         "HTTPValidationError": {
@@ -2674,6 +3030,60 @@
           "title": "ProbeQueuedResponse",
           "type": "object"
         },
+        "ProcessingLineage": {
+          "additionalProperties": false,
+          "properties": {
+            "code_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Code Version",
+              "type": "string"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "pipeline": {
+              "$ref": "#/components/schemas/VersionedArtifact"
+            },
+            "policy_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Policy Version",
+              "type": "string"
+            },
+            "postprocessing_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Postprocessing Version",
+              "type": "string"
+            },
+            "preprocessing_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Preprocessing Version",
+              "type": "string"
+            },
+            "runtime": {
+              "$ref": "#/components/schemas/RuntimeReference"
+            },
+            "taxonomy_version": {
+              "maxLength": 128,
+              "pattern": "^hcam\\.[a-z][a-z0-9_.-]*\\.v[1-9][0-9]*$",
+              "title": "Taxonomy Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code_version",
+            "pipeline",
+            "preprocessing_version",
+            "postprocessing_version",
+            "taxonomy_version",
+            "policy_version",
+            "runtime",
+            "configuration_digest"
+          ],
+          "title": "ProcessingLineage",
+          "type": "object"
+        },
         "ProvenanceResponse": {
           "properties": {
             "adapter": {
@@ -2796,6 +3206,30 @@
             "cameras"
           ],
           "title": "RegistrySeed",
+          "type": "object"
+        },
+        "RuntimeReference": {
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Name",
+              "type": "string"
+            },
+            "version": {
+              "maxLength": 128,
+              "minLength": 1,
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "version"
+          ],
+          "title": "RuntimeReference",
           "type": "object"
         },
         "SeedSource": {
@@ -4417,6 +4851,210 @@
           ]
         }
       },
+      "/analytics-assignments/{assignment_id}/activate": {
+        "post": {
+          "operationId": "activate_analytics_assignment_analytics_assignments__assignment_id__activate_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "assignment_id",
+              "required": true,
+              "schema": {
+                "title": "Assignment Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "If-Match",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "If-Match"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AnalyticsAssignmentResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Activate Analytics Assignment",
+          "tags": [
+            "analytics-control-plane"
+          ]
+        }
+      },
+      "/analytics-assignments/{assignment_id}/generated-runs": {
+        "post": {
+          "operationId": "execute_generated_analytics_run_analytics_assignments__assignment_id__generated_runs_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "assignment_id",
+              "required": true,
+              "schema": {
+                "title": "Assignment Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneratedAnalyticsRunCreate"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GeneratedAnalyticsRunResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Execute Generated Analytics Run",
+          "tags": [
+            "analytics-control-plane"
+          ]
+        }
+      },
+      "/analytics-assignments/{assignment_id}/pause": {
+        "post": {
+          "operationId": "pause_analytics_assignment_analytics_assignments__assignment_id__pause_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "assignment_id",
+              "required": true,
+              "schema": {
+                "title": "Assignment Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "X-HCAM-Reason",
+              "required": true,
+              "schema": {
+                "maxLength": 500,
+                "minLength": 8,
+                "pattern": ".*\\S.*",
+                "title": "X-Hcam-Reason",
+                "type": "string"
+              }
+            },
+            {
+              "in": "header",
+              "name": "If-Match",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "If-Match"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AnalyticsAssignmentResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Pause Analytics Assignment",
+          "tags": [
+            "analytics-control-plane"
+          ]
+        }
+      },
       "/analytics-assignments/{assignment_id}/revisions": {
         "get": {
           "operationId": "list_analytics_assignment_revisions_analytics_assignments__assignment_id__revisions_get",
@@ -4477,6 +5115,113 @@
             }
           },
           "summary": "List Analytics Assignment Revisions",
+          "tags": [
+            "analytics-control-plane"
+          ]
+        }
+      },
+      "/analytics-generated-runs/{run_id}": {
+        "get": {
+          "operationId": "get_generated_analytics_run_analytics_generated_runs__run_id__get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "run_id",
+              "required": true,
+              "schema": {
+                "title": "Run Id",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GeneratedAnalyticsRunResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Get Generated Analytics Run",
+          "tags": [
+            "analytics-control-plane"
+          ]
+        }
+      },
+      "/analytics-generated-runs/{run_id}/observations": {
+        "get": {
+          "operationId": "list_generated_analytics_observations_analytics_generated_runs__run_id__observations_get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "run_id",
+              "required": true,
+              "schema": {
+                "title": "Run Id",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "limit",
+              "required": false,
+              "schema": {
+                "default": 100,
+                "maximum": 300,
+                "minimum": 1,
+                "title": "Limit",
+                "type": "integer"
+              }
+            },
+            {
+              "in": "query",
+              "name": "offset",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "minimum": 0,
+                "title": "Offset",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AnalyticsObservationListResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "List Generated Analytics Observations",
           "tags": [
             "analytics-control-plane"
           ]

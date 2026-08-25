@@ -45,9 +45,7 @@ def _assignment(*, desired_state: str = "paused") -> AnalyticsAssignment:
         reason_code="owner_gates_pending",
         pipeline_id="hcam-object-pipeline",
         pipeline_version="sha256:" + "a" * 64,
-        models=[
-            {"id": "yolo11n-detector", "version": "sha256:" + "b" * 64}
-        ],
+        models=[{"id": "yolo11n-detector", "version": "sha256:" + "b" * 64}],
         taxonomy_version="hcam.object.v1",
         policy_version="sha256:" + "c" * 64,
         configuration_digest="sha256:" + "d" * 64,
@@ -77,14 +75,15 @@ def test_analytics_assignment_migration_round_trip_and_constraints(
         _check(database_url)
         inspector = inspect(database.engine)
         tables = set(inspector.get_table_names())
-        assert CURRENT_SCHEMA_REVISION == "0008_analytics_assignments"
+        assert CURRENT_SCHEMA_REVISION == "0009_generated_analytics"
         assert {
             "analytics_assignments",
             "analytics_assignment_revisions",
+            "analytics_generated_runs",
+            "analytics_observations",
         }.issubset(tables)
         assignment_columns = {
-            column["name"]
-            for column in inspector.get_columns("analytics_assignments")
+            column["name"] for column in inspector.get_columns("analytics_assignments")
         }
         assert {
             "assignment_id",
@@ -92,16 +91,69 @@ def test_analytics_assignment_migration_round_trip_and_constraints(
             "desired_state",
             "lifecycle_state",
             "reason_code",
+            "execution_scope",
             "configuration_digest",
             "approval_record_id",
         }.issubset(assignment_columns)
+        run_columns = {
+            column["name"]
+            for column in inspector.get_columns("analytics_generated_runs")
+        }
+        observation_columns = {
+            column["name"] for column in inspector.get_columns("analytics_observations")
+        }
+        assert {
+            "input_sha256",
+            "generator_version",
+            "failure_code",
+            "retention_class",
+        }.issubset(run_columns)
+        assert {
+            "class_id",
+            "confidence",
+            "event_id",
+            "bbox_x",
+            "bbox_y",
+            "bbox_width",
+            "bbox_height",
+            "lineage",
+        }.issubset(observation_columns)
+        prohibited_storage_tokens = {
+            "blob",
+            "bytes",
+            "frame",
+            "image",
+            "locator",
+            "media",
+            "path",
+            "pixel",
+            "url",
+        }
+        assert not any(
+            token in column.lower()
+            for column in run_columns | observation_columns
+            for token in prohibited_storage_tokens
+        )
+        run_check_sql = " ".join(
+            str(item["sqltext"])
+            for item in inspector.get_check_constraints("analytics_generated_runs")
+        )
+        observation_check_sql = " ".join(
+            str(item["sqltext"])
+            for item in inspector.get_check_constraints("analytics_observations")
+        )
+        assert "hcam.det-r0.generated-frame" in run_check_sql
+        assert "length(input_sha256) = 64" in run_check_sql
+        assert "DET-R0-ONNX-UPSTREAM-0.1.1RC0" in observation_check_sql
+        assert "source_width = 416 AND source_height = 416" in observation_check_sql
         check_sql = " ".join(
             str(item["sqltext"])
             for item in inspector.get_check_constraints("analytics_assignments")
         )
-        assert "desired_state = 'paused'" in check_sql
-        assert "lifecycle_state = 'blocked'" in check_sql
-        assert "reason_code = 'owner_gates_pending'" in check_sql
+        assert "desired_state IN ('paused', 'enabled')" in check_sql
+        assert "'running'" in check_sql
+        assert "execution_scope = 'generated_only'" in check_sql
+        assert "generated_runtime_active" in check_sql
 
         with database.session_factory() as session:
             seed_synthetic_lab(session, count=1)
@@ -111,15 +163,24 @@ def test_analytics_assignment_migration_round_trip_and_constraints(
                 session.commit()
             session.rollback()
 
-        _downgrade(database_url, "0007_onvif_operations")
+        _downgrade(database_url, "0008_analytics_assignments")
         downgraded_tables = set(inspect(database.engine).get_table_names())
-        assert "analytics_assignments" not in downgraded_tables
-        assert "analytics_assignment_revisions" not in downgraded_tables
+        assert "analytics_assignments" in downgraded_tables
+        assert "analytics_assignment_revisions" in downgraded_tables
+        assert "analytics_generated_runs" not in downgraded_tables
+        assert "analytics_observations" not in downgraded_tables
+        downgraded_assignment_columns = {
+            column["name"]
+            for column in inspect(database.engine).get_columns("analytics_assignments")
+        }
+        assert "execution_scope" not in downgraded_assignment_columns
 
         _upgrade(database_url, "head")
         assert {
             "analytics_assignments",
             "analytics_assignment_revisions",
+            "analytics_generated_runs",
+            "analytics_observations",
         }.issubset(set(inspect(database.engine).get_table_names()))
         database.check_ready()
     finally:

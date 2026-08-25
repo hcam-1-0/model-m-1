@@ -3,7 +3,16 @@ from __future__ import annotations
 import re
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, Header, HTTPException, Query, Request, Response, status
+from fastapi import (
+    APIRouter,
+    Depends,
+    Header,
+    HTTPException,
+    Query,
+    Request,
+    Response,
+    status,
+)
 from sqlalchemy.orm import Session
 
 from hcam.analytics.repository import (
@@ -11,12 +20,16 @@ from hcam.analytics.repository import (
     AnalyticsAssignmentRepository,
     assignment_to_response,
 )
+from hcam.analytics.execution import GeneratedAnalyticsExecutionService
 from hcam.analytics.schemas import (
+    AnalyticsObservationListResponse,
     AnalyticsAssignmentCreate,
     AnalyticsAssignmentListResponse,
     AnalyticsAssignmentPatch,
     AnalyticsAssignmentResponse,
     AnalyticsAssignmentRevisionListResponse,
+    GeneratedAnalyticsRunCreate,
+    GeneratedAnalyticsRunResponse,
 )
 from hcam.analytics.service import (
     AnalyticsAssignmentConflictError,
@@ -86,11 +99,16 @@ def _no_store(response: Response) -> None:
     response.headers["Pragma"] = "no-cache"
 
 
+def _runtime_configured(request: Request) -> bool:
+    return bool(request.app.state.analytics_runtime.descriptor.configured)
+
+
 @router.get(
     "/analytics-assignments",
     response_model=AnalyticsAssignmentListResponse,
 )
 def list_analytics_assignments(
+    request: Request,
     response: Response,
     session: SessionDependency,
     principal: ViewerPrincipal,
@@ -114,6 +132,7 @@ def list_analytics_assignments(
         ),
         limit=limit,
         offset=offset,
+        runtime_configured=_runtime_configured(request),
     )
 
 
@@ -143,11 +162,12 @@ def create_analytics_assignment(
         _raise_service_error(exc)
         raise
     response.headers["ETag"] = _etag(assignment.version_id)
-    response.headers["Location"] = (
-        f"/analytics-assignments/{assignment.assignment_id}"
-    )
+    response.headers["Location"] = f"/analytics-assignments/{assignment.assignment_id}"
     _no_store(response)
-    return assignment_to_response(assignment)
+    return assignment_to_response(
+        assignment,
+        runtime_configured=_runtime_configured(request),
+    )
 
 
 @router.get(
@@ -156,6 +176,7 @@ def create_analytics_assignment(
 )
 def get_analytics_assignment(
     assignment_id: str,
+    request: Request,
     response: Response,
     session: SessionDependency,
     principal: ViewerPrincipal,
@@ -168,7 +189,10 @@ def get_analytics_assignment(
         raise HTTPException(404, "Analytics assignment not found")
     response.headers["ETag"] = _etag(assignment.version_id)
     _no_store(response)
-    return assignment_to_response(assignment)
+    return assignment_to_response(
+        assignment,
+        runtime_configured=_runtime_configured(request),
+    )
 
 
 @router.patch(
@@ -199,7 +223,78 @@ def update_analytics_assignment(
         raise
     response.headers["ETag"] = _etag(assignment.version_id)
     _no_store(response)
-    return assignment_to_response(assignment)
+    return assignment_to_response(
+        assignment,
+        runtime_configured=_runtime_configured(request),
+    )
+
+
+@router.post(
+    "/analytics-assignments/{assignment_id}/activate",
+    response_model=AnalyticsAssignmentResponse,
+)
+def activate_analytics_assignment(
+    assignment_id: str,
+    request: Request,
+    response: Response,
+    session: SessionDependency,
+    principal: EditorPrincipal,
+    reason: ReasonHeader,
+    if_match: Annotated[str | None, Header(alias="If-Match")] = None,
+) -> AnalyticsAssignmentResponse:
+    try:
+        assignment = AnalyticsAssignmentService(session).transition(
+            assignment_id,
+            activate=True,
+            runtime_configured=_runtime_configured(request),
+            expected_version=_expected_version(if_match),
+            principal=principal,
+            reason=reason,
+            request_id=request_id_from_scope(request.scope),
+        )
+    except RuntimeError as exc:
+        _raise_service_error(exc)
+        raise
+    response.headers["ETag"] = _etag(assignment.version_id)
+    _no_store(response)
+    return assignment_to_response(
+        assignment,
+        runtime_configured=_runtime_configured(request),
+    )
+
+
+@router.post(
+    "/analytics-assignments/{assignment_id}/pause",
+    response_model=AnalyticsAssignmentResponse,
+)
+def pause_analytics_assignment(
+    assignment_id: str,
+    request: Request,
+    response: Response,
+    session: SessionDependency,
+    principal: EditorPrincipal,
+    reason: ReasonHeader,
+    if_match: Annotated[str | None, Header(alias="If-Match")] = None,
+) -> AnalyticsAssignmentResponse:
+    try:
+        assignment = AnalyticsAssignmentService(session).transition(
+            assignment_id,
+            activate=False,
+            runtime_configured=_runtime_configured(request),
+            expected_version=_expected_version(if_match),
+            principal=principal,
+            reason=reason,
+            request_id=request_id_from_scope(request.scope),
+        )
+    except RuntimeError as exc:
+        _raise_service_error(exc)
+        raise
+    response.headers["ETag"] = _etag(assignment.version_id)
+    _no_store(response)
+    return assignment_to_response(
+        assignment,
+        runtime_configured=_runtime_configured(request),
+    )
 
 
 @router.get(
@@ -227,3 +322,98 @@ def list_analytics_assignment_revisions(
         limit=limit,
         offset=offset,
     )
+
+
+@router.post(
+    "/analytics-assignments/{assignment_id}/generated-runs",
+    response_model=GeneratedAnalyticsRunResponse,
+    status_code=status.HTTP_201_CREATED,
+)
+def execute_generated_analytics_run(
+    assignment_id: str,
+    payload: GeneratedAnalyticsRunCreate,
+    request: Request,
+    response: Response,
+    session: SessionDependency,
+    principal: EditorPrincipal,
+    reason: ReasonHeader,
+) -> GeneratedAnalyticsRunResponse:
+    service = GeneratedAnalyticsExecutionService(
+        session,
+        runtime=request.app.state.analytics_runtime,
+        leases=request.app.state.analytics_frame_leases,
+    )
+    try:
+        result = service.execute(
+            assignment_id,
+            payload,
+            principal=principal,
+            reason=reason,
+            request_id=request_id_from_scope(request.scope),
+        )
+    except RuntimeError as exc:
+        _raise_service_error(exc)
+        raise
+    response.headers["Location"] = f"/analytics-generated-runs/{result.run_id}"
+    request.app.state.request_metrics.analytics_generated_leases.set(
+        request.app.state.analytics_frame_leases.active_leases
+    )
+    _no_store(response)
+    return result
+
+
+@router.get(
+    "/analytics-generated-runs/{run_id}",
+    response_model=GeneratedAnalyticsRunResponse,
+)
+def get_generated_analytics_run(
+    run_id: str,
+    request: Request,
+    response: Response,
+    session: SessionDependency,
+    principal: ViewerPrincipal,
+) -> GeneratedAnalyticsRunResponse:
+    service = GeneratedAnalyticsExecutionService(
+        session,
+        runtime=request.app.state.analytics_runtime,
+        leases=request.app.state.analytics_frame_leases,
+    )
+    try:
+        result = service.get_run(run_id, principal=principal)
+    except RuntimeError as exc:
+        _raise_service_error(exc)
+        raise
+    _no_store(response)
+    return result
+
+
+@router.get(
+    "/analytics-generated-runs/{run_id}/observations",
+    response_model=AnalyticsObservationListResponse,
+)
+def list_generated_analytics_observations(
+    run_id: str,
+    request: Request,
+    response: Response,
+    session: SessionDependency,
+    principal: ViewerPrincipal,
+    limit: Annotated[int, Query(ge=1, le=300)] = 100,
+    offset: Annotated[int, Query(ge=0)] = 0,
+) -> AnalyticsObservationListResponse:
+    service = GeneratedAnalyticsExecutionService(
+        session,
+        runtime=request.app.state.analytics_runtime,
+        leases=request.app.state.analytics_frame_leases,
+    )
+    try:
+        result = service.list_observations(
+            run_id,
+            principal=principal,
+            limit=limit,
+            offset=offset,
+        )
+    except RuntimeError as exc:
+        _raise_service_error(exc)
+        raise
+    _no_store(response)
+    return result

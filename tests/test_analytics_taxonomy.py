@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 from pathlib import Path
 
@@ -17,6 +18,9 @@ FIXTURE = (
     / "phase-3"
     / "fixtures"
     / "taxonomy-draft-v1.json"
+)
+P3_2_TAXONOMY = (
+    Path(__file__).parents[1] / "contracts" / "phase-3" / "p3-2-taxonomy.json"
 )
 
 
@@ -71,7 +75,10 @@ def test_taxonomy_hierarchy_must_not_cycle() -> None:
         ("person.emotion", "Expression"),
         ("person.risk", "Risk"),
         ("person.reid", "Cross camera descriptor"),
-        ("person.profile", "Profile",),
+        (
+            "person.profile",
+            "Profile",
+        ),
     ],
 )
 def test_prohibited_attribute_taxonomy_is_rejected(
@@ -121,3 +128,29 @@ def test_approved_taxonomy_requires_owner_approval_record() -> None:
     document["independent_reviewer_id"] = "phase3-owner"
     owner_reviewed = TaxonomyManifestV1.model_validate(document)
     assert owner_reviewed.independent_reviewer_id == owner_reviewed.owner_id
+
+
+def test_p3_2_taxonomy_is_approved_exact_and_digest_bound() -> None:
+    document = json.loads(P3_2_TAXONOMY.read_text(encoding="utf-8"))
+    taxonomy = TaxonomyManifestV1.model_validate(document)
+    digest = document.pop("artifact_digest")
+    canonical_scope = json.dumps(
+        document,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=True,
+    ).encode("utf-8")
+
+    assert taxonomy.status == "approved"
+    assert taxonomy.approval_record_id == "D-P3.2-START"
+    assert taxonomy.taxonomy_version == "hcam.objects.tier_a.v1"
+    assert {item.id for item in taxonomy.classes} == {
+        "object.person",
+        "vehicle.bicycle",
+        "vehicle.car",
+        "vehicle.motorcycle",
+        "vehicle.bus",
+        "vehicle.truck",
+        "object.unknown",
+    }
+    assert digest == f"sha256:{hashlib.sha256(canonical_scope).hexdigest()}"

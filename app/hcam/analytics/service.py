@@ -7,6 +7,7 @@ from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.orm import Session
 from sqlalchemy.orm.exc import StaleDataError
 
+from hcam.analytics.activation import assess_generated_activation
 from hcam.analytics.contracts import (
     AnalyticsAssignmentV1,
     AnalyticsContractSafetyError,
@@ -121,6 +122,7 @@ class AnalyticsAssignmentService:
                     desired_state="paused",
                     lifecycle_state="blocked",
                     reason_code="owner_gates_pending",
+                    execution_scope="generated_only",
                     pipeline_id=payload.pipeline.id,
                     pipeline_version=payload.pipeline.version,
                     models=_model_documents(payload.models),
@@ -223,6 +225,10 @@ class AnalyticsAssignmentService:
                     raise AnalyticsAssignmentPreconditionError(
                         "Analytics assignment version does not match"
                     )
+                if assignment.lifecycle_state not in {"blocked", "paused"}:
+                    raise AnalyticsAssignmentConflictError(
+                        "Pause the analytics assignment before changing configuration"
+                    )
 
                 changes = payload.model_dump(exclude_unset=True)
                 material_changes = set(changes) - {"configuration_digest"}
@@ -268,13 +274,14 @@ class AnalyticsAssignmentService:
                         "changed_fields": sorted(changes),
                         "previous_version": before.version,
                         "version": assignment.version_id,
-                        "lifecycle_state": "blocked",
+                        "lifecycle_state": assignment.lifecycle_state,
                     },
                     request_id=request_id,
                 )
             return assignment
         except (
             AnalyticsAssignmentNotFoundError,
+            AnalyticsAssignmentConflictError,
             AnalyticsAssignmentPreconditionError,
             AnalyticsAssignmentValidationError,
         ) as exc:
@@ -313,6 +320,182 @@ class AnalyticsAssignmentService:
                 request_id,
             )
             raise error from exc
+
+    def transition(
+        self,
+        assignment_id: str,
+        *,
+        activate: bool,
+        runtime_configured: bool,
+        expected_version: int,
+        principal: Principal,
+        reason: str,
+        request_id: str | None,
+    ) -> AnalyticsAssignment:
+        operation = "activate" if activate else "pause"
+        try:
+            normalized_reason = _safe_reason(reason)
+            with self.session.begin():
+                assignment = self._authorized_assignment(assignment_id, principal)
+                if assignment.version_id != expected_version:
+                    raise AnalyticsAssignmentPreconditionError(
+                        "Analytics assignment version does not match"
+                    )
+                previous_target = _target(assignment)
+                if activate:
+                    assessment = assess_generated_activation(
+                        assignment,
+                        runtime_configured=runtime_configured,
+                    )
+                    if not assessment.eligible:
+                        raise AnalyticsAssignmentValidationError(
+                            "Analytics assignment is not eligible for generated-only activation"
+                        )
+                    if assignment.lifecycle_state == "running":
+                        raise AnalyticsAssignmentConflictError(
+                            "Analytics assignment is already active"
+                        )
+                    assignment.desired_state = "enabled"
+                    assignment.lifecycle_state = "running"
+                    assignment.reason_code = "generated_runtime_active"
+                    event_previous = None
+                    event_current = previous_target
+                else:
+                    if assignment.lifecycle_state == "paused":
+                        raise AnalyticsAssignmentConflictError(
+                            "Analytics assignment is already paused"
+                        )
+                    assignment.desired_state = "paused"
+                    assignment.lifecycle_state = "paused"
+                    assignment.reason_code = "manual_pause"
+                    event_previous = previous_target
+                    event_current = None
+                assignment.last_actor_id = principal.actor_id
+                assignment.last_change_reason = normalized_reason
+                assignment.updated_at = utc_now()
+                self.session.flush()
+                contract = self._validated_contract(assignment)
+                self._record_revision(assignment, contract, assignment.updated_at)
+                self._queue_deployment_event(
+                    assignment,
+                    previous=event_previous,
+                    current=event_current,
+                    occurred_at=assignment.updated_at,
+                )
+                AuditRepository(self.session).record(
+                    actor_id=principal.actor_id,
+                    action=f"analytics.assignment.{operation}",
+                    target_type="analytics_assignment",
+                    target_id=assignment_id,
+                    source="hcam.api",
+                    reason=normalized_reason,
+                    outcome="success",
+                    context={
+                        "capability": assignment.capability,
+                        "execution_scope": assignment.execution_scope,
+                        "lifecycle_state": assignment.lifecycle_state,
+                        "version": assignment.version_id,
+                    },
+                    request_id=request_id,
+                )
+            return assignment
+        except (
+            AnalyticsAssignmentNotFoundError,
+            AnalyticsAssignmentConflictError,
+            AnalyticsAssignmentPreconditionError,
+            AnalyticsAssignmentValidationError,
+        ) as exc:
+            self._record_failure(
+                principal,
+                f"analytics.assignment.{operation}",
+                assignment_id,
+                reason,
+                exc,
+                request_id,
+            )
+            raise
+        except StaleDataError as exc:
+            error = AnalyticsAssignmentPreconditionError(
+                "Analytics assignment changed during the transition"
+            )
+            self._record_failure(
+                principal,
+                f"analytics.assignment.{operation}",
+                assignment_id,
+                reason,
+                error,
+                request_id,
+            )
+            raise error from exc
+
+    def _authorized_assignment(
+        self,
+        assignment_id: str,
+        principal: Principal,
+    ) -> AnalyticsAssignment:
+        assignment = self.session.get(AnalyticsAssignment, assignment_id)
+        if assignment is None:
+            raise AnalyticsAssignmentNotFoundError("Assignment not found")
+        endpoint = self.session.get(StreamEndpoint, assignment.stream_id)
+        camera = self.session.get(Camera, assignment.camera_id)
+        if (
+            endpoint is None
+            or endpoint.camera_id != assignment.camera_id
+            or camera is None
+            or camera.department != assignment.department
+            or not principal.can_access_department(camera.department)
+        ):
+            raise AnalyticsAssignmentNotFoundError("Assignment not found")
+        return assignment
+
+    def apply_runtime_state(
+        self,
+        assignment: AnalyticsAssignment,
+        *,
+        lifecycle_state: str,
+        actor_id: str,
+        reason: str,
+        occurred_at: datetime,
+    ) -> bool:
+        state_reasons = {
+            "running": "generated_runtime_active",
+            "degraded": "runtime_degraded",
+            "failed": "runtime_failed",
+        }
+        if lifecycle_state not in state_reasons:
+            raise AnalyticsAssignmentValidationError(
+                "Unsupported analytics runtime lifecycle transition"
+            )
+        reason_code = state_reasons[lifecycle_state]
+        if (
+            assignment.desired_state == "enabled"
+            and assignment.lifecycle_state == lifecycle_state
+            and assignment.reason_code == reason_code
+        ):
+            return False
+        previous_target = _target(assignment)
+        assignment.desired_state = "enabled"
+        assignment.lifecycle_state = lifecycle_state
+        assignment.reason_code = reason_code
+        assignment.last_actor_id = actor_id
+        assignment.last_change_reason = _safe_reason(reason)
+        assignment.updated_at = occurred_at
+        self.session.flush()
+        contract = self._validated_contract(assignment)
+        self._record_revision(assignment, contract, occurred_at)
+        if lifecycle_state == "running":
+            event_previous = None
+            event_current = previous_target
+        else:
+            event_previous = previous_target
+            event_current = None
+        self._queue_deployment_event(
+            assignment,
+            previous=event_previous,
+            current=event_current,
+            occurred_at=occurred_at,
+        )
+        return True
 
     @staticmethod
     def _apply_changes(
@@ -375,7 +558,7 @@ class AnalyticsAssignmentService:
         assignment: AnalyticsAssignment,
         *,
         previous: DeploymentTargetV1 | None,
-        current: DeploymentTargetV1,
+        current: DeploymentTargetV1 | None,
         occurred_at: datetime,
     ) -> None:
         event = ModelDeploymentChangedV1(
@@ -392,8 +575,8 @@ class AnalyticsAssignmentService:
                 capability=assignment.capability,
                 previous=previous,
                 current=current,
-                lifecycle_state="blocked",
-                reason_code="owner_gates_pending",
+                lifecycle_state=assignment.lifecycle_state,
+                reason_code=assignment.reason_code,
                 actor_id=assignment.last_actor_id,
                 change_reason=assignment.last_change_reason,
                 approval_record_id=assignment.approval_record_id,

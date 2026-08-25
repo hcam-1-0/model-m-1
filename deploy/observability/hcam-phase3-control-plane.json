@@ -53,6 +53,56 @@
       "targets": [{"expr": "sum(hcam_analytics_assignment_failures_recent_total)", "refId": "A"}],
       "title": "Recent Failures",
       "type": "stat"
+    },
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "fieldConfig": {"defaults": {"decimals": 0}, "overrides": []},
+      "gridPos": {"h": 7, "w": 5, "x": 0, "y": 6},
+      "id": 6,
+      "options": {"legend": {"displayMode": "list", "placement": "bottom", "showLegend": true}, "tooltip": {"mode": "single", "sort": "none"}},
+      "targets": [{"expr": "hcam_analytics_assignment_state_total", "legendFormat": "{{state}}", "refId": "A"}],
+      "title": "Assignment States",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "fieldConfig": {"defaults": {"decimals": 0}, "overrides": []},
+      "gridPos": {"h": 7, "w": 5, "x": 5, "y": 6},
+      "id": 7,
+      "options": {"legend": {"displayMode": "list", "placement": "bottom", "showLegend": true}, "tooltip": {"mode": "single", "sort": "none"}},
+      "targets": [{"expr": "hcam_analytics_generated_runs_retained_total", "legendFormat": "{{status}}", "refId": "A"}],
+      "title": "Generated Runs",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "fieldConfig": {"defaults": {"decimals": 0}, "overrides": []},
+      "gridPos": {"h": 7, "w": 5, "x": 10, "y": 6},
+      "id": 8,
+      "options": {"colorMode": "value", "graphMode": "none", "justifyMode": "auto", "orientation": "auto", "reduceOptions": {"calcs": ["lastNotNull"], "fields": "", "values": false}, "textMode": "auto", "wideLayout": true},
+      "targets": [{"expr": "hcam_analytics_observations_retained_total", "refId": "A"}],
+      "title": "Anonymous Observations",
+      "type": "stat"
+    },
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "fieldConfig": {"defaults": {"decimals": 0, "unit": "ms"}, "overrides": []},
+      "gridPos": {"h": 7, "w": 5, "x": 15, "y": 6},
+      "id": 9,
+      "options": {"legend": {"displayMode": "list", "placement": "bottom", "showLegend": true}, "tooltip": {"mode": "single", "sort": "none"}},
+      "targets": [{"expr": "hcam_analytics_generated_run_duration_milliseconds", "legendFormat": "{{status}}", "refId": "A"}],
+      "title": "Generated Run Duration",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {"type": "prometheus", "uid": "${DS_PROMETHEUS}"},
+      "fieldConfig": {"defaults": {"decimals": 0}, "overrides": []},
+      "gridPos": {"h": 7, "w": 4, "x": 20, "y": 6},
+      "id": 10,
+      "options": {"colorMode": "value", "graphMode": "none", "justifyMode": "auto", "orientation": "auto", "reduceOptions": {"calcs": ["lastNotNull"], "fields": "", "values": false}, "textMode": "auto", "wideLayout": true},
+      "targets": [{"expr": "hcam_analytics_generated_frame_leases_active", "refId": "A"}],
+      "title": "Active Frame Leases",
+      "type": "stat"
     }
   ],
   "refresh": "30s",

@@ -2106,6 +2106,195 @@
       "title": "RuntimeBatchRequestV1",
       "type": "object"
     },
+    "request_v2": {
+      "$defs": {
+        "RuntimeInputDescriptorV1": {
+          "additionalProperties": false,
+          "properties": {
+            "camera_id": {
+              "maxLength": 160,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "expires_at": {
+              "format": "date-time",
+              "title": "Expires At",
+              "type": "string"
+            },
+            "input_id": {
+              "pattern": "^input_[0-9a-f]{32}$",
+              "title": "Input Id",
+              "type": "string"
+            },
+            "issued_at": {
+              "format": "date-time",
+              "title": "Issued At",
+              "type": "string"
+            },
+            "lease_id": {
+              "pattern": "^lease_[0-9a-f]{32}$",
+              "title": "Lease Id",
+              "type": "string"
+            },
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "pixel_format": {
+              "enum": [
+                "bgr8",
+                "nv12",
+                "rgb8"
+              ],
+              "title": "Pixel Format",
+              "type": "string"
+            },
+            "source": {
+              "$ref": "#/$defs/SourceFrame"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "input_id",
+            "lease_id",
+            "stream_id",
+            "camera_id",
+            "source",
+            "observed_at",
+            "issued_at",
+            "expires_at",
+            "pixel_format"
+          ],
+          "title": "RuntimeInputDescriptorV1",
+          "type": "object"
+        },
+        "SourceFrame": {
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "maximum": 32768,
+              "minimum": 1,
+              "title": "Height",
+              "type": "integer"
+            },
+            "sequence": {
+              "maximum": 9223372036854775807,
+              "minimum": 0,
+              "title": "Sequence",
+              "type": "integer"
+            },
+            "timestamp_confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Timestamp Confidence",
+              "type": "number"
+            },
+            "timestamp_source": {
+              "enum": [
+                "presentation_time",
+                "source_clock",
+                "receive_clock",
+                "generated"
+              ],
+              "title": "Timestamp Source",
+              "type": "string"
+            },
+            "width": {
+              "maximum": 32768,
+              "minimum": 1,
+              "title": "Width",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "sequence",
+            "width",
+            "height",
+            "timestamp_source",
+            "timestamp_confidence"
+          ],
+          "title": "SourceFrame",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "assignment_id": {
+          "pattern": "^ana_[0-9a-f]{32}$",
+          "title": "Assignment Id",
+          "type": "string"
+        },
+        "camera_id": {
+          "maxLength": 160,
+          "minLength": 3,
+          "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Camera Id",
+          "type": "string"
+        },
+        "capability": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+          "title": "Capability",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.analytics.runtime-request.v2",
+          "default": "hcam.analytics.runtime-request.v2",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "deadline_at": {
+          "format": "date-time",
+          "title": "Deadline At",
+          "type": "string"
+        },
+        "inputs": {
+          "items": {
+            "$ref": "#/$defs/RuntimeInputDescriptorV1"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Inputs",
+          "type": "array"
+        },
+        "minimum_confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Minimum Confidence",
+          "type": "number"
+        },
+        "request_id": {
+          "pattern": "^run_[0-9a-f]{32}$",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "assignment_id",
+        "capability",
+        "stream_id",
+        "camera_id",
+        "deadline_at",
+        "inputs",
+        "minimum_confidence"
+      ],
+      "title": "RuntimeBatchRequestV2",
+      "type": "object"
+    },
     "result": {
       "$defs": {
         "NormalizedBoundingBox": {

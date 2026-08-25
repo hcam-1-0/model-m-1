@@ -1,6 +1,6 @@
 {
   "alembic_heads": [
-    "0008_analytics_assignments"
+    "0009_generated_analytics"
   ],
   "contract_format": "hcam.database.contract.v1",
   "dialect": "sqlite",
@@ -134,16 +134,20 @@
           "sql": "minimum_confidence >= 0 AND minimum_confidence <= 1"
         },
         {
+          "name": "ck_analytics_assignment_execution_scope",
+          "sql": "execution_scope = 'generated_only'"
+        },
+        {
           "name": "ck_analytics_assignment_p3_desired_state",
-          "sql": "desired_state = 'paused'"
+          "sql": "desired_state IN ('paused', 'enabled')"
         },
         {
           "name": "ck_analytics_assignment_p3_lifecycle_state",
-          "sql": "lifecycle_state = 'blocked'"
+          "sql": "lifecycle_state IN ('blocked', 'paused', 'running', 'degraded', 'failed')"
         },
         {
           "name": "ck_analytics_assignment_p3_reason_code",
-          "sql": "reason_code = 'owner_gates_pending'"
+          "sql": "reason_code IN ('owner_gates_pending', 'manual_pause', 'generated_runtime_active', 'runtime_degraded', 'runtime_failed')"
         },
         {
           "name": "ck_analytics_assignment_queue_age",
@@ -156,6 +160,10 @@
         {
           "name": "ck_analytics_assignment_sampling_fps",
           "sql": "sampling_fps > 0 AND sampling_fps <= 60"
+        },
+        {
+          "name": "ck_analytics_assignment_state_consistency",
+          "sql": "(desired_state = 'paused' AND lifecycle_state = 'blocked' AND reason_code = 'owner_gates_pending') OR (desired_state = 'paused' AND lifecycle_state = 'paused' AND reason_code = 'manual_pause') OR (desired_state = 'enabled' AND lifecycle_state = 'running' AND reason_code = 'generated_runtime_active') OR (desired_state = 'enabled' AND lifecycle_state = 'degraded' AND reason_code = 'runtime_degraded') OR (desired_state = 'enabled' AND lifecycle_state = 'failed' AND reason_code = 'runtime_failed')"
         },
         {
           "name": "ck_analytics_assignment_version_positive",
@@ -337,6 +345,13 @@
           "nullable": false,
           "primary_key_position": 0,
           "type": "DATETIME"
+        },
+        {
+          "default": "'generated_only'",
+          "name": "execution_scope",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(32)"
         }
       ],
       "foreign_keys": [
@@ -440,6 +455,600 @@
             "capability"
           ],
           "name": "uq_analytics_assignment_stream_capability"
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_analytics_generated_run_assignment_version",
+          "sql": "assignment_version >= 1"
+        },
+        {
+          "name": "ck_analytics_generated_run_candidate_count",
+          "sql": "candidate_count >= 0 AND candidate_count <= 300"
+        },
+        {
+          "name": "ck_analytics_generated_run_duration",
+          "sql": "duration_ms >= 0 AND duration_ms <= 60000"
+        },
+        {
+          "name": "ck_analytics_generated_run_failure_consistency",
+          "sql": "(status = 'succeeded' AND failure_code IS NULL) OR (status IN ('degraded', 'failed') AND failure_code IS NOT NULL)"
+        },
+        {
+          "name": "ck_analytics_generated_run_generator",
+          "sql": "generator_id = 'hcam.det-r0.generated-frame' AND generator_version = 'sha256:910d7083976055269029733d90f70cafc0f3fe3046716c2c9d683732fc181f64'"
+        },
+        {
+          "name": "ck_analytics_generated_run_input_digest",
+          "sql": "length(input_sha256) = 64 AND lower(input_sha256) = input_sha256"
+        },
+        {
+          "name": "ck_analytics_generated_run_retention_class",
+          "sql": "retention_class IN ('derived.analytics.standard', 'derived.analytics.restricted')"
+        },
+        {
+          "name": "ck_analytics_generated_run_seed",
+          "sql": "seed >= 0 AND seed <= 4294967295"
+        },
+        {
+          "name": "ck_analytics_generated_run_sequence",
+          "sql": "source_sequence >= 0"
+        },
+        {
+          "name": "ck_analytics_generated_run_status",
+          "sql": "status IN ('succeeded', 'degraded', 'failed')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "run_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "assignment_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "assignment_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "source_sequence",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BIGINT"
+        },
+        {
+          "default": null,
+          "name": "source_observed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "generator_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "generator_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "seed",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BIGINT"
+        },
+        {
+          "default": null,
+          "name": "input_sha256",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "status",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "failure_code",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "candidate_count",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "duration_ms",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "retention_class",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "started_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "completed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "assignment_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_assignments"
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "camera_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "cameras"
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "department",
+            "completed_at"
+          ],
+          "name": "ix_analytics_generated_run_department_completed",
+          "unique": false
+        },
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": "ix_analytics_generated_runs_assignment_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_analytics_generated_runs_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "completed_at"
+          ],
+          "name": "ix_analytics_generated_runs_completed_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_analytics_generated_runs_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_analytics_generated_runs_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "analytics_generated_runs",
+      "primary_key": {
+        "columns": [
+          "run_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "assignment_id",
+            "assignment_version",
+            "source_sequence",
+            "input_sha256"
+          ],
+          "name": "uq_analytics_generated_run_input"
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_analytics_observation_bbox",
+          "sql": "bbox_x >= 0 AND bbox_x <= 1 AND bbox_y >= 0 AND bbox_y <= 1 AND bbox_width > 0 AND bbox_width <= 1 AND bbox_height > 0 AND bbox_height <= 1 AND bbox_x + bbox_width <= 1 AND bbox_y + bbox_height <= 1"
+        },
+        {
+          "name": "ck_analytics_observation_candidate_index",
+          "sql": "candidate_index >= 0 AND candidate_index < 300"
+        },
+        {
+          "name": "ck_analytics_observation_confidence",
+          "sql": "confidence >= 0 AND confidence <= 1"
+        },
+        {
+          "name": "ck_analytics_observation_model",
+          "sql": "model_id = 'DET-R0-ONNX-UPSTREAM-0.1.1RC0' AND model_version = 'sha256:427cc366d34e27ff7a03e2899b5e3671425c262ea2291f88bb942bc1cc70b0f7'"
+        },
+        {
+          "name": "ck_analytics_observation_retention_class",
+          "sql": "retention_class IN ('derived.analytics.standard', 'derived.analytics.restricted')"
+        },
+        {
+          "name": "ck_analytics_observation_source_shape",
+          "sql": "source_width = 416 AND source_height = 416"
+        },
+        {
+          "name": "ck_analytics_observation_tier_a_class",
+          "sql": "class_id IN ('object.person', 'vehicle.bicycle', 'vehicle.car', 'vehicle.motorcycle', 'vehicle.bus', 'vehicle.truck', 'object.unknown')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "observation_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "event_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "run_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "assignment_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "candidate_index",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "observed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "processed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "source_sequence",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BIGINT"
+        },
+        {
+          "default": null,
+          "name": "source_width",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "source_height",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "model_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "model_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "class_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "confidence",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "bbox_x",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "bbox_y",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "bbox_width",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "bbox_height",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "lineage",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "retention_class",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "assignment_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_assignments"
+        },
+        {
+          "columns": [
+            "run_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "run_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_generated_runs"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "department",
+            "created_at"
+          ],
+          "name": "ix_analytics_observation_department_created",
+          "unique": false
+        },
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": "ix_analytics_observations_assignment_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_analytics_observations_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "class_id"
+          ],
+          "name": "ix_analytics_observations_class_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "created_at"
+          ],
+          "name": "ix_analytics_observations_created_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_analytics_observations_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "run_id"
+          ],
+          "name": "ix_analytics_observations_run_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_analytics_observations_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "analytics_observations",
+      "primary_key": {
+        "columns": [
+          "observation_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "run_id",
+            "candidate_index"
+          ],
+          "name": "uq_analytics_observation_run_candidate"
+        },
+        {
+          "columns": [
+            "event_id"
+          ],
+          "name": "uq_analytics_observations_event_id"
         }
       ]
     },

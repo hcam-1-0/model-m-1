@@ -4,6 +4,9 @@ Status: P3.0 accepted under `D-P3.0-001` on 2026-08-24. P3.1 data-and-
 evaluation-foundation planning is authorized under `D-P3.1-001`, and its
 technical evidence is implemented with zero verifier failures. Clean-source
 regeneration is complete, and P3.1 is accepted under `D-P3.1-ACCEPTANCE`.
+P3.2 entry decisions are complete, and `D-P3.2-START` authorizes only the exact
+generated-input, local/CI, CPU reference implementation. That implementation is
+validated and ready for owner review; P3.2 owner exit acceptance is pending.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -40,7 +43,11 @@ autonomous enforcement.
 | [P3.1 readiness report](p3-1-readiness-report.md) | Evidence-backed planning gates and pending implementation exits |
 | [P3.1 implementation readiness](p3-1-implementation-readiness-report.md) | Accepted implementation evidence, validation results, and package digest |
 | [P3.1 owner acceptance](p3-1-acceptance.md) | Digest-bound `D-P3.1-ACCEPTANCE` record and continuing exclusions |
-| [P3.2 entry decision packet](p3-2-entry-decision-packet.md) | Blocked pre-entry decisions and evidence required before any P3.2 start |
+| [P3.2 entry decision packet](p3-2-entry-decision-packet.md) | Completed entry decisions, exact evidence bindings, and continuing boundaries |
+| [P3.2 controlled research record](p3-2-research-record.md) | Authorized public-artifact research controls, quarantine, and offline experiment boundary |
+| [P3.2 start authorization](p3-2-start-authorization.md) | Generated-only CPU implementation work packages and explicit non-authorizations |
+| [P3.2 implementation](p3-2-implementation.md) | Exact activation contract, runtime, generated execution, persistence, APIs, retention, and evidence |
+| [P3.2 implementation readiness](p3-2-implementation-readiness-report.md) | Final tests, PostgreSQL, packaging, dependency audit, generated E2E, and owner gate |
 
 ## Non-Negotiable Boundary
 
@@ -84,12 +91,11 @@ analytics, OpenAPI, or migrated-database contract drift. Request-validation
 errors omit rejected values, and identifier-free metrics, a Grafana dashboard,
 and Prometheus alerts expose blocked-state, revision, outbox, and failure health.
 
-P3.0 still has no geometry evaluator, decoder, executable inference adapter,
-model, dataset, or media path. Assignments are forced to `paused/blocked` by
-request schemas, service logic, and database constraints; there is no activation
-endpoint. The exact taxonomy, intended use, metadata policy, and review roles are
-owner approved. P3-G4 permits accountable-owner self-review when the named
-reviewer is unavailable, and P3.0 is accepted.
+The accepted P3.0 baseline itself has no geometry evaluator, decoder, model,
+dataset, or media path. P3.2 now extends that baseline with an explicit,
+default-off generated-only activation and execution path. It does not change
+P3.0 history or introduce a camera/media path. The exact taxonomy, intended
+use, metadata policy, and review roles remain owner approved.
 
 Separate-person review is also disabled for later model promotion, operational
 geometry, datasets, and deployment. The accountable owner may approve those
@@ -105,7 +111,17 @@ annotation/QA and grouped split/leakage checks, hand-computable metric goldens,
 Only deterministic generated metadata and programmatic assets are used. The
 implementation verifier reports `accepted`: technical failures and manual gates
 are zero, the clean-source gate passes, and accountable-owner acceptance is
-bound to the unchanged package digest. P3.2 remains blocked.
+bound to the unchanged package digest. `D-P3.2-001` authorized controlled
+artifact research, and `D-P3.2-002` through `D-P3.2-004` now bind one exact
+model, generated-only input source, and CPU reference contract. The
+[P3.2 start authorization](p3-2-start-authorization.md) permits only the named
+generated-input implementation packages. The
+[P3.2 implementation](p3-2-implementation.md) now provides the verified CPU
+adapter, generated execution API, normalized observation/outbox persistence,
+lifecycle controls, retention, metrics, and local E2E harness. Cameras, real
+media, public datasets, accuracy claims, training, deployment, artifact
+redistribution, and remote Git actions remain prohibited; P3.2 exit acceptance
+is still pending.
 
 Accepted planning snapshot digest:
 `57D2F541C4AA9AB8988A5DF7FC228DA4047BF471B64AD704BDB478308FDC3898`.

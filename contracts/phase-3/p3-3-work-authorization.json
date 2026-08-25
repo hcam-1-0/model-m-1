@@ -1,0 +1,37 @@
+{
+  "accountable_owner_id": "mayank-admin",
+  "authorization_id": "D-P3.3-WORK-AUTH",
+  "authorized": true,
+  "authorized_on": "2026-08-25",
+  "authorized_work": [
+    "D-P3.3-001_plan_and_safety_contract",
+    "D-P3.3-004_lifecycle_resource_and_metric_policy",
+    "controlled_bytetrack_source_acquisition_and_manifesting",
+    "controlled_trackeval_source_acquisition_and_manifesting",
+    "generated_structured_tracking_suite",
+    "generated_only_stream_local_tracking_implementation",
+    "local_dependency_locking_and_builds",
+    "local_database_migrations_and_tests",
+    "local_docker_and_postgresql_validation",
+    "local_git_checkpoint_commits",
+    "evidence_generation_and_digest_freeze"
+  ],
+  "final_acceptance_granted": false,
+  "implementation_authorized": true,
+  "milestone": "P3.3",
+  "prohibited_work": [
+    "physical_camera_or_media_access",
+    "sentinel_or_onvif_media_access",
+    "external_public_private_or_government_dataset_use",
+    "biometric_or_reidentification_processing",
+    "cross_camera_linkage",
+    "watchlists_or_owner_lookup",
+    "operational_alerting_or_enforcement",
+    "pilot_or_production_deployment",
+    "p3_4_or_later_work",
+    "remote_git_push_pull_request_or_merge"
+  ],
+  "schema_version": "1.0.0",
+  "scope": "phase3.p3_3.generated_only_stream_local_anonymous_tracking",
+  "statement": "i authorize everything"
+}

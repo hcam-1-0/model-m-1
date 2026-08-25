@@ -7,14 +7,18 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from hcam.analytics.contracts import (
     AnalyticsAssignmentV1,
+    ClassId,
     CapabilityId,
     Confidence,
     ImmutableDigest,
+    ProcessingLineage,
     StableName,
     TaxonomyVersion,
+    UtcDateTime,
     VersionedArtifact,
     VersionedConfiguration,
 )
+from hcam.analytics.runtime import RuntimeFailureCode
 
 
 RetentionClass = Literal[
@@ -25,6 +29,8 @@ AssignmentBlockingReason = Literal[
     "runtime_unconfigured",
     "taxonomy_unapproved",
     "retention_policy_unapproved",
+    "implementation_scope_unapproved",
+    "authorization_expired",
 ]
 
 
@@ -76,9 +82,16 @@ class AnalyticsAssignmentPatch(ApiModel):
 
 
 class AnalyticsAssignmentResponse(AnalyticsAssignmentV1):
-    lifecycle_state: Literal["blocked"] = "blocked"
-    reason_code: Literal["owner_gates_pending"] = "owner_gates_pending"
-    activation_eligible: Literal[False] = False
+    execution_scope: Literal["generated_only"] = "generated_only"
+    lifecycle_state: Literal["blocked", "paused", "running", "degraded", "failed"]
+    reason_code: Literal[
+        "owner_gates_pending",
+        "manual_pause",
+        "generated_runtime_active",
+        "runtime_degraded",
+        "runtime_failed",
+    ]
+    activation_eligible: bool
     blocking_reasons: list[AssignmentBlockingReason]
     created_at: datetime
 
@@ -101,6 +114,62 @@ class AnalyticsAssignmentRevisionResponse(ApiModel):
 
 class AnalyticsAssignmentRevisionListResponse(ApiModel):
     items: list[AnalyticsAssignmentRevisionResponse]
+    total: int
+    limit: int
+    offset: int
+
+
+class GeneratedAnalyticsRunCreate(ApiModel):
+    seed: Annotated[int, Field(ge=0, le=4_294_967_295)] = 0
+    sequence: Annotated[int, Field(ge=0, le=9_223_372_036_854_775_807)]
+    observed_at: UtcDateTime
+
+
+class GeneratedAnalyticsRunResponse(ApiModel):
+    run_id: Annotated[str, Field(pattern=r"^run_[0-9a-f]{32}$")]
+    assignment_id: Annotated[str, Field(pattern=r"^ana_[0-9a-f]{32}$")]
+    assignment_version: int
+    execution_scope: Literal["generated_only"] = "generated_only"
+    source_sequence: int
+    source_observed_at: UtcDateTime
+    generator_id: StableName
+    generator_version: ImmutableDigest
+    input_sha256: Annotated[str, Field(pattern=r"^[0-9a-f]{64}$")]
+    status: Literal["succeeded", "degraded", "failed"]
+    failure_code: RuntimeFailureCode | None
+    candidate_count: Annotated[int, Field(ge=0, le=300)]
+    duration_ms: Annotated[int, Field(ge=0, le=60_000)]
+    retention_class: RetentionClass
+    started_at: UtcDateTime
+    completed_at: UtcDateTime
+    reused: bool = False
+
+
+class AnalyticsObservationResponse(ApiModel):
+    observation_id: Annotated[str, Field(pattern=r"^obs_[0-9a-f]{32}$")]
+    run_id: Annotated[str, Field(pattern=r"^run_[0-9a-f]{32}$")]
+    assignment_id: Annotated[str, Field(pattern=r"^ana_[0-9a-f]{32}$")]
+    candidate_index: Annotated[int, Field(ge=0, lt=300)]
+    observed_at: UtcDateTime
+    processed_at: UtcDateTime
+    source_sequence: int
+    source_width: Annotated[int, Field(ge=1, le=32_768)]
+    source_height: Annotated[int, Field(ge=1, le=32_768)]
+    model_id: StableName
+    model_version: ImmutableDigest
+    class_id: ClassId
+    confidence: Confidence
+    bbox_x: Annotated[float, Field(ge=0, le=1)]
+    bbox_y: Annotated[float, Field(ge=0, le=1)]
+    bbox_width: Annotated[float, Field(gt=0, le=1)]
+    bbox_height: Annotated[float, Field(gt=0, le=1)]
+    lineage: ProcessingLineage
+    retention_class: RetentionClass
+    created_at: UtcDateTime
+
+
+class AnalyticsObservationListResponse(ApiModel):
+    items: list[AnalyticsObservationResponse]
     total: int
     limit: int
     offset: int

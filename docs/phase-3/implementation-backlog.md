@@ -109,32 +109,44 @@ evidence index.
 P3.1 exit evidence is complete. Numeric thresholds remain proposal-only; no
 model promotion gate is approved by P3.1.
 
-Direct source use is limited to deterministic `S0` generated metadata and
-programmatic assets. Public datasets/fonts and model artifacts are
-research-only with no downloads; cameras, real media, Government/private data,
-inference, P3.2, and deployment are not authorized.
+P3.1 direct input remains limited to deterministic `S0` generated metadata and
+programmatic assets. `D-P3.2-001` separately authorized manifested artifact
+quarantine and offline research. The later
+[P3.2 start authorization](p3-2-start-authorization.md) now permits the exact
+generated-input CPU implementation while cameras, real media, public datasets,
+accuracy claims, training, deployment, and broader inference remain blocked.
 
 ## P3.2: Portable Detection Pipeline
 
 Dependencies: P3.0 and P3.1; approved detector artifact.
 
-Entry status: `blocked_pending_owner_decisions`. The
-[P3.2 entry decision packet](p3-2-entry-decision-packet.md) defines the exact
-artifact, evaluation-source, CPU/export-contract, and explicit-start evidence
-required before implementation. Preparing that packet is not P3.2
-authorization.
+Entry status: `implementation_authorized_generated_only`. The
+[P3.2 entry decision packet](p3-2-entry-decision-packet.md) records the completed
+entry audit. `D-P3.2-001` through `D-P3.2-004` are evidence-bound, and the
+[P3.2 start authorization](p3-2-start-authorization.md) permits only the exact
+generated-input, local/CI, ONNX Runtime CPU work packages.
+
+Implementation status: `implemented_pending_owner_exit_acceptance`. The exact
+generated-only CPU slice is built and locally validated; its readiness verifier
+must bind the final package digest before owner acceptance. The accepted P3.1
+candidate record stays historically blocked and the later exact artifact
+approval remains separate. Public or real-media datasets, accuracy claims,
+cameras, training, GPU/networked inference, deployment, artifact redistribution,
+and remote Git actions remain prohibited.
 
 Deliverables:
 
-- bounded decoder/sampler boundary using controlled Phase 2 media access;
+- deterministic generated-frame adapter boundary with no Phase 2 media access;
 - `DET-R0` YOLOX-Tiny through the ONNX Runtime CPU reference adapter, or a
   replacement approved through a revised decision record;
 - detector preprocessing, inference, postprocessing, taxonomy mapping;
 - observation normalization, persistence/outbox, assignment lifecycle;
 - C1 synthetic end-to-end path and component observability.
 
-Exit evidence: export parity, frozen accuracy report, fault injection, redaction,
-resource-limit tests, and reproducible C1 benchmark.
+Exit evidence for the authorized slice: source-algorithm parity, deterministic
+generated end-to-end evidence, fault injection, redaction, resource-limit tests,
+clean-machine packaging, and a digest-bound owner acceptance. A frozen accuracy
+report and real-media benchmark require separate future data authorization.
 
 ## P3.3: Per-Camera Tracking
 

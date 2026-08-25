@@ -140,7 +140,9 @@ def documentation_digest() -> tuple[str, list[str]]:
 def check_required_files() -> CheckResult:
     missing = [path for path in REQUIRED_FILES if not (ROOT / path).is_file()]
     if missing:
-        return CheckResult("required_files", FAIL, f"missing: {', '.join(missing)}", missing)
+        return CheckResult(
+            "required_files", FAIL, f"missing: {', '.join(missing)}", missing
+        )
     return CheckResult(
         "required_files",
         PASS,
@@ -154,6 +156,7 @@ def check_contract_snapshots() -> CheckResult:
         "contracts/phase-3/analytics-contracts.json",
         "contracts/phase-3/openapi.json",
         "contracts/phase-3/database.json",
+        "contracts/phase-3/p3-2-start-authorization.json",
     ]
     failures: list[str] = []
     try:
@@ -195,18 +198,49 @@ def check_contract_snapshots() -> CheckResult:
         operations = paths.get(path)
         if not isinstance(operations, dict) or not methods.issubset(operations):
             failures.append(f"OpenAPI operation is missing: {path} {sorted(methods)}")
-    unsafe_paths = [path for path in paths if "activat" in path.casefold()]
+    allowed_activation_paths = {"/analytics-assignments/{assignment_id}/activate"}
+    unsafe_paths = [
+        path
+        for path in paths
+        if "activat" in path.casefold() and path not in allowed_activation_paths
+    ]
     if unsafe_paths:
-        failures.append("analytics activation path is present")
+        failures.append("an unapproved analytics activation path is present")
 
-    if database.get("alembic_heads") != ["0008_analytics_assignments"]:
-        failures.append("database snapshot is not at Alembic revision 0008")
+    activation_paths = allowed_activation_paths.intersection(paths)
+    if activation_paths:
+        try:
+            start = _read_json(evidence[3])
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            failures.append(f"P3.2 activation authorization is unavailable: {exc}")
+        else:
+            target = start.get("target")
+            if (
+                start.get("decision_id") != "D-P3.2-START"
+                or start.get("status") != "owner_authorized"
+                or not isinstance(target, dict)
+                or target.get("data_source") != "DATA-GEN-R0"
+                or target.get("deployment") != "local_development_and_ci_only"
+            ):
+                failures.append("P3.2 activation authorization is invalid")
+
+    allowed_heads = {
+        ("0008_analytics_assignments",),
+        ("0009_generated_analytics",),
+    }
+    heads = database.get("alembic_heads")
+    if not isinstance(heads, list) or tuple(heads) not in allowed_heads:
+        failures.append("database snapshot is not at an approved P3.0/P3.2 revision")
     raw_tables = database.get("tables")
-    tables = {
-        table.get("name"): table
-        for table in raw_tables
-        if isinstance(raw_tables, list) and isinstance(table, dict)
-    } if isinstance(raw_tables, list) else {}
+    tables = (
+        {
+            table.get("name"): table
+            for table in raw_tables
+            if isinstance(raw_tables, list) and isinstance(table, dict)
+        }
+        if isinstance(raw_tables, list)
+        else {}
+    )
     assignment = tables.get("analytics_assignments")
     revision = tables.get("analytics_assignment_revisions")
     if not isinstance(assignment, dict) or not isinstance(revision, dict):
@@ -217,18 +251,38 @@ def check_contract_snapshots() -> CheckResult:
             for item in assignment.get("check_constraints", [])
             if isinstance(item, dict)
         }
-        required_constraints = {
-            "ck_analytics_assignment_p3_desired_state": "desired_state = 'paused'",
-            "ck_analytics_assignment_p3_lifecycle_state": (
-                "lifecycle_state = 'blocked'"
-            ),
-            "ck_analytics_assignment_p3_reason_code": (
-                "reason_code = 'owner_gates_pending'"
-            ),
+        allowed_constraints = {
+            "ck_analytics_assignment_p3_desired_state": {
+                "desired_state = 'paused'",
+                "desired_state IN ('paused', 'enabled')",
+            },
+            "ck_analytics_assignment_p3_lifecycle_state": {
+                "lifecycle_state = 'blocked'",
+                "lifecycle_state IN ('blocked', 'paused', 'running', 'degraded', 'failed')",
+            },
+            "ck_analytics_assignment_p3_reason_code": {
+                "reason_code = 'owner_gates_pending'",
+                "reason_code IN ('owner_gates_pending', 'manual_pause', "
+                "'generated_runtime_active', 'runtime_degraded', 'runtime_failed')",
+            },
         }
-        for name, expression in required_constraints.items():
-            if constraints.get(name) != expression:
+        for name, expressions in allowed_constraints.items():
+            if constraints.get(name) not in expressions:
                 failures.append(f"database guard is missing or changed: {name}")
+        if heads == ["0009_generated_analytics"]:
+            if constraints.get("ck_analytics_assignment_execution_scope") != (
+                "execution_scope = 'generated_only'"
+            ):
+                failures.append("generated-only execution-scope guard is missing")
+            state_consistency = constraints.get(
+                "ck_analytics_assignment_state_consistency", ""
+            )
+            blocked_state = (
+                "desired_state = 'paused' AND lifecycle_state = 'blocked' AND "
+                "reason_code = 'owner_gates_pending'"
+            )
+            if blocked_state not in state_consistency:
+                failures.append("the original P3.0 blocked state is no longer valid")
 
     for fixture in REQUIRED_FILES:
         if not fixture.startswith("contracts/phase-3/fixtures/"):
@@ -255,28 +309,27 @@ def check_fail_closed_boundaries() -> CheckResult:
         "app/hcam/analytics/service.py",
         "app/hcam/analytics/runtime.py",
         "migrations/versions/0008_analytics_assignments.py",
+        "app/hcam/analytics/activation.py",
+        "migrations/versions/0009_generated_analytics.py",
     ]
     content = "\n".join(_read(path) for path in files)
     required = (
-        "desired_state=\"paused\"",
-        "lifecycle_state=\"blocked\"",
-        "reason_code=\"owner_gates_pending\"",
+        'desired_state="paused"',
+        'lifecycle_state="blocked"',
+        'reason_code="owner_gates_pending"',
         'Literal["paused"]',
-        'Literal["blocked"]',
-        'Literal["owner_gates_pending"]',
-        "activation_eligible: Literal[False] = False",
+        'execution_scope="generated_only"',
         "UnavailableAnalyticsRuntimeAdapter",
-        'return _failed_result(request, "runtime_unconfigured")',
+        'return failed_runtime_result(request, "runtime_unconfigured")',
         'network_access: Literal["denied"]',
         'artifact_access: Literal["verified_handle_only"]',
         "ck_analytics_assignment_p3_desired_state",
         "ck_analytics_assignment_p3_lifecycle_state",
         "ck_analytics_assignment_p3_reason_code",
+        "ck_analytics_assignment_execution_scope",
+        'P3_2_APPROVAL_RECORD_ID = "D-P3.2-START"',
     )
     missing = [term for term in required if term not in content]
-    routes = _read("app/hcam/analytics/routes.py")
-    if "activat" in routes.casefold():
-        missing.append("analytics routes must not expose activation")
     if missing:
         return CheckResult(
             "fail_closed_boundaries",
@@ -287,7 +340,7 @@ def check_fail_closed_boundaries() -> CheckResult:
     return CheckResult(
         "fail_closed_boundaries",
         PASS,
-        "API, service, runtime, ORM, and database layers remain activation blocked.",
+        "The P3.0 blocked default remains intact and P3.2 activation is generated-only and explicitly authorized.",
         files,
     )
 
@@ -374,15 +427,19 @@ def check_observability() -> CheckResult:
         "locator",
         "secret_ref",
     }
-    failures = [f"metric is missing: {metric}" for metric in metrics if metric not in serialized]
+    failures = [
+        f"metric is missing: {metric}" for metric in metrics if metric not in serialized
+    ]
     failures.extend(
         f"identifier appears in observability artifacts: {term}"
         for term in forbidden
         if term in serialized.casefold() or term in alerts.casefold()
     )
     panels = dashboard.get("panels")
-    if not isinstance(panels, list) or len(panels) != 5:
-        failures.append("Phase 3 dashboard must contain exactly five panels")
+    if not isinstance(panels, list) or len(panels) < 5:
+        failures.append(
+            "Phase 3 dashboard must preserve at least five control-plane panels"
+        )
     required_alerts = {
         "HcamAnalyticsAssignmentInvariantViolation",
         "HcamAnalyticsOutboxBacklog",
@@ -401,7 +458,7 @@ def check_observability() -> CheckResult:
     return CheckResult(
         "observability",
         PASS,
-        "Five identifier-free control-plane panels and three bounded alerts exist.",
+        f"{len(panels)} identifier-free control-plane panels and the bounded alerts exist.",
         [dashboard_path, alerts_path],
     )
 
@@ -529,9 +586,17 @@ def check_owner_decision_record() -> CheckResult:
 
     policy = record.get("metadata_policy")
     expected_data_classes = {
-        "derived.analytics.standard": (168, {"camera.viewer", "camera.editor", "platform.admin"}, False),
+        "derived.analytics.standard": (
+            168,
+            {"camera.viewer", "camera.editor", "platform.admin"},
+            False,
+        ),
         "derived.analytics.restricted": (24, {"platform.admin"}, True),
-        "control.analytics.configuration": (2160, {"camera.editor", "platform.admin"}, True),
+        "control.analytics.configuration": (
+            2160,
+            {"camera.editor", "platform.admin"},
+            True,
+        ),
         "audit.analytics": (2160, {"platform.admin"}, True),
         "telemetry.analytics.aggregate": (720, {"metrics.reader"}, False),
         "derived.analytics.plate_text": (0, set(), True),
@@ -552,11 +617,15 @@ def check_owner_decision_record() -> CheckResult:
             or len(set(classifications)) != len(classifications)
             or set(classifications) != set(expected_data_classes)
         ):
-            failures.append("owner-approved data-class inventory changed or contains duplicates")
+            failures.append(
+                "owner-approved data-class inventory changed or contains duplicates"
+            )
         else:
             for item in valid_rows:
                 classification = item["classification"]
-                retention, roles, reason_required = expected_data_classes[classification]
+                retention, roles, reason_required = expected_data_classes[
+                    classification
+                ]
                 if (
                     item.get("maximum_retention_hours") != retention
                     or set(item.get("access_roles", [])) != roles
@@ -606,7 +675,9 @@ def check_owner_decision_record() -> CheckResult:
         else []
     )
     gate_ids = [item.get("gate_id") for item in valid_approvals]
-    approval_status = {item.get("gate_id"): item.get("status") for item in valid_approvals}
+    approval_status = {
+        item.get("gate_id"): item.get("status") for item in valid_approvals
+    }
     expected_approval_status = {
         "P3-G1": "owner_approved",
         "P3-G2": "owner_approved",
@@ -672,7 +743,9 @@ def check_owner_gates() -> list[CheckResult]:
     checked_count = 0
     incomplete_gate_seen = False
     for index, match in enumerate(matches):
-        block_end = matches[index + 1].start() if index + 1 < len(matches) else len(content)
+        block_end = (
+            matches[index + 1].start() if index + 1 < len(matches) else len(content)
+        )
         block = content[match.end() : block_end]
         evidence_match = re.search(r"^  Evidence: (?P<value>.+)$", block, re.MULTILINE)
         evidence = evidence_match.group("value").strip() if evidence_match else None
@@ -708,7 +781,10 @@ def check_owner_gates() -> list[CheckResult]:
             )
             continue
         targets = (
-            [item.group("target").strip() for item in _MARKDOWN_LINK_PATTERN.finditer(evidence)]
+            [
+                item.group("target").strip()
+                for item in _MARKDOWN_LINK_PATTERN.finditer(evidence)
+            ]
             if evidence
             else []
         )
@@ -725,7 +801,9 @@ def check_owner_gates() -> list[CheckResult]:
             results.append(CheckResult(gate_id, PASS, f"Accepted: {title}", targets))
 
     declared_status = status_match.group("status") if status_match else None
-    expected_status = "accepted" if checked_count == len(OWNER_GATE_IDS) else "ready_for_owner_review"
+    expected_status = (
+        "accepted" if checked_count == len(OWNER_GATE_IDS) else "ready_for_owner_review"
+    )
     if declared_status != expected_status:
         results.append(
             CheckResult(
@@ -779,7 +857,9 @@ def _display_command(command: list[str]) -> str:
     return " ".join(values)
 
 
-def _run(command: list[str], *, env: dict[str, str] | None = None) -> tuple[str, str | None]:
+def _run(
+    command: list[str], *, env: dict[str, str] | None = None
+) -> tuple[str, str | None]:
     command_text = _display_command(command)
     try:
         completed = subprocess.run(

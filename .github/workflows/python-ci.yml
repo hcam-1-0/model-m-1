@@ -42,7 +42,7 @@ jobs:
           activate-environment: true
 
       - name: Install backend and test dependencies
-        run: uv sync --locked --extra dev
+        run: uv sync --locked --extra dev --extra analytics
 
       - name: Compile Python sources
         run: python -m compileall -q app tools migrations
@@ -75,7 +75,7 @@ jobs:
 
       - name: Audit installed dependencies
         if: matrix.python-version == '3.12'
-        run: uv run --locked --extra dev pip-audit --skip-editable
+        run: uv run --locked --extra dev --extra analytics pip-audit --skip-editable
 
       - name: Verify Phase 1 evidence
         run: python tools/phase1_readiness.py
@@ -96,9 +96,13 @@ jobs:
         if: matrix.python-version == '3.12'
         run: python tools/phase31_implementation_readiness.py --strict
 
-      - name: Verify Phase 3 P3.2 remains entry blocked
+      - name: Verify Phase 3 P3.2 generated-only start authorization
         if: matrix.python-version == '3.12'
         run: python tools/phase32_entry_readiness.py
+
+      - name: Verify Phase 3 P3.2 generated-only implementation evidence
+        if: matrix.python-version == '3.12'
+        run: python tools/phase32_implementation_readiness.py
 
       - name: Preserve Phase 0 unittest check
         if: matrix.python-version == '3.12'

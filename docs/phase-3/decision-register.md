@@ -238,30 +238,73 @@ promotion.
 The bounded `D-P3.1-001` implementation now has zero technical verifier
 failures under evidence package digest
 `956F6521E21BF0FB43741F97768194617DE881B1BD1644E03DDC33ED5FDC0618`.
-All 11 candidate records remain blocked, every numeric threshold is
-`proposal_only`, downloaded artifacts remain zero, and P3.2 remains blocked.
+All 11 accepted P3.1 candidate records remain blocked and every numeric
+threshold is `proposal_only`. `D-P3.2-001` separately authorized controlled
+public-artifact quarantine and offline research; it did not alter the accepted
+P3.1 package or itself authorize P3.2 implementation. The later exact P3.2
+records do not modify this historical package.
 
 The baseline is bound to clean implementation commit
 `be7749d4315f46a49370b65f14c6e583e51a0c6e`. This is not a new authorization or
 an authorization for later work. Accountable-owner P3.1 exit acceptance is
 recorded in `D-P3.1-ACCEPTANCE`; P3.1 is accepted.
 
-## Decisions Required During P3.1 Or Before P3.2
+## P3.2 Entry Decision Status
 
-The [P3.2 entry decision packet](p3-2-entry-decision-packet.md) converts these
-open items into ordered, fail-closed owner records. It is planning evidence
-only; `D-P3.2-START` remains `not_authorized`.
+The [P3.2 entry decision packet](p3-2-entry-decision-packet.md) records the
+ordered, fail-closed owner decisions. The
+[P3.2 start authorization](p3-2-start-authorization.md) is now
+`owner_authorized` for the exact generated-only local CPU scope; this starts but
+does not complete P3.2.
+
+`D-P3.2-001` was authorized by `mayank-admin` on 2026-08-24 for controlled
+model/dataset downloads and offline experiments. The exact controls and
+continuing exclusions are in the
+[P3.2 controlled research record](p3-2-research-record.md).
+
+- `D-P3.2-002`: `owner_approved_restricted` for exact artifact
+  `DET-R0-ONNX-UPSTREAM-0.1.1RC0` and its SHA-256 only;
+- `D-P3.2-003`: `owner_approved_generated_only` for `DATA-GEN-R0`, with no
+  public dataset, real media, or accuracy claims;
+- `D-P3.2-004`: `owner_approved_cpu_reference` for the exact pinned ONNX Runtime
+  CPU preprocessing, decoder, mapping, parity, and resource contract; and
+- `D-P3.2-START`: `owner_authorized` for the named generated-only work packages,
+  expiring 2026-09-24.
+
+The authorized research pass acquired one exact 20,219,662-byte ONNX artifact
+with SHA-256
+`427CC366D34E27FF7A03E2899B5E3671425C262EA2291F88BB942BC1CC70B0F7`.
+Two generated-input CPU observations produced the same output digest. Immutable
+license and algorithm evidence, a model card, SPDX inventory, generated-only
+dataset record, runtime contract, and exact start record now bind that research
+to the authorized scope. They do not establish accuracy, fairness,
+representativeness, model promotion, media access, or deployment readiness.
 
 | Decision | Evidence required | Blocks |
 | --- | --- | --- |
 | Exact `S1`-`S4` source use | Consent/license, provenance, privacy, retention, hash, and owner record | Any non-generated P3.1 input |
 | Exact portfolio artifacts | Commit, checkpoint, weight/model/data license, lineage, hash, model card, SBOM, and owner approval | P3.2/P3.3/P3.5 |
 | Portfolio champion and fallback | Frozen H-CAM baseline, slice/resource/downstream results, owner approval, and ADR | Promotion/deployment |
-| CPU reference runtime | Export parity and clean-machine smoke | P3.2 |
+| CPU reference runtime exit | Generated end-to-end parity and clean-machine implementation smoke | P3.2 exit |
 | Target accelerator/lab hardware | Reproducible hardware manifest | Runtime/model performance gates |
 | Numeric accuracy and latency gates | Frozen baseline and operator/risk needs | Model promotion |
 | Metadata retention | Data classification and operational purpose | Persistence |
 | Artifact/model registry | Security, operations, access, and complexity review | P3.7 |
+
+### DR-0031: Exact Generated-Only CPU Detection Slice
+
+Status: implemented under `D-P3.2-START`; owner exit acceptance pending.
+
+The only activatable P3.2 assignment is the exact `DET-R0` artifact, approved
+Tier A taxonomy, generated-data policy, ONNX Runtime CPU contract, and
+`generated_only` scope. The runtime is default-off, forbidden in production,
+and model bytes remain outside Git and packages. Inputs are created server-side
+from bounded seeds and consumed through short-lived memory leases. Only
+normalized anonymous metadata and transactional outbox events persist.
+
+Reason: an exact digest-bound activation contract prevents the generic P3.0
+assignment API from becoming an implicit model, data, or deployment
+authorization. See [P3.2 implementation](p3-2-implementation.md).
 
 ## Decisions Explicitly Deferred
 

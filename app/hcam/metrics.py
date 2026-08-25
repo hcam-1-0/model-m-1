@@ -15,7 +15,12 @@ from prometheus_client import (
 from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
-from hcam.analytics.models import AnalyticsAssignment, AnalyticsAssignmentRevision
+from hcam.analytics.models import (
+    AnalyticsAssignment,
+    AnalyticsAssignmentRevision,
+    AnalyticsGeneratedRun,
+    AnalyticsObservation,
+)
 from hcam.audit.models import AuditEvent
 from hcam.camera_registry.models import utc_now
 from hcam.streams.models import (
@@ -145,6 +150,12 @@ class RequestMetrics:
             "Analytics assignments blocked by P3.0 owner gates.",
             registry=self.registry,
         )
+        self.analytics_assignment_states = Gauge(
+            "hcam_analytics_assignment_state_total",
+            "Current analytics assignments by bounded lifecycle state.",
+            ("state",),
+            registry=self.registry,
+        )
         self.analytics_assignment_revisions = Gauge(
             "hcam_analytics_assignment_revisions_retained_total",
             "Immutable analytics assignment revisions retained.",
@@ -152,13 +163,41 @@ class RequestMetrics:
         )
         self.analytics_outbox_pending = Gauge(
             "hcam_analytics_outbox_unpublished_total",
-            "Unpublished analytics model-deployment metadata events.",
+            "Unpublished analytics metadata events.",
             registry=self.registry,
         )
         self.analytics_assignment_failures = Gauge(
             "hcam_analytics_assignment_failures_recent_total",
             "Rejected analytics assignment mutations during the last 15 minutes.",
             ("operation",),
+            registry=self.registry,
+        )
+        self.analytics_generated_runs = Gauge(
+            "hcam_analytics_generated_runs_retained_total",
+            "Generated-only analytics runs retained by bounded outcome.",
+            ("status",),
+            registry=self.registry,
+        )
+        self.analytics_generated_duration = Gauge(
+            "hcam_analytics_generated_run_duration_milliseconds",
+            "Average generated-only analytics run duration by bounded outcome.",
+            ("status",),
+            registry=self.registry,
+        )
+        self.analytics_generated_failures = Gauge(
+            "hcam_analytics_generated_run_failures_retained_total",
+            "Generated-only analytics failures by bounded category.",
+            ("category",),
+            registry=self.registry,
+        )
+        self.analytics_observations = Gauge(
+            "hcam_analytics_observations_retained_total",
+            "Anonymous normalized analytics observations retained.",
+            registry=self.registry,
+        )
+        self.analytics_generated_leases = Gauge(
+            "hcam_analytics_generated_frame_leases_active",
+            "Generated frame leases currently held in memory.",
             registry=self.registry,
         )
 
@@ -239,13 +278,23 @@ class RequestMetrics:
             select(func.count())
             .select_from(StreamEventOutbox)
             .where(
-                StreamEventOutbox.event_type
-                == "hcam.analytics.model.deployment.changed.v1",
+                StreamEventOutbox.event_type.like("hcam.analytics.%"),
                 StreamEventOutbox.published_at.is_(None),
             )
         )
         self.analytics_assignments.set(int(assignment_count or 0))
         self.analytics_assignments_blocked.set(int(blocked_count or 0))
+        assignment_states = dict(
+            session.execute(
+                select(AnalyticsAssignment.lifecycle_state, func.count()).group_by(
+                    AnalyticsAssignment.lifecycle_state
+                )
+            ).all()
+        )
+        for state in ("blocked", "paused", "running", "degraded", "failed"):
+            self.analytics_assignment_states.labels(state=state).set(
+                assignment_states.get(state, 0)
+            )
         self.analytics_assignment_revisions.set(int(revision_count or 0))
         self.analytics_outbox_pending.set(int(pending_outbox or 0))
 
@@ -269,6 +318,64 @@ class RequestMetrics:
             self.analytics_assignment_failures.labels(operation=operation).set(
                 recent_failures.get(f"analytics.assignment.{operation}", 0)
             )
+
+        statuses = ("succeeded", "degraded", "failed")
+        run_counts = dict(
+            session.execute(
+                select(AnalyticsGeneratedRun.status, func.count()).group_by(
+                    AnalyticsGeneratedRun.status
+                )
+            ).all()
+        )
+        duration_averages = dict(
+            session.execute(
+                select(
+                    AnalyticsGeneratedRun.status,
+                    func.avg(AnalyticsGeneratedRun.duration_ms),
+                ).group_by(AnalyticsGeneratedRun.status)
+            ).all()
+        )
+        for status_value in statuses:
+            self.analytics_generated_runs.labels(status=status_value).set(
+                run_counts.get(status_value, 0)
+            )
+            self.analytics_generated_duration.labels(status=status_value).set(
+                float(duration_averages.get(status_value) or 0)
+            )
+        failure_counts = dict(
+            session.execute(
+                select(AnalyticsGeneratedRun.failure_code, func.count())
+                .where(AnalyticsGeneratedRun.failure_code.is_not(None))
+                .group_by(AnalyticsGeneratedRun.failure_code)
+            ).all()
+        )
+        failure_categories = {
+            "deadline": failure_counts.get("deadline_exceeded", 0),
+            "resource": failure_counts.get("resource_exhausted", 0),
+            "input": sum(
+                failure_counts.get(code, 0)
+                for code in ("input_expired", "invalid_input")
+            ),
+            "configuration": sum(
+                failure_counts.get(code, 0)
+                for code in (
+                    "artifact_rejected",
+                    "runtime_unconfigured",
+                    "unsupported_capability",
+                )
+            ),
+            "runtime": failure_counts.get("runtime_internal", 0),
+        }
+        failure_categories["other"] = max(
+            0,
+            sum(failure_counts.values()) - sum(failure_categories.values()),
+        )
+        for category, count in failure_categories.items():
+            self.analytics_generated_failures.labels(category=category).set(count)
+        observation_count = session.scalar(
+            select(func.count()).select_from(AnalyticsObservation)
+        )
+        self.analytics_observations.set(int(observation_count or 0))
 
     def _refresh_onvif_operation_metrics(self, session: Session, now) -> None:
         operation_types = (
@@ -298,9 +405,9 @@ class RequestMetrics:
         }
         for operation in operation_types:
             for outcome in outcomes:
-                self.onvif_operations.labels(
-                    operation=operation, outcome=outcome
-                ).set(counts.get((operation, outcome), 0))
+                self.onvif_operations.labels(operation=operation, outcome=outcome).set(
+                    counts.get((operation, outcome), 0)
+                )
         recent_failures = dict(
             session.execute(
                 select(OnvifOperationRun.operation_type, func.count())
@@ -398,7 +505,9 @@ class RequestMetrics:
         latest = (
             select(
                 StreamCapabilitySnapshot.stream_id,
-                func.max(StreamCapabilitySnapshot.last_observed_at).label("observed_at"),
+                func.max(StreamCapabilitySnapshot.last_observed_at).label(
+                    "observed_at"
+                ),
             )
             .group_by(StreamCapabilitySnapshot.stream_id)
             .subquery()

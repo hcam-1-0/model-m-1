@@ -21,7 +21,9 @@ def test_container_runtime_is_pinned_non_root_and_health_checked() -> None:
     assert '"uv==${UV_VERSION}"' in dockerfile
     assert "RUN mkdir -p /dist" in dockerfile
     assert "uv sync --locked --extra dev --no-install-project" in dockerfile
-    assert "uv export --locked --no-dev --extra postgres --no-emit-project" in dockerfile
+    assert (
+        "uv export --locked --no-dev --extra postgres --no-emit-project" in dockerfile
+    )
     assert "python -m build --no-isolation" in dockerfile
     assert "--wheel --outdir /dist" in dockerfile
     assert "--require-hashes" in dockerfile
@@ -43,9 +45,7 @@ def test_docker_context_excludes_unnecessary_or_sensitive_paths() -> None:
 
 
 def test_compose_stack_uses_files_for_secrets_and_hardened_api_runtime() -> None:
-    compose = (ROOT / "deploy" / "compose.phase1.yaml").read_text(
-        encoding="utf-8"
-    )
+    compose = (ROOT / "deploy" / "compose.phase1.yaml").read_text(encoding="utf-8")
 
     assert "postgres:18-alpine@sha256:" in compose
     assert "HCAM_DATABASE_URL_FILE: /run/secrets/database_url" in compose
@@ -83,9 +83,7 @@ def test_grafana_dashboard_is_valid_and_uses_bounded_hcam_metrics() -> None:
 
 
 def test_phase2_dashboard_and_alerts_use_only_bounded_stream_metrics() -> None:
-    dashboard_path = (
-        ROOT / "deploy" / "observability" / "hcam-phase2-streams.json"
-    )
+    dashboard_path = ROOT / "deploy" / "observability" / "hcam-phase2-streams.json"
     alerts_path = ROOT / "deploy" / "observability" / "hcam-phase2-alerts.yml"
     dashboard = json.loads(dashboard_path.read_text(encoding="utf-8"))
     alerts = alerts_path.read_text(encoding="utf-8")
@@ -115,10 +113,7 @@ def test_phase3_control_plane_dashboard_and_alerts_are_identifier_free() -> None
         ROOT / "deploy" / "observability" / "hcam-phase3-control-plane.json"
     )
     alerts_path = (
-        ROOT
-        / "deploy"
-        / "observability"
-        / "hcam-phase3-control-plane-alerts.yml"
+        ROOT / "deploy" / "observability" / "hcam-phase3-control-plane-alerts.yml"
     )
     dashboard = json.loads(dashboard_path.read_text(encoding="utf-8"))
     alerts = alerts_path.read_text(encoding="utf-8")
@@ -126,15 +121,22 @@ def test_phase3_control_plane_dashboard_and_alerts_are_identifier_free() -> None
 
     assert dashboard["uid"] == "hcam-phase3-control-plane"
     assert dashboard["editable"] is False
-    assert len(dashboard["panels"]) == 5
+    assert len(dashboard["panels"]) == 10
     assert "hcam_analytics_assignments_total" in serialized
     assert "hcam_analytics_assignments_blocked_total" in serialized
     assert "hcam_analytics_assignment_revisions_retained_total" in serialized
     assert "hcam_analytics_outbox_unpublished_total" in serialized
     assert "hcam_analytics_assignment_failures_recent_total" in serialized
+    assert "hcam_analytics_assignment_state_total" in serialized
+    assert "hcam_analytics_generated_runs_retained_total" in serialized
+    assert "hcam_analytics_observations_retained_total" in serialized
+    assert "hcam_analytics_generated_run_duration_milliseconds" in serialized
+    assert "hcam_analytics_generated_frame_leases_active" in serialized
     assert "HcamAnalyticsAssignmentInvariantViolation" in alerts
     assert "HcamAnalyticsOutboxBacklog" in alerts
     assert "HcamAnalyticsAssignmentFailureSpike" in alerts
+    assert "HcamGeneratedAnalyticsDegraded" in alerts
+    assert "HcamGeneratedFrameLeaseRetained" in alerts
     for prohibited_label in (
         "assignment_id",
         "camera_id",

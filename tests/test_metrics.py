@@ -79,9 +79,9 @@ def test_metrics_use_bounded_route_labels_and_exclude_sensitive_values(
         )
     try:
         with TestClient(application) as client:
-            stream_id = client.get("/streams", headers=viewer_headers).json()[
-                "items"
-            ][0]["stream_id"]
+            stream_id = client.get("/streams", headers=viewer_headers).json()["items"][
+                0
+            ]["stream_id"]
             assignment = client.post(
                 f"/streams/{stream_id}/analytics-assignments",
                 json={
@@ -168,6 +168,7 @@ def test_metrics_use_bounded_route_labels_and_exclude_sensitive_values(
     assert "hcam_onvif_operation_failures_recent_total" in body
     assert "hcam_analytics_assignments_total 1.0" in body
     assert "hcam_analytics_assignments_blocked_total 1.0" in body
+    assert 'hcam_analytics_assignment_state_total{state="blocked"} 1.0' in body
     assert "hcam_analytics_assignment_revisions_retained_total 1.0" in body
     assert "hcam_analytics_outbox_unpublished_total 1.0" in body
     assert (
@@ -178,6 +179,13 @@ def test_metrics_use_bounded_route_labels_and_exclude_sensitive_values(
         'hcam_analytics_assignment_failures_recent_total{operation="update"} 1.0'
         in body
     )
+    assert (
+        'hcam_analytics_generated_runs_retained_total{status="succeeded"} 0.0' in body
+    )
+    assert "hcam_analytics_generated_run_duration_milliseconds" in body
+    assert "hcam_analytics_generated_run_failures_retained_total" in body
+    assert "hcam_analytics_observations_retained_total 0.0" in body
+    assert "hcam_analytics_generated_frame_leases_active 0.0" in body
     assert 'route="/cameras/{camera_id}"' in body
     assert 'route="&lt;unmatched&gt;"' not in body
     assert 'route="<unmatched>"' in body

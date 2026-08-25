@@ -7,6 +7,7 @@ import argparse
 import difflib
 import hashlib
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -34,7 +35,11 @@ def _file_digest(path: Path) -> str:
     try:
         content = path.read_bytes()
     except OSError as exc:
-        raise EvidenceGenerationError(f"required evidence input is unavailable: {path.name}") from exc
+        raise EvidenceGenerationError(
+            f"required evidence input is unavailable: {path.name}"
+        ) from exc
+    # Evidence must not drift solely because Git materialized text with CRLF.
+    content = content.replace(b"\r\n", b"\n")
     return f"sha256:{hashlib.sha256(content).hexdigest()}"
 
 
@@ -77,10 +82,35 @@ def recorded_source_state() -> tuple[str, bool]:
         commit = source["commit"]
         dirty = source["dirty_worktree"]
     except (OSError, json.JSONDecodeError, KeyError, TypeError) as exc:
-        raise EvidenceGenerationError("recorded baseline source state is unavailable") from exc
+        raise EvidenceGenerationError(
+            "recorded baseline source state is unavailable"
+        ) from exc
     if not isinstance(commit, str) or not isinstance(dirty, bool):
         raise EvidenceGenerationError("recorded baseline source state is invalid")
     return _validate_commit(commit), dirty
+
+
+def recorded_input_digests() -> tuple[str, str]:
+    """Return the immutable inputs bound into the accepted P3.1 evidence."""
+    try:
+        fixture_manifest = json.loads(
+            (CONTRACT_ROOT / "fixture-manifest-v1.json").read_text(encoding="utf-8")
+        )
+        evaluation_run = json.loads(
+            (CONTRACT_ROOT / "evaluation-run-v1.json").read_text(encoding="utf-8")
+        )
+        generator_digest = fixture_manifest["generator"]["code_digest"]
+        dependency_digest = evaluation_run["dependency_lock_digest"]
+    except (OSError, json.JSONDecodeError, KeyError, TypeError) as exc:
+        raise EvidenceGenerationError(
+            "recorded evidence input digests are unavailable"
+        ) from exc
+    for value in (generator_digest, dependency_digest):
+        if not isinstance(value, str) or not re.fullmatch(
+            r"sha256:[0-9a-f]{64}", value
+        ):
+            raise EvidenceGenerationError("recorded evidence input digest is invalid")
+    return generator_digest, dependency_digest
 
 
 def _json_document(value: object) -> object:
@@ -97,15 +127,18 @@ def render_contracts(
     *,
     source_commit: str | None = None,
     dirty_worktree: bool | None = None,
+    generator_code_digest: str | None = None,
+    dependency_lock_digest: str | None = None,
 ) -> dict[Path, str]:
     detected_commit, detected_dirty = recorded_source_state()
     commit = source_commit or detected_commit
     dirty = detected_dirty if dirty_worktree is None else dirty_worktree
+    recorded_generator, recorded_dependency = recorded_input_digests()
     evidence = build_baseline_evidence(
         source_commit=commit,
         dirty_worktree=dirty,
-        generator_code_digest=_file_digest(FIXTURE_GENERATOR),
-        dependency_lock_digest=_file_digest(DEPENDENCY_LOCK),
+        generator_code_digest=generator_code_digest or recorded_generator,
+        dependency_lock_digest=dependency_lock_digest or recorded_dependency,
         container_profile_digest=None,
     )
     rendered: dict[Path, str] = {}
@@ -113,12 +146,16 @@ def render_contracts(
         if name == "generated":
             assert isinstance(value, dict)
             for artifact_name, document in value.items():
-                rendered[CONTRACT_ROOT / "generated" / artifact_name] = _serialized(document)
+                rendered[CONTRACT_ROOT / "generated" / artifact_name] = _serialized(
+                    document
+                )
         elif name == "candidates":
             assert isinstance(value, dict)
             for candidate_id, manifest in value.items():
                 artifact_name = f"candidate-{candidate_id.lower()}.json"
-                rendered[CONTRACT_ROOT / "candidates" / artifact_name] = _serialized(manifest)
+                rendered[CONTRACT_ROOT / "candidates" / artifact_name] = _serialized(
+                    manifest
+                )
         else:
             rendered[CONTRACT_ROOT / name] = _serialized(value)
     return dict(sorted(rendered.items(), key=lambda item: item[0].as_posix()))
@@ -156,7 +193,10 @@ def _diff(path: Path, expected: str, actual: str) -> list[str]:
         )
     )
     if len(lines) > MAX_DIFF_LINES:
-        return [*lines[:MAX_DIFF_LINES], f"... {len(lines) - MAX_DIFF_LINES} diff lines omitted"]
+        return [
+            *lines[:MAX_DIFF_LINES],
+            f"... {len(lines) - MAX_DIFF_LINES} diff lines omitted",
+        ]
     return lines
 
 
@@ -193,7 +233,9 @@ def check_contracts(*, require_clean_source: bool) -> int:
             failures += 1
 
     expected_paths = set(rendered)
-    tracked_paths = set(CONTRACT_ROOT.rglob("*.json")) if CONTRACT_ROOT.exists() else set()
+    tracked_paths = (
+        set(CONTRACT_ROOT.rglob("*.json")) if CONTRACT_ROOT.exists() else set()
+    )
     unexpected = sorted(tracked_paths - expected_paths)
     for path in unexpected:
         print(f"[fail] unexpected P3.1 JSON artifact: {path.relative_to(ROOT)}")
@@ -218,10 +260,7 @@ def check_contracts(*, require_clean_source: bool) -> int:
                 print(line)
             failures += 1
             continue
-        print(
-            f"[pass] {path.relative_to(ROOT)} "
-            f"sha256={_document_digest(actual)}"
-        )
+        print(f"[pass] {path.relative_to(ROOT)} sha256={_document_digest(actual)}")
 
     print(
         "P3.1 evidence summary: "
@@ -243,6 +282,8 @@ def write_contracts(*, acknowledged: bool) -> int:
         rendered = render_contracts(
             source_commit=source_commit,
             dirty_worktree=dirty,
+            generator_code_digest=_file_digest(FIXTURE_GENERATOR),
+            dependency_lock_digest=_file_digest(DEPENDENCY_LOCK),
         )
     except EvidenceGenerationError as exc:
         print(f"[fail] {exc}")
@@ -259,10 +300,7 @@ def write_contracts(*, acknowledged: bool) -> int:
     for path, document in rendered.items():
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(document, encoding="utf-8", newline="\n")
-        print(
-            f"[write] {path.relative_to(ROOT)} "
-            f"sha256={_document_digest(document)}"
-        )
+        print(f"[write] {path.relative_to(ROOT)} sha256={_document_digest(document)}")
     return 0
 
 
@@ -271,7 +309,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         description="Verify generated-only H-CAM P3.1 contracts and baseline evidence."
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
-    check = subparsers.add_parser("check", help="Fail when tracked P3.1 evidence drifts")
+    check = subparsers.add_parser(
+        "check", help="Fail when tracked P3.1 evidence drifts"
+    )
     check.add_argument(
         "--require-clean-source",
         action="store_true",

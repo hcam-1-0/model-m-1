@@ -1,0 +1,46 @@
+{
+  "accountable_owner_id": "mayank-admin",
+  "canonical_digest_algorithm": "sha256 of UTF-8 lines sorted by path, each formatted path:lowercase_file_sha256 with a final LF",
+  "core_file_count": 5,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-3-planning-authorization.json",
+      "sha256": "c11c218e6e5e667e9ba08e24c51b97337c3dc2adab5004a235de7a3820599683"
+    },
+    {
+      "path": "docs/phase-3/p3-3-decision-packet.md",
+      "sha256": "e1aff0b6a8da13801ad1fdd94bb926f9a488af76500224800111aa17c5dc4aa6"
+    },
+    {
+      "path": "docs/phase-3/p3-3-plan.md",
+      "sha256": "a48567c5247a78c21cc45eb13ee0a3b1ad5c5f3e48ae65fbdec692b558d49897"
+    },
+    {
+      "path": "docs/phase-3/p3-3-planning-authorization.md",
+      "sha256": "339da2c37901dc3283b56b4c16a537c5fa7b9c7ca880b43aa653d5a5e4323725"
+    },
+    {
+      "path": "docs/phase-3/p3-3-research-record.md",
+      "sha256": "ed8d3c74103d4f7dfe0fa2736119c34347036fc196133ef02eb4907473849913"
+    }
+  ],
+  "decision_id": "D-P3.3-PLAN-PACKAGE",
+  "decisions_ready_now": [
+    "D-P3.3-001",
+    "D-P3.3-004"
+  ],
+  "implementation_authorized": false,
+  "manifest_version": "1.0.0",
+  "milestone": "P3.3",
+  "package_digest": "9CDD8D824A02BCE68DBF07E7CD1D53DF861CF68E4F8F6A1C29A7444B16100E76",
+  "pending_future_decisions": [
+    "D-P3.3-002",
+    "D-P3.3-003",
+    "D-P3.3-START",
+    "D-P3.3-ACCEPTANCE"
+  ],
+  "planning_authorized": true,
+  "prepared_on": "2026-08-25",
+  "scope": "phase3.p3_3.planning_only.stream_local_anonymous_tracking",
+  "status": "planning_ready_for_owner_decisions"
+}

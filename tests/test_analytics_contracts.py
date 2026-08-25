@@ -59,7 +59,12 @@ def test_contract_bundle_covers_assignment_and_four_event_types() -> None:
     assert bundle["maximum_event_bytes"] == MAX_EVENT_BYTES
     assert set(bundle["events"]) == set(ANALYTICS_EVENT_MODELS)
     assert set(bundle["geometry"]) == {"definition", "line", "schedule", "zone"}
-    assert set(bundle["runtime"]) == {"adapter", "request", "result"}
+    assert set(bundle["runtime"]) == {
+        "adapter",
+        "request",
+        "request_v2",
+        "result",
+    }
     assert bundle["taxonomy"]["title"] == "TaxonomyManifestV1"
     assert bundle["delivery"] == {
         "deduplication_key": "event_id",
@@ -161,7 +166,9 @@ def test_sensitive_values_are_rejected_without_echoing_them(
     assert sensitive_value not in str(exc_info.value)
 
 
-def test_forward_consumer_ignores_safe_optional_fields_but_strict_producer_rejects() -> None:
+def test_forward_consumer_ignores_safe_optional_fields_but_strict_producer_rejects() -> (
+    None
+):
     document = _fixture("observation-created-v1.json")
     payload = document["payload"]
     assert isinstance(payload, dict)

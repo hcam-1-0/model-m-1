@@ -3,6 +3,12 @@
 Status: implemented, locally validated, and accepted under P3-G4 on
 `codex/phase3-contracts-guardrails`.
 
+This document is the accepted P3.0 baseline. The later authorized P3.2
+generated-only extension adds explicit activation, pause, generated-run, and
+observation-read APIs under migration `0009_generated_analytics`; see
+[P3.2 implementation](p3-2-implementation.md). It does not alter the historical
+P3.0 acceptance or create a camera/media execution path.
+
 ## Purpose
 
 The control plane records which immutable analytics pipeline configuration is

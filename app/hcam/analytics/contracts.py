@@ -328,15 +328,15 @@ class ModelDeploymentPayloadV1(ContractModel):
     @classmethod
     def change_reason_is_not_blank(cls, value: str) -> str:
         if not value.strip() or value.strip() != value:
-            raise ValueError(
-                "change_reason must be non-blank without outer whitespace"
-            )
+            raise ValueError("change_reason must be non-blank without outer whitespace")
         return value
 
     @model_validator(mode="after")
     def deployment_transition_changes_target(self) -> ModelDeploymentPayloadV1:
         if self.previous is None and self.current is None:
-            raise ValueError("deployment transition requires a previous or current target")
+            raise ValueError(
+                "deployment transition requires a previous or current target"
+            )
         if self.previous is not None and self.previous == self.current:
             raise ValueError("deployment transition must change the target")
         return self
@@ -498,9 +498,7 @@ def inspect_contract_safety(value: object, *, path: str = "$") -> None:
                 )
             inspect_contract_safety(item, path=f"{path}.{key}")
         return
-    if isinstance(value, Sequence) and not isinstance(
-        value, (str, bytes, bytearray)
-    ):
+    if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
         for index, item in enumerate(value):
             inspect_contract_safety(item, path=f"{path}[{index}]")
         return
@@ -583,6 +581,7 @@ def analytics_contract_bundle() -> dict[str, Any]:
     from hcam.analytics.runtime import (
         RuntimeAdapterDescriptorV1,
         RuntimeBatchRequestV1,
+        RuntimeBatchRequestV2,
         RuntimeBatchResultV1,
     )
     from hcam.analytics.taxonomy import TaxonomyManifestV1
@@ -606,6 +605,7 @@ def analytics_contract_bundle() -> dict[str, Any]:
         "runtime": {
             "adapter": RuntimeAdapterDescriptorV1.model_json_schema(mode="validation"),
             "request": RuntimeBatchRequestV1.model_json_schema(mode="validation"),
+            "request_v2": RuntimeBatchRequestV2.model_json_schema(mode="validation"),
             "result": RuntimeBatchResultV1.model_json_schema(mode="validation"),
         },
         "taxonomy": TaxonomyManifestV1.model_json_schema(mode="validation"),

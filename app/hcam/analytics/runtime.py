@@ -96,7 +96,9 @@ class RuntimeBatchRequestV1(ContractModel):
     stream_id: StreamId
     camera_id: CameraId
     deadline_at: UtcDateTime
-    inputs: Annotated[list[RuntimeInputDescriptorV1], Field(min_length=1, max_length=16)]
+    inputs: Annotated[
+        list[RuntimeInputDescriptorV1], Field(min_length=1, max_length=16)
+    ]
 
     @model_validator(mode="after")
     def inputs_match_scope_and_deadline(self) -> RuntimeBatchRequestV1:
@@ -108,8 +110,20 @@ class RuntimeBatchRequestV1(ContractModel):
             if item.stream_id != self.stream_id or item.camera_id != self.camera_id:
                 raise ValueError("runtime input scope must match the batch")
             if self.deadline_at <= item.issued_at or self.deadline_at > item.expires_at:
-                raise ValueError("runtime deadline must remain within every input lease")
+                raise ValueError(
+                    "runtime deadline must remain within every input lease"
+                )
         return self
+
+
+class RuntimeBatchRequestV2(RuntimeBatchRequestV1):
+    contract_type: Literal["hcam.analytics.runtime-request.v2"] = (
+        "hcam.analytics.runtime-request.v2"
+    )
+    minimum_confidence: Confidence
+
+
+RuntimeBatchRequest = RuntimeBatchRequestV1 | RuntimeBatchRequestV2
 
 
 class RuntimeObservationCandidateV1(ContractModel):
@@ -150,11 +164,11 @@ class AnalyticsRuntimeAdapter(Protocol):
     @property
     def descriptor(self) -> RuntimeAdapterDescriptorV1: ...
 
-    def infer(self, request: RuntimeBatchRequestV1) -> RuntimeBatchResultV1: ...
+    def infer(self, request: RuntimeBatchRequest) -> RuntimeBatchResultV1: ...
 
 
 def validate_runtime_result(
-    request: RuntimeBatchRequestV1,
+    request: RuntimeBatchRequest,
     result: RuntimeBatchResultV1,
 ) -> RuntimeBatchResultV1:
     if result.request_id != request.request_id:
@@ -165,8 +179,8 @@ def validate_runtime_result(
     return result
 
 
-def _failed_result(
-    request: RuntimeBatchRequestV1,
+def failed_runtime_result(
+    request: RuntimeBatchRequest,
     code: RuntimeFailureCode,
 ) -> RuntimeBatchResultV1:
     return RuntimeBatchResultV1(
@@ -189,8 +203,8 @@ class UnavailableAnalyticsRuntimeAdapter:
     def descriptor(self) -> RuntimeAdapterDescriptorV1:
         return self._descriptor
 
-    def infer(self, request: RuntimeBatchRequestV1) -> RuntimeBatchResultV1:
-        return _failed_result(request, "runtime_unconfigured")
+    def infer(self, request: RuntimeBatchRequest) -> RuntimeBatchResultV1:
+        return failed_runtime_result(request, "runtime_unconfigured")
 
 
 class GuardedAnalyticsRuntimeAdapter:
@@ -203,16 +217,16 @@ class GuardedAnalyticsRuntimeAdapter:
     def descriptor(self) -> RuntimeAdapterDescriptorV1:
         return self._delegate.descriptor
 
-    def infer(self, request: RuntimeBatchRequestV1) -> RuntimeBatchResultV1:
+    def infer(self, request: RuntimeBatchRequest) -> RuntimeBatchResultV1:
         descriptor = self.descriptor
         if not descriptor.configured:
-            return _failed_result(request, "runtime_unconfigured")
+            return failed_runtime_result(request, "runtime_unconfigured")
         if request.capability not in descriptor.supported_capabilities:
-            return _failed_result(request, "unsupported_capability")
+            return failed_runtime_result(request, "unsupported_capability")
         if len(request.inputs) > descriptor.maximum_batch_size:
-            return _failed_result(request, "resource_exhausted")
+            return failed_runtime_result(request, "resource_exhausted")
         try:
             result = self._delegate.infer(request)
             return validate_runtime_result(request, result)
         except Exception:
-            return _failed_result(request, "runtime_internal")
+            return failed_runtime_result(request, "runtime_internal")

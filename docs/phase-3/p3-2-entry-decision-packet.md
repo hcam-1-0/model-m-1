@@ -1,28 +1,30 @@
 # P3.2 Entry Decision Packet
 
-Status: `blocked_pending_owner_decisions`
+Status: `implementation_authorized_generated_only`
 
 Prepared: 2026-08-24
 
 Accountable owner: `mayank-admin`
 
-Scope: pre-entry planning only. This packet is not P3.2 authorization.
+Scope: completed entry-decision audit and exact start-authorization boundary.
 
 ## Current Position
 
-P3.0 and P3.1 are accepted. The generated-only P3.1 package proves contract,
-fixture, QA, split, metric, candidate-metadata, and reproducibility foundations.
-It does not provide an executable detector, an authorized evaluation dataset,
-an inference runtime, media access, or P3.2 approval.
+P3.0 and P3.1 are accepted. `D-P3.2-001` through `D-P3.2-004` now have
+evidence-bound owner outcomes, and `D-P3.2-START` authorizes only the named
+generated-input, local/CI, CPU reference implementation. This
+does not complete P3.2, promote a deployment model, establish accuracy, or
+authorize media access.
 
-The planned P3.2 reference remains `DET-R0` YOLOX-Tiny at 416 input through an
-ONNX Runtime CPU adapter. That is a portfolio choice only. Its candidate record
-is `blocked` because the exact checkpoint, weight license, training lineage,
-model card, SBOM, artifact digest, and export contract are unresolved.
+The exact reference is `DET-R0-ONNX-UPSTREAM-0.1.1RC0`, YOLOX-Tiny at 416
+input through ONNX Runtime 1.29.0 `CPUExecutionProvider`, with SHA-256
+`427CC366D34E27FF7A03E2899B5E3671425C262EA2291F88BB942BC1CC70B0F7`.
+The accepted P3.1 candidate metadata remains immutable and blocked as a
+historical record; the later, exact restricted approval is separate.
 
 ## Entry Invariants
 
-P3.2 must remain blocked unless every invariant below is true:
+The P3.2 start remains valid only while every invariant below is true:
 
 - the owner approves the exact P3.2 scope and non-authorization boundaries;
 - one exact detector artifact is identified by immutable version and SHA-256;
@@ -37,16 +39,18 @@ P3.2 must remain blocked unless every invariant below is true:
 - an explicit `D-P3.2-START` record authorizes implementation after the earlier
   decisions are complete.
 
-No decision may approve an unresolved placeholder, repository name, model
-family, mutable URL, latest release, or unverified weight file.
+No decision approves an unresolved placeholder, repository name, model family,
+mutable URL, latest release, or unverified weight file.
 
-## Decisions Required
+## Entry Decisions
 
 ### D-P3.2-001: Planning And Research Boundary
 
-Owner must choose whether to authorize a bounded pre-implementation evidence
-pass. The recommended scope is metadata and official-document research only,
-with no artifact or dataset download, inference, media, camera, or deployment.
+The owner authorized broader research, clarified as controlled model/dataset
+downloads and offline experiments. The exact scope and controls are recorded in
+[`p3-2-research-authorization.json`](../../contracts/phase-3/p3-2-research-authorization.json)
+and summarized in the
+[`P3.2 controlled research record`](p3-2-research-record.md).
 
 Required record:
 
@@ -57,12 +61,14 @@ Required record:
 - expiry or review date; and
 - statement that research completion is not implementation authorization.
 
-Current state: `pending`.
+Current state: `owner_authorized` for controlled research. Its original
+research-only effect remains intact; the later start record supersedes it only
+for the exact generated-only implementation work packages.
 
 ### D-P3.2-002: Exact Detector Artifact
 
-The planned first candidate is `DET-R0`, but no exact artifact is eligible.
-Approval requires all of the following for one immutable artifact:
+The planned first candidate is `DET-R0`. Its exact restricted approval records
+the following for one immutable artifact:
 
 - candidate ID and intended role;
 - source repository and immutable source revision;
@@ -76,7 +82,12 @@ Approval requires all of the following for one immutable artifact:
 - quarantine and rollback procedure; and
 - an owner decision that names the exact artifact digest.
 
-Current state: `blocked`; five unresolved blockers are recorded for `DET-R0`.
+Current state: `owner_approved_restricted`. The model approval, model card, SPDX
+inventory, exact source revision, official source hashes, artifact digest, and
+accepted limitations are recorded in
+[`p3-2-model-approval.json`](../../contracts/phase-3/p3-2-model-approval.json).
+Local generated-only use is approved; redistribution remains prohibited and
+publisher-reported COCO lineage is not an H-CAM accuracy result.
 
 ### D-P3.2-003: Evaluation Dataset And Generated Fixtures
 
@@ -97,13 +108,15 @@ Options, in order of current risk:
 Sentinel, Government, police, scraped, and private third-party data remains
 prohibited.
 
-Current state: generated fixtures exist; no detector evaluation dataset is
-approved.
+Current state: `owner_approved_generated_only` for `DATA-GEN-R0`, recorded in
+[`p3-2-dataset-approval.json`](../../contracts/phase-3/p3-2-dataset-approval.json).
+No public or real-media evaluation dataset is approved, and no accuracy,
+fairness, representativeness, or readiness claim is available.
 
 ### D-P3.2-004: CPU Reference And Export Contract
 
-The proposed reference is ONNX Runtime CPU with no silent execution-provider
-fallback. Approval requires:
+The approved reference is ONNX Runtime CPU with no silent execution-provider
+fallback. Its contract records:
 
 - exact Python/runtime/package versions and lock evidence;
 - declared input shape, color order, normalization, resize, and padding;
@@ -114,7 +127,10 @@ fallback. Approval requires:
 - clean-machine smoke procedure; and
 - fail-closed behavior when the artifact or runtime is absent.
 
-Current state: planned, not approved or implemented.
+Current state: `owner_approved_cpu_reference`, recorded in
+[`p3-2-runtime-approval.json`](../../contracts/phase-3/p3-2-runtime-approval.json).
+The exact versions, BGR/NCHW preprocessing, upstream-source parity hashes,
+decoder, class mapping, fallback policy, and fail-closed limits are fixed.
 
 ### D-P3.2-START: Explicit Implementation Start
 
@@ -123,11 +139,15 @@ This is the final entry decision. It may be recorded only after
 the authorized work packages, exact artifact and dataset records, runtime,
 hardware profile, expiry, non-authorizations, and exit gates.
 
-Current state: `not_authorized`.
+Current state: `owner_authorized`. The exact generated-only authorization is in
+[`p3-2-start-authorization.json`](../../contracts/phase-3/p3-2-start-authorization.json)
+and summarized by the
+[`P3.2 start authorization`](p3-2-start-authorization.md). It expires on
+2026-09-24 and does not complete P3.2.
 
 ## Machine Verification
 
-The exact blocked state is recorded in
+The exact evidence-bound start state is recorded in
 [`p3-2-entry-gates.json`](../../contracts/phase-3/p3-2-entry-gates.json).
 Validate it without changing state:
 
@@ -136,23 +156,20 @@ uv run --locked --extra dev python tools/phase32_entry_readiness.py
 uv run --locked --extra dev python tools/phase32_entry_readiness.py --json
 ```
 
-A valid default run exits `0` while reporting
-`blocked_pending_owner_decisions`, zero technical failures, and five manual
-gates. `--strict` intentionally fails while any owner gate remains pending
-(the verifier returns `2`, although a command runner may expose a generic
-nonzero status). CI uses the default command to prove the block is intact; CI
-does not treat pending owner decisions as authorization or implementation
-readiness.
+A valid default or `--strict` run exits `0` while reporting
+`implementation_authorized_generated_only`, zero failures, and zero manual
+entry gates. CI proves the exact owner records, digests, expiry,
+model/data/runtime scope, and continuing prohibitions. It does not prove P3.2
+implementation or exit acceptance.
 
-## Recommended Sequence
+## Completed Entry Sequence
 
-1. Approve only `D-P3.2-001` for bounded official-source metadata research.
-2. Resolve `DET-R0` evidence without downloading or executing an artifact.
-3. Present the exact artifact record for `D-P3.2-002`; do not use a generic
-   YOLOX or YOLOX-Tiny approval.
-4. Present the exact source-governance record for `D-P3.2-003`.
-5. Freeze the CPU/export contract under `D-P3.2-004`.
-6. Re-audit every entry invariant and then request `D-P3.2-START`.
+1. `D-P3.2-001` authorized manifested quarantine and offline research.
+2. The exact artifact and immutable upstream evidence were acquired and hashed.
+3. `D-P3.2-002` approved only that artifact for restricted local use.
+4. `D-P3.2-003` approved deterministic generated inputs only.
+5. `D-P3.2-004` fixed the CPU reference and export/parity contract.
+6. `D-P3.2-START` authorized the named generated-only implementation packages.
 
 ## Evidence That Does Not Satisfy Entry
 
@@ -169,8 +186,11 @@ The following are discovery evidence only:
 
 ## Continuing Non-Authorization
 
-This packet does not authorize P3.2, downloads, model or dataset acquisition,
-training, fine-tuning, export, inference, decoding, GPU use, cameras, Sentinel,
-media, Government/private data, identity, watchlists, owner lookup, alerts,
-pilots, deployment, or production claims. All candidate manifests remain
-blocked and all numeric thresholds remain `proposal_only`.
+No physical camera, ONVIF media, Sentinel stream, public dataset, or real,
+team-owned, private, Government, police, or scraped media is authorized. The
+records do not authorize uncontrolled downloads, training, fine-tuning, model
+modification, GPU or networked inference, identity, watchlists, owner lookup,
+sensitive-trait or criminality inference, operational alerts, autonomous action,
+pilots, deployment, production claims, model redistribution, or remote Git
+actions. Numeric accuracy thresholds remain `proposal_only`, and P3.2 exit
+still requires separate digest-bound owner acceptance.

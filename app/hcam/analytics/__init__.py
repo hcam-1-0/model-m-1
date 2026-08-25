@@ -26,8 +26,10 @@ from hcam.analytics.runtime import (
     GuardedAnalyticsRuntimeAdapter,
     RuntimeAdapterDescriptorV1,
     RuntimeBatchRequestV1,
+    RuntimeBatchRequestV2,
     RuntimeBatchResultV1,
     UnavailableAnalyticsRuntimeAdapter,
+    failed_runtime_result,
     validate_runtime_result,
 )
 from hcam.analytics.taxonomy import TaxonomyClassV1, TaxonomyManifestV1
@@ -48,6 +50,7 @@ __all__ = [
     "NormalizedPoint",
     "RuntimeAdapterDescriptorV1",
     "RuntimeBatchRequestV1",
+    "RuntimeBatchRequestV2",
     "RuntimeBatchResultV1",
     "TaxonomyClassV1",
     "TaxonomyManifestV1",
@@ -56,6 +59,7 @@ __all__ = [
     "ZoneGeometryV1",
     "analytics_contract_bundle",
     "canonical_contract_json",
+    "failed_runtime_result",
     "parse_analytics_assignment",
     "parse_analytics_event",
     "validate_runtime_result",

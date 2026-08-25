@@ -12,7 +12,7 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 from sqlalchemy.types import TypeDecorator
 
 
-CURRENT_SCHEMA_REVISION = "0008_analytics_assignments"
+CURRENT_SCHEMA_REVISION = "0009_generated_analytics"
 REQUIRED_CAMERA_COLUMNS = frozenset(
     {
         "camera_id",
@@ -73,6 +73,7 @@ REQUIRED_ANALYTICS_ASSIGNMENT_COLUMNS = frozenset(
         "desired_state",
         "lifecycle_state",
         "reason_code",
+        "execution_scope",
         "configuration_digest",
         "approval_record_id",
         "created_at",
@@ -113,7 +114,10 @@ class UTCDateTime(TypeDecorator[datetime]):
 
 
 def ensure_sqlite_parent(database_url: str) -> None:
-    if not database_url.startswith("sqlite:///") or database_url == "sqlite:///:memory:":
+    if (
+        not database_url.startswith("sqlite:///")
+        or database_url == "sqlite:///:memory:"
+    ):
         return
 
     path_text = database_url.removeprefix("sqlite:///")
@@ -132,6 +136,7 @@ def build_engine(database_url: str) -> Engine:
     engine = create_engine(database_url, connect_args=connect_args, pool_pre_ping=True)
 
     if _is_sqlite(database_url):
+
         @event.listens_for(engine, "connect")
         def enable_foreign_keys(dbapi_connection, _connection_record) -> None:
             cursor = dbapi_connection.cursor()
@@ -202,6 +207,8 @@ class Database:
             "onvif_operation_runs",
             "analytics_assignments",
             "analytics_assignment_revisions",
+            "analytics_generated_runs",
+            "analytics_observations",
         }
         missing_tables = required_tables - table_names
         missing_columns = REQUIRED_CAMERA_COLUMNS - camera_columns

@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from sqlalchemy import Select, func, select
 from sqlalchemy.orm import Session
 
+from hcam.analytics.activation import assess_generated_activation
 from hcam.analytics.contracts import (
     AnalyticsAssignmentV1,
     VersionedArtifact,
@@ -19,13 +20,6 @@ from hcam.analytics.schemas import (
 )
 from hcam.camera_registry.models import Camera
 from hcam.streams.models import StreamEndpoint
-
-
-BLOCKING_REASONS = [
-    "runtime_unconfigured",
-    "taxonomy_unapproved",
-    "retention_policy_unapproved",
-]
 
 
 @dataclass(frozen=True, slots=True)
@@ -72,14 +66,21 @@ def assignment_to_contract(assignment: AnalyticsAssignment) -> AnalyticsAssignme
 
 def assignment_to_response(
     assignment: AnalyticsAssignment,
+    *,
+    runtime_configured: bool = False,
 ) -> AnalyticsAssignmentResponse:
     contract = assignment_to_contract(assignment)
+    assessment = assess_generated_activation(
+        assignment,
+        runtime_configured=runtime_configured,
+    )
     return AnalyticsAssignmentResponse(
         **contract.model_dump(),
-        lifecycle_state="blocked",
-        reason_code="owner_gates_pending",
-        activation_eligible=False,
-        blocking_reasons=BLOCKING_REASONS,
+        execution_scope=assignment.execution_scope,
+        lifecycle_state=assignment.lifecycle_state,
+        reason_code=assignment.reason_code,
+        activation_eligible=assessment.eligible,
+        blocking_reasons=list(assessment.blocking_reasons),
         created_at=assignment.created_at,
     )
 
@@ -127,6 +128,7 @@ class AnalyticsAssignmentRepository:
         filters: AnalyticsAssignmentFilters,
         limit: int,
         offset: int,
+        runtime_configured: bool = False,
     ) -> AnalyticsAssignmentListResponse:
         query = self._authorized_query(filters.allowed_departments)
         for field, value in (
@@ -150,7 +152,10 @@ class AnalyticsAssignmentRepository:
             .offset(offset)
         ).all()
         return AnalyticsAssignmentListResponse(
-            items=[assignment_to_response(row) for row in rows],
+            items=[
+                assignment_to_response(row, runtime_configured=runtime_configured)
+                for row in rows
+            ],
             total=total,
             limit=limit,
             offset=offset,

@@ -35,6 +35,7 @@ from hcam.analytics.geometry import (
 from hcam.analytics.runtime import (
     RuntimeAdapterDescriptorV1,
     RuntimeBatchRequestV1,
+    RuntimeBatchRequestV2,
     RuntimeInputDescriptorV1,
     UnavailableAnalyticsRuntimeAdapter,
 )
@@ -115,9 +116,7 @@ def golden_contract_fixtures() -> dict[str, BaseModel]:
             ),
             lineage=LINEAGE,
             model=MODEL,
-            **{
-                "class": ObjectClassification(id="vehicle.car", confidence=0.91)
-            },
+            **{"class": ObjectClassification(id="vehicle.car", confidence=0.91)},
             bbox=NormalizedBoundingBox(x=0.22, y=0.35, width=0.18, height=0.24),
             quality=ObservationQuality(
                 blur_score=0.08,
@@ -332,6 +331,10 @@ def golden_contract_fixtures() -> dict[str, BaseModel]:
     runtime_result = UnavailableAnalyticsRuntimeAdapter(runtime_adapter).infer(
         runtime_request
     )
+    runtime_request_v2 = RuntimeBatchRequestV2(
+        **runtime_request.model_dump(exclude={"contract_type"}),
+        minimum_confidence=0.5,
+    )
     return {
         "assignment-v1.json": assignment,
         "observation-created-v1.json": observation,
@@ -343,5 +346,6 @@ def golden_contract_fixtures() -> dict[str, BaseModel]:
         "geometry-zone-draft-v1.json": zone_geometry,
         "runtime-adapter-unconfigured-v1.json": runtime_adapter,
         "runtime-request-v1.json": runtime_request,
+        "runtime-request-v2.json": runtime_request_v2,
         "runtime-result-unconfigured-v1.json": runtime_result,
     }

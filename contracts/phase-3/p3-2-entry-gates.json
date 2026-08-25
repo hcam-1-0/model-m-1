@@ -1,41 +1,46 @@
 {
   "accountable_owner_id": "mayank-admin",
-  "contract_format": "hcam.phase3.p3_2.entry-gates.v1",
+  "contract_format": "hcam.phase3.p3_2.entry-gates.v2",
   "decisions": [
     {
-      "authorization_effect": "none_until_owner_approval",
+      "authorization_effect": "controlled_public_artifact_research_and_offline_experiments_only",
       "decision_id": "D-P3.2-001",
-      "status": "pending",
-      "subject": "bounded_official_source_metadata_research"
+      "record": "contracts/phase-3/p3-2-research-authorization.json",
+      "status": "owner_authorized",
+      "subject": "controlled_public_artifact_research_and_offline_experiments"
     },
     {
-      "authorization_effect": "none_until_exact_artifact_approval",
+      "authorization_effect": "exact_artifact_approved_for_local_generated_only_p3_2_implementation",
       "decision_id": "D-P3.2-002",
-      "status": "blocked_pending_evidence",
+      "record": "contracts/phase-3/p3-2-model-approval.json",
+      "status": "owner_approved_restricted",
       "subject": "exact_detector_artifact"
     },
     {
-      "authorization_effect": "none_until_exact_source_approval",
+      "authorization_effect": "generated_only_inputs_approved_for_p3_2_implementation_and_tests",
       "decision_id": "D-P3.2-003",
-      "status": "blocked_pending_evidence",
+      "record": "contracts/phase-3/p3-2-dataset-approval.json",
+      "status": "owner_approved_generated_only",
       "subject": "evaluation_dataset_and_generated_fixtures"
     },
     {
-      "authorization_effect": "none_until_owner_approval",
+      "authorization_effect": "cpu_reference_contract_approved_for_generated_only_p3_2_implementation",
       "decision_id": "D-P3.2-004",
-      "status": "planned_not_approved",
+      "record": "contracts/phase-3/p3-2-runtime-approval.json",
+      "status": "owner_approved_cpu_reference",
       "subject": "cpu_reference_and_export_contract"
     },
     {
-      "authorization_effect": "none",
+      "authorization_effect": "p3_2_generated_only_implementation_may_begin",
       "decision_id": "D-P3.2-START",
+      "record": "contracts/phase-3/p3-2-start-authorization.json",
       "requires": [
         "D-P3.2-001",
         "D-P3.2-002",
         "D-P3.2-003",
         "D-P3.2-004"
       ],
-      "status": "not_authorized",
+      "status": "owner_authorized",
       "subject": "explicit_implementation_start"
     }
   ],
@@ -51,29 +56,39 @@
     }
   },
   "non_authorization": [
-    "p3_2_implementation",
-    "model_or_dataset_acquisition",
-    "training_finetuning_export_or_inference",
-    "decoder_or_gpu_execution",
-    "camera_sentinel_or_media_access",
-    "government_private_scraped_or_unreviewed_data",
-    "identity_watchlist_or_owner_lookup",
+    "p3_2_work_outside_authorized_start_scope",
+    "uncontrolled_or_unmanifested_artifact_acquisition",
+    "training_finetuning_or_model_modification",
+    "decoder_or_gpu_execution_outside_approved_cpu_reference",
+    "networked_inference_or_inference_outside_generated_only_scope",
+    "physical_camera_onvif_media_or_sentinel_stream_access",
+    "real_team_owned_public_private_government_police_or_scraped_media",
+    "public_dataset_download_or_accuracy_evaluation",
+    "face_biometric_identity_reidentification_watchlist_or_vehicle_owner_lookup",
+    "sensitive_trait_intent_criminality_or_predictive_risk_inference",
     "operational_alerting_or_autonomous_action",
     "pilot_production_or_statewide_deployment",
+    "model_or_artifact_redistribution",
     "remote_git_push_pull_request_or_merge"
   ],
   "planned_reference": {
-    "artifact_downloads": 0,
-    "artifact_eligibility": "blocked",
-    "artifact_execution": false,
+    "artifact_eligibility": "approved_restricted",
+    "artifact_execution": "offline_research_only_completed",
     "candidate_id": "DET-R0",
+    "dataset_candidate_id": "DATA-GEN-R0",
     "family": "YOLOX-Tiny",
     "input_size": 416,
+    "model_artifact_downloads": 1,
     "runtime": "onnxruntime_cpu",
-    "runtime_status": "planned_not_approved"
+    "runtime_status": "owner_approved_cpu_reference",
+    "source_evidence_downloads": 4
   },
   "prepared_on": "2026-08-24",
   "record_id": "P3.2-ENTRY-2026-08-24",
-  "start_authorization": "not_authorized",
-  "status": "blocked_pending_owner_decisions"
+  "start_authorization": {
+    "expires_on": "2026-09-24",
+    "record": "contracts/phase-3/p3-2-start-authorization.json",
+    "status": "authorized_generated_only"
+  },
+  "status": "implementation_authorized_generated_only"
 }
