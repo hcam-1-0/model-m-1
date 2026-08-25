@@ -1,0 +1,39 @@
+{
+  "contract_format": "hcam.phase3.p3_4.entry_gates.v1",
+  "decisions": [
+    {
+      "decision_id": "D-P3.4-001",
+      "recommended_option": "shapely_2_1_2_with_exact_geos_and_license_binding",
+      "status": "pending_owner_decision",
+      "topic": "geometry_engine_and_precision_model"
+    },
+    {
+      "decision_id": "D-P3.4-002",
+      "recommended_option": "versioned_anchor_hysteresis_and_typed_event_state_machines",
+      "status": "pending_owner_decision",
+      "topic": "spatial_and_event_semantics"
+    },
+    {
+      "decision_id": "D-P3.4-003",
+      "recommended_option": "event_time_sequence_ordering_bounded_lateness_and_deterministic_replay",
+      "status": "pending_owner_decision",
+      "topic": "time_schedule_replay_and_deduplication"
+    },
+    {
+      "decision_id": "D-P3.4-004",
+      "recommended_option": "bounded_state_transactional_outbox_inherited_retention_and_c10_evidence",
+      "status": "pending_owner_decision",
+      "topic": "persistence_resources_retention_and_validation"
+    },
+    {
+      "decision_id": "D-P3.4-START",
+      "recommended_option": "authorize_generated_only_implementation_after_gates_001_through_004",
+      "status": "pending_owner_decision",
+      "topic": "implementation_authorization"
+    }
+  ],
+  "implementation_authorized": false,
+  "manual_gate_count": 5,
+  "scope": "phase3.p3_4.geometry_and_event_primitives.generated_only_entry",
+  "status": "pending_owner_decisions"
+}

@@ -10,16 +10,18 @@ deterministic fixtures, prohibited-data guardrails, and a durable assignment
 control plane with RBAC, ETags, revisions, audit, and transactional outbox.
 P3.2 adds an accepted, default-off generated-input detector reference. P3.3 adds
 an accepted, generated-only anonymous stream-local tracker under
-`D-P3.3-ACCEPTANCE`. Neither milestone adds a real CCTV media path.
+`D-P3.3-ACCEPTANCE`. P3.4 planning is authorized under
+`D-P3.4-PLAN-AUTH`; its implementation is not authorized. None of these
+milestones adds a real CCTV media path.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
 with zero failures. Clean-source regeneration is complete, and `mayank-admin`
-accepted the exact evidence package under `D-P3.1-ACCEPTANCE`. External
-P3.2 is accepted under `D-P3.2-ACCEPTANCE`, and P3.3 is accepted under
+accepted the exact evidence package under `D-P3.1-ACCEPTANCE`. P3.2 is accepted
+under `D-P3.2-ACCEPTANCE`, and P3.3 is accepted under
 `D-P3.3-ACCEPTANCE`. Cameras, real media, external datasets, identity,
-cross-camera linkage, operational alerts, P3.4, and deployment remain
-unauthorized.
+cross-camera linkage, operational alerts, P3.4 implementation, and deployment
+remain unauthorized.
 
 Start here: [docs/phase-3/README.md](docs/phase-3/README.md)
 
@@ -41,11 +43,16 @@ uv run --locked --extra dev --extra analytics python tools/phase32_implementatio
 uv run --locked --extra dev --extra analytics python tools/phase33_tracking_evidence.py check
 uv run --locked --extra dev --extra analytics python tools/phase33_sbom.py check
 uv run --locked --extra dev --extra analytics python tools/phase33_implementation_readiness.py --require-clean-source --require-acceptance --json
+uv run --locked --extra dev python tools/phase34_readiness.py --strict --json
 ```
 
 The P3.3 readiness command should report `accepted` with zero technical
 failures and zero manual gates while the exact historical package acceptance
 record remains valid.
+
+The P3.4 planning command should report `ready_for_owner_decisions`, zero
+technical failures, and five manual owner gates. That result does not authorize
+implementation.
 
 ## Phase 2 camera and video ingestion
 

@@ -45,6 +45,10 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   package, audit, and prohibited-input results.
 - `p3-3-acceptance.json`: exact-digest owner acceptance of the immutable
   generated-only P3.3 package and its continuing non-authorization boundary.
+- `p3-4-planning-authorization.json`: exact planning-only authorization,
+  accepted P3.3 baseline, deliverables, and prohibited actions.
+- `p3-4-entry-gates.json`: pending geometry engine, semantics, event-time,
+  persistence/evidence, and separate implementation-start decisions.
 
 Verify all tracked snapshots:
 
@@ -59,6 +63,7 @@ uv run --locked --extra dev --extra analytics python tools/phase32_implementatio
 uv run --locked --extra dev --extra analytics python tools/phase33_tracking_evidence.py check
 uv run --locked --extra dev --extra analytics python tools/phase33_sbom.py check
 uv run --locked --extra dev --extra analytics python tools/phase33_implementation_readiness.py --require-clean-source --require-acceptance
+uv run --locked --extra dev python tools/phase34_readiness.py --strict
 ```
 
 Rewriting snapshots requires an explicit review acknowledgement:
@@ -69,8 +74,9 @@ uv run --locked --extra dev python tools/release_contracts.py write --acknowledg
 uv run --locked --extra dev python tools/phase31_contracts.py write --acknowledge-generated-only-evidence
 ```
 
-Taxonomy and geometry fixtures remain `draft`. The accepted P3.2 and authorized
-P3.3 runtime slices are generated-only, default-off, and production-forbidden.
+Taxonomy and geometry fixtures remain `draft`. The accepted P3.2 and P3.3
+runtime slices are generated-only, default-off, and production-forbidden.
+P3.4 is planning-only and has no installed geometry engine or evaluator.
 These contracts do not authorize camera access, raw-media persistence, external
 datasets, identity, cross-camera association, Government matching, alerts,
-deployment, or P3.4.
+deployment, or P3.4 implementation.

@@ -111,6 +111,10 @@ jobs:
           python tools/phase33_sbom.py check
           python tools/phase33_implementation_readiness.py --require-clean-source --require-acceptance
 
+      - name: Verify Phase 3 P3.4 planning boundary
+        if: matrix.python-version == '3.12'
+        run: python tools/phase34_readiness.py --strict
+
       - name: Preserve Phase 0 unittest check
         if: matrix.python-version == '3.12'
         run: python -m unittest discover -s tests -v

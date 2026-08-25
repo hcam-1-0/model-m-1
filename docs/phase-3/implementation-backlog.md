@@ -155,7 +155,7 @@ Implementation status: `accepted` under `D-P3.3-ACCEPTANCE`. The generated-only
 stream-local tracker, lifecycle v2,
 persistence, APIs, retention, observability, evaluation, and fail-closed
 resource controls are implemented and accepted against the immutable package
-digest. P3.4 is not authorized.
+digest. P3.4 planning is separately authorized, but its implementation is not.
 
 Deliverables:
 
@@ -172,12 +172,24 @@ occlusion/reconnect tests, and approved tracking metrics.
 
 Dependencies: P3.3 tracks and approved geometry contracts.
 
+Planning status: authorized under `D-P3.4-PLAN-AUTH`; primary-source research,
+technical planning, and the owner decision packet are complete. Implementation
+is not authorized. Pending gates are `D-P3.4-001` geometry engine and precision,
+`D-P3.4-002` spatial/event semantics, `D-P3.4-003` event time and idempotency,
+`D-P3.4-004` persistence/resources/retention/validation, and the separate
+`D-P3.4-START` generated-only implementation authorization.
+
 Deliverables:
 
 - versioned normalized lines, polygons, schedules, and direction semantics;
 - line crossing, zone entry/exit, occupancy, and dwell-time evaluator;
 - analytic-event outbox and deduplication;
 - geometry validation and configuration audit.
+
+Planned safety boundary: normalized image-space and anonymous stream-local
+metadata only; default-off and production-forbidden. No media, external data,
+identity, cross-camera linkage, Government matching, operational alerting,
+deployment, or P3.5 work is authorized.
 
 Exit evidence: boundary/jitter/property tests, deterministic replay, scenario
 precision/recall report, duplicate/late-event tests, and C10 load evidence.
