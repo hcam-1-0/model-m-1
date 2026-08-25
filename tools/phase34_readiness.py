@@ -484,6 +484,8 @@ def check_documentation_sync() -> Check:
         "docs/phase-3/README.md": (
             "[P3.4 plan](p3-4-plan.md)",
             "[P3.4 owner decisions](p3-4-owner-decisions.md)",
+            "Implementation and technical evidence are",
+            "exact-digest final acceptance remains pending",
         ),
         "docs/phase-3/implementation-backlog.md": (
             "D-P3.4-PLAN-AUTH",
@@ -510,7 +512,7 @@ def check_documentation_sync() -> Check:
         return Check(
             "documentation_sync",
             FAIL,
-            "P3.4 planning links or CI verification are missing.",
+            "P3.4 status, planning links, or CI verification are out of sync.",
             tuple(missing),
         )
     return Check(

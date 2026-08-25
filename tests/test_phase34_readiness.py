@@ -244,3 +244,22 @@ def test_documentation_sync_rejects_missing_ci_command(monkeypatch) -> None:
 
     assert result.status == readiness.FAIL
     assert ".github/workflows/python-ci.yml" in result.evidence
+
+
+def test_documentation_sync_rejects_stale_implementation_status(monkeypatch) -> None:
+    original = readiness._read
+
+    def changed(relative_path: str) -> str:
+        value = original(relative_path)
+        if relative_path == "docs/phase-3/README.md":
+            return value.replace(
+                "Implementation and technical evidence are",
+                "Implementation evidence remains pending and is",
+            )
+        return value
+
+    monkeypatch.setattr(readiness, "_read", changed)
+    result = readiness.check_documentation_sync()
+
+    assert result.status == readiness.FAIL
+    assert "docs/phase-3/README.md" in result.evidence

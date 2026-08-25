@@ -93,13 +93,16 @@ partial event claim is promoted.
 SQLite and the pinned Alpine PostGIS image both passed `0011 -> 0010 -> 0011`.
 The disposable PostGIS run verified PostgreSQL 18.6, PostGIS 3.6.4, GEOS
 3.14.1, PROJ 9.8.1, the GiST index, validity constraint, and canonical WKB
-binding.
+binding. Alembic drift checks pass after both upgrades, ignore only
+extension-owned tables, and still report an intentionally unmanaged table.
 
-A fresh Compose start initially exposed an initialization race: `pg_isready`
-could succeed against the PostGIS entrypoint's temporary bootstrap server. The
-healthcheck now has a startup grace period and requires a successful
-`postgis_lib_version()` query. A new empty volume then migrated and reached API
-health/readiness successfully.
+A fresh Compose start exposed two silent-success paths. The PostGIS entrypoint's
+temporary Unix-socket server could satisfy the original healthcheck, and the
+extension-ownership query could trigger SQLAlchemy autobegin before Alembic's
+managed transaction. The healthcheck now requires TCP loopback plus a
+successful `postgis_lib_version()` query, and extension inspection runs inside
+Alembic's transaction. A second new empty volume then retained revision
+`0011_geometry_events` and reached API health/readiness successfully.
 
 ## Continuing Boundaries
 

@@ -251,18 +251,20 @@ camera locators, biometric templates, Government data, and owner records.
 
 ## P3.4 Implementation Validation
 
-The generated-only geometry/event package passed 707 tests and 119 subtests
-with seven PostgreSQL tests skipped in the general local suite, one pre-existing
+The generated-only geometry/event package passed 711 tests and 119 subtests
+with eight PostgreSQL tests skipped in the general local suite, one pre-existing
 Starlette warning, and 90.22% total branch coverage. Focused evaluator branch
 coverage is 94.32%. Five sealed C10 groups have exact logic agreement and 20
 stable replays per scenario.
 
-SQLite and pinned PostGIS validation both passed `0011 -> 0010 -> 0011`. The
-PostGIS behavior test passed on PostgreSQL 18.6, PostGIS 3.6.4, GEOS 3.14.1,
-and PROJ 9.8.1. A fresh loopback Compose stack validated database initialization,
-migration, non-root API health/readiness, metrics, and all P3.4 route families.
-Its database healthcheck was hardened after the first empty-volume run exposed
-the PostGIS bootstrap-server readiness race.
+SQLite and pinned PostGIS validation both passed `0011 -> 0010 -> 0011`, with
+drift checks after both PostGIS upgrades. All eight PostgreSQL/PostGIS tests
+passed on PostgreSQL 18.6, PostGIS 3.6.4, GEOS 3.14.1, and PROJ 9.8.1. A fresh
+loopback Compose stack validated database initialization, migration, non-root
+API health/readiness, protected metrics, and all P3.4 route families. Its
+database healthcheck now requires the permanent TCP server, and extension
+inspection runs inside Alembic's managed transaction; this closes both
+empty-volume silent-success paths reproduced during recovery.
 
 The source distribution and wheel build. A hash-locked isolated Python 3.14.6
 install starts the application and CLI with Shapely 2.1.2, local GEOS 3.13.1,

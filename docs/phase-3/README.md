@@ -8,9 +8,9 @@ P3.2 is accepted under `D-P3.2-ACCEPTANCE`. P3.3 generated-only, anonymous,
 stream-local tracking is accepted under `D-P3.3-ACCEPTANCE`. P3.4 planning is
 authorized under `D-P3.4-PLAN-AUTH`; technical decisions `D-P3.4-001` through
 `D-P3.4-004` are accepted, and bounded generated-only local implementation is
-authorized under `D-P3.4-START`. Implementation evidence and final acceptance
-remain pending. All broader media, identity, correlation, alerting, and
-deployment work remains unauthorized.
+authorized under `D-P3.4-START`. Implementation and technical evidence are
+complete; exact-digest final acceptance remains pending. All broader media,
+identity, correlation, alerting, and deployment work remains unauthorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -66,6 +66,7 @@ autonomous enforcement.
 | [P3.4 implementation](p3-4-implementation.md) | Hybrid geometry, constrained rules, deterministic events, persistence, APIs, and boundaries |
 | [P3.4 third-party notices](p3-4-third-party-notices.md) | Exact direct dependencies, licenses, native runtimes, and vulnerability boundary |
 | [P3.4 implementation readiness](p3-4-implementation-readiness-report.md) | Tests, coverage, migrations, packaging, Docker evidence, deployment block, and owner gate |
+| [P3.4 backlog recovery](p3-4-backlog-recovery.md) | Interrupted-work handoff, reproduced defects, repair scope, validation, and remaining backlog |
 
 ## Non-Negotiable Boundary
 

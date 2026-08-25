@@ -10,8 +10,17 @@ class PostGISImageGeometry(UserDefinedType[bytes]):
 
     cache_ok = True
 
+    def __init__(
+        self,
+        geometry_type: str = "Geometry",
+        srid: int | str = 0,
+        **_kw: object,
+    ) -> None:
+        self.geometry_type = geometry_type
+        self.srid = int(srid)
+
     def get_col_spec(self, **_kw: object) -> str:
-        return "geometry(Geometry,0)"
+        return f"geometry({self.geometry_type},{self.srid})"
 
     def bind_expression(self, bindvalue):
         return func.ST_GeomFromWKB(bindvalue, 0)

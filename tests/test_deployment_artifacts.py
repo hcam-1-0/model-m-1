@@ -147,3 +147,24 @@ def test_phase3_control_plane_dashboard_and_alerts_are_identifier_free() -> None
         "locator",
     ):
         assert prohibited_label not in serialized + alerts
+
+
+def test_phase34_postgis_ci_checks_migration_drift() -> None:
+    workflow = (ROOT / ".github" / "workflows" / "python-ci.yml").read_text(
+        encoding="utf-8"
+    )
+    job = workflow.split("phase34-postgis-integration:", 1)[1].split(
+        "phase2-synthetic-lab:", 1
+    )[0]
+
+    assert job.count("alembic check") == 2
+    assert "pytest tests/test_phase34_postgres.py -q" in job
+
+
+def test_phase34_postgis_healthcheck_waits_for_permanent_tcp_server() -> None:
+    compose = (ROOT / "deploy" / "compose.phase3.yaml").read_text(
+        encoding="utf-8"
+    )
+
+    assert "pg_isready -h 127.0.0.1" in compose
+    assert "psql -h 127.0.0.1" in compose

@@ -379,8 +379,10 @@ jobs:
       - name: Verify PostGIS migration cycle
         run: |
           alembic upgrade 0011_geometry_events
+          alembic check
           alembic downgrade 0010_generated_tracking
           alembic upgrade 0011_geometry_events
+          alembic check
 
       - name: Verify generated-only PostGIS behavior
         run: pytest tests/test_phase34_postgres.py -q

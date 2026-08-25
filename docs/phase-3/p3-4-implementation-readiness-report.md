@@ -1,24 +1,30 @@
 # P3.4 Implementation Readiness Report
 
-Status: `ready_for_owner_acceptance` after clean-source digest freeze.
+Status: technically validated under `D-P3.4-START`; `D-P3.4-ACCEPTANCE`
+remains pending for the replacement clean-source digest emitted after this
+recovery checkpoint.
 
 Scope: `phase3.p3_4.generated_only_geometry_and_event_primitives`.
 
 ## Validation Summary
 
-- 707 tests and 119 subtests passed; 7 PostgreSQL tests were skipped in the
+- 711 tests and 119 subtests passed; 8 PostgreSQL tests were skipped in the
   general local suite because no PostgreSQL URL was set there.
 - Total repository branch coverage is 90.22%.
 - Evaluator branch coverage is 94.32%, above the 90% boundary gate.
 - Five C10 scenario groups have 1.0 logic agreement and 20 stable replays each.
-- SQLite and disposable PostGIS both passed `0011 -> 0010 -> 0011`.
-- The PostGIS-specific behavior test passed on PostgreSQL 18.6, PostGIS 3.6.4,
-  GEOS 3.14.1, and PROJ 9.8.1.
+- SQLite and disposable PostGIS both passed `0011 -> 0010 -> 0011`, with
+  Alembic drift checks after both PostGIS upgrades.
+- All 8 PostgreSQL/PostGIS integration tests passed on PostgreSQL 18.6,
+  PostGIS 3.6.4, GEOS 3.14.1, and PROJ 9.8.1. Alembic ignored extension-owned
+  objects but detected and then cleared an intentionally unmanaged table.
 - The wheel and source distribution build; a hash-locked isolated Python 3.14.6
   install starts the full application and CLI with the analytics extra.
 - The non-root Docker image builds and runs as `10001:10001`; a fresh loopback
   Compose stack reaches migration head, health, readiness, metrics, and all four
-  P3.4 API route families.
+  P3.4 API route families. TCP database readiness and transaction-bound
+  extension inspection prevent the two empty-volume migration races reproduced
+  during recovery.
 - Compilation, Ruff, dependency consistency, P3.0-P3.3 compatibility, analytics
   contract drift, release contract drift, and archive prohibited-payload scans
   pass.

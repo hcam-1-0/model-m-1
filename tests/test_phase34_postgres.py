@@ -1,7 +1,10 @@
 from __future__ import annotations
 
 import os
+import subprocess
+import sys
 from datetime import UTC, datetime
+from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
@@ -16,6 +19,7 @@ from hcam.streams.models import StreamEndpoint
 
 
 POSTGRES_TEST_URL = os.getenv("HCAM_POSTGRES_TEST_URL")
+ROOT = Path(__file__).resolve().parents[1]
 pytestmark = [
     pytest.mark.postgres,
     pytest.mark.skipif(
@@ -135,3 +139,46 @@ def test_postgis_geometry_storage_is_valid_indexed_and_wkb_bound() -> None:
             if camera is not None:
                 session.delete(camera)
         database.dispose()
+
+
+def test_alembic_check_ignores_extensions_but_detects_unmanaged_tables() -> None:
+    assert POSTGRES_TEST_URL is not None
+    database = Database(POSTGRES_TEST_URL)
+    environment = os.environ.copy()
+    environment["HCAM_DATABASE_URL"] = POSTGRES_TEST_URL
+    command = [sys.executable, "-m", "alembic", "check"]
+
+    try:
+        with database.engine.begin() as connection:
+            connection.execute(text("DROP TABLE IF EXISTS hcam_unmanaged_drift_probe"))
+            connection.execute(
+                text("CREATE TABLE hcam_unmanaged_drift_probe (id INTEGER PRIMARY KEY)")
+            )
+
+        drift = subprocess.run(
+            command,
+            cwd=ROOT,
+            env=environment,
+            capture_output=True,
+            text=True,
+            timeout=60,
+            check=False,
+        )
+        drift_output = drift.stdout + drift.stderr
+        assert drift.returncode != 0
+        assert "hcam_unmanaged_drift_probe" in drift_output
+    finally:
+        with database.engine.begin() as connection:
+            connection.execute(text("DROP TABLE IF EXISTS hcam_unmanaged_drift_probe"))
+        database.dispose()
+
+    clean = subprocess.run(
+        command,
+        cwd=ROOT,
+        env=environment,
+        capture_output=True,
+        text=True,
+        timeout=60,
+        check=False,
+    )
+    assert clean.returncode == 0, clean.stdout + clean.stderr

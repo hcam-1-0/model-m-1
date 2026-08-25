@@ -701,6 +701,18 @@ class AnalyticsGeometry(Base):
             "length(configuration_digest) = 71",
             name="ck_analytics_geometry_digest",
         ),
+        CheckConstraint(
+            "ST_IsValid(spatial_geometry) AND ST_SRID(spatial_geometry) = 0 "
+            "AND ST_NDims(spatial_geometry) = 2 "
+            "AND GeometryType(spatial_geometry) IN ('LINESTRING', 'POLYGON')",
+            name="ck_analytics_geometry_postgis_valid",
+            info={"hcam_autogenerate_dialects": ("postgresql",)},
+        ).ddl_if(dialect="postgresql"),
+        CheckConstraint(
+            "ST_AsBinary(spatial_geometry) = canonical_wkb",
+            name="ck_analytics_geometry_postgis_wkb",
+            info={"hcam_autogenerate_dialects": ("postgresql",)},
+        ).ddl_if(dialect="postgresql"),
         UniqueConstraint(
             "department",
             "geometry_id",
@@ -713,6 +725,12 @@ class AnalyticsGeometry(Base):
             "stream_id",
             "status",
         ),
+        Index(
+            "ix_analytics_geometry_spatial_gist",
+            "spatial_geometry",
+            postgresql_using="gist",
+            info={"hcam_autogenerate_dialects": ("postgresql",)},
+        ).ddl_if(dialect="postgresql"),
     )
 
     geometry_record_id: Mapped[str] = mapped_column(String(37), primary_key=True)

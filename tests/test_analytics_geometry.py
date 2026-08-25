@@ -14,6 +14,7 @@ from hcam.analytics.geometry import (
     WeeklyWindowV1,
     ZoneGeometryV1,
 )
+from hcam.analytics.spatial.sql_types import PostGISImageGeometry
 
 
 FIXTURE_ROOT = Path(__file__).parents[1] / "contracts" / "phase-3" / "fixtures"
@@ -122,3 +123,11 @@ def test_approved_geometry_requires_owner_approval_record() -> None:
     document["independent_reviewer_id"] = "phase3-owner"
     owner_reviewed = GeometryDefinitionV1.model_validate(document)
     assert owner_reviewed.independent_reviewer_id == owner_reviewed.owner_id
+
+
+def test_postgis_geometry_type_supports_reflected_type_arguments() -> None:
+    reflected = PostGISImageGeometry("Geometry", "0")
+
+    assert reflected.geometry_type == "Geometry"
+    assert reflected.srid == 0
+    assert reflected.get_col_spec() == "geometry(Geometry,0)"
