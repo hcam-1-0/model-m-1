@@ -133,14 +133,20 @@ zero. P3.2 remains blocked and requires separate artifact and dataset approval.
   unresolved SHA-256 values.
 - [x] `D-P3.5-ARTIFACT-RESEARCH` authorizes exact seven-artifact quarantine
   acquisition only.
-- [ ] Exact artifact/source manifests are reviewed and owner approved.
+- [x] Seven artifacts have exact SHA-256, passive inspection, Defender scan,
+  license evidence, model cards, and a CycloneDX artifact SBOM.
+- [ ] `D-P3.5-RUNTIME-RESEARCH` authorizes isolated exact dependency research.
+- [ ] Exact runtime packages, native engine, dependency closure, SBOM, licenses,
+  and vulnerabilities are reviewed.
+- [ ] Exact artifact/runtime packet is owner approved.
 - [x] The exact early `D-P3.5-START` statement is preserved as non-effective
   intent with empty artifact and network allowlists.
 - [ ] `D-P3.5-START` is confirmed against the exact reviewed packet and
   separately authorizes bounded implementation.
 
-Current P3.5 status: `artifact_research_authorized`. Only the seven exact
-quarantine downloads are authorized. Early start intent grants no extraction,
+Current P3.5 status: `artifact_review_complete_runtime_research_pending`.
+Artifact research is complete; runtime research is not authorized. Early start
+intent grants no extraction,
 runtime loading, dependency, dataset, generation, training, inference, product
 code, media, real-plate, storage, operational, or deployment authority.
 

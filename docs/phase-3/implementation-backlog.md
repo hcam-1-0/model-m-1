@@ -209,17 +209,17 @@ Planning status: authorized under `D-P3.5-PLAN-AUTH`. Primary-source research,
 the detailed plan, and owner decision packet are complete. `D-P3.5-001` through
 `D-P3.5-004` approve the recommended `A/A/A/A` baseline. Exact quarantine
 research for seven external artifacts is authorized under
-`D-P3.5-ARTIFACT-RESEARCH`. The early `D-P3.5-START` remains non-effective
-until exact artifact review is complete and accepted. No extraction, runtime
+`D-P3.5-ARTIFACT-RESEARCH`; acquisition, hashes, passive inspection, artifact
+SBOM, model cards, and Defender scan are complete. `D-P3.5-RUNTIME-RESEARCH`
+and the early `D-P3.5-START` remain non-effective until exact runtime review is
+complete and accepted. No extraction, runtime
 loading, generation, training, inference, product implementation, or
 media/data access is authorized.
 
 Artifact preparation status: proposal R0 records eight recommended artifact
-slots, immutable source metadata where available, bounded sizes, and current
-runtime gaps. Seven external slots may now be downloaded only into the bounded
-quarantine so SHA-256, structure, scan, lineage, license, and compatibility
-evidence can be prepared. The internal detector slot and all execution remain
-blocked.
+slots, immutable source metadata, and bounded sizes. Seven external slots are
+now present in quarantine with exact evidence. The runtime dependency closure,
+Tesseract engine, internal detector slot, and all execution remain blocked.
 
 Deliverables:
 

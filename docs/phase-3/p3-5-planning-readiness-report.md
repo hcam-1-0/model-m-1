@@ -1,7 +1,7 @@
 # P3.5 Planning Readiness Report
 
-Status: `artifact_research_authorized` under `D-P3.5-PLAN-AUTH` and
-`D-P3.5-ARTIFACT-RESEARCH`.
+Status: `artifact_review_complete_runtime_research_pending` under
+`D-P3.5-PLAN-AUTH` and `D-P3.5-ARTIFACT-RESEARCH`.
 
 Scope: `phase3.p3_5.synthetic_anpr.pre_implementation_research`.
 
@@ -22,8 +22,9 @@ Scope: `phase3.p3_5.synthetic_anpr.pre_implementation_research`.
   model, font, dictionary, generated image, media, or dataset file;
 - the recommended `A/A/A/A` technical baseline is owner approved;
 - an eight-slot metadata-only artifact proposal records immutable sources and
-  bounds, and exactly seven external slots are authorized for quarantine
-  acquisition while the internal detector and all execution remain blocked;
+  bounds; exactly seven external slots now have hashes, passive inspection,
+  license evidence, model cards, SBOM, and Defender scan evidence while the
+  internal detector and all execution remain blocked;
 - the early exact `D-P3.5-START` statement is preserved as non-effective intent;
 - root, contract/phase indexes, backlog, decision register, checklist, and CI
   contain the same planning-only status.
@@ -34,9 +35,10 @@ checkpoint is treated as immutable.
 
 ## Manual Owner Gates
 
-One explicit gate remains: `D-P3.5-START`, the final digest-bound
-implementation authorization after exact artifact review. The first four
-technical decisions and restricted artifact-research decision are complete.
+Two explicit gates remain: `D-P3.5-RUNTIME-RESEARCH` for isolated dependency
+closure research, then `D-P3.5-START` for final digest-bound implementation
+authorization. The first four technical decisions and exact artifact research
+are complete.
 The early exact start statement does not bind undisclosed implementation
 artifacts or network actions and remains non-effective. Final confirmation must
 bind the completed review packet digest.

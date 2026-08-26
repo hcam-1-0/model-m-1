@@ -30,6 +30,15 @@ ARTIFACT_RESEARCH_AUTHORIZATION_PATH = (
     / "phase-3"
     / "p3-5-artifact-research-authorization.json"
 )
+ARTIFACT_REVIEW_EVIDENCE_PATH = (
+    ROOT / "contracts" / "phase-3" / "p3-5-artifact-review-evidence.json"
+)
+ARTIFACT_SBOM_PATH = (
+    ROOT / "contracts" / "phase-3" / "p3-5-artifact-sbom.cdx.json"
+)
+ARTIFACT_MODEL_CARDS_PATH = (
+    ROOT / "contracts" / "phase-3" / "p3-5-artifact-model-cards.json"
+)
 OWNER_DECISIONS_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-owner-decisions.json"
 )
@@ -37,6 +46,9 @@ START_AUTHORIZATION_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-start-authorization.json"
 )
 RESEARCH_PATH = ROOT / "contracts" / "phase-3" / "p3-5-research-sources.json"
+RUNTIME_REVIEW_PROPOSAL_PATH = (
+    ROOT / "contracts" / "phase-3" / "p3-5-runtime-review-proposal.json"
+)
 P3_4_ACCEPTANCE_PATH = ROOT / "contracts" / "phase-3" / "p3-4-acceptance.json"
 
 P3_4_ACCEPTED_PACKAGE_DIGEST = (
@@ -51,17 +63,23 @@ PACKAGE_FILES = (
     "contracts/phase-3/README.md",
     "contracts/phase-3/p3-4-acceptance.json",
     "contracts/phase-3/p3-5-artifact-review-proposal.json",
+    "contracts/phase-3/p3-5-artifact-review-evidence.json",
+    "contracts/phase-3/p3-5-artifact-model-cards.json",
     "contracts/phase-3/p3-5-artifact-research-authorization.json",
+    "contracts/phase-3/p3-5-artifact-sbom.cdx.json",
     "contracts/phase-3/p3-5-entry-gates.json",
     "contracts/phase-3/p3-5-planning-authorization.json",
     "contracts/phase-3/p3-5-owner-decisions.json",
     "contracts/phase-3/p3-5-research-sources.json",
+    "contracts/phase-3/p3-5-runtime-review-proposal.json",
     "contracts/phase-3/p3-5-start-authorization.json",
     "docs/phase-3/README.md",
     "docs/phase-3/acceptance-checklist.md",
     "docs/phase-3/decision-register.md",
     "docs/phase-3/implementation-backlog.md",
     "docs/phase-3/p3-5-decision-packet.md",
+    "docs/phase-3/p3-5-artifact-model-cards.md",
+    "docs/phase-3/p3-5-artifact-review-evidence.md",
     "docs/phase-3/p3-5-artifact-research-authorization.md",
     "docs/phase-3/p3-5-artifact-review-proposal.md",
     "docs/phase-3/p3-5-owner-decisions.md",
@@ -69,10 +87,13 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-planning-authorization.md",
     "docs/phase-3/p3-5-planning-readiness-report.md",
     "docs/phase-3/p3-5-research-record.md",
+    "docs/phase-3/p3-5-runtime-review-proposal.md",
     "docs/phase-3/p3-5-start-intent.md",
     "tests/test_phase35_readiness.py",
     "tests/test_phase35_artifact_research.py",
+    "tests/test_phase35_artifact_inspect.py",
     "tools/phase35_artifact_research.py",
+    "tools/phase35_artifact_inspect.py",
     "tools/phase35_readiness.py",
 )
 
@@ -85,11 +106,16 @@ CANDIDATE_PATHS = (
     "contracts/phase-3/p3-1/candidates/candidate-ocr-g1.json",
 )
 
-DECISION_IDS = (
+TECHNICAL_DECISION_IDS = (
     "D-P3.5-001",
     "D-P3.5-002",
     "D-P3.5-003",
     "D-P3.5-004",
+)
+
+DECISION_IDS = (
+    *TECHNICAL_DECISION_IDS,
+    "D-P3.5-RUNTIME-RESEARCH",
     "D-P3.5-START",
 )
 
@@ -104,6 +130,16 @@ ALLOWED_SOURCE_HOSTS = {
 PROPOSED_ARTIFACT_HOSTS = {
     "paddle-model-ecology.bj.bcebos.com",
     "raw.githubusercontent.com",
+}
+
+REVIEWED_ARTIFACT_SHA256 = {
+    "OCR-L0-PPOCRV6-SMALL-INFER-PROPOSED": "DA460F968CE9F88325AC3A34FA302077D6E9B0DCEFB16BA3137CD7796F879D06",
+    "OCR-L1-PPOCRV6-MEDIUM-INFER-PROPOSED": "4EECC1C6A4623765042E6FC15446DA0DA110B7D875B6B72B2D351D2B2DBD4DA6",
+    "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED": "AC8279D27FC7E8CDA559364F9A3C506F43984CF6BA5E1B7A06450458BFE07DFB",
+    "OCR-G0-TESSDATA-FAST-GUJ-PROPOSED": "FA69658614B4946A9AFAE8853D67E0689838803DFA3D12C2E35EC53EE6F8DF34",
+    "OCR-G1-TESSDATA-BEST-GUJ-PROPOSED": "8CBB1D139B63434B9E1154A3B51930A74EC1C9A6251B95D86D74D7F1CD706ED6",
+    "FONT-G0-NOTO-SANS-GUJARATI-VARIABLE-PROPOSED": "9901D8552F1DD5D2C50DBD4CAA6F6E174E74E8264F06594AB259AE6E7B1AC428",
+    "FONT-D0-NOTO-SANS-DEVANAGARI-VARIABLE-PROPOSED": "9CE7B04F60E363D8870E5997744CF85CF69D38A4D7D129D364D92A3B14B461D7",
 }
 
 
@@ -486,7 +522,10 @@ def check_owner_gates() -> Check:
     if not isinstance(decisions, list):
         return Check("owner_decisions", FAIL, "P3.5 decisions must be a list.")
     actual_ids = tuple(str(item.get("decision_id")) for item in decisions if isinstance(item, dict))
-    technical = decisions[:-1]
+    technical = decisions[: len(TECHNICAL_DECISION_IDS)]
+    runtime_research = (
+        decisions[-2] if len(decisions) >= 2 and isinstance(decisions[-2], dict) else {}
+    )
     start = decisions[-1] if decisions and isinstance(decisions[-1], dict) else {}
     if (
         actual_ids != DECISION_IDS
@@ -496,18 +535,25 @@ def check_owner_gates() -> Check:
             or item.get("selected_option") != "A"
             for item in technical
         )
+        or runtime_research.get("decision_id") != "D-P3.5-RUNTIME-RESEARCH"
+        or runtime_research.get("status") != "pending_owner_decision"
         or start.get("decision_id") != "D-P3.5-START"
         or start.get("status") != "received_prerequisites_pending"
         or start.get("owner_statement_received") != "D-P3.5-START"
         or start.get("effective") is not False
-        or record.get("status") != "artifact_research_authorized"
+        or record.get("status")
+        != "artifact_review_complete_runtime_research_pending"
         or record.get("scope")
         != "phase3.p3_5.synthetic_anpr.pre_implementation_research"
-        or record.get("manual_gate_count") != 1
+        or record.get("manual_gate_count") != 2
         or record.get("owner_decisions_completed") != 4
         or record.get("owner_decisions_record") != "p3-5-owner-decisions.json"
         or record.get("artifact_research_authorization_record")
         != "p3-5-artifact-research-authorization.json"
+        or record.get("artifact_review_evidence_record")
+        != "p3-5-artifact-review-evidence.json"
+        or record.get("runtime_review_proposal_record")
+        != "p3-5-runtime-review-proposal.json"
         or record.get("implementation_authorized") is not False
     ):
         return Check(
@@ -518,8 +564,8 @@ def check_owner_gates() -> Check:
     return Check(
         "owner_decisions",
         MANUAL,
-        "The four technical choices are approved; final digest-bound D-P3.5-START remains manual.",
-        ("D-P3.5-START",),
+        "Artifact evidence is complete; runtime research and final digest-bound start remain manual.",
+        ("D-P3.5-RUNTIME-RESEARCH", "D-P3.5-START"),
     )
 
 
@@ -551,7 +597,9 @@ def check_owner_decisions_record() -> Check:
     )
     expected = tuple(
         (decision_id, "A", value, "owner_approved")
-        for decision_id, value in zip(DECISION_IDS[:-1], expected_values, strict=True)
+        for decision_id, value in zip(
+            TECHNICAL_DECISION_IDS, expected_values, strict=True
+        )
     )
     if (
         record.get("contract_format")
@@ -571,7 +619,7 @@ def check_owner_decisions_record() -> Check:
         "owner_decision_record",
         PASS,
         "D-P3.5-001 through D-P3.5-004 select the recommended A baseline without implementation authority.",
-        DECISION_IDS[:-1],
+        TECHNICAL_DECISION_IDS,
     )
 
 
@@ -604,7 +652,8 @@ def check_start_intent() -> Check:
             "owner_approved",
             "owner_approved",
             "owner_approved",
-            "quarantine_research_authorized",
+            "evidence_complete_owner_review_pending",
+            "proposal_prepared_owner_authorization_pending",
         )
     ):
         return Check(
@@ -794,6 +843,210 @@ def check_artifact_research_authorization() -> Check:
     )
 
 
+def check_artifact_review_evidence() -> Check:
+    try:
+        record = _json(ARTIFACT_REVIEW_EVIDENCE_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("artifact_review_evidence", FAIL, str(exc))
+    artifacts = record.get("artifacts")
+    observed = (
+        {
+            str(item.get("artifact_id")): str(item.get("sha256"))
+            for item in artifacts
+            if isinstance(item, dict)
+        }
+        if isinstance(artifacts, list)
+        else {}
+    )
+    inspection = record.get("inspection")
+    scan = record.get("defender_scan")
+    if (
+        record.get("contract_format")
+        != "hcam.phase3.p3_5.artifact-review-evidence.v1"
+        or record.get("evidence_id") != "P3.5-EXACT-ARTIFACT-REVIEW-R1"
+        or record.get("authorization_id") != "D-P3.5-ARTIFACT-RESEARCH"
+        or record.get("proposal_sha256")
+        != "8A027E0C8310C900C7DCA7BDFF0144B9E4E003BCAC1A31853C501226165EAD69"
+        or record.get("status")
+        != "artifact_evidence_complete_runtime_research_pending"
+        or record.get("artifact_count") != 7
+        or observed != REVIEWED_ARTIFACT_SHA256
+        or record.get("implementation_authorized") is not False
+        or not isinstance(inspection, dict)
+        or inspection.get("artifact_bytes") != 117617083
+        or inspection.get("passive_structure_status") != "pass"
+        or inspection.get("archive_extraction_performed") is not False
+        or inspection.get("runtime_execution_performed") is not False
+        or not isinstance(scan, dict)
+        or scan.get("engine") != "Microsoft Defender"
+        or scan.get("exit_code") != 0
+        or scan.get("finding") != "no_threats_found"
+    ):
+        return Check(
+            "artifact_review_evidence",
+            FAIL,
+            "Exact artifact hashes, passive inspection, or Defender evidence changed.",
+        )
+    return Check(
+        "artifact_review_evidence",
+        PASS,
+        "Seven exact artifacts are hashed, passively inspected, and locally scanned without extraction or execution.",
+        tuple(REVIEWED_ARTIFACT_SHA256),
+    )
+
+
+def check_artifact_sbom() -> Check:
+    try:
+        record = _json(ARTIFACT_SBOM_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("artifact_sbom", FAIL, str(exc))
+    components = record.get("components")
+    observed: dict[str, str] = {}
+    runtime_flags: list[str] = []
+    licenses: set[str] = set()
+    if isinstance(components, list):
+        for component in components:
+            if not isinstance(component, dict):
+                continue
+            hashes = component.get("hashes")
+            properties = component.get("properties")
+            component_licenses = component.get("licenses")
+            if isinstance(hashes, list):
+                for item in hashes:
+                    if isinstance(item, dict) and item.get("alg") == "SHA-256":
+                        observed[str(component.get("bom-ref"))] = str(
+                            item.get("content")
+                        )
+            if isinstance(properties, list):
+                runtime_flags.extend(
+                    str(item.get("value"))
+                    for item in properties
+                    if isinstance(item, dict)
+                    and item.get("name") == "hcam:runtimeAuthorized"
+                )
+            if isinstance(component_licenses, list):
+                for item in component_licenses:
+                    if isinstance(item, dict) and isinstance(item.get("license"), dict):
+                        licenses.add(str(item["license"].get("id")))
+    expected = {
+        f"hcam:p3.5:{candidate}": digest
+        for candidate, digest in zip(
+            ("OCR-L0", "OCR-L1", "OCR-D0", "OCR-G0", "OCR-G1", "FONT-G0", "FONT-D0"),
+            REVIEWED_ARTIFACT_SHA256.values(),
+            strict=True,
+        )
+    }
+    component_count = len(components) if isinstance(components, list) else -1
+    if (
+        record.get("bomFormat") != "CycloneDX"
+        or record.get("specVersion") != "1.6"
+        or component_count != 7
+        or observed != expected
+        or runtime_flags != ["false"] * 7
+        or licenses != {"Apache-2.0", "OFL-1.1"}
+    ):
+        return Check(
+            "artifact_sbom",
+            FAIL,
+            "P3.5 exact artifact SBOM is incomplete or widened for runtime use.",
+        )
+    return Check(
+        "artifact_sbom",
+        PASS,
+        "CycloneDX 1.6 records all seven exact artifacts, hashes, licenses, and blocked runtime state.",
+    )
+
+
+def check_artifact_model_cards() -> Check:
+    try:
+        record = _json(ARTIFACT_MODEL_CARDS_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("artifact_model_cards", FAIL, str(exc))
+    cards = record.get("cards")
+    candidate_ids = (
+        tuple(str(card.get("candidate_id")) for card in cards if isinstance(card, dict))
+        if isinstance(cards, list)
+        else ()
+    )
+    if (
+        record.get("contract_format")
+        != "hcam.phase3.p3_5.artifact-model-cards.v1"
+        or record.get("status") != "artifact_identity_reviewed_runtime_blocked"
+        or record.get("model_execution_performed") is not False
+        or candidate_ids != ("OCR-L0", "OCR-L1", "OCR-D0", "OCR-G0", "OCR-G1")
+        or not all(
+            isinstance(card, dict)
+            and card.get("runtime_status") == "blocked"
+            and card.get("known_limitations")
+            for card in cards or []
+        )
+    ):
+        return Check(
+            "artifact_model_cards",
+            FAIL,
+            "Artifact model cards are missing limitations or permit execution.",
+        )
+    return Check(
+        "artifact_model_cards",
+        PASS,
+        "Five OCR artifact cards record intended generated-only roles and unresolved evidence.",
+        candidate_ids,
+    )
+
+
+def check_runtime_review_proposal() -> Check:
+    try:
+        record = _json(RUNTIME_REVIEW_PROPOSAL_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("runtime_review_proposal", FAIL, str(exc))
+    packages = record.get("proposed_python_packages")
+    versions = (
+        {
+            str(item.get("name")): str(item.get("version"))
+            for item in packages
+            if isinstance(item, dict)
+        }
+        if isinstance(packages, list)
+        else {}
+    )
+    next_decision = record.get("next_decision")
+    python_runtime = record.get("proposed_python_runtime")
+    tesseract = record.get("proposed_tesseract_runtime")
+    if (
+        record.get("contract_format")
+        != "hcam.phase3.p3_5.runtime-review-proposal.v1"
+        or record.get("status") != "proposal_prepared_owner_authorization_pending"
+        or record.get("package_downloads_performed") is not False
+        or record.get("dependency_or_lockfile_change_performed") is not False
+        or record.get("implementation_authorized") is not False
+        or record.get("allowed_network_actions") != []
+        or versions
+        != {
+            "paddleocr": "3.7.0",
+            "paddlepaddle": "3.3.1",
+            "Pillow": "12.3.0",
+            "regex": "2026.7.19",
+        }
+        or not isinstance(next_decision, dict)
+        or next_decision.get("decision_id") != "D-P3.5-RUNTIME-RESEARCH"
+        or next_decision.get("status") != "pending_owner_authorization"
+        or not isinstance(python_runtime, dict)
+        or python_runtime.get("selected_version") != "3.12.13"
+        or not isinstance(tesseract, dict)
+        or tesseract.get("status") != "unresolved"
+    ):
+        return Check(
+            "runtime_review_proposal",
+            FAIL,
+            "P3.5 runtime proposal is incomplete, executable, or prematurely authorized.",
+        )
+    return Check(
+        "runtime_review_proposal",
+        PASS,
+        "Python 3.12 and four package versions are proposed; dependency and Tesseract execution remain blocked.",
+    )
+
+
 def check_documentation_sync() -> Check:
     required = {
         "README.md": (
@@ -802,20 +1055,27 @@ def check_documentation_sync() -> Check:
             "tools/phase35_readiness.py",
         ),
         "contracts/phase-3/README.md": (
+            "p3-5-artifact-review-evidence.json",
+            "p3-5-artifact-model-cards.json",
             "p3-5-artifact-review-proposal.json",
             "p3-5-artifact-research-authorization.json",
+            "p3-5-artifact-sbom.cdx.json",
             "p3-5-owner-decisions.json",
             "p3-5-planning-authorization.json",
             "p3-5-entry-gates.json",
             "p3-5-start-authorization.json",
+            "p3-5-runtime-review-proposal.json",
         ),
         "docs/phase-3/README.md": (
+            "[P3.5 artifact model cards](p3-5-artifact-model-cards.md)",
+            "[P3.5 exact artifact review evidence](p3-5-artifact-review-evidence.md)",
             "[P3.5 artifact research authorization](p3-5-artifact-research-authorization.md)",
             "[P3.5 artifact review proposal](p3-5-artifact-review-proposal.md)",
             "[P3.5 owner decisions](p3-5-owner-decisions.md)",
             "[P3.5 plan](p3-5-plan.md)",
             "[P3.5 owner decision packet](p3-5-decision-packet.md)",
             "[P3.5 start intent](p3-5-start-intent.md)",
+            "[P3.5 runtime review proposal](p3-5-runtime-review-proposal.md)",
         ),
         "docs/phase-3/decision-register.md": (
             "DR-0035",
@@ -891,6 +1151,10 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_artifact_proposal(),
         check_owner_decisions_record(),
         check_artifact_research_authorization(),
+        check_artifact_review_evidence(),
+        check_artifact_sbom(),
+        check_artifact_model_cards(),
+        check_runtime_review_proposal(),
         check_start_intent(),
         check_documentation_sync(),
     ]
@@ -906,7 +1170,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
     status = (
         "invalid"
         if failures
-        else "artifact_research_authorized"
+        else "artifact_review_complete_runtime_research_pending"
         if manual_gates
         else "implementation_authorized_generated_only"
     )

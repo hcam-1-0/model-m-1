@@ -30,7 +30,7 @@ presented and explicitly accepted before implementation can begin.
 The authorization-aware acquisition command is:
 
 ```powershell
-uv run --locked python tools/phase35_artifact_research.py --all
+uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 ```
 
 The command revalidates the proposal digest and exact allowlist before each

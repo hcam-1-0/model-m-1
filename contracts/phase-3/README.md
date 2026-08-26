@@ -76,6 +76,14 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-5-artifact-research-authorization.json`: proposal-digest-bound authority
   for exactly seven HTTPS quarantine downloads with no redirects, proxies,
   extraction, runtime loading, or implementation.
+- `p3-5-artifact-review-evidence.json`: exact SHA-256 values, passive archive,
+  traineddata/font inspection, Defender evidence, and remaining runtime blocks.
+- `p3-5-artifact-sbom.cdx.json`: CycloneDX 1.6 inventory for all seven exact
+  artifacts, source identities, licenses, and blocked runtime state.
+- `p3-5-artifact-model-cards.json`: five OCR roles, intended generated-only use,
+  limitations, and continuing execution blocks.
+- `p3-5-runtime-review-proposal.json`: Python 3.12 package/runtime proposal with
+  no package download, dependency change, or implementation authority.
 - `p3-5-entry-gates.json`: four approved technical choices and the remaining,
   prerequisite-blocked `D-P3.5-START` statement.
 - `p3-5-start-authorization.json`: the exact received start intent, four
@@ -100,7 +108,8 @@ uv run --locked --extra dev --extra analytics python tools/phase34_c10_evidence.
 uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.py check
 uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance
 uv run --locked --extra dev python tools/phase35_readiness.py --strict
-uv run --locked python tools/phase35_artifact_research.py --all
+uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
+uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
 ```
 
 Rewriting snapshots requires an explicit review acknowledgement:

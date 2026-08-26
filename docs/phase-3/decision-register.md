@@ -425,8 +425,8 @@ Status: approved under `D-P3.5-001` through `D-P3.5-004` and
 On 2026-08-26, `mayank-admin` selected option `A` for the synthetic corpus,
 detector/OCR portfolio, normalization/consensus, and privacy/evidence policy.
 The same statement separately authorizes proposal-digest-bound acquisition of
-exactly seven listed external artifacts into
-`F:\h cam\research-cache\phase-3\p3-5`.
+exactly seven listed external artifacts into an external quarantine, with
+`F:\h cam\research-cache\phase-3\p3-5` recorded as the default path.
 
 HTTPS URLs, filenames, expected sizes, content types, cumulative size,
 timeouts, no-redirect behavior, disabled environment proxies, and non-runtime
@@ -435,6 +435,29 @@ extraction, runtime loading, dependencies, generation, training, inference,
 product implementation, camera/media access, real/private/Government data,
 deployment, and remote Git operations remain prohibited. Exact review evidence
 and a final packet-bound `D-P3.5-START` confirmation are still required.
+
+### DR-0038: P3.5 Exact Artifact Evidence And Runtime Research Gate
+
+Status: artifact evidence complete; runtime research pending owner decision.
+
+All seven authorized external artifacts were acquired into an external local
+quarantine. Exact sizes, SHA-256 values, Paddle HTTP identities, Git blob
+identities, passive archive/font/traineddata structure checks, model cards,
+CycloneDX 1.6 inventory, license evidence, and Microsoft Defender results are
+recorded. No archive was extracted, and no artifact was loaded or executed.
+
+The first `F:` attempt stopped for insufficient space without leaving a partial
+file. The `B:` virtual provider was not usable from Python. The complete
+evidence set is stored under `E:\h-cam-research-cache\phase-3\p3-5`; quarantine
+files remain outside Git.
+
+Runtime readiness is still incomplete. The proposed baseline is isolated
+CPython 3.12.13 with metadata-only candidates `paddleocr==3.7.0`,
+`paddlepaddle==3.3.1`, `Pillow==12.3.0`, and `regex==2026.7.19`. Exact wheels,
+transitive dependencies, native libraries, vulnerability evidence, and the
+Tesseract 5 engine are unresolved. `D-P3.5-RUNTIME-RESEARCH` is therefore a new
+narrow gate before final `D-P3.5-START`; it grants no authority until explicitly
+approved.
 
 ## Decisions Explicitly Deferred
 

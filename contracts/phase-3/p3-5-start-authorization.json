@@ -34,7 +34,14 @@
       "required_status": "owner_reviewed",
       "proposal_record": "p3-5-artifact-review-proposal.json",
       "research_authorization_record": "p3-5-artifact-research-authorization.json",
-      "status": "quarantine_research_authorized"
+      "review_evidence_record": "p3-5-artifact-review-evidence.json",
+      "status": "evidence_complete_owner_review_pending"
+    },
+    {
+      "decision_id": "D-P3.5-RUNTIME-RESEARCH",
+      "proposal_record": "p3-5-runtime-review-proposal.json",
+      "required_status": "owner_reviewed",
+      "status": "proposal_prepared_owner_authorization_pending"
     }
   ],
   "prohibited_actions": [

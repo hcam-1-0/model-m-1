@@ -16,7 +16,8 @@ prerequisites were not complete when it was received.
 | `D-P3.5-002` detector and OCR portfolio | Option `A` owner approved |
 | `D-P3.5-003` normalization, abstention, and consensus | Option `A` owner approved |
 | `D-P3.5-004` privacy, resources, and evidence policy | Option `A` owner approved |
-| Exact model, font, dictionary, generator, dependency, and runtime review | Seven-artifact quarantine research authorized; SHA-256, scan, license/lineage, compatibility, SBOM, and owner review remain pending |
+| Exact model/font artifact review | Seven-artifact SHA-256, passive inspection, Defender scan, model cards, and artifact SBOM complete; owner packet review pending |
+| `D-P3.5-RUNTIME-RESEARCH` | Proposal prepared; owner authorization, exact dependency closure, native engine, runtime SBOM, and vulnerability review pending |
 
 The recommended technical baseline was selected with:
 
@@ -27,9 +28,9 @@ D-P3.5-003: A
 D-P3.5-004: A
 ```
 
-Those selections do not authorize implementation. The separate
-`D-P3.5-ARTIFACT-RESEARCH` statement now authorizes only the exact seven
-proposal-bound quarantine downloads.
+Those selections do not authorize implementation. The separate artifact gate
+authorized only the now-complete exact seven-file quarantine research. It does
+not authorize runtime dependency research.
 
 ## Why The Start Is Not Yet Effective
 
@@ -51,8 +52,8 @@ confirm `D-P3.5-START` against that packet digest.
 
 ## Current Boundary
 
-Implementation remains off. Only the seven exact authorized files may be
-downloaded into the non-runtime quarantine. No extraction, dependency,
+Implementation remains off. Artifact acquisition is complete. No further
+download, extraction, dependency,
 lockfile, container,
 application, migration, API, worker, or storage change may be made. Synthetic
 generation, training, inference, camera/media access, real registration marks,

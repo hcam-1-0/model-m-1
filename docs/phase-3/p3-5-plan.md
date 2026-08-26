@@ -3,8 +3,9 @@
 Status: planning complete under `D-P3.5-PLAN-AUTH`; technical decisions
 `D-P3.5-001` through `D-P3.5-004` approve the recommended `A/A/A/A` baseline.
 Exact seven-artifact quarantine research is authorized under
-`D-P3.5-ARTIFACT-RESEARCH`. The early `D-P3.5-START` remains non-effective
-until exact artifact review is complete and accepted.
+`D-P3.5-ARTIFACT-RESEARCH` and its exact evidence is complete.
+`D-P3.5-RUNTIME-RESEARCH` and the early `D-P3.5-START` remain non-effective
+until exact runtime review is complete and accepted.
 
 Planning authority: `D-P3.5-PLAN-AUTH`.
 
