@@ -17,7 +17,7 @@ def test_p3_5_runtime_research_is_authorized_with_one_manual_gate() -> None:
     )
     assert report.failures == 0
     assert report.manual_gates == 1
-    assert report.package_file_count == 41
+    assert report.package_file_count == 43
     assert len(report.package_digest) == 64
 
 

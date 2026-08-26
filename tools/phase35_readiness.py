@@ -114,8 +114,10 @@ PACKAGE_FILES = (
     "tests/test_phase35_readiness.py",
     "tests/test_phase35_artifact_research.py",
     "tests/test_phase35_artifact_inspect.py",
+    "tests/test_phase35_runtime_research.py",
     "tools/phase35_artifact_research.py",
     "tools/phase35_artifact_inspect.py",
+    "tools/phase35_runtime_research.py",
     "tools/phase35_readiness.py",
 )
 
@@ -1191,6 +1193,7 @@ def check_documentation_sync() -> Check:
         "README.md": (
             "P3.5",
             "tools/phase35_artifact_research.py",
+            "tools/phase35_runtime_research.py",
             "tools/phase35_readiness.py",
         ),
         "contracts/phase-3/README.md": (
