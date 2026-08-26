@@ -135,7 +135,9 @@ zero. P3.2 remains blocked and requires separate artifact and dataset approval.
   acquisition only.
 - [x] Seven artifacts have exact SHA-256, passive inspection, Defender scan,
   license evidence, model cards, and a CycloneDX artifact SBOM.
-- [ ] `D-P3.5-RUNTIME-RESEARCH` authorizes isolated exact dependency research.
+- [x] `P3.5-EXACT-ARTIFACT-REVIEW-R1` is accepted for package digest
+  `54B02B80169604904C9945C1C6E692500CA8AA79253EEC27A63B4C4DB00B395C`.
+- [x] `D-P3.5-RUNTIME-RESEARCH` authorizes isolated exact dependency research.
 - [ ] Exact runtime packages, native engine, dependency closure, SBOM, licenses,
   and vulnerabilities are reviewed.
 - [ ] Exact artifact/runtime packet is owner approved.
@@ -144,8 +146,9 @@ zero. P3.2 remains blocked and requires separate artifact and dataset approval.
 - [ ] `D-P3.5-START` is confirmed against the exact reviewed packet and
   separately authorizes bounded implementation.
 
-Current P3.5 status: `artifact_review_complete_runtime_research_pending`.
-Artifact research is complete; runtime research is not authorized. Early start
+Current P3.5 status:
+`artifact_review_accepted_runtime_research_authorized_evidence_pending`.
+Artifact review is accepted; runtime research evidence is pending. Early start
 intent grants no extraction,
 runtime loading, dependency, dataset, generation, training, inference, product
 code, media, real-plate, storage, operational, or deployment authority.

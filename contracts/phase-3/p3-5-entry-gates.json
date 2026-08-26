@@ -32,7 +32,7 @@
     {
       "decision_id": "D-P3.5-RUNTIME-RESEARCH",
       "recommended_option": "resolve_exact_python_and_native_dependency_closure_in_external_non_runtime_quarantine",
-      "status": "pending_owner_decision",
+      "status": "owner_approved_restricted_evidence_pending",
       "topic": "runtime_dependency_quarantine_sbom_license_and_vulnerability_research"
     },
     {
@@ -45,13 +45,15 @@
     }
   ],
   "implementation_authorized": false,
-  "manual_gate_count": 2,
+  "manual_gate_count": 1,
   "owner_decisions_completed": 4,
   "owner_decisions_record": "p3-5-owner-decisions.json",
   "artifact_research_authorization_record": "p3-5-artifact-research-authorization.json",
   "artifact_review_evidence_record": "p3-5-artifact-review-evidence.json",
+  "artifact_review_acceptance_record": "p3-5-artifact-review-acceptance.json",
+  "runtime_research_authorization_record": "p3-5-runtime-research-authorization.json",
   "runtime_review_proposal_record": "p3-5-runtime-review-proposal.json",
   "planning_authorization_record": "p3-5-planning-authorization.json",
   "scope": "phase3.p3_5.synthetic_anpr.pre_implementation_research",
-  "status": "artifact_review_complete_runtime_research_pending"
+  "status": "artifact_review_accepted_runtime_research_authorized_evidence_pending"
 }

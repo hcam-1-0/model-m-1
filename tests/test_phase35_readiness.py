@@ -8,13 +8,16 @@ from pathlib import Path
 from tools import phase35_readiness as readiness
 
 
-def test_p3_5_artifact_review_is_complete_with_two_manual_gates() -> None:
+def test_p3_5_runtime_research_is_authorized_with_one_manual_gate() -> None:
     report = readiness.build_report()
 
-    assert report.status == "artifact_review_complete_runtime_research_pending"
+    assert (
+        report.status
+        == "artifact_review_accepted_runtime_research_authorized_evidence_pending"
+    )
     assert report.failures == 0
-    assert report.manual_gates == 2
-    assert report.package_file_count == 37
+    assert report.manual_gates == 1
+    assert report.package_file_count == 41
     assert len(report.package_digest) == 64
 
 
@@ -32,9 +35,11 @@ def test_p3_5_technical_checks_pass() -> None:
         readiness.check_owner_decisions_record(),
         readiness.check_artifact_research_authorization(),
         readiness.check_artifact_review_evidence(),
+        readiness.check_artifact_review_acceptance(),
         readiness.check_artifact_sbom(),
         readiness.check_artifact_model_cards(),
         readiness.check_runtime_review_proposal(),
+        readiness.check_runtime_research_authorization(),
         readiness.check_start_intent(),
         readiness.check_documentation_sync(),
     )
@@ -42,11 +47,11 @@ def test_p3_5_technical_checks_pass() -> None:
     assert all(check.status == readiness.PASS for check in checks)
 
 
-def test_p3_5_runtime_research_and_final_start_remain_manual() -> None:
+def test_p3_5_only_final_start_remains_manual() -> None:
     check = readiness.check_owner_gates()
 
     assert check.status == readiness.MANUAL
-    assert check.evidence == ("D-P3.5-RUNTIME-RESEARCH", "D-P3.5-START")
+    assert check.evidence == ("D-P3.5-START",)
 
 
 def test_p3_5_owner_decisions_record_exact_recommended_baseline() -> None:
@@ -119,6 +124,20 @@ def test_p3_5_exact_artifact_evidence_is_non_executing() -> None:
     assert readiness.check_artifact_review_evidence().status == readiness.PASS
 
 
+def test_p3_5_exact_artifact_evidence_is_owner_accepted() -> None:
+    record = json.loads(
+        readiness.ARTIFACT_REVIEW_ACCEPTANCE_PATH.read_text(encoding="utf-8")
+    )
+
+    assert (
+        record["evidence_package_digest"]
+        == "54B02B80169604904C9945C1C6E692500CA8AA79253EEC27A63B4C4DB00B395C"
+    )
+    assert record["accepted_by"] == "mayank-admin"
+    assert record["implementation_authorized"] is False
+    assert readiness.check_artifact_review_acceptance().status == readiness.PASS
+
+
 def test_p3_5_runtime_review_remains_proposal_only() -> None:
     record = json.loads(
         readiness.RUNTIME_REVIEW_PROPOSAL_PATH.read_text(encoding="utf-8")
@@ -130,6 +149,20 @@ def test_p3_5_runtime_review_remains_proposal_only() -> None:
     assert record["implementation_authorized"] is False
     assert record["allowed_network_actions"] == []
     assert readiness.check_runtime_review_proposal().status == readiness.PASS
+
+
+def test_p3_5_runtime_research_authorization_is_external_and_non_runtime() -> None:
+    record = json.loads(
+        readiness.RUNTIME_RESEARCH_AUTHORIZATION_PATH.read_text(encoding="utf-8")
+    )
+
+    assert record["authorization_id"] == "D-P3.5-RUNTIME-RESEARCH"
+    assert record["limits"]["python_version"] == "3.12.13"
+    assert record["limits"]["binary_wheels_only"] is True
+    assert record["limits"]["runtime_constructors_or_inference"] is False
+    assert record["dependency_or_lockfile_change_authorized"] is False
+    assert record["implementation_authorized"] is False
+    assert readiness.check_runtime_research_authorization().status == readiness.PASS
 
 
 def test_p3_5_start_intent_is_non_effective_and_has_no_authority() -> None:

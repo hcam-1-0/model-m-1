@@ -35,13 +35,15 @@
       "proposal_record": "p3-5-artifact-review-proposal.json",
       "research_authorization_record": "p3-5-artifact-research-authorization.json",
       "review_evidence_record": "p3-5-artifact-review-evidence.json",
-      "status": "evidence_complete_owner_review_pending"
+      "acceptance_record": "p3-5-artifact-review-acceptance.json",
+      "status": "owner_accepted"
     },
     {
       "decision_id": "D-P3.5-RUNTIME-RESEARCH",
       "proposal_record": "p3-5-runtime-review-proposal.json",
       "required_status": "owner_reviewed",
-      "status": "proposal_prepared_owner_authorization_pending"
+      "authorization_record": "p3-5-runtime-research-authorization.json",
+      "status": "owner_authorized_evidence_pending"
     }
   ],
   "prohibited_actions": [

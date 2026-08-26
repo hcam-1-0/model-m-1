@@ -210,10 +210,11 @@ the detailed plan, and owner decision packet are complete. `D-P3.5-001` through
 `D-P3.5-004` approve the recommended `A/A/A/A` baseline. Exact quarantine
 research for seven external artifacts is authorized under
 `D-P3.5-ARTIFACT-RESEARCH`; acquisition, hashes, passive inspection, artifact
-SBOM, model cards, and Defender scan are complete. `D-P3.5-RUNTIME-RESEARCH`
-and the early `D-P3.5-START` remain non-effective until exact runtime review is
-complete and accepted. No extraction, runtime
-loading, generation, training, inference, product implementation, or
+SBOM, model cards, and Defender scan are complete and the exact packet is owner
+accepted. `D-P3.5-RUNTIME-RESEARCH` authorizes the isolated dependency closure;
+runtime evidence remains in progress, and the early `D-P3.5-START` remains
+non-effective until exact runtime review is complete and accepted. No model
+extraction or loading, generation, training, inference, product implementation, or
 media/data access is authorized.
 
 Artifact preparation status: proposal R0 records eight recommended artifact

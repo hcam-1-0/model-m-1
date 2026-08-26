@@ -13,8 +13,9 @@ complete and accepted under `D-P3.4-ACCEPTANCE`. P3.5 synthetic-ANPR planning
 is authorized under `D-P3.5-PLAN-AUTH`; its recommended `A/A/A/A` technical
 baseline is approved, and exact seven-artifact quarantine research is
 authorized under `D-P3.5-ARTIFACT-RESEARCH`. Exact hashes, passive inspection,
-artifact SBOM, and Defender scan are complete. Runtime dependency research and
-`D-P3.5-START` remain pending. All broader media,
+artifact SBOM, and Defender scan are complete and owner accepted.
+`D-P3.5-RUNTIME-RESEARCH` authorizes the isolated dependency review; its
+evidence is pending, and `D-P3.5-START` remains non-effective. All broader media,
 identity, correlation, alerting, and deployment work remains unauthorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
@@ -79,8 +80,10 @@ autonomous enforcement.
 | [P3.5 owner decisions](p3-5-owner-decisions.md) | Approved `A/A/A/A` technical baseline and continuing non-authorization |
 | [P3.5 artifact research authorization](p3-5-artifact-research-authorization.md) | Exact seven-artifact quarantine allowlist and safety controls |
 | [P3.5 exact artifact review evidence](p3-5-artifact-review-evidence.md) | Hashes, passive inspection, Defender scan, license evidence, and runtime blocks |
+| [P3.5 exact artifact review acceptance](p3-5-artifact-review-acceptance.md) | Digest-bound owner acceptance and continuing non-authorization |
 | [P3.5 artifact model cards](p3-5-artifact-model-cards.md) | Intended generated-only OCR roles and explicit limitations |
 | [P3.5 runtime review proposal](p3-5-runtime-review-proposal.md) | Proposed Python 3.12 dependency research and unresolved Tesseract engine |
+| [P3.5 runtime research authorization](p3-5-runtime-research-authorization.md) | Restricted external Python dependency review and prohibited runtime actions |
 | [P3.5 plan](p3-5-plan.md) | Synthetic corpus, localization, OCR, normalization, consensus, privacy, and evidence design |
 | [P3.5 owner decision packet](p3-5-decision-packet.md) | Four technical choices and separate implementation-start gate |
 | [P3.5 planning readiness](p3-5-planning-readiness-report.md) | Machine-verified package boundary, digest, and pending owner gates |

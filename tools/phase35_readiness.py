@@ -33,6 +33,9 @@ ARTIFACT_RESEARCH_AUTHORIZATION_PATH = (
 ARTIFACT_REVIEW_EVIDENCE_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-artifact-review-evidence.json"
 )
+ARTIFACT_REVIEW_ACCEPTANCE_PATH = (
+    ROOT / "contracts" / "phase-3" / "p3-5-artifact-review-acceptance.json"
+)
 ARTIFACT_SBOM_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-artifact-sbom.cdx.json"
 )
@@ -49,6 +52,9 @@ RESEARCH_PATH = ROOT / "contracts" / "phase-3" / "p3-5-research-sources.json"
 RUNTIME_REVIEW_PROPOSAL_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-runtime-review-proposal.json"
 )
+RUNTIME_RESEARCH_AUTHORIZATION_PATH = (
+    ROOT / "contracts" / "phase-3" / "p3-5-runtime-research-authorization.json"
+)
 P3_4_ACCEPTANCE_PATH = ROOT / "contracts" / "phase-3" / "p3-4-acceptance.json"
 
 P3_4_ACCEPTED_PACKAGE_DIGEST = (
@@ -56,6 +62,18 @@ P3_4_ACCEPTED_PACKAGE_DIGEST = (
 )
 P3_4_ACCEPTED_REPOSITORY_HEAD = "092127fcdefa74a0264b9f02d4eee87db3a6c6b8"
 P3_5_BASELINE_REPOSITORY_HEAD = "ce8917343ce6752de35af8d7167878edc6e8d46a"
+P3_5_ACCEPTED_ARTIFACT_PACKAGE_DIGEST = (
+    "54B02B80169604904C9945C1C6E692500CA8AA79253EEC27A63B4C4DB00B395C"
+)
+P3_5_ACCEPTED_ARTIFACT_REPOSITORY_HEAD = (
+    "7052d502d7862cfd1f9f60565e5e169bd6c4e047"
+)
+P3_5_ARTIFACT_EVIDENCE_SHA256 = (
+    "57453CB21F19DF4A0EDFC48784B721D35382F1B4E883C3C89052289EBF8A1BED"
+)
+P3_5_RUNTIME_PROPOSAL_SHA256 = (
+    "3788950DFA0477DE59B1B135AA1AACDA7584A368C1219B3266F0265E6174A5F1"
+)
 
 PACKAGE_FILES = (
     ".github/workflows/python-ci.yml",
@@ -64,6 +82,7 @@ PACKAGE_FILES = (
     "contracts/phase-3/p3-4-acceptance.json",
     "contracts/phase-3/p3-5-artifact-review-proposal.json",
     "contracts/phase-3/p3-5-artifact-review-evidence.json",
+    "contracts/phase-3/p3-5-artifact-review-acceptance.json",
     "contracts/phase-3/p3-5-artifact-model-cards.json",
     "contracts/phase-3/p3-5-artifact-research-authorization.json",
     "contracts/phase-3/p3-5-artifact-sbom.cdx.json",
@@ -72,6 +91,7 @@ PACKAGE_FILES = (
     "contracts/phase-3/p3-5-owner-decisions.json",
     "contracts/phase-3/p3-5-research-sources.json",
     "contracts/phase-3/p3-5-runtime-review-proposal.json",
+    "contracts/phase-3/p3-5-runtime-research-authorization.json",
     "contracts/phase-3/p3-5-start-authorization.json",
     "docs/phase-3/README.md",
     "docs/phase-3/acceptance-checklist.md",
@@ -80,6 +100,7 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-decision-packet.md",
     "docs/phase-3/p3-5-artifact-model-cards.md",
     "docs/phase-3/p3-5-artifact-review-evidence.md",
+    "docs/phase-3/p3-5-artifact-review-acceptance.md",
     "docs/phase-3/p3-5-artifact-research-authorization.md",
     "docs/phase-3/p3-5-artifact-review-proposal.md",
     "docs/phase-3/p3-5-owner-decisions.md",
@@ -88,6 +109,7 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-planning-readiness-report.md",
     "docs/phase-3/p3-5-research-record.md",
     "docs/phase-3/p3-5-runtime-review-proposal.md",
+    "docs/phase-3/p3-5-runtime-research-authorization.md",
     "docs/phase-3/p3-5-start-intent.md",
     "tests/test_phase35_readiness.py",
     "tests/test_phase35_artifact_research.py",
@@ -536,22 +558,27 @@ def check_owner_gates() -> Check:
             for item in technical
         )
         or runtime_research.get("decision_id") != "D-P3.5-RUNTIME-RESEARCH"
-        or runtime_research.get("status") != "pending_owner_decision"
+        or runtime_research.get("status")
+        != "owner_approved_restricted_evidence_pending"
         or start.get("decision_id") != "D-P3.5-START"
         or start.get("status") != "received_prerequisites_pending"
         or start.get("owner_statement_received") != "D-P3.5-START"
         or start.get("effective") is not False
         or record.get("status")
-        != "artifact_review_complete_runtime_research_pending"
+        != "artifact_review_accepted_runtime_research_authorized_evidence_pending"
         or record.get("scope")
         != "phase3.p3_5.synthetic_anpr.pre_implementation_research"
-        or record.get("manual_gate_count") != 2
+        or record.get("manual_gate_count") != 1
         or record.get("owner_decisions_completed") != 4
         or record.get("owner_decisions_record") != "p3-5-owner-decisions.json"
         or record.get("artifact_research_authorization_record")
         != "p3-5-artifact-research-authorization.json"
         or record.get("artifact_review_evidence_record")
         != "p3-5-artifact-review-evidence.json"
+        or record.get("artifact_review_acceptance_record")
+        != "p3-5-artifact-review-acceptance.json"
+        or record.get("runtime_research_authorization_record")
+        != "p3-5-runtime-research-authorization.json"
         or record.get("runtime_review_proposal_record")
         != "p3-5-runtime-review-proposal.json"
         or record.get("implementation_authorized") is not False
@@ -564,8 +591,8 @@ def check_owner_gates() -> Check:
     return Check(
         "owner_decisions",
         MANUAL,
-        "Artifact evidence is complete; runtime research and final digest-bound start remain manual.",
-        ("D-P3.5-RUNTIME-RESEARCH", "D-P3.5-START"),
+        "Artifact evidence is accepted and runtime research is authorized; final digest-bound start remains manual.",
+        ("D-P3.5-START",),
     )
 
 
@@ -652,8 +679,8 @@ def check_start_intent() -> Check:
             "owner_approved",
             "owner_approved",
             "owner_approved",
-            "evidence_complete_owner_review_pending",
-            "proposal_prepared_owner_authorization_pending",
+            "owner_accepted",
+            "owner_authorized_evidence_pending",
         )
     ):
         return Check(
@@ -895,6 +922,45 @@ def check_artifact_review_evidence() -> Check:
     )
 
 
+def check_artifact_review_acceptance() -> Check:
+    try:
+        record = _json(ARTIFACT_REVIEW_ACCEPTANCE_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("artifact_review_acceptance", FAIL, str(exc))
+    evidence_sha256 = hashlib.sha256(
+        ARTIFACT_REVIEW_EVIDENCE_PATH.read_bytes()
+    ).hexdigest().upper()
+    if (
+        record.get("contract_format")
+        != "hcam.phase3.p3_5.artifact-review-acceptance.v1"
+        or record.get("decision_id") != "P3.5-EXACT-ARTIFACT-REVIEW-R1"
+        or record.get("artifact_evidence_id")
+        != "P3.5-EXACT-ARTIFACT-REVIEW-R1"
+        or record.get("accepted_by") != "mayank-admin"
+        or record.get("accepted_repository_head")
+        != P3_5_ACCEPTED_ARTIFACT_REPOSITORY_HEAD
+        or record.get("evidence_package_digest")
+        != P3_5_ACCEPTED_ARTIFACT_PACKAGE_DIGEST
+        or record.get("artifact_evidence_sha256")
+        != P3_5_ARTIFACT_EVIDENCE_SHA256
+        or evidence_sha256 != P3_5_ARTIFACT_EVIDENCE_SHA256
+        or record.get("documented_limitations_accepted") is not True
+        or record.get("implementation_authorized") is not False
+        or record.get("status") != "accepted"
+    ):
+        return Check(
+            "artifact_review_acceptance",
+            FAIL,
+            "The exact artifact evidence acceptance is missing, changed, or widened.",
+        )
+    return Check(
+        "artifact_review_acceptance",
+        PASS,
+        "mayank-admin accepted artifact evidence R1 at its exact historical package digest without implementation authority.",
+        (P3_5_ACCEPTED_ARTIFACT_PACKAGE_DIGEST,),
+    )
+
+
 def check_artifact_sbom() -> Check:
     try:
         record = _json(ARTIFACT_SBOM_PATH)
@@ -1047,6 +1113,79 @@ def check_runtime_review_proposal() -> Check:
     )
 
 
+def check_runtime_research_authorization() -> Check:
+    try:
+        record = _json(RUNTIME_RESEARCH_AUTHORIZATION_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("runtime_research_authorization", FAIL, str(exc))
+    proposal_sha256 = hashlib.sha256(
+        RUNTIME_REVIEW_PROPOSAL_PATH.read_bytes()
+    ).hexdigest().upper()
+    packages = record.get("allowed_direct_packages")
+    versions = (
+        {
+            str(item.get("name")): str(item.get("version"))
+            for item in packages
+            if isinstance(item, dict)
+        }
+        if isinstance(packages, list)
+        else {}
+    )
+    limits = record.get("limits")
+    expected_network = [
+        "resolve_and_download_binary_python_packages_from_exact_PyPI_hosts",
+        "query_PyPI_vulnerability_metadata_for_the_resolved_environment",
+    ]
+    if (
+        record.get("contract_format")
+        != "hcam.phase3.p3_5.runtime-research-authorization.v1"
+        or record.get("authorization_id") != "D-P3.5-RUNTIME-RESEARCH"
+        or record.get("authorized_by") != "mayank-admin"
+        or record.get("accepted_artifact_evidence_id")
+        != "P3.5-EXACT-ARTIFACT-REVIEW-R1"
+        or record.get("accepted_evidence_package_digest")
+        != P3_5_ACCEPTED_ARTIFACT_PACKAGE_DIGEST
+        or record.get("proposal_id") != "P3.5-RUNTIME-REVIEW-PROPOSAL-R0"
+        or record.get("proposal_sha256") != P3_5_RUNTIME_PROPOSAL_SHA256
+        or proposal_sha256 != P3_5_RUNTIME_PROPOSAL_SHA256
+        or record.get("status") != "owner_approved_restricted"
+        or record.get("implementation_authorized") is not False
+        or record.get("dependency_or_lockfile_change_authorized") is not False
+        or record.get("tesseract_runtime_authorized") is not False
+        or record.get("allowed_network_actions") != expected_network
+        or set(record.get("allowed_source_hosts", []))
+        != {"files.pythonhosted.org", "pypi.org"}
+        or versions
+        != {
+            "paddleocr": "3.7.0",
+            "paddlepaddle": "3.3.1",
+            "Pillow": "12.3.0",
+            "regex": "2026.7.19",
+        }
+        or not isinstance(limits, dict)
+        or limits.get("python_version") != "3.12.13"
+        or limits.get("binary_wheels_only") is not True
+        or limits.get("package_source_builds") is not False
+        or limits.get("repository_environment_changes") is not False
+        or limits.get("environment_proxies") is not False
+        or limits.get("import_network_access") is not False
+        or limits.get("model_font_media_or_traineddata_loading") is not False
+        or limits.get("runtime_constructors_or_inference") is not False
+        or not str(limits.get("external_quarantine_root", "")).startswith("B:\\")
+    ):
+        return Check(
+            "runtime_research_authorization",
+            FAIL,
+            "The runtime research authorization is not exactly bound, external, or non-runtime.",
+        )
+    return Check(
+        "runtime_research_authorization",
+        PASS,
+        "D-P3.5-RUNTIME-RESEARCH authorizes four exact direct roots and their binary closure outside Git without model runtime authority.",
+        tuple(f"{name}=={version}" for name, version in versions.items()),
+    )
+
+
 def check_documentation_sync() -> Check:
     required = {
         "README.md": (
@@ -1056,6 +1195,7 @@ def check_documentation_sync() -> Check:
         ),
         "contracts/phase-3/README.md": (
             "p3-5-artifact-review-evidence.json",
+            "p3-5-artifact-review-acceptance.json",
             "p3-5-artifact-model-cards.json",
             "p3-5-artifact-review-proposal.json",
             "p3-5-artifact-research-authorization.json",
@@ -1065,10 +1205,12 @@ def check_documentation_sync() -> Check:
             "p3-5-entry-gates.json",
             "p3-5-start-authorization.json",
             "p3-5-runtime-review-proposal.json",
+            "p3-5-runtime-research-authorization.json",
         ),
         "docs/phase-3/README.md": (
             "[P3.5 artifact model cards](p3-5-artifact-model-cards.md)",
             "[P3.5 exact artifact review evidence](p3-5-artifact-review-evidence.md)",
+            "[P3.5 exact artifact review acceptance](p3-5-artifact-review-acceptance.md)",
             "[P3.5 artifact research authorization](p3-5-artifact-research-authorization.md)",
             "[P3.5 artifact review proposal](p3-5-artifact-review-proposal.md)",
             "[P3.5 owner decisions](p3-5-owner-decisions.md)",
@@ -1076,10 +1218,12 @@ def check_documentation_sync() -> Check:
             "[P3.5 owner decision packet](p3-5-decision-packet.md)",
             "[P3.5 start intent](p3-5-start-intent.md)",
             "[P3.5 runtime review proposal](p3-5-runtime-review-proposal.md)",
+            "[P3.5 runtime research authorization](p3-5-runtime-research-authorization.md)",
         ),
         "docs/phase-3/decision-register.md": (
             "DR-0035",
             "DR-0037",
+            "DR-0039",
             "D-P3.5-PLAN-AUTH",
             "D-P3.5-ARTIFACT-RESEARCH",
             "D-P3.5-START",
@@ -1152,9 +1296,11 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_owner_decisions_record(),
         check_artifact_research_authorization(),
         check_artifact_review_evidence(),
+        check_artifact_review_acceptance(),
         check_artifact_sbom(),
         check_artifact_model_cards(),
         check_runtime_review_proposal(),
+        check_runtime_research_authorization(),
         check_start_intent(),
         check_documentation_sync(),
     ]
@@ -1170,7 +1316,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
     status = (
         "invalid"
         if failures
-        else "artifact_review_complete_runtime_research_pending"
+        else "artifact_review_accepted_runtime_research_authorized_evidence_pending"
         if manual_gates
         else "implementation_authorized_generated_only"
     )

@@ -78,12 +78,17 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   extraction, runtime loading, or implementation.
 - `p3-5-artifact-review-evidence.json`: exact SHA-256 values, passive archive,
   traineddata/font inspection, Defender evidence, and remaining runtime blocks.
+- `p3-5-artifact-review-acceptance.json`: exact package-digest and evidence-hash
+  owner acceptance with all runtime and implementation boundaries preserved.
 - `p3-5-artifact-sbom.cdx.json`: CycloneDX 1.6 inventory for all seven exact
   artifacts, source identities, licenses, and blocked runtime state.
 - `p3-5-artifact-model-cards.json`: five OCR roles, intended generated-only use,
   limitations, and continuing execution blocks.
 - `p3-5-runtime-review-proposal.json`: Python 3.12 package/runtime proposal with
   no package download, dependency change, or implementation authority.
+- `p3-5-runtime-research-authorization.json`: digest-bound authority for an
+  external binary-wheel dependency closure, SBOM, scans, audit, and import-only
+  proof with no repository dependency or model-runtime authority.
 - `p3-5-entry-gates.json`: four approved technical choices and the remaining,
   prerequisite-blocked `D-P3.5-START` statement.
 - `p3-5-start-authorization.json`: the exact received start intent, four
@@ -110,6 +115,7 @@ uv run --locked --extra dev --extra analytics python tools/phase34_implementatio
 uv run --locked --extra dev python tools/phase35_readiness.py --strict
 uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
+uv run --locked --extra dev python tools/phase35_runtime_research.py --root 'B:\hcam-research-quarantine\phase-3\p3-5-runtime'
 ```
 
 Rewriting snapshots requires an explicit review acknowledgement:
@@ -127,7 +133,8 @@ accepted under `D-P3.4-ACCEPTANCE`. The PostGIS validation image remains
 deployment-blocked.
 These contracts do not authorize camera access, raw-media persistence, external
 datasets, identity, cross-camera association, Government matching, alerts,
-or deployment. P3.5 technical choices are approved, and only the exact seven
-quarantine downloads recorded under `D-P3.5-ARTIFACT-RESEARCH` are authorized.
-Receipt of `D-P3.5-START` before exact review completion does not authorize
-runtime, dependency, implementation, media, or deployment action.
+or deployment. P3.5 technical choices and the exact artifact evidence are owner
+accepted. `D-P3.5-RUNTIME-RESEARCH` authorizes only the documented external
+dependency research; it does not authorize model or product runtime behavior.
+Receipt of `D-P3.5-START` before final runtime review does not authorize
+implementation, media, or deployment action.

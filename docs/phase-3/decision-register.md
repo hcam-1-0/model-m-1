@@ -438,7 +438,7 @@ and a final packet-bound `D-P3.5-START` confirmation are still required.
 
 ### DR-0038: P3.5 Exact Artifact Evidence And Runtime Research Gate
 
-Status: artifact evidence complete; runtime research pending owner decision.
+Status: artifact evidence owner accepted; restricted runtime research authorized.
 
 All seven authorized external artifacts were acquired into an external local
 quarantine. Exact sizes, SHA-256 values, Paddle HTTP identities, Git blob
@@ -447,7 +447,8 @@ CycloneDX 1.6 inventory, license evidence, and Microsoft Defender results are
 recorded. No archive was extracted, and no artifact was loaded or executed.
 
 The first `F:` attempt stopped for insufficient space without leaving a partial
-file. The `B:` virtual provider was not usable from Python. The complete
+file. The `B:` provider was not usable from Python during artifact acquisition;
+it was rechecked successfully before runtime research. The complete artifact
 evidence set is stored under `E:\h-cam-research-cache\phase-3\p3-5`; quarantine
 files remain outside Git.
 
@@ -455,9 +456,23 @@ Runtime readiness is still incomplete. The proposed baseline is isolated
 CPython 3.12.13 with metadata-only candidates `paddleocr==3.7.0`,
 `paddlepaddle==3.3.1`, `Pillow==12.3.0`, and `regex==2026.7.19`. Exact wheels,
 transitive dependencies, native libraries, vulnerability evidence, and the
-Tesseract 5 engine are unresolved. `D-P3.5-RUNTIME-RESEARCH` is therefore a new
-narrow gate before final `D-P3.5-START`; it grants no authority until explicitly
-approved.
+Tesseract 5 engine are unresolved. `D-P3.5-RUNTIME-RESEARCH` is approved only
+for the documented external binary-wheel closure, SBOM, scan, vulnerability,
+and network-denied import checks. It grants no implementation or model-runtime
+authority. Final `D-P3.5-START` remains separate.
+
+### DR-0039: P3.5 Artifact Acceptance And Runtime Research Authorization
+
+Status: approved; runtime research evidence pending.
+
+`mayank-admin` accepted `P3.5-EXACT-ARTIFACT-REVIEW-R1` for exact package digest
+`54B02B80169604904C9945C1C6E692500CA8AA79253EEC27A63B4C4DB00B395C`
+and authorized `D-P3.5-RUNTIME-RESEARCH` under the proposal's non-runtime
+boundaries. The research root is external to Git, direct package roots are
+exactly pinned, source builds and repository lock changes are forbidden, and
+imports must deny socket access. Reviewed OCR artifacts, Tesseract, constructors,
+generation, training, inference, media/data, implementation, and deployment
+remain prohibited.
 
 ## Decisions Explicitly Deferred
 

@@ -14,9 +14,10 @@ an accepted, generated-only anonymous stream-local tracker under
 under `D-P3.4-ACCEPTANCE` for its exact historical package digest.
 P3.5 synthetic-ANPR planning is authorized under `D-P3.5-PLAN-AUTH`. The exact
 `A/A/A/A` technical baseline is approved, and `D-P3.5-ARTIFACT-RESEARCH`
-authorized exactly seven quarantine downloads. Their exact hashes, passive
-structure checks, artifact SBOM, and Defender scan are complete. Runtime
-dependency research and `D-P3.5-START` remain non-effective owner gates.
+authorized exactly seven quarantine downloads. Their evidence packet is owner
+accepted. `D-P3.5-RUNTIME-RESEARCH` now authorizes only isolated dependency,
+SBOM, vulnerability, scan, and import research outside the worktree. P3.5
+implementation and final `D-P3.5-START` remain non-effective.
 None of these milestones adds a real CCTV media path.
 
 A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
@@ -24,6 +25,8 @@ pins the recommended artifact locations and bounds. The separate
 [artifact research authorization](docs/phase-3/p3-5-artifact-research-authorization.md)
 permits only its seven exact external artifacts to enter a non-runtime local
 quarantine; it authorizes no extraction, execution, or implementation.
+The [runtime research authorization](docs/phase-3/p3-5-runtime-research-authorization.md)
+separately bounds external Python dependency evidence work.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
@@ -61,6 +64,7 @@ uv run --locked --extra dev --extra analytics python tools/phase34_implementatio
 uv run --locked --extra dev python tools/phase35_readiness.py --strict --json
 uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
+uv run --locked --extra dev python tools/phase35_runtime_research.py --root 'B:\hcam-research-quarantine\phase-3\p3-5-runtime'
 ```
 
 The P3.3 readiness command should report `accepted` with zero technical
@@ -77,9 +81,10 @@ failures, and zero manual gates while preserving the immutable historical
 package binding. The PostGIS validation image remains deployment-blocked.
 
 The P3.5 planning verifier should report
-`artifact_review_complete_runtime_research_pending`, zero technical failures,
-and two manual gates. It verifies the approved `A/A/A/A` baseline, exact
-seven-artifact evidence, and non-effective early start statement. The verifier
+`artifact_review_accepted_runtime_research_authorized_evidence_pending`, zero
+technical failures, and one manual gate. It verifies the approved `A/A/A/A`
+baseline, exact artifact acceptance, restricted runtime research authority,
+and non-effective early start statement. The verifier
 itself performs no download, extraction,
 synthetic generation, training, inference, media access, or product execution.
 The artifact-research command is separately gated and writes only the seven
