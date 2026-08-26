@@ -1,7 +1,8 @@
 # P3.4 Geometry And Event Primitives Plan
 
 Status: planning complete; technical decisions `D-P3.4-001` through
-`D-P3.4-004` accepted; `D-P3.4-START` authorized; final acceptance pending.
+`D-P3.4-004` accepted; `D-P3.4-START` authorized; implementation accepted under
+`D-P3.4-ACCEPTANCE`.
 
 Planning authority: `D-P3.4-PLAN-AUTH`.
 

@@ -120,7 +120,7 @@ jobs:
         run: |
           python tools/phase34_c10_evidence.py check
           python tools/phase34_supply_chain.py check
-          python tools/phase34_implementation_readiness.py --require-clean-source
+          python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance
 
       - name: Preserve Phase 0 unittest check
         if: matrix.python-version == '3.12'

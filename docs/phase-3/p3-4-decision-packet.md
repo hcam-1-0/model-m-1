@@ -1,7 +1,8 @@
 # P3.4 Owner Decision Packet
 
 Status: technical decisions `D-P3.4-001` through `D-P3.4-004` accepted;
-`D-P3.4-START` authorized. Final implementation acceptance remains pending.
+`D-P3.4-START` authorized; final implementation accepted under
+`D-P3.4-ACCEPTANCE`.
 
 Planning authority: `D-P3.4-PLAN-AUTH`.
 

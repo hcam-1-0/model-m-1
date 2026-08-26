@@ -325,9 +325,8 @@ deployment, and remote Git actions are not authorized by this decision.
 
 ### DR-0033: P3.4 Geometry And Event Planning Baseline
 
-Status: planning and technical decisions accepted; bounded generated-only
-implementation completed under `D-P3.4-START`; exact-digest owner acceptance
-pending.
+Status: accepted under `D-P3.4-ACCEPTANCE` for the immutable generated-only
+implementation package.
 
 P3.4 planning uses accepted anonymous stream-local P3.3 lifecycle v2 as its only
 observation dependency. The recommended baseline uses normalized image-space
@@ -352,7 +351,11 @@ Git action.
 The implemented package now passes generated C10 replay, SQLite/PostGIS
 migration, full-suite coverage, packaging, audit, and Docker/Compose evidence.
 The PostGIS image has unresolved critical/high findings and remains explicitly
-deployment-blocked. `D-P3.4-ACCEPTANCE` is still an independent owner decision.
+deployment-blocked. On 2026-08-26, `mayank-admin` accepted
+`D-P3.4-ACCEPTANCE` for package digest
+`11CCD757E2308F56EE5912B70861B8A977DBD8B7CEE8DBD434265A28988EF8AF` at
+repository checkpoint `092127fcdefa74a0264b9f02d4eee87db3a6c6b8`. This does
+not authorize P3.5 or waive any continuing boundary.
 
 ## Decisions Explicitly Deferred
 

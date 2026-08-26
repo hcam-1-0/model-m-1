@@ -1,8 +1,7 @@
 # P3.4 Implementation Readiness Report
 
-Status: technically validated under `D-P3.4-START`; `D-P3.4-ACCEPTANCE`
-remains pending for the replacement clean-source digest emitted after this
-recovery checkpoint.
+Status: accepted under `D-P3.4-ACCEPTANCE` for the immutable clean-source
+package digest recorded below.
 
 Scope: `phase3.p3_4.generated_only_geometry_and_event_primitives`.
 
@@ -50,13 +49,20 @@ was also evaluated and was worse, with 215 findings including 4 critical and 23
 high, so the existing Alpine validation pin was retained without a deployment
 waiver.
 
-## Owner Gate
+## Owner Acceptance
 
-`tools/phase34_implementation_readiness.py` binds the exact tracked package and
-reports one manual gate until `mayank-admin` accepts its clean-source SHA-256
-package digest under `D-P3.4-ACCEPTANCE`.
+On 2026-08-26, `mayank-admin` accepted the 62-file package at repository
+checkpoint `092127fcdefa74a0264b9f02d4eee87db3a6c6b8` with SHA-256 package
+digest:
 
-No acceptance may be inferred from `D-P3.4-START`, test success, a commit,
-silence, or a later-phase discussion. P3.5, cameras, media, external data,
+`11CCD757E2308F56EE5912B70861B8A977DBD8B7CEE8DBD434265A28988EF8AF`
+
+`tools/phase34_implementation_readiness.py` verifies that immutable historical
+binding and reports zero manual gates. The live digest may change when
+post-acceptance governance documents or acceptance-aware tests are added; such
+changes do not rewrite the accepted implementation package.
+
+No broader authorization may be inferred from this acceptance. P3.5, cameras,
+media, external data,
 identity, cross-camera linkage, Government matching, alerts, deployment, and
 remote Git actions remain unauthorized.

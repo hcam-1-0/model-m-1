@@ -155,8 +155,7 @@ Implementation status: `accepted` under `D-P3.3-ACCEPTANCE`. The generated-only
 stream-local tracker, lifecycle v2,
 persistence, APIs, retention, observability, evaluation, and fail-closed
 resource controls are implemented and accepted against the immutable package
-digest. P3.4 is separately implemented under `D-P3.4-START` but is not yet
-owner accepted.
+digest. P3.4 is separately accepted under `D-P3.4-ACCEPTANCE`.
 
 Deliverables:
 
@@ -178,8 +177,9 @@ technical planning, and the owner decision packet are complete. The owner
 accepted `D-P3.4-001` hybrid PostGIS/Shapely geometry, `D-P3.4-002` visual typed
 rule graph with constrained CEL, `D-P3.4-003` balanced deterministic time, and
 `D-P3.4-004` bounded PostgreSQL/PostGIS persistence. Generated-only local
-implementation is authorized under `D-P3.4-START`. Implementation and technical
-evidence are complete; exact-digest final acceptance remains pending.
+implementation was authorized under `D-P3.4-START`. Implementation and
+technical evidence are complete and accepted under `D-P3.4-ACCEPTANCE` for the
+immutable package digest. The PostGIS image deployment block remains open.
 
 Deliverables:
 

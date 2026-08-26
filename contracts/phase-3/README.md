@@ -62,6 +62,8 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   SBOM, and the unresolved PostGIS image deployment block.
 - `p3-4-validation-evidence.json`: test, coverage, migration, packaging,
   dependency-audit, Docker, and prohibited-input evidence.
+- `p3-4-acceptance.json`: exact-digest owner acceptance of the immutable
+  generated-only P3.4 package and its continuing non-authorization boundary.
 
 Verify all tracked snapshots:
 
@@ -79,7 +81,7 @@ uv run --locked --extra dev --extra analytics python tools/phase33_implementatio
 uv run --locked --extra dev python tools/phase34_readiness.py --strict
 uv run --locked --extra dev --extra analytics python tools/phase34_c10_evidence.py check
 uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.py check
-uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source
+uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance
 ```
 
 Rewriting snapshots requires an explicit review acknowledgement:
@@ -92,9 +94,9 @@ uv run --locked --extra dev python tools/phase31_contracts.py write --acknowledg
 
 Taxonomy and geometry fixtures remain `draft`. The accepted P3.2 and P3.3
 runtime slices are generated-only, default-off, and production-forbidden.
-P3.4 generated-only local implementation is built and technically validated
-under `D-P3.4-START`. Exact-digest final implementation acceptance remains
-pending, and the PostGIS validation image remains deployment-blocked.
+P3.4 generated-only local implementation is built, technically validated, and
+accepted under `D-P3.4-ACCEPTANCE`. The PostGIS validation image remains
+deployment-blocked.
 These contracts do not authorize camera access, raw-media persistence, external
 datasets, identity, cross-camera association, Government matching, alerts,
 deployment, or P3.5 work.

@@ -1,7 +1,7 @@
 # P3.4 Geometry And Event Primitives Implementation
 
-Status: implemented and technically validated under `D-P3.4-START`; exact
-clean-source owner acceptance remains pending.
+Status: implemented, technically validated, and accepted under
+`D-P3.4-ACCEPTANCE` for the immutable clean-source package.
 
 Scope: `phase3.p3_4.generated_only_geometry_and_event_primitives`.
 

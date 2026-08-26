@@ -281,11 +281,11 @@ The PostGIS image scan records 54 unresolved findings, including 2 critical and
 21 high, so deployment remains blocked. These results authorize no camera,
 media, external data, identity, alert, deployment, P3.5, or remote Git action.
 
-Verify the bounded evidence without granting owner acceptance:
+Verify the accepted bounded evidence and immutable historical binding:
 
 ```powershell
 uv run --locked --extra dev python tools/phase34_readiness.py --strict
 uv run --locked --extra dev --extra analytics python tools/phase34_c10_evidence.py check
 uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.py check
-uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source
+uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance
 ```

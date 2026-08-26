@@ -83,9 +83,11 @@ outbox**.
 - C10 goldens, property/state-machine tests, PostgreSQL concurrency, replay,
   retention, overload, and clean-source evidence remain mandatory.
 
-## Remaining Gate
+## Final Acceptance
 
 These four selections freeze the technical baseline. `D-P3.4-START` now
 separately authorizes dependency acquisition, contracts, migration, evaluator,
 API, generated execution, tests, evidence, and local checkpoint work under the
-continuing exclusions. Final implementation acceptance remains pending.
+continuing exclusions. `D-P3.4-ACCEPTANCE` was recorded on 2026-08-26 for the
+exact immutable implementation package; all continuing exclusions remain in
+force.

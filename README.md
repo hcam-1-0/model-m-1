@@ -10,8 +10,8 @@ deterministic fixtures, prohibited-data guardrails, and a durable assignment
 control plane with RBAC, ETags, revisions, audit, and transactional outbox.
 P3.2 adds an accepted, default-off generated-input detector reference. P3.3 adds
 an accepted, generated-only anonymous stream-local tracker under
-`D-P3.3-ACCEPTANCE`. P3.4 is implemented and technically validated under
-`D-P3.4-START`; exact-digest final owner acceptance remains pending.
+`D-P3.3-ACCEPTANCE`. P3.4 is implemented, technically validated, and accepted
+under `D-P3.4-ACCEPTANCE` for its exact historical package digest.
 None of these milestones adds a real CCTV media path.
 
 P3.1 planning and its generated-only implementation boundary are authorized
@@ -46,7 +46,7 @@ uv run --locked --extra dev --extra analytics python tools/phase33_implementatio
 uv run --locked --extra dev python tools/phase34_readiness.py --strict --json
 uv run --locked --extra dev --extra analytics python tools/phase34_c10_evidence.py check
 uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.py check
-uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source --json
+uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance --json
 ```
 
 The P3.3 readiness command should report `accepted` with zero technical
@@ -58,9 +58,9 @@ The P3.4 entry command should report
 manual gates. That authorization permits bounded implementation work but does
 not grant final acceptance.
 
-The P3.4 implementation verifier should report `ready_for_owner_acceptance`,
-zero technical failures, and one manual owner gate. Its package digest must be
-accepted separately; the PostGIS validation image remains deployment-blocked.
+The P3.4 implementation verifier should report `accepted`, zero technical
+failures, and zero manual gates while preserving the immutable historical
+package binding. The PostGIS validation image remains deployment-blocked.
 
 ## Phase 2 camera and video ingestion
 

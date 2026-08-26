@@ -91,7 +91,7 @@ tree.
 11. Commit the validated local checkpoint. Do not push or open/merge a PR
     without explicit remote-action authorization.
 
-## Gates That Remain Unchanged
+## Historical Gates At Pause
 
 - `D-P3.4-ACCEPTANCE` is still pending and must bind a newly computed final
   clean-source digest. The previous digest is superseded by this uncommitted
@@ -103,6 +103,11 @@ tree.
   this authorization.
 
 ## Resume Completion
+
+- The replacement hardening checkpoint was committed at
+  `092127fcdefa74a0264b9f02d4eee87db3a6c6b8` and accepted on 2026-08-26 under
+  `D-P3.4-ACCEPTANCE` for digest
+  `11CCD757E2308F56EE5912B70861B8A977DBD8B7CEE8DBD434265A28988EF8AF`.
 
 - The complete repository suite passed 715 tests and 119 subtests, with 8
   expected PostgreSQL skips, one pre-existing Starlette warning, and 90.24%

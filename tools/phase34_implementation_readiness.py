@@ -50,6 +50,10 @@ MANUAL = "manual"
 ACCEPTANCE_PATH = ROOT / "contracts" / "phase-3" / "p3-4-acceptance.json"
 VALIDATION_PATH = ROOT / "contracts" / "phase-3" / "p3-4-validation-evidence.json"
 START_PATH = ROOT / "contracts" / "phase-3" / "p3-4-start-authorization.json"
+P3_4_ACCEPTED_PACKAGE_DIGEST = (
+    "11CCD757E2308F56EE5912B70861B8A977DBD8B7CEE8DBD434265A28988EF8AF"
+)
+P3_4_ACCEPTED_REPOSITORY_HEAD = "092127fcdefa74a0264b9f02d4eee87db3a6c6b8"
 
 PACKAGE_FILES = (
     ".github/workflows/python-ci.yml",
@@ -499,23 +503,38 @@ def check_owner_acceptance() -> Check:
         )
     try:
         record = _json(ACCEPTANCE_PATH)
-        digest, _ = package_digest()
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         return Check("owner_acceptance", FAIL, str(exc))
     if (
         record.get("decision_id") == "D-P3.4-ACCEPTANCE"
         and record.get("status") == "accepted"
         and record.get("accepted_by") == "mayank-admin"
+        and record.get("owner_statement_received") == "D-P3.4-ACCEPTANCE"
         and record.get("scope")
         == "phase3.p3_4.generated_only_geometry_and_event_primitives"
-        and record.get("evidence_package_digest") == digest
+        and record.get("evidence_package_digest")
+        == P3_4_ACCEPTED_PACKAGE_DIGEST
+        and record.get("accepted_repository_head")
+        == P3_4_ACCEPTED_REPOSITORY_HEAD
         and record.get("package_file_count") == len(PACKAGE_FILES)
+        and record.get("documented_limitations_accepted") is True
+        and record.get("next_phase_authorized") is False
     ):
-        return Check("owner_acceptance", PASS, "Exact P3.4 package is owner accepted.")
+        return Check(
+            "owner_acceptance",
+            PASS,
+            "Owner acceptance of the immutable P3.4 package remains valid; "
+            "the live package digest may include post-acceptance governance "
+            "or documentation updates.",
+            (
+                f"accepted_digest={P3_4_ACCEPTED_PACKAGE_DIGEST}",
+                f"accepted_repository_head={P3_4_ACCEPTED_REPOSITORY_HEAD}",
+            ),
+        )
     return Check(
         "owner_acceptance",
         FAIL,
-        "P3.4 acceptance record does not match the exact current package.",
+        "P3.4 acceptance record does not match the immutable accepted package.",
     )
 
 

@@ -480,12 +480,12 @@ def check_dependency_boundary() -> Check:
 
 def check_documentation_sync() -> Check:
     required = {
-        "README.md": ("tools/phase34_readiness.py", "D-P3.4-START"),
+        "README.md": ("tools/phase34_readiness.py", "D-P3.4-ACCEPTANCE"),
         "docs/phase-3/README.md": (
             "[P3.4 plan](p3-4-plan.md)",
             "[P3.4 owner decisions](p3-4-owner-decisions.md)",
             "Implementation and technical evidence are",
-            "exact-digest final acceptance remains pending",
+            "accepted under `D-P3.4-ACCEPTANCE`",
         ),
         "docs/phase-3/implementation-backlog.md": (
             "D-P3.4-PLAN-AUTH",

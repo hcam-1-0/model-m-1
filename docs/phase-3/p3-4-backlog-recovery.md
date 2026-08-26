@@ -92,7 +92,8 @@ new local checkpoint commit.
   part of the final handoff sequence.
 - [x] Record the replacement P3.4 package digest and present the sole remaining
   `D-P3.4-ACCEPTANCE` owner gate.
-- [ ] Receive explicit `D-P3.4-ACCEPTANCE` for that exact replacement digest.
+- [x] Receive explicit `D-P3.4-ACCEPTANCE` for replacement digest
+  `11CCD757E2308F56EE5912B70861B8A977DBD8B7CEE8DBD434265A28988EF8AF`.
 
 ## Continuing Independent Blocks
 
