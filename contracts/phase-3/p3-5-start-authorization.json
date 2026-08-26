@@ -32,7 +32,8 @@
     {
       "evidence_id": "P3.5-EXACT-ARTIFACT-REVIEW",
       "required_status": "owner_reviewed",
-      "status": "not_prepared"
+      "proposal_record": "p3-5-artifact-review-proposal.json",
+      "status": "proposal_prepared_blocked"
     }
   ],
   "prohibited_actions": [

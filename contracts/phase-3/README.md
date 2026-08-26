@@ -68,6 +68,9 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   on accepted P3.4, with all implementation and artifact actions prohibited.
 - `p3-5-research-sources.json`: primary-source, no-download research evidence
   for OCR, Unicode, registration-mark constraints, fonts, and synthetic data.
+- `p3-5-artifact-review-proposal.json`: metadata-only recommended `A/A/A/A`
+  acquisition proposal with eight blocked artifact slots, exact source
+  identities where available, empty network authority, and unresolved hashes.
 - `p3-5-entry-gates.json`: four pending technical choices and the early,
   prerequisite-blocked `D-P3.5-START` statement.
 - `p3-5-start-authorization.json`: the exact received start intent, its five

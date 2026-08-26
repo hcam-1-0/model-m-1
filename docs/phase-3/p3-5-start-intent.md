@@ -16,7 +16,7 @@ prerequisites were not complete when it was received.
 | `D-P3.5-002` detector and OCR portfolio | Pending owner selection |
 | `D-P3.5-003` normalization, abstention, and consensus | Pending owner selection |
 | `D-P3.5-004` privacy, resources, and evidence policy | Pending owner selection |
-| Exact model, font, dictionary, generator, dependency, and runtime review | Not prepared; depends on the selections above |
+| Exact model, font, dictionary, generator, dependency, and runtime review | Metadata proposal R0 prepared; acquisition, SHA-256, license/lineage, SBOM, and owner review remain blocked |
 
 The recommended technical baseline can be selected with:
 
@@ -27,8 +27,9 @@ D-P3.5-003: A
 D-P3.5-004: A
 ```
 
-Those selections authorize preparation and review of the exact proposed
-artifact packet only. They do not authorize downloads or implementation.
+Those selections make proposal R0 eligible for owner review. They do not
+authorize downloads or implementation. A separate
+`D-P3.5-ARTIFACT-RESEARCH` gate is required for bounded quarantine acquisition.
 
 ## Why The Start Is Not Yet Effective
 

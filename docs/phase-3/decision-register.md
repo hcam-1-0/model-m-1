@@ -398,6 +398,22 @@ allowlists. It grants no implementation authority. A final confirmation must
 bind the four selected decisions and the exact reviewed packet digest before
 any acquisition, dependency change, generation, inference, or product work.
 
+### DR-0036: P3.5 Metadata-Only Artifact Proposal
+
+Status: prepared but blocked.
+
+Proposal R0 identifies eight artifact slots for the recommended `A/A/A/A`
+baseline: three Paddle recognition archives, two Gujarati Tesseract traineddata
+files, two Noto fonts, and one future generated-only H-CAM plate detector.
+Immutable Git revisions, Git blob identities, official URLs, observed sizes,
+content types, ETags, and size ceilings are recorded where available.
+
+No artifact body was downloaded. Every SHA-256 remains unresolved. Tesseract is
+not installed, Paddle runtime compatibility is unproven, and no candidate is
+approved for execution. `D-P3.5-ARTIFACT-RESEARCH` is required before exact
+allowlisted quarantine acquisition; it does not substitute for final
+digest-bound `D-P3.5-START` confirmation.
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

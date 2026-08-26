@@ -17,6 +17,10 @@ P3.5 synthetic-ANPR planning is authorized under `D-P3.5-PLAN-AUTH`. The exact
 choices and exact artifact/source review remain pending.
 None of these milestones adds a real CCTV media path.
 
+A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
+now pins the recommended artifact locations and bounds. It authorizes no
+download or execution.
+
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
 with zero failures. Clean-source regeneration is complete, and `mayank-admin`

@@ -128,6 +128,10 @@ zero. P3.2 remains blocked and requires separate artifact and dataset approval.
 - [ ] `D-P3.5-002` detector and OCR portfolio is owner selected.
 - [ ] `D-P3.5-003` normalization, abstention, and consensus is owner selected.
 - [ ] `D-P3.5-004` privacy, resources, and evidence policy is owner selected.
+- [x] A metadata-only eight-artifact proposal is prepared with immutable source
+  identities where available, bounded sizes, empty network authority, and
+  unresolved SHA-256 values.
+- [ ] `D-P3.5-ARTIFACT-RESEARCH` authorizes exact quarantine acquisition only.
 - [ ] Exact artifact/source manifests are reviewed and owner approved.
 - [x] The exact early `D-P3.5-START` statement is preserved as non-effective
   intent with empty artifact and network allowlists.

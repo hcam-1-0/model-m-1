@@ -73,6 +73,7 @@ autonomous enforcement.
 | [P3.4 owner acceptance](p3-4-acceptance.md) | Exact-digest `D-P3.4-ACCEPTANCE` record and continuing exclusions |
 | [P3.5 planning authorization](p3-5-planning-authorization.md) | Planning-only owner authorization and prohibited implementation actions |
 | [P3.5 research record](p3-5-research-record.md) | Current primary-source OCR, Unicode, rule, font, and synthetic-data findings |
+| [P3.5 artifact review proposal](p3-5-artifact-review-proposal.md) | Metadata-only eight-artifact proposal, quarantine blockers, and zero download authority |
 | [P3.5 plan](p3-5-plan.md) | Synthetic corpus, localization, OCR, normalization, consensus, privacy, and evidence design |
 | [P3.5 owner decision packet](p3-5-decision-packet.md) | Four technical choices and separate implementation-start gate |
 | [P3.5 planning readiness](p3-5-planning-readiness-report.md) | Machine-verified package boundary, digest, and pending owner gates |

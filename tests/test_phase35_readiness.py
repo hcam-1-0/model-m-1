@@ -14,7 +14,7 @@ def test_p3_5_planning_is_ready_for_five_owner_decisions() -> None:
     assert report.status == "ready_for_owner_decisions"
     assert report.failures == 0
     assert report.manual_gates == 5
-    assert report.package_file_count == 20
+    assert report.package_file_count == 22
     assert len(report.package_digest) == 64
 
 
@@ -28,6 +28,7 @@ def test_p3_5_technical_checks_pass() -> None:
         readiness.check_research_sources(),
         readiness.check_plan_contract(),
         readiness.check_planning_only_package(),
+        readiness.check_artifact_proposal(),
         readiness.check_start_intent(),
         readiness.check_documentation_sync(),
     )
@@ -67,6 +68,34 @@ def test_p3_5_start_intent_rejects_premature_authority(monkeypatch) -> None:
     monkeypatch.setattr(readiness, "_json", load)
 
     assert readiness.check_start_intent().status == readiness.FAIL
+
+
+def test_p3_5_artifact_proposal_has_no_download_or_runtime_authority() -> None:
+    record = json.loads(readiness.ARTIFACT_PROPOSAL_PATH.read_text(encoding="utf-8"))
+
+    assert record["download_performed"] is False
+    assert record["acquisition_authorized"] is False
+    assert record["implementation_authorized"] is False
+    assert record["allowed_network_actions"] == []
+    assert len(record["artifacts"]) == 8
+    assert all(item["expected_sha256"] is None for item in record["artifacts"])
+    assert readiness.check_artifact_proposal().status == readiness.PASS
+
+
+def test_p3_5_artifact_proposal_rejects_premature_hash(monkeypatch) -> None:
+    original_json = readiness._json
+
+    def load(path: Path) -> dict[str, object]:
+        record = original_json(path)
+        if path == readiness.ARTIFACT_PROPOSAL_PATH:
+            artifacts = record["artifacts"]
+            assert isinstance(artifacts, list)
+            artifacts[0]["expected_sha256"] = "0" * 64
+        return record
+
+    monkeypatch.setattr(readiness, "_json", load)
+
+    assert readiness.check_artifact_proposal().status == readiness.FAIL
 
 
 def test_p3_5_require_decisions_exits_two_without_implementation_authority() -> None:

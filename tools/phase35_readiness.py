@@ -21,6 +21,9 @@ AUTHORIZATION_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-planning-authorization.json"
 )
 ENTRY_GATES_PATH = ROOT / "contracts" / "phase-3" / "p3-5-entry-gates.json"
+ARTIFACT_PROPOSAL_PATH = (
+    ROOT / "contracts" / "phase-3" / "p3-5-artifact-review-proposal.json"
+)
 START_AUTHORIZATION_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-start-authorization.json"
 )
@@ -38,6 +41,7 @@ PACKAGE_FILES = (
     "README.md",
     "contracts/phase-3/README.md",
     "contracts/phase-3/p3-4-acceptance.json",
+    "contracts/phase-3/p3-5-artifact-review-proposal.json",
     "contracts/phase-3/p3-5-entry-gates.json",
     "contracts/phase-3/p3-5-planning-authorization.json",
     "contracts/phase-3/p3-5-research-sources.json",
@@ -47,6 +51,7 @@ PACKAGE_FILES = (
     "docs/phase-3/decision-register.md",
     "docs/phase-3/implementation-backlog.md",
     "docs/phase-3/p3-5-decision-packet.md",
+    "docs/phase-3/p3-5-artifact-review-proposal.md",
     "docs/phase-3/p3-5-plan.md",
     "docs/phase-3/p3-5-planning-authorization.md",
     "docs/phase-3/p3-5-planning-readiness-report.md",
@@ -79,6 +84,11 @@ ALLOWED_SOURCE_HOSTS = {
     "upload.indiacode.nic.in",
     "www.paddleocr.ai",
     "www.unicode.org",
+}
+
+PROPOSED_ARTIFACT_HOSTS = {
+    "paddle-model-ecology.bj.bcebos.com",
+    "raw.githubusercontent.com",
 }
 
 
@@ -521,7 +531,7 @@ def check_start_intent() -> Check:
             "pending_owner_decision",
             "pending_owner_decision",
             "pending_owner_decision",
-            "not_prepared",
+            "proposal_prepared_blocked",
         )
     ):
         return Check(
@@ -536,15 +546,112 @@ def check_start_intent() -> Check:
     )
 
 
+def check_artifact_proposal() -> Check:
+    try:
+        record = _json(ARTIFACT_PROPOSAL_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("artifact_proposal", FAIL, str(exc))
+    artifacts = record.get("artifacts")
+    if not isinstance(artifacts, list):
+        return Check("artifact_proposal", FAIL, "P3.5 artifacts must be a list.")
+    expected_candidates = (
+        "OCR-L0",
+        "OCR-L1",
+        "OCR-D0",
+        "OCR-G0",
+        "OCR-G1",
+        "FONT-G0",
+        "FONT-D0",
+        "PLATE-D0",
+    )
+    actual_candidates = tuple(
+        str(artifact.get("candidate_id"))
+        for artifact in artifacts
+        if isinstance(artifact, dict)
+    )
+    invalid: list[str] = []
+    for artifact in artifacts:
+        if not isinstance(artifact, dict):
+            invalid.append("non-object-artifact")
+            continue
+        artifact_id = str(artifact.get("artifact_id"))
+        source_url = artifact.get("proposed_source_url")
+        if artifact.get("expected_sha256") is not None:
+            invalid.append(f"{artifact_id}:premature-sha256")
+        if not str(artifact.get("status", "")).startswith("blocked_"):
+            invalid.append(f"{artifact_id}:not-blocked")
+        expected_bytes = artifact.get("expected_bytes")
+        maximum_bytes = artifact.get("maximum_bytes")
+        if expected_bytes is not None and (
+            not isinstance(expected_bytes, int)
+            or not isinstance(maximum_bytes, int)
+            or expected_bytes <= 0
+            or expected_bytes > maximum_bytes
+        ):
+            invalid.append(f"{artifact_id}:invalid-size-bound")
+        if source_url is not None:
+            parsed = urlparse(str(source_url))
+            if (
+                parsed.scheme != "https"
+                or parsed.hostname not in PROPOSED_ARTIFACT_HOSTS
+                or parsed.username is not None
+                or parsed.password is not None
+            ):
+                invalid.append(f"{artifact_id}:invalid-source-url")
+    choices = record.get("applies_only_if_owner_selects")
+    quarantine = record.get("proposed_quarantine_gate")
+    environment = record.get("environment_observations")
+    if (
+        record.get("contract_format")
+        != "hcam.phase3.p3_5.artifact-review-proposal.v1"
+        or record.get("status") != "proposal_prepared_blocked"
+        or record.get("scope") != "metadata_only_non_approved_acquisition_proposal"
+        or record.get("download_performed") is not False
+        or record.get("acquisition_authorized") is not False
+        or record.get("implementation_authorized") is not False
+        or record.get("model_execution_performed") is not False
+        or record.get("allowed_network_actions") != []
+        or choices
+        != {
+            "D-P3.5-001": "A",
+            "D-P3.5-002": "A",
+            "D-P3.5-003": "A",
+            "D-P3.5-004": "A",
+        }
+        or actual_candidates != expected_candidates
+        or set(record.get("proposed_source_hosts", [])) != PROPOSED_ARTIFACT_HOSTS
+        or not isinstance(quarantine, dict)
+        or quarantine.get("decision_id") != "D-P3.5-ARTIFACT-RESEARCH"
+        or quarantine.get("status") != "not_authorized"
+        or not isinstance(environment, dict)
+        or environment.get("tesseract_executable") != "not_installed"
+        or invalid
+    ):
+        return Check(
+            "artifact_proposal",
+            FAIL,
+            "The metadata-only proposal is incomplete, widened, executable, or prematurely approved.",
+            tuple(invalid),
+        )
+    return Check(
+        "artifact_proposal",
+        PASS,
+        "Eight proposed artifact slots have bounded metadata; all SHA-256 values, acquisition, and execution remain blocked.",
+        actual_candidates,
+    )
+
+
 def check_documentation_sync() -> Check:
     required = {
         "README.md": ("P3.5", "tools/phase35_readiness.py"),
         "contracts/phase-3/README.md": (
+            "p3-5-artifact-review-proposal.json",
             "p3-5-planning-authorization.json",
             "p3-5-entry-gates.json",
             "p3-5-start-authorization.json",
         ),
         "docs/phase-3/README.md": (
+            "[P3.5 artifact review proposal](p3-5-artifact-review-proposal.md)",
             "[P3.5 plan](p3-5-plan.md)",
             "[P3.5 owner decision packet](p3-5-decision-packet.md)",
             "[P3.5 start intent](p3-5-start-intent.md)",
@@ -618,6 +725,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_research_sources(),
         check_plan_contract(),
         check_planning_only_package(),
+        check_artifact_proposal(),
         check_start_intent(),
         check_documentation_sync(),
     ]

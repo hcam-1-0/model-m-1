@@ -19,6 +19,10 @@ Scope: `phase3.p3_5.synthetic_anpr.planning_only`.
 - the accepted zero-retention/no-access-role plate-text policy is preserved;
 - the planning package includes no P3.5 application, migration, deployment,
   model, font, dictionary, generated image, media, or dataset file;
+- an eight-slot metadata-only artifact proposal records immutable sources and
+  bounds where available while all SHA-256, download, and execution authority
+  remains blocked;
+- the early exact `D-P3.5-START` statement is preserved as non-effective intent;
 - root, contract/phase indexes, backlog, decision register, checklist, and CI
   contain the same planning-only status.
 
@@ -34,11 +38,15 @@ Five explicit gates remain:
 2. `D-P3.5-002`: detector and OCR portfolio;
 3. `D-P3.5-003`: normalization, confidence, abstention, and consensus;
 4. `D-P3.5-004`: privacy, persistence, resources, and evaluation;
-5. `D-P3.5-START`: separate implementation and exact-artifact authorization.
+5. `D-P3.5-START`: final digest-bound implementation authorization after
+   `D-P3.5-ARTIFACT-RESEARCH` and exact artifact review.
 
 The first four decisions freeze technical planning only. They do not authorize
-implementation. `D-P3.5-START` cannot be inferred from `continue`, planning
-approval, a test result, a commit, silence, or acceptance of another phase.
+implementation. The early exact `D-P3.5-START` statement does not bind
+undisclosed artifacts or network actions and remains non-effective. After the
+first four choices, `D-P3.5-ARTIFACT-RESEARCH` must separately authorize only
+the exact quarantine proposal. Final start confirmation must bind the completed
+review packet digest.
 
 ## Verification
 

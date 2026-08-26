@@ -484,5 +484,10 @@ artifact review. That statement is preserved as intent, not implementation
 authority, because it cannot bind artifacts and network actions that have not
 yet been disclosed. See [P3.5 start intent](p3-5-start-intent.md).
 
+Metadata-only proposal R0 now identifies eight recommended artifact slots and
+current runtime gaps. It performs no acquisition and does not resolve SHA-256,
+license, lineage, model-card, SBOM, or compatibility evidence. See
+[P3.5 artifact review proposal](p3-5-artifact-review-proposal.md).
+
 Machine-readable gate status:
 [`p3-5-entry-gates.json`](../../contracts/phase-3/p3-5-entry-gates.json).

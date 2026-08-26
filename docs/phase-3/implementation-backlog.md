@@ -213,6 +213,12 @@ review are complete. No artifact acquisition,
 generation, training, inference, product implementation, or media/data access
 is authorized.
 
+Artifact preparation status: proposal R0 records eight recommended artifact
+slots, immutable source metadata where available, bounded sizes, and current
+runtime gaps. All SHA-256 values remain unresolved; acquisition and execution
+remain blocked pending the four technical decisions and
+`D-P3.5-ARTIFACT-RESEARCH`.
+
 Deliverables:
 
 - plate-region detector and OCR adapter;
