@@ -1,0 +1,41 @@
+{
+  "contract_format": "hcam.phase3.p3_5.entry_gates.v1",
+  "decisions": [
+    {
+      "decision_id": "D-P3.5-001",
+      "recommended_option": "strict_procedural_non_issuable_synthetic_corpus",
+      "status": "pending_owner_decision",
+      "topic": "synthetic_corpus_plate_grammar_and_source_policy"
+    },
+    {
+      "decision_id": "D-P3.5-002",
+      "recommended_option": "staged_plate_detector_latin_primary_and_auxiliary_script_portfolio",
+      "status": "pending_owner_decision",
+      "topic": "plate_localization_ocr_models_and_runtime_roles"
+    },
+    {
+      "decision_id": "D-P3.5-003",
+      "recommended_option": "raw_preserving_nfc_grapheme_aware_abstaining_consensus",
+      "status": "pending_owner_decision",
+      "topic": "normalization_confidence_abstention_and_temporal_consensus"
+    },
+    {
+      "decision_id": "D-P3.5-004",
+      "recommended_option": "ephemeral_plate_text_aggregate_evidence_and_zero_retention",
+      "status": "pending_owner_decision",
+      "topic": "privacy_persistence_resources_evaluation_and_acceptance"
+    },
+    {
+      "decision_id": "D-P3.5-START",
+      "recommended_option": "authorize_only_after_decisions_001_through_004_and_exact_artifact_review",
+      "status": "pending_owner_decision",
+      "topic": "separate_implementation_authorization"
+    }
+  ],
+  "implementation_authorized": false,
+  "manual_gate_count": 5,
+  "owner_decisions_completed": 0,
+  "planning_authorization_record": "p3-5-planning-authorization.json",
+  "scope": "phase3.p3_5.synthetic_anpr.planning_only",
+  "status": "ready_for_owner_decisions"
+}

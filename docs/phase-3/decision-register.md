@@ -357,6 +357,33 @@ deployment-blocked. On 2026-08-26, `mayank-admin` accepted
 repository checkpoint `092127fcdefa74a0264b9f02d4eee87db3a6c6b8`. This does
 not authorize P3.5 or waive any continuing boundary.
 
+### DR-0034: P3.5 Synthetic ANPR Planning Baseline
+
+Status: planning authorized under `D-P3.5-PLAN-AUTH`; technical decisions and
+implementation remain pending.
+
+P3.5 planning is independently authorized on the accepted P3.4 package. The
+recommended design uses a deterministic procedural corpus with visibly
+non-issuable `SYN` tokens, a dedicated generated plate-region detector role,
+PP-OCRv6 small/medium Latin candidates, a Devanagari PP-OCRv5 auxiliary lane,
+and Tesseract Gujarati fast/best auxiliary lanes. No exact artifact is approved.
+
+Raw OCR remains immutable. NFC, UAX #29 grapheme segmentation, closed
+normalization rules, calibrated alternatives, explicit abstention, and bounded
+stream-local consensus are derived stages. Gujarati and Devanagari cannot
+rewrite or increase confidence in the core Latin registration-mark result.
+
+The recommended reference preserves the P3.0 zero-retention plate-text policy:
+no text table, search, event, outbox value, API, log, metric label, cache,
+export, or backup. Only identifier-free aggregate generated evidence may be
+persisted. Synthetic evidence cannot support a real-CCTV accuracy, legal,
+operational, or deployment claim.
+
+`D-P3.5-001` through `D-P3.5-004` and `D-P3.5-START` remain explicit owner
+gates. Planning authorizes no model, font, dataset, dependency, generation,
+training, inference, product code, camera, media, real plate, owner/Government
+record, alert, deployment, P3.6, or remote Git action.
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

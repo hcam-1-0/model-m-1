@@ -105,6 +105,36 @@ P3.1 implementation or acceptance.
 Implementation status: `accepted`. Technical failures: zero. Manual gates:
 zero. P3.2 remains blocked and requires separate artifact and dataset approval.
 
+## P3.2 Through P3.4 Accepted Milestones
+
+- [x] P3.2 generated-only CPU detection is accepted under
+  `D-P3.2-ACCEPTANCE`.
+- [x] P3.3 anonymous stream-local tracking is accepted under
+  `D-P3.3-ACCEPTANCE`.
+- [x] P3.4 generated-only geometry and event primitives are accepted under
+  `D-P3.4-ACCEPTANCE`.
+- [ ] The independent PostGIS image deployment block is remediated and rescanned.
+
+## P3.5 Planning And Owner Gates
+
+- [x] Planning-only authorization is recorded under `D-P3.5-PLAN-AUTH`.
+- [x] Existing plate/OCR candidates remain pending, blocked, and
+  artifact-unresolved.
+- [x] Current primary-source OCR, Unicode, Government-rule, font, and
+  synthetic-data research is recorded without downloads.
+- [x] Non-issuable corpus, stage contracts, normalization, abstention,
+  consensus, zero-retention, resources, and generated evaluation are planned.
+- [ ] `D-P3.5-001` synthetic corpus and source policy is owner selected.
+- [ ] `D-P3.5-002` detector and OCR portfolio is owner selected.
+- [ ] `D-P3.5-003` normalization, abstention, and consensus is owner selected.
+- [ ] `D-P3.5-004` privacy, resources, and evidence policy is owner selected.
+- [ ] Exact artifact/source manifests are reviewed and owner approved.
+- [ ] `D-P3.5-START` separately authorizes bounded implementation.
+
+Current P3.5 status: `ready_for_owner_decisions`. Planning grants no artifact,
+dataset, generation, training, inference, product code, media, real-plate,
+storage, operational, or deployment authority.
+
 ## Tier A Implementation Acceptance
 
 - [x] Machine-validated contracts and compatibility tests pass.

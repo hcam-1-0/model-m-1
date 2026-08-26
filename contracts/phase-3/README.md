@@ -64,6 +64,12 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   dependency-audit, Docker, and prohibited-input evidence.
 - `p3-4-acceptance.json`: exact-digest owner acceptance of the immutable
   generated-only P3.4 package and its continuing non-authorization boundary.
+- `p3-5-planning-authorization.json`: exact planning-only authorization based
+  on accepted P3.4, with all implementation and artifact actions prohibited.
+- `p3-5-research-sources.json`: primary-source, no-download research evidence
+  for OCR, Unicode, registration-mark constraints, fonts, and synthetic data.
+- `p3-5-entry-gates.json`: four pending technical choices and the separately
+  pending `D-P3.5-START` implementation gate.
 
 Verify all tracked snapshots:
 
@@ -82,6 +88,7 @@ uv run --locked --extra dev python tools/phase34_readiness.py --strict
 uv run --locked --extra dev --extra analytics python tools/phase34_c10_evidence.py check
 uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.py check
 uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance
+uv run --locked --extra dev python tools/phase35_readiness.py --strict
 ```
 
 Rewriting snapshots requires an explicit review acknowledgement:
@@ -99,4 +106,5 @@ accepted under `D-P3.4-ACCEPTANCE`. The PostGIS validation image remains
 deployment-blocked.
 These contracts do not authorize camera access, raw-media persistence, external
 datasets, identity, cross-camera association, Government matching, alerts,
-deployment, or P3.5 work.
+or deployment. P3.5 is authorized for planning only under
+`D-P3.5-PLAN-AUTH`; no artifact or implementation action is authorized.

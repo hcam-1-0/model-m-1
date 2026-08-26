@@ -9,7 +9,9 @@ stream-local tracking is accepted under `D-P3.3-ACCEPTANCE`. P3.4 planning is
 authorized under `D-P3.4-PLAN-AUTH`; technical decisions `D-P3.4-001` through
 `D-P3.4-004` are accepted, and bounded generated-only local implementation is
 authorized under `D-P3.4-START`. Implementation and technical evidence are
-complete and accepted under `D-P3.4-ACCEPTANCE`. All broader media,
+complete and accepted under `D-P3.4-ACCEPTANCE`. P3.5 synthetic-ANPR planning
+is authorized under `D-P3.5-PLAN-AUTH`; its four technical choices and separate
+implementation-start gate remain pending. All broader media,
 identity, correlation, alerting, and deployment work remains unauthorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
@@ -68,6 +70,11 @@ autonomous enforcement.
 | [P3.4 implementation readiness](p3-4-implementation-readiness-report.md) | Tests, coverage, migrations, packaging, Docker evidence, deployment block, and acceptance binding |
 | [P3.4 backlog recovery](p3-4-backlog-recovery.md) | Interrupted-work handoff, reproduced defects, repair scope, validation, and remaining backlog |
 | [P3.4 owner acceptance](p3-4-acceptance.md) | Exact-digest `D-P3.4-ACCEPTANCE` record and continuing exclusions |
+| [P3.5 planning authorization](p3-5-planning-authorization.md) | Planning-only owner authorization and prohibited implementation actions |
+| [P3.5 research record](p3-5-research-record.md) | Current primary-source OCR, Unicode, rule, font, and synthetic-data findings |
+| [P3.5 plan](p3-5-plan.md) | Synthetic corpus, localization, OCR, normalization, consensus, privacy, and evidence design |
+| [P3.5 owner decision packet](p3-5-decision-packet.md) | Four technical choices and separate implementation-start gate |
+| [P3.5 planning readiness](p3-5-planning-readiness-report.md) | Machine-verified package boundary, digest, and pending owner gates |
 
 ## Non-Negotiable Boundary
 

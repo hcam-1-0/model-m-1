@@ -191,16 +191,25 @@ Deliverables:
 Implemented safety boundary: normalized image-space and anonymous stream-local
 metadata only; default-off and production-forbidden. No media, external data,
 identity, cross-camera linkage, Government matching, operational alerting,
-deployment, or P3.5 work is authorized.
+deployment, or P3.5 implementation is authorized by P3.4. P3.5 planning is
+separately authorized under `D-P3.5-PLAN-AUTH`.
 
 Exit evidence complete: boundary/jitter/property tests, deterministic replay,
 exact scenario logic agreement, duplicate/late-event tests, bounded C10
 evidence, SQLite/PostGIS migration cycles, packaging, audit, and Docker checks.
-Owner acceptance and container deployment remediation remain open gates.
+Owner acceptance is complete under `D-P3.4-ACCEPTANCE`; container deployment
+remediation remains an independent open gate.
 
 ## P3.5: Synthetic ANPR
 
-Dependencies: approved synthetic/authorized ANPR dataset and privacy policy.
+Dependencies: accepted P3.4, existing blocked P3.1 plate/OCR candidates, and the
+accepted P3.0 zero-retention plate-text policy.
+
+Planning status: authorized under `D-P3.5-PLAN-AUTH`. Primary-source research,
+the detailed plan, and owner decision packet are complete. `D-P3.5-001` through
+`D-P3.5-004` and `D-P3.5-START` remain pending. No artifact acquisition,
+generation, training, inference, product implementation, or media/data access
+is authorized.
 
 Deliverables:
 
@@ -209,11 +218,13 @@ Deliverables:
 - `OCR-L0/L1` for Latin, `OCR-D0` for Devanagari, and `OCR-G0/G1` for Gujarati,
   with explicit script routing and abstention;
 - ranked alternatives, normalization, confidence, masking, and review state;
-- stricter access/retention class for plate text;
+- zero-retention, no-access-role handling for plate text and alternatives;
 - separate region/OCR/normalization evaluation.
 
-Exit evidence: synthetic-only provenance, exact/character metric report,
-privacy/redaction tests, and proof that no owner/watchlist lookup exists.
+Planned exit evidence: deterministic non-issuable synthetic provenance,
+localization and raw/NFC/grapheme/end-to-end metric reports, abstention and
+calibration evidence, privacy/redaction tests, zero persisted plate strings,
+and proof that no owner/watchlist/Government lookup exists.
 
 ## P3.6: Runtime Acceleration And Scheduling
 
