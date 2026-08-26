@@ -101,6 +101,11 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-5-start-authorization.json`: the effective digest-bound generated-only
   start, five exact loadable artifacts, two reviewed-but-blocked Tesseract
   artifacts, an empty network allowlist, and continuing prohibitions.
+- `p3-5-anpr-contracts.json`: reviewed W1 schemas and policy constants for the
+  seed-only generated request, visible non-issuable `SYN` token, default-off
+  execution, prohibited inputs, resource ceilings, and zero retention.
+- `fixtures/p3-5-generated-request-v1.json`: canonical seed-only generated
+  request with no plate text, file, URL, bytes, camera, or identity field.
 
 Verify all tracked snapshots:
 
@@ -120,6 +125,7 @@ uv run --locked --extra dev --extra analytics python tools/phase34_c10_evidence.
 uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.py check
 uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance
 uv run --locked --extra dev python tools/phase35_readiness.py --strict
+uv run --locked --extra dev python tools/phase35_contracts.py check
 uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked --extra dev python tools/phase35_runtime_research.py all --root 'E:\h-cam-research-cache\phase-3\p3-5-runtime'
@@ -131,6 +137,7 @@ Rewriting snapshots requires an explicit review acknowledgement:
 uv run --locked --extra dev python tools/analytics_contracts.py write --acknowledge-reviewed-change
 uv run --locked --extra dev python tools/release_contracts.py write --acknowledge-reviewed-change
 uv run --locked --extra dev python tools/phase31_contracts.py write --acknowledge-generated-only-evidence
+uv run --locked --extra dev python tools/phase35_contracts.py write --acknowledge-reviewed-change
 ```
 
 Taxonomy and geometry fixtures remain `draft`. The accepted P3.2 and P3.3
@@ -146,3 +153,6 @@ authorizes only the enumerated local generated-only work packages, five exact
 artifacts, and reviewed external runtime with zero network access. Cameras,
 media, real/private/Government data, training, Tesseract execution, deployment,
 P3.6, and remote Git operations remain prohibited.
+`P35-W1` adds only the reviewed ANPR contracts and fail-closed guardrails. It
+does not add a generator, OCR runtime, artifact loader, API, worker, migration,
+or persistence path.

@@ -222,6 +222,18 @@ Training, Tesseract execution, cameras/media, real/private/Government data,
 public APIs, persistent plate text, deployment, P3.6, and remote Git remain
 prohibited.
 
+Implementation progress:
+
+- `P35-W1`: `validated_complete`. Immutable seed-only request, ephemeral token,
+  and default-off execution-policy contracts are tracked. The visible
+  `SYN-XXXX-XXXX` namespace, recursive prohibited-input validation, bounded
+  parsing, value-redacted failures, and plate-text persistence denial have
+  deterministic snapshots and negative tests.
+- No generator, OCR adapter, model loader, API, migration, worker, or storage
+  path was introduced in W1.
+- The next implementation work remains within the separately enumerated start
+  allowlist; this W1 completion does not widen any artifact or runtime authority.
+
 Artifact preparation status: proposal R0 records eight recommended artifact
 slots, immutable source metadata, and bounded sizes. Seven external slots are
 present in quarantine with exact evidence. `OCR-L0`, `OCR-L1`, `OCR-D0`,

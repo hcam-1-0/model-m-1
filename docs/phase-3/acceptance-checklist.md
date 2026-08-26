@@ -148,6 +148,13 @@ zero. P3.2 remains blocked and requires separate artifact and dataset approval.
 - [x] Final `D-P3.5-START` is confirmed against digest
   `915F5E9246A7A656DF528DD54DA6018D7489C6875BF3A77D1A551BAD6EF9AF4D`
   and separately authorizes the exact bounded implementation allowlist.
+- [x] `P35-W1` seed-only request, ephemeral token, and default-off policy
+  contracts are deterministic and snapshot-verified.
+- [x] `P35-W1` rejects imported token/text, file/URL/upload/bytes, camera/stream,
+  owner/vehicle/watchlist, path traversal, and credential-shaped inputs without
+  echoing values.
+- [x] `P35-W1` evidence serialization rejects plate text, raw/normalized OCR,
+  alternatives, and the complete ephemeral token model.
 
 Current P3.5 status:
 `implementation_authorized_generated_only_staged`.

@@ -1,0 +1,267 @@
+{
+  "contract_format": "hcam.anpr.contract-bundle.v1",
+  "contracts": {
+    "ephemeral_token": {
+      "additionalProperties": false,
+      "description": "In-memory ground truth that must never enter evidence or persistence.",
+      "properties": {
+        "contract_type": {
+          "const": "hcam.anpr.ephemeral-synthetic-token.v1",
+          "default": "hcam.anpr.ephemeral-synthetic-token.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "layout": {
+          "enum": [
+            "single_line",
+            "two_line"
+          ],
+          "title": "Layout",
+          "type": "string"
+        },
+        "persistence": {
+          "const": "prohibited",
+          "default": "prohibited",
+          "title": "Persistence",
+          "type": "string"
+        },
+        "request_id": {
+          "pattern": "^anprreq_[0-9a-f]{32}$",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "script": {
+          "const": "latin",
+          "default": "latin",
+          "title": "Script",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "token": {
+          "maxLength": 13,
+          "minLength": 13,
+          "pattern": "^SYN-[A-Z0-9]{4}-[A-Z0-9]{4}$",
+          "title": "Token",
+          "type": "string"
+        },
+        "token_class": {
+          "const": "synthetic_non_issuable",
+          "default": "synthetic_non_issuable",
+          "title": "Token Class",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "token",
+        "layout"
+      ],
+      "title": "EphemeralSyntheticTokenV1",
+      "type": "object"
+    },
+    "execution_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "arbitrary_input": {
+          "const": "denied",
+          "default": "denied",
+          "title": "Arbitrary Input",
+          "type": "string"
+        },
+        "artifact_download": {
+          "const": "denied",
+          "default": "denied",
+          "title": "Artifact Download",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.execution-policy.v1",
+          "default": "hcam.anpr.execution-policy.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "enabled": {
+          "default": false,
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "environment": {
+          "default": "development",
+          "enum": [
+            "development",
+            "test",
+            "production"
+          ],
+          "title": "Environment",
+          "type": "string"
+        },
+        "execution_scope": {
+          "const": "generated_only",
+          "default": "generated_only",
+          "title": "Execution Scope",
+          "type": "string"
+        },
+        "input_mode": {
+          "const": "deterministic_seed_only",
+          "default": "deterministic_seed_only",
+          "title": "Input Mode",
+          "type": "string"
+        },
+        "maximum_request_bytes": {
+          "const": 4096,
+          "default": 4096,
+          "title": "Maximum Request Bytes",
+          "type": "integer"
+        },
+        "network_access": {
+          "const": "denied",
+          "default": "denied",
+          "title": "Network Access",
+          "type": "string"
+        },
+        "plate_text_persistence": {
+          "const": "denied",
+          "default": "denied",
+          "title": "Plate Text Persistence",
+          "type": "string"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        }
+      },
+      "title": "SyntheticAnprExecutionPolicyV1",
+      "type": "object"
+    },
+    "generated_request": {
+      "additionalProperties": false,
+      "description": "Seed-only request; it deliberately has no text, file, media, or URL field.",
+      "properties": {
+        "contract_type": {
+          "const": "hcam.anpr.generated-token-request.v1",
+          "default": "hcam.anpr.generated-token-request.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "generator_version": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "input_mode": {
+          "const": "deterministic_seed_only",
+          "default": "deterministic_seed_only",
+          "title": "Input Mode",
+          "type": "string"
+        },
+        "layout": {
+          "enum": [
+            "single_line",
+            "two_line"
+          ],
+          "title": "Layout",
+          "type": "string"
+        },
+        "policy_id": {
+          "const": "hcam.anpr.synthetic-non-issuable.v1",
+          "default": "hcam.anpr.synthetic-non-issuable.v1",
+          "title": "Policy Id",
+          "type": "string"
+        },
+        "policy_version": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Policy Version",
+          "type": "string"
+        },
+        "request_id": {
+          "pattern": "^anprreq_[0-9a-f]{32}$",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "sample_index": {
+          "exclusiveMaximum": 10000,
+          "minimum": 0,
+          "title": "Sample Index",
+          "type": "integer"
+        },
+        "script": {
+          "const": "latin",
+          "default": "latin",
+          "title": "Script",
+          "type": "string"
+        },
+        "seed": {
+          "maximum": 4294967295,
+          "minimum": 0,
+          "title": "Seed",
+          "type": "integer"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "token_class": {
+          "const": "synthetic_non_issuable",
+          "default": "synthetic_non_issuable",
+          "title": "Token Class",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "generator_version",
+        "policy_version",
+        "seed",
+        "sample_index",
+        "layout"
+      ],
+      "title": "GeneratedTokenRequestV1",
+      "type": "object"
+    }
+  },
+  "persistence_policy": {
+    "identifier_free_aggregate_evidence_only": true,
+    "plate_text_retention_hours": 0,
+    "token_or_alternative_in_evidence": false
+  },
+  "resource_limits": {
+    "maximum_document_depth": 8,
+    "maximum_document_nodes": 256,
+    "maximum_local_samples": 10000,
+    "maximum_request_bytes": 4096
+  },
+  "source_policy": {
+    "allowed_source_id": "DATA-PLATE-GEN-R0",
+    "external_text_allowed": false,
+    "file_url_upload_or_media_allowed": false,
+    "input_mode": "deterministic_seed_only",
+    "synthetic_only": true
+  },
+  "token_policy": {
+    "classification": "synthetic_non_issuable",
+    "normalization_or_lookup": "prohibited",
+    "pattern": "^SYN-[A-Z0-9]{4}-[A-Z0-9]{4}$",
+    "policy_id": "hcam.anpr.synthetic-non-issuable.v1",
+    "production_grammar_strategy": "deny_every_value_outside_the_disjoint_visible_synthetic_namespace",
+    "required_character_classes": [
+      "ascii_uppercase",
+      "ascii_digit"
+    ],
+    "visible_namespace": "SYN-"
+  }
+}

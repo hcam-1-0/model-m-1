@@ -20,6 +20,8 @@ license, vulnerability, scan, and import research outside the worktree. That
 evidence is complete. The owner has now confirmed `D-P3.5-START`, authorizing only the
 digest-bound, generated-only, default-off local implementation slice with five
 loadable artifacts, two blocked Tesseract artifacts, and zero network actions.
+`P35-W1` contracts, the visible non-issuable `SYN` token policy, and recursive
+prohibited-input/zero-retention guardrails are now implemented and validated.
 None of these milestones adds a real CCTV media path.
 
 A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
@@ -32,7 +34,9 @@ separately bounds external Python dependency evidence work. Its
 [runtime evidence](docs/phase-3/p3-5-runtime-research-evidence.md) records the
 exact non-runtime closure and remaining blocks. The
 [P3.5 start authorization](docs/phase-3/p3-5-start-authorization.md) records the
-exact implementation allowlist and continuing prohibitions.
+exact implementation allowlist and continuing prohibitions. The
+[P3.5 W1 contracts and guardrails](docs/phase-3/p3-5-w1-contracts-guardrails.md)
+record the first bounded implementation slice.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
@@ -68,6 +72,7 @@ uv run --locked --extra dev --extra analytics python tools/phase34_c10_evidence.
 uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.py check
 uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance --json
 uv run --locked --extra dev python tools/phase35_readiness.py --strict --json
+uv run --locked --extra dev python tools/phase35_contracts.py check
 uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked --extra dev python tools/phase35_runtime_research.py all --root 'E:\h-cam-research-cache\phase-3\p3-5-runtime'
@@ -90,9 +95,9 @@ The P3.5 planning verifier should report
 `implementation_authorized_generated_only_staged`, zero technical failures,
 and zero manual gates. It verifies the approved `A/A/A/A`
 baseline, exact artifact acceptance, completed restricted runtime evidence,
-and digest-bound generated-only start authorization. The verifier
-itself performs no download, extraction,
-synthetic generation, training, inference, media access, or product execution.
+digest-bound generated-only start authorization, and the exact W1-only
+application boundary. The verifier itself performs no download, extraction,
+synthetic generation, training, inference, media access, or model execution.
 The artifact-research command is separately gated and writes only the seven
 authorized files and receipts to the external local quarantine.
 

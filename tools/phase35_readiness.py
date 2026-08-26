@@ -96,7 +96,11 @@ P3_5_RUNTIME_EVIDENCE_REPOSITORY_HEAD = (
 PACKAGE_FILES = (
     ".github/workflows/python-ci.yml",
     "README.md",
+    "app/hcam/analytics/anpr/__init__.py",
+    "app/hcam/analytics/anpr/contracts.py",
+    "app/hcam/analytics/anpr/guardrails.py",
     "contracts/phase-3/README.md",
+    "contracts/phase-3/fixtures/p3-5-generated-request-v1.json",
     "contracts/phase-3/p3-4-acceptance.json",
     "contracts/phase-3/p3-5-artifact-review-proposal.json",
     "contracts/phase-3/p3-5-artifact-review-evidence.json",
@@ -104,6 +108,7 @@ PACKAGE_FILES = (
     "contracts/phase-3/p3-5-artifact-model-cards.json",
     "contracts/phase-3/p3-5-artifact-research-authorization.json",
     "contracts/phase-3/p3-5-artifact-sbom.cdx.json",
+    "contracts/phase-3/p3-5-anpr-contracts.json",
     "contracts/phase-3/p3-5-entry-gates.json",
     "contracts/phase-3/p3-5-planning-authorization.json",
     "contracts/phase-3/p3-5-owner-decisions.json",
@@ -134,12 +139,16 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-runtime-research-evidence.md",
     "docs/phase-3/p3-5-start-authorization.md",
     "docs/phase-3/p3-5-start-intent.md",
+    "docs/phase-3/p3-5-w1-contracts-guardrails.md",
+    "tests/test_analytics_anpr_guardrails.py",
+    "tests/test_phase35_contracts.py",
     "tests/test_phase35_readiness.py",
     "tests/test_phase35_artifact_research.py",
     "tests/test_phase35_artifact_inspect.py",
     "tests/test_phase35_runtime_research.py",
     "tools/phase35_artifact_research.py",
     "tools/phase35_artifact_inspect.py",
+    "tools/phase35_contracts.py",
     "tools/phase35_runtime_research.py",
     "tools/phase35_readiness.py",
 )
@@ -254,7 +263,7 @@ def check_required_files() -> Check:
     return Check(
         "required_files",
         PASS,
-        f"All {len(PACKAGE_FILES)} P3.5 planning package files exist.",
+        f"All {len(PACKAGE_FILES)} P3.5 authorization and W1 package files exist.",
     )
 
 
@@ -315,7 +324,8 @@ def check_planning_authorization() -> Check:
     return Check(
         "planning_authorization",
         PASS,
-        "P3.5 planning is authorized while implementation and artifacts remain prohibited.",
+        "The original P3.5 planning authorization remains intact; later bounded "
+        "implementation authority is validated separately by D-P3.5-START.",
     )
 
 
@@ -525,8 +535,13 @@ def check_plan_contract() -> Check:
     )
 
 
-def check_planning_only_package() -> Check:
-    prohibited_prefixes = ("app/", "migrations/", "deploy/")
+def check_authorized_w1_package() -> Check:
+    allowed_application_files = {
+        "app/hcam/analytics/anpr/__init__.py",
+        "app/hcam/analytics/anpr/contracts.py",
+        "app/hcam/analytics/anpr/guardrails.py",
+    }
+    prohibited_prefixes = ("migrations/", "deploy/")
     prohibited_suffixes = (
         ".avi",
         ".bin",
@@ -544,19 +559,88 @@ def check_planning_only_package() -> Check:
     prohibited = tuple(
         path
         for path in PACKAGE_FILES
-        if path.startswith(prohibited_prefixes) or path.lower().endswith(prohibited_suffixes)
+        if path.startswith(prohibited_prefixes)
+        or path.lower().endswith(prohibited_suffixes)
+        or (path.startswith("app/") and path not in allowed_application_files)
     )
     if prohibited:
         return Check(
-            "planning_only_package",
+            "authorized_w1_package",
             FAIL,
-            "P3.5 planning package contains runtime, migration, deployment, model, or media files.",
+            "P3.5 W1 contains an unapproved application, migration, deployment, model, or media file.",
             prohibited,
         )
     return Check(
-        "planning_only_package",
+        "authorized_w1_package",
         PASS,
-        "The package contains planning, governance, CI, verifier, and test files only.",
+        "P3.5 application scope is limited to contracts and fail-closed guardrails; no runtime, migration, model, or media file is present.",
+    )
+
+
+def check_w1_contract_snapshot() -> Check:
+    try:
+        record = _json(ROOT / "contracts/phase-3/p3-5-anpr-contracts.json")
+        fixture = _json(
+            ROOT / "contracts/phase-3/fixtures/p3-5-generated-request-v1.json"
+        )
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("w1_contract_snapshot", FAIL, str(exc))
+    contracts = record.get("contracts")
+    source_policy = record.get("source_policy")
+    token_policy = record.get("token_policy")
+    persistence = record.get("persistence_policy")
+    generated_request = (
+        contracts.get("generated_request") if isinstance(contracts, dict) else None
+    )
+    properties = (
+        generated_request.get("properties")
+        if isinstance(generated_request, dict)
+        else None
+    )
+    prohibited_request_fields = {
+        "camera_id",
+        "file",
+        "frame_bytes",
+        "image",
+        "owner_record",
+        "path",
+        "plate_text",
+        "stream_id",
+        "text",
+        "token",
+        "upload",
+        "url",
+        "vehicle_record",
+        "watchlist",
+    }
+    if (
+        record.get("contract_format") != "hcam.anpr.contract-bundle.v1"
+        or not isinstance(source_policy, dict)
+        or source_policy.get("allowed_source_id") != "DATA-PLATE-GEN-R0"
+        or source_policy.get("input_mode") != "deterministic_seed_only"
+        or source_policy.get("external_text_allowed") is not False
+        or source_policy.get("file_url_upload_or_media_allowed") is not False
+        or not isinstance(token_policy, dict)
+        or token_policy.get("classification") != "synthetic_non_issuable"
+        or token_policy.get("pattern") != r"^SYN-[A-Z0-9]{4}-[A-Z0-9]{4}$"
+        or not isinstance(persistence, dict)
+        or persistence.get("plate_text_retention_hours") != 0
+        or persistence.get("token_or_alternative_in_evidence") is not False
+        or not isinstance(properties, dict)
+        or prohibited_request_fields.intersection(properties)
+        or fixture.get("source_id") != "DATA-PLATE-GEN-R0"
+        or fixture.get("input_mode") != "deterministic_seed_only"
+        or prohibited_request_fields.intersection(fixture)
+    ):
+        return Check(
+            "w1_contract_snapshot",
+            FAIL,
+            "P3.5 W1 contracts permit unapproved input, token grammar, or retention behavior.",
+        )
+    return Check(
+        "w1_contract_snapshot",
+        PASS,
+        "P3.5 W1 fixes seed-only generated provenance, the visible SYN namespace, and zero plate-text retention.",
     )
 
 
@@ -1626,6 +1710,7 @@ def check_documentation_sync() -> Check:
             "tools/phase35_readiness.py",
         ),
         "contracts/phase-3/README.md": (
+            "p3-5-anpr-contracts.json",
             "p3-5-artifact-review-evidence.json",
             "p3-5-artifact-review-acceptance.json",
             "p3-5-artifact-model-cards.json",
@@ -1643,6 +1728,7 @@ def check_documentation_sync() -> Check:
             "p3-5-runtime-license-review.json",
         ),
         "docs/phase-3/README.md": (
+            "[P3.5 W1 contracts and guardrails](p3-5-w1-contracts-guardrails.md)",
             "[P3.5 artifact model cards](p3-5-artifact-model-cards.md)",
             "[P3.5 exact artifact review evidence](p3-5-artifact-review-evidence.md)",
             "[P3.5 exact artifact review acceptance](p3-5-artifact-review-acceptance.md)",
@@ -1672,6 +1758,8 @@ def check_documentation_sync() -> Check:
             "D-P3.5-PLAN-AUTH",
             "guarded import evidence are complete",
             "implementation_authorized_generated_only_staged",
+            "P35-W1",
+            "validated_complete",
         ),
         "docs/phase-3/p3-5-runtime-research-evidence.md": (
             "P3.5-RUNTIME-RESEARCH-EVIDENCE-R1",
@@ -1689,8 +1777,16 @@ def check_documentation_sync() -> Check:
             "OCR-G0",
             "OCR-G1",
         ),
+        "docs/phase-3/p3-5-w1-contracts-guardrails.md": (
+            "P35-W1",
+            "SYN-XXXX-XXXX",
+            "deterministic_seed_only",
+            "plate_text_persistence_prohibited",
+            "No generator, OCR runtime, model loading, or API",
+        ),
         ".github/workflows/python-ci.yml": (
             "python tools/phase35_readiness.py --strict",
+            "python tools/phase35_contracts.py check",
         ),
     }
     missing: list[str] = []
@@ -1748,7 +1844,8 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_existing_contract_foundation(),
         check_research_sources(),
         check_plan_contract(),
-        check_planning_only_package(),
+        check_authorized_w1_package(),
+        check_w1_contract_snapshot(),
         check_artifact_proposal(),
         check_owner_decisions_record(),
         check_artifact_research_authorization(),
