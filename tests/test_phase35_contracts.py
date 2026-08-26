@@ -28,3 +28,20 @@ def test_generated_request_fixture_is_canonical_and_contains_no_plate_text() -> 
     assert "text" not in document
     assert "path" not in document
     assert "url" not in document
+
+
+def test_sealed_split_fixture_is_canonical_and_contains_no_token_text() -> None:
+    actual = phase35_contracts.SPLIT_MANIFEST_PATH.read_text(encoding="utf-8")
+    expected = phase35_contracts.render_contracts()[
+        phase35_contracts.SPLIT_MANIFEST_PATH
+    ]
+    document = json.loads(actual)
+
+    assert actual == expected
+    assert document["content"]["sealed"] is True
+    assert document["content"]["final_test_frozen"] is True
+    assert document["content"]["final_test_tuning_allowed"] is False
+    assert document["content"]["token_text_persisted"] is False
+    assert document["content"]["token_commitment_persisted"] is False
+    assert '"token"' not in actual
+    assert "SYN-" not in actual

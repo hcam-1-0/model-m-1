@@ -112,14 +112,16 @@ def _inspect_document(
     *,
     depth: int,
     nodes: list[int],
+    maximum_depth: int,
+    maximum_nodes: int,
     prohibited_fields: frozenset[str],
     reject_source_values: bool,
     reject_ephemeral_token: bool = False,
 ) -> None:
-    if depth > MAX_ANPR_DOCUMENT_DEPTH:
+    if depth > maximum_depth:
         raise AnprBoundaryViolation("document_too_deep")
     nodes[0] += 1
-    if nodes[0] > MAX_ANPR_DOCUMENT_NODES:
+    if nodes[0] > maximum_nodes:
         raise AnprBoundaryViolation("document_too_many_nodes")
     if reject_ephemeral_token and isinstance(value, EphemeralSyntheticTokenV1):
         raise AnprBoundaryViolation("plate_text_persistence_prohibited")
@@ -140,6 +142,8 @@ def _inspect_document(
                 item,
                 depth=depth + 1,
                 nodes=nodes,
+                maximum_depth=maximum_depth,
+                maximum_nodes=maximum_nodes,
                 prohibited_fields=prohibited_fields,
                 reject_source_values=reject_source_values,
                 reject_ephemeral_token=reject_ephemeral_token,
@@ -151,6 +155,8 @@ def _inspect_document(
                 item,
                 depth=depth + 1,
                 nodes=nodes,
+                maximum_depth=maximum_depth,
+                maximum_nodes=maximum_nodes,
                 prohibited_fields=prohibited_fields,
                 reject_source_values=reject_source_values,
                 reject_ephemeral_token=reject_ephemeral_token,
@@ -173,6 +179,8 @@ def inspect_generated_request_input(value: object) -> None:
         value,
         depth=0,
         nodes=[0],
+        maximum_depth=MAX_ANPR_DOCUMENT_DEPTH,
+        maximum_nodes=MAX_ANPR_DOCUMENT_NODES,
         prohibited_fields=_PROHIBITED_INPUT_FIELDS,
         reject_source_values=True,
     )
@@ -220,6 +228,8 @@ def validate_ephemeral_synthetic_token(
         document,
         depth=0,
         nodes=[0],
+        maximum_depth=MAX_ANPR_DOCUMENT_DEPTH,
+        maximum_nodes=MAX_ANPR_DOCUMENT_NODES,
         prohibited_fields=frozenset(),
         reject_source_values=False,
     )
@@ -235,17 +245,24 @@ def validate_ephemeral_synthetic_token(
 
 def canonical_anpr_evidence_json(
     value: BaseModel | Mapping[str, object],
+    *,
+    maximum_bytes: int = MAX_ANPR_REQUEST_BYTES,
+    maximum_nodes: int = MAX_ANPR_DOCUMENT_NODES,
 ) -> str:
+    if maximum_bytes < 1 or maximum_nodes < 1:
+        raise ValueError("ANPR evidence limits must be positive")
     _inspect_document(
         value,
         depth=0,
         nodes=[0],
+        maximum_depth=MAX_ANPR_DOCUMENT_DEPTH,
+        maximum_nodes=maximum_nodes,
         prohibited_fields=_PROHIBITED_PERSISTENCE_FIELDS,
         reject_source_values=False,
         reject_ephemeral_token=True,
     )
     document = value.model_dump(mode="json") if isinstance(value, BaseModel) else value
-    _bounded_json_size(document, maximum_bytes=MAX_ANPR_REQUEST_BYTES)
+    _bounded_json_size(document, maximum_bytes=maximum_bytes)
     return (
         json.dumps(
             document,

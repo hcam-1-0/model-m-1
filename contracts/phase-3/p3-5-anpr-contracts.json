@@ -232,7 +232,442 @@
       ],
       "title": "GeneratedTokenRequestV1",
       "type": "object"
+    },
+    "sealed_split_manifest": {
+      "$defs": {
+        "SyntheticCorpusSplitCountsV1": {
+          "additionalProperties": false,
+          "properties": {
+            "contract_fixture": {
+              "maximum": 128,
+              "minimum": 1,
+              "title": "Contract Fixture",
+              "type": "integer"
+            },
+            "development": {
+              "maximum": 9997,
+              "minimum": 1,
+              "title": "Development",
+              "type": "integer"
+            },
+            "final_test": {
+              "maximum": 9997,
+              "minimum": 1,
+              "title": "Final Test",
+              "type": "integer"
+            },
+            "validation": {
+              "maximum": 9997,
+              "minimum": 1,
+              "title": "Validation",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "contract_fixture",
+            "development",
+            "validation",
+            "final_test"
+          ],
+          "title": "SyntheticCorpusSplitCountsV1",
+          "type": "object"
+        },
+        "SyntheticSplitManifestContentV1": {
+          "additionalProperties": false,
+          "properties": {
+            "contract_type": {
+              "const": "hcam.anpr.synthetic-split-manifest-content.v1",
+              "default": "hcam.anpr.synthetic-split-manifest-content.v1",
+              "title": "Contract Type",
+              "type": "string"
+            },
+            "counts": {
+              "$ref": "#/$defs/SyntheticCorpusSplitCountsV1"
+            },
+            "duplicate_token_count": {
+              "const": 0,
+              "default": 0,
+              "title": "Duplicate Token Count",
+              "type": "integer"
+            },
+            "entries": {
+              "items": {
+                "$ref": "#/$defs/SyntheticSplitManifestEntryV1"
+              },
+              "maxItems": 10000,
+              "minItems": 4,
+              "title": "Entries",
+              "type": "array"
+            },
+            "external_input_count": {
+              "const": 0,
+              "default": 0,
+              "title": "External Input Count",
+              "type": "integer"
+            },
+            "final_test_access_count": {
+              "const": 0,
+              "default": 0,
+              "title": "Final Test Access Count",
+              "type": "integer"
+            },
+            "final_test_frozen": {
+              "const": true,
+              "default": true,
+              "title": "Final Test Frozen",
+              "type": "boolean"
+            },
+            "final_test_tuning_allowed": {
+              "const": false,
+              "default": false,
+              "title": "Final Test Tuning Allowed",
+              "type": "boolean"
+            },
+            "generator_version": {
+              "const": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+              "default": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+              "title": "Generator Version",
+              "type": "string"
+            },
+            "manifest_id": {
+              "pattern": "^anprmanifest_[0-9a-f]{32}$",
+              "title": "Manifest Id",
+              "type": "string"
+            },
+            "plan_id": {
+              "pattern": "^anprplan_[0-9a-f]{32}$",
+              "title": "Plan Id",
+              "type": "string"
+            },
+            "policy_id": {
+              "const": "hcam.anpr.synthetic-non-issuable.v1",
+              "default": "hcam.anpr.synthetic-non-issuable.v1",
+              "title": "Policy Id",
+              "type": "string"
+            },
+            "policy_version": {
+              "const": "sha256:08403d0ba1a037cb88a90aacc470d65e5dbe943e7b0c5f8bccf0e684898cfd9b",
+              "default": "sha256:08403d0ba1a037cb88a90aacc470d65e5dbe943e7b0c5f8bccf0e684898cfd9b",
+              "title": "Policy Version",
+              "type": "string"
+            },
+            "root_seed": {
+              "maximum": 4294967295,
+              "minimum": 0,
+              "title": "Root Seed",
+              "type": "integer"
+            },
+            "sealed": {
+              "const": true,
+              "default": true,
+              "title": "Sealed",
+              "type": "boolean"
+            },
+            "source_id": {
+              "const": "DATA-PLATE-GEN-R0",
+              "default": "DATA-PLATE-GEN-R0",
+              "title": "Source Id",
+              "type": "string"
+            },
+            "split_policy_id": {
+              "const": "hcam.anpr.sealed-splits.v1",
+              "default": "hcam.anpr.sealed-splits.v1",
+              "title": "Split Policy Id",
+              "type": "string"
+            },
+            "split_policy_version": {
+              "const": "sha256:e070a5434006aee89905b9039ce18747525b317099c5235d67b89a5d10538288",
+              "default": "sha256:e070a5434006aee89905b9039ce18747525b317099c5235d67b89a5d10538288",
+              "title": "Split Policy Version",
+              "type": "string"
+            },
+            "synthetic_only": {
+              "const": true,
+              "default": true,
+              "title": "Synthetic Only",
+              "type": "boolean"
+            },
+            "token_commitment_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Token Commitment Persisted",
+              "type": "boolean"
+            },
+            "token_text_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Token Text Persisted",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "manifest_id",
+            "plan_id",
+            "root_seed",
+            "counts",
+            "entries"
+          ],
+          "title": "SyntheticSplitManifestContentV1",
+          "type": "object"
+        },
+        "SyntheticSplitManifestEntryV1": {
+          "additionalProperties": false,
+          "properties": {
+            "font_partition": {
+              "enum": [
+                "primary",
+                "holdout"
+              ],
+              "title": "Font Partition",
+              "type": "string"
+            },
+            "generator_profile": {
+              "enum": [
+                "primary",
+                "holdout"
+              ],
+              "title": "Generator Profile",
+              "type": "string"
+            },
+            "layout": {
+              "enum": [
+                "single_line",
+                "two_line"
+              ],
+              "title": "Layout",
+              "type": "string"
+            },
+            "request_id": {
+              "pattern": "^anprreq_[0-9a-f]{32}$",
+              "title": "Request Id",
+              "type": "string"
+            },
+            "sample_id": {
+              "pattern": "^anprsample_[0-9a-f]{32}$",
+              "title": "Sample Id",
+              "type": "string"
+            },
+            "sample_index": {
+              "exclusiveMaximum": 10000,
+              "minimum": 0,
+              "title": "Sample Index",
+              "type": "integer"
+            },
+            "sample_spec_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Sample Spec Digest",
+              "type": "string"
+            },
+            "seed_namespace": {
+              "pattern": "^p35w3:(?:contract_fixture|development|validation|final_test):v1$",
+              "title": "Seed Namespace",
+              "type": "string"
+            },
+            "split": {
+              "enum": [
+                "contract_fixture",
+                "development",
+                "validation",
+                "final_test"
+              ],
+              "title": "Split",
+              "type": "string"
+            },
+            "synthetic_only": {
+              "const": true,
+              "default": true,
+              "title": "Synthetic Only",
+              "type": "boolean"
+            },
+            "token_class": {
+              "const": "synthetic_non_issuable",
+              "default": "synthetic_non_issuable",
+              "title": "Token Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "sample_id",
+            "request_id",
+            "sample_spec_digest",
+            "split",
+            "seed_namespace",
+            "sample_index",
+            "layout",
+            "generator_profile",
+            "font_partition"
+          ],
+          "title": "SyntheticSplitManifestEntryV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "$ref": "#/$defs/SyntheticSplitManifestContentV1"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.sealed-split-manifest.v1",
+          "default": "hcam.anpr.sealed-split-manifest.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "manifest_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Manifest Digest",
+          "type": "string"
+        }
+      },
+      "required": [
+        "content",
+        "manifest_digest"
+      ],
+      "title": "SealedSyntheticSplitManifestV1",
+      "type": "object"
+    },
+    "synthetic_corpus_plan": {
+      "$defs": {
+        "SyntheticCorpusSplitCountsV1": {
+          "additionalProperties": false,
+          "properties": {
+            "contract_fixture": {
+              "maximum": 128,
+              "minimum": 1,
+              "title": "Contract Fixture",
+              "type": "integer"
+            },
+            "development": {
+              "maximum": 9997,
+              "minimum": 1,
+              "title": "Development",
+              "type": "integer"
+            },
+            "final_test": {
+              "maximum": 9997,
+              "minimum": 1,
+              "title": "Final Test",
+              "type": "integer"
+            },
+            "validation": {
+              "maximum": 9997,
+              "minimum": 1,
+              "title": "Validation",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "contract_fixture",
+            "development",
+            "validation",
+            "final_test"
+          ],
+          "title": "SyntheticCorpusSplitCountsV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "contract_type": {
+          "const": "hcam.anpr.synthetic-corpus-plan.v1",
+          "default": "hcam.anpr.synthetic-corpus-plan.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "counts": {
+          "$ref": "#/$defs/SyntheticCorpusSplitCountsV1"
+        },
+        "external_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "External Input Count",
+          "type": "integer"
+        },
+        "final_test_frozen": {
+          "const": true,
+          "default": true,
+          "title": "Final Test Frozen",
+          "type": "boolean"
+        },
+        "final_test_tuning_allowed": {
+          "const": false,
+          "default": false,
+          "title": "Final Test Tuning Allowed",
+          "type": "boolean"
+        },
+        "generator_version": {
+          "const": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "default": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "input_mode": {
+          "const": "deterministic_seed_only",
+          "default": "deterministic_seed_only",
+          "title": "Input Mode",
+          "type": "string"
+        },
+        "plan_id": {
+          "pattern": "^anprplan_[0-9a-f]{32}$",
+          "title": "Plan Id",
+          "type": "string"
+        },
+        "policy_id": {
+          "const": "hcam.anpr.synthetic-non-issuable.v1",
+          "default": "hcam.anpr.synthetic-non-issuable.v1",
+          "title": "Policy Id",
+          "type": "string"
+        },
+        "policy_version": {
+          "const": "sha256:08403d0ba1a037cb88a90aacc470d65e5dbe943e7b0c5f8bccf0e684898cfd9b",
+          "default": "sha256:08403d0ba1a037cb88a90aacc470d65e5dbe943e7b0c5f8bccf0e684898cfd9b",
+          "title": "Policy Version",
+          "type": "string"
+        },
+        "root_seed": {
+          "maximum": 4294967295,
+          "minimum": 0,
+          "title": "Root Seed",
+          "type": "integer"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "split_policy_id": {
+          "const": "hcam.anpr.sealed-splits.v1",
+          "default": "hcam.anpr.sealed-splits.v1",
+          "title": "Split Policy Id",
+          "type": "string"
+        },
+        "split_policy_version": {
+          "const": "sha256:e070a5434006aee89905b9039ce18747525b317099c5235d67b89a5d10538288",
+          "default": "sha256:e070a5434006aee89905b9039ce18747525b317099c5235d67b89a5d10538288",
+          "title": "Split Policy Version",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "plan_id",
+        "root_seed",
+        "counts"
+      ],
+      "title": "SyntheticCorpusPlanV1",
+      "type": "object"
     }
+  },
+  "generator_policy": {
+    "algorithm": "sha256_domain_separated_platform_independent",
+    "external_entropy": false,
+    "generator_version": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+    "hidden_random_augmentation": false
   },
   "persistence_policy": {
     "identifier_free_aggregate_evidence_only": true,
@@ -252,11 +687,29 @@
     "input_mode": "deterministic_seed_only",
     "synthetic_only": true
   },
+  "split_policy": {
+    "final_test_frozen": true,
+    "final_test_tuning_allowed": false,
+    "holdout_font_partition_required": true,
+    "holdout_generator_profile_required": true,
+    "independent_seed_namespaces": true,
+    "manifest_token_commitment_allowed": false,
+    "manifest_token_text_allowed": false,
+    "ordered_splits": [
+      "contract_fixture",
+      "development",
+      "validation",
+      "final_test"
+    ],
+    "policy_id": "hcam.anpr.sealed-splits.v1",
+    "policy_version": "sha256:e070a5434006aee89905b9039ce18747525b317099c5235d67b89a5d10538288"
+  },
   "token_policy": {
     "classification": "synthetic_non_issuable",
     "normalization_or_lookup": "prohibited",
     "pattern": "^SYN-[A-Z0-9]{4}-[A-Z0-9]{4}$",
     "policy_id": "hcam.anpr.synthetic-non-issuable.v1",
+    "policy_version": "sha256:08403d0ba1a037cb88a90aacc470d65e5dbe943e7b0c5f8bccf0e684898cfd9b",
     "production_grammar_strategy": "deny_every_value_outside_the_disjoint_visible_synthetic_namespace",
     "required_character_classes": [
       "ascii_uppercase",

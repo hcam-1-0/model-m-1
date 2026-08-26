@@ -8,7 +8,12 @@ import difflib
 import json
 from pathlib import Path
 
-from hcam.analytics.anpr import anpr_contract_bundle
+from hcam.analytics.anpr import (
+    SyntheticAnprExecutionPolicyV1,
+    anpr_contract_bundle,
+    build_sealed_split_manifest,
+    synthetic_corpus_plan_fixture,
+)
 from hcam.analytics.anpr.contracts import generated_request_fixture
 from hcam.analytics.anpr.guardrails import canonical_anpr_evidence_json
 
@@ -18,7 +23,12 @@ CONTRACT_PATH = ROOT / "contracts" / "phase-3" / "p3-5-anpr-contracts.json"
 FIXTURE_PATH = (
     ROOT / "contracts" / "phase-3" / "fixtures" / "p3-5-generated-request-v1.json"
 )
+SPLIT_MANIFEST_PATH = (
+    ROOT / "contracts" / "phase-3" / "fixtures" / "p3-5-sealed-splits-v1.json"
+)
 _MAX_DIFF_LINES = 240
+_MAX_MANIFEST_BYTES = 8 * 1024 * 1024
+_MAX_MANIFEST_NODES = 200_000
 
 
 def _render_bundle() -> str:
@@ -31,9 +41,18 @@ def _render_bundle() -> str:
 
 
 def render_contracts() -> dict[Path, str]:
+    manifest = build_sealed_split_manifest(
+        synthetic_corpus_plan_fixture(),
+        policy=SyntheticAnprExecutionPolicyV1(enabled=True, environment="test"),
+    )
     return {
         CONTRACT_PATH: _render_bundle(),
         FIXTURE_PATH: canonical_anpr_evidence_json(generated_request_fixture()),
+        SPLIT_MANIFEST_PATH: canonical_anpr_evidence_json(
+            manifest,
+            maximum_bytes=_MAX_MANIFEST_BYTES,
+            maximum_nodes=_MAX_MANIFEST_NODES,
+        ),
     }
 
 

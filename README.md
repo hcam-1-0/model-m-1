@@ -22,6 +22,8 @@ digest-bound, generated-only, default-off local implementation slice with five
 loadable artifacts, two blocked Tesseract artifacts, and zero network actions.
 `P35-W1` contracts, the visible non-issuable `SYN` token policy, and recursive
 prohibited-input/zero-retention guardrails are now implemented and validated.
+`P35-W3` deterministic ephemeral token generation and token-free sealed split
+manifests are also implemented and validated; `P35-W2` remains blocked.
 None of these milestones adds a real CCTV media path.
 
 A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
@@ -36,7 +38,9 @@ exact non-runtime closure and remaining blocks. The
 [P3.5 start authorization](docs/phase-3/p3-5-start-authorization.md) records the
 exact implementation allowlist and continuing prohibitions. The
 [P3.5 W1 contracts and guardrails](docs/phase-3/p3-5-w1-contracts-guardrails.md)
-record the first bounded implementation slice.
+record the first bounded implementation slice. The
+[P3.5 W3 deterministic generator and sealed splits](docs/phase-3/p3-5-w3-generator-splits.md)
+record the next authorized local generated-only slice.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
@@ -96,7 +100,7 @@ The P3.5 planning verifier should report
 and zero manual gates. It verifies the approved `A/A/A/A`
 baseline, exact artifact acceptance, completed restricted runtime evidence,
 digest-bound generated-only start authorization, and the exact W1-only
-application boundary. The verifier itself performs no download, extraction,
+and W3-only application boundary. The verifier itself performs no download, extraction,
 synthetic generation, training, inference, media access, or model execution.
 The artifact-research command is separately gated and writes only the seven
 authorized files and receipts to the external local quarantine.

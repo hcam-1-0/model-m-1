@@ -106,6 +106,9 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   execution, prohibited inputs, resource ceilings, and zero retention.
 - `fixtures/p3-5-generated-request-v1.json`: canonical seed-only generated
   request with no plate text, file, URL, bytes, camera, or identity field.
+- `fixtures/p3-5-sealed-splits-v1.json`: digest-bound 20-entry W3 split
+  manifest with independent seed namespaces, final-test-only logical holdouts,
+  and no token text or token-derived commitment.
 
 Verify all tracked snapshots:
 
@@ -156,3 +159,6 @@ P3.6, and remote Git operations remain prohibited.
 `P35-W1` adds only the reviewed ANPR contracts and fail-closed guardrails. It
 does not add a generator, OCR runtime, artifact loader, API, worker, migration,
 or persistence path.
+`P35-W3` adds deterministic in-memory token generation and token-free sealed
+split manifests. Logical holdout labels do not load fonts, render images, run
+OCR/models, or widen W2 or later-package authority.

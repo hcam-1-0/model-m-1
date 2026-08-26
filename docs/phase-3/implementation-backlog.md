@@ -231,6 +231,14 @@ Implementation progress:
   deterministic snapshots and negative tests.
 - No generator, OCR adapter, model loader, API, migration, worker, or storage
   path was introduced in W1.
+- `P35-W3`: `validated_complete`. Domain-separated SHA-256 generation now emits
+  bounded non-issuable tokens ephemerally from independent split namespaces.
+  A digest-bound 20-entry manifest freezes contract/development/validation/final
+  test assignments, reserves final-test-only logical generator/font holdouts,
+  and persists neither token text nor a token-derived commitment.
+- W3 includes 20-run exact replay, collision, leakage, tampering, count,
+  default-off, split separation, and zero-retention tests. It does not render a
+  plate, load a font/model/artifact, run OCR, or add an API/storage path.
 - The next implementation work remains within the separately enumerated start
   allowlist; this W1 completion does not widen any artifact or runtime authority.
 

@@ -16,7 +16,7 @@ def test_p3_5_generated_only_start_is_authorized_without_manual_gates() -> None:
     )
     assert report.failures == 0
     assert report.manual_gates == 0
-    assert report.package_file_count == 57
+    assert report.package_file_count == 61
     assert len(report.package_digest) == 64
 
 
@@ -29,8 +29,9 @@ def test_p3_5_technical_checks_pass() -> None:
         readiness.check_existing_contract_foundation(),
         readiness.check_research_sources(),
         readiness.check_plan_contract(),
-        readiness.check_authorized_w1_package(),
+        readiness.check_authorized_w1_w3_package(),
         readiness.check_w1_contract_snapshot(),
+        readiness.check_w3_split_manifest(),
         readiness.check_artifact_proposal(),
         readiness.check_owner_decisions_record(),
         readiness.check_artifact_research_authorization(),
@@ -358,13 +359,14 @@ def test_p3_5_candidates_remain_blocked() -> None:
     assert readiness.check_candidate_boundary().status == readiness.PASS
 
 
-def test_p3_5_package_has_only_authorized_w1_application_files() -> None:
-    assert readiness.check_authorized_w1_package().status == readiness.PASS
+def test_p3_5_package_has_only_authorized_w1_w3_application_files() -> None:
+    assert readiness.check_authorized_w1_w3_package().status == readiness.PASS
     assert {
         path for path in readiness.PACKAGE_FILES if path.startswith("app/")
     } == {
         "app/hcam/analytics/anpr/__init__.py",
         "app/hcam/analytics/anpr/contracts.py",
+        "app/hcam/analytics/anpr/generator.py",
         "app/hcam/analytics/anpr/guardrails.py",
     }
     assert not any(path.startswith("migrations/") for path in readiness.PACKAGE_FILES)
@@ -372,6 +374,10 @@ def test_p3_5_package_has_only_authorized_w1_application_files() -> None:
 
 def test_p3_5_w1_snapshot_preserves_seed_only_zero_retention_boundary() -> None:
     assert readiness.check_w1_contract_snapshot().status == readiness.PASS
+
+
+def test_p3_5_w3_snapshot_preserves_sealed_split_zero_retention_boundary() -> None:
+    assert readiness.check_w3_split_manifest().status == readiness.PASS
 
 
 def test_p3_5_package_digest_is_deterministic_and_path_relative() -> None:

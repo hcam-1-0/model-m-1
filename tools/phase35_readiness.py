@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the planning-only P3.5 synthetic ANPR package."""
+"""Verify the authorized staged P3.5 synthetic ANPR package."""
 
 from __future__ import annotations
 
@@ -98,9 +98,11 @@ PACKAGE_FILES = (
     "README.md",
     "app/hcam/analytics/anpr/__init__.py",
     "app/hcam/analytics/anpr/contracts.py",
+    "app/hcam/analytics/anpr/generator.py",
     "app/hcam/analytics/anpr/guardrails.py",
     "contracts/phase-3/README.md",
     "contracts/phase-3/fixtures/p3-5-generated-request-v1.json",
+    "contracts/phase-3/fixtures/p3-5-sealed-splits-v1.json",
     "contracts/phase-3/p3-4-acceptance.json",
     "contracts/phase-3/p3-5-artifact-review-proposal.json",
     "contracts/phase-3/p3-5-artifact-review-evidence.json",
@@ -140,6 +142,8 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-start-authorization.md",
     "docs/phase-3/p3-5-start-intent.md",
     "docs/phase-3/p3-5-w1-contracts-guardrails.md",
+    "docs/phase-3/p3-5-w3-generator-splits.md",
+    "tests/test_analytics_anpr_generator.py",
     "tests/test_analytics_anpr_guardrails.py",
     "tests/test_phase35_contracts.py",
     "tests/test_phase35_readiness.py",
@@ -263,7 +267,7 @@ def check_required_files() -> Check:
     return Check(
         "required_files",
         PASS,
-        f"All {len(PACKAGE_FILES)} P3.5 authorization and W1 package files exist.",
+        f"All {len(PACKAGE_FILES)} P3.5 authorization and W1/W3 package files exist.",
     )
 
 
@@ -535,10 +539,11 @@ def check_plan_contract() -> Check:
     )
 
 
-def check_authorized_w1_package() -> Check:
+def check_authorized_w1_w3_package() -> Check:
     allowed_application_files = {
         "app/hcam/analytics/anpr/__init__.py",
         "app/hcam/analytics/anpr/contracts.py",
+        "app/hcam/analytics/anpr/generator.py",
         "app/hcam/analytics/anpr/guardrails.py",
     }
     prohibited_prefixes = ("migrations/", "deploy/")
@@ -565,15 +570,15 @@ def check_authorized_w1_package() -> Check:
     )
     if prohibited:
         return Check(
-            "authorized_w1_package",
+            "authorized_w1_w3_package",
             FAIL,
-            "P3.5 W1 contains an unapproved application, migration, deployment, model, or media file.",
+            "P3.5 W1/W3 contains an unapproved application, migration, deployment, model, or media file.",
             prohibited,
         )
     return Check(
-        "authorized_w1_package",
+        "authorized_w1_w3_package",
         PASS,
-        "P3.5 application scope is limited to contracts and fail-closed guardrails; no runtime, migration, model, or media file is present.",
+        "P3.5 application scope is limited to contracts, guardrails, deterministic token generation, and sealed splits; no rendering, OCR, runtime adapter, migration, model, or media file is present.",
     )
 
 
@@ -641,6 +646,84 @@ def check_w1_contract_snapshot() -> Check:
         "w1_contract_snapshot",
         PASS,
         "P3.5 W1 fixes seed-only generated provenance, the visible SYN namespace, and zero plate-text retention.",
+    )
+
+
+def check_w3_split_manifest() -> Check:
+    try:
+        record = _json(
+            ROOT / "contracts/phase-3/fixtures/p3-5-sealed-splits-v1.json"
+        )
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("w3_split_manifest", FAIL, str(exc))
+    content = record.get("content")
+    if not isinstance(content, dict):
+        return Check("w3_split_manifest", FAIL, "W3 manifest content is missing.")
+    entries = content.get("entries")
+    counts = content.get("counts")
+    serialized = json.dumps(record, separators=(",", ":"), sort_keys=True)
+    canonical_content = json.dumps(
+        content,
+        allow_nan=False,
+        ensure_ascii=True,
+        separators=(",", ":"),
+        sort_keys=True,
+    ).encode("utf-8")
+    expected_digest = f"sha256:{hashlib.sha256(canonical_content).hexdigest()}"
+    if not isinstance(entries, list) or not isinstance(counts, dict):
+        return Check("w3_split_manifest", FAIL, "W3 entries or counts are missing.")
+    actual_counts = {
+        split: sum(entry.get("split") == split for entry in entries if isinstance(entry, dict))
+        for split in ("contract_fixture", "development", "validation", "final_test")
+    }
+    non_final = [
+        entry
+        for entry in entries
+        if isinstance(entry, dict) and entry.get("split") != "final_test"
+    ]
+    final = [
+        entry
+        for entry in entries
+        if isinstance(entry, dict) and entry.get("split") == "final_test"
+    ]
+    if (
+        record.get("contract_type") != "hcam.anpr.sealed-split-manifest.v1"
+        or record.get("manifest_digest") != expected_digest
+        or content.get("sealed") is not True
+        or content.get("final_test_frozen") is not True
+        or content.get("final_test_tuning_allowed") is not False
+        or content.get("final_test_access_count") != 0
+        or content.get("external_input_count") != 0
+        or content.get("duplicate_token_count") != 0
+        or content.get("token_text_persisted") is not False
+        or content.get("token_commitment_persisted") is not False
+        or counts != {
+            "contract_fixture": 4,
+            "development": 8,
+            "final_test": 4,
+            "validation": 4,
+        }
+        or actual_counts != counts
+        or len(entries) != 20
+        or '"token"' in serialized
+        or "SYN-" in serialized
+        or any(
+            entry.get("generator_profile") != "primary"
+            or entry.get("font_partition") != "primary"
+            for entry in non_final
+        )
+        or not any(entry.get("generator_profile") == "holdout" for entry in final)
+        or not any(entry.get("font_partition") == "holdout" for entry in final)
+    ):
+        return Check(
+            "w3_split_manifest",
+            FAIL,
+            "P3.5 W3 split sealing, holdout isolation, determinism, or zero-retention boundary changed.",
+        )
+    return Check(
+        "w3_split_manifest",
+        PASS,
+        "P3.5 W3 seals 20 token-free entries across independent namespaces with final-test-only holdouts.",
     )
 
 
@@ -1711,6 +1794,7 @@ def check_documentation_sync() -> Check:
         ),
         "contracts/phase-3/README.md": (
             "p3-5-anpr-contracts.json",
+            "p3-5-sealed-splits-v1.json",
             "p3-5-artifact-review-evidence.json",
             "p3-5-artifact-review-acceptance.json",
             "p3-5-artifact-model-cards.json",
@@ -1729,6 +1813,7 @@ def check_documentation_sync() -> Check:
         ),
         "docs/phase-3/README.md": (
             "[P3.5 W1 contracts and guardrails](p3-5-w1-contracts-guardrails.md)",
+            "[P3.5 W3 deterministic generator and sealed splits](p3-5-w3-generator-splits.md)",
             "[P3.5 artifact model cards](p3-5-artifact-model-cards.md)",
             "[P3.5 exact artifact review evidence](p3-5-artifact-review-evidence.md)",
             "[P3.5 exact artifact review acceptance](p3-5-artifact-review-acceptance.md)",
@@ -1759,6 +1844,7 @@ def check_documentation_sync() -> Check:
             "guarded import evidence are complete",
             "implementation_authorized_generated_only_staged",
             "P35-W1",
+            "P35-W3",
             "validated_complete",
         ),
         "docs/phase-3/p3-5-runtime-research-evidence.md": (
@@ -1783,6 +1869,13 @@ def check_documentation_sync() -> Check:
             "deterministic_seed_only",
             "plate_text_persistence_prohibited",
             "No generator, OCR runtime, model loading, or API",
+        ),
+        "docs/phase-3/p3-5-w3-generator-splits.md": (
+            "P35-W3",
+            "20 exact replay runs",
+            "p35w3:final_test:v1",
+            "token_commitment_persisted",
+            "No rendering, OCR, model, artifact, media, API",
         ),
         ".github/workflows/python-ci.yml": (
             "python tools/phase35_readiness.py --strict",
@@ -1844,8 +1937,9 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_existing_contract_foundation(),
         check_research_sources(),
         check_plan_contract(),
-        check_authorized_w1_package(),
+        check_authorized_w1_w3_package(),
         check_w1_contract_snapshot(),
+        check_w3_split_manifest(),
         check_artifact_proposal(),
         check_owner_decisions_record(),
         check_artifact_research_authorization(),

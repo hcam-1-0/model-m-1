@@ -155,6 +155,14 @@ zero. P3.2 remains blocked and requires separate artifact and dataset approval.
   echoing values.
 - [x] `P35-W1` evidence serialization rejects plate text, raw/normalized OCR,
   alternatives, and the complete ephemeral token model.
+- [x] `P35-W3` produces exact deterministic ephemeral tokens across 20 replay
+  runs using independent contract/development/validation/final-test namespaces.
+- [x] `P35-W3` rejects corpus-wide token collisions, split/index errors,
+  manifest tampering, holdout leakage, and count overflow.
+- [x] `P35-W3` seals a token-free manifest with final test frozen, tuning
+  disabled, zero accesses, and no token text or token-derived commitment.
+- [x] `P35-W3` logical holdout labels are documented as non-rendering metadata;
+  W2, fonts, rendering, OCR, models, media, APIs, and persistence remain blocked.
 
 Current P3.5 status:
 `implementation_authorized_generated_only_staged`.
