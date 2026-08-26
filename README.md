@@ -13,13 +13,17 @@ an accepted, generated-only anonymous stream-local tracker under
 `D-P3.3-ACCEPTANCE`. P3.4 is implemented, technically validated, and accepted
 under `D-P3.4-ACCEPTANCE` for its exact historical package digest.
 P3.5 synthetic-ANPR planning is authorized under `D-P3.5-PLAN-AUTH`. The exact
-`D-P3.5-START` statement has been received but is not effective: four technical
-choices and exact artifact/source review remain pending.
+`A/A/A/A` technical baseline is approved, and `D-P3.5-ARTIFACT-RESEARCH`
+authorizes exactly seven quarantine downloads. `D-P3.5-START` remains
+non-effective until the exact artifact/source review packet is complete and
+accepted.
 None of these milestones adds a real CCTV media path.
 
 A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
-now pins the recommended artifact locations and bounds. It authorizes no
-download or execution.
+pins the recommended artifact locations and bounds. The separate
+[artifact research authorization](docs/phase-3/p3-5-artifact-research-authorization.md)
+permits only its seven exact external artifacts to enter a non-runtime local
+quarantine; it authorizes no extraction, execution, or implementation.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
@@ -70,9 +74,10 @@ The P3.4 implementation verifier should report `accepted`, zero technical
 failures, and zero manual gates while preserving the immutable historical
 package binding. The PostGIS validation image remains deployment-blocked.
 
-The P3.5 planning verifier should report `ready_for_owner_decisions`, zero
-technical failures, and five manual gates. It verifies that the early start
-statement grants no authority. It performs no artifact download,
+The P3.5 planning verifier should report `artifact_research_authorized`, zero
+technical failures, and one manual gate. It verifies the approved `A/A/A/A`
+baseline, exact seven-artifact quarantine authority, and non-effective early
+start statement. The verifier itself performs no download, extraction,
 synthetic generation, training, inference, media access, or product execution.
 
 ## Phase 2 camera and video ingestion

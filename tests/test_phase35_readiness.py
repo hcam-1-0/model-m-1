@@ -8,13 +8,13 @@ from pathlib import Path
 from tools import phase35_readiness as readiness
 
 
-def test_p3_5_planning_is_ready_for_five_owner_decisions() -> None:
+def test_p3_5_artifact_research_is_authorized_with_one_manual_gate() -> None:
     report = readiness.build_report()
 
-    assert report.status == "ready_for_owner_decisions"
+    assert report.status == "artifact_research_authorized"
     assert report.failures == 0
-    assert report.manual_gates == 5
-    assert report.package_file_count == 22
+    assert report.manual_gates == 1
+    assert report.package_file_count == 26
     assert len(report.package_digest) == 64
 
 
@@ -29,6 +29,8 @@ def test_p3_5_technical_checks_pass() -> None:
         readiness.check_plan_contract(),
         readiness.check_planning_only_package(),
         readiness.check_artifact_proposal(),
+        readiness.check_owner_decisions_record(),
+        readiness.check_artifact_research_authorization(),
         readiness.check_start_intent(),
         readiness.check_documentation_sync(),
     )
@@ -36,11 +38,68 @@ def test_p3_5_technical_checks_pass() -> None:
     assert all(check.status == readiness.PASS for check in checks)
 
 
-def test_p3_5_owner_gates_remain_manual_and_ordered() -> None:
+def test_p3_5_only_final_start_gate_remains_manual() -> None:
     check = readiness.check_owner_gates()
 
     assert check.status == readiness.MANUAL
-    assert check.evidence == readiness.DECISION_IDS
+    assert check.evidence == ("D-P3.5-START",)
+
+
+def test_p3_5_owner_decisions_record_exact_recommended_baseline() -> None:
+    record = json.loads(readiness.OWNER_DECISIONS_PATH.read_text(encoding="utf-8"))
+
+    assert [item["selected_option"] for item in record["decisions"]] == [
+        "A",
+        "A",
+        "A",
+        "A",
+    ]
+    assert record["technical_decisions_completed"] == 4
+    assert record["implementation_authorized"] is False
+    assert readiness.check_owner_decisions_record().status == readiness.PASS
+
+
+def test_p3_5_artifact_research_is_exactly_bounded() -> None:
+    record = json.loads(
+        readiness.ARTIFACT_RESEARCH_AUTHORIZATION_PATH.read_text(encoding="utf-8")
+    )
+
+    assert len(record["allowed_artifacts"]) == 7
+    assert record["limits"]["maximum_redirects"] == 0
+    assert record["limits"]["environment_proxies"] is False
+    assert record["limits"]["runtime_loading_from_quarantine"] is False
+    assert record["implementation_authorized"] is False
+    assert readiness.check_artifact_research_authorization().status == readiness.PASS
+
+
+def test_p3_5_artifact_research_rejects_proposal_digest_change(monkeypatch) -> None:
+    original_json = readiness._json
+
+    def load(path: Path) -> dict[str, object]:
+        record = original_json(path)
+        if path == readiness.ARTIFACT_RESEARCH_AUTHORIZATION_PATH:
+            record["proposal_sha256"] = "0" * 64
+        return record
+
+    monkeypatch.setattr(readiness, "_json", load)
+
+    assert readiness.check_artifact_research_authorization().status == readiness.FAIL
+
+
+def test_p3_5_artifact_research_rejects_unlisted_url(monkeypatch) -> None:
+    original_json = readiness._json
+
+    def load(path: Path) -> dict[str, object]:
+        record = original_json(path)
+        if path == readiness.ARTIFACT_RESEARCH_AUTHORIZATION_PATH:
+            allowed = record["allowed_artifacts"]
+            assert isinstance(allowed, list)
+            allowed[0]["source_url"] = "https://example.invalid/model.tar"
+        return record
+
+    monkeypatch.setattr(readiness, "_json", load)
+
+    assert readiness.check_artifact_research_authorization().status == readiness.FAIL
 
 
 def test_p3_5_start_intent_is_non_effective_and_has_no_authority() -> None:

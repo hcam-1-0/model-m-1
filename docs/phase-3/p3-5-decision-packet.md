@@ -285,9 +285,9 @@ Recommended start policy:
 
 `authorize_only_after_decisions_001_through_004_and_exact_artifact_review`.
 
-## Owner Response Format
+## Owner Decision Record
 
-The owner may select the recommended baseline with:
+On 2026-08-26, `mayank-admin` selected the recommended baseline with:
 
 > D-P3.5-001: A
 >
@@ -297,13 +297,15 @@ The owner may select the recommended baseline with:
 >
 > D-P3.5-004: A
 
-This accepts technical planning choices only. It does not authorize
-implementation.
+This accepted the four technical planning choices only. The separate exact
+`D-P3.5-ARTIFACT-RESEARCH` statement authorizes the seven proposal-bound
+quarantine downloads, but no extraction, runtime loading, or implementation.
 
 After exact artifact and source manifests are prepared and reviewed, the owner
 must separately identify `D-P3.5-START`. A response such as `continue`, `start`,
 or `accepted` without that decision ID is not implementation authorization.
 
-`mayank-admin` supplied the exact identifier on 2026-08-26 before the required
-choices and manifests existed. It is recorded as start intent only. A final
-confirmation against the future exact packet digest is still required.
+`mayank-admin` supplied the exact start identifier on 2026-08-26 before the
+required choices and manifests existed. It remains start intent only. A final
+confirmation against the completed exact review packet digest is still
+required.

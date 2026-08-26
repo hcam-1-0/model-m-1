@@ -1,9 +1,10 @@
 # P3.5 Synthetic ANPR Plan
 
 Status: planning complete under `D-P3.5-PLAN-AUTH`; technical decisions
-`D-P3.5-001` through `D-P3.5-004` remain pending. The exact
-`D-P3.5-START` statement was received early and remains non-effective until the
-technical decisions and exact artifact review are complete.
+`D-P3.5-001` through `D-P3.5-004` approve the recommended `A/A/A/A` baseline.
+Exact seven-artifact quarantine research is authorized under
+`D-P3.5-ARTIFACT-RESEARCH`. The early `D-P3.5-START` remains non-effective
+until exact artifact review is complete and accepted.
 
 Planning authority: `D-P3.5-PLAN-AUTH`.
 
@@ -36,8 +37,9 @@ P3.5 planning defines:
   security controls, rollback, and acceptance evidence;
 - four owner technical decisions and one separate implementation-start gate.
 
-Planning does not authorize downloads, dependencies, generation, training,
-fine-tuning, export, inference, application code, migrations, APIs, workers,
+Planning plus the separate research decision authorizes only the seven exact
+quarantine downloads. It does not authorize dependencies, extraction, runtime
+loading, generation, training, fine-tuning, export, inference, application code, migrations, APIs, workers,
 storage, cameras, media, real registration marks, owner or vehicle records,
 Government databases, watchlists, alerts, deployment, P3.6, or remote Git
 actions.

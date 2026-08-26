@@ -124,23 +124,25 @@ zero. P3.2 remains blocked and requires separate artifact and dataset approval.
   synthetic-data research is recorded without downloads.
 - [x] Non-issuable corpus, stage contracts, normalization, abstention,
   consensus, zero-retention, resources, and generated evaluation are planned.
-- [ ] `D-P3.5-001` synthetic corpus and source policy is owner selected.
-- [ ] `D-P3.5-002` detector and OCR portfolio is owner selected.
-- [ ] `D-P3.5-003` normalization, abstention, and consensus is owner selected.
-- [ ] `D-P3.5-004` privacy, resources, and evidence policy is owner selected.
+- [x] `D-P3.5-001` synthetic corpus and source policy selects option `A`.
+- [x] `D-P3.5-002` detector and OCR portfolio selects option `A`.
+- [x] `D-P3.5-003` normalization, abstention, and consensus selects option `A`.
+- [x] `D-P3.5-004` privacy, resources, and evidence policy selects option `A`.
 - [x] A metadata-only eight-artifact proposal is prepared with immutable source
   identities where available, bounded sizes, empty network authority, and
   unresolved SHA-256 values.
-- [ ] `D-P3.5-ARTIFACT-RESEARCH` authorizes exact quarantine acquisition only.
+- [x] `D-P3.5-ARTIFACT-RESEARCH` authorizes exact seven-artifact quarantine
+  acquisition only.
 - [ ] Exact artifact/source manifests are reviewed and owner approved.
 - [x] The exact early `D-P3.5-START` statement is preserved as non-effective
   intent with empty artifact and network allowlists.
 - [ ] `D-P3.5-START` is confirmed against the exact reviewed packet and
   separately authorizes bounded implementation.
 
-Current P3.5 status: `ready_for_owner_decisions`. Early start intent grants no artifact,
-dataset, generation, training, inference, product code, media, real-plate,
-storage, operational, or deployment authority.
+Current P3.5 status: `artifact_research_authorized`. Only the seven exact
+quarantine downloads are authorized. Early start intent grants no extraction,
+runtime loading, dependency, dataset, generation, training, inference, product
+code, media, real-plate, storage, operational, or deployment authority.
 
 ## Tier A Implementation Acceptance
 

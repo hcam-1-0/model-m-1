@@ -71,11 +71,16 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-5-artifact-review-proposal.json`: metadata-only recommended `A/A/A/A`
   acquisition proposal with eight blocked artifact slots, exact source
   identities where available, empty network authority, and unresolved hashes.
-- `p3-5-entry-gates.json`: four pending technical choices and the early,
+- `p3-5-owner-decisions.json`: exact owner approval of the recommended
+  `A/A/A/A` technical baseline without implementation authority.
+- `p3-5-artifact-research-authorization.json`: proposal-digest-bound authority
+  for exactly seven HTTPS quarantine downloads with no redirects, proxies,
+  extraction, runtime loading, or implementation.
+- `p3-5-entry-gates.json`: four approved technical choices and the remaining,
   prerequisite-blocked `D-P3.5-START` statement.
-- `p3-5-start-authorization.json`: the exact received start intent, its five
-  unmet prerequisites, empty artifact/network allowlists, and continuing
-  implementation prohibitions.
+- `p3-5-start-authorization.json`: the exact received start intent, four
+  satisfied technical prerequisites, the in-progress exact artifact review,
+  empty implementation allowlists, and continuing prohibitions.
 
 Verify all tracked snapshots:
 
@@ -112,6 +117,7 @@ accepted under `D-P3.4-ACCEPTANCE`. The PostGIS validation image remains
 deployment-blocked.
 These contracts do not authorize camera access, raw-media persistence, external
 datasets, identity, cross-camera association, Government matching, alerts,
-or deployment. P3.5 is authorized for planning only under
-`D-P3.5-PLAN-AUTH`; receipt of `D-P3.5-START` before its prerequisites does not
-authorize any artifact, network, or implementation action.
+or deployment. P3.5 technical choices are approved, and only the exact seven
+quarantine downloads recorded under `D-P3.5-ARTIFACT-RESEARCH` are authorized.
+Receipt of `D-P3.5-START` before exact review completion does not authorize
+runtime, dependency, implementation, media, or deployment action.

@@ -207,17 +207,19 @@ accepted P3.0 zero-retention plate-text policy.
 
 Planning status: authorized under `D-P3.5-PLAN-AUTH`. Primary-source research,
 the detailed plan, and owner decision packet are complete. `D-P3.5-001` through
-`D-P3.5-004` remain pending. The exact `D-P3.5-START` statement was received
-early and is recorded as non-effective until those decisions and exact artifact
-review are complete. No artifact acquisition,
-generation, training, inference, product implementation, or media/data access
-is authorized.
+`D-P3.5-004` approve the recommended `A/A/A/A` baseline. Exact quarantine
+research for seven external artifacts is authorized under
+`D-P3.5-ARTIFACT-RESEARCH`. The early `D-P3.5-START` remains non-effective
+until exact artifact review is complete and accepted. No extraction, runtime
+loading, generation, training, inference, product implementation, or
+media/data access is authorized.
 
 Artifact preparation status: proposal R0 records eight recommended artifact
 slots, immutable source metadata where available, bounded sizes, and current
-runtime gaps. All SHA-256 values remain unresolved; acquisition and execution
-remain blocked pending the four technical decisions and
-`D-P3.5-ARTIFACT-RESEARCH`.
+runtime gaps. Seven external slots may now be downloaded only into the bounded
+quarantine so SHA-256, structure, scan, lineage, license, and compatibility
+evidence can be prepared. The internal detector slot and all execution remain
+blocked.
 
 Deliverables:
 

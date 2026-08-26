@@ -12,28 +12,29 @@
     {
       "decision_id": "D-P3.5-001",
       "required_status": "owner_approved",
-      "status": "pending_owner_decision"
+      "status": "owner_approved"
     },
     {
       "decision_id": "D-P3.5-002",
       "required_status": "owner_approved",
-      "status": "pending_owner_decision"
+      "status": "owner_approved"
     },
     {
       "decision_id": "D-P3.5-003",
       "required_status": "owner_approved",
-      "status": "pending_owner_decision"
+      "status": "owner_approved"
     },
     {
       "decision_id": "D-P3.5-004",
       "required_status": "owner_approved",
-      "status": "pending_owner_decision"
+      "status": "owner_approved"
     },
     {
       "evidence_id": "P3.5-EXACT-ARTIFACT-REVIEW",
       "required_status": "owner_reviewed",
       "proposal_record": "p3-5-artifact-review-proposal.json",
-      "status": "proposal_prepared_blocked"
+      "research_authorization_record": "p3-5-artifact-research-authorization.json",
+      "status": "quarantine_research_authorized"
     }
   ],
   "prohibited_actions": [

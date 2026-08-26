@@ -12,13 +12,13 @@ prerequisites were not complete when it was received.
 
 | Prerequisite | Current state |
 | --- | --- |
-| `D-P3.5-001` synthetic corpus and source policy | Pending owner selection |
-| `D-P3.5-002` detector and OCR portfolio | Pending owner selection |
-| `D-P3.5-003` normalization, abstention, and consensus | Pending owner selection |
-| `D-P3.5-004` privacy, resources, and evidence policy | Pending owner selection |
-| Exact model, font, dictionary, generator, dependency, and runtime review | Metadata proposal R0 prepared; acquisition, SHA-256, license/lineage, SBOM, and owner review remain blocked |
+| `D-P3.5-001` synthetic corpus and source policy | Option `A` owner approved |
+| `D-P3.5-002` detector and OCR portfolio | Option `A` owner approved |
+| `D-P3.5-003` normalization, abstention, and consensus | Option `A` owner approved |
+| `D-P3.5-004` privacy, resources, and evidence policy | Option `A` owner approved |
+| Exact model, font, dictionary, generator, dependency, and runtime review | Seven-artifact quarantine research authorized; SHA-256, scan, license/lineage, compatibility, SBOM, and owner review remain pending |
 
-The recommended technical baseline can be selected with:
+The recommended technical baseline was selected with:
 
 ```text
 D-P3.5-001: A
@@ -27,9 +27,9 @@ D-P3.5-003: A
 D-P3.5-004: A
 ```
 
-Those selections make proposal R0 eligible for owner review. They do not
-authorize downloads or implementation. A separate
-`D-P3.5-ARTIFACT-RESEARCH` gate is required for bounded quarantine acquisition.
+Those selections do not authorize implementation. The separate
+`D-P3.5-ARTIFACT-RESEARCH` statement now authorizes only the exact seven
+proposal-bound quarantine downloads.
 
 ## Why The Start Is Not Yet Effective
 
@@ -51,8 +51,9 @@ confirm `D-P3.5-START` against that packet digest.
 
 ## Current Boundary
 
-Implementation remains off. No model, font, dictionary, dataset, package, or
-source artifact may be downloaded. No dependency, lockfile, container,
+Implementation remains off. Only the seven exact authorized files may be
+downloaded into the non-runtime quarantine. No extraction, dependency,
+lockfile, container,
 application, migration, API, worker, or storage change may be made. Synthetic
 generation, training, inference, camera/media access, real registration marks,
 Government or owner records, identity, watchlist matching, operational alerts,

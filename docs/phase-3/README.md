@@ -10,9 +10,10 @@ authorized under `D-P3.4-PLAN-AUTH`; technical decisions `D-P3.4-001` through
 `D-P3.4-004` are accepted, and bounded generated-only local implementation is
 authorized under `D-P3.4-START`. Implementation and technical evidence are
 complete and accepted under `D-P3.4-ACCEPTANCE`. P3.5 synthetic-ANPR planning
-is authorized under `D-P3.5-PLAN-AUTH`. `D-P3.5-START` was received early but
-is not effective because four technical choices and exact artifact review
-remain pending. All broader media,
+is authorized under `D-P3.5-PLAN-AUTH`; its recommended `A/A/A/A` technical
+baseline is approved, and exact seven-artifact quarantine research is
+authorized under `D-P3.5-ARTIFACT-RESEARCH`. `D-P3.5-START` was received early
+but is not effective because exact artifact review remains pending. All broader media,
 identity, correlation, alerting, and deployment work remains unauthorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
@@ -74,6 +75,8 @@ autonomous enforcement.
 | [P3.5 planning authorization](p3-5-planning-authorization.md) | Planning-only owner authorization and prohibited implementation actions |
 | [P3.5 research record](p3-5-research-record.md) | Current primary-source OCR, Unicode, rule, font, and synthetic-data findings |
 | [P3.5 artifact review proposal](p3-5-artifact-review-proposal.md) | Metadata-only eight-artifact proposal, quarantine blockers, and zero download authority |
+| [P3.5 owner decisions](p3-5-owner-decisions.md) | Approved `A/A/A/A` technical baseline and continuing non-authorization |
+| [P3.5 artifact research authorization](p3-5-artifact-research-authorization.md) | Exact seven-artifact quarantine allowlist and safety controls |
 | [P3.5 plan](p3-5-plan.md) | Synthetic corpus, localization, OCR, normalization, consensus, privacy, and evidence design |
 | [P3.5 owner decision packet](p3-5-decision-packet.md) | Four technical choices and separate implementation-start gate |
 | [P3.5 planning readiness](p3-5-planning-readiness-report.md) | Machine-verified package boundary, digest, and pending owner gates |

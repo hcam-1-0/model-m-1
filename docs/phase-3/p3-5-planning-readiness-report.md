@@ -1,8 +1,9 @@
 # P3.5 Planning Readiness Report
 
-Status: `ready_for_owner_decisions` under `D-P3.5-PLAN-AUTH`.
+Status: `artifact_research_authorized` under `D-P3.5-PLAN-AUTH` and
+`D-P3.5-ARTIFACT-RESEARCH`.
 
-Scope: `phase3.p3_5.synthetic_anpr.planning_only`.
+Scope: `phase3.p3_5.synthetic_anpr.pre_implementation_research`.
 
 ## Technical Readiness
 
@@ -19,34 +20,26 @@ Scope: `phase3.p3_5.synthetic_anpr.planning_only`.
 - the accepted zero-retention/no-access-role plate-text policy is preserved;
 - the planning package includes no P3.5 application, migration, deployment,
   model, font, dictionary, generated image, media, or dataset file;
+- the recommended `A/A/A/A` technical baseline is owner approved;
 - an eight-slot metadata-only artifact proposal records immutable sources and
-  bounds where available while all SHA-256, download, and execution authority
-  remains blocked;
+  bounds, and exactly seven external slots are authorized for quarantine
+  acquisition while the internal detector and all execution remain blocked;
 - the early exact `D-P3.5-START` statement is preserved as non-effective intent;
 - root, contract/phase indexes, backlog, decision register, checklist, and CI
   contain the same planning-only status.
 
 The exact live package digest is emitted by `tools/phase35_readiness.py`. It
-must be regenerated from clean committed source before owner decisions are
-bound to a planning checkpoint.
+must be regenerated from clean committed source before the authorization
+checkpoint is treated as immutable.
 
 ## Manual Owner Gates
 
-Five explicit gates remain:
-
-1. `D-P3.5-001`: synthetic corpus, token grammar, and source policy;
-2. `D-P3.5-002`: detector and OCR portfolio;
-3. `D-P3.5-003`: normalization, confidence, abstention, and consensus;
-4. `D-P3.5-004`: privacy, persistence, resources, and evaluation;
-5. `D-P3.5-START`: final digest-bound implementation authorization after
-   `D-P3.5-ARTIFACT-RESEARCH` and exact artifact review.
-
-The first four decisions freeze technical planning only. They do not authorize
-implementation. The early exact `D-P3.5-START` statement does not bind
-undisclosed artifacts or network actions and remains non-effective. After the
-first four choices, `D-P3.5-ARTIFACT-RESEARCH` must separately authorize only
-the exact quarantine proposal. Final start confirmation must bind the completed
-review packet digest.
+One explicit gate remains: `D-P3.5-START`, the final digest-bound
+implementation authorization after exact artifact review. The first four
+technical decisions and restricted artifact-research decision are complete.
+The early exact start statement does not bind undisclosed implementation
+artifacts or network actions and remains non-effective. Final confirmation must
+bind the completed review packet digest.
 
 ## Verification
 
@@ -57,12 +50,13 @@ uv run --locked --extra dev python tools/phase35_readiness.py --json
 
 After a local planning commit, add `--require-clean-source` to verify the exact
 tracked package. Add `--require-decisions` only after the owner has made and
-recorded all five explicit decisions.
+recorded the final packet-bound start decision.
 
 ## Continuing Boundaries
 
-No model, weight, font, dictionary, dataset, source archive, dependency,
-container, generated image, training run, inference run, product module,
+Only the exact seven quarantine downloads are authorized. No extraction,
+runtime loading, dependency, container, generated image, training run,
+inference run, product module,
 migration, API, worker, database, camera, media, Sentinel stream, real
 registration mark, vehicle/owner record, Government database, identity,
 cross-camera link, watchlist, alert, enforcement action, pilot, production

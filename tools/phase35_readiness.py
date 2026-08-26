@@ -24,6 +24,15 @@ ENTRY_GATES_PATH = ROOT / "contracts" / "phase-3" / "p3-5-entry-gates.json"
 ARTIFACT_PROPOSAL_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-artifact-review-proposal.json"
 )
+ARTIFACT_RESEARCH_AUTHORIZATION_PATH = (
+    ROOT
+    / "contracts"
+    / "phase-3"
+    / "p3-5-artifact-research-authorization.json"
+)
+OWNER_DECISIONS_PATH = (
+    ROOT / "contracts" / "phase-3" / "p3-5-owner-decisions.json"
+)
 START_AUTHORIZATION_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-start-authorization.json"
 )
@@ -42,8 +51,10 @@ PACKAGE_FILES = (
     "contracts/phase-3/README.md",
     "contracts/phase-3/p3-4-acceptance.json",
     "contracts/phase-3/p3-5-artifact-review-proposal.json",
+    "contracts/phase-3/p3-5-artifact-research-authorization.json",
     "contracts/phase-3/p3-5-entry-gates.json",
     "contracts/phase-3/p3-5-planning-authorization.json",
+    "contracts/phase-3/p3-5-owner-decisions.json",
     "contracts/phase-3/p3-5-research-sources.json",
     "contracts/phase-3/p3-5-start-authorization.json",
     "docs/phase-3/README.md",
@@ -51,7 +62,9 @@ PACKAGE_FILES = (
     "docs/phase-3/decision-register.md",
     "docs/phase-3/implementation-backlog.md",
     "docs/phase-3/p3-5-decision-packet.md",
+    "docs/phase-3/p3-5-artifact-research-authorization.md",
     "docs/phase-3/p3-5-artifact-review-proposal.md",
+    "docs/phase-3/p3-5-owner-decisions.md",
     "docs/phase-3/p3-5-plan.md",
     "docs/phase-3/p3-5-planning-authorization.md",
     "docs/phase-3/p3-5-planning-readiness-report.md",
@@ -471,22 +484,28 @@ def check_owner_gates() -> Check:
     if not isinstance(decisions, list):
         return Check("owner_decisions", FAIL, "P3.5 decisions must be a list.")
     actual_ids = tuple(str(item.get("decision_id")) for item in decisions if isinstance(item, dict))
-    pending_technical = tuple(
-        str(item.get("decision_id"))
-        for item in decisions
-        if isinstance(item, dict) and item.get("status") == "pending_owner_decision"
-    )
+    technical = decisions[:-1]
     start = decisions[-1] if decisions and isinstance(decisions[-1], dict) else {}
     if (
         actual_ids != DECISION_IDS
-        or pending_technical != DECISION_IDS[:-1]
+        or any(
+            not isinstance(item, dict)
+            or item.get("status") != "owner_approved"
+            or item.get("selected_option") != "A"
+            for item in technical
+        )
         or start.get("decision_id") != "D-P3.5-START"
         or start.get("status") != "received_prerequisites_pending"
         or start.get("owner_statement_received") != "D-P3.5-START"
         or start.get("effective") is not False
-        or record.get("status") != "ready_for_owner_decisions"
-        or record.get("manual_gate_count") != len(DECISION_IDS)
-        or record.get("owner_decisions_completed") != 0
+        or record.get("status") != "artifact_research_authorized"
+        or record.get("scope")
+        != "phase3.p3_5.synthetic_anpr.pre_implementation_research"
+        or record.get("manual_gate_count") != 1
+        or record.get("owner_decisions_completed") != 4
+        or record.get("owner_decisions_record") != "p3-5-owner-decisions.json"
+        or record.get("artifact_research_authorization_record")
+        != "p3-5-artifact-research-authorization.json"
         or record.get("implementation_authorized") is not False
     ):
         return Check(
@@ -497,8 +516,60 @@ def check_owner_gates() -> Check:
     return Check(
         "owner_decisions",
         MANUAL,
-        "D-P3.5-START was received early; four technical choices and a final exact start confirmation remain manual.",
-        DECISION_IDS,
+        "The four technical choices are approved; final digest-bound D-P3.5-START remains manual.",
+        ("D-P3.5-START",),
+    )
+
+
+def check_owner_decisions_record() -> Check:
+    try:
+        record = _json(OWNER_DECISIONS_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("owner_decision_record", FAIL, str(exc))
+    decisions = record.get("decisions")
+    expected_values = (
+        "strict_procedural_non_issuable_synthetic_corpus",
+        "staged_plate_detector_latin_primary_and_auxiliary_script_portfolio",
+        "raw_preserving_nfc_grapheme_aware_abstaining_consensus",
+        "ephemeral_plate_text_aggregate_evidence_and_zero_retention",
+    )
+    actual = (
+        tuple(
+            (
+                item.get("decision_id"),
+                item.get("selected_option"),
+                item.get("selected_value"),
+                item.get("status"),
+            )
+            for item in decisions
+            if isinstance(item, dict)
+        )
+        if isinstance(decisions, list)
+        else ()
+    )
+    expected = tuple(
+        (decision_id, "A", value, "owner_approved")
+        for decision_id, value in zip(DECISION_IDS[:-1], expected_values, strict=True)
+    )
+    if (
+        record.get("contract_format")
+        != "hcam.phase3.p3_5.owner-decisions.v1"
+        or record.get("accepted_by") != "mayank-admin"
+        or record.get("status") != "owner_approved"
+        or record.get("technical_decisions_completed") != 4
+        or record.get("implementation_authorized") is not False
+        or actual != expected
+    ):
+        return Check(
+            "owner_decision_record",
+            FAIL,
+            "The four owner-selected P3.5 technical decisions are incomplete or changed.",
+        )
+    return Check(
+        "owner_decision_record",
+        PASS,
+        "D-P3.5-001 through D-P3.5-004 select the recommended A baseline without implementation authority.",
+        DECISION_IDS[:-1],
     )
 
 
@@ -527,11 +598,11 @@ def check_start_intent() -> Check:
         or record.get("allowed_network_actions") != []
         or prerequisite_statuses
         != (
-            "pending_owner_decision",
-            "pending_owner_decision",
-            "pending_owner_decision",
-            "pending_owner_decision",
-            "proposal_prepared_blocked",
+            "owner_approved",
+            "owner_approved",
+            "owner_approved",
+            "owner_approved",
+            "quarantine_research_authorized",
         )
     ):
         return Check(
@@ -641,24 +712,110 @@ def check_artifact_proposal() -> Check:
     )
 
 
+def check_artifact_research_authorization() -> Check:
+    try:
+        record = _json(ARTIFACT_RESEARCH_AUTHORIZATION_PATH)
+        proposal = _json(ARTIFACT_PROPOSAL_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("artifact_research_authorization", FAIL, str(exc))
+    proposal_digest = hashlib.sha256(ARTIFACT_PROPOSAL_PATH.read_bytes()).hexdigest().upper()
+    allowed = record.get("allowed_artifacts")
+    proposed = proposal.get("artifacts")
+    if not isinstance(allowed, list) or not isinstance(proposed, list):
+        return Check(
+            "artifact_research_authorization",
+            FAIL,
+            "Artifact authorization and proposal entries must be lists.",
+        )
+    proposed_by_id = {
+        str(item.get("artifact_id")): item
+        for item in proposed
+        if isinstance(item, dict) and item.get("proposed_source_url") is not None
+    }
+    invalid: list[str] = []
+    for item in allowed:
+        if not isinstance(item, dict):
+            invalid.append("non-object")
+            continue
+        artifact_id = str(item.get("artifact_id"))
+        proposal_item = proposed_by_id.get(artifact_id)
+        if proposal_item is None:
+            invalid.append(f"{artifact_id}:not-proposed")
+            continue
+        if (
+            item.get("source_url") != proposal_item.get("proposed_source_url")
+            or item.get("expected_bytes") != proposal_item.get("expected_bytes")
+            or item.get("maximum_bytes") != proposal_item.get("maximum_bytes")
+        ):
+            invalid.append(f"{artifact_id}:proposal-mismatch")
+        filename = str(item.get("filename", ""))
+        if not filename or Path(filename).name != filename or "\\" in filename:
+            invalid.append(f"{artifact_id}:unsafe-filename")
+        source = urlparse(str(item.get("source_url", "")))
+        if source.scheme != "https" or source.hostname not in PROPOSED_ARTIFACT_HOSTS:
+            invalid.append(f"{artifact_id}:unsafe-url")
+    limits = record.get("limits")
+    if (
+        record.get("contract_format")
+        != "hcam.phase3.p3_5.artifact-research-authorization.v1"
+        or record.get("authorization_id") != "D-P3.5-ARTIFACT-RESEARCH"
+        or record.get("authorized_by") != "mayank-admin"
+        or record.get("owner_statement_received") != "D-P3.5-ARTIFACT-RESEARCH"
+        or record.get("proposal_id")
+        != "P3.5-EXACT-ARTIFACT-REVIEW-PROPOSAL-R0"
+        or record.get("proposal_sha256") != proposal_digest
+        or record.get("status") != "owner_approved_restricted"
+        or record.get("implementation_authorized") is not False
+        or record.get("allowed_network_actions")
+        != ["https_get_exact_allowlisted_urls_only"]
+        or len(allowed) != 7
+        or set(proposed_by_id) != {
+            str(item.get("artifact_id")) for item in allowed if isinstance(item, dict)
+        }
+        or not isinstance(limits, dict)
+        or limits.get("maximum_redirects") != 0
+        or limits.get("environment_proxies") is not False
+        or limits.get("runtime_loading_from_quarantine") is not False
+        or invalid
+    ):
+        return Check(
+            "artifact_research_authorization",
+            FAIL,
+            "The quarantine authorization is not exactly bound, bounded, or non-executable.",
+            tuple(invalid),
+        )
+    return Check(
+        "artifact_research_authorization",
+        PASS,
+        "D-P3.5-ARTIFACT-RESEARCH authorizes exactly seven non-runtime quarantine downloads bound to proposal R0.",
+        tuple(str(item["artifact_id"]) for item in allowed),
+    )
+
+
 def check_documentation_sync() -> Check:
     required = {
         "README.md": ("P3.5", "tools/phase35_readiness.py"),
         "contracts/phase-3/README.md": (
             "p3-5-artifact-review-proposal.json",
+            "p3-5-artifact-research-authorization.json",
+            "p3-5-owner-decisions.json",
             "p3-5-planning-authorization.json",
             "p3-5-entry-gates.json",
             "p3-5-start-authorization.json",
         ),
         "docs/phase-3/README.md": (
+            "[P3.5 artifact research authorization](p3-5-artifact-research-authorization.md)",
             "[P3.5 artifact review proposal](p3-5-artifact-review-proposal.md)",
+            "[P3.5 owner decisions](p3-5-owner-decisions.md)",
             "[P3.5 plan](p3-5-plan.md)",
             "[P3.5 owner decision packet](p3-5-decision-packet.md)",
             "[P3.5 start intent](p3-5-start-intent.md)",
         ),
         "docs/phase-3/decision-register.md": (
             "DR-0035",
+            "DR-0037",
             "D-P3.5-PLAN-AUTH",
+            "D-P3.5-ARTIFACT-RESEARCH",
             "D-P3.5-START",
         ),
         "docs/phase-3/implementation-backlog.md": (
@@ -726,6 +883,8 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_plan_contract(),
         check_planning_only_package(),
         check_artifact_proposal(),
+        check_owner_decisions_record(),
+        check_artifact_research_authorization(),
         check_start_intent(),
         check_documentation_sync(),
     ]
@@ -741,7 +900,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
     status = (
         "invalid"
         if failures
-        else "ready_for_owner_decisions"
+        else "artifact_research_authorized"
         if manual_gates
         else "implementation_authorized_generated_only"
     )
@@ -751,7 +910,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         digest = "UNAVAILABLE"
     return Report(
         status=status,
-        scope="phase3.p3_5.synthetic_anpr.planning_only",
+        scope="phase3.p3_5.synthetic_anpr.pre_implementation_research",
         package_digest=digest,
         package_file_count=len(PACKAGE_FILES),
         failures=failures,

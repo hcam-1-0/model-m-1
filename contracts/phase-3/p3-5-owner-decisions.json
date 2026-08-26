@@ -1,0 +1,37 @@
+{
+  "accepted_at": "2026-08-26T12:20:20Z",
+  "accepted_by": "mayank-admin",
+  "contract_format": "hcam.phase3.p3_5.owner-decisions.v1",
+  "decisions": [
+    {
+      "decision_id": "D-P3.5-001",
+      "selected_option": "A",
+      "selected_value": "strict_procedural_non_issuable_synthetic_corpus",
+      "status": "owner_approved"
+    },
+    {
+      "decision_id": "D-P3.5-002",
+      "selected_option": "A",
+      "selected_value": "staged_plate_detector_latin_primary_and_auxiliary_script_portfolio",
+      "status": "owner_approved"
+    },
+    {
+      "decision_id": "D-P3.5-003",
+      "selected_option": "A",
+      "selected_value": "raw_preserving_nfc_grapheme_aware_abstaining_consensus",
+      "status": "owner_approved"
+    },
+    {
+      "decision_id": "D-P3.5-004",
+      "selected_option": "A",
+      "selected_value": "ephemeral_plate_text_aggregate_evidence_and_zero_retention",
+      "status": "owner_approved"
+    }
+  ],
+  "effect": "freezes_the_recommended_p3_5_technical_baseline_and_permits_only_the_separately_authorized_artifact_research_step",
+  "implementation_authorized": false,
+  "owner_statement_received": "D-P3.5-001: A\nD-P3.5-002: A\nD-P3.5-003: A\nD-P3.5-004: A",
+  "proposal_id": "P3.5-EXACT-ARTIFACT-REVIEW-PROPOSAL-R0",
+  "status": "owner_approved",
+  "technical_decisions_completed": 4
+}

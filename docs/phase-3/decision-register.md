@@ -359,8 +359,9 @@ not authorize P3.5 or waive any continuing boundary.
 
 ### DR-0034: P3.5 Synthetic ANPR Planning Baseline
 
-Status: planning authorized under `D-P3.5-PLAN-AUTH`; technical decisions and
-implementation remain pending.
+Status: planning authorized under `D-P3.5-PLAN-AUTH`; technical baseline
+approved; artifact research authorized;
+implementation remains pending.
 
 P3.5 planning is independently authorized on the accepted P3.4 package. The
 recommended design uses a deterministic procedural corpus with visibly
@@ -379,10 +380,12 @@ export, or backup. Only identifier-free aggregate generated evidence may be
 persisted. Synthetic evidence cannot support a real-CCTV accuracy, legal,
 operational, or deployment claim.
 
-`D-P3.5-001` through `D-P3.5-004` and `D-P3.5-START` remain explicit owner
-gates. Planning authorizes no model, font, dataset, dependency, generation,
-training, inference, product code, camera, media, real plate, owner/Government
-record, alert, deployment, P3.6, or remote Git action.
+`D-P3.5-001` through `D-P3.5-004` now select option `A`. The separate
+`D-P3.5-ARTIFACT-RESEARCH` decision permits only seven exact external artifacts
+to enter a non-runtime quarantine. `D-P3.5-START` remains the explicit final
+owner gate. No extraction, dependency, generation, training, inference,
+product code, camera, media, real plate, owner/Government record, alert,
+deployment, P3.6, or remote Git action is authorized.
 
 ### DR-0035: Early P3.5 Start Intent
 
@@ -400,7 +403,7 @@ any acquisition, dependency change, generation, inference, or product work.
 
 ### DR-0036: P3.5 Metadata-Only Artifact Proposal
 
-Status: prepared but blocked.
+Status: proposal approved for restricted quarantine research.
 
 Proposal R0 identifies eight artifact slots for the recommended `A/A/A/A`
 baseline: three Paddle recognition archives, two Gujarati Tesseract traineddata
@@ -408,11 +411,30 @@ files, two Noto fonts, and one future generated-only H-CAM plate detector.
 Immutable Git revisions, Git blob identities, official URLs, observed sizes,
 content types, ETags, and size ceilings are recorded where available.
 
-No artifact body was downloaded. Every SHA-256 remains unresolved. Tesseract is
-not installed, Paddle runtime compatibility is unproven, and no candidate is
-approved for execution. `D-P3.5-ARTIFACT-RESEARCH` is required before exact
-allowlisted quarantine acquisition; it does not substitute for final
-digest-bound `D-P3.5-START` confirmation.
+At this decision checkpoint no artifact body had been downloaded and every
+SHA-256 remained unresolved. Tesseract is not installed, Paddle runtime
+compatibility is unproven, and no candidate is approved for execution.
+`D-P3.5-ARTIFACT-RESEARCH` now permits only exact allowlisted quarantine
+acquisition; it does not substitute for final digest-bound `D-P3.5-START`.
+
+### DR-0037: P3.5 Technical Baseline And Artifact Research
+
+Status: approved under `D-P3.5-001` through `D-P3.5-004` and
+`D-P3.5-ARTIFACT-RESEARCH`.
+
+On 2026-08-26, `mayank-admin` selected option `A` for the synthetic corpus,
+detector/OCR portfolio, normalization/consensus, and privacy/evidence policy.
+The same statement separately authorizes proposal-digest-bound acquisition of
+exactly seven listed external artifacts into
+`F:\h cam\research-cache\phase-3\p3-5`.
+
+HTTPS URLs, filenames, expected sizes, content types, cumulative size,
+timeouts, no-redirect behavior, disabled environment proxies, and non-runtime
+quarantine are fixed in the authorization contract. `PLATE-D0`, archive
+extraction, runtime loading, dependencies, generation, training, inference,
+product implementation, camera/media access, real/private/Government data,
+deployment, and remote Git operations remain prohibited. Exact review evidence
+and a final packet-bound `D-P3.5-START` confirmation are still required.
 
 ## Decisions Explicitly Deferred
 
