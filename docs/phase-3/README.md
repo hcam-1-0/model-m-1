@@ -18,7 +18,8 @@ artifact SBOM, and Defender scan are complete and owner accepted.
 runtime evidence, SBOM, license inventory, vulnerability audit, Defender scan,
 and network-denied imports are complete. `D-P3.5-START` is now effective only
 for the exact generated-only, default-off,
-zero-network local implementation allowlist. All broader media,
+zero-network local implementation allowlist. W1, W3, W4, and the exact W5
+Latin generated baseline are locally implemented and validated. All broader media,
 identity, correlation, alerting, and deployment work remains unauthorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
@@ -92,6 +93,7 @@ autonomous enforcement.
 | [P3.5 W1 contracts and guardrails](p3-5-w1-contracts-guardrails.md) | Seed-only request, visible non-issuable token policy, prohibited-input guard, zero retention, and deterministic snapshots |
 | [P3.5 W3 deterministic generator and sealed splits](p3-5-w3-generator-splits.md) | Domain-separated ephemeral tokens, independent seed namespaces, token-free split manifest, final-test freeze, and logical holdouts |
 | [P3.5 W4 ground-truth localization and crop](p3-5-w4-ground-truth-crop.md) | Procedural generated frame, sealed region, model-free localization, bounded ephemeral crop, and pixel-free evidence |
+| [P3.5 W5 exact Latin PaddleOCR baseline](p3-5-w5-latin-ocr.md) | Exact L0/L1 external adapters, generated-only evaluation, deterministic replay, aggregate evidence, and limitations |
 | [P3.5 plan](p3-5-plan.md) | Synthetic corpus, localization, OCR, normalization, consensus, privacy, and evidence design |
 | [P3.5 owner decision packet](p3-5-decision-packet.md) | Four technical choices and separate implementation-start gate |
 | [P3.5 planning readiness](p3-5-planning-readiness-report.md) | Historical machine-verified planning boundary and then-pending owner gates |

@@ -112,6 +112,9 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `fixtures/p3-5-ground-truth-crop-v1.json`: canonical W4 model-free
   localization result and ephemeral-crop descriptor with generated lineage,
   bounded geometry, and no pixels or plate text.
+- `p3-5-latin-ocr-evaluation.json`: canonical W5 identifier-free generated
+  aggregate evidence for exact `OCR-L0` and `OCR-L1`, with no OCR strings,
+  alternatives, samples, regions, pixels, or final-test use.
 
 Verify all tracked snapshots:
 
@@ -132,6 +135,7 @@ uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.
 uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance
 uv run --locked --extra dev python tools/phase35_readiness.py --strict
 uv run --locked --extra dev python tools/phase35_contracts.py check
+uv run --locked python tools/phase35_latin_ocr.py check-evidence
 uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked --extra dev python tools/phase35_runtime_research.py all --root 'E:\h-cam-research-cache\phase-3\p3-5-runtime'
@@ -168,3 +172,6 @@ OCR/models, or widen W2 or later-package authority.
 `P35-W4` adds a stdlib-only procedural geometry marker, exact ground-truth
 localization, and a bounded ephemeral crop. It loads no model, font, artifact,
 or media and persists neither pixels nor generated plate text.
+`P35-W5` adds a code-defined generated Latin renderer and exact external
+`OCR-L0`/`OCR-L1` adapters. Raw OCR exists only in memory; tracked evidence is
+identifier-free aggregate data. Frozen final-test samples remain unopened.

@@ -243,8 +243,18 @@ Implementation progress:
   model-free `GT-PLATE-R0` result, and axis-aligned ephemeral crop pass focused,
   full-suite, contract-drift, readiness, lint, and package-build validation.
 - W4 loads no model, weight, font, OCR runtime, camera, media, or external
-  input. `PLATE-D0`, W2, W5, persistence, APIs, and deployment remain blocked
-  or separate future work under the existing start allowlist.
+  input. `PLATE-D0`, W2, persistence, APIs, and deployment remain blocked or
+  separate future work under the existing start allowlist.
+- `P35-W5`: `validated_generated_baseline`. The exact reviewed `OCR-L0` and
+  `OCR-L1` archives are safely extracted only under the external `E:` runtime.
+  A code-defined renderer, strict ephemeral raw-output contracts, isolated
+  network-denied Paddle workers, 12-sample development/validation evaluation,
+  and 20-run deterministic replay are implemented. Tracked evidence contains
+  only identifier-free aggregates and opens no final-test sample.
+- W5 observed 7/12 exact raw matches for L0 and 9/12 for L1. Both candidates
+  observed 0/3 exact matches on two-line crops. These values are baseline
+  evidence only; quality thresholds, promotion, normalization, consensus,
+  real-data evaluation, and deployment remain undecided or prohibited.
 
 Artifact preparation status: proposal R0 records eight recommended artifact
 slots, immutable source metadata, and bounded sizes. Seven external slots are

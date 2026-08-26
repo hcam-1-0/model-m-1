@@ -1,6 +1,212 @@
 {
   "contract_format": "hcam.anpr.contract-bundle.v1",
   "contracts": {
+    "ephemeral_latin_ocr_hypothesis": {
+      "$defs": {
+        "LatinOcrAlternativeV1": {
+          "additionalProperties": false,
+          "properties": {
+            "rank": {
+              "maximum": 5,
+              "minimum": 1,
+              "title": "Rank",
+              "type": "integer"
+            },
+            "raw_confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Raw Confidence",
+              "type": "number"
+            },
+            "raw_text": {
+              "maxLength": 16,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9-]+$",
+              "title": "Raw Text",
+              "type": "string"
+            }
+          },
+          "required": [
+            "rank",
+            "raw_text",
+            "raw_confidence"
+          ],
+          "title": "LatinOcrAlternativeV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Raw OCR output. It is valid only in memory and is never evidence-safe.",
+      "properties": {
+        "adapter_version": {
+          "const": "sha256:7e15ccd801d32f623d309541ae1c3186191801c204061c1a3e598347dfba8679",
+          "default": "sha256:7e15ccd801d32f623d309541ae1c3186191801c204061c1a3e598347dfba8679",
+          "title": "Adapter Version",
+          "type": "string"
+        },
+        "alternatives": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/LatinOcrAlternativeV1"
+          },
+          "maxItems": 5,
+          "title": "Alternatives",
+          "type": "array"
+        },
+        "artifact_id": {
+          "enum": [
+            "OCR-L0-PPOCRV6-SMALL-INFER-PROPOSED",
+            "OCR-L1-PPOCRV6-MEDIUM-INFER-PROPOSED"
+          ],
+          "title": "Artifact Id",
+          "type": "string"
+        },
+        "artifact_sha256": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Artifact Sha256",
+          "type": "string"
+        },
+        "candidate_id": {
+          "enum": [
+            "OCR-L0",
+            "OCR-L1"
+          ],
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.ephemeral-latin-ocr-hypothesis.v1",
+          "default": "hcam.anpr.ephemeral-latin-ocr-hypothesis.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "dictionary_version": {
+          "const": "sha256:a98ac29121eec9aef70836341b9d35806da7939b4f0fe1e20443acc00d915adc",
+          "default": "sha256:a98ac29121eec9aef70836341b9d35806da7939b4f0fe1e20443acc00d915adc",
+          "title": "Dictionary Version",
+          "type": "string"
+        },
+        "engine_id": {
+          "const": "paddleocr-text-recognition",
+          "default": "paddleocr-text-recognition",
+          "title": "Engine Id",
+          "type": "string"
+        },
+        "ephemeral_only": {
+          "const": true,
+          "default": true,
+          "title": "Ephemeral Only",
+          "type": "boolean"
+        },
+        "generator_version": {
+          "const": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "default": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "latency_ms": {
+          "maximum": 600000,
+          "minimum": 0,
+          "title": "Latency Ms",
+          "type": "number"
+        },
+        "preprocessing_version": {
+          "const": "sha256:9e162e160d6b760d429211556a1efd97cacbd60096b09b7dc4c4c1fdaa941879",
+          "default": "sha256:9e162e160d6b760d429211556a1efd97cacbd60096b09b7dc4c4c1fdaa941879",
+          "title": "Preprocessing Version",
+          "type": "string"
+        },
+        "raw_confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Raw Confidence",
+          "type": "number"
+        },
+        "raw_output_mutated": {
+          "const": false,
+          "default": false,
+          "title": "Raw Output Mutated",
+          "type": "boolean"
+        },
+        "raw_text": {
+          "maxLength": 16,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9-]+$",
+          "title": "Raw Text",
+          "type": "string"
+        },
+        "region_id": {
+          "pattern": "^anprregion_[0-9a-f]{32}$",
+          "title": "Region Id",
+          "type": "string"
+        },
+        "renderer_version": {
+          "const": "sha256:9e162e160d6b760d429211556a1efd97cacbd60096b09b7dc4c4c1fdaa941879",
+          "default": "sha256:9e162e160d6b760d429211556a1efd97cacbd60096b09b7dc4c4c1fdaa941879",
+          "title": "Renderer Version",
+          "type": "string"
+        },
+        "result_id": {
+          "pattern": "^anprocr_[0-9a-f]{32}$",
+          "title": "Result Id",
+          "type": "string"
+        },
+        "retained": {
+          "const": false,
+          "default": false,
+          "title": "Retained",
+          "type": "boolean"
+        },
+        "review_state": {
+          "const": "unreviewed",
+          "default": "unreviewed",
+          "title": "Review State",
+          "type": "string"
+        },
+        "runtime_id": {
+          "const": "paddleocr-3.7.0-paddlepaddle-3.3.1-cpu",
+          "default": "paddleocr-3.7.0-paddlepaddle-3.3.1-cpu",
+          "title": "Runtime Id",
+          "type": "string"
+        },
+        "sample_id": {
+          "pattern": "^anprsample_[0-9a-f]{32}$",
+          "title": "Sample Id",
+          "type": "string"
+        },
+        "script_lane": {
+          "const": "latin",
+          "default": "latin",
+          "title": "Script Lane",
+          "type": "string"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "result_id",
+        "region_id",
+        "sample_id",
+        "candidate_id",
+        "artifact_id",
+        "artifact_sha256",
+        "raw_text",
+        "raw_confidence",
+        "latency_ms"
+      ],
+      "title": "EphemeralLatinOcrHypothesisV1",
+      "type": "object"
+    },
     "ephemeral_token": {
       "additionalProperties": false,
       "description": "In-memory ground truth that must never enter evidence or persistence.",
@@ -576,6 +782,515 @@
         "region_digest"
       ],
       "title": "SealedGroundTruthPlateRegionV1",
+      "type": "object"
+    },
+    "latin_ocr_generated_evaluation": {
+      "$defs": {
+        "LatinOcrCandidateEvaluationV1": {
+          "additionalProperties": false,
+          "properties": {
+            "adapter_version": {
+              "const": "sha256:7e15ccd801d32f623d309541ae1c3186191801c204061c1a3e598347dfba8679",
+              "default": "sha256:7e15ccd801d32f623d309541ae1c3186191801c204061c1a3e598347dfba8679",
+              "title": "Adapter Version",
+              "type": "string"
+            },
+            "alternatives_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Alternatives Persisted",
+              "type": "boolean"
+            },
+            "artifact_id": {
+              "enum": [
+                "OCR-L0-PPOCRV6-SMALL-INFER-PROPOSED",
+                "OCR-L1-PPOCRV6-MEDIUM-INFER-PROPOSED"
+              ],
+              "title": "Artifact Id",
+              "type": "string"
+            },
+            "artifact_sha256": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Artifact Sha256",
+              "type": "string"
+            },
+            "candidate_id": {
+              "enum": [
+                "OCR-L0",
+                "OCR-L1"
+              ],
+              "title": "Candidate Id",
+              "type": "string"
+            },
+            "confidence_distribution": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/LatinOcrDistributionV1"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "dictionary_version": {
+              "const": "sha256:a98ac29121eec9aef70836341b9d35806da7939b4f0fe1e20443acc00d915adc",
+              "default": "sha256:a98ac29121eec9aef70836341b9d35806da7939b4f0fe1e20443acc00d915adc",
+              "title": "Dictionary Version",
+              "type": "string"
+            },
+            "exact_matches": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Exact Matches",
+              "type": "integer"
+            },
+            "extracted_inventory_sha256": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Extracted Inventory Sha256",
+              "type": "string"
+            },
+            "failed": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Failed",
+              "type": "integer"
+            },
+            "failure_counts": {
+              "$ref": "#/$defs/LatinOcrFailureCountsV1"
+            },
+            "final_test_used": {
+              "const": false,
+              "default": false,
+              "title": "Final Test Used",
+              "type": "boolean"
+            },
+            "identifiers_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Identifiers Persisted",
+              "type": "boolean"
+            },
+            "latency_ms_distribution": {
+              "$ref": "#/$defs/LatinOcrDistributionV1"
+            },
+            "model_name": {
+              "enum": [
+                "PP-OCRv6_small_rec",
+                "PP-OCRv6_medium_rec"
+              ],
+              "title": "Model Name",
+              "type": "string"
+            },
+            "network_access_performed": {
+              "const": false,
+              "default": false,
+              "title": "Network Access Performed",
+              "type": "boolean"
+            },
+            "network_attempt_count": {
+              "minimum": 0,
+              "title": "Network Attempt Count",
+              "type": "integer"
+            },
+            "promotion_authorized": {
+              "const": false,
+              "default": false,
+              "title": "Promotion Authorized",
+              "type": "boolean"
+            },
+            "raw_edit_distance": {
+              "minimum": 0,
+              "title": "Raw Edit Distance",
+              "type": "integer"
+            },
+            "raw_output_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Raw Output Persisted",
+              "type": "boolean"
+            },
+            "reference_scalar_count": {
+              "minimum": 1,
+              "title": "Reference Scalar Count",
+              "type": "integer"
+            },
+            "replay_output_deterministic": {
+              "title": "Replay Output Deterministic",
+              "type": "boolean"
+            },
+            "replay_runs": {
+              "const": 20,
+              "default": 20,
+              "title": "Replay Runs",
+              "type": "integer"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 1,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "slices": {
+              "items": {
+                "$ref": "#/$defs/LatinOcrGeneratedSliceV1"
+              },
+              "maxItems": 2,
+              "minItems": 2,
+              "title": "Slices",
+              "type": "array"
+            },
+            "succeeded": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Succeeded",
+              "type": "integer"
+            },
+            "synthetic_only": {
+              "const": true,
+              "default": true,
+              "title": "Synthetic Only",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "candidate_id",
+            "artifact_id",
+            "artifact_sha256",
+            "extracted_inventory_sha256",
+            "model_name",
+            "sample_count",
+            "succeeded",
+            "failed",
+            "exact_matches",
+            "reference_scalar_count",
+            "raw_edit_distance",
+            "failure_counts",
+            "slices",
+            "confidence_distribution",
+            "latency_ms_distribution",
+            "replay_output_deterministic",
+            "network_attempt_count"
+          ],
+          "title": "LatinOcrCandidateEvaluationV1",
+          "type": "object"
+        },
+        "LatinOcrDistributionV1": {
+          "additionalProperties": false,
+          "properties": {
+            "maximum": {
+              "minimum": 0,
+              "title": "Maximum",
+              "type": "number"
+            },
+            "mean": {
+              "minimum": 0,
+              "title": "Mean",
+              "type": "number"
+            },
+            "minimum": {
+              "minimum": 0,
+              "title": "Minimum",
+              "type": "number"
+            },
+            "p50": {
+              "minimum": 0,
+              "title": "P50",
+              "type": "number"
+            },
+            "p95": {
+              "minimum": 0,
+              "title": "P95",
+              "type": "number"
+            }
+          },
+          "required": [
+            "minimum",
+            "p50",
+            "p95",
+            "maximum",
+            "mean"
+          ],
+          "title": "LatinOcrDistributionV1",
+          "type": "object"
+        },
+        "LatinOcrFailureCountsV1": {
+          "additionalProperties": false,
+          "properties": {
+            "engine_error": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Engine Error",
+              "type": "integer"
+            },
+            "invalid_confidence": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Invalid Confidence",
+              "type": "integer"
+            },
+            "invalid_output": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Invalid Output",
+              "type": "integer"
+            },
+            "malformed_result": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Malformed Result",
+              "type": "integer"
+            },
+            "no_result": {
+              "default": 0,
+              "minimum": 0,
+              "title": "No Result",
+              "type": "integer"
+            },
+            "output_too_long": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Output Too Long",
+              "type": "integer"
+            },
+            "unexpected_whitespace": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Unexpected Whitespace",
+              "type": "integer"
+            },
+            "unsupported_script": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Unsupported Script",
+              "type": "integer"
+            }
+          },
+          "title": "LatinOcrFailureCountsV1",
+          "type": "object"
+        },
+        "LatinOcrGeneratedSliceV1": {
+          "additionalProperties": false,
+          "properties": {
+            "exact_matches": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Exact Matches",
+              "type": "integer"
+            },
+            "failed": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Failed",
+              "type": "integer"
+            },
+            "failure_counts": {
+              "$ref": "#/$defs/LatinOcrFailureCountsV1"
+            },
+            "layout": {
+              "enum": [
+                "single_line",
+                "two_line"
+              ],
+              "title": "Layout",
+              "type": "string"
+            },
+            "raw_edit_distance": {
+              "minimum": 0,
+              "title": "Raw Edit Distance",
+              "type": "integer"
+            },
+            "reference_scalar_count": {
+              "minimum": 0,
+              "title": "Reference Scalar Count",
+              "type": "integer"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "succeeded": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Succeeded",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "layout",
+            "sample_count",
+            "succeeded",
+            "failed",
+            "exact_matches",
+            "reference_scalar_count",
+            "raw_edit_distance",
+            "failure_counts"
+          ],
+          "title": "LatinOcrGeneratedSliceV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "adapter_version": {
+          "const": "sha256:7e15ccd801d32f623d309541ae1c3186191801c204061c1a3e598347dfba8679",
+          "default": "sha256:7e15ccd801d32f623d309541ae1c3186191801c204061c1a3e598347dfba8679",
+          "title": "Adapter Version",
+          "type": "string"
+        },
+        "alternatives_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Alternatives Persisted",
+          "type": "boolean"
+        },
+        "camera_or_media_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Camera Or Media Input Count",
+          "type": "integer"
+        },
+        "candidate_evaluations": {
+          "items": {
+            "$ref": "#/$defs/LatinOcrCandidateEvaluationV1"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Candidate Evaluations",
+          "type": "array"
+        },
+        "contract_type": {
+          "const": "hcam.phase3.p3_5.latin-ocr-generated-evaluation.v1",
+          "default": "hcam.phase3.p3_5.latin-ocr-generated-evaluation.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "deployment_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Deployment Authorized",
+          "type": "boolean"
+        },
+        "external_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "External Input Count",
+          "type": "integer"
+        },
+        "generated_sample_plan": {
+          "const": "development_then_validation_no_final_test",
+          "default": "development_then_validation_no_final_test",
+          "title": "Generated Sample Plan",
+          "type": "string"
+        },
+        "generator_version": {
+          "const": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "default": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "model_download_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Model Download Count",
+          "type": "integer"
+        },
+        "paddleocr_version": {
+          "const": "3.7.0",
+          "default": "3.7.0",
+          "title": "Paddleocr Version",
+          "type": "string"
+        },
+        "paddlepaddle_version": {
+          "const": "3.3.1",
+          "default": "3.3.1",
+          "title": "Paddlepaddle Version",
+          "type": "string"
+        },
+        "pillow_version": {
+          "const": "12.3.0",
+          "default": "12.3.0",
+          "title": "Pillow Version",
+          "type": "string"
+        },
+        "plate_text_retention_hours": {
+          "const": 0,
+          "default": 0,
+          "title": "Plate Text Retention Hours",
+          "type": "integer"
+        },
+        "promotion_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Promotion Authorized",
+          "type": "boolean"
+        },
+        "quality_threshold_decided": {
+          "const": false,
+          "default": false,
+          "title": "Quality Threshold Decided",
+          "type": "boolean"
+        },
+        "raw_output_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Raw Output Persisted",
+          "type": "boolean"
+        },
+        "real_registration_mark_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Real Registration Mark Count",
+          "type": "integer"
+        },
+        "regex_version": {
+          "const": "2026.7.19",
+          "default": "2026.7.19",
+          "title": "Regex Version",
+          "type": "string"
+        },
+        "renderer_version": {
+          "const": "sha256:9e162e160d6b760d429211556a1efd97cacbd60096b09b7dc4c4c1fdaa941879",
+          "default": "sha256:9e162e160d6b760d429211556a1efd97cacbd60096b09b7dc4c4c1fdaa941879",
+          "title": "Renderer Version",
+          "type": "string"
+        },
+        "runtime_id": {
+          "const": "cpython-3.12.13-windows-x86_64",
+          "default": "cpython-3.12.13-windows-x86_64",
+          "title": "Runtime Id",
+          "type": "string"
+        },
+        "sample_or_region_identifiers_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Sample Or Region Identifiers Persisted",
+          "type": "boolean"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "work_package": {
+          "const": "P35-W5_exact_Latin_Paddle_OCR_adapters_and_generated_evaluation",
+          "default": "P35-W5_exact_Latin_Paddle_OCR_adapters_and_generated_evaluation",
+          "title": "Work Package",
+          "type": "string"
+        }
+      },
+      "required": [
+        "candidate_evaluations"
+      ],
+      "title": "LatinOcrGeneratedEvaluationV1",
       "type": "object"
     },
     "plate_localization_result": {
@@ -1308,6 +2023,21 @@
     "external_entropy": false,
     "generator_version": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
     "hidden_random_augmentation": false
+  },
+  "latin_ocr_policy": {
+    "adapter_version": "sha256:7e15ccd801d32f623d309541ae1c3186191801c204061c1a3e598347dfba8679",
+    "candidates": {
+      "OCR-L0": "sha256:da460f968ce9f88325ac3a34fa302077d6e9b0dcefb16ba3137cd7796f879d06",
+      "OCR-L1": "sha256:4eecc1c6a4623765042e6fc15446da0da110b7d875b6b72b2d351d2b2dbd4da6"
+    },
+    "dictionary_version": "sha256:a98ac29121eec9aef70836341b9d35806da7939b4f0fe1e20443acc00d915adc",
+    "generated_only": true,
+    "maximum_alternatives": 5,
+    "maximum_grapheme_clusters": 16,
+    "maximum_unicode_scalars": 32,
+    "promotion_authorized": false,
+    "raw_output_ephemeral_only": true,
+    "renderer_version": "sha256:9e162e160d6b760d429211556a1efd97cacbd60096b09b7dc4c4c1fdaa941879"
   },
   "localization_policy": {
     "candidate_id": null,

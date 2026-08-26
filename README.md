@@ -26,6 +26,9 @@ prohibited-input/zero-retention guardrails are now implemented and validated.
 manifests are also implemented and validated; `P35-W2` remains blocked.
 `P35-W4` now adds validated model-free generated ground-truth localization and
 a bounded ephemeral crop path.
+`P35-W5` now adds the two exact reviewed Latin PaddleOCR adapters, safe
+external-only extraction, generated development/validation evaluation, raw
+output validation, deterministic replay, and zero-retention aggregate evidence.
 None of these milestones adds a real CCTV media path.
 
 A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
@@ -45,6 +48,8 @@ record the first bounded implementation slice. The
 record the next authorized local generated-only slice.
 The [P3.5 W4 ground-truth localization and crop](docs/phase-3/p3-5-w4-ground-truth-crop.md)
 records the procedural, model-free localization and zero-retention crop boundary.
+The [P3.5 W5 exact Latin PaddleOCR baseline](docs/phase-3/p3-5-w5-latin-ocr.md)
+records the generated-only baseline/challenger evaluation and its limitations.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
@@ -81,6 +86,7 @@ uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.
 uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance --json
 uv run --locked --extra dev python tools/phase35_readiness.py --strict --json
 uv run --locked --extra dev python tools/phase35_contracts.py check
+uv run --locked python tools/phase35_latin_ocr.py check-evidence
 uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked --extra dev python tools/phase35_runtime_research.py all --root 'E:\h-cam-research-cache\phase-3\p3-5-runtime'

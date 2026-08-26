@@ -7,6 +7,7 @@ from contextlib import redirect_stdout
 from hcam.analytics.anpr.contracts import generated_request_fixture
 from hcam.analytics.anpr.guardrails import canonical_anpr_evidence_json
 from tools import phase35_contracts
+from tools import phase35_latin_ocr
 
 
 def test_p3_5_w1_contract_snapshots_are_current() -> None:
@@ -69,3 +70,29 @@ def test_ground_truth_crop_fixture_is_canonical_and_pixel_free() -> None:
     assert '"bgr_bytes"' not in actual
     assert '"token"' not in actual
     assert "SYN-" not in actual
+
+
+def test_generated_latin_ocr_evidence_is_canonical_and_zero_retention() -> None:
+    assert phase35_latin_ocr.check_evidence() == 0
+
+    actual = phase35_latin_ocr.EVIDENCE_PATH.read_text(encoding="utf-8")
+    document = json.loads(actual)
+
+    assert document["external_input_count"] == 0
+    assert document["model_download_count"] == 0
+    assert document["raw_output_persisted"] is False
+    assert document["sample_or_region_identifiers_persisted"] is False
+    assert {item["candidate_id"] for item in document["candidate_evaluations"]} == {
+        "OCR-L0",
+        "OCR-L1",
+    }
+    assert all(
+        item["final_test_used"] is False
+        and item["replay_output_deterministic"] is True
+        and item["network_access_performed"] is False
+        for item in document["candidate_evaluations"]
+    )
+    assert "SYN-" not in actual
+    assert '"raw_text"' not in actual
+    assert "anprsample_" not in actual
+    assert "anprregion_" not in actual

@@ -55,6 +55,27 @@ ANPR_RECTIFIER_VERSION = (
         b"hcam.anpr.axis-aligned-ground-truth-crop.v1:bgr8:ephemeral"
     ).hexdigest()
 )
+ANPR_LATIN_RENDERER_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.generated-latin-bitmap.v1:5x7:ascii-upper-digit-hyphen"
+    ).hexdigest()
+)
+ANPR_LATIN_OCR_ADAPTER_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.paddleocr-latin-adapter.v1:raw-output:generated-only:cpu"
+    ).hexdigest()
+)
+ANPR_LATIN_DICTIONARY_VERSION = (
+    "sha256:a98ac29121eec9aef70836341b9d35806da7939b4f0fe1e20443acc00d915adc"
+)
+OCR_L0_ARTIFACT_SHA256 = (
+    "sha256:da460f968ce9f88325ac3a34fa302077d6e9b0dcefb16ba3137cd7796f879d06"
+)
+OCR_L1_ARTIFACT_SHA256 = (
+    "sha256:4eecc1c6a4623765042e6fc15446da0da110b7d875b6b72b2d351d2b2dbd4da6"
+)
 MAX_ANPR_REQUEST_BYTES = 4 * 1024
 MAX_ANPR_DOCUMENT_DEPTH = 8
 MAX_ANPR_DOCUMENT_NODES = 256
@@ -76,6 +97,17 @@ AnprSplit = Literal[
     "development",
     "validation",
     "final_test",
+]
+LatinOcrCandidate = Literal["OCR-L0", "OCR-L1"]
+LatinOcrFailureCode = Literal[
+    "engine_error",
+    "invalid_confidence",
+    "invalid_output",
+    "malformed_result",
+    "no_result",
+    "output_too_long",
+    "unexpected_whitespace",
+    "unsupported_script",
 ]
 
 
@@ -544,6 +576,255 @@ class GroundTruthCropDescriptorV1(ContractModel):
     synthetic_only: Literal[True] = True
 
 
+class LatinOcrAlternativeV1(ContractModel):
+    rank: Annotated[int, Field(ge=1, le=5)]
+    raw_text: Annotated[
+        str,
+        Field(min_length=1, max_length=16, pattern=r"^[A-Za-z0-9-]+$"),
+    ]
+    raw_confidence: Annotated[float, Field(ge=0, le=1)]
+
+
+class EphemeralLatinOcrHypothesisV1(ContractModel):
+    """Raw OCR output. It is valid only in memory and is never evidence-safe."""
+
+    contract_type: Literal["hcam.anpr.ephemeral-latin-ocr-hypothesis.v1"] = (
+        "hcam.anpr.ephemeral-latin-ocr-hypothesis.v1"
+    )
+    result_id: Annotated[str, Field(pattern=r"^anprocr_[0-9a-f]{32}$")]
+    region_id: Annotated[str, Field(pattern=r"^anprregion_[0-9a-f]{32}$")]
+    sample_id: Annotated[str, Field(pattern=r"^anprsample_[0-9a-f]{32}$")]
+    source_id: Literal["DATA-PLATE-GEN-R0"] = ANPR_GENERATED_SOURCE_ID
+    generator_version: Literal[ANPR_GENERATOR_VERSION] = ANPR_GENERATOR_VERSION
+    renderer_version: Literal[ANPR_LATIN_RENDERER_VERSION] = (
+        ANPR_LATIN_RENDERER_VERSION
+    )
+    adapter_version: Literal[ANPR_LATIN_OCR_ADAPTER_VERSION] = (
+        ANPR_LATIN_OCR_ADAPTER_VERSION
+    )
+    candidate_id: LatinOcrCandidate
+    engine_id: Literal["paddleocr-text-recognition"] = (
+        "paddleocr-text-recognition"
+    )
+    artifact_id: Literal[
+        "OCR-L0-PPOCRV6-SMALL-INFER-PROPOSED",
+        "OCR-L1-PPOCRV6-MEDIUM-INFER-PROPOSED",
+    ]
+    artifact_sha256: ImmutableDigest
+    dictionary_version: Literal[ANPR_LATIN_DICTIONARY_VERSION] = (
+        ANPR_LATIN_DICTIONARY_VERSION
+    )
+    preprocessing_version: Literal[ANPR_LATIN_RENDERER_VERSION] = (
+        ANPR_LATIN_RENDERER_VERSION
+    )
+    runtime_id: Literal["paddleocr-3.7.0-paddlepaddle-3.3.1-cpu"] = (
+        "paddleocr-3.7.0-paddlepaddle-3.3.1-cpu"
+    )
+    script_lane: Literal["latin"] = "latin"
+    raw_text: Annotated[
+        str,
+        Field(min_length=1, max_length=16, pattern=r"^[A-Za-z0-9-]+$"),
+    ]
+    raw_confidence: Annotated[float, Field(ge=0, le=1)]
+    alternatives: Annotated[tuple[LatinOcrAlternativeV1, ...], Field(max_length=5)] = (
+        ()
+    )
+    latency_ms: Annotated[float, Field(ge=0, le=600_000)]
+    raw_output_mutated: Literal[False] = False
+    ephemeral_only: Literal[True] = True
+    retained: Literal[False] = False
+    synthetic_only: Literal[True] = True
+    review_state: Literal["unreviewed"] = "unreviewed"
+
+    @model_validator(mode="after")
+    def candidate_matches_exact_artifact(self) -> EphemeralLatinOcrHypothesisV1:
+        expected = {
+            "OCR-L0": (
+                "OCR-L0-PPOCRV6-SMALL-INFER-PROPOSED",
+                OCR_L0_ARTIFACT_SHA256,
+            ),
+            "OCR-L1": (
+                "OCR-L1-PPOCRV6-MEDIUM-INFER-PROPOSED",
+                OCR_L1_ARTIFACT_SHA256,
+            ),
+        }[self.candidate_id]
+        if (self.artifact_id, self.artifact_sha256) != expected:
+            raise ValueError("Latin OCR candidate does not match its exact artifact")
+        if tuple(item.rank for item in self.alternatives) != tuple(
+            range(1, len(self.alternatives) + 1)
+        ):
+            raise ValueError("Latin OCR alternative ranks must be contiguous")
+        return self
+
+
+class LatinOcrFailureCountsV1(ContractModel):
+    engine_error: Annotated[int, Field(ge=0)] = 0
+    invalid_confidence: Annotated[int, Field(ge=0)] = 0
+    invalid_output: Annotated[int, Field(ge=0)] = 0
+    malformed_result: Annotated[int, Field(ge=0)] = 0
+    no_result: Annotated[int, Field(ge=0)] = 0
+    output_too_long: Annotated[int, Field(ge=0)] = 0
+    unexpected_whitespace: Annotated[int, Field(ge=0)] = 0
+    unsupported_script: Annotated[int, Field(ge=0)] = 0
+
+    @property
+    def total(self) -> int:
+        return sum(self.model_dump().values())
+
+
+class LatinOcrDistributionV1(ContractModel):
+    minimum: Annotated[float, Field(ge=0)]
+    p50: Annotated[float, Field(ge=0)]
+    p95: Annotated[float, Field(ge=0)]
+    maximum: Annotated[float, Field(ge=0)]
+    mean: Annotated[float, Field(ge=0)]
+
+    @model_validator(mode="after")
+    def percentiles_are_ordered(self) -> LatinOcrDistributionV1:
+        if not self.minimum <= self.p50 <= self.p95 <= self.maximum:
+            raise ValueError("distribution percentiles must be ordered")
+        if not self.minimum <= self.mean <= self.maximum:
+            raise ValueError("distribution mean must be within the observed range")
+        return self
+
+
+class LatinOcrGeneratedSliceV1(ContractModel):
+    layout: AnprLayout
+    sample_count: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    succeeded: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    failed: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    exact_matches: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    reference_scalar_count: Annotated[int, Field(ge=0)]
+    raw_edit_distance: Annotated[int, Field(ge=0)]
+    failure_counts: LatinOcrFailureCountsV1
+
+    @model_validator(mode="after")
+    def counts_are_consistent(self) -> LatinOcrGeneratedSliceV1:
+        if self.succeeded + self.failed != self.sample_count:
+            raise ValueError("Latin OCR slice success/failure count is inconsistent")
+        if self.exact_matches > self.succeeded:
+            raise ValueError("Latin OCR exact matches exceed successful outputs")
+        if self.failure_counts.total != self.failed:
+            raise ValueError("Latin OCR slice failure reasons are inconsistent")
+        return self
+
+
+class LatinOcrCandidateEvaluationV1(ContractModel):
+    candidate_id: LatinOcrCandidate
+    artifact_id: Literal[
+        "OCR-L0-PPOCRV6-SMALL-INFER-PROPOSED",
+        "OCR-L1-PPOCRV6-MEDIUM-INFER-PROPOSED",
+    ]
+    artifact_sha256: ImmutableDigest
+    extracted_inventory_sha256: ImmutableDigest
+    model_name: Literal["PP-OCRv6_small_rec", "PP-OCRv6_medium_rec"]
+    dictionary_version: Literal[ANPR_LATIN_DICTIONARY_VERSION] = (
+        ANPR_LATIN_DICTIONARY_VERSION
+    )
+    adapter_version: Literal[ANPR_LATIN_OCR_ADAPTER_VERSION] = (
+        ANPR_LATIN_OCR_ADAPTER_VERSION
+    )
+    sample_count: Annotated[int, Field(ge=1, le=MAX_ANPR_LOCAL_SAMPLES)]
+    succeeded: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    failed: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    exact_matches: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    reference_scalar_count: Annotated[int, Field(ge=1)]
+    raw_edit_distance: Annotated[int, Field(ge=0)]
+    failure_counts: LatinOcrFailureCountsV1
+    slices: Annotated[tuple[LatinOcrGeneratedSliceV1, ...], Field(min_length=2, max_length=2)]
+    confidence_distribution: LatinOcrDistributionV1 | None
+    latency_ms_distribution: LatinOcrDistributionV1
+    replay_runs: Literal[20] = 20
+    replay_output_deterministic: bool
+    network_attempt_count: Annotated[int, Field(ge=0)]
+    network_access_performed: Literal[False] = False
+    final_test_used: Literal[False] = False
+    raw_output_persisted: Literal[False] = False
+    alternatives_persisted: Literal[False] = False
+    identifiers_persisted: Literal[False] = False
+    promotion_authorized: Literal[False] = False
+    synthetic_only: Literal[True] = True
+
+    @model_validator(mode="after")
+    def evaluation_counts_are_consistent(self) -> LatinOcrCandidateEvaluationV1:
+        expected = {
+            "OCR-L0": (
+                "OCR-L0-PPOCRV6-SMALL-INFER-PROPOSED",
+                OCR_L0_ARTIFACT_SHA256,
+                "PP-OCRv6_small_rec",
+            ),
+            "OCR-L1": (
+                "OCR-L1-PPOCRV6-MEDIUM-INFER-PROPOSED",
+                OCR_L1_ARTIFACT_SHA256,
+                "PP-OCRv6_medium_rec",
+            ),
+        }[self.candidate_id]
+        if (self.artifact_id, self.artifact_sha256, self.model_name) != expected:
+            raise ValueError("Latin OCR evaluation does not match its exact artifact")
+        if self.succeeded + self.failed != self.sample_count:
+            raise ValueError("Latin OCR evaluation success/failure count is inconsistent")
+        if self.exact_matches > self.succeeded:
+            raise ValueError("Latin OCR exact matches exceed successful outputs")
+        if self.failure_counts.total != self.failed:
+            raise ValueError("Latin OCR evaluation failure reasons are inconsistent")
+        if sum(item.sample_count for item in self.slices) != self.sample_count:
+            raise ValueError("Latin OCR slice counts do not cover the evaluation")
+        if {item.layout for item in self.slices} != {"single_line", "two_line"}:
+            raise ValueError("Latin OCR evaluation requires both layout slices")
+        return self
+
+
+class LatinOcrGeneratedEvaluationV1(ContractModel):
+    contract_type: Literal["hcam.phase3.p3_5.latin-ocr-generated-evaluation.v1"] = (
+        "hcam.phase3.p3_5.latin-ocr-generated-evaluation.v1"
+    )
+    work_package: Literal[
+        "P35-W5_exact_Latin_Paddle_OCR_adapters_and_generated_evaluation"
+    ] = "P35-W5_exact_Latin_Paddle_OCR_adapters_and_generated_evaluation"
+    source_id: Literal["DATA-PLATE-GEN-R0"] = ANPR_GENERATED_SOURCE_ID
+    generator_version: Literal[ANPR_GENERATOR_VERSION] = ANPR_GENERATOR_VERSION
+    renderer_version: Literal[ANPR_LATIN_RENDERER_VERSION] = (
+        ANPR_LATIN_RENDERER_VERSION
+    )
+    adapter_version: Literal[ANPR_LATIN_OCR_ADAPTER_VERSION] = (
+        ANPR_LATIN_OCR_ADAPTER_VERSION
+    )
+    runtime_id: Literal["cpython-3.12.13-windows-x86_64"] = (
+        "cpython-3.12.13-windows-x86_64"
+    )
+    paddleocr_version: Literal["3.7.0"] = "3.7.0"
+    paddlepaddle_version: Literal["3.3.1"] = "3.3.1"
+    pillow_version: Literal["12.3.0"] = "12.3.0"
+    regex_version: Literal["2026.7.19"] = "2026.7.19"
+    candidate_evaluations: Annotated[
+        tuple[LatinOcrCandidateEvaluationV1, ...], Field(min_length=2, max_length=2)
+    ]
+    generated_sample_plan: Literal["development_then_validation_no_final_test"] = (
+        "development_then_validation_no_final_test"
+    )
+    external_input_count: Literal[0] = 0
+    model_download_count: Literal[0] = 0
+    camera_or_media_input_count: Literal[0] = 0
+    real_registration_mark_count: Literal[0] = 0
+    raw_output_persisted: Literal[False] = False
+    alternatives_persisted: Literal[False] = False
+    sample_or_region_identifiers_persisted: Literal[False] = False
+    plate_text_retention_hours: Literal[0] = 0
+    quality_threshold_decided: Literal[False] = False
+    promotion_authorized: Literal[False] = False
+    deployment_authorized: Literal[False] = False
+    synthetic_only: Literal[True] = True
+
+    @model_validator(mode="after")
+    def baseline_and_challenger_are_both_present(self) -> LatinOcrGeneratedEvaluationV1:
+        if {item.candidate_id for item in self.candidate_evaluations} != {
+            "OCR-L0",
+            "OCR-L1",
+        }:
+            raise ValueError("Latin OCR evidence requires the exact L0 and L1 pair")
+        return self
+
+
 def generated_request_fixture() -> GeneratedTokenRequestV1:
     return GeneratedTokenRequestV1(
         request_id="anprreq_11111111111111111111111111111111",
@@ -575,6 +856,12 @@ def anpr_contract_bundle() -> dict[str, Any]:
                 mode="validation"
             ),
             "ground_truth_region": SealedGroundTruthPlateRegionV1.model_json_schema(
+                mode="validation"
+            ),
+            "ephemeral_latin_ocr_hypothesis": EphemeralLatinOcrHypothesisV1.model_json_schema(
+                mode="validation"
+            ),
+            "latin_ocr_generated_evaluation": LatinOcrGeneratedEvaluationV1.model_json_schema(
                 mode="validation"
             ),
             "plate_localization_result": PlateLocalizationResultV1.model_json_schema(
@@ -647,6 +934,21 @@ def anpr_contract_bundle() -> dict[str, Any]:
             "weights_loaded": False,
             "crop_pixels_in_contracts": False,
             "plate_text_in_contracts": False,
+        },
+        "latin_ocr_policy": {
+            "adapter_version": ANPR_LATIN_OCR_ADAPTER_VERSION,
+            "renderer_version": ANPR_LATIN_RENDERER_VERSION,
+            "dictionary_version": ANPR_LATIN_DICTIONARY_VERSION,
+            "candidates": {
+                "OCR-L0": OCR_L0_ARTIFACT_SHA256,
+                "OCR-L1": OCR_L1_ARTIFACT_SHA256,
+            },
+            "raw_output_ephemeral_only": True,
+            "maximum_unicode_scalars": 32,
+            "maximum_grapheme_clusters": 16,
+            "maximum_alternatives": 5,
+            "generated_only": True,
+            "promotion_authorized": False,
         },
         "persistence_policy": {
             "plate_text_retention_hours": 0,

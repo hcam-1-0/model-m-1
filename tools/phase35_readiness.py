@@ -93,6 +93,9 @@ P3_5_RUNTIME_EVIDENCE_PACKAGE_DIGEST = (
 P3_5_RUNTIME_EVIDENCE_REPOSITORY_HEAD = (
     "1edfd0a13208d9b359cc5e563bbc406bba214e26"
 )
+P3_5_W5_EVIDENCE_SHA256 = (
+    "3AEA54734015CCE7E6C8CCABFDBE02310F028268393EACD9A31B4BA6DFA42A20"
+)
 
 PACKAGE_FILES = (
     ".github/workflows/python-ci.yml",
@@ -102,6 +105,7 @@ PACKAGE_FILES = (
     "app/hcam/analytics/anpr/generator.py",
     "app/hcam/analytics/anpr/guardrails.py",
     "app/hcam/analytics/anpr/localization.py",
+    "app/hcam/analytics/anpr/ocr.py",
     "contracts/phase-3/README.md",
     "contracts/phase-3/fixtures/p3-5-generated-request-v1.json",
     "contracts/phase-3/fixtures/p3-5-ground-truth-crop-v1.json",
@@ -115,6 +119,7 @@ PACKAGE_FILES = (
     "contracts/phase-3/p3-5-artifact-sbom.cdx.json",
     "contracts/phase-3/p3-5-anpr-contracts.json",
     "contracts/phase-3/p3-5-entry-gates.json",
+    "contracts/phase-3/p3-5-latin-ocr-evaluation.json",
     "contracts/phase-3/p3-5-planning-authorization.json",
     "contracts/phase-3/p3-5-owner-decisions.json",
     "contracts/phase-3/p3-5-research-sources.json",
@@ -147,10 +152,13 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-w1-contracts-guardrails.md",
     "docs/phase-3/p3-5-w3-generator-splits.md",
     "docs/phase-3/p3-5-w4-ground-truth-crop.md",
+    "docs/phase-3/p3-5-w5-latin-ocr.md",
     "tests/test_analytics_anpr_generator.py",
     "tests/test_analytics_anpr_guardrails.py",
     "tests/test_analytics_anpr_localization.py",
+    "tests/test_analytics_anpr_ocr.py",
     "tests/test_phase35_contracts.py",
+    "tests/test_phase35_latin_ocr.py",
     "tests/test_phase35_readiness.py",
     "tests/test_phase35_artifact_research.py",
     "tests/test_phase35_artifact_inspect.py",
@@ -158,6 +166,8 @@ PACKAGE_FILES = (
     "tools/phase35_artifact_research.py",
     "tools/phase35_artifact_inspect.py",
     "tools/phase35_contracts.py",
+    "tools/phase35_latin_ocr.py",
+    "tools/phase35_latin_ocr_worker.py",
     "tools/phase35_runtime_research.py",
     "tools/phase35_readiness.py",
 )
@@ -272,7 +282,7 @@ def check_required_files() -> Check:
     return Check(
         "required_files",
         PASS,
-        f"All {len(PACKAGE_FILES)} P3.5 authorization and W1/W3/W4 package files exist.",
+        f"All {len(PACKAGE_FILES)} P3.5 authorization and W1/W3/W4/W5 package files exist.",
     )
 
 
@@ -398,7 +408,7 @@ def check_candidate_boundary() -> Check:
     return Check(
         "candidate_boundary",
         PASS,
-        "All six plate/OCR candidates remain pending, blocked, and artifact-unresolved.",
+        "All six P3.1 candidate-promotion records remain blocked; exact P3.5 generated-only artifact execution is governed independently.",
         tuple(found),
     )
 
@@ -551,6 +561,7 @@ def check_authorized_w1_w3_w4_package() -> Check:
         "app/hcam/analytics/anpr/generator.py",
         "app/hcam/analytics/anpr/guardrails.py",
         "app/hcam/analytics/anpr/localization.py",
+        "app/hcam/analytics/anpr/ocr.py",
     }
     prohibited_prefixes = ("migrations/", "deploy/")
     prohibited_suffixes = (
@@ -578,13 +589,13 @@ def check_authorized_w1_w3_w4_package() -> Check:
         return Check(
             "authorized_w1_w3_w4_package",
             FAIL,
-            "P3.5 W1/W3/W4 contains an unapproved application, migration, deployment, model, or media file.",
+            "P3.5 W1/W3/W4/W5 contains an unapproved application, migration, deployment, model, or media file.",
             prohibited,
         )
     return Check(
         "authorized_w1_w3_w4_package",
         PASS,
-        "P3.5 application scope is limited to contracts, guardrails, deterministic token generation, sealed splits, procedural frames, ground-truth localization, and ephemeral crops; no OCR, runtime adapter, migration, model, or media file is present.",
+        "P3.5 application scope is limited to generated-only contracts, guardrails, deterministic token/rendering, sealed splits, ground-truth localization, ephemeral crops, and exact external Latin OCR adapters; no migration, model, media, API, or persistence file is present.",
     )
 
 
@@ -840,6 +851,124 @@ def check_w4_ground_truth_crop() -> Check:
         "w4_ground_truth_crop",
         PASS,
         "P3.5 W4 records one model-free generated ground-truth region and an ephemeral bounded crop without pixels or plate text in evidence.",
+    )
+
+
+def check_w5_latin_ocr_evidence() -> Check:
+    path = ROOT / "contracts/phase-3/p3-5-latin-ocr-evaluation.json"
+    try:
+        payload = path.read_bytes()
+        record = json.loads(payload)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("w5_latin_ocr_evidence", FAIL, str(exc))
+    canonical = (
+        json.dumps(
+            record,
+            allow_nan=False,
+            ensure_ascii=True,
+            separators=(",", ":"),
+            sort_keys=True,
+        ).encode("utf-8")
+        + b"\n"
+    )
+    observed_sha256 = hashlib.sha256(payload).hexdigest().upper()
+    serialized = payload.decode("utf-8", errors="strict")
+    candidates = record.get("candidate_evaluations")
+    candidate_map = {
+        item.get("candidate_id"): item
+        for item in candidates
+        if isinstance(item, dict)
+    } if isinstance(candidates, list) else {}
+    expected = {
+        "OCR-L0": {
+            "artifact_id": "OCR-L0-PPOCRV6-SMALL-INFER-PROPOSED",
+            "artifact_sha256": "sha256:da460f968ce9f88325ac3a34fa302077d6e9b0dcefb16ba3137cd7796f879d06",
+            "inventory": "sha256:692cd53d9fb002538e81c9e0b91a6636ade0a82dc9a914809c3598cec686bf84",
+            "exact_matches": 7,
+            "raw_edit_distance": 18,
+        },
+        "OCR-L1": {
+            "artifact_id": "OCR-L1-PPOCRV6-MEDIUM-INFER-PROPOSED",
+            "artifact_sha256": "sha256:4eecc1c6a4623765042e6fc15446da0da110b7d875b6b72b2d351d2b2dbd4da6",
+            "inventory": "sha256:7a12028567618504b96caf997e7afdf77ceea54dbab142c09299e3844d53fb6f",
+            "exact_matches": 9,
+            "raw_edit_distance": 15,
+        },
+    }
+    candidate_failures: list[str] = []
+    for candidate_id, expected_item in expected.items():
+        item = candidate_map.get(candidate_id, {})
+        slices = item.get("slices") if isinstance(item, dict) else None
+        slice_map = {
+            value.get("layout"): value
+            for value in slices
+            if isinstance(value, dict)
+        } if isinstance(slices, list) else {}
+        failure_counts = item.get("failure_counts", {}) if isinstance(item, dict) else {}
+        if (
+            item.get("artifact_id") != expected_item["artifact_id"]
+            or item.get("artifact_sha256") != expected_item["artifact_sha256"]
+            or item.get("extracted_inventory_sha256") != expected_item["inventory"]
+            or item.get("sample_count") != 12
+            or item.get("succeeded") != 12
+            or item.get("failed") != 0
+            or item.get("exact_matches") != expected_item["exact_matches"]
+            or item.get("raw_edit_distance") != expected_item["raw_edit_distance"]
+            or sum(failure_counts.values()) != 0
+            or item.get("replay_runs") != 20
+            or item.get("replay_output_deterministic") is not True
+            or item.get("network_attempt_count") != 1
+            or item.get("network_access_performed") is not False
+            or item.get("final_test_used") is not False
+            or item.get("raw_output_persisted") is not False
+            or item.get("alternatives_persisted") is not False
+            or item.get("identifiers_persisted") is not False
+            or item.get("promotion_authorized") is not False
+            or slice_map.get("single_line", {}).get("sample_count") != 9
+            or slice_map.get("two_line", {}).get("sample_count") != 3
+            or slice_map.get("two_line", {}).get("exact_matches") != 0
+        ):
+            candidate_failures.append(candidate_id)
+    if (
+        payload != canonical
+        or observed_sha256 != P3_5_W5_EVIDENCE_SHA256
+        or record.get("contract_type")
+        != "hcam.phase3.p3_5.latin-ocr-generated-evaluation.v1"
+        or record.get("work_package")
+        != "P35-W5_exact_Latin_Paddle_OCR_adapters_and_generated_evaluation"
+        or record.get("source_id") != "DATA-PLATE-GEN-R0"
+        or record.get("generated_sample_plan")
+        != "development_then_validation_no_final_test"
+        or record.get("external_input_count") != 0
+        or record.get("model_download_count") != 0
+        or record.get("camera_or_media_input_count") != 0
+        or record.get("real_registration_mark_count") != 0
+        or record.get("raw_output_persisted") is not False
+        or record.get("alternatives_persisted") is not False
+        or record.get("sample_or_region_identifiers_persisted") is not False
+        or record.get("plate_text_retention_hours") != 0
+        or record.get("quality_threshold_decided") is not False
+        or record.get("promotion_authorized") is not False
+        or record.get("deployment_authorized") is not False
+        or set(candidate_map) != set(expected)
+        or candidate_failures
+        or "SYN-" in serialized
+        or '"raw_text"' in serialized
+        or '"alternatives":' in serialized
+        or "anprsample_" in serialized
+        or "anprregion_" in serialized
+        or "B:\\" in serialized
+    ):
+        return Check(
+            "w5_latin_ocr_evidence",
+            FAIL,
+            "P3.5 W5 exact artifacts, generated-only metrics, replay, final-test isolation, network denial, or zero-retention evidence changed.",
+            tuple(candidate_failures),
+        )
+    return Check(
+        "w5_latin_ocr_evidence",
+        PASS,
+        "P3.5 W5 pins exact L0/L1 inventories and identifier-free 12-sample generated baselines with deterministic replay, no final-test use, and no retained OCR output.",
     )
 
 
@@ -1907,10 +2036,12 @@ def check_documentation_sync() -> Check:
             "tools/phase35_artifact_research.py",
             "tools/phase35_runtime_research.py",
             "tools/phase35_readiness.py",
+            "tools/phase35_latin_ocr.py",
         ),
         "contracts/phase-3/README.md": (
             "p3-5-anpr-contracts.json",
             "p3-5-ground-truth-crop-v1.json",
+            "p3-5-latin-ocr-evaluation.json",
             "p3-5-sealed-splits-v1.json",
             "p3-5-artifact-review-evidence.json",
             "p3-5-artifact-review-acceptance.json",
@@ -1932,6 +2063,7 @@ def check_documentation_sync() -> Check:
             "[P3.5 W1 contracts and guardrails](p3-5-w1-contracts-guardrails.md)",
             "[P3.5 W3 deterministic generator and sealed splits](p3-5-w3-generator-splits.md)",
             "[P3.5 W4 ground-truth localization and crop](p3-5-w4-ground-truth-crop.md)",
+            "[P3.5 W5 exact Latin PaddleOCR baseline](p3-5-w5-latin-ocr.md)",
             "[P3.5 artifact model cards](p3-5-artifact-model-cards.md)",
             "[P3.5 exact artifact review evidence](p3-5-artifact-review-evidence.md)",
             "[P3.5 exact artifact review acceptance](p3-5-artifact-review-acceptance.md)",
@@ -1964,6 +2096,8 @@ def check_documentation_sync() -> Check:
             "P35-W1",
             "P35-W3",
             "P35-W4",
+            "P35-W5",
+            "validated_generated_baseline",
             "validated_complete",
         ),
         "docs/phase-3/p3-5-runtime-research-evidence.md": (
@@ -2004,9 +2138,20 @@ def check_documentation_sync() -> Check:
             "Pixels remain ephemeral",
             "PLATE-D0 remains blocked",
         ),
+        "docs/phase-3/p3-5-w5-latin-ocr.md": (
+            "P35-W5",
+            "OCR-L0",
+            "OCR-L1",
+            "12/12",
+            "20/20",
+            "0/3",
+            "No W5 path uses `B:`",
+            "No quality threshold or model-promotion decision has been made",
+        ),
         ".github/workflows/python-ci.yml": (
             "python tools/phase35_readiness.py --strict",
             "python tools/phase35_contracts.py check",
+            "python tools/phase35_latin_ocr.py check-evidence",
         ),
     }
     missing: list[str] = []
@@ -2068,6 +2213,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_w1_contract_snapshot(),
         check_w3_split_manifest(),
         check_w4_ground_truth_crop(),
+        check_w5_latin_ocr_evidence(),
         check_artifact_proposal(),
         check_owner_decisions_record(),
         check_artifact_research_authorization(),
