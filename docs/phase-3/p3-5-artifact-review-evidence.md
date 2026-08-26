@@ -59,8 +59,10 @@ and [Devanagari OFL](https://github.com/google/fonts/blob/6a003b5eb672dc8bf5bff5
 Artifact identity research is complete, but runtime research is not. Exact
 Python wheels, transitive dependencies, native libraries, Tesseract engine,
 runtime SBOM, and vulnerability review remain unresolved. `PLATE-D0` also
-remains an unbuilt internal future artifact. No candidate is approved for
-execution, and `D-P3.5-START` remains non-effective.
+remains an unbuilt internal future artifact. At this artifact-review checkpoint,
+no candidate was approved for execution and the early `D-P3.5-START` remained
+non-effective. Later restricted authority is recorded separately in
+[P3.5 generated-only start authorization](p3-5-start-authorization.md).
 
 Canonical evidence is in
 [`p3-5-artifact-review-evidence.json`](../../contracts/phase-3/p3-5-artifact-review-evidence.json)

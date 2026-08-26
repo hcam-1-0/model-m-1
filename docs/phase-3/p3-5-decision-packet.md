@@ -1,8 +1,9 @@
 # P3.5 Owner Decision Packet
 
-Status: planning complete under `D-P3.5-PLAN-AUTH`; no technical option is
-owner approved. The exact `D-P3.5-START` statement was received early but is
-non-effective until the technical choices and exact artifact review are complete.
+Status: recommended options `A/A/A/A` are owner approved; exact artifact and
+runtime evidence are owner accepted; final digest-bound `D-P3.5-START` is
+effective for the enumerated generated-only local scope with zero network
+actions.
 
 Planning package: [P3.5 synthetic ANPR plan](p3-5-plan.md).
 
@@ -18,7 +19,8 @@ Machine-readable gates:
 - Exact model, font, dictionary, generator, and dependency artifacts need
   source, version, license, lineage, hash, model card, SBOM, vulnerability, and
   owner approval evidence.
-- `D-P3.5-START` remains separate from `D-P3.5-001` through `D-P3.5-004`.
+- `D-P3.5-START` remains a separate decision from `D-P3.5-001` through
+  `D-P3.5-004`; it is now recorded in the final start authorization.
 
 ## D-P3.5-001: Synthetic Corpus And Token Policy
 
@@ -297,15 +299,20 @@ On 2026-08-26, `mayank-admin` selected the recommended baseline with:
 >
 > D-P3.5-004: A
 
-This accepted the four technical planning choices only. The separate exact
-`D-P3.5-ARTIFACT-RESEARCH` statement authorizes the seven proposal-bound
-quarantine downloads, but no extraction, runtime loading, or implementation.
+This statement accepted the four technical planning choices only. The separate
+`D-P3.5-ARTIFACT-RESEARCH` statement then authorized the seven proposal-bound
+quarantine downloads, but no extraction, runtime loading, or implementation at
+that checkpoint.
 
-After exact artifact and source manifests are prepared and reviewed, the owner
-must separately identify `D-P3.5-START`. A response such as `continue`, `start`,
-or `accepted` without that decision ID is not implementation authorization.
+After exact artifact and source manifests were prepared and reviewed, the owner
+was required to separately identify `D-P3.5-START`. A response such as
+`continue`, `start`, or `accepted` without that decision ID was not
+implementation authorization.
 
 `mayank-admin` supplied the exact start identifier on 2026-08-26 before the
-required choices and manifests existed. It remains start intent only. A final
-confirmation against the completed exact review packet digest is still
-required.
+required choices and manifests existed. That statement remains historical start
+intent only. After artifact and runtime review, `mayank-admin` supplied final
+`D-P3.5-START` against package digest
+`915F5E9246A7A656DF528DD54DA6018D7489C6875BF3A77D1A551BAD6EF9AF4D`.
+The effective scope is documented in
+[P3.5 generated-only start authorization](p3-5-start-authorization.md).

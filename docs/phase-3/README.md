@@ -16,8 +16,9 @@ authorized under `D-P3.5-ARTIFACT-RESEARCH`. Exact hashes, passive inspection,
 artifact SBOM, and Defender scan are complete and owner accepted.
 `D-P3.5-RUNTIME-RESEARCH` authorized the isolated dependency review; its exact
 runtime evidence, SBOM, license inventory, vulnerability audit, Defender scan,
-and network-denied imports are complete. `D-P3.5-START` remains non-effective.
-All broader media,
+and network-denied imports are complete. `D-P3.5-START` is now effective only
+for the exact generated-only, default-off,
+zero-network local implementation allowlist. All broader media,
 identity, correlation, alerting, and deployment work remains unauthorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
@@ -87,10 +88,11 @@ autonomous enforcement.
 | [P3.5 runtime review proposal](p3-5-runtime-review-proposal.md) | Proposed Python 3.12 dependency research and unresolved Tesseract engine |
 | [P3.5 runtime research authorization](p3-5-runtime-research-authorization.md) | Restricted external Python dependency review and prohibited runtime actions |
 | [P3.5 runtime research evidence](p3-5-runtime-research-evidence.md) | Exact wheel closure, SBOM, licenses, audit, Defender scan, guarded imports, and remaining blocks |
+| [P3.5 generated-only start authorization](p3-5-start-authorization.md) | Digest-bound generated-only work, five loadable artifacts, exact runtime, zero network actions, and continuing blocks |
 | [P3.5 plan](p3-5-plan.md) | Synthetic corpus, localization, OCR, normalization, consensus, privacy, and evidence design |
 | [P3.5 owner decision packet](p3-5-decision-packet.md) | Four technical choices and separate implementation-start gate |
-| [P3.5 planning readiness](p3-5-planning-readiness-report.md) | Machine-verified package boundary, digest, and pending owner gates |
-| [P3.5 start intent](p3-5-start-intent.md) | Exact early `D-P3.5-START` statement, unmet prerequisites, and zero-authority boundary |
+| [P3.5 planning readiness](p3-5-planning-readiness-report.md) | Historical machine-verified planning boundary and then-pending owner gates |
+| [P3.5 start intent](p3-5-start-intent.md) | Historical early `D-P3.5-START` statement and why it was initially non-effective |
 
 ## Non-Negotiable Boundary
 

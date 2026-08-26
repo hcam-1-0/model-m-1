@@ -213,16 +213,21 @@ research for seven external artifacts is authorized under
 SBOM, model cards, and Defender scan are complete and the exact packet is owner
 accepted. `D-P3.5-RUNTIME-RESEARCH` authorizes the isolated dependency closure;
 the exact Python wheel closure, SBOM, license metadata, vulnerability audit,
-Defender scan, and guarded import evidence are complete. The early
-`D-P3.5-START` remains non-effective until final owner review. No model
-extraction or loading, generation, training, inference, product implementation, or
-media/data access is authorized.
+Defender scan, and guarded import evidence are complete. Final digest-bound
+`D-P3.5-START` is effective with status
+`implementation_authorized_generated_only_staged`. It permits only the exact
+generated-only local packages and five loadable artifacts listed in the start
+record, using the reviewed external Paddle runtime with zero network access.
+Training, Tesseract execution, cameras/media, real/private/Government data,
+public APIs, persistent plate text, deployment, P3.6, and remote Git remain
+prohibited.
 
 Artifact preparation status: proposal R0 records eight recommended artifact
 slots, immutable source metadata, and bounded sizes. Seven external slots are
-now present in quarantine with exact evidence. The Python dependency closure is
-reviewed but not runtime-authorized. The Tesseract engine, internal detector
-slot, artifact loading, and all execution remain blocked.
+present in quarantine with exact evidence. `OCR-L0`, `OCR-L1`, `OCR-D0`,
+`FONT-G0`, and `FONT-D0` are authorized only for their exact generated-only
+uses. `OCR-G0`, `OCR-G1`, the Tesseract engine, `PLATE-D0`, training, and any
+unlisted execution remain blocked.
 
 Deliverables:
 

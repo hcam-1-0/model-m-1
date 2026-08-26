@@ -359,9 +359,9 @@ not authorize P3.5 or waive any continuing boundary.
 
 ### DR-0034: P3.5 Synthetic ANPR Planning Baseline
 
-Status: planning authorized under `D-P3.5-PLAN-AUTH`; technical baseline
-approved; artifact research authorized;
-implementation remains pending.
+Status: historical planning checkpoint authorized under `D-P3.5-PLAN-AUTH`;
+implementation was pending here and was later restrictedly authorized under
+DR-0041.
 
 P3.5 planning is independently authorized on the accepted P3.4 package. The
 recommended design uses a deterministic procedural corpus with visibly
@@ -380,12 +380,10 @@ export, or backup. Only identifier-free aggregate generated evidence may be
 persisted. Synthetic evidence cannot support a real-CCTV accuracy, legal,
 operational, or deployment claim.
 
-`D-P3.5-001` through `D-P3.5-004` now select option `A`. The separate
-`D-P3.5-ARTIFACT-RESEARCH` decision permits only seven exact external artifacts
-to enter a non-runtime quarantine. `D-P3.5-START` remains the explicit final
-owner gate. No extraction, dependency, generation, training, inference,
-product code, camera, media, real plate, owner/Government record, alert,
-deployment, P3.6, or remote Git action is authorized.
+At this checkpoint, `D-P3.5-001` through `D-P3.5-004` selected option `A` and
+`D-P3.5-ARTIFACT-RESEARCH` permitted only seven exact external artifacts to
+enter a non-runtime quarantine. Final start authority was still absent. The
+subsequent restricted authorization is recorded in DR-0041.
 
 ### DR-0035: Early P3.5 Start Intent
 
@@ -459,7 +457,8 @@ transitive dependencies, native libraries, vulnerability evidence, and the
 Tesseract 5 engine are unresolved. `D-P3.5-RUNTIME-RESEARCH` is approved only
 for the documented external binary-wheel closure, SBOM, scan, vulnerability,
 and network-denied import checks. It grants no implementation or model-runtime
-authority. Final `D-P3.5-START` remains separate.
+authority. At this checkpoint final `D-P3.5-START` remained separate; DR-0041
+records its later restricted resolution.
 
 ### DR-0039: P3.5 Artifact Acceptance And Runtime Research Authorization
 
@@ -483,7 +482,8 @@ prohibited its use. The active local root is now
 
 ### DR-0040: P3.5 Restricted Runtime Research Evidence
 
-Status: evidence complete; final digest-bound start approval pending.
+Status: historical evidence checkpoint; evidence complete and subsequently
+bound by final digest-bound start approval in DR-0041.
 
 The authorized CPython 3.12.13 research resolved exactly four direct package
 roots into a 67-wheel binary closure outside Git. The offline installation has
@@ -498,9 +498,32 @@ The repository retains a 319-component CycloneDX 1.6 SBOM, complete package
 license metadata, external evidence hashes, and explicit legal-review and
 Tesseract limitations. `B:` is RaiDrive Google Drive and must not be used; the
 validated quarantine is under `E:\h-cam-research-cache`. Runtime evidence is
-complete, but every SBOM component remains runtime-unauthorized and the early
-`D-P3.5-START` statement remains non-effective. Final owner review must bind the
-clean package digest and enumerate any future implementation authority.
+complete. At this checkpoint every SBOM component remained runtime-unauthorized
+and the early `D-P3.5-START` statement remained non-effective. DR-0041 records
+the later owner review that bound the clean package digest and exact restricted
+implementation authority.
+
+### DR-0041: P3.5 Digest-Bound Generated-Only Start
+
+Status: approved and effective.
+
+On 2026-08-26, `mayank-admin` supplied final `D-P3.5-START` after the four
+technical decisions, exact artifact acceptance, restricted runtime evidence,
+and clean-source package were complete. The authorization binds package digest
+`915F5E9246A7A656DF528DD54DA6018D7489C6875BF3A77D1A551BAD6EF9AF4D`
+at repository checkpoint `1edfd0a13208d9b359cc5e563bbc406bba214e26`.
+
+The decision authorizes only enumerated local generated-only work. `OCR-L0`,
+`OCR-L1`, and `OCR-D0` may be safely extracted and loaded for generated-only
+Paddle inference. `FONT-G0` and `FONT-D0` may be loaded only for deterministic
+generated rendering. The exact reviewed CPython 3.12.13 runtime may be used from
+its local wheelhouse with zero network access. `OCR-G0` and `OCR-G1` remain
+blocked because the exact Tesseract 5 engine and native SBOM are unresolved.
+
+No download, repository dependency or container change, training, `PLATE-D0`,
+public API, persistent plate text, camera/media/Sentinel/ONVIF access,
+real/private/Government data, identity, watchlist, alert, deployment, P3.6, or
+remote Git action is authorized. This is a start gate, not P3.5 acceptance.
 
 ## Decisions Explicitly Deferred
 

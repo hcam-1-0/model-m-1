@@ -1,12 +1,14 @@
 # P3.5 Start Intent Record
 
-Status: `received_prerequisites_pending`.
+Status: `historical_intent_superseded_by_digest_bound_authorization`.
 
 On 2026-08-26, `mayank-admin` supplied the exact statement
 `D-P3.5-START`. The statement is preserved in
 [`p3-5-start-authorization.json`](../../contracts/phase-3/p3-5-start-authorization.json),
-but it is not effective implementation authorization because its disclosed
-prerequisites were not complete when it was received.
+and was not effective implementation authorization when received because its
+disclosed prerequisites were not complete. It is retained as historical audit
+evidence and is superseded by the later final record described in
+[P3.5 generated-only start authorization](p3-5-start-authorization.md).
 
 ## Prerequisite State
 
@@ -16,8 +18,8 @@ prerequisites were not complete when it was received.
 | `D-P3.5-002` detector and OCR portfolio | Option `A` owner approved |
 | `D-P3.5-003` normalization, abstention, and consensus | Option `A` owner approved |
 | `D-P3.5-004` privacy, resources, and evidence policy | Option `A` owner approved |
-| Exact model/font artifact review | Seven-artifact SHA-256, passive inspection, Defender scan, model cards, and artifact SBOM complete; owner packet review pending |
-| `D-P3.5-RUNTIME-RESEARCH` | Proposal prepared; owner authorization, exact dependency closure, native engine, runtime SBOM, and vulnerability review pending |
+| Exact model/font artifact review | Seven-artifact evidence complete and owner accepted |
+| `D-P3.5-RUNTIME-RESEARCH` | Exact dependency closure, runtime SBOM, vulnerability review, Defender scan, and guarded imports complete and owner accepted |
 
 The recommended technical baseline was selected with:
 
@@ -32,7 +34,7 @@ Those selections do not authorize implementation. The separate artifact gate
 authorized only the now-complete exact seven-file quarantine research. It does
 not authorize runtime dependency research.
 
-## Why The Start Is Not Yet Effective
+## Why The Early Statement Was Not Effective
 
 The start policy requires an exact allowlist. A valid final record must bind:
 
@@ -46,16 +48,16 @@ The start policy requires an exact allowlist. A valid final record must bind:
 - the exact generated-only work packages allowed to run;
 - all continuing prohibitions.
 
-The early statement cannot authorize undisclosed future artifacts or network
-actions. After the exact packet is prepared and presented, `mayank-admin` must
-confirm `D-P3.5-START` against that packet digest.
+The early statement could not authorize undisclosed future artifacts or network
+actions. After the exact packet was prepared and presented, `mayank-admin`
+confirmed `D-P3.5-START` against package digest
+`915F5E9246A7A656DF528DD54DA6018D7489C6875BF3A77D1A551BAD6EF9AF4D`.
 
 ## Current Boundary
 
-Implementation remains off. Artifact acquisition is complete. No further
-download, extraction, dependency,
-lockfile, container,
-application, migration, API, worker, or storage change may be made. Synthetic
-generation, training, inference, camera/media access, real registration marks,
-Government or owner records, identity, watchlist matching, operational alerts,
-deployment, P3.6, and remote Git actions remain prohibited.
+The current boundary is defined only by the final machine-readable start
+authorization. It permits five exact artifacts and selected generated-only
+local work packages with zero network actions. Training, Tesseract execution,
+camera/media access, real registration marks, Government or owner records,
+identity, watchlist matching, operational alerts, deployment, P3.6, and remote
+Git actions remain prohibited.

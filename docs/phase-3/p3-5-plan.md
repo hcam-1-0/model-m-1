@@ -1,13 +1,16 @@
 # P3.5 Synthetic ANPR Plan
 
-Status: planning complete under `D-P3.5-PLAN-AUTH`; technical decisions
-`D-P3.5-001` through `D-P3.5-004` approve the recommended `A/A/A/A` baseline.
-Exact seven-artifact quarantine research is authorized under
-`D-P3.5-ARTIFACT-RESEARCH` and its exact evidence is complete.
-`D-P3.5-RUNTIME-RESEARCH` and the early `D-P3.5-START` remain non-effective
-until exact runtime review is complete and accepted.
+Status: generated-only local implementation is authorized under final
+digest-bound `D-P3.5-START`. Technical decisions `D-P3.5-001` through
+`D-P3.5-004` approve the recommended `A/A/A/A` baseline. Exact artifact and
+restricted runtime research are complete and owner accepted. Five exact
+artifacts are loadable for enumerated generated-only uses, two Tesseract
+artifacts remain blocked, and the network allowlist is empty.
 
 Planning authority: `D-P3.5-PLAN-AUTH`.
+
+Implementation authority:
+[P3.5 generated-only start authorization](p3-5-start-authorization.md).
 
 Accepted dependency: P3.4 under `D-P3.4-ACCEPTANCE` for package digest
 `11CCD757E2308F56EE5912B70861B8A977DBD8B7CEE8DBD434265A28988EF8AF`.
@@ -436,7 +439,8 @@ Hard non-numeric gates are:
 
 ## Work Packages
 
-The plan proposes the following sequence after a separate `D-P3.5-START`:
+The plan defines the following sequence. Final `D-P3.5-START` authorizes only
+the exact subset enumerated after this list:
 
 1. `P35-W1` contracts, generated token policy, and prohibited-input guardrails;
 2. `P35-W2` exact source/artifact/font review and quarantine manifests;
@@ -449,8 +453,12 @@ The plan proposes the following sequence after a separate `D-P3.5-START`:
 9. `P35-W9` aggregate evidence, security, resource, packaging, and rollback;
 10. `P35-W10` clean-source validation and independent final owner acceptance.
 
-No work package may start merely because the plan exists. Exact authorized
-work and artifact permissions must be stated in `D-P3.5-START`.
+No work package may start merely because the plan exists. The effective start
+record authorizes `P35-W1`, `P35-W3`, the generated-ground-truth-only portion of
+`P35-W4`, exact Paddle/generated-evaluation portions of `P35-W5` and `P35-W6`,
+`P35-W7`, and the zero-retention evidence/security/documentation portion of
+`P35-W8`. `P35-W2`, model training, `PLATE-D0`, Tesseract execution, and all
+unlisted work remain blocked.
 
 ## Risks And Controls
 
@@ -482,10 +490,13 @@ The first four technical decisions do not start implementation. `continue`,
 planning approval, or acceptance of another phase cannot substitute for the
 explicit `D-P3.5-START` decision.
 
-The owner supplied `D-P3.5-START` before the four technical decisions and exact
-artifact review. That statement is preserved as intent, not implementation
-authority, because it cannot bind artifacts and network actions that have not
-yet been disclosed. See [P3.5 start intent](p3-5-start-intent.md).
+The owner first supplied `D-P3.5-START` before the four technical decisions and
+exact artifact review. That statement is preserved as historical intent because
+it could not bind undisclosed artifacts or network actions. After the complete
+evidence package was presented, the owner supplied final `D-P3.5-START` against
+digest `915F5E9246A7A656DF528DD54DA6018D7489C6875BF3A77D1A551BAD6EF9AF4D`.
+See [P3.5 start intent](p3-5-start-intent.md) and
+[P3.5 generated-only start authorization](p3-5-start-authorization.md).
 
 Metadata-only proposal R0 now identifies eight recommended artifact slots and
 current runtime gaps. It performs no acquisition and does not resolve SHA-256,

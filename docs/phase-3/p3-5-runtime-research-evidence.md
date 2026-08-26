@@ -4,7 +4,7 @@ Evidence ID: `P3.5-RUNTIME-RESEARCH-EVIDENCE-R1`
 
 Decision: `D-P3.5-RUNTIME-RESEARCH`
 
-Status: `complete_pass_final_owner_review_pending`
+Status: `complete_pass_owner_accepted_and_start_bound`
 
 This record closes the restricted, non-runtime dependency research authorized
 after acceptance of `P3.5-EXACT-ARTIFACT-REVIEW-R1`. It does not authorize
@@ -90,9 +90,14 @@ incomplete resolver tree may remain under
 `B:\hcam-scan-temp\phase-3\p3-5-runtime`; it is not evidence, is not trusted,
 and must not be used. The validated evidence root is the local `E:` path above.
 
-## Remaining Manual Gate
+## Gate Resolution
 
-The sole P3.5 manual gate is final digest-bound `D-P3.5-START`. Owner review
-must explicitly accept this runtime evidence and enumerate any implementation
-artifacts and network actions. Until then, the existing early start statement
-remains non-effective with empty allowlists.
+On 2026-08-26, `mayank-admin` supplied final digest-bound `D-P3.5-START` after
+review of this evidence. The effective start binds package digest
+`915F5E9246A7A656DF528DD54DA6018D7489C6875BF3A77D1A551BAD6EF9AF4D`,
+enumerates five loadable artifacts, leaves two Tesseract artifacts blocked, and
+permits zero network actions. See
+[P3.5 generated-only start authorization](p3-5-start-authorization.md).
+
+This later authorization does not alter the evidence captured here or widen the
+research that produced it.

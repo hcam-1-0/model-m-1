@@ -86,6 +86,12 @@ P3_5_RUNTIME_PROPOSAL_SHA256 = (
 P3_5_RUNTIME_SBOM_SHA256 = (
     "07EE71F79BBD1368F620B7D915E4BF753E23DCC76696862C5E4ADB3CB23ED6DE"
 )
+P3_5_RUNTIME_EVIDENCE_PACKAGE_DIGEST = (
+    "915F5E9246A7A656DF528DD54DA6018D7489C6875BF3A77D1A551BAD6EF9AF4D"
+)
+P3_5_RUNTIME_EVIDENCE_REPOSITORY_HEAD = (
+    "1edfd0a13208d9b359cc5e563bbc406bba214e26"
+)
 
 PACKAGE_FILES = (
     ".github/workflows/python-ci.yml",
@@ -126,6 +132,7 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-runtime-review-proposal.md",
     "docs/phase-3/p3-5-runtime-research-authorization.md",
     "docs/phase-3/p3-5-runtime-research-evidence.md",
+    "docs/phase-3/p3-5-start-authorization.md",
     "docs/phase-3/p3-5-start-intent.md",
     "tests/test_phase35_readiness.py",
     "tests/test_phase35_artifact_research.py",
@@ -577,17 +584,18 @@ def check_owner_gates() -> Check:
         )
         or runtime_research.get("decision_id") != "D-P3.5-RUNTIME-RESEARCH"
         or runtime_research.get("status")
-        != "owner_approved_restricted_evidence_complete"
+        != "owner_accepted_restricted_evidence_complete"
         or start.get("decision_id") != "D-P3.5-START"
-        or start.get("status") != "received_prerequisites_pending"
+        or start.get("status") != "owner_authorized_generated_only_staged"
+        or start.get("selected_option") != "A"
         or start.get("owner_statement_received") != "D-P3.5-START"
-        or start.get("effective") is not False
+        or start.get("effective") is not True
         or record.get("status")
-        != "runtime_research_evidence_complete_final_start_pending"
+        != "implementation_authorized_generated_only_staged"
         or record.get("scope")
-        != "phase3.p3_5.synthetic_anpr.pre_implementation_research"
-        or record.get("manual_gate_count") != 1
-        or record.get("owner_decisions_completed") != 4
+        != "phase3.p3_5.synthetic_anpr.generated_only_local_implementation"
+        or record.get("manual_gate_count") != 0
+        or record.get("owner_decisions_completed") != 5
         or record.get("owner_decisions_record") != "p3-5-owner-decisions.json"
         or record.get("artifact_research_authorization_record")
         != "p3-5-artifact-research-authorization.json"
@@ -604,7 +612,7 @@ def check_owner_gates() -> Check:
         != "p3-5-runtime-license-review.json"
         or record.get("runtime_review_proposal_record")
         != "p3-5-runtime-review-proposal.json"
-        or record.get("implementation_authorized") is not False
+        or record.get("implementation_authorized") is not True
     ):
         return Check(
             "owner_decisions",
@@ -613,8 +621,8 @@ def check_owner_gates() -> Check:
         )
     return Check(
         "owner_decisions",
-        MANUAL,
-        "Artifact evidence is accepted and runtime research evidence is complete; final digest-bound start remains manual.",
+        PASS,
+        "Artifact and runtime evidence are accepted and D-P3.5-START authorizes only the staged generated-only implementation boundary.",
         ("D-P3.5-START",),
     )
 
@@ -673,14 +681,16 @@ def check_owner_decisions_record() -> Check:
     )
 
 
-def check_start_intent() -> Check:
+def check_start_authorization() -> Check:
     try:
         record = _json(START_AUTHORIZATION_PATH)
     except (OSError, ValueError, json.JSONDecodeError) as exc:
-        return Check("start_intent", FAIL, str(exc))
+        return Check("start_authorization", FAIL, str(exc))
     prerequisites = record.get("prerequisites")
     if not isinstance(prerequisites, list):
-        return Check("start_intent", FAIL, "P3.5 start prerequisites must be a list.")
+        return Check(
+            "start_authorization", FAIL, "P3.5 start prerequisites must be a list."
+        )
     prerequisite_statuses = tuple(
         str(item.get("status"))
         for item in prerequisites
@@ -691,16 +701,128 @@ def check_start_intent() -> Check:
         if prerequisites and isinstance(prerequisites[-1], dict)
         else {}
     )
+    artifacts = record.get("allowed_artifacts")
+    artifact_records = (
+        {
+            str(item.get("artifact_id")): item
+            for item in artifacts
+            if isinstance(item, dict)
+        }
+        if isinstance(artifacts, list)
+        else {}
+    )
+    paddle_actions = [
+        "safe_extract_in_external_local_quarantine",
+        "load_for_generated_only_local_inference",
+    ]
+    font_actions = ["load_for_deterministic_generated_rendering"]
+    expected_artifacts = {
+        "OCR-L0-PPOCRV6-SMALL-INFER-PROPOSED": ("OCR-L0", paddle_actions),
+        "OCR-L1-PPOCRV6-MEDIUM-INFER-PROPOSED": ("OCR-L1", paddle_actions),
+        "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED": ("OCR-D0", paddle_actions),
+        "FONT-G0-NOTO-SANS-GUJARATI-VARIABLE-PROPOSED": ("FONT-G0", font_actions),
+        "FONT-D0-NOTO-SANS-DEVANAGARI-VARIABLE-PROPOSED": ("FONT-D0", font_actions),
+    }
+    blocked_artifacts = record.get("blocked_reviewed_artifacts")
+    blocked_records = (
+        {
+            str(item.get("artifact_id")): item
+            for item in blocked_artifacts
+            if isinstance(item, dict)
+        }
+        if isinstance(blocked_artifacts, list)
+        else {}
+    )
+    allowed_runtime = record.get("allowed_runtime")
+    expected_work_packages = {
+        "P35-W1_contracts_token_policy_and_prohibited_input_guardrails",
+        "P35-W3_deterministic_non_issuable_generator_and_sealed_splits",
+        "P35-W4_plate_localization_contract_and_generated_ground_truth_crop_path_only",
+        "P35-W5_exact_Latin_Paddle_OCR_adapters_and_generated_evaluation",
+        "P35-W6_exact_Devanagari_Paddle_OCR_lane_and_Gujarati_font_rendering_only",
+        "P35-W7_normalization_confidence_abstention_and_bounded_consensus",
+        "P35-W8_zero_retention_aggregate_evidence_security_and_documentation",
+    }
+    required_prohibitions = {
+        "unlisted_model_weight_font_dataset_dictionary_or_source_artifact_use",
+        "any_artifact_or_dependency_network_download",
+        "repository_dependency_lockfile_or_container_change",
+        "application_migration_public_api_background_worker_or_persistent_plate_storage_change",
+        "model_training_finetuning_or_PLATE-D0_checkpoint_creation",
+        "OCR-G0_or_OCR-G1_Tesseract_loading_or_execution",
+        "arbitrary_file_URL_upload_or_external_text_input",
+        "physical_camera_onvif_media_or_sentinel_stream_access",
+        "real_public_private_government_police_or_scraped_plate_media",
+        "real_registration_mark_owner_vehicle_or_government_record_processing",
+        "identity_biometric_reidentification_or_cross_camera_linkage",
+        "watchlist_matching_operational_alerting_autonomous_action_or_enforcement",
+        "pilot_production_or_statewide_deployment",
+        "remote_git_push_pull_request_or_merge",
+        "p3_6_or_later_work",
+    }
+    expected_runtime_actions = [
+        "install_from_exact_local_wheelhouse",
+        "import_exact_reviewed_packages",
+        "execute_exact_paddle_artifacts_on_generated_inputs_only",
+    ]
+    expected_blocked = {
+        "OCR-G0-TESSDATA-FAST-GUJ-PROPOSED": "OCR-G0",
+        "OCR-G1-TESSDATA-BEST-GUJ-PROPOSED": "OCR-G1",
+    }
     if (
         record.get("contract_format")
         != "hcam.phase3.p3_5.start-authorization.v1"
         or record.get("decision_id") != "D-P3.5-START"
         or record.get("owner_statement_received") != "D-P3.5-START"
-        or record.get("status") != "received_prerequisites_pending"
-        or record.get("effective") is not False
-        or record.get("implementation_authorized") is not False
-        or record.get("allowed_artifacts") != []
+        or record.get("status") != "owner_authorized_generated_only_staged"
+        or record.get("scope")
+        != "phase3.p3_5.synthetic_anpr.generated_only_local_implementation"
+        or record.get("requested_option")
+        != "staged_generated_only_start_after_exact_artifact_review"
+        or record.get("authorized_by") != "mayank-admin"
+        or not record.get("authorized_at")
+        or record.get("effective") is not True
+        or record.get("implementation_authorized") is not True
+        or record.get("evidence_package_digest")
+        != P3_5_RUNTIME_EVIDENCE_PACKAGE_DIGEST
+        or record.get("evidence_repository_head")
+        != P3_5_RUNTIME_EVIDENCE_REPOSITORY_HEAD
         or record.get("allowed_network_actions") != []
+        or set(artifact_records) != set(expected_artifacts)
+        or any(
+            artifact_records[artifact_id].get("candidate_id") != candidate_id
+            or artifact_records[artifact_id].get("sha256")
+            != REVIEWED_ARTIFACT_SHA256[artifact_id]
+            or artifact_records[artifact_id].get("allowed_actions") != actions
+            for artifact_id, (candidate_id, actions) in expected_artifacts.items()
+        )
+        or set(blocked_records) != set(expected_blocked)
+        or any(
+            blocked_records[artifact_id].get("candidate_id") != candidate_id
+            or blocked_records[artifact_id].get("sha256")
+            != REVIEWED_ARTIFACT_SHA256[artifact_id]
+            or blocked_records[artifact_id].get("reason")
+            != "exact_Tesseract_5_engine_and_native_SBOM_unresolved"
+            for artifact_id, candidate_id in expected_blocked.items()
+        )
+        or not isinstance(allowed_runtime, dict)
+        or allowed_runtime.get("python_version") != "3.12.13"
+        or allowed_runtime.get("external_runtime_root")
+        != "E:\\h-cam-research-cache\\phase-3\\p3-5-runtime"
+        or allowed_runtime.get("runtime_sbom_sha256") != P3_5_RUNTIME_SBOM_SHA256
+        or allowed_runtime.get("network_access") is not False
+        or allowed_runtime.get("repository_dependency_or_lockfile_change") is not False
+        or allowed_runtime.get("tesseract_runtime_authorized") is not False
+        or allowed_runtime.get("permitted_actions") != expected_runtime_actions
+        or allowed_runtime.get("direct_packages")
+        != [
+            "paddleocr==3.7.0",
+            "paddlepaddle==3.3.1",
+            "pillow==12.3.0",
+            "regex==2026.7.19",
+        ]
+        or set(record.get("allowed_work_packages", [])) != expected_work_packages
+        or set(record.get("prohibited_actions", [])) != required_prohibitions
         or prerequisite_statuses
         != (
             "owner_approved",
@@ -708,7 +830,7 @@ def check_start_intent() -> Check:
             "owner_approved",
             "owner_approved",
             "owner_accepted",
-            "evidence_complete_owner_review_pending",
+            "owner_accepted",
         )
         or runtime_prerequisite.get("evidence_record")
         != "p3-5-runtime-research-evidence.json"
@@ -718,14 +840,15 @@ def check_start_intent() -> Check:
         != "p3-5-runtime-license-review.json"
     ):
         return Check(
-            "start_intent",
+            "start_authorization",
             FAIL,
-            "The early D-P3.5-START statement was widened or made effective before its prerequisites.",
+            "D-P3.5-START is unbound, widened, network-enabled, or missing a prerequisite or continuing block.",
         )
     return Check(
-        "start_intent",
+        "start_authorization",
         PASS,
-        "The exact D-P3.5-START statement is preserved as non-effective intent with no artifact or network authority.",
+        "D-P3.5-START is digest-bound to five loadable artifacts, two blocked Tesseract artifacts, the exact external runtime, and zero network actions.",
+        ("D-P3.5-START",),
     )
 
 
@@ -1528,6 +1651,7 @@ def check_documentation_sync() -> Check:
             "[P3.5 owner decisions](p3-5-owner-decisions.md)",
             "[P3.5 plan](p3-5-plan.md)",
             "[P3.5 owner decision packet](p3-5-decision-packet.md)",
+            "[P3.5 generated-only start authorization](p3-5-start-authorization.md)",
             "[P3.5 start intent](p3-5-start-intent.md)",
             "[P3.5 runtime review proposal](p3-5-runtime-review-proposal.md)",
             "[P3.5 runtime research authorization](p3-5-runtime-research-authorization.md)",
@@ -1538,6 +1662,7 @@ def check_documentation_sync() -> Check:
             "DR-0037",
             "DR-0039",
             "DR-0040",
+            "DR-0041",
             "D-P3.5-PLAN-AUTH",
             "D-P3.5-ARTIFACT-RESEARCH",
             "D-P3.5-START",
@@ -1546,6 +1671,7 @@ def check_documentation_sync() -> Check:
             "D-P3.4-ACCEPTANCE",
             "D-P3.5-PLAN-AUTH",
             "guarded import evidence are complete",
+            "implementation_authorized_generated_only_staged",
         ),
         "docs/phase-3/p3-5-runtime-research-evidence.md": (
             "P3.5-RUNTIME-RESEARCH-EVIDENCE-R1",
@@ -1554,6 +1680,14 @@ def check_documentation_sync() -> Check:
             "NetworkX 3.6.1 contains six packaged",
             "D-P3.5-START",
             "RaiDrive",
+        ),
+        "docs/phase-3/p3-5-start-authorization.md": (
+            "915F5E9246A7A656DF528DD54DA6018D7489C6875BF3A77D1A551BAD6EF9AF4D",
+            "five exact reviewed artifacts",
+            "No artifact download is authorized",
+            "Runtime network access is denied",
+            "OCR-G0",
+            "OCR-G1",
         ),
         ".github/workflows/python-ci.yml": (
             "python tools/phase35_readiness.py --strict",
@@ -1627,7 +1761,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_runtime_research_evidence(),
         check_runtime_sbom(),
         check_runtime_license_review(),
-        check_start_intent(),
+        check_start_authorization(),
         check_documentation_sync(),
     ]
     if require_clean_source:
@@ -1640,11 +1774,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         if check.status == MANUAL
     )
     status = (
-        "invalid"
-        if failures
-        else "runtime_research_evidence_complete_final_start_pending"
-        if manual_gates
-        else "implementation_authorized_generated_only"
+        "invalid" if failures else "implementation_authorized_generated_only_staged"
     )
     try:
         digest, _ = package_digest()
@@ -1652,7 +1782,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         digest = "UNAVAILABLE"
     return Report(
         status=status,
-        scope="phase3.p3_5.synthetic_anpr.pre_implementation_research",
+        scope="phase3.p3_5.synthetic_anpr.generated_only_local_implementation",
         package_digest=digest,
         package_file_count=len(PACKAGE_FILES),
         failures=failures,

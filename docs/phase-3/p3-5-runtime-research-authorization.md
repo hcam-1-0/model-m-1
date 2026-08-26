@@ -21,7 +21,10 @@ Defender results, and import-only proof with socket access denied.
 The authorization does not permit source builds, the Tesseract engine, model,
 font or traineddata loading, OCR constructors, generation, training, inference,
 cameras/media, real/private/Government data, implementation, deployment, or
-remote Git actions. Final `D-P3.5-START` remains a separate owner decision.
+remote Git actions. At this research-authorization checkpoint, final
+`D-P3.5-START` remained a separate owner decision; its later restricted scope
+is recorded in
+[P3.5 generated-only start authorization](p3-5-start-authorization.md).
 
 Canonical record:
 [`p3-5-runtime-research-authorization.json`](../../contracts/phase-3/p3-5-runtime-research-authorization.json).

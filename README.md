@@ -17,8 +17,9 @@ P3.5 synthetic-ANPR planning is authorized under `D-P3.5-PLAN-AUTH`. The exact
 authorized exactly seven quarantine downloads. Their evidence packet is owner
 accepted. `D-P3.5-RUNTIME-RESEARCH` authorized only isolated dependency, SBOM,
 license, vulnerability, scan, and import research outside the worktree. That
-evidence is complete; P3.5 implementation and final `D-P3.5-START` remain
-non-effective.
+evidence is complete. The owner has now confirmed `D-P3.5-START`, authorizing only the
+digest-bound, generated-only, default-off local implementation slice with five
+loadable artifacts, two blocked Tesseract artifacts, and zero network actions.
 None of these milestones adds a real CCTV media path.
 
 A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
@@ -29,7 +30,9 @@ quarantine; it authorizes no extraction, execution, or implementation.
 The [runtime research authorization](docs/phase-3/p3-5-runtime-research-authorization.md)
 separately bounds external Python dependency evidence work. Its
 [runtime evidence](docs/phase-3/p3-5-runtime-research-evidence.md) records the
-exact non-runtime closure and remaining blocks.
+exact non-runtime closure and remaining blocks. The
+[P3.5 start authorization](docs/phase-3/p3-5-start-authorization.md) records the
+exact implementation allowlist and continuing prohibitions.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
@@ -84,10 +87,10 @@ failures, and zero manual gates while preserving the immutable historical
 package binding. The PostGIS validation image remains deployment-blocked.
 
 The P3.5 planning verifier should report
-`runtime_research_evidence_complete_final_start_pending`, zero
-technical failures, and one manual gate. It verifies the approved `A/A/A/A`
+`implementation_authorized_generated_only_staged`, zero technical failures,
+and zero manual gates. It verifies the approved `A/A/A/A`
 baseline, exact artifact acceptance, completed restricted runtime evidence,
-and non-effective early start statement. The verifier
+and digest-bound generated-only start authorization. The verifier
 itself performs no download, extraction,
 synthetic generation, training, inference, media access, or product execution.
 The artifact-research command is separately gated and writes only the seven

@@ -8,16 +8,15 @@ from pathlib import Path
 from tools import phase35_readiness as readiness
 
 
-def test_p3_5_runtime_research_evidence_is_complete_with_one_manual_gate() -> None:
+def test_p3_5_generated_only_start_is_authorized_without_manual_gates() -> None:
     report = readiness.build_report()
 
     assert (
-        report.status
-        == "runtime_research_evidence_complete_final_start_pending"
+        report.status == "implementation_authorized_generated_only_staged"
     )
     assert report.failures == 0
-    assert report.manual_gates == 1
-    assert report.package_file_count == 47
+    assert report.manual_gates == 0
+    assert report.package_file_count == 48
     assert len(report.package_digest) == 64
 
 
@@ -43,17 +42,17 @@ def test_p3_5_technical_checks_pass() -> None:
         readiness.check_runtime_research_evidence(),
         readiness.check_runtime_sbom(),
         readiness.check_runtime_license_review(),
-        readiness.check_start_intent(),
+        readiness.check_start_authorization(),
         readiness.check_documentation_sync(),
     )
 
     assert all(check.status == readiness.PASS for check in checks)
 
 
-def test_p3_5_only_final_start_remains_manual() -> None:
+def test_p3_5_final_start_gate_is_owner_authorized() -> None:
     check = readiness.check_owner_gates()
 
-    assert check.status == readiness.MANUAL
+    assert check.status == readiness.PASS
     assert check.evidence == ("D-P3.5-START",)
 
 
@@ -231,31 +230,54 @@ def test_p3_5_runtime_license_metadata_is_complete_but_not_approved() -> None:
     assert readiness.check_runtime_license_review().status == readiness.PASS
 
 
-def test_p3_5_start_intent_is_non_effective_and_has_no_authority() -> None:
+def test_p3_5_start_authorization_is_exact_generated_only_and_zero_network() -> None:
     record = json.loads(
         readiness.START_AUTHORIZATION_PATH.read_text(encoding="utf-8")
     )
 
     assert record["owner_statement_received"] == "D-P3.5-START"
-    assert record["effective"] is False
-    assert record["implementation_authorized"] is False
-    assert record["allowed_artifacts"] == []
+    assert record["effective"] is True
+    assert record["implementation_authorized"] is True
+    assert len(record["allowed_artifacts"]) == 5
+    assert len(record["blocked_reviewed_artifacts"]) == 2
     assert record["allowed_network_actions"] == []
-    assert readiness.check_start_intent().status == readiness.PASS
+    assert record["allowed_runtime"]["network_access"] is False
+    assert record["allowed_runtime"]["tesseract_runtime_authorized"] is False
+    assert readiness.check_start_authorization().status == readiness.PASS
 
 
-def test_p3_5_start_intent_rejects_premature_authority(monkeypatch) -> None:
+def test_p3_5_start_authorization_rejects_network_widening(monkeypatch) -> None:
     original_json = readiness._json
 
     def load(path: Path) -> dict[str, object]:
         record = original_json(path)
         if path == readiness.START_AUTHORIZATION_PATH:
-            record["implementation_authorized"] = True
+            record["allowed_network_actions"] = ["download_model"]
         return record
 
     monkeypatch.setattr(readiness, "_json", load)
 
-    assert readiness.check_start_intent().status == readiness.FAIL
+    assert readiness.check_start_authorization().status == readiness.FAIL
+
+
+def test_p3_5_start_authorization_rejects_artifact_action_widening(
+    monkeypatch,
+) -> None:
+    original_json = readiness._json
+
+    def load(path: Path) -> dict[str, object]:
+        record = original_json(path)
+        if path == readiness.START_AUTHORIZATION_PATH:
+            artifacts = record["allowed_artifacts"]
+            assert isinstance(artifacts, list)
+            first = artifacts[0]
+            assert isinstance(first, dict)
+            first["allowed_actions"] = ["load_for_arbitrary_input_inference"]
+        return record
+
+    monkeypatch.setattr(readiness, "_json", load)
+
+    assert readiness.check_start_authorization().status == readiness.FAIL
 
 
 def test_p3_5_artifact_proposal_has_no_download_or_runtime_authority() -> None:
@@ -286,11 +308,11 @@ def test_p3_5_artifact_proposal_rejects_premature_hash(monkeypatch) -> None:
     assert readiness.check_artifact_proposal().status == readiness.FAIL
 
 
-def test_p3_5_require_decisions_exits_two_without_implementation_authority() -> None:
+def test_p3_5_require_decisions_accepts_completed_start_authorization() -> None:
     with redirect_stdout(io.StringIO()):
         exit_code = readiness.main(["--json", "--strict", "--require-decisions"])
 
-    assert exit_code == 2
+    assert exit_code == 0
 
 
 def test_p3_5_planning_authorization_rejects_implementation_flag(monkeypatch) -> None:

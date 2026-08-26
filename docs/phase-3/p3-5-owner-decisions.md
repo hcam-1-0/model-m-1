@@ -14,9 +14,11 @@ P3.5 technical decisions:
 
 The canonical record is
 [`p3-5-owner-decisions.json`](../../contracts/phase-3/p3-5-owner-decisions.json).
-These choices freeze the recommended technical baseline. They do not authorize
-runtime implementation, model execution, synthetic generation, dependency
-changes, camera/media access, real registration marks, deployment, or remote
-Git operations.
+These choices froze the recommended technical baseline but did not by
+themselves authorize implementation. The separate digest-bound
+`D-P3.5-START` gate was subsequently completed after exact artifact and runtime
+review. Its authority is limited to the generated-only scope documented in
+[P3.5 generated-only start authorization](p3-5-start-authorization.md).
 
-`D-P3.5-START` remains a separate digest-bound implementation gate.
+Camera/media access, real registration marks, training, deployment, P3.6, and
+remote Git operations remain prohibited.

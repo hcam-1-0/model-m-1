@@ -142,19 +142,19 @@ zero. P3.2 remains blocked and requires separate artifact and dataset approval.
   vulnerability audit, Defender scan, and guarded imports are recorded.
 - [ ] Tesseract 5 and its native dependency closure are reviewed before any
   `OCR-G0` or `OCR-G1` execution authority.
-- [ ] Exact runtime evidence is owner reviewed as part of final start approval.
-- [x] The exact early `D-P3.5-START` statement is preserved as non-effective
-  intent with empty artifact and network allowlists.
-- [ ] `D-P3.5-START` is confirmed against the exact reviewed packet and
-  separately authorizes bounded implementation.
+- [x] Exact runtime evidence is owner reviewed as part of final start approval.
+- [x] The historical early `D-P3.5-START` statement remains preserved as
+  non-effective intent at the time it was received.
+- [x] Final `D-P3.5-START` is confirmed against digest
+  `915F5E9246A7A656DF528DD54DA6018D7489C6875BF3A77D1A551BAD6EF9AF4D`
+  and separately authorizes the exact bounded implementation allowlist.
 
 Current P3.5 status:
-`runtime_research_evidence_complete_final_start_pending`.
-Artifact review is accepted and restricted runtime research evidence is
-complete. Early start
-intent grants no extraction,
-runtime loading, dependency, dataset, generation, training, inference, product
-code, media, real-plate, storage, operational, or deployment authority.
+`implementation_authorized_generated_only_staged`.
+Artifact and runtime evidence are accepted. Five exact artifacts and the exact
+external runtime may be used for generated-only local work with zero network
+actions. Tesseract OCR, training, cameras/media, real data, persistent plate
+text, operational behavior, deployment, and P3.6 remain unauthorized.
 
 ## Tier A Implementation Acceptance
 

@@ -96,11 +96,11 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   wheels, and 185 native files, with every component runtime unauthorized.
 - `p3-5-runtime-license-review.json`: normalized metadata for all 67 package
   licenses and review flags; it grants no legal or redistribution approval.
-- `p3-5-entry-gates.json`: four approved technical choices, completed runtime
-  research evidence, and the remaining final `D-P3.5-START` gate.
-- `p3-5-start-authorization.json`: the exact received start intent, four
-  satisfied technical and artifact prerequisites, completed runtime evidence,
-  empty implementation allowlists, and continuing prohibitions.
+- `p3-5-entry-gates.json`: four approved technical choices, accepted artifact
+  and runtime evidence, and the completed final `D-P3.5-START` gate.
+- `p3-5-start-authorization.json`: the effective digest-bound generated-only
+  start, five exact loadable artifacts, two reviewed-but-blocked Tesseract
+  artifacts, an empty network allowlist, and continuing prohibitions.
 
 Verify all tracked snapshots:
 
@@ -140,8 +140,9 @@ accepted under `D-P3.4-ACCEPTANCE`. The PostGIS validation image remains
 deployment-blocked.
 These contracts do not authorize camera access, raw-media persistence, external
 datasets, identity, cross-camera association, Government matching, alerts,
-or deployment. P3.5 technical choices and the exact artifact evidence are owner
-accepted. `D-P3.5-RUNTIME-RESEARCH` authorizes only the documented external
-dependency research; it does not authorize model or product runtime behavior.
-Receipt of `D-P3.5-START` before final runtime review does not authorize
-implementation, media, or deployment action.
+or deployment. P3.5 technical choices, exact artifact evidence, and restricted
+runtime evidence are owner accepted. The final digest-bound `D-P3.5-START`
+authorizes only the enumerated local generated-only work packages, five exact
+artifacts, and reviewed external runtime with zero network access. Cameras,
+media, real/private/Government data, training, Tesseract execution, deployment,
+P3.6, and remote Git operations remain prohibited.
