@@ -100,6 +100,7 @@ uv run --locked --extra dev --extra analytics python tools/phase34_c10_evidence.
 uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.py check
 uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance
 uv run --locked --extra dev python tools/phase35_readiness.py --strict
+uv run --locked python tools/phase35_artifact_research.py --all
 ```
 
 Rewriting snapshots requires an explicit review acknowledgement:

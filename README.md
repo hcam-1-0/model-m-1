@@ -59,6 +59,7 @@ uv run --locked --extra dev --extra analytics python tools/phase34_c10_evidence.
 uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.py check
 uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance --json
 uv run --locked --extra dev python tools/phase35_readiness.py --strict --json
+uv run --locked python tools/phase35_artifact_research.py --all
 ```
 
 The P3.3 readiness command should report `accepted` with zero technical
@@ -79,6 +80,8 @@ technical failures, and one manual gate. It verifies the approved `A/A/A/A`
 baseline, exact seven-artifact quarantine authority, and non-effective early
 start statement. The verifier itself performs no download, extraction,
 synthetic generation, training, inference, media access, or product execution.
+The artifact-research command is separately gated and writes only the seven
+authorized files and receipts to the external local quarantine.
 
 ## Phase 2 camera and video ingestion
 

@@ -71,6 +71,8 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-research-record.md",
     "docs/phase-3/p3-5-start-intent.md",
     "tests/test_phase35_readiness.py",
+    "tests/test_phase35_artifact_research.py",
+    "tools/phase35_artifact_research.py",
     "tools/phase35_readiness.py",
 )
 
@@ -794,7 +796,11 @@ def check_artifact_research_authorization() -> Check:
 
 def check_documentation_sync() -> Check:
     required = {
-        "README.md": ("P3.5", "tools/phase35_readiness.py"),
+        "README.md": (
+            "P3.5",
+            "tools/phase35_artifact_research.py",
+            "tools/phase35_readiness.py",
+        ),
         "contracts/phase-3/README.md": (
             "p3-5-artifact-review-proposal.json",
             "p3-5-artifact-research-authorization.json",

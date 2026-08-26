@@ -26,3 +26,13 @@ Tesseract language-data files, and two Noto variable fonts. The internal
 This authority ends at exact artifact research. It does not make the earlier
 `D-P3.5-START` statement effective. A completed artifact review packet must be
 presented and explicitly accepted before implementation can begin.
+
+The authorization-aware acquisition command is:
+
+```powershell
+uv run --locked python tools/phase35_artifact_research.py --all
+```
+
+The command revalidates the proposal digest and exact allowlist before each
+transfer, fails closed on metadata drift, computes SHA-256 and Git blob
+identities where applicable, and writes one receipt per artifact.
