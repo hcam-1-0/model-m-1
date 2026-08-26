@@ -115,7 +115,7 @@ uv run --locked --extra dev --extra analytics python tools/phase34_implementatio
 uv run --locked --extra dev python tools/phase35_readiness.py --strict
 uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
-uv run --locked --extra dev python tools/phase35_runtime_research.py --root 'B:\hcam-research-quarantine\phase-3\p3-5-runtime'
+uv run --locked --extra dev python tools/phase35_runtime_research.py all --root 'B:\hcam-scan-temp\phase-3\p3-5-runtime'
 ```
 
 Rewriting snapshots requires an explicit review acknowledgement:

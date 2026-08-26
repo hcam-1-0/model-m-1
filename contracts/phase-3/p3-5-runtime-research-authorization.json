@@ -38,7 +38,7 @@
     "binary_wheels_only": true,
     "cumulative_package_bytes": 4294967296,
     "environment_proxies": false,
-    "external_quarantine_root": "B:\\hcam-research-quarantine\\phase-3\\p3-5-runtime",
+    "external_quarantine_root": "B:\\hcam-scan-temp\\phase-3\\p3-5-runtime",
     "import_network_access": false,
     "model_font_media_or_traineddata_loading": false,
     "package_source_builds": false,
@@ -77,6 +77,18 @@
   "proposal_record": "p3-5-runtime-review-proposal.json",
   "proposal_sha256": "3788950DFA0477DE59B1B135AA1AACDA7584A368C1219B3266F0265E6174A5F1",
   "scope": "phase3.p3_5.isolated_non_runtime_dependency_research",
+  "storage_observations": [
+    {
+      "attempted_root": "B:\\hcam-research-quarantine\\phase-3\\p3-5-runtime",
+      "network_or_package_action_performed": false,
+      "outcome": "stopped_before_download",
+      "reason": "provider_denied_new_top_level_directory_creation"
+    },
+    {
+      "selected_root": "B:\\hcam-scan-temp\\phase-3\\p3-5-runtime",
+      "reason": "existing_empty_H-CAM_research_parent_with_full_control"
+    }
+  ],
   "status": "owner_approved_restricted",
   "tesseract_runtime_authorized": false
 }

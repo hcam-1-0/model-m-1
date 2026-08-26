@@ -9,7 +9,9 @@ required binary-wheel transitive closure may be resolved from the official
 PyPI hosts.
 
 The external root is
-`B:\hcam-research-quarantine\phase-3\p3-5-runtime`. Repository dependency and
+`B:\hcam-scan-temp\phase-3\p3-5-runtime`. The initial new top-level `B:` path
+was denied before any package action, so research moved under the existing
+empty H-CAM scan directory without changing scope. Repository dependency and
 lock files must remain unchanged. The research may produce exact package and
 native inventories, license evidence, a CycloneDX SBOM, vulnerability and
 Defender results, and import-only proof with socket access denied.

@@ -474,6 +474,11 @@ imports must deny socket access. Reviewed OCR artifacts, Tesseract, constructors
 generation, training, inference, media/data, implementation, and deployment
 remain prohibited.
 
+The initial `B:\hcam-research-quarantine` top-level creation was denied before
+any package or network action. The external root was operationally amended to
+`B:\hcam-scan-temp\phase-3\p3-5-runtime`, under an existing empty H-CAM
+research directory with full control; no authority was widened.
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;
