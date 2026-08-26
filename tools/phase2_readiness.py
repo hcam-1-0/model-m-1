@@ -645,7 +645,7 @@ def build_report(run_validation: bool) -> dict[str, object]:
                 "verify-run",
                 "uv_lock_sha256",
                 "uv sync --locked",
-                "astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+                "astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
                 "--output",
                 "_GITHUB_API_VERSION",
                 "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",

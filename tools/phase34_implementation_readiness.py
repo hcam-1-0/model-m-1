@@ -419,6 +419,7 @@ def check_validation_evidence() -> Check:
     results = document.get("results")
     required_passes = {
         "archive_boundary",
+        "bandit",
         "build_and_isolated_install",
         "compile",
         "contract_checks",
@@ -427,6 +428,7 @@ def check_validation_evidence() -> Check:
         "full_suite",
         "generated_c10",
         "postgresql_postgis",
+        "production_secret_scan",
         "ruff",
         "sqlite_migration",
     }
@@ -462,7 +464,7 @@ def check_validation_evidence() -> Check:
     return Check(
         "validation_evidence",
         PASS,
-        "Compilation, lint, tests, migrations, packaging, audit, Docker, and boundary scans pass.",
+        "Compilation, lint, tests, migrations, packaging, dependency/security audits, Docker, and boundary scans pass.",
     )
 
 

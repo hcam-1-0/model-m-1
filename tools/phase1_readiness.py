@@ -17,6 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PHASE1 = ROOT / "docs" / "phase-1"
+VALIDATION_COMMAND_TIMEOUT_SECONDS = 600
 PASS = "pass"
 FAIL = "fail"
 MANUAL = "manual"
@@ -485,7 +486,7 @@ def check_build_quality_contracts() -> CheckResult:
             "contracts/phase-2/openapi.json",
             "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
             "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
-            "astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+            "astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
             "include uv.lock",
             "recursive-include .github *.md *.yml",
             "recursive-include fixtures *.md .gitignore",
@@ -518,16 +519,19 @@ def check_build_quality_contracts() -> CheckResult:
 
 
 def _run(command: list[str], *, env: dict[str, str] | None = None) -> tuple[str, str | None]:
-    completed = subprocess.run(
-        command,
-        cwd=ROOT,
-        env=env,
-        text=True,
-        capture_output=True,
-        timeout=180,
-        check=False,
-    )
     rendered = " ".join(command)
+    try:
+        completed = subprocess.run(
+            command,
+            cwd=ROOT,
+            env=env,
+            text=True,
+            capture_output=True,
+            timeout=VALIDATION_COMMAND_TIMEOUT_SECONDS,
+            check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return rendered, f"{rendered}: {exc}"
     evidence = f"{rendered} -> exit {completed.returncode}"
     if completed.returncode == 0:
         return evidence, None

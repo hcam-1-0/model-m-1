@@ -8,9 +8,9 @@ Scope: `phase3.p3_4.generated_only_geometry_and_event_primitives`.
 
 ## Validation Summary
 
-- 711 tests and 119 subtests passed; 8 PostgreSQL tests were skipped in the
+- 715 tests and 119 subtests passed; 8 PostgreSQL tests were skipped in the
   general local suite because no PostgreSQL URL was set there.
-- Total repository branch coverage is 90.22%.
+- Total repository branch coverage is 90.24%.
 - Evaluator branch coverage is 94.32%, above the 90% boundary gate.
 - Five C10 scenario groups have 1.0 logic agreement and 20 stable replays each.
 - SQLite and disposable PostGIS both passed `0011 -> 0010 -> 0011`, with
@@ -28,6 +28,13 @@ Scope: `phase3.p3_4.generated_only_geometry_and_event_primitives`.
 - Compilation, Ruff, dependency consistency, P3.0-P3.3 compatibility, analytics
   contract drift, release contract drift, and archive prohibited-payload scans
   pass.
+- Bandit reports zero medium-or-higher application findings and zero scanner
+  errors. The offline production-source secret profile reports zero candidates.
+  Malicious external-entity payloads are rejected by the ONVIF HTTP, legacy
+  resolver, WS-Discovery, and authenticated simulator XML paths.
+- Phase 1 strict validation now uses the same 600-second full-suite command
+  bound as Phase 2 and converts timeout/runtime exceptions into explicit checker
+  failures instead of terminating with a traceback.
 - The Python audit checked 76 packages with no known vulnerabilities.
 
 Machine-readable details are in
@@ -38,7 +45,10 @@ Machine-readable details are in
 The pinned PostGIS image scan has 54 findings, including 2 critical and 21
 high. Findings are neither suppressed nor waived. Disposable loopback generated
 validation passed, but pilot and production deployment remain blocked pending a
-cleaner image or remediation and rescan.
+cleaner image or remediation and rescan. The official Debian/Trixie alternative
+was also evaluated and was worse, with 215 findings including 4 critical and 23
+high, so the existing Alpine validation pin was retained without a deployment
+waiver.
 
 ## Owner Gate
 

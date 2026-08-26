@@ -10,6 +10,7 @@ from tools.phase34_implementation_readiness import (
     check_start_authorization,
     check_structural_boundaries,
     check_supply_chain,
+    check_validation_evidence,
 )
 
 
@@ -21,6 +22,7 @@ def test_phase34_implementation_evidence_passes_technical_gates() -> None:
         check_structural_boundaries(),
         check_migration_contract(),
         check_contract_snapshots(),
+        check_validation_evidence(),
     )
     assert all(check.status != FAIL for check in checks)
 

@@ -494,17 +494,25 @@ def test_media_only_transport_failure_is_retryable(
 
 
 @pytest.mark.parametrize(
-    ("status", "payload", "reason"),
+    ("status", "payload", "max_response_bytes", "reason"),
     [
-        (302, b"", "onvif_redirect_denied"),
-        (500, b"", "onvif_http_error"),
-        (200, b"x" * 64, "onvif_response_too_large"),
-        (200, b"<broken", "onvif_invalid_response"),
+        (302, b"", 32, "onvif_redirect_denied"),
+        (500, b"", 32, "onvif_http_error"),
+        (200, b"x" * 64, 32, "onvif_response_too_large"),
+        (200, b"<broken", 32, "onvif_invalid_response"),
+        (
+            200,
+            b"<!DOCTYPE x [<!ENTITY secret SYSTEM 'file:///etc/passwd'>]>"
+            b"<x>&secret;</x>",
+            256,
+            "onvif_invalid_response",
+        ),
     ],
 )
 def test_httpx_transport_normalizes_bounded_failures(
     status: int,
     payload: bytes,
+    max_response_bytes: int,
     reason: str,
 ) -> None:
     class Handler(BaseHTTPRequestHandler):
@@ -526,7 +534,7 @@ def test_httpx_transport_normalizes_bounded_failures(
     try:
         url = f"http://127.0.0.1:{server.server_address[1]}/onvif/device_service"
         with pytest.raises(OnvifResolutionError) as captured:
-            HttpxOnvifTransport(max_response_bytes=32).request(
+            HttpxOnvifTransport(max_response_bytes=max_response_bytes).request(
                 url,
                 b"<Envelope />",
                 action="synthetic-action",

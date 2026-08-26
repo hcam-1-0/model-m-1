@@ -127,6 +127,10 @@ def test_ws_discovery_rejects_malformed_and_unsafe_matches() -> None:
         max_results=2,
     )
     assert engine._parse(b"<not-closed") == []
+    assert engine._parse(
+        b"<!DOCTYPE x [<!ENTITY secret SYSTEM 'file:///etc/passwd'>]>"
+        b"<Envelope><ProbeMatch><XAddrs>&secret;</XAddrs></ProbeMatch></Envelope>"
+    ) == []
     assert engine._parse(b"x" * (256 * 1024 + 1)) == []
     assert engine._parse(
         b"<Envelope><ProbeMatch><XAddrs>https://8.8.8.8/device</XAddrs>"

@@ -251,9 +251,9 @@ camera locators, biometric templates, Government data, and owner records.
 
 ## P3.4 Implementation Validation
 
-The generated-only geometry/event package passed 711 tests and 119 subtests
+The generated-only geometry/event package passed 715 tests and 119 subtests
 with eight PostgreSQL tests skipped in the general local suite, one pre-existing
-Starlette warning, and 90.22% total branch coverage. Focused evaluator branch
+Starlette warning, and 90.24% total branch coverage. Focused evaluator branch
 coverage is 94.32%. Five sealed C10 groups have exact logic agreement and 20
 stable replays per scenario.
 
@@ -266,10 +266,16 @@ database healthcheck now requires the permanent TCP server, and extension
 inspection runs inside Alembic's managed transaction; this closes both
 empty-volume silent-success paths reproduced during recovery.
 
-The source distribution and wheel build. A hash-locked isolated Python 3.14.6
+The source distribution and wheel both build. A hash-locked isolated Python 3.14.6
 install starts the application and CLI with Shapely 2.1.2, local GEOS 3.13.1,
 NumPy 2.5.2, and CEL 0.1.3. Archive scans found no media, model, or secret
-payloads. The Python audit checked 76 packages with no known vulnerabilities.
+payloads across 99 wheel and 473 source-distribution members. Both CI-equivalent
+Python audit profiles found no known vulnerabilities. Bandit found zero
+medium-or-higher application issues and the offline production-source secret
+profile found zero candidates. Untrusted ONVIF and WS-Discovery XML now uses
+defused parsers, with malicious external-entity regression tests. Phase 1
+strict validation now gives the full suite a 600-second command bound and
+reports timeout/runtime exceptions as checker failures.
 
 The PostGIS image scan records 54 unresolved findings, including 2 critical and
 21 high, so deployment remains blocked. These results authorize no camera,

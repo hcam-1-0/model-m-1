@@ -16,7 +16,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="H-CAM synthetic RTSP lab publisher")
     parser.add_argument("--count", type=int, default=50)
     parser.add_argument("--base-url", default="rtsp://mediamtx:8554/hcam")
-    parser.add_argument("--fixture", default="/tmp/hcam-phase2-synthetic.mp4")
+    # The publisher runs in a read-only synthetic-lab container with /tmp as tmpfs.
+    fixture_default = "/tmp/hcam-phase2-synthetic.mp4"  # nosec B108
+    parser.add_argument("--fixture", default=fixture_default)
     parser.add_argument("--ffmpeg", default="ffmpeg")
     parser.add_argument("--heartbeat-file", type=Path)
     return parser

@@ -1,9 +1,26 @@
 from __future__ import annotations
 
 import io
+import sys
 from contextlib import redirect_stdout
 
 from tools import phase1_readiness
+
+
+def test_phase1_validation_timeout_accommodates_the_full_suite(monkeypatch) -> None:
+    observed: dict[str, object] = {}
+
+    def run(command: list[str], **kwargs: object):
+        observed.update(kwargs)
+        return phase1_readiness.subprocess.CompletedProcess(command, 0, "", "")
+
+    monkeypatch.setattr(phase1_readiness.subprocess, "run", run)
+
+    _evidence, error = phase1_readiness._run([sys.executable, "-m", "pytest"])
+
+    assert error is None
+    assert observed["timeout"] == phase1_readiness.VALIDATION_COMMAND_TIMEOUT_SECONDS
+    assert phase1_readiness.VALIDATION_COMMAND_TIMEOUT_SECONDS >= 600
 
 
 def test_phase1_report_is_complete() -> None:
