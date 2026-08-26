@@ -45,3 +45,27 @@ def test_sealed_split_fixture_is_canonical_and_contains_no_token_text() -> None:
     assert document["content"]["token_commitment_persisted"] is False
     assert '"token"' not in actual
     assert "SYN-" not in actual
+
+
+def test_ground_truth_crop_fixture_is_canonical_and_pixel_free() -> None:
+    actual = phase35_contracts.GROUND_TRUTH_CROP_PATH.read_text(encoding="utf-8")
+    expected = phase35_contracts.render_contracts()[
+        phase35_contracts.GROUND_TRUTH_CROP_PATH
+    ]
+    document = json.loads(actual)
+
+    assert actual == expected
+    assert document["source_id"] == "DATA-PLATE-GEN-R0"
+    assert document["external_input_count"] == 0
+    assert document["model_execution_performed"] is False
+    assert document["weights_loaded"] is False
+    assert document["frame_pixels_persisted"] is False
+    assert document["crop_pixels_persisted"] is False
+    assert document["plate_text_persisted"] is False
+    assert document["localization"]["hypothesis_count"] == 1
+    assert document["localization"]["candidate_id"] is None
+    assert document["crop"]["pixels_ephemeral"] is True
+    assert document["crop"]["pixels_persisted"] is False
+    assert '"bgr_bytes"' not in actual
+    assert '"token"' not in actual
+    assert "SYN-" not in actual

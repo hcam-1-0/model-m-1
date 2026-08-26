@@ -200,6 +200,42 @@ def _holdout_partitions(
     return generator_profile, font_partition
 
 
+def derive_split_manifest_entry(
+    plan: SyntheticCorpusPlanV1,
+    split: AnprSplit,
+    sample_index: int,
+) -> SyntheticSplitManifestEntryV1:
+    request = derive_generated_request(plan, split, sample_index)
+    split_count = _split_count(plan, split)
+    generator_profile, font_partition = _holdout_partitions(
+        split,
+        sample_index,
+        split_count,
+    )
+    sample_spec = {
+        "font_partition": font_partition,
+        "generator_profile": generator_profile,
+        "request": request.model_dump(mode="json"),
+        "seed_namespace": f"p35w3:{split}:v1",
+        "split": split,
+    }
+    sample_spec_digest = _digest_string(
+        "hcam.anpr.p35w3.sample-spec.v1",
+        sample_spec,
+    )
+    return SyntheticSplitManifestEntryV1(
+        sample_id=f"anprsample_{sample_spec_digest[7:39]}",
+        request_id=request.request_id,
+        sample_spec_digest=sample_spec_digest,
+        split=split,
+        seed_namespace=f"p35w3:{split}:v1",
+        sample_index=sample_index,
+        layout=request.layout,
+        generator_profile=generator_profile,
+        font_partition=font_partition,
+    )
+
+
 def build_sealed_split_manifest(
     plan: SyntheticCorpusPlanV1,
     *,
@@ -215,35 +251,7 @@ def build_sealed_split_manifest(
             if ephemeral.token in observed_tokens:
                 raise AnprGenerationViolation("deterministic_token_collision")
             observed_tokens.add(ephemeral.token)
-            generator_profile, font_partition = _holdout_partitions(
-                split,
-                sample_index,
-                split_count,
-            )
-            sample_spec = {
-                "font_partition": font_partition,
-                "generator_profile": generator_profile,
-                "request": request.model_dump(mode="json"),
-                "seed_namespace": f"p35w3:{split}:v1",
-                "split": split,
-            }
-            sample_spec_digest = _digest_string(
-                "hcam.anpr.p35w3.sample-spec.v1",
-                sample_spec,
-            )
-            entries.append(
-                SyntheticSplitManifestEntryV1(
-                    sample_id=f"anprsample_{sample_spec_digest[7:39]}",
-                    request_id=request.request_id,
-                    sample_spec_digest=sample_spec_digest,
-                    split=split,
-                    seed_namespace=f"p35w3:{split}:v1",
-                    sample_index=sample_index,
-                    layout=request.layout,
-                    generator_profile=generator_profile,
-                    font_partition=font_partition,
-                )
-            )
+            entries.append(derive_split_manifest_entry(plan, split, sample_index))
 
     plan_document = plan.model_dump(mode="json")
     content = SyntheticSplitManifestContentV1(

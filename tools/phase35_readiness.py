@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import subprocess
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -100,8 +101,10 @@ PACKAGE_FILES = (
     "app/hcam/analytics/anpr/contracts.py",
     "app/hcam/analytics/anpr/generator.py",
     "app/hcam/analytics/anpr/guardrails.py",
+    "app/hcam/analytics/anpr/localization.py",
     "contracts/phase-3/README.md",
     "contracts/phase-3/fixtures/p3-5-generated-request-v1.json",
+    "contracts/phase-3/fixtures/p3-5-ground-truth-crop-v1.json",
     "contracts/phase-3/fixtures/p3-5-sealed-splits-v1.json",
     "contracts/phase-3/p3-4-acceptance.json",
     "contracts/phase-3/p3-5-artifact-review-proposal.json",
@@ -143,8 +146,10 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-start-intent.md",
     "docs/phase-3/p3-5-w1-contracts-guardrails.md",
     "docs/phase-3/p3-5-w3-generator-splits.md",
+    "docs/phase-3/p3-5-w4-ground-truth-crop.md",
     "tests/test_analytics_anpr_generator.py",
     "tests/test_analytics_anpr_guardrails.py",
+    "tests/test_analytics_anpr_localization.py",
     "tests/test_phase35_contracts.py",
     "tests/test_phase35_readiness.py",
     "tests/test_phase35_artifact_research.py",
@@ -267,7 +272,7 @@ def check_required_files() -> Check:
     return Check(
         "required_files",
         PASS,
-        f"All {len(PACKAGE_FILES)} P3.5 authorization and W1/W3 package files exist.",
+        f"All {len(PACKAGE_FILES)} P3.5 authorization and W1/W3/W4 package files exist.",
     )
 
 
@@ -539,12 +544,13 @@ def check_plan_contract() -> Check:
     )
 
 
-def check_authorized_w1_w3_package() -> Check:
+def check_authorized_w1_w3_w4_package() -> Check:
     allowed_application_files = {
         "app/hcam/analytics/anpr/__init__.py",
         "app/hcam/analytics/anpr/contracts.py",
         "app/hcam/analytics/anpr/generator.py",
         "app/hcam/analytics/anpr/guardrails.py",
+        "app/hcam/analytics/anpr/localization.py",
     }
     prohibited_prefixes = ("migrations/", "deploy/")
     prohibited_suffixes = (
@@ -570,15 +576,15 @@ def check_authorized_w1_w3_package() -> Check:
     )
     if prohibited:
         return Check(
-            "authorized_w1_w3_package",
+            "authorized_w1_w3_w4_package",
             FAIL,
-            "P3.5 W1/W3 contains an unapproved application, migration, deployment, model, or media file.",
+            "P3.5 W1/W3/W4 contains an unapproved application, migration, deployment, model, or media file.",
             prohibited,
         )
     return Check(
-        "authorized_w1_w3_package",
+        "authorized_w1_w3_w4_package",
         PASS,
-        "P3.5 application scope is limited to contracts, guardrails, deterministic token generation, and sealed splits; no rendering, OCR, runtime adapter, migration, model, or media file is present.",
+        "P3.5 application scope is limited to contracts, guardrails, deterministic token generation, sealed splits, procedural frames, ground-truth localization, and ephemeral crops; no OCR, runtime adapter, migration, model, or media file is present.",
     )
 
 
@@ -724,6 +730,116 @@ def check_w3_split_manifest() -> Check:
         "w3_split_manifest",
         PASS,
         "P3.5 W3 seals 20 token-free entries across independent namespaces with final-test-only holdouts.",
+    )
+
+
+def check_w4_ground_truth_crop() -> Check:
+    try:
+        record = _json(
+            ROOT / "contracts/phase-3/fixtures/p3-5-ground-truth-crop-v1.json"
+        )
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("w4_ground_truth_crop", FAIL, str(exc))
+    localization = record.get("localization")
+    crop = record.get("crop")
+    if not isinstance(localization, dict) or not isinstance(crop, dict):
+        return Check(
+            "w4_ground_truth_crop",
+            FAIL,
+            "W4 localization result or crop descriptor is missing.",
+        )
+    hypotheses = localization.get("hypotheses")
+    serialized = json.dumps(record, separators=(",", ":"), sort_keys=True)
+
+    def all_keys(value: object) -> set[str]:
+        if isinstance(value, dict):
+            return set(value).union(*(all_keys(item) for item in value.values()))
+        if isinstance(value, list):
+            return set().union(*(all_keys(item) for item in value))
+        return set()
+
+    prohibited_keys = {
+        "bgr_bytes",
+        "bytes",
+        "frame_bytes",
+        "image_bytes",
+        "image_path",
+        "media_url",
+        "path",
+        "plate_text",
+        "token",
+        "url",
+    }
+    digests = (
+        localization.get("source_frame_digest"),
+        crop.get("source_frame_digest"),
+        crop.get("region_digest"),
+        crop.get("crop_digest"),
+    )
+    digest_pattern = re.compile(r"^sha256:[0-9a-f]{64}$")
+    first_hypothesis = (
+        hypotheses[0]
+        if isinstance(hypotheses, list)
+        and len(hypotheses) == 1
+        and isinstance(hypotheses[0], dict)
+        else {}
+    )
+    if (
+        record.get("contract_type")
+        != "hcam.anpr.ground-truth-crop-evidence.v1"
+        or record.get("source_id") != "DATA-PLATE-GEN-R0"
+        or record.get("generated_only") is not True
+        or record.get("external_input_count") != 0
+        or record.get("model_execution_performed") is not False
+        or record.get("weights_loaded") is not False
+        or record.get("frame_pixels_persisted") is not False
+        or record.get("crop_pixels_persisted") is not False
+        or record.get("plate_text_persisted") is not False
+        or localization.get("contract_type")
+        != "hcam.anpr.plate-localization-result.v1"
+        or localization.get("source_id") != "DATA-PLATE-GEN-R0"
+        or localization.get("execution_mode") != "generated_ground_truth_only"
+        or localization.get("candidate_id") is not None
+        or localization.get("model_execution_performed") is not False
+        or localization.get("weights_loaded") is not False
+        or localization.get("hypothesis_count") != 1
+        or len(first_hypothesis) == 0
+        or first_hypothesis.get("class_id")
+        != "vehicle.registration_plate_region"
+        or first_hypothesis.get("confidence") != 1.0
+        or first_hypothesis.get("region_digest") != crop.get("region_digest")
+        or crop.get("contract_type")
+        != "hcam.anpr.ground-truth-crop-descriptor.v1"
+        or crop.get("source_id") != "DATA-PLATE-GEN-R0"
+        or crop.get("source_frame_digest")
+        != localization.get("source_frame_digest")
+        or crop.get("pixels_ephemeral") is not True
+        or crop.get("pixels_persisted") is not False
+        or crop.get("token_text_in_contract") is not False
+        or crop.get("model_execution_performed") is not False
+        or not isinstance(crop.get("width"), int)
+        or not 1 <= crop["width"] <= 512
+        or not isinstance(crop.get("height"), int)
+        or not 1 <= crop["height"] <= 128
+        or not isinstance(crop.get("transform_matrix"), list)
+        or len(crop["transform_matrix"]) != 9
+        or any(
+            not isinstance(value, str) or not digest_pattern.fullmatch(value)
+            for value in digests
+        )
+        or prohibited_keys.intersection(all_keys(record))
+        or '"token"' in serialized
+        or "SYN-" in serialized
+    ):
+        return Check(
+            "w4_ground_truth_crop",
+            FAIL,
+            "P3.5 W4 generated-only provenance, localization, crop, or zero-retention boundary changed.",
+        )
+    return Check(
+        "w4_ground_truth_crop",
+        PASS,
+        "P3.5 W4 records one model-free generated ground-truth region and an ephemeral bounded crop without pixels or plate text in evidence.",
     )
 
 
@@ -1794,6 +1910,7 @@ def check_documentation_sync() -> Check:
         ),
         "contracts/phase-3/README.md": (
             "p3-5-anpr-contracts.json",
+            "p3-5-ground-truth-crop-v1.json",
             "p3-5-sealed-splits-v1.json",
             "p3-5-artifact-review-evidence.json",
             "p3-5-artifact-review-acceptance.json",
@@ -1814,6 +1931,7 @@ def check_documentation_sync() -> Check:
         "docs/phase-3/README.md": (
             "[P3.5 W1 contracts and guardrails](p3-5-w1-contracts-guardrails.md)",
             "[P3.5 W3 deterministic generator and sealed splits](p3-5-w3-generator-splits.md)",
+            "[P3.5 W4 ground-truth localization and crop](p3-5-w4-ground-truth-crop.md)",
             "[P3.5 artifact model cards](p3-5-artifact-model-cards.md)",
             "[P3.5 exact artifact review evidence](p3-5-artifact-review-evidence.md)",
             "[P3.5 exact artifact review acceptance](p3-5-artifact-review-acceptance.md)",
@@ -1845,6 +1963,7 @@ def check_documentation_sync() -> Check:
             "implementation_authorized_generated_only_staged",
             "P35-W1",
             "P35-W3",
+            "P35-W4",
             "validated_complete",
         ),
         "docs/phase-3/p3-5-runtime-research-evidence.md": (
@@ -1876,6 +1995,14 @@ def check_documentation_sync() -> Check:
             "p35w3:final_test:v1",
             "token_commitment_persisted",
             "No rendering, OCR, model, artifact, media, API",
+        ),
+        "docs/phase-3/p3-5-w4-ground-truth-crop.md": (
+            "P35-W4",
+            "GT-PLATE-R0",
+            "procedural geometry marker",
+            "512 x 128",
+            "Pixels remain ephemeral",
+            "PLATE-D0 remains blocked",
         ),
         ".github/workflows/python-ci.yml": (
             "python tools/phase35_readiness.py --strict",
@@ -1937,9 +2064,10 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_existing_contract_foundation(),
         check_research_sources(),
         check_plan_contract(),
-        check_authorized_w1_w3_package(),
+        check_authorized_w1_w3_w4_package(),
         check_w1_contract_snapshot(),
         check_w3_split_manifest(),
+        check_w4_ground_truth_crop(),
         check_artifact_proposal(),
         check_owner_decisions_record(),
         check_artifact_research_authorization(),

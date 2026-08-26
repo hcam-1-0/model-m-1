@@ -109,6 +109,9 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `fixtures/p3-5-sealed-splits-v1.json`: digest-bound 20-entry W3 split
   manifest with independent seed namespaces, final-test-only logical holdouts,
   and no token text or token-derived commitment.
+- `fixtures/p3-5-ground-truth-crop-v1.json`: canonical W4 model-free
+  localization result and ephemeral-crop descriptor with generated lineage,
+  bounded geometry, and no pixels or plate text.
 
 Verify all tracked snapshots:
 
@@ -162,3 +165,6 @@ or persistence path.
 `P35-W3` adds deterministic in-memory token generation and token-free sealed
 split manifests. Logical holdout labels do not load fonts, render images, run
 OCR/models, or widen W2 or later-package authority.
+`P35-W4` adds a stdlib-only procedural geometry marker, exact ground-truth
+localization, and a bounded ephemeral crop. It loads no model, font, artifact,
+or media and persists neither pixels nor generated plate text.

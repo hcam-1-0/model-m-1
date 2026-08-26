@@ -163,6 +163,14 @@ zero. P3.2 remains blocked and requires separate artifact and dataset approval.
   disabled, zero accesses, and no token text or token-derived commitment.
 - [x] `P35-W3` logical holdout labels are documented as non-rendering metadata;
   W2, fonts, rendering, OCR, models, media, APIs, and persistence remain blocked.
+- [x] `P35-W4` creates only a bounded procedural generated frame, sealed
+  ground-truth region, and model-free localization result.
+- [x] `P35-W4` limits crops to `512 x 128`, keeps pixels ephemeral, and writes
+  only token-free localization/crop descriptors to canonical evidence.
+- [x] `P35-W4` rejects malformed frame bytes, region and quadrilateral
+  tampering, digest changes, disabled execution, and production activation.
+- [x] `P35-W4` focused/full-suite, package, readiness, and pre-commit validation
+  is complete; clean-source evidence is regenerated after the local commit.
 
 Current P3.5 status:
 `implementation_authorized_generated_only_staged`.

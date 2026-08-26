@@ -91,6 +91,7 @@ autonomous enforcement.
 | [P3.5 generated-only start authorization](p3-5-start-authorization.md) | Digest-bound generated-only work, five loadable artifacts, exact runtime, zero network actions, and continuing blocks |
 | [P3.5 W1 contracts and guardrails](p3-5-w1-contracts-guardrails.md) | Seed-only request, visible non-issuable token policy, prohibited-input guard, zero retention, and deterministic snapshots |
 | [P3.5 W3 deterministic generator and sealed splits](p3-5-w3-generator-splits.md) | Domain-separated ephemeral tokens, independent seed namespaces, token-free split manifest, final-test freeze, and logical holdouts |
+| [P3.5 W4 ground-truth localization and crop](p3-5-w4-ground-truth-crop.md) | Procedural generated frame, sealed region, model-free localization, bounded ephemeral crop, and pixel-free evidence |
 | [P3.5 plan](p3-5-plan.md) | Synthetic corpus, localization, OCR, normalization, consensus, privacy, and evidence design |
 | [P3.5 owner decision packet](p3-5-decision-packet.md) | Four technical choices and separate implementation-start gate |
 | [P3.5 planning readiness](p3-5-planning-readiness-report.md) | Historical machine-verified planning boundary and then-pending owner gates |

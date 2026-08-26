@@ -233,6 +233,646 @@
       "title": "GeneratedTokenRequestV1",
       "type": "object"
     },
+    "ground_truth_crop_descriptor": {
+      "additionalProperties": false,
+      "properties": {
+        "contract_type": {
+          "const": "hcam.anpr.ground-truth-crop-descriptor.v1",
+          "default": "hcam.anpr.ground-truth-crop-descriptor.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "crop_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Crop Digest",
+          "type": "string"
+        },
+        "crop_id": {
+          "pattern": "^anprcrop_[0-9a-f]{32}$",
+          "title": "Crop Id",
+          "type": "string"
+        },
+        "frame_generator_version": {
+          "const": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+          "default": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+          "title": "Frame Generator Version",
+          "type": "string"
+        },
+        "generator_version": {
+          "const": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "default": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "height": {
+          "maximum": 128,
+          "minimum": 1,
+          "title": "Height",
+          "type": "integer"
+        },
+        "method": {
+          "const": "axis_aligned_generated_ground_truth",
+          "default": "axis_aligned_generated_ground_truth",
+          "title": "Method",
+          "type": "string"
+        },
+        "model_execution_performed": {
+          "const": false,
+          "default": false,
+          "title": "Model Execution Performed",
+          "type": "boolean"
+        },
+        "pixel_format": {
+          "const": "bgr8",
+          "default": "bgr8",
+          "title": "Pixel Format",
+          "type": "string"
+        },
+        "pixels_ephemeral": {
+          "const": true,
+          "default": true,
+          "title": "Pixels Ephemeral",
+          "type": "boolean"
+        },
+        "pixels_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Pixels Persisted",
+          "type": "boolean"
+        },
+        "rectifier_version": {
+          "const": "sha256:39194faa2bccb7ca3f4060aeb51130d733aab1fec54e14b5985b70958c475c2f",
+          "default": "sha256:39194faa2bccb7ca3f4060aeb51130d733aab1fec54e14b5985b70958c475c2f",
+          "title": "Rectifier Version",
+          "type": "string"
+        },
+        "region_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Region Digest",
+          "type": "string"
+        },
+        "sample_id": {
+          "pattern": "^anprsample_[0-9a-f]{32}$",
+          "title": "Sample Id",
+          "type": "string"
+        },
+        "source_frame_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Source Frame Digest",
+          "type": "string"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "token_text_in_contract": {
+          "const": false,
+          "default": false,
+          "title": "Token Text In Contract",
+          "type": "boolean"
+        },
+        "transform_matrix": {
+          "maxItems": 9,
+          "minItems": 9,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Transform Matrix",
+          "type": "array"
+        },
+        "width": {
+          "maximum": 512,
+          "minimum": 1,
+          "title": "Width",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "crop_id",
+        "sample_id",
+        "region_digest",
+        "source_frame_digest",
+        "crop_digest",
+        "width",
+        "height",
+        "transform_matrix"
+      ],
+      "title": "GroundTruthCropDescriptorV1",
+      "type": "object"
+    },
+    "ground_truth_region": {
+      "$defs": {
+        "GroundTruthPlateRegionContentV1": {
+          "additionalProperties": false,
+          "properties": {
+            "bbox": {
+              "$ref": "#/$defs/NormalizedBoundingBox"
+            },
+            "class_id": {
+              "const": "vehicle.registration_plate_region",
+              "default": "vehicle.registration_plate_region",
+              "title": "Class Id",
+              "type": "string"
+            },
+            "contract_type": {
+              "const": "hcam.anpr.ground-truth-region-content.v1",
+              "default": "hcam.anpr.ground-truth-region-content.v1",
+              "title": "Contract Type",
+              "type": "string"
+            },
+            "frame_generator_version": {
+              "const": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+              "default": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+              "title": "Frame Generator Version",
+              "type": "string"
+            },
+            "generator_version": {
+              "const": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+              "default": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+              "title": "Generator Version",
+              "type": "string"
+            },
+            "ground_truth_only": {
+              "const": true,
+              "default": true,
+              "title": "Ground Truth Only",
+              "type": "boolean"
+            },
+            "layout": {
+              "enum": [
+                "single_line",
+                "two_line"
+              ],
+              "title": "Layout",
+              "type": "string"
+            },
+            "quadrilateral": {
+              "maxItems": 4,
+              "minItems": 4,
+              "prefixItems": [
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                },
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                },
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                },
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                }
+              ],
+              "title": "Quadrilateral",
+              "type": "array"
+            },
+            "region_id": {
+              "pattern": "^anprregion_[0-9a-f]{32}$",
+              "title": "Region Id",
+              "type": "string"
+            },
+            "sample_id": {
+              "pattern": "^anprsample_[0-9a-f]{32}$",
+              "title": "Sample Id",
+              "type": "string"
+            },
+            "source_id": {
+              "const": "DATA-PLATE-GEN-R0",
+              "default": "DATA-PLATE-GEN-R0",
+              "title": "Source Id",
+              "type": "string"
+            },
+            "synthetic_only": {
+              "const": true,
+              "default": true,
+              "title": "Synthetic Only",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "region_id",
+            "sample_id",
+            "layout",
+            "bbox",
+            "quadrilateral"
+          ],
+          "title": "GroundTruthPlateRegionContentV1",
+          "type": "object"
+        },
+        "NormalizedBoundingBox": {
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Height",
+              "type": "number"
+            },
+            "width": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Width",
+              "type": "number"
+            },
+            "x": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "title": "NormalizedBoundingBox",
+          "type": "object"
+        },
+        "NormalizedPointV1": {
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ],
+          "title": "NormalizedPointV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "$ref": "#/$defs/GroundTruthPlateRegionContentV1"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.sealed-ground-truth-region.v1",
+          "default": "hcam.anpr.sealed-ground-truth-region.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "region_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Region Digest",
+          "type": "string"
+        }
+      },
+      "required": [
+        "content",
+        "region_digest"
+      ],
+      "title": "SealedGroundTruthPlateRegionV1",
+      "type": "object"
+    },
+    "plate_localization_result": {
+      "$defs": {
+        "NormalizedBoundingBox": {
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Height",
+              "type": "number"
+            },
+            "width": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Width",
+              "type": "number"
+            },
+            "x": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "title": "NormalizedBoundingBox",
+          "type": "object"
+        },
+        "NormalizedPointV1": {
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ],
+          "title": "NormalizedPointV1",
+          "type": "object"
+        },
+        "PlateLocalizationHypothesisV1": {
+          "additionalProperties": false,
+          "properties": {
+            "bbox": {
+              "$ref": "#/$defs/NormalizedBoundingBox"
+            },
+            "class_id": {
+              "const": "vehicle.registration_plate_region",
+              "default": "vehicle.registration_plate_region",
+              "title": "Class Id",
+              "type": "string"
+            },
+            "confidence": {
+              "const": 1.0,
+              "default": 1.0,
+              "title": "Confidence",
+              "type": "number"
+            },
+            "hypothesis_id": {
+              "pattern": "^anprhyp_[0-9a-f]{32}$",
+              "title": "Hypothesis Id",
+              "type": "string"
+            },
+            "quadrilateral": {
+              "maxItems": 4,
+              "minItems": 4,
+              "prefixItems": [
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                },
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                },
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                },
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                }
+              ],
+              "title": "Quadrilateral",
+              "type": "array"
+            },
+            "quality": {
+              "const": "generated_ground_truth_exact",
+              "default": "generated_ground_truth_exact",
+              "title": "Quality",
+              "type": "string"
+            },
+            "reason_code": {
+              "const": "ground_truth_only",
+              "default": "ground_truth_only",
+              "title": "Reason Code",
+              "type": "string"
+            },
+            "region_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Region Digest",
+              "type": "string"
+            }
+          },
+          "required": [
+            "hypothesis_id",
+            "bbox",
+            "quadrilateral",
+            "region_digest"
+          ],
+          "title": "PlateLocalizationHypothesisV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "candidate_id": {
+          "const": null,
+          "default": null,
+          "title": "Candidate Id",
+          "type": "null"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.plate-localization-result.v1",
+          "default": "hcam.anpr.plate-localization-result.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "crop_bytes_returned": {
+          "const": false,
+          "default": false,
+          "title": "Crop Bytes Returned",
+          "type": "boolean"
+        },
+        "execution_mode": {
+          "const": "generated_ground_truth_only",
+          "default": "generated_ground_truth_only",
+          "title": "Execution Mode",
+          "type": "string"
+        },
+        "frame_generator_version": {
+          "const": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+          "default": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+          "title": "Frame Generator Version",
+          "type": "string"
+        },
+        "generator_version": {
+          "const": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "default": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "hypotheses": {
+          "items": {
+            "$ref": "#/$defs/PlateLocalizationHypothesisV1"
+          },
+          "maxItems": 8,
+          "title": "Hypotheses",
+          "type": "array"
+        },
+        "hypothesis_count": {
+          "maximum": 8,
+          "minimum": 0,
+          "title": "Hypothesis Count",
+          "type": "integer"
+        },
+        "image_path_returned": {
+          "const": false,
+          "default": false,
+          "title": "Image Path Returned",
+          "type": "boolean"
+        },
+        "localizer_id": {
+          "const": "GT-PLATE-R0",
+          "default": "GT-PLATE-R0",
+          "title": "Localizer Id",
+          "type": "string"
+        },
+        "localizer_version": {
+          "const": "sha256:8699654aa285b98dc88198d1a177fa013076d02888578530b15d1077f6434c50",
+          "default": "sha256:8699654aa285b98dc88198d1a177fa013076d02888578530b15d1077f6434c50",
+          "title": "Localizer Version",
+          "type": "string"
+        },
+        "media_url_returned": {
+          "const": false,
+          "default": false,
+          "title": "Media Url Returned",
+          "type": "boolean"
+        },
+        "model_execution_performed": {
+          "const": false,
+          "default": false,
+          "title": "Model Execution Performed",
+          "type": "boolean"
+        },
+        "plate_text_returned": {
+          "const": false,
+          "default": false,
+          "title": "Plate Text Returned",
+          "type": "boolean"
+        },
+        "postprocessing_version": {
+          "const": "sha256:8699654aa285b98dc88198d1a177fa013076d02888578530b15d1077f6434c50",
+          "default": "sha256:8699654aa285b98dc88198d1a177fa013076d02888578530b15d1077f6434c50",
+          "title": "Postprocessing Version",
+          "type": "string"
+        },
+        "preprocessing_version": {
+          "const": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+          "default": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+          "title": "Preprocessing Version",
+          "type": "string"
+        },
+        "result_id": {
+          "pattern": "^anprloc_[0-9a-f]{32}$",
+          "title": "Result Id",
+          "type": "string"
+        },
+        "runtime_contract_version": {
+          "const": "sha256:8699654aa285b98dc88198d1a177fa013076d02888578530b15d1077f6434c50",
+          "default": "sha256:8699654aa285b98dc88198d1a177fa013076d02888578530b15d1077f6434c50",
+          "title": "Runtime Contract Version",
+          "type": "string"
+        },
+        "runtime_id": {
+          "const": "python-stdlib-reference",
+          "default": "python-stdlib-reference",
+          "title": "Runtime Id",
+          "type": "string"
+        },
+        "sample_id": {
+          "pattern": "^anprsample_[0-9a-f]{32}$",
+          "title": "Sample Id",
+          "type": "string"
+        },
+        "source_frame_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Source Frame Digest",
+          "type": "string"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "taxonomy_version": {
+          "const": "hcam.taxonomy.vehicle-registration-plate-region.v1",
+          "default": "hcam.taxonomy.vehicle-registration-plate-region.v1",
+          "title": "Taxonomy Version",
+          "type": "string"
+        },
+        "weights_loaded": {
+          "const": false,
+          "default": false,
+          "title": "Weights Loaded",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "result_id",
+        "sample_id",
+        "source_frame_digest",
+        "hypothesis_count",
+        "hypotheses"
+      ],
+      "title": "PlateLocalizationResultV1",
+      "type": "object"
+    },
     "sealed_split_manifest": {
       "$defs": {
         "SyntheticCorpusSplitCountsV1": {
@@ -669,15 +1309,31 @@
     "generator_version": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
     "hidden_random_augmentation": false
   },
+  "localization_policy": {
+    "candidate_id": null,
+    "crop_pixels_in_contracts": false,
+    "execution_mode": "generated_ground_truth_only",
+    "localizer_id": "GT-PLATE-R0",
+    "localizer_version": "sha256:8699654aa285b98dc88198d1a177fa013076d02888578530b15d1077f6434c50",
+    "model_execution_performed": false,
+    "plate_text_in_contracts": false,
+    "rectifier_version": "sha256:39194faa2bccb7ca3f4060aeb51130d733aab1fec54e14b5985b70958c475c2f",
+    "weights_loaded": false
+  },
   "persistence_policy": {
     "identifier_free_aggregate_evidence_only": true,
     "plate_text_retention_hours": 0,
     "token_or_alternative_in_evidence": false
   },
   "resource_limits": {
+    "maximum_crop_height": 128,
+    "maximum_crop_width": 512,
     "maximum_document_depth": 8,
     "maximum_document_nodes": 256,
+    "maximum_frame_height": 720,
+    "maximum_frame_width": 1280,
     "maximum_local_samples": 10000,
+    "maximum_plate_regions_per_frame": 8,
     "maximum_request_bytes": 4096
   },
   "source_policy": {

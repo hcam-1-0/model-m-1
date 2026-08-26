@@ -24,6 +24,8 @@ loadable artifacts, two blocked Tesseract artifacts, and zero network actions.
 prohibited-input/zero-retention guardrails are now implemented and validated.
 `P35-W3` deterministic ephemeral token generation and token-free sealed split
 manifests are also implemented and validated; `P35-W2` remains blocked.
+`P35-W4` now adds validated model-free generated ground-truth localization and
+a bounded ephemeral crop path.
 None of these milestones adds a real CCTV media path.
 
 A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
@@ -41,6 +43,8 @@ exact implementation allowlist and continuing prohibitions. The
 record the first bounded implementation slice. The
 [P3.5 W3 deterministic generator and sealed splits](docs/phase-3/p3-5-w3-generator-splits.md)
 record the next authorized local generated-only slice.
+The [P3.5 W4 ground-truth localization and crop](docs/phase-3/p3-5-w4-ground-truth-crop.md)
+records the procedural, model-free localization and zero-retention crop boundary.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies

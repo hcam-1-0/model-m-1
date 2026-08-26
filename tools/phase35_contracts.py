@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate and verify reviewed P3.5 W1 ANPR contract snapshots."""
+"""Generate and verify reviewed P3.5 ANPR contract snapshots."""
 
 from __future__ import annotations
 
@@ -12,6 +12,7 @@ from hcam.analytics.anpr import (
     SyntheticAnprExecutionPolicyV1,
     anpr_contract_bundle,
     build_sealed_split_manifest,
+    generated_ground_truth_fixture,
     synthetic_corpus_plan_fixture,
 )
 from hcam.analytics.anpr.contracts import generated_request_fixture
@@ -25,6 +26,13 @@ FIXTURE_PATH = (
 )
 SPLIT_MANIFEST_PATH = (
     ROOT / "contracts" / "phase-3" / "fixtures" / "p3-5-sealed-splits-v1.json"
+)
+GROUND_TRUTH_CROP_PATH = (
+    ROOT
+    / "contracts"
+    / "phase-3"
+    / "fixtures"
+    / "p3-5-ground-truth-crop-v1.json"
 )
 _MAX_DIFF_LINES = 240
 _MAX_MANIFEST_BYTES = 8 * 1024 * 1024
@@ -41,10 +49,27 @@ def _render_bundle() -> str:
 
 
 def render_contracts() -> dict[Path, str]:
-    manifest = build_sealed_split_manifest(
-        synthetic_corpus_plan_fixture(),
-        policy=SyntheticAnprExecutionPolicyV1(enabled=True, environment="test"),
+    plan = synthetic_corpus_plan_fixture()
+    policy = SyntheticAnprExecutionPolicyV1(enabled=True, environment="test")
+    manifest = build_sealed_split_manifest(plan, policy=policy)
+    frame, localization, crop = generated_ground_truth_fixture(
+        plan,
+        policy=policy,
     )
+    ground_truth_crop_evidence = {
+        "contract_type": "hcam.anpr.ground-truth-crop-evidence.v1",
+        "source_id": "DATA-PLATE-GEN-R0",
+        "generated_only": True,
+        "external_input_count": 0,
+        "model_execution_performed": False,
+        "weights_loaded": False,
+        "frame_pixels_persisted": False,
+        "crop_pixels_persisted": False,
+        "plate_text_persisted": False,
+        "localization": localization.model_dump(mode="json"),
+        "crop": crop.descriptor.model_dump(mode="json"),
+    }
+    assert localization.source_frame_digest == frame.frame_digest
     return {
         CONTRACT_PATH: _render_bundle(),
         FIXTURE_PATH: canonical_anpr_evidence_json(generated_request_fixture()),
@@ -52,6 +77,11 @@ def render_contracts() -> dict[Path, str]:
             manifest,
             maximum_bytes=_MAX_MANIFEST_BYTES,
             maximum_nodes=_MAX_MANIFEST_NODES,
+        ),
+        GROUND_TRUTH_CROP_PATH: canonical_anpr_evidence_json(
+            ground_truth_crop_evidence,
+            maximum_bytes=32 * 1024,
+            maximum_nodes=1_024,
         ),
     }
 

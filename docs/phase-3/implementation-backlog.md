@@ -239,8 +239,12 @@ Implementation progress:
 - W3 includes 20-run exact replay, collision, leakage, tampering, count,
   default-off, split separation, and zero-retention tests. It does not render a
   plate, load a font/model/artifact, run OCR, or add an API/storage path.
-- The next implementation work remains within the separately enumerated start
-  allowlist; this W1 completion does not widen any artifact or runtime authority.
+- `P35-W4`: `validated_complete`. A bounded procedural frame, sealed region,
+  model-free `GT-PLATE-R0` result, and axis-aligned ephemeral crop pass focused,
+  full-suite, contract-drift, readiness, lint, and package-build validation.
+- W4 loads no model, weight, font, OCR runtime, camera, media, or external
+  input. `PLATE-D0`, W2, W5, persistence, APIs, and deployment remain blocked
+  or separate future work under the existing start allowlist.
 
 Artifact preparation status: proposal R0 records eight recommended artifact
 slots, immutable source metadata, and bounded sizes. Seven external slots are

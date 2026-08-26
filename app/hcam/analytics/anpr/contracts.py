@@ -8,26 +8,62 @@ from typing import Annotated, Any, Literal
 
 from pydantic import AfterValidator, Field, model_validator
 
-from hcam.analytics.contracts import ContractModel, ImmutableDigest
+from hcam.analytics.contracts import (
+    ContractModel,
+    ImmutableDigest,
+    NormalizedBoundingBox,
+)
 
 
 ANPR_GENERATED_SOURCE_ID = "DATA-PLATE-GEN-R0"
 ANPR_TOKEN_POLICY_ID = "hcam.anpr.synthetic-non-issuable.v1"
 ANPR_TOKEN_PATTERN = r"^SYN-[A-Z0-9]{4}-[A-Z0-9]{4}$"
-ANPR_GENERATOR_VERSION = "sha256:" + hashlib.sha256(
-    b"hcam.anpr.generator.v1:sha256-domain-separated:visible-syn-4x4"
-).hexdigest()
-ANPR_TOKEN_POLICY_VERSION = "sha256:" + hashlib.sha256(
-    b"hcam.anpr.synthetic-non-issuable.v1:ascii-upper-digit:mixed:zero-retention"
-).hexdigest()
+ANPR_GENERATOR_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.generator.v1:sha256-domain-separated:visible-syn-4x4"
+    ).hexdigest()
+)
+ANPR_TOKEN_POLICY_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.synthetic-non-issuable.v1:ascii-upper-digit:mixed:zero-retention"
+    ).hexdigest()
+)
 ANPR_SPLIT_POLICY_ID = "hcam.anpr.sealed-splits.v1"
-ANPR_SPLIT_POLICY_VERSION = "sha256:" + hashlib.sha256(
-    b"hcam.anpr.sealed-splits.v1:independent-namespaces:final-test-holdouts"
-).hexdigest()
+ANPR_SPLIT_POLICY_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.sealed-splits.v1:independent-namespaces:final-test-holdouts"
+    ).hexdigest()
+)
+ANPR_FRAME_GENERATOR_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.generated-frame.v1:bgr8:procedural-geometry-marker:no-font"
+    ).hexdigest()
+)
+ANPR_GROUND_TRUTH_LOCALIZER_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.ground-truth-localizer.v1:no-model:no-weights:maximum-eight"
+    ).hexdigest()
+)
+ANPR_RECTIFIER_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.axis-aligned-ground-truth-crop.v1:bgr8:ephemeral"
+    ).hexdigest()
+)
 MAX_ANPR_REQUEST_BYTES = 4 * 1024
 MAX_ANPR_DOCUMENT_DEPTH = 8
 MAX_ANPR_DOCUMENT_NODES = 256
 MAX_ANPR_LOCAL_SAMPLES = 10_000
+MAX_ANPR_FRAME_WIDTH = 1_280
+MAX_ANPR_FRAME_HEIGHT = 720
+MAX_ANPR_PLATE_REGIONS = 8
+MAX_ANPR_CROP_WIDTH = 512
+MAX_ANPR_CROP_HEIGHT = 128
 
 _TOKEN_PATTERN = re.compile(ANPR_TOKEN_PATTERN, flags=re.ASCII)
 
@@ -127,10 +163,7 @@ class SyntheticCorpusSplitCountsV1(ContractModel):
     @property
     def total(self) -> int:
         return (
-            self.contract_fixture
-            + self.development
-            + self.validation
-            + self.final_test
+            self.contract_fixture + self.development + self.validation + self.final_test
         )
 
     @model_validator(mode="after")
@@ -150,9 +183,7 @@ class SyntheticCorpusPlanV1(ContractModel):
     policy_id: Literal["hcam.anpr.synthetic-non-issuable.v1"] = ANPR_TOKEN_POLICY_ID
     policy_version: Literal[ANPR_TOKEN_POLICY_VERSION] = ANPR_TOKEN_POLICY_VERSION
     split_policy_id: Literal["hcam.anpr.sealed-splits.v1"] = ANPR_SPLIT_POLICY_ID
-    split_policy_version: Literal[ANPR_SPLIT_POLICY_VERSION] = (
-        ANPR_SPLIT_POLICY_VERSION
-    )
+    split_policy_version: Literal[ANPR_SPLIT_POLICY_VERSION] = ANPR_SPLIT_POLICY_VERSION
     root_seed: Annotated[int, Field(ge=0, le=4_294_967_295)]
     counts: SyntheticCorpusSplitCountsV1
     input_mode: Literal["deterministic_seed_only"] = "deterministic_seed_only"
@@ -194,9 +225,7 @@ class SyntheticSplitManifestContentV1(ContractModel):
     policy_id: Literal["hcam.anpr.synthetic-non-issuable.v1"] = ANPR_TOKEN_POLICY_ID
     policy_version: Literal[ANPR_TOKEN_POLICY_VERSION] = ANPR_TOKEN_POLICY_VERSION
     split_policy_id: Literal["hcam.anpr.sealed-splits.v1"] = ANPR_SPLIT_POLICY_ID
-    split_policy_version: Literal[ANPR_SPLIT_POLICY_VERSION] = (
-        ANPR_SPLIT_POLICY_VERSION
-    )
+    split_policy_version: Literal[ANPR_SPLIT_POLICY_VERSION] = ANPR_SPLIT_POLICY_VERSION
     root_seed: Annotated[int, Field(ge=0, le=4_294_967_295)]
     counts: SyntheticCorpusSplitCountsV1
     entries: Annotated[
@@ -226,13 +255,19 @@ class SyntheticSplitManifestContentV1(ContractModel):
             "validation": 2,
             "final_test": 3,
         }
-        positions = [(ordering[entry.split], entry.sample_index) for entry in self.entries]
+        positions = [
+            (ordering[entry.split], entry.sample_index) for entry in self.entries
+        ]
         if positions != sorted(positions):
             raise ValueError("manifest entries must use canonical split/index ordering")
         for split in ordering:
-            indexes = [entry.sample_index for entry in self.entries if entry.split == split]
+            indexes = [
+                entry.sample_index for entry in self.entries if entry.split == split
+            ]
             if indexes != list(range(len(indexes))):
-                raise ValueError("manifest split indexes must be contiguous and zero-based")
+                raise ValueError(
+                    "manifest split indexes must be contiguous and zero-based"
+                )
         for attribute in ("sample_id", "request_id", "sample_spec_digest"):
             values = [getattr(entry, attribute) for entry in self.entries]
             if len(values) != len(set(values)):
@@ -288,6 +323,227 @@ def seal_split_manifest(
     )
 
 
+class NormalizedPointV1(ContractModel):
+    x: Annotated[float, Field(ge=0, le=1)]
+    y: Annotated[float, Field(ge=0, le=1)]
+
+
+class GroundTruthPlateRegionContentV1(ContractModel):
+    contract_type: Literal["hcam.anpr.ground-truth-region-content.v1"] = (
+        "hcam.anpr.ground-truth-region-content.v1"
+    )
+    region_id: Annotated[str, Field(pattern=r"^anprregion_[0-9a-f]{32}$")]
+    sample_id: Annotated[str, Field(pattern=r"^anprsample_[0-9a-f]{32}$")]
+    source_id: Literal["DATA-PLATE-GEN-R0"] = ANPR_GENERATED_SOURCE_ID
+    generator_version: Literal[ANPR_GENERATOR_VERSION] = ANPR_GENERATOR_VERSION
+    frame_generator_version: Literal[ANPR_FRAME_GENERATOR_VERSION] = (
+        ANPR_FRAME_GENERATOR_VERSION
+    )
+    layout: AnprLayout
+    bbox: NormalizedBoundingBox
+    quadrilateral: tuple[
+        NormalizedPointV1,
+        NormalizedPointV1,
+        NormalizedPointV1,
+        NormalizedPointV1,
+    ]
+    class_id: Literal["vehicle.registration_plate_region"] = (
+        "vehicle.registration_plate_region"
+    )
+    ground_truth_only: Literal[True] = True
+    synthetic_only: Literal[True] = True
+
+    @model_validator(mode="after")
+    def quadrilateral_matches_axis_aligned_box(self) -> GroundTruthPlateRegionContentV1:
+        expected = (
+            (self.bbox.x, self.bbox.y),
+            (self.bbox.x + self.bbox.width, self.bbox.y),
+            (self.bbox.x + self.bbox.width, self.bbox.y + self.bbox.height),
+            (self.bbox.x, self.bbox.y + self.bbox.height),
+        )
+        actual = tuple((point.x, point.y) for point in self.quadrilateral)
+        if any(
+            abs(actual_value - expected_value) > 1e-9
+            for actual_point, expected_point in zip(actual, expected, strict=True)
+            for actual_value, expected_value in zip(
+                actual_point,
+                expected_point,
+                strict=True,
+            )
+        ):
+            raise ValueError(
+                "ground-truth quadrilateral must match the axis-aligned box"
+            )
+        return self
+
+
+def _region_content_digest(content: GroundTruthPlateRegionContentV1) -> str:
+    serialized = json.dumps(
+        content.model_dump(mode="json"),
+        allow_nan=False,
+        ensure_ascii=True,
+        separators=(",", ":"),
+        sort_keys=True,
+    ).encode("utf-8")
+    return f"sha256:{hashlib.sha256(serialized).hexdigest()}"
+
+
+class SealedGroundTruthPlateRegionV1(ContractModel):
+    contract_type: Literal["hcam.anpr.sealed-ground-truth-region.v1"] = (
+        "hcam.anpr.sealed-ground-truth-region.v1"
+    )
+    content: GroundTruthPlateRegionContentV1
+    region_digest: ImmutableDigest
+
+    @model_validator(mode="after")
+    def digest_matches_content(self) -> SealedGroundTruthPlateRegionV1:
+        if self.region_digest != _region_content_digest(self.content):
+            raise ValueError("ground-truth region digest does not match content")
+        return self
+
+
+def seal_ground_truth_region(
+    content: GroundTruthPlateRegionContentV1,
+) -> SealedGroundTruthPlateRegionV1:
+    return SealedGroundTruthPlateRegionV1(
+        content=content,
+        region_digest=_region_content_digest(content),
+    )
+
+
+class PlateLocalizationHypothesisV1(ContractModel):
+    hypothesis_id: Annotated[str, Field(pattern=r"^anprhyp_[0-9a-f]{32}$")]
+    class_id: Literal["vehicle.registration_plate_region"] = (
+        "vehicle.registration_plate_region"
+    )
+    bbox: NormalizedBoundingBox
+    quadrilateral: tuple[
+        NormalizedPointV1,
+        NormalizedPointV1,
+        NormalizedPointV1,
+        NormalizedPointV1,
+    ]
+    confidence: Literal[1.0] = 1.0
+    quality: Literal["generated_ground_truth_exact"] = "generated_ground_truth_exact"
+    reason_code: Literal["ground_truth_only"] = "ground_truth_only"
+    region_digest: ImmutableDigest
+
+    @model_validator(mode="after")
+    def quadrilateral_matches_axis_aligned_box(
+        self,
+    ) -> PlateLocalizationHypothesisV1:
+        expected = (
+            (self.bbox.x, self.bbox.y),
+            (self.bbox.x + self.bbox.width, self.bbox.y),
+            (self.bbox.x + self.bbox.width, self.bbox.y + self.bbox.height),
+            (self.bbox.x, self.bbox.y + self.bbox.height),
+        )
+        actual = tuple((point.x, point.y) for point in self.quadrilateral)
+        if any(
+            abs(actual_value - expected_value) > 1e-9
+            for actual_point, expected_point in zip(actual, expected, strict=True)
+            for actual_value, expected_value in zip(
+                actual_point,
+                expected_point,
+                strict=True,
+            )
+        ):
+            raise ValueError("localization quadrilateral must match the bounding box")
+        return self
+
+
+class PlateLocalizationResultV1(ContractModel):
+    contract_type: Literal["hcam.anpr.plate-localization-result.v1"] = (
+        "hcam.anpr.plate-localization-result.v1"
+    )
+    result_id: Annotated[str, Field(pattern=r"^anprloc_[0-9a-f]{32}$")]
+    sample_id: Annotated[str, Field(pattern=r"^anprsample_[0-9a-f]{32}$")]
+    source_id: Literal["DATA-PLATE-GEN-R0"] = ANPR_GENERATED_SOURCE_ID
+    generator_version: Literal[ANPR_GENERATOR_VERSION] = ANPR_GENERATOR_VERSION
+    frame_generator_version: Literal[ANPR_FRAME_GENERATOR_VERSION] = (
+        ANPR_FRAME_GENERATOR_VERSION
+    )
+    source_frame_digest: ImmutableDigest
+    localizer_id: Literal["GT-PLATE-R0"] = "GT-PLATE-R0"
+    localizer_version: Literal[ANPR_GROUND_TRUTH_LOCALIZER_VERSION] = (
+        ANPR_GROUND_TRUTH_LOCALIZER_VERSION
+    )
+    taxonomy_version: Literal["hcam.taxonomy.vehicle-registration-plate-region.v1"] = (
+        "hcam.taxonomy.vehicle-registration-plate-region.v1"
+    )
+    preprocessing_version: Literal[ANPR_FRAME_GENERATOR_VERSION] = (
+        ANPR_FRAME_GENERATOR_VERSION
+    )
+    postprocessing_version: Literal[ANPR_GROUND_TRUTH_LOCALIZER_VERSION] = (
+        ANPR_GROUND_TRUTH_LOCALIZER_VERSION
+    )
+    runtime_id: Literal["python-stdlib-reference"] = "python-stdlib-reference"
+    runtime_contract_version: Literal[ANPR_GROUND_TRUTH_LOCALIZER_VERSION] = (
+        ANPR_GROUND_TRUTH_LOCALIZER_VERSION
+    )
+    execution_mode: Literal["generated_ground_truth_only"] = (
+        "generated_ground_truth_only"
+    )
+    candidate_id: Literal[None] = None
+    model_execution_performed: Literal[False] = False
+    weights_loaded: Literal[False] = False
+    hypothesis_count: Annotated[int, Field(ge=0, le=MAX_ANPR_PLATE_REGIONS)]
+    hypotheses: Annotated[
+        tuple[PlateLocalizationHypothesisV1, ...],
+        Field(max_length=MAX_ANPR_PLATE_REGIONS),
+    ]
+    crop_bytes_returned: Literal[False] = False
+    image_path_returned: Literal[False] = False
+    media_url_returned: Literal[False] = False
+    plate_text_returned: Literal[False] = False
+    synthetic_only: Literal[True] = True
+
+    @model_validator(mode="after")
+    def hypothesis_count_matches(self) -> PlateLocalizationResultV1:
+        if self.hypothesis_count != len(self.hypotheses):
+            raise ValueError("localization hypothesis count does not match results")
+        return self
+
+
+class GroundTruthCropDescriptorV1(ContractModel):
+    contract_type: Literal["hcam.anpr.ground-truth-crop-descriptor.v1"] = (
+        "hcam.anpr.ground-truth-crop-descriptor.v1"
+    )
+    crop_id: Annotated[str, Field(pattern=r"^anprcrop_[0-9a-f]{32}$")]
+    sample_id: Annotated[str, Field(pattern=r"^anprsample_[0-9a-f]{32}$")]
+    source_id: Literal["DATA-PLATE-GEN-R0"] = ANPR_GENERATED_SOURCE_ID
+    generator_version: Literal[ANPR_GENERATOR_VERSION] = ANPR_GENERATOR_VERSION
+    frame_generator_version: Literal[ANPR_FRAME_GENERATOR_VERSION] = (
+        ANPR_FRAME_GENERATOR_VERSION
+    )
+    rectifier_version: Literal[ANPR_RECTIFIER_VERSION] = ANPR_RECTIFIER_VERSION
+    region_digest: ImmutableDigest
+    source_frame_digest: ImmutableDigest
+    crop_digest: ImmutableDigest
+    width: Annotated[int, Field(ge=1, le=MAX_ANPR_CROP_WIDTH)]
+    height: Annotated[int, Field(ge=1, le=MAX_ANPR_CROP_HEIGHT)]
+    pixel_format: Literal["bgr8"] = "bgr8"
+    transform_matrix: tuple[
+        float,
+        float,
+        float,
+        float,
+        float,
+        float,
+        float,
+        float,
+        float,
+    ]
+    method: Literal["axis_aligned_generated_ground_truth"] = (
+        "axis_aligned_generated_ground_truth"
+    )
+    pixels_ephemeral: Literal[True] = True
+    pixels_persisted: Literal[False] = False
+    token_text_in_contract: Literal[False] = False
+    model_execution_performed: Literal[False] = False
+    synthetic_only: Literal[True] = True
+
+
 def generated_request_fixture() -> GeneratedTokenRequestV1:
     return GeneratedTokenRequestV1(
         request_id="anprreq_11111111111111111111111111111111",
@@ -313,6 +569,15 @@ def anpr_contract_bundle() -> dict[str, Any]:
                 mode="validation"
             ),
             "sealed_split_manifest": SealedSyntheticSplitManifestV1.model_json_schema(
+                mode="validation"
+            ),
+            "ground_truth_crop_descriptor": GroundTruthCropDescriptorV1.model_json_schema(
+                mode="validation"
+            ),
+            "ground_truth_region": SealedGroundTruthPlateRegionV1.model_json_schema(
+                mode="validation"
+            ),
+            "plate_localization_result": PlateLocalizationResultV1.model_json_schema(
                 mode="validation"
             ),
             "synthetic_corpus_plan": SyntheticCorpusPlanV1.model_json_schema(
@@ -362,10 +627,26 @@ def anpr_contract_bundle() -> dict[str, Any]:
             "manifest_token_commitment_allowed": False,
         },
         "resource_limits": {
+            "maximum_crop_height": MAX_ANPR_CROP_HEIGHT,
+            "maximum_crop_width": MAX_ANPR_CROP_WIDTH,
             "maximum_document_depth": MAX_ANPR_DOCUMENT_DEPTH,
             "maximum_document_nodes": MAX_ANPR_DOCUMENT_NODES,
+            "maximum_frame_height": MAX_ANPR_FRAME_HEIGHT,
+            "maximum_frame_width": MAX_ANPR_FRAME_WIDTH,
             "maximum_local_samples": MAX_ANPR_LOCAL_SAMPLES,
+            "maximum_plate_regions_per_frame": MAX_ANPR_PLATE_REGIONS,
             "maximum_request_bytes": MAX_ANPR_REQUEST_BYTES,
+        },
+        "localization_policy": {
+            "localizer_id": "GT-PLATE-R0",
+            "localizer_version": ANPR_GROUND_TRUTH_LOCALIZER_VERSION,
+            "rectifier_version": ANPR_RECTIFIER_VERSION,
+            "execution_mode": "generated_ground_truth_only",
+            "candidate_id": None,
+            "model_execution_performed": False,
+            "weights_loaded": False,
+            "crop_pixels_in_contracts": False,
+            "plate_text_in_contracts": False,
         },
         "persistence_policy": {
             "plate_text_retention_hours": 0,
