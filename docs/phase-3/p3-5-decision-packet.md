@@ -1,7 +1,8 @@
 # P3.5 Owner Decision Packet
 
-Status: planning complete under `D-P3.5-PLAN-AUTH`; no technical option or
-implementation start is owner approved yet.
+Status: planning complete under `D-P3.5-PLAN-AUTH`; no technical option is
+owner approved. The exact `D-P3.5-START` statement was received early but is
+non-effective until the technical choices and exact artifact review are complete.
 
 Planning package: [P3.5 synthetic ANPR plan](p3-5-plan.md).
 
@@ -302,3 +303,7 @@ implementation.
 After exact artifact and source manifests are prepared and reviewed, the owner
 must separately identify `D-P3.5-START`. A response such as `continue`, `start`,
 or `accepted` without that decision ID is not implementation authorization.
+
+`mayank-admin` supplied the exact identifier on 2026-08-26 before the required
+choices and manifests existed. It is recorded as start intent only. A final
+confirmation against the future exact packet digest is still required.

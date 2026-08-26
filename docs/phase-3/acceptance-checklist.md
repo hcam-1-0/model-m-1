@@ -129,9 +129,12 @@ zero. P3.2 remains blocked and requires separate artifact and dataset approval.
 - [ ] `D-P3.5-003` normalization, abstention, and consensus is owner selected.
 - [ ] `D-P3.5-004` privacy, resources, and evidence policy is owner selected.
 - [ ] Exact artifact/source manifests are reviewed and owner approved.
-- [ ] `D-P3.5-START` separately authorizes bounded implementation.
+- [x] The exact early `D-P3.5-START` statement is preserved as non-effective
+  intent with empty artifact and network allowlists.
+- [ ] `D-P3.5-START` is confirmed against the exact reviewed packet and
+  separately authorizes bounded implementation.
 
-Current P3.5 status: `ready_for_owner_decisions`. Planning grants no artifact,
+Current P3.5 status: `ready_for_owner_decisions`. Early start intent grants no artifact,
 dataset, generation, training, inference, product code, media, real-plate,
 storage, operational, or deployment authority.
 

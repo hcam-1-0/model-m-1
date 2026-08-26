@@ -384,6 +384,20 @@ gates. Planning authorizes no model, font, dataset, dependency, generation,
 training, inference, product code, camera, media, real plate, owner/Government
 record, alert, deployment, P3.6, or remote Git action.
 
+### DR-0035: Early P3.5 Start Intent
+
+Status: received but not effective.
+
+On 2026-08-26, `mayank-admin` supplied the exact identifier
+`D-P3.5-START`. The statement arrived before `D-P3.5-001` through
+`D-P3.5-004` were selected and before exact model, font, dictionary, generator,
+dependency, runtime, artifact, and network-action manifests were prepared.
+
+The statement is preserved as start intent with empty artifact and network
+allowlists. It grants no implementation authority. A final confirmation must
+bind the four selected decisions and the exact reviewed packet digest before
+any acquisition, dependency change, generation, inference, or product work.
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

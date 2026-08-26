@@ -1,8 +1,9 @@
 # P3.5 Synthetic ANPR Plan
 
 Status: planning complete under `D-P3.5-PLAN-AUTH`; technical decisions
-`D-P3.5-001` through `D-P3.5-004` and implementation gate `D-P3.5-START`
-remain pending.
+`D-P3.5-001` through `D-P3.5-004` remain pending. The exact
+`D-P3.5-START` statement was received early and remains non-effective until the
+technical decisions and exact artifact review are complete.
 
 Planning authority: `D-P3.5-PLAN-AUTH`.
 
@@ -477,6 +478,11 @@ The owner must decide:
 The first four technical decisions do not start implementation. `continue`,
 planning approval, or acceptance of another phase cannot substitute for the
 explicit `D-P3.5-START` decision.
+
+The owner supplied `D-P3.5-START` before the four technical decisions and exact
+artifact review. That statement is preserved as intent, not implementation
+authority, because it cannot bind artifacts and network actions that have not
+yet been disclosed. See [P3.5 start intent](p3-5-start-intent.md).
 
 Machine-readable gate status:
 [`p3-5-entry-gates.json`](../../contracts/phase-3/p3-5-entry-gates.json).

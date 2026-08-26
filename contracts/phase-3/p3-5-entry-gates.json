@@ -27,8 +27,10 @@
     },
     {
       "decision_id": "D-P3.5-START",
+      "effective": false,
+      "owner_statement_received": "D-P3.5-START",
       "recommended_option": "authorize_only_after_decisions_001_through_004_and_exact_artifact_review",
-      "status": "pending_owner_decision",
+      "status": "received_prerequisites_pending",
       "topic": "separate_implementation_authorization"
     }
   ],

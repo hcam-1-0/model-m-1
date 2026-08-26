@@ -12,8 +12,9 @@ P3.2 adds an accepted, default-off generated-input detector reference. P3.3 adds
 an accepted, generated-only anonymous stream-local tracker under
 `D-P3.3-ACCEPTANCE`. P3.4 is implemented, technically validated, and accepted
 under `D-P3.4-ACCEPTANCE` for its exact historical package digest.
-P3.5 synthetic-ANPR planning is authorized under `D-P3.5-PLAN-AUTH`; four
-technical choices and the separate `D-P3.5-START` gate remain pending.
+P3.5 synthetic-ANPR planning is authorized under `D-P3.5-PLAN-AUTH`. The exact
+`D-P3.5-START` statement has been received but is not effective: four technical
+choices and exact artifact/source review remain pending.
 None of these milestones adds a real CCTV media path.
 
 P3.1 planning and its generated-only implementation boundary are authorized
@@ -66,7 +67,8 @@ failures, and zero manual gates while preserving the immutable historical
 package binding. The PostGIS validation image remains deployment-blocked.
 
 The P3.5 planning verifier should report `ready_for_owner_decisions`, zero
-technical failures, and five manual gates. It performs no artifact download,
+technical failures, and five manual gates. It verifies that the early start
+statement grants no authority. It performs no artifact download,
 synthetic generation, training, inference, media access, or product execution.
 
 ## Phase 2 camera and video ingestion

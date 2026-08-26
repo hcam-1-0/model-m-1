@@ -207,7 +207,9 @@ accepted P3.0 zero-retention plate-text policy.
 
 Planning status: authorized under `D-P3.5-PLAN-AUTH`. Primary-source research,
 the detailed plan, and owner decision packet are complete. `D-P3.5-001` through
-`D-P3.5-004` and `D-P3.5-START` remain pending. No artifact acquisition,
+`D-P3.5-004` remain pending. The exact `D-P3.5-START` statement was received
+early and is recorded as non-effective until those decisions and exact artifact
+review are complete. No artifact acquisition,
 generation, training, inference, product implementation, or media/data access
 is authorized.
 

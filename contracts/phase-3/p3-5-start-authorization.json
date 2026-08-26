@@ -1,0 +1,58 @@
+{
+  "allowed_artifacts": [],
+  "allowed_network_actions": [],
+  "authorized_at": null,
+  "authorized_by": null,
+  "contract_format": "hcam.phase3.p3_5.start-authorization.v1",
+  "decision_id": "D-P3.5-START",
+  "effective": false,
+  "implementation_authorized": false,
+  "owner_statement_received": "D-P3.5-START",
+  "prerequisites": [
+    {
+      "decision_id": "D-P3.5-001",
+      "required_status": "owner_approved",
+      "status": "pending_owner_decision"
+    },
+    {
+      "decision_id": "D-P3.5-002",
+      "required_status": "owner_approved",
+      "status": "pending_owner_decision"
+    },
+    {
+      "decision_id": "D-P3.5-003",
+      "required_status": "owner_approved",
+      "status": "pending_owner_decision"
+    },
+    {
+      "decision_id": "D-P3.5-004",
+      "required_status": "owner_approved",
+      "status": "pending_owner_decision"
+    },
+    {
+      "evidence_id": "P3.5-EXACT-ARTIFACT-REVIEW",
+      "required_status": "owner_reviewed",
+      "status": "not_prepared"
+    }
+  ],
+  "prohibited_actions": [
+    "p3_5_runtime_or_product_implementation",
+    "model_weight_font_dataset_dictionary_or_source_artifact_download",
+    "dependency_lockfile_container_or_environment_change",
+    "application_migration_api_worker_or_storage_change",
+    "synthetic_image_generation_training_finetuning_or_inference_execution",
+    "physical_camera_onvif_media_or_sentinel_stream_access",
+    "real_public_private_government_police_or_scraped_plate_media",
+    "real_registration_mark_owner_vehicle_or_government_record_processing",
+    "identity_biometric_reidentification_or_cross_camera_linkage",
+    "watchlist_matching_operational_alerting_autonomous_action_or_enforcement",
+    "pilot_production_or_statewide_deployment",
+    "remote_git_push_pull_request_or_merge",
+    "p3_6_or_later_work"
+  ],
+  "received_at": "2026-08-26T12:04:46Z",
+  "requested_option": "staged_generated_only_start_after_exact_artifact_review",
+  "scope": "phase3.p3_5.synthetic_anpr.start_intent_only",
+  "status": "received_prerequisites_pending",
+  "statement": "The owner supplied the exact D-P3.5-START identifier before the four technical decisions and exact artifact review were complete. The statement is preserved as start intent but grants no implementation or network authority. A final exact start authorization must bind the selected decisions and enumerate every allowed artifact and network action."
+}

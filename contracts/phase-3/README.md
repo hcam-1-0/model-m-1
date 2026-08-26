@@ -68,8 +68,11 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   on accepted P3.4, with all implementation and artifact actions prohibited.
 - `p3-5-research-sources.json`: primary-source, no-download research evidence
   for OCR, Unicode, registration-mark constraints, fonts, and synthetic data.
-- `p3-5-entry-gates.json`: four pending technical choices and the separately
-  pending `D-P3.5-START` implementation gate.
+- `p3-5-entry-gates.json`: four pending technical choices and the early,
+  prerequisite-blocked `D-P3.5-START` statement.
+- `p3-5-start-authorization.json`: the exact received start intent, its five
+  unmet prerequisites, empty artifact/network allowlists, and continuing
+  implementation prohibitions.
 
 Verify all tracked snapshots:
 
@@ -107,4 +110,5 @@ deployment-blocked.
 These contracts do not authorize camera access, raw-media persistence, external
 datasets, identity, cross-camera association, Government matching, alerts,
 or deployment. P3.5 is authorized for planning only under
-`D-P3.5-PLAN-AUTH`; no artifact or implementation action is authorized.
+`D-P3.5-PLAN-AUTH`; receipt of `D-P3.5-START` before its prerequisites does not
+authorize any artifact, network, or implementation action.

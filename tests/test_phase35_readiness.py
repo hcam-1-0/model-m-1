@@ -14,7 +14,7 @@ def test_p3_5_planning_is_ready_for_five_owner_decisions() -> None:
     assert report.status == "ready_for_owner_decisions"
     assert report.failures == 0
     assert report.manual_gates == 5
-    assert report.package_file_count == 18
+    assert report.package_file_count == 20
     assert len(report.package_digest) == 64
 
 
@@ -28,6 +28,7 @@ def test_p3_5_technical_checks_pass() -> None:
         readiness.check_research_sources(),
         readiness.check_plan_contract(),
         readiness.check_planning_only_package(),
+        readiness.check_start_intent(),
         readiness.check_documentation_sync(),
     )
 
@@ -39,6 +40,33 @@ def test_p3_5_owner_gates_remain_manual_and_ordered() -> None:
 
     assert check.status == readiness.MANUAL
     assert check.evidence == readiness.DECISION_IDS
+
+
+def test_p3_5_start_intent_is_non_effective_and_has_no_authority() -> None:
+    record = json.loads(
+        readiness.START_AUTHORIZATION_PATH.read_text(encoding="utf-8")
+    )
+
+    assert record["owner_statement_received"] == "D-P3.5-START"
+    assert record["effective"] is False
+    assert record["implementation_authorized"] is False
+    assert record["allowed_artifacts"] == []
+    assert record["allowed_network_actions"] == []
+    assert readiness.check_start_intent().status == readiness.PASS
+
+
+def test_p3_5_start_intent_rejects_premature_authority(monkeypatch) -> None:
+    original_json = readiness._json
+
+    def load(path: Path) -> dict[str, object]:
+        record = original_json(path)
+        if path == readiness.START_AUTHORIZATION_PATH:
+            record["implementation_authorized"] = True
+        return record
+
+    monkeypatch.setattr(readiness, "_json", load)
+
+    assert readiness.check_start_intent().status == readiness.FAIL
 
 
 def test_p3_5_require_decisions_exits_two_without_implementation_authority() -> None:

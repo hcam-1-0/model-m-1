@@ -21,6 +21,9 @@ AUTHORIZATION_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-planning-authorization.json"
 )
 ENTRY_GATES_PATH = ROOT / "contracts" / "phase-3" / "p3-5-entry-gates.json"
+START_AUTHORIZATION_PATH = (
+    ROOT / "contracts" / "phase-3" / "p3-5-start-authorization.json"
+)
 RESEARCH_PATH = ROOT / "contracts" / "phase-3" / "p3-5-research-sources.json"
 P3_4_ACCEPTANCE_PATH = ROOT / "contracts" / "phase-3" / "p3-4-acceptance.json"
 
@@ -38,6 +41,7 @@ PACKAGE_FILES = (
     "contracts/phase-3/p3-5-entry-gates.json",
     "contracts/phase-3/p3-5-planning-authorization.json",
     "contracts/phase-3/p3-5-research-sources.json",
+    "contracts/phase-3/p3-5-start-authorization.json",
     "docs/phase-3/README.md",
     "docs/phase-3/acceptance-checklist.md",
     "docs/phase-3/decision-register.md",
@@ -47,6 +51,7 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-planning-authorization.md",
     "docs/phase-3/p3-5-planning-readiness-report.md",
     "docs/phase-3/p3-5-research-record.md",
+    "docs/phase-3/p3-5-start-intent.md",
     "tests/test_phase35_readiness.py",
     "tools/phase35_readiness.py",
 )
@@ -456,14 +461,19 @@ def check_owner_gates() -> Check:
     if not isinstance(decisions, list):
         return Check("owner_decisions", FAIL, "P3.5 decisions must be a list.")
     actual_ids = tuple(str(item.get("decision_id")) for item in decisions if isinstance(item, dict))
-    pending = tuple(
+    pending_technical = tuple(
         str(item.get("decision_id"))
         for item in decisions
         if isinstance(item, dict) and item.get("status") == "pending_owner_decision"
     )
+    start = decisions[-1] if decisions and isinstance(decisions[-1], dict) else {}
     if (
         actual_ids != DECISION_IDS
-        or pending != DECISION_IDS
+        or pending_technical != DECISION_IDS[:-1]
+        or start.get("decision_id") != "D-P3.5-START"
+        or start.get("status") != "received_prerequisites_pending"
+        or start.get("owner_statement_received") != "D-P3.5-START"
+        or start.get("effective") is not False
         or record.get("status") != "ready_for_owner_decisions"
         or record.get("manual_gate_count") != len(DECISION_IDS)
         or record.get("owner_decisions_completed") != 0
@@ -477,8 +487,52 @@ def check_owner_gates() -> Check:
     return Check(
         "owner_decisions",
         MANUAL,
-        "Four technical choices and the separate D-P3.5-START gate require explicit owner decisions.",
-        pending,
+        "D-P3.5-START was received early; four technical choices and a final exact start confirmation remain manual.",
+        DECISION_IDS,
+    )
+
+
+def check_start_intent() -> Check:
+    try:
+        record = _json(START_AUTHORIZATION_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("start_intent", FAIL, str(exc))
+    prerequisites = record.get("prerequisites")
+    if not isinstance(prerequisites, list):
+        return Check("start_intent", FAIL, "P3.5 start prerequisites must be a list.")
+    prerequisite_statuses = tuple(
+        str(item.get("status"))
+        for item in prerequisites
+        if isinstance(item, dict)
+    )
+    if (
+        record.get("contract_format")
+        != "hcam.phase3.p3_5.start-authorization.v1"
+        or record.get("decision_id") != "D-P3.5-START"
+        or record.get("owner_statement_received") != "D-P3.5-START"
+        or record.get("status") != "received_prerequisites_pending"
+        or record.get("effective") is not False
+        or record.get("implementation_authorized") is not False
+        or record.get("allowed_artifacts") != []
+        or record.get("allowed_network_actions") != []
+        or prerequisite_statuses
+        != (
+            "pending_owner_decision",
+            "pending_owner_decision",
+            "pending_owner_decision",
+            "pending_owner_decision",
+            "not_prepared",
+        )
+    ):
+        return Check(
+            "start_intent",
+            FAIL,
+            "The early D-P3.5-START statement was widened or made effective before its prerequisites.",
+        )
+    return Check(
+        "start_intent",
+        PASS,
+        "The exact D-P3.5-START statement is preserved as non-effective intent with no artifact or network authority.",
     )
 
 
@@ -488,12 +542,18 @@ def check_documentation_sync() -> Check:
         "contracts/phase-3/README.md": (
             "p3-5-planning-authorization.json",
             "p3-5-entry-gates.json",
+            "p3-5-start-authorization.json",
         ),
         "docs/phase-3/README.md": (
             "[P3.5 plan](p3-5-plan.md)",
             "[P3.5 owner decision packet](p3-5-decision-packet.md)",
+            "[P3.5 start intent](p3-5-start-intent.md)",
         ),
-        "docs/phase-3/decision-register.md": ("DR-0034", "D-P3.5-PLAN-AUTH"),
+        "docs/phase-3/decision-register.md": (
+            "DR-0035",
+            "D-P3.5-PLAN-AUTH",
+            "D-P3.5-START",
+        ),
         "docs/phase-3/implementation-backlog.md": (
             "D-P3.4-ACCEPTANCE",
             "D-P3.5-PLAN-AUTH",
@@ -558,6 +618,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_research_sources(),
         check_plan_contract(),
         check_planning_only_package(),
+        check_start_intent(),
         check_documentation_sync(),
     ]
     if require_clean_source:
