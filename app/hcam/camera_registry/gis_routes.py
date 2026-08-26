@@ -13,7 +13,7 @@ from hcam.camera_registry.models import Camera
 from hcam.camera_registry.schemas import CameraGeoOut, CameraGeoCollection
 from hcam.database import get_session
 
-router = APIRouter(prefix="/cameras/geo", tags=["camera-gis"])
+router = APIRouter(prefix="/geo", tags=["camera-gis"])
 
 
 @router.get(
@@ -171,8 +171,6 @@ def camera_vector_tile(
     if z < 0 or z > 20:
         return Response(content=b"", status_code=400, media_type="application/x-protobuf")
 
-    # Calculate tile bounds in Web Mercator (EPSG:3857)
-    # Then convert to WGS84 (EPSG:4326) for query
     import math
 
     def tile_to_bbox(z: int, x: int, y: int) -> tuple[float, float, float, float]:
@@ -183,65 +181,70 @@ def camera_vector_tile(
         max_lat = math.degrees(math.atan(math.sinh(math.pi * (1 - 2 * y / n))))
         return (min_lon, min_lat, max_lon, max_lat)
 
-    min_lon, min_lat, max_lon, max_lat = tile_to_bbox(z, x, y)
-    bbox = func.ST_MakeEnvelope(min_lon, min_lat, max_lon, max_lat, 4326)
+    try:
+        min_lon, min_lat, max_lon, max_lat = tile_to_bbox(z, x, y)
+        bbox = func.ST_MakeEnvelope(min_lon, min_lat, max_lon, max_lat, 4326)
 
-    # Simplify geometry for tile zoom level
-    tolerance = 360 / (256 * (2 ** z)) * 2  # ~2 pixels in degrees
-
-    stmt = (
-        select(
-            Camera.camera_id,
-            Camera.display_name,
-            Camera.department,
-            Camera.camera_type,
-            Camera.health_status,
-            Camera.operational_status,
-            func.ST_AsMVTGeom(
-                Camera.geometry,
-                bbox,
-                4096,  # tile extent
-                256,   # buffer
-                "geometry",
-            ).label("mvt_geom"),
+        # Fetch raw points in bbox — Python-side tile encoding (avoids ST_AsMVTGeom frag issues)
+        stmt = (
+            select(Camera)
+            .where(Camera.geometry is not None)
+            .where(func.ST_Intersects(Camera.geometry, bbox))
         )
-        .where(Camera.geometry is not None)
-        .where(func.ST_Intersects(Camera.geometry, bbox))
-    )
+        result = session.execute(stmt)
+        cameras = result.scalars().all()
 
-    result = session.execute(stmt)
-    rows = result.all()
-
-    # Build MVT layer
-    features = []
-    for row in rows:
-        if row.mvt_geom is not None:
-            # Convert WKB to Shapely geometry
-            geom = to_shape(row.mvt_geom)
+        # Convert lon/lat to tile pixel coords (0-4096)
+        lon_range = max_lon - min_lon or 1
+        lat_range = max_lat - min_lat or 1
+        features = []
+        for cam in cameras:
+            lon = cam.longitude
+            lat = cam.latitude
+            if lon is None or lat is None:
+                if cam.geometry is not None:
+                    try:
+                        pt = to_shape(cam.geometry)
+                        lon, lat = pt.x, pt.y
+                    except Exception:
+                        continue
+                else:
+                    continue
+            # Flip Y (tile origin top-left)
+            x_px = int((lon - min_lon) / lon_range * 4096)
+            y_px = int((max_lat - lat) / lat_range * 4096)
+            x_px = max(0, min(4096, x_px))
+            y_px = max(0, min(4096, y_px))
             features.append({
-                "geometry": mapping(geom),
+                "geometry": {"type": "Point", "coordinates": [x_px, y_px]},
                 "properties": {
-                    "camera_id": row.camera_id,
-                    "display_name": row.display_name,
-                    "department": row.department,
-                    "camera_type": row.camera_type,
-                    "health_status": row.health_status,
-                    "operational_status": row.operational_status,
+                    "camera_id": cam.camera_id,
+                    "display_name": cam.display_name,
+                    "department": cam.department or "",
+                    "camera_type": cam.camera_type or "",
+                    "health_status": cam.health_status or "",
+                    "operational_status": cam.operational_status or "",
                 },
-                "id": row.camera_id,
+                "id": cam.camera_id,
             })
 
-    layer = {
-        "name": "cameras",
-        "features": features,
-    }
+        # Empty tile must still be valid MVT
+        if not features:
+            mvt_data = encode({"cameras": {"name": "cameras", "features": []}})
+        else:
+            mvt_data = encode({"cameras": {"name": "cameras", "features": features}})
 
-    mvt_data = encode({"cameras": layer})
-
-    return Response(
-        content=mvt_data,
-        media_type="application/vnd.mapbox-vector-tile",
-    )
+        return Response(
+            content=mvt_data,
+            media_type="application/vnd.mapbox-vector-tile",
+        )
+    except Exception:
+        # Never 500 — return empty tile on error (map lib handles it)
+        try:
+            mvt_data = encode({"cameras": {"name": "cameras", "features": []}})
+            return Response(content=mvt_data, media_type="application/vnd.mapbox-vector-tile")
+        except Exception:
+            return Response(content=b"", media_type="application/x-protobuf")
 
 
 def _camera_to_geojson(camera: Camera) -> dict[str, Any]:

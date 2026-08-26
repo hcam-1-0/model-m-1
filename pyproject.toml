@@ -38,6 +38,17 @@ gis = [
   "geoalchemy2>=0.14.0,<1.0",
   "mapbox-vector-tile>=0.2.0,<1.0",
 ]
+cam-adapter = [
+  "opencv-python>=4.8,<5.0",
+  "psutil>=5.9,<7.0",
+  "shapely>=2.0,<3.0",
+]
+colab = [
+  "hcam-core[cam-adapter]",
+  "ultralytics>=8.2,<9.0",
+  "torch>=2.2",
+  "torchvision>=0.17",
+]
 
 [project.scripts]
 hcam = "hcam.cli:main"

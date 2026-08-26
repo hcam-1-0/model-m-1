@@ -22,6 +22,11 @@ from hcam.settings import Settings
 from hcam.streams import models as _stream_models  # noqa: F401
 from hcam.streams.routes import router as stream_router
 
+try:
+    from hcam.cam_adapter.routes import router as cam_adapter_router  # noqa: F401
+except Exception:  # cam-adapter deps not installed — degrade gracefully
+    cam_adapter_router = None  # type: ignore
+
 
 def create_app(settings: Settings | None = None) -> FastAPI:
     resolved_settings = settings or Settings.from_environment()
@@ -74,6 +79,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     application.include_router(camera_router)
     application.include_router(import_router)
     application.include_router(stream_router)
+    if cam_adapter_router is not None:
+        application.include_router(cam_adapter_router)
     return application
 
 

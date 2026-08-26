@@ -24,6 +24,8 @@ This is **"Model 1"** from the hackathon problem statement: the *Registry & GIS 
 | Database toolkit | SQLAlchemy 2.0 | Talks to the database using Python code |
 | Schema changes | Alembic | Tracks database changes like git tracks code |
 | Map format | Mapbox Vector Tiles (MVT) | Standard format map libraries understand |
+| Ingest | FFmpeg + frag MP4 | Zero-copy, TCP, segmented |
+| AI | Ultralytics YOLOv8 + torch CUDA | 1 frame / N sec, autocast |
 | Package manager | uv | Very fast pip replacement |
 
 ---
@@ -46,6 +48,14 @@ model-m-1/
 │   │   ├── service.py           ← Business rules + audit logging
 │   │   └── repository.py        ← Database queries
 │   │
+│   ├── cam_adapter/             ← INGEST: RTSP/HLS → Drive (Model 2 bridge)
+│   │   ├── recorder.py          ← FFmpeg frag MP4, TCP, stream-copy
+│   │   ├── analytics.py         ← YOLOv8 CUDA sampling
+│   │   ├── worker.py            ← Threads + backoff + orchestrator
+│   │   ├── telemetry.py         ← Drive/CPU/GPU logs
+│   │   ├── config.py            ← AdapterConfig/StreamConfig
+│   │   └── routes.py            ← GET /cam-adapter/status
+│   │
 │   ├── streams/                 ← Video stream metadata (Phase 2)
 │   ├── security/                ← Login/roles/permissions
 │   ├── audit/                   ← "Who changed what, when" records
@@ -53,9 +63,13 @@ model-m-1/
 │   └── operations/              ← Backup/restore tools
 │
 ├── migrations/versions/         ← Numbered database changes (0001–0008)
+├── Cam-Adapter/                 ← Colab deliverable (standalone script + package)
+│   ├── hcam_colab_ingest.py     ← 7 cells (# %% [code]), live.corp8.cloud
+│   ├── config.example.json      ← 10 Sentinel cams
+│   └── README.md                ← Colab guide
 ├── tests/                       ← Automated tests
 ├── tools/                       ← Utility scripts
-└── README.md                    ← Full technical docs
+└── README.md                    ← Full technical docs (+ Cam-Adapter)
 ```
 
 ---
@@ -129,7 +143,17 @@ uv run --locked --extra dev python -m uvicorn hcam.main:app --reload
 ```
 
 ### Verify it works
-Open http://127.0.0.1:8000/docs in your browser → you should see the interactive API documentation. Look for the **camera-gis** section.
+Open http://127.0.0.1:8000/docs → **camera-gis** + **cam-adapter** sections appear.
+
+**Cam-Adapter (Colab):** Upload `Cam-Adapter/hcam_colab_ingest.py` to Colab → T4 GPU → Cells 1-6 (auto-loads `live.corp8.cloud` 10 cams) → live `Drive/MyDrive/cctv-h/camera_recordings/cam_*/segments/*.mp4` (frag MP4 playable mid-segment) + `detections/*.json`.
+
+**Cam-Adapter (local dry-run, 2 cams):**
+```powershell
+uv sync --extra cam-adapter
+$env:HCAM_DATABASE_URL="postgresql://hcam:hcam@localhost:5432/hcam"; docker start hcam-postgis
+uv run python -c "from pathlib import Path; from hcam.cam_adapter.config import AdapterConfig, StreamConfig; from hcam.cam_adapter.worker import AdapterOrchestrator; import time; s=[StreamConfig(camera_id='dry_a', rtsp_url='https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8')]; c=AdapterConfig(drive_base=Path('./Cam-Adapter/dry_run_recordings'), local_fallback_base=Path('./Cam-Adapter/dry_run_recordings'), segment_time_seconds=30, streams=s); o=AdapterOrchestrator(c); o.start(); time.sleep(35); o.stop()"
+# → Cam-Adapter/dry_run_recordings/dry_a/segments/*.mp4  ffprobe: h264
+```
 
 ---
 

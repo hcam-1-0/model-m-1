@@ -19,7 +19,12 @@
 │  │ • Versioning   │  │ • Synthetic   │  │ • Vector Tiles (MVT)│  │
 │  │ • ETag/Precond │  │   50-cam lab  │  │ • PostGIS + GIST    │  │
 │  └───────┬────────┘  └───────┬───────┘  └─────────┬───────────┘  │
-│          │                   │                    │              │
+│  ┌───────────────┐           │                    │              │
+│  │ Cam-Adapter   │◄──────────┘                    │              │
+│  │ (Model 2)     │  RTSP/HLS → Drive frag MP4     │              │
+│  │ • Thread/worker│  YOLOv8 CUDA sampling → JSON  │              │
+│  │ • Backoff     │  Telemetry (CPU/GPU/Drive)     │              │
+│  └───────────────┘                                │              │
 │          └───────────────────┼────────────────────┘              │
 │                              ▼                                   │
 │              ┌─────────────────────────────────┐                │
@@ -35,6 +40,7 @@
 |------|------------|
 | **Camera Registry** | Normalized metadata, department/ownership/type, health status, audit trail, optimistic locking |
 | **GIS / Spatial** | PostGIS geometry column, GIST index, bbox/radius/cluster queries, MVT vector tiles for web maps |
+| **Cam-Adapter (NEW)** | Multi-threaded RTSP/HLS → Drive (5-min frag MP4, TCP, stream-copy), YOLOv8 CUDA sampling → JSON, backoff+jitter, telemetry |
 | **Stream Management** | Multi-protocol endpoints (RTSP/HLS/ONVIF), metadata-only health probes, capability discovery |
 | **Security** | JWT auth, role-based access (viewer/editor/admin), department-scoped data isolation |
 | **Operations** | Prometheus metrics, structured logging, DB backup/restore/recovery drills |
@@ -141,15 +147,37 @@ map.addLayer({
 
 ---
 
+## Cam-Adapter — Cloud Ingest (RTSP/HLS → Drive + YOLOv8)
+
+Wired under `app/hcam/cam_adapter/` and Colab script `Cam-Adapter/hcam_colab_ingest.py`. Same stack (FastAPI, Pydantic, SQLAlchemy), shared `Settings` (`HCAM_CAM_ADAPTER_*`).
+
+**Sentinel host:** `live.corp8.cloud` — `GET https://live.corp8.cloud/api/ingest` returns 30 live cams (mix h264/hevc). Adapter auto-loads via `USE_SENTINEL_CATALOG=True` in Cell 4.
+
+| Requirement | How it’s met |
+|-------------|--------------|
+| RTSP TCP + low-latency | `OPENCV_FFMPEG_CAPTURE_OPTIONS=rtsp_transport;tcp` before `import cv2`; FFmpeg `-rtsp_transport tcp -fflags +genpts -use_wallclock_as_timestamps 1` |
+| Segmented, zero-copy | `-c:v copy -c:a aac -movflags +frag_keyframe+empty_moov -f segment -segment_time 300 -strftime 1` → `cam_06_%Y-%m-%d_%H-%M-%S.mp4` (frag = playable mid-segment) |
+| YOLOv8 sampling | `FrameSampler` 1 frame / `sample_interval` sec, `torch.cuda.amp.autocast()`, `del frame; gc.collect(); torch.cuda.empty_cache()` → `detections/*.json` |
+| Threading + backoff | `CameraWorker(threading.Thread)` per cam + `exponential_backoff(base*2**attempt, jitter)` reset after 90s healthy |
+| Telemetry | `TelemetryLoop` every 30s: `rglob *.mp4` sum + `psutil` CPU/RAM/disk + `torch.cuda.memory_*` → console + `base/_telemetry.log` |
+
+**Colab one-click:** Upload `hcam_colab_ingest.py` → T4 GPU → Cells 1-6 (edit `SENTINEL_MAX_CAMERAS` in Cell 4) → live segments to `Drive/MyDrive/cctv-h/camera_recordings/cam_*/segments/`. See `Cam-Adapter/README.md` for full guide.
+
+**Local/server:** `pip install -e ".[cam-adapter]"` → `GET /cam-adapter/status` (needs `CAMERA_VIEWER`). Env: `HCAM_CAM_ADAPTER_DRIVE_BASE`, `HCAM_CAM_ADAPTER_SEGMENT_TIME=300`, `HCAM_CAM_ADAPTER_YOLO_CONF=0.35`, etc.
+
+**Dry-run:** `Cam-Adapter/dry_run_recordings/` (gitignored) — verified 2-cam 35s → 23MB frag MP4 `ffprobe: h264,1920` ✓.
+
+---
+
 ## Project Structure
 
 ```
 model-m-1/
 ├── app/hcam/
 │   ├── __init__.py
-│   ├── main.py                 # FastAPI app factory
+│   ├── main.py                 # FastAPI app factory (includes cam_adapter)
 │   ├── cli.py                  # CLI entry point (hcam command)
-│   ├── settings.py             # Configuration (env-driven)
+│   ├── settings.py             # Configuration (env-driven, incl. HCAM_CAM_ADAPTER_*)
 │   ├── database.py             # SQLAlchemy engine/session
 │   ├── metrics.py              # Prometheus metrics
 │   ├── observability.py        # Request ID, logging middleware
@@ -161,6 +189,13 @@ model-m-1/
 │   │   ├── repository.py       # DB queries
 │   │   ├── service.py          # Business logic + audit
 │   │   └── importer.py         # Seed file import
+│   ├── cam_adapter/            # Cloud ingest (Model 2 bridge)
+│   │   ├── config.py           # AdapterConfig/StreamConfig
+│   │   ├── recorder.py         # FFmpeg frag MP4, TCP, stream-copy
+│   │   ├── analytics.py        # FrameSampler YOLOv8 CUDA + autocast + gc
+│   │   ├── worker.py           # CameraWorker threads + backoff + orchestrator
+│   │   ├── telemetry.py        # TelemetryLoop Drive/CPU/GPU
+│   │   └── routes.py           # GET /cam-adapter/status, /streams
 │   ├── streams/
 │   │   ├── routes.py           # Stream endpoints API
 │   │   ├── worker.py           # Health probe worker
@@ -171,6 +206,11 @@ model-m-1/
 │   ├── security/
 │   ├── audit/
 │   └── operations/
+│   ├── Cam-Adapter/            # Colab deliverable (standalone + package-aware)
+│   │   ├── hcam_colab_ingest.py# 7-cell Colab script (# %% [code])
+│   │   ├── config.example.json # 10 Sentinel cams (live.corp8.cloud)
+│   │   └── README.md           # Colab guide
+```
 ├── migrations/
 │   ├── versions/               # Alembic migrations (0001–0008)
 │   └── env.py
@@ -218,6 +258,16 @@ model-m-1/
 | `HCAM_GIS_MAX_FEATURES_PER_TILE` | `10000` | Feature limit per tile |
 | `HCAM_GIS_CLUSTER_MIN_ZOOM` | `0` | Min zoom for clustering |
 | `HCAM_GIS_CLUSTER_MAX_ZOOM` | `20` | Max zoom for clustering |
+
+### Cam-Adapter
+| Env Var | Default | Description |
+|---------|---------|-------------|
+| `HCAM_CAM_ADAPTER_DRIVE_BASE` | `/content/drive/.../camera_recordings` | Drive root for segments/detections |
+| `HCAM_CAM_ADAPTER_SEGMENT_TIME` | `300` | Segment length sec (30-3600) |
+| `HCAM_CAM_ADAPTER_SAMPLE_INTERVAL` | `2.0` | YOLO sample sec (0.5-60) |
+| `HCAM_CAM_ADAPTER_YOLO_MODEL` | `yolov8n.pt` | `n/s/m/l` |
+| `HCAM_CAM_ADAPTER_YOLO_CONF` | `0.35` | Confidence 0.1-0.95 |
+| `HCAM_CAM_ADAPTER_TELEMETRY_INTERVAL` | `30` | Telemetry sec (5-300) |
 
 ### Stream / ONVIF
 | Env Var | Default | Description |
