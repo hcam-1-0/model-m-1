@@ -1,0 +1,372 @@
+{
+  "accepted_artifact_evidence_id": "P3.5-EXACT-ARTIFACT-REVIEW-R1",
+  "accepted_artifact_package_digest": "54B02B80169604904C9945C1C6E692500CA8AA79253EEC27A63B4C4DB00B395C",
+  "authorization_id": "D-P3.5-RUNTIME-RESEARCH",
+  "contract_format": "hcam.phase3.p3_5.runtime-research-evidence.v1",
+  "defender_scan": {
+    "engine_version": "1.1.26070.7",
+    "exit_code": 0,
+    "finding": "no_threats_found",
+    "signature_version": "1.457.348.0"
+  },
+  "dependency_or_lockfile_change_performed": false,
+  "direct_packages": [
+    {
+      "name": "paddleocr",
+      "version": "3.7.0"
+    },
+    {
+      "name": "paddlepaddle",
+      "version": "3.3.1"
+    },
+    {
+      "name": "pillow",
+      "version": "12.3.0"
+    },
+    {
+      "name": "regex",
+      "version": "2026.7.19"
+    }
+  ],
+  "evidence_id": "P3.5-RUNTIME-RESEARCH-EVIDENCE-R1",
+  "external_evidence_sha256": {
+    "defender-scan.json": "554C9E7E11E1556E024051616E69EEF251DED8E1FA347DC3C708B1E97EE086E0",
+    "import-check.json": "2D45239465055DF8B4C934B843606EB229969B2E311610120459966D8978F3E6",
+    "installed-environment.json": "A1F4E035DD118BA1D6917FFE6DB0E689ADE665B4613BA47F0251528CC62DD1B6",
+    "runtime-research-result.json": "417D74073735E9AC7A5F24C3EA01067DBA04E1D5C3BA36621B6F9B9FEE41CE5B",
+    "runtime-sbom.cdx.json": "07EE71F79BBD1368F620B7D915E4BF753E23DCC76696862C5E4ADB3CB23ED6DE",
+    "vulnerability-audit.json": "5F2C8F3C85BDAE809299CCA1FF3EF522E52A1CC30CEE434530E058020FD4326D",
+    "wheelhouse.json": "EBD519418FE15F11C317097E306672305FB15DB64A2C769D569539A065914360"
+  },
+  "external_quarantine_root": "E:\\h-cam-research-cache\\phase-3\\p3-5-runtime",
+  "implementation_authorized": false,
+  "import_check": {
+    "blocked_network_attempts": [
+      "(<AddressFamily.AF_INET6: 23>,)"
+    ],
+    "imports": {
+      "PIL": "12.3.0",
+      "paddle": "3.3.1",
+      "paddleocr": "3.7.0",
+      "regex": "2026.7.19"
+    },
+    "model_font_or_media_loaded": false,
+    "network_access_performed": false,
+    "runtime_constructors_or_inference_performed": false,
+    "status": "pass_with_all_network_attempts_blocked"
+  },
+  "inventory": {
+    "license_metadata_missing_count": 0,
+    "native_file_count": 185,
+    "package_count": 67,
+    "packaged_sensitive_asset_count": 6,
+    "packaged_sensitive_assets": [
+      {
+        "name": "networkx",
+        "paths": [
+          "networkx/drawing/tests/baseline/test_display_complex.png",
+          "networkx/drawing/tests/baseline/test_display_empty_graph.png",
+          "networkx/drawing/tests/baseline/test_display_house_with_colors.png",
+          "networkx/drawing/tests/baseline/test_display_labels_and_colors.png",
+          "networkx/drawing/tests/baseline/test_display_shortest_path.png",
+          "networkx/drawing/tests/baseline/test_house_with_colors.png"
+        ],
+        "version": "3.6.1"
+      }
+    ],
+    "packages": [
+      {
+        "name": "aiohappyeyeballs",
+        "version": "2.7.1"
+      },
+      {
+        "name": "aiohttp",
+        "version": "3.14.3"
+      },
+      {
+        "name": "aiosignal",
+        "version": "1.4.0"
+      },
+      {
+        "name": "aistudio_sdk",
+        "version": "0.3.9"
+      },
+      {
+        "name": "annotated-types",
+        "version": "0.8.0"
+      },
+      {
+        "name": "anyio",
+        "version": "4.14.2"
+      },
+      {
+        "name": "attrs",
+        "version": "26.1.0"
+      },
+      {
+        "name": "bce-python-sdk",
+        "version": "0.9.76"
+      },
+      {
+        "name": "certifi",
+        "version": "2026.7.22"
+      },
+      {
+        "name": "chardet",
+        "version": "7.6.0"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.5.1"
+      },
+      {
+        "name": "click",
+        "version": "8.5.0"
+      },
+      {
+        "name": "colorama",
+        "version": "0.4.6"
+      },
+      {
+        "name": "colorlog",
+        "version": "6.12.0"
+      },
+      {
+        "name": "crc32c",
+        "version": "2.9"
+      },
+      {
+        "name": "filelock",
+        "version": "3.32.4"
+      },
+      {
+        "name": "frozenlist",
+        "version": "1.8.0"
+      },
+      {
+        "name": "fsspec",
+        "version": "2026.7.0"
+      },
+      {
+        "name": "future",
+        "version": "1.0.0"
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0"
+      },
+      {
+        "name": "hf-xet",
+        "version": "1.6.0"
+      },
+      {
+        "name": "httpcore",
+        "version": "1.0.9"
+      },
+      {
+        "name": "httpx",
+        "version": "0.28.1"
+      },
+      {
+        "name": "huggingface_hub",
+        "version": "1.28.0"
+      },
+      {
+        "name": "idna",
+        "version": "3.19"
+      },
+      {
+        "name": "imagesize",
+        "version": "2.0.1"
+      },
+      {
+        "name": "modelscope",
+        "version": "1.39.1"
+      },
+      {
+        "name": "modelscope-hub",
+        "version": "0.2.0"
+      },
+      {
+        "name": "multidict",
+        "version": "6.7.1"
+      },
+      {
+        "name": "networkx",
+        "version": "3.6.1"
+      },
+      {
+        "name": "numpy",
+        "version": "2.3.5"
+      },
+      {
+        "name": "opencv-contrib-python",
+        "version": "4.10.0.84"
+      },
+      {
+        "name": "opt-einsum",
+        "version": "3.3.0"
+      },
+      {
+        "name": "packaging",
+        "version": "26.3"
+      },
+      {
+        "name": "paddleocr",
+        "version": "3.7.0"
+      },
+      {
+        "name": "paddlepaddle",
+        "version": "3.3.1"
+      },
+      {
+        "name": "paddlex",
+        "version": "3.7.2"
+      },
+      {
+        "name": "pandas",
+        "version": "3.0.5"
+      },
+      {
+        "name": "pillow",
+        "version": "12.3.0"
+      },
+      {
+        "name": "prettytable",
+        "version": "3.18.0"
+      },
+      {
+        "name": "propcache",
+        "version": "0.5.2"
+      },
+      {
+        "name": "protobuf",
+        "version": "7.36.0"
+      },
+      {
+        "name": "psutil",
+        "version": "7.2.2"
+      },
+      {
+        "name": "py-cpuinfo",
+        "version": "9.0.0"
+      },
+      {
+        "name": "pyclipper",
+        "version": "1.4.0"
+      },
+      {
+        "name": "pycryptodome",
+        "version": "3.23.0"
+      },
+      {
+        "name": "pydantic",
+        "version": "2.13.4"
+      },
+      {
+        "name": "pydantic_core",
+        "version": "2.46.4"
+      },
+      {
+        "name": "pypdfium2",
+        "version": "5.13.0"
+      },
+      {
+        "name": "python-bidi",
+        "version": "0.6.11"
+      },
+      {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "PyYAML",
+        "version": "6.0.2"
+      },
+      {
+        "name": "regex",
+        "version": "2026.7.19"
+      },
+      {
+        "name": "requests",
+        "version": "2.34.2"
+      },
+      {
+        "name": "ruamel.yaml",
+        "version": "0.19.1"
+      },
+      {
+        "name": "safetensors",
+        "version": "0.8.0"
+      },
+      {
+        "name": "setuptools",
+        "version": "84.0.0"
+      },
+      {
+        "name": "shapely",
+        "version": "2.1.2"
+      },
+      {
+        "name": "six",
+        "version": "1.17.0"
+      },
+      {
+        "name": "tqdm",
+        "version": "4.70.0"
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.4"
+      },
+      {
+        "name": "typing_extensions",
+        "version": "4.16.0"
+      },
+      {
+        "name": "tzdata",
+        "version": "2026.3"
+      },
+      {
+        "name": "ujson",
+        "version": "5.13.0"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.7.0"
+      },
+      {
+        "name": "wcwidth",
+        "version": "0.8.2"
+      },
+      {
+        "name": "yarl",
+        "version": "1.24.5"
+      }
+    ],
+    "wheel_bytes": 213980084,
+    "wheel_count": 67,
+    "wheelhouse_fingerprint_sha256": "5A068B21D506342F6297CE12BB22CA33AEC79C58BDC7543395C9ED5C8015560C"
+  },
+  "model_artifact_extraction_or_loading_performed": false,
+  "published_at": "2026-08-26T16:12:03Z",
+  "python_runtime": {
+    "implementation": "CPython",
+    "version": "3.12.13"
+  },
+  "remaining_blocks": [
+    "exact_Tesseract_5_engine_and_native_SBOM_unresolved",
+    "OCR-G0_and_OCR-G1_execution_blocked",
+    "reviewed_model_and_font_artifacts_not_authorized_for_extraction_or_loading",
+    "PLATE-D0_internal_detector_not_built_or_authorized",
+    "synthetic_generation_training_and_inference_not_authorized",
+    "runtime_license_metadata_not_a_legal_or_redistribution_approval",
+    "final_digest_bound_D-P3.5-START_confirmation_pending"
+  ],
+  "status": "complete_pass_final_owner_review_pending",
+  "vulnerability_audit": {
+    "dependency_count": 67,
+    "status": "pass_no_known_vulnerabilities",
+    "vulnerability_count": 0
+  }
+}

@@ -138,17 +138,20 @@ zero. P3.2 remains blocked and requires separate artifact and dataset approval.
 - [x] `P3.5-EXACT-ARTIFACT-REVIEW-R1` is accepted for package digest
   `54B02B80169604904C9945C1C6E692500CA8AA79253EEC27A63B4C4DB00B395C`.
 - [x] `D-P3.5-RUNTIME-RESEARCH` authorizes isolated exact dependency research.
-- [ ] Exact runtime packages, native engine, dependency closure, SBOM, licenses,
-  and vulnerabilities are reviewed.
-- [ ] Exact artifact/runtime packet is owner approved.
+- [x] Exact Python packages, binary-wheel closure, SBOM, license metadata,
+  vulnerability audit, Defender scan, and guarded imports are recorded.
+- [ ] Tesseract 5 and its native dependency closure are reviewed before any
+  `OCR-G0` or `OCR-G1` execution authority.
+- [ ] Exact runtime evidence is owner reviewed as part of final start approval.
 - [x] The exact early `D-P3.5-START` statement is preserved as non-effective
   intent with empty artifact and network allowlists.
 - [ ] `D-P3.5-START` is confirmed against the exact reviewed packet and
   separately authorizes bounded implementation.
 
 Current P3.5 status:
-`artifact_review_accepted_runtime_research_authorized_evidence_pending`.
-Artifact review is accepted; runtime research evidence is pending. Early start
+`runtime_research_evidence_complete_final_start_pending`.
+Artifact review is accepted and restricted runtime research evidence is
+complete. Early start
 intent grants no extraction,
 runtime loading, dependency, dataset, generation, training, inference, product
 code, media, real-plate, storage, operational, or deployment authority.

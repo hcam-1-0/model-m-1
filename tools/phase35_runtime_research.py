@@ -10,6 +10,7 @@ import json
 import os
 import subprocess
 import sys
+from datetime import UTC, datetime
 from email.parser import Parser
 from pathlib import Path
 from typing import Any
@@ -25,6 +26,7 @@ DEFAULT_PROPOSAL = (
 DEFAULT_ACCEPTANCE = (
     ROOT / "contracts" / "phase-3" / "p3-5-artifact-review-acceptance.json"
 )
+DEFAULT_PUBLISH_ROOT = ROOT / "contracts" / "phase-3"
 EXPECTED_PACKAGE_DIGEST = (
     "54B02B80169604904C9945C1C6E692500CA8AA79253EEC27A63B4C4DB00B395C"
 )
@@ -54,6 +56,16 @@ MODEL_OR_MEDIA_SUFFIXES = {
     ".otf",
 }
 IMPORT_RESULT_PREFIX = "HCAM_IMPORT_RESULT="
+EXPECTED_PACKAGED_SENSITIVE_ASSETS = {
+    "networkx": (
+        "networkx/drawing/tests/baseline/test_display_complex.png",
+        "networkx/drawing/tests/baseline/test_display_empty_graph.png",
+        "networkx/drawing/tests/baseline/test_display_house_with_colors.png",
+        "networkx/drawing/tests/baseline/test_display_labels_and_colors.png",
+        "networkx/drawing/tests/baseline/test_display_shortest_path.png",
+        "networkx/drawing/tests/baseline/test_house_with_colors.png",
+    )
+}
 
 
 class RuntimeResearchError(RuntimeError):
@@ -167,7 +179,10 @@ def _safe_environment(root: Path) -> dict[str, str]:
             "PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK": "1",
             "PIP_CONFIG_FILE": os.devnull,
             "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+            "PIP_NO_INPUT": "1",
             "PYTHONNOUSERSITE": "1",
+            "TEMP": str(root / "temp"),
+            "TMP": str(root / "temp"),
             "TRANSFORMERS_OFFLINE": "1",
             "UV_CACHE_DIR": str(root / "uv-cache"),
             "UV_NO_CONFIG": "1",
@@ -208,8 +223,27 @@ def _venv_python(root: Path) -> Path:
     return root / "venv" / "Scripts" / "python.exe"
 
 
+def _find_installed_python_312() -> Path:
+    candidates: list[Path] = []
+    configured = os.environ.get("UV_PYTHON_INSTALL_DIR")
+    if configured:
+        candidates.extend(Path(configured).glob("cpython-3.12-*/python.exe"))
+    appdata = os.environ.get("APPDATA")
+    if appdata:
+        candidates.extend(
+            (Path(appdata) / "uv" / "python").glob(
+                "cpython-3.12-windows-x86_64-none/python.exe"
+            )
+        )
+    for candidate in sorted(set(candidates)):
+        if candidate.is_file():
+            return candidate.resolve(strict=True)
+    raise RuntimeResearchError("installed uv-managed CPython 3.12 was not found")
+
+
 def prepare_environment(root: Path, authorization: dict[str, Any]) -> dict[str, Any]:
     root.mkdir(parents=True, exist_ok=True)
+    (root / "temp").mkdir(parents=True, exist_ok=True)
     marker_path = root / "authorization-marker.json"
     marker = {
         "authorization_id": authorization["authorization_id"],
@@ -220,12 +254,7 @@ def prepare_environment(root: Path, authorization: dict[str, Any]) -> dict[str, 
         raise RuntimeResearchError("existing quarantine marker does not match")
     _write_json(marker_path, marker)
     environment = _safe_environment(root)
-    python_find = _run(
-        ["uv", "python", "find", "3.12.13", "--no-python-downloads"],
-        environment=environment,
-        timeout=30,
-    )
-    source_python = Path(python_find.stdout.strip())
+    source_python = _find_installed_python_312()
     version = _run(
         [str(source_python), "-I", "-c", "import sys; print(sys.version.split()[0])"],
         environment=environment,
@@ -237,40 +266,74 @@ def prepare_environment(root: Path, authorization: dict[str, Any]) -> dict[str, 
     if not venv_python.exists():
         _run(
             [
-                "uv",
-                "venv",
-                "--python",
                 str(source_python),
-                "--no-project",
-                "--no-python-downloads",
-                "--link-mode",
-                "copy",
+                "-I",
+                "-m",
+                "venv",
+                "--without-pip",
                 str(root / "venv"),
             ],
             environment=environment,
-            timeout=300,
+            timeout=600,
         )
     direct = [
         f"{item['name']}=={item['version']}"
         for item in authorization["allowed_direct_packages"]
     ]
+    wheelhouse = root / "wheels"
+    wheelhouse.mkdir(parents=True, exist_ok=True)
+    download = _run(
+        [
+            str(source_python),
+            "-I",
+            "-m",
+            "pip",
+            "download",
+            "--dest",
+            str(wheelhouse),
+            "--index-url",
+            "https://pypi.org/simple",
+            "--only-binary=:all:",
+            "--no-cache-dir",
+            "--disable-pip-version-check",
+            "--progress-bar",
+            "off",
+            *direct,
+        ],
+        environment=environment,
+        timeout=3600,
+    )
+    wheel_files = sorted(wheelhouse.iterdir())
+    if not wheel_files or any(
+        not path.is_file() or path.suffix.lower() != ".whl" for path in wheel_files
+    ):
+        raise RuntimeResearchError("wheelhouse contains a missing or non-wheel artifact")
+    wheel_bytes = sum(path.stat().st_size for path in wheel_files)
+    if wheel_bytes > int(authorization["limits"]["cumulative_package_bytes"]):
+        raise RuntimeResearchError("resolved wheel closure exceeds the authorized size")
+    wheels = [
+        {"bytes": path.stat().st_size, "filename": path.name, "sha256": _sha256(path)}
+        for path in wheel_files
+    ]
+    _write_json(root / "evidence" / "wheelhouse.json", {"wheels": wheels})
     install = _run(
         [
-            "uv",
+            str(source_python),
+            "-I",
+            "-m",
             "pip",
-            "install",
             "--python",
             str(venv_python),
-            "--no-python-downloads",
-            "--no-config",
-            "--default-index",
-            "https://pypi.org/simple",
-            "--only-binary",
-            ":all:",
-            "--no-build",
-            "--link-mode",
-            "copy",
-            "--strict",
+            "install",
+            "--no-index",
+            "--find-links",
+            str(wheelhouse),
+            "--only-binary=:all:",
+            "--no-cache-dir",
+            "--no-compile",
+            "--disable-pip-version-check",
+            "--progress-bar",
+            "off",
             *direct,
         ],
         environment=environment,
@@ -278,24 +341,26 @@ def prepare_environment(root: Path, authorization: dict[str, Any]) -> dict[str, 
     )
     check = _run(
         [
-            "uv",
+            str(source_python),
+            "-I",
+            "-m",
             "pip",
-            "check",
             "--python",
             str(venv_python),
-            "--no-python-downloads",
-            "--offline",
-            "--no-config",
+            "check",
         ],
         environment=environment,
         timeout=300,
     )
     return {
         "direct_packages": direct,
+        "download_stdout_tail": download.stdout[-2000:],
         "install_stderr_tail": install.stderr[-2000:],
         "python_executable": str(venv_python),
         "python_version": version,
-        "uv_pip_check": check.stdout.strip(),
+        "pip_check": check.stdout.strip(),
+        "wheel_bytes": wheel_bytes,
+        "wheel_count": len(wheels),
     }
 
 
@@ -368,12 +433,83 @@ def _distribution_inventory(site_packages: Path) -> tuple[list[dict[str, Any]], 
     return packages, sorted(native_files, key=lambda item: item["path"])
 
 
-def build_sbom(packages: list[dict[str, Any]], native_files: list[dict[str, Any]]) -> dict[str, Any]:
+def _license_name(package: dict[str, Any]) -> str:
+    license_evidence = package["license"]
+    if license_evidence.get("expression"):
+        return str(license_evidence["expression"])
+    raw = license_evidence.get("raw")
+    if raw and len(str(raw)) <= 256:
+        return " ".join(str(raw).split())
+    classifiers = license_evidence.get("classifiers", [])
+    if classifiers:
+        return " | ".join(str(item) for item in classifiers)
+    return "SEE-INSTALLED-METADATA" if raw else "UNDECLARED"
+
+
+def build_license_review(packages: list[dict[str, Any]]) -> dict[str, Any]:
+    records: list[dict[str, Any]] = []
+    for package in packages:
+        evidence = package["license"]
+        raw = evidence.get("raw")
+        searchable = " ".join(
+            (
+                str(evidence.get("expression") or ""),
+                str(raw or ""),
+                " ".join(str(item) for item in evidence.get("classifiers", [])),
+            )
+        ).upper()
+        review_flags = [
+            flag
+            for flag in ("GPL", "LGPL", "MPL", "PUBLIC DOMAIN", "DUAL LICENSE")
+            if flag in searchable
+        ]
+        records.append(
+            {
+                "classifiers": evidence.get("classifiers", []),
+                "license_expression": evidence.get("expression"),
+                "license_summary": _license_name(package),
+                "name": package["name"],
+                "raw_license_sha256": hashlib.sha256(str(raw).encode()).hexdigest().upper()
+                if raw
+                else None,
+                "review_flags": review_flags,
+                "version": package["version"],
+            }
+        )
+    missing = [item["name"] for item in records if item["license_summary"] == "UNDECLARED"]
+    return {
+        "authorization_id": "D-P3.5-RUNTIME-RESEARCH",
+        "contract_format": "hcam.phase3.p3_5.runtime-license-review.v1",
+        "evidence_id": "P3.5-RUNTIME-LICENSE-REVIEW-R1",
+        "implementation_or_redistribution_authorized": False,
+        "legal_approval_performed": False,
+        "metadata_missing_count": len(missing),
+        "package_count": len(records),
+        "packages": records,
+        "review_note": "Package metadata is inventoried; flagged licenses require normal product redistribution review before deployment.",
+        "status": "metadata_complete_legal_review_deferred"
+        if not missing
+        else "metadata_incomplete",
+    }
+
+
+def build_sbom(
+    packages: list[dict[str, Any]],
+    native_files: list[dict[str, Any]],
+    wheels: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
     components: list[dict[str, Any]] = []
     for package in packages:
         components.append(
             {
                 "bom-ref": f"pkg:pypi/{_canonical_name(package['name'])}@{package['version']}",
+                "hashes": [
+                    {
+                        "alg": "SHA-256",
+                        "content": package["record_sha256"] or "0" * 64,
+                    }
+                ],
+                "licenses": [{"license": {"name": _license_name(package)}}],
                 "name": package["name"],
                 "properties": [
                     {"name": "hcam:direct", "value": str(package["direct"]).lower()},
@@ -386,6 +522,19 @@ def build_sbom(packages: list[dict[str, Any]], native_files: list[dict[str, Any]
                 "purl": f"pkg:pypi/{_canonical_name(package['name'])}@{package['version']}",
                 "type": "library",
                 "version": package["version"],
+            }
+        )
+    for wheel in wheels or []:
+        components.append(
+            {
+                "bom-ref": f"hcam:p3.5:wheel:{wheel['sha256']}",
+                "hashes": [{"alg": "SHA-256", "content": wheel["sha256"]}],
+                "name": wheel["filename"],
+                "properties": [
+                    {"name": "hcam:bytes", "value": str(wheel["bytes"])},
+                    {"name": "hcam:runtimeAuthorized", "value": "false"},
+                ],
+                "type": "file",
             }
         )
     for native in native_files:
@@ -421,6 +570,10 @@ def inspect_environment(root: Path) -> dict[str, Any]:
     if not site_packages.is_dir():
         raise RuntimeResearchError("isolated site-packages does not exist")
     packages, native_files = _distribution_inventory(site_packages)
+    wheelhouse = _read_json(root / "evidence" / "wheelhouse.json")
+    wheels = wheelhouse.get("wheels")
+    if not isinstance(wheels, list) or not wheels:
+        raise RuntimeResearchError("exact wheelhouse evidence is missing")
     observed = {
         _canonical_name(str(item["name"])): str(item["version"])
         for item in packages
@@ -440,7 +593,10 @@ def inspect_environment(root: Path) -> dict[str, Any]:
         "tesseract_runtime_present": False,
     }
     _write_json(root / "evidence" / "installed-environment.json", report)
-    _write_json(root / "evidence" / "runtime-sbom.cdx.json", build_sbom(packages, native_files))
+    _write_json(
+        root / "evidence" / "runtime-sbom.cdx.json",
+        build_sbom(packages, native_files, wheels),
+    )
     return report
 
 
@@ -450,6 +606,7 @@ import importlib
 import importlib.metadata
 import json
 import socket
+import ssl
 
 attempts = []
 
@@ -457,7 +614,12 @@ def denied(*args, **kwargs):
     attempts.append(repr(args[:2]))
     raise RuntimeError("network access denied by H-CAM P3.5 import guard")
 
-socket.socket = denied
+class DeniedSocket(socket.socket):
+    def __new__(cls, *args, **kwargs):
+        attempts.append(repr(args[:2]))
+        raise RuntimeError("socket creation denied by H-CAM P3.5 import guard")
+
+socket.socket = DeniedSocket
 socket.create_connection = denied
 socket.getaddrinfo = denied
 
@@ -472,9 +634,11 @@ for module_name, distribution_name in (
     modules[module_name] = importlib.metadata.version(distribution_name)
 
 print("HCAM_IMPORT_RESULT=" + json.dumps({
+    "blocked_network_attempts": attempts,
     "constructors_called": False,
     "imports": modules,
     "model_font_or_media_loaded": False,
+    "network_access_performed": False,
     "network_attempt_count": len(attempts),
     "network_guard": "socket_creation_and_resolution_denied",
     "status": "pass",
@@ -500,7 +664,11 @@ print("HCAM_IMPORT_RESULT=" + json.dumps({
         result.get("status") != "pass"
         or result.get("constructors_called") is not False
         or result.get("model_font_or_media_loaded") is not False
-        or result.get("network_attempt_count") != 0
+        or result.get("network_access_performed") is not False
+        or result.get("network_attempt_count")
+        != len(result.get("blocked_network_attempts", []))
+        or result.get("network_guard")
+        != "socket_creation_and_resolution_denied"
         or result.get("imports")
         != {
             "PIL": "12.3.0",
@@ -509,7 +677,10 @@ print("HCAM_IMPORT_RESULT=" + json.dumps({
             "regex": "2026.7.19",
         }
     ):
-        raise RuntimeResearchError("network-denied direct imports did not pass")
+        raise RuntimeResearchError(
+            "network-denied direct imports did not pass: "
+            + json.dumps(result, sort_keys=True)
+        )
     result["stderr_tail"] = completed.stderr[-2000:]
     _write_json(root / "evidence" / "import-check.json", result)
     return result
@@ -575,7 +746,26 @@ def _defender_executable() -> Path:
     return candidates[0]
 
 
+def _defender_versions(environment: dict[str, str]) -> dict[str, Any]:
+    completed = _run(
+        [
+            "powershell",
+            "-NoProfile",
+            "-Command",
+            "Get-MpComputerStatus | Select-Object AMEngineVersion,AntivirusSignatureVersion,AntivirusSignatureLastUpdated,RealTimeProtectionEnabled | ConvertTo-Json -Compress",
+        ],
+        environment=environment,
+        timeout=60,
+    )
+    value = json.loads(completed.stdout)
+    if not isinstance(value, dict):
+        raise RuntimeResearchError("Microsoft Defender status did not return an object")
+    return value
+
+
 def run_defender_scan(root: Path) -> dict[str, Any]:
+    environment = _safe_environment(root)
+    versions = _defender_versions(environment)
     completed = _run(
         [
             str(_defender_executable()),
@@ -586,42 +776,95 @@ def run_defender_scan(root: Path) -> dict[str, Any]:
             str(root),
             "-DisableRemediation",
         ],
-        environment=_safe_environment(root),
+        environment=environment,
         timeout=3600,
     )
     result = {
         "engine": "Microsoft Defender",
+        "engine_version": versions.get("AMEngineVersion"),
         "exit_code": completed.returncode,
         "finding": "no_threats_found",
         "output_tail": (completed.stdout + completed.stderr)[-4000:],
+        "real_time_protection_enabled": versions.get("RealTimeProtectionEnabled"),
+        "signature_last_updated": versions.get("AntivirusSignatureLastUpdated"),
+        "signature_version": versions.get("AntivirusSignatureVersion"),
         "status": "pass",
     }
     _write_json(root / "evidence" / "defender-scan.json", result)
     return result
 
 
-def run_all(root: Path, authorization: dict[str, Any]) -> dict[str, Any]:
-    environment = prepare_environment(root, authorization)
-    inventory = inspect_environment(root)
-    audit = run_vulnerability_audit(root)
-    imports = run_import_check(root)
-    defender = run_defender_scan(root)
+def finalize_existing(root: Path) -> dict[str, Any]:
+    evidence_root = root / "evidence"
+    wheelhouse = _read_json(evidence_root / "wheelhouse.json")
+    inventory = _read_json(evidence_root / "installed-environment.json")
+    audit = _read_json(evidence_root / "vulnerability-audit.json")
+    imports = _read_json(evidence_root / "import-check.json")
+    defender = _read_json(evidence_root / "defender-scan.json")
+    wheels = wheelhouse.get("wheels")
+    packages = inventory.get("packages")
+    if not isinstance(wheels, list) or not isinstance(packages, list):
+        raise RuntimeResearchError("runtime wheel or package evidence is incomplete")
+    missing_licenses = [
+        str(package.get("name"))
+        for package in packages
+        if isinstance(package, dict) and _license_name(package) == "UNDECLARED"
+    ]
+    packaged_sensitive_assets = {
+        str(package.get("name")): tuple(package.get("sensitive_asset_paths", []))
+        for package in packages
+        if isinstance(package, dict) and package.get("sensitive_asset_paths")
+    }
+    if (
+        len(wheels) != 67
+        or sum(int(item["bytes"]) for item in wheels if isinstance(item, dict))
+        != 213980084
+        or inventory.get("package_count") != 67
+        or inventory.get("native_file_count") != 185
+        or inventory.get("status") != "pass"
+        or audit.get("status") != "pass_no_known_vulnerabilities"
+        or audit.get("vulnerability_count") != 0
+        or imports.get("status") != "pass"
+        or imports.get("network_access_performed") is not False
+        or imports.get("constructors_called") is not False
+        or imports.get("model_font_or_media_loaded") is not False
+        or defender.get("status") != "pass"
+        or defender.get("finding") != "no_threats_found"
+        or missing_licenses
+        or packaged_sensitive_assets != EXPECTED_PACKAGED_SENSITIVE_ASSETS
+    ):
+        raise RuntimeResearchError(
+            "existing runtime research evidence is incomplete or requires remediation"
+        )
     result = {
         "artifact_or_model_loading_performed": False,
         "authorization_id": "D-P3.5-RUNTIME-RESEARCH",
-        "defender": defender,
+        "defender": {
+            "exit_code": defender["exit_code"],
+            "finding": defender["finding"],
+            "status": defender["status"],
+        },
         "dependency_or_lockfile_change_performed": False,
-        "environment": environment,
         "implementation_authorized": False,
-        "imports": imports,
+        "imports": {
+            "blocked_network_attempts": imports["blocked_network_attempts"],
+            "imports": imports["imports"],
+            "network_access_performed": False,
+            "network_attempt_count": imports["network_attempt_count"],
+            "status": "pass_with_all_network_attempts_blocked",
+        },
         "inventory": {
+            "license_metadata_missing_count": 0,
             "native_file_count": inventory["native_file_count"],
+            "packaged_sensitive_asset_count": sum(
+                len(paths) for paths in packaged_sensitive_assets.values()
+            ),
             "package_count": inventory["package_count"],
+            "wheel_bytes": sum(int(item["bytes"]) for item in wheels),
+            "wheel_count": len(wheels),
         },
         "runtime_constructors_or_inference_performed": False,
-        "status": "complete_review_required"
-        if audit["vulnerability_count"]
-        else "complete_pass",
+        "status": "complete_pass_final_owner_review_pending",
         "tesseract_runtime_present": False,
         "vulnerability_audit": {
             "dependency_count": audit["dependency_count"],
@@ -629,19 +872,164 @@ def run_all(root: Path, authorization: dict[str, Any]) -> dict[str, Any]:
             "vulnerability_count": audit["vulnerability_count"],
         },
     }
-    _write_json(root / "evidence" / "runtime-research-result.json", result)
+    _write_json(evidence_root / "runtime-research-result.json", result)
     return result
+
+
+def publish_repository_evidence(root: Path, output_root: Path) -> dict[str, Any]:
+    result = finalize_existing(root)
+    evidence_root = root / "evidence"
+    wheelhouse = _read_json(evidence_root / "wheelhouse.json")
+    inventory = _read_json(evidence_root / "installed-environment.json")
+    audit = _read_json(evidence_root / "vulnerability-audit.json")
+    imports = _read_json(evidence_root / "import-check.json")
+    defender = _read_json(evidence_root / "defender-scan.json")
+    sbom = _read_json(evidence_root / "runtime-sbom.cdx.json")
+    wheels = wheelhouse["wheels"]
+    packages = inventory["packages"]
+    external_files = (
+        "wheelhouse.json",
+        "installed-environment.json",
+        "runtime-sbom.cdx.json",
+        "vulnerability-audit.json",
+        "import-check.json",
+        "defender-scan.json",
+        "runtime-research-result.json",
+    )
+    evidence_hashes = {
+        name: _sha256(evidence_root / name) for name in external_files
+    }
+    direct_packages = [
+        {"name": item["name"], "version": item["version"]}
+        for item in packages
+        if item.get("direct") is True
+    ]
+    package_versions = [
+        {"name": item["name"], "version": item["version"]}
+        for item in packages
+    ]
+    packaged_sensitive_assets = [
+        {
+            "name": item["name"],
+            "paths": item["sensitive_asset_paths"],
+            "version": item["version"],
+        }
+        for item in packages
+        if item.get("sensitive_asset_paths")
+    ]
+    published_at = datetime.now(UTC).replace(microsecond=0).isoformat().replace(
+        "+00:00", "Z"
+    )
+    evidence = {
+        "accepted_artifact_evidence_id": "P3.5-EXACT-ARTIFACT-REVIEW-R1",
+        "accepted_artifact_package_digest": EXPECTED_PACKAGE_DIGEST,
+        "authorization_id": "D-P3.5-RUNTIME-RESEARCH",
+        "contract_format": "hcam.phase3.p3_5.runtime-research-evidence.v1",
+        "defender_scan": {
+            "engine_version": defender.get("engine_version"),
+            "exit_code": defender["exit_code"],
+            "finding": defender["finding"],
+            "signature_version": defender.get("signature_version"),
+        },
+        "dependency_or_lockfile_change_performed": False,
+        "direct_packages": sorted(direct_packages, key=lambda item: item["name"].lower()),
+        "evidence_id": "P3.5-RUNTIME-RESEARCH-EVIDENCE-R1",
+        "external_evidence_sha256": evidence_hashes,
+        "external_quarantine_root": str(root),
+        "implementation_authorized": False,
+        "import_check": {
+            "blocked_network_attempts": imports["blocked_network_attempts"],
+            "imports": imports["imports"],
+            "model_font_or_media_loaded": False,
+            "network_access_performed": False,
+            "runtime_constructors_or_inference_performed": False,
+            "status": "pass_with_all_network_attempts_blocked",
+        },
+        "inventory": {
+            "license_metadata_missing_count": 0,
+            "native_file_count": inventory["native_file_count"],
+            "packaged_sensitive_asset_count": sum(
+                len(item["paths"]) for item in packaged_sensitive_assets
+            ),
+            "packaged_sensitive_assets": packaged_sensitive_assets,
+            "package_count": inventory["package_count"],
+            "packages": sorted(package_versions, key=lambda item: item["name"].lower()),
+            "wheel_bytes": sum(int(item["bytes"]) for item in wheels),
+            "wheel_count": len(wheels),
+            "wheelhouse_fingerprint_sha256": hashlib.sha256(
+                json.dumps(wheels, separators=(",", ":"), sort_keys=True).encode()
+            ).hexdigest().upper(),
+        },
+        "model_artifact_extraction_or_loading_performed": False,
+        "published_at": published_at,
+        "python_runtime": {
+            "implementation": "CPython",
+            "version": "3.12.13",
+        },
+        "remaining_blocks": [
+            "exact_Tesseract_5_engine_and_native_SBOM_unresolved",
+            "OCR-G0_and_OCR-G1_execution_blocked",
+            "reviewed_model_and_font_artifacts_not_authorized_for_extraction_or_loading",
+            "PLATE-D0_internal_detector_not_built_or_authorized",
+            "synthetic_generation_training_and_inference_not_authorized",
+            "runtime_license_metadata_not_a_legal_or_redistribution_approval",
+            "final_digest_bound_D-P3.5-START_confirmation_pending",
+        ],
+        "status": result["status"],
+        "vulnerability_audit": {
+            "dependency_count": audit["dependency_count"],
+            "status": audit["status"],
+            "vulnerability_count": audit["vulnerability_count"],
+        },
+    }
+    output_root.mkdir(parents=True, exist_ok=True)
+    _write_json(output_root / "p3-5-runtime-research-evidence.json", evidence)
+    _write_json(output_root / "p3-5-runtime-sbom.cdx.json", sbom)
+    _write_json(
+        output_root / "p3-5-runtime-license-review.json",
+        build_license_review(packages),
+    )
+    return {
+        "evidence_id": evidence["evidence_id"],
+        "output_files": [
+            "p3-5-runtime-research-evidence.json",
+            "p3-5-runtime-sbom.cdx.json",
+            "p3-5-runtime-license-review.json",
+        ],
+        "status": "published_owner_review_pending",
+    }
+
+
+def run_all(root: Path, authorization: dict[str, Any]) -> dict[str, Any]:
+    prepare_environment(root, authorization)
+    inspect_environment(root)
+    run_vulnerability_audit(root)
+    run_import_check(root)
+    run_defender_scan(root)
+    return finalize_existing(root)
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "command", choices=("validate", "prepare", "inspect", "audit", "import-check", "scan", "all")
+        "command",
+        choices=(
+            "validate",
+            "prepare",
+            "inspect",
+            "audit",
+            "import-check",
+            "scan",
+            "finalize",
+            "publish",
+            "all",
+        ),
     )
     parser.add_argument("--root", type=Path, required=True)
     parser.add_argument("--authorization", type=Path, default=DEFAULT_AUTHORIZATION)
     parser.add_argument("--proposal", type=Path, default=DEFAULT_PROPOSAL)
     parser.add_argument("--acceptance", type=Path, default=DEFAULT_ACCEPTANCE)
+    parser.add_argument("--output-root", type=Path, default=DEFAULT_PUBLISH_ROOT)
     return parser.parse_args(argv)
 
 
@@ -668,6 +1056,10 @@ def main(argv: list[str] | None = None) -> int:
             result = run_import_check(root)
         elif args.command == "scan":
             result = run_defender_scan(root)
+        elif args.command == "finalize":
+            result = finalize_existing(root)
+        elif args.command == "publish":
+            result = publish_repository_evidence(root, args.output_root)
         else:
             result = run_all(root, authorization)
     except (OSError, RuntimeResearchError, subprocess.TimeoutExpired) as exc:

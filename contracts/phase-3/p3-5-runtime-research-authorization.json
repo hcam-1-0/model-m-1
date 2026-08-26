@@ -38,7 +38,7 @@
     "binary_wheels_only": true,
     "cumulative_package_bytes": 4294967296,
     "environment_proxies": false,
-    "external_quarantine_root": "B:\\hcam-scan-temp\\phase-3\\p3-5-runtime",
+    "external_quarantine_root": "E:\\h-cam-research-cache\\phase-3\\p3-5-runtime",
     "import_network_access": false,
     "model_font_media_or_traineddata_loading": false,
     "package_source_builds": false,
@@ -86,7 +86,13 @@
     },
     {
       "selected_root": "B:\\hcam-scan-temp\\phase-3\\p3-5-runtime",
-      "reason": "existing_empty_H-CAM_research_parent_with_full_control"
+      "network_action_performed": true,
+      "outcome": "resolver_stopped_no_completed_wheelhouse_or_installation",
+      "reason": "owner_identified_B_as_RaiDrive_Google_Drive_and_prohibited_further_use"
+    },
+    {
+      "selected_root": "E:\\h-cam-research-cache\\phase-3\\p3-5-runtime",
+      "reason": "owner_freed_sufficient_local_space_and_required_non_RaiDrive_storage"
     }
   ],
   "status": "owner_approved_restricted",

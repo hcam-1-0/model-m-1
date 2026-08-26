@@ -475,9 +475,32 @@ generation, training, inference, media/data, implementation, and deployment
 remain prohibited.
 
 The initial `B:\hcam-research-quarantine` top-level creation was denied before
-any package or network action. The external root was operationally amended to
-`B:\hcam-scan-temp\phase-3\p3-5-runtime`, under an existing empty H-CAM
-research directory with full control; no authority was widened.
+any package or network action. A second attempt under `B:\hcam-scan-temp`
+reached dependency resolution but was stopped before a complete wheelhouse or
+installation after the owner identified `B:` as RaiDrive Google Drive and
+prohibited its use. The active local root is now
+`E:\h-cam-research-cache\phase-3\p3-5-runtime`; no authority was widened.
+
+### DR-0040: P3.5 Restricted Runtime Research Evidence
+
+Status: evidence complete; final digest-bound start approval pending.
+
+The authorized CPython 3.12.13 research resolved exactly four direct package
+roots into a 67-wheel binary closure outside Git. The offline installation has
+67 distributions and 185 native files. `pip check` passed, the vulnerability
+audit found zero known vulnerabilities, and Microsoft Defender reported no
+threats. Guarded imports loaded only the four declared packages, blocked one
+IPv6 socket attempt, and performed no successful network access. No OCR
+constructor, artifact extraction/loading, inference, generation, training,
+media, dataset, product implementation, or deployment action occurred.
+
+The repository retains a 319-component CycloneDX 1.6 SBOM, complete package
+license metadata, external evidence hashes, and explicit legal-review and
+Tesseract limitations. `B:` is RaiDrive Google Drive and must not be used; the
+validated quarantine is under `E:\h-cam-research-cache`. Runtime evidence is
+complete, but every SBOM component remains runtime-unauthorized and the early
+`D-P3.5-START` statement remains non-effective. Final owner review must bind the
+clean package digest and enumerate any future implementation authority.
 
 ## Decisions Explicitly Deferred
 

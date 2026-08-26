@@ -9,9 +9,11 @@ required binary-wheel transitive closure may be resolved from the official
 PyPI hosts.
 
 The external root is
-`B:\hcam-scan-temp\phase-3\p3-5-runtime`. The initial new top-level `B:` path
-was denied before any package action, so research moved under the existing
-empty H-CAM scan directory without changing scope. Repository dependency and
+`E:\h-cam-research-cache\phase-3\p3-5-runtime`. The initial `B:` path was
+denied before package action. A second `B:` attempt began dependency resolution
+but was stopped before any complete wheelhouse or installation when the owner
+identified `B:` as RaiDrive Google Drive and prohibited further use. Local
+space was then made available on `E:` without changing scope. Repository dependency and
 lock files must remain unchanged. The research may produce exact package and
 native inventories, license evidence, a CycloneDX SBOM, vulnerability and
 Defender results, and import-only proof with socket access denied.

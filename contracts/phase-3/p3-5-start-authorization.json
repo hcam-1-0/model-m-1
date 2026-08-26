@@ -43,7 +43,10 @@
       "proposal_record": "p3-5-runtime-review-proposal.json",
       "required_status": "owner_reviewed",
       "authorization_record": "p3-5-runtime-research-authorization.json",
-      "status": "owner_authorized_evidence_pending"
+      "evidence_record": "p3-5-runtime-research-evidence.json",
+      "license_review_record": "p3-5-runtime-license-review.json",
+      "sbom_record": "p3-5-runtime-sbom.cdx.json",
+      "status": "evidence_complete_owner_review_pending"
     }
   ],
   "prohibited_actions": [

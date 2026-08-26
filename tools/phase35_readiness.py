@@ -55,6 +55,15 @@ RUNTIME_REVIEW_PROPOSAL_PATH = (
 RUNTIME_RESEARCH_AUTHORIZATION_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-runtime-research-authorization.json"
 )
+RUNTIME_RESEARCH_EVIDENCE_PATH = (
+    ROOT / "contracts" / "phase-3" / "p3-5-runtime-research-evidence.json"
+)
+RUNTIME_SBOM_PATH = (
+    ROOT / "contracts" / "phase-3" / "p3-5-runtime-sbom.cdx.json"
+)
+RUNTIME_LICENSE_REVIEW_PATH = (
+    ROOT / "contracts" / "phase-3" / "p3-5-runtime-license-review.json"
+)
 P3_4_ACCEPTANCE_PATH = ROOT / "contracts" / "phase-3" / "p3-4-acceptance.json"
 
 P3_4_ACCEPTED_PACKAGE_DIGEST = (
@@ -74,6 +83,9 @@ P3_5_ARTIFACT_EVIDENCE_SHA256 = (
 P3_5_RUNTIME_PROPOSAL_SHA256 = (
     "3788950DFA0477DE59B1B135AA1AACDA7584A368C1219B3266F0265E6174A5F1"
 )
+P3_5_RUNTIME_SBOM_SHA256 = (
+    "07EE71F79BBD1368F620B7D915E4BF753E23DCC76696862C5E4ADB3CB23ED6DE"
+)
 
 PACKAGE_FILES = (
     ".github/workflows/python-ci.yml",
@@ -92,6 +104,9 @@ PACKAGE_FILES = (
     "contracts/phase-3/p3-5-research-sources.json",
     "contracts/phase-3/p3-5-runtime-review-proposal.json",
     "contracts/phase-3/p3-5-runtime-research-authorization.json",
+    "contracts/phase-3/p3-5-runtime-research-evidence.json",
+    "contracts/phase-3/p3-5-runtime-sbom.cdx.json",
+    "contracts/phase-3/p3-5-runtime-license-review.json",
     "contracts/phase-3/p3-5-start-authorization.json",
     "docs/phase-3/README.md",
     "docs/phase-3/acceptance-checklist.md",
@@ -110,6 +125,7 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-research-record.md",
     "docs/phase-3/p3-5-runtime-review-proposal.md",
     "docs/phase-3/p3-5-runtime-research-authorization.md",
+    "docs/phase-3/p3-5-runtime-research-evidence.md",
     "docs/phase-3/p3-5-start-intent.md",
     "tests/test_phase35_readiness.py",
     "tests/test_phase35_artifact_research.py",
@@ -561,13 +577,13 @@ def check_owner_gates() -> Check:
         )
         or runtime_research.get("decision_id") != "D-P3.5-RUNTIME-RESEARCH"
         or runtime_research.get("status")
-        != "owner_approved_restricted_evidence_pending"
+        != "owner_approved_restricted_evidence_complete"
         or start.get("decision_id") != "D-P3.5-START"
         or start.get("status") != "received_prerequisites_pending"
         or start.get("owner_statement_received") != "D-P3.5-START"
         or start.get("effective") is not False
         or record.get("status")
-        != "artifact_review_accepted_runtime_research_authorized_evidence_pending"
+        != "runtime_research_evidence_complete_final_start_pending"
         or record.get("scope")
         != "phase3.p3_5.synthetic_anpr.pre_implementation_research"
         or record.get("manual_gate_count") != 1
@@ -581,6 +597,11 @@ def check_owner_gates() -> Check:
         != "p3-5-artifact-review-acceptance.json"
         or record.get("runtime_research_authorization_record")
         != "p3-5-runtime-research-authorization.json"
+        or record.get("runtime_research_evidence_record")
+        != "p3-5-runtime-research-evidence.json"
+        or record.get("runtime_sbom_record") != "p3-5-runtime-sbom.cdx.json"
+        or record.get("runtime_license_review_record")
+        != "p3-5-runtime-license-review.json"
         or record.get("runtime_review_proposal_record")
         != "p3-5-runtime-review-proposal.json"
         or record.get("implementation_authorized") is not False
@@ -593,7 +614,7 @@ def check_owner_gates() -> Check:
     return Check(
         "owner_decisions",
         MANUAL,
-        "Artifact evidence is accepted and runtime research is authorized; final digest-bound start remains manual.",
+        "Artifact evidence is accepted and runtime research evidence is complete; final digest-bound start remains manual.",
         ("D-P3.5-START",),
     )
 
@@ -665,6 +686,11 @@ def check_start_intent() -> Check:
         for item in prerequisites
         if isinstance(item, dict)
     )
+    runtime_prerequisite = (
+        prerequisites[-1]
+        if prerequisites and isinstance(prerequisites[-1], dict)
+        else {}
+    )
     if (
         record.get("contract_format")
         != "hcam.phase3.p3_5.start-authorization.v1"
@@ -682,8 +708,14 @@ def check_start_intent() -> Check:
             "owner_approved",
             "owner_approved",
             "owner_accepted",
-            "owner_authorized_evidence_pending",
+            "evidence_complete_owner_review_pending",
         )
+        or runtime_prerequisite.get("evidence_record")
+        != "p3-5-runtime-research-evidence.json"
+        or runtime_prerequisite.get("sbom_record")
+        != "p3-5-runtime-sbom.cdx.json"
+        or runtime_prerequisite.get("license_review_record")
+        != "p3-5-runtime-license-review.json"
     ):
         return Check(
             "start_intent",
@@ -1173,7 +1205,8 @@ def check_runtime_research_authorization() -> Check:
         or limits.get("import_network_access") is not False
         or limits.get("model_font_media_or_traineddata_loading") is not False
         or limits.get("runtime_constructors_or_inference") is not False
-        or not str(limits.get("external_quarantine_root", "")).startswith("B:\\")
+        or limits.get("external_quarantine_root")
+        != "E:\\h-cam-research-cache\\phase-3\\p3-5-runtime"
     ):
         return Check(
             "runtime_research_authorization",
@@ -1185,6 +1218,279 @@ def check_runtime_research_authorization() -> Check:
         PASS,
         "D-P3.5-RUNTIME-RESEARCH authorizes four exact direct roots and their binary closure outside Git without model runtime authority.",
         tuple(f"{name}=={version}" for name, version in versions.items()),
+    )
+
+
+def check_runtime_research_evidence() -> Check:
+    try:
+        record = _json(RUNTIME_RESEARCH_EVIDENCE_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("runtime_research_evidence", FAIL, str(exc))
+    inventory = record.get("inventory")
+    imports = record.get("import_check")
+    defender = record.get("defender_scan")
+    audit = record.get("vulnerability_audit")
+    python_runtime = record.get("python_runtime")
+    direct_packages = record.get("direct_packages")
+    package_versions = (
+        {
+            str(item.get("name")).lower(): str(item.get("version"))
+            for item in direct_packages
+            if isinstance(item, dict)
+        }
+        if isinstance(direct_packages, list)
+        else {}
+    )
+    external_hashes = record.get("external_evidence_sha256")
+    required_external_files = {
+        "defender-scan.json",
+        "import-check.json",
+        "installed-environment.json",
+        "runtime-research-result.json",
+        "runtime-sbom.cdx.json",
+        "vulnerability-audit.json",
+        "wheelhouse.json",
+    }
+    hashes_are_exact = (
+        isinstance(external_hashes, dict)
+        and set(external_hashes) == required_external_files
+        and all(
+            isinstance(value, str)
+            and len(value) == 64
+            and value == value.upper()
+            for value in external_hashes.values()
+        )
+        and external_hashes.get("runtime-sbom.cdx.json")
+        == P3_5_RUNTIME_SBOM_SHA256
+    )
+    required_blocks = {
+        "exact_Tesseract_5_engine_and_native_SBOM_unresolved",
+        "OCR-G0_and_OCR-G1_execution_blocked",
+        "reviewed_model_and_font_artifacts_not_authorized_for_extraction_or_loading",
+        "PLATE-D0_internal_detector_not_built_or_authorized",
+        "synthetic_generation_training_and_inference_not_authorized",
+        "runtime_license_metadata_not_a_legal_or_redistribution_approval",
+        "final_digest_bound_D-P3.5-START_confirmation_pending",
+    }
+    if (
+        record.get("contract_format")
+        != "hcam.phase3.p3_5.runtime-research-evidence.v1"
+        or record.get("evidence_id") != "P3.5-RUNTIME-RESEARCH-EVIDENCE-R1"
+        or record.get("authorization_id") != "D-P3.5-RUNTIME-RESEARCH"
+        or record.get("accepted_artifact_evidence_id")
+        != "P3.5-EXACT-ARTIFACT-REVIEW-R1"
+        or record.get("accepted_artifact_package_digest")
+        != P3_5_ACCEPTED_ARTIFACT_PACKAGE_DIGEST
+        or record.get("status") != "complete_pass_final_owner_review_pending"
+        or record.get("external_quarantine_root")
+        != "E:\\h-cam-research-cache\\phase-3\\p3-5-runtime"
+        or record.get("implementation_authorized") is not False
+        or record.get("dependency_or_lockfile_change_performed") is not False
+        or record.get("model_artifact_extraction_or_loading_performed") is not False
+        or not isinstance(python_runtime, dict)
+        or python_runtime.get("implementation") != "CPython"
+        or python_runtime.get("version") != "3.12.13"
+        or package_versions
+        != {
+            "paddleocr": "3.7.0",
+            "paddlepaddle": "3.3.1",
+            "pillow": "12.3.0",
+            "regex": "2026.7.19",
+        }
+        or not isinstance(inventory, dict)
+        or inventory.get("package_count") != 67
+        or inventory.get("wheel_count") != 67
+        or inventory.get("wheel_bytes") != 213980084
+        or inventory.get("native_file_count") != 185
+        or inventory.get("packaged_sensitive_asset_count") != 6
+        or inventory.get("packaged_sensitive_assets")
+        != [
+            {
+                "name": "networkx",
+                "paths": [
+                    "networkx/drawing/tests/baseline/test_display_complex.png",
+                    "networkx/drawing/tests/baseline/test_display_empty_graph.png",
+                    "networkx/drawing/tests/baseline/test_display_house_with_colors.png",
+                    "networkx/drawing/tests/baseline/test_display_labels_and_colors.png",
+                    "networkx/drawing/tests/baseline/test_display_shortest_path.png",
+                    "networkx/drawing/tests/baseline/test_house_with_colors.png",
+                ],
+                "version": "3.6.1",
+            }
+        ]
+        or inventory.get("license_metadata_missing_count") != 0
+        or not isinstance(imports, dict)
+        or imports.get("status") != "pass_with_all_network_attempts_blocked"
+        or imports.get("network_access_performed") is not False
+        or imports.get("model_font_or_media_loaded") is not False
+        or imports.get("runtime_constructors_or_inference_performed") is not False
+        or len(imports.get("blocked_network_attempts", [])) != 1
+        or not isinstance(defender, dict)
+        or defender.get("exit_code") != 0
+        or defender.get("finding") != "no_threats_found"
+        or not defender.get("engine_version")
+        or not defender.get("signature_version")
+        or not isinstance(audit, dict)
+        or audit.get("dependency_count") != 67
+        or audit.get("vulnerability_count") != 0
+        or audit.get("status") != "pass_no_known_vulnerabilities"
+        or not hashes_are_exact
+        or set(record.get("remaining_blocks", [])) != required_blocks
+    ):
+        return Check(
+            "runtime_research_evidence",
+            FAIL,
+            "P3.5 runtime evidence is incomplete, changed, executable, or not bound to the accepted artifact packet.",
+        )
+    return Check(
+        "runtime_research_evidence",
+        PASS,
+        "The exact 67-wheel closure, scans, audit, and network-denied imports pass without implementation or model-runtime authority.",
+        ("P3.5-RUNTIME-RESEARCH-EVIDENCE-R1",),
+    )
+
+
+def _component_properties(component: dict[str, object]) -> dict[str, str]:
+    properties = component.get("properties")
+    if not isinstance(properties, list):
+        return {}
+    return {
+        str(item.get("name")): str(item.get("value"))
+        for item in properties
+        if isinstance(item, dict)
+    }
+
+
+def check_runtime_sbom() -> Check:
+    try:
+        record = _json(RUNTIME_SBOM_PATH)
+        evidence = _json(RUNTIME_RESEARCH_EVIDENCE_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("runtime_sbom", FAIL, str(exc))
+    components = record.get("components")
+    metadata = record.get("metadata")
+    if not isinstance(components, list) or not all(
+        isinstance(component, dict) for component in components
+    ):
+        return Check("runtime_sbom", FAIL, "Runtime SBOM components are invalid.")
+    typed_components = [component for component in components if isinstance(component, dict)]
+    package_components = [
+        component for component in typed_components if component.get("type") == "library"
+    ]
+    file_components = [
+        component for component in typed_components if component.get("type") == "file"
+    ]
+    wheel_components = [
+        component
+        for component in file_components
+        if "hcam:bytes" in _component_properties(component)
+    ]
+    native_components = [
+        component
+        for component in file_components
+        if "hcam:distribution" in _component_properties(component)
+    ]
+    evidence_inventory = evidence.get("inventory")
+    expected_package_names = (
+        sorted(
+            str(item.get("name")).lower()
+            for item in evidence_inventory.get("packages", [])
+            if isinstance(item, dict)
+        )
+        if isinstance(evidence_inventory, dict)
+        else []
+    )
+    actual_package_names = sorted(
+        str(component.get("name")).lower() for component in package_components
+    )
+    metadata_properties = (
+        _component_properties(metadata)
+        if isinstance(metadata, dict)
+        else {}
+    )
+    sbom_sha256 = hashlib.sha256(RUNTIME_SBOM_PATH.read_bytes()).hexdigest().upper()
+    if (
+        record.get("bomFormat") != "CycloneDX"
+        or record.get("specVersion") != "1.6"
+        or sbom_sha256 != P3_5_RUNTIME_SBOM_SHA256
+        or len(typed_components) != 319
+        or len(package_components) != 67
+        or len(wheel_components) != 67
+        or len(native_components) != 185
+        or actual_package_names != expected_package_names
+        or any(
+            _component_properties(component).get("hcam:runtimeAuthorized")
+            != "false"
+            for component in typed_components
+        )
+        or metadata_properties.get("hcam:authorizationId")
+        != "D-P3.5-RUNTIME-RESEARCH"
+        or metadata_properties.get("hcam:modelLoadingPerformed") != "false"
+        or metadata_properties.get("hcam:implementationAuthorized") != "false"
+    ):
+        return Check(
+            "runtime_sbom",
+            FAIL,
+            "The runtime SBOM is incomplete, changed, or marks a component executable.",
+        )
+    return Check(
+        "runtime_sbom",
+        PASS,
+        "CycloneDX records 67 packages, 67 wheels, and 185 native files; all 319 components remain runtime unauthorized.",
+    )
+
+
+def check_runtime_license_review() -> Check:
+    try:
+        record = _json(RUNTIME_LICENSE_REVIEW_PATH)
+        evidence = _json(RUNTIME_RESEARCH_EVIDENCE_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("runtime_license_review", FAIL, str(exc))
+    packages = record.get("packages")
+    inventory = evidence.get("inventory")
+    if not isinstance(packages, list) or not isinstance(inventory, dict):
+        return Check(
+            "runtime_license_review", FAIL, "Runtime license inventory is invalid."
+        )
+    inventory_names = sorted(
+        str(item.get("name")).lower()
+        for item in inventory.get("packages", [])
+        if isinstance(item, dict)
+    )
+    license_names = sorted(
+        str(item.get("name")).lower()
+        for item in packages
+        if isinstance(item, dict)
+    )
+    if (
+        record.get("contract_format")
+        != "hcam.phase3.p3_5.runtime-license-review.v1"
+        or record.get("evidence_id") != "P3.5-RUNTIME-LICENSE-REVIEW-R1"
+        or record.get("authorization_id") != "D-P3.5-RUNTIME-RESEARCH"
+        or record.get("status") != "metadata_complete_legal_review_deferred"
+        or record.get("package_count") != 67
+        or record.get("metadata_missing_count") != 0
+        or record.get("legal_approval_performed") is not False
+        or record.get("implementation_or_redistribution_authorized") is not False
+        or len(packages) != 67
+        or license_names != inventory_names
+        or any(
+            not isinstance(item, dict)
+            or not item.get("license_summary")
+            or "raw_license" in item
+            or not isinstance(item.get("review_flags"), list)
+            for item in packages
+        )
+    ):
+        return Check(
+            "runtime_license_review",
+            FAIL,
+            "Runtime license metadata is incomplete or incorrectly grants legal, redistribution, or implementation approval.",
+        )
+    return Check(
+        "runtime_license_review",
+        PASS,
+        "License metadata covers all 67 packages while legal and redistribution approval remain explicitly deferred.",
     )
 
 
@@ -1209,6 +1515,9 @@ def check_documentation_sync() -> Check:
             "p3-5-start-authorization.json",
             "p3-5-runtime-review-proposal.json",
             "p3-5-runtime-research-authorization.json",
+            "p3-5-runtime-research-evidence.json",
+            "p3-5-runtime-sbom.cdx.json",
+            "p3-5-runtime-license-review.json",
         ),
         "docs/phase-3/README.md": (
             "[P3.5 artifact model cards](p3-5-artifact-model-cards.md)",
@@ -1222,11 +1531,13 @@ def check_documentation_sync() -> Check:
             "[P3.5 start intent](p3-5-start-intent.md)",
             "[P3.5 runtime review proposal](p3-5-runtime-review-proposal.md)",
             "[P3.5 runtime research authorization](p3-5-runtime-research-authorization.md)",
+            "[P3.5 runtime research evidence](p3-5-runtime-research-evidence.md)",
         ),
         "docs/phase-3/decision-register.md": (
             "DR-0035",
             "DR-0037",
             "DR-0039",
+            "DR-0040",
             "D-P3.5-PLAN-AUTH",
             "D-P3.5-ARTIFACT-RESEARCH",
             "D-P3.5-START",
@@ -1234,6 +1545,15 @@ def check_documentation_sync() -> Check:
         "docs/phase-3/implementation-backlog.md": (
             "D-P3.4-ACCEPTANCE",
             "D-P3.5-PLAN-AUTH",
+            "guarded import evidence are complete",
+        ),
+        "docs/phase-3/p3-5-runtime-research-evidence.md": (
+            "P3.5-RUNTIME-RESEARCH-EVIDENCE-R1",
+            "67 files, 213,980,084 bytes",
+            "One IPv6 socket attempt blocked",
+            "NetworkX 3.6.1 contains six packaged",
+            "D-P3.5-START",
+            "RaiDrive",
         ),
         ".github/workflows/python-ci.yml": (
             "python tools/phase35_readiness.py --strict",
@@ -1304,6 +1624,9 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_artifact_model_cards(),
         check_runtime_review_proposal(),
         check_runtime_research_authorization(),
+        check_runtime_research_evidence(),
+        check_runtime_sbom(),
+        check_runtime_license_review(),
         check_start_intent(),
         check_documentation_sync(),
     ]
@@ -1319,7 +1642,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
     status = (
         "invalid"
         if failures
-        else "artifact_review_accepted_runtime_research_authorized_evidence_pending"
+        else "runtime_research_evidence_complete_final_start_pending"
         if manual_gates
         else "implementation_authorized_generated_only"
     )

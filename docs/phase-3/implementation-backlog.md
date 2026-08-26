@@ -212,15 +212,17 @@ research for seven external artifacts is authorized under
 `D-P3.5-ARTIFACT-RESEARCH`; acquisition, hashes, passive inspection, artifact
 SBOM, model cards, and Defender scan are complete and the exact packet is owner
 accepted. `D-P3.5-RUNTIME-RESEARCH` authorizes the isolated dependency closure;
-runtime evidence remains in progress, and the early `D-P3.5-START` remains
-non-effective until exact runtime review is complete and accepted. No model
+the exact Python wheel closure, SBOM, license metadata, vulnerability audit,
+Defender scan, and guarded import evidence are complete. The early
+`D-P3.5-START` remains non-effective until final owner review. No model
 extraction or loading, generation, training, inference, product implementation, or
 media/data access is authorized.
 
 Artifact preparation status: proposal R0 records eight recommended artifact
 slots, immutable source metadata, and bounded sizes. Seven external slots are
-now present in quarantine with exact evidence. The runtime dependency closure,
-Tesseract engine, internal detector slot, and all execution remain blocked.
+now present in quarantine with exact evidence. The Python dependency closure is
+reviewed but not runtime-authorized. The Tesseract engine, internal detector
+slot, artifact loading, and all execution remain blocked.
 
 Deliverables:
 

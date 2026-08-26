@@ -89,10 +89,17 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-5-runtime-research-authorization.json`: digest-bound authority for an
   external binary-wheel dependency closure, SBOM, scans, audit, and import-only
   proof with no repository dependency or model-runtime authority.
-- `p3-5-entry-gates.json`: four approved technical choices and the remaining,
-  prerequisite-blocked `D-P3.5-START` statement.
+- `p3-5-runtime-research-evidence.json`: exact CPython and binary-wheel closure,
+  scan and audit results, guarded import behavior, external evidence hashes,
+  and continuing implementation blocks.
+- `p3-5-runtime-sbom.cdx.json`: CycloneDX 1.6 inventory of all 67 packages, 67
+  wheels, and 185 native files, with every component runtime unauthorized.
+- `p3-5-runtime-license-review.json`: normalized metadata for all 67 package
+  licenses and review flags; it grants no legal or redistribution approval.
+- `p3-5-entry-gates.json`: four approved technical choices, completed runtime
+  research evidence, and the remaining final `D-P3.5-START` gate.
 - `p3-5-start-authorization.json`: the exact received start intent, four
-  satisfied technical prerequisites, the in-progress exact artifact review,
+  satisfied technical and artifact prerequisites, completed runtime evidence,
   empty implementation allowlists, and continuing prohibitions.
 
 Verify all tracked snapshots:
@@ -115,7 +122,7 @@ uv run --locked --extra dev --extra analytics python tools/phase34_implementatio
 uv run --locked --extra dev python tools/phase35_readiness.py --strict
 uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
-uv run --locked --extra dev python tools/phase35_runtime_research.py all --root 'B:\hcam-scan-temp\phase-3\p3-5-runtime'
+uv run --locked --extra dev python tools/phase35_runtime_research.py all --root 'E:\h-cam-research-cache\phase-3\p3-5-runtime'
 ```
 
 Rewriting snapshots requires an explicit review acknowledgement:

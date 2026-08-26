@@ -8,16 +8,16 @@ from pathlib import Path
 from tools import phase35_readiness as readiness
 
 
-def test_p3_5_runtime_research_is_authorized_with_one_manual_gate() -> None:
+def test_p3_5_runtime_research_evidence_is_complete_with_one_manual_gate() -> None:
     report = readiness.build_report()
 
     assert (
         report.status
-        == "artifact_review_accepted_runtime_research_authorized_evidence_pending"
+        == "runtime_research_evidence_complete_final_start_pending"
     )
     assert report.failures == 0
     assert report.manual_gates == 1
-    assert report.package_file_count == 43
+    assert report.package_file_count == 47
     assert len(report.package_digest) == 64
 
 
@@ -40,6 +40,9 @@ def test_p3_5_technical_checks_pass() -> None:
         readiness.check_artifact_model_cards(),
         readiness.check_runtime_review_proposal(),
         readiness.check_runtime_research_authorization(),
+        readiness.check_runtime_research_evidence(),
+        readiness.check_runtime_sbom(),
+        readiness.check_runtime_license_review(),
         readiness.check_start_intent(),
         readiness.check_documentation_sync(),
     )
@@ -163,6 +166,69 @@ def test_p3_5_runtime_research_authorization_is_external_and_non_runtime() -> No
     assert record["dependency_or_lockfile_change_authorized"] is False
     assert record["implementation_authorized"] is False
     assert readiness.check_runtime_research_authorization().status == readiness.PASS
+
+
+def test_p3_5_runtime_research_evidence_is_exact_and_non_executing() -> None:
+    record = json.loads(
+        readiness.RUNTIME_RESEARCH_EVIDENCE_PATH.read_text(encoding="utf-8")
+    )
+
+    assert record["evidence_id"] == "P3.5-RUNTIME-RESEARCH-EVIDENCE-R1"
+    assert record["inventory"]["license_metadata_missing_count"] == 0
+    assert record["inventory"]["native_file_count"] == 185
+    assert record["inventory"]["package_count"] == 67
+    assert record["inventory"]["packaged_sensitive_asset_count"] == 6
+    assert record["inventory"]["wheel_bytes"] == 213980084
+    assert record["inventory"]["wheel_count"] == 67
+    assert record["vulnerability_audit"]["vulnerability_count"] == 0
+    assert record["defender_scan"]["finding"] == "no_threats_found"
+    assert record["import_check"]["network_access_performed"] is False
+    assert record["import_check"]["runtime_constructors_or_inference_performed"] is False
+    assert record["model_artifact_extraction_or_loading_performed"] is False
+    assert record["implementation_authorized"] is False
+    assert readiness.check_runtime_research_evidence().status == readiness.PASS
+
+
+def test_p3_5_runtime_evidence_rejects_implementation_authority(monkeypatch) -> None:
+    original_json = readiness._json
+
+    def load(path: Path) -> dict[str, object]:
+        record = original_json(path)
+        if path == readiness.RUNTIME_RESEARCH_EVIDENCE_PATH:
+            record["implementation_authorized"] = True
+        return record
+
+    monkeypatch.setattr(readiness, "_json", load)
+
+    assert readiness.check_runtime_research_evidence().status == readiness.FAIL
+
+
+def test_p3_5_runtime_sbom_is_complete_and_runtime_blocked() -> None:
+    record = json.loads(readiness.RUNTIME_SBOM_PATH.read_text(encoding="utf-8"))
+
+    assert len(record["components"]) == 319
+    assert all(
+        {item["name"]: item["value"] for item in component["properties"]}[
+            "hcam:runtimeAuthorized"
+        ]
+        == "false"
+        for component in record["components"]
+    )
+    assert readiness.check_runtime_sbom().status == readiness.PASS
+
+
+def test_p3_5_runtime_license_metadata_is_complete_but_not_approved() -> None:
+    record = json.loads(
+        readiness.RUNTIME_LICENSE_REVIEW_PATH.read_text(encoding="utf-8")
+    )
+
+    assert record["package_count"] == 67
+    assert record["evidence_id"] == "P3.5-RUNTIME-LICENSE-REVIEW-R1"
+    assert record["authorization_id"] == "D-P3.5-RUNTIME-RESEARCH"
+    assert record["metadata_missing_count"] == 0
+    assert record["legal_approval_performed"] is False
+    assert record["implementation_or_redistribution_authorized"] is False
+    assert readiness.check_runtime_license_review().status == readiness.PASS
 
 
 def test_p3_5_start_intent_is_non_effective_and_has_no_authority() -> None:

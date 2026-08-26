@@ -45,6 +45,7 @@ def _write_distribution(
     name: str,
     version: str,
     native: bool = False,
+    sensitive_asset: bool = False,
 ) -> None:
     package_dir = site_packages / name.lower()
     package_dir.mkdir(parents=True, exist_ok=True)
@@ -63,6 +64,10 @@ def _write_distribution(
         native_file = package_dir / "runtime.pyd"
         native_file.write_bytes(b"synthetic-native")
         files.append(native_file)
+    if sensitive_asset:
+        sensitive_file = package_dir / "baseline.png"
+        sensitive_file.write_bytes(b"synthetic-packaged-test-image")
+        files.append(sensitive_file)
     record = dist_info / "RECORD"
     with record.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
@@ -75,7 +80,11 @@ def test_inventory_hashes_native_files_without_loading_them(tmp_path: Path) -> N
     site_packages = tmp_path / "site-packages"
     site_packages.mkdir()
     _write_distribution(
-        site_packages, name="paddlepaddle", version="3.3.1", native=True
+        site_packages,
+        name="paddlepaddle",
+        version="3.3.1",
+        native=True,
+        sensitive_asset=True,
     )
 
     packages, native = runtime._distribution_inventory(site_packages)
@@ -83,6 +92,9 @@ def test_inventory_hashes_native_files_without_loading_them(tmp_path: Path) -> N
     assert packages[0]["name"] == "paddlepaddle"
     assert packages[0]["native_file_count"] == 1
     assert packages[0]["direct"] is True
+    assert packages[0]["sensitive_asset_paths"] == [
+        "paddlepaddle/baseline.png"
+    ]
     assert native[0]["path"] == "paddlepaddle/runtime.pyd"
     assert len(native[0]["sha256"]) == 64
 
@@ -91,6 +103,11 @@ def test_sbom_marks_every_component_runtime_unauthorized() -> None:
     packages = [
         {
             "direct": True,
+            "license": {
+                "classifiers": [],
+                "expression": "Apache-2.0",
+                "raw": None,
+            },
             "name": "regex",
             "record_sha256": "A" * 64,
             "version": "2026.7.19",
@@ -104,10 +121,13 @@ def test_sbom_marks_every_component_runtime_unauthorized() -> None:
         }
     ]
 
-    sbom = runtime.build_sbom(packages, native)
+    wheels = [{"bytes": 123, "filename": "regex.whl", "sha256": "C" * 64}]
+
+    sbom = runtime.build_sbom(packages, native, wheels)
 
     assert sbom["bomFormat"] == "CycloneDX"
     assert sbom["specVersion"] == "1.6"
+    assert len(sbom["components"]) == 3
     assert all(
         {item["name"]: item["value"] for item in component["properties"]}[
             "hcam:runtimeAuthorized"
@@ -117,12 +137,28 @@ def test_sbom_marks_every_component_runtime_unauthorized() -> None:
     )
 
 
+def test_license_review_hashes_long_raw_text_without_embedding_it() -> None:
+    package = {
+        "license": {"classifiers": [], "expression": None, "raw": "GPL " * 200},
+        "name": "example",
+        "version": "1.0",
+    }
+
+    review = runtime.build_license_review([package])
+
+    assert review["metadata_missing_count"] == 0
+    assert review["packages"][0]["license_summary"] == "SEE-INSTALLED-METADATA"
+    assert len(review["packages"][0]["raw_license_sha256"]) == 64
+    assert "GPL" in review["packages"][0]["review_flags"]
+
+
 def test_import_check_requires_exact_versions_and_zero_network(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
     (tmp_path / "venv" / "Scripts").mkdir(parents=True)
     output = runtime.IMPORT_RESULT_PREFIX + json.dumps(
         {
+            "blocked_network_attempts": [],
             "constructors_called": False,
             "imports": {
                 "PIL": "12.3.0",
@@ -131,6 +167,7 @@ def test_import_check_requires_exact_versions_and_zero_network(
                 "regex": "2026.7.19",
             },
             "model_font_or_media_loaded": False,
+            "network_access_performed": False,
             "network_attempt_count": 0,
             "network_guard": "socket_creation_and_resolution_denied",
             "status": "pass",
@@ -160,3 +197,23 @@ def test_safe_environment_removes_proxy_configuration(
     assert not any(key.lower().endswith("_proxy") for key in environment)
     assert environment["UV_NO_CONFIG"] == "1"
     assert environment["UV_PYTHON_DOWNLOADS"] == "never"
+    assert environment["PIP_NO_INPUT"] == "1"
+    assert environment["TEMP"] == str(tmp_path / "temp")
+
+
+def test_find_installed_python_312_uses_uv_managed_runtime(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    interpreter = (
+        tmp_path
+        / "uv"
+        / "python"
+        / "cpython-3.12-windows-x86_64-none"
+        / "python.exe"
+    )
+    interpreter.parent.mkdir(parents=True)
+    interpreter.write_bytes(b"synthetic-executable")
+    monkeypatch.setenv("APPDATA", str(tmp_path))
+    monkeypatch.delenv("UV_PYTHON_INSTALL_DIR", raising=False)
+
+    assert runtime._find_installed_python_312() == interpreter.resolve(strict=True)
