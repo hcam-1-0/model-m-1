@@ -99,6 +99,8 @@ autonomous enforcement.
 | [P3.5 W7 normalization and abstention](p3-5-w7-normalization-abstention.md) | Pinned NFC/grapheme semantics, raw-preserving normalization, candidate-local calibration fixtures, mandatory abstention, and zero-retention evidence |
 | [P3.5 W8 bounded consensus](p3-5-w8-bounded-consensus.md) | Anonymous stream/epoch/track-local bounded state, exact-string weighted voting, lifecycle and overload evidence, mandatory abstention, and zero retention |
 | [P3.5 W9 owner decision packet](p3-5-w9-decision-packet.md) | Planning-only generated-closure options, exact continuing prohibitions, and separate `D-P3.5-W9-START` gate |
+| [P3.5 W9 narrow closure authorization](p3-5-w9-start-authorization.md) | Digest-bound Option A action/path allowlist, zero network actions, and continuing blocks |
+| [P3.5 W9 narrow generated-only closure](p3-5-w9-closure.md) | Aggregate W1-W8 manifest, bounded stress, offline package inspection, zero-retention proof, rollback, and W10 handoff |
 | [P3.5 plan](p3-5-plan.md) | Synthetic corpus, localization, OCR, normalization, consensus, privacy, and evidence design |
 | [P3.5 owner decision packet](p3-5-decision-packet.md) | Four technical choices and separate implementation-start gate |
 | [P3.5 planning readiness](p3-5-planning-readiness-report.md) | Historical machine-verified planning boundary and then-pending owner gates |

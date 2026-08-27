@@ -39,6 +39,10 @@ abstention while numeric quality thresholds remain unapproved.
 five-observation, two-second, and 256-state bounds. It computes deterministic
 exact-string confidence-weighted votes but always abstains because support and
 margin thresholds remain unapproved.
+`P35-W9` is authorized under `D-P3.5-W9-START: A` and adds only aggregate
+closure evidence, bounded generated-contract stress, offline package inspection,
+zero-retention/security proof, and source-only rollback documentation. W10
+acceptance remains separate.
 None of these milestones adds a real CCTV media path.
 
 A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
@@ -69,8 +73,10 @@ The [P3.5 W8 bounded consensus](docs/phase-3/p3-5-w8-bounded-consensus.md)
 records deterministic stream-local lifecycle, overload, ordering, isolation,
 mandatory-abstention, and aggregate-only zero-retention evidence.
 The [P3.5 W9 decision packet](docs/phase-3/p3-5-w9-decision-packet.md)
-defines four bounded closure options. It is planning-only and requires the
-exact `D-P3.5-W9-START` owner decision before W9 implementation.
+records the selected narrow closure. The
+[W9 authorization](docs/phase-3/p3-5-w9-start-authorization.md) binds its exact
+scope, and the [W9 closure report](docs/phase-3/p3-5-w9-closure.md) records the
+aggregate evidence and remaining W10 gate.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
@@ -111,6 +117,7 @@ uv run --locked python tools/phase35_latin_ocr.py check-evidence
 uv run --locked python tools/phase35_auxiliary_ocr.py check-evidence
 uv run --locked python tools/phase35_normalization.py check-evidence
 uv run --locked python tools/phase35_consensus.py check-evidence
+uv run --locked --extra dev python tools/phase35_w9_closure.py check-evidence
 uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked --extra dev python tools/phase35_runtime_research.py all --root 'E:\h-cam-research-cache\phase-3\p3-5-runtime'

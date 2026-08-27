@@ -527,7 +527,7 @@ remote Git action is authorized. This is a start gate, not P3.5 acceptance.
 
 ### DR-0042: P3.5 W9 Closure Scope Proposal
 
-Status: `owner_decision_required`; implementation not started.
+Status: Option A approved and effective under `D-P3.5-W9-START`.
 
 The validated W1-W8 dependency is repository head
 `b282f1bf45e38bcdfd49f976e974ce92e9d5f08b`, package digest
@@ -536,11 +536,38 @@ and W8 evidence SHA-256
 `58E7E4479DEB554D4B99F0CC1868B4DA61E9DED292E3F11942B740AEF02FC124`.
 
 The effective `D-P3.5-START` allowlist does not enumerate the broader W9
-resource, packaging, and rollback work. The new packet therefore offers narrow
+resource, packaging, and rollback work. The packet therefore offered narrow
 generated-only closure (A, recommended), exact-runtime revalidation (B), a
 larger generated benchmark requiring a second execution plan (C), or deferral
-(D). No option is selected and no W9 work is authorized. The exact next gate is
-`D-P3.5-W9-START`; `continue` or acceptance of W8 does not satisfy it.
+(D).
+
+On 2026-08-27, `mayank-admin` supplied `D-P3.5-W9-START: A`. The authorization
+binds proposal SHA-256
+`62B711EAF2C1EDD21CBCD07751D9A30EF6FA61C11E9ECB190CE6614FE67AB796`,
+planning digest
+`9BCC9E9C068E03E94E5461AABDE3B50A4766498406643EE253AF66ECAD8A9B7B`,
+and repository head `6d546fbe1a074e4090fa6d006a67421a27746afe`. It permits only
+the exact Option A actions and paths with zero network, external-runtime, model,
+font, final-test, camera/media, persistence, deployment, P3.6, or remote Git
+authority. W10 remains separate.
+
+### DR-0043: P3.5 W9 Generated-Only Closure Evidence
+
+Status: technically validated; awaiting W10 clean-source owner acceptance.
+
+The closure checker consolidates seven W1-W8 evidence groups, executes two
+deterministic 10,000-observation generated-contract stress replays, closes and
+abstains all 2,208 results per replay, reaches the exact 256-state ceiling, and
+records four fail-closed overload results. Default-off and socket-denial checks
+pass. No model, font, artifact, external runtime, final-test split, camera,
+external input, accepted value, operational event, or retained text/identifier
+value is used.
+
+An isolated offline source build produces one wheel and one sdist. Archive
+inspection rejects unsafe entries and model/weight/trained-data/font/image/video
+payloads, retains only aggregate counts and cryptographic digests, and leaves
+the generated archives untracked. No application or database rollback is
+needed. The next gate is W10 clean-source evidence and explicit owner acceptance.
 
 ## Decisions Explicitly Deferred
 

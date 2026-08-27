@@ -1,6 +1,7 @@
 # P3.5 W9 Owner Decision Packet
 
-Status: planning complete; owner decision required; implementation not started.
+Status: Option A owner authorized under `D-P3.5-W9-START`; implementation in
+progress; W10 remains separate and unauthorized.
 
 Decision ID: `D-P3.5-W9-START`.
 
@@ -134,3 +135,17 @@ or any continuing prohibition.
 Selections `B`, `C`, or `D` must use the same decision ID and selected letter.
 No work is authorized by silence, `continue`, `accepted`, or a decision that
 omits `D-P3.5-W9-START`.
+
+## Owner Decision Record
+
+On 2026-08-27, `mayank-admin` supplied:
+
+> D-P3.5-W9-START: A
+
+The decision is effective only against proposal SHA-256
+`62B711EAF2C1EDD21CBCD07751D9A30EF6FA61C11E9ECB190CE6614FE67AB796`,
+planning package digest
+`9BCC9E9C068E03E94E5461AABDE3B50A4766498406643EE253AF66ECAD8A9B7B`,
+and authorization repository head
+`6d546fbe1a074e4090fa6d006a67421a27746afe`. See the
+[W9 narrow closure authorization](p3-5-w9-start-authorization.md).

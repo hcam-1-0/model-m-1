@@ -12,11 +12,11 @@ def test_p3_5_generated_only_start_is_authorized_without_manual_gates() -> None:
     report = readiness.build_report()
 
     assert (
-        report.status == "implementation_authorized_generated_only_staged"
+        report.status == "w9_validated_awaiting_w10_acceptance"
     )
     assert report.failures == 0
     assert report.manual_gates == 0
-    assert report.package_file_count == 93
+    assert report.package_file_count == 99
     assert len(report.package_digest) == 64
 
 
@@ -38,6 +38,8 @@ def test_p3_5_technical_checks_pass() -> None:
         readiness.check_w7_normalization_evidence(),
         readiness.check_w8_consensus_evidence(),
         readiness.check_w9_scope_proposal(),
+        readiness.check_w9_start_authorization(),
+        readiness.check_w9_closure_evidence(),
         readiness.check_artifact_proposal(),
         readiness.check_owner_decisions_record(),
         readiness.check_artifact_research_authorization(),
@@ -77,6 +79,39 @@ def test_p3_5_w9_scope_proposal_is_non_authorizing() -> None:
     assert record["current_repository_head"] == readiness.P3_5_W8_BASELINE_REPOSITORY_HEAD
     assert record["current_p3_5_package_digest"] == readiness.P3_5_W1_W8_PACKAGE_DIGEST
     assert readiness.check_w9_scope_proposal().status == readiness.PASS
+
+
+def test_p3_5_w9_start_is_exactly_option_a_without_acceptance() -> None:
+    record = json.loads(
+        readiness.W9_START_AUTHORIZATION_PATH.read_text(encoding="utf-8")
+    )
+
+    assert record["owner_statement_received"] == "D-P3.5-W9-START: A"
+    assert record["selected_option"] == "A"
+    assert record["planning_package_digest"] == (
+        readiness.P3_5_W9_PLANNING_PACKAGE_DIGEST
+    )
+    assert record["proposal_sha256"] == readiness.P3_5_W9_PROPOSAL_SHA256
+    assert record["allowed_network_actions"] == []
+    assert record["implementation_authorized"] is True
+    assert record["acceptance_authorized"] is False
+    assert record["w10_authorized"] is False
+    assert readiness.check_w9_start_authorization().status == readiness.PASS
+
+
+def test_p3_5_w9_closure_remains_aggregate_and_non_accepting() -> None:
+    record = json.loads(
+        readiness.W9_CLOSURE_EVIDENCE_PATH.read_text(encoding="utf-8")
+    )
+
+    assert record["status"] == "validated_generated_only_closure"
+    assert record["resource_stress"]["observation_count"] == 10_000
+    assert record["resource_stress"]["closed_result_count"] == 2_208
+    assert record["security_evidence"]["network_access_count"] == 0
+    assert record["security_evidence"]["model_or_font_execution_count"] == 0
+    assert record["acceptance_authorized"] is False
+    assert record["w10_authorized"] is False
+    assert readiness.check_w9_closure_evidence().status == readiness.PASS
 
 
 def test_p3_5_owner_decisions_record_exact_recommended_baseline() -> None:

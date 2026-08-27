@@ -127,6 +127,12 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-5-w9-scope-proposal.json`: non-authorizing W9 closure proposal with four
   bounded options, the recommended generated-contract-only scope, exact
   continuing prohibitions, and required `D-P3.5-W9-START: A` owner statement.
+- `p3-5-w9-start-authorization.json`: owner-authorized Option A bound to the
+  exact planning digest, proposal hash, baseline head, actions, path allowlist,
+  zero network actions, and continuing prohibitions.
+- `p3-5-w9-closure-evidence.json`: canonical aggregate-only closure evidence
+  for W1-W8 hashes, deterministic bounded resource replay, default-off/network
+  denial, package inventory digests, zero retention, and source-only rollback.
 
 Verify all tracked snapshots:
 
@@ -151,6 +157,7 @@ uv run --locked python tools/phase35_latin_ocr.py check-evidence
 uv run --locked python tools/phase35_auxiliary_ocr.py check-evidence
 uv run --locked python tools/phase35_normalization.py check-evidence
 uv run --locked python tools/phase35_consensus.py check-evidence
+uv run --locked --extra dev python tools/phase35_w9_closure.py check-evidence
 uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked --extra dev python tools/phase35_runtime_research.py all --root 'E:\h-cam-research-cache\phase-3\p3-5-runtime'

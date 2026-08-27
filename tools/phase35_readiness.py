@@ -52,6 +52,12 @@ START_AUTHORIZATION_PATH = (
 W9_SCOPE_PROPOSAL_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-w9-scope-proposal.json"
 )
+W9_START_AUTHORIZATION_PATH = (
+    ROOT / "contracts" / "phase-3" / "p3-5-w9-start-authorization.json"
+)
+W9_CLOSURE_EVIDENCE_PATH = (
+    ROOT / "contracts" / "phase-3" / "p3-5-w9-closure-evidence.json"
+)
 RESEARCH_PATH = ROOT / "contracts" / "phase-3" / "p3-5-research-sources.json"
 RUNTIME_REVIEW_PROPOSAL_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-runtime-review-proposal.json"
@@ -112,6 +118,13 @@ P3_5_W8_BASELINE_REPOSITORY_HEAD = "b282f1bf45e38bcdfd49f976e974ce92e9d5f08b"
 P3_5_W1_W8_PACKAGE_DIGEST = (
     "96A35F98059918181FD59687BA96A4283ED9885BAD7D34FE1915D6288174C3DF"
 )
+P3_5_W9_AUTHORIZATION_HEAD = "6d546fbe1a074e4090fa6d006a67421a27746afe"
+P3_5_W9_PLANNING_PACKAGE_DIGEST = (
+    "9BCC9E9C068E03E94E5461AABDE3B50A4766498406643EE253AF66ECAD8A9B7B"
+)
+P3_5_W9_PROPOSAL_SHA256 = (
+    "62B711EAF2C1EDD21CBCD07751D9A30EF6FA61C11E9ECB190CE6614FE67AB796"
+)
 
 PACKAGE_FILES = (
     ".github/workflows/python-ci.yml",
@@ -151,7 +164,9 @@ PACKAGE_FILES = (
     "contracts/phase-3/p3-5-runtime-sbom.cdx.json",
     "contracts/phase-3/p3-5-runtime-license-review.json",
     "contracts/phase-3/p3-5-start-authorization.json",
+    "contracts/phase-3/p3-5-w9-closure-evidence.json",
     "contracts/phase-3/p3-5-w9-scope-proposal.json",
+    "contracts/phase-3/p3-5-w9-start-authorization.json",
     "docs/phase-3/README.md",
     "docs/phase-3/acceptance-checklist.md",
     "docs/phase-3/decision-register.md",
@@ -179,7 +194,9 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-w6-auxiliary-scripts.md",
     "docs/phase-3/p3-5-w7-normalization-abstention.md",
     "docs/phase-3/p3-5-w8-bounded-consensus.md",
+    "docs/phase-3/p3-5-w9-closure.md",
     "docs/phase-3/p3-5-w9-decision-packet.md",
+    "docs/phase-3/p3-5-w9-start-authorization.md",
     "tests/test_analytics_anpr_auxiliary.py",
     "tests/test_analytics_anpr_consensus.py",
     "tests/test_analytics_anpr_generator.py",
@@ -193,6 +210,7 @@ PACKAGE_FILES = (
     "tests/test_phase35_normalization.py",
     "tests/test_phase35_auxiliary_ocr.py",
     "tests/test_phase35_readiness.py",
+    "tests/test_phase35_w9_closure.py",
     "tests/test_phase35_artifact_research.py",
     "tests/test_phase35_artifact_inspect.py",
     "tests/test_phase35_runtime_research.py",
@@ -207,6 +225,7 @@ PACKAGE_FILES = (
     "tools/phase35_auxiliary_ocr_worker.py",
     "tools/phase35_runtime_research.py",
     "tools/phase35_readiness.py",
+    "tools/phase35_w9_closure.py",
 )
 
 CANDIDATE_PATHS = (
@@ -319,7 +338,7 @@ def check_required_files() -> Check:
     return Check(
         "required_files",
         PASS,
-        f"All {len(PACKAGE_FILES)} P3.5 authorization, W1-W8, and W9 planning package files exist.",
+        f"All {len(PACKAGE_FILES)} P3.5 authorization, W1-W8, and W9 closure package files exist.",
     )
 
 
@@ -1887,6 +1906,223 @@ def check_w9_scope_proposal() -> Check:
     )
 
 
+def check_w9_start_authorization() -> Check:
+    try:
+        proposal = _json(W9_SCOPE_PROPOSAL_PATH)
+        record = _json(W9_START_AUTHORIZATION_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("w9_start_authorization", FAIL, str(exc))
+
+    proposal_sha256 = hashlib.sha256(W9_SCOPE_PROPOSAL_PATH.read_bytes()).hexdigest().upper()
+    options = proposal.get("options")
+    option_a = next(
+        (
+            item
+            for item in options
+            if isinstance(item, dict) and item.get("option") == "A"
+        ),
+        {},
+    ) if isinstance(options, list) else {}
+    if (
+        proposal_sha256 != P3_5_W9_PROPOSAL_SHA256
+        or record.get("contract_format")
+        != "hcam.phase3.p3_5.w9-start-authorization.v1"
+        or record.get("decision_id") != "D-P3.5-W9-START"
+        or record.get("owner_statement_received") != "D-P3.5-W9-START: A"
+        or record.get("selected_option") != "A"
+        or record.get("scope")
+        != "phase3.p3_5.w9.narrow_generated_only_closure"
+        or record.get("status")
+        != "owner_authorized_narrow_generated_only_closure"
+        or record.get("authorized_by") != "mayank-admin"
+        or record.get("authorized_at") != "2026-08-27T13:49:46Z"
+        or record.get("authorization_repository_head")
+        != P3_5_W9_AUTHORIZATION_HEAD
+        or record.get("planning_package_digest")
+        != P3_5_W9_PLANNING_PACKAGE_DIGEST
+        or record.get("proposal_sha256") != P3_5_W9_PROPOSAL_SHA256
+        or record.get("effective") is not True
+        or record.get("implementation_authorized") is not True
+        or record.get("acceptance_authorized") is not False
+        or record.get("w10_authorized") is not False
+        or record.get("external_runtime_access") is not False
+        or record.get("model_or_font_execution_authorized") is not False
+        or record.get("allowed_network_actions") != []
+        or record.get("allowed_paths") != proposal.get("recommended_allowed_paths")
+        or set(record.get("allowed_actions", []))
+        != set(option_a.get("allowed_actions", []))
+        or set(record.get("prohibited_actions", []))
+        != set(proposal.get("continuing_prohibitions", []))
+    ):
+        return Check(
+            "w9_start_authorization",
+            FAIL,
+            "D-P3.5-W9-START is missing, widened, accepting, or detached from the reviewed Option A proposal.",
+        )
+    return Check(
+        "w9_start_authorization",
+        PASS,
+        "D-P3.5-W9-START binds Option A to the exact planning digest, proposal hash, path/action allowlist, and zero network actions without W10 acceptance.",
+        ("D-P3.5-W9-START: A",),
+    )
+
+
+def check_w9_closure_evidence() -> Check:
+    try:
+        record = _json(W9_CLOSURE_EVIDENCE_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("w9_closure_evidence", FAIL, str(exc))
+
+    source_records = record.get("aggregate_source_evidence")
+    package_records = record.get("package_evidence")
+    resource = record.get("resource_stress")
+    rollback = record.get("rollback_evidence")
+    security = record.get("security_evidence")
+    expected_source_ids = {
+        "P35-W1-contracts",
+        "P35-W3-splits",
+        "P35-W4-ground-truth-crop",
+        "P35-W5-latin",
+        "P35-W6-auxiliary",
+        "P35-W7-normalization",
+        "P35-W8-consensus",
+    }
+    source_map = (
+        {
+            str(item.get("evidence_id")): item
+            for item in source_records
+            if isinstance(item, dict)
+        }
+        if isinstance(source_records, list)
+        else {}
+    )
+    package_map = (
+        {
+            str(item.get("archive_kind")): item
+            for item in package_records
+            if isinstance(item, dict)
+        }
+        if isinstance(package_records, list)
+        else {}
+    )
+    digest_pattern = re.compile(r"^[0-9A-F]{64}$")
+    authorization_sha256 = hashlib.sha256(
+        W9_START_AUTHORIZATION_PATH.read_bytes()
+    ).hexdigest().upper()
+    prohibited_rendered_tokens = (
+        "SYN-",
+        '"stream_id":',
+        '"tracker_epoch":',
+        '"track_id":',
+        '"raw_text":',
+        '"normalized_text":',
+        '"winning_candidate":',
+        '"ranked_votes":',
+        "B:\\",
+        "E:\\",
+    )
+    rendered = W9_CLOSURE_EVIDENCE_PATH.read_text(encoding="utf-8")
+    if (
+        record.get("contract_format")
+        != "hcam.phase3.p3_5.w9-closure-evidence.v1"
+        or record.get("decision_id") != "D-P3.5-W9-START"
+        or record.get("selected_option") != "A"
+        or record.get("status") != "validated_generated_only_closure"
+        or record.get("execution_scope") != "generated_contract_fixtures_only"
+        or record.get("planning_package_digest")
+        != P3_5_W9_PLANNING_PACKAGE_DIGEST
+        or record.get("proposal_sha256") != P3_5_W9_PROPOSAL_SHA256
+        or record.get("authorization_sha256") != authorization_sha256
+        or record.get("acceptance_authorized") is not False
+        or record.get("w10_authorized") is not False
+        or record.get("implementation_changed_path_count") != 15
+        or record.get("implementation_path_violation_count") != 0
+        or record.get("aggregate_source_evidence_count") != 7
+        or set(source_map) != expected_source_ids
+        or any(
+            not digest_pattern.fullmatch(str(item.get("sha256", "")))
+            for item in source_map.values()
+        )
+        or not digest_pattern.fullmatch(
+            str(record.get("aggregate_source_evidence_sha256", ""))
+        )
+        or record.get("resource_replay_count") != 2
+        or record.get("resource_replay_deterministic") is not True
+        or resource
+        != {
+            "abstained_result_count": 2208,
+            "blocked_network_attempt_count": 1,
+            "closed_result_count": 2208,
+            "default_off_rejection_count": 1,
+            "elapsed_limit_passed": True,
+            "elapsed_limit_seconds": 30,
+            "maximum_active_state_count": 256,
+            "memory_limit_bytes": 134217728,
+            "memory_limit_passed": True,
+            "observation_count": 10000,
+            "overload_result_count": 4,
+        }
+        or rollback
+        != {
+            "application_file_change_count": 0,
+            "database_or_migration_change_count": 0,
+            "dependency_or_lockfile_change_count": 0,
+            "local_rollback_documented": True,
+            "runtime_activation_change_count": 0,
+        }
+        or security
+        != {
+            "accepted_value_count": 0,
+            "artifact_download_count": 0,
+            "b_drive_access_count": 0,
+            "camera_or_external_input_count": 0,
+            "external_runtime_access_count": 0,
+            "final_test_open_count": 0,
+            "model_or_font_execution_count": 0,
+            "network_access_count": 0,
+            "operational_event_count": 0,
+            "package_build_network_guard_probe_count": 1,
+            "retained_identifier_value_count": 0,
+            "retained_pixel_or_content_value_count": 0,
+            "retained_sensitive_text_value_count": 0,
+        }
+        or set(package_map) != {"wheel", "sdist"}
+        or any(
+            not isinstance(item.get("entry_count"), int)
+            or item.get("entry_count", 0) < 1
+            or not isinstance(item.get("canonical_uncompressed_bytes"), int)
+            or item.get("canonical_uncompressed_bytes", 0) < 1
+            or not digest_pattern.fullmatch(
+                str(item.get("canonical_content_sha256", ""))
+            )
+            or item.get("prohibited_payload_count") != 0
+            or item.get("unsafe_entry_count") != 0
+            for item in package_map.values()
+        )
+        or package_map.get("wheel", {}).get("self_evidence_exclusion_count") != 0
+        or not digest_pattern.fullmatch(
+            str(package_map.get("wheel", {}).get("raw_archive_sha256", ""))
+        )
+        or not isinstance(package_map.get("wheel", {}).get("raw_archive_bytes"), int)
+        or package_map.get("sdist", {}).get("self_evidence_exclusion_count") != 1
+        or package_map.get("sdist", {}).get("raw_archive_sha256") is not None
+        or package_map.get("sdist", {}).get("raw_archive_bytes") is not None
+        or any(token in rendered for token in prohibited_rendered_tokens)
+    ):
+        return Check(
+            "w9_closure_evidence",
+            FAIL,
+            "W9 closure evidence is incomplete, non-aggregate, accepting, unsafe, or detached from Option A.",
+        )
+    evidence_sha256 = hashlib.sha256(W9_CLOSURE_EVIDENCE_PATH.read_bytes()).hexdigest().upper()
+    return Check(
+        "w9_closure_evidence",
+        PASS,
+        "W9 records deterministic 10,000-observation bounded stress, default-off/network denial, aggregate package digests, zero retention, and source-only rollback without W10 acceptance.",
+        (evidence_sha256,),
+    )
+
+
 def check_artifact_proposal() -> Check:
     try:
         record = _json(ARTIFACT_PROPOSAL_PATH)
@@ -2664,6 +2900,9 @@ def check_documentation_sync() -> Check:
             "tools/phase35_normalization.py",
             "tools/phase35_consensus.py",
             "docs/phase-3/p3-5-w9-decision-packet.md",
+            "tools/phase35_w9_closure.py",
+            "docs/phase-3/p3-5-w9-start-authorization.md",
+            "docs/phase-3/p3-5-w9-closure.md",
         ),
         "contracts/phase-3/README.md": (
             "p3-5-anpr-contracts.json",
@@ -2689,6 +2928,8 @@ def check_documentation_sync() -> Check:
             "p3-5-runtime-sbom.cdx.json",
             "p3-5-runtime-license-review.json",
             "p3-5-w9-scope-proposal.json",
+            "p3-5-w9-start-authorization.json",
+            "p3-5-w9-closure-evidence.json",
         ),
         "docs/phase-3/README.md": (
             "[P3.5 W1 contracts and guardrails](p3-5-w1-contracts-guardrails.md)",
@@ -2699,6 +2940,8 @@ def check_documentation_sync() -> Check:
             "[P3.5 W7 normalization and abstention](p3-5-w7-normalization-abstention.md)",
             "[P3.5 W8 bounded consensus](p3-5-w8-bounded-consensus.md)",
             "[P3.5 W9 owner decision packet](p3-5-w9-decision-packet.md)",
+            "[P3.5 W9 narrow closure authorization](p3-5-w9-start-authorization.md)",
+            "[P3.5 W9 narrow generated-only closure](p3-5-w9-closure.md)",
             "[P3.5 artifact model cards](p3-5-artifact-model-cards.md)",
             "[P3.5 exact artifact review evidence](p3-5-artifact-review-evidence.md)",
             "[P3.5 exact artifact review acceptance](p3-5-artifact-review-acceptance.md)",
@@ -2720,11 +2963,13 @@ def check_documentation_sync() -> Check:
             "DR-0040",
             "DR-0041",
             "DR-0042",
+            "DR-0043",
             "D-P3.5-PLAN-AUTH",
             "D-P3.5-ARTIFACT-RESEARCH",
             "D-P3.5-START",
             "D-P3.5-W9-START",
-            "owner_decision_required",
+            "D-P3.5-W9-START: A",
+            "awaiting W10 clean-source owner acceptance",
         ),
         "docs/phase-3/implementation-backlog.md": (
             "D-P3.4-ACCEPTANCE",
@@ -2741,8 +2986,10 @@ def check_documentation_sync() -> Check:
             "P35-W8",
             "58E7E4479DEB554D4B99F0CC1868B4DA61E9DED292E3F11942B740AEF02FC124",
             "P35-W9",
-            "planning_complete_owner_decision_required",
+            "validated_generated_only_closure",
             "D-P3.5-W9-START: A",
+            "P35-W10",
+            "not_started_owner_acceptance_required",
             "validated_generated_baseline",
             "validated_complete",
         ),
@@ -2832,13 +3079,35 @@ def check_documentation_sync() -> Check:
         "docs/phase-3/p3-5-w9-decision-packet.md": (
             "D-P3.5-W9-START",
             "Narrow Generated-Only Closure (Recommended)",
-            "implementation not started",
+            "implementation in",
+            "progress; W10 remains",
             "no application runtime or product behavior changes",
             "no use of the external `E:` model/runtime cache",
             "no access to `B:`",
             "W10 clean-source validation",
             "D-P3.5-W9-START: A",
             "No work is authorized by silence, `continue`, `accepted`",
+            "62B711EAF2C1EDD21CBCD07751D9A30EF6FA61C11E9ECB190CE6614FE67AB796",
+            "9BCC9E9C068E03E94E5461AABDE3B50A4766498406643EE253AF66ECAD8A9B7B",
+        ),
+        "docs/phase-3/p3-5-w9-start-authorization.md": (
+            "D-P3.5-W9-START: A",
+            "6d546fbe1a074e4090fa6d006a67421a27746afe",
+            "9BCC9E9C068E03E94E5461AABDE3B50A4766498406643EE253AF66ECAD8A9B7B",
+            "62B711EAF2C1EDD21CBCD07751D9A30EF6FA61C11E9ECB190CE6614FE67AB796",
+            "No `app/`",
+            "W10 requires",
+        ),
+        "docs/phase-3/p3-5-w9-closure.md": (
+            "validated generated-only closure",
+            "10,000-observation",
+            "2,208",
+            "256-state ceiling",
+            "30-second ceiling",
+            "128 MiB",
+            "circular self-hash",
+            "No W9 path accesses `B:`",
+            "W10 must regenerate",
         ),
         ".github/workflows/python-ci.yml": (
             "python tools/phase35_readiness.py --strict",
@@ -2847,6 +3116,7 @@ def check_documentation_sync() -> Check:
             "python tools/phase35_auxiliary_ocr.py check-evidence",
             "python tools/phase35_normalization.py check-evidence",
             "python tools/phase35_consensus.py check-evidence",
+            "python tools/phase35_w9_closure.py check-evidence",
         ),
     }
     missing: list[str] = []
@@ -2913,6 +3183,8 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_w7_normalization_evidence(),
         check_w8_consensus_evidence(),
         check_w9_scope_proposal(),
+        check_w9_start_authorization(),
+        check_w9_closure_evidence(),
         check_artifact_proposal(),
         check_owner_decisions_record(),
         check_artifact_research_authorization(),
@@ -2937,9 +3209,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         for check in checks
         if check.status == MANUAL
     )
-    status = (
-        "invalid" if failures else "implementation_authorized_generated_only_staged"
-    )
+    status = "invalid" if failures else "w9_validated_awaiting_w10_acceptance"
     try:
         digest, _ = package_digest()
     except OSError:

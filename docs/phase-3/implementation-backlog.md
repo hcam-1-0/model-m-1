@@ -287,13 +287,18 @@ Implementation progress:
 - W8 does not invent minimum-support or margin thresholds. Both remain unset,
   every result is a mandatory abstention, and no API, worker, migration,
   database, alert, camera/media, operational, or deployment path is added.
-- `P35-W9`: `planning_complete_owner_decision_required`. The broader aggregate
-  evidence, security, resource, packaging, and rollback package remains
-  separate from W8. Its four bounded options and recommended narrow
-  generated-only closure are recorded in the
-  [W9 owner decision packet](p3-5-w9-decision-packet.md). Implementation is not
-  started and requires the exact owner statement `D-P3.5-W9-START: A` (or the
-  same decision ID with another listed option).
+- `P35-W9`: `validated_generated_only_closure`. `mayank-admin` authorized
+  Option A with `D-P3.5-W9-START: A`, bound to planning digest
+  `9BCC9E9C068E03E94E5461AABDE3B50A4766498406643EE253AF66ECAD8A9B7B`.
+  The closure consolidates seven W1-W8 evidence groups, runs two deterministic
+  10,000-observation model-free stress replays, verifies default-off/network
+  denial and zero retention, and inspects offline wheel/sdist contents.
+- W9 adds no application, migration, dependency, lockfile, container, API,
+  worker, database, persistence, camera/media, external runtime, model, alert,
+  deployment, P3.6, or remote Git path. Its generated archives are untracked.
+- `P35-W10`: `not_started_owner_acceptance_required`. Clean-source validation,
+  final package digest publication, and explicit owner acceptance remain
+  separate; W9 authorization does not satisfy this gate.
 
 Artifact preparation status: proposal R0 records eight recommended artifact
 slots, immutable source metadata, and bounded sizes. Seven external slots are
