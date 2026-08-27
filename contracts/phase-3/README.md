@@ -124,6 +124,9 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-5-consensus-evaluation.json`: canonical W8 identifier-free aggregate
   contract evidence for bounded exact-string voting, anonymous grouping,
   lifecycle/overload behavior, mandatory abstention, and zero text retention.
+- `p3-5-w9-scope-proposal.json`: non-authorizing W9 closure proposal with four
+  bounded options, the recommended generated-contract-only scope, exact
+  continuing prohibitions, and required `D-P3.5-W9-START: A` owner statement.
 
 Verify all tracked snapshots:
 

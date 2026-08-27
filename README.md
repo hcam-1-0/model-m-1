@@ -68,6 +68,9 @@ mandatory abstention, and zero-retention evidence.
 The [P3.5 W8 bounded consensus](docs/phase-3/p3-5-w8-bounded-consensus.md)
 records deterministic stream-local lifecycle, overload, ordering, isolation,
 mandatory-abstention, and aggregate-only zero-retention evidence.
+The [P3.5 W9 decision packet](docs/phase-3/p3-5-w9-decision-packet.md)
+defines four bounded closure options. It is planning-only and requires the
+exact `D-P3.5-W9-START` owner decision before W9 implementation.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies

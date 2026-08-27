@@ -16,7 +16,7 @@ def test_p3_5_generated_only_start_is_authorized_without_manual_gates() -> None:
     )
     assert report.failures == 0
     assert report.manual_gates == 0
-    assert report.package_file_count == 91
+    assert report.package_file_count == 93
     assert len(report.package_digest) == 64
 
 
@@ -37,6 +37,7 @@ def test_p3_5_technical_checks_pass() -> None:
         readiness.check_w6_auxiliary_script_evidence(),
         readiness.check_w7_normalization_evidence(),
         readiness.check_w8_consensus_evidence(),
+        readiness.check_w9_scope_proposal(),
         readiness.check_artifact_proposal(),
         readiness.check_owner_decisions_record(),
         readiness.check_artifact_research_authorization(),
@@ -61,6 +62,21 @@ def test_p3_5_final_start_gate_is_owner_authorized() -> None:
 
     assert check.status == readiness.PASS
     assert check.evidence == ("D-P3.5-START",)
+
+
+def test_p3_5_w9_scope_proposal_is_non_authorizing() -> None:
+    record = json.loads(
+        readiness.W9_SCOPE_PROPOSAL_PATH.read_text(encoding="utf-8")
+    )
+
+    assert record["decision_id"] == "D-P3.5-W9-START"
+    assert record["status"] == "owner_decision_required"
+    assert record["implementation_authorized"] is False
+    assert record["recommended_option"] == "A"
+    assert record["required_owner_statement"] == "D-P3.5-W9-START: A"
+    assert record["current_repository_head"] == readiness.P3_5_W8_BASELINE_REPOSITORY_HEAD
+    assert record["current_p3_5_package_digest"] == readiness.P3_5_W1_W8_PACKAGE_DIGEST
+    assert readiness.check_w9_scope_proposal().status == readiness.PASS
 
 
 def test_p3_5_owner_decisions_record_exact_recommended_baseline() -> None:

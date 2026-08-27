@@ -287,9 +287,13 @@ Implementation progress:
 - W8 does not invent minimum-support or margin thresholds. Both remain unset,
   every result is a mandatory abstention, and no API, worker, migration,
   database, alert, camera/media, operational, or deployment path is added.
-- `P35-W9`: `not_started`. The broader aggregate evidence, security, resource,
-  packaging, and rollback package remains separate and requires exact scope
-  confirmation against the effective start allowlist before implementation.
+- `P35-W9`: `planning_complete_owner_decision_required`. The broader aggregate
+  evidence, security, resource, packaging, and rollback package remains
+  separate from W8. Its four bounded options and recommended narrow
+  generated-only closure are recorded in the
+  [W9 owner decision packet](p3-5-w9-decision-packet.md). Implementation is not
+  started and requires the exact owner statement `D-P3.5-W9-START: A` (or the
+  same decision ID with another listed option).
 
 Artifact preparation status: proposal R0 records eight recommended artifact
 slots, immutable source metadata, and bounded sizes. Seven external slots are

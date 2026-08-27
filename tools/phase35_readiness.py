@@ -49,6 +49,9 @@ OWNER_DECISIONS_PATH = (
 START_AUTHORIZATION_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-start-authorization.json"
 )
+W9_SCOPE_PROPOSAL_PATH = (
+    ROOT / "contracts" / "phase-3" / "p3-5-w9-scope-proposal.json"
+)
 RESEARCH_PATH = ROOT / "contracts" / "phase-3" / "p3-5-research-sources.json"
 RUNTIME_REVIEW_PROPOSAL_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-runtime-review-proposal.json"
@@ -105,6 +108,10 @@ P3_5_W7_EVIDENCE_SHA256 = (
 P3_5_W8_EVIDENCE_SHA256 = (
     "58E7E4479DEB554D4B99F0CC1868B4DA61E9DED292E3F11942B740AEF02FC124"
 )
+P3_5_W8_BASELINE_REPOSITORY_HEAD = "b282f1bf45e38bcdfd49f976e974ce92e9d5f08b"
+P3_5_W1_W8_PACKAGE_DIGEST = (
+    "96A35F98059918181FD59687BA96A4283ED9885BAD7D34FE1915D6288174C3DF"
+)
 
 PACKAGE_FILES = (
     ".github/workflows/python-ci.yml",
@@ -144,6 +151,7 @@ PACKAGE_FILES = (
     "contracts/phase-3/p3-5-runtime-sbom.cdx.json",
     "contracts/phase-3/p3-5-runtime-license-review.json",
     "contracts/phase-3/p3-5-start-authorization.json",
+    "contracts/phase-3/p3-5-w9-scope-proposal.json",
     "docs/phase-3/README.md",
     "docs/phase-3/acceptance-checklist.md",
     "docs/phase-3/decision-register.md",
@@ -171,6 +179,7 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-w6-auxiliary-scripts.md",
     "docs/phase-3/p3-5-w7-normalization-abstention.md",
     "docs/phase-3/p3-5-w8-bounded-consensus.md",
+    "docs/phase-3/p3-5-w9-decision-packet.md",
     "tests/test_analytics_anpr_auxiliary.py",
     "tests/test_analytics_anpr_consensus.py",
     "tests/test_analytics_anpr_generator.py",
@@ -310,7 +319,7 @@ def check_required_files() -> Check:
     return Check(
         "required_files",
         PASS,
-        f"All {len(PACKAGE_FILES)} P3.5 authorization and W1/W3/W4/W5/W6/W7/W8 package files exist.",
+        f"All {len(PACKAGE_FILES)} P3.5 authorization, W1-W8, and W9 planning package files exist.",
     )
 
 
@@ -1763,6 +1772,121 @@ def check_start_authorization() -> Check:
     )
 
 
+def check_w9_scope_proposal() -> Check:
+    try:
+        record = _json(W9_SCOPE_PROPOSAL_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("w9_scope_proposal", FAIL, str(exc))
+
+    options = record.get("options")
+    option_records = (
+        {
+            str(item.get("option")): item
+            for item in options
+            if isinstance(item, dict)
+        }
+        if isinstance(options, list)
+        else {}
+    )
+    required_prohibitions = {
+        "external_E_runtime_or_artifact_execution_under_option_A",
+        "B_drive_access_except_static_source_denial_assertions",
+        "model_font_or_Tesseract_execution_under_option_A",
+        "network_download_or_external_service_access",
+        "final_test_sample_opening_or_holdout_tuning",
+        "quality_threshold_selection_or_model_promotion",
+        "new_dependency_lockfile_container_migration_API_worker_database_or_persistent_storage_change",
+        "raw_OCR_normalized_text_alternative_pixel_media_stream_track_owner_vehicle_or_government_data_in_tracked_evidence",
+        "physical_camera_ONVIF_media_or_Sentinel_stream_access",
+        "real_public_private_government_police_or_scraped_plate_media",
+        "identity_biometric_reidentification_cross_camera_linkage_watchlist_alert_action_or_enforcement",
+        "training_finetuning_PLATE_D0_OCR_G0_or_OCR_G1_execution",
+        "pilot_production_statewide_deployment_or_P3_6_and_later_work",
+        "remote_git_push_pull_request_or_merge",
+        "W10_acceptance_without_separate_clean_source_evidence_and_owner_decision",
+    }
+    recommended_actions = {
+        "consolidate_existing_W1_through_W8_aggregate_evidence",
+        "add_stdlib_only_aggregate_evidence_and_manifest_checker",
+        "prove_zero_retention_and_prohibited_payload_absence",
+        "run_bounded_deterministic_generated_contract_fixture_resource_stress_without_model_execution",
+        "build_and_inspect_local_wheel_and_sdist",
+        "record_only_aggregate_package_counts_and_cryptographic_digests",
+        "prove_default_off_behavior_and_document_local_rollback",
+        "update_tests_CI_readiness_documentation_and_backlog",
+        "prepare_clean_source_package_for_separate_W10_acceptance",
+    }
+    expected_names = {
+        "A": "narrow_generated_only_closure",
+        "B": "exact_runtime_revalidation",
+        "C": "maximum_generated_benchmark",
+        "D": "defer_W9",
+    }
+    expected_allowed_paths = [
+        ".github/workflows/python-ci.yml",
+        "README.md",
+        "contracts/phase-3/README.md",
+        "contracts/phase-3/p3-5-w9-closure-evidence.json",
+        "contracts/phase-3/p3-5-w9-scope-proposal.json",
+        "contracts/phase-3/p3-5-w9-start-authorization.json",
+        "docs/phase-3/README.md",
+        "docs/phase-3/decision-register.md",
+        "docs/phase-3/implementation-backlog.md",
+        "docs/phase-3/p3-5-w9-closure.md",
+        "docs/phase-3/p3-5-w9-decision-packet.md",
+        "docs/phase-3/p3-5-w9-start-authorization.md",
+        "tests/test_phase35_readiness.py",
+        "tests/test_phase35_w9_closure.py",
+        "tools/phase35_readiness.py",
+        "tools/phase35_w9_closure.py",
+    ]
+    if (
+        record.get("contract_format")
+        != "hcam.phase3.p3_5.w9-scope-proposal.v1"
+        or record.get("decision_id") != "D-P3.5-W9-START"
+        or record.get("status") != "owner_decision_required"
+        or record.get("scope")
+        != "phase3.p3_5.w9.generated_only_closure_planning"
+        or record.get("implementation_authorized") is not False
+        or record.get("recommended_option") != "A"
+        or record.get("recommended_scope") != "narrow_generated_only_closure"
+        or record.get("required_owner_statement") != "D-P3.5-W9-START: A"
+        or record.get("current_repository_head")
+        != P3_5_W8_BASELINE_REPOSITORY_HEAD
+        or record.get("current_p3_5_package_digest")
+        != P3_5_W1_W8_PACKAGE_DIGEST
+        or record.get("w8_evidence_sha256") != P3_5_W8_EVIDENCE_SHA256
+        or set(option_records) != set(expected_names)
+        or any(
+            option_records[option].get("name") != name
+            or option_records[option].get("recommended") != (option == "A")
+            for option, name in expected_names.items()
+        )
+        or set(option_records["A"].get("allowed_actions", []))
+        != recommended_actions
+        or option_records["A"].get("additional_authority_required") is not False
+        or option_records["B"].get("additional_authority_required") is not True
+        or option_records["C"].get("additional_authority_required") is not True
+        or option_records["D"].get("additional_authority_required") is not False
+        or option_records["D"].get("allowed_actions") != []
+        or set(record.get("continuing_prohibitions", [])) != required_prohibitions
+        or record.get("recommended_allowed_paths") != expected_allowed_paths
+        or record.get("recommended_forbidden_path_prefixes")
+        != ["app/", "migrations/"]
+    ):
+        return Check(
+            "w9_scope_proposal",
+            FAIL,
+            "The W9 proposal is authorizing, widened, incomplete, or detached from the validated W8 baseline.",
+        )
+    return Check(
+        "w9_scope_proposal",
+        PASS,
+        "D-P3.5-W9-START offers four bounded choices; recommended Option A is planning-only, model-free, network-denied, and bound to the validated W8 package.",
+        ("D-P3.5-W9-START", "owner_decision_required"),
+    )
+
+
 def check_artifact_proposal() -> Check:
     try:
         record = _json(ARTIFACT_PROPOSAL_PATH)
@@ -2539,6 +2663,7 @@ def check_documentation_sync() -> Check:
             "tools/phase35_auxiliary_ocr.py",
             "tools/phase35_normalization.py",
             "tools/phase35_consensus.py",
+            "docs/phase-3/p3-5-w9-decision-packet.md",
         ),
         "contracts/phase-3/README.md": (
             "p3-5-anpr-contracts.json",
@@ -2563,6 +2688,7 @@ def check_documentation_sync() -> Check:
             "p3-5-runtime-research-evidence.json",
             "p3-5-runtime-sbom.cdx.json",
             "p3-5-runtime-license-review.json",
+            "p3-5-w9-scope-proposal.json",
         ),
         "docs/phase-3/README.md": (
             "[P3.5 W1 contracts and guardrails](p3-5-w1-contracts-guardrails.md)",
@@ -2572,6 +2698,7 @@ def check_documentation_sync() -> Check:
             "[P3.5 W6 auxiliary scripts](p3-5-w6-auxiliary-scripts.md)",
             "[P3.5 W7 normalization and abstention](p3-5-w7-normalization-abstention.md)",
             "[P3.5 W8 bounded consensus](p3-5-w8-bounded-consensus.md)",
+            "[P3.5 W9 owner decision packet](p3-5-w9-decision-packet.md)",
             "[P3.5 artifact model cards](p3-5-artifact-model-cards.md)",
             "[P3.5 exact artifact review evidence](p3-5-artifact-review-evidence.md)",
             "[P3.5 exact artifact review acceptance](p3-5-artifact-review-acceptance.md)",
@@ -2592,9 +2719,12 @@ def check_documentation_sync() -> Check:
             "DR-0039",
             "DR-0040",
             "DR-0041",
+            "DR-0042",
             "D-P3.5-PLAN-AUTH",
             "D-P3.5-ARTIFACT-RESEARCH",
             "D-P3.5-START",
+            "D-P3.5-W9-START",
+            "owner_decision_required",
         ),
         "docs/phase-3/implementation-backlog.md": (
             "D-P3.4-ACCEPTANCE",
@@ -2611,7 +2741,8 @@ def check_documentation_sync() -> Check:
             "P35-W8",
             "58E7E4479DEB554D4B99F0CC1868B4DA61E9DED292E3F11942B740AEF02FC124",
             "P35-W9",
-            "not_started",
+            "planning_complete_owner_decision_required",
+            "D-P3.5-W9-START: A",
             "validated_generated_baseline",
             "validated_complete",
         ),
@@ -2695,7 +2826,19 @@ def check_documentation_sync() -> Check:
             "mandatory abstention",
             "No W8 path uses `B:`",
             "P35-W9",
-            "not started",
+            "planning packet is complete",
+            "D-P3.5-W9-START",
+        ),
+        "docs/phase-3/p3-5-w9-decision-packet.md": (
+            "D-P3.5-W9-START",
+            "Narrow Generated-Only Closure (Recommended)",
+            "implementation not started",
+            "no application runtime or product behavior changes",
+            "no use of the external `E:` model/runtime cache",
+            "no access to `B:`",
+            "W10 clean-source validation",
+            "D-P3.5-W9-START: A",
+            "No work is authorized by silence, `continue`, `accepted`",
         ),
         ".github/workflows/python-ci.yml": (
             "python tools/phase35_readiness.py --strict",
@@ -2769,6 +2912,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_w6_auxiliary_script_evidence(),
         check_w7_normalization_evidence(),
         check_w8_consensus_evidence(),
+        check_w9_scope_proposal(),
         check_artifact_proposal(),
         check_owner_decisions_record(),
         check_artifact_research_authorization(),

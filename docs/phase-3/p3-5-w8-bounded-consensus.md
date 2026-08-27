@@ -130,6 +130,7 @@ promotion, real-world accuracy, persistence, API/worker integration, alerts,
 lookups, camera/media access, real/public/private/Government/police data,
 training, Tesseract, `PLATE-D0`, P3.6, deployment, or remote Git operations.
 
-`P35-W9` is not started. Its broader aggregate evidence, security, resource,
-packaging, and rollback scope remains a separate package and cannot be inferred
-from W8 completion.
+`P35-W9` implementation is not started. Its planning packet is complete, but
+the broader aggregate evidence, security, resource, packaging, and rollback
+scope remains a separate package and cannot be inferred from W8 completion.
+The exact `D-P3.5-W9-START` owner decision remains required.
