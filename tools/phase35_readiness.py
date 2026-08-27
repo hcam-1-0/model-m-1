@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-"""Verify the authorized staged P3.5 synthetic ANPR package."""
+"""Verify the accepted generated-only P3.5 synthetic ANPR package."""
 
 from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 import re
 import subprocess
+import tarfile
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from urllib.parse import urlparse
@@ -58,6 +60,7 @@ W9_START_AUTHORIZATION_PATH = (
 W9_CLOSURE_EVIDENCE_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-w9-closure-evidence.json"
 )
+ACCEPTANCE_PATH = ROOT / "contracts" / "phase-3" / "p3-5-acceptance.json"
 RESEARCH_PATH = ROOT / "contracts" / "phase-3" / "p3-5-research-sources.json"
 RUNTIME_REVIEW_PROPOSAL_PATH = (
     ROOT / "contracts" / "phase-3" / "p3-5-runtime-review-proposal.json"
@@ -124,6 +127,13 @@ P3_5_W9_PLANNING_PACKAGE_DIGEST = (
 )
 P3_5_W9_PROPOSAL_SHA256 = (
     "62B711EAF2C1EDD21CBCD07751D9A30EF6FA61C11E9ECB190CE6614FE67AB796"
+)
+P3_5_ACCEPTED_PACKAGE_DIGEST = (
+    "4AC016E2A23B001F338F822A25A90CA2E032947B842F14300146F0FF315B3D31"
+)
+P3_5_ACCEPTED_REPOSITORY_HEAD = "1611922b4f410aa0cdbce369e4f3c8838f53e19f"
+P3_5_ACCEPTED_W9_EVIDENCE_SHA256 = (
+    "A64ACE72ED33E0734D87D43A871BB1FB73B593296A681771600C3A1F42899E55"
 )
 
 PACKAGE_FILES = (
@@ -228,6 +238,11 @@ PACKAGE_FILES = (
     "tools/phase35_w9_closure.py",
 )
 
+ACCEPTANCE_FILES = (
+    "contracts/phase-3/p3-5-acceptance.json",
+    "docs/phase-3/p3-5-acceptance.md",
+)
+
 CANDIDATE_PATHS = (
     "contracts/phase-3/p3-1/candidates/candidate-plate-d0.json",
     "contracts/phase-3/p3-1/candidates/candidate-ocr-l0.json",
@@ -288,6 +303,8 @@ class Report:
     scope: str
     package_digest: str
     package_file_count: int
+    accepted_package_digest: str
+    accepted_repository_head: str
     failures: int
     manual_gates: int
     checks: tuple[Check, ...]
@@ -298,6 +315,8 @@ class Report:
             "scope": self.scope,
             "package_digest": self.package_digest,
             "package_file_count": self.package_file_count,
+            "accepted_package_digest": self.accepted_package_digest,
+            "accepted_repository_head": self.accepted_repository_head,
             "failures": self.failures,
             "manual_gates": self.manual_gates,
             "checks": [asdict(check) for check in self.checks],
@@ -315,11 +334,13 @@ def _text(relative_path: str) -> str:
     return (ROOT / relative_path).read_text(encoding="utf-8")
 
 
-def package_digest() -> tuple[str, tuple[str, ...]]:
+def _package_digest_from_payloads(
+    payloads: dict[str, bytes],
+) -> tuple[str, tuple[str, ...]]:
     digest = hashlib.sha256()
     manifest: list[str] = []
     for relative_path in sorted(PACKAGE_FILES):
-        payload = (ROOT / relative_path).read_bytes().replace(b"\r\n", b"\n")
+        payload = payloads[relative_path].replace(b"\r\n", b"\n")
         file_digest = hashlib.sha256(payload).hexdigest()
         digest.update(relative_path.encode("utf-8"))
         digest.update(b"\0")
@@ -331,10 +352,57 @@ def package_digest() -> tuple[str, tuple[str, ...]]:
     return digest.hexdigest().upper(), tuple(manifest)
 
 
+def package_digest() -> tuple[str, tuple[str, ...]]:
+    payloads = {
+        relative_path: (ROOT / relative_path).read_bytes()
+        for relative_path in PACKAGE_FILES
+    }
+    return _package_digest_from_payloads(payloads)
+
+
+def package_digest_at_commit(commit: str) -> tuple[str, tuple[str, ...]]:
+    completed = subprocess.run(
+        ["git", "archive", "--format=tar", commit, "--", *PACKAGE_FILES],
+        cwd=ROOT,
+        capture_output=True,
+        check=False,
+        timeout=30,
+    )
+    if completed.returncode != 0:
+        detail = completed.stderr.decode("utf-8", errors="replace").strip()
+        raise ValueError(f"Cannot read accepted package commit: {detail}")
+    payloads: dict[str, bytes] = {}
+    with tarfile.open(fileobj=io.BytesIO(completed.stdout), mode="r:") as archive:
+        for member in archive.getmembers():
+            if not member.isfile():
+                continue
+            extracted = archive.extractfile(member)
+            if extracted is not None:
+                payloads[member.name] = extracted.read()
+    missing = sorted(set(PACKAGE_FILES) - set(payloads))
+    if missing:
+        raise ValueError(f"Accepted package commit is missing: {', '.join(missing)}")
+    return _package_digest_from_payloads(payloads)
+
+
+def file_at_commit(commit: str, relative_path: str) -> bytes:
+    completed = subprocess.run(
+        ["git", "show", f"{commit}:{relative_path}"],
+        cwd=ROOT,
+        capture_output=True,
+        check=False,
+        timeout=10,
+    )
+    if completed.returncode != 0:
+        detail = completed.stderr.decode("utf-8", errors="replace").strip()
+        raise ValueError(f"Cannot read accepted evidence file: {detail}")
+    return completed.stdout
+
+
 def check_required_files() -> Check:
     missing = tuple(path for path in PACKAGE_FILES if not (ROOT / path).is_file())
     if missing:
-        return Check("required_files", FAIL, "P3.5 planning files are missing.", missing)
+        return Check("required_files", FAIL, "P3.5 package files are missing.", missing)
     return Check(
         "required_files",
         PASS,
@@ -2123,6 +2191,137 @@ def check_w9_closure_evidence() -> Check:
     )
 
 
+def check_owner_acceptance() -> Check:
+    try:
+        record = _json(ACCEPTANCE_PATH)
+        historical_digest, historical_manifest = package_digest_at_commit(
+            P3_5_ACCEPTED_REPOSITORY_HEAD
+        )
+        historical_w9_sha256 = hashlib.sha256(
+            file_at_commit(
+                P3_5_ACCEPTED_REPOSITORY_HEAD,
+                "contracts/phase-3/p3-5-w9-closure-evidence.json",
+            )
+        ).hexdigest().upper()
+    except (OSError, ValueError, json.JSONDecodeError, tarfile.TarError) as exc:
+        return Check("owner_acceptance", FAIL, str(exc))
+
+    expected_statement = (
+        "D-P3.5-W10-ACCEPTANCE: I, mayank-admin, accept P3.5 package digest "
+        f"{P3_5_ACCEPTED_PACKAGE_DIGEST} at commit "
+        f"{P3_5_ACCEPTED_REPOSITORY_HEAD}, with W9 evidence SHA-256 "
+        f"{P3_5_ACCEPTED_W9_EVIDENCE_SHA256}, under all documented "
+        "generated-only, zero-retention, default-off, non-deployment limitations."
+    )
+    profile = record.get("evidence_profile")
+    required_profile = {
+        "camera_or_media_access": False,
+        "default_off": True,
+        "external_runtime": "exact_reviewed_local_wheelhouse_only",
+        "final_test_access": False,
+        "generated_only": True,
+        "government_or_private_data": False,
+        "identity_or_cross_camera_linkage": False,
+        "network_actions": 0,
+        "operational_action": False,
+        "production_runtime_allowed": False,
+        "quality_thresholds_approved": False,
+        "result_policy": "mandatory_abstention",
+        "tesseract_execution": False,
+        "training_or_finetuning": False,
+        "zero_plate_text_and_identifier_retention": True,
+    }
+    non_authorization = record.get("non_authorization")
+    required_non_authorization = {
+        "unlisted_model_weight_font_dataset_dictionary_or_source_artifact_use",
+        "new_artifact_dependency_or_network_acquisition",
+        "model_training_finetuning_or_PLATE-D0_checkpoint_creation",
+        "OCR-G0_or_OCR-G1_Tesseract_loading_or_execution",
+        "final_test_split_access_or_quality_promotion_claims",
+        "physical_camera_onvif_media_or_sentinel_stream_access",
+        "real_public_private_government_police_or_scraped_plate_media",
+        "real_registration_mark_owner_vehicle_or_government_record_processing",
+        "identity_biometric_reidentification_or_cross_camera_linkage",
+        "watchlist_matching_operational_alerting_autonomous_action_or_enforcement",
+        "pilot_production_statewide_deployment_or_performance_claims",
+        "remote_git_push_pull_request_or_merge",
+        "p3_6_or_later_work",
+    }
+    expected_keys = {
+        "accepted_at",
+        "accepted_by",
+        "accepted_on",
+        "accepted_repository_head",
+        "branch",
+        "contract_format",
+        "decision_id",
+        "documented_limitations_accepted",
+        "evidence_package_digest",
+        "evidence_profile",
+        "implementation_checkpoint",
+        "next_phase_authorized",
+        "non_authorization",
+        "owner_statement_received",
+        "package_file_count",
+        "p3_6_authorized",
+        "record_id",
+        "scope",
+        "status",
+        "w9_evidence_sha256",
+    }
+    invalid = (
+        set(record) != expected_keys
+        or record.get("accepted_at") != "2026-08-27T14:41:38Z"
+        or record.get("accepted_on") != "2026-08-27"
+        or record.get("branch") != "codex/phase3-synthetic-anpr-planning"
+        or record.get("contract_format") != "hcam.phase3.p3_5.acceptance.v1"
+        or record.get("decision_id") != "D-P3.5-W10-ACCEPTANCE"
+        or record.get("record_id") != "D-P3.5-W10-ACCEPTANCE"
+        or record.get("status") != "accepted"
+        or record.get("accepted_by") != "mayank-admin"
+        or record.get("scope")
+        != "phase3.p3_5.synthetic_anpr.generated_only_local_implementation"
+        or record.get("documented_limitations_accepted") is not True
+        or record.get("evidence_package_digest")
+        != P3_5_ACCEPTED_PACKAGE_DIGEST
+        or record.get("accepted_repository_head")
+        != P3_5_ACCEPTED_REPOSITORY_HEAD
+        or record.get("implementation_checkpoint")
+        != P3_5_ACCEPTED_REPOSITORY_HEAD
+        or record.get("w9_evidence_sha256")
+        != P3_5_ACCEPTED_W9_EVIDENCE_SHA256
+        or record.get("package_file_count") != len(PACKAGE_FILES)
+        or record.get("owner_statement_received") != expected_statement
+        or record.get("next_phase_authorized") is not False
+        or record.get("p3_6_authorized") is not False
+        or not isinstance(profile, dict)
+        or profile != required_profile
+        or not isinstance(non_authorization, list)
+        or len(non_authorization) != len(required_non_authorization)
+        or set(non_authorization) != required_non_authorization
+        or historical_digest != P3_5_ACCEPTED_PACKAGE_DIGEST
+        or len(historical_manifest) != len(PACKAGE_FILES)
+        or historical_w9_sha256 != P3_5_ACCEPTED_W9_EVIDENCE_SHA256
+    )
+    if invalid:
+        return Check(
+            "owner_acceptance",
+            FAIL,
+            "P3.5 W10 acceptance is missing, altered, or detached from the immutable clean-source package.",
+        )
+    return Check(
+        "owner_acceptance",
+        PASS,
+        "mayank-admin accepted the immutable 99-file P3.5 package while every documented generated-only and non-deployment boundary remains enforced.",
+        (
+            "D-P3.5-W10-ACCEPTANCE",
+            f"accepted_digest={P3_5_ACCEPTED_PACKAGE_DIGEST}",
+            f"accepted_repository_head={P3_5_ACCEPTED_REPOSITORY_HEAD}",
+            f"w9_evidence_sha256={P3_5_ACCEPTED_W9_EVIDENCE_SHA256}",
+        ),
+    )
+
+
 def check_artifact_proposal() -> Check:
     try:
         record = _json(ARTIFACT_PROPOSAL_PATH)
@@ -2903,6 +3102,8 @@ def check_documentation_sync() -> Check:
             "tools/phase35_w9_closure.py",
             "docs/phase-3/p3-5-w9-start-authorization.md",
             "docs/phase-3/p3-5-w9-closure.md",
+            "docs/phase-3/p3-5-acceptance.md",
+            "D-P3.5-W10-ACCEPTANCE",
         ),
         "contracts/phase-3/README.md": (
             "p3-5-anpr-contracts.json",
@@ -2930,6 +3131,7 @@ def check_documentation_sync() -> Check:
             "p3-5-w9-scope-proposal.json",
             "p3-5-w9-start-authorization.json",
             "p3-5-w9-closure-evidence.json",
+            "p3-5-acceptance.json",
         ),
         "docs/phase-3/README.md": (
             "[P3.5 W1 contracts and guardrails](p3-5-w1-contracts-guardrails.md)",
@@ -2942,6 +3144,7 @@ def check_documentation_sync() -> Check:
             "[P3.5 W9 owner decision packet](p3-5-w9-decision-packet.md)",
             "[P3.5 W9 narrow closure authorization](p3-5-w9-start-authorization.md)",
             "[P3.5 W9 narrow generated-only closure](p3-5-w9-closure.md)",
+            "[P3.5 W10 owner acceptance](p3-5-acceptance.md)",
             "[P3.5 artifact model cards](p3-5-artifact-model-cards.md)",
             "[P3.5 exact artifact review evidence](p3-5-artifact-review-evidence.md)",
             "[P3.5 exact artifact review acceptance](p3-5-artifact-review-acceptance.md)",
@@ -2964,12 +3167,14 @@ def check_documentation_sync() -> Check:
             "DR-0041",
             "DR-0042",
             "DR-0043",
+            "DR-0044",
             "D-P3.5-PLAN-AUTH",
             "D-P3.5-ARTIFACT-RESEARCH",
             "D-P3.5-START",
             "D-P3.5-W9-START",
             "D-P3.5-W9-START: A",
-            "awaiting W10 clean-source owner acceptance",
+            "D-P3.5-W10-ACCEPTANCE",
+            "4AC016E2A23B001F338F822A25A90CA2E032947B842F14300146F0FF315B3D31",
         ),
         "docs/phase-3/implementation-backlog.md": (
             "D-P3.4-ACCEPTANCE",
@@ -2989,9 +3194,16 @@ def check_documentation_sync() -> Check:
             "validated_generated_only_closure",
             "D-P3.5-W9-START: A",
             "P35-W10",
-            "not_started_owner_acceptance_required",
+            "D-P3.5-W10-ACCEPTANCE",
+            "This closes P3.5 only",
             "validated_generated_baseline",
             "validated_complete",
+        ),
+        "docs/phase-3/acceptance-checklist.md": (
+            "D-P3.5-W10-ACCEPTANCE",
+            "Current P3.5 status:",
+            "`accepted`",
+            "P3.6 remain unauthorized",
         ),
         "docs/phase-3/p3-5-runtime-research-evidence.md": (
             "P3.5-RUNTIME-RESEARCH-EVIDENCE-R1",
@@ -3107,10 +3319,19 @@ def check_documentation_sync() -> Check:
             "128 MiB",
             "circular self-hash",
             "No W9 path accesses `B:`",
-            "W10 must regenerate",
+            "D-P3.5-W10-ACCEPTANCE",
+            "grants no P3.6 authority",
+        ),
+        "docs/phase-3/p3-5-acceptance.md": (
+            "D-P3.5-W10-ACCEPTANCE",
+            "4AC016E2A23B001F338F822A25A90CA2E032947B842F14300146F0FF315B3D31",
+            "1611922b4f410aa0cdbce369e4f3c8838f53e19f",
+            "A64ACE72ED33E0734D87D43A871BB1FB73B593296A681771600C3A1F42899E55",
+            "No broader authorization is inferred",
+            "P3.6",
         ),
         ".github/workflows/python-ci.yml": (
-            "python tools/phase35_readiness.py --strict",
+            "python tools/phase35_readiness.py --strict --require-clean-source",
             "python tools/phase35_contracts.py check",
             "python tools/phase35_latin_ocr.py check-evidence",
             "python tools/phase35_auxiliary_ocr.py check-evidence",
@@ -3145,7 +3366,14 @@ def check_documentation_sync() -> Check:
 
 def check_clean_source() -> Check:
     completed = subprocess.run(
-        ["git", "status", "--porcelain", "--", *PACKAGE_FILES],
+        [
+            "git",
+            "status",
+            "--porcelain",
+            "--",
+            *PACKAGE_FILES,
+            *ACCEPTANCE_FILES,
+        ],
         cwd=ROOT,
         capture_output=True,
         text=True,
@@ -3159,10 +3387,12 @@ def check_clean_source() -> Check:
         return Check(
             "clean_source",
             FAIL,
-            "P3.5 planning package files are not committed cleanly.",
+            "P3.5 package or acceptance files are not committed cleanly.",
             dirty,
         )
-    return Check("clean_source", PASS, "P3.5 planning files are clean in Git.")
+    return Check(
+        "clean_source", PASS, "P3.5 package and acceptance files are clean in Git."
+    )
 
 
 def build_report(*, require_clean_source: bool = False) -> Report:
@@ -3185,6 +3415,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_w9_scope_proposal(),
         check_w9_start_authorization(),
         check_w9_closure_evidence(),
+        check_owner_acceptance(),
         check_artifact_proposal(),
         check_owner_decisions_record(),
         check_artifact_research_authorization(),
@@ -3209,7 +3440,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         for check in checks
         if check.status == MANUAL
     )
-    status = "invalid" if failures else "w9_validated_awaiting_w10_acceptance"
+    status = "invalid" if failures else "accepted"
     try:
         digest, _ = package_digest()
     except OSError:
@@ -3219,6 +3450,8 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         scope="phase3.p3_5.synthetic_anpr.generated_only_local_implementation",
         package_digest=digest,
         package_file_count=len(PACKAGE_FILES),
+        accepted_package_digest=P3_5_ACCEPTED_PACKAGE_DIGEST,
+        accepted_repository_head=P3_5_ACCEPTED_REPOSITORY_HEAD,
         failures=failures,
         manual_gates=manual_gates,
         checks=tuple(checks),
@@ -3241,7 +3474,7 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(report.to_dict(), indent=2, sort_keys=True))
     else:
         print(
-            f"P3.5 planning: {report.status}; failures={report.failures}; "
+            f"P3.5 implementation: {report.status}; failures={report.failures}; "
             f"manual_gates={report.manual_gates}; digest={report.package_digest}"
         )
         for check in report.checks:

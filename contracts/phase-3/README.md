@@ -133,6 +133,9 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-5-w9-closure-evidence.json`: canonical aggregate-only closure evidence
   for W1-W8 hashes, deterministic bounded resource replay, default-off/network
   denial, package inventory digests, zero retention, and source-only rollback.
+- `p3-5-acceptance.json`: exact `D-P3.5-W10-ACCEPTANCE` owner decision bound
+  to the immutable 99-file package, accepted Git commit, W9 evidence hash,
+  documented limitations, and explicit non-authorization of P3.6.
 
 Verify all tracked snapshots:
 
@@ -151,7 +154,7 @@ uv run --locked --extra dev python tools/phase34_readiness.py --strict
 uv run --locked --extra dev --extra analytics python tools/phase34_c10_evidence.py check
 uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.py check
 uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance
-uv run --locked --extra dev python tools/phase35_readiness.py --strict
+uv run --locked --extra dev python tools/phase35_readiness.py --strict --require-clean-source
 uv run --locked --extra dev python tools/phase35_contracts.py check
 uv run --locked python tools/phase35_latin_ocr.py check-evidence
 uv run --locked python tools/phase35_auxiliary_ocr.py check-evidence
@@ -185,6 +188,8 @@ authorizes only the enumerated local generated-only work packages, five exact
 artifacts, and reviewed external runtime with zero network access. Cameras,
 media, real/private/Government data, training, Tesseract execution, deployment,
 P3.6, and remote Git operations remain prohibited.
+The immutable W1-W9 package is accepted under `D-P3.5-W10-ACCEPTANCE`; that
+acceptance preserves every prohibition above and grants no P3.6 authority.
 `P35-W1` adds only the reviewed ANPR contracts and fail-closed guardrails. It
 does not add a generator, OCR runtime, artifact loader, API, worker, migration,
 or persistence path.

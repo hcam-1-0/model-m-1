@@ -171,9 +171,17 @@ zero. P3.2 remains blocked and requires separate artifact and dataset approval.
   tampering, digest changes, disabled execution, and production activation.
 - [x] `P35-W4` focused/full-suite, package, readiness, and pre-commit validation
   is complete; clean-source evidence is regenerated after the local commit.
+- [x] `P35-W5` through `P35-W8` generated-only OCR, normalization, abstention,
+  and bounded anonymous consensus evidence are complete.
+- [x] `P35-W9` aggregate closure, deterministic stress, offline package
+  inspection, default-off/network denial, zero-retention, and rollback evidence
+  are complete.
+- [x] `D-P3.5-W10-ACCEPTANCE` binds the immutable 99-file package at commit
+  `1611922b4f410aa0cdbce369e4f3c8838f53e19f` to digest
+  `4AC016E2A23B001F338F822A25A90CA2E032947B842F14300146F0FF315B3D31`.
 
 Current P3.5 status:
-`implementation_authorized_generated_only_staged`.
+`accepted`.
 Artifact and runtime evidence are accepted. Five exact artifacts and the exact
 external runtime may be used for generated-only local work with zero network
 actions. Tesseract OCR, training, cameras/media, real data, persistent plate

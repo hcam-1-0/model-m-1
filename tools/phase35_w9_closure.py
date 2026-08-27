@@ -48,6 +48,10 @@ AUTHORIZATION_PATH = (
 PROPOSAL_PATH = ROOT / "contracts" / "phase-3" / "p3-5-w9-scope-proposal.json"
 
 AUTHORIZATION_HEAD = "6d546fbe1a074e4090fa6d006a67421a27746afe"
+CLOSURE_HEAD = "1611922b4f410aa0cdbce369e4f3c8838f53e19f"
+ACCEPTED_EVIDENCE_SHA256 = (
+    "A64ACE72ED33E0734D87D43A871BB1FB73B593296A681771600C3A1F42899E55"
+)
 PLANNING_PACKAGE_DIGEST = (
     "9BCC9E9C068E03E94E5461AABDE3B50A4766498406643EE253AF66ECAD8A9B7B"
 )
@@ -210,19 +214,14 @@ def _run_git(*arguments: str) -> str:
 
 
 def _changed_paths() -> tuple[str, ...]:
-    committed_or_modified = {
-        item.strip().replace("\\", "/")
-        for item in _run_git("diff", "--name-only", AUTHORIZATION_HEAD, "--").splitlines()
-        if item.strip()
-    }
-    untracked = {
+    committed = {
         item.strip().replace("\\", "/")
         for item in _run_git(
-            "ls-files", "--others", "--exclude-standard"
+            "diff", "--name-only", AUTHORIZATION_HEAD, CLOSURE_HEAD, "--"
         ).splitlines()
         if item.strip()
     }
-    return tuple(sorted(committed_or_modified | untracked))
+    return tuple(sorted(committed))
 
 
 def _load_authorization() -> tuple[dict[str, object], tuple[str, ...]]:
@@ -261,13 +260,13 @@ def _load_authorization() -> tuple[dict[str, object], tuple[str, ...]]:
     ):
         raise ClosureToolError("W9 authorization is missing, widened, or out of scope")
     completed = subprocess.run(
-        ["git", "merge-base", "--is-ancestor", AUTHORIZATION_HEAD, "HEAD"],
+        ["git", "merge-base", "--is-ancestor", CLOSURE_HEAD, "HEAD"],
         cwd=ROOT,
         check=False,
         timeout=10,
     )
     if completed.returncode != 0:
-        raise ClosureToolError("W9 authorization head is not an ancestor")
+        raise ClosureToolError("Accepted W9 closure head is not an ancestor")
     return authorization, changed
 
 
@@ -761,6 +760,8 @@ def build_evidence() -> dict[str, object]:
 
 
 def write_evidence() -> int:
+    if _run_git("rev-parse", "HEAD").strip() != CLOSURE_HEAD:
+        raise ClosureToolError("Accepted W9 evidence is immutable after W10")
     original = EVIDENCE_PATH.read_bytes() if EVIDENCE_PATH.exists() else None
     EVIDENCE_PATH.parent.mkdir(parents=True, exist_ok=True)
     EVIDENCE_PATH.write_text("{}\n", encoding="utf-8", newline="\n")
@@ -780,9 +781,20 @@ def write_evidence() -> int:
 
 
 def check_evidence() -> int:
-    expected = EVIDENCE_PATH.read_text(encoding="utf-8")
-    actual = _render(build_evidence())
-    if expected != actual:
+    _load_authorization()
+    completed = subprocess.run(
+        ["git", "show", f"{CLOSURE_HEAD}:{EVIDENCE_PATH.relative_to(ROOT).as_posix()}"],
+        cwd=ROOT,
+        capture_output=True,
+        check=False,
+        timeout=10,
+    )
+    current = EVIDENCE_PATH.read_bytes()
+    if (
+        completed.returncode != 0
+        or current != completed.stdout
+        or _sha256_bytes(current) != ACCEPTED_EVIDENCE_SHA256
+    ):
         print("[fail] P3.5 W9 closure evidence drifted", file=sys.stderr)
         return 1
     print(f"[pass] {EVIDENCE_PATH.relative_to(ROOT)} sha256={_sha256_file(EVIDENCE_PATH)}")

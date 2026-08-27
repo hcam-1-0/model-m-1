@@ -296,9 +296,12 @@ Implementation progress:
 - W9 adds no application, migration, dependency, lockfile, container, API,
   worker, database, persistence, camera/media, external runtime, model, alert,
   deployment, P3.6, or remote Git path. Its generated archives are untracked.
-- `P35-W10`: `not_started_owner_acceptance_required`. Clean-source validation,
-  final package digest publication, and explicit owner acceptance remain
-  separate; W9 authorization does not satisfy this gate.
+- `P35-W10`: `accepted`. Clean-source validation passed and `mayank-admin`
+  supplied `D-P3.5-W10-ACCEPTANCE` for immutable package digest
+  `4AC016E2A23B001F338F822A25A90CA2E032947B842F14300146F0FF315B3D31`
+  at commit `1611922b4f410aa0cdbce369e4f3c8838f53e19f`, with W9 evidence
+  SHA-256 `A64ACE72ED33E0734D87D43A871BB1FB73B593296A681771600C3A1F42899E55`.
+  This closes P3.5 only and grants no P3.6 or broader authority.
 
 Artifact preparation status: proposal R0 records eight recommended artifact
 slots, immutable source metadata, and bounded sizes. Seven external slots are

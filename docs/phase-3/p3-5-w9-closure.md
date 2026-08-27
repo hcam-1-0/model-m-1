@@ -91,8 +91,11 @@ Evidence rewriting is explicit:
 uv run --locked --extra dev python tools/phase35_w9_closure.py write --acknowledge-generated-only-closure
 ```
 
-## Remaining Gate
+## W10 Resolution
 
-W9 does not accept P3.5. W10 must regenerate the complete clean-source validation
-package, publish its exact digest and repository head, preserve every continuing
-prohibition, and receive a separate explicit owner acceptance decision.
+W9 did not itself accept P3.5. The separate W10 gate was completed on
+2026-08-27 under `D-P3.5-W10-ACCEPTANCE` for package digest
+`4AC016E2A23B001F338F822A25A90CA2E032947B842F14300146F0FF315B3D31`
+at commit `1611922b4f410aa0cdbce369e4f3c8838f53e19f`. The
+[acceptance record](p3-5-acceptance.md) preserves every continuing prohibition
+and grants no P3.6 authority.

@@ -553,7 +553,7 @@ authority. W10 remains separate.
 
 ### DR-0043: P3.5 W9 Generated-Only Closure Evidence
 
-Status: technically validated; awaiting W10 clean-source owner acceptance.
+Status: technically validated; subsequently accepted through W10.
 
 The closure checker consolidates seven W1-W8 evidence groups, executes two
 deterministic 10,000-observation generated-contract stress replays, closes and
@@ -567,7 +567,27 @@ An isolated offline source build produces one wheel and one sdist. Archive
 inspection rejects unsafe entries and model/weight/trained-data/font/image/video
 payloads, retains only aggregate counts and cryptographic digests, and leaves
 the generated archives untracked. No application or database rollback is
-needed. The next gate is W10 clean-source evidence and explicit owner acceptance.
+needed. W10 clean-source evidence and explicit owner acceptance were completed
+under DR-0044.
+
+### DR-0044: P3.5 W10 Immutable Package Acceptance
+
+Status: accepted under `D-P3.5-W10-ACCEPTANCE`.
+
+On 2026-08-27, `mayank-admin` accepted the immutable 99-file P3.5 package at
+commit `1611922b4f410aa0cdbce369e4f3c8838f53e19f`, package digest
+`4AC016E2A23B001F338F822A25A90CA2E032947B842F14300146F0FF315B3D31`,
+and W9 evidence SHA-256
+`A64ACE72ED33E0734D87D43A871BB1FB73B593296A681771600C3A1F42899E55`.
+The verifier reconstructs the historical package directly from Git before
+accepting the binding; additive governance records do not rewrite the accepted
+digest.
+
+The decision closes only P3.5's generated-only, zero-retention, default-off
+synthetic ANPR slice. It does not authorize Tesseract/Gujarati OCR execution,
+`PLATE-D0`, final-test access, quality promotion, cameras/media, real or
+Government data, identity, cross-camera linkage, operational actions,
+deployment, remote Git actions, P3.6, or later work.
 
 ## Decisions Explicitly Deferred
 

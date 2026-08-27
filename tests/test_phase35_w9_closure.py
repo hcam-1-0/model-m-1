@@ -18,6 +18,7 @@ def test_w9_authorization_is_exact_and_non_accepting() -> None:
     assert authorization["w10_authorized"] is False
     assert authorization["allowed_network_actions"] == []
     assert set(changed).issubset(closure.ALLOWED_PATHS)
+    assert closure.CLOSURE_HEAD == "1611922b4f410aa0cdbce369e4f3c8838f53e19f"
 
 
 def test_w9_resource_stress_is_bounded_deterministic_and_abstaining() -> None:
@@ -79,6 +80,9 @@ def test_w9_evidence_writer_requires_explicit_acknowledgment() -> None:
 
 def test_w9_tracked_evidence_is_canonical() -> None:
     assert closure.check_evidence() == 0
+    assert closure._sha256_file(closure.EVIDENCE_PATH) == (
+        closure.ACCEPTED_EVIDENCE_SHA256
+    )
 
 
 def test_w9_evidence_has_no_retained_text_identifiers_or_external_paths() -> None:

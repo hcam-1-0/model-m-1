@@ -124,7 +124,7 @@ jobs:
 
       - name: Verify Phase 3 P3.5 planning boundary
         if: matrix.python-version == '3.12'
-        run: python tools/phase35_readiness.py --strict
+        run: python tools/phase35_readiness.py --strict --require-clean-source
 
       - name: Verify Phase 3 P3.5 generated ANPR evidence
         run: |

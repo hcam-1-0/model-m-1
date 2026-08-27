@@ -11,13 +11,13 @@ from tools import phase35_readiness as readiness
 def test_p3_5_generated_only_start_is_authorized_without_manual_gates() -> None:
     report = readiness.build_report()
 
-    assert (
-        report.status == "w9_validated_awaiting_w10_acceptance"
-    )
+    assert report.status == "accepted"
     assert report.failures == 0
     assert report.manual_gates == 0
     assert report.package_file_count == 99
     assert len(report.package_digest) == 64
+    assert report.accepted_package_digest == readiness.P3_5_ACCEPTED_PACKAGE_DIGEST
+    assert report.accepted_repository_head == readiness.P3_5_ACCEPTED_REPOSITORY_HEAD
 
 
 def test_p3_5_technical_checks_pass() -> None:
@@ -40,6 +40,7 @@ def test_p3_5_technical_checks_pass() -> None:
         readiness.check_w9_scope_proposal(),
         readiness.check_w9_start_authorization(),
         readiness.check_w9_closure_evidence(),
+        readiness.check_owner_acceptance(),
         readiness.check_artifact_proposal(),
         readiness.check_owner_decisions_record(),
         readiness.check_artifact_research_authorization(),
@@ -112,6 +113,37 @@ def test_p3_5_w9_closure_remains_aggregate_and_non_accepting() -> None:
     assert record["acceptance_authorized"] is False
     assert record["w10_authorized"] is False
     assert readiness.check_w9_closure_evidence().status == readiness.PASS
+
+
+def test_p3_5_w10_acceptance_is_bound_to_historical_package() -> None:
+    record = json.loads(readiness.ACCEPTANCE_PATH.read_text(encoding="utf-8"))
+    historical_digest, historical_manifest = readiness.package_digest_at_commit(
+        readiness.P3_5_ACCEPTED_REPOSITORY_HEAD
+    )
+
+    assert record["decision_id"] == "D-P3.5-W10-ACCEPTANCE"
+    assert record["accepted_by"] == "mayank-admin"
+    assert record["evidence_package_digest"] == historical_digest
+    assert historical_digest == readiness.P3_5_ACCEPTED_PACKAGE_DIGEST
+    assert len(historical_manifest) == 99
+    assert record["w9_evidence_sha256"] == (
+        readiness.P3_5_ACCEPTED_W9_EVIDENCE_SHA256
+    )
+    assert record["next_phase_authorized"] is False
+    assert record["p3_6_authorized"] is False
+    assert readiness.check_owner_acceptance().status == readiness.PASS
+
+
+def test_p3_5_w10_acceptance_rejects_authority_widening(
+    tmp_path: Path, monkeypatch
+) -> None:
+    record = json.loads(readiness.ACCEPTANCE_PATH.read_text(encoding="utf-8"))
+    record["p3_6_authorized"] = True
+    widened = tmp_path / "p3-5-acceptance.json"
+    widened.write_text(json.dumps(record), encoding="utf-8")
+    monkeypatch.setattr(readiness, "ACCEPTANCE_PATH", widened)
+
+    assert readiness.check_owner_acceptance().status == readiness.FAIL
 
 
 def test_p3_5_owner_decisions_record_exact_recommended_baseline() -> None:

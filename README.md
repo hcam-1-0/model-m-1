@@ -41,8 +41,10 @@ exact-string confidence-weighted votes but always abstains because support and
 margin thresholds remain unapproved.
 `P35-W9` is authorized under `D-P3.5-W9-START: A` and adds only aggregate
 closure evidence, bounded generated-contract stress, offline package inspection,
-zero-retention/security proof, and source-only rollback documentation. W10
-acceptance remains separate.
+zero-retention/security proof, and source-only rollback documentation. W10 is
+accepted under `D-P3.5-W10-ACCEPTANCE` for the immutable 99-file package at
+commit `1611922b4f410aa0cdbce369e4f3c8838f53e19f` and digest
+`4AC016E2A23B001F338F822A25A90CA2E032947B842F14300146F0FF315B3D31`.
 None of these milestones adds a real CCTV media path.
 
 A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
@@ -76,7 +78,8 @@ The [P3.5 W9 decision packet](docs/phase-3/p3-5-w9-decision-packet.md)
 records the selected narrow closure. The
 [W9 authorization](docs/phase-3/p3-5-w9-start-authorization.md) binds its exact
 scope, and the [W9 closure report](docs/phase-3/p3-5-w9-closure.md) records the
-aggregate evidence and remaining W10 gate.
+aggregate evidence. The [P3.5 W10 acceptance](docs/phase-3/p3-5-acceptance.md)
+binds the immutable package, commit, evidence hash, and continuing limitations.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
@@ -111,7 +114,7 @@ uv run --locked --extra dev python tools/phase34_readiness.py --strict --json
 uv run --locked --extra dev --extra analytics python tools/phase34_c10_evidence.py check
 uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.py check
 uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance --json
-uv run --locked --extra dev python tools/phase35_readiness.py --strict --json
+uv run --locked --extra dev python tools/phase35_readiness.py --strict --require-clean-source --json
 uv run --locked --extra dev python tools/phase35_contracts.py check
 uv run --locked python tools/phase35_latin_ocr.py check-evidence
 uv run --locked python tools/phase35_auxiliary_ocr.py check-evidence
@@ -136,12 +139,12 @@ The P3.4 implementation verifier should report `accepted`, zero technical
 failures, and zero manual gates while preserving the immutable historical
 package binding. The PostGIS validation image remains deployment-blocked.
 
-The P3.5 planning verifier should report
-`implementation_authorized_generated_only_staged`, zero technical failures,
-and zero manual gates. It verifies the approved `A/A/A/A`
+The P3.5 verifier should report `accepted`, zero technical failures, and zero
+manual gates. It recomputes the immutable W10 package from the accepted Git
+commit and verifies the approved `A/A/A/A`
 baseline, exact artifact acceptance, completed restricted runtime evidence,
 digest-bound generated-only start authorization, and the exact W1/W3/W4/W5/W6/W7
-application and evidence boundary. The verifier itself performs no download,
+application and evidence boundary through W9. The verifier itself performs no download,
 extraction, synthetic generation, training, inference, media access, or model execution.
 The artifact-research command is separately gated and writes only the seven
 authorized files and receipts to the external local quarantine.
