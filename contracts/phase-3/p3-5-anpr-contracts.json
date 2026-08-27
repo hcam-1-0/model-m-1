@@ -1,6 +1,959 @@
 {
+  "auxiliary_script_policy": {
+    "closed_internal_vocabulary": true,
+    "complex_shaping_used": false,
+    "devanagari_adapter_version": "sha256:26dec23ff166b4e83762195455fd23e91dfb37c493482513d08baa4ec7ff8ec4",
+    "devanagari_dictionary_version": "sha256:15dd5c96dabcc64d3d3bdfeefd7cdc71cffefe05e9598a07f767b23b8fe75184",
+    "font_candidates": {
+      "FONT-D0": "sha256:9ce7b04f60e363d8870e5997744cf85cf69d38a4d7d129d364d92a3b14b461d7",
+      "FONT-G0": "sha256:9901d8552f1dd5d2c50dbd4caa6f6e174e74e8264f06594ab259ae6e7b1ac428"
+    },
+    "generated_only": true,
+    "generator_version": "sha256:0af38df8b0859608da40d4f53b3e276785d229b2b7a18a2c55c6e50dc558eabe",
+    "gujarati_ocr_authorized": false,
+    "modifies_registration_mark": false,
+    "ocr_candidate": {
+      "OCR-D0": "sha256:ac8279d27fc7e8cda559364f9a3c506f43984cf6ba5e1b7a06450458bfe07dfb"
+    },
+    "promotion_authorized": false,
+    "renderer_version": "sha256:2bb485ef09242f0d38bdecc85771fbb0b54c479a0a06a1ea67beea13a945a138",
+    "standalone_graphemes_only": true,
+    "transliteration_allowed": false
+  },
   "contract_format": "hcam.anpr.contract-bundle.v1",
   "contracts": {
+    "auxiliary_script_generated_evaluation": {
+      "$defs": {
+        "AuxiliaryFailureCountsV1": {
+          "additionalProperties": false,
+          "properties": {
+            "engine_error": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Engine Error",
+              "type": "integer"
+            },
+            "invalid_confidence": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Invalid Confidence",
+              "type": "integer"
+            },
+            "invalid_output": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Invalid Output",
+              "type": "integer"
+            },
+            "malformed_result": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Malformed Result",
+              "type": "integer"
+            },
+            "no_result": {
+              "default": 0,
+              "minimum": 0,
+              "title": "No Result",
+              "type": "integer"
+            },
+            "output_too_long": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Output Too Long",
+              "type": "integer"
+            },
+            "unexpected_whitespace": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Unexpected Whitespace",
+              "type": "integer"
+            },
+            "unsupported_script": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Unsupported Script",
+              "type": "integer"
+            }
+          },
+          "title": "AuxiliaryFailureCountsV1",
+          "type": "object"
+        },
+        "AuxiliaryFontRenderingEvaluationV1": {
+          "additionalProperties": false,
+          "properties": {
+            "artifact_id": {
+              "enum": [
+                "FONT-D0-NOTO-SANS-DEVANAGARI-VARIABLE-PROPOSED",
+                "FONT-G0-NOTO-SANS-GUJARATI-VARIABLE-PROPOSED"
+              ],
+              "title": "Artifact Id",
+              "type": "string"
+            },
+            "artifact_sha256": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Artifact Sha256",
+              "type": "string"
+            },
+            "candidate_id": {
+              "enum": [
+                "FONT-D0",
+                "FONT-G0"
+              ],
+              "title": "Candidate Id",
+              "type": "string"
+            },
+            "complex_shaping_available": {
+              "const": false,
+              "default": false,
+              "title": "Complex Shaping Available",
+              "type": "boolean"
+            },
+            "complex_shaping_used": {
+              "const": false,
+              "default": false,
+              "title": "Complex Shaping Used",
+              "type": "boolean"
+            },
+            "failed": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Failed",
+              "type": "integer"
+            },
+            "font_family": {
+              "enum": [
+                "Noto Sans Devanagari",
+                "Noto Sans Gujarati"
+              ],
+              "title": "Font Family",
+              "type": "string"
+            },
+            "generated_grapheme_count": {
+              "minimum": 1,
+              "title": "Generated Grapheme Count",
+              "type": "integer"
+            },
+            "generated_text_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Generated Text Persisted",
+              "type": "boolean"
+            },
+            "identifiers_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Identifiers Persisted",
+              "type": "boolean"
+            },
+            "ocr_execution_performed": {
+              "title": "Ocr Execution Performed",
+              "type": "boolean"
+            },
+            "rendered_pixels_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Rendered Pixels Persisted",
+              "type": "boolean"
+            },
+            "renderer_version": {
+              "const": "sha256:2bb485ef09242f0d38bdecc85771fbb0b54c479a0a06a1ea67beea13a945a138",
+              "default": "sha256:2bb485ef09242f0d38bdecc85771fbb0b54c479a0a06a1ea67beea13a945a138",
+              "title": "Renderer Version",
+              "type": "string"
+            },
+            "replay_pixels_deterministic": {
+              "title": "Replay Pixels Deterministic",
+              "type": "boolean"
+            },
+            "replay_runs": {
+              "const": 20,
+              "default": 20,
+              "title": "Replay Runs",
+              "type": "integer"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 1,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "script_lane": {
+              "enum": [
+                "devanagari",
+                "gujarati"
+              ],
+              "title": "Script Lane",
+              "type": "string"
+            },
+            "shaping_backend": {
+              "const": "basic_freetype_no_raqm",
+              "default": "basic_freetype_no_raqm",
+              "title": "Shaping Backend",
+              "type": "string"
+            },
+            "slices": {
+              "items": {
+                "$ref": "#/$defs/AuxiliaryFontRenderingSliceV1"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "title": "Slices",
+              "type": "array"
+            },
+            "standalone_graphemes_only": {
+              "const": true,
+              "default": true,
+              "title": "Standalone Graphemes Only",
+              "type": "boolean"
+            },
+            "succeeded": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Succeeded",
+              "type": "integer"
+            },
+            "synthetic_only": {
+              "const": true,
+              "default": true,
+              "title": "Synthetic Only",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "candidate_id",
+            "artifact_id",
+            "artifact_sha256",
+            "script_lane",
+            "font_family",
+            "sample_count",
+            "generated_grapheme_count",
+            "succeeded",
+            "failed",
+            "slices",
+            "replay_pixels_deterministic",
+            "ocr_execution_performed"
+          ],
+          "title": "AuxiliaryFontRenderingEvaluationV1",
+          "type": "object"
+        },
+        "AuxiliaryFontRenderingSliceV1": {
+          "additionalProperties": false,
+          "properties": {
+            "degradation": {
+              "enum": [
+                "clean",
+                "low_contrast",
+                "downscaled"
+              ],
+              "title": "Degradation",
+              "type": "string"
+            },
+            "failed": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Failed",
+              "type": "integer"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "succeeded": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Succeeded",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "degradation",
+            "sample_count",
+            "succeeded",
+            "failed"
+          ],
+          "title": "AuxiliaryFontRenderingSliceV1",
+          "type": "object"
+        },
+        "AuxiliaryGeneratedSliceV1": {
+          "additionalProperties": false,
+          "properties": {
+            "degradation": {
+              "enum": [
+                "clean",
+                "low_contrast",
+                "downscaled"
+              ],
+              "title": "Degradation",
+              "type": "string"
+            },
+            "exact_matches": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Exact Matches",
+              "type": "integer"
+            },
+            "failed": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Failed",
+              "type": "integer"
+            },
+            "failure_counts": {
+              "$ref": "#/$defs/AuxiliaryFailureCountsV1"
+            },
+            "raw_edit_distance": {
+              "minimum": 0,
+              "title": "Raw Edit Distance",
+              "type": "integer"
+            },
+            "reference_grapheme_count": {
+              "minimum": 0,
+              "title": "Reference Grapheme Count",
+              "type": "integer"
+            },
+            "reference_scalar_count": {
+              "minimum": 0,
+              "title": "Reference Scalar Count",
+              "type": "integer"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "succeeded": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Succeeded",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "degradation",
+            "sample_count",
+            "succeeded",
+            "failed",
+            "exact_matches",
+            "reference_scalar_count",
+            "reference_grapheme_count",
+            "raw_edit_distance",
+            "failure_counts"
+          ],
+          "title": "AuxiliaryGeneratedSliceV1",
+          "type": "object"
+        },
+        "DevanagariOcrCandidateEvaluationV1": {
+          "additionalProperties": false,
+          "properties": {
+            "adapter_version": {
+              "const": "sha256:26dec23ff166b4e83762195455fd23e91dfb37c493482513d08baa4ec7ff8ec4",
+              "default": "sha256:26dec23ff166b4e83762195455fd23e91dfb37c493482513d08baa4ec7ff8ec4",
+              "title": "Adapter Version",
+              "type": "string"
+            },
+            "alternatives_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Alternatives Persisted",
+              "type": "boolean"
+            },
+            "artifact_id": {
+              "const": "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED",
+              "default": "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED",
+              "title": "Artifact Id",
+              "type": "string"
+            },
+            "artifact_sha256": {
+              "const": "sha256:ac8279d27fc7e8cda559364f9a3c506f43984cf6ba5e1b7a06450458bfe07dfb",
+              "default": "sha256:ac8279d27fc7e8cda559364f9a3c506f43984cf6ba5e1b7a06450458bfe07dfb",
+              "title": "Artifact Sha256",
+              "type": "string"
+            },
+            "candidate_id": {
+              "const": "OCR-D0",
+              "default": "OCR-D0",
+              "title": "Candidate Id",
+              "type": "string"
+            },
+            "confidence_distribution": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/LatinOcrDistributionV1"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "dictionary_version": {
+              "const": "sha256:15dd5c96dabcc64d3d3bdfeefd7cdc71cffefe05e9598a07f767b23b8fe75184",
+              "default": "sha256:15dd5c96dabcc64d3d3bdfeefd7cdc71cffefe05e9598a07f767b23b8fe75184",
+              "title": "Dictionary Version",
+              "type": "string"
+            },
+            "exact_matches": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Exact Matches",
+              "type": "integer"
+            },
+            "extracted_inventory_sha256": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Extracted Inventory Sha256",
+              "type": "string"
+            },
+            "failed": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Failed",
+              "type": "integer"
+            },
+            "failure_counts": {
+              "$ref": "#/$defs/AuxiliaryFailureCountsV1"
+            },
+            "final_test_used": {
+              "const": false,
+              "default": false,
+              "title": "Final Test Used",
+              "type": "boolean"
+            },
+            "font_artifact_sha256": {
+              "const": "sha256:9ce7b04f60e363d8870e5997744cf85cf69d38a4d7d129d364d92a3b14b461d7",
+              "default": "sha256:9ce7b04f60e363d8870e5997744cf85cf69d38a4d7d129d364d92a3b14b461d7",
+              "title": "Font Artifact Sha256",
+              "type": "string"
+            },
+            "font_candidate_id": {
+              "const": "FONT-D0",
+              "default": "FONT-D0",
+              "title": "Font Candidate Id",
+              "type": "string"
+            },
+            "identifiers_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Identifiers Persisted",
+              "type": "boolean"
+            },
+            "latency_ms_distribution": {
+              "$ref": "#/$defs/LatinOcrDistributionV1"
+            },
+            "model_name": {
+              "const": "devanagari_PP-OCRv5_mobile_rec",
+              "default": "devanagari_PP-OCRv5_mobile_rec",
+              "title": "Model Name",
+              "type": "string"
+            },
+            "modifies_registration_mark": {
+              "const": false,
+              "default": false,
+              "title": "Modifies Registration Mark",
+              "type": "boolean"
+            },
+            "network_access_performed": {
+              "const": false,
+              "default": false,
+              "title": "Network Access Performed",
+              "type": "boolean"
+            },
+            "network_attempt_count": {
+              "minimum": 0,
+              "title": "Network Attempt Count",
+              "type": "integer"
+            },
+            "promotion_authorized": {
+              "const": false,
+              "default": false,
+              "title": "Promotion Authorized",
+              "type": "boolean"
+            },
+            "raw_edit_distance": {
+              "minimum": 0,
+              "title": "Raw Edit Distance",
+              "type": "integer"
+            },
+            "raw_output_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Raw Output Persisted",
+              "type": "boolean"
+            },
+            "reference_grapheme_count": {
+              "minimum": 1,
+              "title": "Reference Grapheme Count",
+              "type": "integer"
+            },
+            "reference_scalar_count": {
+              "minimum": 1,
+              "title": "Reference Scalar Count",
+              "type": "integer"
+            },
+            "replay_output_deterministic": {
+              "title": "Replay Output Deterministic",
+              "type": "boolean"
+            },
+            "replay_runs": {
+              "const": 20,
+              "default": 20,
+              "title": "Replay Runs",
+              "type": "integer"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 1,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "slices": {
+              "items": {
+                "$ref": "#/$defs/AuxiliaryGeneratedSliceV1"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "title": "Slices",
+              "type": "array"
+            },
+            "succeeded": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Succeeded",
+              "type": "integer"
+            },
+            "synthetic_only": {
+              "const": true,
+              "default": true,
+              "title": "Synthetic Only",
+              "type": "boolean"
+            },
+            "transliteration_performed": {
+              "const": false,
+              "default": false,
+              "title": "Transliteration Performed",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "extracted_inventory_sha256",
+            "sample_count",
+            "succeeded",
+            "failed",
+            "exact_matches",
+            "reference_scalar_count",
+            "reference_grapheme_count",
+            "raw_edit_distance",
+            "failure_counts",
+            "slices",
+            "confidence_distribution",
+            "latency_ms_distribution",
+            "replay_output_deterministic",
+            "network_attempt_count"
+          ],
+          "title": "DevanagariOcrCandidateEvaluationV1",
+          "type": "object"
+        },
+        "LatinOcrDistributionV1": {
+          "additionalProperties": false,
+          "properties": {
+            "maximum": {
+              "minimum": 0,
+              "title": "Maximum",
+              "type": "number"
+            },
+            "mean": {
+              "minimum": 0,
+              "title": "Mean",
+              "type": "number"
+            },
+            "minimum": {
+              "minimum": 0,
+              "title": "Minimum",
+              "type": "number"
+            },
+            "p50": {
+              "minimum": 0,
+              "title": "P50",
+              "type": "number"
+            },
+            "p95": {
+              "minimum": 0,
+              "title": "P95",
+              "type": "number"
+            }
+          },
+          "required": [
+            "minimum",
+            "p50",
+            "p95",
+            "maximum",
+            "mean"
+          ],
+          "title": "LatinOcrDistributionV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "adapter_version": {
+          "const": "sha256:26dec23ff166b4e83762195455fd23e91dfb37c493482513d08baa4ec7ff8ec4",
+          "default": "sha256:26dec23ff166b4e83762195455fd23e91dfb37c493482513d08baa4ec7ff8ec4",
+          "title": "Adapter Version",
+          "type": "string"
+        },
+        "camera_or_media_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Camera Or Media Input Count",
+          "type": "integer"
+        },
+        "contract_type": {
+          "const": "hcam.phase3.p3_5.auxiliary-script-generated-evaluation.v1",
+          "default": "hcam.phase3.p3_5.auxiliary-script-generated-evaluation.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "deployment_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Deployment Authorized",
+          "type": "boolean"
+        },
+        "devanagari_ocr": {
+          "$ref": "#/$defs/DevanagariOcrCandidateEvaluationV1"
+        },
+        "external_text_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "External Text Input Count",
+          "type": "integer"
+        },
+        "font_rendering": {
+          "items": {
+            "$ref": "#/$defs/AuxiliaryFontRenderingEvaluationV1"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Font Rendering",
+          "type": "array"
+        },
+        "generated_sample_plan": {
+          "const": "internal_vocabulary_no_final_test",
+          "default": "internal_vocabulary_no_final_test",
+          "title": "Generated Sample Plan",
+          "type": "string"
+        },
+        "generated_text_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Generated Text Persisted",
+          "type": "boolean"
+        },
+        "generator_version": {
+          "const": "sha256:0af38df8b0859608da40d4f53b3e276785d229b2b7a18a2c55c6e50dc558eabe",
+          "default": "sha256:0af38df8b0859608da40d4f53b3e276785d229b2b7a18a2c55c6e50dc558eabe",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "gujarati_ocr_execution_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Gujarati Ocr Execution Count",
+          "type": "integer"
+        },
+        "model_download_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Model Download Count",
+          "type": "integer"
+        },
+        "modifies_registration_mark": {
+          "const": false,
+          "default": false,
+          "title": "Modifies Registration Mark",
+          "type": "boolean"
+        },
+        "paddleocr_version": {
+          "const": "3.7.0",
+          "default": "3.7.0",
+          "title": "Paddleocr Version",
+          "type": "string"
+        },
+        "paddlepaddle_version": {
+          "const": "3.3.1",
+          "default": "3.3.1",
+          "title": "Paddlepaddle Version",
+          "type": "string"
+        },
+        "pillow_version": {
+          "const": "12.3.0",
+          "default": "12.3.0",
+          "title": "Pillow Version",
+          "type": "string"
+        },
+        "plate_text_retention_hours": {
+          "const": 0,
+          "default": 0,
+          "title": "Plate Text Retention Hours",
+          "type": "integer"
+        },
+        "promotion_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Promotion Authorized",
+          "type": "boolean"
+        },
+        "quality_threshold_decided": {
+          "const": false,
+          "default": false,
+          "title": "Quality Threshold Decided",
+          "type": "boolean"
+        },
+        "raw_output_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Raw Output Persisted",
+          "type": "boolean"
+        },
+        "real_registration_mark_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Real Registration Mark Count",
+          "type": "integer"
+        },
+        "regex_version": {
+          "const": "2026.7.19",
+          "default": "2026.7.19",
+          "title": "Regex Version",
+          "type": "string"
+        },
+        "rendered_pixels_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Rendered Pixels Persisted",
+          "type": "boolean"
+        },
+        "renderer_version": {
+          "const": "sha256:2bb485ef09242f0d38bdecc85771fbb0b54c479a0a06a1ea67beea13a945a138",
+          "default": "sha256:2bb485ef09242f0d38bdecc85771fbb0b54c479a0a06a1ea67beea13a945a138",
+          "title": "Renderer Version",
+          "type": "string"
+        },
+        "runtime_id": {
+          "const": "cpython-3.12.13-windows-x86_64",
+          "default": "cpython-3.12.13-windows-x86_64",
+          "title": "Runtime Id",
+          "type": "string"
+        },
+        "sample_or_region_identifiers_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Sample Or Region Identifiers Persisted",
+          "type": "boolean"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "tesseract_execution_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Tesseract Execution Count",
+          "type": "integer"
+        },
+        "transliteration_performed": {
+          "const": false,
+          "default": false,
+          "title": "Transliteration Performed",
+          "type": "boolean"
+        },
+        "work_package": {
+          "const": "P35-W6_exact_Devanagari_Paddle_OCR_lane_and_Gujarati_font_rendering_only",
+          "default": "P35-W6_exact_Devanagari_Paddle_OCR_lane_and_Gujarati_font_rendering_only",
+          "title": "Work Package",
+          "type": "string"
+        }
+      },
+      "required": [
+        "devanagari_ocr",
+        "font_rendering"
+      ],
+      "title": "AuxiliaryScriptGeneratedEvaluationV1",
+      "type": "object"
+    },
+    "ephemeral_auxiliary_ocr_hypothesis": {
+      "additionalProperties": false,
+      "description": "Generated auxiliary-script OCR output that must remain process-local.",
+      "properties": {
+        "adapter_version": {
+          "const": "sha256:26dec23ff166b4e83762195455fd23e91dfb37c493482513d08baa4ec7ff8ec4",
+          "default": "sha256:26dec23ff166b4e83762195455fd23e91dfb37c493482513d08baa4ec7ff8ec4",
+          "title": "Adapter Version",
+          "type": "string"
+        },
+        "artifact_id": {
+          "const": "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED",
+          "default": "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED",
+          "title": "Artifact Id",
+          "type": "string"
+        },
+        "artifact_sha256": {
+          "const": "sha256:ac8279d27fc7e8cda559364f9a3c506f43984cf6ba5e1b7a06450458bfe07dfb",
+          "default": "sha256:ac8279d27fc7e8cda559364f9a3c506f43984cf6ba5e1b7a06450458bfe07dfb",
+          "title": "Artifact Sha256",
+          "type": "string"
+        },
+        "candidate_id": {
+          "const": "OCR-D0",
+          "default": "OCR-D0",
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.ephemeral-auxiliary-ocr-hypothesis.v1",
+          "default": "hcam.anpr.ephemeral-auxiliary-ocr-hypothesis.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "dictionary_version": {
+          "const": "sha256:15dd5c96dabcc64d3d3bdfeefd7cdc71cffefe05e9598a07f767b23b8fe75184",
+          "default": "sha256:15dd5c96dabcc64d3d3bdfeefd7cdc71cffefe05e9598a07f767b23b8fe75184",
+          "title": "Dictionary Version",
+          "type": "string"
+        },
+        "engine_id": {
+          "const": "paddleocr-text-recognition",
+          "default": "paddleocr-text-recognition",
+          "title": "Engine Id",
+          "type": "string"
+        },
+        "ephemeral_only": {
+          "const": true,
+          "default": true,
+          "title": "Ephemeral Only",
+          "type": "boolean"
+        },
+        "generator_version": {
+          "const": "sha256:0af38df8b0859608da40d4f53b3e276785d229b2b7a18a2c55c6e50dc558eabe",
+          "default": "sha256:0af38df8b0859608da40d4f53b3e276785d229b2b7a18a2c55c6e50dc558eabe",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "latency_ms": {
+          "maximum": 600000,
+          "minimum": 0,
+          "title": "Latency Ms",
+          "type": "number"
+        },
+        "modifies_registration_mark": {
+          "const": false,
+          "default": false,
+          "title": "Modifies Registration Mark",
+          "type": "boolean"
+        },
+        "raw_confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Raw Confidence",
+          "type": "number"
+        },
+        "raw_output_mutated": {
+          "const": false,
+          "default": false,
+          "title": "Raw Output Mutated",
+          "type": "boolean"
+        },
+        "raw_text": {
+          "maxLength": 16,
+          "minLength": 1,
+          "title": "Raw Text",
+          "type": "string"
+        },
+        "region_id": {
+          "pattern": "^anprauxregion_[0-9a-f]{32}$",
+          "title": "Region Id",
+          "type": "string"
+        },
+        "renderer_version": {
+          "const": "sha256:2bb485ef09242f0d38bdecc85771fbb0b54c479a0a06a1ea67beea13a945a138",
+          "default": "sha256:2bb485ef09242f0d38bdecc85771fbb0b54c479a0a06a1ea67beea13a945a138",
+          "title": "Renderer Version",
+          "type": "string"
+        },
+        "result_id": {
+          "pattern": "^anprauxocr_[0-9a-f]{32}$",
+          "title": "Result Id",
+          "type": "string"
+        },
+        "retained": {
+          "const": false,
+          "default": false,
+          "title": "Retained",
+          "type": "boolean"
+        },
+        "review_state": {
+          "const": "unreviewed",
+          "default": "unreviewed",
+          "title": "Review State",
+          "type": "string"
+        },
+        "runtime_id": {
+          "const": "paddleocr-3.7.0-paddlepaddle-3.3.1-cpu",
+          "default": "paddleocr-3.7.0-paddlepaddle-3.3.1-cpu",
+          "title": "Runtime Id",
+          "type": "string"
+        },
+        "sample_id": {
+          "pattern": "^anprauxsample_[0-9a-f]{32}$",
+          "title": "Sample Id",
+          "type": "string"
+        },
+        "script_lane": {
+          "const": "devanagari",
+          "default": "devanagari",
+          "title": "Script Lane",
+          "type": "string"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "transliteration_performed": {
+          "const": false,
+          "default": false,
+          "title": "Transliteration Performed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "result_id",
+        "region_id",
+        "sample_id",
+        "raw_text",
+        "raw_confidence",
+        "latency_ms"
+      ],
+      "title": "EphemeralAuxiliaryOcrHypothesisV1",
+      "type": "object"
+    },
     "ephemeral_latin_ocr_hypothesis": {
       "$defs": {
         "LatinOcrAlternativeV1": {

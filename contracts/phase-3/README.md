@@ -115,6 +115,9 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-5-latin-ocr-evaluation.json`: canonical W5 identifier-free generated
   aggregate evidence for exact `OCR-L0` and `OCR-L1`, with no OCR strings,
   alternatives, samples, regions, pixels, or final-test use.
+- `p3-5-auxiliary-script-evaluation.json`: canonical W6 identifier-free
+  aggregate evidence for exact Devanagari `OCR-D0`, deterministic `FONT-D0`
+  and `FONT-G0` rendering, and zero Gujarati OCR/Tesseract execution.
 
 Verify all tracked snapshots:
 
@@ -136,6 +139,7 @@ uv run --locked --extra dev --extra analytics python tools/phase34_implementatio
 uv run --locked --extra dev python tools/phase35_readiness.py --strict
 uv run --locked --extra dev python tools/phase35_contracts.py check
 uv run --locked python tools/phase35_latin_ocr.py check-evidence
+uv run --locked python tools/phase35_auxiliary_ocr.py check-evidence
 uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked --extra dev python tools/phase35_runtime_research.py all --root 'E:\h-cam-research-cache\phase-3\p3-5-runtime'
@@ -175,3 +179,6 @@ or media and persists neither pixels nor generated plate text.
 `P35-W5` adds a code-defined generated Latin renderer and exact external
 `OCR-L0`/`OCR-L1` adapters. Raw OCR exists only in memory; tracked evidence is
 identifier-free aggregate data. Frozen final-test samples remain unopened.
+`P35-W6` adds a closed standalone-grapheme generator, exact external
+`OCR-D0`/`FONT-D0` Devanagari execution, and `FONT-G0` Gujarati rendering only.
+Raw text and pixels remain ephemeral; Gujarati OCR and Tesseract remain blocked.

@@ -255,6 +255,15 @@ Implementation progress:
   observed 0/3 exact matches on two-line crops. These values are baseline
   evidence only; quality thresholds, promotion, normalization, consensus,
   real-data evaluation, and deployment remain undecided or prohibited.
+- `P35-W6`: `validated_generated_baseline`. Exact `OCR-D0`, `FONT-D0`, and
+  `FONT-G0` are revalidated at every external run. A closed standalone-grapheme
+  vocabulary, three degradation slices, strict script router, isolated
+  network-denied worker, and aggregate-only evidence are implemented.
+- W6 observed 10/12 exact Devanagari matches: 4/4 clean, 3/4 low contrast, and
+  3/4 downscaled. Both fonts rendered 12/12 and replayed deterministically for
+  20/20 runs. Gujarati OCR and Tesseract execution stayed at zero because
+  `OCR-G0` and `OCR-G1` remain blocked. No quality or promotion decision follows
+  from these generated results.
 
 Artifact preparation status: proposal R0 records eight recommended artifact
 slots, immutable source metadata, and bounded sizes. Seven external slots are

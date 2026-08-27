@@ -76,6 +76,36 @@ OCR_L0_ARTIFACT_SHA256 = (
 OCR_L1_ARTIFACT_SHA256 = (
     "sha256:4eecc1c6a4623765042e6fc15446da0da110b7d875b6b72b2d351d2b2dbd4da6"
 )
+ANPR_AUXILIARY_GENERATOR_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.auxiliary-generator.v1:closed-base-graphemes:no-external-text"
+    ).hexdigest()
+)
+ANPR_AUXILIARY_RENDERER_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.auxiliary-renderer.v1:pillow-12.3.0:basic-freetype:no-raqm"
+    ).hexdigest()
+)
+ANPR_DEVANAGARI_OCR_ADAPTER_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.paddleocr-devanagari-adapter.v1:raw-output:generated-only:cpu"
+    ).hexdigest()
+)
+ANPR_DEVANAGARI_DICTIONARY_VERSION = (
+    "sha256:15dd5c96dabcc64d3d3bdfeefd7cdc71cffefe05e9598a07f767b23b8fe75184"
+)
+OCR_D0_ARTIFACT_SHA256 = (
+    "sha256:ac8279d27fc7e8cda559364f9a3c506f43984cf6ba5e1b7a06450458bfe07dfb"
+)
+FONT_D0_ARTIFACT_SHA256 = (
+    "sha256:9ce7b04f60e363d8870e5997744cf85cf69d38a4d7d129d364d92a3b14b461d7"
+)
+FONT_G0_ARTIFACT_SHA256 = (
+    "sha256:9901d8552f1dd5d2c50dbd4caa6f6e174e74e8264f06594ab259ae6e7b1ac428"
+)
 MAX_ANPR_REQUEST_BYTES = 4 * 1024
 MAX_ANPR_DOCUMENT_DEPTH = 8
 MAX_ANPR_DOCUMENT_NODES = 256
@@ -99,6 +129,9 @@ AnprSplit = Literal[
     "final_test",
 ]
 LatinOcrCandidate = Literal["OCR-L0", "OCR-L1"]
+AuxiliaryScript = Literal["devanagari", "gujarati"]
+AuxiliaryFontCandidate = Literal["FONT-D0", "FONT-G0"]
+AuxiliaryDegradation = Literal["clean", "low_contrast", "downscaled"]
 LatinOcrFailureCode = Literal[
     "engine_error",
     "invalid_confidence",
@@ -825,6 +858,298 @@ class LatinOcrGeneratedEvaluationV1(ContractModel):
         return self
 
 
+class EphemeralAuxiliaryOcrHypothesisV1(ContractModel):
+    """Generated auxiliary-script OCR output that must remain process-local."""
+
+    contract_type: Literal["hcam.anpr.ephemeral-auxiliary-ocr-hypothesis.v1"] = (
+        "hcam.anpr.ephemeral-auxiliary-ocr-hypothesis.v1"
+    )
+    result_id: Annotated[str, Field(pattern=r"^anprauxocr_[0-9a-f]{32}$")]
+    region_id: Annotated[str, Field(pattern=r"^anprauxregion_[0-9a-f]{32}$")]
+    sample_id: Annotated[str, Field(pattern=r"^anprauxsample_[0-9a-f]{32}$")]
+    source_id: Literal["DATA-PLATE-GEN-R0"] = ANPR_GENERATED_SOURCE_ID
+    generator_version: Literal[ANPR_AUXILIARY_GENERATOR_VERSION] = (
+        ANPR_AUXILIARY_GENERATOR_VERSION
+    )
+    renderer_version: Literal[ANPR_AUXILIARY_RENDERER_VERSION] = (
+        ANPR_AUXILIARY_RENDERER_VERSION
+    )
+    adapter_version: Literal[ANPR_DEVANAGARI_OCR_ADAPTER_VERSION] = (
+        ANPR_DEVANAGARI_OCR_ADAPTER_VERSION
+    )
+    candidate_id: Literal["OCR-D0"] = "OCR-D0"
+    engine_id: Literal["paddleocr-text-recognition"] = (
+        "paddleocr-text-recognition"
+    )
+    artifact_id: Literal["OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED"] = (
+        "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED"
+    )
+    artifact_sha256: Literal[OCR_D0_ARTIFACT_SHA256] = OCR_D0_ARTIFACT_SHA256
+    dictionary_version: Literal[ANPR_DEVANAGARI_DICTIONARY_VERSION] = (
+        ANPR_DEVANAGARI_DICTIONARY_VERSION
+    )
+    runtime_id: Literal["paddleocr-3.7.0-paddlepaddle-3.3.1-cpu"] = (
+        "paddleocr-3.7.0-paddlepaddle-3.3.1-cpu"
+    )
+    script_lane: Literal["devanagari"] = "devanagari"
+    raw_text: Annotated[str, Field(min_length=1, max_length=16)]
+    raw_confidence: Annotated[float, Field(ge=0, le=1)]
+    latency_ms: Annotated[float, Field(ge=0, le=600_000)]
+    modifies_registration_mark: Literal[False] = False
+    transliteration_performed: Literal[False] = False
+    raw_output_mutated: Literal[False] = False
+    ephemeral_only: Literal[True] = True
+    retained: Literal[False] = False
+    synthetic_only: Literal[True] = True
+    review_state: Literal["unreviewed"] = "unreviewed"
+
+
+class AuxiliaryFailureCountsV1(ContractModel):
+    engine_error: Annotated[int, Field(ge=0)] = 0
+    invalid_confidence: Annotated[int, Field(ge=0)] = 0
+    invalid_output: Annotated[int, Field(ge=0)] = 0
+    malformed_result: Annotated[int, Field(ge=0)] = 0
+    no_result: Annotated[int, Field(ge=0)] = 0
+    output_too_long: Annotated[int, Field(ge=0)] = 0
+    unexpected_whitespace: Annotated[int, Field(ge=0)] = 0
+    unsupported_script: Annotated[int, Field(ge=0)] = 0
+
+    @property
+    def total(self) -> int:
+        return sum(self.model_dump().values())
+
+
+class AuxiliaryGeneratedSliceV1(ContractModel):
+    degradation: AuxiliaryDegradation
+    sample_count: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    succeeded: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    failed: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    exact_matches: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    reference_scalar_count: Annotated[int, Field(ge=0)]
+    reference_grapheme_count: Annotated[int, Field(ge=0)]
+    raw_edit_distance: Annotated[int, Field(ge=0)]
+    failure_counts: AuxiliaryFailureCountsV1
+
+    @model_validator(mode="after")
+    def counts_are_consistent(self) -> AuxiliaryGeneratedSliceV1:
+        if self.succeeded + self.failed != self.sample_count:
+            raise ValueError("auxiliary slice success/failure count is inconsistent")
+        if self.exact_matches > self.succeeded:
+            raise ValueError("auxiliary exact matches exceed successful outputs")
+        if self.failure_counts.total != self.failed:
+            raise ValueError("auxiliary slice failure reasons are inconsistent")
+        return self
+
+
+class DevanagariOcrCandidateEvaluationV1(ContractModel):
+    candidate_id: Literal["OCR-D0"] = "OCR-D0"
+    artifact_id: Literal["OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED"] = (
+        "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED"
+    )
+    artifact_sha256: Literal[OCR_D0_ARTIFACT_SHA256] = OCR_D0_ARTIFACT_SHA256
+    extracted_inventory_sha256: ImmutableDigest
+    model_name: Literal["devanagari_PP-OCRv5_mobile_rec"] = (
+        "devanagari_PP-OCRv5_mobile_rec"
+    )
+    font_candidate_id: Literal["FONT-D0"] = "FONT-D0"
+    font_artifact_sha256: Literal[FONT_D0_ARTIFACT_SHA256] = (
+        FONT_D0_ARTIFACT_SHA256
+    )
+    dictionary_version: Literal[ANPR_DEVANAGARI_DICTIONARY_VERSION] = (
+        ANPR_DEVANAGARI_DICTIONARY_VERSION
+    )
+    adapter_version: Literal[ANPR_DEVANAGARI_OCR_ADAPTER_VERSION] = (
+        ANPR_DEVANAGARI_OCR_ADAPTER_VERSION
+    )
+    sample_count: Annotated[int, Field(ge=1, le=MAX_ANPR_LOCAL_SAMPLES)]
+    succeeded: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    failed: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    exact_matches: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    reference_scalar_count: Annotated[int, Field(ge=1)]
+    reference_grapheme_count: Annotated[int, Field(ge=1)]
+    raw_edit_distance: Annotated[int, Field(ge=0)]
+    failure_counts: AuxiliaryFailureCountsV1
+    slices: Annotated[
+        tuple[AuxiliaryGeneratedSliceV1, ...], Field(min_length=3, max_length=3)
+    ]
+    confidence_distribution: LatinOcrDistributionV1 | None
+    latency_ms_distribution: LatinOcrDistributionV1
+    replay_runs: Literal[20] = 20
+    replay_output_deterministic: bool
+    network_attempt_count: Annotated[int, Field(ge=0)]
+    network_access_performed: Literal[False] = False
+    final_test_used: Literal[False] = False
+    raw_output_persisted: Literal[False] = False
+    alternatives_persisted: Literal[False] = False
+    identifiers_persisted: Literal[False] = False
+    modifies_registration_mark: Literal[False] = False
+    transliteration_performed: Literal[False] = False
+    promotion_authorized: Literal[False] = False
+    synthetic_only: Literal[True] = True
+
+    @model_validator(mode="after")
+    def evaluation_counts_are_consistent(self) -> DevanagariOcrCandidateEvaluationV1:
+        if self.succeeded + self.failed != self.sample_count:
+            raise ValueError("Devanagari OCR success/failure count is inconsistent")
+        if self.exact_matches > self.succeeded:
+            raise ValueError("Devanagari exact matches exceed successful outputs")
+        if self.failure_counts.total != self.failed:
+            raise ValueError("Devanagari OCR failure reasons are inconsistent")
+        if sum(item.sample_count for item in self.slices) != self.sample_count:
+            raise ValueError("Devanagari OCR slices do not cover the evaluation")
+        if {item.degradation for item in self.slices} != {
+            "clean",
+            "low_contrast",
+            "downscaled",
+        }:
+            raise ValueError("Devanagari OCR requires every degradation slice")
+        return self
+
+
+class AuxiliaryFontRenderingSliceV1(ContractModel):
+    degradation: AuxiliaryDegradation
+    sample_count: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    succeeded: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    failed: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+
+    @model_validator(mode="after")
+    def counts_are_consistent(self) -> AuxiliaryFontRenderingSliceV1:
+        if self.succeeded + self.failed != self.sample_count:
+            raise ValueError("font-rendering slice counts are inconsistent")
+        return self
+
+
+class AuxiliaryFontRenderingEvaluationV1(ContractModel):
+    candidate_id: AuxiliaryFontCandidate
+    artifact_id: Literal[
+        "FONT-D0-NOTO-SANS-DEVANAGARI-VARIABLE-PROPOSED",
+        "FONT-G0-NOTO-SANS-GUJARATI-VARIABLE-PROPOSED",
+    ]
+    artifact_sha256: ImmutableDigest
+    script_lane: AuxiliaryScript
+    font_family: Literal["Noto Sans Devanagari", "Noto Sans Gujarati"]
+    renderer_version: Literal[ANPR_AUXILIARY_RENDERER_VERSION] = (
+        ANPR_AUXILIARY_RENDERER_VERSION
+    )
+    shaping_backend: Literal["basic_freetype_no_raqm"] = "basic_freetype_no_raqm"
+    complex_shaping_available: Literal[False] = False
+    complex_shaping_used: Literal[False] = False
+    standalone_graphemes_only: Literal[True] = True
+    sample_count: Annotated[int, Field(ge=1, le=MAX_ANPR_LOCAL_SAMPLES)]
+    generated_grapheme_count: Annotated[int, Field(ge=1)]
+    succeeded: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    failed: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    slices: Annotated[
+        tuple[AuxiliaryFontRenderingSliceV1, ...], Field(min_length=3, max_length=3)
+    ]
+    replay_runs: Literal[20] = 20
+    replay_pixels_deterministic: bool
+    generated_text_persisted: Literal[False] = False
+    rendered_pixels_persisted: Literal[False] = False
+    identifiers_persisted: Literal[False] = False
+    ocr_execution_performed: bool
+    synthetic_only: Literal[True] = True
+
+    @model_validator(mode="after")
+    def exact_font_and_counts_are_consistent(self) -> AuxiliaryFontRenderingEvaluationV1:
+        expected = {
+            "FONT-D0": (
+                "FONT-D0-NOTO-SANS-DEVANAGARI-VARIABLE-PROPOSED",
+                FONT_D0_ARTIFACT_SHA256,
+                "devanagari",
+                "Noto Sans Devanagari",
+                True,
+            ),
+            "FONT-G0": (
+                "FONT-G0-NOTO-SANS-GUJARATI-VARIABLE-PROPOSED",
+                FONT_G0_ARTIFACT_SHA256,
+                "gujarati",
+                "Noto Sans Gujarati",
+                False,
+            ),
+        }[self.candidate_id]
+        observed = (
+            self.artifact_id,
+            self.artifact_sha256,
+            self.script_lane,
+            self.font_family,
+            self.ocr_execution_performed,
+        )
+        if observed != expected:
+            raise ValueError("font-rendering evidence is cross-wired")
+        if self.succeeded + self.failed != self.sample_count:
+            raise ValueError("font-rendering totals are inconsistent")
+        if sum(item.sample_count for item in self.slices) != self.sample_count:
+            raise ValueError("font-rendering slices do not cover the evaluation")
+        if {item.degradation for item in self.slices} != {
+            "clean",
+            "low_contrast",
+            "downscaled",
+        }:
+            raise ValueError("font rendering requires every degradation slice")
+        return self
+
+
+class AuxiliaryScriptGeneratedEvaluationV1(ContractModel):
+    contract_type: Literal[
+        "hcam.phase3.p3_5.auxiliary-script-generated-evaluation.v1"
+    ] = "hcam.phase3.p3_5.auxiliary-script-generated-evaluation.v1"
+    work_package: Literal[
+        "P35-W6_exact_Devanagari_Paddle_OCR_lane_and_Gujarati_font_rendering_only"
+    ] = "P35-W6_exact_Devanagari_Paddle_OCR_lane_and_Gujarati_font_rendering_only"
+    source_id: Literal["DATA-PLATE-GEN-R0"] = ANPR_GENERATED_SOURCE_ID
+    generator_version: Literal[ANPR_AUXILIARY_GENERATOR_VERSION] = (
+        ANPR_AUXILIARY_GENERATOR_VERSION
+    )
+    renderer_version: Literal[ANPR_AUXILIARY_RENDERER_VERSION] = (
+        ANPR_AUXILIARY_RENDERER_VERSION
+    )
+    adapter_version: Literal[ANPR_DEVANAGARI_OCR_ADAPTER_VERSION] = (
+        ANPR_DEVANAGARI_OCR_ADAPTER_VERSION
+    )
+    runtime_id: Literal["cpython-3.12.13-windows-x86_64"] = (
+        "cpython-3.12.13-windows-x86_64"
+    )
+    paddleocr_version: Literal["3.7.0"] = "3.7.0"
+    paddlepaddle_version: Literal["3.3.1"] = "3.3.1"
+    pillow_version: Literal["12.3.0"] = "12.3.0"
+    regex_version: Literal["2026.7.19"] = "2026.7.19"
+    devanagari_ocr: DevanagariOcrCandidateEvaluationV1
+    font_rendering: Annotated[
+        tuple[AuxiliaryFontRenderingEvaluationV1, ...],
+        Field(min_length=2, max_length=2),
+    ]
+    generated_sample_plan: Literal["internal_vocabulary_no_final_test"] = (
+        "internal_vocabulary_no_final_test"
+    )
+    external_text_input_count: Literal[0] = 0
+    model_download_count: Literal[0] = 0
+    camera_or_media_input_count: Literal[0] = 0
+    real_registration_mark_count: Literal[0] = 0
+    gujarati_ocr_execution_count: Literal[0] = 0
+    tesseract_execution_count: Literal[0] = 0
+    raw_output_persisted: Literal[False] = False
+    generated_text_persisted: Literal[False] = False
+    rendered_pixels_persisted: Literal[False] = False
+    sample_or_region_identifiers_persisted: Literal[False] = False
+    plate_text_retention_hours: Literal[0] = 0
+    modifies_registration_mark: Literal[False] = False
+    transliteration_performed: Literal[False] = False
+    quality_threshold_decided: Literal[False] = False
+    promotion_authorized: Literal[False] = False
+    deployment_authorized: Literal[False] = False
+    synthetic_only: Literal[True] = True
+
+    @model_validator(mode="after")
+    def exact_auxiliary_lanes_are_present(self) -> AuxiliaryScriptGeneratedEvaluationV1:
+        if {item.candidate_id for item in self.font_rendering} != {
+            "FONT-D0",
+            "FONT-G0",
+        }:
+            raise ValueError("W6 evidence requires exact Devanagari and Gujarati fonts")
+        return self
+
+
 def generated_request_fixture() -> GeneratedTokenRequestV1:
     return GeneratedTokenRequestV1(
         request_id="anprreq_11111111111111111111111111111111",
@@ -859,6 +1184,12 @@ def anpr_contract_bundle() -> dict[str, Any]:
                 mode="validation"
             ),
             "ephemeral_latin_ocr_hypothesis": EphemeralLatinOcrHypothesisV1.model_json_schema(
+                mode="validation"
+            ),
+            "ephemeral_auxiliary_ocr_hypothesis": EphemeralAuxiliaryOcrHypothesisV1.model_json_schema(
+                mode="validation"
+            ),
+            "auxiliary_script_generated_evaluation": AuxiliaryScriptGeneratedEvaluationV1.model_json_schema(
                 mode="validation"
             ),
             "latin_ocr_generated_evaluation": LatinOcrGeneratedEvaluationV1.model_json_schema(
@@ -947,6 +1278,25 @@ def anpr_contract_bundle() -> dict[str, Any]:
             "maximum_unicode_scalars": 32,
             "maximum_grapheme_clusters": 16,
             "maximum_alternatives": 5,
+            "generated_only": True,
+            "promotion_authorized": False,
+        },
+        "auxiliary_script_policy": {
+            "generator_version": ANPR_AUXILIARY_GENERATOR_VERSION,
+            "renderer_version": ANPR_AUXILIARY_RENDERER_VERSION,
+            "devanagari_adapter_version": ANPR_DEVANAGARI_OCR_ADAPTER_VERSION,
+            "devanagari_dictionary_version": ANPR_DEVANAGARI_DICTIONARY_VERSION,
+            "ocr_candidate": {"OCR-D0": OCR_D0_ARTIFACT_SHA256},
+            "font_candidates": {
+                "FONT-D0": FONT_D0_ARTIFACT_SHA256,
+                "FONT-G0": FONT_G0_ARTIFACT_SHA256,
+            },
+            "closed_internal_vocabulary": True,
+            "standalone_graphemes_only": True,
+            "complex_shaping_used": False,
+            "gujarati_ocr_authorized": False,
+            "modifies_registration_mark": False,
+            "transliteration_allowed": False,
             "generated_only": True,
             "promotion_authorized": False,
         },

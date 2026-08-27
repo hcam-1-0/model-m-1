@@ -96,11 +96,15 @@ P3_5_RUNTIME_EVIDENCE_REPOSITORY_HEAD = (
 P3_5_W5_EVIDENCE_SHA256 = (
     "3AEA54734015CCE7E6C8CCABFDBE02310F028268393EACD9A31B4BA6DFA42A20"
 )
+P3_5_W6_EVIDENCE_SHA256 = (
+    "1E58A84AD522EB852F6EECFDCF1BAF38FCDC4337B414836B64EBCD4DADBCB955"
+)
 
 PACKAGE_FILES = (
     ".github/workflows/python-ci.yml",
     "README.md",
     "app/hcam/analytics/anpr/__init__.py",
+    "app/hcam/analytics/anpr/auxiliary.py",
     "app/hcam/analytics/anpr/contracts.py",
     "app/hcam/analytics/anpr/generator.py",
     "app/hcam/analytics/anpr/guardrails.py",
@@ -118,6 +122,7 @@ PACKAGE_FILES = (
     "contracts/phase-3/p3-5-artifact-research-authorization.json",
     "contracts/phase-3/p3-5-artifact-sbom.cdx.json",
     "contracts/phase-3/p3-5-anpr-contracts.json",
+    "contracts/phase-3/p3-5-auxiliary-script-evaluation.json",
     "contracts/phase-3/p3-5-entry-gates.json",
     "contracts/phase-3/p3-5-latin-ocr-evaluation.json",
     "contracts/phase-3/p3-5-planning-authorization.json",
@@ -153,12 +158,15 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-w3-generator-splits.md",
     "docs/phase-3/p3-5-w4-ground-truth-crop.md",
     "docs/phase-3/p3-5-w5-latin-ocr.md",
+    "docs/phase-3/p3-5-w6-auxiliary-scripts.md",
+    "tests/test_analytics_anpr_auxiliary.py",
     "tests/test_analytics_anpr_generator.py",
     "tests/test_analytics_anpr_guardrails.py",
     "tests/test_analytics_anpr_localization.py",
     "tests/test_analytics_anpr_ocr.py",
     "tests/test_phase35_contracts.py",
     "tests/test_phase35_latin_ocr.py",
+    "tests/test_phase35_auxiliary_ocr.py",
     "tests/test_phase35_readiness.py",
     "tests/test_phase35_artifact_research.py",
     "tests/test_phase35_artifact_inspect.py",
@@ -168,6 +176,8 @@ PACKAGE_FILES = (
     "tools/phase35_contracts.py",
     "tools/phase35_latin_ocr.py",
     "tools/phase35_latin_ocr_worker.py",
+    "tools/phase35_auxiliary_ocr.py",
+    "tools/phase35_auxiliary_ocr_worker.py",
     "tools/phase35_runtime_research.py",
     "tools/phase35_readiness.py",
 )
@@ -282,7 +292,7 @@ def check_required_files() -> Check:
     return Check(
         "required_files",
         PASS,
-        f"All {len(PACKAGE_FILES)} P3.5 authorization and W1/W3/W4/W5 package files exist.",
+        f"All {len(PACKAGE_FILES)} P3.5 authorization and W1/W3/W4/W5/W6 package files exist.",
     )
 
 
@@ -557,6 +567,7 @@ def check_plan_contract() -> Check:
 def check_authorized_w1_w3_w4_package() -> Check:
     allowed_application_files = {
         "app/hcam/analytics/anpr/__init__.py",
+        "app/hcam/analytics/anpr/auxiliary.py",
         "app/hcam/analytics/anpr/contracts.py",
         "app/hcam/analytics/anpr/generator.py",
         "app/hcam/analytics/anpr/guardrails.py",
@@ -589,13 +600,13 @@ def check_authorized_w1_w3_w4_package() -> Check:
         return Check(
             "authorized_w1_w3_w4_package",
             FAIL,
-            "P3.5 W1/W3/W4/W5 contains an unapproved application, migration, deployment, model, or media file.",
+            "P3.5 W1/W3/W4/W5/W6 contains an unapproved application, migration, deployment, model, or media file.",
             prohibited,
         )
     return Check(
         "authorized_w1_w3_w4_package",
         PASS,
-        "P3.5 application scope is limited to generated-only contracts, guardrails, deterministic token/rendering, sealed splits, ground-truth localization, ephemeral crops, and exact external Latin OCR adapters; no migration, model, media, API, or persistence file is present.",
+        "P3.5 application scope is limited to generated-only contracts, guardrails, deterministic token/rendering, sealed splits, ground-truth localization, ephemeral crops, exact external Latin/Devanagari OCR adapters, and Gujarati rendering-only evidence; no migration, model, media, API, or persistence file is present.",
     )
 
 
@@ -969,6 +980,183 @@ def check_w5_latin_ocr_evidence() -> Check:
         "w5_latin_ocr_evidence",
         PASS,
         "P3.5 W5 pins exact L0/L1 inventories and identifier-free 12-sample generated baselines with deterministic replay, no final-test use, and no retained OCR output.",
+    )
+
+
+def check_w6_auxiliary_script_evidence() -> Check:
+    path = ROOT / "contracts/phase-3/p3-5-auxiliary-script-evaluation.json"
+    try:
+        payload = path.read_bytes()
+        record = json.loads(payload)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("w6_auxiliary_script_evidence", FAIL, str(exc))
+    canonical = (
+        json.dumps(
+            record,
+            allow_nan=False,
+            ensure_ascii=True,
+            separators=(",", ":"),
+            sort_keys=True,
+        ).encode("utf-8")
+        + b"\n"
+    )
+    observed_sha256 = hashlib.sha256(payload).hexdigest().upper()
+    serialized = payload.decode("utf-8", errors="strict")
+    devanagari = record.get("devanagari_ocr")
+    if not isinstance(devanagari, dict):
+        devanagari = {}
+    slices = devanagari.get("slices")
+    slice_map = (
+        {
+            item.get("degradation"): item
+            for item in slices
+            if isinstance(item, dict)
+        }
+        if isinstance(slices, list)
+        else {}
+    )
+    expected_slices = {
+        "clean": (4, 4, 0, 4, 0),
+        "low_contrast": (4, 4, 0, 3, 1),
+        "downscaled": (4, 4, 0, 3, 1),
+    }
+    slice_failures = tuple(
+        name
+        for name, expected in expected_slices.items()
+        if (
+            slice_map.get(name, {}).get("sample_count"),
+            slice_map.get(name, {}).get("succeeded"),
+            slice_map.get(name, {}).get("failed"),
+            slice_map.get(name, {}).get("exact_matches"),
+            slice_map.get(name, {}).get("raw_edit_distance"),
+        )
+        != expected
+    )
+    font_rendering = record.get("font_rendering")
+    font_map = (
+        {
+            item.get("candidate_id"): item
+            for item in font_rendering
+            if isinstance(item, dict)
+        }
+        if isinstance(font_rendering, list)
+        else {}
+    )
+    expected_fonts = {
+        "FONT-D0": (
+            "devanagari",
+            "sha256:9ce7b04f60e363d8870e5997744cf85cf69d38a4d7d129d364d92a3b14b461d7",
+            True,
+        ),
+        "FONT-G0": (
+            "gujarati",
+            "sha256:9901d8552f1dd5d2c50dbd4caa6f6e174e74e8264f06594ab259ae6e7b1ac428",
+            False,
+        ),
+    }
+    font_failures: list[str] = []
+    for candidate_id, (script, digest, ocr_performed) in expected_fonts.items():
+        item = font_map.get(candidate_id, {})
+        font_slices = item.get("slices") if isinstance(item, dict) else None
+        if (
+            item.get("script_lane") != script
+            or item.get("artifact_sha256") != digest
+            or item.get("sample_count") != 12
+            or item.get("generated_grapheme_count") != 48
+            or item.get("succeeded") != 12
+            or item.get("failed") != 0
+            or item.get("replay_runs") != 20
+            or item.get("replay_pixels_deterministic") is not True
+            or item.get("shaping_backend") != "basic_freetype_no_raqm"
+            or item.get("complex_shaping_available") is not False
+            or item.get("complex_shaping_used") is not False
+            or item.get("standalone_graphemes_only") is not True
+            or item.get("ocr_execution_performed") is not ocr_performed
+            or item.get("generated_text_persisted") is not False
+            or item.get("rendered_pixels_persisted") is not False
+            or not isinstance(font_slices, list)
+            or len(font_slices) != 3
+            or any(
+                value.get("sample_count") != 4
+                or value.get("succeeded") != 4
+                or value.get("failed") != 0
+                for value in font_slices
+                if isinstance(value, dict)
+            )
+        ):
+            font_failures.append(candidate_id)
+    failure_counts = devanagari.get("failure_counts", {})
+    prohibited = (
+        '"raw_text"',
+        '"bgr_bytes"',
+        '"sample_id"',
+        '"region_id"',
+        "anprauxsample_",
+        "anprauxregion_",
+        "B:\\",
+    )
+    if (
+        payload != canonical
+        or observed_sha256 != P3_5_W6_EVIDENCE_SHA256
+        or record.get("contract_type")
+        != "hcam.phase3.p3_5.auxiliary-script-generated-evaluation.v1"
+        or record.get("work_package")
+        != "P35-W6_exact_Devanagari_Paddle_OCR_lane_and_Gujarati_font_rendering_only"
+        or record.get("source_id") != "DATA-PLATE-GEN-R0"
+        or record.get("generated_sample_plan")
+        != "internal_vocabulary_no_final_test"
+        or devanagari.get("candidate_id") != "OCR-D0"
+        or devanagari.get("artifact_sha256")
+        != "sha256:ac8279d27fc7e8cda559364f9a3c506f43984cf6ba5e1b7a06450458bfe07dfb"
+        or devanagari.get("extracted_inventory_sha256")
+        != "sha256:e7f6b0b7cf6e937e56540ba5254d6aed9a1958e5b3bca3a3e7c41b29673a2cb6"
+        or devanagari.get("sample_count") != 12
+        or devanagari.get("reference_grapheme_count") != 48
+        or devanagari.get("succeeded") != 12
+        or devanagari.get("failed") != 0
+        or devanagari.get("exact_matches") != 10
+        or devanagari.get("raw_edit_distance") != 2
+        or sum(failure_counts.values()) != 0
+        or devanagari.get("replay_runs") != 20
+        or devanagari.get("replay_output_deterministic") is not True
+        or devanagari.get("network_attempt_count") != 1
+        or devanagari.get("network_access_performed") is not False
+        or devanagari.get("final_test_used") is not False
+        or devanagari.get("raw_output_persisted") is not False
+        or devanagari.get("alternatives_persisted") is not False
+        or devanagari.get("identifiers_persisted") is not False
+        or devanagari.get("modifies_registration_mark") is not False
+        or devanagari.get("transliteration_performed") is not False
+        or slice_failures
+        or set(font_map) != set(expected_fonts)
+        or font_failures
+        or record.get("external_text_input_count") != 0
+        or record.get("model_download_count") != 0
+        or record.get("camera_or_media_input_count") != 0
+        or record.get("real_registration_mark_count") != 0
+        or record.get("gujarati_ocr_execution_count") != 0
+        or record.get("tesseract_execution_count") != 0
+        or record.get("raw_output_persisted") is not False
+        or record.get("generated_text_persisted") is not False
+        or record.get("rendered_pixels_persisted") is not False
+        or record.get("sample_or_region_identifiers_persisted") is not False
+        or record.get("plate_text_retention_hours") != 0
+        or record.get("modifies_registration_mark") is not False
+        or record.get("transliteration_performed") is not False
+        or record.get("promotion_authorized") is not False
+        or record.get("deployment_authorized") is not False
+        or any(value in serialized for value in prohibited)
+    ):
+        return Check(
+            "w6_auxiliary_script_evidence",
+            FAIL,
+            "P3.5 W6 exact artifact, script isolation, generated-only metrics, network denial, Gujarati rendering-only boundary, or zero-retention evidence changed.",
+            (*slice_failures, *font_failures),
+        )
+    return Check(
+        "w6_auxiliary_script_evidence",
+        PASS,
+        "P3.5 W6 pins exact OCR-D0/FONT-D0/FONT-G0 artifacts, records an identifier-free 12-sample Devanagari baseline and deterministic Gujarati rendering-only evidence, and executes no Gujarati OCR or Tesseract path.",
     )
 
 
@@ -2037,11 +2225,13 @@ def check_documentation_sync() -> Check:
             "tools/phase35_runtime_research.py",
             "tools/phase35_readiness.py",
             "tools/phase35_latin_ocr.py",
+            "tools/phase35_auxiliary_ocr.py",
         ),
         "contracts/phase-3/README.md": (
             "p3-5-anpr-contracts.json",
             "p3-5-ground-truth-crop-v1.json",
             "p3-5-latin-ocr-evaluation.json",
+            "p3-5-auxiliary-script-evaluation.json",
             "p3-5-sealed-splits-v1.json",
             "p3-5-artifact-review-evidence.json",
             "p3-5-artifact-review-acceptance.json",
@@ -2064,6 +2254,7 @@ def check_documentation_sync() -> Check:
             "[P3.5 W3 deterministic generator and sealed splits](p3-5-w3-generator-splits.md)",
             "[P3.5 W4 ground-truth localization and crop](p3-5-w4-ground-truth-crop.md)",
             "[P3.5 W5 exact Latin PaddleOCR baseline](p3-5-w5-latin-ocr.md)",
+            "[P3.5 W6 auxiliary scripts](p3-5-w6-auxiliary-scripts.md)",
             "[P3.5 artifact model cards](p3-5-artifact-model-cards.md)",
             "[P3.5 exact artifact review evidence](p3-5-artifact-review-evidence.md)",
             "[P3.5 exact artifact review acceptance](p3-5-artifact-review-acceptance.md)",
@@ -2097,6 +2288,7 @@ def check_documentation_sync() -> Check:
             "P35-W3",
             "P35-W4",
             "P35-W5",
+            "P35-W6",
             "validated_generated_baseline",
             "validated_complete",
         ),
@@ -2148,10 +2340,21 @@ def check_documentation_sync() -> Check:
             "No W5 path uses `B:`",
             "No quality threshold or model-promotion decision has been made",
         ),
+        "docs/phase-3/p3-5-w6-auxiliary-scripts.md": (
+            "P35-W6",
+            "OCR-D0",
+            "FONT-D0",
+            "FONT-G0",
+            "10/12",
+            "basic_freetype_no_raqm",
+            "Gujarati OCR execution stayed at zero",
+            "No W6 path uses `B:`",
+        ),
         ".github/workflows/python-ci.yml": (
             "python tools/phase35_readiness.py --strict",
             "python tools/phase35_contracts.py check",
             "python tools/phase35_latin_ocr.py check-evidence",
+            "python tools/phase35_auxiliary_ocr.py check-evidence",
         ),
     }
     missing: list[str] = []
@@ -2214,6 +2417,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_w3_split_manifest(),
         check_w4_ground_truth_crop(),
         check_w5_latin_ocr_evidence(),
+        check_w6_auxiliary_script_evidence(),
         check_artifact_proposal(),
         check_owner_decisions_record(),
         check_artifact_research_authorization(),

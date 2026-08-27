@@ -130,6 +130,7 @@ jobs:
         run: |
           python tools/phase35_contracts.py check
           python tools/phase35_latin_ocr.py check-evidence
+          python tools/phase35_auxiliary_ocr.py check-evidence
 
       - name: Preserve Phase 0 unittest check
         if: matrix.python-version == '3.12'

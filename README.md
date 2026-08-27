@@ -29,6 +29,9 @@ a bounded ephemeral crop path.
 `P35-W5` now adds the two exact reviewed Latin PaddleOCR adapters, safe
 external-only extraction, generated development/validation evaluation, raw
 output validation, deterministic replay, and zero-retention aggregate evidence.
+`P35-W6` adds the exact Devanagari `OCR-D0` auxiliary baseline and deterministic
+`FONT-D0`/`FONT-G0` rendering. Gujarati remains rendering-only because its two
+Tesseract OCR candidates are still blocked.
 None of these milestones adds a real CCTV media path.
 
 A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
@@ -50,6 +53,8 @@ The [P3.5 W4 ground-truth localization and crop](docs/phase-3/p3-5-w4-ground-tru
 records the procedural, model-free localization and zero-retention crop boundary.
 The [P3.5 W5 exact Latin PaddleOCR baseline](docs/phase-3/p3-5-w5-latin-ocr.md)
 records the generated-only baseline/challenger evaluation and its limitations.
+The [P3.5 W6 auxiliary scripts](docs/phase-3/p3-5-w6-auxiliary-scripts.md)
+records exact Devanagari OCR and Gujarati rendering-only evidence.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
@@ -87,6 +92,7 @@ uv run --locked --extra dev --extra analytics python tools/phase34_implementatio
 uv run --locked --extra dev python tools/phase35_readiness.py --strict --json
 uv run --locked --extra dev python tools/phase35_contracts.py check
 uv run --locked python tools/phase35_latin_ocr.py check-evidence
+uv run --locked python tools/phase35_auxiliary_ocr.py check-evidence
 uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked --extra dev python tools/phase35_runtime_research.py all --root 'E:\h-cam-research-cache\phase-3\p3-5-runtime'
@@ -109,9 +115,9 @@ The P3.5 planning verifier should report
 `implementation_authorized_generated_only_staged`, zero technical failures,
 and zero manual gates. It verifies the approved `A/A/A/A`
 baseline, exact artifact acceptance, completed restricted runtime evidence,
-digest-bound generated-only start authorization, and the exact W1-only
-and W3-only application boundary. The verifier itself performs no download, extraction,
-synthetic generation, training, inference, media access, or model execution.
+digest-bound generated-only start authorization, and the exact W1/W3/W4/W5/W6
+application and evidence boundary. The verifier itself performs no download,
+extraction, synthetic generation, training, inference, media access, or model execution.
 The artifact-research command is separately gated and writes only the seven
 authorized files and receipts to the external local quarantine.
 

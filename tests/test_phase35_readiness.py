@@ -16,7 +16,7 @@ def test_p3_5_generated_only_start_is_authorized_without_manual_gates() -> None:
     )
     assert report.failures == 0
     assert report.manual_gates == 0
-    assert report.package_file_count == 72
+    assert report.package_file_count == 79
     assert len(report.package_digest) == 64
 
 
@@ -34,6 +34,7 @@ def test_p3_5_technical_checks_pass() -> None:
         readiness.check_w3_split_manifest(),
         readiness.check_w4_ground_truth_crop(),
         readiness.check_w5_latin_ocr_evidence(),
+        readiness.check_w6_auxiliary_script_evidence(),
         readiness.check_artifact_proposal(),
         readiness.check_owner_decisions_record(),
         readiness.check_artifact_research_authorization(),
@@ -367,6 +368,7 @@ def test_p3_5_package_has_only_authorized_generated_application_files() -> None:
         path for path in readiness.PACKAGE_FILES if path.startswith("app/")
     } == {
         "app/hcam/analytics/anpr/__init__.py",
+        "app/hcam/analytics/anpr/auxiliary.py",
         "app/hcam/analytics/anpr/contracts.py",
         "app/hcam/analytics/anpr/generator.py",
         "app/hcam/analytics/anpr/guardrails.py",
@@ -390,6 +392,10 @@ def test_p3_5_w4_snapshot_preserves_model_free_ephemeral_crop_boundary() -> None
 
 def test_p3_5_w5_snapshot_preserves_exact_generated_zero_retention_boundary() -> None:
     assert readiness.check_w5_latin_ocr_evidence().status == readiness.PASS
+
+
+def test_p3_5_w6_snapshot_preserves_auxiliary_script_boundaries() -> None:
+    assert readiness.check_w6_auxiliary_script_evidence().status == readiness.PASS
 
 
 def test_p3_5_package_digest_is_deterministic_and_path_relative() -> None:
