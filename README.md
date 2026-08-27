@@ -46,6 +46,11 @@ accepted under `D-P3.5-W10-ACCEPTANCE` for the immutable 99-file package at
 commit `1611922b4f410aa0cdbce369e4f3c8838f53e19f` and digest
 `4AC016E2A23B001F338F822A25A90CA2E032947B842F14300146F0FF315B3D31`.
 None of these milestones adds a real CCTV media path.
+P3.6 runtime acceleration and scheduling is now planning-only under
+`D-P3.6-PLAN-AUTH`. The [P3.6 plan](docs/phase-3/p3-6-plan.md),
+[primary-source research](docs/phase-3/p3-6-research-record.md), and
+[owner decision packet](docs/phase-3/p3-6-decision-packet.md) add no runtime,
+hardware test, container, media/data access, implementation, or deployment.
 
 A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
 pins the recommended artifact locations and bounds. The separate

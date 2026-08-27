@@ -1,0 +1,191 @@
+{
+  "accessed_on": "2026-08-27",
+  "artifact_downloads": 0,
+  "contract_format": "hcam.phase3.p3_6.primary_source_research.v1",
+  "evidence_kind": "read_only_documentation_metadata",
+  "hardware_queries_or_tests": 0,
+  "network_scope": "public_primary_source_https_documentation_only",
+  "runtime_executions": 0,
+  "sources": [
+    {
+      "id": "OPENVINO-SYSTEM-2026",
+      "publisher": "Intel",
+      "title": "OpenVINO 2026 System Requirements",
+      "url": "https://docs.openvino.ai/2026/about-openvino/release-notes-openvino/system-requirements.html",
+      "verified_facts": [
+        "OpenVINO documents CPU, Intel GPU, and Intel NPU targets with device-specific operating-system and driver requirements.",
+        "GPU and NPU support may require drivers or operating-system changes outside the OpenVINO package."
+      ]
+    },
+    {
+      "id": "OPENVINO-AUTO-2026",
+      "publisher": "Intel",
+      "title": "OpenVINO Automatic Device Selection",
+      "url": "https://docs.openvino.ai/2026/openvino-workflow/running-inference/inference-devices-and-modes/auto-device-selection.html",
+      "verified_facts": [
+        "AUTO discovers compatible devices and chooses from a priority list.",
+        "The default performance hint is LATENCY; throughput hints require asynchronous inference to provide their intended benefit."
+      ]
+    },
+    {
+      "id": "OPENVINO-DEVICES-2026",
+      "publisher": "Intel",
+      "title": "OpenVINO Supported Devices",
+      "url": "https://docs.openvino.ai/2026/documentation/compatibility-and-support/supported-devices.html",
+      "verified_facts": [
+        "OpenVINO exposes CPU, GPU, and NPU devices plus AUTO, HETERO, and automatic batching modes.",
+        "Feature availability differs by device, so a generic OpenVINO result is not a device-specific compatibility result."
+      ]
+    },
+    {
+      "id": "ORT-OPENVINO-EP",
+      "publisher": "Microsoft",
+      "title": "ONNX Runtime OpenVINO Execution Provider",
+      "url": "https://onnxruntime.ai/docs/execution-providers/OpenVINO-ExecutionProvider.html",
+      "verified_facts": [
+        "ONNX Runtime can register OpenVINO as an execution provider with explicit provider options.",
+        "Execution-provider configuration belongs in the benchmark manifest because provider behavior is not implied by the ONNX artifact alone."
+      ]
+    },
+    {
+      "id": "TENSORRT-SUPPORT-LATEST",
+      "publisher": "NVIDIA",
+      "title": "TensorRT Support Matrix",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html",
+      "verified_facts": [
+        "The current matrix exposes compatibility across TensorRT 10.x and 11.x releases and hardware precision capabilities.",
+        "Serialized engines are not generally portable across platforms and, without compatibility modes, are not portable across GPU architectures."
+      ]
+    },
+    {
+      "id": "TENSORRT-PRECISION-LATEST",
+      "publisher": "NVIDIA",
+      "title": "TensorRT Precision Control",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/precision-control.html",
+      "verified_facts": [
+        "TensorRT 11 uses strongly typed networks.",
+        "Independent engine builds are not necessarily bit-identical because tactic timing and floating-point accumulation order can vary."
+      ]
+    },
+    {
+      "id": "DEEPSTREAM-9-RELEASE",
+      "publisher": "NVIDIA",
+      "title": "DeepStream 9.0 Release Notes",
+      "url": "https://docs.nvidia.com/metropolis/deepstream/9.0/text/DS_Release_notes.html",
+      "verified_facts": [
+        "DeepStream 9.0 has exact platform and accelerator support boundaries and documents known limitations.",
+        "Its Python bindings are deprecated in favor of pyservicemaker, which affects any future language and integration decision."
+      ]
+    },
+    {
+      "id": "DEEPSTREAM-NVSTREAMMUX-9",
+      "publisher": "NVIDIA",
+      "title": "DeepStream Gst-nvstreammux",
+      "url": "https://docs.nvidia.com/metropolis/deepstream/9.0/text/DS_plugin_gst-nvstreammux.html",
+      "verified_facts": [
+        "nvstreammux batches frames across inputs and pushes a batch when full or when the configured timeout expires.",
+        "Batch size, timeout, scaling, source lifecycle, and source metadata are part of pipeline behavior and must be benchmarked together."
+      ]
+    },
+    {
+      "id": "TRITON-RELEASE-26-07",
+      "publisher": "NVIDIA",
+      "title": "Triton Inference Server 26.07 Release Notes",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/rel-26-07.html",
+      "verified_facts": [
+        "Triton ships as a versioned container with a coupled CUDA, TensorRT, ONNX Runtime, OpenVINO, and operating-system stack.",
+        "A Triton version therefore cannot be selected independently from driver, platform, backend, and container review."
+      ]
+    },
+    {
+      "id": "TRITON-BATCHER",
+      "publisher": "NVIDIA",
+      "title": "Triton Batchers",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/batcher.html",
+      "verified_facts": [
+        "Dynamic batching is intended for stateless models and exposes queue delay, queue size, priority, timeout, and ordering controls.",
+        "Stateful sequences require sequence-aware scheduling; stream-local tracking cannot be treated as an ordinary stateless detector batch."
+      ]
+    },
+    {
+      "id": "K8S-DEVICE-PLUGINS",
+      "publisher": "Kubernetes",
+      "title": "Kubernetes Device Plugins",
+      "url": "https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/",
+      "verified_facts": [
+        "Vendor device plugins advertise integer extended resources such as GPUs.",
+        "Extended resources cannot be overcommitted and ordinary device resources cannot be shared between containers without a vendor-specific mechanism."
+      ]
+    },
+    {
+      "id": "NVIDIA-MIG-OPERATOR",
+      "publisher": "NVIDIA",
+      "title": "GPU Operator With MIG",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/gpu-operator-mig.html",
+      "verified_facts": [
+        "MIG exposes hardware-partitioned GPU instances on supported devices and requires an explicit cluster strategy and node configuration.",
+        "Changing MIG geometry disrupts GPU workloads and can require node reboot, so it is an operational change rather than a transparent scheduler choice."
+      ]
+    },
+    {
+      "id": "NVIDIA-GPU-SHARING",
+      "publisher": "NVIDIA",
+      "title": "Time-Slicing GPUs In Kubernetes",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/gpu-sharing.html",
+      "verified_facts": [
+        "Time slicing oversubscribes a GPU but does not provide MIG-style memory or fault isolation.",
+        "Shared GPU requests do not guarantee proportional compute, so time slicing cannot be assumed safe for hard latency or isolation requirements."
+      ]
+    },
+    {
+      "id": "MLPERF-INFERENCE-RULES",
+      "publisher": "MLCommons",
+      "title": "MLPerf Inference Rules",
+      "url": "https://github.com/mlcommons/inference_policies/blob/master/inference_rules.adoc",
+      "verified_facts": [
+        "Inference benchmarks bind the complete system under test, quality requirement, workload scenario, latency, throughput, and reproducibility rules.",
+        "Single-stream, multi-stream, server, and offline scenarios measure different properties and are not interchangeable."
+      ]
+    },
+    {
+      "id": "OCI-IMAGE-MANIFEST",
+      "publisher": "Open Container Initiative",
+      "title": "OCI Image Manifest Specification",
+      "url": "https://specs.opencontainers.org/image-spec/manifest/",
+      "verified_facts": [
+        "OCI manifests bind image configuration and layers through content digests.",
+        "Deployment evidence should use immutable manifest digests rather than mutable tags."
+      ]
+    },
+    {
+      "id": "SLSA-1-2-PROVENANCE",
+      "publisher": "OpenSSF SLSA",
+      "title": "SLSA 1.2 Provenance",
+      "url": "https://slsa.dev/spec/v1.2/provenance",
+      "verified_facts": [
+        "Provenance records where, when, and how an artifact was produced.",
+        "Compiled runtime artifacts and container images need verifiable source and build bindings in addition to a checksum."
+      ]
+    },
+    {
+      "id": "CYCLONEDX-SBOM",
+      "publisher": "OWASP CycloneDX",
+      "title": "CycloneDX SBOM Lifecycle Guidance",
+      "url": "https://cyclonedx.org/guides/sbom/lifecycle_phases/",
+      "verified_facts": [
+        "CycloneDX 1.6 can describe software and machine-learning components and their provenance.",
+        "Runtime, model, driver-facing package, configuration, and container inventories should be reviewed as one deployment bill of materials."
+      ]
+    }
+  ],
+  "status": "complete_for_planning",
+  "unresolved_by_research": [
+    "exact_target_hardware_and_operating_system",
+    "exact_runtime_provider_driver_and_container_versions",
+    "exact_promoted_model_artifact_and_precision",
+    "numeric_quality_parity_latency_throughput_power_and_cost_gates",
+    "approved_generated_benchmark_workload_and_duration",
+    "production_orchestration_platform",
+    "implementation_start_authorization"
+  ]
+}

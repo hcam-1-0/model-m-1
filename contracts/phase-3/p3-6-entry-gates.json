@@ -1,0 +1,77 @@
+{
+  "baseline": {
+    "accepted_p3_5_commit": "1611922b4f410aa0cdbce369e4f3c8838f53e19f",
+    "accepted_p3_5_package_digest": "4AC016E2A23B001F338F822A25A90CA2E032947B842F14300146F0FF315B3D31",
+    "planning_baseline_head": "c0cb82b32f3ec399b64668da4600540c88b8c25e"
+  },
+  "contract_format": "hcam.phase3.p3_6.entry_gates.v1",
+  "decisions": [
+    {
+      "decision_id": "D-P3.6-001",
+      "recommended_option": "A",
+      "state": "pending_owner_selection",
+      "topic": "runtime_portfolio_and_activation_triggers"
+    },
+    {
+      "decision_id": "D-P3.6-002",
+      "recommended_option": "A",
+      "state": "pending_owner_selection",
+      "topic": "placement_admission_batching_and_backpressure"
+    },
+    {
+      "decision_id": "D-P3.6-003",
+      "recommended_option": "A",
+      "state": "pending_owner_selection",
+      "topic": "benchmark_parity_and_claim_policy"
+    },
+    {
+      "decision_id": "D-P3.6-004",
+      "recommended_option": "A",
+      "state": "pending_owner_selection",
+      "topic": "packaging_security_degradation_and_rollback"
+    },
+    {
+      "decision_id": "D-P3.6-005",
+      "recommended_option": "A",
+      "state": "pending_owner_selection",
+      "topic": "hardware_evidence_strategy"
+    }
+  ],
+  "gates": [
+    {
+      "gate_id": "P36-G0",
+      "state": "passed",
+      "summary": "P3.5 immutable generated-only package is accepted and P3.6 planning is explicitly authorized."
+    },
+    {
+      "gate_id": "P36-G1",
+      "state": "blocked",
+      "summary": "DET-R0/E1/B1/A1 model-family comparison and one promoted model/fallback pair are not complete."
+    },
+    {
+      "gate_id": "P36-G2",
+      "state": "blocked",
+      "summary": "Exact target hardware, operating system, driver, runtime, precision, and workload profiles are not owner approved."
+    },
+    {
+      "gate_id": "P36-G3",
+      "state": "blocked",
+      "summary": "D-P3.6-001 through D-P3.6-005 remain pending."
+    },
+    {
+      "gate_id": "P36-G4",
+      "state": "blocked",
+      "summary": "No digest-bound artifact, dependency, container, or driver research authorization exists."
+    },
+    {
+      "gate_id": "P36-G5",
+      "state": "blocked",
+      "summary": "No D-P3.6-START implementation or runtime-execution authorization exists."
+    }
+  ],
+  "implementation_authorized": false,
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "planning_status": "research_and_plan_complete_owner_decisions_pending",
+  "record_id": "P3.6-ENTRY-GATES",
+  "runtime_execution_authorized": false
+}

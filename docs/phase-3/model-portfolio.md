@@ -4,6 +4,12 @@ Status: selected for planning on 2026-08-24. This document chooses the models
 that Phase 3 should evaluate. It does not approve an artifact, download,
 dataset, inference run, implementation, production model, or deployment.
 
+P3.6 uses this portfolio as a prerequisite funnel: `DET-R0`, `DET-E1`,
+`DET-B1`, and `DET-A1` must be compared and a champion/fallback approved before
+runtime acceleration is selected. See the planning-only
+[P3.6 plan](p3-6-plan.md); no candidate artifact or execution is authorized by
+that link.
+
 ## Decision
 
 H-CAM will not use one universal "best model." Phase 3 uses a role-based

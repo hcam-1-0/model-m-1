@@ -7,6 +7,10 @@ preprocessing, postprocessing, taxonomy, tracker, rules, runtime, precision,
 hardware, and configuration. A model score copied from a paper or vendor page
 is not H-CAM evidence.
 
+The [P3.6 plan](p3-6-plan.md) makes runtime evidence explicitly layered as
+`CONTRACT`, `INFER`, and `PIPE`, with model-family selection preceding runtime
+selection. Its numeric gates and execution remain owner- and manifest-gated.
+
 ## Test Layers
 
 | Layer | Purpose | Network/media rule |

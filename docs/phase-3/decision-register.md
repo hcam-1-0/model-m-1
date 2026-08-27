@@ -589,6 +589,46 @@ synthetic ANPR slice. It does not authorize Tesseract/Gujarati OCR execution,
 Government data, identity, cross-camera linkage, operational actions,
 deployment, remote Git actions, P3.6, or later work.
 
+### DR-0045: P3.6 Planning And Primary-Source Research Authorization
+
+Status: planning and research only authorized under `D-P3.6-PLAN-AUTH`.
+
+On 2026-08-27, `mayank-admin` authorized planning and read-only primary-source
+research for P3.6 Runtime Acceleration and Scheduling. The baseline is accepted
+P3.5 package digest
+`4AC016E2A23B001F338F822A25A90CA2E032947B842F14300146F0FF315B3D31`
+at commit `1611922b4f410aa0cdbce369e4f3c8838f53e19f`; the planning branch began at
+repository head `c0cb82b32f3ec399b64668da4600540c88b8c25e`.
+
+The authority permits local documentation/contracts, current public official
+documentation reads, a runtime/scheduling plan, and owner decision options. It
+explicitly prohibits downloads, runtime execution, GPU/hardware testing,
+containers, deployment, camera/media/data access, implementation, remote Git,
+and P3.7 or later work.
+
+### DR-0046: P3.6 Recommended Runtime And Scheduling Baseline
+
+Status: proposed; `D-P3.6-001` through `D-P3.6-005` pending owner selection.
+
+Primary-source research supports a staged portfolio: ONNX Runtime CPU behavior
+reference, OpenVINO-first exact Intel evaluation, TensorRT/DeepStream only on
+approved NVIDIA hardware after model promotion, and Triton only after a
+measured shared-serving trigger. The proposed scheduler uses typed node
+capabilities, hard authorization/compatibility/capacity admission, leased
+placements, node-local bounded queues, stateless detector batching, stream-local
+state isolation, and explicit degradation.
+
+The proposed evidence policy separates model selection from runtime selection
+and separates `CONTRACT`, `INFER`, and `PIPE` claims. It binds compiled
+artifacts to exact model, build, runtime, precision, hardware, driver, OS,
+configuration, SBOM, provenance, benchmark, and rollback evidence. The proposed
+hardware strategy uses `LAB-LAPTOP-01` only for later CPU/Intel feasibility and
+requires a separately approved capacity target for C10/C50 or NVIDIA claims.
+
+These recommendations are not accepted decisions. Exact models, datasets,
+hardware, runtimes, dependencies, containers, numeric gates, execution,
+implementation, and deployment remain blocked.
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

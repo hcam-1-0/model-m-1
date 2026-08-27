@@ -329,18 +329,62 @@ and proof that no owner/watchlist/Government lookup exists.
 
 Dependencies: stable reference pipeline and target hardware decision.
 
+Planning status: authorized under `D-P3.6-PLAN-AUTH`. Read-only primary-source
+research, the detailed plan, five-choice owner packet, and machine-readable
+entry gates are complete. `D-P3.6-001` through `D-P3.6-005` remain pending.
+Model-family promotion, exact hardware/runtime/artifact/workload manifests,
+artifact authority, runtime execution, implementation, containers, deployment,
+media/data access, and remote Git remain blocked.
+
+Planning records:
+
+- [planning authorization](p3-6-planning-authorization.md);
+- [primary-source research](p3-6-research-record.md);
+- [detailed plan](p3-6-plan.md);
+- [owner decision packet](p3-6-decision-packet.md); and
+- [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
+
 Deliverables:
 
-- model-family comparison (`DET-R0/E1/B1/A1`) completed before runtime tuning;
-- controlled OpenVINO first on owned Intel hardware and DeepStream/TensorRT on
-  approved NVIDIA hardware; Triton only after its workload trigger;
-- reference-versus-accelerator numeric parity;
-- node inventory, placement, admission, bounded batching, and backpressure;
-- C1/C10/C50 benchmark matrix on declared hardware;
-- selected runtime ADR and reproducible pinned deployment.
+- `P36-W0`: planning/research package and owner choices;
+- `P36-W1`: model-family comparison (`DET-R0/E1/B1/A1`) and promoted
+  champion/fallback before runtime tuning;
+- `P36-W2`: model-independent node, runtime, scheduler, lease, queue, and
+  evidence contracts;
+- `P36-W3`: controlled OpenVINO feasibility on exact owned Intel hardware;
+- `P36-W4`: TensorRT and optional DeepStream feasibility on exact approved
+  NVIDIA hardware;
+- `P36-W5`: Triton evaluation only after a measured shared-serving trigger;
+- `P36-W6`: deterministic placement, admission, reservations, leases,
+  reconciliation, and department/data-zone isolation;
+- `P36-W7`: stateless detector batching, stream-local state isolation, bounded
+  queues, fairness, backpressure, and degradation;
+- `P36-W8`: layered `CONTRACT`/`INFER`/`PIPE` C1/C10/C50 benchmark matrix on
+  declared generated workloads and exact hardware;
+- `P36-W9`: artifact/runtime/driver/container SBOM, provenance, vulnerability,
+  resilience, and rollback evidence;
+- `P36-W10`: selected runtime ADR, immutable compatibility bundle, limitations,
+  and owner acceptance.
 
 Exit evidence: signed benchmark manifests, cost/complexity comparison,
-degradation behavior, driver/container security review, and rollback.
+reference-versus-accelerator and downstream parity, deterministic placement and
+admission evidence, C1/C10/C50 bounded-load results or a narrower explicit
+claim, degradation behavior, driver/container security review, supply-chain
+provenance, rollback, exact package digest, and owner acceptance.
+
+Immediate backlog requiring owner action:
+
+- select one A-D option for each of `D-P3.6-001` through `D-P3.6-005`.
+
+Backlog after those choices still requires separate authorization:
+
+- resolve exact model-family artifacts/data and complete `P36-G1`;
+- choose exact owned/authorized hardware, OS, driver, runtime, precision, and
+  generated workload profiles for `P36-G2`;
+- prepare bounded acquisition/research manifests for any external artifacts,
+  dependencies, drivers, or containers;
+- prepare a digest-bound `D-P3.6-START` proposal. Do not execute it by
+  implication from a planning or architecture choice.
 
 ## P3.7: Governance, Operations, And Security Hardening
 

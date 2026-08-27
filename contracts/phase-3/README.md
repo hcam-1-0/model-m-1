@@ -136,6 +136,16 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-5-acceptance.json`: exact `D-P3.5-W10-ACCEPTANCE` owner decision bound
   to the immutable 99-file package, accepted Git commit, W9 evidence hash,
   documented limitations, and explicit non-authorization of P3.6.
+- `p3-6-planning-authorization.json`: exact planning and primary-source
+  research authority with downloads, runtime execution, hardware tests,
+  containers, implementation, deployment, media/data access, and remote Git
+  prohibited.
+- `p3-6-research-sources.json`: read-only official-source findings for
+  OpenVINO, ONNX Runtime, TensorRT, DeepStream, Triton, Kubernetes/NVIDIA device
+  scheduling, MLPerf methodology, OCI, SLSA, and CycloneDX.
+- `p3-6-entry-gates.json`: accepted P3.5 baseline, five pending owner choices,
+  blocked model/hardware/artifact/start prerequisites, and the explicit
+  planning-only state.
 
 Verify all tracked snapshots:
 
@@ -190,6 +200,9 @@ media, real/private/Government data, training, Tesseract execution, deployment,
 P3.6, and remote Git operations remain prohibited.
 The immutable W1-W9 package is accepted under `D-P3.5-W10-ACCEPTANCE`; that
 acceptance preserves every prohibition above and grants no P3.6 authority.
+`D-P3.6-PLAN-AUTH` now grants only P3.6 documentation planning and read-only
+primary-source research. It grants no download, artifact, runtime, hardware,
+container, implementation, media/data, deployment, remote Git, or P3.7 action.
 `P35-W1` adds only the reviewed ANPR contracts and fail-closed guardrails. It
 does not add a generator, OCR runtime, artifact loader, API, worker, migration,
 or persistence path.

@@ -101,3 +101,13 @@ Before implementation, recheck versions, licenses, supported operating systems,
 hardware matrices, security advisories, model licenses, and formal Government
 requirements. Documentation and product behavior can change after this access
 date.
+
+## P3.6 Runtime Research Update
+
+The dedicated [P3.6 primary-source research record](p3-6-research-record.md)
+captures the 2026-08-27 review of OpenVINO 2026, ONNX Runtime's OpenVINO
+provider, TensorRT 10/11 compatibility and precision behavior, DeepStream 9.0,
+Triton 26.07 and batching, Kubernetes device resources, NVIDIA MIG/time
+slicing, MLPerf inference methodology, OCI manifests, SLSA 1.2 provenance, and
+CycloneDX SBOM guidance. It records planning implications and unresolved exact
+hardware/runtime gates; it authorizes no artifact or execution action.

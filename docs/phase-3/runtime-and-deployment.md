@@ -12,6 +12,11 @@ The accountable owner may approve the deployment record without a separate
 reviewer. This does not remove security, license, parity, benchmark, rollback,
 capacity, or explicit deployment-authorization evidence.
 
+The detailed [P3.6 runtime acceleration and scheduling plan](p3-6-plan.md) and
+[owner decision packet](p3-6-decision-packet.md) refine this strategy under
+`D-P3.6-PLAN-AUTH`. They are planning-only: no runtime, hardware, artifact,
+container, implementation, benchmark, or deployment is currently approved.
+
 ## Proposed Runtime Roles
 
 | Role | Proposed candidate | Why it is considered | Decision state |

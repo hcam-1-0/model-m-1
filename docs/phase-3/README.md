@@ -22,6 +22,10 @@ zero-network local implementation allowlist. W1, W3, W4, exact W5 Latin, and
 exact W6 Devanagari/Gujarati auxiliary generated baselines are locally
 implemented and validated. Gujarati remains rendering-only. All broader media,
 identity, correlation, alerting, and deployment work remains unauthorized.
+P3.5 is accepted under `D-P3.5-W10-ACCEPTANCE`. P3.6 runtime acceleration and
+scheduling planning plus primary-source research are authorized under
+`D-P3.6-PLAN-AUTH`; owner choices, artifacts, execution, implementation,
+hardware testing, containers, and deployment remain unauthorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -106,6 +110,10 @@ autonomous enforcement.
 | [P3.5 owner decision packet](p3-5-decision-packet.md) | Four technical choices and separate implementation-start gate |
 | [P3.5 planning readiness](p3-5-planning-readiness-report.md) | Historical machine-verified planning boundary and then-pending owner gates |
 | [P3.5 start intent](p3-5-start-intent.md) | Historical early `D-P3.5-START` statement and why it was initially non-effective |
+| [P3.6 planning authorization](p3-6-planning-authorization.md) | Exact planning/research authority and continuing non-authorization |
+| [P3.6 primary-source research](p3-6-research-record.md) | Current OpenVINO, TensorRT, DeepStream, Triton, scheduling, benchmarking, and supply-chain findings |
+| [P3.6 plan](p3-6-plan.md) | Runtime portfolio, node capabilities, admission, batching, parity, benchmarks, security, rollback, and staged work packages |
+| [P3.6 owner decision packet](p3-6-decision-packet.md) | Five A-D architecture choices and later manifest-bound start gates |
 
 ## Non-Negotiable Boundary
 
