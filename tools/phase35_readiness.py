@@ -99,6 +99,9 @@ P3_5_W5_EVIDENCE_SHA256 = (
 P3_5_W6_EVIDENCE_SHA256 = (
     "1E58A84AD522EB852F6EECFDCF1BAF38FCDC4337B414836B64EBCD4DADBCB955"
 )
+P3_5_W7_EVIDENCE_SHA256 = (
+    "1F233E044976B0B28BD0261CA5B6324403C45B2A158C852B34DCBB7A0144EE8A"
+)
 
 PACKAGE_FILES = (
     ".github/workflows/python-ci.yml",
@@ -109,6 +112,7 @@ PACKAGE_FILES = (
     "app/hcam/analytics/anpr/generator.py",
     "app/hcam/analytics/anpr/guardrails.py",
     "app/hcam/analytics/anpr/localization.py",
+    "app/hcam/analytics/anpr/normalization.py",
     "app/hcam/analytics/anpr/ocr.py",
     "contracts/phase-3/README.md",
     "contracts/phase-3/fixtures/p3-5-generated-request-v1.json",
@@ -125,6 +129,7 @@ PACKAGE_FILES = (
     "contracts/phase-3/p3-5-auxiliary-script-evaluation.json",
     "contracts/phase-3/p3-5-entry-gates.json",
     "contracts/phase-3/p3-5-latin-ocr-evaluation.json",
+    "contracts/phase-3/p3-5-normalization-evaluation.json",
     "contracts/phase-3/p3-5-planning-authorization.json",
     "contracts/phase-3/p3-5-owner-decisions.json",
     "contracts/phase-3/p3-5-research-sources.json",
@@ -159,13 +164,16 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-w4-ground-truth-crop.md",
     "docs/phase-3/p3-5-w5-latin-ocr.md",
     "docs/phase-3/p3-5-w6-auxiliary-scripts.md",
+    "docs/phase-3/p3-5-w7-normalization-abstention.md",
     "tests/test_analytics_anpr_auxiliary.py",
     "tests/test_analytics_anpr_generator.py",
     "tests/test_analytics_anpr_guardrails.py",
     "tests/test_analytics_anpr_localization.py",
+    "tests/test_analytics_anpr_normalization.py",
     "tests/test_analytics_anpr_ocr.py",
     "tests/test_phase35_contracts.py",
     "tests/test_phase35_latin_ocr.py",
+    "tests/test_phase35_normalization.py",
     "tests/test_phase35_auxiliary_ocr.py",
     "tests/test_phase35_readiness.py",
     "tests/test_phase35_artifact_research.py",
@@ -176,6 +184,7 @@ PACKAGE_FILES = (
     "tools/phase35_contracts.py",
     "tools/phase35_latin_ocr.py",
     "tools/phase35_latin_ocr_worker.py",
+    "tools/phase35_normalization.py",
     "tools/phase35_auxiliary_ocr.py",
     "tools/phase35_auxiliary_ocr_worker.py",
     "tools/phase35_runtime_research.py",
@@ -292,7 +301,7 @@ def check_required_files() -> Check:
     return Check(
         "required_files",
         PASS,
-        f"All {len(PACKAGE_FILES)} P3.5 authorization and W1/W3/W4/W5/W6 package files exist.",
+        f"All {len(PACKAGE_FILES)} P3.5 authorization and W1/W3/W4/W5/W6/W7 package files exist.",
     )
 
 
@@ -572,6 +581,7 @@ def check_authorized_w1_w3_w4_package() -> Check:
         "app/hcam/analytics/anpr/generator.py",
         "app/hcam/analytics/anpr/guardrails.py",
         "app/hcam/analytics/anpr/localization.py",
+        "app/hcam/analytics/anpr/normalization.py",
         "app/hcam/analytics/anpr/ocr.py",
     }
     prohibited_prefixes = ("migrations/", "deploy/")
@@ -600,13 +610,13 @@ def check_authorized_w1_w3_w4_package() -> Check:
         return Check(
             "authorized_w1_w3_w4_package",
             FAIL,
-            "P3.5 W1/W3/W4/W5/W6 contains an unapproved application, migration, deployment, model, or media file.",
+            "P3.5 W1/W3/W4/W5/W6/W7 contains an unapproved application, migration, deployment, model, or media file.",
             prohibited,
         )
     return Check(
         "authorized_w1_w3_w4_package",
         PASS,
-        "P3.5 application scope is limited to generated-only contracts, guardrails, deterministic token/rendering, sealed splits, ground-truth localization, ephemeral crops, exact external Latin/Devanagari OCR adapters, and Gujarati rendering-only evidence; no migration, model, media, API, or persistence file is present.",
+        "P3.5 application scope is limited to generated-only contracts, guardrails, deterministic token/rendering, sealed splits, ground-truth localization, ephemeral crops, exact external Latin/Devanagari OCR adapters, Gujarati rendering-only evidence, and ephemeral normalization/calibration/abstention logic; no migration, model, media, API, or persistence file is present.",
     )
 
 
@@ -1157,6 +1167,172 @@ def check_w6_auxiliary_script_evidence() -> Check:
         "w6_auxiliary_script_evidence",
         PASS,
         "P3.5 W6 pins exact OCR-D0/FONT-D0/FONT-G0 artifacts, records an identifier-free 12-sample Devanagari baseline and deterministic Gujarati rendering-only evidence, and executes no Gujarati OCR or Tesseract path.",
+    )
+
+
+def check_w7_normalization_evidence() -> Check:
+    path = ROOT / "contracts/phase-3/p3-5-normalization-evaluation.json"
+    try:
+        payload = path.read_bytes()
+        record = json.loads(payload)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("w7_normalization_evidence", FAIL, str(exc))
+    canonical = (
+        json.dumps(
+            record,
+            allow_nan=False,
+            ensure_ascii=True,
+            separators=(",", ":"),
+            sort_keys=True,
+        ).encode("utf-8")
+        + b"\n"
+    )
+    observed_sha256 = hashlib.sha256(payload).hexdigest().upper()
+    serialized = payload.decode("utf-8", errors="strict")
+    slices = record.get("slices")
+    slice_map = (
+        {
+            item.get("script_lane"): item
+            for item in slices
+            if isinstance(item, dict)
+        }
+        if isinstance(slices, list)
+        else {}
+    )
+    expected_slices = {
+        "latin": (12, 12, 12, 12, 9, 3, 4, 156, 156, 153, 153, 35, 35),
+        "devanagari": (12, 12, 12, 12, 0, 12, 0, 48, 48, 45, 45, 3, 3),
+        "gujarati": (12, 0, 0, 0, 0, 0, 0, 48, 48, 0, 0, 0, 0),
+    }
+    slice_failures = tuple(
+        name
+        for name, expected in expected_slices.items()
+        if (
+            slice_map.get(name, {}).get("sample_count"),
+            slice_map.get(name, {}).get("hypothesis_count"),
+            slice_map.get(name, {}).get("normalized_count"),
+            slice_map.get(name, {}).get("abstained_count"),
+            slice_map.get(name, {}).get("synthetic_format_count"),
+            slice_map.get(name, {}).get("unrecognized_format_count"),
+            slice_map.get(name, {}).get("case_transform_count"),
+            slice_map.get(name, {}).get("reference_scalar_count"),
+            slice_map.get(name, {}).get("reference_grapheme_count"),
+            slice_map.get(name, {}).get("observed_scalar_count"),
+            slice_map.get(name, {}).get("observed_grapheme_count"),
+            slice_map.get(name, {}).get("code_point_edit_distance"),
+            slice_map.get(name, {}).get("grapheme_edit_distance"),
+        )
+        != expected
+        or slice_map.get(name, {}).get("separator_transform_count") != 0
+        or slice_map.get(name, {}).get("ocr_execution_performed") is not False
+    )
+    calibrations = record.get("calibration_evaluations")
+    calibration_map = (
+        {
+            item.get("candidate_id"): item
+            for item in calibrations
+            if isinstance(item, dict)
+        }
+        if isinstance(calibrations, list)
+        else {}
+    )
+    expected_calibrations = {
+        "OCR-L0": (10, 6, 0.34, 0.3325),
+        "OCR-L1": (10, 7, 0.36, 0.3625),
+        "OCR-D0": (10, 7, 0.28, 0.3025),
+    }
+    calibration_failures: list[str] = []
+    for candidate_id, expected in expected_calibrations.items():
+        item = calibration_map.get(candidate_id, {})
+        bins = item.get("bins") if isinstance(item, dict) else None
+        if (
+            (
+                item.get("sample_count"),
+                item.get("correct_count"),
+                item.get("expected_calibration_error"),
+                item.get("brier_score"),
+            )
+            != expected
+            or item.get("fixture_kind")
+            != "deterministic_contract_semantics_not_model_quality"
+            or item.get("method")
+            != "identity_generated_baseline_five_equal_width_bins"
+            or item.get("quality_threshold_approved") is not False
+            or item.get("promotion_authorized") is not False
+            or not isinstance(bins, list)
+            or len(bins) != 5
+            or any(
+                not isinstance(bin_item, dict)
+                or bin_item.get("bin_index") != index
+                or bin_item.get("sample_count") != 2
+                for index, bin_item in enumerate(bins)
+            )
+        ):
+            calibration_failures.append(candidate_id)
+    prohibited = (
+        '"raw_text"',
+        '"nfc_value"',
+        '"normalized_display_candidate"',
+        '"graphemes"',
+        '"raw_hypothesis_digest"',
+        '"sample_id"',
+        '"region_id"',
+        '"result_id"',
+        "SYN-",
+        "anprsample_",
+        "anprauxsample_",
+        "B:\\",
+    )
+    if (
+        payload != canonical
+        or observed_sha256 != P3_5_W7_EVIDENCE_SHA256
+        or record.get("contract_type")
+        != "hcam.phase3.p3_5.normalization-generated-evaluation.v1"
+        or record.get("work_package")
+        != "P35-W7_normalization_grapheme_metrics_calibration_and_abstention"
+        or record.get("source_id") != "DATA-PLATE-GEN-R0"
+        or record.get("runtime_id") != "cpython-3.12.13-windows-x86_64"
+        or record.get("python_version") != "3.12.13"
+        or record.get("regex_version") != "2026.7.19"
+        or record.get("unicode_version") != "15.0.0"
+        or record.get("replay_runs") != 20
+        or record.get("replay_output_deterministic") is not True
+        or record.get("network_attempt_count") != 1
+        or record.get("network_access_performed") is not False
+        or set(slice_map) != set(expected_slices)
+        or slice_failures
+        or set(calibration_map) != set(expected_calibrations)
+        or calibration_failures
+        or record.get("model_execution_count") != 0
+        or record.get("model_download_count") != 0
+        or record.get("external_text_input_count") != 0
+        or record.get("camera_or_media_input_count") != 0
+        or record.get("real_registration_mark_count") != 0
+        or record.get("gujarati_ocr_execution_count") != 0
+        or record.get("tesseract_execution_count") != 0
+        or record.get("consensus_execution_count") != 0
+        or record.get("operational_acceptance_count") != 0
+        or record.get("raw_output_persisted") is not False
+        or record.get("normalized_output_persisted") is not False
+        or record.get("grapheme_values_persisted") is not False
+        or record.get("alternatives_persisted") is not False
+        or record.get("sample_region_or_result_identifiers_persisted") is not False
+        or record.get("plate_text_retention_hours") != 0
+        or record.get("quality_threshold_decided") is not False
+        or record.get("promotion_authorized") is not False
+        or record.get("deployment_authorized") is not False
+        or any(value in serialized for value in prohibited)
+    ):
+        return Check(
+            "w7_normalization_evidence",
+            FAIL,
+            "P3.5 W7 runtime pins, raw-preserving normalization, grapheme metrics, candidate-local calibration, mandatory abstention, or zero-retention evidence changed.",
+            (*slice_failures, *calibration_failures),
+        )
+    return Check(
+        "w7_normalization_evidence",
+        PASS,
+        "P3.5 W7 pins Python/Unicode/regex semantics, records identifier-free normalization and calibration contract fixtures, keeps every result abstained while quality thresholds remain unapproved, and persists no text or grapheme values.",
     )
 
 
@@ -2226,12 +2402,14 @@ def check_documentation_sync() -> Check:
             "tools/phase35_readiness.py",
             "tools/phase35_latin_ocr.py",
             "tools/phase35_auxiliary_ocr.py",
+            "tools/phase35_normalization.py",
         ),
         "contracts/phase-3/README.md": (
             "p3-5-anpr-contracts.json",
             "p3-5-ground-truth-crop-v1.json",
             "p3-5-latin-ocr-evaluation.json",
             "p3-5-auxiliary-script-evaluation.json",
+            "p3-5-normalization-evaluation.json",
             "p3-5-sealed-splits-v1.json",
             "p3-5-artifact-review-evidence.json",
             "p3-5-artifact-review-acceptance.json",
@@ -2255,6 +2433,7 @@ def check_documentation_sync() -> Check:
             "[P3.5 W4 ground-truth localization and crop](p3-5-w4-ground-truth-crop.md)",
             "[P3.5 W5 exact Latin PaddleOCR baseline](p3-5-w5-latin-ocr.md)",
             "[P3.5 W6 auxiliary scripts](p3-5-w6-auxiliary-scripts.md)",
+            "[P3.5 W7 normalization and abstention](p3-5-w7-normalization-abstention.md)",
             "[P3.5 artifact model cards](p3-5-artifact-model-cards.md)",
             "[P3.5 exact artifact review evidence](p3-5-artifact-review-evidence.md)",
             "[P3.5 exact artifact review acceptance](p3-5-artifact-review-acceptance.md)",
@@ -2289,6 +2468,10 @@ def check_documentation_sync() -> Check:
             "P35-W4",
             "P35-W5",
             "P35-W6",
+            "P35-W7",
+            "validated_generated_contract_fixture",
+            "P35-W8",
+            "not_started",
             "validated_generated_baseline",
             "validated_complete",
         ),
@@ -2350,11 +2533,23 @@ def check_documentation_sync() -> Check:
             "Gujarati OCR execution stayed at zero",
             "No W6 path uses `B:`",
         ),
+        "docs/phase-3/p3-5-w7-normalization-abstention.md": (
+            "P35-W7",
+            "validated_generated_contract_fixture",
+            "1F233E044976B0B28BD0261CA5B6324403C45B2A158C852B34DCBB7A0144EE8A",
+            "regex==2026.7.19",
+            "20/20",
+            "mandatory abstention",
+            "No W7 path uses `B:`",
+            "P35-W8",
+            "not started",
+        ),
         ".github/workflows/python-ci.yml": (
             "python tools/phase35_readiness.py --strict",
             "python tools/phase35_contracts.py check",
             "python tools/phase35_latin_ocr.py check-evidence",
             "python tools/phase35_auxiliary_ocr.py check-evidence",
+            "python tools/phase35_normalization.py check-evidence",
         ),
     }
     missing: list[str] = []
@@ -2418,6 +2613,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_w4_ground_truth_crop(),
         check_w5_latin_ocr_evidence(),
         check_w6_auxiliary_script_evidence(),
+        check_w7_normalization_evidence(),
         check_artifact_proposal(),
         check_owner_decisions_record(),
         check_artifact_research_authorization(),

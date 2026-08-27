@@ -1160,6 +1160,270 @@
       "title": "EphemeralLatinOcrHypothesisV1",
       "type": "object"
     },
+    "ephemeral_plate_normalization": {
+      "additionalProperties": false,
+      "description": "Derived text semantics that are valid only inside the generated harness.",
+      "properties": {
+        "abstain": {
+          "const": true,
+          "default": true,
+          "title": "Abstain",
+          "type": "boolean"
+        },
+        "abstention_policy_version": {
+          "const": "sha256:355dc7c8e5510a8223d84652ca9043efbd7aad93d722fb6be0f82eef7af24ded",
+          "default": "sha256:355dc7c8e5510a8223d84652ca9043efbd7aad93d722fb6be0f82eef7af24ded",
+          "title": "Abstention Policy Version",
+          "type": "string"
+        },
+        "abstention_reason": {
+          "enum": [
+            "auxiliary_observation_only",
+            "quality_threshold_unapproved",
+            "synthetic_grammar_rejected"
+          ],
+          "title": "Abstention Reason",
+          "type": "string"
+        },
+        "calibrated_confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Calibrated Confidence",
+          "type": "number"
+        },
+        "calibration_method": {
+          "const": "identity_generated_baseline",
+          "default": "identity_generated_baseline",
+          "title": "Calibration Method",
+          "type": "string"
+        },
+        "calibration_version": {
+          "const": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+          "default": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+          "title": "Calibration Version",
+          "type": "string"
+        },
+        "candidate_id": {
+          "enum": [
+            "OCR-L0",
+            "OCR-L1",
+            "OCR-D0"
+          ],
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "case_transform_performed": {
+          "title": "Case Transform Performed",
+          "type": "boolean"
+        },
+        "confusable_substitution_performed": {
+          "const": false,
+          "default": false,
+          "title": "Confusable Substitution Performed",
+          "type": "boolean"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.ephemeral-plate-normalization.v1",
+          "default": "hcam.anpr.ephemeral-plate-normalization.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "dictionary_completion_performed": {
+          "const": false,
+          "default": false,
+          "title": "Dictionary Completion Performed",
+          "type": "boolean"
+        },
+        "ephemeral_only": {
+          "const": true,
+          "default": true,
+          "title": "Ephemeral Only",
+          "type": "boolean"
+        },
+        "format_family": {
+          "enum": [
+            "synthetic_non_issuable",
+            "unrecognized"
+          ],
+          "title": "Format Family",
+          "type": "string"
+        },
+        "grapheme_count": {
+          "maximum": 16,
+          "minimum": 1,
+          "title": "Grapheme Count",
+          "type": "integer"
+        },
+        "grapheme_policy_version": {
+          "const": "sha256:f91b590006f16888e8dfd342d974eb2fea559701ce221d3563459e33eec0cd08",
+          "default": "sha256:f91b590006f16888e8dfd342d974eb2fea559701ce221d3563459e33eec0cd08",
+          "title": "Grapheme Policy Version",
+          "type": "string"
+        },
+        "graphemes": {
+          "items": {
+            "maxLength": 32,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Graphemes",
+          "type": "array"
+        },
+        "nfc_scalar_count": {
+          "maximum": 32,
+          "minimum": 1,
+          "title": "Nfc Scalar Count",
+          "type": "integer"
+        },
+        "nfc_transform_performed": {
+          "title": "Nfc Transform Performed",
+          "type": "boolean"
+        },
+        "nfc_value": {
+          "maxLength": 32,
+          "minLength": 1,
+          "title": "Nfc Value",
+          "type": "string"
+        },
+        "normalization_version": {
+          "const": "sha256:3d1211dc3c3462014afec58f08b4ed66a73043838bf2975ae72049b22f093db6",
+          "default": "sha256:3d1211dc3c3462014afec58f08b4ed66a73043838bf2975ae72049b22f093db6",
+          "title": "Normalization Version",
+          "type": "string"
+        },
+        "normalized_display_candidate": {
+          "maxLength": 32,
+          "minLength": 1,
+          "title": "Normalized Display Candidate",
+          "type": "string"
+        },
+        "quality_threshold_approved": {
+          "const": false,
+          "default": false,
+          "title": "Quality Threshold Approved",
+          "type": "boolean"
+        },
+        "raw_confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Raw Confidence",
+          "type": "number"
+        },
+        "raw_hypothesis_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Raw Hypothesis Digest",
+          "type": "string"
+        },
+        "raw_output_mutated": {
+          "const": false,
+          "default": false,
+          "title": "Raw Output Mutated",
+          "type": "boolean"
+        },
+        "raw_scalar_count": {
+          "maximum": 32,
+          "minimum": 1,
+          "title": "Raw Scalar Count",
+          "type": "integer"
+        },
+        "record_lookup_performed": {
+          "const": false,
+          "default": false,
+          "title": "Record Lookup Performed",
+          "type": "boolean"
+        },
+        "regex_version": {
+          "const": "2026.7.19",
+          "default": "2026.7.19",
+          "title": "Regex Version",
+          "type": "string"
+        },
+        "retained": {
+          "const": false,
+          "default": false,
+          "title": "Retained",
+          "type": "boolean"
+        },
+        "script_lane": {
+          "enum": [
+            "latin",
+            "devanagari"
+          ],
+          "title": "Script Lane",
+          "type": "string"
+        },
+        "separator_transform_performed": {
+          "const": false,
+          "default": false,
+          "title": "Separator Transform Performed",
+          "type": "boolean"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "transliteration_performed": {
+          "const": false,
+          "default": false,
+          "title": "Transliteration Performed",
+          "type": "boolean"
+        },
+        "unicode_version": {
+          "const": "15.0.0",
+          "default": "15.0.0",
+          "title": "Unicode Version",
+          "type": "string"
+        },
+        "validation_outcomes": {
+          "items": {
+            "enum": [
+              "allowlist_valid",
+              "graphemes_segmented",
+              "nfc_derived",
+              "synthetic_grammar_rejected",
+              "synthetic_grammar_valid",
+              "unicode_scalar_valid",
+              "utf8_valid"
+            ],
+            "type": "string"
+          },
+          "maxItems": 7,
+          "minItems": 6,
+          "title": "Validation Outcomes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "script_lane",
+        "raw_hypothesis_digest",
+        "nfc_value",
+        "graphemes",
+        "normalized_display_candidate",
+        "raw_scalar_count",
+        "nfc_scalar_count",
+        "grapheme_count",
+        "format_family",
+        "validation_outcomes",
+        "nfc_transform_performed",
+        "case_transform_performed",
+        "raw_confidence",
+        "calibrated_confidence",
+        "abstention_reason"
+      ],
+      "title": "EphemeralPlateNormalizationV1",
+      "type": "object"
+    },
     "ephemeral_token": {
       "additionalProperties": false,
       "description": "In-memory ground truth that must never enter evidence or persistence.",
@@ -2246,6 +2510,545 @@
       "title": "LatinOcrGeneratedEvaluationV1",
       "type": "object"
     },
+    "normalization_generated_evaluation": {
+      "$defs": {
+        "CalibrationBinV1": {
+          "additionalProperties": false,
+          "properties": {
+            "absolute_calibration_gap": {
+              "anyOf": [
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Absolute Calibration Gap"
+            },
+            "accuracy": {
+              "anyOf": [
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Accuracy"
+            },
+            "bin_index": {
+              "maximum": 4,
+              "minimum": 0,
+              "title": "Bin Index",
+              "type": "integer"
+            },
+            "correct_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Correct Count",
+              "type": "integer"
+            },
+            "lower_bound": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Lower Bound",
+              "type": "number"
+            },
+            "mean_confidence": {
+              "anyOf": [
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Mean Confidence"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "upper_bound": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Upper Bound",
+              "type": "number"
+            }
+          },
+          "required": [
+            "bin_index",
+            "lower_bound",
+            "upper_bound",
+            "sample_count",
+            "correct_count",
+            "mean_confidence",
+            "accuracy",
+            "absolute_calibration_gap"
+          ],
+          "title": "CalibrationBinV1",
+          "type": "object"
+        },
+        "CandidateCalibrationEvaluationV1": {
+          "additionalProperties": false,
+          "properties": {
+            "bins": {
+              "items": {
+                "$ref": "#/$defs/CalibrationBinV1"
+              },
+              "maxItems": 5,
+              "minItems": 5,
+              "title": "Bins",
+              "type": "array"
+            },
+            "brier_score": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Brier Score",
+              "type": "number"
+            },
+            "calibration_version": {
+              "const": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+              "default": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+              "title": "Calibration Version",
+              "type": "string"
+            },
+            "candidate_id": {
+              "enum": [
+                "OCR-L0",
+                "OCR-L1",
+                "OCR-D0"
+              ],
+              "title": "Candidate Id",
+              "type": "string"
+            },
+            "correct_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Correct Count",
+              "type": "integer"
+            },
+            "expected_calibration_error": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Expected Calibration Error",
+              "type": "number"
+            },
+            "fixture_kind": {
+              "const": "deterministic_contract_semantics_not_model_quality",
+              "default": "deterministic_contract_semantics_not_model_quality",
+              "title": "Fixture Kind",
+              "type": "string"
+            },
+            "method": {
+              "const": "identity_generated_baseline_five_equal_width_bins",
+              "default": "identity_generated_baseline_five_equal_width_bins",
+              "title": "Method",
+              "type": "string"
+            },
+            "promotion_authorized": {
+              "const": false,
+              "default": false,
+              "title": "Promotion Authorized",
+              "type": "boolean"
+            },
+            "quality_threshold_approved": {
+              "const": false,
+              "default": false,
+              "title": "Quality Threshold Approved",
+              "type": "boolean"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 1,
+              "title": "Sample Count",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "candidate_id",
+            "sample_count",
+            "correct_count",
+            "bins",
+            "expected_calibration_error",
+            "brier_score"
+          ],
+          "title": "CandidateCalibrationEvaluationV1",
+          "type": "object"
+        },
+        "NormalizationGeneratedSliceV1": {
+          "additionalProperties": false,
+          "properties": {
+            "abstained_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Abstained Count",
+              "type": "integer"
+            },
+            "case_transform_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Case Transform Count",
+              "type": "integer"
+            },
+            "code_point_edit_distance": {
+              "minimum": 0,
+              "title": "Code Point Edit Distance",
+              "type": "integer"
+            },
+            "fixture_kind": {
+              "enum": [
+                "deterministic_hypothesis_contract_fixture",
+                "generated_render_reference_only"
+              ],
+              "title": "Fixture Kind",
+              "type": "string"
+            },
+            "grapheme_edit_distance": {
+              "minimum": 0,
+              "title": "Grapheme Edit Distance",
+              "type": "integer"
+            },
+            "hypothesis_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Hypothesis Count",
+              "type": "integer"
+            },
+            "nfc_transform_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Nfc Transform Count",
+              "type": "integer"
+            },
+            "normalized_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Normalized Count",
+              "type": "integer"
+            },
+            "observed_grapheme_count": {
+              "minimum": 0,
+              "title": "Observed Grapheme Count",
+              "type": "integer"
+            },
+            "observed_scalar_count": {
+              "minimum": 0,
+              "title": "Observed Scalar Count",
+              "type": "integer"
+            },
+            "ocr_execution_performed": {
+              "const": false,
+              "default": false,
+              "title": "Ocr Execution Performed",
+              "type": "boolean"
+            },
+            "reference_grapheme_count": {
+              "minimum": 1,
+              "title": "Reference Grapheme Count",
+              "type": "integer"
+            },
+            "reference_scalar_count": {
+              "minimum": 1,
+              "title": "Reference Scalar Count",
+              "type": "integer"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 1,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "script_lane": {
+              "enum": [
+                "latin",
+                "devanagari",
+                "gujarati"
+              ],
+              "title": "Script Lane",
+              "type": "string"
+            },
+            "separator_transform_count": {
+              "const": 0,
+              "default": 0,
+              "title": "Separator Transform Count",
+              "type": "integer"
+            },
+            "synthetic_format_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Synthetic Format Count",
+              "type": "integer"
+            },
+            "unrecognized_format_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Unrecognized Format Count",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "script_lane",
+            "fixture_kind",
+            "sample_count",
+            "hypothesis_count",
+            "normalized_count",
+            "abstained_count",
+            "synthetic_format_count",
+            "unrecognized_format_count",
+            "nfc_transform_count",
+            "case_transform_count",
+            "reference_scalar_count",
+            "reference_grapheme_count",
+            "observed_scalar_count",
+            "observed_grapheme_count",
+            "code_point_edit_distance",
+            "grapheme_edit_distance"
+          ],
+          "title": "NormalizationGeneratedSliceV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "abstention_policy_version": {
+          "const": "sha256:355dc7c8e5510a8223d84652ca9043efbd7aad93d722fb6be0f82eef7af24ded",
+          "default": "sha256:355dc7c8e5510a8223d84652ca9043efbd7aad93d722fb6be0f82eef7af24ded",
+          "title": "Abstention Policy Version",
+          "type": "string"
+        },
+        "alternatives_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Alternatives Persisted",
+          "type": "boolean"
+        },
+        "calibration_evaluations": {
+          "items": {
+            "$ref": "#/$defs/CandidateCalibrationEvaluationV1"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Calibration Evaluations",
+          "type": "array"
+        },
+        "calibration_version": {
+          "const": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+          "default": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+          "title": "Calibration Version",
+          "type": "string"
+        },
+        "camera_or_media_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Camera Or Media Input Count",
+          "type": "integer"
+        },
+        "consensus_execution_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Consensus Execution Count",
+          "type": "integer"
+        },
+        "contract_type": {
+          "const": "hcam.phase3.p3_5.normalization-generated-evaluation.v1",
+          "default": "hcam.phase3.p3_5.normalization-generated-evaluation.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "deployment_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Deployment Authorized",
+          "type": "boolean"
+        },
+        "external_text_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "External Text Input Count",
+          "type": "integer"
+        },
+        "grapheme_policy_version": {
+          "const": "sha256:f91b590006f16888e8dfd342d974eb2fea559701ce221d3563459e33eec0cd08",
+          "default": "sha256:f91b590006f16888e8dfd342d974eb2fea559701ce221d3563459e33eec0cd08",
+          "title": "Grapheme Policy Version",
+          "type": "string"
+        },
+        "grapheme_values_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Grapheme Values Persisted",
+          "type": "boolean"
+        },
+        "gujarati_ocr_execution_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Gujarati Ocr Execution Count",
+          "type": "integer"
+        },
+        "model_download_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Model Download Count",
+          "type": "integer"
+        },
+        "model_execution_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Model Execution Count",
+          "type": "integer"
+        },
+        "network_access_performed": {
+          "const": false,
+          "default": false,
+          "title": "Network Access Performed",
+          "type": "boolean"
+        },
+        "network_attempt_count": {
+          "const": 1,
+          "default": 1,
+          "title": "Network Attempt Count",
+          "type": "integer"
+        },
+        "normalization_version": {
+          "const": "sha256:3d1211dc3c3462014afec58f08b4ed66a73043838bf2975ae72049b22f093db6",
+          "default": "sha256:3d1211dc3c3462014afec58f08b4ed66a73043838bf2975ae72049b22f093db6",
+          "title": "Normalization Version",
+          "type": "string"
+        },
+        "normalized_output_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Normalized Output Persisted",
+          "type": "boolean"
+        },
+        "operational_acceptance_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Operational Acceptance Count",
+          "type": "integer"
+        },
+        "plate_text_retention_hours": {
+          "const": 0,
+          "default": 0,
+          "title": "Plate Text Retention Hours",
+          "type": "integer"
+        },
+        "promotion_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Promotion Authorized",
+          "type": "boolean"
+        },
+        "python_version": {
+          "const": "3.12.13",
+          "default": "3.12.13",
+          "title": "Python Version",
+          "type": "string"
+        },
+        "quality_threshold_decided": {
+          "const": false,
+          "default": false,
+          "title": "Quality Threshold Decided",
+          "type": "boolean"
+        },
+        "raw_output_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Raw Output Persisted",
+          "type": "boolean"
+        },
+        "real_registration_mark_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Real Registration Mark Count",
+          "type": "integer"
+        },
+        "regex_version": {
+          "const": "2026.7.19",
+          "default": "2026.7.19",
+          "title": "Regex Version",
+          "type": "string"
+        },
+        "replay_output_deterministic": {
+          "title": "Replay Output Deterministic",
+          "type": "boolean"
+        },
+        "replay_runs": {
+          "const": 20,
+          "default": 20,
+          "title": "Replay Runs",
+          "type": "integer"
+        },
+        "runtime_id": {
+          "const": "cpython-3.12.13-windows-x86_64",
+          "default": "cpython-3.12.13-windows-x86_64",
+          "title": "Runtime Id",
+          "type": "string"
+        },
+        "sample_region_or_result_identifiers_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Sample Region Or Result Identifiers Persisted",
+          "type": "boolean"
+        },
+        "slices": {
+          "items": {
+            "$ref": "#/$defs/NormalizationGeneratedSliceV1"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Slices",
+          "type": "array"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "tesseract_execution_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Tesseract Execution Count",
+          "type": "integer"
+        },
+        "unicode_version": {
+          "const": "15.0.0",
+          "default": "15.0.0",
+          "title": "Unicode Version",
+          "type": "string"
+        },
+        "work_package": {
+          "const": "P35-W7_normalization_grapheme_metrics_calibration_and_abstention",
+          "default": "P35-W7_normalization_grapheme_metrics_calibration_and_abstention",
+          "title": "Work Package",
+          "type": "string"
+        }
+      },
+      "required": [
+        "slices",
+        "calibration_evaluations",
+        "replay_output_deterministic"
+      ],
+      "title": "NormalizationGeneratedEvaluationV1",
+      "type": "object"
+    },
     "plate_localization_result": {
       "$defs": {
         "NormalizedBoundingBox": {
@@ -3002,6 +3805,26 @@
     "plate_text_in_contracts": false,
     "rectifier_version": "sha256:39194faa2bccb7ca3f4060aeb51130d733aab1fec54e14b5985b70958c475c2f",
     "weights_loaded": false
+  },
+  "normalization_policy": {
+    "abstention_policy_version": "sha256:355dc7c8e5510a8223d84652ca9043efbd7aad93d722fb6be0f82eef7af24ded",
+    "calibration_method": "identity_generated_baseline",
+    "calibration_version": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+    "compatibility_normalization_allowed": false,
+    "confusable_autocorrection_allowed": false,
+    "dictionary_completion_allowed": false,
+    "generated_only": true,
+    "grapheme_policy_version": "sha256:f91b590006f16888e8dfd342d974eb2fea559701ce221d3563459e33eec0cd08",
+    "normalization_form": "NFC",
+    "normalization_version": "sha256:3d1211dc3c3462014afec58f08b4ed66a73043838bf2975ae72049b22f093db6",
+    "operational_acceptance_allowed": false,
+    "python_version": "3.12.13",
+    "quality_threshold_approved": false,
+    "raw_output_mutation_allowed": false,
+    "record_lookup_allowed": false,
+    "regex_version": "2026.7.19",
+    "transliteration_allowed": false,
+    "unicode_version": "15.0.0"
   },
   "persistence_policy": {
     "identifier_free_aggregate_evidence_only": true,

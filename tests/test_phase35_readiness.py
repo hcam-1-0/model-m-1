@@ -16,7 +16,7 @@ def test_p3_5_generated_only_start_is_authorized_without_manual_gates() -> None:
     )
     assert report.failures == 0
     assert report.manual_gates == 0
-    assert report.package_file_count == 79
+    assert report.package_file_count == 85
     assert len(report.package_digest) == 64
 
 
@@ -373,6 +373,7 @@ def test_p3_5_package_has_only_authorized_generated_application_files() -> None:
         "app/hcam/analytics/anpr/generator.py",
         "app/hcam/analytics/anpr/guardrails.py",
         "app/hcam/analytics/anpr/localization.py",
+        "app/hcam/analytics/anpr/normalization.py",
         "app/hcam/analytics/anpr/ocr.py",
     }
     assert not any(path.startswith("migrations/") for path in readiness.PACKAGE_FILES)
@@ -396,6 +397,10 @@ def test_p3_5_w5_snapshot_preserves_exact_generated_zero_retention_boundary() ->
 
 def test_p3_5_w6_snapshot_preserves_auxiliary_script_boundaries() -> None:
     assert readiness.check_w6_auxiliary_script_evidence().status == readiness.PASS
+
+
+def test_p3_5_w7_snapshot_preserves_normalization_and_abstention_boundaries() -> None:
+    assert readiness.check_w7_normalization_evidence().status == readiness.PASS
 
 
 def test_p3_5_package_digest_is_deterministic_and_path_relative() -> None:

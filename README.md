@@ -32,6 +32,9 @@ output validation, deterministic replay, and zero-retention aggregate evidence.
 `P35-W6` adds the exact Devanagari `OCR-D0` auxiliary baseline and deterministic
 `FONT-D0`/`FONT-G0` rendering. Gujarati remains rendering-only because its two
 Tesseract OCR candidates are still blocked.
+`P35-W7` adds raw-preserving NFC derivation, exact-runtime extended grapheme
+metrics, candidate-local identity-calibration contract fixtures, and mandatory
+abstention while numeric quality thresholds remain unapproved.
 None of these milestones adds a real CCTV media path.
 
 A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
@@ -55,6 +58,9 @@ The [P3.5 W5 exact Latin PaddleOCR baseline](docs/phase-3/p3-5-w5-latin-ocr.md)
 records the generated-only baseline/challenger evaluation and its limitations.
 The [P3.5 W6 auxiliary scripts](docs/phase-3/p3-5-w6-auxiliary-scripts.md)
 records exact Devanagari OCR and Gujarati rendering-only evidence.
+The [P3.5 W7 normalization and abstention](docs/phase-3/p3-5-w7-normalization-abstention.md)
+records pinned Unicode/grapheme semantics, aggregate-only calibration fixtures,
+mandatory abstention, and zero-retention evidence.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
@@ -93,6 +99,7 @@ uv run --locked --extra dev python tools/phase35_readiness.py --strict --json
 uv run --locked --extra dev python tools/phase35_contracts.py check
 uv run --locked python tools/phase35_latin_ocr.py check-evidence
 uv run --locked python tools/phase35_auxiliary_ocr.py check-evidence
+uv run --locked python tools/phase35_normalization.py check-evidence
 uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked --extra dev python tools/phase35_runtime_research.py all --root 'E:\h-cam-research-cache\phase-3\p3-5-runtime'
@@ -115,7 +122,7 @@ The P3.5 planning verifier should report
 `implementation_authorized_generated_only_staged`, zero technical failures,
 and zero manual gates. It verifies the approved `A/A/A/A`
 baseline, exact artifact acceptance, completed restricted runtime evidence,
-digest-bound generated-only start authorization, and the exact W1/W3/W4/W5/W6
+digest-bound generated-only start authorization, and the exact W1/W3/W4/W5/W6/W7
 application and evidence boundary. The verifier itself performs no download,
 extraction, synthetic generation, training, inference, media access, or model execution.
 The artifact-research command is separately gated and writes only the seven

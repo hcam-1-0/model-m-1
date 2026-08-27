@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import unicodedata
 from collections import Counter
 from typing import Annotated, Any, Literal
 
@@ -106,6 +107,33 @@ FONT_D0_ARTIFACT_SHA256 = (
 FONT_G0_ARTIFACT_SHA256 = (
     "sha256:9901d8552f1dd5d2c50dbd4caa6f6e174e74e8264f06594ab259ae6e7b1ac428"
 )
+ANPR_NORMALIZATION_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.normalization.v1:raw-preserving:nfc:closed-allowlist:no-autocorrect"
+    ).hexdigest()
+)
+ANPR_GRAPHEME_POLICY_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.graphemes.v1:regex-2026.7.19:unicode-15.0.0:extended-clusters"
+    ).hexdigest()
+)
+ANPR_CALIBRATION_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.calibration.v1:identity-baseline:five-equal-width-bins:no-threshold"
+    ).hexdigest()
+)
+ANPR_ABSTENTION_POLICY_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.abstention.v1:hard-gates:unapproved-quality-threshold:always-abstain"
+    ).hexdigest()
+)
+ANPR_PINNED_PYTHON_VERSION = "3.12.13"
+ANPR_PINNED_REGEX_VERSION = "2026.7.19"
+ANPR_PINNED_UNICODE_VERSION = "15.0.0"
 MAX_ANPR_REQUEST_BYTES = 4 * 1024
 MAX_ANPR_DOCUMENT_DEPTH = 8
 MAX_ANPR_DOCUMENT_NODES = 256
@@ -132,6 +160,23 @@ LatinOcrCandidate = Literal["OCR-L0", "OCR-L1"]
 AuxiliaryScript = Literal["devanagari", "gujarati"]
 AuxiliaryFontCandidate = Literal["FONT-D0", "FONT-G0"]
 AuxiliaryDegradation = Literal["clean", "low_contrast", "downscaled"]
+NormalizationCandidate = Literal["OCR-L0", "OCR-L1", "OCR-D0"]
+NormalizationScript = Literal["latin", "devanagari"]
+NormalizationFormatFamily = Literal["synthetic_non_issuable", "unrecognized"]
+NormalizationAbstentionReason = Literal[
+    "auxiliary_observation_only",
+    "quality_threshold_unapproved",
+    "synthetic_grammar_rejected",
+]
+NormalizationValidationOutcome = Literal[
+    "allowlist_valid",
+    "graphemes_segmented",
+    "nfc_derived",
+    "synthetic_grammar_rejected",
+    "synthetic_grammar_valid",
+    "unicode_scalar_valid",
+    "utf8_valid",
+]
 LatinOcrFailureCode = Literal[
     "engine_error",
     "invalid_confidence",
@@ -1150,6 +1195,306 @@ class AuxiliaryScriptGeneratedEvaluationV1(ContractModel):
         return self
 
 
+class EphemeralPlateNormalizationV1(ContractModel):
+    """Derived text semantics that are valid only inside the generated harness."""
+
+    contract_type: Literal["hcam.anpr.ephemeral-plate-normalization.v1"] = (
+        "hcam.anpr.ephemeral-plate-normalization.v1"
+    )
+    source_id: Literal["DATA-PLATE-GEN-R0"] = ANPR_GENERATED_SOURCE_ID
+    candidate_id: NormalizationCandidate
+    script_lane: NormalizationScript
+    raw_hypothesis_digest: ImmutableDigest
+    nfc_value: Annotated[str, Field(min_length=1, max_length=32)]
+    graphemes: Annotated[
+        tuple[Annotated[str, Field(min_length=1, max_length=32)], ...],
+        Field(min_length=1, max_length=16),
+    ]
+    normalized_display_candidate: Annotated[str, Field(min_length=1, max_length=32)]
+    raw_scalar_count: Annotated[int, Field(ge=1, le=32)]
+    nfc_scalar_count: Annotated[int, Field(ge=1, le=32)]
+    grapheme_count: Annotated[int, Field(ge=1, le=16)]
+    normalization_version: Literal[ANPR_NORMALIZATION_VERSION] = (
+        ANPR_NORMALIZATION_VERSION
+    )
+    grapheme_policy_version: Literal[ANPR_GRAPHEME_POLICY_VERSION] = (
+        ANPR_GRAPHEME_POLICY_VERSION
+    )
+    unicode_version: Literal[ANPR_PINNED_UNICODE_VERSION] = (
+        ANPR_PINNED_UNICODE_VERSION
+    )
+    regex_version: Literal[ANPR_PINNED_REGEX_VERSION] = ANPR_PINNED_REGEX_VERSION
+    format_family: NormalizationFormatFamily
+    validation_outcomes: Annotated[
+        tuple[NormalizationValidationOutcome, ...], Field(min_length=6, max_length=7)
+    ]
+    nfc_transform_performed: bool
+    separator_transform_performed: Literal[False] = False
+    case_transform_performed: bool
+    raw_confidence: Annotated[float, Field(ge=0, le=1)]
+    calibrated_confidence: Annotated[float, Field(ge=0, le=1)]
+    calibration_version: Literal[ANPR_CALIBRATION_VERSION] = ANPR_CALIBRATION_VERSION
+    calibration_method: Literal["identity_generated_baseline"] = (
+        "identity_generated_baseline"
+    )
+    quality_threshold_approved: Literal[False] = False
+    abstention_policy_version: Literal[ANPR_ABSTENTION_POLICY_VERSION] = (
+        ANPR_ABSTENTION_POLICY_VERSION
+    )
+    abstain: Literal[True] = True
+    abstention_reason: NormalizationAbstentionReason
+    raw_output_mutated: Literal[False] = False
+    confusable_substitution_performed: Literal[False] = False
+    transliteration_performed: Literal[False] = False
+    dictionary_completion_performed: Literal[False] = False
+    record_lookup_performed: Literal[False] = False
+    ephemeral_only: Literal[True] = True
+    retained: Literal[False] = False
+    synthetic_only: Literal[True] = True
+
+    @model_validator(mode="after")
+    def derived_values_are_consistent(self) -> EphemeralPlateNormalizationV1:
+        if unicodedata.normalize("NFC", self.nfc_value) != self.nfc_value:
+            raise ValueError("normalization value must be NFC")
+        if "".join(self.graphemes) != self.nfc_value:
+            raise ValueError("graphemes must exactly cover the NFC value")
+        if (
+            self.raw_scalar_count < 1
+            or self.nfc_scalar_count != len(self.nfc_value)
+            or self.grapheme_count != len(self.graphemes)
+        ):
+            raise ValueError("normalization counts are inconsistent")
+        expected_script = {
+            "OCR-L0": "latin",
+            "OCR-L1": "latin",
+            "OCR-D0": "devanagari",
+        }[self.candidate_id]
+        if self.script_lane != expected_script:
+            raise ValueError("normalization candidate is routed to the wrong script")
+        if self.calibrated_confidence != self.raw_confidence:
+            raise ValueError("W7 identity calibration cannot change confidence")
+        if self.script_lane == "devanagari":
+            if (
+                self.format_family != "unrecognized"
+                or self.abstention_reason != "auxiliary_observation_only"
+                or self.case_transform_performed
+            ):
+                raise ValueError("auxiliary normalization cannot become a plate result")
+        else:
+            expected_family = (
+                "synthetic_non_issuable"
+                if _TOKEN_PATTERN.fullmatch(self.normalized_display_candidate)
+                else "unrecognized"
+            )
+            expected_reason = (
+                "quality_threshold_unapproved"
+                if expected_family == "synthetic_non_issuable"
+                else "synthetic_grammar_rejected"
+            )
+            if (
+                self.format_family != expected_family
+                or self.abstention_reason != expected_reason
+            ):
+                raise ValueError("Latin grammar classification is inconsistent")
+        expected_grammar_outcome = (
+            "synthetic_grammar_valid"
+            if self.format_family == "synthetic_non_issuable"
+            else "synthetic_grammar_rejected"
+        )
+        if expected_grammar_outcome not in self.validation_outcomes:
+            raise ValueError("normalization grammar outcome is missing")
+        return self
+
+
+class EphemeralCalibrationObservationV1(ContractModel):
+    """Identifier-free generated calibration input; never persisted individually."""
+
+    candidate_id: NormalizationCandidate
+    split: Literal["development", "validation"]
+    raw_confidence: Annotated[float, Field(ge=0, le=1)]
+    correct: bool
+    synthetic_only: Literal[True] = True
+    retained: Literal[False] = False
+
+
+class CalibrationBinV1(ContractModel):
+    bin_index: Annotated[int, Field(ge=0, le=4)]
+    lower_bound: Annotated[float, Field(ge=0, le=1)]
+    upper_bound: Annotated[float, Field(ge=0, le=1)]
+    sample_count: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    correct_count: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    mean_confidence: Annotated[float, Field(ge=0, le=1)] | None
+    accuracy: Annotated[float, Field(ge=0, le=1)] | None
+    absolute_calibration_gap: Annotated[float, Field(ge=0, le=1)] | None
+
+    @model_validator(mode="after")
+    def bin_is_consistent(self) -> CalibrationBinV1:
+        if self.lower_bound >= self.upper_bound or self.correct_count > self.sample_count:
+            raise ValueError("calibration bin bounds or counts are invalid")
+        values = (self.mean_confidence, self.accuracy, self.absolute_calibration_gap)
+        if self.sample_count == 0 and any(value is not None for value in values):
+            raise ValueError("empty calibration bins cannot contain statistics")
+        if self.sample_count > 0 and any(value is None for value in values):
+            raise ValueError("populated calibration bins require statistics")
+        return self
+
+
+class CandidateCalibrationEvaluationV1(ContractModel):
+    candidate_id: NormalizationCandidate
+    calibration_version: Literal[ANPR_CALIBRATION_VERSION] = ANPR_CALIBRATION_VERSION
+    method: Literal["identity_generated_baseline_five_equal_width_bins"] = (
+        "identity_generated_baseline_five_equal_width_bins"
+    )
+    fixture_kind: Literal["deterministic_contract_semantics_not_model_quality"] = (
+        "deterministic_contract_semantics_not_model_quality"
+    )
+    sample_count: Annotated[int, Field(ge=1, le=MAX_ANPR_LOCAL_SAMPLES)]
+    correct_count: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    bins: Annotated[tuple[CalibrationBinV1, ...], Field(min_length=5, max_length=5)]
+    expected_calibration_error: Annotated[float, Field(ge=0, le=1)]
+    brier_score: Annotated[float, Field(ge=0, le=1)]
+    quality_threshold_approved: Literal[False] = False
+    promotion_authorized: Literal[False] = False
+
+    @model_validator(mode="after")
+    def calibration_is_consistent(self) -> CandidateCalibrationEvaluationV1:
+        if tuple(item.bin_index for item in self.bins) != tuple(range(5)):
+            raise ValueError("calibration bins must be ordered and complete")
+        expected_bounds = tuple((index / 5, (index + 1) / 5) for index in range(5))
+        observed_bounds = tuple(
+            (item.lower_bound, item.upper_bound) for item in self.bins
+        )
+        if observed_bounds != expected_bounds:
+            raise ValueError("calibration bins must use the frozen equal-width grid")
+        if sum(item.sample_count for item in self.bins) != self.sample_count:
+            raise ValueError("calibration bin counts do not cover the fixture")
+        if sum(item.correct_count for item in self.bins) != self.correct_count:
+            raise ValueError("calibration correctness counts are inconsistent")
+        return self
+
+
+class NormalizationGeneratedSliceV1(ContractModel):
+    script_lane: Literal["latin", "devanagari", "gujarati"]
+    fixture_kind: Literal[
+        "deterministic_hypothesis_contract_fixture",
+        "generated_render_reference_only",
+    ]
+    sample_count: Annotated[int, Field(ge=1, le=MAX_ANPR_LOCAL_SAMPLES)]
+    hypothesis_count: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    normalized_count: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    abstained_count: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    synthetic_format_count: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    unrecognized_format_count: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    nfc_transform_count: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    case_transform_count: Annotated[int, Field(ge=0, le=MAX_ANPR_LOCAL_SAMPLES)]
+    separator_transform_count: Literal[0] = 0
+    reference_scalar_count: Annotated[int, Field(ge=1)]
+    reference_grapheme_count: Annotated[int, Field(ge=1)]
+    observed_scalar_count: Annotated[int, Field(ge=0)]
+    observed_grapheme_count: Annotated[int, Field(ge=0)]
+    code_point_edit_distance: Annotated[int, Field(ge=0)]
+    grapheme_edit_distance: Annotated[int, Field(ge=0)]
+    ocr_execution_performed: Literal[False] = False
+
+    @model_validator(mode="after")
+    def slice_counts_are_consistent(self) -> NormalizationGeneratedSliceV1:
+        if (
+            self.normalized_count != self.hypothesis_count
+            or self.abstained_count != self.normalized_count
+            or self.synthetic_format_count + self.unrecognized_format_count
+            != self.normalized_count
+        ):
+            raise ValueError("normalization slice counts are inconsistent")
+        if self.script_lane == "gujarati":
+            if (
+                self.fixture_kind != "generated_render_reference_only"
+                or self.hypothesis_count != 0
+                or self.observed_scalar_count != 0
+                or self.observed_grapheme_count != 0
+            ):
+                raise ValueError("Gujarati W7 evidence must remain reference-only")
+        elif (
+            self.fixture_kind != "deterministic_hypothesis_contract_fixture"
+            or self.hypothesis_count != self.sample_count
+        ):
+            raise ValueError("normalization fixtures must cover their generated samples")
+        return self
+
+
+class NormalizationGeneratedEvaluationV1(ContractModel):
+    contract_type: Literal[
+        "hcam.phase3.p3_5.normalization-generated-evaluation.v1"
+    ] = "hcam.phase3.p3_5.normalization-generated-evaluation.v1"
+    work_package: Literal[
+        "P35-W7_normalization_grapheme_metrics_calibration_and_abstention"
+    ] = "P35-W7_normalization_grapheme_metrics_calibration_and_abstention"
+    source_id: Literal["DATA-PLATE-GEN-R0"] = ANPR_GENERATED_SOURCE_ID
+    normalization_version: Literal[ANPR_NORMALIZATION_VERSION] = (
+        ANPR_NORMALIZATION_VERSION
+    )
+    grapheme_policy_version: Literal[ANPR_GRAPHEME_POLICY_VERSION] = (
+        ANPR_GRAPHEME_POLICY_VERSION
+    )
+    calibration_version: Literal[ANPR_CALIBRATION_VERSION] = ANPR_CALIBRATION_VERSION
+    abstention_policy_version: Literal[ANPR_ABSTENTION_POLICY_VERSION] = (
+        ANPR_ABSTENTION_POLICY_VERSION
+    )
+    runtime_id: Literal["cpython-3.12.13-windows-x86_64"] = (
+        "cpython-3.12.13-windows-x86_64"
+    )
+    python_version: Literal[ANPR_PINNED_PYTHON_VERSION] = ANPR_PINNED_PYTHON_VERSION
+    regex_version: Literal[ANPR_PINNED_REGEX_VERSION] = ANPR_PINNED_REGEX_VERSION
+    unicode_version: Literal[ANPR_PINNED_UNICODE_VERSION] = (
+        ANPR_PINNED_UNICODE_VERSION
+    )
+    slices: Annotated[
+        tuple[NormalizationGeneratedSliceV1, ...], Field(min_length=3, max_length=3)
+    ]
+    calibration_evaluations: Annotated[
+        tuple[CandidateCalibrationEvaluationV1, ...],
+        Field(min_length=3, max_length=3),
+    ]
+    replay_runs: Literal[20] = 20
+    replay_output_deterministic: bool
+    network_attempt_count: Literal[1] = 1
+    network_access_performed: Literal[False] = False
+    model_execution_count: Literal[0] = 0
+    model_download_count: Literal[0] = 0
+    external_text_input_count: Literal[0] = 0
+    camera_or_media_input_count: Literal[0] = 0
+    real_registration_mark_count: Literal[0] = 0
+    gujarati_ocr_execution_count: Literal[0] = 0
+    tesseract_execution_count: Literal[0] = 0
+    consensus_execution_count: Literal[0] = 0
+    operational_acceptance_count: Literal[0] = 0
+    raw_output_persisted: Literal[False] = False
+    normalized_output_persisted: Literal[False] = False
+    grapheme_values_persisted: Literal[False] = False
+    alternatives_persisted: Literal[False] = False
+    sample_region_or_result_identifiers_persisted: Literal[False] = False
+    plate_text_retention_hours: Literal[0] = 0
+    quality_threshold_decided: Literal[False] = False
+    promotion_authorized: Literal[False] = False
+    deployment_authorized: Literal[False] = False
+    synthetic_only: Literal[True] = True
+
+    @model_validator(mode="after")
+    def exact_generated_lanes_are_present(self) -> NormalizationGeneratedEvaluationV1:
+        if {item.script_lane for item in self.slices} != {
+            "latin",
+            "devanagari",
+            "gujarati",
+        }:
+            raise ValueError("W7 evidence requires all three generated script slices")
+        if {item.candidate_id for item in self.calibration_evaluations} != {
+            "OCR-L0",
+            "OCR-L1",
+            "OCR-D0",
+        }:
+            raise ValueError("W7 calibration evidence requires each approved OCR lane")
+        return self
+
+
 def generated_request_fixture() -> GeneratedTokenRequestV1:
     return GeneratedTokenRequestV1(
         request_id="anprreq_11111111111111111111111111111111",
@@ -1189,10 +1534,16 @@ def anpr_contract_bundle() -> dict[str, Any]:
             "ephemeral_auxiliary_ocr_hypothesis": EphemeralAuxiliaryOcrHypothesisV1.model_json_schema(
                 mode="validation"
             ),
+            "ephemeral_plate_normalization": EphemeralPlateNormalizationV1.model_json_schema(
+                mode="validation"
+            ),
             "auxiliary_script_generated_evaluation": AuxiliaryScriptGeneratedEvaluationV1.model_json_schema(
                 mode="validation"
             ),
             "latin_ocr_generated_evaluation": LatinOcrGeneratedEvaluationV1.model_json_schema(
+                mode="validation"
+            ),
+            "normalization_generated_evaluation": NormalizationGeneratedEvaluationV1.model_json_schema(
                 mode="validation"
             ),
             "plate_localization_result": PlateLocalizationResultV1.model_json_schema(
@@ -1299,6 +1650,26 @@ def anpr_contract_bundle() -> dict[str, Any]:
             "transliteration_allowed": False,
             "generated_only": True,
             "promotion_authorized": False,
+        },
+        "normalization_policy": {
+            "normalization_version": ANPR_NORMALIZATION_VERSION,
+            "grapheme_policy_version": ANPR_GRAPHEME_POLICY_VERSION,
+            "calibration_version": ANPR_CALIBRATION_VERSION,
+            "abstention_policy_version": ANPR_ABSTENTION_POLICY_VERSION,
+            "python_version": ANPR_PINNED_PYTHON_VERSION,
+            "regex_version": ANPR_PINNED_REGEX_VERSION,
+            "unicode_version": ANPR_PINNED_UNICODE_VERSION,
+            "normalization_form": "NFC",
+            "compatibility_normalization_allowed": False,
+            "transliteration_allowed": False,
+            "dictionary_completion_allowed": False,
+            "confusable_autocorrection_allowed": False,
+            "record_lookup_allowed": False,
+            "raw_output_mutation_allowed": False,
+            "calibration_method": "identity_generated_baseline",
+            "quality_threshold_approved": False,
+            "operational_acceptance_allowed": False,
+            "generated_only": True,
         },
         "persistence_policy": {
             "plate_text_retention_hours": 0,

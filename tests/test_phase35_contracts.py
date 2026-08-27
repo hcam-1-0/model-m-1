@@ -8,6 +8,7 @@ from hcam.analytics.anpr.contracts import generated_request_fixture
 from hcam.analytics.anpr.guardrails import canonical_anpr_evidence_json
 from tools import phase35_contracts
 from tools import phase35_latin_ocr
+from tools import phase35_normalization
 
 
 def test_p3_5_w1_contract_snapshots_are_current() -> None:
@@ -96,3 +97,22 @@ def test_generated_latin_ocr_evidence_is_canonical_and_zero_retention() -> None:
     assert '"raw_text"' not in actual
     assert "anprsample_" not in actual
     assert "anprregion_" not in actual
+
+
+def test_generated_normalization_evidence_is_canonical_and_zero_retention() -> None:
+    assert phase35_normalization.check_evidence() == 0
+
+    actual = phase35_normalization.EVIDENCE_PATH.read_text(encoding="utf-8")
+    document = json.loads(actual)
+
+    assert document["external_text_input_count"] == 0
+    assert document["model_execution_count"] == 0
+    assert document["normalized_output_persisted"] is False
+    assert document["grapheme_values_persisted"] is False
+    assert document["quality_threshold_decided"] is False
+    assert document["operational_acceptance_count"] == 0
+    assert document["consensus_execution_count"] == 0
+    assert '"raw_text"' not in actual
+    assert '"nfc_value"' not in actual
+    assert '"graphemes"' not in actual
+    assert "SYN-" not in actual

@@ -72,11 +72,15 @@ _PROHIBITED_INPUT_FIELDS = frozenset(
 _PROHIBITED_PERSISTENCE_FIELDS = frozenset(
     {
         "alternatives",
+        "graphemes",
+        "nfc_value",
         "normalized_text",
+        "normalized_display_candidate",
         "ocr_text",
         "plate_number",
         "plate_text",
         "raw_text",
+        "raw_hypothesis_digest",
         "registration_mark",
         "token",
     }

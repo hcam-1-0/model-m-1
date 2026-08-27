@@ -264,6 +264,17 @@ Implementation progress:
   20/20 runs. Gujarati OCR and Tesseract execution stayed at zero because
   `OCR-G0` and `OCR-G1` remain blocked. No quality or promotion decision follows
   from these generated results.
+- `P35-W7`: `validated_generated_contract_fixture`. Raw-preserving NFC
+  derivation, Unicode extended-grapheme metrics, candidate-local identity
+  calibration fixtures, and mandatory abstention are implemented under exact
+  CPython `3.12.13`, Unicode `15.0.0`, and `regex==2026.7.19` semantics.
+- W7 canonical evidence is identifier-free and aggregate-only. It records
+  20/20 deterministic replay, one blocked socket attempt, zero model execution,
+  zero external text/media/real-registration input, zero persisted raw or
+  normalized text/graphemes/identifiers, and zero operational acceptance.
+- W7 does not approve a numeric quality threshold or model promotion. It adds
+  no API, worker, migration, database, lookup, alert, camera/media, or deployment
+  path. `P35-W8` bounded consensus is `not_started` and was not executed by W7.
 
 Artifact preparation status: proposal R0 records eight recommended artifact
 slots, immutable source metadata, and bounded sizes. Seven external slots are
