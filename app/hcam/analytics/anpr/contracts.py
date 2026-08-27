@@ -5,6 +5,7 @@ import json
 import re
 import unicodedata
 from collections import Counter
+from decimal import Decimal
 from typing import Annotated, Any, Literal
 
 from pydantic import AfterValidator, Field, model_validator
@@ -13,6 +14,9 @@ from hcam.analytics.contracts import (
     ContractModel,
     ImmutableDigest,
     NormalizedBoundingBox,
+    StreamId,
+    TrackerEpoch,
+    TrackId,
 )
 
 
@@ -131,6 +135,12 @@ ANPR_ABSTENTION_POLICY_VERSION = (
         b"hcam.anpr.abstention.v1:hard-gates:unapproved-quality-threshold:always-abstain"
     ).hexdigest()
 )
+ANPR_CONSENSUS_POLICY_VERSION = (
+    "sha256:"
+    + hashlib.sha256(
+        b"hcam.anpr.consensus.v1:exact-string:confidence-weighted:stream-epoch-track:always-abstain"
+    ).hexdigest()
+)
 ANPR_PINNED_PYTHON_VERSION = "3.12.13"
 ANPR_PINNED_REGEX_VERSION = "2026.7.19"
 ANPR_PINNED_UNICODE_VERSION = "15.0.0"
@@ -143,6 +153,9 @@ MAX_ANPR_FRAME_HEIGHT = 720
 MAX_ANPR_PLATE_REGIONS = 8
 MAX_ANPR_CROP_WIDTH = 512
 MAX_ANPR_CROP_HEIGHT = 128
+MAX_ANPR_CONSENSUS_OBSERVATIONS = 5
+MAX_ANPR_CONSENSUS_WINDOW_MS = 2_000
+MAX_ANPR_CONSENSUS_STATES_PER_STREAM = 256
 
 _TOKEN_PATTERN = re.compile(ANPR_TOKEN_PATTERN, flags=re.ASCII)
 
@@ -176,6 +189,28 @@ NormalizationValidationOutcome = Literal[
     "synthetic_grammar_valid",
     "unicode_scalar_valid",
     "utf8_valid",
+]
+ConsensusCloseReason = Literal[
+    "count_limit",
+    "epoch_reset",
+    "event_time_window",
+    "overload",
+    "track_end",
+]
+ConsensusAbstentionReason = Literal[
+    "consensus_thresholds_unapproved",
+    "overload_fail_closed",
+]
+ConsensusScenario = Literal[
+    "agreement",
+    "cross_boundary_isolation",
+    "disagreement",
+    "duplicate_rejection",
+    "epoch_reset",
+    "event_time_window",
+    "out_of_order_rejection",
+    "overload",
+    "track_end",
 ]
 LatinOcrFailureCode = Literal[
     "engine_error",
@@ -1495,6 +1530,302 @@ class NormalizationGeneratedEvaluationV1(ContractModel):
         return self
 
 
+class SyntheticConsensusPolicyV1(ContractModel):
+    """Default-off policy for generated, in-memory temporal consensus only."""
+
+    contract_type: Literal["hcam.anpr.synthetic-consensus-policy.v1"] = (
+        "hcam.anpr.synthetic-consensus-policy.v1"
+    )
+    enabled: bool = False
+    environment: Literal["development", "test", "production"] = "development"
+    source_id: Literal["DATA-PLATE-GEN-R0"] = ANPR_GENERATED_SOURCE_ID
+    policy_version: Literal[ANPR_CONSENSUS_POLICY_VERSION] = (
+        ANPR_CONSENSUS_POLICY_VERSION
+    )
+    grouping_key: Literal["stream_id_tracker_epoch_track_id"] = (
+        "stream_id_tracker_epoch_track_id"
+    )
+    voting_method: Literal["exact_string_confidence_weighted"] = (
+        "exact_string_confidence_weighted"
+    )
+    maximum_observations: Literal[5] = MAX_ANPR_CONSENSUS_OBSERVATIONS
+    maximum_event_time_window_ms: Literal[2000] = MAX_ANPR_CONSENSUS_WINDOW_MS
+    maximum_active_states_per_stream: Literal[256] = (
+        MAX_ANPR_CONSENSUS_STATES_PER_STREAM
+    )
+    minimum_support: None = None
+    minimum_margin: None = None
+    thresholds_approved: Literal[False] = False
+    result_acceptance: Literal["prohibited"] = "prohibited"
+    network_access: Literal["denied"] = "denied"
+    persistence: Literal["denied"] = "denied"
+    synthetic_only: Literal[True] = True
+
+    @model_validator(mode="after")
+    def production_is_fail_closed(self) -> SyntheticConsensusPolicyV1:
+        if self.enabled and self.environment == "production":
+            raise ValueError("generated ANPR consensus is forbidden in production")
+        return self
+
+
+class EphemeralConsensusObservationV1(ContractModel):
+    """One typed W7 result scoped to an anonymous stream-local track."""
+
+    contract_type: Literal["hcam.anpr.ephemeral-consensus-observation.v1"] = (
+        "hcam.anpr.ephemeral-consensus-observation.v1"
+    )
+    source_id: Literal["DATA-PLATE-GEN-R0"] = ANPR_GENERATED_SOURCE_ID
+    stream_id: StreamId
+    tracker_epoch: TrackerEpoch
+    track_id: TrackId
+    event_time_ms: Annotated[int, Field(ge=0, le=9_223_372_036_854_775_807)]
+    source_sequence: Annotated[int, Field(ge=0, le=9_223_372_036_854_775_807)]
+    normalization: EphemeralPlateNormalizationV1
+    ephemeral_only: Literal[True] = True
+    retained: Literal[False] = False
+    synthetic_only: Literal[True] = True
+
+    @model_validator(mode="after")
+    def only_core_generated_candidates_are_eligible(
+        self,
+    ) -> EphemeralConsensusObservationV1:
+        if (
+            self.normalization.source_id != self.source_id
+            or self.normalization.script_lane != "latin"
+            or self.normalization.candidate_id not in {"OCR-L0", "OCR-L1"}
+            or self.normalization.format_family != "synthetic_non_issuable"
+        ):
+            raise ValueError(
+                "consensus accepts only valid generated Latin core observations"
+            )
+        return self
+
+
+class EphemeralConsensusVoteV1(ContractModel):
+    """An exact-string vote that may exist only inside the bounded state machine."""
+
+    normalized_display_candidate: SyntheticPlateToken
+    observation_count: Annotated[
+        int, Field(ge=1, le=MAX_ANPR_CONSENSUS_OBSERVATIONS)
+    ]
+    confidence_weight: Annotated[
+        float, Field(ge=0, le=MAX_ANPR_CONSENSUS_OBSERVATIONS)
+    ]
+    first_event_time_ms: Annotated[int, Field(ge=0)]
+    first_source_sequence: Annotated[int, Field(ge=0)]
+    retained: Literal[False] = False
+
+
+class EphemeralConsensusResultV1(ContractModel):
+    """Closed consensus state; it is never eligible for evidence persistence."""
+
+    contract_type: Literal["hcam.anpr.ephemeral-consensus-result.v1"] = (
+        "hcam.anpr.ephemeral-consensus-result.v1"
+    )
+    source_id: Literal["DATA-PLATE-GEN-R0"] = ANPR_GENERATED_SOURCE_ID
+    stream_id: StreamId
+    tracker_epoch: TrackerEpoch
+    track_id: TrackId
+    policy_version: Literal[ANPR_CONSENSUS_POLICY_VERSION] = (
+        ANPR_CONSENSUS_POLICY_VERSION
+    )
+    close_reason: ConsensusCloseReason
+    first_event_time_ms: Annotated[int, Field(ge=0)]
+    last_event_time_ms: Annotated[int, Field(ge=0)]
+    observation_count: Annotated[
+        int, Field(ge=1, le=MAX_ANPR_CONSENSUS_OBSERVATIONS)
+    ]
+    unique_candidate_count: Annotated[
+        int, Field(ge=1, le=MAX_ANPR_CONSENSUS_OBSERVATIONS)
+    ]
+    ranked_votes: Annotated[
+        tuple[EphemeralConsensusVoteV1, ...],
+        Field(min_length=1, max_length=MAX_ANPR_CONSENSUS_OBSERVATIONS),
+    ]
+    winning_candidate: SyntheticPlateToken
+    winning_support: Annotated[
+        int, Field(ge=1, le=MAX_ANPR_CONSENSUS_OBSERVATIONS)
+    ]
+    winning_confidence_weight: Annotated[
+        float, Field(ge=0, le=MAX_ANPR_CONSENSUS_OBSERVATIONS)
+    ]
+    confidence_margin: Annotated[
+        float, Field(ge=0, le=MAX_ANPR_CONSENSUS_OBSERVATIONS)
+    ]
+    minimum_support: None = None
+    minimum_margin: None = None
+    thresholds_approved: Literal[False] = False
+    abstain: Literal[True] = True
+    abstention_reason: ConsensusAbstentionReason
+    accepted_value_emitted: Literal[False] = False
+    operational_event_emitted: Literal[False] = False
+    persisted: Literal[False] = False
+    ephemeral_only: Literal[True] = True
+    synthetic_only: Literal[True] = True
+
+    @model_validator(mode="after")
+    def result_is_ranked_and_fail_closed(self) -> EphemeralConsensusResultV1:
+        if self.last_event_time_ms < self.first_event_time_ms:
+            raise ValueError("consensus result event times are reversed")
+        if len(self.ranked_votes) != self.unique_candidate_count:
+            raise ValueError("consensus unique-candidate count is inconsistent")
+        if sum(item.observation_count for item in self.ranked_votes) != (
+            self.observation_count
+        ):
+            raise ValueError("consensus vote counts do not cover observations")
+        expected_ranking = tuple(
+            sorted(
+                self.ranked_votes,
+                key=lambda item: (
+                    -item.confidence_weight,
+                    -item.observation_count,
+                    item.normalized_display_candidate,
+                ),
+            )
+        )
+        if self.ranked_votes != expected_ranking:
+            raise ValueError("consensus votes are not in canonical rank order")
+        winner = self.ranked_votes[0]
+        if (
+            winner.normalized_display_candidate != self.winning_candidate
+            or winner.observation_count != self.winning_support
+            or winner.confidence_weight != self.winning_confidence_weight
+        ):
+            raise ValueError("consensus winner does not match the first ranked vote")
+        runner_up_weight = (
+            self.ranked_votes[1].confidence_weight
+            if len(self.ranked_votes) > 1
+            else 0.0
+        )
+        expected_margin = Decimal(str(winner.confidence_weight)) - Decimal(
+            str(runner_up_weight)
+        )
+        if Decimal(str(self.confidence_margin)) != expected_margin:
+            raise ValueError("consensus confidence margin is inconsistent")
+        expected_reason: ConsensusAbstentionReason = (
+            "overload_fail_closed"
+            if self.close_reason == "overload"
+            else "consensus_thresholds_unapproved"
+        )
+        if self.abstention_reason != expected_reason:
+            raise ValueError("consensus abstention reason is inconsistent")
+        return self
+
+
+class ConsensusGeneratedScenarioV1(ContractModel):
+    scenario: ConsensusScenario
+    execution_count: Annotated[int, Field(ge=1, le=100_000)]
+    closed_result_count: Annotated[int, Field(ge=0, le=100_000)]
+    abstained_result_count: Annotated[int, Field(ge=0, le=100_000)]
+    violation_count: Annotated[int, Field(ge=0, le=100_000)]
+
+    @model_validator(mode="after")
+    def counts_are_consistent(self) -> ConsensusGeneratedScenarioV1:
+        if (
+            self.abstained_result_count != self.closed_result_count
+            or self.closed_result_count > self.execution_count
+            or self.violation_count > self.execution_count
+        ):
+            raise ValueError("generated consensus scenario counts are inconsistent")
+        return self
+
+
+class ConsensusGeneratedEvaluationV1(ContractModel):
+    contract_type: Literal[
+        "hcam.phase3.p3_5.consensus-generated-evaluation.v1"
+    ] = "hcam.phase3.p3_5.consensus-generated-evaluation.v1"
+    work_package: Literal["P35-W8_bounded_synthetic_track_local_consensus"] = (
+        "P35-W8_bounded_synthetic_track_local_consensus"
+    )
+    source_id: Literal["DATA-PLATE-GEN-R0"] = ANPR_GENERATED_SOURCE_ID
+    consensus_policy_version: Literal[ANPR_CONSENSUS_POLICY_VERSION] = (
+        ANPR_CONSENSUS_POLICY_VERSION
+    )
+    grouping_key: Literal["stream_id_tracker_epoch_track_id"] = (
+        "stream_id_tracker_epoch_track_id"
+    )
+    voting_method: Literal["exact_string_confidence_weighted"] = (
+        "exact_string_confidence_weighted"
+    )
+    scenario_evaluations: Annotated[
+        tuple[ConsensusGeneratedScenarioV1, ...], Field(min_length=9, max_length=9)
+    ]
+    replay_runs: Literal[20] = 20
+    replay_output_deterministic: bool
+    maximum_observations: Literal[5] = MAX_ANPR_CONSENSUS_OBSERVATIONS
+    maximum_event_time_window_ms: Literal[2000] = MAX_ANPR_CONSENSUS_WINDOW_MS
+    maximum_active_states_per_stream: Literal[256] = (
+        MAX_ANPR_CONSENSUS_STATES_PER_STREAM
+    )
+    maximum_active_states_observed: Annotated[int, Field(ge=0, le=256)]
+    consensus_execution_count: Annotated[int, Field(ge=1, le=100_000)]
+    consensus_closed_result_count: Annotated[int, Field(ge=1, le=100_000)]
+    consensus_abstained_result_count: Annotated[int, Field(ge=1, le=100_000)]
+    duplicate_rejection_count: Annotated[int, Field(ge=1, le=100_000)]
+    out_of_order_rejection_count: Annotated[int, Field(ge=1, le=100_000)]
+    cross_stream_epoch_or_track_merge_count: Literal[0] = 0
+    network_attempt_count: Literal[1] = 1
+    network_access_performed: Literal[False] = False
+    model_execution_count: Literal[0] = 0
+    model_download_count: Literal[0] = 0
+    external_text_input_count: Literal[0] = 0
+    camera_or_media_input_count: Literal[0] = 0
+    real_registration_mark_count: Literal[0] = 0
+    accepted_value_count: Literal[0] = 0
+    operational_event_count: Literal[0] = 0
+    threshold_configuration_approved: Literal[False] = False
+    minimum_support: None = None
+    minimum_margin: None = None
+    plate_or_normalized_text_persisted: Literal[False] = False
+    ranked_votes_persisted: Literal[False] = False
+    stream_epoch_or_track_identifiers_persisted: Literal[False] = False
+    plate_text_retention_hours: Literal[0] = 0
+    promotion_authorized: Literal[False] = False
+    deployment_authorized: Literal[False] = False
+    synthetic_only: Literal[True] = True
+
+    @model_validator(mode="after")
+    def exact_scenarios_and_totals_are_present(
+        self,
+    ) -> ConsensusGeneratedEvaluationV1:
+        expected = {
+            "agreement",
+            "cross_boundary_isolation",
+            "disagreement",
+            "duplicate_rejection",
+            "epoch_reset",
+            "event_time_window",
+            "out_of_order_rejection",
+            "overload",
+            "track_end",
+        }
+        if {item.scenario for item in self.scenario_evaluations} != expected:
+            raise ValueError("W8 evidence requires every bounded consensus scenario")
+        if sum(
+            item.closed_result_count for item in self.scenario_evaluations
+        ) != self.consensus_closed_result_count:
+            raise ValueError("W8 scenario close counts are inconsistent")
+        if sum(
+            item.abstained_result_count for item in self.scenario_evaluations
+        ) != self.consensus_abstained_result_count:
+            raise ValueError("W8 scenario abstention counts are inconsistent")
+        if self.consensus_abstained_result_count != self.consensus_closed_result_count:
+            raise ValueError("W8 cannot emit a non-abstaining consensus result")
+        if sum(
+            item.execution_count for item in self.scenario_evaluations
+        ) != self.consensus_execution_count:
+            raise ValueError("W8 scenario execution counts are inconsistent")
+        scenario_map = {item.scenario: item for item in self.scenario_evaluations}
+        if (
+            scenario_map["duplicate_rejection"].violation_count
+            != self.duplicate_rejection_count
+            or scenario_map["out_of_order_rejection"].violation_count
+            != self.out_of_order_rejection_count
+        ):
+            raise ValueError("W8 rejection counts are inconsistent")
+        return self
+
+
 def generated_request_fixture() -> GeneratedTokenRequestV1:
     return GeneratedTokenRequestV1(
         request_id="anprreq_11111111111111111111111111111111",
@@ -1537,6 +1868,15 @@ def anpr_contract_bundle() -> dict[str, Any]:
             "ephemeral_plate_normalization": EphemeralPlateNormalizationV1.model_json_schema(
                 mode="validation"
             ),
+            "ephemeral_consensus_observation": EphemeralConsensusObservationV1.model_json_schema(
+                mode="validation"
+            ),
+            "ephemeral_consensus_result": EphemeralConsensusResultV1.model_json_schema(
+                mode="validation"
+            ),
+            "synthetic_consensus_policy": SyntheticConsensusPolicyV1.model_json_schema(
+                mode="validation"
+            ),
             "auxiliary_script_generated_evaluation": AuxiliaryScriptGeneratedEvaluationV1.model_json_schema(
                 mode="validation"
             ),
@@ -1544,6 +1884,9 @@ def anpr_contract_bundle() -> dict[str, Any]:
                 mode="validation"
             ),
             "normalization_generated_evaluation": NormalizationGeneratedEvaluationV1.model_json_schema(
+                mode="validation"
+            ),
+            "consensus_generated_evaluation": ConsensusGeneratedEvaluationV1.model_json_schema(
                 mode="validation"
             ),
             "plate_localization_result": PlateLocalizationResultV1.model_json_schema(

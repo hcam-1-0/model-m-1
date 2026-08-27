@@ -16,7 +16,7 @@ def test_p3_5_generated_only_start_is_authorized_without_manual_gates() -> None:
     )
     assert report.failures == 0
     assert report.manual_gates == 0
-    assert report.package_file_count == 85
+    assert report.package_file_count == 91
     assert len(report.package_digest) == 64
 
 
@@ -35,6 +35,8 @@ def test_p3_5_technical_checks_pass() -> None:
         readiness.check_w4_ground_truth_crop(),
         readiness.check_w5_latin_ocr_evidence(),
         readiness.check_w6_auxiliary_script_evidence(),
+        readiness.check_w7_normalization_evidence(),
+        readiness.check_w8_consensus_evidence(),
         readiness.check_artifact_proposal(),
         readiness.check_owner_decisions_record(),
         readiness.check_artifact_research_authorization(),
@@ -369,6 +371,7 @@ def test_p3_5_package_has_only_authorized_generated_application_files() -> None:
     } == {
         "app/hcam/analytics/anpr/__init__.py",
         "app/hcam/analytics/anpr/auxiliary.py",
+        "app/hcam/analytics/anpr/consensus.py",
         "app/hcam/analytics/anpr/contracts.py",
         "app/hcam/analytics/anpr/generator.py",
         "app/hcam/analytics/anpr/guardrails.py",
@@ -401,6 +404,10 @@ def test_p3_5_w6_snapshot_preserves_auxiliary_script_boundaries() -> None:
 
 def test_p3_5_w7_snapshot_preserves_normalization_and_abstention_boundaries() -> None:
     assert readiness.check_w7_normalization_evidence().status == readiness.PASS
+
+
+def test_p3_5_w8_snapshot_preserves_bounded_consensus_boundaries() -> None:
+    assert readiness.check_w8_consensus_evidence().status == readiness.PASS
 
 
 def test_p3_5_package_digest_is_deterministic_and_path_relative() -> None:

@@ -126,12 +126,13 @@ jobs:
         if: matrix.python-version == '3.12'
         run: python tools/phase35_readiness.py --strict
 
-      - name: Verify Phase 3 P3.5 W1 ANPR contracts
+      - name: Verify Phase 3 P3.5 generated ANPR evidence
         run: |
           python tools/phase35_contracts.py check
           python tools/phase35_latin_ocr.py check-evidence
           python tools/phase35_auxiliary_ocr.py check-evidence
           python tools/phase35_normalization.py check-evidence
+          python tools/phase35_consensus.py check-evidence
 
       - name: Preserve Phase 0 unittest check
         if: matrix.python-version == '3.12'

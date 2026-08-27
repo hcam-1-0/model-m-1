@@ -72,7 +72,12 @@ _PROHIBITED_INPUT_FIELDS = frozenset(
 _PROHIBITED_PERSISTENCE_FIELDS = frozenset(
     {
         "alternatives",
+        "consensus_candidate",
+        "event_time_ms",
+        "first_event_time_ms",
+        "first_source_sequence",
         "graphemes",
+        "last_event_time_ms",
         "nfc_value",
         "normalized_text",
         "normalized_display_candidate",
@@ -81,8 +86,14 @@ _PROHIBITED_PERSISTENCE_FIELDS = frozenset(
         "plate_text",
         "raw_text",
         "raw_hypothesis_digest",
+        "ranked_votes",
         "registration_mark",
+        "stream_id",
+        "source_sequence",
+        "track_id",
+        "tracker_epoch",
         "token",
+        "winning_candidate",
     }
 )
 _PROHIBITED_STRING_VALUE = re.compile(

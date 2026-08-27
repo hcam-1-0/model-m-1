@@ -102,12 +102,16 @@ P3_5_W6_EVIDENCE_SHA256 = (
 P3_5_W7_EVIDENCE_SHA256 = (
     "1F233E044976B0B28BD0261CA5B6324403C45B2A158C852B34DCBB7A0144EE8A"
 )
+P3_5_W8_EVIDENCE_SHA256 = (
+    "58E7E4479DEB554D4B99F0CC1868B4DA61E9DED292E3F11942B740AEF02FC124"
+)
 
 PACKAGE_FILES = (
     ".github/workflows/python-ci.yml",
     "README.md",
     "app/hcam/analytics/anpr/__init__.py",
     "app/hcam/analytics/anpr/auxiliary.py",
+    "app/hcam/analytics/anpr/consensus.py",
     "app/hcam/analytics/anpr/contracts.py",
     "app/hcam/analytics/anpr/generator.py",
     "app/hcam/analytics/anpr/guardrails.py",
@@ -127,6 +131,7 @@ PACKAGE_FILES = (
     "contracts/phase-3/p3-5-artifact-sbom.cdx.json",
     "contracts/phase-3/p3-5-anpr-contracts.json",
     "contracts/phase-3/p3-5-auxiliary-script-evaluation.json",
+    "contracts/phase-3/p3-5-consensus-evaluation.json",
     "contracts/phase-3/p3-5-entry-gates.json",
     "contracts/phase-3/p3-5-latin-ocr-evaluation.json",
     "contracts/phase-3/p3-5-normalization-evaluation.json",
@@ -165,13 +170,16 @@ PACKAGE_FILES = (
     "docs/phase-3/p3-5-w5-latin-ocr.md",
     "docs/phase-3/p3-5-w6-auxiliary-scripts.md",
     "docs/phase-3/p3-5-w7-normalization-abstention.md",
+    "docs/phase-3/p3-5-w8-bounded-consensus.md",
     "tests/test_analytics_anpr_auxiliary.py",
+    "tests/test_analytics_anpr_consensus.py",
     "tests/test_analytics_anpr_generator.py",
     "tests/test_analytics_anpr_guardrails.py",
     "tests/test_analytics_anpr_localization.py",
     "tests/test_analytics_anpr_normalization.py",
     "tests/test_analytics_anpr_ocr.py",
     "tests/test_phase35_contracts.py",
+    "tests/test_phase35_consensus.py",
     "tests/test_phase35_latin_ocr.py",
     "tests/test_phase35_normalization.py",
     "tests/test_phase35_auxiliary_ocr.py",
@@ -182,6 +190,7 @@ PACKAGE_FILES = (
     "tools/phase35_artifact_research.py",
     "tools/phase35_artifact_inspect.py",
     "tools/phase35_contracts.py",
+    "tools/phase35_consensus.py",
     "tools/phase35_latin_ocr.py",
     "tools/phase35_latin_ocr_worker.py",
     "tools/phase35_normalization.py",
@@ -301,7 +310,7 @@ def check_required_files() -> Check:
     return Check(
         "required_files",
         PASS,
-        f"All {len(PACKAGE_FILES)} P3.5 authorization and W1/W3/W4/W5/W6/W7 package files exist.",
+        f"All {len(PACKAGE_FILES)} P3.5 authorization and W1/W3/W4/W5/W6/W7/W8 package files exist.",
     )
 
 
@@ -577,6 +586,7 @@ def check_authorized_w1_w3_w4_package() -> Check:
     allowed_application_files = {
         "app/hcam/analytics/anpr/__init__.py",
         "app/hcam/analytics/anpr/auxiliary.py",
+        "app/hcam/analytics/anpr/consensus.py",
         "app/hcam/analytics/anpr/contracts.py",
         "app/hcam/analytics/anpr/generator.py",
         "app/hcam/analytics/anpr/guardrails.py",
@@ -610,13 +620,13 @@ def check_authorized_w1_w3_w4_package() -> Check:
         return Check(
             "authorized_w1_w3_w4_package",
             FAIL,
-            "P3.5 W1/W3/W4/W5/W6/W7 contains an unapproved application, migration, deployment, model, or media file.",
+            "P3.5 W1/W3/W4/W5/W6/W7/W8 contains an unapproved application, migration, deployment, model, or media file.",
             prohibited,
         )
     return Check(
         "authorized_w1_w3_w4_package",
         PASS,
-        "P3.5 application scope is limited to generated-only contracts, guardrails, deterministic token/rendering, sealed splits, ground-truth localization, ephemeral crops, exact external Latin/Devanagari OCR adapters, Gujarati rendering-only evidence, and ephemeral normalization/calibration/abstention logic; no migration, model, media, API, or persistence file is present.",
+        "P3.5 application scope is limited to generated-only contracts, guardrails, deterministic token/rendering, sealed splits, ground-truth localization, ephemeral crops, exact external Latin/Devanagari OCR adapters, Gujarati rendering-only evidence, ephemeral normalization/calibration/abstention logic, and bounded in-memory consensus; no migration, model, media, API, or persistence file is present.",
     )
 
 
@@ -1333,6 +1343,131 @@ def check_w7_normalization_evidence() -> Check:
         "w7_normalization_evidence",
         PASS,
         "P3.5 W7 pins Python/Unicode/regex semantics, records identifier-free normalization and calibration contract fixtures, keeps every result abstained while quality thresholds remain unapproved, and persists no text or grapheme values.",
+    )
+
+
+def check_w8_consensus_evidence() -> Check:
+    path = ROOT / "contracts/phase-3/p3-5-consensus-evaluation.json"
+    try:
+        payload = path.read_bytes()
+        record = json.loads(payload)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        return Check("w8_consensus_evidence", FAIL, str(exc))
+    canonical = (
+        json.dumps(
+            record,
+            allow_nan=False,
+            ensure_ascii=True,
+            separators=(",", ":"),
+            sort_keys=True,
+        ).encode("utf-8")
+        + b"\n"
+    )
+    observed_sha256 = hashlib.sha256(payload).hexdigest().upper()
+    serialized = payload.decode("utf-8", errors="strict")
+    scenarios = record.get("scenario_evaluations")
+    scenario_map = (
+        {
+            item.get("scenario"): item
+            for item in scenarios
+            if isinstance(item, dict)
+        }
+        if isinstance(scenarios, list)
+        else {}
+    )
+    expected_scenarios = {
+        "agreement": (5, 1, 1, 0),
+        "cross_boundary_isolation": (4, 4, 4, 0),
+        "disagreement": (5, 1, 1, 0),
+        "duplicate_rejection": (2, 1, 1, 1),
+        "epoch_reset": (2, 2, 2, 0),
+        "event_time_window": (2, 1, 1, 0),
+        "out_of_order_rejection": (2, 1, 1, 1),
+        "overload": (257, 257, 257, 0),
+        "track_end": (2, 1, 1, 0),
+    }
+    scenario_failures = tuple(
+        name
+        for name, expected in expected_scenarios.items()
+        if (
+            scenario_map.get(name, {}).get("execution_count"),
+            scenario_map.get(name, {}).get("closed_result_count"),
+            scenario_map.get(name, {}).get("abstained_result_count"),
+            scenario_map.get(name, {}).get("violation_count"),
+        )
+        != expected
+    )
+    prohibited = (
+        '"nfc_value":',
+        '"normalized_display_candidate":',
+        '"raw_hypothesis_digest":',
+        '"ranked_votes":',
+        '"stream_id":',
+        '"track_id":',
+        '"tracker_epoch":',
+        '"winning_candidate":',
+        "SYN-",
+        "anprsample_",
+        "anprregion_",
+        "str_000000",
+        "epoch_000000",
+        "trk_000000",
+        "B:\\",
+    )
+    if (
+        payload != canonical
+        or observed_sha256 != P3_5_W8_EVIDENCE_SHA256
+        or record.get("contract_type")
+        != "hcam.phase3.p3_5.consensus-generated-evaluation.v1"
+        or record.get("work_package")
+        != "P35-W8_bounded_synthetic_track_local_consensus"
+        or record.get("source_id") != "DATA-PLATE-GEN-R0"
+        or record.get("grouping_key") != "stream_id_tracker_epoch_track_id"
+        or record.get("voting_method") != "exact_string_confidence_weighted"
+        or record.get("replay_runs") != 20
+        or record.get("replay_output_deterministic") is not True
+        or record.get("maximum_observations") != 5
+        or record.get("maximum_event_time_window_ms") != 2_000
+        or record.get("maximum_active_states_per_stream") != 256
+        or record.get("maximum_active_states_observed") != 256
+        or record.get("consensus_execution_count") != 281
+        or record.get("consensus_closed_result_count") != 269
+        or record.get("consensus_abstained_result_count") != 269
+        or record.get("duplicate_rejection_count") != 1
+        or record.get("out_of_order_rejection_count") != 1
+        or record.get("cross_stream_epoch_or_track_merge_count") != 0
+        or set(scenario_map) != set(expected_scenarios)
+        or scenario_failures
+        or record.get("network_attempt_count") != 1
+        or record.get("network_access_performed") is not False
+        or record.get("model_execution_count") != 0
+        or record.get("model_download_count") != 0
+        or record.get("external_text_input_count") != 0
+        or record.get("camera_or_media_input_count") != 0
+        or record.get("real_registration_mark_count") != 0
+        or record.get("accepted_value_count") != 0
+        or record.get("operational_event_count") != 0
+        or record.get("threshold_configuration_approved") is not False
+        or record.get("minimum_support") is not None
+        or record.get("minimum_margin") is not None
+        or record.get("plate_or_normalized_text_persisted") is not False
+        or record.get("ranked_votes_persisted") is not False
+        or record.get("stream_epoch_or_track_identifiers_persisted") is not False
+        or record.get("plate_text_retention_hours") != 0
+        or record.get("promotion_authorized") is not False
+        or record.get("deployment_authorized") is not False
+        or any(value in serialized for value in prohibited)
+    ):
+        return Check(
+            "w8_consensus_evidence",
+            FAIL,
+            "P3.5 W8 bounds, deterministic exact-string voting, anonymous grouping, mandatory abstention, or zero-retention evidence changed.",
+            scenario_failures,
+        )
+    return Check(
+        "w8_consensus_evidence",
+        PASS,
+        "P3.5 W8 records 20/20 deterministic bounded consensus replay, rejects duplicate and out-of-order observations, keeps stream/epoch/track state isolated, and emits only abstaining identifier-free aggregate evidence while thresholds remain unapproved.",
     )
 
 
@@ -2403,6 +2538,7 @@ def check_documentation_sync() -> Check:
             "tools/phase35_latin_ocr.py",
             "tools/phase35_auxiliary_ocr.py",
             "tools/phase35_normalization.py",
+            "tools/phase35_consensus.py",
         ),
         "contracts/phase-3/README.md": (
             "p3-5-anpr-contracts.json",
@@ -2410,6 +2546,7 @@ def check_documentation_sync() -> Check:
             "p3-5-latin-ocr-evaluation.json",
             "p3-5-auxiliary-script-evaluation.json",
             "p3-5-normalization-evaluation.json",
+            "p3-5-consensus-evaluation.json",
             "p3-5-sealed-splits-v1.json",
             "p3-5-artifact-review-evidence.json",
             "p3-5-artifact-review-acceptance.json",
@@ -2434,6 +2571,7 @@ def check_documentation_sync() -> Check:
             "[P3.5 W5 exact Latin PaddleOCR baseline](p3-5-w5-latin-ocr.md)",
             "[P3.5 W6 auxiliary scripts](p3-5-w6-auxiliary-scripts.md)",
             "[P3.5 W7 normalization and abstention](p3-5-w7-normalization-abstention.md)",
+            "[P3.5 W8 bounded consensus](p3-5-w8-bounded-consensus.md)",
             "[P3.5 artifact model cards](p3-5-artifact-model-cards.md)",
             "[P3.5 exact artifact review evidence](p3-5-artifact-review-evidence.md)",
             "[P3.5 exact artifact review acceptance](p3-5-artifact-review-acceptance.md)",
@@ -2471,6 +2609,8 @@ def check_documentation_sync() -> Check:
             "P35-W7",
             "validated_generated_contract_fixture",
             "P35-W8",
+            "58E7E4479DEB554D4B99F0CC1868B4DA61E9DED292E3F11942B740AEF02FC124",
+            "P35-W9",
             "not_started",
             "validated_generated_baseline",
             "validated_complete",
@@ -2542,6 +2682,19 @@ def check_documentation_sync() -> Check:
             "mandatory abstention",
             "No W7 path uses `B:`",
             "P35-W8",
+            "separate validated generated-only package",
+        ),
+        "docs/phase-3/p3-5-w8-bounded-consensus.md": (
+            "P35-W8",
+            "validated_generated_contract_fixture",
+            "58E7E4479DEB554D4B99F0CC1868B4DA61E9DED292E3F11942B740AEF02FC124",
+            "five observations",
+            "two seconds",
+            "256 active states",
+            "20/20",
+            "mandatory abstention",
+            "No W8 path uses `B:`",
+            "P35-W9",
             "not started",
         ),
         ".github/workflows/python-ci.yml": (
@@ -2550,6 +2703,7 @@ def check_documentation_sync() -> Check:
             "python tools/phase35_latin_ocr.py check-evidence",
             "python tools/phase35_auxiliary_ocr.py check-evidence",
             "python tools/phase35_normalization.py check-evidence",
+            "python tools/phase35_consensus.py check-evidence",
         ),
     }
     missing: list[str] = []
@@ -2614,6 +2768,7 @@ def build_report(*, require_clean_source: bool = False) -> Report:
         check_w5_latin_ocr_evidence(),
         check_w6_auxiliary_script_evidence(),
         check_w7_normalization_evidence(),
+        check_w8_consensus_evidence(),
         check_artifact_proposal(),
         check_owner_decisions_record(),
         check_artifact_research_authorization(),

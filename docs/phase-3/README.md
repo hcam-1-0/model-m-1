@@ -97,6 +97,7 @@ autonomous enforcement.
 | [P3.5 W5 exact Latin PaddleOCR baseline](p3-5-w5-latin-ocr.md) | Exact L0/L1 external adapters, generated-only evaluation, deterministic replay, aggregate evidence, and limitations |
 | [P3.5 W6 auxiliary scripts](p3-5-w6-auxiliary-scripts.md) | Exact Devanagari OCR, Gujarati rendering-only lane, script isolation, deterministic replay, aggregate evidence, and limitations |
 | [P3.5 W7 normalization and abstention](p3-5-w7-normalization-abstention.md) | Pinned NFC/grapheme semantics, raw-preserving normalization, candidate-local calibration fixtures, mandatory abstention, and zero-retention evidence |
+| [P3.5 W8 bounded consensus](p3-5-w8-bounded-consensus.md) | Anonymous stream/epoch/track-local bounded state, exact-string weighted voting, lifecycle and overload evidence, mandatory abstention, and zero retention |
 | [P3.5 plan](p3-5-plan.md) | Synthetic corpus, localization, OCR, normalization, consensus, privacy, and evidence design |
 | [P3.5 owner decision packet](p3-5-decision-packet.md) | Four technical choices and separate implementation-start gate |
 | [P3.5 planning readiness](p3-5-planning-readiness-report.md) | Historical machine-verified planning boundary and then-pending owner gates |

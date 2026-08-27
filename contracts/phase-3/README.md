@@ -121,6 +121,9 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-5-normalization-evaluation.json`: canonical W7 identifier-free aggregate
   contract evidence for pinned NFC/grapheme semantics, separate candidate
   calibration fixtures, mandatory abstention, and zero text/grapheme retention.
+- `p3-5-consensus-evaluation.json`: canonical W8 identifier-free aggregate
+  contract evidence for bounded exact-string voting, anonymous grouping,
+  lifecycle/overload behavior, mandatory abstention, and zero text retention.
 
 Verify all tracked snapshots:
 
@@ -144,6 +147,7 @@ uv run --locked --extra dev python tools/phase35_contracts.py check
 uv run --locked python tools/phase35_latin_ocr.py check-evidence
 uv run --locked python tools/phase35_auxiliary_ocr.py check-evidence
 uv run --locked python tools/phase35_normalization.py check-evidence
+uv run --locked python tools/phase35_consensus.py check-evidence
 uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked --extra dev python tools/phase35_runtime_research.py all --root 'E:\h-cam-research-cache\phase-3\p3-5-runtime'
@@ -189,4 +193,7 @@ Raw text and pixels remain ephemeral; Gujarati OCR and Tesseract remain blocked.
 `P35-W7` adds raw-preserving NFC derivation, exact-runtime extended-grapheme
 metrics, separate identity-calibration contract fixtures, and mandatory
 abstention. It persists no OCR text, normalized text, grapheme values, or
-identifiers. No quality threshold is approved, and W8 consensus is not started.
+identifiers. No quality threshold is approved.
+`P35-W8` adds bounded in-memory consensus keyed only by anonymous stream,
+tracker epoch, and track. Exact-string confidence-weighted votes are ephemeral;
+all results abstain, and tracked evidence contains only identifier-free counts.

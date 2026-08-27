@@ -791,6 +791,305 @@
       "title": "AuxiliaryScriptGeneratedEvaluationV1",
       "type": "object"
     },
+    "consensus_generated_evaluation": {
+      "$defs": {
+        "ConsensusGeneratedScenarioV1": {
+          "additionalProperties": false,
+          "properties": {
+            "abstained_result_count": {
+              "maximum": 100000,
+              "minimum": 0,
+              "title": "Abstained Result Count",
+              "type": "integer"
+            },
+            "closed_result_count": {
+              "maximum": 100000,
+              "minimum": 0,
+              "title": "Closed Result Count",
+              "type": "integer"
+            },
+            "execution_count": {
+              "maximum": 100000,
+              "minimum": 1,
+              "title": "Execution Count",
+              "type": "integer"
+            },
+            "scenario": {
+              "enum": [
+                "agreement",
+                "cross_boundary_isolation",
+                "disagreement",
+                "duplicate_rejection",
+                "epoch_reset",
+                "event_time_window",
+                "out_of_order_rejection",
+                "overload",
+                "track_end"
+              ],
+              "title": "Scenario",
+              "type": "string"
+            },
+            "violation_count": {
+              "maximum": 100000,
+              "minimum": 0,
+              "title": "Violation Count",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "scenario",
+            "execution_count",
+            "closed_result_count",
+            "abstained_result_count",
+            "violation_count"
+          ],
+          "title": "ConsensusGeneratedScenarioV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "accepted_value_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Accepted Value Count",
+          "type": "integer"
+        },
+        "camera_or_media_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Camera Or Media Input Count",
+          "type": "integer"
+        },
+        "consensus_abstained_result_count": {
+          "maximum": 100000,
+          "minimum": 1,
+          "title": "Consensus Abstained Result Count",
+          "type": "integer"
+        },
+        "consensus_closed_result_count": {
+          "maximum": 100000,
+          "minimum": 1,
+          "title": "Consensus Closed Result Count",
+          "type": "integer"
+        },
+        "consensus_execution_count": {
+          "maximum": 100000,
+          "minimum": 1,
+          "title": "Consensus Execution Count",
+          "type": "integer"
+        },
+        "consensus_policy_version": {
+          "const": "sha256:bf1fc270ac926af1e4e9d8465eb30025486e1c95b37c790bd6a36e8ed7b0f69d",
+          "default": "sha256:bf1fc270ac926af1e4e9d8465eb30025486e1c95b37c790bd6a36e8ed7b0f69d",
+          "title": "Consensus Policy Version",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.phase3.p3_5.consensus-generated-evaluation.v1",
+          "default": "hcam.phase3.p3_5.consensus-generated-evaluation.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "cross_stream_epoch_or_track_merge_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Cross Stream Epoch Or Track Merge Count",
+          "type": "integer"
+        },
+        "deployment_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Deployment Authorized",
+          "type": "boolean"
+        },
+        "duplicate_rejection_count": {
+          "maximum": 100000,
+          "minimum": 1,
+          "title": "Duplicate Rejection Count",
+          "type": "integer"
+        },
+        "external_text_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "External Text Input Count",
+          "type": "integer"
+        },
+        "grouping_key": {
+          "const": "stream_id_tracker_epoch_track_id",
+          "default": "stream_id_tracker_epoch_track_id",
+          "title": "Grouping Key",
+          "type": "string"
+        },
+        "maximum_active_states_observed": {
+          "maximum": 256,
+          "minimum": 0,
+          "title": "Maximum Active States Observed",
+          "type": "integer"
+        },
+        "maximum_active_states_per_stream": {
+          "const": 256,
+          "default": 256,
+          "title": "Maximum Active States Per Stream",
+          "type": "integer"
+        },
+        "maximum_event_time_window_ms": {
+          "const": 2000,
+          "default": 2000,
+          "title": "Maximum Event Time Window Ms",
+          "type": "integer"
+        },
+        "maximum_observations": {
+          "const": 5,
+          "default": 5,
+          "title": "Maximum Observations",
+          "type": "integer"
+        },
+        "minimum_margin": {
+          "default": null,
+          "title": "Minimum Margin",
+          "type": "null"
+        },
+        "minimum_support": {
+          "default": null,
+          "title": "Minimum Support",
+          "type": "null"
+        },
+        "model_download_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Model Download Count",
+          "type": "integer"
+        },
+        "model_execution_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Model Execution Count",
+          "type": "integer"
+        },
+        "network_access_performed": {
+          "const": false,
+          "default": false,
+          "title": "Network Access Performed",
+          "type": "boolean"
+        },
+        "network_attempt_count": {
+          "const": 1,
+          "default": 1,
+          "title": "Network Attempt Count",
+          "type": "integer"
+        },
+        "operational_event_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Operational Event Count",
+          "type": "integer"
+        },
+        "out_of_order_rejection_count": {
+          "maximum": 100000,
+          "minimum": 1,
+          "title": "Out Of Order Rejection Count",
+          "type": "integer"
+        },
+        "plate_or_normalized_text_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Plate Or Normalized Text Persisted",
+          "type": "boolean"
+        },
+        "plate_text_retention_hours": {
+          "const": 0,
+          "default": 0,
+          "title": "Plate Text Retention Hours",
+          "type": "integer"
+        },
+        "promotion_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Promotion Authorized",
+          "type": "boolean"
+        },
+        "ranked_votes_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Ranked Votes Persisted",
+          "type": "boolean"
+        },
+        "real_registration_mark_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Real Registration Mark Count",
+          "type": "integer"
+        },
+        "replay_output_deterministic": {
+          "title": "Replay Output Deterministic",
+          "type": "boolean"
+        },
+        "replay_runs": {
+          "const": 20,
+          "default": 20,
+          "title": "Replay Runs",
+          "type": "integer"
+        },
+        "scenario_evaluations": {
+          "items": {
+            "$ref": "#/$defs/ConsensusGeneratedScenarioV1"
+          },
+          "maxItems": 9,
+          "minItems": 9,
+          "title": "Scenario Evaluations",
+          "type": "array"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "stream_epoch_or_track_identifiers_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Stream Epoch Or Track Identifiers Persisted",
+          "type": "boolean"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "threshold_configuration_approved": {
+          "const": false,
+          "default": false,
+          "title": "Threshold Configuration Approved",
+          "type": "boolean"
+        },
+        "voting_method": {
+          "const": "exact_string_confidence_weighted",
+          "default": "exact_string_confidence_weighted",
+          "title": "Voting Method",
+          "type": "string"
+        },
+        "work_package": {
+          "const": "P35-W8_bounded_synthetic_track_local_consensus",
+          "default": "P35-W8_bounded_synthetic_track_local_consensus",
+          "title": "Work Package",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scenario_evaluations",
+        "replay_output_deterministic",
+        "maximum_active_states_observed",
+        "consensus_execution_count",
+        "consensus_closed_result_count",
+        "consensus_abstained_result_count",
+        "duplicate_rejection_count",
+        "out_of_order_rejection_count"
+      ],
+      "title": "ConsensusGeneratedEvaluationV1",
+      "type": "object"
+    },
     "ephemeral_auxiliary_ocr_hypothesis": {
       "additionalProperties": false,
       "description": "Generated auxiliary-script OCR output that must remain process-local.",
@@ -952,6 +1251,584 @@
         "latency_ms"
       ],
       "title": "EphemeralAuxiliaryOcrHypothesisV1",
+      "type": "object"
+    },
+    "ephemeral_consensus_observation": {
+      "$defs": {
+        "EphemeralPlateNormalizationV1": {
+          "additionalProperties": false,
+          "description": "Derived text semantics that are valid only inside the generated harness.",
+          "properties": {
+            "abstain": {
+              "const": true,
+              "default": true,
+              "title": "Abstain",
+              "type": "boolean"
+            },
+            "abstention_policy_version": {
+              "const": "sha256:355dc7c8e5510a8223d84652ca9043efbd7aad93d722fb6be0f82eef7af24ded",
+              "default": "sha256:355dc7c8e5510a8223d84652ca9043efbd7aad93d722fb6be0f82eef7af24ded",
+              "title": "Abstention Policy Version",
+              "type": "string"
+            },
+            "abstention_reason": {
+              "enum": [
+                "auxiliary_observation_only",
+                "quality_threshold_unapproved",
+                "synthetic_grammar_rejected"
+              ],
+              "title": "Abstention Reason",
+              "type": "string"
+            },
+            "calibrated_confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Calibrated Confidence",
+              "type": "number"
+            },
+            "calibration_method": {
+              "const": "identity_generated_baseline",
+              "default": "identity_generated_baseline",
+              "title": "Calibration Method",
+              "type": "string"
+            },
+            "calibration_version": {
+              "const": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+              "default": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+              "title": "Calibration Version",
+              "type": "string"
+            },
+            "candidate_id": {
+              "enum": [
+                "OCR-L0",
+                "OCR-L1",
+                "OCR-D0"
+              ],
+              "title": "Candidate Id",
+              "type": "string"
+            },
+            "case_transform_performed": {
+              "title": "Case Transform Performed",
+              "type": "boolean"
+            },
+            "confusable_substitution_performed": {
+              "const": false,
+              "default": false,
+              "title": "Confusable Substitution Performed",
+              "type": "boolean"
+            },
+            "contract_type": {
+              "const": "hcam.anpr.ephemeral-plate-normalization.v1",
+              "default": "hcam.anpr.ephemeral-plate-normalization.v1",
+              "title": "Contract Type",
+              "type": "string"
+            },
+            "dictionary_completion_performed": {
+              "const": false,
+              "default": false,
+              "title": "Dictionary Completion Performed",
+              "type": "boolean"
+            },
+            "ephemeral_only": {
+              "const": true,
+              "default": true,
+              "title": "Ephemeral Only",
+              "type": "boolean"
+            },
+            "format_family": {
+              "enum": [
+                "synthetic_non_issuable",
+                "unrecognized"
+              ],
+              "title": "Format Family",
+              "type": "string"
+            },
+            "grapheme_count": {
+              "maximum": 16,
+              "minimum": 1,
+              "title": "Grapheme Count",
+              "type": "integer"
+            },
+            "grapheme_policy_version": {
+              "const": "sha256:f91b590006f16888e8dfd342d974eb2fea559701ce221d3563459e33eec0cd08",
+              "default": "sha256:f91b590006f16888e8dfd342d974eb2fea559701ce221d3563459e33eec0cd08",
+              "title": "Grapheme Policy Version",
+              "type": "string"
+            },
+            "graphemes": {
+              "items": {
+                "maxLength": 32,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 16,
+              "minItems": 1,
+              "title": "Graphemes",
+              "type": "array"
+            },
+            "nfc_scalar_count": {
+              "maximum": 32,
+              "minimum": 1,
+              "title": "Nfc Scalar Count",
+              "type": "integer"
+            },
+            "nfc_transform_performed": {
+              "title": "Nfc Transform Performed",
+              "type": "boolean"
+            },
+            "nfc_value": {
+              "maxLength": 32,
+              "minLength": 1,
+              "title": "Nfc Value",
+              "type": "string"
+            },
+            "normalization_version": {
+              "const": "sha256:3d1211dc3c3462014afec58f08b4ed66a73043838bf2975ae72049b22f093db6",
+              "default": "sha256:3d1211dc3c3462014afec58f08b4ed66a73043838bf2975ae72049b22f093db6",
+              "title": "Normalization Version",
+              "type": "string"
+            },
+            "normalized_display_candidate": {
+              "maxLength": 32,
+              "minLength": 1,
+              "title": "Normalized Display Candidate",
+              "type": "string"
+            },
+            "quality_threshold_approved": {
+              "const": false,
+              "default": false,
+              "title": "Quality Threshold Approved",
+              "type": "boolean"
+            },
+            "raw_confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Raw Confidence",
+              "type": "number"
+            },
+            "raw_hypothesis_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Raw Hypothesis Digest",
+              "type": "string"
+            },
+            "raw_output_mutated": {
+              "const": false,
+              "default": false,
+              "title": "Raw Output Mutated",
+              "type": "boolean"
+            },
+            "raw_scalar_count": {
+              "maximum": 32,
+              "minimum": 1,
+              "title": "Raw Scalar Count",
+              "type": "integer"
+            },
+            "record_lookup_performed": {
+              "const": false,
+              "default": false,
+              "title": "Record Lookup Performed",
+              "type": "boolean"
+            },
+            "regex_version": {
+              "const": "2026.7.19",
+              "default": "2026.7.19",
+              "title": "Regex Version",
+              "type": "string"
+            },
+            "retained": {
+              "const": false,
+              "default": false,
+              "title": "Retained",
+              "type": "boolean"
+            },
+            "script_lane": {
+              "enum": [
+                "latin",
+                "devanagari"
+              ],
+              "title": "Script Lane",
+              "type": "string"
+            },
+            "separator_transform_performed": {
+              "const": false,
+              "default": false,
+              "title": "Separator Transform Performed",
+              "type": "boolean"
+            },
+            "source_id": {
+              "const": "DATA-PLATE-GEN-R0",
+              "default": "DATA-PLATE-GEN-R0",
+              "title": "Source Id",
+              "type": "string"
+            },
+            "synthetic_only": {
+              "const": true,
+              "default": true,
+              "title": "Synthetic Only",
+              "type": "boolean"
+            },
+            "transliteration_performed": {
+              "const": false,
+              "default": false,
+              "title": "Transliteration Performed",
+              "type": "boolean"
+            },
+            "unicode_version": {
+              "const": "15.0.0",
+              "default": "15.0.0",
+              "title": "Unicode Version",
+              "type": "string"
+            },
+            "validation_outcomes": {
+              "items": {
+                "enum": [
+                  "allowlist_valid",
+                  "graphemes_segmented",
+                  "nfc_derived",
+                  "synthetic_grammar_rejected",
+                  "synthetic_grammar_valid",
+                  "unicode_scalar_valid",
+                  "utf8_valid"
+                ],
+                "type": "string"
+              },
+              "maxItems": 7,
+              "minItems": 6,
+              "title": "Validation Outcomes",
+              "type": "array"
+            }
+          },
+          "required": [
+            "candidate_id",
+            "script_lane",
+            "raw_hypothesis_digest",
+            "nfc_value",
+            "graphemes",
+            "normalized_display_candidate",
+            "raw_scalar_count",
+            "nfc_scalar_count",
+            "grapheme_count",
+            "format_family",
+            "validation_outcomes",
+            "nfc_transform_performed",
+            "case_transform_performed",
+            "raw_confidence",
+            "calibrated_confidence",
+            "abstention_reason"
+          ],
+          "title": "EphemeralPlateNormalizationV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "One typed W7 result scoped to an anonymous stream-local track.",
+      "properties": {
+        "contract_type": {
+          "const": "hcam.anpr.ephemeral-consensus-observation.v1",
+          "default": "hcam.anpr.ephemeral-consensus-observation.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "ephemeral_only": {
+          "const": true,
+          "default": true,
+          "title": "Ephemeral Only",
+          "type": "boolean"
+        },
+        "event_time_ms": {
+          "maximum": 9223372036854775807,
+          "minimum": 0,
+          "title": "Event Time Ms",
+          "type": "integer"
+        },
+        "normalization": {
+          "$ref": "#/$defs/EphemeralPlateNormalizationV1"
+        },
+        "retained": {
+          "const": false,
+          "default": false,
+          "title": "Retained",
+          "type": "boolean"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_sequence": {
+          "maximum": 9223372036854775807,
+          "minimum": 0,
+          "title": "Source Sequence",
+          "type": "integer"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "track_id": {
+          "pattern": "^trk_[0-9a-f]{32}$",
+          "title": "Track Id",
+          "type": "string"
+        },
+        "tracker_epoch": {
+          "pattern": "^epoch_[0-9a-f]{32}$",
+          "title": "Tracker Epoch",
+          "type": "string"
+        }
+      },
+      "required": [
+        "stream_id",
+        "tracker_epoch",
+        "track_id",
+        "event_time_ms",
+        "source_sequence",
+        "normalization"
+      ],
+      "title": "EphemeralConsensusObservationV1",
+      "type": "object"
+    },
+    "ephemeral_consensus_result": {
+      "$defs": {
+        "EphemeralConsensusVoteV1": {
+          "additionalProperties": false,
+          "description": "An exact-string vote that may exist only inside the bounded state machine.",
+          "properties": {
+            "confidence_weight": {
+              "maximum": 5,
+              "minimum": 0,
+              "title": "Confidence Weight",
+              "type": "number"
+            },
+            "first_event_time_ms": {
+              "minimum": 0,
+              "title": "First Event Time Ms",
+              "type": "integer"
+            },
+            "first_source_sequence": {
+              "minimum": 0,
+              "title": "First Source Sequence",
+              "type": "integer"
+            },
+            "normalized_display_candidate": {
+              "maxLength": 13,
+              "minLength": 13,
+              "pattern": "^SYN-[A-Z0-9]{4}-[A-Z0-9]{4}$",
+              "title": "Normalized Display Candidate",
+              "type": "string"
+            },
+            "observation_count": {
+              "maximum": 5,
+              "minimum": 1,
+              "title": "Observation Count",
+              "type": "integer"
+            },
+            "retained": {
+              "const": false,
+              "default": false,
+              "title": "Retained",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "normalized_display_candidate",
+            "observation_count",
+            "confidence_weight",
+            "first_event_time_ms",
+            "first_source_sequence"
+          ],
+          "title": "EphemeralConsensusVoteV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Closed consensus state; it is never eligible for evidence persistence.",
+      "properties": {
+        "abstain": {
+          "const": true,
+          "default": true,
+          "title": "Abstain",
+          "type": "boolean"
+        },
+        "abstention_reason": {
+          "enum": [
+            "consensus_thresholds_unapproved",
+            "overload_fail_closed"
+          ],
+          "title": "Abstention Reason",
+          "type": "string"
+        },
+        "accepted_value_emitted": {
+          "const": false,
+          "default": false,
+          "title": "Accepted Value Emitted",
+          "type": "boolean"
+        },
+        "close_reason": {
+          "enum": [
+            "count_limit",
+            "epoch_reset",
+            "event_time_window",
+            "overload",
+            "track_end"
+          ],
+          "title": "Close Reason",
+          "type": "string"
+        },
+        "confidence_margin": {
+          "maximum": 5,
+          "minimum": 0,
+          "title": "Confidence Margin",
+          "type": "number"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.ephemeral-consensus-result.v1",
+          "default": "hcam.anpr.ephemeral-consensus-result.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "ephemeral_only": {
+          "const": true,
+          "default": true,
+          "title": "Ephemeral Only",
+          "type": "boolean"
+        },
+        "first_event_time_ms": {
+          "minimum": 0,
+          "title": "First Event Time Ms",
+          "type": "integer"
+        },
+        "last_event_time_ms": {
+          "minimum": 0,
+          "title": "Last Event Time Ms",
+          "type": "integer"
+        },
+        "minimum_margin": {
+          "default": null,
+          "title": "Minimum Margin",
+          "type": "null"
+        },
+        "minimum_support": {
+          "default": null,
+          "title": "Minimum Support",
+          "type": "null"
+        },
+        "observation_count": {
+          "maximum": 5,
+          "minimum": 1,
+          "title": "Observation Count",
+          "type": "integer"
+        },
+        "operational_event_emitted": {
+          "const": false,
+          "default": false,
+          "title": "Operational Event Emitted",
+          "type": "boolean"
+        },
+        "persisted": {
+          "const": false,
+          "default": false,
+          "title": "Persisted",
+          "type": "boolean"
+        },
+        "policy_version": {
+          "const": "sha256:bf1fc270ac926af1e4e9d8465eb30025486e1c95b37c790bd6a36e8ed7b0f69d",
+          "default": "sha256:bf1fc270ac926af1e4e9d8465eb30025486e1c95b37c790bd6a36e8ed7b0f69d",
+          "title": "Policy Version",
+          "type": "string"
+        },
+        "ranked_votes": {
+          "items": {
+            "$ref": "#/$defs/EphemeralConsensusVoteV1"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "title": "Ranked Votes",
+          "type": "array"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "thresholds_approved": {
+          "const": false,
+          "default": false,
+          "title": "Thresholds Approved",
+          "type": "boolean"
+        },
+        "track_id": {
+          "pattern": "^trk_[0-9a-f]{32}$",
+          "title": "Track Id",
+          "type": "string"
+        },
+        "tracker_epoch": {
+          "pattern": "^epoch_[0-9a-f]{32}$",
+          "title": "Tracker Epoch",
+          "type": "string"
+        },
+        "unique_candidate_count": {
+          "maximum": 5,
+          "minimum": 1,
+          "title": "Unique Candidate Count",
+          "type": "integer"
+        },
+        "winning_candidate": {
+          "maxLength": 13,
+          "minLength": 13,
+          "pattern": "^SYN-[A-Z0-9]{4}-[A-Z0-9]{4}$",
+          "title": "Winning Candidate",
+          "type": "string"
+        },
+        "winning_confidence_weight": {
+          "maximum": 5,
+          "minimum": 0,
+          "title": "Winning Confidence Weight",
+          "type": "number"
+        },
+        "winning_support": {
+          "maximum": 5,
+          "minimum": 1,
+          "title": "Winning Support",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "stream_id",
+        "tracker_epoch",
+        "track_id",
+        "close_reason",
+        "first_event_time_ms",
+        "last_event_time_ms",
+        "observation_count",
+        "unique_candidate_count",
+        "ranked_votes",
+        "winning_candidate",
+        "winning_support",
+        "winning_confidence_weight",
+        "confidence_margin",
+        "abstention_reason"
+      ],
+      "title": "EphemeralConsensusResultV1",
       "type": "object"
     },
     "ephemeral_latin_ocr_hypothesis": {
@@ -3634,6 +4511,117 @@
         "manifest_digest"
       ],
       "title": "SealedSyntheticSplitManifestV1",
+      "type": "object"
+    },
+    "synthetic_consensus_policy": {
+      "additionalProperties": false,
+      "description": "Default-off policy for generated, in-memory temporal consensus only.",
+      "properties": {
+        "contract_type": {
+          "const": "hcam.anpr.synthetic-consensus-policy.v1",
+          "default": "hcam.anpr.synthetic-consensus-policy.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "enabled": {
+          "default": false,
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "environment": {
+          "default": "development",
+          "enum": [
+            "development",
+            "test",
+            "production"
+          ],
+          "title": "Environment",
+          "type": "string"
+        },
+        "grouping_key": {
+          "const": "stream_id_tracker_epoch_track_id",
+          "default": "stream_id_tracker_epoch_track_id",
+          "title": "Grouping Key",
+          "type": "string"
+        },
+        "maximum_active_states_per_stream": {
+          "const": 256,
+          "default": 256,
+          "title": "Maximum Active States Per Stream",
+          "type": "integer"
+        },
+        "maximum_event_time_window_ms": {
+          "const": 2000,
+          "default": 2000,
+          "title": "Maximum Event Time Window Ms",
+          "type": "integer"
+        },
+        "maximum_observations": {
+          "const": 5,
+          "default": 5,
+          "title": "Maximum Observations",
+          "type": "integer"
+        },
+        "minimum_margin": {
+          "default": null,
+          "title": "Minimum Margin",
+          "type": "null"
+        },
+        "minimum_support": {
+          "default": null,
+          "title": "Minimum Support",
+          "type": "null"
+        },
+        "network_access": {
+          "const": "denied",
+          "default": "denied",
+          "title": "Network Access",
+          "type": "string"
+        },
+        "persistence": {
+          "const": "denied",
+          "default": "denied",
+          "title": "Persistence",
+          "type": "string"
+        },
+        "policy_version": {
+          "const": "sha256:bf1fc270ac926af1e4e9d8465eb30025486e1c95b37c790bd6a36e8ed7b0f69d",
+          "default": "sha256:bf1fc270ac926af1e4e9d8465eb30025486e1c95b37c790bd6a36e8ed7b0f69d",
+          "title": "Policy Version",
+          "type": "string"
+        },
+        "result_acceptance": {
+          "const": "prohibited",
+          "default": "prohibited",
+          "title": "Result Acceptance",
+          "type": "string"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "thresholds_approved": {
+          "const": false,
+          "default": false,
+          "title": "Thresholds Approved",
+          "type": "boolean"
+        },
+        "voting_method": {
+          "const": "exact_string_confidence_weighted",
+          "default": "exact_string_confidence_weighted",
+          "title": "Voting Method",
+          "type": "string"
+        }
+      },
+      "title": "SyntheticConsensusPolicyV1",
       "type": "object"
     },
     "synthetic_corpus_plan": {

@@ -274,7 +274,22 @@ Implementation progress:
   normalized text/graphemes/identifiers, and zero operational acceptance.
 - W7 does not approve a numeric quality threshold or model promotion. It adds
   no API, worker, migration, database, lookup, alert, camera/media, or deployment
-  path. `P35-W8` bounded consensus is `not_started` and was not executed by W7.
+  path. W7 did not execute consensus or alter its canonical evidence.
+- `P35-W8`: `validated_generated_contract_fixture`. Bounded consensus is keyed
+  only by anonymous `stream_id`, `tracker_epoch`, and `track_id`; it never groups
+  by plate text. Each state closes at five observations or two seconds, and each
+  stream is capped at 256 active states with fail-closed overload behavior.
+- W8 canonical evidence SHA-256 is
+  `58E7E4479DEB554D4B99F0CC1868B4DA61E9DED292E3F11942B740AEF02FC124`.
+  It records 20/20 deterministic replay, 281 bounded operations, 269 closed and
+  abstained results, duplicate/out-of-order rejection, zero stream/epoch/track
+  merges, zero accepted values, and zero persisted plate text or identifiers.
+- W8 does not invent minimum-support or margin thresholds. Both remain unset,
+  every result is a mandatory abstention, and no API, worker, migration,
+  database, alert, camera/media, operational, or deployment path is added.
+- `P35-W9`: `not_started`. The broader aggregate evidence, security, resource,
+  packaging, and rollback package remains separate and requires exact scope
+  confirmation against the effective start allowlist before implementation.
 
 Artifact preparation status: proposal R0 records eight recommended artifact
 slots, immutable source metadata, and bounded sizes. Seven external slots are

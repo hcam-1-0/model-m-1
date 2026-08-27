@@ -129,6 +129,7 @@ an operational claim.
 ## Continuing Blocks
 
 W7 does not authorize or implement an operational quality threshold, model
-promotion, actual-model calibration evidence, consensus, persistence, API
-response, alert, lookup, enforcement, camera/media access, real data, P3.6,
-deployment, or remote Git operation. `P35-W8` consensus remains not started.
+promotion, actual-model calibration evidence, persistence, API response, alert,
+lookup, enforcement, camera/media access, real data, P3.6, deployment, or remote
+Git operation. `P35-W8` is documented as a separate validated generated-only package
+and does not change W7 evidence or its limitations.

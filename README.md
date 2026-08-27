@@ -35,6 +35,10 @@ Tesseract OCR candidates are still blocked.
 `P35-W7` adds raw-preserving NFC derivation, exact-runtime extended grapheme
 metrics, candidate-local identity-calibration contract fixtures, and mandatory
 abstention while numeric quality thresholds remain unapproved.
+`P35-W8` adds generated-only, anonymous stream/epoch/track-local consensus with
+five-observation, two-second, and 256-state bounds. It computes deterministic
+exact-string confidence-weighted votes but always abstains because support and
+margin thresholds remain unapproved.
 None of these milestones adds a real CCTV media path.
 
 A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
@@ -61,6 +65,9 @@ records exact Devanagari OCR and Gujarati rendering-only evidence.
 The [P3.5 W7 normalization and abstention](docs/phase-3/p3-5-w7-normalization-abstention.md)
 records pinned Unicode/grapheme semantics, aggregate-only calibration fixtures,
 mandatory abstention, and zero-retention evidence.
+The [P3.5 W8 bounded consensus](docs/phase-3/p3-5-w8-bounded-consensus.md)
+records deterministic stream-local lifecycle, overload, ordering, isolation,
+mandatory-abstention, and aggregate-only zero-retention evidence.
 
 P3.1 planning and its generated-only implementation boundary are authorized
 under `D-P3.1-001`. The technical evidence package is implemented and verifies
@@ -100,6 +107,7 @@ uv run --locked --extra dev python tools/phase35_contracts.py check
 uv run --locked python tools/phase35_latin_ocr.py check-evidence
 uv run --locked python tools/phase35_auxiliary_ocr.py check-evidence
 uv run --locked python tools/phase35_normalization.py check-evidence
+uv run --locked python tools/phase35_consensus.py check-evidence
 uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
 uv run --locked --extra dev python tools/phase35_runtime_research.py all --root 'E:\h-cam-research-cache\phase-3\p3-5-runtime'
