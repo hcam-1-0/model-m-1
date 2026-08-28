@@ -3,7 +3,9 @@
 Status: planning and primary-source research complete under
 `D-P3.6-PLAN-AUTH`; `D-P3.6-001` through `D-P3.6-005` are owner accepted.
 Model promotion, exact capability manifests, artifact authority, execution
-authority, implementation, and acceptance remain pending.
+authority, implementation, and acceptance remain pending. A later
+`D-P3.6-START` statement is recorded as non-effective intent because those
+prerequisites are incomplete.
 
 Planning authorization:
 [P3.6 planning authorization](p3-6-planning-authorization.md).
@@ -16,6 +18,10 @@ Accepted architecture decisions:
 
 Dynamic hardware policy:
 [P3.6 capability profiles](p3-6-capability-profiles.md).
+
+Start intent and prerequisite sequence:
+[P3.6 start intent](p3-6-start-intent.md) and
+[P3.6 unblock plan](p3-6-unblock-plan.md).
 
 Entry gates:
 [`p3-6-entry-gates.json`](../../contracts/phase-3/p3-6-entry-gates.json).
@@ -41,8 +47,11 @@ needed to answer:
 
 ## Planning Boundary
 
-The current authorization permits this plan and research only. Future sections
-describe conditional work packages; they do not authorize their execution.
+The current effective authorization permits this plan and research only. The
+received `D-P3.6-START` statement is not bound to exact actions, artifacts,
+machines, paths, workloads, network policy, or a package digest and cannot
+bypass blocked G1, G2, or G4. Future sections describe conditional work
+packages; they do not authorize their execution.
 
 No current P3.6 result claims acceleration, parity, throughput, C1/C10/C50
 capacity, camera performance, GPU support, OpenVINO support on the laptop,
@@ -78,7 +87,7 @@ production, or procurement claims.
 | `P36-G2` | Exact hardware/OS/driver/runtime/precision/workload profiles | Blocked |
 | `P36-G3` | Owner decisions `D-P3.6-001` through `D-P3.6-005` | Passed |
 | `P36-G4` | Exact digest-bound artifact/dependency/container research authority | Blocked |
-| `P36-G5` | Exact implementation and runtime-execution authority | Blocked |
+| `P36-G5` | Exact implementation and runtime-execution authority | Blocked; broad start intent received but non-effective |
 
 No later gate can be inferred from approval of an earlier gate.
 

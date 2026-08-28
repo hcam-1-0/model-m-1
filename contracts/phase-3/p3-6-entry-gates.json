@@ -71,7 +71,7 @@
     {
       "gate_id": "P36-G5",
       "state": "blocked",
-      "summary": "No D-P3.6-START implementation or runtime-execution authorization exists."
+      "summary": "A D-P3.6-START statement was received on 2026-08-29 but is non-effective because G1, G2, and G4 are blocked and no exact digest-bound executable package exists."
     }
   ],
   "capability_profile_policy": "contracts/phase-3/p3-6-capability-profile-policy.json",
@@ -79,7 +79,9 @@
   "implementation_authorized": false,
   "owner_decisions_record": "contracts/phase-3/p3-6-owner-decisions.json",
   "planning_authorization": "D-P3.6-PLAN-AUTH",
-  "planning_status": "research_plan_and_owner_decisions_complete_exact_manifests_and_execution_authority_pending",
+  "planning_status": "start_intent_recorded_non_effective_exact_prerequisites_and_execution_authority_pending",
   "record_id": "P3.6-ENTRY-GATES",
-  "runtime_execution_authorized": false
+  "runtime_execution_authorized": false,
+  "start_intent_record": "contracts/phase-3/p3-6-start-intent.json",
+  "start_status": "recorded_non_effective_prerequisites_incomplete"
 }

@@ -96,6 +96,7 @@
   "runtime_execution_authorized": false,
   "scope": "phase3.p3_6.runtime_acceleration_and_scheduling.technical_baseline",
   "start_decision_id": "D-P3.6-START",
-  "start_status": "pending_manifest_bound_authorization",
+  "start_intent_record": "contracts/phase-3/p3-6-start-intent.json",
+  "start_status": "statement_received_non_effective_pending_manifest_bound_authorization",
   "status": "accepted"
 }

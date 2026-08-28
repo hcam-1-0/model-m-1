@@ -149,9 +149,14 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-capability-profile-policy.json`: portable CPU, local accelerated, and
   capacity-target profile invariants, adaptive resource dimensions, future
   control-surface policy, and exact-manifest requirements.
+- `p3-6-start-intent.json`: exact received `D-P3.6-START` statement, its
+  non-effective state, gate snapshot, allowed planning effect, and continuing
+  non-authorization.
+- `p3-6-unblock-plan.json`: ordered model, sanitized inventory, capability
+  manifest, and digest-bound start prerequisites without executable authority.
 - `p3-6-entry-gates.json`: accepted P3.5 baseline and owner architecture
-  choices, passed `P36-G3`, blocked model/hardware/artifact/start prerequisites,
-  and the explicit planning-only state.
+  choices, passed `P36-G3`, recorded non-effective start intent, blocked
+  model/hardware/artifact/start prerequisites, and the planning-only state.
 
 Verify all tracked snapshots:
 

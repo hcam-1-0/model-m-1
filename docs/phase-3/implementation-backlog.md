@@ -336,6 +336,8 @@ capability-profile policy are accepted; `P36-G3` is passed. Model-family
 promotion, exact hardware/runtime/artifact/workload manifests, artifact
 authority, runtime execution, implementation, containers/Kubernetes actions,
 deployment, media/data access, and remote Git remain blocked.
+The received `D-P3.6-START` statement is recorded as non-effective intent; it
+does not change these blockers or start an executable work package.
 
 Planning records:
 
@@ -344,7 +346,9 @@ Planning records:
 - [detailed plan](p3-6-plan.md);
 - [owner decision packet](p3-6-decision-packet.md);
 - [accepted owner decisions](p3-6-owner-decisions.md);
-- [dynamic capability profiles](p3-6-capability-profiles.md); and
+- [dynamic capability profiles](p3-6-capability-profiles.md);
+- [non-effective start intent](p3-6-start-intent.md);
+- [prerequisite unblock plan](p3-6-unblock-plan.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
 Deliverables:
@@ -378,6 +382,8 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner decisions and separate authority:
 
+- authorize or reject the sanitized read-only `LAB-LAPTOP-01` inventory scope
+  in `D-P3.6-INVENTORY-R0-AUTH`;
 - resolve exact model-family artifacts/data and complete `P36-G1`;
 - prepare and approve exact `portable_cpu`, `local_accelerated`, and
   `capacity_target` machine, OS, driver, runtime, precision, decoder, resource,
@@ -385,7 +391,8 @@ Remaining gated backlog requires exact owner decisions and separate authority:
 - prepare bounded acquisition/research manifests for any external artifacts,
   dependencies, drivers, or containers;
 - prepare a digest-bound `D-P3.6-START` proposal. Do not execute it by
-  implication from a planning or architecture choice.
+  implication from a planning, architecture choice, or earlier broad start
+  statement.
 
 ## P3.7: Governance, Operations, And Security Hardening
 

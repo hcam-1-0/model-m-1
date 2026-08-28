@@ -203,6 +203,8 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
   approved.
 - [ ] `P36-G4` exact artifact/dependency/container research is authorized.
 - [ ] `P36-G5` exact implementation and runtime execution are authorized.
+- [x] The received `D-P3.6-START` statement is preserved as non-effective
+  intent and does not bypass blocked prerequisites.
 
 Current P3.6 status: architecture planning baseline accepted; implementation,
 runtime execution, hardware tests, dashboard work, containers/Kubernetes,

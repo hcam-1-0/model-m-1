@@ -1,0 +1,117 @@
+{
+  "baseline": {
+    "planning_branch": "codex/phase3-runtime-acceleration-planning",
+    "planning_commit": "a1cb040982364347c95a653e30df973ea54b40b5",
+    "start_intent_record": "contracts/phase-3/p3-6-start-intent.json"
+  },
+  "contract_format": "hcam.phase3.p3_6.unblock_plan.v1",
+  "current_exact_foundation": {
+    "det_r0": {
+      "artifact_id": "DET-R0-ONNX-UPSTREAM-0.1.1RC0",
+      "approved_scope": "local_generated_only_p3_2_reference",
+      "bytes": 20219662,
+      "candidate_id": "DET-R0",
+      "sha256": "427CC366D34E27FF7A03E2899B5E3671425C262EA2291F88BB942BC1CC70B0F7",
+      "source_release": "0.1.1rc0",
+      "source_revision": "6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+      "status": "owner_approved_restricted_reference"
+    },
+    "det_unresolved_candidates": [
+      {
+        "candidate_id": "DET-E1",
+        "family": "D-FINE-N",
+        "state": "blocked_exact_artifact_and_evidence_unresolved"
+      },
+      {
+        "candidate_id": "DET-B1",
+        "family": "RF-DETR-S",
+        "state": "blocked_exact_artifact_and_evidence_unresolved"
+      },
+      {
+        "candidate_id": "DET-A1",
+        "family": "RF-DETR-L",
+        "state": "blocked_exact_artifact_and_evidence_unresolved"
+      }
+    ],
+    "hardware": {
+      "known_planning_profile": "LAB-LAPTOP-01 Intel Core i5-8365U with Intel UHD Graphics 620 and no previously observed discrete accelerator",
+      "state": "not_currently_inventory_verified_for_p3_6",
+      "stronger_laptop_profile": "unknown",
+      "capacity_target_profile": "unknown"
+    }
+  },
+  "implementation_authorized": false,
+  "next_owner_decision": {
+    "decision_id": "D-P3.6-INVENTORY-R0-AUTH",
+    "effect": "authorize_sanitized_read_only_inventory_on_LAB_LAPTOP_01_only",
+    "implementation_or_runtime_authority": false,
+    "status": "pending_owner_authorization"
+  },
+  "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
+  "runtime_execution_authorized": false,
+  "status": "planning_only_owner_authorizations_required",
+  "work_items": [
+    {
+      "allowed_after_authorization": [
+        "read_windows_os_cpu_memory_and_display_controller_inventory",
+        "read_display_driver_versions_and_already_installed_runtime_versions",
+        "read_nvidia_smi_inventory_only_if_already_installed",
+        "write_sanitized_machine_capability_json_without_personal_or_network_identifiers"
+      ],
+      "blocked_actions": [
+        "performance_stress_capacity_or_thermal_test",
+        "model_or_inference_execution",
+        "software_driver_dependency_or_container_install",
+        "network_access",
+        "serial_hostname_username_mac_ip_or_personal_path_collection"
+      ],
+      "decision_required": "D-P3.6-INVENTORY-R0-AUTH",
+      "gate_target": "P36-G2 portable_cpu evidence input",
+      "state": "pending_owner_authorization",
+      "work_item_id": "P36-U1"
+    },
+    {
+      "allowed_now": [
+        "read_current_public_official_project_documentation",
+        "prepare_exact_candidate_source_url_size_license_and_action_proposal",
+        "record_unresolved_fields_without_downloading_artifacts"
+      ],
+      "blocked_actions": [
+        "model_weight_code_dependency_or_dataset_download",
+        "artifact_loading_export_conversion_or_inference",
+        "candidate_promotion_without_hcam_evidence"
+      ],
+      "decision_required_before_acquisition": "D-P3.6-MODEL-RESEARCH-R0-AUTH",
+      "gate_target": "P36-G1 and P36-G4 proposal inputs",
+      "state": "planning_research_allowed_acquisition_blocked",
+      "work_item_id": "P36-U2"
+    },
+    {
+      "required_inputs": [
+        "sanitized_current_laptop_inventory",
+        "sanitized_collaborator_accelerated_laptop_inventory",
+        "declared_capacity_target_or_explicit_deferral",
+        "exact_runtime_provider_precision_decoder_and_generated_workload_proposals"
+      ],
+      "gate_target": "P36-G2",
+      "state": "blocked_inputs_missing",
+      "work_item_id": "P36-U3"
+    },
+    {
+      "required_bindings": [
+        "passed_P36_G1_G2_G3_G4",
+        "exact_allowed_work_packages_actions_and_paths",
+        "exact_artifact_runtime_driver_dependency_and_container_digests_or_empty_lists",
+        "exact_machine_profile_revisions_and_generated_workloads",
+        "exact_network_policy",
+        "security_evidence_and_rollback",
+        "clean_source_commit_and_immutable_package_digest",
+        "continuing_non_authorization"
+      ],
+      "decision_required": "D-P3.6-START against the final package digest",
+      "gate_target": "P36-G5",
+      "state": "blocked_prerequisites_incomplete",
+      "work_item_id": "P36-U4"
+    }
+  ]
+}

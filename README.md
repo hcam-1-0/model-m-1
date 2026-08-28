@@ -54,6 +54,10 @@ P3.6 runtime acceleration and scheduling remains planning-only under
 the portable CPU, validated local-accelerator, and capacity-target strategy.
 They add no runtime, hardware test, Kubernetes/container action, media/data
 access, dashboard/application implementation, or deployment.
+The later `D-P3.6-START` statement is preserved as a
+[non-effective start intent](docs/phase-3/p3-6-start-intent.md): model
+promotion, exact machine/runtime manifests, artifact authority, and a
+digest-bound executable package are still missing.
 
 A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
 pins the recommended artifact locations and bounds. The separate

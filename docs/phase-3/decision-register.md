@@ -653,6 +653,23 @@ accelerated-laptop, and C10/C50 capacity manifests remain blocked by `P36-G2`.
 No dashboard, scheduler, Kubernetes, runtime, or hardware action is authorized
 by this planning policy.
 
+### DR-0048: P3.6 Start Statement Received Before Hard Gates
+
+Status: recorded non-effective start intent.
+
+On 2026-08-29, `mayank-admin` supplied `continue D-P3.6-START`. The statement
+is explicit intent to continue P3.6, but the accepted gate policy prevents it
+from authorizing undisclosed implementation or execution. `P36-G1` remains
+blocked by the incomplete model-family comparison, `P36-G2` by missing exact
+machine/runtime/workload profiles, and `P36-G4` by missing digest/source/path-
+bound artifact research authority. No executable package digest exists.
+
+The statement therefore permits no new executable action. Existing
+planning-only authority remains effective, and an ordered unblock plan now
+defines sanitized inventory, exact model proposal, capability manifests, and a
+later immutable start package. `P36-G5` remains blocked until the owner accepts
+that final exact digest.
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

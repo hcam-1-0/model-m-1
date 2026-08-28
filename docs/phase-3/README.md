@@ -28,7 +28,9 @@ scheduling planning plus primary-source research are authorized under
 portable/accelerated/capacity profile policy are owner accepted. Exact model,
 hardware, runtime, artifact, and workload manifests, execution, implementation,
 hardware testing, containers/Kubernetes actions, and deployment remain
-unauthorized.
+unauthorized. `D-P3.6-START` has been received and recorded as non-effective
+intent because `P36-G1`, `P36-G2`, and `P36-G4` remain blocked and no immutable
+executable package exists.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -119,6 +121,8 @@ autonomous enforcement.
 | [P3.6 owner decision packet](p3-6-decision-packet.md) | Historical A-D architecture options, accepted choices, and later manifest-bound start gates |
 | [P3.6 owner decisions](p3-6-owner-decisions.md) | Accepted staged portfolio, scheduler, evidence modes, immutable bundle, and hardware strategy |
 | [P3.6 capability profiles](p3-6-capability-profiles.md) | Dynamic portable CPU, local accelerated, and capacity-target policy with exact-manifest requirements |
+| [P3.6 start intent](p3-6-start-intent.md) | Received `D-P3.6-START` statement, non-effective gate state, and continuing prohibitions |
+| [P3.6 unblock plan](p3-6-unblock-plan.md) | Ordered model, sanitized inventory, profile-manifest, and final start-package prerequisites |
 
 ## Non-Negotiable Boundary
 

@@ -12,6 +12,8 @@ Accepted record: [P3.6 owner technical decisions](p3-6-owner-decisions.md).
 
 Capability profiles: [P3.6 dynamic capability profiles](p3-6-capability-profiles.md).
 
+Start status: [received non-effective start intent](p3-6-start-intent.md).
+
 ## Decision Rules
 
 - The original A-D options are preserved below as the decision history.
@@ -324,7 +326,9 @@ quality gates, audit, and evidence integrity may not degrade.
 These choices authorize the technical planning baseline only. The next action
 is to prepare exact model, artifact, hardware, runtime, workload, path, and
 execution proposals. Do not submit `D-P3.6-START` until those exact manifests
-and remaining blockers have been reviewed.
+and remaining blockers have been reviewed. A start statement was later received
+before that condition was met and is therefore preserved as non-effective
+intent rather than executable authority.
 
 ## Continuing Non-Authorization
 

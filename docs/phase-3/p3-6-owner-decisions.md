@@ -1,13 +1,16 @@
 # P3.6 Owner Technical Decisions
 
 Status: `D-P3.6-001` through `D-P3.6-005` accepted by `mayank-admin` on
-2026-08-29. `D-P3.6-START` remains pending exact manifest-bound authorization.
+2026-08-29. A `D-P3.6-START` statement was subsequently received but is
+non-effective pending exact manifest-bound authorization.
 
 Machine-readable record:
 [`p3-6-owner-decisions.json`](../../contracts/phase-3/p3-6-owner-decisions.json).
 
 Capability-profile policy:
 [`p3-6-capability-profile-policy.json`](../../contracts/phase-3/p3-6-capability-profile-policy.json).
+
+Start-intent record: [P3.6 start intent](p3-6-start-intent.md).
 
 ## Decision Summary
 
