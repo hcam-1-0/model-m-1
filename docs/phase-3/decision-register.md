@@ -608,7 +608,8 @@ and P3.7 or later work.
 
 ### DR-0046: P3.6 Recommended Runtime And Scheduling Baseline
 
-Status: proposed; `D-P3.6-001` through `D-P3.6-005` pending owner selection.
+Status: `D-P3.6-001` through `D-P3.6-005` accepted by `mayank-admin` on
+2026-08-29.
 
 Primary-source research supports a staged portfolio: ONNX Runtime CPU behavior
 reference, OpenVINO-first exact Intel evaluation, TensorRT/DeepStream only on
@@ -625,14 +626,37 @@ configuration, SBOM, provenance, benchmark, and rollback evidence. The proposed
 hardware strategy uses `LAB-LAPTOP-01` only for later CPU/Intel feasibility and
 requires a separately approved capacity target for C10/C50 or NVIDIA claims.
 
-These recommendations are not accepted decisions. Exact models, datasets,
-hardware, runtimes, dependencies, containers, numeric gates, execution,
-implementation, and deployment remain blocked.
+The owner selected the staged evidence-driven portfolio, typed fail-closed
+scheduler, two-funnel conjunctive evidence, immutable compatibility bundle,
+and owned-lab-then-capacity-target strategy. Kubernetes is accepted only as an
+optional execution backend beneath H-CAM admission. Runtime automatic placement
+is advisory only inside admitted bounds. Balanced, Throughput, and Latency are
+switchable ranking/evidence views that cannot bypass hard gates.
+
+Exact models, datasets, hardware, runtimes, dependencies, containers, numeric
+gates, execution, implementation, and deployment remain blocked.
+
+### DR-0047: P3.6 Dynamic Capability Profile Policy
+
+Status: accepted planning baseline; exact manifests pending.
+
+One application and one contract set will support `portable_cpu`,
+`local_accelerated`, and `capacity_target` profiles. Profiles may adapt bounded
+concurrency, stateless detector batches, sampling within an approved floor,
+optional enrichment, preview quality/rate, queues, workers, and reservations.
+They cannot weaken authorization, security, event semantics, quality, lineage,
+audit, privacy, retention, failure behavior, rollback, or benchmark honesty.
+
+Automatic profile selection is limited to fresh immutable node inventory and
+exact validated compatibility bundles. The first exact current-laptop,
+accelerated-laptop, and C10/C50 capacity manifests remain blocked by `P36-G2`.
+No dashboard, scheduler, Kubernetes, runtime, or hardware action is authorized
+by this planning policy.
 
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;
-- Kubernetes or another production orchestrator;
+- exact Kubernetes or other production-orchestrator topology and deployment;
 - Tier B/C implementation order;
 - persistent evidence media;
 - cross-camera correlation or person/vehicle identity;

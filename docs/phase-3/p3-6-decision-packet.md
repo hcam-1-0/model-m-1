@@ -1,17 +1,23 @@
 # P3.6 Owner Decision Packet
 
-Status: owner selections pending. Planning and primary-source research are
-complete under `D-P3.6-PLAN-AUTH`; implementation remains unauthorized.
+Status: owner selections accepted by `mayank-admin` on 2026-08-29. Planning and
+primary-source research are complete under `D-P3.6-PLAN-AUTH`; exact manifests,
+implementation, and runtime execution remain unauthorized.
 
 Plan: [P3.6 runtime acceleration and scheduling](p3-6-plan.md).
 
 Research: [P3.6 primary-source record](p3-6-research-record.md).
 
+Accepted record: [P3.6 owner technical decisions](p3-6-owner-decisions.md).
+
+Capability profiles: [P3.6 dynamic capability profiles](p3-6-capability-profiles.md).
+
 ## Decision Rules
 
-- Choose exactly one option for each of `D-P3.6-001` through `D-P3.6-005`.
-- Option A is recommended for each decision because the options form one
-  conservative, measurable baseline.
+- The original A-D options are preserved below as the decision history.
+- Option A was recommended for each decision because the options form one
+  conservative, measurable baseline. The accepted `A+` records preserve A and
+  add only bounded extensions described in the owner-decision record.
 - A decision selects architecture policy only. It does not approve a package,
   model, runtime, hardware test, container, implementation, or deployment.
 - Exact artifacts, versions, hardware, paths, actions, and evidence require a
@@ -300,22 +306,25 @@ Risks: P3.6 cannot progress beyond planning or produce measured acceleration.
 
 Recommended selection: `D-P3.6-005: A`.
 
-## Owner Decision Record
+## Accepted Owner Decision Record
 
-Submit choices in this exact form:
+| Decision | Accepted selection |
+| --- | --- |
+| `D-P3.6-001` | A. Staged evidence-driven portfolio |
+| `D-P3.6-002` | A+. Typed fail-closed scheduler plus Kubernetes execution backend and constrained runtime advisory placement |
+| `D-P3.6-003` | A+. Two-funnel conjunctive evidence plus switchable Balanced, Throughput, and Latency views |
+| `D-P3.6-004` | A. Immutable compatibility bundle with CPU/source rollback |
+| `D-P3.6-005` | A. Two-gate owned-lab then authorized capacity-target strategy |
 
-```text
-D-P3.6-001: A|B|C|D
-D-P3.6-002: A|B|C|D
-D-P3.6-003: A|B|C|D
-D-P3.6-004: A|B|C|D
-D-P3.6-005: A|B|C|D
-```
+The owner also required one dynamic application across a conservative
+current-laptop profile and stronger validated GPU-capable profiles. Resource
+settings may adapt, but product contracts, authorization, safety, lineage,
+quality gates, audit, and evidence integrity may not degrade.
 
-Owner choices will authorize the technical planning baseline only. After they
-are recorded, the next action is to prepare exact artifact, hardware, runtime,
-workload, path, and execution proposals. Do not submit `D-P3.6-START` until
-those exact manifests and remaining blockers have been reviewed.
+These choices authorize the technical planning baseline only. The next action
+is to prepare exact model, artifact, hardware, runtime, workload, path, and
+execution proposals. Do not submit `D-P3.6-START` until those exact manifests
+and remaining blockers have been reviewed.
 
 ## Continuing Non-Authorization
 

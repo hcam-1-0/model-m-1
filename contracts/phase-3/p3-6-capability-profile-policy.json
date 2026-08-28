@@ -1,0 +1,106 @@
+{
+  "automatic_selection": {
+    "allow_unvalidated_profile": false,
+    "authority": "hcam_admission_control",
+    "fallback": "next_lower_validated_profile_or_pause",
+    "kubernetes_role": "execution_backend_not_policy_authority",
+    "runtime_auto_placement_role": "advisory_within_admitted_device_and_resource_bounds",
+    "selection_inputs": [
+      "fresh_immutable_node_capability_snapshot",
+      "approved_compatibility_bundle",
+      "assignment_authorization",
+      "declared_objective_mode",
+      "reserved_capacity_and_freshness_budget"
+    ]
+  },
+  "capability_manifest_required_fields": [
+    "profile_id_and_revision",
+    "machine_and_trust_zone",
+    "operating_system_architecture_and_kernel",
+    "cpu_model_features_allocatable_cores_and_memory",
+    "accelerator_vendor_model_memory_firmware_and_stable_device_identity",
+    "driver_compute_runtime_execution_provider_and_precision",
+    "decoder_codecs_profiles_resolution_and_session_limits",
+    "model_source_export_compiled_artifact_and_configuration_digests",
+    "worker_concurrency_batch_sampling_queue_and_freshness_bounds",
+    "generated_workload_tier_shape_duration_and_repetition_manifest",
+    "parity_quality_latency_throughput_resource_and_recovery_evidence",
+    "sbom_provenance_license_vulnerability_and_rollback_tuple",
+    "observation_time_expiry_approver_and_status"
+  ],
+  "contract_format": "hcam.phase3.p3_6.capability_profile_policy.v1",
+  "future_operator_controls": {
+    "hardware_profile": [
+      "auto",
+      "portable_cpu",
+      "local_accelerated"
+    ],
+    "implementation_status": "not_authorized",
+    "load_policy": [
+      "conservative",
+      "standard",
+      "maximum_validated"
+    ],
+    "objective_mode": [
+      "balanced",
+      "throughput",
+      "latency"
+    ],
+    "rule": "controls_select_only_approved_policy_profiles_and_never_bypass_hard_gates"
+  },
+  "invariants": [
+    "same_domain_event_api_and_evidence_contracts",
+    "same_authorization_department_and_data_zone_checks",
+    "same_artifact_lineage_audit_retention_and_privacy_policy",
+    "same_model_quality_taxonomy_and_downstream_parity_gates",
+    "same_fail_closed_overload_rollback_and_safe_pause_semantics",
+    "no_silent_runtime_provider_precision_model_or_profile_fallback"
+  ],
+  "objective_modes": {
+    "balanced": "rank_only_eligible_profiles_for_bounded_latency_throughput_resource_and_recovery_balance",
+    "latency": "rank_only_eligible_profiles_for_tail_latency_and_freshness_without_waiving_capacity_or_parity_evidence",
+    "throughput": "rank_only_eligible_profiles_for_sustained_fresh_throughput_without_waiving_tail_latency_quality_or_fairness_gates"
+  },
+  "owner_decisions_record": "contracts/phase-3/p3-6-owner-decisions.json",
+  "profile_order": [
+    "portable_cpu",
+    "local_accelerated",
+    "capacity_target"
+  ],
+  "profiles": [
+    {
+      "activation": "default_candidate_after_exact_manifest_validation",
+      "capacity_claim": "c1_correctness_and_small_cpu_evidence_only_until_measured",
+      "candidate_execution": "onnx_runtime_cpu_reference",
+      "exact_manifest_status": "pending",
+      "profile_id": "portable_cpu",
+      "purpose": "portable_current_laptop_and_ci_reference_with_conservative_resource_policy"
+    },
+    {
+      "activation": "manual_or_auto_only_after_exact_device_bundle_and_parity_validation",
+      "capacity_claim": "exact_machine_evidence_only",
+      "candidate_execution": "validated_intel_nvidia_or_amd_provider_without_silent_fallback",
+      "exact_manifest_status": "pending",
+      "profile_id": "local_accelerated",
+      "purpose": "stronger_owned_or_authorized_laptop_with_higher_validated_capacity"
+    },
+    {
+      "activation": "separate_owned_lab_and_capacity_authorization",
+      "capacity_claim": "c10_or_c50_only_from_exact_signed_workload_and_hardware_evidence",
+      "candidate_execution": "approved_accelerated_runtime_and_optional_kubernetes_backend",
+      "exact_manifest_status": "pending",
+      "profile_id": "capacity_target",
+      "purpose": "declared_laboratory_or_server_capacity_target_without_extrapolation"
+    }
+  ],
+  "record_id": "P3.6-CAPABILITY-PROFILE-POLICY",
+  "status": "accepted_planning_baseline",
+  "unresolved_gates": [
+    "model_champion_and_fallback",
+    "exact_machine_capability_manifests",
+    "exact_runtime_driver_precision_and_artifact_bundles",
+    "numeric_parity_quality_capacity_and_freshness_thresholds",
+    "artifact_research_authorization",
+    "implementation_and_runtime_execution_authorization"
+  ]
+}

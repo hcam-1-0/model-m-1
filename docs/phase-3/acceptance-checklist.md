@@ -185,7 +185,28 @@ Current P3.5 status:
 Artifact and runtime evidence are accepted. Five exact artifacts and the exact
 external runtime may be used for generated-only local work with zero network
 actions. Tesseract OCR, training, cameras/media, real data, persistent plate
-text, operational behavior, deployment, and P3.6 remain unauthorized.
+text, operational behavior, deployment, and P3.6 implementation remain
+unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
+
+## P3.6 Planning Decision Status
+
+- [x] `D-P3.6-PLAN-AUTH` authorizes planning and primary-source research only.
+- [x] `D-P3.6-001` through `D-P3.6-005` are accepted by `mayank-admin`.
+- [x] Portable CPU, local accelerated, and capacity-target profile policy is
+  recorded without creating separate product contracts.
+- [x] Kubernetes is bounded as an optional execution backend and runtime AUTO
+  placement as advisory beneath H-CAM admission.
+- [x] Balanced, Throughput, and Latency views preserve conjunctive evidence and
+  every hard parity/security/lineage/freshness gate.
+- [ ] `P36-G1` model champion and fallback are approved.
+- [ ] `P36-G2` exact machine/runtime/driver/precision/workload manifests are
+  approved.
+- [ ] `P36-G4` exact artifact/dependency/container research is authorized.
+- [ ] `P36-G5` exact implementation and runtime execution are authorized.
+
+Current P3.6 status: architecture planning baseline accepted; implementation,
+runtime execution, hardware tests, dashboard work, containers/Kubernetes,
+media/data access, deployment, and remote Git remain unauthorized.
 
 ## Tier A Implementation Acceptance
 

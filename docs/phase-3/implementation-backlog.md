@@ -331,22 +331,26 @@ Dependencies: stable reference pipeline and target hardware decision.
 
 Planning status: authorized under `D-P3.6-PLAN-AUTH`. Read-only primary-source
 research, the detailed plan, five-choice owner packet, and machine-readable
-entry gates are complete. `D-P3.6-001` through `D-P3.6-005` remain pending.
-Model-family promotion, exact hardware/runtime/artifact/workload manifests,
-artifact authority, runtime execution, implementation, containers, deployment,
-media/data access, and remote Git remain blocked.
+entry gates are complete. `D-P3.6-001` through `D-P3.6-005` and the dynamic
+capability-profile policy are accepted; `P36-G3` is passed. Model-family
+promotion, exact hardware/runtime/artifact/workload manifests, artifact
+authority, runtime execution, implementation, containers/Kubernetes actions,
+deployment, media/data access, and remote Git remain blocked.
 
 Planning records:
 
 - [planning authorization](p3-6-planning-authorization.md);
 - [primary-source research](p3-6-research-record.md);
 - [detailed plan](p3-6-plan.md);
-- [owner decision packet](p3-6-decision-packet.md); and
+- [owner decision packet](p3-6-decision-packet.md);
+- [accepted owner decisions](p3-6-owner-decisions.md);
+- [dynamic capability profiles](p3-6-capability-profiles.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
 Deliverables:
 
-- `P36-W0`: planning/research package and owner choices;
+- `P36-W0`: `complete`; planning/research package, owner choices, and dynamic
+  profile policy are recorded;
 - `P36-W1`: model-family comparison (`DET-R0/E1/B1/A1`) and promoted
   champion/fallback before runtime tuning;
 - `P36-W2`: model-independent node, runtime, scheduler, lease, queue, and
@@ -372,15 +376,12 @@ admission evidence, C1/C10/C50 bounded-load results or a narrower explicit
 claim, degradation behavior, driver/container security review, supply-chain
 provenance, rollback, exact package digest, and owner acceptance.
 
-Immediate backlog requiring owner action:
-
-- select one A-D option for each of `D-P3.6-001` through `D-P3.6-005`.
-
-Backlog after those choices still requires separate authorization:
+Remaining gated backlog requires exact owner decisions and separate authority:
 
 - resolve exact model-family artifacts/data and complete `P36-G1`;
-- choose exact owned/authorized hardware, OS, driver, runtime, precision, and
-  generated workload profiles for `P36-G2`;
+- prepare and approve exact `portable_cpu`, `local_accelerated`, and
+  `capacity_target` machine, OS, driver, runtime, precision, decoder, resource,
+  and generated-workload manifests for `P36-G2`;
 - prepare bounded acquisition/research manifests for any external artifacts,
   dependencies, drivers, or containers;
 - prepare a digest-bound `D-P3.6-START` proposal. Do not execute it by

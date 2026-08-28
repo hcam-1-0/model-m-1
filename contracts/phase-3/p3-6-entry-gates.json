@@ -9,31 +9,36 @@
     {
       "decision_id": "D-P3.6-001",
       "recommended_option": "A",
-      "state": "pending_owner_selection",
+      "selected_option": "A",
+      "state": "accepted_owner_selection",
       "topic": "runtime_portfolio_and_activation_triggers"
     },
     {
       "decision_id": "D-P3.6-002",
       "recommended_option": "A",
-      "state": "pending_owner_selection",
+      "selected_option": "A+",
+      "state": "accepted_owner_selection",
       "topic": "placement_admission_batching_and_backpressure"
     },
     {
       "decision_id": "D-P3.6-003",
       "recommended_option": "A",
-      "state": "pending_owner_selection",
+      "selected_option": "A+",
+      "state": "accepted_owner_selection",
       "topic": "benchmark_parity_and_claim_policy"
     },
     {
       "decision_id": "D-P3.6-004",
       "recommended_option": "A",
-      "state": "pending_owner_selection",
+      "selected_option": "A",
+      "state": "accepted_owner_selection",
       "topic": "packaging_security_degradation_and_rollback"
     },
     {
       "decision_id": "D-P3.6-005",
       "recommended_option": "A",
-      "state": "pending_owner_selection",
+      "selected_option": "A",
+      "state": "accepted_owner_selection",
       "topic": "hardware_evidence_strategy"
     }
   ],
@@ -55,8 +60,8 @@
     },
     {
       "gate_id": "P36-G3",
-      "state": "blocked",
-      "summary": "D-P3.6-001 through D-P3.6-005 remain pending."
+      "state": "passed",
+      "summary": "D-P3.6-001 through D-P3.6-005 are accepted in the P3.6 owner decision record; A+ extensions remain subordinate to the fail-closed A baselines."
     },
     {
       "gate_id": "P36-G4",
@@ -69,9 +74,12 @@
       "summary": "No D-P3.6-START implementation or runtime-execution authorization exists."
     }
   ],
+  "capability_profile_policy": "contracts/phase-3/p3-6-capability-profile-policy.json",
+  "dashboard_implementation_authorized": false,
   "implementation_authorized": false,
+  "owner_decisions_record": "contracts/phase-3/p3-6-owner-decisions.json",
   "planning_authorization": "D-P3.6-PLAN-AUTH",
-  "planning_status": "research_and_plan_complete_owner_decisions_pending",
+  "planning_status": "research_plan_and_owner_decisions_complete_exact_manifests_and_execution_authority_pending",
   "record_id": "P3.6-ENTRY-GATES",
   "runtime_execution_authorized": false
 }

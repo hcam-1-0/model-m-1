@@ -24,8 +24,11 @@ implemented and validated. Gujarati remains rendering-only. All broader media,
 identity, correlation, alerting, and deployment work remains unauthorized.
 P3.5 is accepted under `D-P3.5-W10-ACCEPTANCE`. P3.6 runtime acceleration and
 scheduling planning plus primary-source research are authorized under
-`D-P3.6-PLAN-AUTH`; owner choices, artifacts, execution, implementation,
-hardware testing, containers, and deployment remain unauthorized.
+`D-P3.6-PLAN-AUTH`; `D-P3.6-001` through `D-P3.6-005` and the dynamic
+portable/accelerated/capacity profile policy are owner accepted. Exact model,
+hardware, runtime, artifact, and workload manifests, execution, implementation,
+hardware testing, containers/Kubernetes actions, and deployment remain
+unauthorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -113,7 +116,9 @@ autonomous enforcement.
 | [P3.6 planning authorization](p3-6-planning-authorization.md) | Exact planning/research authority and continuing non-authorization |
 | [P3.6 primary-source research](p3-6-research-record.md) | Current OpenVINO, TensorRT, DeepStream, Triton, scheduling, benchmarking, and supply-chain findings |
 | [P3.6 plan](p3-6-plan.md) | Runtime portfolio, node capabilities, admission, batching, parity, benchmarks, security, rollback, and staged work packages |
-| [P3.6 owner decision packet](p3-6-decision-packet.md) | Five A-D architecture choices and later manifest-bound start gates |
+| [P3.6 owner decision packet](p3-6-decision-packet.md) | Historical A-D architecture options, accepted choices, and later manifest-bound start gates |
+| [P3.6 owner decisions](p3-6-owner-decisions.md) | Accepted staged portfolio, scheduler, evidence modes, immutable bundle, and hardware strategy |
+| [P3.6 capability profiles](p3-6-capability-profiles.md) | Dynamic portable CPU, local accelerated, and capacity-target policy with exact-manifest requirements |
 
 ## Non-Negotiable Boundary
 

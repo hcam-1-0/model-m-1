@@ -1,14 +1,21 @@
 # P3.6 Runtime Acceleration And Scheduling Plan
 
 Status: planning and primary-source research complete under
-`D-P3.6-PLAN-AUTH`; owner decisions, prerequisites, artifact authority,
-execution authority, implementation, and acceptance remain pending.
+`D-P3.6-PLAN-AUTH`; `D-P3.6-001` through `D-P3.6-005` are owner accepted.
+Model promotion, exact capability manifests, artifact authority, execution
+authority, implementation, and acceptance remain pending.
 
 Planning authorization:
 [P3.6 planning authorization](p3-6-planning-authorization.md).
 
 Research basis:
 [P3.6 primary-source research](p3-6-research-record.md).
+
+Accepted architecture decisions:
+[P3.6 owner technical decisions](p3-6-owner-decisions.md).
+
+Dynamic hardware policy:
+[P3.6 capability profiles](p3-6-capability-profiles.md).
 
 Entry gates:
 [`p3-6-entry-gates.json`](../../contracts/phase-3/p3-6-entry-gates.json).
@@ -69,11 +76,31 @@ production, or procurement claims.
 | `P36-G0` | Accepted P3.5 and explicit P3.6 planning authority | Passed |
 | `P36-G1` | Frozen `DET-R0/E1/B1/A1` comparison and promoted champion/fallback | Blocked |
 | `P36-G2` | Exact hardware/OS/driver/runtime/precision/workload profiles | Blocked |
-| `P36-G3` | Owner decisions `D-P3.6-001` through `D-P3.6-005` | Blocked |
+| `P36-G3` | Owner decisions `D-P3.6-001` through `D-P3.6-005` | Passed |
 | `P36-G4` | Exact digest-bound artifact/dependency/container research authority | Blocked |
 | `P36-G5` | Exact implementation and runtime-execution authority | Blocked |
 
 No later gate can be inferred from approval of an earlier gate.
+
+## Accepted Architecture Baseline
+
+The owner selected the staged runtime portfolio, typed fail-closed scheduler,
+two-funnel evidence policy, immutable compatibility bundle, and two-gate
+hardware strategy. Three bounded extensions are part of that baseline:
+
+- Kubernetes may execute admitted placements, but H-CAM remains the authority
+  for assignment authorization, compatibility, capacity, freshness, lineage,
+  degradation, and rollback.
+- Runtime-managed placement may advise only among devices/providers/resources
+  already admitted by H-CAM. It cannot silently select an unapproved provider,
+  precision, model, or fallback.
+- Balanced, Throughput, and Latency modes may rank eligible profiles and shape
+  future dashboard presentation. They cannot bypass parity, security, quality,
+  fairness, lineage, freshness, or claim-integrity gates.
+
+The same application and contracts must work across a conservative CPU-only
+profile and stronger validated accelerated profiles. Dynamic behavior changes
+resource policy and admitted load, not product correctness or safety.
 
 ## Target Architecture
 
@@ -81,9 +108,10 @@ No later gate can be inferred from approval of an earlier gate.
 Approved assignment revision
           |
           v
-Policy + placement admission
+Capability profile + placement admission
   - department/data authorization
   - model/runtime compatibility
+  - validated profile revision
   - node health and maintenance
   - reserved CPU/RAM/device/decoder
   - queue-age and latency budget
@@ -111,10 +139,12 @@ Normalized observations -> ordered stream-local tracking/rules -> outbox
           +--> low-cardinality health, latency, resource and degradation metrics
 ```
 
-The control plane decides whether an assignment is eligible and records why.
-The node-local data plane enforces queue and resource bounds. An external
-orchestrator may place processes or containers later, but it cannot override
-H-CAM authorization, compatibility, or freshness constraints.
+The control plane decides whether an assignment and capability profile are
+eligible and records why. The node-local data plane enforces queue and resource
+bounds. Kubernetes or another orchestrator may place processes or containers
+later, but it cannot override H-CAM authorization, compatibility, freshness,
+lineage, or rollback constraints. Runtime AUTO placement is advisory only
+inside the exact admitted device/provider set.
 
 ## Runtime Portfolio
 
@@ -129,6 +159,55 @@ H-CAM authorization, compatibility, or freshness constraints.
 No runtime may silently fall back to another provider or precision in accepted
 evidence. A fallback is an explicit deployment transition with audit and health
 state, not an unrecorded provider behavior.
+
+## Dynamic Capability Profiles
+
+P3.6 uses capability-based profiles rather than separate product builds.
+
+| Profile | Intended use | Resource posture | Evidence boundary |
+| --- | --- | --- | --- |
+| `portable_cpu` | Current laptop and CPU/CI reference | Conservative concurrency, batch, sampling, preview, queue, and optional-enrichment policy | C1 correctness and exact small-machine evidence only until measured |
+| `local_accelerated` | Stronger owned/authorized laptop | Higher settings only inside an exact validated provider/device bundle | Exact machine and workload only |
+| `capacity_target` | Declared lab/server or cluster target | Approved C10/C50 reservations and optional Kubernetes backend | Signed exact-hardware/workload evidence; no extrapolation |
+
+All profiles preserve the same domain, API, event, taxonomy, authorization,
+security, lineage, audit, privacy, retention, quality, failure, and rollback
+contracts. Only these dimensions may adapt after exact validation:
+
+- worker concurrency and stateless detector batch size;
+- sampling within an approved minimum floor;
+- optional enrichment and preview rate/quality;
+- bounded queue, reservation, in-flight, and workload-admission values;
+- CPU, memory, accelerator, decoder, thermal, and power budgets.
+
+Automatic selection considers only fresh immutable node inventory and exact
+approved compatibility bundles. If the requested profile is unavailable,
+H-CAM may use a separately approved lower profile when its capacity/freshness
+policy passes; otherwise it pauses with a safe reason. Unknown hardware or
+unvalidated runtime state never creates a profile automatically.
+
+### Future Control Surface
+
+A later authorized dashboard package should expose:
+
+- hardware: `Auto`, `Portable CPU`, `Local Accelerated`;
+- objective: `Balanced`, `Throughput`, `Latency`;
+- load: `Conservative`, `Standard`, `Maximum Validated`.
+
+The controls select approved policy revisions only. The UI must show the active
+profile revision, compatibility-bundle digest, objective/load mode, evidence
+freshness, fallback/degradation state, and safe rejection reason. This is a
+future requirement, not current dashboard implementation authority.
+
+### Exact Manifest Requirement
+
+Before `P36-G2` can pass, every proposed profile revision must bind the machine,
+trust zone, OS/kernel/architecture, CPU/RAM, accelerator/firmware, driver and
+compute stack, runtime/provider/precision, decoder limits, artifact/configuration
+digests, concurrency/batch/sampling/queue/freshness bounds, generated workload,
+parity/quality/performance/recovery evidence, SBOM/provenance/license/security,
+observation expiry, approver, and rollback tuple. Placeholder or self-reported
+capability alone is insufficient.
 
 ## Model Selection Before Acceleration
 
@@ -381,15 +460,15 @@ These packages are ordered proposals, not current implementation authority.
 
 | Package | Purpose | Required input | Exit evidence |
 | --- | --- | --- | --- |
-| `P36-W0` | Planning and primary research | `D-P3.6-PLAN-AUTH` | This package; owner choices pending |
+| `P36-W0` | Planning, primary research, and owner architecture choices | `D-P3.6-PLAN-AUTH` | Complete; decisions and dynamic profile policy recorded |
 | `P36-W1` | Model-family promotion | Exact approved `DET-R0/E1/B1/A1` artifacts and data | Champion/fallback ADR and quality evidence |
-| `P36-W2` | Runtime/node/scheduler contracts | Approved decisions and manifests | Schemas, negative tests, no runtime activation |
+| `P36-W2` | Runtime/node/profile/scheduler contracts | Approved decisions and exact proposed manifests | Schemas, negative tests, no runtime activation |
 | `P36-W3` | Intel feasibility | Exact owned Intel profile and OpenVINO authority | CPU/OpenVINO parity, compatibility, performance, rollback |
 | `P36-W4` | NVIDIA feasibility | Exact owned/authorized NVIDIA profile | TensorRT and optional DeepStream parity/performance/security |
 | `P36-W5` | Triton trigger evaluation | Measured shared-serving need | Accept/reject ADR, operational-cost evidence |
-| `P36-W6` | Placement and admission | Approved node profiles and capacity policy | Deterministic placement, leases, isolation, fail-closed tests |
+| `P36-W6` | Placement, admission, and optional Kubernetes execution adapter | Approved node profiles and capacity policy | Deterministic placement, leases, isolation, backend parity, fail-closed tests |
 | `P36-W7` | Bounded queues and batching | Approved latency/sampling/fairness gates | C1/C10 backpressure and state-ordering evidence |
-| `P36-W8` | C1/C10/C50 benchmark | Approved generated workloads and hardware | Signed manifests and reproducible reports |
+| `P36-W8` | C1/C10/C50 benchmark and objective views | Approved generated workloads and hardware | Signed manifests and reproducible Balanced/Throughput/Latency reports |
 | `P36-W9` | Supply chain and resilience | Exact deployment tuple | SBOM, provenance, scans, fault/rollback evidence |
 | `P36-W10` | Selection and acceptance | All hard gates passed | Runtime ADR, pinned package, limitations, owner acceptance |
 

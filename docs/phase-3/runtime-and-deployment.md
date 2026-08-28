@@ -13,22 +13,28 @@ reviewer. This does not remove security, license, parity, benchmark, rollback,
 capacity, or explicit deployment-authorization evidence.
 
 The detailed [P3.6 runtime acceleration and scheduling plan](p3-6-plan.md) and
-[owner decision packet](p3-6-decision-packet.md) refine this strategy under
-`D-P3.6-PLAN-AUTH`. They are planning-only: no runtime, hardware, artifact,
-container, implementation, benchmark, or deployment is currently approved.
+[accepted owner decisions](p3-6-owner-decisions.md) refine this strategy under
+`D-P3.6-PLAN-AUTH`. The [dynamic capability profile policy](p3-6-capability-profiles.md)
+keeps one contract-compatible application across portable CPU, validated local
+acceleration, and later capacity targets. These records are planning-only: no
+runtime, hardware, artifact, container/Kubernetes action, implementation,
+benchmark execution, or deployment is currently approved.
 
 ## Proposed Runtime Roles
 
 | Role | Proposed candidate | Why it is considered | Decision state |
 | --- | --- | --- | --- |
-| Portable reference | ONNX Runtime CPU Execution Provider | Reproducible laptop/CI path and execution-provider abstraction | Proposed baseline |
+| Portable reference | ONNX Runtime CPU Execution Provider | Reproducible laptop/CI path and execution-provider abstraction | Accepted planning baseline; exact profile pending |
 | NVIDIA video pipeline | DeepStream 9.0 | Accelerated decode, batching, inference, tracking, and metadata pipeline | Benchmark candidate |
 | Shared NVIDIA serving | Triton Inference Server | Versioned model repositories, model backends, scheduling, dynamic batching, health, and metrics | Benchmark candidate |
 | Intel edge/runtime | OpenVINO 2026 | CPU/GPU/NPU support and AUTO/HETERO device modes | Benchmark candidate |
 | Experiment/registry | MLflow Model Registry | Versioned model records, aliases, tags, and promotion metadata | Governance candidate |
 
-No candidate is a production commitment. Exact versions must be pinned only
-after license, platform, security, reproducibility, and benchmark review.
+No candidate is a production commitment. Kubernetes is an optional future
+execution backend, not an H-CAM policy authority. Runtime AUTO placement is
+advisory only inside admitted bounds. Exact versions and machine profiles must
+be pinned only after license, platform, security, reproducibility, parity, and
+benchmark review.
 
 ## Model-To-Runtime Plan
 
