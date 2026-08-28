@@ -338,6 +338,8 @@ authority, runtime execution, implementation, containers/Kubernetes actions,
 deployment, media/data access, and remote Git remain blocked.
 The received `D-P3.6-START` statement is recorded as non-effective intent; it
 does not change these blockers or start an executable work package.
+`P36-U1` sanitized inventory is complete under
+`D-P3.6-INVENTORY-R0-AUTH`, but it supplies only one input to G2.
 
 Planning records:
 
@@ -348,7 +350,8 @@ Planning records:
 - [accepted owner decisions](p3-6-owner-decisions.md);
 - [dynamic capability profiles](p3-6-capability-profiles.md);
 - [non-effective start intent](p3-6-start-intent.md);
-- [prerequisite unblock plan](p3-6-unblock-plan.md); and
+- [prerequisite unblock plan](p3-6-unblock-plan.md);
+- [LAB-LAPTOP-01 sanitized inventory](p3-6-inventory-lab-laptop-01-r0.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
 Deliverables:
@@ -382,8 +385,8 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner decisions and separate authority:
 
-- authorize or reject the sanitized read-only `LAB-LAPTOP-01` inventory scope
-  in `D-P3.6-INVENTORY-R0-AUTH`;
+- prepare the exact official-source/artifact research proposal for `DET-E1`,
+  `DET-B1`, and `DET-A1` without downloading or executing artifacts;
 - resolve exact model-family artifacts/data and complete `P36-G1`;
 - prepare and approve exact `portable_cpu`, `local_accelerated`, and
   `capacity_target` machine, OS, driver, runtime, precision, decoder, resource,

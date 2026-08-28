@@ -56,7 +56,7 @@
     {
       "gate_id": "P36-G2",
       "state": "blocked",
-      "summary": "Exact target hardware, operating system, driver, runtime, precision, and workload profiles are not owner approved."
+      "summary": "Sanitized LAB-LAPTOP-01 inventory is complete, but the portable runtime/workload profile, accelerated laptop, capacity target, and exact approved hardware/runtime/precision/workload manifests remain unresolved."
     },
     {
       "gate_id": "P36-G3",
@@ -77,6 +77,10 @@
   "capability_profile_policy": "contracts/phase-3/p3-6-capability-profile-policy.json",
   "dashboard_implementation_authorized": false,
   "implementation_authorized": false,
+  "inventory_authorization": "contracts/phase-3/p3-6-inventory-authorization.json",
+  "inventory_records": [
+    "contracts/phase-3/p3-6-inventory-lab-laptop-01-r0.json"
+  ],
   "owner_decisions_record": "contracts/phase-3/p3-6-owner-decisions.json",
   "planning_authorization": "D-P3.6-PLAN-AUTH",
   "planning_status": "start_intent_recorded_non_effective_exact_prerequisites_and_execution_authority_pending",

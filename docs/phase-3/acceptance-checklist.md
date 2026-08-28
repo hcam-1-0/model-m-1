@@ -205,6 +205,10 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
 - [ ] `P36-G5` exact implementation and runtime execution are authorized.
 - [x] The received `D-P3.6-START` statement is preserved as non-effective
   intent and does not bypass blocked prerequisites.
+- [x] `D-P3.6-INVENTORY-R0-AUTH` completed a sealed sanitized
+  `LAB-LAPTOP-01` inventory without network, execution, or identifier exposure.
+- [ ] The exact portable runtime/workload profile, accelerated-laptop profile,
+  and capacity target are approved for `P36-G2`.
 
 Current P3.6 status: architecture planning baseline accepted; implementation,
 runtime execution, hardware tests, dashboard work, containers/Kubernetes,

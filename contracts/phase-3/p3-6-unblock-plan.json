@@ -2,6 +2,7 @@
   "baseline": {
     "planning_branch": "codex/phase3-runtime-acceleration-planning",
     "planning_commit": "a1cb040982364347c95a653e30df973ea54b40b5",
+    "start_intent_commit": "66b6dda372eab75270a2d667512957d5f78154f8",
     "start_intent_record": "contracts/phase-3/p3-6-start-intent.json"
   },
   "contract_format": "hcam.phase3.p3_6.unblock_plan.v1",
@@ -34,18 +35,20 @@
       }
     ],
     "hardware": {
-      "known_planning_profile": "LAB-LAPTOP-01 Intel Core i5-8365U with Intel UHD Graphics 620 and no previously observed discrete accelerator",
-      "state": "not_currently_inventory_verified_for_p3_6",
+      "inventory_record": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r0.json",
+      "inventory_sha256": "0E702718390FB6C373F0FC189CB58D0E79BB7FE3B3EA39B5E5AFE0DE4D47CA1F",
+      "known_inventory_profile": "LAB-LAPTOP-01 Intel Core i5-8365U, 8 GiB RAM, Intel UHD Graphics 620, no observed discrete NVIDIA accelerator",
+      "state": "sanitized_current_laptop_inventory_complete_portable_manifest_pending",
       "stronger_laptop_profile": "unknown",
       "capacity_target_profile": "unknown"
     }
   },
   "implementation_authorized": false,
-  "next_owner_decision": {
-    "decision_id": "D-P3.6-INVENTORY-R0-AUTH",
-    "effect": "authorize_sanitized_read_only_inventory_on_LAB_LAPTOP_01_only",
+  "next_planning_action": {
+    "action": "prepare_exact_DET_E1_DET_B1_DET_A1_official_source_and_artifact_research_proposal_without_downloads",
+    "authority": "D-P3.6-PLAN-AUTH",
     "implementation_or_runtime_authority": false,
-    "status": "pending_owner_authorization"
+    "status": "ready"
   },
   "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
   "runtime_execution_authorized": false,
@@ -65,9 +68,11 @@
         "network_access",
         "serial_hostname_username_mac_ip_or_personal_path_collection"
       ],
-      "decision_required": "D-P3.6-INVENTORY-R0-AUTH",
+      "decision": "D-P3.6-INVENTORY-R0-AUTH",
       "gate_target": "P36-G2 portable_cpu evidence input",
-      "state": "pending_owner_authorization",
+      "output_record": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r0.json",
+      "output_sha256": "0E702718390FB6C373F0FC189CB58D0E79BB7FE3B3EA39B5E5AFE0DE4D47CA1F",
+      "state": "completed",
       "work_item_id": "P36-U1"
     },
     {
@@ -88,10 +93,12 @@
     },
     {
       "required_inputs": [
-        "sanitized_current_laptop_inventory",
         "sanitized_collaborator_accelerated_laptop_inventory",
         "declared_capacity_target_or_explicit_deferral",
         "exact_runtime_provider_precision_decoder_and_generated_workload_proposals"
+      ],
+      "available_inputs": [
+        "sanitized_current_laptop_inventory"
       ],
       "gate_target": "P36-G2",
       "state": "blocked_inputs_missing",

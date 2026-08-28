@@ -154,6 +154,11 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   non-authorization.
 - `p3-6-unblock-plan.json`: ordered model, sanitized inventory, capability
   manifest, and digest-bound start prerequisites without executable authority.
+- `p3-6-inventory-authorization.json`: exact owner authorization, action and
+  sanitization allowlists, prohibited actions, and the sealed inventory result.
+- `p3-6-inventory-lab-laptop-01-r0.json`: sanitized Windows, CPU, memory,
+  display-driver, fixed-storage, and installed-tool observations with no
+  identifiers, network use, runtime execution, or performance claim.
 - `p3-6-entry-gates.json`: accepted P3.5 baseline and owner architecture
   choices, passed `P36-G3`, recorded non-effective start intent, blocked
   model/hardware/artifact/start prerequisites, and the planning-only state.

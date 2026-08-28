@@ -72,11 +72,13 @@ P3.6 reuses rather than rewrites:
   safe reason codes, low-cardinality metrics, and transactional events;
 - existing C0/C1/C10/C50 workload terminology and deployment prohibitions.
 
-The current `LAB-LAPTOP-01` profile is an Intel Core i5-8365U with Intel UHD
-Graphics 620 and no observed discrete accelerator. It supports correctness and
-small CPU evidence only. A later authorization may permit an OpenVINO
-feasibility run, but the current profile cannot establish GPU, C10/C50,
-production, or procurement claims.
+The authorized sanitized `LAB-LAPTOP-01` inventory records Windows 10 Pro
+64-bit build 19045, an Intel Core i5-8365U with four cores/eight logical
+processors, 8 GiB RAM, Intel UHD Graphics 620, and no observed discrete NVIDIA
+accelerator. Every fixed volume has less than seven percent free space. This
+supports portable-profile planning only. A later authorization may permit an
+OpenVINO feasibility run, but the current inventory cannot establish provider
+support, performance, GPU, C1/C10/C50, production, or procurement claims.
 
 ## Hard Entry Gates
 
@@ -84,7 +86,7 @@ production, or procurement claims.
 | --- | --- | --- |
 | `P36-G0` | Accepted P3.5 and explicit P3.6 planning authority | Passed |
 | `P36-G1` | Frozen `DET-R0/E1/B1/A1` comparison and promoted champion/fallback | Blocked |
-| `P36-G2` | Exact hardware/OS/driver/runtime/precision/workload profiles | Blocked |
+| `P36-G2` | Exact hardware/OS/driver/runtime/precision/workload profiles | Blocked; current-laptop inventory complete, profiles unresolved |
 | `P36-G3` | Owner decisions `D-P3.6-001` through `D-P3.6-005` | Passed |
 | `P36-G4` | Exact digest-bound artifact/dependency/container research authority | Blocked |
 | `P36-G5` | Exact implementation and runtime-execution authority | Blocked; broad start intent received but non-effective |

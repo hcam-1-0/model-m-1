@@ -670,6 +670,27 @@ defines sanitized inventory, exact model proposal, capability manifests, and a
 later immutable start package. `P36-G5` remains blocked until the owner accepts
 that final exact digest.
 
+### DR-0049: LAB-LAPTOP-01 Sanitized Inventory R0
+
+Status: authorized, completed, and sealed; no execution claim.
+
+On 2026-08-29, `mayank-admin` authorized sanitized read-only OS, hardware,
+display-driver, and already-installed runtime inventory on logical node
+`LAB-LAPTOP-01`. The collection excluded personal and network identifiers and
+performed no network, install, download, model, inference, performance, stress,
+thermal, container, Kubernetes, media/data, deployment, or remote Git action.
+
+The sealed JSON record has SHA-256
+`0E702718390FB6C373F0FC189CB58D0E79BB7FE3B3EA39B5E5AFE0DE4D47CA1F`.
+It establishes Windows 10 Pro x64, Intel i5-8365U 4C/8T, 8 GiB RAM, Intel UHD
+620, no observed discrete NVIDIA accelerator, and less than seven percent free
+space on every observed fixed volume. It makes no OpenVINO, GPU, inference,
+latency, throughput, decoder, C1/C10/C50, container, or deployment claim.
+
+`P36-U1` is complete. `P36-G2` remains blocked pending exact portable
+runtime/workload bounds, the accelerated-laptop inventory, the capacity target,
+and owner-approved profile manifests.
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

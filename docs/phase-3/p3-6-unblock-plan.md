@@ -16,7 +16,7 @@ container/Kubernetes actions, or application implementation prematurely.
 
 ### P36-U1: Sanitized Current-Laptop Inventory
 
-Decision required: `D-P3.6-INVENTORY-R0-AUTH`.
+Status: complete under `D-P3.6-INVENTORY-R0-AUTH`.
 
 The proposed authority is read-only and limited to `LAB-LAPTOP-01`:
 
@@ -32,8 +32,15 @@ MAC/IP addresses, network configuration, personal paths, and raw device IDs.
 It performs no benchmark, stress, inference, thermal, capacity, model, media,
 network, install, update, container, or Kubernetes action.
 
-This can supply the exact factual input for the `portable_cpu` manifest. It
-does not by itself pass `P36-G2` or authorize OpenVINO execution.
+The sealed output is
+[LAB-LAPTOP-01 sanitized inventory R0](p3-6-inventory-lab-laptop-01-r0.md),
+SHA-256
+`0E702718390FB6C373F0FC189CB58D0E79BB7FE3B3EA39B5E5AFE0DE4D47CA1F`.
+It records an Intel i5-8365U, 8 GiB RAM, Intel UHD 620, no observed discrete
+NVIDIA accelerator, and critically low free space on all fixed volumes.
+
+This supplies factual input for the `portable_cpu` manifest. It does not by
+itself pass `P36-G2` or authorize OpenVINO execution.
 
 ### P36-U2: Exact Model Research Proposal
 
@@ -82,19 +89,19 @@ After G1, G2, G3, and G4 pass, create one immutable package containing:
 Only a later owner statement that accepts that exact digest as
 `D-P3.6-START` can pass `P36-G5` and begin executable work.
 
-## Immediate Owner Decision
+## Next Planning Action
 
-The next narrow decision is:
+`P36-U2` may now prepare the exact official-source and artifact-research
+proposal for `DET-E1`, `DET-B1`, and `DET-A1` under the existing planning-only
+authority. It may read public official documentation and record bounded source,
+license, size, lineage, model-card, export, and unresolved metadata. It may not
+download, load, convert, execute, or promote any artifact.
 
-```text
-D-P3.6-INVENTORY-R0-AUTH: Authorize sanitized read-only hardware, OS, display
-driver, and already-installed runtime inventory on LAB-LAPTOP-01 only. No
-network, installs, downloads, containers, Kubernetes, models, inference,
-performance/stress/thermal tests, media/data access, deployment, or remote Git.
-Exclude hostname, user, serials, MAC/IP addresses, personal paths, and raw
-device identifiers.
-```
+No owner decision is requested for that read-only proposal preparation. A
+later `D-P3.6-MODEL-RESEARCH-R0-AUTH` will be prepared only after its exact
+URLs, actions, paths, ceilings, and continuing prohibitions are reviewable.
 
-This decision does not authorize collaborator-machine access. A collaborator
-may later supply an independently generated sanitized record, or a separate
-exact authority can cover an owned and explicitly identified machine.
+The completed inventory decision does not authorize collaborator-machine
+access. A collaborator may later supply an independently generated sanitized
+record, or a separate exact authority can cover an owned and explicitly
+identified machine.

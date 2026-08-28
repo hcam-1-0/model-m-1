@@ -35,7 +35,7 @@ data boundary, evidence layer, sampling floor, or retention policy.
 
 | Profile | Intended environment | Candidate path | Claim boundary | Current state |
 | --- | --- | --- | --- | --- |
-| `portable_cpu` | Current laptop and deterministic CI/reference use | ONNX Runtime CPU reference | C1 correctness and small CPU evidence only until measured | Exact manifest pending |
+| `portable_cpu` | Current laptop and deterministic CI/reference use | ONNX Runtime CPU reference | C1 correctness and small CPU evidence only until measured | Sanitized inventory complete; runtime/workload manifest pending |
 | `local_accelerated` | Owned or authorized stronger laptop | Exact validated Intel, NVIDIA, or AMD provider | Exact machine and workload only | Exact manifest pending |
 | `capacity_target` | Declared lab/server or later cluster target | Approved accelerated runtime; optional Kubernetes backend | C10/C50 only from signed exact-hardware evidence | Exact manifest pending |
 
@@ -143,7 +143,7 @@ authorization.
 
 | Record | Purpose | State |
 | --- | --- | --- |
-| `P36-PROFILE-PORTABLE-CPU-R0` | Current laptop/CI reference tuple and conservative bounds | Pending `P36-G2` |
+| `P36-PROFILE-PORTABLE-CPU-R0` | Current laptop/CI reference tuple and conservative bounds | Inventory complete; runtime/workload bounds and owner approval pending `P36-G2` |
 | `P36-PROFILE-LOCAL-ACCELERATED-R0` | First exact stronger-laptop accelerator tuple | Pending machine selection and `P36-G2` |
 | `P36-PROFILE-CAPACITY-TARGET-R0` | First declared C10/C50 lab/server tuple | Pending target authorization and `P36-G2` |
 

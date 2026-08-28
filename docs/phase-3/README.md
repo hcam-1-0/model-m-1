@@ -30,7 +30,9 @@ hardware, runtime, artifact, and workload manifests, execution, implementation,
 hardware testing, containers/Kubernetes actions, and deployment remain
 unauthorized. `D-P3.6-START` has been received and recorded as non-effective
 intent because `P36-G1`, `P36-G2`, and `P36-G4` remain blocked and no immutable
-executable package exists.
+executable package exists. Sanitized read-only inventory of `LAB-LAPTOP-01` is
+complete under `D-P3.6-INVENTORY-R0-AUTH`; it is one factual G2 input and does
+not establish an approved runtime, accelerated profile, or capacity target.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -123,6 +125,7 @@ autonomous enforcement.
 | [P3.6 capability profiles](p3-6-capability-profiles.md) | Dynamic portable CPU, local accelerated, and capacity-target policy with exact-manifest requirements |
 | [P3.6 start intent](p3-6-start-intent.md) | Received `D-P3.6-START` statement, non-effective gate state, and continuing prohibitions |
 | [P3.6 unblock plan](p3-6-unblock-plan.md) | Ordered model, sanitized inventory, profile-manifest, and final start-package prerequisites |
+| [P3.6 LAB-LAPTOP-01 inventory](p3-6-inventory-lab-laptop-01-r0.md) | Authorized sanitized Windows, CPU, memory, graphics, storage, and installed-tool evidence without execution claims |
 
 ## Non-Negotiable Boundary
 

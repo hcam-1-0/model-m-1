@@ -58,6 +58,9 @@ The later `D-P3.6-START` statement is preserved as a
 [non-effective start intent](docs/phase-3/p3-6-start-intent.md): model
 promotion, exact machine/runtime manifests, artifact authority, and a
 digest-bound executable package are still missing.
+The sanitized [LAB-LAPTOP-01 inventory](docs/phase-3/p3-6-inventory-lab-laptop-01-r0.md)
+is complete under `D-P3.6-INVENTORY-R0-AUTH`; it establishes factual portable
+hardware input only and makes no runtime, accelerator, or performance claim.
 
 A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
 pins the recommended artifact locations and bounds. The separate
