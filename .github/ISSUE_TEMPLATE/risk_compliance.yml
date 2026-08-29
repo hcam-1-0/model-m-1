@@ -2,8 +2,8 @@ name: Risk Or Compliance Item
 description: Track security, privacy, compliance, audit, or operational risk.
 title: "[Risk]: "
 labels:
-  - risk
-  - compliance
+  - "type: risk"
+  - "area: security"
 body:
   - type: dropdown
     id: risk_class

@@ -1,5 +1,30 @@
-# h-cam-2.0
-mayank repo of h cam experiment
+# H-CAM 2.0
+
+Primary integrated implementation and validation repository for the H-CAM
+resource-adaptive video intelligence platform.
+
+## GitHub Coordination
+
+- [Platform Delivery Project](https://github.com/orgs/hcam-2-0/projects/1)
+- [Architecture and repository catalogue](https://github.com/hcam-2-0/hcam-docs)
+- [Organization governance](https://github.com/hcam-2-0/.github/blob/main/GOVERNANCE.md)
+- [Cross-service contracts](https://github.com/hcam-2-0/hcam-protos)
+
+Phase, priority, target hardware profile, authorization gate, and current owner
+belong on the linked Project item. A merged change does not by itself authorize
+camera control, private/Government data, model or dataset acquisition,
+deployment, or phase acceptance.
+
+## Phase -1 Adaptive Platform Foundation
+
+Phase -1 is the platform-wide foundation for capability inventory, dynamic
+execution profiles, hardware-aware service/model selection, safe AI-layer
+bypass, standalone-to-Kubernetes scheduling, compatibility bundles,
+observability, and rollback. It must preserve common contracts from CPU-only
+developer laptops through owned GPU labs and future server/cluster deployments.
+
+Phase -1 is tracked in the Platform Delivery Project before implementation;
+existing Phase 0-3 code and evidence remain preserved.
 
 ## Phase 3 AI analytics planning
 
