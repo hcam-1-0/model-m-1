@@ -25,6 +25,7 @@ def upgrade() -> None:
         geometry_type: sa.types.TypeEngine = Geometry(
             geometry_type="POINT",
             srid=4326,
+            spatial_index=False,
             from_text="ST_GeomFromEWKT",
             name="geometry",
         )

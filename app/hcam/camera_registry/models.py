@@ -7,6 +7,7 @@ from sqlalchemy import (
     JSON,
     CheckConstraint,
     Float,
+    Index,
     Integer,
     String,
     Text,
@@ -44,6 +45,7 @@ class PortablePointGeometry(TypeDecorator[Any]):
                 Geometry(
                     geometry_type="POINT",
                     srid=4326,
+                    spatial_index=False,
                     from_text="ST_GeomFromEWKT",
                     name="geometry",
                 )
@@ -73,6 +75,7 @@ class Camera(Base):
             name="ck_cameras_duration_nonnegative",
         ),
         CheckConstraint("version_id >= 1", name="ck_cameras_version_positive"),
+        Index("ix_cameras_geometry", "geometry", postgresql_using="gist"),
     )
 
     camera_id: Mapped[str] = mapped_column(String(160), primary_key=True)

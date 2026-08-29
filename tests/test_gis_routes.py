@@ -201,7 +201,13 @@ def test_geojson_uses_geometry_and_allows_missing_location() -> None:
 def test_portable_geometry_and_coordinate_helpers() -> None:
     portable = PortablePointGeometry()
     assert portable.load_dialect_impl(sqlite.dialect()).python_type is str
-    assert portable.load_dialect_impl(postgresql.dialect()).geometry_type == "POINT"
+    postgres_geometry = portable.load_dialect_impl(postgresql.dialect())
+    assert postgres_geometry.geometry_type == "POINT"
+    assert postgres_geometry.spatial_index is False
+    geometry_index = next(
+        index for index in Camera.__table__.indexes if index.name == "ix_cameras_geometry"
+    )
+    assert geometry_index.dialect_options["postgresql"]["using"] == "gist"
 
     coordinate_camera = _camera()
     assert coordinate_camera.lat == 23.0225
