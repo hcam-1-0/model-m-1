@@ -116,6 +116,12 @@ jobs explicitly check out the contributing repository and PR head SHA rather
 than GitHub's synthetic merge commit. The report records that source SHA and
 uses `GITHUB_HEAD_REF` as its branch identity when checkout is detached.
 
+The PostgreSQL integration remains part of every Python CI run. The heavier
+50-stream Compose lab is opt-in: set the repository Actions variable
+`ENABLE_PHASE2_SYNTHETIC_LAB` to `true` when fresh P2-G2 publication evidence
+is required. A skipped Compose job is not P2-G2 evidence and does not satisfy
+that publication gate.
+
 Each job uploads one commit-specific artifact for seven days:
 
 - `phase2-p2-g1-<source-sha>` containing `p2-g1.json`;

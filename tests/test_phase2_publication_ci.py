@@ -87,6 +87,7 @@ def test_postgres_job_generates_commit_named_p2_g1_artifact() -> None:
 def test_compose_job_generates_evidence_and_keeps_defensive_cleanup() -> None:
     job = _job(_workflow(), "phase2-synthetic-lab")
 
+    assert "if: ${{ vars.ENABLE_PHASE2_SYNTHETIC_LAB == 'true' }}" in job
     assert "phase2_publication_evidence.py compose" in job
     assert "--confirm-synthetic-lab" in job
     assert "--output var/evidence/p2-g2.json" in job

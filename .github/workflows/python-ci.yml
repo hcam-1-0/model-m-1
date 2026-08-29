@@ -170,6 +170,7 @@ jobs:
 
   phase2-synthetic-lab:
     name: Phase 2 synthetic lab
+    if: ${{ vars.ENABLE_PHASE2_SYNTHETIC_LAB == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
