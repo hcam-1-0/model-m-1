@@ -47,7 +47,7 @@ def test_compose_stack_uses_files_for_secrets_and_hardened_api_runtime() -> None
         encoding="utf-8"
     )
 
-    assert "postgres:18-alpine@sha256:" in compose
+    assert "postgis/postgis:18-3.6-alpine@sha256:" in compose
     assert "HCAM_DATABASE_URL_FILE: /run/secrets/database_url" in compose
     assert "HCAM_METRICS_TOKEN_FILE: /run/secrets/metrics_token" in compose
     assert "POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password" in compose

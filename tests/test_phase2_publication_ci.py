@@ -7,10 +7,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "python-ci.yml"
 UPLOAD_ARTIFACT_SHA = "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
-SETUP_UV_SHA = "c771a70e6277c0a99b617c7a806ffedaca235ff9"
-POSTGRES_IMAGE = (
-    "postgres:18-alpine@sha256:"
-    "d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"
+SETUP_UV_SHA = "20cfd1bf945f4377ade1205e4dbc17946fc9a30d"
+POSTGIS_IMAGE = (
+    "postgis/postgis:18-3.6-alpine@sha256:"
+    "eb2e8b8afd9b0ecee83bc20fd01aca62a5071bada2c0f38763174b653f8eed42"
 )
 SOURCE_REPOSITORY_EXPRESSION = (
     "${{ github.event.pull_request.head.repo.full_name || github.repository }}"
@@ -46,7 +46,7 @@ def test_publication_evidence_uploads_use_verified_immutable_action() -> None:
 
 def test_python_jobs_use_pinned_uv_and_the_reviewed_lock() -> None:
     workflow = _workflow()
-    pinned_action = f"astral-sh/setup-uv@{SETUP_UV_SHA} # v9.0.0"
+    pinned_action = f"astral-sh/setup-uv@{SETUP_UV_SHA} # v10.0.1"
 
     assert workflow.count(pinned_action) == 5
     assert "astral-sh/setup-uv@v" not in workflow
@@ -69,8 +69,9 @@ def test_package_job_builds_and_installs_from_locked_hashes() -> None:
 def test_postgres_job_generates_commit_named_p2_g1_artifact() -> None:
     job = _job(_workflow(), "postgres-integration")
 
-    assert f"image: {POSTGRES_IMAGE}" in job
+    assert f"image: {POSTGIS_IMAGE}" in job
     assert "HCAM_POSTGRES_TEST_URL:" in job
+    assert "?options=-csearch_path%3Dpublic" in job
     assert "phase2_publication_evidence.py postgres" in job
     assert "--confirm-disposable-database" in job
     assert "--output var/evidence/p2-g1.json" in job
@@ -86,6 +87,7 @@ def test_postgres_job_generates_commit_named_p2_g1_artifact() -> None:
 def test_compose_job_generates_evidence_and_keeps_defensive_cleanup() -> None:
     job = _job(_workflow(), "phase2-synthetic-lab")
 
+    assert "if: ${{ vars.ENABLE_PHASE2_SYNTHETIC_LAB == 'true' }}" in job
     assert "phase2_publication_evidence.py compose" in job
     assert "--confirm-synthetic-lab" in job
     assert "--output var/evidence/p2-g2.json" in job
@@ -94,6 +96,11 @@ def test_compose_job_generates_evidence_and_keeps_defensive_cleanup() -> None:
     assert f"name: phase2-p2-g2-{SOURCE_SHA_EXPRESSION}" in job
     assert "path: var/evidence/p2-g2.json" in job
     assert "name: Stop the disposable stack\n        if: always()" in job
+    assert "tools/phase2_lab.py stop" in job
+    assert "name: Print synthetic lab logs after a failure" in job
+    assert "continue-on-error: true" in job
+    assert "tools/phase2_lab.py logs" in job
+    assert "docker compose -f deploy/compose.phase2.yaml down" not in job
     assert job.index("name: Stop the disposable stack") < job.index(
         "name: Upload P2-G2 publication evidence"
     )

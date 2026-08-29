@@ -167,6 +167,14 @@ class Settings:
     gis_cluster_min_zoom: int = 0
     gis_cluster_max_zoom: int = 20
 
+    # Cam-Adapter settings (Colab ingestion module — same stack, shared config)
+    cam_adapter_drive_base: str = "/content/drive/MyDrive/cctv-h/camera_recordings"
+    cam_adapter_segment_time: int = 300
+    cam_adapter_sample_interval: float = 2.0
+    cam_adapter_yolo_model: str = "yolov8n.pt"
+    cam_adapter_yolo_conf: float = 0.35
+    cam_adapter_telemetry_interval: float = 30.0
+
     def __post_init__(self) -> None:
         environment = self.environment.strip().lower()
         if environment not in {"development", "test", "production"}:
@@ -312,6 +320,18 @@ class Settings:
         if not (0 <= self.gis_cluster_min_zoom <= self.gis_cluster_max_zoom <= 22):
             raise ValueError("GIS cluster zoom range must be 0-22 with min <= max")
 
+        # Cam-Adapter validation
+        if not self.cam_adapter_drive_base.strip():
+            raise ValueError("HCAM_CAM_ADAPTER_DRIVE_BASE must not be empty")
+        if not 30 <= self.cam_adapter_segment_time <= 3600:
+            raise ValueError("HCAM_CAM_ADAPTER_SEGMENT_TIME must be 30-3600")
+        if not 0.5 <= self.cam_adapter_sample_interval <= 60:
+            raise ValueError("HCAM_CAM_ADAPTER_SAMPLE_INTERVAL must be 0.5-60")
+        if not 5 <= self.cam_adapter_telemetry_interval <= 300:
+            raise ValueError("HCAM_CAM_ADAPTER_TELEMETRY_INTERVAL must be 5-300")
+        if not 0.1 <= self.cam_adapter_yolo_conf <= 0.95:
+            raise ValueError("HCAM_CAM_ADAPTER_YOLO_CONF must be 0.1-0.95")
+
         object.__setattr__(self, "environment", environment)
         object.__setattr__(self, "database_url", self.database_url.strip())
         object.__setattr__(self, "service_name", self.service_name.strip())
@@ -448,5 +468,23 @@ class Settings:
             ),
             gis_cluster_max_zoom=_positive_environment_integer(
                 "HCAM_GIS_CLUSTER_MAX_ZOOM", defaults.gis_cluster_max_zoom
+            ),
+            cam_adapter_drive_base=os.getenv(
+                "HCAM_CAM_ADAPTER_DRIVE_BASE", defaults.cam_adapter_drive_base
+            ),
+            cam_adapter_segment_time=_positive_environment_integer(
+                "HCAM_CAM_ADAPTER_SEGMENT_TIME", defaults.cam_adapter_segment_time
+            ),
+            cam_adapter_sample_interval=_positive_environment_number(
+                "HCAM_CAM_ADAPTER_SAMPLE_INTERVAL", defaults.cam_adapter_sample_interval
+            ),
+            cam_adapter_yolo_model=os.getenv(
+                "HCAM_CAM_ADAPTER_YOLO_MODEL", defaults.cam_adapter_yolo_model
+            ),
+            cam_adapter_yolo_conf=_positive_environment_number(
+                "HCAM_CAM_ADAPTER_YOLO_CONF", defaults.cam_adapter_yolo_conf
+            ),
+            cam_adapter_telemetry_interval=_positive_environment_number(
+                "HCAM_CAM_ADAPTER_TELEMETRY_INTERVAL", defaults.cam_adapter_telemetry_interval
             ),
         )

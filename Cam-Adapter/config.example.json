@@ -1,0 +1,103 @@
+{
+  "drive_base": "/content/drive/MyDrive/cctv-h/camera_recordings",
+  "local_fallback_base": "./camera_recordings",
+  "segment_time_seconds": 300,
+  "sample_interval_seconds": 2.0,
+  "yolo_model": "yolov8n.pt",
+  "yolo_conf": 0.35,
+  "yolo_classes": null,
+  "yolo_device": "0",
+  "max_reconnect_attempts": 0,
+  "backoff_base_seconds": 1.0,
+  "backoff_max_seconds": 60.0,
+  "backoff_jitter": 0.4,
+  "telemetry_interval_seconds": 30.0,
+  "ffmpeg_bin": "ffmpeg",
+  "rtsp_transport": "tcp",
+  "sentinel_host": "live.corp8.cloud",
+  "sentinel_api": "https://live.corp8.cloud/api/ingest",
+  "sentinel_max_cameras": 10,
+  "sentinel_use_hls": false,
+  "streams": [
+    {
+      "camera_id": "cam_6",
+      "rtsp_url": "rtsp://live.corp8.cloud:8554/stream/6",
+      "enabled": true,
+      "transport": "tcp",
+      "location_label": "06 Timbavadi gate-Junagadh",
+      "department": "Gujarat Police"
+    },
+    {
+      "camera_id": "cam_13",
+      "rtsp_url": "rtsp://live.corp8.cloud:8554/stream/13",
+      "enabled": true,
+      "transport": "tcp",
+      "location_label": "13 CN Vidhyalaya",
+      "department": "Gujarat Police"
+    },
+    {
+      "camera_id": "cam_17",
+      "rtsp_url": "rtsp://live.corp8.cloud:8554/stream/17",
+      "enabled": true,
+      "transport": "tcp",
+      "location_label": "17 Rajkot Bus Port CCTV",
+      "department": "Gujarat Police"
+    },
+    {
+      "camera_id": "cam_22",
+      "rtsp_url": "rtsp://live.corp8.cloud:8554/stream/22",
+      "enabled": true,
+      "transport": "tcp",
+      "location_label": "28 BK Mervada tran Rasta",
+      "department": "Gujarat Police"
+    },
+    {
+      "camera_id": "cam_23",
+      "rtsp_url": "rtsp://live.corp8.cloud:8554/stream/23",
+      "enabled": true,
+      "transport": "tcp",
+      "location_label": "30 kheram",
+      "department": "Gujarat Police"
+    },
+    {
+      "camera_id": "cam_26",
+      "rtsp_url": "rtsp://live.corp8.cloud:8554/stream/26",
+      "enabled": true,
+      "transport": "tcp",
+      "location_label": "35 TANKAL",
+      "department": "Gujarat Police"
+    },
+    {
+      "camera_id": "cam_27",
+      "rtsp_url": "rtsp://live.corp8.cloud:8554/stream/27",
+      "enabled": true,
+      "transport": "tcp",
+      "location_label": "36 bilimora",
+      "department": "Gujarat Police"
+    },
+    {
+      "camera_id": "cam_29",
+      "rtsp_url": "rtsp://live.corp8.cloud:8554/stream/29",
+      "enabled": true,
+      "transport": "tcp",
+      "location_label": "38 bilimora",
+      "department": "Gujarat Police"
+    },
+    {
+      "camera_id": "cam_14",
+      "rtsp_url": "rtsp://live.corp8.cloud:8554/stream/14",
+      "enabled": true,
+      "transport": "tcp",
+      "location_label": "14 Delight",
+      "department": "Gujarat Police"
+    },
+    {
+      "camera_id": "cam_15",
+      "rtsp_url": "rtsp://live.corp8.cloud:8554/stream/15",
+      "enabled": true,
+      "transport": "tcp",
+      "location_label": "15 Suvidha park",
+      "department": "Gujarat Police"
+    }
+  ]
+}

@@ -7,6 +7,7 @@ from sqlalchemy import (
     JSON,
     CheckConstraint,
     Float,
+    Index,
     Integer,
     String,
     Text,
@@ -15,6 +16,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.ext.hybrid import hybrid_property
+from sqlalchemy.types import TypeDecorator
 from geoalchemy2 import Geometry
 
 from hcam.database import Base, UTCDateTime
@@ -22,6 +24,33 @@ from hcam.database import Base, UTCDateTime
 
 def utc_now() -> datetime:
     return datetime.now(UTC)
+
+
+class PortablePointGeometry(TypeDecorator[Any]):
+    """PostGIS POINT on PostgreSQL and inert text storage on SQLite.
+
+    SQLite is the project's lightweight test/development database and does not
+    load Spatialite. Keeping GeoAlchemy's ``Geometry`` as the model's top-level
+    type makes GeoAlchemy emit ``RecoverGeometryColumn`` calls on SQLite. This
+    wrapper preserves the real PostGIS type and bind/result processors while
+    allowing the non-spatial SQLite contract to create and migrate cleanly.
+    """
+
+    impl = Text
+    cache_ok = True
+
+    def load_dialect_impl(self, dialect):  # type: ignore[no-untyped-def]
+        if dialect.name == "postgresql":
+            return dialect.type_descriptor(
+                Geometry(
+                    geometry_type="POINT",
+                    srid=4326,
+                    spatial_index=False,
+                    from_text="ST_GeomFromEWKT",
+                    name="geometry",
+                )
+            )
+        return dialect.type_descriptor(Text())
 
 
 class Camera(Base):
@@ -46,6 +75,7 @@ class Camera(Base):
             name="ck_cameras_duration_nonnegative",
         ),
         CheckConstraint("version_id >= 1", name="ck_cameras_version_positive"),
+        Index("ix_cameras_geometry", "geometry", postgresql_using="gist"),
     )
 
     camera_id: Mapped[str] = mapped_column(String(160), primary_key=True)
@@ -66,7 +96,7 @@ class Camera(Base):
 
     # PostGIS geometry column (POINT, SRID 4326)
     geometry: Mapped[Any | None] = mapped_column(
-        Geometry(geometry_type="POINT", srid=4326, from_text="ST_GeomFromEWKT", name="geometry"),
+        PortablePointGeometry(),
         nullable=True,
     )
 
@@ -77,7 +107,6 @@ class Camera(Base):
             return self.latitude
         if self.geometry is not None:
             # Extract latitude from geometry (ST_Y)
-            from sqlalchemy import func
             # This is a hybrid property, so we can't execute SQL here
             # The value will be set via Python when geometry is loaded
             pass

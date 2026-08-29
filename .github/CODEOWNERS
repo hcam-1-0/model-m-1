@@ -1,0 +1,9 @@
+# Default ownership for this private repository.
+* @mayankthakor227
+
+# High-risk camera, authentication, data, deployment, and workflow surfaces.
+/app/hcam/cam_adapter/ @mayankthakor227
+/app/hcam/security/ @mayankthakor227
+/migrations/ @mayankthakor227
+/deploy/ @mayankthakor227
+/.github/ @mayankthakor227

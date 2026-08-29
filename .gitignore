@@ -16,3 +16,10 @@ var/
 .env.*
 secrets/
 *.secret
+# Cam-Adapter recordings — never commit video/json
+camera_recordings/
+Cam-Adapter/dry_run_recordings/
+Cam-Adapter/camera_recordings/
+content/
+*.mp4
+*.m4s

@@ -1,0 +1,38 @@
+name: Review question
+description: Ask a blocking scope, ownership, or approval question.
+title: "[Review]: "
+labels: [question]
+body:
+  - type: dropdown
+    id: phase-movement
+    attributes:
+      label: Phase movement
+      options: [Blocks current phase, Blocks next phase, Does not block phase movement]
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Ask one concrete question and include enough verified context to answer it.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact If Unanswered
+      description: Explain what cannot proceed and what safe work can continue.
+    validations:
+      required: true
+  - type: input
+    id: needed-by
+    attributes:
+      label: Needed By
+      placeholder: Date, milestone, or release gate
+    validations:
+      required: true
+  - type: textarea
+    id: decision-makers
+    attributes:
+      label: Reviewers Or Decision Owners
+      description: Mention the accountable users or teams when known.

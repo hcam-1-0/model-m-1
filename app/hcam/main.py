@@ -22,6 +22,21 @@ from hcam.settings import Settings
 from hcam.streams import models as _stream_models  # noqa: F401
 from hcam.streams.routes import router as stream_router
 
+try:
+    from hcam.cam_adapter.routes import (  # noqa: F401
+        dashboard_router as adapter_dashboard_router,
+    )
+    from hcam.cam_adapter.routes import (
+        monitoring_dashboard_router as camera_monitoring_dashboard_router,
+    )
+    from hcam.cam_adapter.routes import router as cam_adapter_router
+    from hcam.cam_adapter.runtime import AdapterRuntime
+except Exception:  # cam-adapter deps not installed — degrade gracefully
+    cam_adapter_router = None  # type: ignore
+    adapter_dashboard_router = None  # type: ignore
+    camera_monitoring_dashboard_router = None  # type: ignore
+    AdapterRuntime = None  # type: ignore
+
 
 def create_app(settings: Settings | None = None) -> FastAPI:
     resolved_settings = settings or Settings.from_environment()
@@ -38,12 +53,15 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         pool_timeout=resolved_settings.db_pool_timeout,
         pool_recycle=resolved_settings.db_pool_recycle,
     )
+    adapter_runtime = AdapterRuntime.from_environment() if AdapterRuntime is not None else None
 
     @asynccontextmanager
     async def lifespan(_app: FastAPI):
         if resolved_settings.create_schema:
             database.create_schema()
         yield
+        if adapter_runtime is not None:
+            adapter_runtime.close()
         database.dispose()
 
     application = FastAPI(
@@ -59,6 +77,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         service_name=resolved_settings.service_name,
         version=__version__,
     )
+    application.state.adapter_runtime = adapter_runtime
     application.add_middleware(
         RequestBodyLimitMiddleware,
         max_bytes=resolved_settings.max_request_body_bytes,
@@ -74,6 +93,12 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     application.include_router(camera_router)
     application.include_router(import_router)
     application.include_router(stream_router)
+    if cam_adapter_router is not None:
+        application.include_router(cam_adapter_router)
+    if adapter_dashboard_router is not None:
+        application.include_router(adapter_dashboard_router)
+    if camera_monitoring_dashboard_router is not None:
+        application.include_router(camera_monitoring_dashboard_router)
     return application
 
 

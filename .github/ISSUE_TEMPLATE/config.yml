@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/hcam-1-0/model-m-1/security/advisories/new
+    about: Privately report vulnerabilities, exposed credentials, or sensitive-data risks.
+  - name: Camera Adapter operations guide
+    url: https://github.com/hcam-1-0/model-m-1/blob/Camera-adapter/Cam-Adapter/README.md
+    about: Review the live-only setup, authentication, and no-recording boundaries before filing an operations issue.
