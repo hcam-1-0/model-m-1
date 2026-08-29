@@ -35,7 +35,7 @@ Create three untracked files outside the repository:
 $secretRoot = Join-Path $env:TEMP "hcam-phase1-secrets"
 New-Item -ItemType Directory -Force $secretRoot | Out-Null
 Set-Content -NoNewline "$secretRoot\postgres-password" "replace-with-random-local-value"
-Set-Content -NoNewline "$secretRoot\database-url" "postgresql+psycopg://hcam_phase1:replace-with-random-local-value@database:5432/hcam_phase1"
+Set-Content -NoNewline "$secretRoot\database-url" "postgresql+psycopg://hcam_phase1:replace-with-random-local-value@database:5432/hcam_phase1?options=-csearch_path%3Dpublic"
 Set-Content -NoNewline "$secretRoot\metrics-token" "replace-with-at-least-32-random-characters"
 $env:HCAM_POSTGRES_PASSWORD_FILE = "$secretRoot\postgres-password"
 $env:HCAM_DATABASE_URL_SECRET_FILE = "$secretRoot\database-url"

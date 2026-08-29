@@ -56,6 +56,8 @@ def test_phase2_lab_secret_preparation_does_not_return_secret_values(
     key = (secret_root / "playback-signing-key.pem").read_text(encoding="ascii")
     assert "BEGIN PRIVATE KEY" in key
     assert len((secret_root / "metrics-token").read_text(encoding="ascii")) >= 32
+    database_url = (secret_root / "database-url").read_text(encoding="ascii")
+    assert database_url.endswith("?options=-csearch_path%3Dpublic")
     assert phase2_lab.load_metrics_token(secret_root) == (
         secret_root / "metrics-token"
     ).read_text(encoding="ascii")

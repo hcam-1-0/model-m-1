@@ -71,6 +71,7 @@ def test_postgres_job_generates_commit_named_p2_g1_artifact() -> None:
 
     assert f"image: {POSTGIS_IMAGE}" in job
     assert "HCAM_POSTGRES_TEST_URL:" in job
+    assert "?options=-csearch_path%3Dpublic" in job
     assert "phase2_publication_evidence.py postgres" in job
     assert "--confirm-disposable-database" in job
     assert "--output var/evidence/p2-g1.json" in job
@@ -95,6 +96,9 @@ def test_compose_job_generates_evidence_and_keeps_defensive_cleanup() -> None:
     assert "path: var/evidence/p2-g2.json" in job
     assert "name: Stop the disposable stack\n        if: always()" in job
     assert "tools/phase2_lab.py stop" in job
+    assert "name: Print synthetic lab logs after a failure" in job
+    assert "continue-on-error: true" in job
+    assert "tools/phase2_lab.py logs" in job
     assert "docker compose -f deploy/compose.phase2.yaml down" not in job
     assert job.index("name: Stop the disposable stack") < job.index(
         "name: Upload P2-G2 publication evidence"

@@ -132,7 +132,7 @@ jobs:
           --health-timeout 5s
           --health-retries 20
     env:
-      HCAM_POSTGRES_TEST_URL: postgresql+psycopg://hcam:hcam-ci-only@127.0.0.1:5432/hcam_test
+      HCAM_POSTGRES_TEST_URL: postgresql+psycopg://hcam:hcam-ci-only@127.0.0.1:5432/hcam_test?options=-csearch_path%3Dpublic
     steps:
       - name: Check out exact PR source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -198,6 +198,12 @@ jobs:
           tools/phase2_publication_evidence.py compose
           --confirm-synthetic-lab
           --output var/evidence/p2-g2.json
+      - name: Print synthetic lab logs after a failure
+        if: failure()
+        continue-on-error: true
+        run: >-
+          uv run --locked --extra dev --extra postgres python
+          tools/phase2_lab.py logs
       - name: Stop the disposable stack
         if: always()
         run: |

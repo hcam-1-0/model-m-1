@@ -60,6 +60,7 @@ def prepare(secret_root: Path, *, force: bool = False) -> dict[str, object]:
     database_url = (
         "postgresql+psycopg://hcam_phase2:"
         f"{stored_password}@database:5432/hcam_phase2"
+        "?options=-csearch_path%3Dpublic"
     )
     _write_secret(secret_root / "database-url", database_url, force=force)
     _write_secret(
