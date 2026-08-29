@@ -23,8 +23,9 @@ starting or rolling out API replicas.
 
 ## Local Validation Stack
 
-The Compose file is a disposable engineering stack using PostgreSQL 18,
-mounted secret files, a one-shot migration service, and the non-root API image.
+The Compose file is a disposable engineering stack using PostgreSQL 18 with
+PostGIS 3.6, mounted secret files, a one-shot migration service, and the
+non-root API image.
 It deliberately enables the local development identity adapter and therefore
 must not be exposed beyond loopback or treated as production authentication.
 
