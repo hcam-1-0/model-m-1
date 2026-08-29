@@ -1,6 +1,11 @@
 # H-CAM Core — Camera Registry & GIS Backend
 
+[![Python CI](https://github.com/hcam-1-0/model-m-1/actions/workflows/python-ci.yml/badge.svg?branch=Camera-adapter)](https://github.com/hcam-1-0/model-m-1/actions/workflows/python-ci.yml)
+[![Security](https://github.com/hcam-1-0/model-m-1/actions/workflows/security.yml/badge.svg?branch=Camera-adapter)](https://github.com/hcam-1-0/model-m-1/actions/workflows/security.yml)
+
 **H-CAM** (Heterogeneous Camera Analytics & Management) is the backend foundation for the Gujarat Police CCTV Integration Hackathon 2026. It implements **Model 1: Centralised CCTV Registry & GIS Mapping** as the mandatory foundation, with extensible APIs for Models 2–4.
+
+Repository work is managed through structured GitHub Issues, reviewed pull requests, pinned Actions, Dependabot, generated release notes, and the organization delivery Project. See [CONTRIBUTING.md](CONTRIBUTING.md), [GOVERNANCE.md](GOVERNANCE.md), [SECURITY.md](SECURITY.md), and [SUPPORT.md](SUPPORT.md).
 
 ---
 
@@ -58,8 +63,10 @@
 
 ### 1. Install Dependencies
 ```powershell
-cd C:\Users\modas\OneDrive\Desktop\cctv-h\big push\model-m-1
-uv sync --locked --extra dev --extra gis
+git clone https://github.com/hcam-1-0/model-m-1.git
+cd model-m-1
+git switch Camera-adapter
+uv sync --locked --extra dev --extra postgres --extra gis --extra cam-adapter
 ```
 
 ### 2. Configure Environment
@@ -150,6 +157,8 @@ map.addLayer({
 ## Cam-Adapter — Cloud Ingest (RTSP/HLS → Drive + YOLOv8)
 
 Wired under `app/hcam/cam_adapter/` and Colab script `Cam-Adapter/hcam_colab_ingest.py`. Same stack (FastAPI, Pydantic, SQLAlchemy), shared `Settings` (`HCAM_CAM_ADAPTER_*`).
+
+The branch supports two deliberately separate operating modes. Recording/analytics workers remain explicit and review-gated. The project-local Windows configuration uses the live-only WHEP/WebRTC viewer with recording disabled, zero stream workers, and no MP4 output. Its basic operations page is `/adapter-backend-dashboard`; the directly connected monitoring extension is `/camera-monitoring-dashboard`. An API or session success is not treated as proof of decoded browser pixels.
 
 **Sentinel host:** `live.corp8.cloud` — `GET https://live.corp8.cloud/api/ingest` returns 30 live cams (mix h264/hevc). Adapter auto-loads via `USE_SENTINEL_CATALOG=True` in Cell 4.
 
@@ -280,6 +289,12 @@ model-m-1/
 ---
 
 ## Running Tests
+
+The design baseline, acceptance evidence, and delivery roadmap are indexed in
+[`docs/phase-0/README.md`](docs/phase-0/README.md). The main CI run keeps the
+established core at 90% branch coverage. The live-only Camera Adapter and GIS
+HTTP extension also run in a dedicated smoke job so their optional runtime
+dependencies cannot weaken the core gate.
 
 ```powershell
 # Unit tests

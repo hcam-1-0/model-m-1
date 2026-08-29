@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "python-ci.yml"
 UPLOAD_ARTIFACT_SHA = "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
-SETUP_UV_SHA = "c771a70e6277c0a99b617c7a806ffedaca235ff9"
+SETUP_UV_SHA = "20cfd1bf945f4377ade1205e4dbc17946fc9a30d"
 POSTGRES_IMAGE = (
     "postgres:18-alpine@sha256:"
     "d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"
@@ -46,7 +46,7 @@ def test_publication_evidence_uploads_use_verified_immutable_action() -> None:
 
 def test_python_jobs_use_pinned_uv_and_the_reviewed_lock() -> None:
     workflow = _workflow()
-    pinned_action = f"astral-sh/setup-uv@{SETUP_UV_SHA} # v9.0.0"
+    pinned_action = f"astral-sh/setup-uv@{SETUP_UV_SHA} # v10.0.1"
 
     assert workflow.count(pinned_action) == 5
     assert "astral-sh/setup-uv@v" not in workflow

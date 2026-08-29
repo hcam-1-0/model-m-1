@@ -1,0 +1,19 @@
+changelog:
+  exclude:
+    labels:
+      - skip-changelog
+  categories:
+    - title: Breaking changes
+      labels: [breaking-change]
+    - title: Camera adapter and live monitoring
+      labels: [camera-adapter, enhancement]
+    - title: Security and governance
+      labels: [security, governance]
+    - title: Fixes
+      labels: [bug]
+    - title: Documentation
+      labels: [documentation]
+    - title: Dependencies
+      labels: [dependencies]
+    - title: Other changes
+      labels: ["*"]

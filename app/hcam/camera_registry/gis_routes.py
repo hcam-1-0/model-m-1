@@ -5,12 +5,12 @@ from typing import Any
 from fastapi import APIRouter, Depends, Query, Response
 from geoalchemy2.shape import to_shape
 from mapbox_vector_tile import encode
-from shapely.geometry import mapping
+from shapely.geometry import Point, mapping
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from hcam.camera_registry.models import Camera
-from hcam.camera_registry.schemas import CameraGeoOut, CameraGeoCollection
+from hcam.camera_registry.schemas import CameraGeoCollection
 from hcam.database import get_session
 
 router = APIRouter(prefix="/geo", tags=["camera-gis"])
@@ -35,7 +35,7 @@ def cameras_in_bbox(
 
     stmt = (
         select(Camera)
-        .where(Camera.geometry is not None)
+        .where(Camera.geometry.is_not(None))
         .where(func.ST_Intersects(Camera.geometry, bbox))
         .limit(limit)
         .offset(offset)
@@ -69,7 +69,7 @@ def cameras_in_radius(
 
     stmt = (
         select(Camera)
-        .where(Camera.geometry is not None)
+        .where(Camera.geometry.is_not(None))
         .where(
             func.ST_DWithin(
                 func.Geography(Camera.geometry),
@@ -126,7 +126,7 @@ def cameras_clustered(
             func.array_agg(Camera.camera_type).label("types"),
             func.array_agg(Camera.health_status).label("health_statuses"),
         )
-        .where(Camera.geometry is not None)
+        .where(Camera.geometry.is_not(None))
         .where(func.ST_Intersects(Camera.geometry, bbox))
         .group_by(grid_expr)
     )
@@ -188,7 +188,7 @@ def camera_vector_tile(
         # Fetch raw points in bbox — Python-side tile encoding (avoids ST_AsMVTGeom frag issues)
         stmt = (
             select(Camera)
-            .where(Camera.geometry is not None)
+            .where(Camera.geometry.is_not(None))
             .where(func.ST_Intersects(Camera.geometry, bbox))
         )
         result = session.execute(stmt)
@@ -216,7 +216,7 @@ def camera_vector_tile(
             x_px = max(0, min(4096, x_px))
             y_px = max(0, min(4096, y_px))
             features.append({
-                "geometry": {"type": "Point", "coordinates": [x_px, y_px]},
+                "geometry": Point(x_px, y_px),
                 "properties": {
                     "camera_id": cam.camera_id,
                     "display_name": cam.display_name,
@@ -225,14 +225,13 @@ def camera_vector_tile(
                     "health_status": cam.health_status or "",
                     "operational_status": cam.operational_status or "",
                 },
-                "id": cam.camera_id,
             })
 
         # Empty tile must still be valid MVT
         if not features:
-            mvt_data = encode({"cameras": {"name": "cameras", "features": []}})
+            mvt_data = encode([{"name": "cameras", "features": []}])
         else:
-            mvt_data = encode({"cameras": {"name": "cameras", "features": features}})
+            mvt_data = encode([{"name": "cameras", "features": features}])
 
         return Response(
             content=mvt_data,
@@ -241,7 +240,7 @@ def camera_vector_tile(
     except Exception:
         # Never 500 — return empty tile on error (map lib handles it)
         try:
-            mvt_data = encode({"cameras": {"name": "cameras", "features": []}})
+            mvt_data = encode([{"name": "cameras", "features": []}])
             return Response(content=mvt_data, media_type="application/vnd.mapbox-vector-tile")
         except Exception:
             return Response(content=b"", media_type="application/x-protobuf")

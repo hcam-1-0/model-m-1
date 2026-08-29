@@ -1,0 +1,48 @@
+name: Phase task
+description: Plan an implementation task with acceptance, safety, and validation gates.
+title: "[Phase]: "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: Describe one bounded delivery item. Link larger work to a GitHub Project rather than combining unrelated changes.
+  - type: input
+    id: phase
+    attributes:
+      label: Phase Or Project Field
+      placeholder: Phase 2 / Camera Adapter / Monitoring Center
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired Outcome
+      description: State the user-visible result and affected repository surfaces.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      placeholder: Use a checklist with observable outcomes.
+    validations:
+      required: true
+  - type: textarea
+    id: safety
+    attributes:
+      label: Safety And Data Handling
+      value: No CCTV video, credentials, government data, police records, or personally sensitive data will be committed or attached.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation Plan
+      description: Include tests, lint, migration checks, API smoke checks, and browser-media checks where applicable.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies And Blockers
+      description: Link related issues, decisions, approvals, and external systems.

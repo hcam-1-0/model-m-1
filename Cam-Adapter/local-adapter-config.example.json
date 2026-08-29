@@ -1,0 +1,34 @@
+{
+  "drive_base": "../camera_recordings",
+  "local_fallback_base": "../camera_recordings",
+  "segment_time_seconds": 300,
+  "sample_interval_seconds": 2.0,
+  "yolo_model": "yolov8n.pt",
+  "yolo_conf": 0.35,
+  "yolo_device": "cpu",
+  "ffmpeg_bin": "../runtime/ffmpeg-distribution/ffmpeg-master-latest-win64-gpl/bin/ffmpeg.exe",
+  "ffprobe_bin": "../runtime/ffmpeg-distribution/ffmpeg-master-latest-win64-gpl/bin/ffprobe.exe",
+  "allowed_source_hosts": [
+    "live.corp8.cloud"
+  ],
+  "catalog": {
+    "url": "https://live.corp8.cloud/api/ingest",
+    "enabled": false,
+    "source_kind": "whep",
+    "max_cameras": 3,
+    "camera_id_prefix": "corp8_",
+    "timeout_seconds": 10,
+    "viewer_enabled": false,
+    "viewer_session_ttl_seconds": 900
+  },
+  "streams": [
+    {
+      "camera_id": "replace_with_authorized_camera",
+      "rtsp_url": "rtsp://replace-with-authorized-host:8554/path",
+      "enabled": false,
+      "transport": "tcp",
+      "location_label": "Replace with authorized camera location",
+      "department": "Replace with authorized department"
+    }
+  ]
+}

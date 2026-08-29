@@ -1,0 +1,233 @@
+name: Python CI
+
+on:
+  push:
+    branches: [main, Camera-adapter, live-test]
+  pull_request:
+    branches: [main, Camera-adapter, live-test]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: python-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION: python
+  PYTHONDONTWRITEBYTECODE: "1"
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  package-build:
+    name: Package, lint, and contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out reviewed source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Set up uv
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.12.3"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - name: Install the reviewed dependency graph
+        run: uv sync --locked --extra dev --extra postgres --extra cam-adapter
+      - name: Verify lock, source, and release contracts
+        run: |
+          uv lock --check
+          uv run --locked --extra dev --extra postgres python -m compileall -q app tools migrations
+          uv run --locked --extra dev --extra postgres python -m py_compile tools/sentinel_cctv_probe.py
+          uv run --locked --extra dev --extra postgres ruff check app tests tools migrations
+          uv run --locked --extra dev --extra postgres python tools/release_contracts.py check
+          uv run --locked --extra dev --extra postgres python -m unittest discover -s tests -v
+      - name: Install wheel in an isolated environment
+        run: |
+          uv run --locked --extra dev python -m build --no-isolation --outdir dist
+          uv export --locked --no-dev --no-emit-project --format requirements-txt --output-file dist/requirements.txt
+          python -m venv var/package-smoke
+          var/package-smoke/bin/python -m pip install --require-hashes --requirement dist/requirements.txt
+          var/package-smoke/bin/python -m pip install --no-deps dist/*.whl
+          var/package-smoke/bin/hcam --help
+
+  container-validation:
+    name: Non-root container and Compose validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out reviewed source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Validate the Phase 1 Compose model
+        run: docker compose -f deploy/compose.phase1.yaml config --quiet
+      - name: Build the production image
+        run: docker build --tag hcam-core:ci .
+      - name: Confirm the image does not run as root
+        run: |
+          image_user="$(docker image inspect hcam-core:ci --format '{{.Config.User}}')"
+          test -n "$image_user"
+          test "$image_user" != "0"
+          test "$image_user" != "root"
+
+  unit-tests:
+    name: Python ${{ matrix.python-version }} tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13", "3.14"]
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Set up uv
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.12.3"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - name: Install test dependencies
+        run: uv sync --locked --extra dev --extra postgres --extra cam-adapter
+      - name: Run tests with branch coverage
+        run: >-
+          uv run --locked --extra dev --extra postgres --extra cam-adapter
+          pytest --cov=hcam --cov-branch --cov-report=term-missing
+          --cov-report=xml --cov-fail-under=90
+
+  postgres-integration:
+    name: PostgreSQL 18 integration
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:18-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2
+        env:
+          POSTGRES_DB: hcam_test
+          POSTGRES_USER: hcam
+          POSTGRES_PASSWORD: hcam-ci-only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U hcam -d hcam_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      HCAM_POSTGRES_TEST_URL: postgresql+psycopg://hcam:hcam-ci-only@127.0.0.1:5432/hcam_test
+    steps:
+      - name: Check out exact PR source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Set up uv
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.12.3"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - name: Install PostgreSQL test dependencies
+        run: uv sync --locked --extra dev --extra postgres
+      - name: Generate guarded P2-G1 evidence
+        run: >-
+          uv run --locked --extra dev --extra postgres python
+          tools/phase2_publication_evidence.py postgres
+          --confirm-disposable-database
+          --output var/evidence/p2-g1.json
+      - name: Upload P2-G1 publication evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: phase2-p2-g1-${{ github.event.pull_request.head.sha || github.sha }}
+          path: var/evidence/p2-g1.json
+          if-no-files-found: error
+          retention-days: 7
+
+  phase2-synthetic-lab:
+    name: Phase 2 synthetic lab
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Check out exact PR source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Set up uv
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.12.3"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - name: Install synthetic-lab dependencies
+        run: uv sync --locked --extra dev --extra postgres
+      - name: Generate guarded P2-G2 evidence
+        run: >-
+          uv run --locked --extra dev --extra postgres python
+          tools/phase2_publication_evidence.py compose
+          --confirm-synthetic-lab
+          --output var/evidence/p2-g2.json
+      - name: Stop the disposable stack
+        if: always()
+        run: docker compose -f deploy/compose.phase2.yaml down --volumes --remove-orphans
+      - name: Upload P2-G2 publication evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: phase2-p2-g2-${{ github.event.pull_request.head.sha || github.sha }}
+          path: var/evidence/p2-g2.json
+          if-no-files-found: error
+          retention-days: 7
+
+  camera-adapter-smoke:
+    name: Camera adapter and dashboard smoke tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Set up uv
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.12.3"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - name: Install camera adapter dependencies
+        run: uv sync --locked --extra dev --extra postgres --extra cam-adapter
+      - name: Verify live-only adapter and both dashboards
+        run: >-
+          uv run --locked --extra dev --extra postgres --extra cam-adapter
+          pytest -q tests/test_cam_adapter_config.py tests/test_gis_routes.py

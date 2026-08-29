@@ -1,0 +1,45 @@
+name: Architecture decision
+description: Record a consequential design choice before implementation.
+title: "[ADR]: "
+labels: [documentation]
+body:
+  - type: dropdown
+    id: status
+    attributes:
+      label: Decision Status
+      options: [Proposed, Accepted, Rejected, Superseded]
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context And Problem
+      description: Explain constraints, contracts, scale, and the decision boundary.
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: Options Considered
+      description: Compare viable options and explain the selected direction.
+    validations:
+      required: true
+  - type: textarea
+    id: consequences
+    attributes:
+      label: Consequences
+      description: Include compatibility, performance, operations, migration, and rollback effects.
+    validations:
+      required: true
+  - type: textarea
+    id: safety
+    attributes:
+      label: Safety And Data Impact
+      description: Cover authorization, audit logs, retention, privacy, camera egress, recording, and failure behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Validation Evidence
+      description: Link prototypes, tests, Actions runs, and review approvals.

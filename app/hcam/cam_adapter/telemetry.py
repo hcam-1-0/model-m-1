@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import os
-import shutil
 import threading
 import time
 from pathlib import Path
@@ -40,7 +38,7 @@ def collect_drive_usage(base: Path) -> tuple[int, int]:
             continue
     # Also count detections
     det_count = 0
-    for p in base.rglob("*.json"):
+    for _ in base.rglob("*.json"):
         det_count += 1
     return total, count
 

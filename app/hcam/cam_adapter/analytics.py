@@ -147,7 +147,7 @@ class FrameSampler:
                 xyxy = r.boxes.xyxy.cpu().numpy()  # type: ignore[union-attr]
                 conf = r.boxes.conf.cpu().numpy()  # type: ignore[union-attr]
                 cls = r.boxes.cls.cpu().numpy().astype(int)  # type: ignore[union-attr]
-                for (x1, y1, x2, y2), c, k in zip(xyxy, conf, cls):
+                for (x1, y1, x2, y2), c, k in zip(xyxy, conf, cls, strict=True):
                     detections.append({
                         "bbox": [float(x1), float(y1), float(x2), float(y2)],
                         "conf": float(c),

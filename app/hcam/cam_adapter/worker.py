@@ -18,8 +18,6 @@ def exponential_backoff(attempt: int, base: float, cap: float, jitter: float) ->
     exp = min(cap, base * (2 ** attempt))
     if jitter <= 0:
         return exp
-    # jitter in [0, jitter] fraction
-    j = random.uniform(0, jitter * exp)
     # Randomize between exp*(1-jitter) and exp
     low = exp * (1 - jitter)
     return random.uniform(low, exp)
@@ -40,7 +38,7 @@ class CameraWorker(threading.Thread):
         self.cfg = cfg
         self.base = base
         self.logger = logger or (lambda msg: print(msg, flush=True))
-        self._stop = threading.Event()
+        self._stop_event = threading.Event()
         self._proc = None
         self._sampler: FrameSampler | None = None
 
@@ -51,7 +49,7 @@ class CameraWorker(threading.Thread):
             pass
 
     def stop(self) -> None:
-        self._stop.set()
+        self._stop_event.set()
         if self._proc is not None:
             try:
                 terminate_recorder(self._proc)
@@ -100,9 +98,11 @@ class CameraWorker(threading.Thread):
             extra_input_args=self.cfg.extra_ffmpeg_input_args,
             extra_output_args=self.cfg.extra_ffmpeg_output_args,
         )
-        self._log(f"FFmpeg cmd: {' '.join(cmd)}")
+        # Do not log the complete command: an authorized source URL can contain
+        # credentials and this log is persisted beside camera recordings.
+        self._log("FFmpeg recorder prepared")
 
-        while not self._stop.is_set():
+        while not self._stop_event.is_set():
             # Check max attempts (0 = infinite)
             if self.cfg.max_reconnect_attempts and attempt >= self.cfg.max_reconnect_attempts:
                 self._log(f"max reconnect attempts ({self.cfg.max_reconnect_attempts}) reached — stopping")
@@ -111,7 +111,7 @@ class CameraWorker(threading.Thread):
             if attempt > 0:
                 backoff = exponential_backoff(attempt - 1, self.cfg.backoff_base_seconds, self.cfg.backoff_max_seconds, self.cfg.backoff_jitter)
                 self._log(f"reconnect attempt {attempt} backoff {backoff:.1f}s")
-                if self._stop.wait(backoff):
+                if self._stop_event.wait(backoff):
                     break
 
             self._log(f"starting recorder (attempt {attempt}) -> {pattern}")
@@ -124,9 +124,8 @@ class CameraWorker(threading.Thread):
 
             # Inner loop: monitor FFmpeg + run analytics sampling
             # We poll proc every ~0.5s and interleave analytics
-            attempt_reset_threshold = time.monotonic() + 90  # if stays up 90s, reset backoff
             healthy_since = time.monotonic()
-            while not self._stop.is_set():
+            while not self._stop_event.is_set():
                 # Check if FFmpeg died
                 ret = self._proc.poll()
                 if ret is not None:
@@ -170,11 +169,11 @@ class CameraWorker(threading.Thread):
                     healthy_since = time.monotonic()
 
                 # Sleep briefly, responsive to stop
-                if self._stop.wait(0.5):
+                if self._stop_event.wait(0.5):
                     break
 
             # If inner loop exited due to stop, cleanup and exit outer
-            if self._stop.is_set():
+            if self._stop_event.is_set():
                 if self._proc is not None:
                     try:
                         terminate_recorder(self._proc)
@@ -210,6 +209,9 @@ class AdapterOrchestrator:
         )
 
     def start(self) -> None:
+        if self.workers:
+            self.logger("[orchestrator] already started")
+            return
         self.base.mkdir(parents=True, exist_ok=True)
         self.telemetry.start()
         for s in self.cfg.streams:
@@ -227,6 +229,7 @@ class AdapterOrchestrator:
             w.stop()
         for w in self.workers:
             w.join(timeout=10)
+        self.workers.clear()
         self.logger("[orchestrator] all workers stopped")
 
     def wait(self) -> None:

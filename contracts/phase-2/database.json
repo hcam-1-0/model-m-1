@@ -1,6 +1,6 @@
 {
   "alembic_heads": [
-    "0007_onvif_operations"
+    "0008_postgis_gis"
   ],
   "contract_format": "hcam.database.contract.v1",
   "dialect": "sqlite",
@@ -381,6 +381,13 @@
           "nullable": false,
           "primary_key_position": 0,
           "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "geometry",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "TEXT"
         }
       ],
       "foreign_keys": [],
@@ -397,6 +404,13 @@
             "department"
           ],
           "name": "ix_cameras_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "geometry"
+          ],
+          "name": "ix_cameras_geometry",
           "unique": false
         },
         {

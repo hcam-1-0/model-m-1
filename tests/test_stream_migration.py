@@ -7,7 +7,7 @@ from pathlib import Path
 import pytest
 from alembic import command
 from alembic.config import Config
-from sqlalchemy import inspect, select
+from sqlalchemy import MetaData, Table, inspect, select
 from sqlalchemy.exc import IntegrityError
 
 from hcam.camera_registry.models import Camera
@@ -66,8 +66,37 @@ def test_stream_migration_backfills_and_round_trips(
 
     database = Database(database_url, allow_unversioned_schema=True)
     try:
+        # Reflect the historical table instead of issuing an INSERT through
+        # today's ORM model, which legitimately contains columns introduced by
+        # later migrations (for example the 0008 GIS geometry column).
+        legacy_cameras = Table(
+            "cameras",
+            MetaData(),
+            autoload_with=database.engine,
+        )
+        legacy_camera = _legacy_camera()
         with database.session_factory.begin() as session:
-            session.add(_legacy_camera())
+            session.execute(
+                legacy_cameras.insert().values(
+                    camera_id=legacy_camera.camera_id,
+                    version_id=1,
+                    source_id=legacy_camera.source_id,
+                    external_id=legacy_camera.external_id,
+                    display_name=legacy_camera.display_name,
+                    department=legacy_camera.department,
+                    selected_url=legacy_camera.selected_url,
+                    delivery_type=legacy_camera.delivery_type,
+                    codec=legacy_camera.codec,
+                    container=legacy_camera.container,
+                    reachability=legacy_camera.reachability,
+                    last_checked_at=legacy_camera.last_checked_at,
+                    source_schema=legacy_camera.source_schema,
+                    provenance=legacy_camera.provenance,
+                    imported_at=legacy_camera.imported_at,
+                    created_at=legacy_camera.created_at,
+                    updated_at=legacy_camera.updated_at,
+                )
+            )
 
         _upgrade(database_url, "head")
         inspector = inspect(database.engine)

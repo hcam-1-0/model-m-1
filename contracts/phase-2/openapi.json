@@ -3,6 +3,229 @@
   "schema": {
     "components": {
       "schemas": {
+        "AdapterBackendDashboardData": {
+          "properties": {
+            "adapter": {
+              "$ref": "#/components/schemas/AdapterStatus"
+            },
+            "live_cameras": {
+              "items": {
+                "$ref": "#/components/schemas/LiveCameraResponse"
+              },
+              "title": "Live Cameras",
+              "type": "array"
+            },
+            "live_cameras_available": {
+              "title": "Live Cameras Available",
+              "type": "boolean"
+            },
+            "live_cameras_message": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Live Cameras Message"
+            }
+          },
+          "required": [
+            "adapter",
+            "live_cameras",
+            "live_cameras_available"
+          ],
+          "title": "AdapterBackendDashboardData",
+          "type": "object"
+        },
+        "AdapterStatus": {
+          "properties": {
+            "active_workers": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Active Workers",
+              "type": "array"
+            },
+            "base": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Base"
+            },
+            "catalog_configured": {
+              "title": "Catalog Configured",
+              "type": "boolean"
+            },
+            "catalog_enabled": {
+              "title": "Catalog Enabled",
+              "type": "boolean"
+            },
+            "config_file": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Config File"
+            },
+            "config_loaded": {
+              "title": "Config Loaded",
+              "type": "boolean"
+            },
+            "configuration_error": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Configuration Error"
+            },
+            "live_viewer_camera_limit": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Live Viewer Camera Limit"
+            },
+            "live_viewer_configured": {
+              "title": "Live Viewer Configured",
+              "type": "boolean"
+            },
+            "live_viewer_enabled": {
+              "title": "Live Viewer Enabled",
+              "type": "boolean"
+            },
+            "running": {
+              "title": "Running",
+              "type": "boolean"
+            },
+            "sample_interval": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Sample Interval"
+            },
+            "segment_time": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Segment Time"
+            },
+            "streams_configured": {
+              "title": "Streams Configured",
+              "type": "integer"
+            },
+            "streams_enabled": {
+              "title": "Streams Enabled",
+              "type": "integer"
+            },
+            "yolo_model": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Yolo Model"
+            }
+          },
+          "required": [
+            "config_loaded",
+            "config_file",
+            "configuration_error",
+            "running",
+            "base",
+            "segment_time",
+            "streams_configured",
+            "streams_enabled",
+            "active_workers",
+            "yolo_model",
+            "sample_interval",
+            "catalog_configured",
+            "catalog_enabled",
+            "live_viewer_configured",
+            "live_viewer_enabled",
+            "live_viewer_camera_limit"
+          ],
+          "title": "AdapterStatus",
+          "type": "object"
+        },
+        "AdapterStream": {
+          "properties": {
+            "camera_id": {
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "department": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Department"
+            },
+            "enabled": {
+              "title": "Enabled",
+              "type": "boolean"
+            },
+            "location_label": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Location Label"
+            },
+            "url_redacted": {
+              "title": "Url Redacted",
+              "type": "string"
+            }
+          },
+          "required": [
+            "camera_id",
+            "enabled",
+            "location_label",
+            "department",
+            "url_redacted"
+          ],
+          "title": "AdapterStream",
+          "type": "object"
+        },
         "CameraCapabilityDiscoveryResponse": {
           "properties": {
             "camera_id": {
@@ -36,6 +259,86 @@
             "media"
           ],
           "title": "CameraCapabilityDiscoveryResponse",
+          "type": "object"
+        },
+        "CameraClusterProperties": {
+          "properties": {
+            "camera_ids": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Camera Ids",
+              "type": "array"
+            },
+            "cluster": {
+              "const": true,
+              "default": true,
+              "title": "Cluster",
+              "type": "boolean"
+            },
+            "count": {
+              "title": "Count",
+              "type": "integer"
+            },
+            "departments": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "title": "Departments",
+              "type": "array"
+            },
+            "health_statuses": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "title": "Health Statuses",
+              "type": "array"
+            },
+            "names": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Names",
+              "type": "array"
+            },
+            "types": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "title": "Types",
+              "type": "array"
+            }
+          },
+          "required": [
+            "count",
+            "camera_ids",
+            "names",
+            "departments",
+            "types",
+            "health_statuses"
+          ],
+          "title": "CameraClusterProperties",
           "type": "object"
         },
         "CameraCreate": {
@@ -168,6 +471,203 @@
             "display_name"
           ],
           "title": "CameraCreate",
+          "type": "object"
+        },
+        "CameraGeoCollection": {
+          "properties": {
+            "features": {
+              "items": {
+                "$ref": "#/components/schemas/CameraGeoOut"
+              },
+              "title": "Features",
+              "type": "array"
+            },
+            "type": {
+              "const": "FeatureCollection",
+              "default": "FeatureCollection",
+              "title": "Type",
+              "type": "string"
+            }
+          },
+          "required": [
+            "features"
+          ],
+          "title": "CameraGeoCollection",
+          "type": "object"
+        },
+        "CameraGeoOut": {
+          "properties": {
+            "geometry": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/GeoJSONGeometry"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Id"
+            },
+            "properties": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/CameraGeoProperties"
+                },
+                {
+                  "$ref": "#/components/schemas/CameraClusterProperties"
+                }
+              ],
+              "title": "Properties"
+            },
+            "type": {
+              "const": "Feature",
+              "default": "Feature",
+              "title": "Type",
+              "type": "string"
+            }
+          },
+          "required": [
+            "properties"
+          ],
+          "title": "CameraGeoOut",
+          "type": "object"
+        },
+        "CameraGeoProperties": {
+          "properties": {
+            "camera_id": {
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "camera_type": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Camera Type"
+            },
+            "connectivity_status": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Connectivity Status"
+            },
+            "department": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Department"
+            },
+            "display_name": {
+              "title": "Display Name",
+              "type": "string"
+            },
+            "health_status": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Health Status"
+            },
+            "location_label": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Location Label"
+            },
+            "maintenance_status": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Maintenance Status"
+            },
+            "operational_status": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Operational Status"
+            },
+            "ownership": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Ownership"
+            },
+            "storage_status": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Storage Status"
+            },
+            "timezone_name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Timezone Name"
+            }
+          },
+          "required": [
+            "camera_id",
+            "display_name"
+          ],
+          "title": "CameraGeoProperties",
           "type": "object"
         },
         "CameraListResponse": {
@@ -957,6 +1457,54 @@
           "title": "CapabilitySnapshotResponse",
           "type": "object"
         },
+        "CatalogPreviewResponse": {
+          "properties": {
+            "catalog_host": {
+              "title": "Catalog Host",
+              "type": "string"
+            },
+            "selected_streams": {
+              "items": {
+                "$ref": "#/components/schemas/AdapterStream"
+              },
+              "title": "Selected Streams",
+              "type": "array"
+            },
+            "total_entries": {
+              "title": "Total Entries",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "catalog_host",
+            "total_entries",
+            "selected_streams"
+          ],
+          "title": "CatalogPreviewResponse",
+          "type": "object"
+        },
+        "GeoJSONGeometry": {
+          "properties": {
+            "coordinates": {
+              "items": {
+                "type": "number"
+              },
+              "title": "Coordinates",
+              "type": "array"
+            },
+            "type": {
+              "const": "Point",
+              "title": "Type",
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "title": "GeoJSONGeometry",
+          "type": "object"
+        },
         "HTTPValidationError": {
           "properties": {
             "detail": {
@@ -985,6 +1533,77 @@
             "status"
           ],
           "title": "HealthResponse",
+          "type": "object"
+        },
+        "LiveCameraList": {
+          "properties": {
+            "cameras": {
+              "items": {
+                "$ref": "#/components/schemas/LiveCameraResponse"
+              },
+              "title": "Cameras",
+              "type": "array"
+            }
+          },
+          "required": [
+            "cameras"
+          ],
+          "title": "LiveCameraList",
+          "type": "object"
+        },
+        "LiveCameraResponse": {
+          "properties": {
+            "camera_id": {
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "department": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Department"
+            },
+            "location_label": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Location Label"
+            }
+          },
+          "required": [
+            "camera_id",
+            "location_label",
+            "department"
+          ],
+          "title": "LiveCameraResponse",
+          "type": "object"
+        },
+        "LiveViewerLaunch": {
+          "properties": {
+            "expires_in_seconds": {
+              "title": "Expires In Seconds",
+              "type": "integer"
+            },
+            "launch_path": {
+              "title": "Launch Path",
+              "type": "string"
+            }
+          },
+          "required": [
+            "launch_path",
+            "expires_in_seconds"
+          ],
+          "title": "LiveViewerLaunch",
           "type": "object"
         },
         "LocationPatch": {
@@ -2119,6 +2738,24 @@
             "safe_use"
           ],
           "title": "SeedSource",
+          "type": "object"
+        },
+        "SourceValidation": {
+          "properties": {
+            "camera_id": {
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "reachable": {
+              "title": "Reachable",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "camera_id",
+            "reachable"
+          ],
+          "title": "SourceValidation",
           "type": "object"
         },
         "StateResponse": {
@@ -3375,6 +4012,344 @@
     },
     "openapi": "3.1.0",
     "paths": {
+      "/cam-adapter/catalog/preview": {
+        "post": {
+          "operationId": "preview_catalog_cam_adapter_catalog_preview_post",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CatalogPreviewResponse"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "Preview Catalog",
+          "tags": [
+            "cam-adapter"
+          ]
+        }
+      },
+      "/cam-adapter/dashboard/data": {
+        "get": {
+          "operationId": "adapter_backend_dashboard_data_cam_adapter_dashboard_data_get",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AdapterBackendDashboardData"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "Adapter Backend Dashboard Data",
+          "tags": [
+            "cam-adapter"
+          ]
+        }
+      },
+      "/cam-adapter/dashboard/session": {
+        "post": {
+          "description": "Create a one-time local browser launch link for the basic dashboard.",
+          "operationId": "create_adapter_backend_dashboard_session_cam_adapter_dashboard_session_post",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LiveViewerLaunch"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "Create Adapter Backend Dashboard Session",
+          "tags": [
+            "cam-adapter"
+          ]
+        }
+      },
+      "/cam-adapter/live/cameras": {
+        "get": {
+          "operationId": "list_live_cameras_cam_adapter_live_cameras_get",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LiveCameraList"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "List Live Cameras",
+          "tags": [
+            "cam-adapter"
+          ]
+        }
+      },
+      "/cam-adapter/live/session": {
+        "post": {
+          "description": "Create a one-time local browser launch link for the authenticated admin.",
+          "operationId": "create_live_viewer_session_cam_adapter_live_session_post",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LiveViewerLaunch"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "Create Live Viewer Session",
+          "tags": [
+            "cam-adapter"
+          ]
+        }
+      },
+      "/cam-adapter/live/whep/{camera_id}": {
+        "post": {
+          "operationId": "negotiate_live_whep_cam_adapter_live_whep__camera_id__post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "camera_id",
+              "required": true,
+              "schema": {
+                "title": "Camera Id",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Negotiate Live Whep",
+          "tags": [
+            "cam-adapter"
+          ]
+        }
+      },
+      "/cam-adapter/live/whep/{playback_session_id}": {
+        "delete": {
+          "operationId": "close_live_whep_cam_adapter_live_whep__playback_session_id__delete",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "playback_session_id",
+              "required": true,
+              "schema": {
+                "title": "Playback Session Id",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Close Live Whep",
+          "tags": [
+            "cam-adapter"
+          ]
+        }
+      },
+      "/cam-adapter/monitoring-dashboard/session": {
+        "post": {
+          "description": "Create a one-time launch link for the monitoring-center extension.",
+          "operationId": "create_camera_monitoring_dashboard_session_cam_adapter_monitoring_dashboard_session_post",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LiveViewerLaunch"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "Create Camera Monitoring Dashboard Session",
+          "tags": [
+            "cam-adapter"
+          ]
+        }
+      },
+      "/cam-adapter/reload": {
+        "post": {
+          "operationId": "reload_adapter_config_cam_adapter_reload_post",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AdapterStatus"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "Reload Adapter Config",
+          "tags": [
+            "cam-adapter"
+          ]
+        }
+      },
+      "/cam-adapter/start": {
+        "post": {
+          "operationId": "start_adapter_cam_adapter_start_post",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AdapterStatus"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "Start Adapter",
+          "tags": [
+            "cam-adapter"
+          ]
+        }
+      },
+      "/cam-adapter/status": {
+        "get": {
+          "operationId": "adapter_status_cam_adapter_status_get",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AdapterStatus"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "Adapter Status",
+          "tags": [
+            "cam-adapter"
+          ]
+        }
+      },
+      "/cam-adapter/stop": {
+        "post": {
+          "operationId": "stop_adapter_cam_adapter_stop_post",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/AdapterStatus"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "Stop Adapter",
+          "tags": [
+            "cam-adapter"
+          ]
+        }
+      },
+      "/cam-adapter/streams": {
+        "get": {
+          "operationId": "adapter_streams_cam_adapter_streams_get",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "items": {
+                      "$ref": "#/components/schemas/AdapterStream"
+                    },
+                    "title": "Response Adapter Streams Cam Adapter Streams Get",
+                    "type": "array"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "Adapter Streams",
+          "tags": [
+            "cam-adapter"
+          ]
+        }
+      },
+      "/cam-adapter/validate": {
+        "post": {
+          "operationId": "validate_configured_sources_cam_adapter_validate_post",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "items": {
+                      "$ref": "#/components/schemas/SourceValidation"
+                    },
+                    "title": "Response Validate Configured Sources Cam Adapter Validate Post",
+                    "type": "array"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "Validate Configured Sources",
+          "tags": [
+            "cam-adapter"
+          ]
+        }
+      },
       "/camera-imports": {
         "post": {
           "operationId": "import_camera_registry_camera_imports_post",
@@ -3621,6 +4596,387 @@
           "summary": "Create Camera",
           "tags": [
             "camera-registry"
+          ]
+        }
+      },
+      "/cameras/geo/bbox": {
+        "get": {
+          "description": "Return cameras within a rectangular bounds as GeoJSON FeatureCollection.",
+          "operationId": "cameras_in_bbox_cameras_geo_bbox_get",
+          "parameters": [
+            {
+              "description": "Minimum longitude",
+              "in": "query",
+              "name": "min_lon",
+              "required": true,
+              "schema": {
+                "description": "Minimum longitude",
+                "maximum": 180,
+                "minimum": -180,
+                "title": "Min Lon",
+                "type": "number"
+              }
+            },
+            {
+              "description": "Minimum latitude",
+              "in": "query",
+              "name": "min_lat",
+              "required": true,
+              "schema": {
+                "description": "Minimum latitude",
+                "maximum": 90,
+                "minimum": -90,
+                "title": "Min Lat",
+                "type": "number"
+              }
+            },
+            {
+              "description": "Maximum longitude",
+              "in": "query",
+              "name": "max_lon",
+              "required": true,
+              "schema": {
+                "description": "Maximum longitude",
+                "maximum": 180,
+                "minimum": -180,
+                "title": "Max Lon",
+                "type": "number"
+              }
+            },
+            {
+              "description": "Maximum latitude",
+              "in": "query",
+              "name": "max_lat",
+              "required": true,
+              "schema": {
+                "description": "Maximum latitude",
+                "maximum": 90,
+                "minimum": -90,
+                "title": "Max Lat",
+                "type": "number"
+              }
+            },
+            {
+              "description": "Maximum results",
+              "in": "query",
+              "name": "limit",
+              "required": false,
+              "schema": {
+                "default": 1000,
+                "description": "Maximum results",
+                "maximum": 5000,
+                "minimum": 1,
+                "title": "Limit",
+                "type": "integer"
+              }
+            },
+            {
+              "description": "Offset for pagination",
+              "in": "query",
+              "name": "offset",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "description": "Offset for pagination",
+                "minimum": 0,
+                "title": "Offset",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CameraGeoCollection"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Query cameras within a bounding box",
+          "tags": [
+            "camera-registry",
+            "camera-gis"
+          ]
+        }
+      },
+      "/cameras/geo/cluster": {
+        "get": {
+          "description": "Return clustered camera points using ST_SnapToGrid for efficient map rendering.",
+          "operationId": "cameras_clustered_cameras_geo_cluster_get",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "min_lon",
+              "required": true,
+              "schema": {
+                "maximum": 180,
+                "minimum": -180,
+                "title": "Min Lon",
+                "type": "number"
+              }
+            },
+            {
+              "in": "query",
+              "name": "min_lat",
+              "required": true,
+              "schema": {
+                "maximum": 90,
+                "minimum": -90,
+                "title": "Min Lat",
+                "type": "number"
+              }
+            },
+            {
+              "in": "query",
+              "name": "max_lon",
+              "required": true,
+              "schema": {
+                "maximum": 180,
+                "minimum": -180,
+                "title": "Max Lon",
+                "type": "number"
+              }
+            },
+            {
+              "in": "query",
+              "name": "max_lat",
+              "required": true,
+              "schema": {
+                "maximum": 90,
+                "minimum": -90,
+                "title": "Max Lat",
+                "type": "number"
+              }
+            },
+            {
+              "description": "Map zoom level",
+              "in": "query",
+              "name": "zoom",
+              "required": true,
+              "schema": {
+                "description": "Map zoom level",
+                "maximum": 20,
+                "minimum": 0,
+                "title": "Zoom",
+                "type": "integer"
+              }
+            },
+            {
+              "description": "Grid cell size in pixels",
+              "in": "query",
+              "name": "grid_size",
+              "required": false,
+              "schema": {
+                "default": 64,
+                "description": "Grid cell size in pixels",
+                "maximum": 256,
+                "minimum": 16,
+                "title": "Grid Size",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CameraGeoCollection"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Get clustered camera points for map visualization",
+          "tags": [
+            "camera-registry",
+            "camera-gis"
+          ]
+        }
+      },
+      "/cameras/geo/radius": {
+        "get": {
+          "description": "Return cameras within radius_m meters of (lon, lat).",
+          "operationId": "cameras_in_radius_cameras_geo_radius_get",
+          "parameters": [
+            {
+              "description": "Center longitude",
+              "in": "query",
+              "name": "lon",
+              "required": true,
+              "schema": {
+                "description": "Center longitude",
+                "maximum": 180,
+                "minimum": -180,
+                "title": "Lon",
+                "type": "number"
+              }
+            },
+            {
+              "description": "Center latitude",
+              "in": "query",
+              "name": "lat",
+              "required": true,
+              "schema": {
+                "description": "Center latitude",
+                "maximum": 90,
+                "minimum": -90,
+                "title": "Lat",
+                "type": "number"
+              }
+            },
+            {
+              "description": "Radius in meters",
+              "in": "query",
+              "name": "radius_m",
+              "required": true,
+              "schema": {
+                "description": "Radius in meters",
+                "exclusiveMinimum": 0,
+                "maximum": 100000,
+                "title": "Radius M",
+                "type": "number"
+              }
+            },
+            {
+              "description": "Maximum results",
+              "in": "query",
+              "name": "limit",
+              "required": false,
+              "schema": {
+                "default": 1000,
+                "description": "Maximum results",
+                "maximum": 5000,
+                "minimum": 1,
+                "title": "Limit",
+                "type": "integer"
+              }
+            },
+            {
+              "description": "Offset for pagination",
+              "in": "query",
+              "name": "offset",
+              "required": false,
+              "schema": {
+                "default": 0,
+                "description": "Offset for pagination",
+                "minimum": 0,
+                "title": "Offset",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CameraGeoCollection"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Query cameras within a radius of a point",
+          "tags": [
+            "camera-registry",
+            "camera-gis"
+          ]
+        }
+      },
+      "/cameras/geo/tile/{z}/{x}/{y}.pbf": {
+        "get": {
+          "description": "Return Mapbox Vector Tile (MVT) for camera points at tile z/x/y.",
+          "operationId": "camera_vector_tile_cameras_geo_tile__z___x___y__pbf_get",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "z",
+              "required": true,
+              "schema": {
+                "title": "Z",
+                "type": "integer"
+              }
+            },
+            {
+              "in": "path",
+              "name": "x",
+              "required": true,
+              "schema": {
+                "title": "X",
+                "type": "integer"
+              }
+            },
+            {
+              "in": "path",
+              "name": "y",
+              "required": true,
+              "schema": {
+                "title": "Y",
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Vector tile (MVT) for camera points",
+          "tags": [
+            "camera-registry",
+            "camera-gis"
           ]
         }
       },

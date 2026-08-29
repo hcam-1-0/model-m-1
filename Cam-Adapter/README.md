@@ -104,8 +104,58 @@ pip install -e ".[colab]"              # + ultralytics, torch (heavy)
 python -c "from hcam.cam_adapter.config import AdapterConfig, StreamConfig; ..."
 
 # Or via FastAPI (already wired):
-curl -H "X-HCAM-User: dev" -H "X-HCAM-Roles: camera_viewer" http://localhost:8000/cam-adapter/status
+curl -H "X-HCAM-Actor: local-admin" -H "X-HCAM-Roles: platform.admin" -H "X-HCAM-Departments: *" http://localhost:8000/cam-adapter/status
 ```
+
+### Safe local catalog + lifecycle
+
+Copy [`local-adapter-config.example.json`](local-adapter-config.example.json) to an ignored local runtime folder, then set `HCAM_CAM_ADAPTER_CONFIG_FILE` to its absolute path before starting H-CAM. The file must list every permitted source host in `allowed_source_hosts`; the adapter will not start without that allow-list.
+
+The optional `catalog` section fetches only its configured HTTPS URL. It does not crawl domains, follow redirects, or probe feeds on reload. Its `enabled` flag controls the **separate recorder** and stays `false` for a live-only setup. `POST /cam-adapter/validate` probes only sources already approved by that local file.
+
+### Live-only browser viewer (no recordings)
+
+For live footage, set `catalog.source_kind` to `"whep"` and `catalog.viewer_enabled` to `true`; leave `catalog.enabled` as `false` and keep `streams` empty. H-CAM will use the configured dynamic catalogue to offer at most `max_cameras` approved WHEP/WebRTC cameras. It handles browser signalling and short-lived upstream-session cleanup, while the media travels directly to the browser. It does **not** invoke FFmpeg, create MP4 segments, save clips, or write camera frames to disk.
+
+After starting the local H-CAM server, create a one-time browser launch link with a platform-admin development identity:
+
+```powershell
+$headers = @{
+  "X-HCAM-Actor" = "local-admin"
+  "X-HCAM-Roles" = "platform.admin"
+  "X-HCAM-Departments" = "*"
+}
+$session = Invoke-RestMethod -Method Post -Headers $headers -Uri "http://127.0.0.1:8000/cam-adapter/live/session"
+Start-Process ("http://127.0.0.1:8000" + $session.launch_path)
+```
+
+The launch link is single-use and expires after `viewer_session_ttl_seconds` (15 minutes in the local configuration). The browser receives a short-lived, HTTP-only loopback cookie and sees only camera labels and local H-CAM endpoints; upstream stream URLs are not exposed to the page.
+
+### Basic adapter-backend-dashboard
+
+The basic no-animation operations dashboard is available at `/adapter-backend-dashboard`. It reports the adapter configuration, recorder state, worker count, live-viewer state, and the approved camera list. The dashboard does not start workers or recordings. If the live catalogue is unavailable, it continues to show the adapter snapshot and marks just the camera-list section unavailable.
+
+### Camera monitoring dashboard extension
+
+The DSS-style monitoring workspace is a second page at `/camera-monitoring-dashboard`; it extends rather than replaces the basic dashboard. Both pages link directly to each other and share the same short-lived, root-scoped browser session, `/cam-adapter/dashboard/data` camera/status response, and `/cam-adapter/live/whep/{camera_id}` live-video path. Opening the extension does not create another adapter, recording process, or separate camera configuration.
+
+The extension provides a searchable camera resource list, one large selected-camera live view, adapter health, and selected-camera state. Its analytics-events rail deliberately stays empty until a real analytics event API is connected; it does not display fabricated ANPR detections.
+
+Create a short-lived local dashboard launch link with the same headers:
+
+```powershell
+$dashboardSession = Invoke-RestMethod -Method Post -Headers $headers -Uri "http://127.0.0.1:8000/cam-adapter/dashboard/session"
+Start-Process ("http://127.0.0.1:8000" + $dashboardSession.launch_path)
+```
+
+To launch directly into the monitoring extension, use the same headers:
+
+```powershell
+$monitoringSession = Invoke-RestMethod -Method Post -Headers $headers -Uri "http://127.0.0.1:8000/cam-adapter/monitoring-dashboard/session"
+Start-Process ("http://127.0.0.1:8000" + $monitoringSession.launch_path)
+```
+
+The included Windows local setup uses `runtime/camera-adapter.json`; it is git-ignored and starts with no active streams. All segments and adapter logs remain under the local project directory.
 
 **Env vars** (also in `Settings`):
 
@@ -116,6 +166,7 @@ HCAM_CAM_ADAPTER_SAMPLE_INTERVAL=2.0
 HCAM_CAM_ADAPTER_YOLO_MODEL=yolov8n.pt
 HCAM_CAM_ADAPTER_YOLO_CONF=0.35
 HCAM_CAM_ADAPTER_TELEMETRY_INTERVAL=30
+HCAM_CAM_ADAPTER_CONFIG_FILE=/absolute/path/to/camera-adapter.json
 ```
 
 ---

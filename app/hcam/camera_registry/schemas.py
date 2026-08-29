@@ -286,11 +286,21 @@ class CameraGeoProperties(BaseModel):
     timezone_name: str | None = None
 
 
+class CameraClusterProperties(BaseModel):
+    cluster: Literal[True] = True
+    count: int
+    camera_ids: list[str]
+    names: list[str]
+    departments: list[str | None]
+    types: list[str | None]
+    health_statuses: list[str | None]
+
+
 class CameraGeoOut(BaseModel):
     type: Literal["Feature"] = "Feature"
     geometry: GeoJSONGeometry | None = None
-    properties: CameraGeoProperties
-    id: str
+    properties: CameraGeoProperties | CameraClusterProperties
+    id: str | None = None
 
 
 class CameraGeoCollection(BaseModel):
