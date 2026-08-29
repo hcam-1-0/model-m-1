@@ -20,7 +20,11 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name, disable_existing_loggers=False)
 
 database_url = database_url_from_environment(config.get_main_option("sqlalchemy.url"))
-config.set_main_option("sqlalchemy.url", database_url)
+# Alembic stores this value in a ConfigParser-backed section. Percent-encoded
+# URL components (for example PostgreSQL `options=-csearch_path%3Dpublic`) must
+# escape percent signs while being written; ConfigParser restores the original
+# single percent before SQLAlchemy reads the setting.
+config.set_main_option("sqlalchemy.url", database_url.replace("%", "%%"))
 ensure_sqlite_parent(database_url)
 target_metadata = Base.metadata
 
