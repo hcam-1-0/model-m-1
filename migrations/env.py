@@ -97,6 +97,11 @@ def run_migrations_online() -> None:
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
     )
+    # Query extension ownership on a separate connection. PostgreSQL begins a
+    # transaction for this catalogue read, and reusing that connection would
+    # prevent Alembic from owning and committing its migration transaction.
+    with connectable.connect() as inspection_connection:
+        extension_relations = _extension_owned_relations(inspection_connection)
     with connectable.connect() as connection:
         default_schema = connection.dialect.default_schema_name or "public"
         context.configure(
@@ -104,7 +109,7 @@ def run_migrations_online() -> None:
             target_metadata=target_metadata,
             compare_type=True,
             include_object=_include_application_object(
-                _extension_owned_relations(connection),
+                extension_relations,
                 default_schema,
             ),
             render_as_batch=connection.dialect.name == "sqlite",
