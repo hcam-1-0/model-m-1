@@ -1,0 +1,292 @@
+{
+  "artifact_payload_requests_performed": false,
+  "authority": {
+    "authorization_id": "D-P3.6-PLAN-AUTH",
+    "authorized_actions": [
+      "read_current_public_official_documentation",
+      "read_public_release_and_repository_metadata",
+      "read_metadata_only_http_headers",
+      "record_exact_candidate_metadata_and_unresolved_fields"
+    ],
+    "implementation_authorized": false,
+    "model_or_dataset_download_authorized": false,
+    "runtime_execution_authorized": false
+  },
+  "candidate_findings": [
+    {
+      "artifact": {
+        "expected_bytes": 15489558,
+        "expected_filename": "dfine_n_coco.pth",
+        "github_asset_id": 204585647,
+        "github_asset_node_id": "RA_kwDOM0JY_s4MMbqv",
+        "publisher_digest": null,
+        "release_id": 177720969,
+        "release_tag": "dfinev1.0",
+        "release_updated_at": "2024-11-06T17:45:42Z",
+        "source_url": "https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_n_coco.pth",
+        "storage_repository_revision": "39a3115d4b1183b9035e333e57655f018272ebbe"
+      },
+      "candidate_id": "DET-E1",
+      "family": "D-FINE-N",
+      "format_security": "native_pytorch_pth_checkpoint_must_be_treated_as_pickle_bearing_and_never_loaded_during_acquisition_review",
+      "license_finding": {
+        "artifact_license_state": "unresolved_separate_weight_license_not_observed",
+        "source_code_license": "Apache-2.0",
+        "statement": "The official D-FINE source repository is Apache-2.0 and links the checkpoint, but the release asset did not expose a separate weight-license statement or publisher digest in the reviewed metadata. Artifact promotion therefore remains blocked pending exact license review."
+      },
+      "model_metadata": {
+        "class_lineage": "COCO_2017_80_categories",
+        "input_size": [
+          640,
+          640
+        ],
+        "publisher_benchmark": {
+          "ap_50_95": 42.8,
+          "batch": 1,
+          "gflops": 7,
+          "latency_ms": 2.12,
+          "parameters_millions": 4,
+          "precision": "FP16",
+          "runtime": "TensorRT 10.4.0",
+          "status": "publisher_claim_not_hcam_evidence",
+          "target": "NVIDIA T4"
+        }
+      },
+      "official_source_revision": "956d1709314c2c6a4df6f34de232054578a7449f",
+      "status": "exact_upstream_metadata_resolved_artifact_unacquired_unapproved"
+    },
+    {
+      "artifact": {
+        "expected_bytes": 386045550,
+        "expected_filename": "rf-detr-small.pth",
+        "gcs_crc32c_base64": "mDO6OA==",
+        "gcs_generation": "1753220474114031",
+        "gcs_md5_base64": "+zcGHBr3us41nJG3I6jVwQ==",
+        "last_modified": "Tue, 22 Jul 2025 21:41:14 GMT",
+        "publisher_md5": "fb37061c1af7bace359c91b723a8d5c1",
+        "publisher_sha256": null,
+        "source_url": "https://storage.googleapis.com/rfdetr/small_coco/checkpoint_best_regular.pth?generation=1753220474114031"
+      },
+      "candidate_id": "DET-B1",
+      "family": "RF-DETR-Small",
+      "format_security": "native_pytorch_pth_checkpoint_must_be_treated_as_pickle_bearing_and_never_loaded_during_acquisition_review",
+      "license_finding": {
+        "artifact_license_state": "officially_designated_Apache-2.0",
+        "source_code_license": "Apache-2.0",
+        "statement": "The official RF-DETR repository designates Nano through Large weights, including Small, as Apache-2.0. Exact acquired bytes would still require retained license evidence and accountable review."
+      },
+      "model_metadata": {
+        "class_lineage": "COCO_2017_80_categories_encoded_in_sparse_90_slot_label_space",
+        "input_size": [
+          512,
+          512
+        ],
+        "publisher_benchmark": {
+          "ap_50": 72.1,
+          "ap_50_95": 53.0,
+          "batch": 1,
+          "latency_ms": 3.5,
+          "parameters_millions": 32.1,
+          "precision": "FP16",
+          "status": "publisher_claim_not_hcam_evidence",
+          "target": "NVIDIA T4",
+          "toolchain": "TensorRT"
+        },
+        "required_postprocess_binding": "background_class_id_must_be_null_for_official_sparse_id_COCO_checkpoint"
+      },
+      "official_release": "1.9.4",
+      "official_release_revision": "9b009fa928d6218320439803d1da01869a85c072",
+      "status": "exact_upstream_metadata_resolved_artifact_unacquired_unapproved"
+    },
+    {
+      "artifact": {
+        "expected_bytes": 135954129,
+        "expected_filename": "rf-detr-large-2026.pth",
+        "gcs_crc32c_base64": "uNSDMQ==",
+        "gcs_generation": "1769071352867281",
+        "gcs_md5_base64": "XLchU1QcvLmqbvomIirMdQ==",
+        "last_modified": "Thu, 22 Jan 2026 08:42:32 GMT",
+        "publisher_md5": "5cb72153541cbcb9aa6efa26222acc75",
+        "publisher_sha256": null,
+        "source_url": "https://storage.googleapis.com/rfdetr/rf-detr-large-2026.pth?generation=1769071352867281"
+      },
+      "candidate_id": "DET-A1",
+      "family": "RF-DETR-Large-2026",
+      "format_security": "native_pytorch_pth_checkpoint_must_be_treated_as_pickle_bearing_and_never_loaded_during_acquisition_review",
+      "license_finding": {
+        "artifact_license_state": "officially_designated_Apache-2.0",
+        "source_code_license": "Apache-2.0",
+        "statement": "The official RF-DETR repository designates the current Large weight as Apache-2.0. Exact acquired bytes would still require retained license evidence and accountable review."
+      },
+      "model_metadata": {
+        "class_lineage": "COCO_2017_80_categories_encoded_in_sparse_90_slot_label_space",
+        "input_size": [
+          704,
+          704
+        ],
+        "publisher_benchmark": {
+          "ap_50": 75.1,
+          "ap_50_95": 56.5,
+          "batch": 1,
+          "latency_ms": 6.8,
+          "parameters_millions": 33.9,
+          "precision": "FP16",
+          "status": "publisher_claim_not_hcam_evidence",
+          "target": "NVIDIA T4",
+          "toolchain": "TensorRT"
+        },
+        "required_postprocess_binding": "background_class_id_must_be_null_for_official_sparse_id_COCO_checkpoint"
+      },
+      "official_release": "1.9.4",
+      "official_release_revision": "9b009fa928d6218320439803d1da01869a85c072",
+      "superseded_artifact_excluded": "rf-detr-large.pth",
+      "status": "exact_upstream_metadata_resolved_artifact_unacquired_unapproved"
+    }
+  ],
+  "companion_metadata": [
+    {
+      "artifact": "model.safetensors",
+      "candidate_id": "DET-B1",
+      "license": "Apache-2.0",
+      "model_repository": "Roboflow/rf-detr-small",
+      "model_repository_revision": "3bdc465063270f99769da5a1b4c00c68bd2d439d",
+      "sha256": "2bfab2fa5f5fcc4870e756c8dc8d2d5acca3a68ffcc0f7e84972661873eb5a1d",
+      "size_bytes": 128504496,
+      "status": "metadata_companion_only_not_selected_for_acquisition_equivalence_to_native_pth_unproven",
+      "url": "https://huggingface.co/Roboflow/rf-detr-small"
+    },
+    {
+      "artifact": "model.safetensors",
+      "candidate_id": "DET-A1",
+      "license": "Apache-2.0",
+      "model_repository": "Roboflow/rf-detr-large",
+      "model_repository_revision": "f62f7dd5252b61097cbace33886045816dadbde9",
+      "sha256": "1ec604598aea748627eb5755a9989f3c80839fc7fb977a91bfba107ee76fcd7d",
+      "size_bytes": 135795376,
+      "status": "metadata_companion_only_not_selected_for_acquisition_equivalence_to_native_pth_unproven",
+      "url": "https://huggingface.co/Roboflow/rf-detr-large"
+    }
+  ],
+  "contract_format": "hcam.phase3.p3_6.model_artifact_research_sources.v1",
+  "download_performed": false,
+  "export_findings": {
+    "d_fine": {
+      "checkpoint_loader": "torch.load",
+      "official_onnx_opset": 16,
+      "official_outputs": [
+        "labels",
+        "boxes",
+        "scores"
+      ],
+      "status": "future_runtime_path_metadata_only"
+    },
+    "rf_detr_1_9_4": {
+      "documented_targets": [
+        "ONNX Runtime",
+        "OpenVINO",
+        "TensorRT"
+      ],
+      "official_onnx_opset": 17,
+      "status": "future_runtime_path_metadata_only",
+      "tensorrt_constraint": "engine_is_machine_and_runtime_specific"
+    }
+  },
+  "method": {
+    "artifact_bodies_downloaded": false,
+    "evidence_types": [
+      "official_repository_files",
+      "official_release_metadata",
+      "official_documentation",
+      "metadata_only_object_headers"
+    ],
+    "observed_on": "2026-08-29",
+    "publisher_metrics_are_hcam_evidence": false
+  },
+  "official_sources": [
+    {
+      "publisher": "D-FINE",
+      "revision": "956d1709314c2c6a4df6f34de232054578a7449f",
+      "role": "repository_model_zoo_and_source_license",
+      "url": "https://github.com/Peterande/D-FINE"
+    },
+    {
+      "publisher": "D-FINE",
+      "revision": "956d1709314c2c6a4df6f34de232054578a7449f",
+      "role": "input_size_configuration",
+      "url": "https://github.com/Peterande/D-FINE/blob/956d1709314c2c6a4df6f34de232054578a7449f/configs/dfine/include/dataloader.yml"
+    },
+    {
+      "publisher": "D-FINE",
+      "revision": "956d1709314c2c6a4df6f34de232054578a7449f",
+      "role": "COCO_dataset_configuration",
+      "url": "https://github.com/Peterande/D-FINE/blob/956d1709314c2c6a4df6f34de232054578a7449f/configs/dataset/coco_detection.yml"
+    },
+    {
+      "publisher": "D-FINE",
+      "revision": "956d1709314c2c6a4df6f34de232054578a7449f",
+      "role": "official_ONNX_export_path",
+      "url": "https://github.com/Peterande/D-FINE/blob/956d1709314c2c6a4df6f34de232054578a7449f/tools/deployment/export_onnx.py"
+    },
+    {
+      "publisher": "D-FINE storage",
+      "revision": "39a3115d4b1183b9035e333e57655f018272ebbe",
+      "role": "official_checkpoint_release",
+      "url": "https://github.com/Peterande/storage/releases/tag/dfinev1.0"
+    },
+    {
+      "publisher": "Roboflow RF-DETR",
+      "revision": "9b009fa928d6218320439803d1da01869a85c072",
+      "role": "stable_release_source_license_weights_and_metrics",
+      "url": "https://github.com/roboflow/rf-detr/tree/1.9.4"
+    },
+    {
+      "publisher": "Roboflow RF-DETR",
+      "revision": "9b009fa928d6218320439803d1da01869a85c072",
+      "role": "stable_release_record_and_sparse_COCO_postprocess_advisory",
+      "url": "https://github.com/roboflow/rf-detr/releases/tag/1.9.4"
+    },
+    {
+      "publisher": "Roboflow RF-DETR",
+      "revision": "9b009fa928d6218320439803d1da01869a85c072",
+      "role": "exact_native_weight_registry",
+      "url": "https://github.com/roboflow/rf-detr/blob/1.9.4/src/rfdetr/assets/model_weights.py"
+    },
+    {
+      "publisher": "Roboflow RF-DETR",
+      "revision": "9b009fa928d6218320439803d1da01869a85c072",
+      "role": "exact_model_configuration_and_sparse_label_space",
+      "url": "https://github.com/roboflow/rf-detr/blob/1.9.4/src/rfdetr/config.py"
+    },
+    {
+      "publisher": "Roboflow RF-DETR",
+      "revision": "documentation_observed_2026-08-29",
+      "role": "official_export_documentation",
+      "url": "https://rfdetr.roboflow.com/latest/learn/export/"
+    },
+    {
+      "publisher": "Roboflow",
+      "revision": "3bdc465063270f99769da5a1b4c00c68bd2d439d",
+      "role": "official_small_safetensors_metadata_companion",
+      "url": "https://huggingface.co/Roboflow/rf-detr-small"
+    },
+    {
+      "publisher": "Roboflow",
+      "revision": "f62f7dd5252b61097cbace33886045816dadbde9",
+      "role": "official_large_safetensors_metadata_companion",
+      "url": "https://huggingface.co/Roboflow/rf-detr-large"
+    }
+  ],
+  "prepared_at": "2026-08-29T00:00:00Z",
+  "record_id": "P3.6-MODEL-ARTIFACT-RESEARCH-SOURCES-R0",
+  "status": "official_metadata_recorded_artifacts_unacquired_and_unapproved",
+  "total_selected_native_artifact_bytes": 537489237,
+  "unresolved_findings": [
+    "No selected native artifact has been downloaded or assigned an H-CAM SHA-256.",
+    "D-FINE-N has no publisher digest in the reviewed GitHub release metadata.",
+    "D-FINE-N checkpoint-specific license disposition requires exact review before promotion.",
+    "RF-DETR publisher MD5 and object-generation metadata identify objects but do not replace H-CAM SHA-256 and security review.",
+    "The official Hugging Face safetensors companions are not proven bytewise or numerically equivalent to the selected native checkpoints.",
+    "No candidate has H-CAM numeric, parity, hardware, latency, throughput, resource, or safety evidence.",
+    "No champion, fallback, runtime provider, decoder, precision, or deployment profile is approved."
+  ]
+}

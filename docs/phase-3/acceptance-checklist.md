@@ -207,6 +207,12 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
   intent and does not bypass blocked prerequisites.
 - [x] `D-P3.6-INVENTORY-R0-AUTH` completed a sealed sanitized
   `LAB-LAPTOP-01` inventory without network, execution, or identifier exposure.
+- [x] `P36-U2` exact official checkpoint metadata and a three-artifact,
+  non-authorizing R0 proposal are sealed under package digest
+  `2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE`.
+- [ ] `D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE` accepts the planning package only.
+- [ ] An eligible exact local quarantine root and exact scanner command are
+  bound in a regenerated R1 proposal before any acquisition authorization.
 - [ ] The exact portable runtime/workload profile, accelerated-laptop profile,
   and capacity target are approved for `P36-G2`.
 

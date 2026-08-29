@@ -691,6 +691,30 @@ latency, throughput, decoder, C1/C10/C50, container, or deployment claim.
 runtime/workload bounds, the accelerated-laptop inventory, the capacity target,
 and owner-approved profile manifests.
 
+### DR-0050: P3.6 Exact Model Artifact Research Proposal R0
+
+Status: metadata research complete; sealed non-authorizing proposal pending
+owner review; acquisition blocked.
+
+Under `D-P3.6-PLAN-AUTH`, current official-source metadata was recorded for the
+exact proposed `DET-E1` D-FINE-N, `DET-B1` RF-DETR Small, and `DET-A1` RF-DETR
+Large-2026 native checkpoints. The three objects have a cumulative expected
+size of `537,489,237` bytes. The sealed R0 planning-package digest is
+`2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE`.
+
+No model, source, dependency, dataset, container, or artifact payload was
+downloaded. No checkpoint was loaded, unpickled, imported, exported, converted,
+scanned, or executed. Publisher performance is recorded only as an upstream
+claim and does not select a champion, fallback, runtime, or hardware profile.
+
+The package is fail closed: the physical quarantine root and scanner command
+are unresolved. Volume `B:` remains owner prohibited, and observed fixed
+volumes `C:`, `E:`, and `F:` are ineligible under the current free-space policy.
+`D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE` can accept only the planning record.
+`D-P3.6-MODEL-RESEARCH-R1-AUTH` is not issuable until exact storage and scanner
+bindings are added to a new digest-bound R1 package. `P36-G1`, `P36-G2`,
+`P36-G4`, and `P36-G5` remain blocked.
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

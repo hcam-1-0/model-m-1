@@ -51,7 +51,7 @@
     {
       "gate_id": "P36-G1",
       "state": "blocked",
-      "summary": "DET-R0/E1/B1/A1 model-family comparison and one promoted model/fallback pair are not complete."
+      "summary": "Exact official metadata is sealed for DET-E1/B1/A1, but no artifact is acquired, no H-CAM comparison evidence exists, and no champion/fallback pair is approved."
     },
     {
       "gate_id": "P36-G2",
@@ -66,7 +66,7 @@
     {
       "gate_id": "P36-G4",
       "state": "blocked",
-      "summary": "No digest-bound artifact, dependency, container, or driver research authorization exists."
+      "summary": "A digest-bound non-authorizing three-artifact R0 proposal exists, but acquisition authority is absent and exact local storage and scanner bindings remain unresolved."
     },
     {
       "gate_id": "P36-G5",
@@ -81,9 +81,15 @@
   "inventory_records": [
     "contracts/phase-3/p3-6-inventory-lab-laptop-01-r0.json"
   ],
+  "model_artifact_research_package": {
+    "digest_sha256": "2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE",
+    "manifest": "contracts/phase-3/p3-6-model-artifact-research-package.json",
+    "proposal_acceptance_pending": "D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE",
+    "status": "sealed_non_authorizing_storage_and_scanner_blocked"
+  },
   "owner_decisions_record": "contracts/phase-3/p3-6-owner-decisions.json",
   "planning_authorization": "D-P3.6-PLAN-AUTH",
-  "planning_status": "start_intent_recorded_non_effective_exact_prerequisites_and_execution_authority_pending",
+  "planning_status": "U2_exact_metadata_proposal_sealed_acquisition_profiles_promotion_and_execution_authority_pending",
   "record_id": "P3.6-ENTRY-GATES",
   "runtime_execution_authorized": false,
   "start_intent_record": "contracts/phase-3/p3-6-start-intent.json",

@@ -340,6 +340,12 @@ The received `D-P3.6-START` statement is recorded as non-effective intent; it
 does not change these blockers or start an executable work package.
 `P36-U1` sanitized inventory is complete under
 `D-P3.6-INVENTORY-R0-AUTH`, but it supplies only one input to G2.
+`P36-U2` exact official model metadata and a three-artifact fail-closed R0
+proposal are sealed under package digest
+`2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE`.
+No artifact was downloaded; acquisition remains blocked on exact eligible
+local storage, an exact scanner binding, a regenerated R1 package, and explicit
+owner authority.
 
 Planning records:
 
@@ -352,6 +358,8 @@ Planning records:
 - [non-effective start intent](p3-6-start-intent.md);
 - [prerequisite unblock plan](p3-6-unblock-plan.md);
 - [LAB-LAPTOP-01 sanitized inventory](p3-6-inventory-lab-laptop-01-r0.md); and
+- [exact model artifact research proposal](p3-6-model-artifact-research-proposal.md);
+- [sealed non-authorizing model proposal package](../../contracts/phase-3/p3-6-model-artifact-research-package.json); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
 Deliverables:
@@ -385,8 +393,9 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner decisions and separate authority:
 
-- prepare the exact official-source/artifact research proposal for `DET-E1`,
-  `DET-B1`, and `DET-A1` without downloading or executing artifacts;
+- obtain owner review of the non-authorizing R0 model-proposal package;
+- bind an eligible exact local quarantine root and exact scanner invocation,
+  then regenerate a digest-bound R1 acquisition proposal;
 - resolve exact model-family artifacts/data and complete `P36-G1`;
 - prepare and approve exact `portable_cpu`, `local_accelerated`, and
   `capacity_target` machine, OS, driver, runtime, precision, decoder, resource,

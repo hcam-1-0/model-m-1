@@ -7,6 +7,13 @@ authority, implementation, and acceptance remain pending. A later
 `D-P3.6-START` statement is recorded as non-effective intent because those
 prerequisites are incomplete.
 
+Research update: exact official metadata for three proposed native detector
+checkpoints is sealed in the non-authorizing
+[P3.6 model artifact proposal](p3-6-model-artifact-research-proposal.md), package
+digest `2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE`.
+No artifact was downloaded. Exact storage, scanner, acquisition, comparison,
+promotion, runtime-profile, and execution gates remain blocked.
+
 Planning authorization:
 [P3.6 planning authorization](p3-6-planning-authorization.md).
 
@@ -85,10 +92,10 @@ support, performance, GPU, C1/C10/C50, production, or procurement claims.
 | Gate | Requirement | Current state |
 | --- | --- | --- |
 | `P36-G0` | Accepted P3.5 and explicit P3.6 planning authority | Passed |
-| `P36-G1` | Frozen `DET-R0/E1/B1/A1` comparison and promoted champion/fallback | Blocked |
+| `P36-G1` | Frozen `DET-R0/E1/B1/A1` comparison and promoted champion/fallback | Blocked; exact E1/B1/A1 metadata sealed, artifacts and H-CAM evidence absent |
 | `P36-G2` | Exact hardware/OS/driver/runtime/precision/workload profiles | Blocked; current-laptop inventory complete, profiles unresolved |
 | `P36-G3` | Owner decisions `D-P3.6-001` through `D-P3.6-005` | Passed |
-| `P36-G4` | Exact digest-bound artifact/dependency/container research authority | Blocked |
+| `P36-G4` | Exact digest-bound artifact/dependency/container research authority | Blocked; non-authorizing R0 proposal sealed, storage/scanner/acquisition authority absent |
 | `P36-G5` | Exact implementation and runtime-execution authority | Blocked; broad start intent received but non-effective |
 
 No later gate can be inferred from approval of an earlier gate.

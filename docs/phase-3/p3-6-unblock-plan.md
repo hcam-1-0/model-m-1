@@ -44,8 +44,12 @@ itself pass `P36-G2` or authorize OpenVINO execution.
 
 ### P36-U2: Exact Model Research Proposal
 
-Current public official-source metadata research can continue under
-`D-P3.6-PLAN-AUTH`. The output must identify, without downloading:
+Status: metadata proposal complete under `D-P3.6-PLAN-AUTH`; acquisition,
+execution, and promotion remain blocked.
+
+The exact [model artifact research proposal](p3-6-model-artifact-research-proposal.md)
+and [machine-readable package](../../contracts/phase-3/p3-6-model-artifact-research-package.json)
+identify, without downloading:
 
 - exact source revision and candidate checkpoint/release for `DET-E1`,
   `DET-B1`, and `DET-A1`;
@@ -57,9 +61,16 @@ Current public official-source metadata research can continue under
   research authorization;
 - unresolved facts that keep a candidate blocked.
 
-No model, source archive, dependency, dataset, or container may be downloaded
-until a later `D-P3.6-MODEL-RESEARCH-R0-AUTH` accepts that exact proposal.
-No candidate can be promoted from upstream metrics alone.
+The package contains three exact native checkpoints with a cumulative expected
+size of `537,489,237` bytes. Its sealed R0 manifest SHA-256 is
+`2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE`.
+No artifact was downloaded, loaded, scanned, exported, converted, or executed.
+
+`D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE` may accept only this non-authorizing
+planning record. A later acquisition decision is not issuable until an exact
+eligible local non-cloud quarantine root and exact scanner invocation are
+bound in a regenerated R1 package. No candidate can be promoted from upstream
+metrics alone.
 
 ### P36-U3: Exact Capability Profiles
 
@@ -91,15 +102,18 @@ Only a later owner statement that accepts that exact digest as
 
 ## Next Planning Action
 
-`P36-U2` may now prepare the exact official-source and artifact-research
-proposal for `DET-E1`, `DET-B1`, and `DET-A1` under the existing planning-only
-authority. It may read public official documentation and record bounded source,
-license, size, lineage, model-card, export, and unresolved metadata. It may not
-download, load, convert, execute, or promote any artifact.
+`P36-U2` metadata preparation is complete. The owner may review
+`D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE` against package digest
+`2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE`;
+acceptance would grant no executable authority.
 
-No owner decision is requested for that read-only proposal preparation. A
-later `D-P3.6-MODEL-RESEARCH-R0-AUTH` will be prepared only after its exact
-URLs, actions, paths, ceilings, and continuing prohibitions are reviewable.
+Before `D-P3.6-MODEL-RESEARCH-R1-AUTH` can be prepared, an exact local,
+non-cloud, non-network quarantine root must pass a fresh threshold of at least
+5 GiB and 15 percent free, and the exact scanner product, version, executable,
+command, result handling, and passive checkpoint inspector must be bound.
+Volume `B:` remains owner prohibited, and the observed `C:`, `E:`, and `F:`
+volumes remain ineligible under the recorded low-free-space policy. No file
+may be downloaded, loaded, converted, executed, or promoted meanwhile.
 
 The completed inventory decision does not authorize collaborator-machine
 access. A collaborator may later supply an independently generated sanitized

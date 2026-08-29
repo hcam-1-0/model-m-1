@@ -162,6 +162,15 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-entry-gates.json`: accepted P3.5 baseline and owner architecture
   choices, passed `P36-G3`, recorded non-effective start intent, blocked
   model/hardware/artifact/start prerequisites, and the planning-only state.
+- `p3-6-model-artifact-research-sources.json`: exact official-source metadata
+  for proposed D-FINE-N and RF-DETR Small/Large checkpoints, upstream benchmark
+  context, licenses, export paths, and unresolved evidence without downloads.
+- `p3-6-model-artifact-research-proposal.json`: three-object, sequential,
+  exact-host, exact-size, no-load quarantine proposal with unresolved storage
+  and scanner bindings and every executable authority set false.
+- `p3-6-model-artifact-research-package.json`: three-file immutable R0 planning
+  manifest whose file SHA-256 is
+  `2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE`.
 
 Verify all tracked snapshots:
 

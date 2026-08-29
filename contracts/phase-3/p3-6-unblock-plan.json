@@ -21,17 +21,17 @@
       {
         "candidate_id": "DET-E1",
         "family": "D-FINE-N",
-        "state": "blocked_exact_artifact_and_evidence_unresolved"
+        "state": "exact_official_metadata_proposed_artifact_unacquired_evidence_and_promotion_blocked"
       },
       {
         "candidate_id": "DET-B1",
         "family": "RF-DETR-S",
-        "state": "blocked_exact_artifact_and_evidence_unresolved"
+        "state": "exact_official_metadata_proposed_artifact_unacquired_evidence_and_promotion_blocked"
       },
       {
         "candidate_id": "DET-A1",
         "family": "RF-DETR-L",
-        "state": "blocked_exact_artifact_and_evidence_unresolved"
+        "state": "exact_official_metadata_proposed_artifact_unacquired_evidence_and_promotion_blocked"
       }
     ],
     "hardware": {
@@ -44,15 +44,25 @@
     }
   },
   "implementation_authorized": false,
+  "model_artifact_research": {
+    "artifact_count": 3,
+    "artifact_download_authorized": false,
+    "package_digest_sha256": "2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE",
+    "package_manifest": "contracts/phase-3/p3-6-model-artifact-research-package.json",
+    "proposal": "contracts/phase-3/p3-6-model-artifact-research-proposal.json",
+    "source_ledger": "contracts/phase-3/p3-6-model-artifact-research-sources.json",
+    "status": "sealed_non_authorizing_storage_and_scanner_blocked",
+    "total_selected_native_artifact_bytes": 537489237
+  },
   "next_planning_action": {
-    "action": "prepare_exact_DET_E1_DET_B1_DET_A1_official_source_and_artifact_research_proposal_without_downloads",
+    "action": "resolve_exact_eligible_local_quarantine_root_and_scanner_binding_then_regenerate_digest_bound_R1_acquisition_proposal",
     "authority": "D-P3.6-PLAN-AUTH",
     "implementation_or_runtime_authority": false,
-    "status": "ready"
+    "status": "blocked_owner_storage_action_and_exact_scanner_binding_required"
   },
   "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
   "runtime_execution_authorized": false,
-  "status": "planning_only_owner_authorizations_required",
+  "status": "planning_only_U2_metadata_complete_acquisition_and_execution_blocked",
   "work_items": [
     {
       "allowed_after_authorization": [
@@ -86,9 +96,16 @@
         "artifact_loading_export_conversion_or_inference",
         "candidate_promotion_without_hcam_evidence"
       ],
-      "decision_required_before_acquisition": "D-P3.6-MODEL-RESEARCH-R0-AUTH",
+      "decision_required_before_acquisition": "D-P3.6-MODEL-RESEARCH-R1-AUTH",
       "gate_target": "P36-G1 and P36-G4 proposal inputs",
-      "state": "planning_research_allowed_acquisition_blocked",
+      "output_package_digest_sha256": "2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE",
+      "output_records": [
+        "contracts/phase-3/p3-6-model-artifact-research-sources.json",
+        "contracts/phase-3/p3-6-model-artifact-research-proposal.json",
+        "contracts/phase-3/p3-6-model-artifact-research-package.json",
+        "docs/phase-3/p3-6-model-artifact-research-proposal.md"
+      ],
+      "state": "metadata_proposal_complete_acquisition_blocked_storage_scanner_and_owner_authorization",
       "work_item_id": "P36-U2"
     },
     {

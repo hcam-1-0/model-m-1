@@ -33,6 +33,12 @@ intent because `P36-G1`, `P36-G2`, and `P36-G4` remain blocked and no immutable
 executable package exists. Sanitized read-only inventory of `LAB-LAPTOP-01` is
 complete under `D-P3.6-INVENTORY-R0-AUTH`; it is one factual G2 input and does
 not establish an approved runtime, accelerated profile, or capacity target.
+Exact official metadata for three proposed detector checkpoints is sealed in a
+non-authorizing R0 package under digest
+`2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE`.
+No artifact was downloaded; acquisition remains blocked on eligible local
+storage, an exact scanner binding, a regenerated R1 package, and explicit owner
+authority.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -126,6 +132,7 @@ autonomous enforcement.
 | [P3.6 start intent](p3-6-start-intent.md) | Received `D-P3.6-START` statement, non-effective gate state, and continuing prohibitions |
 | [P3.6 unblock plan](p3-6-unblock-plan.md) | Ordered model, sanitized inventory, profile-manifest, and final start-package prerequisites |
 | [P3.6 LAB-LAPTOP-01 inventory](p3-6-inventory-lab-laptop-01-r0.md) | Authorized sanitized Windows, CPU, memory, graphics, storage, and installed-tool evidence without execution claims |
+| [P3.6 exact model artifact proposal](p3-6-model-artifact-research-proposal.md) | Exact D-FINE-N and RF-DETR checkpoint metadata, acquisition controls, storage/scanner blockers, and continuing non-authorization |
 
 ## Non-Negotiable Boundary
 
