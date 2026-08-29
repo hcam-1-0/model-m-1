@@ -48,6 +48,21 @@ def _extension_owned_relations(connection: Connection) -> set[tuple[str, str]]:
             'postgis_tiger_geocoder',
             'fuzzystrmatch'
           )
+        UNION
+        SELECT namespace.nspname, relation.relname
+        FROM pg_catalog.pg_extension AS extension
+        CROSS JOIN LATERAL unnest(extension.extconfig)
+          AS configured(relation_oid)
+        JOIN pg_catalog.pg_class AS relation
+          ON relation.oid = configured.relation_oid
+        JOIN pg_catalog.pg_namespace AS namespace
+          ON namespace.oid = relation.relnamespace
+        WHERE extension.extname IN (
+          'postgis',
+          'postgis_topology',
+          'postgis_tiger_geocoder',
+          'fuzzystrmatch'
+        )
         """
     )
     return {(str(schema), str(name)) for schema, name in rows}
