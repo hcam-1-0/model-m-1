@@ -7,6 +7,9 @@ unauthorized and pending.
 Machine-readable policy:
 [`p3-6-capability-profile-policy.json`](../../contracts/phase-3/p3-6-capability-profile-policy.json).
 
+Effective shared-contract mapping:
+[P3.6 to Phase -1 alignment](p3-6-phase-minus-1-alignment.md).
+
 ## Purpose
 
 The same H-CAM application must run on the current CPU-only laptop and on
@@ -31,7 +34,26 @@ Every profile uses the same:
 No profile may silently change model family, taxonomy, precision, provider,
 data boundary, evidence layer, sampling floor, or retention policy.
 
-## Profile Classes
+## Effective Phase -1 Profile Model
+
+The platform-wide Phase -1 contracts now own deployment profile classes. P3.6
+uses those contracts rather than defining a second profile system:
+
+| P3.6 planning term | Effective Phase -1 class | Interpretation |
+| --- | --- | --- |
+| `portable_cpu` | `portable_cpu` / `hcam-portable-cpu` | Exact alias |
+| `local_accelerated` | `owned_gpu_lab` / `hcam-owned-gpu-lab` | Historical alias for an exact owned or authorized accelerated lab machine |
+| `capacity_target` | `standalone_server` or `kubernetes_cluster` | Evidence target only; it must resolve to one exact profile and is not a fifth profile class |
+
+The canonical Phase -1 profile classes are `portable_cpu`, `owned_gpu_lab`,
+`standalone_server`, and `kubernetes_cluster`, all derived from deployment base
+digest
+`sha256:db776a7432e46dcbf0f170efde428002d656faf3b4cc278fc776c8aabd6c94cf`.
+
+## Historical P3.6 Profile Vocabulary
+
+The following accepted table is retained for decision traceability. Its terms
+must be interpreted through the Phase -1 mapping above in every new manifest.
 
 | Profile | Intended environment | Candidate path | Claim boundary | Current state |
 | --- | --- | --- | --- | --- |
@@ -39,7 +61,8 @@ data boundary, evidence layer, sampling floor, or retention policy.
 | `local_accelerated` | Owned or authorized stronger laptop | Exact validated Intel, NVIDIA, or AMD provider | Exact machine and workload only | Exact manifest pending |
 | `capacity_target` | Declared lab/server or later cluster target | Approved accelerated runtime; optional Kubernetes backend | C10/C50 only from signed exact-hardware evidence | Exact manifest pending |
 
-The profile names describe capability, not a person or permanent machine.
+The historical terms describe capability, not a person or permanent machine.
+They do not supersede the shared Phase -1 profile classes.
 
 ## Adaptive Resource Dimensions
 
@@ -98,11 +121,14 @@ dataset, hide metrics, relabel `INFER` as `PIPE`, or permit an invalid bundle.
 
 The planned, not implemented, controls are:
 
-- **Hardware**: `Auto`, `Portable CPU`, `Local Accelerated`;
+- **Hardware**: `Auto`, `Portable CPU`, `Owned GPU Lab`, `Standalone Server`,
+  `Kubernetes Cluster`;
 - **Objective**: `Balanced`, `Throughput`, `Latency`;
 - **Load**: `Conservative`, `Standard`, `Maximum Validated`.
 
-`Auto` chooses only a profile approved for the current immutable node snapshot.
+`Auto` chooses only a shared Phase -1 profile approved for the current immutable
+node snapshot. The historical `Local Accelerated` label may be shown as an
+alias for `Owned GPU Lab`, but it must not become a separate resolver value.
 `Maximum Validated` means the exact tested ceiling for that profile, not all
 available resources. The UI must show active profile revision, compatibility
 bundle digest, objective, load policy, fallback state, evidence freshness, and
@@ -144,8 +170,8 @@ authorization.
 | Record | Purpose | State |
 | --- | --- | --- |
 | `P36-PROFILE-PORTABLE-CPU-R0` | Current laptop/CI reference tuple and conservative bounds | Inventory complete; runtime/workload bounds and owner approval pending `P36-G2` |
-| `P36-PROFILE-LOCAL-ACCELERATED-R0` | First exact stronger-laptop accelerator tuple | Pending machine selection and `P36-G2` |
-| `P36-PROFILE-CAPACITY-TARGET-R0` | First declared C10/C50 lab/server tuple | Pending target authorization and `P36-G2` |
+| `P36-PROFILE-LOCAL-ACCELERATED-R0` | Historical name for the first exact `owned_gpu_lab` tuple | Pending machine selection and `P36-G2`; future manifest uses the shared class |
+| `P36-PROFILE-CAPACITY-TARGET-R0` | Historical name for a C10/C50 evidence target resolving to `standalone_server` or `kubernetes_cluster` | Pending target/profile authorization and `P36-G2`; not a deployment profile |
 
 No placeholder value may be interpreted as approval. Unknown driver, runtime,
 provider, precision, hardware, or workload fields keep the profile blocked.
@@ -165,8 +191,10 @@ compiled artifacts are prohibited.
 
 ## Next Planning Outputs
 
-The next proposal must resolve `P36-G1` and prepare exact R0 manifests for the
-available machines. Any external runtime, dependency, driver, container, model,
-or compiled artifact then needs a separate digest/source/path-bound research
-authorization before acquisition or execution. `D-P3.6-START` remains a later
-explicit gate.
+The next proposal must resolve `P36-G1` and prepare exact R0 manifests against
+the shared `portable_cpu` and, when authorized inventory exists,
+`owned_gpu_lab` classes. Any capacity evidence proposal must select either
+`standalone_server` or `kubernetes_cluster`. Any external runtime, dependency,
+driver, container, model, or compiled artifact then needs a separate
+digest/source/path-bound research authorization before acquisition or
+execution. `D-P3.6-START` remains a later explicit gate.

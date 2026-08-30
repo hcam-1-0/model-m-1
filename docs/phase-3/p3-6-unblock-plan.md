@@ -14,6 +14,21 @@ container/Kubernetes actions, or application implementation prematurely.
 
 ## Ordered Unblock Work
 
+### P36-U0A: Phase -1 Shared-Contract Alignment
+
+Status: complete under `D-P3.6-PLAN-AUTH`; `P36-G0A` passed.
+
+The [P3.6 to Phase -1 alignment](p3-6-phase-minus-1-alignment.md) binds the
+planning work to exact shared contract and deployment-profile revisions. Phase
+-1 owns inventory, resolver, compatibility, placement, pipeline, evidence,
+rollback, and deployment-profile semantics. P3.6 owns only runtime-candidate
+and benchmark specialization.
+
+Historical `local_accelerated` maps to `owned_gpu_lab`. Historical
+`capacity_target` is an evidence target that must resolve to
+`standalone_server` or `kubernetes_cluster`; it is not another deployment
+profile. This completed planning item changes no acquisition or execution gate.
+
 ### P36-U1: Sanitized Current-Laptop Inventory
 
 Status: complete under `D-P3.6-INVENTORY-R0-AUTH`.
@@ -72,19 +87,22 @@ eligible local non-cloud quarantine root and exact scanner invocation are
 bound in a regenerated R1 package. No candidate can be promoted from upstream
 metrics alone.
 
-### P36-U3: Exact Capability Profiles
+### P36-U3: Exact Shared-Profile Manifests
 
-Prepare three immutable proposals:
+Prepare immutable proposals against the Phase -1 profile model:
 
 1. `P36-PROFILE-PORTABLE-CPU-R0` from authorized sanitized inventory;
-2. `P36-PROFILE-LOCAL-ACCELERATED-R0` from a similarly sanitized inventory
-   supplied from the owned/authorized stronger laptop;
-3. `P36-PROFILE-CAPACITY-TARGET-R0`, or an explicit deferral that narrows P3.6
-   to C1 and forbids C10/C50 claims.
+2. an `owned_gpu_lab` manifest from a similarly sanitized inventory supplied
+   from the owned/authorized stronger laptop; and
+3. a capacity evidence target selecting exactly `standalone_server` or
+   `kubernetes_cluster`, or an explicit deferral that narrows P3.6 to C1 and
+   forbids C10/C50 claims.
 
 Each record must bind the exact runtime/provider/precision/decoder candidates,
 resource bounds, generated workload, objective modes, rollback path, evidence
-expiry, and owner state. Unknown values keep the profile blocked.
+expiry, Phase -1 contract revisions, deployment base digest, and owner state.
+Unknown values keep the profile blocked. The historical record names may be
+retained for traceability, but cannot create competing profile classes.
 
 ### P36-U4: Final Start Package
 

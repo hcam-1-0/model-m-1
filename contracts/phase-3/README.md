@@ -149,6 +149,9 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-capability-profile-policy.json`: portable CPU, local accelerated, and
   capacity-target profile invariants, adaptive resource dimensions, future
   control-surface policy, and exact-manifest requirements.
+- `p3-6-phase-minus-1-alignment.json`: exact shared-contract and deployment
+  revisions, ownership partition, decision crosswalk, effective profile aliases,
+  capacity-target/evidence-tier semantics, and unchanged execution gates.
 - `p3-6-start-intent.json`: exact received `D-P3.6-START` statement, its
   non-effective state, gate snapshot, allowed planning effect, and continuing
   non-authorization.

@@ -39,6 +39,11 @@ non-authorizing R0 package under digest
 No artifact was downloaded; acquisition remains blocked on eligible local
 storage, an exact scanner binding, a regenerated R1 package, and explicit owner
 authority.
+P3.6 is now aligned to the completed Phase -1 shared contracts and deployment
+profiles. `portable_cpu` maps directly, historical `local_accelerated` maps to
+`owned_gpu_lab`, and historical `capacity_target` is an evidence target that
+must select `standalone_server` or `kubernetes_cluster`. `P36-G0A` passes; all
+substantive execution and acquisition gates retain their prior state.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -129,6 +134,7 @@ autonomous enforcement.
 | [P3.6 owner decision packet](p3-6-decision-packet.md) | Historical A-D architecture options, accepted choices, and later manifest-bound start gates |
 | [P3.6 owner decisions](p3-6-owner-decisions.md) | Accepted staged portfolio, scheduler, evidence modes, immutable bundle, and hardware strategy |
 | [P3.6 capability profiles](p3-6-capability-profiles.md) | Dynamic portable CPU, local accelerated, and capacity-target policy with exact-manifest requirements |
+| [P3.6 to Phase -1 alignment](p3-6-phase-minus-1-alignment.md) | Immutable shared-contract revisions, ownership partition, profile aliases, evidence tiers, and unchanged execution gates |
 | [P3.6 start intent](p3-6-start-intent.md) | Received `D-P3.6-START` statement, non-effective gate state, and continuing prohibitions |
 | [P3.6 unblock plan](p3-6-unblock-plan.md) | Ordered model, sanitized inventory, profile-manifest, and final start-package prerequisites |
 | [P3.6 LAB-LAPTOP-01 inventory](p3-6-inventory-lab-laptop-01-r0.md) | Authorized sanitized Windows, CPU, memory, graphics, storage, and installed-tool evidence without execution claims |

@@ -346,6 +346,11 @@ proposal are sealed under package digest
 No artifact was downloaded; acquisition remains blocked on exact eligible
 local storage, an exact scanner binding, a regenerated R1 package, and explicit
 owner authority.
+`P36-U0A` is complete: P3.6 ownership and vocabulary are bound to the Phase -1
+shared contracts at `hcam-protos` merge `d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8`,
+deployment merge `71095fe89d2b711e4982ddc0130fcaedda8703e7`, and canonical base digest
+`sha256:db776a7432e46dcbf0f170efde428002d656faf3b4cc278fc776c8aabd6c94cf`.
+This passes `P36-G0A` without changing G1, G2, G4, or G5.
 
 Planning records:
 
@@ -355,6 +360,7 @@ Planning records:
 - [owner decision packet](p3-6-decision-packet.md);
 - [accepted owner decisions](p3-6-owner-decisions.md);
 - [dynamic capability profiles](p3-6-capability-profiles.md);
+- [Phase -1 shared-contract alignment](p3-6-phase-minus-1-alignment.md);
 - [non-effective start intent](p3-6-start-intent.md);
 - [prerequisite unblock plan](p3-6-unblock-plan.md);
 - [LAB-LAPTOP-01 sanitized inventory](p3-6-inventory-lab-laptop-01-r0.md); and
@@ -397,9 +403,11 @@ Remaining gated backlog requires exact owner decisions and separate authority:
 - bind an eligible exact local quarantine root and exact scanner invocation,
   then regenerate a digest-bound R1 acquisition proposal;
 - resolve exact model-family artifacts/data and complete `P36-G1`;
-- prepare and approve exact `portable_cpu`, `local_accelerated`, and
-  `capacity_target` machine, OS, driver, runtime, precision, decoder, resource,
-  and generated-workload manifests for `P36-G2`;
+- prepare and approve exact shared `portable_cpu` and `owned_gpu_lab` machine,
+  OS, driver, runtime, precision, decoder, resource, and generated-workload
+  manifests for `P36-G2`;
+- select `standalone_server` or `kubernetes_cluster` for any future C10/C50
+  capacity target; do not create a separate `capacity_target` profile;
 - prepare bounded acquisition/research manifests for any external artifacts,
   dependencies, drivers, or containers;
 - prepare a digest-bound `D-P3.6-START` proposal. Do not execute it by

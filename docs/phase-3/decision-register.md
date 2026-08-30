@@ -715,6 +715,33 @@ volumes `C:`, `E:`, and `F:` are ineligible under the current free-space policy.
 bindings are added to a new digest-bound R1 package. `P36-G1`, `P36-G2`,
 `P36-G4`, and `P36-G5` remain blocked.
 
+### DR-0051: P3.6 Alignment To Phase -1 Shared Contracts
+
+Status: aligned planning baseline; `P36-G0A` passed with execution gates
+unchanged.
+
+The completed Phase -1 baseline is now authoritative for sanitized node
+inventory, deterministic profile resolution, model/runtime compatibility,
+workload placement, typed pipeline composition, adaptive-selection evidence,
+rollback, and deployment profile classes. P3.6 remains responsible for
+detector runtime candidates, candidate-specific parity, generated benchmark
+workloads, and `CONTRACT`/`INFER`/`PIPE` evidence.
+
+The alignment binds `hcam-protos` merge
+`d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8`, `hcam-deployment` merge
+`71095fe89d2b711e4982ddc0130fcaedda8703e7`, and deployment base digest
+`sha256:db776a7432e46dcbf0f170efde428002d656faf3b4cc278fc776c8aabd6c94cf`.
+Historical `local_accelerated` maps to `owned_gpu_lab`. Historical
+`capacity_target` is an evidence target resolving to `standalone_server` or
+`kubernetes_cluster`, not another profile. Balanced/Throughput/Latency are
+resolver objectives; C1/C10/C50 are generated evidence tiers.
+
+The five accepted P3.6 selections remain unchanged. This planning alignment
+does not accept the R0 model proposal and authorizes no acquisition,
+implementation, runtime, hardware test, Kubernetes action, deployment, media,
+data, or remote Git operation. `P36-G1`, `P36-G2`, `P36-G4`, and `P36-G5`
+remain blocked.
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

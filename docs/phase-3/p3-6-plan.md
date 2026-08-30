@@ -33,6 +33,9 @@ Start intent and prerequisite sequence:
 Entry gates:
 [`p3-6-entry-gates.json`](../../contracts/phase-3/p3-6-entry-gates.json).
 
+Shared platform alignment:
+[P3.6 to Phase -1 alignment](p3-6-phase-minus-1-alignment.md).
+
 Accepted dependency: P3.5 under `D-P3.5-W10-ACCEPTANCE` for immutable package
 digest `4AC016E2A23B001F338F822A25A90CA2E032947B842F14300146F0FF315B3D31`.
 
@@ -79,6 +82,15 @@ P3.6 reuses rather than rewrites:
   safe reason codes, low-cardinality metrics, and transactional events;
 - existing C0/C1/C10/C50 workload terminology and deployment prohibitions.
 
+P3.6 also inherits the completed Phase -1 experimental shared contracts for
+sanitized node inventory, deterministic profile resolution, model/runtime
+compatibility, workload placement, typed composable pipelines, and adaptive
+selection evidence/rollback. The planned deployment profiles are
+`portable_cpu`, `owned_gpu_lab`, `standalone_server`, and
+`kubernetes_cluster`, bound to canonical base digest
+`sha256:db776a7432e46dcbf0f170efde428002d656faf3b4cc278fc776c8aabd6c94cf`.
+P3.6 specializes those contracts; it does not redefine them.
+
 The authorized sanitized `LAB-LAPTOP-01` inventory records Windows 10 Pro
 64-bit build 19045, an Intel Core i5-8365U with four cores/eight logical
 processors, 8 GiB RAM, Intel UHD Graphics 620, and no observed discrete NVIDIA
@@ -92,6 +104,7 @@ support, performance, GPU, C1/C10/C50, production, or procurement claims.
 | Gate | Requirement | Current state |
 | --- | --- | --- |
 | `P36-G0` | Accepted P3.5 and explicit P3.6 planning authority | Passed |
+| `P36-G0A` | P3.6 ownership and profile vocabulary aligned to the immutable Phase -1 planning baseline | Passed |
 | `P36-G1` | Frozen `DET-R0/E1/B1/A1` comparison and promoted champion/fallback | Blocked; exact E1/B1/A1 metadata sealed, artifacts and H-CAM evidence absent |
 | `P36-G2` | Exact hardware/OS/driver/runtime/precision/workload profiles | Blocked; current-laptop inventory complete, profiles unresolved |
 | `P36-G3` | Owner decisions `D-P3.6-001` through `D-P3.6-005` | Passed |
@@ -119,6 +132,12 @@ hardware strategy. Three bounded extensions are part of that baseline:
 The same application and contracts must work across a conservative CPU-only
 profile and stronger validated accelerated profiles. Dynamic behavior changes
 resource policy and admitted load, not product correctness or safety.
+
+The older `local_accelerated` term is an alias for Phase -1 `owned_gpu_lab`.
+The older `capacity_target` term is an evidence target that must resolve to
+either `standalone_server` or `kubernetes_cluster`; it is not a fifth profile.
+Balanced, Throughput, and Latency are resolver objectives, while C1/C10/C50
+remain generated-workload evidence tiers.
 
 ## Target Architecture
 

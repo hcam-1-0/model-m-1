@@ -2,7 +2,11 @@
   "baseline": {
     "accepted_p3_5_commit": "1611922b4f410aa0cdbce369e4f3c8838f53e19f",
     "accepted_p3_5_package_digest": "4AC016E2A23B001F338F822A25A90CA2E032947B842F14300146F0FF315B3D31",
-    "planning_baseline_head": "c0cb82b32f3ec399b64668da4600540c88b8c25e"
+    "planning_baseline_head": "c0cb82b32f3ec399b64668da4600540c88b8c25e",
+    "phase_minus_1_alignment_source_head": "b39439db514ca4f11bdd3d8591c5f9c170bdebf5",
+    "phase_minus_1_contracts_merge": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+    "phase_minus_1_deployment_merge": "71095fe89d2b711e4982ddc0130fcaedda8703e7",
+    "phase_minus_1_deployment_base_digest": "sha256:db776a7432e46dcbf0f170efde428002d656faf3b4cc278fc776c8aabd6c94cf"
   },
   "contract_format": "hcam.phase3.p3_6.entry_gates.v1",
   "decisions": [
@@ -49,6 +53,11 @@
       "summary": "P3.5 immutable generated-only package is accepted and P3.6 planning is explicitly authorized."
     },
     {
+      "gate_id": "P36-G0A",
+      "state": "passed",
+      "summary": "P3.6 planning vocabulary and ownership are aligned to the completed Phase -1 shared contract and deployment-profile baseline."
+    },
+    {
       "gate_id": "P36-G1",
       "state": "blocked",
       "summary": "Exact official metadata is sealed for DET-E1/B1/A1, but no artifact is acquired, no H-CAM comparison evidence exists, and no champion/fallback pair is approved."
@@ -56,7 +65,7 @@
     {
       "gate_id": "P36-G2",
       "state": "blocked",
-      "summary": "Sanitized LAB-LAPTOP-01 inventory is complete, but the portable runtime/workload profile, accelerated laptop, capacity target, and exact approved hardware/runtime/precision/workload manifests remain unresolved."
+      "summary": "Sanitized LAB-LAPTOP-01 inventory is complete, but the exact shared portable_cpu runtime/workload manifest, owned_gpu_lab inventory, standalone_server or kubernetes_cluster capacity-target selection, and approved hardware/runtime/precision/workload manifests remain unresolved."
     },
     {
       "gate_id": "P36-G3",
@@ -88,8 +97,9 @@
     "status": "sealed_non_authorizing_storage_and_scanner_blocked"
   },
   "owner_decisions_record": "contracts/phase-3/p3-6-owner-decisions.json",
+  "phase_minus_1_alignment": "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
   "planning_authorization": "D-P3.6-PLAN-AUTH",
-  "planning_status": "U2_exact_metadata_proposal_sealed_acquisition_profiles_promotion_and_execution_authority_pending",
+  "planning_status": "U2_exact_metadata_proposal_sealed_phase_minus_1_aligned_acquisition_profiles_promotion_and_execution_authority_pending",
   "record_id": "P3.6-ENTRY-GATES",
   "runtime_execution_authorized": false,
   "start_intent_record": "contracts/phase-3/p3-6-start-intent.json",

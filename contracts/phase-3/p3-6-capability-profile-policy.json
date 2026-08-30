@@ -29,12 +29,43 @@
     "observation_time_expiry_approver_and_status"
   ],
   "contract_format": "hcam.phase3.p3_6.capability_profile_policy.v1",
+  "phase_minus_1_alignment_record": "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
+  "effective_profile_model": {
+    "authority": "hcam-2-0/hcam-deployment",
+    "base_profile_digest": "sha256:db776a7432e46dcbf0f170efde428002d656faf3b4cc278fc776c8aabd6c94cf",
+    "profile_classes": [
+      "portable_cpu",
+      "owned_gpu_lab",
+      "standalone_server",
+      "kubernetes_cluster"
+    ],
+    "historical_aliases": {
+      "local_accelerated": "owned_gpu_lab",
+      "portable_cpu": "portable_cpu"
+    },
+    "capacity_target_is_profile": false,
+    "capacity_target_allowed_profiles": [
+      "standalone_server",
+      "kubernetes_cluster"
+    ],
+    "rule": "The profiles array below is retained as the accepted historical P3.6 planning vocabulary; effective manifests must use the Phase -1 profile classes through the alignment record."
+  },
   "future_operator_controls": {
     "hardware_profile": [
       "auto",
       "portable_cpu",
       "local_accelerated"
     ],
+    "hardware_profile_class": [
+      "auto",
+      "portable_cpu",
+      "owned_gpu_lab",
+      "standalone_server",
+      "kubernetes_cluster"
+    ],
+    "historical_control_aliases": {
+      "local_accelerated": "owned_gpu_lab"
+    },
     "implementation_status": "not_authorized",
     "load_policy": [
       "conservative",
@@ -94,7 +125,7 @@
     }
   ],
   "record_id": "P3.6-CAPABILITY-PROFILE-POLICY",
-  "status": "accepted_planning_baseline",
+  "status": "accepted_planning_baseline_aligned_to_phase_minus_1",
   "unresolved_gates": [
     "model_champion_and_fallback",
     "exact_machine_capability_manifests",

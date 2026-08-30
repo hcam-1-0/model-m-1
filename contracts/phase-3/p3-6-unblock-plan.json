@@ -5,6 +5,13 @@
     "start_intent_commit": "66b6dda372eab75270a2d667512957d5f78154f8",
     "start_intent_record": "contracts/phase-3/p3-6-start-intent.json"
   },
+  "phase_minus_1_alignment": {
+    "record": "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
+    "status": "completed",
+    "shared_contracts_merge": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+    "deployment_profiles_merge": "71095fe89d2b711e4982ddc0130fcaedda8703e7",
+    "deployment_base_digest": "sha256:db776a7432e46dcbf0f170efde428002d656faf3b4cc278fc776c8aabd6c94cf"
+  },
   "contract_format": "hcam.phase3.p3_6.unblock_plan.v1",
   "current_exact_foundation": {
     "det_r0": {
@@ -40,7 +47,14 @@
       "known_inventory_profile": "LAB-LAPTOP-01 Intel Core i5-8365U, 8 GiB RAM, Intel UHD Graphics 620, no observed discrete NVIDIA accelerator",
       "state": "sanitized_current_laptop_inventory_complete_portable_manifest_pending",
       "stronger_laptop_profile": "unknown",
-      "capacity_target_profile": "unknown"
+      "capacity_target_profile": "unknown",
+      "effective_portable_profile_class": "portable_cpu",
+      "required_accelerated_profile_class": "owned_gpu_lab",
+      "capacity_target_allowed_profile_classes": [
+        "standalone_server",
+        "kubernetes_cluster"
+      ],
+      "capacity_target_is_profile": false
     }
   },
   "implementation_authorized": false,
@@ -64,6 +78,20 @@
   "runtime_execution_authorized": false,
   "status": "planning_only_U2_metadata_complete_acquisition_and_execution_blocked",
   "work_items": [
+    {
+      "allowed_now": [
+        "bind_p3_6_planning_terms_to_exact_phase_minus_1_contract_revisions",
+        "record_non_competing_profile_aliases_and_evidence_targets",
+        "preserve_all_existing_execution_and_acquisition_gates"
+      ],
+      "gate_target": "P36-G0A",
+      "output_records": [
+        "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
+        "docs/phase-3/p3-6-phase-minus-1-alignment.md"
+      ],
+      "state": "completed",
+      "work_item_id": "P36-U0A"
+    },
     {
       "allowed_after_authorization": [
         "read_windows_os_cpu_memory_and_display_controller_inventory",
@@ -110,9 +138,9 @@
     },
     {
       "required_inputs": [
-        "sanitized_collaborator_accelerated_laptop_inventory",
-        "declared_capacity_target_or_explicit_deferral",
-        "exact_runtime_provider_precision_decoder_and_generated_workload_proposals"
+        "sanitized_collaborator_owned_gpu_lab_inventory",
+        "declared_standalone_server_or_kubernetes_cluster_capacity_target_or_explicit_deferral",
+        "exact_phase_minus_1_profile_revision_runtime_provider_precision_decoder_and_generated_workload_proposals"
       ],
       "available_inputs": [
         "sanitized_current_laptop_inventory"

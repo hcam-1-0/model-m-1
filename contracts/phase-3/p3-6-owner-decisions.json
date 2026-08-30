@@ -3,6 +3,7 @@
   "accepted_on": "2026-08-29",
   "capability_profile_policy": "contracts/phase-3/p3-6-capability-profile-policy.json",
   "contract_format": "hcam.phase3.p3_6.owner_decisions.v1",
+  "phase_minus_1_alignment_record": "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
   "decision_ids": [
     "D-P3.6-001",
     "D-P3.6-002",
@@ -74,6 +75,18 @@
     "same_application_contracts_across_profiles": true
   },
   "effect": "freezes_the_p3_6_runtime_scheduling_benchmark_packaging_and_hardware_strategy_planning_baseline",
+  "shared_contract_relationship": {
+    "status": "aligned_without_changing_owner_selections",
+    "phase_minus_1_contract_authority": "hcam-2-0/hcam-protos@d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+    "phase_minus_1_deployment_authority": "hcam-2-0/hcam-deployment@71095fe89d2b711e4982ddc0130fcaedda8703e7",
+    "profile_terms": {
+      "portable_cpu": "portable_cpu",
+      "local_accelerated": "owned_gpu_lab",
+      "capacity_target": "evidence_target_resolving_to_standalone_server_or_kubernetes_cluster"
+    },
+    "objective_modes_are_resolver_objectives": true,
+    "c1_c10_c50_are_evidence_tiers": true
+  },
   "implementation_authorized": false,
   "non_authorization": [
     "model_dataset_dependency_driver_or_container_download",

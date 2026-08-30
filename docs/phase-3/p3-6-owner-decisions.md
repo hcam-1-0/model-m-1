@@ -10,6 +10,9 @@ Machine-readable record:
 Capability-profile policy:
 [`p3-6-capability-profile-policy.json`](../../contracts/phase-3/p3-6-capability-profile-policy.json).
 
+Shared-contract crosswalk:
+[P3.6 to Phase -1 alignment](p3-6-phase-minus-1-alignment.md).
+
 Start-intent record: [P3.6 start intent](p3-6-start-intent.md).
 
 ## Decision Summary
@@ -27,6 +30,11 @@ does not combine the unsafe parts of Options B or C with A. The typed H-CAM
 scheduler remains authoritative, Kubernetes remains an optional execution
 backend, and runtime-managed placement remains advisory within an already
 admitted device/provider/resource set.
+
+The accepted option values remain unchanged after Phase -1 alignment. Phase -1
+now owns the shared inventory, resolver, compatibility, placement, pipeline,
+evidence, rollback, and deployment-profile contracts. P3.6 supplies
+runtime-candidate and benchmark specialization through those contracts.
 
 ## D-P3.6-001: Staged Runtime Portfolio
 
@@ -113,10 +121,12 @@ strategy**.
 
 - the current laptop is the portable CPU/reference profile and may later be an
   exact Intel/OpenVINO feasibility target;
-- a stronger GPU-equipped laptop is a separate `local_accelerated` profile,
-  never an assumed extension of the current machine;
+- a stronger GPU-equipped laptop uses the shared `owned_gpu_lab` profile;
+  `local_accelerated` remains only its historical P3.6 alias and is never an
+  assumed extension of the current machine;
 - C10/C50 and server/cluster claims require a separately declared and approved
-  `capacity_target` profile;
+  `capacity_target` that resolves to exactly one shared `standalone_server` or
+  `kubernetes_cluster` profile;
 - results are valid only for the exact machine, power mode, software tuple,
   generated workload, duration, and repetitions in the signed evidence;
 - no laptop or lab result is extrapolated into statewide or production claims.
@@ -133,13 +143,17 @@ preview rate/quality, and bounded queue/reservation values. A lower-capacity
 machine removes optional work or reduces admitted load before it changes a
 contract or processes stale work.
 
-Three planning profiles are recorded:
+Three historical P3.6 planning terms are recorded:
 
-- `portable_cpu`: conservative current-laptop/CI reference;
-- `local_accelerated`: exact validated stronger laptop with an approved Intel,
-  NVIDIA, or AMD provider;
-- `capacity_target`: separately authorized lab/server profile for C10/C50 and
-  optional Kubernetes evidence.
+- `portable_cpu`: exact alias for the shared `portable_cpu` profile;
+- `local_accelerated`: historical alias for the shared `owned_gpu_lab` profile
+  with an exact approved Intel, NVIDIA, or AMD provider;
+- `capacity_target`: evidence target, not a profile, that must select one shared
+  `standalone_server` or `kubernetes_cluster` profile.
+
+Balanced, Throughput, and Latency are resolver objectives. C1/C10/C50 are
+generated-workload evidence tiers. Neither set creates deployment profiles or
+capacity authority.
 
 Automatic selection can choose only a fresh, validated profile with an approved
 compatibility bundle. If none qualifies, H-CAM uses an approved lower profile
