@@ -132,7 +132,8 @@ The exact follow-on
 is sealed under package digest
 `9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A`.
 It presents `D-P3.6-U3C-001` through `004`, with `A/A/A/A` recommended and all
-selections null. It is planning evidence only and changes no hard gate.
+four choices now owner accepted as non-effective planning policy. It changes no
+hard gate.
 
 Prepare immutable proposals against the Phase -1 profile model:
 
@@ -170,13 +171,14 @@ proposal, and completed one-time R1 outcome are linked from the
 [P3.6 planning acceptance record](p3-6-planning-acceptances.md). The U3B
 `A/A/A/A` policies are now explicitly accepted against package digest
 `471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F`.
-That compatibility proposal is now prepared. The next planning action is owner
-review of `D-P3.6-U3C-001` through `004` against exact package digest
+Those U3C choices are now accepted as `A/A/A/A` planning policy against exact
+package digest
 `9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A`.
-Planning must not treat a choice or `continue` as authority to activate or admit
-a profile, acquire artifacts, execute a runtime, run validation, implement a
-reusable collector, or perform another collection without new explicit
-authority.
+The next planning action is preparation of non-executable R1 artifact,
+supply-chain, and generated-calibration authorization prerequisites after the
+exact storage and scanner blockers are resolved. The acceptance is not
+authority to activate or admit a profile, acquire artifacts, execute a runtime,
+run validation, implement a reusable collector, or perform another collection.
 
 Before `D-P3.6-MODEL-RESEARCH-R1-AUTH` can be prepared, an exact local,
 non-cloud, non-network quarantine root must pass a fresh threshold of at least

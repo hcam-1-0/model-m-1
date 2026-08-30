@@ -65,7 +65,7 @@
     {
       "gate_id": "P36-G2",
       "state": "blocked",
-      "summary": "The portable_cpu planning proposal, inventory-admission A/A/A/A policies, and portable-R1 U3B A/A/A/A policies are owner accepted. A non-executable portable compatibility and generated C1 validation package is sealed with four U3C owner selections pending. R1 supplies only the inventory input; six other resolver inputs, all 22 evidence gaps, exact approved runtime/workload/resource values, actual compatibility artifacts, generated evidence, other profiles, and profile activation remain unresolved."
+      "summary": "The portable_cpu planning proposal, inventory-admission A/A/A/A policies, portable-R1 U3B A/A/A/A policies, and portable compatibility U3C A/A/A/A policies are owner accepted as non-effective planning. R1 supplies only the inventory input; six other resolver inputs, all 22 evidence gaps, actual compatibility artifacts, generated evidence, other profiles, and profile activation remain unresolved."
     },
     {
       "gate_id": "P36-G3",
@@ -156,7 +156,11 @@
       "D-P3.6-U3C-004"
     ],
     "recommended_selection": "A/A/A/A",
-    "status": "sealed_non_effective_owner_selections_pending",
+    "selected_options": "A/A/A/A",
+    "owner_selections_pending": false,
+    "acceptance_record": "contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json",
+    "acceptance_sha256": "FECF3EF71F5A7550871C91BF3A58BFA9D279A88C312A4E96019EC2457821CA77",
+    "status": "accepted_planning_policy_only_non_effective",
     "runtime_execution_authorized": false,
     "profile_resolver_eligible": false,
     "profile_activation_authorized": false
@@ -179,7 +183,7 @@
   "owner_decisions_record": "contracts/phase-3/p3-6-owner-decisions.json",
   "phase_minus_1_alignment": "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
   "planning_authorization": "D-P3.6-PLAN-AUTH",
-  "planning_status": "U2_model_metadata_U3_portable_R0_inventory_admission_AAAA_and_portable_R1_U3B_AAAA_planning_accepted_portable_compatibility_validation_package_sealed_U3C_owner_selections_storage_scanner_acquisition_activation_promotion_and_execution_authority_pending",
+  "planning_status": "U2_model_metadata_U3_portable_R0_inventory_admission_AAAA_portable_R1_U3B_AAAA_and_portable_compatibility_U3C_AAAA_planning_accepted_storage_scanner_acquisition_validation_activation_promotion_and_execution_authority_pending",
   "record_id": "P3.6-ENTRY-GATES",
   "runtime_execution_authorized": false,
   "start_intent_record": "contracts/phase-3/p3-6-start-intent.json",

@@ -258,6 +258,10 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-portable-compatibility-validation-package.json`: immutable
   non-authorizing four-file owner-review manifest whose SHA-256 is
   `9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A`.
+- `p3-6-portable-compatibility-validation-owner-decisions.json`: exact owner
+  acceptance of `D-P3.6-U3C-001` through `004` as `A/A/A/A` planning policy
+  only; its SHA-256 is
+  `FECF3EF71F5A7550871C91BF3A58BFA9D279A88C312A4E96019EC2457821CA77`.
 
 Verify all tracked snapshots:
 

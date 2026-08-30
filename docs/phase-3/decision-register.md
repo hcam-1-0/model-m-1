@@ -944,9 +944,9 @@ cameras/media/data, implementation, deployment, or remote Git authority.
 Machine-readable acceptance:
 [`p3-6-portable-r1-owner-decisions.json`](../../contracts/phase-3/p3-6-portable-r1-owner-decisions.json).
 
-### DR-0059: Exact portable compatibility and generated C1 proposal sealed
+### DR-0059: Portable compatibility and generated C1 policies accepted
 
-Status: proposed for owner selection on 2026-08-31. No choice is effective.
+Status: accepted as non-effective planning policy on 2026-08-31.
 
 The planning-only compatibility package is sealed under SHA-256
 `9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A`.
@@ -963,16 +963,17 @@ The package presents four independent pending choices:
   calibration and held-out validation; and
 - `D-P3.6-U3C-004 A`: immutable `R0` through `R4` compatibility lifecycle.
 
-`A/A/A/A` is recommended, but all selections remain null until the owner
-accepts this exact package digest. Preparing or accepting these planning
-choices grants no artifact or dependency acquisition, runtime/model import,
+`mayank-admin` accepted `D-P3.6-U3C-001` through `004` as `A/A/A/A` against
+the exact package digest. The acceptance record SHA-256 is
+`FECF3EF71F5A7550871C91BF3A58BFA9D279A88C312A4E96019EC2457821CA77`.
+These planning choices grant no artifact or dependency acquisition, runtime/model import,
 inference, calibration, benchmark, hardware testing, inventory retry,
 profile admission or activation, implementation, containers/Kubernetes,
 cameras/media/data, deployment, or remote Git authority. `P36-G2` remains
-blocked, and `continue` must not be interpreted as acceptance.
+blocked.
 
-Machine-readable proposal:
-[`p3-6-portable-compatibility-validation-package.json`](../../contracts/phase-3/p3-6-portable-compatibility-validation-package.json).
+Machine-readable acceptance:
+[`p3-6-portable-compatibility-validation-owner-decisions.json`](../../contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json).
 
 ## Decisions Explicitly Deferred
 

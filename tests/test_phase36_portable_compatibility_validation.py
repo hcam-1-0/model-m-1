@@ -251,7 +251,10 @@ def test_canonical_ledgers_link_package_without_opening_P36_G2() -> None:
         assert state["profile_activation_authorized"] is False
     assert policy["portable_compatibility_validation_package"][
         "owner_selections_pending"
-    ] is True
+    ] is False
+    assert policy["portable_compatibility_validation_package"][
+        "selected_options"
+    ] == "A/A/A/A"
     assert unblock["next_portable_planning_action"][
         "package_digest_sha256"
     ] == PACKAGE_DIGEST
@@ -270,11 +273,11 @@ def test_human_records_and_indexes_are_synchronized() -> None:
     profile = (DOCS / "p3-6-capability-profiles.md").read_text(encoding="utf-8")
     contracts_index = (CONTRACTS / "README.md").read_text(encoding="utf-8")
 
-    assert "DR-0059: Exact portable compatibility" in decision_register
+    assert "DR-0059: Portable compatibility" in decision_register
     assert "D-P3.6-U3C-001" in decision_register
     for text in [decision_register, backlog, phase_index, plan, unblock]:
         assert PACKAGE_DIGEST in text
-    assert "U3C owner review" in profile
+    assert "U3C `A/A/A/A` planning policies are owner accepted" in profile
     assert "p3-6-portable-compatibility-validation-package.json" in (
         contracts_index
     )

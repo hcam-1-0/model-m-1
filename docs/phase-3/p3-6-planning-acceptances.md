@@ -1,9 +1,9 @@
 # P3.6 Planning Acceptances R0
 
-Status: three planning-only owner acceptances recorded on 2026-08-30. A later,
-separate `D-P3.6-INVENTORY-R1-AUTH` accepted one bounded collection attempt;
-that attempt succeeded and is consumed. The later U3B `A/A/A/A` portable-R1
-admission policies are also accepted. No continuing inventory collection,
+Status: planning-only owner acceptances are recorded through the portable U3C
+`A/A/A/A` compatibility policy. A separate `D-P3.6-INVENTORY-R1-AUTH`
+accepted one bounded collection attempt; that attempt succeeded and is
+consumed. No continuing inventory collection,
 artifact acquisition, implementation, runtime, or deployment authority exists.
 
 Machine-readable records:
@@ -18,6 +18,7 @@ Later R1 outcome records:
 - [sanitized shared-schema R1](../../contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json); and
 - [bounded collection evidence](../../contracts/phase-3/p3-6-inventory-r1-collection-evidence.json).
 - [portable R1 admission policy acceptance](../../contracts/phase-3/p3-6-portable-r1-owner-decisions.json).
+- [portable compatibility and generated C1 policy acceptance](../../contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json).
 
 ## Portable CPU Planning Proposal
 
@@ -68,6 +69,23 @@ capability-inventory input. The other six resolver inputs and all 22 evidence
 gaps remain unresolved. The acceptance grants no collection, profile,
 execution, implementation, or deployment authority.
 
+## Portable Compatibility And Generated C1 Policies
+
+`D-P3.6-U3C-001` through `D-P3.6-U3C-004` are accepted as `A/A/A/A` against
+package digest
+`9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A`.
+The accepted planning policy fixes the deterministic low-contention CPU
+candidate, bounded three-seed generated `CONTRACT` plus C1 `INFER` matrix,
+hard-safety/calibration/held-out-validation separation, and immutable `R0`
+through `R4` compatibility lifecycle.
+
+No actual compatibility bundle, artifact, supply-chain evidence, generated
+calibration, held-out validation, or promotional threshold exists. The
+acceptance record SHA-256 is
+`FECF3EF71F5A7550871C91BF3A58BFA9D279A88C312A4E96019EC2457821CA77`.
+This acceptance authorizes no acquisition, runtime execution, validation,
+profile admission, implementation, or deployment.
+
 ## Model Metadata Proposal
 
 `D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE` accepts package digest
@@ -86,7 +104,7 @@ bindings are sealed in a regenerated package.
 | `P36-G0` | Passed |
 | `P36-G0A` | Passed |
 | `P36-G1` | Blocked: no acquired comparison artifacts, H-CAM evidence, or approved champion/fallback |
-| `P36-G2` | Blocked: R1 exists, but exact runtime/resource/workload manifest, compatibility values, other profiles, and generated validation evidence remain missing |
+| `P36-G2` | Blocked: R1 and U3C planning policy exist, but actual compatibility artifacts, six other resolver inputs, other profiles, and generated validation evidence remain missing |
 | `P36-G3` | Passed |
 | `P36-G4` | Blocked: no acquisition authority or exact storage/scanner binding |
 | `P36-G5` | Blocked: no digest-bound implementation/runtime authorization |

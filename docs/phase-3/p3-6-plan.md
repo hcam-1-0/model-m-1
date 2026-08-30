@@ -54,7 +54,7 @@ is sealed under package digest
 `9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A`.
 It converts the accepted U3B policy into exact non-executable runtime,
 generated-workload, safety-gate, and immutable-lifecycle choices. The four U3C
-selections remain pending; the package grants no acquisition, execution,
+selections are owner accepted as `A/A/A/A` planning policy; the acceptance grants no acquisition, execution,
 validation, implementation, profile admission, or activation authority.
 
 Acceptance record:

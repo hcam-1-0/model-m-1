@@ -382,7 +382,8 @@ collection, profile, execution, or implementation gate.
 The follow-on exact compatibility and deterministic generated C1 validation
 proposal is sealed under package digest
 `9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A`.
-Its four recommended U3C `A/A/A/A` choices remain unselected and grant no
+`mayank-admin` accepted the four U3C choices as `A/A/A/A` planning policy.
+The acceptance remains non-effective and grants no
 execution, acquisition, validation, implementation, or activation authority.
 
 Planning records:
@@ -414,6 +415,7 @@ Planning records:
 - [accepted portable R1 `A/A/A/A` policy decisions](../../contracts/phase-3/p3-6-portable-r1-owner-decisions.json); and
 - [portable compatibility and generated C1 proposal](p3-6-portable-compatibility-validation-proposal.md);
 - [sealed non-authorizing portable compatibility package](../../contracts/phase-3/p3-6-portable-compatibility-validation-package.json); and
+- [accepted portable compatibility U3C `A/A/A/A` policy decisions](../../contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json); and
 - [P3.6 planning acceptances R0](p3-6-planning-acceptances.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
@@ -448,10 +450,10 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner decisions and separate authority:
 
-- select `D-P3.6-U3C-001` through `D-P3.6-U3C-004` against exact package digest
-  `9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A`;
-  the recommended `A/A/A/A` planning choices are not authority to acquire,
-  execute, validate, implement, admit, or activate anything;
+- prepare non-executable R1 artifact/supply-chain and generated-calibration
+  authorization prerequisites only after an eligible exact local quarantine
+  root and scanner invocation are bound; U3C acceptance is not authority to
+  acquire, execute, validate, implement, admit, or activate anything;
 - bind an eligible exact local quarantine root and exact scanner invocation,
   then regenerate a digest-bound R1 acquisition proposal;
 - resolve exact model-family artifacts/data and complete `P36-G1`;
