@@ -169,7 +169,15 @@ def test_canonical_ledgers_link_package_and_keep_G2_blocked() -> None:
     assert policy["portable_r1_admission_gap_package"][
         "package_digest_sha256"
     ] == PACKAGE_DIGEST
-    assert policy["portable_r1_admission_gap_package"]["owner_selections_pending"]
+    assert not policy["portable_r1_admission_gap_package"][
+        "owner_selections_pending"
+    ]
+    assert policy["portable_r1_admission_gap_package"]["selected_options"] == (
+        "A/A/A/A"
+    )
+    assert policy["portable_r1_admission_gap_package"]["acceptance_record"].endswith(
+        "p3-6-portable-r1-owner-decisions.json"
+    )
     assert not policy["portable_r1_admission_gap_package"]["resolver_eligible"]
     assert unblock["portable_r1_admission_gap_package"][
         "package_digest_sha256"
@@ -195,7 +203,9 @@ def test_package_and_decision_indexes_are_synchronized() -> None:
     assert PACKAGE_DIGEST in backlog
     assert "p3-6-portable-r1-admission-gap.md" in phase_index
     assert PACKAGE_DIGEST in phase_plan
-    assert "No selection may be inferred from `continue`" in unblock_doc
+    assert "U3B `A/A/A/A` policies are now explicitly accepted" in " ".join(
+        unblock_doc.split()
+    )
     assert "p3-6-portable-r1-admission-package.json" in contracts_index
 
 

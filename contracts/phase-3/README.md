@@ -242,6 +242,10 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-portable-r1-admission-package.json`: immutable three-file non-effective
   owner-review manifest whose SHA-256 is
   `471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F`.
+- `p3-6-portable-r1-owner-decisions.json`: exact owner acceptance of
+  `D-P3.6-U3B-001` through `004` as `A/A/A/A` planning policy only, preserving
+  all collection, profile, execution, implementation, deployment, and remote
+  Git prohibitions.
 
 Verify all tracked snapshots:
 

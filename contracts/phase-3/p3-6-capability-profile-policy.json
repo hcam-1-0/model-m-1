@@ -129,8 +129,10 @@
     "package_digest_sha256": "471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F",
     "gap_count": 22,
     "recommended_selection": "A/A/A/A",
-    "owner_selections_pending": true,
-    "status": "sealed_non_effective_owner_selections_pending",
+    "selected_options": "A/A/A/A",
+    "acceptance_record": "contracts/phase-3/p3-6-portable-r1-owner-decisions.json",
+    "owner_selections_pending": false,
+    "status": "owner_AAAA_policy_selections_accepted_non_effective",
     "resolver_eligible": false,
     "profile_activation_authorized": false
   },

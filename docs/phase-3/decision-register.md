@@ -884,7 +884,7 @@ complete bindings, outputs, gate effect, and continuing prohibitions.
 ### DR-0057: P3.6 Portable CPU R1 Admission Gap R0
 
 Status: exact non-effective owner-decision package sealed on 2026-08-30;
-`D-P3.6-U3B-001` through `D-P3.6-U3B-004` remain pending.
+the four selections were pending at seal and are resolved in `DR-0058`.
 
 Package digest
 `471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F`
@@ -911,6 +911,38 @@ implementation, deployment, or remote Git. `P36-G2` remains blocked, and owner
 acceptance cannot be inferred from `continue` or another decision.
 
 See [the portable R1 admission gap](p3-6-portable-r1-admission-gap.md).
+
+### DR-0058: P3.6 Portable R1 Admission Policies Accepted
+
+Status: `A/A/A/A` planning-policy selections accepted by `mayank-admin` on
+2026-08-31 local date against package digest
+`471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F`.
+
+The accepted policies are:
+
+- `D-P3.6-U3B-001 A`: preserve R1 as immutable historical evidence after
+  expiry and request a just-in-time, separately authorized, digest-bound refresh
+  only after the other admission inputs are sealed;
+- `D-P3.6-U3B-002 A`: require all seven fresh, valid, content-addressed resolver
+  inputs and fail closed on unknown, missing, invalid, or stale evidence;
+- `D-P3.6-U3B-003 A`: require the complete immutable compatibility bundle,
+  including supply-chain, pipeline, security, fallback, and rollback records;
+  and
+- `D-P3.6-U3B-004 A`: require a predeclared deterministic generated-only
+  `CONTRACT` plus C1 `INFER` matrix, with balanced as the default objective.
+
+R1 was still within its accepted 24-hour validity window at acceptance, but it
+represents only the capability-inventory resolver input. The other six inputs
+and all 22 evidence gaps remain unresolved, so `portable_cpu` is not
+resolver-eligible and `P36-G2` remains blocked.
+
+This acceptance grants no new inventory attempt, reusable collector,
+artifact/dependency acquisition, profile resolution/admission/activation,
+runtime/model execution, hardware testing, containers/Kubernetes,
+cameras/media/data, implementation, deployment, or remote Git authority.
+
+Machine-readable acceptance:
+[`p3-6-portable-r1-owner-decisions.json`](../../contracts/phase-3/p3-6-portable-r1-owner-decisions.json).
 
 ## Decisions Explicitly Deferred
 

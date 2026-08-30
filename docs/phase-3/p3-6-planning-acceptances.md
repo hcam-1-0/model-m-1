@@ -2,7 +2,8 @@
 
 Status: three planning-only owner acceptances recorded on 2026-08-30. A later,
 separate `D-P3.6-INVENTORY-R1-AUTH` accepted one bounded collection attempt;
-that attempt succeeded and is consumed. No continuing inventory collection,
+that attempt succeeded and is consumed. The later U3B `A/A/A/A` portable-R1
+admission policies are also accepted. No continuing inventory collection,
 artifact acquisition, implementation, runtime, or deployment authority exists.
 
 Machine-readable records:
@@ -16,6 +17,7 @@ Later R1 outcome records:
 - [consumed owner authorization](../../contracts/phase-3/p3-6-inventory-r1-authorization.json);
 - [sanitized shared-schema R1](../../contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json); and
 - [bounded collection evidence](../../contracts/phase-3/p3-6-inventory-r1-collection-evidence.json).
+- [portable R1 admission policy acceptance](../../contracts/phase-3/p3-6-portable-r1-owner-decisions.json).
 
 ## Portable CPU Planning Proposal
 
@@ -50,6 +52,21 @@ selections did not authorize a query or projection. A separate exact
 The owner later accepted that digest; its one local read-only attempt produced a
 sanitized shared-schema-valid R1 and is consumed. The R1 does not activate or
 admit a profile.
+
+## Portable R1 Admission Policies
+
+`D-P3.6-U3B-001` through `D-P3.6-U3B-004` are accepted as `A/A/A/A` against
+package digest
+`471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F`.
+The accepted policy requires just-in-time digest-bound inventory refresh,
+strict seven-input fail-closed admission, a complete immutable compatibility
+bundle, and a deterministic generated-only `CONTRACT` plus C1 `INFER` matrix
+with balanced as the default objective.
+
+R1 was fresh when these selections were accepted but represents only the
+capability-inventory input. The other six resolver inputs and all 22 evidence
+gaps remain unresolved. The acceptance grants no collection, profile,
+execution, implementation, or deployment authority.
 
 ## Model Metadata Proposal
 

@@ -178,7 +178,8 @@ def test_gate_and_profile_records_link_the_sealed_non_executable_package() -> No
     )
     assert u3["output_package_digest_sha256"] == digest
     assert u3["state"].startswith(
-        "portable_cpu_R0_and_inventory_admission_AAAA_planning_accepted"
+        "portable_cpu_R0_inventory_admission_AAAA_and_portable_R1_U3B_AAAA_"
+        "planning_accepted"
     )
 
 
