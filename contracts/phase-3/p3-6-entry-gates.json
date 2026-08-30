@@ -60,12 +60,12 @@
     {
       "gate_id": "P36-G1",
       "state": "blocked",
-      "summary": "Exact official metadata is sealed for DET-E1/B1/A1, but no artifact is acquired, no H-CAM comparison evidence exists, and no champion/fallback pair is approved."
+      "summary": "Exact official metadata planning is owner accepted for DET-E1/B1/A1, but no artifact is acquired, no H-CAM comparison evidence exists, and no champion/fallback pair is approved."
     },
     {
       "gate_id": "P36-G2",
       "state": "blocked",
-      "summary": "Historical LAB-LAPTOP-01 inventory, a portable_cpu R0 proposal, and an exact inventory-admission gap package are sealed. R0 does not conform to the Phase -1 shared inventory shape; policy selections, a separately authorized fresh R1, exact runtime/workload/resource values, other profiles, and generated validation remain unresolved."
+      "summary": "The portable_cpu planning proposal and A/A/A/A inventory-admission policies are owner accepted. Historical R0 remains stale and nonconforming; a separately authorized fresh R1, exact runtime/workload/resource values, other profiles, and generated validation remain unresolved."
     },
     {
       "gate_id": "P36-G3",
@@ -75,7 +75,7 @@
     {
       "gate_id": "P36-G4",
       "state": "blocked",
-      "summary": "A digest-bound non-authorizing three-artifact R0 proposal exists, but acquisition authority is absent and exact local storage and scanner bindings remain unresolved."
+      "summary": "The digest-bound three-artifact R0 metadata proposal is owner accepted as planning only, but acquisition authority is absent and exact local storage and scanner bindings remain unresolved."
     },
     {
       "gate_id": "P36-G5",
@@ -91,34 +91,37 @@
     "contracts/phase-3/p3-6-inventory-lab-laptop-01-r0.json"
   ],
   "inventory_admission_gap_package": {
+    "acceptance_record": "contracts/phase-3/p3-6-inventory-admission-owner-decisions.json",
     "digest_sha256": "CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A",
     "manifest": "contracts/phase-3/p3-6-inventory-admission-package.json",
-    "owner_selections_pending": [
+    "owner_selections_accepted": [
       "D-P3.6-U3A-001",
       "D-P3.6-U3A-002",
       "D-P3.6-U3A-003",
       "D-P3.6-U3A-004"
     ],
     "inventory_recollection_authorized": false,
-    "status": "sealed_non_executable_owner_selection_pending"
+    "status": "owner_policy_selections_accepted_fresh_R1_authority_pending"
   },
   "model_artifact_research_package": {
+    "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
     "digest_sha256": "2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE",
     "manifest": "contracts/phase-3/p3-6-model-artifact-research-package.json",
-    "proposal_acceptance_pending": "D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE",
-    "status": "sealed_non_authorizing_storage_and_scanner_blocked"
+    "proposal_acceptance": "D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE",
+    "status": "accepted_metadata_planning_storage_scanner_and_acquisition_blocked"
   },
   "portable_cpu_profile_proposal": {
+    "acceptance_record": "contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json",
     "digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
     "manifest": "contracts/phase-3/p3-6-portable-cpu-profile-package.json",
-    "owner_review_pending": "D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE",
+    "owner_acceptance": "D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE",
     "profile_activation_authorized": false,
-    "status": "sealed_non_executable_owner_review_pending"
+    "status": "accepted_non_executable_planning_profile_exact_evidence_pending"
   },
   "owner_decisions_record": "contracts/phase-3/p3-6-owner-decisions.json",
   "phase_minus_1_alignment": "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
   "planning_authorization": "D-P3.6-PLAN-AUTH",
-  "planning_status": "U2_metadata_U3_portable_R0_and_inventory_admission_gap_packages_sealed_phase_minus_1_aligned_owner_policy_selections_fresh_R1_acquisition_activation_promotion_and_execution_authority_pending",
+  "planning_status": "U2_model_metadata_U3_portable_R0_and_inventory_admission_AAAA_planning_accepted_fresh_R1_storage_scanner_acquisition_activation_promotion_and_execution_authority_pending",
   "record_id": "P3.6-ENTRY-GATES",
   "runtime_execution_authorized": false,
   "start_intent_record": "contracts/phase-3/p3-6-start-intent.json",

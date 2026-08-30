@@ -47,10 +47,13 @@ substantive execution and acquisition gates retain their prior state.
 A sealed non-executable portable CPU R0 proposal now binds the current laptop
 inventory to that shared profile model under package digest
 `56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`.
-Owner review and all exact validation/activation gates remain pending.
+The non-executable planning package is owner accepted; all exact
+validation/activation gates remain pending.
 An exact inventory/admission gap package now records that historical laptop R0
-is not the shared Phase -1 inventory shape. Four owner policy choices and a
-separately authorized fresh R1 remain necessary; `P36-G2` is unchanged.
+is not the shared Phase -1 inventory shape. The recommended `A/A/A/A` policy
+choices are owner accepted, while a separately authorized fresh R1 remains
+necessary; `P36-G2` is unchanged. The model metadata planning package is also
+owner accepted without acquisition authority.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -148,6 +151,7 @@ autonomous enforcement.
 | [P3.6 exact model artifact proposal](p3-6-model-artifact-research-proposal.md) | Exact D-FINE-N and RF-DETR checkpoint metadata, acquisition controls, storage/scanner blockers, and continuing non-authorization |
 | [P3.6 portable CPU profile proposal R0](p3-6-portable-cpu-profile-proposal.md) | Sealed current-laptop planning tuple, conservative bounds, explicit unknowns, and non-executable owner-review gate |
 | [P3.6 inventory and admission gap R0](p3-6-inventory-admission-gap.md) | Exact R0-to-shared-schema field gaps, freshness/trust options, fail-closed expiry choices, and separate R1 authorization gate |
+| [P3.6 planning acceptances R0](p3-6-planning-acceptances.md) | Portable proposal acceptance, inventory `A/A/A/A` selections, model metadata acceptance, unchanged hard gates, and continuing prohibitions |
 
 ## Non-Negotiable Boundary
 

@@ -343,6 +343,8 @@ does not change these blockers or start an executable work package.
 `P36-U2` exact official model metadata and a three-artifact fail-closed R0
 proposal are sealed under package digest
 `2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE`.
+The metadata planning proposal is owner accepted through
+`D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE`.
 No artifact was downloaded; acquisition remains blocked on exact eligible
 local storage, an exact scanner binding, a regenerated R1 package, and explicit
 owner authority.
@@ -354,13 +356,14 @@ This passes `P36-G0A` without changing G1, G2, G4, or G5.
 `P36-U3` now has a sealed, non-executable `portable_cpu` R0 proposal under
 package digest
 `56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`.
-Owner review, exact unresolved values, generated validation, the
-`owned_gpu_lab` inventory, and a capacity-target decision remain pending, so
-`P36-G2` stays blocked.
+The non-executable planning proposal is owner accepted. Exact unresolved
+values, generated validation, the `owned_gpu_lab` inventory, and a
+capacity-target decision remain pending, so `P36-G2` stays blocked.
 The inventory/admission gap is sealed under package digest
 `CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A`.
 It proves the historical R0 record is not the shared Phase -1 inventory shape
-and prepares four owner policy choices. No R1 recollection is authorized.
+and its four recommended `A/A/A/A` owner policy choices are accepted. No R1
+recollection is authorized.
 
 Planning records:
 
@@ -380,6 +383,7 @@ Planning records:
 - [sealed non-executable portable CPU package](../../contracts/phase-3/p3-6-portable-cpu-profile-package.json); and
 - [inventory and admission gap R0](p3-6-inventory-admission-gap.md);
 - [sealed inventory-admission owner package](../../contracts/phase-3/p3-6-inventory-admission-package.json); and
+- [P3.6 planning acceptances R0](p3-6-planning-acceptances.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
 Deliverables:
@@ -413,16 +417,14 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner decisions and separate authority:
 
-- obtain owner review of the non-authorizing R0 model-proposal package;
 - bind an eligible exact local quarantine root and exact scanner invocation,
   then regenerate a digest-bound R1 acquisition proposal;
 - resolve exact model-family artifacts/data and complete `P36-G1`;
-- review the sealed portable CPU R0 planning proposal, then resolve its exact
-  runtime, resource, workload, freshness, dependency, artifact, evidence, and
-  activation blockers for `P36-G2`;
-- select the four inventory/admission policy options, then prepare and
-  separately authorize a fresh exact shared-schema R1 inventory; do not
-  overwrite or retimestamp historical R0;
+- resolve the accepted portable CPU proposal's exact runtime, resource,
+  workload, dependency, artifact, evidence, and activation blockers for
+  `P36-G2`;
+- prepare and separately authorize a fresh exact shared-schema R1 inventory
+  under the accepted `A/A/A/A` policy; do not overwrite or retimestamp R0;
 - prepare and approve the exact shared `owned_gpu_lab` machine, OS, driver,
   runtime, precision, decoder, resource, and generated-workload manifest;
 - select `standalone_server` or `kubernetes_cluster` for any future C10/C50

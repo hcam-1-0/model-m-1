@@ -3,7 +3,7 @@
 Status: planning and primary-source research complete under
 `D-P3.6-PLAN-AUTH`; `D-P3.6-001` through `D-P3.6-005` are owner accepted.
 Model promotion, exact capability manifests, artifact authority, execution
-authority, implementation, and acceptance remain pending. A later
+authority, implementation, and final P3.6 acceptance remain pending. A later
 `D-P3.6-START` statement is recorded as non-effective intent because those
 prerequisites are incomplete.
 
@@ -11,12 +11,14 @@ Research update: exact official metadata for three proposed native detector
 checkpoints is sealed in the non-authorizing
 [P3.6 model artifact proposal](p3-6-model-artifact-research-proposal.md), package
 digest `2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE`.
-No artifact was downloaded. Exact storage, scanner, acquisition, comparison,
-promotion, runtime-profile, and execution gates remain blocked.
+The metadata planning package is owner accepted through
+`D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE`. No artifact was downloaded. Exact
+storage, scanner, acquisition, comparison, promotion, runtime-profile, and
+execution gates remain blocked.
 
 A conservative non-executable
 [portable CPU profile proposal](p3-6-portable-cpu-profile-proposal.md) is also
-sealed for owner review under package digest
+owner accepted as a non-executable planning baseline under package digest
 `56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`.
 It records explicit unknowns and does not pass `P36-G2` or authorize activation.
 
@@ -25,7 +27,11 @@ shows that the historical R0 laptop record is not the shared Phase -1
 `node-capability-inventory/v1alpha1` shape. The non-executable owner packet is
 sealed under digest
 `CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A`.
-No fresh R1 collection or policy selection has occurred.
+The owner accepted the recommended `A/A/A/A` policy choices. No fresh R1
+collection has occurred or been authorized.
+
+Acceptance record:
+[P3.6 planning acceptances R0](p3-6-planning-acceptances.md).
 
 Planning authorization:
 [P3.6 planning authorization](p3-6-planning-authorization.md).

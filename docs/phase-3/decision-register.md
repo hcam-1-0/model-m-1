@@ -793,6 +793,36 @@ Selections do not authorize recollection. A separate exact
 blocked, and no implementation, runtime, hardware test, model, Kubernetes,
 camera/media/data, deployment, or remote Git authority is granted.
 
+### DR-0054: P3.6 Planning Package And Inventory Policy Acceptances
+
+Status: portable profile planning, inventory policy `A/A/A/A`, and model
+metadata planning accepted by `mayank-admin` on 2026-08-30.
+
+`D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE` accepts the non-executable portable
+CPU package digest
+`56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`.
+The profile remains ineligible because fresh inventory, exact runtime/resource/
+workload values, compatibility evidence, and generated validation are absent.
+
+`D-P3.6-U3A-001` through `D-P3.6-U3A-004` select `A/A/A/A` against inventory
+package digest
+`CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A`.
+R0 is preserved; a new shared-schema R1 uses a maximum 24-hour window plus
+early invalidation, observed local provenance plus a separate generated-only
+trust digest, and fail-closed new-admission behavior on expiry. No R1
+collection is authorized by these policy selections.
+
+`D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE` accepts metadata-only package digest
+`2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE`.
+No candidate artifact may be downloaded, loaded, scanned, converted, exported,
+executed, compared, or promoted until exact storage/scanner bindings and a
+separate R1 authority exist.
+
+`P36-G1`, `P36-G2`, `P36-G4`, and `P36-G5` remain blocked. These decisions
+authorize no inventory query, acquisition, inference, hardware test,
+implementation, Kubernetes action, media/data access, deployment, or remote
+Git action.
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

@@ -59,33 +59,42 @@
   },
   "implementation_authorized": false,
   "inventory_admission_gap": {
+    "acceptance_record": "contracts/phase-3/p3-6-inventory-admission-owner-decisions.json",
     "gap_record": "contracts/phase-3/p3-6-inventory-admission-gap.json",
     "decision_packet": "contracts/phase-3/p3-6-inventory-admission-decision-packet.json",
     "package_manifest": "contracts/phase-3/p3-6-inventory-admission-package.json",
     "package_digest_sha256": "CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A",
     "historical_R0_shared_contract_conformance": false,
     "inventory_recollection_authorized": false,
-    "status": "sealed_non_executable_owner_selection_pending"
+    "status": "owner_AAAA_policy_selections_accepted_fresh_R1_authority_pending"
   },
   "model_artifact_research": {
+    "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
     "artifact_count": 3,
     "artifact_download_authorized": false,
     "package_digest_sha256": "2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE",
     "package_manifest": "contracts/phase-3/p3-6-model-artifact-research-package.json",
     "proposal": "contracts/phase-3/p3-6-model-artifact-research-proposal.json",
     "source_ledger": "contracts/phase-3/p3-6-model-artifact-research-sources.json",
-    "status": "sealed_non_authorizing_storage_and_scanner_blocked",
+    "status": "accepted_metadata_planning_storage_scanner_and_acquisition_blocked",
     "total_selected_native_artifact_bytes": 537489237
   },
   "portable_cpu_profile_proposal": {
+    "acceptance_record": "contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json",
     "package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
     "package_manifest": "contracts/phase-3/p3-6-portable-cpu-profile-package.json",
     "profile": "contracts/phase-3/p3-6-portable-cpu-profile-proposal.json",
     "research_sources": "contracts/phase-3/p3-6-portable-cpu-research-sources.json",
     "review_document": "docs/phase-3/p3-6-portable-cpu-profile-proposal.md",
-    "owner_review_decision": "D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE",
+    "owner_acceptance_decision": "D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE",
     "profile_activation_authorized": false,
-    "status": "sealed_non_executable_owner_review_pending"
+    "status": "accepted_non_executable_planning_profile_exact_evidence_pending"
+  },
+  "next_inventory_planning_action": {
+    "action": "prepare_exact_digest_bound_D_P3_6_INVENTORY_R1_AUTH_package_without_collecting_inventory",
+    "authority": "D-P3.6-PLAN-AUTH",
+    "implementation_or_collection_authority": false,
+    "status": "planning_preparation_allowed_owner_AAAA_policy_selected"
   },
   "next_planning_action": {
     "action": "resolve_exact_eligible_local_quarantine_root_and_scanner_binding_then_regenerate_digest_bound_R1_acquisition_proposal",
@@ -98,17 +107,21 @@
       "action": "select_D_P3_6_U3A_001_through_004_inventory_admission_policy_options",
       "package_digest_sha256": "CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A",
       "recommended_selection": "A/A/A/A",
-      "effect": "planning_policy_only_no_R1_collection_or_profile_activation"
+      "effect": "planning_policy_only_no_R1_collection_or_profile_activation",
+      "status": "completed",
+      "acceptance_record": "contracts/phase-3/p3-6-inventory-admission-owner-decisions.json"
     },
     {
       "action": "review_D_P3_6_PORTABLE_PROPOSAL_R0_ACCEPTANCE",
       "package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
-      "effect": "planning_record_only_no_profile_activation"
+      "effect": "planning_record_only_no_profile_activation",
+      "status": "completed",
+      "acceptance_record": "contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json"
     }
   ],
   "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
   "runtime_execution_authorized": false,
-  "status": "planning_only_U2_metadata_and_U3_portable_cpu_R0_proposals_complete_acquisition_activation_validation_and_execution_blocked",
+  "status": "planning_only_model_metadata_portable_R0_and_inventory_AAAA_policies_accepted_fresh_R1_acquisition_activation_validation_and_execution_blocked",
   "work_items": [
     {
       "allowed_now": [
@@ -165,7 +178,7 @@
         "contracts/phase-3/p3-6-model-artifact-research-package.json",
         "docs/phase-3/p3-6-model-artifact-research-proposal.md"
       ],
-      "state": "metadata_proposal_complete_acquisition_blocked_storage_scanner_and_owner_authorization",
+      "state": "metadata_planning_accepted_acquisition_blocked_storage_scanner_and_R1_authorization",
       "work_item_id": "P36-U2"
     },
     {
@@ -192,7 +205,7 @@
         "contracts/phase-3/p3-6-inventory-admission-package.json",
         "docs/phase-3/p3-6-inventory-admission-gap.md"
       ],
-      "state": "portable_cpu_R0_and_inventory_admission_gap_packages_sealed_owner_policy_selections_fresh_shared_R1_other_profiles_exact_values_and_validation_evidence_missing",
+      "state": "portable_cpu_R0_and_inventory_admission_AAAA_planning_accepted_fresh_shared_R1_other_profiles_exact_values_and_validation_evidence_missing",
       "work_item_id": "P36-U3"
     },
     {

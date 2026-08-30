@@ -145,12 +145,15 @@ def test_canonical_ledgers_keep_g2_blocked_and_link_exact_package() -> None:
     assert unblock["inventory_admission_gap"]["inventory_recollection_authorized"] is False
 
 
-def test_gap_package_is_indexed_and_decision_remains_pending() -> None:
+def test_gap_package_and_later_acceptance_are_both_indexed() -> None:
     phase_readme = (DOCS / "README.md").read_text(encoding="utf-8")
     contracts_readme = (CONTRACTS / "README.md").read_text(encoding="utf-8")
     decision_register = (DOCS / "decision-register.md").read_text(encoding="utf-8")
 
     assert "p3-6-inventory-admission-gap.md" in phase_readme
+    assert "p3-6-planning-acceptances.md" in phase_readme
     assert "p3-6-inventory-admission-package.json" in contracts_readme
     assert "DR-0053: P3.6 Inventory And Admission Contract Gap R0" in decision_register
-    assert "four owner policy selections pending" in decision_register
+    assert "DR-0054: P3.6 Planning Package And Inventory Policy Acceptances" in (
+        decision_register
+    )

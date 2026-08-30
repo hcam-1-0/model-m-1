@@ -197,6 +197,15 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-inventory-admission-package.json`: four-file immutable non-executable
   planning manifest whose file SHA-256 is
   `CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A`.
+- `p3-6-portable-cpu-profile-acceptance.json`: exact owner acceptance of the
+  portable CPU planning package without profile activation, collection,
+  implementation, or runtime authority.
+- `p3-6-inventory-admission-owner-decisions.json`: accepted `A/A/A/A` policy
+  selections for canonical R1 strategy, 24-hour freshness plus invalidation,
+  digest-bound trust, and fail-closed expiry without R1 collection authority.
+- `p3-6-model-artifact-research-acceptance.json`: exact metadata-only owner
+  acceptance for `DET-E1/B1/A1` with acquisition, loading, scanning,
+  conversion, execution, comparison, and promotion blocked.
 
 Verify all tracked snapshots:
 
