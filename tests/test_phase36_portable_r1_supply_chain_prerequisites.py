@@ -18,6 +18,9 @@ PACKAGE_DIGEST = "496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA1
 ACCEPTANCE_DIGEST = (
     "F68BDE02AF96E3992A8C64F1F01A85CAC960F529946EA12FA4899D9EBFC197A9"
 )
+U3E_PACKAGE_DIGEST = (
+    "9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39"
+)
 
 
 def _read(path: Path) -> dict[str, object]:
@@ -256,10 +259,10 @@ def test_ledgers_and_human_records_are_synchronized_and_blocked() -> None:
 
     assert unblock["next_portable_planning_action"][
         "package_digest_sha256"
-    ] == PACKAGE_DIGEST
+    ] == U3E_PACKAGE_DIGEST
     assert unblock["next_portable_planning_action"][
-        "selected_options"
-    ] == "A/A/A/A/A"
+        "owner_authorization_pending"
+    ] is True
 
     decision_register = (DOCS / "decision-register.md").read_text(encoding="utf-8")
     backlog = (DOCS / "implementation-backlog.md").read_text(encoding="utf-8")

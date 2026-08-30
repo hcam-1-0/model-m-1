@@ -16,8 +16,8 @@ DECISIONS_PATH = (
     CONTRACTS / "p3-6-portable-compatibility-validation-decision-packet.json"
 )
 PACKAGE_DIGEST = "9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A"
-U3D_PACKAGE_DIGEST = (
-    "496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B"
+U3E_PACKAGE_DIGEST = (
+    "9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39"
 )
 ACCEPTANCE_DIGEST = (
     "FECF3EF71F5A7550871C91BF3A58BFA9D279A88C312A4E96019EC2457821CA77"
@@ -149,7 +149,7 @@ def test_canonical_ledgers_record_acceptance_without_opening_G2() -> None:
     assert unblock["runtime_execution_authorized"] is False
 
 
-def test_completed_U3D_acceptance_advances_to_candidate_root_input() -> None:
+def test_completed_U3D_path_advances_to_U3E_owner_review() -> None:
     acceptance = _read(ACCEPTANCE_PATH)
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     action = unblock["next_portable_planning_action"]
@@ -158,14 +158,13 @@ def test_completed_U3D_acceptance_advances_to_candidate_root_input() -> None:
         "non_executable_R1_artifact_supply_chain_and_generated_calibration_"
         "authorization_prerequisites"
     )
-    assert action["action"].startswith("await_owner_supplied_candidate_quarantine_root")
-    assert action["package_digest_sha256"] == U3D_PACKAGE_DIGEST
-    assert action["recommended_selection"] == "A/A/A/A/A"
-    assert action["selected_options"] == "A/A/A/A/A"
-    assert action["status"] == (
-        "planning_policy_accepted_owner_candidate_root_and_separate_binding_"
-        "authorization_required"
+    assert action["action"] == (
+        "owner_review_D_P3_6_U3E_BINDING_R0_AUTH_against_exact_sealed_package"
     )
+    assert action["package_digest_sha256"] == U3E_PACKAGE_DIGEST
+    assert action["candidate_root"] == "F:\\HCAM-Quarantine"
+    assert action["owner_authorization_pending"] is True
+    assert action["status"] == "sealed_non_effective_owner_authorization_pending"
 
 
 def test_human_records_and_indexes_are_synchronized() -> None:

@@ -221,6 +221,11 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
 - [ ] An exact owner-supplied candidate quarantine root and separate bounded
   storage/scanner binding authorization exist; U3D policy acceptance alone does
   not authorize either action.
+- [x] `F:\HCAM-Quarantine` is sealed as the exact U3E candidate root without
+  querying or modifying `F:`.
+- [ ] `D-P3.6-U3E-BINDING-R0-AUTH` accepts package digest
+  `9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`
+  before the one bounded storage/scanner metadata attempt.
 - [ ] An eligible exact local quarantine root and exact scanner command are
   bound in a regenerated R1 proposal before any acquisition authorization.
 - [ ] The exact portable runtime/workload profile, accelerated-laptop profile,

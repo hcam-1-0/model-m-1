@@ -66,6 +66,15 @@ planning policy. The acceptance binds no physical root or scanner and
 authorizes no query, write probe, install, download, inspection, checkpoint
 loading, runtime, validation, implementation, profile admission, or activation.
 
+After the owner supplied `F:` as the candidate volume, the exact
+[F: quarantine and scanner binding R0 authorization proposal](p3-6-quarantine-scanner-binding-r0-authorization-proposal.md)
+was sealed under digest
+`9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
+It proposes one bounded `F:\HCAM-Quarantine` storage and scanner metadata
+attempt. It is pending exact owner authorization and currently permits no
+query, directory creation, write probe, scanner action, acquisition, execution,
+validation, implementation, profile admission, or activation.
+
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).
 

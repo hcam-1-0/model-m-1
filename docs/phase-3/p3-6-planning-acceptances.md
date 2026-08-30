@@ -21,6 +21,10 @@ Later R1 outcome records:
 - [portable compatibility and generated C1 policy acceptance](../../contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json).
 - [portable R1 supply-chain prerequisite policy acceptance](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json).
 
+Next sealed authorization proposal, not yet accepted:
+
+- [F: quarantine and scanner binding R0 package](../../contracts/phase-3/p3-6-quarantine-scanner-binding-r0-authorization-package.json).
+
 ## Portable CPU Planning Proposal
 
 `D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE` accepts package digest
@@ -102,6 +106,13 @@ runtime is bound. The proposal authorizes no storage or scanner query, write
 probe, installation, acquisition, inspection, checkpoint loading, execution,
 validation, implementation, profile admission, activation, or deployment.
 
+The owner later supplied `F:` as the candidate volume. The exact proposed root
+is `F:\HCAM-Quarantine`, sealed into the U3E one-attempt authorization package
+under digest
+`9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
+That package is not accepted and has no present effect. The reported 50 GB free
+is an owner assertion, not storage evidence.
+
 ## Model Metadata Proposal
 
 `D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE` accepts package digest
@@ -122,7 +133,7 @@ bindings are sealed in a regenerated package.
 | `P36-G1` | Blocked: no acquired comparison artifacts, H-CAM evidence, or approved champion/fallback |
 | `P36-G2` | Blocked: R1, U3C, and U3D planning policies exist; actual compatibility artifacts, six other resolver inputs, other profiles, and generated validation evidence remain missing |
 | `P36-G3` | Passed |
-| `P36-G4` | Blocked: acquisition authority and exact storage/scanner binding remain pending despite U3D policy acceptance |
+| `P36-G4` | Blocked: U3E authorization, observed storage evidence, exact scanner binding, and acquisition authority remain pending despite U3D policy acceptance |
 | `P36-G5` | Blocked: no digest-bound implementation/runtime authorization |
 
 ## Continuing Boundary

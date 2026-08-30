@@ -66,6 +66,11 @@ The portable R1 supply-chain prerequisite proposal is sealed under digest
 its five U3D choices are owner accepted as `A/A/A/A/A` planning policy only,
 and it grants no storage, scanner, acquisition, inspection, execution, or
 activation authority.
+The owner subsequently supplied `F:` as the candidate volume. An exact
+one-attempt `F:\HCAM-Quarantine` storage and scanner metadata binding package is
+sealed under digest
+`9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`
+and remains pending owner authorization; no `F:` or scanner action is active.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -169,6 +174,7 @@ autonomous enforcement.
 | [P3.6 portable CPU R1 admission gap R0](p3-6-portable-r1-admission-gap.md) | Seven-input resolver reconciliation, 22 exact remaining gaps, and owner-accepted fail-closed `A/A/A/A` policies |
 | [P3.6 portable compatibility and generated C1 proposal R0](p3-6-portable-compatibility-validation-proposal.md) | Exact conservative CPU runtime candidate, deterministic generated workload, separated safety/calibration/validation gates, immutable lifecycle, and owner-accepted U3C `A/A/A/A` planning policy |
 | [P3.6 portable R1 supply-chain prerequisite proposal R0](p3-6-portable-r1-supply-chain-prerequisite-proposal.md) | Exact owner-accepted U3D `A/A/A/A/A` storage, scanner, fail-closed verdict, sequential acquisition, ML-BOM, and passive R1 versus generated-only R2 planning policies without action authority |
+| [P3.6 F: quarantine and scanner binding R0 authorization proposal](p3-6-quarantine-scanner-binding-r0-authorization-proposal.md) | Exact pending U3E one-attempt `F:\HCAM-Quarantine` storage attestation, 4096-byte atomic probe, bounded Defender/ModelScan metadata inventory, sanitization, and continuing prohibitions |
 
 ## Non-Negotiable Boundary
 

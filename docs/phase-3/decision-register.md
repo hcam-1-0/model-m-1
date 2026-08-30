@@ -1016,6 +1016,36 @@ Machine-readable package:
 Machine-readable acceptance:
 [`p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json`](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json).
 
+### DR-0061: F: quarantine and scanner binding attempt proposed
+
+Status: exact one-attempt authorization package sealed for owner review on
+2026-08-31; no attempt is authorized.
+
+The owner supplied `F:` as the candidate volume and reported approximately 50
+GB free. H-CAM proposes the isolated exact root `F:\HCAM-Quarantine`, outside
+the existing `F:\h cam` project tree. The reported free space is unverified and
+is not treated as attestation evidence.
+
+The package is sealed under SHA-256
+`9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
+If separately accepted as `D-P3.6-U3E-BINDING-R0-AUTH`, it permits one attempt
+within 24 hours to query only bounded `F:` storage properties, create only the
+exact candidate root if absent, perform and clean one 4096-byte atomic
+capability probe, query bounded Defender and ModelScan metadata without running
+or updating either scanner, and write three exact sanitized repository records.
+
+The attempt cannot make the scanner chain ready because ModelScan still needs
+exact distribution/executable binding and behavior validation, the Defender
+candidate still needs an exact offline signature policy, and the H-CAM passive
+inspector is not implemented or bound. The package grants no current `F:`
+query, directory creation, write probe, scanner query, installation, scanner
+execution, update, download, artifact acquisition, checkpoint loading,
+inference, validation, profile admission, implementation, deployment, or
+remote Git authority. `P36-G2` and `P36-G4` remain blocked.
+
+Machine-readable package:
+[`p3-6-quarantine-scanner-binding-r0-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-scanner-binding-r0-authorization-package.json).
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

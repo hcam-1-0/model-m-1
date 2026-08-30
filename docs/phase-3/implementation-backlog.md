@@ -392,6 +392,12 @@ digest
 The acceptance is non-effective: it binds no storage path or scanner and grants
 no query, write probe, acquisition, inspection, execution, validation,
 implementation, or activation authority.
+The owner then supplied `F:` as a candidate volume. The exact non-effective
+`F:\HCAM-Quarantine` storage-attestation and read-only scanner-binding package
+is sealed under digest
+`9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
+It remains pending `D-P3.6-U3E-BINDING-R0-AUTH`; no `F:` or scanner action is
+currently authorized.
 
 Planning records:
 
@@ -426,6 +432,8 @@ Planning records:
 - [portable R1 supply-chain prerequisite proposal](p3-6-portable-r1-supply-chain-prerequisite-proposal.md);
 - [sealed non-authorizing portable R1 prerequisite package](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-package.json); and
 - [accepted portable R1 supply-chain U3D `A/A/A/A/A` policy decisions](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json); and
+- [F: quarantine and scanner binding R0 authorization proposal](p3-6-quarantine-scanner-binding-r0-authorization-proposal.md);
+- [sealed non-effective U3E authorization package](../../contracts/phase-3/p3-6-quarantine-scanner-binding-r0-authorization-package.json); and
 - [P3.6 planning acceptances R0](p3-6-planning-acceptances.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
@@ -460,11 +468,11 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner inputs and separate authority:
 
-- supply an eligible candidate local quarantine root, then separately authorize
-  its bounded storage attestation and exact scanner-chain binding before any
-  digest-bound R1 acquisition proposal is regenerated; U3D acceptance is not
-  authority to query, write, install, scan, acquire, inspect, execute, validate,
-  implement, admit, or activate anything;
+- review `D-P3.6-U3E-BINDING-R0-AUTH` against exact package digest
+  `9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`;
+  the sealed package is not authority to query or modify `F:`, inspect scanner
+  metadata, install, scan, acquire, execute, validate, implement, admit, or
+  activate anything;
 - resolve exact model-family artifacts/data and complete `P36-G1`;
 - resolve the accepted portable CPU proposal's exact runtime, resource,
   workload, dependency, artifact, evidence, and activation blockers for

@@ -278,6 +278,17 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   owner acceptance of `D-P3.6-U3D-001` through `005` as `A/A/A/A/A` planning
   policy only; its SHA-256 is
   `F68BDE02AF96E3992A8C64F1F01A85CAC960F529946EA12FA4899D9EBFC197A9`.
+- `p3-6-quarantine-scanner-binding-r0-research-sources.json`: exact owner `F:`
+  input and accepted local-policy ledger with zero storage, scanner, download,
+  runtime, media, container, or remote Git actions.
+- `p3-6-quarantine-scanner-binding-r0-action-spec.json`: exact one-attempt
+  `F:\HCAM-Quarantine` storage attestation, 4096-byte atomic probe, bounded
+  Defender/ModelScan metadata, sanitization, timeout, cleanup, and failure rules.
+- `p3-6-quarantine-scanner-binding-r0-authorization-proposal.json`: exact
+  non-effective `D-P3.6-U3E-BINDING-R0-AUTH` proposal and acceptance template.
+- `p3-6-quarantine-scanner-binding-r0-authorization-package.json`: immutable
+  non-effective four-file owner-review manifest whose SHA-256 is
+  `9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
 
 Verify all tracked snapshots:
 

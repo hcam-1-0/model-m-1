@@ -143,6 +143,14 @@ It presents `D-P3.6-U3D-001` through `005`; the owner accepted `A/A/A/A/A` as
 non-effective planning policy. No exact local quarantine root or scanner chain
 is bound, and the acceptance changes no hard gate or authority.
 
+The owner then supplied `F:` as the candidate volume. The proposed isolated
+root `F:\HCAM-Quarantine` and one-attempt storage/scanner metadata action set are
+sealed in the
+[U3E authorization proposal](p3-6-quarantine-scanner-binding-r0-authorization-proposal.md)
+under digest
+`9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
+No attempt is authorized by the owner input or by sealing the package.
+
 Prepare immutable proposals against the Phase -1 profile model:
 
 1. `P36-PROFILE-PORTABLE-CPU-R0` from authorized sanitized inventory;
@@ -186,12 +194,14 @@ The non-executable R1 supply-chain prerequisites are now sealed as the U3D
 package under digest
 `496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
 The owner accepted `D-P3.6-U3D-001` through `005` as `A/A/A/A/A` against that
-exact digest. The next planning action requires an owner-supplied candidate
-quarantine root, followed by a separate digest-bound proposal for bounded
-storage attestation and exact scanner binding. The acceptance is not authority
-to bind or test storage, query/install/run scanners, activate or admit a
-profile, acquire or inspect artifacts, execute a runtime, run validation,
-implement a reusable collector, or perform another collection.
+exact digest. The candidate root and separate digest-bound U3E proposal now
+exist. The next planning action is exact owner review of
+`D-P3.6-U3E-BINDING-R0-AUTH` against package digest
+`9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
+Neither the U3D acceptance, the `F:` owner input, nor the sealed U3E package is
+authority to bind or test storage, query/install/run scanners, activate or
+admit a profile, acquire or inspect artifacts, execute a runtime, run
+validation, implement a reusable collector, or perform another collection.
 
 Before `D-P3.6-MODEL-RESEARCH-R1-AUTH` can be prepared, an exact local,
 non-cloud, non-network quarantine root must pass a fresh threshold of at least
