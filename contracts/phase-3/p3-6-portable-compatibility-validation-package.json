@@ -1,0 +1,61 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_compatibility_validation_package.v1",
+  "package_id": "P36-PORTABLE-COMPATIBILITY-VALIDATION-PACKAGE-R0",
+  "status": "sealed_non_effective_owner_selections_pending",
+  "sealed_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "core_file_count": 4,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-portable-compatibility-validation-research-sources.json",
+      "sha256": "7FB1494D40CACE2546B3FF31399DE069FCCB31111DFEE249783C213B63151848",
+      "role": "official_primary_source_and_exact_local_contract_ledger"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-portable-compatibility-validation-proposal.json",
+      "sha256": "ADE4617DD595B1A7FFB85DAB1C00CDFA13DD714613174CFB1580632019199C5C",
+      "role": "non_executable_runtime_workload_gate_and_bundle_candidate"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-portable-compatibility-validation-decision-packet.json",
+      "sha256": "6ACBB7E5C666AF772E1A10E4F80F2F68B3DC68D7791F07BAB403EBCDCA235A95",
+      "role": "four_independent_U3C_owner_choices_with_AAAA_recommendation"
+    },
+    {
+      "path": "docs/phase-3/p3-6-portable-compatibility-validation-proposal.md",
+      "sha256": "085C0C5B8BFB9E13910C4B66050F2F099E34D1B7B42E5C2E04A7F25102FCAAF8",
+      "role": "human_owner_review_document"
+    }
+  ],
+  "accepted_input_policy": {
+    "acceptance_record": "contracts/phase-3/p3-6-portable-r1-owner-decisions.json",
+    "acceptance_sha256": "7695027BB68878ED7CE41B6BD940EB777CD280279294E5C35B99614C3C57F5FA",
+    "selection": "A/A/A/A"
+  },
+  "owner_decisions": [
+    "D-P3.6-U3C-001",
+    "D-P3.6-U3C-002",
+    "D-P3.6-U3C-003",
+    "D-P3.6-U3C-004"
+  ],
+  "recommended_selection": "A/A/A/A",
+  "owner_acceptance_may_be_inferred_from_continue_or_other_decision": false,
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_package_digest_and_is_not_self_embedded",
+  "current_gate_effect": {
+    "P36_G2": "blocked",
+    "compatibility_manifest_exists": false,
+    "generated_validation_evidence_exists": false,
+    "portable_profile_resolver_eligible": false,
+    "portable_profile_activation_authorized": false
+  },
+  "inventory_collection_authorized": false,
+  "artifact_or_dependency_acquisition_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "profile_resolution_or_activation_authorized": false,
+  "container_or_kubernetes_action_authorized": false,
+  "camera_media_or_data_access_authorized": false,
+  "implementation_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

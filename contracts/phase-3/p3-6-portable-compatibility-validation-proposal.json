@@ -1,0 +1,231 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_compatibility_validation_proposal.v1",
+  "record_id": "P36-PORTABLE-COMPATIBILITY-VALIDATION-PROPOSAL-R0",
+  "status": "non_executable_owner_selection_pending",
+  "prepared_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "accepted_policy_binding": {
+    "acceptance_record": "contracts/phase-3/p3-6-portable-r1-owner-decisions.json",
+    "acceptance_sha256": "7695027BB68878ED7CE41B6BD940EB777CD280279294E5C35B99614C3C57F5FA",
+    "package_digest_sha256": "471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F",
+    "selected_policy": "A/A/A/A"
+  },
+  "profile_identity": {
+    "profile_id": "hcam-portable-cpu",
+    "profile_class": "portable_cpu",
+    "candidate_revision": "P36-PORTABLE-COMPATIBILITY-R0",
+    "lifecycle": "proposal",
+    "resolver_eligible": false,
+    "activation_authorized": false
+  },
+  "compatibility_bundle_candidate": {
+    "schema_version": "hcam.platform.compatibility-manifest/v1alpha1",
+    "lifecycle": "candidate_unavailable",
+    "capability_id": "vehicle_detection",
+    "identity": {
+      "model_family": "yolox_tiny",
+      "model_revision": "r0_reference_not_promoted",
+      "runtime_family": "onnxruntime",
+      "runtime_version_family": "1.29.0_candidate_from_existing_lock",
+      "provider": "cpu",
+      "precision": "fp32",
+      "model_format": "onnx"
+    },
+    "required_artifact_roles": [
+      "model",
+      "runtime",
+      "sbom",
+      "signature",
+      "vulnerability_report",
+      "provenance",
+      "evidence"
+    ],
+    "artifacts_state": "unavailable_no_acquisition_or_revalidation_authority",
+    "target": {
+      "profile_class": "portable_cpu",
+      "operating_system": "windows",
+      "architecture": "amd64",
+      "minimum_accelerator_memory_mib": 0,
+      "maximum_concurrency": 1,
+      "minimum_memory_mib": "owner_selection_pending_U3C_003_safety_floor",
+      "required_capabilities": [
+        "cpu_execution_provider",
+        "fp32",
+        "generated_tensor_input"
+      ]
+    },
+    "pipeline_contract_state": "missing_exact_input_output_preprocess_postprocess_and_semantic_digests",
+    "license_state": "pending_exact_bundle_review",
+    "security_state": "unreviewed",
+    "fallback_state": "unavailable",
+    "rollback_state": "unavailable",
+    "promotion_state": "absent_not_authorized"
+  },
+  "recommended_runtime_candidate_A": {
+    "provider_order": [
+      "CPUExecutionProvider"
+    ],
+    "unexpected_provider": "reject_and_safe_pause",
+    "precision": "fp32",
+    "execution_mode": "ORT_SEQUENTIAL",
+    "intra_op_num_threads": 1,
+    "inter_op_num_threads": 1,
+    "intra_op_allow_spinning": false,
+    "inter_op_allow_spinning": false,
+    "thread_affinity": "unset_OS_managed",
+    "graph_optimization_level": "ORT_ENABLE_BASIC",
+    "optimized_model_output": "disabled_no_derived_artifact",
+    "enable_cpu_mem_arena": true,
+    "enable_mem_pattern": true,
+    "enable_profiling": false,
+    "session_count": 1,
+    "in_flight_requests": 1,
+    "batch_size": 1,
+    "queue_capacity_items": 2,
+    "oversubscription": "forbidden",
+    "purpose": "deterministic_low_contention_behavior_reference_not_performance_optimum"
+  },
+  "recommended_workload_candidate_A": {
+    "evidence_layers": [
+      "CONTRACT",
+      "INFER"
+    ],
+    "evidence_tier": "C1",
+    "input_source": "deterministic_generated_in_memory_tensor_only",
+    "input_shape": [
+      1,
+      3,
+      416,
+      416
+    ],
+    "input_dtype": "float32",
+    "fixture_families": [
+      "all_zero",
+      "normalized_ramp",
+      "seeded_uniform_0_1"
+    ],
+    "seeds": [
+      36001,
+      36002,
+      36003
+    ],
+    "contract_cases": 64,
+    "cold_start_repetitions": 3,
+    "warmup_iterations_per_seed": 5,
+    "measured_iterations_per_seed_per_repetition": 30,
+    "steady_repetitions": 3,
+    "bounded_burst_submissions": 8,
+    "bounded_burst_max_admitted": 3,
+    "bounded_burst_expected_excess_rejections": 5,
+    "dependency_loss_cases": [
+      "missing_runtime",
+      "missing_model",
+      "artifact_digest_mismatch"
+    ],
+    "safe_shutdown_repetitions": 3,
+    "per_inference_timeout_seconds": 10,
+    "per_scenario_timeout_seconds": 300,
+    "total_validation_timeout_seconds": 900,
+    "background_load": "none",
+    "raw_tensor_or_output_retention": "zero",
+    "camera_media_or_dataset_inputs": false
+  },
+  "recommended_gate_architecture_A": {
+    "stage_0_contract": "schema_shape_dtype_finite_output_reason_code_and_zero_retention_gates_without_model_execution",
+    "stage_1_calibration": "separately_authorized_generated_only_non_promotional_run_using_declared_seeds_and_hard_safety_ceilings",
+    "stage_2_validation": "new_sealed_threshold_record_and_held_out_seed_manifest_required_before_promotional_evidence",
+    "predeclared_hard_safety_gates": {
+      "provider_order_exact": true,
+      "precision_exact": true,
+      "unexpected_fallback_count": 0,
+      "schema_valid_fraction": 1.0,
+      "finite_output_fraction": 1.0,
+      "same_bundle_same_input_repeat_digest_match_fraction": 1.0,
+      "excess_work_rejected_fraction": 1.0,
+      "raw_tensor_or_output_retention_count": 0,
+      "network_attempt_count": 0,
+      "process_exit_or_safe_pause_on_contract_failure": true,
+      "minimum_available_memory_preflight_mib": 1024,
+      "maximum_process_RSS_mib": 2048,
+      "maximum_queue_age_ms": 2000,
+      "maximum_dependency_failure_detection_ms": 2000,
+      "maximum_safe_shutdown_ms": 10000,
+      "maximum_total_validation_seconds": 900
+    },
+    "calibration_derived_metrics": [
+      "cold_start_p50_p95",
+      "warm_inference_p50_p95_p99",
+      "fresh_throughput",
+      "queue_depth_and_age",
+      "process_CPU_and_RSS",
+      "dependency_failure_and_recovery",
+      "shutdown_duration"
+    ],
+    "threshold_derivation_rule": "stage_1_results_are_non_promotional_and_a_separate_digest_bound_owner_review_must_seal_stage_2_thresholds_and_held_out_seeds_before_validation",
+    "real_world_quality_claim": false,
+    "hardware_capacity_claim": false,
+    "thermal_or_power_claim": false
+  },
+  "recommended_bundle_lifecycle_A": [
+    {
+      "revision": "R0",
+      "state": "candidate_skeleton_unavailable",
+      "allowed": "planning_and_owner_selection_only"
+    },
+    {
+      "revision": "R1",
+      "state": "artifacts_and_supply_chain_reviewed",
+      "prerequisite": "separate_storage_scanner_acquisition_and_review_authority"
+    },
+    {
+      "revision": "R2",
+      "state": "generated_calibration_complete_non_promotional",
+      "prerequisite": "separate_digest_bound_generated_runtime_authority"
+    },
+    {
+      "revision": "R3",
+      "state": "held_out_validation_reviewed_candidate_only",
+      "prerequisite": "separate_threshold_package_validation_authority_and_owner_acceptance"
+    },
+    {
+      "revision": "R4",
+      "state": "eligible_or_rejected",
+      "prerequisite": "all_seven_resolver_inputs_fresh_and_all_hard_gates_passed"
+    }
+  ],
+  "owner_decisions_pending": [
+    "D-P3.6-U3C-001",
+    "D-P3.6-U3C-002",
+    "D-P3.6-U3C-003",
+    "D-P3.6-U3C-004"
+  ],
+  "current_effect": {
+    "compatibility_manifest_exists": false,
+    "runtime_configuration_approved": false,
+    "generated_workload_approved": false,
+    "numeric_validation_thresholds_approved": false,
+    "artifact_acquisition_authorized": false,
+    "runtime_execution_authorized": false,
+    "profile_resolver_eligible": false,
+    "profile_activation_authorized": false,
+    "P36_G2": "blocked"
+  },
+  "continuing_non_authorization": [
+    "inventory_recollection_or_reusable_collector",
+    "artifact_dependency_model_dataset_driver_or_container_download",
+    "runtime_or_model_import_loading_inference_calibration_validation_or_benchmark",
+    "hardware_accelerator_performance_stress_capacity_or_thermal_test",
+    "profile_resolution_admission_activation_placement_or_scheduler_execution",
+    "container_Docker_Kubernetes_or_deployment_action",
+    "camera_stream_media_private_or_Government_data_access",
+    "product_dashboard_or_runtime_implementation",
+    "remote_git"
+  ],
+  "implementation_authorized": false,
+  "runtime_execution_authorized": false,
+  "artifact_acquisition_authorized": false,
+  "hardware_testing_authorized": false,
+  "profile_activation_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

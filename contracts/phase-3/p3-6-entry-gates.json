@@ -65,7 +65,7 @@
     {
       "gate_id": "P36-G2",
       "state": "blocked",
-      "summary": "The portable_cpu planning proposal, inventory-admission A/A/A/A policies, and portable-R1 U3B A/A/A/A policies are owner accepted. The consumed D-P3.6-INVENTORY-R1-AUTH attempt produced a sanitized, shared-schema-valid R1. R1 supplies only the inventory input and deliberately leaves accelerator, container, scheduler, instruction-set, and runtime-compatibility facts unknown; six other resolver inputs, all 22 evidence gaps, exact runtime/workload/resource values, compatibility, other profiles, generated validation, and profile activation remain unresolved."
+      "summary": "The portable_cpu planning proposal, inventory-admission A/A/A/A policies, and portable-R1 U3B A/A/A/A policies are owner accepted. A non-executable portable compatibility and generated C1 validation package is sealed with four U3C owner selections pending. R1 supplies only the inventory input; six other resolver inputs, all 22 evidence gaps, exact approved runtime/workload/resource values, actual compatibility artifacts, generated evidence, other profiles, and profile activation remain unresolved."
     },
     {
       "gate_id": "P36-G3",
@@ -143,6 +143,24 @@
     "profile_resolver_eligible": false,
     "profile_activation_authorized": false
   },
+  "portable_compatibility_validation_package": {
+    "source_ledger": "contracts/phase-3/p3-6-portable-compatibility-validation-research-sources.json",
+    "proposal": "contracts/phase-3/p3-6-portable-compatibility-validation-proposal.json",
+    "decision_packet": "contracts/phase-3/p3-6-portable-compatibility-validation-decision-packet.json",
+    "manifest": "contracts/phase-3/p3-6-portable-compatibility-validation-package.json",
+    "digest_sha256": "9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A",
+    "owner_decisions": [
+      "D-P3.6-U3C-001",
+      "D-P3.6-U3C-002",
+      "D-P3.6-U3C-003",
+      "D-P3.6-U3C-004"
+    ],
+    "recommended_selection": "A/A/A/A",
+    "status": "sealed_non_effective_owner_selections_pending",
+    "runtime_execution_authorized": false,
+    "profile_resolver_eligible": false,
+    "profile_activation_authorized": false
+  },
   "model_artifact_research_package": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
     "digest_sha256": "2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE",
@@ -161,7 +179,7 @@
   "owner_decisions_record": "contracts/phase-3/p3-6-owner-decisions.json",
   "phase_minus_1_alignment": "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
   "planning_authorization": "D-P3.6-PLAN-AUTH",
-  "planning_status": "U2_model_metadata_U3_portable_R0_inventory_admission_AAAA_and_portable_R1_U3B_AAAA_planning_accepted_R1_authorized_collected_validated_and_attempt_consumed_storage_scanner_acquisition_activation_promotion_and_execution_authority_pending",
+  "planning_status": "U2_model_metadata_U3_portable_R0_inventory_admission_AAAA_and_portable_R1_U3B_AAAA_planning_accepted_portable_compatibility_validation_package_sealed_U3C_owner_selections_storage_scanner_acquisition_activation_promotion_and_execution_authority_pending",
   "record_id": "P3.6-ENTRY-GATES",
   "runtime_execution_authorized": false,
   "start_intent_record": "contracts/phase-3/p3-6-start-intent.json",

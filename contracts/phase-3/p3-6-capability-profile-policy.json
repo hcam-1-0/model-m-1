@@ -136,6 +136,19 @@
     "resolver_eligible": false,
     "profile_activation_authorized": false
   },
+  "portable_compatibility_validation_package": {
+    "proposal": "contracts/phase-3/p3-6-portable-compatibility-validation-proposal.json",
+    "decision_packet": "contracts/phase-3/p3-6-portable-compatibility-validation-decision-packet.json",
+    "package_manifest": "contracts/phase-3/p3-6-portable-compatibility-validation-package.json",
+    "package_digest_sha256": "9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A",
+    "recommended_selection": "A/A/A/A",
+    "owner_selections_pending": true,
+    "status": "sealed_non_effective_owner_selections_pending",
+    "compatibility_manifest_exists": false,
+    "generated_validation_evidence_exists": false,
+    "resolver_eligible": false,
+    "profile_activation_authorized": false
+  },
   "portable_cpu_profile_proposal": {
     "acceptance_record": "contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json",
     "package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",

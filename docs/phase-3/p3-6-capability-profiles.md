@@ -4,7 +4,9 @@ Status: planning baseline accepted through `D-P3.6-001` through
 `D-P3.6-005`. Exact machine manifests, implementation, and execution remain
 unauthorized and pending. A sealed non-executable `portable_cpu` R0 proposal
 is owner accepted as planning only. R1 exists and the U3B `A/A/A/A` admission
-policies are accepted, but the profile is not resolver-eligible.
+policies are accepted. The exact compatibility and generated C1 proposal is
+sealed for U3C owner review with all choices pending; the profile is not
+resolver-eligible.
 
 Machine-readable policy:
 [`p3-6-capability-profile-policy.json`](../../contracts/phase-3/p3-6-capability-profile-policy.json).
@@ -68,7 +70,7 @@ must be interpreted through the Phase -1 mapping above in every new manifest.
 
 | Profile | Intended environment | Candidate path | Claim boundary | Current state |
 | --- | --- | --- | --- | --- |
-| `portable_cpu` | Current laptop and deterministic CI/reference use | ONNX Runtime CPU reference | C1 correctness and small CPU evidence only until measured | Non-executable R0 planning proposal and U3B admission policies accepted; compatibility, six resolver inputs, exact values, and generated validation pending |
+| `portable_cpu` | Current laptop and deterministic CI/reference use | ONNX Runtime CPU reference | C1 correctness and small CPU evidence only until measured | Non-executable R0 and U3B policies accepted; exact compatibility/C1 proposal sealed with U3C choices pending; six resolver inputs and executable validation remain unresolved |
 | `local_accelerated` | Owned or authorized stronger laptop | Exact validated Intel, NVIDIA, or AMD provider | Exact machine and workload only | Exact manifest pending |
 | `capacity_target` | Declared lab/server or later cluster target | Approved accelerated runtime; optional Kubernetes backend | C10/C50 only from signed exact-hardware evidence | Exact manifest pending |
 

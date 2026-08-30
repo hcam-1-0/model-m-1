@@ -246,6 +246,18 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   `D-P3.6-U3B-001` through `004` as `A/A/A/A` planning policy only, preserving
   all collection, profile, execution, implementation, deployment, and remote
   Git prohibitions.
+- `p3-6-portable-compatibility-validation-research-sources.json`: bounded
+  official ONNX Runtime and local accepted-policy source ledger with zero
+  acquisition or execution actions.
+- `p3-6-portable-compatibility-validation-proposal.json`: exact planning-only
+  CPU runtime candidate, deterministic generated `CONTRACT` plus C1 `INFER`
+  workload, hard safety gates, and immutable compatibility lifecycle.
+- `p3-6-portable-compatibility-validation-decision-packet.json`: four
+  independent U3C A-D owner choices with `A/A/A/A` recommended and all
+  selections null.
+- `p3-6-portable-compatibility-validation-package.json`: immutable
+  non-authorizing four-file owner-review manifest whose SHA-256 is
+  `9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A`.
 
 Verify all tracked snapshots:
 

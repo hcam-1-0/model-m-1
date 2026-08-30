@@ -127,6 +127,13 @@ It identifies 22 remaining gaps and presents decisions
 recommended `A/A/A/A` planning policies. The acceptance is non-effective and
 leaves all profile, execution, and implementation gates closed.
 
+The exact follow-on
+[portable compatibility and generated C1 validation proposal](p3-6-portable-compatibility-validation-proposal.md)
+is sealed under package digest
+`9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A`.
+It presents `D-P3.6-U3C-001` through `004`, with `A/A/A/A` recommended and all
+selections null. It is planning evidence only and changes no hard gate.
+
 Prepare immutable proposals against the Phase -1 profile model:
 
 1. `P36-PROFILE-PORTABLE-CPU-R0` from authorized sanitized inventory;
@@ -163,11 +170,13 @@ proposal, and completed one-time R1 outcome are linked from the
 [P3.6 planning acceptance record](p3-6-planning-acceptances.md). The U3B
 `A/A/A/A` policies are now explicitly accepted against package digest
 `471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F`.
-The next planning action is a non-executable exact compatibility-bundle and
-deterministic generated `CONTRACT` plus C1 `INFER` validation proposal.
-Planning must not activate or admit a profile, acquire artifacts, execute a
-runtime, implement a reusable collector, or perform another collection without
-new explicit authority.
+That compatibility proposal is now prepared. The next planning action is owner
+review of `D-P3.6-U3C-001` through `004` against exact package digest
+`9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A`.
+Planning must not treat a choice or `continue` as authority to activate or admit
+a profile, acquire artifacts, execute a runtime, run validation, implement a
+reusable collector, or perform another collection without new explicit
+authority.
 
 Before `D-P3.6-MODEL-RESEARCH-R1-AUTH` can be prepared, an exact local,
 non-cloud, non-network quarantine root must pass a fresh threshold of at least
