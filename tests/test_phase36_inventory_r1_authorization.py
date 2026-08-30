@@ -241,18 +241,16 @@ def test_package_binds_exact_core_files_and_is_non_effective() -> None:
     assert package["network_access_authorized"] is False
 
 
-def test_historical_R0_is_unchanged_and_future_outputs_do_not_exist() -> None:
+def test_historical_R0_and_sealed_authorization_package_are_unchanged() -> None:
     historical = CONTRACTS / "p3-6-inventory-lab-laptop-01-r0.json"
 
     assert _sha256(historical) == (
         "0E702718390FB6C373F0FC189CB58D0E79BB7FE3B3EA39B5E5AFE0DE4D47CA1F"
     )
-    assert not (CONTRACTS / "p3-6-inventory-r1-authorization.json").exists()
-    assert not (CONTRACTS / "p3-6-inventory-lab-laptop-01-r1.json").exists()
-    assert not (CONTRACTS / "p3-6-inventory-r1-collection-evidence.json").exists()
+    assert _sha256(PACKAGE_PATH) == PACKAGE_DIGEST
 
 
-def test_canonical_ledgers_link_package_and_keep_G2_blocked() -> None:
+def test_canonical_ledgers_link_consumed_attempt_and_keep_G2_blocked() -> None:
     gates = _read(CONTRACTS / "p3-6-entry-gates.json")
     policy = _read(CONTRACTS / "p3-6-capability-profile-policy.json")
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
@@ -266,14 +264,18 @@ def test_canonical_ledgers_link_package_and_keep_G2_blocked() -> None:
         gates["inventory_r1_authorization_package"]["inventory_collection_authorized"]
         is False
     )
+    assert gates["inventory_r1_authorization_package"]["single_attempt_consumed"]
+    assert not gates["inventory_r1_authorization_package"][
+        "profile_resolver_eligible"
+    ]
     assert (
         policy["inventory_r1_authorization_package"]["package_digest_sha256"]
         == PACKAGE_DIGEST
     )
-    assert (
-        policy["inventory_r1_authorization_package"]["owner_acceptance_pending"] is True
-    )
-    assert policy["inventory_r1_authorization_package"]["fresh_R1_exists"] is False
+    assert not policy["inventory_r1_authorization_package"][
+        "owner_acceptance_pending"
+    ]
+    assert policy["inventory_r1_authorization_package"]["fresh_R1_exists"]
     assert (
         unblock["inventory_r1_authorization_package"]["package_digest_sha256"]
         == PACKAGE_DIGEST
@@ -284,9 +286,12 @@ def test_canonical_ledgers_link_package_and_keep_G2_blocked() -> None:
         ]
         is False
     )
+    assert unblock["inventory_r1_authorization_package"][
+        "single_attempt_consumed"
+    ]
 
 
-def test_decision_backlog_and_indexes_show_pending_owner_gate() -> None:
+def test_decision_backlog_and_indexes_show_completed_one_time_attempt() -> None:
     decision_register = (DOCS / "decision-register.md").read_text(encoding="utf-8")
     backlog = (DOCS / "implementation-backlog.md").read_text(encoding="utf-8")
     phase_readme = (DOCS / "README.md").read_text(encoding="utf-8")
@@ -296,7 +301,12 @@ def test_decision_backlog_and_indexes_show_pending_owner_gate() -> None:
         "DR-0055: P3.6 Minimized Inventory R1 Authorization Package R0"
         in decision_register
     )
+    assert "DR-0056: P3.6 Inventory R1 One-Time Authorization And Result" in (
+        decision_register
+    )
     assert PACKAGE_DIGEST in decision_register
     assert PACKAGE_DIGEST in backlog
     assert "p3-6-inventory-r1-authorization-proposal.md" in phase_readme
+    assert "p3-6-inventory-r1-collection.md" in phase_readme
     assert "p3-6-inventory-r1-authorization-package.json" in contracts_readme
+    assert "p3-6-inventory-r1-collection-evidence.json" in contracts_readme

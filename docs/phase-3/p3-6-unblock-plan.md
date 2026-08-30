@@ -91,8 +91,9 @@ metrics alone.
 ### P36-U3: Exact Shared-Profile Manifests
 
 Status: portable CPU R0 non-executable planning proposal and inventory-policy
-`A/A/A/A` choices owner accepted; all activation and validation gates remain
-blocked.
+`A/A/A/A` choices owner accepted. The separate one-time shared-schema R1
+collection succeeded and is consumed; all activation and validation gates
+remain blocked.
 
 The [portable CPU profile proposal R0](p3-6-portable-cpu-profile-proposal.md)
 binds the authorized inventory, accepted P3.2 CPU behavior reference, exact
@@ -107,11 +108,16 @@ The exact [inventory and admission gap](p3-6-inventory-admission-gap.md) also
 shows that the historical R0 inventory is not structurally conforming to the
 shared Phase -1 inventory schema. Its sealed package digest is
 `CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A`.
-The selected policy preserves R0, requires a new exact shared-schema R1, uses a
+The selected policy preserves R0, required a new exact shared-schema R1, uses a
 maximum 24-hour freshness window plus early change invalidation, binds observed
 local provenance to a separate generated-only trust-policy digest, and blocks
-new admission on expiry while independent leases remain authoritative. A
-separate exact `D-P3.6-INVENTORY-R1-AUTH` is still required before recollection.
+new admission on expiry while independent leases remain authoritative. The
+separate exact `D-P3.6-INVENTORY-R1-AUTH` was accepted against package digest
+`710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7`.
+Its one attempt produced the sanitized
+[R1 record](../../contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json) and
+[bounded evidence](../../contracts/phase-3/p3-6-inventory-r1-collection-evidence.json).
+That attempt is consumed and grants no profile admission or further collection.
 
 Prepare immutable proposals against the Phase -1 profile model:
 
@@ -144,11 +150,13 @@ Only a later owner statement that accepts that exact digest as
 
 ## Next Planning Action
 
-The portable planning proposal, inventory `A/A/A/A` policies, and model
-metadata proposal are accepted in the
+The portable planning proposal, inventory `A/A/A/A` policies, model metadata
+proposal, and completed one-time R1 outcome are linked from the
 [P3.6 planning acceptance record](p3-6-planning-acceptances.md). Planning may
-now prepare an exact digest-bound `D-P3.6-INVENTORY-R1-AUTH` package, but it
-must not collect or project inventory until that separate package is accepted.
+now evaluate the remaining exact runtime, resource, workload, compatibility,
+additional-profile, and generated-validation gaps against R1. It must not
+activate or admit a profile, implement a reusable collector, or perform another
+collection without new explicit authority.
 
 Before `D-P3.6-MODEL-RESEARCH-R1-AUTH` can be prepared, an exact local,
 non-cloud, non-network quarantine root must pass a fresh threshold of at least

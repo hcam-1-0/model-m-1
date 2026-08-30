@@ -65,7 +65,7 @@
     {
       "gate_id": "P36-G2",
       "state": "blocked",
-      "summary": "The portable_cpu planning proposal and A/A/A/A inventory-admission policies are owner accepted, and a minimized digest-bound R1 authorization package is sealed for owner review. Historical R0 remains stale and nonconforming; the R1 package is not accepted, no fresh R1 exists, and exact runtime/workload/resource values, other profiles, and generated validation remain unresolved."
+      "summary": "The portable_cpu planning proposal and A/A/A/A inventory-admission policies are owner accepted. D-P3.6-INVENTORY-R1-AUTH was accepted against the sealed digest, and the single authorized local read-only attempt produced a sanitized, shared-schema-valid R1. The attempt is consumed and collection authority is closed. R1 deliberately leaves accelerator, container, scheduler, instruction-set, and runtime-compatibility facts unknown; exact runtime/workload/resource values, other profiles, generated validation, and profile activation remain unresolved."
     },
     {
       "gate_id": "P36-G3",
@@ -88,7 +88,8 @@
   "implementation_authorized": false,
   "inventory_authorization": "contracts/phase-3/p3-6-inventory-authorization.json",
   "inventory_records": [
-    "contracts/phase-3/p3-6-inventory-lab-laptop-01-r0.json"
+    "contracts/phase-3/p3-6-inventory-lab-laptop-01-r0.json",
+    "contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json"
   ],
   "inventory_admission_gap_package": {
     "acceptance_record": "contracts/phase-3/p3-6-inventory-admission-owner-decisions.json",
@@ -101,7 +102,7 @@
       "D-P3.6-U3A-004"
     ],
     "inventory_recollection_authorized": false,
-    "status": "owner_policy_selections_accepted_fresh_R1_authority_pending"
+    "status": "owner_policy_selections_accepted_R1_collected_profile_admission_pending"
   },
   "inventory_r1_authorization_package": {
     "collector_spec": "contracts/phase-3/p3-6-inventory-r1-collector-spec.json",
@@ -110,9 +111,18 @@
     "inventory_collection_authorized": false,
     "manifest": "contracts/phase-3/p3-6-inventory-r1-authorization-package.json",
     "proposal": "contracts/phase-3/p3-6-inventory-r1-authorization-proposal.json",
-    "status": "sealed_non_effective_owner_authorization_pending",
+    "authorization_record": "contracts/phase-3/p3-6-inventory-r1-authorization.json",
+    "collection_evidence": "contracts/phase-3/p3-6-inventory-r1-collection-evidence.json",
+    "collection_evidence_sha256": "3658758FCC7342B7865C7C0FD340FD408B38562BB1D365B757A74C8B6347FA72",
+    "inventory_record": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json",
+    "inventory_sha256": "FB061C906D1CE5F7FE3B32B70F6CA5134C486F474E2618B23884466C2E58C76F",
+    "inventory_valid_until": "2026-08-31T17:57:26.397Z",
+    "owner_acceptance_pending": false,
+    "single_attempt_consumed": true,
+    "status": "owner_accepted_single_attempt_consumed_succeeded",
     "trust_policy": "contracts/phase-3/p3-6-inventory-r1-trust-policy.json",
-    "trust_policy_sha256": "E76D0C56476A98AADDBC7880AD75858B5B61D45CE95802E3FB39557E226C6106"
+    "trust_policy_sha256": "E76D0C56476A98AADDBC7880AD75858B5B61D45CE95802E3FB39557E226C6106",
+    "profile_resolver_eligible": false
   },
   "model_artifact_research_package": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
@@ -132,7 +142,7 @@
   "owner_decisions_record": "contracts/phase-3/p3-6-owner-decisions.json",
   "phase_minus_1_alignment": "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
   "planning_authorization": "D-P3.6-PLAN-AUTH",
-  "planning_status": "U2_model_metadata_U3_portable_R0_and_inventory_admission_AAAA_planning_accepted_R1_authorization_package_sealed_owner_acceptance_fresh_R1_storage_scanner_acquisition_activation_promotion_and_execution_authority_pending",
+  "planning_status": "U2_model_metadata_U3_portable_R0_and_inventory_admission_AAAA_planning_accepted_R1_authorized_collected_validated_and_attempt_consumed_storage_scanner_acquisition_activation_promotion_and_execution_authority_pending",
   "record_id": "P3.6-ENTRY-GATES",
   "runtime_execution_authorized": false,
   "start_intent_record": "contracts/phase-3/p3-6-start-intent.json",

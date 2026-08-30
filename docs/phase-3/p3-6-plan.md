@@ -27,15 +27,18 @@ shows that the historical R0 laptop record is not the shared Phase -1
 `node-capability-inventory/v1alpha1` shape. The non-executable owner packet is
 sealed under digest
 `CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A`.
-The owner accepted the recommended `A/A/A/A` policy choices. No fresh R1
-collection has occurred or been authorized.
+The owner accepted the recommended `A/A/A/A` policy choices. The separate R1
+authorization described below was subsequently accepted and consumed.
 
 A minimized [R1 authorization proposal](p3-6-inventory-r1-authorization-proposal.md)
-is now sealed for owner review under package digest
+was sealed for owner review under package digest
 `710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7`.
-It permits no current action. It proposes one local-only attempt with exact
-field, timeout, redaction, schema, trust-policy, output, and failure bounds.
-No collector was implemented and `D-P3.6-INVENTORY-R1-AUTH` remains pending.
+The package itself permits no action. `mayank-admin` accepted that exact digest
+under `D-P3.6-INVENTORY-R1-AUTH`; the one local-only attempt then completed with
+the exact field, timeout, redaction, schema, trust-policy, output, and failure
+bounds. The attempt is consumed, no reusable collector was implemented, and the
+sanitized R1 remains non-executable and resolver-ineligible. See the
+[authorized R1 collection record](p3-6-inventory-r1-collection.md).
 
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).

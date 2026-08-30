@@ -42,10 +42,14 @@
       }
     ],
     "hardware": {
-      "inventory_record": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r0.json",
-      "inventory_sha256": "0E702718390FB6C373F0FC189CB58D0E79BB7FE3B3EA39B5E5AFE0DE4D47CA1F",
+      "inventory_record": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json",
+      "inventory_sha256": "FB061C906D1CE5F7FE3B32B70F6CA5134C486F474E2618B23884466C2E58C76F",
+      "historical_inventory_record": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r0.json",
+      "historical_inventory_sha256": "0E702718390FB6C373F0FC189CB58D0E79BB7FE3B3EA39B5E5AFE0DE4D47CA1F",
       "known_inventory_profile": "LAB-LAPTOP-01 Intel Core i5-8365U, 8 GiB RAM, Intel UHD Graphics 620, no observed discrete NVIDIA accelerator",
-      "state": "sanitized_current_laptop_inventory_complete_non_executable_portable_R0_proposal_sealed_owner_review_and_validation_pending",
+      "state": "sanitized_shared_schema_R1_complete_single_attempt_consumed_non_executable_profile_admission_and_validation_pending",
+      "R1_observed_at": "2026-08-30T17:57:26.397Z",
+      "R1_valid_until": "2026-08-31T17:57:26.397Z",
       "stronger_laptop_profile": "unknown",
       "capacity_target_profile": "unknown",
       "effective_portable_profile_class": "portable_cpu",
@@ -66,7 +70,9 @@
     "package_digest_sha256": "CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A",
     "historical_R0_shared_contract_conformance": false,
     "inventory_recollection_authorized": false,
-    "status": "owner_AAAA_policy_selections_accepted_fresh_R1_authority_pending"
+    "status": "owner_AAAA_policy_selections_accepted_R1_collected_profile_admission_pending",
+    "R1_record": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json",
+    "R1_sha256": "FB061C906D1CE5F7FE3B32B70F6CA5134C486F474E2618B23884466C2E58C76F"
   },
   "inventory_r1_authorization_package": {
     "collector_spec": "contracts/phase-3/p3-6-inventory-r1-collector-spec.json",
@@ -76,8 +82,15 @@
     "proposal": "contracts/phase-3/p3-6-inventory-r1-authorization-proposal.json",
     "trust_policy": "contracts/phase-3/p3-6-inventory-r1-trust-policy.json",
     "trust_policy_sha256": "E76D0C56476A98AADDBC7880AD75858B5B61D45CE95802E3FB39557E226C6106",
-    "status": "sealed_owner_review_pending_non_effective",
-    "inventory_collection_authorized": false
+    "status": "owner_accepted_single_attempt_consumed_succeeded",
+    "authorization_record": "contracts/phase-3/p3-6-inventory-r1-authorization.json",
+    "inventory_record": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json",
+    "inventory_sha256": "FB061C906D1CE5F7FE3B32B70F6CA5134C486F474E2618B23884466C2E58C76F",
+    "collection_evidence": "contracts/phase-3/p3-6-inventory-r1-collection-evidence.json",
+    "collection_evidence_sha256": "3658758FCC7342B7865C7C0FD340FD408B38562BB1D365B757A74C8B6347FA72",
+    "single_attempt_consumed": true,
+    "inventory_collection_authorized": false,
+    "profile_resolver_eligible": false
   },
   "model_artifact_research": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
@@ -102,13 +115,13 @@
     "status": "accepted_non_executable_planning_profile_exact_evidence_pending"
   },
   "next_inventory_planning_action": {
-    "action": "owner_review_exact_digest_bound_D_P3_6_INVENTORY_R1_AUTH_package_without_collecting_inventory",
+    "action": "evaluate_remaining_P36_G2_runtime_resource_workload_profile_and_generated_validation_inputs_against_R1_without_activating_a_profile",
     "authority": "D-P3.6-PLAN-AUTH",
     "decision_id": "D-P3.6-INVENTORY-R1-AUTH",
     "package_digest_sha256": "710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7",
     "package_manifest": "contracts/phase-3/p3-6-inventory-r1-authorization-package.json",
     "implementation_or_collection_authority": false,
-    "status": "package_sealed_owner_acceptance_required_before_any_collection_action"
+    "status": "owner_authorized_attempt_succeeded_and_is_consumed_R1_does_not_activate_or_admit_profile"
   },
   "next_planning_action": {
     "action": "resolve_exact_eligible_local_quarantine_root_and_scanner_binding_then_regenerate_digest_bound_R1_acquisition_proposal",
@@ -135,7 +148,7 @@
   ],
   "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
   "runtime_execution_authorized": false,
-  "status": "planning_only_model_metadata_portable_R0_and_inventory_AAAA_policies_accepted_R1_authorization_package_sealed_owner_acceptance_fresh_R1_acquisition_activation_validation_and_execution_blocked",
+  "status": "planning_only_model_metadata_portable_R0_and_inventory_AAAA_policies_accepted_R1_authorized_collected_validated_and_consumed_acquisition_activation_validation_and_execution_blocked",
   "work_items": [
     {
       "allowed_now": [
@@ -205,7 +218,8 @@
         "sanitized_current_laptop_inventory",
         "sealed_non_executable_portable_cpu_R0_proposal",
         "sealed_inventory_admission_gap_and_owner_decision_packet",
-        "sealed_non_effective_R1_authorization_package_pending_owner_acceptance"
+        "sealed_R1_authorization_package_accepted_and_single_attempt_consumed",
+        "sanitized_shared_schema_valid_R1_and_collection_evidence"
       ],
       "gate_target": "P36-G2",
       "output_package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
@@ -224,9 +238,13 @@
         "contracts/phase-3/p3-6-inventory-r1-collector-spec.json",
         "contracts/phase-3/p3-6-inventory-r1-authorization-proposal.json",
         "contracts/phase-3/p3-6-inventory-r1-authorization-package.json",
-        "docs/phase-3/p3-6-inventory-r1-authorization-proposal.md"
+        "contracts/phase-3/p3-6-inventory-r1-authorization.json",
+        "contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json",
+        "contracts/phase-3/p3-6-inventory-r1-collection-evidence.json",
+        "docs/phase-3/p3-6-inventory-r1-authorization-proposal.md",
+        "docs/phase-3/p3-6-inventory-r1-collection.md"
       ],
-      "state": "portable_cpu_R0_and_inventory_admission_AAAA_planning_accepted_R1_authorization_package_sealed_owner_acceptance_fresh_shared_R1_other_profiles_exact_values_and_validation_evidence_missing",
+      "state": "portable_cpu_R0_and_inventory_admission_AAAA_planning_accepted_R1_authorized_collected_validated_and_consumed_other_profiles_exact_values_and_generated_validation_evidence_missing",
       "work_item_id": "P36-U3"
     },
     {

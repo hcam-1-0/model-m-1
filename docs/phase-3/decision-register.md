@@ -826,7 +826,7 @@ Git action.
 ### DR-0055: P3.6 Minimized Inventory R1 Authorization Package R0
 
 Status: exact non-effective owner-authorization package sealed on 2026-08-30;
-`D-P3.6-INVENTORY-R1-AUTH` owner acceptance pending.
+owner acceptance was pending at seal and is resolved in `DR-0056`.
 
 Package digest
 `710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7`
@@ -850,11 +850,36 @@ It describes an owned-local, network-denied, generated-only context and grants
 no admission or execution authority. A failed collection attempt would require
 new authorization. Historical R0 remains unchanged.
 
-The package itself authorizes nothing. No collector was implemented, no
-machine query ran, and no R1 or collection evidence exists. `P36-G2` remains
-blocked pending the exact owner statement and successful separately authorized
-collection. All profile, runtime/model, hardware, accelerator, container,
-Kubernetes, camera/media/data, deployment, and remote Git prohibitions remain.
+The package itself authorizes nothing. At sealing, no collector was implemented,
+no machine query had run, and no R1 or collection evidence existed. The owner
+later accepted the exact digest and the single bounded attempt completed under
+the separate acceptance record described by `DR-0056`. All profile,
+runtime/model, hardware, accelerator, container, Kubernetes, camera/media/data,
+deployment, and remote Git prohibitions remain.
+
+### DR-0056: P3.6 Inventory R1 One-Time Authorization And Result
+
+Status: accepted and completed on 2026-08-30; the single attempt is consumed.
+
+`mayank-admin` accepted `D-P3.6-INVENTORY-R1-AUTH` against package digest
+`710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7`.
+One local read-only attempt ran inside the bound 24-hour authorization window
+and produced a sanitized shared-schema R1 with SHA-256
+`FB061C906D1CE5F7FE3B32B70F6CA5134C486F474E2618B23884466C2E58C76F`.
+Its bounded collection evidence has SHA-256
+`3658758FCC7342B7865C7C0FD340FD408B38562BB1D365B757A74C8B6347FA72`.
+The exact pinned shared-schema validation passed, raw command output was not
+persisted, no network access was used, and no reusable collector was created.
+
+The R1 record is valid only through `2026-08-31T17:57:26.397Z` under the
+accepted maximum 24-hour freshness policy. It remains a factual input and does
+not establish runtime compatibility, accelerator/container/scheduler support,
+resource capacity, generated workload evidence, profile admission, placement,
+or activation. Therefore `P36-G2` remains blocked. Another attempt requires a
+new explicit authorization; no retry or continuing collection authority exists.
+
+See [the authorized collection record](p3-6-inventory-r1-collection.md) for the
+complete bindings, outputs, gate effect, and continuing prohibitions.
 
 ## Decisions Explicitly Deferred
 

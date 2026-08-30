@@ -367,8 +367,11 @@ recollection is authorized.
 The exact minimized R1 authorization proposal is now sealed under package
 digest
 `710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7`.
-It remains non-effective: owner acceptance is pending, no collector was
-implemented, no machine action ran, and no R1 exists.
+`D-P3.6-INVENTORY-R1-AUTH` accepted that exact digest. The single authorized
+local read-only attempt succeeded, is consumed, and produced a sanitized,
+shared-schema-valid R1. No reusable collector was implemented. The R1 is a
+factual input only; it does not make a profile resolver-eligible or change the
+blocked state of `P36-G2`.
 
 Planning records:
 
@@ -390,6 +393,10 @@ Planning records:
 - [sealed inventory-admission owner package](../../contracts/phase-3/p3-6-inventory-admission-package.json); and
 - [minimized R1 authorization proposal](p3-6-inventory-r1-authorization-proposal.md);
 - [sealed non-effective R1 authorization package](../../contracts/phase-3/p3-6-inventory-r1-authorization-package.json); and
+- [completed one-time R1 collection record](p3-6-inventory-r1-collection.md);
+- [consumed owner authorization](../../contracts/phase-3/p3-6-inventory-r1-authorization.json);
+- [sanitized shared-schema R1](../../contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json);
+- [bounded R1 collection evidence](../../contracts/phase-3/p3-6-inventory-r1-collection-evidence.json); and
 - [P3.6 planning acceptances R0](p3-6-planning-acceptances.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
@@ -430,10 +437,9 @@ Remaining gated backlog requires exact owner decisions and separate authority:
 - resolve the accepted portable CPU proposal's exact runtime, resource,
   workload, dependency, artifact, evidence, and activation blockers for
   `P36-G2`;
-- obtain exact owner acceptance of package digest
-  `710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7`
-  before the single proposed fresh shared-schema R1 collection attempt; do not
-  run any action, overwrite R0, infer approval, or retry a failed attempt;
+- treat the completed R1 attempt as consumed, keep R0 immutable, and require a
+  new explicit digest-bound authorization before any future collection after
+  expiry or invalidation;
 - prepare and approve the exact shared `owned_gpu_lab` machine, OS, driver,
   runtime, precision, decoder, resource, and generated-workload manifest;
 - select `standalone_server` or `kubernetes_cluster` for any future C10/C50

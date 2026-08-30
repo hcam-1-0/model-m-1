@@ -222,6 +222,16 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   authorization manifest whose file SHA-256 is
   `710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7`;
   the sealed package is not owner acceptance and authorizes no collection.
+- `p3-6-inventory-r1-authorization.json`: exact owner acceptance record for the
+  sealed package, now closed after consuming its one authorized local attempt.
+- `p3-6-inventory-lab-laptop-01-r1.json`: sanitized shared-schema node inventory
+  with SHA-256
+  `FB061C906D1CE5F7FE3B32B70F6CA5134C486F474E2618B23884466C2E58C76F`;
+  it is factual inventory, not profile activation or compatibility evidence.
+- `p3-6-inventory-r1-collection-evidence.json`: bounded action outcomes,
+  immutable input bindings, exact schema-validation status, and R1 hash for the
+  consumed attempt; its SHA-256 is
+  `3658758FCC7342B7865C7C0FD340FD408B38562BB1D365B757A74C8B6347FA72`.
 
 Verify all tracked snapshots:
 
