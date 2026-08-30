@@ -1,12 +1,10 @@
 # P3.6 Planning Acceptances R0
 
-Status: planning-only owner acceptances are recorded through the portable U3C
-`A/A/A/A` compatibility policy. A separate `D-P3.6-INVENTORY-R1-AUTH`
+Status: planning-only owner acceptances are recorded through the portable U3D
+`A/A/A/A/A` supply-chain prerequisite policy. A separate `D-P3.6-INVENTORY-R1-AUTH`
 accepted one bounded collection attempt; that attempt succeeded and is
 consumed. No continuing inventory collection,
 artifact acquisition, implementation, runtime, or deployment authority exists.
-The later U3D supply-chain prerequisite package is sealed for review, but its
-five recommended `A/A/A/A/A` selections are pending and are not acceptances.
 
 Machine-readable records:
 
@@ -21,10 +19,7 @@ Later R1 outcome records:
 - [bounded collection evidence](../../contracts/phase-3/p3-6-inventory-r1-collection-evidence.json).
 - [portable R1 admission policy acceptance](../../contracts/phase-3/p3-6-portable-r1-owner-decisions.json).
 - [portable compatibility and generated C1 policy acceptance](../../contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json).
-
-Next sealed proposal, not yet accepted:
-
-- [portable R1 supply-chain prerequisite package](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-package.json).
+- [portable R1 supply-chain prerequisite policy acceptance](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json).
 
 ## Portable CPU Planning Proposal
 
@@ -92,14 +87,15 @@ acceptance record SHA-256 is
 This acceptance authorizes no acquisition, runtime execution, validation,
 profile admission, implementation, or deployment.
 
-## Portable R1 Supply-Chain Prerequisite Proposal
+## Portable R1 Supply-Chain Prerequisite Policies
 
-`D-P3.6-U3D-001` through `D-P3.6-U3D-005` are pending against package digest
+`D-P3.6-U3D-001` through `D-P3.6-U3D-005` are accepted as `A/A/A/A/A` against package digest
 `496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
-The package recommends `A/A/A/A/A` for an owner-bound local quarantine root,
+The accepted planning policy requires an owner-bound local quarantine root,
 three-layer passive scanner chain, fail-closed verdict, sequential atomic
 acquisition and ML-BOM lifecycle, and strict passive R1 versus separately
-authorized generated-only R2 separation. None of those choices is selected.
+authorized generated-only R2 separation. The acceptance record SHA-256 is
+`F68BDE02AF96E3992A8C64F1F01A85CAC960F529946EA12FA4899D9EBFC197A9`.
 
 No exact path, scanner binary, scanner version, dependency digest, artifact, or
 runtime is bound. The proposal authorizes no storage or scanner query, write
@@ -124,9 +120,9 @@ bindings are sealed in a regenerated package.
 | `P36-G0` | Passed |
 | `P36-G0A` | Passed |
 | `P36-G1` | Blocked: no acquired comparison artifacts, H-CAM evidence, or approved champion/fallback |
-| `P36-G2` | Blocked: R1 and U3C planning policy exist and U3D is sealed but unselected; actual compatibility artifacts, six other resolver inputs, other profiles, and generated validation evidence remain missing |
+| `P36-G2` | Blocked: R1, U3C, and U3D planning policies exist; actual compatibility artifacts, six other resolver inputs, other profiles, and generated validation evidence remain missing |
 | `P36-G3` | Passed |
-| `P36-G4` | Blocked: U3D choices, acquisition authority, and exact storage/scanner binding remain pending |
+| `P36-G4` | Blocked: acquisition authority and exact storage/scanner binding remain pending despite U3D policy acceptance |
 | `P36-G5` | Blocked: no digest-bound implementation/runtime authorization |
 
 ## Continuing Boundary

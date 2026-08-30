@@ -261,7 +261,9 @@ def test_canonical_ledgers_link_package_without_opening_P36_G2() -> None:
     assert unblock["next_portable_planning_action"][
         "package_digest_sha256"
     ] == U3D_PACKAGE_DIGEST
-    assert unblock["next_portable_planning_action"]["selected_options"] is None
+    assert unblock["next_portable_planning_action"][
+        "selected_options"
+    ] == "A/A/A/A/A"
     assert unblock["next_portable_planning_action"][
         "implementation_or_runtime_authority"
     ] is False

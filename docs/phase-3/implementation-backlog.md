@@ -388,9 +388,10 @@ execution, acquisition, validation, implementation, or activation authority.
 The follow-on portable R1 supply-chain prerequisite package is sealed under
 digest
 `496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
-Its five U3D choices remain unselected, with `A/A/A/A/A` recommended. The
-package binds no storage path or scanner and grants no acquisition, inspection,
-execution, validation, implementation, or activation authority.
+`mayank-admin` accepted the five U3D choices as `A/A/A/A/A` planning policy.
+The acceptance is non-effective: it binds no storage path or scanner and grants
+no query, write probe, acquisition, inspection, execution, validation,
+implementation, or activation authority.
 
 Planning records:
 
@@ -424,6 +425,7 @@ Planning records:
 - [accepted portable compatibility U3C `A/A/A/A` policy decisions](../../contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json); and
 - [portable R1 supply-chain prerequisite proposal](p3-6-portable-r1-supply-chain-prerequisite-proposal.md);
 - [sealed non-authorizing portable R1 prerequisite package](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-package.json); and
+- [accepted portable R1 supply-chain U3D `A/A/A/A/A` policy decisions](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json); and
 - [P3.6 planning acceptances R0](p3-6-planning-acceptances.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
@@ -456,15 +458,13 @@ admission evidence, C1/C10/C50 bounded-load results or a narrower explicit
 claim, degradation behavior, driver/container security review, supply-chain
 provenance, rollback, exact package digest, and owner acceptance.
 
-Remaining gated backlog requires exact owner decisions and separate authority:
+Remaining gated backlog requires exact owner inputs and separate authority:
 
-- select `D-P3.6-U3D-001` through `D-P3.6-U3D-005` against exact package digest
-  `496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`;
-  the recommended `A/A/A/A/A` selections remain pending and the package is not
-  authority to acquire, inspect, execute, validate, implement, admit, or
-  activate anything;
-- bind an eligible exact local quarantine root and exact scanner invocation,
-  then regenerate a digest-bound R1 acquisition proposal;
+- supply an eligible candidate local quarantine root, then separately authorize
+  its bounded storage attestation and exact scanner-chain binding before any
+  digest-bound R1 acquisition proposal is regenerated; U3D acceptance is not
+  authority to query, write, install, scan, acquire, inspect, execute, validate,
+  implement, admit, or activate anything;
 - resolve exact model-family artifacts/data and complete `P36-G1`;
 - resolve the accepted portable CPU proposal's exact runtime, resource,
   workload, dependency, artifact, evidence, and activation blockers for

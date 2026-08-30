@@ -215,9 +215,12 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
   planning policies without collection, profile, or execution authority.
 - [x] `D-P3.6-U3C-001` through `004` accept `A/A/A/A` compatibility and
   generated C1 planning policies without acquisition or execution authority.
-- [ ] `D-P3.6-U3D-001` through `005` select storage, scanner, verdict,
+- [x] `D-P3.6-U3D-001` through `005` accept `A/A/A/A/A` storage, scanner, verdict,
   acquisition, and R1/R2 prerequisite policies against package digest
   `496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
+- [ ] An exact owner-supplied candidate quarantine root and separate bounded
+  storage/scanner binding authorization exist; U3D policy acceptance alone does
+  not authorize either action.
 - [ ] An eligible exact local quarantine root and exact scanner command are
   bound in a regenerated R1 proposal before any acquisition authorization.
 - [ ] The exact portable runtime/workload profile, accelerated-laptop profile,

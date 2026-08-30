@@ -975,10 +975,9 @@ blocked.
 Machine-readable acceptance:
 [`p3-6-portable-compatibility-validation-owner-decisions.json`](../../contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json).
 
-### DR-0060: Portable R1 supply-chain prerequisite policy proposed
+### DR-0060: Portable R1 supply-chain prerequisite policies accepted
 
-Status: sealed for owner review on 2026-08-31; no selection or execution
-authority exists.
+Status: accepted as non-effective planning policy on 2026-08-31.
 
 The planning-only prerequisite package is sealed under SHA-256
 `496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
@@ -987,8 +986,8 @@ storage, scanner, verdict, acquisition, and R1/R2 separation proposal without
 binding a physical path, installing a scanner, acquiring an artifact, or
 executing a model.
 
-The package presents five independent pending choices, with `A/A/A/A/A`
-recommended:
+The package presents five independent choices. `mayank-admin` selected the
+recommended `A/A/A/A/A` policy:
 
 - `D-P3.6-U3D-001 A`: owner-supplied local fixed NTFS/ReFS quarantine root,
   accepted only after a separately authorized fresh threshold attestation;
@@ -1002,15 +1001,20 @@ recommended:
 - `D-P3.6-U3D-005 A`: immutable passive R1 followed only by a separately
   authorized, digest-bound, network-denied, generated-only R2.
 
-Every U3D selection remains null. The exact quarantine root, Defender version
-and path, pinned ModelScan distribution and hash, and H-CAM passive inspector
-implementation remain unresolved. The package grants no storage query or write
-probe, scanner query/install/run, artifact or dependency download, checkpoint
-load, runtime execution, validation, profile admission, implementation,
-deployment, or remote Git authority. `P36-G2` and `P36-G4` remain blocked.
+The exact owner acceptance record SHA-256 is
+`F68BDE02AF96E3992A8C64F1F01A85CAC960F529946EA12FA4899D9EBFC197A9`.
+The exact quarantine root, Defender version and path, pinned ModelScan
+distribution and hash, and H-CAM passive inspector implementation remain
+unresolved. The acceptance grants no storage query or write probe, scanner
+query/install/run, artifact or dependency download, checkpoint load, runtime
+execution, validation, profile admission, implementation, deployment, or
+remote Git authority. `P36-G2` and `P36-G4` remain blocked.
 
 Machine-readable package:
 [`p3-6-portable-r1-supply-chain-prerequisite-package.json`](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-package.json).
+
+Machine-readable acceptance:
+[`p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json`](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json).
 
 ## Decisions Explicitly Deferred
 

@@ -274,6 +274,10 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-portable-r1-supply-chain-prerequisite-package.json`: immutable
   non-authorizing four-file owner-review manifest whose SHA-256 is
   `496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
+- `p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json`: exact
+  owner acceptance of `D-P3.6-U3D-001` through `005` as `A/A/A/A/A` planning
+  policy only; its SHA-256 is
+  `F68BDE02AF96E3992A8C64F1F01A85CAC960F529946EA12FA4899D9EBFC197A9`.
 
 Verify all tracked snapshots:
 

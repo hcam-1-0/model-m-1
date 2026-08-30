@@ -159,8 +159,10 @@
     "package_manifest": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-package.json",
     "package_digest_sha256": "496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B",
     "recommended_selection": "A/A/A/A/A",
-    "selected_options": null,
-    "owner_selections_pending": true,
+    "selected_options": "A/A/A/A/A",
+    "owner_selections_pending": false,
+    "acceptance_record": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json",
+    "acceptance_sha256": "F68BDE02AF96E3992A8C64F1F01A85CAC960F529946EA12FA4899D9EBFC197A9",
     "exact_quarantine_root_bound": false,
     "exact_scanner_chain_bound": false,
     "artifact_or_dependency_acquisition_authorized": false,
@@ -168,7 +170,7 @@
     "R2_runtime_authorized": false,
     "resolver_eligible": false,
     "profile_activation_authorized": false,
-    "status": "sealed_non_authorizing_owner_policy_selection_pending"
+    "status": "accepted_planning_policy_only_non_effective"
   },
   "portable_cpu_profile_proposal": {
     "acceptance_record": "contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json",
@@ -189,7 +191,7 @@
       "activation": "default_candidate_after_exact_manifest_validation",
       "capacity_claim": "c1_correctness_and_small_cpu_evidence_only_until_measured",
       "candidate_execution": "onnx_runtime_cpu_reference",
-      "exact_manifest_status": "sealed_non_executable_R0_compatibility_policy_AAAA_owner_accepted_U3D_supply_chain_prerequisite_package_sealed_owner_selections_actual_artifacts_and_validation_evidence_pending",
+      "exact_manifest_status": "sealed_non_executable_R0_compatibility_policy_AAAA_and_U3D_supply_chain_AAAAA_owner_accepted_actual_bindings_artifacts_and_validation_evidence_pending",
       "profile_id": "portable_cpu",
       "purpose": "portable_current_laptop_and_ci_reference_with_conservative_resource_policy"
     },
@@ -211,7 +213,7 @@
     }
   ],
   "record_id": "P3.6-CAPABILITY-PROFILE-POLICY",
-  "status": "accepted_planning_baseline_aligned_to_phase_minus_1_with_portable_U3C_AAAA_policy_and_U3D_supply_chain_prerequisite_package_sealed_owner_selections_pending",
+  "status": "accepted_planning_baseline_aligned_to_phase_minus_1_with_portable_U3C_AAAA_and_U3D_supply_chain_AAAAA_policies",
   "unresolved_gates": [
     "model_champion_and_fallback",
     "exact_machine_capability_manifests",

@@ -15,6 +15,9 @@ DECISIONS_PATH = CONTRACTS / f"{STEM}-decision-packet.json"
 DOCUMENT_PATH = DOCS / f"{STEM}-proposal.md"
 PACKAGE_PATH = CONTRACTS / f"{STEM}-package.json"
 PACKAGE_DIGEST = "496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B"
+ACCEPTANCE_DIGEST = (
+    "F68BDE02AF96E3992A8C64F1F01A85CAC960F529946EA12FA4899D9EBFC197A9"
+)
 
 
 def _read(path: Path) -> dict[str, object]:
@@ -187,7 +190,7 @@ def test_R1_and_R2_are_immutable_and_separately_authorized() -> None:
     assert separation["R3_held_out_validation_requires_later_separate_authority"] is True
 
 
-def test_U3D_decisions_are_independent_pending_and_recommend_AAAAA() -> None:
+def test_U3D_proposal_packet_stays_unselected_and_recommends_AAAAA() -> None:
     decisions = _read(DECISIONS_PATH)
     items = decisions["decisions"]
 
@@ -243,14 +246,20 @@ def test_ledgers_and_human_records_are_synchronized_and_blocked() -> None:
         digest = state.get("digest_sha256", state.get("package_digest_sha256"))
         assert digest == PACKAGE_DIGEST
         assert state["recommended_selection"] == "A/A/A/A/A"
-        assert state["selected_options"] is None
-        assert state["owner_selections_pending"] is True
+        assert state["selected_options"] == "A/A/A/A/A"
+        assert state["owner_selections_pending"] is False
+        assert state["acceptance_record"].endswith(
+            f"{STEM}-owner-decisions.json"
+        )
+        assert state["acceptance_sha256"] == ACCEPTANCE_DIGEST
         assert state["profile_activation_authorized"] is False
 
     assert unblock["next_portable_planning_action"][
         "package_digest_sha256"
     ] == PACKAGE_DIGEST
-    assert unblock["next_portable_planning_action"]["selected_options"] is None
+    assert unblock["next_portable_planning_action"][
+        "selected_options"
+    ] == "A/A/A/A/A"
 
     decision_register = (DOCS / "decision-register.md").read_text(encoding="utf-8")
     backlog = (DOCS / "implementation-backlog.md").read_text(encoding="utf-8")

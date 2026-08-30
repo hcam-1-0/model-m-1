@@ -149,7 +149,7 @@ def test_canonical_ledgers_record_acceptance_without_opening_G2() -> None:
     assert unblock["runtime_execution_authorized"] is False
 
 
-def test_completed_prerequisite_output_advances_to_U3D_owner_review() -> None:
+def test_completed_U3D_acceptance_advances_to_candidate_root_input() -> None:
     acceptance = _read(ACCEPTANCE_PATH)
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     action = unblock["next_portable_planning_action"]
@@ -158,14 +158,13 @@ def test_completed_prerequisite_output_advances_to_U3D_owner_review() -> None:
         "non_executable_R1_artifact_supply_chain_and_generated_calibration_"
         "authorization_prerequisites"
     )
-    assert action["action"] == (
-        "owner_review_D_P3_6_U3D_001_through_005_against_exact_sealed_package"
-    )
+    assert action["action"].startswith("await_owner_supplied_candidate_quarantine_root")
     assert action["package_digest_sha256"] == U3D_PACKAGE_DIGEST
     assert action["recommended_selection"] == "A/A/A/A/A"
-    assert action["selected_options"] is None
+    assert action["selected_options"] == "A/A/A/A/A"
     assert action["status"] == (
-        "sealed_non_authorizing_owner_policy_selection_pending"
+        "planning_policy_accepted_owner_candidate_root_and_separate_binding_"
+        "authorization_required"
     )
 
 
