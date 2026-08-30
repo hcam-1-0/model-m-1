@@ -1,0 +1,54 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_cpu_profile_package.v1",
+  "package_id": "P3.6-PORTABLE-CPU-PROFILE-PACKAGE-R0",
+  "status": "sealed_non_executable_owner_review_pending",
+  "sealed_on": "2026-08-30",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "owner_review_decision_id": "D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE",
+  "owner_review_effect": "accept_planning_record_only_without_profile_activation_or_execution_authority",
+  "core_file_count": 3,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-portable-cpu-profile-proposal.json",
+      "sha256": "55d015638b1828054a5480eb6eaa079f5935c1b32b7f95ef44fa1f3e7b33b6ef",
+      "role": "non_executable_portable_cpu_profile_proposal"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-portable-cpu-research-sources.json",
+      "sha256": "96e6f817025d3e4289fc93d0090095f27d935eb6db71c74197dfb5b78e6b4d8a",
+      "role": "official_primary_source_and_existing_repository_evidence_ledger"
+    },
+    {
+      "path": "docs/phase-3/p3-6-portable-cpu-profile-proposal.md",
+      "sha256": "3d0512841123e7f185f01f018dca4c3847bad40915164868c7bdd4d6d406166d",
+      "role": "owner_review_document"
+    }
+  ],
+  "manifest_hash_rule": "the_sha256_of_this_file_is_the_package_digest_and_is_not_self_embedded",
+  "gate_effect": {
+    "p36_g0a_shared_contract_alignment": "passed_by_prior_alignment_record",
+    "p36_g1_model_and_quality": "blocked",
+    "p36_g2_profile_validation": "blocked_proposal_is_not_validation_evidence",
+    "p36_g3_resource_measurement_policy": "passed_by_prior_alignment_record",
+    "p36_g4_artifact_and_dependency_authority": "blocked",
+    "p36_g5_implementation_and_runtime_authority": "blocked"
+  },
+  "future_validation_decision_issuable": false,
+  "future_validation_decision_blockers": [
+    "owner_review_of_this_non_executable_proposal",
+    "p36_g1_model_champion_and_fallback_approval",
+    "inventory_freshness_and_trust_zone_policy",
+    "sealed_runtime_dependency_and_model_artifact_state",
+    "exact_generated_workload_and_numeric_acceptance_gates",
+    "separate_digest_bound_generated_only_validation_authorization"
+  ],
+  "artifact_download_authorized": false,
+  "profile_activation_authorized": false,
+  "implementation_authorized": false,
+  "runtime_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "container_or_kubernetes_action_authorized": false,
+  "camera_media_or_data_access_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

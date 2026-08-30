@@ -351,6 +351,12 @@ shared contracts at `hcam-protos` merge `d71cdc9c51d01d746d5195bcb2ac639e0fdf11c
 deployment merge `71095fe89d2b711e4982ddc0130fcaedda8703e7`, and canonical base digest
 `sha256:db776a7432e46dcbf0f170efde428002d656faf3b4cc278fc776c8aabd6c94cf`.
 This passes `P36-G0A` without changing G1, G2, G4, or G5.
+`P36-U3` now has a sealed, non-executable `portable_cpu` R0 proposal under
+package digest
+`56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`.
+Owner review, exact unresolved values, generated validation, the
+`owned_gpu_lab` inventory, and a capacity-target decision remain pending, so
+`P36-G2` stays blocked.
 
 Planning records:
 
@@ -366,6 +372,8 @@ Planning records:
 - [LAB-LAPTOP-01 sanitized inventory](p3-6-inventory-lab-laptop-01-r0.md); and
 - [exact model artifact research proposal](p3-6-model-artifact-research-proposal.md);
 - [sealed non-authorizing model proposal package](../../contracts/phase-3/p3-6-model-artifact-research-package.json); and
+- [portable CPU profile proposal R0](p3-6-portable-cpu-profile-proposal.md);
+- [sealed non-executable portable CPU package](../../contracts/phase-3/p3-6-portable-cpu-profile-package.json); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
 Deliverables:
@@ -403,9 +411,11 @@ Remaining gated backlog requires exact owner decisions and separate authority:
 - bind an eligible exact local quarantine root and exact scanner invocation,
   then regenerate a digest-bound R1 acquisition proposal;
 - resolve exact model-family artifacts/data and complete `P36-G1`;
-- prepare and approve exact shared `portable_cpu` and `owned_gpu_lab` machine,
-  OS, driver, runtime, precision, decoder, resource, and generated-workload
-  manifests for `P36-G2`;
+- review the sealed portable CPU R0 planning proposal, then resolve its exact
+  runtime, resource, workload, freshness, dependency, artifact, evidence, and
+  activation blockers for `P36-G2`;
+- prepare and approve the exact shared `owned_gpu_lab` machine, OS, driver,
+  runtime, precision, decoder, resource, and generated-workload manifest;
 - select `standalone_server` or `kubernetes_cluster` for any future C10/C50
   capacity target; do not create a separate `capacity_target` profile;
 - prepare bounded acquisition/research manifests for any external artifacts,

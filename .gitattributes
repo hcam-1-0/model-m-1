@@ -1,0 +1,5 @@
+# Preserve byte-identical line endings for immutable P3.6 package records.
+contracts/phase-3/p3-6-portable-cpu-profile-proposal.json text eol=lf
+contracts/phase-3/p3-6-portable-cpu-research-sources.json text eol=lf
+contracts/phase-3/p3-6-portable-cpu-profile-package.json text eol=lf
+docs/phase-3/p3-6-portable-cpu-profile-proposal.md text eol=lf

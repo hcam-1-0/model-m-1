@@ -14,6 +14,12 @@ digest `2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE`.
 No artifact was downloaded. Exact storage, scanner, acquisition, comparison,
 promotion, runtime-profile, and execution gates remain blocked.
 
+A conservative non-executable
+[portable CPU profile proposal](p3-6-portable-cpu-profile-proposal.md) is also
+sealed for owner review under package digest
+`56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`.
+It records explicit unknowns and does not pass `P36-G2` or authorize activation.
+
 Planning authorization:
 [P3.6 planning authorization](p3-6-planning-authorization.md).
 
@@ -106,7 +112,7 @@ support, performance, GPU, C1/C10/C50, production, or procurement claims.
 | `P36-G0` | Accepted P3.5 and explicit P3.6 planning authority | Passed |
 | `P36-G0A` | P3.6 ownership and profile vocabulary aligned to the immutable Phase -1 planning baseline | Passed |
 | `P36-G1` | Frozen `DET-R0/E1/B1/A1` comparison and promoted champion/fallback | Blocked; exact E1/B1/A1 metadata sealed, artifacts and H-CAM evidence absent |
-| `P36-G2` | Exact hardware/OS/driver/runtime/precision/workload profiles | Blocked; current-laptop inventory complete, profiles unresolved |
+| `P36-G2` | Exact hardware/OS/driver/runtime/precision/workload profiles | Blocked; current-laptop inventory and non-executable portable R0 proposal complete, owner review, exact unknowns, other profiles, and validation unresolved |
 | `P36-G3` | Owner decisions `D-P3.6-001` through `D-P3.6-005` | Passed |
 | `P36-G4` | Exact digest-bound artifact/dependency/container research authority | Blocked; non-authorizing R0 proposal sealed, storage/scanner/acquisition authority absent |
 | `P36-G5` | Exact implementation and runtime-execution authority | Blocked; broad start intent received but non-effective |

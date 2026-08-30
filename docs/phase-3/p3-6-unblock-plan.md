@@ -89,6 +89,18 @@ metrics alone.
 
 ### P36-U3: Exact Shared-Profile Manifests
 
+Status: portable CPU R0 non-executable proposal sealed; all activation and
+validation gates remain blocked.
+
+The [portable CPU profile proposal R0](p3-6-portable-cpu-profile-proposal.md)
+binds the authorized inventory, accepted P3.2 CPU behavior reference, exact
+Phase -1 revisions, conservative single-assignment envelope, and generated C1
+`INFER` workload shape. Its package digest is
+`56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`.
+It deliberately leaves resource bounds, workload duration/repetition, evidence
+thresholds, trust-zone expiry, dependency closure, and artifact state
+unresolved. It is not a validated manifest and does not pass `P36-G2`.
+
 Prepare immutable proposals against the Phase -1 profile model:
 
 1. `P36-PROFILE-PORTABLE-CPU-R0` from authorized sanitized inventory;
@@ -119,6 +131,12 @@ Only a later owner statement that accepts that exact digest as
 `D-P3.6-START` can pass `P36-G5` and begin executable work.
 
 ## Next Planning Action
+
+The owner may review the portable planning record through
+`D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE` against package digest
+`56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`.
+Acceptance would not authorize activation, dependencies, model loading,
+inference, hardware testing, implementation, or deployment.
 
 `P36-U2` metadata preparation is complete. The owner may review
 `D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE` against package digest

@@ -45,7 +45,7 @@
       "inventory_record": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r0.json",
       "inventory_sha256": "0E702718390FB6C373F0FC189CB58D0E79BB7FE3B3EA39B5E5AFE0DE4D47CA1F",
       "known_inventory_profile": "LAB-LAPTOP-01 Intel Core i5-8365U, 8 GiB RAM, Intel UHD Graphics 620, no observed discrete NVIDIA accelerator",
-      "state": "sanitized_current_laptop_inventory_complete_portable_manifest_pending",
+      "state": "sanitized_current_laptop_inventory_complete_non_executable_portable_R0_proposal_sealed_owner_review_and_validation_pending",
       "stronger_laptop_profile": "unknown",
       "capacity_target_profile": "unknown",
       "effective_portable_profile_class": "portable_cpu",
@@ -68,6 +68,16 @@
     "status": "sealed_non_authorizing_storage_and_scanner_blocked",
     "total_selected_native_artifact_bytes": 537489237
   },
+  "portable_cpu_profile_proposal": {
+    "package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
+    "package_manifest": "contracts/phase-3/p3-6-portable-cpu-profile-package.json",
+    "profile": "contracts/phase-3/p3-6-portable-cpu-profile-proposal.json",
+    "research_sources": "contracts/phase-3/p3-6-portable-cpu-research-sources.json",
+    "review_document": "docs/phase-3/p3-6-portable-cpu-profile-proposal.md",
+    "owner_review_decision": "D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE",
+    "profile_activation_authorized": false,
+    "status": "sealed_non_executable_owner_review_pending"
+  },
   "next_planning_action": {
     "action": "resolve_exact_eligible_local_quarantine_root_and_scanner_binding_then_regenerate_digest_bound_R1_acquisition_proposal",
     "authority": "D-P3.6-PLAN-AUTH",
@@ -76,7 +86,7 @@
   },
   "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
   "runtime_execution_authorized": false,
-  "status": "planning_only_U2_metadata_complete_acquisition_and_execution_blocked",
+  "status": "planning_only_U2_metadata_and_U3_portable_cpu_R0_proposals_complete_acquisition_activation_validation_and_execution_blocked",
   "work_items": [
     {
       "allowed_now": [
@@ -143,10 +153,18 @@
         "exact_phase_minus_1_profile_revision_runtime_provider_precision_decoder_and_generated_workload_proposals"
       ],
       "available_inputs": [
-        "sanitized_current_laptop_inventory"
+        "sanitized_current_laptop_inventory",
+        "sealed_non_executable_portable_cpu_R0_proposal"
       ],
       "gate_target": "P36-G2",
-      "state": "blocked_inputs_missing",
+      "output_package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
+      "output_records": [
+        "contracts/phase-3/p3-6-portable-cpu-research-sources.json",
+        "contracts/phase-3/p3-6-portable-cpu-profile-proposal.json",
+        "contracts/phase-3/p3-6-portable-cpu-profile-package.json",
+        "docs/phase-3/p3-6-portable-cpu-profile-proposal.md"
+      ],
+      "state": "portable_cpu_R0_proposal_sealed_other_profiles_exact_values_and_validation_evidence_missing",
       "work_item_id": "P36-U3"
     },
     {

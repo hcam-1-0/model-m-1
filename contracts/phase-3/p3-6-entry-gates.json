@@ -65,7 +65,7 @@
     {
       "gate_id": "P36-G2",
       "state": "blocked",
-      "summary": "Sanitized LAB-LAPTOP-01 inventory is complete, but the exact shared portable_cpu runtime/workload manifest, owned_gpu_lab inventory, standalone_server or kubernetes_cluster capacity-target selection, and approved hardware/runtime/precision/workload manifests remain unresolved."
+      "summary": "Sanitized LAB-LAPTOP-01 inventory and a sealed non-executable portable_cpu R0 proposal are complete, but owner review, exact unresolved runtime/workload/resource values, owned_gpu_lab inventory, standalone_server or kubernetes_cluster capacity-target selection, and generated validation evidence remain unresolved."
     },
     {
       "gate_id": "P36-G3",
@@ -96,10 +96,17 @@
     "proposal_acceptance_pending": "D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE",
     "status": "sealed_non_authorizing_storage_and_scanner_blocked"
   },
+  "portable_cpu_profile_proposal": {
+    "digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
+    "manifest": "contracts/phase-3/p3-6-portable-cpu-profile-package.json",
+    "owner_review_pending": "D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE",
+    "profile_activation_authorized": false,
+    "status": "sealed_non_executable_owner_review_pending"
+  },
   "owner_decisions_record": "contracts/phase-3/p3-6-owner-decisions.json",
   "phase_minus_1_alignment": "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
   "planning_authorization": "D-P3.6-PLAN-AUTH",
-  "planning_status": "U2_exact_metadata_proposal_sealed_phase_minus_1_aligned_acquisition_profiles_promotion_and_execution_authority_pending",
+  "planning_status": "U2_exact_metadata_and_U3_portable_cpu_R0_proposals_sealed_phase_minus_1_aligned_all_acquisition_activation_promotion_and_execution_authority_pending",
   "record_id": "P3.6-ENTRY-GATES",
   "runtime_execution_authorized": false,
   "start_intent_record": "contracts/phase-3/p3-6-start-intent.json",

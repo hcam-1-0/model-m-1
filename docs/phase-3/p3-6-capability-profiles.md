@@ -2,13 +2,19 @@
 
 Status: planning baseline accepted through `D-P3.6-001` through
 `D-P3.6-005`. Exact machine manifests, implementation, and execution remain
-unauthorized and pending.
+unauthorized and pending. A sealed non-executable `portable_cpu` R0 proposal
+exists for owner review; it is not resolver-eligible.
 
 Machine-readable policy:
 [`p3-6-capability-profile-policy.json`](../../contracts/phase-3/p3-6-capability-profile-policy.json).
 
 Effective shared-contract mapping:
 [P3.6 to Phase -1 alignment](p3-6-phase-minus-1-alignment.md).
+
+Portable CPU proposal:
+[P3.6 portable CPU profile proposal R0](p3-6-portable-cpu-profile-proposal.md),
+package digest
+`56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`.
 
 ## Purpose
 
@@ -57,7 +63,7 @@ must be interpreted through the Phase -1 mapping above in every new manifest.
 
 | Profile | Intended environment | Candidate path | Claim boundary | Current state |
 | --- | --- | --- | --- | --- |
-| `portable_cpu` | Current laptop and deterministic CI/reference use | ONNX Runtime CPU reference | C1 correctness and small CPU evidence only until measured | Sanitized inventory complete; runtime/workload manifest pending |
+| `portable_cpu` | Current laptop and deterministic CI/reference use | ONNX Runtime CPU reference | C1 correctness and small CPU evidence only until measured | Non-executable R0 proposal sealed; owner review, exact unresolved values, and generated validation pending |
 | `local_accelerated` | Owned or authorized stronger laptop | Exact validated Intel, NVIDIA, or AMD provider | Exact machine and workload only | Exact manifest pending |
 | `capacity_target` | Declared lab/server or later cluster target | Approved accelerated runtime; optional Kubernetes backend | C10/C50 only from signed exact-hardware evidence | Exact manifest pending |
 
@@ -169,7 +175,7 @@ authorization.
 
 | Record | Purpose | State |
 | --- | --- | --- |
-| `P36-PROFILE-PORTABLE-CPU-R0` | Current laptop/CI reference tuple and conservative bounds | Inventory complete; runtime/workload bounds and owner approval pending `P36-G2` |
+| `P36-PROFILE-PORTABLE-CPU-R0` | Current laptop/CI reference tuple and conservative bounds | Sealed proposal under digest `56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`; owner review, exact unresolved values, and generated validation pending `P36-G2` |
 | `P36-PROFILE-LOCAL-ACCELERATED-R0` | Historical name for the first exact `owned_gpu_lab` tuple | Pending machine selection and `P36-G2`; future manifest uses the shared class |
 | `P36-PROFILE-CAPACITY-TARGET-R0` | Historical name for a C10/C50 evidence target resolving to `standalone_server` or `kubernetes_cluster` | Pending target/profile authorization and `P36-G2`; not a deployment profile |
 
@@ -191,10 +197,12 @@ compiled artifacts are prohibited.
 
 ## Next Planning Outputs
 
-The next proposal must resolve `P36-G1` and prepare exact R0 manifests against
-the shared `portable_cpu` and, when authorized inventory exists,
-`owned_gpu_lab` classes. Any capacity evidence proposal must select either
-`standalone_server` or `kubernetes_cluster`. Any external runtime, dependency,
-driver, container, model, or compiled artifact then needs a separate
-digest/source/path-bound research authorization before acquisition or
-execution. `D-P3.6-START` remains a later explicit gate.
+The owner may review the portable planning record through
+`D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE`; acceptance would not activate it.
+Planning must still resolve `P36-G1`, the portable proposal's explicit unknown
+values, and exact manifests for `owned_gpu_lab` when authorized inventory
+exists. Any capacity evidence proposal must select either `standalone_server`
+or `kubernetes_cluster`. Any external runtime, dependency, driver, container,
+model, or compiled artifact then needs a separate digest/source/path-bound
+research authorization before acquisition or execution. `D-P3.6-START`
+remains a later explicit gate.

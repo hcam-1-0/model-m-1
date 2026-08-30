@@ -174,6 +174,17 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-model-artifact-research-package.json`: three-file immutable R0 planning
   manifest whose file SHA-256 is
   `2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE`.
+- `p3-6-portable-cpu-research-sources.json`: official ONNX Runtime threading,
+  provider, graph-optimization, and installation findings plus existing
+  repository evidence, with zero artifacts, runtime executions, or hardware
+  tests.
+- `p3-6-portable-cpu-profile-proposal.json`: exact Phase -1 and sanitized
+  inventory bindings, conservative CPU candidate envelope, generated C1
+  workload proposal, explicit unknowns, and all activation/execution authority
+  false.
+- `p3-6-portable-cpu-profile-package.json`: three-file immutable non-executable
+  R0 planning manifest whose file SHA-256 is
+  `56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`.
 
 Verify all tracked snapshots:
 

@@ -742,6 +742,32 @@ implementation, runtime, hardware test, Kubernetes action, deployment, media,
 data, or remote Git operation. `P36-G1`, `P36-G2`, `P36-G4`, and `P36-G5`
 remain blocked.
 
+### DR-0052: P3.6 Portable CPU Profile Proposal R0
+
+Status: sealed non-executable planning proposal pending owner review under
+`D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE`.
+
+Under `D-P3.6-PLAN-AUTH`, the authorized sanitized `LAB-LAPTOP-01` inventory,
+accepted P3.2 CPU behavior reference, exact Phase -1 shared/deployment
+revisions, and current official ONNX Runtime configuration guidance were
+combined into one conservative `portable_cpu` proposal. The sealed package
+digest is
+`56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`.
+
+The proposal permits one assignment, one worker operation, batch one, one
+in-flight inference request, and a bounded two-item queue only as planning
+values. Thread spinning, memory arenas, CPU/RAM reservations, queue age,
+sampling floor, workload duration/repetitions/seeds, numeric thresholds,
+dependency closure, and artifact state remain unresolved. The profile is not
+resolver-eligible and the historical P3.2 smoke duration is not P3.6
+performance evidence.
+
+Owner acceptance can accept only the planning record. It does not pass
+`P36-G2` or authorize downloads, installation, model loading, inference,
+hardware tests, implementation, Kubernetes, camera/media/data access,
+deployment, or remote Git. `P36-G1`, `P36-G2`, `P36-G4`, and `P36-G5` remain
+blocked.
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;
