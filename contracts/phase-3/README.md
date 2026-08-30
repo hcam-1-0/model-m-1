@@ -206,6 +206,22 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-model-artifact-research-acceptance.json`: exact metadata-only owner
   acceptance for `DET-E1/B1/A1` with acquisition, loading, scanning,
   conversion, execution, comparison, and promotion blocked.
+- `p3-6-inventory-r1-research-sources.json`: official Microsoft, Python, and
+  FFmpeg documentation plus exact pinned H-CAM contract evidence supporting a
+  minimized local-only R1 proposal without running any collection action.
+- `p3-6-inventory-r1-trust-policy.json`: proposed owned-local, network-denied,
+  generated-only trust snapshot; its digest grants no admission or execution
+  authority.
+- `p3-6-inventory-r1-collector-spec.json`: exact one-attempt local CIM and
+  metadata action allowlist, field projection, 10/60-second timeouts, explicit
+  unknowns, redaction, canonical hashing, outputs, and fail-closed behavior.
+- `p3-6-inventory-r1-authorization-proposal.json`: non-effective
+  `D-P3.6-INVENTORY-R1-AUTH` proposal with one-attempt, 24-hour owner gate and
+  continuing prohibitions.
+- `p3-6-inventory-r1-authorization-package.json`: five-file immutable R0
+  authorization manifest whose file SHA-256 is
+  `710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7`;
+  the sealed package is not owner acceptance and authorizes no collection.
 
 Verify all tracked snapshots:
 

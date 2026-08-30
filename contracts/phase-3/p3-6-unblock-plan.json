@@ -68,6 +68,17 @@
     "inventory_recollection_authorized": false,
     "status": "owner_AAAA_policy_selections_accepted_fresh_R1_authority_pending"
   },
+  "inventory_r1_authorization_package": {
+    "collector_spec": "contracts/phase-3/p3-6-inventory-r1-collector-spec.json",
+    "decision_id": "D-P3.6-INVENTORY-R1-AUTH",
+    "package_digest_sha256": "710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7",
+    "package_manifest": "contracts/phase-3/p3-6-inventory-r1-authorization-package.json",
+    "proposal": "contracts/phase-3/p3-6-inventory-r1-authorization-proposal.json",
+    "trust_policy": "contracts/phase-3/p3-6-inventory-r1-trust-policy.json",
+    "trust_policy_sha256": "E76D0C56476A98AADDBC7880AD75858B5B61D45CE95802E3FB39557E226C6106",
+    "status": "sealed_owner_review_pending_non_effective",
+    "inventory_collection_authorized": false
+  },
   "model_artifact_research": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
     "artifact_count": 3,
@@ -91,10 +102,13 @@
     "status": "accepted_non_executable_planning_profile_exact_evidence_pending"
   },
   "next_inventory_planning_action": {
-    "action": "prepare_exact_digest_bound_D_P3_6_INVENTORY_R1_AUTH_package_without_collecting_inventory",
+    "action": "owner_review_exact_digest_bound_D_P3_6_INVENTORY_R1_AUTH_package_without_collecting_inventory",
     "authority": "D-P3.6-PLAN-AUTH",
+    "decision_id": "D-P3.6-INVENTORY-R1-AUTH",
+    "package_digest_sha256": "710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7",
+    "package_manifest": "contracts/phase-3/p3-6-inventory-r1-authorization-package.json",
     "implementation_or_collection_authority": false,
-    "status": "planning_preparation_allowed_owner_AAAA_policy_selected"
+    "status": "package_sealed_owner_acceptance_required_before_any_collection_action"
   },
   "next_planning_action": {
     "action": "resolve_exact_eligible_local_quarantine_root_and_scanner_binding_then_regenerate_digest_bound_R1_acquisition_proposal",
@@ -121,7 +135,7 @@
   ],
   "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
   "runtime_execution_authorized": false,
-  "status": "planning_only_model_metadata_portable_R0_and_inventory_AAAA_policies_accepted_fresh_R1_acquisition_activation_validation_and_execution_blocked",
+  "status": "planning_only_model_metadata_portable_R0_and_inventory_AAAA_policies_accepted_R1_authorization_package_sealed_owner_acceptance_fresh_R1_acquisition_activation_validation_and_execution_blocked",
   "work_items": [
     {
       "allowed_now": [
@@ -190,7 +204,8 @@
       "available_inputs": [
         "sanitized_current_laptop_inventory",
         "sealed_non_executable_portable_cpu_R0_proposal",
-        "sealed_inventory_admission_gap_and_owner_decision_packet"
+        "sealed_inventory_admission_gap_and_owner_decision_packet",
+        "sealed_non_effective_R1_authorization_package_pending_owner_acceptance"
       ],
       "gate_target": "P36-G2",
       "output_package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
@@ -203,9 +218,15 @@
         "contracts/phase-3/p3-6-inventory-admission-gap.json",
         "contracts/phase-3/p3-6-inventory-admission-decision-packet.json",
         "contracts/phase-3/p3-6-inventory-admission-package.json",
-        "docs/phase-3/p3-6-inventory-admission-gap.md"
+        "docs/phase-3/p3-6-inventory-admission-gap.md",
+        "contracts/phase-3/p3-6-inventory-r1-research-sources.json",
+        "contracts/phase-3/p3-6-inventory-r1-trust-policy.json",
+        "contracts/phase-3/p3-6-inventory-r1-collector-spec.json",
+        "contracts/phase-3/p3-6-inventory-r1-authorization-proposal.json",
+        "contracts/phase-3/p3-6-inventory-r1-authorization-package.json",
+        "docs/phase-3/p3-6-inventory-r1-authorization-proposal.md"
       ],
-      "state": "portable_cpu_R0_and_inventory_admission_AAAA_planning_accepted_fresh_shared_R1_other_profiles_exact_values_and_validation_evidence_missing",
+      "state": "portable_cpu_R0_and_inventory_admission_AAAA_planning_accepted_R1_authorization_package_sealed_owner_acceptance_fresh_shared_R1_other_profiles_exact_values_and_validation_evidence_missing",
       "work_item_id": "P36-U3"
     },
     {

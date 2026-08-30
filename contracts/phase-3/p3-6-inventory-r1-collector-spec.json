@@ -1,0 +1,329 @@
+{
+  "contract_format": "hcam.phase3.p3_6.inventory_r1_collector_spec.v1",
+  "spec_id": "P3.6-INVENTORY-R1-COLLECTOR-SPEC-1.0.0",
+  "status": "proposed_owner_authorization_pending_no_collector_implemented",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "future_collection_decision": "D-P3.6-INVENTORY-R1-AUTH",
+  "collector_identity": {
+    "collector_version": "hcam-p36-r1-spec-1.0.0",
+    "implementation_kind": "ephemeral_owner_authorized_session_actions_only",
+    "reusable_collector_code_created": false,
+    "host_user_or_session_identity_encoded": false
+  },
+  "target": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "node_class": "cpu_laptop",
+    "operating_system_family": "windows",
+    "remote_target_allowed": false,
+    "physical_or_network_coordinates_recorded": false
+  },
+  "shared_contract": {
+    "repository": "hcam-2-0/hcam-protos",
+    "revision": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+    "path": "schemas/platform/v1alpha1/node-capability-inventory.schema.json",
+    "schema_version": "hcam.platform.node-capability-inventory/v1alpha1",
+    "sha256": "C9947BE12888C0A05B29DA0266E2359B107024AF07E536AE10BAC55457C5C7D3",
+    "validation_rule": "validate_the_sanitized_projection_against_this_exact_schema_before_writing_R1"
+  },
+  "trust_policy": {
+    "path": "contracts/phase-3/p3-6-inventory-r1-trust-policy.json",
+    "sha256": "E76D0C56476A98AADDBC7880AD75858B5B61D45CE95802E3FB39557E226C6106",
+    "binding_rule": "future_capacity_or_placement_may_reference_only_this_digest_after_explicit_owner_acceptance_and_separate_admission_authority",
+    "policy_digest_grants_execution": false
+  },
+  "transaction_bounds": {
+    "maximum_authorized_attempts": 1,
+    "authorization_use_window_seconds_after_owner_acceptance": 86400,
+    "per_action_timeout_seconds": 10,
+    "total_transaction_timeout_seconds": 60,
+    "maximum_version_process_stdout_bytes": 16384,
+    "maximum_version_process_stderr_bytes": 16384,
+    "parallel_actions": false,
+    "network_access": false,
+    "retry_after_failure": "requires_new_explicit_owner_authorization",
+    "required_output_on_attempt": "sanitized_collection_evidence_even_when_R1_is_not_written"
+  },
+  "action_allowlist": [
+    {
+      "action_id": "R1-A01-UTC-CLOCK-START",
+      "purpose": "bound_the_local_collection_transaction",
+      "exact_action": "read_[DateTimeOffset]::UtcNow_in_process_memory",
+      "persisted_projection": "none"
+    },
+    {
+      "action_id": "R1-A02-WINDOWS-OS-MEMORY",
+      "purpose": "collect_minimized_operating_system_and_memory_facts",
+      "exact_action": "Get-CimInstance -ClassName Win32_OperatingSystem -Property Version,BuildNumber,OSArchitecture,TotalVisibleMemorySize,FreePhysicalMemory -OperationTimeoutSec 10",
+      "required_locality": "omit_ComputerName_and_CimSession",
+      "allowed_source_fields": [
+        "Version",
+        "BuildNumber",
+        "OSArchitecture",
+        "TotalVisibleMemorySize",
+        "FreePhysicalMemory"
+      ],
+      "all_other_source_fields": "not_requested_not_accessed_not_projected_not_persisted_and_any_provider_supplied_key_metadata_is_discarded_with_the_source_object"
+    },
+    {
+      "action_id": "R1-A03-CPU",
+      "purpose": "collect_minimized_processor architecture and capacity facts",
+      "exact_action": "Get-CimInstance -ClassName Win32_Processor -Property Architecture,NumberOfCores,NumberOfLogicalProcessors -OperationTimeoutSec 10",
+      "required_locality": "omit_ComputerName_and_CimSession",
+      "allowed_source_fields": [
+        "Architecture",
+        "NumberOfCores",
+        "NumberOfLogicalProcessors"
+      ],
+      "all_other_source_fields": "not_requested_not_accessed_not_projected_not_persisted_and_any_provider_supplied_key_metadata_is_discarded_with_the_source_object"
+    },
+    {
+      "action_id": "R1-A04-PYTHON-VERSION",
+      "purpose": "read_the_default_python_compatibility_family_if_available",
+      "exact_action": "python -I -S -c \"import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}')\"",
+      "allowed_output": "one_version_family_line_only",
+      "imports_allowed": [
+        "sys"
+      ],
+      "target_runtime_or_model_import_allowed": false
+    },
+    {
+      "action_id": "R1-A05-ONNXRUNTIME-DISTRIBUTION-VERSION",
+      "purpose": "read_installed_distribution_metadata_without_loading_the_runtime",
+      "exact_action": "python -I -S -c \"import sys,sysconfig; paths={sysconfig.get_path('purelib'),sysconfig.get_path('platlib')}; sys.path.extend(sorted(path for path in paths if path)); from importlib.metadata import version; print(version('onnxruntime'))\"",
+      "allowed_output": "one_version_family_line_or_bounded_unavailable_code",
+      "imports_allowed": [
+        "importlib.metadata"
+      ],
+      "target_runtime_or_model_import_allowed": false,
+      "package_files_paths_dependencies_entry_points_or_origin_allowed": false
+    },
+    {
+      "action_id": "R1-A06-FFMPEG-VERSION",
+      "purpose": "read_ffmpeg_version_metadata_without_media_access",
+      "exact_action": "ffmpeg -version",
+      "allowed_output": "parse_only_the_first_line_into_a_version_family_then_discard_all_raw_output",
+      "media_input_output_device_protocol_or_probe_allowed": false,
+      "build_configuration_persisted": false
+    },
+    {
+      "action_id": "R1-A07-OPAQUE-ID",
+      "purpose": "create_a_non_identifying_snapshot_id",
+      "exact_action": "generate_24_lowercase_hex_characters_from_the_operating_system_cryptographic_random_source_and_prefix_inv_",
+      "persisted_projection": "inventory_id_only",
+      "identity_or_hardware_input_allowed": false
+    },
+    {
+      "action_id": "R1-A08-UTC-CLOCK-COMPLETE",
+      "purpose": "set_the_observation_and_expiry_boundary_after_successful_source_reads",
+      "exact_action": "read_[DateTimeOffset]::UtcNow_once_as_observed_at_and_compute_valid_until_as_exactly_observed_at_plus_86400_seconds",
+      "persisted_projection": "observed_at_and_valid_until_in_UTC"
+    },
+    {
+      "action_id": "R1-A09-NORMALIZE-VALIDATE-HASH-WRITE",
+      "purpose": "create_only_sanitized_contract_and_evidence_outputs",
+      "exact_action": "normalize_allowlisted_values_in_memory_validate_against_the_exact_shared_schema_serialize_with_hcam_canonical_json_v1_compute_SHA_256_write_R1_atomically_then_write_sanitized_evidence_atomically",
+      "filesystem_reads_allowed": [
+        "exact_shared_schema_path",
+        "exact_trust_policy_path"
+      ],
+      "filesystem_writes_allowed": [
+        "contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json",
+        "contracts/phase-3/p3-6-inventory-r1-collection-evidence.json"
+      ],
+      "other_reads_or_writes_allowed": false
+    }
+  ],
+  "projection_rules": {
+    "schema_version": "hcam.platform.node-capability-inventory/v1alpha1",
+    "inventory_id": "R1_A07_opaque_identifier",
+    "observed_at": "R1_A08_completion_timestamp",
+    "valid_until": "observed_at_plus_exactly_86400_seconds",
+    "provenance": {
+      "collection_mode": "local_read_only",
+      "trust_level": "observed",
+      "collector_version": "hcam-p36-r1-spec-1.0.0"
+    },
+    "node_class": "cpu_laptop",
+    "operating_system": {
+      "state": "supported_only_when_all_required_OS_fields_normalize_without_conflict_otherwise_abort_without_R1",
+      "family": "windows",
+      "architecture": "normalize_from_OSArchitecture_and_numeric_processor_architecture_with_conflicts_failing_closed",
+      "version_family": "sanitized_Version_plus_build_BuildNumber_with_only_shared_version_family_characters"
+    },
+    "cpu": {
+      "state": "supported_only_when_architecture_core_and_logical_counts_are_complete_and_consistent_otherwise_abort_without_R1",
+      "architecture_mapping": {
+        "0": "x86",
+        "9": "amd64",
+        "12": "arm64",
+        "other_documented_or_unrecognized": "other"
+      },
+      "logical_processors": "sum_NumberOfLogicalProcessors_across_returned_processor_instances",
+      "physical_cores": "sum_NumberOfCores_across_returned_processor_instances",
+      "instruction_sets": [
+        "unknown"
+      ]
+    },
+    "memory": {
+      "state": "supported_only_when_total_and_available_values_are_present_nonnegative_and_available_is_not_greater_than_total_otherwise_abort_without_R1",
+      "total_mib": "floor_TotalVisibleMemorySize_kilobytes_divided_by_1024",
+      "available_mib": "floor_FreePhysicalMemory_kilobytes_divided_by_1024"
+    },
+    "accelerators": {
+      "state": "unknown",
+      "items": []
+    },
+    "runtimes": {
+      "state": "unknown",
+      "items_rule": "include_only_successfully_parsed_python_onnxruntime_and_ffmpeg_version_families_with_each_item_state_unknown_and_no_compatibility_claim",
+      "python_backends": [
+        "unknown"
+      ],
+      "onnxruntime_backends": [
+        "unknown"
+      ],
+      "ffmpeg_backends": [
+        "cpu"
+      ]
+    },
+    "container_support": {
+      "state": "unknown",
+      "engines": [],
+      "compose": "unknown",
+      "gpu_passthrough": "unknown"
+    },
+    "scheduler_capabilities": {
+      "local_queue": "unknown",
+      "kubernetes_placement": "unknown",
+      "resource_accounting": "unknown",
+      "preemption": "unknown",
+      "gang_scheduling": "unknown"
+    },
+    "findings_rule": "emit_only_shared_bounded_codes_for_unreported_instruction_sets_accelerator_capacity_optional_runtime_versions_container_state_scheduler_state_and_seven_redacted_categories",
+    "redaction": {
+      "policy_version": "hcam-sanitized-node-inventory/v1",
+      "omitted_categories": [
+        "hostname",
+        "user_identity",
+        "serial_number",
+        "network_address",
+        "personal_path",
+        "raw_device_identifier",
+        "secret_reference"
+      ]
+    }
+  },
+  "explicit_unknown_policy": {
+    "instruction_sets": "unknown_because_no_CPUID_or_runtime_feature_probe_is_authorized",
+    "accelerators": "unknown_because_no_display_GPU_driver_or_compute_provider_query_is_authorized",
+    "container_support": "unknown_because_no_container_CLI_engine_socket_or_daemon_query_is_authorized",
+    "scheduler_capabilities": "unknown_because_no_scheduler_or_Kubernetes_query_is_authorized",
+    "runtime_compatibility": "unknown_because_version_metadata_is_not_import_execution_provider_or_H_CAM_compatibility_evidence"
+  },
+  "prohibited_sources_and_actions": [
+    "BIOS_SMBIOS_manufacturer_model_asset_tag_UUID_or_serial_query",
+    "drive_volume_storage_capacity_or_drive_letter_query",
+    "display_adapter_name_driver_version_memory_or_device_query",
+    "hostname_domain_user_account_or_registered_owner_query",
+    "MAC_IP_adapter_route_DNS_proxy_or_other_network_query",
+    "PCI_bus_location_PNPDeviceID_ProcessorId_or_raw_device_identifier_query",
+    "environment_variable_or_PATH_enumeration",
+    "installation_or_personal_path_enumeration",
+    "Python_distribution_file_dependency_entry_point_or_origin_enumeration",
+    "onnxruntime_pytorch_openvino_tensorRT_or_model_import_or_load",
+    "nvidia_smi_or_other_accelerator_tool_execution",
+    "Docker_containerd_Kubernetes_or_scheduler_CLI_or_service_contact",
+    "camera_stream_media_device_protocol_or_dataset_access",
+    "performance_stress_capacity_thermal_benchmark_or_inference_execution",
+    "network_install_download_deployment_or_remote_git_action"
+  ],
+  "failure_policy": {
+    "required_OS_CPU_or_memory_failure": "write_only_sanitized_failure_evidence_and_do_not_write_R1",
+    "schema_validation_failure": "write_only_sanitized_failure_evidence_and_do_not_write_R1",
+    "optional_runtime_action_failure": "retain_explicit_unknown_and_bounded_finding_without_failing_the_R1_transaction",
+    "timeout": "terminate_the_specific_local_process_if_applicable_record_bounded_timeout_code_and_apply_required_or_optional_rule",
+    "raw_exception_command_output_or_stack_trace_persisted": false,
+    "automatic_retry": false
+  },
+  "canonical_json_and_hash_rules": {
+    "rule_id": "hcam-canonical-json/v1",
+    "encoding": "UTF-8",
+    "byte_order_mark": false,
+    "object_key_order": "lexicographic_recursively",
+    "array_order": "preserve_contract_defined_order",
+    "whitespace": "compact_separators_without_insignificant_whitespace",
+    "escaping": "ASCII_JSON_escaping",
+    "trailing_newline": false,
+    "digest": "uppercase_SHA_256_of_exact_serialized_bytes",
+    "atomic_write": "write_same_directory_temporary_file_flush_then_replace_exact_target_without_following_symlinks"
+  },
+  "output_contracts": {
+    "R1_inventory": {
+      "path": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json",
+      "created_only_on_success": true,
+      "contains_only_shared_schema_fields": true
+    },
+    "collection_evidence": {
+      "path": "contracts/phase-3/p3-6-inventory-r1-collection-evidence.json",
+      "created_on_every_authorized_attempt": true,
+      "allowed_fields": [
+        "contract_format",
+        "evidence_id",
+        "decision_id",
+        "package_digest_sha256",
+        "collector_spec_sha256",
+        "trust_policy_sha256",
+        "shared_schema_sha256",
+        "attempt_started_at",
+        "attempt_completed_at",
+        "status",
+        "bounded_action_outcomes",
+        "R1_path_or_null",
+        "R1_sha256_or_null",
+        "schema_validation_status",
+        "raw_output_persisted",
+        "continuing_non_authorization"
+      ],
+      "bounded_status_values": [
+        "succeeded_sanitized_R1_written",
+        "failed_required_source_unavailable",
+        "failed_required_value_invalid",
+        "failed_schema_validation",
+        "failed_transaction_timeout",
+        "failed_output_policy"
+      ]
+    }
+  },
+  "retention_and_redaction": {
+    "raw_command_output": "in_memory_only_until_projection_then_discard",
+    "provider_supplied_CIM_key_metadata": "never_access_project_or_persist_and_discard_with_source_object",
+    "raw_exception_or_stack_trace": "never_persist",
+    "temporary_files_containing_raw_values": false,
+    "historical_R0_modified": false,
+    "personal_or_stable_identifiers_persisted": false,
+    "only_two_exact_future_output_paths": true
+  },
+  "invalidation_policy": {
+    "maximum_validity_seconds": 86400,
+    "invalidate_before_expiry_after": [
+      "authorized_hardware_change",
+      "operating_system_change",
+      "driver_change",
+      "runtime_change",
+      "collector_change",
+      "trust_policy_change"
+    ],
+    "automatic_retimestamp_or_extension": false,
+    "expired_or_invalidated_effect": "block_new_resolution_and_placement_only_while_independent_reservations_leases_fencing_health_and_policy_remain_authoritative",
+    "invalidation_monitor_implemented_or_authorized": false
+  },
+  "current_effect": {
+    "collector_implemented": false,
+    "inventory_collection_authorized": false,
+    "R1_exists": false,
+    "profile_resolution_or_activation_authorized": false,
+    "runtime_execution_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  }
+}

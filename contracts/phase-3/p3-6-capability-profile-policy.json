@@ -103,6 +103,17 @@
     "fresh_R1_required_before_admission": true,
     "status": "owner_policy_selections_accepted_fresh_R1_required"
   },
+  "inventory_r1_authorization_package": {
+    "decision_id": "D-P3.6-INVENTORY-R1-AUTH",
+    "package_digest_sha256": "710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7",
+    "package_manifest": "contracts/phase-3/p3-6-inventory-r1-authorization-package.json",
+    "trust_policy_sha256": "E76D0C56476A98AADDBC7880AD75858B5B61D45CE95802E3FB39557E226C6106",
+    "status": "sealed_owner_review_pending_non_effective",
+    "owner_acceptance_pending": true,
+    "inventory_collection_authorized": false,
+    "fresh_R1_exists": false,
+    "resolver_eligible": false
+  },
   "portable_cpu_profile_proposal": {
     "acceptance_record": "contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json",
     "package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",

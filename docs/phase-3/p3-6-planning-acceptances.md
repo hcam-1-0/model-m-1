@@ -38,8 +38,9 @@ The owner selected `A/A/A/A` against package digest
 Historical R0 remains immutable, nonconforming to the shared inventory shape,
 stale under the accepted policy, and ineligible for admission. These selections
 do not authorize a new query or projection. A separate exact
-`D-P3.6-INVENTORY-R1-AUTH` package must be prepared and accepted before R1
-collection.
+`D-P3.6-INVENTORY-R1-AUTH` package has now been prepared under digest
+`710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7`,
+but it must still be explicitly accepted before any R1 collection action.
 
 ## Model Metadata Proposal
 

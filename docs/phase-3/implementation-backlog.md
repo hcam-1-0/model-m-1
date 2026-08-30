@@ -364,6 +364,11 @@ The inventory/admission gap is sealed under package digest
 It proves the historical R0 record is not the shared Phase -1 inventory shape
 and its four recommended `A/A/A/A` owner policy choices are accepted. No R1
 recollection is authorized.
+The exact minimized R1 authorization proposal is now sealed under package
+digest
+`710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7`.
+It remains non-effective: owner acceptance is pending, no collector was
+implemented, no machine action ran, and no R1 exists.
 
 Planning records:
 
@@ -383,6 +388,8 @@ Planning records:
 - [sealed non-executable portable CPU package](../../contracts/phase-3/p3-6-portable-cpu-profile-package.json); and
 - [inventory and admission gap R0](p3-6-inventory-admission-gap.md);
 - [sealed inventory-admission owner package](../../contracts/phase-3/p3-6-inventory-admission-package.json); and
+- [minimized R1 authorization proposal](p3-6-inventory-r1-authorization-proposal.md);
+- [sealed non-effective R1 authorization package](../../contracts/phase-3/p3-6-inventory-r1-authorization-package.json); and
 - [P3.6 planning acceptances R0](p3-6-planning-acceptances.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
@@ -423,8 +430,10 @@ Remaining gated backlog requires exact owner decisions and separate authority:
 - resolve the accepted portable CPU proposal's exact runtime, resource,
   workload, dependency, artifact, evidence, and activation blockers for
   `P36-G2`;
-- prepare and separately authorize a fresh exact shared-schema R1 inventory
-  under the accepted `A/A/A/A` policy; do not overwrite or retimestamp R0;
+- obtain exact owner acceptance of package digest
+  `710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7`
+  before the single proposed fresh shared-schema R1 collection attempt; do not
+  run any action, overwrite R0, infer approval, or retry a failed attempt;
 - prepare and approve the exact shared `owned_gpu_lab` machine, OS, driver,
   runtime, precision, decoder, resource, and generated-workload manifest;
 - select `standalone_server` or `kubernetes_cluster` for any future C10/C50

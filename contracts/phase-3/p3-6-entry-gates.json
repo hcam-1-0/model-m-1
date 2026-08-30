@@ -65,7 +65,7 @@
     {
       "gate_id": "P36-G2",
       "state": "blocked",
-      "summary": "The portable_cpu planning proposal and A/A/A/A inventory-admission policies are owner accepted. Historical R0 remains stale and nonconforming; a separately authorized fresh R1, exact runtime/workload/resource values, other profiles, and generated validation remain unresolved."
+      "summary": "The portable_cpu planning proposal and A/A/A/A inventory-admission policies are owner accepted, and a minimized digest-bound R1 authorization package is sealed for owner review. Historical R0 remains stale and nonconforming; the R1 package is not accepted, no fresh R1 exists, and exact runtime/workload/resource values, other profiles, and generated validation remain unresolved."
     },
     {
       "gate_id": "P36-G3",
@@ -103,6 +103,17 @@
     "inventory_recollection_authorized": false,
     "status": "owner_policy_selections_accepted_fresh_R1_authority_pending"
   },
+  "inventory_r1_authorization_package": {
+    "collector_spec": "contracts/phase-3/p3-6-inventory-r1-collector-spec.json",
+    "decision_id": "D-P3.6-INVENTORY-R1-AUTH",
+    "digest_sha256": "710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7",
+    "inventory_collection_authorized": false,
+    "manifest": "contracts/phase-3/p3-6-inventory-r1-authorization-package.json",
+    "proposal": "contracts/phase-3/p3-6-inventory-r1-authorization-proposal.json",
+    "status": "sealed_non_effective_owner_authorization_pending",
+    "trust_policy": "contracts/phase-3/p3-6-inventory-r1-trust-policy.json",
+    "trust_policy_sha256": "E76D0C56476A98AADDBC7880AD75858B5B61D45CE95802E3FB39557E226C6106"
+  },
   "model_artifact_research_package": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
     "digest_sha256": "2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE",
@@ -121,7 +132,7 @@
   "owner_decisions_record": "contracts/phase-3/p3-6-owner-decisions.json",
   "phase_minus_1_alignment": "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
   "planning_authorization": "D-P3.6-PLAN-AUTH",
-  "planning_status": "U2_model_metadata_U3_portable_R0_and_inventory_admission_AAAA_planning_accepted_fresh_R1_storage_scanner_acquisition_activation_promotion_and_execution_authority_pending",
+  "planning_status": "U2_model_metadata_U3_portable_R0_and_inventory_admission_AAAA_planning_accepted_R1_authorization_package_sealed_owner_acceptance_fresh_R1_storage_scanner_acquisition_activation_promotion_and_execution_authority_pending",
   "record_id": "P3.6-ENTRY-GATES",
   "runtime_execution_authorized": false,
   "start_intent_record": "contracts/phase-3/p3-6-start-intent.json",

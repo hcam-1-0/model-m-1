@@ -1,0 +1,125 @@
+{
+  "contract_format": "hcam.phase3.p3_6.inventory_r1_research_sources.v1",
+  "record_id": "P3.6-INVENTORY-R1-RESEARCH-SOURCES-R0",
+  "status": "complete_for_non_executable_authorization_proposal",
+  "researched_on": "2026-08-30",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "evidence_kind": "read_only_exact_local_contract_revisions_and_official_primary_source_documentation",
+  "remote_git_actions": 0,
+  "inventory_collection_actions": 0,
+  "runtime_or_model_executions": 0,
+  "hardware_queries_or_tests": 0,
+  "network_actions_against_lab_laptop": 0,
+  "exact_local_sources": [
+    {
+      "repository": "hcam-2-0/hcam-protos",
+      "revision": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+      "path": "schemas/platform/v1alpha1/node-capability-inventory.schema.json",
+      "sha256": "C9947BE12888C0A05B29DA0266E2359B107024AF07E536AE10BAC55457C5C7D3",
+      "role": "exact_experimental_R1_wire_shape_and_bounded_enums"
+    },
+    {
+      "repository": "hcam-2-0/hcam-protos",
+      "revision": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+      "path": "docs/node-capability-inventory.md",
+      "sha256": "09B8AD8D7B79C8848D3DB4AA6C087215D9BC7B62985494D23FADDE7361242F96",
+      "role": "freshness_redaction_explicit_unknown_and_non_authorization_semantics"
+    },
+    {
+      "repository": "hcam-2-0/hcam-deployment",
+      "revision": "71095fe89d2b711e4982ddc0130fcaedda8703e7",
+      "path": "profiles/v1alpha1/overlays/portable-cpu.json",
+      "sha256": "63F7B692AA1EA5A4B83C8FA12FBF74DF64962DA145AF585F64369E41A6E0F125",
+      "role": "portable_cpu_profile_requires_hcam_admission_and_retains_non_execution_boundary"
+    },
+    {
+      "repository": "hcam-2-0/h-cam-2.0",
+      "revision": "e4289ef650aff1f4787b9edd3df56bb237b11d5b",
+      "path": "contracts/phase-3/p3-6-inventory-admission-owner-decisions.json",
+      "role": "accepted_A_A_A_A_R1_freshness_trust_and_expiry_policy"
+    },
+    {
+      "repository": "hcam-2-0/h-cam-2.0",
+      "revision": "e4289ef650aff1f4787b9edd3df56bb237b11d5b",
+      "path": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r0.json",
+      "sha256": "0E702718390FB6C373F0FC189CB58D0E79BB7FE3B3EA39B5E5AFE0DE4D47CA1F",
+      "role": "immutable_historical_record_used_only_to_avoid_recollecting_unneeded_fields"
+    }
+  ],
+  "official_external_sources": [
+    {
+      "source_id": "MICROSOFT-POWERSHELL-GET-CIMINSTANCE-5.1",
+      "publisher": "Microsoft",
+      "title": "Get-CimInstance",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/cimcmdlets/get-ciminstance?view=powershell-5.1",
+      "verified_facts": [
+        "Get-CimInstance returns snapshots of CIM class instances.",
+        "Omitting both ComputerName and CimSession keeps the operation on local Windows WMI through a local COM session.",
+        "The Property parameter can restrict the returned object to an explicit field subset."
+      ],
+      "proposal_effect": "use_only_local_class_queries_with_explicit_property_allowlists_and_no_session_or_computer_target"
+    },
+    {
+      "source_id": "MICROSOFT-WIN32-OPERATING-SYSTEM",
+      "publisher": "Microsoft",
+      "title": "Win32_OperatingSystem class",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-operatingsystem",
+      "verified_facts": [
+        "Version BuildNumber and OSArchitecture expose bounded operating-system compatibility facts.",
+        "TotalVisibleMemorySize and FreePhysicalMemory are read-only uint64 values reported in kilobytes.",
+        "The same class contains identity and path fields that the proposed query must not request."
+      ],
+      "proposal_effect": "request_only_Version_BuildNumber_OSArchitecture_TotalVisibleMemorySize_and_FreePhysicalMemory"
+    },
+    {
+      "source_id": "MICROSOFT-WIN32-PROCESSOR",
+      "publisher": "Microsoft",
+      "title": "Win32_Processor class",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-processor",
+      "verified_facts": [
+        "Architecture NumberOfCores and NumberOfLogicalProcessors are read-only processor properties.",
+        "Architecture values include x86 as 0 x64 as 9 and ARM64 as 12.",
+        "The class also exposes stable device and identity fields that the proposed query must not request."
+      ],
+      "proposal_effect": "request_only_Architecture_NumberOfCores_and_NumberOfLogicalProcessors_then_aggregate_without_identifiers"
+    },
+    {
+      "source_id": "PYTHON-IMPORTLIB-METADATA",
+      "publisher": "Python Software Foundation",
+      "title": "importlib.metadata - Accessing package metadata",
+      "url": "https://docs.python.org/3/library/importlib.metadata.html",
+      "verified_facts": [
+        "importlib.metadata.version returns the installed distribution package version string.",
+        "PackageNotFoundError indicates that the named distribution package is not available in the current Python environment.",
+        "The proposal does not use files origin entry points or package paths."
+      ],
+      "proposal_effect": "query_only_the_onnxruntime_distribution_version_without_importing_onnxruntime_or_enumerating_files_paths_or_dependencies"
+    },
+    {
+      "source_id": "FFMPEG-CLI-DOCUMENTATION",
+      "publisher": "FFmpeg project",
+      "title": "ffmpeg Documentation",
+      "url": "https://ffmpeg.org/ffmpeg.html",
+      "verified_facts": [
+        "The ffmpeg -version option shows version information.",
+        "No input output device or media argument is required for the version action."
+      ],
+      "proposal_effect": "allow_only_ffmpeg_version_metadata_without_media_device_protocol_or_build_configuration_enumeration"
+    }
+  ],
+  "research_conclusions": [
+    "the_R1_action_set_can_use_local_CIM_without_remote_targeting_and_can_limit_properties_to_an_explicit_allowlist",
+    "OS_CPU_and_memory_fields_needed_by_the_shared_contract_can_be_projected_without_names_serials_paths_network_addresses_or_raw_device_identifiers",
+    "instruction_sets_accelerators_container_engine_health_and_scheduler_features_must_remain_explicit_unknowns_under_this_minimized_collection",
+    "installed_ONNX_Runtime_metadata_can_be_read_without_importing_or_loading_the_runtime_package",
+    "ffmpeg_version_metadata_can_be_requested_without_opening_media_or_devices",
+    "no_source_claims_that_capability_inventory_authorizes_profile_activation_model_execution_or_deployment"
+  ],
+  "limitations": [
+    "no_collector_implementation_was_created",
+    "no_command_from_the_proposed_action_set_was_run",
+    "no_current_laptop_fact_was_observed_or_revalidated",
+    "no_R1_inventory_or_collection_evidence_exists",
+    "no_profile_resolution_activation_or_runtime_execution_is_authorized"
+  ]
+}

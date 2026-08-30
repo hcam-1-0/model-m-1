@@ -823,6 +823,39 @@ authorize no inventory query, acquisition, inference, hardware test,
 implementation, Kubernetes action, media/data access, deployment, or remote
 Git action.
 
+### DR-0055: P3.6 Minimized Inventory R1 Authorization Package R0
+
+Status: exact non-effective owner-authorization package sealed on 2026-08-30;
+`D-P3.6-INVENTORY-R1-AUTH` owner acceptance pending.
+
+Package digest
+`710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7`
+binds a five-file research, trust-policy, collector-specification,
+authorization-proposal, and owner-review package. It proposes one local-only
+attempt on logical node `LAB-LAPTOP-01` within 24 hours of exact owner
+acceptance, with 10-second action bounds and a 60-second transaction bound.
+
+The proposed action set requests only minimized local Windows OS, CPU, and
+memory CIM fields plus metadata-only default Python, installed `onnxruntime`
+distribution, and FFmpeg version families. It forbids remote CIM, network,
+storage, display/GPU, device identifiers, environment/path enumeration,
+container/Kubernetes/scheduler contact, model/runtime imports, inference,
+media, benchmark, and hardware tests. Unobserved instruction-set,
+accelerator, container, scheduler, and runtime-compatibility facts remain
+explicit `unknown` values.
+
+The bound trust snapshot digest is
+`E76D0C56476A98AADDBC7880AD75858B5B61D45CE95802E3FB39557E226C6106`.
+It describes an owned-local, network-denied, generated-only context and grants
+no admission or execution authority. A failed collection attempt would require
+new authorization. Historical R0 remains unchanged.
+
+The package itself authorizes nothing. No collector was implemented, no
+machine query ran, and no R1 or collection evidence exists. `P36-G2` remains
+blocked pending the exact owner statement and successful separately authorized
+collection. All profile, runtime/model, hardware, accelerator, container,
+Kubernetes, camera/media/data, deployment, and remote Git prohibitions remain.
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

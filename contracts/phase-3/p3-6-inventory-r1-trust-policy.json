@@ -1,0 +1,96 @@
+{
+  "contract_format": "hcam.phase3.p3_6.inventory_r1_trust_policy.v1",
+  "policy_id": "hcam-owned-local-generated-only-r0",
+  "status": "proposed_owner_acceptance_pending_non_effective",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "owner_acceptance_decision": "D-P3.6-INVENTORY-R1-AUTH",
+  "logical_scope": {
+    "environment_class": "owned_local_lab",
+    "logical_node_ids": [
+      "LAB-LAPTOP-01"
+    ],
+    "profile_classes": [
+      "portable_cpu"
+    ],
+    "physical_or_network_coordinates_present": false
+  },
+  "data_boundary": {
+    "allowed": [
+      "generated_configuration",
+      "generated_events",
+      "generated_media_only_after_separate_authorization",
+      "synthetic_fixtures_only_after_separate_authorization"
+    ],
+    "prohibited": [
+      "camera_or_stream_access",
+      "external_environment_data",
+      "government_data",
+      "personal_or_private_data",
+      "production_data",
+      "sentinel_media_or_video"
+    ],
+    "current_inventory_collection_uses_media_or_domain_data": false
+  },
+  "network_boundary": {
+    "network_access": "denied",
+    "remote_CIM_or_WMI": "denied",
+    "remote_service_or_API": "denied",
+    "proxy_or_redirect_use": "denied",
+    "localhost_network_service_contact": "denied"
+  },
+  "execution_boundary": {
+    "allowed_if_exact_R1_authorization_is_later_accepted": [
+      "one_bounded_local_read_only_inventory_collection_transaction",
+      "local_in_memory_normalization_and_schema_validation",
+      "write_two_exact_sanitized_inventory_evidence_paths"
+    ],
+    "always_requires_separate_future_authorization": [
+      "artifact_acquisition_or_scanning",
+      "camera_media_or_data_access",
+      "container_or_kubernetes_action",
+      "deployment",
+      "hardware_performance_stress_capacity_or_thermal_test",
+      "model_loading_conversion_compilation_or_inference",
+      "profile_resolution_activation_or_placement",
+      "remote_git_action",
+      "software_dependency_driver_model_or_container_installation"
+    ]
+  },
+  "admission_boundary": {
+    "trust_zone_binding_mode": "sha256_of_this_exact_policy_snapshot",
+    "inventory_provenance_required": {
+      "collection_mode": "local_read_only",
+      "trust_level": "observed"
+    },
+    "fresh_shared_R1_required": true,
+    "inventory_validity_window_seconds": 86400,
+    "policy_digest_is_capability_or_execution_authority": false,
+    "profile_resolver_eligible_now": false,
+    "placement_eligible_now": false
+  },
+  "audit_boundary": {
+    "bounded_reason_codes_only": true,
+    "raw_command_output_persisted": false,
+    "host_user_serial_network_path_device_or_secret_identifiers_persisted": false,
+    "trust_zone_digest_may_be_used_only_after_owner_acceptance": true
+  },
+  "owner_acceptance_effect": "accept_this_policy_snapshot_as_the_owned_local_generated_only_trust_context_for_the_single_R1_collection_and_as_a_possible_future_digest_input_only",
+  "owner_acceptance_does_not_authorize": [
+    "admission",
+    "artifact_or_model_action",
+    "camera_media_or_data_access",
+    "container_or_kubernetes_action",
+    "deployment",
+    "implementation",
+    "model_or_runtime_execution",
+    "profile_activation_or_placement",
+    "remote_git"
+  ],
+  "effective": false,
+  "implementation_authorized": false,
+  "inventory_collection_authorized": false,
+  "profile_activation_authorized": false,
+  "runtime_execution_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

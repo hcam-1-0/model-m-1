@@ -52,8 +52,9 @@ validation/activation gates remain pending.
 An exact inventory/admission gap package now records that historical laptop R0
 is not the shared Phase -1 inventory shape. The recommended `A/A/A/A` policy
 choices are owner accepted, while a separately authorized fresh R1 remains
-necessary; `P36-G2` is unchanged. The model metadata planning package is also
-owner accepted without acquisition authority.
+necessary. A minimized digest-bound R1 authorization package is sealed for
+owner review but remains non-effective; `P36-G2` is unchanged. The model
+metadata planning package is also owner accepted without acquisition authority.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -152,6 +153,7 @@ autonomous enforcement.
 | [P3.6 portable CPU profile proposal R0](p3-6-portable-cpu-profile-proposal.md) | Sealed current-laptop planning tuple, conservative bounds, explicit unknowns, and non-executable owner-review gate |
 | [P3.6 inventory and admission gap R0](p3-6-inventory-admission-gap.md) | Exact R0-to-shared-schema field gaps, freshness/trust options, fail-closed expiry choices, and separate R1 authorization gate |
 | [P3.6 planning acceptances R0](p3-6-planning-acceptances.md) | Portable proposal acceptance, inventory `A/A/A/A` selections, model metadata acceptance, unchanged hard gates, and continuing prohibitions |
+| [P3.6 minimized R1 authorization proposal R0](p3-6-inventory-r1-authorization-proposal.md) | Exact local-only action and field allowlists, generated-only trust snapshot, 24-hour validity, redaction, failure rules, and pending digest-bound owner gate |
 
 ## Non-Negotiable Boundary
 

@@ -30,6 +30,13 @@ sealed under digest
 The owner accepted the recommended `A/A/A/A` policy choices. No fresh R1
 collection has occurred or been authorized.
 
+A minimized [R1 authorization proposal](p3-6-inventory-r1-authorization-proposal.md)
+is now sealed for owner review under package digest
+`710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7`.
+It permits no current action. It proposes one local-only attempt with exact
+field, timeout, redaction, schema, trust-policy, output, and failure bounds.
+No collector was implemented and `D-P3.6-INVENTORY-R1-AUTH` remains pending.
+
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).
 
