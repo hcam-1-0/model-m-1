@@ -92,6 +92,18 @@
     "inventory_collection_authorized": false,
     "profile_resolver_eligible": false
   },
+  "portable_r1_admission_gap_package": {
+    "gap_record": "contracts/phase-3/p3-6-portable-r1-admission-gap.json",
+    "decision_packet": "contracts/phase-3/p3-6-portable-r1-decision-packet.json",
+    "package_manifest": "contracts/phase-3/p3-6-portable-r1-admission-package.json",
+    "package_digest_sha256": "471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F",
+    "gap_count": 22,
+    "recommended_selection": "A/A/A/A",
+    "owner_selections_pending": true,
+    "profile_resolver_eligible": false,
+    "profile_activation_authorized": false,
+    "status": "sealed_non_effective_owner_selections_pending"
+  },
   "model_artifact_research": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
     "artifact_count": 3,
@@ -115,13 +127,19 @@
     "status": "accepted_non_executable_planning_profile_exact_evidence_pending"
   },
   "next_inventory_planning_action": {
-    "action": "evaluate_remaining_P36_G2_runtime_resource_workload_profile_and_generated_validation_inputs_against_R1_without_activating_a_profile",
+    "action": "owner_review_D_P3_6_U3B_001_through_004_against_exact_portable_R1_admission_package",
     "authority": "D-P3.6-PLAN-AUTH",
-    "decision_id": "D-P3.6-INVENTORY-R1-AUTH",
-    "package_digest_sha256": "710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7",
-    "package_manifest": "contracts/phase-3/p3-6-inventory-r1-authorization-package.json",
+    "decision_ids": [
+      "D-P3.6-U3B-001",
+      "D-P3.6-U3B-002",
+      "D-P3.6-U3B-003",
+      "D-P3.6-U3B-004"
+    ],
+    "recommended_selection": "A/A/A/A",
+    "package_digest_sha256": "471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F",
+    "package_manifest": "contracts/phase-3/p3-6-portable-r1-admission-package.json",
     "implementation_or_collection_authority": false,
-    "status": "owner_authorized_attempt_succeeded_and_is_consumed_R1_does_not_activate_or_admit_profile"
+    "status": "sealed_non_effective_owner_selections_pending_no_profile_or_collection_authority"
   },
   "next_planning_action": {
     "action": "resolve_exact_eligible_local_quarantine_root_and_scanner_binding_then_regenerate_digest_bound_R1_acquisition_proposal",
@@ -148,7 +166,7 @@
   ],
   "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
   "runtime_execution_authorized": false,
-  "status": "planning_only_model_metadata_portable_R0_and_inventory_AAAA_policies_accepted_R1_authorized_collected_validated_and_consumed_acquisition_activation_validation_and_execution_blocked",
+  "status": "planning_only_model_metadata_portable_R0_and_inventory_AAAA_policies_accepted_R1_authorized_collected_validated_and_consumed_portable_R1_gap_package_sealed_owner_U3B_selections_acquisition_activation_validation_and_execution_blocked",
   "work_items": [
     {
       "allowed_now": [
@@ -241,10 +259,14 @@
         "contracts/phase-3/p3-6-inventory-r1-authorization.json",
         "contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json",
         "contracts/phase-3/p3-6-inventory-r1-collection-evidence.json",
+        "contracts/phase-3/p3-6-portable-r1-admission-gap.json",
+        "contracts/phase-3/p3-6-portable-r1-decision-packet.json",
+        "contracts/phase-3/p3-6-portable-r1-admission-package.json",
         "docs/phase-3/p3-6-inventory-r1-authorization-proposal.md",
-        "docs/phase-3/p3-6-inventory-r1-collection.md"
+        "docs/phase-3/p3-6-inventory-r1-collection.md",
+        "docs/phase-3/p3-6-portable-r1-admission-gap.md"
       ],
-      "state": "portable_cpu_R0_and_inventory_admission_AAAA_planning_accepted_R1_authorized_collected_validated_and_consumed_other_profiles_exact_values_and_generated_validation_evidence_missing",
+      "state": "portable_cpu_R0_and_inventory_admission_AAAA_planning_accepted_R1_authorized_collected_validated_and_consumed_portable_R1_gap_package_sealed_owner_U3B_selections_other_profiles_exact_values_and_generated_validation_evidence_pending",
       "work_item_id": "P36-U3"
     },
     {

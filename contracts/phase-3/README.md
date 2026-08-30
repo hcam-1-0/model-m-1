@@ -232,6 +232,16 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   immutable input bindings, exact schema-validation status, and R1 hash for the
   consumed attempt; its SHA-256 is
   `3658758FCC7342B7865C7C0FD340FD408B38562BB1D365B757A74C8B6347FA72`.
+- `p3-6-portable-r1-admission-gap.json`: exact static reconciliation of R1 and
+  the accepted portable CPU R0 proposal against the Phase -1 resolver,
+  compatibility, placement, evidence, and deployment contracts; it records 22
+  remaining gaps without execution or implementation.
+- `p3-6-portable-r1-decision-packet.json`: four independent A-D choices for
+  refresh timing, strict resolver admission, compatibility-bundle depth, and
+  generated C1 validation shape, with `A/A/A/A` recommended and unselected.
+- `p3-6-portable-r1-admission-package.json`: immutable three-file non-effective
+  owner-review manifest whose SHA-256 is
+  `471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F`.
 
 Verify all tracked snapshots:
 

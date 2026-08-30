@@ -40,6 +40,15 @@ bounds. The attempt is consumed, no reusable collector was implemented, and the
 sanitized R1 remains non-executable and resolver-ineligible. See the
 [authorized R1 collection record](p3-6-inventory-r1-collection.md).
 
+The follow-on [portable CPU R1 admission gap](p3-6-portable-r1-admission-gap.md)
+is sealed under package digest
+`471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F`.
+It identifies 22 remaining gaps and shows that R1 represents only the capability
+inventory among the resolver's seven required input kinds. Four independent
+owner policy decisions remain pending with `A/A/A/A` recommended. The package
+does not authorize another inventory attempt, profile admission, execution, or
+implementation, and `P36-G2` remains blocked.
+
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).
 

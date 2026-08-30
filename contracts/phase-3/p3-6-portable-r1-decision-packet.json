@@ -1,0 +1,163 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_r1_decision_packet.v1",
+  "packet_id": "P36-PORTABLE-R1-OWNER-DECISIONS-R0",
+  "status": "owner_selections_pending_non_executable",
+  "prepared_on": "2026-08-30",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "gap_record": "contracts/phase-3/p3-6-portable-r1-admission-gap.json",
+  "recommended_selection": "A/A/A/A",
+  "decisions": [
+    {
+      "decision_id": "D-P3.6-U3B-001",
+      "topic": "inventory_refresh_timing_and_expiry",
+      "question": "When should a future fresh inventory be proposed for portable CPU admission work?",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Just-in-time digest-bound refresh",
+          "effect": "Preserve R1 as immutable evidence after expiry and prepare a new one-attempt refresh package only after compatibility, workload, policy, and candidate records are sealed, so inventory can be fresh at admission review.",
+          "tradeoff": "Best freshness and least unnecessary machine access; later progress waits for another explicit owner authorization."
+        },
+        {
+          "option": "B",
+          "label": "Refresh at each planning milestone",
+          "effect": "Request a separate one-time inventory authorization after each major planning package.",
+          "tradeoff": "More current snapshots but repeated owner actions and rapidly stale evidence before admission is otherwise ready."
+        },
+        {
+          "option": "C",
+          "label": "Reusable periodic collector",
+          "effect": "Design a product collector and schedule recurring refreshes.",
+          "tradeoff": "Operationally convenient but materially expands implementation, security, privacy, and machine-access scope; not authorized now."
+        },
+        {
+          "option": "D",
+          "label": "Waive or extend expiry",
+          "effect": "Treat R1 as admission-fresh beyond the accepted 24-hour validity window.",
+          "tradeoff": "Conflicts with the accepted fail-closed A/A/A/A policy and is not recommended."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3B-002",
+      "topic": "portable_profile_resolver_admission_policy",
+      "question": "What evidence must exist before portable_cpu can enter the resolver candidate set?",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Strict seven-input fail-closed admission",
+          "effect": "Require fresh inventory, authorization, policy, compatibility, workload, pipeline, and capacity inputs plus generated validation before candidate eligibility; an unknown or stale input rejects the candidate.",
+          "tradeoff": "Strongest deterministic and auditable behavior; requires completing every evidence record."
+        },
+        {
+          "option": "B",
+          "label": "Inventory-only provisional eligibility",
+          "effect": "Allow portable_cpu into the candidate set from inventory and planning policy alone while other inputs remain pending.",
+          "tradeoff": "Speeds UI and resolver demonstrations but weakens the shared fail-closed contract and risks accidental execution paths."
+        },
+        {
+          "option": "C",
+          "label": "Manual operator activation",
+          "effect": "Permit an operator override to activate portable_cpu despite missing compatibility or capacity evidence.",
+          "tradeoff": "Bypasses hard gates that operator controls are explicitly prohibited from waiving."
+        },
+        {
+          "option": "D",
+          "label": "Defer portable CPU profile",
+          "effect": "Keep the profile entirely outside future resolver planning until accelerated or server profiles are available.",
+          "tradeoff": "Reduces near-term work but removes the laptop and CI reference path."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3B-003",
+      "topic": "portable_compatibility_bundle_depth",
+      "question": "What must the portable CPU compatibility bundle contain before validation?",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Complete immutable compatibility bundle",
+          "effect": "Bind exact model, runtime, provider, precision, artifacts, provenance, SBOM, signature, vulnerability report, pipeline digests, license, security expiry, fallback, rollback, profile target, and policy references.",
+          "tradeoff": "Largest planning package but supports deterministic replay, supply-chain review, promotion, rollback, and future server portability."
+        },
+        {
+          "option": "B",
+          "label": "Model and runtime bundle only",
+          "effect": "Bind model, runtime, provider, precision, and dependency hashes without complete pipeline, security, fallback, or rollback records.",
+          "tradeoff": "Smaller package but remains ineligible under the shared compatibility schema and cannot support safe promotion."
+        },
+        {
+          "option": "C",
+          "label": "Mutable local environment reference",
+          "effect": "Use the current lockfile and local environment state instead of a content-addressed compatibility snapshot.",
+          "tradeoff": "Easy locally but non-reproducible across collaborator laptops and future Government servers."
+        },
+        {
+          "option": "D",
+          "label": "No compatibility bundle",
+          "effect": "Rely on runtime auto-detection and fallback.",
+          "tradeoff": "Contradicts the accepted immutable-bundle and no-silent-fallback decisions."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3B-004",
+      "topic": "portable_generated_C1_validation_shape",
+      "question": "What non-executable validation design should be sealed before any later generated-only runtime authorization?",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Deterministic CONTRACT plus INFER matrix",
+          "effect": "Predeclare generated-only CONTRACT and C1 INFER layers, fixed seeds, cold start, warm steady state, bounded burst, dependency loss, safe shutdown, warmup and measured iterations, repetitions, resource ceilings, recovery checks, and balanced/throughput/latency reports with balanced as default.",
+          "tradeoff": "Most complete laptop-safe design and directly reusable for stronger hardware profiles; exact numeric values still require a later sealed proposal before execution."
+        },
+        {
+          "option": "B",
+          "label": "Minimal deterministic smoke",
+          "effect": "Validate one generated tensor, one inference, output contract, and shutdown only.",
+          "tradeoff": "Fast but cannot establish batching, queue, resource, recovery, or objective-mode evidence."
+        },
+        {
+          "option": "C",
+          "label": "Throughput stress first",
+          "effect": "Prioritize sustained maximum-load execution and optimize throughput before parity and recovery evidence.",
+          "tradeoff": "Resource aggressive, not authorized, unsuitable for the current laptop, and weak as a correctness baseline."
+        },
+        {
+          "option": "D",
+          "label": "Defer generated validation",
+          "effect": "Keep the portable proposal planning-only with no validation design.",
+          "tradeoff": "Avoids near-term work but leaves P36-G2 unchanged and prevents a defensible execution proposal."
+        }
+      ]
+    }
+  ],
+  "effect_if_recommended_AAAA_is_later_accepted": {
+    "inventory_policy": "just_in_time_digest_bound_one_attempt_refresh_after_other_admission_inputs_are_sealed",
+    "resolver_policy": "strict_seven_input_fail_closed_candidate_admission",
+    "compatibility_policy": "complete_immutable_content_addressed_bundle",
+    "validation_policy": "deterministic_generated_only_CONTRACT_and_C1_INFER_matrix_balanced_default",
+    "immediate_profile_eligibility": false,
+    "immediate_collection_authority": false,
+    "immediate_runtime_or_implementation_authority": false
+  },
+  "owner_acceptance_may_be_inferred_from_continue_or_other_decision": false,
+  "inventory_collection_authorized": false,
+  "artifact_or_dependency_acquisition_authorized": false,
+  "profile_resolution_or_activation_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "container_or_kubernetes_action_authorized": false,
+  "camera_media_or_data_access_authorized": false,
+  "implementation_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

@@ -372,6 +372,12 @@ local read-only attempt succeeded, is consumed, and produced a sanitized,
 shared-schema-valid R1. No reusable collector was implemented. The R1 is a
 factual input only; it does not make a profile resolver-eligible or change the
 blocked state of `P36-G2`.
+The exact R1-to-portable admission gap is now sealed under package digest
+`471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F`.
+It records 22 remaining gaps, proves that only one of seven resolver input kinds
+is currently represented by R1, and presents four independent pending owner
+choices with an `A/A/A/A` recommendation. The package is non-effective and
+does not change any collection, profile, execution, or implementation gate.
 
 Planning records:
 
@@ -397,6 +403,8 @@ Planning records:
 - [consumed owner authorization](../../contracts/phase-3/p3-6-inventory-r1-authorization.json);
 - [sanitized shared-schema R1](../../contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json);
 - [bounded R1 collection evidence](../../contracts/phase-3/p3-6-inventory-r1-collection-evidence.json); and
+- [portable CPU R1 admission gap](p3-6-portable-r1-admission-gap.md);
+- [sealed non-effective portable R1 admission package](../../contracts/phase-3/p3-6-portable-r1-admission-package.json); and
 - [P3.6 planning acceptances R0](p3-6-planning-acceptances.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
@@ -431,6 +439,8 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner decisions and separate authority:
 
+- select `D-P3.6-U3B-001` through `D-P3.6-U3B-004` against package digest
+  `471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F`;
 - bind an eligible exact local quarantine root and exact scanner invocation,
   then regenerate a digest-bound R1 acquisition proposal;
 - resolve exact model-family artifacts/data and complete `P36-G1`;

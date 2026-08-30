@@ -54,7 +54,9 @@ is not the shared Phase -1 inventory shape. The recommended `A/A/A/A` policy
 choices are owner accepted. The minimized digest-bound R1 package was then
 accepted under `D-P3.6-INVENTORY-R1-AUTH`; its single authorized local
 read-only attempt produced a sanitized shared-schema-valid R1 and is consumed.
-The R1 remains a factual input only, so `P36-G2` is unchanged. The model
+The R1 remains a factual input only. An exact R1-to-portable admission package
+now records 22 remaining gaps and four pending `D-P3.6-U3B-001` through `004`
+owner choices; `P36-G2` is unchanged. The model
 metadata planning package is also owner accepted without acquisition authority.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
@@ -156,6 +158,7 @@ autonomous enforcement.
 | [P3.6 planning acceptances R0](p3-6-planning-acceptances.md) | Portable proposal acceptance, inventory `A/A/A/A` selections, model metadata acceptance, unchanged hard gates, and continuing prohibitions |
 | [P3.6 minimized R1 authorization proposal R0](p3-6-inventory-r1-authorization-proposal.md) | Exact local-only action and field allowlists, generated-only trust snapshot, 24-hour validity, redaction, failure rules, and pending digest-bound owner gate |
 | [P3.6 authorized R1 collection](p3-6-inventory-r1-collection.md) | Accepted digest, consumed one-time attempt, sanitized R1 and evidence hashes, freshness, unchanged gates, and continuing prohibitions |
+| [P3.6 portable CPU R1 admission gap R0](p3-6-portable-r1-admission-gap.md) | Seven-input resolver reconciliation, 22 exact remaining gaps, four pending owner choices, and fail-closed `A/A/A/A` recommendation |
 
 ## Non-Negotiable Boundary
 

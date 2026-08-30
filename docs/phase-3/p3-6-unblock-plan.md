@@ -119,6 +119,14 @@ Its one attempt produced the sanitized
 [bounded evidence](../../contracts/phase-3/p3-6-inventory-r1-collection-evidence.json).
 That attempt is consumed and grants no profile admission or further collection.
 
+The follow-on [portable CPU R1 admission gap](p3-6-portable-r1-admission-gap.md)
+is sealed under package digest
+`471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F`.
+It identifies 22 remaining gaps and presents pending decisions
+`D-P3.6-U3B-001` through `D-P3.6-U3B-004`, with `A/A/A/A` recommended. The
+package is non-effective and leaves all profile, execution, and implementation
+gates closed.
+
 Prepare immutable proposals against the Phase -1 profile model:
 
 1. `P36-PROFILE-PORTABLE-CPU-R0` from authorized sanitized inventory;
@@ -152,11 +160,13 @@ Only a later owner statement that accepts that exact digest as
 
 The portable planning proposal, inventory `A/A/A/A` policies, model metadata
 proposal, and completed one-time R1 outcome are linked from the
-[P3.6 planning acceptance record](p3-6-planning-acceptances.md). Planning may
-now evaluate the remaining exact runtime, resource, workload, compatibility,
-additional-profile, and generated-validation gaps against R1. It must not
-activate or admit a profile, implement a reusable collector, or perform another
-collection without new explicit authority.
+[P3.6 planning acceptance record](p3-6-planning-acceptances.md). The next owner
+action is to select `D-P3.6-U3B-001` through `D-P3.6-U3B-004` against exact
+package digest
+`471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F`.
+No selection may be inferred from `continue`. Planning must not activate or
+admit a profile, implement a reusable collector, or perform another collection
+without new explicit authority.
 
 Before `D-P3.6-MODEL-RESEARCH-R1-AUTH` can be prepared, an exact local,
 non-cloud, non-network quarantine root must pass a fresh threshold of at least

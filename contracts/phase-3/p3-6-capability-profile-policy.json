@@ -122,6 +122,18 @@
     "collection_evidence_sha256": "3658758FCC7342B7865C7C0FD340FD408B38562BB1D365B757A74C8B6347FA72",
     "resolver_eligible": false
   },
+  "portable_r1_admission_gap_package": {
+    "gap_record": "contracts/phase-3/p3-6-portable-r1-admission-gap.json",
+    "decision_packet": "contracts/phase-3/p3-6-portable-r1-decision-packet.json",
+    "package_manifest": "contracts/phase-3/p3-6-portable-r1-admission-package.json",
+    "package_digest_sha256": "471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F",
+    "gap_count": 22,
+    "recommended_selection": "A/A/A/A",
+    "owner_selections_pending": true,
+    "status": "sealed_non_effective_owner_selections_pending",
+    "resolver_eligible": false,
+    "profile_activation_authorized": false
+  },
   "portable_cpu_profile_proposal": {
     "acceptance_record": "contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json",
     "package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",

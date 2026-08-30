@@ -881,6 +881,37 @@ new explicit authorization; no retry or continuing collection authority exists.
 See [the authorized collection record](p3-6-inventory-r1-collection.md) for the
 complete bindings, outputs, gate effect, and continuing prohibitions.
 
+### DR-0057: P3.6 Portable CPU R1 Admission Gap R0
+
+Status: exact non-effective owner-decision package sealed on 2026-08-30;
+`D-P3.6-U3B-001` through `D-P3.6-U3B-004` remain pending.
+
+Package digest
+`471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F`
+binds the R1-to-portable admission gap, four-choice owner packet, and human
+review document. It reconciles the sanitized R1 and accepted portable CPU R0
+proposal with exact Phase -1 inventory, compatibility, resolver, placement,
+adaptive-evidence, and deployment-profile contracts.
+
+R1 satisfies only the capability-inventory input. The exact authorization,
+policy, compatibility, workload, pipeline, and capacity inputs remain missing
+or planning-only. The package records 22 gaps and recommends:
+
+- `D-P3.6-U3B-001 A`: just-in-time digest-bound inventory refresh after the
+  other admission inputs are sealed;
+- `D-P3.6-U3B-002 A`: strict seven-input fail-closed resolver admission;
+- `D-P3.6-U3B-003 A`: a complete immutable compatibility bundle; and
+- `D-P3.6-U3B-004 A`: a deterministic generated-only `CONTRACT` plus C1
+  `INFER` validation matrix with balanced as the default objective.
+
+The package is planning only. It does not authorize a new inventory attempt,
+artifact/dependency acquisition, profile admission or activation, runtime/model
+execution, hardware testing, containers/Kubernetes, cameras/media/data,
+implementation, deployment, or remote Git. `P36-G2` remains blocked, and owner
+acceptance cannot be inferred from `continue` or another decision.
+
+See [the portable R1 admission gap](p3-6-portable-r1-admission-gap.md).
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;
