@@ -93,6 +93,14 @@
     "throughput": "rank_only_eligible_profiles_for_sustained_fresh_throughput_without_waiving_tail_latency_quality_or_fairness_gates"
   },
   "owner_decisions_record": "contracts/phase-3/p3-6-owner-decisions.json",
+  "inventory_admission_gap": {
+    "package_digest_sha256": "CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A",
+    "package_manifest": "contracts/phase-3/p3-6-inventory-admission-package.json",
+    "historical_R0_shared_contract_conformance": false,
+    "owner_policy_selections_pending": true,
+    "fresh_R1_required_before_admission": true,
+    "status": "sealed_non_executable_owner_selection_pending"
+  },
   "portable_cpu_profile_proposal": {
     "package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
     "package_manifest": "contracts/phase-3/p3-6-portable-cpu-profile-package.json",

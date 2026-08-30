@@ -185,6 +185,18 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-portable-cpu-profile-package.json`: three-file immutable non-executable
   R0 planning manifest whose file SHA-256 is
   `56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`.
+- `p3-6-inventory-admission-research-sources.json`: exact local Phase -1
+  inventory, placement, and deployment records plus official NIST inventory
+  and zero-trust research, with no remote Git, artifact, runtime, or hardware
+  action.
+- `p3-6-inventory-admission-gap.json`: fifteen exact differences between
+  historical P3.6 laptop R0 and the shared v1alpha1 inventory contract, with
+  fail-closed admission effects.
+- `p3-6-inventory-admission-decision-packet.json`: four independent A-D owner
+  choices for canonical R1 strategy, freshness, trust binding, and expiry.
+- `p3-6-inventory-admission-package.json`: four-file immutable non-executable
+  planning manifest whose file SHA-256 is
+  `CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A`.
 
 Verify all tracked snapshots:
 

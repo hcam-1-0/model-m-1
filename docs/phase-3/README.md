@@ -48,6 +48,9 @@ A sealed non-executable portable CPU R0 proposal now binds the current laptop
 inventory to that shared profile model under package digest
 `56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`.
 Owner review and all exact validation/activation gates remain pending.
+An exact inventory/admission gap package now records that historical laptop R0
+is not the shared Phase -1 inventory shape. Four owner policy choices and a
+separately authorized fresh R1 remain necessary; `P36-G2` is unchanged.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -144,6 +147,7 @@ autonomous enforcement.
 | [P3.6 LAB-LAPTOP-01 inventory](p3-6-inventory-lab-laptop-01-r0.md) | Authorized sanitized Windows, CPU, memory, graphics, storage, and installed-tool evidence without execution claims |
 | [P3.6 exact model artifact proposal](p3-6-model-artifact-research-proposal.md) | Exact D-FINE-N and RF-DETR checkpoint metadata, acquisition controls, storage/scanner blockers, and continuing non-authorization |
 | [P3.6 portable CPU profile proposal R0](p3-6-portable-cpu-profile-proposal.md) | Sealed current-laptop planning tuple, conservative bounds, explicit unknowns, and non-executable owner-review gate |
+| [P3.6 inventory and admission gap R0](p3-6-inventory-admission-gap.md) | Exact R0-to-shared-schema field gaps, freshness/trust options, fail-closed expiry choices, and separate R1 authorization gate |
 
 ## Non-Negotiable Boundary
 

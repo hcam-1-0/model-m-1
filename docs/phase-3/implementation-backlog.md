@@ -357,6 +357,10 @@ package digest
 Owner review, exact unresolved values, generated validation, the
 `owned_gpu_lab` inventory, and a capacity-target decision remain pending, so
 `P36-G2` stays blocked.
+The inventory/admission gap is sealed under package digest
+`CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A`.
+It proves the historical R0 record is not the shared Phase -1 inventory shape
+and prepares four owner policy choices. No R1 recollection is authorized.
 
 Planning records:
 
@@ -374,6 +378,8 @@ Planning records:
 - [sealed non-authorizing model proposal package](../../contracts/phase-3/p3-6-model-artifact-research-package.json); and
 - [portable CPU profile proposal R0](p3-6-portable-cpu-profile-proposal.md);
 - [sealed non-executable portable CPU package](../../contracts/phase-3/p3-6-portable-cpu-profile-package.json); and
+- [inventory and admission gap R0](p3-6-inventory-admission-gap.md);
+- [sealed inventory-admission owner package](../../contracts/phase-3/p3-6-inventory-admission-package.json); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
 Deliverables:
@@ -414,6 +420,9 @@ Remaining gated backlog requires exact owner decisions and separate authority:
 - review the sealed portable CPU R0 planning proposal, then resolve its exact
   runtime, resource, workload, freshness, dependency, artifact, evidence, and
   activation blockers for `P36-G2`;
+- select the four inventory/admission policy options, then prepare and
+  separately authorize a fresh exact shared-schema R1 inventory; do not
+  overwrite or retimestamp historical R0;
 - prepare and approve the exact shared `owned_gpu_lab` machine, OS, driver,
   runtime, precision, decoder, resource, and generated-workload manifest;
 - select `standalone_server` or `kubernetes_cluster` for any future C10/C50

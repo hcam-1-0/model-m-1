@@ -58,6 +58,15 @@
     }
   },
   "implementation_authorized": false,
+  "inventory_admission_gap": {
+    "gap_record": "contracts/phase-3/p3-6-inventory-admission-gap.json",
+    "decision_packet": "contracts/phase-3/p3-6-inventory-admission-decision-packet.json",
+    "package_manifest": "contracts/phase-3/p3-6-inventory-admission-package.json",
+    "package_digest_sha256": "CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A",
+    "historical_R0_shared_contract_conformance": false,
+    "inventory_recollection_authorized": false,
+    "status": "sealed_non_executable_owner_selection_pending"
+  },
   "model_artifact_research": {
     "artifact_count": 3,
     "artifact_download_authorized": false,
@@ -84,6 +93,19 @@
     "implementation_or_runtime_authority": false,
     "status": "blocked_owner_storage_action_and_exact_scanner_binding_required"
   },
+  "parallel_owner_review_actions": [
+    {
+      "action": "select_D_P3_6_U3A_001_through_004_inventory_admission_policy_options",
+      "package_digest_sha256": "CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A",
+      "recommended_selection": "A/A/A/A",
+      "effect": "planning_policy_only_no_R1_collection_or_profile_activation"
+    },
+    {
+      "action": "review_D_P3_6_PORTABLE_PROPOSAL_R0_ACCEPTANCE",
+      "package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
+      "effect": "planning_record_only_no_profile_activation"
+    }
+  ],
   "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
   "runtime_execution_authorized": false,
   "status": "planning_only_U2_metadata_and_U3_portable_cpu_R0_proposals_complete_acquisition_activation_validation_and_execution_blocked",
@@ -154,7 +176,8 @@
       ],
       "available_inputs": [
         "sanitized_current_laptop_inventory",
-        "sealed_non_executable_portable_cpu_R0_proposal"
+        "sealed_non_executable_portable_cpu_R0_proposal",
+        "sealed_inventory_admission_gap_and_owner_decision_packet"
       ],
       "gate_target": "P36-G2",
       "output_package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
@@ -162,9 +185,14 @@
         "contracts/phase-3/p3-6-portable-cpu-research-sources.json",
         "contracts/phase-3/p3-6-portable-cpu-profile-proposal.json",
         "contracts/phase-3/p3-6-portable-cpu-profile-package.json",
-        "docs/phase-3/p3-6-portable-cpu-profile-proposal.md"
+        "docs/phase-3/p3-6-portable-cpu-profile-proposal.md",
+        "contracts/phase-3/p3-6-inventory-admission-research-sources.json",
+        "contracts/phase-3/p3-6-inventory-admission-gap.json",
+        "contracts/phase-3/p3-6-inventory-admission-decision-packet.json",
+        "contracts/phase-3/p3-6-inventory-admission-package.json",
+        "docs/phase-3/p3-6-inventory-admission-gap.md"
       ],
-      "state": "portable_cpu_R0_proposal_sealed_other_profiles_exact_values_and_validation_evidence_missing",
+      "state": "portable_cpu_R0_and_inventory_admission_gap_packages_sealed_owner_policy_selections_fresh_shared_R1_other_profiles_exact_values_and_validation_evidence_missing",
       "work_item_id": "P36-U3"
     },
     {

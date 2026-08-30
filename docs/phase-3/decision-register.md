@@ -768,6 +768,31 @@ hardware tests, implementation, Kubernetes, camera/media/data access,
 deployment, or remote Git. `P36-G1`, `P36-G2`, `P36-G4`, and `P36-G5` remain
 blocked.
 
+### DR-0053: P3.6 Inventory And Admission Contract Gap R0
+
+Status: exact planning gap sealed; four owner policy selections pending; no
+inventory recollection authority.
+
+The accepted historical `LAB-LAPTOP-01` R0 inventory remains immutable, but it
+does not conform to the Phase -1
+`hcam.platform.node-capability-inventory/v1alpha1` contract. It lacks an exact
+shared schema discriminator, opaque snapshot ID, `valid_until`, structured
+provenance trust and collector version, normalized capability states,
+scheduler/container fields, exact shared redaction declaration, and a separate
+trust-zone policy digest. It cannot become admission evidence through
+retimestamping or projection.
+
+The gap and owner decision packet are sealed under SHA-256
+`CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A`.
+Pending `D-P3.6-U3A-001` through `D-P3.6-U3A-004` select canonical R1 strategy,
+freshness, provenance/trust binding, and expiry behavior. The recommended
+planning choices are `A/A/A/A`.
+
+Selections do not authorize recollection. A separate exact
+`D-P3.6-INVENTORY-R1-AUTH` package is required afterward. `P36-G2` remains
+blocked, and no implementation, runtime, hardware test, model, Kubernetes,
+camera/media/data, deployment, or remote Git authority is granted.
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

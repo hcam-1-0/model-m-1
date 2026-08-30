@@ -101,6 +101,14 @@ It deliberately leaves resource bounds, workload duration/repetition, evidence
 thresholds, trust-zone expiry, dependency closure, and artifact state
 unresolved. It is not a validated manifest and does not pass `P36-G2`.
 
+The exact [inventory and admission gap](p3-6-inventory-admission-gap.md) also
+shows that the historical R0 inventory is not structurally conforming to the
+shared Phase -1 inventory schema. Its sealed package digest is
+`CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A`.
+Four A-D policy selections are pending for canonical inventory strategy,
+freshness, provenance/trust binding, and expiry behavior. Even after selection,
+a separate exact `D-P3.6-INVENTORY-R1-AUTH` is required before recollection.
+
 Prepare immutable proposals against the Phase -1 profile model:
 
 1. `P36-PROFILE-PORTABLE-CPU-R0` from authorized sanitized inventory;
@@ -137,6 +145,12 @@ The owner may review the portable planning record through
 `56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`.
 Acceptance would not authorize activation, dependencies, model loading,
 inference, hardware testing, implementation, or deployment.
+
+The owner may independently select `D-P3.6-U3A-001` through
+`D-P3.6-U3A-004` against inventory-admission package digest
+`CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A`.
+The recommended planning selection is `A/A/A/A`; it still grants no R1
+collection or execution authority.
 
 `P36-U2` metadata preparation is complete. The owner may review
 `D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE` against package digest

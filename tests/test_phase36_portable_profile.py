@@ -177,7 +177,9 @@ def test_gate_and_profile_records_link_the_sealed_non_executable_package() -> No
         item for item in unblock["work_items"] if item["work_item_id"] == "P36-U3"
     )
     assert u3["output_package_digest_sha256"] == digest
-    assert u3["state"].startswith("portable_cpu_R0_proposal_sealed")
+    assert u3["state"].startswith(
+        "portable_cpu_R0_and_inventory_admission_gap_packages_sealed"
+    )
 
 
 def test_portable_proposal_is_indexed_as_pending_owner_review() -> None:

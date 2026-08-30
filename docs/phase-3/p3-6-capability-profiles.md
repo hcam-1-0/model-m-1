@@ -16,6 +16,10 @@ Portable CPU proposal:
 package digest
 `56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`.
 
+Inventory admission analysis:
+[P3.6 inventory and admission gap R0](p3-6-inventory-admission-gap.md), package
+digest `CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A`.
+
 ## Purpose
 
 The same H-CAM application must run on the current CPU-only laptop and on
@@ -170,6 +174,11 @@ Each profile revision must eventually bind all of the following:
 Self-reported inventory is not acceptance evidence. Exact manifests require
 bounded inspection and measured generated-workload evidence under later
 authorization.
+
+The historical `LAB-LAPTOP-01` R0 record predates the shared Phase -1 inventory
+shape and cannot satisfy this input directly. It remains immutable planning
+evidence. A separately authorized fresh R1 must use the exact shared schema,
+owner-selected freshness and trust policy, and fail-closed expiry semantics.
 
 ## Planned Manifest Records
 
