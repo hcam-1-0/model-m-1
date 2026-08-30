@@ -75,7 +75,7 @@
     {
       "gate_id": "P36-G4",
       "state": "blocked",
-      "summary": "The digest-bound three-artifact R0 metadata proposal is owner accepted as planning only, but acquisition authority is absent and exact local storage and scanner bindings remain unresolved."
+      "summary": "The digest-bound three-artifact R0 metadata proposal is owner accepted as planning only and the U3D supply-chain prerequisite package is sealed for owner review, but U3D selections, acquisition authority, and exact local storage and scanner bindings remain unresolved."
     },
     {
       "gate_id": "P36-G5",
@@ -165,6 +165,31 @@
     "profile_resolver_eligible": false,
     "profile_activation_authorized": false
   },
+  "portable_r1_supply_chain_prerequisite_package": {
+    "source_ledger": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-research-sources.json",
+    "proposal": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-proposal.json",
+    "decision_packet": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-decision-packet.json",
+    "manifest": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-package.json",
+    "digest_sha256": "496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B",
+    "owner_decisions": [
+      "D-P3.6-U3D-001",
+      "D-P3.6-U3D-002",
+      "D-P3.6-U3D-003",
+      "D-P3.6-U3D-004",
+      "D-P3.6-U3D-005"
+    ],
+    "recommended_selection": "A/A/A/A/A",
+    "selected_options": null,
+    "owner_selections_pending": true,
+    "exact_quarantine_root_bound": false,
+    "exact_scanner_chain_bound": false,
+    "artifact_or_dependency_acquisition_authorized": false,
+    "R1_inspection_evidence_exists": false,
+    "R2_runtime_authorized": false,
+    "profile_resolver_eligible": false,
+    "profile_activation_authorized": false,
+    "status": "sealed_non_authorizing_owner_policy_selection_pending"
+  },
   "model_artifact_research_package": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
     "digest_sha256": "2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE",
@@ -183,7 +208,7 @@
   "owner_decisions_record": "contracts/phase-3/p3-6-owner-decisions.json",
   "phase_minus_1_alignment": "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
   "planning_authorization": "D-P3.6-PLAN-AUTH",
-  "planning_status": "U2_model_metadata_U3_portable_R0_inventory_admission_AAAA_portable_R1_U3B_AAAA_and_portable_compatibility_U3C_AAAA_planning_accepted_storage_scanner_acquisition_validation_activation_promotion_and_execution_authority_pending",
+  "planning_status": "U2_model_metadata_U3_portable_R0_inventory_admission_AAAA_portable_R1_U3B_AAAA_and_portable_compatibility_U3C_AAAA_planning_accepted_U3D_supply_chain_prerequisite_package_sealed_owner_selections_storage_scanner_acquisition_validation_activation_promotion_and_execution_authority_pending",
   "record_id": "P3.6-ENTRY-GATES",
   "runtime_execution_authorized": false,
   "start_intent_record": "contracts/phase-3/p3-6-start-intent.json",

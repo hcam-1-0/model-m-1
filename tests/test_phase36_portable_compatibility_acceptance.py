@@ -16,6 +16,9 @@ DECISIONS_PATH = (
     CONTRACTS / "p3-6-portable-compatibility-validation-decision-packet.json"
 )
 PACKAGE_DIGEST = "9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A"
+U3D_PACKAGE_DIGEST = (
+    "496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B"
+)
 ACCEPTANCE_DIGEST = (
     "FECF3EF71F5A7550871C91BF3A58BFA9D279A88C312A4E96019EC2457821CA77"
 )
@@ -146,7 +149,7 @@ def test_canonical_ledgers_record_acceptance_without_opening_G2() -> None:
     assert unblock["runtime_execution_authorized"] is False
 
 
-def test_next_action_is_non_executable_R1_prerequisite_planning() -> None:
+def test_completed_prerequisite_output_advances_to_U3D_owner_review() -> None:
     acceptance = _read(ACCEPTANCE_PATH)
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     action = unblock["next_portable_planning_action"]
@@ -155,8 +158,15 @@ def test_next_action_is_non_executable_R1_prerequisite_planning() -> None:
         "non_executable_R1_artifact_supply_chain_and_generated_calibration_"
         "authorization_prerequisites"
     )
-    assert action["action"].startswith("prepare_non_executable_R1_artifact")
-    assert action["status"].startswith("planning_only_storage_scanner")
+    assert action["action"] == (
+        "owner_review_D_P3_6_U3D_001_through_005_against_exact_sealed_package"
+    )
+    assert action["package_digest_sha256"] == U3D_PACKAGE_DIGEST
+    assert action["recommended_selection"] == "A/A/A/A/A"
+    assert action["selected_options"] is None
+    assert action["status"] == (
+        "sealed_non_authorizing_owner_policy_selection_pending"
+    )
 
 
 def test_human_records_and_indexes_are_synchronized() -> None:

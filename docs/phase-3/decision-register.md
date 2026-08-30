@@ -975,6 +975,43 @@ blocked.
 Machine-readable acceptance:
 [`p3-6-portable-compatibility-validation-owner-decisions.json`](../../contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json).
 
+### DR-0060: Portable R1 supply-chain prerequisite policy proposed
+
+Status: sealed for owner review on 2026-08-31; no selection or execution
+authority exists.
+
+The planning-only prerequisite package is sealed under SHA-256
+`496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
+It translates the accepted portable compatibility policy into a fail-closed
+storage, scanner, verdict, acquisition, and R1/R2 separation proposal without
+binding a physical path, installing a scanner, acquiring an artifact, or
+executing a model.
+
+The package presents five independent pending choices, with `A/A/A/A/A`
+recommended:
+
+- `D-P3.6-U3D-001 A`: owner-supplied local fixed NTFS/ReFS quarantine root,
+  accepted only after a separately authorized fresh threshold attestation;
+- `D-P3.6-U3D-002 A`: exact Microsoft Defender, pinned ModelScan, and H-CAM
+  framework-free passive inspection chain;
+- `D-P3.6-U3D-003 A`: all-layer clean, supported, complete evidence with no
+  manual hard-gate override;
+- `D-P3.6-U3D-004 A`: sequential `.partial` acquisition, identity and hash
+  verification, scanning, provenance and CycloneDX ML-BOM, then atomic seal;
+  and
+- `D-P3.6-U3D-005 A`: immutable passive R1 followed only by a separately
+  authorized, digest-bound, network-denied, generated-only R2.
+
+Every U3D selection remains null. The exact quarantine root, Defender version
+and path, pinned ModelScan distribution and hash, and H-CAM passive inspector
+implementation remain unresolved. The package grants no storage query or write
+probe, scanner query/install/run, artifact or dependency download, checkpoint
+load, runtime execution, validation, profile admission, implementation,
+deployment, or remote Git authority. `P36-G2` and `P36-G4` remain blocked.
+
+Machine-readable package:
+[`p3-6-portable-r1-supply-chain-prerequisite-package.json`](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-package.json).
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

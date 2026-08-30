@@ -1,0 +1,70 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_r1_supply_chain_prerequisite_package.v1",
+  "package_id": "P36-PORTABLE-R1-SUPPLY-CHAIN-PREREQUISITE-PACKAGE-R0",
+  "status": "sealed_non_effective_owner_selections_pending",
+  "sealed_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "core_file_count": 4,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-research-sources.json",
+      "sha256": "3CCCD8B607D4BB20223DD60A9C83EA82FDF411D3841EA433C73D5B89E2649B85",
+      "role": "official_primary_source_and_exact_local_contract_ledger"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-proposal.json",
+      "sha256": "6D14561A7BA75EF8EC68F625AE32610A405068EBD89B65F17F78EF66FC2745EE",
+      "role": "non_executable_storage_scanner_verdict_acquisition_and_lifecycle_policy"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-decision-packet.json",
+      "sha256": "08B6818940C7F4DC43A48F60D31B35EEB907F9FF9DA308B0C5DF928033C4CDAC",
+      "role": "five_independent_U3D_owner_choices_with_AAAAA_recommendation"
+    },
+    {
+      "path": "docs/phase-3/p3-6-portable-r1-supply-chain-prerequisite-proposal.md",
+      "sha256": "CB0605CC7502416BAD68BB3B5DEB1F6FA3EF347A86ADFE6E179335DC06FB92A2",
+      "role": "human_owner_review_document"
+    }
+  ],
+  "accepted_U3C_policy": {
+    "acceptance_record": "contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json",
+    "acceptance_sha256": "FECF3EF71F5A7550871C91BF3A58BFA9D279A88C312A4E96019EC2457821CA77",
+    "package_digest_sha256": "9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A",
+    "selection": "A/A/A/A"
+  },
+  "owner_decisions": [
+    "D-P3.6-U3D-001",
+    "D-P3.6-U3D-002",
+    "D-P3.6-U3D-003",
+    "D-P3.6-U3D-004",
+    "D-P3.6-U3D-005"
+  ],
+  "recommended_selection": "A/A/A/A/A",
+  "owner_acceptance_may_be_inferred_from_continue_or_other_decision": false,
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_package_digest_and_is_not_self_embedded",
+  "current_gate_effect": {
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked",
+    "exact_storage_root_bound": false,
+    "scanner_chain_bound_or_installed": false,
+    "artifact_acquisition_authorized": false,
+    "R1_supply_chain_evidence_exists": false,
+    "R2_calibration_authorized": false,
+    "portable_profile_resolver_eligible": false,
+    "portable_profile_activation_authorized": false
+  },
+  "storage_or_hardware_query_authorized": false,
+  "scanner_query_install_or_execution_authorized": false,
+  "artifact_or_dependency_acquisition_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "profile_resolution_or_activation_authorized": false,
+  "container_or_kubernetes_action_authorized": false,
+  "camera_media_or_data_access_authorized": false,
+  "implementation_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

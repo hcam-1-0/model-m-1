@@ -122,6 +122,31 @@
     "profile_activation_authorized": false,
     "status": "accepted_planning_policy_only_non_effective"
   },
+  "portable_r1_supply_chain_prerequisite_package": {
+    "source_ledger": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-research-sources.json",
+    "proposal": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-proposal.json",
+    "decision_packet": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-decision-packet.json",
+    "package_manifest": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-package.json",
+    "package_digest_sha256": "496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B",
+    "owner_decisions": [
+      "D-P3.6-U3D-001",
+      "D-P3.6-U3D-002",
+      "D-P3.6-U3D-003",
+      "D-P3.6-U3D-004",
+      "D-P3.6-U3D-005"
+    ],
+    "recommended_selection": "A/A/A/A/A",
+    "selected_options": null,
+    "owner_selections_pending": true,
+    "exact_quarantine_root_bound": false,
+    "exact_scanner_chain_bound": false,
+    "artifact_or_dependency_acquisition_authorized": false,
+    "R1_inspection_evidence_exists": false,
+    "R2_runtime_authorized": false,
+    "profile_resolver_eligible": false,
+    "profile_activation_authorized": false,
+    "status": "sealed_non_authorizing_owner_policy_selection_pending"
+  },
   "model_artifact_research": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
     "artifact_count": 3,
@@ -162,23 +187,29 @@
     "status": "owner_AAAA_policy_selections_accepted_no_current_refresh_profile_or_collection_authority"
   },
   "next_portable_planning_action": {
-    "action": "prepare_non_executable_R1_artifact_supply_chain_and_generated_calibration_authorization_prerequisites_after_storage_and_scanner_bindings",
+    "action": "owner_review_D_P3_6_U3D_001_through_005_against_exact_sealed_package",
     "authority": "D-P3.6-PLAN-AUTH",
-    "accepted_decisions": "D-P3.6-U3C-001_through_004_A/A/A/A",
-    "acceptance_record": "contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json",
-    "acceptance_sha256": "FECF3EF71F5A7550871C91BF3A58BFA9D279A88C312A4E96019EC2457821CA77",
-    "package_digest_sha256": "9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A",
-    "package_manifest": "contracts/phase-3/p3-6-portable-compatibility-validation-package.json",
+    "decision_ids": [
+      "D-P3.6-U3D-001",
+      "D-P3.6-U3D-002",
+      "D-P3.6-U3D-003",
+      "D-P3.6-U3D-004",
+      "D-P3.6-U3D-005"
+    ],
+    "recommended_selection": "A/A/A/A/A",
+    "selected_options": null,
+    "package_digest_sha256": "496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B",
+    "package_manifest": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-package.json",
     "implementation_or_runtime_authority": false,
     "artifact_or_dependency_acquisition_authority": false,
     "profile_activation_authority": false,
-    "status": "planning_only_storage_scanner_artifact_supply_chain_and_separate_runtime_authorities_still_required"
+    "status": "sealed_non_authorizing_owner_policy_selection_pending"
   },
   "next_planning_action": {
-    "action": "resolve_exact_eligible_local_quarantine_root_and_scanner_binding_then_regenerate_digest_bound_R1_acquisition_proposal",
+    "action": "complete_U3D_owner_review_then_separately_authorize_exact_eligible_local_quarantine_root_and_scanner_binding_before_regenerating_any_digest_bound_R1_acquisition_proposal",
     "authority": "D-P3.6-PLAN-AUTH",
     "implementation_or_runtime_authority": false,
-    "status": "blocked_owner_storage_action_and_exact_scanner_binding_required"
+    "status": "blocked_owner_U3D_selection_storage_action_and_exact_scanner_binding_required"
   },
   "parallel_owner_review_actions": [
     {
@@ -199,7 +230,7 @@
   ],
   "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
   "runtime_execution_authorized": false,
-  "status": "planning_only_model_metadata_portable_R0_inventory_AAAA_portable_R1_U3B_AAAA_and_portable_compatibility_U3C_AAAA_policies_accepted_acquisition_activation_validation_and_execution_blocked",
+  "status": "planning_only_model_metadata_portable_R0_inventory_AAAA_portable_R1_U3B_AAAA_and_portable_compatibility_U3C_AAAA_policies_accepted_U3D_supply_chain_prerequisite_package_sealed_owner_selections_acquisition_activation_validation_and_execution_blocked",
   "work_items": [
     {
       "allowed_now": [
@@ -301,12 +332,17 @@
         "contracts/phase-3/p3-6-portable-compatibility-validation-decision-packet.json",
         "contracts/phase-3/p3-6-portable-compatibility-validation-package.json",
         "contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json",
+        "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-research-sources.json",
+        "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-proposal.json",
+        "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-decision-packet.json",
+        "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-package.json",
         "docs/phase-3/p3-6-inventory-r1-authorization-proposal.md",
         "docs/phase-3/p3-6-inventory-r1-collection.md",
         "docs/phase-3/p3-6-portable-r1-admission-gap.md",
-        "docs/phase-3/p3-6-portable-compatibility-validation-proposal.md"
+        "docs/phase-3/p3-6-portable-compatibility-validation-proposal.md",
+        "docs/phase-3/p3-6-portable-r1-supply-chain-prerequisite-proposal.md"
       ],
-      "state": "portable_cpu_R0_inventory_admission_AAAA_and_portable_R1_U3B_AAAA_planning_accepted_portable_compatibility_U3C_AAAA_planning_accepted_other_profiles_exact_artifacts_supply_chain_and_generated_evidence_pending",
+      "state": "portable_cpu_R0_inventory_admission_AAAA_and_portable_R1_U3B_AAAA_planning_accepted_portable_compatibility_U3C_AAAA_planning_accepted_U3D_supply_chain_prerequisite_package_sealed_owner_selections_other_profiles_exact_artifacts_and_generated_evidence_pending",
       "work_item_id": "P36-U3"
     },
     {

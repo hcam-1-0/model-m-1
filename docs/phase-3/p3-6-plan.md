@@ -57,6 +57,15 @@ generated-workload, safety-gate, and immutable-lifecycle choices. The four U3C
 selections are owner accepted as `A/A/A/A` planning policy; the acceptance grants no acquisition, execution,
 validation, implementation, profile admission, or activation authority.
 
+The next [portable R1 supply-chain prerequisite proposal](p3-6-portable-r1-supply-chain-prerequisite-proposal.md)
+is sealed under package digest
+`496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
+It presents five independent U3D storage, scanner, verdict, acquisition, and
+R1/R2 separation choices, with `A/A/A/A/A` recommended. All selections remain
+pending. The package binds no physical root or scanner and authorizes no query,
+write probe, install, download, inspection, checkpoint loading, runtime,
+validation, implementation, profile admission, or activation.
+
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).
 

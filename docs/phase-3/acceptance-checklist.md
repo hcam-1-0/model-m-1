@@ -210,7 +210,14 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
 - [x] `P36-U2` exact official checkpoint metadata and a three-artifact,
   non-authorizing R0 proposal are sealed under package digest
   `2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE`.
-- [ ] `D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE` accepts the planning package only.
+- [x] `D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE` accepts the planning package only.
+- [x] `D-P3.6-U3B-001` through `004` accept `A/A/A/A` portable R1 admission
+  planning policies without collection, profile, or execution authority.
+- [x] `D-P3.6-U3C-001` through `004` accept `A/A/A/A` compatibility and
+  generated C1 planning policies without acquisition or execution authority.
+- [ ] `D-P3.6-U3D-001` through `005` select storage, scanner, verdict,
+  acquisition, and R1/R2 prerequisite policies against package digest
+  `496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
 - [ ] An eligible exact local quarantine root and exact scanner command are
   bound in a regenerated R1 proposal before any acquisition authorization.
 - [ ] The exact portable runtime/workload profile, accelerated-laptop profile,

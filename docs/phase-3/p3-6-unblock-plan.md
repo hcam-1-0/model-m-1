@@ -135,6 +135,14 @@ It presents `D-P3.6-U3C-001` through `004`, with `A/A/A/A` recommended and all
 four choices now owner accepted as non-effective planning policy. It changes no
 hard gate.
 
+The next exact
+[portable R1 supply-chain prerequisite proposal](p3-6-portable-r1-supply-chain-prerequisite-proposal.md)
+is sealed under package digest
+`496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
+It presents `D-P3.6-U3D-001` through `005`, with `A/A/A/A/A` recommended. All
+five choices remain unselected, no exact local quarantine root or scanner chain
+is bound, and the package changes no hard gate or authority.
+
 Prepare immutable proposals against the Phase -1 profile model:
 
 1. `P36-PROFILE-PORTABLE-CPU-R0` from authorized sanitized inventory;
@@ -174,18 +182,23 @@ proposal, and completed one-time R1 outcome are linked from the
 Those U3C choices are now accepted as `A/A/A/A` planning policy against exact
 package digest
 `9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A`.
-The next planning action is preparation of non-executable R1 artifact,
-supply-chain, and generated-calibration authorization prerequisites after the
-exact storage and scanner blockers are resolved. The acceptance is not
-authority to activate or admit a profile, acquire artifacts, execute a runtime,
-run validation, implement a reusable collector, or perform another collection.
+The non-executable R1 supply-chain prerequisites are now sealed as the U3D
+package under digest
+`496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
+The next planning action is owner review of `D-P3.6-U3D-001` through `005`
+against that exact digest. The recommended `A/A/A/A/A` choices are not
+accepted by implication. The package is not authority to bind or test storage,
+query/install/run scanners, activate or admit a profile, acquire or inspect
+artifacts, execute a runtime, run validation, implement a reusable collector,
+or perform another collection.
 
 Before `D-P3.6-MODEL-RESEARCH-R1-AUTH` can be prepared, an exact local,
 non-cloud, non-network quarantine root must pass a fresh threshold of at least
 5 GiB and 15 percent free, and the exact scanner product, version, executable,
 command, result handling, and passive checkpoint inspector must be bound.
-Volume `B:` remains owner prohibited, and the observed `C:`, `E:`, and `F:`
-volumes remain ineligible under the recorded low-free-space policy. No file
+Volume `B:` remains owner prohibited, and the historical `C:`, `E:`, and `F:`
+observations are not current authority under the recorded low-free-space
+policy. No fresh storage or scanner check has been authorized or performed. No file
 may be downloaded, loaded, converted, executed, or promoted meanwhile.
 
 The completed inventory decision does not authorize collaborator-machine

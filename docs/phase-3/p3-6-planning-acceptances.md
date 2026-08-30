@@ -5,6 +5,8 @@ Status: planning-only owner acceptances are recorded through the portable U3C
 accepted one bounded collection attempt; that attempt succeeded and is
 consumed. No continuing inventory collection,
 artifact acquisition, implementation, runtime, or deployment authority exists.
+The later U3D supply-chain prerequisite package is sealed for review, but its
+five recommended `A/A/A/A/A` selections are pending and are not acceptances.
 
 Machine-readable records:
 
@@ -19,6 +21,10 @@ Later R1 outcome records:
 - [bounded collection evidence](../../contracts/phase-3/p3-6-inventory-r1-collection-evidence.json).
 - [portable R1 admission policy acceptance](../../contracts/phase-3/p3-6-portable-r1-owner-decisions.json).
 - [portable compatibility and generated C1 policy acceptance](../../contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json).
+
+Next sealed proposal, not yet accepted:
+
+- [portable R1 supply-chain prerequisite package](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-package.json).
 
 ## Portable CPU Planning Proposal
 
@@ -86,6 +92,20 @@ acceptance record SHA-256 is
 This acceptance authorizes no acquisition, runtime execution, validation,
 profile admission, implementation, or deployment.
 
+## Portable R1 Supply-Chain Prerequisite Proposal
+
+`D-P3.6-U3D-001` through `D-P3.6-U3D-005` are pending against package digest
+`496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
+The package recommends `A/A/A/A/A` for an owner-bound local quarantine root,
+three-layer passive scanner chain, fail-closed verdict, sequential atomic
+acquisition and ML-BOM lifecycle, and strict passive R1 versus separately
+authorized generated-only R2 separation. None of those choices is selected.
+
+No exact path, scanner binary, scanner version, dependency digest, artifact, or
+runtime is bound. The proposal authorizes no storage or scanner query, write
+probe, installation, acquisition, inspection, checkpoint loading, execution,
+validation, implementation, profile admission, activation, or deployment.
+
 ## Model Metadata Proposal
 
 `D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE` accepts package digest
@@ -104,9 +124,9 @@ bindings are sealed in a regenerated package.
 | `P36-G0` | Passed |
 | `P36-G0A` | Passed |
 | `P36-G1` | Blocked: no acquired comparison artifacts, H-CAM evidence, or approved champion/fallback |
-| `P36-G2` | Blocked: R1 and U3C planning policy exist, but actual compatibility artifacts, six other resolver inputs, other profiles, and generated validation evidence remain missing |
+| `P36-G2` | Blocked: R1 and U3C planning policy exist and U3D is sealed but unselected; actual compatibility artifacts, six other resolver inputs, other profiles, and generated validation evidence remain missing |
 | `P36-G3` | Passed |
-| `P36-G4` | Blocked: no acquisition authority or exact storage/scanner binding |
+| `P36-G4` | Blocked: U3D choices, acquisition authority, and exact storage/scanner binding remain pending |
 | `P36-G5` | Blocked: no digest-bound implementation/runtime authorization |
 
 ## Continuing Boundary

@@ -262,6 +262,18 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   acceptance of `D-P3.6-U3C-001` through `004` as `A/A/A/A` planning policy
   only; its SHA-256 is
   `FECF3EF71F5A7550871C91BF3A58BFA9D279A88C312A4E96019EC2457821CA77`.
+- `p3-6-portable-r1-supply-chain-prerequisite-research-sources.json`: bounded
+  official Defender, ModelScan, PyTorch, and CycloneDX research ledger with
+  zero storage, scanner, download, load, or execution actions.
+- `p3-6-portable-r1-supply-chain-prerequisite-proposal.json`: exact
+  non-executable storage, passive scanner, fail-closed verdict, sequential
+  acquisition, ML-BOM, and passive R1 versus generated-only R2 policy proposal.
+- `p3-6-portable-r1-supply-chain-prerequisite-decision-packet.json`: five
+  independent U3D A-D owner choices with `A/A/A/A/A` recommended and all
+  selections null.
+- `p3-6-portable-r1-supply-chain-prerequisite-package.json`: immutable
+  non-authorizing four-file owner-review manifest whose SHA-256 is
+  `496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
 
 Verify all tracked snapshots:
 

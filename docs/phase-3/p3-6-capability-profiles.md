@@ -6,7 +6,9 @@ unauthorized and pending. A sealed non-executable `portable_cpu` R0 proposal
 is owner accepted as planning only. R1 exists and the U3B `A/A/A/A` admission
 policies are accepted. The exact compatibility and generated C1 proposal is
 sealed and its U3C `A/A/A/A` planning policies are owner accepted; the profile is not
-resolver-eligible.
+resolver-eligible. The U3D portable R1 supply-chain prerequisite package is
+sealed with `A/A/A/A/A` recommended, but all five owner selections and all exact
+storage, scanner, artifact, inspection, and runtime evidence remain pending.
 
 Machine-readable policy:
 [`p3-6-capability-profile-policy.json`](../../contracts/phase-3/p3-6-capability-profile-policy.json).
@@ -70,7 +72,7 @@ must be interpreted through the Phase -1 mapping above in every new manifest.
 
 | Profile | Intended environment | Candidate path | Claim boundary | Current state |
 | --- | --- | --- | --- | --- |
-| `portable_cpu` | Current laptop and deterministic CI/reference use | ONNX Runtime CPU reference | C1 correctness and small CPU evidence only until measured | Non-executable R0, U3B, and compatibility U3C `A/A/A/A` policies accepted; six resolver inputs, actual artifacts, and executable validation remain unresolved |
+| `portable_cpu` | Current laptop and deterministic CI/reference use | ONNX Runtime CPU reference | C1 correctness and small CPU evidence only until measured | Non-executable R0, U3B, and compatibility U3C `A/A/A/A` policies accepted; U3D supply-chain package sealed with choices pending; six resolver inputs, actual artifacts, and executable validation remain unresolved |
 | `local_accelerated` | Owned or authorized stronger laptop | Exact validated Intel, NVIDIA, or AMD provider | Exact machine and workload only | Exact manifest pending |
 | `capacity_target` | Declared lab/server or later cluster target | Approved accelerated runtime; optional Kubernetes backend | C10/C50 only from signed exact-hardware evidence | Exact manifest pending |
 

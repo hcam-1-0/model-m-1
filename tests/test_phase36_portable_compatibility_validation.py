@@ -18,6 +18,9 @@ DECISIONS_PATH = (
 DOCUMENT_PATH = DOCS / "p3-6-portable-compatibility-validation-proposal.md"
 PACKAGE_PATH = CONTRACTS / "p3-6-portable-compatibility-validation-package.json"
 PACKAGE_DIGEST = "9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A"
+U3D_PACKAGE_DIGEST = (
+    "496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B"
+)
 U3B_ACCEPTANCE_DIGEST = (
     "7695027BB68878ED7CE41B6BD940EB777CD280279294E5C35B99614C3C57F5FA"
 )
@@ -257,7 +260,8 @@ def test_canonical_ledgers_link_package_without_opening_P36_G2() -> None:
     ] == "A/A/A/A"
     assert unblock["next_portable_planning_action"][
         "package_digest_sha256"
-    ] == PACKAGE_DIGEST
+    ] == U3D_PACKAGE_DIGEST
+    assert unblock["next_portable_planning_action"]["selected_options"] is None
     assert unblock["next_portable_planning_action"][
         "implementation_or_runtime_authority"
     ] is False

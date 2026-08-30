@@ -61,6 +61,10 @@ C1 proposal is now sealed for U3C owner review under digest
 `9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A`;
 its U3C `A/A/A/A` planning policies are owner accepted and `P36-G2` is unchanged. The model
 metadata planning package is also owner accepted without acquisition authority.
+The portable R1 supply-chain prerequisite proposal is sealed under digest
+`496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`;
+its five U3D owner choices remain unselected, and it grants no storage,
+scanner, acquisition, inspection, execution, or activation authority.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -163,6 +167,7 @@ autonomous enforcement.
 | [P3.6 authorized R1 collection](p3-6-inventory-r1-collection.md) | Accepted digest, consumed one-time attempt, sanitized R1 and evidence hashes, freshness, unchanged gates, and continuing prohibitions |
 | [P3.6 portable CPU R1 admission gap R0](p3-6-portable-r1-admission-gap.md) | Seven-input resolver reconciliation, 22 exact remaining gaps, and owner-accepted fail-closed `A/A/A/A` policies |
 | [P3.6 portable compatibility and generated C1 proposal R0](p3-6-portable-compatibility-validation-proposal.md) | Exact conservative CPU runtime candidate, deterministic generated workload, separated safety/calibration/validation gates, immutable lifecycle, and owner-accepted U3C `A/A/A/A` planning policy |
+| [P3.6 portable R1 supply-chain prerequisite proposal R0](p3-6-portable-r1-supply-chain-prerequisite-proposal.md) | Exact pending U3D storage, scanner, fail-closed verdict, sequential acquisition, ML-BOM, and passive R1 versus generated-only R2 policy choices without action authority |
 
 ## Non-Negotiable Boundary
 

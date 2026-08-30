@@ -1,0 +1,87 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_r1_supply_chain_prerequisite_research_sources.v1",
+  "record_id": "P36-PORTABLE-R1-SUPPLY-CHAIN-PREREQUISITE-SOURCES-R0",
+  "status": "complete_for_non_executable_owner_proposal",
+  "prepared_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "research_boundary": "read_only_official_primary_source_and_exact_local_contract_review",
+  "official_external_sources": [
+    {
+      "source_id": "MICROSOFT-DEFENDER-MPCMDRUN",
+      "publisher": "Microsoft",
+      "url": "https://learn.microsoft.com/en-us/defender-endpoint/command-line-arguments-microsoft-defender-antivirus",
+      "retrieved_on": "2026-08-31",
+      "finding": "MpCmdRun supports a custom file scan, DisableRemediation, ReturnHR, and explicit file targeting; a normal zero return can also mean malware was remediated, so a future no-remediation scanner binding must parse the exact HRESULT and bounded output and fail closed on ambiguity."
+    },
+    {
+      "source_id": "PROTECT-AI-MODELSCAN",
+      "publisher": "Protect AI",
+      "url": "https://github.com/protectai/modelscan",
+      "retrieved_on": "2026-08-31",
+      "finding": "ModelScan performs static model-serialization scanning without framework loading, supports local path scanning and JSON reports, and defines exit codes 0 through 4; only exit zero with a complete supported-file report can be a candidate pass."
+    },
+    {
+      "source_id": "PYTORCH-TORCH-LOAD-SECURITY",
+      "publisher": "PyTorch",
+      "url": "https://docs.pytorch.org/docs/2.13/generated/torch.load.html",
+      "retrieved_on": "2026-08-31",
+      "finding": "PyTorch documents that torch.load uses an unpickler and warns never to load data from an untrusted source; weights_only narrows loading but is not used as an R1 passive-inspection substitute."
+    },
+    {
+      "source_id": "CYCLONEDX-ML-BOM-GUIDE",
+      "publisher": "OWASP CycloneDX",
+      "url": "https://cyclonedx.org/guides/OWASP-CycloneDX-Authoritative-Guide-to-AI-ML-BOM-en.pdf",
+      "retrieved_on": "2026-08-31",
+      "finding": "CycloneDX ML-BOM records model identity, components, provenance, frameworks, licenses, and lifecycle context for supply-chain transparency; ML-BOM support exists in CycloneDX 1.5 and later."
+    }
+  ],
+  "exact_local_sources": [
+    {
+      "path": "contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json",
+      "sha256": "FECF3EF71F5A7550871C91BF3A58BFA9D279A88C312A4E96019EC2457821CA77",
+      "role": "accepted_U3C_AAAA_runtime_workload_gate_and_lifecycle_policy"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-portable-compatibility-validation-package.json",
+      "sha256": "9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A",
+      "role": "sealed_non_executable_portable_compatibility_proposal"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
+      "sha256": "AF1C5838667730EDFC794965AAF5CF6262063872406761F4AE73A34D477C20C2",
+      "role": "accepted_metadata_only_candidate_and_acquisition_blocker_record"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-model-artifact-research-proposal.json",
+      "sha256": "5ADECF0F9306C0069FFA30114B99BFE8E0E4623F7A85D5A5A2C0921ECB160859",
+      "role": "exact_three_artifact_size_source_redirect_and_fail_closed_acquisition_design"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-model-artifact-research-package.json",
+      "sha256": "2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE",
+      "role": "accepted_metadata_planning_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json",
+      "sha256": "FB061C906D1CE5F7FE3B32B70F6CA5134C486F474E2618B23884466C2E58C76F",
+      "role": "sanitized_historical_storage_and_node_input_not_current_storage_authority"
+    }
+  ],
+  "research_actions": {
+    "public_document_pages_read": 4,
+    "local_contract_files_read": 6,
+    "storage_or_hardware_queries": 0,
+    "scanner_or_security_product_queries": 0,
+    "scanner_executions": 0,
+    "artifact_downloads": 0,
+    "dependency_installs": 0,
+    "runtime_or_model_imports": 0,
+    "checkpoint_loading_or_unpickling": 0,
+    "inference_calibration_validation_or_benchmarks": 0,
+    "inventory_collection_attempts": 0,
+    "container_or_kubernetes_actions": 0,
+    "camera_media_or_data_accesses": 0,
+    "remote_git_actions": 0
+  },
+  "conclusion": "R1_requires_a_fresh_exact_local_storage_attestation_and_a_versioned_defense_in_depth_scanner_chain_but_scanner_success_is_never_a_safety_or_promotion_claim"
+}
