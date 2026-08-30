@@ -133,9 +133,15 @@ def test_canonical_ledgers_record_acceptance_without_opening_gates() -> None:
     policy = _read(CONTRACTS / "p3-6-capability-profile-policy.json")
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     gate_states = {item["gate_id"]: item["state"] for item in gates["gates"]}
+    gate_summaries = {
+        item["gate_id"]: item["summary"] for item in gates["gates"]
+    }
 
     assert gate_states["P36-G2"] == "blocked"
     assert gate_states["P36-G4"] == "blocked"
+    assert "U3D A/A/A/A/A policies are owner accepted" in gate_summaries["P36-G2"]
+    assert "U3D A/A/A/A/A supply-chain policies" in gate_summaries["P36-G4"]
+    assert "owner review" not in gate_summaries["P36-G4"]
     for ledger in [gates, policy, unblock]:
         state = ledger["portable_r1_supply_chain_prerequisite_package"]
         assert state["selected_options"] == "A/A/A/A/A"

@@ -65,7 +65,7 @@
     {
       "gate_id": "P36-G2",
       "state": "blocked",
-      "summary": "The portable_cpu planning proposal, inventory-admission A/A/A/A policies, portable-R1 U3B A/A/A/A policies, and portable compatibility U3C A/A/A/A policies are owner accepted as non-effective planning. R1 supplies only the inventory input; six other resolver inputs, all 22 evidence gaps, actual compatibility artifacts, generated evidence, other profiles, and profile activation remain unresolved."
+      "summary": "The portable_cpu planning proposal, inventory-admission A/A/A/A policies, portable-R1 U3B A/A/A/A policies, portable compatibility U3C A/A/A/A policies, and supply-chain U3D A/A/A/A/A policies are owner accepted as non-effective planning. R1 supplies only the inventory input; six other resolver inputs, all 22 evidence gaps, exact storage and scanner bindings, actual compatibility artifacts, generated evidence, other profiles, and profile activation remain unresolved."
     },
     {
       "gate_id": "P36-G3",
@@ -75,7 +75,7 @@
     {
       "gate_id": "P36-G4",
       "state": "blocked",
-      "summary": "The digest-bound three-artifact R0 metadata proposal is owner accepted as planning only and the U3D supply-chain prerequisite package is sealed for owner review, but U3D selections, acquisition authority, and exact local storage and scanner bindings remain unresolved."
+      "summary": "The digest-bound three-artifact R0 metadata proposal and U3D A/A/A/A/A supply-chain policies are owner accepted as non-effective planning, but no candidate quarantine root, storage attestation, exact scanner binding, or acquisition authority exists."
     },
     {
       "gate_id": "P36-G5",
