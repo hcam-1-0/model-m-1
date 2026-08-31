@@ -130,10 +130,14 @@ A separate runtime-binding authorization proposal is sealed under digest
 `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` was recorded and consumed by one
 successful read-only attempt. Evidence SHA-256 is
 `4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`,
-valid through `2026-09-01T19:36:06.820Z`. The final U3K storage package remains
-blocked until exact `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE`. Defender work
-remains sequenced after accepted storage evidence. No runner execution,
-machine action, or remote Git operation is authorized.
+valid through `2026-09-01T19:36:06.820Z`. Final U3K storage-package preparation
+was authorized by exact `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE`. Preparation
+package SHA-256 is
+`4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
+It is non-executable because all ten machine handlers remain unimplemented;
+`D-P3.6-U3K-STORAGE-R2-AUTH` is not requestable. Defender work remains
+sequenced after accepted storage evidence. No runner execution, machine action,
+or remote Git operation is authorized.
 
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).

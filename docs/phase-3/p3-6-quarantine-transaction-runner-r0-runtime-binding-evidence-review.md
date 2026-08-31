@@ -1,6 +1,6 @@
 # P3.6 U3I Runtime Binding R0 Evidence Review
 
-Status: exact generated evidence sealed; owner acceptance pending.
+Status: exact generated evidence accepted by `mayank-admin`.
 
 ## Binding
 
@@ -54,6 +54,14 @@ attempt, `F:` or ACL access, Defender/scanners, downloads, artifact
 acquisition, model loading or inference, media/data access, containers,
 Kubernetes, deployment, or remote Git. The later U3K package would still need
 its own exact digest-bound `D-P3.6-U3K-STORAGE-R2-AUTH` before any attempt.
+
+Acceptance was recorded at `2026-08-31T20:30:17.283Z`. The machine-readable
+acceptance-record SHA-256 is
+`F19E6660FBD9545F74B8B532F6A9EB4D01ACF0543DE45CD54C8CB41C868DB54E`.
+Final U3K preparation produced package SHA-256
+`4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`,
+but it is non-effective because the accepted runner has no implemented machine
+handlers. No U3K execution authorization is currently requestable.
 
 ## Exact Owner Decision
 

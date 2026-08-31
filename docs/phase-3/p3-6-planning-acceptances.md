@@ -168,9 +168,12 @@ sealed under digest
 Exact `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` was recorded and consumed by one
 successful read-only attempt. Evidence SHA-256 is
 `4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`;
-`D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` is now required before a new U3K
-package may be prepared. Separate `D-P3.6-U3K-STORAGE-R2-AUTH` remains
-mandatory before any machine action.
+`D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` is recorded. Final U3K preparation
+package SHA-256 is
+`4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
+It cannot receive `D-P3.6-U3K-STORAGE-R2-AUTH` because all ten machine handlers
+remain unimplemented. A future executable package requires separately
+authorized and accepted handler implementation and a current runtime binding.
 
 Neither package changes a capability profile or gate. `P36-G1`, `P36-G2`,
 `P36-G4`, and `P36-G5` remain blocked. No Defender proposal may be prepared

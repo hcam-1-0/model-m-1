@@ -241,13 +241,15 @@ All six U3H policies and the U3I/U3J proposal decisions are accepted. The
 contract-only runner and generated harness are implemented under U3I, while
 U3J remains planning-only. The contract-only U3I implementation evidence is
 accepted. One exact runtime-binding attempt was authorized, succeeded, and
-consumed its authority. The next action is owner review of evidence SHA-256
-`4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`
-as `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` while the binding remains valid
-through `2026-09-01T19:36:06.820Z`. Runner execution, storage or Defender
-access, and profile admission remain blocked. A final U3K execution package
-may be prepared only after that exact evidence acceptance; a Defender-only
-proposal remains sequenced after accepted storage evidence.
+consumed its authority. Exact `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` is
+recorded for evidence SHA-256
+`4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`,
+and the final U3K preparation package is sealed under SHA-256
+`4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
+Runner execution, storage or Defender access, and profile admission remain
+blocked. The package is non-executable because the ten U3K machine handlers are
+unimplemented. A Defender-only proposal remains sequenced after accepted
+storage evidence.
 
 The owner may review the portable planning record through
 `D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE`; acceptance would not activate it.

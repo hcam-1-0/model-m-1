@@ -393,8 +393,17 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   `643226F1436CACB8E12994A6A81CEB1529E34BA5B289C1766E219A714267F7B7`,
   and `4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`.
   The binding expires at `2026-09-01T19:36:06.820Z`; exact
-  `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` remains pending. Neither the
-  runtime nor runner was executed.
+  `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` is recorded. Neither the runtime
+  nor runner was executed.
+- `p3-6-quarantine-transaction-runner-r0-runtime-binding-acceptance.json`:
+  exact owner acceptance of the read-only evidence; SHA-256 is
+  `F19E6660FBD9545F74B8B532F6A9EB4D01ACF0543DE45CD54C8CB41C868DB54E`.
+- `p3-6-quarantine-storage-r2-final-u3k-authorization-proposal.json` and
+  `p3-6-quarantine-storage-r2-final-u3k-authorization-package.json`: final U3K
+  preparation artifacts sealed under package SHA-256
+  `4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
+  The package is non-effective: all ten machine handlers are unimplemented,
+  so `D-P3.6-U3K-STORAGE-R2-AUTH` is not requestable against it.
 - `p3-6-quarantine-storage-r2-action-spec.json`: storage-only ten-action design
   with exact `Modify | Synchronize` normalization, independent DACL tuple
   checks, generated zero-retention probe, and no Defender actions.

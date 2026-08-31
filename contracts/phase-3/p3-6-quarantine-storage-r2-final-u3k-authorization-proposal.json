@@ -1,0 +1,113 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_storage_r2_final_u3k_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-STORAGE-R2-FINAL-U3K-AUTHORIZATION-PROPOSAL",
+  "status": "prepared_non_effective_execution_authorization_not_requestable_machine_handlers_unimplemented",
+  "prepared_on": "2026-09-01",
+  "preparation_authority_decision_id": "D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE",
+  "runtime_binding_acceptance": {
+    "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-runtime-binding-acceptance.json",
+    "sha256": "F19E6660FBD9545F74B8B532F6A9EB4D01ACF0543DE45CD54C8CB41C868DB54E",
+    "accepted_evidence_sha256": "4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C",
+    "runtime_sha256": "362A356CE7F0940EC74F73A8FC2C990A2CC24A38A11C90BBD8ECA947110AD139",
+    "valid_until": "2026-09-01T19:36:06.820Z",
+    "final_U3K_package_preparation_authorized": true,
+    "storage_attempt_authorized": false
+  },
+  "accepted_storage_design": {
+    "proposal_package": "contracts/phase-3/p3-6-quarantine-storage-r2-authorization-proposal-package.json",
+    "proposal_package_sha256": "8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-storage-r2-proposal-acceptance.json",
+    "acceptance_sha256": "6F68EB164DC662086F7444D49638FFAB95F7FF1586469BB5E5E2DC876185AAA5",
+    "action_spec": "contracts/phase-3/p3-6-quarantine-storage-r2-action-spec.json",
+    "action_spec_sha256": "1825C65DFEEEF02EA12AF3D506385657870DCB631D2CDB157DB0F9C919C2DE2A",
+    "logical_node_id": "LAB-LAPTOP-01",
+    "exact_candidate_root": "F:\\HCAM-Quarantine",
+    "required_initial_state": "absent",
+    "action_ids": [
+      "U3K-A01-UTC-CLOCK-START",
+      "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY",
+      "U3K-A03-AUTHORIZATION-RECORD",
+      "U3K-A04-F-DRIVE-INFO",
+      "U3K-A05-CANONICAL-PATH-AND-ABSENCE",
+      "U3K-A06-PROTECTED-DACL-CONSTRUCT",
+      "U3K-A07-SECURITY-AT-CREATE-ROOT",
+      "U3K-A08-NORMALIZED-DACL-VERIFY",
+      "U3K-A09-ATOMIC-CAPABILITY-PROBE",
+      "U3K-A10-NORMALIZE-HASH-WRITE"
+    ],
+    "maximum_attempts": 1,
+    "maximum_probe_bytes": 4096,
+    "network_access": false,
+    "automatic_retry": false,
+    "Defender_or_scanner_actions": 0
+  },
+  "accepted_runner_binding": {
+    "implementation_package": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-package.json",
+    "implementation_package_sha256": "71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67",
+    "implementation_acceptance": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-acceptance.json",
+    "implementation_acceptance_sha256": "70F2EE1133648F16CA6298C25FB6C46F56AA7C88FBA97553BDD0A2F55D90C63A",
+    "runner_source": "tools/phase36_quarantine_transaction_runner.ps1",
+    "runner_source_sha256": "C0020A4C53B59486CE8842302C918821F145F0228F4006C3D6B67BF594DB5B15",
+    "generated_contract_vectors_passed": 20,
+    "machine_action_handlers_implemented": false,
+    "machine_action_placeholders_fail_closed": true,
+    "runner_execution_authorized": false
+  },
+  "readiness_reconciliation": {
+    "U3J_storage_design_accepted": true,
+    "runner_contract_package_accepted": true,
+    "runner_source_digest_bound": true,
+    "runtime_binding_evidence_accepted": true,
+    "runtime_binding_current_at_preparation": true,
+    "machine_action_handlers_implemented": false,
+    "machine_action_handler_tests_exist": false,
+    "machine_action_handler_implementation_accepted": false,
+    "final_U3K_package_preparation_complete": true,
+    "execution_authorization_requestable": false,
+    "D_P3_6_U3K_STORAGE_R2_AUTH_currently_usable": false,
+    "blocking_reason_codes": [
+      "runner_machine_action_handlers_unimplemented",
+      "machine_action_handler_implementation_not_authorized",
+      "machine_action_handler_evidence_not_sealed_or_accepted"
+    ]
+  },
+  "required_before_an_executable_U3K_package_can_be_regenerated": [
+    "separate_digest_bound_owner_authorization_for_machine_action_handler_implementation",
+    "implement_only_the_ten_sealed_U3K_handlers_under_that_authority",
+    "generated_and_static_failure_path_tests_for_every_handler",
+    "owned_lab_validation_only_under_separate_machine_action_authority",
+    "seal_and_obtain_owner_acceptance_of_exact_handler_source_and_evidence",
+    "obtain_a_fresh_exact_runtime_binding_if_the_current_binding_has_expired",
+    "regenerate_a_new_final_U3K_package_bound_to_the_new_source_and_current_runtime",
+    "obtain_separate_D_P3_6_U3K_STORAGE_R2_AUTH_against_that_new_package_before_any_F_access"
+  ],
+  "reserved_future_execution_decision_id": "D-P3.6-U3K-STORAGE-R2-AUTH",
+  "reserved_future_execution_statement_template_not_currently_usable": "D-P3.6-U3K-STORAGE-R2-AUTH: I, mayank-admin, authorize one storage-only attempt against final executable U3K package digest <FUTURE_EXECUTABLE_U3K_PACKAGE_DIGEST_SHA256>, accepted implemented runner digest <FUTURE_RUNNER_SOURCE_SHA256>, and current accepted runtime binding digest <FUTURE_RUNTIME_BINDING_EVIDENCE_SHA256> within the package validity window on LAB-LAPTOP-01 for exact absent root F:\\HCAM-Quarantine. The attempt is limited to sealed U3K-A01 through U3K-A10 and exact sanitized outputs. Failure consumes the authorization. This does not authorize any retry, existing-root change, other path or volume, B:, F:\\h cam, Defender/scanners, downloads, artifacts, models, inference, media/data, containers/Kubernetes, deployment, or remote Git.",
+  "continuing_non_authorization": [
+    "no_D_P3_6_U3K_STORAGE_R2_AUTH_request_against_this_non_executable_package",
+    "no_machine_action_handler_implementation_or_invocation",
+    "no_runner_or_runtime_execution",
+    "no_F_volume_path_directory_ACL_probe_or_cleanup_access",
+    "no_B_drive_F_h_cam_or_other_path_or_volume_access",
+    "no_Defender_ModelScan_or_other_scanner_action",
+    "no_download_artifact_dependency_model_or_dataset_acquisition",
+    "no_model_inference_validation_benchmark_media_or_data_access",
+    "no_profile_activation_container_Kubernetes_or_deployment_action",
+    "no_remote_git"
+  ],
+  "gate_effect": {
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked",
+    "machine_action_handler_implementation_authorized": false,
+    "runner_execution_authorized": false,
+    "storage_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "Defender_or_scanner_action_authorized": false,
+    "artifact_acquisition_authorized": false,
+    "profile_activation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  }
+}

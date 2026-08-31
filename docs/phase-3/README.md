@@ -106,9 +106,12 @@ non-effective runtime-binding authorization package is sealed under digest
 and `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` was recorded and consumed by one
 successful read-only attempt. Evidence SHA-256 is
 `4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`;
-exact `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` remains pending. The runner
-source was parser checked but not executed, all machine handlers remain
-unimplemented, and no repeat runtime query, `F:` access, ACL action, probe,
+exact `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` is recorded. The resulting
+final U3K preparation package has SHA-256
+`4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
+It is non-effective because the runner's ten machine handlers remain
+unimplemented; `D-P3.6-U3K-STORAGE-R2-AUTH` is not requestable. No repeat
+runtime query, runner execution, `F:` access, ACL action, probe,
 Defender/scanner work, or retry is authorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
@@ -222,6 +225,7 @@ autonomous enforcement.
 | [P3.6 quarantine runtime-binding R0 proposal](p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization-proposal.md) | Immutable one-attempt read-only authorization package, now consumed |
 | [P3.6 quarantine runtime-binding R0 evidence review](p3-6-quarantine-transaction-runner-r0-runtime-binding-evidence-review.md) | Successful exact runtime and runner-source hashes, cache-only trust result, non-action evidence, validity, and pending owner acceptance |
 | [P3.6 quarantine storage R2 authorization proposal](p3-6-quarantine-storage-r2-authorization-proposal.md) | Sealed U3J storage-only planning proposal with corrected DACL semantics; final U3K execution package blocked on runner evidence and separate authority |
+| [P3.6 final U3K storage package preparation](p3-6-quarantine-storage-r2-final-u3k-authorization-proposal.md) | Runtime evidence accepted and final package sealed; execution remains blocked by ten unimplemented runner machine handlers |
 
 ## Non-Negotiable Boundary
 

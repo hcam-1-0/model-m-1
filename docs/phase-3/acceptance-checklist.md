@@ -274,8 +274,12 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
 - [x] The exact runtime and runner-source binding succeeded without executing
   either file. Evidence SHA-256 is
   `4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`.
-- [ ] `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` accepts the exact evidence
+- [x] `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` accepts the exact evidence
   while its binding remains valid through `2026-09-01T19:36:06.820Z`.
+- [x] The final U3K preparation package is sealed under SHA-256
+  `4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
+- [ ] All ten U3K machine handlers are separately authorized, implemented,
+  tested, sealed, and accepted before an executable U3K package is regenerated.
 - [ ] An implemented runner, twenty passing generated vectors, exact runtime
   binding, sealed implementation evidence, final U3K package, and separate
   `D-P3.6-U3K-STORAGE-R2-AUTH` exist before any `F:` or ACL action.
@@ -292,9 +296,10 @@ media/data access, deployment, and remote Git remain unauthorized. Accepted
 U3H planning selections produced sealed U3I/U3J proposals and both requested
 owner statements are accepted. U3I's contract-only implementation evidence is
 also accepted. Its separate runtime-binding authorization was consumed by one
-successful read-only attempt. Exact evidence acceptance is pending; runner
-execution, another runtime observation, machine access, and every retry remain
-unauthorized.
+successful read-only attempt, and exact evidence acceptance is recorded. The
+final U3K preparation package is sealed but non-executable because all ten
+machine handlers remain unimplemented. Runner execution, another runtime
+observation, machine access, and every retry remain unauthorized.
 
 ## Tier A Implementation Acceptance
 

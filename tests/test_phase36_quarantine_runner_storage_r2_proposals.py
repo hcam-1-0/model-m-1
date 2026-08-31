@@ -405,22 +405,23 @@ def test_ledgers_and_human_records_point_to_current_runtime_binding_gate() -> No
         )
         assert runtime_binding["owner_authorization_pending"] is False
         assert runtime_binding["runtime_binding_observation_completed"] is True
-        assert runtime_binding["owner_evidence_acceptance_pending"] is True
+        assert runtime_binding["owner_evidence_acceptance_pending"] is False
+        assert runtime_binding["final_U3K_package_preparation_authorized"] is True
         assert runtime_binding["runtime_binding_observation_authorized"] is False
         assert runtime_binding["runner_execution_authorized"] is False
 
     action = ledgers[2]["next_portable_planning_action"]
-    assert action["decision_ids"] == [
-        "D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE",
-    ]
-    assert action["evidence_sha256"] == (
-        "4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C"
+    assert action["decision_ids"] == []
+    assert action["final_U3K_package_digest_sha256"] == (
+        "4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E"
     )
     assert action["owner_implementation_acceptance_pending"] is False
     assert action["owner_runtime_binding_authorization_pending"] is False
-    assert action["owner_runtime_binding_evidence_acceptance_pending"] is True
+    assert action["owner_runtime_binding_evidence_acceptance_pending"] is False
+    assert action["machine_handler_proposal_preparation_authority"] is True
+    assert action["machine_handler_implementation_authority"] is False
     assert action["runtime_binding_observation_authority"] is False
-    assert action["transaction_runner_implementation_authority"] is True
+    assert action["transaction_runner_implementation_authority"] is False
     assert action["transaction_runner_execution_authority"] is False
     assert action["another_attempt_authority"] is False
 
@@ -438,3 +439,4 @@ def test_ledgers_and_human_records_point_to_current_runtime_binding_gate() -> No
     assert "DR-0071" in register
     assert "DR-0072" in register
     assert "DR-0073" in register
+    assert "DR-0074" in register

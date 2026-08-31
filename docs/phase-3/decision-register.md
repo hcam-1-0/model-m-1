@@ -1345,8 +1345,7 @@ Machine-readable package:
 
 ### DR-0073: Exact PowerShell 7 runtime binding succeeded
 
-Status: generated evidence sealed; owner evidence acceptance pending on
-2026-09-01.
+Status: exact evidence accepted on 2026-09-01.
 
 The single authorized attempt classified only the exact fixed runtime path and
 its fixed parent components, read bounded version and size metadata, hashed the
@@ -1363,13 +1362,39 @@ Authorization, result, and evidence SHA-256 values are respectively
 and `4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`.
 The exact binding remains valid through `2026-09-01T19:36:06.820Z`.
 
-Decision `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` is pending. Acceptance may
-authorize preparation of a separate final U3K package only; it cannot execute
-the runner, access storage, query scanners, acquire artifacts, activate a
-profile, deploy, or perform remote Git.
+Decision `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` accepts the exact evidence
+and authorizes preparation of a separate final U3K package only; it cannot
+execute the runner, access storage, query scanners, acquire artifacts, activate
+a profile, deploy, or perform remote Git. The acceptance-record SHA-256 is
+`F19E6660FBD9545F74B8B532F6A9EB4D01ACF0543DE45CD54C8CB41C868DB54E`.
 
 Evidence review:
 [`p3-6-quarantine-transaction-runner-r0-runtime-binding-evidence-review.md`](p3-6-quarantine-transaction-runner-r0-runtime-binding-evidence-review.md).
+
+### DR-0074: Final U3K preparation package sealed but non-executable
+
+Status: preparation complete; machine-handler implementation remains blocked
+on 2026-09-01.
+
+The accepted runtime binding authorized preparation of the separate final U3K
+package. Package SHA-256 is
+`4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
+It binds the accepted U3J storage design, exact runner source, accepted runtime
+binding, target `F:\HCAM-Quarantine`, one-attempt limit, and actions `U3K-A01`
+through `U3K-A10`.
+
+The package is deliberately non-effective. The accepted runner's ten machine
+handlers still throw `P36_MACHINE_HANDLER_NOT_IMPLEMENTED`; no machine-handler
+implementation or evidence has been authorized, produced, or accepted.
+Therefore `D-P3.6-U3K-STORAGE-R2-AUTH` is not requestable against this package.
+A future executable package requires separately authorized and accepted
+handler implementation plus a current accepted runtime binding.
+
+Human review:
+[`p3-6-quarantine-storage-r2-final-u3k-authorization-proposal.md`](p3-6-quarantine-storage-r2-final-u3k-authorization-proposal.md).
+
+Machine-readable package:
+[`p3-6-quarantine-storage-r2-final-u3k-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-storage-r2-final-u3k-authorization-package.json).
 
 ## Decisions Explicitly Deferred
 

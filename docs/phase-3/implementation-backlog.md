@@ -442,7 +442,13 @@ and `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` was consumed by one exact read-only
 attempt. The attempt succeeded and sealed
 evidence SHA-256
 `4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`;
-owner evidence acceptance remains pending.
+owner evidence acceptance is recorded as
+`D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` under acceptance SHA-256
+`F19E6660FBD9545F74B8B532F6A9EB4D01ACF0543DE45CD54C8CB41C868DB54E`.
+The final U3K preparation package is sealed under SHA-256
+`4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`,
+but execution authorization is not requestable because all ten machine handlers
+remain unimplemented.
 
 Planning records:
 
@@ -537,15 +543,15 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner inputs and separate authority:
 
-- exactly review `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` against evidence
-  SHA-256
-  `4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`
-  before `2026-09-01T19:36:06.820Z`;
+- prepare a separate digest-bound machine-handler implementation proposal; this
+  planning step grants no implementation or execution authority;
+- require explicit owner authorization before implementing any U3K machine
+  handler, then seal and separately accept exact source and evidence;
 - do not repeat runtime observation after the consumed one-attempt authority;
   do not execute `pwsh.exe` or the runner;
-- only after accepted exact runtime-binding evidence may a new final U3K
-  package be prepared and separately authorized as
-  `D-P3.6-U3K-STORAGE-R2-AUTH` before one storage attempt;
+- regenerate a future executable U3K package only after accepted handler
+  implementation and a current runtime binding; only that future package may
+  become eligible for separate `D-P3.6-U3K-STORAGE-R2-AUTH`;
 - prepare the Defender-only proposal only after storage evidence is accepted;
   that later attempt also requires separate digest-bound authority;
 - treat U3G package digest

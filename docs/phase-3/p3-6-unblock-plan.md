@@ -235,14 +235,18 @@ Exact `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` was recorded and consumed by one
 successful read-only attempt. The next action is owner review of evidence
 SHA-256
 `4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`
-as `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE`.
+as `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE`; that acceptance is now
+recorded. Final U3K preparation package SHA-256 is
+`4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
 
 The runner was parser checked but not executed. All machine handlers remain
 unimplemented and fail closed. The consumed runtime-binding authority permitted
 only one read-only observation of the exact PowerShell 7 file and accepted
 runner source hash; it authorized neither execution nor storage. The final U3K
-storage execution package cannot be prepared until that evidence is accepted
-while valid through `2026-09-01T19:36:06.820Z`. A Defender-only proposal remains
+storage preparation package is now sealed, but it is non-executable because
+all ten machine handlers remain unimplemented. The next planning action is a
+separate machine-handler implementation authorization proposal; no
+implementation authority exists yet. A Defender-only proposal remains
 sequenced after successful storage evidence is accepted. No prior
 decision authorizes a retry, `F:` or ACL access, scanner action, artifact
 access, runtime/model execution, profile activation, validation, or deployment.

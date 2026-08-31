@@ -232,23 +232,23 @@ def test_next_action_is_non_effective_runtime_binding_review() -> None:
     action = unblock["next_portable_planning_action"]
 
     assert action["action"] == (
-        "owner_review_of_exact_U3I_runtime_binding_R0_evidence"
+        "prepare_non_effective_U3K_machine_handler_implementation_"
+        "authorization_proposal"
     )
-    assert action["decision_ids"] == [
-        "D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE",
-    ]
-    assert action["evidence_sha256"] == (
-        "4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C"
+    assert action["decision_ids"] == []
+    assert action["final_U3K_package_digest_sha256"] == (
+        "4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E"
     )
     assert action["owner_implementation_acceptance_pending"] is False
     assert action["owner_runtime_binding_authorization_pending"] is False
-    assert action["owner_runtime_binding_evidence_acceptance_pending"] is True
-    assert action["runtime_binding_proposal_preparation_authority"] is True
+    assert action["owner_runtime_binding_evidence_acceptance_pending"] is False
+    assert action["machine_handler_proposal_preparation_authority"] is True
+    assert action["machine_handler_implementation_authority"] is False
     assert action["runtime_binding_observation_authority"] is False
     assert action["Defender_only_proposal_preparation_authority_now"] is False
     assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False
-    assert action["transaction_runner_implementation_authority"] is True
+    assert action["transaction_runner_implementation_authority"] is False
     assert action["transaction_runner_execution_authority"] is False
 
 
