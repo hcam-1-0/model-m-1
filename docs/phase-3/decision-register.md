@@ -1169,6 +1169,30 @@ Human proposal:
 Machine-readable package:
 [`p3-6-quarantine-failure-analysis-r2-decision-package.json`](../../contracts/phase-3/p3-6-quarantine-failure-analysis-r2-decision-package.json).
 
+### DR-0066: U3H failure-analysis policies accepted
+
+Status: `A/A/A/A/A/A` accepted as non-effective planning policy on 2026-08-31.
+
+`mayank-admin` explicitly selected `D-P3.6-U3H-001` through `006` as
+`A/A/A/A/A/A` against immutable package SHA-256
+`19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`.
+The accepted policies require exact `Modify | Synchronize` normalization,
+independent three-tuple DACL checks, native Windows PowerShell 5.1 scalar
+projection, a bounded trust-gated Defender platform fallback, storage-first
+attempt decomposition, and a content-hashed reviewable runner proposal.
+
+Acceptance record SHA-256 is
+`802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3`.
+It authorizes preparation only of a non-effective reviewable runner proposal
+and storage-only action/authorization proposal. A Defender-only proposal may be
+prepared only after storage evidence is accepted. No retry, `F:` or ACL action,
+Defender query/hash/trust action, scanner action, runner implementation,
+acquisition, runtime/model execution, profile activation, deployment, or
+remote Git action is authorized.
+
+Machine-readable acceptance:
+[`p3-6-quarantine-failure-analysis-r2-owner-decisions.json`](../../contracts/phase-3/p3-6-quarantine-failure-analysis-r2-owner-decisions.json).
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

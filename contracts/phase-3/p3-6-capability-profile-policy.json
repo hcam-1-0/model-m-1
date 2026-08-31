@@ -257,8 +257,13 @@
     "package_manifest": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-decision-package.json",
     "package_digest_sha256": "19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B",
     "recommended_selection": "A/A/A/A/A/A",
-    "selected_options": null,
-    "owner_selections_pending": true,
+    "selected_options": "A/A/A/A/A/A",
+    "owner_selections_pending": false,
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-owner-decisions.json",
+    "acceptance_sha256": "802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3",
+    "transaction_runner_proposal_preparation_authorized": true,
+    "storage_only_proposal_preparation_authorized": true,
+    "Defender_only_proposal_preparation_authorized_now": false,
     "another_attempt_authorized": false,
     "F_or_ACL_action_authorized": false,
     "Defender_query_hash_or_trust_action_authorized": false,
@@ -267,7 +272,7 @@
     "artifact_or_dependency_acquisition_authorized": false,
     "resolver_eligible": false,
     "profile_activation_authorized": false,
-    "status": "sealed_non_effective_owner_selections_pending"
+    "status": "owner_AAAAAA_policy_selections_accepted_non_effective_proposal_preparation_only"
   },
   "portable_cpu_profile_proposal": {
     "acceptance_record": "contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json",

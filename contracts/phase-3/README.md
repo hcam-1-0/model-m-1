@@ -336,6 +336,11 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-quarantine-failure-analysis-r2-decision-package.json`: immutable U3H
   failure-analysis decision package whose SHA-256 is
   `19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`.
+- `p3-6-quarantine-failure-analysis-r2-owner-decisions.json`: exact
+  `A/A/A/A/A/A` planning-policy acceptance whose SHA-256 is
+  `802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3`;
+  it authorizes proposal preparation only and no implementation or machine
+  action.
 
 Verify all tracked snapshots:
 

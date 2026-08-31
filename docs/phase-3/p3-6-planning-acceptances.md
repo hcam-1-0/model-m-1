@@ -130,10 +130,12 @@ usable product version. No retry is authorized.
 
 Planning-only U3H failure analysis is sealed under digest
 `19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`.
-Its recommended `A/A/A/A/A/A` policies are not accepted or selected. The exact
-owner must select `D-P3.6-U3H-001` through `006`; no selection may be inferred
-from continuation language, U3G authority, or any earlier decision. The sealed
-package itself authorizes no runner implementation or machine action.
+Its recommended `A/A/A/A/A/A` policies are explicitly selected by
+`mayank-admin`. Acceptance record SHA-256
+`802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3`
+authorizes preparation only of a reviewable runner proposal and a storage-only
+proposal. The Defender-only proposal remains sequenced after accepted storage
+evidence. No runner implementation or machine action is authorized.
 
 ## Model Metadata Proposal
 
@@ -155,7 +157,7 @@ bindings are sealed in a regenerated package.
 | `P36-G1` | Blocked: no acquired comparison artifacts, H-CAM evidence, or approved champion/fallback |
 | `P36-G2` | Blocked: R1, U3C, and U3D planning policies exist; actual compatibility artifacts, six other resolver inputs, other profiles, and generated validation evidence remain missing |
 | `P36-G3` | Passed |
-| `P36-G4` | Blocked: U3E and U3G failed closed and are consumed; U3H owner selections, a passing storage attestation, complete scanner bindings, and acquisition authority remain pending |
+| `P36-G4` | Blocked: U3E and U3G failed closed and are consumed; U3H planning choices are accepted, while a passing storage attestation, complete scanner bindings, and acquisition authority remain pending |
 | `P36-G5` | Blocked: no digest-bound implementation/runtime authorization |
 
 ## Continuing Boundary

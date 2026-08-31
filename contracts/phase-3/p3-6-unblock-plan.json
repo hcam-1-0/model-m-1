@@ -248,8 +248,13 @@
       "D-P3.6-U3H-006"
     ],
     "recommended_selection": "A/A/A/A/A/A",
-    "selected_options": null,
-    "owner_selections_pending": true,
+    "selected_options": "A/A/A/A/A/A",
+    "owner_selections_pending": false,
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-owner-decisions.json",
+    "acceptance_sha256": "802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3",
+    "transaction_runner_proposal_preparation_authorized": true,
+    "storage_only_proposal_preparation_authorized": true,
+    "Defender_only_proposal_preparation_authorized_now": false,
     "another_attempt_authorized": false,
     "F_or_ACL_action_authorized": false,
     "Defender_query_hash_or_trust_action_authorized": false,
@@ -258,7 +263,7 @@
     "artifact_or_dependency_acquisition_authorized": false,
     "profile_resolver_eligible": false,
     "profile_activation_authorized": false,
-    "status": "sealed_non_effective_owner_selections_pending"
+    "status": "owner_AAAAAA_policy_selections_accepted_non_effective_proposal_preparation_only"
   },
   "model_artifact_research": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
@@ -300,7 +305,7 @@
     "status": "owner_AAAA_policy_selections_accepted_no_current_refresh_profile_or_collection_authority"
   },
   "next_portable_planning_action": {
-    "action": "owner_select_D_P3_6_U3H_001_through_006_against_exact_sealed_failure_analysis_decision_package",
+    "action": "prepare_non_effective_content_hashed_transaction_runner_and_storage_only_action_authorization_proposals",
     "authority": "D-P3.6-PLAN-AUTH",
     "decision_ids": [
       "D-P3.6-U3H-001",
@@ -314,7 +319,13 @@
     "package_digest_sha256": "19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B",
     "package_manifest": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-decision-package.json",
     "recommended_selection": "A/A/A/A/A/A",
-    "owner_selections_pending": true,
+    "selected_options": "A/A/A/A/A/A",
+    "owner_selections_pending": false,
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-owner-decisions.json",
+    "acceptance_sha256": "802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3",
+    "transaction_runner_proposal_preparation_authority": true,
+    "storage_only_proposal_preparation_authority": true,
+    "Defender_only_proposal_preparation_authority_now": false,
     "retry_authorized": false,
     "another_attempt_authority": false,
     "F_or_ACL_action_authority": false,
@@ -323,15 +334,19 @@
     "implementation_or_runtime_authority": false,
     "artifact_or_dependency_acquisition_authority": false,
     "profile_activation_authority": false,
-    "status": "sealed_non_effective_owner_selections_pending"
+    "status": "authorized_planning_only_non_effective_proposal_preparation"
   },
   "next_planning_action": {
-    "action": "owner_review_exact_U3H_failure_analysis_decisions_before_any_new_runner_storage_or_Defender_package",
+    "action": "prepare_reviewable_runner_and_storage_only_non_effective_proposals_under_accepted_U3H_policy",
     "authority": "D-P3.6-PLAN-AUTH",
     "package_digest_sha256": "19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B",
-    "owner_selections_pending": true,
+    "acceptance_sha256": "802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3",
+    "owner_selections_pending": false,
+    "transaction_runner_proposal_preparation_authority": true,
+    "storage_only_proposal_preparation_authority": true,
+    "Defender_only_proposal_preparation_authority_now": false,
     "implementation_or_runtime_authority": false,
-    "status": "blocked_owner_U3H_selections_required"
+    "status": "authorized_planning_only_non_effective_proposal_preparation"
   },
   "parallel_owner_review_actions": [
     {
@@ -352,7 +367,7 @@
   ],
   "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
   "runtime_execution_authorized": false,
-  "status": "planning_only_U3E_and_U3G_attempts_consumed_failed_closed_U3F_remediation_AAAAAA_accepted_U3H_failure_analysis_AAAAAA_recommended_owner_selections_pending_no_retry_acquisition_activation_validation_or_execution_authority",
+  "status": "planning_only_U3E_and_U3G_attempts_consumed_failed_closed_U3F_remediation_and_U3H_failure_analysis_AAAAAA_accepted_runner_and_storage_proposal_preparation_only_no_retry_acquisition_activation_validation_or_execution_authority",
   "work_items": [
     {
       "allowed_now": [
@@ -484,7 +499,7 @@
         "contracts/phase-3/p3-6-quarantine-remediation-r1-evidence.json",
         "docs/phase-3/p3-6-quarantine-remediation-r1-attempt.md"
       ],
-      "state": "portable_cpu_R0_inventory_admission_AAAA_and_portable_R1_U3B_AAAA_planning_accepted_portable_compatibility_U3C_AAAA_supply_chain_U3D_AAAAA_and_remediation_U3F_AAAAAA_planning_accepted_U3E_and_U3G_consumed_failed_closed_U3H_failure_analysis_AAAAAA_recommended_owner_selections_pending_storage_Defender_ModelScan_passive_inspector_other_profiles_evidence_and_artifacts_pending",
+      "state": "portable_cpu_R0_inventory_admission_AAAA_and_portable_R1_U3B_AAAA_planning_accepted_portable_compatibility_U3C_AAAA_supply_chain_U3D_AAAAA_remediation_U3F_AAAAAA_and_failure_analysis_U3H_AAAAAA_planning_accepted_U3E_and_U3G_consumed_failed_closed_runner_and_storage_proposal_preparation_only_Defender_ModelScan_passive_inspector_other_profiles_evidence_and_artifacts_pending",
       "work_item_id": "P36-U3"
     },
     {

@@ -100,9 +100,12 @@ The follow-up planning-only
 is sealed under digest
 `19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`.
 It separates confirmed U3G evidence from high-confidence hypotheses and offers
-six pending owner choices for exact allow-mask normalization, independent DACL
-tuples, native Defender projection, a trust-gated platform fallback, split
-attempts, and reviewable runner mechanics. It grants no retry or implementation
+six owner choices for exact allow-mask normalization, independent DACL tuples,
+native Defender projection, a trust-gated platform fallback, split attempts,
+and reviewable runner mechanics. The owner selected `A/A/A/A/A/A` under
+acceptance SHA-256
+`802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3`.
+This authorizes proposal preparation only and grants no retry or implementation
 authority.
 
 Acceptance record:

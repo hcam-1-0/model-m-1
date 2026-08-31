@@ -216,11 +216,15 @@ analysis for the exact DACL semantic mismatch and unavailable Defender product
 version. That analysis is complete and the non-effective U3H owner decision
 package is sealed under digest
 `19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`.
-The next action is explicit owner selection of `D-P3.6-U3H-001` through `006`.
-The recommended selection is `A/A/A/A/A/A`. Neither the sealed U3H package,
-prior acceptances, nor consumed U3G is authority to implement a runner, retry
-storage, change ACLs, query/hash/trust-check or execute scanners, activate or
-admit a profile, acquire or inspect artifacts, execute a runtime, run
+The owner selected `D-P3.6-U3H-001` through `006` as `A/A/A/A/A/A` under
+acceptance SHA-256
+`802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3`.
+The next action is preparation of a non-effective content-hashed runner
+proposal and separate storage-only action/authorization proposal. Neither the
+acceptance, sealed U3H package, prior acceptances, nor consumed U3G is authority
+to implement a runner, retry storage, change ACLs, query/hash/trust-check or
+execute scanners, activate or admit a profile, acquire or inspect artifacts,
+execute a runtime, run
 validation, or deploy.
 
 Before `D-P3.6-MODEL-RESEARCH-R1-AUTH` can be prepared, an exact local,

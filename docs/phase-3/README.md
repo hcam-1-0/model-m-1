@@ -85,8 +85,12 @@ The planning-only U3H failure analysis is now sealed under digest
 It recommends exact `Modify | Synchronize` normalization, independent DACL
 tuple checks, native Windows PowerShell Defender projection, a bounded latest
 platform fallback, separate storage/Defender attempts, and a reviewable
-content-hashed runner proposal. All six owner selections remain pending and
-the package grants no implementation or machine authority.
+content-hashed runner proposal. The owner has now selected `A/A/A/A/A/A`;
+acceptance record SHA-256
+`802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3`
+authorizes preparation only of a reviewable runner proposal and storage-only
+proposal. A Defender-only proposal remains sequenced after accepted storage
+evidence. No implementation, retry, or machine action is authorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -194,7 +198,7 @@ autonomous enforcement.
 | [P3.6 quarantine remediation R1 decision proposal](p3-6-quarantine-remediation-r1-proposal.md) | Accepted U3F `A/A/A/A/A/A` choices for protected security-at-create ACLs, explicit principals, exact Defender offline trust binding, separate ModelScan bootstrap, and bounded retry scope |
 | [P3.6 quarantine remediation R1 authorization proposal](p3-6-quarantine-remediation-r1-authorization-proposal.md) | Immutable U3G one-attempt security-at-create and Defender-binding authorization package, now consumed |
 | [P3.6 quarantine remediation R1 consumed attempt](p3-6-quarantine-remediation-r1-attempt.md) | Sanitized failed-closed DACL and Defender outcome, cleanup evidence, exact hashes, and continuing non-authorization |
-| [P3.6 quarantine failure analysis R2 decision proposal](p3-6-quarantine-failure-analysis-r2-proposal.md) | Sealed U3H Microsoft-sourced ACL and Defender failure analysis with six pending `A-D` owner choices and no retry authority |
+| [P3.6 quarantine failure analysis R2 decision proposal](p3-6-quarantine-failure-analysis-r2-proposal.md) | Sealed U3H Microsoft-sourced ACL and Defender failure analysis; `A/A/A/A/A/A` is accepted for proposal preparation only with no retry authority |
 
 ## Non-Negotiable Boundary
 

@@ -149,7 +149,7 @@ def test_canonical_ledgers_record_acceptance_without_opening_G2() -> None:
     assert unblock["runtime_execution_authorized"] is False
 
 
-def test_accepted_U3F_path_records_consumed_U3G_and_U3H_owner_gate() -> None:
+def test_accepted_U3F_path_records_U3H_proposal_preparation_gate() -> None:
     acceptance = _read(ACCEPTANCE_PATH)
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     action = unblock["next_portable_planning_action"]
@@ -159,18 +159,24 @@ def test_accepted_U3F_path_records_consumed_U3G_and_U3H_owner_gate() -> None:
         "authorization_prerequisites"
     )
     assert action["action"] == (
-        "owner_select_D_P3_6_U3H_001_through_006_against_exact_sealed_"
-        "failure_analysis_decision_package"
+        "prepare_non_effective_content_hashed_transaction_runner_and_storage_"
+        "only_action_authorization_proposals"
     )
     assert action["package_digest_sha256"] == U3H_PACKAGE_DIGEST
     assert action["candidate_root"] == "F:\\HCAM-Quarantine"
     assert action["decision_ids"] == [
         f"D-P3.6-U3H-{index:03d}" for index in range(1, 7)
     ]
-    assert action["owner_selections_pending"] is True
+    assert action["selected_options"] == "A/A/A/A/A/A"
+    assert action["owner_selections_pending"] is False
+    assert action["transaction_runner_proposal_preparation_authority"] is True
+    assert action["storage_only_proposal_preparation_authority"] is True
+    assert action["Defender_only_proposal_preparation_authority_now"] is False
     assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False
-    assert action["status"] == "sealed_non_effective_owner_selections_pending"
+    assert action["status"] == (
+        "authorized_planning_only_non_effective_proposal_preparation"
+    )
 
 
 def test_human_records_and_indexes_are_synchronized() -> None:

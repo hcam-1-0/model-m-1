@@ -14,7 +14,11 @@ DECISIONS_PATH = CONTRACTS / f"{STEM}-decision-packet.json"
 PROPOSAL_PATH = CONTRACTS / f"{STEM}-proposal.json"
 DOCUMENT_PATH = DOCS / f"{STEM}-proposal.md"
 PACKAGE_PATH = CONTRACTS / f"{STEM}-decision-package.json"
+ACCEPTANCE_PATH = CONTRACTS / f"{STEM}-owner-decisions.json"
 PACKAGE_DIGEST = "19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B"
+ACCEPTANCE_DIGEST = (
+    "802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3"
+)
 U3G_PACKAGE_DIGEST = (
     "C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B"
 )
@@ -97,6 +101,48 @@ def test_recommended_effect_is_bounded_and_non_executable() -> None:
             assert value is False
 
 
+def test_owner_acceptance_binds_exact_package_and_all_six_A_selections() -> None:
+    acceptance = _read(ACCEPTANCE_PATH)
+
+    assert _sha256(ACCEPTANCE_PATH) == ACCEPTANCE_DIGEST
+    assert acceptance["package_digest_sha256"] == PACKAGE_DIGEST
+    assert acceptance["accepted_by"] == "mayank-admin"
+    assert acceptance["owner_statement_received"] == "\n".join(
+        f"D-P3.6-U3H-{index:03d}: A" for index in range(1, 7)
+    )
+    assert [item["decision_id"] for item in acceptance["selections"]] == [
+        f"D-P3.6-U3H-{index:03d}" for index in range(1, 7)
+    ]
+    assert all(
+        item["selected_option"] == "A" for item in acceptance["selections"]
+    )
+
+
+def test_acceptance_authorizes_proposal_preparation_only() -> None:
+    acceptance = _read(ACCEPTANCE_PATH)
+    effect = acceptance["accepted_effect"]
+
+    assert effect["transaction_runner_proposal_preparation_authorized"] is True
+    assert effect["storage_only_action_and_authorization_proposal_preparation_authorized"] is True
+    assert effect["future_Defender_only_proposal_policy_selected"] is True
+    assert effect["Defender_only_proposal_preparation_authorized_now"] is False
+    assert effect["next_executable_action"] == "none"
+    for field in [
+        "another_attempt_authorized",
+        "F_or_ACL_action_authorized",
+        "Defender_query_hash_or_trust_action_authorized",
+        "scanner_query_install_or_execution_authorized",
+        "transaction_runner_implementation_authorized",
+        "artifact_or_dependency_acquisition_authorized",
+        "runtime_or_model_execution_authorized",
+        "profile_resolution_or_activation_authorized",
+        "implementation_authorized",
+        "deployment_authorized",
+        "remote_git_authorized",
+    ]:
+        assert acceptance[field] is False
+
+
 def test_research_uses_primary_sources_and_performs_zero_machine_actions() -> None:
     sources = _read(SOURCES_PATH)
 
@@ -155,7 +201,7 @@ def test_proposal_and_package_grant_no_current_authority() -> None:
             assert value is False
 
 
-def test_canonical_ledgers_record_pending_U3H_without_reopening_U3G() -> None:
+def test_canonical_ledgers_record_accepted_U3H_without_reopening_U3G() -> None:
     ledgers = [
         _read(CONTRACTS / "p3-6-entry-gates.json"),
         _read(CONTRACTS / "p3-6-capability-profile-policy.json"),
@@ -170,26 +216,35 @@ def test_canonical_ledgers_record_pending_U3H_without_reopening_U3G() -> None:
         assert U3G["retry_authorized"] is False
         assert digest == PACKAGE_DIGEST
         assert U3H["recommended_selection"] == "A/A/A/A/A/A"
-        assert U3H["selected_options"] is None
-        assert U3H["owner_selections_pending"] is True
+        assert U3H["selected_options"] == "A/A/A/A/A/A"
+        assert U3H["owner_selections_pending"] is False
+        assert U3H["acceptance_sha256"] == ACCEPTANCE_DIGEST
+        assert U3H["transaction_runner_proposal_preparation_authorized"] is True
+        assert U3H["storage_only_proposal_preparation_authorized"] is True
+        assert U3H["Defender_only_proposal_preparation_authorized_now"] is False
         assert U3H["another_attempt_authorized"] is False
         assert U3H["transaction_runner_implementation_authorized"] is False
         assert U3H["profile_activation_authorized"] is False
 
 
-def test_next_action_is_exact_U3H_owner_selection() -> None:
+def test_next_action_is_non_effective_runner_and_storage_proposal_preparation() -> None:
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     action = unblock["next_portable_planning_action"]
 
     assert action["action"] == (
-        "owner_select_D_P3_6_U3H_001_through_006_against_exact_sealed_"
-        "failure_analysis_decision_package"
+        "prepare_non_effective_content_hashed_transaction_runner_and_storage_"
+        "only_action_authorization_proposals"
     )
     assert action["decision_ids"] == [
         f"D-P3.6-U3H-{index:03d}" for index in range(1, 7)
     ]
     assert action["package_digest_sha256"] == PACKAGE_DIGEST
-    assert action["owner_selections_pending"] is True
+    assert action["selected_options"] == "A/A/A/A/A/A"
+    assert action["owner_selections_pending"] is False
+    assert action["acceptance_sha256"] == ACCEPTANCE_DIGEST
+    assert action["transaction_runner_proposal_preparation_authority"] is True
+    assert action["storage_only_proposal_preparation_authority"] is True
+    assert action["Defender_only_proposal_preparation_authority_now"] is False
     assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False
     assert action["transaction_runner_implementation_authority"] is False
@@ -219,6 +274,12 @@ def test_gates_and_human_records_remain_synchronized() -> None:
         assert PACKAGE_DIGEST in text
         assert "U3H" in text
     assert "DR-0065" in (DOCS / "decision-register.md").read_text(
+        encoding="utf-8"
+    )
+    assert "DR-0066" in (DOCS / "decision-register.md").read_text(
+        encoding="utf-8"
+    )
+    assert ACCEPTANCE_DIGEST in (DOCS / "decision-register.md").read_text(
         encoding="utf-8"
     )
     assert f"{STEM}-decision-package.json" in (CONTRACTS / "README.md").read_text(

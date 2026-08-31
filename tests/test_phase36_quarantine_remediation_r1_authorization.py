@@ -381,7 +381,11 @@ def test_canonical_ledgers_point_to_consumed_U3G_attempt() -> None:
 
     action = ledgers[2]["next_portable_planning_action"]
     assert action["package_digest_sha256"] == U3H_PACKAGE_DIGEST
-    assert action["owner_selections_pending"] is True
+    assert action["selected_options"] == "A/A/A/A/A/A"
+    assert action["owner_selections_pending"] is False
+    assert action["transaction_runner_proposal_preparation_authority"] is True
+    assert action["storage_only_proposal_preparation_authority"] is True
+    assert action["Defender_only_proposal_preparation_authority_now"] is False
     assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False
 

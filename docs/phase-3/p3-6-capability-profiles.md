@@ -19,9 +19,10 @@ retained. No retry or profile action is authorized. U3G package digest:
 `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`.
 U3H failure analysis is sealed under digest
 `19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`.
-Its recommended `A/A/A/A/A/A` design remains owner-selection pending and
-resolver-ineligible; it authorizes no retry, runner implementation, or profile
-action.
+Its `A/A/A/A/A/A` design is owner accepted under acceptance SHA-256
+`802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3`
+and remains resolver-ineligible; it authorizes proposal preparation only and no
+retry, runner implementation, or profile action.
 
 Machine-readable policy:
 [`p3-6-capability-profile-policy.json`](../../contracts/phase-3/p3-6-capability-profile-policy.json).
@@ -85,7 +86,7 @@ must be interpreted through the Phase -1 mapping above in every new manifest.
 
 | Profile | Intended environment | Candidate path | Claim boundary | Current state |
 | --- | --- | --- | --- | --- |
-| `portable_cpu` | Current laptop and deterministic CI/reference use | ONNX Runtime CPU reference | C1 correctness and small CPU evidence only until measured | Non-executable R0, U3B, U3C `A/A/A/A`, U3D `A/A/A/A/A`, and U3F `A/A/A/A/A/A` accepted; U3E and U3G failed closed and are consumed; U3H `A/A/A/A/A/A` is recommended but unselected; six resolver inputs, exact bindings, actual artifacts, and executable validation remain unresolved |
+| `portable_cpu` | Current laptop and deterministic CI/reference use | ONNX Runtime CPU reference | C1 correctness and small CPU evidence only until measured | Non-executable R0, U3B, U3C `A/A/A/A`, U3D `A/A/A/A/A`, U3F `A/A/A/A/A/A`, and U3H `A/A/A/A/A/A` accepted; U3E and U3G failed closed and are consumed; six resolver inputs, exact bindings, actual artifacts, and executable validation remain unresolved |
 | `local_accelerated` | Owned or authorized stronger laptop | Exact validated Intel, NVIDIA, or AMD provider | Exact machine and workload only | Exact manifest pending |
 | `capacity_target` | Declared lab/server or later cluster target | Approved accelerated runtime; optional Kubernetes backend | C10/C50 only from signed exact-hardware evidence | Exact manifest pending |
 
@@ -225,11 +226,11 @@ compiled artifacts are prohibited.
 
 ## Next Planning Outputs
 
-First, the owner must select all six U3H policies against exact package digest
-`19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`.
-Selections authorize only recording the design and preparing new non-effective
-proposals. They cannot authorize runner implementation, storage/Defender
-access, or profile admission.
+All six U3H policies are selected as `A/A/A/A/A/A`. The next planning outputs
+are a content-hashed reviewable runner proposal and a separate storage-only
+action/authorization proposal. They cannot authorize runner implementation,
+storage or Defender access, or profile admission. A Defender-only proposal is
+sequenced after accepted storage evidence.
 
 The owner may review the portable planning record through
 `D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE`; acceptance would not activate it.

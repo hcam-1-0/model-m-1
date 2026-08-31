@@ -418,7 +418,10 @@ The recommended `A/A/A/A/A/A` policy normalizes `Modify | Synchronize`,
 separates DACL tuple classifications, uses native Windows PowerShell scalar
 projection with a trust-gated Defender fallback, splits future storage and
 Defender attempts, and requires a reviewable runner proposal. Selections are
-pending and grant no action or implementation authority.
+now explicitly accepted as `A/A/A/A/A/A` under acceptance SHA-256
+`802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3`.
+They authorize preparation only of non-effective runner and storage-only
+proposals and grant no action or implementation authority.
 
 Planning records:
 
@@ -467,6 +470,7 @@ Planning records:
 - [human U3G attempt record](p3-6-quarantine-remediation-r1-attempt.md);
 - [U3H quarantine failure analysis R2 decision proposal](p3-6-quarantine-failure-analysis-r2-proposal.md);
 - [sealed non-effective U3H decision package](../../contracts/phase-3/p3-6-quarantine-failure-analysis-r2-decision-package.json);
+- [accepted U3H planning choices](../../contracts/phase-3/p3-6-quarantine-failure-analysis-r2-owner-decisions.json);
 - [P3.6 planning acceptances R0](p3-6-planning-acceptances.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
@@ -501,12 +505,11 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner inputs and separate authority:
 
-- explicitly select `D-P3.6-U3H-001` through `006` against package digest
-  `19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`;
-  no choice may be inferred from `continue`, U3G authority, or another decision;
-- after exact U3H selections, prepare only the selected non-effective runner,
-  storage-attempt, and Defender-attempt proposals; implementation and each
-  machine attempt require later separate digest-bound authority;
+- prepare the selected content-hashed runner proposal and separate storage-only
+  action/authorization proposal; implementation and a storage attempt each
+  require later separate digest-bound authority;
+- prepare the Defender-only proposal only after storage evidence is accepted;
+  that later attempt also requires separate digest-bound authority;
 - treat U3G package digest
   `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`
   as consumed evidence, not authority to query or modify `F:`, change an ACL,
