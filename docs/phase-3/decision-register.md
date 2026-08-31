@@ -1193,6 +1193,58 @@ remote Git action is authorized.
 Machine-readable acceptance:
 [`p3-6-quarantine-failure-analysis-r2-owner-decisions.json`](../../contracts/phase-3/p3-6-quarantine-failure-analysis-r2-owner-decisions.json).
 
+### DR-0067: U3I reviewable runner implementation proposal sealed
+
+Status: pending exact owner implementation authorization on 2026-08-31.
+
+The accepted U3H runner-reviewability policy produced a deliberately
+non-executable plain-text source proposal, a machine-readable runtime and
+static-dispatch contract, twenty generated-only contract vectors, an exact
+implementation-authorization proposal, and a sealed manifest. The package
+SHA-256 is
+`712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`.
+
+Decision `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH` remains pending. Exact
+acceptance would authorize only one reviewable runner source, one
+machine-independent generated contract harness, and non-observational
+implementation evidence. It would not authorize runner execution, runtime or
+machine queries, `F:` access, ACL work, a storage attempt, Defender/scanners,
+downloads, models, deployment, or remote Git. A later implementation-evidence
+package and separate execution authorization remain mandatory.
+
+Human proposal:
+[`p3-6-quarantine-transaction-runner-r0-implementation-authorization-proposal.md`](p3-6-quarantine-transaction-runner-r0-implementation-authorization-proposal.md).
+
+Machine-readable package:
+[`p3-6-quarantine-transaction-runner-r0-implementation-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-authorization-package.json).
+
+### DR-0068: U3J storage R2 planning proposal sealed
+
+Status: pending exact owner planning acceptance on 2026-08-31.
+
+The separate storage-only R2 proposal binds exact absent-root targeting for
+`F:\HCAM-Quarantine`, security at creation, exact current-process
+`Modify | Synchronize` normalization, independent three-tuple and unauthorized-
+principal checks, one 4096-byte generated zero-retention probe, bounded
+sanitized outputs, no Defender/scanner actions, and no automatic retry. Its
+sealed proposal-package SHA-256 is
+`8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398`.
+
+Decision `D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE` remains pending and is
+planning-only. Even exact acceptance cannot authorize an attempt. The runner
+must first be separately authorized, implemented, pass all twenty generated
+vectors, receive exact source/runtime bindings, and have its implementation
+evidence accepted. Only then may a new final U3K execution package be sealed
+for separate `D-P3.6-U3K-STORAGE-R2-AUTH` review. No `F:`, ACL, probe, runtime,
+Defender/scanner, artifact, model, deployment, or remote Git action is currently
+authorized.
+
+Human proposal:
+[`p3-6-quarantine-storage-r2-authorization-proposal.md`](p3-6-quarantine-storage-r2-authorization-proposal.md).
+
+Machine-readable package:
+[`p3-6-quarantine-storage-r2-authorization-proposal-package.json`](../../contracts/phase-3/p3-6-quarantine-storage-r2-authorization-proposal-package.json).
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

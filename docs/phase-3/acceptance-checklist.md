@@ -250,9 +250,20 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
 - [x] `D-P3.6-U3H-001` through `006` are explicitly selected as
   `A/A/A/A/A/A` in acceptance record SHA-256
   `802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3`.
-- [ ] Any selected U3H policy is later represented by separately reviewed,
-  digest-bound, non-effective runner/storage/Defender packages before any new
-  implementation or machine authorization is requested.
+- [x] Selected U3H runner and storage policies are represented by separate,
+  digest-bound, non-effective U3I/U3J packages. The runner package digest is
+  `712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`;
+  the storage proposal-package digest is
+  `8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398`.
+- [ ] `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH` exactly accepts the runner
+  package before any source or generated contract harness is implemented.
+- [ ] `D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE` exactly accepts the storage
+  design; this remains planning-only and cannot authorize an attempt.
+- [ ] An implemented runner, twenty passing generated vectors, exact runtime
+  binding, sealed implementation evidence, final U3K package, and separate
+  `D-P3.6-U3K-STORAGE-R2-AUTH` exist before any `F:` or ACL action.
+- [ ] A Defender-only proposal is prepared only after successful storage
+  evidence is separately accepted.
 - [ ] An eligible exact local quarantine root and exact scanner command are
   bound in a regenerated R1 proposal before any acquisition authorization.
 - [ ] The exact portable runtime/workload profile, accelerated-laptop profile,
@@ -261,8 +272,8 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
 Current P3.6 status: architecture planning baseline accepted; implementation,
 runtime execution, hardware tests, dashboard work, containers/Kubernetes,
 media/data access, deployment, and remote Git remain unauthorized. Accepted
-U3H planning selections authorize proposal preparation only and do not
-authorize a retry.
+U3H planning selections produced sealed U3I/U3J proposals, but neither owner
+review has been accepted and no implementation or retry is authorized.
 
 ## Tier A Implementation Acceptance
 

@@ -92,6 +92,15 @@ authorizes preparation only of a reviewable runner proposal and storage-only
 proposal. A Defender-only proposal remains sequenced after accepted storage
 evidence. No implementation, retry, or machine action is authorized.
 
+The resulting U3I runner implementation proposal is sealed under digest
+`712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`,
+and the separate U3J storage R2 planning proposal is sealed under digest
+`8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398`.
+Both are pending exact owner review. The runner proposal contains no handlers,
+and the storage proposal is not an execution package. No implementation,
+runtime query, `F:` access, ACL action, probe, Defender/scanner work, or retry is
+authorized.
+
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
 per-camera events. It deliberately stops before identity matching, cross-camera
@@ -199,6 +208,8 @@ autonomous enforcement.
 | [P3.6 quarantine remediation R1 authorization proposal](p3-6-quarantine-remediation-r1-authorization-proposal.md) | Immutable U3G one-attempt security-at-create and Defender-binding authorization package, now consumed |
 | [P3.6 quarantine remediation R1 consumed attempt](p3-6-quarantine-remediation-r1-attempt.md) | Sanitized failed-closed DACL and Defender outcome, cleanup evidence, exact hashes, and continuing non-authorization |
 | [P3.6 quarantine failure analysis R2 decision proposal](p3-6-quarantine-failure-analysis-r2-proposal.md) | Sealed U3H Microsoft-sourced ACL and Defender failure analysis; `A/A/A/A/A/A` is accepted for proposal preparation only with no retry authority |
+| [P3.6 quarantine transaction runner R0 implementation proposal](p3-6-quarantine-transaction-runner-r0-implementation-authorization-proposal.md) | Sealed U3I content-hashed non-executable runner design and generated vectors; implementation owner review pending, execution prohibited |
+| [P3.6 quarantine storage R2 authorization proposal](p3-6-quarantine-storage-r2-authorization-proposal.md) | Sealed U3J storage-only planning proposal with corrected DACL semantics; final U3K execution package blocked on runner evidence and separate authority |
 
 ## Non-Negotiable Boundary
 

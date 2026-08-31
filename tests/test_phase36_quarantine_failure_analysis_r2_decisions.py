@@ -227,23 +227,26 @@ def test_canonical_ledgers_record_accepted_U3H_without_reopening_U3G() -> None:
         assert U3H["profile_activation_authorized"] is False
 
 
-def test_next_action_is_non_effective_runner_and_storage_proposal_preparation() -> None:
+def test_next_action_is_non_effective_U3I_and_U3J_owner_review() -> None:
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     action = unblock["next_portable_planning_action"]
 
     assert action["action"] == (
-        "prepare_non_effective_content_hashed_transaction_runner_and_storage_"
-        "only_action_authorization_proposals"
+        "owner_review_of_separate_U3I_runner_implementation_and_U3J_storage_"
+        "R2_planning_packages"
     )
     assert action["decision_ids"] == [
-        f"D-P3.6-U3H-{index:03d}" for index in range(1, 7)
+        "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH",
+        "D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE",
     ]
-    assert action["package_digest_sha256"] == PACKAGE_DIGEST
-    assert action["selected_options"] == "A/A/A/A/A/A"
-    assert action["owner_selections_pending"] is False
-    assert action["acceptance_sha256"] == ACCEPTANCE_DIGEST
-    assert action["transaction_runner_proposal_preparation_authority"] is True
-    assert action["storage_only_proposal_preparation_authority"] is True
+    assert action["runner_package_digest_sha256"] == (
+        "712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3"
+    )
+    assert action["storage_proposal_package_digest_sha256"] == (
+        "8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398"
+    )
+    assert action["runner_implementation_authorization_pending"] is True
+    assert action["storage_R2_planning_acceptance_pending"] is True
     assert action["Defender_only_proposal_preparation_authority_now"] is False
     assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False

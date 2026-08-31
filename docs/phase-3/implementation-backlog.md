@@ -422,6 +422,13 @@ now explicitly accepted as `A/A/A/A/A/A` under acceptance SHA-256
 `802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3`.
 They authorize preparation only of non-effective runner and storage-only
 proposals and grant no action or implementation authority.
+Those outputs are now sealed separately. The U3I runner implementation proposal
+has digest
+`712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`;
+the U3J storage R2 planning proposal has digest
+`8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398`.
+Both await exact owner review. The U3I package contains no executable handler,
+and U3J is not an execution package. No retry or machine action is authorized.
 
 Planning records:
 
@@ -471,6 +478,10 @@ Planning records:
 - [U3H quarantine failure analysis R2 decision proposal](p3-6-quarantine-failure-analysis-r2-proposal.md);
 - [sealed non-effective U3H decision package](../../contracts/phase-3/p3-6-quarantine-failure-analysis-r2-decision-package.json);
 - [accepted U3H planning choices](../../contracts/phase-3/p3-6-quarantine-failure-analysis-r2-owner-decisions.json);
+- [U3I transaction runner R0 implementation proposal](p3-6-quarantine-transaction-runner-r0-implementation-authorization-proposal.md);
+- [sealed non-effective U3I runner package](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-authorization-package.json);
+- [U3J storage R2 authorization proposal](p3-6-quarantine-storage-r2-authorization-proposal.md);
+- [sealed non-effective U3J storage proposal package](../../contracts/phase-3/p3-6-quarantine-storage-r2-authorization-proposal-package.json);
 - [P3.6 planning acceptances R0](p3-6-planning-acceptances.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
@@ -505,9 +516,15 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner inputs and separate authority:
 
-- prepare the selected content-hashed runner proposal and separate storage-only
-  action/authorization proposal; implementation and a storage attempt each
-  require later separate digest-bound authority;
+- exactly review `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH`; no runner source
+  or generated contract harness may be implemented before acceptance of digest
+  `712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`;
+- exactly review `D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE`; acceptance is
+  planning-only and cannot authorize `F:` access or an attempt;
+- after authorized runner implementation, twenty generated-vector passes,
+  exact source/runtime binding, sealed implementation evidence, and explicit
+  acceptance, prepare a new final U3K package and obtain separate
+  `D-P3.6-U3K-STORAGE-R2-AUTH` before one storage attempt;
 - prepare the Defender-only proposal only after storage evidence is accepted;
   that later attempt also requires separate digest-bound authority;
 - treat U3G package digest

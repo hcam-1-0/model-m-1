@@ -219,13 +219,24 @@ package is sealed under digest
 The owner selected `D-P3.6-U3H-001` through `006` as `A/A/A/A/A/A` under
 acceptance SHA-256
 `802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3`.
-The next action is preparation of a non-effective content-hashed runner
-proposal and separate storage-only action/authorization proposal. Neither the
-acceptance, sealed U3H package, prior acceptances, nor consumed U3G is authority
-to implement a runner, retry storage, change ACLs, query/hash/trust-check or
-execute scanners, activate or admit a profile, acquire or inspect artifacts,
-execute a runtime, run
-validation, or deploy.
+That preparation is complete. The non-effective U3I runner
+implementation-authorization package is sealed under digest
+`712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`,
+and the separate U3J storage R2 planning package is sealed under digest
+`8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398`.
+The next action is exact owner review of those two packages. U3I may authorize
+implementation only; U3J acceptance is planning-only. Neither package, the
+accepted U3H record, prior acceptances, nor consumed U3G is authority to
+implement before U3I acceptance, execute a runner, retry storage, access `F:`,
+change ACLs, query/hash/trust-check or execute scanners, activate or admit a
+profile, acquire or inspect artifacts, execute a runtime, run validation, or
+deploy.
+
+The final U3K storage execution package cannot be prepared until the runner is
+separately authorized and implemented, all twenty generated vectors pass, its
+exact source and runtime are bound, and its evidence package is accepted. A
+Defender-only proposal remains sequenced after successful storage evidence is
+accepted.
 
 Before `D-P3.6-MODEL-RESEARCH-R1-AUTH` can be prepared, an exact local,
 non-cloud, non-network quarantine root must pass a fresh threshold of at least

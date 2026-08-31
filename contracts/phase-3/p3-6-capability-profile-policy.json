@@ -274,6 +274,35 @@
     "profile_activation_authorized": false,
     "status": "owner_AAAAAA_policy_selections_accepted_non_effective_proposal_preparation_only"
   },
+  "quarantine_transaction_runner_r0_implementation_authorization_package": {
+    "source_contract": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-source-contract.json",
+    "contract_tests": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-contract-tests.json",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-authorization-package.json",
+    "package_digest_sha256": "712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3",
+    "decision_id": "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH",
+    "owner_implementation_authorization_pending": true,
+    "runner_implementation_authorized": false,
+    "runner_execution_authorized": false,
+    "resolver_eligible": false,
+    "profile_activation_authorized": false,
+    "status": "sealed_non_effective_owner_implementation_authorization_pending"
+  },
+  "quarantine_storage_r2_authorization_proposal_package": {
+    "action_spec": "contracts/phase-3/p3-6-quarantine-storage-r2-action-spec.json",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-storage-r2-authorization-proposal-package.json",
+    "package_digest_sha256": "8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398",
+    "planning_acceptance_decision_id": "D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE",
+    "future_execution_authorization_decision_id": "D-P3.6-U3K-STORAGE-R2-AUTH",
+    "owner_planning_acceptance_pending": true,
+    "runner_implementation_prerequisite_pending": true,
+    "another_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "storage_probe_authorized": false,
+    "Defender_or_scanner_action_authorized": false,
+    "resolver_eligible": false,
+    "profile_activation_authorized": false,
+    "status": "sealed_non_effective_planning_acceptance_pending_execution_package_blocked"
+  },
   "portable_cpu_profile_proposal": {
     "acceptance_record": "contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json",
     "package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",

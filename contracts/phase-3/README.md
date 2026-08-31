@@ -341,6 +341,29 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   `802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3`;
   it authorizes proposal preparation only and no implementation or machine
   action.
+- `p3-6-quarantine-transaction-runner-r0-source-proposal.txt`: deliberately
+  non-executable, human-reviewable static transaction and default-deny dispatch
+  proposal with no handler bodies or machine access.
+- `p3-6-quarantine-transaction-runner-r0-source-contract.json`: proposed
+  runtime, interface, static action, sanitization, evidence, and sequencing
+  contract; it binds no observed runtime.
+- `p3-6-quarantine-transaction-runner-r0-contract-tests.json`: twenty sealed
+  generated-only contract vectors with no harness, machine facts, or execution.
+- `p3-6-quarantine-transaction-runner-r0-implementation-authorization-proposal.json`:
+  exact U3I implementation-only proposal and owner statement template.
+- `p3-6-quarantine-transaction-runner-r0-implementation-authorization-package.json`:
+  immutable non-effective U3I package whose SHA-256 is
+  `712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`;
+  owner implementation authorization is pending and execution remains blocked.
+- `p3-6-quarantine-storage-r2-action-spec.json`: storage-only ten-action design
+  with exact `Modify | Synchronize` normalization, independent DACL tuple
+  checks, generated zero-retention probe, and no Defender actions.
+- `p3-6-quarantine-storage-r2-authorization-proposal.json`: separate U3J
+  planning-acceptance proposal plus the blocked future U3K execution sequence.
+- `p3-6-quarantine-storage-r2-authorization-proposal-package.json`: immutable
+  non-effective U3J proposal package whose SHA-256 is
+  `8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398`;
+  it is not a storage execution package and grants no machine authority.
 
 Verify all tracked snapshots:
 

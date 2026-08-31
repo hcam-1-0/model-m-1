@@ -159,24 +159,22 @@ def test_canonical_ledgers_record_acceptance_without_opening_gates() -> None:
         assert state["profile_activation_authorized"] is False
 
 
-def test_next_action_is_U3H_proposal_preparation_without_retry_authority() -> None:
+def test_next_action_is_U3I_and_U3J_review_without_retry_authority() -> None:
     action = _read(CONTRACTS / "p3-6-unblock-plan.json")[
         "next_portable_planning_action"
     ]
 
     assert action["action"] == (
-        "prepare_non_effective_content_hashed_transaction_runner_and_storage_"
-        "only_action_authorization_proposals"
+        "owner_review_of_separate_U3I_runner_implementation_and_U3J_storage_"
+        "R2_planning_packages"
     )
-    assert action["package_digest_sha256"] == U3H_PACKAGE_DIGEST
     assert action["candidate_root"] == "F:\\HCAM-Quarantine"
     assert action["decision_ids"] == [
-        f"D-P3.6-U3H-{index:03d}" for index in range(1, 7)
+        "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH",
+        "D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE",
     ]
-    assert action["selected_options"] == "A/A/A/A/A/A"
-    assert action["owner_selections_pending"] is False
-    assert action["transaction_runner_proposal_preparation_authority"] is True
-    assert action["storage_only_proposal_preparation_authority"] is True
+    assert action["runner_implementation_authorization_pending"] is True
+    assert action["storage_R2_planning_acceptance_pending"] is True
     assert action["Defender_only_proposal_preparation_authority_now"] is False
     assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False

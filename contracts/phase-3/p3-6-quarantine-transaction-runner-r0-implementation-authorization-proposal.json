@@ -1,0 +1,119 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_transaction_runner_r0_implementation_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-TRANSACTION-RUNNER-R0-IMPLEMENTATION-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH",
+  "status": "owner_review_pending_non_effective",
+  "prepared_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "accepted_U3H_source": {
+    "path": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-owner-decisions.json",
+    "sha256": "802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3",
+    "package_digest_sha256": "19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B",
+    "selection": "A/A/A/A/A/A"
+  },
+  "exact_proposed_inputs": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-source-proposal.txt",
+      "sha256": "DCCEF81B1D8634E851FBF19AF6260FF71120A2FDB2DFE50468801A4527714C83",
+      "role": "human_reviewable_non_executable_control_flow_and_default_deny_source_proposal"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-source-contract.json",
+      "sha256": "473048EF79BC359913AF85515509AD6F1AA8BA32DFD3E5D6E37B4BB170CB45F8",
+      "role": "runtime_interface_dispatch_invariant_sanitization_and_future_evidence_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-contract-tests.json",
+      "sha256": "3E834BC64BA1F20A0DD6338F865EDC62A0A02B1987AD71E8D8A8488ABC23AB38",
+      "role": "twenty_generated_only_non_executable_positive_and_negative_contract_vectors"
+    }
+  ],
+  "requested_owner_effect": {
+    "authorize_runner_implementation_only": true,
+    "authorize_machine_independent_generated_contract_harness_only": true,
+    "require_implementation_on_isolated_branch": true,
+    "require_exact_source_and_runtime_binding_before_execution_package": true,
+    "require_default_deny_dispatch": true,
+    "require_all_twenty_generated_contract_vectors": true,
+    "permit_F_or_other_machine_access": false,
+    "permit_storage_attempt": false,
+    "permit_runner_execution_against_machine": false,
+    "permit_Defender_or_scanner_work": false,
+    "permit_remote_git": false
+  },
+  "allowed_future_implementation_outputs_if_exactly_authorized": [
+    {
+      "path_pattern": "tools/phase36_quarantine_transaction_runner.ps1",
+      "role": "single_reviewable_runner_source_with_static_dispatch_and_no_dynamic_evaluation",
+      "execution_authorized": false
+    },
+    {
+      "path_pattern": "tests/test_phase36_quarantine_transaction_runner_contracts.py",
+      "role": "machine_independent_generated_contract_harness",
+      "execution_scope": "generated_in_memory_fixtures_only_no_machine_access"
+    },
+    {
+      "path_pattern": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-evidence.json",
+      "role": "exact_source_runtime_requirement_test_and_limitation_evidence_without_observed_machine_facts",
+      "execution_authorized": false
+    },
+    {
+      "path_pattern": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-package.json",
+      "role": "later_sealed_implementation_manifest_required_before_storage_execution_authorization",
+      "execution_authorized": false
+    }
+  ],
+  "implementation_constraints": [
+    "implement_only_the_static_ten_action_dispatch_interface_without_invoking_any_machine_handler",
+    "unknown_missing_duplicate_reordered_or_disabled_actions_fail_before_machine_access",
+    "no_eval_dynamic_scriptblock_reflection_command_string_shell_fallback_plugin_or_environment_handler",
+    "no_network_dependency_download_install_import_or_runtime_bootstrap",
+    "test_only_generated_symbolic_volume_path_ACL_probe_authority_and_failure_fixtures",
+    "never_read_or_write_F_B_or_another_nonrepository_path",
+    "never_query_or_modify_ACLs_drives_Defender_scanners_certificates_or_installed_runtime_binaries",
+    "retain_no_identity_SID_raw_ACL_exception_command_output_probe_bytes_secret_or_personal_path",
+    "seal_exact_implemented_source_SHA_256_test_evidence_and_runtime_binding_requirements_before_any_execution_proposal",
+    "do_not_encode_owner_acceptance_as_execution_authority"
+  ],
+  "required_implementation_acceptance_evidence": {
+    "clean_source_commit_required": true,
+    "implemented_source_SHA_256_required": true,
+    "generated_vector_pass_count_required": 20,
+    "negative_default_deny_vectors_required": true,
+    "machine_access_during_tests": false,
+    "network_access_during_tests": false,
+    "observed_hardware_storage_or_scanner_facts_allowed": false,
+    "independent_execution_authorization_still_required": true
+  },
+  "owner_acceptance_statement_template": "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH: I, mayank-admin, authorize implementation only of the non-executable P3.6 quarantine transaction-runner R0 proposal against package digest <RUNNER_PROPOSAL_PACKAGE_DIGEST_SHA256>. Implementation is limited to one reviewable PowerShell source file, a machine-independent generated-only contract harness for all twenty sealed vectors, and non-observational implementation evidence and package records. The implementation must retain static default-deny dispatch, exact sealed inputs, bounded sanitized outputs, zero-retention generated fixtures, and fail-before-machine-access behavior. This does not authorize running the runner against F: or any machine resource, querying hardware/storage/runtime/ACL/Defender/scanners, a storage attempt, runtime binding observation, downloads, models, inference, cameras/media/data, containers/Kubernetes, deployment, or remote Git. Execution requires a later exact implemented-source and runtime-bound package plus separate digest-bound owner authorization.",
+  "continuing_non_authorization": [
+    "runner_execution_or_machine_handler_invocation",
+    "F_B_or_other_machine_path_volume_directory_ACL_probe_or_cleanup_access",
+    "installed_runtime_path_version_hash_or_trust_query",
+    "Defender_ModelScan_or_other_scanner_query_install_import_execution_hash_or_trust_action",
+    "artifact_dependency_model_dataset_driver_or_container_acquisition",
+    "runtime_model_inference_validation_benchmark_or_hardware_test",
+    "camera_stream_media_private_or_Government_data_access",
+    "profile_resolution_admission_activation_or_scheduler_execution",
+    "container_Docker_Kubernetes_product_deployment_or_remote_Git_action"
+  ],
+  "current_effect": {
+    "effective": false,
+    "owner_implementation_authorization_exists": false,
+    "runner_implementation_authorized": false,
+    "generated_contract_harness_implementation_authorized": false,
+    "runner_execution_authorized": false,
+    "storage_attempt_authorized": false,
+    "machine_access_authorized": false,
+    "Defender_or_scanner_action_authorized": false,
+    "artifact_or_dependency_acquisition_authorized": false,
+    "runtime_or_model_execution_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  }
+}
+

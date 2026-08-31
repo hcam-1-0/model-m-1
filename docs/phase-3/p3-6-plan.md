@@ -108,6 +108,23 @@ acceptance SHA-256
 This authorizes proposal preparation only and grants no retry or implementation
 authority.
 
+The resulting planning outputs are now sealed separately:
+
+- [U3I transaction runner R0 implementation proposal](p3-6-quarantine-transaction-runner-r0-implementation-authorization-proposal.md),
+  package digest
+  `712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`;
+- [U3J storage R2 authorization proposal](p3-6-quarantine-storage-r2-authorization-proposal.md),
+  proposal-package digest
+  `8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398`.
+
+U3I is pending exact implementation authorization and contains no machine
+handler. U3J is pending planning acceptance and is not an execution package.
+The final U3K storage package is blocked until an authorized runner is
+implemented, passes all twenty generated vectors, receives exact source/runtime
+bindings, and has its evidence accepted. Defender work remains sequenced after
+accepted storage evidence. No machine action or remote Git operation is
+authorized.
+
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).
 

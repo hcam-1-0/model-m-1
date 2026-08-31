@@ -265,6 +265,36 @@
     "profile_activation_authorized": false,
     "status": "owner_AAAAAA_policy_selections_accepted_non_effective_proposal_preparation_only"
   },
+  "quarantine_transaction_runner_r0_implementation_authorization_package": {
+    "source_proposal": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-source-proposal.txt",
+    "source_contract": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-source-contract.json",
+    "contract_tests": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-contract-tests.json",
+    "authorization_proposal": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-authorization-proposal.json",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-authorization-package.json",
+    "package_digest_sha256": "712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3",
+    "decision_id": "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH",
+    "owner_implementation_authorization_pending": true,
+    "runner_implementation_authorized": false,
+    "runner_execution_authorized": false,
+    "machine_access_authorized": false,
+    "status": "sealed_non_effective_owner_implementation_authorization_pending"
+  },
+  "quarantine_storage_r2_authorization_proposal_package": {
+    "action_spec": "contracts/phase-3/p3-6-quarantine-storage-r2-action-spec.json",
+    "authorization_proposal": "contracts/phase-3/p3-6-quarantine-storage-r2-authorization-proposal.json",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-storage-r2-authorization-proposal-package.json",
+    "package_digest_sha256": "8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398",
+    "planning_acceptance_decision_id": "D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE",
+    "future_execution_authorization_decision_id": "D-P3.6-U3K-STORAGE-R2-AUTH",
+    "owner_planning_acceptance_pending": true,
+    "runner_implementation_prerequisite_pending": true,
+    "final_execution_package_exists": false,
+    "another_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "storage_probe_authorized": false,
+    "Defender_or_scanner_action_authorized": false,
+    "status": "sealed_non_effective_planning_acceptance_pending_execution_package_blocked"
+  },
   "model_artifact_research": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
     "artifact_count": 3,
@@ -305,26 +335,19 @@
     "status": "owner_AAAA_policy_selections_accepted_no_current_refresh_profile_or_collection_authority"
   },
   "next_portable_planning_action": {
-    "action": "prepare_non_effective_content_hashed_transaction_runner_and_storage_only_action_authorization_proposals",
+    "action": "owner_review_of_separate_U3I_runner_implementation_and_U3J_storage_R2_planning_packages",
     "authority": "D-P3.6-PLAN-AUTH",
     "decision_ids": [
-      "D-P3.6-U3H-001",
-      "D-P3.6-U3H-002",
-      "D-P3.6-U3H-003",
-      "D-P3.6-U3H-004",
-      "D-P3.6-U3H-005",
-      "D-P3.6-U3H-006"
+      "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH",
+      "D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE"
     ],
     "candidate_root": "F:\\HCAM-Quarantine",
-    "package_digest_sha256": "19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B",
-    "package_manifest": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-decision-package.json",
-    "recommended_selection": "A/A/A/A/A/A",
-    "selected_options": "A/A/A/A/A/A",
-    "owner_selections_pending": false,
-    "acceptance_record": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-owner-decisions.json",
-    "acceptance_sha256": "802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3",
-    "transaction_runner_proposal_preparation_authority": true,
-    "storage_only_proposal_preparation_authority": true,
+    "runner_package_manifest": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-authorization-package.json",
+    "runner_package_digest_sha256": "712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3",
+    "storage_proposal_package_manifest": "contracts/phase-3/p3-6-quarantine-storage-r2-authorization-proposal-package.json",
+    "storage_proposal_package_digest_sha256": "8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398",
+    "runner_implementation_authorization_pending": true,
+    "storage_R2_planning_acceptance_pending": true,
     "Defender_only_proposal_preparation_authority_now": false,
     "retry_authorized": false,
     "another_attempt_authority": false,
@@ -334,19 +357,19 @@
     "implementation_or_runtime_authority": false,
     "artifact_or_dependency_acquisition_authority": false,
     "profile_activation_authority": false,
-    "status": "authorized_planning_only_non_effective_proposal_preparation"
+    "status": "sealed_non_effective_owner_review_pending"
   },
   "next_planning_action": {
-    "action": "prepare_reviewable_runner_and_storage_only_non_effective_proposals_under_accepted_U3H_policy",
+    "action": "review_sealed_non_effective_U3I_runner_and_U3J_storage_R2_packages",
     "authority": "D-P3.6-PLAN-AUTH",
-    "package_digest_sha256": "19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B",
-    "acceptance_sha256": "802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3",
-    "owner_selections_pending": false,
-    "transaction_runner_proposal_preparation_authority": true,
-    "storage_only_proposal_preparation_authority": true,
+    "runner_package_digest_sha256": "712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3",
+    "storage_proposal_package_digest_sha256": "8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398",
+    "owner_review_pending": true,
+    "runner_implementation_authority": false,
+    "storage_attempt_authority": false,
     "Defender_only_proposal_preparation_authority_now": false,
     "implementation_or_runtime_authority": false,
-    "status": "authorized_planning_only_non_effective_proposal_preparation"
+    "status": "sealed_non_effective_owner_review_pending"
   },
   "parallel_owner_review_actions": [
     {

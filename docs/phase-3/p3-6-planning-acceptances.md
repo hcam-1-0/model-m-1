@@ -137,6 +137,31 @@ authorizes preparation only of a reviewable runner proposal and a storage-only
 proposal. The Defender-only proposal remains sequenced after accepted storage
 evidence. No runner implementation or machine action is authorized.
 
+## U3I Runner And U3J Storage Proposal Packages
+
+The accepted U3H preparation authority has now been consumed for its two
+declared planning outputs:
+
+- U3I runner implementation-authorization package SHA-256:
+  `712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`;
+- U3J storage R2 authorization-proposal package SHA-256:
+  `8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398`.
+
+`D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH` is pending. Exact acceptance may
+authorize only one reviewable PowerShell runner, a machine-independent harness
+for twenty generated vectors, and non-observational implementation evidence.
+It cannot authorize execution or any machine query.
+
+`D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE` is also pending. Exact acceptance
+is planning-only: it accepts the corrected storage design and permits later
+final-package preparation after accepted runner evidence. It cannot authorize
+`F:` access or an attempt. A new exact U3K package and separate
+`D-P3.6-U3K-STORAGE-R2-AUTH` are mandatory before any machine action.
+
+Neither package changes a capability profile or gate. `P36-G1`, `P36-G2`,
+`P36-G4`, and `P36-G5` remain blocked. No Defender proposal may be prepared
+until successful storage evidence is separately accepted.
+
 ## Model Metadata Proposal
 
 `D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE` accepts package digest

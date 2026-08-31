@@ -258,16 +258,10 @@ def test_ledgers_and_human_records_are_synchronized_and_blocked() -> None:
         assert state["profile_activation_authorized"] is False
 
     assert unblock["next_portable_planning_action"][
-        "package_digest_sha256"
-    ] == U3H_PACKAGE_DIGEST
-    assert unblock["next_portable_planning_action"][
-        "owner_selections_pending"
-    ] is False
-    assert unblock["next_portable_planning_action"][
-        "transaction_runner_proposal_preparation_authority"
+        "runner_implementation_authorization_pending"
     ] is True
     assert unblock["next_portable_planning_action"][
-        "storage_only_proposal_preparation_authority"
+        "storage_R2_planning_acceptance_pending"
     ] is True
     assert unblock["next_portable_planning_action"][
         "Defender_only_proposal_preparation_authority_now"
