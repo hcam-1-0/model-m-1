@@ -123,12 +123,15 @@ vectors plus four structural checks pass, the PowerShell parser reports no
 errors, and every machine-action handler remains an unimplemented fail-closed
 placeholder. Implementation evidence is sealed under digest
 `71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`
-for `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE`.
+and accepted through `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE`.
 
-The final U3K storage package remains blocked until this evidence is accepted
-and a separately authorized exact runtime binding is observed, sealed, and
-accepted. Defender work remains sequenced after accepted storage evidence. No
-runner execution, machine action, or remote Git operation is authorized.
+A separate runtime-binding authorization proposal is sealed under digest
+`37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`.
+`D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` is pending. The final U3K storage package
+remains blocked until an exact runtime binding is separately authorized,
+observed, sealed, and accepted. Defender work remains sequenced after accepted
+storage evidence. No runner execution, machine action, or remote Git operation
+is authorized.
 
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).

@@ -158,12 +158,16 @@ runner itself was not executed, every machine handler is unimplemented, and no
 runtime binding was observed. The implementation package is sealed under
 digest
 `71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`
-for separate `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE`.
+and accepted through `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE`.
+Acceptance-record SHA-256 is
+`70F2EE1133648F16CA6298C25FB6C46F56AA7C88FBA97553BDD0A2F55D90C63A`.
 
-U3J remains planning-only. A separate runtime-binding proposal, exact authority,
-evidence, and acceptance are required before a new U3K package may be prepared;
-then separate `D-P3.6-U3K-STORAGE-R2-AUTH` remains mandatory before any machine
-action.
+U3J remains planning-only. A separate non-effective runtime-binding proposal is
+sealed under digest
+`37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`.
+Exact `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH`, evidence, and evidence acceptance
+are required before a new U3K package may be prepared; then separate
+`D-P3.6-U3K-STORAGE-R2-AUTH` remains mandatory before any machine action.
 
 Neither package changes a capability profile or gate. `P36-G1`, `P36-G2`,
 `P36-G4`, and `P36-G5` remain blocked. No Defender proposal may be prepared

@@ -73,6 +73,12 @@ STORAGE_ACCEPTANCE_DIGEST = (
 RUNNER_IMPLEMENTATION_PACKAGE_DIGEST = (
     "71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67"
 )
+RUNNER_IMPLEMENTATION_ACCEPTANCE_DIGEST = (
+    "70F2EE1133648F16CA6298C25FB6C46F56AA7C88FBA97553BDD0A2F55D90C63A"
+)
+RUNTIME_BINDING_PACKAGE_DIGEST = (
+    "37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9"
+)
 
 
 def _read(path: Path) -> dict[str, object]:
@@ -347,7 +353,7 @@ def test_accepted_decisions_and_implementation_package_are_exact() -> None:
     assert implementation_package["runner_execution_authorized"] is False
 
 
-def test_ledgers_and_human_records_point_to_both_pending_packages() -> None:
+def test_ledgers_and_human_records_point_to_current_runtime_binding_gate() -> None:
     ledgers = [
         _read(CONTRACTS / "p3-6-entry-gates.json"),
         _read(CONTRACTS / "p3-6-capability-profile-policy.json"),
@@ -386,15 +392,29 @@ def test_ledgers_and_human_records_point_to_both_pending_packages() -> None:
         assert implementation["package_digest_sha256"] == (
             RUNNER_IMPLEMENTATION_PACKAGE_DIGEST
         )
-        assert implementation["owner_implementation_acceptance_pending"] is True
+        assert implementation["owner_implementation_acceptance_pending"] is False
+        assert implementation["acceptance_sha256"] == (
+            RUNNER_IMPLEMENTATION_ACCEPTANCE_DIGEST
+        )
         assert implementation["runner_execution_authorized"] is False
+        runtime_binding = ledger[
+            "quarantine_transaction_runner_r0_runtime_binding_authorization_package"
+        ]
+        assert runtime_binding["package_digest_sha256"] == (
+            RUNTIME_BINDING_PACKAGE_DIGEST
+        )
+        assert runtime_binding["owner_authorization_pending"] is True
+        assert runtime_binding["runtime_binding_observation_authorized"] is False
+        assert runtime_binding["runner_execution_authorized"] is False
 
     action = ledgers[2]["next_portable_planning_action"]
     assert action["decision_ids"] == [
-        "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE",
+        "D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH",
     ]
-    assert action["package_digest_sha256"] == RUNNER_IMPLEMENTATION_PACKAGE_DIGEST
-    assert action["owner_implementation_acceptance_pending"] is True
+    assert action["package_digest_sha256"] == RUNTIME_BINDING_PACKAGE_DIGEST
+    assert action["owner_implementation_acceptance_pending"] is False
+    assert action["owner_runtime_binding_authorization_pending"] is True
+    assert action["runtime_binding_observation_authority"] is False
     assert action["transaction_runner_implementation_authority"] is True
     assert action["transaction_runner_execution_authority"] is False
     assert action["another_attempt_authority"] is False
@@ -404,8 +424,11 @@ def test_ledgers_and_human_records_point_to_both_pending_packages() -> None:
         assert RUNNER_PACKAGE_DIGEST in text
         assert STORAGE_PACKAGE_DIGEST in text
         assert RUNNER_IMPLEMENTATION_PACKAGE_DIGEST in text
+        assert RUNTIME_BINDING_PACKAGE_DIGEST in text
     register = (DOCS / "decision-register.md").read_text(encoding="utf-8")
     assert "DR-0067" in register
     assert "DR-0068" in register
     assert "DR-0069" in register
     assert "DR-0070" in register
+    assert "DR-0071" in register
+    assert "DR-0072" in register

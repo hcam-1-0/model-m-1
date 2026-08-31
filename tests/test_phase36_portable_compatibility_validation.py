@@ -260,9 +260,12 @@ def test_canonical_ledgers_link_package_without_opening_P36_G2() -> None:
     ] == "A/A/A/A"
     assert unblock["next_portable_planning_action"][
         "owner_implementation_acceptance_pending"
-    ] is True
+    ] is False
     assert unblock["next_portable_planning_action"][
         "runtime_binding_proposal_preparation_authority"
+    ] is True
+    assert unblock["next_portable_planning_action"][
+        "runtime_binding_observation_authority"
     ] is False
     assert unblock["next_portable_planning_action"][
         "Defender_only_proposal_preparation_authority_now"

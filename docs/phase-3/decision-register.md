@@ -1267,8 +1267,8 @@ remote Git.
 
 ### DR-0070: Contract-only runner implementation evidence sealed
 
-Status: implementation package sealed; exact owner acceptance pending on
-2026-08-31.
+Status: implementation package sealed on 2026-08-31 and exactly owner accepted
+on 2026-09-01.
 
 The authorized implementation adds one PowerShell source with contract mode,
 ten static action IDs, exact-plan checks, output/path/ACL/probe reference-policy
@@ -1285,8 +1285,8 @@ implementation-package SHA-256 is
 source SHA-256 is
 `C0020A4C53B59486CE8842302C918821F145F0228F4006C3D6B67BF594DB5B15`.
 
-`D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE` is the next owner gate.
-Exact acceptance may authorize preparation only of a separate non-effective
+`D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE` is recorded in the separate
+acceptance record. It authorizes preparation only of a separate non-effective
 runtime-binding proposal. Runtime observation, runner execution, U3K package
 preparation, and machine access remain blocked.
 
@@ -1295,6 +1295,55 @@ Machine-readable evidence:
 
 Machine-readable package:
 [`p3-6-quarantine-transaction-runner-r0-implementation-package.json`](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-package.json).
+
+### DR-0071: Contract-only runner implementation accepted
+
+Status: accepted against the exact implementation-package digest on
+2026-09-01.
+
+`mayank-admin` explicitly supplied
+`D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE` for package digest
+`71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`.
+The acceptance record SHA-256 is
+`70F2EE1133648F16CA6298C25FB6C46F56AA7C88FBA97553BDD0A2F55D90C63A`.
+
+This accepts only the contract-mode source, generated/static evidence, twenty
+passing vectors, four structural checks, parser-only validation, unimplemented
+fail-closed machine handlers, and documented limitations. It authorizes
+preparation only of a separate non-effective runtime-binding authorization
+proposal. It does not authorize runtime observation, `pwsh.exe` or runner
+execution, machine handlers, U3K preparation, `F:` or ACL access, storage,
+Defender/scanners, acquisition, models, deployment, or remote Git.
+
+Machine-readable acceptance:
+[`p3-6-quarantine-transaction-runner-r0-implementation-acceptance.json`](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-acceptance.json).
+
+### DR-0072: Read-only PowerShell 7 runtime-binding proposal sealed
+
+Status: non-effective proposal sealed; exact owner authorization pending on
+2026-09-01.
+
+The U3I acceptance produced a separate one-attempt read-only proposal for exact
+`C:\Program Files\PowerShell\7\pwsh.exe` on logical node `LAB-LAPTOP-01`.
+The proposal binds only canonical/non-reparse classification, a 256 MiB file
+size ceiling, file and product versions, PowerShell major version 7, SHA-256,
+cache-only no-UI whole-chain-excluding-root WinVerifyTrust, and the accepted
+runner-source digest. It has no alternate path discovery, PATH/registry/WMI or
+directory inventory, network retrieval, execution, storage, or scanner scope.
+
+The immutable authorization-package SHA-256 is
+`37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`.
+Decision `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` is pending. Exact authorization
+would permit at most one sanitized read-only attempt within 24 hours. Failure
+would consume the authorization. Even success would require sealed evidence
+and separate owner acceptance before a final U3K package could be prepared.
+Runner execution and all storage or machine actions remain blocked.
+
+Human proposal:
+[`p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization-proposal.md`](p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization-proposal.md).
+
+Machine-readable package:
+[`p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization-package.json).
 
 ## Decisions Explicitly Deferred
 

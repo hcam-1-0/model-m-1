@@ -262,11 +262,14 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
 - [x] The contract-only runner source is parser-valid, all ten machine-action
   handlers fail closed as unimplemented, and all twenty generated vectors plus
   four structural/authorization checks pass without machine or network access.
-- [ ] `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE` exactly accepts
+- [x] `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE` exactly accepts
   implementation package digest
   `71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`.
-- [ ] A separate non-effective runtime-binding authorization proposal is
-  prepared and accepted before any runtime path/version/hash/trust observation.
+- [x] A separate non-effective runtime-binding authorization proposal is
+  prepared and sealed under digest
+  `37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`.
+- [ ] `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` exactly authorizes the sealed
+  proposal before any runtime path/version/size/hash/trust observation.
 - [ ] An implemented runner, twenty passing generated vectors, exact runtime
   binding, sealed implementation evidence, final U3K package, and separate
   `D-P3.6-U3K-STORAGE-R2-AUTH` exist before any `F:` or ACL action.
@@ -281,9 +284,10 @@ Current P3.6 status: architecture planning baseline accepted; implementation,
 runtime execution, hardware tests, dashboard work, containers/Kubernetes,
 media/data access, deployment, and remote Git remain unauthorized. Accepted
 U3H planning selections produced sealed U3I/U3J proposals and both requested
-owner statements are accepted. U3I's contract-only implementation is sealed
-for owner evidence review, but runner execution, runtime binding, machine
-access, and every retry remain unauthorized.
+owner statements are accepted. U3I's contract-only implementation evidence is
+also accepted. Its separate runtime-binding proposal is sealed but not
+authorized; runner execution, runtime observation, machine access, and every
+retry remain unauthorized.
 
 ## Tier A Implementation Acceptance
 

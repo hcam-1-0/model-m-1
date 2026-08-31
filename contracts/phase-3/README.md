@@ -368,8 +368,22 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-quarantine-transaction-runner-r0-implementation-package.json`:
   immutable implementation-evidence package whose SHA-256 is
   `71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`;
-  owner implementation acceptance and all runtime/machine authority remain
-  pending.
+  owner implementation acceptance is recorded, while all runtime/machine
+  authority remains blocked.
+- `p3-6-quarantine-transaction-runner-r0-implementation-acceptance.json`:
+  exact owner acceptance of the contract-only implementation package;
+  acceptance-record SHA-256 is
+  `70F2EE1133648F16CA6298C25FB6C46F56AA7C88FBA97553BDD0A2F55D90C63A`.
+- `p3-6-quarantine-transaction-runner-r0-runtime-binding-research-sources.json`,
+  `p3-6-quarantine-transaction-runner-r0-runtime-binding-action-spec.json`,
+  `p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization-proposal.json`,
+  and
+  `p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization-package.json`:
+  non-effective one-attempt read-only PowerShell 7 runtime-binding proposal;
+  package SHA-256 is
+  `37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`;
+  exact `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` remains pending and no runtime was
+  observed.
 - `p3-6-quarantine-storage-r2-action-spec.json`: storage-only ten-action design
   with exact `Modify | Synchronize` normalization, independent DACL tuple
   checks, generated zero-retention probe, and no Defender actions.

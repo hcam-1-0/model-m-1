@@ -380,8 +380,10 @@ def test_canonical_ledgers_point_to_consumed_U3G_attempt() -> None:
         assert consumed["profile_activation_authorized"] is False
 
     action = ledgers[2]["next_portable_planning_action"]
-    assert action["owner_implementation_acceptance_pending"] is True
-    assert action["runtime_binding_proposal_preparation_authority"] is False
+    assert action["owner_implementation_acceptance_pending"] is False
+    assert action["owner_runtime_binding_authorization_pending"] is True
+    assert action["runtime_binding_proposal_preparation_authority"] is True
+    assert action["runtime_binding_observation_authority"] is False
     assert action["Defender_only_proposal_preparation_authority_now"] is False
     assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False

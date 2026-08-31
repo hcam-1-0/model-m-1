@@ -228,18 +228,21 @@ Both requested statements are accepted. U3I authorized contract-only source and
 generated harness implementation; U3J accepted the storage design only. The
 implementation is complete within that scope and sealed under digest
 `71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`.
+Exact `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE` is recorded. The
+separate non-effective runtime-binding proposal is sealed under digest
+`37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`.
 The next action is exact owner review as
-`D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE`.
+`D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH`.
 
 The runner was parser checked but not executed. All machine handlers remain
-unimplemented and fail closed. Even implementation acceptance cannot authorize
-a runner execution or machine query; it permits preparation only of a separate
-non-effective runtime-binding proposal. The final U3K storage execution package
-cannot be prepared until separately authorized runtime evidence is sealed and
-accepted. A Defender-only proposal remains sequenced after successful storage
-evidence is accepted. No prior decision authorizes a retry, `F:` or ACL access,
-scanner action, artifact access, runtime/model execution, profile activation,
-validation, or deployment.
+unimplemented and fail closed. The pending runtime-binding proposal may permit
+only one separately authorized read-only observation of the exact PowerShell 7
+file and accepted runner source hash; it cannot authorize execution or storage.
+The final U3K storage execution package cannot be prepared until separately
+authorized runtime evidence is sealed and accepted. A Defender-only proposal
+remains sequenced after successful storage evidence is accepted. No prior
+decision authorizes a retry, `F:` or ACL access, scanner action, artifact
+access, runtime/model execution, profile activation, validation, or deployment.
 
 Before `D-P3.6-MODEL-RESEARCH-R1-AUTH` can be prepared, an exact local,
 non-cloud, non-network quarantine root must pass a fresh threshold of at least

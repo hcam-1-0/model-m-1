@@ -434,7 +434,11 @@ digest
 All twenty generated vectors and four structural checks pass; PowerShell parser
 validation has zero errors, but the runner was not executed and all machine
 handlers remain unimplemented. U3J is still not an execution package. No
-runtime binding, retry, or machine action is authorized.
+runtime observation, retry, or machine action is authorized. The implementation
+package is owner accepted, and the next non-effective runtime-binding package is
+sealed under digest
+`37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`
+for separate `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH`.
 
 Planning records:
 
@@ -489,6 +493,9 @@ Planning records:
 - [accepted U3I implementation authorization](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-authorization.json);
 - [U3I generated/static implementation evidence](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-evidence.json);
 - [sealed U3I implementation package](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-package.json);
+- [accepted U3I implementation evidence](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-acceptance.json);
+- [U3I runtime-binding R0 authorization proposal](p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization-proposal.md);
+- [sealed non-effective runtime-binding package](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization-package.json);
 - [U3J storage R2 authorization proposal](p3-6-quarantine-storage-r2-authorization-proposal.md);
 - [sealed non-effective U3J storage proposal package](../../contracts/phase-3/p3-6-quarantine-storage-r2-authorization-proposal-package.json);
 - [accepted U3J storage planning design](../../contracts/phase-3/p3-6-quarantine-storage-r2-proposal-acceptance.json);
@@ -526,12 +533,11 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner inputs and separate authority:
 
-- exactly review `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE` against
-  implementation-package digest
-  `71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`;
-- after implementation acceptance, prepare and review a separate non-effective
-  runtime-binding authorization proposal; do not observe a runtime path,
-  version, hash, or trust state without that later exact authority;
+- exactly review `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` against runtime-binding
+  package digest
+  `37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`;
+- do not observe a runtime path, version, size, hash, or trust state without
+  that exact one-attempt authority; do not execute `pwsh.exe` or the runner;
 - only after accepted exact runtime-binding evidence may a new final U3K
   package be prepared and separately authorized as
   `D-P3.6-U3K-STORAGE-R2-AUTH` before one storage attempt;

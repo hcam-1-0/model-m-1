@@ -30,8 +30,10 @@ and the U3J storage R2 planning package is sealed under digest
 Both exact requested statements are accepted. The resulting contract-only
 runner implementation is sealed under digest
 `71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`
-for owner evidence acceptance. It remains resolver-ineligible and
-non-executable: no machine handler or exact runtime binding exists.
+and owner accepted. It remains resolver-ineligible and non-executable: no
+machine handler or accepted exact runtime binding exists. A non-effective
+runtime-binding authorization package is sealed under digest
+`37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`.
 
 Machine-readable policy:
 [`p3-6-capability-profile-policy.json`](../../contracts/phase-3/p3-6-capability-profile-policy.json).
@@ -95,7 +97,7 @@ must be interpreted through the Phase -1 mapping above in every new manifest.
 
 | Profile | Intended environment | Candidate path | Claim boundary | Current state |
 | --- | --- | --- | --- | --- |
-| `portable_cpu` | Current laptop and deterministic CI/reference use | ONNX Runtime CPU reference | C1 correctness and small CPU evidence only until measured | Non-executable R0, U3B, U3C `A/A/A/A`, U3D `A/A/A/A/A`, U3F `A/A/A/A/A/A`, and U3H accepted; U3E/U3G are consumed; U3I/U3J are accepted but U3I evidence and runtime binding remain unaccepted/non-executable; six resolver inputs, exact bindings, artifacts, and executable validation remain unresolved |
+| `portable_cpu` | Current laptop and deterministic CI/reference use | ONNX Runtime CPU reference | C1 correctness and small CPU evidence only until measured | Non-executable R0, U3B, U3C `A/A/A/A`, U3D `A/A/A/A/A`, U3F `A/A/A/A/A/A`, and U3H accepted; U3E/U3G are consumed; U3I implementation evidence and U3J design are accepted; runtime-binding authorization/evidence remain pending and non-executable; six resolver inputs, exact bindings, artifacts, and executable validation remain unresolved |
 | `local_accelerated` | Owned or authorized stronger laptop | Exact validated Intel, NVIDIA, or AMD provider | Exact machine and workload only | Exact manifest pending |
 | `capacity_target` | Declared lab/server or later cluster target | Approved accelerated runtime; optional Kubernetes backend | C10/C50 only from signed exact-hardware evidence | Exact manifest pending |
 
@@ -237,14 +239,15 @@ compiled artifacts are prohibited.
 
 All six U3H policies and the U3I/U3J proposal decisions are accepted. The
 contract-only runner and generated harness are implemented under U3I, while
-U3J remains planning-only. The next action is exact owner review of the sealed
-implementation evidence digest
-`71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`.
-Acceptance may authorize only preparation of a separate non-effective runtime-
-binding proposal. Runner execution, storage or Defender access, and profile
-admission remain blocked. A final U3K execution package requires accepted exact
-runtime-binding evidence; a Defender-only proposal remains sequenced after
-accepted storage evidence.
+U3J remains planning-only. The contract-only U3I implementation evidence is
+accepted. The next action is exact owner review of runtime-binding authorization
+package digest
+`37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`
+as `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH`. Runner execution, storage or Defender
+access, and profile admission remain blocked. A final U3K execution package
+requires separately authorized, sealed, and accepted exact runtime-binding
+evidence; a Defender-only proposal remains sequenced after accepted storage
+evidence.
 
 The owner may review the portable planning record through
 `D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE`; acceptance would not activate it.
