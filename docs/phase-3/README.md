@@ -69,8 +69,12 @@ activation authority.
 The owner subsequently supplied `F:` as the candidate volume. An exact
 one-attempt `F:\HCAM-Quarantine` storage and scanner metadata binding package is
 sealed under digest
-`9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`
-and remains pending owner authorization; no `F:` or scanner action is active.
+`9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
+The owner accepted it and the single attempt was consumed. It failed closed at
+the broad-write ACL gate, skipped the atomic probe, and removed the empty root.
+The follow-up U3F decision package is sealed under digest
+`9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`;
+six owner selections remain pending and no retry is authorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -174,7 +178,8 @@ autonomous enforcement.
 | [P3.6 portable CPU R1 admission gap R0](p3-6-portable-r1-admission-gap.md) | Seven-input resolver reconciliation, 22 exact remaining gaps, and owner-accepted fail-closed `A/A/A/A` policies |
 | [P3.6 portable compatibility and generated C1 proposal R0](p3-6-portable-compatibility-validation-proposal.md) | Exact conservative CPU runtime candidate, deterministic generated workload, separated safety/calibration/validation gates, immutable lifecycle, and owner-accepted U3C `A/A/A/A` planning policy |
 | [P3.6 portable R1 supply-chain prerequisite proposal R0](p3-6-portable-r1-supply-chain-prerequisite-proposal.md) | Exact owner-accepted U3D `A/A/A/A/A` storage, scanner, fail-closed verdict, sequential acquisition, ML-BOM, and passive R1 versus generated-only R2 planning policies without action authority |
-| [P3.6 F: quarantine and scanner binding R0 authorization proposal](p3-6-quarantine-scanner-binding-r0-authorization-proposal.md) | Exact pending U3E one-attempt `F:\HCAM-Quarantine` storage attestation, 4096-byte atomic probe, bounded Defender/ModelScan metadata inventory, sanitization, and continuing prohibitions |
+| [P3.6 F: quarantine and scanner binding R0 authorization proposal](p3-6-quarantine-scanner-binding-r0-authorization-proposal.md) | Consumed U3E one-attempt `F:\HCAM-Quarantine` package and its failed-closed ACL, cleanup, and partial scanner evidence |
+| [P3.6 quarantine remediation R1 decision proposal](p3-6-quarantine-remediation-r1-proposal.md) | Pending U3F `A/A/A/A/A/A` choices for protected security-at-create ACLs, explicit principals, exact Defender offline trust binding, separate ModelScan bootstrap, and bounded retry scope |
 
 ## Non-Negotiable Boundary
 

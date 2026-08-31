@@ -198,7 +198,7 @@ def test_proposal_and_package_grant_no_current_action() -> None:
         assert package[field] is False
 
 
-def test_canonical_ledgers_link_pending_package_and_keep_gates_blocked() -> None:
+def test_canonical_ledgers_record_consumed_attempt_and_keep_gates_blocked() -> None:
     gates = _read(CONTRACTS / "p3-6-entry-gates.json")
     policy = _read(CONTRACTS / "p3-6-capability-profile-policy.json")
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
@@ -211,14 +211,18 @@ def test_canonical_ledgers_link_pending_package_and_keep_gates_blocked() -> None
         digest = state.get("digest_sha256", state.get("package_digest_sha256"))
         assert digest == PACKAGE_DIGEST
         assert state["exact_candidate_root"] == "F:\\HCAM-Quarantine"
-        assert state["owner_authorization_pending"] is True
+        assert state["owner_authorization_pending"] is False
+        assert state["attempt_consumed"] is True
+        assert state["retry_authorized"] is False
         assert state["artifact_or_dependency_acquisition_authorized"] is False
         assert state["profile_activation_authorized"] is False
 
     action = unblock["next_portable_planning_action"]
-    assert action["decision_id"] == "D-P3.6-U3E-BINDING-R0-AUTH"
-    assert action["package_digest_sha256"] == PACKAGE_DIGEST
-    assert action["owner_authorization_pending"] is True
+    assert action["decision_ids"] == [
+        f"D-P3.6-U3F-{index:03d}" for index in range(1, 7)
+    ]
+    assert action["owner_selections_pending"] is True
+    assert action["another_attempt_authority"] is False
 
 
 def test_human_records_and_indexes_are_synchronized() -> None:

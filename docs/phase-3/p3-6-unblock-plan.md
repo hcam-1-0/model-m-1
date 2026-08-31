@@ -149,7 +149,15 @@ sealed in the
 [U3E authorization proposal](p3-6-quarantine-scanner-binding-r0-authorization-proposal.md)
 under digest
 `9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
-No attempt is authorized by the owner input or by sealing the package.
+The owner accepted it and the single attempt was consumed. Volume and path
+checks passed, the broad-write ACL gate failed, the atomic probe was skipped,
+and the empty root was removed. No retry is authorized.
+
+The
+[U3F quarantine remediation decision proposal](p3-6-quarantine-remediation-r1-proposal.md)
+is sealed under digest
+`9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`.
+It recommends `A/A/A/A/A/A` and is pending six owner selections.
 
 Prepare immutable proposals against the Phase -1 profile model:
 
@@ -193,15 +201,14 @@ package digest
 The non-executable R1 supply-chain prerequisites are now sealed as the U3D
 package under digest
 `496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
-The owner accepted `D-P3.6-U3D-001` through `005` as `A/A/A/A/A` against that
-exact digest. The candidate root and separate digest-bound U3E proposal now
-exist. The next planning action is exact owner review of
-`D-P3.6-U3E-BINDING-R0-AUTH` against package digest
-`9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
-Neither the U3D acceptance, the `F:` owner input, nor the sealed U3E package is
-authority to bind or test storage, query/install/run scanners, activate or
-admit a profile, acquire or inspect artifacts, execute a runtime, run
-validation, implement a reusable collector, or perform another collection.
+The owner accepted `D-P3.6-U3D-001` through `005` as `A/A/A/A/A` and later
+accepted and consumed U3E. The next planning action is owner selection of
+`D-P3.6-U3F-001` through `006` against package digest
+`9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`.
+Neither U3D, consumed U3E evidence, sealing U3F, nor selecting U3F options is
+authority to retry storage, change ACLs, query/install/run scanners, activate
+or admit a profile, acquire or inspect artifacts, execute a runtime, run
+validation, implement a reusable collector, or deploy.
 
 Before `D-P3.6-MODEL-RESEARCH-R1-AUTH` can be prepared, an exact local,
 non-cloud, non-network quarantine root must pass a fresh threshold of at least

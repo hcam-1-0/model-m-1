@@ -70,10 +70,18 @@ After the owner supplied `F:` as the candidate volume, the exact
 [F: quarantine and scanner binding R0 authorization proposal](p3-6-quarantine-scanner-binding-r0-authorization-proposal.md)
 was sealed under digest
 `9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
-It proposes one bounded `F:\HCAM-Quarantine` storage and scanner metadata
-attempt. It is pending exact owner authorization and currently permits no
-query, directory creation, write probe, scanner action, acquisition, execution,
-validation, implementation, profile admission, or activation.
+The owner accepted that exact package and its single attempt was consumed. The
+volume and path passed, but the root inherited a broad-write ACL. The attempt
+failed before the atomic probe and removed the empty root. Defender metadata
+was observed without a binary trust binding; ModelScan was unavailable.
+
+The follow-up
+[quarantine remediation R1 decision proposal](p3-6-quarantine-remediation-r1-proposal.md)
+is sealed under digest
+`9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`.
+Its recommended `A/A/A/A/A/A` selections define protected security-at-create,
+explicit lab principals, absent-root handling, cache-only Defender trust,
+separate ModelScan bootstrap, and a split retry. It authorizes no action.
 
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).

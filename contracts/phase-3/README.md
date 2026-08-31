@@ -289,6 +289,23 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-quarantine-scanner-binding-r0-authorization-package.json`: immutable
   non-effective four-file owner-review manifest whose SHA-256 is
   `9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
+- `p3-6-quarantine-scanner-binding-r0-authorization.json`: exact accepted U3E
+  owner statement and consumed single-attempt boundary.
+- `p3-6-quarantine-scanner-binding-r0-result.json`: sanitized failed-closed
+  storage, ACL, Defender, ModelScan, and continuing-gate result.
+- `p3-6-quarantine-scanner-binding-r0-evidence.json`: bounded per-action
+  evidence showing the broad-write ACL failure, skipped probe, empty-root
+  cleanup, and zero retained probe content.
+- `p3-6-quarantine-remediation-r1-research-sources.json`: primary-source ACL,
+  Defender, WinVerifyTrust, ModelScan, and consumed-U3E evidence ledger.
+- `p3-6-quarantine-remediation-r1-decision-packet.json`: six non-executable
+  U3F owner choices for secure root creation, explicit principals, existing
+  root policy, Defender trust, ModelScan bootstrap, and retry scope.
+- `p3-6-quarantine-remediation-r1-proposal.json`: machine-readable recommended
+  `A/A/A/A/A/A` sequence and current zero-action boundary.
+- `p3-6-quarantine-remediation-r1-decision-package.json`: immutable U3F
+  decision package whose SHA-256 is
+  `9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`.
 
 Verify all tracked snapshots:
 

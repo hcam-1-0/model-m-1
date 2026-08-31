@@ -16,8 +16,8 @@ PACKAGE_DIGEST = "496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA1
 ACCEPTANCE_DIGEST = (
     "F68BDE02AF96E3992A8C64F1F01A85CAC960F529946EA12FA4899D9EBFC197A9"
 )
-U3E_PACKAGE_DIGEST = (
-    "9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39"
+U3F_PACKAGE_DIGEST = (
+    "9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78"
 )
 
 
@@ -157,17 +157,19 @@ def test_canonical_ledgers_record_acceptance_without_opening_gates() -> None:
         assert state["profile_activation_authorized"] is False
 
 
-def test_next_action_is_exact_U3E_owner_review() -> None:
+def test_next_action_is_exact_U3F_owner_selection() -> None:
     action = _read(CONTRACTS / "p3-6-unblock-plan.json")[
         "next_portable_planning_action"
     ]
 
     assert action["action"] == (
-        "owner_review_D_P3_6_U3E_BINDING_R0_AUTH_against_exact_sealed_package"
+        "owner_select_D_P3_6_U3F_001_through_006_against_exact_sealed_"
+        "decision_package"
     )
-    assert action["package_digest_sha256"] == U3E_PACKAGE_DIGEST
+    assert action["package_digest_sha256"] == U3F_PACKAGE_DIGEST
     assert action["candidate_root"] == "F:\\HCAM-Quarantine"
-    assert action["owner_authorization_pending"] is True
+    assert action["owner_selections_pending"] is True
+    assert action["another_attempt_authority"] is False
     assert action["implementation_or_runtime_authority"] is False
     assert action["artifact_or_dependency_acquisition_authority"] is False
     assert action["profile_activation_authority"] is False

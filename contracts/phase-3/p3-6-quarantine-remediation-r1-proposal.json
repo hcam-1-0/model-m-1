@@ -1,0 +1,59 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_remediation_r1_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-REMEDIATION-R1-PROPOSAL",
+  "status": "owner_decisions_pending_non_effective",
+  "prepared_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "research_sources": "contracts/phase-3/p3-6-quarantine-remediation-r1-research-sources.json",
+  "decision_packet": "contracts/phase-3/p3-6-quarantine-remediation-r1-decision-packet.json",
+  "consumed_U3E_evidence": {
+    "result": "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-result.json",
+    "result_sha256": "3DE3B1E08CF39D9348BD9873C378E0CA0FE6EC8806AB27E0C48A6BB975A72BF2",
+    "evidence": "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-evidence.json",
+    "evidence_sha256": "2FB06243003FF4C4E48C7E7BEF67C2B79C4BCA65826E1B09769AF688AE536376",
+    "retry_authorized": false
+  },
+  "problem_statement": {
+    "storage": "The volume and path passed, but the exact root inherited a broad-write ACE and was removed before the atomic probe.",
+    "Defender": "Status metadata was observed, but no exact executable and offline trust binding was produced.",
+    "ModelScan": "The candidate distribution was unavailable and no dependency acquisition is authorized.",
+    "passive_inspector": "The required H-CAM framework-free inspector is not implemented or bound."
+  },
+  "recommended_selection": "A/A/A/A/A/A",
+  "recommended_effect": {
+    "root_creation": "Use DirectorySecurity at creation with a protected explicit DACL and no inherited broad ACEs.",
+    "principals": "Resolve the current process SID only in memory, grant it Modify, and grant LocalSystem and built-in Administrators FullControl with child inheritance.",
+    "existing_root": "Require the exact root to be absent; fail without modification if any object already exists.",
+    "Defender": "Bind one documented versioned candidate by exact path, version, SHA-256, and cache-only WinVerifyTrust without executing it.",
+    "ModelScan": "Defer installation to a separate pinned bootstrap and generated hostile-fixture validation package.",
+    "scope": "Keep the future retry to storage remediation and Defender binding only."
+  },
+  "sequence_after_owner_choices": [
+    "record the exact six owner selections against this decision package digest",
+    "prepare a new immutable one-attempt action specification and authorization package",
+    "require exact owner acceptance of that new authorization package digest",
+    "run no action until exact acceptance exists",
+    "after a successful bounded retry, prepare a separate ModelScan bootstrap and passive-inspector plan",
+    "keep artifact acquisition, runtime loading, inference, validation, deployment, and profile activation blocked"
+  ],
+  "current_effect": {
+    "planning_research_complete": true,
+    "owner_selections_pending": true,
+    "new_action_spec_exists": false,
+    "new_authorization_package_exists": false,
+    "another_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "scanner_query_or_execution_authorized": false,
+    "dependency_or_artifact_acquisition_authorized": false,
+    "runtime_or_model_execution_authorized": false,
+    "implementation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "owner_response_template": "D-P3.6-U3F-001: <A|B|C|D>\nD-P3.6-U3F-002: <A|B|C|D>\nD-P3.6-U3F-003: <A|B|C|D>\nD-P3.6-U3F-004: <A|B|C|D>\nD-P3.6-U3F-005: <A|B|C|D>\nD-P3.6-U3F-006: <A|B|C|D>",
+  "owner_selection_may_be_inferred_from_continue_or_prior_authorization": false
+}

@@ -16,8 +16,8 @@ DECISIONS_PATH = (
     CONTRACTS / "p3-6-portable-compatibility-validation-decision-packet.json"
 )
 PACKAGE_DIGEST = "9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A"
-U3E_PACKAGE_DIGEST = (
-    "9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39"
+U3F_PACKAGE_DIGEST = (
+    "9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78"
 )
 ACCEPTANCE_DIGEST = (
     "FECF3EF71F5A7550871C91BF3A58BFA9D279A88C312A4E96019EC2457821CA77"
@@ -149,7 +149,7 @@ def test_canonical_ledgers_record_acceptance_without_opening_G2() -> None:
     assert unblock["runtime_execution_authorized"] is False
 
 
-def test_completed_U3D_path_advances_to_U3E_owner_review() -> None:
+def test_consumed_U3E_path_advances_to_U3F_owner_choices() -> None:
     acceptance = _read(ACCEPTANCE_PATH)
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     action = unblock["next_portable_planning_action"]
@@ -159,12 +159,14 @@ def test_completed_U3D_path_advances_to_U3E_owner_review() -> None:
         "authorization_prerequisites"
     )
     assert action["action"] == (
-        "owner_review_D_P3_6_U3E_BINDING_R0_AUTH_against_exact_sealed_package"
+        "owner_select_D_P3_6_U3F_001_through_006_against_exact_sealed_"
+        "decision_package"
     )
-    assert action["package_digest_sha256"] == U3E_PACKAGE_DIGEST
+    assert action["package_digest_sha256"] == U3F_PACKAGE_DIGEST
     assert action["candidate_root"] == "F:\\HCAM-Quarantine"
-    assert action["owner_authorization_pending"] is True
-    assert action["status"] == "sealed_non_effective_owner_authorization_pending"
+    assert action["owner_selections_pending"] is True
+    assert action["another_attempt_authority"] is False
+    assert action["status"] == "sealed_non_effective_owner_selections_pending"
 
 
 def test_human_records_and_indexes_are_synchronized() -> None:

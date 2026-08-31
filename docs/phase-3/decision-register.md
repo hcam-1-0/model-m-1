@@ -1018,8 +1018,8 @@ Machine-readable acceptance:
 
 ### DR-0061: F: quarantine and scanner binding attempt proposed
 
-Status: exact one-attempt authorization package sealed for owner review on
-2026-08-31; no attempt is authorized.
+Status: accepted and consumed on 2026-08-31; failed closed with no retry
+authority.
 
 The owner supplied `F:` as the candidate volume and reported approximately 50
 GB free. H-CAM proposes the isolated exact root `F:\HCAM-Quarantine`, outside
@@ -1028,23 +1028,49 @@ is not treated as attestation evidence.
 
 The package is sealed under SHA-256
 `9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
-If separately accepted as `D-P3.6-U3E-BINDING-R0-AUTH`, it permits one attempt
+Accepted as `D-P3.6-U3E-BINDING-R0-AUTH`, it permitted one attempt
 within 24 hours to query only bounded `F:` storage properties, create only the
 exact candidate root if absent, perform and clean one 4096-byte atomic
 capability probe, query bounded Defender and ModelScan metadata without running
 or updating either scanner, and write three exact sanitized repository records.
 
-The attempt cannot make the scanner chain ready because ModelScan still needs
-exact distribution/executable binding and behavior validation, the Defender
-candidate still needs an exact offline signature policy, and the H-CAM passive
-inspector is not implemented or bound. The package grants no current `F:`
-query, directory creation, write probe, scanner query, installation, scanner
-execution, update, download, artifact acquisition, checkpoint loading,
-inference, validation, profile admission, implementation, deployment, or
-remote Git authority. `P36-G2` and `P36-G4` remain blocked.
+The attempt observed an eligible fixed NTFS volume and safe canonical path, but
+the new root inherited a broad-write ACL. It failed before the atomic probe,
+removed the empty root, and retained no probe content. Defender metadata was
+observed without a binary trust binding; ModelScan was unavailable and the
+passive inspector remains unimplemented. No retry, current `F:` action, scanner
+action, acquisition, runtime, validation, profile admission, implementation,
+deployment, or remote Git authority exists. `P36-G2` and `P36-G4` remain
+blocked.
 
 Machine-readable package:
 [`p3-6-quarantine-scanner-binding-r0-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-scanner-binding-r0-authorization-package.json).
+
+### DR-0062: U3F quarantine remediation decisions proposed
+
+Status: sealed non-effective decision package pending owner selections on
+2026-08-31.
+
+Primary-source research supports creating the absent Windows directory with a
+protected explicit `DirectorySecurity` descriptor rather than inheriting and
+then replacing a broad DACL. It also supports binding Defender by documented
+versioned location, SHA-256, and cache-only WinVerifyTrust without executing
+`MpCmdRun.exe`. ModelScan remains a separate pinned bootstrap because it is not
+installed, dependency acquisition is not authorized, and current upstream
+false-negative reports require generated hostile-fixture validation.
+
+The recommended `D-P3.6-U3F-001` through `006` selection is `A/A/A/A/A/A`:
+security-at-create DACL; current process `Modify` plus SYSTEM/Administrators
+`FullControl`; absent root required; exact Defender path/hash/cache-only trust;
+separate ModelScan bootstrap; and a future storage-plus-Defender retry only.
+
+The package is sealed under SHA-256
+`9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`.
+Selections authorize only preparation of a later exact action and
+authorization package. They do not authorize a retry or any local action.
+
+Machine-readable package:
+[`p3-6-quarantine-remediation-r1-decision-package.json`](../../contracts/phase-3/p3-6-quarantine-remediation-r1-decision-package.json).
 
 ## Decisions Explicitly Deferred
 

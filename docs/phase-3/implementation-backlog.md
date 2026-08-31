@@ -396,8 +396,12 @@ The owner then supplied `F:` as a candidate volume. The exact non-effective
 `F:\HCAM-Quarantine` storage-attestation and read-only scanner-binding package
 is sealed under digest
 `9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
-It remains pending `D-P3.6-U3E-BINDING-R0-AUTH`; no `F:` or scanner action is
-currently authorized.
+The owner accepted it as `D-P3.6-U3E-BINDING-R0-AUTH`, and its single attempt
+was consumed. Volume/path checks passed, the broad-write ACL gate failed, the
+atomic probe was skipped, and the empty root was removed. U3F remediation
+decisions are now sealed under digest
+`9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`;
+no retry is authorized.
 
 Planning records:
 
@@ -434,6 +438,9 @@ Planning records:
 - [accepted portable R1 supply-chain U3D `A/A/A/A/A` policy decisions](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json); and
 - [F: quarantine and scanner binding R0 authorization proposal](p3-6-quarantine-scanner-binding-r0-authorization-proposal.md);
 - [sealed non-effective U3E authorization package](../../contracts/phase-3/p3-6-quarantine-scanner-binding-r0-authorization-package.json); and
+- [consumed U3E result](../../contracts/phase-3/p3-6-quarantine-scanner-binding-r0-result.json);
+- [U3F quarantine remediation R1 decision proposal](p3-6-quarantine-remediation-r1-proposal.md);
+- [sealed non-effective U3F decision package](../../contracts/phase-3/p3-6-quarantine-remediation-r1-decision-package.json); and
 - [P3.6 planning acceptances R0](p3-6-planning-acceptances.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
@@ -468,11 +475,11 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner inputs and separate authority:
 
-- review `D-P3.6-U3E-BINDING-R0-AUTH` against exact package digest
-  `9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`;
-  the sealed package is not authority to query or modify `F:`, inspect scanner
-  metadata, install, scan, acquire, execute, validate, implement, admit, or
-  activate anything;
+- select `D-P3.6-U3F-001` through `006` against exact package digest
+  `9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`;
+  the selections authorize only preparation of a new action/authorization
+  package and are not authority to query or modify `F:`, inspect or run a
+  scanner, install, acquire, execute, validate, implement, admit, or activate;
 - resolve exact model-family artifacts/data and complete `P36-G1`;
 - resolve the accepted portable CPU proposal's exact runtime, resource,
   workload, dependency, artifact, evidence, and activation blockers for

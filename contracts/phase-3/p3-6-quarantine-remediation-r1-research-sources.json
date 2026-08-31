@@ -1,0 +1,137 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_remediation_r1_research_sources.v1",
+  "record_id": "P36-QUARANTINE-REMEDIATION-R1-RESEARCH-SOURCES",
+  "status": "primary_source_research_complete_planning_only",
+  "prepared_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "consumed_attempt": {
+    "decision_id": "D-P3.6-U3E-BINDING-R0-AUTH",
+    "package_digest_sha256": "9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39",
+    "authorization": "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-authorization.json",
+    "authorization_sha256": "0DB03056BEF964D0B5C830DE01C3FE91DA87592BFAF1905D7C8307AC71FA5208",
+    "result": "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-result.json",
+    "result_sha256": "3DE3B1E08CF39D9348BD9873C378E0CA0FE6EC8806AB27E0C48A6BB975A72BF2",
+    "evidence": "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-evidence.json",
+    "evidence_sha256": "2FB06243003FF4C4E48C7E7BEF67C2B79C4BCA65826E1B09769AF688AE536376",
+    "attempt_consumed": true,
+    "retry_authorized": false
+  },
+  "bounded_observations": {
+    "candidate_root": "F:\\HCAM-Quarantine",
+    "volume_policy_passed": true,
+    "path_policy_passed": true,
+    "acl_policy_passed": false,
+    "acl_failure_code": "broad_write_principal_present",
+    "atomic_probe_executed": false,
+    "probe_content_retained": false,
+    "candidate_root_retained": false,
+    "defender_metadata_observed": true,
+    "defender_binary_bound": false,
+    "modelscan_distribution_available": false,
+    "passive_inspector_implemented": false,
+    "scanner_chain_ready": false
+  },
+  "primary_sources": [
+    {
+      "source_id": "SRC-U3F-001",
+      "title": "Directory.CreateDirectory with DirectorySecurity",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.io.directory.createdirectory?view=net-10.0",
+      "retrieved_on": "2026-08-31",
+      "supports": "A directory can be created with a supplied Windows security descriptor so the directory is not exposed before its intended ACL is applied."
+    },
+    {
+      "source_id": "SRC-U3F-002",
+      "title": "ObjectSecurity.SetAccessRuleProtection",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.security.accesscontrol.objectsecurity.setaccessruleprotection?view=net-10.0",
+      "retrieved_on": "2026-08-31",
+      "supports": "A protected DACL can disable parent inheritance and can remove inherited rules rather than preserving them."
+    },
+    {
+      "source_id": "SRC-U3F-003",
+      "title": "DirectorySecurity and FileSystemAccessRule",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.security.accesscontrol.directorysecurity?view=net-9.0",
+      "retrieved_on": "2026-08-31",
+      "supports": "DirectorySecurity and FileSystemAccessRule are the managed Windows abstractions for an explicit directory DACL and its ACEs."
+    },
+    {
+      "source_id": "SRC-U3F-004",
+      "title": "Microsoft Defender Antivirus MpCmdRun locations",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/defender-endpoint/command-line-arguments-microsoft-defender-antivirus",
+      "retrieved_on": "2026-08-31",
+      "supports": "The current Defender command-line binary is normally under the versioned ProgramData platform directory, with Program Files as a documented fallback."
+    },
+    {
+      "source_id": "SRC-U3F-005",
+      "title": "WINTRUST_DATA cache-only verification flags",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/wintrust/ns-wintrust-wintrust_data",
+      "retrieved_on": "2026-08-31",
+      "supports": "WTD_CACHE_ONLY_URL_RETRIEVAL prevents WinVerifyTrust from attempting network retrieval during code-signature verification."
+    },
+    {
+      "source_id": "SRC-U3F-006",
+      "title": "Get-MpComputerStatus",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/defender/get-mpcomputerstatus",
+      "retrieved_on": "2026-08-31",
+      "supports": "Get-MpComputerStatus exposes bounded Defender product, engine, signature, and enabled-state metadata without requiring a scan."
+    },
+    {
+      "source_id": "SRC-U3F-007",
+      "title": "ModelScan repository and CLI contract",
+      "publisher": "Protect AI",
+      "url": "https://github.com/protectai/modelscan",
+      "retrieved_on": "2026-08-31",
+      "supports": "ModelScan supports JSON reporting and distinct exit codes for clean, findings, failure, unsupported input, and usage error; it remains a scanner layer rather than proof that an artifact is safe."
+    },
+    {
+      "source_id": "SRC-U3F-008",
+      "title": "ModelScan 0.8.8 PyPI artifacts",
+      "publisher": "Python Package Index",
+      "url": "https://pypi.org/project/modelscan/0.8.8/",
+      "retrieved_on": "2026-08-31",
+      "supports": "The 0.8.8 wheel and source archive have published SHA-256 values; the release page reports that the files were not uploaded with PyPI Trusted Publishing."
+    },
+    {
+      "source_id": "SRC-U3F-009",
+      "title": "ModelScan upstream false-negative reports",
+      "publisher": "Protect AI GitHub issue tracker",
+      "url": "https://github.com/protectai/modelscan/issues/338",
+      "retrieved_on": "2026-08-31",
+      "supports": "Open upstream reports allege false negatives in 0.8.8. These reports are risk signals, not independently validated findings, and justify retaining defense in depth and hostile-fixture validation."
+    }
+  ],
+  "research_inferences": [
+    "The U3E ACL failure can be addressed without weakening the no-broad-write policy by creating the absent directory with a protected explicit DACL.",
+    "A security-at-create API is preferable to create-then-rewrite because it avoids a period where inherited broad permissions are effective.",
+    "A future Defender binding can be network denied while still performing local trust evaluation by combining an exact documented path, SHA-256, version metadata, and cache-only WinVerifyTrust policy.",
+    "ModelScan must remain separate from the next retry because it is not installed, installing it requires dependency acquisition authority, and its upstream risk signals require a dedicated pinned bootstrap and validation package.",
+    "The accepted three-layer scanner policy remains unchanged; a successful storage and Defender retry still cannot make the scanner chain ready."
+  ],
+  "research_actions": {
+    "F_volume_or_path_queries": 0,
+    "ACL_queries_or_changes": 0,
+    "directory_creation_write_probe_or_cleanup": 0,
+    "Defender_or_scanner_queries": 0,
+    "scanner_executions": 0,
+    "dependency_installs_or_downloads": 0,
+    "artifact_or_model_accesses": 0,
+    "runtime_or_model_executions": 0,
+    "container_or_kubernetes_actions": 0,
+    "remote_git_actions": 0
+  },
+  "current_authority": {
+    "another_attempt_authorized": false,
+    "ACL_change_authorized": false,
+    "F_access_authorized": false,
+    "scanner_query_or_execution_authorized": false,
+    "dependency_or_artifact_acquisition_authorized": false,
+    "implementation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  }
+}
