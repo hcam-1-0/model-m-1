@@ -1,0 +1,159 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_failure_analysis_r2_research_sources.v1",
+  "record_id": "P36-QUARANTINE-FAILURE-ANALYSIS-R2-RESEARCH-SOURCES",
+  "status": "primary_source_research_complete_planning_only",
+  "prepared_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "consumed_attempt": {
+    "decision_id": "D-P3.6-U3G-BINDING-R1-AUTH",
+    "package_digest_sha256": "C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B",
+    "authorization": "contracts/phase-3/p3-6-quarantine-remediation-r1-authorization.json",
+    "authorization_sha256": "12DBCEA9BB4C7AECDED5A42CCE2962CFBB689488F1B713990687DE876AC01070",
+    "result": "contracts/phase-3/p3-6-quarantine-remediation-r1-result.json",
+    "result_sha256": "417AB2F17C42FD6313CC2798AC055EEF75AB16F0431BE6486619C762FA253226",
+    "evidence": "contracts/phase-3/p3-6-quarantine-remediation-r1-evidence.json",
+    "evidence_sha256": "B1D454E1F1390C0FB7D594D80197BA87DA75B5D4216CBF9177F8883E46268B4D",
+    "attempt_consumed": true,
+    "retry_authorized": false
+  },
+  "confirmed_observations": {
+    "candidate_root": "F:\\HCAM-Quarantine",
+    "volume_and_path_policy_passed": true,
+    "root_created_with_security_at_create": true,
+    "DACL_protected": true,
+    "explicit_rule_count_exactly_three": true,
+    "current_process_Modify_rule_pass": false,
+    "LocalSystem_FullControl_rule_pass": true,
+    "Administrators_FullControl_rule_pass": true,
+    "inheritance_flags_pass": true,
+    "inherited_rule_absent": true,
+    "deny_rule_absent": true,
+    "broad_write_principal_absent": false,
+    "atomic_probe_executed": false,
+    "candidate_root_retained": false,
+    "probe_content_retained": false,
+    "Defender_status_action_succeeded": false,
+    "Defender_product_version": null,
+    "Defender_signature_version_observed": true,
+    "Defender_enabled_flags_observed": true,
+    "Defender_candidate_evaluated": false,
+    "Defender_executable_invoked": false,
+    "scanner_chain_ready": false
+  },
+  "causal_analysis": [
+    {
+      "analysis_id": "CA-U3H-ACL-001",
+      "confidence": "high_inference_not_machine_proven",
+      "finding": "The current-process allow ACE likely contained FileSystemRights.Modify plus the automatically added Synchronize bit, while U3G expected an exact Modify enum match.",
+      "basis": "Microsoft documents that Synchronize is automatically set for allow access. The Microsoft .NET reference source ORs Synchronize into allow access masks. U3G recorded a protected three-rule DACL where SYSTEM and Administrators matched, the current-process rule alone failed, and no inherited or deny ACE existed.",
+      "limitation": "Raw access masks and identity data were intentionally not persisted, so the exact observed current-process mask cannot be reconstructed from U3G evidence.",
+      "required_design_response": "Verify the current-process ACE as an exact normalized allow mask of Modify plus mandatory Synchronize, while independently rejecting every other material right and every unauthorized principal."
+    },
+    {
+      "analysis_id": "CA-U3H-ACL-002",
+      "confidence": "high_design_defect",
+      "finding": "The broad-write-principal classification was coupled to failure of the accepted current-process rule match.",
+      "basis": "The result reports exactly three rules, successful SYSTEM and Administrators matches, failed current-process matching, and broad_write_principal_absent=false. The broad-principal result therefore cannot distinguish an unauthorized principal from an accepted principal whose rights normalization failed.",
+      "limitation": "The sanitized result cannot prove whether the current-process ACE had only Synchronize as its additional bit.",
+      "required_design_response": "Classify authorized principal identity, normalized rights, inheritance, access type, and unauthorized principals as separate booleans before calculating the aggregate DACL result."
+    },
+    {
+      "analysis_id": "CA-U3H-DEFENDER-001",
+      "confidence": "confirmed_data_gap_with_transport_hypothesis",
+      "finding": "The Defender projection returned signature and enabled-state fields but no usable AMProductVersion, so candidate selection was correctly skipped.",
+      "basis": "The U3G result contains a null product version, a signature timestamp and enabled flags, and skipped candidate/hash/trust actions. Microsoft documents AMProductVersion as a Get-MpComputerStatus property.",
+      "limitation": "Raw command output was intentionally not retained. PowerShell compatibility remoting is a plausible transport contributor, not a proven root cause.",
+      "required_design_response": "Run the bounded Defender projection inside a native local Windows PowerShell 5.1 process and serialize only allowlisted scalar values after property-presence and type checks."
+    },
+    {
+      "analysis_id": "CA-U3H-DEFENDER-002",
+      "confidence": "primary_source_supported_fallback_design",
+      "finding": "Defender candidate discovery does not need to depend exclusively on AMProductVersion.",
+      "basis": "Microsoft documents that the latest MpCmdRun.exe is under the latest versioned ProgramData Defender platform directory when available.",
+      "limitation": "Directory ordering alone does not establish publisher trust or prove that a candidate is current and genuine.",
+      "required_design_response": "If native AMProductVersion remains absent, permit one bounded latest-version directory candidate only when its basename parses as a version, its exact child is regular and non-reparse, FileVersionInfo matches the directory version, SHA-256 is bound, and cache-only WinVerifyTrust succeeds."
+    }
+  ],
+  "primary_sources": [
+    {
+      "source_id": "SRC-U3H-001",
+      "title": "FileSystemRights Enum",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.security.accesscontrol.filesystemrights?view=net-10.0",
+      "retrieved_on": "2026-08-31",
+      "supports": "FileSystemRights is a flags enum; Synchronize is automatically set for allow access, and create-file/create-directory rights require it."
+    },
+    {
+      "source_id": "SRC-U3H-002",
+      "title": "Microsoft .NET Framework reference source FileSystemAccessRule",
+      "publisher": "Microsoft Reference Source",
+      "url": "https://github.com/microsoft/referencesource/blob/main/mscorlib/system/security/accesscontrol/filesecurity.cs",
+      "retrieved_on": "2026-08-31",
+      "supports": "The reference implementation adds FileSystemRights.Synchronize when converting allow rights into an access mask."
+    },
+    {
+      "source_id": "SRC-U3H-003",
+      "title": "about Windows PowerShell Compatibility",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_windows_powershell_compatibility?view=powershell-7.6",
+      "retrieved_on": "2026-08-31",
+      "supports": "PowerShell 7 compatibility loads Windows PowerShell modules in a background 5.1 process through implicit remoting and proxy modules."
+    },
+    {
+      "source_id": "SRC-U3H-004",
+      "title": "about Remote Output",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_remote_output?view=powershell-7.6",
+      "retrieved_on": "2026-08-31",
+      "supports": "Out-of-process and remoting output is serialized into inert property snapshots rather than returned as original live objects."
+    },
+    {
+      "source_id": "SRC-U3H-005",
+      "title": "Get-MpComputerStatus",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/defender/get-mpcomputerstatus?view=windowsserver2025-ps",
+      "retrieved_on": "2026-08-31",
+      "supports": "Get-MpComputerStatus exposes AMProductVersion, engine, signature, running-mode, and enabled-state metadata without requiring a scan."
+    },
+    {
+      "source_id": "SRC-U3H-006",
+      "title": "Microsoft Defender Antivirus updates and support",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/defender-endpoint/microsoft-defender-antivirus-updates",
+      "retrieved_on": "2026-08-31",
+      "supports": "The current Defender platform is stored in a versioned ProgramData platform directory, and Microsoft documents selecting the latest versioned directory."
+    },
+    {
+      "source_id": "SRC-U3H-007",
+      "title": "Use the command line to manage Microsoft Defender Antivirus",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/defender-endpoint/command-line-arguments-microsoft-defender-antivirus",
+      "retrieved_on": "2026-08-31",
+      "supports": "The latest MpCmdRun executable is in the latest versioned ProgramData Defender platform directory when available."
+    }
+  ],
+  "research_actions": {
+    "F_volume_or_path_queries": 0,
+    "ACL_queries_or_changes": 0,
+    "directory_creation_write_probe_or_cleanup": 0,
+    "Defender_or_scanner_queries": 0,
+    "scanner_executions": 0,
+    "dependency_installs_or_downloads": 0,
+    "artifact_or_model_accesses": 0,
+    "runtime_or_model_executions": 0,
+    "container_or_kubernetes_actions": 0,
+    "remote_git_actions": 0
+  },
+  "current_authority": {
+    "another_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "Defender_query_hash_or_trust_action_authorized": false,
+    "scanner_query_install_or_execution_authorized": false,
+    "transaction_runner_implementation_authorized": false,
+    "dependency_or_artifact_acquisition_authorized": false,
+    "runtime_or_model_execution_authorized": false,
+    "profile_activation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  }
+}

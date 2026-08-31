@@ -250,6 +250,25 @@
     "profile_activation_authorized": false,
     "status": "consumed_failed_closed_storage_and_Defender_blocked"
   },
+  "quarantine_failure_analysis_r2_decision_package": {
+    "source_ledger": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-research-sources.json",
+    "decision_packet": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-decision-packet.json",
+    "proposal": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-proposal.json",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-decision-package.json",
+    "package_digest_sha256": "19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B",
+    "recommended_selection": "A/A/A/A/A/A",
+    "selected_options": null,
+    "owner_selections_pending": true,
+    "another_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "Defender_query_hash_or_trust_action_authorized": false,
+    "scanner_query_install_or_execution_authorized": false,
+    "transaction_runner_implementation_authorized": false,
+    "artifact_or_dependency_acquisition_authorized": false,
+    "resolver_eligible": false,
+    "profile_activation_authorized": false,
+    "status": "sealed_non_effective_owner_selections_pending"
+  },
   "portable_cpu_profile_proposal": {
     "acceptance_record": "contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json",
     "package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",

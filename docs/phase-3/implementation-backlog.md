@@ -409,6 +409,16 @@ closed at exact DACL verification, skipped the probe, removed the empty root,
 retained no probe content, and could not obtain a usable Defender product
 version. Candidate hashing and WinVerifyTrust were skipped. No retry is
 authorized.
+Planning-only U3H analysis now records Microsoft-documented automatic
+`Synchronize` behavior for allow ACEs and PowerShell compatibility-remoting
+behavior as confidence-qualified hypotheses rather than retroactive U3G facts.
+Its six owner choices are sealed under digest
+`19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`.
+The recommended `A/A/A/A/A/A` policy normalizes `Modify | Synchronize`,
+separates DACL tuple classifications, uses native Windows PowerShell scalar
+projection with a trust-gated Defender fallback, splits future storage and
+Defender attempts, and requires a reviewable runner proposal. Selections are
+pending and grant no action or implementation authority.
 
 Planning records:
 
@@ -455,6 +465,8 @@ Planning records:
 - [sanitized U3G result](../../contracts/phase-3/p3-6-quarantine-remediation-r1-result.json);
 - [bounded U3G evidence](../../contracts/phase-3/p3-6-quarantine-remediation-r1-evidence.json); and
 - [human U3G attempt record](p3-6-quarantine-remediation-r1-attempt.md);
+- [U3H quarantine failure analysis R2 decision proposal](p3-6-quarantine-failure-analysis-r2-proposal.md);
+- [sealed non-effective U3H decision package](../../contracts/phase-3/p3-6-quarantine-failure-analysis-r2-decision-package.json);
 - [P3.6 planning acceptances R0](p3-6-planning-acceptances.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
@@ -489,9 +501,12 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner inputs and separate authority:
 
-- analyze the consumed U3G exact-DACL semantic mismatch and unavailable
-  Defender product version without another machine query; any retry requires a
-  new immutable action package, digest, and exact owner authorization;
+- explicitly select `D-P3.6-U3H-001` through `006` against package digest
+  `19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`;
+  no choice may be inferred from `continue`, U3G authority, or another decision;
+- after exact U3H selections, prepare only the selected non-effective runner,
+  storage-attempt, and Defender-attempt proposals; implementation and each
+  machine attempt require later separate digest-bound authority;
 - treat U3G package digest
   `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`
   as consumed evidence, not authority to query or modify `F:`, change an ACL,

@@ -1134,6 +1134,41 @@ Machine-readable result:
 Human record:
 [`p3-6-quarantine-remediation-r1-attempt.md`](p3-6-quarantine-remediation-r1-attempt.md).
 
+### DR-0065: U3H failure analysis and owner choices sealed
+
+Status: owner selections pending; planning-only and non-effective.
+
+The consumed U3G evidence confirms that the protected root contained exactly
+three explicit rules, but the current-process `Modify` tuple did not satisfy
+the exact verifier. Microsoft documents that `Synchronize` is automatically
+added to allow ACEs, making `Modify | Synchronize` the leading explanation.
+Because U3G intentionally retained no raw ACL, this is recorded as a
+high-confidence inference rather than a retroactive fact.
+
+The Defender projection returned no usable `AMProductVersion`. Microsoft
+documents that PowerShell 7 Windows-compatibility modules use a background
+Windows PowerShell 5.1 implicit-remoting session and return serialized property
+snapshots. U3H therefore proposes native Windows PowerShell scalar projection
+and a separate trust-gated latest-platform fallback, while treating transport
+as a hypothesis until separately authorized evidence exists.
+
+Six explicit decisions `D-P3.6-U3H-001` through `006` cover allow-mask
+normalization, independent DACL tuple checks, Defender status transport,
+Defender candidate fallback, attempt decomposition, and transaction-runner
+reviewability. The recommended selection is `A/A/A/A/A/A`.
+
+The immutable package SHA-256 is
+`19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`.
+No selection may be inferred. The package grants no runner implementation,
+retry, `F:` or ACL action, Defender access, scanner use, acquisition, model,
+runtime, validation, profile, deployment, or remote Git authority.
+
+Human proposal:
+[`p3-6-quarantine-failure-analysis-r2-proposal.md`](p3-6-quarantine-failure-analysis-r2-proposal.md).
+
+Machine-readable package:
+[`p3-6-quarantine-failure-analysis-r2-decision-package.json`](../../contracts/phase-3/p3-6-quarantine-failure-analysis-r2-decision-package.json).
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

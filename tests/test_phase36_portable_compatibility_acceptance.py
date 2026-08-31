@@ -16,8 +16,8 @@ DECISIONS_PATH = (
     CONTRACTS / "p3-6-portable-compatibility-validation-decision-packet.json"
 )
 PACKAGE_DIGEST = "9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A"
-U3G_PACKAGE_DIGEST = (
-    "C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B"
+U3H_PACKAGE_DIGEST = (
+    "19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B"
 )
 ACCEPTANCE_DIGEST = (
     "FECF3EF71F5A7550871C91BF3A58BFA9D279A88C312A4E96019EC2457821CA77"
@@ -149,7 +149,7 @@ def test_canonical_ledgers_record_acceptance_without_opening_G2() -> None:
     assert unblock["runtime_execution_authorized"] is False
 
 
-def test_accepted_U3F_path_records_consumed_U3G_and_follow_up_planning() -> None:
+def test_accepted_U3F_path_records_consumed_U3G_and_U3H_owner_gate() -> None:
     acceptance = _read(ACCEPTANCE_PATH)
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     action = unblock["next_portable_planning_action"]
@@ -159,17 +159,18 @@ def test_accepted_U3F_path_records_consumed_U3G_and_follow_up_planning() -> None
         "authorization_prerequisites"
     )
     assert action["action"] == (
-        "analyze_consumed_U3G_DACL_and_Defender_failures_and_prepare_a_new_"
-        "non_effective_owner_decision_package"
+        "owner_select_D_P3_6_U3H_001_through_006_against_exact_sealed_"
+        "failure_analysis_decision_package"
     )
-    assert action["package_digest_sha256"] == U3G_PACKAGE_DIGEST
+    assert action["package_digest_sha256"] == U3H_PACKAGE_DIGEST
     assert action["candidate_root"] == "F:\\HCAM-Quarantine"
-    assert action["decision_id"] is None
-    assert action["owner_authorization_pending"] is False
-    assert action["attempt_consumed"] is True
+    assert action["decision_ids"] == [
+        f"D-P3.6-U3H-{index:03d}" for index in range(1, 7)
+    ]
+    assert action["owner_selections_pending"] is True
     assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False
-    assert action["status"] == "consumed_failed_closed_follow_up_planning_unsealed"
+    assert action["status"] == "sealed_non_effective_owner_selections_pending"
 
 
 def test_human_records_and_indexes_are_synchronized() -> None:

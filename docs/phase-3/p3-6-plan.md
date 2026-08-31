@@ -95,6 +95,16 @@ therefore skipped. The outcome authorizes no retry or current action.
 Consumed-attempt record:
 [P3.6 quarantine remediation R1 attempt](p3-6-quarantine-remediation-r1-attempt.md).
 
+The follow-up planning-only
+[U3H quarantine failure analysis R2 proposal](p3-6-quarantine-failure-analysis-r2-proposal.md)
+is sealed under digest
+`19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`.
+It separates confirmed U3G evidence from high-confidence hypotheses and offers
+six pending owner choices for exact allow-mask normalization, independent DACL
+tuples, native Defender projection, a trust-gated platform fallback, split
+attempts, and reviewable runner mechanics. It grants no retry or implementation
+authority.
+
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).
 

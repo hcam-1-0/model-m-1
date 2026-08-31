@@ -18,8 +18,8 @@ DECISIONS_PATH = (
 DOCUMENT_PATH = DOCS / "p3-6-portable-compatibility-validation-proposal.md"
 PACKAGE_PATH = CONTRACTS / "p3-6-portable-compatibility-validation-package.json"
 PACKAGE_DIGEST = "9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A"
-U3G_PACKAGE_DIGEST = (
-    "C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B"
+U3H_PACKAGE_DIGEST = (
+    "19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B"
 )
 U3B_ACCEPTANCE_DIGEST = (
     "7695027BB68878ED7CE41B6BD940EB777CD280279294E5C35B99614C3C57F5FA"
@@ -260,11 +260,10 @@ def test_canonical_ledgers_link_package_without_opening_P36_G2() -> None:
     ] == "A/A/A/A"
     assert unblock["next_portable_planning_action"][
         "package_digest_sha256"
-    ] == U3G_PACKAGE_DIGEST
+    ] == U3H_PACKAGE_DIGEST
     assert unblock["next_portable_planning_action"][
-        "owner_authorization_pending"
-    ] is False
-    assert unblock["next_portable_planning_action"]["attempt_consumed"] is True
+        "owner_selections_pending"
+    ] is True
     assert unblock["next_portable_planning_action"]["retry_authorized"] is False
     assert unblock["next_portable_planning_action"][
         "another_attempt_authority"

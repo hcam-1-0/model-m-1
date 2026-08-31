@@ -325,6 +325,17 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-quarantine-remediation-r1-evidence.json`: bounded action, cleanup, and
   non-authorization evidence, SHA-256
   `B1D454E1F1390C0FB7D594D80197BA87DA75B5D4216CBF9177F8883E46268B4D`.
+- `p3-6-quarantine-failure-analysis-r2-research-sources.json`: consumed-U3G
+  facts, Microsoft ACL/PowerShell/Defender sources, confidence-qualified causal
+  analysis, and zero-action research evidence.
+- `p3-6-quarantine-failure-analysis-r2-decision-packet.json`: six non-executable
+  U3H owner choices for allow-mask normalization, independent DACL tuples,
+  Defender transport/fallback, split attempts, and runner reviewability.
+- `p3-6-quarantine-failure-analysis-r2-proposal.json`: machine-readable
+  recommended `A/A/A/A/A/A` sequence and continuing zero-authority boundary.
+- `p3-6-quarantine-failure-analysis-r2-decision-package.json`: immutable U3H
+  failure-analysis decision package whose SHA-256 is
+  `19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`.
 
 Verify all tracked snapshots:
 

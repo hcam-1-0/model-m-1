@@ -80,6 +80,13 @@ U3G package under digest
 That attempt is consumed. It failed closed at the exact DACL gate, skipped the
 atomic probe, removed the empty root, retained no probe content, and could not
 obtain usable Defender product-version metadata. No retry is authorized.
+The planning-only U3H failure analysis is now sealed under digest
+`19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`.
+It recommends exact `Modify | Synchronize` normalization, independent DACL
+tuple checks, native Windows PowerShell Defender projection, a bounded latest
+platform fallback, separate storage/Defender attempts, and a reviewable
+content-hashed runner proposal. All six owner selections remain pending and
+the package grants no implementation or machine authority.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -187,6 +194,7 @@ autonomous enforcement.
 | [P3.6 quarantine remediation R1 decision proposal](p3-6-quarantine-remediation-r1-proposal.md) | Accepted U3F `A/A/A/A/A/A` choices for protected security-at-create ACLs, explicit principals, exact Defender offline trust binding, separate ModelScan bootstrap, and bounded retry scope |
 | [P3.6 quarantine remediation R1 authorization proposal](p3-6-quarantine-remediation-r1-authorization-proposal.md) | Immutable U3G one-attempt security-at-create and Defender-binding authorization package, now consumed |
 | [P3.6 quarantine remediation R1 consumed attempt](p3-6-quarantine-remediation-r1-attempt.md) | Sanitized failed-closed DACL and Defender outcome, cleanup evidence, exact hashes, and continuing non-authorization |
+| [P3.6 quarantine failure analysis R2 decision proposal](p3-6-quarantine-failure-analysis-r2-proposal.md) | Sealed U3H Microsoft-sourced ACL and Defender failure analysis with six pending `A-D` owner choices and no retry authority |
 
 ## Non-Negotiable Boundary
 

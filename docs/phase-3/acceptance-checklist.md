@@ -242,6 +242,16 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
 - [x] The consumed authorization, result, and evidence records are bound by
   SHA-256 values `12DBCEA9...1070`, `417AB2F1...3226`, and
   `B1D454E1...8B4D`; no retry is authorized.
+- [x] U3H planning-only failure analysis distinguishes confirmed U3G facts from
+  high-confidence ACL-normalization and Defender-transport hypotheses without
+  another machine query.
+- [x] The six-choice U3H decision package is sealed under digest
+  `19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`.
+- [ ] `D-P3.6-U3H-001` through `006` have explicit owner selections; `continue`,
+  prior U3G authority, and any other acceptance cannot select them.
+- [ ] Any selected U3H policy is later represented by separately reviewed,
+  digest-bound, non-effective runner/storage/Defender packages before any new
+  implementation or machine authorization is requested.
 - [ ] An eligible exact local quarantine root and exact scanner command are
   bound in a regenerated R1 proposal before any acquisition authorization.
 - [ ] The exact portable runtime/workload profile, accelerated-laptop profile,
@@ -249,7 +259,8 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
 
 Current P3.6 status: architecture planning baseline accepted; implementation,
 runtime execution, hardware tests, dashboard work, containers/Kubernetes,
-media/data access, deployment, and remote Git remain unauthorized.
+media/data access, deployment, and remote Git remain unauthorized. U3H owner
+selections are pending and do not authorize a retry.
 
 ## Tier A Implementation Acceptance
 

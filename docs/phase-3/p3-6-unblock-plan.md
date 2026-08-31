@@ -213,11 +213,15 @@ package digest
 `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`.
 U3G is consumed and failed closed. The next planning action is bounded failure
 analysis for the exact DACL semantic mismatch and unavailable Defender product
-version, followed by a new non-effective owner decision package. No such
-package is currently sealed. Neither the prior acceptances nor consumed U3G is authority to retry storage,
-change ACLs, query/hash/trust-check or execute scanners, activate or admit a
-profile, acquire or inspect artifacts, execute a runtime, run validation,
-implement a reusable collector, or deploy.
+version. That analysis is complete and the non-effective U3H owner decision
+package is sealed under digest
+`19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`.
+The next action is explicit owner selection of `D-P3.6-U3H-001` through `006`.
+The recommended selection is `A/A/A/A/A/A`. Neither the sealed U3H package,
+prior acceptances, nor consumed U3G is authority to implement a runner, retry
+storage, change ACLs, query/hash/trust-check or execute scanners, activate or
+admit a profile, acquire or inspect artifacts, execute a runtime, run
+validation, or deploy.
 
 Before `D-P3.6-MODEL-RESEARCH-R1-AUTH` can be prepared, an exact local,
 non-cloud, non-network quarantine root must pass a fresh threshold of at least

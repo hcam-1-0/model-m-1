@@ -33,6 +33,9 @@ DOCUMENT_DIGEST = (
     "54D9860666A61601F80BD8ADD54F90CBF8305359930A78C53B42D4D6C6C7EBCE"
 )
 PACKAGE_DIGEST = "C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B"
+U3H_PACKAGE_DIGEST = (
+    "19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B"
+)
 AUTHORIZATION_DIGEST = (
     "12DBCEA9BB4C7AECDED5A42CCE2962CFBB689488F1B713990687DE876AC01070"
 )
@@ -377,10 +380,8 @@ def test_canonical_ledgers_point_to_consumed_U3G_attempt() -> None:
         assert consumed["profile_activation_authorized"] is False
 
     action = ledgers[2]["next_portable_planning_action"]
-    assert action["decision_id"] is None
-    assert action["package_digest_sha256"] == PACKAGE_DIGEST
-    assert action["owner_authorization_pending"] is False
-    assert action["attempt_consumed"] is True
+    assert action["package_digest_sha256"] == U3H_PACKAGE_DIGEST
+    assert action["owner_selections_pending"] is True
     assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False
 

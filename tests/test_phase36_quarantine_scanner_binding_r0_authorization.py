@@ -15,6 +15,9 @@ PROPOSAL_PATH = CONTRACTS / f"{STEM}-authorization-proposal.json"
 DOCUMENT_PATH = DOCS / f"{STEM}-authorization-proposal.md"
 PACKAGE_PATH = CONTRACTS / f"{STEM}-authorization-package.json"
 PACKAGE_DIGEST = "9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39"
+U3H_PACKAGE_DIGEST = (
+    "19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B"
+)
 
 
 def _read(path: Path) -> dict[str, object]:
@@ -218,9 +221,8 @@ def test_canonical_ledgers_record_consumed_attempt_and_keep_gates_blocked() -> N
         assert state["profile_activation_authorized"] is False
 
     action = unblock["next_portable_planning_action"]
-    assert action["decision_id"] is None
-    assert action["owner_authorization_pending"] is False
-    assert action["attempt_consumed"] is True
+    assert action["package_digest_sha256"] == U3H_PACKAGE_DIGEST
+    assert action["owner_selections_pending"] is True
     assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False
 
