@@ -75,7 +75,7 @@
     {
       "gate_id": "P36-G4",
       "state": "blocked",
-      "summary": "The digest-bound three-artifact R0 metadata proposal and U3D A/A/A/A/A supply-chain policies remain owner accepted as non-effective planning. U3E was consumed and failed closed on a broad-write ACL before the atomic probe; its empty root was removed. U3F A/A/A/A/A/A choices are explicitly accepted. The exact U3G security-at-create storage and read-only Defender binding package is sealed for owner review, but no retry, F: or ACL action, Defender query/hash/trust check, ModelScan action, acquisition, or execution is authorized."
+      "summary": "The digest-bound three-artifact R0 metadata proposal and U3D A/A/A/A/A supply-chain policies remain owner accepted as non-effective planning. U3E was consumed and failed closed on a broad-write ACL before the atomic probe; its empty root was removed. U3F A/A/A/A/A/A choices are explicitly accepted. U3G was authorized once, consumed, and failed closed because exact DACL verification failed and Defender product-version metadata was unavailable; its empty root was removed. No retry, F: or ACL action, Defender query/hash/trust check, ModelScan action, acquisition, or execution is authorized."
     },
     {
       "gate_id": "P36-G5",
@@ -258,9 +258,23 @@
     "decision_id": "D-P3.6-U3G-BINDING-R1-AUTH",
     "candidate_volume": "F:",
     "exact_candidate_root": "F:\\HCAM-Quarantine",
-    "owner_authorization_pending": true,
+    "owner_authorization_pending": false,
     "maximum_attempts_if_accepted": 1,
     "authorization_use_window_seconds": 86400,
+    "authorization_record": "contracts/phase-3/p3-6-quarantine-remediation-r1-authorization.json",
+    "authorization_sha256": "12DBCEA9BB4C7AECDED5A42CCE2962CFBB689488F1B713990687DE876AC01070",
+    "result_record": "contracts/phase-3/p3-6-quarantine-remediation-r1-result.json",
+    "result_sha256": "417AB2F17C42FD6313CC2798AC055EEF75AB16F0431BE6486619C762FA253226",
+    "evidence_record": "contracts/phase-3/p3-6-quarantine-remediation-r1-evidence.json",
+    "evidence_sha256": "B1D454E1F1390C0FB7D594D80197BA87DA75B5D4216CBF9177F8883E46268B4D",
+    "attempt_consumed": true,
+    "retry_authorized": false,
+    "storage_state": "blocked",
+    "storage_reason_code": "exact_DACL_policy_failed",
+    "candidate_root_retained": false,
+    "Defender_binding_state": "blocked",
+    "Defender_reason_code": "Defender_status_unavailable_or_incomplete",
+    "scanner_chain_ready": false,
     "another_attempt_authorized": false,
     "F_or_ACL_action_authorized": false,
     "Defender_query_hash_or_WinVerifyTrust_authorized": false,
@@ -269,7 +283,7 @@
     "artifact_or_dependency_acquisition_authorized": false,
     "profile_resolver_eligible": false,
     "profile_activation_authorized": false,
-    "status": "sealed_non_effective_owner_authorization_pending"
+    "status": "consumed_failed_closed_storage_and_Defender_blocked"
   },
   "model_artifact_research_package": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
@@ -289,7 +303,7 @@
   "owner_decisions_record": "contracts/phase-3/p3-6-owner-decisions.json",
   "phase_minus_1_alignment": "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
   "planning_authorization": "D-P3.6-PLAN-AUTH",
-  "planning_status": "U2_model_metadata_U3_portable_R0_inventory_admission_AAAA_portable_R1_U3B_AAAA_portable_compatibility_U3C_AAAA_supply_chain_U3D_AAAAA_and_remediation_U3F_AAAAAA_planning_accepted_U3E_consumed_failed_closed_U3G_authorization_package_sealed_owner_authorization_pending_no_retry_acquisition_validation_activation_promotion_or_execution_authority",
+  "planning_status": "U2_model_metadata_U3_portable_R0_inventory_admission_AAAA_portable_R1_U3B_AAAA_portable_compatibility_U3C_AAAA_supply_chain_U3D_AAAAA_and_remediation_U3F_AAAAAA_planning_accepted_U3E_and_U3G_consumed_failed_closed_no_retry_acquisition_validation_activation_promotion_or_execution_authority",
   "record_id": "P3.6-ENTRY-GATES",
   "runtime_execution_authorized": false,
   "start_intent_record": "contracts/phase-3/p3-6-start-intent.json",

@@ -14,6 +14,9 @@ ACTION_SPEC_PATH = CONTRACTS / f"{STEM}-action-spec.json"
 PROPOSAL_PATH = CONTRACTS / f"{STEM}-authorization-proposal.json"
 DOCUMENT_PATH = DOCS / f"{STEM}-authorization-proposal.md"
 PACKAGE_PATH = CONTRACTS / f"{STEM}-authorization-package.json"
+AUTHORIZATION_PATH = CONTRACTS / f"{STEM}-authorization.json"
+RESULT_PATH = CONTRACTS / f"{STEM}-result.json"
+EVIDENCE_PATH = CONTRACTS / f"{STEM}-evidence.json"
 DECISION_PACKAGE_DIGEST = (
     "9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78"
 )
@@ -30,6 +33,15 @@ DOCUMENT_DIGEST = (
     "54D9860666A61601F80BD8ADD54F90CBF8305359930A78C53B42D4D6C6C7EBCE"
 )
 PACKAGE_DIGEST = "C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B"
+AUTHORIZATION_DIGEST = (
+    "12DBCEA9BB4C7AECDED5A42CCE2962CFBB689488F1B713990687DE876AC01070"
+)
+RESULT_DIGEST = (
+    "417AB2F17C42FD6313CC2798AC055EEF75AB16F0431BE6486619C762FA253226"
+)
+EVIDENCE_DIGEST = (
+    "B1D454E1F1390C0FB7D594D80197BA87DA75B5D4216CBF9177F8883E46268B4D"
+)
 
 
 def _read(path: Path) -> dict[str, object]:
@@ -264,7 +276,72 @@ def test_proposal_and_manifest_grant_no_current_action() -> None:
         assert package[field] is False
 
 
-def test_canonical_ledgers_point_to_exact_pending_U3G_package() -> None:
+def test_consumed_U3G_attempt_is_sanitized_and_failed_closed() -> None:
+    authorization = _read(AUTHORIZATION_PATH)
+    result = _read(RESULT_PATH)
+    evidence = _read(EVIDENCE_PATH)
+
+    assert _sha256(AUTHORIZATION_PATH) == AUTHORIZATION_DIGEST
+    assert _sha256(RESULT_PATH) == RESULT_DIGEST
+    assert _sha256(EVIDENCE_PATH) == EVIDENCE_DIGEST
+    assert authorization["decision_id"] == "D-P3.6-U3G-BINDING-R1-AUTH"
+    assert authorization["package_digest_sha256"] == PACKAGE_DIGEST
+    assert authorization["status"] == "single_attempt_started_and_consumed"
+    assert authorization["effective_for_additional_attempt"] is False
+    assert authorization["authorization_scope"]["attempts_consumed"] == 1
+    assert authorization["authorization_scope"]["retry_after_failure"] is False
+
+    storage = result["storage"]
+    defender = result["Defender_binding"]
+    assert storage["state"] == "blocked"
+    assert storage["reason_code"] == "exact_DACL_policy_failed"
+    assert storage["root"]["created_by_attempt"] is True
+    assert storage["root"]["retained_after_attempt"] is False
+    assert storage["root"]["cleanup_state"] == "created_root_removed_empty"
+    assert storage["acl"]["access_rules_protected"] is True
+    assert storage["acl"]["overall_DACL_pass"] is False
+    assert storage["acl"]["identity_data_persisted"] is False
+    assert storage["atomic_probe"]["exclusive_create"] is False
+    assert storage["atomic_probe"]["content_retained"] is False
+    assert defender["state"] == "blocked"
+    assert defender["reason_code"] == "Defender_status_unavailable_or_incomplete"
+    assert defender["binary_candidate"]["state"] == "not_evaluated"
+    assert defender["binary_candidate"]["executable_invoked"] is False
+    assert result["scanner_chain"]["scanner_chain_ready"] is False
+    assert result["raw_output_persisted"] is False
+    assert result["identity_ACL_or_certificate_data_persisted"] is False
+
+    assert evidence["authorization_sha256"] == AUTHORIZATION_DIGEST
+    assert evidence["result_sha256"] == RESULT_DIGEST
+    assert evidence["storage_probe_content_retained"] is False
+    assert evidence["candidate_root_retained"] is False
+    assert evidence["Defender_executable_invoked"] is False
+    assert evidence["ModelScan_queried_installed_imported_or_executed"] is False
+    assert evidence["scanner_chain_ready"] is False
+    assert [item["action_id"] for item in evidence["bounded_action_outcomes"]] == [
+        f"U3G-A{index:02d}-{suffix}"
+        for index, suffix in enumerate(
+            [
+                "UTC-CLOCK-START",
+                "PACKAGE-VERIFY",
+                "AUTHORIZATION-RECORD",
+                "F-DRIVE-INFO",
+                "CANONICAL-PATH-AND-ABSENCE",
+                "PROTECTED-DACL-CONSTRUCT",
+                "SECURITY-AT-CREATE-ROOT",
+                "EXACT-DACL-VERIFY",
+                "ATOMIC-CAPABILITY-PROBE",
+                "DEFENDER-STATUS-METADATA",
+                "DEFENDER-BINARY-CANDIDATE",
+                "DEFENDER-CACHE-ONLY-WINVERIFYTRUST",
+                "NORMALIZE-HASH-WRITE",
+            ],
+            start=1,
+        )
+    ]
+
+
+def test_canonical_ledgers_point_to_consumed_U3G_attempt() -> None:
     ledgers = [
         _read(CONTRACTS / "p3-6-entry-gates.json"),
         _read(CONTRACTS / "p3-6-capability-profile-policy.json"),
@@ -273,29 +350,38 @@ def test_canonical_ledgers_point_to_exact_pending_U3G_package() -> None:
 
     for ledger in ledgers:
         accepted = ledger["quarantine_remediation_r1_decision_package"]
-        pending = ledger["quarantine_remediation_r1_authorization_package"]
+        consumed = ledger["quarantine_remediation_r1_authorization_package"]
         accepted_hash = accepted.get(
             "acceptance_sha256", accepted.get("accepted_policy_sha256")
         )
-        pending_digest = pending.get(
-            "digest_sha256", pending.get("package_digest_sha256")
+        consumed_digest = consumed.get(
+            "digest_sha256", consumed.get("package_digest_sha256")
         )
         assert accepted["selected_options"] == "A/A/A/A/A/A"
         assert accepted["owner_selections_pending"] is False
         assert accepted_hash == ACCEPTANCE_DIGEST
-        assert pending_digest == PACKAGE_DIGEST
-        assert pending["decision_id"] == "D-P3.6-U3G-BINDING-R1-AUTH"
-        assert pending["owner_authorization_pending"] is True
-        assert pending["another_attempt_authorized"] is False
-        assert pending["F_or_ACL_action_authorized"] is False
-        assert pending["Defender_query_hash_or_WinVerifyTrust_authorized"] is False
-        assert pending["artifact_or_dependency_acquisition_authorized"] is False
-        assert pending["profile_activation_authorized"] is False
+        assert consumed_digest == PACKAGE_DIGEST
+        assert consumed["decision_id"] == "D-P3.6-U3G-BINDING-R1-AUTH"
+        assert consumed["owner_authorization_pending"] is False
+        assert consumed["attempt_consumed"] is True
+        assert consumed["retry_authorized"] is False
+        assert consumed["authorization_sha256"] == AUTHORIZATION_DIGEST
+        assert consumed["result_sha256"] == RESULT_DIGEST
+        assert consumed["evidence_sha256"] == EVIDENCE_DIGEST
+        assert consumed["storage_reason_code"] == "exact_DACL_policy_failed"
+        assert consumed["Defender_binding_state"] == "blocked"
+        assert consumed["another_attempt_authorized"] is False
+        assert consumed["F_or_ACL_action_authorized"] is False
+        assert consumed["Defender_query_hash_or_WinVerifyTrust_authorized"] is False
+        assert consumed["artifact_or_dependency_acquisition_authorized"] is False
+        assert consumed["profile_activation_authorized"] is False
 
     action = ledgers[2]["next_portable_planning_action"]
-    assert action["decision_id"] == "D-P3.6-U3G-BINDING-R1-AUTH"
+    assert action["decision_id"] is None
     assert action["package_digest_sha256"] == PACKAGE_DIGEST
-    assert action["owner_authorization_pending"] is True
+    assert action["owner_authorization_pending"] is False
+    assert action["attempt_consumed"] is True
+    assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False
 
 
@@ -313,11 +399,17 @@ def test_human_records_and_indexes_are_synchronized() -> None:
     ]
 
     for path in paths:
-        assert PACKAGE_DIGEST in path.read_text(encoding="utf-8")
+        text = path.read_text(encoding="utf-8")
+        assert PACKAGE_DIGEST in text
+        assert "U3G" in text
     decision_register = (DOCS / "decision-register.md").read_text(
         encoding="utf-8"
     )
     assert "DR-0063" in decision_register
+    assert "DR-0064" in decision_register
+    assert AUTHORIZATION_DIGEST in decision_register
+    assert RESULT_DIGEST in decision_register
+    assert EVIDENCE_DIGEST in decision_register
     assert "D-P3.6-U3G-BINDING-R1-AUTH" in decision_register
     assert f"{STEM}-authorization-package.json" in (
         CONTRACTS / "README.md"

@@ -263,7 +263,9 @@ def test_canonical_ledgers_link_package_without_opening_P36_G2() -> None:
     ] == U3G_PACKAGE_DIGEST
     assert unblock["next_portable_planning_action"][
         "owner_authorization_pending"
-    ] is True
+    ] is False
+    assert unblock["next_portable_planning_action"]["attempt_consumed"] is True
+    assert unblock["next_portable_planning_action"]["retry_authorized"] is False
     assert unblock["next_portable_planning_action"][
         "another_attempt_authority"
     ] is False

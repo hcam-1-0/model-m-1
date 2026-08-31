@@ -233,8 +233,15 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
   identity, root, Defender, ModelScan, and retry policies.
 - [x] The exact U3G authorization package is sealed under digest
   `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`.
-- [ ] `D-P3.6-U3G-BINDING-R1-AUTH` exactly accepts the U3G digest before the
-  one attempt; U3F selections and sealing U3G are not attempt authority.
+- [x] `D-P3.6-U3G-BINDING-R1-AUTH` exactly accepted the U3G digest before the
+  one attempt; the authorization and attempt are consumed.
+- [x] The U3G attempt failed closed at the exact DACL gate, skipped the atomic
+  probe, removed the attempt-created empty root, and retained no probe content.
+- [x] Defender status yielded no usable product version, so candidate hashing
+  and cache-only WinVerifyTrust were skipped without executing a scanner.
+- [x] The consumed authorization, result, and evidence records are bound by
+  SHA-256 values `12DBCEA9...1070`, `417AB2F1...3226`, and
+  `B1D454E1...8B4D`; no retry is authorized.
 - [ ] An eligible exact local quarantine root and exact scanner command are
   bound in a regenerated R1 proposal before any acquisition authorization.
 - [ ] The exact portable runtime/workload profile, accelerated-laptop profile,

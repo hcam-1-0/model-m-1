@@ -1077,8 +1077,8 @@ Machine-readable package:
 
 ### DR-0063: U3G security-at-create and Defender binding attempt proposed
 
-Status: exact one-attempt authorization package sealed for owner review on
-2026-08-31; no attempt is authorized.
+Status: superseded by the consumed attempt recorded in DR-0064. This entry
+preserves the immutable proposal state before authorization.
 
 The exact U3G package applies the accepted U3F choices. It requires the
 candidate root to be absent, constructs a protected DACL in memory, grants the
@@ -1100,6 +1100,39 @@ Only an exact `D-P3.6-U3G-BINDING-R1-AUTH` statement against that digest within
 
 Machine-readable package:
 [`p3-6-quarantine-remediation-r1-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-remediation-r1-authorization-package.json).
+
+### DR-0064: U3G attempt consumed and failed closed
+
+Status: accepted and consumed on 2026-08-31; no retry is authorized.
+
+`mayank-admin` exactly accepted `D-P3.6-U3G-BINDING-R1-AUTH` against package
+digest
+`C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`.
+The authorization was recorded before machine access and its only attempt was
+consumed.
+
+The fixed NTFS volume, capacity, exact absent path, protected-DACL construction,
+and security-at-create operation passed. Post-create verification did not find
+the current-process `Modify` rule in the exact semantic form required by the
+package. The DACL gate failed closed, the atomic probe was skipped, the empty
+attempt-created root was removed, and no probe content was retained.
+
+The bounded Defender status operation yielded no usable normalized product
+version. Candidate resolution, hashing, and cache-only WinVerifyTrust were
+skipped. No Defender executable, scanner, ModelScan component, model, artifact,
+media, container, or deployment action ran.
+
+Evidence SHA-256 values:
+
+- authorization: `12DBCEA9BB4C7AECDED5A42CCE2962CFBB689488F1B713990687DE876AC01070`;
+- result: `417AB2F17C42FD6313CC2798AC055EEF75AB16F0431BE6486619C762FA253226`;
+- evidence: `B1D454E1F1390C0FB7D594D80197BA87DA75B5D4216CBF9177F8883E46268B4D`.
+
+Machine-readable result:
+[`p3-6-quarantine-remediation-r1-result.json`](../../contracts/phase-3/p3-6-quarantine-remediation-r1-result.json).
+
+Human record:
+[`p3-6-quarantine-remediation-r1-attempt.md`](p3-6-quarantine-remediation-r1-attempt.md).
 
 ## Decisions Explicitly Deferred
 

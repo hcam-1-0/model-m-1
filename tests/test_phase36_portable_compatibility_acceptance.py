@@ -149,7 +149,7 @@ def test_canonical_ledgers_record_acceptance_without_opening_G2() -> None:
     assert unblock["runtime_execution_authorized"] is False
 
 
-def test_accepted_U3F_path_advances_to_U3G_owner_review() -> None:
+def test_accepted_U3F_path_records_consumed_U3G_and_follow_up_planning() -> None:
     acceptance = _read(ACCEPTANCE_PATH)
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     action = unblock["next_portable_planning_action"]
@@ -159,14 +159,17 @@ def test_accepted_U3F_path_advances_to_U3G_owner_review() -> None:
         "authorization_prerequisites"
     )
     assert action["action"] == (
-        "owner_review_D_P3_6_U3G_BINDING_R1_AUTH_against_exact_sealed_"
-        "authorization_package"
+        "analyze_consumed_U3G_DACL_and_Defender_failures_and_prepare_a_new_"
+        "non_effective_owner_decision_package"
     )
     assert action["package_digest_sha256"] == U3G_PACKAGE_DIGEST
     assert action["candidate_root"] == "F:\\HCAM-Quarantine"
-    assert action["owner_authorization_pending"] is True
+    assert action["decision_id"] is None
+    assert action["owner_authorization_pending"] is False
+    assert action["attempt_consumed"] is True
+    assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False
-    assert action["status"] == "sealed_non_effective_owner_authorization_pending"
+    assert action["status"] == "consumed_failed_closed_follow_up_planning_unsealed"
 
 
 def test_human_records_and_indexes_are_synchronized() -> None:

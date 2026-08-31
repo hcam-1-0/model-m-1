@@ -218,8 +218,10 @@ def test_canonical_ledgers_record_consumed_attempt_and_keep_gates_blocked() -> N
         assert state["profile_activation_authorized"] is False
 
     action = unblock["next_portable_planning_action"]
-    assert action["decision_id"] == "D-P3.6-U3G-BINDING-R1-AUTH"
-    assert action["owner_authorization_pending"] is True
+    assert action["decision_id"] is None
+    assert action["owner_authorization_pending"] is False
+    assert action["attempt_consumed"] is True
+    assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False
 
 

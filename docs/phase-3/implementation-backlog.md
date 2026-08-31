@@ -402,10 +402,13 @@ atomic probe was skipped, and the empty root was removed. U3F remediation
 decisions are now sealed under digest
 `9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`;
 the owner selected `D-P3.6-U3F-001` through `006` as `A/A/A/A/A/A`. The
-resulting U3G authorization package is
-sealed under digest
+resulting U3G authorization package was sealed under digest
 `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`.
-It remains pending exact owner authorization; no retry is authorized.
+The owner exactly authorized that digest and the attempt is consumed. It failed
+closed at exact DACL verification, skipped the probe, removed the empty root,
+retained no probe content, and could not obtain a usable Defender product
+version. Candidate hashing and WinVerifyTrust were skipped. No retry is
+authorized.
 
 Planning records:
 
@@ -448,6 +451,10 @@ Planning records:
 - [accepted U3F `A/A/A/A/A/A` owner decisions](../../contracts/phase-3/p3-6-quarantine-remediation-r1-owner-decisions.json);
 - [U3G quarantine remediation R1 authorization proposal](p3-6-quarantine-remediation-r1-authorization-proposal.md);
 - [sealed non-effective U3G authorization package](../../contracts/phase-3/p3-6-quarantine-remediation-r1-authorization-package.json); and
+- [consumed U3G authorization](../../contracts/phase-3/p3-6-quarantine-remediation-r1-authorization.json);
+- [sanitized U3G result](../../contracts/phase-3/p3-6-quarantine-remediation-r1-result.json);
+- [bounded U3G evidence](../../contracts/phase-3/p3-6-quarantine-remediation-r1-evidence.json); and
+- [human U3G attempt record](p3-6-quarantine-remediation-r1-attempt.md);
 - [P3.6 planning acceptances R0](p3-6-planning-acceptances.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
@@ -482,9 +489,12 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner inputs and separate authority:
 
-- review `D-P3.6-U3G-BINDING-R1-AUTH` against exact package digest
-  `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`;
-  the sealed package is not authority to query or modify `F:`, change an ACL,
+- analyze the consumed U3G exact-DACL semantic mismatch and unavailable
+  Defender product version without another machine query; any retry requires a
+  new immutable action package, digest, and exact owner authorization;
+- treat U3G package digest
+  `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`
+  as consumed evidence, not authority to query or modify `F:`, change an ACL,
   query/hash/trust-check or run Defender, use ModelScan, install, acquire,
   execute, validate, implement, admit, or activate anything;
 - resolve exact model-family artifacts/data and complete `P36-G1`;

@@ -145,8 +145,8 @@ def test_canonical_ledgers_record_acceptance_without_opening_gates() -> None:
     assert "U3D A/A/A/A/A policies are owner accepted" in gate_summaries["P36-G2"]
     assert "U3D A/A/A/A/A supply-chain policies" in gate_summaries["P36-G4"]
     assert "U3G" in gate_summaries["P36-G4"]
-    assert "owner review" in gate_summaries["P36-G4"]
-    assert "no retry" in gate_summaries["P36-G4"]
+    assert "consumed" in gate_summaries["P36-G4"]
+    assert "no retry" in gate_summaries["P36-G4"].lower()
     for ledger in [gates, policy, unblock]:
         state = ledger["portable_r1_supply_chain_prerequisite_package"]
         assert state["selected_options"] == "A/A/A/A/A"
@@ -159,18 +159,21 @@ def test_canonical_ledgers_record_acceptance_without_opening_gates() -> None:
         assert state["profile_activation_authorized"] is False
 
 
-def test_next_action_is_exact_U3G_owner_review() -> None:
+def test_next_action_is_U3G_failure_analysis_without_retry_authority() -> None:
     action = _read(CONTRACTS / "p3-6-unblock-plan.json")[
         "next_portable_planning_action"
     ]
 
     assert action["action"] == (
-        "owner_review_D_P3_6_U3G_BINDING_R1_AUTH_against_exact_sealed_"
-        "authorization_package"
+        "analyze_consumed_U3G_DACL_and_Defender_failures_and_prepare_a_new_"
+        "non_effective_owner_decision_package"
     )
     assert action["package_digest_sha256"] == U3G_PACKAGE_DIGEST
     assert action["candidate_root"] == "F:\\HCAM-Quarantine"
-    assert action["owner_authorization_pending"] is True
+    assert action["decision_id"] is None
+    assert action["owner_authorization_pending"] is False
+    assert action["attempt_consumed"] is True
+    assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False
     assert action["implementation_or_runtime_authority"] is False
     assert action["artifact_or_dependency_acquisition_authority"] is False

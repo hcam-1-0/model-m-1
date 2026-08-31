@@ -2,10 +2,9 @@
 
 Status: planning-only owner acceptances are recorded through the portable U3D
 `A/A/A/A/A` supply-chain prerequisite policy. The bounded inventory R1 attempt
-succeeded and is consumed. The bounded U3E attempt failed closed and is also
-consumed. U3F `A/A/A/A/A/A` planning choices are accepted, and U3G is a
-non-effective authorization package pending exact owner authorization. No
-continuing inventory collection, retry, artifact acquisition,
+succeeded and is consumed. The bounded U3E and U3G attempts both failed closed
+and are consumed. U3F `A/A/A/A/A/A` planning choices remain accepted. No
+continuing inventory collection, storage or Defender retry, artifact acquisition,
 implementation, runtime, or deployment authority exists.
 
 Machine-readable records:
@@ -23,13 +22,16 @@ Later R1 outcome records:
 - [portable compatibility and generated C1 policy acceptance](../../contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json).
 - [portable R1 supply-chain prerequisite policy acceptance](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json).
 
-Consumed U3E records, accepted U3F choices, and pending U3G package:
+Consumed U3E/U3G records and accepted U3F choices:
 
 - [F: quarantine and scanner binding R0 package](../../contracts/phase-3/p3-6-quarantine-scanner-binding-r0-authorization-package.json).
 - [F: quarantine and scanner binding R0 result](../../contracts/phase-3/p3-6-quarantine-scanner-binding-r0-result.json).
 - [quarantine remediation R1 decision package](../../contracts/phase-3/p3-6-quarantine-remediation-r1-decision-package.json).
 - [quarantine remediation R1 owner decisions](../../contracts/phase-3/p3-6-quarantine-remediation-r1-owner-decisions.json).
 - [quarantine remediation R1 authorization package](../../contracts/phase-3/p3-6-quarantine-remediation-r1-authorization-package.json).
+- [quarantine remediation R1 consumed authorization](../../contracts/phase-3/p3-6-quarantine-remediation-r1-authorization.json).
+- [quarantine remediation R1 result](../../contracts/phase-3/p3-6-quarantine-remediation-r1-result.json).
+- [quarantine remediation R1 evidence](../../contracts/phase-3/p3-6-quarantine-remediation-r1-evidence.json).
 
 ## Portable CPU Planning Proposal
 
@@ -120,9 +122,11 @@ The owner accepted that package and the attempt was consumed. It measured an
 eligible volume and path, failed closed on a broad-write ACL, skipped the probe,
 and removed the empty root. The U3F decision package is sealed under digest
 `9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`.
-The owner selected `A/A/A/A/A/A`. U3G is sealed under digest
+The owner selected `A/A/A/A/A/A`. U3G was sealed and exactly authorized under digest
 `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`
-and remains unauthorized.
+and its single attempt is consumed. Exact post-create DACL verification failed,
+the probe was skipped, the empty root was removed, and Defender yielded no
+usable product version. No retry is authorized.
 
 ## Model Metadata Proposal
 
@@ -144,7 +148,7 @@ bindings are sealed in a regenerated package.
 | `P36-G1` | Blocked: no acquired comparison artifacts, H-CAM evidence, or approved champion/fallback |
 | `P36-G2` | Blocked: R1, U3C, and U3D planning policies exist; actual compatibility artifacts, six other resolver inputs, other profiles, and generated validation evidence remain missing |
 | `P36-G3` | Passed |
-| `P36-G4` | Blocked: U3E failed closed; U3F choices are accepted and U3G is sealed, but exact U3G authorization, a passing storage attestation, complete scanner bindings, and acquisition authority remain pending |
+| `P36-G4` | Blocked: U3E and U3G failed closed and are consumed; a passing storage attestation, complete scanner bindings, and acquisition authority remain pending |
 | `P36-G5` | Blocked: no digest-bound implementation/runtime authorization |
 
 ## Continuing Boundary

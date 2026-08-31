@@ -10,9 +10,12 @@ resolver-eligible. The U3D portable R1 supply-chain prerequisite policies are
 owner accepted as `A/A/A/A/A`, but all exact storage, scanner, artifact,
 inspection, and runtime bindings and evidence remain pending.
 The exact `F:\HCAM-Quarantine` U3E attempt was consumed and failed closed at
-the broad-write ACL gate. U3F remediation choices are accepted as
-`A/A/A/A/A/A`, and the exact U3G retry package is sealed for owner review, but
-no retry or profile action is authorized. U3G package digest:
+the broad-write ACL gate. U3F remediation choices were accepted as
+`A/A/A/A/A/A`; the exact U3G package was authorized and its one attempt is now
+consumed. U3G failed closed because the current-process `Modify` rule did not
+match the required exact post-create DACL semantics, and Defender yielded no
+usable product version. The empty root was removed and no probe content was
+retained. No retry or profile action is authorized. U3G package digest:
 `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`.
 
 Machine-readable policy:
@@ -77,7 +80,7 @@ must be interpreted through the Phase -1 mapping above in every new manifest.
 
 | Profile | Intended environment | Candidate path | Claim boundary | Current state |
 | --- | --- | --- | --- | --- |
-| `portable_cpu` | Current laptop and deterministic CI/reference use | ONNX Runtime CPU reference | C1 correctness and small CPU evidence only until measured | Non-executable R0, U3B, U3C `A/A/A/A`, U3D `A/A/A/A/A`, and U3F `A/A/A/A/A/A` accepted; U3E failed closed and U3G is sealed but unauthorized; six resolver inputs, exact bindings, actual artifacts, and executable validation remain unresolved |
+| `portable_cpu` | Current laptop and deterministic CI/reference use | ONNX Runtime CPU reference | C1 correctness and small CPU evidence only until measured | Non-executable R0, U3B, U3C `A/A/A/A`, U3D `A/A/A/A/A`, and U3F `A/A/A/A/A/A` accepted; U3E and U3G both failed closed and are consumed; six resolver inputs, exact bindings, actual artifacts, and executable validation remain unresolved |
 | `local_accelerated` | Owned or authorized stronger laptop | Exact validated Intel, NVIDIA, or AMD provider | Exact machine and workload only | Exact manifest pending |
 | `capacity_target` | Declared lab/server or later cluster target | Approved accelerated runtime; optional Kubernetes backend | C10/C50 only from signed exact-hardware evidence | Exact manifest pending |
 

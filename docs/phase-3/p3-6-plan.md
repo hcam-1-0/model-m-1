@@ -86,8 +86,14 @@ recommended selections. The resulting
 [U3G authorization proposal](p3-6-quarantine-remediation-r1-authorization-proposal.md)
 is sealed under digest
 `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`.
-It remains non-effective pending exact owner authorization and authorizes no
-current action.
+The owner exactly authorized that digest and the single attempt is consumed.
+It failed closed at exact DACL verification, skipped the probe, removed the
+attempt-created empty root, retained no probe content, and could not obtain a
+usable Defender product version. Candidate hashing and WinVerifyTrust were
+therefore skipped. The outcome authorizes no retry or current action.
+
+Consumed-attempt record:
+[P3.6 quarantine remediation R1 attempt](p3-6-quarantine-remediation-r1-attempt.md).
 
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).

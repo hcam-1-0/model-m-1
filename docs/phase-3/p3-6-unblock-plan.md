@@ -161,7 +161,9 @@ The owner selected `A/A/A/A/A/A`. The resulting
 [U3G authorization proposal](p3-6-quarantine-remediation-r1-authorization-proposal.md)
 is sealed under digest
 `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`
-and is pending exact owner authorization.
+and was exactly owner authorized. The single attempt is consumed: exact DACL
+verification failed, the probe was skipped, the empty root was removed, and
+Defender yielded no usable product version. No retry is authorized.
 
 Prepare immutable proposals against the Phase -1 profile model:
 
@@ -206,10 +208,13 @@ The non-executable R1 supply-chain prerequisites are now sealed as the U3D
 package under digest
 `496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
 The owner accepted `D-P3.6-U3D-001` through `005` as `A/A/A/A/A`, accepted and
-consumed U3E, and selected U3F `A/A/A/A/A/A`. The next planning action is exact
-owner review of `D-P3.6-U3G-BINDING-R1-AUTH` against package digest
+consumed U3E, selected U3F `A/A/A/A/A/A`, and exactly authorized U3G against
+package digest
 `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`.
-Neither the prior acceptances nor sealing U3G is authority to retry storage,
+U3G is consumed and failed closed. The next planning action is bounded failure
+analysis for the exact DACL semantic mismatch and unavailable Defender product
+version, followed by a new non-effective owner decision package. No such
+package is currently sealed. Neither the prior acceptances nor consumed U3G is authority to retry storage,
 change ACLs, query/hash/trust-check or execute scanners, activate or admit a
 profile, acquire or inspect artifacts, execute a runtime, run validation,
 implement a reusable collector, or deploy.
@@ -220,8 +225,9 @@ non-cloud, non-network quarantine root must pass a fresh threshold of at least
 command, result handling, and passive checkpoint inspector must be bound.
 Volume `B:` remains owner prohibited, and the historical `C:`, `E:`, and `F:`
 observations are not current authority under the recorded low-free-space
-policy. No fresh storage or scanner check has been authorized or performed. No file
-may be downloaded, loaded, converted, executed, or promoted meanwhile.
+policy. The U3G observation is consumed and cannot be refreshed or reused as
+authority. No file may be downloaded, loaded, converted, executed, or promoted
+meanwhile.
 
 The completed inventory decision does not authorize collaborator-machine
 access. A collaborator may later supply an independently generated sanitized

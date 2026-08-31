@@ -161,7 +161,7 @@ def test_proposal_and_manifest_grant_no_current_authority() -> None:
             assert value is False
 
 
-def test_canonical_ledgers_record_U3E_consumed_U3F_accepted_and_U3G_pending() -> None:
+def test_canonical_ledgers_record_U3E_and_U3G_consumed_and_U3F_accepted() -> None:
     ledgers = [
         _read(CONTRACTS / "p3-6-entry-gates.json"),
         _read(CONTRACTS / "p3-6-capability-profile-policy.json"),
@@ -171,15 +171,15 @@ def test_canonical_ledgers_record_U3E_consumed_U3F_accepted_and_U3G_pending() ->
     for ledger in ledgers:
         consumed = ledger["quarantine_scanner_binding_r0_authorization_package"]
         accepted = ledger["quarantine_remediation_r1_decision_package"]
-        pending = ledger["quarantine_remediation_r1_authorization_package"]
+        U3G_consumed = ledger["quarantine_remediation_r1_authorization_package"]
         consumed_digest = consumed.get(
             "digest_sha256", consumed.get("package_digest_sha256")
         )
         accepted_digest = accepted.get(
             "digest_sha256", accepted.get("package_digest_sha256")
         )
-        pending_digest = pending.get(
-            "digest_sha256", pending.get("package_digest_sha256")
+        U3G_digest = U3G_consumed.get(
+            "digest_sha256", U3G_consumed.get("package_digest_sha256")
         )
         assert consumed_digest == U3E_PACKAGE_DIGEST
         assert consumed["attempt_consumed"] is True
@@ -188,14 +188,16 @@ def test_canonical_ledgers_record_U3E_consumed_U3F_accepted_and_U3G_pending() ->
         assert accepted["selected_options"] == "A/A/A/A/A/A"
         assert accepted["owner_selections_pending"] is False
         assert accepted["acceptance_sha256"] == ACCEPTANCE_DIGEST
-        assert pending_digest == U3G_PACKAGE_DIGEST
-        assert pending["owner_authorization_pending"] is True
-        assert pending["another_attempt_authorized"] is False
-        assert pending["F_or_ACL_action_authorized"] is False
-        assert pending["Defender_query_hash_or_WinVerifyTrust_authorized"] is False
-        assert pending["scanner_install_update_or_execution_authorized"] is False
-        assert pending["artifact_or_dependency_acquisition_authorized"] is False
-        assert pending["profile_activation_authorized"] is False
+        assert U3G_digest == U3G_PACKAGE_DIGEST
+        assert U3G_consumed["owner_authorization_pending"] is False
+        assert U3G_consumed["attempt_consumed"] is True
+        assert U3G_consumed["retry_authorized"] is False
+        assert U3G_consumed["another_attempt_authorized"] is False
+        assert U3G_consumed["F_or_ACL_action_authorized"] is False
+        assert U3G_consumed["Defender_query_hash_or_WinVerifyTrust_authorized"] is False
+        assert U3G_consumed["scanner_install_update_or_execution_authorized"] is False
+        assert U3G_consumed["artifact_or_dependency_acquisition_authorized"] is False
+        assert U3G_consumed["profile_activation_authorized"] is False
 
 
 def test_entry_gates_remain_blocked_after_non_effective_package() -> None:
@@ -232,6 +234,7 @@ def test_human_records_and_indexes_are_synchronized() -> None:
         assert PACKAGE_DIGEST in text
     assert "DR-0062" in decision_register
     assert "DR-0063" in decision_register
+    assert "DR-0064" in decision_register
     assert "D-P3.6-U3F-001" in backlog
-    assert "D-P3.6-U3G-BINDING-R1-AUTH" in backlog
+    assert "consumed U3G authorization" in backlog
     assert f"{STEM}-decision-package.json" in contracts_index

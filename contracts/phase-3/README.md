@@ -316,6 +316,15 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-quarantine-remediation-r1-authorization-package.json`: immutable U3G
   authorization package whose SHA-256 is
   `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`.
+- `p3-6-quarantine-remediation-r1-authorization.json`: consumed U3G
+  authorization record, SHA-256
+  `12DBCEA9BB4C7AECDED5A42CCE2962CFBB689488F1B713990687DE876AC01070`.
+- `p3-6-quarantine-remediation-r1-result.json`: sanitized failed-closed storage
+  and Defender result, SHA-256
+  `417AB2F17C42FD6313CC2798AC055EEF75AB16F0431BE6486619C762FA253226`.
+- `p3-6-quarantine-remediation-r1-evidence.json`: bounded action, cleanup, and
+  non-authorization evidence, SHA-256
+  `B1D454E1F1390C0FB7D594D80197BA87DA75B5D4216CBF9177F8883E46268B4D`.
 
 Verify all tracked snapshots:
 
