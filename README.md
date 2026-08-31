@@ -176,6 +176,34 @@ The branch supports two deliberately separate operating modes. Recording/analyti
 
 **Dry-run:** `Cam-Adapter/dry_run_recordings/` (gitignored) — verified 2-cam 35s → 23MB frag MP4 `ffprobe: h264,1920` ✓.
 
+## Phase 2.5 Sentinel Adapter And Test UI
+
+This branch also carries a separate, read-only Sentinel sandbox lab under
+`app/hcam/labs/sentinel/`. It does not replace or modify the existing
+`hcam.cam_adapter` recording and analytics path.
+
+The shared test dashboard can switch between two profiles over the same public
+Sentinel catalogue:
+
+- `lab1highadapter`: native media quality, 50-slot catalogue holder, up to 30
+  managed connections and four concurrent previews;
+- `lab2lowadapter`: the same catalogue and native media quality, limited to four
+  managed connections and one concurrent preview.
+
+Both profiles keep recording, downloading, frame export, analytics, camera
+control, private endpoints, and Government data disabled. The optional
+generated fallback remains isolated for offline and GPU-capable laptop tests.
+
+Start with [the Phase 2.5 guide](docs/phase-2-5/README.md) and
+[the teammate laptop runbook](docs/phase-2-5/teammate-laptop-runbook.md).
+
+```powershell
+uv sync --locked --extra dev
+uv run --locked --extra dev python tools/phase2_5_lab.py doctor --host-only --accelerator auto
+uv run --locked --extra dev python tools/phase2_5_lab.py start
+uv run --locked --extra dev python tools/phase2_5_lab.py verify
+```
+
 ---
 
 ## Project Structure

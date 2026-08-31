@@ -41,7 +41,7 @@ ENV HCAM_ENVIRONMENT=production \
     PYTHONUNBUFFERED=1
 
 RUN apt-get update \
-    && apt-get install --no-install-recommends --yes ca-certificates ffmpeg \
+    && apt-get install --no-install-recommends --yes ca-certificates ffmpeg fonts-dejavu-core \
     && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd --gid "${HCAM_GID}" hcam \
