@@ -1,0 +1,54 @@
+logLevel: info
+logDestinations: [stdout]
+readTimeout: 10s
+writeTimeout: 10s
+writeQueueSize: 512
+
+authMethod: jwt
+authJWTJWKS: http://api:8000/internal/playback-jwks.json
+authJWTClaimKey: mediamtx_permissions
+authJWTIssuer: hcam-core
+authJWTAudience: mediamtx
+authJWTExclude:
+  - action: publish
+    path: "~^hcam/str_[0-9a-f]{32}$"
+  - action: api
+  - action: metrics
+
+api: true
+apiAddress: :9997
+metrics: true
+metricsAddress: :9998
+pprof: false
+
+rtsp: true
+rtspAddress: :8554
+rtspTransports: [tcp]
+rtmp: false
+hls: true
+hlsAddress: :8888
+hlsEncryption: false
+hlsAlwaysRemux: false
+hlsVariant: fmp4
+hlsAllowOrigins:
+  - http://127.0.0.1:8091
+  - http://localhost:8091
+webrtc: true
+webrtcAddress: :8889
+webrtcEncryption: false
+webrtcAllowOrigins:
+  - http://127.0.0.1:8091
+  - http://localhost:8091
+webrtcLocalUDPAddress: :8189
+webrtcLocalTCPAddress: :8190
+webrtcAdditionalHosts: [127.0.0.1]
+srt: false
+moq: false
+
+pathDefaults:
+  source: publisher
+  overridePublisher: false
+  record: false
+
+paths:
+  all_others:

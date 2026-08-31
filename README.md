@@ -164,6 +164,34 @@ extraction, synthetic generation, training, inference, media access, or model ex
 The artifact-research command is separately gated and writes only the seven
 authorized files and receipts to the external local quarantine.
 
+## Phase 2.5 Sentinel Adapter And Test UI
+
+This branch includes the separate, read-only Sentinel compatibility lab under
+`app/hcam/labs/sentinel/`. It does not replace or modify H-CAM's main camera
+adapter or the Phase 3 analytics activation path.
+
+The same dashboard can switch between two resource profiles connected to the
+same public Sentinel catalogue:
+
+- `lab1highadapter`: native media quality, a 50-slot catalogue holder, up to 30
+  managed connections, and four concurrent previews.
+- `lab2lowadapter`: the same catalogue and native media quality, limited to four
+  managed connections and one concurrent preview.
+
+Both profiles keep recording, downloading, frame export, analytics, camera
+control, private endpoints, and Government data disabled. Generated fallback
+media remains explicit and isolated for offline testing.
+
+Start with [the Phase 2.5 guide](docs/phase-2-5/README.md) and
+[the teammate laptop runbook](docs/phase-2-5/teammate-laptop-runbook.md).
+
+```powershell
+uv sync --locked --extra dev
+uv run --locked --extra dev python tools/phase2_5_lab.py doctor --host-only --accelerator auto
+uv run --locked --extra dev python tools/phase2_5_lab.py start
+uv run --locked --extra dev python tools/phase2_5_lab.py verify
+```
+
 ## Phase 2 camera and video ingestion
 
 Phase 2 adds stream endpoint management, metadata-only health workers, a

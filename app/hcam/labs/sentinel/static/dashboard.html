@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>H-CAM Phase 2.5 Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/static/dashboard.css">
+  <script src="/static/dashboard.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="product">H-CAM</p>
+      <h1>Sentinel Compatibility Lab</h1>
+    </div>
+    <div class="topbar-actions">
+      <span id="classificationLabel" class="classification">SENTINEL SANDBOX</span>
+      <div class="adapter-switch" role="group" aria-label="Lab adapter">
+        <button type="button" data-adapter="lab1highadapter" title="Native quality with up to 30 active Sentinel connections">Lab 1 High</button>
+        <button type="button" data-adapter="lab2lowadapter" title="Native quality with up to 4 active Sentinel connections">Lab 2 Low</button>
+      </div>
+      <button id="refreshButton" type="button">Refresh catalogue</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="summary" aria-label="Lab summary">
+      <div><span>Catalogue</span><strong id="catalogueState">Loading</strong></div>
+      <div><span>Records</span><strong id="recordCount">0</strong></div>
+      <div><span>Advertised live</span><strong id="liveCount">0</strong></div>
+      <div><span>Observed online</span><strong id="onlineCount">0</strong></div>
+      <div><span>Connection limit</span><strong id="runtimeCount">0</strong></div>
+      <div><span>Capacity</span><strong>50</strong></div>
+      <div><span>Acceleration</span><strong id="acceleratorState">Pending</strong></div>
+    </section>
+
+    <section class="workspace">
+      <div class="inventory">
+        <div class="section-heading">
+          <div>
+            <h2 id="inventoryTitle">Sentinel camera inventory</h2>
+            <p id="inventoryStatus" role="status">Loading lab state</p>
+          </div>
+          <label>
+            <span>Filter</span>
+            <input id="cameraFilter" type="search" placeholder="Camera, zone, codec" autocomplete="off">
+          </label>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Camera</th>
+                <th>Advertised / observed</th>
+                <th>Media</th>
+                <th>FPS</th>
+                <th>Transports</th>
+                <th><span class="sr-only">Action</span></th>
+              </tr>
+            </thead>
+            <tbody id="cameraRows"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <aside class="preview" aria-label="Sentinel stream preview">
+        <div class="preview-heading">
+          <div>
+            <p class="eyebrow live-label">
+              <span id="liveIndicator" class="live-indicator" data-state="idle" aria-hidden="true"></span>
+              <span id="liveFeedLabel">Sentinel online feed</span>
+            </p>
+            <h2 id="previewTitle">No camera selected</h2>
+          </div>
+          <button id="stopPreview" type="button" disabled>Stop</button>
+        </div>
+        <div class="video-stage">
+          <video id="previewVideo" autoplay muted playsinline controls aria-label="Selected Sentinel camera live feed"></video>
+          <p id="previewEmpty">Connecting to an active Sentinel camera.</p>
+        </div>
+        <dl id="previewDetails">
+          <div><dt>Profile</dt><dd>-</dd></div>
+          <div><dt>Transport</dt><dd id="previewTransport">WHEP</dd></div>
+          <div><dt>Retention</dt><dd>None</dd></div>
+        </dl>
+        <p id="previewStatus" role="status">Preparing Sentinel live feed.</p>
+      </aside>
+    </section>
+
+    <section class="events">
+      <div class="section-heading">
+        <div>
+          <h2>Lab activity</h2>
+          <p>Sanitized catalogue and reconciliation events</p>
+        </div>
+      </div>
+      <ol id="eventList"></ol>
+    </section>
+  </main>
+</body>
+</html>
