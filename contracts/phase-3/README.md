@@ -382,8 +382,19 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   non-effective one-attempt read-only PowerShell 7 runtime-binding proposal;
   package SHA-256 is
   `37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`;
-  exact `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` remains pending and no runtime was
-  observed.
+  exact `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` was recorded and consumed for one
+  bounded read-only attempt.
+- `p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization.json`,
+  `p3-6-quarantine-transaction-runner-r0-runtime-binding-result.json`, and
+  `p3-6-quarantine-transaction-runner-r0-runtime-binding-evidence.json`:
+  sanitized records for the successful exact PowerShell 7 and runner-source
+  binding. Their SHA-256 values are respectively
+  `1C3144D82EA1B41B3FBBE7E70F5BF74ED5EE5ACC709CAB272E2CBD287253648F`,
+  `643226F1436CACB8E12994A6A81CEB1529E34BA5B289C1766E219A714267F7B7`,
+  and `4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`.
+  The binding expires at `2026-09-01T19:36:06.820Z`; exact
+  `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` remains pending. Neither the
+  runtime nor runner was executed.
 - `p3-6-quarantine-storage-r2-action-spec.json`: storage-only ten-action design
   with exact `Modify | Synchronize` normalization, independent DACL tuple
   checks, generated zero-retention probe, and no Defender actions.

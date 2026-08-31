@@ -31,6 +31,15 @@ DOCUMENT_DIGEST = (
 PACKAGE_DIGEST = (
     "37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9"
 )
+AUTHORIZATION_DIGEST = (
+    "1C3144D82EA1B41B3FBBE7E70F5BF74ED5EE5ACC709CAB272E2CBD287253648F"
+)
+RESULT_DIGEST = (
+    "643226F1436CACB8E12994A6A81CEB1529E34BA5B289C1766E219A714267F7B7"
+)
+EVIDENCE_DIGEST = (
+    "4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C"
+)
 RUNNER_SOURCE_DIGEST = (
     "C0020A4C53B59486CE8842302C918821F145F0228F4006C3D6B67BF594DB5B15"
 )
@@ -152,7 +161,7 @@ def test_action_spec_is_one_attempt_read_only_and_fail_closed() -> None:
         assert spec["current_effect"][field] is False
 
 
-def test_proposal_does_not_create_attempt_outputs_or_execution_authority() -> None:
+def test_sealed_proposal_remains_non_effective_after_consumed_attempt() -> None:
     proposal = _read(CONTRACTS / f"{STEM}-authorization-proposal.json")
     package = _read(CONTRACTS / f"{STEM}-authorization-package.json")
 
@@ -171,7 +180,7 @@ def test_proposal_does_not_create_attempt_outputs_or_execution_authority() -> No
     ] is False
 
     for suffix in ["authorization", "result", "evidence"]:
-        assert not (CONTRACTS / f"{STEM}-{suffix}.json").exists()
+        assert (CONTRACTS / f"{STEM}-{suffix}.json").is_file()
 
 
 def test_research_ledger_uses_only_primary_microsoft_sources() -> None:
@@ -216,13 +225,21 @@ def test_canonical_ledgers_and_human_records_point_to_new_gate() -> None:
             "quarantine_transaction_runner_r0_runtime_binding_authorization_package"
         ]
         assert runtime_binding["package_digest_sha256"] == PACKAGE_DIGEST
-        assert runtime_binding["owner_authorization_pending"] is True
+        assert runtime_binding["authorization_sha256"] == AUTHORIZATION_DIGEST
+        assert runtime_binding["result_sha256"] == RESULT_DIGEST
+        assert runtime_binding["evidence_sha256"] == EVIDENCE_DIGEST
+        assert runtime_binding["owner_authorization_pending"] is False
+        assert runtime_binding["runtime_binding_observation_completed"] is True
+        assert runtime_binding["owner_evidence_acceptance_pending"] is True
         assert runtime_binding["runtime_binding_observation_authorized"] is False
         assert runtime_binding["runner_execution_authorized"] is False
 
     action = ledgers[2]["next_portable_planning_action"]
-    assert action["decision_ids"] == ["D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH"]
-    assert action["package_digest_sha256"] == PACKAGE_DIGEST
+    assert action["decision_ids"] == [
+        "D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE"
+    ]
+    assert action["evidence_sha256"] == EVIDENCE_DIGEST
+    assert action["owner_runtime_binding_evidence_acceptance_pending"] is True
     assert action["runtime_binding_observation_authority"] is False
     assert action["transaction_runner_execution_authority"] is False
     assert action["F_or_ACL_action_authority"] is False
@@ -230,7 +247,24 @@ def test_canonical_ledgers_and_human_records_point_to_new_gate() -> None:
     for path in documents:
         text = path.read_text(encoding="utf-8")
         assert PACKAGE_DIGEST in text
-        assert "D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH" in text
+
+    mutable_documents = [
+        CONTRACTS / "README.md",
+        DOCS / "README.md",
+        DOCS / "acceptance-checklist.md",
+        DOCS / "decision-register.md",
+        DOCS / "implementation-backlog.md",
+        DOCS / "p3-6-capability-profiles.md",
+        DOCS / "p3-6-plan.md",
+        DOCS / "p3-6-planning-acceptances.md",
+        DOCS / "p3-6-unblock-plan.md",
+        DOCS / f"{STEM}-evidence-review.md",
+    ]
+    for path in mutable_documents:
+        text = path.read_text(encoding="utf-8")
+        assert EVIDENCE_DIGEST in text
+        assert "D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE" in text
     register = (DOCS / "decision-register.md").read_text(encoding="utf-8")
     assert "DR-0071" in register
     assert "DR-0072" in register
+    assert "DR-0073" in register

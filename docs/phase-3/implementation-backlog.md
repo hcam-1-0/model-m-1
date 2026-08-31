@@ -434,11 +434,15 @@ digest
 All twenty generated vectors and four structural checks pass; PowerShell parser
 validation has zero errors, but the runner was not executed and all machine
 handlers remain unimplemented. U3J is still not an execution package. No
-runtime observation, retry, or machine action is authorized. The implementation
-package is owner accepted, and the next non-effective runtime-binding package is
+runtime execution, retry, or machine action is authorized. The implementation
+package is owner accepted, and its non-effective runtime-binding package was
 sealed under digest
 `37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`
-for separate `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH`.
+and `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` was consumed by one exact read-only
+attempt. The attempt succeeded and sealed
+evidence SHA-256
+`4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`;
+owner evidence acceptance remains pending.
 
 Planning records:
 
@@ -533,11 +537,12 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner inputs and separate authority:
 
-- exactly review `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` against runtime-binding
-  package digest
-  `37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`;
-- do not observe a runtime path, version, size, hash, or trust state without
-  that exact one-attempt authority; do not execute `pwsh.exe` or the runner;
+- exactly review `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` against evidence
+  SHA-256
+  `4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`
+  before `2026-09-01T19:36:06.820Z`;
+- do not repeat runtime observation after the consumed one-attempt authority;
+  do not execute `pwsh.exe` or the runner;
 - only after accepted exact runtime-binding evidence may a new final U3K
   package be prepared and separately authorized as
   `D-P3.6-U3K-STORAGE-R2-AUTH` before one storage attempt;

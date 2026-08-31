@@ -159,23 +159,24 @@ def test_accepted_U3F_path_records_pending_runner_evidence_review() -> None:
         "authorization_prerequisites"
     )
     assert action["action"] == (
-        "owner_review_of_sealed_U3I_runtime_binding_R0_authorization_package"
+        "owner_review_of_exact_U3I_runtime_binding_R0_evidence"
     )
     assert action["decision_ids"] == [
-        "D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH",
+        "D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE",
     ]
-    assert action["package_digest_sha256"] == (
-        "37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9"
+    assert action["evidence_sha256"] == (
+        "4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C"
     )
     assert action["owner_implementation_acceptance_pending"] is False
-    assert action["owner_runtime_binding_authorization_pending"] is True
+    assert action["owner_runtime_binding_authorization_pending"] is False
+    assert action["owner_runtime_binding_evidence_acceptance_pending"] is True
     assert action["runtime_binding_proposal_preparation_authority"] is True
     assert action["runtime_binding_observation_authority"] is False
     assert action["Defender_only_proposal_preparation_authority_now"] is False
     assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False
     assert action["status"] == (
-        "sealed_non_effective_runtime_binding_authorization_pending"
+        "runtime_binding_evidence_generated_owner_acceptance_pending"
     )
 
 

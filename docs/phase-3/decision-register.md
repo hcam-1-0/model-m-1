@@ -1320,8 +1320,7 @@ Machine-readable acceptance:
 
 ### DR-0072: Read-only PowerShell 7 runtime-binding proposal sealed
 
-Status: non-effective proposal sealed; exact owner authorization pending on
-2026-09-01.
+Status: exact one-attempt authorization recorded and consumed on 2026-09-01.
 
 The U3I acceptance produced a separate one-attempt read-only proposal for exact
 `C:\Program Files\PowerShell\7\pwsh.exe` on logical node `LAB-LAPTOP-01`.
@@ -1333,17 +1332,44 @@ directory inventory, network retrieval, execution, storage, or scanner scope.
 
 The immutable authorization-package SHA-256 is
 `37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`.
-Decision `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` is pending. Exact authorization
-would permit at most one sanitized read-only attempt within 24 hours. Failure
-would consume the authorization. Even success would require sealed evidence
-and separate owner acceptance before a final U3K package could be prepared.
-Runner execution and all storage or machine actions remain blocked.
+Decision `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` authorized at most one sanitized
+read-only attempt within 24 hours. The authorization was recorded before the
+runtime observation and is now consumed. Runner execution and all storage or
+machine actions remain blocked.
 
 Human proposal:
 [`p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization-proposal.md`](p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization-proposal.md).
 
 Machine-readable package:
 [`p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization-package.json).
+
+### DR-0073: Exact PowerShell 7 runtime binding succeeded
+
+Status: generated evidence sealed; owner evidence acceptance pending on
+2026-09-01.
+
+The single authorized attempt classified only the exact fixed runtime path and
+its fixed parent components, read bounded version and size metadata, hashed the
+exact runtime, completed cache-only no-UI whole-chain-excluding-root
+WinVerifyTrust with provider state closed, and re-bound the accepted runner
+source without executing either file. Runtime SHA-256 is
+`362A356CE7F0940EC74F73A8FC2C990A2CC24A38A11C90BBD8ECA947110AD139`;
+runner-source SHA-256 remains
+`C0020A4C53B59486CE8842302C918821F145F0228F4006C3D6B67BF594DB5B15`.
+
+Authorization, result, and evidence SHA-256 values are respectively
+`1C3144D82EA1B41B3FBBE7E70F5BF74ED5EE5ACC709CAB272E2CBD287253648F`,
+`643226F1436CACB8E12994A6A81CEB1529E34BA5B289C1766E219A714267F7B7`,
+and `4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`.
+The exact binding remains valid through `2026-09-01T19:36:06.820Z`.
+
+Decision `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` is pending. Acceptance may
+authorize preparation of a separate final U3K package only; it cannot execute
+the runner, access storage, query scanners, acquire artifacts, activate a
+profile, deploy, or perform remote Git.
+
+Evidence review:
+[`p3-6-quarantine-transaction-runner-r0-runtime-binding-evidence-review.md`](p3-6-quarantine-transaction-runner-r0-runtime-binding-evidence-review.md).
 
 ## Decisions Explicitly Deferred
 

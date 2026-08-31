@@ -240,14 +240,14 @@ compiled artifacts are prohibited.
 All six U3H policies and the U3I/U3J proposal decisions are accepted. The
 contract-only runner and generated harness are implemented under U3I, while
 U3J remains planning-only. The contract-only U3I implementation evidence is
-accepted. The next action is exact owner review of runtime-binding authorization
-package digest
-`37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`
-as `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH`. Runner execution, storage or Defender
+accepted. One exact runtime-binding attempt was authorized, succeeded, and
+consumed its authority. The next action is owner review of evidence SHA-256
+`4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`
+as `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` while the binding remains valid
+through `2026-09-01T19:36:06.820Z`. Runner execution, storage or Defender
 access, and profile admission remain blocked. A final U3K execution package
-requires separately authorized, sealed, and accepted exact runtime-binding
-evidence; a Defender-only proposal remains sequenced after accepted storage
-evidence.
+may be prepared only after that exact evidence acceptance; a Defender-only
+proposal remains sequenced after accepted storage evidence.
 
 The owner may review the portable planning record through
 `D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE`; acceptance would not activate it.

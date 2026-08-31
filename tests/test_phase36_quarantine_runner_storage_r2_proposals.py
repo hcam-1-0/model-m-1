@@ -403,17 +403,22 @@ def test_ledgers_and_human_records_point_to_current_runtime_binding_gate() -> No
         assert runtime_binding["package_digest_sha256"] == (
             RUNTIME_BINDING_PACKAGE_DIGEST
         )
-        assert runtime_binding["owner_authorization_pending"] is True
+        assert runtime_binding["owner_authorization_pending"] is False
+        assert runtime_binding["runtime_binding_observation_completed"] is True
+        assert runtime_binding["owner_evidence_acceptance_pending"] is True
         assert runtime_binding["runtime_binding_observation_authorized"] is False
         assert runtime_binding["runner_execution_authorized"] is False
 
     action = ledgers[2]["next_portable_planning_action"]
     assert action["decision_ids"] == [
-        "D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH",
+        "D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE",
     ]
-    assert action["package_digest_sha256"] == RUNTIME_BINDING_PACKAGE_DIGEST
+    assert action["evidence_sha256"] == (
+        "4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C"
+    )
     assert action["owner_implementation_acceptance_pending"] is False
-    assert action["owner_runtime_binding_authorization_pending"] is True
+    assert action["owner_runtime_binding_authorization_pending"] is False
+    assert action["owner_runtime_binding_evidence_acceptance_pending"] is True
     assert action["runtime_binding_observation_authority"] is False
     assert action["transaction_runner_implementation_authority"] is True
     assert action["transaction_runner_execution_authority"] is False
@@ -432,3 +437,4 @@ def test_ledgers_and_human_records_point_to_current_runtime_binding_gate() -> No
     assert "DR-0070" in register
     assert "DR-0071" in register
     assert "DR-0072" in register
+    assert "DR-0073" in register

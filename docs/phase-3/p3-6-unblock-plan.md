@@ -231,16 +231,19 @@ implementation is complete within that scope and sealed under digest
 Exact `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE` is recorded. The
 separate non-effective runtime-binding proposal is sealed under digest
 `37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`.
-The next action is exact owner review as
-`D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH`.
+Exact `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` was recorded and consumed by one
+successful read-only attempt. The next action is owner review of evidence
+SHA-256
+`4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`
+as `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE`.
 
 The runner was parser checked but not executed. All machine handlers remain
-unimplemented and fail closed. The pending runtime-binding proposal may permit
-only one separately authorized read-only observation of the exact PowerShell 7
-file and accepted runner source hash; it cannot authorize execution or storage.
-The final U3K storage execution package cannot be prepared until separately
-authorized runtime evidence is sealed and accepted. A Defender-only proposal
-remains sequenced after successful storage evidence is accepted. No prior
+unimplemented and fail closed. The consumed runtime-binding authority permitted
+only one read-only observation of the exact PowerShell 7 file and accepted
+runner source hash; it authorized neither execution nor storage. The final U3K
+storage execution package cannot be prepared until that evidence is accepted
+while valid through `2026-09-01T19:36:06.820Z`. A Defender-only proposal remains
+sequenced after successful storage evidence is accepted. No prior
 decision authorizes a retry, `F:` or ACL access, scanner action, artifact
 access, runtime/model execution, profile activation, validation, or deployment.
 
