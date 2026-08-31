@@ -117,13 +117,18 @@ The resulting planning outputs are now sealed separately:
   proposal-package digest
   `8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398`.
 
-U3I is pending exact implementation authorization and contains no machine
-handler. U3J is pending planning acceptance and is not an execution package.
-The final U3K storage package is blocked until an authorized runner is
-implemented, passes all twenty generated vectors, receives exact source/runtime
-bindings, and has its evidence accepted. Defender work remains sequenced after
-accepted storage evidence. No machine action or remote Git operation is
-authorized.
+U3I implementation authority and U3J planning acceptance are now recorded. The
+contract-only runner and generated harness are implemented: all twenty sealed
+vectors plus four structural checks pass, the PowerShell parser reports no
+errors, and every machine-action handler remains an unimplemented fail-closed
+placeholder. Implementation evidence is sealed under digest
+`71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`
+for `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE`.
+
+The final U3K storage package remains blocked until this evidence is accepted
+and a separately authorized exact runtime binding is observed, sealed, and
+accepted. Defender work remains sequenced after accepted storage evidence. No
+runner execution, machine action, or remote Git operation is authorized.
 
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).

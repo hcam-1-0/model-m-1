@@ -255,10 +255,18 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
   `712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`;
   the storage proposal-package digest is
   `8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398`.
-- [ ] `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH` exactly accepts the runner
-  package before any source or generated contract harness is implemented.
-- [ ] `D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE` exactly accepts the storage
+- [x] `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH` exactly accepts the runner
+  package for contract-only source and generated harness implementation.
+- [x] `D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE` exactly accepts the storage
   design; this remains planning-only and cannot authorize an attempt.
+- [x] The contract-only runner source is parser-valid, all ten machine-action
+  handlers fail closed as unimplemented, and all twenty generated vectors plus
+  four structural/authorization checks pass without machine or network access.
+- [ ] `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE` exactly accepts
+  implementation package digest
+  `71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`.
+- [ ] A separate non-effective runtime-binding authorization proposal is
+  prepared and accepted before any runtime path/version/hash/trust observation.
 - [ ] An implemented runner, twenty passing generated vectors, exact runtime
   binding, sealed implementation evidence, final U3K package, and separate
   `D-P3.6-U3K-STORAGE-R2-AUTH` exist before any `F:` or ACL action.
@@ -272,8 +280,10 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
 Current P3.6 status: architecture planning baseline accepted; implementation,
 runtime execution, hardware tests, dashboard work, containers/Kubernetes,
 media/data access, deployment, and remote Git remain unauthorized. Accepted
-U3H planning selections produced sealed U3I/U3J proposals, but neither owner
-review has been accepted and no implementation or retry is authorized.
+U3H planning selections produced sealed U3I/U3J proposals and both requested
+owner statements are accepted. U3I's contract-only implementation is sealed
+for owner evidence review, but runner execution, runtime binding, machine
+access, and every retry remain unauthorized.
 
 ## Tier A Implementation Acceptance
 

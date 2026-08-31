@@ -64,6 +64,15 @@ STORAGE_DOCUMENT_DIGEST = (
 STORAGE_PACKAGE_DIGEST = (
     "8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398"
 )
+RUNNER_AUTH_DIGEST = (
+    "CD81871C6B6F560CDC01E9D6AA919B71F9E108DEB3AEA3C04B17BAF28C60D525"
+)
+STORAGE_ACCEPTANCE_DIGEST = (
+    "6F68EB164DC662086F7444D49638FFAB95F7FF1586469BB5E5E2DC876185AAA5"
+)
+RUNNER_IMPLEMENTATION_PACKAGE_DIGEST = (
+    "71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67"
+)
 
 
 def _read(path: Path) -> dict[str, object]:
@@ -311,6 +320,33 @@ def test_storage_proposal_is_planning_only_and_final_U3K_is_blocked() -> None:
         assert package[field] is False
 
 
+def test_accepted_decisions_and_implementation_package_are_exact() -> None:
+    runner_auth = CONTRACTS / f"{RUNNER_STEM}-implementation-authorization.json"
+    storage_acceptance = CONTRACTS / f"{STORAGE_STEM}-proposal-acceptance.json"
+    implementation_package = _read(
+        CONTRACTS / f"{RUNNER_STEM}-implementation-package.json"
+    )
+
+    assert _sha256(runner_auth) == RUNNER_AUTH_DIGEST
+    assert _sha256(storage_acceptance) == STORAGE_ACCEPTANCE_DIGEST
+    assert _sha256(
+        CONTRACTS / f"{RUNNER_STEM}-implementation-package.json"
+    ) == RUNNER_IMPLEMENTATION_PACKAGE_DIGEST
+    assert implementation_package["validation_summary"][
+        "generated_contract_vectors_passed"
+    ] == 20
+    assert implementation_package["validation_summary"][
+        "PowerShell_source_executed"
+    ] is False
+    assert implementation_package["implementation_scope"][
+        "machine_action_handlers_implemented"
+    ] is False
+    assert implementation_package["current_gate_effect"][
+        "owner_implementation_acceptance_pending"
+    ] is True
+    assert implementation_package["runner_execution_authorized"] is False
+
+
 def test_ledgers_and_human_records_point_to_both_pending_packages() -> None:
     ledgers = [
         _read(CONTRACTS / "p3-6-entry-gates.json"),
@@ -335,30 +371,41 @@ def test_ledgers_and_human_records_point_to_both_pending_packages() -> None:
         ]
         storage = ledger["quarantine_storage_r2_authorization_proposal_package"]
         assert runner["package_digest_sha256"] == RUNNER_PACKAGE_DIGEST
-        assert runner["owner_implementation_authorization_pending"] is True
-        assert runner["runner_implementation_authorized"] is False
+        assert runner["owner_implementation_authorization_pending"] is False
+        assert runner["authorization_sha256"] == RUNNER_AUTH_DIGEST
+        assert runner["runner_implementation_authorized"] is True
         assert storage["package_digest_sha256"] == STORAGE_PACKAGE_DIGEST
-        assert storage["owner_planning_acceptance_pending"] is True
+        assert storage["owner_planning_acceptance_pending"] is False
+        assert storage["acceptance_sha256"] == STORAGE_ACCEPTANCE_DIGEST
+        assert storage["storage_design_accepted"] is True
         assert storage["another_attempt_authorized"] is False
         assert storage["F_or_ACL_action_authorized"] is False
+        implementation = ledger[
+            "quarantine_transaction_runner_r0_implementation_package"
+        ]
+        assert implementation["package_digest_sha256"] == (
+            RUNNER_IMPLEMENTATION_PACKAGE_DIGEST
+        )
+        assert implementation["owner_implementation_acceptance_pending"] is True
+        assert implementation["runner_execution_authorized"] is False
 
     action = ledgers[2]["next_portable_planning_action"]
     assert action["decision_ids"] == [
-        "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH",
-        "D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE",
+        "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE",
     ]
-    assert action["runner_package_digest_sha256"] == RUNNER_PACKAGE_DIGEST
-    assert action["storage_proposal_package_digest_sha256"] == (
-        STORAGE_PACKAGE_DIGEST
-    )
-    assert action["transaction_runner_implementation_authority"] is False
+    assert action["package_digest_sha256"] == RUNNER_IMPLEMENTATION_PACKAGE_DIGEST
+    assert action["owner_implementation_acceptance_pending"] is True
+    assert action["transaction_runner_implementation_authority"] is True
+    assert action["transaction_runner_execution_authority"] is False
     assert action["another_attempt_authority"] is False
 
     for path in documents:
         text = path.read_text(encoding="utf-8")
         assert RUNNER_PACKAGE_DIGEST in text
         assert STORAGE_PACKAGE_DIGEST in text
+        assert RUNNER_IMPLEMENTATION_PACKAGE_DIGEST in text
     register = (DOCS / "decision-register.md").read_text(encoding="utf-8")
     assert "DR-0067" in register
     assert "DR-0068" in register
-
+    assert "DR-0069" in register
+    assert "DR-0070" in register

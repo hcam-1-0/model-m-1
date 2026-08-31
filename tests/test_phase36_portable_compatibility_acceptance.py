@@ -149,7 +149,7 @@ def test_canonical_ledgers_record_acceptance_without_opening_G2() -> None:
     assert unblock["runtime_execution_authorized"] is False
 
 
-def test_accepted_U3F_path_records_pending_U3I_and_U3J_reviews() -> None:
+def test_accepted_U3F_path_records_pending_runner_evidence_review() -> None:
     acceptance = _read(ACCEPTANCE_PATH)
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     action = unblock["next_portable_planning_action"]
@@ -159,20 +159,22 @@ def test_accepted_U3F_path_records_pending_U3I_and_U3J_reviews() -> None:
         "authorization_prerequisites"
     )
     assert action["action"] == (
-        "owner_review_of_separate_U3I_runner_implementation_and_U3J_storage_"
-        "R2_planning_packages"
+        "owner_review_of_sealed_U3I_runner_implementation_package"
     )
-    assert action["candidate_root"] == "F:\\HCAM-Quarantine"
     assert action["decision_ids"] == [
-        "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH",
-        "D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE",
+        "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE",
     ]
-    assert action["runner_implementation_authorization_pending"] is True
-    assert action["storage_R2_planning_acceptance_pending"] is True
+    assert action["package_digest_sha256"] == (
+        "71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67"
+    )
+    assert action["owner_implementation_acceptance_pending"] is True
+    assert action["runtime_binding_proposal_preparation_authority"] is False
     assert action["Defender_only_proposal_preparation_authority_now"] is False
     assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False
-    assert action["status"] == "sealed_non_effective_owner_review_pending"
+    assert action["status"] == (
+        "sealed_implementation_evidence_owner_acceptance_pending"
+    )
 
 
 def test_human_records_and_indexes_are_synchronized() -> None:

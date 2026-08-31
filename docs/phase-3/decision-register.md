@@ -1245,6 +1245,57 @@ Human proposal:
 Machine-readable package:
 [`p3-6-quarantine-storage-r2-authorization-proposal-package.json`](../../contracts/phase-3/p3-6-quarantine-storage-r2-authorization-proposal-package.json).
 
+### DR-0069: U3I implementation authority and U3J storage design accepted
+
+Status: accepted under exact package digests on 2026-08-31.
+
+`mayank-admin` accepted
+`D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH` against package digest
+`712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`
+and `D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE` against package digest
+`8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398`.
+
+U3I permits only a reviewable contract-mode runner, a machine-independent
+generated harness, generated-vector execution, and non-observational evidence.
+U3J accepts only the storage design. Their acceptance-record SHA-256 values are
+`CD81871C6B6F560CDC01E9D6AA919B71F9E108DEB3AEA3C04B17BAF28C60D525`
+and
+`6F68EB164DC662086F7444D49638FFAB95F7FF1586469BB5E5E2DC876185AAA5`.
+Neither decision authorizes runner execution, runtime binding observation,
+`F:` or ACL access, storage attempts, Defender/scanners, models, deployment, or
+remote Git.
+
+### DR-0070: Contract-only runner implementation evidence sealed
+
+Status: implementation package sealed; exact owner acceptance pending on
+2026-08-31.
+
+The authorized implementation adds one PowerShell source with contract mode,
+ten static action IDs, exact-plan checks, output/path/ACL/probe reference-policy
+validation, and default denial. Every machine-action branch throws
+`P36_MACHINE_HANDLER_NOT_IMPLEMENTED`; the source contains no drive, ACL,
+Defender, scanner, runtime-inventory, or machine mutation calls.
+
+A Python machine-independent reference harness covers all twenty sealed
+generated vectors plus authorization, source-structure, and no-access checks.
+The focused result is 24 passed, Ruff passes, and PowerShell parser validation
+reports zero syntax errors. The runner itself was not executed. The immutable
+implementation-package SHA-256 is
+`71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`;
+source SHA-256 is
+`C0020A4C53B59486CE8842302C918821F145F0228F4006C3D6B67BF594DB5B15`.
+
+`D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE` is the next owner gate.
+Exact acceptance may authorize preparation only of a separate non-effective
+runtime-binding proposal. Runtime observation, runner execution, U3K package
+preparation, and machine access remain blocked.
+
+Machine-readable evidence:
+[`p3-6-quarantine-transaction-runner-r0-implementation-evidence.json`](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-evidence.json).
+
+Machine-readable package:
+[`p3-6-quarantine-transaction-runner-r0-implementation-package.json`](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-package.json).
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

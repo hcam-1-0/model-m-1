@@ -258,11 +258,11 @@ def test_ledgers_and_human_records_are_synchronized_and_blocked() -> None:
         assert state["profile_activation_authorized"] is False
 
     assert unblock["next_portable_planning_action"][
-        "runner_implementation_authorization_pending"
+        "owner_implementation_acceptance_pending"
     ] is True
     assert unblock["next_portable_planning_action"][
-        "storage_R2_planning_acceptance_pending"
-    ] is True
+        "runtime_binding_proposal_preparation_authority"
+    ] is False
     assert unblock["next_portable_planning_action"][
         "Defender_only_proposal_preparation_authority_now"
     ] is False

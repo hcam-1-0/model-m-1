@@ -354,7 +354,22 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-quarantine-transaction-runner-r0-implementation-authorization-package.json`:
   immutable non-effective U3I package whose SHA-256 is
   `712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`;
-  owner implementation authorization is pending and execution remains blocked.
+  owner implementation authorization is accepted and execution remains blocked.
+- `p3-6-quarantine-transaction-runner-r0-implementation-authorization.json`:
+  exact implementation-only owner authorization whose SHA-256 is
+  `CD81871C6B6F560CDC01E9D6AA919B71F9E108DEB3AEA3C04B17BAF28C60D525`.
+- `tools/phase36_quarantine_transaction_runner.ps1`: contract-only static
+  ten-action runner source; every machine-action handler is deliberately
+  unimplemented and fails closed.
+- `p3-6-quarantine-transaction-runner-r0-implementation-evidence.json`:
+  generated-vector, static-source, parser, limitation, and non-access evidence
+  whose SHA-256 is
+  `AF3282F94095EB2368E7A91478B244F851F5B5B84C2F6FD73B667AB2D6D81291`.
+- `p3-6-quarantine-transaction-runner-r0-implementation-package.json`:
+  immutable implementation-evidence package whose SHA-256 is
+  `71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`;
+  owner implementation acceptance and all runtime/machine authority remain
+  pending.
 - `p3-6-quarantine-storage-r2-action-spec.json`: storage-only ten-action design
   with exact `Modify | Synchronize` normalization, independent DACL tuple
   checks, generated zero-retention probe, and no Defender actions.
@@ -363,7 +378,11 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-quarantine-storage-r2-authorization-proposal-package.json`: immutable
   non-effective U3J proposal package whose SHA-256 is
   `8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398`;
-  it is not a storage execution package and grants no machine authority.
+  the planning design is accepted, but it is not a storage execution package
+  and grants no machine authority.
+- `p3-6-quarantine-storage-r2-proposal-acceptance.json`: exact planning-only
+  owner acceptance whose SHA-256 is
+  `6F68EB164DC662086F7444D49638FFAB95F7FF1586469BB5E5E2DC876185AAA5`.
 
 Verify all tracked snapshots:
 

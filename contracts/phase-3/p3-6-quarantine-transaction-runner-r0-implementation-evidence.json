@@ -1,0 +1,112 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_transaction_runner_r0_implementation_evidence.v1",
+  "evidence_id": "P36-QUARANTINE-TRANSACTION-RUNNER-R0-IMPLEMENTATION-EVIDENCE",
+  "status": "generated_contract_and_static_source_validation_passed_non_executable",
+  "recorded_on": "2026-08-31",
+  "implementation_authorization": {
+    "decision_id": "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH",
+    "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-authorization.json",
+    "sha256": "CD81871C6B6F560CDC01E9D6AA919B71F9E108DEB3AEA3C04B17BAF28C60D525",
+    "proposal_package_digest_sha256": "712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3"
+  },
+  "storage_planning_acceptance": {
+    "decision_id": "D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE",
+    "path": "contracts/phase-3/p3-6-quarantine-storage-r2-proposal-acceptance.json",
+    "sha256": "6F68EB164DC662086F7444D49638FFAB95F7FF1586469BB5E5E2DC876185AAA5",
+    "proposal_package_digest_sha256": "8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398"
+  },
+  "implemented_artifacts": [
+    {
+      "path": "tools/phase36_quarantine_transaction_runner.ps1",
+      "sha256": "C0020A4C53B59486CE8842302C918821F145F0228F4006C3D6B67BF594DB5B15",
+      "role": "contract_only_static_dispatch_runner_source_with_fail_closed_unimplemented_machine_handlers",
+      "executed": false
+    },
+    {
+      "path": "tests/test_phase36_quarantine_transaction_runner_contracts.py",
+      "sha256": "449155EC1F7EBC51B68EAEBDD74289FEF175A670FF29ABBD85C9E82B358CA7B9",
+      "role": "machine_independent_generated_fixture_reference_contract_and_static_source_harness",
+      "machine_access": false
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-contract-tests.json",
+      "sha256": "3E834BC64BA1F20A0DD6338F865EDC62A0A02B1987AD71E8D8A8488ABC23AB38",
+      "role": "sealed_twenty_vector_generated_only_test_definition",
+      "mutated": false
+    }
+  ],
+  "validation": {
+    "pytest": {
+      "command": "pytest -q tests/test_phase36_quarantine_transaction_runner_contracts.py",
+      "passed": 24,
+      "failed": 0,
+      "sealed_generated_vectors_passed": 20,
+      "structural_authorization_and_non_access_tests_passed": 4,
+      "machine_resource_access": false,
+      "network_access": false
+    },
+    "ruff": {
+      "command": "ruff check --no-cache tests/test_phase36_quarantine_transaction_runner_contracts.py",
+      "result": "all_checks_passed"
+    },
+    "PowerShell_parser": {
+      "method": "System.Management.Automation.Language.Parser.ParseFile",
+      "source_executed": false,
+      "token_count": 1166,
+      "syntax_error_count": 0,
+      "result": "passed"
+    }
+  },
+  "implemented_invariants": {
+    "contract_mode_only": true,
+    "exact_static_action_ids": 10,
+    "unknown_action_default_deny": true,
+    "missing_duplicate_or_reordered_action_default_deny": true,
+    "dynamic_eval_present": false,
+    "dynamic_scriptblock_present": false,
+    "reflection_handler_lookup_present": false,
+    "command_string_construction_present": false,
+    "shell_fallback_present": false,
+    "machine_action_handlers_implemented": false,
+    "all_machine_action_placeholders_fail_closed": true,
+    "Defender_or_scanner_calls_present": false,
+    "drive_or_ACL_calls_present": false,
+    "runtime_inventory_calls_present": false,
+    "generated_vectors_only": true,
+    "raw_identity_ACL_probe_secret_or_personal_data_present": false
+  },
+  "limitations": [
+    "the_runner_source_was_parser_checked_but_not_executed",
+    "the_Python_harness_is_a_machine_independent_reference_contract_not_execution_evidence_for_PowerShell_handlers",
+    "all_ten_machine_action_handlers_are_deliberately_unimplemented_and_fail_closed",
+    "no_exact_runtime_path_version_size_SHA_256_or_trust_binding_exists",
+    "no_storage_or_hardware_observation_exists",
+    "no_F_path_directory_ACL_probe_or_cleanup_action_occurred",
+    "no_Defender_ModelScan_or_other_scanner_action_occurred",
+    "no_final_U3K_storage_execution_package_exists",
+    "no_runtime_correctness_storage_readiness_or_deployment_claim_is_made"
+  ],
+  "next_required_gate": {
+    "decision_id": "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE",
+    "effect_if_exactly_accepted": "accept_only_this_implementation_and_evidence_then_authorize_preparation_of_a_separate_non_effective_runtime_binding_proposal",
+    "runtime_binding_query_authorized": false,
+    "runner_execution_authorized": false,
+    "storage_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false
+  },
+  "current_effect": {
+    "implementation_complete_within_U3I_scope": true,
+    "owner_implementation_acceptance_pending": true,
+    "runtime_binding_proposal_preparation_authorized": false,
+    "runtime_binding_observation_authorized": false,
+    "runner_execution_authorized": false,
+    "storage_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "Defender_or_scanner_action_authorized": false,
+    "artifact_or_dependency_acquisition_authorized": false,
+    "runtime_or_model_execution_authorized": false,
+    "profile_activation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  }
+}

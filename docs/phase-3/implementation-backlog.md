@@ -427,8 +427,14 @@ has digest
 `712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`;
 the U3J storage R2 planning proposal has digest
 `8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398`.
-Both await exact owner review. The U3I package contains no executable handler,
-and U3J is not an execution package. No retry or machine action is authorized.
+Both requested owner statements are accepted. The U3I contract-only runner and
+generated harness are implemented and sealed under implementation-package
+digest
+`71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`.
+All twenty generated vectors and four structural checks pass; PowerShell parser
+validation has zero errors, but the runner was not executed and all machine
+handlers remain unimplemented. U3J is still not an execution package. No
+runtime binding, retry, or machine action is authorized.
 
 Planning records:
 
@@ -480,8 +486,12 @@ Planning records:
 - [accepted U3H planning choices](../../contracts/phase-3/p3-6-quarantine-failure-analysis-r2-owner-decisions.json);
 - [U3I transaction runner R0 implementation proposal](p3-6-quarantine-transaction-runner-r0-implementation-authorization-proposal.md);
 - [sealed non-effective U3I runner package](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-authorization-package.json);
+- [accepted U3I implementation authorization](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-authorization.json);
+- [U3I generated/static implementation evidence](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-evidence.json);
+- [sealed U3I implementation package](../../contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-package.json);
 - [U3J storage R2 authorization proposal](p3-6-quarantine-storage-r2-authorization-proposal.md);
 - [sealed non-effective U3J storage proposal package](../../contracts/phase-3/p3-6-quarantine-storage-r2-authorization-proposal-package.json);
+- [accepted U3J storage planning design](../../contracts/phase-3/p3-6-quarantine-storage-r2-proposal-acceptance.json);
 - [P3.6 planning acceptances R0](p3-6-planning-acceptances.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
@@ -516,14 +526,14 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner inputs and separate authority:
 
-- exactly review `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH`; no runner source
-  or generated contract harness may be implemented before acceptance of digest
-  `712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`;
-- exactly review `D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE`; acceptance is
-  planning-only and cannot authorize `F:` access or an attempt;
-- after authorized runner implementation, twenty generated-vector passes,
-  exact source/runtime binding, sealed implementation evidence, and explicit
-  acceptance, prepare a new final U3K package and obtain separate
+- exactly review `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE` against
+  implementation-package digest
+  `71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`;
+- after implementation acceptance, prepare and review a separate non-effective
+  runtime-binding authorization proposal; do not observe a runtime path,
+  version, hash, or trust state without that later exact authority;
+- only after accepted exact runtime-binding evidence may a new final U3K
+  package be prepared and separately authorized as
   `D-P3.6-U3K-STORAGE-R2-AUTH` before one storage attempt;
 - prepare the Defender-only proposal only after storage evidence is accepted;
   that later attempt also requires separate digest-bound authority;

@@ -96,10 +96,14 @@ The resulting U3I runner implementation proposal is sealed under digest
 `712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`,
 and the separate U3J storage R2 planning proposal is sealed under digest
 `8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398`.
-Both are pending exact owner review. The runner proposal contains no handlers,
-and the storage proposal is not an execution package. No implementation,
-runtime query, `F:` access, ACL action, probe, Defender/scanner work, or retry is
-authorized.
+Both exact owner statements are now accepted. U3I authorized only the
+contract-only runner and generated harness implementation; U3J accepted only
+the storage design. The resulting implementation package is sealed under digest
+`71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`
+and awaits `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE`. The runner source
+was parser checked but not executed, all machine handlers remain unimplemented,
+and no runtime query, `F:` access, ACL action, probe, Defender/scanner work, or
+retry is authorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
