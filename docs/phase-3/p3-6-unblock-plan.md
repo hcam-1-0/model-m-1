@@ -244,9 +244,13 @@ unimplemented and fail closed. The consumed runtime-binding authority permitted
 only one read-only observation of the exact PowerShell 7 file and accepted
 runner source hash; it authorized neither execution nor storage. The final U3K
 storage preparation package is now sealed, but it is non-executable because
-all ten machine handlers remain unimplemented. The next planning action is a
-separate machine-handler implementation authorization proposal; no
-implementation authority exists yet. A Defender-only proposal remains
+all ten machine handlers remain unimplemented. The separate U3L implementation
+authorization proposal is now sealed under package SHA-256
+`EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`.
+The next action is exact owner review as
+`D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH`; no implementation,
+generated test, PowerShell, adapter, or machine authority exists yet. A
+Defender-only proposal remains
 sequenced after successful storage evidence is accepted. No prior
 decision authorizes a retry, `F:` or ACL access, scanner action, artifact
 access, runtime/model execution, profile activation, validation, or deployment.

@@ -110,9 +110,12 @@ exact `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` is recorded. The resulting
 final U3K preparation package has SHA-256
 `4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
 It is non-effective because the runner's ten machine handlers remain
-unimplemented; `D-P3.6-U3K-STORAGE-R2-AUTH` is not requestable. No repeat
-runtime query, runner execution, `F:` access, ACL action, probe,
-Defender/scanner work, or retry is authorized.
+unimplemented; `D-P3.6-U3K-STORAGE-R2-AUTH` is not requestable. A separate U3L
+machine-handler implementation proposal is now sealed under package SHA-256
+`EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`,
+with exact owner authorization pending. No source change, repeat runtime query,
+runner execution, `F:` access, ACL action, probe, Defender/scanner work, or
+retry is authorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -223,9 +226,10 @@ autonomous enforcement.
 | [P3.6 quarantine failure analysis R2 decision proposal](p3-6-quarantine-failure-analysis-r2-proposal.md) | Sealed U3H Microsoft-sourced ACL and Defender failure analysis; `A/A/A/A/A/A` is accepted for proposal preparation only with no retry authority |
 | [P3.6 quarantine transaction runner R0 implementation proposal](p3-6-quarantine-transaction-runner-r0-implementation-authorization-proposal.md) | Sealed U3I content-hashed non-executable runner design and generated vectors; implementation accepted, execution prohibited |
 | [P3.6 quarantine runtime-binding R0 proposal](p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization-proposal.md) | Immutable one-attempt read-only authorization package, now consumed |
-| [P3.6 quarantine runtime-binding R0 evidence review](p3-6-quarantine-transaction-runner-r0-runtime-binding-evidence-review.md) | Successful exact runtime and runner-source hashes, cache-only trust result, non-action evidence, validity, and pending owner acceptance |
+| [P3.6 quarantine runtime-binding R0 evidence review](p3-6-quarantine-transaction-runner-r0-runtime-binding-evidence-review.md) | Successful exact runtime and runner-source hashes, cache-only trust result, non-action evidence, validity, and recorded owner acceptance |
 | [P3.6 quarantine storage R2 authorization proposal](p3-6-quarantine-storage-r2-authorization-proposal.md) | Sealed U3J storage-only planning proposal with corrected DACL semantics; final U3K execution package blocked on runner evidence and separate authority |
 | [P3.6 final U3K storage package preparation](p3-6-quarantine-storage-r2-final-u3k-authorization-proposal.md) | Runtime evidence accepted and final package sealed; execution remains blocked by ten unimplemented runner machine handlers |
+| [P3.6 U3L machine-handler implementation proposal](p3-6-quarantine-machine-handlers-r0-implementation-authorization-proposal.md) | Sealed 64-vector source-implementation proposal with exclusive security-at-create correction; owner authorization pending and all execution prohibited |
 
 ## Non-Negotiable Boundary
 

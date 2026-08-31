@@ -278,10 +278,17 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
   while its binding remains valid through `2026-09-01T19:36:06.820Z`.
 - [x] The final U3K preparation package is sealed under SHA-256
   `4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
+- [x] The non-effective U3L machine-handler implementation proposal is sealed
+  under SHA-256
+  `EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`.
+- [ ] `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` exactly accepts that
+  package before any runner, module, generated verifier, evidence, or ledger
+  implementation change.
 - [ ] All ten U3K machine handlers are separately authorized, implemented,
   tested, sealed, and accepted before an executable U3K package is regenerated.
-- [ ] An implemented runner, twenty passing generated vectors, exact runtime
-  binding, sealed implementation evidence, final U3K package, and separate
+- [ ] The existing twenty contract vectors, all 64 generated handler vectors,
+  exact source hashes, an accepted implementation package, a fresh runtime
+  binding, a regenerated executable U3K package, and separate
   `D-P3.6-U3K-STORAGE-R2-AUTH` exist before any `F:` or ACL action.
 - [ ] A Defender-only proposal is prepared only after successful storage
   evidence is separately accepted.
@@ -298,8 +305,10 @@ owner statements are accepted. U3I's contract-only implementation evidence is
 also accepted. Its separate runtime-binding authorization was consumed by one
 successful read-only attempt, and exact evidence acceptance is recorded. The
 final U3K preparation package is sealed but non-executable because all ten
-machine handlers remain unimplemented. Runner execution, another runtime
-observation, machine access, and every retry remain unauthorized.
+machine handlers remain unimplemented. The U3L implementation proposal is
+sealed and pending exact owner authorization. Source changes, generated test
+execution, runner execution, another runtime observation, machine access, and
+every retry remain unauthorized.
 
 ## Tier A Implementation Acceptance
 

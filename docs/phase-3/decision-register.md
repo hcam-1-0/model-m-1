@@ -1396,6 +1396,35 @@ Human review:
 Machine-readable package:
 [`p3-6-quarantine-storage-r2-final-u3k-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-storage-r2-final-u3k-authorization-package.json).
 
+### DR-0075: U3L machine-handler implementation proposal sealed
+
+Status: exact owner implementation authorization pending on 2026-09-01.
+
+The non-effective proposal package has SHA-256
+`EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`.
+It binds the accepted ten-action storage contract, current contract-only runner,
+64 generated-only reference and static vectors, three exact PowerShell source
+boundaries, and one Python verifier boundary.
+
+Primary-source review found that the managed ACL-aware `CreateDirectory` API
+returns an existing directory and therefore cannot prove attempt ownership
+after a pre-check. The proposal preserves the accepted target and DACL policy
+but requires exclusive `CreateDirectoryW` security-at-create semantics, with
+`ERROR_ALREADY_EXISTS` failing closed. The Windows adapter remains isolated and
+cannot be imported or executed during implementation evidence generation.
+
+Exact `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` is pending. Until it
+is received against the package digest, no source or test change is authorized.
+Even exact acceptance would authorize generated Python reference/static tests
+only; it would not authorize PowerShell, runner or module execution, machine or
+`F:` access, ACL work, probes, scanners, acquisition, deployment, or remote Git.
+
+Human review:
+[`p3-6-quarantine-machine-handlers-r0-implementation-authorization-proposal.md`](p3-6-quarantine-machine-handlers-r0-implementation-authorization-proposal.md).
+
+Machine-readable package:
+[`p3-6-quarantine-machine-handlers-r0-implementation-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-authorization-package.json).
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

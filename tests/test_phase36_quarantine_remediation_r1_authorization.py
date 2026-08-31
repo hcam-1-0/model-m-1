@@ -383,7 +383,8 @@ def test_canonical_ledgers_point_to_consumed_U3G_attempt() -> None:
     assert action["owner_implementation_acceptance_pending"] is False
     assert action["owner_runtime_binding_authorization_pending"] is False
     assert action["owner_runtime_binding_evidence_acceptance_pending"] is False
-    assert action["machine_handler_proposal_preparation_authority"] is True
+    assert action["owner_machine_handler_implementation_authorization_pending"]
+    assert action["machine_handler_proposal_preparation_authority"] is False
     assert action["machine_handler_implementation_authority"] is False
     assert action["runtime_binding_observation_authority"] is False
     assert action["Defender_only_proposal_preparation_authority_now"] is False

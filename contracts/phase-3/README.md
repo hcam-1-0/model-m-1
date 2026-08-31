@@ -404,6 +404,13 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   `4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
   The package is non-effective: all ten machine handlers are unimplemented,
   so `D-P3.6-U3K-STORAGE-R2-AUTH` is not requestable against it.
+- `p3-6-quarantine-machine-handlers-r0-{research-sources,implementation-contract,generated-test-plan,implementation-authorization-proposal,implementation-authorization-package}.json`:
+  sealed non-effective U3L machine-handler implementation proposal under
+  package SHA-256
+  `EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`.
+  It specifies 64 generated-only vectors and an exclusive `CreateDirectoryW`
+  security-at-create correction. Exact owner authorization remains pending;
+  no source change, PowerShell execution, or machine access is authorized.
 - `p3-6-quarantine-storage-r2-action-spec.json`: storage-only ten-action design
   with exact `Modify | Synchronize` normalization, independent DACL tuple
   checks, generated zero-retention probe, and no Defender actions.

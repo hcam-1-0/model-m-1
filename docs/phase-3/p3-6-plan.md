@@ -139,6 +139,14 @@ It is non-executable because all ten machine handlers remain unimplemented;
 sequenced after accepted storage evidence. No runner execution, machine action,
 or remote Git operation is authorized.
 
+The next planning artifact is now sealed: U3L machine-handler implementation
+proposal package SHA-256 is
+`EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`.
+It defines 64 generated-only vectors, an isolated pure-handler and Windows
+adapter architecture, and an exclusive `CreateDirectoryW` security-at-create
+correction. Exact `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` remains
+pending; no source or test change and no execution is authorized.
+
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).
 

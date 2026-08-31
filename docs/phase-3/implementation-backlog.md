@@ -543,10 +543,15 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner inputs and separate authority:
 
-- prepare a separate digest-bound machine-handler implementation proposal; this
-  planning step grants no implementation or execution authority;
-- require explicit owner authorization before implementing any U3K machine
-  handler, then seal and separately accept exact source and evidence;
+- review exact
+  `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` against package SHA-256
+  `EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`;
+- only after exact authorization, implement the three-source architecture and
+  64-vector generated Python verifier, then seal and separately accept exact
+  source and evidence;
+- preserve the proposal's `CreateDirectoryW` exclusive security-at-create
+  correction and reject any managed existing-directory return as proof of
+  attempt ownership;
 - do not repeat runtime observation after the consumed one-attempt authority;
   do not execute `pwsh.exe` or the runner;
 - regenerate a future executable U3K package only after accepted handler

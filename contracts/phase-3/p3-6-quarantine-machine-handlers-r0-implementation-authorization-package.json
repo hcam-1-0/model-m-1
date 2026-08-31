@@ -1,0 +1,129 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_machine_handlers_r0_implementation_authorization_package.v1",
+  "package_id": "P36-QUARANTINE-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTHORIZATION-PACKAGE",
+  "status": "sealed_non_effective_owner_authorization_pending",
+  "sealed_on": "2026-09-01",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "owner_decision_id": "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH",
+  "owner_decision_effect_if_exactly_accepted": "authorize_only_exact_source_implementation_generated_Python_reference_and_static_tests_and_non_observational_evidence_without_PowerShell_machine_storage_or_remote_Git_authority",
+  "core_file_count": 12,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-owner-decisions.json",
+      "sha256": "802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3",
+      "role": "accepted_U3H_AAAAAA_failure_storage_and_runner_policy"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-storage-r2-action-spec.json",
+      "sha256": "1825C65DFEEEF02EA12AF3D506385657870DCB631D2CDB157DB0F9C919C2DE2A",
+      "role": "accepted_U3J_ten_action_storage_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-package.json",
+      "sha256": "71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67",
+      "role": "accepted_contract_only_runner_implementation_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-acceptance.json",
+      "sha256": "70F2EE1133648F16CA6298C25FB6C46F56AA7C88FBA97553BDD0A2F55D90C63A",
+      "role": "exact_owner_acceptance_of_contract_only_runner_and_limitations"
+    },
+    {
+      "path": "tools/phase36_quarantine_transaction_runner.ps1",
+      "sha256": "C0020A4C53B59486CE8842302C918821F145F0228F4006C3D6B67BF594DB5B15",
+      "role": "current_runner_source_with_ten_fail_closed_unimplemented_machine_handlers"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-runtime-binding-acceptance.json",
+      "sha256": "F19E6660FBD9545F74B8B532F6A9EB4D01ACF0543DE45CD54C8CB41C868DB54E",
+      "role": "historical_exact_runtime_binding_acceptance_not_reusable_as_execution_authority"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-storage-r2-final-u3k-authorization-package.json",
+      "sha256": "4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E",
+      "role": "non_effective_U3K_package_recording_machine_handler_blocker"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-research-sources.json",
+      "sha256": "13D63D2A85811466F476549A11D9A5D431F2543A4ED1CDB391DAE20BF0F5ABFA",
+      "role": "primary_Microsoft_API_research_and_exclusive_create_safety_finding"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-contract.json",
+      "sha256": "7ED610CAE26B6C92D8B2C2105754D7E8BD377B7C3790354ABAE554CBB104397F",
+      "role": "exact_source_architecture_handler_API_failure_cleanup_and_non_authority_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-generated-test-plan.json",
+      "sha256": "5D69AFDC9612251F80309BF74983D0949B3060DBA84229F19ADCF841378DD2C2",
+      "role": "64_vector_generated_only_machine_independent_validation_plan"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-authorization-proposal.json",
+      "sha256": "1D30854E15187DB5F97B48541F2A72AD4EF5FAA441A121E584089425D98F1114",
+      "role": "exact_non_effective_owner_authorization_proposal_and_statement_template"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-authorization-proposal.md",
+      "sha256": "77A5B83FC7062214B9B834466D5961C84CC308347DB6725188696F3B0269B2E8",
+      "role": "human_owner_review_document"
+    }
+  ],
+  "proposed_implementation_scope": {
+    "PowerShell_source_files_modified": 1,
+    "PowerShell_module_files_created": 2,
+    "Python_generated_reference_verifiers_created": 1,
+    "generated_vectors": 64,
+    "static_allowlisted_action_ids": 10,
+    "dynamic_dispatch": false,
+    "exclusive_security_at_create_API": "CreateDirectoryW_with_nonnull_SECURITY_ATTRIBUTES",
+    "machine_access_during_implementation": false,
+    "PowerShell_execution_during_implementation": false,
+    "network_access": false,
+    "implementation_evidence_required": true,
+    "separate_owner_implementation_evidence_acceptance_required": true,
+    "fresh_runtime_binding_before_any_execution_package_required": true
+  },
+  "safety_correction": {
+    "accepted_U3J_managed_API": "FileSystemAclExtensions.CreateDirectory_DirectorySecurity_String",
+    "identified_risk": "managed_API_returns_an_existing_directory_and_cannot_prove_exclusive_attempt_creation_after_a_precheck",
+    "proposed_API": "CreateDirectoryW_with_nonnull_SECURITY_ATTRIBUTES",
+    "required_error_handling": "ERROR_ALREADY_EXISTS_is_terminal_and_never_sets_root_created_by_attempt",
+    "security_policy_changed": false,
+    "target_path_changed": false,
+    "DACL_tuples_changed": false,
+    "execution_or_machine_authority_added": false
+  },
+  "sequence_after_exact_owner_acceptance": [
+    "record_a_separate_exact_digest_bound_authorization_record",
+    "implement_only_the_allowlisted_source_and_generated_Python_verifier",
+    "run_only_generated_Python_reference_static_and_Phase_3_6_tests",
+    "seal_exact_non_observational_implementation_evidence_and_source_hashes",
+    "obtain_separate_owner_acceptance_of_the_implementation_package",
+    "obtain_any_separately_authorized_generated_PowerShell_test_and_a_fresh_runtime_binding",
+    "regenerate_a_new_executable_U3K_package_bound_to_corrected_spec_sources_tests_and_runtime",
+    "obtain_separate_D_P3_6_U3K_STORAGE_R2_AUTH_before_any_machine_or_F_access"
+  ],
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_package_digest_and_is_not_self_embedded",
+  "current_gate_effect": {
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked",
+    "owner_machine_handler_implementation_authorization_pending": true,
+    "machine_handler_implementation_authorized": false,
+    "source_or_test_change_authorized": false,
+    "Python_generated_test_execution_authorized": false,
+    "PowerShell_or_runner_execution_authorized": false,
+    "windows_adapter_import_or_execution_authorized": false,
+    "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
+    "storage_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "Defender_or_scanner_action_authorized": false,
+    "artifact_acquisition_authorized": false,
+    "profile_activation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  },
+  "owner_acceptance_may_be_inferred_from_continue_prior_acceptance_or_package_existence": false
+}

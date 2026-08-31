@@ -1,0 +1,164 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_machine_handlers_r0_research_sources.v1",
+  "research_id": "P36-QUARANTINE-MACHINE-HANDLERS-R0-RESEARCH-SOURCES",
+  "status": "primary_sources_reviewed_planning_only",
+  "prepared_on": "2026-09-01",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "scope": "Windows_and_dotnet_API_semantics_needed_to_prepare_a_non_effective_U3K_machine_handler_implementation_authorization_proposal",
+  "sources": [
+    {
+      "source_id": "MS-CREATEDIRECTORYW",
+      "publisher": "Microsoft",
+      "title": "CreateDirectoryW function",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createdirectoryw",
+      "supports": [
+        "security_descriptor_can_be_applied_at_directory_creation",
+        "ERROR_ALREADY_EXISTS_distinguishes_an_existing_target",
+        "only_the_final_directory_is_created"
+      ],
+      "proposal_effect": "require_exclusive_security_at_create_and_reject_the_managed_existing_directory_return_semantics_for_attempt_ownership"
+    },
+    {
+      "source_id": "MS-SECURITY-ATTRIBUTES",
+      "publisher": "Microsoft",
+      "title": "SECURITY_ATTRIBUTES structure",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/wtypesbase/ns-wtypesbase-security_attributes",
+      "supports": [
+        "security_descriptor_pointer_controls_new_object_access",
+        "structure_length_and_noninheritable_handle_state_are_explicit"
+      ],
+      "proposal_effect": "require_bounded_marshalling_lifetime_and_noninheritable_handle_semantics"
+    },
+    {
+      "source_id": "MS-ACL-CREATE-DIRECTORY",
+      "publisher": "Microsoft",
+      "title": "FileSystemAclExtensions.CreateDirectory",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemaclextensions.createdirectory?view=net-10.0",
+      "supports": [
+        "managed_security_at_create_is_available",
+        "managed_method_returns_an_existing_directory_when_the_target_already_exists"
+      ],
+      "proposal_effect": "retain_as_design_history_but_do_not_use_it_to_claim_exclusive_attempt_creation"
+    },
+    {
+      "source_id": "MS-ACCESS-RULE-PROTECTION",
+      "publisher": "Microsoft",
+      "title": "ObjectSecurity.SetAccessRuleProtection",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.security.accesscontrol.objectsecurity.setaccessruleprotection?view=net-10.0",
+      "supports": [
+        "protected_access_rules_are_not_modified_by_parent_inheritance",
+        "preserveInheritance_false_removes_inherited_rules_when_protection_is_enabled"
+      ],
+      "proposal_effect": "construct_a_protected_nonpreserving_DACL_before_creation"
+    },
+    {
+      "source_id": "MS-FILESYSTEM-RIGHTS",
+      "publisher": "Microsoft",
+      "title": "FileSystemRights enumeration",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.security.accesscontrol.filesystemrights?view=net-10.0",
+      "supports": [
+        "Modify_and_FullControl_semantics",
+        "Synchronize_is_automatically_added_to_allow_rules"
+      ],
+      "proposal_effect": "normalize_current_process_Modify_as_Modify_plus_Synchronize_and_reject_excessive_or_unknown_bits"
+    },
+    {
+      "source_id": "MS-WINDOWS-IDENTITY",
+      "publisher": "Microsoft",
+      "title": "WindowsIdentity.GetCurrent",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.security.principal.windowsidentity.getcurrent?view=net-10.0",
+      "supports": [
+        "current_Windows_identity_can_be_resolved_in_process"
+      ],
+      "proposal_effect": "resolve_only_the_current_process_SID_in_memory_and_never_persist_or_translate_it_to_an_account_name"
+    },
+    {
+      "source_id": "MS-DRIVE-INFO-READY",
+      "publisher": "Microsoft",
+      "title": "DriveInfo.IsReady",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.io.driveinfo.isready?view=net-10.0",
+      "supports": [
+        "drive_readiness_is_a_point_in_time_property",
+        "other_drive_property_getters_can_still_throw_after_IsReady"
+      ],
+      "proposal_effect": "catch_and_normalize_each_allowlisted_drive_property_failure_without_raw_exception_persistence"
+    },
+    {
+      "source_id": "MS-PATH-FULL",
+      "publisher": "Microsoft",
+      "title": "Path.GetFullPath",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.io.path.getfullpath?view=net-10.0",
+      "supports": [
+        "absolute_path_normalization",
+        "deterministic_base_path_overload_for_relative_inputs"
+      ],
+      "proposal_effect": "accept_only_the_fixed_fully_qualified_candidate_and_never_depend_on_the_process_current_directory"
+    },
+    {
+      "source_id": "MS-REPARSE-POINTS",
+      "publisher": "Microsoft",
+      "title": "Reparse Point Operations",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/fileio/reparse-point-operations",
+      "supports": [
+        "GetFileAttributes_identifies_FILE_ATTRIBUTE_REPARSE_POINT"
+      ],
+      "proposal_effect": "fail_closed_on_any_reparse_component_and_do_not_follow_or_modify_it"
+    },
+    {
+      "source_id": "MS-FILEMODE",
+      "publisher": "Microsoft",
+      "title": "FileMode enumeration",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.io.filemode?view=net-10.0",
+      "supports": [
+        "CreateNew_fails_if_the_target_already_exists"
+      ],
+      "proposal_effect": "use_exclusive_probe_creation_and_never_overwrite_a_preexisting_probe_path"
+    },
+    {
+      "source_id": "MS-FILESTREAM-FLUSH",
+      "publisher": "Microsoft",
+      "title": "FileStream.Flush(Boolean)",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.io.filestream.flush?view=net-10.0",
+      "supports": [
+        "flushToDisk_true_flushes_intermediate_file_buffers"
+      ],
+      "proposal_effect": "require_Flush_true_before_probe_close_and_hash_readback"
+    },
+    {
+      "source_id": "MS-MOVEFILEEXW",
+      "publisher": "Microsoft",
+      "title": "MoveFileExW function",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-movefileexw",
+      "supports": [
+        "MOVEFILE_WRITE_THROUGH_waits_for_the_move_to_complete_on_disk",
+        "cross_volume_copy_semantics_require_an_explicit_flag"
+      ],
+      "proposal_effect": "allow_only_same_directory_nonreplacement_rename_with_WRITE_THROUGH_and_without_COPY_ALLOWED"
+    }
+  ],
+  "research_conclusions": [
+    "the_managed_CreateDirectory_extension_cannot_prove_attempt_ownership_when_the_target_appears_between_precheck_and_create",
+    "future_implementation_must_use_CreateDirectoryW_with_a_prebuilt_protected_security_descriptor_and_require_ERROR_ALREADY_EXISTS_to_fail_closed",
+    "all_machine_APIs_must_be isolated_in_one_exact_windows_adapter_module",
+    "generated_tests_must_use_a_fake_adapter_and_must_not_import_or_execute_the_windows_adapter",
+    "the_storage_probe_must_use_CreateNew_Flush_true_two_hash_checks_same_directory_nonreplacement_MOVEFILE_WRITE_THROUGH_and_zero_retention",
+    "raw_errors_identifiers_ACLs_security_descriptors_SIDs_and_probe_bytes_must_never_be_persisted"
+  ],
+  "research_limitations": [
+    "documentation_review_does_not_validate_behavior_on_LAB_LAPTOP_01",
+    "no_runtime_or_source_execution_was_performed",
+    "no_F_or_other_storage_path_was_accessed",
+    "no_API_conformance_or_failure_injection_was_run",
+    "a_future_executable_package_must_bind_exact_implemented_source_tests_and_a_current_runtime"
+  ],
+  "current_authority": {
+    "proposal_preparation_authorized": true,
+    "machine_handler_implementation_authorized": false,
+    "PowerShell_or_runner_execution_authorized": false,
+    "machine_or_storage_access_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "Defender_or_scanner_action_authorized": false,
+    "network_or_download_authorized": false,
+    "remote_git_authorized": false
+  }
+}

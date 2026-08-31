@@ -248,8 +248,12 @@ and the final U3K preparation package is sealed under SHA-256
 `4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
 Runner execution, storage or Defender access, and profile admission remain
 blocked. The package is non-executable because the ten U3K machine handlers are
-unimplemented. A Defender-only proposal remains sequenced after accepted
-storage evidence.
+unimplemented. Their non-effective implementation proposal is sealed under
+package SHA-256
+`EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`,
+with exact owner authorization pending. It does not activate a profile or
+authorize source changes, generated tests, PowerShell, or machine access. A
+Defender-only proposal remains sequenced after accepted storage evidence.
 
 The owner may review the portable planning record through
 `D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE`; acceptance would not activate it.

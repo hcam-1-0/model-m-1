@@ -175,6 +175,15 @@ It cannot receive `D-P3.6-U3K-STORAGE-R2-AUTH` because all ten machine handlers
 remain unimplemented. A future executable package requires separately
 authorized and accepted handler implementation and a current runtime binding.
 
+The non-effective U3L handler implementation proposal is sealed under package
+SHA-256
+`EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`.
+Decision `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` remains pending.
+The package proposes only exact source implementation, a 64-vector generated
+Python reference/static verifier, and non-observational evidence. It grants no
+current implementation, PowerShell execution, adapter import, machine access,
+or storage authority.
+
 Neither package changes a capability profile or gate. `P36-G1`, `P36-G2`,
 `P36-G4`, and `P36-G5` remain blocked. No Defender proposal may be prepared
 until successful storage evidence is separately accepted.
