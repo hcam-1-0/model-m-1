@@ -306,6 +306,16 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
 - `p3-6-quarantine-remediation-r1-decision-package.json`: immutable U3F
   decision package whose SHA-256 is
   `9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`.
+- `p3-6-quarantine-remediation-r1-owner-decisions.json`: explicit U3F
+  `A/A/A/A/A/A` owner acceptance that authorizes package preparation only.
+- `p3-6-quarantine-remediation-r1-action-spec.json`: exact thirteen-action
+  security-at-create, DACL verification, atomic probe, and read-only Defender
+  hash/WinVerifyTrust specification.
+- `p3-6-quarantine-remediation-r1-authorization-proposal.json`: non-effective
+  U3G one-attempt owner-authorization proposal and exact acceptance template.
+- `p3-6-quarantine-remediation-r1-authorization-package.json`: immutable U3G
+  authorization package whose SHA-256 is
+  `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`.
 
 Verify all tracked snapshots:
 

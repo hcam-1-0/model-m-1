@@ -81,7 +81,13 @@ is sealed under digest
 `9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`.
 Its recommended `A/A/A/A/A/A` selections define protected security-at-create,
 explicit lab principals, absent-root handling, cache-only Defender trust,
-separate ModelScan bootstrap, and a split retry. It authorizes no action.
+separate ModelScan bootstrap, and a split retry. The owner accepted all six
+recommended selections. The resulting
+[U3G authorization proposal](p3-6-quarantine-remediation-r1-authorization-proposal.md)
+is sealed under digest
+`C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`.
+It remains non-effective pending exact owner authorization and authorizes no
+current action.
 
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).

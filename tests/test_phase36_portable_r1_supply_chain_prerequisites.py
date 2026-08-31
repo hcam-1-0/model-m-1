@@ -18,8 +18,8 @@ PACKAGE_DIGEST = "496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA1
 ACCEPTANCE_DIGEST = (
     "F68BDE02AF96E3992A8C64F1F01A85CAC960F529946EA12FA4899D9EBFC197A9"
 )
-U3F_PACKAGE_DIGEST = (
-    "9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78"
+U3G_PACKAGE_DIGEST = (
+    "C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B"
 )
 
 
@@ -259,9 +259,9 @@ def test_ledgers_and_human_records_are_synchronized_and_blocked() -> None:
 
     assert unblock["next_portable_planning_action"][
         "package_digest_sha256"
-    ] == U3F_PACKAGE_DIGEST
+    ] == U3G_PACKAGE_DIGEST
     assert unblock["next_portable_planning_action"][
-        "owner_selections_pending"
+        "owner_authorization_pending"
     ] is True
     assert unblock["next_portable_planning_action"][
         "another_attempt_authority"

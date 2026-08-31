@@ -15,6 +15,12 @@ PROPOSAL_PATH = CONTRACTS / f"{STEM}-proposal.json"
 DOCUMENT_PATH = DOCS / f"{STEM}-proposal.md"
 PACKAGE_PATH = CONTRACTS / f"{STEM}-decision-package.json"
 PACKAGE_DIGEST = "9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78"
+ACCEPTANCE_DIGEST = (
+    "BDA7E9C6B8ACF4ECB8641B61F47A45E4E02768B58C7E3A08179507B7ABAFDF1F"
+)
+U3G_PACKAGE_DIGEST = (
+    "C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B"
+)
 U3E_PACKAGE_DIGEST = (
     "9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39"
 )
@@ -155,7 +161,7 @@ def test_proposal_and_manifest_grant_no_current_authority() -> None:
             assert value is False
 
 
-def test_canonical_ledgers_record_U3E_consumed_and_U3F_pending() -> None:
+def test_canonical_ledgers_record_U3E_consumed_U3F_accepted_and_U3G_pending() -> None:
     ledgers = [
         _read(CONTRACTS / "p3-6-entry-gates.json"),
         _read(CONTRACTS / "p3-6-capability-profile-policy.json"),
@@ -164,9 +170,13 @@ def test_canonical_ledgers_record_U3E_consumed_and_U3F_pending() -> None:
 
     for ledger in ledgers:
         consumed = ledger["quarantine_scanner_binding_r0_authorization_package"]
-        pending = ledger["quarantine_remediation_r1_decision_package"]
+        accepted = ledger["quarantine_remediation_r1_decision_package"]
+        pending = ledger["quarantine_remediation_r1_authorization_package"]
         consumed_digest = consumed.get(
             "digest_sha256", consumed.get("package_digest_sha256")
+        )
+        accepted_digest = accepted.get(
+            "digest_sha256", accepted.get("package_digest_sha256")
         )
         pending_digest = pending.get(
             "digest_sha256", pending.get("package_digest_sha256")
@@ -174,12 +184,16 @@ def test_canonical_ledgers_record_U3E_consumed_and_U3F_pending() -> None:
         assert consumed_digest == U3E_PACKAGE_DIGEST
         assert consumed["attempt_consumed"] is True
         assert consumed["retry_authorized"] is False
-        assert pending_digest == PACKAGE_DIGEST
-        assert pending["recommended_selection"] == "A/A/A/A/A/A"
-        assert pending["owner_selections_pending"] is True
+        assert accepted_digest == PACKAGE_DIGEST
+        assert accepted["selected_options"] == "A/A/A/A/A/A"
+        assert accepted["owner_selections_pending"] is False
+        assert accepted["acceptance_sha256"] == ACCEPTANCE_DIGEST
+        assert pending_digest == U3G_PACKAGE_DIGEST
+        assert pending["owner_authorization_pending"] is True
         assert pending["another_attempt_authorized"] is False
         assert pending["F_or_ACL_action_authorized"] is False
-        assert pending["scanner_query_install_or_execution_authorized"] is False
+        assert pending["Defender_query_hash_or_WinVerifyTrust_authorized"] is False
+        assert pending["scanner_install_update_or_execution_authorized"] is False
         assert pending["artifact_or_dependency_acquisition_authorized"] is False
         assert pending["profile_activation_authorized"] is False
 
@@ -217,5 +231,7 @@ def test_human_records_and_indexes_are_synchronized() -> None:
     ]:
         assert PACKAGE_DIGEST in text
     assert "DR-0062" in decision_register
+    assert "DR-0063" in decision_register
     assert "D-P3.6-U3F-001" in backlog
+    assert "D-P3.6-U3G-BINDING-R1-AUTH" in backlog
     assert f"{STEM}-decision-package.json" in contracts_index

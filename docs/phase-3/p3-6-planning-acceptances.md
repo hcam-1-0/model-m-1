@@ -3,8 +3,9 @@
 Status: planning-only owner acceptances are recorded through the portable U3D
 `A/A/A/A/A` supply-chain prerequisite policy. The bounded inventory R1 attempt
 succeeded and is consumed. The bounded U3E attempt failed closed and is also
-consumed. U3F is a non-effective decision package pending six owner selections.
-No continuing inventory collection, retry, artifact acquisition,
+consumed. U3F `A/A/A/A/A/A` planning choices are accepted, and U3G is a
+non-effective authorization package pending exact owner authorization. No
+continuing inventory collection, retry, artifact acquisition,
 implementation, runtime, or deployment authority exists.
 
 Machine-readable records:
@@ -22,11 +23,13 @@ Later R1 outcome records:
 - [portable compatibility and generated C1 policy acceptance](../../contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json).
 - [portable R1 supply-chain prerequisite policy acceptance](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json).
 
-Consumed U3E package/result and pending U3F decision package:
+Consumed U3E records, accepted U3F choices, and pending U3G package:
 
 - [F: quarantine and scanner binding R0 package](../../contracts/phase-3/p3-6-quarantine-scanner-binding-r0-authorization-package.json).
 - [F: quarantine and scanner binding R0 result](../../contracts/phase-3/p3-6-quarantine-scanner-binding-r0-result.json).
 - [quarantine remediation R1 decision package](../../contracts/phase-3/p3-6-quarantine-remediation-r1-decision-package.json).
+- [quarantine remediation R1 owner decisions](../../contracts/phase-3/p3-6-quarantine-remediation-r1-owner-decisions.json).
+- [quarantine remediation R1 authorization package](../../contracts/phase-3/p3-6-quarantine-remediation-r1-authorization-package.json).
 
 ## Portable CPU Planning Proposal
 
@@ -115,9 +118,11 @@ under digest
 `9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
 The owner accepted that package and the attempt was consumed. It measured an
 eligible volume and path, failed closed on a broad-write ACL, skipped the probe,
-and removed the empty root. The new U3F decision package is sealed under digest
+and removed the empty root. The U3F decision package is sealed under digest
 `9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`.
-Its six selections remain pending and authorize no retry.
+The owner selected `A/A/A/A/A/A`. U3G is sealed under digest
+`C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`
+and remains unauthorized.
 
 ## Model Metadata Proposal
 
@@ -139,7 +144,7 @@ bindings are sealed in a regenerated package.
 | `P36-G1` | Blocked: no acquired comparison artifacts, H-CAM evidence, or approved champion/fallback |
 | `P36-G2` | Blocked: R1, U3C, and U3D planning policies exist; actual compatibility artifacts, six other resolver inputs, other profiles, and generated validation evidence remain missing |
 | `P36-G3` | Passed |
-| `P36-G4` | Blocked: U3E failed closed; U3F selections, a new retry authorization, a passing storage attestation, complete scanner bindings, and acquisition authority remain pending |
+| `P36-G4` | Blocked: U3E failed closed; U3F choices are accepted and U3G is sealed, but exact U3G authorization, a passing storage attestation, complete scanner bindings, and acquisition authority remain pending |
 | `P36-G5` | Blocked: no digest-bound implementation/runtime authorization |
 
 ## Continuing Boundary

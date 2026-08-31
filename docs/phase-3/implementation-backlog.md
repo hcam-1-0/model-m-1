@@ -401,7 +401,11 @@ was consumed. Volume/path checks passed, the broad-write ACL gate failed, the
 atomic probe was skipped, and the empty root was removed. U3F remediation
 decisions are now sealed under digest
 `9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`;
-no retry is authorized.
+the owner selected `D-P3.6-U3F-001` through `006` as `A/A/A/A/A/A`. The
+resulting U3G authorization package is
+sealed under digest
+`C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`.
+It remains pending exact owner authorization; no retry is authorized.
 
 Planning records:
 
@@ -441,6 +445,9 @@ Planning records:
 - [consumed U3E result](../../contracts/phase-3/p3-6-quarantine-scanner-binding-r0-result.json);
 - [U3F quarantine remediation R1 decision proposal](p3-6-quarantine-remediation-r1-proposal.md);
 - [sealed non-effective U3F decision package](../../contracts/phase-3/p3-6-quarantine-remediation-r1-decision-package.json); and
+- [accepted U3F `A/A/A/A/A/A` owner decisions](../../contracts/phase-3/p3-6-quarantine-remediation-r1-owner-decisions.json);
+- [U3G quarantine remediation R1 authorization proposal](p3-6-quarantine-remediation-r1-authorization-proposal.md);
+- [sealed non-effective U3G authorization package](../../contracts/phase-3/p3-6-quarantine-remediation-r1-authorization-package.json); and
 - [P3.6 planning acceptances R0](p3-6-planning-acceptances.md); and
 - [machine-readable entry gates](../../contracts/phase-3/p3-6-entry-gates.json).
 
@@ -475,11 +482,11 @@ provenance, rollback, exact package digest, and owner acceptance.
 
 Remaining gated backlog requires exact owner inputs and separate authority:
 
-- select `D-P3.6-U3F-001` through `006` against exact package digest
-  `9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`;
-  the selections authorize only preparation of a new action/authorization
-  package and are not authority to query or modify `F:`, inspect or run a
-  scanner, install, acquire, execute, validate, implement, admit, or activate;
+- review `D-P3.6-U3G-BINDING-R1-AUTH` against exact package digest
+  `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`;
+  the sealed package is not authority to query or modify `F:`, change an ACL,
+  query/hash/trust-check or run Defender, use ModelScan, install, acquire,
+  execute, validate, implement, admit, or activate anything;
 - resolve exact model-family artifacts/data and complete `P36-G1`;
 - resolve the accepted portable CPU proposal's exact runtime, resource,
   workload, dependency, artifact, evidence, and activation blockers for

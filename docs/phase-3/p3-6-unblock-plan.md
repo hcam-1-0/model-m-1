@@ -157,7 +157,11 @@ The
 [U3F quarantine remediation decision proposal](p3-6-quarantine-remediation-r1-proposal.md)
 is sealed under digest
 `9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`.
-It recommends `A/A/A/A/A/A` and is pending six owner selections.
+The owner selected `A/A/A/A/A/A`. The resulting
+[U3G authorization proposal](p3-6-quarantine-remediation-r1-authorization-proposal.md)
+is sealed under digest
+`C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`
+and is pending exact owner authorization.
 
 Prepare immutable proposals against the Phase -1 profile model:
 
@@ -201,14 +205,14 @@ package digest
 The non-executable R1 supply-chain prerequisites are now sealed as the U3D
 package under digest
 `496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
-The owner accepted `D-P3.6-U3D-001` through `005` as `A/A/A/A/A` and later
-accepted and consumed U3E. The next planning action is owner selection of
-`D-P3.6-U3F-001` through `006` against package digest
-`9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`.
-Neither U3D, consumed U3E evidence, sealing U3F, nor selecting U3F options is
-authority to retry storage, change ACLs, query/install/run scanners, activate
-or admit a profile, acquire or inspect artifacts, execute a runtime, run
-validation, implement a reusable collector, or deploy.
+The owner accepted `D-P3.6-U3D-001` through `005` as `A/A/A/A/A`, accepted and
+consumed U3E, and selected U3F `A/A/A/A/A/A`. The next planning action is exact
+owner review of `D-P3.6-U3G-BINDING-R1-AUTH` against package digest
+`C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`.
+Neither the prior acceptances nor sealing U3G is authority to retry storage,
+change ACLs, query/hash/trust-check or execute scanners, activate or admit a
+profile, acquire or inspect artifacts, execute a runtime, run validation,
+implement a reusable collector, or deploy.
 
 Before `D-P3.6-MODEL-RESEARCH-R1-AUTH` can be prepared, an exact local,
 non-cloud, non-network quarantine root must pass a fresh threshold of at least

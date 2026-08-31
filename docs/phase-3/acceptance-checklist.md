@@ -229,10 +229,12 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
   probe, removed the empty root, and retained no probe content.
 - [x] U3F remediation decisions are sealed under digest
   `9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`.
-- [ ] `D-P3.6-U3F-001` through `006` select the ACL, identity, root, Defender,
-  ModelScan, and retry policies before a new authorization package is created.
-- [ ] A separate exact digest-bound authorization permits another attempt;
-  U3F selections alone are not attempt authority.
+- [x] `D-P3.6-U3F-001` through `006` select `A/A/A/A/A/A` for the ACL,
+  identity, root, Defender, ModelScan, and retry policies.
+- [x] The exact U3G authorization package is sealed under digest
+  `C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`.
+- [ ] `D-P3.6-U3G-BINDING-R1-AUTH` exactly accepts the U3G digest before the
+  one attempt; U3F selections and sealing U3G are not attempt authority.
 - [ ] An eligible exact local quarantine root and exact scanner command are
   bound in a regenerated R1 proposal before any acquisition authorization.
 - [ ] The exact portable runtime/workload profile, accelerated-laptop profile,

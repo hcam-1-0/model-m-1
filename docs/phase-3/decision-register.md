@@ -1046,10 +1046,10 @@ blocked.
 Machine-readable package:
 [`p3-6-quarantine-scanner-binding-r0-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-scanner-binding-r0-authorization-package.json).
 
-### DR-0062: U3F quarantine remediation decisions proposed
+### DR-0062: U3F quarantine remediation decisions accepted
 
-Status: sealed non-effective decision package pending owner selections on
-2026-08-31.
+Status: `A/A/A/A/A/A` planning choices accepted on 2026-08-31; no attempt or
+local action authorized.
 
 Primary-source research supports creating the absent Windows directory with a
 protected explicit `DirectorySecurity` descriptor rather than inheriting and
@@ -1066,11 +1066,40 @@ separate ModelScan bootstrap; and a future storage-plus-Defender retry only.
 
 The package is sealed under SHA-256
 `9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`.
-Selections authorize only preparation of a later exact action and
-authorization package. They do not authorize a retry or any local action.
+The owner explicitly selected all six recommended options. Acceptance record
+SHA-256:
+`BDA7E9C6B8ACF4ECB8641B61F47A45E4E02768B58C7E3A08179507B7ABAFDF1F`.
+The selections authorized preparation of a later exact action and
+authorization package. They did not authorize a retry or any local action.
 
 Machine-readable package:
 [`p3-6-quarantine-remediation-r1-decision-package.json`](../../contracts/phase-3/p3-6-quarantine-remediation-r1-decision-package.json).
+
+### DR-0063: U3G security-at-create and Defender binding attempt proposed
+
+Status: exact one-attempt authorization package sealed for owner review on
+2026-08-31; no attempt is authorized.
+
+The exact U3G package applies the accepted U3F choices. It requires the
+candidate root to be absent, constructs a protected DACL in memory, grants the
+current process `Modify` and LocalSystem/Administrators `FullControl`, creates
+the directory with security already applied, verifies only sanitized DACL
+booleans, and runs one cleaned 4096-byte atomic probe.
+
+It independently permits bounded Defender status metadata, at most 64 direct
+version-directory candidates, one version-matched regular non-reparse
+`MpCmdRun.exe` of at most 128 MiB, SHA-256, and cache-only no-UI whole-chain
+WinVerifyTrust without executing the file. ModelScan, the passive inspector,
+scanner execution, updates, acquisition, models, media, implementation, and
+deployment remain outside the attempt.
+
+The package is sealed under SHA-256
+`C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`.
+Only an exact `D-P3.6-U3G-BINDING-R1-AUTH` statement against that digest within
+24 hours can authorize one attempt. Failure consumes the authorization.
+
+Machine-readable package:
+[`p3-6-quarantine-remediation-r1-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-remediation-r1-authorization-package.json).
 
 ## Decisions Explicitly Deferred
 
