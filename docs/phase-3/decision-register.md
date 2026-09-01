@@ -1427,7 +1427,8 @@ Machine-readable package:
 
 ### DR-0076: U3L machine handlers implemented and statically sealed
 
-Status: exact owner implementation acceptance pending on 2026-09-01.
+Status: implementation sealed; exact owner acceptance recorded in DR-0077 on
+2026-09-01.
 
 `mayank-admin` exactly authorized
 `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` against proposal package
@@ -1448,10 +1449,7 @@ was not parsed, imported, or executed. No runtime, machine, storage, `F:`, ACL,
 probe, cleanup, scanner, network, model, media, data, container, Kubernetes,
 deployment, or remote Git action occurred.
 
-The next decision is
-`D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE`. Until exact
-acceptance, separate PowerShell validation and fresh runtime-binding work remain
-blocked. The historical U3K package is not upgraded by this record, and
+The historical U3K package is not upgraded by this implementation record, and
 `D-P3.6-U3K-STORAGE-R2-AUTH` remains not requestable.
 
 Human review:
@@ -1461,6 +1459,31 @@ Machine-readable evidence and package:
 [`p3-6-quarantine-machine-handlers-r0-implementation-evidence.json`](../../contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-evidence.json)
 and
 [`p3-6-quarantine-machine-handlers-r0-implementation-package.json`](../../contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-package.json).
+
+### DR-0077: U3L machine-handler implementation accepted
+
+Status: accepted on 2026-09-01.
+
+`mayank-admin` exactly accepted implementation package SHA-256
+`79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`
+through
+`D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE`. The immutable
+acceptance-record SHA-256 is
+`06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631`.
+It binds accepted commit `7e1acb9f0ed5b616b4d66de670bd83eda7ab133b`, the
+three exact source hashes, 64 generated vectors, static checks, compatibility
+tests, non-observational evidence, and documented limitations.
+
+The accepted effect permits preparation only of a separate non-effective
+generated PowerShell validation and fresh-runtime-binding planning package.
+It does not authorize parsing, import, execution, runtime observation, storage,
+`F:`, ACL, probes, cleanup, scanners, acquisition, models, media/data,
+containers/Kubernetes, deployment, or remote Git. A fresh accepted runtime
+binding, a newly sealed executable U3K package, and separate digest-bound
+`D-P3.6-U3K-STORAGE-R2-AUTH` remain required before any machine action.
+
+Machine-readable acceptance:
+[`p3-6-quarantine-machine-handlers-r0-implementation-acceptance.json`](../../contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-acceptance.json).
 
 ## Decisions Explicitly Deferred
 

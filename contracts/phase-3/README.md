@@ -416,8 +416,13 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   implementation package SHA-256
 `79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`.
   The package binds the runner, pure handler, Windows adapter, 64-vector
-  verifier, compatibility tests, evidence, and human review. Owner
-  implementation acceptance remains pending. PowerShell parsing/import/
+  verifier, compatibility tests, evidence, and human review.
+- `p3-6-quarantine-machine-handlers-r0-implementation-acceptance.json`: exact
+  `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` record whose
+  SHA-256 is
+  `06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631`.
+  Acceptance permits preparation of a separate non-effective validation and
+  fresh-runtime-binding planning package only. PowerShell parsing/import/
   execution, runtime or machine observation, storage, `F:`, ACL, probes,
   scanners, acquisition, deployment, and remote Git remain unauthorized.
 - `p3-6-quarantine-storage-r2-action-spec.json`: storage-only ten-action design

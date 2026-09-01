@@ -23,6 +23,9 @@ EVIDENCE_PATH = (
 IMPLEMENTATION_PACKAGE_PATH = (
     CONTRACTS / "p3-6-quarantine-machine-handlers-r0-implementation-package.json"
 )
+IMPLEMENTATION_ACCEPTANCE_PATH = (
+    CONTRACTS / "p3-6-quarantine-machine-handlers-r0-implementation-acceptance.json"
+)
 IMPLEMENTATION_REVIEW_PATH = (
     ROOT
     / "docs"
@@ -913,7 +916,11 @@ def test_terminal_projection_keeps_every_unrelated_authority_false() -> None:
 
 def test_sealed_evidence_binds_exact_authorized_sources_and_tests() -> None:
     evidence = _read_json(EVIDENCE_PATH)
+    package = _read_json(IMPLEMENTATION_PACKAGE_PATH)
 
+    assert _sha256(EVIDENCE_PATH) == (
+        "872385DA2BA1D16DC6A3DE99B7296B72552A5FE3AF8FB492B50AB85462F53E38"
+    )
     assert evidence["status"] == (
         "implemented_generated_and_static_validation_passed_non_executable_"
         "owner_acceptance_pending"
@@ -924,8 +931,9 @@ def test_sealed_evidence_binds_exact_authorized_sources_and_tests() -> None:
     assert evidence["implementation_authorization"][
         "proposal_package_digest_sha256"
     ] == "EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311"
+    sealed_core = {item["path"]: item["sha256"] for item in package["core_files"]}
     for item in evidence["implemented_artifacts"]:
-        assert _sha256(ROOT / item["path"]) == item["sha256"]
+        assert sealed_core[item["path"]] == item["sha256"]
         assert item["PowerShell_executed_or_imported"] is False
     assert evidence["validation"]["generated_reference_and_static"][
         "generated_vectors_passed"
@@ -933,18 +941,26 @@ def test_sealed_evidence_binds_exact_authorized_sources_and_tests() -> None:
     assert evidence["validation"]["PowerShell"]["executed_or_imported"] is False
 
 
-def test_implementation_package_seals_every_current_core_file() -> None:
+def test_accepted_implementation_package_remains_an_immutable_snapshot() -> None:
     package = _read_json(IMPLEMENTATION_PACKAGE_PATH)
+    acceptance = _read_json(IMPLEMENTATION_ACCEPTANCE_PATH)
 
+    assert _sha256(IMPLEMENTATION_PACKAGE_PATH) == (
+        "79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7"
+    )
     assert package["status"] == (
         "sealed_non_executable_owner_implementation_acceptance_pending"
     )
     assert package["core_file_count"] == len(package["core_files"]) == 21
-    for item in package["core_files"]:
-        assert _sha256(ROOT / item["path"]) == item["sha256"]
     assert package["current_gate_effect"]["owner_implementation_acceptance_pending"]
     assert package["current_gate_effect"]["PowerShell_or_runner_execution_authorized"] is False
     assert package["current_gate_effect"]["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
+    assert acceptance["accepted_package"]["mutated_by_this_acceptance"] is False
+    assert acceptance["accepted_package"]["accepted_commit"] == (
+        "7e1acb9f0ed5b616b4d66de670bd83eda7ab133b"
+    )
+    for item in acceptance["accepted_source_artifacts"]:
+        assert _sha256(ROOT / item["path"]) == item["sha256"]
 
 
 def test_canonical_ledgers_record_implemented_but_non_executable_state() -> None:
@@ -963,7 +979,14 @@ def test_canonical_ledgers_record_implemented_but_non_executable_state() -> None
         assert state["machine_handler_implementation_authorized"] is True
         assert state["machine_action_handlers_implemented"] is True
         assert state["implementation_package_digest_sha256"] == package_digest
-        assert state["owner_implementation_acceptance_pending"] is True
+        assert state["implementation_acceptance_sha256"] == (
+            "06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631"
+        )
+        assert state["owner_implementation_acceptance_pending"] is False
+        assert state["machine_handler_implementation_accepted"] is True
+        assert state[
+            "separate_validation_and_fresh_runtime_binding_planning_authorized"
+        ] is True
         assert state["PowerShell_or_runner_execution_authorized"] is False
         assert state["storage_attempt_authorized"] is False
         assert state["F_or_ACL_action_authorized"] is False

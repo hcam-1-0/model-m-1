@@ -440,7 +440,12 @@
     "implementation_package": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-package.json",
         "implementation_package_digest_sha256": "79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7",
     "owner_acceptance_decision_id": "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE",
-    "owner_implementation_acceptance_pending": true,
+    "implementation_acceptance_record": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-acceptance.json",
+    "implementation_acceptance_sha256": "06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631",
+    "owner_acceptance_statement_sha256": "B8BFC6E6F78217D535AF2EDCF95038B0C35ABE1132B88BB4A471BED493823499",
+    "owner_implementation_acceptance_pending": false,
+    "machine_handler_implementation_accepted": true,
+    "separate_validation_and_fresh_runtime_binding_planning_authorized": true,
     "generated_vector_count": 64,
     "exclusive_security_at_create_API": "CreateDirectoryW_with_nonnull_SECURITY_ATTRIBUTES",
     "machine_handler_implementation_authorized": true,
@@ -454,7 +459,7 @@
     "storage_attempt_authorized": false,
     "F_or_ACL_action_authorized": false,
     "Defender_or_scanner_action_authorized": false,
-    "status": "implementation_complete_non_executable_owner_implementation_acceptance_pending"
+    "status": "implementation_accepted_non_executable_separate_validation_and_runtime_binding_planning_only"
   },
   "model_artifact_research_package": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",

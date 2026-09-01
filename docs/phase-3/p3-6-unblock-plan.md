@@ -251,9 +251,13 @@ runner source hash; it authorized neither execution nor storage. The final U3K
   isolated adapter, and 64-vector verifier are implemented and sealed under
   package SHA-256
 `79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`.
-  The next action is exact owner review as
-  `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE`; no PowerShell,
-  runtime, adapter-import, or machine authority exists. A
+  Exact `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded
+  under acceptance-record SHA-256
+  `06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631`.
+  The next action is preparation of a separate non-effective generated
+  PowerShell validation and fresh-runtime-binding planning package; no
+  PowerShell parsing/import/execution, runtime observation, adapter-import, or
+  machine authority exists. A
 Defender-only proposal remains
 sequenced after successful storage evidence is accepted. No prior
 decision authorizes a retry, `F:` or ACL access, scanner action, artifact

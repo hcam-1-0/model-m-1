@@ -148,9 +148,12 @@ or remote Git operation is authorized.
   recorded and consumed. The implementation and non-observational evidence are
   sealed under package SHA-256
 `79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`.
-  Exact implementation acceptance is pending; PowerShell parsing/import/
-  execution, runtime observation, storage, and every machine action remain
-  unauthorized.
+  Exact `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded
+  under acceptance-record SHA-256
+  `06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631`.
+  Separate non-effective validation/runtime-binding planning is now permitted;
+  PowerShell parsing/import/execution, runtime observation, storage, and every
+  machine action remain unauthorized.
 
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).

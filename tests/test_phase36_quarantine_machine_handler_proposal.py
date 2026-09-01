@@ -252,7 +252,8 @@ def test_canonical_ledgers_record_consumed_authorization_and_acceptance_gate() -
         assert state["implementation_package_digest_sha256"] == _sha256(
             IMPLEMENTATION_PACKAGE_PATH
         )
-        assert state["owner_implementation_acceptance_pending"] is True
+        assert state["owner_implementation_acceptance_pending"] is False
+        assert state["machine_handler_implementation_accepted"] is True
         assert state["PowerShell_or_runner_execution_authorized"] is False
         assert state["storage_attempt_authorized"] is False
         assert state["F_or_ACL_action_authorized"] is False
@@ -260,8 +261,8 @@ def test_canonical_ledgers_record_consumed_authorization_and_acceptance_gate() -
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     action = unblock["next_portable_planning_action"]
     assert action["action"] == (
-        "owner_review_of_exact_U3L_machine_handler_implementation_"
-        "evidence_package"
+        "prepare_separate_non_effective_generated_PowerShell_validation_and_"
+        "fresh_runtime_binding_planning_package"
     )
     assert action["decision_ids"] == [
         "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE"
@@ -271,12 +272,13 @@ def test_canonical_ledgers_record_consumed_authorization_and_acceptance_gate() -
         _sha256(IMPLEMENTATION_PACKAGE_PATH)
     )
     assert action["owner_machine_handler_implementation_authorization_pending"] is False
-    assert action["owner_implementation_acceptance_pending"] is True
+    assert action["owner_implementation_acceptance_pending"] is False
     assert action["machine_action_handlers_implemented"] is True
     assert action["machine_handler_proposal_preparation_authority"] is False
     assert action["machine_handler_implementation_authority"] is False
     assert action["source_or_test_change_authority"] is False
     assert action["PowerShell_or_runner_execution_authority"] is False
+    assert action["runtime_binding_proposal_preparation_authority"] is True
     assert unblock["runtime_execution_authorized"] is False
 
     for path in [

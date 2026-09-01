@@ -243,7 +243,8 @@ def test_canonical_ledgers_and_human_records_point_to_new_gate() -> None:
         "4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E"
     )
     assert action["owner_runtime_binding_evidence_acceptance_pending"] is False
-    assert action["owner_implementation_acceptance_pending"] is True
+    assert action["owner_implementation_acceptance_pending"] is False
+    assert action["runtime_binding_proposal_preparation_authority"] is True
     assert action["machine_handler_proposal_package_digest_sha256"] == (
         "EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311"
     )

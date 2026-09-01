@@ -447,8 +447,11 @@ owner evidence acceptance is recorded as
 `F19E6660FBD9545F74B8B532F6A9EB4D01ACF0543DE45CD54C8CB41C868DB54E`.
 The final U3K preparation package is sealed under SHA-256
 `4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`,
-but execution authorization is not requestable because all ten machine handlers
-remain unimplemented.
+but it remains a historical placeholder-runner package. The ten machine
+handlers were subsequently implemented and accepted as source and
+generated/static evidence only; a fresh runtime binding, newly sealed
+executable U3K package, and separate digest-bound storage authorization remain
+required before any machine action.
 
 Planning records:
 
@@ -541,12 +544,18 @@ admission evidence, C1/C10/C50 bounded-load results or a narrower explicit
 claim, degradation behavior, driver/container security review, supply-chain
 provenance, rollback, exact package digest, and owner acceptance.
 
-Remaining gated backlog requires exact owner inputs and separate authority:
+Remaining gated backlog requires separate planning and exact later authority:
 
-- review exact
-  `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` against
-  implementation package SHA-256
-  `79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`;
+- retain exact accepted implementation package SHA-256
+  `79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`
+  and acceptance-record SHA-256
+  `06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631`;
+- retain exact
+  `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` as acceptance of
+  source and generated/static evidence only;
+- prepare a separate non-effective generated PowerShell validation and fresh
+  runtime-binding planning package; do not parse, import, or execute PowerShell
+  and do not observe a runtime under the U3L acceptance;
 - retain immutable `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH`
   source-authorization proposal package SHA-256
   `EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`

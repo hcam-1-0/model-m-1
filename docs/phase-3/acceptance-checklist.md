@@ -287,8 +287,9 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
 - [x] All ten U3K machine handlers are separately authorized, implemented,
   generated/static tested, and sealed under implementation package SHA-256
 `79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`.
-- [ ] `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` exactly accepts
-  that package before PowerShell validation or a runtime-binding proposal.
+- [x] `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` exactly accepts
+  that package under acceptance-record SHA-256
+  `06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631`.
 - [ ] The existing twenty contract vectors, all 64 generated handler vectors,
   exact source hashes, an accepted implementation package, a fresh runtime
   binding, a regenerated executable U3K package, and separate
@@ -310,9 +311,11 @@ successful read-only attempt, and exact evidence acceptance is recorded. The
   final U3K preparation package remains historical and non-executable because it
   binds the placeholder runner. The U3L implementation authorization was
   recorded and consumed; all ten handlers are implemented and 64 generated
-  vectors passed. Exact implementation acceptance is pending. PowerShell
-  parsing/import/execution, another runtime observation, machine access, and
-  every retry remain unauthorized.
+  vectors passed. Exact
+  `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded for
+  source and generated/static evidence only. PowerShell parsing/import/execution,
+  another runtime observation, machine access, and every retry remain
+  unauthorized.
 
 ## Tier A Implementation Acceptance
 

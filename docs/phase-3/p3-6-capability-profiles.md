@@ -30,9 +30,14 @@ and the U3J storage R2 planning package is sealed under digest
 Both exact requested statements are accepted. The resulting contract-only
 runner implementation is sealed under digest
 `71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`
-and owner accepted. It remains resolver-ineligible and non-executable: no
-machine handler or accepted exact runtime binding exists. A non-effective
-runtime-binding authorization package is sealed under digest
+and owner accepted. Its historical runtime binding was also accepted, but it
+predates the U3L machine-handler implementation and cannot authorize the current
+sources. The U3L handlers are now accepted as source and generated/static
+evidence only under
+`D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE`. The profile remains
+resolver-ineligible and non-executable until a fresh runtime binding, newly
+sealed executable U3K package, and separate storage authority exist. The
+historical non-effective runtime-binding authorization package is sealed under digest
 `37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`.
 
 Machine-readable policy:
@@ -255,9 +260,12 @@ Runner execution, storage or Defender access, and profile admission remain
   isolated Windows adapter, 64-vector verifier, and compatibility evidence are
   sealed under SHA-256
 `79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`.
-  Exact implementation acceptance is pending. This does not activate a profile
-  or authorize PowerShell, runtime, or machine access. A Defender-only proposal
-  remains sequenced after accepted storage evidence.
+  Exact `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded
+  under SHA-256
+  `06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631`.
+  This does not activate a profile or authorize PowerShell, runtime, or machine
+  access. Only separate validation/runtime-binding planning may proceed. A
+  Defender-only proposal remains sequenced after accepted storage evidence.
 
 The owner may review the portable planning record through
 `D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE`; acceptance would not activate it.

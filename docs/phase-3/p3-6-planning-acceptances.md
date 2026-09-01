@@ -183,8 +183,13 @@ SHA-256
   64-vector generated Python reference/static verifier, compatibility tests,
   and non-observational evidence are sealed under package SHA-256
 `79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`.
-  Exact implementation acceptance remains pending. The package grants no
-  PowerShell parsing/import/execution, machine access, or storage authority.
+  Exact `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded
+  under acceptance-record SHA-256
+  `06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631`.
+  It permits preparation only of a separate non-effective generated PowerShell
+  validation and fresh-runtime-binding planning package. It grants no
+  PowerShell parsing/import/execution, runtime observation, machine access, or
+  storage authority.
 
 Neither package changes a capability profile or gate. `P36-G1`, `P36-G2`,
 `P36-G4`, and `P36-G5` remain blocked. No Defender proposal may be prepared

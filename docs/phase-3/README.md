@@ -116,8 +116,11 @@ final U3K preparation package has SHA-256
   then exactly authorized and implemented. Its non-executable evidence package
   SHA-256 is
 `79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`;
-  owner implementation acceptance is pending. No PowerShell parsing/import/
-  execution, repeat runtime query, `F:` access, ACL action, probe,
+  exact `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded
+  under acceptance-record SHA-256
+  `06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631`.
+  Only separate validation/runtime-binding planning may proceed. No PowerShell
+  parsing/import/execution, runtime query, `F:` access, ACL action, probe,
   Defender/scanner work, or retry is authorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
@@ -231,9 +234,9 @@ autonomous enforcement.
 | [P3.6 quarantine runtime-binding R0 proposal](p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization-proposal.md) | Immutable one-attempt read-only authorization package, now consumed |
 | [P3.6 quarantine runtime-binding R0 evidence review](p3-6-quarantine-transaction-runner-r0-runtime-binding-evidence-review.md) | Successful exact runtime and runner-source hashes, cache-only trust result, non-action evidence, validity, and recorded owner acceptance |
 | [P3.6 quarantine storage R2 authorization proposal](p3-6-quarantine-storage-r2-authorization-proposal.md) | Sealed U3J storage-only planning proposal with corrected DACL semantics; final U3K execution package blocked on runner evidence and separate authority |
-| [P3.6 final U3K storage package preparation](p3-6-quarantine-storage-r2-final-u3k-authorization-proposal.md) | Runtime evidence accepted and final package sealed; execution remains blocked by ten unimplemented runner machine handlers |
-| [P3.6 U3L machine-handler implementation proposal](p3-6-quarantine-machine-handlers-r0-implementation-authorization-proposal.md) | Immutable 64-vector source-implementation proposal with exclusive security-at-create correction; authorization consumed, implementation acceptance pending, and all execution prohibited |
-| [P3.6 U3L machine-handler implementation evidence](p3-6-quarantine-machine-handlers-r0-implementation-evidence-review.md) | Exact runner, pure handler, isolated Windows adapter, 64 generated vectors, compatibility evidence, and owner-acceptance gate; all PowerShell and machine execution remains prohibited |
+| [P3.6 final U3K storage package preparation](p3-6-quarantine-storage-r2-final-u3k-authorization-proposal.md) | Historical placeholder-runner package; a fresh runtime binding and newly sealed executable U3K package remain required before storage authority is requestable |
+| [P3.6 U3L machine-handler implementation proposal](p3-6-quarantine-machine-handlers-r0-implementation-authorization-proposal.md) | Immutable 64-vector source-implementation proposal with exclusive security-at-create correction; authorization consumed and implementation accepted without execution authority |
+| [P3.6 U3L machine-handler implementation evidence](p3-6-quarantine-machine-handlers-r0-implementation-evidence-review.md) | Exact runner, pure handler, isolated Windows adapter, 64 generated vectors, compatibility evidence, and accepted non-observational package; all PowerShell and machine execution remains prohibited |
 
 ## Non-Negotiable Boundary
 

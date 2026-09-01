@@ -417,7 +417,8 @@ def test_ledgers_and_human_records_point_to_current_runtime_binding_gate() -> No
     assert action["final_U3K_package_digest_sha256"] == (
         "4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E"
     )
-    assert action["owner_implementation_acceptance_pending"] is True
+    assert action["owner_implementation_acceptance_pending"] is False
+    assert action["runtime_binding_proposal_preparation_authority"] is True
     assert action["owner_runtime_binding_authorization_pending"] is False
     assert action["owner_runtime_binding_evidence_acceptance_pending"] is False
     assert action["machine_handler_proposal_package_digest_sha256"] == (

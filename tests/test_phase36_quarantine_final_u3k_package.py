@@ -195,7 +195,8 @@ def test_canonical_ledgers_preserve_history_and_point_to_handler_acceptance() ->
         _sha256(HANDLER_IMPLEMENTATION_PACKAGE)
     )
     assert action["owner_machine_handler_implementation_authorization_pending"] is False
-    assert action["owner_implementation_acceptance_pending"] is True
+    assert action["owner_implementation_acceptance_pending"] is False
+    assert action["runtime_binding_proposal_preparation_authority"] is True
     assert action["machine_action_handlers_implemented"] is True
     assert action["machine_handler_proposal_preparation_authority"] is False
     assert action["machine_handler_implementation_authority"] is False
