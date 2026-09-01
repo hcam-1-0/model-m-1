@@ -1,0 +1,372 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3t_preflight_r0_vectors.v1",
+  "manifest_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3T-PREFLIGHT-R0-GENERATED-VECTORS",
+  "status": "generated_only_nonobservational_H1_source_validation",
+  "generated_on": "2026-09-01",
+  "generator": {
+    "algorithm": "deterministic_explicit_source_text_assertion_matrix_v1",
+    "random_seed": null,
+    "external_input_or_data": false,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "machine_or_runtime_observation": false
+  },
+  "authorization": {
+    "decision_id": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH",
+    "package_digest_sha256": "26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2"
+  },
+  "source_under_test": "tools/phase36_quarantine_runtime_controller_u3t_preflight.ps1",
+  "vector_count": 48,
+  "group_counts": {
+    "request_and_source_binding": 12,
+    "controller_load_and_function_binding": 8,
+    "sanitized_result_contract": 12,
+    "timeout_and_output_bounds": 8,
+    "forbidden_surface_and_gate_closure": 8
+  },
+  "vectors": [
+    {
+      "id": "BIND-001",
+      "group": "request_and_source_binding",
+      "check": "contains",
+      "needle": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH",
+      "expected": true
+    },
+    {
+      "id": "BIND-002",
+      "group": "request_and_source_binding",
+      "check": "contains",
+      "needle": "26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2",
+      "expected": true
+    },
+    {
+      "id": "BIND-003",
+      "group": "request_and_source_binding",
+      "check": "contains",
+      "needle": "phase36_quarantine_runtime_controller.ps1",
+      "expected": true
+    },
+    {
+      "id": "BIND-004",
+      "group": "request_and_source_binding",
+      "check": "contains",
+      "needle": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB",
+      "expected": true
+    },
+    {
+      "id": "BIND-005",
+      "group": "request_and_source_binding",
+      "check": "contains",
+      "needle": "3F2A0975F92892A96FBC67B951B226D5AB958AE067F55B697ABA43669B8FB00E",
+      "expected": true
+    },
+    {
+      "id": "BIND-006",
+      "group": "request_and_source_binding",
+      "check": "contains",
+      "needle": "31335510565E4C74908C674B88951E81B7A7983331C6DE2E91964C1F8B48C20B",
+      "expected": true
+    },
+    {
+      "id": "BIND-007",
+      "group": "request_and_source_binding",
+      "check": "contains",
+      "needle": "C1470C65C6D5DA3EF93161F519BBC01507BBB805C6D433F58C65FDCAFE3FFC4F",
+      "expected": true
+    },
+    {
+      "id": "BIND-008",
+      "group": "request_and_source_binding",
+      "check": "contains",
+      "needle": "3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC",
+      "expected": true
+    },
+    {
+      "id": "BIND-009",
+      "group": "request_and_source_binding",
+      "check": "contains",
+      "needle": "mode = 'Policy'",
+      "expected": true
+    },
+    {
+      "id": "BIND-010",
+      "group": "request_and_source_binding",
+      "check": "contains",
+      "needle": "authorization_window_state = 'synthetic_policy_only'",
+      "expected": true
+    },
+    {
+      "id": "BIND-011",
+      "group": "request_and_source_binding",
+      "check": "contains",
+      "needle": "machine_authority = $false",
+      "expected": true
+    },
+    {
+      "id": "BIND-012",
+      "group": "request_and_source_binding",
+      "check": "contains",
+      "needle": "automatic_retry = $false",
+      "expected": true
+    },
+    {
+      "id": "LOAD-001",
+      "group": "controller_load_and_function_binding",
+      "check": "contains",
+      "needle": "[IO.Path]::Combine($PSScriptRoot, $HcamControllerFileName)",
+      "expected": true
+    },
+    {
+      "id": "LOAD-002",
+      "group": "controller_load_and_function_binding",
+      "check": "contains",
+      "needle": "$HcamControllerPath -cne $HcamExpectedControllerPath",
+      "expected": true
+    },
+    {
+      "id": "LOAD-003",
+      "group": "controller_load_and_function_binding",
+      "check": "contains",
+      "needle": "$HcamControllerInfo.Length -gt $HcamControllerMaximumBytes",
+      "expected": true
+    },
+    {
+      "id": "LOAD-004",
+      "group": "controller_load_and_function_binding",
+      "check": "contains",
+      "needle": "[IO.FileShare]::Read",
+      "expected": true
+    },
+    {
+      "id": "LOAD-005",
+      "group": "controller_load_and_function_binding",
+      "check": "contains",
+      "needle": "[Security.Cryptography.SHA256]::Create()",
+      "expected": true
+    },
+    {
+      "id": "LOAD-006",
+      "group": "controller_load_and_function_binding",
+      "check": "contains",
+      "needle": "$HcamControllerDigest -cne $HcamControllerSha256",
+      "expected": true
+    },
+    {
+      "id": "LOAD-007",
+      "group": "controller_load_and_function_binding",
+      "check": "count",
+      "needle": ". $HcamControllerPath",
+      "expected": 1
+    },
+    {
+      "id": "LOAD-008",
+      "group": "controller_load_and_function_binding",
+      "check": "count",
+      "needle": "Invoke-HcamRuntimeController -Request $HcamRequest",
+      "expected": 1
+    },
+    {
+      "id": "RESULT-001",
+      "group": "sanitized_result_contract",
+      "check": "contains",
+      "needle": "\"reason_code\":\"source_binding_failed\"",
+      "expected": true
+    },
+    {
+      "id": "RESULT-002",
+      "group": "sanitized_result_contract",
+      "check": "contains",
+      "needle": "\"reason_code\":\"result_contract_invalid\"",
+      "expected": true
+    },
+    {
+      "id": "RESULT-003",
+      "group": "sanitized_result_contract",
+      "check": "contains",
+      "needle": "\"reason_code\":\"policy_valid\"",
+      "expected": true
+    },
+    {
+      "id": "RESULT-004",
+      "group": "sanitized_result_contract",
+      "check": "contains",
+      "needle": "$HcamResult.terminal -eq $true",
+      "expected": true
+    },
+    {
+      "id": "RESULT-005",
+      "group": "sanitized_result_contract",
+      "check": "contains",
+      "needle": "$HcamResult.succeeded -eq $true",
+      "expected": true
+    },
+    {
+      "id": "RESULT-006",
+      "group": "sanitized_result_contract",
+      "check": "contains",
+      "needle": "$HcamResult.stage_projection.completed_actions -eq 18",
+      "expected": true
+    },
+    {
+      "id": "RESULT-007",
+      "group": "sanitized_result_contract",
+      "check": "contains",
+      "needle": "$HcamResult.action_counts.processes -eq 0",
+      "expected": true
+    },
+    {
+      "id": "RESULT-008",
+      "group": "sanitized_result_contract",
+      "check": "contains",
+      "needle": "$HcamResult.retention_projection.raw_material_retained_bytes -eq 0",
+      "expected": true
+    },
+    {
+      "id": "RESULT-009",
+      "group": "sanitized_result_contract",
+      "check": "contains",
+      "needle": "$HcamResult.retention_projection.sanitized_result_only -eq $true",
+      "expected": true
+    },
+    {
+      "id": "RESULT-010",
+      "group": "sanitized_result_contract",
+      "check": "count",
+      "needle": "[Console]::Out.Write($HcamPolicyValidJson)",
+      "expected": 1
+    },
+    {
+      "id": "RESULT-011",
+      "group": "sanitized_result_contract",
+      "check": "not_contains",
+      "needle": "[Console]::Error",
+      "expected": true
+    },
+    {
+      "id": "RESULT-012",
+      "group": "sanitized_result_contract",
+      "check": "not_contains",
+      "needle": "Write-Error",
+      "expected": true
+    },
+    {
+      "id": "BOUND-001",
+      "group": "timeout_and_output_bounds",
+      "check": "contains",
+      "needle": "per_action_timeout_ms = 30000",
+      "expected": true
+    },
+    {
+      "id": "BOUND-002",
+      "group": "timeout_and_output_bounds",
+      "check": "contains",
+      "needle": "total_timeout_ms = 30000",
+      "expected": true
+    },
+    {
+      "id": "BOUND-003",
+      "group": "timeout_and_output_bounds",
+      "check": "contains",
+      "needle": "max_stdout_bytes = 16384",
+      "expected": true
+    },
+    {
+      "id": "BOUND-004",
+      "group": "timeout_and_output_bounds",
+      "check": "contains",
+      "needle": "max_stderr_bytes = 0",
+      "expected": true
+    },
+    {
+      "id": "BOUND-005",
+      "group": "timeout_and_output_bounds",
+      "check": "contains",
+      "needle": "max_result_bytes = 65536",
+      "expected": true
+    },
+    {
+      "id": "BOUND-006",
+      "group": "timeout_and_output_bounds",
+      "check": "contains",
+      "needle": "max_processes = 1",
+      "expected": true
+    },
+    {
+      "id": "BOUND-007",
+      "group": "timeout_and_output_bounds",
+      "check": "contains",
+      "needle": "max_closure_files = 0",
+      "expected": true
+    },
+    {
+      "id": "BOUND-008",
+      "group": "timeout_and_output_bounds",
+      "check": "contains",
+      "needle": "max_cleanup_actions = 0",
+      "expected": true
+    },
+    {
+      "id": "CLOSE-001",
+      "group": "forbidden_surface_and_gate_closure",
+      "check": "not_contains",
+      "needle": "param(",
+      "expected": true
+    },
+    {
+      "id": "CLOSE-002",
+      "group": "forbidden_surface_and_gate_closure",
+      "check": "not_contains",
+      "needle": "Invoke-Expression",
+      "expected": true
+    },
+    {
+      "id": "CLOSE-003",
+      "group": "forbidden_surface_and_gate_closure",
+      "check": "not_contains",
+      "needle": "Start-Process",
+      "expected": true
+    },
+    {
+      "id": "CLOSE-004",
+      "group": "forbidden_surface_and_gate_closure",
+      "check": "not_contains",
+      "needle": "Import-Module",
+      "expected": true
+    },
+    {
+      "id": "CLOSE-005",
+      "group": "forbidden_surface_and_gate_closure",
+      "check": "not_contains",
+      "needle": "Invoke-WebRequest",
+      "expected": true
+    },
+    {
+      "id": "CLOSE-006",
+      "group": "forbidden_surface_and_gate_closure",
+      "check": "contains",
+      "needle": "$HcamResult.gate_effect.machine_action_authorized -eq $false",
+      "expected": true
+    },
+    {
+      "id": "CLOSE-007",
+      "group": "forbidden_surface_and_gate_closure",
+      "check": "contains",
+      "needle": "$HcamResult.gate_effect.python_machine_fallback -eq $false",
+      "expected": true
+    },
+    {
+      "id": "CLOSE-008",
+      "group": "forbidden_surface_and_gate_closure",
+      "check": "contains",
+      "needle": "$HcamResult.gate_effect.U3T_preflight_authorized -eq $false",
+      "expected": true
+    }
+  ],
+  "current_effect": {
+    "generated_source_text_vectors_prepared": true,
+    "PowerShell_parsed_imported_dot_sourced_or_executed": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_manifest_hardware_or_machine_observation": false,
+    "U3T_R1_attempt_U3R_retry_or_U3K": false,
+    "deployment_or_remote_Git": false
+  }
+}

@@ -355,3 +355,16 @@ non-effective U3T proposal. That package is sealed at SHA-256
 `26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
 Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` is pending and
 cannot be inferred from U3S acceptance, package existence, or continued work.
+
+## U3T H1 implementation authorization
+
+The owner supplied exact
+`D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` against package SHA-256
+`26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
+The resulting source-only H1 implementation package SHA-256 is
+`AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788`.
+The owner then supplied exact
+`D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` for the one historical
+planning test. The focused H1 suite and all 719 Phase 3.6 static tests pass.
+H1 source acceptance is now requestable but remains pending; it cannot be
+inferred from authorization, validation, package existence, or continued work.

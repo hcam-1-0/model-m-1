@@ -451,3 +451,12 @@ package SHA-256
 `26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
 H1 implementation, PowerShell execution, Python machine access, U3T R1, U3K,
 and deployment remain blocked.
+
+Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` was subsequently
+recorded. H1 source implementation is complete and sealed at SHA-256
+`AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788`.
+All 48 generated source-text vectors and 8 focused tests pass without parsing
+or executing PowerShell. Exact
+`D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` is recorded, and all 719
+Phase 3.6 static tests pass. Exact H1 source implementation acceptance is now
+pending; U3T R1 remains a separate closed gate.

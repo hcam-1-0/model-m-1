@@ -762,3 +762,19 @@ and operational alerting are not Phase 3 backlog items.
 - **Blocked:** PowerShell parser/runtime, Python machine access, runtime and
   manifest observation, U3T R1 attempt, U3R retry, U3K, deployment, and remote
   Git.
+
+### U3T H1 preflight harness source
+
+- **Completed:** Exact
+  `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH`.
+- **Completed:** Additive fixed-request harness, 48 generated source-text
+  vectors, one Python static test, evidence, and review.
+- **Sealed:** Package SHA-256
+  `AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788`.
+- **Completed:** Exact one-test
+  `D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` transition.
+- **Validated:** 8 focused tests and all 719 Phase 3.6 static tests pass.
+- **Owner pending:** Exact H1 source implementation acceptance against the
+  resealed package digest.
+- **Blocked:** PowerShell parsing/import/execution, runtime observation, U3T
+  R1, U3R retry, U3K, deployment, and remote Git.

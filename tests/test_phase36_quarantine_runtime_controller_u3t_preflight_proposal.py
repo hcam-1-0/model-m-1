@@ -29,6 +29,17 @@ PACKAGE = (
     / "p3-6-quarantine-runtime-controller-u3t-preflight-r0-planning-package.json"
 )
 REVIEW = DOCS / "p3-6-quarantine-runtime-controller-u3t-preflight-r0-proposal.md"
+H1_VECTORS = (
+    CONTRACTS / "p3-6-quarantine-runtime-controller-u3t-preflight-r0-vectors.json"
+)
+H1_EVIDENCE = (
+    CONTRACTS
+    / "p3-6-quarantine-runtime-controller-u3t-preflight-r0-harness-implementation-evidence.json"
+)
+H1_IMPLEMENTATION_PACKAGE = (
+    CONTRACTS
+    / "p3-6-quarantine-runtime-controller-u3t-preflight-r0-harness-implementation-package.json"
+)
 SOURCE_PACKAGE_DIGEST = (
     "484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30"
 )
@@ -36,6 +47,15 @@ ACCEPTANCE_DIGEST = "8A688EA3542D2F5D8CD2EF9BA86204F8AE7B997C06351E1178CF6545B52
 PACKAGE_DIGEST = "26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2"
 ACCEPTANCE_DECISION = "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE"
 H1_DECISION = "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH"
+H1_ACCEPTANCE_DECISION = "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE"
+COMPATIBILITY_DECISION = "D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT"
+PROVISIONAL_H1_PACKAGE_DIGEST = (
+    "F30FBA81C1B82F7A8E109AA2F52B4C90147C5280B1FE3342BB0C3DB7E9413D60"
+)
+AUTHORIZATION_CHECKPOINT = "c582af2927d94a86213f7076ddc5618dc6bf1cbc"
+COMPATIBILITY_STATEMENT_DIGEST = (
+    "FC441D894C23EFBAF3CE449B888535C06E4905BF66152D2B39B01970BF15E043"
+)
 
 
 def _read(path: Path) -> dict[str, object]:
@@ -113,14 +133,54 @@ def test_u3t_h1_authorization_package_is_sealed_and_non_effective() -> None:
         assert gate[key] is False
 
 
-def test_future_h1_paths_do_not_exist_before_exact_authorization() -> None:
+def test_authorized_h1_paths_and_compatibility_transition_are_recorded() -> None:
     contract = _read(PLANNING_CONTRACT)
     proposal = _read(AUTHORIZATION_PROPOSAL)
-    assert sorted(contract["future_H1_source_paths"].values()) == sorted(
-        proposal["exact_future_implementation_paths"]
+    exact_paths = proposal["exact_future_implementation_paths"]
+    assert sorted(contract["future_H1_source_paths"].values()) == sorted(exact_paths)
+    assert len(exact_paths) == 6
+    for relative in exact_paths:
+        assert (ROOT / relative).is_file()
+
+    vectors = _read(H1_VECTORS)
+    assert vectors["vector_count"] == 48
+    assert len(vectors["vectors"]) == 48
+
+    evidence = _read(H1_EVIDENCE)
+    amendment = evidence["compatibility_test_allowlist_amendment"]
+    assert amendment["decision_id"] == COMPATIBILITY_DECISION
+    assert (
+        amendment["authorized_test_path"] == Path(__file__).relative_to(ROOT).as_posix()
     )
-    for relative in proposal["exact_future_implementation_paths"]:
-        assert not (ROOT / relative).exists()
+    assert amendment["authorized_test_sha256"] == _sha256(Path(__file__))
+    assert amendment["H1_authorization_package_digest_sha256"] == PACKAGE_DIGEST
+    assert (
+        amendment["provisional_H1_implementation_package_digest_sha256"]
+        == PROVISIONAL_H1_PACKAGE_DIGEST
+    )
+    assert amendment["authorization_checkpoint_commit"] == AUTHORIZATION_CHECKPOINT
+    assert amendment["compatibility_amendment_recorded"] is True
+    statement = amendment["canonical_owner_statement"]
+    assert len(statement.encode("utf-8")) == 1883
+    assert hashlib.sha256(statement.encode("utf-8")).hexdigest().upper() == (
+        COMPATIBILITY_STATEMENT_DIGEST
+    )
+
+    package = _read(H1_IMPLEMENTATION_PACKAGE)
+    effect = package["post_compatibility_gate_effect"]
+    assert effect["H1_source_implementation_complete"] is True
+    assert effect["compatibility_test_allowlist_amendment_recorded"] is True
+    assert effect["owner_H1_source_implementation_acceptance_pending"] is True
+    for key in (
+        "PowerShell_parse_import_or_execution_authorized",
+        "Python_machine_access_or_fallback_authorized",
+        "runtime_manifest_hardware_or_machine_observation_authorized",
+        "U3T_R1_attempt_U3R_retry_or_U3K_authorized",
+        "deployment_authorized",
+        "remote_git_authorized",
+    ):
+        assert effect[key] is False
+
     assert (
         proposal["current_effect"]["H1_source_or_test_implementation_authorized"]
         is False
@@ -134,6 +194,10 @@ def test_future_h1_paths_do_not_exist_before_exact_authorization() -> None:
 
 
 def test_canonical_ledgers_expose_u3s_acceptance_and_pending_u3t_h1_package() -> None:
+    transition_key = (
+        "quarantine_runtime_controller_u3t_preflight_r0_H1_compatibility_transition"
+    )
+    package_digest = _sha256(H1_IMPLEMENTATION_PACKAGE)
     for name in (
         "p3-6-entry-gates.json",
         "p3-6-capability-profile-policy.json",
@@ -158,12 +222,31 @@ def test_canonical_ledgers_expose_u3s_acceptance_and_pending_u3t_h1_package() ->
         assert u3t["H1_source_or_test_implementation_authorized"] is False
         assert u3t["U3T_R1_attempt_U3R_retry_or_U3K_authorized"] is False
 
+        transition = state[transition_key]
+        assert transition["compatibility_amendment_decision_id"] == (
+            COMPATIBILITY_DECISION
+        )
+        assert transition["package_digest_sha256"] == package_digest
+        assert transition["H1_source_implementation_complete"] is True
+        assert transition["compatibility_test_allowlist_amendment_recorded"] is True
+        assert transition["owner_H1_source_implementation_acceptance_pending"] is True
+        assert transition["PowerShell_parse_import_or_execution_authorized"] is False
+        assert transition["Python_machine_access_or_fallback_authorized"] is False
+        assert (
+            transition["runtime_manifest_hardware_or_machine_observation_authorized"]
+            is False
+        )
+        assert transition["U3T_R1_attempt_U3R_retry_or_U3K_authorized"] is False
+        assert transition["deployment_or_remote_git_authorized"] is False
+
     action = _read(CONTRACTS / "p3-6-unblock-plan.json")[
         "next_U3T_H1_source_harness_implementation_action"
     ]
-    assert action["decision_id"] == H1_DECISION
-    assert action["package_digest_sha256"] == PACKAGE_DIGEST
-    assert action["H1_source_or_test_implementation_authorized"] is False
+    assert action["decision_id"] == H1_ACCEPTANCE_DECISION
+    assert action["package_digest_sha256"] == _sha256(H1_IMPLEMENTATION_PACKAGE)
+    assert action["owner_H1_source_implementation_acceptance_pending"] is True
+    assert action["PowerShell_parse_import_or_execution_authorized"] is False
+    assert action["U3T_R1_attempt_U3R_retry_or_U3K_authorized"] is False
 
 
 def test_docs_and_line_endings_are_synchronized() -> None:

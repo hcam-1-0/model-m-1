@@ -836,3 +836,14 @@ Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE` is recorded.
 U3T is split into H1 source-only harness implementation and a later R1
 runtime-bound attempt. H1 authorization remains pending, and this planning
 package grants neither H1 implementation nor R1 execution authority.
+
+### U3T H1 implementation result
+
+Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` was recorded. The
+fixed generated-`Policy` harness, 48 vectors, static test, and nonobservational
+evidence are sealed at package SHA-256
+`AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788`.
+Exact `D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` is recorded. The
+focused H1 suite and all 719 Phase 3.6 static tests pass. Exact H1 source
+implementation acceptance is now required before a separate non-effective
+U3T R1 runtime-binding authorization proposal may be prepared.

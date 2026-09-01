@@ -63,6 +63,20 @@ Status: metadata planning package owner accepted under
 `D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE`; acquisition, execution, and promotion
 remain blocked.
 
+## Current U3T H1 acceptance gate
+
+Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` was recorded and
+the source-only result is sealed at package SHA-256
+`AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788`.
+Exact `D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` is recorded, and the
+focused H1 suite plus all 719 Phase 3.6 static tests pass. The next requestable
+decision is exact
+`D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE`.
+
+H1 acceptance can permit only preparation of a separate non-effective U3T R1
+runtime-binding proposal. It cannot authorize PowerShell execution, runtime or
+machine observation, U3T R1 attempt, U3R retry, U3K, deployment, or remote Git.
+
 The exact [model artifact research proposal](p3-6-model-artifact-research-proposal.md)
 and [machine-readable package](../../contracts/phase-3/p3-6-model-artifact-research-package.json)
 identify, without downloading:

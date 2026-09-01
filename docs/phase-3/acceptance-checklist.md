@@ -488,8 +488,15 @@ Python machine access, runtime observation, U3R retry, U3T, or U3K.
 - [x] Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE`.
 - [x] Separate non-effective U3T planning and authorization proposal sealed at
   `26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
-- [ ] Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH`.
-- [ ] H1 source implementation and separate owner acceptance.
+- [x] Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH`.
+- [x] H1 source, 48 generated vectors, static tests, and nonobservational
+  evidence sealed at
+  `AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788`.
+- [x] Exact `D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` for the one
+  obsolete planning-time H1 path-absence assertion.
+- [x] Clean focused and full Phase 3.6 static validation: 719 passed.
+- [ ] Exact
+  `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE`.
 - [ ] Separately authorized U3T R1 runtime-bound evidence and acceptance.
 
 No U3T attempt, runtime, manifest, machine, U3K, deployment, or remote Git is

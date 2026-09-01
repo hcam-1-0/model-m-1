@@ -198,3 +198,9 @@ contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-source-imp
 contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-planning-package.json text eol=lf
 docs/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-proposal.md text eol=lf
 tests/test_phase36_quarantine_runtime_controller_u3t_preflight_proposal.py text eol=lf
+tools/phase36_quarantine_runtime_controller_u3t_preflight.ps1 text eol=lf
+contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-vectors.json text eol=lf
+tests/test_phase36_quarantine_runtime_controller_u3t_preflight_static.py text eol=lf
+contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-harness-implementation-evidence.json text eol=lf
+contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-harness-implementation-package.json text eol=lf
+docs/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-harness-evidence-review.md text eol=lf

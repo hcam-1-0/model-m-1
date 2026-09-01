@@ -379,3 +379,12 @@ non-effective U3T H1 package SHA-256 is
 `26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`, with
 `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` pending. It activates no
 profile and grants no runtime or machine authority.
+
+Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` is now recorded,
+and its source-only result is sealed at SHA-256
+`AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788`.
+This generated/static evidence does not make any capability profile
+resolver-eligible. No PowerShell runtime, machine capability, accelerator, or
+deployment evidence exists from H1. Exact
+`D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` is recorded and all 719
+Phase 3.6 static tests pass. Exact H1 owner acceptance remains required.

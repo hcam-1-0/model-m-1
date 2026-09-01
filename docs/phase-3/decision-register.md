@@ -1887,3 +1887,26 @@ authorized one-attempt runtime-bound `Policy` projection. Controller
 **Boundary:** Package preparation grants no H1 implementation, PowerShell
 parsing/import/execution, Python machine access, runtime or manifest
 observation, U3T R1 attempt, U3R retry, U3K, deployment, or remote Git.
+
+### DR-0099: U3T H1 source implementation
+
+**Decision:** `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` was
+recorded against planning package SHA-256
+`26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
+
+**Result:** One additive exact-hash-bound harness source, 48 generated
+source-text vectors, one Python static test, and nonobservational evidence were
+sealed at package SHA-256
+`AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788`.
+
+**Compatibility decision:** Exact
+`D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` authorized only the
+historical U3T planning test transition. Its canonical statement SHA-256 is
+`FC441D894C23EFBAF3CE449B888535C06E4905BF66152D2B39B01970BF15E043`.
+
+**Validation:** The focused H1 suite passes 8 tests. All 719 explicit Phase 3.6
+static tests pass. Exact H1 implementation acceptance is the next decision.
+
+**Boundary:** PowerShell was not parsed, imported, dot-sourced, or executed.
+H1 acceptance, U3T R1 runtime binding and execution, U3R retry, U3K,
+deployment, and remote Git remain separately blocked.

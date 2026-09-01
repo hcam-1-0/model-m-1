@@ -666,3 +666,15 @@ Its pending decision is
 `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH`. No H1 implementation,
 PowerShell action, runtime attempt, machine access, U3K, deployment, or remote
 Git is authorized.
+
+### U3T H1 source implementation
+
+Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` was recorded.
+The additive, non-executed harness source, 48 generated vectors, static test,
+and nonobservational evidence are sealed in package SHA-256
+`AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788`.
+Exact `D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` was recorded for the
+one historical planning test. All 719 Phase 3.6 static tests now pass. The next
+gate is exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE`.
+PowerShell parsing or execution, runtime observation, U3T R1, U3R retry, U3K,
+deployment, and remote Git remain blocked.
