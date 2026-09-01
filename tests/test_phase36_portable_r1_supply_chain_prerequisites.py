@@ -257,25 +257,11 @@ def test_ledgers_and_human_records_are_synchronized_and_blocked() -> None:
         assert state["acceptance_sha256"] == ACCEPTANCE_DIGEST
         assert state["profile_activation_authorized"] is False
 
-    assert unblock["next_portable_planning_action"][
-        "owner_implementation_acceptance_pending"
-    ] is False
-    assert unblock["next_portable_planning_action"][
-        "runtime_binding_proposal_preparation_authority"
-    ] is False
-    assert unblock["next_portable_planning_action"][
-        "harness_source_or_test_implementation_authority"
-    ] is False
-    assert unblock["next_portable_planning_action"][
-        "runtime_binding_observation_authority"
-    ] is False
-    assert unblock["next_portable_planning_action"][
-        "Defender_only_proposal_preparation_authority_now"
-    ] is False
-    assert unblock["next_portable_planning_action"]["retry_authorized"] is False
-    assert unblock["next_portable_planning_action"][
-        "another_attempt_authority"
-    ] is False
+    action = unblock["next_portable_planning_action"]
+    assert action["source_or_test_change_authority"] is False
+    assert action["runtime_binding_observation_authority"] is False
+    assert action["machine_storage_or_deployment_authority"] is False
+    assert action["retry_authorized"] is False
 
     decision_register = (DOCS / "decision-register.md").read_text(encoding="utf-8")
     backlog = (DOCS / "implementation-backlog.md").read_text(encoding="utf-8")

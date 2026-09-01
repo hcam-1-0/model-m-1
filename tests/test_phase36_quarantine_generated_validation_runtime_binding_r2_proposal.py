@@ -151,11 +151,14 @@ def test_canonical_ledgers_and_human_records_bind_package() -> None:
         ]
         assert state["package_digest_sha256"] == PACKAGE_DIGEST
         assert state["owner_decision_id"] == DECISION
-        assert state["owner_U3P_authorization_pending"] is True
-        assert state["attempts_authorized"] == 0
+        assert state["owner_U3P_authorization_pending"] is False
+        assert state["attempts_authorized"] == 1
+        assert state["attempts_consumed"] == 1
+        assert state["failed_attempt_consumed"] is True
+        assert state["sanitized_failure_reason"] == "result_contract_invalid"
         assert state[
             "D_P3_6_U3P_GENERATED_VALIDATION_RUNTIME_BINDING_R2_AUTH_requestable"
-        ] is True
+        ] is False
         assert state["PowerShell_parser_import_or_execution_authorized"] is False
         assert state["runtime_observation_authorized"] is False
         assert state["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
@@ -178,14 +181,45 @@ def test_canonical_ledgers_and_human_records_bind_package() -> None:
             assert PACKAGE_DIGEST in text
 
 
-def test_no_attempt_outputs_or_authority_record_exist() -> None:
+def test_exact_attempt_outputs_are_consumed_and_fail_closed() -> None:
+    expected = {
+        "authorization": (
+            "4C0E3A4F68BA036E9F55E57F7F413FDE4D13DE0D89BC07F030225093A0FA6C10"
+        ),
+        "result": (
+            "44450DF4D5A199DA34E5343AE043E138B8E046EF4E6FE6EAD6836AC96F7085F4"
+        ),
+        "evidence": (
+            "634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE"
+        ),
+    }
     for suffix in ("authorization", "result", "evidence"):
         path = (
             CONTRACTS
             / "p3-6-quarantine-generated-validation-runtime-binding-r2-"
             f"{suffix}.json"
         )
-        assert not path.exists()
+        assert _sha256(path) == expected[suffix]
+
+    authorization = _read(
+        CONTRACTS
+        / "p3-6-quarantine-generated-validation-runtime-binding-r2-"
+        "authorization.json"
+    )
+    result = _read(
+        CONTRACTS
+        / "p3-6-quarantine-generated-validation-runtime-binding-r2-result.json"
+    )
+    evidence = _read(
+        CONTRACTS
+        / "p3-6-quarantine-generated-validation-runtime-binding-r2-evidence.json"
+    )
+    assert authorization["effective_for_additional_attempt"] is False
+    assert authorization["authorization_scope"]["attempts_consumed"] == 1
+    assert result["reason_code"] == "result_contract_invalid"
+    assert result["automatic_retry_performed"] is False
+    assert evidence["gate_effect"]["successful_current_U3P_evidence"] is False
+    assert evidence["gate_effect"]["U3K_package_preparation_authorized"] is False
 
     acceptance = _read(ACCEPTANCE)
     assert _sha256(ACCEPTANCE) == ACCEPTANCE_DIGEST

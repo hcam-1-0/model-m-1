@@ -221,18 +221,10 @@ def test_canonical_ledgers_record_consumed_attempt_and_keep_gates_blocked() -> N
         assert state["profile_activation_authorized"] is False
 
     action = unblock["next_portable_planning_action"]
-    assert action["owner_implementation_acceptance_pending"] is False
-    assert action["owner_runtime_binding_authorization_pending"] is False
-    assert action["owner_runtime_binding_evidence_acceptance_pending"] is False
-    assert action[
-        "owner_machine_handler_implementation_authorization_pending"
-    ] is False
-    assert action["machine_handler_proposal_preparation_authority"] is False
-    assert action["machine_handler_implementation_authority"] is False
+    assert action["source_or_test_change_authority"] is False
     assert action["runtime_binding_observation_authority"] is False
-    assert action["Defender_only_proposal_preparation_authority_now"] is False
+    assert action["machine_storage_or_deployment_authority"] is False
     assert action["retry_authorized"] is False
-    assert action["another_attempt_authority"] is False
 
 
 def test_human_records_and_indexes_are_synchronized() -> None:

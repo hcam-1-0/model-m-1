@@ -691,7 +691,22 @@ and operational alerting are not Phase 3 backlog items.
 - **Complete:** Prepare and seal the separate non-effective U3P R2 package at
   SHA-256
   `2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
+- **Complete:** Record
+  `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` and consume its
+  single attempt without retry.
+- **Complete:** Seal failed-closed `result_contract_invalid` evidence SHA-256
+  `634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE`.
+
+### U3Q R2 bootstrap-remediation backlog
+
+- **Complete:** Analyze the zero-stdout result without inspecting retained-free
+  stderr or executing PowerShell again.
+- **Complete:** Define exact `$PSHOME` Utility bootstrap, seven-command local
+  `NoClobber` allowlist, provenance checks, and module-independent failure JSON.
+- **Complete:** Seal non-effective source-only package SHA-256
+  `5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47`.
 - **Owner pending:**
-  `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH`.
-- **Blocked:** U3P execution, PowerShell/runtime retry, U3K storage, profile
-  activation, deployment, and remote Git until later exact gates.
+  `D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`.
+- **Blocked:** R2 source implementation, separate source acceptance, U3R
+  package preparation, PowerShell/runtime retry, U3K storage, profile
+  activation, deployment, and remote Git.

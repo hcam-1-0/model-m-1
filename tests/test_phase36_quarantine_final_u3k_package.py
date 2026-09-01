@@ -184,24 +184,11 @@ def test_canonical_ledgers_preserve_history_and_point_to_handler_acceptance() ->
         assert final_u3k["storage_attempt_authorized"] is False
 
     action = ledgers[2]["next_portable_planning_action"]
-    assert action["decision_ids"] == [
-        "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH"
-    ]
-    assert action["final_U3K_package_digest_sha256"] == PACKAGE_DIGEST
-    assert action["machine_handler_proposal_package_digest_sha256"] == (
-        "EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311"
-    )
-    assert action["machine_handler_implementation_package_digest_sha256"] == (
-        _sha256(HANDLER_IMPLEMENTATION_PACKAGE)
-    )
-    assert action["owner_machine_handler_implementation_authorization_pending"] is False
-    assert action["owner_implementation_acceptance_pending"] is False
-    assert action["runtime_binding_proposal_preparation_authority"] is False
-    assert action["harness_source_or_test_implementation_authority"] is False
-    assert action["machine_action_handlers_implemented"] is True
-    assert action["machine_handler_proposal_preparation_authority"] is False
-    assert action["machine_handler_implementation_authority"] is False
     assert action["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
+    assert action["source_or_test_change_authority"] is False
+    assert action["runtime_binding_observation_authority"] is False
+    assert action["machine_storage_or_deployment_authority"] is False
+    assert action["retry_authorized"] is False
 
     documents = [
         CONTRACTS / "README.md",

@@ -140,9 +140,10 @@ def test_canonical_ledgers_record_acceptance_without_opening_G2() -> None:
             "p3-6-portable-r1-owner-decisions.json"
         )
         assert state["profile_activation_authorized"] is False
-    assert unblock["next_portable_planning_action"][
-        "implementation_or_runtime_authority"
-    ] is False
+    action = unblock["next_portable_planning_action"]
+    assert action["source_or_test_change_authority"] is False
+    assert action["runtime_binding_observation_authority"] is False
+    assert action["machine_storage_or_deployment_authority"] is False
     assert unblock["runtime_execution_authorized"] is False
 
 

@@ -1,0 +1,93 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_harness_r2_bootstrap_remediation_research_sources.v1",
+  "record_id": "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-RESEARCH-SOURCES",
+  "status": "primary_source_and_repository_research_complete_source_only",
+  "prepared_on": "2026-09-01",
+  "sources": [
+    {
+      "source_id": "MS-PS-PREFERENCE-VARIABLES",
+      "title": "about_Preference_Variables - PSModuleAutoLoadingPreference",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7.5",
+      "facts_used": [
+        "undefined_has_the_same_behavior_as_All",
+        "All_imports_modules_automatically_on_first_use",
+        "None_disables_automatic_module_importing"
+      ]
+    },
+    {
+      "source_id": "MS-PS-UTILITY-MODULE",
+      "title": "Microsoft.PowerShell.Utility Module",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/?view=powershell-7.5",
+      "facts_used": [
+        "ConvertFrom_Json_and_ConvertTo_Json_are_Utility_module_cmdlets",
+        "Compare_Object_Measure_Object_Sort_Object_Where_Object_and_ForEach_Object_are_Utility_module_cmdlets"
+      ]
+    },
+    {
+      "source_id": "MS-PS-ABOUT-MODULES",
+      "title": "about_Modules",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_modules?view=powershell-7.6",
+      "facts_used": [
+        "modules_shipped_with_PowerShell_are_under_PSHome_Modules",
+        "Import_Module_accepts_a_fully_qualified_path",
+        "NoClobber_prevents_imported_commands_from_replacing_existing_commands",
+        "Cmdlet_and_Function_parameters_can_limit_imported_commands"
+      ]
+    },
+    {
+      "source_id": "MS-PS-IMPORT-MODULE",
+      "title": "Import-Module",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/import-module?view=powershell-7.5",
+      "facts_used": [
+        "Scope_Local_limits_exports_to_the_current_scope",
+        "NoClobber_is_supported",
+        "Import_Module_is_a_Microsoft_PowerShell_Core_command"
+      ]
+    }
+  ],
+  "repository_observations": {
+    "failed_U3P_result": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r2-result.json",
+    "failed_U3P_result_sha256": "44450DF4D5A199DA34E5343AE043E138B8E046EF4E6FE6EAD6836AC96F7085F4",
+    "failed_U3P_evidence": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r2-evidence.json",
+    "failed_U3P_evidence_sha256": "634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE",
+    "accepted_harness_sha256": "F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3",
+    "module_autoload_disabled_before_first_Utility_command": true,
+    "explicit_Utility_module_import_present": false,
+    "Utility_command_reference_count": 14,
+    "first_runtime_Utility_command": "ConvertFrom-Json",
+    "failure_trap_serializer": "ConvertTo-Json",
+    "failure_trap_serializer_requires_same_unloaded_Utility_module": true,
+    "attempt_stdout_bytes": 0,
+    "attempt_stderr_bytes": 302,
+    "raw_stderr_inspected_or_retained": false,
+    "runtime_and_all_five_sources_stable_before_and_after": true
+  },
+  "research_conclusion": {
+    "classification": "high_confidence_source_and_primary_documentation_supported_runtime_unconfirmed",
+    "candidate_mechanism": "Utility_module_commands_are_unavailable_after_autoload_is_disabled_and_the_trap_cannot_serialize_its_own_sanitized_failure",
+    "observed_symptom_alignment": "a_pre_body_or_early_manifest_failure_plus_an_unavailable_trap_serializer_can_produce_zero_stdout_and_bounded_stderr",
+    "selected_remediation": "exact_PSHome_Utility_manifest_bootstrap_with_allowlisted_local_NoClobber_import_then_disable_autoload_and_retain_a_module_independent_safe_failure_writer",
+    "broad_autoload_reenable_selected": false,
+    "module_name_or_PSModulePath_search_selected": false,
+    "raw_error_capture_selected": false
+  },
+  "actions_performed": {
+    "source_and_primary_documentation_review": true,
+    "raw_stderr_inspection": false,
+    "PowerShell_parse_import_or_execution": false,
+    "runtime_or_hardware_observation": false,
+    "source_or_test_modification": false,
+    "machine_storage_network_or_scanner_action": false,
+    "remote_git": false
+  },
+  "limitations": [
+    "the_candidate_mechanism_is_not_claimed_as_runtime_confirmed",
+    "the_consumed_U3P_attempt_cannot_be_retried",
+    "the_exact_runtime_module_manifest_and_implementation_closure_require_a_later_separate_binding_package",
+    "implementation_and_execution_each_require_separate_digest_bound_owner_decisions"
+  ]
+}

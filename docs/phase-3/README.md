@@ -396,11 +396,19 @@ That acceptance authorized only preparation of the separate non-effective U3P
 proposal recorded below. Runtime, retry, U3K, profile, deployment, and remote
 Git authority remain absent.
 
-### P3.6 U3P R2 authorization package
+### P3.6 U3P R2 consumed result and U3Q proposal
 
 The separate non-effective U3P authorization package is sealed under SHA-256
 `2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
-See the [U3P R2 authorization proposal](p3-6-quarantine-generated-validation-runtime-binding-r2-authorization-proposal.md).
-Exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` is pending.
-No attempt, PowerShell execution, runtime observation, U3K action, profile
-activation, deployment, or remote Git action is authorized.
+Exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` was recorded
+and its one attempt was consumed. The attempt failed closed as
+`result_contract_invalid`; evidence SHA-256 is
+`634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE`.
+See the [U3Q R2 bootstrap remediation proposal](p3-6-quarantine-generated-validation-harness-r2-bootstrap-remediation-authorization-proposal.md).
+Its package SHA-256 is
+`5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47`.
+Exact
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`
+is pending.
+U3Q source implementation, PowerShell, retry, U3R/U3K, profile activation,
+deployment, and remote Git remain unauthorized.

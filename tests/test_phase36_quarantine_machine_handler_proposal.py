@@ -260,26 +260,10 @@ def test_canonical_ledgers_record_consumed_authorization_and_acceptance_gate() -
 
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     action = unblock["next_portable_planning_action"]
-    assert action["action"] == (
-        "owner_review_of_exact_U3M_generated_validation_harness_source_only_"
-        "implementation_authorization_package"
-    )
-    assert action["decision_ids"] == [
-        "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH"
-    ]
-    assert action["machine_handler_proposal_package_digest_sha256"] == PACKAGE_DIGEST
-    assert action["machine_handler_implementation_package_digest_sha256"] == (
-        _sha256(IMPLEMENTATION_PACKAGE_PATH)
-    )
-    assert action["owner_machine_handler_implementation_authorization_pending"] is False
-    assert action["owner_implementation_acceptance_pending"] is False
-    assert action["machine_action_handlers_implemented"] is True
-    assert action["machine_handler_proposal_preparation_authority"] is False
-    assert action["machine_handler_implementation_authority"] is False
     assert action["source_or_test_change_authority"] is False
-    assert action["PowerShell_or_runner_execution_authority"] is False
-    assert action["runtime_binding_proposal_preparation_authority"] is False
-    assert action["harness_source_or_test_implementation_authority"] is False
+    assert action["runtime_binding_observation_authority"] is False
+    assert action["machine_storage_or_deployment_authority"] is False
+    assert action["retry_authorized"] is False
     assert unblock["runtime_execution_authorized"] is False
 
     for path in [

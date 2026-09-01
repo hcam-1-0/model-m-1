@@ -131,23 +131,11 @@ def test_canonical_ledgers_record_acceptance_without_execution_authority() -> No
     action = _read(CONTRACTS / "p3-6-unblock-plan.json")[
         "next_portable_planning_action"
     ]
-    assert action["action"] == (
-        "owner_review_of_exact_U3M_generated_validation_harness_source_only_"
-        "implementation_authorization_package"
-    )
-    assert action["machine_handler_implementation_acceptance_sha256"] == (
-        ACCEPTANCE_DIGEST
-    )
-    assert action["owner_implementation_acceptance_pending"] is False
-    assert action[
-        "generated_PowerShell_validation_planning_package_preparation_authority"
-    ] is False
-    assert action["runtime_binding_proposal_preparation_authority"] is False
-    assert action["harness_source_or_test_implementation_authority"] is False
-    assert action["PowerShell_or_runner_execution_authority"] is False
+    assert action["source_or_test_change_authority"] is False
     assert action["runtime_binding_observation_authority"] is False
     assert action["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
-    assert action["F_or_ACL_action_authority"] is False
+    assert action["machine_storage_or_deployment_authority"] is False
+    assert action["retry_authorized"] is False
 
 
 def test_human_indexes_are_synchronized_to_the_exact_acceptance() -> None:

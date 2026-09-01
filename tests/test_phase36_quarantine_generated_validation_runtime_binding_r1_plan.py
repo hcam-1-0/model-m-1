@@ -295,23 +295,12 @@ def test_canonical_ledgers_expose_consumed_U3N_and_pending_U3O() -> None:
 
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     action = unblock["next_generated_validation_runtime_binding_action"]
-    assert action["action"] == (
-        "owner_review_of_exact_U3P_generated_validation_and_runtime_binding_R2_"
-        "authorization_package"
-    )
-    assert action["decision_id"] == (
-        "D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH"
-    )
-    assert action["owner_U3O_authorization_pending"] is False
-    assert action["owner_implementation_acceptance_pending"] is False
-    assert action["U3P_non_effective_package_preparation_authority"] is False
-    assert action["owner_U3P_authorization_pending"] is True
-    assert action["implementation_package_sha256"] == _sha256(
-        U3O_IMPLEMENTATION_PACKAGE
-    )
-    assert action["failed_U3N_evidence_sha256"] == U3N_EVIDENCE_DIGEST
+    assert action["decision_id"] is None
+    assert action["owner_U3Q_authorization_pending"] is True
+    assert action["source_or_test_modification_authority"] is False
     assert action["PowerShell_parser_import_or_execution_authority"] is False
     assert action["runtime_observation_authority"] is False
+    assert action["runner_or_module_execution_authority"] is False
     assert action["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
 
 

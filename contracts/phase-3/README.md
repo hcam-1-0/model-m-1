@@ -598,12 +598,23 @@ is recorded below. No PowerShell parsing/import/execution, runtime retry, U3K
 preparation, machine/storage action, profile activation, deployment, or remote
 Git action is authorized.
 
-## P3.6 U3P Runtime Binding R2 Authorization Package
+## P3.6 U3P Runtime Binding R2 Result
 
 The non-effective U3P package is sealed under SHA-256
 `2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
-It binds one proposed 24-hour, single-attempt generated-validation R2 action to
-the accepted R1 harness and exact runner, handler, adapter, and vector hashes.
-Exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` is pending.
-Package preparation does not authorize runtime observation, PowerShell,
-machine/storage action, U3K, profile activation, deployment, or remote Git.
+Exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` was recorded
+and its one attempt was consumed. Runtime trust and all source bindings passed,
+but the process emitted no allowlisted JSON and failed closed as
+`result_contract_invalid`. Evidence SHA-256 is
+`634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE`.
+
+## P3.6 U3Q Harness R2 Bootstrap Remediation Package
+
+Source-only analysis identifies a high-confidence Utility-module bootstrap gap.
+The non-effective U3Q package is sealed under SHA-256
+`5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47`.
+Exact
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`
+is pending. No source change, PowerShell execution, retry, U3R/U3K,
+machine/storage action, profile activation, deployment, or remote Git is
+authorized.

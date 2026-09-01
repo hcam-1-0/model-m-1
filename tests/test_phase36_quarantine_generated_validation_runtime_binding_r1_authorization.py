@@ -377,17 +377,14 @@ def test_canonical_ledgers_show_U3M_accepted_and_U3N_consumed() -> None:
     action = _read(CONTRACTS / "p3-6-unblock-plan.json")[
         "next_generated_validation_runtime_binding_action"
     ]
-    assert action["decision_id"] == (
-        "D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH"
-    )
-    assert action["failed_U3N_evidence_sha256"] == EVIDENCE_DIGEST
-    assert action["owner_U3O_authorization_pending"] is False
-    assert action["owner_implementation_acceptance_pending"] is False
-    assert action["U3P_non_effective_package_preparation_authority"] is False
-    assert action["owner_U3P_authorization_pending"] is True
+    assert action["decision_id"] is None
+    assert action["owner_U3Q_authorization_pending"] is True
+    assert action["source_or_test_modification_authority"] is False
+    assert action["runtime_observation_authority"] is False
+    assert action["runner_or_module_execution_authority"] is False
     assert action[
-        "D_P3_6_U3P_GENERATED_VALIDATION_RUNTIME_BINDING_R2_AUTH_requestable"
-    ] is True
+        "D_P3_6_U3K_STORAGE_R2_AUTH_requestable"
+    ] is False
 
 
 def test_human_records_and_line_endings_are_synchronized() -> None:

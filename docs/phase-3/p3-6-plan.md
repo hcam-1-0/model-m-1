@@ -777,11 +777,18 @@ is recorded under acceptance-record SHA-256
 That acceptance authorized preparation of the separate non-effective U3P retry
 proposal recorded below. It does not authorize PowerShell or a runtime attempt.
 
-## U3P R2 Authorization Package
+## U3P R2 Result And U3Q Remediation Plan
 
 The non-effective U3P package is sealed under SHA-256
 `2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
-It proposes one 24-hour single-attempt fresh runtime binding and generated-only
-validation against the accepted R1 harness. Exact
-`D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` is the next gate.
-Package preparation alone authorizes no runtime or PowerShell action.
+Exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` was recorded
+and the one attempt was consumed. Runtime/source binding passed, but no
+allowlisted JSON reached stdout, so it failed closed as `result_contract_invalid`.
+
+The next gate is source-only U3Q package SHA-256
+`5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47`.
+It proposes an exact `$PSHOME` Utility bootstrap, seven-command local
+`NoClobber` import, provenance validation, delayed autoload disablement, and a
+module-independent failure writer. Implementation requires exact
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`.
+PowerShell execution and runtime retry remain separate later gates.

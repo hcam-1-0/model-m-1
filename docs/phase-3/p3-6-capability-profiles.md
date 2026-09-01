@@ -332,12 +332,20 @@ That acceptance authorized only the non-effective U3P package recorded below.
 No profile is eligible or active, and no model placement, scheduling,
 acceleration, runtime, or deployment evidence is created.
 
-## U3P R2 Package Effect
+## U3P R2 Result And U3Q Effect
 
 The U3P package SHA-256 is
 `2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
-It is a non-effective authorization request for generated compatibility
-evidence only. Exact
-`D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` is pending. No
-profile becomes eligible, active, or preferred from package preparation or a
-future attempt alone.
+Its single authorized attempt was consumed and failed closed as
+`result_contract_invalid`; evidence SHA-256 is
+`634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE`.
+The consumed decision was
+`D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH`.
+The subsequent non-effective U3Q source-remediation package SHA-256 is
+`5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47`.
+Exact
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`
+is pending.
+No profile becomes eligible, active, or preferred from either result or package.
+U3Q source implementation and every runtime/profile action remain separately
+gated.

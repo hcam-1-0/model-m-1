@@ -421,7 +421,21 @@ non-effective U3P package. U3P execution and U3K remain blocked.
 - [x] Seal single-attempt action specification and failure contract.
 - [x] Seal authorization package SHA-256
   `2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
-- [ ] Exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH`.
+- [x] Record exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH`.
+- [x] Consume one attempt with no retry.
+- [x] Seal failed-closed evidence SHA-256
+  `634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE`.
 
-The unchecked decision is the only path to one bounded attempt. U3K remains
-blocked even if U3P is later authorized and executed.
+The attempt failed as `result_contract_invalid`; U3K remains blocked.
+
+## P3.6 U3Q R2 Source Remediation Gate
+
+- [x] Complete source-only failure analysis without inspecting raw stderr.
+- [x] Define exact `$PSHOME` Utility bootstrap and safe-failure contract.
+- [x] Seal non-effective package SHA-256
+  `5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47`.
+- [ ] Exact
+  `D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`.
+
+The unchecked decision grants source/generated-static implementation authority
+only. It does not authorize PowerShell, retry, U3R/U3K, or machine actions.

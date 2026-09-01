@@ -291,11 +291,19 @@ That acceptance authorized only the non-effective U3P package recorded below.
 Retry, PowerShell action, runtime/hardware observation, U3K action, profile
 activation, deployment, and remote Git action remain unauthorized.
 
-## U3P R2 Package Awaiting Authorization
+## U3P R2 Consumed And U3Q Awaiting Authorization
 
 U3O acceptance was used only to prepare the separate non-effective U3P R2
 package. Package SHA-256 is
 `2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
-Exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` is not yet
-recorded. No attempt, PowerShell action, runtime/hardware observation, U3K,
-profile activation, deployment, or remote Git action is authorized.
+Exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` was recorded
+and consumed by one failed-closed `result_contract_invalid` attempt. Evidence
+SHA-256 is
+`634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE`.
+
+The non-effective U3Q source-remediation package is sealed under SHA-256
+`5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47`.
+Exact
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`
+is not yet recorded. No source implementation, PowerShell, retry, U3R/U3K,
+profile activation, deployment, or remote Git is authorized.

@@ -1661,7 +1661,53 @@ process limits, and six allowlisted sanitized failure codes.
 
 **Result:** Package SHA-256 is
 `2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
-Exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` is pending.
-The package is non-effective and authorizes no attempt, PowerShell, runtime or
-hardware observation, machine/storage action, U3K, profile activation,
-deployment, or remote Git.
+At package sealing, exact
+`D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` was pending and the
+package authorized no action. DR-0085 records its later one-attempt result.
+
+### DR-0085: U3P R2 attempt consumed and failed closed
+
+**Decision:** Consume exact
+`D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` against package
+SHA-256
+`2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`
+for one bounded generated-validation attempt.
+
+**Result:** Runtime path, version, cache-only trust, and all five accepted
+source bindings passed before execution and remained stable afterward. The
+process was invoked once, exited `1`, emitted zero stdout bytes, and emitted
+302 bounded stderr bytes. Raw stderr was not inspected or retained. With no
+allowlisted JSON result, the controller failed closed as
+`result_contract_invalid`. Result SHA-256 is
+`44450DF4D5A199DA34E5343AE043E138B8E046EF4E6FE6EAD6836AC96F7085F4`;
+evidence SHA-256 is
+`634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE`.
+
+**Current gate:** The authorization is consumed and non-reusable. No retry,
+U3K, machine/storage action, profile activation, deployment, or remote Git is
+authorized.
+
+### DR-0086: Seal non-effective U3Q R2 bootstrap-remediation package
+
+**Decision:** Use source inspection and primary Microsoft documentation to
+analyze the U3P zero-stdout failure without inspecting raw stderr or executing
+PowerShell. Select a bounded remediation that imports only seven required
+`Microsoft.PowerShell.Utility` cmdlets from the exact `$PSHOME` manifest with
+local scope and `NoClobber`, verifies provenance, then disables autoloading.
+Require a module-independent bounded JSON failure writer for bootstrap errors.
+
+**Analysis:** The accepted R1 harness disables module autoloading but contains
+fourteen references to seven Utility-module cmdlets. Its first manifest parser
+uses `ConvertFrom-Json`, and its trap uses `ConvertTo-Json` from the same module.
+This is a high-confidence source-supported mechanism, not a claim of runtime
+confirmation.
+
+**Result:** Non-effective source-only U3Q authorization package SHA-256 is
+`5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47`.
+Exact
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`
+is pending.
+
+**Current gate:** No harness or test implementation, PowerShell parsing/import/
+execution, runtime retry, U3R/U3K package, machine/storage action, profile
+activation, deployment, or remote Git is authorized.

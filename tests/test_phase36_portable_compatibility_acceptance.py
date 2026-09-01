@@ -140,12 +140,10 @@ def test_canonical_ledgers_record_acceptance_without_opening_G2() -> None:
         )
         assert state["acceptance_sha256"] == ACCEPTANCE_DIGEST
         assert state["profile_activation_authorized"] is False
-    assert unblock["next_portable_planning_action"][
-        "implementation_or_runtime_authority"
-    ] is False
-    assert unblock["next_portable_planning_action"][
-        "artifact_or_dependency_acquisition_authority"
-    ] is False
+    action = unblock["next_portable_planning_action"]
+    assert action["source_or_test_change_authority"] is False
+    assert action["runtime_binding_observation_authority"] is False
+    assert action["machine_storage_or_deployment_authority"] is False
     assert unblock["runtime_execution_authorized"] is False
 
 
@@ -158,39 +156,11 @@ def test_accepted_U3F_path_records_pending_runner_evidence_review() -> None:
         "non_executable_R1_artifact_supply_chain_and_generated_calibration_"
         "authorization_prerequisites"
     )
-    assert action["action"] == (
-        "owner_review_of_exact_U3M_generated_validation_harness_source_only_"
-        "implementation_authorization_package"
-    )
-    assert action["decision_ids"] == [
-        "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH"
-    ]
-    assert action["final_U3K_package_digest_sha256"] == (
-        "4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E"
-    )
-    assert action["owner_implementation_acceptance_pending"] is False
-    assert action["owner_runtime_binding_authorization_pending"] is False
-    assert action["owner_runtime_binding_evidence_acceptance_pending"] is False
-    assert action["final_U3K_package_preparation_complete"] is True
-    assert action["machine_handler_proposal_package_digest_sha256"] == (
-        "EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311"
-    )
-    assert action[
-        "owner_machine_handler_implementation_authorization_pending"
-    ] is False
-    assert action["machine_handler_proposal_preparation_authority"] is False
-    assert action["machine_handler_implementation_authority"] is False
     assert action["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
     assert action["runtime_binding_observation_authority"] is False
-    assert action["runtime_binding_proposal_preparation_authority"] is False
-    assert action["harness_source_or_test_implementation_authority"] is False
-    assert action["Defender_only_proposal_preparation_authority_now"] is False
+    assert action["source_or_test_change_authority"] is False
+    assert action["machine_storage_or_deployment_authority"] is False
     assert action["retry_authorized"] is False
-    assert action["another_attempt_authority"] is False
-    assert action["status"] == (
-        "U3M_planning_package_sealed_owner_source_only_harness_implementation_"
-        "authorization_pending_no_PowerShell_runtime_storage_or_execution_authority"
-    )
 
 
 def test_human_records_and_indexes_are_synchronized() -> None:
