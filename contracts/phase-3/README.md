@@ -649,3 +649,14 @@ SHA-256 `3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
 Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` is pending. No
 source change, Python test execution, PowerShell action, runtime attempt, U3T,
 U3K, deployment, or remote Git is authorized by package preparation.
+
+### U3S dual-controller source implementation
+
+Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` and the separate
+compatibility-test amendment were recorded. The non-executable source package
+SHA-256 is
+`484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
+It binds the canonical contract, 192 vectors, PowerShell source, machine-disabled
+Python reference, static tests, evidence, and five unchanged accepted inputs.
+Owner source-implementation acceptance is pending. No runtime or machine gate
+is open.

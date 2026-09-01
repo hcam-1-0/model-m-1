@@ -379,3 +379,16 @@ architecture is A+B/A/A/A. The next requestable decision is exact
 That decision can authorize source-only implementation and pure generated
 Python policy tests. It cannot authorize PowerShell execution, Python machine
 access, runtime observation, U3T, U3R retry, U3K, deployment, or remote Git.
+
+## Current U3S gate
+
+Source implementation and generated/static validation are complete. The sealed
+package SHA-256 is
+`484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
+The next requestable decision is exact
+`D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE`.
+
+Exact acceptance can unblock only preparation of a separate non-effective U3T
+planning and authorization proposal. PowerShell parsing/import/execution,
+Python machine access, runtime or manifest observation, another attempt, U3K,
+deployment, and remote Git remain blocked.

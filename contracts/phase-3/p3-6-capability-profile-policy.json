@@ -692,6 +692,27 @@
     "deployment_or_remote_git_authorized": false,
     "status": "sealed_non_effective_owner_source_implementation_authorization_pending"
   },
+  "quarantine_runtime_controller_r0_source_implementation_package": {
+    "decision_id": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE",
+    "implementation_authorization_decision_id": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH",
+    "compatibility_amendment_decision_id": "D-P3.6-U3S-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT",
+    "authorization_package_digest_sha256": "3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-package.json",
+    "package_digest_sha256": "484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30",
+    "evidence": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-evidence.json",
+    "generated_vector_count": 192,
+    "focused_tests_passed": 244,
+    "full_Phase_3_6_tests_passed": 705,
+    "Python_reference_branch_coverage_percent": 100.0,
+    "source_implementation_complete": true,
+    "owner_source_implementation_acceptance_pending": true,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "retry_U3T_or_U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false,
+    "status": "sealed_non_executable_owner_source_implementation_acceptance_pending"
+  },
   "portable_cpu_profile_proposal": {
     "acceptance_record": "contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json",
     "package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
@@ -733,13 +754,13 @@
     }
   ],
   "record_id": "P3.6-CAPABILITY-PROFILE-POLICY",
-  "status": "accepted_planning_baseline_aligned_to_phase_minus_1_with_U3E_U3G_U3N_U3P_and_U3R_attempts_consumed_failed_closed_U3O_and_U3Q_source_evidence_accepted_U3S_R1_dual_architecture_accepted_source_implementation_authorization_pending_no_runtime_or_retry_authority",
+  "status": "accepted_planning_baseline_aligned_to_phase_minus_1_with_U3E_U3G_U3N_U3P_and_U3R_attempts_consumed_failed_closed_U3O_and_U3Q_source_evidence_accepted_U3S_R1_dual_architecture_accepted_dual_controller_source_implementation_complete_owner_acceptance_pending_no_runtime_or_retry_authority",
   "unresolved_gates": [
     "model_champion_and_fallback",
     "exact_machine_capability_manifests",
     "exact_runtime_driver_precision_and_artifact_bundles",
     "numeric_parity_quality_capacity_and_freshness_thresholds",
     "artifact_research_authorization",
-    "implementation_and_runtime_execution_authorization"
+    "owner_source_implementation_acceptance_and_runtime_execution_authorization"
   ]
 }

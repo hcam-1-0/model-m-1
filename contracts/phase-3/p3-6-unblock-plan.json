@@ -684,6 +684,27 @@
     "deployment_or_remote_git_authorized": false,
     "status": "sealed_non_effective_owner_source_implementation_authorization_pending"
   },
+  "quarantine_runtime_controller_r0_source_implementation_package": {
+    "decision_id": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE",
+    "implementation_authorization_decision_id": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH",
+    "compatibility_amendment_decision_id": "D-P3.6-U3S-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT",
+    "authorization_package_digest_sha256": "3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-package.json",
+    "package_digest_sha256": "484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30",
+    "evidence": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-evidence.json",
+    "generated_vector_count": 192,
+    "focused_tests_passed": 244,
+    "full_Phase_3_6_tests_passed": 705,
+    "Python_reference_branch_coverage_percent": 100.0,
+    "source_implementation_complete": true,
+    "owner_source_implementation_acceptance_pending": true,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "retry_U3T_or_U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false,
+    "status": "sealed_non_executable_owner_source_implementation_acceptance_pending"
+  },
   "model_artifact_research": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
     "artifact_count": 3,
@@ -871,6 +892,20 @@
     "deployment_or_remote_git_authorized": false,
     "status": "sealed_non_effective_owner_source_implementation_authorization_pending"
   },
+  "next_U3S_dual_controller_source_implementation_acceptance_action": {
+    "action": "owner_review_of_exact_dual_controller_R0_source_implementation_package",
+    "decision_id": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-package.json",
+    "package_digest_sha256": "484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30",
+    "owner_source_implementation_acceptance_pending": true,
+    "source_implementation_complete": true,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "U3T_U3R_retry_or_U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false,
+    "status": "sealed_non_executable_owner_source_implementation_acceptance_pending"
+  },
   "parallel_owner_review_actions": [
     {
       "action": "select_D_P3_6_U3A_001_through_004_inventory_admission_policy_options",
@@ -890,7 +925,7 @@
   ],
   "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
   "runtime_execution_authorized": false,
-  "status": "planning_only_U3E_U3G_U3N_U3P_and_U3R_attempts_consumed_failed_closed_U3I_runner_U3L_handlers_U3M_harness_U3O_and_U3Q_source_evidence_accepted_U3S_R1_dual_architecture_accepted_source_implementation_authorization_package_sealed_owner_authorization_pending_no_PowerShell_runtime_storage_or_execution_authority",
+  "status": "planning_only_U3E_U3G_U3N_U3P_and_U3R_attempts_consumed_failed_closed_U3I_runner_U3L_handlers_U3M_harness_U3O_and_U3Q_source_evidence_accepted_U3S_R1_dual_architecture_accepted_dual_controller_source_implementation_complete_owner_acceptance_pending_no_PowerShell_runtime_storage_or_execution_authority",
   "work_items": [
     {
       "allowed_now": [

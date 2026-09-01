@@ -474,3 +474,19 @@ closure, parser, import, execution, or generated-validation action.
 
 The open implementation decision does not include PowerShell execution,
 Python machine access, runtime observation, U3R retry, U3T, or U3K.
+
+### U3S source implementation checkpoint
+
+- [x] Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` recorded.
+- [x] Exact compatibility-test allowlist amendment recorded.
+- [x] Canonical contract and 192 generated vectors implemented.
+- [x] PowerShell source implemented without parsing, import, or execution.
+- [x] Machine-disabled Python reference implemented at 100 percent branch coverage.
+- [x] Focused 244-test and full 705-test static validation passed.
+- [x] Package sealed at
+  `484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
+- [ ] Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE`.
+- [ ] Separate non-effective U3T planning and authorization proposal.
+
+No U3T attempt, runtime, manifest, machine, U3K, deployment, or remote Git is
+authorized.

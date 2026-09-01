@@ -333,3 +333,17 @@ The resulting source-only implementation authorization package SHA-256 is
 `3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
 Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` is pending and
 cannot be inferred from architecture acceptance or continued planning.
+
+## U3S implementation authorization and amendment
+
+The owner supplied exact
+`D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` against package SHA-256
+`3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
+The owner then supplied exact
+`D-P3.6-U3S-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` for one historical test.
+
+The resulting source package SHA-256 is
+`484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
+Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE` is pending.
+Acceptance cannot be inferred from either authorization, package existence,
+test success, or continued work.

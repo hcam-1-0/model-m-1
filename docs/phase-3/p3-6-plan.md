@@ -820,3 +820,17 @@ decision `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH`.
 After future source implementation and separate acceptance, U3T remains a
 separate PowerShell-only preflight gate. Full generated validation and U3K stay
 separate and blocked.
+
+### U3S implementation result
+
+The source-only implementation and one compatibility transition are complete.
+The sealed package SHA-256 is
+`484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
+It contains one shared contract, 192 deterministic vectors, one default-denied
+PowerShell controller source, one machine-disabled Python oracle, and static
+evidence. The next gate is exact
+`D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE`.
+
+U3T remains a later three-step boundary: separate planning, separate exact
+authorization, and separate evidence acceptance. This package grants none of
+those authorities.

@@ -181,3 +181,14 @@ contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-au
 contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-authorization-package.json text eol=lf
 docs/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-authorization-proposal.md text eol=lf
 tests/test_phase36_quarantine_runtime_controller_r0_implementation_proposal.py text eol=lf
+contracts/phase-3/p3-6-quarantine-runtime-controller-r0-contract.json text eol=lf
+contracts/phase-3/p3-6-quarantine-runtime-controller-r0-vectors.json text eol=lf
+tools/phase36_quarantine_runtime_controller.ps1 text eol=lf
+tools/phase36_quarantine_runtime_controller_reference.py text eol=lf
+tests/test_phase36_quarantine_runtime_controller_contract.py text eol=lf
+tests/test_phase36_quarantine_runtime_controller_reference.py text eol=lf
+tests/test_phase36_quarantine_runtime_controller_powershell_static.py text eol=lf
+tests/test_phase36_quarantine_runtime_controller_cross_language.py text eol=lf
+contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-evidence.json text eol=lf
+contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-package.json text eol=lf
+docs/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-evidence-review.md text eol=lf

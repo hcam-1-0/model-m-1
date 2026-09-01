@@ -31,6 +31,24 @@ REVIEW = (
     DOCS
     / "p3-6-quarantine-runtime-controller-r0-source-implementation-authorization-proposal.md"
 )
+IMPLEMENTED_CONTRACT = (
+    CONTRACTS / "p3-6-quarantine-runtime-controller-r0-contract.json"
+)
+IMPLEMENTED_VECTORS = (
+    CONTRACTS / "p3-6-quarantine-runtime-controller-r0-vectors.json"
+)
+IMPLEMENTATION_EVIDENCE = (
+    CONTRACTS
+    / "p3-6-quarantine-runtime-controller-r0-source-implementation-evidence.json"
+)
+IMPLEMENTATION_PACKAGE = (
+    CONTRACTS
+    / "p3-6-quarantine-runtime-controller-r0-source-implementation-package.json"
+)
+IMPLEMENTATION_REVIEW = (
+    DOCS
+    / "p3-6-quarantine-runtime-controller-r0-source-implementation-evidence-review.md"
+)
 PACKAGE_DIGEST = (
     "3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC"
 )
@@ -126,7 +144,7 @@ def test_canonical_ledgers_expose_same_pending_package() -> None:
     assert action["U3T_U3R_retry_or_U3K_authorized"] is False
 
 
-def test_future_implementation_paths_are_absent_before_authorization() -> None:
+def test_exact_authorized_implementation_paths_are_present_and_non_executable() -> None:
     contract = _read(CONTRACT)
     future_paths = list(contract["future_source_paths"].values())
     future_paths.extend(contract["exact_future_test_paths"])
@@ -138,7 +156,35 @@ def test_future_implementation_paths_are_absent_before_authorization() -> None:
         ]
     )
     for path in future_paths:
-        assert not (ROOT / path).exists()
+        assert (ROOT / path).is_file()
+
+    evidence = _read(IMPLEMENTATION_EVIDENCE)
+    assert evidence["implementation_authorization"][
+        "authorization_package_digest_sha256"
+    ] == PACKAGE_DIGEST
+    assert evidence["compatibility_test_allowlist_amendment"]["authorized_path"] == (
+        "tests/test_phase36_quarantine_runtime_controller_r0_implementation_proposal.py"
+    )
+    assert evidence["non_observational_boundaries"]["PowerShell_parsed"] is False
+    assert evidence["non_observational_boundaries"]["PowerShell_imported_or_executed"] is False
+
+    package = _read(IMPLEMENTATION_PACKAGE)
+    gate = package["current_gate_effect"]
+    assert gate["source_implementation_complete"] is True
+    assert gate["owner_source_implementation_acceptance_pending"] is True
+    for key in (
+        "PowerShell_parse_import_or_execution_authorized",
+        "Python_machine_access_or_fallback_authorized",
+        "runtime_manifest_hardware_or_machine_observation_authorized",
+        "retry_U3T_or_U3K_authorized",
+        "deployment_authorized",
+        "remote_git_authorized",
+    ):
+        assert gate[key] is False
+
+    assert IMPLEMENTED_CONTRACT.is_file()
+    assert IMPLEMENTED_VECTORS.is_file()
+    assert IMPLEMENTATION_REVIEW.is_file()
 
 
 def test_docs_and_line_ending_policy_are_synchronized() -> None:

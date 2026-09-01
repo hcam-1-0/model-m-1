@@ -741,3 +741,18 @@ and operational alerting are not Phase 3 backlog items.
 - **Blocked:** Source/test implementation, Python reference execution,
   PowerShell parsing/import/execution, runtime observation, U3T, U3K,
   deployment, and remote Git.
+
+### U3S dual-controller source implementation
+
+- **Completed:** Exact source implementation authorization and exact one-test
+  compatibility amendment.
+- **Completed:** Canonical contract, 192-vector manifest, PowerShell source,
+  machine-disabled Python reference, and four focused test modules.
+- **Validated:** 244 focused tests, 705 full P3.6 tests, and 100 percent Python
+  branch coverage.
+- **Sealed:** Package SHA-256
+  `484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
+- **Owner pending:**
+  `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE`.
+- **Blocked:** PowerShell parser/runtime, Python machine access, runtime and
+  manifest observation, U3T attempt, U3R retry, U3K, deployment, and remote Git.

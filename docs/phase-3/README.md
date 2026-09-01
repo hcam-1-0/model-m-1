@@ -438,3 +438,12 @@ package SHA-256 is
 `3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
 Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` is the current
 owner gate; implementation and execution remain unauthorized.
+
+The exact source implementation authorization and compatibility amendment were
+subsequently recorded. Source-only implementation is complete and sealed at
+SHA-256 `484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
+All 192 vectors pass, Python branch coverage is 100 percent, and the full P3.6
+static suite passes 705 tests. Exact
+`D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE` is now pending;
+PowerShell execution, Python machine access, U3T, U3K, and deployment remain
+blocked.

@@ -1830,3 +1830,32 @@ The owner decision is
 
 **Boundary:** Package preparation grants no source change, test execution,
 runtime observation, U3T, U3R retry, U3K, deployment, or remote Git authority.
+
+### DR-0094: U3S dual-controller source implementation authorization
+
+**Decision:** `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` was accepted
+against authorization package SHA-256
+`3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
+
+**Result:** One canonical contract, 192 vectors, authoritative non-executed
+PowerShell source, machine-disabled Python reference, and four static/generated
+test modules were implemented. Focused validation passed 244 tests and Python
+branch coverage is 100 percent.
+
+### DR-0095: U3S compatibility-test transition
+
+**Decision:** `D-P3.6-U3S-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` authorized
+exactly one historical test edit. Immutable package and acceptance checks were
+preserved; only the obsolete pre-authorization path-absence assertion became a
+source-complete, owner-acceptance-pending, closed-runtime-gates assertion.
+
+### DR-0096: U3S source implementation package
+
+**Result:** The 17-file non-executable package SHA-256 is
+`484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
+The next decision is
+`D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE`.
+
+**Boundary:** Owner acceptance can permit only preparation of a separate
+non-effective U3T proposal. It cannot authorize PowerShell execution, Python
+machine access, U3T execution, U3R retry, U3K, deployment, or remote Git.
