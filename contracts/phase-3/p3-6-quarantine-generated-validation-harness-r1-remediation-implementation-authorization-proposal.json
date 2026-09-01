@@ -1,0 +1,52 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_harness_r1_remediation_implementation_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH",
+  "status": "sealed_non_effective_owner_source_only_implementation_authorization_pending",
+  "prepared_on": "2026-09-01",
+  "planning_basis": {
+    "planning_authorization": "D-P3.6-PLAN-AUTH",
+    "failed_U3N_evidence_sha256": "0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42",
+    "failed_U3N_result_sha256": "AD3A8B62105C4DF85E613024C034CECB8DB66C583E7DB49BDA1D4EB09772A8F7",
+    "source_only_analysis_complete": true,
+    "retry_or_runtime_authority_inferred": false
+  },
+  "authorization_scope_if_exact_package_is_accepted": {
+    "source_only_harness_R1_remediation": true,
+    "replace_Get_FileHash_with_bounded_dotnet_SHA256_streaming": true,
+    "add_allowlisted_layer_only_sanitized_failure_codes": true,
+    "update_generated_static_Python_tests": true,
+    "write_nonobservational_implementation_evidence_and_package": true,
+    "synchronize_exact_allowlisted_ledgers_and_documents": true,
+    "PowerShell_parse_import_or_execution": false,
+    "runtime_or_hardware_observation": false,
+    "retry_or_U3P_runtime_package_preparation": false,
+    "machine_storage_network_model_media_container_deployment_or_remote_git": false
+  },
+  "immutable_inputs": {
+    "accepted_vector_manifest_sha256": "5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C",
+    "accepted_runner_sha256": "22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A",
+    "accepted_pure_handler_sha256": "41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721",
+    "accepted_windows_adapter_sha256": "232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9"
+  },
+  "required_result": {
+    "new_harness_R1_SHA256_sealed": true,
+    "all_84_generated_reference_vectors_pass": true,
+    "full_phase36_static_suite_passes": true,
+    "nonobservational_evidence_only": true,
+    "separate_owner_implementation_acceptance_required": true,
+    "separate_U3P_runtime_retry_package_and_authorization_required": true
+  },
+  "owner_statement_template": "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only remediation of the P3.6 generated validation harness against package digest <U3O_REMEDIATION_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact allowlisted harness, generated/static Python tests, non-observational evidence and package, ledgers, documentation, and line-ending records bound by that package. Replace Get-FileHash with bounded read-only .NET SHA-256 streaming while preserving PSModuleAutoLoadingPreference=None and the single pure-handler import surface; add only allowlisted layer-level sanitized failure codes with no raw output, exception, fixture, identity, or security material. The accepted vector manifest, runner, pure-handler, and Windows-adapter sources must remain byte-exact. PowerShell must not be parsed, imported, or executed; no runtime or hardware may be observed; and no retry, U3P runtime package, machine, storage, F:/B:/ACL/probe/cleanup/scanner, network, download, artifact, model, inference, camera/media/data, container/Kubernetes, profile activation, deployment, or remote Git action may occur. The source result must be sealed for separate exact owner acceptance before a new non-effective U3P retry package can be prepared.",
+  "current_effect": {
+    "proposal_prepared": true,
+    "owner_U3O_authorization_pending": true,
+    "source_or_test_modification_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "runtime_retry_authorized": false,
+    "U3P_package_preparation_authorized": false,
+    "U3K_requestable": false,
+    "machine_storage_or_deployment_authorized": false,
+    "remote_git_authorized": false
+  }
+}

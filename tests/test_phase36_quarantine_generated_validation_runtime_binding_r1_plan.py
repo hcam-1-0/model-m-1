@@ -47,6 +47,15 @@ U3N_DECISION_ID = "D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH"
 U3N_PACKAGE_DIGEST = (
     "E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E"
 )
+U3N_EVIDENCE_DIGEST = (
+    "0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42"
+)
+U3O_DECISION_ID = (
+    "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH"
+)
+U3O_PACKAGE_DIGEST = (
+    "17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338"
+)
 U3L_ACCEPTANCE_DIGEST = (
     "06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631"
 )
@@ -229,7 +238,7 @@ def test_research_record_reports_no_prohibited_action() -> None:
     assert actions["remote_git_action"] is False
 
 
-def test_canonical_ledgers_expose_only_implementation_acceptance_as_next_action() -> None:
+def test_canonical_ledgers_expose_consumed_U3N_and_pending_U3O() -> None:
     for name in (
         "p3-6-entry-gates.json",
         "p3-6-capability-profile-policy.json",
@@ -271,10 +280,14 @@ def test_canonical_ledgers_expose_only_implementation_acceptance_as_next_action(
         ]
         assert u3n["package_digest_sha256"] == U3N_PACKAGE_DIGEST
         assert u3n["owner_decision_id"] == U3N_DECISION_ID
-        assert u3n["owner_U3N_authorization_pending"] is True
+        assert u3n["owner_U3N_authorization_pending"] is False
+        assert u3n["attempts_consumed"] == 1
+        assert u3n["failed_attempt_consumed"] is True
+        assert u3n["retry_authorized"] is False
+        assert u3n["evidence_sha256"] == U3N_EVIDENCE_DIGEST
         assert u3n[
             "D_P3_6_U3N_GENERATED_VALIDATION_RUNTIME_BINDING_R1_AUTH_requestable"
-        ] is True
+        ] is False
         assert u3n["runtime_observation_authorized"] is False
         assert u3n["PowerShell_parser_import_or_execution_authorized"] is False
         assert u3n["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
@@ -282,12 +295,13 @@ def test_canonical_ledgers_expose_only_implementation_acceptance_as_next_action(
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     action = unblock["next_generated_validation_runtime_binding_action"]
     assert action["action"] == (
-        "owner_review_of_exact_U3N_generated_validation_and_fresh_runtime_"
-        "binding_single_attempt_authorization_package"
+        "owner_review_of_exact_U3O_generated_validation_harness_R1_source_only_"
+        "remediation_implementation_authorization_package"
     )
-    assert action["decision_id"] == U3N_DECISION_ID
-    assert action["owner_U3N_authorization_pending"] is True
-    assert action["authorization_package_digest_sha256"] == U3N_PACKAGE_DIGEST
+    assert action["decision_id"] == U3O_DECISION_ID
+    assert action["owner_U3O_authorization_pending"] is True
+    assert action["authorization_package_digest_sha256"] == U3O_PACKAGE_DIGEST
+    assert action["failed_U3N_evidence_sha256"] == U3N_EVIDENCE_DIGEST
     assert action["PowerShell_parser_import_or_execution_authority"] is False
     assert action["runtime_observation_authority"] is False
     assert action["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False

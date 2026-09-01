@@ -300,3 +300,19 @@ The only current unblock action is owner review and exact
 `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` against that digest.
 Package preparation grants no PowerShell execution, runtime observation, or
 machine action. U3K storage remains unrequestable and unauthorized.
+
+## Current U3O Unblock Gate
+
+The U3N action above has been consumed and failed closed. Result SHA-256 is
+`AD3A8B62105C4DF85E613024C034CECB8DB66C583E7DB49BDA1D4EB09772A8F7`;
+evidence SHA-256 is
+`0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42`.
+There is no retry authority.
+
+The only current generated-validation unblock action is owner review of exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` against
+package SHA-256
+`17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338`.
+That decision, if issued, is limited to source/static remediation. It does not
+authorize PowerShell, runtime observation, a retry, U3P/U3K work, machine or
+storage actions, models, media, deployment, or remote Git.

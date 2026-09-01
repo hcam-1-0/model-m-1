@@ -556,3 +556,23 @@ Its exact pending decision is
 `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH`. No PowerShell,
 runtime, machine, storage, network, model, media, deployment, or remote Git
 action is authorized by package preparation.
+
+## P3.6 U3N Failure And U3O Remediation Gate
+
+The exact U3N authorization was recorded and its single attempt was consumed.
+The attempt failed closed with sanitized reason
+`generated_validation_process_failed`; result SHA-256 is
+`AD3A8B62105C4DF85E613024C034CECB8DB66C583E7DB49BDA1D4EB09772A8F7`
+and evidence SHA-256 is
+`0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42`.
+No retry occurred, no prohibited action was recorded, and U3K remains blocked.
+
+Source-only analysis identified a high-confidence, runtime-unconfirmed module
+autoload conflict. The non-effective R1 remediation package is sealed under
+SHA-256
+`17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338`.
+Exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` is pending.
+Until it is explicitly accepted, no harness/test modification, PowerShell,
+runtime retry, U3P/U3K preparation, machine/storage action, deployment, or
+remote Git action is authorized.

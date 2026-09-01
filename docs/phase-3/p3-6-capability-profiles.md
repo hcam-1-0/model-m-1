@@ -302,3 +302,15 @@ The separate non-effective U3N package is sealed under SHA-256
 `E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`;
 exact `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` remains
 required before any PowerShell or runtime attempt.
+
+## U3N Failure And U3O Effect On Profiles
+
+The single U3N attempt was consumed and failed closed. Evidence SHA-256 is
+`0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42`.
+No capability profile became eligible and no placement or activation decision
+was produced. The non-effective remediation package SHA-256 is
+`17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338`;
+exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` is pending.
+Even if authorized, U3O is source/static work only and cannot activate a
+profile, execute a model, select hardware, schedule a workload, or deploy.

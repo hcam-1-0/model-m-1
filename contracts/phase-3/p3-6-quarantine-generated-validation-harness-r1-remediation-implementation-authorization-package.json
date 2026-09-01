@@ -1,0 +1,163 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_harness_r1_remediation_implementation_authorization_package.v1",
+  "package_id": "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTHORIZATION-PACKAGE",
+  "status": "sealed_non_effective_owner_U3O_source_only_remediation_implementation_authorization_pending",
+  "sealed_on": "2026-09-01",
+  "preparation_authority_decision_id": "D-P3.6-PLAN-AUTH",
+  "failed_attempt_decision_id": "D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH",
+  "future_authorization_decision_id": "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH",
+  "core_file_count": 17,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-acceptance.json",
+      "sha256": "25FE4348FA7A38A7B8625463CBAEE1E2536340D4D2F7638F19404B9F76832AA9",
+      "role": "accepted_U3M_source_and_generated_static_evidence_basis"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-package.json",
+      "sha256": "D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A",
+      "role": "accepted_U3M_exact_source_and_generated_static_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-authorization.json",
+      "sha256": "1218C1C35C58AB253D811044046F2EDD364790A6469150248BFFBAB37AAE395B",
+      "role": "consumed_exact_U3N_single_attempt_authorization_record"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-result.json",
+      "sha256": "AD3A8B62105C4DF85E613024C034CECB8DB66C583E7DB49BDA1D4EB09772A8F7",
+      "role": "sanitized_failed_closed_U3N_result"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-evidence.json",
+      "sha256": "0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42",
+      "role": "sanitized_failed_closed_U3N_evidence"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-remediation-research-sources.json",
+      "sha256": "96D975DE3AD9524FE6EBBB1900D8B3C521DD3D700DB04F5FFA2A46C36B312E9D",
+      "role": "official_documentation_and_repository_source_analysis_basis"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-failure-analysis-r0.json",
+      "sha256": "41AC6993A6C633FABA0BF2FCEAFF8F892111DDBBF74073847D7AEFF9631A76D3",
+      "role": "source_only_failure_analysis_and_selected_remediation_direction"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-remediation-contract.json",
+      "sha256": "1ED27515EEA158BF72E5D2C33C3A1BE62E7541FB0C801A767520F28E0F064F65",
+      "role": "exact_source_only_remediation_allowlist_invariants_and_sequence"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-remediation-implementation-authorization-proposal.json",
+      "sha256": "EC6D56F47F2598812EE8C0D5DAA453DA5C97A509F81F3F186CCC11F576273BFC",
+      "role": "machine_readable_future_digest_bound_U3O_authorization_proposal"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-generated-validation-harness-r1-remediation-authorization-proposal.md",
+      "sha256": "80AD04F3ABD4ED01211F2BE9559093BE046843A4310866244DB729E3A2E6D7F8",
+      "role": "human_reviewable_failure_analysis_remediation_scope_and_non_authorization"
+    },
+    {
+      "path": "tools/phase36_quarantine_generated_validation.ps1",
+      "sha256": "48FC33E1928BA186C11005DBDEC055E5558D58677D51EB864D3740BCFBA208C1",
+      "role": "accepted_exact_harness_R0_future_source_only_remediation_target"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-powershell-validation-r0-vectors.json",
+      "sha256": "5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C",
+      "role": "accepted_immutable_generated_only_twenty_plus_sixty_four_vector_manifest"
+    },
+    {
+      "path": "tools/phase36_quarantine_transaction_runner.ps1",
+      "sha256": "22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A",
+      "role": "accepted_immutable_runner"
+    },
+    {
+      "path": "tools/phase36_quarantine_machine_handlers.psm1",
+      "sha256": "41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721",
+      "role": "accepted_immutable_pure_handler"
+    },
+    {
+      "path": "tools/phase36_quarantine_windows_storage_adapter.psm1",
+      "sha256": "232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9",
+      "role": "accepted_immutable_parser_only_Windows_adapter"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-authorization-package.json",
+      "sha256": "E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E",
+      "role": "exact_consumed_U3N_authorization_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-action-spec.json",
+      "sha256": "BFC7E76431B6532871F6FB65DF8F1F6C1A3FBC243222FE173A4F7F71EEE86702",
+      "role": "historical_exact_U3N_single_attempt_action_spec"
+    }
+  ],
+  "failure_state": {
+    "U3N_attempts_authorized": 1,
+    "U3N_attempts_consumed": 1,
+    "U3N_status": "failed_attempt_consumed",
+    "sanitized_reason_code": "generated_validation_process_failed",
+    "accepted_Aggregate_result_received": false,
+    "automatic_retry_authorized": false,
+    "raw_process_or_exception_material_retained": false,
+    "prohibited_action_count": 0,
+    "U3K_requestable": false
+  },
+  "future_authorization_effect_if_exactly_accepted": {
+    "source_only_harness_R1_remediation": true,
+    "replace_Get_FileHash_with_bounded_read_only_dotnet_SHA256_streaming": true,
+    "preserve_PSModuleAutoLoadingPreference_None": true,
+    "preserve_single_pure_handler_Import_Module_surface": true,
+    "add_six_allowlisted_layer_only_sanitized_failure_codes": true,
+    "generated_static_Python_tests_and_nonobservational_evidence": true,
+    "accepted_vectors_runner_handler_or_adapter_change": false,
+    "PowerShell_parse_import_or_execution": false,
+    "runtime_or_hardware_observation": false,
+    "retry_or_U3P_runtime_package_preparation": false,
+    "machine_storage_F_B_ACL_probe_cleanup_or_scanner_action": false,
+    "network_download_artifact_model_media_or_data_action": false,
+    "container_Kubernetes_profile_activation_deployment_or_remote_git": false,
+    "U3K_package_preparation_or_storage": false
+  },
+  "fixed_future_implementation_outputs": [
+    "tools/phase36_quarantine_generated_validation.ps1",
+    "tests/test_phase36_quarantine_generated_powershell_validation_harness.py",
+    "tests/test_phase36_quarantine_generated_validation_harness_r1_remediation.py",
+    "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-evidence.json",
+    "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-package.json",
+    "docs/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-evidence-review.md"
+  ],
+  "owner_authorization_statement_template": "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only remediation of the P3.6 generated validation harness against package digest <U3O_REMEDIATION_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact allowlisted harness, generated/static Python tests, non-observational evidence and package, ledgers, documentation, and line-ending records bound by that package. Replace Get-FileHash with bounded read-only .NET SHA-256 streaming while preserving PSModuleAutoLoadingPreference=None and the single pure-handler import surface; add only allowlisted layer-level sanitized failure codes with no raw output, exception, fixture, identity, or security material. The accepted vector manifest, runner, pure-handler, and Windows-adapter sources must remain byte-exact. PowerShell must not be parsed, imported, or executed; no runtime or hardware may be observed; and no retry, U3P runtime package, machine, storage, F:/B:/ACL/probe/cleanup/scanner, network, download, artifact, model, inference, camera/media/data, container/Kubernetes, profile activation, deployment, or remote Git action may occur. The source result must be sealed for separate exact owner acceptance before a new non-effective U3P retry package can be prepared.",
+  "sequence_after_exact_authorization": [
+    "record_exact_digest_bound_U3O_source_only_implementation_authorization",
+    "implement_only_the_allowlisted_harness_R1_remediation_and_generated_static_evidence",
+    "seal_and_separately_accept_the_exact_R1_source_implementation_package",
+    "prepare_a_new_non_effective_U3P_runtime_retry_package_only_after_acceptance",
+    "obtain_separate_digest_bound_U3P_retry_authorization_before_any_PowerShell_or_runtime_action",
+    "perform_at_most_one_new_attempt_only_after_that_authorization",
+    "keep_U3K_blocked_until_successful_evidence_is_separately_accepted"
+  ],
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_authorization_package_digest_and_is_not_self_embedded",
+  "current_gate_effect": {
+    "U3N_authorization_consumed": true,
+    "U3N_retry_authorized": false,
+    "U3O_authorization_package_prepared": true,
+    "owner_U3O_authorization_pending": true,
+    "D_P3_6_U3O_VALIDATION_HARNESS_R1_REMEDIATION_IMPLEMENTATION_AUTH_requestable": true,
+    "harness_source_or_test_modification_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "runtime_or_hardware_observation_authorized": false,
+    "U3P_runtime_retry_package_preparation_authorized": false,
+    "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
+    "profile_activation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "authorization_may_be_inferred_from_continue_failure_analysis_or_package_preparation": false
+}

@@ -662,3 +662,17 @@ and operational alerting are not Phase 3 backlog items.
   package digest.
 - **Not authorized:** U3N execution, U3K preparation or storage, PowerShell,
   runtime observation, machine actions, deployment, and remote Git.
+
+### U3O validation-harness remediation backlog
+
+- **Complete:** Record U3N as a consumed failed-closed attempt under evidence
+  SHA-256
+  `0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42`.
+- **Complete:** Seal source analysis, bounded R1 remediation contract, owner
+  proposal, and non-effective package SHA-256
+  `17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338`.
+- **Owner pending:** Exact
+  `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH`.
+- **Blocked:** R1 source/static implementation, separate implementation
+  acceptance, U3P retry-package preparation, any PowerShell/runtime attempt,
+  and U3K storage work.

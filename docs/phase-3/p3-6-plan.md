@@ -744,3 +744,19 @@ The next step is owner review of exact
 `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` against that digest.
 No current step authorizes PowerShell, runtime observation, machine or storage
 actions, models, media, deployment, or remote Git.
+
+## U3N Failure And U3O Plan Checkpoint
+
+U3N consumed its exact one-attempt authorization and failed closed before an
+accepted Aggregate result. Evidence SHA-256 is
+`0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42`.
+No retry or prohibited action occurred.
+
+The next planning gate is exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` against
+non-effective package SHA-256
+`17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338`.
+If explicitly authorized, work is limited to source/static remediation and
+non-observational evidence. Separate source acceptance and a later U3P package
+plus digest-bound authorization remain mandatory before any new runtime attempt.
+U3K remains blocked.

@@ -1578,3 +1578,37 @@ Machine-readable acceptance and package:
 [`p3-6-quarantine-generated-validation-harness-r0-implementation-acceptance.json`](../../contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-acceptance.json)
 and
 [`p3-6-quarantine-generated-validation-runtime-binding-r1-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-authorization-package.json).
+
+### DR-0081: U3N failed closed and U3O remediation proposal sealed
+
+**Decision:** Record the exact U3N single attempt as consumed and failed closed,
+then prepare a separate source-only remediation proposal without inferring
+implementation or retry authority.
+
+**Evidence:** U3N result SHA-256 is
+`AD3A8B62105C4DF85E613024C034CECB8DB66C583E7DB49BDA1D4EB09772A8F7`;
+evidence SHA-256 is
+`0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42`.
+The attempt used its one authorization, produced no accepted Aggregate result,
+retained no raw output or exception, performed no retry, and recorded zero
+prohibited actions.
+
+**Analysis:** Primary Microsoft documentation and static source inspection
+support a high-confidence but runtime-unconfirmed conflict: the accepted
+harness disables module autoloading before using `Get-FileHash`, which belongs
+to `Microsoft.PowerShell.Utility`. The selected remediation keeps module
+autoloading disabled and replaces that dependency with bounded read-only .NET
+SHA-256 streaming. It also adds only allowlisted layer-level failure codes.
+
+**Current gate:** The non-effective U3O package is sealed under SHA-256
+`17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338`.
+Exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` remains
+pending. No harness/test change, PowerShell, retry, U3P/U3K work, machine or
+storage action, deployment, or remote Git is authorized.
+
+Human review:
+[`p3-6-quarantine-generated-validation-harness-r1-remediation-authorization-proposal.md`](p3-6-quarantine-generated-validation-harness-r1-remediation-authorization-proposal.md).
+
+Machine-readable package:
+[`p3-6-quarantine-generated-validation-harness-r1-remediation-implementation-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-remediation-implementation-authorization-package.json).

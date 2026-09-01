@@ -256,3 +256,19 @@ Exact `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` remains
 pending. Neither U3M acceptance nor U3N package preparation creates
 PowerShell, runtime, hardware, machine, storage, scanner, network, download,
 model, media, container, Kubernetes, deployment, or remote Git authority.
+
+## U3N Attempt Outcome And Pending U3O
+
+The exact U3N authorization was recorded before observation and consumed by one
+attempt. The attempt failed closed; sanitized evidence SHA-256 is
+`0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42`.
+It is not accepted as successful validation and creates no retry or U3K
+authority.
+
+Planning-only failure analysis produced the non-effective U3O source-remediation
+package SHA-256
+`17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338`.
+Exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` is pending.
+Neither analysis nor package preparation authorizes source changes, PowerShell,
+runtime observation, retry, machine/storage action, deployment, or remote Git.

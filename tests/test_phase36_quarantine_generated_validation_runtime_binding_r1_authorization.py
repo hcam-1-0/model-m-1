@@ -32,6 +32,18 @@ REVIEW_PATH = (
     / "p3-6-quarantine-generated-validation-runtime-binding-r1-authorization-"
     "proposal.md"
 )
+AUTHORIZATION_RECORD_PATH = (
+    CONTRACTS
+    / "p3-6-quarantine-generated-validation-runtime-binding-r1-authorization.json"
+)
+RESULT_PATH = (
+    CONTRACTS
+    / "p3-6-quarantine-generated-validation-runtime-binding-r1-result.json"
+)
+EVIDENCE_PATH = (
+    CONTRACTS
+    / "p3-6-quarantine-generated-validation-runtime-binding-r1-evidence.json"
+)
 
 U3M_PACKAGE_DIGEST = (
     "D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A"
@@ -50,6 +62,15 @@ REVIEW_DIGEST = (
 )
 PACKAGE_DIGEST = (
     "E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E"
+)
+AUTHORIZATION_RECORD_DIGEST = (
+    "1218C1C35C58AB253D811044046F2EDD364790A6469150248BFFBAB37AAE395B"
+)
+RESULT_DIGEST = (
+    "AD3A8B62105C4DF85E613024C034CECB8DB66C583E7DB49BDA1D4EB09772A8F7"
+)
+EVIDENCE_DIGEST = (
+    "0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42"
 )
 OWNER_STATEMENT_DIGEST = (
     "A21ECA40C3DB1558FDEE04A8E53ADF3C73010C51EBE7E109B45296B995DE97DE"
@@ -267,14 +288,55 @@ def test_all_accepted_source_hashes_remain_byte_exact() -> None:
         assert _sha256(ROOT / path) == expected
 
 
-def test_no_future_attempt_outputs_exist() -> None:
+def test_single_attempt_outputs_are_sealed_failed_closed_and_consumed() -> None:
     spec = _read(ACTION_SPEC_PATH)
 
-    for path in spec["exact_future_outputs"]:
-        assert not (ROOT / path).exists()
+    assert [ROOT / path for path in spec["exact_future_outputs"]] == [
+        AUTHORIZATION_RECORD_PATH,
+        RESULT_PATH,
+        EVIDENCE_PATH,
+    ]
+    assert _sha256(AUTHORIZATION_RECORD_PATH) == AUTHORIZATION_RECORD_DIGEST
+    assert _sha256(RESULT_PATH) == RESULT_DIGEST
+    assert _sha256(EVIDENCE_PATH) == EVIDENCE_DIGEST
+
+    authorization = _read(AUTHORIZATION_RECORD_PATH)
+    result = _read(RESULT_PATH)
+    evidence = _read(EVIDENCE_PATH)
+
+    assert authorization["effective_for_additional_attempt"] is False
+    assert authorization["authorization_scope"]["attempts_consumed"] == 1
+    assert result["status"] == "failed_attempt_consumed"
+    assert result["authorization_consumed"] is True
+    assert result["automatic_retry_authorized"] is False
+    assert result["runtime_binding"]["reason_code"] == (
+        "generated_validation_process_failed"
+    )
+    assert result["execution_and_access"][
+        "outer_exact_pwsh_invocation_count"
+    ] == 1
+    assert result["accepted_source_bindings"][
+        "all_five_match_before_execution"
+    ] is True
+    assert result["generated_validation"]["succeeded"] is False
+    assert result["generated_validation"]["raw_process_output_retained"] is False
+    assert result["generated_validation"]["raw_exception_retained"] is False
+    assert all(
+        count == 0
+        for name, count in result["execution_and_access"].items()
+        if name != "outer_exact_pwsh_invocation_count"
+    )
+    assert evidence["attempt_summary"]["attempts_consumed"] == 1
+    assert evidence["attempt_summary"]["automatic_retry"] is False
+    assert all(
+        count == 0 for count in evidence["prohibited_action_counters"].values()
+    )
+    assert evidence["gate_effect"][
+        "D_P3_6_U3K_STORAGE_R2_AUTH_requestable"
+    ] is False
 
 
-def test_canonical_ledgers_show_U3M_accepted_and_U3N_pending() -> None:
+def test_canonical_ledgers_show_U3M_accepted_and_U3N_consumed() -> None:
     for name in (
         "p3-6-entry-gates.json",
         "p3-6-capability-profile-policy.json",
@@ -293,10 +355,16 @@ def test_canonical_ledgers_show_U3M_accepted_and_U3N_pending() -> None:
         assert u3m["harness_source_and_generated_static_evidence_accepted"] is True
         assert u3n["package_digest_sha256"] == PACKAGE_DIGEST
         assert u3n["owner_decision_id"] == U3N_DECISION
-        assert u3n["owner_U3N_authorization_pending"] is True
+        assert u3n["owner_U3N_authorization_pending"] is False
+        assert u3n["authorization_record_sha256"] == AUTHORIZATION_RECORD_DIGEST
+        assert u3n["result_sha256"] == RESULT_DIGEST
+        assert u3n["evidence_sha256"] == EVIDENCE_DIGEST
+        assert u3n["attempts_consumed"] == 1
+        assert u3n["failed_attempt_consumed"] is True
+        assert u3n["retry_authorized"] is False
         assert u3n[
             "D_P3_6_U3N_GENERATED_VALIDATION_RUNTIME_BINDING_R1_AUTH_requestable"
-        ] is True
+        ] is False
         assert u3n["runtime_observation_authorized"] is False
         assert u3n["PowerShell_parser_import_or_execution_authorized"] is False
         assert u3n["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
@@ -304,9 +372,11 @@ def test_canonical_ledgers_show_U3M_accepted_and_U3N_pending() -> None:
     action = _read(CONTRACTS / "p3-6-unblock-plan.json")[
         "next_generated_validation_runtime_binding_action"
     ]
-    assert action["decision_id"] == U3N_DECISION
-    assert action["authorization_package_digest_sha256"] == PACKAGE_DIGEST
-    assert action["owner_U3N_authorization_pending"] is True
+    assert action["decision_id"] == (
+        "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH"
+    )
+    assert action["failed_U3N_evidence_sha256"] == EVIDENCE_DIGEST
+    assert action["owner_U3O_authorization_pending"] is True
 
 
 def test_human_records_and_line_endings_are_synchronized() -> None:

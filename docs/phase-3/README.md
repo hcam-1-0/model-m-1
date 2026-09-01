@@ -364,3 +364,17 @@ Exact `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` remains
 pending. Only generated/static evidence exists; PowerShell and all runtime or
 machine actions remain prohibited until that later digest-bound authorization
 is explicitly issued.
+
+### P3.6 U3N failure and U3O remediation proposal
+
+U3N is no longer pending: its one authorized attempt was consumed and failed
+closed with no retry. Sanitized evidence SHA-256 is
+`0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42`.
+The source-only R1 remediation proposal is documented in
+[the U3O review](p3-6-quarantine-generated-validation-harness-r1-remediation-authorization-proposal.md)
+and sealed under package SHA-256
+`17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338`.
+Exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` remains
+pending; it is source-only and would not authorize PowerShell, runtime retry,
+storage, models, deployment, or remote Git.

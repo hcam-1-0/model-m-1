@@ -381,3 +381,19 @@ evidence. Phase 3 acceptance cannot approve them implicitly.
 Until those unchecked gates are completed, no PowerShell, runtime, hardware,
 machine, storage, F:, ACL, probe, scanner, network, model, media, container,
 Kubernetes, deployment, or remote Git action is authorized.
+
+### U3N failure and U3O remediation
+
+- [x] Record and consume the single exact U3N attempt.
+- [x] Preserve sanitized failed-closed evidence SHA-256
+  `0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42`.
+- [x] Confirm no retry and no prohibited action; keep U3K blocked.
+- [x] Seal the non-effective U3O source-only remediation package at
+  `17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338`.
+- [ ] Exact
+  `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH`
+  authorizes only the digest-bound source/static remediation.
+
+The unchecked gate does not authorize PowerShell, runtime or hardware
+observation, retry, U3P/U3K work, machine/storage/scanner access, network,
+models, media/data, containers/Kubernetes, deployment, or remote Git.
