@@ -34,6 +34,12 @@ DECISION_ID = "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH"
 PACKAGE_DIGEST = (
     "F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1"
 )
+IMPLEMENTATION_PACKAGE_DIGEST = (
+    "D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A"
+)
+IMPLEMENTATION_ACCEPTANCE_DECISION_ID = (
+    "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE"
+)
 U3L_ACCEPTANCE_DIGEST = (
     "06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631"
 )
@@ -216,7 +222,7 @@ def test_research_record_reports_no_prohibited_action() -> None:
     assert actions["remote_git_action"] is False
 
 
-def test_canonical_ledgers_expose_only_owner_review_as_next_action() -> None:
+def test_canonical_ledgers_expose_only_implementation_acceptance_as_next_action() -> None:
     for name in (
         "p3-6-entry-gates.json",
         "p3-6-capability-profile-policy.json",
@@ -227,25 +233,38 @@ def test_canonical_ledgers_expose_only_owner_review_as_next_action() -> None:
             "quarantine_generated_validation_harness_r0_implementation_"
             "authorization_package"
         ]
-        assert state["package_digest_sha256"] == PACKAGE_DIGEST
-        assert state["owner_decision_id"] == DECISION_ID
-        assert state["owner_harness_implementation_authorization_pending"] is True
+        assert state["implementation_authorization_package_digest_sha256"] == (
+            PACKAGE_DIGEST
+        )
+        assert state["implementation_package_digest_sha256"] == (
+            IMPLEMENTATION_PACKAGE_DIGEST
+        )
+        assert state["implementation_authority_decision_id"] == DECISION_ID
+        assert state["owner_acceptance_decision_id"] == (
+            IMPLEMENTATION_ACCEPTANCE_DECISION_ID
+        )
+        assert state["owner_harness_implementation_authorization_pending"] is False
+        assert state["implementation_authority_consumed"] is True
+        assert state["harness_source_and_generated_vectors_implemented"] is True
+        assert state["owner_implementation_acceptance_pending"] is True
         assert state["harness_source_or_test_implementation_authorized"] is False
         assert state["PowerShell_parser_import_or_execution_authorized"] is False
         assert state["runtime_or_hardware_observation_authorized"] is False
         assert state["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
 
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
-    for key in ("next_portable_planning_action", "next_planning_action"):
-        action = unblock[key]
-        assert action["action"] == (
-            "owner_review_of_exact_U3M_generated_validation_harness_source_only_"
-            "implementation_authorization_package"
-        )
-        assert action["owner_review_pending"] is True
-        assert action["harness_source_or_test_implementation_authority"] is False
-        assert action["PowerShell_or_runner_execution_authority"] is False
-        assert action["runtime_binding_observation_authority"] is False
+    action = unblock["next_generated_validation_harness_action"]
+    assert action["action"] == (
+        "owner_review_of_exact_U3M_generated_validation_harness_source_only_"
+        "implementation_package"
+    )
+    assert action["owner_implementation_acceptance_pending"] is True
+    assert action["implementation_package_digest_sha256"] == (
+        IMPLEMENTATION_PACKAGE_DIGEST
+    )
+    assert action["PowerShell_parser_import_or_execution_authority"] is False
+    assert action["runtime_binding_observation_authority"] is False
+    assert action["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
 
 
 def test_human_indexes_and_line_endings_are_synchronized() -> None:
@@ -264,6 +283,8 @@ def test_human_indexes_and_line_endings_are_synchronized() -> None:
         text = path.read_text(encoding="utf-8")
         assert DECISION_ID in text
         assert PACKAGE_DIGEST in text
+        assert IMPLEMENTATION_ACCEPTANCE_DECISION_ID in text
+        assert IMPLEMENTATION_PACKAGE_DIGEST in text
 
     attributes = (ROOT / ".gitattributes").read_text(encoding="utf-8")
     for name in (
@@ -273,5 +294,11 @@ def test_human_indexes_and_line_endings_are_synchronized() -> None:
         "p3-6-quarantine-generated-validation-harness-r0-implementation-authorization-package.json",
         "p3-6-quarantine-generated-validation-runtime-binding-r1-plan.md",
         "test_phase36_quarantine_generated_validation_runtime_binding_r1_plan.py",
+        "phase36_quarantine_generated_validation.ps1",
+        "p3-6-quarantine-generated-powershell-validation-r0-vectors.json",
+        "test_phase36_quarantine_generated_powershell_validation_harness.py",
+        "p3-6-quarantine-generated-validation-harness-r0-implementation-evidence.json",
+        "p3-6-quarantine-generated-validation-harness-r0-implementation-package.json",
+        "p3-6-quarantine-generated-validation-harness-r0-implementation-evidence-review.md",
     ):
         assert f"{name} text eol=lf" in attributes

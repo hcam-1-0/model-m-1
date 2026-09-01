@@ -233,3 +233,19 @@ dataset/driver/container download, model loading, inference, benchmark,
 hardware test, scheduler, container, Kubernetes, application implementation,
 camera/media/stream/data access, profile activation, model promotion,
 deployment, remote Git action, P3.7, or later work.
+
+## U3M Source-Only Implementation Authorization
+
+`mayank-admin` issued exact
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` for authorization package
+SHA-256
+`F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+That one source-only authority is consumed. The result is sealed as package
+SHA-256
+`D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
+
+This records implementation, not acceptance. Exact
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` remains pending.
+The authorization explicitly created no PowerShell, runtime, hardware,
+machine, storage, scanner, network, download, model, media, container,
+Kubernetes, deployment, or remote Git authority.

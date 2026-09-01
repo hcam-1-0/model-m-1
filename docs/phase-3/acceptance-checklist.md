@@ -352,3 +352,24 @@ Tier B/C capabilities, real-camera validation, evidence-media persistence,
 cross-camera correlation, watchlists, Government integration, production
 deployment, and statewide-scale claims each require separate authorization and
 evidence. Phase 3 acceptance cannot approve them implicitly.
+
+## P3.6 U3M Validation Harness Gate
+
+- [x] `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` was recorded
+  exactly against authorization-package digest
+  `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+- [x] Accepted runner, pure-handler, and Windows-adapter source hashes remain
+  byte-exact.
+- [x] The inert four-mode harness and 84 generated vectors are implemented.
+- [x] Python-only generated/reference and source-text static checks pass.
+- [x] The implementation package is sealed at
+  `D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
+- [ ] `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` accepts that
+  exact package and its generated/static limitations.
+- [ ] A separate non-effective U3N package is prepared after acceptance.
+- [ ] A later digest-bound U3N authorization permits one exact PowerShell
+  parser/import/execution and fresh runtime-binding attempt.
+
+Until those unchecked gates are completed, no PowerShell, runtime, hardware,
+machine, storage, F:, ACL, probe, scanner, network, model, media, container,
+Kubernetes, deployment, or remote Git action is authorized.

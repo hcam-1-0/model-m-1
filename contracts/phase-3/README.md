@@ -529,3 +529,18 @@ identifiers. No quality threshold is approved.
 `P35-W8` adds bounded in-memory consensus keyed only by anonymous stream,
 tracker epoch, and track. Exact-string confidence-weighted votes are ephemeral;
 all results abstain, and tracked evidence contains only identifier-free counts.
+
+## P3.6 U3M Source-Only Validation Harness Implementation
+
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` was consumed against
+authorization-package SHA-256
+`F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+The resulting exact implementation package is
+`p3-6-quarantine-generated-validation-harness-r0-implementation-package.json`
+with SHA-256
+`D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
+It binds the inert four-mode harness, 20 contract vectors, 64 handler vectors,
+Python-only generated/reference and source-text checks, and non-observational
+evidence. Exact `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE`
+is pending. No PowerShell, runtime, machine, storage, network, model, media,
+deployment, or remote Git action is authorized.

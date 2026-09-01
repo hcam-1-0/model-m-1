@@ -281,3 +281,17 @@ The completed inventory decision does not authorize collaborator-machine
 access. A collaborator may later supply an independently generated sanitized
 record, or a separate exact authority can cover an owned and explicitly
 identified machine.
+
+## Current U3M Unblock Gate
+
+U3M source-only implementation is complete under
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH`, bound to authorization
+digest `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+The exact implementation package digest is
+`D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
+
+The only current unblock action is owner review and exact
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE`. After acceptance,
+the next permitted work is preparation of a separate non-effective U3N
+authorization package. U3N execution and U3K storage remain unrequestable and
+unauthorized now.

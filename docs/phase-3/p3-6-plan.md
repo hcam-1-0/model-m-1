@@ -724,3 +724,18 @@ P3.6 can be accepted only when:
 P3.6 acceptance would still not authorize cameras, real media, Government or
 private data, operational alerts, deployment, P3.7, or later work unless an
 independent decision explicitly grants that scope.
+
+## U3M Implementation Checkpoint
+
+The exact source-only authority
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` was consumed against
+`F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+The four-mode harness, deterministic 20-plus-64 vector manifest, Python-only
+checks, and evidence are sealed in package
+`D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
+
+The next step is exact
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE`. Only after that
+acceptance may a separate non-effective U3N authorization package be prepared.
+No current step authorizes PowerShell, runtime observation, machine or storage
+actions, models, media, deployment, or remote Git.

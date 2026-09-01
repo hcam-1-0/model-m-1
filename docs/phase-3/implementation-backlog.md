@@ -638,3 +638,19 @@ Tier B starts only after P3.8 unless the owner explicitly reprioritizes it with
 its data/risk gates. Every Tier C capability remains a separate future proposal.
 Face recognition, person re-identification, Government matching, watchlists,
 and operational alerting are not Phase 3 backlog items.
+
+## P3.6 U3M Current Backlog
+
+- **Complete:** Consume
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` against
+  `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+- **Complete:** Implement the inert validation harness, 20 contract vectors,
+  64 handler vectors, Python reference/static checks, and source-only evidence.
+- **Complete:** Seal implementation package
+  `D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
+- **Owner pending:** Exact
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE`.
+- **Blocked after acceptance:** Prepare a separate non-effective U3N
+  generated-validation and fresh-runtime-binding authorization package.
+- **Not authorized:** U3N execution, U3K preparation or storage, PowerShell,
+  runtime observation, machine actions, deployment, and remote Git.

@@ -1528,3 +1528,24 @@ Machine-readable package:
 - statewide procurement, capacity, data residency, and production SLOs.
 
 Deferred means unapproved, not implicitly allowed.
+
+### DR-0079: U3M generated validation harness implemented source-only
+
+**Decision:** Consume
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` only against sealed
+authorization-package SHA-256
+`F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+
+**Result:** Implement an inert PowerShell 7 validation harness with exactly
+`Parse`, `Contract`, `Handler`, and `Aggregate`; a deterministic manifest with
+20 runner-contract and 64 pure-handler vectors; and Python-only reference and
+source-text static verification. Preserve the accepted runner, handler, and
+adapter hashes byte-for-byte. Seal implementation package SHA-256
+`D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
+
+**Gate:** Exact
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` remains pending.
+U3N is not requestable before that acceptance and preparation of a separate
+non-effective package. No PowerShell parsing/import/execution, runtime or
+hardware observation, machine/storage/network action, deployment, or remote
+Git is authorized.

@@ -280,3 +280,17 @@ or `kubernetes_cluster`. Any external runtime, dependency, driver, container,
 model, or compiled artifact then needs a separate digest/source/path-bound
 research authorization before acquisition or execution. `D-P3.6-START`
 remains a later explicit gate.
+
+## U3M Generated Validation Status
+
+The source-only U3M implementation authorized by
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` is complete against
+authorization digest
+`F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+Its package digest is
+`D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
+This supplies generated/static validation infrastructure only; it supplies no
+compatibility measurement, workload evidence, runtime binding, profile
+eligibility, placement decision, or activation authority. Exact U3M
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` and a later U3N
+gate remain required.

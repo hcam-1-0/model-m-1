@@ -339,3 +339,18 @@ Accepted planning snapshot digest:
 `57D2F541C4AA9AB8988A5DF7FC228DA4047BF471B64AD704BDB478308FDC3898`.
 Post-decision synchronization changes are recorded separately and do not alter
 the scope accepted in that snapshot.
+
+### P3.6 U3M validation harness
+
+| Document | Status |
+|---|---|
+| [U3M source-only implementation evidence review](p3-6-quarantine-generated-validation-harness-r0-implementation-evidence-review.md) | Implementation sealed; exact owner acceptance pending |
+
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` was consumed against
+`F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+The implementation package digest is
+`D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
+Exact `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` is pending.
+Only generated/static evidence exists; PowerShell and all runtime or machine
+actions remain prohibited pending a separate accepted package and later U3N
+authorization.
