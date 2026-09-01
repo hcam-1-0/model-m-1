@@ -332,6 +332,16 @@ Exact
 `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
 is recorded under acceptance-record SHA-256
 `8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC`.
-The current generated-validation action is preparation of a separate
-non-effective U3P proposal. PowerShell/runtime retry and U3K storage remain
+That acceptance authorized preparation of the separate non-effective U3P
+proposal recorded below. PowerShell/runtime retry and U3K storage remain
 prohibited until separately gated later decisions.
+
+## Current U3P Authorization Gate
+
+The non-effective U3P R2 package is sealed under SHA-256
+`2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
+The only current generated-validation unblock decision is exact
+`D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH`. Until it is
+recorded against that digest, no PowerShell, runtime observation, retry, or
+output record is authorized. U3K remains blocked after authorization and until
+separate successful-evidence acceptance and later machine-action gates.

@@ -774,5 +774,14 @@ Exact
 `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
 is recorded under acceptance-record SHA-256
 `8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC`.
-A separate non-effective U3P retry proposal may now be prepared. Acceptance
-does not authorize PowerShell or a runtime attempt.
+That acceptance authorized preparation of the separate non-effective U3P retry
+proposal recorded below. It does not authorize PowerShell or a runtime attempt.
+
+## U3P R2 Authorization Package
+
+The non-effective U3P package is sealed under SHA-256
+`2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
+It proposes one 24-hour single-attempt fresh runtime binding and generated-only
+validation against the accepted R1 harness. Exact
+`D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` is the next gate.
+Package preparation alone authorizes no runtime or PowerShell action.

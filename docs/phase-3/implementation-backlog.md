@@ -688,7 +688,10 @@ and operational alerting are not Phase 3 backlog items.
   `2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E`.
 - **Complete:**
   `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`.
-- **Next:** Prepare the separate non-effective U3P runtime-retry authorization
-  proposal and sealed package.
+- **Complete:** Prepare and seal the separate non-effective U3P R2 package at
+  SHA-256
+  `2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
+- **Owner pending:**
+  `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH`.
 - **Blocked:** U3P execution, PowerShell/runtime retry, U3K storage, profile
-  activation, deployment, and remote Git.
+  activation, deployment, and remote Git until later exact gates.

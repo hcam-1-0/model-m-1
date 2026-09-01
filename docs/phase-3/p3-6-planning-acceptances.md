@@ -287,6 +287,15 @@ Exact
 `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
 is recorded under acceptance-record SHA-256
 `8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC`.
-Only a non-effective U3P package may be prepared. Retry, PowerShell action,
-runtime/hardware observation, U3K action, profile activation, deployment, and
-remote Git action remain unauthorized.
+That acceptance authorized only the non-effective U3P package recorded below.
+Retry, PowerShell action, runtime/hardware observation, U3K action, profile
+activation, deployment, and remote Git action remain unauthorized.
+
+## U3P R2 Package Awaiting Authorization
+
+U3O acceptance was used only to prepare the separate non-effective U3P R2
+package. Package SHA-256 is
+`2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
+Exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` is not yet
+recorded. No attempt, PowerShell action, runtime/hardware observation, U3K,
+profile activation, deployment, or remote Git action is authorized.

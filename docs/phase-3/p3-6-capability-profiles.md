@@ -328,6 +328,16 @@ Exact
 `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
 is recorded under acceptance-record SHA-256
 `8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC`.
-Only non-effective U3P package preparation is authorized. No profile is
-eligible or active, and no model placement, scheduling, acceleration, runtime,
-or deployment evidence is created.
+That acceptance authorized only the non-effective U3P package recorded below.
+No profile is eligible or active, and no model placement, scheduling,
+acceleration, runtime, or deployment evidence is created.
+
+## U3P R2 Package Effect
+
+The U3P package SHA-256 is
+`2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
+It is a non-effective authorization request for generated compatibility
+evidence only. Exact
+`D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` is pending. No
+profile becomes eligible, active, or preferred from package preparation or a
+future attempt alone.

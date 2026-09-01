@@ -392,6 +392,15 @@ Exact
 `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
 is recorded under acceptance-record SHA-256
 `8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC`.
-Only preparation of a separate non-effective U3P proposal is authorized.
-Runtime, retry, U3K, profile, deployment, and remote Git authority remain
-absent.
+That acceptance authorized only preparation of the separate non-effective U3P
+proposal recorded below. Runtime, retry, U3K, profile, deployment, and remote
+Git authority remain absent.
+
+### P3.6 U3P R2 authorization package
+
+The separate non-effective U3P authorization package is sealed under SHA-256
+`2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
+See the [U3P R2 authorization proposal](p3-6-quarantine-generated-validation-runtime-binding-r2-authorization-proposal.md).
+Exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` is pending.
+No attempt, PowerShell execution, runtime observation, U3K action, profile
+activation, deployment, or remote Git action is authorized.

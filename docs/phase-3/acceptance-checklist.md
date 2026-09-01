@@ -413,3 +413,15 @@ models, media/data, containers/Kubernetes, deployment, or remote Git.
 
 The recorded acceptance authorizes only preparation of a separate
 non-effective U3P package. U3P execution and U3K remain blocked.
+
+## P3.6 U3P R2 Authorization Gate
+
+- [x] Bind accepted U3O R1 package and acceptance record.
+- [x] Bind exact harness, vectors, runner, handler, and parser-only adapter.
+- [x] Seal single-attempt action specification and failure contract.
+- [x] Seal authorization package SHA-256
+  `2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
+- [ ] Exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH`.
+
+The unchecked decision is the only path to one bounded attempt. U3K remains
+blocked even if U3P is later authorized and executed.

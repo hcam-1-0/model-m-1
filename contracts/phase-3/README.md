@@ -593,6 +593,17 @@ is recorded in
 `p3-6-quarantine-generated-validation-harness-r1-implementation-acceptance.json`
 under SHA-256
 `8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC`.
-Only non-effective U3P package preparation is authorized. No PowerShell
-parsing/import/execution, runtime retry, U3K preparation, machine/storage
-action, profile activation, deployment, or remote Git action is authorized.
+That acceptance authorized only non-effective U3P package preparation, which
+is recorded below. No PowerShell parsing/import/execution, runtime retry, U3K
+preparation, machine/storage action, profile activation, deployment, or remote
+Git action is authorized.
+
+## P3.6 U3P Runtime Binding R2 Authorization Package
+
+The non-effective U3P package is sealed under SHA-256
+`2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
+It binds one proposed 24-hour, single-attempt generated-validation R2 action to
+the accepted R1 harness and exact runner, handler, adapter, and vector hashes.
+Exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` is pending.
+Package preparation does not authorize runtime observation, PowerShell,
+machine/storage action, U3K, profile activation, deployment, or remote Git.

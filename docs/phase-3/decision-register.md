@@ -1651,3 +1651,17 @@ in the acceptance record.
 Preparation of one separate non-effective U3P authorization proposal is
 allowed. PowerShell, retry, runtime/hardware observation, U3K, machine/storage,
 profile activation, deployment, and remote Git remain unauthorized.
+
+### DR-0084: Seal non-effective U3P R2 authorization package
+
+**Decision:** Use U3O acceptance only to prepare a separate R2 package for one
+fresh runtime-binding and generated-validation attempt. Bind the remediated R1
+harness, exact accepted inputs, prior consumed failure evidence, bounded
+process limits, and six allowlisted sanitized failure codes.
+
+**Result:** Package SHA-256 is
+`2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
+Exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` is pending.
+The package is non-effective and authorizes no attempt, PowerShell, runtime or
+hardware observation, machine/storage action, U3K, profile activation,
+deployment, or remote Git.

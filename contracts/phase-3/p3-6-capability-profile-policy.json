@@ -532,6 +532,32 @@
     "remote_git_authorized": false,
     "status": "U3O_source_and_generated_static_evidence_accepted_U3P_non_effective_package_preparation_only"
   },
+  "quarantine_generated_validation_runtime_binding_r2_authorization_package": {
+    "preparation_authority_decision_id": "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE",
+    "preparation_authority_record": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-acceptance.json",
+    "preparation_authority_sha256": "8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC",
+    "action_spec": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r2-action-spec.json",
+    "authorization_proposal": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r2-authorization-proposal.json",
+    "review_document": "docs/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r2-authorization-proposal.md",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r2-authorization-package.json",
+    "package_digest_sha256": "2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3",
+    "owner_decision_id": "D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH",
+    "owner_U3P_authorization_pending": true,
+    "attempts_authorized": 0,
+    "retry_authorized": false,
+    "D_P3_6_U3P_GENERATED_VALIDATION_RUNTIME_BINDING_R2_AUTH_requestable": true,
+    "runtime_observation_authorized": false,
+    "PowerShell_parser_import_or_execution_authorized": false,
+    "runner_or_module_execution_authorized": false,
+    "windows_adapter_import_or_execution_authorized": false,
+    "machine_storage_F_B_ACL_probe_cleanup_or_scanner_action_authorized": false,
+    "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
+    "resolver_eligible": false,
+    "profile_activation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false,
+    "status": "U3P_R2_non_effective_package_sealed_exact_owner_authorization_pending_no_attempt_authority"
+  },
   "portable_cpu_profile_proposal": {
     "acceptance_record": "contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json",
     "package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
@@ -573,7 +599,7 @@
     }
   ],
   "record_id": "P3.6-CAPABILITY-PROFILE-POLICY",
-  "status": "accepted_planning_baseline_aligned_to_phase_minus_1_with_U3E_U3G_and_U3N_attempts_consumed_failed_closed_U3O_R1_source_and_static_evidence_accepted_U3P_non_effective_package_preparation_only_no_retry_authority",
+  "status": "accepted_planning_baseline_aligned_to_phase_minus_1_with_U3E_U3G_and_U3N_attempts_consumed_failed_closed_U3O_R1_source_and_static_evidence_accepted_U3P_R2_non_effective_package_sealed_owner_authorization_pending_no_retry_authority",
   "unresolved_gates": [
     "model_champion_and_fallback",
     "exact_machine_capability_manifests",
