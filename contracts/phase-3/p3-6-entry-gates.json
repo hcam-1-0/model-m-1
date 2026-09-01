@@ -622,9 +622,12 @@
     "failed_U3P_result_sha256": "44450DF4D5A199DA34E5343AE043E138B8E046EF4E6FE6EAD6836AC96F7085F4",
     "failed_U3P_evidence_sha256": "634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE",
     "owner_decision_id": "D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH",
-    "owner_U3Q_authorization_pending": true,
-    "D_P3_6_U3Q_VALIDATION_HARNESS_R2_BOOTSTRAP_REMEDIATION_IMPLEMENTATION_AUTH_requestable": true,
-    "implementation_authorized": false,
+    "owner_authorization_statement": "D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only implementation of the P3.6 generated-validation harness R2 bootstrap remediation against package digest 5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47. Implementation is limited to the exact allowlisted harness, generated/static Python tests, nonobservational evidence and package, ledgers, documentation, and line-ending records bound by that package. The harness may add only an exact $PSHOME Microsoft.PowerShell.Utility manifest bootstrap, the seven allowlisted Utility cmdlets in local scope with NoClobber, provenance checks, PSModuleAutoLoadingPreference=None after successful bootstrap, and a module-independent bounded sanitized bootstrap-failure writer. The accepted vectors, runner, pure-handler, and Windows-adapter sources must remain byte-exact. PowerShell must not be parsed, imported, or executed; no runtime or hardware may be observed; no retry or U3R package may be prepared; and no machine, storage, F:/B:/ACL/probe/cleanup/scanner, network, download, artifact, model, inference, camera/media/data, container/Kubernetes, profile activation, deployment, or remote Git action may occur. The source result must be sealed for separate exact owner acceptance before any runtime-binding work.",
+    "owner_authorization_statement_sha256": "F3EFCD79F0F0207CB67E57D439357A25C22C015DCFCB4B04C4C041D32D40404D",
+    "owner_authorized_on": "2026-09-01",
+    "owner_U3Q_authorization_pending": false,
+    "D_P3_6_U3Q_VALIDATION_HARNESS_R2_BOOTSTRAP_REMEDIATION_IMPLEMENTATION_AUTH_requestable": false,
+    "implementation_authorized": true,
     "PowerShell_parser_import_or_execution_authorized": false,
     "runtime_or_hardware_observation_authorized": false,
     "retry_or_U3R_package_preparation_authorized": false,
@@ -633,7 +636,7 @@
     "profile_activation_authorized": false,
     "deployment_authorized": false,
     "remote_git_authorized": false,
-    "status": "U3Q_R2_source_only_non_effective_package_sealed_exact_owner_authorization_pending"
+    "status": "U3Q_R2_source_only_implementation_authorized_pending_exact_implementation_evidence"
   },
   "model_artifact_research_package": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
