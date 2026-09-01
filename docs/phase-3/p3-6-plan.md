@@ -794,5 +794,9 @@ module-independent failure writer. Exact
 authorization and the compatibility-test amendment were recorded. The sealed source/generated-static
 implementation package SHA-256 is
 `2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF`.
-Exact implementation acceptance is the current gate. PowerShell execution and
-runtime retry remain separate later gates.
+Exact
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+is recorded in acceptance record SHA-256
+`32BA42A51029920AE163866A923547CD16054D6C41ECD3C8EC5549B78FB3ED2E`.
+Only a separate non-effective U3R planning package is authorized. PowerShell
+execution and runtime retry remain separate later gates.

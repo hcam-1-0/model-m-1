@@ -1753,3 +1753,25 @@ All 427 Phase 3.6 generated/static checks pass.
 `D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
 is pending. No PowerShell or runtime action, retry, U3R/U3K, machine/storage
 action, profile activation, deployment, or remote Git is authorized.
+
+### DR-0089: Accept U3Q R2 source evidence and open U3R planning only
+
+**Decision:** Record exact
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+for implementation package SHA-256
+`2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF`.
+
+**Evidence:** The owner statement SHA-256 is
+`3DAC170ABD42E3416909062AC6BBAA80A4131FC8FDF28B11EC12160219F4DE12`.
+The acceptance record SHA-256 is
+`32BA42A51029920AE163866A923547CD16054D6C41ECD3C8EC5549B78FB3ED2E`.
+The accepted implementation remains at commit
+`2770637c4d0d728a1b8584af2a25c18b365a13b4`.
+
+**Effect:** Preparation of one separate non-effective U3R runtime-binding
+planning package is authorized. The accepted package remains immutable.
+
+**Boundary:** No PowerShell parsing/import/execution, runtime or hardware
+observation, retry, generated-validation attempt, machine/storage/network/
+scanner action, U3K, profile activation, deployment, or remote Git is
+authorized.

@@ -415,5 +415,10 @@ Evidence SHA-256 is
 `90F3F6F42C73F573A82D1BF5C790B217F891B23D97198916A17FD436B94A8591`;
 implementation package SHA-256 is
 `2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF`.
-Exact U3Q source implementation acceptance is pending. PowerShell, retry,
-U3R/U3K, profile activation, deployment, and remote Git remain unauthorized.
+Exact U3Q source implementation acceptance is recorded as
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+in acceptance record SHA-256
+`32BA42A51029920AE163866A923547CD16054D6C41ECD3C8EC5549B78FB3ED2E`.
+Only non-effective U3R planning is authorized. PowerShell, retry, U3R
+execution, U3K, profile activation, deployment, and remote Git remain
+unauthorized.

@@ -714,6 +714,10 @@ and operational alerting are not Phase 3 backlog items.
   `90F3F6F42C73F573A82D1BF5C790B217F891B23D97198916A17FD436B94A8591`
   and implementation package SHA-256
   `2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF`.
-- **Owner pending:** Exact U3Q source implementation acceptance.
-- **Blocked:** U3R package preparation, PowerShell/runtime retry, U3K storage,
-  profile activation, deployment, and remote Git.
+- **Complete:** Record exact
+  `D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+  as acceptance record SHA-256
+  `32BA42A51029920AE163866A923547CD16054D6C41ECD3C8EC5549B78FB3ED2E`.
+- **Authorized:** Prepare one separate non-effective U3R planning package.
+- **Blocked:** PowerShell/runtime retry, U3R execution, U3K storage, profile
+  activation, deployment, and remote Git.

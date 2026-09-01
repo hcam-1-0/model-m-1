@@ -347,6 +347,10 @@ Exact
 `D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`
 and `D-P3.6-U3Q-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` were recorded. The R2
 source implementation package SHA-256 is
-`2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF`;
-exact implementation acceptance remains pending. No profile becomes eligible,
-active, or preferred. Every runtime/profile action remains separately gated.
+`2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF`.
+Exact
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+is recorded in acceptance record SHA-256
+`32BA42A51029920AE163866A923547CD16054D6C41ECD3C8EC5549B78FB3ED2E`.
+Only U3R planning is newly authorized. No profile becomes eligible, active, or
+preferred. Every runtime/profile action remains separately gated.

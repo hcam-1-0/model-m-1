@@ -597,6 +597,28 @@
     "remote_git_authorized": false,
     "status": "U3Q_R2_source_only_implementation_complete_exact_owner_acceptance_pending"
   },
+  "quarantine_generated_validation_harness_r2_implementation_acceptance": {
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r2-implementation-acceptance.json",
+    "acceptance_sha256": "32BA42A51029920AE163866A923547CD16054D6C41ECD3C8EC5549B78FB3ED2E",
+    "decision_id": "D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE",
+    "owner_statement_sha256": "3DAC170ABD42E3416909062AC6BBAA80A4131FC8FDF28B11EC12160219F4DE12",
+    "accepted_package_sha256": "2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF",
+    "accepted_evidence_sha256": "90F3F6F42C73F573A82D1BF5C790B217F891B23D97198916A17FD436B94A8591",
+    "accepted_harness_sha256": "830D88F8915B084DEF1089927FF785C9C0E7BDB6F0755B5315EE85E9DA8A8B8A",
+    "accepted_commit": "2770637c4d0d728a1b8584af2a25c18b365a13b4",
+    "owner_implementation_acceptance_pending": false,
+    "source_and_generated_static_evidence_accepted": true,
+    "U3R_planning_package_preparation_authorized": true,
+    "D_P3_6_U3R_GENERATED_VALIDATION_RUNTIME_BINDING_R3_AUTH_requestable": false,
+    "PowerShell_parser_import_or_execution_authorized": false,
+    "runtime_or_retry_authorized": false,
+    "machine_storage_network_or_scanner_action_authorized": false,
+    "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
+    "profile_activation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false,
+    "status": "accepted_source_and_generated_static_evidence_U3R_non_effective_planning_authorized_no_runtime_or_retry_authority"
+  },
   "model_artifact_research": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
     "artifact_count": 3,
@@ -728,6 +750,26 @@
     "deployment_authority": false,
     "remote_git_authority": false,
     "status": "U3P_failed_closed_U3Q_R2_source_only_implementation_owner_acceptance_pending_no_runtime_or_retry_authority"
+  },
+  "next_U3R_runtime_binding_planning_action": {
+    "action": "prepare_separate_non_effective_U3R_generated_validation_runtime_binding_R3_planning_package",
+    "authority": "U3Q_owner_acceptance_planning_only",
+    "acceptance_decision_id": "D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r2-implementation-acceptance.json",
+    "acceptance_sha256": "32BA42A51029920AE163866A923547CD16054D6C41ECD3C8EC5549B78FB3ED2E",
+    "accepted_package_sha256": "2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF",
+    "owner_U3Q_implementation_acceptance_recorded": true,
+    "U3R_planning_package_preparation_authority": true,
+    "accepted_harness_runner_handler_or_adapter_source_change_authority": false,
+    "PowerShell_parser_import_or_execution_authority": false,
+    "runtime_or_hardware_observation_authority": false,
+    "retry_or_generated_validation_attempt_authority": false,
+    "machine_storage_network_or_scanner_authority": false,
+    "D_P3_6_U3R_GENERATED_VALIDATION_RUNTIME_BINDING_R3_AUTH_requestable": false,
+    "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
+    "deployment_authority": false,
+    "remote_git_authority": false,
+    "status": "U3R_non_effective_planning_authorized_package_not_yet_sealed_no_runtime_or_retry_authority"
   },
   "parallel_owner_review_actions": [
     {

@@ -623,5 +623,8 @@ the implementation package SHA-256 is
 `2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF`.
 Exact
 `D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
-is pending. PowerShell execution, retry, U3R/U3K, machine/storage action,
-profile activation, deployment, and remote Git remain unauthorized.
+is recorded in acceptance record SHA-256
+`32BA42A51029920AE163866A923547CD16054D6C41ECD3C8EC5549B78FB3ED2E`.
+This authorizes only a separate non-effective U3R planning package. PowerShell
+execution, retry, U3R execution, U3K, machine/storage action, profile
+activation, deployment, and remote Git remain unauthorized.

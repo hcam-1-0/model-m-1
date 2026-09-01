@@ -352,5 +352,10 @@ against package SHA-256
 The compatibility amendment was also recorded before its changes. The sealed
 implementation package SHA-256 is
 `2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF`.
-Exact implementation acceptance is the current unblock decision. PowerShell,
-runtime observation, retry, U3R/U3K, and machine actions remain blocked.
+Exact
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+is recorded in acceptance record SHA-256
+`32BA42A51029920AE163866A923547CD16054D6C41ECD3C8EC5549B78FB3ED2E`.
+The only unblocked work is preparation of a separate non-effective U3R planning
+package. PowerShell, runtime observation, retry, U3R execution, U3K, and machine
+actions remain blocked.
