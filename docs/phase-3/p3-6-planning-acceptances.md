@@ -171,18 +171,20 @@ successful read-only attempt. Evidence SHA-256 is
 `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` is recorded. Final U3K preparation
 package SHA-256 is
 `4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
-It cannot receive `D-P3.6-U3K-STORAGE-R2-AUTH` because all ten machine handlers
-remain unimplemented. A future executable package requires separately
-authorized and accepted handler implementation and a current runtime binding.
+  It cannot receive `D-P3.6-U3K-STORAGE-R2-AUTH` because it remains bound to the
+  placeholder runner. A future executable package requires accepted current
+  handler implementation and a fresh current runtime binding.
 
 The non-effective U3L handler implementation proposal is sealed under package
 SHA-256
 `EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`.
-Decision `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` remains pending.
-The package proposes only exact source implementation, a 64-vector generated
-Python reference/static verifier, and non-observational evidence. It grants no
-current implementation, PowerShell execution, adapter import, machine access,
-or storage authority.
+  Decision `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` was recorded and
+  consumed. The implemented runner, pure handler, isolated Windows adapter,
+  64-vector generated Python reference/static verifier, compatibility tests,
+  and non-observational evidence are sealed under package SHA-256
+`79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`.
+  Exact implementation acceptance remains pending. The package grants no
+  PowerShell parsing/import/execution, machine access, or storage authority.
 
 Neither package changes a capability profile or gate. `P36-G1`, `P36-G2`,
 `P36-G4`, and `P36-G5` remain blocked. No Defender proposal may be prepared

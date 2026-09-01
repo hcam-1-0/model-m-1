@@ -221,10 +221,12 @@ def test_canonical_ledgers_record_consumed_attempt_and_keep_gates_blocked() -> N
         assert state["profile_activation_authorized"] is False
 
     action = unblock["next_portable_planning_action"]
-    assert action["owner_implementation_acceptance_pending"] is False
+    assert action["owner_implementation_acceptance_pending"] is True
     assert action["owner_runtime_binding_authorization_pending"] is False
     assert action["owner_runtime_binding_evidence_acceptance_pending"] is False
-    assert action["owner_machine_handler_implementation_authorization_pending"]
+    assert action[
+        "owner_machine_handler_implementation_authorization_pending"
+    ] is False
     assert action["machine_handler_proposal_preparation_authority"] is False
     assert action["machine_handler_implementation_authority"] is False
     assert action["runtime_binding_observation_authority"] is False

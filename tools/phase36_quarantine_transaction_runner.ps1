@@ -3,19 +3,50 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('Contract')]
+    [ValidateSet('Contract', 'Storage')]
     [string] $Mode,
 
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $true, ParameterSetName = 'Contract')]
     [ValidateLength(2, 65536)]
-    [string] $ContractVectorJson
+    [string] $ContractVectorJson,
+
+    [Parameter(Mandatory = $true, ParameterSetName = 'Storage')]
+    [ValidateLength(2, 65536)]
+    [string] $StorageRequestJson
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+trap {
+    [ordered]@{
+        contract_id                 = 'P36-QUARANTINE-TRANSACTION-RUNNER-R0-1.0.0'
+        terminal                    = $true
+        succeeded                   = $false
+        reason_code                 = 'sanitized_runner_failure'
+        raw_error_persisted         = $false
+        automatic_retry_authorized  = $false
+        execution_authorized        = $false
+        profile_activation_authorized = $false
+        deployment_authorized       = $false
+        remote_git_authorized       = $false
+    } | ConvertTo-Json -Compress -Depth 4
+    exit 1
+}
+
 $script:ContractId = 'P36-QUARANTINE-TRANSACTION-RUNNER-R0-1.0.0'
 $script:MaximumInputBytes = 65536
+$script:RepositoryRoot = [System.IO.Path]::GetFullPath(
+    [System.IO.Path]::Combine($PSScriptRoot, '..')
+)
+$script:HandlerModulePath = [System.IO.Path]::Combine(
+    $PSScriptRoot,
+    'phase36_quarantine_machine_handlers.psm1'
+)
+$script:WindowsAdapterPath = [System.IO.Path]::Combine(
+    $PSScriptRoot,
+    'phase36_quarantine_windows_storage_adapter.psm1'
+)
 $script:ExpectedCandidateVolume = 'F:'
 $script:ExpectedCandidateRoot = 'F:\HCAM-Quarantine'
 $script:ExpectedOutputPaths = @(
@@ -115,6 +146,48 @@ function Test-ExactCurrentProcessRights {
     )
 }
 
+function Test-P36PreImportReceipt {
+    param(
+        [Parameter(Mandatory = $true)]
+        [hashtable] $Request
+    )
+
+    foreach ($name in @(
+        'owner_statement',
+        'expected_owner_statement',
+        'handler_module_sha256',
+        'windows_adapter_sha256',
+        'execution_package_digest_sha256'
+    )) {
+        if (-not $Request.ContainsKey($name)) {
+            return $false
+        }
+    }
+    if ([string] $Request.owner_statement -cne [string] $Request.expected_owner_statement) {
+        return $false
+    }
+    foreach ($digestName in @(
+        'handler_module_sha256',
+        'windows_adapter_sha256',
+        'execution_package_digest_sha256'
+    )) {
+        if ([string] $Request[$digestName] -cnotmatch '^[A-F0-9]{64}$') {
+            return $false
+        }
+    }
+
+    $handlerHash = (Get-FileHash `
+        -LiteralPath $script:HandlerModulePath `
+        -Algorithm SHA256).Hash
+    $adapterHash = (Get-FileHash `
+        -LiteralPath $script:WindowsAdapterPath `
+        -Algorithm SHA256).Hash
+    return (
+        $handlerHash -ceq [string] $Request.handler_module_sha256 -and
+        $adapterHash -ceq [string] $Request.windows_adapter_sha256
+    )
+}
+
 function Get-ContractOutcome {
     param(
         [Parameter(Mandatory = $true)]
@@ -208,33 +281,239 @@ function Get-ContractOutcome {
 function Invoke-SealedMachineAction {
     param(
         [Parameter(Mandatory = $true)]
-        [string] $ActionId
+        [string] $ActionId,
+
+        [Parameter(Mandatory = $true)]
+        [hashtable] $Request,
+
+        [Parameter(Mandatory = $true)]
+        [hashtable] $Context,
+
+        [Parameter(Mandatory = $true)]
+        [pscustomobject] $State
     )
 
-    switch ($ActionId) {
-        'U3K-A01-UTC-CLOCK-START' { throw 'P36_MACHINE_HANDLER_NOT_IMPLEMENTED' }
-        'U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY' { throw 'P36_MACHINE_HANDLER_NOT_IMPLEMENTED' }
-        'U3K-A03-AUTHORIZATION-RECORD' { throw 'P36_MACHINE_HANDLER_NOT_IMPLEMENTED' }
-        'U3K-A04-F-DRIVE-INFO' { throw 'P36_MACHINE_HANDLER_NOT_IMPLEMENTED' }
-        'U3K-A05-CANONICAL-PATH-AND-ABSENCE' { throw 'P36_MACHINE_HANDLER_NOT_IMPLEMENTED' }
-        'U3K-A06-PROTECTED-DACL-CONSTRUCT' { throw 'P36_MACHINE_HANDLER_NOT_IMPLEMENTED' }
-        'U3K-A07-SECURITY-AT-CREATE-ROOT' { throw 'P36_MACHINE_HANDLER_NOT_IMPLEMENTED' }
-        'U3K-A08-NORMALIZED-DACL-VERIFY' { throw 'P36_MACHINE_HANDLER_NOT_IMPLEMENTED' }
-        'U3K-A09-ATOMIC-CAPABILITY-PROBE' { throw 'P36_MACHINE_HANDLER_NOT_IMPLEMENTED' }
-        'U3K-A10-NORMALIZE-HASH-WRITE' { throw 'P36_MACHINE_HANDLER_NOT_IMPLEMENTED' }
+    switch -CaseSensitive ($ActionId) {
+        'U3K-A01-UTC-CLOCK-START' {
+            $result = Get-P36UtcStartTime
+            if ([bool] $result.ok) {
+                $Context.attempt_started_at = [string] $result.utc_value
+            }
+            return $result
+        }
+        'U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY' {
+            return Test-P36ExecutionBindings `
+                -Request $Request `
+                -RepositoryRoot $script:RepositoryRoot `
+                -RuntimePath ([System.IO.Path]::Combine($PSHOME, 'pwsh.exe')) `
+                -AttemptStartedAt ([string] $Context.attempt_started_at)
+        }
+        'U3K-A03-AUTHORIZATION-RECORD' {
+            return Write-P36AuthorizationRecord `
+                -Request $Request `
+                -RepositoryRoot $script:RepositoryRoot `
+                -AttemptStartedAt ([string] $Context.attempt_started_at)
+        }
+        'U3K-A04-F-DRIVE-INFO' {
+            $result = Get-P36DriveInformation
+            foreach ($name in @(
+                'drive_ready',
+                'drive_type',
+                'filesystem',
+                'total_bytes',
+                'available_free_bytes',
+                'available_free_percent'
+            )) {
+                $Context.observed[$name] = $result[$name]
+            }
+            return $result
+        }
+        'U3K-A05-CANONICAL-PATH-AND-ABSENCE' {
+            $result = Test-P36CandidatePath
+            $Context.observed.canonical_path_policy_pass = [bool] $result.exact_canonical_path
+            $Context.observed.candidate_absent_before_attempt = [bool] $result.candidate_absent
+            return $result
+        }
+        'U3K-A06-PROTECTED-DACL-CONSTRUCT' {
+            $result = New-P36ProtectedDirectorySecurity
+            if ([bool] $result.ok) {
+                $Context.security_descriptor_bytes = $result.security_descriptor_bytes
+                $Context.current_process_SID_in_memory = $result.current_process_SID_in_memory
+            }
+            return $result
+        }
+        'U3K-A07-SECURITY-AT-CREATE-ROOT' {
+            if ($null -eq $Context.security_descriptor_bytes) {
+                return @{
+                    ok                          = $false
+                    native_success              = $false
+                    error_already_exists        = $false
+                    required_API_used           = $true
+                    security_attributes_nonnull = $false
+                    fallback_used               = $false
+                    reason_code                 = 'security_descriptor_invalid'
+                }
+            }
+            return New-P36QuarantineRoot `
+                -SecurityDescriptorBytes $Context.security_descriptor_bytes
+        }
+        'U3K-A08-NORMALIZED-DACL-VERIFY' {
+            if ($null -eq $Context.current_process_SID_in_memory) {
+                return @{ ok = $false; reason_code = 'identity_unavailable' }
+            }
+            $result = Test-P36QuarantineDacl `
+                -CurrentProcessSid $Context.current_process_SID_in_memory
+            $Context.observed.bounded_DACL_policy_booleans = [ordered]@{
+                access_rules_protected = [bool] $result.access_rules_protected
+                exact_rule_count_pass = [bool] $result.exact_rule_count_pass
+                current_process_principal_pass = [bool] $result.current_process_principal_pass
+                current_process_Modify_Synchronize_rights_pass = [bool] $result.current_process_Modify_Synchronize_rights_pass
+                current_process_excessive_or_unknown_rights_absent = [bool] $result.current_process_excessive_or_unknown_rights_absent
+                LocalSystem_tuple_pass = [bool] $result.LocalSystem_tuple_pass
+                Administrators_tuple_pass = [bool] $result.Administrators_tuple_pass
+                inheritance_flags_pass = [bool] $result.inheritance_flags_pass
+                propagation_flags_pass = [bool] $result.propagation_flags_pass
+                access_types_pass = [bool] $result.access_types_pass
+                inherited_rule_absent = [bool] $result.inherited_rule_absent
+                deny_rule_absent = [bool] $result.deny_rule_absent
+                unauthorized_principal_absent = [bool] $result.unauthorized_principal_absent
+                overall_DACL_pass = [bool] $result.overall_DACL_pass
+            }
+            return $result
+        }
+        'U3K-A09-ATOMIC-CAPABILITY-PROBE' {
+            $result = Invoke-P36AtomicCapabilityProbe
+            $Context.observed.bounded_probe_policy_booleans = [ordered]@{
+                probe_paths_absent = [bool] $result.probe_paths_absent
+                exact_byte_count = [bool] $result.exact_byte_count
+                write_through = [bool] $result.write_through
+                flush_to_disk = [bool] $result.flush_to_disk
+                first_hash_match = [bool] $result.first_hash_match
+                rename_write_through_only = [bool] $result.rename_write_through_only
+                second_hash_match = [bool] $result.second_hash_match
+                cleanup_complete = [bool] $result.cleanup_complete
+                zero_retention = [bool] $result.zero_retention
+            }
+            return $result
+        }
+        'U3K-A10-NORMALIZE-HASH-WRITE' {
+            $projection = Get-P36TerminalProjection -State $State
+            $projection.terminal = $true
+            $projection.succeeded = $true
+            $projection.reason_code = 'ok'
+            return Write-P36AttemptOutputs `
+                -RepositoryRoot $script:RepositoryRoot `
+                -TerminalProjection $projection `
+                -ObservedProjection $Context.observed `
+                -AttemptStartedAt ([string] $Context.attempt_started_at)
+        }
         default { throw 'P36_DEFAULT_DENY_UNKNOWN_ACTION' }
     }
 }
 
-if ($Mode -cne 'Contract') {
+if ($Mode -ceq 'Contract') {
+    if ($PSCmdlet.ParameterSetName -cne 'Contract') {
+        throw 'P36_DEFAULT_DENY_PARAMETER_SET'
+    }
+    $inputBytes = [System.Text.Encoding]::UTF8.GetByteCount($ContractVectorJson)
+    if ($inputBytes -gt $script:MaximumInputBytes) {
+        throw 'P36_CONTRACT_INPUT_TOO_LARGE'
+    }
+
+    $vector = $ContractVectorJson | ConvertFrom-Json -Depth 16
+    $result = Get-ContractOutcome -Vector $vector
+    $result | ConvertTo-Json -Compress -Depth 4
+    exit 0
+}
+
+if ($Mode -cne 'Storage' -or $PSCmdlet.ParameterSetName -cne 'Storage') {
     throw 'P36_DEFAULT_DENY_MODE'
 }
 
-$inputBytes = [System.Text.Encoding]::UTF8.GetByteCount($ContractVectorJson)
-if ($inputBytes -gt $script:MaximumInputBytes) {
-    throw 'P36_CONTRACT_INPUT_TOO_LARGE'
+$storageInputBytes = [System.Text.Encoding]::UTF8.GetByteCount($StorageRequestJson)
+if ($storageInputBytes -gt $script:MaximumInputBytes) {
+    throw 'P36_STORAGE_INPUT_TOO_LARGE'
+}
+$request = $StorageRequestJson | ConvertFrom-Json -AsHashtable -Depth 24
+
+# The exact module hashes and owner receipt are checked before either module loads.
+if (-not (Test-P36PreImportReceipt -Request $request)) {
+    throw 'P36_PREIMPORT_RECEIPT_INVALID'
 }
 
-$vector = $ContractVectorJson | ConvertFrom-Json -Depth 16
-$result = Get-ContractOutcome -Vector $vector
-$result | ConvertTo-Json -Compress -Depth 4
+Import-Module -Name $script:HandlerModulePath -Force -ErrorAction Stop
+$envelope = Test-P36StorageEnvelope -Request $request
+if (-not [bool] $envelope.succeeded) {
+    $envelope | ConvertTo-Json -Compress -Depth 4
+    exit 2
+}
+
+# A02 recomputes every file and runtime binding after this exact-path import.
+Import-Module -Name $script:WindowsAdapterPath -Force -ErrorAction Stop
+
+$state = New-P36MachineHandlerState
+$context = @{
+    attempt_started_at             = $null
+    security_descriptor_bytes      = $null
+    current_process_SID_in_memory  = $null
+    observed                       = @{
+        drive_ready                    = $false
+        drive_type                     = 'unknown'
+        filesystem                     = 'unknown'
+        total_bytes                    = 0
+        available_free_bytes           = 0
+        available_free_percent         = 0.0
+        canonical_path_policy_pass     = $false
+        candidate_absent_before_attempt = $false
+        bounded_DACL_policy_booleans   = [ordered]@{}
+        bounded_probe_policy_booleans  = [ordered]@{}
+    }
+}
+
+foreach ($actionId in $script:AllowedActionIds) {
+    $before = Get-P36MonotonicSeconds
+    $adapterResult = Invoke-SealedMachineAction `
+        -ActionId $actionId `
+        -Request $request `
+        -Context $context `
+        -State $state
+    $after = Get-P36MonotonicSeconds
+    $transitionTime = if ($actionId -ceq 'U3K-A01-UTC-CLOCK-START' -and [bool] $adapterResult.ok) {
+        [double] $adapterResult.monotonic_seconds
+    } else {
+        $after
+    }
+    if (($after - $before) -gt 30.0) {
+        $transitionTime = $before + 30.000001
+    }
+    $decision = Invoke-P36HandlerTransition `
+        -State $state `
+        -ActionId $actionId `
+        -AdapterResult $adapterResult `
+        -MonotonicSeconds $transitionTime
+
+    if (-not [bool] $decision.succeeded) {
+        if ([bool] $decision.cleanup_required) {
+            $cleanup = Invoke-P36BoundedCleanup `
+                -RootCreatedByAttempt ([bool] $state.root_created_by_attempt) `
+                -PartialCreatedByAttempt ([bool] $state.probe_partial_created_by_attempt) `
+                -VerifiedCreatedByAttempt ([bool] $state.probe_verified_created_by_attempt)
+            if (-not [bool] $cleanup.ok) {
+                $state.manual_review_required = $true
+                $state.reason_code = 'manual_review_required'
+            }
+        }
+        if ([bool] $state.authorization_record_written) {
+            $terminal = Get-P36TerminalProjection -State $state
+            [void] (Write-P36AttemptOutputs `
+                -RepositoryRoot $script:RepositoryRoot `
+                -TerminalProjection $terminal `
+                -ObservedProjection $context.observed `
+                -AttemptStartedAt ([string] $context.attempt_started_at))
+        }
+        break
+    }
+}
+
+$final = Get-P36TerminalProjection -State $state
+$final | ConvertTo-Json -Compress -Depth 8

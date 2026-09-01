@@ -405,12 +405,21 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   The package is non-effective: all ten machine handlers are unimplemented,
   so `D-P3.6-U3K-STORAGE-R2-AUTH` is not requestable against it.
 - `p3-6-quarantine-machine-handlers-r0-{research-sources,implementation-contract,generated-test-plan,implementation-authorization-proposal,implementation-authorization-package}.json`:
-  sealed non-effective U3L machine-handler implementation proposal under
+  immutable U3L machine-handler implementation proposal under
   package SHA-256
   `EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`.
   It specifies 64 generated-only vectors and an exclusive `CreateDirectoryW`
-  security-at-create correction. Exact owner authorization remains pending;
-  no source change, PowerShell execution, or machine access is authorized.
+  security-at-create correction. Exact owner implementation authorization was
+  recorded and consumed without changing the proposal package.
+- `p3-6-quarantine-machine-handlers-r0-{implementation-evidence,implementation-package}.json`:
+  exact non-observational U3L source and generated/static evidence sealed under
+  implementation package SHA-256
+`79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`.
+  The package binds the runner, pure handler, Windows adapter, 64-vector
+  verifier, compatibility tests, evidence, and human review. Owner
+  implementation acceptance remains pending. PowerShell parsing/import/
+  execution, runtime or machine observation, storage, `F:`, ACL, probes,
+  scanners, acquisition, deployment, and remote Git remain unauthorized.
 - `p3-6-quarantine-storage-r2-action-spec.json`: storage-only ten-action design
   with exact `Modify | Synchronize` normalization, independent DACL tuple
   checks, generated zero-retention probe, and no Defender actions.

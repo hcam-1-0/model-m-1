@@ -544,16 +544,20 @@ provenance, rollback, exact package digest, and owner acceptance.
 Remaining gated backlog requires exact owner inputs and separate authority:
 
 - review exact
-  `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` against package SHA-256
-  `EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`;
-- only after exact authorization, implement the three-source architecture and
-  64-vector generated Python verifier, then seal and separately accept exact
-  source and evidence;
+  `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` against
+  implementation package SHA-256
+  `79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`;
+- retain immutable `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH`
+  source-authorization proposal package SHA-256
+  `EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`
+  as historical provenance;
+- preserve the completed three-source architecture, 64-vector generated Python
+  verifier, compatibility tests, and exact sealed source/evidence hashes;
 - preserve the proposal's `CreateDirectoryW` exclusive security-at-create
   correction and reject any managed existing-directory return as proof of
   attempt ownership;
-- do not repeat runtime observation after the consumed one-attempt authority;
-  do not execute `pwsh.exe` or the runner;
+- do not parse or import the PowerShell modules, repeat runtime observation
+  after the consumed one-attempt authority, or execute `pwsh.exe` or the runner;
 - regenerate a future executable U3K package only after accepted handler
   implementation and a current runtime binding; only that future package may
   become eligible for separate `D-P3.6-U3K-STORAGE-R2-AUTH`;

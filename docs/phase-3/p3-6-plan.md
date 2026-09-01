@@ -134,18 +134,23 @@ valid through `2026-09-01T19:36:06.820Z`. Final U3K storage-package preparation
 was authorized by exact `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE`. Preparation
 package SHA-256 is
 `4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
-It is non-executable because all ten machine handlers remain unimplemented;
+  It remains historical and non-executable because it binds the placeholder
+  runner;
 `D-P3.6-U3K-STORAGE-R2-AUTH` is not requestable. Defender work remains
 sequenced after accepted storage evidence. No runner execution, machine action,
 or remote Git operation is authorized.
 
-The next planning artifact is now sealed: U3L machine-handler implementation
-proposal package SHA-256 is
-`EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`.
-It defines 64 generated-only vectors, an isolated pure-handler and Windows
-adapter architecture, and an exclusive `CreateDirectoryW` security-at-create
-correction. Exact `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` remains
-pending; no source or test change and no execution is authorized.
+  The U3L machine-handler implementation proposal package SHA-256 is
+  `EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`.
+  It defines 64 generated-only vectors, an isolated pure-handler and Windows
+  adapter architecture, and an exclusive `CreateDirectoryW` security-at-create
+  correction. Exact `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` was
+  recorded and consumed. The implementation and non-observational evidence are
+  sealed under package SHA-256
+`79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`.
+  Exact implementation acceptance is pending; PowerShell parsing/import/
+  execution, runtime observation, storage, and every machine action remain
+  unauthorized.
 
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).

@@ -281,11 +281,14 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
 - [x] The non-effective U3L machine-handler implementation proposal is sealed
   under SHA-256
   `EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`.
-- [ ] `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` exactly accepts that
+- [x] `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` exactly accepts that
   package before any runner, module, generated verifier, evidence, or ledger
   implementation change.
-- [ ] All ten U3K machine handlers are separately authorized, implemented,
-  tested, sealed, and accepted before an executable U3K package is regenerated.
+- [x] All ten U3K machine handlers are separately authorized, implemented,
+  generated/static tested, and sealed under implementation package SHA-256
+`79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`.
+- [ ] `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` exactly accepts
+  that package before PowerShell validation or a runtime-binding proposal.
 - [ ] The existing twenty contract vectors, all 64 generated handler vectors,
   exact source hashes, an accepted implementation package, a fresh runtime
   binding, a regenerated executable U3K package, and separate
@@ -304,11 +307,12 @@ U3H planning selections produced sealed U3I/U3J proposals and both requested
 owner statements are accepted. U3I's contract-only implementation evidence is
 also accepted. Its separate runtime-binding authorization was consumed by one
 successful read-only attempt, and exact evidence acceptance is recorded. The
-final U3K preparation package is sealed but non-executable because all ten
-machine handlers remain unimplemented. The U3L implementation proposal is
-sealed and pending exact owner authorization. Source changes, generated test
-execution, runner execution, another runtime observation, machine access, and
-every retry remain unauthorized.
+  final U3K preparation package remains historical and non-executable because it
+  binds the placeholder runner. The U3L implementation authorization was
+  recorded and consumed; all ten handlers are implemented and 64 generated
+  vectors passed. Exact implementation acceptance is pending. PowerShell
+  parsing/import/execution, another runtime observation, machine access, and
+  every retry remain unauthorized.
 
 ## Tier A Implementation Acceptance
 

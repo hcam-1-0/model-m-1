@@ -1425,6 +1425,43 @@ Human review:
 Machine-readable package:
 [`p3-6-quarantine-machine-handlers-r0-implementation-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-authorization-package.json).
 
+### DR-0076: U3L machine handlers implemented and statically sealed
+
+Status: exact owner implementation acceptance pending on 2026-09-01.
+
+`mayank-admin` exactly authorized
+`D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` against proposal package
+SHA-256
+`EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`.
+That authorization was recorded in the allowlisted evidence and consumed.
+
+The resulting implementation package SHA-256 is
+`79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`.
+It binds the contract-compatible default-off runner, pure ten-action handler
+state machine, isolated Windows adapter, 64 generated vectors, compatibility
+tests, non-observational evidence, and human review. `CreateDirectoryW` with a
+non-null `SECURITY_ATTRIBUTES` is the only accepted root-creation mechanism;
+existing/raced targets fail closed, and recursive cleanup is absent.
+
+All generated vectors and the full pre-seal Phase 3.6 suite passed. PowerShell
+was not parsed, imported, or executed. No runtime, machine, storage, `F:`, ACL,
+probe, cleanup, scanner, network, model, media, data, container, Kubernetes,
+deployment, or remote Git action occurred.
+
+The next decision is
+`D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE`. Until exact
+acceptance, separate PowerShell validation and fresh runtime-binding work remain
+blocked. The historical U3K package is not upgraded by this record, and
+`D-P3.6-U3K-STORAGE-R2-AUTH` remains not requestable.
+
+Human review:
+[`p3-6-quarantine-machine-handlers-r0-implementation-evidence-review.md`](p3-6-quarantine-machine-handlers-r0-implementation-evidence-review.md).
+
+Machine-readable evidence and package:
+[`p3-6-quarantine-machine-handlers-r0-implementation-evidence.json`](../../contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-evidence.json)
+and
+[`p3-6-quarantine-machine-handlers-r0-implementation-package.json`](../../contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-package.json).
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;

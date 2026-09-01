@@ -240,13 +240,15 @@ def test_exact_owner_acceptances_are_bounded_and_non_executable() -> None:
     assert storage["accepted_effect"]["storage_attempt_authorized"] is False
 
 
-def test_runner_source_has_static_contract_only_surface() -> None:
+def test_runner_preserves_contract_surface_and_adds_default_off_storage() -> None:
     source = RUNNER_PATH.read_text(encoding="utf-8")
 
-    assert "[ValidateSet('Contract')]" in source
+    assert "[ValidateSet('Contract', 'Storage')]" in source
     assert "$script:AllowedActionIds" in source
-    assert "P36_MACHINE_HANDLER_NOT_IMPLEMENTED" in source
+    assert "P36_MACHINE_HANDLER_NOT_IMPLEMENTED" not in source
     assert "P36_DEFAULT_DENY_UNKNOWN_ACTION" in source
+    assert "if ($Mode -ceq 'Contract')" in source
+    assert "Test-P36StorageEnvelope -Request $request" in source
     for action_id in ALLOWED_ACTIONS:
         assert source.count(f"'{action_id}'") >= 2
     for prohibited in [

@@ -239,17 +239,21 @@ as `D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE`; that acceptance is now
 recorded. Final U3K preparation package SHA-256 is
 `4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
 
-The runner was parser checked but not executed. All machine handlers remain
-unimplemented and fail closed. The consumed runtime-binding authority permitted
+  The historical runner was parser checked but not executed. The consumed runtime-binding authority permitted
 only one read-only observation of the exact PowerShell 7 file and accepted
 runner source hash; it authorized neither execution nor storage. The final U3K
-storage preparation package is now sealed, but it is non-executable because
-all ten machine handlers remain unimplemented. The separate U3L implementation
-authorization proposal is now sealed under package SHA-256
-`EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`.
-The next action is exact owner review as
-`D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH`; no implementation,
-generated test, PowerShell, adapter, or machine authority exists yet. A
+  storage preparation package remains sealed and historical, but it is
+  non-executable because it binds the placeholder runner. The separate U3L
+  implementation authorization proposal was sealed under package SHA-256
+  `EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`.
+  Exact `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` was recorded and
+  consumed. All ten handlers, the default-off runner path, pure state machine,
+  isolated adapter, and 64-vector verifier are implemented and sealed under
+  package SHA-256
+`79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`.
+  The next action is exact owner review as
+  `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE`; no PowerShell,
+  runtime, adapter-import, or machine authority exists. A
 Defender-only proposal remains
 sequenced after successful storage evidence is accepted. No prior
 decision authorizes a retry, `F:` or ACL access, scanner action, artifact

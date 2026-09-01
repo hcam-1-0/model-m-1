@@ -259,7 +259,7 @@ def test_ledgers_and_human_records_are_synchronized_and_blocked() -> None:
 
     assert unblock["next_portable_planning_action"][
         "owner_implementation_acceptance_pending"
-    ] is False
+    ] is True
     assert unblock["next_portable_planning_action"][
         "runtime_binding_proposal_preparation_authority"
     ] is False

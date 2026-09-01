@@ -29,6 +29,9 @@ REVIEW_PATH = (
     / "p3-6-quarantine-machine-handlers-r0-implementation-authorization-proposal.md"
 )
 RUNNER_PATH = ROOT / "tools" / "phase36_quarantine_transaction_runner.ps1"
+IMPLEMENTATION_PACKAGE_PATH = (
+    CONTRACTS / "p3-6-quarantine-machine-handlers-r0-implementation-package.json"
+)
 
 PACKAGE_DIGEST = (
     "EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311"
@@ -85,14 +88,20 @@ def test_package_and_all_twelve_core_files_are_exact() -> None:
     assert len(package["core_files"]) == 12
 
     for item in package["core_files"]:
-        assert _sha256(ROOT / item["path"]) == item["sha256"]
+        if item["path"] == "tools/phase36_quarantine_transaction_runner.ps1":
+            assert item["sha256"] == RUNNER_DIGEST
+            assert _sha256(RUNNER_PATH) != RUNNER_DIGEST
+        else:
+            assert _sha256(ROOT / item["path"]) == item["sha256"]
 
     assert _sha256(RESEARCH_PATH) == RESEARCH_DIGEST
     assert _sha256(IMPLEMENTATION_CONTRACT_PATH) == IMPLEMENTATION_CONTRACT_DIGEST
     assert _sha256(TEST_PLAN_PATH) == TEST_PLAN_DIGEST
     assert _sha256(PROPOSAL_PATH) == PROPOSAL_DIGEST
     assert _sha256(REVIEW_PATH) == REVIEW_DIGEST
-    assert _sha256(RUNNER_PATH) == RUNNER_DIGEST
+    assert {
+        item["path"]: item["sha256"] for item in package["core_files"]
+    }["tools/phase36_quarantine_transaction_runner.ps1"] == RUNNER_DIGEST
 
 
 def test_primary_sources_record_exclusive_creation_correction() -> None:
@@ -213,18 +222,19 @@ def test_proposal_requests_only_future_bounded_implementation() -> None:
     assert gate["F_or_ACL_action_authorized"] is False
 
 
-def test_current_runner_remains_contract_only_and_unmodified() -> None:
+def test_authorized_runner_supersedes_placeholder_without_machine_apis() -> None:
     source = RUNNER_PATH.read_text(encoding="utf-8")
 
-    assert _sha256(RUNNER_PATH) == RUNNER_DIGEST
-    assert "[ValidateSet('Contract')]" in source
-    assert source.count("P36_MACHINE_HANDLER_NOT_IMPLEMENTED") == 10
+    assert _sha256(RUNNER_PATH) != RUNNER_DIGEST
+    assert "[ValidateSet('Contract', 'Storage')]" in source
+    assert "P36_MACHINE_HANDLER_NOT_IMPLEMENTED" not in source
+    assert "switch -CaseSensitive ($ActionId)" in source
     assert "CreateDirectoryW" not in source
     assert "System.IO.DriveInfo" not in source
     assert "FileSystemAclExtensions.CreateDirectory" not in source
 
 
-def test_canonical_ledgers_and_human_records_request_owner_review_only() -> None:
+def test_canonical_ledgers_record_consumed_authorization_and_acceptance_gate() -> None:
     for ledger_name in [
         "p3-6-entry-gates.json",
         "p3-6-capability-profile-policy.json",
@@ -236,8 +246,13 @@ def test_canonical_ledgers_and_human_records_request_owner_review_only() -> None
         ]
         assert state["package_digest_sha256"] == PACKAGE_DIGEST
         assert state["owner_decision_id"] == DECISION_ID
-        assert state["owner_authorization_pending"] is True
-        assert state["machine_handler_implementation_authorized"] is False
+        assert state["owner_authorization_pending"] is False
+        assert state["machine_handler_implementation_authorized"] is True
+        assert state["machine_action_handlers_implemented"] is True
+        assert state["implementation_package_digest_sha256"] == _sha256(
+            IMPLEMENTATION_PACKAGE_PATH
+        )
+        assert state["owner_implementation_acceptance_pending"] is True
         assert state["PowerShell_or_runner_execution_authorized"] is False
         assert state["storage_attempt_authorized"] is False
         assert state["F_or_ACL_action_authorized"] is False
@@ -246,11 +261,18 @@ def test_canonical_ledgers_and_human_records_request_owner_review_only() -> None
     action = unblock["next_portable_planning_action"]
     assert action["action"] == (
         "owner_review_of_exact_U3L_machine_handler_implementation_"
-        "authorization_package"
+        "evidence_package"
     )
-    assert action["decision_ids"] == [DECISION_ID]
+    assert action["decision_ids"] == [
+        "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE"
+    ]
     assert action["machine_handler_proposal_package_digest_sha256"] == PACKAGE_DIGEST
-    assert action["owner_machine_handler_implementation_authorization_pending"] is True
+    assert action["machine_handler_implementation_package_digest_sha256"] == (
+        _sha256(IMPLEMENTATION_PACKAGE_PATH)
+    )
+    assert action["owner_machine_handler_implementation_authorization_pending"] is False
+    assert action["owner_implementation_acceptance_pending"] is True
+    assert action["machine_action_handlers_implemented"] is True
     assert action["machine_handler_proposal_preparation_authority"] is False
     assert action["machine_handler_implementation_authority"] is False
     assert action["source_or_test_change_authority"] is False
@@ -270,6 +292,7 @@ def test_canonical_ledgers_and_human_records_request_owner_review_only() -> None
     ]:
         text = path.read_text(encoding="utf-8")
         assert PACKAGE_DIGEST in text
+        assert _sha256(IMPLEMENTATION_PACKAGE_PATH) in text
         assert DECISION_ID in text or path.name in {"README.md", "p3-6-capability-profiles.md"}
 
     review = REVIEW_PATH.read_text(encoding="utf-8")

@@ -14,7 +14,11 @@ ACCEPTANCE = (
 )
 PROPOSAL = CONTRACTS / "p3-6-quarantine-storage-r2-final-u3k-authorization-proposal.json"
 PACKAGE = CONTRACTS / "p3-6-quarantine-storage-r2-final-u3k-authorization-package.json"
+HANDLER_IMPLEMENTATION_PACKAGE = (
+    CONTRACTS / "p3-6-quarantine-machine-handlers-r0-implementation-package.json"
+)
 REVIEW = DOCS / "p3-6-quarantine-storage-r2-final-u3k-authorization-proposal.md"
+RUNNER = ROOT / "tools" / "phase36_quarantine_transaction_runner.ps1"
 ACCEPTANCE_DIGEST = (
     "F19E6660FBD9545F74B8B532F6A9EB4D01ACF0543DE45CD54C8CB41C868DB54E"
 )
@@ -133,14 +137,18 @@ def test_final_u3k_proposal_binds_design_runtime_runner_and_blocker() -> None:
     )
 
 
-def test_final_u3k_package_core_hashes_and_non_effective_state_are_exact() -> None:
+def test_final_u3k_package_is_immutable_and_records_historical_runner() -> None:
     package = _read(PACKAGE)
 
     assert _sha256(PACKAGE) == PACKAGE_DIGEST
     assert package["core_file_count"] == 14
     assert package["core_file_count"] == len(package["core_files"])
     for item in package["core_files"]:
-        assert _sha256(ROOT / item["path"]) == item["sha256"]
+        if item["path"] == "tools/phase36_quarantine_transaction_runner.ps1":
+            assert item["sha256"] == RUNNER_DIGEST
+            assert _sha256(RUNNER) != RUNNER_DIGEST
+        else:
+            assert _sha256(ROOT / item["path"]) == item["sha256"]
     assert package["readiness"]["final_U3K_package_preparation_complete"] is True
     assert package["readiness"]["machine_action_handlers_implemented"] is False
     assert package["readiness"]["execution_authorization_requestable"] is False
@@ -154,7 +162,7 @@ def test_final_u3k_package_core_hashes_and_non_effective_state_are_exact() -> No
     ] is False
 
 
-def test_canonical_ledgers_and_human_records_point_to_handler_proposal_gate() -> None:
+def test_canonical_ledgers_preserve_history_and_point_to_handler_acceptance() -> None:
     ledgers = [
         _read(CONTRACTS / "p3-6-entry-gates.json"),
         _read(CONTRACTS / "p3-6-capability-profile-policy.json"),
@@ -177,13 +185,18 @@ def test_canonical_ledgers_and_human_records_point_to_handler_proposal_gate() ->
 
     action = ledgers[2]["next_portable_planning_action"]
     assert action["decision_ids"] == [
-        "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH"
+        "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE"
     ]
     assert action["final_U3K_package_digest_sha256"] == PACKAGE_DIGEST
     assert action["machine_handler_proposal_package_digest_sha256"] == (
         "EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311"
     )
-    assert action["owner_machine_handler_implementation_authorization_pending"]
+    assert action["machine_handler_implementation_package_digest_sha256"] == (
+        _sha256(HANDLER_IMPLEMENTATION_PACKAGE)
+    )
+    assert action["owner_machine_handler_implementation_authorization_pending"] is False
+    assert action["owner_implementation_acceptance_pending"] is True
+    assert action["machine_action_handlers_implemented"] is True
     assert action["machine_handler_proposal_preparation_authority"] is False
     assert action["machine_handler_implementation_authority"] is False
     assert action["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
