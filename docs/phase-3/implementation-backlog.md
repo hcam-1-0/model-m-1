@@ -676,3 +676,17 @@ and operational alerting are not Phase 3 backlog items.
 - **Blocked:** R1 source/static implementation, separate implementation
   acceptance, U3P retry-package preparation, any PowerShell/runtime attempt,
   and U3K storage work.
+
+### U3O R1 implementation result
+
+- **Complete:** Source-only R1 harness remediation under exact U3O authority.
+- **Complete:** Seal harness SHA-256
+  `F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3`.
+- **Complete:** Seal evidence SHA-256
+  `07FF33F19A3C846E69AA8E9C1FD34F9EEBA621BEF1A2424C9173015FB4A0E695`.
+- **Complete:** Seal implementation package SHA-256
+  `2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E`.
+- **Owner pending:**
+  `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`.
+- **Blocked:** U3P package preparation, PowerShell/runtime retry, U3K storage,
+  profile activation, deployment, and remote Git.

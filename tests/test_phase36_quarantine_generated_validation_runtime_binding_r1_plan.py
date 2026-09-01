@@ -50,11 +50,12 @@ U3N_PACKAGE_DIGEST = (
 U3N_EVIDENCE_DIGEST = (
     "0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42"
 )
-U3O_DECISION_ID = (
-    "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH"
+U3O_ACCEPTANCE_DECISION_ID = (
+    "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE"
 )
-U3O_PACKAGE_DIGEST = (
-    "17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338"
+U3O_IMPLEMENTATION_PACKAGE = (
+    CONTRACTS
+    / "p3-6-quarantine-generated-validation-harness-r1-implementation-package.json"
 )
 U3L_ACCEPTANCE_DIGEST = (
     "06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631"
@@ -296,11 +297,14 @@ def test_canonical_ledgers_expose_consumed_U3N_and_pending_U3O() -> None:
     action = unblock["next_generated_validation_runtime_binding_action"]
     assert action["action"] == (
         "owner_review_of_exact_U3O_generated_validation_harness_R1_source_only_"
-        "remediation_implementation_authorization_package"
+        "remediation_implementation_package"
     )
-    assert action["decision_id"] == U3O_DECISION_ID
-    assert action["owner_U3O_authorization_pending"] is True
-    assert action["authorization_package_digest_sha256"] == U3O_PACKAGE_DIGEST
+    assert action["decision_id"] == U3O_ACCEPTANCE_DECISION_ID
+    assert action["owner_U3O_authorization_pending"] is False
+    assert action["owner_implementation_acceptance_pending"] is True
+    assert action["implementation_package_sha256"] == _sha256(
+        U3O_IMPLEMENTATION_PACKAGE
+    )
     assert action["failed_U3N_evidence_sha256"] == U3N_EVIDENCE_DIGEST
     assert action["PowerShell_parser_import_or_execution_authority"] is False
     assert action["runtime_observation_authority"] is False

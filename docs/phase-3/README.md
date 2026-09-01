@@ -378,3 +378,17 @@ Exact
 `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` remains
 pending; it is source-only and would not authorize PowerShell, runtime retry,
 storage, models, deployment, or remote Git.
+
+### P3.6 U3O R1 implementation checkpoint
+
+The authorized source-only R1 remediation is complete. Harness SHA-256 is
+`F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3`,
+evidence SHA-256 is
+`07FF33F19A3C846E69AA8E9C1FD34F9EEBA621BEF1A2424C9173015FB4A0E695`,
+and implementation-package SHA-256 is
+`2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E`.
+See the [R1 implementation evidence review](p3-6-quarantine-generated-validation-harness-r1-implementation-evidence-review.md).
+Exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+remains pending. Runtime, retry, U3P/U3K, profile, deployment, and remote Git
+authority remain absent.

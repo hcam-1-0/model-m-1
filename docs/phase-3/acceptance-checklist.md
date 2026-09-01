@@ -397,3 +397,19 @@ Kubernetes, deployment, or remote Git action is authorized.
 The unchecked gate does not authorize PowerShell, runtime or hardware
 observation, retry, U3P/U3K work, machine/storage/scanner access, network,
 models, media/data, containers/Kubernetes, deployment, or remote Git.
+
+### U3O R1 source implementation
+
+- [x] Record and consume exact
+  `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH`.
+- [x] Seal R1 harness SHA-256
+  `F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3`.
+- [x] Seal non-observational evidence SHA-256
+  `07FF33F19A3C846E69AA8E9C1FD34F9EEBA621BEF1A2424C9173015FB4A0E695`.
+- [x] Seal implementation package SHA-256
+  `2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E`.
+- [ ] Exact
+  `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`.
+
+The unchecked acceptance gate authorizes no runtime action by itself. U3P and
+U3K remain blocked.

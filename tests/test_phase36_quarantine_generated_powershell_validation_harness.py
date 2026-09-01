@@ -442,6 +442,7 @@ def test_harness_has_exact_modes_bindings_and_read_only_layers() -> None:
     assert "Set-StrictMode -Version Latest" in source
     assert "$ErrorActionPreference = 'Stop'" in source
     assert "$PSModuleAutoLoadingPreference = 'None'" in source
+    assert "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R1-1.1.0" in source
     assert "[System.Management.Automation.Language.Parser]::ParseFile" in source
     assert "windows_adapter_parser_only" in source
     assert source.count("Import-Module") == 1
@@ -455,6 +456,58 @@ def test_harness_has_exact_modes_bindings_and_read_only_layers() -> None:
     assert ADAPTER_DIGEST in source
     for action_id in ACTION_IDS:
         assert source.count(f"'{action_id}'") >= 1
+
+
+def test_harness_uses_bounded_read_only_dotnet_sha256_streaming() -> None:
+    source = HARNESS_PATH.read_text(encoding="utf-8")
+    start = source.index("function Get-P36FileSha256")
+    end = source.index("function Assert-P36ExactBindings")
+    hashing = source[start:end]
+
+    assert "Get-FileHash" not in source
+    assert "$script:MaximumHashBufferBytes = 65536" in source
+    assert "[System.IO.FileStream]::new(" in hashing
+    assert "[System.IO.FileMode]::Open" in hashing
+    assert "[System.IO.FileAccess]::Read" in hashing
+    assert "[System.IO.FileShare]::Read" in hashing
+    assert "$script:MaximumHashBufferBytes" in hashing
+    assert "[System.IO.FileOptions]::SequentialScan" in hashing
+    assert "[System.Security.Cryptography.SHA256]::Create()" in hashing
+    assert "$algorithm.ComputeHash($stream)" in hashing
+    assert "[System.Convert]::ToHexString($digest)" in hashing
+    assert "finally" in hashing
+    assert "$algorithm.Dispose()" in hashing
+    assert "$stream.Dispose()" in hashing
+    assert "Microsoft.PowerShell.Utility" not in source
+    assert source.count("Import-Module") == 1
+
+
+def test_harness_emits_only_allowlisted_layer_failure_codes() -> None:
+    source = HARNESS_PATH.read_text(encoding="utf-8")
+    trap_start = source.index("trap {")
+    trap_end = source.index("function Get-P36FileSha256")
+    trap = source[trap_start:trap_end]
+    layers = (
+        "binding",
+        "manifest",
+        "parser",
+        "contract",
+        "handler",
+        "result_serialization",
+    )
+
+    assert "$script:AllowedFailureLayers = @(" in source
+    assert "$script:FailureLayer = 'binding'" in source
+    for layer in layers:
+        assert f"'{layer}'" in source
+        assert f"$script:FailureLayer = '{layer}'" in source
+    assert "$script:AllowedFailureLayers -ccontains $script:FailureLayer" in trap
+    assert 'reason_code = "$($safeFailureLayer)_failed"' in trap
+    assert "$_" not in trap
+    assert "Exception" not in trap
+    assert "InvocationInfo" not in trap
+    assert "raw_process_output_retained = $false" in trap
+    assert "raw_exception_retained = $false" in trap
 
 
 def test_runner_child_invocation_is_contract_only_and_bounded() -> None:
@@ -528,8 +581,17 @@ def test_implementation_package_binds_exact_source_vector_test_evidence_and_revi
         "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE"
     )
     assert package["core_file_count"] == len(package["core_files"])
+    superseded_by_R1 = {
+        "tools/phase36_quarantine_generated_validation.ps1",
+        "tests/test_phase36_quarantine_generated_powershell_validation_harness.py",
+    }
     for item in package["core_files"]:
-        assert _sha256(ROOT / item["path"]) == item["sha256"]
+        if item["path"] not in superseded_by_R1:
+            assert _sha256(ROOT / item["path"]) == item["sha256"]
+    historical = {item["path"]: item["sha256"] for item in package["core_files"]}
+    assert historical["tools/phase36_quarantine_generated_validation.ps1"] == (
+        "48FC33E1928BA186C11005DBDEC055E5558D58677D51EB864D3740BCFBA208C1"
+    )
     assert REVIEW_PATH.exists()
     effect = package["current_gate_effect"]
     assert effect["owner_implementation_acceptance_pending"] is True

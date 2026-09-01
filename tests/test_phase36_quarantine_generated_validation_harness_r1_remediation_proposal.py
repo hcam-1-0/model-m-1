@@ -31,6 +31,10 @@ PACKAGE = (
     / "p3-6-quarantine-generated-validation-harness-r1-remediation-"
     "implementation-authorization-package.json"
 )
+R1_IMPLEMENTATION_PACKAGE = (
+    CONTRACTS
+    / "p3-6-quarantine-generated-validation-harness-r1-implementation-package.json"
+)
 REVIEW = (
     DOCS
     / "p3-6-quarantine-generated-validation-harness-r1-remediation-"
@@ -48,7 +52,6 @@ EXPECTED_HASHES = {
     CONTRACT: "1ED27515EEA158BF72E5D2C33C3A1BE62E7541FB0C801A767520F28E0F064F65",
     PROPOSAL: "EC6D56F47F2598812EE8C0D5DAA453DA5C97A509F81F3F186CCC11F576273BFC",
     REVIEW: "80AD04F3ABD4ED01211F2BE9559093BE046843A4310866244DB729E3A2E6D7F8",
-    HARNESS: "48FC33E1928BA186C11005DBDEC055E5558D58677D51EB864D3740BCFBA208C1",
 }
 IMMUTABLE_SOURCE_HASHES = {
     "contracts/phase-3/"
@@ -161,7 +164,8 @@ def test_package_binds_every_core_file_and_remains_non_effective() -> None:
     assert package["future_authorization_decision_id"] == DECISION
     assert package["core_file_count"] == len(package["core_files"]) == 17
     for item in package["core_files"]:
-        assert _sha256(ROOT / item["path"]) == item["sha256"]
+        if item["path"] != "tools/phase36_quarantine_generated_validation.ps1":
+            assert _sha256(ROOT / item["path"]) == item["sha256"]
     gate = package["current_gate_effect"]
     assert gate["U3N_authorization_consumed"] is True
     assert gate["U3N_retry_authorized"] is False
@@ -187,7 +191,7 @@ def test_proposal_requires_exact_owner_authorization() -> None:
     assert "PowerShell must not be parsed, imported, or executed" in statement
 
 
-def test_accepted_sources_remain_byte_exact_and_harness_is_unremediated() -> None:
+def test_immutable_sources_remain_byte_exact_and_harness_is_remediated() -> None:
     for path, expected in EXPECTED_HASHES.items():
         assert _sha256(path) == expected
     for path, expected in IMMUTABLE_SOURCE_HASHES.items():
@@ -195,19 +199,14 @@ def test_accepted_sources_remain_byte_exact_and_harness_is_unremediated() -> Non
 
     source = HARNESS.read_text(encoding="utf-8")
     assert "$PSModuleAutoLoadingPreference = 'None'" in source
-    assert "Get-FileHash" in source
+    assert "Get-FileHash" not in source
+    assert "[System.IO.FileStream]::new(" in source
+    assert "[System.Security.Cryptography.SHA256]::Create()" in source
     assert source.count("Import-Module") == 1
-    assert not (
-        CONTRACTS
-        / "p3-6-quarantine-generated-validation-harness-r1-implementation-evidence.json"
-    ).exists()
-    assert not (
-        CONTRACTS
-        / "p3-6-quarantine-generated-validation-harness-r1-implementation-package.json"
-    ).exists()
 
 
-def test_canonical_ledgers_and_human_records_point_to_pending_U3O() -> None:
+def test_canonical_ledgers_and_human_records_point_to_U3O_acceptance() -> None:
+    implementation_digest = _sha256(R1_IMPLEMENTATION_PACKAGE)
     for name in (
         "p3-6-entry-gates.json",
         "p3-6-capability-profile-policy.json",
@@ -220,7 +219,11 @@ def test_canonical_ledgers_and_human_records_point_to_pending_U3O() -> None:
         ]
         assert entry["package_digest_sha256"] == PACKAGE_DIGEST
         assert entry["owner_decision_id"] == DECISION
-        assert entry["owner_U3O_authorization_pending"] is True
+        assert entry["owner_U3O_authorization_pending"] is False
+        assert entry["implementation_authority_consumed"] is True
+        assert entry["source_only_implementation_complete"] is True
+        assert entry["implementation_package_sha256"] == implementation_digest
+        assert entry["owner_implementation_acceptance_pending"] is True
         assert entry["source_or_test_modification_authorized"] is False
         assert entry["runtime_retry_authorized"] is False
         assert entry["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False

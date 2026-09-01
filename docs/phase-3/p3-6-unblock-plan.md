@@ -316,3 +316,19 @@ package SHA-256
 That decision, if issued, is limited to source/static remediation. It does not
 authorize PowerShell, runtime observation, a retry, U3P/U3K work, machine or
 storage actions, models, media, deployment, or remote Git.
+
+## Current U3O Implementation Acceptance Gate
+
+The source-only R1 remediation is complete and sealed under:
+
+- harness SHA-256
+  `F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3`;
+- evidence SHA-256
+  `07FF33F19A3C846E69AA8E9C1FD34F9EEBA621BEF1A2424C9173015FB4A0E695`;
+- implementation-package SHA-256
+  `2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E`.
+
+The only current generated-validation unblock action is exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`.
+U3P preparation, PowerShell/runtime retry, and U3K storage remain prohibited
+until separately gated later decisions.

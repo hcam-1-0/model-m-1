@@ -272,3 +272,18 @@ Exact
 `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` is pending.
 Neither analysis nor package preparation authorizes source changes, PowerShell,
 runtime observation, retry, machine/storage action, deployment, or remote Git.
+
+## U3O R1 Source Implementation Awaiting Acceptance
+
+Exact U3O implementation authority was consumed. Harness SHA-256 is
+`F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3`;
+source/static evidence SHA-256 is
+`07FF33F19A3C846E69AA8E9C1FD34F9EEBA621BEF1A2424C9173015FB4A0E695`;
+the implementation package SHA-256 is
+`2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E`.
+
+Exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+is not yet recorded. No U3P package, retry, PowerShell action, runtime/hardware
+observation, U3K action, profile activation, deployment, or remote Git action
+is authorized.

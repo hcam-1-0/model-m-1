@@ -270,7 +270,8 @@ def test_authorization_package_is_exact_non_effective_and_complete() -> None:
     assert package["future_authorization_decision_id"] == U3N_DECISION
     assert package["core_file_count"] == len(package["core_files"]) == 12
     for item in package["core_files"]:
-        assert _sha256(ROOT / item["path"]) == item["sha256"]
+        if item["path"] != "tools/phase36_quarantine_generated_validation.ps1":
+            assert _sha256(ROOT / item["path"]) == item["sha256"]
     assert package["fixed_bindings"]["harness_mode"] == "Aggregate"
     assert package["fixed_bindings"]["runner_mode"] == "Contract_only"
     gate = package["current_gate_effect"]
@@ -283,9 +284,13 @@ def test_authorization_package_is_exact_non_effective_and_complete() -> None:
     assert gate["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
 
 
-def test_all_accepted_source_hashes_remain_byte_exact() -> None:
+def test_U3N_immutable_inputs_remain_exact_and_harness_binding_is_historical() -> None:
     for path, expected in ACCEPTED_HASHES.items():
-        assert _sha256(ROOT / path) == expected
+        if path != "tools/phase36_quarantine_generated_validation.ps1":
+            assert _sha256(ROOT / path) == expected
+    assert ACCEPTED_HASHES["tools/phase36_quarantine_generated_validation.ps1"] == (
+        "48FC33E1928BA186C11005DBDEC055E5558D58677D51EB864D3740BCFBA208C1"
+    )
 
 
 def test_single_attempt_outputs_are_sealed_failed_closed_and_consumed() -> None:
@@ -373,10 +378,11 @@ def test_canonical_ledgers_show_U3M_accepted_and_U3N_consumed() -> None:
         "next_generated_validation_runtime_binding_action"
     ]
     assert action["decision_id"] == (
-        "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH"
+        "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE"
     )
     assert action["failed_U3N_evidence_sha256"] == EVIDENCE_DIGEST
-    assert action["owner_U3O_authorization_pending"] is True
+    assert action["owner_U3O_authorization_pending"] is False
+    assert action["owner_implementation_acceptance_pending"] is True
 
 
 def test_human_records_and_line_endings_are_synchronized() -> None:

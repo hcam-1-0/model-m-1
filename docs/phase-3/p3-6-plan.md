@@ -760,3 +760,17 @@ If explicitly authorized, work is limited to source/static remediation and
 non-observational evidence. Separate source acceptance and a later U3P package
 plus digest-bound authorization remain mandatory before any new runtime attempt.
 U3K remains blocked.
+
+## U3O R1 Implementation Result
+
+The authorized source/static work is complete. The current harness SHA-256 is
+`F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3`;
+evidence SHA-256 is
+`07FF33F19A3C846E69AA8E9C1FD34F9EEBA621BEF1A2424C9173015FB4A0E695`;
+implementation-package SHA-256 is
+`2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E`.
+
+The next gate is exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`.
+Only after that acceptance may a separate non-effective U3P retry proposal be
+prepared. Acceptance alone will not authorize PowerShell or a runtime attempt.

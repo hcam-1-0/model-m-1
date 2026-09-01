@@ -19,7 +19,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $PSModuleAutoLoadingPreference = 'None'
 
-$script:ContractId = 'P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R0-1.0.0'
+$script:ContractId = 'P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R1-1.1.0'
 $script:RepositoryRoot = [System.IO.Path]::GetFullPath(
     [System.IO.Path]::Combine($PSScriptRoot, '..')
 )
@@ -51,8 +51,18 @@ $script:MaximumVectorBytes = 65536
 $script:MaximumStdoutBytes = 65536
 $script:MaximumStderrBytes = 16384
 $script:MaximumResultBytes = 32768
+$script:MaximumHashBufferBytes = 65536
 $script:ContractTimeoutMilliseconds = 10000
 $script:HandlerTimeoutSeconds = 60.0
+$script:AllowedFailureLayers = @(
+    'binding',
+    'manifest',
+    'parser',
+    'contract',
+    'handler',
+    'result_serialization'
+)
+$script:FailureLayer = 'binding'
 $script:RequiredHandlerExports = @(
     'Test-P36StorageEnvelope',
     'New-P36MachineHandlerState',
@@ -78,12 +88,16 @@ $script:AcceptedHashes = [ordered]@{
 }
 
 trap {
+    $safeFailureLayer = 'binding'
+    if ($script:AllowedFailureLayers -ccontains $script:FailureLayer) {
+        $safeFailureLayer = $script:FailureLayer
+    }
     [ordered]@{
         contract_id = $script:ContractId
         mode = $Mode
         terminal = $true
         succeeded = $false
-        reason_code = 'sanitized_validation_failure'
+        reason_code = "$($safeFailureLayer)_failed"
         raw_fixture_retained = $false
         raw_process_output_retained = $false
         raw_exception_retained = $false
@@ -102,7 +116,28 @@ function Get-P36FileSha256 {
         [string] $LiteralPath
     )
 
-    return (Get-FileHash -LiteralPath $LiteralPath -Algorithm SHA256).Hash
+    $stream = $null
+    $algorithm = $null
+    try {
+        $stream = [System.IO.FileStream]::new(
+            $LiteralPath,
+            [System.IO.FileMode]::Open,
+            [System.IO.FileAccess]::Read,
+            [System.IO.FileShare]::Read,
+            $script:MaximumHashBufferBytes,
+            [System.IO.FileOptions]::SequentialScan
+        )
+        $algorithm = [System.Security.Cryptography.SHA256]::Create()
+        $digest = $algorithm.ComputeHash($stream)
+        return [System.Convert]::ToHexString($digest)
+    } finally {
+        if ($null -ne $algorithm) {
+            $algorithm.Dispose()
+        }
+        if ($null -ne $stream) {
+            $stream.Dispose()
+        }
+    }
 }
 
 function Assert-P36ExactBindings {
@@ -565,15 +600,32 @@ function Invoke-P36HandlerLayer {
     }
 }
 
+$script:FailureLayer = 'binding'
 Assert-P36ExactBindings
+$script:FailureLayer = 'manifest'
 $manifest = Read-P36VectorManifest
 $result = switch -CaseSensitive ($Mode) {
-    'Parse' { Invoke-P36ParserLayer; break }
-    'Contract' { Invoke-P36ContractLayer -Manifest $manifest; break }
-    'Handler' { Invoke-P36HandlerLayer -Manifest $manifest; break }
+    'Parse' {
+        $script:FailureLayer = 'parser'
+        Invoke-P36ParserLayer
+        break
+    }
+    'Contract' {
+        $script:FailureLayer = 'contract'
+        Invoke-P36ContractLayer -Manifest $manifest
+        break
+    }
+    'Handler' {
+        $script:FailureLayer = 'handler'
+        Invoke-P36HandlerLayer -Manifest $manifest
+        break
+    }
     'Aggregate' {
+        $script:FailureLayer = 'parser'
         $parser = Invoke-P36ParserLayer
+        $script:FailureLayer = 'contract'
         $contract = Invoke-P36ContractLayer -Manifest $manifest
+        $script:FailureLayer = 'handler'
         $handler = Invoke-P36HandlerLayer -Manifest $manifest
         $passed = [int] $contract.passed + [int] $handler.passed
         [ordered]@{
@@ -611,4 +663,5 @@ $result = switch -CaseSensitive ($Mode) {
     default { throw 'P36_VALIDATION_MODE_INVALID' }
 }
 
+$script:FailureLayer = 'result_serialization'
 ConvertTo-P36BoundedJson -Value $result

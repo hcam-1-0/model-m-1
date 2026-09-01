@@ -576,3 +576,19 @@ Exact
 Until it is explicitly accepted, no harness/test modification, PowerShell,
 runtime retry, U3P/U3K preparation, machine/storage action, deployment, or
 remote Git action is authorized.
+
+## P3.6 U3O R1 Source Implementation
+
+Exact `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH`
+was recorded and consumed. The source-only R1 harness is sealed under SHA-256
+`F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3`;
+non-observational evidence SHA-256 is
+`07FF33F19A3C846E69AA8E9C1FD34F9EEBA621BEF1A2424C9173015FB4A0E695`.
+The implementation package SHA-256 is
+`2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E`.
+
+Exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+is pending. No PowerShell parsing/import/execution, runtime retry, U3P/U3K
+preparation, machine/storage action, profile activation, deployment, or remote
+Git action is authorized.

@@ -1612,3 +1612,26 @@ Human review:
 
 Machine-readable package:
 [`p3-6-quarantine-generated-validation-harness-r1-remediation-implementation-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-remediation-implementation-authorization-package.json).
+
+### DR-0082: U3O source-only R1 remediation implemented
+
+**Decision:** Consume exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` against
+authorization-package SHA-256
+`17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338`
+and implement only the allowlisted source/static remediation.
+
+**Result:** Harness SHA-256 is
+`F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3`.
+It replaces `Get-FileHash` with bounded read-only .NET SHA-256 streaming,
+preserves disabled module autoloading and the single handler import surface,
+and emits only six allowlisted sanitized failure-layer codes. Evidence SHA-256
+is `07FF33F19A3C846E69AA8E9C1FD34F9EEBA621BEF1A2424C9173015FB4A0E695`.
+The implementation package SHA-256 is
+`2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E`.
+
+**Current gate:** Exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+is pending. Source/static evidence does not authorize PowerShell, retry,
+runtime/hardware observation, U3P/U3K, machine/storage action, profile
+activation, deployment, or remote Git.
