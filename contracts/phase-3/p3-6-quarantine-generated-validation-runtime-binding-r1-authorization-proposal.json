@@ -1,0 +1,107 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_runtime_binding_r1_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH",
+  "status": "sealed_non_effective_owner_authorization_pending_no_attempt_performed",
+  "prepared_on": "2026-09-01",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-acceptance.json",
+    "acceptance_record_sha256": "25FE4348FA7A38A7B8625463CBAEE1E2536340D4D2F7638F19404B9F76832AA9",
+    "accepted_implementation_package_sha256": "D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A",
+    "effect": "prepare_only_a_separate_non_effective_U3N_authorization_proposal_and_package"
+  },
+  "future_authorization": {
+    "authorization_pending": true,
+    "scope_if_exact_package_is_authorized": "one_fresh_read_only_runtime_binding_followed_by_exact_generated_validation_attempt_on_LAB_LAPTOP_01_within_24_hours",
+    "authorization_is_single_use": true,
+    "failed_attempt_consumes_authorization": true,
+    "automatic_retry": false,
+    "parallel_attempts": false
+  },
+  "exact_target_and_inputs": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "runtime_path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "runtime_family": "PowerShell_7_on_Windows",
+    "harness_path": "tools/phase36_quarantine_generated_validation.ps1",
+    "harness_sha256": "48FC33E1928BA186C11005DBDEC055E5558D58677D51EB864D3740BCFBA208C1",
+    "vector_manifest_path": "contracts/phase-3/p3-6-quarantine-generated-powershell-validation-r0-vectors.json",
+    "vector_manifest_sha256": "5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C",
+    "runner_sha256": "22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A",
+    "pure_handler_sha256": "41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721",
+    "windows_adapter_sha256": "232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9",
+    "alternate_runtime_or_input_allowed": false
+  },
+  "exact_future_attempt_scope": [
+    "verify_exact_authorization_package_owner_statement_window_attempt_and_all_core_hashes_before_observation",
+    "write_one_bounded_sanitized_nonreplacement_authorization_record_before_runtime_observation",
+    "classify_only_the_exact_runtime_path_and_fixed_parent_components_as_local_regular_and_nonreparse",
+    "read_bounded_runtime_size_file_version_product_version_and_product_name_classification",
+    "hash_only_the_exact_runtime_file_and_perform_cache_only_no_UI_whole_chain_excluding_root_WinVerifyTrust",
+    "verify_the_exact_five_accepted_input_hashes_before_execution",
+    "invoke_the_exact_runtime_once_with_NoLogo_NoProfile_NonInteractive_and_the_exact_harness_in_Aggregate_mode",
+    "parse_exactly_runner_handler_adapter_and_harness_with_zero_execution_from_the_parser_layer",
+    "run_twenty_runner_Contract_vectors_and_never_runner_Storage_mode",
+    "import_only_the_exact_pure_handler_in_local_scope_and_run_sixty_four_generated_vectors",
+    "never_import_or_execute_the_windows_adapter",
+    "reverify_runtime_identity_and_all_exact_input_hashes_after_validation",
+    "write_only_bounded_sanitized_result_and_evidence_records"
+  ],
+  "exact_future_outputs": [
+    "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-authorization.json",
+    "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-result.json",
+    "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-evidence.json"
+  ],
+  "required_success_evidence": {
+    "runtime_path_size_version_SHA_256_and_cache_only_trust_binding": true,
+    "runtime_identity_stable_before_and_after_validation": true,
+    "parser_files": 4,
+    "parser_errors": 0,
+    "contract_vectors_passed": 20,
+    "pure_handler_vectors_passed": 64,
+    "total_generated_vectors_passed": 84,
+    "runner_Storage_invocations": 0,
+    "windows_adapter_import_or_execution_count": 0,
+    "machine_storage_F_ACL_probe_cleanup_or_scanner_actions": 0,
+    "network_actions": 0,
+    "raw_fixture_process_output_exception_identity_or_security_material_retained": false
+  },
+  "hard_boundaries": {
+    "runner_Storage_mode_or_StorageRequestJson": false,
+    "windows_adapter_import_or_execution": false,
+    "alternate_runtime_discovery_or_hardware_inventory": false,
+    "PATH_environment_registry_WMI_package_or_directory_inventory": false,
+    "network_access_proxy_or_trust_retrieval": false,
+    "machine_storage_F_B_ACL_identity_probe_cleanup_or_scanner_action": false,
+    "download_install_update_or_acquisition": false,
+    "artifact_model_inference_camera_media_or_data_access": false,
+    "container_Kubernetes_profile_activation_or_deployment": false,
+    "remote_git": false
+  },
+  "success_effect_if_later_authorized_and_completed": {
+    "sanitized_runtime_binding_and_generated_validation_evidence_may_be_sealed": true,
+    "separate_U3N_evidence_owner_acceptance_required": true,
+    "binding_validity_seconds": 86400,
+    "new_U3K_package_preparation_authorized": false,
+    "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
+    "machine_or_storage_action_authorized": false
+  },
+  "owner_authorization_statement_template": "D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH: I, mayank-admin, authorize one fresh runtime-binding and generated-validation attempt against package digest <U3N_AUTHORIZATION_PACKAGE_DIGEST_SHA256> within 24 hours on LAB-LAPTOP-01. The attempt may verify and record the exact authorization; classify, size, version, hash, and cache-only no-UI whole-chain-excluding-root trust-check only C:\\Program Files\\PowerShell\\7\\pwsh.exe and its fixed parent components; verify the accepted harness SHA-256 48FC33E1928BA186C11005DBDEC055E5558D58677D51EB864D3740BCFBA208C1, vector-manifest SHA-256 5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C, runner SHA-256 22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A, pure-handler SHA-256 41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721, and parser-only Windows-adapter SHA-256 232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9; invoke the exact runtime once with NoLogo, NoProfile, NonInteractive and the accepted harness in Aggregate mode; parse the exact four files; run exactly 20 runner Contract vectors and 64 pure-handler vectors; reverify runtime and source identity; and write only the three bounded sanitized authorization, result, and evidence records. Failure consumes the authorization and requires a new digest-bound authorization. This does not authorize runner Storage mode or StorageRequestJson, Windows-adapter import or execution, alternate runtime or hardware discovery, PATH/registry/WMI/package or directory inventory, machine/storage/F:/B:/ACL/identity/probe/cleanup/Defender/scanner action, network or trust retrieval, downloads, artifacts, models, inference, cameras/media/data, containers/Kubernetes, profile activation, deployment, or remote Git. Any U3K package or machine/storage attempt requires separate accepted U3N evidence and later explicit authorization.",
+  "current_effect": {
+    "proposal_prepared": true,
+    "owner_U3N_authorization_pending": true,
+    "runtime_observation_authorized": false,
+    "PowerShell_parser_import_or_execution_authorized": false,
+    "runner_or_module_execution_authorized": false,
+    "machine_storage_or_scanner_action_authorized": false,
+    "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
+    "profile_activation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "authorization_may_be_inferred_from_U3M_acceptance_continue_or_package_preparation": false
+}

@@ -155,14 +155,15 @@ or remote Git operation is authorized.
   PowerShell parsing/import/execution, runtime observation, storage, and every
   machine action remain unauthorized.
 
-  The separate U3M generated-validation and fresh-runtime-binding plan is now
+  The separate U3M generated-validation and fresh-runtime-binding plan is
   sealed under package SHA-256
   `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
-  The next decision is
-  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH`, limited to source-only
-  harness, generated-fixture, Python static-test, evidence, package, ledger,
-  and documentation implementation. No PowerShell or runtime action is
-  authorized.
+  Its source-only implementation is accepted under
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE`. The next
+  decision is `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH`
+  against non-effective U3N package SHA-256
+  `E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`.
+  No PowerShell or runtime action is currently authorized.
 
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).
@@ -734,8 +735,12 @@ The four-mode harness, deterministic 20-plus-64 vector manifest, Python-only
 checks, and evidence are sealed in package
 `D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
 
-The next step is exact
-`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE`. Only after that
-acceptance may a separate non-effective U3N authorization package be prepared.
+Exact `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded
+under acceptance-record SHA-256
+`25FE4348FA7A38A7B8625463CBAEE1E2536340D4D2F7638F19404B9F76832AA9`.
+The separate non-effective U3N authorization package is sealed under SHA-256
+`E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`.
+The next step is owner review of exact
+`D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` against that digest.
 No current step authorizes PowerShell, runtime observation, machine or storage
 actions, models, media, deployment, or remote Git.

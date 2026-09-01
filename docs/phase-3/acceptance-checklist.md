@@ -324,10 +324,14 @@ successful read-only attempt, and exact evidence acceptance is recorded. The
   `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded for
   source and generated/static evidence only. PowerShell parsing/import/execution,
   another runtime observation, machine access, and every retry remain
-  unauthorized. The U3M planning package has been sealed, but
-  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` remains pending against
-  package SHA-256
-  `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+  unauthorized. The U3M planning package SHA-256
+  `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`
+  was consumed, and exact
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded.
+  The non-effective U3N package SHA-256 is
+  `E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`;
+  exact `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` remains
+  pending.
 
 ## Tier A Implementation Acceptance
 
@@ -364,11 +368,15 @@ evidence. Phase 3 acceptance cannot approve them implicitly.
 - [x] Python-only generated/reference and source-text static checks pass.
 - [x] The implementation package is sealed at
   `D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
-- [ ] `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` accepts that
-  exact package and its generated/static limitations.
-- [ ] A separate non-effective U3N package is prepared after acceptance.
-- [ ] A later digest-bound U3N authorization permits one exact PowerShell
-  parser/import/execution and fresh runtime-binding attempt.
+- [x] `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` accepts that
+  exact package and its generated/static limitations under acceptance-record
+  SHA-256
+  `25FE4348FA7A38A7B8625463CBAEE1E2536340D4D2F7638F19404B9F76832AA9`.
+- [x] A separate non-effective U3N package is prepared under SHA-256
+  `E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`.
+- [ ] Exact `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH`
+  authorizes one bounded PowerShell parser/import/execution and fresh
+  runtime-binding attempt.
 
 Until those unchecked gates are completed, no PowerShell, runtime, hardware,
 machine, storage, F:, ACL, probe, scanner, network, model, media, container,

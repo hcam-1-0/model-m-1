@@ -1543,9 +1543,38 @@ source-text static verification. Preserve the accepted runner, handler, and
 adapter hashes byte-for-byte. Seal implementation package SHA-256
 `D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
 
-**Gate:** Exact
-`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` remains pending.
-U3N is not requestable before that acceptance and preparation of a separate
-non-effective package. No PowerShell parsing/import/execution, runtime or
-hardware observation, machine/storage/network action, deployment, or remote
-Git is authorized.
+**Gate at implementation seal:** Exact
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` was required
+before U3N package preparation. No PowerShell parsing/import/execution,
+runtime or hardware observation, machine/storage/network action, deployment,
+or remote Git was authorized.
+
+### DR-0080: U3M accepted and non-effective U3N package sealed
+
+**Decision:** Record exact
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` for U3M
+implementation package SHA-256
+`D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
+
+**Result:** The immutable acceptance record is sealed under SHA-256
+`25FE4348FA7A38A7B8625463CBAEE1E2536340D4D2F7638F19404B9F76832AA9`.
+Under its package-preparation-only effect, the separate non-effective U3N
+generated-validation and fresh-runtime-binding authorization package is sealed
+under SHA-256
+`E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`.
+
+**Current gate:** Exact
+`D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` remains pending
+against that U3N package digest. Package preparation does not authorize
+PowerShell parsing, import, or execution; runtime or hardware observation;
+machine, storage, `F:`, ACL, probe, cleanup, scanner, network, artifact, model,
+media/data, container/Kubernetes, deployment, or remote Git. U3K remains
+separately gated and not requestable.
+
+Human review:
+[`p3-6-quarantine-generated-validation-runtime-binding-r1-authorization-proposal.md`](p3-6-quarantine-generated-validation-runtime-binding-r1-authorization-proposal.md).
+
+Machine-readable acceptance and package:
+[`p3-6-quarantine-generated-validation-harness-r0-implementation-acceptance.json`](../../contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-acceptance.json)
+and
+[`p3-6-quarantine-generated-validation-runtime-binding-r1-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-authorization-package.json).

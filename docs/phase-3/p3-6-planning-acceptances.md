@@ -193,10 +193,12 @@ SHA-256
 
 The resulting non-effective U3M planning package is sealed under SHA-256
 `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
-Its next gate is exact
-`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH`, which remains pending
-and may authorize only source-only harness implementation. A later U3N
-PowerShell validation/runtime-binding attempt is not yet requestable.
+Its source-only implementation is complete and exact
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded.
+The separate non-effective U3N package is sealed under SHA-256
+`E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`.
+Exact `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` remains
+pending; no PowerShell validation or runtime-binding attempt is authorized.
 
 Neither package changes a capability profile or gate. `P36-G1`, `P36-G2`,
 `P36-G4`, and `P36-G5` remain blocked. No Defender proposal may be prepared
@@ -244,8 +246,13 @@ That one source-only authority is consumed. The result is sealed as package
 SHA-256
 `D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
 
-This records implementation, not acceptance. Exact
-`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` remains pending.
-The authorization explicitly created no PowerShell, runtime, hardware,
-machine, storage, scanner, network, download, model, media, container,
-Kubernetes, deployment, or remote Git authority.
+Exact `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` is now
+recorded under acceptance-record SHA-256
+`25FE4348FA7A38A7B8625463CBAEE1E2536340D4D2F7638F19404B9F76832AA9`.
+It authorizes preparation only of the separate non-effective U3N package,
+which is sealed under SHA-256
+`E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`.
+Exact `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` remains
+pending. Neither U3M acceptance nor U3N package preparation creates
+PowerShell, runtime, hardware, machine, storage, scanner, network, download,
+model, media, container, Kubernetes, deployment, or remote Git authority.

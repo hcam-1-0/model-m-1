@@ -122,11 +122,14 @@ final U3K preparation package has SHA-256
   Only separate validation/runtime-binding planning may proceed. No PowerShell
   parsing/import/execution, runtime query, `F:` access, ACL action, probe,
   Defender/scanner work, or retry is authorized.
-  That U3M planning package is now sealed under SHA-256
+  That U3M planning package is sealed under SHA-256
   `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
-  Exact `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` is pending and
-  would authorize only source-only harness implementation, not PowerShell or
-  runtime action.
+  Its source-only implementation and exact
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` are complete.
+  The non-effective U3N package SHA-256 is
+  `E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`;
+  `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` is pending. No
+  PowerShell or runtime action is currently authorized.
 
 Phase 2 was accepted on 2026-08-21. Phase 3 planning defines how H-CAM will
 turn authorized video into anonymous, versioned, reviewable observations and
@@ -242,7 +245,8 @@ autonomous enforcement.
 | [P3.6 final U3K storage package preparation](p3-6-quarantine-storage-r2-final-u3k-authorization-proposal.md) | Historical placeholder-runner package; a fresh runtime binding and newly sealed executable U3K package remain required before storage authority is requestable |
 | [P3.6 U3L machine-handler implementation proposal](p3-6-quarantine-machine-handlers-r0-implementation-authorization-proposal.md) | Immutable 64-vector source-implementation proposal with exclusive security-at-create correction; authorization consumed and implementation accepted without execution authority |
 | [P3.6 U3L machine-handler implementation evidence](p3-6-quarantine-machine-handlers-r0-implementation-evidence-review.md) | Exact runner, pure handler, isolated Windows adapter, 64 generated vectors, compatibility evidence, and accepted non-observational package; all PowerShell and machine execution remains prohibited |
-| [P3.6 U3M generated validation and runtime binding R1 plan](p3-6-quarantine-generated-validation-runtime-binding-r1-plan.md) | Two-gate source-only harness then fresh runtime-binding/generated-validation plan; exact U3M implementation authorization pending and all PowerShell/runtime actions prohibited |
+| [P3.6 U3M generated validation and runtime binding R1 plan](p3-6-quarantine-generated-validation-runtime-binding-r1-plan.md) | Two-gate source-only harness then fresh runtime-binding/generated-validation plan; U3M implementation and acceptance complete |
+| [P3.6 U3N generated validation and runtime binding R1 authorization proposal](p3-6-quarantine-generated-validation-runtime-binding-r1-authorization-proposal.md) | Sealed non-effective one-attempt proposal; exact U3N authorization pending and all PowerShell/runtime actions currently prohibited |
 
 ## Non-Negotiable Boundary
 
@@ -344,13 +348,19 @@ the scope accepted in that snapshot.
 
 | Document | Status |
 |---|---|
-| [U3M source-only implementation evidence review](p3-6-quarantine-generated-validation-harness-r0-implementation-evidence-review.md) | Implementation sealed; exact owner acceptance pending |
+| [U3M source-only implementation evidence review](p3-6-quarantine-generated-validation-harness-r0-implementation-evidence-review.md) | Implementation sealed and exactly accepted |
+| [U3N generated-validation/runtime-binding authorization proposal](p3-6-quarantine-generated-validation-runtime-binding-r1-authorization-proposal.md) | Non-effective package sealed; exact owner authorization pending |
 
 `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` was consumed against
 `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
 The implementation package digest is
 `D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
-Exact `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` is pending.
-Only generated/static evidence exists; PowerShell and all runtime or machine
-actions remain prohibited pending a separate accepted package and later U3N
-authorization.
+Exact `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded
+for that package. The acceptance record SHA-256 is
+`25FE4348FA7A38A7B8625463CBAEE1E2536340D4D2F7638F19404B9F76832AA9`.
+The separate non-effective U3N authorization package is sealed under SHA-256
+`E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`.
+Exact `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` remains
+pending. Only generated/static evidence exists; PowerShell and all runtime or
+machine actions remain prohibited until that later digest-bound authorization
+is explicitly issued.

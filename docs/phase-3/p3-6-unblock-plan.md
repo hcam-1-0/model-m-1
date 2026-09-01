@@ -282,7 +282,7 @@ access. A collaborator may later supply an independently generated sanitized
 record, or a separate exact authority can cover an owned and explicitly
 identified machine.
 
-## Current U3M Unblock Gate
+## Current U3N Unblock Gate
 
 U3M source-only implementation is complete under
 `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH`, bound to authorization
@@ -290,8 +290,13 @@ digest `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
 The exact implementation package digest is
 `D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
 
+Exact `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded
+under acceptance-record SHA-256
+`25FE4348FA7A38A7B8625463CBAEE1E2536340D4D2F7638F19404B9F76832AA9`.
+The separate non-effective U3N package is sealed under SHA-256
+`E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`.
+
 The only current unblock action is owner review and exact
-`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE`. After acceptance,
-the next permitted work is preparation of a separate non-effective U3N
-authorization package. U3N execution and U3K storage remain unrequestable and
-unauthorized now.
+`D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` against that digest.
+Package preparation grants no PowerShell execution, runtime observation, or
+machine action. U3K storage remains unrequestable and unauthorized.

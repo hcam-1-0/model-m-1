@@ -268,8 +268,11 @@ Runner execution, storage or Defender access, and profile admission remain
   Defender-only proposal remains sequenced after accepted storage evidence.
   The resulting U3M planning package is sealed under SHA-256
   `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`;
-  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` is pending and cannot
-  activate a capability profile or authorize PowerShell/runtime work.
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` was consumed, and the
+  resulting implementation is accepted under
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE`. Neither
+  decision activates a capability profile or authorizes PowerShell/runtime
+  work.
 
 The owner may review the portable planning record through
 `D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE`; acceptance would not activate it.
@@ -292,5 +295,10 @@ Its package digest is
 This supplies generated/static validation infrastructure only; it supplies no
 compatibility measurement, workload evidence, runtime binding, profile
 eligibility, placement decision, or activation authority. Exact U3M
-`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` and a later U3N
-gate remain required.
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded under
+acceptance-record SHA-256
+`25FE4348FA7A38A7B8625463CBAEE1E2536340D4D2F7638F19404B9F76832AA9`.
+The separate non-effective U3N package is sealed under SHA-256
+`E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`;
+exact `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` remains
+required before any PowerShell or runtime attempt.

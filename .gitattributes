@@ -112,3 +112,9 @@ tests/test_phase36_quarantine_generated_powershell_validation_harness.py text eo
 contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-evidence.json text eol=lf
 contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-package.json text eol=lf
 docs/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-evidence-review.md text eol=lf
+contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-acceptance.json text eol=lf
+contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-action-spec.json text eol=lf
+contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-authorization-proposal.json text eol=lf
+contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-authorization-package.json text eol=lf
+docs/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-authorization-proposal.md text eol=lf
+tests/test_phase36_quarantine_generated_validation_runtime_binding_r1_authorization.py text eol=lf

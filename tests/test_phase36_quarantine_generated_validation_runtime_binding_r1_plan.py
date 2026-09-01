@@ -40,6 +40,13 @@ IMPLEMENTATION_PACKAGE_DIGEST = (
 IMPLEMENTATION_ACCEPTANCE_DECISION_ID = (
     "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE"
 )
+IMPLEMENTATION_ACCEPTANCE_DIGEST = (
+    "25FE4348FA7A38A7B8625463CBAEE1E2536340D4D2F7638F19404B9F76832AA9"
+)
+U3N_DECISION_ID = "D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH"
+U3N_PACKAGE_DIGEST = (
+    "E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E"
+)
 U3L_ACCEPTANCE_DIGEST = (
     "06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631"
 )
@@ -246,24 +253,43 @@ def test_canonical_ledgers_expose_only_implementation_acceptance_as_next_action(
         assert state["owner_harness_implementation_authorization_pending"] is False
         assert state["implementation_authority_consumed"] is True
         assert state["harness_source_and_generated_vectors_implemented"] is True
-        assert state["owner_implementation_acceptance_pending"] is True
+        assert state["implementation_acceptance_sha256"] == (
+            IMPLEMENTATION_ACCEPTANCE_DIGEST
+        )
+        assert state["owner_implementation_acceptance_pending"] is False
+        assert state[
+            "harness_source_and_generated_static_evidence_accepted"
+        ] is True
         assert state["harness_source_or_test_implementation_authorized"] is False
         assert state["PowerShell_parser_import_or_execution_authorized"] is False
         assert state["runtime_or_hardware_observation_authorized"] is False
         assert state["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
 
+        u3n = ledger[
+            "quarantine_generated_validation_runtime_binding_r1_"
+            "authorization_package"
+        ]
+        assert u3n["package_digest_sha256"] == U3N_PACKAGE_DIGEST
+        assert u3n["owner_decision_id"] == U3N_DECISION_ID
+        assert u3n["owner_U3N_authorization_pending"] is True
+        assert u3n[
+            "D_P3_6_U3N_GENERATED_VALIDATION_RUNTIME_BINDING_R1_AUTH_requestable"
+        ] is True
+        assert u3n["runtime_observation_authorized"] is False
+        assert u3n["PowerShell_parser_import_or_execution_authorized"] is False
+        assert u3n["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
+
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
-    action = unblock["next_generated_validation_harness_action"]
+    action = unblock["next_generated_validation_runtime_binding_action"]
     assert action["action"] == (
-        "owner_review_of_exact_U3M_generated_validation_harness_source_only_"
-        "implementation_package"
+        "owner_review_of_exact_U3N_generated_validation_and_fresh_runtime_"
+        "binding_single_attempt_authorization_package"
     )
-    assert action["owner_implementation_acceptance_pending"] is True
-    assert action["implementation_package_digest_sha256"] == (
-        IMPLEMENTATION_PACKAGE_DIGEST
-    )
+    assert action["decision_id"] == U3N_DECISION_ID
+    assert action["owner_U3N_authorization_pending"] is True
+    assert action["authorization_package_digest_sha256"] == U3N_PACKAGE_DIGEST
     assert action["PowerShell_parser_import_or_execution_authority"] is False
-    assert action["runtime_binding_observation_authority"] is False
+    assert action["runtime_observation_authority"] is False
     assert action["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
 
 
@@ -285,6 +311,8 @@ def test_human_indexes_and_line_endings_are_synchronized() -> None:
         assert PACKAGE_DIGEST in text
         assert IMPLEMENTATION_ACCEPTANCE_DECISION_ID in text
         assert IMPLEMENTATION_PACKAGE_DIGEST in text
+        assert U3N_DECISION_ID in text
+        assert U3N_PACKAGE_DIGEST in text
 
     attributes = (ROOT / ".gitattributes").read_text(encoding="utf-8")
     for name in (

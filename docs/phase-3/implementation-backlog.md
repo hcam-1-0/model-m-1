@@ -556,12 +556,14 @@ Remaining gated backlog requires separate planning and exact later authority:
 - retain the resulting U3M source-only harness implementation authorization
   package SHA-256
   `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`;
-- obtain exact
-  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` before creating or
-  changing the harness, generated fixture manifest, static tests, evidence,
-  package, or synchronized ledgers and documents;
-- separately accept the exact harness implementation before preparing U3N
-  generated-validation and fresh-runtime-binding execution authority;
+- retain exact
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` and its
+  acceptance-record SHA-256
+  `25FE4348FA7A38A7B8625463CBAEE1E2536340D4D2F7638F19404B9F76832AA9`;
+- retain the separate non-effective U3N package SHA-256
+  `E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`
+  and obtain exact `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH`
+  before any generated-validation or fresh-runtime-binding attempt;
 - retain immutable `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH`
   source-authorization proposal package SHA-256
   `EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`
@@ -639,7 +641,7 @@ its data/risk gates. Every Tier C capability remains a separate future proposal.
 Face recognition, person re-identification, Government matching, watchlists,
 and operational alerting are not Phase 3 backlog items.
 
-## P3.6 U3M Current Backlog
+## P3.6 U3M/U3N Current Backlog
 
 - **Complete:** Consume
   `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` against
@@ -648,9 +650,15 @@ and operational alerting are not Phase 3 backlog items.
   64 handler vectors, Python reference/static checks, and source-only evidence.
 - **Complete:** Seal implementation package
   `D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
+- **Complete:** Record exact
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` under
+  acceptance-record SHA-256
+  `25FE4348FA7A38A7B8625463CBAEE1E2536340D4D2F7638F19404B9F76832AA9`.
+- **Complete:** Prepare the separate non-effective U3N generated-validation
+  and fresh-runtime-binding authorization package under SHA-256
+  `E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`.
 - **Owner pending:** Exact
-  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE`.
-- **Blocked after acceptance:** Prepare a separate non-effective U3N
-  generated-validation and fresh-runtime-binding authorization package.
+  `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` against that
+  package digest.
 - **Not authorized:** U3N execution, U3K preparation or storage, PowerShell,
   runtime observation, machine actions, deployment, and remote Git.

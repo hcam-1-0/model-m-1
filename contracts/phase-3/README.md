@@ -432,11 +432,13 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   `p3-6-quarantine-generated-validation-harness-r0-implementation-authorization-package.json`:
   non-effective U3M planning package sealed under SHA-256
   `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
-  The next decision is
-  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH`, which may authorize
-  only source-only harness, generated-fixture, Python static-test, evidence,
-  and documentation implementation. It grants no PowerShell parsing, import,
-  execution, fresh runtime observation, storage, machine, or remote Git action.
+  Its source-only implementation is accepted under
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE`. The next
+  decision is `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH`
+  against non-effective U3N package SHA-256
+  `E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`.
+  Package preparation grants no PowerShell parsing, import, execution, fresh
+  runtime observation, storage, machine, or remote Git action.
 - `p3-6-quarantine-storage-r2-action-spec.json`: storage-only ten-action design
   with exact `Modify | Synchronize` normalization, independent DACL tuple
   checks, generated zero-retention probe, and no Defender actions.
@@ -542,5 +544,15 @@ with SHA-256
 It binds the inert four-mode harness, 20 contract vectors, 64 handler vectors,
 Python-only generated/reference and source-text checks, and non-observational
 evidence. Exact `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE`
-is pending. No PowerShell, runtime, machine, storage, network, model, media,
-deployment, or remote Git action is authorized.
+is recorded in
+`p3-6-quarantine-generated-validation-harness-r0-implementation-acceptance.json`
+with SHA-256
+`25FE4348FA7A38A7B8625463CBAEE1E2536340D4D2F7638F19404B9F76832AA9`.
+The separately prepared, non-effective U3N authorization package is
+`p3-6-quarantine-generated-validation-runtime-binding-r1-authorization-package.json`
+with SHA-256
+`E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`.
+Its exact pending decision is
+`D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH`. No PowerShell,
+runtime, machine, storage, network, model, media, deployment, or remote Git
+action is authorized by package preparation.
