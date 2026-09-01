@@ -1,0 +1,76 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_r1_dual_architecture_owner_selections.v1",
+  "record_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-R1-DUAL-ARCHITECTURE-OWNER-SELECTIONS",
+  "status": "explicit_options_recorded_revised_package_acceptance_pending",
+  "recorded_on": "2026-09-01",
+  "selected_by": "mayank-admin",
+  "source_message_normalized": "D-P3.6-U3S-001:A+B; D-P3.6-U3S-002:A; D-P3.6-U3S-003:A; D-P3.6-U3S-004:A",
+  "original_planning_package": {
+    "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-remediation-planning-package.json",
+    "sha256": "30DE3B7E261568FC1DB6499C9975B600298BD8E3531858D2BC688E1BF5527592",
+    "exact_acceptance_template_satisfied": false,
+    "reason": "D_P3_6_U3S_001_selected_A_and_B_together_while_the_R0_packet_presented_mutually_exclusive_single_options"
+  },
+  "selections": [
+    {
+      "decision_id": "D-P3.6-U3S-001",
+      "selected_options": [
+        "A",
+        "B"
+      ],
+      "normalized_selection": "A+B",
+      "effect": "prepare_a_revised_dual_controller_architecture_with_non_overlapping_authority",
+      "implementation_authorized": false
+    },
+    {
+      "decision_id": "D-P3.6-U3S-002",
+      "selected_options": [
+        "A"
+      ],
+      "normalized_selection": "A",
+      "effect": "typed_sanitized_stage_taxonomy_without_raw_native_codes_or_exceptions",
+      "implementation_authorized": false
+    },
+    {
+      "decision_id": "D-P3.6-U3S-003",
+      "selected_options": [
+        "A"
+      ],
+      "normalized_selection": "A",
+      "effect": "generated_static_and_simulated_boundary_suite_before_machine_execution",
+      "implementation_authorized": false
+    },
+    {
+      "decision_id": "D-P3.6-U3S-004",
+      "selected_options": [
+        "A"
+      ],
+      "normalized_selection": "A",
+      "effect": "source_acceptance_preflight_only_runtime_evidence_and_full_validation_remain_separate_gates",
+      "implementation_authorized": false
+    }
+  ],
+  "dual_controller_normalization": {
+    "PowerShell_role": "authoritative_Windows_machine_controller",
+    "Python_role": "portable_policy_reference_controller_and_cross_language_oracle",
+    "default_machine_action_authority": "PowerShell_only",
+    "Python_machine_action_authority": false,
+    "simultaneous_machine_controller_execution": false,
+    "shared_contract_required": true,
+    "shared_generated_vectors_required": true,
+    "cross_language_projection_equivalence_required": true,
+    "divergence_policy": "fail_closed_no_runtime_or_machine_action",
+    "future_Python_machine_enablement": "requires_separate_exact_runtime_binding_security_review_and_owner_authorization"
+  },
+  "current_effect": {
+    "owner_options_recorded": true,
+    "revised_R1_planning_package_required": true,
+    "revised_R1_package_acceptance_pending": true,
+    "controller_or_test_implementation_authorized": false,
+    "PowerShell_or_Python_execution_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "retry_or_generated_validation_authorized": false,
+    "U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  }
+}
