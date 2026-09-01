@@ -1791,3 +1791,42 @@ The future decision is
 **Boundary:** Package preparation authorizes zero attempts. No runtime,
 manifest, module closure, hardware, PowerShell, machine/storage, network,
 scanner, model/media, U3K, deployment, or remote Git action is authorized.
+
+### DR-0091: Record consumed U3R runtime-binding failure
+
+**Decision:** Preserve the single U3R attempt as consumed failed-closed evidence.
+
+**Evidence:** Authorization, result, and evidence SHA-256 values are
+`D7A51E7F4F806F959F437E678C31FC93769FD34B3305EE04DD08290E98D15C2B`,
+`497AF7FFA6EEC1B08611FCEB184AC7597A2666B26DF7A6705F3B1BDF9E460C71`,
+and `59E8DE24BD6099BCE2BB197E57300B49606FAFE66A4B0CCCBF6348A7BBEB3059`.
+The reason is `runtime_binding_failed`; manifest and Aggregate counts are zero.
+
+**Boundary:** The authorization is not reusable. No retry or U3K authority
+exists.
+
+### DR-0092: Accept dual-controller A+B architecture
+
+**Decision:** Record exact `D-P3.6-U3S-R1-DUAL-ARCHITECTURE-ACCEPTANCE` for
+package SHA-256
+`E170B4485C84F29AAAC0C04BFA0B4D15B0AB3B4EC99D92A46F259735C82346E9`.
+PowerShell is the authoritative Windows machine controller; Python is the
+machine-disabled portable reference and cross-language oracle.
+
+**Boundary:** The duplicated owner statement is one acceptance. It authorizes
+proposal preparation only, not implementation or execution.
+
+### DR-0093: Seal dual-controller source implementation request
+
+**Decision:** Prepare an exact source-only implementation authorization package
+for a canonical contract, at least 192 vectors, two controller sources, and four
+test modules. Pure generated Python policy execution is requested; PowerShell
+execution and Python machine access remain prohibited.
+
+**Result:** Package SHA-256 is
+`3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
+The owner decision is
+`D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH`.
+
+**Boundary:** Package preparation grants no source change, test execution,
+runtime observation, U3T, U3R retry, U3K, deployment, or remote Git authority.

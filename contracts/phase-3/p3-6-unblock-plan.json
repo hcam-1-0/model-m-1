@@ -641,6 +641,49 @@
     "remote_git_authorized": false,
     "status": "U3R_R3_non_effective_package_sealed_exact_owner_authorization_pending_no_attempt_authorized"
   },
+  "quarantine_generated_validation_runtime_binding_r3_consumed_failure": {
+    "decision_id": "D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH",
+    "authorization_record": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-authorization.json",
+    "authorization_record_sha256": "D7A51E7F4F806F959F437E678C31FC93769FD34B3305EE04DD08290E98D15C2B",
+    "result_record": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-result.json",
+    "result_record_sha256": "497AF7FFA6EEC1B08611FCEB184AC7597A2666B26DF7A6705F3B1BDF9E460C71",
+    "evidence_record": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-evidence.json",
+    "evidence_record_sha256": "59E8DE24BD6099BCE2BB197E57300B49606FAFE66A4B0CCCBF6348A7BBEB3059",
+    "attempts_consumed": 1,
+    "sanitized_reason_code": "runtime_binding_failed",
+    "authorization_reusable": false,
+    "Aggregate_invocation_count": 0,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "status": "U3R_R3_attempt_consumed_failed_closed_before_manifest_or_Aggregate_no_retry_authority"
+  },
+  "quarantine_runtime_controller_r1_dual_architecture_acceptance": {
+    "decision_id": "D-P3.6-U3S-R1-DUAL-ARCHITECTURE-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-dual-architecture-acceptance.json",
+    "acceptance_record_sha256": "62DCE06AED22B2702D41B679D61F7E2185C42F763A7C55DFD1277C7E74F79EFB",
+    "accepted_planning_package_sha256": "E170B4485C84F29AAAC0C04BFA0B4D15B0AB3B4EC99D92A46F259735C82346E9",
+    "selected_architecture": "A+B/A/A/A",
+    "PowerShell_role": "authoritative_Windows_machine_controller",
+    "Python_role": "machine_disabled_portable_policy_reference_and_cross_language_oracle",
+    "implementation_authorized": false,
+    "runtime_or_machine_authorized": false,
+    "status": "accepted_for_separate_source_only_implementation_authorization_proposal_preparation"
+  },
+  "quarantine_runtime_controller_r0_source_implementation_authorization_package": {
+    "decision_id": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-authorization-package.json",
+    "package_digest_sha256": "3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC",
+    "owner_implementation_authorization_pending": true,
+    "D_P3_6_U3S_DUAL_CONTROLLER_R0_IMPLEMENTATION_AUTH_requestable": true,
+    "source_or_test_implementation_authorized": false,
+    "Python_pure_reference_or_test_execution_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "retry_U3T_or_U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false,
+    "status": "sealed_non_effective_owner_source_implementation_authorization_pending"
+  },
   "model_artifact_research": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
     "artifact_count": 3,
@@ -813,6 +856,21 @@
     "remote_git_authority": false,
     "status": "U3R_R3_non_effective_package_sealed_owner_authorization_pending_no_runtime_or_retry_authority"
   },
+  "next_U3S_dual_controller_source_implementation_action": {
+    "action": "owner_review_of_exact_dual_controller_R0_source_implementation_authorization_package",
+    "decision_id": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-authorization-package.json",
+    "package_digest_sha256": "3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC",
+    "owner_implementation_authorization_pending": true,
+    "D_P3_6_U3S_DUAL_CONTROLLER_R0_IMPLEMENTATION_AUTH_requestable": true,
+    "source_or_test_implementation_authorized": false,
+    "Python_pure_reference_or_test_execution_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "U3T_U3R_retry_or_U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false,
+    "status": "sealed_non_effective_owner_source_implementation_authorization_pending"
+  },
   "parallel_owner_review_actions": [
     {
       "action": "select_D_P3_6_U3A_001_through_004_inventory_admission_policy_options",
@@ -832,7 +890,7 @@
   ],
   "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
   "runtime_execution_authorized": false,
-  "status": "planning_only_U3E_U3G_and_U3N_attempts_consumed_failed_closed_U3F_and_U3H_accepted_U3I_contract_implementation_and_historical_runtime_binding_evidence_accepted_U3J_storage_design_accepted_final_U3K_historical_non_effective_U3L_machine_handlers_accepted_U3M_validation_harness_accepted_U3O_R1_source_and_static_evidence_accepted_U3P_R2_non_effective_package_sealed_owner_authorization_pending_no_PowerShell_retry_runtime_storage_or_execution_authority",
+  "status": "planning_only_U3E_U3G_U3N_U3P_and_U3R_attempts_consumed_failed_closed_U3I_runner_U3L_handlers_U3M_harness_U3O_and_U3Q_source_evidence_accepted_U3S_R1_dual_architecture_accepted_source_implementation_authorization_package_sealed_owner_authorization_pending_no_PowerShell_runtime_storage_or_execution_authority",
   "work_items": [
     {
       "allowed_now": [

@@ -807,3 +807,16 @@ attempt. Its non-effective authorization package SHA-256 is
 `A912EF51629A3E73FFF2ECE7AAB8A7D3017A659F9FB75F5402A90027D4B53D98`.
 Exact `D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH` is pending;
 zero attempts are currently authorized.
+
+## U3S Source Remediation
+
+The authorized U3R attempt was consumed and failed closed at runtime binding.
+The selected remediation is a package-bound PowerShell controller plus a
+machine-disabled Python policy reference. The next gate is source-only
+implementation package SHA-256
+`3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC` and
+decision `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH`.
+
+After future source implementation and separate acceptance, U3T remains a
+separate PowerShell-only preflight gate. Full generated validation and U3K stay
+separate and blocked.

@@ -634,3 +634,18 @@ The resulting non-effective U3R R3 authorization package SHA-256 is
 Exact `D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH` is pending.
 Package preparation authorizes zero attempts and no runtime, manifest,
 PowerShell, machine, U3K, deployment, or remote Git action.
+
+## P3.6 U3S Dual Runtime Controller
+
+The single U3R attempt was consumed and failed closed as
+`runtime_binding_failed` before Utility-manifest or Aggregate execution.
+Architecture decision `D-P3.6-U3S-R1-DUAL-ARCHITECTURE-ACCEPTANCE` records
+PowerShell as the authoritative Windows controller and Python as a
+machine-disabled policy reference and cross-language oracle. Acceptance record
+SHA-256 is `62DCE06AED22B2702D41B679D61F7E2185C42F763A7C55DFD1277C7E74F79EFB`.
+
+The non-effective source-implementation authorization package is sealed at
+SHA-256 `3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
+Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` is pending. No
+source change, Python test execution, PowerShell action, runtime attempt, U3T,
+U3K, deployment, or remote Git is authorized by package preparation.

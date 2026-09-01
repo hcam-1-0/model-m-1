@@ -458,3 +458,19 @@ execution, U3K, or machine actions.
 
 The unchecked decision is required before any runtime, Utility-manifest,
 closure, parser, import, execution, or generated-validation action.
+
+## U3S Dual Controller Source Gate
+
+- [x] U3R single attempt consumed and failed closed as
+  `runtime_binding_failed`.
+- [x] `D-P3.6-U3S-R1-DUAL-ARCHITECTURE-ACCEPTANCE` recorded for package
+  `E170B4485C84F29AAAC0C04BFA0B4D15B0AB3B4EC99D92A46F259735C82346E9`.
+- [x] PowerShell authoritative and Python machine-disabled roles recorded.
+- [x] Source-only implementation authorization package sealed at
+  `3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
+- [ ] Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH`.
+- [ ] Source implementation evidence and separate owner acceptance.
+- [ ] Separately authorized U3T preflight evidence and acceptance.
+
+The open implementation decision does not include PowerShell execution,
+Python machine access, runtime observation, U3R retry, U3T, or U3K.

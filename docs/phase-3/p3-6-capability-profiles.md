@@ -359,3 +359,11 @@ The non-effective U3R R3 authorization package SHA-256 is
 `A912EF51629A3E73FFF2ECE7AAB8A7D3017A659F9FB75F5402A90027D4B53D98`.
 Exact `D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH` is pending.
 No capability profile becomes resolver-eligible from this package.
+
+U3R was later consumed and failed closed before manifest observation. The U3S
+dual-controller source package does not activate a capability profile. Its
+authorization package SHA-256 is
+`3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`, and
+exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` remains pending.
+Even implementation acceptance will not make a profile resolver-eligible;
+separate U3T preflight and later runtime evidence are required.

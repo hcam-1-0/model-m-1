@@ -367,3 +367,15 @@ The next unblock decision is exact
 `D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH`. Until that exact
 digest-bound decision is recorded, every observation and attempt remains
 blocked.
+
+## Current U3S Unblock
+
+The U3R decision was later recorded and its one attempt was consumed, failing
+closed before Utility-manifest or Aggregate execution. The accepted remediation
+architecture is A+B/A/A/A. The next requestable decision is exact
+`D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` for package SHA-256
+`3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
+
+That decision can authorize source-only implementation and pure generated
+Python policy tests. It cannot authorize PowerShell execution, Python machine
+access, runtime observation, U3T, U3R retry, U3K, deployment, or remote Git.

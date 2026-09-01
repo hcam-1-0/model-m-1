@@ -321,3 +321,15 @@ U3R R3 planning produced non-effective authorization package SHA-256
 `A912EF51629A3E73FFF2ECE7AAB8A7D3017A659F9FB75F5402A90027D4B53D98`.
 Exact `D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH` remains
 pending. Package preparation is not execution authority.
+
+## U3S R1 Dual Architecture Acceptance
+
+Exact `D-P3.6-U3S-R1-DUAL-ARCHITECTURE-ACCEPTANCE` is recorded for planning
+package SHA-256
+`E170B4485C84F29AAAC0C04BFA0B4D15B0AB3B4EC99D92A46F259735C82346E9`.
+The duplicate statement copies were identical and create one acceptance only.
+
+The resulting source-only implementation authorization package SHA-256 is
+`3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
+Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` is pending and
+cannot be inferred from architecture acceptance or continued planning.

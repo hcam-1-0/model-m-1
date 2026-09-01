@@ -427,3 +427,14 @@ The separate non-effective U3R R3 authorization package is sealed at SHA-256
 `A912EF51629A3E73FFF2ECE7AAB8A7D3017A659F9FB75F5402A90027D4B53D98`.
 Exact `D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH` is pending.
 No attempt or observation is authorized by package preparation.
+
+## Current U3S Gate
+
+U3R was subsequently authorized once, consumed, and failed closed at runtime
+binding before manifest or generated validation. The accepted A+B architecture
+uses an authoritative PowerShell Windows controller and a machine-disabled
+Python reference controller. The source-only implementation authorization
+package SHA-256 is
+`3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
+Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` is the current
+owner gate; implementation and execution remain unauthorized.

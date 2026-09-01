@@ -1,0 +1,45 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_r1_dual_architecture_acceptance.v1",
+  "decision_id": "D-P3.6-U3S-R1-DUAL-ARCHITECTURE-ACCEPTANCE",
+  "status": "accepted_for_separate_source_only_implementation_authorization_proposal_preparation",
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-01",
+  "recorded_at": "2026-09-01T16:04:08.759Z",
+  "duplicate_transport_copy_count": 2,
+  "duplicate_transport_copies_identical": true,
+  "authorization_multiplication_from_duplicate_copy": false,
+  "canonical_owner_statement": "D-P3.6-U3S-R1-DUAL-ARCHITECTURE-ACCEPTANCE: I, mayank-admin, accept revised planning package digest E170B4485C84F29AAAC0C04BFA0B4D15B0AB3B4EC99D92A46F259735C82346E9 and confirm D-P3.6-U3S-001:A+B, D-P3.6-U3S-002:A, D-P3.6-U3S-003:A, and D-P3.6-U3S-004:A. PowerShell is the authoritative Windows machine controller; Python is the machine-disabled portable policy reference controller and cross-language oracle. This authorizes preparation only of a separate source-only implementation authorization proposal for the shared contracts, both controller sources, and generated static tests. It does not authorize source or test implementation; PowerShell or Python execution; Python machine access or fallback; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, U3K, another attempt, or remote Git.",
+  "canonical_owner_statement_utf8_bytes": 950,
+  "canonical_owner_statement_sha256": "E9FA3C2590A646D4115E04AF10E3F33E8CD3BA02EAF4DBC922F1E277CA5F9D57",
+  "accepted_planning_package": {
+    "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-dual-architecture-planning-package.json",
+    "sha256": "E170B4485C84F29AAAC0C04BFA0B4D15B0AB3B4EC99D92A46F259735C82346E9",
+    "bound_core_file_count": 4,
+    "bound_core_hashes_verified": true
+  },
+  "accepted_selections": {
+    "D-P3.6-U3S-001": "A+B",
+    "D-P3.6-U3S-002": "A",
+    "D-P3.6-U3S-003": "A",
+    "D-P3.6-U3S-004": "A"
+  },
+  "accepted_architecture": {
+    "PowerShell_role": "authoritative_Windows_machine_controller",
+    "Python_role": "machine_disabled_portable_policy_reference_controller_and_cross_language_oracle",
+    "default_machine_controller": "PowerShell_only",
+    "Python_machine_access_or_fallback": false,
+    "automatic_failover_or_retry": false,
+    "cross_language_divergence": "fail_closed"
+  },
+  "authority_granted": {
+    "record_this_acceptance": true,
+    "prepare_separate_source_only_implementation_authorization_proposal": true,
+    "source_or_test_implementation": false,
+    "PowerShell_or_Python_execution": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_manifest_hardware_or_machine_observation": false,
+    "retry_or_generated_validation": false,
+    "U3K": false,
+    "deployment_or_remote_git": false
+  }
+}

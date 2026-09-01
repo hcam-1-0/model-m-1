@@ -727,3 +727,17 @@ and operational alerting are not Phase 3 backlog items.
   `D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH`.
 - **Blocked:** Every U3R observation or attempt, U3K, machine/storage action,
   profile activation, deployment, and remote Git.
+
+## P3.6 U3S Dual Controller R0
+
+- **Completed:** Sanitized U3R failure records and failure analysis.
+- **Completed:** A+B/A/A/A architecture acceptance, with PowerShell as the
+  authoritative Windows controller and Python as the machine-disabled oracle.
+- **Completed:** Non-effective source-only implementation contract, 192-vector
+  test plan, proposal, and package digest
+  `3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
+- **Owner pending:** Exact
+  `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH`.
+- **Blocked:** Source/test implementation, Python reference execution,
+  PowerShell parsing/import/execution, runtime observation, U3T, U3K,
+  deployment, and remote Git.
