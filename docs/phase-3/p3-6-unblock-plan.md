@@ -359,3 +359,11 @@ is recorded in acceptance record SHA-256
 The only unblocked work is preparation of a separate non-effective U3R planning
 package. PowerShell, runtime observation, retry, U3R execution, U3K, and machine
 actions remain blocked.
+
+The authorized planning step is complete. Non-effective U3R R3 authorization
+package SHA-256 is
+`A912EF51629A3E73FFF2ECE7AAB8A7D3017A659F9FB75F5402A90027D4B53D98`.
+The next unblock decision is exact
+`D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH`. Until that exact
+digest-bound decision is recorded, every observation and attempt remains
+blocked.

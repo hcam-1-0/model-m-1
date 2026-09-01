@@ -627,6 +627,28 @@
     "remote_git_authorized": false,
     "status": "accepted_source_and_generated_static_evidence_U3R_non_effective_planning_authorized_no_runtime_or_retry_authority"
   },
+  "quarantine_generated_validation_runtime_binding_r3_authorization_package": {
+    "research_sources": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-research-sources.json",
+    "action_spec": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-action-spec.json",
+    "authorization_proposal": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-authorization-proposal.json",
+    "review_document": "docs/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-authorization-proposal.md",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-authorization-package.json",
+    "package_digest_sha256": "A912EF51629A3E73FFF2ECE7AAB8A7D3017A659F9FB75F5402A90027D4B53D98",
+    "owner_decision_id": "D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH",
+    "owner_U3R_authorization_pending": true,
+    "D_P3_6_U3R_GENERATED_VALIDATION_RUNTIME_BINDING_R3_AUTH_requestable": true,
+    "attempts_authorized": 0,
+    "PowerShell_parser_import_or_execution_authorized": false,
+    "runtime_manifest_closure_or_hardware_observation_authorized": false,
+    "runner_or_module_execution_authorized": false,
+    "windows_adapter_import_or_execution_authorized": false,
+    "machine_storage_network_or_scanner_action_authorized": false,
+    "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
+    "profile_activation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false,
+    "status": "U3R_R3_non_effective_package_sealed_exact_owner_authorization_pending_no_attempt_authorized"
+  },
   "portable_cpu_profile_proposal": {
     "acceptance_record": "contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json",
     "package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",

@@ -354,3 +354,8 @@ is recorded in acceptance record SHA-256
 `32BA42A51029920AE163866A923547CD16054D6C41ECD3C8EC5549B78FB3ED2E`.
 Only U3R planning is newly authorized. No profile becomes eligible, active, or
 preferred. Every runtime/profile action remains separately gated.
+
+The non-effective U3R R3 authorization package SHA-256 is
+`A912EF51629A3E73FFF2ECE7AAB8A7D3017A659F9FB75F5402A90027D4B53D98`.
+Exact `D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH` is pending.
+No capability profile becomes resolver-eligible from this package.

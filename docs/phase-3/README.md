@@ -422,3 +422,8 @@ in acceptance record SHA-256
 Only non-effective U3R planning is authorized. PowerShell, retry, U3R
 execution, U3K, profile activation, deployment, and remote Git remain
 unauthorized.
+
+The separate non-effective U3R R3 authorization package is sealed at SHA-256
+`A912EF51629A3E73FFF2ECE7AAB8A7D3017A659F9FB75F5402A90027D4B53D98`.
+Exact `D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH` is pending.
+No attempt or observation is authorized by package preparation.

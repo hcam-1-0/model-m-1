@@ -449,3 +449,12 @@ The decision is recorded in acceptance record SHA-256
 It accepts source/generated-static evidence and authorizes only separate
 non-effective U3R planning. It does not authorize PowerShell, retry, U3R
 execution, U3K, or machine actions.
+
+## P3.6 U3R Runtime-Binding R3 Gate
+
+- [x] Seal the non-effective U3R R3 authorization package SHA-256
+  `A912EF51629A3E73FFF2ECE7AAB8A7D3017A659F9FB75F5402A90027D4B53D98`.
+- [ ] Exact `D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH`.
+
+The unchecked decision is required before any runtime, Utility-manifest,
+closure, parser, import, execution, or generated-validation action.

@@ -1775,3 +1775,19 @@ planning package is authorized. The accepted package remains immutable.
 observation, retry, generated-validation attempt, machine/storage/network/
 scanner action, U3K, profile activation, deployment, or remote Git is
 authorized.
+
+### DR-0090: Seal U3R runtime and Utility-closure binding plan
+
+**Decision:** Prepare one non-effective U3R R3 package for a future, separately
+authorized, single generated-validation attempt. Bind the exact runtime, exact
+Utility manifest, literal-only declared closure under `PSHOME`, load-bearing
+code trust, accepted sources, bounded process output, and pre/post identity.
+
+**Result:** Authorization package SHA-256 is
+`A912EF51629A3E73FFF2ECE7AAB8A7D3017A659F9FB75F5402A90027D4B53D98`.
+The future decision is
+`D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH`.
+
+**Boundary:** Package preparation authorizes zero attempts. No runtime,
+manifest, module closure, hardware, PowerShell, machine/storage, network,
+scanner, model/media, U3K, deployment, or remote Git action is authorized.
