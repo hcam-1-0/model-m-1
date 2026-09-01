@@ -608,13 +608,20 @@ but the process emitted no allowlisted JSON and failed closed as
 `result_contract_invalid`. Evidence SHA-256 is
 `634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE`.
 
-## P3.6 U3Q Harness R2 Bootstrap Remediation Package
+## P3.6 U3Q Harness R2 Bootstrap Remediation Implementation
 
 Source-only analysis identifies a high-confidence Utility-module bootstrap gap.
 The non-effective U3Q package is sealed under SHA-256
 `5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47`.
 Exact
 `D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`
-is pending. No source change, PowerShell execution, retry, U3R/U3K,
-machine/storage action, profile activation, deployment, or remote Git is
-authorized.
+and `D-P3.6-U3Q-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` were recorded before
+their source changes. Source/generated-static implementation evidence is sealed
+under SHA-256
+`90F3F6F42C73F573A82D1BF5C790B217F891B23D97198916A17FD436B94A8591`;
+the implementation package SHA-256 is
+`2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF`.
+Exact
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+is pending. PowerShell execution, retry, U3R/U3K, machine/storage action,
+profile activation, deployment, and remote Git remain unauthorized.

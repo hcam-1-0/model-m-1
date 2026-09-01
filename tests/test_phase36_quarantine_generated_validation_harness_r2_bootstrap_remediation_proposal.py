@@ -140,7 +140,12 @@ def test_package_is_complete_non_effective_and_hash_bound() -> None:
     assert package["decision_id"] == DECISION
     assert package["core_file_count"] == len(package["core_files"]) == 13
     for item in package["core_files"]:
-        assert _sha256(ROOT / item["path"]) == item["sha256"]
+        if item["path"] != "tools/phase36_quarantine_generated_validation.ps1":
+            assert _sha256(ROOT / item["path"]) == item["sha256"]
+    historical = {item["path"]: item["sha256"] for item in package["core_files"]}
+    assert historical["tools/phase36_quarantine_generated_validation.ps1"] == (
+        "F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3"
+    )
     gate = package["current_gate_effect"]
     assert gate["owner_U3Q_authorization_pending"] is True
     assert gate[
@@ -173,7 +178,15 @@ def test_proposal_requests_only_source_and_generated_static_authority() -> None:
 
 def test_accepted_sources_remain_byte_exact() -> None:
     for path, digest in IMMUTABLE.items():
-        assert _sha256(ROOT / path) == digest
+        if path != "tools/phase36_quarantine_generated_validation.ps1":
+            assert _sha256(ROOT / path) == digest
+    source = (ROOT / "tools/phase36_quarantine_generated_validation.ps1").read_text(
+        encoding="utf-8"
+    )
+    assert "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R2-1.2.0" in source
+    assert _sha256(
+        ROOT / "tools/phase36_quarantine_generated_validation.ps1"
+    ) != IMMUTABLE["tools/phase36_quarantine_generated_validation.ps1"]
 
 
 def test_canonical_ledgers_and_docs_are_synchronized() -> None:
@@ -190,8 +203,11 @@ def test_canonical_ledgers_and_docs_are_synchronized() -> None:
         state = ledger[key]
         assert state["package_digest_sha256"] == PACKAGE_DIGEST
         assert state["owner_decision_id"] == DECISION
-        assert state["owner_U3Q_authorization_pending"] is True
+        assert state["owner_U3Q_authorization_pending"] is False
         assert state["implementation_authorized"] is False
+        assert state["implementation_authority_consumed"] is True
+        assert state["source_only_implementation_complete"] is True
+        assert state["owner_implementation_acceptance_pending"] is True
         assert state["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
 
     for path in (

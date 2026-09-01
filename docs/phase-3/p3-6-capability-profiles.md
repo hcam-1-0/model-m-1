@@ -345,7 +345,8 @@ The subsequent non-effective U3Q source-remediation package SHA-256 is
 `5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47`.
 Exact
 `D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`
-is pending.
-No profile becomes eligible, active, or preferred from either result or package.
-U3Q source implementation and every runtime/profile action remain separately
-gated.
+and `D-P3.6-U3Q-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` were recorded. The R2
+source implementation package SHA-256 is
+`2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF`;
+exact implementation acceptance remains pending. No profile becomes eligible,
+active, or preferred. Every runtime/profile action remains separately gated.

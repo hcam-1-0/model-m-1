@@ -336,7 +336,7 @@ That acceptance authorized preparation of the separate non-effective U3P
 proposal recorded below. PowerShell/runtime retry and U3K storage remain
 prohibited until separately gated later decisions.
 
-## Current U3Q Source-Remediation Gate
+## Current U3Q Source-Implementation Acceptance Gate
 
 The non-effective U3P R2 package is sealed under SHA-256
 `2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
@@ -345,9 +345,12 @@ its one attempt was consumed and failed closed as `result_contract_invalid`.
 Evidence SHA-256 is
 `634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE`.
 
-The current generated-validation unblock decision is exact
+The source-only implementation decision was exact
 `D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`
 against package SHA-256
 `5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47`.
-It permits source/generated-static remediation only. PowerShell, runtime
-observation, retry, U3R/U3K, and machine actions remain blocked.
+The compatibility amendment was also recorded before its changes. The sealed
+implementation package SHA-256 is
+`2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF`.
+Exact implementation acceptance is the current unblock decision. PowerShell,
+runtime observation, retry, U3R/U3K, and machine actions remain blocked.

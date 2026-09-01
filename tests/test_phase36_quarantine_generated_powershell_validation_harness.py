@@ -442,10 +442,12 @@ def test_harness_has_exact_modes_bindings_and_read_only_layers() -> None:
     assert "Set-StrictMode -Version Latest" in source
     assert "$ErrorActionPreference = 'Stop'" in source
     assert "$PSModuleAutoLoadingPreference = 'None'" in source
-    assert "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R1-1.1.0" in source
+    assert "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R2-1.2.0" in source
     assert "[System.Management.Automation.Language.Parser]::ParseFile" in source
     assert "windows_adapter_parser_only" in source
-    assert source.count("Import-Module") == 1
+    assert source.count("Import-Module") == 2
+    assert "-Name $script:UtilityManifestPath" in source
+    assert "-Cmdlet $script:RequiredUtilityCommands" in source
     assert "-Name $script:HandlerModulePath" in source
     assert "-Scope Local" in source
     assert "-Function $script:RequiredHandlerExports" in source
@@ -478,8 +480,8 @@ def test_harness_uses_bounded_read_only_dotnet_sha256_streaming() -> None:
     assert "finally" in hashing
     assert "$algorithm.Dispose()" in hashing
     assert "$stream.Dispose()" in hashing
-    assert "Microsoft.PowerShell.Utility" not in source
-    assert source.count("Import-Module") == 1
+    assert "$env:PSModulePath" not in source
+    assert source.count("Import-Module") == 2
 
 
 def test_harness_emits_only_allowlisted_layer_failure_codes() -> None:

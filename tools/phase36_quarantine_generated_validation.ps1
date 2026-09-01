@@ -17,9 +17,121 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
-$PSModuleAutoLoadingPreference = 'None'
 
-$script:ContractId = 'P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R1-1.1.0'
+$script:BootstrapFailureJson = '{"contract_id":"P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R2-1.2.0","mode":"bootstrap","terminal":true,"succeeded":false,"reason_code":"binding_failed","raw_fixture_retained":false,"raw_process_output_retained":false,"raw_exception_retained":false,"runner_storage_invocation_count":0,"windows_adapter_import_or_execution_count":0,"machine_action_count":0,"network_action_count":0}'
+
+function Write-P36BootstrapFailure {
+    try {
+        [System.Console]::Out.WriteLine($script:BootstrapFailureJson)
+    } catch {
+    }
+    exit 1
+}
+
+try {
+    $script:UtilityModuleName = 'Microsoft.PowerShell.Utility'
+    $script:RequiredUtilityCommands = [string[]]@(
+        'Compare-Object',
+        'ConvertFrom-Json',
+        'ConvertTo-Json',
+        'ForEach-Object',
+        'Measure-Object',
+        'Sort-Object',
+        'Where-Object'
+    )
+    $utilityModulesRoot = [System.IO.Path]::GetFullPath(
+        [System.IO.Path]::Combine($PSHOME, 'Modules')
+    )
+    $utilityModuleRoot = [System.IO.Path]::GetFullPath(
+        [System.IO.Path]::Combine(
+            $utilityModulesRoot,
+            'Microsoft.PowerShell.Utility'
+        )
+    )
+    $script:UtilityManifestPath = [System.IO.Path]::GetFullPath(
+        [System.IO.Path]::Combine(
+            $utilityModuleRoot,
+            'Microsoft.PowerShell.Utility.psd1'
+        )
+    )
+    $expectedUtilityManifestPath = [System.IO.Path]::Combine(
+        $PSHOME,
+        'Modules',
+        'Microsoft.PowerShell.Utility',
+        'Microsoft.PowerShell.Utility.psd1'
+    )
+    if (
+        -not [System.String]::Equals(
+            $script:UtilityManifestPath,
+            [System.IO.Path]::GetFullPath($expectedUtilityManifestPath),
+            [System.StringComparison]::OrdinalIgnoreCase
+        )
+    ) {
+        throw 'P36_UTILITY_MANIFEST_PATH_INVALID'
+    }
+    foreach ($directoryPath in @($utilityModulesRoot, $utilityModuleRoot)) {
+        if (-not [System.IO.Directory]::Exists($directoryPath)) {
+            throw 'P36_UTILITY_DIRECTORY_INVALID'
+        }
+        $directoryAttributes = [System.IO.File]::GetAttributes($directoryPath)
+        if (
+            ($directoryAttributes -band [System.IO.FileAttributes]::ReparsePoint) -ne 0
+        ) {
+            throw 'P36_UTILITY_DIRECTORY_REPARSE_POINT'
+        }
+    }
+    $utilityManifestInfo = [System.IO.FileInfo]::new(
+        $script:UtilityManifestPath
+    )
+    if (
+        -not $utilityManifestInfo.Exists -or
+        $utilityManifestInfo.Length -le 0 -or
+        $utilityManifestInfo.Length -gt 131072
+    ) {
+        throw 'P36_UTILITY_MANIFEST_FILE_INVALID'
+    }
+    $utilityManifestAttributes = [System.IO.File]::GetAttributes(
+        $script:UtilityManifestPath
+    )
+    if (
+        ($utilityManifestAttributes -band [System.IO.FileAttributes]::Directory) -ne 0 -or
+        ($utilityManifestAttributes -band [System.IO.FileAttributes]::ReparsePoint) -ne 0
+    ) {
+        throw 'P36_UTILITY_MANIFEST_ATTRIBUTES_INVALID'
+    }
+
+    Import-Module -Name $script:UtilityManifestPath -Scope Local -NoClobber -Cmdlet $script:RequiredUtilityCommands -Function @() -Alias @() -Variable @() -ErrorAction Stop
+
+    $resolvedUtilityCommands = @(
+        Get-Command -Name $script:RequiredUtilityCommands -CommandType Cmdlet -All -ErrorAction Stop
+    )
+    if ($resolvedUtilityCommands.Count -ne $script:RequiredUtilityCommands.Count) {
+        throw 'P36_UTILITY_COMMAND_COUNT_INVALID'
+    }
+    $seenUtilityCommands = [System.Collections.Generic.HashSet[string]]::new(
+        [System.StringComparer]::Ordinal
+    )
+    foreach ($command in $resolvedUtilityCommands) {
+        if (
+            $script:RequiredUtilityCommands -cnotcontains $command.Name -or
+            $command.CommandType -cne 'Cmdlet' -or
+            $command.Source -cne $script:UtilityModuleName -or
+            $command.ModuleName -cne $script:UtilityModuleName -or
+            -not $seenUtilityCommands.Add($command.Name)
+        ) {
+            throw 'P36_UTILITY_COMMAND_PROVENANCE_INVALID'
+        }
+    }
+    if ($seenUtilityCommands.Count -ne $script:RequiredUtilityCommands.Count) {
+        throw 'P36_UTILITY_COMMAND_SET_INVALID'
+    }
+
+    $PSModuleAutoLoadingPreference = 'None'
+} catch {
+    Write-P36BootstrapFailure
+}
+
+$script:ContractId = 'P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R2-1.2.0'
 $script:RepositoryRoot = [System.IO.Path]::GetFullPath(
     [System.IO.Path]::Combine($PSScriptRoot, '..')
 )

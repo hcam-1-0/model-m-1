@@ -1711,3 +1711,45 @@ is pending.
 **Current gate:** No harness or test implementation, PowerShell parsing/import/
 execution, runtime retry, U3R/U3K package, machine/storage action, profile
 activation, deployment, or remote Git is authorized.
+
+### DR-0087: Record U3Q source authority and compatibility amendment
+
+**Decision:** Record exact
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`
+against authorization package SHA-256
+`5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47`
+before changing the harness. Record exact
+`D-P3.6-U3Q-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` before changing the four
+additional historical compatibility-test paths.
+
+**Evidence:** The source authorization statement SHA-256 is
+`F3EFCD79F0F0207CB67E57D439357A25C22C015DCFCB4B04C4C041D32D40404D`
+and its checkpoint commit is `7a11175`. The compatibility amendment statement
+SHA-256 is
+`8F43BC15159AED040DC75A12E52D8E17B158B7FFC7DB7D797E1F8A53BF64D939`
+and its checkpoint commit is `d1b4354`.
+
+**Boundary:** Authority is source/generated-static only. PowerShell parsing,
+import, execution, runtime observation, retry, U3R/U3K, machine/storage action,
+profile activation, deployment, and remote Git remain unauthorized.
+
+### DR-0088: Seal U3Q R2 source-only implementation evidence
+
+**Decision:** Implement the exact `$PSHOME` Utility-manifest bootstrap, seven
+allowlisted local `NoClobber` cmdlets, name/type/source/module provenance
+checks, delayed autoload disablement, and fixed bounded module-independent
+failure JSON. Preserve the vector manifest, runner, pure handler, and Windows
+adapter byte-exact.
+
+**Result:** Candidate R2 harness SHA-256 is
+`830D88F8915B084DEF1089927FF785C9C0E7BDB6F0755B5315EE85E9DA8A8B8A`.
+Nonobservational evidence SHA-256 is
+`90F3F6F42C73F573A82D1BF5C790B217F891B23D97198916A17FD436B94A8591`.
+Implementation package SHA-256 is
+`2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF`.
+All 427 Phase 3.6 generated/static checks pass.
+
+**Current gate:** Exact
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+is pending. No PowerShell or runtime action, retry, U3R/U3K, machine/storage
+action, profile activation, deployment, or remote Git is authorized.

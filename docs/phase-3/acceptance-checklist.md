@@ -434,8 +434,16 @@ The attempt failed as `result_contract_invalid`; U3K remains blocked.
 - [x] Define exact `$PSHOME` Utility bootstrap and safe-failure contract.
 - [x] Seal non-effective package SHA-256
   `5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47`.
-- [ ] Exact
+- [x] Exact
   `D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`.
+- [x] Exact `D-P3.6-U3Q-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT`.
+- [x] Implement exact-path Utility bootstrap and generated/static checks.
+- [x] Verify 427 Phase 3.6 static checks with zero failures.
+- [x] Seal implementation package SHA-256
+  `2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF`.
+- [ ] Exact
+  `D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`.
 
-The unchecked decision grants source/generated-static implementation authority
-only. It does not authorize PowerShell, retry, U3R/U3K, or machine actions.
+The unchecked decision accepts source/generated-static evidence and authorizes
+only separate non-effective U3R planning. It does not authorize PowerShell,
+retry, U3R execution, U3K, or machine actions.

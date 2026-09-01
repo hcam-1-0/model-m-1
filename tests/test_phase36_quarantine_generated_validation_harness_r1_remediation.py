@@ -132,7 +132,7 @@ def test_harness_R1_uses_bounded_read_only_dotnet_hashing() -> None:
     end = source.index("function Assert-P36ExactBindings")
     hashing = source[start:end]
 
-    assert "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R1-1.1.0" in source
+    assert "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R2-1.2.0" in source
     assert "$PSModuleAutoLoadingPreference = 'None'" in source
     assert "Get-FileHash" not in source
     assert "$script:MaximumHashBufferBytes = 65536" in source
@@ -150,8 +150,8 @@ def test_harness_R1_uses_bounded_read_only_dotnet_hashing() -> None:
     ):
         assert token in hashing
     assert "finally" in hashing
-    assert "Microsoft.PowerShell.Utility" not in source
-    assert source.count("Import-Module") == 1
+    assert "Microsoft.PowerShell.Utility" in source
+    assert source.count("Import-Module") == 2
 
 
 def test_harness_R1_failure_diagnostics_are_allowlisted_and_sanitized() -> None:
@@ -191,7 +191,10 @@ def test_nonobservational_evidence_binds_source_tests_and_limitations() -> None:
         "sealed_source_only_generated_static_evidence_owner_acceptance_pending"
     )
     assert evidence["authorization_record_sha256"] == AUTHORIZATION_DIGEST
-    assert evidence["source_result"]["harness_R1_sha256"] == _sha256(HARNESS)
+    assert evidence["source_result"]["harness_R1_sha256"] == (
+        "F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3"
+    )
+    assert _sha256(HARNESS) != evidence["source_result"]["harness_R1_sha256"]
     assert evidence["source_result"]["Get_FileHash_present"] is False
     assert evidence["source_result"]["allowed_failure_layer_count"] == 6
     assert evidence["validation"]["generated_reference_vector_count"] == 84
@@ -215,7 +218,6 @@ def test_implementation_package_preserves_sealed_core_manifest() -> None:
     assert package["core_file_count"] == len(package["core_files"])
     core = {item["path"]: item["sha256"] for item in package["core_files"]}
     for path in (
-        "tools/phase36_quarantine_generated_validation.ps1",
         "contracts/phase-3/"
         "p3-6-quarantine-generated-powershell-validation-r0-vectors.json",
         "tools/phase36_quarantine_transaction_runner.ps1",
@@ -225,6 +227,12 @@ def test_implementation_package_preserves_sealed_core_manifest() -> None:
         "p3-6-quarantine-generated-validation-harness-r1-implementation-evidence.json",
     ):
         assert _sha256(ROOT / path) == core[path]
+    assert core["tools/phase36_quarantine_generated_validation.ps1"] == (
+        "F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3"
+    )
+    assert _sha256(HARNESS) != core[
+        "tools/phase36_quarantine_generated_validation.ps1"
+    ]
     assert package["current_gate_effect"]["owner_implementation_acceptance_pending"]
     assert package["current_gate_effect"]["U3P_package_preparation_authorized"] is False
     assert package["current_gate_effect"][

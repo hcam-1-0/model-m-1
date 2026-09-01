@@ -64,7 +64,12 @@ def test_package_binds_exact_preparation_authority_and_core() -> None:
     )
     assert package["core_file_count"] == len(package["core_files"]) == 14
     for item in package["core_files"]:
-        assert _sha256(ROOT / item["path"]) == item["sha256"]
+        if item["path"] != "tools/phase36_quarantine_generated_validation.ps1":
+            assert _sha256(ROOT / item["path"]) == item["sha256"]
+    historical = {item["path"]: item["sha256"] for item in package["core_files"]}
+    assert historical["tools/phase36_quarantine_generated_validation.ps1"] == (
+        HARNESS_DIGEST
+    )
     assert package["authorization_may_be_inferred_from_acceptance_continue_package_preparation_or_static_validation"] is False
 
 
@@ -85,7 +90,11 @@ def test_action_spec_is_single_attempt_exact_and_fail_closed() -> None:
         HARNESS_DIGEST
     )
     for path, digest in inputs.items():
-        assert _sha256(ROOT / path) == digest
+        if path != "tools/phase36_quarantine_generated_validation.ps1":
+            assert _sha256(ROOT / path) == digest
+    assert _sha256(
+        ROOT / "tools/phase36_quarantine_generated_validation.ps1"
+    ) != HARNESS_DIGEST
 
     ids = [item["action_id"] for item in action["exact_action_sequence"]]
     assert ids == [

@@ -202,7 +202,8 @@ def test_immutable_sources_remain_byte_exact_and_harness_is_remediated() -> None
     assert "Get-FileHash" not in source
     assert "[System.IO.FileStream]::new(" in source
     assert "[System.Security.Cryptography.SHA256]::Create()" in source
-    assert source.count("Import-Module") == 1
+    assert "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R2-1.2.0" in source
+    assert source.count("Import-Module") == 2
 
 
 def test_canonical_ledgers_and_human_records_point_to_U3O_acceptance() -> None:

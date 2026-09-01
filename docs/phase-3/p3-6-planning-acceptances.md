@@ -291,7 +291,7 @@ That acceptance authorized only the non-effective U3P package recorded below.
 Retry, PowerShell action, runtime/hardware observation, U3K action, profile
 activation, deployment, and remote Git action remain unauthorized.
 
-## U3P R2 Consumed And U3Q Awaiting Authorization
+## U3P R2 Consumed And U3Q Awaiting Implementation Acceptance
 
 U3O acceptance was used only to prepare the separate non-effective U3P R2
 package. Package SHA-256 is
@@ -305,5 +305,10 @@ The non-effective U3Q source-remediation package is sealed under SHA-256
 `5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47`.
 Exact
 `D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`
-is not yet recorded. No source implementation, PowerShell, retry, U3R/U3K,
+and `D-P3.6-U3Q-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` were recorded before
+their changes. R2 source/generated-static implementation evidence SHA-256 is
+`90F3F6F42C73F573A82D1BF5C790B217F891B23D97198916A17FD436B94A8591`;
+implementation package SHA-256 is
+`2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF`.
+Exact implementation acceptance is pending. No PowerShell, retry, U3R/U3K,
 profile activation, deployment, or remote Git is authorized.
