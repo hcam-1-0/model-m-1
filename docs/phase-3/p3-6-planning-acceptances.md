@@ -331,8 +331,8 @@ The duplicate statement copies were identical and create one acceptance only.
 
 The resulting source-only implementation authorization package SHA-256 is
 `3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
-Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` is pending and
-cannot be inferred from architecture acceptance or continued planning.
+Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` was later recorded;
+it was not inferred from architecture acceptance or continued planning.
 
 ## U3S implementation authorization and amendment
 
@@ -344,6 +344,14 @@ The owner then supplied exact
 
 The resulting source package SHA-256 is
 `484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
-Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE` is pending.
-Acceptance cannot be inferred from either authorization, package existence,
-test success, or continued work.
+Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE` is recorded in
+acceptance record SHA-256
+`8A688EA3542D2F5D8CD2EF9BA86204F8AE7B997C06351E1178CF6545B52CE125`.
+
+## U3T H1 preflight planning package
+
+The accepted U3S source package permits only preparation of a separate
+non-effective U3T proposal. That package is sealed at SHA-256
+`26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
+Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` is pending and
+cannot be inferred from U3S acceptance, package existence, or continued work.

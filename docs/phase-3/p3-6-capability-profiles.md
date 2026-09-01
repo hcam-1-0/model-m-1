@@ -364,13 +364,18 @@ U3R was later consumed and failed closed before manifest observation. The U3S
 dual-controller source package does not activate a capability profile. Its
 authorization package SHA-256 is
 `3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`, and
-exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` remains pending.
-Even implementation acceptance will not make a profile resolver-eligible;
-separate U3T preflight and later runtime evidence are required.
+exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` was subsequently
+recorded. Neither implementation nor acceptance makes a profile
+resolver-eligible; separate U3T preflight and later runtime evidence are
+required.
 
 The source implementation is now sealed at SHA-256
 `484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
 This does not change profile eligibility: the PowerShell source has not run,
 Python remains machine-disabled, no runtime or manifest was observed, and all
 capability profiles remain non-resolver-eligible. Exact
-`D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE` is the current gate.
+`D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE` is recorded. The
+non-effective U3T H1 package SHA-256 is
+`26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`, with
+`D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` pending. It activates no
+profile and grants no runtime or machine authority.

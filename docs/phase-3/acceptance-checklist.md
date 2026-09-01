@@ -468,8 +468,8 @@ closure, parser, import, execution, or generated-validation action.
 - [x] PowerShell authoritative and Python machine-disabled roles recorded.
 - [x] Source-only implementation authorization package sealed at
   `3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
-- [ ] Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH`.
-- [ ] Source implementation evidence and separate owner acceptance.
+- [x] Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH`.
+- [x] Source implementation evidence and separate owner acceptance.
 - [ ] Separately authorized U3T preflight evidence and acceptance.
 
 The open implementation decision does not include PowerShell execution,
@@ -485,8 +485,12 @@ Python machine access, runtime observation, U3R retry, U3T, or U3K.
 - [x] Focused 244-test and full 705-test static validation passed.
 - [x] Package sealed at
   `484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
-- [ ] Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE`.
-- [ ] Separate non-effective U3T planning and authorization proposal.
+- [x] Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE`.
+- [x] Separate non-effective U3T planning and authorization proposal sealed at
+  `26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
+- [ ] Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH`.
+- [ ] H1 source implementation and separate owner acceptance.
+- [ ] Separately authorized U3T R1 runtime-bound evidence and acceptance.
 
 No U3T attempt, runtime, manifest, machine, U3K, deployment, or remote Git is
 authorized.

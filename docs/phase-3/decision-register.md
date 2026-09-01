@@ -1859,3 +1859,31 @@ The next decision is
 **Boundary:** Owner acceptance can permit only preparation of a separate
 non-effective U3T proposal. It cannot authorize PowerShell execution, Python
 machine access, U3T execution, U3R retry, U3K, deployment, or remote Git.
+
+### DR-0097: U3S source implementation acceptance
+
+**Decision:** `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE` was
+recorded for package SHA-256
+`484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
+The acceptance record SHA-256 is
+`8A688EA3542D2F5D8CD2EF9BA86204F8AE7B997C06351E1178CF6545B52CE125`.
+
+**Effect:** The accepted source and generated/static evidence permits only
+preparation of a separate non-effective U3T preflight planning and
+authorization proposal.
+
+### DR-0098: U3T H1 preflight planning package
+
+**Decision requested:**
+`D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` against planning package
+SHA-256
+`26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
+
+**Architecture:** H1 is an additive, exact-hash-bound source harness with at
+least 48 generated vectors and static Python checks. R1 is a later, separately
+authorized one-attempt runtime-bound `Policy` projection. Controller
+`Preflight` machine authority remains disabled.
+
+**Boundary:** Package preparation grants no H1 implementation, PowerShell
+parsing/import/execution, Python machine access, runtime or manifest
+observation, U3T R1 attempt, U3R retry, U3K, deployment, or remote Git.

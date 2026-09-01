@@ -1,0 +1,101 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3t_preflight_r0_planning_package.v1",
+  "package_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3T-PREFLIGHT-R0-PLANNING-PACKAGE",
+  "decision_id": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH",
+  "status": "sealed_non_effective_owner_H1_source_harness_implementation_authorization_pending",
+  "sealed_on": "2026-09-01",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-acceptance.json",
+    "acceptance_record_sha256": "8A688EA3542D2F5D8CD2EF9BA86204F8AE7B997C06351E1178CF6545B52CE125",
+    "accepted_source_package_sha256": "484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30",
+    "authority_effect": "prepare_this_separate_non_effective_U3T_preflight_planning_and_H1_source_harness_authorization_package"
+  },
+  "core_file_count": 9,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-package.json",
+      "sha256": "484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30",
+      "role": "accepted_U3S_source_implementation_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-acceptance.json",
+      "sha256": "8A688EA3542D2F5D8CD2EF9BA86204F8AE7B997C06351E1178CF6545B52CE125",
+      "role": "exact_owner_U3S_source_implementation_acceptance"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-contract.json",
+      "sha256": "3F2A0975F92892A96FBC67B951B226D5AB958AE067F55B697ABA43669B8FB00E",
+      "role": "accepted_canonical_runtime_controller_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-vectors.json",
+      "sha256": "31335510565E4C74908C674B88951E81B7A7983331C6DE2E91964C1F8B48C20B",
+      "role": "accepted_192_vector_runtime_controller_manifest"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller.ps1",
+      "sha256": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB",
+      "role": "accepted_definition_only_PowerShell_controller_source"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_reference.py",
+      "sha256": "C1470C65C6D5DA3EF93161F519BBC01507BBB805C6D433F58C65FDCAFE3FFC4F",
+      "role": "accepted_machine_disabled_Python_reference_controller"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-planning-contract.json",
+      "sha256": "5453800CA47D5ECCEF3477BCDCD1B352569D84E58E7DAB362F6DAD065829BE3B",
+      "role": "two_gate_U3T_H1_and_R1_planning_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-source-implementation-authorization-proposal.json",
+      "sha256": "0B18CF63CEDEE03248BC68B3FFA1C3223C6E4D1814C3F9FE63ECC552726BAC15",
+      "role": "exact_non_effective_owner_H1_source_harness_implementation_request"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-proposal.md",
+      "sha256": "EA2F3FDE0978A148045336D736B4E34E39728A9752FEAEBBD1691228603EDEE0",
+      "role": "human_owner_review_document"
+    }
+  ],
+  "future_H1_scope_if_exactly_authorized": {
+    "new_PowerShell_harness_sources": 1,
+    "minimum_generated_vectors": 48,
+    "new_Python_static_test_modules": 1,
+    "nonobservational_evidence_package_and_review": true,
+    "generated_Policy_request_only": true,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_manifest_hardware_or_machine_observation": false,
+    "one_local_checkpoint_commit": true,
+    "remote_Git": false
+  },
+  "future_owner_authorization_statement_template": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only implementation of the U3T H1 preflight-harness package against digest <U3T_H1_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact additive PowerShell harness source, at least 48 generated-only vectors, one Python static test module, nonobservational evidence and package, canonical ledgers, documentation, line-ending records, and one local checkpoint commit with no push. The accepted U3S controller contract, vectors, PowerShell source, Python reference, evidence, package, and five immutable prior inputs must remain byte-exact. Python may execute generated fixture and source-text checks only. PowerShell must not be parsed, imported, dot-sourced, or executed. This does not authorize Python machine access or fallback; runtime path, metadata, hash, trust, identity, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, U3R retry, U3T R1 attempt, U3K, or remote Git. Seal the H1 source and generated/static evidence for separate exact owner acceptance before preparing any runtime-binding or attempt package.",
+  "sequence_after_exact_owner_H1_authorization": [
+    "record_exact_digest_bound_H1_source_harness_implementation_authorization",
+    "implement_only_the_six_exact_H1_paths_and_authorized_ledgers_docs_and_LF_records",
+    "run_only_generated_Python_fixture_and_source_text_static_validation",
+    "seal_exact_H1_source_test_and_nonobservational_evidence",
+    "create_at_most_one_local_checkpoint_commit_without_push",
+    "obtain_separate_exact_owner_H1_source_implementation_acceptance",
+    "prepare_no_runtime_binding_or_U3T_R1_attempt_package_before_H1_acceptance"
+  ],
+  "current_gate_effect": {
+    "package_prepared": true,
+    "owner_H1_source_harness_implementation_authorization_pending": true,
+    "D_P3_6_U3T_PREFLIGHT_R0_HARNESS_IMPLEMENTATION_AUTH_requestable": true,
+    "H1_source_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "U3T_R1_attempt_U3R_retry_or_U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U3T_H1_source_harness_implementation_authorization_package_digest_and_is_not_self_embedded",
+  "authorization_may_be_inferred_from_U3S_acceptance_continue_silence_package_preparation_or_static_validation": false
+}

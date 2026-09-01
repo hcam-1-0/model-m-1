@@ -736,11 +736,12 @@ and operational alerting are not Phase 3 backlog items.
 - **Completed:** Non-effective source-only implementation contract, 192-vector
   test plan, proposal, and package digest
   `3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
-- **Owner pending:** Exact
+- **Completed:** Exact
   `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH`.
-- **Blocked:** Source/test implementation, Python reference execution,
-  PowerShell parsing/import/execution, runtime observation, U3T, U3K,
-  deployment, and remote Git.
+- **Completed:** Source/test implementation and generated Python reference
+  validation under the consumed source-only authority.
+- **Blocked:** PowerShell parsing/import/execution, Python machine access,
+  runtime observation, U3T R1, U3K, deployment, and remote Git.
 
 ### U3S dual-controller source implementation
 
@@ -752,7 +753,12 @@ and operational alerting are not Phase 3 backlog items.
   branch coverage.
 - **Sealed:** Package SHA-256
   `484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
-- **Owner pending:**
+- **Accepted:**
   `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE`.
+- **Prepared:** Non-effective U3T H1 authorization package SHA-256
+  `26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
+- **Owner pending:**
+  `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH`.
 - **Blocked:** PowerShell parser/runtime, Python machine access, runtime and
-  manifest observation, U3T attempt, U3R retry, U3K, deployment, and remote Git.
+  manifest observation, U3T R1 attempt, U3R retry, U3K, deployment, and remote
+  Git.

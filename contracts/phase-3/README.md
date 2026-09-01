@@ -646,9 +646,10 @@ SHA-256 is `62DCE06AED22B2702D41B679D61F7E2185C42F763A7C55DFD1277C7E74F79EFB`.
 
 The non-effective source-implementation authorization package is sealed at
 SHA-256 `3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
-Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` is pending. No
-source change, Python test execution, PowerShell action, runtime attempt, U3T,
-U3K, deployment, or remote Git is authorized by package preparation.
+It initially awaited exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH`,
+which was later recorded. Package preparation itself authorized no source
+change, Python test execution, PowerShell action, runtime attempt, U3T, U3K,
+deployment, or remote Git.
 
 ### U3S dual-controller source implementation
 
@@ -658,5 +659,10 @@ SHA-256 is
 `484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
 It binds the canonical contract, 192 vectors, PowerShell source, machine-disabled
 Python reference, static tests, evidence, and five unchanged accepted inputs.
-Owner source-implementation acceptance is pending. No runtime or machine gate
-is open.
+Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE` is recorded.
+The separate non-effective U3T H1 authorization package is sealed at SHA-256
+`26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
+Its pending decision is
+`D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH`. No H1 implementation,
+PowerShell action, runtime attempt, machine access, U3K, deployment, or remote
+Git is authorized.

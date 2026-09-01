@@ -697,13 +697,43 @@
     "full_Phase_3_6_tests_passed": 705,
     "Python_reference_branch_coverage_percent": 100.0,
     "source_implementation_complete": true,
-    "owner_source_implementation_acceptance_pending": true,
+    "owner_source_implementation_acceptance_pending": false,
+    "owner_source_implementation_accepted": true,
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-acceptance.json",
+    "acceptance_record_sha256": "8A688EA3542D2F5D8CD2EF9BA86204F8AE7B997C06351E1178CF6545B52CE125",
     "PowerShell_parse_import_or_execution_authorized": false,
     "Python_machine_access_or_fallback_authorized": false,
     "runtime_manifest_hardware_or_machine_observation_authorized": false,
     "retry_U3T_or_U3K_authorized": false,
     "deployment_or_remote_git_authorized": false,
-    "status": "sealed_non_executable_owner_source_implementation_acceptance_pending"
+    "status": "accepted_non_executable_source_and_generated_static_evidence"
+  },
+  "quarantine_runtime_controller_r0_source_implementation_acceptance": {
+    "decision_id": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-acceptance.json",
+    "acceptance_record_sha256": "8A688EA3542D2F5D8CD2EF9BA86204F8AE7B997C06351E1178CF6545B52CE125",
+    "accepted_package_digest_sha256": "484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30",
+    "U3T_planning_preparation_authorized": true,
+    "U3T_H1_implementation_or_R1_attempt_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "U3R_retry_U3K_deployment_or_remote_git_authorized": false,
+    "status": "accepted_for_separate_non_effective_U3T_preflight_planning_and_authorization_proposal_preparation"
+  },
+  "quarantine_runtime_controller_u3t_preflight_r0_planning_package": {
+    "decision_id": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-planning-package.json",
+    "package_digest_sha256": "26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2",
+    "owner_H1_source_harness_implementation_authorization_pending": true,
+    "D_P3_6_U3T_PREFLIGHT_R0_HARNESS_IMPLEMENTATION_AUTH_requestable": true,
+    "H1_source_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "U3T_R1_attempt_U3R_retry_or_U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false,
+    "status": "sealed_non_effective_owner_H1_source_harness_implementation_authorization_pending"
   },
   "model_artifact_research": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
@@ -897,14 +927,32 @@
     "decision_id": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE",
     "package_manifest": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-package.json",
     "package_digest_sha256": "484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30",
-    "owner_source_implementation_acceptance_pending": true,
+    "owner_source_implementation_acceptance_pending": false,
+    "owner_source_implementation_accepted": true,
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-acceptance.json",
+    "acceptance_record_sha256": "8A688EA3542D2F5D8CD2EF9BA86204F8AE7B997C06351E1178CF6545B52CE125",
     "source_implementation_complete": true,
     "PowerShell_parse_import_or_execution_authorized": false,
     "Python_machine_access_or_fallback_authorized": false,
     "runtime_manifest_hardware_or_machine_observation_authorized": false,
     "U3T_U3R_retry_or_U3K_authorized": false,
     "deployment_or_remote_git_authorized": false,
-    "status": "sealed_non_executable_owner_source_implementation_acceptance_pending"
+    "status": "completed_non_executable_source_implementation_acceptance_recorded"
+  },
+  "next_U3T_H1_source_harness_implementation_action": {
+    "action": "owner_review_of_exact_U3T_H1_source_harness_implementation_authorization_package",
+    "decision_id": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-planning-package.json",
+    "package_digest_sha256": "26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2",
+    "owner_H1_source_harness_implementation_authorization_pending": true,
+    "D_P3_6_U3T_PREFLIGHT_R0_HARNESS_IMPLEMENTATION_AUTH_requestable": true,
+    "H1_source_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "U3T_R1_attempt_U3R_retry_or_U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false,
+    "status": "sealed_non_effective_owner_H1_source_harness_implementation_authorization_pending"
   },
   "parallel_owner_review_actions": [
     {
@@ -925,7 +973,7 @@
   ],
   "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
   "runtime_execution_authorized": false,
-  "status": "planning_only_U3E_U3G_U3N_U3P_and_U3R_attempts_consumed_failed_closed_U3I_runner_U3L_handlers_U3M_harness_U3O_and_U3Q_source_evidence_accepted_U3S_R1_dual_architecture_accepted_dual_controller_source_implementation_complete_owner_acceptance_pending_no_PowerShell_runtime_storage_or_execution_authority",
+  "status": "planning_only_U3E_U3G_U3N_U3P_and_U3R_attempts_consumed_failed_closed_U3I_runner_U3L_handlers_U3M_harness_U3O_U3Q_and_U3S_source_evidence_accepted_U3T_H1_source_harness_authorization_package_pending_no_PowerShell_runtime_storage_or_execution_authority",
   "work_items": [
     {
       "allowed_now": [

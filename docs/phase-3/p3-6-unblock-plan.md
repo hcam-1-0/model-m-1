@@ -376,19 +376,22 @@ architecture is A+B/A/A/A. The next requestable decision is exact
 `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` for package SHA-256
 `3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
 
-That decision can authorize source-only implementation and pure generated
-Python policy tests. It cannot authorize PowerShell execution, Python machine
-access, runtime observation, U3T, U3R retry, U3K, deployment, or remote Git.
+That decision was later recorded and consumed by source-only implementation
+and pure generated Python policy tests. It did not authorize PowerShell
+execution, Python machine access, runtime observation, U3T, U3R retry, U3K,
+deployment, or remote Git.
 
 ## Current U3S gate
 
 Source implementation and generated/static validation are complete. The sealed
 package SHA-256 is
 `484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
-The next requestable decision is exact
-`D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE`.
+Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE` is recorded.
+The next requestable decision is
+`D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` against package SHA-256
+`26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
 
-Exact acceptance can unblock only preparation of a separate non-effective U3T
-planning and authorization proposal. PowerShell parsing/import/execution,
-Python machine access, runtime or manifest observation, another attempt, U3K,
-deployment, and remote Git remain blocked.
+The pending H1 decision can authorize only additive source and generated/static
+tests. PowerShell parsing/import/execution, Python machine access, runtime or
+manifest observation, U3T R1, another attempt, U3K, deployment, and remote Git
+remain blocked.

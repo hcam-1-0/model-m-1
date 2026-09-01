@@ -812,14 +812,14 @@ zero attempts are currently authorized.
 
 The authorized U3R attempt was consumed and failed closed at runtime binding.
 The selected remediation is a package-bound PowerShell controller plus a
-machine-disabled Python policy reference. The next gate is source-only
-implementation package SHA-256
+machine-disabled Python policy reference. The source-only implementation
+authorization package SHA-256 was
 `3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC` and
 decision `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH`.
 
-After future source implementation and separate acceptance, U3T remains a
-separate PowerShell-only preflight gate. Full generated validation and U3K stay
-separate and blocked.
+Source implementation and separate acceptance are now complete. U3T remains a
+separate PowerShell-only preflight boundary. Full generated validation and U3K
+stay separate and blocked.
 
 ### U3S implementation result
 
@@ -829,8 +829,10 @@ The sealed package SHA-256 is
 It contains one shared contract, 192 deterministic vectors, one default-denied
 PowerShell controller source, one machine-disabled Python oracle, and static
 evidence. The next gate is exact
-`D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE`.
+`D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` against package SHA-256
+`26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
+Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE` is recorded.
 
-U3T remains a later three-step boundary: separate planning, separate exact
-authorization, and separate evidence acceptance. This package grants none of
-those authorities.
+U3T is split into H1 source-only harness implementation and a later R1
+runtime-bound attempt. H1 authorization remains pending, and this planning
+package grants neither H1 implementation nor R1 execution authority.

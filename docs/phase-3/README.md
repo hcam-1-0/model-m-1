@@ -428,7 +428,7 @@ The separate non-effective U3R R3 authorization package is sealed at SHA-256
 Exact `D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH` is pending.
 No attempt or observation is authorized by package preparation.
 
-## Current U3S Gate
+## Current U3T H1 Gate
 
 U3R was subsequently authorized once, consumed, and failed closed at runtime
 binding before manifest or generated validation. The accepted A+B architecture
@@ -436,14 +436,18 @@ uses an authoritative PowerShell Windows controller and a machine-disabled
 Python reference controller. The source-only implementation authorization
 package SHA-256 is
 `3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
-Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` is the current
-owner gate; implementation and execution remain unauthorized.
+Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` was subsequently
+recorded and consumed by the bounded source implementation.
 
 The exact source implementation authorization and compatibility amendment were
 subsequently recorded. Source-only implementation is complete and sealed at
 SHA-256 `484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
 All 192 vectors pass, Python branch coverage is 100 percent, and the full P3.6
 static suite passes 705 tests. Exact
-`D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE` is now pending;
-PowerShell execution, Python machine access, U3T, U3K, and deployment remain
-blocked.
+`D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE` is recorded. The
+next requestable decision is
+`D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` against non-effective
+package SHA-256
+`26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
+H1 implementation, PowerShell execution, Python machine access, U3T R1, U3K,
+and deployment remain blocked.
