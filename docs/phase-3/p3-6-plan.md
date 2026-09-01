@@ -155,6 +155,15 @@ or remote Git operation is authorized.
   PowerShell parsing/import/execution, runtime observation, storage, and every
   machine action remain unauthorized.
 
+  The separate U3M generated-validation and fresh-runtime-binding plan is now
+  sealed under package SHA-256
+  `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+  The next decision is
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH`, limited to source-only
+  harness, generated-fixture, Python static-test, evidence, package, ledger,
+  and documentation implementation. No PowerShell or runtime action is
+  authorized.
+
 Acceptance record:
 [P3.6 planning acceptances R0](p3-6-planning-acceptances.md).
 

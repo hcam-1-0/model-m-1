@@ -232,11 +232,11 @@ def test_next_action_is_non_effective_runtime_binding_review() -> None:
     action = unblock["next_portable_planning_action"]
 
     assert action["action"] == (
-        "prepare_separate_non_effective_generated_PowerShell_validation_and_"
-        "fresh_runtime_binding_planning_package"
+        "owner_review_of_exact_U3M_generated_validation_harness_source_only_"
+        "implementation_authorization_package"
     )
     assert action["decision_ids"] == [
-        "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE"
+        "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH"
     ]
     assert action["final_U3K_package_digest_sha256"] == (
         "4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E"
@@ -253,7 +253,8 @@ def test_next_action_is_non_effective_runtime_binding_review() -> None:
     assert action["machine_handler_proposal_preparation_authority"] is False
     assert action["machine_handler_implementation_authority"] is False
     assert action["runtime_binding_observation_authority"] is False
-    assert action["runtime_binding_proposal_preparation_authority"] is True
+    assert action["runtime_binding_proposal_preparation_authority"] is False
+    assert action["harness_source_or_test_implementation_authority"] is False
     assert action["Defender_only_proposal_preparation_authority_now"] is False
     assert action["retry_authorized"] is False
     assert action["another_attempt_authority"] is False

@@ -412,13 +412,14 @@ def test_ledgers_and_human_records_point_to_current_runtime_binding_gate() -> No
 
     action = ledgers[2]["next_portable_planning_action"]
     assert action["decision_ids"] == [
-        "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE"
+        "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH"
     ]
     assert action["final_U3K_package_digest_sha256"] == (
         "4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E"
     )
     assert action["owner_implementation_acceptance_pending"] is False
-    assert action["runtime_binding_proposal_preparation_authority"] is True
+    assert action["runtime_binding_proposal_preparation_authority"] is False
+    assert action["harness_source_or_test_implementation_authority"] is False
     assert action["owner_runtime_binding_authorization_pending"] is False
     assert action["owner_runtime_binding_evidence_acceptance_pending"] is False
     assert action["machine_handler_proposal_package_digest_sha256"] == (

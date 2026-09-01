@@ -254,10 +254,14 @@ runner source hash; it authorized neither execution nor storage. The final U3K
   Exact `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded
   under acceptance-record SHA-256
   `06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631`.
-  The next action is preparation of a separate non-effective generated
-  PowerShell validation and fresh-runtime-binding planning package; no
-  PowerShell parsing/import/execution, runtime observation, adapter-import, or
-  machine authority exists. A
+  The resulting non-effective U3M package is sealed under SHA-256
+  `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+  The next action is owner review of exact
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH`. Until that exact
+  digest-bound statement is received, no harness, fixture, static-test,
+  evidence, or ledger implementation change is authorized. No PowerShell
+  parsing/import/execution, runtime observation, adapter import, or machine
+  authority exists. A
 Defender-only proposal remains
 sequenced after successful storage evidence is accepted. No prior
 decision authorizes a retry, `F:` or ACL access, scanner action, artifact

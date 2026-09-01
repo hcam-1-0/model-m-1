@@ -185,7 +185,7 @@ def test_canonical_ledgers_preserve_history_and_point_to_handler_acceptance() ->
 
     action = ledgers[2]["next_portable_planning_action"]
     assert action["decision_ids"] == [
-        "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE"
+        "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH"
     ]
     assert action["final_U3K_package_digest_sha256"] == PACKAGE_DIGEST
     assert action["machine_handler_proposal_package_digest_sha256"] == (
@@ -196,7 +196,8 @@ def test_canonical_ledgers_preserve_history_and_point_to_handler_acceptance() ->
     )
     assert action["owner_machine_handler_implementation_authorization_pending"] is False
     assert action["owner_implementation_acceptance_pending"] is False
-    assert action["runtime_binding_proposal_preparation_authority"] is True
+    assert action["runtime_binding_proposal_preparation_authority"] is False
+    assert action["harness_source_or_test_implementation_authority"] is False
     assert action["machine_action_handlers_implemented"] is True
     assert action["machine_handler_proposal_preparation_authority"] is False
     assert action["machine_handler_implementation_authority"] is False

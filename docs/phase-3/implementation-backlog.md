@@ -553,9 +553,15 @@ Remaining gated backlog requires separate planning and exact later authority:
 - retain exact
   `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` as acceptance of
   source and generated/static evidence only;
-- prepare a separate non-effective generated PowerShell validation and fresh
-  runtime-binding planning package; do not parse, import, or execute PowerShell
-  and do not observe a runtime under the U3L acceptance;
+- retain the resulting U3M source-only harness implementation authorization
+  package SHA-256
+  `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`;
+- obtain exact
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` before creating or
+  changing the harness, generated fixture manifest, static tests, evidence,
+  package, or synchronized ledgers and documents;
+- separately accept the exact harness implementation before preparing U3N
+  generated-validation and fresh-runtime-binding execution authority;
 - retain immutable `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH`
   source-authorization proposal package SHA-256
   `EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`

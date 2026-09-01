@@ -266,6 +266,10 @@ Runner execution, storage or Defender access, and profile admission remain
   This does not activate a profile or authorize PowerShell, runtime, or machine
   access. Only separate validation/runtime-binding planning may proceed. A
   Defender-only proposal remains sequenced after accepted storage evidence.
+  The resulting U3M planning package is sealed under SHA-256
+  `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`;
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` is pending and cannot
+  activate a capability profile or authorize PowerShell/runtime work.
 
 The owner may review the portable planning record through
 `D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE`; acceptance would not activate it.

@@ -290,6 +290,15 @@ unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
 - [x] `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` exactly accepts
   that package under acceptance-record SHA-256
   `06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631`.
+- [x] The separate non-effective U3M generated-validation and fresh-runtime-
+  binding planning package is sealed under SHA-256
+  `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+- [ ] `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` exactly authorizes
+  source-only harness implementation before any harness, fixture, static-test,
+  evidence, or ledger implementation change.
+- [ ] The exact harness implementation is separately accepted before a U3N
+  PowerShell generated-validation and fresh-runtime-binding authorization
+  package is prepared.
 - [ ] The existing twenty contract vectors, all 64 generated handler vectors,
   exact source hashes, an accepted implementation package, a fresh runtime
   binding, a regenerated executable U3K package, and separate
@@ -315,7 +324,10 @@ successful read-only attempt, and exact evidence acceptance is recorded. The
   `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded for
   source and generated/static evidence only. PowerShell parsing/import/execution,
   another runtime observation, machine access, and every retry remain
-  unauthorized.
+  unauthorized. The U3M planning package has been sealed, but
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` remains pending against
+  package SHA-256
+  `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
 
 ## Tier A Implementation Acceptance
 

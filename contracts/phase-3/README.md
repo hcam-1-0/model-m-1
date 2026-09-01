@@ -425,6 +425,18 @@ Phase 0-3 API/database surface and the model-independent P3.0 analytics boundary
   fresh-runtime-binding planning package only. PowerShell parsing/import/
   execution, runtime or machine observation, storage, `F:`, ACL, probes,
   scanners, acquisition, deployment, and remote Git remain unauthorized.
+- `p3-6-quarantine-generated-validation-runtime-binding-r1-research-sources.json`,
+  `p3-6-quarantine-generated-validation-runtime-binding-r1-plan.json`,
+  `p3-6-quarantine-generated-validation-harness-r0-implementation-authorization-proposal.json`,
+  and
+  `p3-6-quarantine-generated-validation-harness-r0-implementation-authorization-package.json`:
+  non-effective U3M planning package sealed under SHA-256
+  `F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+  The next decision is
+  `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH`, which may authorize
+  only source-only harness, generated-fixture, Python static-test, evidence,
+  and documentation implementation. It grants no PowerShell parsing, import,
+  execution, fresh runtime observation, storage, machine, or remote Git action.
 - `p3-6-quarantine-storage-r2-action-spec.json`: storage-only ten-action design
   with exact `Modify | Synchronize` normalization, independent DACL tuple
   checks, generated zero-retention probe, and no Defender actions.

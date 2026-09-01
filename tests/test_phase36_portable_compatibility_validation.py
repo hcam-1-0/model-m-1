@@ -263,7 +263,10 @@ def test_canonical_ledgers_link_package_without_opening_P36_G2() -> None:
     ] is False
     assert unblock["next_portable_planning_action"][
         "runtime_binding_proposal_preparation_authority"
-    ] is True
+    ] is False
+    assert unblock["next_portable_planning_action"][
+        "harness_source_or_test_implementation_authority"
+    ] is False
     assert unblock["next_portable_planning_action"][
         "runtime_binding_observation_authority"
     ] is False

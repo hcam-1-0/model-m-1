@@ -1,0 +1,96 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_runtime_binding_r1_research_sources.v1",
+  "record_id": "P36-QUARANTINE-GENERATED-VALIDATION-RUNTIME-BINDING-R1-RESEARCH-SOURCES",
+  "status": "planning_research_complete_no_runtime_or_powershell_action",
+  "recorded_on": "2026-09-01",
+  "preparation_authority_decision_id": "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE",
+  "sources": [
+    {
+      "source_id": "MS-PS-PARSER-PARSEFILE",
+      "publisher": "Microsoft",
+      "title": "Parser.ParseFile Method",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.management.automation.language.parser.parsefile?view=powershellsdk-7.4.0",
+      "source_kind": "primary_official_API_documentation",
+      "planning_use": [
+        "ParseFile_returns_an_AST_tokens_and_parse_errors_for_one_named_file",
+        "parser_success_must_be_based_on_an_empty_error_collection_not_on_source_execution"
+      ]
+    },
+    {
+      "source_id": "MS-PS-IMPORT-MODULE",
+      "publisher": "Microsoft",
+      "title": "Import-Module",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/import-module?view=powershell-7.5",
+      "source_kind": "primary_official_cmdlet_documentation",
+      "planning_use": [
+        "a_script_module_can_be_imported_by_exact_file_path",
+        "Scope_Local_limits_exports_to_the_current_scope",
+        "Function_can_restrict_imported_exports",
+        "NoClobber_prevents_name_replacement"
+      ]
+    },
+    {
+      "source_id": "MS-PS-PWSH",
+      "publisher": "Microsoft",
+      "title": "about_Pwsh",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_pwsh?view=powershell-7.5",
+      "source_kind": "primary_official_runtime_documentation",
+      "planning_use": [
+        "NoProfile_prevents_profile_loading",
+        "NonInteractive_turns_interactive_requests_into_terminating_errors",
+        "NoLogo_removes_interactive_banner_output"
+      ]
+    },
+    {
+      "source_id": "MS-DOTNET-PROCESS-REDIRECT",
+      "publisher": "Microsoft",
+      "title": "ProcessStartInfo.RedirectStandardOutput Property",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.processstartinfo.redirectstandardoutput?view=net-10.0",
+      "source_kind": "primary_official_API_documentation",
+      "planning_use": [
+        "UseShellExecute_must_be_false_for_redirected_standard_output",
+        "redirected_output_requires_bounded_consumption_to_avoid_unbounded_retention_or_deadlock"
+      ]
+    },
+    {
+      "source_id": "MS-DOTNET-PROCESS-USE-SHELL",
+      "publisher": "Microsoft",
+      "title": "ProcessStartInfo.UseShellExecute Property",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.processstartinfo.useshellexecute?view=netframework-4.8.1",
+      "source_kind": "primary_official_API_documentation",
+      "planning_use": [
+        "UseShellExecute_false_starts_only_the_exact_executable_instead_of_opening_documents_through_the_graphical_shell",
+        "standard_stream_redirection_is_compatible_with_direct_process_creation"
+      ]
+    },
+    {
+      "source_id": "HCAM-U3I-RUNTIME-BINDING-RESEARCH",
+      "publisher": "H-CAM",
+      "title": "P3.6 U3I runtime-binding research sources",
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-runtime-binding-research-sources.json",
+      "source_kind": "historical_internal_primary_source_index",
+      "planning_use": [
+        "reuse_exact_path_nonreparse_size_hash_and_cache_only_WinVerifyTrust_controls",
+        "treat_the_prior_runtime_binding_as_historical_and_non_reusable_for_changed_runner_sources"
+      ]
+    }
+  ],
+  "research_conclusions": [
+    "parser_validation_and_script_execution_are_distinct_and_must_have_separate_recorded_results",
+    "the_windows_adapter_may_be_parsed_but_must_not_be_imported_or_executed_during_generated_validation",
+    "the_pure_handler_module_may_be_imported_only_in_a_later_exactly_authorized_generated_validation_process",
+    "runner_execution_must_be_limited_to_Contract_mode_and_must_never_supply_Storage_mode_or_StorageRequestJson",
+    "the_exact_runtime_must_be_freshly_observed_and_trusted_before_any_generated_PowerShell_execution",
+    "all_process_output_must_be_bounded_parsed_sanitized_and_reduced_to_aggregate_evidence",
+    "source_only_harness_implementation_requires_a_separate_owner_gate_before_any_PowerShell_parser_import_or_execution_gate"
+  ],
+  "actions_performed_while_preparing_this_record": {
+    "public_documentation_research": true,
+    "repository_source_text_and_contract_reads": true,
+    "PowerShell_parsed_imported_or_executed": false,
+    "runtime_or_hardware_observed": false,
+    "machine_storage_F_ACL_probe_cleanup_or_scanner_action": false,
+    "artifact_dependency_model_or_dataset_acquired": false,
+    "remote_git_action": false
+  }
+}

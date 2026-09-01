@@ -191,6 +191,13 @@ SHA-256
   PowerShell parsing/import/execution, runtime observation, machine access, or
   storage authority.
 
+The resulting non-effective U3M planning package is sealed under SHA-256
+`F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+Its next gate is exact
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH`, which remains pending
+and may authorize only source-only harness implementation. A later U3N
+PowerShell validation/runtime-binding attempt is not yet requestable.
+
 Neither package changes a capability profile or gate. `P36-G1`, `P36-G2`,
 `P36-G4`, and `P36-G5` remain blocked. No Defender proposal may be prepared
 until successful storage evidence is separately accepted.

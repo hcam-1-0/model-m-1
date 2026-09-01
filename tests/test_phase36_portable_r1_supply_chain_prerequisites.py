@@ -262,7 +262,10 @@ def test_ledgers_and_human_records_are_synchronized_and_blocked() -> None:
     ] is False
     assert unblock["next_portable_planning_action"][
         "runtime_binding_proposal_preparation_authority"
-    ] is True
+    ] is False
+    assert unblock["next_portable_planning_action"][
+        "harness_source_or_test_implementation_authority"
+    ] is False
     assert unblock["next_portable_planning_action"][
         "runtime_binding_observation_authority"
     ] is False

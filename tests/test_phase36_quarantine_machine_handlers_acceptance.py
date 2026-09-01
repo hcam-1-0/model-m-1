@@ -132,8 +132,8 @@ def test_canonical_ledgers_record_acceptance_without_execution_authority() -> No
         "next_portable_planning_action"
     ]
     assert action["action"] == (
-        "prepare_separate_non_effective_generated_PowerShell_validation_and_"
-        "fresh_runtime_binding_planning_package"
+        "owner_review_of_exact_U3M_generated_validation_harness_source_only_"
+        "implementation_authorization_package"
     )
     assert action["machine_handler_implementation_acceptance_sha256"] == (
         ACCEPTANCE_DIGEST
@@ -141,8 +141,9 @@ def test_canonical_ledgers_record_acceptance_without_execution_authority() -> No
     assert action["owner_implementation_acceptance_pending"] is False
     assert action[
         "generated_PowerShell_validation_planning_package_preparation_authority"
-    ] is True
-    assert action["runtime_binding_proposal_preparation_authority"] is True
+    ] is False
+    assert action["runtime_binding_proposal_preparation_authority"] is False
+    assert action["harness_source_or_test_implementation_authority"] is False
     assert action["PowerShell_or_runner_execution_authority"] is False
     assert action["runtime_binding_observation_authority"] is False
     assert action["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False

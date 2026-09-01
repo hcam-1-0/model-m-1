@@ -409,6 +409,30 @@
     "Defender_or_scanner_action_authorized": false,
     "status": "implementation_accepted_non_executable_separate_validation_and_runtime_binding_planning_only"
   },
+  "quarantine_generated_validation_harness_r0_implementation_authorization_package": {
+    "research_sources": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-research-sources.json",
+    "validation_and_runtime_binding_plan": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-plan.json",
+    "implementation_authorization_proposal": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-authorization-proposal.json",
+    "review_document": "docs/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-plan.md",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-authorization-package.json",
+    "package_digest_sha256": "F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1",
+    "preparation_authority_decision_id": "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE",
+    "owner_decision_id": "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH",
+    "owner_harness_implementation_authorization_pending": true,
+    "harness_source_or_test_implementation_authorized": false,
+    "PowerShell_parser_import_or_execution_authorized": false,
+    "runtime_or_hardware_observation_authorized": false,
+    "runner_or_module_execution_authorized": false,
+    "windows_adapter_import_or_execution_authorized": false,
+    "machine_storage_F_ACL_probe_cleanup_or_scanner_action_authorized": false,
+    "D_P3_6_U3N_GENERATED_VALIDATION_RUNTIME_BINDING_R1_AUTH_requestable": false,
+    "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
+    "resolver_eligible": false,
+    "profile_activation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false,
+    "status": "planning_package_sealed_owner_source_only_harness_implementation_authorization_pending"
+  },
   "model_artifact_research": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
     "artifact_count": 3,
@@ -449,10 +473,10 @@
     "status": "owner_AAAA_policy_selections_accepted_no_current_refresh_profile_or_collection_authority"
   },
   "next_portable_planning_action": {
-    "action": "prepare_separate_non_effective_generated_PowerShell_validation_and_fresh_runtime_binding_planning_package",
+    "action": "owner_review_of_exact_U3M_generated_validation_harness_source_only_implementation_authorization_package",
     "authority": "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE",
     "decision_ids": [
-      "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE"
+      "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH"
     ],
     "final_U3K_package_manifest": "contracts/phase-3/p3-6-quarantine-storage-r2-final-u3k-authorization-package.json",
     "final_U3K_package_digest_sha256": "4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E",
@@ -462,6 +486,10 @@
     "machine_handler_implementation_package_digest_sha256": "79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7",
     "machine_handler_implementation_acceptance_record": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-acceptance.json",
     "machine_handler_implementation_acceptance_sha256": "06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631",
+    "generated_validation_harness_implementation_authorization_package_manifest": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-authorization-package.json",
+    "generated_validation_harness_implementation_authorization_package_digest_sha256": "F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1",
+    "owner_harness_implementation_authorization_pending": true,
+    "owner_review_pending": true,
     "runner_source_sha256": "22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A",
     "owner_implementation_acceptance_pending": false,
     "owner_runtime_binding_authorization_pending": false,
@@ -476,8 +504,9 @@
     "Python_generated_test_execution_authority": false,
     "PowerShell_or_runner_execution_authority": false,
     "windows_adapter_import_or_execution_authority": false,
-    "generated_PowerShell_validation_planning_package_preparation_authority": true,
-    "runtime_binding_proposal_preparation_authority": true,
+    "generated_PowerShell_validation_planning_package_preparation_authority": false,
+    "runtime_binding_proposal_preparation_authority": false,
+    "harness_source_or_test_implementation_authority": false,
     "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
     "runtime_binding_observation_authority": false,
     "Defender_only_proposal_preparation_authority_now": false,
@@ -490,19 +519,21 @@
     "implementation_or_runtime_authority": false,
     "artifact_or_dependency_acquisition_authority": false,
     "profile_activation_authority": false,
-    "status": "implementation_accepted_separate_validation_and_runtime_binding_planning_only_no_runtime_storage_or_execution_authority"
+    "status": "U3M_planning_package_sealed_owner_source_only_harness_implementation_authorization_pending_no_PowerShell_runtime_storage_or_execution_authority"
   },
   "next_planning_action": {
-    "action": "prepare_separate_non_effective_generated_PowerShell_validation_and_fresh_runtime_binding_planning_package",
+    "action": "owner_review_of_exact_U3M_generated_validation_harness_source_only_implementation_authorization_package",
     "authority": "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE",
-    "decision_id": "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE",
+    "decision_id": "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH",
     "final_U3K_package_digest_sha256": "4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E",
     "machine_handler_proposal_package_digest_sha256": "EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311",
       "machine_handler_implementation_package_digest_sha256": "79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7",
     "machine_handler_implementation_acceptance_sha256": "06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631",
-    "owner_review_pending": false,
-    "generated_PowerShell_validation_planning_package_preparation_authority": true,
-    "runtime_binding_proposal_preparation_authority": true,
+    "generated_validation_harness_implementation_authorization_package_digest_sha256": "F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1",
+    "owner_review_pending": true,
+    "generated_PowerShell_validation_planning_package_preparation_authority": false,
+    "runtime_binding_proposal_preparation_authority": false,
+    "harness_source_or_test_implementation_authority": false,
     "runner_implementation_authority": false,
     "machine_handler_proposal_preparation_authority": false,
     "machine_handler_implementation_authority": false,
@@ -515,7 +546,7 @@
     "storage_attempt_authority": false,
     "Defender_only_proposal_preparation_authority_now": false,
     "implementation_or_runtime_authority": false,
-    "status": "implementation_accepted_separate_validation_and_runtime_binding_planning_only_no_runtime_storage_or_execution_authority"
+    "status": "U3M_planning_package_sealed_owner_source_only_harness_implementation_authorization_pending_no_PowerShell_runtime_storage_or_execution_authority"
   },
   "parallel_owner_review_actions": [
     {
@@ -536,7 +567,7 @@
   ],
   "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
   "runtime_execution_authorized": false,
-  "status": "planning_only_U3E_and_U3G_attempts_consumed_failed_closed_U3F_and_U3H_accepted_U3I_contract_implementation_and_historical_runtime_binding_evidence_accepted_U3J_storage_design_accepted_final_U3K_historical_non_effective_U3L_machine_handlers_implemented_generated_static_validated_owner_implementation_acceptance_pending_no_runtime_storage_or_execution_authority",
+  "status": "planning_only_U3E_and_U3G_attempts_consumed_failed_closed_U3F_and_U3H_accepted_U3I_contract_implementation_and_historical_runtime_binding_evidence_accepted_U3J_storage_design_accepted_final_U3K_historical_non_effective_U3L_machine_handlers_accepted_U3M_validation_harness_source_only_implementation_authorization_pending_no_PowerShell_runtime_storage_or_execution_authority",
   "work_items": [
     {
       "allowed_now": [

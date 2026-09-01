@@ -1485,6 +1485,38 @@ binding, a newly sealed executable U3K package, and separate digest-bound
 Machine-readable acceptance:
 [`p3-6-quarantine-machine-handlers-r0-implementation-acceptance.json`](../../contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-acceptance.json).
 
+### DR-0078: U3M generated validation and fresh runtime-binding plan sealed
+
+Status: exact source-only harness implementation authorization pending on
+2026-09-01.
+
+Under the planning authority granted by
+`D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE`, the non-effective
+U3M package is sealed under SHA-256
+`F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+It binds the U3L acceptance, official parser/module/runtime/process research,
+the exact accepted runner, pure-handler and Windows-adapter hashes, and a
+two-gate validation/runtime-binding plan.
+
+The next decision is
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH`. Exact authorization
+would permit only the sealed source-only harness, generated fixture manifest,
+Python static/reference tests, non-observational evidence, package, ledgers,
+and documentation. It would not authorize PowerShell parsing, import, or
+execution; runtime observation; runner or module execution; adapter import;
+storage, `F:`, ACL, probes, cleanup, scanners, network, acquisition, models,
+media/data, containers/Kubernetes, deployment, or remote Git.
+
+Only after exact U3M implementation acceptance may a separate U3N one-attempt
+generated-validation and fresh-runtime-binding authorization package be
+prepared. `D-P3.6-U3K-STORAGE-R2-AUTH` remains not requestable.
+
+Human review:
+[`p3-6-quarantine-generated-validation-runtime-binding-r1-plan.md`](p3-6-quarantine-generated-validation-runtime-binding-r1-plan.md).
+
+Machine-readable package:
+[`p3-6-quarantine-generated-validation-harness-r0-implementation-authorization-package.json`](../../contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-authorization-package.json).
+
 ## Decisions Explicitly Deferred
 
 - production accelerator/runtime and GPU fleet;
