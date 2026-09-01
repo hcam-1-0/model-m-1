@@ -851,9 +851,29 @@ U3T R1 runtime-binding authorization proposal may be prepared.
 ### U3T R1 authorization proposal
 
 Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE` is recorded.
-The separate, non-effective U3T R1 package SHA-256 is
-`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
-It proposes one exact-path, 30-second, bounded-output attempt but currently
-authorizes zero attempts. Exact `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` is
-required before any PowerShell execution or runtime observation. All 727 Phase
-3.6 static tests pass.
+`D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` authorized the U3T R1 package SHA-256
+`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`
+was authorized for one exact-path attempt. That attempt is consumed and failed
+closed at `result_contract_invalid` after runtime and source binding succeeded.
+The next plan gate is `D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS` against U3U
+remediation package SHA-256
+`C58B9291E06396374DE92308F2CC52CDB51824BFFDFD1958E4D655C75A894CCD`.
+Its recommended `A/A/A/A` choices prepare only a future source-only additive
+H1 R1 authorization proposal; they do not authorize implementation or retry.
+
+### U3V H1 R1 source authorization proposal
+
+`D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS` accepted `A/A/A/A`. The resulting
+non-effective U3V package SHA-256 is
+`745C50AEB4DB61147C541F897F5E78987F64D9C3B137559F7CA811C0A6A5FD33`.
+It proposes exactly eight additive implementation paths, at least 128
+generated-only vectors, a machine-disabled Python reference classifier, and
+static differential validation. Exact
+`D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH` was recorded on 2026-09-02.
+The source implementation is complete with exactly 128 vectors and 99%
+Python-reference branch coverage. Exact owner source acceptance against package
+SHA-256 `AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`
+is the next gate; runtime execution and U3K remain separately blocked.
+The exact compatibility-test amendment is recorded under
+`D-P3.6-U3V-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT`; it changes no runtime,
+machine, retry, U3K, deployment, or remote-Git authority.

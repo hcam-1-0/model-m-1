@@ -418,7 +418,24 @@ The next requestable decision is
 `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` against package SHA-256
 `26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
 
-The pending H1 decision can authorize only additive source and generated/static
-tests. PowerShell parsing/import/execution, Python machine access, runtime or
-manifest observation, U3T R1, another attempt, U3K, deployment, and remote Git
-remain blocked.
+The accepted H1 source led to one separately authorized U3T R1 attempt. That
+attempt is consumed and failed closed with `result_contract_invalid` after
+runtime and source binding passed. It cannot be retried under the consumed
+authorization.
+
+`D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS` accepted U3U planning package SHA-256
+`C58B9291E06396374DE92308F2CC52CDB51824BFFDFD1958E4D655C75A894CCD`
+and choices `D-P3.6-U3U-001` through `004` are accepted as `A/A/A/A`.
+
+U3V source authorization package SHA-256
+`745C50AEB4DB61147C541F897F5E78987F64D9C3B137559F7CA811C0A6A5FD33`
+was authorized under `D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH` on
+2026-09-02. The eight source implementation paths and generated/static evidence
+are complete. The current next action is exact owner source implementation
+acceptance against package SHA-256
+`AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`.
+PowerShell execution, runtime diagnostic work, another attempt, U3K,
+deployment, and remote Git remain blocked.
+The exact U3V proposal-test compatibility transition is complete under
+`D-P3.6-U3V-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT`; it does not change those
+closed gates.

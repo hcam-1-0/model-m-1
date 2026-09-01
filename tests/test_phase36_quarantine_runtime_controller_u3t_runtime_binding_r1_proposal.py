@@ -215,7 +215,7 @@ def test_proposal_requests_exact_authorization_without_current_authority() -> No
     )
 
 
-def test_canonical_ledgers_expose_H1_acceptance_and_requestable_R1_package() -> None:
+def test_canonical_ledgers_expose_H1_acceptance_and_consumed_R1_attempt() -> None:
     acceptance_key = (
         "quarantine_runtime_controller_u3t_preflight_r0_H1_implementation_acceptance"
     )
@@ -238,9 +238,11 @@ def test_canonical_ledgers_expose_H1_acceptance_and_requestable_R1_package() -> 
         package = state[package_key]
         assert package["owner_decision_id"] == R1_DECISION
         assert package["package_digest_sha256"] == R1_PACKAGE_DIGEST
-        assert package["owner_U3T_R1_authorization_pending"] is True
-        assert package["D_P3_6_U3T_RUNTIME_BINDING_R1_AUTH_requestable"] is True
+        assert package["owner_U3T_R1_authorization_pending"] is False
+        assert package["D_P3_6_U3T_RUNTIME_BINDING_R1_AUTH_requestable"] is False
         assert package["attempts_authorized"] == 0
+        assert package["attempts_consumed"] == 1
+        assert package["terminal_reason_code"] == "result_contract_invalid"
         assert (
             package["PowerShell_parse_import_dot_source_or_execution_authorized"]
             is False
@@ -252,11 +254,13 @@ def test_canonical_ledgers_expose_H1_acceptance_and_requestable_R1_package() -> 
     ]
     assert action["decision_id"] == R1_DECISION
     assert action["authorization_package_sha256"] == R1_PACKAGE_DIGEST
-    assert action["owner_U3T_R1_authorization_pending"] is True
+    assert action["owner_U3T_R1_authorization_pending"] is False
     assert action["attempts_authorized"] == 0
+    assert action["attempts_consumed"] == 1
+    assert action["terminal_reason_code"] == "result_contract_invalid"
 
 
-def test_human_records_line_endings_and_future_outputs_are_closed() -> None:
+def test_human_records_line_endings_and_attempt_outputs_are_sealed() -> None:
     for path in (
         CONTRACTS / "README.md",
         DOCS / "README.md",
@@ -282,4 +286,8 @@ def test_human_records_line_endings_and_future_outputs_are_closed() -> None:
         assert b"\r\n" not in path.read_bytes()
 
     outputs = [ROOT / output for output in _read(ACTION_SPEC)["exact_future_outputs"]]
-    assert all(not output.exists() for output in outputs)
+    assert [_sha256(output) for output in outputs] == [
+        "34AEBB1FC200E1BBC635130A0E41433DC1B4718A1354541F29CC378A4736481D",
+        "B7DAEF8067FACA055A664FC1FD62FA8C3F2CF8C0C27E27679B7DA7AD8E174CFD",
+        "2706F18CA283428A17FDEB0AEB02CC350FE88336D8FBF9AC00CD040F3F0A51E1",
+    ]

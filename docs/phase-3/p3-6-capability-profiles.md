@@ -389,9 +389,23 @@ deployment evidence exists from H1. Exact
 `D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` is recorded and all 719
 Phase 3.6 static tests pass. Exact H1 owner acceptance remains required.
 
-Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE` is now
-recorded. The non-effective R1 authorization package SHA-256 is
-`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
-`D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` remains pending. This planning state does
-not make any profile resolver-eligible and provides no runtime, accelerator,
-hardware, machine, or deployment evidence. All 727 Phase 3.6 static tests pass.
+After `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE`, the exact
+`D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` attempt against package SHA-256
+`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53` is
+consumed. Runtime
+trust and source identity passed,
+but H1 failed closed with `result_contract_invalid`; this is not profile,
+accelerator, capacity, or deployment qualification evidence. U3U remediation
+planning package SHA-256
+`C58B9291E06396374DE92308F2CC52CDB51824BFFDFD1958E4D655C75A894CCD`
+was accepted under `D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS` with `A/A/A/A`.
+The U3V source authorization package SHA-256 is
+`745C50AEB4DB61147C541F897F5E78987F64D9C3B137559F7CA811C0A6A5FD33`.
+Exact `D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH` was recorded and its
+source-only implementation is complete; exact owner source acceptance remains
+pending against package SHA-256
+`AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`.
+No capability profile becomes resolver-eligible, and no runtime or accelerator
+evidence is added.
+The U3V compatibility amendment changes static state assertions only and does
+not alter any capability profile or runtime eligibility gate.

@@ -1924,9 +1924,27 @@ runtime-binding authorization package SHA-256 is
 `C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
 The requestable decision is `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH`.
 
-**Validation:** All 727 explicit Phase 3.6 static tests pass without
-PowerShell parsing or execution.
+**U3T R1 outcome:** Exact `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` authorized one
+attempt. It passed runtime trust and source binding, then failed closed with
+`result_contract_invalid`. The authorization is consumed and cannot be reused.
 
-**Boundary:** The package authorizes zero attempts. PowerShell parsing,
-import, dot-sourcing, execution, runtime or machine observation, Python machine
-access, retry, U3K, deployment, and remote Git remain blocked.
+**Accepted decision:** `D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS`, package SHA-256
+`C58B9291E06396374DE92308F2CC52CDB51824BFFDFD1958E4D655C75A894CCD`.
+Selections are `D-P3.6-U3U-001:A`, `002:A`, `003:A`, and `004:A`.
+
+**Accepted source implementation authorization:**
+`D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH` against package SHA-256
+`745C50AEB4DB61147C541F897F5E78987F64D9C3B137559F7CA811C0A6A5FD33`.
+
+**Current gate:** additive source implementation and generated/static evidence
+are complete with 128 vectors and 99% Python-reference branch coverage. Exact
+owner source implementation acceptance is pending against package SHA-256
+`AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`.
+PowerShell execution, another runtime attempt, U3K, deployment, and remote Git
+remain unauthorized.
+
+**Accepted compatibility amendment:**
+`D-P3.6-U3V-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT`, statement SHA-256
+`9BE9C3F3D2BB9ABE11A84CCCE2E4DDF79B3370AF017AD9E0B56E29C2426B541E`.
+It transitions only the named U3V proposal test from obsolete pre-authorization
+assertions to source complete, owner acceptance pending, and runtime closed.

@@ -499,9 +499,29 @@ Python machine access, runtime observation, U3R retry, U3T, or U3K.
   `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE`.
 - [x] Non-effective U3T R1 authorization package sealed at
   `C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
-- [x] R1 focused static contract checks and all 727 Phase 3.6 tests pass.
-- [ ] Exact `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` before any attempt.
-- [ ] Separately authorized U3T R1 runtime-bound evidence and acceptance.
+- [x] Exact `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` recorded before observation.
+- [x] One bounded U3T R1 attempt consumed with sealed authorization, result,
+  and evidence records.
+- [x] Runtime trust, output bounds, and five source bindings verified stable.
+- [x] Failure sealed as `result_contract_invalid`; no success claimed.
+- [x] U3U failure analysis and A-D decision packet sealed at package SHA-256
+  `C58B9291E06396374DE92308F2CC52CDB51824BFFDFD1958E4D655C75A894CCD`.
+- [x] `D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS` selects `A/A/A/A` in acceptance
+  record SHA-256
+  `64C1CDAC72E15988A86434AD85981C59A94AC885DE8D1927A025D13DA2165A03`.
+- [x] Separate non-effective U3V source-only authorization package sealed at
+  SHA-256
+  `745C50AEB4DB61147C541F897F5E78987F64D9C3B137559F7CA811C0A6A5FD33`.
+- [x] Exact `D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH` recorded before
+  source implementation.
+- [x] U3V source implementation and generated/static evidence completed with
+  128 vectors and 99% Python-reference branch coverage.
+- [x] Exact `D-P3.6-U3V-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` recorded and
+  limited to the obsolete U3V proposal-state assertions; statement SHA-256
+  `9BE9C3F3D2BB9ABE11A84CCCE2E4DDF79B3370AF017AD9E0B56E29C2426B541E`.
+- [ ] Separate exact owner U3V source implementation acceptance against package
+  SHA-256
+  `AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`.
 
-No U3T attempt, runtime, manifest, machine, U3K, deployment, or remote Git is
-authorized.
+No PowerShell execution, runtime diagnostic, retry, U3K, deployment, or remote
+Git is authorized by source implementation completion.

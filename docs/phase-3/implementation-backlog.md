@@ -779,8 +779,25 @@ and operational alerting are not Phase 3 backlog items.
 - **Completed:** Separate non-effective U3T R1 action specification, proposal,
   review, static contract test, and authorization package SHA-256
   `C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
-- **Validated:** All 727 Phase 3.6 static tests pass.
-- **Owner pending:** Exact `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` before any
-  runtime binding or attempt.
-- **Blocked:** PowerShell parsing/import/execution, runtime observation, U3T
-  R1, U3R retry, U3K, deployment, and remote Git.
+- **Attempt:** `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` was consumed once;
+  runtime/source bindings passed and H1 returned
+  `result_contract_invalid`. No retry is available.
+- **Planning complete:** U3U failure analysis, decision packet, and package
+  SHA-256 `C58B9291E06396374DE92308F2CC52CDB51824BFFDFD1958E4D655C75A894CCD`.
+- **Accepted:** `D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS` with `A/A/A/A`;
+  acceptance SHA-256
+  `64C1CDAC72E15988A86434AD85981C59A94AC885DE8D1927A025D13DA2165A03`.
+- **Proposal complete:** U3V source-only implementation authorization package
+  SHA-256 `745C50AEB4DB61147C541F897F5E78987F64D9C3B137559F7CA811C0A6A5FD33`.
+- **Authorized:** Exact `D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH`
+  recorded on 2026-09-02.
+- **Source implementation complete:** additive contract, PowerShell source,
+  machine-disabled Python reference, exactly 128 generated vectors, static
+  differential tests, and 99% branch coverage.
+- **Compatibility synchronized:** exact U3V proposal-test amendment recorded at
+  statement SHA-256
+  `9BE9C3F3D2BB9ABE11A84CCCE2E4DDF79B3370AF017AD9E0B56E29C2426B541E`.
+- **Owner pending:** exact U3V source implementation acceptance against package
+  SHA-256 `AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`.
+- **Blocked:** PowerShell execution, runtime diagnostic package preparation,
+  another attempt, U3K, deployment, and remote Git.

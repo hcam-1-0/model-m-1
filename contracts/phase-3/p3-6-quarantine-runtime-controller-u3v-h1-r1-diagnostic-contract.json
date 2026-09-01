@@ -1,0 +1,191 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3v_h1_r1_diagnostic_contract.v1",
+  "contract_version": "1.0.0",
+  "decision_id": "D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH",
+  "request_mode": "Policy",
+  "diagnostic_group_order": [
+    "top_level_shape",
+    "contract_identity",
+    "terminal_state",
+    "reason_family",
+    "stage_projection",
+    "action_counts",
+    "retention_projection",
+    "gate_effect"
+  ],
+  "allowlisted_terminal_reason_codes": [
+    "source_binding_failed",
+    "controller_top_level_shape_invalid",
+    "controller_contract_identity_invalid",
+    "controller_terminal_state_invalid",
+    "controller_reason_family_invalid",
+    "controller_stage_projection_invalid",
+    "controller_action_counts_invalid",
+    "controller_retention_projection_invalid",
+    "controller_gate_effect_invalid",
+    "controller_projection_valid",
+    "diagnostic_internal_contract_invalid"
+  ],
+  "allowlisted_controller_reason_families": [
+    "policy_valid",
+    "sanitized_failure",
+    "unknown_or_unavailable"
+  ],
+  "controller_result_fields": [
+    "contract_version",
+    "terminal",
+    "succeeded",
+    "reason_code",
+    "stage_projection",
+    "action_counts",
+    "retention_projection",
+    "gate_effect"
+  ],
+  "controller_stage_fields": [
+    "completed_actions",
+    "failed_action",
+    "failed_stage"
+  ],
+  "controller_action_count_fields": [
+    "planned",
+    "completed",
+    "attempts",
+    "retries",
+    "processes"
+  ],
+  "controller_retention_fields": [
+    "raw_material_retained_bytes",
+    "sanitized_result_only",
+    "cleanup_actions"
+  ],
+  "controller_gate_fields": [
+    "machine_action_authorized",
+    "python_machine_fallback",
+    "retry_authorized",
+    "U3T_preflight_authorized",
+    "U3K_authorized",
+    "deployment_authorized",
+    "next_gate"
+  ],
+  "controller_action_order": [
+    "validate_request_contract",
+    "validate_authorization_binding",
+    "classify_runtime_path",
+    "read_runtime_metadata",
+    "hash_runtime",
+    "initialize_runtime_trust",
+    "verify_runtime_trust",
+    "close_runtime_trust",
+    "reverify_runtime_identity",
+    "classify_utility_manifest_path",
+    "parse_utility_manifest",
+    "bind_utility_manifest_closure",
+    "bind_sources",
+    "start_validation_process",
+    "enforce_process_timeout",
+    "validate_process_output_bounds",
+    "validate_result_contract",
+    "compare_cross_language_projection"
+  ],
+  "controller_failure_reason_by_action": {
+    "validate_request_contract": "request_contract_failed",
+    "validate_authorization_binding": "authorization_binding_failed",
+    "classify_runtime_path": "runtime_path_classification_failed",
+    "read_runtime_metadata": "runtime_metadata_failed",
+    "hash_runtime": "runtime_hash_failed",
+    "initialize_runtime_trust": "runtime_trust_initialization_failed",
+    "verify_runtime_trust": "runtime_trust_verification_failed",
+    "close_runtime_trust": "runtime_trust_close_failed",
+    "reverify_runtime_identity": "runtime_identity_changed",
+    "classify_utility_manifest_path": "utility_manifest_path_failed",
+    "parse_utility_manifest": "utility_manifest_parser_failed",
+    "bind_utility_manifest_closure": "utility_manifest_closure_failed",
+    "bind_sources": "source_binding_failed",
+    "start_validation_process": "process_start_failed",
+    "enforce_process_timeout": "process_timeout",
+    "validate_process_output_bounds": "process_output_bounds_failed",
+    "validate_result_contract": "result_contract_invalid",
+    "compare_cross_language_projection": "cross_language_projection_diverged"
+  },
+  "diagnostic_output_fields": [
+    "contract_version",
+    "terminal",
+    "succeeded",
+    "reason_code",
+    "diagnostic_projection",
+    "retention_projection",
+    "gate_effect"
+  ],
+  "diagnostic_projection_fields": [
+    "checked_group_count",
+    "controller_reason_family"
+  ],
+  "diagnostic_retention_fields": [
+    "raw_controller_material_retained_bytes",
+    "sanitized_result_only"
+  ],
+  "diagnostic_gate_fields": [
+    "machine_action_authorized",
+    "python_machine_fallback",
+    "retry_authorized",
+    "U3K_authorized",
+    "deployment_authorized",
+    "next_gate"
+  ],
+  "fixed_invariants": {
+    "controller_action_count": 18,
+    "controller_attempt_count": 1,
+    "controller_retry_count": 0,
+    "controller_process_count": 0,
+    "controller_cleanup_count": 0,
+    "controller_raw_material_retained_bytes": 0,
+    "diagnostic_checked_group_count": 8,
+    "diagnostic_raw_controller_material_retained_bytes": 0,
+    "maximum_output_bytes": 4096
+  },
+  "canonical_projection": {
+    "contract_version": "1.0.0",
+    "diagnostic_group_order": [
+      "top_level_shape",
+      "contract_identity",
+      "terminal_state",
+      "reason_family",
+      "stage_projection",
+      "action_counts",
+      "retention_projection",
+      "gate_effect"
+    ],
+    "allowlisted_terminal_reason_codes": [
+      "source_binding_failed",
+      "controller_top_level_shape_invalid",
+      "controller_contract_identity_invalid",
+      "controller_terminal_state_invalid",
+      "controller_reason_family_invalid",
+      "controller_stage_projection_invalid",
+      "controller_action_counts_invalid",
+      "controller_retention_projection_invalid",
+      "controller_gate_effect_invalid",
+      "controller_projection_valid",
+      "diagnostic_internal_contract_invalid"
+    ],
+    "allowlisted_controller_reason_families": [
+      "policy_valid",
+      "sanitized_failure",
+      "unknown_or_unavailable"
+    ],
+    "maximum_output_bytes": 4096,
+    "raw_controller_material_retained_bytes": 0,
+    "machine_action_authorized": false,
+    "python_machine_fallback": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "deployment_authorized": false
+  },
+  "redaction_and_execution_boundaries": {
+    "candidate_values_type_names_keys_raw_projection_exception_stdout_stderr_environment_identity_or_security_material_retained": false,
+    "external_fixture_model_media_private_or_Government_data": false,
+    "Python_reference_filesystem_runtime_registry_environment_network_native_API_subprocess_machine_controller_or_fallback": false,
+    "PowerShell_parse_import_dot_source_or_execution_in_source_validation": false,
+    "runtime_manifest_hardware_machine_storage_scanner_network_model_media_container_deployment_or_remote_Git_authorized": false
+  }
+}

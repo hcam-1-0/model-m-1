@@ -684,9 +684,25 @@ deployment, and remote Git remain blocked.
 Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE` is recorded
 in acceptance record SHA-256
 `7868C38EAF59595A72AC61D209EA398D3477237D750F234B8F9E5712F0AA9AB3`.
-The separate non-effective R1 package is sealed at SHA-256
-`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
-Exact `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` is pending. The package currently
-authorizes zero attempts. All 727 Phase 3.6 static tests pass. No PowerShell
-execution, runtime observation, machine access, retry, U3K, deployment, or
-remote Git is authorized.
+`D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` authorized the R1 package SHA-256
+`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`
+exactly once. That attempt is consumed and failed closed with
+`result_contract_invalid`; runtime trust and all five source bindings passed,
+but the H1 harness did not produce an accepted success projection. The sealed
+U3U remediation planning package SHA-256 is
+`C58B9291E06396374DE92308F2CC52CDB51824BFFDFD1958E4D655C75A894CCD`.
+`D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS` accepted `A/A/A/A` in acceptance
+record SHA-256
+`64C1CDAC72E15988A86434AD85981C59A94AC885DE8D1927A025D13DA2165A03`.
+The non-effective U3V source authorization package SHA-256 is
+`745C50AEB4DB61147C541F897F5E78987F64D9C3B137559F7CA811C0A6A5FD33`.
+Exact `D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH` was recorded on
+2026-09-02. The additive source implementation is complete with exactly 128
+generated-only vectors and 99% Python-reference branch coverage. The source
+implementation package SHA-256 is
+`AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`;
+exact owner source acceptance remains pending. PowerShell execution, runtime
+diagnostics, retry, U3K, deployment, and remote Git remain unauthorized.
+`D-P3.6-U3V-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` transitioned only the
+obsolete U3V proposal-state assertions; its 1,703-byte statement SHA-256 is
+`9BE9C3F3D2BB9ABE11A84CCCE2E4DDF79B3370AF017AD9E0B56E29C2426B541E`.

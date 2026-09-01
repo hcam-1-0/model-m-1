@@ -378,9 +378,24 @@ SHA-256
 Its canonical statement SHA-256 is
 `5298B054EF403B60D491F5D4BA3B12C3119878880D7C454E81E820095D8199D7`.
 
-That decision permits only preparation of the separate non-effective U3T R1
-authorization package SHA-256
-`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
-Exact `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` remains pending and cannot be
-inferred from acceptance, proposal preparation, static validation, or
-continued work. All 727 Phase 3.6 static tests pass.
+`D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` was later recorded exactly. Its one
+attempt against package SHA-256
+`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53` is
+consumed and failed closed with `result_contract_invalid`; no retry
+or U3K authority followed. The next pending planning acceptance is
+`D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS` against package SHA-256
+`C58B9291E06396374DE92308F2CC52CDB51824BFFDFD1958E4D655C75A894CCD`.
+It was accepted with `A/A/A/A`; canonical owner statement SHA-256 is
+`936964507E19F905390CD5A0AABE1547E3AF88E5EF6A19F9F22F429870A2D1DF`.
+That decision permits preparation only of U3V source authorization package
+SHA-256
+`745C50AEB4DB61147C541F897F5E78987F64D9C3B137559F7CA811C0A6A5FD33`.
+Exact `D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH` was separately recorded
+on 2026-09-02 and was not inferred from U3U acceptance, package preparation,
+static validation, or `continue`. Source implementation is complete; exact
+owner source implementation acceptance remains pending against package SHA-256
+`AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`.
+The separate U3V compatibility-test amendment is recorded with statement
+SHA-256
+`9BE9C3F3D2BB9ABE11A84CCCE2E4DDF79B3370AF017AD9E0B56E29C2426B541E`;
+it grants no runtime authority.

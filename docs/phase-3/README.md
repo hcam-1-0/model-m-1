@@ -461,9 +461,26 @@ or executing PowerShell. Exact
 Phase 3.6 static tests pass. Exact H1 source implementation acceptance is now
 pending; U3T R1 remains a separate closed gate.
 
-Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE` is now
-recorded. The separate [U3T R1 authorization proposal](p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-authorization-proposal.md)
+Following accepted H1 source decision
+`D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE`, exact
+`D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` was recorded and its single attempt
+against package SHA-256
+`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`
+was consumed. Runtime trust and accepted source bindings passed, but the H1
+harness failed closed with `result_contract_invalid`. The
+[U3U remediation decision packet](p3-6-quarantine-runtime-controller-u3u-remediation-decision-packet.md)
+is sealed in planning package SHA-256
+`C58B9291E06396374DE92308F2CC52CDB51824BFFDFD1958E4D655C75A894CCD`.
+`D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS` accepted choices `A/A/A/A`. The
+[U3V source authorization proposal](p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-implementation-authorization-proposal.md)
 is sealed at package SHA-256
-`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
-Exact `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` remains pending, so no attempt or
-runtime and machine authority exists. All 727 Phase 3.6 static tests pass.
+`745C50AEB4DB61147C541F897F5E78987F64D9C3B137559F7CA811C0A6A5FD33`.
+Exact `D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH` was recorded on
+2026-09-02. The additive source implementation now has 128 generated-only
+vectors and 99% Python-reference branch coverage. Its package SHA-256 is
+`AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`.
+Owner source implementation acceptance is pending; PowerShell execution,
+runtime diagnostics, retry, U3K, deployment, and remote Git remain
+unauthorized.
+The exact U3V compatibility-test amendment is recorded with statement SHA-256
+`9BE9C3F3D2BB9ABE11A84CCCE2E4DDF79B3370AF017AD9E0B56E29C2426B541E`.
