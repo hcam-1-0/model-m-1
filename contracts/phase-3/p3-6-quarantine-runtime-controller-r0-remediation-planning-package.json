@@ -1,0 +1,85 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_r0_remediation_planning_package.v1",
+  "package_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-R0-REMEDIATION-PLANNING-PACKAGE",
+  "acceptance_decision_id": "D-P3.6-U3S-FAILURE-ANALYSIS-DECISIONS",
+  "status": "sealed_non_effective_owner_decisions_pending",
+  "sealed_on": "2026-09-01",
+  "preparation_authority": "user_continue_after_sealed_U3R_failure_records_for_planning_only",
+  "core_file_count": 6,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-authorization.json",
+      "sha256": "D7A51E7F4F806F959F437E678C31FC93769FD34B3305EE04DD08290E98D15C2B"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-result.json",
+      "sha256": "497AF7FFA6EEC1B08611FCEB184AC7597A2666B26DF7A6705F3B1BDF9E460C71"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-evidence.json",
+      "sha256": "59E8DE24BD6099BCE2BB197E57300B49606FAFE66A4B0CCCBF6348A7BBEB3059"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-failure-analysis-r0.json",
+      "sha256": "276C2214842B5CE2765B482134BDA486B294FE63299E480CE09461FFEDC71697"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-remediation-decision-packet.json",
+      "sha256": "DB901CA66D01C27E1936BA9492BFB51D7F6E1C11A972107C54A369240DA943C4"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-r0-remediation-decision-packet.md",
+      "sha256": "CA20712E493491AEBF562ACF7769A47F097D95AD1DE6D3165DB33EAD6F7FE986"
+    }
+  ],
+  "owner_decisions": [
+    {
+      "decision_id": "D-P3.6-U3S-001",
+      "title": "Controller Architecture",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U3S-002",
+      "title": "Sanitized Diagnostic Granularity",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U3S-003",
+      "title": "Controller Validation Evidence",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U3S-004",
+      "title": "Runtime Reentry Sequence",
+      "recommended_option": "A",
+      "selected_option": null
+    }
+  ],
+  "recommended_selection": "A/A/A/A",
+  "future_owner_acceptance_statement_template": "D-P3.6-U3S-FAILURE-ANALYSIS-DECISIONS: I, mayank-admin, accept the sanitized U3R failure-analysis planning package digest <U3S_PLANNING_PACKAGE_DIGEST_SHA256> and select D-P3.6-U3S-001:A, D-P3.6-U3S-002:A, D-P3.6-U3S-003:A, and D-P3.6-U3S-004:A. This accepts the failed U3R evidence for planning purposes and authorizes preparation only of a separate source-only runtime-controller implementation authorization proposal. It does not authorize controller, test, harness, runner, handler, adapter, model, or product implementation; PowerShell parsing, import, or execution; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, U3K, another attempt, or remote Git.",
+  "effect_if_exactly_accepted": {
+    "record_selected_planning_options": true,
+    "prepare_separate_source_only_controller_implementation_authorization_proposal": true,
+    "source_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "retry_or_generated_validation_authorized": false,
+    "U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  },
+  "current_gate_effect": {
+    "owner_decisions_pending": true,
+    "attempts_authorized": 0,
+    "controller_source_or_test_modification_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  },
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U3S_planning_package_digest_and_is_not_self_embedded",
+  "authorization_may_be_inferred_from_continue_silence_recommended_options_or_package_preparation": false
+}

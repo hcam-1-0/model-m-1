@@ -259,5 +259,24 @@ def test_human_records_line_endings_and_future_outputs_are_closed() -> None:
     for path in (RESEARCH, ACTION_SPEC, PROPOSAL, PACKAGE, REVIEW, Path(__file__)):
         assert f"{path.as_posix().removeprefix(ROOT.as_posix() + '/')} text eol=lf" in attributes
 
-    for output in _read(ACTION_SPEC)["exact_future_outputs"]:
-        assert not (ROOT / output).exists()
+    outputs = [ROOT / output for output in _read(ACTION_SPEC)["exact_future_outputs"]]
+    if not any(path.exists() for path in outputs):
+        return
+
+    assert all(path.exists() for path in outputs)
+    authorization, result, evidence = (_read(path) for path in outputs)
+    assert authorization["decision_id"] == DECISION
+    assert authorization["package_digest_sha256"] == PACKAGE_DIGEST
+    assert authorization["effective_for_additional_attempt"] is False
+    assert authorization["authorization_scope"]["attempts_consumed"] == 1
+    assert result["attempt_consumed"] is True
+    assert result["automatic_retry_performed"] is False
+    assert result["additional_attempt_authorized"] is False
+    assert evidence["authority_binding"]["authorization_record_sha256"] == _sha256(
+        outputs[0]
+    )
+    assert evidence["authority_binding"]["result_record_sha256"] == _sha256(
+        outputs[1]
+    )
+    assert evidence["gate_effect"]["authorization_reusable"] is False
+    assert evidence["gate_effect"]["U3K_package_preparation_authorized"] is False
