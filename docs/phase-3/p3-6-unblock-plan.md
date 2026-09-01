@@ -63,6 +63,19 @@ Status: metadata planning package owner accepted under
 `D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE`; acquisition, execution, and promotion
 remain blocked.
 
+## Current U3T R1 authorization gate
+
+Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE` is recorded.
+The separate non-effective U3T R1 authorization package SHA-256 is
+`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
+The next requestable decision is exact
+`D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH`.
+
+Until that exact digest-bound authorization is recorded, no PowerShell
+parsing/import/dot-source/execution, runtime or parent observation, attempt,
+Python machine access, retry, U3K, deployment, or remote Git is authorized.
+All 727 Phase 3.6 static tests pass.
+
 ## Current U3T H1 acceptance gate
 
 Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` was recorded and

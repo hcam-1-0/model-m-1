@@ -785,6 +785,36 @@
     "deployment_or_remote_git_authorized": false,
     "status": "clean_static_validation_owner_H1_source_implementation_acceptance_pending"
   },
+  "quarantine_runtime_controller_u3t_preflight_r0_H1_implementation_acceptance": {
+    "decision_id": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-harness-implementation-acceptance.json",
+    "acceptance_record_sha256": "7868C38EAF59595A72AC61D209EA398D3477237D750F234B8F9E5712F0AA9AB3",
+    "accepted_package_digest_sha256": "AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788",
+    "accepted_commit": "07d551789df00c32b54d42eb121ba8b865794ef7",
+    "U3T_R1_proposal_preparation_authorized": true,
+    "U3T_R1_attempt_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "U3R_retry_or_U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false,
+    "status": "accepted_source_and_generated_static_evidence_R1_proposal_preparation_only"
+  },
+  "quarantine_runtime_controller_u3t_runtime_binding_r1_authorization_package": {
+    "owner_decision_id": "D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH",
+    "preparation_authority_decision_id": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE",
+    "package_manifest": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-authorization-package.json",
+    "package_digest_sha256": "C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53",
+    "action_spec": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-action-spec.json",
+    "owner_U3T_R1_authorization_pending": true,
+    "D_P3_6_U3T_RUNTIME_BINDING_R1_AUTH_requestable": true,
+    "attempts_authorized": 0,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_parent_manifest_hardware_or_machine_observation_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "U3R_retry_or_U3K_requestable": false,
+    "profile_activation_deployment_or_remote_git_authorized": false,
+    "status": "sealed_non_effective_owner_authorization_pending_no_attempt_performed"
+  },
   "portable_cpu_profile_proposal": {
     "acceptance_record": "contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json",
     "package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",

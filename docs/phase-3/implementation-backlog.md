@@ -774,7 +774,13 @@ and operational alerting are not Phase 3 backlog items.
 - **Completed:** Exact one-test
   `D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` transition.
 - **Validated:** 8 focused tests and all 719 Phase 3.6 static tests pass.
-- **Owner pending:** Exact H1 source implementation acceptance against the
-  resealed package digest.
+- **Completed:** Exact
+  `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE`.
+- **Completed:** Separate non-effective U3T R1 action specification, proposal,
+  review, static contract test, and authorization package SHA-256
+  `C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
+- **Validated:** All 727 Phase 3.6 static tests pass.
+- **Owner pending:** Exact `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` before any
+  runtime binding or attempt.
 - **Blocked:** PowerShell parsing/import/execution, runtime observation, U3T
   R1, U3R retry, U3K, deployment, and remote Git.

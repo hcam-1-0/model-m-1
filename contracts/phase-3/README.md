@@ -678,3 +678,15 @@ one historical planning test. All 719 Phase 3.6 static tests now pass. The next
 gate is exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE`.
 PowerShell parsing or execution, runtime observation, U3T R1, U3R retry, U3K,
 deployment, and remote Git remain blocked.
+
+### U3T H1 acceptance and R1 authorization package
+
+Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE` is recorded
+in acceptance record SHA-256
+`7868C38EAF59595A72AC61D209EA398D3477237D750F234B8F9E5712F0AA9AB3`.
+The separate non-effective R1 package is sealed at SHA-256
+`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
+Exact `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` is pending. The package currently
+authorizes zero attempts. All 727 Phase 3.6 static tests pass. No PowerShell
+execution, runtime observation, machine access, retry, U3K, deployment, or
+remote Git is authorized.

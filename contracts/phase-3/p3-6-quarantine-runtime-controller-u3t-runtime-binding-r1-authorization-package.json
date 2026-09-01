@@ -1,0 +1,112 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3t_runtime_binding_r1_authorization_package.v1",
+  "package_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3T-RUNTIME-BINDING-R1-AUTHORIZATION-PACKAGE",
+  "decision_id": "D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH",
+  "status": "sealed_non_effective_owner_authorization_pending_no_attempt_performed",
+  "sealed_on": "2026-09-01",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record_sha256": "7868C38EAF59595A72AC61D209EA398D3477237D750F234B8F9E5712F0AA9AB3",
+    "accepted_H1_implementation_package_sha256": "AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788",
+    "effect": "prepare_this_non_effective_U3T_R1_authorization_package_only"
+  },
+  "core_file_count": 13,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-harness-implementation-acceptance.json",
+      "sha256": "7868C38EAF59595A72AC61D209EA398D3477237D750F234B8F9E5712F0AA9AB3",
+      "role": "exact_H1_source_implementation_acceptance_and_U3T_R1_planning_authority"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-harness-implementation-package.json",
+      "sha256": "AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788",
+      "role": "accepted_H1_source_and_generated_static_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-harness-implementation-evidence.json",
+      "sha256": "531C9C9DF109B855E02925C5F57795F084F1AB3F1AA2BFC9CDA0ADC94ED8F8CF",
+      "role": "accepted_nonobservational_H1_source_and_static_evidence"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-planning-contract.json",
+      "sha256": "5453800CA47D5ECCEF3477BCDCD1B352569D84E58E7DAB362F6DAD065829BE3B",
+      "role": "accepted_two_gate_H1_then_R1_planning_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-planning-package.json",
+      "sha256": "26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2",
+      "role": "accepted_H1_and_future_R1_planning_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-action-spec.json",
+      "sha256": "296DA7D3D5DAF56D10EC8C7535C28C3D531A252EDC2477FB2451FD1E53D94E40",
+      "role": "exact_bounded_single_process_single_attempt_runtime_binding_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-authorization-proposal.json",
+      "sha256": "7751D6216FF1DB0B628CABB3E77A7B1AA05AC98E6233B4E1C51BA9A26098324E",
+      "role": "non_effective_owner_authorization_request"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-authorization-proposal.md",
+      "sha256": "CDD8D0750D1431B2D5FA69FE8ED1A2CA53C339C0220C70616A577FEAB6A64085",
+      "role": "human_reviewable_scope_limits_evidence_policy_and_gate"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_u3t_preflight.ps1",
+      "sha256": "69CBF4637A22BB7859ED07D19804C8576D76FB1270FF58D0D182EED2592FCE7B",
+      "role": "accepted_H1_fixed_generated_Policy_harness_future_process_target"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-vectors.json",
+      "sha256": "394A4564D54B531EBBC7C16BEA6F66D0D41DEDA757E5E979C796B350462DAB4F",
+      "role": "accepted_48_vector_H1_static_manifest"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller.ps1",
+      "sha256": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB",
+      "role": "accepted_authoritative_PowerShell_policy_controller_future_harness_dependency"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-contract.json",
+      "sha256": "3F2A0975F92892A96FBC67B951B226D5AB958AE067F55B697ABA43669B8FB00E",
+      "role": "accepted_controller_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-vectors.json",
+      "sha256": "31335510565E4C74908C674B88951E81B7A7983331C6DE2E91964C1F8B48C20B",
+      "role": "accepted_192_vector_controller_manifest"
+    }
+  ],
+  "attempt_contract": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "exact_runtime_path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "maximum_attempts": 1,
+    "authorization_window_seconds": 86400,
+    "failed_attempt_consumes_authorization": true,
+    "automatic_retry": false,
+    "maximum_processes": 1,
+    "process_timeout_seconds": 30,
+    "maximum_stdout_bytes": 16384,
+    "maximum_stderr_bytes": 0,
+    "maximum_result_bytes": 65536,
+    "request_mode": "Policy",
+    "expected_completed_actions": 18,
+    "machine_action_count": 0,
+    "Utility_manifest_module_closure_hardware_storage_scanner_network_model_media_or_deployment_scope": false
+  },
+  "future_owner_authorization_statement_template": "D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH: I, mayank-admin, authorize one fresh runtime-binding and U3T preflight R1 attempt against package digest <U3T_R1_AUTHORIZATION_PACKAGE_DIGEST_SHA256> within 24 hours on LAB-LAPTOP-01. The attempt may verify and record the exact authorization; classify, size, version, hash, and cache-only no-UI whole-chain-excluding-root trust-check only C:\\Program Files\\PowerShell\\7\\pwsh.exe and its three fixed parent components without trust retrieval; verify exact H1 harness SHA-256 69CBF4637A22BB7859ED07D19804C8576D76FB1270FF58D0D182EED2592FCE7B, H1 vector-manifest SHA-256 394A4564D54B531EBBC7C16BEA6F66D0D41DEDA757E5E979C796B350462DAB4F, controller SHA-256 78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB, controller-contract SHA-256 3F2A0975F92892A96FBC67B951B226D5AB958AE067F55B697ABA43669B8FB00E, and controller-vector SHA-256 31335510565E4C74908C674B88951E81B7A7983331C6DE2E91964C1F8B48C20B; invoke the exact runtime once with NoLogo, NoProfile, NonInteractive and the accepted H1 harness under the authorization-bound checkout root; enforce a 30-second timeout, 16 KiB stdout, zero stderr, and 64 KiB result; accept only the 13 allowlisted terminal reason codes; reverify runtime, parents, and source identity; and write only the three bounded sanitized authorization, result, and evidence records. Failure consumes the authorization and requires a new digest-bound authorization. This does not authorize alternate runtime, parent, checkout, source, module, or hardware discovery; Utility-manifest, module-closure, or Aggregate validation; PATH, PSModulePath, registry, WMI, package, or directory inventory; Python machine access or fallback; machine, storage, F:, B:, ACL, identity, probe, cleanup, Defender, or scanner action; network or trust retrieval; downloads, artifacts, models, inference, cameras, media, data, containers, Kubernetes, profile activation, deployment, U3R retry, U3K, or remote Git. Any further attempt or U3K package requires separate accepted R1 evidence and later explicit authorization.",
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U3T_R1_authorization_package_digest_and_is_not_self_embedded",
+  "synchronized_ledgers_indexes_and_static_test_excluded_from_core_hashes_to_avoid_recursive_digest_binding": true,
+  "current_gate_effect": {
+    "D_P3_6_U3T_RUNTIME_BINDING_R1_AUTH_requestable": true,
+    "owner_U3T_R1_authorization_pending": true,
+    "attempts_authorized": 0,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_parent_manifest_hardware_or_machine_observation_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "U3R_retry_or_U3K_requestable": false,
+    "profile_activation_deployment_or_remote_git_authorized": false
+  },
+  "authorization_may_be_inferred_from_H1_acceptance_continue_package_preparation_or_static_validation": false
+}

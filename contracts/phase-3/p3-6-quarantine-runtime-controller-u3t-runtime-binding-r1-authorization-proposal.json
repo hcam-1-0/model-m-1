@@ -1,0 +1,84 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3t_runtime_binding_r1_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3T-RUNTIME-BINDING-R1-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH",
+  "status": "sealed_non_effective_owner_authorization_pending_no_attempt_performed",
+  "prepared_on": "2026-09-01",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-harness-implementation-acceptance.json",
+    "acceptance_sha256": "7868C38EAF59595A72AC61D209EA398D3477237D750F234B8F9E5712F0AA9AB3",
+    "accepted_H1_package_sha256": "AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788",
+    "effect": "prepare_only_a_separate_non_effective_U3T_R1_runtime_binding_and_one_attempt_authorization_proposal"
+  },
+  "request_scope": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "maximum_attempts": 1,
+    "authorization_window_seconds": 86400,
+    "failed_attempt_consumes_authorization": true,
+    "automatic_retry": false,
+    "exact_runtime_path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "exact_harness_sha256": "69CBF4637A22BB7859ED07D19804C8576D76FB1270FF58D0D182EED2592FCE7B",
+    "exact_controller_sha256": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB",
+    "process_timeout_seconds": 30,
+    "maximum_stdout_bytes": 16384,
+    "maximum_stderr_bytes": 0,
+    "maximum_result_bytes": 65536,
+    "Utility_manifest_module_closure_or_hardware_scope": false,
+    "machine_storage_scanner_model_media_container_or_deployment_scope": false
+  },
+  "required_preconditions": [
+    "exact_authorization_package_digest_and_all_core_hashes_match",
+    "exact_owner_statement_is_recorded_before_any_runtime_or_parent_observation",
+    "authorization_is_within_twenty_four_hours_and_unused",
+    "runtime_candidate_is_exact_path_local_regular_nonreparse_bounded_and_cache_only_trusted",
+    "fixed_parent_components_are_canonical_nonreparse_and_stable",
+    "accepted_H1_harness_controller_contract_and_vector_hashes_match",
+    "authorization_bound_checkout_root_and_exact_relative_paths_are_stable",
+    "process_output_timeout_environment_and_single_attempt_bounds_are_active"
+  ],
+  "allowed_attempt": [
+    "verify_and_record_only_the_exact_digest_bound_authorization",
+    "classify_only_the_exact_runtime_candidate_and_three_fixed_parent_components",
+    "bind_bounded_runtime_metadata_SHA256_and_cache_only_no_UI_whole_chain_excluding_root_trust_without_retrieval",
+    "verify_only_the_exact_accepted_H1_harness_controller_contract_and_vector_files",
+    "invoke_the_exact_runtime_once_with_NoLogo_NoProfile_NonInteractive_and_the_exact_H1_harness",
+    "enforce_thirty_second_timeout_sixteen_KiB_stdout_zero_stderr_and_sixty_four_KiB_result_bounds",
+    "accept_only_one_allowlisted_terminal_reason_code_and_bounded_sanitized_JSON_projection",
+    "reverify_runtime_parent_and_source_identity_after_the_process",
+    "write_only_the_three_exact_bounded_sanitized_authorization_result_and_evidence_records"
+  ],
+  "explicitly_not_authorized": [
+    "any_action_before_exact_digest_bound_owner_authorization",
+    "more_than_one_attempt_automatic_retry_or_parallel_process",
+    "alternate_runtime_parent_checkout_source_module_or_hardware_discovery",
+    "Utility_manifest_module_closure_Aggregate_mode_or_unbounded_PowerShell_parsing",
+    "PATH_PSModulePath_registry_WMI_package_or_directory_inventory",
+    "Python_machine_access_controller_mode_subprocess_native_API_or_fallback",
+    "machine_storage_F_B_ACL_identity_probe_cleanup_Defender_or_scanner_action",
+    "network_or_trust_retrieval_download_install_update_or_acquisition",
+    "artifact_model_dataset_camera_media_private_or_Government_data_access",
+    "model_loading_inference_benchmark_or_hardware_testing",
+    "containers_Kubernetes_profile_activation_deployment_U3R_retry_U3K_or_remote_Git"
+  ],
+  "result_policy": {
+    "success_requires": "policy_valid_with_18_completed_actions_zero_machine_actions_zero_retry_zero_raw_retention_and_stable_runtime_parent_and_source_identity",
+    "failure_requires": "one_allowlisted_sanitized_reason_code_without_raw_stdout_stderr_exception_invocation_environment_identity_or_security_material",
+    "success_or_failure_consumes_attempt": true,
+    "separate_evidence_acceptance_required": true,
+    "U3K_becomes_requestable_from_attempt_alone": false
+  },
+  "future_owner_authorization_statement_template": "D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH: I, mayank-admin, authorize one fresh runtime-binding and U3T preflight R1 attempt against package digest <U3T_R1_AUTHORIZATION_PACKAGE_DIGEST_SHA256> within 24 hours on LAB-LAPTOP-01. The attempt may verify and record the exact authorization; classify, size, version, hash, and cache-only no-UI whole-chain-excluding-root trust-check only C:\\Program Files\\PowerShell\\7\\pwsh.exe and its three fixed parent components without trust retrieval; verify exact H1 harness SHA-256 69CBF4637A22BB7859ED07D19804C8576D76FB1270FF58D0D182EED2592FCE7B, H1 vector-manifest SHA-256 394A4564D54B531EBBC7C16BEA6F66D0D41DEDA757E5E979C796B350462DAB4F, controller SHA-256 78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB, controller-contract SHA-256 3F2A0975F92892A96FBC67B951B226D5AB958AE067F55B697ABA43669B8FB00E, and controller-vector SHA-256 31335510565E4C74908C674B88951E81B7A7983331C6DE2E91964C1F8B48C20B; invoke the exact runtime once with NoLogo, NoProfile, NonInteractive and the accepted H1 harness under the authorization-bound checkout root; enforce a 30-second timeout, 16 KiB stdout, zero stderr, and 64 KiB result; accept only the 13 allowlisted terminal reason codes; reverify runtime, parents, and source identity; and write only the three bounded sanitized authorization, result, and evidence records. Failure consumes the authorization and requires a new digest-bound authorization. This does not authorize alternate runtime, parent, checkout, source, module, or hardware discovery; Utility-manifest, module-closure, or Aggregate validation; PATH, PSModulePath, registry, WMI, package, or directory inventory; Python machine access or fallback; machine, storage, F:, B:, ACL, identity, probe, cleanup, Defender, or scanner action; network or trust retrieval; downloads, artifacts, models, inference, cameras, media, data, containers, Kubernetes, profile activation, deployment, U3R retry, U3K, or remote Git. Any further attempt or U3K package requires separate accepted R1 evidence and later explicit authorization.",
+  "current_effect": {
+    "proposal_prepared": true,
+    "package_digest_not_yet_bound": true,
+    "owner_U3T_R1_authorization_pending": true,
+    "attempts_authorized": 0,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_parent_manifest_hardware_or_machine_observation_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "U3R_retry_or_U3K_requestable": false,
+    "profile_activation_deployment_or_remote_git_authorized": false
+  },
+  "authorization_may_be_inferred_from_H1_acceptance_continue_package_preparation_or_static_validation": false
+}

@@ -495,8 +495,12 @@ Python machine access, runtime observation, U3R retry, U3T, or U3K.
 - [x] Exact `D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` for the one
   obsolete planning-time H1 path-absence assertion.
 - [x] Clean focused and full Phase 3.6 static validation: 719 passed.
-- [ ] Exact
+- [x] Exact
   `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE`.
+- [x] Non-effective U3T R1 authorization package sealed at
+  `C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
+- [x] R1 focused static contract checks and all 727 Phase 3.6 tests pass.
+- [ ] Exact `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` before any attempt.
 - [ ] Separately authorized U3T R1 runtime-bound evidence and acceptance.
 
 No U3T attempt, runtime, manifest, machine, U3K, deployment, or remote Git is

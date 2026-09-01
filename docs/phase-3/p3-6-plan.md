@@ -847,3 +847,13 @@ Exact `D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` is recorded. The
 focused H1 suite and all 719 Phase 3.6 static tests pass. Exact H1 source
 implementation acceptance is now required before a separate non-effective
 U3T R1 runtime-binding authorization proposal may be prepared.
+
+### U3T R1 authorization proposal
+
+Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE` is recorded.
+The separate, non-effective U3T R1 package SHA-256 is
+`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
+It proposes one exact-path, 30-second, bounded-output attempt but currently
+authorizes zero attempts. Exact `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` is
+required before any PowerShell execution or runtime observation. All 727 Phase
+3.6 static tests pass.

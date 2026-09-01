@@ -368,3 +368,19 @@ The owner then supplied exact
 planning test. The focused H1 suite and all 719 Phase 3.6 static tests pass.
 H1 source acceptance is now requestable but remains pending; it cannot be
 inferred from authorization, validation, package existence, or continued work.
+
+## U3T H1 acceptance and R1 proposal authority
+
+The owner supplied exact
+`D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE` against H1 package
+SHA-256
+`AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788`.
+Its canonical statement SHA-256 is
+`5298B054EF403B60D491F5D4BA3B12C3119878880D7C454E81E820095D8199D7`.
+
+That decision permits only preparation of the separate non-effective U3T R1
+authorization package SHA-256
+`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
+Exact `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` remains pending and cannot be
+inferred from acceptance, proposal preparation, static validation, or
+continued work. All 727 Phase 3.6 static tests pass.

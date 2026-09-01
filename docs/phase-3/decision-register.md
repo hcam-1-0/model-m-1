@@ -1910,3 +1910,23 @@ static tests pass. Exact H1 implementation acceptance is the next decision.
 **Boundary:** PowerShell was not parsed, imported, dot-sourced, or executed.
 H1 acceptance, U3T R1 runtime binding and execution, U3R retry, U3K,
 deployment, and remote Git remain separately blocked.
+
+## U3T H1 Acceptance And R1 Authorization Proposal
+
+**Decision:** Exact
+`D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE` accepts package
+SHA-256
+`AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788`
+as source/generated-static evidence only.
+
+**Planning result:** The separately prepared non-effective U3T R1
+runtime-binding authorization package SHA-256 is
+`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
+The requestable decision is `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH`.
+
+**Validation:** All 727 explicit Phase 3.6 static tests pass without
+PowerShell parsing or execution.
+
+**Boundary:** The package authorizes zero attempts. PowerShell parsing,
+import, dot-sourcing, execution, runtime or machine observation, Python machine
+access, retry, U3K, deployment, and remote Git remain blocked.

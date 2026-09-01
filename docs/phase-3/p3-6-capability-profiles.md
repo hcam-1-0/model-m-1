@@ -388,3 +388,10 @@ resolver-eligible. No PowerShell runtime, machine capability, accelerator, or
 deployment evidence exists from H1. Exact
 `D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` is recorded and all 719
 Phase 3.6 static tests pass. Exact H1 owner acceptance remains required.
+
+Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE` is now
+recorded. The non-effective R1 authorization package SHA-256 is
+`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
+`D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` remains pending. This planning state does
+not make any profile resolver-eligible and provides no runtime, accelerator,
+hardware, machine, or deployment evidence. All 727 Phase 3.6 static tests pass.

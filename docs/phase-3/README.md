@@ -460,3 +460,10 @@ or executing PowerShell. Exact
 `D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` is recorded, and all 719
 Phase 3.6 static tests pass. Exact H1 source implementation acceptance is now
 pending; U3T R1 remains a separate closed gate.
+
+Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE` is now
+recorded. The separate [U3T R1 authorization proposal](p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-authorization-proposal.md)
+is sealed at package SHA-256
+`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53`.
+Exact `D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` remains pending, so no attempt or
+runtime and machine authority exists. All 727 Phase 3.6 static tests pass.
