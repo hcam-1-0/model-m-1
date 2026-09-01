@@ -32,6 +32,11 @@ IMPLEMENTATION_PACKAGE = (
     CONTRACTS
     / "p3-6-quarantine-generated-validation-harness-r1-implementation-package.json"
 )
+ACCEPTANCE = (
+    CONTRACTS
+    / "p3-6-quarantine-generated-validation-harness-r1-implementation-"
+    "acceptance.json"
+)
 REVIEW = (
     DOCS
     / "p3-6-quarantine-generated-validation-harness-r1-implementation-"
@@ -51,6 +56,9 @@ AUTHORIZATION_DIGEST = (
 )
 OWNER_STATEMENT_DIGEST = (
     "619A9D574A45C479190773E003BBFDBF1749FD907319B32FDCF262FD6CD7E6D4"
+)
+ACCEPTANCE_DIGEST = (
+    "8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC"
 )
 IMMUTABLE_HASHES = {
     "contracts/phase-3/"
@@ -199,14 +207,24 @@ def test_nonobservational_evidence_binds_source_tests_and_limitations() -> None:
     assert evidence["gate_effect"]["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
 
 
-def test_implementation_package_binds_exact_current_core() -> None:
+def test_implementation_package_preserves_sealed_core_manifest() -> None:
     package = _read(IMPLEMENTATION_PACKAGE)
 
     assert package["authorization_decision_id"] == DECISION
     assert package["future_acceptance_decision_id"] == ACCEPTANCE_DECISION
     assert package["core_file_count"] == len(package["core_files"])
-    for item in package["core_files"]:
-        assert _sha256(ROOT / item["path"]) == item["sha256"]
+    core = {item["path"]: item["sha256"] for item in package["core_files"]}
+    for path in (
+        "tools/phase36_quarantine_generated_validation.ps1",
+        "contracts/phase-3/"
+        "p3-6-quarantine-generated-powershell-validation-r0-vectors.json",
+        "tools/phase36_quarantine_transaction_runner.ps1",
+        "tools/phase36_quarantine_machine_handlers.psm1",
+        "tools/phase36_quarantine_windows_storage_adapter.psm1",
+        "contracts/phase-3/"
+        "p3-6-quarantine-generated-validation-harness-r1-implementation-evidence.json",
+    ):
+        assert _sha256(ROOT / path) == core[path]
     assert package["current_gate_effect"]["owner_implementation_acceptance_pending"]
     assert package["current_gate_effect"]["U3P_package_preparation_authorized"] is False
     assert package["current_gate_effect"][
@@ -218,7 +236,7 @@ def test_implementation_package_binds_exact_current_core() -> None:
     assert REVIEW.exists()
 
 
-def test_ledgers_and_human_records_bind_current_package_and_pending_acceptance() -> None:
+def test_ledgers_and_human_records_bind_current_package_and_acceptance() -> None:
     package_digest = _sha256(IMPLEMENTATION_PACKAGE)
     for name in (
         "p3-6-entry-gates.json",
@@ -234,7 +252,10 @@ def test_ledgers_and_human_records_bind_current_package_and_pending_acceptance()
         assert state["owner_U3O_authorization_pending"] is False
         assert state["implementation_authority_consumed"] is True
         assert state["source_only_implementation_complete"] is True
-        assert state["owner_implementation_acceptance_pending"] is True
+        assert state["implementation_acceptance_sha256"] == ACCEPTANCE_DIGEST
+        assert state["owner_implementation_acceptance_pending"] is False
+        assert state["source_and_generated_static_evidence_accepted"] is True
+        assert state["U3P_package_preparation_authorized"] is True
         assert state["PowerShell_parser_import_or_execution_authorized"] is False
         assert state["runtime_retry_authorized"] is False
         assert state["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False
@@ -255,12 +276,28 @@ def test_ledgers_and_human_records_bind_current_package_and_pending_acceptance()
         assert package_digest in text
 
 
-def test_line_endings_and_separate_acceptance_gate_are_explicit() -> None:
+def test_digest_bound_acceptance_and_line_endings_are_explicit() -> None:
     attributes = (ROOT / ".gitattributes").read_text(encoding="utf-8")
-    for path in (AUTHORIZATION, EVIDENCE, IMPLEMENTATION_PACKAGE, REVIEW, Path(__file__)):
+    for path in (
+        AUTHORIZATION,
+        EVIDENCE,
+        IMPLEMENTATION_PACKAGE,
+        ACCEPTANCE,
+        REVIEW,
+        Path(__file__),
+    ):
         assert f"{path.name} text eol=lf" in attributes
-    assert not (
-        CONTRACTS
-        / "p3-6-quarantine-generated-validation-harness-r1-implementation-"
-        "acceptance.json"
-    ).exists()
+    assert _sha256(ACCEPTANCE) == ACCEPTANCE_DIGEST
+    acceptance = _read(ACCEPTANCE)
+    assert acceptance["decision_id"] == ACCEPTANCE_DECISION
+    assert acceptance["accepted_package"]["sha256"] == _sha256(
+        IMPLEMENTATION_PACKAGE
+    )
+    assert acceptance["accepted_evidence"]["sha256"] == _sha256(EVIDENCE)
+    assert acceptance["accepted_effect"][
+        "separate_non_effective_U3P_authorization_package_preparation_authorized"
+    ] is True
+    assert acceptance["accepted_effect"]["retry_authorized"] is False
+    assert acceptance[
+        "acceptance_may_be_inferred_as_U3P_execution_or_U3K_authority"
+    ] is False

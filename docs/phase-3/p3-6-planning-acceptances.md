@@ -269,11 +269,12 @@ Planning-only failure analysis produced the non-effective U3O source-remediation
 package SHA-256
 `17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338`.
 Exact
-`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` is pending.
-Neither analysis nor package preparation authorizes source changes, PowerShell,
-runtime observation, retry, machine/storage action, deployment, or remote Git.
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` was
+subsequently recorded and consumed for the source-only result below. Neither
+the analysis nor the accepted source result authorizes PowerShell, runtime
+observation, retry, machine/storage action, deployment, or remote Git.
 
-## U3O R1 Source Implementation Awaiting Acceptance
+## U3O R1 Source Implementation Accepted
 
 Exact U3O implementation authority was consumed. Harness SHA-256 is
 `F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3`;
@@ -284,6 +285,8 @@ the implementation package SHA-256 is
 
 Exact
 `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
-is not yet recorded. No U3P package, retry, PowerShell action, runtime/hardware
-observation, U3K action, profile activation, deployment, or remote Git action
-is authorized.
+is recorded under acceptance-record SHA-256
+`8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC`.
+Only a non-effective U3P package may be prepared. Retry, PowerShell action,
+runtime/hardware observation, U3K action, profile activation, deployment, and
+remote Git action remain unauthorized.

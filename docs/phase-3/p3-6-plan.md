@@ -770,7 +770,9 @@ evidence SHA-256 is
 implementation-package SHA-256 is
 `2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E`.
 
-The next gate is exact
-`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`.
-Only after that acceptance may a separate non-effective U3P retry proposal be
-prepared. Acceptance alone will not authorize PowerShell or a runtime attempt.
+Exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+is recorded under acceptance-record SHA-256
+`8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC`.
+A separate non-effective U3P retry proposal may now be prepared. Acceptance
+does not authorize PowerShell or a runtime attempt.

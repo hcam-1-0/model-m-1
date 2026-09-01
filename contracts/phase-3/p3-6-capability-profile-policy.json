@@ -517,17 +517,20 @@
     "implementation_package": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-package.json",
     "implementation_package_sha256": "2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E",
     "future_acceptance_decision_id": "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE",
-    "owner_implementation_acceptance_pending": true,
+    "implementation_acceptance_record": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-acceptance.json",
+    "implementation_acceptance_sha256": "8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC",
+    "owner_implementation_acceptance_pending": false,
+    "source_and_generated_static_evidence_accepted": true,
     "source_or_test_modification_authorized": false,
     "PowerShell_parser_import_or_execution_authorized": false,
     "runtime_retry_authorized": false,
-    "U3P_package_preparation_authorized": false,
+    "U3P_package_preparation_authorized": true,
     "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
     "resolver_eligible": false,
     "profile_activation_authorized": false,
     "deployment_authorized": false,
     "remote_git_authorized": false,
-    "status": "U3O_source_only_remediation_implemented_generated_static_evidence_sealed_exact_owner_acceptance_pending"
+    "status": "U3O_source_and_generated_static_evidence_accepted_U3P_non_effective_package_preparation_only"
   },
   "portable_cpu_profile_proposal": {
     "acceptance_record": "contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json",
@@ -570,7 +573,7 @@
     }
   ],
   "record_id": "P3.6-CAPABILITY-PROFILE-POLICY",
-  "status": "accepted_planning_baseline_aligned_to_phase_minus_1_with_U3E_U3G_and_U3N_attempts_consumed_failed_closed_U3O_source_only_remediation_implemented_owner_acceptance_pending_no_retry_authority",
+  "status": "accepted_planning_baseline_aligned_to_phase_minus_1_with_U3E_U3G_and_U3N_attempts_consumed_failed_closed_U3O_R1_source_and_static_evidence_accepted_U3P_non_effective_package_preparation_only_no_retry_authority",
   "unresolved_gates": [
     "model_champion_and_fallback",
     "exact_machine_capability_manifests",

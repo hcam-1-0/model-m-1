@@ -311,9 +311,10 @@ No capability profile became eligible and no placement or activation decision
 was produced. The non-effective remediation package SHA-256 is
 `17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338`;
 exact
-`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` is pending.
-Even if authorized, U3O is source/static work only and cannot activate a
-profile, execute a model, select hardware, schedule a workload, or deploy.
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` was
+subsequently recorded and consumed for source/static work only. It cannot
+activate a profile, execute a model, select hardware, schedule a workload, or
+deploy.
 
 ## U3O R1 Implementation Effect
 
@@ -325,5 +326,8 @@ and implementation-package SHA-256
 `2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E`.
 Exact
 `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
-is pending. No profile is eligible or active, and no model placement,
-scheduling, acceleration, runtime, or deployment evidence is created.
+is recorded under acceptance-record SHA-256
+`8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC`.
+Only non-effective U3P package preparation is authorized. No profile is
+eligible or active, and no model placement, scheduling, acceleration, runtime,
+or deployment evidence is created.

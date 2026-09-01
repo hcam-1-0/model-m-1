@@ -408,8 +408,8 @@ models, media/data, containers/Kubernetes, deployment, or remote Git.
   `07FF33F19A3C846E69AA8E9C1FD34F9EEBA621BEF1A2424C9173015FB4A0E695`.
 - [x] Seal implementation package SHA-256
   `2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E`.
-- [ ] Exact
+- [x] Exact
   `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`.
 
-The unchecked acceptance gate authorizes no runtime action by itself. U3P and
-U3K remain blocked.
+The recorded acceptance authorizes only preparation of a separate
+non-effective U3P package. U3P execution and U3K remain blocked.

@@ -509,17 +509,20 @@
     "implementation_package": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-package.json",
     "implementation_package_sha256": "2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E",
     "future_acceptance_decision_id": "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE",
-    "owner_implementation_acceptance_pending": true,
+    "implementation_acceptance_record": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-acceptance.json",
+    "implementation_acceptance_sha256": "8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC",
+    "owner_implementation_acceptance_pending": false,
+    "source_and_generated_static_evidence_accepted": true,
     "source_or_test_modification_authorized": false,
     "PowerShell_parser_import_or_execution_authorized": false,
     "runtime_retry_authorized": false,
-    "U3P_package_preparation_authorized": false,
+    "U3P_package_preparation_authorized": true,
     "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
     "resolver_eligible": false,
     "profile_activation_authorized": false,
     "deployment_authorized": false,
     "remote_git_authorized": false,
-    "status": "U3O_source_only_remediation_implemented_generated_static_evidence_sealed_exact_owner_acceptance_pending"
+    "status": "U3O_source_and_generated_static_evidence_accepted_U3P_non_effective_package_preparation_only"
   },
   "model_artifact_research": {
     "acceptance_record": "contracts/phase-3/p3-6-model-artifact-research-acceptance.json",
@@ -665,9 +668,9 @@
     "status": "historical_U3M_source_only_implementation_accepted_U3N_package_preparation_complete"
   },
   "next_generated_validation_runtime_binding_action": {
-    "action": "owner_review_of_exact_U3O_generated_validation_harness_R1_source_only_remediation_implementation_package",
-    "authority": "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH",
-    "decision_id": "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE",
+    "action": "prepare_separate_non_effective_U3P_generated_validation_and_runtime_binding_R2_authorization_package",
+    "authority": "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE",
+    "decision_id": "D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH",
     "failed_U3N_authorization_record_sha256": "1218C1C35C58AB253D811044046F2EDD364790A6469150248BFFBAB37AAE395B",
     "failed_U3N_result_sha256": "AD3A8B62105C4DF85E613024C034CECB8DB66C583E7DB49BDA1D4EB09772A8F7",
     "failed_U3N_evidence_sha256": "0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42",
@@ -675,9 +678,13 @@
     "implementation_package_manifest": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-package.json",
     "implementation_package_sha256": "2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E",
     "implementation_evidence_sha256": "07FF33F19A3C846E69AA8E9C1FD34F9EEBA621BEF1A2424C9173015FB4A0E695",
+    "implementation_acceptance_record": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-acceptance.json",
+    "implementation_acceptance_sha256": "8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC",
     "owner_U3O_authorization_pending": false,
-    "owner_implementation_acceptance_pending": true,
+    "owner_implementation_acceptance_pending": false,
     "D_P3_6_U3O_VALIDATION_HARNESS_R1_REMEDIATION_IMPLEMENTATION_AUTH_requestable": false,
+    "U3P_non_effective_package_preparation_authority": true,
+    "D_P3_6_U3P_GENERATED_VALIDATION_RUNTIME_BINDING_R2_AUTH_requestable": false,
     "source_or_test_modification_authority": false,
     "runtime_observation_authority": false,
     "PowerShell_parser_import_or_execution_authority": false,
@@ -688,7 +695,7 @@
     "profile_activation_authority": false,
     "deployment_authority": false,
     "remote_git_authority": false,
-    "status": "current_U3O_source_only_remediation_implementation_package_sealed_exact_owner_acceptance_pending_no_runtime_or_retry_authority"
+    "status": "U3O_R1_source_and_generated_static_evidence_accepted_U3P_non_effective_package_preparation_only_no_runtime_or_retry_authority"
   },
   "parallel_owner_review_actions": [
     {
@@ -709,7 +716,7 @@
   ],
   "record_id": "P3.6-PREREQUISITE-UNBLOCK-PLAN-R0",
   "runtime_execution_authorized": false,
-  "status": "planning_only_U3E_U3G_and_U3N_attempts_consumed_failed_closed_U3F_and_U3H_accepted_U3I_contract_implementation_and_historical_runtime_binding_evidence_accepted_U3J_storage_design_accepted_final_U3K_historical_non_effective_U3L_machine_handlers_accepted_U3M_validation_harness_accepted_U3O_source_only_remediation_implemented_owner_acceptance_pending_no_PowerShell_retry_runtime_storage_or_execution_authority",
+  "status": "planning_only_U3E_U3G_and_U3N_attempts_consumed_failed_closed_U3F_and_U3H_accepted_U3I_contract_implementation_and_historical_runtime_binding_evidence_accepted_U3J_storage_design_accepted_final_U3K_historical_non_effective_U3L_machine_handlers_accepted_U3M_validation_harness_accepted_U3O_R1_source_and_static_evidence_accepted_U3P_non_effective_package_preparation_only_no_PowerShell_retry_runtime_storage_or_execution_authority",
   "work_items": [
     {
       "allowed_now": [

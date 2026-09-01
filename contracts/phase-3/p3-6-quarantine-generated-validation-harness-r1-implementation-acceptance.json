@@ -1,0 +1,95 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_harness_r1_implementation_acceptance.v1",
+  "record_id": "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R1-IMPLEMENTATION-ACCEPTANCE",
+  "decision_id": "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE",
+  "status": "accepted_source_and_generated_static_evidence_U3P_authorization_package_preparation_only",
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-01",
+  "owner_message_received": "continue and i accepted",
+  "owner_message_utf8_bytes": 23,
+  "owner_message_sha256": "4691683E65388475B8A14BADDCA2607A4CCDBC3CE93CADEB02F41D43B9E7222F",
+  "normalization_basis": {
+    "immediately_preceding_pending_gate": "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE",
+    "single_pending_package_digest_presented_to_owner": "2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E",
+    "owner_explicitly_used_acceptance_language": true,
+    "acceptance_inferred_from_continue_alone": false,
+    "scope_widened_beyond_presented_statement": false
+  },
+  "normalized_owner_statement_utf8_bytes": 1134,
+  "normalized_owner_statement_sha256": "111E09B4072B833428ACC0F5243153076ECDF37FE2CB90247376DBF56F073E6D",
+  "normalized_owner_statement": "D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE: I, mayank-admin, accept the P3.6 U3O validation-harness R1 source-only remediation implementation package digest 2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E, including exact harness SHA-256 F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3, evidence SHA-256 07FF33F19A3C846E69AA8E9C1FD34F9EEBA621BEF1A2424C9173015FB4A0E695, accepted byte-exact vector manifest, runner, pure-handler and Windows-adapter sources, generated/static evidence, and documented limitations. This accepts source and generated/static evidence only and authorizes preparation only of a separate non-effective U3P runtime-retry authorization package. It does not authorize PowerShell parsing, import, or execution; a retry or runtime/hardware observation; machine, storage, F:/B:/ACL/probe/cleanup/scanner action; network, download, artifact, model, inference, camera/media/data, container/Kubernetes, profile activation, deployment, or remote Git. Any new attempt requires a later exact digest-bound U3P authorization, and U3K remains separately blocked.",
+  "accepted_package": {
+    "path": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-package.json",
+    "sha256": "2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E",
+    "accepted_commit": "971c277dac9e75c894b67d28b98c891908ed672e",
+    "mutated_by_this_acceptance": false
+  },
+  "accepted_evidence": {
+    "path": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-evidence.json",
+    "sha256": "07FF33F19A3C846E69AA8E9C1FD34F9EEBA621BEF1A2424C9173015FB4A0E695",
+    "review_path": "docs/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-evidence-review.md",
+    "review_sha256": "581112EB5B06345D94A718FFFCE9F1E831E0C6032E4E386A83DD5154C755AAED",
+    "generated_vectors_defined": 84,
+    "full_Phase_3_6_tests_passed": 405,
+    "strict_JSON_files_verified": 185,
+    "Ruff_result": "all_checks_passed",
+    "PowerShell_parsed_imported_or_executed": false,
+    "runtime_hardware_machine_storage_or_network_observed": false
+  },
+  "accepted_artifacts": [
+    {
+      "path": "tools/phase36_quarantine_generated_validation.ps1",
+      "sha256": "F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3",
+      "accepted_role": "inert_remediated_future_generated_validation_harness_source"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-powershell-validation-r0-vectors.json",
+      "sha256": "5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C",
+      "accepted_role": "generated_only_twenty_contract_plus_sixty_four_handler_vectors"
+    },
+    {
+      "path": "tools/phase36_quarantine_transaction_runner.ps1",
+      "sha256": "22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A",
+      "accepted_role": "future_parser_and_Contract_mode_only_target"
+    },
+    {
+      "path": "tools/phase36_quarantine_machine_handlers.psm1",
+      "sha256": "41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721",
+      "accepted_role": "future_parser_and_local_scope_pure_handler_target"
+    },
+    {
+      "path": "tools/phase36_quarantine_windows_storage_adapter.psm1",
+      "sha256": "232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9",
+      "accepted_role": "future_parser_only_target_never_imported_or_executed"
+    }
+  ],
+  "accepted_effect": {
+    "harness_R1_source_accepted": true,
+    "generated_static_evidence_accepted": true,
+    "accepted_package_is_historical_and_immutable": true,
+    "separate_non_effective_U3P_authorization_package_preparation_authorized": true,
+    "source_or_test_change_authorized": false,
+    "PowerShell_parser_import_or_execution_authorized": false,
+    "runner_or_module_execution_authorized": false,
+    "runtime_or_hardware_observation_authorized": false,
+    "retry_authorized": false,
+    "machine_storage_F_B_ACL_probe_cleanup_or_scanner_action_authorized": false,
+    "network_download_artifact_model_media_or_data_action_authorized": false,
+    "container_Kubernetes_profile_activation_deployment_or_remote_git_authorized": false,
+    "D_P3_6_U3P_GENERATED_VALIDATION_RUNTIME_BINDING_R2_AUTH_requestable_before_package": false,
+    "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "next_required_sequence": [
+    "prepare_a_separate_non_effective_U3P_generated_validation_and_fresh_runtime_binding_R2_authorization_package",
+    "obtain_exact_digest_bound_D_P3_6_U3P_GENERATED_VALIDATION_RUNTIME_BINDING_R2_AUTH",
+    "perform_at_most_one_exact_authorized_fresh_runtime_binding_and_generated_validation_attempt",
+    "seal_and_separately_accept_sanitized_U3P_result_and_evidence",
+    "prepare_a_new_U3K_package_only_after_current_successful_U3P_evidence_acceptance",
+    "obtain_separate_D_P3_6_U3K_STORAGE_R2_AUTH_before_any_machine_or_storage_action"
+  ],
+  "acceptance_may_be_inferred_as_U3P_execution_or_U3K_authority": false
+}

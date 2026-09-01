@@ -572,10 +572,10 @@ autoload conflict. The non-effective R1 remediation package is sealed under
 SHA-256
 `17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338`.
 Exact
-`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` is pending.
-Until it is explicitly accepted, no harness/test modification, PowerShell,
-runtime retry, U3P/U3K preparation, machine/storage action, deployment, or
-remote Git action is authorized.
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` was
+subsequently recorded and consumed for the source-only result below. It did
+not authorize PowerShell, runtime retry, U3P/U3K execution, machine/storage
+action, deployment, or remote Git.
 
 ## P3.6 U3O R1 Source Implementation
 
@@ -589,6 +589,10 @@ The implementation package SHA-256 is
 
 Exact
 `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
-is pending. No PowerShell parsing/import/execution, runtime retry, U3P/U3K
-preparation, machine/storage action, profile activation, deployment, or remote
-Git action is authorized.
+is recorded in
+`p3-6-quarantine-generated-validation-harness-r1-implementation-acceptance.json`
+under SHA-256
+`8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC`.
+Only non-effective U3P package preparation is authorized. No PowerShell
+parsing/import/execution, runtime retry, U3K preparation, machine/storage
+action, profile activation, deployment, or remote Git action is authorized.

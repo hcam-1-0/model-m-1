@@ -296,12 +296,15 @@ def test_canonical_ledgers_expose_consumed_U3N_and_pending_U3O() -> None:
     unblock = _read(CONTRACTS / "p3-6-unblock-plan.json")
     action = unblock["next_generated_validation_runtime_binding_action"]
     assert action["action"] == (
-        "owner_review_of_exact_U3O_generated_validation_harness_R1_source_only_"
-        "remediation_implementation_package"
+        "prepare_separate_non_effective_U3P_generated_validation_and_runtime_"
+        "binding_R2_authorization_package"
     )
-    assert action["decision_id"] == U3O_ACCEPTANCE_DECISION_ID
+    assert action["decision_id"] == (
+        "D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH"
+    )
     assert action["owner_U3O_authorization_pending"] is False
-    assert action["owner_implementation_acceptance_pending"] is True
+    assert action["owner_implementation_acceptance_pending"] is False
+    assert action["U3P_non_effective_package_preparation_authority"] is True
     assert action["implementation_package_sha256"] == _sha256(
         U3O_IMPLEMENTATION_PACKAGE
     )

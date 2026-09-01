@@ -223,7 +223,9 @@ def test_canonical_ledgers_and_human_records_point_to_U3O_acceptance() -> None:
         assert entry["implementation_authority_consumed"] is True
         assert entry["source_only_implementation_complete"] is True
         assert entry["implementation_package_sha256"] == implementation_digest
-        assert entry["owner_implementation_acceptance_pending"] is True
+        assert entry["owner_implementation_acceptance_pending"] is False
+        assert entry["source_and_generated_static_evidence_accepted"] is True
+        assert entry["U3P_package_preparation_authorized"] is True
         assert entry["source_or_test_modification_authorized"] is False
         assert entry["runtime_retry_authorized"] is False
         assert entry["D_P3_6_U3K_STORAGE_R2_AUTH_requestable"] is False

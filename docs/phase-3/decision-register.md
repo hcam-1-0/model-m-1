@@ -1635,3 +1635,19 @@ The implementation package SHA-256 is
 is pending. Source/static evidence does not authorize PowerShell, retry,
 runtime/hardware observation, U3P/U3K, machine/storage action, profile
 activation, deployment, or remote Git.
+
+### DR-0083: U3O R1 source and generated/static evidence accepted
+
+**Decision:** Record the owner's explicit acceptance of implementation-package
+SHA-256
+`2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E`
+as
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`.
+Preserve the original owner message and the normalized digest-bound statement
+in the acceptance record.
+
+**Effect:** Acceptance-record SHA-256 is
+`8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC`.
+Preparation of one separate non-effective U3P authorization proposal is
+allowed. PowerShell, retry, runtime/hardware observation, U3K, machine/storage,
+profile activation, deployment, and remote Git remain unauthorized.

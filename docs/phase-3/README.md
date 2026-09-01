@@ -390,5 +390,8 @@ and implementation-package SHA-256 is
 See the [R1 implementation evidence review](p3-6-quarantine-generated-validation-harness-r1-implementation-evidence-review.md).
 Exact
 `D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
-remains pending. Runtime, retry, U3P/U3K, profile, deployment, and remote Git
-authority remain absent.
+is recorded under acceptance-record SHA-256
+`8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC`.
+Only preparation of a separate non-effective U3P proposal is authorized.
+Runtime, retry, U3K, profile, deployment, and remote Git authority remain
+absent.

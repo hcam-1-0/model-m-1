@@ -328,7 +328,10 @@ The source-only R1 remediation is complete and sealed under:
 - implementation-package SHA-256
   `2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E`.
 
-The only current generated-validation unblock action is exact
-`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`.
-U3P preparation, PowerShell/runtime retry, and U3K storage remain prohibited
-until separately gated later decisions.
+Exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+is recorded under acceptance-record SHA-256
+`8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC`.
+The current generated-validation action is preparation of a separate
+non-effective U3P proposal. PowerShell/runtime retry and U3K storage remain
+prohibited until separately gated later decisions.
