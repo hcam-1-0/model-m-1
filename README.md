@@ -1,5 +1,9 @@
-# h-cam-2.0
-mayank repo of h cam experiment
+# H-CAM Phase 3 + Sentinel Lab 2.5
+
+This friend-facing integration branch combines the completed Phase 3 analytics
+foundation with the isolated Phase 2.5 Sentinel compatibility lab. Start with
+[TEAMMATE_SETUP.md](TEAMMATE_SETUP.md) for a generic laptop setup, validation,
+and dashboard workflow.
 
 ## Phase 3 AI analytics
 

@@ -394,3 +394,15 @@ contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-vectors
 tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_r0_contract.py whitespace=-blank-at-eof
 tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_r0_cross_language.py whitespace=-blank-at-eof
 tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_r0_powershell_static.py whitespace=-blank-at-eof
+
+# Make the complete P3.6 integrity surface reproducible in fresh Windows clones.
+# The exact exceptions below preserve historical CRLF or mixed-line-ending bytes.
+contracts/phase-3/p3-6-* text eol=lf
+docs/phase-3/p3-6-* text eol=lf
+tools/phase36_* text eol=lf
+tests/test_phase36_* text eol=lf
+contracts/phase-3/p3-6-planning-authorization.json text eol=crlf
+contracts/phase-3/p3-6-research-sources.json text eol=crlf
+docs/phase-3/p3-6-planning-authorization.md text eol=crlf
+docs/phase-3/p3-6-research-record.md text eol=crlf
+docs/phase-3/p3-6-decision-packet.md -text

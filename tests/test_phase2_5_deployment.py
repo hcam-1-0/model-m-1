@@ -61,12 +61,12 @@ def test_phase2_5_compose_is_additive_loopback_only_and_no_recording() -> None:
     assert "hcam.labs.sentinel.publisher" not in compose
 
 
-def test_phase2_baseline_database_image_remains_pinned_in_lab_overlay() -> None:
+def test_phase2_5_overlay_adds_postgis_without_mutating_phase2_baseline() -> None:
     phase2 = (ROOT / "deploy" / "compose.phase2.yaml").read_text(encoding="utf-8")
     overlay = (ROOT / "deploy" / "compose.phase2-5.yaml").read_text(encoding="utf-8")
 
-    # Camera-adapter uses the GIS-capable Phase 2 baseline; the lab must retain it.
-    assert "postgis/postgis:18-3.6-alpine@sha256:" in phase2
+    assert "postgres:18-alpine@sha256:" in phase2
+    assert "postgis/postgis:" not in phase2
     assert "postgis/postgis:18-3.6-alpine@sha256:" in overlay
 
 
