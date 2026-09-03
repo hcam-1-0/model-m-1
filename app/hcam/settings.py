@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import ipaddress
+import json
 import os
 import re
 from dataclasses import dataclass, field
@@ -17,6 +18,9 @@ from hcam.streams.network import (
 
 _MAX_SECRET_FILE_BYTES = 16 * 1024
 _BEARER_TOKEN_PATTERN = re.compile(r"^[A-Za-z0-9._~+/=-]{32,256}$")
+_CLOUDFLARE_TEAM_HOST_PATTERN = re.compile(
+    r"^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.cloudflareaccess\.com$"
+)
 
 
 def _environment_flag(name: str, default: bool = False) -> bool:
@@ -112,6 +116,43 @@ def _read_pem_secret_file(name: str) -> str | None:
     return value
 
 
+def _cloudflare_group_mapping_from_environment() -> dict[str, dict[str, tuple[str, ...]]]:
+    """Load non-secret Cloudflare group -> H-CAM principal mapping.
+
+    The value is intentionally explicit instead of accepting user-controlled
+    headers. Example::
+
+        {"hcam-viewers":{"roles":["camera.viewer"],"departments":["traffic"]}}
+    """
+
+    raw = os.getenv("HCAM_CLOUDFLARE_ACCESS_GROUP_MAPPING")
+    if raw is None:
+        return {}
+    try:
+        value = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise ValueError("HCAM_CLOUDFLARE_ACCESS_GROUP_MAPPING must be JSON") from exc
+    if not isinstance(value, dict):
+        raise ValueError("HCAM_CLOUDFLARE_ACCESS_GROUP_MAPPING must be an object")
+    mapping: dict[str, dict[str, tuple[str, ...]]] = {}
+    for group, grants in value.items():
+        if not isinstance(group, str) or not group.strip() or not isinstance(grants, dict):
+            raise ValueError("Cloudflare group mapping entries are invalid")
+        roles = grants.get("roles", [])
+        departments = grants.get("departments", [])
+        if not isinstance(roles, list) or not all(isinstance(item, str) for item in roles):
+            raise ValueError("Cloudflare mapping roles must be string arrays")
+        if not isinstance(departments, list) or not all(
+            isinstance(item, str) for item in departments
+        ):
+            raise ValueError("Cloudflare mapping departments must be string arrays")
+        mapping[group.strip()] = {
+            "roles": tuple(item.strip() for item in roles if item.strip()),
+            "departments": tuple(item.strip() for item in departments if item.strip()),
+        }
+    return mapping
+
+
 def _environment_value_or_file(
     value_name: str,
     file_name: str,
@@ -141,6 +182,12 @@ class Settings:
     database_url: str = field(default="sqlite:///./var/hcam.db", repr=False)
     create_schema: bool = False
     dev_auth_enabled: bool = False
+    cloudflare_access_enabled: bool = False
+    cloudflare_access_team_domain: str | None = None
+    cloudflare_access_audience: str | None = field(default=None, repr=False)
+    cloudflare_access_group_mapping: dict[str, dict[str, tuple[str, ...]]] = field(
+        default_factory=dict, repr=False
+    )
     service_name: str = "H-CAM Core"
     environment: str = "development"
     max_request_body_bytes: int = 8 * 1024 * 1024
@@ -193,6 +240,31 @@ class Settings:
             raise ValueError("HCAM_DATABASE_URL must not be empty")
         if not self.service_name.strip():
             raise ValueError("HCAM_SERVICE_NAME must not be empty")
+        if self.dev_auth_enabled and self.cloudflare_access_enabled:
+            raise ValueError("development and Cloudflare Access authentication are exclusive")
+        if self.cloudflare_access_enabled:
+            if self.cloudflare_access_team_domain is None or self.cloudflare_access_audience is None:
+                raise ValueError(
+                    "Cloudflare Access team domain and audience are required when enabled"
+                )
+            parsed_team = urlsplit(self.cloudflare_access_team_domain)
+            if (
+                parsed_team.scheme != "https"
+                or parsed_team.path not in {"", "/"}
+                or parsed_team.query
+                or parsed_team.fragment
+                or parsed_team.hostname is None
+                or _CLOUDFLARE_TEAM_HOST_PATTERN.fullmatch(parsed_team.hostname) is None
+            ):
+                raise ValueError(
+                    "HCAM_CLOUDFLARE_ACCESS_TEAM_DOMAIN must be an HTTPS Cloudflare team domain"
+                )
+            if not self.cloudflare_access_audience.strip():
+                raise ValueError("HCAM_CLOUDFLARE_ACCESS_AUDIENCE must not be empty")
+            if not self.cloudflare_access_group_mapping:
+                raise ValueError("Cloudflare Access group mapping must not be empty")
+        if environment == "production" and not self.cloudflare_access_enabled:
+            raise ValueError("Cloudflare Access authentication is required in production")
         if self.max_request_body_bytes < 1:
             raise ValueError("HCAM_MAX_REQUEST_BODY_BYTES must be a positive integer")
         if self.metrics_enabled and self.metrics_token is None:
@@ -368,6 +440,18 @@ class Settings:
         )
         object.__setattr__(self, "playback_issuer", self.playback_issuer.strip())
         object.__setattr__(self, "playback_audience", self.playback_audience.strip())
+        if self.cloudflare_access_team_domain is not None:
+            object.__setattr__(
+                self,
+                "cloudflare_access_team_domain",
+                self.cloudflare_access_team_domain.rstrip("/"),
+            )
+        if self.cloudflare_access_audience is not None:
+            object.__setattr__(
+                self,
+                "cloudflare_access_audience",
+                self.cloudflare_access_audience.strip(),
+            )
 
     @classmethod
     def from_environment(cls) -> Settings:
@@ -385,6 +469,16 @@ class Settings:
             database_url=database_url_from_environment(defaults.database_url),
             create_schema=_environment_flag("HCAM_CREATE_SCHEMA"),
             dev_auth_enabled=_environment_flag("HCAM_DEV_AUTH_ENABLED"),
+            cloudflare_access_enabled=_environment_flag(
+                "HCAM_CLOUDFLARE_ACCESS_ENABLED"
+            ),
+            cloudflare_access_team_domain=(
+                value.strip()
+                if (value := os.getenv("HCAM_CLOUDFLARE_ACCESS_TEAM_DOMAIN"))
+                else None
+            ),
+            cloudflare_access_audience=os.getenv("HCAM_CLOUDFLARE_ACCESS_AUDIENCE"),
+            cloudflare_access_group_mapping=_cloudflare_group_mapping_from_environment(),
             service_name=os.getenv("HCAM_SERVICE_NAME", defaults.service_name),
             environment=environment,
             max_request_body_bytes=_positive_environment_integer(

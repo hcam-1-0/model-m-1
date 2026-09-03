@@ -2,7 +2,10 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from collections.abc import Callable, Mapping
 from typing import Annotated, Protocol
+
+import jwt
 
 from fastapi import Depends, HTTPException, Request, status
 
@@ -114,7 +117,98 @@ class DevHeaderAuthenticator:
         )
 
 
+class CloudflareAccessAuthenticator:
+    """Validate a Cloudflare Access assertion and derive a scoped principal.
+
+    Group membership is accepted only after the JWT signature, issuer,
+    audience and expiry have been verified against Cloudflare's rotating JWKS.
+    """
+
+    def __init__(
+        self,
+        settings: Settings,
+        *,
+        token_decoder: Callable[[str], Mapping[str, object]] | None = None,
+    ) -> None:
+        self._team_domain = settings.cloudflare_access_team_domain
+        self._audience = settings.cloudflare_access_audience
+        self._mapping = settings.cloudflare_access_group_mapping
+        self._token_decoder = token_decoder
+        if self._team_domain is None or self._audience is None:
+            raise RuntimeError("Cloudflare Access authentication is not configured")
+        self._jwks = jwt.PyJWKClient(f"{self._team_domain}/cdn-cgi/access/certs")
+
+    @property
+    def ready(self) -> bool:
+        return True
+
+    def _decode(self, token: str) -> Mapping[str, object]:
+        if self._token_decoder is not None:
+            return self._token_decoder(token)
+        signing_key = self._jwks.get_signing_key_from_jwt(token)
+        return jwt.decode(
+            token,
+            signing_key.key,
+            algorithms=["RS256"],
+            audience=self._audience,
+            issuer=self._team_domain,
+            options={"require": ["exp", "iss", "aud", "sub", "type"]},
+        )
+
+    def authenticate(self, request: Request) -> Principal:
+        token = request.headers.get("Cf-Access-Jwt-Assertion", "").strip()
+        if not token:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Cloudflare Access assertion required",
+            )
+        try:
+            claims = self._decode(token)
+        except jwt.PyJWTError as exc:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid Cloudflare Access assertion",
+            ) from exc
+        if claims.get("type") != "app":
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid Access token type")
+        actor_id = str(claims.get("email") or claims.get("sub") or "").strip()
+        if _ACTOR_PATTERN.fullmatch(actor_id) is None:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid Access identity")
+        raw_groups = claims.get("groups", ())
+        if isinstance(raw_groups, str):
+            groups = (raw_groups,)
+        elif isinstance(raw_groups, list) and all(isinstance(group, str) for group in raw_groups):
+            groups = tuple(raw_groups)
+        else:
+            groups = ()
+        roles: set[str] = set()
+        departments: set[str] = set()
+        for group in groups:
+            grant = self._mapping.get(group)
+            if grant is None:
+                continue
+            roles.update(grant["roles"])
+            departments.update(grant["departments"])
+        if not roles or not roles.issubset(KNOWN_ROLES):
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="No H-CAM role grant")
+        if "*" in departments and PLATFORM_ADMIN not in roles:
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Unscoped access requires platform admin")
+        if any(
+            department != "*" and _DEPARTMENT_PATTERN.fullmatch(department) is None
+            for department in departments
+        ):
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Invalid department grant")
+        return Principal(
+            actor_id=actor_id,
+            roles=frozenset(roles),
+            departments=frozenset(departments),
+            authentication_method="cloudflare-access",
+        )
+
+
 def build_authenticator(settings: Settings) -> Authenticator:
+    if settings.cloudflare_access_enabled:
+        return CloudflareAccessAuthenticator(settings)
     if settings.dev_auth_enabled:
         if settings.environment.lower() not in {"development", "test"}:
             raise RuntimeError("Local development authentication is forbidden in production")
