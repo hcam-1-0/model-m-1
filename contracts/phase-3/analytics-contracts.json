@@ -1,0 +1,3658 @@
+{
+  "assignment": {
+    "$defs": {
+      "VersionedArtifact": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "title": "Id",
+            "type": "string"
+          },
+          "version": {
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "version"
+        ],
+        "title": "VersionedArtifact",
+        "type": "object"
+      },
+      "VersionedConfiguration": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "title": "Id",
+            "type": "string"
+          },
+          "version": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "version"
+        ],
+        "title": "VersionedConfiguration",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "actor_id": {
+        "maxLength": 160,
+        "minLength": 1,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:@-]*$",
+        "title": "Actor Id",
+        "type": "string"
+      },
+      "approval_record_id": {
+        "maxLength": 128,
+        "minLength": 1,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+        "title": "Approval Record Id",
+        "type": "string"
+      },
+      "assignment_id": {
+        "pattern": "^ana_[0-9a-f]{32}$",
+        "title": "Assignment Id",
+        "type": "string"
+      },
+      "camera_id": {
+        "maxLength": 160,
+        "minLength": 3,
+        "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+        "title": "Camera Id",
+        "type": "string"
+      },
+      "capability": {
+        "maxLength": 128,
+        "minLength": 3,
+        "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+        "title": "Capability",
+        "type": "string"
+      },
+      "configuration_digest": {
+        "pattern": "^sha256:[0-9a-f]{64}$",
+        "title": "Configuration Digest",
+        "type": "string"
+      },
+      "contract_type": {
+        "const": "hcam.analytics.assignment.v1",
+        "default": "hcam.analytics.assignment.v1",
+        "title": "Contract Type",
+        "type": "string"
+      },
+      "department": {
+        "maxLength": 120,
+        "minLength": 1,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9 ._-]*$",
+        "title": "Department",
+        "type": "string"
+      },
+      "desired_state": {
+        "enum": [
+          "enabled",
+          "paused"
+        ],
+        "title": "Desired State",
+        "type": "string"
+      },
+      "geometry_refs": {
+        "items": {
+          "$ref": "#/$defs/VersionedConfiguration"
+        },
+        "maxItems": 64,
+        "title": "Geometry Refs",
+        "type": "array"
+      },
+      "maximum_queue_age_ms": {
+        "maximum": 60000,
+        "minimum": 50,
+        "title": "Maximum Queue Age Ms",
+        "type": "integer"
+      },
+      "minimum_confidence": {
+        "maximum": 1,
+        "minimum": 0,
+        "title": "Minimum Confidence",
+        "type": "number"
+      },
+      "models": {
+        "items": {
+          "$ref": "#/$defs/VersionedArtifact"
+        },
+        "maxItems": 8,
+        "title": "Models",
+        "type": "array"
+      },
+      "pipeline": {
+        "$ref": "#/$defs/VersionedArtifact"
+      },
+      "policy_version": {
+        "pattern": "^sha256:[0-9a-f]{64}$",
+        "title": "Policy Version",
+        "type": "string"
+      },
+      "reason": {
+        "maxLength": 500,
+        "minLength": 1,
+        "title": "Reason",
+        "type": "string"
+      },
+      "retention_class": {
+        "enum": [
+          "derived.analytics.standard",
+          "derived.analytics.restricted"
+        ],
+        "title": "Retention Class",
+        "type": "string"
+      },
+      "sampling_fps": {
+        "exclusiveMinimum": 0,
+        "maximum": 60,
+        "title": "Sampling Fps",
+        "type": "number"
+      },
+      "stream_id": {
+        "pattern": "^str_[0-9a-f]{32}$",
+        "title": "Stream Id",
+        "type": "string"
+      },
+      "taxonomy_version": {
+        "maxLength": 128,
+        "pattern": "^hcam\\.[a-z][a-z0-9_.-]*\\.v[1-9][0-9]*$",
+        "title": "Taxonomy Version",
+        "type": "string"
+      },
+      "updated_at": {
+        "format": "date-time",
+        "title": "Updated At",
+        "type": "string"
+      },
+      "version": {
+        "maximum": 2147483647,
+        "minimum": 1,
+        "title": "Version",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "assignment_id",
+      "department",
+      "stream_id",
+      "camera_id",
+      "capability",
+      "desired_state",
+      "version",
+      "pipeline",
+      "taxonomy_version",
+      "policy_version",
+      "configuration_digest",
+      "minimum_confidence",
+      "sampling_fps",
+      "maximum_queue_age_ms",
+      "retention_class",
+      "actor_id",
+      "reason",
+      "approval_record_id",
+      "updated_at"
+    ],
+    "title": "AnalyticsAssignmentV1",
+    "type": "object"
+  },
+  "contract_format": "hcam.analytics.contract-bundle.v1",
+  "delivery": {
+    "deduplication_key": "event_id",
+    "ordering_scope": "stream_id",
+    "partition_key": "stream_id",
+    "semantics": "at_least_once"
+  },
+  "events": {
+    "hcam.analytics.event.created.v1": {
+      "$defs": {
+        "AnalyticEventPayloadV1": {
+          "additionalProperties": false,
+          "properties": {
+            "alert_state": {
+              "const": "not_evaluated",
+              "default": "not_evaluated",
+              "title": "Alert State",
+              "type": "string"
+            },
+            "analytic_event_id": {
+              "pattern": "^aevt_[0-9a-f]{32}$",
+              "title": "Analytic Event Id",
+              "type": "string"
+            },
+            "camera_id": {
+              "maxLength": 160,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Confidence",
+              "type": "number"
+            },
+            "event_kind": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+              "title": "Event Kind",
+              "type": "string"
+            },
+            "geometry_ref": {
+              "$ref": "#/$defs/VersionedConfiguration"
+            },
+            "lineage": {
+              "$ref": "#/$defs/ProcessingLineage"
+            },
+            "observation_refs": {
+              "items": {
+                "pattern": "^obs_[0-9a-f]{32}$",
+                "type": "string"
+              },
+              "maxItems": 64,
+              "title": "Observation Refs",
+              "type": "array"
+            },
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "review_state": {
+              "default": "unreviewed",
+              "enum": [
+                "unreviewed",
+                "confirmed",
+                "rejected"
+              ],
+              "title": "Review State",
+              "type": "string"
+            },
+            "rule": {
+              "$ref": "#/$defs/VersionedConfiguration"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "track_refs": {
+              "items": {
+                "pattern": "^epoch_[0-9a-f]{32}:trk_[0-9a-f]{32}$",
+                "type": "string"
+              },
+              "maxItems": 64,
+              "title": "Track Refs",
+              "type": "array"
+            }
+          },
+          "required": [
+            "analytic_event_id",
+            "stream_id",
+            "camera_id",
+            "event_kind",
+            "observed_at",
+            "rule",
+            "geometry_ref",
+            "lineage",
+            "confidence"
+          ],
+          "title": "AnalyticEventPayloadV1",
+          "type": "object"
+        },
+        "ProcessingLineage": {
+          "additionalProperties": false,
+          "properties": {
+            "code_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Code Version",
+              "type": "string"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "pipeline": {
+              "$ref": "#/$defs/VersionedArtifact"
+            },
+            "policy_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Policy Version",
+              "type": "string"
+            },
+            "postprocessing_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Postprocessing Version",
+              "type": "string"
+            },
+            "preprocessing_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Preprocessing Version",
+              "type": "string"
+            },
+            "runtime": {
+              "$ref": "#/$defs/RuntimeReference"
+            },
+            "taxonomy_version": {
+              "maxLength": 128,
+              "pattern": "^hcam\\.[a-z][a-z0-9_.-]*\\.v[1-9][0-9]*$",
+              "title": "Taxonomy Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code_version",
+            "pipeline",
+            "preprocessing_version",
+            "postprocessing_version",
+            "taxonomy_version",
+            "policy_version",
+            "runtime",
+            "configuration_digest"
+          ],
+          "title": "ProcessingLineage",
+          "type": "object"
+        },
+        "RuntimeReference": {
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Name",
+              "type": "string"
+            },
+            "version": {
+              "maxLength": 128,
+              "minLength": 1,
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "version"
+          ],
+          "title": "RuntimeReference",
+          "type": "object"
+        },
+        "VersionedArtifact": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Id",
+              "type": "string"
+            },
+            "version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "title": "VersionedArtifact",
+          "type": "object"
+        },
+        "VersionedConfiguration": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Id",
+              "type": "string"
+            },
+            "version": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Version",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "title": "VersionedConfiguration",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "camera_id": {
+          "maxLength": 160,
+          "minLength": 3,
+          "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Camera Id",
+          "type": "string"
+        },
+        "event_id": {
+          "pattern": "^evt_[0-9a-f]{32}$",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "event_type": {
+          "const": "hcam.analytics.event.created.v1",
+          "default": "hcam.analytics.event.created.v1",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "occurred_at": {
+          "format": "date-time",
+          "title": "Occurred At",
+          "type": "string"
+        },
+        "partition_key": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Partition Key",
+          "type": "string"
+        },
+        "payload": {
+          "$ref": "#/$defs/AnalyticEventPayloadV1"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_id",
+        "stream_id",
+        "camera_id",
+        "partition_key",
+        "occurred_at",
+        "payload"
+      ],
+      "title": "AnalyticEventCreatedV1",
+      "type": "object"
+    },
+    "hcam.analytics.model.deployment.changed.v1": {
+      "$defs": {
+        "DeploymentTargetV1": {
+          "additionalProperties": false,
+          "properties": {
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "models": {
+              "items": {
+                "$ref": "#/$defs/VersionedArtifact"
+              },
+              "maxItems": 8,
+              "title": "Models",
+              "type": "array"
+            },
+            "pipeline": {
+              "$ref": "#/$defs/VersionedArtifact"
+            }
+          },
+          "required": [
+            "pipeline",
+            "configuration_digest"
+          ],
+          "title": "DeploymentTargetV1",
+          "type": "object"
+        },
+        "ModelDeploymentPayloadV1": {
+          "additionalProperties": false,
+          "properties": {
+            "actor_id": {
+              "maxLength": 160,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:@-]*$",
+              "title": "Actor Id",
+              "type": "string"
+            },
+            "approval_record_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Approval Record Id",
+              "type": "string"
+            },
+            "assignment_id": {
+              "pattern": "^ana_[0-9a-f]{32}$",
+              "title": "Assignment Id",
+              "type": "string"
+            },
+            "camera_id": {
+              "maxLength": 160,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "capability": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+              "title": "Capability",
+              "type": "string"
+            },
+            "change_reason": {
+              "maxLength": 500,
+              "minLength": 1,
+              "title": "Change Reason",
+              "type": "string"
+            },
+            "current": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/DeploymentTargetV1"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "department": {
+              "maxLength": 120,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9 ._-]*$",
+              "title": "Department",
+              "type": "string"
+            },
+            "effective_at": {
+              "format": "date-time",
+              "title": "Effective At",
+              "type": "string"
+            },
+            "lifecycle_state": {
+              "enum": [
+                "pending",
+                "starting",
+                "running",
+                "degraded",
+                "paused",
+                "blocked",
+                "failed"
+              ],
+              "title": "Lifecycle State",
+              "type": "string"
+            },
+            "previous": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/DeploymentTargetV1"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "reason_code": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[a-z][a-z0-9_.-]*$",
+              "title": "Reason Code",
+              "type": "string"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "assignment_id",
+            "department",
+            "stream_id",
+            "camera_id",
+            "capability",
+            "lifecycle_state",
+            "reason_code",
+            "actor_id",
+            "change_reason",
+            "approval_record_id",
+            "effective_at"
+          ],
+          "title": "ModelDeploymentPayloadV1",
+          "type": "object"
+        },
+        "VersionedArtifact": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Id",
+              "type": "string"
+            },
+            "version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "title": "VersionedArtifact",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "camera_id": {
+          "maxLength": 160,
+          "minLength": 3,
+          "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Camera Id",
+          "type": "string"
+        },
+        "event_id": {
+          "pattern": "^evt_[0-9a-f]{32}$",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "event_type": {
+          "const": "hcam.analytics.model.deployment.changed.v1",
+          "default": "hcam.analytics.model.deployment.changed.v1",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "occurred_at": {
+          "format": "date-time",
+          "title": "Occurred At",
+          "type": "string"
+        },
+        "partition_key": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Partition Key",
+          "type": "string"
+        },
+        "payload": {
+          "$ref": "#/$defs/ModelDeploymentPayloadV1"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_id",
+        "stream_id",
+        "camera_id",
+        "partition_key",
+        "occurred_at",
+        "payload"
+      ],
+      "title": "ModelDeploymentChangedV1",
+      "type": "object"
+    },
+    "hcam.analytics.observation.created.v1": {
+      "$defs": {
+        "NormalizedBoundingBox": {
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Height",
+              "type": "number"
+            },
+            "width": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Width",
+              "type": "number"
+            },
+            "x": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "title": "NormalizedBoundingBox",
+          "type": "object"
+        },
+        "ObjectClassification": {
+          "additionalProperties": false,
+          "properties": {
+            "confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Confidence",
+              "type": "number"
+            },
+            "id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+              "title": "Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "confidence"
+          ],
+          "title": "ObjectClassification",
+          "type": "object"
+        },
+        "ObservationPayloadV1": {
+          "additionalProperties": false,
+          "properties": {
+            "bbox": {
+              "$ref": "#/$defs/NormalizedBoundingBox"
+            },
+            "camera_id": {
+              "maxLength": 160,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "class": {
+              "$ref": "#/$defs/ObjectClassification"
+            },
+            "lineage": {
+              "$ref": "#/$defs/ProcessingLineage"
+            },
+            "model": {
+              "$ref": "#/$defs/VersionedArtifact"
+            },
+            "observation_id": {
+              "pattern": "^obs_[0-9a-f]{32}$",
+              "title": "Observation Id",
+              "type": "string"
+            },
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "processed_at": {
+              "format": "date-time",
+              "title": "Processed At",
+              "type": "string"
+            },
+            "quality": {
+              "$ref": "#/$defs/ObservationQuality"
+            },
+            "retention_class": {
+              "enum": [
+                "derived.analytics.standard",
+                "derived.analytics.restricted"
+              ],
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "review_state": {
+              "default": "unreviewed",
+              "enum": [
+                "unreviewed",
+                "confirmed",
+                "rejected"
+              ],
+              "title": "Review State",
+              "type": "string"
+            },
+            "source": {
+              "$ref": "#/$defs/SourceFrame"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "observation_id",
+            "stream_id",
+            "camera_id",
+            "observed_at",
+            "processed_at",
+            "source",
+            "lineage",
+            "model",
+            "class",
+            "bbox",
+            "quality",
+            "retention_class"
+          ],
+          "title": "ObservationPayloadV1",
+          "type": "object"
+        },
+        "ObservationQuality": {
+          "additionalProperties": false,
+          "properties": {
+            "blur_score": {
+              "anyOf": [
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Blur Score"
+            },
+            "occlusion": {
+              "default": "unknown",
+              "enum": [
+                "none",
+                "partial",
+                "heavy",
+                "unknown"
+              ],
+              "title": "Occlusion",
+              "type": "string"
+            },
+            "truncated": {
+              "default": false,
+              "title": "Truncated",
+              "type": "boolean"
+            }
+          },
+          "title": "ObservationQuality",
+          "type": "object"
+        },
+        "ProcessingLineage": {
+          "additionalProperties": false,
+          "properties": {
+            "code_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Code Version",
+              "type": "string"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "pipeline": {
+              "$ref": "#/$defs/VersionedArtifact"
+            },
+            "policy_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Policy Version",
+              "type": "string"
+            },
+            "postprocessing_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Postprocessing Version",
+              "type": "string"
+            },
+            "preprocessing_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Preprocessing Version",
+              "type": "string"
+            },
+            "runtime": {
+              "$ref": "#/$defs/RuntimeReference"
+            },
+            "taxonomy_version": {
+              "maxLength": 128,
+              "pattern": "^hcam\\.[a-z][a-z0-9_.-]*\\.v[1-9][0-9]*$",
+              "title": "Taxonomy Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code_version",
+            "pipeline",
+            "preprocessing_version",
+            "postprocessing_version",
+            "taxonomy_version",
+            "policy_version",
+            "runtime",
+            "configuration_digest"
+          ],
+          "title": "ProcessingLineage",
+          "type": "object"
+        },
+        "RuntimeReference": {
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Name",
+              "type": "string"
+            },
+            "version": {
+              "maxLength": 128,
+              "minLength": 1,
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "version"
+          ],
+          "title": "RuntimeReference",
+          "type": "object"
+        },
+        "SourceFrame": {
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "maximum": 32768,
+              "minimum": 1,
+              "title": "Height",
+              "type": "integer"
+            },
+            "sequence": {
+              "maximum": 9223372036854775807,
+              "minimum": 0,
+              "title": "Sequence",
+              "type": "integer"
+            },
+            "timestamp_confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Timestamp Confidence",
+              "type": "number"
+            },
+            "timestamp_source": {
+              "enum": [
+                "presentation_time",
+                "source_clock",
+                "receive_clock",
+                "generated"
+              ],
+              "title": "Timestamp Source",
+              "type": "string"
+            },
+            "width": {
+              "maximum": 32768,
+              "minimum": 1,
+              "title": "Width",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "sequence",
+            "width",
+            "height",
+            "timestamp_source",
+            "timestamp_confidence"
+          ],
+          "title": "SourceFrame",
+          "type": "object"
+        },
+        "VersionedArtifact": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Id",
+              "type": "string"
+            },
+            "version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "title": "VersionedArtifact",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "camera_id": {
+          "maxLength": 160,
+          "minLength": 3,
+          "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Camera Id",
+          "type": "string"
+        },
+        "event_id": {
+          "pattern": "^evt_[0-9a-f]{32}$",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "event_type": {
+          "const": "hcam.analytics.observation.created.v1",
+          "default": "hcam.analytics.observation.created.v1",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "occurred_at": {
+          "format": "date-time",
+          "title": "Occurred At",
+          "type": "string"
+        },
+        "partition_key": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Partition Key",
+          "type": "string"
+        },
+        "payload": {
+          "$ref": "#/$defs/ObservationPayloadV1"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_id",
+        "stream_id",
+        "camera_id",
+        "partition_key",
+        "occurred_at",
+        "payload"
+      ],
+      "title": "ObservationCreatedV1",
+      "type": "object"
+    },
+    "hcam.analytics.track.lifecycle.v2": {
+      "$defs": {
+        "NormalizedBoundingBox": {
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Height",
+              "type": "number"
+            },
+            "width": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Width",
+              "type": "number"
+            },
+            "x": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "title": "NormalizedBoundingBox",
+          "type": "object"
+        },
+        "ProcessingLineage": {
+          "additionalProperties": false,
+          "properties": {
+            "code_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Code Version",
+              "type": "string"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "pipeline": {
+              "$ref": "#/$defs/VersionedArtifact"
+            },
+            "policy_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Policy Version",
+              "type": "string"
+            },
+            "postprocessing_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Postprocessing Version",
+              "type": "string"
+            },
+            "preprocessing_version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Preprocessing Version",
+              "type": "string"
+            },
+            "runtime": {
+              "$ref": "#/$defs/RuntimeReference"
+            },
+            "taxonomy_version": {
+              "maxLength": 128,
+              "pattern": "^hcam\\.[a-z][a-z0-9_.-]*\\.v[1-9][0-9]*$",
+              "title": "Taxonomy Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "code_version",
+            "pipeline",
+            "preprocessing_version",
+            "postprocessing_version",
+            "taxonomy_version",
+            "policy_version",
+            "runtime",
+            "configuration_digest"
+          ],
+          "title": "ProcessingLineage",
+          "type": "object"
+        },
+        "RuntimeReference": {
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Name",
+              "type": "string"
+            },
+            "version": {
+              "maxLength": 128,
+              "minLength": 1,
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "version"
+          ],
+          "title": "RuntimeReference",
+          "type": "object"
+        },
+        "TrackLifecyclePayloadV2": {
+          "additionalProperties": false,
+          "properties": {
+            "age_frames": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Age Frames",
+              "type": "integer"
+            },
+            "bbox": {
+              "$ref": "#/$defs/NormalizedBoundingBox"
+            },
+            "camera_id": {
+              "maxLength": 160,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "class_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+              "title": "Class Id",
+              "type": "string"
+            },
+            "confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Confidence",
+              "type": "number"
+            },
+            "first_observed_at": {
+              "format": "date-time",
+              "title": "First Observed At",
+              "type": "string"
+            },
+            "first_sequence": {
+              "maximum": 9223372036854775807,
+              "minimum": 0,
+              "title": "First Sequence",
+              "type": "integer"
+            },
+            "last_visible_at": {
+              "format": "date-time",
+              "title": "Last Visible At",
+              "type": "string"
+            },
+            "last_visible_sequence": {
+              "maximum": 9223372036854775807,
+              "minimum": 0,
+              "title": "Last Visible Sequence",
+              "type": "integer"
+            },
+            "latest_observation_id": {
+              "pattern": "^obs_[0-9a-f]{32}$",
+              "title": "Latest Observation Id",
+              "type": "string"
+            },
+            "lineage": {
+              "$ref": "#/$defs/ProcessingLineage"
+            },
+            "missed_frames": {
+              "maximum": 2147483647,
+              "minimum": 0,
+              "title": "Missed Frames",
+              "type": "integer"
+            },
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "reason": {
+              "enum": [
+                "confirmed",
+                "matched",
+                "recovered",
+                "temporarily_unmatched",
+                "lost_timeout",
+                "explicit_reset",
+                "sequence_gap",
+                "sequence_regression",
+                "timestamp_regression",
+                "configuration_change",
+                "source_change",
+                "worker_restart",
+                "resource_exhausted"
+              ],
+              "title": "Reason",
+              "type": "string"
+            },
+            "retention_class": {
+              "enum": [
+                "derived.analytics.standard",
+                "derived.analytics.restricted"
+              ],
+              "title": "Retention Class",
+              "type": "string"
+            },
+            "source_sequence": {
+              "maximum": 9223372036854775807,
+              "minimum": 0,
+              "title": "Source Sequence",
+              "type": "integer"
+            },
+            "state": {
+              "enum": [
+                "started",
+                "updated",
+                "lost",
+                "ended"
+              ],
+              "title": "State",
+              "type": "string"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "track_id": {
+              "pattern": "^trk_[0-9a-f]{32}$",
+              "title": "Track Id",
+              "type": "string"
+            },
+            "tracker": {
+              "$ref": "#/$defs/VersionedArtifact"
+            },
+            "tracker_epoch": {
+              "pattern": "^epoch_[0-9a-f]{32}$",
+              "title": "Tracker Epoch",
+              "type": "string"
+            },
+            "visible_frames": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Visible Frames",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "track_id",
+            "tracker_epoch",
+            "stream_id",
+            "camera_id",
+            "state",
+            "reason",
+            "first_observed_at",
+            "first_sequence",
+            "observed_at",
+            "source_sequence",
+            "last_visible_at",
+            "last_visible_sequence",
+            "latest_observation_id",
+            "class_id",
+            "bbox",
+            "confidence",
+            "age_frames",
+            "visible_frames",
+            "missed_frames",
+            "tracker",
+            "lineage",
+            "retention_class"
+          ],
+          "title": "TrackLifecyclePayloadV2",
+          "type": "object"
+        },
+        "VersionedArtifact": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Id",
+              "type": "string"
+            },
+            "version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "title": "VersionedArtifact",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "camera_id": {
+          "maxLength": 160,
+          "minLength": 3,
+          "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Camera Id",
+          "type": "string"
+        },
+        "event_id": {
+          "pattern": "^evt_[0-9a-f]{32}$",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "event_type": {
+          "const": "hcam.analytics.track.lifecycle.v2",
+          "default": "hcam.analytics.track.lifecycle.v2",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "occurred_at": {
+          "format": "date-time",
+          "title": "Occurred At",
+          "type": "string"
+        },
+        "partition_key": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Partition Key",
+          "type": "string"
+        },
+        "payload": {
+          "$ref": "#/$defs/TrackLifecyclePayloadV2"
+        },
+        "schema_version": {
+          "const": 2,
+          "default": 2,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_id",
+        "stream_id",
+        "camera_id",
+        "partition_key",
+        "occurred_at",
+        "payload"
+      ],
+      "title": "TrackLifecycleV2",
+      "type": "object"
+    },
+    "hcam.analytics.track.updated.v1": {
+      "$defs": {
+        "TrackPayloadV1": {
+          "additionalProperties": false,
+          "properties": {
+            "age_frames": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Age Frames",
+              "type": "integer"
+            },
+            "camera_id": {
+              "maxLength": 160,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "class_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+              "title": "Class Id",
+              "type": "string"
+            },
+            "configuration_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Configuration Digest",
+              "type": "string"
+            },
+            "latest_observation_id": {
+              "pattern": "^obs_[0-9a-f]{32}$",
+              "title": "Latest Observation Id",
+              "type": "string"
+            },
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "pipeline": {
+              "$ref": "#/$defs/VersionedArtifact"
+            },
+            "state": {
+              "enum": [
+                "started",
+                "updated",
+                "ended",
+                "lost"
+              ],
+              "title": "State",
+              "type": "string"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            },
+            "track_id": {
+              "pattern": "^trk_[0-9a-f]{32}$",
+              "title": "Track Id",
+              "type": "string"
+            },
+            "tracker": {
+              "$ref": "#/$defs/VersionedArtifact"
+            },
+            "tracker_epoch": {
+              "pattern": "^epoch_[0-9a-f]{32}$",
+              "title": "Tracker Epoch",
+              "type": "string"
+            },
+            "visible_frames": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "title": "Visible Frames",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "track_id",
+            "tracker_epoch",
+            "stream_id",
+            "camera_id",
+            "state",
+            "observed_at",
+            "class_id",
+            "latest_observation_id",
+            "age_frames",
+            "visible_frames",
+            "tracker",
+            "pipeline",
+            "configuration_digest"
+          ],
+          "title": "TrackPayloadV1",
+          "type": "object"
+        },
+        "VersionedArtifact": {
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Id",
+              "type": "string"
+            },
+            "version": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ],
+          "title": "VersionedArtifact",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "camera_id": {
+          "maxLength": 160,
+          "minLength": 3,
+          "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Camera Id",
+          "type": "string"
+        },
+        "event_id": {
+          "pattern": "^evt_[0-9a-f]{32}$",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "event_type": {
+          "const": "hcam.analytics.track.updated.v1",
+          "default": "hcam.analytics.track.updated.v1",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "occurred_at": {
+          "format": "date-time",
+          "title": "Occurred At",
+          "type": "string"
+        },
+        "partition_key": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Partition Key",
+          "type": "string"
+        },
+        "payload": {
+          "$ref": "#/$defs/TrackPayloadV1"
+        },
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_id",
+        "stream_id",
+        "camera_id",
+        "partition_key",
+        "occurred_at",
+        "payload"
+      ],
+      "title": "TrackUpdatedV1",
+      "type": "object"
+    }
+  },
+  "geometry": {
+    "definition": {
+      "$defs": {
+        "GeometryScheduleV1": {
+          "additionalProperties": false,
+          "properties": {
+            "mode": {
+              "default": "always",
+              "enum": [
+                "always",
+                "weekly"
+              ],
+              "title": "Mode",
+              "type": "string"
+            },
+            "timezone": {
+              "default": "UTC",
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^(?:UTC|[A-Za-z][A-Za-z0-9._+-]*(?:/[A-Za-z0-9._+-]+)+)$",
+              "title": "Timezone",
+              "type": "string"
+            },
+            "windows": {
+              "items": {
+                "$ref": "#/$defs/WeeklyWindowV1"
+              },
+              "maxItems": 64,
+              "title": "Windows",
+              "type": "array"
+            }
+          },
+          "title": "GeometryScheduleV1",
+          "type": "object"
+        },
+        "LineGeometryV1": {
+          "additionalProperties": false,
+          "properties": {
+            "crossing_direction": {
+              "default": "both",
+              "enum": [
+                "both",
+                "start_to_end",
+                "end_to_start"
+              ],
+              "title": "Crossing Direction",
+              "type": "string"
+            },
+            "end": {
+              "$ref": "#/$defs/NormalizedPoint"
+            },
+            "kind": {
+              "const": "line",
+              "default": "line",
+              "title": "Kind",
+              "type": "string"
+            },
+            "start": {
+              "$ref": "#/$defs/NormalizedPoint"
+            }
+          },
+          "required": [
+            "start",
+            "end"
+          ],
+          "title": "LineGeometryV1",
+          "type": "object"
+        },
+        "NormalizedPoint": {
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ],
+          "title": "NormalizedPoint",
+          "type": "object"
+        },
+        "WeeklyWindowV1": {
+          "additionalProperties": false,
+          "properties": {
+            "days": {
+              "items": {
+                "enum": [
+                  "monday",
+                  "tuesday",
+                  "wednesday",
+                  "thursday",
+                  "friday",
+                  "saturday",
+                  "sunday"
+                ],
+                "type": "string"
+              },
+              "maxItems": 7,
+              "minItems": 1,
+              "title": "Days",
+              "type": "array"
+            },
+            "end_minute": {
+              "maximum": 1440,
+              "minimum": 1,
+              "title": "End Minute",
+              "type": "integer"
+            },
+            "start_minute": {
+              "maximum": 1439,
+              "minimum": 0,
+              "title": "Start Minute",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "days",
+            "start_minute",
+            "end_minute"
+          ],
+          "title": "WeeklyWindowV1",
+          "type": "object"
+        },
+        "ZoneGeometryV1": {
+          "additionalProperties": false,
+          "properties": {
+            "boundary_policy": {
+              "default": "inside_inclusive",
+              "enum": [
+                "inside_inclusive",
+                "inside_exclusive"
+              ],
+              "title": "Boundary Policy",
+              "type": "string"
+            },
+            "kind": {
+              "const": "zone",
+              "default": "zone",
+              "title": "Kind",
+              "type": "string"
+            },
+            "vertices": {
+              "items": {
+                "$ref": "#/$defs/NormalizedPoint"
+              },
+              "maxItems": 128,
+              "minItems": 3,
+              "title": "Vertices",
+              "type": "array"
+            }
+          },
+          "required": [
+            "vertices"
+          ],
+          "title": "ZoneGeometryV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "approval_record_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Approval Record Id"
+        },
+        "camera_id": {
+          "maxLength": 160,
+          "minLength": 3,
+          "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Camera Id",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.analytics.geometry.v1",
+          "default": "hcam.analytics.geometry.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "coordinate_space": {
+          "const": "normalized_top_left",
+          "default": "normalized_top_left",
+          "title": "Coordinate Space",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "department": {
+          "maxLength": 120,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9 ._-]*$",
+          "title": "Department",
+          "type": "string"
+        },
+        "geometry_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Geometry Id",
+          "type": "string"
+        },
+        "independent_reviewer_id": {
+          "anyOf": [
+            {
+              "maxLength": 160,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:@-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Independent Reviewer Id"
+        },
+        "intended_use": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Intended Use",
+          "type": "string"
+        },
+        "owner_id": {
+          "maxLength": 160,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:@-]*$",
+          "title": "Owner Id",
+          "type": "string"
+        },
+        "policy_version": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Policy Version",
+          "type": "string"
+        },
+        "schedule": {
+          "$ref": "#/$defs/GeometryScheduleV1"
+        },
+        "shape": {
+          "discriminator": {
+            "mapping": {
+              "line": "#/$defs/LineGeometryV1",
+              "zone": "#/$defs/ZoneGeometryV1"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/LineGeometryV1"
+            },
+            {
+              "$ref": "#/$defs/ZoneGeometryV1"
+            }
+          ],
+          "title": "Shape"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "approved",
+            "retired"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        },
+        "version": {
+          "maximum": 2147483647,
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "geometry_id",
+        "version",
+        "department",
+        "stream_id",
+        "camera_id",
+        "status",
+        "shape",
+        "intended_use",
+        "policy_version",
+        "owner_id",
+        "created_at",
+        "updated_at"
+      ],
+      "title": "GeometryDefinitionV1",
+      "type": "object"
+    },
+    "line": {
+      "$defs": {
+        "NormalizedPoint": {
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ],
+          "title": "NormalizedPoint",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "crossing_direction": {
+          "default": "both",
+          "enum": [
+            "both",
+            "start_to_end",
+            "end_to_start"
+          ],
+          "title": "Crossing Direction",
+          "type": "string"
+        },
+        "end": {
+          "$ref": "#/$defs/NormalizedPoint"
+        },
+        "kind": {
+          "const": "line",
+          "default": "line",
+          "title": "Kind",
+          "type": "string"
+        },
+        "start": {
+          "$ref": "#/$defs/NormalizedPoint"
+        }
+      },
+      "required": [
+        "start",
+        "end"
+      ],
+      "title": "LineGeometryV1",
+      "type": "object"
+    },
+    "schedule": {
+      "$defs": {
+        "WeeklyWindowV1": {
+          "additionalProperties": false,
+          "properties": {
+            "days": {
+              "items": {
+                "enum": [
+                  "monday",
+                  "tuesday",
+                  "wednesday",
+                  "thursday",
+                  "friday",
+                  "saturday",
+                  "sunday"
+                ],
+                "type": "string"
+              },
+              "maxItems": 7,
+              "minItems": 1,
+              "title": "Days",
+              "type": "array"
+            },
+            "end_minute": {
+              "maximum": 1440,
+              "minimum": 1,
+              "title": "End Minute",
+              "type": "integer"
+            },
+            "start_minute": {
+              "maximum": 1439,
+              "minimum": 0,
+              "title": "Start Minute",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "days",
+            "start_minute",
+            "end_minute"
+          ],
+          "title": "WeeklyWindowV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "default": "always",
+          "enum": [
+            "always",
+            "weekly"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "timezone": {
+          "default": "UTC",
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^(?:UTC|[A-Za-z][A-Za-z0-9._+-]*(?:/[A-Za-z0-9._+-]+)+)$",
+          "title": "Timezone",
+          "type": "string"
+        },
+        "windows": {
+          "items": {
+            "$ref": "#/$defs/WeeklyWindowV1"
+          },
+          "maxItems": 64,
+          "title": "Windows",
+          "type": "array"
+        }
+      },
+      "title": "GeometryScheduleV1",
+      "type": "object"
+    },
+    "zone": {
+      "$defs": {
+        "NormalizedPoint": {
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ],
+          "title": "NormalizedPoint",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "boundary_policy": {
+          "default": "inside_inclusive",
+          "enum": [
+            "inside_inclusive",
+            "inside_exclusive"
+          ],
+          "title": "Boundary Policy",
+          "type": "string"
+        },
+        "kind": {
+          "const": "zone",
+          "default": "zone",
+          "title": "Kind",
+          "type": "string"
+        },
+        "vertices": {
+          "items": {
+            "$ref": "#/$defs/NormalizedPoint"
+          },
+          "maxItems": 128,
+          "minItems": 3,
+          "title": "Vertices",
+          "type": "array"
+        }
+      },
+      "required": [
+        "vertices"
+      ],
+      "title": "ZoneGeometryV1",
+      "type": "object"
+    }
+  },
+  "maximum_event_bytes": 65536,
+  "prohibited_fields": [
+    "access_token",
+    "biometric",
+    "biometrics",
+    "clip",
+    "credential",
+    "credentials",
+    "crop",
+    "embedding",
+    "face_embedding",
+    "face_template",
+    "frame_bytes",
+    "frame_data",
+    "government_data",
+    "government_record",
+    "image",
+    "image_bytes",
+    "locator",
+    "management_locator",
+    "media",
+    "owner_details",
+    "owner_record",
+    "password",
+    "person_embedding",
+    "raw_frame",
+    "refresh_token",
+    "secret",
+    "secret_ref",
+    "source_url",
+    "stream_url",
+    "username",
+    "video",
+    "watchlist",
+    "watchlist_match"
+  ],
+  "runtime": {
+    "adapter": {
+      "additionalProperties": false,
+      "properties": {
+        "adapter_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Adapter Id",
+          "type": "string"
+        },
+        "adapter_version": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Adapter Version",
+          "type": "string"
+        },
+        "artifact_access": {
+          "const": "verified_handle_only",
+          "default": "verified_handle_only",
+          "title": "Artifact Access",
+          "type": "string"
+        },
+        "configured": {
+          "default": false,
+          "title": "Configured",
+          "type": "boolean"
+        },
+        "contract_type": {
+          "const": "hcam.analytics.runtime-adapter.v1",
+          "default": "hcam.analytics.runtime-adapter.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "input_contract": {
+          "const": "hcam.analytics.runtime-input.v1",
+          "default": "hcam.analytics.runtime-input.v1",
+          "title": "Input Contract",
+          "type": "string"
+        },
+        "maximum_batch_size": {
+          "maximum": 64,
+          "minimum": 1,
+          "title": "Maximum Batch Size",
+          "type": "integer"
+        },
+        "network_access": {
+          "const": "denied",
+          "default": "denied",
+          "title": "Network Access",
+          "type": "string"
+        },
+        "output_contract": {
+          "const": "hcam.analytics.runtime-result.v1",
+          "default": "hcam.analytics.runtime-result.v1",
+          "title": "Output Contract",
+          "type": "string"
+        },
+        "supported_capabilities": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 3,
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Supported Capabilities",
+          "type": "array"
+        }
+      },
+      "required": [
+        "adapter_id",
+        "adapter_version",
+        "supported_capabilities",
+        "maximum_batch_size"
+      ],
+      "title": "RuntimeAdapterDescriptorV1",
+      "type": "object"
+    },
+    "request": {
+      "$defs": {
+        "RuntimeInputDescriptorV1": {
+          "additionalProperties": false,
+          "properties": {
+            "camera_id": {
+              "maxLength": 160,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "expires_at": {
+              "format": "date-time",
+              "title": "Expires At",
+              "type": "string"
+            },
+            "input_id": {
+              "pattern": "^input_[0-9a-f]{32}$",
+              "title": "Input Id",
+              "type": "string"
+            },
+            "issued_at": {
+              "format": "date-time",
+              "title": "Issued At",
+              "type": "string"
+            },
+            "lease_id": {
+              "pattern": "^lease_[0-9a-f]{32}$",
+              "title": "Lease Id",
+              "type": "string"
+            },
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "pixel_format": {
+              "enum": [
+                "bgr8",
+                "nv12",
+                "rgb8"
+              ],
+              "title": "Pixel Format",
+              "type": "string"
+            },
+            "source": {
+              "$ref": "#/$defs/SourceFrame"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "input_id",
+            "lease_id",
+            "stream_id",
+            "camera_id",
+            "source",
+            "observed_at",
+            "issued_at",
+            "expires_at",
+            "pixel_format"
+          ],
+          "title": "RuntimeInputDescriptorV1",
+          "type": "object"
+        },
+        "SourceFrame": {
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "maximum": 32768,
+              "minimum": 1,
+              "title": "Height",
+              "type": "integer"
+            },
+            "sequence": {
+              "maximum": 9223372036854775807,
+              "minimum": 0,
+              "title": "Sequence",
+              "type": "integer"
+            },
+            "timestamp_confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Timestamp Confidence",
+              "type": "number"
+            },
+            "timestamp_source": {
+              "enum": [
+                "presentation_time",
+                "source_clock",
+                "receive_clock",
+                "generated"
+              ],
+              "title": "Timestamp Source",
+              "type": "string"
+            },
+            "width": {
+              "maximum": 32768,
+              "minimum": 1,
+              "title": "Width",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "sequence",
+            "width",
+            "height",
+            "timestamp_source",
+            "timestamp_confidence"
+          ],
+          "title": "SourceFrame",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "assignment_id": {
+          "pattern": "^ana_[0-9a-f]{32}$",
+          "title": "Assignment Id",
+          "type": "string"
+        },
+        "camera_id": {
+          "maxLength": 160,
+          "minLength": 3,
+          "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Camera Id",
+          "type": "string"
+        },
+        "capability": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+          "title": "Capability",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.analytics.runtime-request.v1",
+          "default": "hcam.analytics.runtime-request.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "deadline_at": {
+          "format": "date-time",
+          "title": "Deadline At",
+          "type": "string"
+        },
+        "inputs": {
+          "items": {
+            "$ref": "#/$defs/RuntimeInputDescriptorV1"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Inputs",
+          "type": "array"
+        },
+        "request_id": {
+          "pattern": "^run_[0-9a-f]{32}$",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "assignment_id",
+        "capability",
+        "stream_id",
+        "camera_id",
+        "deadline_at",
+        "inputs"
+      ],
+      "title": "RuntimeBatchRequestV1",
+      "type": "object"
+    },
+    "request_v2": {
+      "$defs": {
+        "RuntimeInputDescriptorV1": {
+          "additionalProperties": false,
+          "properties": {
+            "camera_id": {
+              "maxLength": 160,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Camera Id",
+              "type": "string"
+            },
+            "expires_at": {
+              "format": "date-time",
+              "title": "Expires At",
+              "type": "string"
+            },
+            "input_id": {
+              "pattern": "^input_[0-9a-f]{32}$",
+              "title": "Input Id",
+              "type": "string"
+            },
+            "issued_at": {
+              "format": "date-time",
+              "title": "Issued At",
+              "type": "string"
+            },
+            "lease_id": {
+              "pattern": "^lease_[0-9a-f]{32}$",
+              "title": "Lease Id",
+              "type": "string"
+            },
+            "observed_at": {
+              "format": "date-time",
+              "title": "Observed At",
+              "type": "string"
+            },
+            "pixel_format": {
+              "enum": [
+                "bgr8",
+                "nv12",
+                "rgb8"
+              ],
+              "title": "Pixel Format",
+              "type": "string"
+            },
+            "source": {
+              "$ref": "#/$defs/SourceFrame"
+            },
+            "stream_id": {
+              "pattern": "^str_[0-9a-f]{32}$",
+              "title": "Stream Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "input_id",
+            "lease_id",
+            "stream_id",
+            "camera_id",
+            "source",
+            "observed_at",
+            "issued_at",
+            "expires_at",
+            "pixel_format"
+          ],
+          "title": "RuntimeInputDescriptorV1",
+          "type": "object"
+        },
+        "SourceFrame": {
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "maximum": 32768,
+              "minimum": 1,
+              "title": "Height",
+              "type": "integer"
+            },
+            "sequence": {
+              "maximum": 9223372036854775807,
+              "minimum": 0,
+              "title": "Sequence",
+              "type": "integer"
+            },
+            "timestamp_confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Timestamp Confidence",
+              "type": "number"
+            },
+            "timestamp_source": {
+              "enum": [
+                "presentation_time",
+                "source_clock",
+                "receive_clock",
+                "generated"
+              ],
+              "title": "Timestamp Source",
+              "type": "string"
+            },
+            "width": {
+              "maximum": 32768,
+              "minimum": 1,
+              "title": "Width",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "sequence",
+            "width",
+            "height",
+            "timestamp_source",
+            "timestamp_confidence"
+          ],
+          "title": "SourceFrame",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "assignment_id": {
+          "pattern": "^ana_[0-9a-f]{32}$",
+          "title": "Assignment Id",
+          "type": "string"
+        },
+        "camera_id": {
+          "maxLength": 160,
+          "minLength": 3,
+          "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Camera Id",
+          "type": "string"
+        },
+        "capability": {
+          "maxLength": 128,
+          "minLength": 3,
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+          "title": "Capability",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.analytics.runtime-request.v2",
+          "default": "hcam.analytics.runtime-request.v2",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "deadline_at": {
+          "format": "date-time",
+          "title": "Deadline At",
+          "type": "string"
+        },
+        "inputs": {
+          "items": {
+            "$ref": "#/$defs/RuntimeInputDescriptorV1"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Inputs",
+          "type": "array"
+        },
+        "minimum_confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Minimum Confidence",
+          "type": "number"
+        },
+        "request_id": {
+          "pattern": "^run_[0-9a-f]{32}$",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "assignment_id",
+        "capability",
+        "stream_id",
+        "camera_id",
+        "deadline_at",
+        "inputs",
+        "minimum_confidence"
+      ],
+      "title": "RuntimeBatchRequestV2",
+      "type": "object"
+    },
+    "result": {
+      "$defs": {
+        "NormalizedBoundingBox": {
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Height",
+              "type": "number"
+            },
+            "width": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Width",
+              "type": "number"
+            },
+            "x": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "title": "NormalizedBoundingBox",
+          "type": "object"
+        },
+        "RuntimeObservationCandidateV1": {
+          "additionalProperties": false,
+          "properties": {
+            "bbox": {
+              "$ref": "#/$defs/NormalizedBoundingBox"
+            },
+            "class_id": {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+              "title": "Class Id",
+              "type": "string"
+            },
+            "confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Confidence",
+              "type": "number"
+            },
+            "input_id": {
+              "pattern": "^input_[0-9a-f]{32}$",
+              "title": "Input Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "input_id",
+            "class_id",
+            "confidence",
+            "bbox"
+          ],
+          "title": "RuntimeObservationCandidateV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/RuntimeObservationCandidateV1"
+          },
+          "maxItems": 1024,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "contract_type": {
+          "const": "hcam.analytics.runtime-result.v1",
+          "default": "hcam.analytics.runtime-result.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "failure_code": {
+          "anyOf": [
+            {
+              "enum": [
+                "artifact_rejected",
+                "deadline_exceeded",
+                "input_expired",
+                "invalid_input",
+                "resource_exhausted",
+                "runtime_internal",
+                "runtime_unconfigured",
+                "unsupported_capability"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Failure Code"
+        },
+        "request_id": {
+          "pattern": "^run_[0-9a-f]{32}$",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "succeeded",
+            "degraded",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "status"
+      ],
+      "title": "RuntimeBatchResultV1",
+      "type": "object"
+    }
+  },
+  "spatial": {
+    "geometry_rule": {
+      "$defs": {
+        "RuleGraphV1": {
+          "additionalProperties": false,
+          "properties": {
+            "graph_type": {
+              "const": "hcam.analytics.rule_graph.v1",
+              "default": "hcam.analytics.rule_graph.v1",
+              "title": "Graph Type",
+              "type": "string"
+            },
+            "nodes": {
+              "items": {
+                "$ref": "#/$defs/RuleNodeV1"
+              },
+              "maxItems": 64,
+              "minItems": 1,
+              "title": "Nodes",
+              "type": "array"
+            },
+            "output_node_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Output Node Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "nodes",
+            "output_node_id"
+          ],
+          "title": "RuleGraphV1",
+          "type": "object"
+        },
+        "RuleNodeV1": {
+          "additionalProperties": false,
+          "properties": {
+            "duration_ms": {
+              "anyOf": [
+                {
+                  "maximum": 3600000,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Duration Ms"
+            },
+            "inputs": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "maxItems": 8,
+              "title": "Inputs",
+              "type": "array"
+            },
+            "kind": {
+              "enum": [
+                "spatial",
+                "all",
+                "any",
+                "not",
+                "sequence",
+                "within",
+                "for_at_least",
+                "cooldown",
+                "repeat_limit"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "node_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Node Id",
+              "type": "string"
+            },
+            "repeat_limit": {
+              "anyOf": [
+                {
+                  "maximum": 100,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Repeat Limit"
+            },
+            "signal": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "line_crossing",
+                    "zone_entry",
+                    "zone_exit",
+                    "zone_presence",
+                    "zone_dwell_threshold",
+                    "zone_occupancy_entered",
+                    "zone_occupancy_exited"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Signal"
+            }
+          },
+          "required": [
+            "node_id",
+            "kind"
+          ],
+          "title": "RuleNodeV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "anchor_policy": {
+          "default": "bottom_center",
+          "enum": [
+            "bottom_center",
+            "bbox_center"
+          ],
+          "title": "Anchor Policy",
+          "type": "string"
+        },
+        "approval_record_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Approval Record Id"
+        },
+        "assignment_id": {
+          "pattern": "^ana_[0-9a-f]{32}$",
+          "title": "Assignment Id",
+          "type": "string"
+        },
+        "boundary_policy": {
+          "default": "inside_inclusive",
+          "enum": [
+            "inside_inclusive",
+            "inside_exclusive"
+          ],
+          "title": "Boundary Policy",
+          "type": "string"
+        },
+        "camera_id": {
+          "maxLength": 160,
+          "minLength": 3,
+          "pattern": "^[a-z][a-z0-9._-]*:[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Camera Id",
+          "type": "string"
+        },
+        "cel_condition": {
+          "default": "true",
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Cel Condition",
+          "type": "string"
+        },
+        "class_filter": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 3,
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+            "type": "string"
+          },
+          "maxItems": 7,
+          "minItems": 1,
+          "title": "Class Filter",
+          "type": "array"
+        },
+        "configuration_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Configuration Digest",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.analytics.geometry_rule.v1",
+          "default": "hcam.analytics.geometry_rule.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "deadband": {
+          "anyOf": [
+            {
+              "maximum": 0.1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Deadband"
+        },
+        "department": {
+          "maxLength": 120,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9 ._-]*$",
+          "title": "Department",
+          "type": "string"
+        },
+        "dwell_threshold_ms": {
+          "anyOf": [
+            {
+              "maximum": 3600000,
+              "minimum": 100,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dwell Threshold Ms"
+        },
+        "effective_from": {
+          "format": "date-time",
+          "title": "Effective From",
+          "type": "string"
+        },
+        "effective_until": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Effective Until"
+        },
+        "event_kind": {
+          "enum": [
+            "hcam.analytics.line.crossing.v1",
+            "hcam.analytics.zone.entry.v1",
+            "hcam.analytics.zone.exit.v1",
+            "hcam.analytics.zone.dwell.threshold_met.v1",
+            "hcam.analytics.zone.occupancy.threshold_entered.v1",
+            "hcam.analytics.zone.occupancy.threshold_exited.v1"
+          ],
+          "title": "Event Kind",
+          "type": "string"
+        },
+        "geometry_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Geometry Id",
+          "type": "string"
+        },
+        "geometry_version": {
+          "maximum": 2147483647,
+          "minimum": 1,
+          "title": "Geometry Version",
+          "type": "integer"
+        },
+        "graph": {
+          "$ref": "#/$defs/RuleGraphV1"
+        },
+        "initial_state_policy": {
+          "const": "initialize_without_event",
+          "default": "initialize_without_event",
+          "title": "Initial State Policy",
+          "type": "string"
+        },
+        "line_direction": {
+          "anyOf": [
+            {
+              "enum": [
+                "both",
+                "a_to_b",
+                "b_to_a"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Line Direction"
+        },
+        "occlusion_grace_ms": {
+          "default": 0,
+          "maximum": 60000,
+          "minimum": 0,
+          "title": "Occlusion Grace Ms",
+          "type": "integer"
+        },
+        "occupancy_enter_threshold": {
+          "anyOf": [
+            {
+              "maximum": 512,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Occupancy Enter Threshold"
+        },
+        "occupancy_reset_threshold": {
+          "anyOf": [
+            {
+              "maximum": 511,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Occupancy Reset Threshold"
+        },
+        "owner_id": {
+          "maxLength": 160,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:@-]*$",
+          "title": "Owner Id",
+          "type": "string"
+        },
+        "rearm_distance": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 0.2,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rearm Distance"
+        },
+        "retention_class": {
+          "enum": [
+            "derived.analytics.standard",
+            "derived.analytics.restricted"
+          ],
+          "title": "Retention Class",
+          "type": "string"
+        },
+        "rule_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "approved",
+            "retired"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        },
+        "version": {
+          "maximum": 2147483647,
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "zone_hysteresis": {
+          "anyOf": [
+            {
+              "maximum": 0.1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Zone Hysteresis"
+        }
+      },
+      "required": [
+        "rule_id",
+        "version",
+        "status",
+        "department",
+        "assignment_id",
+        "stream_id",
+        "camera_id",
+        "geometry_id",
+        "geometry_version",
+        "event_kind",
+        "class_filter",
+        "graph",
+        "configuration_digest",
+        "retention_class",
+        "owner_id",
+        "effective_from",
+        "created_at",
+        "updated_at"
+      ],
+      "title": "GeometryRuleV1",
+      "type": "object"
+    },
+    "rule_graph": {
+      "$defs": {
+        "RuleNodeV1": {
+          "additionalProperties": false,
+          "properties": {
+            "duration_ms": {
+              "anyOf": [
+                {
+                  "maximum": 3600000,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Duration Ms"
+            },
+            "inputs": {
+              "items": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                "type": "string"
+              },
+              "maxItems": 8,
+              "title": "Inputs",
+              "type": "array"
+            },
+            "kind": {
+              "enum": [
+                "spatial",
+                "all",
+                "any",
+                "not",
+                "sequence",
+                "within",
+                "for_at_least",
+                "cooldown",
+                "repeat_limit"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "node_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+              "title": "Node Id",
+              "type": "string"
+            },
+            "repeat_limit": {
+              "anyOf": [
+                {
+                  "maximum": 100,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Repeat Limit"
+            },
+            "signal": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "line_crossing",
+                    "zone_entry",
+                    "zone_exit",
+                    "zone_presence",
+                    "zone_dwell_threshold",
+                    "zone_occupancy_entered",
+                    "zone_occupancy_exited"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Signal"
+            }
+          },
+          "required": [
+            "node_id",
+            "kind"
+          ],
+          "title": "RuleNodeV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "graph_type": {
+          "const": "hcam.analytics.rule_graph.v1",
+          "default": "hcam.analytics.rule_graph.v1",
+          "title": "Graph Type",
+          "type": "string"
+        },
+        "nodes": {
+          "items": {
+            "$ref": "#/$defs/RuleNodeV1"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Nodes",
+          "type": "array"
+        },
+        "output_node_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Output Node Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "nodes",
+        "output_node_id"
+      ],
+      "title": "RuleGraphV1",
+      "type": "object"
+    },
+    "rule_node": {
+      "additionalProperties": false,
+      "properties": {
+        "duration_ms": {
+          "anyOf": [
+            {
+              "maximum": 3600000,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Duration Ms"
+        },
+        "inputs": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          "maxItems": 8,
+          "title": "Inputs",
+          "type": "array"
+        },
+        "kind": {
+          "enum": [
+            "spatial",
+            "all",
+            "any",
+            "not",
+            "sequence",
+            "within",
+            "for_at_least",
+            "cooldown",
+            "repeat_limit"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "node_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "repeat_limit": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Repeat Limit"
+        },
+        "signal": {
+          "anyOf": [
+            {
+              "enum": [
+                "line_crossing",
+                "zone_entry",
+                "zone_exit",
+                "zone_presence",
+                "zone_dwell_threshold",
+                "zone_occupancy_entered",
+                "zone_occupancy_exited"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Signal"
+        }
+      },
+      "required": [
+        "node_id",
+        "kind"
+      ],
+      "title": "RuleNodeV1",
+      "type": "object"
+    }
+  },
+  "taxonomy": {
+    "$defs": {
+      "TaxonomyClassV1": {
+        "additionalProperties": false,
+        "properties": {
+          "display_name": {
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Display Name",
+            "type": "string"
+          },
+          "id": {
+            "maxLength": 128,
+            "minLength": 3,
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+            "title": "Id",
+            "type": "string"
+          },
+          "parent_id": {
+            "anyOf": [
+              {
+                "maxLength": 128,
+                "minLength": 3,
+                "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Parent Id"
+          },
+          "purpose": {
+            "maxLength": 500,
+            "minLength": 1,
+            "title": "Purpose",
+            "type": "string"
+          },
+          "state": {
+            "default": "active",
+            "enum": [
+              "active",
+              "deprecated"
+            ],
+            "title": "State",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "display_name",
+          "purpose"
+        ],
+        "title": "TaxonomyClassV1",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "approval_record_id": {
+        "anyOf": [
+          {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "title": "Approval Record Id"
+      },
+      "artifact_digest": {
+        "pattern": "^sha256:[0-9a-f]{64}$",
+        "title": "Artifact Digest",
+        "type": "string"
+      },
+      "classes": {
+        "items": {
+          "$ref": "#/$defs/TaxonomyClassV1"
+        },
+        "maxItems": 512,
+        "minItems": 1,
+        "title": "Classes",
+        "type": "array"
+      },
+      "contract_type": {
+        "const": "hcam.analytics.taxonomy.v1",
+        "default": "hcam.analytics.taxonomy.v1",
+        "title": "Contract Type",
+        "type": "string"
+      },
+      "created_at": {
+        "format": "date-time",
+        "title": "Created At",
+        "type": "string"
+      },
+      "independent_reviewer_id": {
+        "anyOf": [
+          {
+            "maxLength": 160,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:@-]*$",
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "title": "Independent Reviewer Id"
+      },
+      "intended_use": {
+        "maxLength": 1000,
+        "minLength": 1,
+        "title": "Intended Use",
+        "type": "string"
+      },
+      "owner_id": {
+        "maxLength": 160,
+        "minLength": 1,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:@-]*$",
+        "title": "Owner Id",
+        "type": "string"
+      },
+      "prohibited_uses": {
+        "items": {
+          "enum": [
+            "autonomous_enforcement",
+            "biometric_identification",
+            "cross_camera_identity",
+            "person_reidentification",
+            "sensitive_trait_inference"
+          ],
+          "type": "string"
+        },
+        "maxItems": 5,
+        "minItems": 5,
+        "title": "Prohibited Uses",
+        "type": "array"
+      },
+      "status": {
+        "enum": [
+          "draft",
+          "approved",
+          "retired"
+        ],
+        "title": "Status",
+        "type": "string"
+      },
+      "taxonomy_version": {
+        "maxLength": 128,
+        "pattern": "^hcam\\.[a-z][a-z0-9_.-]*\\.v[1-9][0-9]*$",
+        "title": "Taxonomy Version",
+        "type": "string"
+      },
+      "unknown_class_policy": {
+        "default": "reject",
+        "enum": [
+          "reject",
+          "emit_unknown"
+        ],
+        "title": "Unknown Class Policy",
+        "type": "string"
+      },
+      "updated_at": {
+        "format": "date-time",
+        "title": "Updated At",
+        "type": "string"
+      }
+    },
+    "required": [
+      "taxonomy_version",
+      "artifact_digest",
+      "status",
+      "intended_use",
+      "classes",
+      "prohibited_uses",
+      "owner_id",
+      "created_at",
+      "updated_at"
+    ],
+    "title": "TaxonomyManifestV1",
+    "type": "object"
+  }
+}

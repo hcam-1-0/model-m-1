@@ -1,0 +1,122 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3t_runtime_binding_r1_failure_analysis_r0.v1",
+  "analysis_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3T-RUNTIME-BINDING-R1-FAILURE-ANALYSIS-R0",
+  "status": "sanitized_U3T_R1_failure_analyzed_owner_decisions_pending_no_implementation_runtime_retry_or_U3K_authority",
+  "prepared_on": "2026-09-02",
+  "analysis_scope": "sealed_attempt_records_accepted_source_text_and_existing_generated_static_tests_only",
+  "attempt_evidence": {
+    "decision_id": "D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH",
+    "authorization_package_sha256": "C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53",
+    "authorization_record_sha256": "34AEBB1FC200E1BBC635130A0E41433DC1B4718A1354541F29CC378A4736481D",
+    "result_record_sha256": "B7DAEF8067FACA055A664FC1FD62FA8C3F2CF8C0C27E27679B7DA7AD8E174CFD",
+    "evidence_record_sha256": "2706F18CA283428A17FDEB0AEB02CC350FE88336D8FBF9AC00CD040F3F0A51E1",
+    "attempts_consumed": 1,
+    "retry_authorized": false,
+    "owner_failure_evidence_acceptance_recorded": false
+  },
+  "confirmed_facts": {
+    "authorization_record_existed_before_observation": true,
+    "sealed_package_core_hashes_verified_before_observation": "13_of_13",
+    "attempt_started_at": "2026-09-01T18:33:24.411Z",
+    "attempt_completed_at": "2026-09-01T18:33:28.595Z",
+    "duration_milliseconds": 4184,
+    "runtime_path_parent_metadata_hash_and_cache_only_trust_passed": true,
+    "runtime_identity_stable_after_process": true,
+    "accepted_source_hashes_matched_before_and_after_process": "5_of_5",
+    "H1_process_invocation_count": 1,
+    "H1_process_exit_code": 71,
+    "H1_process_timed_out": false,
+    "stdout_bytes": 636,
+    "stderr_bytes": 0,
+    "sanitized_reason_code": "result_contract_invalid",
+    "H1_invalid_projection_completed_actions": 16,
+    "raw_stdout_stderr_controller_projection_exception_or_environment_material_retained": false,
+    "automatic_retry_count": 0,
+    "prohibited_action_count": 0,
+    "successful_U3T_R1_evidence_available": false,
+    "U3K_authorized": false
+  },
+  "interpretation_boundaries": {
+    "underlying_controller_reason_code_observed": false,
+    "exact_failed_H1_predicate_observed": false,
+    "H1_completed_actions_16_proves_controller_completed_action_16": false,
+    "why": "the_accepted_H1_harness_emits_one_fixed_result_contract_invalid_projection_for_any_failed_result_predicate_and_does_not_retain_the_candidate_controller_projection",
+    "blind_retry_safe": false,
+    "current_authorization_reusable": false
+  },
+  "confirmed_design_gaps": [
+    {
+      "gap_id": "GAP-U3T-STATIC-ONLY-RETURN-SHAPE",
+      "finding": "the_existing_H1_suite_checks_source_text_embedded_JSON_bounds_hashes_and_forbidden_surfaces_but_does_not_execute_PowerShell_or_validate_the_runtime_controller_return_shape",
+      "effect": "a_PowerShell_runtime_semantics_or_return_shape_mismatch_can_pass_all_generated_static_checks_and_fail_only_in_the_digest_bound_attempt"
+    },
+    {
+      "gap_id": "GAP-U3T-COARSE-RESULT-PREDICATE",
+      "finding": "the_H1_harness_collapses_all_result_validation_predicate_failures_into_one_result_contract_invalid_output",
+      "effect": "the_exact_field_type_value_or_shape_mismatch_cannot_be_selected_for_remediation_from_the_retained_evidence"
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "H1-POWERSHELL-RETURN-SHAPE-OR-TYPE-MISMATCH",
+      "confidence": "medium_high_inference_not_confirmed",
+      "basis": [
+        "source_binding_and_controller_invocation_reached_the_H1_result_validation_branch",
+        "the_static_suite_does_not_execute_the_PowerShell_return_shape",
+        "the_monolithic_H1_predicate_contains_mapping_boolean_integer_null_and_nested_property_checks"
+      ],
+      "required_response": "add_allowlisted_field_group_diagnostics_without_retaining_values_or_raw_controller_output"
+    },
+    {
+      "hypothesis_id": "H2-CONTROLLER-RETURNED-A-SANITIZED-NON-POLICY-RESULT",
+      "confidence": "medium_unresolved",
+      "basis": [
+        "H1_accepts_only_policy_valid_as_success",
+        "the_underlying_controller_reason_code_is_intentionally_not_retained",
+        "a_request_or_action_plan_semantic_difference_would_be_collapsed_into_the_same_H1_result_contract_invalid_output"
+      ],
+      "required_response": "preserve_only_an_allowlisted_controller_reason_family_and_result_field_group_status_in_the_next_diagnostic_harness"
+    },
+    {
+      "hypothesis_id": "H3-H1-EXPECTED-PROJECTION-DRIFT",
+      "confidence": "medium_low_unresolved",
+      "basis": [
+        "H1_contains_a_separate_fixed_policy_valid_projection_and_a_subset_validation_predicate",
+        "the_controller_and_H1_next_gate_labels_are_not_identical_even_though_that_field_is_not_currently_checked",
+        "future_contract_growth_could_repeat_this_drift"
+      ],
+      "required_response": "derive_the_H1_success_projection_from_one_canonical_contract_fixture_or_check_every_allowlisted_field_group_explicitly"
+    },
+    {
+      "hypothesis_id": "H4-RUNTIME-OR-SOURCE-IDENTITY-FAILURE",
+      "confidence": "rejected_by_current_evidence",
+      "basis": [
+        "runtime_trust_verified_and_closed",
+        "runtime_hash_was_stable",
+        "all_five_source_hashes_matched_before_and_after_the_process"
+      ],
+      "required_response": "no_runtime_or_source_binding_remediation_is_justified_by_this_attempt"
+    }
+  ],
+  "recommended_remediation_direction": {
+    "preserve_accepted_controller_source_byte_exact_for_first_diagnostic_revision": true,
+    "preserve_historical_H1_harness_and_attempt_records_byte_exact": true,
+    "create_additive_H1_R1_diagnostic_harness_later": true,
+    "diagnostic_output": "allowlisted_field_group_status_and_controller_reason_family_only",
+    "raw_controller_projection_value_type_exception_stdout_stderr_or_environment_retention": false,
+    "generated_static_vectors_required_before_owner_source_acceptance": true,
+    "separate_digest_bound_generated_only_runtime_diagnostic_required_after_source_acceptance": true,
+    "blind_retry_or_U3K_progression": false
+  },
+  "gate_effect": {
+    "analysis_prepared": true,
+    "failure_evidence_owner_acceptance_inferred": false,
+    "remediation_decisions_pending": true,
+    "harness_controller_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  }
+}

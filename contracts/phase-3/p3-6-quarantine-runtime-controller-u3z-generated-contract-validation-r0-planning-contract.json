@@ -1,0 +1,153 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3z_generated_contract_validation_r0_planning_contract.v1",
+  "contract_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3Z-GENERATED-CONTRACT-VALIDATION-R0-PLANNING-CONTRACT",
+  "status": "non_effective_source_harness_planning_only",
+  "prepared_on": "2026-09-02",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-implementation-acceptance.json",
+    "acceptance_record_sha256": "1D4F58F792CDA447E0DB369924BB2004F6CC7300484D2660755FC545ABC3C1F5",
+    "accepted_package_sha256": "ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78",
+    "effect": "prepare_one_separate_non_effective_U3Z_generated_PowerShell_contract_validation_planning_and_authorization_proposal"
+  },
+  "purpose": "define_an_additive_exact_hash_bound_generated_contract_validation_harness_and_nonobservational_static_evidence_before_any_PowerShell_execution",
+  "architecture_correction": {
+    "accepted_R1_controller_has_only_Python_and_inert_source_text_execution_evidence": true,
+    "accepted_R1_PowerShell_source_has_not_been_parsed_imported_dot_sourced_or_executed": true,
+    "Python_cross_language_projection_is_not_PowerShell_runtime_evidence": true,
+    "additive_exact_hash_bound_generated_validation_harness_required": true,
+    "accepted_U3Y_package_or_artifact_may_be_modified_by_U3Z": false
+  },
+  "two_future_gates": [
+    {
+      "gate": "U3Z_H1_SOURCE_HARNESS",
+      "scope": "source_only_harness_exactly_288_materialized_generated_vectors_static_tests_evidence_package_and_review",
+      "PowerShell_parse_import_dot_source_or_execution": false,
+      "runtime_or_machine_observation": false,
+      "separate_owner_source_implementation_acceptance_required": true
+    },
+    {
+      "gate": "U3Z_R1_RUNTIME_BOUND_GENERATED_VALIDATION",
+      "scope": "one_exact_runtime_binding_and_one_generated_only_contract_validation_attempt_after_H1_acceptance",
+      "requires_fresh_digest_bound_authorization": true,
+      "generated_Policy_requests_only": true,
+      "machine_controller_actions": false,
+      "Python_machine_execution": false,
+      "U3K_authority": false
+    }
+  ],
+  "future_H1_source_paths": {
+    "PowerShell_harness": "tools/phase36_quarantine_runtime_controller_r1_generated_validation.ps1",
+    "materialized_generated_vectors": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-vectors.json",
+    "static_test": "tests/test_phase36_quarantine_runtime_controller_u3z_generated_contract_validation_static.py",
+    "implementation_evidence": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-harness-implementation-evidence.json",
+    "implementation_package": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-harness-implementation-package.json",
+    "evidence_review": "docs/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-harness-evidence-review.md"
+  },
+  "H1_harness_contract": {
+    "source_role": "exact_R1_controller_loader_and_generated_Policy_contract_validation_entrypoint",
+    "controller_source_path": "tools/phase36_quarantine_runtime_controller_r1.ps1",
+    "controller_source_sha256": "787655BAC55DDF563E9D1DC43EC37F010C271AB381E541B0734028E3F2B90B31",
+    "controller_contract_path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-contract.json",
+    "controller_contract_sha256": "637C5400122874149D9835CC6BC521E5EEC9160222F4A7AC5CA1F6CD99E1BCC4",
+    "accepted_vector_manifest_path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-vectors.json",
+    "accepted_vector_manifest_sha256": "D8EDF5C0255B40FB6C28BB014C09DC503D2B53665E69C5AA5AB65C744AEA81E4",
+    "Python_reference_path": "tools/phase36_quarantine_runtime_controller_r1_reference.py",
+    "Python_reference_sha256": "B5C7328CD666E0A8988F9B616C5B2A914D690A40BF2EA289C1F1C755E42B86F0",
+    "request_mode": "Policy",
+    "controller_Preflight_machine_authority": false,
+    "generated_request_only": true,
+    "request_result_or_expected_projection_from_external_input": false,
+    "single_exact_function": "Invoke-HcamRuntimeControllerR1",
+    "exact_generated_case_count": 288,
+    "exact_success_projection": {
+      "completed_actions": 18,
+      "failed_action": null,
+      "failed_stage": null
+    },
+    "empty_string_is_not_null": true,
+    "all_eighteen_nonempty_failure_actions_and_reasons_required": true,
+    "machine_action_authorized": false,
+    "python_machine_fallback": false,
+    "retry_authorized": false,
+    "U3K_authorized": false
+  },
+  "H1_generated_vector_plan": {
+    "exact_vectors": 288,
+    "materialization_relationship": "one_to_one_from_the_accepted_288_vector_manifest_with_source_vector_id_and_expected_projection",
+    "groups": {
+      "policy_valid_exact_null_success": 32,
+      "empty_string_rejected": 32,
+      "missing_field_rejected": 32,
+      "wrong_type_rejected": 32,
+      "completed_action_bounds": 32,
+      "all_eighteen_failure_actions": 32,
+      "all_eighteen_failure_reasons": 32,
+      "cross_language_canonical_projection": 32,
+      "zero_retention_and_closed_gates": 32
+    },
+    "all_generated_only": true,
+    "external_fixture_model_media_private_or_Government_data": false,
+    "PowerShell_execution_during_H1_implementation": false,
+    "machine_or_runtime_observation": false
+  },
+  "future_R1_runtime_binding_policy": {
+    "candidate_runtime_path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "candidate_path_is_planning_data_not_current_runtime_evidence": true,
+    "fresh_path_parent_size_version_hash_and_cache_only_trust_binding_required": true,
+    "network_or_trust_retrieval": false,
+    "PATH_PSModulePath_registry_WMI_package_or_directory_inventory": false,
+    "utility_manifest_module_closure_or_Aggregate_validation": false,
+    "hardware_or_accelerator_observation": false,
+    "exact_controller_harness_contract_vector_and_reference_hash_reverification_before_and_after": true,
+    "maximum_runtime_processes": 1,
+    "maximum_attempts": 1,
+    "automatic_retry": false,
+    "process_timeout_seconds": 120,
+    "maximum_stdout_bytes": 16384,
+    "maximum_stderr_bytes": 0,
+    "maximum_result_bytes": 32768,
+    "raw_stdout_stderr_exception_stack_fixture_or_invocation_persisted": false,
+    "accepted_output": "one_bounded_sanitized_288_case_summary_or_allowlisted_failure_code"
+  },
+  "future_R1_required_success_evidence": {
+    "materialized_cases_loaded": 288,
+    "materialized_cases_executed": 288,
+    "materialized_cases_passed": 288,
+    "materialized_cases_failed": 0,
+    "exact_null_success_cases_match": true,
+    "all_failure_action_and_reason_cases_match": true,
+    "cross_language_projection_difference_count": 0,
+    "raw_fixture_or_process_material_retained_bytes": 0,
+    "machine_actions": 0,
+    "network_actions": 0,
+    "automatic_retries": 0
+  },
+  "hard_prohibitions": [
+    "PowerShell_parse_import_dot_source_or_execution_during_current_planning_or_future_H1_source_implementation",
+    "Python_machine_access_controller_mode_subprocess_native_API_or_fallback",
+    "runtime_manifest_hardware_machine_storage_F_B_ACL_probe_cleanup_or_scanner_access_without_later_exact_R1_authorization",
+    "network_trust_retrieval_download_install_update_or_artifact_acquisition",
+    "model_inference_camera_media_private_or_Government_data",
+    "container_Kubernetes_profile_activation_deployment_another_attempt_or_U3K",
+    "commit_push_or_remote_Git"
+  ],
+  "required_sequence": [
+    "obtain_exact_digest_bound_U3Z_H1_source_harness_implementation_authorization",
+    "implement_and_statically_validate_only_the_exact_six_path_H1_allowlist",
+    "seal_and_obtain_exact_owner_U3Z_H1_source_acceptance",
+    "prepare_a_separate_fresh_runtime_binding_and_one_attempt_R1_authorization_package",
+    "obtain_exact_digest_bound_R1_authorization_before_any_PowerShell_parse_import_dot_source_or_execution",
+    "run_at_most_one_generated_validation_attempt_and_seal_sanitized_evidence",
+    "obtain_separate_runtime_validation_evidence_acceptance"
+  ],
+  "current_effect": {
+    "planning_contract_prepared": true,
+    "U3Z_H1_source_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "generated_validation_attempt_or_U3K_authorized": false,
+    "deployment_commit_push_or_remote_Git_authorized": false
+  }
+}

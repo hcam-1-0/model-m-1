@@ -1,0 +1,292 @@
+{
+  "audit_boundary": {
+    "container_vulnerability_scan_included": true,
+    "python_environment_pip_audit_included": true,
+    "reason": "Python and container findings are recorded without conflation."
+  },
+  "cel_profile": {
+    "custom_extensions": false,
+    "profile": "hcam.p3-4.constrained-cel.v1",
+    "runtime_compilation_of_unapproved_text": false
+  },
+  "content_digest": "sha256:c2adb771fa9d9a748b2c1038ece366c6c6ec127fa8515437d5fd59317b7b9dd7",
+  "generated_at_policy": "deterministic_no_wall_clock_timestamp",
+  "lockfile": {
+    "path": "uv.lock",
+    "sha256": "e45dbde11afbee0387a946562006083168fd8a47f97788745d5f3677919a1ea4",
+    "uv_version": "0.12.3"
+  },
+  "postgis": {
+    "container_index_digest": "sha256:eb2e8b8afd9b0ecee83bc20fd01aca62a5071bada2c0f38763174b653f8eed42",
+    "container_linux_amd64_manifest": "sha256:e6e6593f9b5025731edc1fd1c1fc6b47b0730244408e80b147b45557700fc340",
+    "container_reference": "postgis/postgis:18-3.6-alpine@sha256:eb2e8b8afd9b0ecee83bc20fd01aca62a5071bada2c0f38763174b653f8eed42",
+    "geos_compiled_version": "not_reported_by_postgis_full_version",
+    "geos_runtime_version": "3.14.1",
+    "image_platform": "linux/amd64",
+    "license": "GPL-2.0-or-later",
+    "postgis_runtime_version": "3.6.4",
+    "postgresql_major": "18",
+    "proj_runtime_version": "9.8.1",
+    "source": "https://github.com/postgis/docker-postgis",
+    "validated_operations": [
+      "extension_creation",
+      "geometry_validity_constraint",
+      "gist_index",
+      "canonical_wkb_round_trip",
+      "migration_upgrade_downgrade_upgrade"
+    ]
+  },
+  "python_packages": [
+    {
+      "artifacts": [
+        {
+          "platform": "cp312-cp312-manylinux",
+          "sha256": "4170d1e6a3cf359b0ec7c1fb50317daa3e3e3eb12b61311260714a1e02313fbe",
+          "size_bytes": 16450147,
+          "upload_time": "2026-06-25T23:03:14.636Z",
+          "url": "https://files.pythonhosted.org/packages/70/1a/cd8a88eccbca175e89d3f55c61e16c1e8f1ed407f3ac1d6b05019eeb4320/cel_expr_python-0.1.3-cp312-cp312-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl"
+        },
+        {
+          "platform": "cp312-cp312-manylinux",
+          "sha256": "ab3b0a418b3911177a77ee69fef1f4199b4a053e2ddd1c339119e58c9cd72824",
+          "size_bytes": 17313058,
+          "upload_time": "2026-06-25T23:03:17.136Z",
+          "url": "https://files.pythonhosted.org/packages/da/5c/fadbe060d821652909f7fbace3106c92dbc71bfad1faf06e8401c768c69e/cel_expr_python-0.1.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
+        },
+        {
+          "platform": "cp312-cp312-win_amd64",
+          "sha256": "925bbf323fdf2743491ddf411e40b5c4a12ab102e3bc7e0bfec0fed1c6defa3b",
+          "size_bytes": 15040270,
+          "upload_time": "2026-06-25T23:03:19.981Z",
+          "url": "https://files.pythonhosted.org/packages/3f/b3/721ba61eaca18a8d4abe8c9fe5942fa3281e53a6db6335e80236703f8719/cel_expr_python-0.1.3-cp312-cp312-win_amd64.whl"
+        },
+        {
+          "platform": "cp314-cp314-manylinux",
+          "sha256": "0d2035831cfb9c0ae36c91e3de421828f8fa27173680e86676a7d6e0f68300a0",
+          "size_bytes": 16452974,
+          "upload_time": "2026-06-25T23:03:40.028Z",
+          "url": "https://files.pythonhosted.org/packages/89/02/65ab9b3a9dc2b73e798ce237c21811675e1acd898638036a829ccf90c77b/cel_expr_python-0.1.3-cp314-cp314-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl"
+        },
+        {
+          "platform": "cp314-cp314-manylinux",
+          "sha256": "9b36c7a36ca865b147e1fc68f3f6faaae5b113e9de4d77e7eb751c95e1547a99",
+          "size_bytes": 17314171,
+          "upload_time": "2026-06-25T23:03:42.633Z",
+          "url": "https://files.pythonhosted.org/packages/c6/25/f352cdffd78175fe56ef50967a3a9e33d7770d46a0bd3294cbca9738df1e/cel_expr_python-0.1.3-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
+        },
+        {
+          "platform": "cp314-cp314-win_amd64",
+          "sha256": "4711f59f0dd3fcabf68a617685ab2857ed931cc10e2f1595abe7d4d99f921bba",
+          "size_bytes": 13902879,
+          "upload_time": "2026-06-25T23:03:45.135Z",
+          "url": "https://files.pythonhosted.org/packages/c5/f5/71742755695bfbfbe55632e8f83a9e84cac65cb8aefa102353975df8209c/cel_expr_python-0.1.3-cp314-cp314-win_amd64.whl"
+        }
+      ],
+      "license": "Apache-2.0",
+      "name": "cel-expr-python",
+      "role": "runtime_constrained_expression_engine",
+      "source": "https://github.com/cel-expr/cel-python",
+      "version": "0.1.3"
+    },
+    {
+      "artifacts": [
+        {
+          "platform": "source",
+          "sha256": "68b45e09834cd80523cb1eb274463073c7a9af4e4ef7cff34d9615f355572d32",
+          "size_bytes": 503703,
+          "upload_time": "2026-08-16T22:56:15.404Z",
+          "url": "https://files.pythonhosted.org/packages/5c/e2/0fad246d2b6330e1f78479bfc566b5c22be82aee8a865cde9a08f648487d/hypothesis-6.165.10.tar.gz"
+        },
+        {
+          "platform": "cp310-abi3-manylinux_2_17_x86_64",
+          "sha256": "2abb50cf1cf77d721de0a24c3f99d9c4ffdeb2cbd1e12aebb5a7a93e2b6b6d1f",
+          "size_bytes": 1157528,
+          "upload_time": "2026-08-16T22:56:02.159Z",
+          "url": "https://files.pythonhosted.org/packages/7d/18/8a26c24d3d9db20265f39df341ab265858c094e209571e3179cf237935f4/hypothesis-6.165.10-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+        },
+        {
+          "platform": "cp310-abi3-win_amd64",
+          "sha256": "e9f924aa610c0618445e1e8738c822c3190ce2a2699a0cb48ec3a351a96761f2",
+          "size_bytes": 675213,
+          "upload_time": "2026-08-16T22:55:01.697Z",
+          "url": "https://files.pythonhosted.org/packages/2c/fc/ff2988b72b5705ad9ca500444bf3f43e3c2f41edfa034bbfeb23b215791a/hypothesis-6.165.10-cp310-abi3-win_amd64.whl"
+        },
+        {
+          "platform": "cp312-cp312-manylinux",
+          "sha256": "f9ff356e97e3ab09db07c8b675efa67340103874a0bae7465acb83dad7a35f7f",
+          "size_bytes": 1106830,
+          "upload_time": "2026-08-16T22:55:10.389Z",
+          "url": "https://files.pythonhosted.org/packages/04/66/4c71c5be7a49d84b8c3a9278c1807c4c81181ab5474beb27df9d4c40dc0e/hypothesis-6.165.10-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl"
+        },
+        {
+          "platform": "cp312-cp312-manylinux",
+          "sha256": "1a380bc99aa3b035e6a95a2201bf792d4082a04ca75babcc21849c2d0914bb28",
+          "size_bytes": 1156952,
+          "upload_time": "2026-08-16T22:55:53.35Z",
+          "url": "https://files.pythonhosted.org/packages/e3/c4/e2cbd2810e79f7a452a8ea9f6c6438ee718ce938d8cc12252cf0b36a81d3/hypothesis-6.165.10-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+        },
+        {
+          "platform": "cp312-cp312-win_amd64",
+          "sha256": "3376f2594763aef14faa519b0fb27cae7ce9eeaab4c69efa07777499110306c9",
+          "size_bytes": 672337,
+          "upload_time": "2026-08-16T22:54:49.11Z",
+          "url": "https://files.pythonhosted.org/packages/74/59/6caf69dd5fe03499ada94c9cec016bffcc164511c6b93fe680f01209b9ff/hypothesis-6.165.10-cp312-cp312-win_amd64.whl"
+        },
+        {
+          "platform": "cp314-cp314-manylinux",
+          "sha256": "f76d1562643693b8a40066f1f96af795b93fd9bcfc9690a1af2ff4c5867ee29e",
+          "size_bytes": 1107271,
+          "upload_time": "2026-08-16T22:54:50.266Z",
+          "url": "https://files.pythonhosted.org/packages/cf/8e/58d4f842895220b793c53fc94a6489705b3665bb4d0ae4d338ce03fdf9fb/hypothesis-6.165.10-cp314-cp314-manylinux_2_17_aarch64.manylinux2014_aarch64.whl"
+        },
+        {
+          "platform": "cp314-cp314-manylinux",
+          "sha256": "60cab3ab4ea468d31a33739ffd7e94ec3e37dea891d65a6582ecc8a477175191",
+          "size_bytes": 1156915,
+          "upload_time": "2026-08-16T22:54:25.89Z",
+          "url": "https://files.pythonhosted.org/packages/8f/b8/206468912d2153306bb8a41afdfc59e45b7a73a0495bbe4b9cb4f0e79c1d/hypothesis-6.165.10-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+        },
+        {
+          "platform": "cp314-cp314-win_amd64",
+          "sha256": "d1ea02fa8ab3d33eb1125eade81f7136341eb429152c6dbe2ae6f8bc33b3fbdd",
+          "size_bytes": 672145,
+          "upload_time": "2026-08-16T22:54:24.831Z",
+          "url": "https://files.pythonhosted.org/packages/48/86/9b4fb75f520a028edec50ffc904a94d724180395d71feb6d7a0ce7bb6f00/hypothesis-6.165.10-cp314-cp314-win_amd64.whl"
+        }
+      ],
+      "license": "MPL-2.0",
+      "name": "hypothesis",
+      "role": "development_property_and_state_machine_tests",
+      "source": "https://github.com/HypothesisWorks/hypothesis",
+      "version": "6.165.10"
+    },
+    {
+      "artifacts": [
+        {
+          "platform": "source",
+          "sha256": "d482d171c406ae88c5b19cad3b6a1c4c5209f886ab74bc44c2c865c23f52d860",
+          "size_bytes": 20773161,
+          "upload_time": "2026-08-09T13:48:27.962Z",
+          "url": "https://files.pythonhosted.org/packages/9a/80/db0b4559e57ec36362bedbb05530a87fafbcb6067708c946967a41d449e7/numpy-2.5.2.tar.gz"
+        },
+        {
+          "platform": "cp312-cp312-manylinux",
+          "sha256": "8ee9c4eeb8454b3660a8b53493563c3e121c2fc94fbd72b848ef814ed7b676a9",
+          "size_bytes": 15612696,
+          "upload_time": "2026-08-09T13:45:04.151Z",
+          "url": "https://files.pythonhosted.org/packages/e5/21/4947e0e9d6c9fc2e2ff15b8949049ee44f63adb9cacc729ab8793f97e712/numpy-2.5.2-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl"
+        },
+        {
+          "platform": "cp312-cp312-manylinux",
+          "sha256": "3cdec01fa790a186d430433fdd4d4ffb70eed6f0eeb4bf05c8dbe2dce0a9bcb8",
+          "size_bytes": 16722264,
+          "upload_time": "2026-08-09T13:45:07.714Z",
+          "url": "https://files.pythonhosted.org/packages/3a/5f/62d28cf019460c7f1394105b4d49d9911a9c444cb77ab0bd95a204c5a6de/numpy-2.5.2-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
+        },
+        {
+          "platform": "cp312-cp312-win_amd64",
+          "sha256": "28ac63476ec7651484215ee7fa15a1f78b57c14621f01e392afe17b9a1390ce4",
+          "size_bytes": 12464674,
+          "upload_time": "2026-08-09T13:45:20.734Z",
+          "url": "https://files.pythonhosted.org/packages/7f/b9/87fea2769fe1c47c1b5b01d8310772c9d1a85d485de7cf386ef7a3332b02/numpy-2.5.2-cp312-cp312-win_amd64.whl"
+        },
+        {
+          "platform": "cp314-cp314-manylinux",
+          "sha256": "50e500dc868e9313530ce12ba470fe50ff3afe3d62993ed6eff652dacd555b65",
+          "size_bytes": 15624501,
+          "upload_time": "2026-08-09T13:46:15.322Z",
+          "url": "https://files.pythonhosted.org/packages/c4/3b/ecd49dd90033cceb2704d88ca905d4d7d89b0e8c739608754ffd325fa820/numpy-2.5.2-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl"
+        },
+        {
+          "platform": "cp314-cp314-manylinux",
+          "sha256": "318b9a4c845dbea06708a29c84ee429cc3065048db34cdb799047643492050ee",
+          "size_bytes": 16713701,
+          "upload_time": "2026-08-09T13:46:18.949Z",
+          "url": "https://files.pythonhosted.org/packages/c7/99/461bd36dbdfac6c1c53efa370bd55a83227542d0d118f1677dbf1a3dacd5/numpy-2.5.2-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
+        },
+        {
+          "platform": "cp314-cp314-win_amd64",
+          "sha256": "7587f53dfbd5edc0f7b87c6217b4c6d2d1f2ef9c3da70bc1315e7db5f8d7ec9d",
+          "size_bytes": 12597627,
+          "upload_time": "2026-08-09T13:46:32.886Z",
+          "url": "https://files.pythonhosted.org/packages/15/5c/7bcbd5b11f94199073320410cddcbb80cee62415bfeb540874b265c2d922/numpy-2.5.2-cp314-cp314-win_amd64.whl"
+        }
+      ],
+      "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "name": "numpy",
+      "role": "existing_analytics_runtime_transitive_dependency",
+      "source": "https://github.com/numpy/numpy",
+      "version": "2.5.2"
+    },
+    {
+      "artifacts": [
+        {
+          "platform": "source",
+          "sha256": "2ed4ecb28320a433db18a5bf029986aa8afcfd740745e78847e330d5d94922a9",
+          "size_bytes": 315489,
+          "upload_time": "2025-09-24T13:51:41.432Z",
+          "url": "https://files.pythonhosted.org/packages/4d/bc/0989043118a27cccb4e906a46b7565ce36ca7b57f5a18b78f4f1b0f72d9d/shapely-2.1.2.tar.gz"
+        },
+        {
+          "platform": "cp312-cp312-manylinux",
+          "sha256": "0bd308103340030feef6c111d3eb98d50dc13feea33affc8a6f9fa549e9458a3",
+          "size_bytes": 2988308,
+          "upload_time": "2025-09-24T13:50:33.862Z",
+          "url": "https://files.pythonhosted.org/packages/26/29/a5397e75b435b9895cd53e165083faed5d12fd9626eadec15a83a2411f0f/shapely-2.1.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl"
+        },
+        {
+          "platform": "cp312-cp312-manylinux",
+          "sha256": "1e7d4d7ad262a48bb44277ca12c7c78cb1b0f56b32c10734ec9a1d30c0b0c54b",
+          "size_bytes": 3099844,
+          "upload_time": "2025-09-24T13:50:35.459Z",
+          "url": "https://files.pythonhosted.org/packages/b9/37/e781683abac55dde9771e086b790e554811a71ed0b2b8a1e789b7430dd44/shapely-2.1.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+        },
+        {
+          "platform": "cp312-cp312-win_amd64",
+          "sha256": "743044b4cfb34f9a67205cee9279feaf60ba7d02e69febc2afc609047cb49179",
+          "size_bytes": 1722861,
+          "upload_time": "2025-09-24T13:50:43.35Z",
+          "url": "https://files.pythonhosted.org/packages/ec/bf/cb6c1c505cb31e818e900b9312d514f381fbfa5c4363edfce0fcc4f8c1a4/shapely-2.1.2-cp312-cp312-win_amd64.whl"
+        },
+        {
+          "platform": "cp314-cp314-manylinux",
+          "sha256": "f67b34271dedc3c653eba4e3d7111aa421d5be9b4c4c7d38d30907f796cb30df",
+          "size_bytes": 2970145,
+          "upload_time": "2025-09-24T13:51:16.961Z",
+          "url": "https://files.pythonhosted.org/packages/a5/57/91d59ae525ca641e7ac5551c04c9503aee6f29b92b392f31790fcb1a4358/shapely-2.1.2-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.whl"
+        },
+        {
+          "platform": "cp314-cp314-manylinux",
+          "sha256": "21952dc00df38a2c28375659b07a3979d22641aeb104751e769c3ee825aadecf",
+          "size_bytes": 3073806,
+          "upload_time": "2025-09-24T13:51:18.712Z",
+          "url": "https://files.pythonhosted.org/packages/8a/cb/4948be52ee1da6927831ab59e10d4c29baa2a714f599f1f0d1bc747f5777/shapely-2.1.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+        },
+        {
+          "platform": "cp314-cp314-win_amd64",
+          "sha256": "a444e7afccdb0999e203b976adb37ea633725333e5b119ad40b1ca291ecf311c",
+          "size_bytes": 1773019,
+          "upload_time": "2025-09-24T13:51:24.873Z",
+          "url": "https://files.pythonhosted.org/packages/74/d4/135684f342e909330e50d31d441ace06bf83c7dc0777e11043f99167b123/shapely-2.1.2-cp314-cp314-win_amd64.whl"
+        }
+      ],
+      "license": "BSD-3-Clause",
+      "name": "shapely",
+      "role": "runtime_image_space_geometry_engine",
+      "source": "https://github.com/shapely/shapely",
+      "version": "2.1.2"
+    }
+  ],
+  "runtime_bindings": {
+    "developer": {
+      "geos": "3.13.1",
+      "python": "3.14.6",
+      "shapely": "2.1.2"
+    },
+    "docker": {
+      "python": "3.12.12",
+      "target": "linux/amd64"
+    }
+  },
+  "schema_version": "1.0.0"
+}

@@ -1,0 +1,197 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_machine_handlers_r0_generated_test_plan.v1",
+  "plan_id": "P36-QUARANTINE-MACHINE-HANDLERS-R0-GENERATED-TEST-PLAN-1.0.0",
+  "status": "proposed_non_effective_no_test_execution_authority",
+  "prepared_on": "2026-09-01",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "future_implementation_authorization_decision": "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH",
+  "fixture_policy": {
+    "total_vectors": 64,
+    "generated_only": true,
+    "private_personal_Government_camera_media_or_model_data": false,
+    "absolute_machine_paths_in_fixtures": false,
+    "raw_ACL_SDDL_security_descriptor_SID_or_account_name": false,
+    "real_probe_bytes": false,
+    "network_or_environment_discovery": false,
+    "zero_retention": true,
+    "deterministic_seed": "P36-U3L-MH-R0-V1",
+    "maximum_fixture_bytes_each": 16384
+  },
+  "harness_boundary": {
+    "implementation_path": "tests/test_phase36_quarantine_machine_handlers_generated.py",
+    "language": "Python",
+    "PowerShell_execution": false,
+    "runner_or_module_import": false,
+    "windows_adapter_import_or_execution": false,
+    "machine_or_filesystem_mutation": false,
+    "reference_model_only": true,
+    "source_text_and_JSON_reads_only": true,
+    "network_access": false,
+    "temporary_fixture_files": false
+  },
+  "action_vector_groups": [
+    {
+      "action_id": "U3K-A01-UTC-CLOCK-START",
+      "vector_count": 3,
+      "required_cases": [
+        "A01_V01_exact_single_UTC_start_read_succeeds",
+        "A01_V02_clock_operation_failure_maps_to_clock_unavailable",
+        "A01_V03_second_start_clock_read_is_rejected"
+      ]
+    },
+    {
+      "action_id": "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY",
+      "vector_count": 9,
+      "required_cases": [
+        "A02_V01_all_exact_bindings_succeed",
+        "A02_V02_package_digest_mismatch_denies_before_machine_access",
+        "A02_V03_core_file_hash_mismatch_denies_before_machine_access",
+        "A02_V04_owner_statement_mismatch_denies_before_machine_access",
+        "A02_V05_expired_authorization_denies_before_machine_access",
+        "A02_V06_consumed_attempt_denies_before_machine_access",
+        "A02_V07_runner_or_module_hash_mismatch_denies_before_machine_access",
+        "A02_V08_runtime_binding_mismatch_denies_before_machine_access",
+        "A02_V09_action_order_limit_target_or_output_mutation_denies_before_machine_access"
+      ]
+    },
+    {
+      "action_id": "U3K-A03-AUTHORIZATION-RECORD",
+      "vector_count": 4,
+      "required_cases": [
+        "A03_V01_sanitized_CreateNew_flush_and_nonreplacement_rename_succeeds",
+        "A03_V02_schema_or_size_violation_aborts_before_machine_access",
+        "A03_V03_destination_or_partial_exists_aborts_without_overwrite",
+        "A03_V04_write_flush_or_rename_failure_aborts_before_F_access"
+      ]
+    },
+    {
+      "action_id": "U3K-A04-F-DRIVE-INFO",
+      "vector_count": 5,
+      "required_cases": [
+        "A04_V01_ready_fixed_NTFS_capacity_passes",
+        "A04_V02_ready_fixed_ReFS_capacity_passes",
+        "A04_V03_not_ready_or_property_race_fails_safely",
+        "A04_V04_nonfixed_or_unapproved_filesystem_fails",
+        "A04_V05_capacity_or_allowlisted_property_failure_is_sanitized"
+      ]
+    },
+    {
+      "action_id": "U3K-A05-CANONICAL-PATH-AND-ABSENCE",
+      "vector_count": 6,
+      "required_cases": [
+        "A05_V01_exact_absent_candidate_and_nonreparse_parent_pass",
+        "A05_V02_existing_file_directory_or_reparse_candidate_fails_without_change",
+        "A05_V03_reparse_F_root_fails_without_following",
+        "A05_V04_case_folded_alias_or_alternate_path_fails",
+        "A05_V05_equal_to_or_beneath_F_h_cam_fails",
+        "A05_V06_unexpected_attribute_error_fails_without_treating_it_as_absence"
+      ]
+    },
+    {
+      "action_id": "U3K-A06-PROTECTED-DACL-CONSTRUCT",
+      "vector_count": 6,
+      "required_cases": [
+        "A06_V01_exact_three_tuple_protected_descriptor_passes",
+        "A06_V02_null_current_identity_or_SID_fails",
+        "A06_V03_current_SID_collision_with_LocalSystem_or_Administrators_fails",
+        "A06_V04_inheritance_protection_or_rule_construction_failure_fails",
+        "A06_V05_extra_deny_or_unknown_rights_input_fails",
+        "A06_V06_account_name_translation_or_identity_persistence_request_fails"
+      ]
+    },
+    {
+      "action_id": "U3K-A07-SECURITY-AT-CREATE-ROOT",
+      "vector_count": 4,
+      "required_cases": [
+        "A07_V01_exclusive_CreateDirectoryW_security_at_create_success_marks_attempt_owned",
+        "A07_V02_ERROR_ALREADY_EXISTS_or_race_fails_without_modification_or_cleanup",
+        "A07_V03_other_native_failure_is_sanitized_and_does_not_claim_attempt_ownership",
+        "A07_V04_plain_create_managed_existing_return_or_post_create_ACL_fallback_is_rejected"
+      ]
+    },
+    {
+      "action_id": "U3K-A08-NORMALIZED-DACL-VERIFY",
+      "vector_count": 6,
+      "required_cases": [
+        "A08_V01_exact_protected_three_tuple_DACL_passes",
+        "A08_V02_inherited_or_deny_rule_fails",
+        "A08_V03_extra_or_unauthorized_principal_fails_independently",
+        "A08_V04_current_process_excessive_unknown_or_missing_rights_fail",
+        "A08_V05_LocalSystem_or_Administrators_rights_mismatch_fails",
+        "A08_V06_inheritance_propagation_access_type_or_rule_count_mismatch_fails"
+      ]
+    },
+    {
+      "action_id": "U3K-A09-ATOMIC-CAPABILITY-PROBE",
+      "vector_count": 8,
+      "required_cases": [
+        "A09_V01_exact_4096_byte_two_hash_write_through_rename_cleanup_passes",
+        "A09_V02_preexisting_partial_or_verified_path_fails_without_overwrite",
+        "A09_V03_short_long_or_nondeterministic_probe_write_fails",
+        "A09_V04_flush_true_failure_blocks_and_enters_bounded_cleanup",
+        "A09_V05_first_readback_hash_mismatch_blocks_before_rename",
+        "A09_V06_cross_volume_replace_copy_allowed_or_non_write_through_rename_is_rejected",
+        "A09_V07_second_readback_hash_mismatch_blocks_and_cleans_attempt_objects",
+        "A09_V08_probe_or_empty_root_cleanup_failure_requires_manual_review_and_no_retry"
+      ]
+    },
+    {
+      "action_id": "U3K-A10-NORMALIZE-HASH-WRITE",
+      "vector_count": 5,
+      "required_cases": [
+        "A10_V01_canonical_bounded_result_and_evidence_writes_succeed",
+        "A10_V02_unknown_field_raw_error_or_identifier_is_rejected",
+        "A10_V03_output_path_or_destination_mutation_is_rejected",
+        "A10_V04_oversize_or_noncanonical_output_is_rejected",
+        "A10_V05_write_flush_hash_or_rename_failure_preserves_no_additional_authority"
+      ]
+    }
+  ],
+  "cross_cutting_vectors": {
+    "vector_count": 8,
+    "required_cases": [
+      "X_V01_unknown_missing_duplicate_reordered_or_disabled_action_default_denies",
+      "X_V02_state_transition_skip_repeat_or_backtrack_default_denies",
+      "X_V03_per_action_or_total_deadline_expiry_stops_future_actions",
+      "X_V04_failure_cleanup_never_expands_beyond_attempt_created_exact_objects",
+      "X_V05_raw_exception_stack_stdout_stderr_identity_security_or_probe_content_never_persists",
+      "X_V06_network_proxy_environment_registry_process_service_scanner_and_download_operations_are_absent",
+      "X_V07_generated_harness_cannot_import_or_call_the_windows_adapter",
+      "X_V08_every_terminal_state_keeps_retry_execution_profile_deployment_and_remote_git_authority_false"
+    ]
+  },
+  "required_static_source_checks_after_future_implementation": [
+    "exactly_ten_action_ids_and_one_static_case_sensitive_mapping",
+    "only_the_three_exact_PowerShell_source_paths_are_present",
+    "all_direct_machine_API_tokens_are_confined_to_the_windows_adapter_module",
+    "pure_handler_module_contains_no_filesystem_network_registry_process_service_scanner_environment_or_dynamic_execution_tokens",
+    "runner_defers_windows_adapter_import_until_after_exact_U3K_A02_preflight",
+    "no_Invoke_Expression_Start_Process_dynamic_import_scriptblock_from_data_reflection_plugin_or_shell_fallback",
+    "no_Remove_Item_Recurse_wildcard_path_recursive_delete_or_existing_root_ACL_rewrite",
+    "no_Get_Acl_Set_Acl_icacls_takeown_or_account_name_translation",
+    "no_MOVEFILE_COPY_ALLOWED_MOVEFILE_REPLACE_EXISTING_or_delayed_reboot_flag",
+    "all_output_paths_probe_paths_limits_and_reason_codes_are_closed_allowlists"
+  ],
+  "required_evidence_after_future_implementation": {
+    "all_64_generated_vectors_pass": true,
+    "full_Phase_3_6_regression_pass": true,
+    "Ruff_pass": true,
+    "strict_JSON_and_duplicate_key_check_pass": true,
+    "git_diff_check_pass": true,
+    "exact_source_test_and_contract_SHA_256_values_recorded": true,
+    "PowerShell_executed": false,
+    "runner_or_module_executed": false,
+    "machine_or_storage_accessed": false,
+    "F_or_ACL_accessed": false,
+    "network_accessed": false
+  },
+  "current_effect": {
+    "test_plan_prepared": true,
+    "test_implementation_authorized": false,
+    "Python_generated_test_execution_authorized": false,
+    "PowerShell_or_runner_execution_authorized": false,
+    "machine_handler_implementation_authorized": false,
+    "machine_storage_or_ACL_access_authorized": false,
+    "remote_git_authorized": false
+  }
+}

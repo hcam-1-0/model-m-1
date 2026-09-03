@@ -1,0 +1,200 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3t_runtime_binding_r1_action_spec.v1",
+  "action_spec_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3T-RUNTIME-BINDING-R1-ACTION-SPEC",
+  "decision_id": "D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH",
+  "status": "sealed_non_effective_proposed_actions_only_no_attempt_performed",
+  "prepared_on": "2026-09-01",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-harness-implementation-acceptance.json",
+    "acceptance_sha256": "7868C38EAF59595A72AC61D209EA398D3477237D750F234B8F9E5712F0AA9AB3",
+    "accepted_H1_package_sha256": "AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788",
+    "effect": "prepare_only_this_non_effective_U3T_R1_runtime_binding_and_one_attempt_authorization_proposal"
+  },
+  "logical_node_id": "LAB-LAPTOP-01",
+  "maximum_attempts": 1,
+  "authorization_window_seconds": 86400,
+  "failed_attempt_consumes_authorization": true,
+  "automatic_retry": false,
+  "parallel_processes": false,
+  "exact_runtime_candidate": {
+    "path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "maximum_file_bytes": 134217728,
+    "required_type": "local_regular_nonreparse_file",
+    "required_fixed_parent_components": [
+      "C:\\Program Files",
+      "C:\\Program Files\\PowerShell",
+      "C:\\Program Files\\PowerShell\\7"
+    ],
+    "classification_fields": [
+      "canonical_path_match",
+      "regular_file",
+      "nonreparse",
+      "bounded_size",
+      "file_version_bounded_to_512_UTF8_bytes",
+      "sha256"
+    ],
+    "trust_policy": "cache_only_no_UI_whole_chain_excluding_root_without_trust_retrieval",
+    "alternate_runtime_or_parent_discovery": false,
+    "PATH_PSModulePath_registry_WMI_package_directory_or_hardware_inventory": false,
+    "network_or_trust_retrieval": false
+  },
+  "exact_accepted_inputs": [
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_u3t_preflight.ps1",
+      "sha256": "69CBF4637A22BB7859ED07D19804C8576D76FB1270FF58D0D182EED2592FCE7B",
+      "maximum_bytes": 65536,
+      "role": "accepted_H1_fixed_generated_Policy_harness"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-vectors.json",
+      "sha256": "394A4564D54B531EBBC7C16BEA6F66D0D41DEDA757E5E979C796B350462DAB4F",
+      "maximum_bytes": 65536,
+      "role": "accepted_48_vector_H1_static_manifest_not_runtime_input"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller.ps1",
+      "sha256": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB",
+      "maximum_bytes": 65536,
+      "role": "accepted_authoritative_PowerShell_policy_controller"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-contract.json",
+      "sha256": "3F2A0975F92892A96FBC67B951B226D5AB958AE067F55B697ABA43669B8FB00E",
+      "maximum_bytes": 65536,
+      "role": "accepted_controller_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-vectors.json",
+      "sha256": "31335510565E4C74908C674B88951E81B7A7983331C6DE2E91964C1F8B48C20B",
+      "maximum_bytes": 524288,
+      "role": "accepted_192_vector_controller_manifest_not_runtime_input"
+    }
+  ],
+  "source_binding_policy": {
+    "authorization_bound_checkout_root_only": true,
+    "relative_paths_are_exact_and_nonreplaceable": true,
+    "regular_nonreparse_files_required": true,
+    "harness_and_controller_reverified_before_and_after_process": true,
+    "contract_and_vector_manifests_reverified_before_and_after_process": true,
+    "source_modification_or_generated_input": false
+  },
+  "exact_runtime_arguments": [
+    "-NoLogo",
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "<AUTHORIZATION_BOUND_CHECKOUT_ROOT>\\tools\\phase36_quarantine_runtime_controller_u3t_preflight.ps1"
+  ],
+  "process_bounds": {
+    "maximum_processes": 1,
+    "maximum_attempts": 1,
+    "total_timeout_seconds": 30,
+    "maximum_stdout_bytes": 16384,
+    "maximum_stderr_bytes": 0,
+    "maximum_result_bytes": 65536,
+    "automatic_retry": false,
+    "process_tree_termination_on_timeout": true,
+    "environment_proxy_or_module_path_inheritance": false,
+    "PSModuleAutoLoadingPreference": "None"
+  },
+  "exact_action_sequence": [
+    {
+      "action_id": "U3T-R1-A01-PACKAGE-AUTHORITY-PREFLIGHT",
+      "effect": "verify_exact_package_digest_source_hashes_unused_authorization_and_window"
+    },
+    {
+      "action_id": "U3T-R1-A02-AUTHORIZATION-RECORD",
+      "effect": "write_one_bounded_sanitized_authorization_record_before_runtime_observation"
+    },
+    {
+      "action_id": "U3T-R1-A03-RUNTIME-PATH-CLASSIFICATION",
+      "effect": "classify_only_exact_runtime_and_fixed_parent_components"
+    },
+    {
+      "action_id": "U3T-R1-A04-RUNTIME-BINDING",
+      "effect": "bind_bounded_metadata_sha256_and_cache_only_trust_without_retrieval"
+    },
+    {
+      "action_id": "U3T-R1-A05-SOURCE-BINDINGS-PREFLIGHT",
+      "effect": "verify_exact_accepted_H1_and_controller_inputs_under_authorization_bound_checkout_root"
+    },
+    {
+      "action_id": "U3T-R1-A06-PREFLIGHT-PROCESS",
+      "effect": "invoke_exact_runtime_once_with_exact_H1_harness_and_bounded_environment"
+    },
+    {
+      "action_id": "U3T-R1-A07-SANITIZED-RESULT-CLASSIFICATION",
+      "effect": "accept_only_one_bounded_JSON_projection_or_allowlisted_failure_code"
+    },
+    {
+      "action_id": "U3T-R1-A08-POSTPROCESS-BINDING",
+      "effect": "reverify_runtime_parents_and_all_accepted_source_identities"
+    },
+    {
+      "action_id": "U3T-R1-A09-SANITIZED-EVIDENCE",
+      "effect": "write_only_exact_bounded_result_and_evidence_records"
+    }
+  ],
+  "allowlisted_terminal_reason_codes": [
+    "runtime_path_classification_failed",
+    "runtime_metadata_failed",
+    "runtime_hash_failed",
+    "runtime_trust_initialization_failed",
+    "runtime_trust_verification_failed",
+    "runtime_trust_close_failed",
+    "runtime_identity_changed",
+    "source_binding_failed",
+    "process_start_failed",
+    "process_timeout",
+    "process_output_bounds_failed",
+    "result_contract_invalid",
+    "policy_valid"
+  ],
+  "success_contract": {
+    "terminal_reason_code": "policy_valid",
+    "request_mode": "Policy",
+    "expected_completed_actions": 18,
+    "machine_action_count": 0,
+    "python_machine_fallback_count": 0,
+    "retry_count": 0,
+    "raw_material_retained_bytes": 0,
+    "sanitized_result_only": true,
+    "runtime_and_source_identity_stable": true
+  },
+  "exact_future_outputs": [
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-authorization.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-result.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-evidence.json"
+  ],
+  "retention_and_redaction": {
+    "raw_stdout_stderr_exception_stack_invocation_environment_or_security_material_retained": false,
+    "runtime_path_in_sanitized_records": false,
+    "runtime_hash_and_bounded_version_in_sanitized_evidence": true,
+    "personal_checkout_root_in_sanitized_records": false,
+    "maximum_each_future_output_bytes": 65536
+  },
+  "explicitly_not_authorized": [
+    "any_action_before_exact_digest_bound_owner_authorization",
+    "more_than_one_attempt_automatic_retry_or_parallel_process",
+    "alternate_runtime_parent_checkout_or_source_discovery",
+    "PowerShell_module_manifest_closure_or_Aggregate_validation",
+    "PATH_PSModulePath_registry_WMI_package_directory_or_hardware_inventory",
+    "Python_machine_access_controller_mode_subprocess_native_API_or_fallback",
+    "machine_storage_F_B_ACL_identity_probe_cleanup_Defender_or_scanner_action",
+    "network_trust_retrieval_download_install_update_or_artifact_acquisition",
+    "model_dataset_camera_media_private_or_Government_data_access",
+    "model_loading_inference_benchmark_or_hardware_testing",
+    "containers_Kubernetes_profile_activation_deployment_U3R_retry_U3K_or_remote_Git"
+  ],
+  "current_effect": {
+    "action_spec_prepared": true,
+    "owner_U3T_R1_authorization_pending": true,
+    "attempts_authorized": 0,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "U3R_retry_or_U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  }
+}

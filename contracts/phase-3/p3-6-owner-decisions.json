@@ -1,0 +1,115 @@
+{
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-08-29",
+  "capability_profile_policy": "contracts/phase-3/p3-6-capability-profile-policy.json",
+  "contract_format": "hcam.phase3.p3_6.owner_decisions.v1",
+  "phase_minus_1_alignment_record": "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
+  "decision_ids": [
+    "D-P3.6-001",
+    "D-P3.6-002",
+    "D-P3.6-003",
+    "D-P3.6-004",
+    "D-P3.6-005"
+  ],
+  "decisions": [
+    {
+      "decision_id": "D-P3.6-001",
+      "label": "A. Staged evidence-driven portfolio",
+      "selected_option": "A",
+      "selected_value": "staged_evidence_driven_runtime_portfolio",
+      "status": "owner_approved"
+    },
+    {
+      "decision_id": "D-P3.6-002",
+      "label": "A+. Typed fail-closed scheduler with Kubernetes backend and constrained runtime advisory placement",
+      "selected_option": "A+",
+      "selected_value": "typed_fail_closed_scheduler_with_kubernetes_backend_and_constrained_runtime_advisory_placement",
+      "status": "owner_approved"
+    },
+    {
+      "decision_id": "D-P3.6-003",
+      "label": "A+. Two-funnel conjunctive evidence with switchable balanced, throughput, and latency views",
+      "selected_option": "A+",
+      "selected_value": "two_funnel_conjunctive_evidence_with_switchable_balanced_throughput_and_latency_views",
+      "status": "owner_approved"
+    },
+    {
+      "decision_id": "D-P3.6-004",
+      "label": "A. Immutable compatibility bundle with CPU/source rollback",
+      "selected_option": "A",
+      "selected_value": "immutable_compatibility_bundle_with_cpu_source_rollback",
+      "status": "owner_approved"
+    },
+    {
+      "decision_id": "D-P3.6-005",
+      "label": "A. Two-gate owned-lab then authorized capacity-target strategy",
+      "selected_option": "A",
+      "selected_value": "two_gate_owned_lab_then_authorized_capacity_target",
+      "status": "owner_approved"
+    }
+  ],
+  "dynamic_capability_profile_policy": {
+    "adaptive_dimensions": [
+      "worker_concurrency",
+      "stateless_detector_batch_size",
+      "detector_sampling_within_approved_floor",
+      "optional_enrichment_activation",
+      "preview_quality_and_rate",
+      "bounded_queue_and_worker_reservations"
+    ],
+    "automatic_selection": "validated_profiles_only",
+    "immutable_dimensions": [
+      "authorization_and_department_scope",
+      "security_and_network_policy",
+      "event_and_taxonomy_contracts",
+      "artifact_lineage_and_audit",
+      "retention_and_privacy_policy",
+      "parity_and_claim_integrity",
+      "failure_and_rollback_semantics"
+    ],
+    "profile_ids": [
+      "portable_cpu",
+      "local_accelerated",
+      "capacity_target"
+    ],
+    "same_application_contracts_across_profiles": true
+  },
+  "effect": "freezes_the_p3_6_runtime_scheduling_benchmark_packaging_and_hardware_strategy_planning_baseline",
+  "shared_contract_relationship": {
+    "status": "aligned_without_changing_owner_selections",
+    "phase_minus_1_contract_authority": "hcam-2-0/hcam-protos@d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+    "phase_minus_1_deployment_authority": "hcam-2-0/hcam-deployment@71095fe89d2b711e4982ddc0130fcaedda8703e7",
+    "profile_terms": {
+      "portable_cpu": "portable_cpu",
+      "local_accelerated": "owned_gpu_lab",
+      "capacity_target": "evidence_target_resolving_to_standalone_server_or_kubernetes_cluster"
+    },
+    "objective_modes_are_resolver_objectives": true,
+    "c1_c10_c50_are_evidence_tiers": true
+  },
+  "implementation_authorized": false,
+  "non_authorization": [
+    "model_dataset_dependency_driver_or_container_download",
+    "runtime_or_inference_execution",
+    "gpu_accelerator_or_hardware_testing",
+    "kubernetes_cluster_container_or_deployment_action",
+    "scheduler_runtime_dashboard_or_application_implementation",
+    "camera_media_sentinel_onvif_or_stream_access",
+    "real_public_private_government_police_or_scraped_data",
+    "training_fine_tuning_or_model_promotion",
+    "identity_biometric_reidentification_or_cross_camera_linkage",
+    "watchlist_vehicle_owner_or_government_database_matching",
+    "operational_alerting_autonomous_action_or_enforcement",
+    "pilot_production_or_statewide_deployment",
+    "remote_git_push_pull_request_or_merge",
+    "p3_7_or_later_work"
+  ],
+  "owner_statement_received": "D-P3.6-001: A. Staged evidence-driven portfolio. D-P3.6-002: A. Typed fail-closed scheduler with bounded node-local queues, extended with Kubernetes and constrained runtime-managed automatic placement. D-P3.6-003: A. Two-funnel evidence with C1/C10/C50 layers, extended with switchable balanced, throughput-first, and latency-only dashboard/evaluation views. D-P3.6-004: A. Immutable Compatibility Bundle With CPU/Source Rollback. D-P3.6-005: A. Two-gate owned-lab then capacity-target strategy. The same application must run dynamically on the current laptop with conservative settings and on stronger GPU-equipped laptops with validated accelerated settings without weakening features, contracts, safety, or evidence integrity.",
+  "record_id": "D-P3.6-TECHNICAL-DECISIONS",
+  "runtime_execution_authorized": false,
+  "scope": "phase3.p3_6.runtime_acceleration_and_scheduling.technical_baseline",
+  "start_decision_id": "D-P3.6-START",
+  "start_intent_record": "contracts/phase-3/p3-6-start-intent.json",
+  "start_status": "statement_received_non_effective_pending_manifest_bound_authorization",
+  "status": "accepted"
+}

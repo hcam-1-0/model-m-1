@@ -1,0 +1,79 @@
+{
+  "cards": [
+    {
+      "artifact_id": "OCR-L0-PPOCRV6-SMALL-INFER-PROPOSED",
+      "candidate_id": "OCR-L0",
+      "intended_role": "generated_only_latin_primary_recognition_baseline",
+      "known_limitations": [
+        "not_an_ANPR_specific_model",
+        "training_dataset_manifest_not_embedded_in_archive",
+        "no_H-CAM_accuracy_latency_or_calibration_evidence",
+        "runtime_dependency_closure_not_reviewed"
+      ],
+      "runtime_status": "blocked",
+      "sha256": "DA460F968CE9F88325AC3A34FA302077D6E9B0DCEFB16BA3137CD7796F879D06"
+    },
+    {
+      "artifact_id": "OCR-L1-PPOCRV6-MEDIUM-INFER-PROPOSED",
+      "candidate_id": "OCR-L1",
+      "intended_role": "generated_only_latin_quality_comparison",
+      "known_limitations": [
+        "not_an_ANPR_specific_model",
+        "training_dataset_manifest_not_embedded_in_archive",
+        "no_H-CAM_accuracy_latency_or_calibration_evidence",
+        "runtime_dependency_closure_not_reviewed"
+      ],
+      "runtime_status": "blocked",
+      "sha256": "4EECC1C6A4623765042E6FC15446DA0DA110B7D875B6B72B2D351D2B2DBD4DA6"
+    },
+    {
+      "artifact_id": "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED",
+      "candidate_id": "OCR-D0",
+      "intended_role": "generated_only_devanagari_auxiliary_abstaining_lane",
+      "known_limitations": [
+        "auxiliary_output_cannot_override_latin_registration_mark_result",
+        "training_dataset_manifest_not_embedded_in_archive",
+        "no_H-CAM_accuracy_latency_or_calibration_evidence",
+        "runtime_dependency_closure_not_reviewed"
+      ],
+      "runtime_status": "blocked",
+      "sha256": "AC8279D27FC7E8CDA559364F9A3C506F43984CF6BA5E1B7A06450458BFE07DFB"
+    },
+    {
+      "artifact_id": "OCR-G0-TESSDATA-FAST-GUJ-PROPOSED",
+      "candidate_id": "OCR-G0",
+      "intended_role": "generated_only_gujarati_fast_auxiliary_baseline",
+      "known_limitations": [
+        "requires_Tesseract_4_or_5_LSTM_engine",
+        "fast_model_is_integerized_and_not_finetunable",
+        "exact_engine_build_not_selected",
+        "no_H-CAM_accuracy_latency_or_calibration_evidence"
+      ],
+      "runtime_status": "blocked",
+      "sha256": "FA69658614B4946A9AFAE8853D67E0689838803DFA3D12C2E35EC53EE6F8DF34"
+    },
+    {
+      "artifact_id": "OCR-G1-TESSDATA-BEST-GUJ-PROPOSED",
+      "candidate_id": "OCR-G1",
+      "intended_role": "generated_only_gujarati_quality_auxiliary_baseline",
+      "known_limitations": [
+        "requires_Tesseract_4_or_5_LSTM_engine",
+        "expected_to_trade_speed_for_accuracy_but_not_benchmarked_by_H-CAM",
+        "exact_engine_build_not_selected",
+        "no_H-CAM_accuracy_latency_or_calibration_evidence"
+      ],
+      "runtime_status": "blocked",
+      "sha256": "8CBB1D139B63434B9E1154A3B51930A74EC1C9A6251B95D86D74D7F1CD706ED6"
+    }
+  ],
+  "contract_format": "hcam.phase3.p3_5.artifact-model-cards.v1",
+  "forbidden_uses": [
+    "real_public_private_government_or_police_plate_media",
+    "registration_owner_or_vehicle_record_lookup",
+    "identity_cross_camera_watchlist_alert_or_enforcement_use",
+    "accuracy_legal_operational_or_deployment_claims",
+    "production_or_pilot_deployment"
+  ],
+  "model_execution_performed": false,
+  "status": "artifact_identity_reviewed_runtime_blocked"
+}

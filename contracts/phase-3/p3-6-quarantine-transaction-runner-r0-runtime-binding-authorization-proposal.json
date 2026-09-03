@@ -1,0 +1,84 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_transaction_runner_r0_runtime_binding_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-TRANSACTION-RUNNER-R0-RUNTIME-BINDING-AUTHORIZATION-PROPOSAL",
+  "status": "sealed_proposal_manifest_pending_owner_authorization_no_attempt_performed",
+  "prepared_on": "2026-09-01",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-acceptance.json",
+    "implementation_package_digest_sha256": "71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67",
+    "effect": "prepare_only_a_separate_non_effective_runtime_binding_proposal"
+  },
+  "future_authorization": {
+    "decision_id": "D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH",
+    "authorization_pending": true,
+    "scope_if_exact_package_is_authorized": "one_sanitized_read_only_runtime_binding_attempt_on_LAB_LAPTOP_01_within_24_hours",
+    "authorization_is_single_use": true,
+    "failed_attempt_consumes_authorization": true,
+    "automatic_retry": false
+  },
+  "exact_target": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "runtime_family": "PowerShell_7_on_Windows",
+    "runtime_path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "runner_source": "tools/phase36_quarantine_transaction_runner.ps1",
+    "runner_source_sha256": "C0020A4C53B59486CE8842302C918821F145F0228F4006C3D6B67BF594DB5B15",
+    "alternate_target_allowed": false
+  },
+  "exact_future_attempt_scope": [
+    "verify_the_future_authorization_record_package_digest_and_all_core_file_hashes_before_observation",
+    "persist_one_sanitized_authorization_record_before_runtime_file_observation",
+    "classify_only_the_exact_runtime_path_and_its_fixed_parent_components_as_local_regular_and_nonreparse",
+    "read_only_bounded_file_size_file_version_product_version_and_product_name_classification",
+    "compute_SHA_256_for_only_the_exact_runtime_file_without_executing_it",
+    "perform_cache_only_no_UI_whole_chain_excluding_root_WinVerifyTrust_and_close_provider_state",
+    "verify_the_exact_committed_runner_source_SHA_256_without_executing_it",
+    "write_only_bounded_sanitized_result_and_evidence_records"
+  ],
+  "exact_future_outputs": [
+    "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization.json",
+    "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-runtime-binding-result.json",
+    "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-runtime-binding-evidence.json"
+  ],
+  "success_effect_if_later_authorized_and_observed": {
+    "runtime_binding_evidence_may_be_sealed": true,
+    "runtime_binding_owner_acceptance_still_required": true,
+    "binding_validity_seconds": 86400,
+    "runner_execution_authorized": false,
+    "final_U3K_package_preparation_authorized": false,
+    "storage_attempt_authorized": false
+  },
+  "hard_boundaries": {
+    "PowerShell_or_runner_execution": false,
+    "runtime_handler_implementation": false,
+    "alternate_runtime_discovery": false,
+    "PATH_environment_registry_WMI_package_or_directory_inventory": false,
+    "network_access_or_trust_retrieval": false,
+    "F_B_storage_ACL_or_probe_access": false,
+    "Defender_ModelScan_or_other_scanner_action": false,
+    "download_install_update_or_acquisition": false,
+    "model_inference_media_or_data_access": false,
+    "container_Kubernetes_or_deployment_action": false,
+    "remote_git": false
+  },
+  "owner_authorization_statement_template": "D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH: I, mayank-admin, authorize one sanitized read-only runtime-binding attempt against package digest <RUNTIME_BINDING_PACKAGE_DIGEST_SHA256> within 24 hours on LAB-LAPTOP-01 for exact executable C:\\Program Files\\PowerShell\\7\\pwsh.exe and runner source SHA-256 C0020A4C53B59486CE8842302C918821F145F0228F4006C3D6B67BF594DB5B15. The attempt may verify the exact package and authorization; write the bounded authorization record; classify only the exact runtime path and fixed parent components; read bounded size, file version, product version and product-name classification; hash only the exact runtime file; perform cache-only no-UI whole-chain-excluding-root WinVerifyTrust and close provider state; verify the runner source hash; and write only the bounded sanitized result and evidence records. Failure consumes the authorization and requires a new digest-bound authorization. This does not authorize execution of pwsh.exe or the runner, machine handlers, alternate runtime discovery, PATH/registry/WMI/package or directory inventory, network retrieval, F:/B: or storage/ACL/probe access, Defender/scanners, downloads, models, inference, media/data, containers/Kubernetes, deployment, or remote Git.",
+  "current_effect": {
+    "proposal_prepared": true,
+    "owner_authorization_pending": true,
+    "runtime_observation_authorized": false,
+    "runner_execution_authorized": false,
+    "final_U3K_package_preparation_authorized": false,
+    "storage_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "Defender_or_scanner_action_authorized": false,
+    "artifact_or_dependency_acquisition_authorized": false,
+    "runtime_or_model_execution_authorized": false,
+    "profile_activation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  }
+}

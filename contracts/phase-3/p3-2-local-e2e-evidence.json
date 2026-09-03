@@ -1,0 +1,43 @@
+{
+  "artifact": {
+    "artifact_id": "DET-R0-ONNX-UPSTREAM-0.1.1RC0",
+    "bytes": 20219662,
+    "redistributed": false,
+    "sha256": "427CC366D34E27FF7A03E2899B5E3671425C262EA2291F88BB942BC1CC70B0F7"
+  },
+  "command": "uv run python tools/phase32_generated_e2e.py --artifact-root <approved-local-artifact-root>",
+  "contract_format": "hcam.phase3.p3_2.local-generated-e2e-evidence.v1",
+  "data_boundary": {
+    "camera_access": false,
+    "external_network_access": false,
+    "government_or_private_data": false,
+    "media_artifacts_persisted": 0,
+    "public_dataset_access": false,
+    "source": "DATA-GEN-R0"
+  },
+  "recorded_at": "2026-08-24T18:56:25Z",
+  "recorded_by": "p3-2-local-validator",
+  "result": {
+    "adapter": "hcam.yolox_tiny.onnxruntime_cpu",
+    "candidate_count": 0,
+    "configured": true,
+    "duration_ms": 206,
+    "execution_scope": "generated_only",
+    "frame_leases_after_run": 0,
+    "idempotent_replay": true,
+    "observation_count": 0,
+    "observation_event_count": 0,
+    "status": "succeeded"
+  },
+  "runtime": {
+    "execution_provider": "CPUExecutionProvider",
+    "numpy": "2.5.2",
+    "onnx": "1.22.0",
+    "onnxruntime": "1.29.0",
+    "python": "3.14.6",
+    "target_machine": "LAB-LAPTOP-01"
+  },
+  "status": "passed",
+  "statement": "The deterministic block fixture produced no detections at the approved threshold. This validates execution and failure boundaries only and is not accuracy, representativeness, fairness, latency, pilot, or deployment evidence.",
+  "temporary_database_deleted": true
+}

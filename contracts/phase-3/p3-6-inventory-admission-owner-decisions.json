@@ -1,0 +1,93 @@
+{
+  "contract_format": "hcam.phase3.p3_6.inventory_admission_owner_decisions.v1",
+  "record_id": "P3.6-INVENTORY-ADMISSION-OWNER-DECISIONS-R0",
+  "status": "owner_policy_selections_accepted_no_collection_authority",
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-08-30",
+  "accepted_at": "2026-08-30T16:05:27Z",
+  "accepted_repository_head": "af97ebff2add80de599a9386c3fedda07834f3df",
+  "branch": "codex/phase3-6-planning-acceptances",
+  "source_decision_packet": "contracts/phase-3/p3-6-inventory-admission-decision-packet.json",
+  "package_manifest": "contracts/phase-3/p3-6-inventory-admission-package.json",
+  "package_digest_sha256": "CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A",
+  "owner_statement_received": "D-P3.6-U3A-001: A\nD-P3.6-U3A-002: A\nD-P3.6-U3A-003: A\nD-P3.6-U3A-004: A",
+  "decision_ids": [
+    "D-P3.6-U3A-001",
+    "D-P3.6-U3A-002",
+    "D-P3.6-U3A-003",
+    "D-P3.6-U3A-004"
+  ],
+  "decisions": [
+    {
+      "decision_id": "D-P3.6-U3A-001",
+      "selected_option": "A",
+      "label": "Preserve R0 and collect canonical R1",
+      "selected_value": "preserve_historical_R0_and_later_collect_fresh_exact_shared_v1alpha1_R1",
+      "status": "owner_approved_policy_choice"
+    },
+    {
+      "decision_id": "D-P3.6-U3A-002",
+      "selected_option": "A",
+      "label": "24-hour maximum plus change invalidation",
+      "selected_value": "maximum_24_hours_with_immediate_authorized_change_invalidation",
+      "status": "owner_approved_policy_choice"
+    },
+    {
+      "decision_id": "D-P3.6-U3A-003",
+      "selected_option": "A",
+      "label": "Observed local generated-only zone",
+      "selected_value": "local_read_only_observed_provenance_with_separate_digest_bound_owned_local_generated_only_policy",
+      "status": "owner_approved_policy_choice"
+    },
+    {
+      "decision_id": "D-P3.6-U3A-004",
+      "selected_option": "A",
+      "label": "Block new admission and preserve lease authority",
+      "selected_value": "expired_inventory_blocks_new_admission_without_automatically_extending_or_terminating_independent_leases",
+      "status": "owner_approved_policy_choice"
+    }
+  ],
+  "accepted_policy": {
+    "historical_R0": "preserve_immutable_planning_evidence_not_admission_eligible",
+    "canonical_future_record": "new_exact_shared_v1alpha1_R1",
+    "freshness_window_seconds": 86400,
+    "early_invalidation_triggers": [
+      "authorized_hardware_change",
+      "operating_system_change",
+      "driver_change",
+      "runtime_change",
+      "collector_change",
+      "trust_policy_change"
+    ],
+    "provenance": "local_read_only_observed",
+    "trust_zone_binding": "separate_owner_accepted_owned_local_generated_only_policy_snapshot_digest",
+    "expiry_behavior": "block_new_resolution_and_placement_while_independent_reservations_leases_fencing_health_and_policy_remain_authoritative",
+    "automatic_retimestamp_or_extension": false
+  },
+  "current_R0_effect": {
+    "preserved": true,
+    "shared_contract_conformance": false,
+    "admission_eligible": false,
+    "already_stale_under_accepted_policy": true
+  },
+  "next_decision": {
+    "decision_id": "D-P3.6-INVENTORY-R1-AUTH",
+    "state": "planning_package_may_be_prepared_but_collection_is_not_authorized",
+    "must_bind": [
+      "exact_read_only_actions_and_fields",
+      "exact_shared_schema_revision_and_digest",
+      "collector_identity_and_version_without_personal_identifiers",
+      "sanitization_and_redaction_policy",
+      "observed_at_valid_until_and_invalidation_policy",
+      "exact_output_path_and_hash_rules",
+      "continuing_non_authorization"
+    ]
+  },
+  "inventory_projection_authorized": false,
+  "inventory_recollection_authorized": false,
+  "profile_activation_authorized": false,
+  "implementation_authorized": false,
+  "runtime_execution_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

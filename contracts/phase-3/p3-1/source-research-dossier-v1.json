@@ -1,0 +1,158 @@
+{
+  "candidates": [
+    {
+      "digest": "sha256:99cc7d70e34f2b5da37f86c763359b44ecf63c0524fb0a0098c5d25980cf4a19",
+      "record_id": "DET-R0",
+      "version": "1.0.0"
+    },
+    {
+      "digest": "sha256:515cc1b643a93f78d2bd37e4c6c23b85b2014d83cd92f42c74c26036a3934483",
+      "record_id": "DET-E1",
+      "version": "1.0.0"
+    },
+    {
+      "digest": "sha256:d660042b0f95d86ecf9119114a38703ca8f61c92a7b07ccc3dff8d1c060a4e87",
+      "record_id": "DET-B1",
+      "version": "1.0.0"
+    },
+    {
+      "digest": "sha256:8b34812f7503424f7e8200f460c02eab9e116e5bb1ae910a110d9dc035c30992",
+      "record_id": "DET-A1",
+      "version": "1.0.0"
+    },
+    {
+      "digest": "sha256:2af8b4b3bb4855b186f4bef4aba023e70c449e2fb738a987658cc5e0bebee505",
+      "record_id": "TRK-R0",
+      "version": "1.0.0"
+    },
+    {
+      "digest": "sha256:2fec3b2188306437b12a93db462e580db9cb4b6d4716e86676b693bac492343b",
+      "record_id": "OCR-L0",
+      "version": "1.0.0"
+    },
+    {
+      "digest": "sha256:bcadc82091c15a6e16c9d4efdee849c99b888f3aa3d37f51de1348c16751257a",
+      "record_id": "OCR-L1",
+      "version": "1.0.0"
+    },
+    {
+      "digest": "sha256:4da5e2855573873aa56a60f11626ff296486db816e9087b26c0cf22339b55af6",
+      "record_id": "OCR-D0",
+      "version": "1.0.0"
+    },
+    {
+      "digest": "sha256:1ab5a6b7a11dfafed5f0b4ce8de43b3c1c1f43a9e1112925d417ba64a899ccd1",
+      "record_id": "OCR-G0",
+      "version": "1.0.0"
+    },
+    {
+      "digest": "sha256:d1b70c219c1d52e83ea144ef7b3697b62da23bd6e1020f53efcdcc8a3bc1a27c",
+      "record_id": "OCR-G1",
+      "version": "1.0.0"
+    },
+    {
+      "digest": "sha256:85fde521a6ee1bc7f90a3738e607e17b1bb00d7bedb9cccee07173e2e366a91e",
+      "record_id": "PLATE-D0",
+      "version": "1.0.0"
+    }
+  ],
+  "captured_at": "2026-08-24T12:45:00Z",
+  "contract_type": "hcam.analytics.source-research-dossier.v1",
+  "dossier_digest": "sha256:5f689cc588ac09e0c48256e42fcb5c922ccaf85190d67cf3894f9440dd61a06c",
+  "dossier_id": "p31-model-source-research-v1",
+  "downloaded_artifacts": [],
+  "method": "official-metadata-only-no-download",
+  "owner_decision_required_before_download": true,
+  "references": [
+    {
+      "accessed_on": "2026-08-24",
+      "evidence_kind": "official_repository",
+      "no_download_performed": true,
+      "publisher": "Megvii BaseDetection",
+      "reference_id": "source-yolox",
+      "supports_claim": "Repository documents YOLOX-Tiny and identifies its code license",
+      "title": "YOLOX official repository",
+      "url": "https://github.com/Megvii-BaseDetection/YOLOX"
+    },
+    {
+      "accessed_on": "2026-08-24",
+      "evidence_kind": "official_repository",
+      "no_download_performed": true,
+      "publisher": "D-FINE authors",
+      "reference_id": "source-dfine",
+      "supports_claim": "Paper-linked repository documents the D-FINE-N candidate",
+      "title": "D-FINE official repository",
+      "url": "https://github.com/Peterande/D-FINE"
+    },
+    {
+      "accessed_on": "2026-08-24",
+      "evidence_kind": "official_repository",
+      "no_download_performed": true,
+      "publisher": "Roboflow",
+      "reference_id": "source-rfdetr",
+      "supports_claim": "Repository documents RF-DETR-S/L and component-specific licensing",
+      "title": "RF-DETR official repository",
+      "url": "https://github.com/roboflow/rf-detr"
+    },
+    {
+      "accessed_on": "2026-08-24",
+      "evidence_kind": "official_repository",
+      "no_download_performed": true,
+      "publisher": "FoundationVision",
+      "reference_id": "source-bytetrack",
+      "supports_claim": "Repository documents ByteTrack and its code license",
+      "title": "ByteTrack official repository",
+      "url": "https://github.com/FoundationVision/ByteTrack"
+    },
+    {
+      "accessed_on": "2026-08-24",
+      "evidence_kind": "official_repository",
+      "no_download_performed": true,
+      "publisher": "PaddlePaddle",
+      "reference_id": "source-paddleocr",
+      "supports_claim": "Repository documents PP-OCRv6 and PP-OCRv5 script models",
+      "title": "PaddleOCR official repository",
+      "url": "https://github.com/PaddlePaddle/PaddleOCR"
+    },
+    {
+      "accessed_on": "2026-08-24",
+      "evidence_kind": "official_repository",
+      "no_download_performed": true,
+      "publisher": "Tesseract OCR",
+      "reference_id": "source-tessdata-fast",
+      "supports_claim": "Repository lists guj traineddata and its data license",
+      "title": "Tesseract fast traineddata repository",
+      "url": "https://github.com/tesseract-ocr/tessdata_fast"
+    },
+    {
+      "accessed_on": "2026-08-24",
+      "evidence_kind": "official_repository",
+      "no_download_performed": true,
+      "publisher": "Tesseract OCR",
+      "reference_id": "source-tessdata-best",
+      "supports_claim": "Repository lists high-accuracy guj traineddata and its data license",
+      "title": "Tesseract best traineddata repository",
+      "url": "https://github.com/tesseract-ocr/tessdata_best"
+    }
+  ],
+  "unresolved_blockers": [
+    "dependency-license-review-pending",
+    "derived-artifact-not-implemented",
+    "detector-family-not-promoted",
+    "exact-checkpoint-unresolved",
+    "exact-code-package-unresolved",
+    "exact-devanagari-artifact-unresolved",
+    "exact-guj-traineddata-unresolved",
+    "exact-ppocrv6-medium-artifact-unresolved",
+    "exact-ppocrv6-small-artifact-unresolved",
+    "exact-weight-license-unverified",
+    "integration-lineage-unverified",
+    "model-card-not-applicable-record-pending",
+    "model-card-unresolved",
+    "runtime-version-unresolved",
+    "sbom-unresolved",
+    "training-data-not-approved",
+    "training-lineage-unverified",
+    "weight-license-unverified"
+  ]
+}

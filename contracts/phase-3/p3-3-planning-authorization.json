@@ -1,0 +1,34 @@
+{
+  "accountable_owner_id": "mayank-admin",
+  "authorized": true,
+  "authorized_on": "2026-08-25",
+  "decision_id": "D-P3.3-PLAN-AUTH",
+  "implementation_authorized": false,
+  "milestone": "P3.3",
+  "next_phase_authorized": false,
+  "prohibited_actions": [
+    "application_or_migration_implementation",
+    "tracker_or_evaluator_source_download",
+    "package_or_dataset_download",
+    "model_training_or_modification",
+    "camera_or_media_access",
+    "sentinel_or_onvif_media_access",
+    "public_private_or_government_data_use",
+    "biometric_or_reidentification_processing",
+    "cross_camera_linkage",
+    "operational_alerting_or_enforcement",
+    "pilot_or_production_deployment",
+    "remote_git_actions"
+  ],
+  "schema_version": "1.0.0",
+  "scope": "phase3.p3_3.planning_only.stream_local_anonymous_tracking",
+  "statement": "authorize P3.3 planning",
+  "authorized_outputs": [
+    "primary_source_research_notes",
+    "stream_local_tracking_architecture",
+    "generated_only_validation_plan",
+    "safety_and_resource_boundaries",
+    "owner_decision_packet",
+    "planning_package_manifest_and_readiness_report"
+  ]
+}

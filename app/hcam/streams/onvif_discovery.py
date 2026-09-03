@@ -7,8 +7,11 @@ from dataclasses import dataclass
 from time import monotonic
 from urllib.parse import urlsplit
 from uuid import uuid4
-from xml.etree import ElementTree
+# Stdlib ElementTree is retained only for element types and ParseError.
+from xml.etree import ElementTree  # nosec B405
 
+from defusedxml import ElementTree as DefusedElementTree
+from defusedxml.common import DefusedXmlException
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
@@ -108,8 +111,8 @@ class OnvifDiscoveryEngine:
         if len(document) > _MAX_DATAGRAM_BYTES:
             return []
         try:
-            root = ElementTree.fromstring(document)
-        except ElementTree.ParseError:
+            root = DefusedElementTree.fromstring(document)
+        except (ElementTree.ParseError, DefusedXmlException):
             return []
         results: list[OnvifDiscoveryMatchResponse] = []
         for element in root.iter():

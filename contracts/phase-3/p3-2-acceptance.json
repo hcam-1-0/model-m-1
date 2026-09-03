@@ -1,0 +1,43 @@
+{
+  "accepted_at": "2026-08-25T10:33:52Z",
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-08-25",
+  "accepted_repository_head": "4e20f10bb229d664962d8c8b89a02fda8d9bdfa8",
+  "branch": "codex/phase3-contracts-guardrails",
+  "contract_format": "hcam.phase3.p3_2.acceptance.v1",
+  "documented_limitations_accepted": true,
+  "evidence_package_digest": "F8673BE6AD8D8CABFA4636DA1505DE4C816398B115073B1F5261B03D2B0C7BCF",
+  "evidence_profile": {
+    "artifact_redistributed": false,
+    "camera_access": false,
+    "execution_provider": "CPUExecutionProvider",
+    "generated_only": true,
+    "government_or_private_data": false,
+    "media_artifacts_persisted": 0,
+    "model_artifact_id": "DET-R0-ONNX-UPSTREAM-0.1.1RC0",
+    "model_artifact_sha256": "427CC366D34E27FF7A03E2899B5E3671425C262EA2291F88BB942BC1CC70B0F7",
+    "network_access_during_inference": false,
+    "public_dataset_access": false,
+    "source": "DATA-GEN-R0"
+  },
+  "next_phase_authorized": false,
+  "non_authorization": [
+    "physical_camera_onvif_media_or_sentinel_stream_access",
+    "real_team_owned_public_private_government_police_or_scraped_media",
+    "public_dataset_download_or_accuracy_evaluation",
+    "training_finetuning_or_model_modification",
+    "face_biometric_identity_reidentification_watchlist_or_vehicle_owner_lookup",
+    "sensitive_trait_intent_criminality_or_predictive_risk_inference",
+    "operational_alerting_autonomous_action_or_enforcement",
+    "pilot_production_statewide_deployment_or_performance_claim",
+    "model_or_artifact_redistribution",
+    "remote_git_push_pull_request_or_merge",
+    "p3_3_or_later_work"
+  ],
+  "owner_statement_received": "P3.2 acceptance",
+  "package_file_count": 72,
+  "record_id": "D-P3.2-ACCEPTANCE",
+  "scope": "phase3.p3_2.generated_only_cpu_detection",
+  "statement": "mayank-admin accepts D-P3.2-ACCEPTANCE for the immediately presented package digest F8673BE6AD8D8CABFA4636DA1505DE4C816398B115073B1F5261B03D2B0C7BCF under its documented generated-only CPU boundaries and limitations.",
+  "status": "accepted"
+}

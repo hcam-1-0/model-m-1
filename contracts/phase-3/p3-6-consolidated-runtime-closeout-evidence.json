@@ -1,0 +1,82 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_evidence.v1",
+  "evidence_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-EVIDENCE-ATTEMPT-1",
+  "decision_id": "D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH",
+  "status": "sealed_sanitized_failed_closed_nonretryable_evidence",
+  "sealed_at": "2026-09-02T17:46:10.8528930+00:00",
+  "authorization_package_sha256": "B7AB81130213AADD907055B75D795D59864AD2C91A2D876B7A267407CA289CD3",
+  "consolidated_build_package_sha256": "A006B6A1D7AA59F8A67BC8AD24B280D546397F921AF0111E366ACF38DD21A766",
+  "action_spec_sha256": "6284ADFD21A87EFEF34A42214447242E62F5B458886AD00C9E7C4551FC6BB55B",
+  "authorization_record": {
+    "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-authorization.json",
+    "sha256": "53EC06DD2968A5BC733D701A421B15FE8934A7BF9946654133D7DFEBDCE67542"
+  },
+  "result_record": {
+    "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-result.json",
+    "sha256": "4AB72B831F96E996F5F90199443AE9D747A7F55804112E7291313048506E6B41"
+  },
+  "attempt_attestation": {
+    "attempt_index": 1,
+    "maximum_authorized_attempts": 3,
+    "attempts_consumed": 1,
+    "authorization_record_preceded_observation": true,
+    "runtime_binding_passed": true,
+    "source_preflight_passed": true,
+    "outer_controller_process_started": true,
+    "outer_controller_result_accepted": false,
+    "handler_process_started": false,
+    "U3K_machine_or_storage_action_started": false,
+    "terminal_reason_code": "process_output_bounds_failed",
+    "terminal_reason_retry_allowlisted": false,
+    "automatic_retry_performed": false,
+    "additional_attempt_authorized": false
+  },
+  "identity_attestation": {
+    "exact_runtime_hash_match_before_process": true,
+    "cache_only_no_UI_whole_chain_excluding_root_trust_passed": true,
+    "trust_provider_state_closed": true,
+    "exact_three_fixed_parents_valid_before_process": true,
+    "exact_source_binding_count": 11,
+    "source_hash_mismatch_count_before_process": 0,
+    "runtime_hash_match_after_process": true,
+    "exact_three_fixed_parents_valid_after_process": true,
+    "source_hash_mismatch_count_after_process": 0
+  },
+  "generated_validation_attestation": {
+    "required_outer_cases": 416,
+    "accepted_outer_pass_count": 0,
+    "required_handler_cases": 84,
+    "accepted_handler_pass_count": 0,
+    "required_total_cases": 500,
+    "accepted_total_pass_count": 0,
+    "process_output_contract_passed": false,
+    "deterministic_case_result_claim_made": false,
+    "raw_stdout_or_stderr_persisted": false,
+    "raw_fixture_or_exception_persisted": false
+  },
+  "storage_attestation": {
+    "U3K_preflight_started": false,
+    "U3K_storage_attempts_consumed": 0,
+    "F_drive_observed": false,
+    "candidate_root_observed_created_or_modified": false,
+    "ACL_identity_or_probe_action_performed": false,
+    "probe_bytes_written_or_retained": 0
+  },
+  "scope_attestation": {
+    "PowerShell_target_process_count": 1,
+    "handler_or_storage_process_count": 0,
+    "machine_or_storage_action_count": 0,
+    "network_or_trust_retrieval_count": 0,
+    "scanner_action_count": 0,
+    "artifact_model_inference_camera_media_private_or_Government_data_action_count": 0,
+    "container_Kubernetes_profile_activation_or_deployment_count": 0,
+    "commit_push_or_remote_Git_action_count": 0,
+    "raw_process_machine_identity_or_security_material_retained": false
+  },
+  "terminal_gate": {
+    "Phase_3_complete": false,
+    "local_closeout_commit_authorized_after_failure": false,
+    "new_digest_bound_authorization_required_for_any_further_attempt": true,
+    "failure_effect": "stop_closed_without_U3K_or_closeout"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "approval": {
+    "decided_at": null,
+    "owner_id": "mayank-admin",
+    "reason": "Exact artifact remains research-only and unavailable",
+    "record_id": "pending-ocr-l0",
+    "status": "pending"
+  },
+  "artifact_identity": {
+    "blocker": "exact-ppocrv6-small-artifact-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "blockers": [
+    "exact-ppocrv6-small-artifact-unresolved",
+    "weight-license-unverified",
+    "training-lineage-unverified",
+    "model-card-unresolved",
+    "sbom-unresolved"
+  ],
+  "candidate_id": "OCR-L0",
+  "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+  "eligibility": "blocked",
+  "export_expectations": [
+    "paddle-inference-format-unresolved"
+  ],
+  "intended_role": "ocr_latin_small",
+  "known_limits": [
+    "PP-OCRv6 portfolio naming must map to an exact official artifact",
+    "License-plate domain accuracy is unmeasured"
+  ],
+  "licenses": [
+    {
+      "commercial_or_government_use": "allowed",
+      "component": "code",
+      "license_id": {
+        "blocker": null,
+        "digest": null,
+        "state": "resolved",
+        "value": "Apache-2.0"
+      },
+      "notice_required": true,
+      "redistribution": "allowed"
+    },
+    {
+      "commercial_or_government_use": "unresolved",
+      "component": "weights",
+      "license_id": {
+        "blocker": "weights-license-unverified",
+        "digest": null,
+        "state": "unresolved",
+        "value": null
+      },
+      "notice_required": null,
+      "redistribution": "unresolved"
+    }
+  ],
+  "lineage": {
+    "blocker": "training-lineage-unverified",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "manifest_digest": "sha256:2fec3b2188306437b12a93db462e580db9cb4b6d4716e86676b693bac492343b",
+  "model_card": {
+    "blocker": "model-card-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "recorded_at": "2026-08-24T12:45:00Z",
+  "runtime_expectations": [
+    "paddle-runtime-unresolved"
+  ],
+  "sbom": {
+    "blocker": "sbom-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "semantic_version": "1.0.0",
+  "source_reference": {
+    "accessed_on": "2026-08-24",
+    "evidence_kind": "official_repository",
+    "no_download_performed": true,
+    "publisher": "PaddlePaddle",
+    "reference_id": "source-paddleocr",
+    "supports_claim": "Repository documents PP-OCRv6 and PP-OCRv5 script models",
+    "title": "PaddleOCR official repository",
+    "url": "https://github.com/PaddlePaddle/PaddleOCR"
+  },
+  "source_revision": {
+    "blocker": null,
+    "digest": null,
+    "state": "resolved",
+    "value": "2661c7c0ef5c613e8f93c6e93b2e052399f0f854"
+  },
+  "source_tier": "S3",
+  "supported_taxonomy": []
+}

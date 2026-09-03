@@ -1,0 +1,120 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_r0_generated_test_plan.v1",
+  "plan_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-R0-GENERATED-TEST-PLAN",
+  "status": "sealed_non_executable_generated_test_plan",
+  "prepared_on": "2026-09-01",
+  "minimum_vector_count": 192,
+  "vector_groups": [
+    {
+      "group": "request_schema",
+      "minimum_count": 32,
+      "covers": [
+        "required_fields",
+        "unknown_fields",
+        "type_bounds",
+        "mode_allowlist",
+        "canonical_serialization",
+        "duplicate_or_conflicting_authority"
+      ]
+    },
+    {
+      "group": "authorization_and_binding",
+      "minimum_count": 24,
+      "covers": [
+        "digest_shape",
+        "decision_binding",
+        "attempt_count",
+        "expiry_projection",
+        "source_binding",
+        "default_off_authority"
+      ]
+    },
+    {
+      "group": "stage_transitions",
+      "minimum_count": 48,
+      "covers": [
+        "all_eighteen_typed_reason_codes",
+        "terminal_monotonicity",
+        "out_of_order_actions",
+        "success_progression",
+        "no_retry",
+        "fail_closed_unknown_state"
+      ]
+    },
+    {
+      "group": "redaction_and_prohibited_fields",
+      "minimum_count": 32,
+      "covers": [
+        "raw_exception",
+        "native_status",
+        "manifest_tokens",
+        "stdout_stderr",
+        "identity",
+        "credentials",
+        "environment",
+        "personal_paths"
+      ]
+    },
+    {
+      "group": "resource_timeout_and_output_bounds",
+      "minimum_count": 24,
+      "covers": [
+        "negative_and_overlarge_limits",
+        "timeout_terminal_state",
+        "stdout_stderr_bounds",
+        "closure_count_and_size",
+        "process_count",
+        "cleanup_projection"
+      ]
+    },
+    {
+      "group": "cross_language_projection",
+      "minimum_count": 32,
+      "covers": [
+        "action_set_equivalence",
+        "reason_set_equivalence",
+        "schema_set_equivalence",
+        "canonical_expected_projection",
+        "divergence_fail_closed",
+        "Python_machine_disabled"
+      ]
+    }
+  ],
+  "implementation_time_execution_policy": {
+    "Python_pure_reference_functions_against_generated_vectors": "requires_exact_future_implementation_authorization",
+    "PowerShell_controller_parse_import_or_execution": false,
+    "Python_machine_API_filesystem_environment_registry_network_native_or_subprocess": false,
+    "external_fixtures_or_data": false,
+    "runtime_or_hardware_observation": false
+  },
+  "required_static_forbidden_tokens_or_imports": [
+    "Invoke-Expression",
+    "Start-Process",
+    "Invoke-WebRequest",
+    "System.Net",
+    "ctypes",
+    "cffi",
+    "os",
+    "pathlib",
+    "platform",
+    "socket",
+    "subprocess",
+    "urllib",
+    "requests"
+  ],
+  "acceptance_thresholds": {
+    "generated_vectors_passed": "all",
+    "Python_reference_branch_coverage_percent": 95,
+    "unexpected_machine_or_network_action_count": 0,
+    "unexpected_raw_material_retention_count": 0,
+    "PowerShell_Python_contract_set_difference_count": 0,
+    "existing_accepted_source_hash_change_count": 0
+  },
+  "current_effect": {
+    "test_plan_prepared": true,
+    "test_source_implementation_authorized": false,
+    "Python_reference_execution_authorized": false,
+    "PowerShell_execution_authorized": false,
+    "runtime_machine_or_network_authorized": false
+  }
+}

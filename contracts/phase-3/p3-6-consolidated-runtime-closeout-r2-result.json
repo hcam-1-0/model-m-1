@@ -1,0 +1,87 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_r2_result.v1",
+  "result_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-RESULT-1",
+  "decision_id": "D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-AUTH",
+  "status": "terminal_failed_closed_authorization_consumed_no_retry",
+  "logical_node_id": "LAB-LAPTOP-01",
+  "attempt_index": 1,
+  "completed_at_utc": "2026-09-02T19:58:38.1050457Z",
+  "bindings": {
+    "authorization_record": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-authorization.json",
+    "authorization_record_sha256": "A8F8B8D9DD6DE42948D8B5B9BD2E869A2490D6758578B0D493C6E4C592798B12",
+    "authorization_package_sha256": "3712793C5A57E66E39C8A804E162A4680EA92024682BDDF2A54573E1622C541E",
+    "U4D_implementation_package_sha256": "288F275345E2586E05BE14EC964CA77EF7503A0BE70D88C6C5696BB4655C612A",
+    "action_spec_sha256": "917ABC07DAFA9C148B37BBD7E049267E98D95BEB4534674ABA070D747E5B3F81"
+  },
+  "terminal_outcome": {
+    "succeeded": false,
+    "earliest_failed_action": "R2-A04-UTILITY-MANIFEST-AND-CLOSURE-BINDING",
+    "sanitized_reason_code": "utility_closure_declared_target_missing",
+    "attempt_consumed": true,
+    "authorization_reusable": false,
+    "automatic_or_manual_retry_authorized": false,
+    "next_action_requires_new_failure_analysis_and_new_digest_bound_authorization": true
+  },
+  "completed_gates": {
+    "R2_A01_package_authority_preflight": true,
+    "R2_A02_authorization_record": true,
+    "R2_A03_runtime_parent_and_file_binding": true,
+    "exact_runtime_regular_nonreparse_and_bounded": true,
+    "fixed_parent_count": 3,
+    "fixed_parents_all_valid": true,
+    "runtime_major_version_7": true,
+    "runtime_preparation_hash_match": true,
+    "cache_only_whole_chain_excluding_root_trust_valid": true,
+    "network_or_trust_retrieval_used": false
+  },
+  "failed_gate": {
+    "R2_A04_Utility_manifest_classification_started": true,
+    "exact_manifest_regular_nonreparse_and_bounded": true,
+    "manifest_fixed_parents_valid": true,
+    "parser_file_count": 1,
+    "parser_error_count": 0,
+    "top_level_literal_hashtable_count": 1,
+    "ScriptsToProcess_empty": true,
+    "closure_resolution_completed": false,
+    "closure_binding_passed": false,
+    "missing_declared_target_count_observed_before_stop": 1,
+    "missing_target_path_or_manifest_content_retained": false
+  },
+  "not_started": {
+    "R2_A05_source_and_package_preflight": true,
+    "R2_A06_U4D_child_generated_validation": true,
+    "R2_A07_typed_process_output_classification": true,
+    "R2_A08_handler_generated_validation": true,
+    "R2_A09_postvalidation_binding": true,
+    "R2_A10_U3K_preflight": true,
+    "R2_A11_U3K_storage_attempt": true,
+    "R2_A12_final_validation": true,
+    "R2_A13_Phase_3_closeout": true
+  },
+  "execution_counts": {
+    "target_PowerShell_generated_validation_processes": 0,
+    "outer_generated_cases_executed": 0,
+    "handler_generated_cases_executed": 0,
+    "total_generated_cases_accepted": 0,
+    "U3K_preflight_count": 0,
+    "U3K_storage_attempt_count": 0,
+    "F_drive_access_count": 0,
+    "local_commit_count": 0,
+    "remote_Git_action_count": 0
+  },
+  "retention": {
+    "raw_stdout_retained_bytes": 0,
+    "raw_stderr_retained_bytes": 0,
+    "raw_manifest_text_retained_bytes": 0,
+    "parser_token_or_AST_material_retained": false,
+    "missing_target_path_retained": false,
+    "exception_type_message_stack_or_security_material_retained": false,
+    "bounded_counts_booleans_action_and_reason_only": true
+  },
+  "continuing_state": {
+    "Phase_3_complete": false,
+    "U3K_or_storage_authorized": false,
+    "another_attempt_authorized": false,
+    "commit_push_or_remote_Git_authorized": false
+  }
+}

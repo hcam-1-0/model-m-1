@@ -1,0 +1,56 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_r1_admission_package.v1",
+  "package_id": "P36-PORTABLE-R1-ADMISSION-PACKAGE-R0",
+  "status": "sealed_non_effective_owner_selections_pending",
+  "sealed_on": "2026-08-30",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "core_file_count": 3,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-portable-r1-admission-gap.json",
+      "sha256": "8D30D00ECB10FDB530ED4EA112675FEA821F70EA714873BAC32245AACF734135",
+      "role": "exact_R1_to_portable_profile_resolver_and_admission_gap"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-portable-r1-decision-packet.json",
+      "sha256": "D1FC8EE1C62CB283327EEC06B62C4834E6E7831D8739CD26B1D180A91B82BABF",
+      "role": "four_independent_owner_policy_choices_with_AAAA_recommendation"
+    },
+    {
+      "path": "docs/phase-3/p3-6-portable-r1-admission-gap.md",
+      "sha256": "F35E567A2A20BB4F7EB45CEC908C120858FE55D5843AEB19396B47844CD93EA3",
+      "role": "human_owner_review_document"
+    }
+  ],
+  "immutable_input_bindings": {
+    "inventory_R1_sha256": "FB061C906D1CE5F7FE3B32B70F6CA5134C486F474E2618B23884466C2E58C76F",
+    "inventory_evidence_sha256": "3658758FCC7342B7865C7C0FD340FD408B38562BB1D365B757A74C8B6347FA72",
+    "accepted_portable_R0_package_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
+    "shared_contracts_revision": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+    "deployment_revision": "71095fe89d2b711e4982ddc0130fcaedda8703e7"
+  },
+  "owner_decisions": [
+    "D-P3.6-U3B-001",
+    "D-P3.6-U3B-002",
+    "D-P3.6-U3B-003",
+    "D-P3.6-U3B-004"
+  ],
+  "recommended_selection": "A/A/A/A",
+  "owner_acceptance_may_be_inferred_from_continue_or_other_decision": false,
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_package_digest_and_is_not_self_embedded",
+  "current_gate_effect": {
+    "P36_G2": "blocked",
+    "portable_profile_resolver_eligible": false,
+    "portable_profile_activation_authorized": false
+  },
+  "inventory_collection_authorized": false,
+  "artifact_or_dependency_acquisition_authorized": false,
+  "profile_resolution_or_activation_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "container_or_kubernetes_action_authorized": false,
+  "camera_media_or_data_access_authorized": false,
+  "implementation_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

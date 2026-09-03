@@ -1,0 +1,59 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_u4c_remediation_planning_acceptance.v1",
+  "record_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-U4C-REMEDIATION-PLANNING-ACCEPTANCE",
+  "decision_id": "D-P3.6-U4C-CLOSEOUT-R1-FAILURE-ANALYSIS-DECISIONS",
+  "status": "accepted_A_A_A_A_A_U4D_source_implementation_authorization_proposal_preparation_only",
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-02",
+  "canonical_owner_statement_utf8_bytes": 1031,
+  "canonical_owner_statement_sha256": "9367A8E580FBB3FC136518D6611D1AA7DBC37D14DD61A131FD4144E620CB051D",
+  "canonical_owner_statement": "D-P3.6-U4C-CLOSEOUT-R1-FAILURE-ANALYSIS-DECISIONS: I, mayank-admin, accept the sanitized consolidated runtime-closeout R1 failure-analysis planning package digest 26182B3EFB369C56741DFCEC51DCE412DB3EC4EF5170C0741847F1ADAE4481C0 and select D-P3.6-U4C-001:A, D-P3.6-U4C-002:A, D-P3.6-U4C-003:A, D-P3.6-U4C-004:A, and D-P3.6-U4C-005:A. This accepts the consumed failed-closeout evidence for planning purposes and authorizes preparation only of a separate source-only U4D process-output remediation implementation authorization proposal. It does not authorize harness, controller, contract, vector, test, model, or product implementation; PowerShell parsing, import, dot-sourcing, or execution; Python machine access or fallback; runtime, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, trust retrieval, download, artifact, model, inference, camera, media, private or Government data, container, Kubernetes, profile activation, deployment, another attempt, U3K, Phase 3 closeout, commit, push, or remote Git.",
+  "accepted_package": {
+    "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4c-remediation-planning-package.json",
+    "sha256": "26182B3EFB369C56741DFCEC51DCE412DB3EC4EF5170C0741847F1ADAE4481C0",
+    "mutated_by_this_acceptance": false
+  },
+  "accepted_failure_analysis": {
+    "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r1-failure-analysis.json",
+    "sha256": "C6A9A35548DD212D47698A5C4C8845E42AF7A75B572ECDBA84E199F63A3331D2",
+    "accepted_for_planning_only": true,
+    "stdout_limit_exceeded_confirmed": false,
+    "stderr_nonzero_confirmed": false,
+    "child_exit_code_confirmed": false,
+    "generated_case_failure_confirmed": false
+  },
+  "selected_decisions": {
+    "D-P3.6-U4C-001": "A",
+    "D-P3.6-U4C-002": "A",
+    "D-P3.6-U4C-003": "A",
+    "D-P3.6-U4C-004": "A",
+    "D-P3.6-U4C-005": "A"
+  },
+  "accepted_design_direction": {
+    "split_sanitized_process_failure_taxonomy": true,
+    "additive_hash_bound_generated_validation_child_harness": true,
+    "single_UTF8_JSON_line_maximum_4096_bytes_no_BOM_or_CLIXML": true,
+    "zero_stderr_and_silent_nondata_streams": true,
+    "minimum_generated_static_vector_count": 320,
+    "two_gate_source_build_then_exact_runtime_authorization": true,
+    "exact_historical_compatibility_transition_required": true,
+    "accepted_controllers_vectors_and_consumed_attempt_records_preserved_byte_exact": true
+  },
+  "authority_granted": {
+    "prepare_separate_non_effective_U4D_source_implementation_authorization_proposal": true,
+    "harness_controller_contract_vector_test_model_or_product_implementation": false,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_hardware_machine_storage_or_network_observation": false,
+    "another_attempt_or_U3K": false,
+    "Phase_3_closeout_commit_push_or_remote_Git": false
+  },
+  "next_required_sequence": [
+    "prepare_non_effective_U4D_process_output_remediation_source_implementation_authorization_proposal",
+    "obtain_exact_digest_bound_D_P3_6_U4D_PROCESS_OUTPUT_REMEDIATION_IMPLEMENTATION_AUTH",
+    "implement_only_exact_additive_and_compatibility_paths_if_authorized",
+    "seal_source_and_generated_static_evidence_and_prepare_one_non_effective_exact_digest_bound_runtime_closeout_R2_package_under_the_same_source_build_authority",
+    "obtain_a_new_exact_digest_bound_runtime_closeout_R2_authorization_before_any_runtime_or_machine_action"
+  ],
+  "acceptance_may_be_inferred_as_source_implementation_PowerShell_runtime_retry_U3K_closeout_commit_push_or_remote_Git_authority": false
+}

@@ -1,0 +1,136 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_runtime_binding_r3_failure_analysis_r0.v1",
+  "analysis_id": "P36-QUARANTINE-GENERATED-VALIDATION-RUNTIME-BINDING-R3-FAILURE-ANALYSIS-R0",
+  "status": "sanitized_U3R_failure_analyzed_owner_decisions_pending_no_implementation_runtime_or_retry_authority",
+  "prepared_on": "2026-09-01",
+  "analysis_scope": "sealed_records_prior_accepted_evidence_and_non_observational_controller_design_only",
+  "attempt_evidence": {
+    "decision_id": "D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH",
+    "authorization_package_sha256": "A912EF51629A3E73FFF2ECE7AAB8A7D3017A659F9FB75F5402A90027D4B53D98",
+    "authorization_record_sha256": "D7A51E7F4F806F959F437E678C31FC93769FD34B3305EE04DD08290E98D15C2B",
+    "result_record_sha256": "497AF7FFA6EEC1B08611FCEB184AC7597A2666B26DF7A6705F3B1BDF9E460C71",
+    "evidence_record_sha256": "59E8DE24BD6099BCE2BB197E57300B49606FAFE66A4B0CCCBF6348A7BBEB3059",
+    "attempts_consumed": 1,
+    "retry_authorized": false,
+    "owner_failure_evidence_acceptance_recorded": false
+  },
+  "confirmed_facts": {
+    "authorization_record_existed_before_observation": true,
+    "sealed_package_core_hashes_verified_before_observation": "17_of_17",
+    "attempt_started_at": "2026-09-01T14:39:19.016Z",
+    "attempt_completed_at": "2026-09-01T14:39:19.075Z",
+    "duration_milliseconds": 59,
+    "runtime_observation_started": true,
+    "sanitized_reason_code": "runtime_binding_failed",
+    "Utility_manifest_observation_started": false,
+    "Utility_manifest_parser_invocation_count": 0,
+    "Aggregate_harness_invocation_count": 0,
+    "runner_Contract_invocation_count": 0,
+    "runner_Storage_invocation_count": 0,
+    "windows_adapter_import_or_execution_count": 0,
+    "prohibited_action_count": 0,
+    "raw_runtime_metadata_trust_code_exception_manifest_parser_or_process_material_retained": false,
+    "successful_U3R_evidence_available": false,
+    "U3K_authorized": false
+  },
+  "non_attempt_transport_event": {
+    "event": "initial_monolithic_inline_controller_submission_rejected_before_shell_process_creation_by_Windows_command_length_limit",
+    "runtime_or_manifest_observation": false,
+    "Aggregate_or_runner_invocation_count": 0,
+    "attempt_consumed": false,
+    "security_effect": "none",
+    "design_relevance": "demonstrates_that_an_unsealed_inline_controller_is_not_a_durable_or_reproducible_execution_surface"
+  },
+  "prior_runtime_context": {
+    "record": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r2-result.json",
+    "record_sha256": "44450DF4D5A199DA34E5343AE043E138B8E046EF4E6FE6EAD6836AC96F7085F4",
+    "observed_at": "2026-09-01T11:46:00.195Z_to_2026-09-01T11:46:02.847Z",
+    "same_exact_runtime_path": true,
+    "runtime_path_version_hash_and_cache_only_trust_passed": true,
+    "runtime_sha256": "362A356CE7F0940EC74F73A8FC2C990A2CC24A38A11C90BBD8ECA947110AD139",
+    "use_in_current_analysis": "historical_context_only_not_current_runtime_evidence"
+  },
+  "root_cause_assessment": {
+    "root_cause_confirmed": false,
+    "why_unconfirmed": "the_authorized_failure_contract_retained_only_runtime_binding_failed_and_intentionally_discarded_substage_exception_and_native_trust_details",
+    "blind_retry_safe": false,
+    "current_authorization_reusable": false
+  },
+  "hypotheses": [
+    {
+      "hypothesis_id": "H1-TRANSIENT-CONTROLLER-REPRODUCIBILITY-GAP",
+      "confidence": "confirmed_design_gap_not_confirmed_runtime_root_cause",
+      "basis": [
+        "the_runtime_controller_was_not_a_package_bound_repository_source",
+        "the_controller_could_not_be_statically_or_generated_vector_validated_before_observation",
+        "the_first_inline_transport_exceeded_the_local_process_command_length_limit"
+      ],
+      "required_response": "persist_bind_and_statically_validate_the_controller_before_any_future_runtime_authorization"
+    },
+    {
+      "hypothesis_id": "H2-CONTROLLER-PATH-OR-WINTRUST-BRIDGE-DEFECT",
+      "confidence": "medium_inference",
+      "basis": [
+        "the_attempt_failed_in_fifty_nine_milliseconds_before_manifest_observation",
+        "the_same_runtime_path_hash_version_and_cache_only_trust_had_passed_in_prior_U3P_evidence",
+        "the_current_controller_used_a_new_unsealed_dynamic_native_interop_surface"
+      ],
+      "required_response": "generated_static_vectors_for_path_classification_native_structure_layout_verify_close_and_sanitized_failure_projection"
+    },
+    {
+      "hypothesis_id": "H3-RUNTIME-IDENTITY-OR-CACHED-TRUST-STATE-CHANGED",
+      "confidence": "low_to_medium_unresolved",
+      "basis": [
+        "historical_success_does_not_prove_current_identity_or_cached_trust_state",
+        "the_sanitized_failure_does_not_distinguish_metadata_hash_verify_or_close_failure"
+      ],
+      "required_response": "future_preflight_only_attempt_may_emit_allowlisted_stage_booleans_and_normalized_reason_families_without_raw_native_codes"
+    },
+    {
+      "hypothesis_id": "H4-EXACT-PATH-COMPONENT-OR-FIXED-DRIVE-CLASSIFICATION",
+      "confidence": "low_unresolved",
+      "basis": [
+        "runtime_binding_failed_includes_path_component_drive_file_size_version_hash_and_trust_substages",
+        "no_substage_projection_was_retained"
+      ],
+      "required_response": "future_controller_must_fail_closed_with_distinct_allowlisted_substage_codes"
+    }
+  ],
+  "recommended_remediation_direction": {
+    "persisted_controller_required": true,
+    "controller_source_must_be_package_bound": true,
+    "controller_source_execution_in_this_package": false,
+    "preferred_host": "PowerShell_7_language_and_dotnet_only_controller_bound_to_the_same_exact_runtime",
+    "external_cmdlet_or_module_dependency_before_Utility_closure_binding": false,
+    "generated_static_simulation_required": true,
+    "raw_exception_native_status_manifest_or_security_material_retention": false,
+    "future_preflight_only_diagnostic_gate_required_before_full_generated_validation": true,
+    "future_full_retry_combined_with_first_controller_runtime_test": false
+  },
+  "required_sanitized_stage_taxonomy": [
+    "runtime_path_classification_failed",
+    "runtime_metadata_failed",
+    "runtime_hash_failed",
+    "runtime_trust_initialization_failed",
+    "runtime_trust_verification_failed",
+    "runtime_trust_close_failed",
+    "runtime_identity_changed",
+    "utility_manifest_path_failed",
+    "utility_manifest_parser_failed",
+    "utility_manifest_closure_failed",
+    "source_binding_failed",
+    "process_failed",
+    "result_contract_invalid"
+  ],
+  "gate_effect": {
+    "analysis_prepared": true,
+    "failure_evidence_owner_acceptance_inferred": false,
+    "remediation_decisions_pending": true,
+    "source_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  }
+}

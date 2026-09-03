@@ -1,0 +1,130 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_authorization_package.v1",
+  "package_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTHORIZATION-PACKAGE",
+  "decision_id": "D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH",
+  "status": "sealed_non_effective_owner_authorization_pending",
+  "sealed_on": "2026-09-02",
+  "preparation_authority_decision_id": "D-P3.6-CONSOLIDATED-BUILD-AUTH",
+  "preparation_authority_package_sha256": "DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C",
+  "build_package": "contracts/phase-3/p3-6-consolidated-build-package.json",
+  "build_package_sha256": "A006B6A1D7AA59F8A67BC8AD24B280D546397F921AF0111E366ACF38DD21A766",
+  "core_file_count": 17,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-build-package.json",
+      "sha256": "A006B6A1D7AA59F8A67BC8AD24B280D546397F921AF0111E366ACF38DD21A766",
+      "role": "final_generated_static_build_bundle"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-build-evidence.json",
+      "sha256": "64A30AE68274277C2C0639C8934508BD1C3F5109798706A9BBE4F12438274ECA",
+      "role": "final_generated_static_build_evidence"
+    },
+    {
+      "path": "docs/phase-3/p3-6-consolidated-build-evidence-review.md",
+      "sha256": "C1AEDEF017F6A5C581BF21B2B5C66192EE1BFA789B6EC1159E6287478C88F929",
+      "role": "human_build_evidence_review"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-action-spec.json",
+      "sha256": "6284ADFD21A87EFEF34A42214447242E62F5B458886AD00C9E7C4551FC6BB55B",
+      "role": "exact_ordered_runtime_generated_validation_U3K_and_closeout_actions"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-authorization-proposal.json",
+      "sha256": "8C3236811E029BEE4C27C9CDC987C0B58E3BFB6AFE1DF21FEA1857367216E3F3",
+      "role": "non_effective_authority_and_owner_statement_template"
+    },
+    {
+      "path": "tests/test_phase36_consolidated_runtime_closeout_authorization_proposal.py",
+      "sha256": "E8001AFD5B558EEBA51A0714C02DCD2C9F22B65F93A74AF4D3323130983B82EF",
+      "role": "strict_package_action_retry_output_and_non_authorization_tests"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_binding_outer_attempt_controller_r0.ps1",
+      "sha256": "0E539126536CEF9F490EE164C5ECEC2FED36649C163FAAA8F32193B2DB744B99",
+      "role": "authoritative_outer_attempt_controller"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-contract.json",
+      "sha256": "B0D03E356B3939817CA21AA2DFC85B4897D3E89405DE27FFE492D1C549B767C1",
+      "role": "outer_attempt_controller_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-vectors.json",
+      "sha256": "EE25BD99942F0CB68E157439ADEA230D3E549FBAC1743AC783775DDA58AA7B13",
+      "role": "416_generated_only_outer_controller_vectors"
+    },
+    {
+      "path": "tools/phase36_quarantine_generated_validation.ps1",
+      "sha256": "830D88F8915B084DEF1089927FF785C9C0E7BDB6F0755B5315EE85E9DA8A8B8A",
+      "role": "accepted_handler_generated_validation_harness"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-powershell-validation-r0-vectors.json",
+      "sha256": "5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C",
+      "role": "84_generated_runner_and_handler_vectors"
+    },
+    {
+      "path": "tools/phase36_quarantine_transaction_runner.ps1",
+      "sha256": "22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A",
+      "role": "accepted_U3K_transaction_runner"
+    },
+    {
+      "path": "tools/phase36_quarantine_machine_handlers.psm1",
+      "sha256": "41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721",
+      "role": "accepted_pure_machine_handlers"
+    },
+    {
+      "path": "tools/phase36_quarantine_windows_storage_adapter.psm1",
+      "sha256": "232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9",
+      "role": "accepted_authoritative_Windows_storage_adapter"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-package.json",
+      "sha256": "79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7",
+      "role": "accepted_U3L_machine_handler_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-acceptance.json",
+      "sha256": "06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631",
+      "role": "accepted_U3L_owner_source_acceptance"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-storage-r2-action-spec.json",
+      "sha256": "1825C65DFEEEF02EA12AF3D506385657870DCB631D2CDB157DB0F9C919C2DE2A",
+      "role": "accepted_exact_U3K_A01_through_A10_storage_contract"
+    }
+  ],
+  "fixed_authority_if_exactly_accepted": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "authorization_window_seconds": 86400,
+    "maximum_total_runtime_attempts": 3,
+    "maximum_U3K_storage_attempts": 1,
+    "same_digest_transient_pre_U3K_retry_only": true,
+    "generated_validation_case_count": 500,
+    "exact_candidate_root": "F:\\HCAM-Quarantine",
+    "conditional_Phase_3_closeout": true,
+    "maximum_local_closeout_commits": 1,
+    "push_or_remote_Git": false
+  },
+  "fixed_non_authorization": [
+    "no_action_before_exact_package_digest_owner_authorization",
+    "no_alternate_runtime_source_path_volume_or_hardware_discovery",
+    "no_retry_after_U3K_begins_or_after_nontransient_failure",
+    "no_B_drive_or_F_h_cam_access",
+    "no_existing_root_change",
+    "no_Defender_scanner_network_trust_retrieval_install_update_or_download",
+    "no_artifact_model_inference_camera_media_private_or_Government_data",
+    "no_container_Kubernetes_profile_activation_or_deployment",
+    "no_push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "current_gate_effect": {
+    "owner_runtime_closeout_authorization_pending": true,
+    "D_P3_6_CONSOLIDATED_RUNTIME_CLOSEOUT_AUTH_requestable": true,
+    "runtime_machine_storage_U3K_or_closeout_authorized": false,
+    "commit_push_or_remote_Git_authorized": false
+  },
+  "authorization_may_be_inferred_from_build_success_continue_or_silence": false,
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_runtime_closeout_authorization_package_digest_and_is_not_self_embedded"
+}

@@ -1,0 +1,209 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3t_preflight_r0_harness_implementation_evidence.v1",
+  "evidence_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-EVIDENCE",
+  "status": "implemented_clean_generated_static_validation_passed_owner_H1_source_implementation_acceptance_pending",
+  "recorded_on": "2026-09-01",
+  "implementation_authorization": {
+    "decision_id": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH",
+    "owner": "mayank-admin",
+    "authorization_package": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-planning-package.json",
+    "authorization_package_digest_sha256": "26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2",
+    "authorization_checkpoint_commit": "c582af2927d94a86213f7076ddc5618dc6bf1cbc",
+    "canonical_owner_statement_utf8_bytes": 1295,
+    "canonical_owner_statement_sha256": "82A090BEEA1A7DE641C39DA2C5195A6E4B565EAFE2647D75AD938A5246A7639B",
+    "canonical_owner_statement": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only implementation of the U3T H1 preflight-harness package against digest 26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2. Implementation is limited to the exact additive PowerShell harness source, at least 48 generated-only vectors, one Python static test module, nonobservational evidence and package, canonical ledgers, documentation, line-ending records, and one local checkpoint commit with no push. The accepted U3S controller contract, vectors, PowerShell source, Python reference, evidence, package, and five immutable prior inputs must remain byte-exact. Python may execute generated fixture and source-text checks only. PowerShell must not be parsed, imported, dot-sourced, or executed. This does not authorize Python machine access or fallback; runtime path, metadata, hash, trust, identity, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, U3R retry, U3T R1 attempt, U3K, or remote Git. Seal the H1 source and generated/static evidence for separate exact owner acceptance before preparing any runtime-binding or attempt package.",
+    "authorization_inferred": false
+  },
+  "compatibility_test_allowlist_amendment": {
+    "decision_id": "D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT",
+    "owner": "mayank-admin",
+    "authorized_on": "2026-09-01",
+    "H1_authorization_package_digest_sha256": "26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2",
+    "provisional_H1_implementation_package_digest_sha256": "F30FBA81C1B82F7A8E109AA2F52B4C90147C5280B1FE3342BB0C3DB7E9413D60",
+    "authorization_checkpoint_commit": "c582af2927d94a86213f7076ddc5618dc6bf1cbc",
+    "authorized_test_path": "tests/test_phase36_quarantine_runtime_controller_u3t_preflight_proposal.py",
+    "authorized_test_sha256": "E075708B67B53DFD1DE9D14BD31B544A6335A20573AA123EF88293F0A06FE3D7",
+    "canonical_owner_statement_utf8_bytes": 1883,
+    "canonical_owner_statement_sha256": "FC441D894C23EFBAF3CE449B888535C06E4905BF66152D2B39B01970BF15E043",
+    "canonical_owner_statement": "D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT: I, mayank-admin, authorize a source-only compatibility transition under H1 implementation authorization package digest 26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2, provisional H1 implementation package digest F30FBA81C1B82F7A8E109AA2F52B4C90147C5280B1FE3342BB0C3DB7E9413D60, and authorization checkpoint commit c582af2927d94a86213f7076ddc5618dc6bf1cbc. The edit is limited to exactly tests/test_phase36_quarantine_runtime_controller_u3t_preflight_proposal.py. It may preserve all immutable planning-package, authorization, digest, documentation, and closed-gate assertions while replacing only the obsolete pre-authorization H1 path-absence assertion and related mutable gate assertions with transition-aware assertions for: the six exactly authorized H1 paths present, H1 source implementation complete, 48 generated vectors present, compatibility amendment recorded, final owner H1 implementation acceptance pending, and all PowerShell execution, Python machine access, runtime, manifest, machine, retry, U3T R1, U3K, deployment, and remote-Git gates closed. The authorized H1 harness, vectors, new static test, accepted U3S artifacts, and five immutable prior inputs must remain byte-exact. Evidence, package, canonical ledgers, documentation, and line-ending records may be synchronized and resealed after clean focused and full Phase 3.6 static validation, followed by the one previously authorized local checkpoint commit with no push. This does not authorize PowerShell parsing, import, dot-sourcing, or execution; Python machine access or fallback; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, U3R retry, U3T R1 attempt, U3K, or remote Git.",
+    "compatibility_amendment_recorded": true,
+    "authorization_inferred": false
+  },
+  "implemented_artifacts": [
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_u3t_preflight.ps1",
+      "sha256": "69CBF4637A22BB7859ED07D19804C8576D76FB1270FF58D0D182EED2592FCE7B",
+      "bytes": 8859,
+      "role": "additive_exact_hash_bound_generated_Policy_projection_harness_source_not_parsed_or_executed"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-vectors.json",
+      "sha256": "394A4564D54B531EBBC7C16BEA6F66D0D41DEDA757E5E979C796B350462DAB4F",
+      "bytes": 10752,
+      "role": "forty_eight_explicit_generated_only_source_text_vectors"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_controller_u3t_preflight_static.py",
+      "sha256": "D6F5A7BAA5CC37C7ABF89912AC787A1B0CD79D47BD802DBB73546CE3A5A419E2",
+      "bytes": 9889,
+      "role": "generated_fixture_source_text_hash_package_ledger_and_boundary_validation"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_controller_u3t_preflight_proposal.py",
+      "sha256": "E075708B67B53DFD1DE9D14BD31B544A6335A20573AA123EF88293F0A06FE3D7",
+      "bytes": 11876,
+      "role": "authorized_historical_compatibility_transition_preserving_planning_and_closed_gate_assertions"
+    }
+  ],
+  "generated_vector_evidence": {
+    "total": 48,
+    "request_and_source_binding": 12,
+    "controller_load_and_function_binding": 8,
+    "sanitized_result_contract": 12,
+    "timeout_and_output_bounds": 8,
+    "forbidden_surface_and_gate_closure": 8,
+    "external_or_machine_input_count": 0,
+    "failed": 0
+  },
+  "harness_invariants": {
+    "external_parameters_or_request_input": false,
+    "embedded_generated_Policy_request_only": true,
+    "accepted_controller_exact_path_and_sha256_bound": true,
+    "controller_maximum_bytes": 65536,
+    "single_controller_dot_source_expression_present_as_inert_source": true,
+    "single_Invoke_HcamRuntimeController_expression_present_as_inert_source": true,
+    "machine_authority": false,
+    "automatic_retry": false,
+    "Python_machine_fallback": false,
+    "runtime_processes_during_H1": 0,
+    "raw_retention_bytes": 0,
+    "fixed_sanitized_result_count": 3,
+    "fixed_reason_codes": [
+      "source_binding_failed",
+      "result_contract_invalid",
+      "policy_valid"
+    ],
+    "future_runtime_process_limit": 1,
+    "future_attempt_limit": 1,
+    "future_total_timeout_ms": 30000,
+    "future_max_stdout_bytes": 16384,
+    "future_max_stderr_bytes": 0,
+    "future_max_result_bytes": 65536
+  },
+  "validation": {
+    "pre_seal_generated_source_text_and_immutable_hash_tests": {
+      "passed": 4,
+      "deselected": 4,
+      "failed": 0,
+      "PowerShell_parsed_imported_dot_sourced_or_executed": false
+    },
+    "post_seal_focused_H1_static_tests": {
+      "passed": 8,
+      "failed": 0,
+      "PowerShell_parsed_imported_dot_sourced_or_executed": false
+    },
+    "full_Phase_3_6_static_tests": {
+      "passed": 719,
+      "failed": 0,
+      "compatibility_transition_test_passed": true,
+      "implementation_or_runtime_failure": false,
+      "PowerShell_execution": false
+    },
+    "Ruff": "all_changed_Python_paths_passed",
+    "strict_JSON": "all_new_and_modified_JSON_records_parsed_without_duplicate_keys",
+    "line_endings": "all_new_H1_source_vectors_test_evidence_package_and_review_paths_LF",
+    "Git_diff_check": "passed",
+    "PowerShell_evidence_type": "inert_source_text_assertions_only"
+  },
+  "immutable_accepted_U3S_inputs": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-contract.json",
+      "sha256": "3F2A0975F92892A96FBC67B951B226D5AB958AE067F55B697ABA43669B8FB00E"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-vectors.json",
+      "sha256": "31335510565E4C74908C674B88951E81B7A7983331C6DE2E91964C1F8B48C20B"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller.ps1",
+      "sha256": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_reference.py",
+      "sha256": "C1470C65C6D5DA3EF93161F519BBC01507BBB805C6D433F58C65FDCAFE3FFC4F"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-evidence.json",
+      "sha256": "012AECD9316A6361C2AA2AD5B6E7F87494C306F9222012464D70440B34EC0813"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-package.json",
+      "sha256": "484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30"
+    }
+  ],
+  "five_immutable_prior_inputs": [
+    {
+      "path": "tools/phase36_quarantine_generated_validation.ps1",
+      "sha256": "830D88F8915B084DEF1089927FF785C9C0E7BDB6F0755B5315EE85E9DA8A8B8A"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-powershell-validation-r0-vectors.json",
+      "sha256": "5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C"
+    },
+    {
+      "path": "tools/phase36_quarantine_transaction_runner.ps1",
+      "sha256": "22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A"
+    },
+    {
+      "path": "tools/phase36_quarantine_machine_handlers.psm1",
+      "sha256": "41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721"
+    },
+    {
+      "path": "tools/phase36_quarantine_windows_storage_adapter.psm1",
+      "sha256": "232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9"
+    }
+  ],
+  "non_observational_boundaries": {
+    "PowerShell_parsed_imported_dot_sourced_or_executed": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_path_metadata_hash_trust_identity_or_manifest_observation": false,
+    "runtime_manifest_hardware_or_machine_observation": false,
+    "storage_F_B_ACL_probe_cleanup_or_scanner_action": false,
+    "network_download_install_update_or_artifact_acquisition": false,
+    "model_inference_camera_media_private_or_Government_data_access": false,
+    "container_Kubernetes_profile_activation_or_deployment": false,
+    "U3R_retry_U3T_R1_attempt_or_U3K": false,
+    "remote_Git": false
+  },
+  "limitations": [
+    "the_PowerShell_harness_exists_only_as_unparsed_unexecuted_source",
+    "the_dot_source_and_controller_invocation_expressions_are_design_evidence_not_execution_evidence",
+    "the_48_vectors_are_generated_source_text_assertions_not_runtime_results",
+    "no_runtime_path_hash_trust_manifest_hardware_machine_or_external_data_was_observed",
+    "the_authorized_historical_compatibility_transition_proves_only_static_ledger_and_file_state",
+    "H1_source_acceptance_is_required_after_clean_static_validation_before_any_runtime_binding_package",
+    "U3T_R1_U3R_retry_and_U3K_remain_closed"
+  ],
+  "next_required_gate": {
+    "decision_id": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE",
+    "effect_if_exactly_accepted": "accept_only_the_resealed_H1_source_and_generated_static_evidence_and_permit_preparation_only_of_a_separate_non_effective_U3T_R1_authorization_proposal",
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_or_manifest_observation_authorized": false,
+    "U3T_R1_attempt_authorized": false,
+    "U3R_retry_or_U3K_authorized": false,
+    "deployment_or_remote_Git_authorized": false
+  },
+  "future_owner_acceptance_statement_template_after_clean_transition_validation": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE: I, mayank-admin, accept the P3.6 U3T H1 preflight-harness R0 source implementation package digest <FINAL_H1_IMPLEMENTATION_PACKAGE_DIGEST_SHA256>, including exact final harness, generated-vector manifest, static-test and compatibility-transition hashes, all 48 generated vectors, clean full Phase 3.6 static validation, immutable U3S and five prior input hashes, nonobservational evidence, and documented limitations. This accepts source and generated/static evidence only and permits preparation only of a separate non-effective U3T R1 runtime-binding and one-attempt authorization proposal. It does not authorize PowerShell parsing, import, dot-sourcing, or execution; Python machine access or fallback; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, U3R retry, U3T R1 attempt, U3K, or remote Git.",
+  "current_effect": {
+    "H1_source_implementation_complete": true,
+    "compatibility_test_allowlist_amendment_recorded": true,
+    "owner_H1_source_implementation_acceptance_pending": true,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "U3T_R1_attempt_U3R_retry_or_U3K_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  }
+}

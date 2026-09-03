@@ -1,0 +1,133 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_r0_remediation_decision_packet.v1",
+  "packet_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-R0-REMEDIATION-DECISIONS",
+  "status": "owner_decisions_pending_non_effective_planning_only",
+  "prepared_on": "2026-09-01",
+  "failure_analysis": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-failure-analysis-r0.json",
+  "decision_scope": "select_source_only_controller_remediation_policy_without_authorizing_implementation_or_execution",
+  "decisions": [
+    {
+      "decision_id": "D-P3.6-U3S-001",
+      "title": "Controller Architecture",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Persisted package-bound PowerShell controller",
+          "effect": "Implement_later_as_a_repository_source_using_only_PowerShell_language_and_dotnet_before_exact_Utility_binding_then_bind_its_hash_in_every_runtime_package",
+          "tradeoff": "best_alignment_with_the_existing_exact_PowerShell_runtime_and_no_new_controller_runtime_dependency"
+        },
+        "B": {
+          "label": "Persisted Python stdlib controller",
+          "effect": "Implement_later_with_ctypes_and_subprocess_but_require_a_separate_exact_Python_runtime_binding_and_dependency_policy",
+          "tradeoff": "strong_controller_isolation_but_expands_the_trusted_runtime_surface"
+        },
+        "C": {
+          "label": "Another ephemeral diagnostic controller",
+          "effect": "Prepare_another_inline_controller_without_a_sealed_source_implementation",
+          "tradeoff": "fastest_but_repeats_the_reproducibility_and_static_validation_gap"
+        },
+        "D": {
+          "label": "Stop runtime-controller work",
+          "effect": "Keep_U3R_and_U3K_blocked_and_end_this_P3_6_path",
+          "tradeoff": "no_new_risk_but_no_runtime_validation_progress"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U3S-002",
+      "title": "Sanitized Diagnostic Granularity",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Typed stage taxonomy",
+          "effect": "Emit_only_allowlisted_stage_reason_codes_bounded_booleans_counts_and_success_flags_with_no_raw_native_codes_or_errors",
+          "tradeoff": "enough_to_target_remediation_while_preserving_the_existing_redaction_boundary"
+        },
+        "B": {
+          "label": "Typed stages plus normalized native families",
+          "effect": "Add_small_allowlisted_native_error_families_without_exact_codes_messages_or_security_state",
+          "tradeoff": "more_diagnostic_value_but_a_larger_security_and_compatibility_contract"
+        },
+        "C": {
+          "label": "Single coarse failure code",
+          "effect": "Retain_only_runtime_binding_failed",
+          "tradeoff": "smallest_output_but_cannot_distinguish_path_hash_trust_verify_or_close_failures"
+        },
+        "D": {
+          "label": "No future runtime diagnostics",
+          "effect": "Keep_all_runtime_substage_information_closed_and_stop_the_path",
+          "tradeoff": "maximum_non_observation_but_no_actionable_failure_isolation"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U3S-003",
+      "title": "Controller Validation Evidence",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Generated static and simulated boundary suite",
+          "effect": "Require_source_parse_checks_generated_path_metadata_hash_trust_verify_close_manifest_process_and_redaction_vectors_before_owner_implementation_acceptance",
+          "tradeoff": "largest_source_only_test_effort_but_highest_confidence_before_machine_observation"
+        },
+        "B": {
+          "label": "Static source inspection only",
+          "effect": "Check_tokens_hashes_and_forbidden_surfaces_without_generated_behavior_simulation",
+          "tradeoff": "faster_but_may_miss_native_interop_and_state_transition_defects"
+        },
+        "C": {
+          "label": "Runtime smoke test as implementation evidence",
+          "effect": "Use_machine_execution_before_separate_source_acceptance",
+          "tradeoff": "faster_feedback_but_breaks_the_current_source_first_gate"
+        },
+        "D": {
+          "label": "No controller implementation",
+          "effect": "Do_not_prepare_tests_or_source",
+          "tradeoff": "keeps_the_path_closed"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U3S-004",
+      "title": "Runtime Reentry Sequence",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Three separate gates",
+          "effect": "First_accept_source_only_controller_implementation_then_authorize_one_preflight_only_runtime_diagnostic_then_prepare_a_separate_full_generated_validation_retry_only_after_success",
+          "tradeoff": "slowest_but_prevents_an_unproven_controller_from_consuming_another_full_validation_attempt"
+        },
+        "B": {
+          "label": "Source acceptance then direct full retry",
+          "effect": "Combine_first_controller_runtime_execution_manifest_binding_and_full_generated_validation",
+          "tradeoff": "fewer_gates_but_another_controller_failure_can_consume_the_full_retry"
+        },
+        "C": {
+          "label": "Immediate preflight without persisted source",
+          "effect": "Authorize_a_new_diagnostic_attempt_before_source_implementation_acceptance",
+          "tradeoff": "fast_but_repeats_the_current_control_gap"
+        },
+        "D": {
+          "label": "Do not reenter runtime validation",
+          "effect": "Keep_U3R_and_U3K_blocked",
+          "tradeoff": "no_new_machine_observation_and_no_runtime_progress"
+        }
+      }
+    }
+  ],
+  "recommended_selection": {
+    "D-P3.6-U3S-001": "A",
+    "D-P3.6-U3S-002": "A",
+    "D-P3.6-U3S-003": "A",
+    "D-P3.6-U3S-004": "A"
+  },
+  "effect_of_owner_selection": {
+    "prepare_separate_source_only_controller_implementation_authorization_proposal": true,
+    "implementation_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  }
+}

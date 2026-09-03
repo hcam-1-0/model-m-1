@@ -1,0 +1,432 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_powershell_validation_r0_vectors.v1",
+  "suite_id": "P36-QUARANTINE-GENERATED-POWERSHELL-VALIDATION-R0-VECTORS-1.0.0",
+  "status": "implemented_generated_only_not_executed",
+  "prepared_on": "2026-09-01",
+  "deterministic_seed": "P36-U3M-GV-R0-V1",
+  "counts": {
+    "contract": 20,
+    "handler_action": 56,
+    "handler_cross_cutting": 8,
+    "handler": 64,
+    "total": 84
+  },
+  "fixture_policy": {
+    "generated_only": true,
+    "machine_facts_present": false,
+    "private_personal_Government_camera_media_model_or_artifact_data_present": false,
+    "raw_identity_SID_ACL_security_descriptor_probe_content_or_exception_present": false,
+    "network_input_present": false,
+    "maximum_fixture_bytes_each": 16384,
+    "raw_fixture_retention": false
+  },
+  "accepted_source_bindings": {
+    "runner_sha256": "22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A",
+    "pure_handler_sha256": "41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721",
+    "windows_adapter_sha256": "232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9"
+  },
+  "handler_action_order": [
+    "U3K-A01-UTC-CLOCK-START",
+    "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY",
+    "U3K-A03-AUTHORIZATION-RECORD",
+    "U3K-A04-F-DRIVE-INFO",
+    "U3K-A05-CANONICAL-PATH-AND-ABSENCE",
+    "U3K-A06-PROTECTED-DACL-CONSTRUCT",
+    "U3K-A07-SECURITY-AT-CREATE-ROOT",
+    "U3K-A08-NORMALIZED-DACL-VERIFY",
+    "U3K-A09-ATOMIC-CAPABILITY-PROBE",
+    "U3K-A10-NORMALIZE-HASH-WRITE"
+  ],
+  "handler_forbidden_source_tokens": [
+    "Invoke-Expression",
+    "Start-Process",
+    "Get-ChildItem",
+    "Get-Acl",
+    "Set-Acl",
+    "Invoke-WebRequest",
+    "System.Net.Http"
+  ],
+  "contract_base_fixture": {
+    "package_digest_match": true,
+    "core_hashes_match": true,
+    "owner_statement_match": true,
+    "authorization_window_valid": true,
+    "attempt_unused": true,
+    "runner_binding_match": true,
+    "runtime_binding_match": true,
+    "action_ids": [
+      "U3K-A01-UTC-CLOCK-START",
+      "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY",
+      "U3K-A03-AUTHORIZATION-RECORD",
+      "U3K-A04-F-DRIVE-INFO",
+      "U3K-A05-CANONICAL-PATH-AND-ABSENCE",
+      "U3K-A06-PROTECTED-DACL-CONSTRUCT",
+      "U3K-A07-SECURITY-AT-CREATE-ROOT",
+      "U3K-A08-NORMALIZED-DACL-VERIFY",
+      "U3K-A09-ATOMIC-CAPABILITY-PROBE",
+      "U3K-A10-NORMALIZE-HASH-WRITE"
+    ],
+    "path_policy": "exact",
+    "candidate_volume": "F:",
+    "candidate_root": "F:\\HCAM-Quarantine",
+    "probe_bytes": 4096,
+    "per_action_timeout_seconds": 30,
+    "total_timeout_seconds": 120,
+    "output_paths": [
+      "contracts/phase-3/p3-6-quarantine-storage-r2-authorization.json",
+      "contracts/phase-3/p3-6-quarantine-storage-r2-result.json",
+      "contracts/phase-3/p3-6-quarantine-storage-r2-evidence.json"
+    ],
+    "forbidden_output_present": false,
+    "candidate_absent": true,
+    "acl_case": "none",
+    "current_process_rights": ["Modify", "Synchronize"],
+    "unauthorized_principal": false,
+    "inherited_rule": false,
+    "deny_rule": false,
+    "inheritance_pass": true,
+    "propagation_pass": true,
+    "access_type_pass": true,
+    "probe_case": "none"
+  },
+  "contract_vectors": [
+    {
+      "vector_id": "R0-T001-PACKAGE-DIGEST-MISMATCH",
+      "mutation": {"package_digest_match": false},
+      "expected": {"outcome": "deny_before_machine_access"}
+    },
+    {
+      "vector_id": "R0-T002-CORE-HASH-MISMATCH",
+      "mutation": {"core_hashes_match": false},
+      "expected": {"outcome": "deny_before_machine_access"}
+    },
+    {
+      "vector_id": "R0-T003-OWNER-STATEMENT-MISMATCH",
+      "mutation": {"owner_statement_match": false},
+      "expected": {"outcome": "deny_before_machine_access"}
+    },
+    {
+      "vector_id": "R0-T004-EXPIRED-OR-CONSUMED",
+      "mutation": {"authorization_window_valid": false},
+      "expected": {"outcome": "deny_before_machine_access"}
+    },
+    {
+      "vector_id": "R0-T005-RUNNER-OR-RUNTIME-BINDING-MISMATCH",
+      "mutation": {"runner_binding_match": false},
+      "expected": {"outcome": "deny_before_machine_access"}
+    },
+    {
+      "vector_id": "R0-T006-UNKNOWN-ACTION",
+      "mutation": {
+        "action_ids": [
+          "U3K-A01-UTC-CLOCK-START",
+          "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY",
+          "U3K-A03-AUTHORIZATION-RECORD",
+          "U3K-A04-F-DRIVE-INFO",
+          "U3K-A05-CANONICAL-PATH-AND-ABSENCE",
+          "U3K-A06-PROTECTED-DACL-CONSTRUCT",
+          "U3K-A07-SECURITY-AT-CREATE-ROOT",
+          "U3K-A08-NORMALIZED-DACL-VERIFY",
+          "U3K-A09-ATOMIC-CAPABILITY-PROBE",
+          "U3K-A99-UNKNOWN"
+        ]
+      },
+      "expected": {"outcome": "default_deny_before_machine_access"}
+    },
+    {
+      "vector_id": "R0-T007-MISSING-DUPLICATE-OR-REORDERED-ACTION",
+      "mutation": {
+        "action_ids": [
+          "U3K-A01-UTC-CLOCK-START",
+          "U3K-A01-UTC-CLOCK-START",
+          "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY",
+          "U3K-A03-AUTHORIZATION-RECORD",
+          "U3K-A04-F-DRIVE-INFO",
+          "U3K-A05-CANONICAL-PATH-AND-ABSENCE",
+          "U3K-A06-PROTECTED-DACL-CONSTRUCT",
+          "U3K-A07-SECURITY-AT-CREATE-ROOT",
+          "U3K-A08-NORMALIZED-DACL-VERIFY",
+          "U3K-A09-ATOMIC-CAPABILITY-PROBE",
+          "U3K-A10-NORMALIZE-HASH-WRITE"
+        ]
+      },
+      "expected": {"outcome": "default_deny_before_machine_access"}
+    },
+    {
+      "vector_id": "R0-T008-PATH-OR-LIMIT-OVERRIDE",
+      "mutation": {"probe_bytes": 8192},
+      "expected": {"outcome": "deny_before_machine_access"}
+    },
+    {
+      "vector_id": "R0-T009-B-OR-PROJECT-PATH",
+      "mutation": {"path_policy": "prohibited", "candidate_volume": "B:"},
+      "expected": {"outcome": "deny_without_access"}
+    },
+    {
+      "vector_id": "R0-T010-EXISTING-ROOT",
+      "mutation": {"candidate_absent": false},
+      "expected": {"outcome": "fail_without_ACL_or_content_modification"}
+    },
+    {
+      "vector_id": "R0-T011-MODIFY-SYNCHRONIZE-EXACT",
+      "mutation": {"acl_case": "exact"},
+      "expected": {"outcome": "current_process_rights_check_pass"}
+    },
+    {
+      "vector_id": "R0-T012-EXCESSIVE-CURRENT-PROCESS-RIGHTS",
+      "mutation": {
+        "acl_case": "excessive",
+        "current_process_rights": ["Modify", "Synchronize", "ChangePermissions"]
+      },
+      "expected": {"outcome": "current_process_rights_check_fail"}
+    },
+    {
+      "vector_id": "R0-T013-TUPLE-CLASSIFICATION-INDEPENDENCE",
+      "mutation": {"acl_case": "tuple_independence", "current_process_rights": ["Modify"]},
+      "expected": {"outcome": "rights_fail_and_unauthorized_principal_absence_remains_true"}
+    },
+    {
+      "vector_id": "R0-T014-UNAUTHORIZED-PRINCIPAL",
+      "mutation": {"acl_case": "unauthorized", "unauthorized_principal": true},
+      "expected": {"outcome": "rule_count_and_unauthorized_principal_checks_fail"}
+    },
+    {
+      "vector_id": "R0-T015-INHERITED-DENY-OR-FLAG-MISMATCH",
+      "mutation": {"acl_case": "flags", "inherited_rule": true},
+      "expected": {"outcome": "overall_DACL_check_fail"}
+    },
+    {
+      "vector_id": "R0-T016-PROBE-GENERATED-ZERO-RETENTION",
+      "mutation": {"probe_case": "success"},
+      "expected": {"outcome": "two_hash_checks_pass_and_no_probe_content_retained"}
+    },
+    {
+      "vector_id": "R0-T017-PROBE-FAILURE-CLEANUP-BOUND",
+      "mutation": {"probe_case": "failure"},
+      "expected": {"outcome": "storage_blocked_no_retry_cleanup_scope_does_not_expand"}
+    },
+    {
+      "vector_id": "R0-T018-DEFENDER-ACTION-REQUESTED",
+      "mutation": {
+        "action_ids": [
+          "U3K-A01-UTC-CLOCK-START",
+          "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY",
+          "U3K-A03-AUTHORIZATION-RECORD",
+          "U3K-A04-F-DRIVE-INFO",
+          "U3K-A05-CANONICAL-PATH-AND-ABSENCE",
+          "U3K-A06-PROTECTED-DACL-CONSTRUCT",
+          "U3K-A07-SECURITY-AT-CREATE-ROOT",
+          "U3K-A08-NORMALIZED-DACL-VERIFY",
+          "U3K-A09-ATOMIC-CAPABILITY-PROBE",
+          "U3K-A10-DEFENDER-STATUS"
+        ]
+      },
+      "expected": {"outcome": "default_deny_before_machine_access"}
+    },
+    {
+      "vector_id": "R0-T019-RAW-DATA-IN-OUTPUT",
+      "mutation": {"forbidden_output_present": true},
+      "expected": {"outcome": "output_schema_reject_and_fail_closed"}
+    },
+    {
+      "vector_id": "R0-T020-OUTPUT-PATH-EXPANSION",
+      "mutation": {
+        "output_paths": [
+          "contracts/phase-3/p3-6-quarantine-storage-r2-authorization.json",
+          "contracts/phase-3/p3-6-quarantine-storage-r2-result.json",
+          "contracts/phase-3/p3-6-quarantine-storage-r2-evidence.json",
+          "unsealed-output.json"
+        ]
+      },
+      "expected": {"outcome": "default_deny_and_no_additional_write"}
+    }
+  ],
+  "handler_base_transcripts": {
+    "U3K-A01-UTC-CLOCK-START": {
+      "ok": true,
+      "read_count": 1,
+      "monotonic_seconds": 100.0
+    },
+    "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY": {
+      "ok": true,
+      "owner_statement_exact_match": true,
+      "authorization_window_current": true,
+      "attempt_unused": true,
+      "execution_package_hashes_match": true,
+      "source_hashes_match": true,
+      "runtime_binding_matches": true,
+      "target_action_limits_outputs_match": true
+    },
+    "U3K-A03-AUTHORIZATION-RECORD": {
+      "ok": true,
+      "schema_valid": true,
+      "size_valid": true,
+      "destination_absent": true,
+      "partial_absent": true,
+      "flushed_to_disk": true,
+      "nonreplacement_rename": true
+    },
+    "U3K-A04-F-DRIVE-INFO": {
+      "ok": true,
+      "properties_available": true,
+      "drive_ready": true,
+      "drive_type": "Fixed",
+      "filesystem": "NTFS",
+      "available_free_bytes": 53687091200,
+      "available_free_percent": 50.0
+    },
+    "U3K-A05-CANONICAL-PATH-AND-ABSENCE": {
+      "ok": true,
+      "attributes_available": true,
+      "exact_canonical_path": true,
+      "parent_reparse": false,
+      "candidate_reparse": false,
+      "candidate_absent": true
+    },
+    "U3K-A06-PROTECTED-DACL-CONSTRUCT": {
+      "ok": true,
+      "identity_available": true,
+      "identity_collision": false,
+      "descriptor_bounded": true,
+      "inheritance_protected": true,
+      "exact_three_allow_tuples": true,
+      "identity_not_persisted": true,
+      "account_translation_absent": true
+    },
+    "U3K-A07-SECURITY-AT-CREATE-ROOT": {
+      "ok": true,
+      "native_success": true,
+      "error_already_exists": false,
+      "required_API_used": true,
+      "security_attributes_nonnull": true,
+      "fallback_used": false
+    },
+    "U3K-A08-NORMALIZED-DACL-VERIFY": {
+      "ok": true,
+      "access_rules_protected": true,
+      "exact_rule_count_pass": true,
+      "current_process_principal_pass": true,
+      "current_process_Modify_Synchronize_rights_pass": true,
+      "current_process_excessive_or_unknown_rights_absent": true,
+      "LocalSystem_tuple_pass": true,
+      "Administrators_tuple_pass": true,
+      "inheritance_flags_pass": true,
+      "propagation_flags_pass": true,
+      "access_types_pass": true,
+      "inherited_rule_absent": true,
+      "deny_rule_absent": true,
+      "unauthorized_principal_absent": true,
+      "overall_DACL_pass": true
+    },
+    "U3K-A09-ATOMIC-CAPABILITY-PROBE": {
+      "ok": true,
+      "probe_paths_absent": true,
+      "exact_byte_count": true,
+      "write_through": true,
+      "flush_to_disk": true,
+      "first_hash_match": true,
+      "rename_write_through_only": true,
+      "second_hash_match": true,
+      "cleanup_complete": true,
+      "zero_retention": true,
+      "partial_created_by_attempt": false,
+      "verified_created_by_attempt": false
+    },
+    "U3K-A10-NORMALIZE-HASH-WRITE": {
+      "ok": true,
+      "schema_valid": true,
+      "size_valid": true,
+      "canonical_JSON": true,
+      "hashes_computed": true,
+      "flushed_to_disk": true,
+      "nonreplacement_rename": true,
+      "output_paths_exact": true
+    }
+  },
+  "handler_vectors": [
+    {"vector_id": "A01_V01_exact_single_UTC_start_read_succeeds", "kind": "action", "action_id": "U3K-A01-UTC-CLOCK-START", "mutation": {}, "expected": {"outcome": "passed", "reason_code": "ok"}},
+    {"vector_id": "A01_V02_clock_operation_failure_maps_to_clock_unavailable", "kind": "action", "action_id": "U3K-A01-UTC-CLOCK-START", "mutation": {"ok": false}, "expected": {"outcome": "blocked", "reason_code": "clock_unavailable"}},
+    {"vector_id": "A01_V03_second_start_clock_read_is_rejected", "kind": "action", "action_id": "U3K-A01-UTC-CLOCK-START", "mutation": {"read_count": 2}, "expected": {"outcome": "blocked", "reason_code": "clock_read_count_invalid"}},
+
+    {"vector_id": "A02_V01_all_exact_bindings_succeed", "kind": "action", "action_id": "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY", "mutation": {}, "expected": {"outcome": "passed", "reason_code": "ok"}},
+    {"vector_id": "A02_V02_package_digest_mismatch_denies_before_machine_access", "kind": "action", "action_id": "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY", "mutation": {"execution_package_hashes_match": false}, "expected": {"outcome": "blocked", "reason_code": "authority_binding_invalid"}},
+    {"vector_id": "A02_V03_core_file_hash_mismatch_denies_before_machine_access", "kind": "action", "action_id": "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY", "mutation": {"execution_package_hashes_match": false}, "expected": {"outcome": "blocked", "reason_code": "authority_binding_invalid"}},
+    {"vector_id": "A02_V04_owner_statement_mismatch_denies_before_machine_access", "kind": "action", "action_id": "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY", "mutation": {"owner_statement_exact_match": false}, "expected": {"outcome": "blocked", "reason_code": "authority_binding_invalid"}},
+    {"vector_id": "A02_V05_expired_authorization_denies_before_machine_access", "kind": "action", "action_id": "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY", "mutation": {"authorization_window_current": false}, "expected": {"outcome": "blocked", "reason_code": "authorization_window_invalid"}},
+    {"vector_id": "A02_V06_consumed_attempt_denies_before_machine_access", "kind": "action", "action_id": "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY", "mutation": {"attempt_unused": false}, "expected": {"outcome": "blocked", "reason_code": "attempt_already_consumed"}},
+    {"vector_id": "A02_V07_runner_or_module_hash_mismatch_denies_before_machine_access", "kind": "action", "action_id": "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY", "mutation": {"source_hashes_match": false}, "expected": {"outcome": "blocked", "reason_code": "source_or_runtime_binding_invalid"}},
+    {"vector_id": "A02_V08_runtime_binding_mismatch_denies_before_machine_access", "kind": "action", "action_id": "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY", "mutation": {"runtime_binding_matches": false}, "expected": {"outcome": "blocked", "reason_code": "source_or_runtime_binding_invalid"}},
+    {"vector_id": "A02_V09_action_order_limit_target_or_output_mutation_denies_before_machine_access", "kind": "action", "action_id": "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY", "mutation": {"target_action_limits_outputs_match": false}, "expected": {"outcome": "blocked", "reason_code": "authority_binding_invalid"}},
+
+    {"vector_id": "A03_V01_sanitized_CreateNew_flush_and_nonreplacement_rename_succeeds", "kind": "action", "action_id": "U3K-A03-AUTHORIZATION-RECORD", "mutation": {}, "expected": {"outcome": "passed", "reason_code": "ok"}},
+    {"vector_id": "A03_V02_schema_or_size_violation_aborts_before_machine_access", "kind": "action", "action_id": "U3K-A03-AUTHORIZATION-RECORD", "mutation": {"schema_valid": false, "size_valid": false}, "expected": {"outcome": "blocked", "reason_code": "authorization_record_invalid"}},
+    {"vector_id": "A03_V03_destination_or_partial_exists_aborts_without_overwrite", "kind": "action", "action_id": "U3K-A03-AUTHORIZATION-RECORD", "mutation": {"destination_absent": false}, "expected": {"outcome": "blocked", "reason_code": "authorization_record_exists"}},
+    {"vector_id": "A03_V04_write_flush_or_rename_failure_aborts_before_F_access", "kind": "action", "action_id": "U3K-A03-AUTHORIZATION-RECORD", "mutation": {"flushed_to_disk": false}, "expected": {"outcome": "blocked", "reason_code": "authorization_record_write_failed"}},
+
+    {"vector_id": "A04_V01_ready_fixed_NTFS_capacity_passes", "kind": "action", "action_id": "U3K-A04-F-DRIVE-INFO", "mutation": {}, "expected": {"outcome": "passed", "reason_code": "ok"}},
+    {"vector_id": "A04_V02_ready_fixed_ReFS_capacity_passes", "kind": "action", "action_id": "U3K-A04-F-DRIVE-INFO", "mutation": {"filesystem": "ReFS"}, "expected": {"outcome": "passed", "reason_code": "ok"}},
+    {"vector_id": "A04_V03_not_ready_or_property_race_fails_safely", "kind": "action", "action_id": "U3K-A04-F-DRIVE-INFO", "mutation": {"drive_ready": false}, "expected": {"outcome": "blocked", "reason_code": "drive_not_ready"}},
+    {"vector_id": "A04_V04_nonfixed_or_unapproved_filesystem_fails", "kind": "action", "action_id": "U3K-A04-F-DRIVE-INFO", "mutation": {"drive_type": "Network", "filesystem": "FAT32"}, "expected": {"outcome": "blocked", "reason_code": "drive_type_not_allowed"}},
+    {"vector_id": "A04_V05_capacity_or_allowlisted_property_failure_is_sanitized", "kind": "action", "action_id": "U3K-A04-F-DRIVE-INFO", "mutation": {"properties_available": false, "available_free_bytes": 0}, "expected": {"outcome": "blocked", "reason_code": "drive_property_unavailable"}},
+
+    {"vector_id": "A05_V01_exact_absent_candidate_and_nonreparse_parent_pass", "kind": "action", "action_id": "U3K-A05-CANONICAL-PATH-AND-ABSENCE", "mutation": {}, "expected": {"outcome": "passed", "reason_code": "ok"}},
+    {"vector_id": "A05_V02_existing_file_directory_or_reparse_candidate_fails_without_change", "kind": "action", "action_id": "U3K-A05-CANONICAL-PATH-AND-ABSENCE", "mutation": {"candidate_absent": false}, "expected": {"outcome": "blocked", "reason_code": "candidate_exists"}},
+    {"vector_id": "A05_V03_reparse_F_root_fails_without_following", "kind": "action", "action_id": "U3K-A05-CANONICAL-PATH-AND-ABSENCE", "mutation": {"parent_reparse": true}, "expected": {"outcome": "blocked", "reason_code": "candidate_or_parent_reparse"}},
+    {"vector_id": "A05_V04_case_folded_alias_or_alternate_path_fails", "kind": "action", "action_id": "U3K-A05-CANONICAL-PATH-AND-ABSENCE", "mutation": {"exact_canonical_path": false}, "expected": {"outcome": "blocked", "reason_code": "candidate_path_invalid"}},
+    {"vector_id": "A05_V05_equal_to_or_beneath_F_h_cam_fails", "kind": "action", "action_id": "U3K-A05-CANONICAL-PATH-AND-ABSENCE", "mutation": {"exact_canonical_path": false}, "expected": {"outcome": "blocked", "reason_code": "candidate_path_invalid"}},
+    {"vector_id": "A05_V06_unexpected_attribute_error_fails_without_treating_it_as_absence", "kind": "action", "action_id": "U3K-A05-CANONICAL-PATH-AND-ABSENCE", "mutation": {"attributes_available": false}, "expected": {"outcome": "blocked", "reason_code": "candidate_attribute_unavailable"}},
+
+    {"vector_id": "A06_V01_exact_three_tuple_protected_descriptor_passes", "kind": "action", "action_id": "U3K-A06-PROTECTED-DACL-CONSTRUCT", "mutation": {}, "expected": {"outcome": "passed", "reason_code": "ok"}},
+    {"vector_id": "A06_V02_null_current_identity_or_SID_fails", "kind": "action", "action_id": "U3K-A06-PROTECTED-DACL-CONSTRUCT", "mutation": {"identity_available": false}, "expected": {"outcome": "blocked", "reason_code": "identity_unavailable"}},
+    {"vector_id": "A06_V03_current_SID_collision_with_LocalSystem_or_Administrators_fails", "kind": "action", "action_id": "U3K-A06-PROTECTED-DACL-CONSTRUCT", "mutation": {"identity_collision": true}, "expected": {"outcome": "blocked", "reason_code": "identity_collision"}},
+    {"vector_id": "A06_V04_inheritance_protection_or_rule_construction_failure_fails", "kind": "action", "action_id": "U3K-A06-PROTECTED-DACL-CONSTRUCT", "mutation": {"inheritance_protected": false}, "expected": {"outcome": "blocked", "reason_code": "security_descriptor_invalid"}},
+    {"vector_id": "A06_V05_extra_deny_or_unknown_rights_input_fails", "kind": "action", "action_id": "U3K-A06-PROTECTED-DACL-CONSTRUCT", "mutation": {"exact_three_allow_tuples": false}, "expected": {"outcome": "blocked", "reason_code": "security_descriptor_invalid"}},
+    {"vector_id": "A06_V06_account_name_translation_or_identity_persistence_request_fails", "kind": "action", "action_id": "U3K-A06-PROTECTED-DACL-CONSTRUCT", "mutation": {"identity_not_persisted": false, "account_translation_absent": false}, "expected": {"outcome": "blocked", "reason_code": "security_descriptor_invalid"}},
+
+    {"vector_id": "A07_V01_exclusive_CreateDirectoryW_security_at_create_success_marks_attempt_owned", "kind": "action", "action_id": "U3K-A07-SECURITY-AT-CREATE-ROOT", "mutation": {}, "expected": {"outcome": "passed", "reason_code": "ok", "root_created_by_attempt": true}},
+    {"vector_id": "A07_V02_ERROR_ALREADY_EXISTS_or_race_fails_without_modification_or_cleanup", "kind": "action", "action_id": "U3K-A07-SECURITY-AT-CREATE-ROOT", "mutation": {"ok": false, "native_success": false, "error_already_exists": true}, "expected": {"outcome": "blocked", "reason_code": "root_preexisting_or_raced", "root_created_by_attempt": false}},
+    {"vector_id": "A07_V03_other_native_failure_is_sanitized_and_does_not_claim_attempt_ownership", "kind": "action", "action_id": "U3K-A07-SECURITY-AT-CREATE-ROOT", "mutation": {"ok": false, "native_success": false}, "expected": {"outcome": "blocked", "reason_code": "root_create_failed", "root_created_by_attempt": false}},
+    {"vector_id": "A07_V04_plain_create_managed_existing_return_or_post_create_ACL_fallback_is_rejected", "kind": "action", "action_id": "U3K-A07-SECURITY-AT-CREATE-ROOT", "mutation": {"required_API_used": false, "fallback_used": true}, "expected": {"outcome": "blocked", "reason_code": "root_creation_mechanism_invalid", "root_created_by_attempt": false}},
+
+    {"vector_id": "A08_V01_exact_protected_three_tuple_DACL_passes", "kind": "action", "action_id": "U3K-A08-NORMALIZED-DACL-VERIFY", "mutation": {}, "expected": {"outcome": "passed", "reason_code": "ok", "root_created_by_attempt": true}},
+    {"vector_id": "A08_V02_inherited_or_deny_rule_fails", "kind": "action", "action_id": "U3K-A08-NORMALIZED-DACL-VERIFY", "mutation": {"inherited_rule_absent": false, "deny_rule_absent": false, "overall_DACL_pass": false}, "expected": {"outcome": "blocked", "reason_code": "DACL_policy_failed", "root_created_by_attempt": true, "cleanup_required": true}},
+    {"vector_id": "A08_V03_extra_or_unauthorized_principal_fails_independently", "kind": "action", "action_id": "U3K-A08-NORMALIZED-DACL-VERIFY", "mutation": {"unauthorized_principal_absent": false, "overall_DACL_pass": false}, "expected": {"outcome": "blocked", "reason_code": "DACL_policy_failed", "root_created_by_attempt": true, "cleanup_required": true}},
+    {"vector_id": "A08_V04_current_process_excessive_unknown_or_missing_rights_fail", "kind": "action", "action_id": "U3K-A08-NORMALIZED-DACL-VERIFY", "mutation": {"current_process_Modify_Synchronize_rights_pass": false, "current_process_excessive_or_unknown_rights_absent": false, "overall_DACL_pass": false}, "expected": {"outcome": "blocked", "reason_code": "DACL_policy_failed", "root_created_by_attempt": true, "cleanup_required": true}},
+    {"vector_id": "A08_V05_LocalSystem_or_Administrators_rights_mismatch_fails", "kind": "action", "action_id": "U3K-A08-NORMALIZED-DACL-VERIFY", "mutation": {"LocalSystem_tuple_pass": false, "Administrators_tuple_pass": false, "overall_DACL_pass": false}, "expected": {"outcome": "blocked", "reason_code": "DACL_policy_failed", "root_created_by_attempt": true, "cleanup_required": true}},
+    {"vector_id": "A08_V06_inheritance_propagation_access_type_or_rule_count_mismatch_fails", "kind": "action", "action_id": "U3K-A08-NORMALIZED-DACL-VERIFY", "mutation": {"exact_rule_count_pass": false, "inheritance_flags_pass": false, "propagation_flags_pass": false, "access_types_pass": false, "overall_DACL_pass": false}, "expected": {"outcome": "blocked", "reason_code": "DACL_policy_failed", "root_created_by_attempt": true, "cleanup_required": true}},
+
+    {"vector_id": "A09_V01_exact_4096_byte_two_hash_write_through_rename_cleanup_passes", "kind": "action", "action_id": "U3K-A09-ATOMIC-CAPABILITY-PROBE", "mutation": {}, "expected": {"outcome": "passed", "reason_code": "ok", "root_created_by_attempt": true}},
+    {"vector_id": "A09_V02_preexisting_partial_or_verified_path_fails_without_overwrite", "kind": "action", "action_id": "U3K-A09-ATOMIC-CAPABILITY-PROBE", "mutation": {"probe_paths_absent": false}, "expected": {"outcome": "blocked", "reason_code": "probe_path_preexisting", "root_created_by_attempt": true, "cleanup_required": true}},
+    {"vector_id": "A09_V03_short_long_or_nondeterministic_probe_write_fails", "kind": "action", "action_id": "U3K-A09-ATOMIC-CAPABILITY-PROBE", "mutation": {"exact_byte_count": false}, "expected": {"outcome": "blocked", "reason_code": "probe_write_failed", "root_created_by_attempt": true, "cleanup_required": true}},
+    {"vector_id": "A09_V04_flush_true_failure_blocks_and_enters_bounded_cleanup", "kind": "action", "action_id": "U3K-A09-ATOMIC-CAPABILITY-PROBE", "mutation": {"flush_to_disk": false, "partial_created_by_attempt": true}, "expected": {"outcome": "blocked", "reason_code": "probe_write_failed", "root_created_by_attempt": true, "probe_partial_created_by_attempt": true, "cleanup_required": true}},
+    {"vector_id": "A09_V05_first_readback_hash_mismatch_blocks_before_rename", "kind": "action", "action_id": "U3K-A09-ATOMIC-CAPABILITY-PROBE", "mutation": {"first_hash_match": false, "partial_created_by_attempt": true}, "expected": {"outcome": "blocked", "reason_code": "probe_write_failed", "root_created_by_attempt": true, "probe_partial_created_by_attempt": true, "cleanup_required": true}},
+    {"vector_id": "A09_V06_cross_volume_replace_copy_allowed_or_non_write_through_rename_is_rejected", "kind": "action", "action_id": "U3K-A09-ATOMIC-CAPABILITY-PROBE", "mutation": {"rename_write_through_only": false, "partial_created_by_attempt": true}, "expected": {"outcome": "blocked", "reason_code": "probe_write_failed", "root_created_by_attempt": true, "probe_partial_created_by_attempt": true, "cleanup_required": true}},
+    {"vector_id": "A09_V07_second_readback_hash_mismatch_blocks_and_cleans_attempt_objects", "kind": "action", "action_id": "U3K-A09-ATOMIC-CAPABILITY-PROBE", "mutation": {"second_hash_match": false, "verified_created_by_attempt": true}, "expected": {"outcome": "blocked", "reason_code": "probe_write_failed", "root_created_by_attempt": true, "probe_verified_created_by_attempt": true, "cleanup_required": true}},
+    {"vector_id": "A09_V08_probe_or_empty_root_cleanup_failure_requires_manual_review_and_no_retry", "kind": "action", "action_id": "U3K-A09-ATOMIC-CAPABILITY-PROBE", "mutation": {"cleanup_complete": false, "zero_retention": false, "verified_created_by_attempt": true}, "expected": {"outcome": "manual_review_required", "reason_code": "probe_cleanup_failed", "root_created_by_attempt": true, "probe_verified_created_by_attempt": true, "cleanup_required": true, "manual_review_required": true}},
+
+    {"vector_id": "A10_V01_canonical_bounded_result_and_evidence_writes_succeed", "kind": "action", "action_id": "U3K-A10-NORMALIZE-HASH-WRITE", "mutation": {}, "expected": {"outcome": "passed", "reason_code": "ok", "root_created_by_attempt": true}},
+    {"vector_id": "A10_V02_unknown_field_raw_error_or_identifier_is_rejected", "kind": "action", "action_id": "U3K-A10-NORMALIZE-HASH-WRITE", "mutation": {"schema_valid": false}, "expected": {"outcome": "blocked", "reason_code": "output_schema_invalid", "root_created_by_attempt": true}},
+    {"vector_id": "A10_V03_output_path_or_destination_mutation_is_rejected", "kind": "action", "action_id": "U3K-A10-NORMALIZE-HASH-WRITE", "mutation": {"canonical_JSON": false}, "expected": {"outcome": "blocked", "reason_code": "output_schema_invalid", "root_created_by_attempt": true}},
+    {"vector_id": "A10_V04_oversize_or_noncanonical_output_is_rejected", "kind": "action", "action_id": "U3K-A10-NORMALIZE-HASH-WRITE", "mutation": {"size_valid": false, "canonical_JSON": false}, "expected": {"outcome": "blocked", "reason_code": "output_too_large", "root_created_by_attempt": true}},
+    {"vector_id": "A10_V05_write_flush_hash_or_rename_failure_preserves_no_additional_authority", "kind": "action", "action_id": "U3K-A10-NORMALIZE-HASH-WRITE", "mutation": {"flushed_to_disk": false, "hashes_computed": false}, "expected": {"outcome": "blocked", "reason_code": "output_write_failed", "root_created_by_attempt": true}},
+
+    {"vector_id": "X_V01_unknown_missing_duplicate_reordered_or_disabled_action_default_denies", "kind": "cross_cutting", "scenario": "invalid_envelope_action_plan", "expected": {"outcome": "blocked", "reason_code": "action_plan_invalid"}},
+    {"vector_id": "X_V02_state_transition_skip_repeat_or_backtrack_default_denies", "kind": "cross_cutting", "scenario": "out_of_order_transition", "expected": {"outcome": "blocked", "reason_code": "action_out_of_order"}},
+    {"vector_id": "X_V03_per_action_or_total_deadline_expiry_stops_future_actions", "kind": "cross_cutting", "scenario": "transaction_timeout", "expected": {"outcome": "blocked", "reason_code": "transaction_timeout"}},
+    {"vector_id": "X_V04_failure_cleanup_never_expands_beyond_attempt_created_exact_objects", "kind": "cross_cutting", "scenario": "bounded_cleanup_flags", "expected": {"outcome": "invariant_enforced", "reason_code": "bounded_cleanup"}},
+    {"vector_id": "X_V05_raw_exception_stack_stdout_stderr_identity_security_or_probe_content_never_persists", "kind": "cross_cutting", "scenario": "sanitized_projection", "expected": {"outcome": "invariant_enforced", "reason_code": "sanitized_projection"}},
+    {"vector_id": "X_V06_network_proxy_environment_registry_process_service_scanner_and_download_operations_are_absent", "kind": "cross_cutting", "scenario": "forbidden_surfaces_absent", "expected": {"outcome": "invariant_enforced", "reason_code": "forbidden_surfaces_absent"}},
+    {"vector_id": "X_V07_generated_harness_cannot_import_or_call_the_windows_adapter", "kind": "cross_cutting", "scenario": "adapter_not_imported", "expected": {"outcome": "invariant_enforced", "reason_code": "adapter_not_imported"}},
+    {"vector_id": "X_V08_every_terminal_state_keeps_retry_execution_profile_deployment_and_remote_git_authority_false", "kind": "cross_cutting", "scenario": "terminal_authority_false", "expected": {"outcome": "invariant_enforced", "reason_code": "terminal_authority_false"}}
+  ],
+  "future_execution_boundary": {
+    "PowerShell_parser_import_or_execution_authorized_now": false,
+    "runner_or_module_execution_authorized_now": false,
+    "windows_adapter_import_or_execution_authorized": false,
+    "runner_storage_mode_authorized": false,
+    "machine_storage_F_ACL_probe_cleanup_or_scanner_action_authorized": false,
+    "network_download_artifact_model_media_or_data_action_authorized": false,
+    "separate_U3M_implementation_acceptance_required": true,
+    "separate_U3N_runtime_binding_and_validation_authorization_required": true
+  }
+}

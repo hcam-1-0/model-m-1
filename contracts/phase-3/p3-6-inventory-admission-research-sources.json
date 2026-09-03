@@ -1,0 +1,90 @@
+{
+  "contract_format": "hcam.phase3.p3_6.inventory_admission_research_sources.v1",
+  "record_id": "P3.6-INVENTORY-ADMISSION-RESEARCH-SOURCES-R0",
+  "status": "complete_for_planning_gap_and_owner_options",
+  "accessed_on": "2026-08-30",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "evidence_kind": "read_only_exact_local_contract_revisions_and_official_primary_source_documentation",
+  "remote_git_actions": 0,
+  "artifact_downloads": 0,
+  "runtime_executions": 0,
+  "hardware_queries_or_tests": 0,
+  "exact_local_sources": [
+    {
+      "repository": "hcam-2-0/hcam-protos",
+      "revision": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+      "path": "schemas/platform/v1alpha1/node-capability-inventory.schema.json",
+      "sha256": "C9947BE12888C0A05B29DA0266E2359B107024AF07E536AE10BAC55457C5C7D3",
+      "role": "authoritative_experimental_shared_inventory_shape"
+    },
+    {
+      "repository": "hcam-2-0/hcam-protos",
+      "revision": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+      "path": "docs/node-capability-inventory.md",
+      "sha256": "09B8AD8D7B79C8848D3DB4AA6C087215D9BC7B62985494D23FADDE7361242F96",
+      "role": "inventory_freshness_redaction_and_consumer_semantics"
+    },
+    {
+      "repository": "hcam-2-0/hcam-protos",
+      "revision": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+      "path": "schemas/platform/v1alpha1/workload-placement.schema.json",
+      "sha256": "2E8D8E68CDBB1D588FC23C2BC06769614A4610CA012B139DDF2054508DE70D3D",
+      "role": "capacity_snapshot_and_trust_zone_digest_shape"
+    },
+    {
+      "repository": "hcam-2-0/hcam-protos",
+      "revision": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+      "path": "docs/workload-placement.md",
+      "sha256": "537CF7305CB57DEB3ED6EF942C8D1E2ECB6289739D6547DD2F351FF68ED5BD45",
+      "role": "admission_reservation_freshness_and_trust_boundary"
+    },
+    {
+      "repository": "hcam-2-0/hcam-deployment",
+      "revision": "71095fe89d2b711e4982ddc0130fcaedda8703e7",
+      "path": "profiles/v1alpha1/overlays/portable-cpu.json",
+      "sha256": "63F7B692AA1EA5A4B83C8FA12FBF74DF64962DA145AF585F64369E41A6E0F125",
+      "role": "portable_cpu_deployment_policy_boundary"
+    },
+    {
+      "repository": "hcam-2-0/h-cam-2.0",
+      "path": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r0.json",
+      "sha256": "0E702718390FB6C373F0FC189CB58D0E79BB7FE3B3EA39B5E5AFE0DE4D47CA1F",
+      "role": "accepted_historical_p3_6_inventory_compared_without_modification"
+    }
+  ],
+  "official_external_sources": [
+    {
+      "source_id": "NIST-SP-800-53-REV5-UPD1-CM8",
+      "publisher": "National Institute of Standards and Technology",
+      "title": "Security and Privacy Controls for Information Systems and Organizations",
+      "url": "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final",
+      "verified_facts": [
+        "CM-8 requires an accurate system-component inventory at an organization-defined level of granularity.",
+        "CM-8 leaves the review and update frequency to the organization, so an H-CAM freshness duration must be an explicit owner policy rather than an external compliance claim."
+      ]
+    },
+    {
+      "source_id": "NIST-SP-800-207",
+      "publisher": "National Institute of Standards and Technology",
+      "title": "Zero Trust Architecture",
+      "url": "https://csrc.nist.gov/pubs/sp/800/207/final",
+      "verified_facts": [
+        "Access decisions are made through policy decision and enforcement functions rather than implicit network-location trust.",
+        "Trust-zone membership must remain a policy input and cannot be inferred from a laptop, local backend, or inventory fact alone."
+      ]
+    }
+  ],
+  "research_conclusions": [
+    "the_phase_minus_1_inventory_contract_requires_observed_at_and_valid_until_and_consumers_fail_closed_outside_that_interval",
+    "the_shared_inventory_carries_provenance_trust_level_but_not_a_trust_zone_label",
+    "workload_placement_binds_an_opaque_trust_zone_digest_from_a_separate_policy_context",
+    "the_historical_p3_6_R0_record_is_not_structurally_interchangeable_with_the_shared_v1alpha1_inventory",
+    "a_twenty_four_hour_portable_lab_window_is_an_hcam_owner_choice_not_a_nist_requirement"
+  ],
+  "limitations": [
+    "no_current_machine_fact_was_recollected_or_revalidated",
+    "no_trust_zone_policy_snapshot_or_digest_was_created",
+    "no_freshness_duration_is_owner_accepted",
+    "no_profile_is_eligible_for_resolution_placement_or_execution"
+  ]
+}

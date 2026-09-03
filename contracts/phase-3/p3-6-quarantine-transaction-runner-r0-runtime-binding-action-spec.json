@@ -1,0 +1,254 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_transaction_runner_r0_runtime_binding_action_spec.v1",
+  "spec_id": "P36-QUARANTINE-TRANSACTION-RUNNER-R0-RUNTIME-BINDING-ACTION-SPEC-1.0.0",
+  "status": "proposed_owner_authorization_pending_no_attempt_performed",
+  "preparation_authority": "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE",
+  "future_authorization_decision": "D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH",
+  "accepted_implementation_binding": {
+    "acceptance_path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-acceptance.json",
+    "implementation_package": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-package.json",
+    "implementation_package_digest_sha256": "71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67",
+    "runner_source": "tools/phase36_quarantine_transaction_runner.ps1",
+    "runner_source_sha256": "C0020A4C53B59486CE8842302C918821F145F0228F4006C3D6B67BF594DB5B15",
+    "machine_action_handlers_implemented": false,
+    "runner_execution_authorized": false
+  },
+  "target": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "runtime_family": "PowerShell_7_on_Windows",
+    "exact_runtime_path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "exact_runner_source_repository_path": "tools/phase36_quarantine_transaction_runner.ps1",
+    "required_runtime_major_version": 7,
+    "maximum_runtime_file_bytes": 268435456,
+    "alternate_runtime_path_allowed": false,
+    "PATH_registry_package_manager_or_directory_discovery_allowed": false,
+    "remote_or_network_runtime_allowed": false
+  },
+  "transaction_bounds": {
+    "maximum_authorized_attempts": 1,
+    "authorization_use_window_seconds_after_owner_acceptance": 86400,
+    "binding_evidence_validity_seconds_after_success": 86400,
+    "per_action_timeout_seconds": 30,
+    "total_transaction_timeout_seconds": 120,
+    "maximum_runtime_file_bytes": 268435456,
+    "maximum_result_record_bytes": 16384,
+    "maximum_evidence_record_bytes": 32768,
+    "parallel_actions": false,
+    "network_access": false,
+    "automatic_retry": false,
+    "failed_attempt_requires_new_authorization": true,
+    "required_output_on_attempt": "sanitized_authorization_result_and_evidence_even_when_no_runtime_binding_is_issued"
+  },
+  "action_allowlist": [
+    {
+      "action_id": "U3I-RB-A01-UTC-CLOCK-START",
+      "purpose": "bind_the_single_read_only_attempt",
+      "exact_action": "read_DateTimeOffset_UtcNow_once_in_process_memory",
+      "persisted_projection": "attempt_started_at_UTC_only"
+    },
+    {
+      "action_id": "U3I-RB-A02-PACKAGE-AND-AUTHORITY-VERIFY",
+      "purpose": "verify_exact_authority_before_any_runtime_file_observation",
+      "exact_action": "verify_exact_owner_authorization_statement_package_digest_every_core_file_SHA_256_accepted_implementation_record_and_package_digest_runner_source_digest_one_attempt_state_and_24_hour_window_then_abort_before_U3I_RB_A03_on_any_mismatch",
+      "network_access": false,
+      "machine_runtime_observation": false
+    },
+    {
+      "action_id": "U3I-RB-A03-AUTHORIZATION-RECORD",
+      "purpose": "persist_exact_owner_authorization_before_runtime_file_observation",
+      "exact_action": "atomically_write_only_the_sanitized_authorization_record_bound_to_exact_owner_statement_package_digest_core_hashes_start_time_logical_node_and_one_attempt_nonce",
+      "future_output_path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-runtime-binding-authorization.json",
+      "contains_observed_machine_facts": false,
+      "failure_effect": "abort_before_runtime_file_observation"
+    },
+    {
+      "action_id": "U3I-RB-A04-EXACT-RUNTIME-PATH-CLASSIFY",
+      "purpose": "prove_the_target_is_the_exact_regular_nonreparse_local_runtime_file",
+      "exact_action": "canonicalize_only_the_literal_C_Program_Files_PowerShell_7_pwsh_exe_path_require_case_insensitive_equality_to_the_presealed_path_query_attributes_for_only_C_root_C_Program_Files_C_Program_Files_PowerShell_C_Program_Files_PowerShell_7_and_the_exact_file_require_every_component_nonreparse_and_require_the_target_exists_as_a_regular_online_nondevice_nondirectory_file",
+      "directory_enumeration": false,
+      "wildcards": false,
+      "UNC_or_device_path_allowed": false,
+      "symlink_junction_mountpoint_or_reparse_allowed": false,
+      "alternate_path_or_fallback_allowed": false,
+      "failure_effect": "record_runtime_binding_blocked_without_hash_or_trust_check"
+    },
+    {
+      "action_id": "U3I-RB-A05-BOUNDED-METADATA-AND-SHA256",
+      "purpose": "bind_exact_runtime_bytes_and_version_metadata_without_execution",
+      "exact_action": "read_FileInfo_Length_require_greater_than_zero_and_at_most_268435456_read_FileVersionInfo_FileVersion_ProductVersion_ProductName_require_nonempty_file_and_product_versions_and_major_version_7_open_only_the_exact_runtime_file_read_only_hash_all_bytes_with_SHA_256_then_recheck_length_and_file_identity_invariants_and_fail_on_change",
+      "executable_execution_allowed": false,
+      "file_write_allowed": false,
+      "maximum_bytes_read": 268435456,
+      "persisted_projection": [
+        "file_size_bytes",
+        "file_version",
+        "product_version",
+        "product_name_is_PowerShell",
+        "runtime_major_version_is_7",
+        "SHA_256"
+      ],
+      "forbidden_projection": [
+        "file_owner",
+        "ACL",
+        "alternate_data_streams",
+        "raw_version_resource",
+        "raw_exception"
+      ]
+    },
+    {
+      "action_id": "U3I-RB-A06-CACHE-ONLY-WHOLE-CHAIN-TRUST",
+      "purpose": "bind_a_bounded_offline_Authenticode_trust_result",
+      "exact_action": "call_WinVerifyTrust_for_only_the_exact_runtime_file_with_WTD_UI_NONE_WTD_REVOKE_WHOLECHAIN_WTD_CHOICE_FILE_WTD_STATEACTION_VERIFY_WTD_CACHE_ONLY_URL_RETRIEVAL_and_WTD_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT_capture_only_allowlisted_normalized_result_then_always_call_WTD_STATEACTION_CLOSE",
+      "network_retrieval_allowed": false,
+      "UI_allowed": false,
+      "certificate_or_chain_export_allowed": false,
+      "persisted_projection": [
+        "trust_api",
+        "cache_only",
+        "whole_chain_excluding_root",
+        "provider_state_closed",
+        "trusted",
+        "normalized_trust_reason_code"
+      ],
+      "uncached_revocation_or_chain_material": "record_bounded_unavailable_or_untrusted_without_network_retry",
+      "trust_pass_required_for_binding": true
+    },
+    {
+      "action_id": "U3I-RB-A07-RUNNER-SOURCE-BIND",
+      "purpose": "bind_the_already_accepted_runner_source_without_executing_it",
+      "exact_action": "resolve_only_the_repository_relative_tools_phase36_quarantine_transaction_runner_ps1_path_under_the_current_verified_repository_root_require_regular_nonreparse_file_compute_SHA_256_and_require_exact_C0020A4C53B59486CE8842302C918821F145F0228F4006C3D6B67BF594DB5B15",
+      "runner_source_execution_allowed": false,
+      "other_repository_file_access_allowed": false,
+      "absolute_personal_repository_path_persisted": false,
+      "persisted_projection": [
+        "repository_relative_runner_source_path",
+        "runner_source_SHA_256",
+        "runner_source_digest_match"
+      ]
+    },
+    {
+      "action_id": "U3I-RB-A08-NORMALIZE-HASH-WRITE",
+      "purpose": "write_only_bounded_sanitized_runtime_binding_result_and_evidence",
+      "exact_action": "normalize_allowlisted_values_compute_canonical_record_SHA_256_and_atomically_write_only_result_and_evidence_after_preserving_the_preobservation_authorization_record",
+      "future_filesystem_writes_allowed": [
+        "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-runtime-binding-result.json",
+        "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-runtime-binding-evidence.json"
+      ],
+      "other_repository_or_filesystem_writes_allowed": false
+    }
+  ],
+  "runtime_binding_pass_policy": {
+    "all_required": [
+      "exact_runtime_path_match",
+      "runtime_and_parent_components_nonreparse",
+      "runtime_is_regular_online_local_file",
+      "file_size_greater_than_zero_and_at_most_268435456",
+      "file_version_nonempty",
+      "product_version_nonempty",
+      "runtime_major_version_exactly_7",
+      "product_name_is_PowerShell",
+      "SHA_256_complete",
+      "file_identity_invariants_unchanged_during_observation",
+      "cache_only_whole_chain_excluding_root_trust_pass",
+      "provider_state_closed",
+      "runner_source_SHA_256_exact_match"
+    ],
+    "manual_override": false,
+    "alternate_path_or_runtime_fallback": false,
+    "partial_binding_accepted": false
+  },
+  "result_policy": {
+    "binding_state_values": [
+      "bound_until_observed_at_plus_86400_seconds",
+      "blocked",
+      "manual_review_required"
+    ],
+    "exact_runtime_values_may_be_used_only_by_a_later_sealed_U3K_package": true,
+    "runner_execution_state": "not_executed",
+    "storage_state": "not_queried",
+    "Defender_or_scanner_state": "not_in_scope_not_queried",
+    "artifact_acquisition_authorized": false,
+    "profile_activation_authorized": false
+  },
+  "sanitization": {
+    "allowed_observed_fields": [
+      "attempt_started_at",
+      "attempt_completed_at",
+      "logical_node_id",
+      "exact_declared_runtime_path",
+      "path_policy_booleans",
+      "file_size_bytes",
+      "file_version",
+      "product_version",
+      "product_name_is_PowerShell",
+      "runtime_major_version_is_7",
+      "runtime_SHA_256",
+      "trust_policy_booleans",
+      "normalized_trust_reason_code",
+      "repository_relative_runner_source_path",
+      "runner_source_SHA_256",
+      "binding_state",
+      "reason_code",
+      "valid_until"
+    ],
+    "forbidden": [
+      "hostname",
+      "user_or_account_name",
+      "SID",
+      "raw_ACL_SDDL_or_security_descriptor",
+      "environment_or_PATH_dump",
+      "registry_or_package_inventory",
+      "directory_listing",
+      "certificate_subject_issuer_serial_thumbprint_or_chain",
+      "raw_WinVerifyTrust_structures",
+      "MAC_or_IP_address",
+      "device_identifier",
+      "raw_exception_stack_stdout_or_stderr",
+      "personal_repository_path",
+      "secret_or_token"
+    ],
+    "reason_codes_allowlisted": true,
+    "raw_error_text_persisted": false
+  },
+  "failure_policy": {
+    "package_or_authorization_failure": "abort_before_runtime_file_observation",
+    "path_or_file_classification_failure": "record_sanitized_blocked_result_without_hash_trust_or_fallback_discovery",
+    "size_version_or_hash_failure": "record_sanitized_blocked_result_without_execution_or_retry",
+    "trust_failure_or_cache_unavailable": "record_sanitized_blocked_or_manual_review_result_without_network_retry",
+    "source_digest_failure": "record_sanitized_blocked_result_and_do_not_prepare_U3K",
+    "output_schema_or_write_failure": "fail_closed_without_expanding_write_scope",
+    "automatic_retry": false
+  },
+  "continuing_non_authorization": [
+    "runtime_or_runner_execution",
+    "machine_action_handler_implementation_or_invocation",
+    "PATH_environment_registry_package_manager_WMI_or_directory_enumeration",
+    "alternate_runtime_path_discovery_or_fallback",
+    "network_certificate_AIA_CRL_OCSP_or_timestamp_retrieval",
+    "any_F_B_or_other_storage_volume_path_directory_ACL_probe_or_cleanup_access",
+    "Defender_ModelScan_or_other_scanner_query_hash_trust_execution_scan_remediation_update_configuration_install_or_import",
+    "dependency_model_dataset_driver_or_container_install_or_download",
+    "artifact_acquisition_checkpoint_load_unpickle_import_conversion_or_export",
+    "inference_calibration_validation_benchmark_or_hardware_test",
+    "profile_resolution_admission_activation_or_promotion",
+    "container_Docker_Kubernetes_or_deployment_action",
+    "camera_stream_media_private_or_Government_data_access",
+    "remote_git"
+  ],
+  "current_effect": {
+    "implementation_acceptance_record_exists": true,
+    "runtime_binding_proposal_preparation_authorized": true,
+    "owner_runtime_binding_authorization_pending": true,
+    "runtime_path_version_size_hash_or_trust_observation_authorized": false,
+    "runner_execution_authorized": false,
+    "final_U3K_package_preparation_authorized": false,
+    "storage_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "Defender_or_scanner_action_authorized": false,
+    "artifact_or_dependency_acquisition_authorized": false,
+    "runtime_or_model_execution_authorized": false,
+    "implementation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  }
+}

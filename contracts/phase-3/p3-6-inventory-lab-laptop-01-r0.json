@@ -1,0 +1,140 @@
+{
+  "authorization_decision": "D-P3.6-INVENTORY-R0-AUTH",
+  "collected_at_utc": "2026-08-28T21:10:51Z",
+  "collection_mode": "sanitized_read_only_local_inventory",
+  "contract_format": "hcam.phase3.p3_6.sanitized_node_inventory.v1",
+  "fixed_storage": [
+    {
+      "free_bytes": 3514494976,
+      "free_gib": 3.27,
+      "free_percent": 1.74,
+      "logical_volume": "C:",
+      "size_bytes": 202366775296,
+      "size_gib": 188.47
+    },
+    {
+      "free_bytes": 6742413312,
+      "free_gib": 6.28,
+      "free_percent": 6.28,
+      "logical_volume": "E:",
+      "size_bytes": 107320700928,
+      "size_gib": 99.95
+    },
+    {
+      "free_bytes": 4389752832,
+      "free_gib": 4.09,
+      "free_percent": 2.17,
+      "logical_volume": "F:",
+      "size_bytes": 202365726720,
+      "size_gib": 188.47
+    }
+  ],
+  "graphics": [
+    {
+      "adapter_name": "Intel(R) UHD Graphics 620",
+      "driver_date": "2025-08-28",
+      "driver_version": "31.0.101.2137",
+      "reported_adapter_ram_bytes": 1073741824,
+      "reported_adapter_ram_interpretation": "integrated_shared_memory_metadata_not_dedicated_vram_or_capacity_evidence",
+      "video_processor": "Intel(R) UHD Graphics Family"
+    }
+  ],
+  "installed_runtime_inventory": {
+    "docker_cli": "29.7.2 build a7dcaa6",
+    "ffmpeg": "7.1.1 full_build",
+    "ffprobe": "7.1.1 full_build",
+    "powershell": "7.6.5",
+    "python_default": {
+      "distribution_version": "3.14.6",
+      "queried_package_metadata": {
+        "numpy": "not_present",
+        "onnx": "not_present",
+        "onnxruntime": "not_present",
+        "opencv-python": "not_present",
+        "opencv-python-headless": "not_present",
+        "openvino": "not_present",
+        "tensorrt": "not_present",
+        "torch": "not_present",
+        "torchvision": "not_present"
+      },
+      "scope_note": "Metadata was queried only from the default Python distribution; project-managed or external runtimes were not searched by path or initialized."
+    },
+    "uv": "0.12.3"
+  },
+  "memory": {
+    "modules": [
+      {
+        "capacity_bytes": 4294967296,
+        "configured_clock_mhz": 2400
+      },
+      {
+        "capacity_bytes": 4294967296,
+        "configured_clock_mhz": 2400
+      }
+    ],
+    "total_bytes": 8589934592,
+    "total_gib": 8
+  },
+  "network_used": false,
+  "node_id": "LAB-LAPTOP-01",
+  "operating_system": {
+    "architecture": "64-bit",
+    "build": "19045",
+    "caption": "Microsoft Windows 10 Pro",
+    "version": "10.0.19045"
+  },
+  "processor": {
+    "address_width_bits": 64,
+    "manufacturer": "GenuineIntel",
+    "maximum_clock_mhz_reported": 1896,
+    "model": "Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz",
+    "physical_cores": 4,
+    "logical_processors": 8
+  },
+  "profile_assessment": {
+    "capacity_target": "not_established",
+    "local_accelerated": "not_established_intel_openvino_cpu_or_integrated_gpu_feasibility_requires_separate_authority_and_evidence",
+    "portable_cpu": "inventory_complete_manifest_and_workload_bounds_pending_owner_approval"
+  },
+  "prohibited_claims": [
+    "no_acceleration_or_provider_support_claim",
+    "no_inference_latency_throughput_quality_or_capacity_claim",
+    "no_c1_c10_c50_claim",
+    "no_gpu_memory_or_decoder_capacity_claim",
+    "no_container_kubernetes_or_deployment_readiness_claim",
+    "no_production_procurement_or_statewide_claim"
+  ],
+  "record_id": "P36-INVENTORY-LAB-LAPTOP-01-R0",
+  "resource_risks": [
+    "eight_gib_total_memory_requires_conservative_concurrency_and_bounded_queues",
+    "all_observed_fixed_volumes_have_less_than_seven_percent_free_space",
+    "artifact_container_and_evidence_storage_requires_a_separate_space_plan_before_execution",
+    "default_python_distribution_has_no_observed_ai_runtime_packages",
+    "intel_integrated_graphics_runtime_and_decoder_support_are_unvalidated"
+  ],
+  "sanitization": {
+    "excluded": [
+      "hostname",
+      "username",
+      "serial_numbers",
+      "asset_tags",
+      "mac_addresses",
+      "ip_addresses",
+      "network_configuration",
+      "personal_paths",
+      "raw_device_identifiers"
+    ],
+    "logical_node_identifier_only": true
+  },
+  "status": "inventory_observed_no_execution_claim",
+  "validation_boundary": {
+    "containers_or_kubernetes_used": false,
+    "downloads_or_installs_performed": false,
+    "hardware_performance_stress_or_thermal_tests_performed": false,
+    "implementation_authorized": false,
+    "media_data_or_camera_accessed": false,
+    "model_or_inference_executed": false,
+    "remote_git_used": false,
+    "runtime_execution_authorized": false
+  }
+}

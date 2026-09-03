@@ -1,0 +1,227 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_failure_analysis_r2_decisions.v1",
+  "packet_id": "P36-QUARANTINE-FAILURE-ANALYSIS-R2-DECISIONS",
+  "status": "owner_selections_pending_non_executable",
+  "prepared_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "recommended_selection": "A/A/A/A/A/A",
+  "decisions": [
+    {
+      "decision_id": "D-P3.6-U3H-001",
+      "topic": "current_process_allow_rights_normalization",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Exact Modify plus automatic Synchronize",
+          "effect": "Require the current-process allow ACE to contain exactly FileSystemRights.Modify plus the automatically added Synchronize bit, with no ChangePermissions, TakeOwnership, FullControl, generic-all, or unknown bits.",
+          "tradeoff": "Matches documented .NET allow-mask behavior while preserving least privilege; a future attempt must still prove the normalized mask in memory."
+        },
+        {
+          "option": "B",
+          "label": "Raw Modify equality",
+          "effect": "Continue requiring the returned enum to equal Modify without normalization.",
+          "tradeoff": "Preserves U3G logic and is expected to fail when .NET adds Synchronize to an allow ACE."
+        },
+        {
+          "option": "C",
+          "label": "Required rights subset",
+          "effect": "Pass when all Modify bits are present regardless of additional rights.",
+          "tradeoff": "More portable but can silently accept ChangePermissions, TakeOwnership, or other excessive rights."
+        },
+        {
+          "option": "D",
+          "label": "Current process FullControl",
+          "effect": "Change the intended current-process rule from Modify to FullControl.",
+          "tradeoff": "Avoids normalization ambiguity by granting unnecessary privilege and weakens the accepted policy."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3H-002",
+      "topic": "DACL_tuple_and_broad_principal_verification",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Independent normalized tuple checks",
+          "effect": "Verify exactly three explicit allow tuples by in-memory SID, normalized rights, inheritance, propagation, and access type; calculate unauthorized-principal absence independently from rights matching and persist only bounded booleans.",
+          "tradeoff": "Prevents a rights-normalization failure from being mislabeled as a broad principal while retaining strict principal and rule-count controls."
+        },
+        {
+          "option": "B",
+          "label": "Raw SDDL equality",
+          "effect": "Build expected SDDL and compare the entire returned descriptor as text.",
+          "tradeoff": "Strict but vulnerable to harmless canonical ACE ordering or representation differences and handles identity data more broadly."
+        },
+        {
+          "option": "C",
+          "label": "Effective access only",
+          "effect": "Check whether the current process can perform the probe without validating exact ACE structure.",
+          "tradeoff": "Proves operability but cannot prove absence of inherited, broad, deny, or excessive explicit rules."
+        },
+        {
+          "option": "D",
+          "label": "Manual ACL review",
+          "effect": "Persist no automated tuple decision and require a person to inspect the ACL.",
+          "tradeoff": "Weakens repeatability and conflicts with the sanitized automated evidence model."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3H-003",
+      "topic": "Defender_status_collection_transport",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Native Windows PowerShell scalar projection",
+          "effect": "In a future separately authorized attempt, invoke a bounded local Windows PowerShell 5.1 child process with NoProfile and NonInteractive, run Get-MpComputerStatus there, validate required property presence and scalar types there, and return only allowlisted JSON scalars.",
+          "tradeoff": "Eliminates PowerShell 7 compatibility-proxy ambiguity but requires the future package to bind the exact Windows PowerShell executable, command, timeout, output cap, and sanitized parsing contract."
+        },
+        {
+          "option": "B",
+          "label": "PowerShell 7 compatibility session",
+          "effect": "Continue using implicit Windows PowerShell compatibility remoting and project properties after deserialization.",
+          "tradeoff": "Smaller change but preserves the transport variable associated with the incomplete U3G projection."
+        },
+        {
+          "option": "C",
+          "label": "CIM-only query",
+          "effect": "Replace Get-MpComputerStatus with a CIM or WMI source selected in a later package.",
+          "tradeoff": "Could avoid the Defender module proxy but no exact namespace, class, property, or support contract has been researched and sealed."
+        },
+        {
+          "option": "D",
+          "label": "Defer status metadata",
+          "effect": "Do not query Defender status in the next attempt.",
+          "tradeoff": "Avoids the transport issue but leaves Defender binding unresolved."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3H-004",
+      "topic": "Defender_candidate_fallback_when_product_version_is_absent",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Native version first, bounded latest-directory fallback",
+          "effect": "Use native AMProductVersion when valid; otherwise inspect at most 64 direct regular non-reparse platform directories, parse version basenames, select one highest version, require one exact regular non-reparse MpCmdRun child, require directory/FileVersionInfo agreement, bind SHA-256, and require cache-only WinVerifyTrust.",
+          "tradeoff": "Remains fail closed while following Microsoft's documented latest-platform location; a fallback candidate is never trusted by ordering alone."
+        },
+        {
+          "option": "B",
+          "label": "AMProductVersion only",
+          "effect": "Fail immediately whenever native Get-MpComputerStatus lacks a product version.",
+          "tradeoff": "Simplest provenance chain but can repeat U3G without learning anything about an otherwise present platform binary."
+        },
+        {
+          "option": "C",
+          "label": "Latest directory without trust gate",
+          "effect": "Select the highest directory and accept its binary after a hash only.",
+          "tradeoff": "Confuses recency with authenticity and weakens the accepted trust policy."
+        },
+        {
+          "option": "D",
+          "label": "Program Files fallback first",
+          "effect": "Prefer the operating-system fallback binary rather than the current ProgramData platform.",
+          "tradeoff": "May bind an older fallback rather than the active updated platform."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3H-005",
+      "topic": "future_attempt_decomposition",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Storage attempt then separate Defender attempt",
+          "effect": "Prepare two independently digest-bound proposals: first a storage-only ACL/probe attempt, then a Defender-only metadata/hash/trust attempt after storage evidence is accepted. Each requires separate exact owner authorization.",
+          "tradeoff": "Smallest failure domains and clearer evidence, at the cost of two explicit authorization cycles."
+        },
+        {
+          "option": "B",
+          "label": "Combined storage and Defender attempt",
+          "effect": "Retry both independent blockers under one authorization as U3G did.",
+          "tradeoff": "Fewer owner decisions but one failure consumes authority for both paths and complicates diagnosis."
+        },
+        {
+          "option": "C",
+          "label": "Defender attempt first",
+          "effect": "Bind Defender before retrying storage.",
+          "tradeoff": "Avoids F changes initially but does not advance the quarantine root needed for later acquisition."
+        },
+        {
+          "option": "D",
+          "label": "Stop local binding work",
+          "effect": "Do not prepare another laptop attempt.",
+          "tradeoff": "Preserves current evidence but leaves storage and scanner-chain gates blocked."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3H-006",
+      "topic": "future_transaction_runner_reviewability",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Content-hashed reviewable runner proposal",
+          "effect": "Require any future attempt package to include a human-reviewable, content-hashed transaction-runner source proposal, exact interpreter/runtime binding, generated-only contract tests, and default-deny action dispatch before separate implementation and execution authorization.",
+          "tradeoff": "Improves reproducibility and auditability; selecting it authorizes only preparation of the proposal, not implementation or execution."
+        },
+        {
+          "option": "B",
+          "label": "Ephemeral in-memory loader",
+          "effect": "Continue constructing the one-shot transaction logic only in memory at execution time.",
+          "tradeoff": "Minimizes persisted tooling but is harder to review, reproduce, test, and bind before authorization."
+        },
+        {
+          "option": "C",
+          "label": "Manual command checklist",
+          "effect": "Replace the transaction runner with operator-entered commands and screenshots or notes.",
+          "tradeoff": "Simple but weakens deterministic timeouts, cleanup, sanitization, and exact action evidence."
+        },
+        {
+          "option": "D",
+          "label": "Abstract action specification only",
+          "effect": "Keep only prose and JSON action contracts with no proposed reviewable runner source.",
+          "tradeoff": "Preserves planning boundaries but leaves another gap between owner-reviewed intent and actual execution mechanics."
+        }
+      ]
+    }
+  ],
+  "effect_if_recommended_AAAAAA_is_later_accepted": {
+    "current_process_allow_mask_policy": "exact_Modify_plus_automatic_Synchronize_only",
+    "DACL_verification_policy": "independent_normalized_three_tuple_and_unauthorized_principal_checks",
+    "Defender_status_transport_policy": "native_local_Windows_PowerShell_5_1_scalar_projection",
+    "Defender_candidate_policy": "native_product_version_then_bounded_latest_directory_with_version_hash_and_cache_only_trust",
+    "attempt_decomposition_policy": "storage_first_then_separate_Defender_attempt",
+    "transaction_runner_policy": "content_hashed_reviewable_source_proposal_before_separate_implementation_and_execution_authority",
+    "immediate_attempt_authority": false,
+    "immediate_F_or_ACL_authority": false,
+    "immediate_Defender_or_scanner_authority": false,
+    "immediate_transaction_runner_implementation_authority": false,
+    "immediate_install_download_or_artifact_authority": false,
+    "immediate_runtime_or_model_authority": false
+  },
+  "owner_selection_may_be_inferred_from_continue_prior_U3G_authority_or_any_other_decision": false,
+  "another_attempt_authorized": false,
+  "F_or_ACL_action_authorized": false,
+  "Defender_query_hash_or_trust_action_authorized": false,
+  "scanner_query_install_or_execution_authorized": false,
+  "transaction_runner_implementation_authorized": false,
+  "dependency_or_artifact_acquisition_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "profile_activation_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

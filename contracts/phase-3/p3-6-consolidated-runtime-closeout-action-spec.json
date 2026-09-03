@@ -1,0 +1,255 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_action_spec.v1",
+  "action_spec_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-ACTION-SPEC",
+  "decision_id": "D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH",
+  "status": "sealed_non_effective_actions_only_owner_authorization_pending",
+  "prepared_on": "2026-09-02",
+  "logical_node_id": "LAB-LAPTOP-01",
+  "build_bindings": {
+    "consolidated_build_package": "contracts/phase-3/p3-6-consolidated-build-package.json",
+    "consolidated_build_package_sha256": "A006B6A1D7AA59F8A67BC8AD24B280D546397F921AF0111E366ACF38DD21A766",
+    "consolidated_build_evidence": "contracts/phase-3/p3-6-consolidated-build-evidence.json",
+    "consolidated_build_evidence_sha256": "64A30AE68274277C2C0639C8934508BD1C3F5109798706A9BBE4F12438274ECA",
+    "U4B_implementation_package": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-implementation-package.json",
+    "U4B_implementation_package_sha256": "3DCF9C4CB0CD184BEC9E144C99CC7C25E9F3425268F69C29161CAF6F34FA8932"
+  },
+  "attempt_policy": {
+    "authorization_window_seconds": 86400,
+    "maximum_total_runtime_attempts": 3,
+    "automatic_retry": false,
+    "parallel_attempts": false,
+    "retry_requires_same_action_spec_source_and_package_digests": true,
+    "retry_requires_new_attempt_index_in_same_owner_authorization": true,
+    "allowlisted_transient_retry_reasons": [
+      "runtime_process_start_transient",
+      "runtime_process_timeout_transient",
+      "sanitized_output_write_transient"
+    ],
+    "non_retryable_reasons": [
+      "authorization_invalid",
+      "scope_or_path_mismatch",
+      "source_or_package_hash_mismatch",
+      "runtime_hash_or_trust_failure",
+      "fixed_parent_set_invalid",
+      "generated_validation_deterministic_failure",
+      "U3K_precondition_or_policy_failure",
+      "U3K_attempt_consumed",
+      "identity_changed",
+      "output_contract_invalid"
+    ],
+    "U3K_storage_attempt_maximum": 1,
+    "retry_after_U3K_machine_or_storage_action_begins": false,
+    "failure_effect": "stop_closed_write_only_bounded_sanitized_result_and_backlog"
+  },
+  "exact_runtime_candidate": {
+    "path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "required_family": "PowerShell_7_on_Windows",
+    "required_major_version": 7,
+    "expected_preparation_time_sha256": "362A356CE7F0940EC74F73A8FC2C990A2CC24A38A11C90BBD8ECA947110AD139",
+    "maximum_file_bytes": 134217728,
+    "required_type": "local_regular_nonreparse_file",
+    "required_fixed_parent_components": [
+      "C:\\Program Files",
+      "C:\\Program Files\\PowerShell",
+      "C:\\Program Files\\PowerShell\\7"
+    ],
+    "fixed_parent_validation": "exactly_three_ordered_typed_records_indexes_zero_one_two_all_valid_literal_true",
+    "trust_policy": "cache_only_no_UI_whole_chain_excluding_root_without_trust_retrieval",
+    "alternate_runtime_parent_module_or_hardware_discovery": false,
+    "PATH_PSModulePath_registry_WMI_package_or_directory_inventory": false,
+    "network_or_trust_retrieval": false
+  },
+  "exact_source_bindings": [
+    {
+      "path": "tools/phase36_quarantine_runtime_binding_outer_attempt_controller_r0.ps1",
+      "sha256": "0E539126536CEF9F490EE164C5ECEC2FED36649C163FAAA8F32193B2DB744B99",
+      "role": "authoritative_outer_attempt_policy_controller"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-contract.json",
+      "sha256": "B0D03E356B3939817CA21AA2DFC85B4897D3E89405DE27FFE492D1C549B767C1",
+      "role": "outer_controller_wire_and_stage_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-vectors.json",
+      "sha256": "EE25BD99942F0CB68E157439ADEA230D3E549FBAC1743AC783775DDA58AA7B13",
+      "role": "416_generated_only_outer_controller_cases"
+    },
+    {
+      "path": "tools/phase36_quarantine_generated_validation.ps1",
+      "sha256": "830D88F8915B084DEF1089927FF785C9C0E7BDB6F0755B5315EE85E9DA8A8B8A",
+      "role": "accepted_machine_handler_generated_validation_harness"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-powershell-validation-r0-vectors.json",
+      "sha256": "5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C",
+      "role": "20_runner_and_64_handler_generated_cases"
+    },
+    {
+      "path": "tools/phase36_quarantine_transaction_runner.ps1",
+      "sha256": "22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A",
+      "role": "accepted_exact_U3K_transaction_runner"
+    },
+    {
+      "path": "tools/phase36_quarantine_machine_handlers.psm1",
+      "sha256": "41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721",
+      "role": "accepted_pure_machine_handler_policy_layer"
+    },
+    {
+      "path": "tools/phase36_quarantine_windows_storage_adapter.psm1",
+      "sha256": "232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9",
+      "role": "accepted_authoritative_Windows_storage_adapter"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-package.json",
+      "sha256": "79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7",
+      "role": "accepted_U3L_machine_handler_implementation_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-acceptance.json",
+      "sha256": "06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631",
+      "role": "exact_owner_U3L_source_acceptance"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-storage-r2-action-spec.json",
+      "sha256": "1825C65DFEEEF02EA12AF3D506385657870DCB631D2CDB157DB0F9C919C2DE2A",
+      "role": "accepted_U3K_A01_through_A10_storage_policy"
+    }
+  ],
+  "ordered_action_sequence": [
+    {
+      "sequence": 1,
+      "action_id": "CA-RC-A01-PACKAGE-AUTHORITY-PREFLIGHT",
+      "effect": "verify_exact_owner_statement_package_digest_build_bindings_source_hashes_unused_attempt_index_window_node_and_output_absence_before_observation"
+    },
+    {
+      "sequence": 2,
+      "action_id": "CA-RC-A02-AUTHORIZATION-RECORD",
+      "effect": "atomically_write_one_bounded_sanitized_authorization_record_before_runtime_or_machine_observation"
+    },
+    {
+      "sequence": 3,
+      "action_id": "CA-RC-A03-RUNTIME-PARENT-AND-FILE-BINDING",
+      "effect": "classify_exact_runtime_and_exact_three_fixed_parents_bind_size_version_sha256_and_cache_only_trust"
+    },
+    {
+      "sequence": 4,
+      "action_id": "CA-RC-A04-SOURCE-PREFLIGHT",
+      "effect": "verify_every_exact_source_and accepted_package_binding_before_any_PowerShell_process"
+    },
+    {
+      "sequence": 5,
+      "action_id": "CA-RC-A05-OUTER-CONTROLLER-GENERATED-VALIDATION",
+      "effect": "invoke_one_bounded_noninteractive_runtime_process_with_an_action_spec_bound_in_memory_driver_dot_source_only_the_exact_outer_controller_and_execute_exactly_416_generated_only_policy_cases"
+    },
+    {
+      "sequence": 6,
+      "action_id": "CA-RC-A06-HANDLER-GENERATED-VALIDATION",
+      "effect": "invoke_one_bounded_noninteractive Aggregate_validation_process_for_exactly_20_runner_and_64_pure_handler_generated_cases_without_Storage_mode_or_Windows_adapter_execution"
+    },
+    {
+      "sequence": 7,
+      "action_id": "CA-RC-A07-POSTVALIDATION-BINDING",
+      "effect": "reverify_runtime_fixed_parents_and_all_source_package_and_vector identities"
+    },
+    {
+      "sequence": 8,
+      "action_id": "CA-RC-A08-U3K-PREFLIGHT",
+      "effect": "require_all_generated_validation_and_binding gates_pass_then verify_exact_U3K_A01_through_A10_policy_logical_node_exact_absent_F_root_and_single_storage_attempt"
+    },
+    {
+      "sequence": 9,
+      "action_id": "CA-RC-A09-U3K-STORAGE-ATTEMPT",
+      "effect": "execute_exactly_one_storage_only_U3K_A01_through_A10_transaction_for_F_HCAM_Quarantine_with_4096_byte_generated_probe_and_no_retry"
+    },
+    {
+      "sequence": 10,
+      "action_id": "CA-RC-A10-RESULT-EVIDENCE-CLOSEOUT",
+      "effect": "write_bounded_sanitized_results_reverify_identities_and_only_on_total_success_synchronize_Phase_3_ledgers_mark_complete_and_create_one_local_commit_without_push"
+    }
+  ],
+  "generated_validation_bounds": {
+    "maximum_processes_per_attempt": 2,
+    "outer_controller_cases": 416,
+    "runner_contract_cases": 20,
+    "pure_handler_cases": 64,
+    "total_generated_cases": 500,
+    "per_process_timeout_seconds": 120,
+    "maximum_stdout_bytes_per_process": 16384,
+    "maximum_stderr_bytes_per_process": 0,
+    "maximum_result_bytes_per_process": 32768,
+    "PowerShell_arguments": [
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive"
+    ],
+    "UseShellExecute": false,
+    "CreateNoWindow": true,
+    "environment_proxy_or_module_path_inheritance": false,
+    "raw_process_material_retained": false
+  },
+  "U3K_storage_binding": {
+    "exact_candidate_root": "F:\\HCAM-Quarantine",
+    "excluded_project_root": "F:\\h cam",
+    "prohibited_volume": "B:",
+    "required_initial_candidate_state": "absent",
+    "maximum_storage_attempts": 1,
+    "maximum_probe_bytes": 4096,
+    "automatic_retry": false,
+    "existing_root_effect": "fail_closed_without_change",
+    "other_path_or_volume_access": false,
+    "Defender_or_scanner_action": false
+  },
+  "exact_future_outputs": [
+    "contracts/phase-3/p3-6-consolidated-runtime-closeout-authorization.json",
+    "contracts/phase-3/p3-6-consolidated-runtime-closeout-result.json",
+    "contracts/phase-3/p3-6-consolidated-runtime-closeout-evidence.json",
+    "contracts/phase-3/p3-6-consolidated-runtime-closeout-acceptance.json",
+    "contracts/phase-3/p3-6-quarantine-storage-r2-authorization.json",
+    "contracts/phase-3/p3-6-quarantine-storage-r2-result.json",
+    "contracts/phase-3/p3-6-quarantine-storage-r2-evidence.json"
+  ],
+  "successful_closeout_sync_paths": [
+    "contracts/phase-3/README.md",
+    "contracts/phase-3/p3-6-entry-gates.json",
+    "contracts/phase-3/p3-6-capability-profile-policy.json",
+    "contracts/phase-3/p3-6-unblock-plan.json",
+    "docs/phase-3/README.md",
+    "docs/phase-3/acceptance-checklist.md",
+    "docs/phase-3/decision-register.md",
+    "docs/phase-3/implementation-backlog.md",
+    "docs/phase-3/p3-6-capability-profiles.md",
+    "docs/phase-3/p3-6-plan.md",
+    "docs/phase-3/p3-6-planning-acceptances.md",
+    "docs/phase-3/p3-6-unblock-plan.md"
+  ],
+  "success_contract": {
+    "all_500_generated_cases_pass": true,
+    "runtime_parent_source_and_package_identity_stable": true,
+    "U3K_storage_state": "ready_until_observed_at_plus_3600_seconds",
+    "probe_retained_bytes": 0,
+    "raw_process_or_machine_material_retained_bytes": 0,
+    "Phase_3_status": "complete",
+    "local_closeout_commit_count": 1,
+    "push_or_remote_Git_count": 0
+  },
+  "continuing_non_authorization": [
+    "no_action_before_exact_digest_bound_owner_authorization",
+    "no_alternate_runtime_source_checkout_module_hardware_path_or_volume_discovery",
+    "no_network_trust_retrieval_install_update_or_download",
+    "no_Defender_ModelScan_or_other_scanner_action",
+    "no_artifact_model_dataset_load_inference_camera_media_private_or_Government_data_access",
+    "no_container_Kubernetes_profile_activation_or_deployment",
+    "no_push_pull_fetch_PR_merge_or_other_remote_Git",
+    "no_retry_after_nontransient_failure_or_after_U3K_begins"
+  ],
+  "current_effect": {
+    "action_spec_prepared": true,
+    "owner_runtime_closeout_authorization_pending": true,
+    "attempts_authorized": 0,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_hardware_machine_storage_F_or_ACL_action_authorized": false,
+    "commit_authorized": false,
+    "push_or_remote_Git_authorized": false
+  }
+}

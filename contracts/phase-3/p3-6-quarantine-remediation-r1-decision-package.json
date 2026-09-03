@@ -1,0 +1,61 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_remediation_r1_decision_package.v1",
+  "package_id": "P36-QUARANTINE-REMEDIATION-R1-DECISION-PACKAGE",
+  "status": "sealed_non_effective_owner_selections_pending",
+  "sealed_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "recommended_selection": "A/A/A/A/A/A",
+  "core_file_count": 4,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-remediation-r1-research-sources.json",
+      "sha256": "2118873869E8E905DF477AAA87EEAD3BF71C6634BAF8A1A71CF0CBEC292EF82A",
+      "role": "primary_sources_consumed_U3E_evidence_and_research_inferences"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-remediation-r1-decision-packet.json",
+      "sha256": "0C1A5CB7841956149FC0527F9A4AA9D898FE8C447A5E6B7A4AB1EA246D6B58E0",
+      "role": "six_non_executable_owner_decisions_with_A_through_D_options"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-remediation-r1-proposal.json",
+      "sha256": "B022BEF309EDBBBDCC25EA4A127FBD26725C8591712D63A52E2E22B937B9357A",
+      "role": "machine_readable_recommended_sequence_and_current_non_authority"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-remediation-r1-proposal.md",
+      "sha256": "4EA4FFBCE3CAEBAFD10615D54A0C1F7218A54B352B7D204BD60671DC37CF3154",
+      "role": "human_owner_decision_document"
+    }
+  ],
+  "consumed_U3E": {
+    "authorization": "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-authorization.json",
+    "result": "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-result.json",
+    "evidence": "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-evidence.json",
+    "evidence_sha256": "2FB06243003FF4C4E48C7E7BEF67C2B79C4BCA65826E1B09769AF688AE536376",
+    "attempt_consumed": true,
+    "retry_authorized": false
+  },
+  "decision_ids": [
+    "D-P3.6-U3F-001",
+    "D-P3.6-U3F-002",
+    "D-P3.6-U3F-003",
+    "D-P3.6-U3F-004",
+    "D-P3.6-U3F-005",
+    "D-P3.6-U3F-006"
+  ],
+  "effect_of_owner_selections": "authorize_only_preparation_of_a_new_digest_bound_one_attempt_action_and_authorization_package",
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_package_digest_and_is_not_self_embedded",
+  "current_effect": {
+    "owner_selections_pending": true,
+    "another_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "scanner_query_install_or_execution_authorized": false,
+    "dependency_or_artifact_acquisition_authorized": false,
+    "runtime_or_model_execution_authorized": false,
+    "implementation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  },
+  "owner_selection_may_be_inferred_from_continue_or_prior_authorization": false
+}

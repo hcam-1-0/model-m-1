@@ -1,0 +1,297 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_runtime_binding_r3_action_spec.v1",
+  "spec_id": "P36-QUARANTINE-GENERATED-VALIDATION-RUNTIME-BINDING-R3-ACTION-SPEC-1.0.0",
+  "status": "sealed_non_executable_action_spec_owner_authorization_pending",
+  "prepared_on": "2026-09-01",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r2-implementation-acceptance.json",
+    "acceptance_sha256": "32BA42A51029920AE163866A923547CD16054D6C41ECD3C8EC5549B78FB3ED2E",
+    "accepted_implementation_package_sha256": "2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF",
+    "effect": "prepare_one_separate_non_effective_U3R_R3_authorization_package_only"
+  },
+  "prior_attempt_context": {
+    "decision_id": "D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH",
+    "authorization_package_sha256": "2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3",
+    "result_sha256": "44450DF4D5A199DA34E5343AE043E138B8E046EF4E6FE6EAD6836AC96F7085F4",
+    "evidence_sha256": "634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE",
+    "attempt_consumed": true,
+    "retry_authority_reusable": false,
+    "sanitized_failure_reason": "result_contract_invalid",
+    "R2_bootstrap_remediation_completed_and_accepted": true
+  },
+  "logical_node_id": "LAB-LAPTOP-01",
+  "maximum_attempts": 1,
+  "authorization_window_seconds": 86400,
+  "failed_attempt_consumes_authorization": true,
+  "automatic_retry": false,
+  "parallel_processes": false,
+  "exact_runtime_candidate": {
+    "path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "PSHome": "C:\\Program Files\\PowerShell\\7",
+    "family": "PowerShell_7_on_Windows",
+    "required_major_version": 7,
+    "maximum_file_bytes": 268435456,
+    "alternate_discovery": false,
+    "PATH_registry_WMI_package_directory_or_hardware_inventory": false
+  },
+  "exact_Utility_manifest_candidate": {
+    "path": "C:\\Program Files\\PowerShell\\7\\Modules\\Microsoft.PowerShell.Utility\\Microsoft.PowerShell.Utility.psd1",
+    "required_module_name": "Microsoft.PowerShell.Utility",
+    "maximum_manifest_bytes": 131072,
+    "required_parent_depth_from_PSHome": 3,
+    "all_components_must_be_present_local_canonical_and_nonreparse": true,
+    "manifest_must_be_regular_nonreparse": true,
+    "alternate_module_name_PSModulePath_registry_or_directory_search": false
+  },
+  "Utility_manifest_static_analysis": {
+    "parser": "System.Management.Automation.Language.Parser.ParseFile",
+    "parser_scope": "exact_Utility_manifest_only",
+    "execution_or_semantic_evaluation": false,
+    "required_top_level_shape": "single_literal_hashtable",
+    "allowed_closure_fields": [
+      "RootModule",
+      "NestedModules",
+      "RequiredAssemblies",
+      "ScriptsToProcess",
+      "TypesToProcess",
+      "FormatsToProcess",
+      "FileList"
+    ],
+    "allowed_value_shapes": [
+      "null",
+      "constant_string",
+      "array_of_constant_strings"
+    ],
+    "commands_scriptblocks_interpolation_environment_expansion_wildcards_or_expressions_allowed": false,
+    "ScriptsToProcess_must_be_empty": true,
+    "all_resolved_paths_must_remain_under_exact_PSHome": true,
+    "absolute_or_URI_references_allowed": false,
+    "parse_errors_allowed": 0
+  },
+  "Utility_closure_bounds": {
+    "maximum_declared_regular_files": 64,
+    "maximum_resolution_depth": 4,
+    "maximum_individual_file_bytes": 67108864,
+    "maximum_total_file_bytes": 134217728,
+    "directories_or_files_with_reparse_points_allowed": false,
+    "duplicate_canonical_paths_allowed": false,
+    "missing_declared_files_allowed": false,
+    "closure_hash_algorithm": "SHA_256",
+    "load_bearing_code_extensions": [
+      ".dll",
+      ".exe",
+      ".ps1",
+      ".psm1"
+    ],
+    "load_bearing_code_requires_cache_only_no_UI_whole_chain_excluding_root_trust": true,
+    "trust_retrieval_allowed": false,
+    "non_code_data_files_require_hash_containment_and_stability_only": true,
+    "preflight_and_postflight_hash_match_required": true,
+    "closure_manifest_retention": "sanitized_relative_paths_sizes_and_hashes_only",
+    "raw_manifest_text_or_parser_tokens_retained": false
+  },
+  "exact_accepted_inputs": [
+    {
+      "path": "tools/phase36_quarantine_generated_validation.ps1",
+      "sha256": "830D88F8915B084DEF1089927FF785C9C0E7BDB6F0755B5315EE85E9DA8A8B8A"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-powershell-validation-r0-vectors.json",
+      "sha256": "5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C"
+    },
+    {
+      "path": "tools/phase36_quarantine_transaction_runner.ps1",
+      "sha256": "22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A"
+    },
+    {
+      "path": "tools/phase36_quarantine_machine_handlers.psm1",
+      "sha256": "41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721"
+    },
+    {
+      "path": "tools/phase36_quarantine_windows_storage_adapter.psm1",
+      "sha256": "232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9"
+    }
+  ],
+  "exact_action_sequence": [
+    {
+      "action_id": "U3R-A01-PACKAGE-AUTHORITY-PREFLIGHT",
+      "scope": "verify_exact_package_digest_core_hashes_owner_statement_window_and_unused_attempt_before_observation",
+      "machine_observation": false,
+      "PowerShell_parser_or_execution": false
+    },
+    {
+      "action_id": "U3R-A02-AUTHORIZATION-RECORD",
+      "scope": "write_one_bounded_sanitized_nonreplacement_authorization_record_before_runtime_or_manifest_observation",
+      "machine_observation": false,
+      "PowerShell_parser_or_execution": false
+    },
+    {
+      "action_id": "U3R-A03-RUNTIME-PATH-CLASSIFY",
+      "scope": "classify_only_exact_runtime_path_exact_PSHome_and_fixed_parent_components_as_local_regular_and_nonreparse",
+      "machine_observation": true,
+      "PowerShell_parser_or_execution": false
+    },
+    {
+      "action_id": "U3R-A04-RUNTIME-BIND",
+      "scope": "read_bounded_versions_hash_exact_runtime_and_perform_cache_only_no_UI_whole_chain_excluding_root_WinVerifyTrust",
+      "machine_observation": true,
+      "PowerShell_parser_or_execution": false
+    },
+    {
+      "action_id": "U3R-A05-UTILITY-MANIFEST-CLASSIFY",
+      "scope": "classify_only_exact_Utility_manifest_and_fixed_PSHome_relative_parent_components_with_no_search_or_enumeration",
+      "machine_observation": true,
+      "PowerShell_parser_or_execution": false
+    },
+    {
+      "action_id": "U3R-A06-UTILITY-CLOSURE-BIND",
+      "scope": "parse_only_the_exact_manifest_as_a_literal_hashtable_resolve_only_allowlisted_closure_fields_under_exact_PSHome_hash_at_most_sixty_four_bounded_nonreparse_regular_files_and_cache_only_trust_check_each_load_bearing_code_file",
+      "machine_observation": true,
+      "PowerShell_parser_or_execution": "Parser_ParseFile_only_no_module_import_or_script_execution"
+    },
+    {
+      "action_id": "U3R-A07-SOURCE-BINDINGS-PREFLIGHT",
+      "scope": "verify_exact_five_accepted_input_hashes_before_validation_execution",
+      "machine_observation": false,
+      "PowerShell_parser_or_execution": false
+    },
+    {
+      "action_id": "U3R-A08-GENERATED-VALIDATION",
+      "scope": "invoke_exact_runtime_once_with_NoLogo_NoProfile_NonInteractive_and_exact_R2_harness_Aggregate_mode_expected_harness_and_vector_hashes",
+      "machine_observation": false,
+      "PowerShell_parser_or_execution": true,
+      "runner_mode": "Contract_only",
+      "pure_handler_import": "exact_path_local_scope_exact_four_exports_NoClobber",
+      "Utility_import": "exact_manifest_path_local_scope_exact_seven_cmdlets_NoClobber_with_provenance_checks",
+      "windows_adapter_role": "Parser_ParseFile_only_never_import_or_execute"
+    },
+    {
+      "action_id": "U3R-A09-SANITIZED-RESULT-CLASSIFICATION",
+      "scope": "accept_only_bounded_success_schema_or_allowlisted_controller_or_harness_reason_codes_without_raw_output_exception_fixture_identity_manifest_or_security_material",
+      "machine_observation": false,
+      "PowerShell_parser_or_execution": false
+    },
+    {
+      "action_id": "U3R-A10-POSTEXECUTION-BINDING",
+      "scope": "reverify_runtime_Utility_manifest_declared_closure_and_source_identity_after_the_attempt",
+      "machine_observation": true,
+      "PowerShell_parser_or_execution": false
+    },
+    {
+      "action_id": "U3R-A11-SANITIZED-EVIDENCE",
+      "scope": "write_only_bounded_sanitized_result_and_evidence_records_then_close_all_transient_parser_and_trust_state",
+      "machine_observation": false,
+      "PowerShell_parser_or_execution": false
+    }
+  ],
+  "exact_runtime_arguments": [
+    "-NoLogo",
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "tools/phase36_quarantine_generated_validation.ps1",
+    "-Mode",
+    "Aggregate",
+    "-ExpectedHarnessSha256",
+    "830D88F8915B084DEF1089927FF785C9C0E7BDB6F0755B5315EE85E9DA8A8B8A",
+    "-ExpectedVectorManifestSha256",
+    "5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C"
+  ],
+  "validation_expectations": {
+    "Utility_manifest_parser_file_count": 1,
+    "harness_parser_file_count": 4,
+    "total_parser_error_count": 0,
+    "contract_vectors_required_and_passed": 20,
+    "pure_handler_vectors_required_and_passed": 64,
+    "total_generated_vectors_required_and_passed": 84,
+    "exact_runtime_Aggregate_invocation_count": 1,
+    "runner_Storage_invocation_count": 0,
+    "windows_adapter_import_or_execution_count": 0,
+    "machine_storage_F_B_ACL_probe_cleanup_or_scanner_action_count": 0,
+    "network_action_count": 0,
+    "raw_fixture_process_output_exception_identity_manifest_or_security_material_retained": false
+  },
+  "sanitized_failure_contract": {
+    "controller_reason_codes": [
+      "authorization_invalid",
+      "runtime_binding_failed",
+      "utility_manifest_binding_failed",
+      "utility_closure_binding_failed",
+      "source_binding_failed",
+      "process_failed",
+      "result_contract_invalid"
+    ],
+    "harness_reason_codes": [
+      "binding_failed",
+      "manifest_failed",
+      "parser_failed",
+      "contract_failed",
+      "handler_failed",
+      "result_serialization_failed"
+    ],
+    "raw_stdout_stderr_exception_message_type_stack_tokens_manifest_or_payload_persisted": false,
+    "unknown_or_malformed_failure_output": "fail_closed_as_result_contract_invalid",
+    "failure_consumes_attempt": true
+  },
+  "process_and_resource_bounds": {
+    "total_attempt_timeout_seconds": 360,
+    "Utility_manifest_binding_timeout_seconds": 30,
+    "harness_parser_layer_timeout_seconds": 30,
+    "contract_vector_timeout_seconds_each": 10,
+    "pure_handler_layer_timeout_seconds": 60,
+    "maximum_stdout_bytes": 65536,
+    "maximum_stderr_bytes": 16384,
+    "maximum_authorization_record_bytes": 32768,
+    "maximum_result_record_bytes": 65536,
+    "maximum_evidence_record_bytes": 131072,
+    "UseShellExecute": false,
+    "RedirectStandardOutput": true,
+    "RedirectStandardError": true,
+    "RedirectStandardInput_and_close": true,
+    "CreateNoWindow": true,
+    "interactive_input": false,
+    "kill_process_tree_on_timeout": true,
+    "raw_stdout_or_stderr_persisted": false
+  },
+  "exact_future_outputs": [
+    "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-authorization.json",
+    "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-result.json",
+    "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r3-evidence.json"
+  ],
+  "success_effect": {
+    "sanitized_U3R_evidence_may_be_sealed": true,
+    "separate_U3R_evidence_acceptance_required": true,
+    "binding_validity_seconds": 86400,
+    "new_U3K_package_preparation_authorized": false,
+    "machine_or_storage_action_authorized": false
+  },
+  "failure_effect": {
+    "attempt_consumed": true,
+    "automatic_or_manual_retry_authorized": false,
+    "new_attempt_requires_new_analysis_package_and_exact_owner_authorization": true,
+    "U3K_requestable": false
+  },
+  "hard_prohibitions": [
+    "any_runtime_manifest_or_machine_observation_before_exact_digest_bound_U3R_authorization",
+    "more_than_one_Aggregate_harness_invocation_or_any_automatic_retry",
+    "manifest_semantic_evaluation_command_execution_or_module_import_during_closure_binding",
+    "manifest_or_closure_paths_outside_exact_PSHome_or_any_reparse_point",
+    "runner_Storage_mode_or_StorageRequestJson",
+    "windows_adapter_import_or_execution",
+    "machine_storage_F_B_ACL_identity_probe_cleanup_Defender_or_scanner_action",
+    "alternate_runtime_or_module_PATH_PSModulePath_registry_WMI_package_directory_or_hardware_inventory",
+    "network_proxy_trust_retrieval_download_install_update_or_acquisition",
+    "artifact_dependency_model_dataset_driver_or_container_action",
+    "camera_stream_media_private_or_Government_data_access",
+    "model_load_inference_benchmark_or_hardware_test",
+    "profile_activation_scheduler_container_Kubernetes_deployment_or_remote_Git"
+  ],
+  "current_effect": {
+    "action_spec_prepared": true,
+    "owner_U3R_authorization_pending": true,
+    "attempts_authorized": 0,
+    "runtime_manifest_observation_or_PowerShell_parser_import_or_execution_authorized": false,
+    "machine_storage_or_deployment_authorized": false
+  }
+}

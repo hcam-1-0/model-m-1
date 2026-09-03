@@ -1,0 +1,117 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3v_h1_r1_diagnostic_source_implementation_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3V-H1-R1-DIAGNOSTIC-SOURCE-IMPLEMENTATION-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH",
+  "status": "non_effective_owner_source_implementation_authorization_pending",
+  "prepared_on": "2026-09-02",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3u-remediation-planning-acceptance.json",
+    "acceptance_record_sha256": "64C1CDAC72E15988A86434AD85981C59A94AC885DE8D1927A025D13DA2165A03",
+    "accepted_planning_package_sha256": "C58B9291E06396374DE92308F2CC52CDB51824BFFDFD1958E4D655C75A894CCD",
+    "selected_options": "A/A/A/A",
+    "effect": "prepare_this_non_effective_additive_H1_R1_source_implementation_authorization_proposal_only"
+  },
+  "implementation_request": {
+    "additive_versioned_diagnostic_contract": true,
+    "additive_PowerShell_H1_R1_diagnostic_harness_source": true,
+    "additive_machine_disabled_Python_reference_classifier": true,
+    "minimum_generated_vectors": 128,
+    "one_generated_static_differential_test_module": true,
+    "nonobservational_evidence_package_and_review": true,
+    "canonical_ledgers_documentation_and_line_ending_sync": true,
+    "one_local_checkpoint_commit_after_clean_static_validation": true,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "runtime_or_machine_observation": false,
+    "remote_Git": false
+  },
+  "exact_future_implementation_paths": [
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-contract.json",
+    "tools/phase36_quarantine_runtime_controller_u3v_h1_r1_diagnostic.ps1",
+    "tools/phase36_quarantine_runtime_controller_u3v_h1_r1_diagnostic_reference.py",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-vectors.json",
+    "tests/test_phase36_quarantine_runtime_controller_u3v_h1_r1_diagnostic_static.py",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-implementation-evidence.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-implementation-package.json",
+    "docs/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-evidence-review.md"
+  ],
+  "exact_compatibility_transition_path": {
+    "path": "tests/test_phase36_quarantine_runtime_controller_u3u_remediation_planning.py",
+    "permitted_change": "replace_only_future_path_absence_and_pending_source_implementation_gate_assertions_with_transition_aware_presence_and_owner_acceptance_pending_assertions",
+    "historical_digest_attempt_failure_analysis_decision_and_zero_authority_assertions_must_remain": true
+  },
+  "permitted_generated_validation_if_exactly_authorized": {
+    "Python_generated_fixture_classifier_and_static_source_tests": true,
+    "Python_branch_coverage_for_new_machine_disabled_reference": true,
+    "canonical_JSON_hash_Ruff_line_ending_scope_and_diff_checks": true,
+    "PowerShell_parser_import_dot_source_or_execution": false,
+    "filesystem_runtime_registry_environment_network_native_API_or_subprocess_access_by_reference_classifier": false,
+    "runtime_manifest_hardware_machine_storage_or_network_observation": false
+  },
+  "required_diagnostic_contract": {
+    "contract_version": "1.0.0",
+    "request_mode": "Policy",
+    "allowlisted_terminal_reason_codes": [
+      "source_binding_failed",
+      "controller_top_level_shape_invalid",
+      "controller_contract_identity_invalid",
+      "controller_terminal_state_invalid",
+      "controller_reason_family_invalid",
+      "controller_stage_projection_invalid",
+      "controller_action_counts_invalid",
+      "controller_retention_projection_invalid",
+      "controller_gate_effect_invalid",
+      "controller_projection_valid",
+      "diagnostic_internal_contract_invalid"
+    ],
+    "output_is_one_fixed_bounded_sanitized_JSON_projection": true,
+    "candidate_values_type_names_keys_raw_projection_exception_stdout_stderr_or_environment_retained": false,
+    "machine_action_authority": false,
+    "Python_machine_fallback": false,
+    "retry_authority": false,
+    "U3K_authority": false
+  },
+  "required_source_and_evidence_invariants": {
+    "historical_H1_harness_controller_contract_vectors_sources_attempt_records_failure_analysis_and_U3U_package_remain_byte_exact": true,
+    "new_H1_R1_surface_is_additive_and_versioned": true,
+    "PowerShell_source_embeds_one_canonical_contract_projection_for_static_differential_comparison": true,
+    "Python_reference_is_machine_disabled_and_has_no_filesystem_runtime_registry_environment_network_native_API_or_subprocess_surface": true,
+    "minimum_generated_vectors": 128,
+    "minimum_Python_reference_branch_coverage_percent": 95,
+    "vectors_cover_every_allowlisted_reason_output_bound_redaction_rule_and_fail_closed_transition": true,
+    "no_external_request_result_fixture_model_media_or_Government_data": true,
+    "all_runtime_machine_retry_U3K_deployment_and_remote_Git_gates_remain_closed": true
+  },
+  "explicitly_not_authorized": [
+    "creation_or_modification_of_any_path_outside_the_exact_future_paths_compatibility_transition_canonical_ledgers_docs_and_line_ending_records",
+    "modification_of_the_accepted_H1_controller_controller_contract_vectors_Python_policy_oracle_or_consumed_U3T_records",
+    "PowerShell_parsing_import_dot_sourcing_or_execution",
+    "Python_machine_access_filesystem_runtime_registry_environment_network_native_API_subprocess_or_fallback",
+    "runtime_path_metadata_hash_trust_identity_manifest_or_hardware_observation",
+    "machine_storage_F_B_ACL_probe_cleanup_Defender_or_scanner_action",
+    "network_download_install_update_artifact_model_or_data_access",
+    "camera_media_private_or_Government_data",
+    "container_Kubernetes_profile_activation_deployment_another_attempt_U3K_or_remote_Git"
+  ],
+  "future_owner_authorization_statement_template": "D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only implementation of the additive U3V H1 R1 diagnostic-harness package against digest <U3V_H1_R1_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact eight future implementation paths, the one exact compatibility-transition test, canonical ledgers, documentation, line-ending records, and one local checkpoint commit with no push. It must preserve byte-exact the accepted historical H1 harness, controller contract, vectors, PowerShell controller, Python policy oracle, consumed U3T R1 records, failure analysis, U3U decision packet, planning package, and acceptance. It must define only the eleven allowlisted sanitized diagnostic outcomes, retain no candidate values, type names, keys, raw projection, exception, stdout, stderr, environment, identity, or security material, include at least 128 generated-only vectors, and achieve at least 95 percent branch coverage for the new machine-disabled Python reference classifier. Python may execute generated fixture, classifier, canonical projection, source-text, and static tests only, with no filesystem runtime, registry, environment, network, native API, subprocess, machine-controller, or fallback access. PowerShell must not be parsed, imported, dot-sourced, or executed. This does not authorize runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, Defender, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, another attempt, U3K, or remote Git. Seal the source and generated/static evidence for separate exact owner acceptance before preparing any runtime diagnostic package.",
+  "sequence_after_exact_authorization": [
+    "record_exact_digest_bound_U3V_source_implementation_authorization",
+    "implement_only_the_exact_eight_future_paths_transition_test_authorized_ledgers_docs_and_LF_records",
+    "run_only_generated_Python_reference_classifier_source_text_and_static_validation",
+    "seal_exact_source_vector_test_and_nonobservational_evidence_hashes",
+    "create_at_most_one_local_checkpoint_commit_without_push",
+    "obtain_separate_exact_owner_U3V_source_implementation_acceptance",
+    "prepare_no_runtime_diagnostic_retry_or_U3K_package_before_source_acceptance"
+  ],
+  "current_effect": {
+    "proposal_prepared": true,
+    "owner_U3V_source_implementation_authorization_pending": true,
+    "source_contract_harness_reference_vector_test_or_evidence_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "another_attempt_or_U3K_authorized": false,
+    "deployment_or_remote_Git_authorized": false
+  },
+  "authorization_may_be_inferred_from_U3U_acceptance_continue_silence_recommended_options_or_proposal_preparation": false
+}

@@ -1,0 +1,103 @@
+{
+  "approval": {
+    "decided_at": "2026-08-24T12:00:00Z",
+    "owner_id": "mayank-admin",
+    "reason": "Authorize this generated-only annotation specification under the bounded D-P3.1-001 implementation scope",
+    "record_id": "D-P3.1-001",
+    "status": "owner_approved"
+  },
+  "attributes": [
+    {
+      "allowed_values": [],
+      "name": "source-generated",
+      "required": true,
+      "value_type": "boolean"
+    },
+    {
+      "allowed_values": [
+        "full",
+        "partial",
+        "heavy"
+      ],
+      "name": "visibility",
+      "required": false,
+      "value_type": "enum"
+    },
+    {
+      "allowed_values": [],
+      "name": "event-expected",
+      "required": false,
+      "value_type": "boolean"
+    }
+  ],
+  "contract_type": "hcam.analytics.annotation-specification.v1",
+  "created_at": "2026-08-24T13:00:00Z",
+  "export_format": "hcam.analytics.generated-annotation.v1",
+  "import_format": "hcam.analytics.generated-annotation.v1",
+  "quality_policy": {
+    "adjudication_required": false,
+    "automated_checks": [
+      "class-taxonomy-membership",
+      "geometry-bounds",
+      "sequence-order",
+      "track-id-uniqueness",
+      "required-attributes",
+      "unknown-attributes",
+      "synthetic-plate-fields"
+    ],
+    "calibration_evidence_required": true,
+    "duplicate_annotation_basis_points": 0,
+    "proposed_error_rate_ceiling": 0.0,
+    "qa_sample_basis_points": 10000
+  },
+  "rules": {
+    "coordinate_system": "normalized_top_left",
+    "geometry_types": [
+      "bounding_box",
+      "line",
+      "polygon",
+      "text_region"
+    ],
+    "ignore_rules": [
+      "Ignore generated objects whose declared visibility is zero",
+      "Do not convert uncertain generated labels into accepted truth"
+    ],
+    "normalization_rules": [
+      "Serialize keys in canonical sorted order",
+      "Use normalized top-left coordinates in the closed unit interval",
+      "Preserve Unicode text and compare normalized generated strings exactly",
+      "Reject unknown fields and non-finite numeric values"
+    ],
+    "occlusion_values": [
+      "none",
+      "partial",
+      "heavy",
+      "unknown"
+    ],
+    "synthetic_plate_rules": [
+      "Only deterministic generated strings are transcribed",
+      "Preserve declared Latin Devanagari or Gujarati script",
+      "Record alternatives in ranked order and preserve abstention",
+      "Do not add identity owner registry or watchlist attributes"
+    ],
+    "track_lifecycle_rules": [
+      "Track identifiers are unique within one generated sequence epoch",
+      "Reconnect and discontinuity create an explicit new tracker epoch",
+      "A track ends after the fixture-declared terminal observation"
+    ],
+    "truncated_rule": "Mark truncated when generated geometry touches a declared frame boundary",
+    "uncertain_rule": "Mark ambiguous generated truth uncertain and exclude it from promotion evidence"
+  },
+  "semantic_version": "1.0.0",
+  "specification_digest": "sha256:c7b9e79d77d7ec9101dad0262ff8dcdbf9f298c51186618d29037ebcbbbe800b",
+  "specification_id": "p31-generated-annotation-specification-v1",
+  "status": "approved",
+  "tasks": [
+    "detection",
+    "tracking",
+    "geometry",
+    "synthetic_plate"
+  ],
+  "taxonomy_version": "hcam.analytics.taxonomy.v1",
+  "version_history": []
+}

@@ -1,0 +1,255 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_scanner_binding_r0_action_spec.v1",
+  "spec_id": "P36-QUARANTINE-SCANNER-BINDING-R0-ACTION-SPEC-1.0.0",
+  "status": "proposed_owner_authorization_pending_no_attempt_performed",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "future_authorization_decision": "D-P3.6-U3E-BINDING-R0-AUTH",
+  "accepted_policy_binding": {
+    "path": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json",
+    "sha256": "F68BDE02AF96E3992A8C64F1F01A85CAC960F529946EA12FA4899D9EBFC197A9",
+    "selection": "A/A/A/A/A"
+  },
+  "target": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "logical_root_id": "P36-QUARANTINE-ROOT-R1-CANDIDATE",
+    "candidate_volume": "F:",
+    "candidate_root": "F:\\HCAM-Quarantine",
+    "excluded_existing_project_root": "F:\\h cam",
+    "owner_prohibited_volume": "B:",
+    "required_volume_type": "Fixed",
+    "allowed_filesystems": [
+      "NTFS",
+      "ReFS"
+    ],
+    "minimum_free_bytes": 5368709120,
+    "minimum_free_percent": 15,
+    "remote_or_alternate_target_allowed": false
+  },
+  "transaction_bounds": {
+    "maximum_authorized_attempts": 1,
+    "authorization_use_window_seconds_after_owner_acceptance": 86400,
+    "storage_attestation_validity_seconds_after_success": 3600,
+    "per_action_timeout_seconds": 30,
+    "total_transaction_timeout_seconds": 180,
+    "maximum_probe_bytes": 4096,
+    "maximum_command_stdout_bytes": 4096,
+    "maximum_command_stderr_bytes": 4096,
+    "parallel_actions": false,
+    "network_access": false,
+    "automatic_retry": false,
+    "failed_attempt_requires_new_authorization": true,
+    "required_output_on_attempt": "sanitized_binding_evidence_even_when_no_binding_result_is_issued"
+  },
+  "action_allowlist": [
+    {
+      "action_id": "U3E-A01-UTC-CLOCK-START",
+      "purpose": "bound_the_single_attempt",
+      "exact_action": "read_[DateTimeOffset]::UtcNow_once_in_process_memory",
+      "persisted_projection": "attempt_started_at_UTC_only"
+    },
+    {
+      "action_id": "U3E-A02-PACKAGE-VERIFY",
+      "purpose": "verify_authority_before_touching_F_or_scanner_metadata",
+      "exact_action": "verify_owner_acceptance_package_digest_and_every_core_file_SHA_256_then_abort_before_U3E_A03_on_any_mismatch",
+      "network_access": false
+    },
+    {
+      "action_id": "U3E-A03-F-DRIVE-INFO",
+      "purpose": "attest_only_the_candidate_volume_class_filesystem_and_capacity",
+      "exact_action": "construct_System_IO_DriveInfo_for_exact_F_root_and_read_IsReady_DriveType_DriveFormat_TotalSize_AvailableFreeSpace_only",
+      "allowed_source_fields": [
+        "IsReady",
+        "DriveType",
+        "DriveFormat",
+        "TotalSize",
+        "AvailableFreeSpace"
+      ],
+      "persisted_projection": [
+        "candidate_volume",
+        "is_ready",
+        "drive_type",
+        "filesystem",
+        "total_bytes",
+        "available_free_bytes",
+        "available_free_percent",
+        "both_space_thresholds_pass"
+      ],
+      "forbidden_source_fields": [
+        "VolumeLabel",
+        "volume_serial",
+        "device_identifier"
+      ]
+    },
+    {
+      "action_id": "U3E-A04-CANONICAL-PATH-SAFETY",
+      "purpose": "prove_the_candidate_is_the_exact_isolated_top_level_root",
+      "exact_action": "canonicalize_exact_F_HCAM_Quarantine_without_wildcards_verify_it_is_not_equal_to_or_beneath_F_h_cam_and_inspect_only_F_root_and_candidate_components_for_reparse_attributes",
+      "symlink_junction_mountpoint_or_reparse_allowed": false,
+      "cloud_network_mapped_or_removable_volume_allowed": false,
+      "alternate_path_or_case_folded_collision_allowed": false
+    },
+    {
+      "action_id": "U3E-A05-EXACT-ROOT-CREATE",
+      "purpose": "make_the_owner_selected_candidate_root_available_for_the_bounded_probe",
+      "exact_action": "create_exact_F_HCAM_Quarantine_only_if_absent_without_creating_any_other_directory_and_record_whether_this_attempt_created_it",
+      "existing_non_directory_target": "fail_closed_without_modification",
+      "existing_nonempty_directory": "fail_closed_without_modification",
+      "existing_reparse_directory": "fail_closed_without_modification",
+      "root_retention_on_success": "retain_exact_empty_or_probe_cleaned_candidate_root",
+      "root_cleanup_on_failure": "remove_only_if_created_by_this_attempt_and_empty"
+    },
+    {
+      "action_id": "U3E-A06-BOUNDED-ACL-CLASSIFICATION",
+      "purpose": "reject_an_obviously_broadly_writable_candidate_root_without_persisting_identity_data",
+      "exact_action": "read_ACL_for_exact_candidate_root_and_project_only_owner_write_available_and_well_known_broad_write_principal_boolean_results",
+      "well_known_broad_principals": [
+        "S-1-1-0",
+        "S-1-5-11",
+        "S-1-5-32-545"
+      ],
+      "broad_write_rights": [
+        "Write",
+        "Modify",
+        "FullControl"
+      ],
+      "identity_names_SIDs_or_raw_ACL_persisted": false,
+      "broad_write_result": "fail_closed"
+    },
+    {
+      "action_id": "U3E-A07-ATOMIC-CAPABILITY-PROBE",
+      "purpose": "prove_exclusive_create_flush_readback_atomic_rename_and_cleanup",
+      "partial_path": "F:\\HCAM-Quarantine\\.hcam-storage-attestation.partial",
+      "verified_path": "F:\\HCAM-Quarantine\\.hcam-storage-attestation.verified",
+      "exact_action": "fail_if_either_probe_path_exists_then_CreateNew_write_exactly_4096_deterministic_generated_bytes_flush_to_disk_close_readback_and_compare_SHA_256_atomically_rename_partial_to_verified_readback_and_compare_again_then_delete_verified",
+      "probe_content_source": "deterministic_generated_nonsecret_nonmedia_bytes",
+      "probe_bytes": 4096,
+      "probe_or_content_retention": "zero_after_success_or_bounded_failure_cleanup",
+      "other_file_or_directory_access_allowed": false
+    },
+    {
+      "action_id": "U3E-A08-DEFENDER-STATUS-METADATA",
+      "purpose": "inventory_bounded_platform_antimalware_metadata_without_scanning_or_updating",
+      "exact_action": "invoke_Get_MpComputerStatus_once_and_project_only_AMProductVersion_AMEngineVersion_AntivirusSignatureVersion_AntivirusSignatureLastUpdated_AntivirusEnabled_and_RealTimeProtectionEnabled",
+      "threat_history_preferences_exclusions_quarantine_or_events_allowed": false,
+      "signature_or_platform_update_allowed": false,
+      "scan_or_remediation_allowed": false,
+      "raw_output_persisted": false
+    },
+    {
+      "action_id": "U3E-A09-DEFENDER-BINARY-CANDIDATE",
+      "purpose": "identify_and_hash_one_exact_local_MpCmdRun_candidate_without_executing_it",
+      "exact_action": "enumerate_at_most_64_direct_semantic_version_directories_under_the_exact_CommonApplicationData_Microsoft_Windows_Defender_Platform_root_select_one_regular_nonreparse_MpCmdRun_exe_matching_the_reported_product_version_then_read_FileVersionInfo_and_SHA_256",
+      "recursive_enumeration": false,
+      "maximum_directories": 64,
+      "executable_execution_allowed": false,
+      "authenticode_or_revocation_network_check_allowed": false,
+      "binding_completeness": "candidate_only_until_exact_offline_signature_policy_is_separately_bound"
+    },
+    {
+      "action_id": "U3E-A10-MODELSCAN-DISTRIBUTION-METADATA",
+      "purpose": "determine_whether_the_candidate_ModelScan_version_is_already_available_without_importing_or_running_it",
+      "exact_action": "run_default_python_in_isolated_no_site_mode_extend_only_standard_purelib_and_platlib_paths_use_importlib_metadata_version_for_modelscan_emit_one_version_line_or_bounded_unavailable_code_then_discard_raw_output",
+      "candidate_version": "0.8.8",
+      "modelscan_import_or_execution_allowed": false,
+      "package_file_dependency_entry_point_or_origin_enumeration_allowed": false,
+      "installation_download_or_update_allowed": false,
+      "binding_completeness": "incomplete_until_exact_distribution_digest_executable_and_supported_report_behavior_are_separately_bound"
+    },
+    {
+      "action_id": "U3E-A11-HCAM-PASSIVE-INSPECTOR-STATE",
+      "purpose": "record_the_accepted_policy_gap_without_implementing_or_running_an_inspector",
+      "exact_action": "record_not_implemented_not_bound_not_executed_from_the_sealed_U3D_policy_and_current_package_state",
+      "repository_or_filesystem_query": false,
+      "implementation_or_execution_allowed": false
+    },
+    {
+      "action_id": "U3E-A12-NORMALIZE-HASH-WRITE",
+      "purpose": "write_only_bounded_sanitized_attempt_records",
+      "exact_action": "normalize_allowlisted_values_compute_canonical_SHA_256_and_atomically_write_authorization_result_and_evidence_records_to_the_exact_repository_paths",
+      "filesystem_writes_allowed": [
+        "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-authorization.json",
+        "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-result.json",
+        "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-evidence.json"
+      ],
+      "other_repository_reads_or_writes_allowed": false
+    }
+  ],
+  "storage_pass_policy": {
+    "all_required": [
+      "drive_ready",
+      "drive_type_exactly_Fixed",
+      "filesystem_NTFS_or_ReFS",
+      "available_free_bytes_at_least_5368709120",
+      "available_free_percent_at_least_15",
+      "canonical_root_exactly_F_HCAM_Quarantine",
+      "not_inside_F_h_cam_or_any_repository",
+      "no_reparse_component",
+      "no_broad_write_principal",
+      "exclusive_create_flush_readback_hash_atomic_rename_readback_hash_and_cleanup_pass"
+    ],
+    "owner_50_GB_statement_substitutes_for_observation": false,
+    "manual_override": false
+  },
+  "scanner_binding_result_policy": {
+    "Defender_candidate_complete_requires": [
+      "bounded_status_metadata_available",
+      "one_regular_nonreparse_matching_version_MpCmdRun_candidate",
+      "exact_executable_path_version_and_SHA_256",
+      "later_exact_offline_signature_policy"
+    ],
+    "ModelScan_candidate_complete_requires": [
+      "version_exactly_0_8_8",
+      "later_exact_distribution_and_executable_SHA_256",
+      "later_supported_JSON_report_behavior_validation"
+    ],
+    "passive_inspector_candidate_complete_requires": [
+      "later_implemented_reviewed_framework_free_inspector",
+      "exact_source_and_executable_digest",
+      "later_synthetic_hostile_fixture_validation"
+    ],
+    "partial_or_unavailable_binding_is_recorded_not_overridden": true,
+    "scanner_chain_ready_only_when_all_three_complete": true,
+    "this_attempt_may_make_scanner_chain_ready": false
+  },
+  "sanitization": {
+    "persist_exact_operational_locators": [
+      "F:\\HCAM-Quarantine",
+      "selected_system_MpCmdRun_executable_path_if_found"
+    ],
+    "never_persist": [
+      "hostname",
+      "user_identity",
+      "volume_label_or_serial",
+      "raw_device_identifier",
+      "MAC_or_IP_address",
+      "personal_directory",
+      "environment_or_PATH_dump",
+      "raw_ACL_identity_or_SID",
+      "raw_command_output_error_stack_or_exception",
+      "Defender_threat_history_preferences_exclusions_quarantine_or_events",
+      "secret_or_credential"
+    ]
+  },
+  "failure_policy": {
+    "package_or_authorization_failure": "abort_before_F_or_scanner_metadata_access",
+    "storage_hard_gate_failure": "record_sanitized_failure_storage_not_ready_and_do_not_issue_a_ready_root_binding",
+    "optional_scanner_metadata_unavailable": "record_bounded_unavailable_state_without_installation_execution_or_retry",
+    "probe_cleanup_failure": "record_failure_leave_root_ineligible_and_require_manual_review_under_separate_authority",
+    "raw_exception_or_output_persisted": false,
+    "automatic_retry": false
+  },
+  "continuing_non_authorization": [
+    "any_volume_path_or_directory_other_than_exact_F_and_F_HCAM_Quarantine",
+    "B_drive_or_F_h_cam_access_or_modification",
+    "scanner_signature_platform_or_dependency_update",
+    "Defender_ModelScan_or_passive_inspector_scan_or_execution",
+    "software_dependency_model_dataset_driver_or_container_install_or_download",
+    "artifact_acquisition_checkpoint_load_unpickle_import_conversion_or_export",
+    "inference_calibration_validation_benchmark_or_hardware_test",
+    "container_Docker_Kubernetes_or_deployment_action",
+    "camera_stream_media_private_or_Government_data_access",
+    "profile_resolution_admission_activation_or_promotion",
+    "product_or_dashboard_implementation",
+    "remote_git"
+  ]
+}

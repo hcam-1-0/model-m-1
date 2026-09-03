@@ -1,0 +1,5508 @@
+{
+  "alembic_heads": [
+    "0011_geometry_events"
+  ],
+  "contract_format": "hcam.database.contract.v1",
+  "dialect": "sqlite",
+  "tables": [
+    {
+      "check_constraints": [],
+      "columns": [
+        {
+          "default": null,
+          "name": "version_num",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(32)"
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [],
+      "name": "alembic_version",
+      "primary_key": {
+        "columns": [
+          "version_num"
+        ],
+        "name": "alembic_version_pkc"
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_analytics_assignment_revision_version_positive",
+          "sql": "version >= 1"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "assignment_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "version",
+          "nullable": false,
+          "primary_key_position": 2,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "snapshot",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "actor_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "reason",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "recorded_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "assignment_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_assignments"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "assignment_id",
+            "recorded_at"
+          ],
+          "name": "ix_analytics_assignment_revision_recorded",
+          "unique": false
+        },
+        {
+          "columns": [
+            "actor_id"
+          ],
+          "name": "ix_analytics_assignment_revisions_actor_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "recorded_at"
+          ],
+          "name": "ix_analytics_assignment_revisions_recorded_at",
+          "unique": false
+        }
+      ],
+      "name": "analytics_assignment_revisions",
+      "primary_key": {
+        "columns": [
+          "assignment_id",
+          "version"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_analytics_assignment_confidence",
+          "sql": "minimum_confidence >= 0 AND minimum_confidence <= 1"
+        },
+        {
+          "name": "ck_analytics_assignment_execution_scope",
+          "sql": "execution_scope = 'generated_only'"
+        },
+        {
+          "name": "ck_analytics_assignment_p3_desired_state",
+          "sql": "desired_state IN ('paused', 'enabled')"
+        },
+        {
+          "name": "ck_analytics_assignment_p3_lifecycle_state",
+          "sql": "lifecycle_state IN ('blocked', 'paused', 'running', 'degraded', 'failed')"
+        },
+        {
+          "name": "ck_analytics_assignment_p3_reason_code",
+          "sql": "reason_code IN ('owner_gates_pending', 'manual_pause', 'generated_runtime_active', 'runtime_degraded', 'runtime_failed')"
+        },
+        {
+          "name": "ck_analytics_assignment_queue_age",
+          "sql": "maximum_queue_age_ms >= 50 AND maximum_queue_age_ms <= 60000"
+        },
+        {
+          "name": "ck_analytics_assignment_retention_class",
+          "sql": "retention_class IN ('derived.analytics.standard', 'derived.analytics.restricted')"
+        },
+        {
+          "name": "ck_analytics_assignment_sampling_fps",
+          "sql": "sampling_fps > 0 AND sampling_fps <= 60"
+        },
+        {
+          "name": "ck_analytics_assignment_state_consistency",
+          "sql": "(desired_state = 'paused' AND lifecycle_state = 'blocked' AND reason_code = 'owner_gates_pending') OR (desired_state = 'paused' AND lifecycle_state = 'paused' AND reason_code = 'manual_pause') OR (desired_state = 'enabled' AND lifecycle_state = 'running' AND reason_code = 'generated_runtime_active') OR (desired_state = 'enabled' AND lifecycle_state = 'degraded' AND reason_code = 'runtime_degraded') OR (desired_state = 'enabled' AND lifecycle_state = 'failed' AND reason_code = 'runtime_failed')"
+        },
+        {
+          "name": "ck_analytics_assignment_version_positive",
+          "sql": "version_id >= 1"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "assignment_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": "1",
+          "name": "version_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "capability",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": "'paused'",
+          "name": "desired_state",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": "'blocked'",
+          "name": "lifecycle_state",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": "'owner_gates_pending'",
+          "name": "reason_code",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "pipeline_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "pipeline_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "models",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "taxonomy_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "policy_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "configuration_digest",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "minimum_confidence",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "sampling_fps",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "maximum_queue_age_ms",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "geometry_refs",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "retention_class",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "last_actor_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "last_change_reason",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "approval_record_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "updated_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": "'generated_only'",
+          "name": "execution_scope",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(32)"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "camera_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "cameras"
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "department",
+            "lifecycle_state"
+          ],
+          "name": "ix_analytics_assignment_department_state",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_analytics_assignments_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "capability"
+          ],
+          "name": "ix_analytics_assignments_capability",
+          "unique": false
+        },
+        {
+          "columns": [
+            "created_at"
+          ],
+          "name": "ix_analytics_assignments_created_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_analytics_assignments_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "last_actor_id"
+          ],
+          "name": "ix_analytics_assignments_last_actor_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_analytics_assignments_stream_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "updated_at"
+          ],
+          "name": "ix_analytics_assignments_updated_at",
+          "unique": false
+        }
+      ],
+      "name": "analytics_assignments",
+      "primary_key": {
+        "columns": [
+          "assignment_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "stream_id",
+            "capability"
+          ],
+          "name": "uq_analytics_assignment_stream_capability"
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_analytics_event_alert_state",
+          "sql": "alert_state = 'not_evaluated'"
+        },
+        {
+          "name": "ck_analytics_event_retention",
+          "sql": "retention_class IN ('derived.analytics.standard', 'derived.analytics.restricted')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "event_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "evaluator_run_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(37)"
+        },
+        {
+          "default": null,
+          "name": "rule_record_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(37)"
+        },
+        {
+          "default": null,
+          "name": "geometry_record_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(37)"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "assignment_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "epoch_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(38)"
+        },
+        {
+          "default": null,
+          "name": "track_id",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "lifecycle_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "source_sequence",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BIGINT"
+        },
+        {
+          "default": null,
+          "name": "event_kind",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "occurred_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "payload",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "retention_class",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "alert_state",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(32)"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "geometry_record_id"
+          ],
+          "name": null,
+          "ondelete": "RESTRICT",
+          "onupdate": null,
+          "referred_columns": [
+            "geometry_record_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_geometries"
+        },
+        {
+          "columns": [
+            "evaluator_run_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "run_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_geometry_evaluator_runs"
+        },
+        {
+          "columns": [
+            "rule_record_id"
+          ],
+          "name": null,
+          "ondelete": "RESTRICT",
+          "onupdate": null,
+          "referred_columns": [
+            "rule_record_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_geometry_rules"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "department",
+            "stream_id",
+            "occurred_at"
+          ],
+          "name": "ix_analytics_event_scope_occurred",
+          "unique": false
+        },
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": "ix_analytics_events_assignment_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_analytics_events_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_analytics_events_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "epoch_id"
+          ],
+          "name": "ix_analytics_events_epoch_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "evaluator_run_id"
+          ],
+          "name": "ix_analytics_events_evaluator_run_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "event_kind"
+          ],
+          "name": "ix_analytics_events_event_kind",
+          "unique": false
+        },
+        {
+          "columns": [
+            "geometry_record_id"
+          ],
+          "name": "ix_analytics_events_geometry_record_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "occurred_at"
+          ],
+          "name": "ix_analytics_events_occurred_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "rule_record_id"
+          ],
+          "name": "ix_analytics_events_rule_record_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_analytics_events_stream_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "track_id"
+          ],
+          "name": "ix_analytics_events_track_id",
+          "unique": false
+        }
+      ],
+      "name": "analytics_events",
+      "primary_key": {
+        "columns": [
+          "event_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_analytics_generated_run_assignment_version",
+          "sql": "assignment_version >= 1"
+        },
+        {
+          "name": "ck_analytics_generated_run_candidate_count",
+          "sql": "candidate_count >= 0 AND candidate_count <= 300"
+        },
+        {
+          "name": "ck_analytics_generated_run_duration",
+          "sql": "duration_ms >= 0 AND duration_ms <= 60000"
+        },
+        {
+          "name": "ck_analytics_generated_run_failure_consistency",
+          "sql": "(status = 'succeeded' AND failure_code IS NULL) OR (status IN ('degraded', 'failed') AND failure_code IS NOT NULL)"
+        },
+        {
+          "name": "ck_analytics_generated_run_generator",
+          "sql": "generator_id = 'hcam.det-r0.generated-frame' AND generator_version = 'sha256:910d7083976055269029733d90f70cafc0f3fe3046716c2c9d683732fc181f64'"
+        },
+        {
+          "name": "ck_analytics_generated_run_input_digest",
+          "sql": "length(input_sha256) = 64 AND lower(input_sha256) = input_sha256"
+        },
+        {
+          "name": "ck_analytics_generated_run_retention_class",
+          "sql": "retention_class IN ('derived.analytics.standard', 'derived.analytics.restricted')"
+        },
+        {
+          "name": "ck_analytics_generated_run_seed",
+          "sql": "seed >= 0 AND seed <= 4294967295"
+        },
+        {
+          "name": "ck_analytics_generated_run_sequence",
+          "sql": "source_sequence >= 0"
+        },
+        {
+          "name": "ck_analytics_generated_run_status",
+          "sql": "status IN ('succeeded', 'degraded', 'failed')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "run_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "assignment_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "assignment_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "source_sequence",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BIGINT"
+        },
+        {
+          "default": null,
+          "name": "source_observed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "generator_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "generator_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "seed",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BIGINT"
+        },
+        {
+          "default": null,
+          "name": "input_sha256",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "status",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "failure_code",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "candidate_count",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "duration_ms",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "retention_class",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "started_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "completed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "assignment_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_assignments"
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "camera_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "cameras"
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "department",
+            "completed_at"
+          ],
+          "name": "ix_analytics_generated_run_department_completed",
+          "unique": false
+        },
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": "ix_analytics_generated_runs_assignment_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_analytics_generated_runs_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "completed_at"
+          ],
+          "name": "ix_analytics_generated_runs_completed_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_analytics_generated_runs_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_analytics_generated_runs_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "analytics_generated_runs",
+      "primary_key": {
+        "columns": [
+          "run_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "assignment_id",
+            "assignment_version",
+            "source_sequence",
+            "input_sha256"
+          ],
+          "name": "uq_analytics_generated_run_input"
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_analytics_geometry_digest",
+          "sql": "length(configuration_digest) = 71"
+        },
+        {
+          "name": "ck_analytics_geometry_kind",
+          "sql": "kind IN ('line', 'zone')"
+        },
+        {
+          "name": "ck_analytics_geometry_record_version",
+          "sql": "record_version >= 1"
+        },
+        {
+          "name": "ck_analytics_geometry_status",
+          "sql": "status IN ('draft', 'approved', 'retired')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "geometry_record_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(37)"
+        },
+        {
+          "default": "'1'",
+          "name": "record_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "geometry_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "geometry_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "status",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "kind",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "shape",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "schedule",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "canonical_json",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "canonical_wkb",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BLOB"
+        },
+        {
+          "default": null,
+          "name": "spatial_geometry",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BLOB"
+        },
+        {
+          "default": null,
+          "name": "configuration_digest",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "wkb_sha256",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "shapely_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(32)"
+        },
+        {
+          "default": null,
+          "name": "geos_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(32)"
+        },
+        {
+          "default": null,
+          "name": "intended_use",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "policy_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "owner_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "approval_record_id",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "last_change_reason",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "updated_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "camera_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "cameras"
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_analytics_geometries_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "configuration_digest"
+          ],
+          "name": "ix_analytics_geometries_configuration_digest",
+          "unique": false
+        },
+        {
+          "columns": [
+            "created_at"
+          ],
+          "name": "ix_analytics_geometries_created_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_analytics_geometries_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "geometry_id"
+          ],
+          "name": "ix_analytics_geometries_geometry_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "owner_id"
+          ],
+          "name": "ix_analytics_geometries_owner_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_analytics_geometries_stream_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "updated_at"
+          ],
+          "name": "ix_analytics_geometries_updated_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department",
+            "stream_id",
+            "status"
+          ],
+          "name": "ix_analytics_geometry_scope_status",
+          "unique": false
+        }
+      ],
+      "name": "analytics_geometries",
+      "primary_key": {
+        "columns": [
+          "geometry_record_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "department",
+            "geometry_id",
+            "geometry_version"
+          ],
+          "name": "uq_analytics_geometry_department_version"
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_analytics_geometry_run_close_reason",
+          "sql": "close_reason IS NULL OR close_reason IN ('completed', 'sequence_conflict', 'reorder_buffer_overflow', 'candidate_limit', 'state_limit', 'scope_mismatch', 'timezone_unavailable', 'persistence_conflict')"
+        },
+        {
+          "name": "ck_analytics_geometry_run_retention",
+          "sql": "retention_class IN ('derived.analytics.standard', 'derived.analytics.restricted')"
+        },
+        {
+          "name": "ck_analytics_geometry_run_scope",
+          "sql": "execution_scope = 'generated_only'"
+        },
+        {
+          "name": "ck_analytics_geometry_run_status",
+          "sql": "status IN ('succeeded', 'failed')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "run_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(37)"
+        },
+        {
+          "default": null,
+          "name": "assignment_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "epoch_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(38)"
+        },
+        {
+          "default": null,
+          "name": "execution_scope",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(32)"
+        },
+        {
+          "default": null,
+          "name": "scenario_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "seed",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BIGINT"
+        },
+        {
+          "default": null,
+          "name": "input_sha256",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "configuration_digest",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "status",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "close_reason",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "input_count",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "event_count",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "duplicate_count",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "late_count",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "maximum_buffer_depth",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "maximum_candidate_count",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "maximum_state_count",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "duration_ms",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "retention_class",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "started_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "completed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "assignment_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_assignments"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": "ix_analytics_geometry_evaluator_runs_assignment_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_analytics_geometry_evaluator_runs_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "completed_at"
+          ],
+          "name": "ix_analytics_geometry_evaluator_runs_completed_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_analytics_geometry_evaluator_runs_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "epoch_id"
+          ],
+          "name": "ix_analytics_geometry_evaluator_runs_epoch_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "scenario_id"
+          ],
+          "name": "ix_analytics_geometry_evaluator_runs_scenario_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_analytics_geometry_evaluator_runs_stream_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department",
+            "stream_id",
+            "completed_at"
+          ],
+          "name": "ix_analytics_geometry_run_scope_completed",
+          "unique": false
+        }
+      ],
+      "name": "analytics_geometry_evaluator_runs",
+      "primary_key": {
+        "columns": [
+          "run_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "assignment_id",
+            "scenario_id",
+            "seed",
+            "input_sha256",
+            "configuration_digest"
+          ],
+          "name": "uq_analytics_geometry_run_input"
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_analytics_geometry_rule_record_version",
+          "sql": "record_version >= 1"
+        },
+        {
+          "name": "ck_analytics_geometry_rule_retention",
+          "sql": "retention_class IN ('derived.analytics.standard', 'derived.analytics.restricted')"
+        },
+        {
+          "name": "ck_analytics_geometry_rule_static_cost",
+          "sql": "static_cost >= 1 AND static_cost <= 320"
+        },
+        {
+          "name": "ck_analytics_geometry_rule_status",
+          "sql": "status IN ('draft', 'approved', 'retired')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "rule_record_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(37)"
+        },
+        {
+          "default": "'1'",
+          "name": "record_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "geometry_record_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(37)"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "assignment_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "rule_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "rule_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "status",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "event_kind",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "configuration",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "visual_graph",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "checked_cel",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BLOB"
+        },
+        {
+          "default": null,
+          "name": "checked_cel_digest",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "configuration_digest",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "static_cost",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "retention_class",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "owner_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "approval_record_id",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "last_change_reason",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "effective_from",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "effective_until",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "updated_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "assignment_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_assignments"
+        },
+        {
+          "columns": [
+            "geometry_record_id"
+          ],
+          "name": null,
+          "ondelete": "RESTRICT",
+          "onupdate": null,
+          "referred_columns": [
+            "geometry_record_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_geometries"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "department",
+            "assignment_id",
+            "stream_id",
+            "status"
+          ],
+          "name": "ix_analytics_geometry_rule_scope_status",
+          "unique": false
+        },
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": "ix_analytics_geometry_rules_assignment_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_analytics_geometry_rules_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "configuration_digest"
+          ],
+          "name": "ix_analytics_geometry_rules_configuration_digest",
+          "unique": false
+        },
+        {
+          "columns": [
+            "created_at"
+          ],
+          "name": "ix_analytics_geometry_rules_created_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_analytics_geometry_rules_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "event_kind"
+          ],
+          "name": "ix_analytics_geometry_rules_event_kind",
+          "unique": false
+        },
+        {
+          "columns": [
+            "geometry_record_id"
+          ],
+          "name": "ix_analytics_geometry_rules_geometry_record_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "owner_id"
+          ],
+          "name": "ix_analytics_geometry_rules_owner_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "rule_id"
+          ],
+          "name": "ix_analytics_geometry_rules_rule_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_analytics_geometry_rules_stream_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "updated_at"
+          ],
+          "name": "ix_analytics_geometry_rules_updated_at",
+          "unique": false
+        }
+      ],
+      "name": "analytics_geometry_rules",
+      "primary_key": {
+        "columns": [
+          "rule_record_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "department",
+            "rule_id",
+            "rule_version"
+          ],
+          "name": "uq_analytics_geometry_rule_department_version"
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_analytics_observation_bbox",
+          "sql": "bbox_x >= 0 AND bbox_x <= 1 AND bbox_y >= 0 AND bbox_y <= 1 AND bbox_width > 0 AND bbox_width <= 1 AND bbox_height > 0 AND bbox_height <= 1 AND bbox_x + bbox_width <= 1 AND bbox_y + bbox_height <= 1"
+        },
+        {
+          "name": "ck_analytics_observation_candidate_index",
+          "sql": "candidate_index >= 0 AND candidate_index < 300"
+        },
+        {
+          "name": "ck_analytics_observation_confidence",
+          "sql": "confidence >= 0 AND confidence <= 1"
+        },
+        {
+          "name": "ck_analytics_observation_model",
+          "sql": "model_id = 'DET-R0-ONNX-UPSTREAM-0.1.1RC0' AND model_version = 'sha256:427cc366d34e27ff7a03e2899b5e3671425c262ea2291f88bb942bc1cc70b0f7'"
+        },
+        {
+          "name": "ck_analytics_observation_retention_class",
+          "sql": "retention_class IN ('derived.analytics.standard', 'derived.analytics.restricted')"
+        },
+        {
+          "name": "ck_analytics_observation_source_shape",
+          "sql": "source_width = 416 AND source_height = 416"
+        },
+        {
+          "name": "ck_analytics_observation_tier_a_class",
+          "sql": "class_id IN ('object.person', 'vehicle.bicycle', 'vehicle.car', 'vehicle.motorcycle', 'vehicle.bus', 'vehicle.truck', 'object.unknown')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "observation_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "event_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "run_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "assignment_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "candidate_index",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "observed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "processed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "source_sequence",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BIGINT"
+        },
+        {
+          "default": null,
+          "name": "source_width",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "source_height",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "model_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "model_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "class_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "confidence",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "bbox_x",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "bbox_y",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "bbox_width",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "bbox_height",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "lineage",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "retention_class",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "assignment_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_assignments"
+        },
+        {
+          "columns": [
+            "run_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "run_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_generated_runs"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "department",
+            "created_at"
+          ],
+          "name": "ix_analytics_observation_department_created",
+          "unique": false
+        },
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": "ix_analytics_observations_assignment_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_analytics_observations_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "class_id"
+          ],
+          "name": "ix_analytics_observations_class_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "created_at"
+          ],
+          "name": "ix_analytics_observations_created_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_analytics_observations_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "run_id"
+          ],
+          "name": "ix_analytics_observations_run_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_analytics_observations_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "analytics_observations",
+      "primary_key": {
+        "columns": [
+          "observation_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "run_id",
+            "candidate_index"
+          ],
+          "name": "uq_analytics_observation_run_candidate"
+        },
+        {
+          "columns": [
+            "event_id"
+          ],
+          "name": "uq_analytics_observations_event_id"
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_analytics_track_lifecycle_index",
+          "sql": "transition_index >= 0"
+        },
+        {
+          "name": "ck_analytics_track_lifecycle_reason",
+          "sql": "reason IN ('confirmed', 'matched', 'recovered', 'temporarily_unmatched', 'lost_timeout', 'explicit_reset', 'sequence_gap', 'sequence_regression', 'timestamp_regression', 'configuration_change', 'source_change', 'worker_restart', 'resource_exhausted')"
+        },
+        {
+          "name": "ck_analytics_track_lifecycle_state",
+          "sql": "state IN ('started', 'updated', 'lost', 'ended')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "lifecycle_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "event_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "run_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(37)"
+        },
+        {
+          "default": null,
+          "name": "epoch_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(38)"
+        },
+        {
+          "default": null,
+          "name": "track_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "assignment_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "transition_index",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "state",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "reason",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "occurred_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "source_sequence",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BIGINT"
+        },
+        {
+          "default": null,
+          "name": "latest_observation_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "payload",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "retention_class",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "epoch_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "epoch_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_tracker_epochs"
+        },
+        {
+          "columns": [
+            "run_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "run_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_tracking_runs"
+        },
+        {
+          "columns": [
+            "track_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "track_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_tracks"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": "ix_analytics_track_lifecycle_assignment_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_analytics_track_lifecycle_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_analytics_track_lifecycle_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "epoch_id"
+          ],
+          "name": "ix_analytics_track_lifecycle_epoch_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "run_id"
+          ],
+          "name": "ix_analytics_track_lifecycle_run_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department",
+            "stream_id",
+            "occurred_at"
+          ],
+          "name": "ix_analytics_track_lifecycle_scope",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_analytics_track_lifecycle_stream_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "track_id"
+          ],
+          "name": "ix_analytics_track_lifecycle_track_id",
+          "unique": false
+        }
+      ],
+      "name": "analytics_track_lifecycle",
+      "primary_key": {
+        "columns": [
+          "lifecycle_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "event_id"
+          ],
+          "name": "uq_analytics_track_lifecycle_event"
+        },
+        {
+          "columns": [
+            "run_id",
+            "transition_index"
+          ],
+          "name": "uq_analytics_track_lifecycle_run_index"
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_analytics_track_rule_state_version",
+          "sql": "version_id >= 1"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "state_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(37)"
+        },
+        {
+          "default": "'1'",
+          "name": "version_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "evaluator_run_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(37)"
+        },
+        {
+          "default": null,
+          "name": "rule_record_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(37)"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "epoch_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(38)"
+        },
+        {
+          "default": null,
+          "name": "track_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "state",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "updated_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "evaluator_run_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "run_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_geometry_evaluator_runs"
+        },
+        {
+          "columns": [
+            "rule_record_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "rule_record_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_geometry_rules"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "department",
+            "stream_id",
+            "updated_at"
+          ],
+          "name": "ix_analytics_track_rule_state_scope",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_analytics_track_rule_states_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "epoch_id"
+          ],
+          "name": "ix_analytics_track_rule_states_epoch_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "evaluator_run_id"
+          ],
+          "name": "ix_analytics_track_rule_states_evaluator_run_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "rule_record_id"
+          ],
+          "name": "ix_analytics_track_rule_states_rule_record_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_analytics_track_rule_states_stream_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "track_id"
+          ],
+          "name": "ix_analytics_track_rule_states_track_id",
+          "unique": false
+        }
+      ],
+      "name": "analytics_track_rule_states",
+      "primary_key": {
+        "columns": [
+          "state_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "evaluator_run_id",
+            "rule_record_id",
+            "track_id"
+          ],
+          "name": "uq_analytics_track_rule_state_scope"
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_analytics_tracker_epoch_end_consistency",
+          "sql": "(ended_at IS NULL AND end_sequence IS NULL AND end_reason IS NULL) OR (ended_at IS NOT NULL AND end_sequence IS NOT NULL AND end_reason IS NOT NULL)"
+        },
+        {
+          "name": "ck_analytics_tracker_epoch_end_reason",
+          "sql": "end_reason IS NULL OR end_reason IN ('explicit_reset', 'sequence_gap', 'sequence_regression', 'timestamp_regression', 'configuration_change', 'source_change', 'worker_restart', 'resource_exhausted')"
+        },
+        {
+          "name": "ck_analytics_tracker_epoch_sequence",
+          "sql": "start_sequence >= 0 AND (end_sequence IS NULL OR end_sequence >= 0)"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "epoch_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(38)"
+        },
+        {
+          "default": null,
+          "name": "run_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(37)"
+        },
+        {
+          "default": null,
+          "name": "assignment_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "epoch_index",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "tracker_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "tracker_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "configuration_digest",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "start_sequence",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BIGINT"
+        },
+        {
+          "default": null,
+          "name": "end_sequence",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "BIGINT"
+        },
+        {
+          "default": null,
+          "name": "started_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "ended_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "end_reason",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "run_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "run_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_tracking_runs"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "department",
+            "stream_id",
+            "started_at"
+          ],
+          "name": "ix_analytics_tracker_epoch_scope",
+          "unique": false
+        },
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": "ix_analytics_tracker_epochs_assignment_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_analytics_tracker_epochs_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_analytics_tracker_epochs_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "run_id"
+          ],
+          "name": "ix_analytics_tracker_epochs_run_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_analytics_tracker_epochs_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "analytics_tracker_epochs",
+      "primary_key": {
+        "columns": [
+          "epoch_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "run_id",
+            "epoch_index"
+          ],
+          "name": "uq_analytics_tracker_epoch_run_index"
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_analytics_tracking_run_assignment_version",
+          "sql": "assignment_version >= 1"
+        },
+        {
+          "name": "ck_analytics_tracking_run_duration",
+          "sql": "duration_ms >= 0 AND duration_ms <= 60000"
+        },
+        {
+          "name": "ck_analytics_tracking_run_failure_consistency",
+          "sql": "(status = 'succeeded' AND failure_code IS NULL) OR (status = 'failed' AND failure_code = 'resource_exhausted')"
+        },
+        {
+          "name": "ck_analytics_tracking_run_frame_count",
+          "sql": "frame_count >= 0 AND frame_count <= 10000"
+        },
+        {
+          "name": "ck_analytics_tracking_run_input_digest",
+          "sql": "length(input_sha256) = 64 AND lower(input_sha256) = input_sha256"
+        },
+        {
+          "name": "ck_analytics_tracking_run_retention_class",
+          "sql": "retention_class IN ('derived.analytics.standard', 'derived.analytics.restricted')"
+        },
+        {
+          "name": "ck_analytics_tracking_run_scenario",
+          "sql": "scenario_id IN ('single-object', 'two-crossing', 'short-occlusion', 'long-occlusion', 'all-tier-a', 'discontinuity', 'overload')"
+        },
+        {
+          "name": "ck_analytics_tracking_run_seed",
+          "sql": "seed >= 0 AND seed <= 4294967295"
+        },
+        {
+          "name": "ck_analytics_tracking_run_status",
+          "sql": "status IN ('succeeded', 'failed')"
+        },
+        {
+          "name": "ck_analytics_tracking_run_transition_count",
+          "sql": "transition_count >= 0 AND transition_count <= 1000000"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "run_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(37)"
+        },
+        {
+          "default": null,
+          "name": "assignment_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "assignment_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "scenario_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(32)"
+        },
+        {
+          "default": null,
+          "name": "seed",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BIGINT"
+        },
+        {
+          "default": null,
+          "name": "input_sha256",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "generator_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "generator_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "tracker_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "tracker_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "pipeline_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "pipeline_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "configuration_digest",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "status",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "failure_code",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "frame_count",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "transition_count",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "duration_ms",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "metrics",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "retention_class",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "started_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "completed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "assignment_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_assignments"
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "camera_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "cameras"
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "department",
+            "completed_at"
+          ],
+          "name": "ix_analytics_tracking_run_department_completed",
+          "unique": false
+        },
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": "ix_analytics_tracking_runs_assignment_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_analytics_tracking_runs_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "completed_at"
+          ],
+          "name": "ix_analytics_tracking_runs_completed_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_analytics_tracking_runs_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "scenario_id"
+          ],
+          "name": "ix_analytics_tracking_runs_scenario_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_analytics_tracking_runs_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "analytics_tracking_runs",
+      "primary_key": {
+        "columns": [
+          "run_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "assignment_id",
+            "scenario_id",
+            "seed",
+            "input_sha256",
+            "configuration_digest"
+          ],
+          "name": "uq_analytics_tracking_run_input"
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_analytics_track_bbox",
+          "sql": "bbox_x >= 0 AND bbox_x <= 1 AND bbox_y >= 0 AND bbox_y <= 1 AND bbox_width > 0 AND bbox_width <= 1 AND bbox_height > 0 AND bbox_height <= 1 AND bbox_x + bbox_width <= 1 AND bbox_y + bbox_height <= 1"
+        },
+        {
+          "name": "ck_analytics_track_confidence",
+          "sql": "confidence >= 0 AND confidence <= 1"
+        },
+        {
+          "name": "ck_analytics_track_counters",
+          "sql": "local_track_number >= 1 AND age_frames >= 1 AND visible_frames >= 1 AND visible_frames <= age_frames AND missed_frames >= 0"
+        },
+        {
+          "name": "ck_analytics_track_retention_class",
+          "sql": "retention_class IN ('derived.analytics.standard', 'derived.analytics.restricted')"
+        },
+        {
+          "name": "ck_analytics_track_sequences",
+          "sql": "first_sequence >= 0 AND latest_sequence >= 0 AND last_visible_sequence >= 0"
+        },
+        {
+          "name": "ck_analytics_track_state",
+          "sql": "state IN ('started', 'updated', 'lost', 'ended')"
+        },
+        {
+          "name": "ck_analytics_track_tier_a_class",
+          "sql": "class_id IN ('object.person', 'vehicle.bicycle', 'vehicle.car', 'vehicle.motorcycle', 'vehicle.bus', 'vehicle.truck', 'object.unknown')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "track_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "epoch_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(38)"
+        },
+        {
+          "default": null,
+          "name": "run_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(37)"
+        },
+        {
+          "default": null,
+          "name": "assignment_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "local_track_number",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "class_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "state",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "first_observed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "first_sequence",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BIGINT"
+        },
+        {
+          "default": null,
+          "name": "latest_observed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "latest_sequence",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BIGINT"
+        },
+        {
+          "default": null,
+          "name": "last_visible_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "last_visible_sequence",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BIGINT"
+        },
+        {
+          "default": null,
+          "name": "latest_observation_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "bbox_x",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "bbox_y",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "bbox_width",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "bbox_height",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "confidence",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "age_frames",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "visible_frames",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "missed_frames",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "tracker_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "tracker_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "pipeline_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "pipeline_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "taxonomy_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(128)"
+        },
+        {
+          "default": null,
+          "name": "configuration_digest",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(71)"
+        },
+        {
+          "default": null,
+          "name": "retention_class",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "updated_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "epoch_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "epoch_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_tracker_epochs"
+        },
+        {
+          "columns": [
+            "run_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "run_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "analytics_tracking_runs"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "department",
+            "stream_id",
+            "state"
+          ],
+          "name": "ix_analytics_track_scope_state",
+          "unique": false
+        },
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "name": "ix_analytics_tracks_assignment_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_analytics_tracks_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "class_id"
+          ],
+          "name": "ix_analytics_tracks_class_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_analytics_tracks_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "epoch_id"
+          ],
+          "name": "ix_analytics_tracks_epoch_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "run_id"
+          ],
+          "name": "ix_analytics_tracks_run_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "state"
+          ],
+          "name": "ix_analytics_tracks_state",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_analytics_tracks_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "analytics_tracks",
+      "primary_key": {
+        "columns": [
+          "track_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "epoch_id",
+            "local_track_number"
+          ],
+          "name": "uq_analytics_track_epoch_local_number"
+        }
+      ]
+    },
+    {
+      "check_constraints": [],
+      "columns": [
+        {
+          "default": null,
+          "name": "event_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(36)"
+        },
+        {
+          "default": null,
+          "name": "actor_id",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "action",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "target_type",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "target_id",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(255)"
+        },
+        {
+          "default": null,
+          "name": "occurred_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "source",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "reason",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "outcome",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(40)"
+        },
+        {
+          "default": null,
+          "name": "context",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "columns": [
+            "action"
+          ],
+          "name": "ix_audit_events_action",
+          "unique": false
+        },
+        {
+          "columns": [
+            "occurred_at"
+          ],
+          "name": "ix_audit_events_occurred_at",
+          "unique": false
+        }
+      ],
+      "name": "audit_events",
+      "primary_key": {
+        "columns": [
+          "event_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_cameras_coordinate_pair",
+          "sql": "(latitude IS NULL AND longitude IS NULL) OR (latitude IS NOT NULL AND longitude IS NOT NULL)"
+        },
+        {
+          "name": "ck_cameras_duration_nonnegative",
+          "sql": "duration_seconds IS NULL OR duration_seconds >= 0"
+        },
+        {
+          "name": "ck_cameras_latitude_range",
+          "sql": "latitude IS NULL OR (latitude >= -90 AND latitude <= 90)"
+        },
+        {
+          "name": "ck_cameras_longitude_range",
+          "sql": "longitude IS NULL OR (longitude >= -180 AND longitude <= 180)"
+        },
+        {
+          "name": "ck_cameras_version_positive",
+          "sql": "version_id >= 1"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "source_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "external_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(255)"
+        },
+        {
+          "default": null,
+          "name": "display_name",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(255)"
+        },
+        {
+          "default": null,
+          "name": "location_label",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(500)"
+        },
+        {
+          "default": null,
+          "name": "timezone_name",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "latitude",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "longitude",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "department",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "ownership",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "camera_type",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "connectivity_status",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "storage_status",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "health_status",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "maintenance_status",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "metadata_status",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "operational_status",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "stream_path",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "hls_path",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "selected_url",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "delivery_type",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "codec",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "container",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "duration_seconds",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "reachability",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "last_checked_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "source_schema",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "source_generated_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "provenance",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "imported_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "updated_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": "1",
+          "name": "version_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        }
+      ],
+      "foreign_keys": [],
+      "indexes": [
+        {
+          "columns": [
+            "camera_type"
+          ],
+          "name": "ix_cameras_camera_type",
+          "unique": false
+        },
+        {
+          "columns": [
+            "department"
+          ],
+          "name": "ix_cameras_department",
+          "unique": false
+        },
+        {
+          "columns": [
+            "health_status"
+          ],
+          "name": "ix_cameras_health_status",
+          "unique": false
+        },
+        {
+          "columns": [
+            "operational_status"
+          ],
+          "name": "ix_cameras_operational_status",
+          "unique": false
+        },
+        {
+          "columns": [
+            "source_id"
+          ],
+          "name": "ix_cameras_source_id",
+          "unique": false
+        }
+      ],
+      "name": "cameras",
+      "primary_key": {
+        "columns": [
+          "camera_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "source_id",
+            "external_id"
+          ],
+          "name": "uq_camera_source_external"
+        }
+      ]
+    },
+    {
+      "check_constraints": [],
+      "columns": [
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "lease_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "actor_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "acquired_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "expires_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "actor_id"
+          ],
+          "name": "ix_onvif_control_leases_actor_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "expires_at"
+          ],
+          "name": "ix_onvif_control_leases_expires_at",
+          "unique": false
+        }
+      ],
+      "name": "onvif_control_leases",
+      "primary_key": {
+        "columns": [
+          "stream_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "lease_id"
+          ],
+          "name": null
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_onvif_operation_lifecycle",
+          "sql": "(outcome = 'pending' AND finished_at IS NULL AND duration_ms IS NULL) OR (outcome IN ('success', 'failure') AND finished_at IS NOT NULL AND duration_ms >= 0)"
+        },
+        {
+          "name": "ck_onvif_operation_outcome",
+          "sql": "outcome IN ('pending', 'success', 'failure')"
+        },
+        {
+          "name": "ck_onvif_operation_type",
+          "sql": "operation_type IN ('imaging_inspect', 'event_pull', 'ptz_stop', 'ptz_continuous', 'ptz_relative', 'ptz_absolute', 'ptz_goto_preset', 'ws_discovery', 'capability_discover_sync')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "operation_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "actor_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "operation_type",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(40)"
+        },
+        {
+          "default": null,
+          "name": "outcome",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "reason_code",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "parameters",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "audit_reason",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(500)"
+        },
+        {
+          "default": null,
+          "name": "request_id",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "requested_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "finished_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "duration_ms",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "actor_id"
+          ],
+          "name": "ix_onvif_operation_runs_actor_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "operation_type"
+          ],
+          "name": "ix_onvif_operation_runs_operation_type",
+          "unique": false
+        },
+        {
+          "columns": [
+            "outcome"
+          ],
+          "name": "ix_onvif_operation_runs_outcome",
+          "unique": false
+        },
+        {
+          "columns": [
+            "requested_at"
+          ],
+          "name": "ix_onvif_operation_runs_requested_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_onvif_operation_runs_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "onvif_operation_runs",
+      "primary_key": {
+        "columns": [
+          "operation_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [],
+      "columns": [
+        {
+          "default": null,
+          "name": "session_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "actor_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "path",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(255)"
+        },
+        {
+          "default": null,
+          "name": "token_jti_hash",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "expires_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "actor_id"
+          ],
+          "name": "ix_playback_sessions_actor_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "created_at"
+          ],
+          "name": "ix_playback_sessions_created_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "expires_at"
+          ],
+          "name": "ix_playback_sessions_expires_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_playback_sessions_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "playback_sessions",
+      "primary_key": {
+        "columns": [
+          "session_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "token_jti_hash"
+          ],
+          "name": null
+        }
+      ]
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_stream_capability_refresh_attempts",
+          "sql": "attempt_count >= 0 AND max_attempts >= 1"
+        },
+        {
+          "name": "ck_stream_capability_refresh_completeness",
+          "sql": "result_completeness IS NULL OR result_completeness IN ('complete', 'partial')"
+        },
+        {
+          "name": "ck_stream_capability_refresh_duration",
+          "sql": "duration_ms IS NULL OR duration_ms >= 0"
+        },
+        {
+          "name": "ck_stream_capability_refresh_source",
+          "sql": "source IN ('manual', 'scheduled')"
+        },
+        {
+          "name": "ck_stream_capability_refresh_status",
+          "sql": "status IN ('queued', 'running', 'succeeded', 'failed')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "refresh_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "status",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "source",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": "0",
+          "name": "priority",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "requested_by",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "request_id",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "audit_reason",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(500)"
+        },
+        {
+          "default": "0",
+          "name": "attempt_count",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": "3",
+          "name": "max_attempts",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "next_attempt_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "lease_owner",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "lease_until",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "reason_code",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "duration_ms",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "result_completeness",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "snapshot_id",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "queued_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "started_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "finished_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "updated_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "snapshot_id"
+          ],
+          "name": null,
+          "ondelete": "SET NULL",
+          "onupdate": null,
+          "referred_columns": [
+            "snapshot_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_capability_snapshots"
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "status",
+            "next_attempt_at",
+            "priority"
+          ],
+          "name": "ix_stream_capability_refresh_claim",
+          "unique": false
+        },
+        {
+          "columns": [
+            "finished_at"
+          ],
+          "name": "ix_stream_capability_refreshes_finished_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "lease_until"
+          ],
+          "name": "ix_stream_capability_refreshes_lease_until",
+          "unique": false
+        },
+        {
+          "columns": [
+            "next_attempt_at"
+          ],
+          "name": "ix_stream_capability_refreshes_next_attempt_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "queued_at"
+          ],
+          "name": "ix_stream_capability_refreshes_queued_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "requested_by"
+          ],
+          "name": "ix_stream_capability_refreshes_requested_by",
+          "unique": false
+        },
+        {
+          "columns": [
+            "snapshot_id"
+          ],
+          "name": "ix_stream_capability_refreshes_snapshot_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "source"
+          ],
+          "name": "ix_stream_capability_refreshes_source",
+          "unique": false
+        },
+        {
+          "columns": [
+            "status"
+          ],
+          "name": "ix_stream_capability_refreshes_status",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_stream_capability_refreshes_stream_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "uq_stream_capability_refresh_active",
+          "unique": true
+        }
+      ],
+      "name": "stream_capability_refreshes",
+      "primary_key": {
+        "columns": [
+          "refresh_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_stream_capability_snapshot_completeness",
+          "sql": "completeness IN ('complete', 'partial')"
+        },
+        {
+          "name": "ck_stream_capability_snapshot_source",
+          "sql": "source IN ('device_and_media', 'media_only')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "snapshot_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "fingerprint",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "source",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(32)"
+        },
+        {
+          "default": null,
+          "name": "completeness",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "payload",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "first_observed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "last_observed_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "stream_id",
+            "last_observed_at"
+          ],
+          "name": "ix_stream_capability_snapshot_latest",
+          "unique": false
+        },
+        {
+          "columns": [
+            "fingerprint"
+          ],
+          "name": "ix_stream_capability_snapshots_fingerprint",
+          "unique": false
+        },
+        {
+          "columns": [
+            "first_observed_at"
+          ],
+          "name": "ix_stream_capability_snapshots_first_observed_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "last_observed_at"
+          ],
+          "name": "ix_stream_capability_snapshots_last_observed_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_stream_capability_snapshots_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "stream_capability_snapshots",
+      "primary_key": {
+        "columns": [
+          "snapshot_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_stream_onvif_auth_mode",
+          "sql": "onvif_auth_mode IN ('none', 'wsse_password_digest', 'http_digest', 'wsse_and_http_digest')"
+        },
+        {
+          "name": "ck_stream_onvif_max_move_seconds",
+          "sql": "onvif_max_move_seconds >= 0.1 AND onvif_max_move_seconds <= 10"
+        },
+        {
+          "name": "ck_stream_onvif_max_velocity",
+          "sql": "onvif_max_velocity > 0 AND onvif_max_velocity <= 1"
+        },
+        {
+          "name": "ck_stream_transport",
+          "sql": "transport IN ('tcp', 'udp', 'auto')"
+        },
+        {
+          "name": "ck_stream_version_positive",
+          "sql": "version_id >= 1"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": "1",
+          "name": "version_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "name",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "adapter_kind",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(32)"
+        },
+        {
+          "default": null,
+          "name": "protocol",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "locator",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": null,
+          "name": "secret_ref",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(255)"
+        },
+        {
+          "default": "'tcp'",
+          "name": "transport",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": "0",
+          "name": "is_primary",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BOOLEAN"
+        },
+        {
+          "default": "1",
+          "name": "enabled",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BOOLEAN"
+        },
+        {
+          "default": null,
+          "name": "probe_due_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "lease_owner",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "lease_until",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "created_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "updated_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "management_locator",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "TEXT"
+        },
+        {
+          "default": "'none'",
+          "name": "onvif_auth_mode",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(32)"
+        },
+        {
+          "default": "0",
+          "name": "capability_refresh_enabled",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BOOLEAN"
+        },
+        {
+          "default": null,
+          "name": "capability_due_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": "0",
+          "name": "onvif_control_enabled",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "BOOLEAN"
+        },
+        {
+          "default": "0.5",
+          "name": "onvif_max_velocity",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": "2.0",
+          "name": "onvif_max_move_seconds",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "camera_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "cameras"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "adapter_kind"
+          ],
+          "name": "ix_stream_endpoints_adapter_kind",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_stream_endpoints_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "capability_due_at"
+          ],
+          "name": "ix_stream_endpoints_capability_due_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "enabled"
+          ],
+          "name": "ix_stream_endpoints_enabled",
+          "unique": false
+        },
+        {
+          "columns": [
+            "lease_until"
+          ],
+          "name": "ix_stream_endpoints_lease_until",
+          "unique": false
+        },
+        {
+          "columns": [
+            "probe_due_at"
+          ],
+          "name": "ix_stream_endpoints_probe_due_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "protocol"
+          ],
+          "name": "ix_stream_endpoints_protocol",
+          "unique": false
+        },
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "uq_stream_primary_camera",
+          "unique": true
+        }
+      ],
+      "name": "stream_endpoints",
+      "primary_key": {
+        "columns": [
+          "stream_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": [
+        {
+          "columns": [
+            "camera_id",
+            "name"
+          ],
+          "name": "uq_stream_camera_name"
+        }
+      ]
+    },
+    {
+      "check_constraints": [],
+      "columns": [
+        {
+          "default": null,
+          "name": "event_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "event_type",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(120)"
+        },
+        {
+          "default": null,
+          "name": "schema_version",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "camera_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "occurred_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "payload",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        },
+        {
+          "default": null,
+          "name": "published_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "camera_id"
+          ],
+          "name": "ix_stream_event_outbox_camera_id",
+          "unique": false
+        },
+        {
+          "columns": [
+            "event_type"
+          ],
+          "name": "ix_stream_event_outbox_event_type",
+          "unique": false
+        },
+        {
+          "columns": [
+            "occurred_at"
+          ],
+          "name": "ix_stream_event_outbox_occurred_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "published_at"
+          ],
+          "name": "ix_stream_event_outbox_published_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_stream_event_outbox_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "stream_event_outbox",
+      "primary_key": {
+        "columns": [
+          "event_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_stream_health_counts_nonnegative",
+          "sql": "consecutive_successes >= 0 AND consecutive_failures >= 0"
+        },
+        {
+          "name": "ck_stream_health_latency_nonnegative",
+          "sql": "probe_latency_ms IS NULL OR probe_latency_ms >= 0"
+        },
+        {
+          "name": "ck_stream_health_state",
+          "sql": "state IN ('unknown', 'healthy', 'degraded', 'offline', 'unauthorized', 'misconfigured', 'unsupported')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": "'unknown'",
+          "name": "state",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(32)"
+        },
+        {
+          "default": null,
+          "name": "reason_code",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "observed_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": "0",
+          "name": "consecutive_successes",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": "0",
+          "name": "consecutive_failures",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "probe_latency_ms",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "codec",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "container",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(80)"
+        },
+        {
+          "default": null,
+          "name": "width",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "height",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "INTEGER"
+        },
+        {
+          "default": null,
+          "name": "frame_rate",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "last_success_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "last_failure_at",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "updated_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "observed_at"
+          ],
+          "name": "ix_stream_health_current_observed_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "state"
+          ],
+          "name": "ix_stream_health_current_state",
+          "unique": false
+        }
+      ],
+      "name": "stream_health_current",
+      "primary_key": {
+        "columns": [
+          "stream_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    },
+    {
+      "check_constraints": [
+        {
+          "name": "ck_stream_probe_latency_nonnegative",
+          "sql": "latency_ms >= 0"
+        },
+        {
+          "name": "ck_stream_probe_outcome",
+          "sql": "outcome IN ('success', 'failure')"
+        }
+      ],
+      "columns": [
+        {
+          "default": null,
+          "name": "probe_id",
+          "nullable": false,
+          "primary_key_position": 1,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "stream_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "worker_id",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(160)"
+        },
+        {
+          "default": null,
+          "name": "started_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "finished_at",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "DATETIME"
+        },
+        {
+          "default": null,
+          "name": "outcome",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "VARCHAR(16)"
+        },
+        {
+          "default": null,
+          "name": "reason_code",
+          "nullable": true,
+          "primary_key_position": 0,
+          "type": "VARCHAR(64)"
+        },
+        {
+          "default": null,
+          "name": "latency_ms",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "FLOAT"
+        },
+        {
+          "default": null,
+          "name": "media",
+          "nullable": false,
+          "primary_key_position": 0,
+          "type": "JSON"
+        }
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": null,
+          "ondelete": "CASCADE",
+          "onupdate": null,
+          "referred_columns": [
+            "stream_id"
+          ],
+          "referred_schema": null,
+          "referred_table": "stream_endpoints"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": [
+            "outcome"
+          ],
+          "name": "ix_stream_probe_runs_outcome",
+          "unique": false
+        },
+        {
+          "columns": [
+            "started_at"
+          ],
+          "name": "ix_stream_probe_runs_started_at",
+          "unique": false
+        },
+        {
+          "columns": [
+            "stream_id"
+          ],
+          "name": "ix_stream_probe_runs_stream_id",
+          "unique": false
+        }
+      ],
+      "name": "stream_probe_runs",
+      "primary_key": {
+        "columns": [
+          "probe_id"
+        ],
+        "name": null
+      },
+      "unique_constraints": []
+    }
+  ]
+}

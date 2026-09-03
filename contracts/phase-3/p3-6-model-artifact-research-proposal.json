@@ -1,0 +1,208 @@
+{
+  "acquisition_controls": {
+    "artifact_body_request_order": [
+      "DET-E1-DFINE-N-COCO-PTH-R0",
+      "DET-B1-RFDETR-SMALL-1.9.4-PTH-R0",
+      "DET-A1-RFDETR-LARGE-2026-1.9.4-PTH-R0"
+    ],
+    "cumulative_expected_bytes": 537489237,
+    "download_mode_if_later_authorized": "sequential_streamed_one_artifact_at_a_time",
+    "environment_proxies_allowed": false,
+    "failure_retention": "retain_failed_or_mismatched_objects_in_quarantine_until_separate_cleanup_authority",
+    "http_redirect_policy": "deny_by_default_allow_only_the_exact_D_FINE_github_release_redirect_to_release_assets.githubusercontent.com",
+    "maximum_concurrent_downloads": 1,
+    "partial_file_policy": "write_to_dot_partial_then_rename_only_after_exact_identity_size_hash_and_scan_checks",
+    "resume_partial_downloads": false,
+    "runtime_loading_from_quarantine": false,
+    "sha256_required_after_acquisition": true,
+    "source_archive_dependency_dataset_and_container_downloads_allowed": false,
+    "unpickle_or_framework_load_allowed": false
+  },
+  "artifact_download_authorized": false,
+  "artifacts": [
+    {
+      "artifact_id": "DET-E1-DFINE-N-COCO-PTH-R0",
+      "candidate_id": "DET-E1",
+      "expected_bytes": 15489558,
+      "expected_filename": "dfine_n_coco.pth",
+      "expected_sha256": null,
+      "format": "native_pytorch_pth_pickle_bearing_checkpoint",
+      "identity": {
+        "github_asset_id": 204585647,
+        "github_asset_node_id": "RA_kwDOM0JY_s4MMbqv",
+        "publisher_digest": null,
+        "release_id": 177720969,
+        "release_tag": "dfinev1.0",
+        "storage_repository_revision": "39a3115d4b1183b9035e333e57655f018272ebbe"
+      },
+      "license_disposition": "blocked_checkpoint_specific_review_required",
+      "maximum_bytes": 15489558,
+      "proposed_source_url": "https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_n_coco.pth",
+      "quarantine_relative_path": "DET-E1/dfine_n_coco.pth",
+      "required_pre_rename_checks": [
+        "exact_GitHub_release_asset_identity",
+        "exact_byte_count",
+        "locally_computed_SHA256",
+        "bound_local_scanner_success",
+        "passive_file_type_and_pickle_opcode_inspection_without_load",
+        "license_and_lineage_evidence_capture",
+        "artifact_ML_BOM_entry"
+      ],
+      "status": "unacquired_unapproved_no_publisher_digest"
+    },
+    {
+      "artifact_id": "DET-B1-RFDETR-SMALL-1.9.4-PTH-R0",
+      "candidate_id": "DET-B1",
+      "expected_bytes": 386045550,
+      "expected_filename": "rf-detr-small.pth",
+      "expected_sha256": null,
+      "format": "native_pytorch_pth_pickle_bearing_checkpoint",
+      "identity": {
+        "gcs_crc32c_base64": "mDO6OA==",
+        "gcs_generation": "1753220474114031",
+        "gcs_md5_base64": "+zcGHBr3us41nJG3I6jVwQ==",
+        "official_release": "1.9.4",
+        "official_release_revision": "9b009fa928d6218320439803d1da01869a85c072",
+        "publisher_md5": "fb37061c1af7bace359c91b723a8d5c1"
+      },
+      "license_disposition": "officially_designated_Apache-2.0_exact_evidence_capture_still_required",
+      "maximum_bytes": 386045550,
+      "proposed_source_url": "https://storage.googleapis.com/rfdetr/small_coco/checkpoint_best_regular.pth?generation=1753220474114031",
+      "quarantine_relative_path": "DET-B1/rf-detr-small.pth",
+      "required_pre_rename_checks": [
+        "exact_GCS_generation",
+        "exact_byte_count",
+        "publisher_MD5_identity_check",
+        "locally_computed_SHA256",
+        "bound_local_scanner_success",
+        "passive_file_type_and_pickle_opcode_inspection_without_load",
+        "license_and_lineage_evidence_capture",
+        "artifact_ML_BOM_entry"
+      ],
+      "required_future_integration_gate": "official_sparse_COCO_decoder_must_bind_background_class_id_to_null_and_pass_numeric_parity",
+      "status": "unacquired_unapproved"
+    },
+    {
+      "artifact_id": "DET-A1-RFDETR-LARGE-2026-1.9.4-PTH-R0",
+      "candidate_id": "DET-A1",
+      "expected_bytes": 135954129,
+      "expected_filename": "rf-detr-large-2026.pth",
+      "expected_sha256": null,
+      "format": "native_pytorch_pth_pickle_bearing_checkpoint",
+      "identity": {
+        "gcs_crc32c_base64": "uNSDMQ==",
+        "gcs_generation": "1769071352867281",
+        "gcs_md5_base64": "XLchU1QcvLmqbvomIirMdQ==",
+        "official_release": "1.9.4",
+        "official_release_revision": "9b009fa928d6218320439803d1da01869a85c072",
+        "publisher_md5": "5cb72153541cbcb9aa6efa26222acc75"
+      },
+      "license_disposition": "officially_designated_Apache-2.0_exact_evidence_capture_still_required",
+      "maximum_bytes": 135954129,
+      "proposed_source_url": "https://storage.googleapis.com/rfdetr/rf-detr-large-2026.pth?generation=1769071352867281",
+      "quarantine_relative_path": "DET-A1/rf-detr-large-2026.pth",
+      "required_pre_rename_checks": [
+        "exact_GCS_generation",
+        "exact_byte_count",
+        "publisher_MD5_identity_check",
+        "locally_computed_SHA256",
+        "bound_local_scanner_success",
+        "passive_file_type_and_pickle_opcode_inspection_without_load",
+        "license_and_lineage_evidence_capture",
+        "artifact_ML_BOM_entry"
+      ],
+      "required_future_integration_gate": "official_sparse_COCO_decoder_must_bind_background_class_id_to_null_and_pass_numeric_parity",
+      "superseded_artifact_forbidden": "rf-detr-large.pth",
+      "status": "unacquired_unapproved"
+    }
+  ],
+  "authority": {
+    "planning_authorization": "D-P3.6-PLAN-AUTH",
+    "scope": "metadata_only_primary_source_research_and_non_executable_proposal",
+    "source_record": "contracts/phase-3/p3-6-model-artifact-research-sources.json"
+  },
+  "candidate_promotion_authorized": false,
+  "contract_format": "hcam.phase3.p3_6.model_artifact_research_proposal.v1",
+  "future_acquisition_gate": {
+    "decision_id": "D-P3.6-MODEL-RESEARCH-R1-AUTH",
+    "effect_if_eventually_approved": "acquire_only_the_three_exact_allowlisted_native_checkpoint_objects_to_the_bound_local_quarantine_for_hash_scan_static_inspection_license_lineage_and_ML_BOM_review",
+    "issuable_now": false,
+    "required_before_issue": [
+      "owner_accepts_the_non_authorizing_R0_planning_package",
+      "exact_local_non_cloud_non_network_quarantine_root_is_bound",
+      "storage_free_space_recheck_passes",
+      "exact_scanner_product_version_executable_and_command_are_bound",
+      "R1_proposal_regenerated_with_resolved_bindings_and_new_package_digest",
+      "owner_accepts_the_exact_R1_digest_and_action_allowlist"
+    ],
+    "status": "blocked_storage_and_scanner_bindings_unresolved"
+  },
+  "gate_effects": {
+    "P36-G1": "blocked_exact_metadata_is_not_model_comparison_evidence_or_champion_fallback_approval",
+    "P36-G2": "blocked_no_exact_machine_runtime_precision_decoder_or_generated_workload_profile_is_approved",
+    "P36-G4": "blocked_no_acquisition_authority_and_storage_scanner_bindings_are_unresolved",
+    "P36-G5": "blocked_no_executable_package_or_runtime_authority_exists"
+  },
+  "implementation_authorized": false,
+  "network_policy_if_later_authorized": {
+    "allowed_initial_https_hosts": [
+      "github.com",
+      "storage.googleapis.com"
+    ],
+    "allowed_redirect_https_hosts": [
+      "release-assets.githubusercontent.com"
+    ],
+    "credentials_allowed": false,
+    "dns_or_host_wildcards_allowed": false,
+    "environment_proxies_allowed": false,
+    "exact_urls_only": true,
+    "non_https_allowed": false,
+    "source_repository_api_dependency_dataset_container_and_model_hub_requests_allowed": false
+  },
+  "planning_package_acceptance_gate": {
+    "decision_id": "D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE",
+    "effect": "accept_the_documented_metadata_and_fail_closed_R0_proposal_only",
+    "grants_artifact_download": false,
+    "grants_implementation": false,
+    "grants_runtime_execution": false,
+    "status": "pending_owner_review"
+  },
+  "prepared_at": "2026-08-29T00:00:00Z",
+  "prohibited_actions": [
+    "download_any_artifact_under_this_R0_proposal",
+    "download_source_code_dependencies_datasets_containers_or_additional_models",
+    "load_unpickle_import_export_convert_or_execute_any_checkpoint",
+    "run_inference_benchmark_parity_performance_stress_or_hardware_tests",
+    "access_cameras_media_private_real_or_Government_data",
+    "modify_application_runtime_dependencies_containers_Kubernetes_or_deployment",
+    "promote_select_or_alias_a_champion_or_fallback",
+    "delete_failed_or_mismatched_quarantine_objects_without_separate_cleanup_authority",
+    "perform_remote_Git_actions"
+  ],
+  "proposal_id": "P3.6-MODEL-ARTIFACT-RESEARCH-PROPOSAL-R0",
+  "runtime_execution_authorized": false,
+  "scanner_binding": {
+    "command": null,
+    "executable_path": null,
+    "product": null,
+    "status": "unresolved_fail_closed",
+    "version": null
+  },
+  "status": "prepared_non_authorizing_storage_and_scanner_blocked",
+  "storage_binding": {
+    "actual_path": null,
+    "cloud_or_network_backed_storage_allowed": false,
+    "eligibility_recheck_required": true,
+    "logical_root_id": "P36-QUARANTINE-ROOT-R0",
+    "minimum_free_bytes": 5368709120,
+    "minimum_free_percent": 15,
+    "observed_ineligible_volumes": [
+      "C",
+      "E",
+      "F"
+    ],
+    "owner_prohibited_volume": "B",
+    "status": "unresolved_fail_closed"
+  },
+  "total_selected_artifact_bytes": 537489237
+}

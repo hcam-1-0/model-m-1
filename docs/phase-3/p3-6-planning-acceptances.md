@@ -1,0 +1,573 @@
+# P3.6 Planning Acceptances R0
+
+Status: planning-only owner acceptances are recorded through the portable U3D
+`A/A/A/A/A` supply-chain prerequisite policy. The bounded inventory R1 attempt
+succeeded and is consumed. The bounded U3E and U3G attempts both failed closed
+and are consumed. U3F `A/A/A/A/A/A` planning choices remain accepted. No
+continuing inventory collection, storage or Defender retry, artifact acquisition,
+implementation, runtime, or deployment authority exists.
+
+Machine-readable records:
+
+- [portable CPU proposal acceptance](../../contracts/phase-3/p3-6-portable-cpu-profile-acceptance.json);
+- [inventory and admission owner decisions](../../contracts/phase-3/p3-6-inventory-admission-owner-decisions.json); and
+- [model metadata proposal acceptance](../../contracts/phase-3/p3-6-model-artifact-research-acceptance.json).
+
+Later R1 outcome records:
+
+- [consumed owner authorization](../../contracts/phase-3/p3-6-inventory-r1-authorization.json);
+- [sanitized shared-schema R1](../../contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json); and
+- [bounded collection evidence](../../contracts/phase-3/p3-6-inventory-r1-collection-evidence.json).
+- [portable R1 admission policy acceptance](../../contracts/phase-3/p3-6-portable-r1-owner-decisions.json).
+- [portable compatibility and generated C1 policy acceptance](../../contracts/phase-3/p3-6-portable-compatibility-validation-owner-decisions.json).
+- [portable R1 supply-chain prerequisite policy acceptance](../../contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json).
+
+Consumed U3E/U3G records and accepted U3F choices:
+
+- [F: quarantine and scanner binding R0 package](../../contracts/phase-3/p3-6-quarantine-scanner-binding-r0-authorization-package.json).
+- [F: quarantine and scanner binding R0 result](../../contracts/phase-3/p3-6-quarantine-scanner-binding-r0-result.json).
+- [quarantine remediation R1 decision package](../../contracts/phase-3/p3-6-quarantine-remediation-r1-decision-package.json).
+- [quarantine remediation R1 owner decisions](../../contracts/phase-3/p3-6-quarantine-remediation-r1-owner-decisions.json).
+- [quarantine remediation R1 authorization package](../../contracts/phase-3/p3-6-quarantine-remediation-r1-authorization-package.json).
+- [quarantine remediation R1 consumed authorization](../../contracts/phase-3/p3-6-quarantine-remediation-r1-authorization.json).
+- [quarantine remediation R1 result](../../contracts/phase-3/p3-6-quarantine-remediation-r1-result.json).
+- [quarantine remediation R1 evidence](../../contracts/phase-3/p3-6-quarantine-remediation-r1-evidence.json).
+
+## Portable CPU Planning Proposal
+
+`D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE` accepts package digest
+`56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B`
+as the conservative non-executable `portable_cpu` planning baseline.
+
+The accepted planning values include the CPU behavior reference, single
+assignment/worker operation, batch one, one in-flight inference request, a
+bounded two-item queue, and a future generated C1 `INFER` workload. All
+unresolved runtime, resource, dependency, artifact, workload, quality,
+freshness, and validation fields remain blockers. The profile is not
+resolver-eligible or active.
+
+## Inventory And Admission Policy
+
+The owner selected `A/A/A/A` against package digest
+`CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A`:
+
+| Decision | Accepted selection |
+| --- | --- |
+| `D-P3.6-U3A-001` | Preserve historical R0 and later collect a new exact shared-schema R1 |
+| `D-P3.6-U3A-002` | Maximum 24-hour inventory validity with immediate authorized-change invalidation |
+| `D-P3.6-U3A-003` | Local read-only observed provenance plus a separate digest-bound owned-local generated-only trust policy |
+| `D-P3.6-U3A-004` | Block new admission on expiry while independent reservation, lease, fencing, health, and policy rules remain authoritative |
+
+Historical R0 remains immutable, nonconforming to the shared inventory shape,
+stale under the accepted policy, and ineligible for admission. These policy
+selections did not authorize a query or projection. A separate exact
+`D-P3.6-INVENTORY-R1-AUTH` package was prepared under digest
+`710D52D5BC9A24A42CCB379355C062095795554F261316C37714819F0DFDDAA7`.
+The owner later accepted that digest; its one local read-only attempt produced a
+sanitized shared-schema-valid R1 and is consumed. The R1 does not activate or
+admit a profile.
+
+## Portable R1 Admission Policies
+
+`D-P3.6-U3B-001` through `D-P3.6-U3B-004` are accepted as `A/A/A/A` against
+package digest
+`471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F`.
+The accepted policy requires just-in-time digest-bound inventory refresh,
+strict seven-input fail-closed admission, a complete immutable compatibility
+bundle, and a deterministic generated-only `CONTRACT` plus C1 `INFER` matrix
+with balanced as the default objective.
+
+R1 was fresh when these selections were accepted but represents only the
+capability-inventory input. The other six resolver inputs and all 22 evidence
+gaps remain unresolved. The acceptance grants no collection, profile,
+execution, implementation, or deployment authority.
+
+## Portable Compatibility And Generated C1 Policies
+
+`D-P3.6-U3C-001` through `D-P3.6-U3C-004` are accepted as `A/A/A/A` against
+package digest
+`9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A`.
+The accepted planning policy fixes the deterministic low-contention CPU
+candidate, bounded three-seed generated `CONTRACT` plus C1 `INFER` matrix,
+hard-safety/calibration/held-out-validation separation, and immutable `R0`
+through `R4` compatibility lifecycle.
+
+No actual compatibility bundle, artifact, supply-chain evidence, generated
+calibration, held-out validation, or promotional threshold exists. The
+acceptance record SHA-256 is
+`FECF3EF71F5A7550871C91BF3A58BFA9D279A88C312A4E96019EC2457821CA77`.
+This acceptance authorizes no acquisition, runtime execution, validation,
+profile admission, implementation, or deployment.
+
+## Portable R1 Supply-Chain Prerequisite Policies
+
+`D-P3.6-U3D-001` through `D-P3.6-U3D-005` are accepted as `A/A/A/A/A` against package digest
+`496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B`.
+The accepted planning policy requires an owner-bound local quarantine root,
+three-layer passive scanner chain, fail-closed verdict, sequential atomic
+acquisition and ML-BOM lifecycle, and strict passive R1 versus separately
+authorized generated-only R2 separation. The acceptance record SHA-256 is
+`F68BDE02AF96E3992A8C64F1F01A85CAC960F529946EA12FA4899D9EBFC197A9`.
+
+No exact path, scanner binary, scanner version, dependency digest, artifact, or
+runtime is bound. The proposal authorizes no storage or scanner query, write
+probe, installation, acquisition, inspection, checkpoint loading, execution,
+validation, implementation, profile admission, activation, or deployment.
+
+The owner later supplied `F:` as the candidate volume. The exact proposed root
+is `F:\HCAM-Quarantine`, sealed into the U3E one-attempt authorization package
+under digest
+`9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39`.
+The owner accepted that package and the attempt was consumed. It measured an
+eligible volume and path, failed closed on a broad-write ACL, skipped the probe,
+and removed the empty root. The U3F decision package is sealed under digest
+`9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78`.
+The owner selected `A/A/A/A/A/A`. U3G was sealed and exactly authorized under digest
+`C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B`
+and its single attempt is consumed. Exact post-create DACL verification failed,
+the probe was skipped, the empty root was removed, and Defender yielded no
+usable product version. No retry is authorized.
+
+Planning-only U3H failure analysis is sealed under digest
+`19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B`.
+Its recommended `A/A/A/A/A/A` policies are explicitly selected by
+`mayank-admin`. Acceptance record SHA-256
+`802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3`
+authorizes preparation only of a reviewable runner proposal and a storage-only
+proposal. The Defender-only proposal remains sequenced after accepted storage
+evidence. No runner implementation or machine action is authorized.
+
+## U3I Runner And U3J Storage Proposal Packages
+
+The accepted U3H preparation authority has now been consumed for its two
+declared planning outputs:
+
+- U3I runner implementation-authorization package SHA-256:
+  `712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3`;
+- U3J storage R2 authorization-proposal package SHA-256:
+  `8BC20745C4D00AED19C26D2C5FA82876DFE079427B1A6FA944E52FFA41F26398`.
+
+Both decisions are now accepted. The U3I authorization-record SHA-256 is
+`CD81871C6B6F560CDC01E9D6AA919B71F9E108DEB3AEA3C04B17BAF28C60D525`;
+the U3J planning-acceptance SHA-256 is
+`6F68EB164DC662086F7444D49638FFAB95F7FF1586469BB5E5E2DC876185AAA5`.
+
+U3I produced one contract-only PowerShell source and a machine-independent
+harness. Twenty generated vectors plus four structural checks pass, but the
+runner itself was not executed, every machine handler is unimplemented, and no
+runtime binding was observed. The implementation package is sealed under
+digest
+`71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67`
+and accepted through `D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE`.
+Acceptance-record SHA-256 is
+`70F2EE1133648F16CA6298C25FB6C46F56AA7C88FBA97553BDD0A2F55D90C63A`.
+
+U3J remains planning-only. A separate non-effective runtime-binding proposal is
+sealed under digest
+`37AA6C0684E291DC66F93FE4EDBC4E6FE0FA44101E63419B382BE59EA9FCFFA9`.
+Exact `D-P3.6-U3I-RUNTIME-BINDING-R0-AUTH` was recorded and consumed by one
+successful read-only attempt. Evidence SHA-256 is
+`4C628812F9D3B293140B5F2A621922FFC994333D124B5706A9745A9E903C4D8C`;
+`D-P3.6-U3I-RUNTIME-BINDING-R0-ACCEPTANCE` is recorded. Final U3K preparation
+package SHA-256 is
+`4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E`.
+  It cannot receive `D-P3.6-U3K-STORAGE-R2-AUTH` because it remains bound to the
+  placeholder runner. A future executable package requires accepted current
+  handler implementation and a fresh current runtime binding.
+
+The non-effective U3L handler implementation proposal is sealed under package
+SHA-256
+`EDD9CA84573B31B33B17250611EE07C555FD2E6CB95AE026200210D7F87AB311`.
+  Decision `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH` was recorded and
+  consumed. The implemented runner, pure handler, isolated Windows adapter,
+  64-vector generated Python reference/static verifier, compatibility tests,
+  and non-observational evidence are sealed under package SHA-256
+`79F29A6828DDBBE5E0967C4498C753DD19D547714CF8934AEFD93A9D6299B3D7`.
+  Exact `D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded
+  under acceptance-record SHA-256
+  `06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631`.
+  It permits preparation only of a separate non-effective generated PowerShell
+  validation and fresh-runtime-binding planning package. It grants no
+  PowerShell parsing/import/execution, runtime observation, machine access, or
+  storage authority.
+
+The resulting non-effective U3M planning package is sealed under SHA-256
+`F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+Its source-only implementation is complete and exact
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` is recorded.
+The separate non-effective U3N package is sealed under SHA-256
+`E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`.
+Exact `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` remains
+pending; no PowerShell validation or runtime-binding attempt is authorized.
+
+Neither package changes a capability profile or gate. `P36-G1`, `P36-G2`,
+`P36-G4`, and `P36-G5` remain blocked. No Defender proposal may be prepared
+until successful storage evidence is separately accepted.
+
+## Model Metadata Proposal
+
+`D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE` accepts package digest
+`2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE`
+as metadata-only planning for `DET-E1`, `DET-B1`, and `DET-A1`.
+
+No artifact is authorized for download, loading, scanning, conversion, export,
+or execution. A future `D-P3.6-MODEL-RESEARCH-R1-AUTH` is not issuable until an
+eligible exact local quarantine root and exact scanner/passive-inspection
+bindings are sealed in a regenerated package.
+
+## Gate State
+
+| Gate | State after these acceptances |
+| --- | --- |
+| `P36-G0` | Passed |
+| `P36-G0A` | Passed |
+| `P36-G1` | Blocked: no acquired comparison artifacts, H-CAM evidence, or approved champion/fallback |
+| `P36-G2` | Blocked: R1, U3C, and U3D planning policies exist; actual compatibility artifacts, six other resolver inputs, other profiles, and generated validation evidence remain missing |
+| `P36-G3` | Passed |
+| `P36-G4` | Blocked: U3E and U3G failed closed and are consumed; U3H planning choices are accepted, while a passing storage attestation, complete scanner bindings, and acquisition authority remain pending |
+| `P36-G5` | Blocked: no digest-bound implementation/runtime authorization |
+
+## Continuing Boundary
+
+The completed R1 decision authorizes no further inventory projection or
+recollection. These decisions authorize no package/model/
+dataset/driver/container download, model loading, inference, benchmark,
+hardware test, scheduler, container, Kubernetes, application implementation,
+camera/media/stream/data access, profile activation, model promotion,
+deployment, remote Git action, P3.7, or later work.
+
+## U3M Source-Only Implementation Authorization
+
+`mayank-admin` issued exact
+`D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH` for authorization package
+SHA-256
+`F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1`.
+That one source-only authority is consumed. The result is sealed as package
+SHA-256
+`D34FF5AA704DE4A0215C0EA5FDE440B8A4311E31CCC3EA6BB77939E7D3223F6A`.
+
+Exact `D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE` is now
+recorded under acceptance-record SHA-256
+`25FE4348FA7A38A7B8625463CBAEE1E2536340D4D2F7638F19404B9F76832AA9`.
+It authorizes preparation only of the separate non-effective U3N package,
+which is sealed under SHA-256
+`E980CDD3CF6D560EFD832188B8659BE5C0B89C528CEDE46FF1726645CE569C2E`.
+Exact `D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH` remains
+pending. Neither U3M acceptance nor U3N package preparation creates
+PowerShell, runtime, hardware, machine, storage, scanner, network, download,
+model, media, container, Kubernetes, deployment, or remote Git authority.
+
+## U3N Attempt Outcome And Pending U3O
+
+The exact U3N authorization was recorded before observation and consumed by one
+attempt. The attempt failed closed; sanitized evidence SHA-256 is
+`0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42`.
+It is not accepted as successful validation and creates no retry or U3K
+authority.
+
+Planning-only failure analysis produced the non-effective U3O source-remediation
+package SHA-256
+`17B2142E7F3502724C6653371556DA17F7231D6C56AB0421EC39725556EAA338`.
+Exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-AUTH` was
+subsequently recorded and consumed for the source-only result below. Neither
+the analysis nor the accepted source result authorizes PowerShell, runtime
+observation, retry, machine/storage action, deployment, or remote Git.
+
+## U3O R1 Source Implementation Accepted
+
+Exact U3O implementation authority was consumed. Harness SHA-256 is
+`F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3`;
+source/static evidence SHA-256 is
+`07FF33F19A3C846E69AA8E9C1FD34F9EEBA621BEF1A2424C9173015FB4A0E695`;
+the implementation package SHA-256 is
+`2D9A234A3C1C29276D6D27160849E34DB7440631AC2CD97BEAA650FB48F52E8E`.
+
+Exact
+`D-P3.6-U3O-VALIDATION-HARNESS-R1-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+is recorded under acceptance-record SHA-256
+`8A6EBD49F71667ECF9961BB02CA891A610497DEBCE23DDDFB9A65FA08F2917EC`.
+That acceptance authorized only the non-effective U3P package recorded below.
+Retry, PowerShell action, runtime/hardware observation, U3K action, profile
+activation, deployment, and remote Git action remain unauthorized.
+
+## U3P R2 Consumed And U3Q Awaiting Implementation Acceptance
+
+U3O acceptance was used only to prepare the separate non-effective U3P R2
+package. Package SHA-256 is
+`2AFD1D377A68DC35286FE73E58A2B4733BB91BD225BDDBA443472FF76F5603A3`.
+Exact `D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH` was recorded
+and consumed by one failed-closed `result_contract_invalid` attempt. Evidence
+SHA-256 is
+`634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE`.
+
+The non-effective U3Q source-remediation package is sealed under SHA-256
+`5EC2889439E81B9F955FE7C3864A0931466458EAFA77C5797E44B24DC9AB0B47`.
+Exact
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH`
+and `D-P3.6-U3Q-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` were recorded before
+their changes. R2 source/generated-static implementation evidence SHA-256 is
+`90F3F6F42C73F573A82D1BF5C790B217F891B23D97198916A17FD436B94A8591`;
+implementation package SHA-256 is
+`2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF`.
+Exact
+`D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE`
+is recorded in acceptance record SHA-256
+`32BA42A51029920AE163866A923547CD16054D6C41ECD3C8EC5549B78FB3ED2E`.
+Only non-effective U3R planning is authorized. No PowerShell, retry, U3R
+execution, U3K, profile activation, deployment, or remote Git is authorized.
+
+U3R R3 planning produced non-effective authorization package SHA-256
+`A912EF51629A3E73FFF2ECE7AAB8A7D3017A659F9FB75F5402A90027D4B53D98`.
+Exact `D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH` remains
+pending. Package preparation is not execution authority.
+
+## U3S R1 Dual Architecture Acceptance
+
+Exact `D-P3.6-U3S-R1-DUAL-ARCHITECTURE-ACCEPTANCE` is recorded for planning
+package SHA-256
+`E170B4485C84F29AAAC0C04BFA0B4D15B0AB3B4EC99D92A46F259735C82346E9`.
+The duplicate statement copies were identical and create one acceptance only.
+
+The resulting source-only implementation authorization package SHA-256 is
+`3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
+Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` was later recorded;
+it was not inferred from architecture acceptance or continued planning.
+
+## U3S implementation authorization and amendment
+
+The owner supplied exact
+`D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH` against package SHA-256
+`3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC`.
+The owner then supplied exact
+`D-P3.6-U3S-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` for one historical test.
+
+The resulting source package SHA-256 is
+`484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30`.
+Exact `D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE` is recorded in
+acceptance record SHA-256
+`8A688EA3542D2F5D8CD2EF9BA86204F8AE7B997C06351E1178CF6545B52CE125`.
+
+## U3T H1 preflight planning package
+
+The accepted U3S source package permits only preparation of a separate
+non-effective U3T proposal. That package is sealed at SHA-256
+`26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
+Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` is pending and
+cannot be inferred from U3S acceptance, package existence, or continued work.
+
+## U3T H1 implementation authorization
+
+The owner supplied exact
+`D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH` against package SHA-256
+`26B8A0A6FF1B8DA556BB68D6E1EA13B51FFF4460D5CA2F50F3E64952528E69F2`.
+The resulting source-only H1 implementation package SHA-256 is
+`AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788`.
+The owner then supplied exact
+`D-P3.6-U3T-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` for the one historical
+planning test. The focused H1 suite and all 719 Phase 3.6 static tests pass.
+H1 source acceptance is now requestable but remains pending; it cannot be
+inferred from authorization, validation, package existence, or continued work.
+
+## U3T H1 acceptance and R1 proposal authority
+
+The owner supplied exact
+`D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE` against H1 package
+SHA-256
+`AF16FFBD8214B7509FA634FBF5897B9CD4E0AE54E50B05F95678187E6CF00788`.
+Its canonical statement SHA-256 is
+`5298B054EF403B60D491F5D4BA3B12C3119878880D7C454E81E820095D8199D7`.
+
+`D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH` was later recorded exactly. Its one
+attempt against package SHA-256
+`C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53` is
+consumed and failed closed with `result_contract_invalid`; no retry
+or U3K authority followed. The next pending planning acceptance is
+`D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS` against package SHA-256
+`C58B9291E06396374DE92308F2CC52CDB51824BFFDFD1958E4D655C75A894CCD`.
+It was accepted with `A/A/A/A`; canonical owner statement SHA-256 is
+`936964507E19F905390CD5A0AABE1547E3AF88E5EF6A19F9F22F429870A2D1DF`.
+That decision permits preparation only of U3V source authorization package
+SHA-256
+`745C50AEB4DB61147C541F897F5E78987F64D9C3B137559F7CA811C0A6A5FD33`.
+Exact `D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH` was separately recorded
+on 2026-09-02 and was not inferred from U3U acceptance, package preparation,
+static validation, or `continue`. Source implementation is complete. Exact
+`D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-ACCEPTANCE` accepts package SHA-256
+`AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`.
+The separate U3V compatibility-test amendment is recorded with statement
+SHA-256
+`9BE9C3F3D2BB9ABE11A84CCCE2E4DDF79B3370AF017AD9E0B56E29C2426B541E`;
+it grants no runtime authority.
+
+That exact U3V acceptance grants only preparation of the separate non-effective
+U3W package SHA-256
+`DDCB7A9C4E6E93BF5252FAFF840E3841C1B9080FE5657AA0037532EE2037B760`.
+`D-P3.6-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-AUTH` was explicitly recorded;
+its one attempt is consumed with `controller_stage_projection_invalid` and is
+not reusable. A later `continue` authorized preparation only of the
+non-effective U3X planning package SHA-256
+`80CA25BC1F1EE77E5A9ED8ADEF76C695D5169544CB75B6A57A03692463FFA460`.
+The owner then explicitly accepted `D-P3.6-U3X-001:A` through `004:A`. The
+canonical statement is 904 UTF-8 bytes with SHA-256
+`26536D7D4921317528A8F2ED72F6D3D6720CAE767AF2E3531C7B19FFEA26670B`;
+the acceptance record SHA-256 is
+`56FE994A8F3EDCB17B673E63CB3773B17EB63FA8B3E23F04A3A58A9E7105D91E`.
+That acceptance authorizes preparation only of the non-effective U3Y package,
+sealed at SHA-256
+`35086DDC152DDF659097F6841AA364B965E0851833C339DCF2736BEF1AA0940A`.
+No `D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-AUTH` is inferred
+from U3X acceptance, proposal preparation, static validation, or a later
+`continue`.
+
+Exact
+`D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-ACCEPTANCE`
+accepts package SHA-256
+`ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78`.
+Its canonical owner statement is 1,446 UTF-8 bytes with SHA-256
+`0C000AEE9AD45DD2301CB32D57B96BC1493BEA2D133D6E1CB8707FEB0C52CBCE`;
+the acceptance record SHA-256 is
+`1D4F58F792CDA447E0DB369924BB2004F6CC7300484D2660755FC545ABC3C1F5`.
+That acceptance authorizes preparation only of non-effective U3Z package
+SHA-256
+`B9696A95EF14D186C7D2CC8D949EE711C2621E907DAD28AF4FC192B2A1A1F09A`.
+No
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-AUTH`
+is inferred from acceptance, preparation, validation, `continue`, or silence.
+
+Exact
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-AUTH`
+is now recorded against that package. Its canonical owner statement is 1,465
+UTF-8 bytes with SHA-256
+`5136263DC036CD37AAEB7EEBA05076C5567761246F59566EB12B4DBA9AE1DA5C`.
+The current source-only implementation package SHA-256 is
+`47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF`.
+Exact `D-P3.6-U3Z-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` is recorded. Its
+canonical owner statement is 1,704 UTF-8 bytes with SHA-256
+`E7F7B483EBF3DABD46CA213CB6773582CE23542BB3EA8BB8FBB535F212327692`.
+The exact one-test transition is complete and all 1,503 Phase 3.6 checks pass.
+This authorization does not imply source acceptance, PowerShell execution,
+runtime validation, U3K, deployment, commit, push, or remote Git authority.
+
+Exact
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-ACCEPTANCE`
+accepts source/generated-static package SHA-256
+`47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF`.
+Its 1,450-byte canonical statement SHA-256 is
+`2E1141B3EB2FE91D1208C4E249919023CA81B6810BA66BA76495639CAAC384C5`
+and its acceptance record SHA-256 is
+`38B89E53B46F921663879DE0614AF318EDF9B66AB36120663D14F61070AD8477`.
+It permits preparation only of non-effective package SHA-256
+`3348ECB80895806A2E63610088EF3178CE38B715910C3B1463D97CB2E8F3C6C5`.
+Exact
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-AUTH`
+was received and consumed by one failed-closed attempt. The terminal reason is
+`binding_failed`; the PowerShell invocation, controller dot-source, generated
+case, retry, and prohibited-action counts are all zero.
+
+The follow-up U4A planning package SHA-256 is
+`0918CD9775DA870C530233BD8728325164159A53777A42FAA8DB5B4A7C8DA5D9`.
+Exact `D-P3.6-U4A-U3Z-R1-FAILURE-ANALYSIS-DECISIONS` is accepted as `A/A/A/A`.
+Its 966-byte canonical statement SHA-256 is
+`EE16DBC0A50E6B0CC9C4A656988F37C5C1236C3F7EEB1A79F5B7D12021502927`,
+and acceptance record SHA-256 is
+`F8C39C761A8B0359CDB50F13AF0935A481C8A881A02A6F325E722137FCB75E36`.
+
+That acceptance permits preparation only of non-effective U4B package SHA-256
+`E52680B8314FA9A4FC862510BC9570DE3942A791952F22425E61ED61723222AE`.
+Exact `D-P3.6-U4B-OUTER-ATTEMPT-CONTROLLER-R0-IMPLEMENTATION-AUTH` remains
+pending and cannot be inferred from U4A acceptance, `continue`, package
+preparation, or static validation. No implementation or execution authority
+exists.
+
+The proposed authorization-consolidation overlay is sealed in package SHA-256
+`DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C`.
+`D-P3.6-CONSOLIDATED-BUILD-AUTH` remains pending and cannot be inferred from
+the request for fewer approvals, `continue`, package preparation, or static
+validation. The future
+`D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH` cannot be inferred from build
+authorization or build success. U4B remains valid unless the consolidated
+policy is explicitly selected.
+
+## Consolidated Build Acceptance State
+
+`D-P3.6-CONSOLIDATED-BUILD-AUTH` is accepted for package SHA-256
+`DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C`
+with `A/A/A/A/A/A`. The separately authorized compatibility-test transition
+is recorded, and the completed source build is sealed as package SHA-256
+`A006B6A1D7AA59F8A67BC8AD24B280D546397F921AF0111E366ACF38DD21A766`.
+The next decision, `D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH`, is requestable
+against package SHA-256
+`B7AB81130213AADD907055B75D795D59864AD2C91A2D876B7A267407CA289CD3`
+but is not accepted or effective.
+
+## U4C Planning State
+
+Consolidated runtime-closeout attempt 1 is consumed and failed closed with
+`process_output_bounds_failed`. Its authorization cannot be reused. The
+non-effective U4C failure-analysis package SHA-256 is
+`26182B3EFB369C56741DFCEC51DCE412DB3EC4EF5170C0741847F1ADAE4481C0`.
+`D-P3.6-U4C-CLOSEOUT-R1-FAILURE-ANALYSIS-DECISIONS` remains pending; neither
+`continue` nor planning-package preparation selects `A/A/A/A/A` or authorizes
+implementation, execution, retry, U3K, closeout, commit, or remote Git.
+
+## U4C Acceptance And U4D Proposal
+
+Exact `D-P3.6-U4C-CLOSEOUT-R1-FAILURE-ANALYSIS-DECISIONS` is accepted as
+`A/A/A/A/A`. The 1,031-byte canonical owner statement SHA-256 is
+`9367A8E580FBB3FC136518D6611D1AA7DBC37D14DD61A131FD4144E620CB051D`;
+the acceptance record SHA-256 is
+`722B4180D7FD81CAC3CB829C1F9A901705DC7EF87E86E1527F5E18D00926330C`.
+It permits preparation only of non-effective U4D package SHA-256
+`2DAD142AE31D5A3738ABADD0098512B61C0BC2C3A5C7C915BF99DE8D40FB7F74`.
+Exact `D-P3.6-U4D-PROCESS-OUTPUT-REMEDIATION-IMPLEMENTATION-AUTH` remains
+pending and cannot be inferred from U4C acceptance, package preparation,
+validation, `continue`, or silence.
+
+Exact `D-P3.6-U4D-PROCESS-OUTPUT-REMEDIATION-IMPLEMENTATION-AUTH` is now
+recorded against package SHA-256
+`2DAD142AE31D5A3738ABADD0098512B61C0BC2C3A5C7C915BF99DE8D40FB7F74`.
+Its canonical owner statement is 1,745 UTF-8 bytes with SHA-256
+`0238D5D659F9D35068C9949DAB57DD8D72A88F624847A7593263CE767E3C51B5`.
+Only the exact source/generated-static build is authorized. PowerShell
+execution, runtime/machine/storage actions, retry, U3K, closeout, commit, push,
+and remote Git remain blocked.
+
+The historical self-binding compatibility amendment is recorded at statement
+SHA-256
+`2D3BA9EC453CFCF8BFEF18B72A8FAB67E49AC1C2E929BA106BAA6E80C419CA0F`.
+The U4D proposal-test compatibility amendment is recorded at canonical
+2,347-byte statement SHA-256
+`24A39807CC463909BF342C36B931FD220FF3003F64774C90D32374C13758088E`.
+The completed U4D source package SHA-256 is
+`288F275345E2586E05BE14EC964CA77EF7503A0BE70D88C6C5696BB4655C612A`.
+`D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-AUTH` was later accepted and
+consumed by one failed-closed attempt. No continuing runtime or machine
+authority is inferred from that consumed authorization.
+
+## U4E Planning State
+
+R2 failed closed at the Utility manifest closure gate with
+`utility_closure_declared_target_missing`. The exact missing target identity
+was not retained. Official Microsoft documentation supports manifest-folder
+relative path resolution and separate `FileList` inventory semantics, but it
+does not prove the local missing target's cause.
+
+U4E planning package SHA-256
+`C0BF901B7D66BE11A250F9369C5CE564A59A726E88877E4A77CD36F310997B7D`
+is sealed and recommends `A/A/A/A/A` for `D-P3.6-U4E-001` through `005`.
+Exact owner selections remain pending and cannot be inferred from `continue`,
+package preparation, recommendation, or silence. U4F proposal preparation,
+source implementation, runtime, machine/storage, U3K, closeout, commit, push,
+and remote Git remain blocked.
+
+## Consolidated R5 Closeout Acceptance
+
+The combined-execution delegation completed the remaining U4E, U4F, generated
+runtime validation, R5 remediation, U3K, and synchronization work. Exact success
+evidence SHA-256 is
+`8E6567507FCCA1439FA6AC7C9C384721D98A51EDE989706152CFDE886F6FFD67`.
+Phase 3 and Phase 3.6 are accepted as complete within generated-only,
+zero-retention, nondeployment boundaries. This acceptance does not widen any
+model, camera, media, data, network, scanner, profile, deployment, or remote-Git
+authority.

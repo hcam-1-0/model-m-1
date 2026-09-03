@@ -1,0 +1,86 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3u_remediation_planning_package.v1",
+  "package_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3U-REMEDIATION-PLANNING-PACKAGE",
+  "acceptance_decision_id": "D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS",
+  "status": "sealed_non_effective_owner_decisions_pending",
+  "sealed_on": "2026-09-02",
+  "preparation_authority": "user_continue_after_sealed_consumed_U3T_R1_attempt_for_planning_only",
+  "core_file_count": 6,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-authorization.json",
+      "sha256": "34AEBB1FC200E1BBC635130A0E41433DC1B4718A1354541F29CC378A4736481D"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-result.json",
+      "sha256": "B7DAEF8067FACA055A664FC1FD62FA8C3F2CF8C0C27E27679B7DA7AD8E174CFD"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-evidence.json",
+      "sha256": "2706F18CA283428A17FDEB0AEB02CC350FE88336D8FBF9AC00CD040F3F0A51E1"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-failure-analysis-r0.json",
+      "sha256": "51F123AA0E4D8F34255D1EAECC340ABAEAC430CBA00A56AD9ECCA66545ABDC6A"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3u-remediation-decision-packet.json",
+      "sha256": "F3585723D81EC71A7D6F231B6A0EBF477D60611CB8DDC71E5ACAF6A463279F1C"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-u3u-remediation-decision-packet.md",
+      "sha256": "8C8C649F1ED22B46685C20D804D207710A815FAE3AE40C9DA696E5253A24A2EC"
+    }
+  ],
+  "owner_decisions": [
+    {
+      "decision_id": "D-P3.6-U3U-001",
+      "title": "First Remediation Surface",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U3U-002",
+      "title": "Sanitized Diagnostic Contract",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U3U-003",
+      "title": "Source Validation Evidence",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U3U-004",
+      "title": "Runtime Reentry Sequence",
+      "recommended_option": "A",
+      "selected_option": null
+    }
+  ],
+  "recommended_selection": "A/A/A/A",
+  "future_owner_acceptance_statement_template": "D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS: I, mayank-admin, accept the sanitized U3T R1 failure-analysis planning package digest <U3U_PLANNING_PACKAGE_DIGEST_SHA256> and select D-P3.6-U3U-001:A, D-P3.6-U3U-002:A, D-P3.6-U3U-003:A, and D-P3.6-U3U-004:A. This accepts the failed U3T R1 evidence for planning purposes and authorizes preparation only of a separate source-only additive H1 R1 diagnostic-harness implementation authorization proposal. It does not authorize harness, controller, test, model, or product implementation; PowerShell parsing, import, dot-sourcing, or execution; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, another attempt, U3K, or remote Git.",
+  "effect_if_exactly_accepted": {
+    "record_selected_planning_options": true,
+    "prepare_separate_source_only_H1_R1_implementation_authorization_proposal": true,
+    "source_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "retry_or_generated_validation_authorized": false,
+    "U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  },
+  "current_gate_effect": {
+    "owner_decisions_pending": true,
+    "attempts_authorized": 0,
+    "H1_R1_harness_or_test_modification_authorized": false,
+    "accepted_controller_modification_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  },
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U3U_planning_package_digest_and_is_not_self_embedded",
+  "authorization_may_be_inferred_from_continue_silence_recommended_options_or_package_preparation": false
+}

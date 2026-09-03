@@ -1,0 +1,96 @@
+P3.6 QUARANTINE TRANSACTION RUNNER R0 SOURCE PROPOSAL
+
+CLASSIFICATION: NON-EXECUTABLE PLANNING ARTIFACT
+STATUS: NO HANDLER IMPLEMENTATION, NO MACHINE ACCESS, NO EXECUTION AUTHORITY
+
+This text is a human-reviewable control-flow proposal. It is intentionally not
+valid PowerShell, Python, batch, or another executable language. A later exact
+implementation package must replace every abstract operation with reviewed
+source, bind that source and its runtime by SHA-256, pass the sealed generated
+contract vectors, and receive separate owner implementation authority. A still
+later storage package and owner statement must authorize one execution attempt.
+
+PROPOSED INPUTS
+
+- exact final storage-attempt package path and SHA-256;
+- exact owner authorization record path and accepted statement;
+- exact content-hashed runner implementation path and SHA-256;
+- exact runtime path, version, size, SHA-256, and trust result;
+- exact ordered action identifiers from the sealed action specification;
+- exact output schemas and paths from the sealed action specification.
+
+PROPOSED PRE-MACHINE CONTROL FLOW
+
+1. Read one UTC start timestamp in process memory.
+2. Verify the final attempt-package SHA-256 and every core-file SHA-256.
+3. Verify the exact owner statement, decision identifier, use window, logical
+   node, candidate root, single-attempt state, and runner/runtime bindings.
+4. Reject missing, duplicate, reordered, unknown, disabled, or mutated action
+   identifiers. Reject path, byte, timeout, output, or policy overrides.
+5. Atomically persist the sanitized authorization record.
+6. Abort before machine access if any prior operation fails.
+
+PROPOSED DEFAULT-DENY DISPATCH
+
+The future implementation may dispatch only an exact, compile-time mapping:
+
+- U3K-A01-UTC-CLOCK-START -> bind_start_time
+- U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY -> verify_authority
+- U3K-A03-AUTHORIZATION-RECORD -> persist_authorization
+- U3K-A04-F-DRIVE-INFO -> attest_exact_volume
+- U3K-A05-CANONICAL-PATH-AND-ABSENCE -> attest_exact_absent_root
+- U3K-A06-PROTECTED-DACL-CONSTRUCT -> construct_exact_descriptor
+- U3K-A07-SECURITY-AT-CREATE-ROOT -> create_exact_hardened_root
+- U3K-A08-NORMALIZED-DACL-VERIFY -> verify_normalized_acl_tuples
+- U3K-A09-ATOMIC-CAPABILITY-PROBE -> run_generated_probe_and_cleanup
+- U3K-A10-NORMALIZE-HASH-WRITE -> persist_sanitized_result_and_evidence
+
+Every other identifier is DENY. Dynamic evaluation, expression execution,
+reflection-based handler lookup, command-string construction, shell fallback,
+plugin loading, environment-defined actions, and network retrieval are DENY.
+
+PROPOSED TRANSACTION RULES
+
+- Actions execute once, serially, in the exact sealed order.
+- Machine access starts only after U3K-A03 succeeds.
+- Paths, sizes, timeouts, algorithms, identities, and output fields are sealed
+  constants, not caller-provided values.
+- The current-process SID exists only in process memory and is never rendered,
+  logged, serialized, translated to a name, or used as a metric label.
+- Raw ACLs, security descriptors, exceptions, command output, device data,
+  identities, and probe bytes are never persisted.
+- The current-process allow ACE passes only when its normalized semantic mask
+  is exactly Modify plus the automatic Synchronize bit and contains no unknown
+  or privilege-management bits.
+- Rule count, principal, access type, normalized rights, inheritance,
+  propagation, inherited-rule absence, deny-rule absence, and unauthorized-
+  principal absence are independent checks.
+- Probe data is exactly 4096 deterministic generated non-secret, non-media
+  bytes and has zero retention after success or bounded cleanup.
+- A failure consumes the single authorization. There is no automatic retry.
+- Cleanup may remove only probe files created by the attempt and the exact root
+  only when the attempt created it and it is empty.
+- Result and evidence writes are allowlisted, bounded, sanitized, and atomic.
+
+PROPOSED FAILURE MODEL
+
+- Package, runner, runtime, owner-statement, use-window, or action-plan failure:
+  abort before machine access.
+- Volume or path precondition failure: persist a sanitized result without
+  creating or modifying the candidate root.
+- DACL construction or normalized verification failure: skip the probe and
+  remove only an attempt-created empty root.
+- Probe failure: perform bounded cleanup, mark storage blocked, and do not
+  retry.
+- Cleanup failure: leave the root ineligible and require separate manual-review
+  authority.
+- Output-schema or write failure: fail closed; do not widen output paths.
+
+EXPLICITLY ABSENT FROM THIS PROPOSAL
+
+- executable source or handler bodies;
+- F: access, directory creation, ACL changes, probe writes, or cleanup;
+- Defender, ModelScan, scanner, signature, trust, or executable operations;
+- downloads, artifact access, models, inference, media, data, hardware tests;
+- containers, Kubernetes, product code, deployment, or remote Git operations.
+

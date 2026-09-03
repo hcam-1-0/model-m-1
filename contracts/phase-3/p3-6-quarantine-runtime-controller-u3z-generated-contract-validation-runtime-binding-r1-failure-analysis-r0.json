@@ -1,0 +1,150 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3z_generated_contract_validation_runtime_binding_r1_failure_analysis_r0.v1",
+  "analysis_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3Z-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-FAILURE-ANALYSIS-R0",
+  "status": "sanitized_U3Z_R1_binding_failure_analyzed_owner_decisions_pending_no_remediation_retry_or_U3K_authority",
+  "prepared_on": "2026-09-02",
+  "analysis_scope": "sealed_U3Z_R1_attempt_records_action_spec_authorization_package_and_accepted_source_identities_only",
+  "attempt_evidence": {
+    "decision_id": "D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-AUTH",
+    "authorization_package_sha256": "3348ECB80895806A2E63610088EF3178CE38B715910C3B1463D97CB2E8F3C6C5",
+    "action_spec_sha256": "2616CFEC77C6D0CA390FA58573FED25A1123209C51EFC472DCBDC3A6B45D94B4",
+    "authorization_record_sha256": "FC1AE35876012CEFDCB52AE5A274FC5787FAE1AE722A9709AC76782C78C530D1",
+    "result_record_sha256": "C9743F0FC8906E46701E07A01A1C651F4B4B2C0517FAB722A97C1396F40F7303",
+    "evidence_record_sha256": "34BDA40E4450F35AF4A86E3C7566B9AFCA01413D70FE9CA9EB70B35A1B921BFF",
+    "attempts_consumed": 1,
+    "authorization_reusable": false,
+    "retry_authorized": false,
+    "successful_evidence_available": false
+  },
+  "confirmed_facts": {
+    "authorization_record_existed_before_runtime_observation": true,
+    "sealed_package_core_hashes_verified_before_observation": "16_of_16",
+    "attempt_started_at": "2026-09-02T14:17:35.7836226Z",
+    "attempt_completed_at": "2026-09-02T14:17:35.8618722Z",
+    "duration_milliseconds": 78,
+    "sanitized_reason_code": "binding_failed",
+    "runtime_observation_started": true,
+    "fixed_parent_count_required": 3,
+    "fixed_parents_validated_before_process": false,
+    "runtime_candidate_classified": false,
+    "runtime_file_size_collected": false,
+    "runtime_version_collected": false,
+    "runtime_hash_collected": false,
+    "runtime_trust_initialized": false,
+    "runtime_trust_verified": false,
+    "source_binding_started": false,
+    "PowerShell_runtime_invocation_count": 0,
+    "controller_dot_source_count": 0,
+    "generated_contract_cases_loaded": 0,
+    "generated_contract_cases_executed": 0,
+    "automatic_retry_count": 0,
+    "prohibited_action_count": 0,
+    "raw_process_exception_path_identity_environment_or_security_material_retained": false,
+    "U3K_authorized": false
+  },
+  "failure_localization": {
+    "earliest_confirmed_failed_boundary": "fixed_parent_set_validation_before_exact_runtime_candidate_classification",
+    "latest_confirmed_completed_boundary": "authorization_package_owner_statement_window_and_pre_observation_record_validation",
+    "runtime_binary_reached_for_metadata_hash_or_trust": false,
+    "accepted_source_files_reached_for_hash_validation": false,
+    "generated_validation_harness_reached": false,
+    "scope": "outer_attempt_controller_binding_preflight_not_the_accepted_U3Z_generated_validation_harness_or_controller_R1_contract"
+  },
+  "interpretation_boundaries": {
+    "which_fixed_parent_predicate_failed_is_known": false,
+    "actual_parent_absence_reparse_or_canonical_mismatch_is_confirmed": false,
+    "fixed_parent_collection_aggregation_or_strict_mode_failure_is_confirmed": false,
+    "runtime_binary_invalidity_is_confirmed": false,
+    "accepted_U3Z_harness_or_controller_defect_is_indicated_by_this_attempt": false,
+    "why": "the_allowlisted_binding_failed_reason_and_zero_raw_retention_do_not_separate_parent_item_classification_from_parent_set_aggregation_or_outer_controller_failure",
+    "blind_retry_safe": false,
+    "current_authorization_reusable": false
+  },
+  "historical_context": {
+    "same_logical_node_previous_exact_runtime_family_was_successfully_hash_and_cache_only_trust_bound": true,
+    "historical_runtime_evidence_is_not_current_U3Z_R1_runtime_evidence": true,
+    "effect": "historical_success_reduces_but_does_not_eliminate_the_probability_of_a_current_environment_change_and_does_not_authorize_reuse_or_retry"
+  },
+  "confirmed_design_gaps": [
+    {
+      "gap_id": "GAP-U3Z-R1-OUTER-ATTEMPT-CONTROLLER-NOT-PACKAGE-BOUND-AS-SOURCE",
+      "finding": "the_authorization_package_binds_the_action_spec_and_target_sources_but_not_a_source_controlled_executable_outer_attempt_controller",
+      "effect": "the_exact_parent_set_evaluation_and_evidence_serialization_implementation_cannot_be_reproduced_or_statically_validated_as_an_immutable_package_input"
+    },
+    {
+      "gap_id": "GAP-U3Z-R1-BINDING-REASON-TOO-COARSE",
+      "finding": "binding_failed_collapses_fixed_parent_item_classification_parent_set_aggregation_runtime_classification_hash_trust_and_postflight_identity_failures",
+      "effect": "the_consumed_attempt_cannot_select_a_precise_remediation_without_inference"
+    },
+    {
+      "gap_id": "GAP-U3Z-R1-FIXED-PARENT-SET-SEMANTICS-NOT-GENERATED-VALIDATED",
+      "finding": "the_package_has_no_generated_static vectors_for_zero_one_and_multiple_invalid_parent_results_or_empty_failure_collection_behavior_under_strict_mode",
+      "effect": "a_collection_cardinality_or_boolean_aggregation_defect_can_fail_before_runtime_classification_without a_specific_reason"
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "H1-FIXED-PARENT-SET-AGGREGATION-FAILED",
+      "confidence": "high_inference_not_confirmed_by_retained_runtime_evidence",
+      "basis": [
+        "failure_completed_in_78_milliseconds_before_runtime_metadata_or_hash",
+        "all_three_fixed_parents_are_reported_as_not_collectively_validated",
+        "the_outer_attempt_controller_is_not_a_package_bound_statically_validated_source_artifact",
+        "the_single_coarse_reason_does_not_separate_item_predicates_from_set_aggregation"
+      ],
+      "required_response": "materialize_exactly_three_typed_parent_classification_results_and_compute_all_valid_from_an_explicit_fixed_length_collection"
+    },
+    {
+      "hypothesis_id": "H2-ONE-OR-MORE-FIXED-PARENTS-WERE-ACTUALLY-INVALID",
+      "confidence": "possible_unresolved",
+      "basis": [
+        "fixed_parent_validation_is_the_earliest_failed_boundary",
+        "current_parent_item_results_were_not_retained",
+        "historical_success_does_not_prove_current_filesystem_state"
+      ],
+      "required_response": "retain_only_bounded_per_index_boolean_and_allowlisted_reason_results_without_paths_ACLs_identities_or_raw_attributes"
+    },
+    {
+      "hypothesis_id": "H3-RUNTIME-BINARY-HASH-TRUST-OR-SOURCE-FAILURE",
+      "confidence": "not_reached_and_not_supported",
+      "basis": [
+        "runtime_size_version_hash_and_trust_fields_are_empty_or_false",
+        "source_binding_started_is_false",
+        "process_invocation_count_is_zero"
+      ],
+      "required_response": "do_not_modify_the_runtime_target_U3Z_harness_controller_or_source_bindings_based_on_this_attempt"
+    },
+    {
+      "hypothesis_id": "H4-U3Z-GENERATED-CONTRACT-VALIDATION-FAILED",
+      "confidence": "rejected_by_execution_boundary",
+      "basis": [
+        "the_harness_was_not_invoked",
+        "zero_cases_were_loaded_or_executed"
+      ],
+      "required_response": "preserve_the_accepted_U3Z_harness_vectors_and_controller_R1_artifacts_byte_exact"
+    }
+  ],
+  "recommended_remediation_direction": {
+    "preserve_U3Y_U3Z_and_consumed_attempt_artifacts_byte_exact": true,
+    "create_additive_source_controlled_outer_attempt_controller": true,
+    "fixed_parent_results": "exactly_three_ordered_typed_records_with_index_present_regular_directory_nonreparse_canonical_match_and_allowlisted_reason_only",
+    "fixed_parent_set_result": "explicit_fixed_length_three_all_valid_boolean_without_pipeline_null_or_scalar_cardinality_semantics",
+    "sanitized_binding_reason_taxonomy_required": true,
+    "generated_static_vectors_required": true,
+    "separate_source_implementation_authorization_and_acceptance_required": true,
+    "separate_digest_bound_single_runtime_attempt_required_after_source_acceptance": true,
+    "blind_retry_or_U3K_progression": false
+  },
+  "gate_effect": {
+    "analysis_prepared": true,
+    "failure_evidence_owner_acceptance_inferred": false,
+    "remediation_decisions_pending": true,
+    "outer_controller_contract_vector_test_or_product_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "deployment_commit_push_or_remote_Git_authorized": false
+  }
+}

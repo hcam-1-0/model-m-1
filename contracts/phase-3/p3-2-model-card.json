@@ -1,0 +1,82 @@
+{
+  "artifact": {
+    "artifact_id": "DET-R0-ONNX-UPSTREAM-0.1.1RC0",
+    "bytes": 20219662,
+    "filename": "yolox_tiny.onnx",
+    "input_shape": [
+      1,
+      3,
+      416,
+      416
+    ],
+    "onnx_ir_version": 6,
+    "onnx_opset": 11,
+    "output_shape": [
+      1,
+      3549,
+      85
+    ],
+    "sha256": "427CC366D34E27FF7A03E2899B5E3671425C262EA2291F88BB942BC1CC70B0F7",
+    "source_release": "0.1.1rc0",
+    "source_url": "https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_tiny.onnx"
+  },
+  "candidate_id": "DET-R0",
+  "contract_format": "hcam.phase3.p3_2.model-card.v1",
+  "emitted_taxonomy": [
+    "object.person",
+    "vehicle.bicycle",
+    "vehicle.motorcycle",
+    "vehicle.car",
+    "vehicle.bus",
+    "vehicle.truck",
+    "object.unknown"
+  ],
+  "intended_use": "Local generated-only P3.2 implementation and contract validation for anonymous object bounding boxes",
+  "license_determination": {
+    "decision": "Apache-2.0 applies to local non-redistributed implementation use",
+    "evidence_digest": "0EC3668D3274BCF29E8A29E9576D5A2CD96FC78D3C5BEC4387355A796E5D9088",
+    "evidence_file": "LICENSE",
+    "evidence_revision": "6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+    "method": "The publisher distributes the ONNX asset from the Apache-2.0 project and links it as an official model; no separate contrary model terms were found",
+    "redistribution": "prohibited_by_hcam_start_scope_pending_separate_release_review"
+  },
+  "limitations": [
+    "No H-CAM accuracy fairness robustness or representativeness result exists",
+    "Publisher-reported COCO lineage has not been independently reconstructed at sample level",
+    "Generated fixtures cannot validate real-world performance",
+    "The model does not provide identity intent criminality ownership or sensitive attributes",
+    "Unsupported COCO classes map only to object.unknown",
+    "All results require downstream human review before any operational interpretation"
+  ],
+  "model_family": "YOLOX-Tiny",
+  "observed_research": {
+    "cpu_provider": "CPUExecutionProvider",
+    "dependency_audit": "no_known_vulnerabilities_found_on_2026-08-24",
+    "malware_scan": "no_model_threat_detections_on_2026-08-24",
+    "output_repeatability_sha256": "3562559CAD2DCD1AD0A15C74E3425A371B1725BA5574CDADF5FDB375FE3A519C",
+    "result": "repeatable_structural_smoke_only"
+  },
+  "out_of_scope": [
+    "accuracy_or_deployment_claims",
+    "face_or_biometric_recognition",
+    "person_reidentification_or_cross_camera_identity",
+    "watchlists_or_government_database_matching",
+    "vehicle_owner_lookup",
+    "sensitive_trait_intent_or_criminality_inference",
+    "autonomous_enforcement_or_operational_alerting",
+    "training_finetuning_or_model_modification"
+  ],
+  "publisher": "Megvii BaseDetection",
+  "recorded_on": "2026-08-24",
+  "training_lineage": {
+    "confidence": "publisher_reported_not_independently_reconstructed",
+    "dataset": "COCO",
+    "evidence": "Official YOLOX model tables report YOLOX-Tiny COCO validation mAP",
+    "hcam_use": "lineage_context_only_no_accuracy_claim"
+  },
+  "upstream_metrics": {
+    "coco_map_0_5_to_0_95": 32.8,
+    "parameters_millions": 5.06,
+    "status": "publisher_reported_not_hcam_measured"
+  }
+}

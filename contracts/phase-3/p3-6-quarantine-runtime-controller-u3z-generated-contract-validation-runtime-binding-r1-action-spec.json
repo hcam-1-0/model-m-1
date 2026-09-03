@@ -1,0 +1,220 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3z_generated_contract_validation_runtime_binding_r1_action_spec.v1",
+  "action_spec_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3Z-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-ACTION-SPEC",
+  "decision_id": "D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-AUTH",
+  "status": "sealed_non_effective_proposed_actions_only_no_attempt_performed",
+  "prepared_on": "2026-09-02",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-harness-implementation-acceptance.json",
+    "acceptance_sha256": "38B89E53B46F921663879DE0614AF318EDF9B66AB36120663D14F61070AD8477",
+    "accepted_implementation_package_sha256": "47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF",
+    "effect": "prepare_only_this_separate_non_effective_U3Z_R1_runtime_binding_and_generated_validation_authorization_proposal"
+  },
+  "logical_node_id": "LAB-LAPTOP-01",
+  "maximum_attempts": 1,
+  "authorization_window_seconds": 86400,
+  "failed_attempt_consumes_authorization": true,
+  "automatic_retry": false,
+  "parallel_processes": false,
+  "exact_runtime_candidate": {
+    "path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "required_family": "PowerShell_7_on_Windows",
+    "required_major_version": 7,
+    "maximum_file_bytes": 134217728,
+    "required_type": "local_regular_nonreparse_file",
+    "required_fixed_parent_components": [
+      "C:\\Program Files",
+      "C:\\Program Files\\PowerShell",
+      "C:\\Program Files\\PowerShell\\7"
+    ],
+    "classification_fields": [
+      "canonical_path_match",
+      "regular_file",
+      "nonreparse",
+      "bounded_size",
+      "file_version_bounded_to_512_UTF8_bytes",
+      "sha256"
+    ],
+    "trust_policy": "cache_only_no_UI_whole_chain_excluding_root_without_trust_retrieval",
+    "alternate_runtime_parent_module_or_hardware_discovery": false,
+    "PATH_PSModulePath_registry_WMI_package_or_directory_inventory": false,
+    "network_or_trust_retrieval": false
+  },
+  "exact_accepted_inputs": [
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1_generated_validation.ps1",
+      "sha256": "D9EE5CC7599AACCE3363CE5C29EE479D777F94CF886AE779390B7027C40FA382",
+      "maximum_bytes": 8388608,
+      "role": "accepted_exact_hash_bound_generated_contract_validation_harness"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-vectors.json",
+      "sha256": "7BCDFCA583644BD4ED5F4B747C3969B4C9FF4029B48734F8BD4D90BA5D600A21",
+      "maximum_bytes": 8388608,
+      "role": "accepted_exactly_288_materialized_generated_only_cases"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1.ps1",
+      "sha256": "787655BAC55DDF563E9D1DC43EC37F010C271AB381E541B0734028E3F2B90B31",
+      "maximum_bytes": 8388608,
+      "role": "accepted_authoritative_controller_R1_source_dot_sourced_only_by_exact_harness"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-contract.json",
+      "sha256": "637C5400122874149D9835CC6BC521E5EEC9160222F4A7AC5CA1F6CD99E1BCC4",
+      "maximum_bytes": 8388608,
+      "role": "accepted_controller_R1_wire_and_stage_projection_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-vectors.json",
+      "sha256": "D8EDF5C0255B40FB6C28BB014C09DC503D2B53665E69C5AA5AB65C744AEA81E4",
+      "maximum_bytes": 8388608,
+      "role": "accepted_288_vector_source_manifest_and_provenance_root"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1_reference.py",
+      "sha256": "B5C7328CD666E0A8988F9B616C5B2A914D690A40BF2EA289C1F1C755E42B86F0",
+      "maximum_bytes": 8388608,
+      "role": "accepted_machine_disabled_reference_identity_only_not_executed"
+    }
+  ],
+  "source_binding_policy": {
+    "authorization_bound_checkout_root_only": true,
+    "relative_paths_are_exact_and_nonreplaceable": true,
+    "regular_nonreparse_files_required": true,
+    "all_six_inputs_reverified_before_and_after_process": true,
+    "source_modification_generation_or_substitution": false,
+    "Python_reference_execution": false
+  },
+  "exact_runtime_arguments": [
+    "-NoLogo",
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "<AUTHORIZATION_BOUND_CHECKOUT_ROOT>\\tools\\phase36_quarantine_runtime_controller_r1_generated_validation.ps1",
+    "-ExpectedHarnessSha256",
+    "D9EE5CC7599AACCE3363CE5C29EE479D777F94CF886AE779390B7027C40FA382",
+    "-ExpectedMaterializedVectorSha256",
+    "7BCDFCA583644BD4ED5F4B747C3969B4C9FF4029B48734F8BD4D90BA5D600A21"
+  ],
+  "process_bounds": {
+    "maximum_processes": 1,
+    "maximum_attempts": 1,
+    "total_timeout_seconds": 120,
+    "maximum_stdout_bytes": 16384,
+    "maximum_stderr_bytes": 0,
+    "maximum_result_bytes": 32768,
+    "automatic_retry": false,
+    "process_tree_termination_on_timeout": true,
+    "environment_proxy_or_module_path_inheritance": false,
+    "PSModuleAutoLoadingPreference": "None",
+    "UseShellExecute": false,
+    "RedirectStandardOutput": true,
+    "RedirectStandardError": true,
+    "RedirectStandardInput_and_close": true,
+    "CreateNoWindow": true,
+    "interactive_input": false
+  },
+  "exact_action_sequence": [
+    {
+      "action_id": "U3Z-R1-A01-PACKAGE-AUTHORITY-PREFLIGHT",
+      "effect": "verify_exact_package_digest_core_hashes_owner_statement_unused_authorization_and_window_before_observation"
+    },
+    {
+      "action_id": "U3Z-R1-A02-AUTHORIZATION-RECORD",
+      "effect": "write_one_bounded_sanitized_nonreplacement_authorization_record_before_runtime_observation"
+    },
+    {
+      "action_id": "U3Z-R1-A03-RUNTIME-PATH-CLASSIFICATION",
+      "effect": "classify_only_exact_runtime_and_three_fixed_parent_components"
+    },
+    {
+      "action_id": "U3Z-R1-A04-RUNTIME-BINDING",
+      "effect": "bind_bounded_version_sha256_and_cache_only_trust_without_retrieval"
+    },
+    {
+      "action_id": "U3Z-R1-A05-SOURCE-BINDINGS-PREFLIGHT",
+      "effect": "verify_exact_six_accepted_inputs_under_authorization_bound_checkout_root"
+    },
+    {
+      "action_id": "U3Z-R1-A06-GENERATED-CONTRACT-VALIDATION",
+      "effect": "invoke_exact_runtime_once_with_exact_harness_hash_arguments_and_288_generated_only_cases"
+    },
+    {
+      "action_id": "U3Z-R1-A07-SANITIZED-RESULT-CLASSIFICATION",
+      "effect": "accept_only_one_bounded_JSON_projection_with_one_of_six_allowlisted_terminal_reason_codes"
+    },
+    {
+      "action_id": "U3Z-R1-A08-POSTPROCESS-BINDING",
+      "effect": "reverify_runtime_parents_and_all_six_accepted_input_identities"
+    },
+    {
+      "action_id": "U3Z-R1-A09-SANITIZED-EVIDENCE",
+      "effect": "write_only_exact_bounded_result_and_evidence_records_and_discard_raw_process_material"
+    }
+  ],
+  "allowlisted_terminal_reason_codes": [
+    "generated_contract_validation_passed",
+    "binding_failed",
+    "manifest_failed",
+    "controller_load_failed",
+    "validation_failed",
+    "result_serialization_failed"
+  ],
+  "success_contract": {
+    "terminal_reason_code": "generated_contract_validation_passed",
+    "cases_loaded": 288,
+    "cases_executed": 288,
+    "cases_passed": 288,
+    "cases_failed": 0,
+    "literal_null_success_match": true,
+    "all_failure_action_reason_match": true,
+    "cross_language_projection_difference_count": 0,
+    "raw_fixture_retained_bytes": 0,
+    "raw_process_material_retained_bytes": 0,
+    "machine_action_count": 0,
+    "network_action_count": 0,
+    "automatic_retry_count": 0,
+    "U3K_authorized": false,
+    "deployment_authorized": false,
+    "runtime_parent_and_source_identity_stable": true
+  },
+  "exact_future_outputs": [
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-authorization.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-result.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-evidence.json"
+  ],
+  "retention_and_redaction": {
+    "raw_stdout_stderr_exception_stack_invocation_environment_fixture_identity_or_security_material_retained": false,
+    "runtime_path_in_sanitized_records": false,
+    "runtime_hash_and_bounded_version_in_sanitized_evidence": true,
+    "personal_checkout_root_in_sanitized_records": false,
+    "maximum_authorization_record_bytes": 32768,
+    "maximum_result_record_bytes": 32768,
+    "maximum_evidence_record_bytes": 65536
+  },
+  "explicitly_not_authorized": [
+    "any_action_before_exact_digest_bound_owner_authorization",
+    "more_than_one_attempt_automatic_retry_or_parallel_process",
+    "alternate_runtime_parent_checkout_source_module_or_hardware_discovery",
+    "PowerShell_module_manifest_closure_Aggregate_mode_or_unbounded_parser_activity",
+    "PATH_PSModulePath_registry_WMI_package_or_directory_inventory",
+    "Python_execution_machine_access_controller_mode_subprocess_native_API_or_fallback",
+    "machine_storage_F_B_ACL_identity_probe_cleanup_Defender_or_scanner_action",
+    "network_trust_retrieval_download_install_update_or_artifact_acquisition",
+    "model_dataset_camera_media_private_or_Government_data_access",
+    "model_loading_inference_benchmark_or_hardware_testing",
+    "containers_Kubernetes_profile_activation_deployment_U3K_commit_push_or_remote_Git"
+  ],
+  "current_effect": {
+    "action_spec_prepared": true,
+    "owner_U3Z_R1_authorization_pending": true,
+    "attempts_authorized": 0,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "Python_execution_machine_access_or_fallback_authorized": false,
+    "U3K_profile_activation_or_deployment_authorized": false,
+    "commit_push_or_remote_Git_authorized": false
+  }
+}

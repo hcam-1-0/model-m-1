@@ -1,0 +1,68 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_transaction_runner_r0_runtime_binding_research_sources.v1",
+  "ledger_id": "P36-QUARANTINE-TRANSACTION-RUNNER-R0-RUNTIME-BINDING-RESEARCH-SOURCES",
+  "status": "primary_sources_reviewed_proposal_only_no_runtime_observation",
+  "reviewed_on": "2026-09-01",
+  "scope": "exact_installed_PowerShell_7_executable_path_metadata_hash_and_cache_only_trust_binding",
+  "sources": [
+    {
+      "source_id": "MS-POWERSHELL-INSTALL-WINDOWS",
+      "publisher": "Microsoft",
+      "title": "Install PowerShell 7 on Windows",
+      "url": "https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-windows",
+      "supported_use": "PowerShell_7_default_MSI_install_directory_and_pwsh_executable_family",
+      "applied_constraint": "proposal_targets_only_C_Program_Files_PowerShell_7_pwsh_exe_and_does_not_scan_PATH_registry_or_alternate_installations"
+    },
+    {
+      "source_id": "MS-POWERSHELL-GET-FILEHASH",
+      "publisher": "Microsoft",
+      "title": "Get-FileHash",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash",
+      "supported_use": "SHA_256_content_identity_for_one_exact_file",
+      "applied_constraint": "the_future_attempt_may_hash_only_the_exact_bounded_regular_runtime_file_and_committed_runner_source"
+    },
+    {
+      "source_id": "MS-DOTNET-FILEVERSIONINFO-PRODUCTVERSION",
+      "publisher": "Microsoft",
+      "title": "FileVersionInfo.ProductVersion Property",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.fileversioninfo.productversion",
+      "supported_use": "read_file_and_product_version_metadata_without_executing_the_binary",
+      "applied_constraint": "only_file_version_product_version_and_product_name_classification_may_be_projected"
+    },
+    {
+      "source_id": "MS-WIN32-WINTRUST-DATA",
+      "publisher": "Microsoft",
+      "title": "WINTRUST_DATA structure",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/wintrust/ns-wintrust-wintrust_data",
+      "supported_use": "cache_only_URL_retrieval_and_whole_chain_revocation_flags_for_no_UI_trust_verification",
+      "applied_constraint": "future_trust_check_must_be_cache_only_no_UI_whole_chain_excluding_root_and_must_close_provider_state"
+    },
+    {
+      "source_id": "MS-DOTNET-PATH-GETFULLPATH",
+      "publisher": "Microsoft",
+      "title": "Path.GetFullPath Method",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.io.path.getfullpath",
+      "supported_use": "canonical_absolute_path_classification",
+      "applied_constraint": "canonical_result_must_equal_the_presealed_absolute_runtime_path_and_relative_or_alternate_paths_are_rejected"
+    },
+    {
+      "source_id": "MS-DOTNET-FILEATTRIBUTES",
+      "publisher": "Microsoft",
+      "title": "FileAttributes Enum",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.io.fileattributes",
+      "supported_use": "detect_directory_offline_device_and_reparse_point_attributes",
+      "applied_constraint": "runtime_and_every_existing_parent_component_must_be_nonreparse_and_the_runtime_must_be_a_regular_online_file"
+    }
+  ],
+  "research_conclusions": [
+    "the_default_MSI_PowerShell_7_location_supports_an_exact_path_proposal_but_does_not_prove_that_the_file_exists_on_LAB_LAPTOP_01",
+    "version_metadata_and_SHA_256_can_be_observed_without_executing_the_runtime",
+    "cache_only_WinVerifyTrust_avoids_network_retrieval_but_may_fail_when_required_chain_or_revocation_material_is_not_cached",
+    "canonical_path_and_reparse_classification_are_separate_from_content_identity_and_trust",
+    "all_machine_specific_values_remain_unknown_until_a_separate_digest_bound_attempt_is_authorized"
+  ],
+  "observed_machine_facts": false,
+  "network_access_during_future_attempt": false,
+  "runtime_execution_authorized": false,
+  "storage_or_F_access_authorized": false
+}

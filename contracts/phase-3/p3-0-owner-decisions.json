@@ -1,0 +1,187 @@
+{
+  "accountable_owner_id": "mayank-admin",
+  "approvals": [
+    {
+      "gate_id": "P3-G1",
+      "status": "owner_approved"
+    },
+    {
+      "gate_id": "P3-G2",
+      "status": "owner_approved"
+    },
+    {
+      "gate_id": "P3-G3",
+      "status": "owner_approved"
+    },
+    {
+      "gate_id": "P3-G4",
+      "status": "owner_accepted"
+    }
+  ],
+  "contract_format": "hcam.phase3.owner-decisions.v1",
+  "independent_reviewer_id": "mahin-eleveted",
+  "independent_reviewer_role": "member",
+  "later_gate_review_policy": {
+    "accountable_owner_id": "mayank-admin",
+    "effective_on": "2026-08-24",
+    "evidence_requirements_remain_mandatory": true,
+    "mode": "accountable_owner_review_sufficient",
+    "separate_person_review_required": false,
+    "status": "disabled_by_owner",
+    "workstreams": [
+      "model_promotion",
+      "operational_geometry",
+      "datasets",
+      "deployment"
+    ]
+  },
+  "metadata_policy": {
+    "backup_retention_days": 7,
+    "data_classes": [
+      {
+        "access_roles": [
+          "camera.viewer",
+          "camera.editor",
+          "platform.admin"
+        ],
+        "classification": "derived.analytics.standard",
+        "data": "anonymous aggregate and non-sensitive event metadata",
+        "maximum_retention_hours": 168,
+        "reason_required": false
+      },
+      {
+        "access_roles": [
+          "platform.admin"
+        ],
+        "classification": "derived.analytics.restricted",
+        "data": "event-level observations and ephemeral stream-local tracks",
+        "maximum_retention_hours": 24,
+        "reason_required": true
+      },
+      {
+        "access_roles": [
+          "camera.editor",
+          "platform.admin"
+        ],
+        "classification": "control.analytics.configuration",
+        "data": "assignments, taxonomy, geometry, policy, and immutable revisions",
+        "maximum_retention_hours": 2160,
+        "reason_required": true
+      },
+      {
+        "access_roles": [
+          "platform.admin"
+        ],
+        "classification": "audit.analytics",
+        "data": "security, access, mutation, denial, and deletion audit metadata",
+        "maximum_retention_hours": 2160,
+        "reason_required": true
+      },
+      {
+        "access_roles": [
+          "metrics.reader"
+        ],
+        "classification": "telemetry.analytics.aggregate",
+        "data": "identifier-free aggregate operational metrics",
+        "maximum_retention_hours": 720,
+        "reason_required": false
+      },
+      {
+        "access_roles": [],
+        "classification": "derived.analytics.plate_text",
+        "data": "plate transcription or alternatives",
+        "maximum_retention_hours": 0,
+        "reason_required": true
+      },
+      {
+        "access_roles": [],
+        "classification": "media.analytics.raw",
+        "data": "frames, crops, images, clips, and video",
+        "maximum_retention_hours": 0,
+        "reason_required": true
+      }
+    ],
+    "deletion_interval_hours": 24,
+    "deletion_maximum_lag_hours": 24,
+    "deletion_proof": "audited_metadata_only",
+    "export_policy": "denied",
+    "legal_hold_policy": "not_available_requires_separate_approval",
+    "raw_media_persistence": "denied",
+    "restore_policy": "delete_expired_records_before_access",
+    "scope": "synthetic_lab_only",
+    "training_reuse": "denied_requires_new_purpose_approval"
+  },
+  "non_authorization": [
+    "model_or_dataset_download",
+    "training_or_inference",
+    "media_or_physical_camera_access",
+    "sentinel_video",
+    "government_or_private_data",
+    "identity_or_watchlist_processing",
+    "operational_alerting_or_autonomous_action",
+    "pilot_or_production_deployment"
+  ],
+  "owner_p3_0_acceptance": {
+    "accepted_by": "mayank-admin",
+    "accepted_on": "2026-08-24",
+    "capacity": [
+      "main_developer",
+      "team_lead",
+      "accountable_owner"
+    ],
+    "effective": true,
+    "effective_for_gate": "P3-G4",
+    "independent_review_status": "optional_reviewer_unavailable",
+    "review_policy": "accountable_owner_self_review_permitted",
+    "status": "accepted"
+  },
+  "record_id": "P3-G1-G3-2026-08-24",
+  "recorded_on": "2026-08-24",
+  "status": "p3_0_accepted",
+  "tier_a_scope": {
+    "capabilities": [
+      "object_detection",
+      "stream_local_tracking",
+      "line_crossing",
+      "zone_entry_exit",
+      "zone_occupancy",
+      "zone_dwell_duration"
+    ],
+    "emitted_classes": [
+      "object.person",
+      "vehicle.bicycle",
+      "vehicle.motorcycle",
+      "vehicle.car",
+      "vehicle.bus",
+      "vehicle.truck",
+      "object.unknown"
+    ],
+    "excluded_from_this_gate": [
+      "synthetic_anpr",
+      "tier_b_scenario_analytics",
+      "tier_c_high_consequence_analytics",
+      "face_recognition",
+      "person_reidentification",
+      "cross_camera_identity",
+      "sensitive_trait_inference",
+      "watchlists",
+      "government_matching",
+      "autonomous_enforcement"
+    ],
+    "geometry": {
+      "coordinates": "normalized_top_left",
+      "line_direction_required": true,
+      "operational_coordinates_require_owner_approval": true,
+      "operational_coordinates_require_separate_review": false,
+      "schedule": "always_active_or_explicit_iana_timezone_weekly_windows",
+      "site_specific_geometry_approved": false,
+      "zone_shape": "simple_polygon_3_to_128_unique_vertices"
+    },
+    "intended_use": "Anonymous situational metadata from synthetic or explicitly authorized video for operator-reviewed testing of detection, stream-local tracking, and line or zone events",
+    "supporting_classes": [
+      "object.entity",
+      "object.vehicle"
+    ],
+    "unknown_class_policy": "emit_unknown"
+  }
+}

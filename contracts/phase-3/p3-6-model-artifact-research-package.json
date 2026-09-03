@@ -1,0 +1,30 @@
+{
+  "acceptance_decision_id": "D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE",
+  "artifact_download_authorized": false,
+  "contract_format": "hcam.phase3.p3_6.model_artifact_research_package.v1",
+  "core_file_count": 3,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-model-artifact-research-proposal.json",
+      "sha256": "5adecf0f9306c0069ffa30114b99bfe8e0e4623f7a85d5a5a2c0921ecb160859"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-model-artifact-research-sources.json",
+      "sha256": "e0dd265ee9c90736c5627c955724b85fb4df0007ab2a8826bb05e98a44c4cb1a"
+    },
+    {
+      "path": "docs/phase-3/p3-6-model-artifact-research-proposal.md",
+      "sha256": "7b95bddd910eb68f9fca63ddb955c1748f58d4caeaf152fc4e33723e71ce08fc"
+    }
+  ],
+  "future_acquisition_decision_id": "D-P3.6-MODEL-RESEARCH-R1-AUTH",
+  "future_acquisition_decision_issuable": false,
+  "implementation_authorized": false,
+  "manifest_sha256_role": "The SHA-256 of this exact manifest file is the R0 planning-package digest; the digest is intentionally not self-embedded.",
+  "package_id": "P3.6-MODEL-ARTIFACT-RESEARCH-PACKAGE-R0",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "prepared_on": "2026-08-29",
+  "runtime_execution_authorized": false,
+  "scope": "metadata_only_exact_candidate_artifact_research_proposal",
+  "status": "sealed_non_authorizing_owner_review_pending_storage_and_scanner_blocked"
+}

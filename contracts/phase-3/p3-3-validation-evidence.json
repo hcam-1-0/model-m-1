@@ -1,0 +1,59 @@
+{
+  "evidence_format": "hcam.phase3.p3_3.validation.v1",
+  "observed_on": "2026-08-25",
+  "prohibited_input_count": 0,
+  "results": {
+    "archive_boundary": {
+      "prohibited_members": 0,
+      "sdist_members": 423,
+      "status": "pass",
+      "wheel_members": 88
+    },
+    "build_and_isolated_install": {
+      "package_version": "0.2.0",
+      "python": "3.14.6",
+      "scipy": "1.18.1",
+      "status": "pass"
+    },
+    "compile": {
+      "status": "pass"
+    },
+    "coverage": {
+      "branch_percent": 90.75,
+      "minimum_percent": 90.0,
+      "status": "pass"
+    },
+    "dependency_audit": {
+      "audited_components": 37,
+      "known_vulnerabilities": 0,
+      "status": "pass"
+    },
+    "full_suite": {
+      "passed": 665,
+      "status": "pass",
+      "subtests_passed": 119
+    },
+    "postgresql": {
+      "image": "postgres:18-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2",
+      "migration_cycle": [
+        "upgrade_to_0010",
+        "downgrade_to_0009",
+        "reupgrade_to_0010"
+      ],
+      "passed": 6,
+      "status": "pass"
+    },
+    "ruff": {
+      "status": "pass"
+    },
+    "tracking_evidence": {
+      "bytetrack_component_parity_max_absolute_error": 2.710505431213761e-20,
+      "challenge_hota": 0.9773391812865496,
+      "challenge_idf1": 1.0,
+      "status": "pass",
+      "trackeval_hota_max_absolute_error": 0.0,
+      "trackeval_idf1_max_absolute_error": 0.0
+    }
+  },
+  "scope": "generated_structured_observations_only"
+}

@@ -60,7 +60,7 @@ def test_ffprobe_runner_extracts_bounded_video_metadata(
 
     def fake_run(command: list[str], **kwargs) -> subprocess.CompletedProcess[bytes]:
         captured.append(command)
-        assert kwargs["shell"] is False
+        assert "shell" not in kwargs
         assert kwargs["stdin"] is subprocess.DEVNULL
         return _completed(stdout=json.dumps(payload).encode())
 
@@ -143,30 +143,22 @@ def test_bounded_process_terminates_during_output_flood(stream_name: str) -> Non
             capture_output=True,
             timeout=8,
             check=False,
-            shell=False,
         )
 
     assert perf_counter() - started < 5
 
 
-def test_bounded_process_rejects_unbounded_or_shell_execution() -> None:
+def test_bounded_process_rejects_unbounded_output() -> None:
     arguments = {
         "stdin": subprocess.DEVNULL,
         "timeout": 1,
         "check": False,
-        "shell": False,
     }
     with pytest.raises(ValueError, match="captured output"):
         _run_bounded_process(
             [sys.executable, "-c", "pass"],
             capture_output=False,
             **arguments,
-        )
-    with pytest.raises(ValueError, match="forbids a command shell"):
-        _run_bounded_process(
-            [sys.executable, "-c", "pass"],
-            capture_output=True,
-            **{**arguments, "shell": True},
         )
 
 
@@ -179,7 +171,6 @@ def test_bounded_process_kills_and_reaps_on_timeout() -> None:
             capture_output=True,
             timeout=0.05,
             check=False,
-            shell=False,
         )
     assert perf_counter() - started < 3
 
@@ -195,7 +186,6 @@ def test_bounded_process_preserves_output_and_check_semantics() -> None:
         capture_output=True,
         timeout=2,
         check=False,
-        shell=False,
     )
     assert completed.stdout == b"out"
     assert completed.stderr == b"err"
@@ -207,7 +197,6 @@ def test_bounded_process_preserves_output_and_check_semantics() -> None:
             capture_output=True,
             timeout=2,
             check=True,
-            shell=False,
         )
 
 

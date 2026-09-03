@@ -1,0 +1,148 @@
+{
+  "contract_format": "hcam.phase3.p3_6.inventory_admission_decision_packet.v1",
+  "packet_id": "P3.6-INVENTORY-ADMISSION-DECISION-PACKET-R0",
+  "status": "owner_selection_pending_non_executable",
+  "prepared_on": "2026-08-30",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "selection_effect": "records_policy_preferences_only_and_does_not_authorize_R1_collection_projection_activation_or_execution",
+  "recommended_selection": "A/A/A/A",
+  "decisions": [
+    {
+      "decision_id": "D-P3.6-U3A-001",
+      "topic": "canonical_inventory_strategy",
+      "recommended_option": "A",
+      "options": [
+        {
+          "option": "A",
+          "label": "Preserve R0 and collect canonical R1",
+          "effect": "Keep R0 immutable for audit and later perform a separately authorized fresh collection directly into the exact Phase -1 v1alpha1 shape."
+        },
+        {
+          "option": "B",
+          "label": "Stale mapping projection only",
+          "effect": "Create a non-runnable mapping fixture from R0 with unknown fields; useful for contract tests but never freshness or admission evidence."
+        },
+        {
+          "option": "C",
+          "label": "Extend historical R0 shape",
+          "effect": "Add fields to the P3.6 shape, creating a competing platform contract; rejected by the Phase -1 authority partition."
+        },
+        {
+          "option": "D",
+          "label": "Defer",
+          "effect": "Keep the portable profile ineligible and stop R1 authorization preparation."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3A-002",
+      "topic": "portable_inventory_freshness",
+      "recommended_option": "A",
+      "options": [
+        {
+          "option": "A",
+          "label": "24-hour maximum plus change invalidation",
+          "effect": "Set valid_until no later than 24 hours after observation and invalidate sooner after authorized hardware, OS, driver, runtime, collector, or trust-policy change. This is an H-CAM lab policy, not a NIST mandate."
+        },
+        {
+          "option": "B",
+          "label": "8-hour session window",
+          "effect": "Require recollection per work session or shift; strongest freshness with higher collection friction."
+        },
+        {
+          "option": "C",
+          "label": "7-day maximum",
+          "effect": "Reduce collection friction but permit materially older compatibility evidence; not recommended for changing developer machines."
+        },
+        {
+          "option": "D",
+          "label": "Custom owner duration",
+          "effect": "Owner supplies a positive duration and invalidation triggers before an R1 authorization packet can be sealed."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3A-003",
+      "topic": "provenance_and_trust_zone_binding",
+      "recommended_option": "A",
+      "options": [
+        {
+          "option": "A",
+          "label": "Observed local generated-only zone",
+          "effect": "Use local_read_only plus observed provenance for R1 and bind placement later to a separately accepted opaque digest for an owned-local, generated-only, no-external-data policy snapshot."
+        },
+        {
+          "option": "B",
+          "label": "Owner-supplied declared evidence",
+          "effect": "Accept declared provenance for planning, but prohibit automatic admission until independently observed or attested evidence exists."
+        },
+        {
+          "option": "C",
+          "label": "Attested enterprise evidence",
+          "effect": "Require a future approved attestation provider; stronger production direction but unavailable for the current laptop and unauthorized now."
+        },
+        {
+          "option": "D",
+          "label": "Defer trust binding",
+          "effect": "Leave trust unresolved and keep every placement and activation path blocked."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3A-004",
+      "topic": "expiry_and_reconciliation_behavior",
+      "recommended_option": "A",
+      "options": [
+        {
+          "option": "A",
+          "label": "Block new admission and preserve lease authority",
+          "effect": "Expired inventory blocks new resolution and placement; derived decisions cannot outlive inputs; already admitted work follows its independent lease, fencing, health, and policy rules without automatic trust extension."
+        },
+        {
+          "option": "B",
+          "label": "Immediate safe pause",
+          "effect": "Pause active work as soon as inventory expires; strongest fail-closed behavior but may interrupt valid leased work for a static-inventory refresh delay."
+        },
+        {
+          "option": "C",
+          "label": "Bounded grace window",
+          "effect": "Allow a short owner-defined grace period; adds policy complexity and permits admission decisions based on expired evidence, so it is not recommended."
+        },
+        {
+          "option": "D",
+          "label": "Custom reconciliation",
+          "effect": "Owner supplies exact new-admission and active-lease behavior before an R1 authorization packet is prepared."
+        }
+      ]
+    }
+  ],
+  "recommended_result_if_selected": {
+    "inventory_strategy": "preserve_R0_and_collect_new_exact_shared_R1",
+    "freshness": "maximum_24_hours_with_immediate_change_invalidation",
+    "provenance": "local_read_only_observed",
+    "trust_zone": "separate_digest_bound_owned_local_generated_only_policy_snapshot",
+    "on_expiry": "block_new_admission_and_do_not_extend_existing_decisions_while_independent_leases_remain_authoritative",
+    "current_R0_state": "historical_planning_input_only_already_stale_under_proposed_policy"
+  },
+  "next_decision_after_selection": {
+    "decision_id": "D-P3.6-INVENTORY-R1-AUTH",
+    "state": "not_yet_prepared_or_authorized",
+    "required_binding": "exact_actions_fields_collector_version_sanitization_output_path_schema_digest_validity_policy_and_non_authorizations"
+  },
+  "continuing_non_authorization": [
+    "hardware_or_runtime_requery",
+    "inventory_projection_or_recollection",
+    "software_dependency_driver_or_container_install",
+    "model_loading_inference_or_benchmark",
+    "scheduler_container_or_kubernetes_execution",
+    "camera_media_stream_or_data_access",
+    "profile_activation_placement_or_deployment",
+    "remote_git_push_pull_request_or_merge"
+  ],
+  "implementation_authorized": false,
+  "inventory_recollection_authorized": false,
+  "profile_activation_authorized": false,
+  "runtime_execution_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

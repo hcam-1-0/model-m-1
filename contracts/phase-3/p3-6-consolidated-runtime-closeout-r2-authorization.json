@@ -1,0 +1,70 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_r2_authorization.v1",
+  "authorization_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-AUTHORIZATION-1",
+  "decision_id": "D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-AUTH",
+  "status": "authorized_single_attempt_recorded_before_observation",
+  "accepted_by": "mayank-admin",
+  "accepted_at_utc": "2026-09-02T19:52:51.9431495Z",
+  "valid_until_utc": "2026-09-03T19:52:51.9431495Z",
+  "canonicalization": "UTF-8_without_BOM_LF_no_terminal_newline",
+  "owner_statement_utf8_bytes": 1771,
+  "owner_statement_sha256": "67072BE2368BAE254A1E288CCA10E5E7067B188314D048788201465FA43B9694",
+  "owner_statement_received": "D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-AUTH: I, mayank-admin, accept the\nPhase 3.6 consolidated runtime-closeout R2 authorization package digest\n3712793C5A57E66E39C8A804E162A4680EA92024682BDDF2A54573E1622C541E,\nU4D implementation package digest\n288F275345E2586E05BE14EC964CA77EF7503A0BE70D88C6C5696BB4655C612A,\nand R2 action-spec digest\n917ABC07DAFA9C148B37BBD7E049267E98D95BEB4534674ABA070D747E5B3F81.\n\nI authorize exactly one ordered attempt within 24 hours on LAB-LAPTOP-01\nfor the exact runtime, three fixed parents, Utility-manifest closure,\nsource bindings, two bounded generated-validation processes, typed\nprocess-output classification, output paths, retention contract, and\naction sequence in that package.\n\nThe U4D child must accept exactly 416 generated cases through one UTF-8\nJSON line of at most 4096 bytes with zero stderr and zero raw retention;\nthe handler process must then accept exactly 20 runner and 64 pure-handler\ncases. Only after all 500 generated cases and every identity gate pass may\none U3K storage attempt execute sealed U3K-A01 through U3K-A10 for exact\nabsent root F:\\HCAM-Quarantine.\n\nAny failure consumes this authorization and permits no retry. If and only\nif all runtime, binding, validation, U3K, evidence, and final test gates\npass, synchronize the allowlisted Phase 3 records, mark Phase 3 complete,\nand create one local closeout commit without push.\n\nThis does not authorize alternate paths, volumes, runtimes, modules,\nhardware, B:, F:\\h cam, existing-root changes, Defender or scanners,\nnetwork or trust retrieval, installation, update, downloads, artifacts,\nmodels, inference, cameras, media, private or Government data, containers,\nKubernetes, profile activation, deployment, push, pull, fetch, PR, merge,\nor other remote Git.",
+  "bound_package": {
+    "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-authorization-package.json",
+    "sha256": "3712793C5A57E66E39C8A804E162A4680EA92024682BDDF2A54573E1622C541E"
+  },
+  "bound_action_spec": {
+    "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-action-spec.json",
+    "sha256": "917ABC07DAFA9C148B37BBD7E049267E98D95BEB4534674ABA070D747E5B3F81"
+  },
+  "bound_U4D_implementation_package": {
+    "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4d-implementation-package.json",
+    "sha256": "288F275345E2586E05BE14EC964CA77EF7503A0BE70D88C6C5696BB4655C612A"
+  },
+  "attempt_policy": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "authorization_window_seconds": 86400,
+    "maximum_attempts": 1,
+    "attempt_index": 1,
+    "attempts_started": 0,
+    "automatic_or_manual_retry": false,
+    "failure_consumes_authorization": true,
+    "maximum_U3K_storage_attempts": 1,
+    "authorization_nonce": "67072be2368bae254a1e288cca10e5e70"
+  },
+  "authorized_sequence": {
+    "exact_runtime_and_three_parent_binding": true,
+    "exact_Utility_manifest_and_bounded_closure_binding": true,
+    "exact_source_and_package_binding": true,
+    "maximum_generated_validation_processes": 2,
+    "U4D_child_generated_cases": 416,
+    "handler_generated_cases": 84,
+    "total_generated_cases": 500,
+    "typed_process_output_classification": true,
+    "U3K_only_after_all_500_cases_and_identity_gates_pass": true,
+    "conditional_Phase_3_closeout": true,
+    "maximum_local_closeout_commits": 1,
+    "push_or_remote_Git": false
+  },
+  "state_at_record_write": {
+    "package_authority_preflight_passed": true,
+    "core_file_mismatch_count": 0,
+    "source_binding_mismatch_count": 0,
+    "future_output_preexistence_count": 0,
+    "runtime_or_manifest_observation_started": false,
+    "PowerShell_process_count": 0,
+    "machine_storage_or_U3K_action_started": false,
+    "F_drive_access_count": 0,
+    "raw_process_or_security_material_retained": false
+  },
+  "continuing_prohibitions": [
+    "no_alternate_runtime_source_path_volume_module_or_hardware_discovery",
+    "no_retry_after_any_failure_or_process_machine_or_storage_action",
+    "no_B_drive_or_F_h_cam_access_and_no_existing_root_change",
+    "no_Defender_scanner_network_trust_retrieval_install_update_or_download",
+    "no_artifact_model_inference_camera_media_private_or_Government_data",
+    "no_container_Kubernetes_profile_activation_or_deployment",
+    "no_push_pull_fetch_PR_merge_or_other_remote_Git"
+  ]
+}

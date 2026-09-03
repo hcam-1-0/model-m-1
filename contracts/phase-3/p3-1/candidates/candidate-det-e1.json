@@ -1,0 +1,109 @@
+{
+  "approval": {
+    "decided_at": null,
+    "owner_id": "mayank-admin",
+    "reason": "Exact artifact remains research-only and unavailable",
+    "record_id": "pending-det-e1",
+    "status": "pending"
+  },
+  "artifact_identity": {
+    "blocker": "exact-checkpoint-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "blockers": [
+    "exact-checkpoint-unresolved",
+    "weight-license-unverified",
+    "training-lineage-unverified",
+    "model-card-unresolved",
+    "sbom-unresolved"
+  ],
+  "candidate_id": "DET-E1",
+  "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+  "eligibility": "blocked",
+  "export_expectations": [
+    "onnx-export-research-only"
+  ],
+  "intended_role": "detector_low_compute",
+  "known_limits": [
+    "D-FINE-N artifact identity and complete training provenance are unresolved",
+    "Published accelerator results do not establish performance on H-CAM hardware"
+  ],
+  "licenses": [
+    {
+      "commercial_or_government_use": "allowed",
+      "component": "code",
+      "license_id": {
+        "blocker": null,
+        "digest": null,
+        "state": "resolved",
+        "value": "Apache-2.0"
+      },
+      "notice_required": true,
+      "redistribution": "allowed"
+    },
+    {
+      "commercial_or_government_use": "unresolved",
+      "component": "weights",
+      "license_id": {
+        "blocker": "weights-license-unverified",
+        "digest": null,
+        "state": "unresolved",
+        "value": null
+      },
+      "notice_required": null,
+      "redistribution": "unresolved"
+    }
+  ],
+  "lineage": {
+    "blocker": "training-lineage-unverified",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "manifest_digest": "sha256:515cc1b643a93f78d2bd37e4c6c23b85b2014d83cd92f42c74c26036a3934483",
+  "model_card": {
+    "blocker": "model-card-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "recorded_at": "2026-08-24T12:45:00Z",
+  "runtime_expectations": [
+    "comparison-runtime-unresolved"
+  ],
+  "sbom": {
+    "blocker": "sbom-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "semantic_version": "1.0.0",
+  "source_reference": {
+    "accessed_on": "2026-08-24",
+    "evidence_kind": "official_repository",
+    "no_download_performed": true,
+    "publisher": "D-FINE authors",
+    "reference_id": "source-dfine",
+    "supports_claim": "Paper-linked repository documents the D-FINE-N candidate",
+    "title": "D-FINE official repository",
+    "url": "https://github.com/Peterande/D-FINE"
+  },
+  "source_revision": {
+    "blocker": null,
+    "digest": null,
+    "state": "resolved",
+    "value": "956d1709314c2c6a4df6f34de232054578a7449f"
+  },
+  "source_tier": "S3",
+  "supported_taxonomy": [
+    "object.person",
+    "vehicle.bicycle",
+    "vehicle.motorcycle",
+    "vehicle.car",
+    "vehicle.bus",
+    "vehicle.truck",
+    "object.unknown"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "accessed_on": "2026-08-26",
+  "artifact_downloads_performed": false,
+  "contract_format": "hcam.phase3.p3_5.research_sources.v1",
+  "dataset_downloads_performed": false,
+  "model_downloads_performed": false,
+  "research_scope": "planning_metadata_and_primary_sources_only",
+  "sources": [
+    {
+      "evidence_kind": "official_documentation",
+      "limitations": "Published evaluation sets are not plate-domain evidence, and PP-OCRv5 and PP-OCRv6 metrics are not directly comparable where datasets differ.",
+      "publisher": "PaddlePaddle",
+      "reference_id": "paddleocr-text-recognition",
+      "supports": "PP-OCRv6 small, medium, and tiny recognition tiers and their documented sizes; PP-OCRv5 remains separately documented.",
+      "url": "https://www.paddleocr.ai/main/en/version3.x/module_usage/text_recognition.html"
+    },
+    {
+      "evidence_kind": "official_repository_documentation",
+      "limitations": "The reported Devanagari metric is not H-CAM plate accuracy and grants no artifact approval.",
+      "publisher": "PaddlePaddle",
+      "reference_id": "paddleocr-devanagari",
+      "supports": "The devanagari_PP-OCRv5_mobile_rec catalog entry supports Devanagari letters and numbers.",
+      "url": "https://github.com/PaddlePaddle/PaddleOCR/blob/main/docs/version3.x/pipeline_usage/OCR.en.md"
+    },
+    {
+      "evidence_kind": "official_repository_documentation",
+      "limitations": "Generic OCR training data has no demonstrated Indian plate-domain accuracy.",
+      "publisher": "Tesseract OCR",
+      "reference_id": "tesseract-data-files",
+      "supports": "Official tessdata_fast and tessdata_best roles and the availability of Gujarati traineddata.",
+      "url": "https://github.com/tesseract-ocr/tessdoc/blob/main/Data-Files.md"
+    },
+    {
+      "evidence_kind": "official_standard",
+      "limitations": "Normalization does not validate a registration mark or correct OCR semantics.",
+      "publisher": "Unicode Consortium",
+      "reference_id": "unicode-uax15",
+      "supports": "NFC canonical normalization and the requirement not to apply compatibility normalization blindly.",
+      "url": "https://www.unicode.org/reports/tr15/"
+    },
+    {
+      "evidence_kind": "official_standard",
+      "limitations": "Default grapheme segmentation is a metric unit, not an OCR quality guarantee.",
+      "publisher": "Unicode Consortium",
+      "reference_id": "unicode-uax29",
+      "supports": "Extended grapheme clusters for user-perceived character boundaries in Indic scripts.",
+      "url": "https://www.unicode.org/reports/tr29/"
+    },
+    {
+      "evidence_kind": "official_government_rule",
+      "limitations": "The rules are a planning input, not legal advice or authority to process real registration marks or owner records.",
+      "publisher": "India Code",
+      "reference_id": "india-cmvr-registration-marks",
+      "supports": "Central Motor Vehicles Rules requirements for clear registration-mark display, plate construction, and letter/numeral dimensions.",
+      "url": "https://upload.indiacode.nic.in/showfile?actid=AC_CG_61_1084_00001_00001_1554966634246&filename=the_central_motor_vehicles_rules%2C_1989.pdf&type=rule"
+    },
+    {
+      "evidence_kind": "peer_reviewed_primary_paper",
+      "limitations": "SynthText uses external scene assets and does not authorize H-CAM to download its dataset or reuse its code or data.",
+      "publisher": "Computer Vision Foundation",
+      "reference_id": "cvpr2016-synthtext",
+      "supports": "Synthetic text localization through geometry-aware rendering and compositing.",
+      "url": "https://openaccess.thecvf.com/content_cvpr_2016/html/Gupta_Synthetic_Data_for_CVPR_2016_paper.html"
+    },
+    {
+      "evidence_kind": "peer_reviewed_primary_paper",
+      "limitations": "The paper documents a synthetic-to-real domain gap; synthetic-only evidence cannot support real-CCTV performance claims.",
+      "publisher": "Computer Vision Foundation",
+      "reference_id": "iccv2023-str-data-perspective",
+      "supports": "Separate reporting of synthetic evidence and explicit limitations on real-world generalization.",
+      "url": "https://openaccess.thecvf.com/content/ICCV2023/papers/Jiang_Revisiting_Scene_Text_Recognition_A_Data_Perspective_ICCV_2023_paper.pdf"
+    },
+    {
+      "evidence_kind": "official_font_repository",
+      "limitations": "Exact font files, release, hashes, notices, and redistribution terms remain implementation-entry evidence.",
+      "publisher": "Noto Fonts",
+      "reference_id": "noto-gujarati",
+      "supports": "A maintained Gujarati font family and Open Font License source for future generated rendering evaluation.",
+      "url": "https://github.com/notofonts/gujarati"
+    },
+    {
+      "evidence_kind": "official_font_repository",
+      "limitations": "Exact font files, release, hashes, notices, and redistribution terms remain implementation-entry evidence.",
+      "publisher": "Noto Fonts",
+      "reference_id": "noto-devanagari",
+      "supports": "A maintained Devanagari font family for future generated rendering evaluation.",
+      "url": "https://github.com/notofonts/devanagari"
+    }
+  ],
+  "status": "planning_research_complete_artifacts_unapproved"
+}

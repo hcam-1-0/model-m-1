@@ -1,0 +1,706 @@
+{
+  "authorization_id": "D-P3.5-RUNTIME-RESEARCH",
+  "contract_format": "hcam.phase3.p3_5.runtime-license-review.v1",
+  "evidence_id": "P3.5-RUNTIME-LICENSE-REVIEW-R1",
+  "implementation_or_redistribution_authorized": false,
+  "legal_approval_performed": false,
+  "metadata_missing_count": 0,
+  "package_count": 67,
+  "packages": [
+    {
+      "classifiers": [
+        "License :: OSI Approved :: Python Software Foundation License"
+      ],
+      "license_expression": null,
+      "license_summary": "PSF-2.0",
+      "name": "aiohappyeyeballs",
+      "raw_license_sha256": "606B04E71DB9CA7A05D4FCB08CC69001946922A9B909DE4932413EA640DA9486",
+      "review_flags": [],
+      "version": "2.7.1"
+    },
+    {
+      "classifiers": [],
+      "license_expression": null,
+      "license_summary": "Apache-2.0 AND MIT",
+      "name": "aiohttp",
+      "raw_license_sha256": "38E0D1CA69C066E18B0D0D41BA707A97919AF11B8461E6C6364936B920F61576",
+      "review_flags": [],
+      "version": "3.14.3"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_expression": null,
+      "license_summary": "Apache 2.0",
+      "name": "aiosignal",
+      "raw_license_sha256": "CF989EA142F203F532233FA944EE1D8D5ACFE6F6875E4D611F515EE108BA26DF",
+      "review_flags": [],
+      "version": "1.4.0"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_expression": null,
+      "license_summary": "Apache-2.0",
+      "name": "aistudio_sdk",
+      "raw_license_sha256": "2AF71558E438DB0B73A20BEAB92DC278A94E1BBE974C00C1A33E3AB62D53A608",
+      "review_flags": [],
+      "version": "0.3.9"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": "MIT",
+      "license_summary": "MIT",
+      "name": "annotated-types",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "0.8.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "MIT",
+      "license_summary": "MIT",
+      "name": "anyio",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "4.14.2"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "MIT",
+      "license_summary": "MIT",
+      "name": "attrs",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "26.1.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": null,
+      "license_summary": "Apache License 2.0",
+      "name": "bce-python-sdk",
+      "raw_license_sha256": "E99DD4B311146507C3D0A887CA12E50387FE644C8AAA86CB500B50C068062543",
+      "review_flags": [],
+      "version": "0.9.76"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+      ],
+      "license_expression": null,
+      "license_summary": "MPL-2.0",
+      "name": "certifi",
+      "raw_license_sha256": "09962C1DC23FAC80A0E5A88B2EB7051B74A6443A568CA2A045A4EC2FB82AEEE5",
+      "review_flags": [
+        "MPL"
+      ],
+      "version": "2026.7.22"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "0BSD",
+      "license_summary": "0BSD",
+      "name": "chardet",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "7.6.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": null,
+      "license_summary": "MIT",
+      "name": "charset-normalizer",
+      "raw_license_sha256": "E5DCFFE836B6EC8A58E492419B550E65FB8CBDC308503979E5DACB33AC7EA3B7",
+      "review_flags": [],
+      "version": "3.5.1"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "BSD-3-Clause",
+      "license_summary": "BSD-3-Clause",
+      "name": "click",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "8.5.0"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "license_expression": null,
+      "license_summary": "License :: OSI Approved :: BSD License",
+      "name": "colorama",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "0.4.6"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_summary": "MIT License",
+      "name": "colorlog",
+      "raw_license_sha256": "ABB2896DC3C2A9402F901B88D5035CF0A83D5CF7C17E73642CDF562B0B9D3BC5",
+      "review_flags": [],
+      "version": "6.12.0"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)"
+      ],
+      "license_expression": null,
+      "license_summary": "LGPL-2.1-or-later",
+      "name": "crc32c",
+      "raw_license_sha256": "FEB2B2000CF34D369BB3D993DACE0FF396DF2AC4AF57EC43B9E130D8895E607A",
+      "review_flags": [
+        "GPL",
+        "LGPL"
+      ],
+      "version": "2.9"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": "MIT",
+      "license_summary": "MIT",
+      "name": "filelock",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "3.32.4"
+    },
+    {
+      "classifiers": [],
+      "license_expression": null,
+      "license_summary": "Apache-2.0",
+      "name": "frozenlist",
+      "raw_license_sha256": "2AF71558E438DB0B73A20BEAB92DC278A94E1BBE974C00C1A33E3AB62D53A608",
+      "review_flags": [],
+      "version": "1.8.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "BSD-3-Clause",
+      "license_summary": "BSD-3-Clause",
+      "name": "fsspec",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "2026.7.0"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved",
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_summary": "MIT",
+      "name": "future",
+      "raw_license_sha256": "E5DCFFE836B6EC8A58E492419B550E65FB8CBDC308503979E5DACB33AC7EA3B7",
+      "review_flags": [],
+      "version": "1.0.0"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_summary": "MIT",
+      "name": "h11",
+      "raw_license_sha256": "E5DCFFE836B6EC8A58E492419B550E65FB8CBDC308503979E5DACB33AC7EA3B7",
+      "review_flags": [],
+      "version": "0.16.0"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_expression": "Apache-2.0",
+      "license_summary": "Apache-2.0",
+      "name": "hf-xet",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "1.6.0"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "license_expression": "BSD-3-Clause",
+      "license_summary": "BSD-3-Clause",
+      "name": "httpcore",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "1.0.9"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "license_expression": null,
+      "license_summary": "BSD-3-Clause",
+      "name": "httpx",
+      "raw_license_sha256": "118DBCD2D5C9F9B296A9EDE9FCC469C5840F7B98AD2C88461055BF2CEDA38037",
+      "review_flags": [],
+      "version": "0.28.1"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_expression": null,
+      "license_summary": "Apache-2.0",
+      "name": "huggingface_hub",
+      "raw_license_sha256": "2AF71558E438DB0B73A20BEAB92DC278A94E1BBE974C00C1A33E3AB62D53A608",
+      "review_flags": [],
+      "version": "1.28.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "BSD-3-Clause",
+      "license_summary": "BSD-3-Clause",
+      "name": "idna",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "3.19"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "MIT",
+      "license_summary": "MIT",
+      "name": "imagesize",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "2.0.1"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "Apache-2.0",
+      "license_summary": "Apache-2.0",
+      "name": "modelscope",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "1.39.1"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_expression": null,
+      "license_summary": "Apache-2.0",
+      "name": "modelscope-hub",
+      "raw_license_sha256": "2AF71558E438DB0B73A20BEAB92DC278A94E1BBE974C00C1A33E3AB62D53A608",
+      "review_flags": [],
+      "version": "0.2.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": null,
+      "license_summary": "Apache License 2.0",
+      "name": "multidict",
+      "raw_license_sha256": "E99DD4B311146507C3D0A887CA12E50387FE644C8AAA86CB500B50C068062543",
+      "review_flags": [],
+      "version": "6.7.1"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "BSD-3-Clause",
+      "license_summary": "BSD-3-Clause",
+      "name": "networkx",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "3.6.1"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "license_expression": null,
+      "license_summary": "License :: OSI Approved :: BSD License",
+      "name": "numpy",
+      "raw_license_sha256": "9C6FAFD6916BB00A57A06CE44AF52EE0AB2B7C89A382156C1A2EE83D465E9CD9",
+      "review_flags": [
+        "GPL",
+        "LGPL",
+        "MPL"
+      ],
+      "version": "2.3.5"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_expression": null,
+      "license_summary": "Apache 2.0",
+      "name": "opencv-contrib-python",
+      "raw_license_sha256": "CF989EA142F203F532233FA944EE1D8D5ACFE6F6875E4D611F515EE108BA26DF",
+      "review_flags": [],
+      "version": "4.10.0.84"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved"
+      ],
+      "license_expression": null,
+      "license_summary": "MIT",
+      "name": "opt-einsum",
+      "raw_license_sha256": "E5DCFFE836B6EC8A58E492419B550E65FB8CBDC308503979E5DACB33AC7EA3B7",
+      "review_flags": [],
+      "version": "3.3.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "Apache-2.0 OR BSD-2-Clause",
+      "license_summary": "Apache-2.0 OR BSD-2-Clause",
+      "name": "packaging",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "26.3"
+    },
+    {
+      "classifiers": [],
+      "license_expression": null,
+      "license_summary": "Apache License 2.0",
+      "name": "paddleocr",
+      "raw_license_sha256": "E99DD4B311146507C3D0A887CA12E50387FE644C8AAA86CB500B50C068062543",
+      "review_flags": [],
+      "version": "3.7.0"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_expression": null,
+      "license_summary": "Apache Software License",
+      "name": "paddlepaddle",
+      "raw_license_sha256": "8ABAAC38411F199B1E71EFD166C3218C95BE016C8A2D672DE0C6C168DE02D5C1",
+      "review_flags": [],
+      "version": "3.3.1"
+    },
+    {
+      "classifiers": [],
+      "license_expression": null,
+      "license_summary": "Apache-2.0",
+      "name": "paddlex",
+      "raw_license_sha256": "2AF71558E438DB0B73A20BEAB92DC278A94E1BBE974C00C1A33E3AB62D53A608",
+      "review_flags": [],
+      "version": "3.7.2"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "license_expression": null,
+      "license_summary": "License :: OSI Approved :: BSD License",
+      "name": "pandas",
+      "raw_license_sha256": "4502DB32E6FA8BD3E4B464C98EB538A349B6E7905EBC5FB41FB7905A03CB4BA4",
+      "review_flags": [
+        "MPL"
+      ],
+      "version": "3.0.5"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "MIT-CMU",
+      "license_summary": "MIT-CMU",
+      "name": "pillow",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "12.3.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "BSD-3-Clause",
+      "license_summary": "BSD-3-Clause",
+      "name": "prettytable",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "3.18.0"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_expression": null,
+      "license_summary": "Apache-2.0",
+      "name": "propcache",
+      "raw_license_sha256": "2AF71558E438DB0B73A20BEAB92DC278A94E1BBE974C00C1A33E3AB62D53A608",
+      "review_flags": [],
+      "version": "0.5.2"
+    },
+    {
+      "classifiers": [],
+      "license_expression": null,
+      "license_summary": "3-Clause BSD License",
+      "name": "protobuf",
+      "raw_license_sha256": "15934BCFCB57D72B1B73D913180CE7F86D2773C32725EFA41DDB6B14E143CB84",
+      "review_flags": [],
+      "version": "7.36.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": null,
+      "license_summary": "BSD-3-Clause",
+      "name": "psutil",
+      "raw_license_sha256": "118DBCD2D5C9F9B296A9EDE9FCC469C5840F7B98AD2C88461055BF2CEDA38037",
+      "review_flags": [],
+      "version": "7.2.2"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_summary": "MIT",
+      "name": "py-cpuinfo",
+      "raw_license_sha256": "E5DCFFE836B6EC8A58E492419B550E65FB8CBDC308503979E5DACB33AC7EA3B7",
+      "review_flags": [],
+      "version": "9.0.0"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved",
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_summary": "MIT",
+      "name": "pyclipper",
+      "raw_license_sha256": "E5DCFFE836B6EC8A58E492419B550E65FB8CBDC308503979E5DACB33AC7EA3B7",
+      "review_flags": [],
+      "version": "1.4.0"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: BSD License",
+        "License :: Public Domain"
+      ],
+      "license_expression": null,
+      "license_summary": "BSD, Public Domain",
+      "name": "pycryptodome",
+      "raw_license_sha256": "D4EEE7E567371EF121ABE62EAF7C4F2FBB1A47BC21E1DDAB65E429C90B36191D",
+      "review_flags": [
+        "PUBLIC DOMAIN"
+      ],
+      "version": "3.23.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "MIT",
+      "license_summary": "MIT",
+      "name": "pydantic",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "2.13.4"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "MIT",
+      "license_summary": "MIT",
+      "name": "pydantic_core",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "2.46.4"
+    },
+    {
+      "classifiers": [],
+      "license_expression": null,
+      "license_summary": "BSD-3-Clause, Apache-2.0, dependency licenses",
+      "name": "pypdfium2",
+      "raw_license_sha256": "9B44DC040B9EB1454F6BAF598061A6B6BFABA7D30D899F2B3A74F5F3812196CA",
+      "review_flags": [],
+      "version": "5.13.0"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)"
+      ],
+      "license_expression": null,
+      "license_summary": "License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)",
+      "name": "python-bidi",
+      "raw_license_sha256": null,
+      "review_flags": [
+        "GPL",
+        "LGPL"
+      ],
+      "version": "0.6.11"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: BSD License",
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_expression": null,
+      "license_summary": "Dual License",
+      "name": "python-dateutil",
+      "raw_license_sha256": "199628DDB098F90709BB2DC43F816A5A40FE31690DE0E25D0F4D6455FE6BC609",
+      "review_flags": [
+        "DUAL LICENSE"
+      ],
+      "version": "2.9.0.post0"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_summary": "MIT",
+      "name": "PyYAML",
+      "raw_license_sha256": "E5DCFFE836B6EC8A58E492419B550E65FB8CBDC308503979E5DACB33AC7EA3B7",
+      "review_flags": [],
+      "version": "6.0.2"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "Apache-2.0 AND CNRI-Python",
+      "license_summary": "Apache-2.0 AND CNRI-Python",
+      "name": "regex",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "2026.7.19"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_expression": null,
+      "license_summary": "Apache-2.0",
+      "name": "requests",
+      "raw_license_sha256": "2AF71558E438DB0B73A20BEAB92DC278A94E1BBE974C00C1A33E3AB62D53A608",
+      "review_flags": [],
+      "version": "2.34.2"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_summary": "MIT",
+      "name": "ruamel.yaml",
+      "raw_license_sha256": "E5DCFFE836B6EC8A58E492419B550E65FB8CBDC308503979E5DACB33AC7EA3B7",
+      "review_flags": [],
+      "version": "0.19.1"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "license_expression": null,
+      "license_summary": "License :: OSI Approved :: Apache Software License",
+      "name": "safetensors",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "0.8.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "MIT",
+      "license_summary": "MIT",
+      "name": "setuptools",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "84.0.0"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "license_expression": null,
+      "license_summary": "BSD 3-Clause",
+      "name": "shapely",
+      "raw_license_sha256": "F4EFA249EADA90291D5DB535412ACDB1B0FC8ED21129A070DC3667AF7631EF5C",
+      "review_flags": [],
+      "version": "2.1.2"
+    },
+    {
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "license_expression": null,
+      "license_summary": "MIT",
+      "name": "six",
+      "raw_license_sha256": "E5DCFFE836B6EC8A58E492419B550E65FB8CBDC308503979E5DACB33AC7EA3B7",
+      "review_flags": [],
+      "version": "1.17.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": null,
+      "license_summary": "MPL-2.0 AND MIT",
+      "name": "tqdm",
+      "raw_license_sha256": "497716E0CEBF8FB1944BBAC349083F8BA656E10320C3F9811A955FC8786D0CC1",
+      "review_flags": [
+        "MPL"
+      ],
+      "version": "4.70.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "PSF-2.0",
+      "license_summary": "PSF-2.0",
+      "name": "typing_extensions",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "4.16.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "MIT",
+      "license_summary": "MIT",
+      "name": "typing-inspection",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "0.4.4"
+    },
+    {
+      "classifiers": [],
+      "license_expression": null,
+      "license_summary": "Apache-2.0",
+      "name": "tzdata",
+      "raw_license_sha256": "2AF71558E438DB0B73A20BEAB92DC278A94E1BBE974C00C1A33E3AB62D53A608",
+      "review_flags": [],
+      "version": "2026.3"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "BSD-3-Clause AND TCL",
+      "license_summary": "BSD-3-Clause AND TCL",
+      "name": "ujson",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "5.13.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "MIT",
+      "license_summary": "MIT",
+      "name": "urllib3",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "2.7.0"
+    },
+    {
+      "classifiers": [],
+      "license_expression": "MIT",
+      "license_summary": "MIT",
+      "name": "wcwidth",
+      "raw_license_sha256": null,
+      "review_flags": [],
+      "version": "0.8.2"
+    },
+    {
+      "classifiers": [],
+      "license_expression": null,
+      "license_summary": "Apache-2.0",
+      "name": "yarl",
+      "raw_license_sha256": "2AF71558E438DB0B73A20BEAB92DC278A94E1BBE974C00C1A33E3AB62D53A608",
+      "review_flags": [],
+      "version": "1.24.5"
+    }
+  ],
+  "review_note": "Package metadata is inventoried; flagged licenses require normal product redistribution review before deployment.",
+  "status": "metadata_complete_legal_review_deferred"
+}

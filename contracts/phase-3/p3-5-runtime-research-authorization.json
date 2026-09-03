@@ -1,0 +1,100 @@
+{
+  "accepted_artifact_evidence_id": "P3.5-EXACT-ARTIFACT-REVIEW-R1",
+  "accepted_evidence_package_digest": "54B02B80169604904C9945C1C6E692500CA8AA79253EEC27A63B4C4DB00B395C",
+  "allowed_direct_packages": [
+    {
+      "name": "paddleocr",
+      "version": "3.7.0"
+    },
+    {
+      "name": "paddlepaddle",
+      "version": "3.3.1"
+    },
+    {
+      "name": "Pillow",
+      "version": "12.3.0"
+    },
+    {
+      "name": "regex",
+      "version": "2026.7.19"
+    }
+  ],
+  "allowed_network_actions": [
+    "resolve_and_download_binary_python_packages_from_exact_PyPI_hosts",
+    "query_PyPI_vulnerability_metadata_for_the_resolved_environment"
+  ],
+  "allowed_source_hosts": [
+    "files.pythonhosted.org",
+    "pypi.org"
+  ],
+  "authorization_id": "D-P3.5-RUNTIME-RESEARCH",
+  "authorized_at": "2026-08-26T13:04:25Z",
+  "authorized_by": "mayank-admin",
+  "contract_format": "hcam.phase3.p3_5.runtime-research-authorization.v1",
+  "dependency_or_lockfile_change_authorized": false,
+  "implementation_authorized": false,
+  "limits": {
+    "archive_artifact_extraction": false,
+    "binary_wheels_only": true,
+    "cumulative_package_bytes": 4294967296,
+    "environment_proxies": false,
+    "external_quarantine_root": "E:\\h-cam-research-cache\\phase-3\\p3-5-runtime",
+    "import_network_access": false,
+    "model_font_media_or_traineddata_loading": false,
+    "package_source_builds": false,
+    "python_implementation": "CPython",
+    "python_version": "3.12.13",
+    "repository_environment_changes": false,
+    "runtime_constructors_or_inference": false,
+    "vcs_local_or_unlisted_direct_urls": false
+  },
+  "owner_statement_received": "I accept P3.5-EXACT-ARTIFACT-REVIEW-R1 for package digest 54B02B80169604904C9945C1C6E692500CA8AA79253EEC27A63B4C4DB00B395C and authorize D-P3.5-RUNTIME-RESEARCH under its documented non-runtime boundaries.",
+  "permitted_actions": [
+    "create_an_isolated_external_CPython_3_12_environment",
+    "resolve_exact_direct_packages_and_their_required_transitive_closure",
+    "download_and_extract_only_binary_wheels_into_the_external_environment",
+    "record_exact_package_versions_hashes_metadata_licenses_and_native_files",
+    "generate_external_and_repository_evidence_SBOMs",
+    "scan_the_external_quarantine_with_Microsoft_Defender",
+    "run_package_vulnerability_audit",
+    "import_only_paddle_paddleocr_PIL_and_regex_with_socket_access_denied"
+  ],
+  "prohibited_actions": [
+    "p3_5_application_or_product_implementation",
+    "repository_pyproject_uv_lock_or_dependency_change",
+    "source_distribution_build_or_native_compilation",
+    "reviewed_OCR_model_font_or_traineddata_extraction_loading_or_execution",
+    "OCR_detector_or_runtime_constructor_creation",
+    "synthetic_plate_generation_training_finetuning_or_inference",
+    "camera_ONVIF_media_or_Sentinel_access",
+    "real_public_private_Government_police_or_scraped_data",
+    "plate_owner_vehicle_watchlist_or_Government_database_matching",
+    "operational_alerting_enforcement_pilot_production_or_deployment",
+    "remote_git_push_pull_request_or_merge",
+    "p3_6_or_later_work"
+  ],
+  "proposal_id": "P3.5-RUNTIME-REVIEW-PROPOSAL-R0",
+  "proposal_record": "p3-5-runtime-review-proposal.json",
+  "proposal_sha256": "3788950DFA0477DE59B1B135AA1AACDA7584A368C1219B3266F0265E6174A5F1",
+  "scope": "phase3.p3_5.isolated_non_runtime_dependency_research",
+  "storage_observations": [
+    {
+      "attempted_root": "B:\\hcam-research-quarantine\\phase-3\\p3-5-runtime",
+      "network_or_package_action_performed": false,
+      "outcome": "stopped_before_download",
+      "reason": "provider_denied_new_top_level_directory_creation"
+    },
+    {
+      "selected_root": "B:\\hcam-scan-temp\\phase-3\\p3-5-runtime",
+      "network_action_performed": true,
+      "outcome": "resolver_stopped_no_completed_wheelhouse_or_installation",
+      "reason": "owner_identified_B_as_RaiDrive_Google_Drive_and_prohibited_further_use"
+    },
+    {
+      "selected_root": "E:\\h-cam-research-cache\\phase-3\\p3-5-runtime",
+      "reason": "owner_freed_sufficient_local_space_and_required_non_RaiDrive_storage"
+    }
+  ],
+  "status": "owner_approved_restricted",
+  "tesseract_runtime_authorized": false
+}

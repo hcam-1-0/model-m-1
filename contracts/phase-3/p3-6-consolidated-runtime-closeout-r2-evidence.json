@@ -1,0 +1,106 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_r2_evidence.v1",
+  "evidence_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-EVIDENCE-1",
+  "decision_id": "D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-AUTH",
+  "status": "sanitized_terminal_failed_closed_evidence_authorization_consumed",
+  "recorded_on": "2026-09-03",
+  "attempt_bindings": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "attempt_index": 1,
+    "authorization_record": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-authorization.json",
+    "authorization_record_sha256": "A8F8B8D9DD6DE42948D8B5B9BD2E869A2490D6758578B0D493C6E4C592798B12",
+    "result_record": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-result.json",
+    "result_record_sha256": "B49F02F504CF4D02B1D8BA59808154BE180A7EF5B251859F356D18A896E386BC",
+    "authorization_package_sha256": "3712793C5A57E66E39C8A804E162A4680EA92024682BDDF2A54573E1622C541E",
+    "action_spec_sha256": "917ABC07DAFA9C148B37BBD7E049267E98D95BEB4534674ABA070D747E5B3F81",
+    "U4D_implementation_package_sha256": "288F275345E2586E05BE14EC964CA77EF7503A0BE70D88C6C5696BB4655C612A"
+  },
+  "sanitized_action_timeline": [
+    {
+      "sequence": 1,
+      "action_id": "R2-A01-PACKAGE-AUTHORITY-PREFLIGHT",
+      "status": "passed",
+      "reason_code": "package_authority_accepted"
+    },
+    {
+      "sequence": 2,
+      "action_id": "R2-A02-AUTHORIZATION-RECORD",
+      "status": "passed",
+      "reason_code": "authorization_recorded_before_observation"
+    },
+    {
+      "sequence": 3,
+      "action_id": "R2-A03-RUNTIME-PARENT-AND-FILE-BINDING",
+      "status": "passed",
+      "reason_code": "runtime_binding_accepted"
+    },
+    {
+      "sequence": 4,
+      "action_id": "R2-A04-UTILITY-MANIFEST-AND-CLOSURE-BINDING",
+      "status": "failed_closed",
+      "reason_code": "utility_closure_declared_target_missing"
+    },
+    {
+      "sequence_range": "5-13",
+      "status": "not_started",
+      "reason_code": "prior_gate_failed_and_authorization_consumed"
+    }
+  ],
+  "confirmed_facts": {
+    "owner_statement_utf8_bytes": 1771,
+    "owner_statement_sha256": "67072BE2368BAE254A1E288CCA10E5E7067B188314D048788201465FA43B9694",
+    "owner_authorization_was_current_when_attempt_started": true,
+    "package_core_binding_mismatch_count": 0,
+    "action_source_binding_mismatch_count": 0,
+    "future_output_preexistence_count_before_authorization_record": 0,
+    "runtime_regular_nonreparse_bounded_and_exact": true,
+    "fixed_parent_count": 3,
+    "fixed_parents_all_valid": true,
+    "runtime_major_version": 7,
+    "runtime_preparation_time_hash_match": true,
+    "runtime_cache_only_whole_chain_excluding_root_trust_valid": true,
+    "network_or_trust_retrieval_used": false,
+    "Utility_manifest_regular_nonreparse_bounded_and_exact": true,
+    "Utility_manifest_parent_chain_valid": true,
+    "Utility_manifest_parser_file_count": 1,
+    "Utility_manifest_parser_error_count": 0,
+    "Utility_manifest_top_level_literal_hashtable_count": 1,
+    "Utility_manifest_ScriptsToProcess_empty": true,
+    "closure_resolution_reached_missing_declared_target": true,
+    "target_PowerShell_generated_validation_process_count": 0,
+    "generated_case_execution_count": 0,
+    "U3K_preflight_or_storage_started": false,
+    "F_drive_access_count": 0,
+    "prohibited_action_count": 0
+  },
+  "interpretation_boundaries": {
+    "missing_declared_target_identity_or_path_retained": false,
+    "raw_manifest_text_parser_tokens_or_AST_retained": false,
+    "whether_resolution_base_semantics_require_remediation_is_confirmed": false,
+    "whether_the_installed_Utility_module_is_incomplete_is_confirmed": false,
+    "whether_U4D_child_or_outer_controller_would_pass_is_known": false,
+    "whether_handler_generated_validation_would_pass_is_known": false,
+    "whether_U3K_policy_or_storage_would_pass_is_known": false,
+    "model_product_camera_media_or_deployment_defect_indicated": false
+  },
+  "retention_and_safety": {
+    "raw_process_stdout_or_stderr_retained_bytes": 0,
+    "raw_manifest_content_retained_bytes": 0,
+    "missing_target_path_retained": false,
+    "exception_message_type_stack_identity_or_security_material_retained": false,
+    "only_bounded_counts_booleans_action_ids_and_allowlisted_reason_retained": true,
+    "network_download_install_update_scanner_or_trust_retrieval_action_count": 0,
+    "artifact_model_inference_camera_media_private_or_Government_data_action_count": 0,
+    "container_Kubernetes_profile_activation_or_deployment_action_count": 0,
+    "commit_push_pull_fetch_PR_merge_or_remote_Git_action_count": 0
+  },
+  "terminal_gate_effect": {
+    "attempt_consumed": true,
+    "authorization_reusable": false,
+    "automatic_or_manual_retry_authorized": false,
+    "U3K_or_storage_authorized": false,
+    "Phase_3_complete": false,
+    "commit_push_or_remote_Git_authorized": false,
+    "next_step": "prepare_sanitized_failure_analysis_and_a_separate_remediation_decision_package_only_after_new_owner_direction"
+  }
+}

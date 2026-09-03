@@ -1,0 +1,133 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3u_remediation_decision_packet.v1",
+  "packet_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3U-REMEDIATION-DECISIONS",
+  "status": "owner_decisions_pending_non_effective_planning_only",
+  "prepared_on": "2026-09-02",
+  "failure_analysis": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-failure-analysis-r0.json",
+  "decision_scope": "select_source_only_H1_remediation_and_reentry_policy_without_authorizing_implementation_execution_retry_or_U3K",
+  "decisions": [
+    {
+      "decision_id": "D-P3.6-U3U-001",
+      "title": "First Remediation Surface",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Additive H1 R1 diagnostic harness",
+          "effect": "Preserve_the_accepted_controller_and_historical_H1_byte_exact_then_implement_later_a_new_package_bound_H1_R1_harness_with_typed_field_group_diagnostics",
+          "tradeoff": "isolates_the_unobserved_predicate_without_changing_the_controller_that_already_passed_its_generated_static_contract"
+        },
+        "B": {
+          "label": "Modify the controller first",
+          "effect": "Change_the_accepted_controller_output_before_the_failed_H1_predicate_is_identified",
+          "tradeoff": "may_fix_the_issue_but_guesses_at_root_cause_and_invalidates_more_accepted_evidence"
+        },
+        "C": {
+          "label": "Modify both controller and H1",
+          "effect": "Create_a_new_controller_and_harness_contract_together",
+          "tradeoff": "largest_blast_radius_and_makes_it_harder_to_identify_which_change_resolved_the_failure"
+        },
+        "D": {
+          "label": "Stop U3T remediation",
+          "effect": "Keep_U3T_and_U3K_blocked_without_new_source_or_runtime_work",
+          "tradeoff": "no_new_risk_but_no_Phase_3_6_runtime_validation_progress"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U3U-002",
+      "title": "Sanitized Diagnostic Contract",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Typed field-group reason taxonomy",
+          "effect": "Emit_only_one_allowlisted_reason_for_top_level_shape_identity_terminal_success_reason_stage_counts_retention_or_gate_group_mismatch_plus_an_allowlisted_controller_reason_family",
+          "tradeoff": "provides_actionable_isolation_without_retaining_values_types_raw_output_or_exceptions"
+        },
+        "B": {
+          "label": "Bounded mismatch bitset",
+          "effect": "Emit_a_fixed_boolean_vector_for_each_result_group_without_values",
+          "tradeoff": "more_compact_but_less_human_readable_and_easier_to_misinterpret_across_contract_versions"
+        },
+        "C": {
+          "label": "Keep one coarse invalid code",
+          "effect": "Retain_only_result_contract_invalid",
+          "tradeoff": "preserves_the_current_blind_spot_and_makes_another_attempt_low_value"
+        },
+        "D": {
+          "label": "Retain raw controller output",
+          "effect": "Store_the_candidate_projection_or_exception_for_debugging",
+          "tradeoff": "highest_diagnostic_detail_but_breaks_the_zero_raw_retention_boundary_and_is_not_recommended"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U3U-003",
+      "title": "Source Validation Evidence",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Generated static differential suite",
+          "effect": "Require_generated_vectors_for_every_allowlisted_result_group_controller_reason_family_redaction_bound_and_fail_closed_transition_and_compare_the_H1_contract_to_the_machine_disabled_Python_oracle_without_machine_access",
+          "tradeoff": "largest_source_only_test_effort_but_best_pre_runtime_coverage"
+        },
+        "B": {
+          "label": "Static token and hash checks only",
+          "effect": "Verify_source_markers_hashes_and_embedded_JSON_without_differential_result_vectors",
+          "tradeoff": "faster_but_repeats_the_evidence_gap_that_allowed_U3T_R1_to_fail"
+        },
+        "C": {
+          "label": "PowerShell execution as implementation evidence",
+          "effect": "Execute_the_new_harness_before_separate_source_acceptance",
+          "tradeoff": "faster_feedback_but_collapses_the_source_acceptance_and_runtime_authorization_gates"
+        },
+        "D": {
+          "label": "No validation package",
+          "effect": "Do_not_prepare_generated_or_static_evidence",
+          "tradeoff": "keeps_remediation_unreviewable_and_runtime_reentry_closed"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U3U-004",
+      "title": "Runtime Reentry Sequence",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Source acceptance then one diagnostic retry",
+          "effect": "First_accept_the_additive_H1_R1_source_and_generated_static_evidence_then_prepare_a_separate_digest_bound_single_generated_only_runtime_diagnostic_and_require_success_acceptance_before_any_U3K_package",
+          "tradeoff": "preserves_the_source_first_and_single_attempt_controls_while_producing_actionable_evidence"
+        },
+        "B": {
+          "label": "Blind retry of accepted H1",
+          "effect": "Run_the_same_byte_exact_H1_again_under_a_new_authorization",
+          "tradeoff": "has_no_new_diagnostic_value_and_is_not_justified_by_the_stable_runtime_and_source_evidence"
+        },
+        "C": {
+          "label": "Advance directly to U3K",
+          "effect": "Prepare_machine_or_storage_work_despite_failed_U3T_evidence",
+          "tradeoff": "breaks_the_existing_gate_and_is_not_recommended"
+        },
+        "D": {
+          "label": "Do not reenter runtime validation",
+          "effect": "Keep_U3T_and_U3K_blocked",
+          "tradeoff": "no_new_observation_and_no_runtime_validation_progress"
+        }
+      }
+    }
+  ],
+  "recommended_selection": {
+    "D-P3.6-U3U-001": "A",
+    "D-P3.6-U3U-002": "A",
+    "D-P3.6-U3U-003": "A",
+    "D-P3.6-U3U-004": "A"
+  },
+  "effect_of_owner_selection": {
+    "prepare_separate_source_only_H1_R1_implementation_authorization_proposal": true,
+    "implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_cpu_research_sources.v1",
+  "record_id": "P3.6-PORTABLE-CPU-RESEARCH-SOURCES-R0",
+  "status": "complete_for_non_executable_profile_proposal",
+  "accessed_on": "2026-08-30",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "evidence_kind": "read_only_official_documentation_and_existing_repository_metadata",
+  "network_scope": "public_primary_source_https_documentation_only",
+  "artifact_downloads": 0,
+  "runtime_executions": 0,
+  "hardware_queries_or_tests": 0,
+  "sources": [
+    {
+      "source_id": "ORT-THREADING-CURRENT",
+      "publisher": "Microsoft",
+      "title": "ONNX Runtime Thread Management",
+      "url": "https://onnxruntime.ai/docs/performance/tune-performance/threading.html",
+      "verified_facts": [
+        "The default CPU execution provider exposes explicit intra-op and inter-op thread controls.",
+        "Sequential graph execution is the default; parallel graph execution may help branched models but can also hurt performance.",
+        "Thread spinning is enabled by default and trades CPU and power use for latency, so its state must be part of an exact runtime manifest.",
+        "Graph optimization level is an explicit session option and must be bound to evidence."
+      ]
+    },
+    {
+      "source_id": "ORT-EXECUTION-PROVIDERS-CURRENT",
+      "publisher": "Microsoft",
+      "title": "ONNX Runtime Execution Providers",
+      "url": "https://onnxruntime.ai/docs/execution-providers/",
+      "verified_facts": [
+        "Execution providers are ordered by priority and determine which graph nodes or subgraphs execute on each provider.",
+        "The registered provider list and provider options are observable runtime state.",
+        "A portable CPU reference must bind CPUExecutionProvider explicitly and reject an unexpected provider list."
+      ]
+    },
+    {
+      "source_id": "ORT-GRAPH-OPTIMIZATIONS-CURRENT",
+      "publisher": "Microsoft",
+      "title": "ONNX Runtime Graph Optimizations",
+      "url": "https://onnxruntime.ai/docs/performance/model-optimizations/graph-optimizations.html",
+      "verified_facts": [
+        "Graph optimizations have basic, extended, and layout levels and may run online or offline.",
+        "Offline optimized artifacts must use the same execution-provider, optimization, and target-hardware assumptions as their eventual runtime.",
+        "An offline optimized graph is a separate derived artifact and is not implied by the source ONNX model."
+      ]
+    },
+    {
+      "source_id": "ORT-INSTALL-CURRENT",
+      "publisher": "Microsoft",
+      "title": "Install ONNX Runtime",
+      "url": "https://onnxruntime.ai/docs/install/",
+      "verified_facts": [
+        "The official CPU Python distribution is the onnxruntime package.",
+        "Windows builds have explicit runtime prerequisites, so lock metadata alone does not prove an installed or loadable environment."
+      ]
+    }
+  ],
+  "repository_evidence": [
+    {
+      "path": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r0.json",
+      "sha256": "0E702718390FB6C373F0FC189CB58D0E79BB7FE3B3EA39B5E5AFE0DE4D47CA1F",
+      "role": "authorized_sanitized_machine_inventory"
+    },
+    {
+      "path": "contracts/phase-3/p3-2-runtime-approval.json",
+      "role": "accepted_generated_only_cpu_behavior_reference"
+    },
+    {
+      "path": "contracts/phase-3/p3-2-model-card.json",
+      "role": "accepted_det_r0_artifact_identity_and_input_shape"
+    },
+    {
+      "path": "contracts/phase-3/p3-2-local-e2e-evidence.json",
+      "role": "historical_structural_smoke_evidence_not_p3_6_performance_evidence"
+    },
+    {
+      "path": "pyproject.toml",
+      "role": "declared_project_runtime_candidate_versions"
+    },
+    {
+      "path": "uv.lock",
+      "role": "existing_lock_metadata_for_candidate_wheels_without_acquisition"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
+      "role": "shared_contract_and_deployment_profile_authority"
+    }
+  ],
+  "limitations": [
+    "official_documentation_does_not_prove_local_installation_or_compatibility",
+    "lock_metadata_does_not_prove_an_artifact_is_present_scanned_loadable_or_approved",
+    "historical_p3_2_generated_smoke_evidence_is_not_p3_6_capacity_latency_or_freshness_evidence",
+    "no_numeric_runtime_setting_is_performance_approved_by_this_research",
+    "no_model_runtime_dependency_or_workload_was_downloaded_loaded_or_executed"
+  ]
+}

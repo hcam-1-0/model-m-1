@@ -1,0 +1,76 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_r1_stage_projection_implementation_acceptance.v1",
+  "record_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-ACCEPTANCE",
+  "decision_id": "D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-ACCEPTANCE",
+  "status": "accepted_non_executable_source_and_generated_static_evidence_U3Z_proposal_preparation_only",
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-02",
+  "acceptance_checkpoint_commit": "cacc1cd482ca202500dfeab422efe53451c1cd8b",
+  "canonical_owner_statement_utf8_bytes": 1446,
+  "canonical_owner_statement_sha256": "0C000AEE9AD45DD2301CB32D57B96BC1493BEA2D133D6E1CB8707FEB0C52CBCE",
+  "canonical_owner_statement": "D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-ACCEPTANCE: I, mayank-admin, accept the P3.6 U3Y controller R1 stage-projection source implementation package digest ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78, including exact contract SHA-256 637C5400122874149D9835CC6BC521E5EEC9160222F4A7AC5CA1F6CD99E1BCC4, PowerShell source SHA-256 787655BAC55DDF563E9D1DC43EC37F010C271AB381E541B0734028E3F2B90B31, machine-disabled Python reference SHA-256 B5C7328CD666E0A8988F9B616C5B2A914D690A40BF2EA289C1F1C755E42B86F0, vector-manifest SHA-256 D8EDF5C0255B40FB6C28BB014C09DC503D2B53665E69C5AA5AB65C744AEA81E4, exactly 288 generated vectors, 100 percent Python-reference branch coverage, clean full Phase 3.6 generated/static validation, the exact authorized compatibility transition, immutable accepted inputs, nonobservational evidence, and documented limitations. This accepts source and generated/static evidence only and permits preparation only of a separate non-effective generated PowerShell contract-validation planning and authorization proposal. It does not authorize PowerShell parsing, import, dot-sourcing, or execution; Python machine access or fallback; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, another attempt, U3K, commit, push, or remote Git.",
+  "accepted_package": {
+    "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-implementation-package.json",
+    "sha256": "ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78",
+    "mutated_by_this_acceptance": false
+  },
+  "accepted_evidence": {
+    "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-implementation-evidence.json",
+    "sha256": "157B10A8EC0260DC59C6EBECF9B385C1BE67E7EC12FBA7B38B8307673703C73B",
+    "review_path": "docs/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-evidence-review.md",
+    "review_sha256": "1F17C14382A265C29C97343B9C2DF67AA85457F35172C95F6CDED6E26A9DCA97",
+    "generated_vector_count": 288,
+    "Python_reference_branch_coverage_percent": 100.0,
+    "full_Phase_3_6_static_tests_passed": 1200,
+    "Phase_3_6_static_test_file_count": 54,
+    "Ruff_result": "all_checks_passed",
+    "PowerShell_parsed_imported_dot_sourced_or_executed": false,
+    "runtime_hardware_machine_storage_or_network_observed": false
+  },
+  "accepted_artifacts": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-contract.json",
+      "sha256": "637C5400122874149D9835CC6BC521E5EEC9160222F4A7AC5CA1F6CD99E1BCC4",
+      "accepted_role": "versioned_exact_null_stage_projection_contract"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1.ps1",
+      "sha256": "787655BAC55DDF563E9D1DC43EC37F010C271AB381E541B0734028E3F2B90B31",
+      "accepted_role": "authoritative_additive_PowerShell_source_not_executed"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1_reference.py",
+      "sha256": "B5C7328CD666E0A8988F9B616C5B2A914D690A40BF2EA289C1F1C755E42B86F0",
+      "accepted_role": "machine_disabled_policy_reference_and_cross_language_oracle"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-vectors.json",
+      "sha256": "D8EDF5C0255B40FB6C28BB014C09DC503D2B53665E69C5AA5AB65C744AEA81E4",
+      "accepted_role": "exact_288_vector_generated_only_manifest"
+    }
+  ],
+  "accepted_effect": {
+    "U3Y_source_and_generated_static_evidence_accepted": true,
+    "accepted_package_is_historical_and_immutable": true,
+    "prepare_separate_non_effective_U3Z_generated_PowerShell_contract_validation_planning_and_authorization_proposal": true,
+    "U3Z_harness_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "machine_storage_F_B_ACL_probe_cleanup_or_scanner_action_authorized": false,
+    "network_download_artifact_model_media_or_data_action_authorized": false,
+    "container_Kubernetes_profile_activation_deployment_attempt_U3K_commit_push_or_remote_Git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "next_required_sequence": [
+    "prepare_a_separate_non_effective_U3Z_generated_contract_validation_planning_and_authorization_proposal",
+    "obtain_exact_digest_bound_U3Z_source_harness_implementation_authorization",
+    "implement_and_statically_validate_only_the_exact_future_U3Z_source_allowlist",
+    "obtain_separate_exact_owner_U3Z_source_implementation_acceptance",
+    "prepare_no_runtime_binding_or_validation_attempt_package_before_U3Z_source_acceptance"
+  ],
+  "acceptance_may_be_inferred_as_PowerShell_runtime_attempt_machine_U3K_deployment_commit_push_or_remote_Git_authority": false
+}

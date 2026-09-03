@@ -1,0 +1,134 @@
+{
+  "contract_format": "hcam.phase3.p3_6.inventory_admission_gap.v1",
+  "record_id": "P3.6-INVENTORY-ADMISSION-GAP-R0",
+  "status": "sealed_planning_gap_no_collection_or_admission_authority",
+  "prepared_on": "2026-08-30",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "historical_inventory": {
+    "record": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r0.json",
+    "sha256": "0E702718390FB6C373F0FC189CB58D0E79BB7FE3B3EA39B5E5AFE0DE4D47CA1F",
+    "collected_at_utc": "2026-08-28T21:10:51Z",
+    "preservation": "immutable_historical_record_do_not_overwrite",
+    "shared_contract_conformance": false,
+    "admission_eligible": false
+  },
+  "target_shared_contract": {
+    "repository": "hcam-2-0/hcam-protos",
+    "revision": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+    "schema": "schemas/platform/v1alpha1/node-capability-inventory.schema.json",
+    "schema_sha256": "C9947BE12888C0A05B29DA0266E2359B107024AF07E536AE10BAC55457C5C7D3",
+    "schema_version": "hcam.platform.node-capability-inventory/v1alpha1",
+    "lifecycle": "experimental"
+  },
+  "gap_count": 15,
+  "field_gaps": [
+    {
+      "target": "schema_version",
+      "r0_state": "missing_shared_schema_discriminator",
+      "required_resolution": "new_R1_must_use_exact_shared_v1alpha1_value"
+    },
+    {
+      "target": "inventory_id",
+      "r0_state": "logical_node_id_is_not_the_required_opaque_snapshot_id",
+      "required_resolution": "create_new_opaque_snapshot_id_without_host_identity"
+    },
+    {
+      "target": "observed_at_and_valid_until",
+      "r0_state": "collection_time_exists_but_valid_until_is_missing",
+      "required_resolution": "owner_selects_positive_freshness_window_and_R1_binds_both_timestamps"
+    },
+    {
+      "target": "provenance",
+      "r0_state": "collection_mode_exists_but_trust_level_and_collector_version_are_missing",
+      "required_resolution": "R1_records_local_read_only_mode_explicit_trust_level_and_sanitized_collector_version"
+    },
+    {
+      "target": "node_class",
+      "r0_state": "portable_assessment_exists_but_shared_cpu_laptop_class_is_not_bound",
+      "required_resolution": "R1_binds_cpu_laptop_without_creating_host_identity"
+    },
+    {
+      "target": "operating_system",
+      "r0_state": "facts_exist_in_historical_shape_without_shared_state_family_or_architecture_enums",
+      "required_resolution": "normalize_only_authorized_facts_and omit raw product detail not required by shared contract"
+    },
+    {
+      "target": "cpu",
+      "r0_state": "core_counts_exist_but instruction_sets_and_shared_capability_state_are_missing",
+      "required_resolution": "recollect_or preserve_instruction_sets_as_unknown_and remove raw manufacturer_and_model_from_portable_projection"
+    },
+    {
+      "target": "memory",
+      "r0_state": "total_exists_but available_mib_at_observation_is_missing",
+      "required_resolution": "R1_collects_bounded_available_memory_or_marks_state_unknown_without inventing capacity"
+    },
+    {
+      "target": "accelerators",
+      "r0_state": "display_metadata_exists_but compute_API_precision_partition_and_usable_memory_support_are_unvalidated",
+      "required_resolution": "R1_uses_unknown_or_degraded_states_and never converts display_adapter_metadata_into_acceleration_support"
+    },
+    {
+      "target": "runtimes",
+      "r0_state": "some_cli_and_default_python_metadata_exist_but global_runtime_presence_backends_and provider_state_are_not_established",
+      "required_resolution": "R1_records only exact observed runtime families and explicit unknown states"
+    },
+    {
+      "target": "container_support",
+      "r0_state": "docker_CLI_presence_does_not_establish_engine_compose_or_GPU_passthrough",
+      "required_resolution": "R1_preserves container support as unknown unless separately observed under authority"
+    },
+    {
+      "target": "scheduler_capabilities",
+      "r0_state": "missing",
+      "required_resolution": "R1_uses explicit unknown states without starting a scheduler_or_Kubernetes"
+    },
+    {
+      "target": "findings",
+      "r0_state": "free_form_resource_risks_do_not_match_bounded_shared_finding_codes",
+      "required_resolution": "map only supported bounded findings and retain P3_6_specialization_risks_separately"
+    },
+    {
+      "target": "redaction",
+      "r0_state": "historical exclusions_are_not_the_exact_seven_category_shared_policy_and_do_not_name_secret_reference",
+      "required_resolution": "R1_uses_exact_hcam_sanitized_node_inventory_v1_redaction_contract"
+    },
+    {
+      "target": "trust_zone_binding",
+      "r0_state": "missing_and_not_a_field_of_the_shared_inventory_contract",
+      "required_resolution": "separate_owner_accepted_policy_snapshot_produces_opaque_digest_for_capacity_and_placement_records"
+    }
+  ],
+  "fields_not_projected_into_shared_inventory": [
+    "logical_volume_names_and_fixed_storage_details",
+    "raw_processor_manufacturer_and_model",
+    "raw_graphics_adapter_name_video_processor_and_driver_date",
+    "memory_module_layout",
+    "profile_assessment",
+    "free_form_resource_risks",
+    "prohibited_claims",
+    "authorization_and_validation_narrative"
+  ],
+  "specialization_preservation": "historical_P3_6_risk_and_authorization_records_remain_separate_and_immutable",
+  "admission_effect": {
+    "current_R0_may_be_used_for_planning_context": true,
+    "current_R0_may_satisfy_shared_inventory_input": false,
+    "current_R0_may_be_auto_extended_or_retimestamped": false,
+    "portable_profile_resolver_eligible": false,
+    "p36_g2_state": "blocked"
+  },
+  "next_exact_outputs": [
+    "owner_selection_for_inventory_strategy_freshness_trust_binding_and_expiry_behavior",
+    "separate_digest_bound_D_P3_6_INVENTORY_R1_AUTH_package",
+    "fresh_read_only_R1_collection_into_exact_shared_shape",
+    "separate_generated_only_trust_zone_policy_snapshot_and_digest",
+    "structural_conformance_and_redaction_evidence",
+    "portable_profile_revision_that_binds_the_fresh_R1_digest"
+  ],
+  "implementation_authorized": false,
+  "inventory_recollection_authorized": false,
+  "profile_activation_authorized": false,
+  "runtime_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

@@ -1,0 +1,156 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_compatibility_validation_decisions.v1",
+  "packet_id": "P36-PORTABLE-COMPATIBILITY-VALIDATION-DECISIONS-R0",
+  "status": "owner_selections_pending_non_executable",
+  "prepared_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "proposal": "contracts/phase-3/p3-6-portable-compatibility-validation-proposal.json",
+  "recommended_selection": "A/A/A/A",
+  "decisions": [
+    {
+      "decision_id": "D-P3.6-U3C-001",
+      "topic": "portable_CPU_runtime_session_configuration",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Deterministic low-contention CPU reference",
+          "effect": "CPUExecutionProvider only, FP32, sequential execution, one intra-op and one inter-op thread, spinning disabled, OS-managed affinity, basic graph optimization, CPU arena and memory pattern enabled, profiling and optimized-model output disabled, batch one, one in-flight request, and a two-item queue.",
+          "tradeoff": "Strongest reproducibility and laptop coexistence baseline but intentionally not maximum throughput."
+        },
+        {
+          "option": "B",
+          "label": "ONNX Runtime performance defaults",
+          "effect": "Use physical-core thread defaults, spinning enabled, all graph optimizations, CPU arena, and memory pattern.",
+          "tradeoff": "Likely faster but uses more CPU/power and is less stable as a collaborator-laptop reference."
+        },
+        {
+          "option": "C",
+          "label": "Hardware-adaptive automatic tuning",
+          "effect": "Choose threads, spinning, arena, and optimization settings from detected capacity.",
+          "tradeoff": "Matches the future dynamic platform goal but requires implementation and generated tuning evidence before it can be trusted."
+        },
+        {
+          "option": "D",
+          "label": "Defer runtime configuration",
+          "effect": "Keep every session option unresolved.",
+          "tradeoff": "Avoids an early choice but prevents a reproducible calibration proposal."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3C-002",
+      "topic": "deterministic_generated_C1_workload_dimensions",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Bounded three-seed CONTRACT plus INFER matrix",
+          "effect": "Use 64 contract cases; zero, ramp, and three seeded uniform FP32 tensors; three cold starts; five warmups per seed; three repetitions of 30 measured inferences per seed; an eight-request bounded burst; three dependency-loss cases; three safe shutdowns; and a 15-minute total timeout with zero raw retention.",
+          "tradeoff": "Broad deterministic coverage while still bounded for the current laptop; stronger hardware can reuse the same shape at higher later evidence tiers."
+        },
+        {
+          "option": "B",
+          "label": "Minimal smoke matrix",
+          "effect": "Use one seed, one cold start, three warmups, ten measured inferences, no burst, and one shutdown.",
+          "tradeoff": "Very fast but weak for queue, recovery, variance, and objective-mode planning."
+        },
+        {
+          "option": "C",
+          "label": "Resource-aggressive portable matrix",
+          "effect": "Use ten seeds, ten repetitions, 1,000 measured inferences per seed, and sustained bursts.",
+          "tradeoff": "Higher statistical volume but unsuitable as the first laptop-safe baseline and would require explicit stress/thermal authority."
+        },
+        {
+          "option": "D",
+          "label": "Defer exact workload",
+          "effect": "Retain scenario names without counts, seeds, or timeouts.",
+          "tradeoff": "Leaves calibration non-reproducible and blocks the next package."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3C-003",
+      "topic": "acceptance_gate_and_threshold_strategy",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Hard safety gates plus calibration then held-out validation",
+          "effect": "Predeclare exact no-fallback, contract, determinism, retention, memory, queue, failure-detection, shutdown, and total-time ceilings now; run a later separately authorized non-promotional calibration; then seal latency, throughput, resource, and recovery thresholds plus held-out seeds before final validation.",
+          "tradeoff": "Avoids invented performance numbers and test-set leakage but requires two separate evidence gates and owner reviews."
+        },
+        {
+          "option": "B",
+          "label": "Single-pass fixed conservative thresholds",
+          "effect": "Set latency, throughput, memory, and recovery pass/fail numbers before any calibration and use the first run as final evidence.",
+          "tradeoff": "Faster but thresholds are weakly justified and the first execution becomes both tuning and final evaluation."
+        },
+        {
+          "option": "C",
+          "label": "Throughput-first gate",
+          "effect": "Make sustained throughput the primary pass condition and treat latency/resource/recovery as informational.",
+          "tradeoff": "Conflicts with balanced-default and fail-closed evidence policy."
+        },
+        {
+          "option": "D",
+          "label": "Structural gates only",
+          "effect": "Validate schemas and deterministic output without performance or resource acceptance.",
+          "tradeoff": "Useful for CONTRACT evidence but insufficient for profile admission or capacity claims."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3C-004",
+      "topic": "immutable_compatibility_bundle_lifecycle",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Five-revision gated bundle",
+          "effect": "Use R0 planning skeleton, R1 supply-chain-reviewed artifacts, R2 non-promotional generated calibration, R3 held-out validation candidate, and R4 eligible-or-rejected only after all seven resolver inputs and gates pass.",
+          "tradeoff": "Most auditable and portable across laptops, servers, and Kubernetes, but requires explicit authority at each state transition."
+        },
+        {
+          "option": "B",
+          "label": "Single mutable bundle",
+          "effect": "Update one manifest in place as artifacts and evidence arrive.",
+          "tradeoff": "Simpler but loses immutable review boundaries and rollback traceability."
+        },
+        {
+          "option": "C",
+          "label": "Two revisions only",
+          "effect": "Use candidate and approved revisions, combining acquisition, calibration, and validation evidence.",
+          "tradeoff": "Less overhead but weak separation between research, tuning, final evidence, and promotion."
+        },
+        {
+          "option": "D",
+          "label": "Runtime-generated manifest",
+          "effect": "Let the runtime construct compatibility state from the live environment.",
+          "tradeoff": "Dynamic but non-reproducible and incompatible with immutable pre-admission review."
+        }
+      ]
+    }
+  ],
+  "effect_if_recommended_AAAA_is_later_accepted": {
+    "runtime_policy": "deterministic_low_contention_CPU_reference",
+    "workload_policy": "bounded_three_seed_CONTRACT_plus_C1_INFER_matrix",
+    "gate_policy": "hard_safety_then_non_promotional_calibration_then_sealed_held_out_validation",
+    "bundle_policy": "five_revision_immutable_lifecycle",
+    "immediate_artifact_or_runtime_authority": false,
+    "immediate_profile_eligibility": false,
+    "immediate_implementation_authority": false
+  },
+  "owner_acceptance_may_be_inferred_from_continue_or_other_decision": false,
+  "artifact_acquisition_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "profile_activation_authorized": false,
+  "implementation_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

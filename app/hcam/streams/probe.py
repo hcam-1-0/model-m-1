@@ -59,18 +59,15 @@ def _run_bounded_process(
     capture_output: bool,
     timeout: float,
     check: bool,
-    shell: bool,
 ) -> subprocess.CompletedProcess[bytes]:
     if not capture_output:
         raise ValueError("bounded process execution requires captured output")
-    if shell:
-        raise ValueError("bounded process execution forbids a command shell")
     process = subprocess.Popen(
         command,
         stdin=stdin,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
-        shell=shell,
+        shell=False,
     )
     if process.stdout is None or process.stderr is None:
         _terminate_process(process)
@@ -293,7 +290,6 @@ class FfprobeRunner:
                 capture_output=True,
                 timeout=self.timeout_seconds,
                 check=False,
-                shell=False,
             )
         except FileNotFoundError as exc:
             raise ProbeToolError("ffprobe executable is unavailable") from exc
