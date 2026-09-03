@@ -3,7 +3,7 @@
 ## Offline Checks
 
 ```powershell
-uv sync --locked --extra dev --extra postgres
+uv sync --locked --extra dev --extra analytics --extra postgres
 uv lock --check
 uv run --locked --extra dev --extra postgres python -m compileall -q app tools migrations
 uv run --locked --extra dev --extra postgres ruff check app tests tools migrations

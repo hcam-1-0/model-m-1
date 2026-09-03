@@ -130,7 +130,7 @@ or police data.
 The optional PostgreSQL test dependency is installed with:
 
 ```powershell
-uv sync --locked --extra dev --extra postgres
+uv sync --locked --extra dev --extra analytics --extra postgres
 ```
 
 GitHub Actions owns the authoritative Phase 1 PostgreSQL integration run. It

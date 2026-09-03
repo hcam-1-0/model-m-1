@@ -9,8 +9,8 @@ WORKFLOW = ROOT / ".github" / "workflows" / "python-ci.yml"
 UPLOAD_ARTIFACT_SHA = "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
 SETUP_UV_SHA = "20cfd1bf945f4377ade1205e4dbc17946fc9a30d"
 POSTGRES_IMAGE = (
-    "postgres:18-alpine@sha256:"
-    "d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"
+    "postgis/postgis:18-3.6-alpine@sha256:"
+    "eb2e8b8afd9b0ecee83bc20fd01aca62a5071bada2c0f38763174b653f8eed42"
 )
 SOURCE_REPOSITORY_EXPRESSION = (
     "${{ github.event.pull_request.head.repo.full_name || github.repository }}"
@@ -56,6 +56,14 @@ def test_python_jobs_use_pinned_uv_and_the_reviewed_lock() -> None:
     assert "pip install -e" not in workflow
 
 
+def test_phase3_history_bound_checks_use_full_checkout() -> None:
+    job = _job(_workflow(), "python-tests")
+
+    assert "fetch-depth: 0" in job
+    assert "phase35_readiness.py --strict --require-clean-source" in job
+    assert "phase35_w9_closure.py check-evidence" in job
+
+
 def test_package_job_builds_and_installs_from_locked_hashes() -> None:
     job = _job(_workflow(), "package-build")
 
@@ -80,7 +88,7 @@ def test_postgres_job_generates_commit_named_p2_g1_artifact() -> None:
     assert "path: var/evidence/p2-g1.json" in job
     assert "alembic downgrade base &&" not in job
     assert "pytest -q -m postgres" not in job
-    assert "uv sync --locked --extra dev --extra postgres" in job
+    assert "uv sync --locked --extra dev --extra analytics --extra postgres" in job
 
 
 def test_compose_job_generates_evidence_and_keeps_defensive_cleanup() -> None:

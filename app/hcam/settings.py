@@ -4,7 +4,7 @@ import ipaddress
 import os
 import re
 from dataclasses import dataclass, field
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from urllib.parse import urlsplit
 
 from hcam.streams.network import (
@@ -288,9 +288,13 @@ class Settings:
             if not secret_root.is_dir():
                 raise ValueError("HCAM_CAMERA_SECRET_ROOT must identify a directory")
             object.__setattr__(self, "camera_secret_root", secret_root)
+        windows_model_path = PureWindowsPath(str(self.analytics_model_relative_path))
         if (
             self.analytics_model_relative_path.is_absolute()
+            or bool(windows_model_path.drive)
+            or bool(windows_model_path.root)
             or ".." in self.analytics_model_relative_path.parts
+            or ".." in windows_model_path.parts
             or self.analytics_model_relative_path.name != "yolox_tiny.onnx"
         ):
             raise ValueError(

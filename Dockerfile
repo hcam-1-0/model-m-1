@@ -30,7 +30,7 @@ ARG VCS_REF=unknown
 
 LABEL org.opencontainers.image.title="H-CAM Core" \
       org.opencontainers.image.description="Phase 2 camera and video ingestion foundation" \
-      org.opencontainers.image.source="https://github.com/mayankthakor227/h-cam-2.0" \
+      org.opencontainers.image.source="https://github.com/hcam-2-0/h-cam-2.0" \
       org.opencontainers.image.revision="${VCS_REF}"
 
 ENV HCAM_ENVIRONMENT=production \

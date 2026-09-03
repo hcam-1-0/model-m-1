@@ -48,7 +48,7 @@ def test_docker_context_excludes_unnecessary_or_sensitive_paths() -> None:
 def test_compose_stack_uses_files_for_secrets_and_hardened_api_runtime() -> None:
     compose = (ROOT / "deploy" / "compose.phase1.yaml").read_text(encoding="utf-8")
 
-    assert "postgres:18-alpine@sha256:" in compose
+    assert "postgis/postgis:18-3.6-alpine@sha256:" in compose
     assert "HCAM_DATABASE_URL_FILE: /run/secrets/database_url" in compose
     assert "HCAM_METRICS_TOKEN_FILE: /run/secrets/metrics_token" in compose
     assert "POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password" in compose
@@ -60,6 +60,17 @@ def test_compose_stack_uses_files_for_secrets_and_hardened_api_runtime() -> None
     assert "127.0.0.1:${HCAM_PORT:-8000}:8000" in compose
     assert "POSTGRES_PASSWORD:" not in compose
     assert "phase1-local-postgres-password" not in compose
+
+
+def test_full_head_compose_stacks_use_pinned_postgis() -> None:
+    expected = (
+        "postgis/postgis:18-3.6-alpine@sha256:"
+        "eb2e8b8afd9b0ecee83bc20fd01aca62a5071bada2c0f38763174b653f8eed42"
+    )
+
+    for filename in ("compose.phase1.yaml", "compose.phase2.yaml"):
+        compose = (ROOT / "deploy" / filename).read_text(encoding="utf-8")
+        assert expected in compose
 
 
 def test_grafana_dashboard_is_valid_and_uses_bounded_hcam_metrics() -> None:
