@@ -1,0 +1,127 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_u4d_implementation_evidence.v1",
+  "evidence_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-U4D-IMPLEMENTATION-EVIDENCE",
+  "status": "source_and_generated_static_evidence_complete_and_resealed",
+  "recorded_on": "2026-09-03",
+  "source_build_authorization": {
+    "decision_id": "D-P3.6-U4D-PROCESS-OUTPUT-REMEDIATION-IMPLEMENTATION-AUTH",
+    "package": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4d-process-output-remediation-source-implementation-authorization-package.json",
+    "package_sha256": "2DAD142AE31D5A3738ABADD0098512B61C0BC2C3A5C7C915BF99DE8D40FB7F74",
+    "canonical_owner_statement_utf8_bytes": 1745,
+    "canonical_owner_statement_sha256": "0238D5D659F9D35068C9949DAB57DD8D72A88F624847A7593263CE767E3C51B5"
+  },
+  "compatibility_amendments": [
+    {
+      "decision_id": "D-P3.6-U4D-COMPATIBILITY-SELF-BINDING-AMENDMENT",
+      "canonical_owner_statement_utf8_bytes": 2034,
+      "canonical_owner_statement_sha256": "2D3BA9EC453CFCF8BFEF18B72A8FAB67E49AC1C2E929BA106BAA6E80C419CA0F",
+      "path": "tests/test_phase36_consolidated_runtime_closeout_authorization_proposal.py",
+      "pre_edit_sha256": "E8001AFD5B558EEBA51A0714C02DCD2C9F22B65F93A74AF4D3323130983B82EF",
+      "post_edit_sha256": "E685F22E3B644B0A7BEDE7E645EA7915A5F668BB297DAC7E529A0044005D5816"
+    },
+    {
+      "decision_id": "D-P3.6-U4D-PROPOSAL-TEST-COMPATIBILITY-AMENDMENT",
+      "canonicalization": "UTF-8_without_BOM_LF_no_terminal_newline",
+      "canonical_owner_statement_utf8_bytes": 2347,
+      "canonical_owner_statement_sha256": "24A39807CC463909BF342C36B931FD220FF3003F64774C90D32374C13758088E",
+      "path": "tests/test_phase36_consolidated_runtime_closeout_u4d_process_output_remediation_proposal.py",
+      "pre_edit_sha256": "BC591EBE87B7E65841002CFFEA6EFB4B9E0210638FD2FB1D04E5C858E95BD014",
+      "post_edit_sha256": "53F90E188E18E56218319C2651A8C728B2A8C0DB406BA47FEC7D0030068DC427"
+    }
+  ],
+  "implemented_artifacts": [
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4d-process-output-contract.json",
+      "sha256": "FC709CE41D751C933A6227BF4FE8FF25CFEA232FAD16A04D589925F691E84EED",
+      "role": "typed_parent_process_output_and_child_terminal_envelope_contract"
+    },
+    {
+      "path": "tools/phase36_consolidated_runtime_closeout_u4d_generated_validation.ps1",
+      "sha256": "5267365930985C0CFBC0E3A96F5D4B58DDD9072EBF222AA607D24773F0AFA72B",
+      "role": "inert_hash_bound_child_harness_source_not_parsed_imported_dot_sourced_or_executed"
+    },
+    {
+      "path": "tools/phase36_consolidated_runtime_closeout_u4d_reference.py",
+      "sha256": "277471603CFE5DB37A5CCFCE8650D8C3BE9AB3EAEE713BF281353B5C819DEEF4",
+      "role": "machine_disabled_parent_classifier_reference"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4d-generated-vectors.json",
+      "sha256": "90419BC5EC4C357A4D00AD2208F4F8B5CF380AF53CE2BBD960BF380EA223F8D1",
+      "role": "384_generated_only_process_output_classification_vectors"
+    },
+    {
+      "path": "tests/test_phase36_consolidated_runtime_closeout_u4d_contract.py",
+      "sha256": "086A2B96F11A4781ADDFAAE325440F16E8BF35CDC01E35FF621F7F35D552E1C1",
+      "role": "contract_and_scope_checks"
+    },
+    {
+      "path": "tests/test_phase36_consolidated_runtime_closeout_u4d_reference.py",
+      "sha256": "D756BF027313424D16E85AAE1E83291CF6EF02DA6DDC07182878B67458A39384",
+      "role": "generated_vector_and_machine_disabled_reference_checks"
+    },
+    {
+      "path": "tests/test_phase36_consolidated_runtime_closeout_u4d_powershell_static.py",
+      "sha256": "E9AC50D22FA68B5EA82CAE498E2015D4C768159B0AF505E3833C2C02A9767735",
+      "role": "inert_PowerShell_source_text_checks"
+    },
+    {
+      "path": "tests/test_phase36_consolidated_runtime_closeout_u4d_cross_language.py",
+      "sha256": "5C02CF829352E9C4E64983A111D9B2789059E3BCDDCDFDF7197A9B5B0BEA8D95",
+      "role": "canonical_contract_projection_equivalence_checks"
+    },
+    {
+      "path": "tests/test_phase36_consolidated_runtime_closeout_u4d_stream_framing.py",
+      "sha256": "DA447333CC6BC55545E802D04604B4C562560B63516B24E84905F5C933A1C3B5",
+      "role": "boundary_precedence_zero_retention_and_one_line_framing_checks"
+    }
+  ],
+  "implemented_invariants": {
+    "generated_vector_count": 384,
+    "generated_vector_group_count": 16,
+    "vectors_per_group": 24,
+    "future_child_generated_case_count": 416,
+    "future_handler_generated_case_count": 84,
+    "future_total_generated_case_count": 500,
+    "child_stdout_maximum_bytes": 4096,
+    "child_stderr_maximum_bytes": 0,
+    "child_terminal_line_count": 1,
+    "raw_stream_or_exception_retention_bytes": 0,
+    "future_maximum_runtime_attempts": 1,
+    "future_automatic_retry": false
+  },
+  "generated_static_validation": {
+    "source_revision_cycles_consumed": 3,
+    "maximum_source_revision_cycles": 6,
+    "focused_tests_passed": 25,
+    "focused_tests_failed": 0,
+    "Python_reference_statements": 104,
+    "Python_reference_missing_statements": 3,
+    "Python_reference_branches": 56,
+    "Python_reference_partial_branches": 2,
+    "Python_reference_branch_coverage_percent": 97.0,
+    "Ruff": "all_checks_passed",
+    "strict_JSON": "passed",
+    "full_Phase_3_6_tests_passed": 2042,
+    "full_Phase_3_6_tests_failed": 0,
+    "Phase_3_6_test_file_count": 73,
+    "strict_Phase_3_JSON_files_parsed": 314,
+    "final_full_Phase_3_6_validation_pending": false,
+    "PowerShell_evidence": "inert_source_text_and_embedded_JSON_projection_only"
+  },
+  "immutable_input_reverification": {
+    "input_count": 16,
+    "hash_mismatch_count": 0
+  },
+  "non_observational_boundaries": {
+    "PowerShell_parsed_imported_dot_sourced_or_executed": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_or_hardware_observed": false,
+    "machine_storage_F_B_ACL_probe_cleanup_or_scanner_action": false,
+    "network_trust_retrieval_install_update_or_download": false,
+    "artifact_model_inference_camera_media_private_or_Government_data_action": false,
+    "container_Kubernetes_profile_activation_or_deployment": false,
+    "U3K_Phase_3_closeout_commit_push_or_remote_Git": false
+  },
+  "next_gate": "present_the_final_non_effective_exact_digest_bound_D_P3_6_CONSOLIDATED_RUNTIME_CLOSEOUT_R2_AUTH_package_for_separate_owner_authorization"
+}

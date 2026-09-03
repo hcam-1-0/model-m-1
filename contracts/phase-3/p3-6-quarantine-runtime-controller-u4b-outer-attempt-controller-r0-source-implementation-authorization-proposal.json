@@ -1,0 +1,66 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u4b_outer_attempt_controller_r0_source_implementation_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U4B-OUTER-ATTEMPT-CONTROLLER-R0-SOURCE-IMPLEMENTATION-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U4B-OUTER-ATTEMPT-CONTROLLER-R0-IMPLEMENTATION-AUTH",
+  "status": "non_effective_owner_authorization_pending",
+  "prepared_on": "2026-09-02",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U4A-U3Z-R1-FAILURE-ANALYSIS-DECISIONS",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-u4a-binding-classification-remediation-planning-acceptance.json",
+    "acceptance_record_sha256": "F8C39C761A8B0359CDB50F13AF0935A481C8A881A02A6F325E722137FCB75E36",
+    "effect": "prepare_only_this_separate_non_effective_source_implementation_authorization_proposal_and_package"
+  },
+  "proposed_scope_if_exactly_authorized": {
+    "implement_only_the_eleven_exact_additive_paths_and_bounded_synchronization_paths": true,
+    "preserve_all_ten_immutable_accepted_inputs_byte_exact": true,
+    "implement_a_package_bound_default_deny_outer_attempt_controller": true,
+    "implement_exactly_three_typed_fixed_parent_records_and_explicit_all_valid_reduction": true,
+    "implement_bounded_stage_parent_index_and_predicate_reason_projection": true,
+    "generate_at_least_384_synthetic_static_vectors": true,
+    "run_only_machine_disabled_Python_generated_and_static_validation": true,
+    "seal_source_and_generated_static_evidence_for_separate_owner_acceptance": true
+  },
+  "implementation_invariants": {
+    "supported_operation": "generated_contract_validation_v1",
+    "ordered_stage_count": 11,
+    "fixed_parent_record_count": 3,
+    "parent_indexes": [
+      0,
+      1,
+      2
+    ],
+    "unknown_operation_stage_reason_or_field_default_denied": true,
+    "pipeline_null_or_scalar_cardinality_semantics_used_for_parent_reduction": false,
+    "raw_path_output_exception_fixture_environment_identity_or_security_material_retained": false,
+    "runtime_attempt_execution_during_source_implementation": false,
+    "all_machine_retry_U3K_deployment_commit_push_and_remote_Git_gates_false": true
+  },
+  "permitted_validation_if_exactly_authorized": {
+    "generated_fixture_and_machine_disabled_Python_reference_execution": true,
+    "contract_source_text_hash_projection_and_cross_language_static_checks": true,
+    "minimum_machine_disabled_Python_reference_branch_coverage_percent": 95,
+    "PowerShell_parser_import_dot_source_or_execution": false,
+    "filesystem_runtime_registry_environment_network_native_API_subprocess_machine_controller_or_fallback_access_by_reference": false,
+    "external_fixture_artifact_model_camera_media_private_or_Government_data": false
+  },
+  "hard_boundaries": {
+    "accepted_U3Y_U3Z_consumed_attempt_or_failure_analysis_artifacts_modified": false,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_manifest_hardware_machine_storage_scanner_or_network_observation": false,
+    "download_artifact_model_inference_camera_media_private_or_Government_data_access": false,
+    "container_Kubernetes_profile_activation_deployment_another_attempt_U3K_commit_push_or_remote_Git": false
+  },
+  "future_owner_authorization_statement_template": "D-P3.6-U4B-OUTER-ATTEMPT-CONTROLLER-R0-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only implementation of the additive package-bound outer attempt controller R0 against package digest <U4B_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact eleven additive implementation paths and bounded synchronization paths bound by that package. It must preserve all ten accepted U3Y, U3Z, consumed-attempt, and failure-analysis inputs byte-exact; implement a typed default-deny eleven-stage controller for only generated_contract_validation_v1; materialize exactly three ordered typed fixed-parent records with indexes 0, 1, and 2; compute all-valid through an explicit fixed-length reduction without pipeline null or scalar-cardinality semantics; emit only bounded stage, parent-index, predicate, attempt-count, and allowlisted reason fields; retain no paths, raw attributes, output, exceptions, fixtures, environment, identity, or security material; generate at least 384 synthetic static vectors; achieve at least 95 percent branch coverage for the machine-disabled Python reference; pass generated cross-language and static validation; and seal source-only evidence for separate acceptance. Python may execute generated fixtures and machine-disabled reference and static tests only, with no filesystem runtime, registry, environment, network, native API, subprocess, machine-controller, or fallback access. PowerShell must not be parsed, imported, dot-sourced, or executed. This does not authorize runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, private or Government data, container, Kubernetes, profile activation, deployment, another attempt, U3K, commit, push, or remote Git.",
+  "current_effect": {
+    "owner_U4B_source_implementation_authorization_pending": true,
+    "D_P3_6_U4B_OUTER_ATTEMPT_CONTROLLER_R0_IMPLEMENTATION_AUTH_requestable": true,
+    "source_contract_vector_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "another_attempt_or_U3K_authorized": false,
+    "deployment_commit_push_or_remote_Git_authorized": false
+  },
+  "authorization_may_be_inferred_from_U4A_acceptance_continue_package_preparation_or_static_validation": false
+}

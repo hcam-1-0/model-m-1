@@ -1,0 +1,349 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_remediation_r1_action_spec.v1",
+  "spec_id": "P36-QUARANTINE-REMEDIATION-R1-ACTION-SPEC-1.0.0",
+  "status": "proposed_owner_authorization_pending_no_attempt_performed",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "future_authorization_decision": "D-P3.6-U3G-BINDING-R1-AUTH",
+  "accepted_U3F_binding": {
+    "path": "contracts/phase-3/p3-6-quarantine-remediation-r1-owner-decisions.json",
+    "sha256": "BDA7E9C6B8ACF4ECB8641B61F47A45E4E02768B58C7E3A08179507B7ABAFDF1F",
+    "package_digest_sha256": "9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78",
+    "selection": "A/A/A/A/A/A"
+  },
+  "consumed_U3E_binding": {
+    "decision_id": "D-P3.6-U3E-BINDING-R0-AUTH",
+    "package_digest_sha256": "9978206EC0FAFA96D557FE371065B3FC5F7D38A85C74F3CC6708F873EC100B39",
+    "authorization_sha256": "0DB03056BEF964D0B5C830DE01C3FE91DA87592BFAF1905D7C8307AC71FA5208",
+    "result_sha256": "3DE3B1E08CF39D9348BD9873C378E0CA0FE6EC8806AB27E0C48A6BB975A72BF2",
+    "evidence_sha256": "2FB06243003FF4C4E48C7E7BEF67C2B79C4BCA65826E1B09769AF688AE536376",
+    "attempt_consumed": true,
+    "retry_authorized_by_U3E": false,
+    "observed_storage_blocker": "broad_write_principal_present",
+    "observed_Defender_product_version": "4.18.26070.9",
+    "observed_Defender_binary_state": "not_evaluated"
+  },
+  "target": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "logical_root_id": "P36-QUARANTINE-ROOT-R1-CANDIDATE",
+    "candidate_volume": "F:",
+    "candidate_root": "F:\\HCAM-Quarantine",
+    "excluded_existing_project_root": "F:\\h cam",
+    "owner_prohibited_volume": "B:",
+    "required_volume_type": "Fixed",
+    "allowed_filesystems": [
+      "NTFS",
+      "ReFS"
+    ],
+    "minimum_free_bytes": 5368709120,
+    "minimum_free_percent": 15,
+    "required_initial_candidate_state": "absent",
+    "remote_or_alternate_target_allowed": false
+  },
+  "transaction_bounds": {
+    "maximum_authorized_attempts": 1,
+    "authorization_use_window_seconds_after_owner_acceptance": 86400,
+    "storage_attestation_validity_seconds_after_success": 3600,
+    "per_action_timeout_seconds": 30,
+    "total_transaction_timeout_seconds": 180,
+    "maximum_probe_bytes": 4096,
+    "maximum_Defender_candidate_bytes": 134217728,
+    "maximum_direct_Defender_platform_directories": 64,
+    "maximum_command_stdout_bytes": 4096,
+    "maximum_command_stderr_bytes": 4096,
+    "parallel_actions": false,
+    "network_access": false,
+    "automatic_retry": false,
+    "failed_attempt_requires_new_authorization": true,
+    "required_output_on_attempt": "sanitized_authorization_result_and_evidence_even_when_storage_or_Defender_binding_fails"
+  },
+  "platform_and_identity_policy": {
+    "required_platform": "Windows",
+    "security_at_create_API": "System.IO.FileSystemAclExtensions.CreateDirectory(DirectorySecurity,String)",
+    "ACL_protection_call": "SetAccessRuleProtection(true,false)",
+    "current_process_identity_source": "WindowsIdentity.GetCurrent().User",
+    "current_process_identity_persisted": false,
+    "account_name_translation_allowed": false,
+    "required_explicit_allow_rules": [
+      {
+        "principal": "ephemeral_current_process_SID",
+        "rights": "Modify",
+        "inheritance": "ContainerInherit,ObjectInherit",
+        "propagation": "None"
+      },
+      {
+        "principal": "S-1-5-18",
+        "rights": "FullControl",
+        "inheritance": "ContainerInherit,ObjectInherit",
+        "propagation": "None"
+      },
+      {
+        "principal": "S-1-5-32-544",
+        "rights": "FullControl",
+        "inheritance": "ContainerInherit,ObjectInherit",
+        "propagation": "None"
+      }
+    ],
+    "inherited_rules_allowed": false,
+    "deny_rules_allowed": false,
+    "additional_explicit_rules_allowed": false,
+    "fallback_create_then_rewrite_allowed": false,
+    "production_identity_claim": false
+  },
+  "action_allowlist": [
+    {
+      "action_id": "U3G-A01-UTC-CLOCK-START",
+      "purpose": "bind_the_single_attempt",
+      "exact_action": "read_[DateTimeOffset]::UtcNow_once_in_process_memory",
+      "persisted_projection": "attempt_started_at_UTC_only"
+    },
+    {
+      "action_id": "U3G-A02-PACKAGE-VERIFY",
+      "purpose": "verify_exact_authority_before_any_target_or_Defender_access",
+      "exact_action": "verify_the_exact_owner_authorization_statement_package_digest_every_core_file_SHA_256_U3F_acceptance_SHA_256_one_attempt_state_and_24_hour_window_then_abort_before_U3G_A03_on_any_mismatch",
+      "network_access": false
+    },
+    {
+      "action_id": "U3G-A03-AUTHORIZATION-RECORD",
+      "purpose": "persist_the_exact_owner_authorization_before_any_machine_action",
+      "exact_action": "atomically_write_only_the_sanitized_authorization_record_bound_to_the_exact_owner_statement_package_digest_core_hashes_start_time_and_one_attempt_nonce",
+      "output_path": "contracts/phase-3/p3-6-quarantine-remediation-r1-authorization.json",
+      "contains_observed_machine_facts": false,
+      "failure_effect": "abort_before_F_or_Defender_access"
+    },
+    {
+      "action_id": "U3G-A04-F-DRIVE-INFO",
+      "purpose": "reattest_only_the_candidate_volume_class_filesystem_and_capacity",
+      "exact_action": "construct_System_IO_DriveInfo_for_exact_F_root_and_read_IsReady_DriveType_DriveFormat_TotalSize_AvailableFreeSpace_only",
+      "allowed_source_fields": [
+        "IsReady",
+        "DriveType",
+        "DriveFormat",
+        "TotalSize",
+        "AvailableFreeSpace"
+      ],
+      "forbidden_source_fields": [
+        "VolumeLabel",
+        "volume_serial",
+        "device_identifier"
+      ]
+    },
+    {
+      "action_id": "U3G-A05-CANONICAL-PATH-AND-ABSENCE",
+      "purpose": "prove_the_candidate_is_the_exact_absent_isolated_top_level_root",
+      "exact_action": "canonicalize_exact_F_HCAM_Quarantine_without_wildcards_verify_it_is_not_equal_to_or_beneath_F_h_cam_inspect_only_F_root_for_reparse_attributes_and_use_an_exact_path_attribute_query_to_require_file_path_directory_and_reparse_object_absence",
+      "allowed_not_found_results": [
+        "ERROR_FILE_NOT_FOUND",
+        "ERROR_PATH_NOT_FOUND"
+      ],
+      "existing_object_effect": "fail_closed_without_ACL_or_content_modification",
+      "symlink_junction_mountpoint_or_reparse_allowed": false,
+      "cloud_network_mapped_or_removable_volume_allowed": false,
+      "alternate_path_or_case_folded_collision_allowed": false
+    },
+    {
+      "action_id": "U3G-A06-PROTECTED-DACL-CONSTRUCT",
+      "purpose": "construct_the_exact_owner_selected_DACL_in_memory",
+      "exact_action": "resolve_WindowsIdentity_GetCurrent_User_only_in_memory_require_a_nonnull_SID_distinct_from_LocalSystem_and_builtin_Administrators_create_DirectorySecurity_call_SetAccessRuleProtection_true_false_and_add_only_the_three_explicit_inheritable_allow_rules_from_platform_and_identity_policy",
+      "filesystem_access": false,
+      "identity_name_or_SID_persisted": false,
+      "failure_effect": "abort_secure_root_creation"
+    },
+    {
+      "action_id": "U3G-A07-SECURITY-AT-CREATE-ROOT",
+      "purpose": "create_the_absent_exact_root_without_an_inherited_permission_window",
+      "exact_action": "call_System_IO_FileSystemAclExtensions_CreateDirectory_with_the_preconstructed_DirectorySecurity_and_exact_F_HCAM_Quarantine_path_once_only_with_no_plain_Directory_CreateDirectory_fallback",
+      "existing_target": "fail_closed_without_modification",
+      "other_directory_creation_allowed": false,
+      "root_retention_on_storage_success": "retain_exact_empty_probe_cleaned_candidate_root",
+      "root_cleanup_on_storage_failure": "remove_only_if_created_by_this_attempt_and_empty"
+    },
+    {
+      "action_id": "U3G-A08-EXACT-DACL-VERIFY",
+      "purpose": "prove_the_created_root_has_only_the_accepted_protected_rules",
+      "exact_action": "read_the_exact_candidate_root_DACL_once_and_require_access_rules_protected_no_inherited_or_deny_ACE_exactly_three_explicit_allow_ACE_semantically_matching_current_process_Modify_LocalSystem_FullControl_and_builtin_Administrators_FullControl_with_ContainerInherit_ObjectInherit_and_no_additional_rule",
+      "persisted_projection": [
+        "access_rules_protected",
+        "exact_rule_count_pass",
+        "current_process_Modify_rule_pass",
+        "LocalSystem_FullControl_rule_pass",
+        "Administrators_FullControl_rule_pass",
+        "inheritance_flags_pass",
+        "inherited_rule_absent",
+        "deny_rule_absent",
+        "broad_write_principal_absent",
+        "overall_DACL_pass"
+      ],
+      "identity_names_SIDs_raw_ACL_or_security_descriptor_persisted": false,
+      "failure_effect": "skip_probe_and_remove_only_attempt_created_empty_root"
+    },
+    {
+      "action_id": "U3G-A09-ATOMIC-CAPABILITY-PROBE",
+      "purpose": "prove_exclusive_create_flush_readback_atomic_rename_and_cleanup",
+      "partial_path": "F:\\HCAM-Quarantine\\.hcam-storage-attestation.partial",
+      "verified_path": "F:\\HCAM-Quarantine\\.hcam-storage-attestation.verified",
+      "exact_action": "fail_if_either_probe_path_exists_then_CreateNew_write_exactly_4096_deterministic_generated_bytes_flush_to_disk_close_readback_and_compare_SHA_256_atomically_rename_partial_to_verified_readback_and_compare_again_then_delete_verified",
+      "probe_content_source": "deterministic_generated_nonsecret_nonmedia_bytes",
+      "probe_bytes": 4096,
+      "probe_or_content_retention": "zero_after_success_or_bounded_failure_cleanup",
+      "other_file_or_directory_access_allowed": false
+    },
+    {
+      "action_id": "U3G-A10-DEFENDER-STATUS-METADATA",
+      "purpose": "bind_current_bounded_Defender_platform_metadata_without_scanning_or_updating",
+      "exact_action": "invoke_Get_MpComputerStatus_once_and_project_only_AMProductVersion_AMEngineVersion_AntivirusSignatureVersion_AntivirusSignatureLastUpdated_AntivirusEnabled_and_RealTimeProtectionEnabled",
+      "threat_history_preferences_exclusions_quarantine_or_events_allowed": false,
+      "signature_or_platform_update_allowed": false,
+      "scan_or_remediation_allowed": false,
+      "raw_output_persisted": false
+    },
+    {
+      "action_id": "U3G-A11-DEFENDER-BINARY-CANDIDATE",
+      "purpose": "resolve_and_hash_one_exact_documented_versioned_MpCmdRun_candidate",
+      "exact_action": "under_the_exact_CommonApplicationData_Microsoft_Windows_Defender_Platform_root_enumerate_at_most_64_direct_nonreparse_directories_select_exactly_one_directory_whose_basename_is_AMProductVersion_or_AMProductVersion_dash_decimal_suffix_require_exact_direct_child_MpCmdRun_exe_regular_nonreparse_size_at_most_134217728_bytes_require_normalized_FileVersionInfo_product_version_match_AMProductVersion_then_read_file_size_file_version_product_version_and_SHA_256",
+      "documented_root_template": "%ProgramData%\\Microsoft\\Windows Defender\\Platform\\<antimalware platform version>\\MpCmdRun.exe",
+      "recursive_enumeration": false,
+      "ProgramFiles_fallback_allowed": false,
+      "multiple_or_no_matching_candidates": "fail_closed",
+      "executable_invocation_allowed": false,
+      "raw_directory_or_file_listing_persisted": false
+    },
+    {
+      "action_id": "U3G-A12-DEFENDER-CACHE-ONLY-WINVERIFYTRUST",
+      "purpose": "establish_local_Authenticode_trust_without_network_or_binary_execution",
+      "exact_action": "for_the_exact_U3G_A11_file_only_invoke_WinVerifyTrust_with_WINTRUST_ACTION_GENERIC_VERIFY_V2_WTD_UI_NONE_WTD_REVOKE_WHOLECHAIN_WTD_CHOICE_FILE_WTD_STATEACTION_VERIFY_and_WTD_CACHE_ONLY_URL_RETRIEVAL_then_always_invoke_WTD_STATEACTION_CLOSE_and_accept_only_ERROR_SUCCESS",
+      "ephemeral_interop_policy": "exact_process_memory_only_interop_declarations_no_source_or_assembly_output_and_no_persisted_certificate_or_chain_object",
+      "network_retrieval_allowed": false,
+      "UI_allowed": false,
+      "executable_invocation_allowed": false,
+      "persisted_projection": [
+        "cache_only_policy_applied",
+        "whole_chain_policy_applied",
+        "no_UI_policy_applied",
+        "WinVerifyTrust_sanitized_result_code",
+        "state_closed",
+        "trusted"
+      ],
+      "cached_chain_or_revocation_unavailable": "fail_closed",
+      "raw_certificate_subject_issuer_serial_thumbprint_chain_or_error_text_persisted": false
+    },
+    {
+      "action_id": "U3G-A13-NORMALIZE-HASH-WRITE",
+      "purpose": "write_only_bounded_sanitized_attempt_result_and_evidence",
+      "exact_action": "normalize_allowlisted_values_compute_canonical_SHA_256_and_atomically_write_only_the_result_and_evidence_records_after_preserving_the_pre_action_authorization_record",
+      "filesystem_writes_allowed": [
+        "contracts/phase-3/p3-6-quarantine-remediation-r1-result.json",
+        "contracts/phase-3/p3-6-quarantine-remediation-r1-evidence.json"
+      ],
+      "other_repository_reads_or_writes_allowed": false
+    }
+  ],
+  "storage_pass_policy": {
+    "all_required": [
+      "drive_ready",
+      "drive_type_exactly_Fixed",
+      "filesystem_NTFS_or_ReFS",
+      "available_free_bytes_at_least_5368709120",
+      "available_free_percent_at_least_15",
+      "canonical_root_exactly_F_HCAM_Quarantine",
+      "not_inside_F_h_cam_or_any_repository",
+      "candidate_absent_before_attempt",
+      "no_reparse_component",
+      "root_created_only_by_security_at_create_API",
+      "protected_DACL_exactly_matches_three_accepted_rules",
+      "exclusive_create_flush_readback_hash_atomic_rename_readback_hash_and_cleanup_pass"
+    ],
+    "owner_free_space_statement_substitutes_for_observation": false,
+    "manual_override": false
+  },
+  "Defender_binding_pass_policy": {
+    "all_required": [
+      "bounded_status_metadata_available",
+      "exactly_one_direct_version_matched_platform_candidate",
+      "candidate_regular_nonreparse_and_size_bounded",
+      "FileVersionInfo_product_version_matches_current_AMProductVersion",
+      "exact_path_file_size_versions_and_SHA_256_bound",
+      "WinVerifyTrust_cache_only_whole_chain_no_UI_policy_applied",
+      "WinVerifyTrust_returns_ERROR_SUCCESS",
+      "WinVerifyTrust_state_closed"
+    ],
+    "binary_execution_or_scan_required": false,
+    "manual_override": false,
+    "binding_scope": "this_exact_local_file_observation_only_not_global_artifact_provenance"
+  },
+  "result_policy": {
+    "storage_and_Defender_are_independently_reported": true,
+    "Defender_failure_invalidates_passing_storage_attestation": false,
+    "storage_failure_invalidates_passing_Defender_binding": false,
+    "storage_ready_retention": "retain_only_the_exact_empty_hardened_root",
+    "storage_failed_cleanup": "remove_only_attempt_created_empty_root_and_record_cleanup_state",
+    "ModelScan_state": "deferred_to_separate_pinned_bootstrap_package",
+    "passive_inspector_state": "not_implemented_not_bound_not_executed",
+    "scanner_chain_ready": false,
+    "artifact_acquisition_authorized": false,
+    "profile_resolver_eligible": false,
+    "profile_activation_authorized": false
+  },
+  "sanitization": {
+    "persist_exact_operational_locators": [
+      "F:\\HCAM-Quarantine",
+      "selected_system_MpCmdRun_executable_path_if_found"
+    ],
+    "persist_bounded_security_facts": [
+      "DACL_boolean_policy_results",
+      "Defender_versions_enabled_flags_file_size_and_SHA_256",
+      "cache_only_WinVerifyTrust_boolean_policy_and_sanitized_result_code"
+    ],
+    "never_persist": [
+      "hostname",
+      "user_identity_or_current_process_SID",
+      "volume_label_or_serial",
+      "raw_device_identifier",
+      "MAC_or_IP_address",
+      "personal_directory",
+      "environment_or_PATH_dump",
+      "raw_ACL_identity_SID_ACE_or_security_descriptor",
+      "raw_command_output_error_stack_or_exception",
+      "Defender_threat_history_preferences_exclusions_quarantine_or_events",
+      "raw_certificate_subject_issuer_serial_thumbprint_or_chain",
+      "secret_or_credential"
+    ]
+  },
+  "failure_policy": {
+    "package_authorization_or_pre_action_record_failure": "abort_before_F_or_Defender_access",
+    "storage_precondition_failure": "record_sanitized_failure_do_not_create_or_modify_candidate_and_permit_independent_Defender_binding_steps",
+    "DACL_construction_or_verification_failure": "skip_probe_remove_only_attempt_created_empty_root_and_record_sanitized_failure",
+    "probe_failure": "attempt_bounded_probe_cleanup_remove_only_attempt_created_empty_root_if_empty_and_record_failure",
+    "probe_or_root_cleanup_failure": "leave_root_ineligible_record_bounded_manual_review_required_and_do_not_retry",
+    "Defender_status_candidate_hash_or_trust_failure": "record_bounded_failure_without_fallback_execution_network_or_retry",
+    "raw_exception_output_certificate_or_ACL_data_persisted": false,
+    "automatic_retry": false
+  },
+  "continuing_non_authorization": [
+    "any_volume_path_or_directory_other_than_exact_F_root_and_F_HCAM_Quarantine",
+    "B_drive_or_F_h_cam_access_or_modification",
+    "existing_candidate_root_ACL_replacement_or_remediation",
+    "Defender_MpCmdRun_or_other_scanner_execution_scan_remediation_update_or_configuration_change",
+    "ModelScan_query_install_import_execution_or_hostile_fixture_bootstrap",
+    "software_dependency_model_dataset_driver_or_container_install_or_download",
+    "artifact_acquisition_checkpoint_load_unpickle_import_conversion_or_export",
+    "inference_calibration_validation_benchmark_or_hardware_test",
+    "container_Docker_Kubernetes_or_deployment_action",
+    "camera_stream_media_private_or_Government_data_access",
+    "profile_resolution_admission_activation_or_promotion",
+    "product_or_dashboard_implementation",
+    "remote_git"
+  ],
+  "current_effect": {
+    "owner_U3G_authorization_exists": false,
+    "another_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "Defender_query_hash_or_trust_verification_authorized": false,
+    "scanner_execution_installation_or_update_authorized": false,
+    "ModelScan_bootstrap_authorized": false,
+    "artifact_or_dependency_acquisition_authorized": false,
+    "runtime_or_model_execution_authorized": false,
+    "implementation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  }
+}

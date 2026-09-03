@@ -1,0 +1,118 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3t_runtime_binding_r1_evidence.v1",
+  "evidence_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3T-RUNTIME-BINDING-R1-EVIDENCE",
+  "decision_id": "D-P3.6-U3T-RUNTIME-BINDING-R1-AUTH",
+  "status": "sealed_sanitized_failed_closed_attempt_evidence",
+  "logical_node_id": "LAB-LAPTOP-01",
+  "recorded_on": "2026-09-01",
+  "attempt_window": {
+    "authorization_recorded_at": "2026-09-01T18:29:00.337Z",
+    "authorization_expires_at": "2026-09-02T18:29:00.337Z",
+    "attempt_started_at": "2026-09-01T18:33:24.411Z",
+    "attempt_completed_at": "2026-09-01T18:33:28.595Z",
+    "attempt_within_authorization_window": true,
+    "duration_milliseconds": 4184,
+    "maximum_attempts": 1,
+    "attempts_consumed": 1,
+    "automatic_retry_performed": false
+  },
+  "authority_binding": {
+    "owner_statement_sha256": "79E3283B7594914D628D2716C44DE09ECA90433A7E9FBD1F04299276B1C19B8C",
+    "owner_statement_utf8_bytes": 2086,
+    "authorization_package_sha256": "C80CBFD14E3727FC0203357982B90FD7A09CF561E447EE383F8D800158D24C53",
+    "action_spec_sha256": "296DA7D3D5DAF56D10EC8C7535C28C3D531A252EDC2477FB2451FD1E53D94E40",
+    "authorization_record_sha256": "34AEBB1FC200E1BBC635130A0E41433DC1B4718A1354541F29CC378A4736481D",
+    "result_record_sha256": "B7DAEF8067FACA055A664FC1FD62FA8C3F2CF8C0C27E27679B7DA7AD8E174CFD",
+    "sealed_package_core_file_count": 13,
+    "sealed_package_core_hashes_verified_before_observation": true
+  },
+  "runtime_evidence": {
+    "exact_candidate_bound_without_path_retention": true,
+    "observation_started": true,
+    "canonical_path_matched": true,
+    "regular_nonreparse_bounded_file": true,
+    "fixed_parent_count": 3,
+    "fixed_parents_validated_before_and_after_process": true,
+    "runtime_file_bytes": 301368,
+    "bounded_file_version": "7.6.5.500",
+    "initial_sha256": "362A356CE7F0940EC74F73A8FC2C990A2CC24A38A11C90BBD8ECA947110AD139",
+    "post_sha256": "362A356CE7F0940EC74F73A8FC2C990A2CC24A38A11C90BBD8ECA947110AD139",
+    "identity_stable": true,
+    "trust_policy": "cache_only_no_UI_whole_chain_excluding_root_without_trust_retrieval",
+    "trust_initialized": true,
+    "trust_verified": true,
+    "trust_closed": true,
+    "raw_path_trust_code_exception_identity_environment_or_security_material_retained": false,
+    "network_or_trust_retrieval_performed": false
+  },
+  "accepted_source_evidence": {
+    "expected_file_count": 5,
+    "preflight_hashes_matched": true,
+    "postflight_hashes_matched": true,
+    "source_identity_stable": true,
+    "accepted_hashes": {
+      "H1_harness_sha256": "69CBF4637A22BB7859ED07D19804C8576D76FB1270FF58D0D182EED2592FCE7B",
+      "H1_vector_manifest_sha256": "394A4564D54B531EBBC7C16BEA6F66D0D41DEDA757E5E979C796B350462DAB4F",
+      "controller_sha256": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB",
+      "controller_contract_sha256": "3F2A0975F92892A96FBC67B951B226D5AB958AE067F55B697ABA43669B8FB00E",
+      "controller_vector_manifest_sha256": "31335510565E4C74908C674B88951E81B7A7983331C6DE2E91964C1F8B48C20B"
+    }
+  },
+  "process_evidence": {
+    "exact_H1_preflight_runtime_invocation_count": 1,
+    "timeout_seconds": 30,
+    "timed_out": false,
+    "exit_code": 71,
+    "stdout_bytes": 636,
+    "stderr_bytes": 0,
+    "result_bytes": 636,
+    "automatic_retry_count": 0,
+    "environment_proxy_or_module_path_inheritance": false,
+    "raw_stdout_stderr_exception_or_environment_material_retained": false
+  },
+  "sanitized_outcome": {
+    "terminal": true,
+    "succeeded": false,
+    "reason_code": "result_contract_invalid",
+    "classification_basis": "accepted_H1_harness_returned_allowlisted_result_contract_invalid_after_16_of_18_actions",
+    "planned_actions": 18,
+    "completed_actions": 16,
+    "controller_process_count": 0,
+    "machine_action_count": 0,
+    "python_machine_fallback_count": 0,
+    "raw_material_retained_bytes": 0,
+    "successful_policy_projection_not_claimed": true,
+    "raw_failure_detail_retained": false
+  },
+  "prohibited_action_evidence": {
+    "Utility_manifest_module_closure_or_Aggregate_validation_count": 0,
+    "alternate_runtime_parent_checkout_source_module_or_hardware_discovery_count": 0,
+    "PATH_PSModulePath_registry_WMI_package_or_directory_inventory_count": 0,
+    "Python_machine_access_or_fallback_count": 0,
+    "machine_storage_F_B_ACL_identity_probe_cleanup_Defender_or_scanner_action_count": 0,
+    "network_trust_retrieval_download_install_update_or_acquisition_count": 0,
+    "artifact_model_dataset_inference_camera_media_or_data_action_count": 0,
+    "container_Kubernetes_profile_activation_deployment_U3R_retry_U3K_or_remote_git_action_count": 0
+  },
+  "gate_effect": {
+    "attempt_consumed": true,
+    "authorization_reusable": false,
+    "successful_current_U3T_R1_evidence": false,
+    "U3T_R1_success_evidence_acceptance_gate_open": false,
+    "U3K_package_preparation_authorized": false,
+    "U3K_machine_or_storage_attempt_authorized": false,
+    "retry_requires_new_failure_analysis_package_and_exact_digest_bound_owner_authorization": true,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "limitations": [
+    "runtime_and_source_bindings_succeeded_but_H1_policy_projection_failed_its_result_contract",
+    "successful_U3T_preflight_not_claimed",
+    "single_attempt_consumed_and_no_retry_authorized",
+    "no_raw_process_output_or_failure_detail_retained",
+    "no_machine_storage_scanner_network_model_media_container_deployment_or_remote_Git_action",
+    "new_attempt_requires_separate_failure_analysis_package_and_exact_owner_authorization"
+  ]
+}

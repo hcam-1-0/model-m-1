@@ -1,0 +1,38 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_r0_source_implementation_acceptance.v1",
+  "decision_id": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE",
+  "status": "accepted_non_executable_source_and_generated_static_evidence",
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-01",
+  "recorded_at": "2026-09-01",
+  "accepted_package": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-package.json",
+  "accepted_package_sha256": "484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30",
+  "accepted_primary_hashes": {
+    "canonical_contract_sha256": "3F2A0975F92892A96FBC67B951B226D5AB958AE067F55B697ABA43669B8FB00E",
+    "generated_vector_manifest_sha256": "31335510565E4C74908C674B88951E81B7A7983331C6DE2E91964C1F8B48C20B",
+    "PowerShell_controller_source_sha256": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB",
+    "Python_reference_source_sha256": "C1470C65C6D5DA3EF93161F519BBC01507BBB805C6D433F58C65FDCAFE3FFC4F"
+  },
+  "accepted_evidence": {
+    "generated_vectors": 192,
+    "Python_reference_branch_coverage_percent": 100.0,
+    "cross_language_projection_difference_count": 0,
+    "full_Phase_3_6_static_tests_passed": 705,
+    "PowerShell_parsed_imported_or_executed": false,
+    "machine_or_runtime_observation": false
+  },
+  "canonical_owner_statement_utf8_bytes": 1354,
+  "canonical_owner_statement_sha256": "3C0B50A27C489A979C5218551AE312FFA54BB09271CB417F0DEDE6EE3C648E44",
+  "canonical_owner_statement": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE: I, mayank-admin, accept the P3.6 U3S dual runtime-controller R0 source implementation package digest 484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30, including canonical contract SHA-256 3F2A0975F92892A96FBC67B951B226D5AB958AE067F55B697ABA43669B8FB00E, generated-vector manifest SHA-256 31335510565E4C74908C674B88951E81B7A7983331C6DE2E91964C1F8B48C20B, PowerShell source SHA-256 78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB, Python reference SHA-256 C1470C65C6D5DA3EF93161F519BBC01507BBB805C6D433F58C65FDCAFE3FFC4F, all 192 generated vectors, 100 percent Python-reference branch coverage, cross-language equivalence, the authorized compatibility transition, full Phase 3.6 static validation, nonobservational evidence, and documented limitations. This accepts source and generated/static evidence only and permits preparation only of a separate non-effective U3T preflight planning and authorization proposal. It does not authorize PowerShell parsing, import, or execution; Python machine access or fallback; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, U3R retry, U3T attempt, U3K, or remote Git.",
+  "authority_granted": {
+    "record_source_implementation_acceptance": true,
+    "prepare_separate_non_effective_U3T_preflight_planning_and_authorization_proposal": true,
+    "implement_U3T_harness_or_tests": false,
+    "PowerShell_parse_import_or_execution": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_manifest_hardware_or_machine_observation": false,
+    "U3T_attempt_U3R_retry_or_U3K": false,
+    "deployment_or_remote_Git": false
+  },
+  "acceptance_may_be_inferred_from_prior_authorization_package_existence_or_tests": false
+}

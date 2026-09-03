@@ -1,0 +1,455 @@
+{
+  "approval": {
+    "decided_at": "2026-08-24T12:00:00Z",
+    "owner_id": "mayank-admin",
+    "reason": "Authorize deterministic S0 fixture generation under D-P3.1-001; this is not P3.1 exit acceptance",
+    "record_id": "D-P3.1-001",
+    "status": "owner_approved"
+  },
+  "contract_type": "hcam.analytics.fixture-manifest.v1",
+  "coverage": [
+    {
+      "class_id": "object.person",
+      "domain": "detection",
+      "expected_outcome": "pass",
+      "scenario": "approved-class",
+      "script": null
+    },
+    {
+      "class_id": "vehicle.bicycle",
+      "domain": "detection",
+      "expected_outcome": "pass",
+      "scenario": "approved-class",
+      "script": null
+    },
+    {
+      "class_id": "vehicle.motorcycle",
+      "domain": "detection",
+      "expected_outcome": "pass",
+      "scenario": "approved-class",
+      "script": null
+    },
+    {
+      "class_id": "vehicle.car",
+      "domain": "detection",
+      "expected_outcome": "pass",
+      "scenario": "approved-class",
+      "script": null
+    },
+    {
+      "class_id": "vehicle.bus",
+      "domain": "detection",
+      "expected_outcome": "pass",
+      "scenario": "approved-class",
+      "script": null
+    },
+    {
+      "class_id": "vehicle.truck",
+      "domain": "detection",
+      "expected_outcome": "pass",
+      "scenario": "approved-class",
+      "script": null
+    },
+    {
+      "class_id": "object.unknown",
+      "domain": "detection",
+      "expected_outcome": "pass",
+      "scenario": "approved-class",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "detection",
+      "expected_outcome": "pass",
+      "scenario": "empty-scene",
+      "script": null
+    },
+    {
+      "class_id": "object.person",
+      "domain": "detection",
+      "expected_outcome": "pass",
+      "scenario": "overlap",
+      "script": null
+    },
+    {
+      "class_id": "vehicle.bus",
+      "domain": "detection",
+      "expected_outcome": "pass",
+      "scenario": "truncation",
+      "script": null
+    },
+    {
+      "class_id": "vehicle.car",
+      "domain": "detection",
+      "expected_outcome": "pass",
+      "scenario": "occlusion",
+      "script": null
+    },
+    {
+      "class_id": "vehicle.bicycle",
+      "domain": "detection",
+      "expected_outcome": "pass",
+      "scenario": "small-object",
+      "script": null
+    },
+    {
+      "class_id": "object.person",
+      "domain": "detection",
+      "expected_outcome": "pass",
+      "scenario": "low-contrast",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "detection",
+      "expected_outcome": "pass",
+      "scenario": "false-positive",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "detection",
+      "expected_outcome": "reject",
+      "scenario": "malformed-prediction",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "tracking",
+      "expected_outcome": "pass",
+      "scenario": "start",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "tracking",
+      "expected_outcome": "pass",
+      "scenario": "update",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "tracking",
+      "expected_outcome": "pass",
+      "scenario": "end",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "tracking",
+      "expected_outcome": "pass",
+      "scenario": "occlusion",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "tracking",
+      "expected_outcome": "pass",
+      "scenario": "crossing-tracks",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "tracking",
+      "expected_outcome": "reject",
+      "scenario": "duplicate-detection",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "tracking",
+      "expected_outcome": "pass",
+      "scenario": "missed-frames",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "tracking",
+      "expected_outcome": "pass",
+      "scenario": "discontinuity",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "tracking",
+      "expected_outcome": "pass",
+      "scenario": "reconnect",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "tracking",
+      "expected_outcome": "pass",
+      "scenario": "bounded-state",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "geometry",
+      "expected_outcome": "pass",
+      "scenario": "line-forward",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "geometry",
+      "expected_outcome": "pass",
+      "scenario": "line-reverse",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "geometry",
+      "expected_outcome": "pass",
+      "scenario": "touch-without-cross",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "geometry",
+      "expected_outcome": "pass",
+      "scenario": "boundary-jitter",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "geometry",
+      "expected_outcome": "pass",
+      "scenario": "zone-enter",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "geometry",
+      "expected_outcome": "pass",
+      "scenario": "zone-exit",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "geometry",
+      "expected_outcome": "pass",
+      "scenario": "zone-occupancy",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "geometry",
+      "expected_outcome": "pass",
+      "scenario": "dwell-threshold",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "geometry",
+      "expected_outcome": "abstain",
+      "scenario": "schedule-inactive",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "geometry",
+      "expected_outcome": "reject",
+      "scenario": "duplicate-and-late-input",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "synthetic_plate",
+      "expected_outcome": "pass",
+      "scenario": "exact-normalized-match",
+      "script": "Latin"
+    },
+    {
+      "class_id": null,
+      "domain": "synthetic_plate",
+      "expected_outcome": "pass",
+      "scenario": "ranked-alternative",
+      "script": "Devanagari"
+    },
+    {
+      "class_id": null,
+      "domain": "synthetic_plate",
+      "expected_outcome": "pass",
+      "scenario": "exact-script-match",
+      "script": "Gujarati"
+    },
+    {
+      "class_id": null,
+      "domain": "synthetic_plate",
+      "expected_outcome": "abstain",
+      "scenario": "low-confidence-abstention",
+      "script": "Latin"
+    },
+    {
+      "class_id": null,
+      "domain": "synthetic_plate",
+      "expected_outcome": "reject",
+      "scenario": "invalid-format",
+      "script": "Latin"
+    },
+    {
+      "class_id": null,
+      "domain": "misuse",
+      "expected_outcome": "reject",
+      "scenario": "path",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "misuse",
+      "expected_outcome": "reject",
+      "scenario": "source-url",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "misuse",
+      "expected_outcome": "reject",
+      "scenario": "credential",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "misuse",
+      "expected_outcome": "reject",
+      "scenario": "image-bytes",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "misuse",
+      "expected_outcome": "reject",
+      "scenario": "video",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "misuse",
+      "expected_outcome": "reject",
+      "scenario": "face-template",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "misuse",
+      "expected_outcome": "reject",
+      "scenario": "owner-record",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "misuse",
+      "expected_outcome": "reject",
+      "scenario": "government-data",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "misuse",
+      "expected_outcome": "reject",
+      "scenario": "watchlist-match",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "misuse",
+      "expected_outcome": "reject",
+      "scenario": "oversized-payload",
+      "script": null
+    },
+    {
+      "class_id": null,
+      "domain": "misuse",
+      "expected_outcome": "reject",
+      "scenario": "manifest-digest",
+      "script": null
+    }
+  ],
+  "created_at": "2026-08-24T13:00:00Z",
+  "declared_omissions": [
+    "No external datasets fonts checkpoints weights or model artifacts",
+    "No real people real plates cameras video images crops or clips",
+    "No inference decoding training GPU execution or performance claim"
+  ],
+  "expected_contracts": [
+    "hcam.analytics.generated-fixture-suite.v1",
+    "hcam.analytics.evaluation-contract-bundle.v1"
+  ],
+  "expected_failure_codes": [
+    "prohibited-field",
+    "prohibited-sensitive-value",
+    "binary-data",
+    "local-filesystem-path",
+    "payload-too-large",
+    "invalid-digest"
+  ],
+  "files": [
+    {
+      "artifact_name": "annotation-items-v1.json",
+      "bytes": 4688,
+      "digest": "sha256:5c546725cc2c07ab09d4a2b1f72b5bfc3fec1568e06ac10a6594b301fc8094ed",
+      "record_count": 4
+    },
+    {
+      "artifact_name": "detection-v1.json",
+      "bytes": 10557,
+      "digest": "sha256:33d576353aa8aa89ebfd7c31c86ceffc021c83d7b9b1648cf7fddc6d8c507c37",
+      "record_count": 15
+    },
+    {
+      "artifact_name": "geometry-v1.json",
+      "bytes": 4381,
+      "digest": "sha256:bf6e862987a6849e5feccef4cdaaf11eb23807078be376e9e5ca967fd1a354f4",
+      "record_count": 10
+    },
+    {
+      "artifact_name": "misuse-v1.json",
+      "bytes": 2516,
+      "digest": "sha256:228cdeb77a2c0a443df70932053523ed41ce5efe9c1fc2012704508b75e36016",
+      "record_count": 11
+    },
+    {
+      "artifact_name": "split-items-v1.json",
+      "bytes": 2399,
+      "digest": "sha256:ea127570db0132deb4c7afc78b4f754aeb81afb53ee81f0044d263326e46afb4",
+      "record_count": 6
+    },
+    {
+      "artifact_name": "synthetic-plate-v1.json",
+      "bytes": 2758,
+      "digest": "sha256:0508ba47a6fee0289579fde415e2f55d0d469b60b0ae35e9b9b8698b26eee2c5",
+      "record_count": 5
+    },
+    {
+      "artifact_name": "tracking-v1.json",
+      "bytes": 7991,
+      "digest": "sha256:84dcf84f07f3043183cfb10c34e103162af90e5e34ee6c59f9aa794e48840068",
+      "record_count": 10
+    }
+  ],
+  "fixture_suite_id": "p31-generated-fixtures-v1",
+  "generated_only": true,
+  "generator": {
+    "code_digest": "sha256:5241f2bfc7bb4cfae0affa523952cb7ddec0d721e233d3ace8a24f8f37c32b7f",
+    "configuration_digest": "sha256:e27528cb47a6628a06fb3bbdfe6e2f25e884e09ac1e8d852cb0d0c13401d9db1",
+    "external_inputs": [],
+    "generator_id": "hcam-p31-generated-fixtures",
+    "generator_version": "1.0.0"
+  },
+  "manifest_digest": "sha256:6b97a305a593d6443b83fb31bc30597670a472d562b98830c8a84a4621074e55",
+  "prohibited_sources_absent": true,
+  "seeds": [
+    31001
+  ],
+  "semantic_version": "1.0.0",
+  "template_digests": [
+    "sha256:c7954d236fb10c8c11748377633808a645183619833a871e8f09a43b6ebc23e9",
+    "sha256:5d7d5c83f1fcdce3712f0d7f367c846ff90bb9284f2145b026c976125283a36a",
+    "sha256:3b8d9c27752e6bea37a519fc9af230ba829ad76216cfabe13baadadd80f99f23",
+    "sha256:8feee01061e095993c1d7e34b01891ae782b4ba37ad86815957746ffb4f98c4f",
+    "sha256:38eee67ecafcdd7d17b87bcce847f10e02005b9b4b38f2537c77421a9667f688",
+    "sha256:6b91fd1fcf07fbbd3b16bde3c1a6b12235b6593780e7ba9c1da42b8713777d8e",
+    "sha256:aa542a4e9570912fad00a63ab6ec912649a4c0ff73f98a86cb33d7ff6d31e37e"
+  ]
+}

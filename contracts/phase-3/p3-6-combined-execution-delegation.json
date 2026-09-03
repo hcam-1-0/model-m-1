@@ -1,0 +1,43 @@
+{
+  "contract_format": "hcam.phase3.p3_6.combined_execution_delegation.v1",
+  "decision_id": "D-P3.6-COMBINED-EXECUTION-DELEGATION",
+  "status": "active_owner_delegation",
+  "recorded_on": "2026-09-03",
+  "delegated_by": "mayank-admin",
+  "delegated_to": "codex-agent",
+  "owner_direction": "continue_Phase_3_6_in_extensive_combined_batches_without_separate_routine_approval_messages_and_report_each_active_task_with_exact_completion_percentage",
+  "delegated_local_actions": [
+    "source_edits",
+    "generated_and_synthetic_tests",
+    "documentation_and_ledger_synchronization",
+    "local_static_and_runtime_validation",
+    "closely_related_fail_closed_remediation",
+    "bounded_local_checkpoint_and_closeout_work"
+  ],
+  "selected_current_decisions": {
+    "planning_package": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4e-remediation-planning-package.json",
+    "planning_package_sha256": "C0BF901B7D66BE11A250F9369C5CE564A59A726E88877E4A77CD36F310997B7D",
+    "selection_basis": "agent_selected_recommended_options_under_explicit_owner_combined_execution_delegation",
+    "D-P3.6-U4E-001": "A",
+    "D-P3.6-U4E-002": "A",
+    "D-P3.6-U4E-003": "A",
+    "D-P3.6-U4E-004": "A",
+    "D-P3.6-U4E-005": "A"
+  },
+  "reporting_contract": {
+    "report_each_active_task": true,
+    "percentage_basis": "completed_checklist_items_divided_by_total_checklist_items",
+    "report_percentage_point_delta": true,
+    "never_claim_completion_without_validation_evidence": true
+  },
+  "continuing_exclusions": [
+    "no_security_bypass_or_privilege_escalation",
+    "no_credentials_or_secrets",
+    "no_private_or_Government_data",
+    "no_real_camera_or_media_access",
+    "no_model_or_dataset_download",
+    "no_production_deployment",
+    "no_destructive_or_irreversible_operation",
+    "no_push_merge_PR_or_other_unrequested_remote_Git_write"
+  ]
+}

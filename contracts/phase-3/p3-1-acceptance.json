@@ -1,0 +1,31 @@
+{
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-08-24",
+  "accepted_repository_head": "ccaef84993cbe3dee3e78692dd40a305bc2baea4",
+  "baseline_source_commit": "be7749d4315f46a49370b65f14c6e583e51a0c6e",
+  "clean_evidence_commit": "e379ff028882295d82fbc82cff33aa11a100008e",
+  "contract_format": "hcam.phase3.p3_1.acceptance.v1",
+  "documented_limitations_accepted": true,
+  "evidence_package_digest": "956F6521E21BF0FB43741F97768194617DE881B1BD1644E03DDC33ED5FDC0618",
+  "evidence_profile": {
+    "external_downloads": 0,
+    "generated_only": true,
+    "gpu_required": false,
+    "media_artifacts": 0,
+    "model_artifacts": 0,
+    "network_required": false,
+    "secrets_required": false
+  },
+  "non_authorization": [
+    "p3_2",
+    "model_or_dataset_downloads",
+    "inference",
+    "cameras_or_media",
+    "government_or_private_data",
+    "deployment"
+  ],
+  "record_id": "D-P3.1-ACCEPTANCE",
+  "scope": "phase3.p3_1.data_and_evaluation_foundation.implementation",
+  "statement": "I, mayank-admin, accept D-P3.1-ACCEPTANCE for package digest 956F6521E21BF0FB43741F97768194617DE881B1BD1644E03DDC33ED5FDC0618, including its generated-only evidence and documented limitations. This does not authorize P3.2, model or dataset downloads, inference, cameras or media, Government/private data, or deployment.",
+  "status": "accepted"
+}

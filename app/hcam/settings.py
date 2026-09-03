@@ -4,7 +4,7 @@ import ipaddress
 import os
 import re
 from dataclasses import dataclass, field
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from urllib.parse import urlsplit
 
 from hcam.streams.network import (
@@ -154,6 +154,13 @@ class Settings:
     playback_token_ttl_seconds: int = 60
     playback_issuer: str = "hcam-core"
     playback_audience: str = "mediamtx"
+    analytics_generated_runtime_enabled: bool = False
+    analytics_generated_tracking_enabled: bool = False
+    analytics_generated_geometry_enabled: bool = False
+    analytics_artifact_root: Path | None = field(default=None, repr=False)
+    analytics_model_relative_path: Path = Path(
+        "DET-R0-ONNX-UPSTREAM-0.1.1RC0/yolox_tiny.onnx"
+    )
 
     def __post_init__(self) -> None:
         environment = self.environment.strip().lower()
@@ -171,36 +178,50 @@ class Settings:
             raise ValueError(
                 "HCAM_METRICS_TOKEN_FILE is required when metrics are enabled"
             )
-        if self.metrics_token is not None and _BEARER_TOKEN_PATTERN.fullmatch(
-            self.metrics_token
-        ) is None:
-            raise ValueError(
-                "metrics token must be 32 to 256 bearer-safe characters"
-            )
+        if (
+            self.metrics_token is not None
+            and _BEARER_TOKEN_PATTERN.fullmatch(self.metrics_token) is None
+        ):
+            raise ValueError("metrics token must be 32 to 256 bearer-safe characters")
         if not self.ffprobe_executable.strip():
             raise ValueError("HCAM_FFPROBE_EXECUTABLE must not be empty")
         if self.stream_probe_timeout_seconds <= 0:
             raise ValueError("HCAM_STREAM_PROBE_TIMEOUT_SECONDS must be positive")
         if self.camera_secret_provider not in {"unconfigured", "file"}:
-            raise ValueError(
-                "HCAM_CAMERA_SECRET_PROVIDER must be unconfigured or file"
-            )
+            raise ValueError("HCAM_CAMERA_SECRET_PROVIDER must be unconfigured or file")
         if self.camera_secret_provider == "file" and self.camera_secret_root is None:
             raise ValueError(
                 "HCAM_CAMERA_SECRET_ROOT is required for the file secret provider"
             )
-        if self.camera_secret_provider != "file" and self.camera_secret_root is not None:
+        if (
+            self.camera_secret_provider != "file"
+            and self.camera_secret_root is not None
+        ):
             raise ValueError(
                 "HCAM_CAMERA_SECRET_ROOT requires HCAM_CAMERA_SECRET_PROVIDER=file"
             )
         if environment == "production" and self.camera_secret_provider == "file":
-            raise ValueError("the file camera secret provider is forbidden in production")
+            raise ValueError(
+                "the file camera secret provider is forbidden in production"
+            )
         if environment == "production" and self.onvif_lab_http_enabled:
             raise ValueError("ONVIF lab HTTP is forbidden in production")
         if environment == "production" and self.onvif_control_enabled:
             raise ValueError("ONVIF control is forbidden in production")
         if environment == "production" and self.onvif_discovery_enabled:
             raise ValueError("ONVIF WS-Discovery is forbidden in production")
+        if environment == "production" and self.analytics_generated_runtime_enabled:
+            raise ValueError(
+                "the generated analytics runtime is forbidden in production"
+            )
+        if environment == "production" and self.analytics_generated_tracking_enabled:
+            raise ValueError(
+                "the generated tracking runtime is forbidden in production"
+            )
+        if environment == "production" and self.analytics_generated_geometry_enabled:
+            raise ValueError(
+                "the generated geometry runtime is forbidden in production"
+            )
         if environment == "production" and any(
             rule.scheme == "http" for rule in self.onvif_egress_rules
         ):
@@ -267,6 +288,32 @@ class Settings:
             if not secret_root.is_dir():
                 raise ValueError("HCAM_CAMERA_SECRET_ROOT must identify a directory")
             object.__setattr__(self, "camera_secret_root", secret_root)
+        windows_model_path = PureWindowsPath(str(self.analytics_model_relative_path))
+        if (
+            self.analytics_model_relative_path.is_absolute()
+            or bool(windows_model_path.drive)
+            or bool(windows_model_path.root)
+            or ".." in self.analytics_model_relative_path.parts
+            or ".." in windows_model_path.parts
+            or self.analytics_model_relative_path.name != "yolox_tiny.onnx"
+        ):
+            raise ValueError(
+                "HCAM_ANALYTICS_MODEL_RELATIVE_PATH must identify the approved relative model file"
+            )
+        if (
+            self.analytics_generated_runtime_enabled
+            and self.analytics_artifact_root is None
+        ):
+            raise ValueError(
+                "HCAM_ANALYTICS_ARTIFACT_ROOT is required when the generated analytics runtime is enabled"
+            )
+        if self.analytics_artifact_root is not None:
+            artifact_root = self.analytics_artifact_root.expanduser().resolve()
+            if not artifact_root.is_dir():
+                raise ValueError(
+                    "HCAM_ANALYTICS_ARTIFACT_ROOT must identify a directory"
+                )
+            object.__setattr__(self, "analytics_artifact_root", artifact_root)
         playback_url = urlsplit(self.playback_public_base_url)
         if (
             playback_url.scheme not in {"http", "https"}
@@ -274,9 +321,13 @@ class Settings:
             or playback_url.query
             or playback_url.fragment
         ):
-            raise ValueError("HCAM_PLAYBACK_PUBLIC_BASE_URL must be an HTTP(S) base URL")
+            raise ValueError(
+                "HCAM_PLAYBACK_PUBLIC_BASE_URL must be an HTTP(S) base URL"
+            )
         if not 10 <= self.playback_token_ttl_seconds <= 300:
-            raise ValueError("HCAM_PLAYBACK_TOKEN_TTL_SECONDS must be between 10 and 300")
+            raise ValueError(
+                "HCAM_PLAYBACK_TOKEN_TTL_SECONDS must be between 10 and 300"
+            )
         if not self.playback_issuer.strip() or not self.playback_audience.strip():
             raise ValueError("playback issuer and audience must not be empty")
         object.__setattr__(self, "environment", environment)
@@ -334,20 +385,12 @@ class Settings:
             onvif_egress_rules=load_onvif_egress_rules(
                 os.getenv("HCAM_ONVIF_EGRESS_RULES_FILE")
             ),
-            onvif_lab_http_enabled=_environment_flag(
-                "HCAM_ONVIF_LAB_HTTP_ENABLED"
-            ),
+            onvif_lab_http_enabled=_environment_flag("HCAM_ONVIF_LAB_HTTP_ENABLED"),
             onvif_ca_bundle=(
-                Path(value)
-                if (value := os.getenv("HCAM_ONVIF_CA_BUNDLE"))
-                else None
+                Path(value) if (value := os.getenv("HCAM_ONVIF_CA_BUNDLE")) else None
             ),
-            onvif_control_enabled=_environment_flag(
-                "HCAM_ONVIF_CONTROL_ENABLED"
-            ),
-            onvif_discovery_enabled=_environment_flag(
-                "HCAM_ONVIF_DISCOVERY_ENABLED"
-            ),
+            onvif_control_enabled=_environment_flag("HCAM_ONVIF_CONTROL_ENABLED"),
+            onvif_discovery_enabled=_environment_flag("HCAM_ONVIF_DISCOVERY_ENABLED"),
             onvif_discovery_interface=(
                 value.strip()
                 if (value := os.getenv("HCAM_ONVIF_DISCOVERY_INTERFACE"))
@@ -366,11 +409,11 @@ class Settings:
             ),
             camera_secret_provider=os.getenv(
                 "HCAM_CAMERA_SECRET_PROVIDER", defaults.camera_secret_provider
-            ).strip().lower(),
+            )
+            .strip()
+            .lower(),
             camera_secret_root=(
-                Path(value)
-                if (value := os.getenv("HCAM_CAMERA_SECRET_ROOT"))
-                else None
+                Path(value) if (value := os.getenv("HCAM_CAMERA_SECRET_ROOT")) else None
             ),
             playback_signing_key=_read_pem_secret_file(
                 "HCAM_PLAYBACK_SIGNING_KEY_FILE"
@@ -382,10 +425,28 @@ class Settings:
                 "HCAM_PLAYBACK_TOKEN_TTL_SECONDS",
                 defaults.playback_token_ttl_seconds,
             ),
-            playback_issuer=os.getenv(
-                "HCAM_PLAYBACK_ISSUER", defaults.playback_issuer
-            ),
+            playback_issuer=os.getenv("HCAM_PLAYBACK_ISSUER", defaults.playback_issuer),
             playback_audience=os.getenv(
                 "HCAM_PLAYBACK_AUDIENCE", defaults.playback_audience
+            ),
+            analytics_generated_runtime_enabled=_environment_flag(
+                "HCAM_ANALYTICS_GENERATED_RUNTIME_ENABLED"
+            ),
+            analytics_generated_tracking_enabled=_environment_flag(
+                "HCAM_ANALYTICS_GENERATED_TRACKING_ENABLED"
+            ),
+            analytics_generated_geometry_enabled=_environment_flag(
+                "HCAM_ANALYTICS_GENERATED_GEOMETRY_ENABLED"
+            ),
+            analytics_artifact_root=(
+                Path(value)
+                if (value := os.getenv("HCAM_ANALYTICS_ARTIFACT_ROOT"))
+                else None
+            ),
+            analytics_model_relative_path=Path(
+                os.getenv(
+                    "HCAM_ANALYTICS_MODEL_RELATIVE_PATH",
+                    str(defaults.analytics_model_relative_path),
+                )
             ),
         )

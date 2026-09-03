@@ -1,0 +1,118 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3z_generated_contract_validation_runtime_binding_r1_evidence.v1",
+  "evidence_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3Z-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-EVIDENCE",
+  "decision_id": "D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-AUTH",
+  "status": "sealed_sanitized_failed_closed_attempt_evidence",
+  "logical_node_id": "LAB-LAPTOP-01",
+  "recorded_on": "2026-09-02",
+  "attempt_window": {
+    "authorization_recorded_at": "2026-09-02T14:07:21.3544116Z",
+    "authorization_expires_at": "2026-09-03T14:07:21.3544116Z",
+    "attempt_started_at": "2026-09-02T19:47:35.7836226+05:30",
+    "attempt_completed_at": "2026-09-02T19:47:35.8618722+05:30",
+    "attempt_within_authorization_window": true,
+    "duration_milliseconds": 78,
+    "maximum_attempts": 1,
+    "attempts_consumed": 1,
+    "automatic_retry_performed": false
+  },
+  "authority_binding": {
+    "owner_statement_sha256": "A2572CE0C655E1059BBB89C31E275F054D73504FB64C0630EF8E7D43E0575F58",
+    "owner_statement_utf8_bytes": 2404,
+    "authorization_package_sha256": "3348ECB80895806A2E63610088EF3178CE38B715910C3B1463D97CB2E8F3C6C5",
+    "action_spec_sha256": "2616CFEC77C6D0CA390FA58573FED25A1123209C51EFC472DCBDC3A6B45D94B4",
+    "authorization_record_sha256": "FC1AE35876012CEFDCB52AE5A274FC5787FAE1AE722A9709AC76782C78C530D1",
+    "result_record_sha256": "C9743F0FC8906E46701E07A01A1C651F4B4B2C0517FAB722A97C1396F40F7303",
+    "sealed_package_core_file_count": 16,
+    "sealed_package_core_hashes_verified_before_observation": true
+  },
+  "runtime_evidence": {
+    "exact_candidate_bound_without_path_retention": false,
+    "observation_started": true,
+    "canonical_path_matched": false,
+    "regular_nonreparse_bounded_file": false,
+    "fixed_parent_count": 3,
+    "fixed_parents_validated_before_and_after_process": false,
+    "runtime_file_bytes": 0,
+    "bounded_file_version": "",
+    "initial_sha256": "",
+    "post_sha256": "",
+    "identity_stable": false,
+    "trust_policy": "cache_only_no_UI_whole_chain_excluding_root_without_trust_retrieval",
+    "trust_initialized": false,
+    "trust_verified": false,
+    "trust_closed": false,
+    "network_or_trust_retrieval_performed": false
+  },
+  "accepted_source_evidence": {
+    "expected_file_count": 6,
+    "preflight_hashes_matched": false,
+    "postflight_hashes_matched": false,
+    "source_identity_stable": false,
+    "accepted_hashes": {
+      "harness_sha256": "D9EE5CC7599AACCE3363CE5C29EE479D777F94CF886AE779390B7027C40FA382",
+      "materialized_vectors_sha256": "7BCDFCA583644BD4ED5F4B747C3969B4C9FF4029B48734F8BD4D90BA5D600A21",
+      "controller_sha256": "787655BAC55DDF563E9D1DC43EC37F010C271AB381E541B0734028E3F2B90B31",
+      "controller_contract_sha256": "637C5400122874149D9835CC6BC521E5EEC9160222F4A7AC5CA1F6CD99E1BCC4",
+      "source_vectors_sha256": "D8EDF5C0255B40FB6C28BB014C09DC503D2B53665E69C5AA5AB65C744AEA81E4",
+      "Python_reference_sha256": "B5C7328CD666E0A8988F9B616C5B2A914D690A40BF2EA289C1F1C755E42B86F0"
+    }
+  },
+  "process_evidence": {
+    "exact_runtime_invocation_count": 0,
+    "controller_dot_source_count": 0,
+    "timeout_seconds": 120,
+    "timed_out": false,
+    "exit_code": -1,
+    "stdout_bytes": 0,
+    "stderr_bytes": 0,
+    "parsed_result_bytes": 0,
+    "automatic_retry_count": 0,
+    "raw_stdout_stderr_exception_fixture_or_environment_material_retained": false
+  },
+  "sanitized_outcome": {
+    "terminal": true,
+    "succeeded": false,
+    "reason_code": "binding_failed",
+    "cases_loaded": 0,
+    "cases_executed": 0,
+    "cases_passed": 0,
+    "cases_failed": 0,
+    "literal_null_success_match": false,
+    "all_failure_action_reason_match": false,
+    "cross_language_projection_difference_count": -1,
+    "raw_fixture_retained_bytes": 0,
+    "raw_process_material_retained_bytes": 0
+  },
+  "prohibited_action_evidence": {
+    "Utility_manifest_module_closure_or_Aggregate_validation_count": 0,
+    "alternate_runtime_parent_checkout_source_module_or_hardware_discovery_count": 0,
+    "PATH_PSModulePath_registry_WMI_package_or_directory_inventory_count": 0,
+    "Python_execution_machine_access_or_fallback_count": 0,
+    "machine_storage_F_B_ACL_identity_probe_cleanup_Defender_or_scanner_action_count": 0,
+    "network_trust_retrieval_download_install_update_or_acquisition_count": 0,
+    "artifact_model_dataset_inference_camera_media_private_or_Government_data_action_count": 0,
+    "container_Kubernetes_profile_activation_deployment_U3K_commit_push_or_remote_Git_action_count": 0
+  },
+  "gate_effect": {
+    "attempt_consumed": true,
+    "authorization_reusable": false,
+    "successful_current_U3Z_R1_evidence": false,
+    "owner_U3Z_R1_evidence_acceptance_pending": false,
+    "U3K_package_preparation_authorized": false,
+    "U3K_machine_or_storage_attempt_authorized": false,
+    "retry_requires_new_exact_digest_bound_authorization": true,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "limitations": [
+    "one_authorized_attempt_is_consumed_and_not_reusable",
+    "no_generated_contract_cases_were_processed_because_binding_failed_before_process_start",
+    "no_raw_process_output_exception_fixture_identity_environment_or_security_material_is_retained",
+    "no_Python_machine_storage_scanner_network_model_media_container_deployment_or_remote_Git_action_occurred",
+    "successful_evidence_requires_separate_exact_owner_acceptance_before_any_further_gate",
+    "U3K_remains_blocked"
+  ]
+}

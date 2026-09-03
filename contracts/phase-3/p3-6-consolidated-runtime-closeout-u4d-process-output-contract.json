@@ -1,0 +1,174 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_u4d_process_output_contract.v1",
+  "contract_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-U4D-PROCESS-OUTPUT-CONTRACT",
+  "contract_version": "1.0.0",
+  "source_build_authorization": "D-P3.6-U4D-PROCESS-OUTPUT-REMEDIATION-IMPLEMENTATION-AUTH",
+  "status": "implemented_source_only_not_runtime_validated_or_deployed",
+  "operation": "classify_process_output_v1",
+  "request_fields": [
+    "contract_version",
+    "operation",
+    "observation",
+    "source_identity",
+    "retention"
+  ],
+  "observation_fields": [
+    "process_started",
+    "timed_out",
+    "exit_code",
+    "stdout_bytes",
+    "stderr_bytes",
+    "stdout_line_count",
+    "stdout_utf8_valid",
+    "stdout_has_bom",
+    "stdout_is_clixml",
+    "json_parse_valid",
+    "json_duplicate_keys",
+    "schema_valid",
+    "identity_valid",
+    "child_terminal",
+    "child_succeeded",
+    "required_case_count",
+    "accepted_case_count"
+  ],
+  "source_identity_fields": [
+    "preflight_match",
+    "postflight_match"
+  ],
+  "retention_fields": [
+    "raw_stdout_retained_bytes",
+    "raw_stderr_retained_bytes",
+    "raw_stream_hashes_retained",
+    "exception_material_retained",
+    "fixture_material_retained",
+    "identity_material_retained",
+    "environment_material_retained",
+    "security_material_retained"
+  ],
+  "result_fields": [
+    "contract_version",
+    "terminal",
+    "succeeded",
+    "stage",
+    "reason_code",
+    "observed_bounds",
+    "retention"
+  ],
+  "observed_bounds_fields": [
+    "process_started",
+    "timed_out",
+    "exit_class",
+    "stdout_bytes",
+    "stderr_bytes",
+    "stdout_line_count",
+    "required_case_count",
+    "accepted_case_count"
+  ],
+  "limits": {
+    "required_generated_case_count": 416,
+    "maximum_stdout_bytes": 4096,
+    "maximum_stderr_bytes": 0,
+    "terminal_stdout_line_count": 1,
+    "raw_retained_bytes": 0
+  },
+  "terminal_stages": [
+    "authorization",
+    "process",
+    "result_validation",
+    "evidence_seal"
+  ],
+  "parent_reason_precedence": [
+    "terminal_default_deny_internal_failure",
+    "process_start_failed",
+    "process_timeout",
+    "process_exit_nonzero",
+    "process_stdout_limit_exceeded",
+    "process_stderr_nonzero",
+    "process_output_empty",
+    "process_output_multiple_lines",
+    "process_output_BOM_detected",
+    "process_output_CLIXML_detected",
+    "process_output_JSON_invalid",
+    "process_output_schema_invalid",
+    "process_output_identity_invalid",
+    "process_result_accepted"
+  ],
+  "parent_reason_stage_map": {
+    "terminal_default_deny_internal_failure": "authorization",
+    "process_start_failed": "process",
+    "process_timeout": "process",
+    "process_exit_nonzero": "process",
+    "process_stdout_limit_exceeded": "process",
+    "process_stderr_nonzero": "process",
+    "process_output_empty": "result_validation",
+    "process_output_multiple_lines": "result_validation",
+    "process_output_JSON_invalid": "result_validation",
+    "process_output_BOM_detected": "result_validation",
+    "process_output_CLIXML_detected": "result_validation",
+    "process_output_schema_invalid": "result_validation",
+    "process_output_identity_invalid": "result_validation",
+    "process_result_accepted": "evidence_seal"
+  },
+  "child_envelope_fields": [
+    "contract_version",
+    "terminal",
+    "succeeded",
+    "stage",
+    "reason_code",
+    "required_case_count",
+    "accepted_case_count",
+    "source_identity_valid",
+    "raw_retained_bytes"
+  ],
+  "child_envelope_stages": [
+    "bootstrap",
+    "source_binding",
+    "vector_validation",
+    "generated_validation",
+    "evidence_seal"
+  ],
+  "child_envelope_reason_codes": [
+    "generated_validation_accepted",
+    "harness_input_invalid",
+    "module_bootstrap_failed",
+    "source_identity_invalid",
+    "vector_manifest_invalid",
+    "controller_load_failed",
+    "generated_case_mismatch",
+    "terminal_default_deny_internal_failure"
+  ],
+  "framing_protocol": {
+    "encoding": "UTF-8",
+    "byte_order_mark_allowed": false,
+    "line_count": 1,
+    "maximum_bytes": 4096,
+    "emission_API": "System.Console.Out.WriteLine",
+    "PowerShell_object_serialization_allowed": false,
+    "CLIXML_allowed": false,
+    "stderr_bytes": 0,
+    "progress_warning_verbose_debug_or_information_output_allowed": false
+  },
+  "classification_rules": {
+    "exact_request_field_sets_required": true,
+    "boolean_is_not_an_integer": true,
+    "unknown_field_operation_stage_or_reason_default_denied": true,
+    "started_non_timeout_process_requires_integer_exit_code": true,
+    "empty_output_precedes_line_count_classification": true,
+    "invalid_UTF8_or_JSON_or_duplicate_keys_maps_to_JSON_invalid": true,
+    "identity_includes_child_case_counts_source_preflight_postflight_and_zero_retention": true,
+    "success_requires_all_416_generated_cases": true
+  },
+  "retention_policy": {
+    "raw_stdout_or_stderr_content_retained": false,
+    "raw_stdout_or_stderr_hash_retained": false,
+    "exception_type_message_stack_or_path_retained": false,
+    "fixture_environment_identity_or_security_material_retained": false,
+    "bounded_counts_booleans_stage_and_allowlisted_reason_only": true
+  },
+  "machine_authority": {
+    "PowerShell_execution_authorized_by_this_contract": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_hardware_storage_scanner_network_model_media_or_deployment_authorized": false,
+    "U3K_Phase_3_closeout_commit_push_or_remote_Git_authorized": false
+  }
+}

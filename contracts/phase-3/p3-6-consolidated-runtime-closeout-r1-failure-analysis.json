@@ -1,0 +1,111 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_r1_failure_analysis.v1",
+  "analysis_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-R1-FAILURE-ANALYSIS",
+  "status": "sanitized_planning_only_no_retry_or_implementation_authority",
+  "prepared_on": "2026-09-02",
+  "attempt_bindings": {
+    "authorization_record": "contracts/phase-3/p3-6-consolidated-runtime-closeout-authorization.json",
+    "authorization_record_sha256": "53EC06DD2968A5BC733D701A421B15FE8934A7BF9946654133D7DFEBDCE67542",
+    "result_record": "contracts/phase-3/p3-6-consolidated-runtime-closeout-result.json",
+    "result_record_sha256": "4AB72B831F96E996F5F90199443AE9D747A7F55804112E7291313048506E6B41",
+    "evidence_record": "contracts/phase-3/p3-6-consolidated-runtime-closeout-evidence.json",
+    "evidence_record_sha256": "DCFF4345885F5E40B6B8E7427CF4BB0528493EF2401B275D2039F9998AFFF479"
+  },
+  "confirmed_facts": {
+    "attempt_index": 1,
+    "attempts_consumed": 1,
+    "authorization_reusable": false,
+    "package_authority_preflight_passed": true,
+    "runtime_binding_passed": true,
+    "cache_only_trust_passed_and_closed": true,
+    "fixed_parent_set_passed": true,
+    "exact_source_preflight_and_postflight_passed": true,
+    "target_PowerShell_process_count": 1,
+    "earliest_failed_action": "CA-RC-A05-OUTER-CONTROLLER-GENERATED-VALIDATION",
+    "sanitized_reason_code": "process_output_bounds_failed",
+    "stdout_limit_bytes": 16384,
+    "stderr_limit_bytes": 0,
+    "one_or_more_output_predicates_failed": true,
+    "outer_result_contract_accepted": false,
+    "handler_process_started": false,
+    "U3K_preflight_or_storage_started": false,
+    "F_drive_access_count": 0,
+    "prohibited_action_count": 0,
+    "raw_process_or_exception_material_retained": false
+  },
+  "interpretation_boundaries": {
+    "stdout_exceeded_16384_is_confirmed": false,
+    "stderr_nonzero_is_confirmed": false,
+    "child_exit_code_is_known": false,
+    "outer_controller_dot_source_completed_is_confirmed": false,
+    "any_of_416_policy_cases_executed_is_confirmed": false,
+    "generated_case_mismatch_is_confirmed": false,
+    "controller_logic_defect_is_confirmed": false,
+    "runtime_binary_or_trust_defect_is_confirmed": false,
+    "U3K_policy_or_storage_defect_is_indicated": false,
+    "raw_stream_reinspection_without_new_authority_allowed": false
+  },
+  "hypotheses": [
+    {
+      "hypothesis_id": "H1-NONDATA-STREAM-EMISSION",
+      "description": "the_child_or_runtime_emitted_one_or_more_bytes_on_stderr_before_the_parent_accepted_the_result",
+      "confidence": "plausible_not_distinguishable_from_retained_evidence",
+      "confirmed": false
+    },
+    {
+      "hypothesis_id": "H2-STDOUT-AMPLIFICATION",
+      "description": "the_child_emitted_more_than_the_16384_byte_stdout_limit_instead_of_one_bounded_terminal_envelope",
+      "confidence": "plausible_not_distinguishable_from_retained_evidence",
+      "confirmed": false
+    },
+    {
+      "hypothesis_id": "H3-BOOTSTRAP-OR-SERIALIZATION-FAILURE",
+      "description": "module_bootstrap_conversion_or_serialization_failed_and_the_runtime_projected_diagnostic_material_to_a_nondata_stream",
+      "confidence": "plausible_but_unconfirmed",
+      "confirmed": false
+    },
+    {
+      "hypothesis_id": "H4-PARENT-CLASSIFICATION-GAP",
+      "description": "the_parent_combined_stdout_and_stderr_predicates_into_one_reason_without_retaining_safe_byte_counts_exit_class_or_result_framing_state",
+      "confidence": "confirmed_design_gap",
+      "confirmed": true
+    },
+    {
+      "hypothesis_id": "H5-OUTER-CONTROLLER-DETERMINISTIC-DEFECT",
+      "description": "the_outer_controller_returned_one_or_more_results_that_differed_from_the_generated_expectations",
+      "confidence": "not_reached_by_accepted_result_evidence",
+      "confirmed": false
+    }
+  ],
+  "required_remediation_properties": {
+    "preserve_accepted_runtime_controller_vectors_handler_runner_adapter_and_U3K_sources_byte_exact": true,
+    "additive_hash_bound_child_validation_harness": true,
+    "single_utf8_json_line_stdout_protocol": true,
+    "zero_stderr_success_contract": true,
+    "explicit_nondata_stream_preferences": true,
+    "bounded_sanitized_exit_stdout_stderr_and_framing_classification": true,
+    "no_raw_stdout_stderr_exception_fixture_environment_identity_or_security_retention": true,
+    "generated_static_stream_framing_and_result_contract_tests_before_runtime": true,
+    "new_package_and_new_exact_owner_authorization_before_any_runtime_attempt": true,
+    "U3K_remains_blocked_until_all_500_generated_cases_are_accepted": true
+  },
+  "known_static_compatibility_transition": {
+    "path": "tests/test_phase36_consolidated_runtime_closeout_authorization_proposal.py",
+    "obsolete_assertion": "all_seven_exact_future_outputs_are_absent_before_owner_authorization",
+    "required_transition": "preserve_exact_seven_path_uniqueness_and_immutable_package_checks_then_require_authorization_result_and_evidence_present_while_acceptance_and_three_U3K_outputs_remain_absent",
+    "current_full_Phase_3_6_tests_passed": 2011,
+    "current_full_Phase_3_6_tests_failed": 1,
+    "failure_is_the_exact_obsolete_assertion_only": true,
+    "compatibility_test_modification_authorized": false,
+    "future_U4D_exact_allowlist_required": true
+  },
+  "gate_effect": {
+    "source_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "another_attempt_authorized": false,
+    "U3K_authorized": false,
+    "Phase_3_complete": false,
+    "commit_push_or_remote_Git_authorized": false
+  }
+}

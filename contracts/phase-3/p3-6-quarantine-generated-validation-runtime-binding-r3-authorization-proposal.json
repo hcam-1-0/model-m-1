@@ -1,0 +1,88 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_runtime_binding_r3_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH",
+  "status": "sealed_non_effective_owner_authorization_pending_no_attempt_performed",
+  "prepared_on": "2026-09-01",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r2-implementation-acceptance.json",
+    "acceptance_sha256": "32BA42A51029920AE163866A923547CD16054D6C41ECD3C8EC5549B78FB3ED2E",
+    "accepted_implementation_package_sha256": "2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF",
+    "effect": "prepare_only_a_separate_non_effective_U3R_R3_authorization_proposal_and_package"
+  },
+  "request_scope": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "maximum_attempts": 1,
+    "authorization_window_seconds": 86400,
+    "failed_attempt_consumes_authorization": true,
+    "automatic_retry": false,
+    "exact_runtime_path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "exact_Utility_manifest_path": "C:\\Program Files\\PowerShell\\7\\Modules\\Microsoft.PowerShell.Utility\\Microsoft.PowerShell.Utility.psd1",
+    "exact_harness_sha256": "830D88F8915B084DEF1089927FF785C9C0E7BDB6F0755B5315EE85E9DA8A8B8A",
+    "generated_vector_count": 84,
+    "Utility_closure_maximum_files": 64,
+    "Utility_closure_maximum_total_bytes": 134217728,
+    "machine_storage_scanner_model_media_container_or_deployment_scope": false
+  },
+  "required_preconditions": [
+    "exact_authorization_package_digest_and_all_core_hashes_match",
+    "exact_owner_statement_is_recorded_before_any_runtime_or_manifest_observation",
+    "authorization_is_within_twenty_four_hours_and_unused",
+    "runtime_candidate_is_exact_path_local_regular_nonreparse_bounded_and_trusted_cache_only",
+    "Utility_manifest_is_exact_PSHome_relative_path_regular_nonreparse_and_bounded",
+    "Utility_manifest_is_a_literal_only_single_hashtable_with_zero_parse_errors",
+    "all_declared_Utility_closure_paths_are_bounded_nonreparse_and_under_exact_PSHome",
+    "all_five_accepted_source_hashes_match_before_execution",
+    "controller_enforces_process_output_timeout_and_single_attempt_bounds"
+  ],
+  "allowed_attempt": [
+    "bind_only_the_exact_runtime_candidate_exact_PSHome_and_fixed_parent_components",
+    "perform_cache_only_no_UI_whole_chain_excluding_root_runtime_trust_validation",
+    "classify_and_hash_only_the_exact_Utility_manifest",
+    "parse_the_exact_Utility_manifest_only_as_a_literal_hashtable_without_execution_or_import",
+    "resolve_and_hash_at_most_sixty_four_declared_closure_files_under_exact_PSHome",
+    "perform_cache_only_no_UI_whole_chain_excluding_root_trust_validation_for_each_declared_dll_exe_ps1_or_psm1_closure_file",
+    "invoke_the_exact_runtime_once_with_NoLogo_NoProfile_NonInteractive",
+    "run_the_exact_R2_harness_in_Aggregate_mode",
+    "parse_exact_runner_handler_adapter_and_harness_sources",
+    "run_twenty_generated_runner_Contract_vectors",
+    "run_sixty_four_generated_pure_handler_vectors",
+    "reverify_runtime_manifest_closure_and_source_identity",
+    "write_only_bounded_sanitized_authorization_result_and_evidence_records"
+  ],
+  "explicitly_not_authorized": [
+    "any_action_before_exact_digest_bound_owner_authorization",
+    "more_than_one_attempt_or_automatic_retry",
+    "manifest_semantic_evaluation_script_execution_or_module_import_during_closure_binding",
+    "runner_Storage_mode_or_StorageRequestJson",
+    "windows_adapter_import_or_execution",
+    "machine_storage_F_B_ACL_identity_probe_cleanup_Defender_or_scanner_action",
+    "runtime_hardware_or_module_discovery_beyond_the_exact_candidates",
+    "PATH_PSModulePath_registry_WMI_package_or_unbounded_directory_inventory",
+    "network_trust_retrieval_download_install_update_or_acquisition",
+    "artifact_model_dataset_camera_media_or_private_or_Government_data_access",
+    "model_loading_inference_benchmark_or_hardware_testing",
+    "containers_Kubernetes_profile_activation_deployment_or_remote_Git"
+  ],
+  "result_policy": {
+    "success_requires": "bound_stable_runtime_Utility_manifest_and_declared_closure_zero_parse_errors_twenty_contract_vectors_sixty_four_handler_vectors_and_all_prohibited_action_counts_zero",
+    "failure_requires": "one_allowlisted_controller_or_harness_reason_code_without_raw_output",
+    "success_or_failure_consumes_attempt": true,
+    "separate_evidence_acceptance_required": true,
+    "U3K_becomes_requestable_from_attempt_alone": false
+  },
+  "future_owner_authorization_statement_template": "D-P3.6-U3R-GENERATED-VALIDATION-RUNTIME-BINDING-R3-AUTH: I, mayank-admin, authorize one fresh runtime, Utility-manifest closure binding, and generated-validation R3 attempt against package digest <U3R_R3_AUTHORIZATION_PACKAGE_DIGEST_SHA256> within 24 hours on LAB-LAPTOP-01. The attempt may verify and record the exact authorization; classify, size, version, hash, and cache-only no-UI whole-chain-excluding-root trust-check only C:\\Program Files\\PowerShell\\7\\pwsh.exe and its fixed parent components; classify and hash only C:\\Program Files\\PowerShell\\7\\Modules\\Microsoft.PowerShell.Utility\\Microsoft.PowerShell.Utility.psd1; parse that exact manifest only as one literal hashtable with zero errors and no evaluation, commands, import, or execution; resolve only RootModule, NestedModules, RequiredAssemblies, TypesToProcess, FormatsToProcess, and FileList constant-string references under exact PSHOME, require ScriptsToProcess empty, bind at most 64 non-reparse regular files totaling at most 128 MiB, and perform cache-only no-UI whole-chain-excluding-root trust validation for each declared DLL, EXE, PS1, or PSM1 closure file without trust retrieval; verify exact harness SHA-256 830D88F8915B084DEF1089927FF785C9C0E7BDB6F0755B5315EE85E9DA8A8B8A, vector-manifest SHA-256 5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C, runner SHA-256 22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A, pure-handler SHA-256 41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721, and parser-only Windows-adapter SHA-256 232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9; invoke the exact runtime once with NoLogo, NoProfile, NonInteractive and the accepted R2 harness in Aggregate mode; parse the exact four source files; run exactly 20 runner Contract vectors and 64 pure-handler vectors; accept only bounded allowlisted sanitized results; reverify runtime, manifest, closure, and source identity; and write only the three bounded sanitized authorization, result, and evidence records. Failure consumes the authorization and requires a new digest-bound authorization. This does not authorize manifest evaluation or import during closure binding, runner Storage mode or StorageRequestJson, Windows-adapter import or execution, alternate runtime/module/hardware discovery, PATH/PSModulePath/registry/WMI/package or unbounded directory inventory, machine/storage/F:/B:/ACL/identity/probe/cleanup/Defender/scanner action, network or trust retrieval, downloads, artifacts, models, inference, cameras/media/data, containers/Kubernetes, profile activation, deployment, or remote Git. Any U3K package or machine/storage attempt requires separate accepted successful U3R evidence and later explicit authorization.",
+  "current_effect": {
+    "proposal_prepared": true,
+    "package_digest_not_yet_bound": true,
+    "owner_U3R_authorization_pending": true,
+    "attempts_authorized": 0,
+    "PowerShell_parser_import_or_execution_authorized": false,
+    "runtime_manifest_closure_or_hardware_observation_authorized": false,
+    "machine_storage_or_scanner_action_authorized": false,
+    "U3K_requestable": false,
+    "profile_activation_deployment_or_remote_git_authorized": false
+  },
+  "authorization_may_be_inferred_from_acceptance_continue_package_preparation_or_static_validation": false
+}

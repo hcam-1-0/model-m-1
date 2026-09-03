@@ -1,0 +1,131 @@
+{
+  "owner_statement": "continue_Phase_3_6_in_extensive_combined_batches_without_separate_routine_approval_messages_and_report_each_active_task_with_exact_completion_percentage",
+  "expected_owner_statement": "continue_Phase_3_6_in_extensive_combined_batches_without_separate_routine_approval_messages_and_report_each_active_task_with_exact_completion_percentage",
+  "owner_statement_exact_match": true,
+  "authorization_not_before": "2026-09-03T05:25:00.0000000+00:00",
+  "authorization_expires_at": "2026-09-04T05:25:00.0000000+00:00",
+  "authorization_window_current": true,
+  "attempt_unused": true,
+  "execution_package_digest_sha256": "26F974340A720DEC52C629A75394DDD0FE5A1B9A546998C9241F29D1BAC89554",
+  "execution_package_files": [
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r5-storage-execution-package.json",
+      "sha256": "26F974340A720DEC52C629A75394DDD0FE5A1B9A546998C9241F29D1BAC89554"
+    }
+  ],
+  "execution_package_binding_exact": true,
+  "source_binding_files": [
+    {
+      "path": "contracts/phase-3/p3-6-combined-execution-delegation.json",
+      "sha256": "24A5D29CBA1B6DA990207EE2C4E7BD8DF8CB0DC2D36AD526461E494F8E5C3C09"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r4-storage-execution-package.json",
+      "sha256": "F59BC6B2CFAD3BB0C388DF41EF4559E0D9C7E6AF824A890E80C84E35E78AA31A"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r4-storage-request.json",
+      "sha256": "A5BA4DD0190176E0C18BE04E3008FAE482C9FB59F19002DCE2EE354731107F3B"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-storage-r2-authorization.json",
+      "sha256": "872F2B84A76B59C5D63C2C4156C79834F2E0F5F73B22FBCAF1A19CE48E8750EF"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-storage-r2-result.json",
+      "sha256": "929209B929A9D666B56D2F5A7705CE94017C91DE59FB897EF76F4DCA9B49DDFF"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-storage-r2-evidence.json",
+      "sha256": "B85037C818262A560B7877CC6E04999B28CE22175CF0BEBD4558ECFCEBBCFC90"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r3-generated-validation-evidence.json",
+      "sha256": "699DAF495B7AD415FED2E24FF9F0A151C7B8EF7231A76A5F48510763A58204E6"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r5-generated-validation-evidence.json",
+      "sha256": "11A7A490CD15013F1E12DF2399D89741546933D8C23283FDBE50686D8E07FC34"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-manifest-closure-resolver-r1-implementation-package.json",
+      "sha256": "867F35E0990870447F04FF1D33C7C959B6ECF1A8DCEE030E230CF6D2AD32DBFB"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-manifest-closure-resolver-r1-implementation-evidence.json",
+      "sha256": "76859C7AFFBA8FB4308288797DE6E7BB51B804633555AB1FE6D049E84ABA8FFF"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-storage-r2-action-spec.json",
+      "sha256": "1825C65DFEEEF02EA12AF3D506385657870DCB631D2CDB157DB0F9C919C2DE2A"
+    },
+    {
+      "path": "tools/phase36_quarantine_transaction_runner_r2.ps1",
+      "sha256": "8C3BB5A4CB473954251DDD4B24375AFDEE698FBA4F295A228B1E5898FA6F7189"
+    },
+    {
+      "path": "tools/phase36_quarantine_machine_handlers_r1.psm1",
+      "sha256": "65D4756315B31CA6F8C7195B28173CD2AEC3977E968441434F66D05DBF67F16B"
+    },
+    {
+      "path": "tools/phase36_quarantine_windows_storage_adapter_r1.psm1",
+      "sha256": "96C8AFAFBA6C74728E2596753EB2DD198F25D526FDB7A2619FF8763C8E83CD51"
+    },
+    {
+      "path": "tools/phase36_quarantine_generated_validation_r5.ps1",
+      "sha256": "BABECAF519D5F4DB961E12646AD47C6A6D52A1AFD65B2DAD0E0CFF9FFC1BFBB3"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-powershell-validation-r5-vectors.json",
+      "sha256": "59966906B91D3AABFD0648F3B82F911EF1718E1EC9E2F9A6BB035A25346AAC09"
+    },
+    {
+      "path": "tools/phase36_consolidated_runtime_closeout_r3_generated_validation.ps1",
+      "sha256": "11F1867D67760EEEBB09CF5BA5DCDC4C375517A5EEA1B39598B0ABA1EAF61C1F"
+    },
+    {
+      "path": "tools/phase36_manifest_closure_resolver_r1.psm1",
+      "sha256": "C37C4D60DB0CA71AA2E30F3E1254143B902B42E84AA0E98CD8F9B7B5F863AB8A"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_binding_outer_attempt_controller_r0.ps1",
+      "sha256": "0E539126536CEF9F490EE164C5ECEC2FED36649C163FAAA8F32193B2DB744B99"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-vectors.json",
+      "sha256": "EE25BD99942F0CB68E157439ADEA230D3E549FBAC1743AC783775DDA58AA7B13"
+    }
+  ],
+  "source_bindings_exact": true,
+  "handler_module_sha256": "65D4756315B31CA6F8C7195B28173CD2AEC3977E968441434F66D05DBF67F16B",
+  "windows_adapter_sha256": "96C8AFAFBA6C74728E2596753EB2DD198F25D526FDB7A2619FF8763C8E83CD51",
+  "runtime_binding": {
+    "path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "sha256": "362A356CE7F0940EC74F73A8FC2C990A2CC24A38A11C90BBD8ECA947110AD139",
+    "valid_until": "2026-09-04T05:25:00.0000000+00:00"
+  },
+  "runtime_binding_exact": true,
+  "action_ids": [
+    "U3K-A01-UTC-CLOCK-START",
+    "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY",
+    "U3K-A03-AUTHORIZATION-RECORD",
+    "U3K-A04-F-DRIVE-INFO",
+    "U3K-A05-CANONICAL-PATH-AND-ABSENCE",
+    "U3K-A06-PROTECTED-DACL-CONSTRUCT",
+    "U3K-A07-SECURITY-AT-CREATE-ROOT",
+    "U3K-A08-NORMALIZED-DACL-VERIFY",
+    "U3K-A09-ATOMIC-CAPABILITY-PROBE",
+    "U3K-A10-NORMALIZE-HASH-WRITE"
+  ],
+  "output_paths": [
+    "contracts/phase-3/p3-6-quarantine-storage-r5-authorization.json",
+    "contracts/phase-3/p3-6-quarantine-storage-r5-result.json",
+    "contracts/phase-3/p3-6-quarantine-storage-r5-evidence.json"
+  ],
+  "logical_node_id": "LAB-LAPTOP-01",
+  "candidate_volume": "F:",
+  "candidate_root": "F:\\HCAM-Quarantine",
+  "probe_bytes": 4096,
+  "per_action_timeout_seconds": 30,
+  "total_timeout_seconds": 120
+}

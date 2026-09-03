@@ -1,0 +1,193 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_r1_supply_chain_prerequisite_decisions.v1",
+  "packet_id": "P36-PORTABLE-R1-SUPPLY-CHAIN-PREREQUISITE-DECISIONS-R0",
+  "status": "owner_selections_pending_non_executable",
+  "prepared_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "proposal": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-proposal.json",
+  "recommended_selection": "A/A/A/A/A",
+  "decisions": [
+    {
+      "decision_id": "D-P3.6-U3D-001",
+      "topic": "quarantine_root_and_fresh_storage_attestation_policy",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Owner-supplied exact local root with one-attempt attestation",
+          "effect": "Bind no path now; later require a separately authorized fresh bounded storage and atomic-capability attestation for an exact local fixed NTFS/ReFS non-cloud root with both 5 GiB and 15 percent free, no reparse path, and no worktree or broadly shared location.",
+          "tradeoff": "Strongest portable and fail-closed policy, but an eligible root still must be provided and separately checked."
+        },
+        {
+          "option": "B",
+          "label": "Prefer F drive after cleanup",
+          "effect": "Treat F as the intended root if a future fresh check passes the same thresholds and constraints.",
+          "tradeoff": "Matches the earlier storage preference but creates a machine-specific default and F was historically ineligible."
+        },
+        {
+          "option": "C",
+          "label": "Allow owner-owned encrypted removable storage",
+          "effect": "Permit an exact encrypted external SSD after separate attachment, filesystem, capacity, and custody evidence.",
+          "tradeoff": "Adds capacity flexibility but increases device identity, disconnect, custody, and portability risks."
+        },
+        {
+          "option": "D",
+          "label": "Defer storage policy",
+          "effect": "Leave root type, thresholds, freshness, and path constraints unresolved.",
+          "tradeoff": "No storage action occurs, but R1 cannot be prepared."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3D-002",
+      "topic": "defense_in_depth_scanner_chain",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Defender plus ModelScan plus passive structure inspector",
+          "effect": "Require exact pinned no-remediation Microsoft Defender custom scanning, exact pinned ModelScan static serialization scanning, and an exact bounded framework-free passive structure inspector; every layer must pass.",
+          "tradeoff": "Broadest coverage and auditability, but exact installed versions, binaries, package hashes, and commands still need a separate bounded binding process."
+        },
+        {
+          "option": "B",
+          "label": "Defender and passive inspector only",
+          "effect": "Use platform malware scanning and H-CAM structural checks without ModelScan.",
+          "tradeoff": "Fewer dependencies but weaker coverage for known model-serialization risks."
+        },
+        {
+          "option": "C",
+          "label": "ModelScan and passive inspector only",
+          "effect": "Use model-specific static scanning and H-CAM structural checks without platform antimalware.",
+          "tradeoff": "Avoids Defender-specific behavior but loses general malware detection."
+        },
+        {
+          "option": "D",
+          "label": "Defer scanner chain",
+          "effect": "Leave every scanner product and command unresolved.",
+          "tradeoff": "Avoids an early tool choice but keeps R1 blocked."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3D-003",
+      "topic": "scanner_verdict_and_failure_policy",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "All layers clean, supported, complete, and fail closed",
+          "effect": "Reject any detection, severity finding, unsupported or skipped target, timeout, crash, malformed report, ambiguous Defender result, version drift, missing provenance, or unsafe structure; no manual hard-gate override.",
+          "tradeoff": "Strongest security boundary but can reject legitimate artifacts until evidence or tooling improves."
+        },
+        {
+          "option": "B",
+          "label": "Critical and high findings block",
+          "effect": "Permit medium and low findings after review.",
+          "tradeoff": "Reduces false-positive blocking but introduces discretionary exceptions before a trustworthy baseline exists."
+        },
+        {
+          "option": "C",
+          "label": "Manual owner override",
+          "effect": "Allow the owner to waive scanner or provenance failures per artifact.",
+          "tradeoff": "Flexible but violates the accepted fail-closed admission policy."
+        },
+        {
+          "option": "D",
+          "label": "Informational scans only",
+          "effect": "Record findings without affecting artifact state.",
+          "tradeoff": "Insufficient for R1 supply-chain acceptance."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3D-004",
+      "topic": "bounded_acquisition_and_quarantine_lifecycle",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Sequential partial-hash-scan-BOM-atomic-seal",
+          "effect": "Acquire one exact allowlisted artifact at a time into an exclusive partial file, enforce size, hash and identity, run all passive scanner layers, produce license/provenance/CycloneDX ML-BOM evidence, then atomically seal accepted or rejected state without automatic deletion.",
+          "tradeoff": "Most auditable and bounded, but slower than parallel acquisition and requires explicit cleanup authority for rejected objects."
+        },
+        {
+          "option": "B",
+          "label": "Parallel bounded acquisition",
+          "effect": "Download all three exact objects concurrently before scanning.",
+          "tradeoff": "Faster but increases storage, network, failure-isolation, and evidence-correlation complexity."
+        },
+        {
+          "option": "C",
+          "label": "Direct final-name acquisition",
+          "effect": "Write artifacts directly to their final candidate paths and scan afterward.",
+          "tradeoff": "Simpler but exposes incomplete or unverified objects as apparently final."
+        },
+        {
+          "option": "D",
+          "label": "Defer acquisition lifecycle",
+          "effect": "Retain source metadata without an acquisition state machine.",
+          "tradeoff": "R1 remains unissuable."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3D-005",
+      "topic": "R1_supply_chain_and_R2_runtime_separation",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Immutable R1 passive review before separately authorized R2",
+          "effect": "R1 may only acquire, hash, passively scan, and document supply chain; any checkpoint loading, even weights-only, and all generated calibration require a later exact network-denied R2 authority after R1 acceptance.",
+          "tradeoff": "Strongest isolation and audit trail but requires another explicit gate before learning anything from runtime behavior."
+        },
+        {
+          "option": "B",
+          "label": "Allow weights-only load during R1",
+          "effect": "Permit CPU weights-only framework loading after scans to inspect tensors.",
+          "tradeoff": "Earlier compatibility information but crosses the accepted passive R1 boundary and still cannot establish complete safety."
+        },
+        {
+          "option": "C",
+          "label": "Combine R1 acquisition and R2 calibration",
+          "effect": "Acquire, load, and run the generated C1 matrix in one authorization.",
+          "tradeoff": "Faster but collapses supply-chain review, runtime activation, and calibration into one blast radius."
+        },
+        {
+          "option": "D",
+          "label": "Defer lifecycle separation",
+          "effect": "Leave the boundary between artifact review and runtime execution undefined.",
+          "tradeoff": "Blocks a defensible R1 package."
+        }
+      ]
+    }
+  ],
+  "effect_if_recommended_AAAAA_is_later_accepted": {
+    "storage_policy": "owner_supplied_exact_local_root_with_separate_fresh_attestation",
+    "scanner_policy": "Defender_plus_ModelScan_plus_passive_structure_inspector",
+    "verdict_policy": "all_layers_clean_supported_complete_and_fail_closed",
+    "acquisition_policy": "sequential_partial_hash_scan_ML_BOM_atomic_seal",
+    "lifecycle_policy": "immutable_passive_R1_then_separately_authorized_generated_R2",
+    "immediate_storage_or_scanner_query_authority": false,
+    "immediate_artifact_acquisition_authority": false,
+    "immediate_runtime_or_calibration_authority": false,
+    "immediate_profile_eligibility": false,
+    "immediate_implementation_authority": false
+  },
+  "owner_acceptance_may_be_inferred_from_continue_or_other_decision": false,
+  "storage_or_hardware_query_authorized": false,
+  "scanner_query_install_or_execution_authorized": false,
+  "artifact_acquisition_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "profile_activation_authorized": false,
+  "implementation_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

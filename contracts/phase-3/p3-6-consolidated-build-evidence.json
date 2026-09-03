@@ -1,0 +1,61 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_build_evidence.v1",
+  "evidence_id": "P36-CONSOLIDATED-BUILD-EVIDENCE",
+  "status": "source_and_generated_static_evidence_complete_and_resealed",
+  "recorded_on": "2026-09-02",
+  "authorization_package_sha256": "DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C",
+  "build_result": {
+    "path": "contracts/phase-3/p3-6-consolidated-build-result.json",
+    "sha256": "265FB9DBC3C8241C60CFD553C76FC6668022DA74897772D480A88CA432213948"
+  },
+  "U4B_source_package": {
+    "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-implementation-package.json",
+    "sha256": "3DCF9C4CB0CD184BEC9E144C99CC7C25E9F3425268F69C29161CAF6F34FA8932"
+  },
+  "U4B_source_evidence": {
+    "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-implementation-evidence.json",
+    "sha256": "81D10F82B461DE224F140D7AA840449F8B0003676635E4DDBFCD93F876AEE311"
+  },
+  "U4B_human_review": {
+    "path": "docs/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-evidence-review.md",
+    "sha256": "C90114BEAF9A27236210626A5C6AA4F9A63E60B955A0B86CF521116819003861"
+  },
+  "scope_attestation": {
+    "exact_authorized_additive_paths": 20,
+    "additive_paths_created": 20,
+    "unauthorized_additive_paths_created": 0,
+    "bounded_existing_synchronization_paths": 13,
+    "unauthorized_existing_paths_edited": 0,
+    "separately_amended_test_paths": 2,
+    "source_revision_cycles_consumed": 3,
+    "source_revision_cycles_remaining": 5
+  },
+  "validation_attestation": {
+    "generated_vectors": 416,
+    "focused_tests_passed": 464,
+    "focused_tests_failed": 0,
+    "Python_reference_branch_coverage_percent": 100.0,
+    "PowerShell_Python_projection_difference_count": 0,
+    "full_Phase_3_6_tests_passed": 2005,
+    "full_Phase_3_6_tests_failed": 0,
+    "strict_Phase_3_JSON_files_parsed": 297,
+    "Ruff": "passed",
+    "Git_diff_check": "passed",
+    "immutable_input_hash_mismatch_count": 0
+  },
+  "zero_action_attestation": {
+    "PowerShell_parsed_imported_dot_sourced_or_executed": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_hardware_machine_storage_or_scanner_action": false,
+    "F_or_B_drive_action": false,
+    "network_install_update_download_or_trust_retrieval": false,
+    "artifact_model_inference_camera_media_private_or_Government_data_action": false,
+    "container_Kubernetes_profile_activation_or_deployment": false,
+    "commit_push_or_remote_Git": false
+  },
+  "next_authority": {
+    "decision_id": "D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH",
+    "authorization_exists": false,
+    "may_be_inferred_from_build_success_continue_or_silence": false
+  }
+}

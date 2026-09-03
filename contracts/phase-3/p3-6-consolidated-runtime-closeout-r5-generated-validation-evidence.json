@@ -1,0 +1,90 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_r5_generated_validation_evidence.v1",
+  "evidence_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-R5-GENERATED-VALIDATION-EVIDENCE",
+  "status": "r5_successors_validated_storage_not_started",
+  "recorded_on": "2026-09-03",
+  "delegation_binding": {
+    "path": "contracts/phase-3/p3-6-combined-execution-delegation.json",
+    "sha256": "24A5D29CBA1B6DA990207EE2C4E7BD8DF8CB0DC2D36AD526461E494F8E5C3C09",
+    "routine_step_approval_required": false,
+    "security_bypass_or_privilege_escalation": false,
+    "remote_Git": false
+  },
+  "r4_predecessor": {
+    "execution_package_path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r4-storage-execution-package.json",
+    "execution_package_sha256": "F59BC6B2CFAD3BB0C388DF41EF4559E0D9C7E6AF824A890E80C84E35E78AA31A",
+    "authorization_sha256": "872F2B84A76B59C5D63C2C4156C79834F2E0F5F73B22FBCAF1A19CE48E8750EF",
+    "result_sha256": "929209B929A9D666B56D2F5A7705CE94017C91DE59FB897EF76F4DCA9B49DDFF",
+    "evidence_sha256": "B85037C818262A560B7877CC6E04999B28CE22175CF0BEBD4558ECFCEBBCFC90",
+    "terminal_reason": "candidate_attribute_unavailable",
+    "root_created": false,
+    "same_package_retry_performed": false
+  },
+  "r5_successors": [
+    {
+      "role": "windows_storage_adapter",
+      "path": "tools/phase36_quarantine_windows_storage_adapter_r1.psm1",
+      "sha256": "96C8AFAFBA6C74728E2596753EB2DD198F25D526FDB7A2619FF8763C8E83CD51",
+      "bounded_change": "use_UInt32_MaxValue_for_GetFileAttributesW_failure_sentinel_and_R5_output_paths"
+    },
+    {
+      "role": "machine_handler",
+      "path": "tools/phase36_quarantine_machine_handlers_r1.psm1",
+      "sha256": "65D4756315B31CA6F8C7195B28173CD2AEC3977E968441434F66D05DBF67F16B",
+      "bounded_change": "R5_output_paths_only"
+    },
+    {
+      "role": "transaction_runner",
+      "path": "tools/phase36_quarantine_transaction_runner_r2.ps1",
+      "sha256": "8C3BB5A4CB473954251DDD4B24375AFDEE698FBA4F295A228B1E5898FA6F7189",
+      "bounded_change": "bind_R5_successors_preserve_DateKind_String_and_R5_output_paths"
+    },
+    {
+      "role": "generated_validation_harness",
+      "path": "tools/phase36_quarantine_generated_validation_r5.ps1",
+      "sha256": "BABECAF519D5F4DB961E12646AD47C6A6D52A1AFD65B2DAD0E0CFF9FFC1BFBB3"
+    },
+    {
+      "role": "generated_validation_vectors",
+      "path": "contracts/phase-3/p3-6-quarantine-generated-powershell-validation-r5-vectors.json",
+      "sha256": "59966906B91D3AABFD0648F3B82F911EF1718E1EC9E2F9A6BB035A25346AAC09"
+    }
+  ],
+  "generated_validation": {
+    "mode": "Aggregate",
+    "required_cases": 84,
+    "accepted_cases": 84,
+    "runner_contract_cases": 20,
+    "pure_handler_cases": 64,
+    "parser_file_count": 4,
+    "parser_error_count": 0,
+    "runner_storage_invocation_count": 0,
+    "windows_adapter_import_or_execution_count": 0,
+    "machine_action_count": 0,
+    "network_action_count": 0,
+    "terminal_reason": "ok"
+  },
+  "read_only_candidate_preflight": {
+    "candidate_root": "F:\\HCAM-Quarantine",
+    "candidate_absent_before": true,
+    "exact_canonical_path": true,
+    "parent_reparse": false,
+    "candidate_reparse": false,
+    "candidate_absent_after": true,
+    "terminal_reason": "ok",
+    "root_or_probe_created": false
+  },
+  "focused_validation": {
+    "pytest_passed": 14,
+    "pytest_failed": 0,
+    "ruff": "passed"
+  },
+  "closed_gates": {
+    "storage_attempt_started": false,
+    "candidate_root_created_or_changed": false,
+    "scanner_or_network_action": false,
+    "model_inference_camera_media_private_or_Government_data_action": false,
+    "container_Kubernetes_profile_activation_or_deployment": false,
+    "commit_push_or_remote_Git": false
+  }
+}

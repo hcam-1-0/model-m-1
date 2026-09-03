@@ -15,6 +15,21 @@ from prometheus_client import (
 from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
+from hcam.analytics.models import (
+    AnalyticsAssignment,
+    AnalyticsAssignmentRevision,
+    AnalyticsGeneratedRun,
+    AnalyticsEvent,
+    AnalyticsGeometry,
+    AnalyticsGeometryEvaluatorRun,
+    AnalyticsGeometryRule,
+    AnalyticsObservation,
+    AnalyticsTrackerEpoch,
+    AnalyticsTrack,
+    AnalyticsTrackLifecycle,
+    AnalyticsTrackingRun,
+    AnalyticsTrackRuleState,
+)
 from hcam.audit.models import AuditEvent
 from hcam.camera_registry.models import utc_now
 from hcam.streams.models import (
@@ -134,6 +149,146 @@ class RequestMetrics:
             ("operation",),
             registry=self.registry,
         )
+        self.analytics_assignments = Gauge(
+            "hcam_analytics_assignments_total",
+            "Current analytics assignments retained by the control plane.",
+            registry=self.registry,
+        )
+        self.analytics_assignments_blocked = Gauge(
+            "hcam_analytics_assignments_blocked_total",
+            "Analytics assignments blocked by P3.0 owner gates.",
+            registry=self.registry,
+        )
+        self.analytics_assignment_states = Gauge(
+            "hcam_analytics_assignment_state_total",
+            "Current analytics assignments by bounded lifecycle state.",
+            ("state",),
+            registry=self.registry,
+        )
+        self.analytics_assignment_revisions = Gauge(
+            "hcam_analytics_assignment_revisions_retained_total",
+            "Immutable analytics assignment revisions retained.",
+            registry=self.registry,
+        )
+        self.analytics_outbox_pending = Gauge(
+            "hcam_analytics_outbox_unpublished_total",
+            "Unpublished analytics metadata events.",
+            registry=self.registry,
+        )
+        self.analytics_assignment_failures = Gauge(
+            "hcam_analytics_assignment_failures_recent_total",
+            "Rejected analytics assignment mutations during the last 15 minutes.",
+            ("operation",),
+            registry=self.registry,
+        )
+        self.analytics_generated_runs = Gauge(
+            "hcam_analytics_generated_runs_retained_total",
+            "Generated-only analytics runs retained by bounded outcome.",
+            ("status",),
+            registry=self.registry,
+        )
+        self.analytics_generated_duration = Gauge(
+            "hcam_analytics_generated_run_duration_milliseconds",
+            "Average generated-only analytics run duration by bounded outcome.",
+            ("status",),
+            registry=self.registry,
+        )
+        self.analytics_generated_failures = Gauge(
+            "hcam_analytics_generated_run_failures_retained_total",
+            "Generated-only analytics failures by bounded category.",
+            ("category",),
+            registry=self.registry,
+        )
+        self.analytics_observations = Gauge(
+            "hcam_analytics_observations_retained_total",
+            "Anonymous normalized analytics observations retained.",
+            registry=self.registry,
+        )
+        self.analytics_generated_leases = Gauge(
+            "hcam_analytics_generated_frame_leases_active",
+            "Generated frame leases currently held in memory.",
+            registry=self.registry,
+        )
+        self.analytics_tracking_runs = Gauge(
+            "hcam_analytics_tracking_runs_retained_total",
+            "Generated-only tracking runs retained by bounded outcome.",
+            ("status",),
+            registry=self.registry,
+        )
+        self.analytics_tracking_duration = Gauge(
+            "hcam_analytics_tracking_run_duration_milliseconds",
+            "Average generated-only tracking run duration by bounded outcome.",
+            ("status",),
+            registry=self.registry,
+        )
+        self.analytics_tracking_epochs_open = Gauge(
+            "hcam_analytics_tracking_epochs_open_total",
+            "Generated-only tracker epochs without a terminal reset.",
+            registry=self.registry,
+        )
+        self.analytics_tracking_tracks = Gauge(
+            "hcam_analytics_tracks_retained_total",
+            "Anonymous stream-local tracks retained by lifecycle state.",
+            ("state",),
+            registry=self.registry,
+        )
+        self.analytics_tracking_transitions = Gauge(
+            "hcam_analytics_track_transitions_retained_total",
+            "Anonymous lifecycle transitions retained by bounded state and reason.",
+            ("state", "reason"),
+            registry=self.registry,
+        )
+        self.analytics_tracking_lanes_active = Gauge(
+            "hcam_analytics_tracking_lanes_active",
+            "Active process-local generated tracking stream lanes.",
+            registry=self.registry,
+        )
+        self.analytics_tracking_queue = Gauge(
+            "hcam_analytics_tracking_queue_depth",
+            "Generated tracking batches waiting for a bounded stream lane.",
+            registry=self.registry,
+        )
+        self.analytics_geometries = Gauge(
+            "hcam_analytics_geometries_total",
+            "Immutable geometry versions by bounded kind and status.",
+            ("kind", "status"),
+            registry=self.registry,
+        )
+        self.analytics_geometry_rules = Gauge(
+            "hcam_analytics_geometry_rules_total",
+            "Immutable geometry rule versions by bounded status and event kind.",
+            ("status", "event_kind"),
+            registry=self.registry,
+        )
+        self.analytics_geometry_runs = Gauge(
+            "hcam_analytics_geometry_runs_total",
+            "Generated-only geometry evaluator runs by bounded outcome.",
+            ("status", "close_reason"),
+            registry=self.registry,
+        )
+        self.analytics_geometry_duration = Gauge(
+            "hcam_analytics_geometry_run_duration_milliseconds",
+            "Average generated geometry run duration by bounded outcome.",
+            ("status",),
+            registry=self.registry,
+        )
+        self.analytics_geometry_events = Gauge(
+            "hcam_analytics_geometry_events_total",
+            "Typed geometry events retained by bounded event kind.",
+            ("event_kind",),
+            registry=self.registry,
+        )
+        self.analytics_geometry_states = Gauge(
+            "hcam_analytics_geometry_track_rule_states_total",
+            "Current bounded anonymous track-rule states retained.",
+            registry=self.registry,
+        )
+        self.analytics_geometry_resource_high_water = Gauge(
+            "hcam_analytics_geometry_resource_high_water",
+            "Maximum retained generated-run resource observation by bounded resource.",
+            ("resource",),
+            registry=self.registry,
+        )
 
     def observe(
         self,
@@ -190,6 +345,317 @@ class RequestMetrics:
         self.stream_outbox_pending.set(int(pending or 0))
         self._refresh_capability_metrics(session, now)
         self._refresh_onvif_operation_metrics(session, now)
+        self._refresh_analytics_metrics(session, now)
+
+    def _refresh_analytics_metrics(self, session: Session, now) -> None:
+        assignment_count = session.scalar(
+            select(func.count()).select_from(AnalyticsAssignment)
+        )
+        blocked_count = session.scalar(
+            select(func.count())
+            .select_from(AnalyticsAssignment)
+            .where(
+                AnalyticsAssignment.desired_state == "paused",
+                AnalyticsAssignment.lifecycle_state == "blocked",
+                AnalyticsAssignment.reason_code == "owner_gates_pending",
+            )
+        )
+        revision_count = session.scalar(
+            select(func.count()).select_from(AnalyticsAssignmentRevision)
+        )
+        pending_outbox = session.scalar(
+            select(func.count())
+            .select_from(StreamEventOutbox)
+            .where(
+                StreamEventOutbox.event_type.like("hcam.analytics.%"),
+                StreamEventOutbox.published_at.is_(None),
+            )
+        )
+        self.analytics_assignments.set(int(assignment_count or 0))
+        self.analytics_assignments_blocked.set(int(blocked_count or 0))
+        assignment_states = dict(
+            session.execute(
+                select(AnalyticsAssignment.lifecycle_state, func.count()).group_by(
+                    AnalyticsAssignment.lifecycle_state
+                )
+            ).all()
+        )
+        for state in ("blocked", "paused", "running", "degraded", "failed"):
+            self.analytics_assignment_states.labels(state=state).set(
+                assignment_states.get(state, 0)
+            )
+        self.analytics_assignment_revisions.set(int(revision_count or 0))
+        self.analytics_outbox_pending.set(int(pending_outbox or 0))
+
+        recent_failures = dict(
+            session.execute(
+                select(AuditEvent.action, func.count())
+                .where(
+                    AuditEvent.action.in_(
+                        (
+                            "analytics.assignment.create",
+                            "analytics.assignment.update",
+                        )
+                    ),
+                    AuditEvent.outcome == "failure",
+                    AuditEvent.occurred_at >= now - timedelta(minutes=15),
+                )
+                .group_by(AuditEvent.action)
+            ).all()
+        )
+        for operation in ("create", "update"):
+            self.analytics_assignment_failures.labels(operation=operation).set(
+                recent_failures.get(f"analytics.assignment.{operation}", 0)
+            )
+
+        statuses = ("succeeded", "degraded", "failed")
+        run_counts = dict(
+            session.execute(
+                select(AnalyticsGeneratedRun.status, func.count()).group_by(
+                    AnalyticsGeneratedRun.status
+                )
+            ).all()
+        )
+        duration_averages = dict(
+            session.execute(
+                select(
+                    AnalyticsGeneratedRun.status,
+                    func.avg(AnalyticsGeneratedRun.duration_ms),
+                ).group_by(AnalyticsGeneratedRun.status)
+            ).all()
+        )
+        for status_value in statuses:
+            self.analytics_generated_runs.labels(status=status_value).set(
+                run_counts.get(status_value, 0)
+            )
+            self.analytics_generated_duration.labels(status=status_value).set(
+                float(duration_averages.get(status_value) or 0)
+            )
+        failure_counts = dict(
+            session.execute(
+                select(AnalyticsGeneratedRun.failure_code, func.count())
+                .where(AnalyticsGeneratedRun.failure_code.is_not(None))
+                .group_by(AnalyticsGeneratedRun.failure_code)
+            ).all()
+        )
+        failure_categories = {
+            "deadline": failure_counts.get("deadline_exceeded", 0),
+            "resource": failure_counts.get("resource_exhausted", 0),
+            "input": sum(
+                failure_counts.get(code, 0)
+                for code in ("input_expired", "invalid_input")
+            ),
+            "configuration": sum(
+                failure_counts.get(code, 0)
+                for code in (
+                    "artifact_rejected",
+                    "runtime_unconfigured",
+                    "unsupported_capability",
+                )
+            ),
+            "runtime": failure_counts.get("runtime_internal", 0),
+        }
+        failure_categories["other"] = max(
+            0,
+            sum(failure_counts.values()) - sum(failure_categories.values()),
+        )
+        for category, count in failure_categories.items():
+            self.analytics_generated_failures.labels(category=category).set(count)
+        observation_count = session.scalar(
+            select(func.count()).select_from(AnalyticsObservation)
+        )
+        self.analytics_observations.set(int(observation_count or 0))
+        tracking_counts = dict(
+            session.execute(
+                select(AnalyticsTrackingRun.status, func.count()).group_by(
+                    AnalyticsTrackingRun.status
+                )
+            ).all()
+        )
+        tracking_durations = dict(
+            session.execute(
+                select(
+                    AnalyticsTrackingRun.status,
+                    func.avg(AnalyticsTrackingRun.duration_ms),
+                ).group_by(AnalyticsTrackingRun.status)
+            ).all()
+        )
+        for status_value in ("succeeded", "failed"):
+            self.analytics_tracking_runs.labels(status=status_value).set(
+                tracking_counts.get(status_value, 0)
+            )
+            self.analytics_tracking_duration.labels(status=status_value).set(
+                float(tracking_durations.get(status_value) or 0)
+            )
+        open_epochs = session.scalar(
+            select(func.count())
+            .select_from(AnalyticsTrackerEpoch)
+            .where(AnalyticsTrackerEpoch.ended_at.is_(None))
+        )
+        self.analytics_tracking_epochs_open.set(int(open_epochs or 0))
+        track_counts = dict(
+            session.execute(
+                select(AnalyticsTrack.state, func.count()).group_by(
+                    AnalyticsTrack.state
+                )
+            ).all()
+        )
+        for state in ("started", "updated", "lost", "ended"):
+            self.analytics_tracking_tracks.labels(state=state).set(
+                track_counts.get(state, 0)
+            )
+        transition_counts = {
+            (state, reason): count
+            for state, reason, count in session.execute(
+                select(
+                    AnalyticsTrackLifecycle.state,
+                    AnalyticsTrackLifecycle.reason,
+                    func.count(),
+                ).group_by(
+                    AnalyticsTrackLifecycle.state,
+                    AnalyticsTrackLifecycle.reason,
+                )
+            ).all()
+        }
+        reasons = (
+            "confirmed",
+            "matched",
+            "recovered",
+            "temporarily_unmatched",
+            "lost_timeout",
+            "explicit_reset",
+            "sequence_gap",
+            "sequence_regression",
+            "timestamp_regression",
+            "configuration_change",
+            "source_change",
+            "worker_restart",
+            "resource_exhausted",
+        )
+        for state in ("started", "updated", "lost", "ended"):
+            for reason in reasons:
+                self.analytics_tracking_transitions.labels(
+                    state=state,
+                    reason=reason,
+                ).set(transition_counts.get((state, reason), 0))
+        self._refresh_geometry_event_metrics(session)
+
+    def _refresh_geometry_event_metrics(self, session: Session) -> None:
+        geometry_counts = {
+            (kind, status): count
+            for kind, status, count in session.execute(
+                select(
+                    AnalyticsGeometry.kind,
+                    AnalyticsGeometry.status,
+                    func.count(),
+                ).group_by(AnalyticsGeometry.kind, AnalyticsGeometry.status)
+            ).all()
+        }
+        for kind in ("line", "zone"):
+            for status_value in ("draft", "approved", "retired"):
+                self.analytics_geometries.labels(
+                    kind=kind,
+                    status=status_value,
+                ).set(geometry_counts.get((kind, status_value), 0))
+        event_kinds = (
+            "hcam.analytics.line.crossing.v1",
+            "hcam.analytics.zone.entry.v1",
+            "hcam.analytics.zone.exit.v1",
+            "hcam.analytics.zone.dwell.threshold_met.v1",
+            "hcam.analytics.zone.occupancy.threshold_entered.v1",
+            "hcam.analytics.zone.occupancy.threshold_exited.v1",
+        )
+        rule_counts = {
+            (status_value, event_kind): count
+            for status_value, event_kind, count in session.execute(
+                select(
+                    AnalyticsGeometryRule.status,
+                    AnalyticsGeometryRule.event_kind,
+                    func.count(),
+                ).group_by(
+                    AnalyticsGeometryRule.status,
+                    AnalyticsGeometryRule.event_kind,
+                )
+            ).all()
+        }
+        for status_value in ("draft", "approved", "retired"):
+            for event_kind in event_kinds:
+                self.analytics_geometry_rules.labels(
+                    status=status_value,
+                    event_kind=event_kind,
+                ).set(rule_counts.get((status_value, event_kind), 0))
+        run_counts = {
+            (status_value, close_reason or "none"): count
+            for status_value, close_reason, count in session.execute(
+                select(
+                    AnalyticsGeometryEvaluatorRun.status,
+                    AnalyticsGeometryEvaluatorRun.close_reason,
+                    func.count(),
+                ).group_by(
+                    AnalyticsGeometryEvaluatorRun.status,
+                    AnalyticsGeometryEvaluatorRun.close_reason,
+                )
+            ).all()
+        }
+        close_reasons = (
+            "none",
+            "completed",
+            "sequence_conflict",
+            "reorder_buffer_overflow",
+            "candidate_limit",
+            "state_limit",
+            "scope_mismatch",
+            "timezone_unavailable",
+            "persistence_conflict",
+        )
+        for status_value in ("succeeded", "failed"):
+            for close_reason in close_reasons:
+                self.analytics_geometry_runs.labels(
+                    status=status_value,
+                    close_reason=close_reason,
+                ).set(run_counts.get((status_value, close_reason), 0))
+        durations = dict(
+            session.execute(
+                select(
+                    AnalyticsGeometryEvaluatorRun.status,
+                    func.avg(AnalyticsGeometryEvaluatorRun.duration_ms),
+                ).group_by(AnalyticsGeometryEvaluatorRun.status)
+            ).all()
+        )
+        for status_value in ("succeeded", "failed"):
+            self.analytics_geometry_duration.labels(status=status_value).set(
+                float(durations.get(status_value) or 0)
+            )
+        event_counts = dict(
+            session.execute(
+                select(AnalyticsEvent.event_kind, func.count()).group_by(
+                    AnalyticsEvent.event_kind
+                )
+            ).all()
+        )
+        for event_kind in event_kinds:
+            self.analytics_geometry_events.labels(event_kind=event_kind).set(
+                event_counts.get(event_kind, 0)
+            )
+        state_count = session.scalar(
+            select(func.count()).select_from(AnalyticsTrackRuleState)
+        )
+        self.analytics_geometry_states.set(int(state_count or 0))
+        resources = {
+            "buffer": session.scalar(
+                select(func.max(AnalyticsGeometryEvaluatorRun.maximum_buffer_depth))
+            ),
+            "candidates": session.scalar(
+                select(func.max(AnalyticsGeometryEvaluatorRun.maximum_candidate_count))
+            ),
+            "states": session.scalar(
+                select(func.max(AnalyticsGeometryEvaluatorRun.maximum_state_count))
+            ),
+        }
+        for resource, value in resources.items():
+            self.analytics_geometry_resource_high_water.labels(resource=resource).set(
+                int(value or 0)
+            )
 
     def _refresh_onvif_operation_metrics(self, session: Session, now) -> None:
         operation_types = (
@@ -219,9 +685,9 @@ class RequestMetrics:
         }
         for operation in operation_types:
             for outcome in outcomes:
-                self.onvif_operations.labels(
-                    operation=operation, outcome=outcome
-                ).set(counts.get((operation, outcome), 0))
+                self.onvif_operations.labels(operation=operation, outcome=outcome).set(
+                    counts.get((operation, outcome), 0)
+                )
         recent_failures = dict(
             session.execute(
                 select(OnvifOperationRun.operation_type, func.count())
@@ -319,7 +785,9 @@ class RequestMetrics:
         latest = (
             select(
                 StreamCapabilitySnapshot.stream_id,
-                func.max(StreamCapabilitySnapshot.last_observed_at).label("observed_at"),
+                func.max(StreamCapabilitySnapshot.last_observed_at).label(
+                    "observed_at"
+                ),
             )
             .group_by(StreamCapabilitySnapshot.stream_id)
             .subquery()

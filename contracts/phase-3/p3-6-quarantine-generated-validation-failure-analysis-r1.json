@@ -1,0 +1,93 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_failure_analysis_r1.v1",
+  "analysis_id": "P36-QUARANTINE-GENERATED-VALIDATION-FAILURE-ANALYSIS-R1",
+  "status": "consumed_U3P_failure_analyzed_source_only_no_implementation_or_retry_authority",
+  "prepared_on": "2026-09-01",
+  "attempt_evidence": {
+    "decision_id": "D-P3.6-U3P-GENERATED-VALIDATION-RUNTIME-BINDING-R2-AUTH",
+    "authorization_record_sha256": "4C0E3A4F68BA036E9F55E57F7F413FDE4D13DE0D89BC07F030225093A0FA6C10",
+    "result_record_sha256": "44450DF4D5A199DA34E5343AE043E138B8E046EF4E6FE6EAD6836AC96F7085F4",
+    "evidence_record_sha256": "634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE",
+    "evidence_commit": "e233a2f",
+    "attempts_consumed": 1,
+    "retry_authorized": false
+  },
+  "confirmed_facts": {
+    "exact_runtime_path_trust_and_version_passed": true,
+    "all_five_source_hashes_matched_before_and_after": true,
+    "outer_harness_invocation_count": 1,
+    "process_exit_code": 1,
+    "process_timed_out": false,
+    "stdout_bytes": 0,
+    "stderr_bytes": 302,
+    "raw_stderr_inspected_or_retained": false,
+    "accepted_allowlisted_harness_JSON_received": false,
+    "sanitized_reason_code": "result_contract_invalid",
+    "prohibited_action_count": 0,
+    "successful_U3P_evidence_available": false,
+    "U3K_authorized": false
+  },
+  "root_cause_hypotheses": [
+    {
+      "hypothesis_id": "H1-UTILITY-MODULE-BOOTSTRAP-GAP",
+      "confidence": "high",
+      "classification": "source_and_primary_documentation_supported_runtime_unconfirmed",
+      "evidence": [
+        "PSModuleAutoLoadingPreference_is_set_to_None_before_the_harness_body_uses_Utility_commands",
+        "the_harness_has_fourteen_references_to_seven_Microsoft_PowerShell_Utility_cmdlets",
+        "the_first_manifest_deserialization_uses_ConvertFrom_Json_without_an_explicit_Utility_import",
+        "the_failure_trap_uses_ConvertTo_Json_from_the_same_module",
+        "the_attempt_emitted_zero_stdout_so_the_sanitized_trap_contract_did_not_complete"
+      ],
+      "selected_remediation": "bounded_exact_path_Utility_bootstrap_and_module_independent_fallback_failure_JSON"
+    },
+    {
+      "hypothesis_id": "H2-EXECUTION-POLICY-OR-PREBODY-HOST-REJECTION",
+      "confidence": "low_unresolved",
+      "classification": "not_excluded_because_raw_stderr_was_intentionally_not_retained",
+      "evidence": [
+        "a_failure_before_script_body_execution_can_also_produce_zero_stdout",
+        "the_current_evidence_does_not_identify_the_stderr_category"
+      ],
+      "selected_remediation": "future_controller_may_accept_only_a_bounded_host_stage_code_without_raw_error_text"
+    }
+  ],
+  "static_test_gap": {
+    "prior_tests_checked_Get_FileHash_removal": true,
+    "prior_tests_checked_sanitized_failure_tokens": true,
+    "prior_tests_asserted_single_handler_import_surface": true,
+    "prior_tests_modeled_command_availability_with_autoload_None": false,
+    "prior_tests_verified_trap_independence_from_optional_modules": false,
+    "required_new_tests": [
+      "all_non_core_cmdlets_are_covered_by_the_exact_bootstrap_allowlist",
+      "bootstrap_failure_writer_has_no_cmdlet_or_module_dependency",
+      "autoload_None_is_set_only_after_successful_exact_path_bootstrap",
+      "broad_module_name_and_PSModulePath_resolution_are_absent",
+      "raw_failure_material_remains_absent"
+    ]
+  },
+  "selected_R2_direction": {
+    "preserve_NoProfile_and_NonInteractive": true,
+    "preserve_autoload_None_after_bootstrap": true,
+    "use_exact_PSHome_module_manifest_path": true,
+    "use_module_name_or_environment_search": false,
+    "import_scope": "Local",
+    "NoClobber": true,
+    "allowlisted_Utility_cmdlet_count": 7,
+    "module_independent_bootstrap_failure_writer": true,
+    "future_runtime_module_closure_binding_required": true,
+    "raw_error_capture": false,
+    "runner_handler_adapter_or_vector_change": false,
+    "runtime_retry_in_this_package": false
+  },
+  "gate_effect": {
+    "analysis_complete": true,
+    "D_P3_6_U3Q_VALIDATION_HARNESS_R2_BOOTSTRAP_REMEDIATION_IMPLEMENTATION_AUTH_requestable": false,
+    "source_or_test_modification_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "runtime_retry_authorized": false,
+    "machine_storage_or_deployment_authorized": false,
+    "U3K_authorized": false,
+    "remote_git_authorized": false
+  }
+}

@@ -1,0 +1,4 @@
+# Isolated P3.2 research environment only; not an H-CAM runtime dependency set.
+numpy==2.5.2
+onnx==1.22.0
+onnxruntime==1.29.0

@@ -1,0 +1,146 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3w_h1_r1_diagnostic_runtime_binding_r1_failure_analysis_r0.v1",
+  "analysis_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-FAILURE-ANALYSIS-R0",
+  "status": "sanitized_U3W_failure_analyzed_owner_decisions_pending_no_implementation_runtime_retry_or_U3K_authority",
+  "prepared_on": "2026-09-02",
+  "analysis_scope": "sealed_U3W_attempt_records_accepted_source_text_contract_and_existing_generated_static_tests_only",
+  "attempt_evidence": {
+    "decision_id": "D-P3.6-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-AUTH",
+    "authorization_package_sha256": "DDCB7A9C4E6E93BF5252FAFF840E3841C1B9080FE5657AA0037532EE2037B760",
+    "authorization_record_sha256": "6471C2CBB298D2090B789037FDCBFB20B843A565D470E0D8C2D0609DE71A0E7D",
+    "result_record_sha256": "1B2DA0107938D21AF003DE40CC9B1405D81A5B9C00843B2D7FBB1867F17926EE",
+    "evidence_record_sha256": "84DC68C3800983AFA65EBB19C99A36D02C3D97CD28F6D937C43CF5292AF12A45",
+    "attempts_consumed": 1,
+    "retry_authorized": false,
+    "owner_failure_evidence_acceptance_recorded": false
+  },
+  "confirmed_facts": {
+    "authorization_record_existed_before_observation": true,
+    "sealed_package_core_hashes_verified_before_observation": "11_of_11",
+    "attempt_started_at": "2026-09-01T21:27:09.509Z",
+    "attempt_completed_at": "2026-09-01T21:27:11.937Z",
+    "duration_milliseconds": 2428,
+    "runtime_path_parent_metadata_hash_and_cache_only_trust_passed": true,
+    "runtime_identity_stable_after_process": true,
+    "accepted_source_hashes_matched_before_and_after_process": "5_of_5",
+    "diagnostic_process_invocation_count": 1,
+    "diagnostic_process_exit_code": 71,
+    "diagnostic_process_timed_out": false,
+    "stdout_bytes": 485,
+    "stderr_bytes": 0,
+    "sanitized_reason_code": "controller_stage_projection_invalid",
+    "controller_reason_family": "policy_valid",
+    "diagnostic_checked_group_count": 8,
+    "raw_controller_projection_value_type_exception_stdout_stderr_or_environment_material_retained": false,
+    "automatic_retry_count": 0,
+    "prohibited_action_count": 0,
+    "successful_U3W_evidence_available": false,
+    "U3K_authorized": false
+  },
+  "static_source_findings": [
+    {
+      "finding_id": "U3W-STATIC-CONTROLLER-SUCCESS-NULL-INPUT",
+      "finding": "the_accepted_controller_policy_valid_path_calls_New_HcamTerminalProjection_with_FailedAction_null",
+      "source_sha256": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB"
+    },
+    {
+      "finding_id": "U3W-STATIC-CONTROLLER-STRING-PARAMETER",
+      "finding": "the_accepted_New_HcamTerminalProjection_function_declares_AllowNull_string_FailedAction_then_projects_that_parameter_directly",
+      "source_sha256": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB"
+    },
+    {
+      "finding_id": "U3W-STATIC-DIAGNOSTIC-EXACT-NULL",
+      "finding": "the_accepted_diagnostic_requires_completed_actions_18_and_exact_null_failed_action_and_failed_stage_for_policy_valid",
+      "source_sha256": "CD868E3F06CA12AC424B2C4C221F6425FCD0DA289C527DED462121333513B1C9"
+    }
+  ],
+  "interpretation_boundaries": {
+    "exact_controller_stage_projection_values_observed": false,
+    "exact_failed_stage_predicate_observed": false,
+    "reason_code_proves_the_failure_is_within_stage_projection_validation": true,
+    "policy_valid_family_proves_top_level_identity_terminal_and_reason_family_groups_passed": true,
+    "PowerShell_null_to_empty_string_coercion_confirmed_by_retained_runtime_evidence": false,
+    "why": "zero_raw_retention_preserved_only_the_allowlisted_stage_group_reason_and_family_not_candidate_values_or_types",
+    "blind_retry_safe": false,
+    "current_authorization_reusable": false
+  },
+  "confirmed_design_gaps": [
+    {
+      "gap_id": "GAP-U3W-NULL-SEMANTICS-NOT-CANONICALIZED",
+      "finding": "the_controller_contract_requires_null_on_success_but_the_PowerShell_constructor_accepts_the_value_through_a_string_typed_parameter",
+      "effect": "language_level_parameter_coercion_can_change_the_projected_wire_value_without changing_the_generated_reference_projection"
+    },
+    {
+      "gap_id": "GAP-U3W-STATIC-SUITE-DID-NOT-EXECUTE-POWERSHELL-NULL-PATH",
+      "finding": "the_generated_static_suite validates source projections_and_the_machine_disabled_Python_oracle_but_does_not_execute_the_PowerShell_success_constructor",
+      "effect": "a_PowerShell_specific_null_or_type_semantics_mismatch_can_remain_until_a_separately_authorized_generated_only_contract_execution"
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "H1-FAILED-ACTION-NULL-COERCED-TO-EMPTY-STRING",
+      "confidence": "high_inference_not_runtime_confirmed",
+      "basis": [
+        "the_controller_reason_family_was_policy_valid",
+        "the_diagnostic_stopped_at_stage_projection_validation",
+        "the_success_path_passes_null_through_a_string_typed_FailedAction_parameter",
+        "the_diagnostic_requires_exact_null_for_failed_action"
+      ],
+      "required_response": "create_an_additive_controller_successor_with_explicit_null_preservation_and_do_not_weaken_the_wire_contract"
+    },
+    {
+      "hypothesis_id": "H2-COMPLETED-ACTION-OR-FAILED-STAGE-MISMATCH",
+      "confidence": "low_unresolved",
+      "basis": [
+        "stage_projection_validation_also_checks_completed_actions_and_failed_stage",
+        "zero_raw_retention_does_not_identify_which_stage_predicate_failed"
+      ],
+      "required_response": "cover_all_three_stage_fields_with_generated_vectors_and_a_later_bounded_PowerShell_contract_validation"
+    },
+    {
+      "hypothesis_id": "H3-DIAGNOSTIC-CONTRACT-TOO-STRICT",
+      "confidence": "rejected_as_primary_remediation_direction",
+      "basis": [
+        "exact_null_is_the_documented_canonical_wire_semantics_for_no_failure",
+        "accepting_empty_string_would_create_two_success_representations_and_weaken_cross_language_equivalence"
+      ],
+      "required_response": "retain_exact_null_semantics"
+    },
+    {
+      "hypothesis_id": "H4-RUNTIME-TRUST-OR-SOURCE-IDENTITY-FAILURE",
+      "confidence": "rejected_by_current_evidence",
+      "basis": [
+        "runtime_trust_verified_and_closed",
+        "runtime_hash_was_stable",
+        "all_five_source_hashes_matched_before_and_after_the_process"
+      ],
+      "required_response": "no_runtime_or_source_binding_remediation_is_justified"
+    }
+  ],
+  "recommended_remediation_direction": {
+    "preserve_accepted_controller_diagnostic_and_attempt_records_byte_exact": true,
+    "create_additive_controller_R1_successor_later": true,
+    "canonical_success_stage_projection": {
+      "completed_actions": 18,
+      "failed_action": null,
+      "failed_stage": null
+    },
+    "canonical_failure_stage_projection": "completed_action_index_plus_nonempty_allowlisted_failed_action_and_reason",
+    "diagnostic_contract_weakened_to_accept_empty_string": false,
+    "generated_static_cross_language_vectors_required": true,
+    "separate_generated_only_PowerShell_contract_validation_required_after_source_acceptance": true,
+    "separate_digest_bound_system_diagnostic_required_after_contract_validation_acceptance": true,
+    "blind_retry_or_U3K_progression": false
+  },
+  "gate_effect": {
+    "analysis_prepared": true,
+    "failure_evidence_owner_acceptance_inferred": false,
+    "remediation_decisions_pending": true,
+    "controller_harness_contract_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  }
+}

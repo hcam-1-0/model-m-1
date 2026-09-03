@@ -11,6 +11,7 @@ from sqlalchemy import inspect, select
 from sqlalchemy.exc import IntegrityError
 
 from hcam.camera_registry.models import Camera
+from hcam.analytics.models import AnalyticsAssignment, AnalyticsAssignmentRevision
 from hcam.database import Database
 from hcam.streams.models import (
     OnvifControlLease,
@@ -85,6 +86,8 @@ def test_stream_migration_backfills_and_round_trips(
             "onvif_max_move_seconds",
         }.issubset(stream_columns)
         assert {
+            AnalyticsAssignment.__tablename__,
+            AnalyticsAssignmentRevision.__tablename__,
             OnvifControlLease.__tablename__,
             OnvifOperationRun.__tablename__,
             StreamCapabilitySnapshot.__tablename__,

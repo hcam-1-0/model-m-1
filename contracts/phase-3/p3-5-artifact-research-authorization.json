@@ -1,0 +1,109 @@
+{
+  "allowed_artifacts": [
+    {
+      "artifact_id": "OCR-L0-PPOCRV6-SMALL-INFER-PROPOSED",
+      "expected_bytes": 21442560,
+      "expected_content_types": [
+        "application/octet-stream"
+      ],
+      "filename": "PP-OCRv6_small_rec_infer.tar",
+      "maximum_bytes": 33554432,
+      "source_url": "https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0.0/PP-OCRv6_small_rec_infer.tar"
+    },
+    {
+      "artifact_id": "OCR-L1-PPOCRV6-MEDIUM-INFER-PROPOSED",
+      "expected_bytes": 76851200,
+      "expected_content_types": [
+        "application/octet-stream"
+      ],
+      "filename": "PP-OCRv6_medium_rec_infer.tar",
+      "maximum_bytes": 100663296,
+      "source_url": "https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0.0/PP-OCRv6_medium_rec_infer.tar"
+    },
+    {
+      "artifact_id": "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED",
+      "expected_bytes": 8069120,
+      "expected_content_types": [
+        "application/octet-stream"
+      ],
+      "filename": "devanagari_PP-OCRv5_mobile_rec_infer.tar",
+      "maximum_bytes": 16777216,
+      "source_url": "https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0.0/devanagari_PP-OCRv5_mobile_rec_infer.tar"
+    },
+    {
+      "artifact_id": "OCR-G0-TESSDATA-FAST-GUJ-PROPOSED",
+      "expected_bytes": 1418394,
+      "expected_content_types": [
+        "application/octet-stream"
+      ],
+      "filename": "guj-fast.traineddata",
+      "maximum_bytes": 4194304,
+      "source_url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/guj.traineddata"
+    },
+    {
+      "artifact_id": "OCR-G1-TESSDATA-BEST-GUJ-PROPOSED",
+      "expected_bytes": 8515761,
+      "expected_content_types": [
+        "application/octet-stream"
+      ],
+      "filename": "guj-best.traineddata",
+      "maximum_bytes": 16777216,
+      "source_url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/e12c65a915945e4c28e237a9b52bc4a8f39a0cec/guj.traineddata"
+    },
+    {
+      "artifact_id": "FONT-G0-NOTO-SANS-GUJARATI-VARIABLE-PROPOSED",
+      "expected_bytes": 672904,
+      "expected_content_types": [
+        "application/octet-stream",
+        "font/ttf"
+      ],
+      "filename": "NotoSansGujarati-wdth-wght.ttf",
+      "maximum_bytes": 2097152,
+      "source_url": "https://raw.githubusercontent.com/google/fonts/6a003b5eb672dc8bf5bff5937cf5863f8b175445/ofl/notosansgujarati/NotoSansGujarati%5Bwdth%2Cwght%5D.ttf"
+    },
+    {
+      "artifact_id": "FONT-D0-NOTO-SANS-DEVANAGARI-VARIABLE-PROPOSED",
+      "expected_bytes": 647144,
+      "expected_content_types": [
+        "application/octet-stream",
+        "font/ttf"
+      ],
+      "filename": "NotoSansDevanagari-wdth-wght.ttf",
+      "maximum_bytes": 2097152,
+      "source_url": "https://raw.githubusercontent.com/google/fonts/6a003b5eb672dc8bf5bff5937cf5863f8b175445/ofl/notosansdevanagari/NotoSansDevanagari%5Bwdth%2Cwght%5D.ttf"
+    }
+  ],
+  "allowed_network_actions": [
+    "https_get_exact_allowlisted_urls_only"
+  ],
+  "authorization_id": "D-P3.5-ARTIFACT-RESEARCH",
+  "authorized_at": "2026-08-26T12:20:20Z",
+  "authorized_by": "mayank-admin",
+  "contract_format": "hcam.phase3.p3_5.artifact-research-authorization.v1",
+  "implementation_authorized": false,
+  "limits": {
+    "cumulative_artifact_bytes": 268435456,
+    "environment_proxies": false,
+    "maximum_redirects": 0,
+    "per_artifact_timeout_seconds": 60,
+    "runtime_loading_from_quarantine": false
+  },
+  "owner_statement_received": "D-P3.5-ARTIFACT-RESEARCH",
+  "proposal_id": "P3.5-EXACT-ARTIFACT-REVIEW-PROPOSAL-R0",
+  "proposal_sha256": "8A027E0C8310C900C7DCA7BDFF0144B9E4E003BCAC1A31853C501226165EAD69",
+  "prohibited_actions": [
+    "unlisted_url_or_artifact_access",
+    "redirect_following",
+    "environment_proxy_use",
+    "archive_extraction_before_safety_review",
+    "runtime_loading_or_model_execution",
+    "dependency_or_lockfile_change",
+    "synthetic_generation_training_finetuning_or_inference",
+    "application_migration_api_worker_or_storage_change",
+    "camera_media_real_plate_private_or_government_data_access",
+    "identity_watchlist_alert_enforcement_or_deployment",
+    "remote_git_push_pull_request_or_merge"
+  ],
+  "quarantine_root_default": "F:\\h cam\\research-cache\\phase-3\\p3-5",
+  "status": "owner_approved_restricted"
+}

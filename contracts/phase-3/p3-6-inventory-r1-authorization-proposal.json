@@ -1,0 +1,138 @@
+{
+  "contract_format": "hcam.phase3.p3_6.inventory_r1_authorization_proposal.v1",
+  "proposal_id": "P3.6-INVENTORY-R1-AUTHORIZATION-PROPOSAL-R0",
+  "decision_id": "D-P3.6-INVENTORY-R1-AUTH",
+  "status": "owner_review_pending_non_effective",
+  "prepared_on": "2026-08-30",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "accepted_policy_source": {
+    "path": "contracts/phase-3/p3-6-inventory-admission-owner-decisions.json",
+    "package_digest_sha256": "CB4AC7FF7682D21B6938C50A8533B3C63D6919B4555D188C994ADA209A7B161A",
+    "selection": "A/A/A/A"
+  },
+  "exact_inputs": [
+    {
+      "path": "contracts/phase-3/p3-6-inventory-r1-research-sources.json",
+      "sha256": "16C3A0D92C0BBE0877ED5AC154089E9003AF367A24F31BFF7068BC154881E154",
+      "role": "official_and_exact_local_source_ledger"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-inventory-r1-collector-spec.json",
+      "sha256": "31FA80AA79B90AEA32CED930FA535BA03C96A39469F2E8AE2DD00D45060BDDC6",
+      "role": "exact_action_field_projection_timeout_failure_redaction_and_output_specification"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-inventory-r1-trust-policy.json",
+      "sha256": "E76D0C56476A98AADDBC7880AD75858B5B61D45CE95802E3FB39557E226C6106",
+      "role": "owned_local_generated_only_trust_context_proposed_for_owner_acceptance"
+    },
+    {
+      "repository": "hcam-2-0/hcam-protos",
+      "revision": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+      "path": "schemas/platform/v1alpha1/node-capability-inventory.schema.json",
+      "sha256": "C9947BE12888C0A05B29DA0266E2359B107024AF07E536AE10BAC55457C5C7D3",
+      "role": "future_R1_schema"
+    }
+  ],
+  "requested_owner_effect": {
+    "accept_exact_trust_policy_snapshot": true,
+    "authorize_one_sanitized_local_read_only_collection_attempt": true,
+    "target_logical_node_id": "LAB-LAPTOP-01",
+    "authorization_use_window_seconds": 86400,
+    "maximum_attempts": 1,
+    "collector_spec_changes_require_new_package_and_authorization": true,
+    "failed_attempt_requires_new_authorization": true
+  },
+  "exact_future_actions_if_accepted": [
+    "verify_the_package_manifest_digest_and_every_core_file_hash_against_the_owner_statement",
+    "record_owner_acceptance_before_any_collection_action",
+    "run_only_R1_A01_through_R1_A09_from_the_exact_collector_spec",
+    "use_only_local_CIM_without_ComputerName_or_CimSession",
+    "start_only_version_or_metadata_processes_for_default_Python_ONNX_Runtime_distribution_metadata_and_FFmpeg",
+    "normalize_only_allowlisted_values_in_memory",
+    "validate_against_the_exact_pinned_shared_schema",
+    "write_only_the_exact_sanitized_R1_and_collection_evidence_paths",
+    "discard_all_raw_outputs_and_raw_errors_after_projection"
+  ],
+  "exact_future_outputs_if_accepted": [
+    {
+      "path": "contracts/phase-3/p3-6-inventory-r1-authorization.json",
+      "role": "owner_acceptance_record_written_before_collection",
+      "contains_observed_machine_facts": false
+    },
+    {
+      "path": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json",
+      "role": "canonical_shared_v1alpha1_inventory_written_only_after_success",
+      "contains_observed_machine_facts": true
+    },
+    {
+      "path": "contracts/phase-3/p3-6-inventory-r1-collection-evidence.json",
+      "role": "sanitized_bounded_collection_evidence_written_for_the_single_attempt",
+      "contains_observed_machine_facts": false
+    }
+  ],
+  "authorization_expiry_and_freshness": {
+    "unused_authorization_expires": "exactly_86400_seconds_after_owner_acceptance_timestamp",
+    "R1_observed_at": "single_UTC_timestamp_at_successful_collection_completion",
+    "R1_valid_until": "exactly_86400_seconds_after_observed_at",
+    "early_invalidation_triggers": [
+      "authorized_hardware_change",
+      "operating_system_change",
+      "driver_change",
+      "runtime_change",
+      "collector_change",
+      "trust_policy_change"
+    ],
+    "automatic_retimestamp_or_extension": false,
+    "expired_or_invalidated_R1_effect": "block_new_resolution_and_placement_without_automatically_changing_independent_leases_or_active_work"
+  },
+  "sanitization_and_minimization": {
+    "historical_R0_modified_or_replaced": false,
+    "storage_or_drive_facts_collected": false,
+    "display_or_accelerator_facts_collected": false,
+    "container_or_scheduler_facts_queried": false,
+    "personal_or_stable_identifiers_collected": false,
+    "raw_output_or_exception_persisted": false,
+    "explicit_unknowns_preserved": true,
+    "redaction_policy": "hcam-sanitized-node-inventory/v1"
+  },
+  "fail_closed_conditions": [
+    "owner_statement_missing_or_package_digest_mismatch",
+    "authorization_use_window_expired",
+    "any_core_input_hash_mismatch",
+    "logical_target_not_LAB_LAPTOP_01",
+    "required_local_CIM_source_unavailable",
+    "required_OS_CPU_or_memory_value_missing_invalid_or_conflicting",
+    "schema_revision_or_digest_mismatch",
+    "shared_schema_validation_failure",
+    "trust_policy_digest_mismatch",
+    "output_target_is_symlink_or_outside_the_exact_repository_paths",
+    "any_network_remote_container_scheduler_GPU_media_model_or_unlisted_action_required"
+  ],
+  "continuing_non_authorization": [
+    "reusable_collector_or_product_implementation",
+    "profile_resolution_activation_or_placement",
+    "model_artifact_dependency_driver_or_container_download_install_scan_load_export_conversion_or_compilation",
+    "model_or_AI_runtime_import_inference_execution_or_benchmark",
+    "hardware_performance_stress_capacity_or_thermal_test",
+    "accelerator_display_driver_nvidia_smi_or_compute_provider_probe",
+    "Docker_containerd_Kubernetes_scheduler_or_daemon_action",
+    "camera_stream_media_dataset_private_or_Government_data_access",
+    "network_or_external_environment_access",
+    "deployment",
+    "remote_git_push_pull_request_merge_or_release",
+    "P3_6_gate_passage_or_claim"
+  ],
+  "owner_acceptance_statement_template": "D-P3.6-INVENTORY-R1-AUTH: I, mayank-admin, accept the owned-local generated-only trust policy and authorize one sanitized local read-only R1 collection attempt on LAB-LAPTOP-01 against package digest <PACKAGE_DIGEST_SHA256>, within 24 hours and limited to the exact actions, fields, timeouts, redaction, schema, and output paths in that package. A failed attempt requires new authorization. This does not authorize reusable collector or product implementation, profile activation or placement, models or AI runtime execution, hardware testing, accelerators, containers or Kubernetes, cameras, media, data, network access, deployment, or remote Git.",
+  "current_effect": {
+    "effective": false,
+    "owner_acceptance_record_exists": false,
+    "trust_policy_accepted": false,
+    "inventory_collection_authorized": false,
+    "collector_implementation_authorized": false,
+    "profile_activation_authorized": false,
+    "runtime_execution_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  }
+}

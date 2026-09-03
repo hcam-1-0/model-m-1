@@ -1,0 +1,38 @@
+{
+  "authorization_id": "D-P3.4-START",
+  "authorized_at": "2026-08-25T16:53:07Z",
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-08-25",
+  "authorized_work": [
+    "exact_dependency_acquisition_and_supply_chain_evidence",
+    "local_default_off_production_forbidden_geometry_rule_and_event_implementation",
+    "additive_postgresql_postgis_migration_and_sqlite_compatibility",
+    "generated_only_contract_fixture_and_c10_execution",
+    "bounded_api_rbac_audit_metrics_outbox_and_retention_implementation",
+    "local_tests_evidence_documentation_and_checkpoint_commits"
+  ],
+  "baseline_planning_digest": "E3D0D0DEB5AE20D68AF6A5CE72229BDC63AE55B4200C7E2A011CFA834AFBEBF0",
+  "baseline_repository_head": "f9a798f5103da1249ecc5b3e86eb4de7166d8fb9",
+  "branch": "codex/phase3-geometry-events-planning",
+  "contract_format": "hcam.phase3.p3_4.start_authorization.v1",
+  "decision_id": "D-P3.4-START",
+  "final_acceptance_granted": false,
+  "implementation_authorized": true,
+  "owner_statement_received": "I authorize D-P3.4-START",
+  "prohibited_work": [
+    "physical_camera_onvif_media_or_sentinel_stream_access",
+    "real_public_private_government_police_or_scraped_media",
+    "external_dataset_download_training_finetuning_or_accuracy_claims",
+    "face_biometric_identity_reidentification_or_cross_camera_linkage",
+    "watchlists_vehicle_owner_lookup_or_government_database_matching",
+    "operational_alerting_autonomous_action_or_enforcement",
+    "pilot_production_statewide_deployment_or_performance_claims",
+    "remote_git_push_pull_request_or_merge",
+    "p3_5_or_later_work"
+  ],
+  "record_id": "D-P3.4-START",
+  "scope": "phase3.p3_4.geometry_and_event_primitives.generated_only_implementation",
+  "selected_technical_baseline_record": "p3-4-owner-decisions.json",
+  "statement": "mayank-admin authorizes the accepted D-P3.4-001 through D-P3.4-004 technical baseline for bounded local generated-only implementation and evidence work under every documented exclusion.",
+  "status": "authorized"
+}

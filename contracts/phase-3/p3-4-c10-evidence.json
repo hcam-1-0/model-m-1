@@ -1,0 +1,1253 @@
+{
+  "content_digest": "sha256:88423b1494b9ae9547df51230039c35ab5f5b13bfdbfe0913d7a73317c04cf68",
+  "dataset_id": "DATA-GEO-EVT-GEN-C10",
+  "dependencies": {
+    "cel_expr_python": "0.1.3",
+    "geos": "3.13.1",
+    "shapely": "2.1.2"
+  },
+  "execution_scope": "generated_only",
+  "generator_id": "hcam.p3-4.c10-lifecycle",
+  "generator_version": "sha256:dc0c1dd97caa7e3e2b1dfcd23a7cabe3d3aa21491b548d0f6e0419c3dcc4a6ed",
+  "limitations": [
+    "no_real_camera_accuracy_claim",
+    "no_operational_utility_claim",
+    "no_scale_or_latency_claim",
+    "no_legal_or_deployment_approval"
+  ],
+  "logic_agreement": 1.0,
+  "prohibited_inputs_present": false,
+  "replay_count": 20,
+  "replay_hashes": {
+    "c10-dwell": [
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22"
+    ],
+    "c10-line-crossing": [
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6"
+    ],
+    "c10-occupancy": [
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14"
+    ],
+    "c10-out-of-order": [
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17"
+    ],
+    "c10-zone-lifecycle": [
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97"
+    ]
+  },
+  "replay_stable": true,
+  "scenario_reports": [
+    {
+      "actual_event_kinds": [
+        "hcam.analytics.line.crossing.v1"
+      ],
+      "arrival_outcomes": [
+        {
+          "outcome": "accepted",
+          "source_sequence": 1
+        },
+        {
+          "outcome": "accepted",
+          "source_sequence": 2
+        }
+      ],
+      "event_digest": "sha256:c01bf85276967a97ec254eeca61344ad907eb7bdb7645d580eba1aaf517965b6",
+      "events": [
+        {
+          "alert_state": "not_evaluated",
+          "assignment_id": "ana_22222222222222222222222222222222",
+          "camera_id": "synthetic:c10-evidence",
+          "confidence": 0.9,
+          "count": null,
+          "department": "traffic",
+          "direction": "a_to_b",
+          "dwell_ms": null,
+          "epoch_id": "epoch_36dd707fe26de10b7d078f47cf54aca3",
+          "event_id": "evt_2e9db6a25850c7d264f1ac813dacf5ca",
+          "event_kind": "hcam.analytics.line.crossing.v1",
+          "geometry": {
+            "digest": "sha256:2aad2214546d45ccfa8c4316b019d3732b6899fde005ba86054a4feef7190273",
+            "id": "c10-line",
+            "version": 1
+          },
+          "lifecycle_id": "lfc_3c15e372a417f67f989c59df918a3fd2",
+          "lineage": {
+            "execution_scope": "generated_only",
+            "generator_id": "hcam.p3-4.c10-lifecycle",
+            "generator_version": "sha256:dc0c1dd97caa7e3e2b1dfcd23a7cabe3d3aa21491b548d0f6e0419c3dcc4a6ed"
+          },
+          "occurred_at": "2026-08-25T12:00:01+00:00",
+          "retention_class": "derived.analytics.standard",
+          "rule": {
+            "digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "id": "c10-line-crossing",
+            "version": 1
+          },
+          "source_sequence": 2,
+          "state_cycle_id": "cycle_96282086fc04fce3d34d9e091dbf4b8a",
+          "stream_id": "str_11111111111111111111111111111111",
+          "track_id": "trk_26ae5c5b80beef9b5c18d443788536d5"
+        }
+      ],
+      "expected_event_kinds": [
+        "hcam.analytics.line.crossing.v1"
+      ],
+      "input_digest": "sha256:ec372c8680ae46c387651f7a97b70ad5a7a5ce86c2afa9f5c4a127f064a3401e",
+      "inputs": [
+        {
+          "bbox": [
+            0.2900578707658808,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "76f5fcb5f9ba792deb3678bd3562d9c4cb8e2f34194f30663434b45c7341a17c",
+          "epoch_id": "epoch_36dd707fe26de10b7d078f47cf54aca3",
+          "lifecycle_id": "lfc_99392f7c908869f61f17f2134b6dba6a",
+          "observed_at": "2026-08-25T12:00:00+00:00",
+          "source_sequence": 1,
+          "state": "updated",
+          "track_id": "trk_26ae5c5b80beef9b5c18d443788536d5"
+        },
+        {
+          "bbox": [
+            0.6900578707658808,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "d9ae73058a847417efe75501f344a8862027ccce812739e5062adee9bc8e4293",
+          "epoch_id": "epoch_36dd707fe26de10b7d078f47cf54aca3",
+          "lifecycle_id": "lfc_3c15e372a417f67f989c59df918a3fd2",
+          "observed_at": "2026-08-25T12:00:01+00:00",
+          "source_sequence": 2,
+          "state": "updated",
+          "track_id": "trk_26ae5c5b80beef9b5c18d443788536d5"
+        }
+      ],
+      "logic_agreement": 1.0,
+      "processed_transitions": [
+        {
+          "emitted_event_ids": [],
+          "source_sequence": 1,
+          "states": [
+            {
+              "armed": true,
+              "cycle_id": "",
+              "dwell_emitted": false,
+              "entered_at": null,
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-line-crossing",
+              "rule_version": 1,
+              "stable_anchor": [
+                0.3000578707658808,
+                0.5
+              ],
+              "stable_side": 1,
+              "track_id": "trk_26ae5c5b80beef9b5c18d443788536d5",
+              "zone_state": "unknown"
+            }
+          ]
+        },
+        {
+          "emitted_event_ids": [
+            "evt_2e9db6a25850c7d264f1ac813dacf5ca"
+          ],
+          "source_sequence": 2,
+          "states": [
+            {
+              "armed": false,
+              "cycle_id": "cycle_96282086fc04fce3d34d9e091dbf4b8a",
+              "dwell_emitted": false,
+              "entered_at": null,
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-line-crossing",
+              "rule_version": 1,
+              "stable_anchor": [
+                0.7000578707658808,
+                0.5
+              ],
+              "stable_side": -1,
+              "track_id": "trk_26ae5c5b80beef9b5c18d443788536d5",
+              "zone_state": "unknown"
+            }
+          ]
+        }
+      ],
+      "scenario_id": "c10-line-crossing",
+      "seed": 34
+    },
+    {
+      "actual_event_kinds": [
+        "hcam.analytics.zone.entry.v1",
+        "hcam.analytics.zone.exit.v1"
+      ],
+      "arrival_outcomes": [
+        {
+          "outcome": "accepted",
+          "source_sequence": 1
+        },
+        {
+          "outcome": "accepted",
+          "source_sequence": 2
+        },
+        {
+          "outcome": "accepted",
+          "source_sequence": 3
+        }
+      ],
+      "event_digest": "sha256:40b1a66d20a965cf1b10e12d2d2926176822e5aa856222554ed4806ef2c3ee97",
+      "events": [
+        {
+          "alert_state": "not_evaluated",
+          "assignment_id": "ana_22222222222222222222222222222222",
+          "camera_id": "synthetic:c10-evidence",
+          "confidence": 0.9,
+          "count": 1,
+          "department": "traffic",
+          "direction": null,
+          "dwell_ms": null,
+          "epoch_id": "epoch_aca48db9cc1b4e7972f65dc0e6a5d6fe",
+          "event_id": "evt_77bddbe9ffc5fba48e80c22d199a6bcb",
+          "event_kind": "hcam.analytics.zone.entry.v1",
+          "geometry": {
+            "digest": "sha256:6dddd0969675997384b3622500fe1e54afd9c72b4c817db68606cd97c89087ad",
+            "id": "c10-zone",
+            "version": 1
+          },
+          "lifecycle_id": "lfc_c7a307ed3fd37673f3409617b843c507",
+          "lineage": {
+            "execution_scope": "generated_only",
+            "generator_id": "hcam.p3-4.c10-lifecycle",
+            "generator_version": "sha256:dc0c1dd97caa7e3e2b1dfcd23a7cabe3d3aa21491b548d0f6e0419c3dcc4a6ed"
+          },
+          "occurred_at": "2026-08-25T12:00:01+00:00",
+          "retention_class": "derived.analytics.standard",
+          "rule": {
+            "digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "id": "c10-zone-entry",
+            "version": 1
+          },
+          "source_sequence": 2,
+          "state_cycle_id": "cycle_e4fea162d98d805152c48b8a361abc88",
+          "stream_id": "str_11111111111111111111111111111111",
+          "track_id": "trk_947047d86429906e8adf4d17ac448f90"
+        },
+        {
+          "alert_state": "not_evaluated",
+          "assignment_id": "ana_22222222222222222222222222222222",
+          "camera_id": "synthetic:c10-evidence",
+          "confidence": 0.9,
+          "count": 0,
+          "department": "traffic",
+          "direction": null,
+          "dwell_ms": null,
+          "epoch_id": "epoch_aca48db9cc1b4e7972f65dc0e6a5d6fe",
+          "event_id": "evt_21c86e9def2a35c489c9b6ddf21bb9c6",
+          "event_kind": "hcam.analytics.zone.exit.v1",
+          "geometry": {
+            "digest": "sha256:6dddd0969675997384b3622500fe1e54afd9c72b4c817db68606cd97c89087ad",
+            "id": "c10-zone",
+            "version": 1
+          },
+          "lifecycle_id": "lfc_30869996f6922423759a2515b0e9bba0",
+          "lineage": {
+            "execution_scope": "generated_only",
+            "generator_id": "hcam.p3-4.c10-lifecycle",
+            "generator_version": "sha256:dc0c1dd97caa7e3e2b1dfcd23a7cabe3d3aa21491b548d0f6e0419c3dcc4a6ed"
+          },
+          "occurred_at": "2026-08-25T12:00:02+00:00",
+          "retention_class": "derived.analytics.standard",
+          "rule": {
+            "digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "id": "c10-zone-exit",
+            "version": 1
+          },
+          "source_sequence": 3,
+          "state_cycle_id": "cycle_aaffe1eb4ce454a591ca66e3304123ab",
+          "stream_id": "str_11111111111111111111111111111111",
+          "track_id": "trk_947047d86429906e8adf4d17ac448f90"
+        }
+      ],
+      "expected_event_kinds": [
+        "hcam.analytics.zone.entry.v1",
+        "hcam.analytics.zone.exit.v1"
+      ],
+      "input_digest": "sha256:f8bba0cc70f6077c1e681ac7580e30c608ba0b85fb3114195d638738b09449b3",
+      "inputs": [
+        {
+          "bbox": [
+            0.09005787076588083,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "ad3c7342985512088829d8f2cfb53e46302e1a05ef7babb4f228be1eb484343e",
+          "epoch_id": "epoch_aca48db9cc1b4e7972f65dc0e6a5d6fe",
+          "lifecycle_id": "lfc_176f1c7f6f48508f84f8eda83f60b447",
+          "observed_at": "2026-08-25T12:00:00+00:00",
+          "source_sequence": 1,
+          "state": "updated",
+          "track_id": "trk_947047d86429906e8adf4d17ac448f90"
+        },
+        {
+          "bbox": [
+            0.4900578707658808,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "dd2c27612cb1f91e8485ec2aa651e7e9820cece163ce607b7fb4a369e96734bb",
+          "epoch_id": "epoch_aca48db9cc1b4e7972f65dc0e6a5d6fe",
+          "lifecycle_id": "lfc_c7a307ed3fd37673f3409617b843c507",
+          "observed_at": "2026-08-25T12:00:01+00:00",
+          "source_sequence": 2,
+          "state": "updated",
+          "track_id": "trk_947047d86429906e8adf4d17ac448f90"
+        },
+        {
+          "bbox": [
+            0.8900578707658808,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "e7effc01b152becc280bb404a92d835521c45f1903ac91d70bcf0a4df360a11d",
+          "epoch_id": "epoch_aca48db9cc1b4e7972f65dc0e6a5d6fe",
+          "lifecycle_id": "lfc_30869996f6922423759a2515b0e9bba0",
+          "observed_at": "2026-08-25T12:00:02+00:00",
+          "source_sequence": 3,
+          "state": "updated",
+          "track_id": "trk_947047d86429906e8adf4d17ac448f90"
+        }
+      ],
+      "logic_agreement": 1.0,
+      "processed_transitions": [
+        {
+          "emitted_event_ids": [],
+          "source_sequence": 1,
+          "states": [
+            {
+              "armed": true,
+              "cycle_id": "",
+              "dwell_emitted": false,
+              "entered_at": null,
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-zone-entry",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_947047d86429906e8adf4d17ac448f90",
+              "zone_state": "outside"
+            },
+            {
+              "armed": true,
+              "cycle_id": "",
+              "dwell_emitted": false,
+              "entered_at": null,
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-zone-exit",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_947047d86429906e8adf4d17ac448f90",
+              "zone_state": "outside"
+            }
+          ]
+        },
+        {
+          "emitted_event_ids": [
+            "evt_77bddbe9ffc5fba48e80c22d199a6bcb"
+          ],
+          "source_sequence": 2,
+          "states": [
+            {
+              "armed": true,
+              "cycle_id": "cycle_e4fea162d98d805152c48b8a361abc88",
+              "dwell_emitted": false,
+              "entered_at": "2026-08-25T12:00:01+00:00",
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-zone-entry",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_947047d86429906e8adf4d17ac448f90",
+              "zone_state": "inside"
+            },
+            {
+              "armed": true,
+              "cycle_id": "cycle_aaffe1eb4ce454a591ca66e3304123ab",
+              "dwell_emitted": false,
+              "entered_at": "2026-08-25T12:00:01+00:00",
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-zone-exit",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_947047d86429906e8adf4d17ac448f90",
+              "zone_state": "inside"
+            }
+          ]
+        },
+        {
+          "emitted_event_ids": [
+            "evt_21c86e9def2a35c489c9b6ddf21bb9c6"
+          ],
+          "source_sequence": 3,
+          "states": [
+            {
+              "armed": true,
+              "cycle_id": "",
+              "dwell_emitted": false,
+              "entered_at": null,
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-zone-entry",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_947047d86429906e8adf4d17ac448f90",
+              "zone_state": "outside"
+            },
+            {
+              "armed": true,
+              "cycle_id": "",
+              "dwell_emitted": false,
+              "entered_at": null,
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-zone-exit",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_947047d86429906e8adf4d17ac448f90",
+              "zone_state": "outside"
+            }
+          ]
+        }
+      ],
+      "scenario_id": "c10-zone-lifecycle",
+      "seed": 34
+    },
+    {
+      "actual_event_kinds": [
+        "hcam.analytics.zone.dwell.threshold_met.v1"
+      ],
+      "arrival_outcomes": [
+        {
+          "outcome": "accepted",
+          "source_sequence": 1
+        },
+        {
+          "outcome": "accepted",
+          "source_sequence": 2
+        },
+        {
+          "outcome": "accepted",
+          "source_sequence": 3
+        }
+      ],
+      "event_digest": "sha256:e53166391492bf8c7d06fa5ee295bc7346ca3ed6cde3aba4da4f75da33448e22",
+      "events": [
+        {
+          "alert_state": "not_evaluated",
+          "assignment_id": "ana_22222222222222222222222222222222",
+          "camera_id": "synthetic:c10-evidence",
+          "confidence": 0.9,
+          "count": 1,
+          "department": "traffic",
+          "direction": null,
+          "dwell_ms": 2000,
+          "epoch_id": "epoch_a741af888f97cd8f91a3d348c0d9314f",
+          "event_id": "evt_50dcfbdc74d824831e29f6d4b8c51243",
+          "event_kind": "hcam.analytics.zone.dwell.threshold_met.v1",
+          "geometry": {
+            "digest": "sha256:6dddd0969675997384b3622500fe1e54afd9c72b4c817db68606cd97c89087ad",
+            "id": "c10-zone",
+            "version": 1
+          },
+          "lifecycle_id": "lfc_838e71b227808194ffa4042eabc12956",
+          "lineage": {
+            "execution_scope": "generated_only",
+            "generator_id": "hcam.p3-4.c10-lifecycle",
+            "generator_version": "sha256:dc0c1dd97caa7e3e2b1dfcd23a7cabe3d3aa21491b548d0f6e0419c3dcc4a6ed"
+          },
+          "occurred_at": "2026-08-25T12:00:02+00:00",
+          "retention_class": "derived.analytics.standard",
+          "rule": {
+            "digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "id": "c10-dwell",
+            "version": 1
+          },
+          "source_sequence": 2,
+          "state_cycle_id": "cycle_7e7629d70068973b0038256a9b5c019f",
+          "stream_id": "str_11111111111111111111111111111111",
+          "track_id": "trk_231a212130806eff4cd4e2b564060dac"
+        }
+      ],
+      "expected_event_kinds": [
+        "hcam.analytics.zone.dwell.threshold_met.v1"
+      ],
+      "input_digest": "sha256:f3942756ca1feb61908c227f55b66997a07da407936b7be6ceacd5fcd672a25a",
+      "inputs": [
+        {
+          "bbox": [
+            0.4900578707658808,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "e9519ea585ddcb73e5b1f318bf97e21e10d2f12909c2b954e5f4439569e56393",
+          "epoch_id": "epoch_a741af888f97cd8f91a3d348c0d9314f",
+          "lifecycle_id": "lfc_ad58ffcea33c6f2ee98fe7eb3f06025e",
+          "observed_at": "2026-08-25T12:00:00+00:00",
+          "source_sequence": 1,
+          "state": "updated",
+          "track_id": "trk_231a212130806eff4cd4e2b564060dac"
+        },
+        {
+          "bbox": [
+            0.4900578707658808,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "3bc3c8fd659b3a07ab25863739b81c046d0a0fd28b505a7014b514e9287f5835",
+          "epoch_id": "epoch_a741af888f97cd8f91a3d348c0d9314f",
+          "lifecycle_id": "lfc_838e71b227808194ffa4042eabc12956",
+          "observed_at": "2026-08-25T12:00:02+00:00",
+          "source_sequence": 2,
+          "state": "updated",
+          "track_id": "trk_231a212130806eff4cd4e2b564060dac"
+        },
+        {
+          "bbox": [
+            0.4900578707658808,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "74ffc23889f987ef5df26520c094c2e66b4776bde00e0f3f23d8445eb57eba8d",
+          "epoch_id": "epoch_a741af888f97cd8f91a3d348c0d9314f",
+          "lifecycle_id": "lfc_b62f19d5e59c280c8be4ff24bc1d7901",
+          "observed_at": "2026-08-25T12:00:03+00:00",
+          "source_sequence": 3,
+          "state": "updated",
+          "track_id": "trk_231a212130806eff4cd4e2b564060dac"
+        }
+      ],
+      "logic_agreement": 1.0,
+      "processed_transitions": [
+        {
+          "emitted_event_ids": [],
+          "source_sequence": 1,
+          "states": [
+            {
+              "armed": true,
+              "cycle_id": "cycle_7e7629d70068973b0038256a9b5c019f",
+              "dwell_emitted": false,
+              "entered_at": "2026-08-25T12:00:00+00:00",
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-dwell",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_231a212130806eff4cd4e2b564060dac",
+              "zone_state": "inside"
+            }
+          ]
+        },
+        {
+          "emitted_event_ids": [
+            "evt_50dcfbdc74d824831e29f6d4b8c51243"
+          ],
+          "source_sequence": 2,
+          "states": [
+            {
+              "armed": true,
+              "cycle_id": "cycle_7e7629d70068973b0038256a9b5c019f",
+              "dwell_emitted": true,
+              "entered_at": "2026-08-25T12:00:00+00:00",
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-dwell",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_231a212130806eff4cd4e2b564060dac",
+              "zone_state": "inside"
+            }
+          ]
+        },
+        {
+          "emitted_event_ids": [],
+          "source_sequence": 3,
+          "states": [
+            {
+              "armed": true,
+              "cycle_id": "cycle_7e7629d70068973b0038256a9b5c019f",
+              "dwell_emitted": true,
+              "entered_at": "2026-08-25T12:00:00+00:00",
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-dwell",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_231a212130806eff4cd4e2b564060dac",
+              "zone_state": "inside"
+            }
+          ]
+        }
+      ],
+      "scenario_id": "c10-dwell",
+      "seed": 34
+    },
+    {
+      "actual_event_kinds": [
+        "hcam.analytics.zone.occupancy.threshold_entered.v1",
+        "hcam.analytics.zone.occupancy.threshold_exited.v1"
+      ],
+      "arrival_outcomes": [
+        {
+          "outcome": "accepted",
+          "source_sequence": 1
+        },
+        {
+          "outcome": "accepted",
+          "source_sequence": 2
+        },
+        {
+          "outcome": "accepted",
+          "source_sequence": 3
+        },
+        {
+          "outcome": "accepted",
+          "source_sequence": 4
+        }
+      ],
+      "event_digest": "sha256:dbb0cd50570053bafb60a2a6001928cdacbd36179c7bf8cd1bcd96c014607c14",
+      "events": [
+        {
+          "alert_state": "not_evaluated",
+          "assignment_id": "ana_22222222222222222222222222222222",
+          "camera_id": "synthetic:c10-evidence",
+          "confidence": 0.9,
+          "count": 2,
+          "department": "traffic",
+          "direction": null,
+          "dwell_ms": null,
+          "epoch_id": "epoch_1dafeb719c34d3946a3f295b1f4271ff",
+          "event_id": "evt_2642ad8d6900571b46a85289896ddae2",
+          "event_kind": "hcam.analytics.zone.occupancy.threshold_entered.v1",
+          "geometry": {
+            "digest": "sha256:6dddd0969675997384b3622500fe1e54afd9c72b4c817db68606cd97c89087ad",
+            "id": "c10-zone",
+            "version": 1
+          },
+          "lifecycle_id": "lfc_de87237fbdb557d3bcdd753cea9eb0cf",
+          "lineage": {
+            "execution_scope": "generated_only",
+            "generator_id": "hcam.p3-4.c10-lifecycle",
+            "generator_version": "sha256:dc0c1dd97caa7e3e2b1dfcd23a7cabe3d3aa21491b548d0f6e0419c3dcc4a6ed"
+          },
+          "occurred_at": "2026-08-25T12:00:01+00:00",
+          "retention_class": "derived.analytics.standard",
+          "rule": {
+            "digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "id": "c10-occupancy-enter",
+            "version": 1
+          },
+          "source_sequence": 2,
+          "state_cycle_id": "aggregate_648bf23907b4a5ee77280e37d9f2f95e",
+          "stream_id": "str_11111111111111111111111111111111",
+          "track_id": null
+        },
+        {
+          "alert_state": "not_evaluated",
+          "assignment_id": "ana_22222222222222222222222222222222",
+          "camera_id": "synthetic:c10-evidence",
+          "confidence": 0.9,
+          "count": 0,
+          "department": "traffic",
+          "direction": null,
+          "dwell_ms": null,
+          "epoch_id": "epoch_1dafeb719c34d3946a3f295b1f4271ff",
+          "event_id": "evt_9f44d78137cee88c7488b37b0c976401",
+          "event_kind": "hcam.analytics.zone.occupancy.threshold_exited.v1",
+          "geometry": {
+            "digest": "sha256:6dddd0969675997384b3622500fe1e54afd9c72b4c817db68606cd97c89087ad",
+            "id": "c10-zone",
+            "version": 1
+          },
+          "lifecycle_id": "lfc_57f57772add72562f2ead079cb9e150a",
+          "lineage": {
+            "execution_scope": "generated_only",
+            "generator_id": "hcam.p3-4.c10-lifecycle",
+            "generator_version": "sha256:dc0c1dd97caa7e3e2b1dfcd23a7cabe3d3aa21491b548d0f6e0419c3dcc4a6ed"
+          },
+          "occurred_at": "2026-08-25T12:00:03+00:00",
+          "retention_class": "derived.analytics.standard",
+          "rule": {
+            "digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "id": "c10-occupancy-exit",
+            "version": 1
+          },
+          "source_sequence": 4,
+          "state_cycle_id": "aggregate_d11baec8e7955d14060bca6499e6898e",
+          "stream_id": "str_11111111111111111111111111111111",
+          "track_id": null
+        }
+      ],
+      "expected_event_kinds": [
+        "hcam.analytics.zone.occupancy.threshold_entered.v1",
+        "hcam.analytics.zone.occupancy.threshold_exited.v1"
+      ],
+      "input_digest": "sha256:4c8c91520b5498c270a1d04b0ec6fe554f326bb9b5e1585883200f6bddc2eb20",
+      "inputs": [
+        {
+          "bbox": [
+            0.4900578707658808,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "1e126e7d2047271078b4d7ee1334208cbbe857df157b80a05cb9818dc315c2e9",
+          "epoch_id": "epoch_1dafeb719c34d3946a3f295b1f4271ff",
+          "lifecycle_id": "lfc_edccdcdea56547202ca34163004f29df",
+          "observed_at": "2026-08-25T12:00:00+00:00",
+          "source_sequence": 1,
+          "state": "updated",
+          "track_id": "trk_80db65d2703695ad0d353ee13f4c73c2"
+        },
+        {
+          "bbox": [
+            0.5900578707658808,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "1e0722a885621a885d428b346add48bace6a8f7f4a38d05ec5d3b0e5f5c5c732",
+          "epoch_id": "epoch_1dafeb719c34d3946a3f295b1f4271ff",
+          "lifecycle_id": "lfc_de87237fbdb557d3bcdd753cea9eb0cf",
+          "observed_at": "2026-08-25T12:00:01+00:00",
+          "source_sequence": 2,
+          "state": "updated",
+          "track_id": "trk_f8b09738c3d5894e9ef4385c82af163e"
+        },
+        {
+          "bbox": [
+            0.5900578707658808,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "aa2b15d5b4731af08d31a5abb45c61a82a3259c6cfc651993cebf1c1841af570",
+          "epoch_id": "epoch_1dafeb719c34d3946a3f295b1f4271ff",
+          "lifecycle_id": "lfc_92211cb3b47dc21206eecff61855e365",
+          "observed_at": "2026-08-25T12:00:02+00:00",
+          "source_sequence": 3,
+          "state": "ended",
+          "track_id": "trk_f8b09738c3d5894e9ef4385c82af163e"
+        },
+        {
+          "bbox": [
+            0.4900578707658808,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "b2e1b6022f93a4f11d99518e2268ebabc95fb890d1910d3d51ac27f1c689989c",
+          "epoch_id": "epoch_1dafeb719c34d3946a3f295b1f4271ff",
+          "lifecycle_id": "lfc_57f57772add72562f2ead079cb9e150a",
+          "observed_at": "2026-08-25T12:00:03+00:00",
+          "source_sequence": 4,
+          "state": "ended",
+          "track_id": "trk_80db65d2703695ad0d353ee13f4c73c2"
+        }
+      ],
+      "logic_agreement": 1.0,
+      "processed_transitions": [
+        {
+          "emitted_event_ids": [],
+          "source_sequence": 1,
+          "states": [
+            {
+              "armed": true,
+              "cycle_id": "cycle_7dc1241113a4b072fdcf59bedf694030",
+              "dwell_emitted": false,
+              "entered_at": "2026-08-25T12:00:00+00:00",
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-occupancy-enter",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_80db65d2703695ad0d353ee13f4c73c2",
+              "zone_state": "inside"
+            },
+            {
+              "armed": true,
+              "cycle_id": "cycle_3f217c005a77eea999d6e923ba726411",
+              "dwell_emitted": false,
+              "entered_at": "2026-08-25T12:00:00+00:00",
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-occupancy-exit",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_80db65d2703695ad0d353ee13f4c73c2",
+              "zone_state": "inside"
+            }
+          ]
+        },
+        {
+          "emitted_event_ids": [
+            "evt_2642ad8d6900571b46a85289896ddae2"
+          ],
+          "source_sequence": 2,
+          "states": [
+            {
+              "armed": true,
+              "cycle_id": "cycle_7dc1241113a4b072fdcf59bedf694030",
+              "dwell_emitted": false,
+              "entered_at": "2026-08-25T12:00:00+00:00",
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-occupancy-enter",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_80db65d2703695ad0d353ee13f4c73c2",
+              "zone_state": "inside"
+            },
+            {
+              "armed": true,
+              "cycle_id": "cycle_6304a68eda9eda7255efe5a1a8d263a5",
+              "dwell_emitted": false,
+              "entered_at": "2026-08-25T12:00:01+00:00",
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-occupancy-enter",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_f8b09738c3d5894e9ef4385c82af163e",
+              "zone_state": "inside"
+            },
+            {
+              "armed": true,
+              "cycle_id": "cycle_3f217c005a77eea999d6e923ba726411",
+              "dwell_emitted": false,
+              "entered_at": "2026-08-25T12:00:00+00:00",
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-occupancy-exit",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_80db65d2703695ad0d353ee13f4c73c2",
+              "zone_state": "inside"
+            },
+            {
+              "armed": true,
+              "cycle_id": "cycle_9e4e72d82075c3f40e405b835f526336",
+              "dwell_emitted": false,
+              "entered_at": "2026-08-25T12:00:01+00:00",
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-occupancy-exit",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_f8b09738c3d5894e9ef4385c82af163e",
+              "zone_state": "inside"
+            }
+          ]
+        },
+        {
+          "emitted_event_ids": [],
+          "source_sequence": 3,
+          "states": [
+            {
+              "armed": true,
+              "cycle_id": "cycle_7dc1241113a4b072fdcf59bedf694030",
+              "dwell_emitted": false,
+              "entered_at": "2026-08-25T12:00:00+00:00",
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-occupancy-enter",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_80db65d2703695ad0d353ee13f4c73c2",
+              "zone_state": "inside"
+            },
+            {
+              "armed": true,
+              "cycle_id": "cycle_3f217c005a77eea999d6e923ba726411",
+              "dwell_emitted": false,
+              "entered_at": "2026-08-25T12:00:00+00:00",
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-occupancy-exit",
+              "rule_version": 1,
+              "stable_anchor": null,
+              "stable_side": null,
+              "track_id": "trk_80db65d2703695ad0d353ee13f4c73c2",
+              "zone_state": "inside"
+            }
+          ]
+        },
+        {
+          "emitted_event_ids": [
+            "evt_9f44d78137cee88c7488b37b0c976401"
+          ],
+          "source_sequence": 4,
+          "states": []
+        }
+      ],
+      "scenario_id": "c10-occupancy",
+      "seed": 34
+    },
+    {
+      "actual_event_kinds": [
+        "hcam.analytics.line.crossing.v1"
+      ],
+      "arrival_outcomes": [
+        {
+          "outcome": "accepted",
+          "source_sequence": 3
+        },
+        {
+          "outcome": "accepted",
+          "source_sequence": 1
+        },
+        {
+          "outcome": "late",
+          "source_sequence": 2
+        },
+        {
+          "outcome": "accepted",
+          "source_sequence": 4
+        }
+      ],
+      "event_digest": "sha256:face322a533df83e56cf5d5e748363b895405a623d1794a7c4e9ce2055ec8a17",
+      "events": [
+        {
+          "alert_state": "not_evaluated",
+          "assignment_id": "ana_22222222222222222222222222222222",
+          "camera_id": "synthetic:c10-evidence",
+          "confidence": 0.9,
+          "count": null,
+          "department": "traffic",
+          "direction": "a_to_b",
+          "dwell_ms": null,
+          "epoch_id": "epoch_d01093f277072640817152f04d772652",
+          "event_id": "evt_c27c482ff07d73d281e821370dfb9c89",
+          "event_kind": "hcam.analytics.line.crossing.v1",
+          "geometry": {
+            "digest": "sha256:2aad2214546d45ccfa8c4316b019d3732b6899fde005ba86054a4feef7190273",
+            "id": "c10-line",
+            "version": 1
+          },
+          "lifecycle_id": "lfc_4f35d0b86283ca70a9f6ca9852c4c7d6",
+          "lineage": {
+            "execution_scope": "generated_only",
+            "generator_id": "hcam.p3-4.c10-lifecycle",
+            "generator_version": "sha256:dc0c1dd97caa7e3e2b1dfcd23a7cabe3d3aa21491b548d0f6e0419c3dcc4a6ed"
+          },
+          "occurred_at": "2026-08-25T12:00:03+00:00",
+          "retention_class": "derived.analytics.standard",
+          "rule": {
+            "digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "id": "c10-line-crossing",
+            "version": 1
+          },
+          "source_sequence": 3,
+          "state_cycle_id": "cycle_549fc98915cc854088619c3b3bff608b",
+          "stream_id": "str_11111111111111111111111111111111",
+          "track_id": "trk_b2783b3911ef3cd9fd4a8357a5283f34"
+        }
+      ],
+      "expected_event_kinds": [
+        "hcam.analytics.line.crossing.v1"
+      ],
+      "input_digest": "sha256:7618559121748f22ee5097129c1ac10bef211c7ae3e22fddd9715ba0a2228952",
+      "inputs": [
+        {
+          "bbox": [
+            0.6900578707658808,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "149d228f51768cb3e26d2227d10bb1731f0d3580baa817dfcfba0d2e526f60d3",
+          "epoch_id": "epoch_d01093f277072640817152f04d772652",
+          "lifecycle_id": "lfc_4f35d0b86283ca70a9f6ca9852c4c7d6",
+          "observed_at": "2026-08-25T12:00:03+00:00",
+          "source_sequence": 3,
+          "state": "updated",
+          "track_id": "trk_b2783b3911ef3cd9fd4a8357a5283f34"
+        },
+        {
+          "bbox": [
+            0.2900578707658808,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "4f00eab5720998599e2589cc157e58ad499c92fd93b866f7d709257f470cd731",
+          "epoch_id": "epoch_d01093f277072640817152f04d772652",
+          "lifecycle_id": "lfc_6204d7e89ac943c2118cd0e705067c0a",
+          "observed_at": "2026-08-25T12:00:00+00:00",
+          "source_sequence": 1,
+          "state": "updated",
+          "track_id": "trk_b2783b3911ef3cd9fd4a8357a5283f34"
+        },
+        {
+          "bbox": [
+            0.39005787076588083,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "f1d130c5bce90893f6d4c56b130bfe8061b0db306c636e926d077eebd9403352",
+          "epoch_id": "epoch_d01093f277072640817152f04d772652",
+          "lifecycle_id": "lfc_d44285d4a973c419b4554f63176d33e7",
+          "observed_at": "2026-08-25T12:00:01+00:00",
+          "source_sequence": 2,
+          "state": "updated",
+          "track_id": "trk_b2783b3911ef3cd9fd4a8357a5283f34"
+        },
+        {
+          "bbox": [
+            0.6900578707658808,
+            0.48,
+            0.02,
+            0.02
+          ],
+          "class_id": "vehicle.car",
+          "confidence": 0.9,
+          "digest": "8d69034069b84c45532cdaf678edf8a8f45a697dce63ff1ec30678ba266004e6",
+          "epoch_id": "epoch_d01093f277072640817152f04d772652",
+          "lifecycle_id": "lfc_1c38ecfe05e1a78252ced9cbadac2d40",
+          "observed_at": "2026-08-25T12:00:04+00:00",
+          "source_sequence": 4,
+          "state": "updated",
+          "track_id": "trk_b2783b3911ef3cd9fd4a8357a5283f34"
+        }
+      ],
+      "logic_agreement": 1.0,
+      "processed_transitions": [
+        {
+          "emitted_event_ids": [],
+          "source_sequence": 1,
+          "states": [
+            {
+              "armed": true,
+              "cycle_id": "",
+              "dwell_emitted": false,
+              "entered_at": null,
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-line-crossing",
+              "rule_version": 1,
+              "stable_anchor": [
+                0.3000578707658808,
+                0.5
+              ],
+              "stable_side": 1,
+              "track_id": "trk_b2783b3911ef3cd9fd4a8357a5283f34",
+              "zone_state": "unknown"
+            }
+          ]
+        },
+        {
+          "emitted_event_ids": [
+            "evt_c27c482ff07d73d281e821370dfb9c89"
+          ],
+          "source_sequence": 3,
+          "states": [
+            {
+              "armed": false,
+              "cycle_id": "cycle_549fc98915cc854088619c3b3bff608b",
+              "dwell_emitted": false,
+              "entered_at": null,
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-line-crossing",
+              "rule_version": 1,
+              "stable_anchor": [
+                0.7000578707658808,
+                0.5
+              ],
+              "stable_side": -1,
+              "track_id": "trk_b2783b3911ef3cd9fd4a8357a5283f34",
+              "zone_state": "unknown"
+            }
+          ]
+        },
+        {
+          "emitted_event_ids": [],
+          "source_sequence": 4,
+          "states": [
+            {
+              "armed": true,
+              "cycle_id": "cycle_549fc98915cc854088619c3b3bff608b",
+              "dwell_emitted": false,
+              "entered_at": null,
+              "graph_state": {},
+              "lost_at": null,
+              "rule_id": "c10-line-crossing",
+              "rule_version": 1,
+              "stable_anchor": [
+                0.7000578707658808,
+                0.5
+              ],
+              "stable_side": -1,
+              "track_id": "trk_b2783b3911ef3cd9fd4a8357a5283f34",
+              "zone_state": "unknown"
+            }
+          ]
+        }
+      ],
+      "scenario_id": "c10-out-of-order",
+      "seed": 34
+    }
+  ],
+  "schema_version": "1.0.0"
+}

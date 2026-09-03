@@ -51,10 +51,11 @@ also includes API authorization, audit, malformed input, direct database
 constraint, optimistic concurrency, migration-head readiness, CLI, and
 migration round-trip tests.
 
-The reviewed Phase 0-2 release baseline is stored in
+The reviewed Phase 0-2 release baseline remains preserved in
 `contracts/phase-2/openapi.json` and `contracts/phase-2/database.json`. The
-contract check renders the real FastAPI schema and upgrades a disposable
-SQLite database through Alembic before comparing exact normalized metadata.
+active contract check now targets the additive Phase 3 baseline, renders the
+real FastAPI schema, and upgrades a disposable SQLite database through Alembic
+before comparing exact normalized metadata.
 Intentional changes require API, RBAC, migration, index, foreign-key, and
 constraint review before running:
 
@@ -129,7 +130,7 @@ or police data.
 The optional PostgreSQL test dependency is installed with:
 
 ```powershell
-uv sync --locked --extra dev --extra postgres
+uv sync --locked --extra dev --extra analytics --extra postgres
 ```
 
 GitHub Actions owns the authoritative Phase 1 PostgreSQL integration run. It

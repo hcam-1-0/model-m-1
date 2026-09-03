@@ -1,0 +1,101 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_remediation_r1_owner_decisions.v1",
+  "record_id": "P36-QUARANTINE-REMEDIATION-R1-OWNER-DECISIONS-ACCEPTANCE",
+  "status": "accepted_planning_choices_non_effective_new_package_preparation_authorized",
+  "accepted_by": "mayank-admin",
+  "accepted_at": "2026-08-31T06:06:45.348Z",
+  "recorded_local_date": "2026-08-31",
+  "owner_statement_received": "D-P3.6-U3F-001: A\nD-P3.6-U3F-002: A\nD-P3.6-U3F-003: A\nD-P3.6-U3F-004: A\nD-P3.6-U3F-005: A\nD-P3.6-U3F-006: A",
+  "package_manifest": "contracts/phase-3/p3-6-quarantine-remediation-r1-decision-package.json",
+  "package_digest_sha256": "9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78",
+  "decision_packet": "contracts/phase-3/p3-6-quarantine-remediation-r1-decision-packet.json",
+  "proposal": "contracts/phase-3/p3-6-quarantine-remediation-r1-proposal.json",
+  "selections": [
+    {
+      "decision_id": "D-P3.6-U3F-001",
+      "selected_option": "A",
+      "accepted_policy": "protected_security_at_create_DACL",
+      "effect": "prepare_a_future_exact_attempt_that_creates_the_absent_root_with_a_protected_explicit_DACL_already_applied_and_verifies_it_before_any_probe"
+    },
+    {
+      "decision_id": "D-P3.6-U3F-002",
+      "selected_option": "A",
+      "accepted_policy": "ephemeral_current_process_Modify_SYSTEM_and_Administrators_FullControl",
+      "effect": "resolve_the_current_process_SID_only_in_memory_grant_it_Modify_grant_LocalSystem_and_builtin_Administrators_FullControl_propagate_to_children_and_persist_no_identity_data"
+    },
+    {
+      "decision_id": "D-P3.6-U3F-003",
+      "selected_option": "A",
+      "accepted_policy": "absent_root_required",
+      "effect": "fail_before_security_or_content_modification_when_any_file_directory_or_reparse_object_already_exists_at_the_exact_candidate_root"
+    },
+    {
+      "decision_id": "D-P3.6-U3F-004",
+      "selected_option": "A",
+      "accepted_policy": "exact_version_path_SHA256_cache_only_WinVerifyTrust",
+      "effect": "prepare_read_only_binding_of_one_regular_nonreparse_version_matched_MpCmdRun_candidate_by_exact_path_file_metadata_SHA_256_and_cache_only_no_UI_whole_chain_WinVerifyTrust_without_executing_it"
+    },
+    {
+      "decision_id": "D-P3.6-U3F-005",
+      "selected_option": "A",
+      "accepted_policy": "separate_pinned_ModelScan_bootstrap_and_hostile_fixture_validation",
+      "effect": "exclude_ModelScan_query_install_import_or_execution_from_the_next_attempt_and_require_a_later_exact_dependency_and_generated_hostile_fixture_package"
+    },
+    {
+      "decision_id": "D-P3.6-U3F-006",
+      "selected_option": "A",
+      "accepted_policy": "storage_remediation_and_Defender_binding_only",
+      "effect": "limit_the_next_proposed_attempt_to_secure_root_creation_ACL_verification_one_4096_byte_atomic_probe_and_read_only_Defender_binary_trust_binding"
+    }
+  ],
+  "accepted_effect": {
+    "planning_choices_selected": true,
+    "new_action_specification_preparation_authorized": true,
+    "new_digest_bound_authorization_package_preparation_authorized": true,
+    "secure_root_and_Defender_retry_scope_approved_for_future_authorization": true,
+    "another_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "Defender_query_hash_or_trust_verification_authorized": false,
+    "scanner_execution_or_installation_authorized": false,
+    "ModelScan_bootstrap_authorized": false,
+    "artifact_or_dependency_acquisition_authorized": false,
+    "runtime_or_model_execution_authorized": false,
+    "profile_resolution_or_activation_authorized": false,
+    "implementation_or_deployment_authorized": false,
+    "remote_git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked",
+    "next_planning_output": "exact_U3G_one_attempt_quarantine_remediation_and_Defender_binding_authorization_package",
+    "next_executable_action": "none"
+  },
+  "continuing_non_authorization": [
+    "F_volume_path_directory_or_ACL_access_or_modification",
+    "storage_probe_or_cleanup",
+    "Defender_or_other_scanner_query_hash_signature_check_execution_installation_or_update",
+    "ModelScan_dependency_or_hostile_fixture_bootstrap",
+    "artifact_model_dataset_dependency_driver_or_container_download",
+    "checkpoint_load_unpickle_import_conversion_export_or_execution",
+    "inference_calibration_validation_benchmark_or_hardware_test",
+    "profile_resolution_admission_activation_placement_or_scheduler_execution",
+    "container_Docker_Kubernetes_or_deployment_action",
+    "camera_stream_media_private_or_Government_data_access",
+    "product_or_dashboard_implementation",
+    "remote_git"
+  ],
+  "owner_selection_may_be_inferred_from_continue_or_prior_authorization": false,
+  "another_attempt_authorized": false,
+  "F_or_ACL_action_authorized": false,
+  "Defender_query_hash_or_trust_verification_authorized": false,
+  "scanner_query_install_or_execution_authorized": false,
+  "artifact_or_dependency_acquisition_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "profile_resolution_or_activation_authorized": false,
+  "container_or_kubernetes_action_authorized": false,
+  "camera_media_or_data_access_authorized": false,
+  "implementation_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

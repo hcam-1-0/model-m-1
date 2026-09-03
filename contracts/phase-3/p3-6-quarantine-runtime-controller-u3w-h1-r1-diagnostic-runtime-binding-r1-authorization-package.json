@@ -1,0 +1,144 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3w_h1_r1_diagnostic_runtime_binding_r1_authorization_package.v1",
+  "package_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-AUTHORIZATION-PACKAGE",
+  "decision_id": "D-P3.6-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-AUTH",
+  "status": "sealed_non_effective_owner_authorization_pending_no_attempt_performed",
+  "sealed_on": "2026-09-02",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record_sha256": "5B8847FF5E484C40D0630C2E9B91D41D877662D27648BCB951962117C25B7DD5",
+    "accepted_U3V_implementation_package_sha256": "AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD",
+    "effect": "prepare_this_non_effective_U3W_runtime_diagnostic_authorization_package_only"
+  },
+  "core_file_count": 11,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-implementation-acceptance.json",
+      "sha256": "5B8847FF5E484C40D0630C2E9B91D41D877662D27648BCB951962117C25B7DD5",
+      "role": "exact_owner_source_acceptance_and_U3W_proposal_preparation_authority"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-implementation-package.json",
+      "sha256": "AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD",
+      "role": "accepted_immutable_U3V_source_and_generated_static_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-implementation-evidence.json",
+      "sha256": "F85D04F94E7F61A46538D474F6BC982CD268C8E77E6E01F57707BD02FEDC0F8F",
+      "role": "accepted_nonobservational_U3V_source_and_static_evidence"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-action-spec.json",
+      "sha256": "9897C274749261DF36A29FA7C87150BC876AD308944C45B6664406BF782A4863",
+      "role": "exact_single_attempt_runtime_source_process_output_and_redaction_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-authorization-proposal.json",
+      "sha256": "7C4ADE5AFFB811B0795EC7E4BA6BAA51E576B5AF196336E90946610A3C16626C",
+      "role": "machine_readable_future_digest_bound_U3W_authorization_request"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-authorization-proposal.md",
+      "sha256": "7AA35E5494592769F2A99F67AB8D131CEF579CB72FC88AC0F647795F34E297E3",
+      "role": "human_reviewable_attempt_scope_limits_evidence_policy_and_closed_gates"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_u3v_h1_r1_diagnostic.ps1",
+      "sha256": "CD868E3F06CA12AC424B2C4C221F6425FCD0DA289C527DED462121333513B1C9",
+      "role": "accepted_exact_future_single_process_diagnostic_harness"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller.ps1",
+      "sha256": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB",
+      "role": "accepted_exact_hash_bound_controller_future_dot_source_target"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-contract.json",
+      "sha256": "F0E41634760E3697F74EA2DEA44E7B2004392557E3167504BD69F2D78A4DC3CB",
+      "role": "accepted_exact_outer_sanitized_result_validation_contract"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_u3v_h1_r1_diagnostic_reference.py",
+      "sha256": "9185F6DD724BC3703B402C696AC89FBE2D455BCEF2BC0C1D5C87BB4F719FFFCC",
+      "role": "accepted_machine_disabled_static_oracle_not_executed_by_future_attempt"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-vectors.json",
+      "sha256": "B7D39E5A7160436D43FA4C0FE2D530CEC7DD89352949CD6EC619CD41D8639F70",
+      "role": "accepted_generated_static_manifest_not_loaded_by_future_runtime_process"
+    }
+  ],
+  "fixed_bindings": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "runtime_path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "runtime_family": "PowerShell_7_on_Windows",
+    "required_runtime_major_version": 7,
+    "maximum_runtime_file_bytes": 268435456,
+    "fixed_parent_component_count": 3,
+    "exact_source_binding_count": 5,
+    "alternate_runtime_parent_checkout_source_or_hardware_discovery": false
+  },
+  "process_and_output_bounds": {
+    "maximum_attempts": 1,
+    "authorization_window_seconds": 86400,
+    "maximum_processes": 1,
+    "process_timeout_seconds": 30,
+    "maximum_stdout_bytes": 4096,
+    "maximum_stderr_bytes": 0,
+    "maximum_result_record_bytes": 16384,
+    "maximum_evidence_record_bytes": 65536,
+    "UseShellExecute": false,
+    "CreateNoWindow": true,
+    "interactive_input": false,
+    "parallel_processes": false,
+    "automatic_retry": false,
+    "kill_process_tree_on_timeout": true,
+    "raw_stdout_or_stderr_persisted": false
+  },
+  "exact_future_outputs": [
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-authorization.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-result.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-evidence.json"
+  ],
+  "future_authorization_effect_if_exactly_accepted": {
+    "one_exact_runtime_binding_and_sanitized_diagnostic_attempt": true,
+    "exact_runtime_read_only_path_parent_size_version_hash_and_cache_only_trust_observation": true,
+    "exact_runtime_single_U3V_diagnostic_harness_execution": true,
+    "exact_hash_bound_controller_dot_source_and_policy_execution": true,
+    "allowlisted_terminal_reason_code_count": 11,
+    "bounded_sanitized_authorization_result_and_evidence_outputs": true,
+    "alternate_runtime_parent_checkout_source_or_hardware_discovery": false,
+    "Utility_manifest_module_closure_or_Aggregate_validation": false,
+    "Python_execution_machine_access_or_fallback": false,
+    "machine_storage_F_B_ACL_identity_probe_cleanup_Defender_or_scanner_action": false,
+    "network_download_artifact_model_media_private_or_Government_data_action": false,
+    "container_Kubernetes_profile_activation_deployment_U3K_or_remote_Git": false
+  },
+  "future_owner_authorization_statement_template": "D-P3.6-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-AUTH: I, mayank-admin, authorize one exact runtime-binding and sanitized H1 R1 diagnostic attempt against package digest <U3W_AUTHORIZATION_PACKAGE_DIGEST_SHA256> within 24 hours on LAB-LAPTOP-01. The attempt may verify and record the exact authorization; classify, size, version, hash, and cache-only no-UI whole-chain-excluding-root trust-check only C:\\Program Files\\PowerShell\\7\\pwsh.exe and its three fixed parent components without trust retrieval; verify exact diagnostic harness SHA-256 CD868E3F06CA12AC424B2C4C221F6425FCD0DA289C527DED462121333513B1C9, controller SHA-256 78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB, diagnostic-contract SHA-256 F0E41634760E3697F74EA2DEA44E7B2004392557E3167504BD69F2D78A4DC3CB, machine-disabled Python-reference SHA-256 9185F6DD724BC3703B402C696AC89FBE2D455BCEF2BC0C1D5C87BB4F719FFFCC, and vector-manifest SHA-256 B7D39E5A7160436D43FA4C0FE2D530CEC7DD89352949CD6EC619CD41D8639F70; invoke the exact runtime once with NoLogo, NoProfile, NonInteractive and the exact diagnostic harness; allow it to dot-source only the hash-bound accepted controller; enforce a 30-second timeout, 4 KiB stdout, zero stderr, and 16 KiB result; accept only the eleven allowlisted sanitized diagnostic outcomes; discard raw process material; reverify runtime, parents, and source identity; and write only the three bounded sanitized authorization, result, and evidence records. Failure consumes the authorization and requires a new digest-bound authorization. This does not authorize alternate runtime, parent, checkout, source, module, or hardware discovery; Utility-manifest, module-closure, Aggregate validation, PATH, PSModulePath, registry, WMI, package, or directory inventory; Python execution, machine access, or fallback; machine, storage, F:, B:, ACL, identity, probe, cleanup, Defender, or scanner action; network or trust retrieval; downloads, artifacts, models, inference, cameras, media, private or Government data, containers, Kubernetes, profile activation, deployment, U3K, or remote Git. Any further attempt or U3K package requires separate accepted U3W evidence and later explicit authorization.",
+  "sequence_after_exact_authorization": [
+    "record_exact_digest_bound_authorization_before_any_runtime_or_parent_observation",
+    "perform_at_most_one_exact_runtime_binding_and_sanitized_diagnostic_attempt",
+    "seal_bounded_sanitized_authorization_result_and_evidence",
+    "obtain_separate_D_P3_6_U3W_H1_R1_DIAGNOSTIC_RUNTIME_BINDING_R1_ACCEPTANCE",
+    "prepare_no_U3K_package_without_separate_later_authority"
+  ],
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U3W_authorization_package_digest_and_is_not_self_embedded",
+  "synchronized_ledgers_indexes_and_static_test_excluded_from_core_hashes_to_avoid_recursive_digest_binding": true,
+  "current_gate_effect": {
+    "U3V_source_implementation_accepted": true,
+    "U3W_authorization_package_prepared": true,
+    "owner_U3W_authorization_pending": true,
+    "D_P3_6_U3W_H1_R1_DIAGNOSTIC_RUNTIME_BINDING_R1_AUTH_requestable": true,
+    "attempts_authorized": 0,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_parent_manifest_hardware_or_machine_observation_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "machine_storage_scanner_model_media_container_or_deployment_action_authorized": false,
+    "U3K_or_remote_Git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "authorization_may_be_inferred_from_U3V_acceptance_continue_package_preparation_or_static_validation": false
+}

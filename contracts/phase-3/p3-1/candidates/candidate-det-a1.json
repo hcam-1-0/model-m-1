@@ -1,0 +1,109 @@
+{
+  "approval": {
+    "decided_at": null,
+    "owner_id": "mayank-admin",
+    "reason": "Exact artifact remains research-only and unavailable",
+    "record_id": "pending-det-a1",
+    "status": "pending"
+  },
+  "artifact_identity": {
+    "blocker": "exact-checkpoint-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "blockers": [
+    "exact-checkpoint-unresolved",
+    "exact-weight-license-unverified",
+    "training-lineage-unverified",
+    "model-card-unresolved",
+    "sbom-unresolved"
+  ],
+  "candidate_id": "DET-A1",
+  "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+  "eligibility": "blocked",
+  "export_expectations": [
+    "export-format-unresolved"
+  ],
+  "intended_role": "detector_accuracy",
+  "known_limits": [
+    "RF-DETR licensing is component-specific and must be verified for the exact L artifact",
+    "No H-CAM dataset, slice, or resource evidence exists"
+  ],
+  "licenses": [
+    {
+      "commercial_or_government_use": "allowed",
+      "component": "code",
+      "license_id": {
+        "blocker": null,
+        "digest": null,
+        "state": "resolved",
+        "value": "Apache-2.0"
+      },
+      "notice_required": true,
+      "redistribution": "allowed"
+    },
+    {
+      "commercial_or_government_use": "unresolved",
+      "component": "weights",
+      "license_id": {
+        "blocker": "weights-license-unverified",
+        "digest": null,
+        "state": "unresolved",
+        "value": null
+      },
+      "notice_required": null,
+      "redistribution": "unresolved"
+    }
+  ],
+  "lineage": {
+    "blocker": "training-lineage-unverified",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "manifest_digest": "sha256:8b34812f7503424f7e8200f460c02eab9e116e5bb1ae910a110d9dc035c30992",
+  "model_card": {
+    "blocker": "model-card-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "recorded_at": "2026-08-24T12:45:00Z",
+  "runtime_expectations": [
+    "comparison-runtime-unresolved"
+  ],
+  "sbom": {
+    "blocker": "sbom-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "semantic_version": "1.0.0",
+  "source_reference": {
+    "accessed_on": "2026-08-24",
+    "evidence_kind": "official_repository",
+    "no_download_performed": true,
+    "publisher": "Roboflow",
+    "reference_id": "source-rfdetr",
+    "supports_claim": "Repository documents RF-DETR-S/L and component-specific licensing",
+    "title": "RF-DETR official repository",
+    "url": "https://github.com/roboflow/rf-detr"
+  },
+  "source_revision": {
+    "blocker": null,
+    "digest": null,
+    "state": "resolved",
+    "value": "47b37fe7283b2f79d0aa5af3e6ba9caf9b2a5e62"
+  },
+  "source_tier": "S3",
+  "supported_taxonomy": [
+    "object.person",
+    "vehicle.bicycle",
+    "vehicle.motorcycle",
+    "vehicle.car",
+    "vehicle.bus",
+    "vehicle.truck",
+    "object.unknown"
+  ]
+}

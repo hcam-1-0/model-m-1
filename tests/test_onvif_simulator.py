@@ -242,6 +242,12 @@ def test_onvif_resolver_normalizes_transport_failures(
         (b"x" * 10, 2, "onvif_response_too_large"),
         (b"<not-closed", 256, "onvif_invalid_response"),
         (
+            b"<!DOCTYPE x [<!ENTITY secret SYSTEM 'file:///etc/passwd'>]>"
+            b"<Envelope><Uri>&secret;</Uri></Envelope>",
+            256,
+            "onvif_invalid_response",
+        ),
+        (
             b"<Envelope><Uri>rtsp://operator:secret@camera/live</Uri></Envelope>",
             256,
             "onvif_invalid_stream_uri",
@@ -365,6 +371,22 @@ def test_simulator_handler_rejects_invalid_content_length() -> None:
     instance.do_POST()
 
     assert errors == [400]
+
+
+def test_simulator_wsse_parser_rejects_xml_entities() -> None:
+    handler = handler_for(
+        "rtsp://127.0.0.1:8554/live",
+        auth_mode="wsse_password_digest",
+        username="operator",
+        password="synthetic-password",
+    )
+    instance = object.__new__(handler)
+    payload = (
+        b"<!DOCTYPE x [<!ENTITY secret SYSTEM 'file:///etc/passwd'>]>"
+        b"<Envelope><Username>&secret;</Username></Envelope>"
+    )
+
+    assert instance._valid_wsse(payload) is False
 
 
 def test_simulator_main_validates_arguments_and_closes_server(

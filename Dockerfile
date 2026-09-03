@@ -17,7 +17,7 @@ COPY app ./app
 RUN mkdir -p /dist \
     && python -m pip install --no-cache-dir "uv==${UV_VERSION}" \
     && uv sync --locked --extra dev --no-install-project \
-    && uv export --locked --no-dev --extra postgres --no-emit-project \
+    && uv export --locked --no-dev --extra analytics --extra postgres --no-emit-project \
         --format requirements-txt --output-file /dist/requirements.txt \
     && uv run --locked --extra dev python -m build --no-isolation \
         --wheel --outdir /dist
@@ -30,7 +30,7 @@ ARG VCS_REF=unknown
 
 LABEL org.opencontainers.image.title="H-CAM Core" \
       org.opencontainers.image.description="Phase 2 camera and video ingestion foundation" \
-      org.opencontainers.image.source="https://github.com/mayankthakor227/h-cam-2.0" \
+      org.opencontainers.image.source="https://github.com/hcam-2-0/h-cam-2.0" \
       org.opencontainers.image.revision="${VCS_REF}"
 
 ENV HCAM_ENVIRONMENT=production \

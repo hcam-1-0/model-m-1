@@ -1,0 +1,92 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_transaction_runner_r0_implementation_authorization_package.v1",
+  "package_id": "P36-QUARANTINE-TRANSACTION-RUNNER-R0-IMPLEMENTATION-AUTHORIZATION-PACKAGE",
+  "status": "sealed_non_effective_owner_implementation_authorization_pending",
+  "sealed_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "owner_decision_id": "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH",
+  "owner_decision_effect_if_exactly_accepted": "authorize_only_reviewable_runner_and_generated_machine_independent_contract_harness_implementation_without_machine_or_execution_authority",
+  "core_file_count": 6,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-owner-decisions.json",
+      "sha256": "802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3",
+      "role": "exact_U3H_AAAAAA_planning_policy_acceptance"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-source-proposal.txt",
+      "sha256": "DCCEF81B1D8634E851FBF19AF6260FF71120A2FDB2DFE50468801A4527714C83",
+      "role": "human_reviewable_non_executable_source_control_flow_proposal"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-source-contract.json",
+      "sha256": "473048EF79BC359913AF85515509AD6F1AA8BA32DFD3E5D6E37B4BB170CB45F8",
+      "role": "future_runtime_interface_static_dispatch_invariant_and_evidence_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-contract-tests.json",
+      "sha256": "3E834BC64BA1F20A0DD6338F865EDC62A0A02B1987AD71E8D8A8488ABC23AB38",
+      "role": "twenty_generated_only_non_executable_contract_vectors"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-authorization-proposal.json",
+      "sha256": "38EA229DEBB89A0CA46A9C1733A980F189CE20509FB13DCBBA7D198D6BB92FDA",
+      "role": "exact_non_effective_implementation_authorization_proposal_and_owner_statement_template"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-authorization-proposal.md",
+      "sha256": "4A4AA81C5D1CF7561009EBF3D0F84E6110BFADC825DA523D0FD0D02F9E7212BF",
+      "role": "human_owner_review_document"
+    }
+  ],
+  "proposed_implementation_scope": {
+    "runner_language_family": "PowerShell_7_on_Windows",
+    "executable_source_files": 1,
+    "machine_independent_contract_harnesses": 1,
+    "generated_contract_vectors": 20,
+    "static_allowlisted_action_ids": 10,
+    "dynamic_dispatch": false,
+    "machine_access_in_contract_tests": false,
+    "network_access": false,
+    "implementation_evidence_required": true,
+    "later_exact_source_and_runtime_binding_required": true
+  },
+  "sequence_after_exact_acceptance": [
+    "implement_only_the_reviewable_runner_and_generated_contract_harness_on_the_isolated_branch",
+    "run_only_machine_independent_generated_contract_tests",
+    "seal_exact_implemented_source_test_evidence_and_required_runtime_binding_contract",
+    "obtain_separate_owner_acceptance_of_the_implementation_evidence_package",
+    "prepare_a_new_final_storage_execution_package_bound_to_exact_runner_and_runtime_digests",
+    "obtain_separate_digest_bound_storage_execution_authorization"
+  ],
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_package_digest_and_is_not_self_embedded",
+  "current_gate_effect": {
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked",
+    "owner_U3I_implementation_authorization_exists": false,
+    "runner_implementation_authorized": false,
+    "generated_contract_harness_implementation_authorized": false,
+    "runner_execution_authorized": false,
+    "storage_attempt_authorized": false,
+    "machine_access_authorized": false,
+    "Defender_or_scanner_action_authorized": false,
+    "artifact_acquisition_authorized": false
+  },
+  "owner_acceptance_may_be_inferred_from_continue_U3H_acceptance_or_storage_proposal_acceptance": false,
+  "runner_implementation_authorized": false,
+  "runner_or_contract_test_execution_authorized": false,
+  "storage_or_hardware_query_authorized": false,
+  "storage_directory_creation_ACL_write_probe_or_cleanup_authorized": false,
+  "Defender_query_hash_or_WinVerifyTrust_authorized": false,
+  "scanner_install_update_or_execution_authorized": false,
+  "artifact_or_dependency_acquisition_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "profile_resolution_or_activation_authorized": false,
+  "container_or_kubernetes_action_authorized": false,
+  "camera_media_or_data_access_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

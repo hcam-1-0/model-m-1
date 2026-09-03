@@ -1,0 +1,2315 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3v_h1_r1_diagnostic_vectors.v1",
+  "contract_version": "1.0.0",
+  "generated_only": true,
+  "external_fixture_model_media_or_Government_data": false,
+  "vector_count": 128,
+  "mutation_schema": {
+    "operations": [
+      "noop",
+      "replace_root",
+      "set",
+      "delete"
+    ],
+    "path_representation": "array_of_mapping_keys",
+    "candidate_values_retained_outside_this_generated_manifest": false
+  },
+  "base_candidate": {
+    "contract_version": "1.0.0",
+    "terminal": true,
+    "succeeded": true,
+    "reason_code": "policy_valid",
+    "stage_projection": {
+      "completed_actions": 18,
+      "failed_action": null,
+      "failed_stage": null
+    },
+    "action_counts": {
+      "planned": 18,
+      "completed": 18,
+      "attempts": 1,
+      "retries": 0,
+      "processes": 0
+    },
+    "retention_projection": {
+      "raw_material_retained_bytes": 0,
+      "sanitized_result_only": true,
+      "cleanup_actions": 0
+    },
+    "gate_effect": {
+      "machine_action_authorized": false,
+      "python_machine_fallback": false,
+      "retry_authorized": false,
+      "U3T_preflight_authorized": false,
+      "U3K_authorized": false,
+      "deployment_authorized": false,
+      "next_gate": "owner_source_implementation_acceptance_required"
+    }
+  },
+  "coverage_requirements": {
+    "every_allowlisted_terminal_reason_code": true,
+    "every_diagnostic_group": true,
+    "every_controller_reason_family": true,
+    "output_bound_and_redaction": true,
+    "fail_closed_transition": true,
+    "minimum_python_reference_branch_coverage_percent": 95
+  },
+  "vectors": [
+    {
+      "vector_id": "U3V-001",
+      "group": "valid_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "noop",
+          "path": []
+        }
+      ],
+      "expected_reason_code": "controller_projection_valid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": true
+    },
+    {
+      "vector_id": "U3V-002",
+      "group": "valid_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "noop",
+          "path": []
+        }
+      ],
+      "expected_reason_code": "controller_projection_valid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": true
+    },
+    {
+      "vector_id": "U3V-003",
+      "group": "valid_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "noop",
+          "path": []
+        }
+      ],
+      "expected_reason_code": "controller_projection_valid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": true
+    },
+    {
+      "vector_id": "U3V-004",
+      "group": "valid_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "noop",
+          "path": []
+        }
+      ],
+      "expected_reason_code": "controller_projection_valid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": true
+    },
+    {
+      "vector_id": "U3V-005",
+      "group": "top_level_shape",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "replace_root",
+          "path": [],
+          "value": null
+        }
+      ],
+      "expected_reason_code": "controller_top_level_shape_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-006",
+      "group": "top_level_shape",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "replace_root",
+          "path": [],
+          "value": []
+        }
+      ],
+      "expected_reason_code": "controller_top_level_shape_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-007",
+      "group": "top_level_shape",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "replace_root",
+          "path": [],
+          "value": "not-a-mapping"
+        }
+      ],
+      "expected_reason_code": "controller_top_level_shape_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-008",
+      "group": "top_level_shape",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "replace_root",
+          "path": [],
+          "value": 0
+        }
+      ],
+      "expected_reason_code": "controller_top_level_shape_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-009",
+      "group": "top_level_shape",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "replace_root",
+          "path": [],
+          "value": true
+        }
+      ],
+      "expected_reason_code": "controller_top_level_shape_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-010",
+      "group": "top_level_shape",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "replace_root",
+          "path": [],
+          "value": {}
+        }
+      ],
+      "expected_reason_code": "controller_top_level_shape_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-011",
+      "group": "top_level_shape",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "contract_version"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_top_level_shape_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-012",
+      "group": "top_level_shape",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "terminal"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_top_level_shape_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-013",
+      "group": "top_level_shape",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "succeeded"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_top_level_shape_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-014",
+      "group": "top_level_shape",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "reason_code"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_top_level_shape_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-015",
+      "group": "top_level_shape",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "stage_projection"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_top_level_shape_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-016",
+      "group": "top_level_shape",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "action_counts"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_top_level_shape_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-017",
+      "group": "top_level_shape",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "retention_projection"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_top_level_shape_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-018",
+      "group": "top_level_shape",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "gate_effect"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_top_level_shape_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-019",
+      "group": "contract_identity",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "contract_version"
+          ],
+          "value": ""
+        }
+      ],
+      "expected_reason_code": "controller_contract_identity_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-020",
+      "group": "contract_identity",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "contract_version"
+          ],
+          "value": "0.9.0"
+        }
+      ],
+      "expected_reason_code": "controller_contract_identity_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-021",
+      "group": "contract_identity",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "contract_version"
+          ],
+          "value": null
+        }
+      ],
+      "expected_reason_code": "controller_contract_identity_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-022",
+      "group": "contract_identity",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "contract_version"
+          ],
+          "value": 1
+        }
+      ],
+      "expected_reason_code": "controller_contract_identity_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-023",
+      "group": "contract_identity",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "contract_version"
+          ],
+          "value": true
+        }
+      ],
+      "expected_reason_code": "controller_contract_identity_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-024",
+      "group": "contract_identity",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "contract_version"
+          ],
+          "value": []
+        }
+      ],
+      "expected_reason_code": "controller_contract_identity_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-025",
+      "group": "terminal_state",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "terminal"
+          ],
+          "value": false
+        }
+      ],
+      "expected_reason_code": "controller_terminal_state_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-026",
+      "group": "terminal_state",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "terminal"
+          ],
+          "value": null
+        }
+      ],
+      "expected_reason_code": "controller_terminal_state_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-027",
+      "group": "terminal_state",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "terminal"
+          ],
+          "value": 0
+        }
+      ],
+      "expected_reason_code": "controller_terminal_state_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-028",
+      "group": "terminal_state",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "terminal"
+          ],
+          "value": 1
+        }
+      ],
+      "expected_reason_code": "controller_terminal_state_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-029",
+      "group": "terminal_state",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "terminal"
+          ],
+          "value": "true"
+        }
+      ],
+      "expected_reason_code": "controller_terminal_state_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-030",
+      "group": "terminal_state",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "terminal"
+          ],
+          "value": []
+        }
+      ],
+      "expected_reason_code": "controller_terminal_state_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-031",
+      "group": "terminal_state",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "succeeded"
+          ],
+          "value": null
+        }
+      ],
+      "expected_reason_code": "controller_terminal_state_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-032",
+      "group": "terminal_state",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "succeeded"
+          ],
+          "value": 0
+        }
+      ],
+      "expected_reason_code": "controller_terminal_state_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-033",
+      "group": "terminal_state",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "succeeded"
+          ],
+          "value": 1
+        }
+      ],
+      "expected_reason_code": "controller_terminal_state_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-034",
+      "group": "terminal_state",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "succeeded"
+          ],
+          "value": "true"
+        }
+      ],
+      "expected_reason_code": "controller_terminal_state_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-035",
+      "group": "reason_family",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": "unknown"
+        }
+      ],
+      "expected_reason_code": "controller_reason_family_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-036",
+      "group": "reason_family",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": ""
+        }
+      ],
+      "expected_reason_code": "controller_reason_family_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-037",
+      "group": "reason_family",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": "POLICY_VALID"
+        }
+      ],
+      "expected_reason_code": "controller_reason_family_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-038",
+      "group": "reason_family",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": "request_contract_failure"
+        }
+      ],
+      "expected_reason_code": "controller_reason_family_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-039",
+      "group": "reason_family",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": "raw_failure"
+        }
+      ],
+      "expected_reason_code": "controller_reason_family_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-040",
+      "group": "reason_family",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": "blocked"
+        }
+      ],
+      "expected_reason_code": "controller_reason_family_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-041",
+      "group": "reason_family",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": null
+        }
+      ],
+      "expected_reason_code": "controller_reason_family_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-042",
+      "group": "reason_family",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": []
+        }
+      ],
+      "expected_reason_code": "controller_reason_family_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-043",
+      "group": "reason_family",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": 7
+        }
+      ],
+      "expected_reason_code": "controller_reason_family_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-044",
+      "group": "reason_family",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": true
+        }
+      ],
+      "expected_reason_code": "controller_reason_family_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-045",
+      "group": "reason_family",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "succeeded"
+          ],
+          "value": false
+        }
+      ],
+      "expected_reason_code": "controller_reason_family_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-046",
+      "group": "reason_family",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": "request_contract_failed"
+        },
+        {
+          "op": "set",
+          "path": [
+            "succeeded"
+          ],
+          "value": true
+        }
+      ],
+      "expected_reason_code": "controller_reason_family_invalid",
+      "expected_controller_reason_family": "sanitized_failure",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-047",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "stage_projection"
+          ],
+          "value": null
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-048",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "stage_projection"
+          ],
+          "value": []
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-049",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "stage_projection"
+          ],
+          "value": "stage"
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-050",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "stage_projection"
+          ],
+          "value": 0
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-051",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "stage_projection"
+          ],
+          "value": true
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-052",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "stage_projection",
+            "completed_actions"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-053",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "stage_projection",
+            "failed_action"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-054",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "stage_projection",
+            "failed_stage"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-055",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "extra"
+          ],
+          "value": false
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-056",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "completed_actions"
+          ],
+          "value": -1
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-057",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "completed_actions"
+          ],
+          "value": 19
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-058",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "completed_actions"
+          ],
+          "value": null
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-059",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "completed_actions"
+          ],
+          "value": true
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-060",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "completed_actions"
+          ],
+          "value": "18"
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-061",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "completed_actions"
+          ],
+          "value": []
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-062",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "failed_action"
+          ],
+          "value": "bind_sources"
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-063",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "completed_actions"
+          ],
+          "value": 17
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-064",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "failed_stage"
+          ],
+          "value": "source_binding_failed"
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-065",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": "request_contract_failed"
+        },
+        {
+          "op": "set",
+          "path": [
+            "succeeded"
+          ],
+          "value": false
+        },
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "failed_action"
+          ],
+          "value": "validate_request_contract"
+        },
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "completed_actions"
+          ],
+          "value": 0
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "sanitized_failure",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-066",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": "authorization_binding_failed"
+        },
+        {
+          "op": "set",
+          "path": [
+            "succeeded"
+          ],
+          "value": false
+        },
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "failed_action"
+          ],
+          "value": "validate_authorization_binding"
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "sanitized_failure",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-067",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": "runtime_path_classification_failed"
+        },
+        {
+          "op": "set",
+          "path": [
+            "succeeded"
+          ],
+          "value": false
+        },
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "failed_action"
+          ],
+          "value": "classify_runtime_path"
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "sanitized_failure",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-068",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": "source_binding_failed"
+        },
+        {
+          "op": "set",
+          "path": [
+            "succeeded"
+          ],
+          "value": false
+        },
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "failed_action"
+          ],
+          "value": "bind_sources"
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "sanitized_failure",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-069",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": "result_contract_invalid"
+        },
+        {
+          "op": "set",
+          "path": [
+            "succeeded"
+          ],
+          "value": false
+        },
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "failed_action"
+          ],
+          "value": "validate_result_contract"
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "sanitized_failure",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-070",
+      "group": "stage_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "reason_code"
+          ],
+          "value": "cross_language_projection_diverged"
+        },
+        {
+          "op": "set",
+          "path": [
+            "succeeded"
+          ],
+          "value": false
+        },
+        {
+          "op": "set",
+          "path": [
+            "stage_projection",
+            "failed_action"
+          ],
+          "value": "compare_cross_language_projection"
+        }
+      ],
+      "expected_reason_code": "controller_stage_projection_invalid",
+      "expected_controller_reason_family": "sanitized_failure",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-071",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "action_counts"
+          ],
+          "value": null
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-072",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "action_counts"
+          ],
+          "value": []
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-073",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "action_counts"
+          ],
+          "value": "counts"
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-074",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "action_counts"
+          ],
+          "value": 0
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-075",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "action_counts"
+          ],
+          "value": true
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-076",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "action_counts",
+            "planned"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-077",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "action_counts",
+            "completed"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-078",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "action_counts",
+            "attempts"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-079",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "action_counts",
+            "retries"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-080",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "action_counts",
+            "processes"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-081",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "action_counts",
+            "extra"
+          ],
+          "value": 0
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-082",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "action_counts",
+            "planned"
+          ],
+          "value": 17
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-083",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "action_counts",
+            "completed"
+          ],
+          "value": 17
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-084",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "action_counts",
+            "attempts"
+          ],
+          "value": 0
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-085",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "action_counts",
+            "retries"
+          ],
+          "value": 1
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-086",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "action_counts",
+            "processes"
+          ],
+          "value": 1
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-087",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "action_counts",
+            "planned"
+          ],
+          "value": true
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-088",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "action_counts",
+            "completed"
+          ],
+          "value": null
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-089",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "action_counts",
+            "attempts"
+          ],
+          "value": "1"
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-090",
+      "group": "action_counts",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "action_counts",
+            "retries"
+          ],
+          "value": []
+        }
+      ],
+      "expected_reason_code": "controller_action_counts_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-091",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "retention_projection"
+          ],
+          "value": null
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-092",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "retention_projection"
+          ],
+          "value": []
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-093",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "retention_projection"
+          ],
+          "value": "retention"
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-094",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "retention_projection"
+          ],
+          "value": 0
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-095",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "retention_projection"
+          ],
+          "value": true
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-096",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "retention_projection",
+            "raw_material_retained_bytes"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-097",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "retention_projection",
+            "sanitized_result_only"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-098",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "retention_projection",
+            "cleanup_actions"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-099",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "retention_projection",
+            "extra"
+          ],
+          "value": 0
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-100",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "retention_projection",
+            "raw_material_retained_bytes"
+          ],
+          "value": 1
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-101",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "retention_projection",
+            "raw_material_retained_bytes"
+          ],
+          "value": null
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-102",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "retention_projection",
+            "raw_material_retained_bytes"
+          ],
+          "value": true
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-103",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "retention_projection",
+            "sanitized_result_only"
+          ],
+          "value": false
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-104",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "retention_projection",
+            "sanitized_result_only"
+          ],
+          "value": null
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-105",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "retention_projection",
+            "cleanup_actions"
+          ],
+          "value": 1
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-106",
+      "group": "retention_projection",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "retention_projection",
+            "cleanup_actions"
+          ],
+          "value": null
+        }
+      ],
+      "expected_reason_code": "controller_retention_projection_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-107",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "gate_effect"
+          ],
+          "value": null
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-108",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "gate_effect"
+          ],
+          "value": []
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-109",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "gate_effect"
+          ],
+          "value": "gate"
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-110",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "gate_effect"
+          ],
+          "value": 0
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-111",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "gate_effect",
+            "machine_action_authorized"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-112",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "gate_effect",
+            "python_machine_fallback"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-113",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "gate_effect",
+            "retry_authorized"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-114",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "gate_effect",
+            "U3T_preflight_authorized"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-115",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "gate_effect",
+            "U3K_authorized"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-116",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "gate_effect",
+            "deployment_authorized"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-117",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "delete",
+          "path": [
+            "gate_effect",
+            "next_gate"
+          ]
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-118",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "gate_effect",
+            "extra"
+          ],
+          "value": false
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-119",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "gate_effect",
+            "machine_action_authorized"
+          ],
+          "value": true
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-120",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "gate_effect",
+            "python_machine_fallback"
+          ],
+          "value": true
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-121",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "gate_effect",
+            "retry_authorized"
+          ],
+          "value": true
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-122",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "gate_effect",
+            "U3K_authorized"
+          ],
+          "value": true
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-123",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "gate_effect",
+            "deployment_authorized"
+          ],
+          "value": true
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-124",
+      "group": "gate_effect",
+      "input_kind": "candidate",
+      "mutations": [
+        {
+          "op": "set",
+          "path": [
+            "gate_effect",
+            "next_gate"
+          ],
+          "value": "blocked"
+        }
+      ],
+      "expected_reason_code": "controller_gate_effect_invalid",
+      "expected_controller_reason_family": "policy_valid",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-125",
+      "group": "terminal_projection",
+      "input_kind": "diagnostic_projection",
+      "input_reason_code": "source_binding_failed",
+      "input_controller_reason_family": "unknown_or_unavailable",
+      "expected_reason_code": "source_binding_failed",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-126",
+      "group": "terminal_projection",
+      "input_kind": "diagnostic_projection",
+      "input_reason_code": "diagnostic_internal_contract_invalid",
+      "input_controller_reason_family": "unknown_or_unavailable",
+      "expected_reason_code": "diagnostic_internal_contract_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-127",
+      "group": "terminal_projection",
+      "input_kind": "diagnostic_projection",
+      "input_reason_code": "not_allowlisted",
+      "input_controller_reason_family": "policy_valid",
+      "expected_reason_code": "diagnostic_internal_contract_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    },
+    {
+      "vector_id": "U3V-128",
+      "group": "terminal_projection",
+      "input_kind": "diagnostic_projection",
+      "input_reason_code": "controller_projection_valid",
+      "input_controller_reason_family": "not_allowlisted",
+      "expected_reason_code": "diagnostic_internal_contract_invalid",
+      "expected_controller_reason_family": "unknown_or_unavailable",
+      "expected_succeeded": false
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "approval_effect": "cpu_reference_contract_approved_for_generated_only_p3_2_implementation",
+  "approved_at": "2026-08-24T16:50:00Z",
+  "approved_by": "mayank-admin",
+  "artifact": {
+    "artifact_id": "DET-R0-ONNX-UPSTREAM-0.1.1RC0",
+    "sha256": "427CC366D34E27FF7A03E2899B5E3671425C262EA2291F88BB942BC1CC70B0F7"
+  },
+  "contract_format": "hcam.phase3.p3_2.runtime-approval.v1",
+  "decision_id": "D-P3.2-004",
+  "determinism": {
+    "cpu_threads": 1,
+    "execution_mode": "sequential",
+    "expected_repeat_output_sha256": "3562559CAD2DCD1AD0A15C74E3425A371B1725BA5574CDADF5FDB375FE3A519C",
+    "graph_optimization": "basic",
+    "policy": "same artifact runtime generated input and configuration must produce identical float32 output bytes on LAB-LAPTOP-01"
+  },
+  "environment": {
+    "dependency_lock": "contracts/phase-3/p3-2-research-requirements.lock",
+    "numpy": "2.5.2",
+    "onnx": "1.22.0",
+    "onnxruntime": "1.29.0",
+    "python": "3.14.6",
+    "target_machine": "LAB-LAPTOP-01"
+  },
+  "fail_closed": {
+    "artifact_absent_or_digest_mismatch": "artifact_rejected",
+    "deadline_exceeded": "deadline_exceeded",
+    "malformed_input": "invalid_input",
+    "malformed_output": "runtime_internal",
+    "missing_runtime": "runtime_unconfigured",
+    "resource_limit": "resource_exhausted",
+    "silent_execution_provider_fallback": "prohibited"
+  },
+  "input": {
+    "batch": 1,
+    "channel_order": "BGR",
+    "dtype": "float32",
+    "layout": "NCHW",
+    "name": "images",
+    "normalization": "none_values_remain_0_to_255",
+    "padding": "top_left_letterbox_value_114",
+    "resize": "bilinear_ratio_min_416_over_height_416_over_width",
+    "shape": [
+      1,
+      3,
+      416,
+      416
+    ]
+  },
+  "owner_statement": "d-p3.2 start",
+  "parity": {
+    "algorithm_revision": "6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+    "demo_sha256": "C51AA9E9A86D8561FE9E318E119A4FBE80D1F93639527B039F403D6ADC65D68F",
+    "postprocess_sha256": "E1D6E1D263691AC15FDAA4F891EFA83707DA4AF0FD895BE122459105DF3EE601",
+    "preprocess_sha256": "F99B0B1568DAFDE0ACD99F0A1E27A33644885349834D55A9DC632FE691EE352D",
+    "tolerance_absolute": 1e-05,
+    "tolerance_relative": 1e-05
+  },
+  "postprocessing": {
+    "box_conversion": "decoded_cx_cy_width_height_to_xyxy_then_divide_by_resize_ratio",
+    "class_mapping": {
+      "0": "object.person",
+      "1": "vehicle.bicycle",
+      "2": "vehicle.car",
+      "3": "vehicle.motorcycle",
+      "5": "vehicle.bus",
+      "7": "vehicle.truck",
+      "other": "object.unknown"
+    },
+    "decode": "strides_8_16_32_grid_offsets_and_exponential_width_height",
+    "nms_iou_threshold": 0.45,
+    "nms_mode": "class_agnostic",
+    "score": "objectness_times_highest_class_probability",
+    "score_threshold": "assignment.minimum_confidence"
+  },
+  "resource_limits": {
+    "maximum_batch_size": 1,
+    "maximum_candidates_after_nms": 300,
+    "maximum_input_pixels": 173056,
+    "maximum_resident_memory_bytes": 1073741824,
+    "timeout_ms_per_input": 1000
+  },
+  "runtime": {
+    "adapter_id": "hcam.yolox_tiny.onnxruntime_cpu",
+    "artifact_access": "verified_handle_only",
+    "execution_provider": "CPUExecutionProvider",
+    "network_access": "denied"
+  },
+  "status": "owner_approved_cpu_reference"
+}

@@ -1,0 +1,76 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_r1_dual_architecture_planning_package.v1",
+  "package_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-R1-DUAL-ARCHITECTURE-PLANNING-PACKAGE",
+  "acceptance_decision_id": "D-P3.6-U3S-R1-DUAL-ARCHITECTURE-ACCEPTANCE",
+  "status": "sealed_non_effective_revised_owner_acceptance_pending",
+  "sealed_on": "2026-09-01",
+  "revision_reason": "owner_selected_combined_A_and_B_controller_architecture_not_represented_by_the_R0_single_option_packet",
+  "supersession_policy": {
+    "R0_package_path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-remediation-planning-package.json",
+    "R0_package_sha256": "30DE3B7E261568FC1DB6499C9975B600298BD8E3531858D2BC688E1BF5527592",
+    "R0_package_modified": false,
+    "R0_exact_acceptance_recorded": false,
+    "R1_is_additive_revision": true
+  },
+  "core_file_count": 4,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-remediation-planning-package.json",
+      "sha256": "30DE3B7E261568FC1DB6499C9975B600298BD8E3531858D2BC688E1BF5527592"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-dual-architecture-owner-selections.json",
+      "sha256": "696A00C2BD0E0EF01122AFD5CB0A63AE020BBA3AC56A32113193FF2F76936E9A"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-dual-architecture-proposal.json",
+      "sha256": "B19860B5A6AEB27EEB656F67DED9EA26377145877E8B0E74643EDC2343834749"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-r1-dual-architecture-proposal.md",
+      "sha256": "7B8603685DBCBB016E1AB6F714D123D7FA1C91AC516A49C73BBCD2ADAB663B39"
+    }
+  ],
+  "recorded_selections": {
+    "D-P3.6-U3S-001": "A+B",
+    "D-P3.6-U3S-002": "A",
+    "D-P3.6-U3S-003": "A",
+    "D-P3.6-U3S-004": "A"
+  },
+  "normalized_architecture": {
+    "PowerShell": "authoritative_Windows_machine_controller",
+    "Python": "portable_policy_reference_controller_and_cross_language_oracle",
+    "default_machine_controller": "PowerShell_only",
+    "Python_machine_enabled": false,
+    "automatic_failover": false,
+    "simultaneous_machine_execution": false,
+    "shared_contract_and_generated_vectors": true,
+    "divergence_policy": "fail_closed"
+  },
+  "future_owner_acceptance_statement_template": "D-P3.6-U3S-R1-DUAL-ARCHITECTURE-ACCEPTANCE: I, mayank-admin, accept revised planning package digest <U3S_R1_PLANNING_PACKAGE_DIGEST_SHA256> and confirm D-P3.6-U3S-001:A+B, D-P3.6-U3S-002:A, D-P3.6-U3S-003:A, and D-P3.6-U3S-004:A. PowerShell is the authoritative Windows machine controller; Python is the machine-disabled portable policy reference controller and cross-language oracle. This authorizes preparation only of a separate source-only implementation authorization proposal for the shared contracts, both controller sources, and generated static tests. It does not authorize source or test implementation; PowerShell or Python execution; Python machine access or fallback; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, U3K, another attempt, or remote Git.",
+  "effect_if_exactly_accepted": {
+    "record_R1_architecture_acceptance": true,
+    "prepare_separate_source_only_dual_controller_implementation_authorization_proposal": true,
+    "source_or_test_implementation_authorized": false,
+    "PowerShell_or_Python_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "retry_or_generated_validation_authorized": false,
+    "U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  },
+  "current_gate_effect": {
+    "owner_selections_recorded": true,
+    "revised_R1_acceptance_pending": true,
+    "attempts_authorized": 0,
+    "source_or_test_implementation_authorized": false,
+    "PowerShell_or_Python_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  },
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U3S_R1_planning_package_digest_and_is_not_self_embedded",
+  "authorization_may_be_inferred_from_owner_selections_continue_silence_or_package_preparation": false
+}

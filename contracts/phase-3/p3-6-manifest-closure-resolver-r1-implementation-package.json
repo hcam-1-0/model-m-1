@@ -1,0 +1,102 @@
+{
+  "contract_format": "hcam.phase3.p3_6.manifest_closure_resolver_r1_implementation_package.v1",
+  "package_id": "P36-MANIFEST-CLOSURE-RESOLVER-R1-IMPLEMENTATION-PACKAGE",
+  "status": "sealed_source_generated_static_and_bounded_local_diagnostic_complete",
+  "sealed_on": "2026-09-03",
+  "decision_binding": {
+    "delegation_path": "contracts/phase-3/p3-6-combined-execution-delegation.json",
+    "delegation_sha256": "24A5D29CBA1B6DA990207EE2C4E7BD8DF8CB0DC2D36AD526461E494F8E5C3C09",
+    "U4E_planning_package_path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4e-remediation-planning-package.json",
+    "U4E_planning_package_sha256": "C0BF901B7D66BE11A250F9369C5CE564A59A726E88877E4A77CD36F310997B7D",
+    "selection": "A/A/A/A/A"
+  },
+  "core_file_count": 13,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-result.json",
+      "sha256": "B49F02F504CF4D02B1D8BA59808154BE180A7EF5B251859F356D18A896E386BC",
+      "role": "immutable_consumed_R2_failure"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-evidence.json",
+      "sha256": "7D76C61B6D2DB5544B3C79BB19B145F27AF371014C174CA8ED8AECDB3AC5D2C6",
+      "role": "immutable_consumed_R2_evidence"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4e-remediation-planning-package.json",
+      "sha256": "C0BF901B7D66BE11A250F9369C5CE564A59A726E88877E4A77CD36F310997B7D",
+      "role": "immutable_U4E_planning_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-combined-execution-delegation.json",
+      "sha256": "24A5D29CBA1B6DA990207EE2C4E7BD8DF8CB0DC2D36AD526461E494F8E5C3C09",
+      "role": "owner_combined_execution_delegation_and_transparent_agent_selection"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-manifest-closure-resolver-r1-contract.json",
+      "sha256": "1116F91CF2854A5549417D53B944852D4D4ADB0475FA7C7F2337BB0E13CABAC7",
+      "role": "typed_resolver_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-manifest-closure-resolver-r1-vectors.json",
+      "sha256": "265BE94AC5AE034E25270C642D1488D7F73F4DBA7D38A715502C87957D4611D3",
+      "role": "512_generated_vectors"
+    },
+    {
+      "path": "tools/phase36_manifest_closure_resolver_r1_reference.py",
+      "sha256": "8C9EF240FC7200839B8210DBA1CEAA469C697E92C6D7D40BA2BC0F175A2AB249",
+      "role": "machine_disabled_reference"
+    },
+    {
+      "path": "tools/phase36_manifest_closure_resolver_r1.psm1",
+      "sha256": "C37C4D60DB0CA71AA2E30F3E1254143B902B42E84AA0E98CD8F9B7B5F863AB8A",
+      "role": "authoritative_PowerShell_policy"
+    },
+    {
+      "path": "tools/generate_phase36_manifest_closure_vectors.py",
+      "sha256": "0F2E2AC1C0485728BE1C4E8C13B09E08F348954513195EEB154A0CFBEF264980",
+      "role": "deterministic_vector_generator"
+    },
+    {
+      "path": "tests/test_phase36_manifest_closure_resolver_r1_contract.py",
+      "sha256": "FDE672E23C405658A88B3192FBC95878718C7BE6B33D6D2DD104003ECCCA2288",
+      "role": "contract_and_vector_validation"
+    },
+    {
+      "path": "tests/test_phase36_manifest_closure_resolver_r1_reference.py",
+      "sha256": "E09D864FB0E2383974C08EDB4BE8BC6B093790A1D8A4AE6A51DDD8152D2149F5",
+      "role": "reference_validation"
+    },
+    {
+      "path": "tests/test_phase36_manifest_closure_resolver_r1_powershell_static.py",
+      "sha256": "6D65E994B09BBAB2A700D1742958140F3759A38E85C03BA581E8DCC492683152",
+      "role": "PowerShell_static_validation"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-manifest-closure-resolver-r1-implementation-evidence.json",
+      "sha256": "76859C7AFFBA8FB4308288797DE6E7BB51B804633555AB1FE6D049E84ABA8FFF",
+      "role": "sealed_implementation_and_local_diagnostic_evidence"
+    }
+  ],
+  "review_document": {
+    "path": "docs/phase-3/p3-6-manifest-closure-resolver-r1-evidence-review.md",
+    "sha256": "DC24CA0F14FFE44AFFFA875D9CC91D3D393FFC43F7C08A9FE2C048B07283675A"
+  },
+  "validation_summary": {
+    "generated_vectors": 512,
+    "generated_groups": 16,
+    "focused_tests_passed": 530,
+    "full_Phase_3_6_tests_passed": 2573,
+    "full_Phase_3_6_tests_failed": 0,
+    "Ruff": "passed",
+    "PowerShell_module_projection": "passed"
+  },
+  "current_effect": {
+    "U4F_source_remediation_complete": true,
+    "R3_runtime_closeout_required": true,
+    "U3K_storage_complete": false,
+    "Phase_3_complete": false,
+    "remote_Git_performed": false
+  },
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U4F_implementation_package_digest_and_is_not_self_embedded"
+}

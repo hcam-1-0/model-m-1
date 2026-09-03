@@ -1,0 +1,104 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_remediation_r1_authorization_package.v1",
+  "package_id": "P36-QUARANTINE-REMEDIATION-R1-AUTHORIZATION-PACKAGE",
+  "status": "sealed_non_effective_owner_authorization_pending",
+  "sealed_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "owner_decision_id": "D-P3.6-U3G-BINDING-R1-AUTH",
+  "owner_decision_effect_if_exactly_accepted": "authorize_one_bounded_local_F_quarantine_security_at_create_storage_attestation_and_read_only_Defender_hash_and_cache_only_WinVerifyTrust_binding_attempt_within_24_hours",
+  "core_file_count": 4,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-remediation-r1-owner-decisions.json",
+      "sha256": "BDA7E9C6B8ACF4ECB8641B61F47A45E4E02768B58C7E3A08179507B7ABAFDF1F",
+      "role": "exact_U3F_AAAAAA_owner_policy_acceptance"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-remediation-r1-action-spec.json",
+      "sha256": "31179542F3C0729895BB40FF766FAF1F7AECE9E9080821742BE45ACF60F10F77",
+      "role": "exact_secure_root_atomic_probe_Defender_binding_actions_timeouts_sanitization_failure_and_output_specification"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-remediation-r1-authorization-proposal.json",
+      "sha256": "C72D3278D413208DE104BB15A6AC3988F42ABA934C4F196CAD38DB8C5DB4E2EC",
+      "role": "non_effective_owner_authorization_proposal_and_exact_acceptance_template"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-remediation-r1-authorization-proposal.md",
+      "sha256": "54D9860666A61601F80BD8ADD54F90CBF8305359930A78C53B42D4D6C6C7EBCE",
+      "role": "human_owner_review_document"
+    }
+  ],
+  "accepted_U3F_policy": {
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-remediation-r1-owner-decisions.json",
+    "acceptance_sha256": "BDA7E9C6B8ACF4ECB8641B61F47A45E4E02768B58C7E3A08179507B7ABAFDF1F",
+    "decision_package_digest_sha256": "9EBE27812F6E1D8D52728248B33B54A852FECCD59E0BB8B0F919925461DF4F78",
+    "selection": "A/A/A/A/A/A"
+  },
+  "consumed_U3E_evidence": {
+    "authorization_sha256": "0DB03056BEF964D0B5C830DE01C3FE91DA87592BFAF1905D7C8307AC71FA5208",
+    "result_sha256": "3DE3B1E08CF39D9348BD9873C378E0CA0FE6EC8806AB27E0C48A6BB975A72BF2",
+    "evidence_sha256": "2FB06243003FF4C4E48C7E7BEF67C2B79C4BCA65826E1B09769AF688AE536376",
+    "attempt_consumed": true,
+    "retry_authorized_by_U3E": false
+  },
+  "attempt_scope_if_accepted": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "candidate_volume": "F:",
+    "exact_candidate_root": "F:\\HCAM-Quarantine",
+    "required_initial_candidate_state": "absent",
+    "maximum_attempts": 1,
+    "authorization_use_window_seconds": 86400,
+    "storage_attestation_validity_seconds": 3600,
+    "maximum_probe_bytes": 4096,
+    "maximum_Defender_candidate_bytes": 134217728,
+    "maximum_direct_Defender_platform_directories": 64,
+    "network_access": false,
+    "security_at_create_protected_DACL": true,
+    "current_process_SID_in_memory_only": true,
+    "current_process_rights": "Modify",
+    "LocalSystem_and_Administrators_rights": "FullControl",
+    "Defender_status_query": true,
+    "Defender_exact_candidate_SHA_256": true,
+    "Defender_cache_only_whole_chain_WinVerifyTrust": true,
+    "Defender_or_other_scanner_execution": false,
+    "ModelScan_query_install_import_or_execution": false,
+    "exact_output_paths": [
+      "contracts/phase-3/p3-6-quarantine-remediation-r1-authorization.json",
+      "contracts/phase-3/p3-6-quarantine-remediation-r1-result.json",
+      "contracts/phase-3/p3-6-quarantine-remediation-r1-evidence.json"
+    ]
+  },
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_package_digest_and_is_not_self_embedded",
+  "current_gate_effect": {
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked",
+    "owner_U3F_selections_recorded": true,
+    "owner_U3G_authorization_exists": false,
+    "another_attempt_authorized": false,
+    "F_volume_attested_by_U3G": false,
+    "candidate_root_created_queried_or_modified_by_U3G": false,
+    "ACL_action_authorized": false,
+    "storage_probe_authorized": false,
+    "Defender_query_hash_or_WinVerifyTrust_authorized": false,
+    "scanner_chain_ready": false,
+    "artifact_acquisition_authorized": false
+  },
+  "owner_acceptance_may_be_inferred_from_continue_prior_U3E_authority_or_U3F_selections": false,
+  "storage_or_hardware_query_authorized": false,
+  "storage_directory_creation_ACL_write_probe_or_cleanup_authorized": false,
+  "Defender_query_hash_or_WinVerifyTrust_authorized": false,
+  "scanner_install_update_or_execution_authorized": false,
+  "ModelScan_bootstrap_authorized": false,
+  "artifact_or_dependency_acquisition_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "profile_resolution_or_activation_authorized": false,
+  "container_or_kubernetes_action_authorized": false,
+  "camera_media_or_data_access_authorized": false,
+  "implementation_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

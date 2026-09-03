@@ -1,0 +1,162 @@
+{
+  "allowed_artifacts": [
+    {
+      "allowed_actions": [
+        "safe_extract_in_external_local_quarantine",
+        "load_for_generated_only_local_inference"
+      ],
+      "artifact_id": "OCR-L0-PPOCRV6-SMALL-INFER-PROPOSED",
+      "candidate_id": "OCR-L0",
+      "sha256": "DA460F968CE9F88325AC3A34FA302077D6E9B0DCEFB16BA3137CD7796F879D06"
+    },
+    {
+      "allowed_actions": [
+        "safe_extract_in_external_local_quarantine",
+        "load_for_generated_only_local_inference"
+      ],
+      "artifact_id": "OCR-L1-PPOCRV6-MEDIUM-INFER-PROPOSED",
+      "candidate_id": "OCR-L1",
+      "sha256": "4EECC1C6A4623765042E6FC15446DA0DA110B7D875B6B72B2D351D2B2DBD4DA6"
+    },
+    {
+      "allowed_actions": [
+        "safe_extract_in_external_local_quarantine",
+        "load_for_generated_only_local_inference"
+      ],
+      "artifact_id": "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED",
+      "candidate_id": "OCR-D0",
+      "sha256": "AC8279D27FC7E8CDA559364F9A3C506F43984CF6BA5E1B7A06450458BFE07DFB"
+    },
+    {
+      "allowed_actions": [
+        "load_for_deterministic_generated_rendering"
+      ],
+      "artifact_id": "FONT-G0-NOTO-SANS-GUJARATI-VARIABLE-PROPOSED",
+      "candidate_id": "FONT-G0",
+      "sha256": "9901D8552F1DD5D2C50DBD4CAA6F6E174E74E8264F06594AB259AE6E7B1AC428"
+    },
+    {
+      "allowed_actions": [
+        "load_for_deterministic_generated_rendering"
+      ],
+      "artifact_id": "FONT-D0-NOTO-SANS-DEVANAGARI-VARIABLE-PROPOSED",
+      "candidate_id": "FONT-D0",
+      "sha256": "9CE7B04F60E363D8870E5997744CF85CF69D38A4D7D129D364D92A3B14B461D7"
+    }
+  ],
+  "allowed_network_actions": [],
+  "allowed_runtime": {
+    "direct_packages": [
+      "paddleocr==3.7.0",
+      "paddlepaddle==3.3.1",
+      "pillow==12.3.0",
+      "regex==2026.7.19"
+    ],
+    "external_runtime_root": "E:\\h-cam-research-cache\\phase-3\\p3-5-runtime",
+    "network_access": false,
+    "permitted_actions": [
+      "install_from_exact_local_wheelhouse",
+      "import_exact_reviewed_packages",
+      "execute_exact_paddle_artifacts_on_generated_inputs_only"
+    ],
+    "python_version": "3.12.13",
+    "repository_dependency_or_lockfile_change": false,
+    "runtime_sbom_sha256": "07EE71F79BBD1368F620B7D915E4BF753E23DCC76696862C5E4ADB3CB23ED6DE",
+    "tesseract_runtime_authorized": false
+  },
+  "allowed_work_packages": [
+    "P35-W1_contracts_token_policy_and_prohibited_input_guardrails",
+    "P35-W3_deterministic_non_issuable_generator_and_sealed_splits",
+    "P35-W4_plate_localization_contract_and_generated_ground_truth_crop_path_only",
+    "P35-W5_exact_Latin_Paddle_OCR_adapters_and_generated_evaluation",
+    "P35-W6_exact_Devanagari_Paddle_OCR_lane_and_Gujarati_font_rendering_only",
+    "P35-W7_normalization_confidence_abstention_and_bounded_consensus",
+    "P35-W8_zero_retention_aggregate_evidence_security_and_documentation"
+  ],
+  "authorized_at": "2026-08-26T16:18:08Z",
+  "authorized_by": "mayank-admin",
+  "blocked_reviewed_artifacts": [
+    {
+      "artifact_id": "OCR-G0-TESSDATA-FAST-GUJ-PROPOSED",
+      "candidate_id": "OCR-G0",
+      "reason": "exact_Tesseract_5_engine_and_native_SBOM_unresolved",
+      "sha256": "FA69658614B4946A9AFAE8853D67E0689838803DFA3D12C2E35EC53EE6F8DF34"
+    },
+    {
+      "artifact_id": "OCR-G1-TESSDATA-BEST-GUJ-PROPOSED",
+      "candidate_id": "OCR-G1",
+      "reason": "exact_Tesseract_5_engine_and_native_SBOM_unresolved",
+      "sha256": "8CBB1D139B63434B9E1154A3B51930A74EC1C9A6251B95D86D74D7F1CD706ED6"
+    }
+  ],
+  "contract_format": "hcam.phase3.p3_5.start-authorization.v1",
+  "decision_id": "D-P3.5-START",
+  "effective": true,
+  "evidence_package_digest": "915F5E9246A7A656DF528DD54DA6018D7489C6875BF3A77D1A551BAD6EF9AF4D",
+  "evidence_repository_head": "1edfd0a13208d9b359cc5e563bbc406bba214e26",
+  "implementation_authorized": true,
+  "owner_statement_received": "D-P3.5-START",
+  "prerequisites": [
+    {
+      "decision_id": "D-P3.5-001",
+      "required_status": "owner_approved",
+      "status": "owner_approved"
+    },
+    {
+      "decision_id": "D-P3.5-002",
+      "required_status": "owner_approved",
+      "status": "owner_approved"
+    },
+    {
+      "decision_id": "D-P3.5-003",
+      "required_status": "owner_approved",
+      "status": "owner_approved"
+    },
+    {
+      "decision_id": "D-P3.5-004",
+      "required_status": "owner_approved",
+      "status": "owner_approved"
+    },
+    {
+      "evidence_id": "P3.5-EXACT-ARTIFACT-REVIEW",
+      "required_status": "owner_reviewed",
+      "proposal_record": "p3-5-artifact-review-proposal.json",
+      "research_authorization_record": "p3-5-artifact-research-authorization.json",
+      "review_evidence_record": "p3-5-artifact-review-evidence.json",
+      "acceptance_record": "p3-5-artifact-review-acceptance.json",
+      "status": "owner_accepted"
+    },
+    {
+      "decision_id": "D-P3.5-RUNTIME-RESEARCH",
+      "proposal_record": "p3-5-runtime-review-proposal.json",
+      "required_status": "owner_reviewed",
+      "authorization_record": "p3-5-runtime-research-authorization.json",
+      "evidence_record": "p3-5-runtime-research-evidence.json",
+      "license_review_record": "p3-5-runtime-license-review.json",
+      "sbom_record": "p3-5-runtime-sbom.cdx.json",
+      "status": "owner_accepted"
+    }
+  ],
+  "prohibited_actions": [
+    "unlisted_model_weight_font_dataset_dictionary_or_source_artifact_use",
+    "any_artifact_or_dependency_network_download",
+    "repository_dependency_lockfile_or_container_change",
+    "application_migration_public_api_background_worker_or_persistent_plate_storage_change",
+    "model_training_finetuning_or_PLATE-D0_checkpoint_creation",
+    "OCR-G0_or_OCR-G1_Tesseract_loading_or_execution",
+    "arbitrary_file_URL_upload_or_external_text_input",
+    "physical_camera_onvif_media_or_sentinel_stream_access",
+    "real_public_private_government_police_or_scraped_plate_media",
+    "real_registration_mark_owner_vehicle_or_government_record_processing",
+    "identity_biometric_reidentification_or_cross_camera_linkage",
+    "watchlist_matching_operational_alerting_autonomous_action_or_enforcement",
+    "pilot_production_or_statewide_deployment",
+    "remote_git_push_pull_request_or_merge",
+    "p3_6_or_later_work"
+  ],
+  "received_at": "2026-08-26T16:18:08Z",
+  "requested_option": "staged_generated_only_start_after_exact_artifact_review",
+  "scope": "phase3.p3_5.synthetic_anpr.generated_only_local_implementation",
+  "status": "owner_authorized_generated_only_staged",
+  "statement": "After completion of the four technical decisions, exact artifact acceptance, restricted runtime evidence, and clean-source digest publication, mayank-admin supplied D-P3.5-START. This authorizes only the enumerated generated-only local implementation artifacts, runtime, and work packages. The empty network allowlist and every continuing prohibition remain fail-closed."
+}

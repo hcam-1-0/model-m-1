@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -34,7 +36,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Set up locked dependency environment
-        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
           version: "0.12.3"
           enable-cache: true
@@ -42,7 +44,7 @@ jobs:
           activate-environment: true
 
       - name: Install backend and test dependencies
-        run: uv sync --locked --extra dev
+        run: uv sync --locked --extra dev --extra analytics
 
       - name: Compile Python sources
         run: python -m compileall -q app tools migrations
@@ -61,6 +63,12 @@ jobs:
       - name: Verify reviewed API and database contracts
         run: python tools/release_contracts.py check
 
+      - name: Verify reviewed Phase 3 analytics contracts
+        run: python tools/analytics_contracts.py check
+
+      - name: Verify generated-only Phase 3 P3.1 evidence
+        run: python tools/phase31_contracts.py check --require-clean-source
+
       - name: Run backend and offline tests
         run: pytest --cov=hcam --cov-report=term-missing --cov-fail-under=90
 
@@ -69,7 +77,7 @@ jobs:
 
       - name: Audit installed dependencies
         if: matrix.python-version == '3.12'
-        run: uv run --locked --extra dev pip-audit --skip-editable
+        run: uv run --locked --extra dev --extra analytics pip-audit --skip-editable
 
       - name: Verify Phase 1 evidence
         run: python tools/phase1_readiness.py
@@ -77,6 +85,57 @@ jobs:
       - name: Verify Phase 2 evidence
         if: matrix.python-version == '3.12'
         run: python tools/phase2_readiness.py --run-validation
+
+      - name: Verify Phase 3 P3.0 evidence
+        if: matrix.python-version == '3.12'
+        run: python tools/phase3_readiness.py --run-validation
+
+      - name: Verify Phase 3 P3.1 planning authorization
+        if: matrix.python-version == '3.12'
+        run: python tools/phase31_readiness.py --strict
+
+      - name: Verify Phase 3 P3.1 implementation evidence
+        if: matrix.python-version == '3.12'
+        run: python tools/phase31_implementation_readiness.py --strict
+
+      - name: Verify Phase 3 P3.2 generated-only start authorization
+        if: matrix.python-version == '3.12'
+        run: python tools/phase32_entry_readiness.py
+
+      - name: Verify Phase 3 P3.2 generated-only implementation evidence
+        if: matrix.python-version == '3.12'
+        run: python tools/phase32_implementation_readiness.py
+
+      - name: Verify Phase 3 P3.3 generated tracking evidence
+        if: matrix.python-version == '3.12'
+        run: |
+          python tools/phase33_tracking_evidence.py check
+          python tools/phase33_sbom.py check
+          python tools/phase33_implementation_readiness.py --require-clean-source --require-acceptance
+
+      - name: Verify Phase 3 P3.4 planning boundary
+        if: matrix.python-version == '3.12'
+        run: python tools/phase34_readiness.py --strict
+
+      - name: Verify Phase 3 P3.4 generated geometry evidence
+        if: matrix.python-version == '3.12'
+        run: |
+          python tools/phase34_c10_evidence.py check
+          python tools/phase34_supply_chain.py check
+          python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance
+
+      - name: Verify Phase 3 P3.5 planning boundary
+        if: matrix.python-version == '3.12'
+        run: python tools/phase35_readiness.py --strict --require-clean-source
+
+      - name: Verify Phase 3 P3.5 generated ANPR evidence
+        run: |
+          python tools/phase35_contracts.py check
+          python tools/phase35_latin_ocr.py check-evidence
+          python tools/phase35_auxiliary_ocr.py check-evidence
+          python tools/phase35_normalization.py check-evidence
+          python tools/phase35_consensus.py check-evidence
+          python tools/phase35_w9_closure.py check-evidence
 
       - name: Preserve Phase 0 unittest check
         if: matrix.python-version == '3.12'
@@ -97,7 +156,7 @@ jobs:
           python-version: "3.12"
 
       - name: Set up locked build environment
-        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
           version: "0.12.3"
           enable-cache: true
@@ -110,7 +169,7 @@ jobs:
 
       - name: Install wheel in an isolated environment
         run: |
-          uv export --locked --no-dev --no-emit-project --format requirements-txt --output-file "$RUNNER_TEMP/hcam-runtime-requirements.txt"
+          uv export --locked --extra analytics --no-dev --no-emit-project --format requirements-txt --output-file "$RUNNER_TEMP/hcam-runtime-requirements.txt"
           python -m venv "$RUNNER_TEMP/hcam-artifact"
           "$RUNNER_TEMP/hcam-artifact/bin/python" -m pip install --require-hashes --requirement "$RUNNER_TEMP/hcam-runtime-requirements.txt"
           "$RUNNER_TEMP/hcam-artifact/bin/python" -m pip install --no-deps dist/*.whl
@@ -136,7 +195,7 @@ jobs:
           python-version: "3.12"
 
       - name: Set up locked dependency environment
-        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
           version: "0.12.3"
           enable-cache: true
@@ -144,7 +203,7 @@ jobs:
           activate-environment: true
 
       - name: Install backend and test dependencies
-        run: uv sync --locked --extra dev
+        run: uv sync --locked --extra dev --extra analytics
 
       - name: Run bounded synthetic performance smoke
         run: python tools/phase1_performance.py --cameras 1000 --iterations 100 --json
@@ -186,6 +245,7 @@ jobs:
         run: |
           docker build --check .
           docker compose -f deploy/compose.phase1.yaml config -q
+          docker compose -f deploy/compose.phase3.yaml config -q
 
       - name: Build and inspect the runtime image
         run: |
@@ -228,7 +288,7 @@ jobs:
     timeout-minutes: 15
     services:
       postgres:
-        image: postgres:18-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2
+        image: postgis/postgis:18-3.6-alpine@sha256:eb2e8b8afd9b0ecee83bc20fd01aca62a5071bada2c0f38763174b653f8eed42
         env:
           POSTGRES_DB: hcam_test
           POSTGRES_USER: hcam_test
@@ -257,7 +317,7 @@ jobs:
           python-version: "3.12"
 
       - name: Set up locked dependency environment
-        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
           version: "0.12.3"
           enable-cache: true
@@ -265,7 +325,7 @@ jobs:
           activate-environment: true
 
       - name: Install PostgreSQL integration dependencies
-        run: uv sync --locked --extra dev --extra postgres
+        run: uv sync --locked --extra dev --extra analytics --extra postgres
 
       - name: Generate source-bound P2-G1 PostgreSQL evidence
         run: >-
@@ -288,6 +348,63 @@ jobs:
       - name: Audit PostgreSQL integration dependencies
         run: uv run --locked --extra dev --extra postgres pip-audit --skip-editable
 
+  phase34-postgis-integration:
+    name: Phase 3 P3.4 PostGIS integration
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgis:
+        image: postgis/postgis:18-3.6-alpine@sha256:eb2e8b8afd9b0ecee83bc20fd01aca62a5071bada2c0f38763174b653f8eed42
+        env:
+          POSTGRES_DB: hcam_phase34_test
+          POSTGRES_USER: hcam_phase34_test
+          POSTGRES_PASSWORD: synthetic-ci-password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U hcam_phase34_test -d hcam_phase34_test && psql -U hcam_phase34_test -d hcam_phase34_test -tAc 'SELECT postgis_lib_version()' >/dev/null"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+          --health-start-period 20s
+    env:
+      HCAM_DATABASE_URL: postgresql+psycopg://hcam_phase34_test:synthetic-ci-password@localhost:5432/hcam_phase34_test
+      HCAM_POSTGRES_TEST_URL: postgresql+psycopg://hcam_phase34_test:synthetic-ci-password@localhost:5432/hcam_phase34_test
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: Set up locked dependency environment
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.12.3"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+          activate-environment: true
+
+      - name: Install P3.4 integration dependencies
+        run: uv sync --locked --extra dev --extra analytics --extra postgres
+
+      - name: Verify PostGIS migration cycle
+        run: |
+          alembic upgrade 0011_geometry_events
+          alembic check
+          alembic downgrade 0010_generated_tracking
+          alembic upgrade 0011_geometry_events
+          alembic check
+
+      - name: Verify generated-only PostGIS behavior
+        run: pytest tests/test_phase34_postgres.py -q
+
+      - name: Verify installed dependencies
+        run: uv pip check
+
   phase2-synthetic-lab:
     name: Phase 2 synthetic 50-stream lab
     runs-on: ubuntu-latest
@@ -306,7 +423,7 @@ jobs:
           python-version: "3.12"
 
       - name: Set up locked dependency environment
-        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
           version: "0.12.3"
           enable-cache: true

@@ -1,0 +1,289 @@
+{
+  "contract_type": "hcam.analytics.generated-fixture-suite.v1",
+  "external_inputs": [],
+  "generated_only": true,
+  "records": [
+    {
+      "associations": [
+        {
+          "frame_sequence": 0,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 1,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 2,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        }
+      ],
+      "case_id": "track-01",
+      "expected_fragments": 0,
+      "expected_identity_switches": 0,
+      "expected_outcome": "pass",
+      "scenario": "start",
+      "tracker_epoch": "fixture-epoch-01"
+    },
+    {
+      "associations": [
+        {
+          "frame_sequence": 0,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 1,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 2,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        }
+      ],
+      "case_id": "track-02",
+      "expected_fragments": 0,
+      "expected_identity_switches": 0,
+      "expected_outcome": "pass",
+      "scenario": "update",
+      "tracker_epoch": "fixture-epoch-02"
+    },
+    {
+      "associations": [
+        {
+          "frame_sequence": 0,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 1,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 2,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        }
+      ],
+      "case_id": "track-03",
+      "expected_fragments": 0,
+      "expected_identity_switches": 0,
+      "expected_outcome": "pass",
+      "scenario": "end",
+      "tracker_epoch": "fixture-epoch-03"
+    },
+    {
+      "associations": [
+        {
+          "frame_sequence": 0,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 1,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": false
+        },
+        {
+          "frame_sequence": 2,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        }
+      ],
+      "case_id": "track-04",
+      "expected_fragments": 1,
+      "expected_identity_switches": 0,
+      "expected_outcome": "pass",
+      "scenario": "occlusion",
+      "tracker_epoch": "fixture-epoch-04"
+    },
+    {
+      "associations": [
+        {
+          "frame_sequence": 0,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 1,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 2,
+          "predicted_track_id": "predicted-track-b",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        }
+      ],
+      "case_id": "track-05",
+      "expected_fragments": 0,
+      "expected_identity_switches": 1,
+      "expected_outcome": "pass",
+      "scenario": "crossing-tracks",
+      "tracker_epoch": "fixture-epoch-05"
+    },
+    {
+      "associations": [
+        {
+          "frame_sequence": 0,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 1,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 2,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        }
+      ],
+      "case_id": "track-06",
+      "expected_fragments": 0,
+      "expected_identity_switches": 0,
+      "expected_outcome": "reject",
+      "scenario": "duplicate-detection",
+      "tracker_epoch": "fixture-epoch-06"
+    },
+    {
+      "associations": [
+        {
+          "frame_sequence": 0,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 1,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": false
+        },
+        {
+          "frame_sequence": 2,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        }
+      ],
+      "case_id": "track-07",
+      "expected_fragments": 1,
+      "expected_identity_switches": 0,
+      "expected_outcome": "pass",
+      "scenario": "missed-frames",
+      "tracker_epoch": "fixture-epoch-07"
+    },
+    {
+      "associations": [
+        {
+          "frame_sequence": 0,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 1,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 2,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        }
+      ],
+      "case_id": "track-08",
+      "expected_fragments": 0,
+      "expected_identity_switches": 0,
+      "expected_outcome": "reset",
+      "scenario": "discontinuity",
+      "tracker_epoch": "fixture-epoch-08"
+    },
+    {
+      "associations": [
+        {
+          "frame_sequence": 0,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 1,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 2,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        }
+      ],
+      "case_id": "track-09",
+      "expected_fragments": 0,
+      "expected_identity_switches": 0,
+      "expected_outcome": "reset",
+      "scenario": "reconnect",
+      "tracker_epoch": "fixture-epoch-09"
+    },
+    {
+      "associations": [
+        {
+          "frame_sequence": 0,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 1,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        },
+        {
+          "frame_sequence": 2,
+          "predicted_track_id": "predicted-track-a",
+          "truth_track_id": "truth-track-a",
+          "visible": true
+        }
+      ],
+      "case_id": "track-10",
+      "expected_fragments": 0,
+      "expected_identity_switches": 0,
+      "expected_outcome": "pass",
+      "scenario": "bounded-state",
+      "tracker_epoch": "fixture-epoch-10"
+    }
+  ],
+  "seed": 31001,
+  "suite": "tracking-v1"
+}

@@ -1,0 +1,467 @@
+{
+  "artifacts": {
+    "configuration_version": "sha256:f7149f15f3682d12638af5e92ac4a81730831977e19f992456630e1e64afd5be",
+    "evaluator_manifest_digest": "sha256:19bcee8381cd0187d1f199cbe94d8d79a4030bb9858e0627009b46686aca4a36",
+    "pipeline_version": "sha256:8dfd2fd221a9736cab33124f3fef4c1a2f65de7c74d0965a0d60b5fe750fe0e3",
+    "policy_version": "sha256:30e1940b2e74bb86629833499e27fb2c5bc204ddf56a5010071d086bbab1d0cc",
+    "tracker_id": "TRK-R0-BYTETRACK-D1BF0191",
+    "tracker_manifest_digest": "sha256:8aa77ff88ac16baf1dcde36f8cb1cdad479bcadf3295482ccfc00aae4da497ba",
+    "tracker_version": "sha256:12bb7ce90e1089a1e160d5a15cd0c268f27a3083e4df37aef2cd042ae1160438"
+  },
+  "bytetrack_component_parity": {
+    "component": "kalman_initiate_predict_update",
+    "errors": {
+      "initiate_covariance": 0.0,
+      "initiate_mean": 0.0,
+      "predict_covariance": 0.0,
+      "predict_mean": 0.0,
+      "update_covariance": 2.710505431213761e-20,
+      "update_mean": 0.0
+    },
+    "full_historical_runtime_executed": false,
+    "maximum_absolute_error": 2.710505431213761e-20,
+    "passed": true,
+    "solver_substitution": "scipy.optimize.linear_sum_assignment",
+    "upstream_full_stack_rejection": "Detector, media, Torch, OpenCV, LAP, training, visualization, and ReID dependencies remain outside the H-CAM runtime boundary."
+  },
+  "evaluation_scope": "generated_structured_observations_only",
+  "gates": {
+    "challenge_hota": 0.9773391812865496,
+    "challenge_hota_minimum": 0.85,
+    "challenge_idf1": 1.0,
+    "challenge_idf1_minimum": 0.9,
+    "deterministic_three_runs": true,
+    "golden_hota": 1.0,
+    "golden_hota_minimum": 1.0,
+    "golden_idf1": 1.0,
+    "golden_idf1_minimum": 1.0,
+    "overload_failed_closed": true,
+    "passed": true,
+    "per_class_hota_minimum_observed": 1.0,
+    "per_class_hota_minimum_required": 0.8,
+    "per_class_idf1_minimum_observed": 1.0,
+    "per_class_idf1_minimum_required": 0.85,
+    "short_occlusion_recovery_rate": 1.0,
+    "short_occlusion_recovery_rate_minimum": 0.95
+  },
+  "limitations": [
+    "No image or video input was used.",
+    "No external dataset, camera, biometric, ReID, or cross-camera path was used.",
+    "Generated metrics do not establish real-CCTV accuracy.",
+    "The full historical ByteTrack runtime was rejected and not executed."
+  ],
+  "overall_passed": true,
+  "scenario_reports": {
+    "all-tier-a": {
+      "frame_count": 5,
+      "input_sha256": "ee83a4a13e541798a3fe5c74f30d728e14ba1ce6d8f1cab8c62437d578df38a0",
+      "metrics": {
+        "association_accuracy": 1.0,
+        "detection_accuracy": 1.0,
+        "hota": 1.0,
+        "id_false_negatives": 0,
+        "id_false_positives": 0,
+        "id_precision": 1.0,
+        "id_recall": 1.0,
+        "id_true_positives": 28,
+        "identity_switches": 0,
+        "idf1": 1.0,
+        "localization_accuracy": 0.9813904365566056,
+        "per_class": {
+          "object.person": {
+            "association_accuracy": 1.0,
+            "detection_accuracy": 1.0,
+            "hota": 1.0,
+            "id_false_negatives": 0,
+            "id_false_positives": 0,
+            "id_precision": 1.0,
+            "id_recall": 1.0,
+            "id_true_positives": 4,
+            "identity_switches": 0,
+            "idf1": 1.0,
+            "localization_accuracy": 0.9813904365566061
+          },
+          "object.unknown": {
+            "association_accuracy": 1.0,
+            "detection_accuracy": 1.0,
+            "hota": 1.0,
+            "id_false_negatives": 0,
+            "id_false_positives": 0,
+            "id_precision": 1.0,
+            "id_recall": 1.0,
+            "id_true_positives": 4,
+            "identity_switches": 0,
+            "idf1": 1.0,
+            "localization_accuracy": 0.9813904365566058
+          },
+          "vehicle.bicycle": {
+            "association_accuracy": 1.0,
+            "detection_accuracy": 1.0,
+            "hota": 1.0,
+            "id_false_negatives": 0,
+            "id_false_positives": 0,
+            "id_precision": 1.0,
+            "id_recall": 1.0,
+            "id_true_positives": 4,
+            "identity_switches": 0,
+            "idf1": 1.0,
+            "localization_accuracy": 0.9813904365566056
+          },
+          "vehicle.bus": {
+            "association_accuracy": 1.0,
+            "detection_accuracy": 1.0,
+            "hota": 1.0,
+            "id_false_negatives": 0,
+            "id_false_positives": 0,
+            "id_precision": 1.0,
+            "id_recall": 1.0,
+            "id_true_positives": 4,
+            "identity_switches": 0,
+            "idf1": 1.0,
+            "localization_accuracy": 0.9813904365566051
+          },
+          "vehicle.car": {
+            "association_accuracy": 1.0,
+            "detection_accuracy": 1.0,
+            "hota": 1.0,
+            "id_false_negatives": 0,
+            "id_false_positives": 0,
+            "id_precision": 1.0,
+            "id_recall": 1.0,
+            "id_true_positives": 4,
+            "identity_switches": 0,
+            "idf1": 1.0,
+            "localization_accuracy": 0.9813904365566066
+          },
+          "vehicle.motorcycle": {
+            "association_accuracy": 1.0,
+            "detection_accuracy": 1.0,
+            "hota": 1.0,
+            "id_false_negatives": 0,
+            "id_false_positives": 0,
+            "id_precision": 1.0,
+            "id_recall": 1.0,
+            "id_true_positives": 4,
+            "identity_switches": 0,
+            "idf1": 1.0,
+            "localization_accuracy": 0.9813904365566055
+          },
+          "vehicle.truck": {
+            "association_accuracy": 1.0,
+            "detection_accuracy": 1.0,
+            "hota": 1.0,
+            "id_false_negatives": 0,
+            "id_false_positives": 0,
+            "id_precision": 1.0,
+            "id_recall": 1.0,
+            "id_true_positives": 4,
+            "identity_switches": 0,
+            "idf1": 1.0,
+            "localization_accuracy": 0.9813904365566047
+          }
+        }
+      },
+      "recovered_transitions": 0,
+      "transition_count": 28
+    },
+    "discontinuity": {
+      "frame_count": 6,
+      "input_sha256": "e55e6e7798d80f8aa8dcdb8eb3812f213f180c372b30520afcc5e010f7ba5f48",
+      "metrics": {
+        "association_accuracy": 0.9649122807017543,
+        "detection_accuracy": 0.9649122807017543,
+        "hota": 0.9649122807017543,
+        "id_false_negatives": 0,
+        "id_false_positives": 0,
+        "id_precision": 1.0,
+        "id_recall": 1.0,
+        "id_true_positives": 4,
+        "identity_switches": 0,
+        "idf1": 1.0,
+        "localization_accuracy": 0.9461432860626726,
+        "per_class": {
+          "object.person": {
+            "association_accuracy": 0.9649122807017543,
+            "detection_accuracy": 0.9649122807017543,
+            "hota": 0.9649122807017543,
+            "id_false_negatives": 0,
+            "id_false_positives": 0,
+            "id_precision": 1.0,
+            "id_recall": 1.0,
+            "id_true_positives": 4,
+            "identity_switches": 0,
+            "idf1": 1.0,
+            "localization_accuracy": 0.9461432860626726
+          }
+        }
+      },
+      "recovered_transitions": 0,
+      "transition_count": 5
+    },
+    "long-occlusion": {
+      "frame_count": 36,
+      "input_sha256": "e25904f1f8e8796db608202e63f92744af0557cef0ad9a67d3a45caf0f29cefc",
+      "metrics": {
+        "association_accuracy": 0.05559732664995822,
+        "detection_accuracy": 0.05559732664995822,
+        "hota": 0.05559732664995822,
+        "id_false_negatives": 33,
+        "id_false_positives": 0,
+        "id_precision": 1.0,
+        "id_recall": 0.05714285714285714,
+        "id_true_positives": 2,
+        "identity_switches": 0,
+        "idf1": 0.10810810810810811,
+        "localization_accuracy": 0.946143286062673,
+        "per_class": {
+          "vehicle.motorcycle": {
+            "association_accuracy": 0.05559732664995822,
+            "detection_accuracy": 0.05559732664995822,
+            "hota": 0.05559732664995822,
+            "id_false_negatives": 33,
+            "id_false_positives": 0,
+            "id_precision": 1.0,
+            "id_recall": 0.05714285714285714,
+            "id_true_positives": 2,
+            "identity_switches": 0,
+            "idf1": 0.10810810810810811,
+            "localization_accuracy": 0.9461432860626728
+          }
+        }
+      },
+      "recovered_transitions": 0,
+      "transition_count": 4
+    },
+    "short-occlusion": {
+      "frame_count": 8,
+      "input_sha256": "fbea49860991a67d0731f9047b4cfd583967ed9d0311bf7266860a2865a378be",
+      "metrics": {
+        "association_accuracy": 0.6872180451127818,
+        "detection_accuracy": 0.6872180451127818,
+        "hota": 0.6872180451127818,
+        "id_false_negatives": 2,
+        "id_false_positives": 0,
+        "id_precision": 1.0,
+        "id_recall": 0.7142857142857143,
+        "id_true_positives": 5,
+        "identity_switches": 0,
+        "idf1": 0.8333333333333334,
+        "localization_accuracy": 0.9448344669819084,
+        "per_class": {
+          "vehicle.car": {
+            "association_accuracy": 0.6872180451127818,
+            "detection_accuracy": 0.6872180451127818,
+            "hota": 0.6872180451127818,
+            "id_false_negatives": 2,
+            "id_false_positives": 0,
+            "id_precision": 1.0,
+            "id_recall": 0.7142857142857143,
+            "id_true_positives": 5,
+            "identity_switches": 0,
+            "idf1": 0.8333333333333334,
+            "localization_accuracy": 0.9448344669819084
+          }
+        }
+      },
+      "recovered_transitions": 1,
+      "transition_count": 6
+    },
+    "single-object": {
+      "frame_count": 6,
+      "input_sha256": "2fd9ca529de7e56b058db2ef864a920d44530846ee220d163548e95f97832e95",
+      "metrics": {
+        "association_accuracy": 0.953216374269006,
+        "detection_accuracy": 0.953216374269006,
+        "hota": 0.953216374269006,
+        "id_false_negatives": 0,
+        "id_false_positives": 0,
+        "id_precision": 1.0,
+        "id_recall": 1.0,
+        "id_true_positives": 5,
+        "identity_switches": 0,
+        "idf1": 1.0,
+        "localization_accuracy": 0.9316805417286002,
+        "per_class": {
+          "object.person": {
+            "association_accuracy": 0.9532163742690059,
+            "detection_accuracy": 0.9532163742690059,
+            "hota": 0.9532163742690059,
+            "id_false_negatives": 0,
+            "id_false_positives": 0,
+            "id_precision": 1.0,
+            "id_recall": 1.0,
+            "id_true_positives": 5,
+            "identity_switches": 0,
+            "idf1": 1.0,
+            "localization_accuracy": 0.9316805417286002
+          }
+        }
+      },
+      "recovered_transitions": 0,
+      "transition_count": 5
+    },
+    "two-crossing": {
+      "frame_count": 16,
+      "input_sha256": "7f18b1804387d09c026c4c3f73244b5fc64260bb944150292b3a66e42be92ac5",
+      "metrics": {
+        "association_accuracy": 0.9671052631578948,
+        "detection_accuracy": 0.9671052631578948,
+        "hota": 0.9671052631578948,
+        "id_false_negatives": 0,
+        "id_false_positives": 0,
+        "id_precision": 1.0,
+        "id_recall": 1.0,
+        "id_true_positives": 30,
+        "identity_switches": 0,
+        "idf1": 1.0,
+        "localization_accuracy": 0.9603552407734709,
+        "per_class": {
+          "object.person": {
+            "association_accuracy": 0.9671052631578947,
+            "detection_accuracy": 0.9671052631578947,
+            "hota": 0.9671052631578947,
+            "id_false_negatives": 0,
+            "id_false_positives": 0,
+            "id_precision": 1.0,
+            "id_recall": 1.0,
+            "id_true_positives": 30,
+            "identity_switches": 0,
+            "idf1": 1.0,
+            "localization_accuracy": 0.9603552407734709
+          }
+        }
+      },
+      "recovered_transitions": 0,
+      "transition_count": 30
+    }
+  },
+  "schema_version": "1.0.0",
+  "trackeval_parity": {
+    "comparison_count": 12,
+    "comparisons": [
+      {
+        "class_id": "object.person",
+        "hcam_hota": 0.9532163742690059,
+        "hcam_idf1": 1.0,
+        "hota_absolute_error": 0.0,
+        "idf1_absolute_error": 0.0,
+        "scenario_id": "single-object",
+        "trackeval_hota": 0.9532163742690059,
+        "trackeval_idf1": 1.0
+      },
+      {
+        "class_id": "object.person",
+        "hcam_hota": 0.9671052631578947,
+        "hcam_idf1": 1.0,
+        "hota_absolute_error": 0.0,
+        "idf1_absolute_error": 0.0,
+        "scenario_id": "two-crossing",
+        "trackeval_hota": 0.9671052631578947,
+        "trackeval_idf1": 1.0
+      },
+      {
+        "class_id": "vehicle.car",
+        "hcam_hota": 0.6872180451127818,
+        "hcam_idf1": 0.8333333333333334,
+        "hota_absolute_error": 0.0,
+        "idf1_absolute_error": 0.0,
+        "scenario_id": "short-occlusion",
+        "trackeval_hota": 0.6872180451127818,
+        "trackeval_idf1": 0.8333333333333334
+      },
+      {
+        "class_id": "vehicle.motorcycle",
+        "hcam_hota": 0.05559732664995822,
+        "hcam_idf1": 0.10810810810810811,
+        "hota_absolute_error": 0.0,
+        "idf1_absolute_error": 0.0,
+        "scenario_id": "long-occlusion",
+        "trackeval_hota": 0.05559732664995822,
+        "trackeval_idf1": 0.10810810810810811
+      },
+      {
+        "class_id": "object.person",
+        "hcam_hota": 1.0,
+        "hcam_idf1": 1.0,
+        "hota_absolute_error": 0.0,
+        "idf1_absolute_error": 0.0,
+        "scenario_id": "all-tier-a",
+        "trackeval_hota": 1.0,
+        "trackeval_idf1": 1.0
+      },
+      {
+        "class_id": "vehicle.bicycle",
+        "hcam_hota": 1.0,
+        "hcam_idf1": 1.0,
+        "hota_absolute_error": 0.0,
+        "idf1_absolute_error": 0.0,
+        "scenario_id": "all-tier-a",
+        "trackeval_hota": 1.0,
+        "trackeval_idf1": 1.0
+      },
+      {
+        "class_id": "vehicle.car",
+        "hcam_hota": 1.0,
+        "hcam_idf1": 1.0,
+        "hota_absolute_error": 0.0,
+        "idf1_absolute_error": 0.0,
+        "scenario_id": "all-tier-a",
+        "trackeval_hota": 1.0,
+        "trackeval_idf1": 1.0
+      },
+      {
+        "class_id": "vehicle.motorcycle",
+        "hcam_hota": 1.0,
+        "hcam_idf1": 1.0,
+        "hota_absolute_error": 0.0,
+        "idf1_absolute_error": 0.0,
+        "scenario_id": "all-tier-a",
+        "trackeval_hota": 1.0,
+        "trackeval_idf1": 1.0
+      },
+      {
+        "class_id": "vehicle.bus",
+        "hcam_hota": 1.0,
+        "hcam_idf1": 1.0,
+        "hota_absolute_error": 0.0,
+        "idf1_absolute_error": 0.0,
+        "scenario_id": "all-tier-a",
+        "trackeval_hota": 1.0,
+        "trackeval_idf1": 1.0
+      },
+      {
+        "class_id": "vehicle.truck",
+        "hcam_hota": 1.0,
+        "hcam_idf1": 1.0,
+        "hota_absolute_error": 0.0,
+        "idf1_absolute_error": 0.0,
+        "scenario_id": "all-tier-a",
+        "trackeval_hota": 1.0,
+        "trackeval_idf1": 1.0
+      },
+      {
+        "class_id": "object.unknown",
+        "hcam_hota": 1.0,
+        "hcam_idf1": 1.0,
+        "hota_absolute_error": 0.0,
+        "idf1_absolute_error": 0.0,
+        "scenario_id": "all-tier-a",
+        "trackeval_hota": 1.0,
+        "trackeval_idf1": 1.0
+      },
+      {
+        "class_id": "object.person",
+        "hcam_hota": 0.9649122807017543,
+        "hcam_idf1": 1.0,
+        "hota_absolute_error": 0.0,
+        "idf1_absolute_error": 0.0,
+        "scenario_id": "discontinuity",
+        "trackeval_hota": 0.9649122807017543,
+        "trackeval_idf1": 1.0
+      }
+    ],
+    "maximum_hota_absolute_error": 0.0,
+    "maximum_idf1_absolute_error": 0.0,
+    "passed": true
+  }
+}

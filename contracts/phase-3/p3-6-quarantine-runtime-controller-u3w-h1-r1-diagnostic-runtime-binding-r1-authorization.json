@@ -1,0 +1,73 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3w_h1_r1_diagnostic_runtime_binding_r1_authorization.v1",
+  "decision_id": "D-P3.6-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-AUTH",
+  "status": "single_runtime_binding_and_sanitized_diagnostic_attempt_consumed_failed_closed",
+  "effective_for_attempt": false,
+  "authorized_by": "mayank-admin",
+  "authorization_recorded_at": "2026-09-01T21:21:22.007Z",
+  "authorization_expires_at": "2026-09-02T21:21:22.007Z",
+  "owner_statement_received": "D-P3.6-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-AUTH: I, mayank-admin, authorize one exact runtime-binding and sanitized H1 R1 diagnostic attempt against package digest DDCB7A9C4E6E93BF5252FAFF840E3841C1B9080FE5657AA0037532EE2037B760 within 24 hours on LAB-LAPTOP-01. The attempt may verify and record the exact authorization; classify, size, version, hash, and cache-only no-UI whole-chain-excluding-root trust-check only C:\\Program Files\\PowerShell\\7\\pwsh.exe and its three fixed parent components without trust retrieval; verify exact diagnostic harness SHA-256 CD868E3F06CA12AC424B2C4C221F6425FCD0DA289C527DED462121333513B1C9, controller SHA-256 78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB, diagnostic-contract SHA-256 F0E41634760E3697F74EA2DEA44E7B2004392557E3167504BD69F2D78A4DC3CB, machine-disabled Python-reference SHA-256 9185F6DD724BC3703B402C696AC89FBE2D455BCEF2BC0C1D5C87BB4F719FFFCC, and vector-manifest SHA-256 B7D39E5A7160436D43FA4C0FE2D530CEC7DD89352949CD6EC619CD41D8639F70; invoke the exact runtime once with NoLogo, NoProfile, NonInteractive and the exact diagnostic harness; allow it to dot-source only the hash-bound accepted controller; enforce a 30-second timeout, 4 KiB stdout, zero stderr, and 16 KiB result; accept only the eleven allowlisted sanitized diagnostic outcomes; discard raw process material; reverify runtime, parents, and source identity; and write only the three bounded sanitized authorization, result, and evidence records. Failure consumes the authorization and requires a new digest-bound authorization. This does not authorize alternate runtime, parent, checkout, source, module, or hardware discovery; Utility-manifest, module-closure, Aggregate validation, PATH, PSModulePath, registry, WMI, package, or directory inventory; Python execution, machine access, or fallback; machine, storage, F:, B:, ACL, identity, probe, cleanup, Defender, or scanner action; network or trust retrieval; downloads, artifacts, models, inference, cameras, media, private or Government data, containers, Kubernetes, profile activation, deployment, U3K, or remote Git. Any further attempt or U3K package requires separate accepted U3W evidence and later explicit authorization.",
+  "owner_statement_utf8_bytes": 2221,
+  "owner_statement_sha256": "1F6AEDB5DCF56463C41A5171FFE17B86959C9AE1C7041F20166A4213179C806D",
+  "package_manifest": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-authorization-package.json",
+  "package_digest_sha256": "DDCB7A9C4E6E93BF5252FAFF840E3841C1B9080FE5657AA0037532EE2037B760",
+  "action_spec": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-action-spec.json",
+  "action_spec_sha256": "9897C274749261DF36A29FA7C87150BC876AD308944C45B6664406BF782A4863",
+  "U3V_implementation_package_digest_sha256": "AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD",
+  "U3V_implementation_acceptance_sha256": "5B8847FF5E484C40D0630C2E9B91D41D877662D27648BCB951962117C25B7DD5",
+  "verified_core_file_count": 11,
+  "verified_core_hashes_match": true,
+  "authorization_scope": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "exact_runtime_path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "attempt_nonce": "1f6aedb5dcf56463c41a5171ffe17b86",
+    "maximum_attempts": 1,
+    "attempts_consumed": 1,
+    "authorization_window_seconds": 86400,
+    "process_timeout_seconds": 30,
+    "maximum_runtime_file_bytes": 268435456,
+    "maximum_stdout_bytes": 4096,
+    "maximum_stderr_bytes": 0,
+    "maximum_result_bytes": 16384,
+    "machine_action_count": 0,
+    "python_machine_fallback_count": 0,
+    "automatic_retry": false,
+    "network_or_trust_retrieval": false,
+    "remote_git": false,
+    "exact_outputs": [
+      "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-authorization.json",
+      "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-result.json",
+      "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-evidence.json"
+    ]
+  },
+  "pre_observation_requirement": {
+    "authorization_record_must_exist_before_runtime_observation": true,
+    "authorization_record_is_the_only_attempt_output_before_observation": true,
+    "satisfied": true
+  },
+  "consumed_attempt": {
+    "started_at": "2026-09-01T21:27:09.509Z",
+    "completed_at": "2026-09-01T21:27:11.937Z",
+    "runtime_observation_started": true,
+    "runtime_binding_succeeded": true,
+    "source_binding_succeeded": true,
+    "runtime_invocation_count": 1,
+    "terminal": true,
+    "succeeded": false,
+    "sanitized_reason_code": "controller_stage_projection_invalid",
+    "automatic_retry_performed": false,
+    "additional_attempt_authorized": false,
+    "raw_output_exception_identity_environment_or_security_material_retained": false
+  },
+  "continuing_non_authorization": [
+    "no_alternate_runtime_parent_checkout_source_module_or_hardware_discovery",
+    "no_Utility_manifest_module_closure_or_Aggregate_validation",
+    "no_PATH_PSModulePath_registry_WMI_package_or_directory_inventory",
+    "no_Python_execution_machine_access_or_fallback",
+    "no_machine_storage_F_B_ACL_identity_probe_cleanup_Defender_or_scanner_action",
+    "no_network_or_trust_retrieval",
+    "no_download_artifact_model_inference_camera_media_private_or_Government_data_access",
+    "no_container_Kubernetes_profile_activation_deployment_U3K_or_remote_Git",
+    "no_additional_attempt_without_new_digest_bound_authorization"
+  ]
+}

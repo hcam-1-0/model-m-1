@@ -1,0 +1,104 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_binding_outer_attempt_controller_r0_implementation_package.v1",
+  "package_id": "P36-QUARANTINE-RUNTIME-BINDING-OUTER-ATTEMPT-CONTROLLER-R0-IMPLEMENTATION-PACKAGE",
+  "status": "sealed_source_and_generated_static_package_under_consolidated_build_authority",
+  "sealed_on": "2026-09-02",
+  "source_build_authorization_decision_id": "D-P3.6-CONSOLIDATED-BUILD-AUTH",
+  "source_build_authorization_package_sha256": "DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C",
+  "compatibility_amendment_decision_id": "D-P3.6-CONSOLIDATED-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT",
+  "compatibility_amendment_statement_sha256": "3C25EF9D12E83F7767ED94B2EBAAE3FA43A00AFC328FA4CE8970B8AA5A2292B3",
+  "core_file_count": 14,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-build-authorization-planning-package.json",
+      "sha256": "DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C",
+      "role": "exact_consolidated_source_build_authority"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-source-implementation-contract.json",
+      "sha256": "4656703497A158E5AC3E290FE8B037B4A9081BE40163D96181AF2F4FDD5F5F35",
+      "role": "accepted_future_surface_and_controller_invariants"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-contract.json",
+      "sha256": "B0D03E356B3939817CA21AA2DFC85B4897D3E89405DE27FFE492D1C549B767C1",
+      "role": "implemented_outer_controller_contract"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_binding_outer_attempt_controller_r0.ps1",
+      "sha256": "0E539126536CEF9F490EE164C5ECEC2FED36649C163FAAA8F32193B2DB744B99",
+      "role": "authoritative_PowerShell_source_not_executed"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_binding_outer_attempt_controller_r0_reference.py",
+      "sha256": "5A51088E503EEF3F9EFC7A896E033217C69A5908A216148A658CB551ADB33964",
+      "role": "machine_disabled_reference"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-vectors.json",
+      "sha256": "EE25BD99942F0CB68E157439ADEA230D3E549FBAC1743AC783775DDA58AA7B13",
+      "role": "416_generated_only_vectors"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_r0_contract.py",
+      "sha256": "2876DA8DF240C1C63CC856EB0FD0FC379EB8DE94C55D2CE3482F80E90AD47A28",
+      "role": "contract_tests"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_r0_reference.py",
+      "sha256": "4E89A88BE7C8872FC865CD328B89F094715B6D05090CDE235AC75B016A972F37",
+      "role": "reference_and_branch_tests"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_r0_powershell_static.py",
+      "sha256": "A430857B9CF29FD4E607F0D49417B840E37C7F5F954020C9B5FFEA775442FBBB",
+      "role": "PowerShell_inert_static_tests"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_r0_cross_language.py",
+      "sha256": "02F7D6CA678DB76CEACA5D1645266FF6168FE142C2198612E3DD9074936C7E13",
+      "role": "cross_language_tests"
+    },
+    {
+      "path": "tests/test_phase36_consolidated_build_authorization_planning.py",
+      "sha256": "4DB83CA1F1EB6BB7F66C43564F2D30C23F1075CFC600D980CB34E9E24913989A",
+      "role": "exact_authorized_transition_aware_consolidated_planning_test"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_u4b_proposal.py",
+      "sha256": "E3F81C131160ED179211656453B3B920C6F383683D7926B1CCEEE47990D810D9",
+      "role": "exact_authorized_transition_aware_U4B_planning_test"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-implementation-evidence.json",
+      "sha256": "81D10F82B461DE224F140D7AA840449F8B0003676635E4DDBFCD93F876AEE311",
+      "role": "source_and_generated_static_implementation_evidence"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u4a-binding-classification-remediation-planning-acceptance.json",
+      "sha256": "F8C39C761A8B0359CDB50F13AF0935A481C8A881A02A6F325E722137FCB75E36",
+      "role": "preserved_U4A_A_A_A_A_decision_history"
+    }
+  ],
+  "validation_summary": {
+    "generated_vectors": 416,
+    "focused_tests_passed": 464,
+    "focused_tests_failed": 0,
+    "Python_reference_branch_coverage_percent": 100.0,
+    "full_Phase_3_6_tests_passed": 2005,
+    "full_Phase_3_6_tests_failed": 0,
+    "immutable_hash_mismatch_count": 0,
+    "source_revision_cycles_consumed": 3,
+    "maximum_source_revision_cycles": 8
+  },
+  "current_gate_effect": {
+    "source_build_complete": true,
+    "runtime_closeout_package_preparation_authorized": true,
+    "runtime_closeout_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_machine_storage_U3K_or_closeout_authorized": false,
+    "commit_push_or_remote_Git_authorized": false
+  },
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U4B_implementation_package_digest_and_is_not_self_embedded"
+}

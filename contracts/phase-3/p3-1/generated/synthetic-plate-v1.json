@@ -1,0 +1,113 @@
+{
+  "contract_type": "hcam.analytics.generated-fixture-suite.v1",
+  "external_inputs": [],
+  "generated_only": true,
+  "records": [
+    {
+      "abstained": false,
+      "alternatives": [
+        {
+          "confidence": 0.99,
+          "text": "GJ01AB1234"
+        }
+      ],
+      "case_id": "plate-latin-exact",
+      "expected_outcome": "exact",
+      "region_bbox": {
+        "height": 0.2,
+        "width": 0.5,
+        "x": 0.25,
+        "y": 0.4
+      },
+      "scenario": "exact-normalized-match",
+      "script": "Latin",
+      "truth_text": "GJ01AB1234",
+      "valid_format": true
+    },
+    {
+      "abstained": false,
+      "alternatives": [
+        {
+          "confidence": 0.7,
+          "text": "\u0917\u0941\u091c\u0930\u093e\u0924\u0967\u0968\u096a"
+        },
+        {
+          "confidence": 0.25,
+          "text": "\u0917\u0941\u091c\u0930\u093e\u0924\u0967\u0968\u0969"
+        }
+      ],
+      "case_id": "plate-devanagari-alternative",
+      "expected_outcome": "alternative",
+      "region_bbox": {
+        "height": 0.2,
+        "width": 0.5,
+        "x": 0.25,
+        "y": 0.4
+      },
+      "scenario": "ranked-alternative",
+      "script": "Devanagari",
+      "truth_text": "\u0917\u0941\u091c\u0930\u093e\u0924\u0967\u0968\u0969",
+      "valid_format": true
+    },
+    {
+      "abstained": false,
+      "alternatives": [
+        {
+          "confidence": 0.91,
+          "text": "\u0a97\u0ac1\u0a9c\u0ab0\u0abe\u0aa4\u0ae7\u0ae8\u0ae9"
+        }
+      ],
+      "case_id": "plate-gujarati-exact",
+      "expected_outcome": "exact",
+      "region_bbox": {
+        "height": 0.2,
+        "width": 0.5,
+        "x": 0.25,
+        "y": 0.4
+      },
+      "scenario": "exact-script-match",
+      "script": "Gujarati",
+      "truth_text": "\u0a97\u0ac1\u0a9c\u0ab0\u0abe\u0aa4\u0ae7\u0ae8\u0ae9",
+      "valid_format": true
+    },
+    {
+      "abstained": true,
+      "alternatives": [],
+      "case_id": "plate-abstention",
+      "expected_outcome": "abstain",
+      "region_bbox": {
+        "height": 0.2,
+        "width": 0.5,
+        "x": 0.25,
+        "y": 0.4
+      },
+      "scenario": "low-confidence-abstention",
+      "script": "Latin",
+      "truth_text": "GJ05ZZ0001",
+      "valid_format": true
+    },
+    {
+      "abstained": false,
+      "alternatives": [
+        {
+          "confidence": 0.9,
+          "text": "INVALID"
+        }
+      ],
+      "case_id": "plate-invalid-format",
+      "expected_outcome": "reject",
+      "region_bbox": {
+        "height": 0.2,
+        "width": 0.5,
+        "x": 0.25,
+        "y": 0.4
+      },
+      "scenario": "invalid-format",
+      "script": "Latin",
+      "truth_text": "INVALID",
+      "valid_format": false
+    }
+  ],
+  "seed": 31001,
+  "suite": "synthetic-plate-v1"
+}

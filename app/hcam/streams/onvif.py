@@ -10,10 +10,14 @@ from pathlib import Path
 from typing import Final
 from urllib.error import HTTPError, URLError
 from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_opener
-from xml.etree import ElementTree
-from xml.sax.saxutils import escape
+# Stdlib ElementTree is retained only for element types and ParseError.
+from xml.etree import ElementTree  # nosec B405
+# saxutils.escape emits escaped text; it does not parse XML.
+from xml.sax.saxutils import escape  # nosec B406
 
 import httpx
+from defusedxml import ElementTree as DefusedElementTree
+from defusedxml.common import DefusedXmlException
 
 from hcam.streams.locator import sanitize_stream_reference
 from hcam.streams.network import OnvifNetworkPolicy, StreamNetworkPolicyError
@@ -126,8 +130,8 @@ def _soap_request(
     if len(document) > max_response_bytes:
         raise OnvifResolutionError("onvif_response_too_large")
     try:
-        return ElementTree.fromstring(document)
-    except ElementTree.ParseError as exc:
+        return DefusedElementTree.fromstring(document)
+    except (ElementTree.ParseError, DefusedXmlException) as exc:
         raise OnvifResolutionError("onvif_invalid_response") from exc
 
 
@@ -135,8 +139,9 @@ def _wsse_security_header(credentials: CameraCredentials) -> str:
     nonce = os.urandom(16)
     created = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
     digest = base64.b64encode(
-        hashlib.sha1(  # noqa: S324 - required by ONVIF UsernameToken PasswordDigest
-            nonce + created.encode("utf-8") + credentials.password.encode("utf-8")
+        hashlib.sha1(
+            nonce + created.encode("utf-8") + credentials.password.encode("utf-8"),
+            usedforsecurity=False,  # ONVIF UsernameToken Profile 1.0 mandates SHA-1.
         ).digest()
     ).decode("ascii")
     encoded_nonce = base64.b64encode(nonce).decode("ascii")
@@ -258,8 +263,8 @@ class HttpxOnvifTransport:
         except (httpx.NetworkError, ssl.SSLError, OSError) as exc:
             raise OnvifResolutionError("unreachable") from exc
         try:
-            root = ElementTree.fromstring(bytes(document))
-        except ElementTree.ParseError as exc:
+            root = DefusedElementTree.fromstring(bytes(document))
+        except (ElementTree.ParseError, DefusedXmlException) as exc:
             raise OnvifResolutionError("onvif_invalid_response") from exc
         if _first_descendant(root, "Fault") is not None:
             raise OnvifResolutionError("onvif_soap_fault")

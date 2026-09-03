@@ -1,0 +1,178 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_r0_source_implementation_contract.v1",
+  "contract_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-R0-SOURCE-IMPLEMENTATION-1.0.0",
+  "status": "sealed_non_executable_source_only_contract_owner_implementation_authorization_pending",
+  "prepared_on": "2026-09-01",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3S-R1-DUAL-ARCHITECTURE-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-dual-architecture-acceptance.json",
+    "effect": "prepare_one_separate_non_effective_source_only_implementation_authorization_proposal"
+  },
+  "future_source_paths": {
+    "canonical_contract": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-contract.json",
+    "generated_vectors": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-vectors.json",
+    "PowerShell_controller": "tools/phase36_quarantine_runtime_controller.ps1",
+    "Python_reference_controller": "tools/phase36_quarantine_runtime_controller_reference.py"
+  },
+  "canonical_contract": {
+    "format": "versioned_bounded_JSON_contract",
+    "unknown_fields": "reject",
+    "unknown_action_or_reason_code": "result_contract_invalid",
+    "canonical_serialization": "UTF_8_JSON_sorted_keys_compact_no_NaN_or_infinity",
+    "request_sections": [
+      "contract_version",
+      "mode",
+      "authorization_binding",
+      "declared_bounds",
+      "action_plan",
+      "input_bindings"
+    ],
+    "result_sections": [
+      "contract_version",
+      "terminal",
+      "succeeded",
+      "reason_code",
+      "stage_projection",
+      "action_counts",
+      "retention_projection",
+      "gate_effect"
+    ],
+    "modes": [
+      "Policy",
+      "Preflight"
+    ],
+    "Preflight_machine_authority_in_source_implementation": false
+  },
+  "typed_stage_taxonomy": [
+    "request_contract_failed",
+    "authorization_binding_failed",
+    "runtime_path_classification_failed",
+    "runtime_metadata_failed",
+    "runtime_hash_failed",
+    "runtime_trust_initialization_failed",
+    "runtime_trust_verification_failed",
+    "runtime_trust_close_failed",
+    "runtime_identity_changed",
+    "utility_manifest_path_failed",
+    "utility_manifest_parser_failed",
+    "utility_manifest_closure_failed",
+    "source_binding_failed",
+    "process_start_failed",
+    "process_timeout",
+    "process_output_bounds_failed",
+    "result_contract_invalid",
+    "cross_language_projection_diverged"
+  ],
+  "PowerShell_controller_contract": {
+    "future_role": "authoritative_Windows_machine_controller",
+    "implementation_time_role": "source_only_never_parsed_imported_or_executed",
+    "default_deny_dispatch": true,
+    "dynamic_evaluation_or_command_construction": false,
+    "Invoke_Expression_Add_Type_or_downloaded_native_helper": false,
+    "pre_Utility_surface": "PowerShell_language_and_dotnet_only",
+    "machine_API_operations_declared_but_unreachable_without_future_runtime_authorization": true,
+    "sanitized_output_only": true,
+    "exact_source_hash_required_for_future_execution_package": true
+  },
+  "Python_reference_controller_contract": {
+    "role": "pure_portable_policy_reference_and_cross_language_oracle",
+    "implementation_dependency_policy": "Python_standard_library_only",
+    "allowed_import_families": [
+      "dataclasses",
+      "enum",
+      "hashlib",
+      "json",
+      "typing"
+    ],
+    "filesystem_runtime_registry_environment_network_or_process_access": false,
+    "ctypes_cffi_os_pathlib_platform_socket_subprocess_urllib_importlib_or_third_party_imports": false,
+    "machine_API_or_subprocess_surface": false,
+    "pure_generated_policy_execution_during_tests_if_separately_authorized": true,
+    "Python_machine_fallback": false,
+    "exact_source_hash_required_for_future_packages": true
+  },
+  "cross_language_contract": {
+    "one_shared_vector_manifest": true,
+    "one_canonical_expected_projection_per_vector": true,
+    "Python_reference_executes_vectors": true,
+    "PowerShell_source_projection_checked_statically": true,
+    "PowerShell_runtime_execution_during_implementation": false,
+    "projection_difference": "terminal_cross_language_projection_diverged",
+    "implementation_specific_extensions": false
+  },
+  "generated_test_plan": {
+    "minimum_total_vectors": 192,
+    "request_schema_vectors": 32,
+    "authorization_and_binding_vectors": 24,
+    "stage_transition_vectors": 48,
+    "redaction_and_prohibited_field_vectors": 32,
+    "resource_timeout_and_output_bound_vectors": 24,
+    "cross_language_projection_vectors": 32,
+    "all_generated_only": true,
+    "machine_observation_or_external_data": false
+  },
+  "exact_future_test_paths": [
+    "tests/test_phase36_quarantine_runtime_controller_contract.py",
+    "tests/test_phase36_quarantine_runtime_controller_reference.py",
+    "tests/test_phase36_quarantine_runtime_controller_powershell_static.py",
+    "tests/test_phase36_quarantine_runtime_controller_cross_language.py"
+  ],
+  "implementation_evidence_requirements": {
+    "all_192_or_more_generated_vectors_pass": true,
+    "Python_reference_branch_coverage_minimum_percent": 95,
+    "PowerShell_source_forbidden_surface_checks_pass": true,
+    "PowerShell_and_Python_reason_action_and_schema_sets_match": true,
+    "accepted_harness_runner_handler_adapter_and_existing_vectors_remain_byte_exact": true,
+    "full_Phase_3_6_static_suite_passes": true,
+    "Ruff_and_diff_checks_pass": true,
+    "no_runtime_machine_or_network_evidence_claimed": true,
+    "separate_exact_owner_implementation_acceptance_required": true
+  },
+  "implementation_allowlist": [
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-contract.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-vectors.json",
+    "tools/phase36_quarantine_runtime_controller.ps1",
+    "tools/phase36_quarantine_runtime_controller_reference.py",
+    "tests/test_phase36_quarantine_runtime_controller_contract.py",
+    "tests/test_phase36_quarantine_runtime_controller_reference.py",
+    "tests/test_phase36_quarantine_runtime_controller_powershell_static.py",
+    "tests/test_phase36_quarantine_runtime_controller_cross_language.py",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-evidence.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-package.json",
+    "docs/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-evidence-review.md",
+    "contracts/phase-3/p3-6-entry-gates.json",
+    "contracts/phase-3/p3-6-capability-profile-policy.json",
+    "contracts/phase-3/p3-6-unblock-plan.json",
+    "contracts/phase-3/README.md",
+    "docs/phase-3/README.md",
+    "docs/phase-3/acceptance-checklist.md",
+    "docs/phase-3/decision-register.md",
+    "docs/phase-3/implementation-backlog.md",
+    "docs/phase-3/p3-6-capability-profiles.md",
+    "docs/phase-3/p3-6-plan.md",
+    "docs/phase-3/p3-6-planning-acceptances.md",
+    "docs/phase-3/p3-6-unblock-plan.md",
+    ".gitattributes"
+  ],
+  "hard_prohibitions_during_implementation": [
+    "PowerShell_parsing_import_or_execution",
+    "Python_machine_controller_mode_or_fallback",
+    "Python_filesystem_runtime_registry_environment_network_process_or_native_API_access",
+    "runtime_manifest_hardware_or_machine_observation",
+    "machine_storage_F_B_ACL_probe_cleanup_or_scanner_action",
+    "network_download_install_update_or_artifact_acquisition",
+    "model_inference_camera_media_private_or_Government_data_access",
+    "container_Kubernetes_profile_activation_deployment_or_remote_Git",
+    "U3T_preflight_U3R_retry_or_U3K_package_preparation"
+  ],
+  "current_effect": {
+    "contract_prepared": true,
+    "owner_source_implementation_authorization_pending": true,
+    "source_or_test_implementation_authorized": false,
+    "Python_pure_generated_policy_test_execution_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "retry_U3T_or_U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  }
+}

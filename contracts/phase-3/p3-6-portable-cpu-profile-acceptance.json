@@ -1,0 +1,49 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_cpu_profile_acceptance.v1",
+  "record_id": "D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE",
+  "decision_id": "D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE",
+  "status": "accepted_planning_package_only",
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-08-30",
+  "accepted_at": "2026-08-30T16:05:27Z",
+  "accepted_repository_head": "af97ebff2add80de599a9386c3fedda07834f3df",
+  "branch": "codex/phase3-6-planning-acceptances",
+  "owner_statement_received": "D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE: Accept planning package",
+  "package_manifest": "contracts/phase-3/p3-6-portable-cpu-profile-package.json",
+  "package_digest_sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
+  "accepted_profile_identity": {
+    "profile_class": "portable_cpu",
+    "profile_id": "hcam-portable-cpu",
+    "proposed_revision": "P36-PROFILE-PORTABLE-CPU-R0",
+    "lifecycle": "accepted_non_executable_planning_proposal"
+  },
+  "effect": "accepts_the_conservative_portable_cpu_planning_baseline_and_documented_unknowns_without_resolver_eligibility_activation_or_execution_authority",
+  "documented_limitations_accepted": true,
+  "gate_effects": {
+    "P36-G2": "blocked_exact_fresh_inventory_runtime_resource_workload_and_generated_validation_evidence_missing",
+    "P36-G5": "blocked_no_implementation_or_runtime_authority"
+  },
+  "next_phase_authorized": false,
+  "non_authorization": [
+    "inventory_projection_recollection_or_revalidation",
+    "dependency_model_dataset_driver_container_or_artifact_download",
+    "runtime_model_loading_inference_or_benchmark_execution",
+    "hardware_performance_stress_capacity_or_thermal_testing",
+    "scheduler_container_or_kubernetes_action",
+    "profile_resolver_placement_pipeline_dashboard_or_application_implementation",
+    "camera_media_sentinel_onvif_stream_or_external_data_access",
+    "real_private_government_police_or_scraped_data",
+    "model_training_fine_tuning_or_promotion",
+    "identity_biometric_watchlist_owner_record_or_cross_camera_processing",
+    "operational_alerting_autonomous_action_or_enforcement",
+    "pilot_production_or_statewide_deployment",
+    "remote_git_push_pull_request_or_merge",
+    "p3_7_or_later_work"
+  ],
+  "inventory_recollection_authorized": false,
+  "profile_activation_authorized": false,
+  "implementation_authorized": false,
+  "runtime_execution_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

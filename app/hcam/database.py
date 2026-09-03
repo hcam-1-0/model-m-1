@@ -12,7 +12,7 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 from sqlalchemy.types import TypeDecorator
 
 
-CURRENT_SCHEMA_REVISION = "0007_onvif_operations"
+CURRENT_SCHEMA_REVISION = "0011_geometry_events"
 REQUIRED_CAMERA_COLUMNS = frozenset(
     {
         "camera_id",
@@ -62,6 +62,24 @@ REQUIRED_STREAM_COLUMNS = frozenset(
         "onvif_max_move_seconds",
     }
 )
+REQUIRED_ANALYTICS_ASSIGNMENT_COLUMNS = frozenset(
+    {
+        "assignment_id",
+        "version_id",
+        "department",
+        "stream_id",
+        "camera_id",
+        "capability",
+        "desired_state",
+        "lifecycle_state",
+        "reason_code",
+        "execution_scope",
+        "configuration_digest",
+        "approval_record_id",
+        "created_at",
+        "updated_at",
+    }
+)
 
 
 class Base(DeclarativeBase):
@@ -96,7 +114,10 @@ class UTCDateTime(TypeDecorator[datetime]):
 
 
 def ensure_sqlite_parent(database_url: str) -> None:
-    if not database_url.startswith("sqlite:///") or database_url == "sqlite:///:memory:":
+    if (
+        not database_url.startswith("sqlite:///")
+        or database_url == "sqlite:///:memory:"
+    ):
         return
 
     path_text = database_url.removeprefix("sqlite:///")
@@ -115,6 +136,7 @@ def build_engine(database_url: str) -> Engine:
     engine = create_engine(database_url, connect_args=connect_args, pool_pre_ping=True)
 
     if _is_sqlite(database_url):
+
         @event.listens_for(engine, "connect")
         def enable_foreign_keys(dbapi_connection, _connection_record) -> None:
             cursor = dbapi_connection.cursor()
@@ -163,6 +185,14 @@ class Database:
                 if "stream_endpoints" in table_names
                 else set()
             )
+            analytics_assignment_columns = (
+                {
+                    column["name"]
+                    for column in inspector.get_columns("analytics_assignments")
+                }
+                if "analytics_assignments" in table_names
+                else set()
+            )
         required_tables = {
             "cameras",
             "audit_events",
@@ -175,16 +205,33 @@ class Database:
             "stream_capability_refreshes",
             "onvif_control_leases",
             "onvif_operation_runs",
+            "analytics_assignments",
+            "analytics_assignment_revisions",
+            "analytics_generated_runs",
+            "analytics_observations",
+            "analytics_tracking_runs",
+            "analytics_tracker_epochs",
+            "analytics_tracks",
+            "analytics_track_lifecycle",
+            "analytics_geometries",
+            "analytics_geometry_rules",
+            "analytics_geometry_evaluator_runs",
+            "analytics_track_rule_states",
+            "analytics_events",
         }
         missing_tables = required_tables - table_names
         missing_columns = REQUIRED_CAMERA_COLUMNS - camera_columns
         missing_audit_columns = REQUIRED_AUDIT_COLUMNS - audit_columns
         missing_stream_columns = REQUIRED_STREAM_COLUMNS - stream_columns
+        missing_analytics_assignment_columns = (
+            REQUIRED_ANALYTICS_ASSIGNMENT_COLUMNS - analytics_assignment_columns
+        )
         if (
             missing_tables
             or missing_columns
             or missing_audit_columns
             or missing_stream_columns
+            or missing_analytics_assignment_columns
         ):
             raise DatabaseNotReadyError("database migrations are not current")
         if self.allow_unversioned_schema:

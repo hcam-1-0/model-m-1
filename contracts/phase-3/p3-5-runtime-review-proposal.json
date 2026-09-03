@@ -1,0 +1,62 @@
+{
+  "allowed_network_actions": [],
+  "contract_format": "hcam.phase3.p3_5.runtime-review-proposal.v1",
+  "dependency_or_lockfile_change_performed": false,
+  "implementation_authorized": false,
+  "next_decision": {
+    "decision_id": "D-P3.5-RUNTIME-RESEARCH",
+    "effect_if_approved": "resolve_and_quarantine_exact_python_and_native_runtime_dependency_closure_outside_the_worktree_without_model_execution",
+    "status": "pending_owner_authorization"
+  },
+  "package_downloads_performed": false,
+  "proposed_python_runtime": {
+    "available_locally": true,
+    "purpose": "isolated_generated_only_P3.5_research_and_future_implementation",
+    "selected_version": "3.12.13"
+  },
+  "proposed_python_packages": [
+    {
+      "name": "paddleocr",
+      "purpose": "PP-OCRv6_and_PP-OCRv5_model_loading_and_preprocessing",
+      "source": "https://pypi.org/project/paddleocr/3.7.0/",
+      "status": "metadata_reviewed_dependency_closure_unresolved",
+      "version": "3.7.0"
+    },
+    {
+      "name": "paddlepaddle",
+      "purpose": "CPU_Paddle_inference_runtime_for_Windows_x86_64_CPython_3.12",
+      "source": "https://pypi.org/project/paddlepaddle/3.3.1/",
+      "status": "metadata_reviewed_dependency_closure_unresolved",
+      "version": "3.3.1"
+    },
+    {
+      "name": "Pillow",
+      "purpose": "deterministic_non_issuable_synthetic_plate_rendering",
+      "source": "https://pypi.org/project/pillow/12.3.0/",
+      "status": "metadata_reviewed_exact_wheel_and_dependencies_unresolved",
+      "version": "12.3.0"
+    },
+    {
+      "name": "regex",
+      "purpose": "UAX_29_extended_grapheme_cluster_segmentation_via_X",
+      "source": "https://pypi.org/project/regex/2026.7.19/",
+      "status": "metadata_reviewed_exact_wheel_and_dependencies_unresolved",
+      "version": "2026.7.19"
+    }
+  ],
+  "proposed_tesseract_runtime": {
+    "current_local_state": "not_installed",
+    "policy": "keep_OCR-G0_and_OCR-G1_execution_blocked_until_an_exact_Tesseract_5_engine_build_and_native_SBOM_are_approved",
+    "status": "unresolved"
+  },
+  "proposal_id": "P3.5-RUNTIME-REVIEW-PROPOSAL-R0",
+  "research_sources": [
+    "https://pypi.org/project/paddleocr/",
+    "https://pypi.org/project/paddlepaddle/",
+    "https://pypi.org/project/pillow/",
+    "https://pypi.org/project/regex/",
+    "https://tesseract-ocr.github.io/tessdoc/Installation.html",
+    "https://www.unicode.org/reports/tr29/"
+  ],
+  "status": "proposal_prepared_owner_authorization_pending"
+}

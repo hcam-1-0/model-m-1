@@ -1,0 +1,70 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_r3_generated_validation_evidence.v1",
+  "evidence_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-R3-GENERATED-VALIDATION-EVIDENCE",
+  "status": "all_500_generated_runtime_cases_passed_storage_not_started",
+  "recorded_on": "2026-09-03",
+  "delegation_binding": {
+    "path": "contracts/phase-3/p3-6-combined-execution-delegation.json",
+    "sha256": "24A5D29CBA1B6DA990207EE2C4E7BD8DF8CB0DC2D36AD526461E494F8E5C3C09",
+    "scope": "combined_local_Phase_3_6_execution_without_remote_Git_or_security_bypass"
+  },
+  "runtime_binding": {
+    "family": "PowerShell_7_on_Windows",
+    "sha256": "362A356CE7F0940EC74F73A8FC2C990A2CC24A38A11C90BBD8ECA947110AD139",
+    "runtime_path_retained": false,
+    "alternate_runtime_or_hardware_discovery": false
+  },
+  "outer_policy_validation": {
+    "successor_harness": "tools/phase36_consolidated_runtime_closeout_r3_generated_validation.ps1",
+    "successor_harness_sha256": "11F1867D67760EEEBB09CF5BA5DCDC4C375517A5EEA1B39598B0ABA1EAF61C1F",
+    "historical_harness": "tools/phase36_consolidated_runtime_closeout_u4d_generated_validation.ps1",
+    "historical_harness_sha256": "5267365930985C0CFBC0E3A96F5D4B58DDD9072EBF222AA607D24773F0AFA72B",
+    "controller": "tools/phase36_quarantine_runtime_binding_outer_attempt_controller_r0.ps1",
+    "controller_sha256": "0E539126536CEF9F490EE164C5ECEC2FED36649C163FAAA8F32193B2DB744B99",
+    "vectors": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-vectors.json",
+    "vectors_sha256": "EE25BD99942F0CB68E157439ADEA230D3E549FBAC1743AC783775DDA58AA7B13",
+    "required_cases": 416,
+    "accepted_cases": 416,
+    "terminal_reason": "generated_validation_accepted",
+    "source_identity_valid": true,
+    "raw_retained_bytes": 0
+  },
+  "runner_handler_validation": {
+    "successor_harness": "tools/phase36_quarantine_generated_validation_r3.ps1",
+    "successor_harness_sha256": "27CCA6018706B64B551A1F32B74DF70C7EA5F8BF3D33FA8937A3277B09FFB79E",
+    "historical_harness": "tools/phase36_quarantine_generated_validation.ps1",
+    "historical_harness_sha256": "830D88F8915B084DEF1089927FF785C9C0E7BDB6F0755B5315EE85E9DA8A8B8A",
+    "vectors": "contracts/phase-3/p3-6-quarantine-generated-powershell-validation-r0-vectors.json",
+    "vectors_sha256": "5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C",
+    "runner_contract_cases": 20,
+    "pure_handler_cases": 64,
+    "accepted_cases": 84,
+    "terminal_reason": "ok",
+    "parser_file_count": 4,
+    "parser_error_count": 0,
+    "runner_storage_invocation_count": 0,
+    "windows_adapter_import_or_execution_count": 0,
+    "machine_action_count": 0,
+    "network_action_count": 0,
+    "raw_fixture_retained": false,
+    "raw_process_output_retained": false,
+    "raw_exception_retained": false
+  },
+  "runtime_discoveries": [
+    "PowerShell_JSON_integral_values_require_Int32_normalization_for_the_accepted_typed_controller_contract",
+    "invalid_generated_requests_require_the_reference_request_validation_gate_before_stage_evaluation",
+    "Utility_JSON_commands_are_cmdlets_not_functions",
+    "core_pipeline_cmdlets_have_Microsoft_PowerShell_Core_provenance",
+    "an_exact_empty_Compare_Object_result_requires_explicit_array_cardinality_under_StrictMode"
+  ],
+  "closed_gates": {
+    "U3K_storage_started": false,
+    "candidate_root_created_or_changed": false,
+    "Windows_storage_adapter_executed": false,
+    "scanner_or_network_action": false,
+    "model_inference_camera_media_private_or_Government_data_action": false,
+    "container_Kubernetes_profile_activation_or_deployment": false,
+    "commit_push_or_remote_Git": false
+  },
+  "next_gate": "complete_Phase_3_6_generated_static_validation_then_run_one_bounded_U3K_storage_attempt"
+}

@@ -1,0 +1,66 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_failure_analysis_r2_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-FAILURE-ANALYSIS-R2-PROPOSAL",
+  "status": "owner_decisions_pending_non_effective",
+  "prepared_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "research_sources": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-research-sources.json",
+  "decision_packet": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-decision-packet.json",
+  "consumed_U3G_evidence": {
+    "package_digest_sha256": "C3EE058DF2B49BCEE552AF6B084E2D05C810F2C8EE11773872E9EC9A72DE080B",
+    "authorization_sha256": "12DBCEA9BB4C7AECDED5A42CCE2962CFBB689488F1B713990687DE876AC01070",
+    "result_sha256": "417AB2F17C42FD6313CC2798AC055EEF75AB16F0431BE6486619C762FA253226",
+    "evidence_sha256": "B1D454E1F1390C0FB7D594D80197BA87DA75B5D4216CBF9177F8883E46268B4D",
+    "attempt_consumed": true,
+    "retry_authorized": false
+  },
+  "problem_statement": {
+    "storage": "U3G created the absent root with a protected three-rule DACL, but its exact current-process Modify comparison failed. The probe was skipped and the empty root was removed.",
+    "ACL_diagnosis": "Microsoft documents automatic Synchronize augmentation for allow ACEs. This is the leading explanation for the failed exact comparison, but raw ACL data was intentionally not retained and the cause remains an inference until a separately authorized attempt validates normalized booleans.",
+    "Defender": "The bounded status projection returned no usable AMProductVersion, so candidate selection, hashing, and WinVerifyTrust were correctly skipped.",
+    "Defender_diagnosis": "PowerShell compatibility remoting and deserialization are plausible contributors. A native Windows PowerShell scalar projection removes that transport variable, while a bounded Microsoft-documented latest-platform fallback prevents exclusive dependence on AMProductVersion.",
+    "transaction_reviewability": "The U3G execution path was one-shot and not represented by a reviewable persisted runner source. Future owner authorization should bind reviewed mechanics as well as an abstract action contract."
+  },
+  "recommended_selection": "A/A/A/A/A/A",
+  "recommended_effect": {
+    "allow_mask": "Require exactly Modify plus the documented automatically added Synchronize bit and reject all other rights.",
+    "DACL_verification": "Match three normalized explicit allow tuples and compute unauthorized-principal absence independently.",
+    "Defender_transport": "Project allowlisted scalar status fields inside a bounded native Windows PowerShell 5.1 process before serialization.",
+    "Defender_fallback": "Use AMProductVersion first, then one bounded latest version-directory candidate that must independently pass path, version, hash, and cache-only trust checks.",
+    "attempts": "Prepare storage-only and Defender-only attempts separately, each with a new digest and exact owner authorization.",
+    "runner": "Prepare a content-hashed, reviewable, default-deny transaction-runner proposal before seeking separate implementation or execution authority."
+  },
+  "sequence_after_owner_choices": [
+    "record all six exact owner selections against the sealed U3H decision-package digest",
+    "prepare a non-executable transaction-runner design and generated-only contract-test proposal without implementing or running it",
+    "prepare a separate immutable storage-only action and authorization proposal",
+    "require exact digest-bound owner authorization before any storage attempt",
+    "only after storage evidence is accepted prepare a separate Defender-only action and authorization proposal",
+    "require another exact digest-bound owner authorization before any Defender query, candidate hash, or trust action",
+    "keep ModelScan, passive-inspector implementation, acquisition, models, inference, hardware tests, containers, Kubernetes, deployment, and profile activation blocked"
+  ],
+  "current_effect": {
+    "planning_research_complete": true,
+    "owner_selections_pending": true,
+    "transaction_runner_proposal_exists": false,
+    "transaction_runner_implementation_exists": false,
+    "new_storage_action_or_authorization_package_exists": false,
+    "new_Defender_action_or_authorization_package_exists": false,
+    "another_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "Defender_query_hash_or_trust_action_authorized": false,
+    "scanner_query_install_or_execution_authorized": false,
+    "dependency_or_artifact_acquisition_authorized": false,
+    "runtime_or_model_execution_authorized": false,
+    "profile_activation_authorized": false,
+    "implementation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "owner_response_template": "D-P3.6-U3H-001: <A|B|C|D>\nD-P3.6-U3H-002: <A|B|C|D>\nD-P3.6-U3H-003: <A|B|C|D>\nD-P3.6-U3H-004: <A|B|C|D>\nD-P3.6-U3H-005: <A|B|C|D>\nD-P3.6-U3H-006: <A|B|C|D>",
+  "owner_selection_may_be_inferred_from_continue_prior_U3G_authority_or_any_other_decision": false
+}

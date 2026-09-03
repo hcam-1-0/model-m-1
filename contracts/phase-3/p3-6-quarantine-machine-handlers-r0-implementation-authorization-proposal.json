@@ -1,0 +1,164 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_machine_handlers_r0_implementation_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH",
+  "status": "sealed_non_effective_owner_authorization_pending",
+  "prepared_on": "2026-09-01",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "triggering_non_effective_package": {
+    "path": "contracts/phase-3/p3-6-quarantine-storage-r2-final-u3k-authorization-package.json",
+    "sha256": "4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E",
+    "blocker": "all_ten_machine_handlers_are_unimplemented_and_execution_authorization_is_not_requestable"
+  },
+  "exact_proposed_inputs": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-research-sources.json",
+      "sha256": "13D63D2A85811466F476549A11D9A5D431F2543A4ED1CDB391DAE20BF0F5ABFA",
+      "role": "primary_Microsoft_API_research_and_exclusive_creation_risk_analysis"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-contract.json",
+      "sha256": "7ED610CAE26B6C92D8B2C2105754D7E8BD377B7C3790354ABAE554CBB104397F",
+      "role": "exact_source_architecture_ten_handler_API_failure_cleanup_and_non_authority_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-generated-test-plan.json",
+      "sha256": "5D69AFDC9612251F80309BF74983D0949B3060DBA84229F19ADCF841378DD2C2",
+      "role": "64_vector_generated_only_machine_independent_test_and_static_verification_plan"
+    }
+  ],
+  "requested_owner_effect_if_exact_package_digest_is_accepted": {
+    "authorize_exact_source_implementation_only": true,
+    "authorize_exact_generated_Python_reference_tests_only": true,
+    "authorize_non_observational_implementation_evidence_and_package_records": true,
+    "authorize_exclusive_CreateDirectoryW_security_at_create_correction": true,
+    "require_implementation_on_current_isolated_codex_branch": true,
+    "require_exact_source_and_test_hashes_before_owner_evidence_acceptance": true,
+    "PowerShell_parser_runner_or_module_execution_authorized": false,
+    "windows_adapter_import_or_execution_authorized": false,
+    "machine_storage_runtime_or_ACL_observation_authorized": false,
+    "F_or_other_volume_access_authorized": false,
+    "storage_attempt_authorized": false,
+    "Defender_or_scanner_action_authorized": false,
+    "artifact_dependency_model_or_dataset_acquisition_authorized": false,
+    "container_or_Kubernetes_action_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  },
+  "exact_future_implementation_file_allowlist": [
+    {
+      "path": "tools/phase36_quarantine_transaction_runner.ps1",
+      "operation": "modify",
+      "role": "static_preflight_orchestration_and_exact_ten_action_dispatch"
+    },
+    {
+      "path": "tools/phase36_quarantine_machine_handlers.psm1",
+      "operation": "create",
+      "role": "pure_typed_handler_state_machine_without_direct_machine_APIs"
+    },
+    {
+      "path": "tools/phase36_quarantine_windows_storage_adapter.psm1",
+      "operation": "create",
+      "role": "single_allowlisted_Windows_and_dotnet_machine_API_boundary"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_machine_handlers_generated.py",
+      "operation": "create",
+      "role": "64_vector_generated_reference_and_static_source_verifier_without_PowerShell_execution"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-evidence.json",
+      "operation": "create",
+      "role": "sanitized_non_observational_exact_source_and_test_evidence"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-package.json",
+      "operation": "create",
+      "role": "sealed_exact_source_and_evidence_package_for_separate_owner_acceptance"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-evidence-review.md",
+      "operation": "create",
+      "role": "human_review_of_exact_source_hashes_tests_limitations_and_next_gates"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-entry-gates.json",
+      "operation": "modify",
+      "role": "synchronize_non_execution_implementation_evidence_state"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-capability-profile-policy.json",
+      "operation": "modify",
+      "role": "synchronize_non_execution_implementation_evidence_state"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-unblock-plan.json",
+      "operation": "modify",
+      "role": "synchronize_next_owner_acceptance_or_runtime_test_planning_action"
+    },
+    {
+      "path_pattern": "docs/phase-3/P3.6_indexes_ledgers_and_backlog_only",
+      "operation": "modify",
+      "role": "synchronize_documentation_without_widening_product_scope"
+    },
+    {
+      "path_pattern": "tests/test_phase36_quarantine_machine_handler_proposal.py_and_affected_phase36_compatibility_tests",
+      "operation": "modify",
+      "role": "synchronize_package_integrity_and_regression_assertions"
+    }
+  ],
+  "implementation_requirements": [
+    "retain_existing_Contract_mode_behavior_and_twenty_accepted_contract_vectors",
+    "implement_exactly_U3K_A01_through_U3K_A10_with_static_case_sensitive_ordered_dispatch",
+    "separate_pure_handler_state_transitions_from_the_exact_Windows_storage_adapter",
+    "defer_Windows_adapter_import_until_exact_future_execution_package_owner_statement_runtime_source_target_limit_and_attempt_preflight_passes",
+    "use_CreateDirectoryW_with_nonnull_SECURITY_ATTRIBUTES_to_obtain_exclusive_security_at_create_and_fail_on_ERROR_ALREADY_EXISTS",
+    "never_treat_a_managed_CreateDirectory_existing_directory_return_as_attempt_ownership",
+    "enforce_exact_DACL_normalization_probe_zero_retention_bounded_cleanup_and_sanitized_reason_codes",
+    "implement_no_dynamic_dispatch_plugins_environment_configuration_network_process_registry_service_scanner_or_download_surface",
+    "execute_only_the_64_generated_Python_reference_and_static_checks_during_this_implementation_stage",
+    "seal_exact_source_test_contract_and_evidence_hashes_before_requesting_owner_acceptance"
+  ],
+  "required_evidence_before_any_later_execution_package": [
+    "all_64_generated_vectors_pass",
+    "existing_twenty_contract_vectors_and_full_Phase_3_6_suite_pass",
+    "static_forbidden_surface_checks_pass",
+    "Ruff_strict_JSON_duplicate_key_hash_and_git_diff_checks_pass",
+    "PowerShell_runner_modules_and_windows_adapter_were_not_executed_or_imported",
+    "no_machine_storage_F_ACL_runtime_scanner_network_model_media_data_container_deployment_or_remote_Git_action_occurred",
+    "exact_implemented_source_and_evidence_package_is_separately_accepted_by_mayank_admin"
+  ],
+  "owner_statement_template": "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH: I, mayank-admin, authorize implementation only of the P3.6 U3K machine-handlers R0 proposal against package digest <MACHINE_HANDLER_PROPOSAL_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact source, generated-Python-test, evidence, package, ledger, documentation, and compatibility-test paths allowlisted by that package. It must retain static ten-action default-deny dispatch, isolate all direct machine APIs in the exact Windows adapter, use exclusive CreateDirectoryW security-at-create semantics, pass all 64 generated-only vectors and the full Phase 3.6 suite, and seal exact source and evidence hashes for separate acceptance. This authorizes generated Python reference and static tests only. It does not authorize PowerShell, runner, module, or Windows-adapter execution or import; runtime, hardware, storage, F:, ACL, probe, cleanup, Defender/scanners, downloads, artifacts, models, inference, cameras/media/data, containers/Kubernetes, deployment, or remote Git. Any execution requires a later current runtime-bound executable U3K package and separate digest-bound D-P3.6-U3K-STORAGE-R2-AUTH.",
+  "sequence_after_exact_owner_authorization": [
+    "record_exact_digest_bound_owner_authorization_without_mutating_this_package",
+    "implement_only_the_allowlisted_source_and_generated_Python_verifier",
+    "run_only_the_authorized_generated_Python_static_and_Phase_3_6_tests",
+    "seal_non_observational_implementation_evidence_and_exact_source_hashes",
+    "obtain_separate_owner_acceptance_of_that_implementation_package",
+    "prepare_any_separately_authorized_generated_PowerShell_runtime_test_if_required",
+    "obtain_a_fresh_exact_runtime_binding",
+    "regenerate_a_new_executable_U3K_package_bound_to_the_corrected_spec_exact_sources_tests_and_runtime",
+    "obtain_separate_D_P3_6_U3K_STORAGE_R2_AUTH_before_any_machine_or_F_access"
+  ],
+  "current_gate_effect": {
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked",
+    "owner_machine_handler_implementation_authorization_pending": true,
+    "machine_handler_implementation_authorized": false,
+    "source_or_test_change_authorized": false,
+    "Python_generated_test_execution_authorized": false,
+    "PowerShell_or_runner_execution_authorized": false,
+    "windows_adapter_import_or_execution_authorized": false,
+    "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
+    "storage_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "Defender_or_scanner_action_authorized": false,
+    "artifact_acquisition_authorized": false,
+    "profile_activation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  },
+  "authorization_may_be_inferred_from_continue_prior_acceptances_or_package_preparation": false
+}

@@ -1,0 +1,36 @@
+{
+  "approval_effect": "exact_artifact_approved_for_local_generated_only_p3_2_implementation",
+  "approved_at": "2026-08-24T16:50:00Z",
+  "approved_by": "mayank-admin",
+  "artifact": {
+    "artifact_id": "DET-R0-ONNX-UPSTREAM-0.1.1RC0",
+    "bytes": 20219662,
+    "filename": "yolox_tiny.onnx",
+    "sha256": "427CC366D34E27FF7A03E2899B5E3671425C262EA2291F88BB942BC1CC70B0F7",
+    "source_release": "0.1.1rc0",
+    "source_url": "https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_tiny.onnx"
+  },
+  "candidate_id": "DET-R0",
+  "contract_format": "hcam.phase3.p3_2.model-approval.v1",
+  "decision_id": "D-P3.2-002",
+  "evidence": {
+    "license_sha256": "0EC3668D3274BCF29E8A29E9576D5A2CD96FC78D3C5BEC4387355A796E5D9088",
+    "model_card": "contracts/phase-3/p3-2-model-card.json",
+    "research_evidence": "contracts/phase-3/p3-2-research-evidence.json",
+    "sbom": "contracts/phase-3/p3-2-sbom.spdx.json",
+    "source_revision": "6ddff4824372906469a7fae2dc3206c7aa4bbaee"
+  },
+  "license_decision": {
+    "code": "Apache-2.0",
+    "local_use": "approved",
+    "model_object_form": "Apache-2.0_by_publisher_project_scope_determination",
+    "redistribution": "not_authorized_requires_separate_release_review"
+  },
+  "limitations_accepted_for_this_scope": [
+    "training lineage is publisher-reported COCO context and is not independently reconstructed",
+    "upstream metrics are not H-CAM measurements",
+    "generated-only implementation cannot support accuracy or deployment claims"
+  ],
+  "owner_statement": "d-p3.2 start",
+  "status": "owner_approved_restricted"
+}

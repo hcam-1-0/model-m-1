@@ -1,0 +1,80 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3t_preflight_r0_source_implementation_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3T-PREFLIGHT-R0-SOURCE-IMPLEMENTATION-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH",
+  "status": "non_effective_owner_source_harness_implementation_authorization_pending",
+  "prepared_on": "2026-09-01",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-acceptance.json",
+    "accepted_source_package_sha256": "484A6FB71216F43A1EAF668DC59091D4FD42EF8543585BFBB588CFCDE089BE30",
+    "effect": "prepare_this_non_effective_U3T_H1_source_harness_implementation_authorization_proposal"
+  },
+  "implementation_request": {
+    "minimal_PowerShell_harness_source": true,
+    "at_least_48_generated_vectors": true,
+    "one_Python_static_test_module": true,
+    "nonobservational_evidence_package_and_review": true,
+    "canonical_ledgers_and_documentation_sync": true,
+    "one_local_checkpoint_commit_after_static_validation": true,
+    "PowerShell_parse_import_or_execution": false,
+    "runtime_or_machine_observation": false,
+    "remote_Git": false
+  },
+  "exact_future_implementation_paths": [
+    "tools/phase36_quarantine_runtime_controller_u3t_preflight.ps1",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-vectors.json",
+    "tests/test_phase36_quarantine_runtime_controller_u3t_preflight_static.py",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-harness-implementation-evidence.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-harness-implementation-package.json",
+    "docs/phase-3/p3-6-quarantine-runtime-controller-u3t-preflight-r0-harness-evidence-review.md"
+  ],
+  "permitted_future_H1_validation_if_exactly_authorized": {
+    "Python_generated_fixture_and_static_source_tests": true,
+    "strict_JSON_hash_Ruff_line_ending_scope_and_diff_checks": true,
+    "PowerShell_parser_import_or_execution": false,
+    "runtime_manifest_hardware_machine_storage_or_network_access": false
+  },
+  "required_H1_invariants": {
+    "accepted_controller_contract_vectors_and_sources_remain_byte_exact": true,
+    "harness_is_additive_and_exact_hash_bound": true,
+    "generated_Policy_request_only": true,
+    "external_request_or_result_input": false,
+    "controller_Preflight_machine_authority": false,
+    "dynamic_command_eval_plugin_or_fallback_surface": false,
+    "minimum_generated_vectors": 48,
+    "all_runtime_and_machine_gates_remain_closed": true
+  },
+  "explicitly_not_authorized": [
+    "PowerShell_parsing_import_dot_sourcing_or_execution",
+    "Python_machine_access_or_fallback",
+    "runtime_path_metadata_hash_trust_or_identity_observation",
+    "utility_manifest_module_closure_or_Aggregate_validation",
+    "hardware_machine_storage_F_B_ACL_probe_cleanup_or_scanner_action",
+    "network_download_install_update_artifact_model_or_data_access",
+    "camera_media_private_or_Government_data",
+    "container_Kubernetes_profile_activation_deployment_U3R_retry_U3T_R1_attempt_or_U3K",
+    "remote_Git"
+  ],
+  "future_owner_authorization_statement_template": "D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only implementation of the U3T H1 preflight-harness package against digest <U3T_H1_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact additive PowerShell harness source, at least 48 generated-only vectors, one Python static test module, nonobservational evidence and package, canonical ledgers, documentation, line-ending records, and one local checkpoint commit with no push. The accepted U3S controller contract, vectors, PowerShell source, Python reference, evidence, package, and five immutable prior inputs must remain byte-exact. Python may execute generated fixture and source-text checks only. PowerShell must not be parsed, imported, dot-sourced, or executed. This does not authorize Python machine access or fallback; runtime path, metadata, hash, trust, identity, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, U3R retry, U3T R1 attempt, U3K, or remote Git. Seal the H1 source and generated/static evidence for separate exact owner acceptance before preparing any runtime-binding or attempt package.",
+  "sequence_after_exact_authorization": [
+    "record_exact_digest_bound_H1_source_implementation_authorization",
+    "implement_only_the_six_exact_future_paths_and_authorized_ledgers_docs_and_LF_records",
+    "run_only_generated_Python_and_source_text_static_validation",
+    "seal_exact_H1_source_test_and_nonobservational_evidence",
+    "create_at_most_one_local_checkpoint_commit_without_push",
+    "obtain_separate_exact_owner_H1_source_implementation_acceptance",
+    "prepare_no_runtime_binding_or_U3T_R1_attempt_package_before_H1_acceptance"
+  ],
+  "current_effect": {
+    "proposal_prepared": true,
+    "owner_H1_source_implementation_authorization_pending": true,
+    "H1_source_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "U3T_R1_attempt_U3R_retry_or_U3K_authorized": false,
+    "deployment_or_remote_Git_authorized": false
+  },
+  "authorization_may_be_inferred_from_U3S_acceptance_continue_silence_or_proposal_preparation": false
+}

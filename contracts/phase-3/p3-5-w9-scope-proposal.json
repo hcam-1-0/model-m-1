@@ -1,0 +1,102 @@
+{
+  "contract_format": "hcam.phase3.p3_5.w9-scope-proposal.v1",
+  "current_p3_5_package_digest": "96A35F98059918181FD59687BA96A4283ED9885BAD7D34FE1915D6288174C3DF",
+  "current_repository_head": "b282f1bf45e38bcdfd49f976e974ce92e9d5f08b",
+  "decision_id": "D-P3.5-W9-START",
+  "implementation_authorized": false,
+  "options": [
+    {
+      "additional_authority_required": false,
+      "allowed_actions": [
+        "consolidate_existing_W1_through_W8_aggregate_evidence",
+        "add_stdlib_only_aggregate_evidence_and_manifest_checker",
+        "prove_zero_retention_and_prohibited_payload_absence",
+        "run_bounded_deterministic_generated_contract_fixture_resource_stress_without_model_execution",
+        "build_and_inspect_local_wheel_and_sdist",
+        "record_only_aggregate_package_counts_and_cryptographic_digests",
+        "prove_default_off_behavior_and_document_local_rollback",
+        "update_tests_CI_readiness_documentation_and_backlog",
+        "prepare_clean_source_package_for_separate_W10_acceptance"
+      ],
+      "name": "narrow_generated_only_closure",
+      "option": "A",
+      "recommended": true,
+      "summary": "Close P35-W9 using existing generated contract fixtures and aggregate evidence without model execution or external runtime access."
+    },
+    {
+      "additional_authority_required": true,
+      "allowed_actions": [
+        "all_option_A_actions",
+        "rerun_exact_OCR_L0_OCR_L1_OCR_D0_FONT_D0_and_FONT_G0_generated_only_evaluations_in_reviewed_external_E_runtime"
+      ],
+      "name": "exact_runtime_revalidation",
+      "option": "B",
+      "recommended": false,
+      "summary": "Repeat approved exact-runtime generated-only evaluations before performing the narrow closure."
+    },
+    {
+      "additional_authority_required": true,
+      "allowed_actions": [
+        "all_option_B_actions",
+        "run_larger_generated_benchmark_up_to_existing_10000_sample_resource_ceiling_after_separate_exact_execution_plan"
+      ],
+      "name": "maximum_generated_benchmark",
+      "option": "C",
+      "recommended": false,
+      "summary": "Add bounded generated-only resource and latency characterization after a second exact execution plan."
+    },
+    {
+      "additional_authority_required": false,
+      "allowed_actions": [],
+      "name": "defer_W9",
+      "option": "D",
+      "recommended": false,
+      "summary": "Preserve the validated W8 state and perform no W9 implementation."
+    }
+  ],
+  "recommended_allowed_paths": [
+    ".github/workflows/python-ci.yml",
+    "README.md",
+    "contracts/phase-3/README.md",
+    "contracts/phase-3/p3-5-w9-closure-evidence.json",
+    "contracts/phase-3/p3-5-w9-scope-proposal.json",
+    "contracts/phase-3/p3-5-w9-start-authorization.json",
+    "docs/phase-3/README.md",
+    "docs/phase-3/decision-register.md",
+    "docs/phase-3/implementation-backlog.md",
+    "docs/phase-3/p3-5-w9-closure.md",
+    "docs/phase-3/p3-5-w9-decision-packet.md",
+    "docs/phase-3/p3-5-w9-start-authorization.md",
+    "tests/test_phase35_readiness.py",
+    "tests/test_phase35_w9_closure.py",
+    "tools/phase35_readiness.py",
+    "tools/phase35_w9_closure.py"
+  ],
+  "recommended_forbidden_path_prefixes": [
+    "app/",
+    "migrations/"
+  ],
+  "recommended_option": "A",
+  "recommended_scope": "narrow_generated_only_closure",
+  "required_owner_statement": "D-P3.5-W9-START: A",
+  "scope": "phase3.p3_5.w9.generated_only_closure_planning",
+  "status": "owner_decision_required",
+  "continuing_prohibitions": [
+    "external_E_runtime_or_artifact_execution_under_option_A",
+    "B_drive_access_except_static_source_denial_assertions",
+    "model_font_or_Tesseract_execution_under_option_A",
+    "network_download_or_external_service_access",
+    "final_test_sample_opening_or_holdout_tuning",
+    "quality_threshold_selection_or_model_promotion",
+    "new_dependency_lockfile_container_migration_API_worker_database_or_persistent_storage_change",
+    "raw_OCR_normalized_text_alternative_pixel_media_stream_track_owner_vehicle_or_government_data_in_tracked_evidence",
+    "physical_camera_ONVIF_media_or_Sentinel_stream_access",
+    "real_public_private_government_police_or_scraped_plate_media",
+    "identity_biometric_reidentification_cross_camera_linkage_watchlist_alert_action_or_enforcement",
+    "training_finetuning_PLATE_D0_OCR_G0_or_OCR_G1_execution",
+    "pilot_production_statewide_deployment_or_P3_6_and_later_work",
+    "remote_git_push_pull_request_or_merge",
+    "W10_acceptance_without_separate_clean_source_evidence_and_owner_decision"
+  ],
+  "w8_evidence_sha256": "58E7E4479DEB554D4B99F0CC1868B4DA61E9DED292E3F11942B740AEF02FC124"
+}

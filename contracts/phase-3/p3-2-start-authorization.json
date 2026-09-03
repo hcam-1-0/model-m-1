@@ -1,0 +1,74 @@
+{
+  "authorization_effect": "p3_2_generated_only_implementation_may_begin",
+  "authorized_at": "2026-08-24T16:50:00Z",
+  "authorized_by": "mayank-admin",
+  "authorized_work_packages": [
+    "verified DET-R0 ONNX Runtime CPU adapter behind the existing guarded runtime contract",
+    "deterministic generated-frame preprocessing inference postprocessing and approved taxonomy mapping",
+    "normalized anonymous observation creation persistence and transactional outbox events",
+    "synthetic-lab-only assignment lifecycle activation pause degradation and failure handling",
+    "identifier-free metrics audit evidence resource limits fault injection and generated end-to-end tests",
+    "documentation packaging and clean-machine validation"
+  ],
+  "branch": "codex/phase3-contracts-guardrails",
+  "contract_format": "hcam.phase3.p3_2.start-authorization.v1",
+  "decision_id": "D-P3.2-START",
+  "entry_decisions": [
+    {
+      "decision_id": "D-P3.2-001",
+      "record": "contracts/phase-3/p3-2-research-authorization.json",
+      "status": "owner_authorized"
+    },
+    {
+      "decision_id": "D-P3.2-002",
+      "record": "contracts/phase-3/p3-2-model-approval.json",
+      "status": "owner_approved_restricted"
+    },
+    {
+      "decision_id": "D-P3.2-003",
+      "record": "contracts/phase-3/p3-2-dataset-approval.json",
+      "status": "owner_approved_generated_only"
+    },
+    {
+      "decision_id": "D-P3.2-004",
+      "record": "contracts/phase-3/p3-2-runtime-approval.json",
+      "status": "owner_approved_cpu_reference"
+    }
+  ],
+  "expires_on": "2026-09-24",
+  "exit_gates": [
+    "exact artifact digest and source algorithms remain unchanged",
+    "generated-only end-to-end path passes contract and failure tests",
+    "no raw generated or real media is persisted",
+    "observation and outbox lineage is complete and deterministic",
+    "resource and timeout limits fail closed",
+    "full test suite package build dependency audit and readiness verifier pass",
+    "accountable owner accepts the exact P3.2 exit evidence package before P3.3"
+  ],
+  "owner_statement": "d-p3.2 start",
+  "still_prohibited": [
+    "physical_camera_onvif_media_or_sentinel_stream_access",
+    "real_team_owned_public_private_government_police_or_scraped_media",
+    "public_dataset_download_or_accuracy_evaluation",
+    "training_finetuning_or_model_modification",
+    "face_biometric_identity_reidentification_watchlist_or_vehicle_owner_lookup",
+    "sensitive_trait_intent_criminality_or_predictive_risk_inference",
+    "operational_alerting_autonomous_action_or_enforcement",
+    "pilot_production_statewide_deployment_or_performance_claim",
+    "model_or_artifact_redistribution",
+    "remote_git_push_pull_request_or_merge"
+  ],
+  "status": "owner_authorized",
+  "supersedes_within_exact_scope": [
+    "p3_0_model_or_dataset_download_non_authorization_for_the_already_manifested_model_only",
+    "p3_0_training_or_inference_non_authorization_for_generated_only_cpu_inference_only",
+    "d_p3_2_001_research_only_effect_for_the_named_implementation_work_packages"
+  ],
+  "target": {
+    "data_source": "DATA-GEN-R0",
+    "deployment": "local_development_and_ci_only",
+    "hardware_profile": "LAB-LAPTOP-01",
+    "model_artifact_id": "DET-R0-ONNX-UPSTREAM-0.1.1RC0",
+    "runtime": "onnxruntime_1.29.0_cpu_only"
+  }
+}

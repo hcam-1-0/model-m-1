@@ -1,0 +1,211 @@
+{
+  "contract_type": "hcam.analytics.generated-fixture-suite.v1",
+  "external_inputs": [],
+  "generated_only": true,
+  "records": [
+    {
+      "case_id": "geometry-line-forward",
+      "duplicate_input_count": 0,
+      "expected_events": [
+        "line-crossing-forward"
+      ],
+      "expected_outcome": "pass",
+      "geometry_kind": "line",
+      "late_input_count": 0,
+      "scenario": "line-forward",
+      "trajectory": [
+        {
+          "x": 0.2,
+          "y": 0.4
+        },
+        {
+          "x": 0.2,
+          "y": 0.6
+        }
+      ]
+    },
+    {
+      "case_id": "geometry-line-reverse",
+      "duplicate_input_count": 0,
+      "expected_events": [
+        "line-crossing-reverse"
+      ],
+      "expected_outcome": "pass",
+      "geometry_kind": "line",
+      "late_input_count": 0,
+      "scenario": "line-reverse",
+      "trajectory": [
+        {
+          "x": 0.2,
+          "y": 0.6
+        },
+        {
+          "x": 0.2,
+          "y": 0.4
+        }
+      ]
+    },
+    {
+      "case_id": "geometry-line-touch",
+      "duplicate_input_count": 0,
+      "expected_events": [],
+      "expected_outcome": "pass",
+      "geometry_kind": "line",
+      "late_input_count": 0,
+      "scenario": "touch-without-cross",
+      "trajectory": [
+        {
+          "x": 0.2,
+          "y": 0.4
+        },
+        {
+          "x": 0.2,
+          "y": 0.5
+        }
+      ]
+    },
+    {
+      "case_id": "geometry-boundary-jitter",
+      "duplicate_input_count": 0,
+      "expected_events": [
+        "line-crossing-forward"
+      ],
+      "expected_outcome": "pass",
+      "geometry_kind": "line",
+      "late_input_count": 0,
+      "scenario": "boundary-jitter",
+      "trajectory": [
+        {
+          "x": 0.2,
+          "y": 0.499
+        },
+        {
+          "x": 0.2,
+          "y": 0.501
+        },
+        {
+          "x": 0.2,
+          "y": 0.499
+        }
+      ]
+    },
+    {
+      "case_id": "geometry-zone-enter",
+      "duplicate_input_count": 0,
+      "expected_events": [
+        "zone-entry"
+      ],
+      "expected_outcome": "pass",
+      "geometry_kind": "zone",
+      "late_input_count": 0,
+      "scenario": "zone-enter",
+      "trajectory": [
+        {
+          "x": 0.1,
+          "y": 0.1
+        },
+        {
+          "x": 0.5,
+          "y": 0.5
+        }
+      ]
+    },
+    {
+      "case_id": "geometry-zone-exit",
+      "duplicate_input_count": 0,
+      "expected_events": [
+        "zone-exit"
+      ],
+      "expected_outcome": "pass",
+      "geometry_kind": "zone",
+      "late_input_count": 0,
+      "scenario": "zone-exit",
+      "trajectory": [
+        {
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "x": 0.1,
+          "y": 0.1
+        }
+      ]
+    },
+    {
+      "case_id": "geometry-zone-occupancy",
+      "duplicate_input_count": 0,
+      "expected_events": [
+        "zone-occupancy"
+      ],
+      "expected_outcome": "pass",
+      "geometry_kind": "zone",
+      "late_input_count": 0,
+      "scenario": "zone-occupancy",
+      "trajectory": [
+        {
+          "x": 0.5,
+          "y": 0.5
+        }
+      ]
+    },
+    {
+      "case_id": "geometry-zone-dwell",
+      "duplicate_input_count": 0,
+      "expected_events": [
+        "zone-dwell"
+      ],
+      "expected_outcome": "pass",
+      "geometry_kind": "zone",
+      "late_input_count": 0,
+      "scenario": "dwell-threshold",
+      "trajectory": [
+        {
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "x": 0.51,
+          "y": 0.5
+        }
+      ]
+    },
+    {
+      "case_id": "geometry-schedule-inactive",
+      "duplicate_input_count": 0,
+      "expected_events": [],
+      "expected_outcome": "inactive",
+      "geometry_kind": "schedule",
+      "late_input_count": 0,
+      "scenario": "schedule-inactive",
+      "trajectory": [
+        {
+          "x": 0.5,
+          "y": 0.5
+        }
+      ]
+    },
+    {
+      "case_id": "geometry-duplicate-late",
+      "duplicate_input_count": 1,
+      "expected_events": [
+        "zone-entry"
+      ],
+      "expected_outcome": "reject",
+      "geometry_kind": "ordering",
+      "late_input_count": 1,
+      "scenario": "duplicate-and-late-input",
+      "trajectory": [
+        {
+          "x": 0.4,
+          "y": 0.4
+        },
+        {
+          "x": 0.6,
+          "y": 0.6
+        }
+      ]
+    }
+  ],
+  "seed": 31001,
+  "suite": "geometry-v1"
+}

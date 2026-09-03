@@ -1,0 +1,132 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_binding_outer_attempt_controller_r0_implementation_evidence.v1",
+  "evidence_id": "P36-QUARANTINE-RUNTIME-BINDING-OUTER-ATTEMPT-CONTROLLER-R0-IMPLEMENTATION-EVIDENCE",
+  "status": "source_and_generated_static_evidence_complete_and_resealed",
+  "recorded_on": "2026-09-02",
+  "consolidated_build_authorization": {
+    "decision_id": "D-P3.6-CONSOLIDATED-BUILD-AUTH",
+    "package": "contracts/phase-3/p3-6-consolidated-build-authorization-planning-package.json",
+    "package_sha256": "DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C",
+    "selected_options": "A/A/A/A/A/A",
+    "canonical_owner_statement_utf8_bytes": 1855,
+    "canonical_owner_statement_sha256": "9740F2BD6FBF4D51DF154350788DB702EBE4BE7407C9A4B80C7806DEAE9F9ECC"
+  },
+  "compatibility_amendment": {
+    "decision_id": "D-P3.6-CONSOLIDATED-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT",
+    "canonical_owner_statement_utf8_bytes": 1521,
+    "canonical_owner_statement_sha256": "3C25EF9D12E83F7767ED94B2EBAAE3FA43A00AFC328FA4CE8970B8AA5A2292B3",
+    "exact_pre_edit_bindings": [
+      {
+        "path": "tests/test_phase36_consolidated_build_authorization_planning.py",
+        "sha256": "90714B0035892AD4CFEE24584AA2142683115A41A64F61E62249465DD191DC71"
+      },
+      {
+        "path": "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_u4b_proposal.py",
+        "sha256": "4E31C541FBED1A82C692A65948F49FA5A68E32FBE5DAF6C5698904E6F7C55365"
+      }
+    ],
+    "exact_post_edit_bindings": [
+      {
+        "path": "tests/test_phase36_consolidated_build_authorization_planning.py",
+        "sha256": "4DB83CA1F1EB6BB7F66C43564F2D30C23F1075CFC600D980CB34E9E24913989A"
+      },
+      {
+        "path": "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_u4b_proposal.py",
+        "sha256": "E3F81C131160ED179211656453B3B920C6F383683D7926B1CCEEE47990D810D9"
+      }
+    ],
+    "change_scope": "only_two_obsolete_future_path_absence_assertions_replaced_with_exact_present_regular_file_assertions"
+  },
+  "implemented_artifacts": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-contract.json",
+      "sha256": "B0D03E356B3939817CA21AA2DFC85B4897D3E89405DE27FFE492D1C549B767C1",
+      "role": "versioned_typed_outer_attempt_controller_contract"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_binding_outer_attempt_controller_r0.ps1",
+      "sha256": "0E539126536CEF9F490EE164C5ECEC2FED36649C163FAAA8F32193B2DB744B99",
+      "role": "authoritative_Windows_policy_controller_source_not_parsed_imported_dot_sourced_or_executed"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_binding_outer_attempt_controller_r0_reference.py",
+      "sha256": "5A51088E503EEF3F9EFC7A896E033217C69A5908A216148A658CB551ADB33964",
+      "role": "machine_disabled_Python_reference_and_cross_language_oracle"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-vectors.json",
+      "sha256": "EE25BD99942F0CB68E157439ADEA230D3E549FBAC1743AC783775DDA58AA7B13",
+      "role": "four_hundred_sixteen_deterministic_generated_only_vectors"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_r0_contract.py",
+      "sha256": "2876DA8DF240C1C63CC856EB0FD0FC379EB8DE94C55D2CE3482F80E90AD47A28",
+      "role": "contract_authorization_immutable_input_and_vector_checks"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_r0_reference.py",
+      "sha256": "4E89A88BE7C8872FC865CD328B89F094715B6D05090CDE235AC75B016A972F37",
+      "role": "generated_matrix_malformed_input_and_complete_branch_checks"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_r0_powershell_static.py",
+      "sha256": "A430857B9CF29FD4E607F0D49417B840E37C7F5F954020C9B5FFEA775442FBBB",
+      "role": "inert_PowerShell_source_text_and_embedded_JSON_projection_checks"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_r0_cross_language.py",
+      "sha256": "02F7D6CA678DB76CEACA5D1645266FF6168FE142C2198612E3DD9074936C7E13",
+      "role": "canonical_PowerShell_Python_projection_equivalence_checks"
+    }
+  ],
+  "implemented_invariants": {
+    "supported_operation_count": 1,
+    "ordered_stage_count": 11,
+    "exact_parent_record_count": 3,
+    "ordered_parent_indexes": [
+      0,
+      1,
+      2
+    ],
+    "literal_true_parent_reduction": true,
+    "pipeline_null_or_scalar_count_semantics": false,
+    "maximum_total_runtime_attempts_in_future_contract": 3,
+    "automatic_retry": false,
+    "generated_vector_count": 416,
+    "generated_vector_group_count": 13,
+    "raw_material_retention_bytes": 0
+  },
+  "generated_static_validation": {
+    "source_revision_cycles_consumed": 3,
+    "maximum_source_revision_cycles": 8,
+    "focused_tests_passed": 464,
+    "focused_tests_failed": 0,
+    "Python_reference_statements": 212,
+    "Python_reference_missing_statements": 0,
+    "Python_reference_branches": 136,
+    "Python_reference_missing_branches": 0,
+    "Python_reference_partial_branches": 0,
+    "Python_reference_branch_coverage_percent": 100.0,
+    "Ruff": "all_checks_passed",
+    "full_Phase_3_6_tests_passed": 2005,
+    "full_Phase_3_6_tests_failed": 0,
+    "strict_Phase_3_JSON_files_parsed": 297,
+    "strict_JSON": "passed",
+    "Git_diff_check": "passed",
+    "PowerShell_evidence": "inert_source_text_and_explicit_embedded_JSON_projection_only"
+  },
+  "immutable_input_reverification": {
+    "input_count": 10,
+    "hash_mismatch_count": 0
+  },
+  "non_observational_boundaries": {
+    "PowerShell_parsed_imported_dot_sourced_or_executed": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_or_hardware_observed": false,
+    "machine_storage_F_B_ACL_probe_cleanup_or_scanner_action": false,
+    "network_download_artifact_model_inference_camera_media_or_data_action": false,
+    "container_Kubernetes_profile_activation_or_deployment": false,
+    "commit_push_or_remote_Git": false
+  },
+  "next_gate": "prepare_and_explicitly_accept_exact_D_P3_6_CONSOLIDATED_RUNTIME_CLOSEOUT_AUTH_package"
+}

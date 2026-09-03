@@ -1,0 +1,166 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_transaction_runner_r0_generated_contract_tests.v1",
+  "suite_id": "P36-QUARANTINE-TRANSACTION-RUNNER-R0-GENERATED-CONTRACT-VECTORS-1.0.0",
+  "status": "sealed_test_vectors_not_executable",
+  "prepared_on": "2026-08-31",
+  "media_or_private_data_present": false,
+  "machine_facts_present": false,
+  "runner_implementation_present": false,
+  "execution_harness_present": false,
+  "fixture_policy": {
+    "generated_only": true,
+    "secrets": false,
+    "identities": "symbolic_only",
+    "paths": "declared_policy_constants_only",
+    "raw_ACL_or_security_descriptor": false,
+    "probe_payload": "symbolic_length_and_digest_only",
+    "network": false,
+    "filesystem_access": false
+  },
+  "required_vectors": [
+    {
+      "vector_id": "R0-T001-PACKAGE-DIGEST-MISMATCH",
+      "category": "authority",
+      "generated_condition": "one_package_digest_nibble_changed",
+      "expected_outcome": "deny_before_machine_access"
+    },
+    {
+      "vector_id": "R0-T002-CORE-HASH-MISMATCH",
+      "category": "authority",
+      "generated_condition": "one_core_file_digest_changed",
+      "expected_outcome": "deny_before_machine_access"
+    },
+    {
+      "vector_id": "R0-T003-OWNER-STATEMENT-MISMATCH",
+      "category": "authority",
+      "generated_condition": "decision_id_or_package_digest_missing",
+      "expected_outcome": "deny_before_machine_access"
+    },
+    {
+      "vector_id": "R0-T004-EXPIRED-OR-CONSUMED",
+      "category": "authority",
+      "generated_condition": "window_expired_or_attempt_count_one",
+      "expected_outcome": "deny_before_machine_access"
+    },
+    {
+      "vector_id": "R0-T005-RUNNER-OR-RUNTIME-BINDING-MISMATCH",
+      "category": "supply_chain",
+      "generated_condition": "runner_or_runtime_path_hash_version_or_trust_differs",
+      "expected_outcome": "deny_before_machine_access"
+    },
+    {
+      "vector_id": "R0-T006-UNKNOWN-ACTION",
+      "category": "dispatch",
+      "generated_condition": "U3K_A99_unknown_inserted",
+      "expected_outcome": "default_deny_before_machine_access"
+    },
+    {
+      "vector_id": "R0-T007-MISSING-DUPLICATE-OR-REORDERED-ACTION",
+      "category": "dispatch",
+      "generated_condition": "sealed_action_sequence_mutated",
+      "expected_outcome": "default_deny_before_machine_access"
+    },
+    {
+      "vector_id": "R0-T008-PATH-OR-LIMIT-OVERRIDE",
+      "category": "scope",
+      "generated_condition": "candidate_path_volume_probe_size_timeout_or_output_path_changed",
+      "expected_outcome": "deny_before_machine_access"
+    },
+    {
+      "vector_id": "R0-T009-B-OR-PROJECT-PATH",
+      "category": "scope",
+      "generated_condition": "B_volume_or_F_h_cam_selected",
+      "expected_outcome": "deny_without_access"
+    },
+    {
+      "vector_id": "R0-T010-EXISTING-ROOT",
+      "category": "storage_precondition",
+      "generated_condition": "symbolic_existing_file_directory_or_reparse_root",
+      "expected_outcome": "fail_without_ACL_or_content_modification"
+    },
+    {
+      "vector_id": "R0-T011-MODIFY-SYNCHRONIZE-EXACT",
+      "category": "ACL",
+      "generated_condition": "current_process_allow_mask_exactly_Modify_plus_Synchronize",
+      "expected_outcome": "current_process_rights_check_pass"
+    },
+    {
+      "vector_id": "R0-T012-EXCESSIVE-CURRENT-PROCESS-RIGHTS",
+      "category": "ACL",
+      "generated_condition": "ChangePermissions_TakeOwnership_FullControl_generic_all_or_unknown_bit_added",
+      "expected_outcome": "current_process_rights_check_fail"
+    },
+    {
+      "vector_id": "R0-T013-TUPLE-CLASSIFICATION-INDEPENDENCE",
+      "category": "ACL",
+      "generated_condition": "principal_set_exact_but_one_rights_mask_invalid",
+      "expected_outcome": "rights_fail_and_unauthorized_principal_absence_remains_true"
+    },
+    {
+      "vector_id": "R0-T014-UNAUTHORIZED-PRINCIPAL",
+      "category": "ACL",
+      "generated_condition": "fourth_explicit_allow_principal_present",
+      "expected_outcome": "rule_count_and_unauthorized_principal_checks_fail"
+    },
+    {
+      "vector_id": "R0-T015-INHERITED-DENY-OR-FLAG-MISMATCH",
+      "category": "ACL",
+      "generated_condition": "inherited_or_deny_rule_or_wrong_inheritance_propagation_access_type",
+      "expected_outcome": "overall_DACL_check_fail"
+    },
+    {
+      "vector_id": "R0-T016-PROBE-GENERATED-ZERO-RETENTION",
+      "category": "probe",
+      "generated_condition": "symbolic_4096_byte_generated_probe_success",
+      "expected_outcome": "two_hash_checks_pass_and_no_probe_content_retained"
+    },
+    {
+      "vector_id": "R0-T017-PROBE-FAILURE-CLEANUP-BOUND",
+      "category": "probe",
+      "generated_condition": "symbolic_write_readback_rename_or_cleanup_failure",
+      "expected_outcome": "storage_blocked_no_retry_cleanup_scope_does_not_expand"
+    },
+    {
+      "vector_id": "R0-T018-DEFENDER-ACTION-REQUESTED",
+      "category": "decomposition",
+      "generated_condition": "any_Defender_status_hash_trust_or_execution_action_inserted",
+      "expected_outcome": "default_deny_before_machine_access"
+    },
+    {
+      "vector_id": "R0-T019-RAW-DATA-IN-OUTPUT",
+      "category": "sanitization",
+      "generated_condition": "identity_SID_raw_ACL_exception_command_output_probe_bytes_or_personal_path_present",
+      "expected_outcome": "output_schema_reject_and_fail_closed"
+    },
+    {
+      "vector_id": "R0-T020-OUTPUT-PATH-EXPANSION",
+      "category": "sanitization",
+      "generated_condition": "write_target_not_in_exact_three_output_paths",
+      "expected_outcome": "default_deny_and_no_additional_write"
+    }
+  ],
+  "future_execution_requirements": {
+    "all_vectors_must_pass": true,
+    "contract_vectors_may_not_access_machine": true,
+    "negative_vectors_required": true,
+    "coverage_requirements": [
+      "authority",
+      "supply_chain",
+      "dispatch",
+      "scope",
+      "storage_precondition",
+      "ACL",
+      "probe",
+      "decomposition",
+      "sanitization"
+    ],
+    "test_result_evidence_required_before_storage_execution_package": true
+  },
+  "current_effect": {
+    "vectors_defined": true,
+    "tests_executed": false,
+    "runner_implementation_authorized": false,
+    "runner_execution_authorized": false,
+    "machine_access_authorized": false
+  }
+}

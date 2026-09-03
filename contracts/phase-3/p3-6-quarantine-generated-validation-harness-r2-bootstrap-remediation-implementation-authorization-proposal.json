@@ -1,0 +1,44 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_harness_r2_bootstrap_remediation_implementation_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH",
+  "status": "sealed_non_effective_owner_authorization_pending",
+  "prepared_on": "2026-09-01",
+  "basis": {
+    "consumed_U3P_evidence_sha256": "634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE",
+    "sanitized_failure_reason": "result_contract_invalid",
+    "source_only_failure_analysis": "contracts/phase-3/p3-6-quarantine-generated-validation-failure-analysis-r1.json",
+    "source_only_research": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r2-bootstrap-remediation-research-sources.json",
+    "remediation_contract": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r2-bootstrap-remediation-contract.json"
+  },
+  "requested_authority": {
+    "source_only_harness_R2_remediation": true,
+    "generated_static_Python_tests": true,
+    "sealed_nonobservational_implementation_evidence_and_package": true,
+    "canonical_ledger_and_documentation_synchronization": true,
+    "PowerShell_parse_import_or_execution": false,
+    "runtime_or_hardware_observation": false,
+    "runtime_retry_or_U3R_package_preparation": false,
+    "machine_storage_network_scanner_model_media_container_or_deployment_action": false,
+    "remote_git": false
+  },
+  "owner_authorization_statement_template": "D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only implementation of the P3.6 generated-validation harness R2 bootstrap remediation against package digest <U3Q_R2_BOOTSTRAP_REMEDIATION_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact allowlisted harness, generated/static Python tests, nonobservational evidence and package, ledgers, documentation, and line-ending records bound by that package. The harness may add only an exact $PSHOME Microsoft.PowerShell.Utility manifest bootstrap, the seven allowlisted Utility cmdlets in local scope with NoClobber, provenance checks, PSModuleAutoLoadingPreference=None after successful bootstrap, and a module-independent bounded sanitized bootstrap-failure writer. The accepted vectors, runner, pure-handler, and Windows-adapter sources must remain byte-exact. PowerShell must not be parsed, imported, or executed; no runtime or hardware may be observed; no retry or U3R package may be prepared; and no machine, storage, F:/B:/ACL/probe/cleanup/scanner, network, download, artifact, model, inference, camera/media/data, container/Kubernetes, profile activation, deployment, or remote Git action may occur. The source result must be sealed for separate exact owner acceptance before any runtime-binding work.",
+  "sequence_after_exact_authorization": [
+    "record_exact_digest_bound_U3Q_source_implementation_authorization",
+    "implement_only_the_allowlisted_R2_bootstrap_remediation_and_generated_static_tests",
+    "seal_exact_source_hashes_nonobservational_evidence_and_implementation_package",
+    "obtain_separate_exact_owner_R2_source_implementation_acceptance",
+    "prepare_no_U3R_runtime_package_until_that_acceptance"
+  ],
+  "current_effect": {
+    "owner_U3Q_authorization_pending": true,
+    "implementation_authorized": false,
+    "PowerShell_parser_import_or_execution_authorized": false,
+    "runtime_retry_authorized": false,
+    "U3R_package_preparation_authorized": false,
+    "U3K_authorized": false,
+    "machine_storage_or_deployment_authorized": false,
+    "remote_git_authorized": false
+  },
+  "authorization_may_be_inferred_from_continue_planning_or_prior_U3P_authorization": false
+}

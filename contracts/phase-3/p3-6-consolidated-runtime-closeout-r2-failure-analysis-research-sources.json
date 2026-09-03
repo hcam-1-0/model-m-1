@@ -1,0 +1,45 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_r2_failure_analysis_research_sources.v1",
+  "record_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-FAILURE-ANALYSIS-SOURCES",
+  "status": "official_public_documentation_planning_only",
+  "researched_on": "2026-09-03",
+  "scope": "PowerShell_module_manifest_relative_path_and_inventory_semantics_only",
+  "sources": [
+    {
+      "source_id": "MS-PS-MODULE-MANIFESTS-7-6",
+      "publisher": "Microsoft",
+      "title": "about_Module_Manifests",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_module_manifests?view=powershell-7.6",
+      "source_type": "official_documentation",
+      "claims_used": [
+        "RootModule paths should be relative to the module manifest",
+        "FileList entries should be relative to the folder containing the module manifest",
+        "FileList is an informational inventory and does not itself export module behavior"
+      ]
+    },
+    {
+      "source_id": "MS-PS-WRITE-MODULE-MANIFEST-7-5",
+      "publisher": "Microsoft",
+      "title": "How to Write a PowerShell Module Manifest",
+      "url": "https://learn.microsoft.com/en-us/powershell/scripting/developer/module/how-to-write-a-powershell-module-manifest?view=powershell-7.5",
+      "source_type": "official_documentation",
+      "claims_used": [
+        "the manifest is stored in the module root directory",
+        "manifest path correctness can be validated independently of importing the module"
+      ]
+    }
+  ],
+  "interpretation_limits": {
+    "official_documentation_confirms_the_missing_R2_target_identity": false,
+    "official_documentation_confirms_the_installed_module_is_incomplete": false,
+    "official_documentation_authorizes_local_manifest_read_import_or_execution": false,
+    "planning_may_treat_manifest_directory_resolution_as_the_leading_hypothesis": true
+  },
+  "actions_performed": {
+    "local_manifest_read_or_content_retention": false,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "runtime_hardware_machine_or_storage_observation": false,
+    "network_download_install_update_or_trust_retrieval": false,
+    "model_artifact_inference_camera_media_or_data_access": false
+  }
+}

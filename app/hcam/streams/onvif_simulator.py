@@ -11,9 +11,13 @@ from pathlib import Path
 from threading import Lock
 from urllib.parse import urlsplit
 from urllib.request import parse_http_list, parse_keqv_list
-from xml.etree import ElementTree
-from xml.sax.saxutils import escape
+# Stdlib ElementTree is retained only for element types and ParseError.
+from xml.etree import ElementTree  # nosec B405
+# saxutils.escape emits escaped text; it does not parse XML.
+from xml.sax.saxutils import escape  # nosec B406
 
+from defusedxml import ElementTree as DefusedElementTree
+from defusedxml.common import DefusedXmlException
 from hcam.streams.locator import sanitize_stream_reference
 
 
@@ -291,7 +295,7 @@ def handler_for(
 
         def _valid_wsse(self, body: bytes) -> bool:
             try:
-                root = ElementTree.fromstring(body)
+                root = DefusedElementTree.fromstring(body)
                 supplied_username = _element_text(root, "Username")
                 supplied_digest = _element_text(root, "Password")
                 nonce_text = _element_text(root, "Nonce")
@@ -308,12 +312,18 @@ def handler_for(
                 if abs((datetime.now(UTC) - timestamp).total_seconds()) > 300:
                     return False
                 expected = base64.b64encode(
-                    hashlib.sha1(  # noqa: S324 - ONVIF PasswordDigest fixture
-                        nonce + created.encode("utf-8") + password.encode("utf-8")
+                    hashlib.sha1(
+                        nonce + created.encode("utf-8") + password.encode("utf-8"),
+                        usedforsecurity=False,  # ONVIF PasswordDigest fixture.
                     ).digest()
                 ).decode("ascii")
                 replay_key = f"{nonce_text}:{created}"
-            except (ElementTree.ParseError, ValueError, TypeError):
+            except (
+                ElementTree.ParseError,
+                DefusedXmlException,
+                ValueError,
+                TypeError,
+            ):
                 return False
             if not hmac.compare_digest(supplied_digest, expected):
                 return False

@@ -1,0 +1,41 @@
+{
+  "authorized_at": "2026-08-26T10:55:39Z",
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-08-26",
+  "baseline_repository_head": "ce8917343ce6752de35af8d7167878edc6e8d46a",
+  "branch": "codex/phase3-synthetic-anpr-planning",
+  "contract_format": "hcam.phase3.p3_5.planning_authorization.v1",
+  "decision_id": "D-P3.5-PLAN-AUTH",
+  "implementation_authorized": false,
+  "next_milestone_authorized": false,
+  "owner_statement_received": "authorized so continue",
+  "planning_authorized": true,
+  "planning_deliverables": [
+    "synthetic_non_issuable_plate_corpus_and_generator_design",
+    "plate_localization_and_multilingual_ocr_candidate_plan",
+    "raw_normalized_abstention_and_temporal_consensus_contracts",
+    "zero_retention_privacy_rbac_and_audit_design",
+    "generated_only_evaluation_resource_and_supply_chain_plan",
+    "primary_source_research_record",
+    "owner_decision_packet_and_separate_implementation_start_gate"
+  ],
+  "prohibited_actions": [
+    "p3_5_runtime_or_product_implementation",
+    "model_weight_font_dataset_or_source_artifact_download",
+    "dependency_lockfile_container_or_environment_change",
+    "application_migration_api_worker_or_storage_change",
+    "synthetic_image_generation_training_finetuning_or_inference_execution",
+    "physical_camera_onvif_media_or_sentinel_stream_access",
+    "real_public_private_government_police_or_scraped_plate_media",
+    "real_registration_mark_owner_vehicle_or_government_record_processing",
+    "identity_biometric_reidentification_or_cross_camera_linkage",
+    "watchlist_matching_operational_alerting_autonomous_action_or_enforcement",
+    "pilot_production_or_statewide_deployment",
+    "remote_git_push_pull_request_or_merge",
+    "p3_6_or_later_work"
+  ],
+  "record_id": "D-P3.5-PLAN-AUTH",
+  "scope": "phase3.p3_5.synthetic_anpr.planning_only",
+  "statement": "mayank-admin authorizes P3.5 synthetic-ANPR planning and primary-source research after accepting P3.4. Implementation, artifacts, datasets, media, real registration marks, persistence, operational use, deployment, and every later milestone remain separately gated.",
+  "status": "authorized"
+}

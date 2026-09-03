@@ -1,0 +1,136 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_harness_r2_bootstrap_remediation_contract.v1",
+  "contract_id": "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-1.0.0",
+  "status": "sealed_non_executable_source_only_remediation_contract",
+  "prepared_on": "2026-09-01",
+  "baseline": {
+    "accepted_harness_path": "tools/phase36_quarantine_generated_validation.ps1",
+    "accepted_harness_R1_sha256": "F5A73AC23875C74964C88E83F401E9BCEBE94F743E86FE0376502D16308B2CA3",
+    "accepted_vector_manifest_sha256": "5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C",
+    "accepted_runner_sha256": "22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A",
+    "accepted_pure_handler_sha256": "41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721",
+    "accepted_windows_adapter_sha256": "232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9",
+    "failed_U3P_result_sha256": "44450DF4D5A199DA34E5343AE043E138B8E046EF4E6FE6EAD6836AC96F7085F4",
+    "failed_U3P_evidence_sha256": "634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE"
+  },
+  "exact_source_remediation": {
+    "modifiable_source": "tools/phase36_quarantine_generated_validation.ps1",
+    "new_contract_version": "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R2-1.2.0",
+    "bootstrap_order": [
+      "initialize_only_language_and_dotnet_constants",
+      "construct_exact_PSHome_Utility_manifest_path_without_PSModulePath_search",
+      "classify_manifest_as_regular_nonreparse_under_exact_PSHome",
+      "import_only_allowlisted_Utility_cmdlets_with_Scope_Local_and_NoClobber",
+      "verify_exact_command_names_and_Microsoft_PowerShell_Utility_provenance",
+      "set_PSModuleAutoLoadingPreference_to_None",
+      "install_normal_sanitized_trap_and_continue_existing_binding_manifest_parser_contract_handler_and_result_layers"
+    ],
+    "exact_Utility_cmdlet_allowlist": [
+      "Compare-Object",
+      "ConvertFrom-Json",
+      "ConvertTo-Json",
+      "ForEach-Object",
+      "Measure-Object",
+      "Sort-Object",
+      "Where-Object"
+    ],
+    "module_path_policy": {
+      "root": "$PSHOME\\Modules",
+      "relative_manifest": "Microsoft.PowerShell.Utility\\Microsoft.PowerShell.Utility.psd1",
+      "fully_qualified_path_required": true,
+      "module_name_resolution": false,
+      "PSModulePath_read_or_search": false,
+      "CurrentUser_or_AllUsers_module_path_allowed": false,
+      "regular_file_required": true,
+      "reparse_point_allowed": false,
+      "maximum_manifest_bytes": 131072
+    },
+    "import_policy": {
+      "Scope": "Local",
+      "NoClobber": true,
+      "Force": false,
+      "Cmdlet_allowlist_only": true,
+      "Function_import_count": 0,
+      "Alias_import_count": 0,
+      "Variable_import_count": 0,
+      "required_command_source": "Microsoft.PowerShell.Utility"
+    },
+    "bootstrap_failure_contract": {
+      "uses_only_language_primitives_System_Console_and_a_fixed_ASCII_JSON_literal": true,
+      "reason_code": "binding_failed",
+      "raw_exception_message_type_stack_invocation_or_security_material": false,
+      "exit_code": 1,
+      "maximum_bytes": 2048
+    },
+    "autoload_policy": {
+      "state_during_exact_bootstrap": "default_host_state_only_for_explicit_fully_qualified_Import_Module",
+      "state_after_bootstrap": "None",
+      "broad_automatic_importing_after_bootstrap": false
+    }
+  },
+  "unchanged_behavior": {
+    "modes": ["Parse", "Contract", "Handler", "Aggregate"],
+    "parser_file_count": 4,
+    "contract_vector_count": 20,
+    "pure_handler_vector_count": 64,
+    "total_generated_vector_count": 84,
+    "runner_mode": "Contract_only",
+    "runner_Storage_or_StorageRequestJson_reachable": false,
+    "pure_handler_import_is_exact_local_function_allowlist": true,
+    "windows_adapter_import_or_execution_count": 0,
+    "machine_action_count": 0,
+    "network_action_count": 0,
+    "raw_failure_material_retained": false,
+    "automatic_retry_authorized": false,
+    "storage_profile_deployment_or_remote_git_authorized": false
+  },
+  "implementation_allowlist": [
+    "tools/phase36_quarantine_generated_validation.ps1",
+    "tests/test_phase36_quarantine_generated_powershell_validation_harness.py",
+    "tests/test_phase36_quarantine_generated_validation_harness_r2_bootstrap_remediation.py",
+    "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r2-implementation-evidence.json",
+    "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r2-implementation-package.json",
+    "docs/phase-3/p3-6-quarantine-generated-validation-harness-r2-implementation-evidence-review.md",
+    "contracts/phase-3/p3-6-entry-gates.json",
+    "contracts/phase-3/p3-6-capability-profile-policy.json",
+    "contracts/phase-3/p3-6-unblock-plan.json",
+    "contracts/phase-3/README.md",
+    "docs/phase-3/README.md",
+    "docs/phase-3/acceptance-checklist.md",
+    "docs/phase-3/decision-register.md",
+    "docs/phase-3/implementation-backlog.md",
+    "docs/phase-3/p3-6-capability-profiles.md",
+    "docs/phase-3/p3-6-plan.md",
+    "docs/phase-3/p3-6-planning-acceptances.md",
+    "docs/phase-3/p3-6-unblock-plan.md",
+    ".gitattributes"
+  ],
+  "required_generated_static_evidence": {
+    "accepted_runner_handler_adapter_and_vectors_remain_byte_exact": true,
+    "all_fourteen_Utility_command_references_covered_by_allowlist": true,
+    "exact_PSHome_manifest_path_only": true,
+    "PSModulePath_or_module_name_search_absent": true,
+    "bootstrap_failure_writer_independent_of_Utility_module": true,
+    "autoload_None_occurs_only_after_bootstrap_success": true,
+    "two_exact_import_surfaces_only": true,
+    "raw_error_surfaces_absent": true,
+    "all_84_generated_reference_vectors_pass": true,
+    "full_phase36_static_suite_passes": true
+  },
+  "future_runtime_binding_prerequisites": {
+    "separate_R2_source_implementation_acceptance": true,
+    "separate_non_effective_U3R_planning_package": true,
+    "exact_runtime_module_manifest_and_nested_implementation_closure_binding": true,
+    "cache_only_trust_and_pre_post_hash_binding": true,
+    "one_new_attempt_requires_new_digest_bound_owner_authorization": true
+  },
+  "implementation_non_authorization": {
+    "PowerShell_parse_import_or_execution": false,
+    "runtime_or_hardware_observation": false,
+    "retry_or_U3R_package_preparation": false,
+    "machine_storage_F_B_ACL_probe_cleanup_or_scanner_action": false,
+    "network_download_artifact_model_camera_media_or_data_action": false,
+    "container_Kubernetes_profile_activation_deployment_or_remote_git": false,
+    "U3K_package_preparation_or_storage": false
+  }
+}

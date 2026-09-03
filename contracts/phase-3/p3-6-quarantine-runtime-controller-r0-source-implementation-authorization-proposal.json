@@ -1,0 +1,101 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_r0_source_implementation_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-R0-SOURCE-IMPLEMENTATION-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH",
+  "status": "non_effective_owner_implementation_authorization_pending",
+  "prepared_on": "2026-09-01",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3S-R1-DUAL-ARCHITECTURE-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-dual-architecture-acceptance.json",
+    "acceptance_sha256": "62DCE06AED22B2702D41B679D61F7E2185C42F763A7C55DFD1277C7E74F79EFB",
+    "accepted_planning_package_sha256": "E170B4485C84F29AAAC0C04BFA0B4D15B0AB3B4EC99D92A46F259735C82346E9",
+    "effect": "prepare_one_separate_non_effective_source_only_implementation_authorization_proposal"
+  },
+  "implementation_request": {
+    "canonical_contract_and_vectors": true,
+    "PowerShell_controller_source": true,
+    "Python_reference_controller_source": true,
+    "four_generated_static_test_modules": true,
+    "nonobservational_evidence_and_package": true,
+    "canonical_ledgers_and_documentation_sync": true,
+    "one_local_checkpoint_commit_after_validation": true,
+    "remote_Git": false
+  },
+  "permitted_implementation_time_execution_if_exactly_authorized": {
+    "Python_pure_reference_policy_against_generated_fixtures": true,
+    "Python_test_and_static_verifier_execution": true,
+    "pytest_without_repository_conftest_when_dependency_blocked": true,
+    "Ruff_JSON_hash_diff_and_scope_checks": true,
+    "PowerShell_controller_parse_import_or_execution": false,
+    "Python_machine_controller_mode": false,
+    "Python_filesystem_runtime_registry_environment_network_native_or_subprocess_access": false,
+    "runtime_manifest_hardware_or_machine_observation": false
+  },
+  "exact_source_targets": [
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-contract.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-vectors.json",
+    "tools/phase36_quarantine_runtime_controller.ps1",
+    "tools/phase36_quarantine_runtime_controller_reference.py"
+  ],
+  "exact_test_targets": [
+    "tests/test_phase36_quarantine_runtime_controller_contract.py",
+    "tests/test_phase36_quarantine_runtime_controller_reference.py",
+    "tests/test_phase36_quarantine_runtime_controller_powershell_static.py",
+    "tests/test_phase36_quarantine_runtime_controller_cross_language.py"
+  ],
+  "required_invariants": {
+    "PowerShell_is_only_default_machine_controller": true,
+    "Python_is_machine_disabled_reference_and_oracle": true,
+    "one_canonical_contract_and_vector_manifest": true,
+    "minimum_generated_vectors": 192,
+    "cross_language_contract_projection_difference_count": 0,
+    "unknown_fields_actions_reasons_and_states_fail_closed": true,
+    "automatic_failover_or_retry": false,
+    "PowerShell_execution_during_implementation": false,
+    "existing_harness_runner_handler_adapter_and_vectors_remain_byte_exact": true
+  },
+  "required_evidence": {
+    "exact_source_hashes": true,
+    "generated_vector_counts_and_results": true,
+    "Python_reference_branch_coverage_at_least_95_percent": true,
+    "forbidden_import_and_surface_scan": true,
+    "full_Phase_3_6_static_suite": true,
+    "Ruff_JSON_duplicate_key_line_ending_and_diff_checks": true,
+    "scope_audit": true,
+    "no_machine_runtime_network_or_external_data_claim": true,
+    "separate_owner_implementation_acceptance_required": true
+  },
+  "sequence_after_exact_authorization": [
+    "record_exact_digest_bound_implementation_authorization_before_source_changes",
+    "implement_only_allowlisted_contract_vectors_controller_sources_and_tests",
+    "run_only_pure_generated_Python_and_static_validation",
+    "seal_nonobservational_evidence_and_exact_source_package",
+    "create_at_most_one_local_checkpoint_commit_with_no_push",
+    "obtain_separate_exact_owner_implementation_acceptance",
+    "prepare_no_U3T_runtime_package_before_implementation_acceptance"
+  ],
+  "explicitly_not_authorized": [
+    "PowerShell_parsing_import_or_execution",
+    "Python_machine_access_controller_mode_subprocess_native_API_or_fallback",
+    "runtime_manifest_hardware_or_machine_observation",
+    "another_U3R_attempt_or_U3T_preflight",
+    "machine_storage_F_B_ACL_probe_cleanup_Defender_or_scanner_action",
+    "network_download_install_update_or_artifact_acquisition",
+    "models_inference_cameras_media_private_or_Government_data",
+    "containers_Kubernetes_profile_activation_or_deployment",
+    "U3K_package_preparation_or_machine_action",
+    "remote_Git_push_pull_PR_merge_or_API_write"
+  ],
+  "future_owner_authorization_statement_template": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only implementation of the P3.6 dual runtime-controller R0 package against digest <U3S_DUAL_CONTROLLER_R0_IMPLEMENTATION_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact allowlisted canonical contract, generated vector manifest, PowerShell controller source, machine-disabled Python reference controller, four generated/static test modules, nonobservational evidence and package, canonical ledgers, documentation, line-ending records, and one local checkpoint commit with no push. Pure Python reference-policy and generated/static test execution is authorized only with generated fixtures and no filesystem runtime, registry, environment, network, native API, subprocess, machine-controller, or fallback access. PowerShell must not be parsed, imported, or executed. The implementation must include at least 192 generated vectors, fail-closed typed stages, equivalent canonical PowerShell/Python contract projections, at least 95 percent Python-reference branch coverage, and byte-exact preservation of the accepted harness, vectors, runner, pure handler, and Windows adapter. This does not authorize runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, U3R retry, U3T preflight, U3K, or remote Git. Seal the source and generated/static evidence for separate exact owner acceptance before preparing any runtime package.",
+  "current_effect": {
+    "proposal_prepared": true,
+    "owner_implementation_authorization_pending": true,
+    "implementation_authorized": false,
+    "Python_pure_reference_or_test_execution_authorized": false,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "retry_U3T_or_U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  },
+  "authorization_may_be_inferred_from_architecture_acceptance_continue_silence_or_proposal_preparation": false
+}

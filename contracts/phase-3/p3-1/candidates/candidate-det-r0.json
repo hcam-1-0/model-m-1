@@ -1,0 +1,109 @@
+{
+  "approval": {
+    "decided_at": null,
+    "owner_id": "mayank-admin",
+    "reason": "Exact artifact remains research-only and unavailable",
+    "record_id": "pending-det-r0",
+    "status": "pending"
+  },
+  "artifact_identity": {
+    "blocker": "exact-checkpoint-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "blockers": [
+    "exact-checkpoint-unresolved",
+    "weight-license-unverified",
+    "training-lineage-unverified",
+    "model-card-unresolved",
+    "sbom-unresolved"
+  ],
+  "candidate_id": "DET-R0",
+  "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+  "eligibility": "blocked",
+  "export_expectations": [
+    "onnx-opset-unresolved"
+  ],
+  "intended_role": "detector_reference",
+  "known_limits": [
+    "No exact checkpoint, hash, export parity, or H-CAM slice result is recorded",
+    "Upstream COCO labels require an approved H-CAM taxonomy mapping"
+  ],
+  "licenses": [
+    {
+      "commercial_or_government_use": "allowed",
+      "component": "code",
+      "license_id": {
+        "blocker": null,
+        "digest": null,
+        "state": "resolved",
+        "value": "Apache-2.0"
+      },
+      "notice_required": true,
+      "redistribution": "allowed"
+    },
+    {
+      "commercial_or_government_use": "unresolved",
+      "component": "weights",
+      "license_id": {
+        "blocker": "weights-license-unverified",
+        "digest": null,
+        "state": "unresolved",
+        "value": null
+      },
+      "notice_required": null,
+      "redistribution": "unresolved"
+    }
+  ],
+  "lineage": {
+    "blocker": "training-lineage-unverified",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "manifest_digest": "sha256:99cc7d70e34f2b5da37f86c763359b44ecf63c0524fb0a0098c5d25980cf4a19",
+  "model_card": {
+    "blocker": "model-card-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "recorded_at": "2026-08-24T12:45:00Z",
+  "runtime_expectations": [
+    "onnxruntime-cpu-reference"
+  ],
+  "sbom": {
+    "blocker": "sbom-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "semantic_version": "1.0.0",
+  "source_reference": {
+    "accessed_on": "2026-08-24",
+    "evidence_kind": "official_repository",
+    "no_download_performed": true,
+    "publisher": "Megvii BaseDetection",
+    "reference_id": "source-yolox",
+    "supports_claim": "Repository documents YOLOX-Tiny and identifies its code license",
+    "title": "YOLOX official repository",
+    "url": "https://github.com/Megvii-BaseDetection/YOLOX"
+  },
+  "source_revision": {
+    "blocker": null,
+    "digest": null,
+    "state": "resolved",
+    "value": "6ddff4824372906469a7fae2dc3206c7aa4bbaee"
+  },
+  "source_tier": "S3",
+  "supported_taxonomy": [
+    "object.person",
+    "vehicle.bicycle",
+    "vehicle.motorcycle",
+    "vehicle.car",
+    "vehicle.bus",
+    "vehicle.truck",
+    "object.unknown"
+  ]
+}

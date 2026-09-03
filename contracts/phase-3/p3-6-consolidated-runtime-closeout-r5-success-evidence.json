@@ -1,0 +1,72 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_r5_success_evidence.v1",
+  "evidence_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-R5-SUCCESS-EVIDENCE",
+  "status": "complete_within_generated_only_zero_retention_nondeployment_scope",
+  "recorded_on": "2026-09-03",
+  "delegation_binding": {
+    "path": "contracts/phase-3/p3-6-combined-execution-delegation.json",
+    "sha256": "24A5D29CBA1B6DA990207EE2C4E7BD8DF8CB0DC2D36AD526461E494F8E5C3C09"
+  },
+  "execution_binding": {
+    "package_path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r5-storage-execution-package.json",
+    "package_sha256": "26F974340A720DEC52C629A75394DDD0FE5A1B9A546998C9241F29D1BAC89554",
+    "request_path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r5-storage-request.json",
+    "request_sha256": "4B136FA68D7B0758C2533DD5081A6472AA3CE3D325E87A46DF96C677E55BD6B1",
+    "maximum_attempts": 1,
+    "attempts_consumed": 1,
+    "automatic_retry": false
+  },
+  "generated_runtime_validation": {
+    "outer_policy_evidence_path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r3-generated-validation-evidence.json",
+    "outer_policy_evidence_sha256": "699DAF495B7AD415FED2E24FF9F0A151C7B8EF7231A76A5F48510763A58204E6",
+    "R5_successor_evidence_path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r5-generated-validation-evidence.json",
+    "R5_successor_evidence_sha256": "11A7A490CD15013F1E12DF2399D89741546933D8C23283FDBE50686D8E07FC34",
+    "outer_policy_cases_passed": 416,
+    "R5_runner_and_handler_cases_passed": 84,
+    "current_closeout_cases_passed": 500,
+    "cases_failed": 0,
+    "storage_invocations_during_generated_validation": 0,
+    "machine_actions_during_generated_validation": 0,
+    "network_actions_during_generated_validation": 0
+  },
+  "storage_transaction": {
+    "candidate_root": "F:\\HCAM-Quarantine",
+    "authorization_path": "contracts/phase-3/p3-6-quarantine-storage-r5-authorization.json",
+    "authorization_sha256": "AE8C2E9D940A0AD9F8366559FD1C7EE113266CAD5384C1770B228793EC49626E",
+    "result_path": "contracts/phase-3/p3-6-quarantine-storage-r5-result.json",
+    "result_sha256": "C719A08B4974DF0CF7892C72E47A2BAC4DE25A05449EDC35A53F001DCDF9A8A7",
+    "evidence_path": "contracts/phase-3/p3-6-quarantine-storage-r5-evidence.json",
+    "evidence_sha256": "BC369F4DBA75ACFD69FF698E155D5363B396D5BF40EBEE768FAAD3C40498CFED",
+    "action_count": 10,
+    "terminal_reason": "ok",
+    "candidate_absent_before_attempt": true,
+    "root_created_by_attempt": true,
+    "root_retained_after_attempt": true,
+    "root_item_count_after_attempt": 0,
+    "root_reparse_point": false,
+    "bounded_DACL_checks_passed": 14,
+    "bounded_probe_checks_passed": 9,
+    "probe_files_retained": 0,
+    "probe_content_retained": false,
+    "raw_error_persisted": false,
+    "identity_or_security_material_persisted": false,
+    "ready_until": "2026-09-03T06:25:25.9556640+00:00"
+  },
+  "final_validation": {
+    "Phase_3_6_test_files": 82,
+    "Phase_3_6_tests_passed": 2597,
+    "Phase_3_6_tests_failed": 0,
+    "R5_focused_tests_passed": 14,
+    "R5_Ruff": "passed"
+  },
+  "continuing_boundaries": {
+    "artifact_or_model_download_authorized": false,
+    "model_loading_or_inference_authorized": false,
+    "camera_media_private_or_Government_data_authorized": false,
+    "scanner_or_network_action_authorized": false,
+    "container_Kubernetes_profile_activation_or_deployment_authorized": false,
+    "security_bypass_or_privilege_escalation_authorized": false,
+    "push_pull_fetch_PR_merge_or_other_remote_Git_authorized": false
+  },
+  "closeout_conclusion": "Phase_3_and_Phase_3_6_complete_at_the_accepted_generated_only_zero_retention_nondeployment_scope"
+}

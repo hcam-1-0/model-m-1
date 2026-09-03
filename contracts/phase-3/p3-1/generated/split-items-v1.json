@@ -1,0 +1,69 @@
+{
+  "contract_type": "hcam.analytics.generated-split-suite.v1",
+  "external_inputs": [],
+  "generated_only": true,
+  "records": [
+    {
+      "content_digest": "sha256:fe24a36771d148cad0a38ae6f339ac31929def3810251615c2f93080674203ba",
+      "group_values": {
+        "generator-group": "p31-train-group-000",
+        "seed-group": "p31-train-group-000-seed",
+        "template-group": "p31-train-group-000-template"
+      },
+      "item_id": "p31-train-item-01",
+      "split": "train"
+    },
+    {
+      "content_digest": "sha256:4f891984ba87daa67b6e09bc90f7d74ee7c7acfddb33338de0216ff5466fb92b",
+      "group_values": {
+        "generator-group": "p31-train-group-002",
+        "seed-group": "p31-train-group-002-seed",
+        "template-group": "p31-train-group-002-template"
+      },
+      "item_id": "p31-train-item-02",
+      "split": "train"
+    },
+    {
+      "content_digest": "sha256:0ee97d4a3b57c61acf27c2ca792c9967204bed6b2f399d82598d6dd7213effc3",
+      "group_values": {
+        "generator-group": "p31-validation-group-010",
+        "seed-group": "p31-validation-group-010-seed",
+        "template-group": "p31-validation-group-010-template"
+      },
+      "item_id": "p31-validation-item-01",
+      "split": "validation"
+    },
+    {
+      "content_digest": "sha256:3fb0257a112ed81863a38dd1f514d2ddc5f4b630a56dc19bfaa0e4c0b2b53d17",
+      "group_values": {
+        "generator-group": "p31-validation-group-012",
+        "seed-group": "p31-validation-group-012-seed",
+        "template-group": "p31-validation-group-012-template"
+      },
+      "item_id": "p31-validation-item-02",
+      "split": "validation"
+    },
+    {
+      "content_digest": "sha256:4f96df7531fd49a16eb8d3d4f01cc66a389ac2e64229ff219036a9f0a743c805",
+      "group_values": {
+        "generator-group": "p31-test-group-006",
+        "seed-group": "p31-test-group-006-seed",
+        "template-group": "p31-test-group-006-template"
+      },
+      "item_id": "p31-test-item-01",
+      "split": "test"
+    },
+    {
+      "content_digest": "sha256:66e315f3eac96c4347edad4af44c91fc20f1b48fad2bfb8189b69107da78bae9",
+      "group_values": {
+        "generator-group": "p31-test-group-010",
+        "seed-group": "p31-test-group-010-seed",
+        "template-group": "p31-test-group-010-template"
+      },
+      "item_id": "p31-test-item-02",
+      "split": "test"
+    }
+  ],
+  "seed": 31001,
+  "suite": "split-items-v1"
+}

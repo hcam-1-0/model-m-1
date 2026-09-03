@@ -1,0 +1,236 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_binding_outer_attempt_controller_r0.v1",
+  "contract_id": "P36-QUARANTINE-RUNTIME-BINDING-OUTER-ATTEMPT-CONTROLLER-R0",
+  "contract_version": "1.0.0",
+  "status": "source_implemented_generated_static_validation_pending",
+  "implemented_on": "2026-09-02",
+  "source_build_authorization": {
+    "decision_id": "D-P3.6-CONSOLIDATED-BUILD-AUTH",
+    "authorization_package": "contracts/phase-3/p3-6-consolidated-build-authorization-planning-package.json",
+    "authorization_package_sha256": "DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C",
+    "selected_options": "A/A/A/A/A/A",
+    "canonical_owner_statement_utf8_bytes": 1855,
+    "canonical_owner_statement_sha256": "9740F2BD6FBF4D51DF154350788DB702EBE4BE7407C9A4B80C7806DEAE9F9ECC"
+  },
+  "controller_roles": {
+    "PowerShell": "authoritative_Windows_attempt_policy_controller_source_not_executed_under_build_authority",
+    "Python": "machine_disabled_generated_only_policy_reference_and_cross_language_oracle",
+    "machine_adapter": "absent_and_not_authorized_under_build_authority"
+  },
+  "supported_operations": [
+    "generated_contract_validation_v1"
+  ],
+  "runtime_authorization_decision_id": "D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH",
+  "ordered_stages": [
+    "authorization",
+    "fixed_parent_set",
+    "runtime_candidate",
+    "runtime_hash",
+    "runtime_trust",
+    "source_preflight",
+    "process",
+    "result_validation",
+    "source_postflight",
+    "runtime_postflight",
+    "evidence_seal"
+  ],
+  "request_schema": {
+    "required_fields": [
+      "contract_version",
+      "operation",
+      "authorization",
+      "parent_records",
+      "stage_signals",
+      "process_limits",
+      "process_observation",
+      "retention"
+    ],
+    "unknown_fields": "rejected",
+    "authorization_fields": [
+      "decision_id",
+      "package_digest_sha256",
+      "attempt_index",
+      "max_attempts",
+      "attempt_state",
+      "same_package_digest",
+      "retry_reason_allowlisted",
+      "machine_authority",
+      "automatic_retry"
+    ],
+    "stage_signal_fields": [
+      "runtime_candidate",
+      "runtime_hash",
+      "runtime_trust",
+      "source_preflight",
+      "process",
+      "result_validation",
+      "source_postflight",
+      "runtime_postflight",
+      "evidence_seal"
+    ],
+    "process_limit_fields": [
+      "timeout_ms",
+      "max_stdout_bytes",
+      "max_stderr_bytes",
+      "max_result_bytes",
+      "max_processes"
+    ],
+    "process_observation_fields": [
+      "elapsed_ms",
+      "stdout_bytes",
+      "stderr_bytes",
+      "result_bytes",
+      "processes"
+    ],
+    "retention_fields": [
+      "raw_retained_bytes",
+      "sanitized_only"
+    ]
+  },
+  "authorization_policy": {
+    "maximum_total_attempts": 3,
+    "attempt_indexes": [
+      1,
+      2,
+      3
+    ],
+    "attempt_states": [
+      "first",
+      "retry"
+    ],
+    "first_attempt_requires_index": 1,
+    "retry_requires_index_greater_than_one": true,
+    "retry_requires_same_package_digest": true,
+    "retry_requires_allowlisted_transient_reason": true,
+    "automatic_retry": false,
+    "unknown_operation_stage_or_reason": "terminal_default_deny_internal_failure"
+  },
+  "fixed_parent_record_schema": {
+    "exact_record_count": 3,
+    "ordered_parent_indexes": [
+      0,
+      1,
+      2
+    ],
+    "required_fields": [
+      "parent_index",
+      "present",
+      "regular_directory",
+      "nonreparse",
+      "canonical_match",
+      "valid",
+      "reason_code"
+    ],
+    "predicate_fields": [
+      "present",
+      "regular_directory",
+      "nonreparse",
+      "canonical_match",
+      "valid"
+    ],
+    "all_predicates_boolean_typed": true,
+    "valid_definition": "present_is_literal_true_and_regular_directory_is_literal_true_and_nonreparse_is_literal_true_and_canonical_match_is_literal_true",
+    "all_valid_reduction": "len_records_equals_three_and_indexes_equal_zero_one_two_and_all_record_valid_is_literal_true",
+    "pipeline_filter_count_null_or_scalar_cardinality_semantics_used": false,
+    "reason_codes": [
+      "parent_valid",
+      "parent_missing",
+      "parent_not_directory",
+      "parent_reparse",
+      "parent_canonical_mismatch",
+      "parent_predicate_inconsistent"
+    ],
+    "raw_path_ACL_owner_identity_attribute_or_exception_retention": false
+  },
+  "process_policy": {
+    "timeout_ms": 120000,
+    "max_stdout_bytes": 16384,
+    "max_stderr_bytes": 0,
+    "max_result_bytes": 32768,
+    "max_processes": 1,
+    "all_observation_counters_nonnegative_integers": true
+  },
+  "result_schema": {
+    "required_fields": [
+      "terminal",
+      "succeeded",
+      "stage",
+      "reason_code",
+      "parent_index",
+      "predicate_flags",
+      "attempts_consumed"
+    ],
+    "unknown_fields": "rejected",
+    "predicate_flag_fields": [
+      "authorization",
+      "fixed_parent_set",
+      "runtime_candidate",
+      "runtime_hash",
+      "runtime_trust",
+      "source_preflight",
+      "process",
+      "result_validation",
+      "source_postflight",
+      "runtime_postflight",
+      "evidence_seal"
+    ],
+    "all_predicate_flags_boolean_typed": true,
+    "success": {
+      "stage": "evidence_seal",
+      "reason_code": "policy_valid",
+      "parent_index": null,
+      "all_predicate_flags": true
+    },
+    "parent_index_policy": "null_except_fixed_parent_set_failure_where_zero_one_or_two_is_required",
+    "terminal_result_exactly_once": true,
+    "raw_material_retention_bytes": 0
+  },
+  "stage_failure_reasons": {
+    "authorization": "authorization_invalid",
+    "fixed_parent_set": "fixed_parent_set_invalid",
+    "runtime_candidate": "runtime_candidate_invalid",
+    "runtime_hash": "runtime_hash_invalid",
+    "runtime_trust": "runtime_trust_invalid",
+    "source_preflight": "source_preflight_failed",
+    "process": "process_failed",
+    "result_validation": "result_contract_invalid",
+    "source_postflight": "source_identity_changed",
+    "runtime_postflight": "runtime_identity_changed",
+    "evidence_seal": "evidence_seal_failed"
+  },
+  "additional_failure_reasons": [
+    "process_timeout",
+    "process_output_bounds_failed",
+    "terminal_default_deny_internal_failure"
+  ],
+  "prohibited_fields": [
+    "acl",
+    "credentials",
+    "environment",
+    "exception",
+    "hostname",
+    "ip_address",
+    "mac",
+    "native_status",
+    "owner",
+    "password",
+    "path",
+    "raw",
+    "sddl",
+    "secret",
+    "serial",
+    "sid",
+    "stack",
+    "stderr",
+    "stdout",
+    "user",
+    "username"
+  ],
+  "build_boundaries": {
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "Python_machine_filesystem_registry_environment_network_native_API_subprocess_or_fallback": false,
+    "runtime_machine_storage_scanner_network_model_media_data_container_Kubernetes_or_deployment": false,
+    "commit_push_or_remote_Git": false,
+    "source_only_generated_static_evidence": true
+  }
+}

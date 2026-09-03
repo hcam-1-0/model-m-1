@@ -1,0 +1,133 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3x_stage_projection_remediation_decision_packet.v1",
+  "packet_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3X-STAGE-PROJECTION-REMEDIATION-DECISIONS",
+  "status": "owner_decisions_pending_non_effective_planning_only",
+  "prepared_on": "2026-09-02",
+  "failure_analysis": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-failure-analysis-r0.json",
+  "decision_scope": "select_source_only_stage_projection_remediation_and_reentry_policy_without_authorizing_implementation_execution_retry_or_U3K",
+  "decisions": [
+    {
+      "decision_id": "D-P3.6-U3X-001",
+      "title": "First Remediation Surface",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Additive controller R1 successor",
+          "effect": "preserve_the_accepted_controller_and_diagnostic_byte_exact_then_prepare_later_a_new_controller_successor_with_explicit_null_preserving_stage_projection_construction",
+          "tradeoff": "smallest_contract_preserving_change_and_directly_addresses_the_high_confidence_static_hypothesis"
+        },
+        "B": {
+          "label": "Loosen the diagnostic contract",
+          "effect": "accept_null_or_empty_string_for_success_failed_action",
+          "tradeoff": "avoids_controller_change_but_creates_two_wire_representations_and_weakens_cross_language_equivalence"
+        },
+        "C": {
+          "label": "Replace controller and diagnostic together",
+          "effect": "create_successors_for_both_runtime_sources_and_their_contracts",
+          "tradeoff": "larger_blast_radius_and_obscures_which_change_resolves_the_failure"
+        },
+        "D": {
+          "label": "Stop remediation",
+          "effect": "keep_runtime_validation_and_U3K_blocked_without_new_source_work",
+          "tradeoff": "no_new_risk_but_no_Phase_3_6_runtime_progress"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U3X-002",
+      "title": "Canonical Stage Projection Semantics",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Exact null on success",
+          "effect": "require_completed_actions_18_with_failed_action_null_and_failed_stage_null_on_policy_valid_and_nonempty_allowlisted_strings_on_failure",
+          "tradeoff": "one_unambiguous_wire_contract_with_strict_cross_language_behavior"
+        },
+        "B": {
+          "label": "Omit failure fields on success",
+          "effect": "remove_failed_action_and_failed_stage_from_success_results",
+          "tradeoff": "requires_schema_version_change_and_breaks_the_existing_exact_field_set"
+        },
+        "C": {
+          "label": "Accept null or empty string",
+          "effect": "treat_both_values_as_no_failure",
+          "tradeoff": "more_tolerant_but_noncanonical_and_easier_for_client_implementations_to_diverge"
+        },
+        "D": {
+          "label": "Use empty strings canonically",
+          "effect": "change_success_failure_fields_to_empty_strings",
+          "tradeoff": "avoids_null_but_changes_the_accepted_wire_contract_and_cross_language_fixtures"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U3X-003",
+      "title": "Validation Ladder",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Static then bounded PowerShell contract validation",
+          "effect": "require_generated_cross_language_stage_vectors_and_static_source_evidence_then_after_source_acceptance_a_separate_digest_bound_generated_only_PowerShell_contract_validation_before_any_system_diagnostic",
+          "tradeoff": "adds_one_gate_but_directly_tests_the_language_semantics_that_static_evidence_missed"
+        },
+        "B": {
+          "label": "Generated static evidence only",
+          "effect": "rely_on_source_text_and_the_machine_disabled_Python_oracle",
+          "tradeoff": "faster_but_can_repeat_the_PowerShell_specific_semantics_gap"
+        },
+        "C": {
+          "label": "Direct system diagnostic",
+          "effect": "skip_a_pure_generated_contract_validation_and_run_the_full_diagnostic_after_source_acceptance",
+          "tradeoff": "uses_a_high_cost_single_attempt_to_find_a_problem_that_a_narrow_contract_check_can_detect"
+        },
+        "D": {
+          "label": "No validation package",
+          "effect": "prepare_no_generated_static_or_runtime_contract_evidence",
+          "tradeoff": "keeps_the_successor_unreviewable_and_runtime_reentry_closed"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U3X-004",
+      "title": "Runtime Reentry Sequence",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Two-gate validation then one diagnostic",
+          "effect": "accept_source_and_static_evidence_then_separately_authorize_and_accept_generated_only_PowerShell_contract_validation_then_prepare_one_new_digest_bound_system_diagnostic_and_require_success_acceptance_before_U3K",
+          "tradeoff": "preserves_default_deny_single_attempt_and_evidence_quality_controls"
+        },
+        "B": {
+          "label": "Blind retry accepted sources",
+          "effect": "run_the_same_controller_and_diagnostic_again_under_new_authorization",
+          "tradeoff": "has_no_new_diagnostic_value_and_is_not_supported_by_the_stable_runtime_and_source_evidence"
+        },
+        "C": {
+          "label": "Advance directly to U3K",
+          "effect": "prepare_machine_or_storage_work_despite_failed_diagnostic_evidence",
+          "tradeoff": "breaks_the_existing_gate_and_is_not_recommended"
+        },
+        "D": {
+          "label": "Do not reenter runtime validation",
+          "effect": "keep_runtime_validation_and_U3K_blocked",
+          "tradeoff": "no_new_observation_and_no_runtime_progress"
+        }
+      }
+    }
+  ],
+  "recommended_selection": {
+    "D-P3.6-U3X-001": "A",
+    "D-P3.6-U3X-002": "A",
+    "D-P3.6-U3X-003": "A",
+    "D-P3.6-U3X-004": "A"
+  },
+  "effect_of_owner_selection": {
+    "prepare_separate_source_only_controller_R1_implementation_authorization_proposal": true,
+    "implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  }
+}

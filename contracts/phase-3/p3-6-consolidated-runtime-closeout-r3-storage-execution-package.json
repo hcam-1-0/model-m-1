@@ -1,0 +1,122 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_r3_storage_execution_package.v1",
+  "package_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-R3-STORAGE-EXECUTION-PACKAGE",
+  "status": "active_single_local_attempt_under_combined_execution_delegation",
+  "prepared_on": "2026-09-03",
+  "authority": {
+    "decision_id": "D-P3.6-COMBINED-EXECUTION-DELEGATION",
+    "path": "contracts/phase-3/p3-6-combined-execution-delegation.json",
+    "sha256": "24A5D29CBA1B6DA990207EE2C4E7BD8DF8CB0DC2D36AD526461E494F8E5C3C09",
+    "scope": "bounded_local_checkpoint_and_closeout_work",
+    "routine_step_approval_required": false,
+    "security_bypass_or_privilege_escalation": false,
+    "remote_Git": false
+  },
+  "prerequisite_evidence": [
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4e-remediation-planning-package.json",
+      "sha256": "C0BF901B7D66BE11A250F9369C5CE564A59A726E88877E4A77CD36F310997B7D",
+      "role": "selected_A_A_A_A_A_remediation_policy"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-manifest-closure-resolver-r1-implementation-package.json",
+      "sha256": "867F35E0990870447F04FF1D33C7C959B6ECF1A8DCEE030E230CF6D2AD32DBFB",
+      "role": "U4F_source_generated_and_static_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-manifest-closure-resolver-r1-implementation-evidence.json",
+      "sha256": "76859C7AFFBA8FB4308288797DE6E7BB51B804633555AB1FE6D049E84ABA8FFF",
+      "role": "U4F_bounded_local_manifest_diagnostic"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r3-generated-validation-evidence.json",
+      "sha256": "699DAF495B7AD415FED2E24FF9F0A151C7B8EF7231A76A5F48510763A58204E6",
+      "role": "all_500_generated_runtime_cases_accepted"
+    }
+  ],
+  "storage_policy": {
+    "path": "contracts/phase-3/p3-6-quarantine-storage-r2-action-spec.json",
+    "sha256": "1825C65DFEEEF02EA12AF3D506385657870DCB631D2CDB157DB0F9C919C2DE2A",
+    "action_count": 10,
+    "maximum_attempts": 1,
+    "automatic_retry": false,
+    "probe_bytes": 4096,
+    "per_action_timeout_seconds": 30,
+    "total_timeout_seconds": 120
+  },
+  "exact_runtime": {
+    "family": "PowerShell_7_on_Windows",
+    "sha256": "362A356CE7F0940EC74F73A8FC2C990A2CC24A38A11C90BBD8ECA947110AD139",
+    "alternate_runtime_or_hardware_discovery": false
+  },
+  "exact_sources": [
+    {
+      "path": "tools/phase36_quarantine_transaction_runner.ps1",
+      "sha256": "22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A",
+      "role": "storage_transaction_runner"
+    },
+    {
+      "path": "tools/phase36_quarantine_machine_handlers.psm1",
+      "sha256": "41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721",
+      "role": "pure_fail_closed_action_state_machine"
+    },
+    {
+      "path": "tools/phase36_quarantine_windows_storage_adapter.psm1",
+      "sha256": "232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9",
+      "role": "exact_Windows_storage_adapter"
+    },
+    {
+      "path": "tools/phase36_consolidated_runtime_closeout_r3_generated_validation.ps1",
+      "sha256": "11F1867D67760EEEBB09CF5BA5DCDC4C375517A5EEA1B39598B0ABA1EAF61C1F",
+      "role": "416_case_R3_outer_policy_harness"
+    },
+    {
+      "path": "tools/phase36_quarantine_generated_validation_r3.ps1",
+      "sha256": "27CCA6018706B64B551A1F32B74DF70C7EA5F8BF3D33FA8937A3277B09FFB79E",
+      "role": "84_case_R3_runner_handler_harness"
+    },
+    {
+      "path": "tools/phase36_manifest_closure_resolver_r1.psm1",
+      "sha256": "C37C4D60DB0CA71AA2E30F3E1254143B902B42E84AA0E98CD8F9B7B5F863AB8A",
+      "role": "field_aware_manifest_closure_policy"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_binding_outer_attempt_controller_r0.ps1",
+      "sha256": "0E539126536CEF9F490EE164C5ECEC2FED36649C163FAAA8F32193B2DB744B99",
+      "role": "accepted_outer_policy_controller"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-vectors.json",
+      "sha256": "EE25BD99942F0CB68E157439ADEA230D3E549FBAC1743AC783775DDA58AA7B13",
+      "role": "416_generated_outer_policy_vectors"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-powershell-validation-r0-vectors.json",
+      "sha256": "5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C",
+      "role": "84_generated_runner_handler_vectors"
+    }
+  ],
+  "target": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "candidate_volume": "F:",
+    "candidate_root": "F:\\HCAM-Quarantine",
+    "required_initial_state": "absent",
+    "excluded_project_root": "F:\\h cam",
+    "prohibited_volume": "B:",
+    "success_state": "empty_protected_root_with_probe_removed"
+  },
+  "outputs": [
+    "contracts/phase-3/p3-6-quarantine-storage-r2-authorization.json",
+    "contracts/phase-3/p3-6-quarantine-storage-r2-result.json",
+    "contracts/phase-3/p3-6-quarantine-storage-r2-evidence.json"
+  ],
+  "continuing_exclusions": [
+    "no_security_bypass_or_privilege_escalation",
+    "no_credentials_secrets_private_or_Government_data",
+    "no_camera_media_model_dataset_or_inference",
+    "no_scanner_network_container_Kubernetes_or_deployment",
+    "no_B_drive_F_h_cam_existing_root_or_alternate_path_change",
+    "no_commit_push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "manifest_hash_rule": "uppercase_SHA_256_of_this_exact_file_is_the_execution_package_digest"
+}

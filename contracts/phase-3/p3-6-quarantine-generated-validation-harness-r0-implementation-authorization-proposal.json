@@ -1,0 +1,92 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_harness_r0_implementation_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH",
+  "status": "sealed_non_effective_owner_implementation_authorization_pending",
+  "prepared_on": "2026-09-01",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_sha256": "06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631"
+  },
+  "requested_owner_effect_if_exact_package_digest_is_accepted": {
+    "authorize_exact_generated_validation_harness_source_implementation_only": true,
+    "authorize_exact_generated_vector_manifest_implementation_only": true,
+    "authorize_Python_static_and_generated_reference_tests_only": true,
+    "authorize_non_observational_evidence_package_and_documentation_sync": true,
+    "accepted_runner_handler_or_adapter_source_change_authorized": false,
+    "PowerShell_parser_import_or_execution_authorized": false,
+    "runtime_or_hardware_observation_authorized": false,
+    "runner_Contract_or_Storage_mode_execution_authorized": false,
+    "pure_handler_or_windows_adapter_import_or_execution_authorized": false,
+    "machine_storage_F_ACL_probe_cleanup_or_scanner_action_authorized": false,
+    "network_download_artifact_dependency_model_media_or_data_action_authorized": false,
+    "container_Kubernetes_deployment_or_remote_git_authorized": false
+  },
+  "future_implementation_allowlist": {
+    "create_or_update_exact_paths_only": [
+      "tools/phase36_quarantine_generated_validation.ps1",
+      "contracts/phase-3/p3-6-quarantine-generated-powershell-validation-r0-vectors.json",
+      "tests/test_phase36_quarantine_generated_powershell_validation_harness.py",
+      "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-evidence.json",
+      "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-package.json",
+      "docs/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-evidence-review.md",
+      "contracts/phase-3/p3-6-entry-gates.json",
+      "contracts/phase-3/p3-6-capability-profile-policy.json",
+      "contracts/phase-3/p3-6-unblock-plan.json",
+      "contracts/phase-3/README.md",
+      "docs/phase-3/README.md",
+      "docs/phase-3/acceptance-checklist.md",
+      "docs/phase-3/decision-register.md",
+      "docs/phase-3/implementation-backlog.md",
+      "docs/phase-3/p3-6-capability-profiles.md",
+      "docs/phase-3/p3-6-plan.md",
+      "docs/phase-3/p3-6-planning-acceptances.md",
+      "docs/phase-3/p3-6-unblock-plan.md",
+      "tests/test_phase36_quarantine_generated_validation_runtime_binding_r1_plan.py",
+      ".gitattributes"
+    ],
+    "read_only_exact_inputs": [
+      "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-acceptance.json",
+      "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-research-sources.json",
+      "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-plan.json",
+      "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-contract-tests.json",
+      "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-generated-test-plan.json",
+      "tools/phase36_quarantine_transaction_runner.ps1",
+      "tools/phase36_quarantine_machine_handlers.psm1",
+      "tools/phase36_quarantine_windows_storage_adapter.psm1"
+    ],
+    "other_path_change_authorized": false
+  },
+  "future_implementation_requirements": [
+    "preserve_all_three_accepted_source_hashes_exactly",
+    "implement_only_the_generated_harness_and_vector_manifest_defined_by_the_bound_plan",
+    "implement_Python_tests_that_read_source_text_and_generated_JSON_only",
+    "prove_statically_that_Storage_mode_and_windows_adapter_import_or_execution_are_unreachable_from_the_harness",
+    "prove_statically_that_no_machine_network_scanner_download_dynamic_code_or_unbounded_output_operation_exists",
+    "run_all_generated_Python_reference_and_static_tests_without_invoking_PowerShell",
+    "run_the_full_Phase_3_6_suite_and_strict_JSON_checks",
+    "seal_exact_source_vector_test_evidence_and_package_hashes_for_separate_owner_acceptance"
+  ],
+  "owner_statement_template": "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only implementation of the generated PowerShell validation harness against package digest <U3M_VALIDATION_HARNESS_IMPLEMENTATION_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact paths, read-only inputs, generated-only fixtures, static Python checks, evidence, package, ledger, documentation, and compatibility-test changes allowlisted by that package. The accepted runner, pure-handler, and Windows-adapter sources must remain byte-exact. PowerShell must not be parsed, imported, or executed; the runner and modules must not run; no runtime or hardware may be observed; and no machine, storage, F:, ACL, probe, cleanup, Defender/scanner, network, download, artifact, model, inference, camera/media/data, container/Kubernetes, deployment, or remote Git action may occur. The result must be sealed for separate acceptance before any validation or fresh runtime-binding authorization package can be prepared.",
+  "sequence_after_exact_authorization": [
+    "record_exact_digest_bound_implementation_authorization",
+    "implement_only_the_allowlisted_generated_harness_vectors_static_tests_and_non_observational_evidence",
+    "do_not_parse_import_or_execute_PowerShell",
+    "seal_exact_implementation_package_and_hashes",
+    "obtain_D_P3_6_U3M_VALIDATION_HARNESS_R0_IMPLEMENTATION_ACCEPTANCE",
+    "prepare_a_separate_non_effective_U3N_generated_validation_and_fresh_runtime_binding_authorization_package",
+    "obtain_separate_digest_bound_U3N_authorization_before_any_PowerShell_or_runtime_action"
+  ],
+  "current_gate_effect": {
+    "owner_harness_implementation_authorization_pending": true,
+    "harness_source_or_test_implementation_authorized": false,
+    "PowerShell_parser_import_or_execution_authorized": false,
+    "runtime_or_hardware_observation_authorized": false,
+    "machine_or_storage_action_authorized": false,
+    "D_P3_6_U3N_GENERATED_VALIDATION_RUNTIME_BINDING_R1_AUTH_requestable": false,
+    "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  },
+  "authorization_may_be_inferred_from_continue_U3L_acceptance_or_planning_package_preparation": false
+}

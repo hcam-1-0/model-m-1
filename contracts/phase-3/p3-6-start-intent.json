@@ -1,0 +1,64 @@
+{
+  "allowed_effect": [
+    "preserve_owner_start_statement_as_audit_evidence",
+    "continue_previously_authorized_planning_and_primary_source_research",
+    "prepare_exact_prerequisite_and_manifest_bound_authorization_proposals",
+    "validate_and_commit_local_planning_records"
+  ],
+  "contract_format": "hcam.phase3.p3_6.start_intent.v1",
+  "decision_id": "D-P3.6-START",
+  "effective": false,
+  "gate_snapshot": [
+    {
+      "gate_id": "P36-G0",
+      "state": "passed"
+    },
+    {
+      "gate_id": "P36-G1",
+      "state": "blocked",
+      "summary": "The DET-R0/E1/B1/A1 comparison and promoted champion/fallback pair are incomplete."
+    },
+    {
+      "gate_id": "P36-G2",
+      "state": "blocked",
+      "summary": "Exact approved portable, accelerated, and capacity-target machine/runtime/workload manifests do not exist."
+    },
+    {
+      "gate_id": "P36-G3",
+      "state": "passed"
+    },
+    {
+      "gate_id": "P36-G4",
+      "state": "blocked",
+      "summary": "No exact digest/source/path-bound model, runtime, driver, dependency, or container research authority exists."
+    },
+    {
+      "gate_id": "P36-G5",
+      "state": "blocked",
+      "summary": "The received start statement is not bound to an executable package digest, action allowlist, artifacts, machines, runtimes, workloads, paths, or network policy."
+    }
+  ],
+  "implementation_authorized": false,
+  "non_authorization": [
+    "application_scheduler_runtime_dashboard_or_kubernetes_implementation",
+    "model_dataset_dependency_driver_or_container_download_or_install",
+    "runtime_inference_gpu_hardware_performance_or_capacity_execution",
+    "model_loading_export_compilation_conversion_or_promotion",
+    "camera_media_sentinel_onvif_stream_or_recording_access",
+    "real_public_private_government_police_or_scraped_data",
+    "training_fine_tuning_identity_reidentification_or_cross_camera_linkage",
+    "watchlist_vehicle_owner_or_government_database_matching",
+    "operational_alerting_autonomous_action_or_enforcement",
+    "pilot_production_or_statewide_deployment",
+    "remote_git_push_pull_request_or_merge",
+    "p3_7_or_later_work"
+  ],
+  "owner_statement_received": "continue D-P3.6-START",
+  "prerequisite_unblock_plan": "contracts/phase-3/p3-6-unblock-plan.json",
+  "received_from": "mayank-admin",
+  "received_on": "2026-08-29",
+  "record_id": "D-P3.6-START-INTENT-R0",
+  "runtime_execution_authorized": false,
+  "status": "recorded_non_effective_prerequisites_incomplete",
+  "supersession_requirement": "A later owner statement must accept an exact immutable start package digest after P36-G1, P36-G2, and P36-G4 pass."
+}

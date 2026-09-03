@@ -1,0 +1,88 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3w_h1_r1_diagnostic_runtime_binding_r1_result.v1",
+  "decision_id": "D-P3.6-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-AUTH",
+  "status": "terminal_failed_closed_attempt_consumed",
+  "logical_node_id": "LAB-LAPTOP-01",
+  "attempt_started_at": "2026-09-01T21:27:09.509Z",
+  "attempt_completed_at": "2026-09-01T21:27:11.937Z",
+  "duration_milliseconds": 2428,
+  "attempt_consumed": true,
+  "automatic_retry_performed": false,
+  "additional_attempt_authorized": false,
+  "succeeded": false,
+  "reason_code": "controller_stage_projection_invalid",
+  "authorization_package_sha256": "DDCB7A9C4E6E93BF5252FAFF840E3841C1B9080FE5657AA0037532EE2037B760",
+  "action_spec_sha256": "9897C274749261DF36A29FA7C87150BC876AD308944C45B6664406BF782A4863",
+  "sealed_package_preflight": {
+    "authorization_record_existed_before_observation": true,
+    "owner_statement_binding_matched": true,
+    "package_digest_matched": true,
+    "core_file_count": 11,
+    "core_hashes_verified_before_observation": true
+  },
+  "runtime_binding": {
+    "observation_started": true,
+    "canonical_path_matched": true,
+    "regular_nonreparse_bounded_file": true,
+    "fixed_parent_count": 3,
+    "fixed_parents_validated_before_process": 3,
+    "bounded_metadata_succeeded": true,
+    "sha256_binding_succeeded": true,
+    "cache_only_no_UI_whole_chain_excluding_root_trust_initialized": true,
+    "trust_verified": true,
+    "trust_closed": true,
+    "identity_stable_after_process": true,
+    "network_or_trust_retrieval_performed": false
+  },
+  "accepted_source_binding": {
+    "expected_file_count": 5,
+    "preflight_hashes_matched": true,
+    "postflight_hashes_matched": true,
+    "source_identity_stable": true
+  },
+  "process_boundary": {
+    "exact_diagnostic_invocation_count": 1,
+    "timeout_seconds": 30,
+    "timed_out": false,
+    "exit_code": 71,
+    "stdout_bytes": 485,
+    "maximum_stdout_bytes": 4096,
+    "stderr_bytes": 0,
+    "maximum_stderr_bytes": 0,
+    "result_bytes": 485,
+    "maximum_result_bytes": 16384,
+    "automatic_retry_count": 0,
+    "raw_stdout_or_stderr_retained": false
+  },
+  "diagnostic_result": {
+    "terminal": true,
+    "succeeded": false,
+    "reason_code": "controller_stage_projection_invalid",
+    "controller_reason_family": "policy_valid",
+    "checked_group_count": 8,
+    "raw_controller_material_retained_bytes": 0,
+    "sanitized_result_only": true,
+    "machine_action_authorized": false,
+    "python_machine_fallback": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "deployment_authorized": false
+  },
+  "observed_action_counts": {
+    "runtime_binding_attempts": 1,
+    "diagnostic_runtime_invocations": 1,
+    "Python_machine_fallback_invocations": 0,
+    "machine_storage_F_B_ACL_identity_probe_cleanup_or_scanner_actions": 0,
+    "network_or_trust_retrieval_actions": 0,
+    "downloads_or_artifact_acquisition_actions": 0,
+    "model_inference_camera_media_private_or_Government_data_actions": 0,
+    "container_Kubernetes_profile_activation_deployment_U3K_or_remote_git_actions": 0
+  },
+  "gate_effect": {
+    "successful_U3W_evidence_available": false,
+    "separate_U3W_success_evidence_acceptance_requestable": false,
+    "U3K_package_preparation_authorized": false,
+    "U3K_machine_or_storage_attempt_authorized": false,
+    "new_diagnostic_attempt_requires_new_failure_analysis_package_and_exact_owner_authorization": true
+  }
+}

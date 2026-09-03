@@ -70,6 +70,7 @@ class StreamEventOutboxDispatcher:
                 "schema_version": event.schema_version,
                 "stream_id": event.stream_id,
                 "camera_id": event.camera_id,
+                "partition_key": event.stream_id,
                 "occurred_at": event.occurred_at.isoformat(),
                 "payload": event.payload,
             }
