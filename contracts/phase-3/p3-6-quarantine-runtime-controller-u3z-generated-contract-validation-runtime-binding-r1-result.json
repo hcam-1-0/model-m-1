@@ -1,0 +1,89 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3z_generated_contract_validation_runtime_binding_r1_result.v1",
+  "result_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3Z-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-RESULT",
+  "decision_id": "D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-AUTH",
+  "status": "terminal_failed_closed_attempt_consumed",
+  "logical_node_id": "LAB-LAPTOP-01",
+  "recorded_on": "2026-09-02",
+  "authority_binding": {
+    "owner_statement_sha256": "A2572CE0C655E1059BBB89C31E275F054D73504FB64C0630EF8E7D43E0575F58",
+    "owner_statement_utf8_bytes": 2404,
+    "authorization_package_sha256": "3348ECB80895806A2E63610088EF3178CE38B715910C3B1463D97CB2E8F3C6C5",
+    "action_spec_sha256": "2616CFEC77C6D0CA390FA58573FED25A1123209C51EFC472DCBDC3A6B45D94B4",
+    "pre_attempt_authorization_record_sha256": "F84A3FE4D10F57E76ADC3A42FBA53F1C7CDDB9AD8B29564F0300291CEB8B94C7",
+    "final_authorization_record_sha256": "FC1AE35876012CEFDCB52AE5A274FC5787FAE1AE722A9709AC76782C78C530D1",
+    "sealed_package_core_file_count": 16,
+    "sealed_package_core_hashes_verified_before_observation": true
+  },
+  "attempt": {
+    "authorization_recorded_at": "2026-09-02T14:07:21.3544116Z",
+    "authorization_expires_at": "2026-09-03T14:07:21.3544116Z",
+    "started_at": "2026-09-02T19:47:35.7836226+05:30",
+    "completed_at": "2026-09-02T19:47:35.8618722+05:30",
+    "within_authorization_window": true,
+    "duration_milliseconds": 78,
+    "attempts_authorized": 1,
+    "attempts_consumed": 1,
+    "automatic_retry_count": 0
+  },
+  "runtime_binding": {
+    "exact_candidate_bound_without_path_retention": false,
+    "observation_started": true,
+    "canonical_path_matched": false,
+    "regular_nonreparse_bounded_file": false,
+    "fixed_parent_count": 3,
+    "fixed_parents_validated_before_and_after_process": false,
+    "runtime_file_bytes": 0,
+    "bounded_file_version": "",
+    "initial_sha256": "",
+    "post_sha256": "",
+    "identity_stable": false,
+    "trust_policy": "cache_only_no_UI_whole_chain_excluding_root_without_trust_retrieval",
+    "trust_initialized": false,
+    "trust_verified": false,
+    "trust_closed": false,
+    "network_or_trust_retrieval_performed": false
+  },
+  "source_binding": {
+    "expected_file_count": 6,
+    "preflight_hashes_matched": false,
+    "postflight_hashes_matched": false,
+    "source_identity_stable": false
+  },
+  "process": {
+    "exact_runtime_invocation_count": 0,
+    "controller_dot_source_count": 0,
+    "timeout_seconds": 120,
+    "timed_out": false,
+    "exit_code": -1,
+    "stdout_bytes": 0,
+    "stderr_bytes": 0,
+    "parsed_result_bytes": 0,
+    "automatic_retry_count": 0,
+    "raw_stdout_stderr_exception_fixture_or_environment_material_retained": false
+  },
+  "sanitized_outcome": {
+    "terminal": true,
+    "succeeded": false,
+    "reason_code": "binding_failed",
+    "cases_loaded": 0,
+    "cases_executed": 0,
+    "cases_passed": 0,
+    "cases_failed": 0,
+    "literal_null_success_match": false,
+    "all_failure_action_reason_match": false,
+    "cross_language_projection_difference_count": -1,
+    "raw_fixture_retained_bytes": 0,
+    "raw_process_material_retained_bytes": 0
+  },
+  "gate_effect": {
+    "attempt_consumed": true,
+    "authorization_reusable": false,
+    "successful_current_U3Z_R1_evidence_available": false,
+    "separate_owner_evidence_acceptance_required": true,
+    "U3K_package_preparation_authorized": false,
+    "U3K_machine_or_storage_attempt_authorized": false,
+    "retry_authorized": false,
+    "commit_push_or_remote_Git_authorized": false
+  }
+}

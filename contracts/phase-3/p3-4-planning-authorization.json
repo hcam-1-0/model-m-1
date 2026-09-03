@@ -1,0 +1,41 @@
+{
+  "authorized_at": "2026-08-25T15:19:39Z",
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-08-25",
+  "baseline_repository_head": "5887096c2d173a1db1337ed7c7c1db141904cfd3",
+  "branch": "codex/phase3-geometry-events-planning",
+  "contract_format": "hcam.phase3.p3_4.planning_authorization.v1",
+  "decision_id": "D-P3.4-PLAN-AUTH",
+  "implementation_authorized": false,
+  "next_milestone_authorized": false,
+  "owner_statement_received": "p3.4 authoriz and continue",
+  "planning_authorized": true,
+  "planning_deliverables": [
+    "geometry_and_rule_semantics",
+    "event_time_and_replay_policy",
+    "state_persistence_and_idempotency_design",
+    "resource_and_retention_limits",
+    "generated_validation_and_acceptance_plan",
+    "dependency_and_license_research",
+    "owner_decision_packet"
+  ],
+  "prohibited_actions": [
+    "runtime_geometry_or_event_implementation",
+    "dependency_or_model_download",
+    "database_migration_or_api_addition",
+    "generated_or_real_inference_execution",
+    "physical_camera_onvif_media_or_sentinel_stream_access",
+    "real_public_private_government_police_or_scraped_media",
+    "external_dataset_access",
+    "identity_biometric_reidentification_or_cross_camera_linkage",
+    "watchlist_vehicle_owner_or_government_database_matching",
+    "operational_alerting_autonomous_action_or_enforcement",
+    "pilot_production_or_statewide_deployment",
+    "remote_git_push_pull_request_or_merge",
+    "p3_5_or_later_work"
+  ],
+  "record_id": "D-P3.4-PLAN-AUTH",
+  "scope": "phase3.p3_4.geometry_and_event_primitives.planning_only",
+  "statement": "mayank-admin authorizes P3.4 planning and primary-source research after accepting P3.3; implementation and every broader operational capability remain separately gated.",
+  "status": "authorized"
+}

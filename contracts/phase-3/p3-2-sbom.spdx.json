@@ -1,0 +1,116 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "creationInfo": {
+    "created": "2026-08-24T16:50:00Z",
+    "creators": [
+      "Organization: H-CAM",
+      "Tool: H-CAM P3.2 evidence process"
+    ]
+  },
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://hcam.local/spdx/phase-3/p3-2/det-r0/2026-08-24",
+  "name": "H-CAM P3.2 DET-R0 local research and implementation inventory",
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-DET-R0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "427CC366D34E27FF7A03E2899B5E3671425C262EA2291F88BB942BC1CC70B0F7"
+        }
+      ],
+      "downloadLocation": "https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_tiny.onnx",
+      "filesAnalyzed": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "name": "YOLOX-Tiny ONNX",
+      "supplier": "Organization: Megvii BaseDetection",
+      "versionInfo": "0.1.1rc0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-flatbuffers",
+      "downloadLocation": "https://pypi.org/project/flatbuffers/25.12.19/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "flatbuffers",
+      "versionInfo": "25.12.19"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-ml-dtypes",
+      "downloadLocation": "https://pypi.org/project/ml-dtypes/0.6.0/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "ml-dtypes",
+      "versionInfo": "0.6.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-numpy",
+      "downloadLocation": "https://pypi.org/project/numpy/2.5.2/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "name": "numpy",
+      "versionInfo": "2.5.2"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-onnx",
+      "downloadLocation": "https://pypi.org/project/onnx/1.22.0/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "name": "onnx",
+      "versionInfo": "1.22.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-onnxruntime",
+      "downloadLocation": "https://pypi.org/project/onnxruntime/1.29.0/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "name": "onnxruntime",
+      "versionInfo": "1.29.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-packaging",
+      "downloadLocation": "https://pypi.org/project/packaging/26.3/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "packaging",
+      "versionInfo": "26.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-protobuf",
+      "downloadLocation": "https://pypi.org/project/protobuf/7.36.0/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "protobuf",
+      "versionInfo": "7.36.0"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-typing-extensions",
+      "downloadLocation": "https://pypi.org/project/typing-extensions/4.16.0/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "typing-extensions",
+      "versionInfo": "4.16.0"
+    }
+  ],
+  "relationships": [
+    {
+      "relatedSpdxElement": "SPDXRef-Package-DET-R0",
+      "relationshipType": "DESCRIBES",
+      "spdxElementId": "SPDXRef-DOCUMENT"
+    },
+    {
+      "relatedSpdxElement": "SPDXRef-Package-onnxruntime",
+      "relationshipType": "DEPENDS_ON",
+      "spdxElementId": "SPDXRef-Package-DET-R0"
+    }
+  ],
+  "spdxVersion": "SPDX-2.3"
+}

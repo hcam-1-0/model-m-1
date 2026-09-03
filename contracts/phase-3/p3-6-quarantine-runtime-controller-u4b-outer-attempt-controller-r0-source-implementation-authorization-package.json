@@ -1,0 +1,137 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u4b_outer_attempt_controller_r0_source_implementation_authorization_package.v1",
+  "package_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U4B-OUTER-ATTEMPT-CONTROLLER-R0-SOURCE-IMPLEMENTATION-AUTHORIZATION-PACKAGE",
+  "decision_id": "D-P3.6-U4B-OUTER-ATTEMPT-CONTROLLER-R0-IMPLEMENTATION-AUTH",
+  "status": "sealed_non_effective_owner_authorization_pending_no_implementation_performed",
+  "sealed_on": "2026-09-02",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U4A-U3Z-R1-FAILURE-ANALYSIS-DECISIONS",
+    "acceptance_record_sha256": "F8C39C761A8B0359CDB50F13AF0935A481C8A881A02A6F325E722137FCB75E36",
+    "accepted_U4A_planning_package_sha256": "0918CD9775DA870C530233BD8728325164159A53777A42FAA8DB5B4A7C8DA5D9",
+    "selected_options": "A/A/A/A",
+    "effect": "prepare_this_non_effective_U4B_source_implementation_authorization_package_only"
+  },
+  "core_file_count": 17,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u4a-binding-classification-remediation-planning-package.json",
+      "sha256": "0918CD9775DA870C530233BD8728325164159A53777A42FAA8DB5B4A7C8DA5D9",
+      "role": "accepted_binding_failure_analysis_and_decision_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u4a-binding-classification-remediation-planning-acceptance.json",
+      "sha256": "F8C39C761A8B0359CDB50F13AF0935A481C8A881A02A6F325E722137FCB75E36",
+      "role": "exact_owner_A_A_A_A_acceptance_and_proposal_preparation_authority"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-failure-analysis-r0.json",
+      "sha256": "F8ED63FB9410B6DCBB37A82A9CF667FF09067CBB502B8F23A213B784DD431667",
+      "role": "accepted_planning_only_failure_analysis_and_inference_boundaries"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u4a-binding-classification-remediation-decision-packet.json",
+      "sha256": "DF2EDE19247EFD0F3593FA0227DCCC25BC3BD54C4FCC0F98DC47E76E4F589C35",
+      "role": "accepted_four_option_remediation_direction"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-source-implementation-contract.json",
+      "sha256": "4656703497A158E5AC3E290FE8B037B4A9081BE40163D96181AF2F4FDD5F5F35",
+      "role": "exact_future_paths_state_machine_parent_reduction_taxonomy_and_generated_static_evidence_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u4b-outer-attempt-controller-r0-source-implementation-authorization-proposal.json",
+      "sha256": "C0154CDC30613F1792928B81294353B39CF3952C525D25BAFEF3527157A8C357",
+      "role": "machine_readable_future_digest_bound_source_implementation_authorization_request"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-u4b-outer-attempt-controller-r0-source-implementation-authorization-proposal.md",
+      "sha256": "DD44B8D8A270E8F65F4CB58AFC5D5FA6205BDF69539F3902CF3256225134542D",
+      "role": "human_reviewable_scope_architecture_evidence_sequence_and_closed_gates"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1_generated_validation.ps1",
+      "sha256": "D9EE5CC7599AACCE3363CE5C29EE479D777F94CF886AE779390B7027C40FA382",
+      "role": "immutable_accepted_U3Z_generated_validation_harness"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-vectors.json",
+      "sha256": "7BCDFCA583644BD4ED5F4B747C3969B4C9FF4029B48734F8BD4D90BA5D600A21",
+      "role": "immutable_accepted_U3Z_materialized_vectors"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1.ps1",
+      "sha256": "787655BAC55DDF563E9D1DC43EC37F010C271AB381E541B0734028E3F2B90B31",
+      "role": "immutable_accepted_controller_R1"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-contract.json",
+      "sha256": "637C5400122874149D9835CC6BC521E5EEC9160222F4A7AC5CA1F6CD99E1BCC4",
+      "role": "immutable_accepted_controller_R1_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-vectors.json",
+      "sha256": "D8EDF5C0255B40FB6C28BB014C09DC503D2B53665E69C5AA5AB65C744AEA81E4",
+      "role": "immutable_accepted_controller_R1_source_vectors"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1_reference.py",
+      "sha256": "B5C7328CD666E0A8988F9B616C5B2A914D690A40BF2EA289C1F1C755E42B86F0",
+      "role": "immutable_accepted_machine_disabled_controller_R1_reference"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-authorization.json",
+      "sha256": "FC1AE35876012CEFDCB52AE5A274FC5787FAE1AE722A9709AC76782C78C530D1",
+      "role": "immutable_consumed_U3Z_R1_authorization"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-result.json",
+      "sha256": "C9743F0FC8906E46701E07A01A1C651F4B4B2C0517FAB722A97C1396F40F7303",
+      "role": "immutable_terminal_failed_closed_U3Z_R1_result"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-evidence.json",
+      "sha256": "34BDA40E4450F35AF4A86E3C7566B9AFCA01413D70FE9CA9EB70B35A1B921BFF",
+      "role": "immutable_sanitized_U3Z_R1_evidence"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-action-spec.json",
+      "sha256": "2616CFEC77C6D0CA390FA58573FED25A1123209C51EFC472DCBDC3A6B45D94B4",
+      "role": "immutable_consumed_U3Z_R1_attempt_action_spec_and_previous_outer_controller_requirements"
+    }
+  ],
+  "exact_future_implementation_path_count": 11,
+  "bounded_existing_synchronization_path_count": 13,
+  "required_generated_vector_minimum": 384,
+  "required_machine_disabled_Python_reference_branch_coverage_percent": 95,
+  "supported_operation": "generated_contract_validation_v1",
+  "ordered_stage_count": 11,
+  "fixed_parent_record_count": 3,
+  "future_authorization_effect_if_exactly_accepted": {
+    "implement_only_eleven_bound_additive_paths_and_thirteen_bounded_synchronization_paths": true,
+    "run_generated_fixture_and_machine_disabled_Python_static_validation": true,
+    "preserve_ten_immutable_accepted_inputs_byte_exact": true,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_manifest_hardware_machine_storage_scanner_or_network_observation": false,
+    "another_attempt_U3K_deployment_commit_push_or_remote_Git": false
+  },
+  "future_owner_authorization_statement_template": "D-P3.6-U4B-OUTER-ATTEMPT-CONTROLLER-R0-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only implementation of the additive package-bound outer attempt controller R0 against package digest <U4B_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact eleven additive implementation paths and bounded synchronization paths bound by that package. It must preserve all ten accepted U3Y, U3Z, consumed-attempt, and failure-analysis inputs byte-exact; implement a typed default-deny eleven-stage controller for only generated_contract_validation_v1; materialize exactly three ordered typed fixed-parent records with indexes 0, 1, and 2; compute all-valid through an explicit fixed-length reduction without pipeline null or scalar-cardinality semantics; emit only bounded stage, parent-index, predicate, attempt-count, and allowlisted reason fields; retain no paths, raw attributes, output, exceptions, fixtures, environment, identity, or security material; generate at least 384 synthetic static vectors; achieve at least 95 percent branch coverage for the machine-disabled Python reference; pass generated cross-language and static validation; and seal source-only evidence for separate acceptance. Python may execute generated fixtures and machine-disabled reference and static tests only, with no filesystem runtime, registry, environment, network, native API, subprocess, machine-controller, or fallback access. PowerShell must not be parsed, imported, dot-sourced, or executed. This does not authorize runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, private or Government data, container, Kubernetes, profile activation, deployment, another attempt, U3K, commit, push, or remote Git.",
+  "current_gate_effect": {
+    "U4A_owner_decisions_accepted": true,
+    "U4B_authorization_package_prepared": true,
+    "owner_U4B_source_implementation_authorization_pending": true,
+    "D_P3_6_U4B_OUTER_ATTEMPT_CONTROLLER_R0_IMPLEMENTATION_AUTH_requestable": true,
+    "source_contract_vector_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "another_attempt_or_U3K_authorized": false,
+    "deployment_commit_push_or_remote_Git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "authorization_may_be_inferred_from_U4A_acceptance_continue_package_preparation_or_static_validation": false,
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U4B_authorization_package_digest_and_is_not_self_embedded"
+}

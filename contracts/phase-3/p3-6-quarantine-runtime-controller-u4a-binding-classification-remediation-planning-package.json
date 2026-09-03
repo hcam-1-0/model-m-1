@@ -1,0 +1,99 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u4a_binding_classification_remediation_planning_package.v1",
+  "package_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U4A-BINDING-CLASSIFICATION-REMEDIATION-PLANNING-PACKAGE",
+  "acceptance_decision_id": "D-P3.6-U4A-U3Z-R1-FAILURE-ANALYSIS-DECISIONS",
+  "status": "sealed_non_effective_owner_decisions_pending",
+  "sealed_on": "2026-09-02",
+  "preparation_authority": "user_continue_after_sealed_consumed_U3Z_R1_attempt_for_planning_only",
+  "core_file_count": 6,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-authorization.json",
+      "sha256": "FC1AE35876012CEFDCB52AE5A274FC5787FAE1AE722A9709AC76782C78C530D1",
+      "role": "consumed_exact_owner_authorization_record"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-result.json",
+      "sha256": "C9743F0FC8906E46701E07A01A1C651F4B4B2C0517FAB722A97C1396F40F7303",
+      "role": "terminal_failed_closed_sanitized_result"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-evidence.json",
+      "sha256": "34BDA40E4450F35AF4A86E3C7566B9AFCA01413D70FE9CA9EB70B35A1B921BFF",
+      "role": "sealed_sanitized_consumed_attempt_evidence"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-failure-analysis-r0.json",
+      "sha256": "F8ED63FB9410B6DCBB37A82A9CF667FF09067CBB502B8F23A213B784DD431667",
+      "role": "sanitized_failure_localization_hypotheses_and_design_gap_analysis"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u4a-binding-classification-remediation-decision-packet.json",
+      "sha256": "DF2EDE19247EFD0F3593FA0227DCCC25BC3BD54C4FCC0F98DC47E76E4F589C35",
+      "role": "four_explicit_owner_choices_with_A_A_A_A_recommendation"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-u4a-binding-classification-remediation-decision-packet.md",
+      "sha256": "64B4339F9A01698B6497801F0FB4AA0A55E5DF72F1ED952AC743F3F1D1DEEB13",
+      "role": "human_reviewable_failure_boundaries_options_and_non_authorization"
+    }
+  ],
+  "confirmed_attempt_summary": {
+    "attempts_consumed": 1,
+    "authorization_reusable": false,
+    "terminal_reason_code": "binding_failed",
+    "earliest_failed_boundary": "fixed_parent_set_validation",
+    "runtime_metadata_hash_or_trust_reached": false,
+    "accepted_source_binding_reached": false,
+    "PowerShell_runtime_invocation_count": 0,
+    "generated_contract_cases_executed": 0,
+    "prohibited_action_count": 0,
+    "successful_U3Z_R1_evidence_available": false
+  },
+  "owner_decisions": [
+    {
+      "decision_id": "D-P3.6-U4A-001",
+      "title": "First Remediation Surface",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U4A-002",
+      "title": "Sanitized Binding Diagnostic Taxonomy",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U4A-003",
+      "title": "Fixed-Parent Set Evaluation Contract",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U4A-004",
+      "title": "Validation And Runtime Reentry Sequence",
+      "recommended_option": "A",
+      "selected_option": null
+    }
+  ],
+  "recommended_selection": "A/A/A/A",
+  "future_owner_acceptance_statement_template": "D-P3.6-U4A-U3Z-R1-FAILURE-ANALYSIS-DECISIONS: I, mayank-admin, accept the sanitized U3Z R1 binding-failure planning package digest <U4A_PLANNING_PACKAGE_DIGEST_SHA256> and select D-P3.6-U4A-001:A, D-P3.6-U4A-002:A, D-P3.6-U4A-003:A, and D-P3.6-U4A-004:A. This accepts the failed U3Z R1 evidence for planning purposes and authorizes preparation only of a separate source-only additive outer attempt-controller remediation implementation authorization proposal. It does not authorize outer controller, harness, contract, vector, test, model, or product implementation; PowerShell parsing, import, dot-sourcing, or execution; Python machine access or fallback; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, private or Government data, container, Kubernetes, profile activation, deployment, another attempt, U3K, commit, push, or remote Git.",
+  "current_gate_effect": {
+    "owner_decisions_pending": true,
+    "D_P3_6_U4A_U3Z_R1_FAILURE_ANALYSIS_DECISIONS_requestable": true,
+    "attempts_authorized": 0,
+    "outer_controller_contract_vector_or_test_modification_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "deployment_commit_push_or_remote_Git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "owner_selection_may_be_inferred_from_continue_package_preparation_static_analysis_or_recommendation": false,
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U4A_planning_package_digest_and_is_not_self_embedded"
+}

@@ -1,0 +1,116 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_harness_r1_remediation_contract.v1",
+  "contract_id": "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R1-REMEDIATION-1.0.0",
+  "status": "sealed_non_executable_source_only_remediation_contract",
+  "prepared_on": "2026-09-01",
+  "baseline": {
+    "accepted_harness_path": "tools/phase36_quarantine_generated_validation.ps1",
+    "accepted_harness_sha256": "48FC33E1928BA186C11005DBDEC055E5558D58677D51EB864D3740BCFBA208C1",
+    "accepted_vector_manifest_sha256": "5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C",
+    "accepted_runner_sha256": "22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A",
+    "accepted_pure_handler_sha256": "41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721",
+    "accepted_windows_adapter_sha256": "232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9"
+  },
+  "exact_source_remediation": {
+    "modifiable_source": "tools/phase36_quarantine_generated_validation.ps1",
+    "replace_dependency": "Get-FileHash",
+    "replacement_policy": {
+      "read_only_file_stream": true,
+      "file_share_read_only": true,
+      "SHA256_implementation": "System.Security.Cryptography.SHA256",
+      "bounded_buffer_or_streaming": true,
+      "deterministic_uppercase_hex": true,
+      "stream_and_hash_algorithm_disposed_in_finally": true,
+      "PowerShell_module_dependency": false,
+      "network_or_machine_discovery": false
+    },
+    "preserve_PSModuleAutoLoadingPreference_None": true,
+    "preserve_single_handler_Import_Module_surface": true,
+    "new_utility_module_import_allowed": false
+  },
+  "sanitized_diagnostic_remediation": {
+    "allowed_failure_layers": [
+      "binding",
+      "manifest",
+      "parser",
+      "contract",
+      "handler",
+      "result_serialization"
+    ],
+    "failure_reason_format": "allowlisted_layer_name_plus_failed",
+    "raw_exception_message_type_stack_or_invocation_info_allowed": false,
+    "raw_stdout_or_stderr_allowed": false,
+    "fixture_or_vector_payload_allowed": false,
+    "identity_path_beyond_accepted_repository_paths_or_security_material_allowed": false,
+    "later_controller_may_parse_allowlisted_failure_JSON_on_nonzero_exit": true,
+    "later_controller_may_persist_raw_failure_output": false
+  },
+  "unchanged_behavior": {
+    "modes": [
+      "Parse",
+      "Contract",
+      "Handler",
+      "Aggregate"
+    ],
+    "parser_file_count": 4,
+    "contract_vector_count": 20,
+    "pure_handler_vector_count": 64,
+    "total_generated_vector_count": 84,
+    "runner_mode": "Contract_only",
+    "runner_Storage_or_StorageRequestJson_reachable": false,
+    "windows_adapter_import_or_execution_count": 0,
+    "machine_action_count": 0,
+    "network_action_count": 0,
+    "automatic_retry_authorized": false,
+    "storage_attempt_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  },
+  "implementation_allowlist": [
+    "tools/phase36_quarantine_generated_validation.ps1",
+    "tests/test_phase36_quarantine_generated_powershell_validation_harness.py",
+    "tests/test_phase36_quarantine_generated_validation_harness_r1_remediation.py",
+    "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-evidence.json",
+    "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-package.json",
+    "docs/phase-3/p3-6-quarantine-generated-validation-harness-r1-implementation-evidence-review.md",
+    "contracts/phase-3/p3-6-entry-gates.json",
+    "contracts/phase-3/p3-6-capability-profile-policy.json",
+    "contracts/phase-3/p3-6-unblock-plan.json",
+    "contracts/phase-3/README.md",
+    "docs/phase-3/README.md",
+    "docs/phase-3/acceptance-checklist.md",
+    "docs/phase-3/decision-register.md",
+    "docs/phase-3/implementation-backlog.md",
+    "docs/phase-3/p3-6-capability-profiles.md",
+    "docs/phase-3/p3-6-plan.md",
+    "docs/phase-3/p3-6-planning-acceptances.md",
+    "docs/phase-3/p3-6-unblock-plan.md",
+    ".gitattributes"
+  ],
+  "required_generated_static_evidence": {
+    "accepted_runner_handler_adapter_and_vectors_remain_byte_exact": true,
+    "Get_FileHash_absent_from_remediated_harness": true,
+    "PSModuleAutoLoadingPreference_None_preserved": true,
+    "only_one_Import_Module_surface_preserved": true,
+    "dotnet_hash_stream_disposal_and_uppercase_hex_checked": true,
+    "all_six_failure_layers_checked": true,
+    "raw_error_surfaces_absent": true,
+    "all_84_generated_reference_vectors_pass": true,
+    "full_phase36_static_suite_passes": true
+  },
+  "implementation_non_authorization": {
+    "PowerShell_parse_import_or_execution": false,
+    "runtime_or_hardware_observation": false,
+    "retry_or_U3P_package_preparation": false,
+    "machine_storage_F_B_ACL_probe_cleanup_or_scanner_action": false,
+    "network_download_artifact_model_camera_media_or_data_action": false,
+    "container_Kubernetes_profile_activation_deployment_or_remote_git": false,
+    "U3K_package_preparation_or_storage": false
+  },
+  "sequence_after_implementation": [
+    "seal_exact_harness_R1_source_and_generated_static_evidence",
+    "obtain_separate_exact_owner_R1_implementation_acceptance",
+    "prepare_a_new_non_effective_U3P_runtime_retry_package",
+    "obtain_separate_digest_bound_U3P_retry_authorization",
+    "perform_at_most_one_new_attempt_only_after_that_authorization"
+  ]
+}

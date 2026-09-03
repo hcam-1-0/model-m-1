@@ -57,6 +57,19 @@ def _positive_environment_number(name: str, default: float) -> float:
     return parsed
 
 
+def _nonnegative_environment_integer(name: str, default: int) -> int:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    try:
+        parsed = int(value)
+    except ValueError as exc:
+        raise ValueError(f"{name} must be a non-negative integer") from exc
+    if parsed < 0:
+        raise ValueError(f"{name} must be a non-negative integer")
+    return parsed
+
+
 def _read_secret_file(name: str) -> str | None:
     configured_path = os.getenv(name)
     if configured_path is None:
@@ -154,8 +167,6 @@ class Settings:
     playback_token_ttl_seconds: int = 60
     playback_issuer: str = "hcam-core"
     playback_audience: str = "mediamtx"
-
-    # GIS / PostGIS settings
     postgis_enabled: bool = False
     db_pool_size: int = 5
     db_max_overflow: int = 10
@@ -163,9 +174,14 @@ class Settings:
     db_pool_recycle: int = 1800
     gis_tile_extent: int = 4096
     gis_tile_buffer: int = 256
-    gis_max_features_per_tile: int = 10000
-    gis_cluster_min_zoom: int = 0
-    gis_cluster_max_zoom: int = 20
+    gis_max_features_per_tile: int = 10_000
+    analytics_generated_runtime_enabled: bool = False
+    analytics_generated_tracking_enabled: bool = False
+    analytics_generated_geometry_enabled: bool = False
+    analytics_artifact_root: Path | None = field(default=None, repr=False)
+    analytics_model_relative_path: Path = Path(
+        "DET-R0-ONNX-UPSTREAM-0.1.1RC0/yolox_tiny.onnx"
+    )
 
     def __post_init__(self) -> None:
         environment = self.environment.strip().lower()
@@ -183,36 +199,50 @@ class Settings:
             raise ValueError(
                 "HCAM_METRICS_TOKEN_FILE is required when metrics are enabled"
             )
-        if self.metrics_token is not None and _BEARER_TOKEN_PATTERN.fullmatch(
-            self.metrics_token
-        ) is None:
-            raise ValueError(
-                "metrics token must be 32 to 256 bearer-safe characters"
-            )
+        if (
+            self.metrics_token is not None
+            and _BEARER_TOKEN_PATTERN.fullmatch(self.metrics_token) is None
+        ):
+            raise ValueError("metrics token must be 32 to 256 bearer-safe characters")
         if not self.ffprobe_executable.strip():
             raise ValueError("HCAM_FFPROBE_EXECUTABLE must not be empty")
         if self.stream_probe_timeout_seconds <= 0:
             raise ValueError("HCAM_STREAM_PROBE_TIMEOUT_SECONDS must be positive")
         if self.camera_secret_provider not in {"unconfigured", "file"}:
-            raise ValueError(
-                "HCAM_CAMERA_SECRET_PROVIDER must be unconfigured or file"
-            )
+            raise ValueError("HCAM_CAMERA_SECRET_PROVIDER must be unconfigured or file")
         if self.camera_secret_provider == "file" and self.camera_secret_root is None:
             raise ValueError(
                 "HCAM_CAMERA_SECRET_ROOT is required for the file secret provider"
             )
-        if self.camera_secret_provider != "file" and self.camera_secret_root is not None:
+        if (
+            self.camera_secret_provider != "file"
+            and self.camera_secret_root is not None
+        ):
             raise ValueError(
                 "HCAM_CAMERA_SECRET_ROOT requires HCAM_CAMERA_SECRET_PROVIDER=file"
             )
         if environment == "production" and self.camera_secret_provider == "file":
-            raise ValueError("the file camera secret provider is forbidden in production")
+            raise ValueError(
+                "the file camera secret provider is forbidden in production"
+            )
         if environment == "production" and self.onvif_lab_http_enabled:
             raise ValueError("ONVIF lab HTTP is forbidden in production")
         if environment == "production" and self.onvif_control_enabled:
             raise ValueError("ONVIF control is forbidden in production")
         if environment == "production" and self.onvif_discovery_enabled:
             raise ValueError("ONVIF WS-Discovery is forbidden in production")
+        if environment == "production" and self.analytics_generated_runtime_enabled:
+            raise ValueError(
+                "the generated analytics runtime is forbidden in production"
+            )
+        if environment == "production" and self.analytics_generated_tracking_enabled:
+            raise ValueError(
+                "the generated tracking runtime is forbidden in production"
+            )
+        if environment == "production" and self.analytics_generated_geometry_enabled:
+            raise ValueError(
+                "the generated geometry runtime is forbidden in production"
+            )
         if environment == "production" and any(
             rule.scheme == "http" for rule in self.onvif_egress_rules
         ):
@@ -279,6 +309,28 @@ class Settings:
             if not secret_root.is_dir():
                 raise ValueError("HCAM_CAMERA_SECRET_ROOT must identify a directory")
             object.__setattr__(self, "camera_secret_root", secret_root)
+        if (
+            self.analytics_model_relative_path.is_absolute()
+            or ".." in self.analytics_model_relative_path.parts
+            or self.analytics_model_relative_path.name != "yolox_tiny.onnx"
+        ):
+            raise ValueError(
+                "HCAM_ANALYTICS_MODEL_RELATIVE_PATH must identify the approved relative model file"
+            )
+        if (
+            self.analytics_generated_runtime_enabled
+            and self.analytics_artifact_root is None
+        ):
+            raise ValueError(
+                "HCAM_ANALYTICS_ARTIFACT_ROOT is required when the generated analytics runtime is enabled"
+            )
+        if self.analytics_artifact_root is not None:
+            artifact_root = self.analytics_artifact_root.expanduser().resolve()
+            if not artifact_root.is_dir():
+                raise ValueError(
+                    "HCAM_ANALYTICS_ARTIFACT_ROOT must identify a directory"
+                )
+            object.__setattr__(self, "analytics_artifact_root", artifact_root)
         playback_url = urlsplit(self.playback_public_base_url)
         if (
             playback_url.scheme not in {"http", "https"}
@@ -286,32 +338,27 @@ class Settings:
             or playback_url.query
             or playback_url.fragment
         ):
-            raise ValueError("HCAM_PLAYBACK_PUBLIC_BASE_URL must be an HTTP(S) base URL")
+            raise ValueError(
+                "HCAM_PLAYBACK_PUBLIC_BASE_URL must be an HTTP(S) base URL"
+            )
         if not 10 <= self.playback_token_ttl_seconds <= 300:
-            raise ValueError("HCAM_PLAYBACK_TOKEN_TTL_SECONDS must be between 10 and 300")
+            raise ValueError(
+                "HCAM_PLAYBACK_TOKEN_TTL_SECONDS must be between 10 and 300"
+            )
         if not self.playback_issuer.strip() or not self.playback_audience.strip():
             raise ValueError("playback issuer and audience must not be empty")
-
-        # GIS / PostGIS validation
         if self.postgis_enabled and self.database_url.startswith("sqlite"):
-            raise ValueError("PostGIS requires PostgreSQL database (not SQLite)")
-        if self.db_pool_size < 1:
-            raise ValueError("HCAM_DB_POOL_SIZE must be >= 1")
-        if self.db_max_overflow < 0:
-            raise ValueError("HCAM_DB_MAX_OVERFLOW must be >= 0")
-        if self.db_pool_timeout <= 0:
-            raise ValueError("HCAM_DB_POOL_TIMEOUT must be positive")
-        if self.db_pool_recycle < 0:
-            raise ValueError("HCAM_DB_POOL_RECYCLE must be >= 0")
-        if self.gis_tile_extent < 256 or self.gis_tile_extent > 8192:
+            raise ValueError("PostGIS requires PostgreSQL")
+        if self.db_pool_size < 1 or self.db_max_overflow < 0:
+            raise ValueError("database pool settings are invalid")
+        if self.db_pool_timeout <= 0 or self.db_pool_recycle < 0:
+            raise ValueError("database pool timing settings are invalid")
+        if not 256 <= self.gis_tile_extent <= 8192:
             raise ValueError("HCAM_GIS_TILE_EXTENT must be between 256 and 8192")
-        if self.gis_tile_buffer < 0 or self.gis_tile_buffer > 1024:
+        if not 0 <= self.gis_tile_buffer <= 1024:
             raise ValueError("HCAM_GIS_TILE_BUFFER must be between 0 and 1024")
-        if self.gis_max_features_per_tile < 100 or self.gis_max_features_per_tile > 50000:
+        if not 100 <= self.gis_max_features_per_tile <= 50_000:
             raise ValueError("HCAM_GIS_MAX_FEATURES_PER_TILE must be between 100 and 50000")
-        if not (0 <= self.gis_cluster_min_zoom <= self.gis_cluster_max_zoom <= 22):
-            raise ValueError("GIS cluster zoom range must be 0-22 with min <= max")
-
         object.__setattr__(self, "environment", environment)
         object.__setattr__(self, "database_url", self.database_url.strip())
         object.__setattr__(self, "service_name", self.service_name.strip())
@@ -367,20 +414,12 @@ class Settings:
             onvif_egress_rules=load_onvif_egress_rules(
                 os.getenv("HCAM_ONVIF_EGRESS_RULES_FILE")
             ),
-            onvif_lab_http_enabled=_environment_flag(
-                "HCAM_ONVIF_LAB_HTTP_ENABLED"
-            ),
+            onvif_lab_http_enabled=_environment_flag("HCAM_ONVIF_LAB_HTTP_ENABLED"),
             onvif_ca_bundle=(
-                Path(value)
-                if (value := os.getenv("HCAM_ONVIF_CA_BUNDLE"))
-                else None
+                Path(value) if (value := os.getenv("HCAM_ONVIF_CA_BUNDLE")) else None
             ),
-            onvif_control_enabled=_environment_flag(
-                "HCAM_ONVIF_CONTROL_ENABLED"
-            ),
-            onvif_discovery_enabled=_environment_flag(
-                "HCAM_ONVIF_DISCOVERY_ENABLED"
-            ),
+            onvif_control_enabled=_environment_flag("HCAM_ONVIF_CONTROL_ENABLED"),
+            onvif_discovery_enabled=_environment_flag("HCAM_ONVIF_DISCOVERY_ENABLED"),
             onvif_discovery_interface=(
                 value.strip()
                 if (value := os.getenv("HCAM_ONVIF_DISCOVERY_INTERFACE"))
@@ -399,11 +438,11 @@ class Settings:
             ),
             camera_secret_provider=os.getenv(
                 "HCAM_CAMERA_SECRET_PROVIDER", defaults.camera_secret_provider
-            ).strip().lower(),
+            )
+            .strip()
+            .lower(),
             camera_secret_root=(
-                Path(value)
-                if (value := os.getenv("HCAM_CAMERA_SECRET_ROOT"))
-                else None
+                Path(value) if (value := os.getenv("HCAM_CAMERA_SECRET_ROOT")) else None
             ),
             playback_signing_key=_read_pem_secret_file(
                 "HCAM_PLAYBACK_SIGNING_KEY_FILE"
@@ -415,38 +454,52 @@ class Settings:
                 "HCAM_PLAYBACK_TOKEN_TTL_SECONDS",
                 defaults.playback_token_ttl_seconds,
             ),
-            playback_issuer=os.getenv(
-                "HCAM_PLAYBACK_ISSUER", defaults.playback_issuer
-            ),
+            playback_issuer=os.getenv("HCAM_PLAYBACK_ISSUER", defaults.playback_issuer),
             playback_audience=os.getenv(
                 "HCAM_PLAYBACK_AUDIENCE", defaults.playback_audience
             ),
-            postgis_enabled=_environment_flag("HCAM_POSTGIS_ENABLED", defaults.postgis_enabled),
+            postgis_enabled=_environment_flag(
+                "HCAM_POSTGIS_ENABLED", defaults.postgis_enabled
+            ),
             db_pool_size=_positive_environment_integer(
                 "HCAM_DB_POOL_SIZE", defaults.db_pool_size
             ),
-            db_max_overflow=_positive_environment_integer(
+            db_max_overflow=_nonnegative_environment_integer(
                 "HCAM_DB_MAX_OVERFLOW", defaults.db_max_overflow
             ),
             db_pool_timeout=_positive_environment_number(
                 "HCAM_DB_POOL_TIMEOUT", defaults.db_pool_timeout
             ),
-            db_pool_recycle=_positive_environment_integer(
+            db_pool_recycle=_nonnegative_environment_integer(
                 "HCAM_DB_POOL_RECYCLE", defaults.db_pool_recycle
             ),
             gis_tile_extent=_positive_environment_integer(
                 "HCAM_GIS_TILE_EXTENT", defaults.gis_tile_extent
             ),
-            gis_tile_buffer=_positive_environment_integer(
+            gis_tile_buffer=_nonnegative_environment_integer(
                 "HCAM_GIS_TILE_BUFFER", defaults.gis_tile_buffer
             ),
             gis_max_features_per_tile=_positive_environment_integer(
                 "HCAM_GIS_MAX_FEATURES_PER_TILE", defaults.gis_max_features_per_tile
             ),
-            gis_cluster_min_zoom=_positive_environment_integer(
-                "HCAM_GIS_CLUSTER_MIN_ZOOM", defaults.gis_cluster_min_zoom
+            analytics_generated_runtime_enabled=_environment_flag(
+                "HCAM_ANALYTICS_GENERATED_RUNTIME_ENABLED"
             ),
-            gis_cluster_max_zoom=_positive_environment_integer(
-                "HCAM_GIS_CLUSTER_MAX_ZOOM", defaults.gis_cluster_max_zoom
+            analytics_generated_tracking_enabled=_environment_flag(
+                "HCAM_ANALYTICS_GENERATED_TRACKING_ENABLED"
+            ),
+            analytics_generated_geometry_enabled=_environment_flag(
+                "HCAM_ANALYTICS_GENERATED_GEOMETRY_ENABLED"
+            ),
+            analytics_artifact_root=(
+                Path(value)
+                if (value := os.getenv("HCAM_ANALYTICS_ARTIFACT_ROOT"))
+                else None
+            ),
+            analytics_model_relative_path=Path(
+                os.getenv(
+                    "HCAM_ANALYTICS_MODEL_RELATIVE_PATH",
+                    str(defaults.analytics_model_relative_path),
+                )
             ),
         )

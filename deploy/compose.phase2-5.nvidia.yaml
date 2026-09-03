@@ -1,0 +1,7 @@
+services:
+  publisher:
+    gpus: all
+    environment:
+      HCAM_PHASE2_5_CONTAINER_ACCELERATOR: nvidia
+      NVIDIA_DRIVER_CAPABILITIES: compute,video,utility
+      NVIDIA_VISIBLE_DEVICES: all

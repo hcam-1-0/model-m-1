@@ -1,0 +1,78 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_failure_analysis_r0.v1",
+  "analysis_id": "P36-QUARANTINE-GENERATED-VALIDATION-FAILURE-ANALYSIS-R0",
+  "status": "failed_attempt_analyzed_source_only_no_retry_or_remediation_authority",
+  "prepared_on": "2026-09-01",
+  "attempt_evidence": {
+    "authorization_record": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-authorization.json",
+    "authorization_record_sha256": "1218C1C35C58AB253D811044046F2EDD364790A6469150248BFFBAB37AAE395B",
+    "result_record": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-result.json",
+    "result_record_sha256": "AD3A8B62105C4DF85E613024C034CECB8DB66C583E7DB49BDA1D4EB09772A8F7",
+    "evidence_record": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-evidence.json",
+    "evidence_record_sha256": "0EAA18F17307799430955E06EF50779BF4696300DF368680CBE5CB5913E93C42",
+    "authorization_commit": "a2bafac2fe30e1d5446ca1a251a270122fae9578",
+    "evidence_commit": "09841407ff40badd7dd1c738be7d2df16e5f28ef"
+  },
+  "confirmed_attempt_facts": {
+    "attempts_authorized": 1,
+    "attempts_consumed": 1,
+    "retry_authorized": false,
+    "exact_runtime_path_policy_passed": true,
+    "runtime_major_version_7_passed": true,
+    "runtime_cache_only_trust_passed": true,
+    "all_five_preexecution_source_hashes_passed": true,
+    "outer_exact_runtime_invocation_count": 1,
+    "accepted_Aggregate_result_received": false,
+    "postexecution_rebind_completed": false,
+    "sanitized_failure_reason": "generated_validation_process_failed",
+    "raw_stdout_stderr_exception_fixture_identity_or_security_material_retained": false,
+    "prohibited_action_count": 0,
+    "U3K_requestable": false
+  },
+  "hypotheses": [
+    {
+      "hypothesis_id": "H1-MODULE-AUTOLOAD-CONFLICT",
+      "confidence": "high",
+      "classification": "source_and_primary_documentation_supported_runtime_unconfirmed",
+      "evidence": [
+        "the accepted harness sets PSModuleAutoLoadingPreference to None before its first binding helper executes",
+        "the binding helper invokes Get-FileHash",
+        "Microsoft documents Get-FileHash as part of Microsoft.PowerShell.Utility",
+        "Microsoft documents None as disabling automatic module imports",
+        "the harness does not explicitly import Microsoft.PowerShell.Utility"
+      ],
+      "safe_remediation": "replace_Get_FileHash_with_bounded_dotnet_SHA256_streaming"
+    },
+    {
+      "hypothesis_id": "H2-LATER-RUNTIME-SEMANTIC-FAILURE",
+      "confidence": "unresolved",
+      "classification": "not_excluded_by_zero_retention_evidence",
+      "evidence": [
+        "the harness trap emits one stage-agnostic failure reason",
+        "the outer controller retained no raw process output or exception by policy"
+      ],
+      "safe_remediation": "add_allowlisted_layer_only_failure_classification_and_parse_only_sanitized_failure_fields"
+    }
+  ],
+  "selected_remediation_direction": {
+    "preserve_PSModuleAutoLoadingPreference_None": true,
+    "add_Microsoft_PowerShell_Utility_import": false,
+    "replace_Get_FileHash_dependency": true,
+    "use_bounded_read_only_dotnet_SHA256_streaming": true,
+    "add_layer_only_sanitized_failure_codes": true,
+    "retain_raw_error_or_output": false,
+    "change_runner_handler_adapter_or_vectors": false,
+    "runtime_retry_in_this_package": false
+  },
+  "current_gate_effect": {
+    "analysis_complete": true,
+    "remediation_implementation_authorized": false,
+    "PowerShell_parser_import_or_execution_authorized": false,
+    "runtime_or_hardware_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_package_preparation_authorized": false,
+    "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
+    "machine_storage_or_deployment_authorized": false,
+    "remote_git_authorized": false
+  }
+}

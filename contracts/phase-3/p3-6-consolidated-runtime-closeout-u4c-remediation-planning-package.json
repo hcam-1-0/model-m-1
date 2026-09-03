@@ -1,0 +1,107 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_u4c_remediation_planning_package.v1",
+  "package_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-U4C-REMEDIATION-PLANNING-PACKAGE",
+  "acceptance_decision_id": "D-P3.6-U4C-CLOSEOUT-R1-FAILURE-ANALYSIS-DECISIONS",
+  "status": "sealed_non_effective_owner_decisions_pending",
+  "sealed_on": "2026-09-02",
+  "preparation_authority": "user_continue_after_sealed_consumed_consolidated_runtime_closeout_R1_attempt_for_planning_only",
+  "core_file_count": 6,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-authorization.json",
+      "sha256": "53EC06DD2968A5BC733D701A421B15FE8934A7BF9946654133D7DFEBDCE67542",
+      "role": "consumed_exact_owner_authorization_record"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-result.json",
+      "sha256": "4AB72B831F96E996F5F90199443AE9D747A7F55804112E7291313048506E6B41",
+      "role": "terminal_failed_closed_sanitized_result"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-evidence.json",
+      "sha256": "DCFF4345885F5E40B6B8E7427CF4BB0528493EF2401B275D2039F9998AFFF479",
+      "role": "sealed_sanitized_consumed_attempt_evidence"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r1-failure-analysis.json",
+      "sha256": "C6A9A35548DD212D47698A5C4C8845E42AF7A75B572ECDBA84E199F63A3331D2",
+      "role": "sanitized_failure_localization_hypotheses_and_output_contract_gap_analysis"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4c-remediation-decision-packet.json",
+      "sha256": "B56704B5C612D0E8653EAFCF11406E5132494CB602E1717BC4A3B29795923F57",
+      "role": "five_explicit_owner_choices_with_A_A_A_A_A_recommendation"
+    },
+    {
+      "path": "docs/phase-3/p3-6-consolidated-runtime-closeout-u4c-remediation-decision-packet.md",
+      "sha256": "BC0DA615CCB49D5ECCED04146F1A075A414C5E772378FFC52CA16412CCE88C1D",
+      "role": "human_reviewable_failure_boundaries_options_and_non_authorization"
+    }
+  ],
+  "confirmed_attempt_summary": {
+    "attempts_consumed": 1,
+    "authorization_reusable": false,
+    "terminal_reason_code": "process_output_bounds_failed",
+    "earliest_failed_action": "CA-RC-A05-OUTER-CONTROLLER-GENERATED-VALIDATION",
+    "runtime_binding_passed": true,
+    "cache_only_trust_passed_and_closed": true,
+    "fixed_parent_set_passed": true,
+    "source_preflight_and_postflight_passed": true,
+    "PowerShell_target_process_count": 1,
+    "accepted_outer_generated_cases": 0,
+    "handler_process_count": 0,
+    "U3K_storage_attempts_consumed": 0,
+    "F_drive_access_count": 0,
+    "prohibited_action_count": 0,
+    "successful_runtime_closeout_evidence_available": false
+  },
+  "owner_decisions": [
+    {
+      "decision_id": "D-P3.6-U4C-001",
+      "title": "Sanitized Process Failure Taxonomy",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U4C-002",
+      "title": "Generated Validation Child Surface",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U4C-003",
+      "title": "Child Result Framing Protocol",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U4C-004",
+      "title": "Pre-Runtime Validation Depth",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U4C-005",
+      "title": "Authorization And Reentry Topology",
+      "recommended_option": "A",
+      "selected_option": null
+    }
+  ],
+  "recommended_selection": "A/A/A/A/A",
+  "future_owner_acceptance_statement_template": "D-P3.6-U4C-CLOSEOUT-R1-FAILURE-ANALYSIS-DECISIONS: I, mayank-admin, accept the sanitized consolidated runtime-closeout R1 failure-analysis planning package digest <U4C_PLANNING_PACKAGE_DIGEST_SHA256> and select D-P3.6-U4C-001:A, D-P3.6-U4C-002:A, D-P3.6-U4C-003:A, D-P3.6-U4C-004:A, and D-P3.6-U4C-005:A. This accepts the consumed failed-closeout evidence for planning purposes and authorizes preparation only of a separate source-only U4D process-output remediation implementation authorization proposal. It does not authorize harness, controller, contract, vector, test, model, or product implementation; PowerShell parsing, import, dot-sourcing, or execution; Python machine access or fallback; runtime, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, trust retrieval, download, artifact, model, inference, camera, media, private or Government data, container, Kubernetes, profile activation, deployment, another attempt, U3K, Phase 3 closeout, commit, push, or remote Git.",
+  "current_gate_effect": {
+    "owner_decisions_pending": true,
+    "D_P3_6_U4C_CLOSEOUT_R1_FAILURE_ANALYSIS_DECISIONS_requestable": true,
+    "attempts_authorized": 0,
+    "source_harness_contract_vector_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "Phase_3_closeout_or_commit_authorized": false,
+    "push_or_remote_Git_authorized": false
+  },
+  "owner_selection_may_be_inferred_from_continue_package_preparation_static_analysis_or_recommendation": false,
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U4C_planning_package_digest_and_is_not_self_embedded"
+}

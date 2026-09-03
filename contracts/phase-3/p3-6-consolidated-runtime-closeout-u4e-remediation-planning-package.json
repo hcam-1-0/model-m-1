@@ -1,0 +1,112 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_u4e_remediation_planning_package.v1",
+  "package_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-U4E-REMEDIATION-PLANNING-PACKAGE",
+  "acceptance_decision_id": "D-P3.6-U4E-CLOSEOUT-R2-FAILURE-ANALYSIS-DECISIONS",
+  "status": "sealed_non_effective_owner_decisions_pending",
+  "sealed_on": "2026-09-03",
+  "preparation_authority": "user_continue_after_sealed_consumed_consolidated_runtime_closeout_R2_attempt_for_planning_only",
+  "core_file_count": 7,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-authorization.json",
+      "sha256": "A8F8B8D9DD6DE42948D8B5B9BD2E869A2490D6758578B0D493C6E4C592798B12",
+      "role": "consumed_exact_owner_authorization_record"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-result.json",
+      "sha256": "B49F02F504CF4D02B1D8BA59808154BE180A7EF5B251859F356D18A896E386BC",
+      "role": "terminal_failed_closed_sanitized_result"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-evidence.json",
+      "sha256": "7D76C61B6D2DB5544B3C79BB19B145F27AF371014C174CA8ED8AECDB3AC5D2C6",
+      "role": "sealed_sanitized_consumed_attempt_evidence"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-failure-analysis-research-sources.json",
+      "sha256": "6ECB6B1F5809F81F81AABDA3F3CB287BA1724322AF239530E141E943D804C523",
+      "role": "official_public_PowerShell_manifest_semantics_source_ledger"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-failure-analysis.json",
+      "sha256": "76FFCAAE39B60054BDB976DDFC7B2847E1E88E3850791054B017DE2849FBE1E5",
+      "role": "sanitized_failure_boundaries_hypotheses_and_required_remediation_properties"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4e-remediation-decision-packet.json",
+      "sha256": "219041CF44682CE57A11EAD0D95C01BC0F3E364D94C5EE1C6765C955F50D67EE",
+      "role": "five_explicit_owner_choices_with_A_A_A_A_A_recommendation"
+    },
+    {
+      "path": "docs/phase-3/p3-6-consolidated-runtime-closeout-u4e-remediation-decision-packet.md",
+      "sha256": "452E0785F72D82B5893CF694B23C7D70EFBAD74A9D265BCDC2C214C7D6064538",
+      "role": "human_reviewable_current_state_sources_options_and_non_authorization"
+    }
+  ],
+  "confirmed_attempt_summary": {
+    "attempts_consumed": 1,
+    "authorization_reusable": false,
+    "terminal_reason_code": "utility_closure_declared_target_missing",
+    "earliest_failed_action": "R2-A04-UTILITY-MANIFEST-AND-CLOSURE-BINDING",
+    "runtime_binding_passed": true,
+    "manifest_literal_parse_passed": true,
+    "manifest_parser_error_count": 0,
+    "missing_declared_target_count_observed_before_stop": 1,
+    "missing_target_identity_or_path_retained": false,
+    "PowerShell_generated_validation_process_count": 0,
+    "accepted_generated_case_count": 0,
+    "U3K_storage_attempts_consumed": 0,
+    "F_drive_access_count": 0,
+    "prohibited_action_count": 0,
+    "successful_runtime_closeout_evidence_available": false
+  },
+  "owner_decisions": [
+    {
+      "decision_id": "D-P3.6-U4E-001",
+      "title": "Manifest Relative-Path Resolution",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U4E-002",
+      "title": "Closure Requiredness And FileList",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U4E-003",
+      "title": "Pre-Runtime Resolver Evidence",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U4E-004",
+      "title": "Historical Evidence And Remediation Shape",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U4E-005",
+      "title": "Authorization And Runtime Reentry",
+      "recommended_option": "A",
+      "selected_option": null
+    }
+  ],
+  "recommended_selection": "A/A/A/A/A",
+  "future_owner_acceptance_statement_template": "D-P3.6-U4E-CLOSEOUT-R2-FAILURE-ANALYSIS-DECISIONS: I, mayank-admin, accept the sanitized consolidated runtime-closeout R2 failure-analysis planning package digest <U4E_PLANNING_PACKAGE_DIGEST_SHA256> and select D-P3.6-U4E-001:A, D-P3.6-U4E-002:A, D-P3.6-U4E-003:A, D-P3.6-U4E-004:A, and D-P3.6-U4E-005:A. This accepts the consumed failed-closeout evidence and official-source interpretation for planning purposes and authorizes preparation only of a separate source-only U4F manifest-closure remediation implementation authorization proposal. It does not authorize contract, controller, harness, vector, test, model, or product implementation; PowerShell parsing, import, dot-sourcing, or execution; Python machine access or fallback; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, trust retrieval, download, artifact, model, inference, camera, media, private or Government data, container, Kubernetes, profile activation, deployment, another attempt, U3K, Phase 3 closeout, commit, push, or remote Git.",
+  "current_gate_effect": {
+    "owner_decisions_pending": true,
+    "D_P3_6_U4E_CLOSEOUT_R2_FAILURE_ANALYSIS_DECISIONS_requestable": true,
+    "attempts_authorized": 0,
+    "source_contract_controller_harness_vector_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_machine_storage_or_network_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "Phase_3_closeout_or_commit_authorized": false,
+    "push_or_remote_Git_authorized": false
+  },
+  "owner_selection_may_be_inferred_from_continue_package_preparation_static_analysis_or_recommendation": false,
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U4E_planning_package_digest_and_is_not_self_embedded"
+}

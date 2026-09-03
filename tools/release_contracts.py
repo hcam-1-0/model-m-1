@@ -22,7 +22,7 @@ from hcam.settings import Settings
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CONTRACT_ROOT = ROOT / "contracts" / "phase-2"
+CONTRACT_ROOT = ROOT / "contracts" / "phase-3"
 OPENAPI_SNAPSHOT = CONTRACT_ROOT / "openapi.json"
 DATABASE_SNAPSHOT = CONTRACT_ROOT / "database.json"
 _MAX_DIFF_LINES = 240
@@ -149,6 +149,9 @@ def render_database_contract() -> dict[str, object]:
     return {
         "contract_format": "hcam.database.contract.v1",
         "alembic_heads": sorted(script.get_heads()),
+        "alembic_lineage": sorted(
+            revision.revision for revision in script.walk_revisions()
+        ),
         "dialect": "sqlite",
         "tables": tables,
     }

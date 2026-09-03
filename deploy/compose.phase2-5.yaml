@@ -1,0 +1,185 @@
+name: hcam-phase2-5-validation
+
+x-hcam-phase2-5-runtime: &hcam-phase2-5-runtime
+  image: hcam-core:phase2-lab
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  init: true
+  logging:
+    driver: json-file
+    options:
+      max-size: 10m
+      max-file: "3"
+
+services:
+  # Alembic head includes the accepted P3.4 geometry migration. Override only
+  # this additive lab so Phase 2's protected baseline Compose file stays intact.
+  database:
+    image: postgis/postgis:18-3.6-alpine@sha256:eb2e8b8afd9b0ecee83bc20fd01aca62a5071bada2c0f38763174b653f8eed42
+    healthcheck:
+      # The PostGIS entrypoint uses a temporary Unix-socket server while it
+      # installs extensions. TCP is opened only by the final database server.
+      test: [CMD-SHELL, "pg_isready -h 127.0.0.1 -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  mediamtx:
+    volumes:
+      - ./mediamtx.phase2-5.yml:/mediamtx.yml:ro
+    ports:
+      - 127.0.0.1:${HCAM_WHEP_PORT:-8889}:8889
+      - 127.0.0.1:${HCAM_WEBRTC_UDP_PORT:-8189}:8189/udp
+      - 127.0.0.1:${HCAM_WEBRTC_TCP_PORT:-8190}:8190/tcp
+
+  sentinel-mediamtx:
+    image: bluenviron/mediamtx:1.19.3-ffmpeg@sha256:e8eda6a884bbb2eaebf0c0454200ddc8087f428e091bae10d20e330a08558778
+    user: 65534:65534
+    volumes:
+      - ./mediamtx.phase2-5-sentinel.yml:/mediamtx.yml:ro
+    ports:
+      - 127.0.0.1:${HCAM_SENTINEL_WHEP_PORT:-8890}:8889
+      - 127.0.0.1:${HCAM_SENTINEL_WEBRTC_UDP_PORT:-8191}:8191/udp
+      - 127.0.0.1:${HCAM_SENTINEL_WEBRTC_TCP_PORT:-8192}:8192/tcp
+    read_only: true
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      test: [CMD, wget, -q, -O, -, http://127.0.0.1:9997/v3/config/global/get]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+    restart: unless-stopped
+
+  publisher:
+    command:
+      - python
+      - -m
+      - hcam.labs.sentinel.standby
+      - --heartbeat-file
+      - /tmp/publisher-heartbeat
+    environment:
+      HCAM_ALLOW_SYNTHETIC_LAB: "true"
+      HCAM_ALLOW_SENTINEL_SANDBOX: "true"
+    tmpfs: ["/tmp:size=256m,mode=1777"]
+    healthcheck:
+      start_period: 240s
+
+  rtsp-fault-proxy:
+    profiles: [generated-fallback]
+    <<: *hcam-phase2-5-runtime
+    command:
+      - python
+      - -m
+      - hcam.labs.sentinel.fault_proxy
+      - --bind
+      - 0.0.0.0
+      - --port
+      - "8555"
+      - --request-path
+      - /var/lib/hcam/phase2-5/fault-request.json
+      - --status-path
+      - /var/lib/hcam/phase2-5/proxy-fault-status.json
+      - --allow-non-loopback
+    environment:
+      HCAM_ALLOW_SYNTHETIC_LAB: "true"
+    volumes:
+      - ${HCAM_PHASE2_5_STATE_DIR:?set HCAM_PHASE2_5_STATE_DIR}:/var/lib/hcam/phase2-5
+    depends_on:
+      mediamtx:
+        condition: service_healthy
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import socket; socket.create_connection(('127.0.0.1', 8555), 2).close()"
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  catalog-simulator:
+    profiles: [generated-fallback]
+    <<: *hcam-phase2-5-runtime
+    command:
+      - python
+      - -m
+      - hcam.labs.sentinel.simulator
+      - --bind
+      - 0.0.0.0
+      - --port
+      - "8090"
+      - --allow-non-loopback
+    environment:
+      HCAM_ALLOW_SYNTHETIC_LAB: "true"
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "from urllib.request import urlopen; urlopen('http://127.0.0.1:8090/health', timeout=2).read()"
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  lab-dashboard:
+    <<: *hcam-phase2-5-runtime
+    command:
+      - python
+      - -m
+      - hcam.labs.sentinel.dashboard
+      - --bind
+      - 0.0.0.0
+      - --port
+      - "8091"
+      - --allow-non-loopback
+    environment:
+      HCAM_ALLOW_SYNTHETIC_LAB: "true"
+      HCAM_ALLOW_SENTINEL_SANDBOX: "true"
+      HCAM_PHASE2_5_CATALOG_MODE: sentinel-online
+      HCAM_PHASE2_5_CATALOG_URL: https://live.corp8.cloud/api/ingest
+      HCAM_PHASE2_5_ADAPTER_STATE_PATH: /var/lib/hcam/phase2-5/active-lab-adapter.json
+      HCAM_PHASE2_5_PUBLISHER_STATE_PATH: /var/lib/hcam/phase2-5/publisher-state.json
+      HCAM_PHASE2_5_REQUIRE_PUBLISHER_STATE: "false"
+      HCAM_PHASE2_5_WHEP_SESSION_TTL_SECONDS: "60"
+      HCAM_PHASE2_5_SENTINEL_MEDIAMTX_API_URL: http://sentinel-mediamtx:9997
+      HCAM_PHASE2_5_SENTINEL_PUBLISH_URL: rtsp://sentinel-mediamtx:8554/hcam-sentinel
+      HCAM_PHASE2_5_SENTINEL_PUBLIC_WHEP_URL: http://127.0.0.1:${HCAM_SENTINEL_WHEP_PORT:-8890}/hcam-sentinel
+      HCAM_PHASE2_5_CORE_API_URL: http://api:8000
+      HCAM_PHASE2_5_MEDIA_EVIDENCE: /var/lib/hcam/phase2-5-media/fixture-evidence.json
+      HCAM_PHASE2_5_PUBLIC_WHEP_URL: http://127.0.0.1:${HCAM_WHEP_PORT:-8889}
+      HCAM_PHASE2_5_STATE_PATH: /var/lib/hcam/phase2-5/sentinel-online-catalog.db
+    volumes:
+      - ${HCAM_PHASE2_5_STATE_DIR:?set HCAM_PHASE2_5_STATE_DIR}:/var/lib/hcam/phase2-5
+      - ${HCAM_PHASE2_5_MEDIA_DIR:?set HCAM_PHASE2_5_MEDIA_DIR}:/var/lib/hcam/phase2-5-media:ro
+    depends_on:
+      api:
+        condition: service_healthy
+      lab-seed:
+        condition: service_completed_successfully
+      sentinel-mediamtx:
+        condition: service_healthy
+    ports:
+      - 127.0.0.1:${HCAM_PHASE2_5_DASHBOARD_PORT:-8091}:8091
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "from urllib.request import urlopen; urlopen('http://127.0.0.1:8091/health', timeout=2).read()"
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped

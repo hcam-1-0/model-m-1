@@ -1,0 +1,93 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_build_package.v1",
+  "package_id": "P36-CONSOLIDATED-BUILD-PACKAGE",
+  "status": "sealed_source_build_bundle_runtime_closeout_authorization_pending",
+  "sealed_on": "2026-09-02",
+  "authorization_decision_id": "D-P3.6-CONSOLIDATED-BUILD-AUTH",
+  "authorization_package_sha256": "DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C",
+  "selected_options": "A/A/A/A/A/A",
+  "compatibility_amendment_decision_id": "D-P3.6-CONSOLIDATED-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT",
+  "compatibility_amendment_statement_sha256": "3C25EF9D12E83F7767ED94B2EBAAE3FA43A00AFC328FA4CE8970B8AA5A2292B3",
+  "core_file_count": 12,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-build-authorization-planning-package.json",
+      "sha256": "DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C",
+      "role": "exact_build_authority"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-contract.json",
+      "sha256": "B0D03E356B3939817CA21AA2DFC85B4897D3E89405DE27FFE492D1C549B767C1",
+      "role": "outer_controller_contract"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_binding_outer_attempt_controller_r0.ps1",
+      "sha256": "0E539126536CEF9F490EE164C5ECEC2FED36649C163FAAA8F32193B2DB744B99",
+      "role": "authoritative_PowerShell_source_not_executed"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_binding_outer_attempt_controller_r0_reference.py",
+      "sha256": "5A51088E503EEF3F9EFC7A896E033217C69A5908A216148A658CB551ADB33964",
+      "role": "machine_disabled_reference"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-vectors.json",
+      "sha256": "EE25BD99942F0CB68E157439ADEA230D3E549FBAC1743AC783775DDA58AA7B13",
+      "role": "416_generated_only_vectors"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-implementation-evidence.json",
+      "sha256": "81D10F82B461DE224F140D7AA840449F8B0003676635E4DDBFCD93F876AEE311",
+      "role": "U4B_implementation_evidence"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-implementation-package.json",
+      "sha256": "3DCF9C4CB0CD184BEC9E144C99CC7C25E9F3425268F69C29161CAF6F34FA8932",
+      "role": "U4B_implementation_package"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-evidence-review.md",
+      "sha256": "C90114BEAF9A27236210626A5C6AA4F9A63E60B955A0B86CF521116819003861",
+      "role": "U4B_human_review"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-build-result.json",
+      "sha256": "265FB9DBC3C8241C60CFD553C76FC6668022DA74897772D480A88CA432213948",
+      "role": "consolidated_build_result"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-build-evidence.json",
+      "sha256": "64A30AE68274277C2C0639C8934508BD1C3F5109798706A9BBE4F12438274ECA",
+      "role": "consolidated_build_evidence"
+    },
+    {
+      "path": "tests/test_phase36_consolidated_build_authorization_planning.py",
+      "sha256": "4DB83CA1F1EB6BB7F66C43564F2D30C23F1075CFC600D980CB34E9E24913989A",
+      "role": "authorized_transition_aware_consolidated_test"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_u4b_proposal.py",
+      "sha256": "E3F81C131160ED179211656453B3B920C6F383683D7926B1CCEEE47990D810D9",
+      "role": "authorized_transition_aware_U4B_test"
+    }
+  ],
+  "build_invariants": {
+    "exact_additive_path_count": 20,
+    "bounded_sync_path_count": 13,
+    "source_revision_cycles_consumed": 3,
+    "maximum_source_revision_cycles": 8,
+    "generated_vectors": 416,
+    "Python_reference_branch_coverage_percent": 100.0,
+    "immutable_hash_mismatch_count": 0,
+    "runtime_action_count": 0,
+    "machine_action_count": 0,
+    "commit_push_or_remote_Git_action_count": 0
+  },
+  "next_gate": {
+    "decision_id": "D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH",
+    "separate_exact_digest_bound_authorization_required": true,
+    "authorization_currently_exists": false,
+    "runtime_generated_validation_U3K_closeout_or_commit_authorized": false
+  },
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_consolidated_build_package_digest_and_is_not_self_embedded"
+}

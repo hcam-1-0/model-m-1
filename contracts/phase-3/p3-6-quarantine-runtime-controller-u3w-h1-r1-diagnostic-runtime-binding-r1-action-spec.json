@@ -1,0 +1,158 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3w_h1_r1_diagnostic_runtime_binding_r1_action_spec.v1",
+  "spec_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-ACTION-SPEC",
+  "future_authorization_decision_id": "D-P3.6-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-AUTH",
+  "status": "non_effective_planning_only_owner_authorization_pending",
+  "prepared_on": "2026-09-02",
+  "logical_node_id": "LAB-LAPTOP-01",
+  "authorization_and_attempt_bounds": {
+    "maximum_attempts": 1,
+    "authorization_window_seconds": 86400,
+    "failed_or_incomplete_attempt_consumes_authorization": true,
+    "automatic_retry": false,
+    "parallel_attempts": false,
+    "maximum_processes": 1,
+    "process_timeout_seconds": 30,
+    "maximum_stdout_bytes": 4096,
+    "maximum_stderr_bytes": 0,
+    "maximum_result_record_bytes": 16384,
+    "maximum_evidence_record_bytes": 65536,
+    "raw_stdout_or_stderr_persisted": false
+  },
+  "exact_runtime_binding": {
+    "runtime_path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "runtime_family": "PowerShell_7_on_Windows",
+    "required_runtime_major_version": 7,
+    "maximum_runtime_file_bytes": 268435456,
+    "fixed_parent_component_count": 3,
+    "path_must_be_local_regular_nonreparse": true,
+    "parents_must_be_canonical_existing_directories_nonreparse": true,
+    "hash_algorithm": "SHA-256",
+    "trust_policy": "cache_only_no_UI_whole_chain_excluding_root_without_retrieval",
+    "runtime_identity_reverified_after_process": true,
+    "alternate_runtime_parent_or_discovery_allowed": false
+  },
+  "exact_source_bindings": [
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_u3v_h1_r1_diagnostic.ps1",
+      "sha256": "CD868E3F06CA12AC424B2C4C221F6425FCD0DA289C527DED462121333513B1C9",
+      "role": "exact_future_single_process_entrypoint"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller.ps1",
+      "sha256": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB",
+      "role": "exact_harness_dot_sourced_policy_controller"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-contract.json",
+      "sha256": "F0E41634760E3697F74EA2DEA44E7B2004392557E3167504BD69F2D78A4DC3CB",
+      "role": "outer_result_validation_contract_not_passed_to_process"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_u3v_h1_r1_diagnostic_reference.py",
+      "sha256": "9185F6DD724BC3703B402C696AC89FBE2D455BCEF2BC0C1D5C87BB4F719FFFCC",
+      "role": "accepted_static_oracle_not_executed_during_attempt"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-vectors.json",
+      "sha256": "B7D39E5A7160436D43FA4C0FE2D530CEC7DD89352949CD6EC619CD41D8639F70",
+      "role": "accepted_generated_static_manifest_not_loaded_by_runtime_process"
+    }
+  ],
+  "exact_process_contract": {
+    "arguments": [
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-File",
+      "<AUTHORIZATION_BOUND_CHECKOUT_ROOT>\\tools\\phase36_quarantine_runtime_controller_u3v_h1_r1_diagnostic.ps1"
+    ],
+    "UseShellExecute": false,
+    "CreateNoWindow": true,
+    "RedirectStandardInput": true,
+    "RedirectStandardOutput": true,
+    "RedirectStandardError": true,
+    "standard_input_closed_without_writes": true,
+    "working_directory": "authorization_bound_checkout_root",
+    "environment_inventory_or_retention": false,
+    "profile_or_module_discovery": false,
+    "expected_exit_codes": [
+      0,
+      70,
+      71,
+      72
+    ]
+  },
+  "allowlisted_terminal_reason_codes": [
+    "source_binding_failed",
+    "controller_top_level_shape_invalid",
+    "controller_contract_identity_invalid",
+    "controller_terminal_state_invalid",
+    "controller_reason_family_invalid",
+    "controller_stage_projection_invalid",
+    "controller_action_counts_invalid",
+    "controller_retention_projection_invalid",
+    "controller_gate_effect_invalid",
+    "controller_projection_valid",
+    "diagnostic_internal_contract_invalid"
+  ],
+  "attempt_action_order": [
+    "validate_exact_authorization_package_statement_window_and_unused_attempt",
+    "write_bounded_sanitized_nonreplacement_authorization_record",
+    "bind_exact_runtime_path_parents_metadata_hash_and_cache_only_trust",
+    "bind_exact_checkout_and_five_source_hashes",
+    "invoke_exact_runtime_once_with_exact_diagnostic_harness",
+    "enforce_timeout_output_exit_and_sanitized_result_contract",
+    "discard_raw_process_material_and_reverify_runtime_parent_and_source_identity",
+    "write_bounded_sanitized_result_and_evidence_records"
+  ],
+  "success_policy": {
+    "required_exit_code": 0,
+    "required_reason_code": "controller_projection_valid",
+    "required_controller_reason_family": "policy_valid",
+    "required_checked_group_count": 8,
+    "required_raw_controller_material_retained_bytes": 0,
+    "required_machine_action_authorized": false,
+    "required_python_machine_fallback": false,
+    "required_retry_authorized": false,
+    "required_U3K_authorized": false,
+    "required_deployment_authorized": false,
+    "runtime_parent_and_source_identity_must_remain_stable": true
+  },
+  "failure_policy": {
+    "one_allowlisted_sanitized_reason_only": true,
+    "diagnostic_failure_may_be_sealed_for_planning": true,
+    "failure_is_not_success_or_U3K_evidence": true,
+    "raw_candidate_value_type_key_projection_exception_stdout_stderr_environment_identity_or_security_material_retained": false,
+    "authorization_reusable_after_failure": false,
+    "automatic_retry": false
+  },
+  "exact_future_outputs": [
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-authorization.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-result.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-evidence.json"
+  ],
+  "explicitly_out_of_scope": [
+    "any_action_before_exact_digest_bound_owner_authorization",
+    "more_than_one_process_attempt_automatic_retry_or_parallel_execution",
+    "alternate_runtime_parent_checkout_source_or_hardware_discovery",
+    "Utility_manifest_module_closure_Aggregate_mode_or_unbounded_PowerShell_parsing",
+    "PATH_PSModulePath_registry_WMI_package_or_directory_inventory",
+    "Python_reference_execution_machine_access_subprocess_native_API_or_fallback",
+    "machine_storage_F_B_ACL_identity_probe_cleanup_Defender_or_scanner_action",
+    "network_proxy_trust_retrieval_download_install_update_or_acquisition",
+    "artifact_model_dataset_camera_media_private_or_Government_data_access",
+    "model_loading_inference_benchmark_or_hardware_testing",
+    "containers_Kubernetes_profile_activation_deployment_U3K_or_remote_Git"
+  ],
+  "current_effect": {
+    "action_spec_prepared": true,
+    "owner_U3W_authorization_pending": true,
+    "attempts_authorized": 0,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_parent_manifest_hardware_or_machine_observation_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "machine_storage_scanner_model_media_container_or_deployment_action_authorized": false,
+    "U3K_or_remote_Git_authorized": false
+  }
+}

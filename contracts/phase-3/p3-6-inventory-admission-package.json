@@ -1,0 +1,60 @@
+{
+  "contract_format": "hcam.phase3.p3_6.inventory_admission_package.v1",
+  "package_id": "P3.6-INVENTORY-ADMISSION-PACKAGE-R0",
+  "status": "sealed_non_executable_owner_selection_pending",
+  "sealed_on": "2026-08-30",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "owner_selection_decisions": [
+    "D-P3.6-U3A-001",
+    "D-P3.6-U3A-002",
+    "D-P3.6-U3A-003",
+    "D-P3.6-U3A-004"
+  ],
+  "recommended_selection": "A/A/A/A",
+  "selected_options": null,
+  "selection_effect": "policy_preferences_only_without_inventory_collection_projection_activation_or_execution_authority",
+  "core_file_count": 4,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-inventory-admission-research-sources.json",
+      "sha256": "a5d5135523ab0e913b5d6ff5c6aab03d18b97660440e19ad9e49e1a34280514f",
+      "role": "exact_local_contract_and_official_primary_source_ledger"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-inventory-admission-gap.json",
+      "sha256": "4b106384e934d5a9f696809566ea72235d35353922a368445c7851e288aa5fb4",
+      "role": "historical_R0_to_shared_v1alpha1_gap_analysis"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-inventory-admission-decision-packet.json",
+      "sha256": "cfde385bc6ebe298363200e172a80d5b4ff29fcbb8bf7e000f65e3103caa495d",
+      "role": "four_independent_owner_policy_choices"
+    },
+    {
+      "path": "docs/phase-3/p3-6-inventory-admission-gap.md",
+      "sha256": "96883afe11d375721755a52b0b9510d02905a5274a2e01a549bba0161e7372e2",
+      "role": "owner_review_document"
+    }
+  ],
+  "manifest_hash_rule": "the_sha256_of_this_file_is_the_package_digest_and_is_not_self_embedded",
+  "gate_effect": {
+    "p36_g2": "blocked_gap_is_documented_but_no_fresh_conforming_inventory_or_accepted_policy_exists",
+    "portable_profile_resolver_eligible": false,
+    "inventory_recollection_authorized": false
+  },
+  "next_step_after_owner_selection": {
+    "decision_id": "D-P3.6-INVENTORY-R1-AUTH",
+    "state": "requires_new_exact_digest_bound_authorization_package",
+    "may_be_inferred_from_selection": false
+  },
+  "implementation_authorized": false,
+  "inventory_projection_authorized": false,
+  "inventory_recollection_authorized": false,
+  "profile_activation_authorized": false,
+  "runtime_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "container_or_kubernetes_action_authorized": false,
+  "camera_media_or_data_access_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

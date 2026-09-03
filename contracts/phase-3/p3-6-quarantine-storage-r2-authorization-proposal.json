@@ -1,0 +1,129 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_storage_r2_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-STORAGE-R2-AUTHORIZATION-PROPOSAL",
+  "planning_acceptance_decision_id": "D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE",
+  "future_execution_authorization_decision_id": "D-P3.6-U3K-STORAGE-R2-AUTH",
+  "status": "owner_planning_review_pending_non_effective_execution_package_blocked",
+  "prepared_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "accepted_U3H_source": {
+    "path": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-owner-decisions.json",
+    "sha256": "802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3",
+    "package_digest_sha256": "19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B",
+    "selection": "A/A/A/A/A/A"
+  },
+  "runner_proposal_source": {
+    "package_path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-authorization-package.json",
+    "package_digest_sha256": "712B2A424E156659E85066E1D9393CDD6E41263FAC1138588531E49FE1739AE3",
+    "decision_id": "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH",
+    "owner_implementation_authorization_pending": true,
+    "implementation_present": false,
+    "execution_authorized": false
+  },
+  "exact_input": {
+    "path": "contracts/phase-3/p3-6-quarantine-storage-r2-action-spec.json",
+    "sha256": "1825C65DFEEEF02EA12AF3D506385657870DCB631D2CDB157DB0F9C919C2DE2A",
+    "role": "exact_storage_only_actions_corrected_normalized_DACL_policy_bounds_sanitization_failure_and_output_specification"
+  },
+  "requested_U3J_owner_effect": {
+    "accept_storage_R2_action_design_as_planning_policy": true,
+    "authorize_future_final_execution_package_preparation_after_runner_acceptance_and_implementation": true,
+    "authorize_runner_implementation": false,
+    "authorize_storage_attempt": false,
+    "authorize_F_or_ACL_access": false,
+    "authorize_Defender_or_scanner_action": false,
+    "authorize_artifact_or_runtime_work": false,
+    "authorize_remote_git": false
+  },
+  "storage_R2_design": {
+    "exact_candidate_root": "F:\\HCAM-Quarantine",
+    "required_initial_state": "absent",
+    "storage_only": true,
+    "Defender_or_scanner_steps": 0,
+    "maximum_attempts_in_later_final_package": 1,
+    "authorization_window_seconds_in_later_final_package": 86400,
+    "storage_attestation_validity_seconds": 3600,
+    "maximum_probe_bytes": 4096,
+    "network_access": false,
+    "automatic_retry": false,
+    "failure_consumes_future_authorization": true,
+    "current_process_rights_policy": "exact_Modify_plus_automatic_Synchronize_only",
+    "DACL_classification": "independent_exact_three_normalized_tuple_and_unauthorized_principal_checks",
+    "probe_policy": "deterministic_generated_nonsecret_nonmedia_zero_retention"
+  },
+  "prerequisites_before_final_U3K_execution_package_may_be_prepared": [
+    "exact_U3I_runner_proposal_package_owner_implementation_authorization",
+    "reviewable_runner_and_generated_contract_harness_implemented_under_that_authority",
+    "all_twenty_generated_machine_independent_contract_vectors_pass",
+    "exact_implemented_runner_source_SHA_256_sealed",
+    "exact_local_runtime_canonical_path_version_size_SHA_256_and_cache_only_trust_binding_sealed_under_separate_authority",
+    "runner_implementation_evidence_package_owner_accepted",
+    "U3J_storage_R2_planning_proposal_exactly_accepted",
+    "fresh_final_U3K_package_binds_every_exact_input_output_runtime_runner_limit_and_authorization_window"
+  ],
+  "future_exact_U3K_actions_after_all_prerequisites_and_separate_authorization": [
+    "verify_final_package_core_hashes_runner_runtime_bindings_owner_statement_one_attempt_state_window_target_and_static_action_sequence_before_machine_access",
+    "write_the_sanitized_authorization_record_before_F_access",
+    "query_only_exact_F_drive_readiness_fixed_type_filesystem_total_and_available_capacity",
+    "verify_only_exact_F_HCAM_Quarantine_canonical_nonreparse_absent_isolated_state",
+    "resolve_current_process_SID_in_memory_only_and_construct_the_exact_protected_three_rule_DACL",
+    "create_only_the_absent_exact_root_with_security_applied_at_creation",
+    "verify_exact_three_normalized_allow_tuples_and_independent_unauthorized_principal_absence_using_sanitized_booleans",
+    "perform_and_clean_only_one_exact_4096_byte_generated_atomic_probe",
+    "write_only_the_exact_sanitized_result_and_evidence_records"
+  ],
+  "future_exact_outputs": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-storage-r2-authorization.json",
+      "role": "future_owner_execution_authorization_record_written_before_machine_access",
+      "contains_observed_machine_facts": false
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-storage-r2-result.json",
+      "role": "future_sanitized_storage_readiness_result",
+      "contains_observed_machine_facts": true
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-storage-r2-evidence.json",
+      "role": "future_bounded_attempt_hash_timeout_cleanup_DACL_and_zero_retention_evidence",
+      "contains_observed_machine_facts": false
+    }
+  ],
+  "U3J_owner_acceptance_statement_template": "D-P3.6-U3J-STORAGE-R2-PROPOSAL-ACCEPTANCE: I, mayank-admin, accept the non-effective storage-only R2 action and authorization proposal against package digest <STORAGE_R2_PROPOSAL_PACKAGE_DIGEST_SHA256>. I accept exact F:\\HCAM-Quarantine absent-root targeting, security-at-create, current-process Modify plus automatic Synchronize normalization, independent exact three-tuple DACL checks, one generated 4096-byte zero-retention atomic probe, bounded sanitized outputs, no Defender or scanner work, and no automatic retry. This acceptance authorizes preparation only of a later final execution package after the separately authorized runner is implemented, tested, sealed, and accepted. It does not authorize runner implementation or execution, F: or ACL access, a storage attempt, hardware or runtime queries, Defender/scanners, downloads, models, inference, media/data, containers/Kubernetes, deployment, or remote Git.",
+  "future_U3K_execution_statement_template_not_currently_usable": "D-P3.6-U3K-STORAGE-R2-AUTH: I, mayank-admin, authorize one storage-only attempt against final package digest <FINAL_U3K_PACKAGE_DIGEST_SHA256>, implemented runner digest <RUNNER_SOURCE_SHA256>, and runtime binding digest <RUNTIME_BINDING_SHA256> within 24 hours on LAB-LAPTOP-01 for exact absent root F:\\HCAM-Quarantine. The attempt is limited to the exact sealed U3K-A01 through U3K-A10 actions and outputs. Failure consumes the authorization. This does not authorize any retry, existing-root change, other path or volume, B:, F:\\h cam, Defender/scanners, downloads, artifacts, models, inference, media/data, containers/Kubernetes, deployment, or remote Git.",
+  "continuing_non_authorization": [
+    "runner_implementation_or_execution",
+    "final_storage_execution_package_preparation_before_all_declared_prerequisites",
+    "another_storage_attempt_or_retry",
+    "F_volume_path_directory_ACL_probe_or_cleanup_access",
+    "B_drive_F_h_cam_or_other_volume_access_or_modification",
+    "existing_candidate_root_ACL_replacement_ownership_or_remediation",
+    "Defender_ModelScan_or_other_scanner_query_hash_trust_execution_scan_remediation_update_configuration_install_or_import",
+    "artifact_dependency_model_dataset_driver_or_container_acquisition",
+    "runtime_model_inference_validation_benchmark_or_hardware_test",
+    "camera_stream_media_private_or_Government_data_access",
+    "profile_resolution_admission_activation_or_scheduler_execution",
+    "container_Docker_Kubernetes_product_deployment_or_remote_Git_action"
+  ],
+  "current_effect": {
+    "effective": false,
+    "owner_U3J_planning_acceptance_exists": false,
+    "owner_U3I_runner_implementation_authorization_exists": false,
+    "runner_implementation_present": false,
+    "final_U3K_execution_package_exists": false,
+    "another_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "storage_probe_authorized": false,
+    "Defender_or_scanner_action_authorized": false,
+    "artifact_or_dependency_acquisition_authorized": false,
+    "runtime_or_model_execution_authorized": false,
+    "implementation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  }
+}
+

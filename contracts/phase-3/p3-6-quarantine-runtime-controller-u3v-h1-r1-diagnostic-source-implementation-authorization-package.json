@@ -1,0 +1,130 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3v_h1_r1_diagnostic_source_implementation_authorization_package.v1",
+  "package_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3V-H1-R1-DIAGNOSTIC-SOURCE-IMPLEMENTATION-AUTHORIZATION-PACKAGE",
+  "decision_id": "D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH",
+  "status": "sealed_non_effective_owner_source_implementation_authorization_pending",
+  "sealed_on": "2026-09-02",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS",
+    "accepted_planning_package_sha256": "C58B9291E06396374DE92308F2CC52CDB51824BFFDFD1958E4D655C75A894CCD",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3u-remediation-planning-acceptance.json",
+    "acceptance_record_sha256": "64C1CDAC72E15988A86434AD85981C59A94AC885DE8D1927A025D13DA2165A03",
+    "selected_options": "A/A/A/A",
+    "authority_effect": "prepare_this_non_effective_U3V_source_implementation_authorization_package_only"
+  },
+  "core_file_count": 12,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3u-remediation-planning-package.json",
+      "sha256": "C58B9291E06396374DE92308F2CC52CDB51824BFFDFD1958E4D655C75A894CCD",
+      "role": "accepted_U3U_failure_analysis_and_remediation_planning_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3u-remediation-planning-acceptance.json",
+      "sha256": "64C1CDAC72E15988A86434AD85981C59A94AC885DE8D1927A025D13DA2165A03",
+      "role": "exact_owner_U3U_AAAA_planning_acceptance_and_proposal_preparation_authority"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-failure-analysis-r0.json",
+      "sha256": "51F123AA0E4D8F34255D1EAECC340ABAEAC430CBA00A56AD9ECCA66545ABDC6A",
+      "role": "sanitized_consumed_U3T_R1_failure_analysis"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3u-remediation-decision-packet.json",
+      "sha256": "F3585723D81EC71A7D6F231B6A0EBF477D60611CB8DDC71E5ACAF6A463279F1C",
+      "role": "accepted_U3U_A_to_D_decision_definitions"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3t-runtime-binding-r1-evidence.json",
+      "sha256": "2706F18CA283428A17FDEB0AEB02CC350FE88336D8FBF9AC00CD040F3F0A51E1",
+      "role": "sealed_consumed_U3T_R1_runtime_source_and_failure_evidence"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_u3t_preflight.ps1",
+      "sha256": "69CBF4637A22BB7859ED07D19804C8576D76FB1270FF58D0D182EED2592FCE7B",
+      "role": "immutable_historical_H1_harness"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller.ps1",
+      "sha256": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB",
+      "role": "immutable_accepted_authoritative_PowerShell_policy_controller"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_reference.py",
+      "sha256": "C1470C65C6D5DA3EF93161F519BBC01507BBB805C6D433F58C65FDCAFE3FFC4F",
+      "role": "immutable_accepted_machine_disabled_Python_policy_oracle"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-contract.json",
+      "sha256": "3F2A0975F92892A96FBC67B951B226D5AB958AE067F55B697ABA43669B8FB00E",
+      "role": "immutable_accepted_controller_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-vectors.json",
+      "sha256": "31335510565E4C74908C674B88951E81B7A7983331C6DE2E91964C1F8B48C20B",
+      "role": "immutable_accepted_192_vector_controller_manifest"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-source-implementation-authorization-proposal.json",
+      "sha256": "598D1EEF6EA141D20BF84AE14DC12AFE2C7131B61C7DFA0448147F04CCED85EE",
+      "role": "exact_non_effective_owner_U3V_source_implementation_request"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-implementation-authorization-proposal.md",
+      "sha256": "AFC4835D051011E435DD1B8CCD8A13B2610459375E6D6ED64ABCAD2DD470CBBC",
+      "role": "human_review_of_scope_taxonomy_evidence_and_closed_gates"
+    }
+  ],
+  "future_source_scope_if_exactly_authorized": {
+    "new_contract_files": 1,
+    "new_PowerShell_harness_sources": 1,
+    "new_machine_disabled_Python_reference_sources": 1,
+    "minimum_generated_vectors": 128,
+    "new_generated_static_test_modules": 1,
+    "nonobservational_evidence_package_and_review": true,
+    "compatibility_transition_test_count": 1,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_manifest_hardware_or_machine_observation": false,
+    "one_local_checkpoint_commit": true,
+    "remote_Git": false
+  },
+  "exact_future_implementation_paths": [
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-contract.json",
+    "tools/phase36_quarantine_runtime_controller_u3v_h1_r1_diagnostic.ps1",
+    "tools/phase36_quarantine_runtime_controller_u3v_h1_r1_diagnostic_reference.py",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-vectors.json",
+    "tests/test_phase36_quarantine_runtime_controller_u3v_h1_r1_diagnostic_static.py",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-implementation-evidence.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-implementation-package.json",
+    "docs/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-evidence-review.md"
+  ],
+  "exact_compatibility_transition_path": "tests/test_phase36_quarantine_runtime_controller_u3u_remediation_planning.py",
+  "future_owner_authorization_statement_template": "D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only implementation of the additive U3V H1 R1 diagnostic-harness package against digest <U3V_H1_R1_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact eight future implementation paths, the one exact compatibility-transition test, canonical ledgers, documentation, line-ending records, and one local checkpoint commit with no push. It must preserve byte-exact the accepted historical H1 harness, controller contract, vectors, PowerShell controller, Python policy oracle, consumed U3T R1 records, failure analysis, U3U decision packet, planning package, and acceptance. It must define only the eleven allowlisted sanitized diagnostic outcomes, retain no candidate values, type names, keys, raw projection, exception, stdout, stderr, environment, identity, or security material, include at least 128 generated-only vectors, and achieve at least 95 percent branch coverage for the new machine-disabled Python reference classifier. Python may execute generated fixture, classifier, canonical projection, source-text, and static tests only, with no filesystem runtime, registry, environment, network, native API, subprocess, machine-controller, or fallback access. PowerShell must not be parsed, imported, dot-sourced, or executed. This does not authorize runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, Defender, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, another attempt, U3K, or remote Git. Seal the source and generated/static evidence for separate exact owner acceptance before preparing any runtime diagnostic package.",
+  "sequence_after_exact_owner_authorization": [
+    "record_exact_digest_bound_U3V_source_implementation_authorization",
+    "implement_only_the_exact_eight_paths_transition_test_authorized_ledgers_docs_and_LF_records",
+    "run_only_generated_Python_reference_classifier_canonical_projection_source_text_and_static_validation",
+    "seal_exact_source_vector_test_and_nonobservational_evidence_hashes",
+    "create_at_most_one_local_checkpoint_commit_without_push",
+    "obtain_separate_exact_owner_U3V_source_implementation_acceptance",
+    "prepare_no_runtime_diagnostic_retry_or_U3K_package_before_source_acceptance"
+  ],
+  "current_gate_effect": {
+    "package_prepared": true,
+    "owner_U3V_source_implementation_authorization_pending": true,
+    "D_P3_6_U3V_H1_R1_DIAGNOSTIC_IMPLEMENTATION_AUTH_requestable": true,
+    "source_contract_harness_reference_vector_test_or_evidence_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "another_attempt_or_U3K_authorized": false,
+    "deployment_or_remote_Git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U3V_H1_R1_source_implementation_authorization_package_digest_and_is_not_self_embedded",
+  "authorization_may_be_inferred_from_U3U_acceptance_continue_silence_package_preparation_or_static_validation": false
+}

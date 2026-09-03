@@ -1,15 +1,16 @@
-"""Add PostGIS extension and geometry column for GIS queries.
+"""Add indexed WGS84 camera geometry synchronized from coordinates.
 
 Revision ID: 0008_postgis_gis
 Revises: 0007_onvif_operations
 Create Date: 2026-08-23
 """
 
+from __future__ import annotations
+
 from collections.abc import Sequence
 
-from alembic import op
 import sqlalchemy as sa
-from geoalchemy2 import Geography, Geometry
+from alembic import op
 
 
 revision: str = "0008_postgis_gis"
@@ -19,20 +20,40 @@ depends_on: str | Sequence[str] | None = None
 
 
 def upgrade() -> None:
-    # Enable PostGIS extension
+    bind = op.get_bind()
+    if bind.dialect.name != "postgresql":
+        op.add_column("cameras", sa.Column("geometry", sa.LargeBinary(), nullable=True))
+        return
+
     op.execute("CREATE EXTENSION IF NOT EXISTS postgis")
-
-    # Add geometry column (POINT, SRID 4326) to cameras table
-    op.add_column(
-        "cameras",
-        sa.Column(
-            "geometry",
-            Geometry(geometry_type="POINT", srid=4326, from_text="ST_GeomFromEWKT", name="geometry"),
-            nullable=True,
-        ),
+    op.execute("ALTER TABLE cameras ADD COLUMN geometry geometry(Point,4326)")
+    op.execute(
+        """
+        UPDATE cameras
+        SET geometry = ST_SetSRID(ST_MakePoint(longitude, latitude), 4326)
+        WHERE latitude IS NOT NULL AND longitude IS NOT NULL
+        """
     )
-
-    # Create GIST spatial index for fast spatial queries
+    op.execute(
+        """
+        CREATE FUNCTION hcam_sync_camera_geometry() RETURNS trigger AS $$
+        BEGIN
+            NEW.geometry := CASE
+                WHEN NEW.latitude IS NULL OR NEW.longitude IS NULL THEN NULL
+                ELSE ST_SetSRID(ST_MakePoint(NEW.longitude, NEW.latitude), 4326)
+            END;
+            RETURN NEW;
+        END;
+        $$ LANGUAGE plpgsql
+        """
+    )
+    op.execute(
+        """
+        CREATE TRIGGER trg_hcam_sync_camera_geometry
+        BEFORE INSERT OR UPDATE OF latitude, longitude ON cameras
+        FOR EACH ROW EXECUTE FUNCTION hcam_sync_camera_geometry()
+        """
+    )
     op.create_index(
         "ix_cameras_geometry",
         "cameras",
@@ -40,19 +61,15 @@ def upgrade() -> None:
         postgresql_using="gist",
     )
 
-    # Backfill geometry from existing latitude/longitude columns
-    op.execute("""
-        UPDATE cameras
-        SET geometry = ST_SetSRID(ST_MakePoint(longitude, latitude), 4326)
-        WHERE latitude IS NOT NULL AND longitude IS NOT NULL
-    """)
-
 
 def downgrade() -> None:
-    # Drop spatial index
-    op.drop_index("ix_cameras_geometry", table_name="cameras", postgresql_using="gist")
-
-    # Drop geometry column
+    bind = op.get_bind()
+    if bind.dialect.name == "postgresql":
+        op.drop_index(
+            "ix_cameras_geometry",
+            table_name="cameras",
+            postgresql_using="gist",
+        )
+        op.execute("DROP TRIGGER trg_hcam_sync_camera_geometry ON cameras")
+        op.execute("DROP FUNCTION hcam_sync_camera_geometry()")
     op.drop_column("cameras", "geometry")
-
-    # Note: We don't drop PostGIS extension as other tables might use it

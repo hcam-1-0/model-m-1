@@ -1,0 +1,136 @@
+{
+  "artifacts": [
+    {
+      "allowed_redirect_hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com"
+      ],
+      "artifact_id": "DET-R0-ONNX-UPSTREAM-0.1.1RC0",
+      "candidate_id": "DET-R0",
+      "expected_content_types": [
+        "application/octet-stream",
+        "binary/octet-stream"
+      ],
+      "expected_bytes": 20219662,
+      "expected_sha256": "427CC366D34E27FF7A03E2899B5E3671425C262EA2291F88BB942BC1CC70B0F7",
+      "filename": "yolox_tiny.onnx",
+      "kind": "model",
+      "license_evidence_status": "repository_code_license_only_weight_terms_unresolved",
+      "maximum_bytes": 536870912,
+      "publisher": "Megvii BaseDetection",
+      "research_status": "authorized_for_quarantine_and_offline_research_not_approved_for_hcam",
+      "source_release": "0.1.1rc0",
+      "source_url": "https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_tiny.onnx"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "artifact_id": "SRC-YOLOX-LICENSE-6DDFF482",
+      "candidate_id": "DET-R0",
+      "expected_content_types": [
+        "text/plain"
+      ],
+      "expected_bytes": 11371,
+      "expected_sha256": "0EC3668D3274BCF29E8A29E9576D5A2CD96FC78D3C5BEC4387355A796E5D9088",
+      "filename": "LICENSE",
+      "kind": "license_evidence",
+      "maximum_bytes": 65536,
+      "publisher": "Megvii BaseDetection",
+      "research_status": "authorized_source_evidence_not_executable",
+      "source_revision": "6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+      "source_url": "https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/6ddff4824372906469a7fae2dc3206c7aa4bbaee/LICENSE"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "artifact_id": "SRC-YOLOX-ONNX-DEMO-6DDFF482",
+      "candidate_id": "DET-R0",
+      "expected_content_types": [
+        "text/plain"
+      ],
+      "expected_bytes": 2536,
+      "expected_sha256": "C51AA9E9A86D8561FE9E318E119A4FBE80D1F93639527B039F403D6ADC65D68F",
+      "filename": "onnx_inference.py",
+      "kind": "algorithm_evidence",
+      "maximum_bytes": 65536,
+      "publisher": "Megvii BaseDetection",
+      "research_status": "authorized_source_evidence_not_executable",
+      "source_revision": "6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+      "source_url": "https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/6ddff4824372906469a7fae2dc3206c7aa4bbaee/demo/ONNXRuntime/onnx_inference.py"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "artifact_id": "SRC-YOLOX-PREPROCESS-6DDFF482",
+      "candidate_id": "DET-R0",
+      "expected_content_types": [
+        "text/plain"
+      ],
+      "expected_bytes": 7360,
+      "expected_sha256": "F99B0B1568DAFDE0ACD99F0A1E27A33644885349834D55A9DC632FE691EE352D",
+      "filename": "data_augment.py",
+      "kind": "algorithm_evidence",
+      "maximum_bytes": 65536,
+      "publisher": "Megvii BaseDetection",
+      "research_status": "authorized_source_evidence_not_executable",
+      "source_revision": "6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+      "source_url": "https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/6ddff4824372906469a7fae2dc3206c7aa4bbaee/yolox/data/data_augment.py"
+    },
+    {
+      "allowed_redirect_hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "artifact_id": "SRC-YOLOX-POSTPROCESS-6DDFF482",
+      "candidate_id": "DET-R0",
+      "expected_content_types": [
+        "text/plain"
+      ],
+      "expected_bytes": 5101,
+      "expected_sha256": "E1D6E1D263691AC15FDAA4F891EFA83707DA4AF0FD895BE122459105DF3EE601",
+      "filename": "demo_utils.py",
+      "kind": "algorithm_evidence",
+      "maximum_bytes": 65536,
+      "publisher": "Megvii BaseDetection",
+      "research_status": "authorized_source_evidence_not_executable",
+      "source_revision": "6ddff4824372906469a7fae2dc3206c7aa4bbaee",
+      "source_url": "https://raw.githubusercontent.com/Megvii-BaseDetection/YOLOX/6ddff4824372906469a7fae2dc3206c7aa4bbaee/yolox/utils/demo_utils.py"
+    }
+  ],
+  "authorization_id": "D-P3.2-001-2026-08-24",
+  "contract_format": "hcam.phase3.p3_2.research-artifacts.v1",
+  "dataset_candidates": [
+    {
+      "candidate_id": "DATA-GEN-R0",
+      "download_required": false,
+      "kind": "deterministic_generated_fixture",
+      "permitted_claims": [
+        "pipeline_structure",
+        "runtime_smoke",
+        "failure_behavior"
+      ],
+      "prohibited_claims": [
+        "accuracy",
+        "representativeness",
+        "deployment_readiness"
+      ],
+      "status": "authorized_for_offline_research"
+    },
+    {
+      "candidate_id": "DATA-PUB-R0",
+      "download_required": true,
+      "kind": "public_detector_evaluation_dataset",
+      "reason": "No exact compact source has completed license provenance privacy and retention review",
+      "status": "blocked_pending_exact_source_review"
+    }
+  ],
+  "limits": {
+    "cumulative_artifact_bytes": 2147483648,
+    "maximum_artifact_bytes": 536870912,
+    "redirect_limit": 5,
+    "timeout_seconds": 60
+  },
+  "prepared_on": "2026-08-24"
+}

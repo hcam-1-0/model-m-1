@@ -1,0 +1,119 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_runtime_binding_r3_research_sources.v1",
+  "record_id": "P36-QUARANTINE-GENERATED-VALIDATION-RUNTIME-BINDING-R3-RESEARCH-SOURCES",
+  "status": "existing_primary_sources_and_repository_evidence_synthesized_no_network_runtime_or_machine_action",
+  "recorded_on": "2026-09-01",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3Q-VALIDATION-HARNESS-R2-BOOTSTRAP-REMEDIATION-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r2-implementation-acceptance.json",
+    "acceptance_sha256": "32BA42A51029920AE163866A923547CD16054D6C41ECD3C8EC5549B78FB3ED2E",
+    "effect": "prepare_one_separate_non_effective_U3R_runtime_binding_R3_planning_package_only"
+  },
+  "sources": [
+    {
+      "source_id": "HCAM-U3N-RUNTIME-RESEARCH",
+      "publisher": "H-CAM",
+      "title": "P3.6 generated-validation runtime-binding R1 research sources",
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-research-sources.json",
+      "sha256": "A18EA2C8745A6CCB5A985E5BC9CAA2FFC16193203569E1072536084E92CFDA34",
+      "source_kind": "accepted_internal_primary_source_index",
+      "planning_use": [
+        "reuse_official_parser_import_process_and_pwsh_references_without_live_network_refresh",
+        "preserve_parser_execution_separation_exact_runtime_path_and_bounded_process_controls"
+      ]
+    },
+    {
+      "source_id": "HCAM-U3P-FAILED-RESULT",
+      "publisher": "H-CAM",
+      "title": "Consumed U3P runtime-binding R2 result",
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r2-result.json",
+      "sha256": "44450DF4D5A199DA34E5343AE043E138B8E046EF4E6FE6EAD6836AC96F7085F4",
+      "source_kind": "accepted_sanitized_local_attempt_result",
+      "planning_use": [
+        "bind_the_historical_exact_runtime_candidate_without_reusing_expired_authority",
+        "treat_result_contract_invalid_as_terminal_failed_closed"
+      ]
+    },
+    {
+      "source_id": "HCAM-U3P-FAILED-EVIDENCE",
+      "publisher": "H-CAM",
+      "title": "Consumed U3P runtime-binding R2 evidence",
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r2-evidence.json",
+      "sha256": "634674D4C50BB63AAF1A73FFEABB804AC51439002787542E76EB66627A9AD3DE",
+      "source_kind": "accepted_sanitized_local_attempt_evidence",
+      "planning_use": [
+        "preserve_single_attempt_no_raw_output_and_zero_prohibited_action_controls",
+        "require_fresh_runtime_and_source_identity_checks"
+      ]
+    },
+    {
+      "source_id": "HCAM-U3Q-FAILURE-ANALYSIS",
+      "publisher": "H-CAM",
+      "title": "Generated-validation failure analysis R1",
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-failure-analysis-r1.json",
+      "sha256": "2742517DDDC28B4F34749E3C4AA4275A6D75314B238C579040909B9704EF3A44",
+      "source_kind": "accepted_source_only_failure_analysis",
+      "planning_use": [
+        "recognize_Utility_bootstrap_as_the_high_confidence_unconfirmed_failure_mechanism",
+        "avoid_claiming_runtime_confirmation_before_a_new_authorized_attempt"
+      ]
+    },
+    {
+      "source_id": "HCAM-U3Q-REMEDIATION-CONTRACT",
+      "publisher": "H-CAM",
+      "title": "Harness R2 bootstrap remediation contract",
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r2-bootstrap-remediation-contract.json",
+      "sha256": "F4D97F99B4994C7403983554F18A1B1CA2AB026128631076C81543C745932D48",
+      "source_kind": "accepted_source_only_remediation_contract",
+      "planning_use": [
+        "bind_the_exact_PSHome_Utility_manifest_path_and_seven_command_allowlist",
+        "retain_NoClobber_provenance_and_module_independent_failure_output_requirements"
+      ]
+    },
+    {
+      "source_id": "HCAM-U3Q-ACCEPTED-PACKAGE",
+      "publisher": "H-CAM",
+      "title": "Accepted harness R2 implementation package",
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r2-implementation-package.json",
+      "sha256": "2D59FA211DE5DFE331128F189400A28D0D30FAF1BD5C01F077EB6FECF4C236FF",
+      "source_kind": "accepted_immutable_source_and_generated_static_package",
+      "planning_use": [
+        "bind_exact_R2_harness_vectors_runner_handler_adapter_and_evidence",
+        "preserve_all_accepted_source_bytes"
+      ]
+    },
+    {
+      "source_id": "HCAM-U3Q-ACCEPTANCE",
+      "publisher": "H-CAM",
+      "title": "Harness R2 implementation acceptance",
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r2-implementation-acceptance.json",
+      "sha256": "32BA42A51029920AE163866A923547CD16054D6C41ECD3C8EC5549B78FB3ED2E",
+      "source_kind": "exact_owner_acceptance_and_planning_authority",
+      "planning_use": [
+        "authorize_this_non_effective_U3R_planning_package_only",
+        "keep_runtime_retry_U3K_machine_and_deployment_authorities_closed"
+      ]
+    }
+  ],
+  "research_conclusions": [
+    "the_U3P_attempt_is_consumed_and_its_runtime_binding_cannot_be_reused_as_execution_authority",
+    "the_U3Q_R2_harness_is_accepted_byte_exact_and_must_not_be_changed_by_U3R_planning",
+    "the_exact_PSHome_Utility_manifest_and_its_literal_declared_implementation_closure_must_be_freshly_bound_before_any_future_import",
+    "manifest_analysis_must_be_static_literal_only_and_must_reject_commands_expressions_wildcards_reparse_points_and_paths_outside_exact_PSHome",
+    "the_Utility_closure_must_be_bounded_by_file_count_depth_individual_size_total_size_and_pre_post_hash_identity",
+    "the_future_attempt_must_invoke_the_exact_runtime_at_most_once_for_the_Aggregate_harness_after_all_preflight_bindings_pass",
+    "controller_and_harness_failures_must_use_separate_bounded_sanitized_reason_code_sets",
+    "successful_generated_validation_requires_zero_parser_errors_twenty_Contract_vectors_sixty_four_handler_vectors_and_zero_prohibited_actions",
+    "U3K_remains_blocked_until_current_successful_U3R_evidence_is_sealed_and_separately_accepted"
+  ],
+  "actions_performed_while_preparing_this_record": {
+    "existing_repository_source_text_contract_and_sanitized_evidence_reads": true,
+    "public_or_private_network_research": false,
+    "PowerShell_harness_runner_or_module_parsed_imported_or_executed": false,
+    "runtime_manifest_module_directory_or_hardware_observed": false,
+    "machine_storage_F_B_ACL_probe_cleanup_or_scanner_action": false,
+    "artifact_dependency_model_or_dataset_acquired": false,
+    "container_Kubernetes_profile_activation_or_deployment_action": false,
+    "remote_git_action": false
+  }
+}

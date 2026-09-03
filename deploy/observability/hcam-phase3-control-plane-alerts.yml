@@ -1,0 +1,39 @@
+groups:
+  - name: hcam-phase3-control-plane
+    interval: 30s
+    rules:
+      - alert: HcamAnalyticsAssignmentInvariantViolation
+        expr: hcam_analytics_assignments_blocked_total > hcam_analytics_assignments_total
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: Analytics assignment aggregate state is inconsistent
+      - alert: HcamAnalyticsOutboxBacklog
+        expr: hcam_analytics_outbox_unpublished_total > 100
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: Analytics metadata is waiting for outbox delivery
+      - alert: HcamAnalyticsAssignmentFailureSpike
+        expr: sum(hcam_analytics_assignment_failures_recent_total) > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: Rejected analytics assignment mutations require review
+      - alert: HcamGeneratedAnalyticsDegraded
+        expr: sum(hcam_analytics_assignment_state_total{state=~"degraded|failed"}) > 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: A generated-only analytics assignment failed closed
+      - alert: HcamGeneratedFrameLeaseRetained
+        expr: hcam_analytics_generated_frame_leases_active > 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: A generated-frame memory lease remained active unexpectedly

@@ -1,0 +1,96 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_compatibility_validation_research_sources.v1",
+  "record_id": "P36-PORTABLE-COMPATIBILITY-VALIDATION-SOURCES-R0",
+  "status": "complete_for_non_executable_owner_proposal",
+  "prepared_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "research_boundary": "read_only_primary_source_and_exact_local_contract_review",
+  "official_external_sources": [
+    {
+      "source_id": "ORT-THREADING",
+      "publisher": "ONNX Runtime",
+      "url": "https://onnxruntime.ai/docs/performance/tune-performance/threading.html",
+      "retrieved_on": "2026-08-31",
+      "finding": "CPU sessions expose exact intra_op and inter_op thread counts, sequential or parallel execution, thread spinning controls, and affinity; spinning can improve latency while consuming additional CPU and power."
+    },
+    {
+      "source_id": "ORT-GRAPH-OPTIMIZATION",
+      "publisher": "ONNX Runtime",
+      "url": "https://onnxruntime.ai/docs/performance/model-optimizations/graph-optimizations.html",
+      "retrieved_on": "2026-08-31",
+      "finding": "Basic graph optimizations are semantics-preserving and provider-independent; extended and layout optimizations add provider or hardware-sensitive behavior, and offline optimized models must match target options and hardware."
+    },
+    {
+      "source_id": "ORT-PYTHON-API",
+      "publisher": "ONNX Runtime",
+      "url": "https://onnxruntime.ai/docs/api/python/api_summary.html",
+      "retrieved_on": "2026-08-31",
+      "finding": "SessionOptions exposes CPU memory arena, memory pattern, profiling, graph optimization, execution mode, and thread controls, while InferenceSession accepts an explicit ordered provider list."
+    },
+    {
+      "source_id": "ORT-PROFILING",
+      "publisher": "ONNX Runtime",
+      "url": "https://onnxruntime.ai/docs/api/python/auto_examples/plot_profiling.html",
+      "retrieved_on": "2026-08-31",
+      "finding": "Runtime profiling is explicitly opt-in and emits profiling output, so the portable zero-retention baseline keeps it disabled unless a later bounded retention policy authorizes it."
+    },
+    {
+      "source_id": "ORT-MEMORY",
+      "publisher": "ONNX Runtime",
+      "url": "https://onnxruntime.ai/docs/performance/tune-performance/memory.html",
+      "retrieved_on": "2026-08-31",
+      "finding": "Allocator and arena choices affect memory and performance and therefore require exact configuration plus generated measurement rather than assumption."
+    }
+  ],
+  "exact_local_sources": [
+    {
+      "path": "contracts/phase-3/p3-6-portable-r1-owner-decisions.json",
+      "sha256": "7695027BB68878ED7CE41B6BD940EB777CD280279294E5C35B99614C3C57F5FA",
+      "role": "accepted_U3B_AAAA_policy"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-portable-r1-admission-package.json",
+      "sha256": "471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F",
+      "role": "sealed_22_gap_and_owner_choice_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json",
+      "sha256": "FB061C906D1CE5F7FE3B32B70F6CA5134C486F474E2618B23884466C2E58C76F",
+      "role": "sanitized_shared_schema_inventory_input"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-portable-cpu-profile-package.json",
+      "sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
+      "role": "accepted_non_executable_portable_R0_baseline"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-phase-minus-1-alignment.json",
+      "role": "exact_shared_contract_and_deployment_revision_binding"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-capability-profile-policy.json",
+      "role": "current_fail_closed_profile_and_objective_policy"
+    }
+  ],
+  "external_contract_bindings": {
+    "hcam_protos_revision": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+    "model_runtime_compatibility_schema_sha256": "1AAD0E2FE16D7F203134B235C345E12094E1B8C19F0F33B738C23FC6B7B124E7",
+    "execution_profile_resolution_schema_sha256": "4A3EB2A8C1B1B23EE3F8048B23507977CD9D85E294CBE20C3AAE0C282B780E5D",
+    "adaptive_selection_evidence_schema_sha256": "D0DA68253DA1A5B78489189F766542BFE72060DDF1031F4B53ED9D61FAB76947",
+    "hcam_deployment_revision": "71095fe89d2b711e4982ddc0130fcaedda8703e7",
+    "portable_overlay_sha256": "63F7B692AA1EA5A4B83C8FA12FBF74DF64962DA145AF585F64369E41A6E0F125"
+  },
+  "research_actions": {
+    "public_document_pages_read": 5,
+    "artifact_downloads": 0,
+    "dependency_installs": 0,
+    "runtime_or_model_imports": 0,
+    "inference_or_benchmarks": 0,
+    "hardware_queries_or_tests": 0,
+    "inventory_collection_attempts": 0,
+    "container_or_kubernetes_actions": 0,
+    "camera_media_or_data_accesses": 0,
+    "remote_git_actions": 0
+  },
+  "conclusion": "official_controls_support_an_exact_low_contention_CPU_reference_but_no_configuration_is_a_performance_claim_without_separately_authorized_generated_evidence"
+}

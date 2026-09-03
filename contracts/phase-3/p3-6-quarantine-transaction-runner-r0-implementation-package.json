@@ -1,0 +1,103 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_transaction_runner_r0_implementation_package.v1",
+  "package_id": "P36-QUARANTINE-TRANSACTION-RUNNER-R0-IMPLEMENTATION-PACKAGE",
+  "status": "sealed_non_executable_owner_implementation_acceptance_pending",
+  "sealed_on": "2026-08-31",
+  "implementation_authorization_decision_id": "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-AUTH",
+  "owner_acceptance_decision_id": "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE",
+  "owner_acceptance_effect_if_exactly_accepted": "accept_only_generated_contract_and_static_runner_implementation_evidence_and_authorize_preparation_of_a_separate_non_effective_runtime_binding_proposal",
+  "core_file_count": 6,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-authorization.json",
+      "sha256": "CD81871C6B6F560CDC01E9D6AA919B71F9E108DEB3AEA3C04B17BAF28C60D525",
+      "role": "exact_owner_U3I_implementation_only_authorization"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-storage-r2-proposal-acceptance.json",
+      "sha256": "6F68EB164DC662086F7444D49638FFAB95F7FF1586469BB5E5E2DC876185AAA5",
+      "role": "exact_owner_U3J_storage_design_planning_acceptance"
+    },
+    {
+      "path": "tools/phase36_quarantine_transaction_runner.ps1",
+      "sha256": "C0020A4C53B59486CE8842302C918821F145F0228F4006C3D6B67BF594DB5B15",
+      "role": "contract_only_static_dispatch_runner_source_with_unimplemented_fail_closed_machine_handlers"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_transaction_runner_contracts.py",
+      "sha256": "449155EC1F7EBC51B68EAEBDD74289FEF175A670FF29ABBD85C9E82B358CA7B9",
+      "role": "machine_independent_generated_contract_reference_and_static_source_harness"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-contract-tests.json",
+      "sha256": "3E834BC64BA1F20A0DD6338F865EDC62A0A02B1987AD71E8D8A8488ABC23AB38",
+      "role": "immutable_twenty_vector_generated_only_contract_definition"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-evidence.json",
+      "sha256": "AF3282F94095EB2368E7A91478B244F851F5B5B84C2F6FD73B667AB2D6D81291",
+      "role": "non_observational_test_parser_invariant_limitation_and_next_gate_evidence"
+    }
+  ],
+  "validation_summary": {
+    "generated_contract_vectors_passed": 20,
+    "additional_structural_authorization_and_non_access_tests_passed": 4,
+    "pytest_failures": 0,
+    "ruff": "passed",
+    "PowerShell_parser_syntax_errors": 0,
+    "PowerShell_source_executed": false,
+    "machine_resource_access": false,
+    "network_access": false,
+    "runtime_binding_observed": false
+  },
+  "implementation_scope": {
+    "contract_mode_only": true,
+    "static_action_ids": 10,
+    "default_deny": true,
+    "machine_action_handlers_implemented": false,
+    "machine_action_placeholders_fail_closed": true,
+    "generated_contract_harness_only": true,
+    "runner_execution_capability_claim": false,
+    "storage_readiness_claim": false,
+    "deployment_claim": false
+  },
+  "owner_acceptance_statement_template": "D-P3.6-U3I-RUNNER-R0-IMPLEMENTATION-ACCEPTANCE: I, mayank-admin, accept the contract-only runner R0 implementation package digest <IMPLEMENTATION_PACKAGE_DIGEST_SHA256>, including source SHA-256 C0020A4C53B59486CE8842302C918821F145F0228F4006C3D6B67BF594DB5B15, twenty passing generated vectors, parser-only PowerShell validation, unimplemented fail-closed machine handlers, no runtime binding, and all documented limitations. This acceptance authorizes preparation only of a separate non-effective runtime-binding proposal. It does not authorize runner execution, runtime/storage/hardware/ACL queries, F: access, a storage attempt, Defender/scanners, downloads, models, inference, media/data, containers/Kubernetes, deployment, or remote Git.",
+  "sequence_after_exact_acceptance": [
+    "record_exact_implementation_acceptance_without_changing_this_package",
+    "prepare_a_separate_non_effective_exact_runtime_binding_authorization_proposal",
+    "obtain_separate_digest_bound_authority_before_any_runtime_path_version_hash_or_trust_observation",
+    "seal_and_accept_exact_runtime_binding_evidence",
+    "prepare_a_new_final_U3K_storage_execution_package_bound_to_this_source_and_the_accepted_runtime_binding",
+    "obtain_separate_D_P3_6_U3K_STORAGE_R2_AUTH_before_any_machine_action"
+  ],
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_package_digest_and_is_not_self_embedded",
+  "current_gate_effect": {
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked",
+    "owner_implementation_acceptance_pending": true,
+    "runtime_binding_proposal_preparation_authorized": false,
+    "runtime_binding_observation_authorized": false,
+    "runner_execution_authorized": false,
+    "storage_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "Defender_or_scanner_action_authorized": false,
+    "artifact_acquisition_authorized": false
+  },
+  "owner_acceptance_may_be_inferred_from_continue_U3I_authorization_or_U3J_acceptance": false,
+  "runner_execution_authorized": false,
+  "storage_or_hardware_query_authorized": false,
+  "runtime_path_version_hash_or_trust_query_authorized": false,
+  "storage_directory_creation_ACL_write_probe_or_cleanup_authorized": false,
+  "Defender_query_hash_or_WinVerifyTrust_authorized": false,
+  "scanner_install_update_or_execution_authorized": false,
+  "artifact_or_dependency_acquisition_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "profile_resolution_or_activation_authorized": false,
+  "container_or_kubernetes_action_authorized": false,
+  "camera_media_or_data_access_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

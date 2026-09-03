@@ -1,0 +1,224 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_remediation_r1_decisions.v1",
+  "packet_id": "P36-QUARANTINE-REMEDIATION-R1-DECISIONS",
+  "status": "owner_selections_pending_non_executable",
+  "prepared_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "recommended_selection": "A/A/A/A/A/A",
+  "decisions": [
+    {
+      "decision_id": "D-P3.6-U3F-001",
+      "topic": "quarantine_root_acl_provisioning",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Protected security-at-create DACL",
+          "effect": "Create the absent exact root with DirectorySecurity already applied, disable inherited access rules, and verify the resulting canonical DACL before any probe.",
+          "tradeoff": "Strongest boundary and avoids an inherited-permission exposure window, but requires a new exact owner authorization for ACL construction and root creation."
+        },
+        {
+          "option": "B",
+          "label": "Create then immediately replace ACL",
+          "effect": "Create with inherited permissions and immediately replace the DACL before the probe.",
+          "tradeoff": "Simpler but briefly exposes the root under the broad inherited ACL that caused U3E to fail."
+        },
+        {
+          "option": "C",
+          "label": "Manual owner pre-provisioning",
+          "effect": "Require the owner to create and harden the directory outside the bounded attempt, then authorize read-only verification.",
+          "tradeoff": "Avoids automated ACL changes but weakens reproducibility and requires separate manual evidence."
+        },
+        {
+          "option": "D",
+          "label": "Abandon F candidate",
+          "effect": "Do not remediate F and return to storage-root selection.",
+          "tradeoff": "Avoids ACL modification but discards a volume that passed capacity and path checks."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3F-002",
+      "topic": "explicit_acl_principal_and_rights_policy",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Current process Modify plus SYSTEM and Administrators FullControl",
+          "effect": "Resolve the current process SID in memory, grant it Modify, grant LocalSystem and built-in Administrators FullControl, propagate those rules to children, protect the DACL, and persist only boolean policy results.",
+          "tradeoff": "Least-privilege practical lab policy with recovery access; it is intentionally laptop-local and must become a service identity policy for production."
+        },
+        {
+          "option": "B",
+          "label": "Current process FullControl",
+          "effect": "Grant the current process, LocalSystem, and Administrators FullControl.",
+          "tradeoff": "Simpler but gives the interactive account more rights than the probe requires."
+        },
+        {
+          "option": "C",
+          "label": "Dedicated service SID only",
+          "effect": "Require a pre-existing H-CAM service identity and grant that identity Modify while retaining SYSTEM and Administrators recovery access.",
+          "tradeoff": "Best production direction, but no exact service identity is currently provisioned or authorized on this laptop."
+        },
+        {
+          "option": "D",
+          "label": "Owner supplies explicit identity",
+          "effect": "Pause until the owner supplies an exact local or domain identity for the DACL.",
+          "tradeoff": "Explicit but introduces identity handling and delays the lab binding."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3F-003",
+      "topic": "preexisting_candidate_root_policy",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Absent root required",
+          "effect": "Require F:\\HCAM-Quarantine to be absent and create it once with the exact protected DACL; any existing object fails before ACL modification.",
+          "tradeoff": "Most deterministic and avoids taking ownership of unknown content, but a manually created root requires a fresh package."
+        },
+        {
+          "option": "B",
+          "label": "Allow empty existing root remediation",
+          "effect": "Permit replacing the ACL of an existing empty, non-reparse root after bounded inspection.",
+          "tradeoff": "More tolerant but changes security on a pre-existing object whose origin is not proven."
+        },
+        {
+          "option": "C",
+          "label": "Allow owner-confirmed existing root",
+          "effect": "Use an existing root after a separate owner ownership statement.",
+          "tradeoff": "Adds a manual assertion that is weaker than secure creation evidence."
+        },
+        {
+          "option": "D",
+          "label": "Defer root handling",
+          "effect": "Do not define whether an existing root may be changed.",
+          "tradeoff": "No retry package can be safely sealed."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3F-004",
+      "topic": "defender_binary_trust_binding",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Exact version path, SHA-256, and cache-only WinVerifyTrust",
+          "effect": "Resolve one documented versioned MpCmdRun candidate from AMProductVersion, require a regular non-reparse file, bind path/version/SHA-256, and require cache-only whole-chain trust verification with no UI or executable invocation.",
+          "tradeoff": "Strongest offline local binding; an unavailable cached revocation or chain result fails closed and still does not authorize a scan."
+        },
+        {
+          "option": "B",
+          "label": "Get-AuthenticodeSignature plus hash",
+          "effect": "Use the PowerShell signature cmdlet and SHA-256 for the exact candidate.",
+          "tradeoff": "Simpler, but the package cannot make the same explicit cache-only network guarantee."
+        },
+        {
+          "option": "C",
+          "label": "Version and hash only",
+          "effect": "Bind only path, version, and SHA-256 without local trust verification.",
+          "tradeoff": "Reproducible but insufficient to establish publisher trust."
+        },
+        {
+          "option": "D",
+          "label": "Defer Defender binding",
+          "effect": "Do not query or bind the Defender binary in the next attempt.",
+          "tradeoff": "Storage may be proven, but the accepted scanner chain remains further from readiness."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3F-005",
+      "topic": "modelscan_bootstrap_boundary",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Separate pinned bootstrap and hostile-fixture package",
+          "effect": "Keep ModelScan unavailable in the retry; later prepare a separate package that pins the 0.8.8 wheel hash, dependency lock, isolated tool environment, JSON/exit-code contract, and generated hostile fixtures before any artifact scan.",
+          "tradeoff": "Preserves acquisition boundaries and addresses upstream risk signals, but the next retry cannot complete the scanner chain."
+        },
+        {
+          "option": "B",
+          "label": "Install ModelScan during the retry",
+          "effect": "Combine storage remediation, dependency acquisition, installation, and scanner binding.",
+          "tradeoff": "Faster on paper but expands network and supply-chain scope and conflicts with the current no-download boundary."
+        },
+        {
+          "option": "C",
+          "label": "Remove ModelScan from the chain",
+          "effect": "Proceed with Defender and the future H-CAM passive inspector only.",
+          "tradeoff": "Contradicts accepted D-P3.6-U3D-002 option A."
+        },
+        {
+          "option": "D",
+          "label": "Accept owner-installed ModelScan",
+          "effect": "Trust a manually installed distribution after a version query.",
+          "tradeoff": "Lacks exact dependency, artifact, and installation provenance."
+        }
+      ]
+    },
+    {
+      "decision_id": "D-P3.6-U3F-006",
+      "topic": "next_attempt_scope",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": [
+        {
+          "option": "A",
+          "label": "Storage remediation plus Defender binding only",
+          "effect": "Prepare one new digest-bound attempt for secure root creation, ACL verification, the 4096-byte atomic probe, and read-only Defender binary trust binding; ModelScan and passive-inspector work remain separate.",
+          "tradeoff": "Smallest scope that resolves two observed blockers while preserving the accepted scanner-chain boundary."
+        },
+        {
+          "option": "B",
+          "label": "Storage remediation only",
+          "effect": "Retry only root creation, ACL verification, and the atomic storage probe.",
+          "tradeoff": "Lowest scope, but Defender remains unbound."
+        },
+        {
+          "option": "C",
+          "label": "Defender binding only",
+          "effect": "Do not recreate the root; query only the Defender candidate and offline trust state.",
+          "tradeoff": "Avoids F changes but leaves storage unbound."
+        },
+        {
+          "option": "D",
+          "label": "Combined storage, scanner install, and artifact acquisition",
+          "effect": "Attempt to solve storage, all scanners, dependencies, and model acquisition together.",
+          "tradeoff": "Unacceptably broad and conflicts with the accepted staged, fail-closed lifecycle."
+        }
+      ]
+    }
+  ],
+  "effect_if_recommended_AAAAAA_is_later_accepted": {
+    "secure_root_policy": "protected_security_at_create_DACL",
+    "principal_policy": "ephemeral_current_process_Modify_SYSTEM_and_Administrators_FullControl",
+    "existing_root_policy": "absent_root_required",
+    "Defender_binding_policy": "exact_version_path_SHA256_cache_only_WinVerifyTrust",
+    "ModelScan_policy": "separate_pinned_bootstrap_and_hostile_fixture_validation",
+    "retry_scope": "storage_remediation_and_Defender_binding_only",
+    "immediate_attempt_authority": false,
+    "immediate_F_or_ACL_authority": false,
+    "immediate_scanner_query_or_execution_authority": false,
+    "immediate_install_download_or_artifact_authority": false,
+    "immediate_implementation_authority": false
+  },
+  "owner_selection_may_be_inferred_from_continue_or_prior_authorization": false,
+  "another_attempt_authorized": false,
+  "F_or_ACL_action_authorized": false,
+  "scanner_query_install_or_execution_authorized": false,
+  "dependency_or_artifact_acquisition_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "implementation_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

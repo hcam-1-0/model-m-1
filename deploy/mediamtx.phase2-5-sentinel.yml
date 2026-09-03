@@ -1,0 +1,46 @@
+logLevel: warn
+logDestinations: [stdout]
+readTimeout: 10s
+writeTimeout: 10s
+writeQueueSize: 512
+
+authMethod: internal
+authInternalUsers:
+  - user: any
+    pass:
+    permissions:
+      - action: api
+      - action: publish
+        path: "~^hcam-sentinel/[0-9a-f]{32}$"
+      - action: read
+        path: "~^hcam-sentinel/[0-9a-f]{32}$"
+
+api: true
+apiAddress: :9997
+metrics: false
+pprof: false
+
+rtsp: true
+rtspAddress: :8554
+rtspTransports: [tcp]
+rtmp: false
+hls: false
+webrtc: true
+webrtcAddress: :8889
+webrtcEncryption: false
+webrtcAllowOrigins:
+  - http://127.0.0.1:8091
+  - http://localhost:8091
+webrtcLocalUDPAddress: :8191
+webrtcLocalTCPAddress: :8192
+webrtcAdditionalHosts: [127.0.0.1]
+srt: false
+moq: false
+
+pathDefaults:
+  source: publisher
+  overridePublisher: false
+  record: false
+
+paths:
+  all_others:

@@ -1,0 +1,56 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_r2_authorization_proposal.v1",
+  "proposal_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-AUTH",
+  "status": "non_effective_owner_authorization_pending",
+  "prepared_on": "2026-09-03",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U4D-PROCESS-OUTPUT-REMEDIATION-IMPLEMENTATION-AUTH",
+    "authorization_package_sha256": "2DAD142AE31D5A3738ABADD0098512B61C0BC2C3A5C7C915BF99DE8D40FB7F74",
+    "compatibility_self_binding_amendment_sha256": "2D3BA9EC453CFCF8BFEF18B72A8FAB67E49AC1C2E929BA106BAA6E80C419CA0F",
+    "proposal_test_compatibility_amendment_sha256": "24A39807CC463909BF342C36B931FD220FF3003F64774C90D32374C13758088E",
+    "effect": "prepare_this_non_effective_exact_digest_bound_R2_authorization_package_only"
+  },
+  "required_source_evidence": {
+    "U4D_implementation_package": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4d-implementation-package.json",
+    "U4D_implementation_package_sha256": "288F275345E2586E05BE14EC964CA77EF7503A0BE70D88C6C5696BB4655C612A",
+    "U4D_implementation_evidence": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4d-implementation-evidence.json",
+    "U4D_implementation_evidence_sha256": "F3F27870037BEE352DD38377B6E9C31F7B41D9F26F4484D7405565D385C60D85",
+    "generated_classifier_vectors": 384,
+    "Python_reference_branch_coverage_percent": 97.0,
+    "immutable_hash_mismatch_count_required": 0,
+    "final_full_generated_static_validation_required": true
+  },
+  "action_spec": {
+    "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-action-spec.json",
+    "sha256": "917ABC07DAFA9C148B37BBD7E049267E98D95BEB4534674ABA070D747E5B3F81",
+    "logical_node_id": "LAB-LAPTOP-01",
+    "maximum_total_runtime_attempts": 1,
+    "maximum_U3K_storage_attempts": 1,
+    "automatic_or_manual_retry": false
+  },
+  "authority_if_exact_statement_is_accepted": {
+    "verify_and_record_exact_authorization_before_observation": true,
+    "exact_runtime_three_parent_and_Utility_closure_binding": true,
+    "U4D_child_generated_validation_cases": 416,
+    "typed_parent_process_output_classification": true,
+    "handler_generated_validation_cases": 84,
+    "total_generated_validation_cases": 500,
+    "controlled_U3K_A01_through_A10_storage_transaction": true,
+    "maximum_attempts": 1,
+    "retry": false,
+    "conditional_Phase_3_closeout_and_one_local_commit": true,
+    "push_or_remote_Git": false
+  },
+  "future_owner_authorization_statement_template": "D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-AUTH: I, mayank-admin, accept the Phase 3.6 consolidated runtime-closeout R2 authorization package digest <THIS_PACKAGE_SHA256>, U4D implementation package digest 288F275345E2586E05BE14EC964CA77EF7503A0BE70D88C6C5696BB4655C612A, and R2 action-spec digest 917ABC07DAFA9C148B37BBD7E049267E98D95BEB4534674ABA070D747E5B3F81. I authorize exactly one ordered attempt within 24 hours on LAB-LAPTOP-01 for the exact runtime, three fixed parents, Utility-manifest closure, source bindings, two bounded generated-validation processes, typed process-output classification, output paths, retention contract, and action sequence in that package. The U4D child must accept exactly 416 generated cases through one UTF-8 JSON line of at most 4096 bytes with zero stderr and zero raw retention; the handler process must then accept exactly 20 runner and 64 pure-handler cases. Only after all 500 generated cases and every identity gate pass may one U3K storage attempt execute sealed U3K-A01 through U3K-A10 for exact absent root F:\\HCAM-Quarantine. Any failure consumes this authorization and permits no retry. If and only if all runtime, binding, validation, U3K, evidence, and final test gates pass, synchronize the allowlisted Phase 3 records, mark Phase 3 complete, and create one local closeout commit without push. This does not authorize alternate paths, volumes, runtimes, modules, hardware, B:, F:\\h cam, existing-root changes, Defender or scanners, network or trust retrieval, installation, update, downloads, artifacts, models, inference, cameras, media, private or Government data, containers, Kubernetes, profile activation, deployment, push, pull, fetch, PR, merge, or other remote Git.",
+  "current_effect": {
+    "owner_authorization_pending": true,
+    "D_P3_6_CONSOLIDATED_RUNTIME_CLOSEOUT_R2_AUTH_requestable_after_final_seal": true,
+    "attempts_authorized": 0,
+    "PowerShell_parser_import_dot_source_or_execution_authorized": false,
+    "runtime_manifest_hardware_machine_storage_U3K_or_closeout_authorized": false,
+    "commit_authorized": false,
+    "push_or_remote_Git_authorized": false,
+    "authorization_may_be_inferred_from_U4D_build_success_continue_or_silence": false
+  }
+}

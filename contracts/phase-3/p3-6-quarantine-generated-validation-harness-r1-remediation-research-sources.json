@@ -1,0 +1,71 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_harness_r1_remediation_research_sources.v1",
+  "record_id": "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R1-REMEDIATION-RESEARCH-SOURCES",
+  "status": "primary_source_research_complete_planning_only",
+  "prepared_on": "2026-09-01",
+  "sources": [
+    {
+      "source_id": "MS-PS-PREFERENCE-VARIABLES",
+      "title": "about_Preference_Variables - PSModuleAutoLoadingPreference",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7.5",
+      "source_type": "official_documentation",
+      "facts_used": [
+        "the_default undefined behavior is equivalent to All",
+        "All imports modules automatically on first use",
+        "None disables automatic module importing"
+      ]
+    },
+    {
+      "source_id": "MS-PS-GET-FILEHASH",
+      "title": "Get-FileHash",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-7.5",
+      "source_type": "official_cmdlet_documentation",
+      "facts_used": [
+        "Get-FileHash is provided by the Microsoft.PowerShell.Utility module",
+        "Get-FileHash computes file hashes including SHA-256"
+      ]
+    },
+    {
+      "source_id": "MS-DOTNET-SHA256-HASHDATA",
+      "title": "SHA256.HashData Method",
+      "publisher": "Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.sha256.hashdata?view=net-9.0",
+      "source_type": "official_dotnet_api_documentation",
+      "facts_used": [
+        "SHA256.HashData accepts a readable Stream",
+        "the API computes SHA-256 without a PowerShell module dependency"
+      ]
+    }
+  ],
+  "repository_observations": {
+    "accepted_harness_path": "tools/phase36_quarantine_generated_validation.ps1",
+    "accepted_harness_sha256": "48FC33E1928BA186C11005DBDEC055E5558D58677D51EB864D3740BCFBA208C1",
+    "module_autoload_preference_is_None_before_binding_check": true,
+    "binding_helper_invokes_Get_FileHash": true,
+    "explicit_Microsoft_PowerShell_Utility_import_present": false,
+    "failure_trap_reason_is_stage_agnostic": true,
+    "failed_attempt_reason_code": "generated_validation_process_failed",
+    "failed_attempt_retained_raw_output_or_exception": false
+  },
+  "research_conclusion": {
+    "classification": "high_confidence_source_runtime_dependency_conflict_not_runtime_confirmed",
+    "candidate_mechanism": "Get_FileHash_requires_Microsoft_PowerShell_Utility_while_automatic_module_import_is_disabled",
+    "preferred_remediation": "remove_the_module_dependency_and_hash_with_bounded_dotnet_streaming",
+    "alternative_explicit_module_import_selected": false,
+    "reason_alternative_rejected": "it_widens_the_import_surface_and_conflicts_with_the_single_accepted_handler_import_boundary"
+  },
+  "research_actions": {
+    "PowerShell_parsed_imported_or_executed": false,
+    "runtime_or_hardware_observed": false,
+    "machine_storage_network_or_scanner_action": false,
+    "source_or_test_modified": false,
+    "remote_git": false
+  },
+  "limitations": [
+    "the_failed_attempt_intentionally_retained_no_raw_process_output_or_exception",
+    "the_candidate_mechanism_is_not_a_claim_of_runtime_confirmation",
+    "other_runtime_semantic_failures_remain_possible_until_a_later_separately_authorized_attempt"
+  ]
+}

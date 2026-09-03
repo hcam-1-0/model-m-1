@@ -1,0 +1,451 @@
+name: Python CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: python-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python-tests:
+    name: Backend checks (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13", "3.14"]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set up locked dependency environment
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.12.3"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+          activate-environment: true
+
+      - name: Install backend and test dependencies
+        run: uv sync --locked --extra dev --extra analytics
+
+      - name: Compile Python sources
+        run: python -m compileall -q app tools migrations
+
+      - name: Run static bug checks
+        run: ruff check app tests tools migrations
+
+      - name: Preserve Phase 0 compile check
+        run: python -m py_compile tools/sentinel_cctv_probe.py tools/phase0_readiness.py
+
+      - name: Verify database migration
+        env:
+          HCAM_DATABASE_URL: sqlite:///./var/ci-hcam.db
+        run: alembic upgrade head
+
+      - name: Verify reviewed API and database contracts
+        run: python tools/release_contracts.py check
+
+      - name: Verify reviewed Phase 3 analytics contracts
+        run: python tools/analytics_contracts.py check
+
+      - name: Verify generated-only Phase 3 P3.1 evidence
+        run: python tools/phase31_contracts.py check --require-clean-source
+
+      - name: Run backend and offline tests
+        run: pytest --cov=hcam --cov-report=term-missing --cov-fail-under=90
+
+      - name: Verify installed dependencies
+        run: uv pip check
+
+      - name: Audit installed dependencies
+        if: matrix.python-version == '3.12'
+        run: uv run --locked --extra dev --extra analytics pip-audit --skip-editable
+
+      - name: Verify Phase 1 evidence
+        run: python tools/phase1_readiness.py
+
+      - name: Verify Phase 2 evidence
+        if: matrix.python-version == '3.12'
+        run: python tools/phase2_readiness.py --run-validation
+
+      - name: Verify Phase 3 P3.0 evidence
+        if: matrix.python-version == '3.12'
+        run: python tools/phase3_readiness.py --run-validation
+
+      - name: Verify Phase 3 P3.1 planning authorization
+        if: matrix.python-version == '3.12'
+        run: python tools/phase31_readiness.py --strict
+
+      - name: Verify Phase 3 P3.1 implementation evidence
+        if: matrix.python-version == '3.12'
+        run: python tools/phase31_implementation_readiness.py --strict
+
+      - name: Verify Phase 3 P3.2 generated-only start authorization
+        if: matrix.python-version == '3.12'
+        run: python tools/phase32_entry_readiness.py
+
+      - name: Verify Phase 3 P3.2 generated-only implementation evidence
+        if: matrix.python-version == '3.12'
+        run: python tools/phase32_implementation_readiness.py
+
+      - name: Verify Phase 3 P3.3 generated tracking evidence
+        if: matrix.python-version == '3.12'
+        run: |
+          python tools/phase33_tracking_evidence.py check
+          python tools/phase33_sbom.py check
+          python tools/phase33_implementation_readiness.py --require-clean-source --require-acceptance
+
+      - name: Verify Phase 3 P3.4 planning boundary
+        if: matrix.python-version == '3.12'
+        run: python tools/phase34_readiness.py --strict
+
+      - name: Verify Phase 3 P3.4 generated geometry evidence
+        if: matrix.python-version == '3.12'
+        run: |
+          python tools/phase34_c10_evidence.py check
+          python tools/phase34_supply_chain.py check
+          python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance
+
+      - name: Verify Phase 3 P3.5 planning boundary
+        if: matrix.python-version == '3.12'
+        run: python tools/phase35_readiness.py --strict --require-clean-source
+
+      - name: Verify Phase 3 P3.5 generated ANPR evidence
+        run: |
+          python tools/phase35_contracts.py check
+          python tools/phase35_latin_ocr.py check-evidence
+          python tools/phase35_auxiliary_ocr.py check-evidence
+          python tools/phase35_normalization.py check-evidence
+          python tools/phase35_consensus.py check-evidence
+          python tools/phase35_w9_closure.py check-evidence
+
+      - name: Preserve Phase 0 unittest check
+        if: matrix.python-version == '3.12'
+        run: python -m unittest discover -s tests -v
+
+  package-build:
+    name: Build and install package artifacts
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: Set up locked build environment
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.12.3"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Build wheel and source distribution
+        run: |
+          uv sync --locked --extra dev
+          uv run --locked --extra dev python -m build --no-isolation
+
+      - name: Install wheel in an isolated environment
+        run: |
+          uv export --locked --extra analytics --no-dev --no-emit-project --format requirements-txt --output-file "$RUNNER_TEMP/hcam-runtime-requirements.txt"
+          python -m venv "$RUNNER_TEMP/hcam-artifact"
+          "$RUNNER_TEMP/hcam-artifact/bin/python" -m pip install --require-hashes --requirement "$RUNNER_TEMP/hcam-runtime-requirements.txt"
+          "$RUNNER_TEMP/hcam-artifact/bin/python" -m pip install --no-deps dist/*.whl
+          "$RUNNER_TEMP/hcam-artifact/bin/python" -c "from importlib.metadata import version; import hcam; from hcam.main import create_app; assert version('hcam-core') == hcam.__version__; assert create_app().version == hcam.__version__"
+          "$RUNNER_TEMP/hcam-artifact/bin/hcam" --help
+          "$RUNNER_TEMP/hcam-artifact/bin/hcam" backup-database --help
+          "$RUNNER_TEMP/hcam-artifact/bin/hcam" stream-worker --help
+          "$RUNNER_TEMP/hcam-artifact/bin/hcam" capability-worker --help
+          "$RUNNER_TEMP/hcam-artifact/bin/hcam" seed-phase2-lab --help
+
+  operational-smoke:
+    name: Synthetic performance, load, and recovery smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: Set up locked dependency environment
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.12.3"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+          activate-environment: true
+
+      - name: Install backend and test dependencies
+        run: uv sync --locked --extra dev
+
+      - name: Run bounded synthetic performance smoke
+        run: python tools/phase1_performance.py --cameras 1000 --iterations 100 --json
+
+      - name: Run bounded concurrent loopback load smoke
+        run: python tools/phase1_load.py --cameras 1000 --requests 400 --concurrency 16 --json
+
+      - name: Run SQLite recovery drill
+        env:
+          HCAM_DATABASE_URL: sqlite:///./var/recovery-source.db
+        run: |
+          alembic upgrade head
+          hcam import-registry tests/fixtures/camera-registry-seed.json
+          hcam recovery-drill "$RUNNER_TEMP/hcam-recovery-drill" --max-recovery-seconds 60
+
+  container-validation:
+    name: Non-root container and Compose validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Create synthetic validation secrets
+        shell: bash
+        run: |
+          printf '%s' 'phase1-local-postgres-password' > "$RUNNER_TEMP/postgres-password"
+          printf '%s' 'postgresql+psycopg://hcam_phase1:phase1-local-postgres-password@database:5432/hcam_phase1' > "$RUNNER_TEMP/database-url"
+          printf '%s' 'phase1-metrics-token-0123456789abcdef' > "$RUNNER_TEMP/metrics-token"
+          {
+            echo "HCAM_POSTGRES_PASSWORD_FILE=$RUNNER_TEMP/postgres-password"
+            echo "HCAM_DATABASE_URL_SECRET_FILE=$RUNNER_TEMP/database-url"
+            echo "HCAM_METRICS_TOKEN_SECRET_FILE=$RUNNER_TEMP/metrics-token"
+            echo "HCAM_VCS_REF=$GITHUB_SHA"
+          } >> "$GITHUB_ENV"
+
+      - name: Validate Dockerfile and Compose model
+        run: |
+          docker build --check .
+          docker compose -f deploy/compose.phase1.yaml config -q
+          docker compose -f deploy/compose.phase3.yaml config -q
+
+      - name: Build and inspect the runtime image
+        run: |
+          docker build --build-arg "VCS_REF=$GITHUB_SHA" --tag hcam-core:phase1 .
+          test "$(docker image inspect --format '{{.Config.User}}' hcam-core:phase1)" = "10001:10001"
+          docker run --rm --entrypoint python hcam-core:phase1 -c "import os; assert os.getuid() == 10001 and os.getgid() == 10001"
+          docker run --rm hcam-core:phase1 hcam --help
+
+      - name: Start the disposable validation stack
+        run: docker compose -f deploy/compose.phase1.yaml up --build --wait --wait-timeout 180
+
+      - name: Verify container runtime behavior
+        shell: bash
+        run: |
+          curl --fail --silent --show-error http://127.0.0.1:8000/health/live
+          curl --fail --silent --show-error http://127.0.0.1:8000/health/ready
+          curl --fail --silent --show-error \
+            --header 'X-HCAM-Actor: container-validator' \
+            --header 'X-HCAM-Roles: camera.viewer' \
+            --header 'X-HCAM-Departments: *' \
+            http://127.0.0.1:8000/cameras
+          curl --fail --silent --show-error \
+            --header 'Authorization: Bearer phase1-metrics-token-0123456789abcdef' \
+            http://127.0.0.1:8000/internal/metrics \
+            | grep --fixed-strings 'hcam_http_requests_total'
+          docker compose -f deploy/compose.phase1.yaml exec -T api \
+            python -c "import os; assert os.getuid() == 10001 and os.getgid() == 10001"
+
+      - name: Capture stack diagnostics
+        if: failure()
+        run: docker compose -f deploy/compose.phase1.yaml logs --no-color
+
+      - name: Stop the disposable validation stack
+        if: always()
+        run: docker compose -f deploy/compose.phase1.yaml down --volumes --remove-orphans
+
+  postgres-integration:
+    name: PostgreSQL 18 integration
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:18-alpine@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2
+        env:
+          POSTGRES_DB: hcam_test
+          POSTGRES_USER: hcam_test
+          POSTGRES_PASSWORD: synthetic-ci-password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U hcam_test -d hcam_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      HCAM_DATABASE_URL: postgresql+psycopg://hcam_test:synthetic-ci-password@localhost:5432/hcam_test
+      HCAM_POSTGRES_TEST_URL: postgresql+psycopg://hcam_test:synthetic-ci-password@localhost:5432/hcam_test
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: Set up locked dependency environment
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.12.3"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+          activate-environment: true
+
+      - name: Install PostgreSQL integration dependencies
+        run: uv sync --locked --extra dev --extra postgres
+
+      - name: Generate source-bound P2-G1 PostgreSQL evidence
+        run: >-
+          python tools/phase2_publication_evidence.py postgres
+          --confirm-disposable-database
+          --output var/evidence/p2-g1.json
+
+      - name: Upload P2-G1 publication evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: phase2-p2-g1-${{ github.event.pull_request.head.sha || github.sha }}
+          path: var/evidence/p2-g1.json
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Verify installed dependencies
+        run: uv pip check
+
+      - name: Audit PostgreSQL integration dependencies
+        run: uv run --locked --extra dev --extra postgres pip-audit --skip-editable
+
+  phase34-postgis-integration:
+    name: Phase 3 P3.4 PostGIS integration
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgis:
+        image: postgis/postgis:18-3.6-alpine@sha256:eb2e8b8afd9b0ecee83bc20fd01aca62a5071bada2c0f38763174b653f8eed42
+        env:
+          POSTGRES_DB: hcam_phase34_test
+          POSTGRES_USER: hcam_phase34_test
+          POSTGRES_PASSWORD: synthetic-ci-password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U hcam_phase34_test -d hcam_phase34_test && psql -U hcam_phase34_test -d hcam_phase34_test -tAc 'SELECT postgis_lib_version()' >/dev/null"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+          --health-start-period 20s
+    env:
+      HCAM_DATABASE_URL: postgresql+psycopg://hcam_phase34_test:synthetic-ci-password@localhost:5432/hcam_phase34_test
+      HCAM_POSTGRES_TEST_URL: postgresql+psycopg://hcam_phase34_test:synthetic-ci-password@localhost:5432/hcam_phase34_test
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: Set up locked dependency environment
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.12.3"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+          activate-environment: true
+
+      - name: Install P3.4 integration dependencies
+        run: uv sync --locked --extra dev --extra analytics --extra postgres
+
+      - name: Verify PostGIS migration cycle
+        run: |
+          alembic upgrade 0011_geometry_events
+          alembic check
+          alembic downgrade 0010_generated_tracking
+          alembic upgrade 0011_geometry_events
+          alembic check
+
+      - name: Verify generated-only PostGIS behavior
+        run: pytest tests/test_phase34_postgres.py -q
+
+      - name: Verify installed dependencies
+        run: uv pip check
+
+  phase2-synthetic-lab:
+    name: Phase 2 synthetic 50-stream lab
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: Set up locked dependency environment
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.12.3"
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+          activate-environment: true
+
+      - name: Install lab dependencies
+        run: uv sync --locked --extra dev
+
+      - name: Generate source-bound P2-G2 Compose evidence
+        run: >-
+          python tools/phase2_publication_evidence.py compose
+          --confirm-synthetic-lab
+          --output var/evidence/p2-g2.json
+
+      - name: Stop the disposable stack
+        if: always()
+        run: python tools/phase2_lab.py stop
+
+      - name: Upload P2-G2 publication evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: phase2-p2-g2-${{ github.event.pull_request.head.sha || github.sha }}
+          path: var/evidence/p2-g2.json
+          if-no-files-found: error
+          retention-days: 7

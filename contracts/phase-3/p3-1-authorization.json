@@ -1,0 +1,95 @@
+{
+  "accountable_owner_id": "mayank-admin",
+  "authorization_id": "D-P3.1-001",
+  "authorized_on": "2026-08-24",
+  "contract_format": "hcam.phase3.p3-1-authorization.v1",
+  "decision_basis": "complete P3.1 planning and authorization",
+  "hardware_profile_id": "LAB-LAPTOP-01",
+  "implementation_scope": [
+    "versioned_manifest_and_report_schemas",
+    "deterministic_generated_metadata_and_assets",
+    "annotation_and_qa_specification",
+    "split_duplicate_and_leakage_validation",
+    "offline_generated_fixture_metrics",
+    "metadata_only_candidate_registry",
+    "source_license_provenance_research_without_downloads",
+    "clean_machine_reproducibility_and_evidence_index"
+  ],
+  "later_review_policy": {
+    "accountable_owner_review_sufficient": true,
+    "evidence_requirements_remain_mandatory": true,
+    "separate_person_review_required": false
+  },
+  "non_authorization": [
+    "external_dataset_or_font_download",
+    "model_checkpoint_or_weight_download",
+    "training_finetuning_export_or_inference",
+    "decoder_or_gpu_runtime_execution",
+    "sentinel_live_cctv_or_physical_camera_access",
+    "government_private_scraped_or_unreviewed_media",
+    "raw_camera_media_persistence",
+    "identity_watchlist_owner_lookup_or_sensitive_traits",
+    "operational_alerting_or_autonomous_action",
+    "p3_2_implementation",
+    "pilot_production_or_statewide_deployment"
+  ],
+  "p3_0_dependency": {
+    "required_status": "accepted",
+    "scope": "phase3.p3_0.contracts_and_guardrails"
+  },
+  "p3_1_exit_gates": [
+    "contracts_and_canonical_fixtures_pass",
+    "generated_only_source_proof_passes",
+    "annotation_qa_split_and_leakage_checks_pass",
+    "metric_goldens_and_determinism_pass",
+    "candidate_records_expose_all_unresolved_blockers",
+    "ci_is_offline_gpu_free_and_secret_free",
+    "developer_profile_baseline_is_reproducible",
+    "proposed_numeric_gates_are_owner_recorded",
+    "p3_1_evidence_and_limitations_are_owner_accepted"
+  ],
+  "source_tiers": [
+    {
+      "source_tier": "S0",
+      "state": "authorized",
+      "type": "generated_metadata_and_programmatic_assets"
+    },
+    {
+      "source_tier": "S1",
+      "state": "planning_only_requires_exact_owner_record",
+      "type": "team_created_media"
+    },
+    {
+      "source_tier": "S2",
+      "state": "research_only_no_download",
+      "type": "public_datasets_and_fonts"
+    },
+    {
+      "source_tier": "S3",
+      "state": "research_only_no_download",
+      "type": "public_model_code_and_artifacts"
+    },
+    {
+      "source_tier": "S4",
+      "state": "prohibited_requires_new_authorization",
+      "type": "owned_private_lab_camera_media"
+    },
+    {
+      "source_tier": "S5",
+      "state": "prohibited",
+      "type": "sentinel_government_police_scraped_or_private_data"
+    }
+  ],
+  "status": "authorized_for_implementation",
+  "work_packages": [
+    "P31-W1",
+    "P31-W2",
+    "P31-W3",
+    "P31-W4",
+    "P31-W5",
+    "P31-W6",
+    "P31-W7",
+    "P31-W8",
+    "P31-W9"
+  ]
+}

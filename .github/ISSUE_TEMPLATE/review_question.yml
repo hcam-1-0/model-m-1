@@ -1,0 +1,52 @@
+name: Review Question
+description: Capture a project owner, product, legal, security, or architecture question.
+title: "[Question]: "
+labels:
+  - question
+  - needs-review
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Product scope
+        - Phase movement
+        - Architecture
+        - CCTV environment
+        - AI model behavior
+        - Data governance
+        - Security and access
+        - Team workflow
+        - Demo or submission
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Write the exact question that needs an answer.
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: Options Or Recommendation
+      description: List candidate answers if known.
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact If Unanswered
+      description: Explain what work is blocked or risky without this answer.
+    validations:
+      required: true
+  - type: input
+    id: owner
+    attributes:
+      label: Owner
+      placeholder: Project owner, backend, AI, frontend, DevOps, data/GIS, product
+  - type: input
+    id: needed_by
+    attributes:
+      label: Needed By
+      description: Date, phase gate, milestone, or PR where the answer is needed.

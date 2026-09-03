@@ -1,0 +1,101 @@
+{
+  "approval": {
+    "decided_at": null,
+    "owner_id": "mayank-admin",
+    "reason": "Exact artifact remains research-only and unavailable",
+    "record_id": "pending-ocr-g0",
+    "status": "pending"
+  },
+  "artifact_identity": {
+    "blocker": "exact-guj-traineddata-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "blockers": [
+    "exact-guj-traineddata-unresolved",
+    "runtime-version-unresolved",
+    "training-lineage-unverified",
+    "model-card-unresolved",
+    "sbom-unresolved"
+  ],
+  "candidate_id": "OCR-G0",
+  "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+  "eligibility": "blocked",
+  "export_expectations": [
+    "tesseract-traineddata"
+  ],
+  "intended_role": "ocr_gujarati_fast",
+  "known_limits": [
+    "Fast integer model cannot be fine-tuned",
+    "Exact guj traineddata hash and plate-domain evidence are unresolved"
+  ],
+  "licenses": [
+    {
+      "commercial_or_government_use": "allowed",
+      "component": "code",
+      "license_id": {
+        "blocker": null,
+        "digest": null,
+        "state": "resolved",
+        "value": "Apache-2.0"
+      },
+      "notice_required": true,
+      "redistribution": "allowed"
+    },
+    {
+      "commercial_or_government_use": "allowed",
+      "component": "weights",
+      "license_id": {
+        "blocker": null,
+        "digest": null,
+        "state": "resolved",
+        "value": "Apache-2.0"
+      },
+      "notice_required": true,
+      "redistribution": "allowed"
+    }
+  ],
+  "lineage": {
+    "blocker": "training-lineage-unverified",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "manifest_digest": "sha256:1ab5a6b7a11dfafed5f0b4ce8de43b3c1c1f43a9e1112925d417ba64a899ccd1",
+  "model_card": {
+    "blocker": "model-card-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "recorded_at": "2026-08-24T12:45:00Z",
+  "runtime_expectations": [
+    "tesseract-lstm-runtime-unresolved"
+  ],
+  "sbom": {
+    "blocker": "sbom-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "semantic_version": "1.0.0",
+  "source_reference": {
+    "accessed_on": "2026-08-24",
+    "evidence_kind": "official_repository",
+    "no_download_performed": true,
+    "publisher": "Tesseract OCR",
+    "reference_id": "source-tessdata-fast",
+    "supports_claim": "Repository lists guj traineddata and its data license",
+    "title": "Tesseract fast traineddata repository",
+    "url": "https://github.com/tesseract-ocr/tessdata_fast"
+  },
+  "source_revision": {
+    "blocker": null,
+    "digest": null,
+    "state": "resolved",
+    "value": "87416418657359cb625c412a48b6e1d6d41c29bd"
+  },
+  "source_tier": "S3",
+  "supported_taxonomy": []
+}

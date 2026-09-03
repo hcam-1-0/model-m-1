@@ -1,0 +1,235 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_two_authorization_policy_decision_packet.v1",
+  "packet_id": "P36-CONSOLIDATED-TWO-AUTHORIZATION-POLICY-DECISIONS",
+  "status": "owner_decisions_and_consolidated_build_authorization_pending_non_effective",
+  "prepared_on": "2026-09-02",
+  "purpose": "replace_remaining_repetitive_owner_approval_messages_with_two_digest_bound_special_authorizations_while_retaining_fail_closed_internal_gates",
+  "superseded_only_if_exactly_accepted": [
+    "separate_U4B_source_implementation_authorization",
+    "separate_U4B_source_acceptance",
+    "separate_generated_controller_validation_planning_acceptance_and_runtime_authorization",
+    "separate_generated_validation_evidence_acceptance",
+    "separate_U3Z_runtime_retry_planning_and_authorization",
+    "separate_runtime_evidence_acceptance",
+    "separate_U3K_planning_authorization_and_acceptance",
+    "separate_Phase_3_closeout_authorization"
+  ],
+  "two_special_authorizations": [
+    {
+      "sequence": 1,
+      "decision_id": "D-P3.6-CONSOLIDATED-BUILD-AUTH",
+      "purpose": "select_the_policy_and_authorize_all_remaining_source_only_implementation_generated_static_validation_evidence_sealing_and_second_authorization_package_preparation",
+      "machine_runtime_or_PowerShell_execution": false
+    },
+    {
+      "sequence": 2,
+      "decision_id": "D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH",
+      "purpose": "accept_the_exact_build_bundle_and_authorize_bounded_generated_validation_runtime_binding_U3K_evidence_and_conditional_Phase_3_closeout",
+      "requires_exact_successfully_validated_build_and_action_package_digest": true
+    }
+  ],
+  "decisions": [
+    {
+      "decision_id": "D-P3.6-CA-001",
+      "title": "Authorization Topology",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": {
+        "A": {
+          "label": "Two special authorizations",
+          "effect": "one_source_build_authorization_followed_by_one_digest_bound_runtime_and_closeout_authorization",
+          "tradeoff": "removes_repetitive_approvals_while_preserving_the_source_to_machine_boundary"
+        },
+        "B": {
+          "label": "One master authorization",
+          "effect": "authorize_build_runtime_and_closeout_before_the_final_source_digest_exists",
+          "tradeoff": "fewest_messages_but_weakest_artifact_binding_and_largest_scope"
+        },
+        "C": {
+          "label": "Keep granular authorization",
+          "effect": "continue_the_existing_U4B_and_later_per_gate_owner_messages",
+          "tradeoff": "strongest_manual_control_but_slowest_completion"
+        },
+        "D": {
+          "label": "Pause Phase 3.6",
+          "effect": "perform_no_further_source_or_runtime_work",
+          "tradeoff": "no_new_risk_and_no_progress"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-CA-002",
+      "title": "Consolidated Build Scope",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": {
+        "A": {
+          "label": "Complete source build and prepare runtime package",
+          "effect": "authorize_twenty_exact_additive_paths_thirteen_bounded_sync_paths_generated_static_validation_evidence_and_the_second_authorization_package",
+          "tradeoff": "completes_every_non_machine_prerequisite_under_one_source_only_authorization"
+        },
+        "B": {
+          "label": "Implement U4B only",
+          "effect": "authorize_only_the_outer_controller_source_package",
+          "tradeoff": "requires_additional_approval_to_prepare_generated_validation_and_runtime_closeout"
+        },
+        "C": {
+          "label": "Planning and contracts only",
+          "effect": "authorize_no_executable_source_or_generated_test_implementation",
+          "tradeoff": "does_not_remove_the_current_blocker"
+        },
+        "D": {
+          "label": "No build authority",
+          "effect": "leave_U4B_and_all_later_source_work_pending",
+          "tradeoff": "no_progress"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-CA-003",
+      "title": "Source Remediation Budget",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": {
+        "A": {
+          "label": "Eight bounded source revision cycles",
+          "effect": "permit_up_to_eight_revision_validate_and_reseal_cycles_only_within_the_exact_build_paths_until_all_static_gates_pass",
+          "tradeoff": "normally_avoids_new_authorization_for_ordinary_source_test_corrections_without_widening_scope"
+        },
+        "B": {
+          "label": "Three revision cycles",
+          "effect": "permit_at_most_three_in_scope_source_corrections",
+          "tradeoff": "tighter_budget_but_higher_chance_of_another_owner_message"
+        },
+        "C": {
+          "label": "One implementation attempt",
+          "effect": "stop_after_the_first_static_failure",
+          "tradeoff": "minimal_iteration_and_likely_reauthorization"
+        },
+        "D": {
+          "label": "Unbounded source revisions",
+          "effect": "permit_any_number_of_changes_inside_the_path_allowlist",
+          "tradeoff": "fewer_interruptions_but_no_explicit_revision_budget"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-CA-004",
+      "title": "Runtime And U3K Scope",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": {
+        "A": {
+          "label": "Generated validation, runtime binding, and U3K",
+          "effect": "the_second_authorization_may_run_exact_package_bound_generated_PowerShell_validation_runtime_binding_and_controlled_U3K_storage_checks_with_at_most_three_same_digest_transient_attempts",
+          "tradeoff": "can_finish_P3_6_without_more_approval_messages_if_every_gate_passes"
+        },
+        "B": {
+          "label": "Generated validation and runtime binding only",
+          "effect": "exclude_U3K_machine_and_storage_validation",
+          "tradeoff": "requires_a_later_U3K_authorization_before_Phase_3_closure"
+        },
+        "C": {
+          "label": "Generated validation only",
+          "effect": "run_no_runtime_binding_or_storage action",
+          "tradeoff": "cannot_complete_P3_6_runtime_evidence"
+        },
+        "D": {
+          "label": "No runtime authority",
+          "effect": "retain_source_evidence_only",
+          "tradeoff": "Phase_3_remains_incomplete"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-CA-005",
+      "title": "Successful Closeout Effect",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": {
+        "A": {
+          "label": "Conditional closeout and one local commit",
+          "effect": "if_and_only_if_every_exact_gate_passes_record_acceptance_synchronize_docs_mark_Phase_3_complete_and_create_one_local_checkpoint_commit_without_push",
+          "tradeoff": "finishes_Phase_3_under_the_second_authorization_with_no_third_owner_message"
+        },
+        "B": {
+          "label": "Prepare evidence for owner acceptance",
+          "effect": "stop_after_successful_evidence_and_request_a_separate_closeout_acceptance",
+          "tradeoff": "retains_manual_final_acceptance_but_adds_a_third_message"
+        },
+        "C": {
+          "label": "Documentation only",
+          "effect": "synchronize_results_without_marking_Phase_3_complete_or_committing",
+          "tradeoff": "completion_remains_pending"
+        },
+        "D": {
+          "label": "No automatic closeout",
+          "effect": "perform_no_post_validation_state_transition",
+          "tradeoff": "requires_manual_recovery_and_acceptance"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-CA-006",
+      "title": "Supersession And Failure Policy",
+      "recommended_option": "A",
+      "selected_option": null,
+      "options": {
+        "A": {
+          "label": "Non-destructive overlay with fail-closed stop",
+          "effect": "preserve_all_historical_decisions_suspend_only_the_replaced_pending_gates_and_stop_on_scope_hash_trust_deterministic_or_exhausted_transient_failure_with_a_sanitized_backlog",
+          "tradeoff": "maintains_auditability_and_never_converts_failure_into_implicit_authority"
+        },
+        "B": {
+          "label": "Replace historical gates",
+          "effect": "rewrite_or_remove_superseded_records",
+          "tradeoff": "simpler_current_view_but_damages_audit_history"
+        },
+        "C": {
+          "label": "Continue after partial failure",
+          "effect": "allow_later_stages_to_run_after_an_earlier_gate_fails",
+          "tradeoff": "breaks_fail_closed_ordering"
+        },
+        "D": {
+          "label": "Allow automatic scope widening",
+          "effect": "permit_new_paths_actions_or_tools_when_blocked",
+          "tradeoff": "not_acceptable_for_a_digest_bound_security_boundary"
+        }
+      }
+    }
+  ],
+  "recommended_selection": "A/A/A/A/A/A",
+  "fixed_build_authority_if_recommended_selection_is_exactly_accepted": {
+    "maximum_source_revision_cycles": 8,
+    "exact_future_additive_path_count": 20,
+    "bounded_existing_synchronization_path_count": 13,
+    "machine_disabled_Python_generated_and_static_test_execution": true,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "runtime_hardware_machine_storage_scanner_or_network_observation": false,
+    "local_checkpoint_commit": false,
+    "push_or_remote_Git": false
+  },
+  "fixed_second_authorization_invariants": {
+    "exact_build_and_action_package_digest_required": true,
+    "owned_logical_node_only": "LAB-LAPTOP-01",
+    "maximum_total_runtime_attempts": 3,
+    "retry_only_allowlisted_transient_same_digest_failures": true,
+    "source_change_after_binding": false,
+    "raw_output_path_exception_fixture_environment_identity_or_security_material_retention": false,
+    "B_drive_access": false,
+    "F_drive_access_outside_exact_future_U3K_package": false,
+    "camera_media_private_or_Government_data_access": false,
+    "model_artifact_download_or_inference": false,
+    "network_trust_retrieval_install_update_container_Kubernetes_or_deployment": false,
+    "push_or_remote_Git": false,
+    "one_local_closeout_commit_only_after_all_gates_pass": true
+  },
+  "current_effect": {
+    "owner_policy_selection_pending": true,
+    "D_P3_6_CONSOLIDATED_BUILD_AUTH_requestable_after_package_sealing": false,
+    "U4B_or_consolidated_source_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_machine_storage_retry_U3K_or_closeout_authorized": false,
+    "commit_push_or_remote_Git_authorized": false
+  }
+}

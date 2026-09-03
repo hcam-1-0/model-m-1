@@ -1,0 +1,143 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_scanner_binding_r0_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-SCANNER-BINDING-R0-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U3E-BINDING-R0-AUTH",
+  "status": "owner_review_pending_non_effective",
+  "prepared_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "owner_input_binding": {
+    "statement_received": "i clesned f drive so work in there f drive have 50 gb free so use all that you need",
+    "candidate_volume": "F:",
+    "proposed_exact_root": "F:\\HCAM-Quarantine",
+    "owner_asserted_free_space_gb": 50,
+    "assertion_is_unverified": true,
+    "existing_project_root_excluded": "F:\\h cam",
+    "owner_prohibited_volume": "B:"
+  },
+  "accepted_policy_source": {
+    "path": "contracts/phase-3/p3-6-portable-r1-supply-chain-prerequisite-owner-decisions.json",
+    "sha256": "F68BDE02AF96E3992A8C64F1F01A85CAC960F529946EA12FA4899D9EBFC197A9",
+    "package_digest_sha256": "496F4A9C7D6325868283589EAA108F4A26C9CAE3F7BE49102685706CCC2AA16B",
+    "selection": "A/A/A/A/A"
+  },
+  "exact_inputs": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-research-sources.json",
+      "sha256": "1C9D7596547A92CA770E400E43E75875C3B78D510890C9E370A406593976D6D8",
+      "role": "owner_input_and_exact_local_policy_ledger"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-action-spec.json",
+      "sha256": "CAF7103CC0A2B5FF8AB8BDC7BEE72899DB329137FE89A652F3C1079E3E9BF036",
+      "role": "exact_storage_scanner_actions_timeouts_projection_failure_and_output_specification"
+    }
+  ],
+  "requested_owner_effect": {
+    "authorize_one_local_binding_attempt": true,
+    "exact_candidate_root": "F:\\HCAM-Quarantine",
+    "authorization_use_window_seconds": 86400,
+    "maximum_attempts": 1,
+    "storage_attestation_validity_seconds": 3600,
+    "permit_exact_root_creation_if_absent": true,
+    "permit_one_4096_byte_atomic_probe_and_cleanup": true,
+    "permit_bounded_Defender_metadata_query": true,
+    "permit_bounded_ModelScan_distribution_metadata_query": true,
+    "permit_scanner_execution_or_installation": false,
+    "failed_attempt_requires_new_authorization": true,
+    "action_spec_changes_require_new_package_and_authorization": true
+  },
+  "exact_future_actions_if_accepted": [
+    "verify_owner_acceptance_package_digest_and_every_core_file_hash_before_any_target_access",
+    "record_owner_acceptance_before_the_single_attempt",
+    "run_only_U3E_A01_through_U3E_A12_from_the_exact_action_spec",
+    "query_only_exact_F_drive_readiness_type_filesystem_total_and_available_capacity",
+    "canonicalize_and_validate_only_exact_F_HCAM_Quarantine_and_F_root_path_components",
+    "create_only_exact_F_HCAM_Quarantine_if_absent",
+    "classify_only_bounded_ACL_booleans_without_persisting_identity_data",
+    "perform_and_clean_only_the_exact_4096_byte_atomic_capability_probe",
+    "query_only_allowlisted_Microsoft_Defender_status_and_binary_metadata_without_scan_or_update",
+    "query_only_ModelScan_distribution_version_metadata_without_import_execution_install_or_download",
+    "record_the_HCAM_passive_inspector_as_not_implemented_and_not_bound_without_query_or_execution",
+    "write_only_the_exact_sanitized_authorization_result_and_evidence_paths"
+  ],
+  "exact_future_outputs_if_accepted": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-authorization.json",
+      "role": "owner_acceptance_record_written_before_any_F_or_scanner_metadata_action",
+      "contains_observed_machine_facts": false
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-result.json",
+      "role": "sanitized_storage_readiness_and_partial_scanner_binding_result",
+      "contains_observed_machine_facts": true
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-scanner-binding-r0-evidence.json",
+      "role": "bounded_attempt_hash_timeout_cleanup_and_failure_evidence",
+      "contains_observed_machine_facts": false
+    }
+  ],
+  "expected_non_promotional_outcome": {
+    "storage_result_may_be": [
+      "ready_until_observed_at_plus_3600_seconds",
+      "blocked_with_bounded_reason"
+    ],
+    "Defender_binding_may_be": [
+      "partial_candidate",
+      "unavailable_or_ambiguous"
+    ],
+    "ModelScan_binding_may_be": [
+      "partial_version_candidate",
+      "unavailable_or_version_mismatch"
+    ],
+    "passive_inspector_binding": "not_implemented_not_bound",
+    "scanner_chain_ready": false,
+    "R1_acquisition_authorization_issuable_from_this_attempt_alone": false,
+    "profile_or_model_promotion_claim": false
+  },
+  "fail_closed_conditions": [
+    "owner_statement_missing_or_package_digest_mismatch",
+    "authorization_use_window_expired_or_attempt_already_consumed",
+    "any_core_input_hash_mismatch",
+    "candidate_path_not_exactly_F_HCAM_Quarantine",
+    "F_not_ready_not_fixed_not_NTFS_or_ReFS_or_below_either_space_threshold",
+    "candidate_inside_F_h_cam_or_any_repository_cloud_network_mapped_removable_or_reparse_path",
+    "candidate_existing_as_file_nonempty_directory_or_broadly_writable_root",
+    "atomic_probe_collision_write_flush_readback_hash_rename_or_cleanup_failure",
+    "action_timeout_or_unlisted_access_required",
+    "network_install_update_scan_model_media_container_deployment_or_remote_Git_action_required"
+  ],
+  "continuing_non_authorization": [
+    "any_F_path_other_than_exact_F_root_and_F_HCAM_Quarantine",
+    "B_drive_F_h_cam_or_other_volume_access_or_modification",
+    "scanner_signature_platform_dependency_or_security_intelligence_update",
+    "Defender_ModelScan_or_passive_inspector_scan_or_execution",
+    "dependency_model_dataset_driver_or_container_install_or_download",
+    "artifact_acquisition_checkpoint_load_unpickle_import_conversion_or_export",
+    "inference_calibration_validation_benchmark_or_hardware_test",
+    "profile_resolution_admission_activation_or_promotion",
+    "container_Docker_Kubernetes_or_deployment_action",
+    "camera_stream_media_private_or_Government_data_access",
+    "product_or_dashboard_implementation",
+    "remote_git"
+  ],
+  "owner_acceptance_statement_template": "D-P3.6-U3E-BINDING-R0-AUTH: I, mayank-admin, authorize one local binding attempt against package digest <PACKAGE_DIGEST_SHA256> within 24 hours for exact candidate root F:\\HCAM-Quarantine. The attempt may query only F: readiness, fixed-drive type, NTFS/ReFS filesystem, total and free capacity, exact canonical/reparse/ACL properties; create only F:\\HCAM-Quarantine if absent; perform and clean one 4096-byte atomic create/flush/readback/rename probe; query only bounded Microsoft Defender and ModelScan metadata without scanner execution or updates; and write only the exact sanitized authorization, result, and evidence records. Failure consumes the authorization and requires a new digest-bound authorization. This does not authorize any other path or volume, B:, F:\\h cam, scanner execution, installation, update, download, artifact acquisition, checkpoint loading, inference, validation, hardware testing, media/data, containers/Kubernetes, implementation, deployment, or remote Git.",
+  "current_effect": {
+    "effective": false,
+    "owner_acceptance_record_exists": false,
+    "F_volume_attested": false,
+    "candidate_root_created_or_queried": false,
+    "storage_write_probe_authorized": false,
+    "scanner_metadata_query_authorized": false,
+    "scanner_execution_or_installation_authorized": false,
+    "artifact_acquisition_authorized": false,
+    "runtime_execution_authorized": false,
+    "profile_activation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  }
+}

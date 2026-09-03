@@ -1,0 +1,48 @@
+{
+  "authorized_at": "2026-08-27T15:09:12Z",
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-08-27",
+  "baseline_repository_head": "c0cb82b32f3ec399b64668da4600540c88b8c25e",
+  "branch": "codex/phase3-runtime-acceleration-planning",
+  "contract_format": "hcam.phase3.p3_6.planning_authorization.v1",
+  "decision_id": "D-P3.6-PLAN-AUTH",
+  "implementation_authorized": false,
+  "network_authority": {
+    "artifact_or_package_downloads": false,
+    "primary_source_documentation_reads": true,
+    "remote_git_actions": false
+  },
+  "next_milestone_authorized": false,
+  "owner_statement_received": "D-P3.6-PLAN-AUTH: Authorize planning and primary-source research only for P3.6 Runtime Acceleration and Scheduling. No downloads, runtime execution, GPU/hardware testing, containers, deployment, camera/media/data access, implementation, or remote Git actions.",
+  "planning_authorized": true,
+  "planning_deliverables": [
+    "runtime_candidate_roles_and_selection_triggers",
+    "hardware_profile_and_node_capability_schema_design",
+    "placement_admission_queue_batching_and_backpressure_design",
+    "reference_accelerator_parity_and_benchmark_design",
+    "c1_c10_c50_generated_workload_evidence_plan",
+    "artifact_runtime_driver_container_supply_chain_plan",
+    "degradation_rollback_observability_and_acceptance_plan",
+    "primary_source_research_record",
+    "owner_decision_packet_and_separate_implementation_start_gate"
+  ],
+  "prohibited_actions": [
+    "model_weight_dataset_source_package_driver_or_container_download",
+    "runtime_inference_decoder_scheduler_or_accelerator_execution",
+    "gpu_cpu_npu_decoder_or_hardware_performance_testing",
+    "docker_podman_kubernetes_or_other_container_execution",
+    "application_contract_migration_api_worker_scheduler_or_deployment_implementation",
+    "physical_camera_onvif_sentinel_stream_media_or_data_access",
+    "generated_public_private_government_police_or_external_dataset_access",
+    "model_training_finetuning_export_quantization_compilation_or_engine_build",
+    "dependency_lockfile_environment_driver_firmware_or_host_configuration_change",
+    "benchmark_performance_parity_capacity_cost_or_production_claim",
+    "pilot_production_statewide_or_other_deployment",
+    "remote_git_push_pull_request_merge_release_or_tag",
+    "p3_7_or_later_work"
+  ],
+  "record_id": "D-P3.6-PLAN-AUTH",
+  "scope": "phase3.p3_6.runtime_acceleration_and_scheduling.planning_and_primary_source_research_only",
+  "statement": "mayank-admin authorizes only P3.6 planning and read-only primary-source documentation research on the accepted P3.5 baseline. Every artifact, dependency, runtime, hardware, container, benchmark, media, data, implementation, deployment, remote Git, and later-milestone action remains separately gated.",
+  "status": "authorized"
+}

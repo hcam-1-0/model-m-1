@@ -1,0 +1,121 @@
+{
+  "contract_format": "hcam.phase3.p3_6.manifest_closure_resolver_r1_implementation_evidence.v1",
+  "evidence_id": "P36-MANIFEST-CLOSURE-RESOLVER-R1-IMPLEMENTATION-EVIDENCE",
+  "status": "source_generated_static_and_bounded_local_diagnostic_passed",
+  "recorded_on": "2026-09-03",
+  "decision_binding": {
+    "delegation": "contracts/phase-3/p3-6-combined-execution-delegation.json",
+    "delegation_sha256": "24A5D29CBA1B6DA990207EE2C4E7BD8DF8CB0DC2D36AD526461E494F8E5C3C09",
+    "U4E_planning_package_sha256": "C0BF901B7D66BE11A250F9369C5CE564A59A726E88877E4A77CD36F310997B7D",
+    "selected_options": "A/A/A/A/A"
+  },
+  "artifacts": [
+    {
+      "path": "contracts/phase-3/p3-6-manifest-closure-resolver-r1-contract.json",
+      "sha256": "1116F91CF2854A5549417D53B944852D4D4ADB0475FA7C7F2337BB0E13CABAC7",
+      "bytes": 3084,
+      "role": "typed_field_aware_resolver_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-manifest-closure-resolver-r1-vectors.json",
+      "sha256": "265BE94AC5AE034E25270C642D1488D7F73F4DBA7D38A715502C87957D4611D3",
+      "bytes": 936888,
+      "role": "512_materialized_generated_boundary_vectors"
+    },
+    {
+      "path": "tools/phase36_manifest_closure_resolver_r1_reference.py",
+      "sha256": "8C9EF240FC7200839B8210DBA1CEAA469C697E92C6D7D40BA2BC0F175A2AB249",
+      "bytes": 11577,
+      "role": "machine_disabled_reference_policy"
+    },
+    {
+      "path": "tools/phase36_manifest_closure_resolver_r1.psm1",
+      "sha256": "C37C4D60DB0CA71AA2E30F3E1254143B902B42E84AA0E98CD8F9B7B5F863AB8A",
+      "bytes": 12337,
+      "role": "authoritative_PowerShell_policy_module"
+    },
+    {
+      "path": "tools/generate_phase36_manifest_closure_vectors.py",
+      "sha256": "0F2E2AC1C0485728BE1C4E8C13B09E08F348954513195EEB154A0CFBEF264980",
+      "bytes": 7063,
+      "role": "deterministic_generated_vector_builder"
+    },
+    {
+      "path": "tests/test_phase36_manifest_closure_resolver_r1_contract.py",
+      "sha256": "FDE672E23C405658A88B3192FBC95878718C7BE6B33D6D2DD104003ECCCA2288",
+      "bytes": 3840,
+      "role": "contract_delegation_and_vector_validation"
+    },
+    {
+      "path": "tests/test_phase36_manifest_closure_resolver_r1_reference.py",
+      "sha256": "E09D864FB0E2383974C08EDB4BE8BC6B093790A1D8A4AE6A51DDD8152D2149F5",
+      "bytes": 3721,
+      "role": "512_case_reference_and_machine_disabled_validation"
+    },
+    {
+      "path": "tests/test_phase36_manifest_closure_resolver_r1_powershell_static.py",
+      "sha256": "6D65E994B09BBAB2A700D1742958140F3759A38E85C03BA581E8DCC492683152",
+      "bytes": 2088,
+      "role": "PowerShell_surface_and_fail_closed_static_validation"
+    },
+    {
+      "path": "tests/test_phase36_consolidated_runtime_closeout_r2_authorization_proposal.py",
+      "sha256": "43048443B974D34521CCA82799BB29390E78ABE6B52AAEBB11C4A2576C45DC13",
+      "bytes": 8877,
+      "role": "hash_bound_immutable_R2_history_compatibility_transition"
+    }
+  ],
+  "generated_validation": {
+    "vector_count": 512,
+    "group_count": 16,
+    "cases_per_group": 32,
+    "focused_pytest_passed": 530,
+    "focused_pytest_failed": 0,
+    "full_Phase_3_6_test_files": 77,
+    "full_Phase_3_6_pytest_passed": 2573,
+    "full_Phase_3_6_pytest_failed": 0,
+    "Ruff": "passed",
+    "git_diff_check": "passed_with_line_ending_warnings_only"
+  },
+  "PowerShell_source_validation": {
+    "exact_runtime_family": "PowerShell_7_on_Windows",
+    "module_import_passed": true,
+    "canonical_projection_emitted": true,
+    "contract_version": "1.1.0",
+    "exported_function_count": 3,
+    "policy_execution_against_generated_or_machine_input": false
+  },
+  "bounded_local_diagnostic": {
+    "scope": "exact_installed_Microsoft_PowerShell_Utility_manifest_and_its_single_declared_NestedModules_value",
+    "manifest_sha256": "D103110AAE93CA1061FAB8ADD8F00EA6110740AC94B236654D0EFB0B08654AAA",
+    "manifest_bytes": 16826,
+    "declared_nested_module_count": 1,
+    "declared_nested_module_class": "bare_DLL_name",
+    "manifest_directory_candidate_present": false,
+    "PSHome_candidate_present": true,
+    "PSHome_candidate_bytes": 1652504,
+    "PSHome_candidate_sha256": "2F6201BB3CAF4C08158BE733E786DD85B11537694F7E6AB40356FC0727A3596F",
+    "local_Authenticode_status": "Valid",
+    "local_signature_type": "Authenticode",
+    "diagnostic_confirms_R2_failure_class": true,
+    "diagnostic_is_not_cache_only_WinVerifyTrust_closeout_evidence": true,
+    "raw_path_manifest_text_parser_token_exception_or_security_material_retained": false
+  },
+  "confirmed_behavior": {
+    "path_valued_entries_are_manifest_relative": true,
+    "bare_NestedModules_or_RequiredAssemblies_binary_names_use_exact_ordered_manifest_then_PSHome_candidates": true,
+    "dual_present_candidates_fail_ambiguous": true,
+    "missing_load_bearing_targets_fail_closed": true,
+    "missing_non_code_FileList_inventory_is_counted_and_allowed": true,
+    "missing_code_like_FileList_target_fails_closed": true,
+    "absolute_URI_wildcard_variable_expression_traversal_escape_reparse_untrusted_duplicate_and_overbound_inputs_fail_closed": true,
+    "terminal_result_retains_only_reason_field_base_and_counts": true
+  },
+  "remaining_gate": {
+    "U4F_source_and_generated_validation_complete": true,
+    "R3_exact_action_spec_and_runtime_closeout_complete": false,
+    "U3K_storage_attempt_complete": false,
+    "Phase_3_complete": false,
+    "push_or_remote_Git_performed": false
+  }
+}

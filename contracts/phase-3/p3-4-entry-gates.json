@@ -1,0 +1,52 @@
+{
+  "contract_format": "hcam.phase3.p3_4.entry_gates.v3",
+  "decisions": [
+    {
+      "decided_by": "mayank-admin",
+      "decided_on": "2026-08-25",
+      "decision_id": "D-P3.4-001",
+      "selected_option": "hybrid_shapely_2_1_2_runtime_and_postgis_authoritative_geometry",
+      "status": "owner_approved",
+      "topic": "geometry_engine_and_precision_model"
+    },
+    {
+      "decided_by": "mayank-admin",
+      "decided_on": "2026-08-25",
+      "decision_id": "D-P3.4-002",
+      "selected_option": "visual_rule_graph_typed_temporal_nodes_and_constrained_cel",
+      "status": "owner_approved",
+      "topic": "spatial_and_event_semantics"
+    },
+    {
+      "decided_by": "mayank-admin",
+      "decided_on": "2026-08-25",
+      "decision_id": "D-P3.4-003",
+      "selected_option": "balanced_event_time_sequence_ordering_bounded_lateness_and_deterministic_replay",
+      "status": "owner_approved",
+      "topic": "time_schedule_replay_and_deduplication"
+    },
+    {
+      "decided_by": "mayank-admin",
+      "decided_on": "2026-08-25",
+      "decision_id": "D-P3.4-004",
+      "selected_option": "bounded_postgresql_postgis_state_transactional_outbox_inherited_retention_and_c10_evidence",
+      "status": "owner_approved",
+      "topic": "persistence_resources_retention_and_validation"
+    },
+    {
+      "decided_by": "mayank-admin",
+      "decided_on": "2026-08-25",
+      "decision_id": "D-P3.4-START",
+      "selected_option": "authorize_generated_only_implementation_after_gates_001_through_004",
+      "status": "owner_approved",
+      "topic": "implementation_authorization"
+    }
+  ],
+  "implementation_authorized": true,
+  "implementation_authorization_record": "p3-4-start-authorization.json",
+  "manual_gate_count": 0,
+  "owner_decision_record": "p3-4-owner-decisions.json",
+  "owner_decisions_completed": 4,
+  "scope": "phase3.p3_4.geometry_and_event_primitives.generated_only_entry",
+  "status": "implementation_authorized_generated_only"
+}

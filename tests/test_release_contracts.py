@@ -10,7 +10,7 @@ def test_tracked_release_contracts_match_current_application() -> None:
     assert release_contracts.check_contracts() == 0
 
 
-def test_release_contracts_cover_phase0_to_phase2_boundaries() -> None:
+def test_release_contracts_cover_phase0_to_phase3_boundaries() -> None:
     openapi = json.loads(
         release_contracts.OPENAPI_SNAPSHOT.read_text(encoding="utf-8")
     )
@@ -23,6 +23,14 @@ def test_release_contracts_cover_phase0_to_phase2_boundaries() -> None:
     assert "/cameras" in paths
     assert "/streams/{stream_id}/capability-refreshes" in paths
     assert "/streams/{stream_id}/onvif/ptz-commands" in paths
+    assert "/streams/{stream_id}/analytics-assignments" in paths
+    assert "/analytics-assignments/{assignment_id}" in paths
+    assert "/analytics-assignments/{assignment_id}/revisions" in paths
+    assert "/analytics-assignments/{assignment_id}/generated-tracking-runs" in paths
+    assert "/analytics-tracking-runs/{run_id}" in paths
+    assert "/analytics-tracking-runs/{run_id}/epochs" in paths
+    assert "/analytics-tracking-runs/{run_id}/tracks" in paths
+    assert "/analytics-tracking-runs/{run_id}/lifecycle" in paths
 
     tables = {table["name"]: table for table in database["tables"]}
     assert {
@@ -32,12 +40,25 @@ def test_release_contracts_cover_phase0_to_phase2_boundaries() -> None:
         "stream_endpoints",
         "stream_capability_refreshes",
         "onvif_operation_runs",
+        "analytics_assignments",
+        "analytics_assignment_revisions",
+        "analytics_tracking_runs",
+        "analytics_tracker_epochs",
+        "analytics_tracks",
+        "analytics_track_lifecycle",
     }.issubset(tables)
     operation_checks = " ".join(
         str(item["sql"])
         for item in tables["onvif_operation_runs"]["check_constraints"]
     )
     assert "capability_discover_sync" in operation_checks
+    assignment_checks = " ".join(
+        str(item["sql"])
+        for item in tables["analytics_assignments"]["check_constraints"]
+    )
+    assert "desired_state = 'paused'" in assignment_checks
+    assert "lifecycle_state = 'blocked'" in assignment_checks
+    assert "reason_code = 'owner_gates_pending'" in assignment_checks
 
 
 def test_contract_writer_requires_explicit_review_acknowledgment(

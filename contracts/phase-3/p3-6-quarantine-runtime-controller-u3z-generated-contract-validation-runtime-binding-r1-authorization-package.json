@@ -1,0 +1,140 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3z_generated_contract_validation_runtime_binding_r1_authorization_package.v1",
+  "package_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3Z-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-AUTHORIZATION-PACKAGE",
+  "decision_id": "D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-AUTH",
+  "status": "sealed_non_effective_owner_authorization_pending_no_attempt_performed",
+  "sealed_on": "2026-09-02",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-harness-implementation-acceptance.json",
+    "acceptance_sha256": "38B89E53B46F921663879DE0614AF318EDF9B66AB36120663D14F61070AD8477",
+    "accepted_implementation_package_sha256": "47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF",
+    "effect": "prepare_only_this_non_effective_U3Z_R1_authorization_package"
+  },
+  "core_file_count": 16,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-harness-implementation-acceptance.json",
+      "sha256": "38B89E53B46F921663879DE0614AF318EDF9B66AB36120663D14F61070AD8477",
+      "role": "exact_owner_source_implementation_acceptance_and_proposal_preparation_authority"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-harness-implementation-package.json",
+      "sha256": "47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF",
+      "role": "accepted_U3Z_H1_source_and_generated_static_implementation_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-harness-implementation-evidence.json",
+      "sha256": "660E3C6F0EAEC98464215EEAC1CB4F946C76FC5FD6D44EC27C05F51F641B3E8F",
+      "role": "accepted_nonobservational_U3Z_H1_source_and_generated_static_evidence"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-harness-evidence-review.md",
+      "sha256": "613CBFAC2892B9CBC07A65E02F17ABEA7A5D3EE9CCA30CC5072884088BB0BC73",
+      "role": "accepted_human_evidence_review_and_limitations"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-implementation-package.json",
+      "sha256": "ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78",
+      "role": "accepted_U3Y_controller_R1_implementation_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-implementation-acceptance.json",
+      "sha256": "1D4F58F792CDA447E0DB369924BB2004F6CC7300484D2660755FC545ABC3C1F5",
+      "role": "exact_U3Y_controller_R1_source_acceptance"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-planning-package.json",
+      "sha256": "B9696A95EF14D186C7D2CC8D949EE711C2621E907DAD28AF4FC192B2A1A1F09A",
+      "role": "historical_U3Z_source_implementation_authorization_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-action-spec.json",
+      "sha256": "2616CFEC77C6D0CA390FA58573FED25A1123209C51EFC472DCBDC3A6B45D94B4",
+      "role": "exact_bounded_single_attempt_runtime_binding_and_generated_validation_action_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-authorization-proposal.json",
+      "sha256": "74FA37993513B059D11FB12930B6904136979E87812AAA0729B67F3358CA94E4",
+      "role": "non_effective_exact_owner_authorization_request"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-authorization-proposal.md",
+      "sha256": "80092F9C806FAEBC08542FF1F564C6E2F646A139CFE2C696649B328E92C579A1",
+      "role": "human_reviewable_attempt_scope_limits_and_gate"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1_generated_validation.ps1",
+      "sha256": "D9EE5CC7599AACCE3363CE5C29EE479D777F94CF886AE779390B7027C40FA382",
+      "role": "accepted_exact_hash_bound_generated_contract_validation_harness"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-vectors.json",
+      "sha256": "7BCDFCA583644BD4ED5F4B747C3969B4C9FF4029B48734F8BD4D90BA5D600A21",
+      "role": "accepted_exactly_288_materialized_generated_only_cases"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1.ps1",
+      "sha256": "787655BAC55DDF563E9D1DC43EC37F010C271AB381E541B0734028E3F2B90B31",
+      "role": "accepted_authoritative_controller_R1_source"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-contract.json",
+      "sha256": "637C5400122874149D9835CC6BC521E5EEC9160222F4A7AC5CA1F6CD99E1BCC4",
+      "role": "accepted_controller_R1_wire_and_stage_projection_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-vectors.json",
+      "sha256": "D8EDF5C0255B40FB6C28BB014C09DC503D2B53665E69C5AA5AB65C744AEA81E4",
+      "role": "accepted_288_vector_generated_only_source_manifest"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1_reference.py",
+      "sha256": "B5C7328CD666E0A8988F9B616C5B2A914D690A40BF2EA289C1F1C755E42B86F0",
+      "role": "accepted_machine_disabled_reference_identity_only_not_executed"
+    }
+  ],
+  "attempt_contract": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "exact_runtime_path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "maximum_attempts": 1,
+    "authorization_window_seconds": 86400,
+    "failed_attempt_consumes_authorization": true,
+    "automatic_retry": false,
+    "total_timeout_seconds": 120,
+    "maximum_stdout_bytes": 16384,
+    "maximum_stderr_bytes": 0,
+    "maximum_result_bytes": 32768,
+    "generated_contract_cases": 288,
+    "PowerShell_process_count": 1,
+    "controller_dot_source_count": 1,
+    "Python_execution_count": 0,
+    "machine_storage_scanner_network_model_media_or_deployment_scope": false
+  },
+  "future_owner_authorization_statement_template": "D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-AUTH: I, mayank-admin, authorize one fresh runtime-binding and controller R1 generated-contract-validation attempt against package digest <U3Z_R1_AUTHORIZATION_PACKAGE_DIGEST_SHA256> within 24 hours on LAB-LAPTOP-01. The attempt may verify and record the exact authorization; classify, size, version, hash, and cache-only no-UI whole-chain-excluding-root trust-check only C:\\Program Files\\PowerShell\\7\\pwsh.exe and its three fixed parent components without trust retrieval; verify exact harness SHA-256 D9EE5CC7599AACCE3363CE5C29EE479D777F94CF886AE779390B7027C40FA382, materialized 288-vector manifest SHA-256 7BCDFCA583644BD4ED5F4B747C3969B4C9FF4029B48734F8BD4D90BA5D600A21, controller SHA-256 787655BAC55DDF563E9D1DC43EC37F010C271AB381E541B0734028E3F2B90B31, controller-contract SHA-256 637C5400122874149D9835CC6BC521E5EEC9160222F4A7AC5CA1F6CD99E1BCC4, source-vector SHA-256 D8EDF5C0255B40FB6C28BB014C09DC503D2B53665E69C5AA5AB65C744AEA81E4, and machine-disabled reference SHA-256 B5C7328CD666E0A8988F9B616C5B2A914D690A40BF2EA289C1F1C755E42B86F0; invoke the exact runtime once with NoLogo, NoProfile, NonInteractive and the exact hash-bound harness; allow it to dot-source only the exact controller R1 source; execute exactly 288 generated-only Policy cases; enforce a 120-second timeout, 16 KiB stdout, zero stderr, and 32 KiB result; accept only the six allowlisted sanitized terminal reason codes; reverify runtime, parents, and all six source identities; and write only the three bounded sanitized authorization, result, and evidence records. Failure consumes the authorization and requires new digest-bound authorization. This does not authorize alternate runtime, parent, checkout, source, module, or hardware discovery; Utility-manifest, module-closure, Aggregate validation, PATH, PSModulePath, registry, WMI, package, or directory inventory; Python execution, machine access, or fallback; machine, storage, F:, B:, ACL, identity, probe, cleanup, Defender, or scanner action; network or trust retrieval; downloads, artifacts, models, inference, cameras, media, private or Government data, containers, Kubernetes, profile activation, deployment, U3K, commit, push, or remote Git. Any further attempt or U3K package requires separate accepted successful U3Z R1 evidence and later explicit authorization.",
+  "sequence_after_exact_authorization": [
+    "record_exact_digest_bound_U3Z_R1_authorization_before_any_observation",
+    "perform_at_most_one_attempt_within_twenty_four_hours",
+    "seal_bounded_sanitized_success_or_failure_result_and_evidence",
+    "obtain_separate_exact_owner_U3Z_R1_evidence_acceptance",
+    "keep_U3K_blocked_until_successful_current_U3Z_R1_evidence_is_separately_accepted"
+  ],
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_authorization_package_digest_and_is_not_self_embedded",
+  "current_gate_effect": {
+    "package_prepared": true,
+    "owner_U3Z_R1_authorization_pending": true,
+    "D_P3_6_U3Z_CONTROLLER_R1_GENERATED_CONTRACT_VALIDATION_RUNTIME_BINDING_R1_AUTH_requestable": true,
+    "attempts_authorized": 0,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "Python_execution_machine_access_or_fallback_authorized": false,
+    "machine_storage_F_B_ACL_probe_cleanup_or_scanner_action_authorized": false,
+    "network_download_artifact_model_camera_media_or_data_action_authorized": false,
+    "container_Kubernetes_profile_activation_deployment_U3K_commit_push_or_remote_Git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "authorization_may_be_inferred_from_acceptance_continue_package_preparation_or_static_validation": false
+}

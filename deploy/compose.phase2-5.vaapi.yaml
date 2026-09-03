@@ -1,0 +1,8 @@
+services:
+  publisher:
+    devices:
+      - /dev/dri:/dev/dri
+    group_add:
+      - ${HCAM_RENDER_GID:-109}
+    environment:
+      HCAM_PHASE2_5_CONTAINER_ACCELERATOR: vaapi

@@ -1,0 +1,150 @@
+{
+  "artifact_count": 7,
+  "artifacts": [
+    {
+      "artifact_id": "OCR-L0-PPOCRV6-SMALL-INFER-PROPOSED",
+      "bytes": 21442560,
+      "candidate_id": "OCR-L0",
+      "content_type": "application/octet-stream",
+      "kind": "model_archive",
+      "license_evidence": "Apache-2.0 publisher project license; archive contains no embedded license",
+      "sha256": "DA460F968CE9F88325AC3A34FA302077D6E9B0DCEFB16BA3137CD7796F879D06",
+      "structure": {
+        "file_count": 3,
+        "inventory_sha256": "0B3BF06EA6C42F82D0BCC0B2054B1BE172032F83A464719978C94B90D994D6B4",
+        "member_count": 4,
+        "top_level": "PP-OCRv6_small_rec_infer",
+        "unpacked_bytes": 21433201
+      }
+    },
+    {
+      "artifact_id": "OCR-L1-PPOCRV6-MEDIUM-INFER-PROPOSED",
+      "bytes": 76851200,
+      "candidate_id": "OCR-L1",
+      "content_type": "application/octet-stream",
+      "kind": "model_archive",
+      "license_evidence": "Apache-2.0 publisher project license; archive contains no embedded license",
+      "sha256": "4EECC1C6A4623765042E6FC15446DA0DA110B7D875B6B72B2D351D2B2DBD4DA6",
+      "structure": {
+        "file_count": 3,
+        "inventory_sha256": "FEF17C028D0F4AB877E889F4B2DD7F42DC0CA76181C6A5AD5D8EF6B4FEF6AF79",
+        "member_count": 4,
+        "top_level": "PP-OCRv6_medium_rec_infer",
+        "unpacked_bytes": 76837481
+      }
+    },
+    {
+      "artifact_id": "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED",
+      "bytes": 8069120,
+      "candidate_id": "OCR-D0",
+      "content_type": "application/octet-stream",
+      "kind": "model_archive",
+      "license_evidence": "Apache-2.0 publisher project license; archive contains no embedded license",
+      "sha256": "AC8279D27FC7E8CDA559364F9A3C506F43984CF6BA5E1B7A06450458BFE07DFB",
+      "structure": {
+        "file_count": 4,
+        "inventory_sha256": "E8AAC0F93D983B84D1C55A5058618A4866B0F66521E29583CE589E79AA6F68CF",
+        "member_count": 5,
+        "top_level": "devanagari_PP-OCRv5_mobile_rec_infer",
+        "unpacked_bytes": 8059056
+      }
+    },
+    {
+      "artifact_id": "OCR-G0-TESSDATA-FAST-GUJ-PROPOSED",
+      "bytes": 1418394,
+      "candidate_id": "OCR-G0",
+      "git_blob_sha1": "151b9aad2945e3103118e5d36eee288f631d985a",
+      "kind": "tesseract_traineddata",
+      "license_evidence": "Apache-2.0 at exact source revision",
+      "sha256": "FA69658614B4946A9AFAE8853D67E0689838803DFA3D12C2E35EC53EE6F8DF34",
+      "structure": {
+        "format": "tesseract_traineddata",
+        "header_hex": "18000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+      }
+    },
+    {
+      "artifact_id": "OCR-G1-TESSDATA-BEST-GUJ-PROPOSED",
+      "bytes": 8515761,
+      "candidate_id": "OCR-G1",
+      "git_blob_sha1": "2284f7e1c8aeecd01cc1a4c01315b1d739ba762a",
+      "kind": "tesseract_traineddata",
+      "license_evidence": "Apache-2.0 at exact source revision",
+      "sha256": "8CBB1D139B63434B9E1154A3B51930A74EC1C9A6251B95D86D74D7F1CD706ED6",
+      "structure": {
+        "format": "tesseract_traineddata",
+        "header_hex": "18000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
+      }
+    },
+    {
+      "artifact_id": "FONT-G0-NOTO-SANS-GUJARATI-VARIABLE-PROPOSED",
+      "bytes": 672904,
+      "candidate_id": "FONT-G0",
+      "git_blob_sha1": "3c760c2d69bf49c43d6fa2a0bed24c1b59263b43",
+      "kind": "font",
+      "license_evidence": "OFL-1.1 at exact source revision",
+      "sha256": "9901D8552F1DD5D2C50DBD4CAA6F6E174E74E8264F06594AB259AE6E7B1AC428",
+      "structure": {
+        "format": "sfnt",
+        "signature_hex": "00010000",
+        "table_count": 20,
+        "variable_font": true
+      }
+    },
+    {
+      "artifact_id": "FONT-D0-NOTO-SANS-DEVANAGARI-VARIABLE-PROPOSED",
+      "bytes": 647144,
+      "candidate_id": "FONT-D0",
+      "git_blob_sha1": "e703d5282088c4b7787b1a4c5f057cf18f0998d6",
+      "kind": "font",
+      "license_evidence": "OFL-1.1 at exact source revision",
+      "sha256": "9CE7B04F60E363D8870E5997744CF85CF69D38A4D7D129D364D92A3B14B461D7",
+      "structure": {
+        "format": "sfnt",
+        "signature_hex": "00010000",
+        "table_count": 20,
+        "variable_font": true
+      }
+    }
+  ],
+  "authorization_id": "D-P3.5-ARTIFACT-RESEARCH",
+  "contract_format": "hcam.phase3.p3_5.artifact-review-evidence.v1",
+  "defender_scan": {
+    "engine": "Microsoft Defender",
+    "exit_code": 0,
+    "finding": "no_threats_found",
+    "recorded_at": "2026-08-26T12:39:49Z",
+    "signature_version": "1.457.345.0"
+  },
+  "evidence_id": "P3.5-EXACT-ARTIFACT-REVIEW-R1",
+  "failed_storage_attempts": [
+    {
+      "outcome": "stopped_one_verified_artifact_and_receipt_retained_no_partial_file",
+      "reason": "insufficient_space",
+      "volume": "F"
+    },
+    {
+      "outcome": "not_used",
+      "reason": "virtual_provider_not_visible_to_python_filesystem",
+      "volume": "B"
+    }
+  ],
+  "implementation_authorized": false,
+  "inspection": {
+    "archive_extraction_performed": false,
+    "artifact_bytes": 117617083,
+    "passive_structure_status": "pass",
+    "runtime_execution_performed": false
+  },
+  "primary_quarantine_root": "E:\\h-cam-research-cache\\phase-3\\p3-5",
+  "proposal_id": "P3.5-EXACT-ARTIFACT-REVIEW-PROPOSAL-R0",
+  "proposal_sha256": "8A027E0C8310C900C7DCA7BDFF0144B9E4E003BCAC1A31853C501226165EAD69",
+  "remaining_blocks": [
+    "paddle_training_dataset_lineage_is_not_fully_disclosed_by_the_archives",
+    "exact_python_and_native_runtime_dependency_closure_is_not_acquired_or_scanned",
+    "exact_tesseract_engine_build_is_not_selected_or_available_locally",
+    "PLATE-D0_internal_detector_is_not_built_or_authorized",
+    "no_artifact_is_approved_for_runtime_execution",
+    "final_digest_bound_D-P3.5-START_confirmation_is_pending"
+  ],
+  "status": "artifact_evidence_complete_runtime_research_pending"
+}

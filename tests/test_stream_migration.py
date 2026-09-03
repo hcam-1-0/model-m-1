@@ -1,16 +1,17 @@
 from __future__ import annotations
 
 import hashlib
+import json
 from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
 from alembic import command
 from alembic.config import Config
-from sqlalchemy import inspect, select
+from sqlalchemy import inspect, select, text
 from sqlalchemy.exc import IntegrityError
 
-from hcam.camera_registry.models import Camera
+from hcam.analytics.models import AnalyticsAssignment, AnalyticsAssignmentRevision
 from hcam.database import Database
 from hcam.streams.models import (
     OnvifControlLease,
@@ -34,25 +35,40 @@ def _downgrade(database_url: str, revision: str) -> None:
     command.downgrade(config, revision)
 
 
-def _legacy_camera() -> Camera:
+def _insert_legacy_camera(session) -> None:
     now = datetime.now(UTC)
-    return Camera(
-        camera_id="legacy:cctv-001",
-        source_id="legacy",
-        external_id="cctv-001",
-        display_name="Legacy CCTV 001",
-        department="Traffic",
-        selected_url="https://media.test.local/live/cctv-001/index.m3u8",
-        delivery_type="hls",
-        codec="h264",
-        container="hls",
-        reachability="healthy",
-        last_checked_at=now,
-        source_schema="hcam.camera_registry.seed.v1",
-        provenance={"kind": "synthetic-test"},
-        imported_at=now,
-        created_at=now,
-        updated_at=now,
+    session.execute(
+        text(
+            "INSERT INTO cameras ("
+            "camera_id, version_id, source_id, external_id, display_name, "
+            "department, selected_url, delivery_type, codec, container, "
+            "reachability, last_checked_at, source_schema, provenance, "
+            "imported_at, created_at, updated_at"
+            ") VALUES ("
+            ":camera_id, 1, :source_id, :external_id, :display_name, "
+            ":department, :selected_url, :delivery_type, :codec, :container, "
+            ":reachability, :last_checked_at, :source_schema, :provenance, "
+            ":imported_at, :created_at, :updated_at"
+            ")"
+        ),
+        {
+            "camera_id": "legacy:cctv-001",
+            "source_id": "legacy",
+            "external_id": "cctv-001",
+            "display_name": "Legacy CCTV 001",
+            "department": "Traffic",
+            "selected_url": "https://media.test.local/live/cctv-001/index.m3u8",
+            "delivery_type": "hls",
+            "codec": "h264",
+            "container": "hls",
+            "reachability": "healthy",
+            "last_checked_at": now,
+            "source_schema": "hcam.camera_registry.seed.v1",
+            "provenance": json.dumps({"kind": "synthetic-test"}),
+            "imported_at": now,
+            "created_at": now,
+            "updated_at": now,
+        },
     )
 
 
@@ -67,7 +83,7 @@ def test_stream_migration_backfills_and_round_trips(
     database = Database(database_url, allow_unversioned_schema=True)
     try:
         with database.session_factory.begin() as session:
-            session.add(_legacy_camera())
+            _insert_legacy_camera(session)
 
         _upgrade(database_url, "head")
         inspector = inspect(database.engine)
@@ -85,6 +101,8 @@ def test_stream_migration_backfills_and_round_trips(
             "onvif_max_move_seconds",
         }.issubset(stream_columns)
         assert {
+            AnalyticsAssignment.__tablename__,
+            AnalyticsAssignmentRevision.__tablename__,
             OnvifControlLease.__tablename__,
             OnvifOperationRun.__tablename__,
             StreamCapabilitySnapshot.__tablename__,

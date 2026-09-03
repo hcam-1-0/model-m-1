@@ -1,0 +1,89 @@
+{
+  "approval": {
+    "decided_at": null,
+    "owner_id": "mayank-admin",
+    "reason": "Exact artifact remains research-only and unavailable",
+    "record_id": "pending-trk-r0",
+    "status": "pending"
+  },
+  "artifact_identity": {
+    "blocker": "exact-code-package-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "blockers": [
+    "exact-code-package-unresolved",
+    "dependency-license-review-pending",
+    "integration-lineage-unverified",
+    "model-card-not-applicable-record-pending",
+    "sbom-unresolved"
+  ],
+  "candidate_id": "TRK-R0",
+  "contract_type": "hcam.analytics.candidate-artifact-manifest.v1",
+  "eligibility": "blocked",
+  "export_expectations": [
+    "no-model-export"
+  ],
+  "intended_role": "stream_local_tracker",
+  "known_limits": [
+    "Tracker behavior depends on detector confidence and frame cadence",
+    "Cross-camera identity and person re-identification are prohibited"
+  ],
+  "licenses": [
+    {
+      "commercial_or_government_use": "allowed",
+      "component": "code",
+      "license_id": {
+        "blocker": null,
+        "digest": null,
+        "state": "resolved",
+        "value": "MIT"
+      },
+      "notice_required": true,
+      "redistribution": "allowed"
+    }
+  ],
+  "lineage": {
+    "blocker": "training-lineage-unverified",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "manifest_digest": "sha256:2af8b4b3bb4855b186f4bef4aba023e70c449e2fb738a987658cc5e0bebee505",
+  "model_card": {
+    "blocker": "model-card-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "recorded_at": "2026-08-24T12:45:00Z",
+  "runtime_expectations": [
+    "stream-local-association-only"
+  ],
+  "sbom": {
+    "blocker": "sbom-unresolved",
+    "digest": null,
+    "state": "unresolved",
+    "value": null
+  },
+  "semantic_version": "1.0.0",
+  "source_reference": {
+    "accessed_on": "2026-08-24",
+    "evidence_kind": "official_repository",
+    "no_download_performed": true,
+    "publisher": "FoundationVision",
+    "reference_id": "source-bytetrack",
+    "supports_claim": "Repository documents ByteTrack and its code license",
+    "title": "ByteTrack official repository",
+    "url": "https://github.com/FoundationVision/ByteTrack"
+  },
+  "source_revision": {
+    "blocker": null,
+    "digest": null,
+    "state": "resolved",
+    "value": "d1bf0191adff59bc8fcfeaa0b33d3d1642552a99"
+  },
+  "source_tier": "S3",
+  "supported_taxonomy": []
+}

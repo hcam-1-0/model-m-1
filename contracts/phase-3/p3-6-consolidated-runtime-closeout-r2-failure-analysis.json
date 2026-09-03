@@ -1,0 +1,117 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_r2_failure_analysis.v1",
+  "analysis_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-FAILURE-ANALYSIS",
+  "status": "sanitized_planning_only_no_retry_or_implementation_authority",
+  "prepared_on": "2026-09-03",
+  "attempt_bindings": {
+    "authorization_record": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-authorization.json",
+    "authorization_record_sha256": "A8F8B8D9DD6DE42948D8B5B9BD2E869A2490D6758578B0D493C6E4C592798B12",
+    "result_record": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-result.json",
+    "result_record_sha256": "B49F02F504CF4D02B1D8BA59808154BE180A7EF5B251859F356D18A896E386BC",
+    "evidence_record": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-evidence.json",
+    "evidence_record_sha256": "7D76C61B6D2DB5544B3C79BB19B145F27AF371014C174CA8ED8AECDB3AC5D2C6",
+    "action_spec": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-action-spec.json",
+    "action_spec_sha256": "917ABC07DAFA9C148B37BBD7E049267E98D95BEB4534674ABA070D747E5B3F81"
+  },
+  "confirmed_facts": {
+    "attempt_index": 1,
+    "authorization_reusable": false,
+    "package_authority_preflight_passed": true,
+    "authorization_recorded_before_observation": true,
+    "runtime_parent_and_file_binding_passed": true,
+    "runtime_cache_only_trust_passed_and_closed": true,
+    "earliest_failed_action": "R2-A04-UTILITY-MANIFEST-AND-CLOSURE-BINDING",
+    "sanitized_reason_code": "utility_closure_declared_target_missing",
+    "manifest_regular_nonreparse_bounded_and_exact": true,
+    "manifest_fixed_parent_chain_passed": true,
+    "manifest_parser_file_count": 1,
+    "manifest_parser_error_count": 0,
+    "manifest_top_level_literal_hashtable_count": 1,
+    "ScriptsToProcess_empty": true,
+    "closure_resolution_completed": false,
+    "missing_declared_target_count_observed_before_stop": 1,
+    "target_PowerShell_generated_validation_process_count": 0,
+    "generated_case_execution_count": 0,
+    "U3K_preflight_or_storage_started": false,
+    "F_drive_access_count": 0,
+    "prohibited_action_count": 0,
+    "raw_manifest_path_content_parser_or_exception_material_retained": false
+  },
+  "interpretation_boundaries": {
+    "missing_declared_target_field_name_is_known": false,
+    "missing_declared_target_path_or_extension_is_known": false,
+    "missing_declared_target_is_load_bearing_is_known": false,
+    "resolver_used_PSHome_instead_of_manifest_directory_is_confirmed": false,
+    "installed_Utility_module_is_incomplete_is_confirmed": false,
+    "U4D_child_or_outer_controller_would_pass_is_known": false,
+    "handler_generated_validation_would_pass_is_known": false,
+    "U3K_policy_or_storage_would_pass_is_known": false,
+    "raw_manifest_or_missing_target_reinspection_without_new_authority_allowed": false
+  },
+  "official_source_findings": {
+    "source_ledger": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r2-failure-analysis-research-sources.json",
+    "RootModule_relative_base": "folder_containing_the_module_manifest",
+    "FileList_relative_base": "folder_containing_the_module_manifest",
+    "FileList_primary_role": "informational_inventory",
+    "planning_conclusion": "use_field_aware_manifest_directory_resolution_with_canonical_containment_and_separate_load_bearing_from_inventory_requiredness"
+  },
+  "hypotheses": [
+    {
+      "hypothesis_id": "H1-MANIFEST-BASE-RESOLUTION-MISMATCH",
+      "description": "one_relative_manifest_entry_was_resolved_from_PSHome_instead_of_the_exact_manifest_directory",
+      "confidence": "leading_source_supported_but_not_confirmed_by_retained_attempt_evidence",
+      "confirmed": false
+    },
+    {
+      "hypothesis_id": "H2-INFORMATIONAL-FILELIST-ABSENCE",
+      "description": "one_non_load_bearing_FileList_inventory_entry_was_absent_and_was_treated_as_a_required_runtime_closure_target",
+      "confidence": "plausible_not_distinguishable_from_retained_attempt_evidence",
+      "confirmed": false
+    },
+    {
+      "hypothesis_id": "H3-INSTALLED-MODULE-INCOMPLETE",
+      "description": "one_declared_load_bearing_or_inventory_file_is_genuinely_missing_from_the_installed_Utility_module",
+      "confidence": "plausible_not_distinguishable_from_retained_attempt_evidence",
+      "confirmed": false
+    },
+    {
+      "hypothesis_id": "H4-CLOSURE-REQUIREDNESS-DESIGN-GAP",
+      "description": "the_R2_policy_did_not_separate_load_bearing_manifest_fields_from_informational_FileList_entries",
+      "confidence": "confirmed_policy_design_gap",
+      "confirmed": true
+    }
+  ],
+  "required_remediation_properties": {
+    "preserve_all_R2_authorization_result_evidence_action_spec_and_U4D_inputs_byte_exact": true,
+    "anchor_relative_direct_file_references_to_the_exact_manifest_directory": true,
+    "canonicalize_and_require_every_resolved_path_under_the_exact_module_root_and_PSHome": true,
+    "reject_absolute_URI_wildcard_expression_escape_reparse_duplicate_and_overbound_targets": true,
+    "separate_load_bearing_closure_requiredness_from_FileList_inventory_evidence": true,
+    "never_ignore_a_missing_load_bearing_target": true,
+    "retain_only_bounded_field_class_extension_class_and_count_outcomes": true,
+    "add_machine_disabled_reference_and_generated_static_manifest_vectors_before_runtime": true,
+    "new_source_build_package_and_new_exact_runtime_authorization_required": true,
+    "U3K_remains_blocked_until_all_13_R3_closeout_actions_pass": true
+  },
+  "known_static_compatibility_transition": {
+    "path": "tests/test_phase36_consolidated_runtime_closeout_r2_authorization_proposal.py",
+    "pre_transition_sha256": "FCE8DE397F91395014A6009823677F7826B34BE8A42AD3F1325D323ED0BED9D4",
+    "obsolete_assertion": "all_seven_exact_R2_future_outputs_are_absent_and_owner_authorization_is_pending",
+    "required_transition": "preserve_the_seven_exact_unique_paths_and_all_immutable_package_checks_then_require_authorization_result_and_evidence_present_while_R2_acceptance_and_three_U3K_outputs_remain_absent_and_all_runtime_retry_storage_closeout_commit_push_and_remote_Git_gates_are_closed",
+    "current_full_Phase_3_6_tests_passed": 2049,
+    "current_full_Phase_3_6_tests_failed": 1,
+    "failure_is_the_exact_obsolete_pre_attempt_assertion_only": true,
+    "compatibility_test_modification_authorized": false,
+    "future_U4F_exact_allowlist_required": true
+  },
+  "gate_effect": {
+    "source_contract_controller_harness_vector_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_machine_storage_or_network_observation_authorized": false,
+    "another_attempt_authorized": false,
+    "U3K_authorized": false,
+    "Phase_3_complete": false,
+    "commit_push_or_remote_Git_authorized": false
+  }
+}

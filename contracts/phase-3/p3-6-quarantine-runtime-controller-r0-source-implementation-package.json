@@ -1,0 +1,152 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_r0_source_implementation_package.v1",
+  "package_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-R0-SOURCE-IMPLEMENTATION-PACKAGE",
+  "status": "sealed_non_executable_owner_source_implementation_acceptance_pending",
+  "sealed_on": "2026-09-01",
+  "implementation_authorization_decision_id": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-AUTH",
+  "implementation_authorization_package_digest_sha256": "3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC",
+  "compatibility_amendment_decision_id": "D-P3.6-U3S-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT",
+  "authorization_checkpoint_commit": "6da76bae43ab6a2cc2dc0a0270e770fc690e8fc5",
+  "owner_acceptance_decision_id": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE",
+  "core_file_count": 17,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-authorization-package.json",
+      "sha256": "3CBE50F50171907E2ADF65B03CD5012E33B759D8BF5B8270694468DD59CBFFFC",
+      "role": "exact_owner_accepted_source_implementation_authorization_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-contract.json",
+      "sha256": "3F2A0975F92892A96FBC67B951B226D5AB958AE067F55B697ABA43669B8FB00E",
+      "role": "canonical_versioned_bounded_dual_controller_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-vectors.json",
+      "sha256": "31335510565E4C74908C674B88951E81B7A7983331C6DE2E91964C1F8B48C20B",
+      "role": "one_hundred_ninety_two_explicit_generated_only_vectors"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller.ps1",
+      "sha256": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB",
+      "role": "authoritative_Windows_machine_controller_source_not_executed"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_reference.py",
+      "sha256": "C1470C65C6D5DA3EF93161F519BBC01507BBB805C6D433F58C65FDCAFE3FFC4F",
+      "role": "machine_disabled_portable_policy_reference_and_cross_language_oracle"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_controller_contract.py",
+      "sha256": "660316ADF5E0A47FC51E80B2D9D208E79367FB7EEB8766A5AD2918804C00C3EB",
+      "role": "strict_contract_manifest_and_closed_gate_validation"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_controller_reference.py",
+      "sha256": "37B33A2EFE7F923F576BC3F1B104401E00DD0F0A5D9A9D71E99772806E223714",
+      "role": "all_vector_pure_reference_and_branch_validation"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_controller_powershell_static.py",
+      "sha256": "CEACBE7B039F136399A71FBC81C31647456D88CB656E29D979239D246CA1C8A2",
+      "role": "PowerShell_text_only_boundary_and_Python_import_validation"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_controller_cross_language.py",
+      "sha256": "A8E93428E9FA083C8CF7869547B83112D305A5F9FBFA50D214F5D202A84046A9",
+      "role": "cross_language_projection_and_immutable_hash_validation"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_controller_r0_implementation_proposal.py",
+      "sha256": "6D3C64C3E4C3FEB45F85CAE2530D1498480BB512422325E71D5036F9B3286856",
+      "role": "explicitly_amended_historical_gate_compatibility_validation"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-evidence.json",
+      "sha256": "012AECD9316A6361C2AA2AD5B6E7F87494C306F9222012464D70440B34EC0813",
+      "role": "authorization_source_test_validation_boundary_and_next_gate_evidence"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-r0-source-implementation-evidence-review.md",
+      "sha256": "A8B3DAAE8891B8C18EEA648DC13D906CA7607C0AACB9ABE4C478AC252503B88A",
+      "role": "human_review_of_exact_source_generated_evidence_and_limitations"
+    },
+    {
+      "path": "tools/phase36_quarantine_generated_validation.ps1",
+      "sha256": "830D88F8915B084DEF1089927FF785C9C0E7BDB6F0755B5315EE85E9DA8A8B8A",
+      "role": "immutable_accepted_generated_validation_harness"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-powershell-validation-r0-vectors.json",
+      "sha256": "5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C",
+      "role": "immutable_accepted_prior_generated_validation_vectors"
+    },
+    {
+      "path": "tools/phase36_quarantine_transaction_runner.ps1",
+      "sha256": "22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A",
+      "role": "immutable_accepted_transaction_runner"
+    },
+    {
+      "path": "tools/phase36_quarantine_machine_handlers.psm1",
+      "sha256": "41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721",
+      "role": "immutable_accepted_pure_machine_handler_module"
+    },
+    {
+      "path": "tools/phase36_quarantine_windows_storage_adapter.psm1",
+      "sha256": "232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9",
+      "role": "immutable_accepted_parser_only_Windows_adapter"
+    }
+  ],
+  "implemented_scope": {
+    "canonical_contract_count": 1,
+    "generated_vector_count": 192,
+    "PowerShell_controller_count": 1,
+    "Python_reference_controller_count": 1,
+    "focused_test_module_count": 4,
+    "authorized_compatibility_test_transition_count": 1,
+    "typed_action_count": 18,
+    "typed_failure_reason_count": 18,
+    "cross_language_projection_difference_count": 0,
+    "Python_reference_branch_coverage_percent": 100.0,
+    "PowerShell_parsed_imported_or_executed": false,
+    "Python_machine_enabled": false
+  },
+  "validation_summary": {
+    "generated_vectors_passed": 192,
+    "focused_generated_and_static_tests_passed": 244,
+    "full_Phase_3_6_tests_passed": 705,
+    "failed": 0,
+    "Python_reference_statements": 152,
+    "Python_reference_branches": 94,
+    "Python_reference_branch_coverage_percent": 100.0,
+    "Ruff": "all_checks_passed",
+    "strict_JSON": "passed",
+    "line_endings": "LF",
+    "Git_diff_check": "passed",
+    "PowerShell_evidence": "source_text_and_embedded_JSON_projection_only"
+  },
+  "required_sequence_after_exact_owner_acceptance": [
+    "record_exact_digest_bound_U3S_source_implementation_acceptance_without_mutating_this_package",
+    "prepare_only_a_separate_non_effective_U3T_preflight_planning_and_authorization_proposal",
+    "obtain_separate_digest_bound_authorization_before_any_PowerShell_parser_import_or_execution",
+    "retain_Python_machine_access_and_fallback_as_prohibited",
+    "keep_U3R_retry_and_U3K_closed"
+  ],
+  "owner_acceptance_statement_template": "D-P3.6-U3S-DUAL-CONTROLLER-R0-IMPLEMENTATION-ACCEPTANCE: I, mayank-admin, accept the P3.6 U3S dual runtime-controller R0 source implementation package digest <IMPLEMENTATION_PACKAGE_DIGEST_SHA256>, including canonical contract SHA-256 3F2A0975F92892A96FBC67B951B226D5AB958AE067F55B697ABA43669B8FB00E, generated-vector manifest SHA-256 31335510565E4C74908C674B88951E81B7A7983331C6DE2E91964C1F8B48C20B, PowerShell source SHA-256 78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB, Python reference SHA-256 C1470C65C6D5DA3EF93161F519BBC01507BBB805C6D433F58C65FDCAFE3FFC4F, all 192 generated vectors, 100 percent Python-reference branch coverage, cross-language equivalence, the authorized compatibility transition, full Phase 3.6 static validation, nonobservational evidence, and documented limitations. This accepts source and generated/static evidence only and permits preparation only of a separate non-effective U3T preflight planning and authorization proposal. It does not authorize PowerShell parsing, import, or execution; Python machine access or fallback; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, U3R retry, U3T attempt, U3K, or remote Git.",
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_implementation_package_digest_and_is_not_self_embedded",
+  "synchronized_ledgers_and_indexes_excluded_from_core_hashes_to_avoid_recursive_digest_binding": true,
+  "current_gate_effect": {
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked",
+    "source_implementation_complete": true,
+    "owner_source_implementation_acceptance_pending": true,
+    "PowerShell_parse_import_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "retry_U3T_or_U3K_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  },
+  "owner_acceptance_may_be_inferred_from_implementation_authorization_amendment_continue_or_package_existence": false
+}

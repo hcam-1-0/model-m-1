@@ -1,0 +1,69 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_failure_analysis_r2_decision_package.v1",
+  "package_id": "P36-QUARANTINE-FAILURE-ANALYSIS-R2-DECISION-PACKAGE",
+  "status": "sealed_non_effective_owner_selections_pending",
+  "sealed_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "recommended_selection": "A/A/A/A/A/A",
+  "core_file_count": 4,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-research-sources.json",
+      "sha256": "761BC18E6A3BB7CF43483E0690277797900A68C12CA42320908B9D4299D23476",
+      "role": "consumed_U3G_evidence_primary_sources_and_bounded_causal_analysis"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-decision-packet.json",
+      "sha256": "0A8D4546934274685E5CF5E6E76F4E8D43E0DEB7B5BA352E6441679DBBE71C07",
+      "role": "six_non_executable_owner_decisions_with_A_through_D_options"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-proposal.json",
+      "sha256": "C7613B3A50B122EB39F12F4499F6642B6E014571CB5C78E4CE3933E39CFBC272",
+      "role": "machine_readable_recommended_sequence_and_current_non_authority"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-failure-analysis-r2-proposal.md",
+      "sha256": "F1C2A174A4D990EC4584709E92B9DB1C2E62E5DC2A9069DA3B80A5D610455905",
+      "role": "human_owner_decision_document"
+    }
+  ],
+  "consumed_U3G": {
+    "authorization": "contracts/phase-3/p3-6-quarantine-remediation-r1-authorization.json",
+    "authorization_sha256": "12DBCEA9BB4C7AECDED5A42CCE2962CFBB689488F1B713990687DE876AC01070",
+    "result": "contracts/phase-3/p3-6-quarantine-remediation-r1-result.json",
+    "result_sha256": "417AB2F17C42FD6313CC2798AC055EEF75AB16F0431BE6486619C762FA253226",
+    "evidence": "contracts/phase-3/p3-6-quarantine-remediation-r1-evidence.json",
+    "evidence_sha256": "B1D454E1F1390C0FB7D594D80197BA87DA75B5D4216CBF9177F8883E46268B4D",
+    "attempt_consumed": true,
+    "retry_authorized": false
+  },
+  "decision_ids": [
+    "D-P3.6-U3H-001",
+    "D-P3.6-U3H-002",
+    "D-P3.6-U3H-003",
+    "D-P3.6-U3H-004",
+    "D-P3.6-U3H-005",
+    "D-P3.6-U3H-006"
+  ],
+  "effect_of_owner_selections": "authorize_only_recording_the_selected_design_and_preparation_of_non_effective_transaction_runner_storage_attempt_and_Defender_attempt_proposals",
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_package_digest_and_is_not_self_embedded",
+  "current_effect": {
+    "owner_selections_pending": true,
+    "transaction_runner_proposal_authorized": false,
+    "transaction_runner_implementation_authorized": false,
+    "new_storage_action_or_authorization_package_authorized": false,
+    "new_Defender_action_or_authorization_package_authorized": false,
+    "another_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "Defender_query_hash_or_trust_action_authorized": false,
+    "scanner_query_install_or_execution_authorized": false,
+    "dependency_or_artifact_acquisition_authorized": false,
+    "runtime_or_model_execution_authorized": false,
+    "profile_activation_authorized": false,
+    "implementation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  },
+  "owner_selection_may_be_inferred_from_continue_prior_U3G_authority_or_any_other_decision": false
+}

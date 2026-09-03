@@ -1,0 +1,51 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_build_result.v1",
+  "result_id": "P36-CONSOLIDATED-BUILD-RESULT",
+  "status": "source_build_complete_generated_static_validation_passed_resealed",
+  "recorded_on": "2026-09-02",
+  "authorization": {
+    "decision_id": "D-P3.6-CONSOLIDATED-BUILD-AUTH",
+    "package_sha256": "DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C",
+    "selected_options": "A/A/A/A/A/A",
+    "canonical_statement_sha256": "9740F2BD6FBF4D51DF154350788DB702EBE4BE7407C9A4B80C7806DEAE9F9ECC"
+  },
+  "compatibility_amendment": {
+    "decision_id": "D-P3.6-CONSOLIDATED-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT",
+    "canonical_statement_sha256": "3C25EF9D12E83F7767ED94B2EBAAE3FA43A00AFC328FA4CE8970B8AA5A2292B3",
+    "edited_path_count": 2,
+    "scope_violation_count": 0
+  },
+  "source_build": {
+    "exact_additive_path_count": 20,
+    "bounded_synchronization_path_count": 13,
+    "source_revision_cycles_consumed": 3,
+    "maximum_source_revision_cycles": 8,
+    "outer_controller_contract_implemented": true,
+    "PowerShell_controller_source_implemented": true,
+    "machine_disabled_Python_reference_implemented": true,
+    "generated_vector_count": 416,
+    "generated_static_test_module_count": 4,
+    "U4B_implementation_package_sha256": "3DCF9C4CB0CD184BEC9E144C99CC7C25E9F3425268F69C29161CAF6F34FA8932"
+  },
+  "validation": {
+    "focused_tests_passed": 464,
+    "focused_tests_failed": 0,
+    "Python_reference_branch_coverage_percent": 100.0,
+    "full_Phase_3_6_tests_passed": 2005,
+    "full_Phase_3_6_tests_failed": 0,
+    "strict_JSON_files_parsed": 297,
+    "Ruff": "passed",
+    "Git_diff_check": "passed",
+    "immutable_hash_mismatch_count": 0
+  },
+  "actions_performed": {
+    "PowerShell_parse_import_dot_source_or_execution_count": 0,
+    "runtime_or_hardware_observation_count": 0,
+    "machine_or_storage_action_count": 0,
+    "network_or_download_action_count": 0,
+    "artifact_model_inference_camera_media_or_data_action_count": 0,
+    "container_Kubernetes_or_deployment_action_count": 0,
+    "commit_push_or_remote_Git_action_count": 0
+  },
+  "terminal_outcome": "generated_static_source_build_succeeded_runtime_closeout_authorization_not_granted"
+}

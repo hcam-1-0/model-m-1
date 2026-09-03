@@ -1,0 +1,141 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_transaction_runner_r0_source_contract.v1",
+  "contract_id": "P36-QUARANTINE-TRANSACTION-RUNNER-R0-SOURCE-CONTRACT-1.0.0",
+  "status": "proposed_non_executable_no_handler_implementation",
+  "prepared_on": "2026-08-31",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "accepted_U3H_binding": {
+    "acceptance_path": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-owner-decisions.json",
+    "acceptance_sha256": "802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3",
+    "decision_package_digest_sha256": "19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B",
+    "selection": "A/A/A/A/A/A"
+  },
+  "proposal_classification": {
+    "executable_source": false,
+    "handler_implementation_present": false,
+    "machine_access_capable": false,
+    "implementation_authorized": false,
+    "execution_authorized": false,
+    "purpose": "bind_reviewable_future_runner_control_flow_runtime_requirements_default_deny_dispatch_and_generated_contract_vectors_before_separate_implementation_authority"
+  },
+  "future_runtime_binding_requirements": {
+    "runner_family": "PowerShell_7_on_Windows",
+    "proposed_canonical_executable": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "required_invocation_flags": [
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive"
+    ],
+    "final_package_must_bind": [
+      "canonical_regular_nonreparse_executable_path",
+      "file_size_bytes",
+      "file_version",
+      "product_version",
+      "SHA_256",
+      "cache_only_no_UI_whole_chain_trust_result",
+      "exact_runner_source_path",
+      "exact_runner_source_SHA_256"
+    ],
+    "runtime_query_hash_or_trust_authorized_now": false,
+    "alternate_runtime_or_path_fallback_allowed": false,
+    "network_retrieval_allowed": false
+  },
+  "future_runner_interface": {
+    "input_mode": "exact_paths_and_digests_from_final_sealed_attempt_package_only",
+    "dynamic_environment_override_allowed": false,
+    "interactive_prompt_allowed": false,
+    "stdin_command_or_script_input_allowed": false,
+    "action_parameters_from_unsealed_input_allowed": false,
+    "stdout_policy": "one_bounded_sanitized_terminal_status_object_without_raw_errors",
+    "stderr_policy": "bounded_sanitized_reason_code_only",
+    "exit_codes": {
+      "0": "attempt_completed_and_result_evidence_written_not_a_storage_pass_claim",
+      "20": "authority_or_package_validation_failed_before_machine_access",
+      "30": "storage_precondition_or_transaction_failed_and_sanitized_outputs_written",
+      "40": "sanitized_output_write_failed_fail_closed",
+      "50": "default_deny_or_internal_invariant_failed"
+    }
+  },
+  "default_deny_dispatch": {
+    "dispatch_model": "compile_time_exact_action_id_to_static_handler_mapping",
+    "unknown_action": "deny_before_machine_access",
+    "duplicate_action": "deny_before_machine_access",
+    "missing_action": "deny_before_machine_access",
+    "reordered_action": "deny_before_machine_access",
+    "disabled_action_requested": "deny_before_machine_access",
+    "dynamic_eval_allowed": false,
+    "dynamic_scriptblock_allowed": false,
+    "reflection_handler_lookup_allowed": false,
+    "command_string_construction_allowed": false,
+    "shell_fallback_allowed": false,
+    "plugin_or_module_download_allowed": false,
+    "environment_defined_handler_allowed": false,
+    "allowlisted_action_ids": [
+      "U3K-A01-UTC-CLOCK-START",
+      "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY",
+      "U3K-A03-AUTHORIZATION-RECORD",
+      "U3K-A04-F-DRIVE-INFO",
+      "U3K-A05-CANONICAL-PATH-AND-ABSENCE",
+      "U3K-A06-PROTECTED-DACL-CONSTRUCT",
+      "U3K-A07-SECURITY-AT-CREATE-ROOT",
+      "U3K-A08-NORMALIZED-DACL-VERIFY",
+      "U3K-A09-ATOMIC-CAPABILITY-PROBE",
+      "U3K-A10-NORMALIZE-HASH-WRITE"
+    ]
+  },
+  "transaction_invariants": {
+    "serial_actions_only": true,
+    "automatic_retry": false,
+    "maximum_attempts": 1,
+    "authorization_record_precedes_machine_access": true,
+    "exact_paths_and_limits_are_sealed_constants": true,
+    "identity_resolution_in_memory_only": true,
+    "raw_identity_or_ACL_persistence": false,
+    "generated_probe_only": true,
+    "probe_content_retention": "zero",
+    "sanitized_atomic_outputs_only": true,
+    "failure_consumes_authorization": true,
+    "cleanup_scope_cannot_expand_after_failure": true
+  },
+  "source_acceptance_requirements_before_implementation_authority": [
+    "human_review_of_the_exact_non_executable_source_proposal",
+    "exact_source_proposal_SHA_256",
+    "exact_source_contract_SHA_256",
+    "exact_generated_contract_vector_SHA_256",
+    "exact_implementation_authorization_package_SHA_256",
+    "explicit_owner_statement_for_D_P3_6_U3I_RUNNER_R0_IMPLEMENTATION_AUTH"
+  ],
+  "implementation_exit_requirements_before_execution_package": [
+    "separately_authorized_runner_source_implementation",
+    "clean_source_reviewable_commit",
+    "exact_implemented_source_SHA_256",
+    "exact_runtime_path_version_size_SHA_256_and_trust_binding",
+    "all_generated_contract_vectors_pass_without_machine_access",
+    "negative_default_deny_vectors_pass",
+    "sanitization_and_zero_retention_vectors_pass",
+    "implementation_evidence_package_is_sealed_and_owner_accepted"
+  ],
+  "continuing_non_authorization": [
+    "runner_source_or_handler_implementation",
+    "runner_or_test_execution",
+    "runtime_path_version_hash_or_trust_query",
+    "F_volume_path_directory_ACL_probe_or_cleanup_access",
+    "Defender_ModelScan_or_other_scanner_query_install_import_execution_hash_or_trust_action",
+    "artifact_dependency_model_dataset_driver_or_container_acquisition",
+    "runtime_model_inference_validation_benchmark_or_hardware_test",
+    "camera_stream_media_private_or_Government_data_access",
+    "profile_resolution_admission_activation_or_scheduler_execution",
+    "container_Docker_Kubernetes_product_deployment_or_remote_Git_action"
+  ],
+  "current_effect": {
+    "effective": false,
+    "proposal_prepared": true,
+    "owner_implementation_authorization_pending": true,
+    "runner_implementation_authorized": false,
+    "runner_execution_authorized": false,
+    "storage_attempt_authorized": false,
+    "machine_access_authorized": false,
+    "remote_git_authorized": false
+  }
+}
+

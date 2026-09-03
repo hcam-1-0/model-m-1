@@ -1,0 +1,79 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_r1_owner_decisions.v1",
+  "record_id": "P36-PORTABLE-R1-OWNER-DECISIONS-R0-ACCEPTANCE",
+  "status": "accepted_planning_policy_only_non_effective",
+  "accepted_by": "mayank-admin",
+  "accepted_at": "2026-08-30T18:33:40.735Z",
+  "recorded_local_date": "2026-08-31",
+  "owner_statement_received": "D-P3.6-U3B-001: A\nD-P3.6-U3B-002: A\nD-P3.6-U3B-003: A\nD-P3.6-U3B-004: A",
+  "package_manifest": "contracts/phase-3/p3-6-portable-r1-admission-package.json",
+  "package_digest_sha256": "471146FAD62F926648C71ED3FE5359F74DC47E8870562E3EAE92AAD1ED5A269F",
+  "decision_packet": "contracts/phase-3/p3-6-portable-r1-decision-packet.json",
+  "selections": [
+    {
+      "decision_id": "D-P3.6-U3B-001",
+      "selected_option": "A",
+      "accepted_policy": "just_in_time_digest_bound_refresh",
+      "effect": "preserve_expired_R1_as_immutable_historical_evidence_and_prepare_a_new_one_attempt_refresh_package_only_after_other_admission_inputs_are_sealed"
+    },
+    {
+      "decision_id": "D-P3.6-U3B-002",
+      "selected_option": "A",
+      "accepted_policy": "strict_seven_input_fail_closed_admission",
+      "effect": "unknown_missing_invalid_or_stale_resolver_input_rejects_the_candidate_and_no_operator_control_may_waive_a_hard_gate"
+    },
+    {
+      "decision_id": "D-P3.6-U3B-003",
+      "selected_option": "A",
+      "accepted_policy": "complete_immutable_compatibility_bundle",
+      "effect": "future_candidate_must_bind_exact_model_runtime_provider_precision_artifacts_provenance_supply_chain_pipeline_license_security_fallback_rollback_target_and_policy_references"
+    },
+    {
+      "decision_id": "D-P3.6-U3B-004",
+      "selected_option": "A",
+      "accepted_policy": "deterministic_generated_only_CONTRACT_and_C1_INFER_matrix",
+      "effect": "future_non_executable_validation_proposal_must_predeclare_seeds_scenarios_iterations_repetitions_resource_recovery_and_objective_evidence_with_balanced_as_default"
+    }
+  ],
+  "inventory_R1_state_at_acceptance": {
+    "record": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json",
+    "sha256": "FB061C906D1CE5F7FE3B32B70F6CA5134C486F474E2618B23884466C2E58C76F",
+    "valid_until": "2026-08-31T17:57:26.397Z",
+    "freshness_at_acceptance": "fresh_within_accepted_24_hour_window",
+    "admission_use": "inventory_input_only_other_six_resolver_inputs_and_all_hard_gates_still_required",
+    "preservation": "immutable_historical_evidence",
+    "refresh_now_authorized": false,
+    "future_refresh_rule": "new_digest_bound_one_attempt_owner_authorization_required_after_other_admission_inputs_are_sealed"
+  },
+  "accepted_effect": {
+    "planning_policy_selected": true,
+    "remaining_evidence_gap_count": 22,
+    "portable_profile_resolver_eligible": false,
+    "portable_profile_activation_authorized": false,
+    "P36_G2": "blocked",
+    "next_planning_output": "non_executable_exact_compatibility_bundle_and_generated_C1_validation_proposal",
+    "next_executable_action": "none"
+  },
+  "continuing_non_authorization": [
+    "inventory_recollection_or_reusable_collector",
+    "artifact_dependency_model_dataset_driver_or_container_download",
+    "runtime_model_inference_or_benchmark_execution",
+    "hardware_accelerator_performance_stress_capacity_or_thermal_test",
+    "profile_resolution_admission_activation_or_placement",
+    "container_Docker_Kubernetes_or_scheduler_action",
+    "camera_stream_media_private_or_Government_data_access",
+    "application_product_or_dashboard_implementation",
+    "deployment",
+    "remote_git"
+  ],
+  "inventory_collection_authorized": false,
+  "artifact_or_dependency_acquisition_authorized": false,
+  "profile_resolution_or_activation_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "container_or_kubernetes_action_authorized": false,
+  "camera_media_or_data_access_authorized": false,
+  "implementation_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

@@ -1,0 +1,121 @@
+{
+  "artifact": {
+    "artifact_id": "DET-R0-ONNX-UPSTREAM-0.1.1RC0",
+    "bytes": 20219662,
+    "candidate_id": "DET-R0",
+    "filename": "yolox_tiny.onnx",
+    "initial_url": "https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_tiny.onnx",
+    "release": "0.1.1rc0",
+    "sha256": "427CC366D34E27FF7A03E2899B5E3671425C262EA2291F88BB942BC1CC70B0F7",
+    "status": "research_only_not_approved_for_hcam"
+  },
+  "authorization_id": "D-P3.2-001-2026-08-24",
+  "contract_format": "hcam.phase3.p3_2.research-evidence.v1",
+  "dataset": {
+    "generated_candidate": "DATA-GEN-R0",
+    "generated_input": "deterministic_programmatic_rgb_blocks_no_media_source",
+    "public_candidate": "DATA-PUB-R0",
+    "public_candidate_status": "blocked_pending_exact_source_review",
+    "public_dataset_downloads": 0
+  },
+  "environment": {
+    "dependency_lock": "contracts/phase-3/p3-2-research-requirements.lock",
+    "dependency_lock_mode": "hash_locked_binary_only_windows_python_3_14",
+    "packages": [
+      {
+        "name": "flatbuffers",
+        "version": "25.12.19"
+      },
+      {
+        "name": "ml-dtypes",
+        "version": "0.6.0"
+      },
+      {
+        "name": "numpy",
+        "version": "2.5.2"
+      },
+      {
+        "name": "onnx",
+        "version": "1.22.0"
+      },
+      {
+        "name": "onnxruntime",
+        "version": "1.29.0"
+      },
+      {
+        "name": "packaging",
+        "version": "26.3"
+      },
+      {
+        "name": "protobuf",
+        "version": "7.36.0"
+      },
+      {
+        "name": "typing-extensions",
+        "version": "4.16.0"
+      }
+    ],
+    "platform": "Windows-10-10.0.19045-SP0",
+    "python": "3.14.6",
+    "storage": "external_research_root_not_git"
+  },
+  "experiment": {
+    "accuracy": "not_measured",
+    "deployment_readiness": "not_assessed",
+    "execution_provider": "CPUExecutionProvider",
+    "experiment_id": "P3.2-EXP-DET-R0-GENERATED-001",
+    "first_run_mean_ms": 117.40963333674397,
+    "input_name": "images",
+    "input_shape": [
+      1,
+      3,
+      416,
+      416
+    ],
+    "ir_version": 6,
+    "network_policy": "python_socket_access_denied_during_session_and_inference",
+    "opset": 11,
+    "output_name": "output",
+    "output_sha256": "3562559CAD2DCD1AD0A15C74E3425A371B1725BA5574CDADF5FDB375FE3A519C",
+    "output_shape": [
+      1,
+      3549,
+      85
+    ],
+    "repeat_output_sha256": "3562559CAD2DCD1AD0A15C74E3425A371B1725BA5574CDADF5FDB375FE3A519C",
+    "repeat_run_mean_ms": 116.3063333175766,
+    "result": "structural_cpu_inference_smoke_only",
+    "runs_per_observation": 3,
+    "status": "completed_research_only"
+  },
+  "observed_on": "2026-08-24",
+  "remaining_gates": {
+    "D-P3.2-002": [
+      "weight_model_license_unresolved",
+      "training_lineage_unresolved",
+      "model_card_unresolved",
+      "complete_model_and_runtime_sbom_pending"
+    ],
+    "D-P3.2-003": [
+      "no_public_or_real_media_dataset_approved"
+    ],
+    "D-P3.2-004": [
+      "preprocessing_postprocessing_taxonomy_parity_and_resource_contract_not_approved"
+    ],
+    "D-P3.2-START": [
+      "explicit_implementation_start_not_authorized"
+    ]
+  },
+  "security_review": {
+    "command": "pip-audit 2.10.1 against p3-2-research-requirements.lock",
+    "model_malware_scan": {
+      "engine": "Microsoft Defender Antivirus",
+      "observed_on": "2026-08-24",
+      "result": "no_model_threat_detections",
+      "signature_version": "1.457.312.0"
+    },
+    "observed_on": "2026-08-24",
+    "result": "no_known_vulnerabilities_found",
+    "scope": "research_python_dependency_inventory_only"
+  }
+}

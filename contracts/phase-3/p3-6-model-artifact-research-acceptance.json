@@ -1,0 +1,51 @@
+{
+  "contract_format": "hcam.phase3.p3_6.model_artifact_research_acceptance.v1",
+  "record_id": "D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE",
+  "decision_id": "D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE",
+  "status": "accepted_metadata_planning_package_only",
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-08-30",
+  "accepted_at": "2026-08-30T16:05:27Z",
+  "accepted_repository_head": "af97ebff2add80de599a9386c3fedda07834f3df",
+  "branch": "codex/phase3-6-planning-acceptances",
+  "owner_statement_received": "D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE: Accept planning package",
+  "package_manifest": "contracts/phase-3/p3-6-model-artifact-research-package.json",
+  "package_digest_sha256": "2DEFD3262424E31E8EF04E7FEE773198BB7D75571C30D2AC27AF7683DD79A9BE",
+  "accepted_metadata_candidates": [
+    "DET-E1",
+    "DET-B1",
+    "DET-A1"
+  ],
+  "effect": "accepts_exact_candidate_identity_source_size_license_and_fail_closed_research_planning_without_artifact_acquisition_loading_scanning_export_or_execution",
+  "documented_limitations_accepted": true,
+  "unresolved_acquisition_bindings": [
+    "eligible_exact_local_non_cloud_quarantine_root",
+    "minimum_free_space_and_percentage_recheck",
+    "exact_scanner_product_version_executable_command_and_result_policy",
+    "exact_passive_checkpoint_inspector",
+    "regenerated_digest_bound_R1_acquisition_package"
+  ],
+  "next_decision": {
+    "decision_id": "D-P3.6-MODEL-RESEARCH-R1-AUTH",
+    "state": "not_issuable_until_storage_and_scanner_bindings_are_exact"
+  },
+  "gate_effects": {
+    "P36-G1": "blocked_no_artifacts_HCAM_comparison_or_champion_fallback_approval",
+    "P36-G4": "blocked_no_acquisition_authority_or_exact_storage_scanner_bindings",
+    "P36-G5": "blocked_no_executable_package_or_runtime_authority"
+  },
+  "non_authorization": [
+    "model_source_dependency_dataset_driver_container_or_artifact_download",
+    "checkpoint_loading_import_unpickle_export_conversion_scan_or_execution",
+    "model_comparison_quality_capacity_or_performance_claim",
+    "model_champion_fallback_or_profile_promotion",
+    "runtime_inference_hardware_or_GPU_testing",
+    "camera_media_stream_or_external_data_access",
+    "implementation_deployment_or_remote_git_action"
+  ],
+  "artifact_acquisition_authorized": false,
+  "implementation_authorized": false,
+  "runtime_execution_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

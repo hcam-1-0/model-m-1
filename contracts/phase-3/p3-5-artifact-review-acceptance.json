@@ -1,0 +1,24 @@
+{
+  "accepted_at": "2026-08-26T13:04:25Z",
+  "accepted_by": "mayank-admin",
+  "accepted_repository_head": "7052d502d7862cfd1f9f60565e5e169bd6c4e047",
+  "artifact_evidence_id": "P3.5-EXACT-ARTIFACT-REVIEW-R1",
+  "artifact_evidence_record": "p3-5-artifact-review-evidence.json",
+  "artifact_evidence_sha256": "57453CB21F19DF4A0EDFC48784B721D35382F1B4E883C3C89052289EBF8A1BED",
+  "contract_format": "hcam.phase3.p3_5.artifact-review-acceptance.v1",
+  "decision_id": "P3.5-EXACT-ARTIFACT-REVIEW-R1",
+  "documented_limitations_accepted": true,
+  "evidence_package_digest": "54B02B80169604904C9945C1C6E692500CA8AA79253EEC27A63B4C4DB00B395C",
+  "implementation_authorized": false,
+  "owner_statement_received": "I accept P3.5-EXACT-ARTIFACT-REVIEW-R1 for package digest 54B02B80169604904C9945C1C6E692500CA8AA79253EEC27A63B4C4DB00B395C and authorize D-P3.5-RUNTIME-RESEARCH under its documented non-runtime boundaries.",
+  "remaining_blocks": [
+    "runtime_dependency_research_evidence_not_yet_complete",
+    "exact_tesseract_engine_build_not_selected_or_reviewed",
+    "PLATE-D0_internal_detector_not_built_or_authorized",
+    "reviewed_model_and_font_artifacts_not_authorized_for_extraction_or_loading",
+    "synthetic_generation_training_and_inference_not_authorized",
+    "final_digest_bound_D-P3.5-START_confirmation_pending"
+  ],
+  "scope": "phase3.p3_5.exact_artifact_review_acceptance",
+  "status": "accepted"
+}

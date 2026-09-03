@@ -1,0 +1,204 @@
+{
+  "contract_format": "hcam.phase3.p3_6.phase_minus_1_alignment.v1",
+  "record_id": "P3.6-PHASE-MINUS-1-ALIGNMENT-R0",
+  "status": "aligned_planning_baseline",
+  "prepared_on": "2026-08-30",
+  "effective_authority": "D-P3.6-PLAN-AUTH",
+  "p3_6_source_baseline": {
+    "repository": "hcam-2-0/h-cam-2.0",
+    "branch": "codex/phase3-runtime-acceleration-planning",
+    "commit": "b39439db514ca4f11bdd3d8591c5f9c170bdebf5"
+  },
+  "phase_minus_1_sources": {
+    "shared_contracts": {
+      "repository": "hcam-2-0/hcam-protos",
+      "merge_commit": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+      "lifecycle": "experimental",
+      "catalogue": "contracts/catalogue.json",
+      "contract_ids": [
+        "platform.node-capability-inventory",
+        "platform.execution-profile-decision",
+        "platform.model-runtime-compatibility",
+        "platform.workload-placement",
+        "intelligence.composable-pipeline",
+        "platform.compatibility-rollback-evidence"
+      ]
+    },
+    "deployment_profiles": {
+      "repository": "hcam-2-0/hcam-deployment",
+      "merge_commit": "71095fe89d2b711e4982ddc0130fcaedda8703e7",
+      "lifecycle": "planned",
+      "base_profile_digest": "sha256:db776a7432e46dcbf0f170efde428002d656faf3b4cc278fc776c8aabd6c94cf",
+      "profile_classes": [
+        "portable_cpu",
+        "owned_gpu_lab",
+        "standalone_server",
+        "kubernetes_cluster"
+      ]
+    },
+    "delivery_evidence": {
+      "repository": "hcam-2-0/hcam-docs",
+      "merge_commit": "809c44c2f32b2420ab954bed994b098bad1d1238",
+      "record": "docs/phase-minus-1/deployment-profile-delivery.json"
+    }
+  },
+  "authority_partition": {
+    "phase_minus_1_shared_contracts_own": [
+      "sanitized_node_capability_inventory_shape",
+      "deterministic_execution_profile_resolution",
+      "model_runtime_compatibility_registry",
+      "workload_admission_reservation_placement_and_leases",
+      "typed_composable_pipeline_semantics",
+      "adaptive_selection_evidence_and_rollback",
+      "deployment_profile_classes_and_overlays"
+    ],
+    "p3_6_specialization_owns": [
+      "detector_runtime_candidate_portfolio",
+      "candidate_specific_model_runtime_and_precision_parity",
+      "generated_runtime_benchmark_workload_definitions",
+      "contract_infer_and_pipeline_evidence_separation",
+      "c1_c10_c50_evidence_tier_measurement",
+      "runtime_specific_batching_queue_and_freshness_measurement",
+      "candidate_specific_compatibility_and_rollback_evidence_inputs"
+    ],
+    "rule": "P3.6 specializes the shared contracts and must not redefine or bypass their authority, lifecycle, admission, placement, pipeline, evidence, or deployment semantics."
+  },
+  "decision_crosswalk": [
+    {
+      "p3_6_decision": "D-P3.6-001",
+      "selected_option": "A",
+      "phase_minus_1_contracts": [
+        "platform.model-runtime-compatibility",
+        "intelligence.composable-pipeline"
+      ],
+      "relationship": "P3.6 supplies staged detector/runtime candidates to the shared compatibility registry and pipeline contracts."
+    },
+    {
+      "p3_6_decision": "D-P3.6-002",
+      "selected_option": "A+",
+      "phase_minus_1_contracts": [
+        "platform.node-capability-inventory",
+        "platform.execution-profile-decision",
+        "platform.workload-placement"
+      ],
+      "relationship": "The shared resolver and placement contracts remain authoritative; runtime AUTO placement is advisory only inside an admitted device and resource bound."
+    },
+    {
+      "p3_6_decision": "D-P3.6-003",
+      "selected_option": "A+",
+      "phase_minus_1_contracts": [
+        "platform.execution-profile-decision",
+        "platform.compatibility-rollback-evidence"
+      ],
+      "relationship": "Balanced, throughput, and latency are resolver objectives, while C1, C10, and C50 remain P3.6 evidence workload tiers."
+    },
+    {
+      "p3_6_decision": "D-P3.6-004",
+      "selected_option": "A",
+      "phase_minus_1_contracts": [
+        "platform.model-runtime-compatibility",
+        "platform.compatibility-rollback-evidence"
+      ],
+      "relationship": "P3.6 candidate evidence populates immutable shared compatibility and rollback records."
+    },
+    {
+      "p3_6_decision": "D-P3.6-005",
+      "selected_option": "A",
+      "phase_minus_1_contracts": [
+        "platform.node-capability-inventory",
+        "platform.execution-profile-decision"
+      ],
+      "relationship": "Owned-lab and later capacity evidence bind exact shared deployment profiles without extrapolation."
+    }
+  ],
+  "profile_crosswalk": [
+    {
+      "historical_p3_6_term": "portable_cpu",
+      "classification": "deployment_profile_alias",
+      "effective_phase_minus_1_profile": "portable_cpu",
+      "effective_profile_id": "hcam-portable-cpu"
+    },
+    {
+      "historical_p3_6_term": "local_accelerated",
+      "classification": "deployment_profile_alias",
+      "effective_phase_minus_1_profile": "owned_gpu_lab",
+      "effective_profile_id": "hcam-owned-gpu-lab"
+    },
+    {
+      "historical_p3_6_term": "capacity_target",
+      "classification": "evidence_target_only",
+      "effective_phase_minus_1_profile": null,
+      "allowed_target_profiles": [
+        "standalone_server",
+        "kubernetes_cluster"
+      ],
+      "rule": "A capacity target must resolve to one exact approved deployment profile and does not create a fifth profile class."
+    }
+  ],
+  "objective_modes": {
+    "values": [
+      "balanced",
+      "throughput",
+      "latency"
+    ],
+    "classification": "resolver_objective",
+    "not_a_deployment_profile": true,
+    "hard_gates_remain_mandatory": true
+  },
+  "evidence_tiers": {
+    "values": [
+      "C1",
+      "C10",
+      "C50"
+    ],
+    "classification": "generated_workload_evidence_tier",
+    "not_a_deployment_profile": true,
+    "not_a_capacity_claim_without_exact_evidence": true
+  },
+  "immutable_future_bindings": {
+    "required": true,
+    "requirements": [
+      "exact_hcam_protos_revision",
+      "exact_hcam_deployment_revision",
+      "exact_base_profile_digest",
+      "exact_deployment_profile_class_and_revision",
+      "exact_compatibility_bundle_digest",
+      "exact_candidate_artifact_runtime_precision_and_configuration_digests",
+      "exact_generated_workload_and_hardware_evidence"
+    ]
+  },
+  "gate_effects": {
+    "alignment_gate": {
+      "gate_id": "P36-G0A",
+      "state": "passed",
+      "summary": "P3.6 planning vocabulary and ownership are aligned to the completed Phase -1 shared contract and deployment-profile baseline."
+    },
+    "unchanged_gates": {
+      "P36-G1": "blocked",
+      "P36-G2": "blocked",
+      "P36-G3": "passed",
+      "P36-G4": "blocked",
+      "P36-G5": "blocked"
+    }
+  },
+  "non_authorization": [
+    "model_dataset_dependency_driver_container_or_artifact_download",
+    "runtime_or_inference_execution",
+    "hardware_gpu_performance_stress_or_thermal_testing",
+    "container_or_kubernetes_execution",
+    "scheduler_resolver_pipeline_dashboard_or_application_implementation",
+    "camera_media_sentinel_onvif_or_stream_access",
+    "real_private_government_police_or_scraped_data",
+    "training_fine_tuning_or_model_promotion",
+    "identity_biometric_reidentification_or_cross_camera_linkage",
+    "watchlist_vehicle_owner_or_government_database_matching",
+    "operational_alerting_autonomous_action_or_enforcement",
+    "pilot_production_or_statewide_deployment",
+    "remote_git_push_pull_request_or_merge",
+    "p3_7_or_later_work"
+  ],
+  "implementation_authorized": false,
+  "runtime_execution_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

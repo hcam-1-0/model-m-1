@@ -1,328 +1,310 @@
-# H-CAM Core — Camera Registry & GIS Backend
+# H-CAM Model M-1
 
-**H-CAM** (Heterogeneous Camera Analytics & Management) is the backend foundation for the Gujarat Police CCTV Integration Hackathon 2026. It implements **Model 1: Centralised CCTV Registry & GIS Mapping** as the mandatory foundation, with extensible APIs for Models 2–4.
+The `main` branch combines the completed Phase 3 analytics
+foundation with the isolated Phase 2.5 Sentinel compatibility lab. Start with
+[TEAMMATE_SETUP.md](TEAMMATE_SETUP.md) for a generic laptop setup, validation,
+and dashboard workflow. New contributors can also use the plain-English
+[onboarding guide](ONBOARDING.md).
 
----
+## Phase 3 AI analytics
 
-## Architecture Overview
+Phase 3 planning defines anonymous detection, per-camera tracking, line/zone
+events, synthetic ANPR, runtime selection, data/model governance, security, and
+validation. The authorized P3.0 foundation now adds model-independent contracts,
+deterministic fixtures, prohibited-data guardrails, and a durable assignment
+control plane with RBAC, ETags, revisions, audit, and transactional outbox.
+P3.2 adds an accepted, default-off generated-input detector reference. P3.3 adds
+an accepted, generated-only anonymous stream-local tracker under
+`D-P3.3-ACCEPTANCE`. P3.4 is implemented, technically validated, and accepted
+under `D-P3.4-ACCEPTANCE` for its exact historical package digest.
+P3.5 synthetic-ANPR planning is authorized under `D-P3.5-PLAN-AUTH`. The exact
+`A/A/A/A` technical baseline is approved, and `D-P3.5-ARTIFACT-RESEARCH`
+authorized exactly seven quarantine downloads. Their evidence packet is owner
+accepted. `D-P3.5-RUNTIME-RESEARCH` authorized only isolated dependency, SBOM,
+license, vulnerability, scan, and import research outside the worktree. That
+evidence is complete. The owner has now confirmed `D-P3.5-START`, authorizing only the
+digest-bound, generated-only, default-off local implementation slice with five
+loadable artifacts, two blocked Tesseract artifacts, and zero network actions.
+`P35-W1` contracts, the visible non-issuable `SYN` token policy, and recursive
+prohibited-input/zero-retention guardrails are now implemented and validated.
+`P35-W3` deterministic ephemeral token generation and token-free sealed split
+manifests are also implemented and validated; `P35-W2` remains blocked.
+`P35-W4` now adds validated model-free generated ground-truth localization and
+a bounded ephemeral crop path.
+`P35-W5` now adds the two exact reviewed Latin PaddleOCR adapters, safe
+external-only extraction, generated development/validation evaluation, raw
+output validation, deterministic replay, and zero-retention aggregate evidence.
+`P35-W6` adds the exact Devanagari `OCR-D0` auxiliary baseline and deterministic
+`FONT-D0`/`FONT-G0` rendering. Gujarati remains rendering-only because its two
+Tesseract OCR candidates are still blocked.
+`P35-W7` adds raw-preserving NFC derivation, exact-runtime extended grapheme
+metrics, candidate-local identity-calibration contract fixtures, and mandatory
+abstention while numeric quality thresholds remain unapproved.
+`P35-W8` adds generated-only, anonymous stream/epoch/track-local consensus with
+five-observation, two-second, and 256-state bounds. It computes deterministic
+exact-string confidence-weighted votes but always abstains because support and
+margin thresholds remain unapproved.
+`P35-W9` is authorized under `D-P3.5-W9-START: A` and adds only aggregate
+closure evidence, bounded generated-contract stress, offline package inspection,
+zero-retention/security proof, and source-only rollback documentation. W10 is
+accepted under `D-P3.5-W10-ACCEPTANCE` for the immutable 99-file package at
+commit `1611922b4f410aa0cdbce369e4f3c8838f53e19f` and digest
+`4AC016E2A23B001F338F822A25A90CA2E032947B842F14300146F0FF315B3D31`.
+None of these milestones adds a real CCTV media path.
+P3.6 runtime acceleration and scheduling remains planning-only under
+`D-P3.6-PLAN-AUTH`. The [P3.6 plan](docs/phase-3/p3-6-plan.md),
+[primary-source research](docs/phase-3/p3-6-research-record.md),
+[accepted owner decisions](docs/phase-3/p3-6-owner-decisions.md), and
+[dynamic capability profiles](docs/phase-3/p3-6-capability-profiles.md) define
+the portable CPU, validated local-accelerator, and capacity-target strategy.
+They add no runtime, hardware test, Kubernetes/container action, media/data
+access, dashboard/application implementation, or deployment.
+The later `D-P3.6-START` statement is preserved as a
+[non-effective start intent](docs/phase-3/p3-6-start-intent.md): model
+promotion, exact machine/runtime manifests, artifact authority, and a
+digest-bound executable package are still missing.
+The sanitized [LAB-LAPTOP-01 inventory](docs/phase-3/p3-6-inventory-lab-laptop-01-r0.md)
+is complete under `D-P3.6-INVENTORY-R0-AUTH`; it establishes factual portable
+hardware input only and makes no runtime, accelerator, or performance claim.
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        H-CAM Core (FastAPI)                     │
-├─────────────────────────────────────────────────────────────────┤
-│  ┌───────────────┐  ┌───────────────┐  ┌─────────────────────┐  │
-│  │ Camera Registry│  │ Stream Mgmt   │  │ GIS / Spatial API   │  │
-│  │ (Phase 1)      │  │ (Phase 2)     │  │ (Phase 1+GIS)       │  │
-│  │                │  │               │  │                     │  │
-│  │ • CRUD + Audit │  │ • Health probe│  │ • BBox / Radius     │  │
-│  │ • Import/Export│  │ • ONVIF caps  │  │ • Clustering        │  │
-│  │ • Versioning   │  │ • Synthetic   │  │ • Vector Tiles (MVT)│  │
-│  │ • ETag/Precond │  │   50-cam lab  │  │ • PostGIS + GIST    │  │
-│  └───────┬────────┘  └───────┬───────┘  └─────────┬───────────┘  │
-│          │                   │                    │              │
-│          └───────────────────┼────────────────────┘              │
-│                              ▼                                   │
-│              ┌─────────────────────────────────┐                │
-│              │   PostgreSQL + PostGIS          │                │
-│              │   (SQLite for local dev only)   │                │
-│              └─────────────────────────────────┘                │
-└─────────────────────────────────────────────────────────────────┘
-```
+A metadata-only [P3.5 artifact review proposal](docs/phase-3/p3-5-artifact-review-proposal.md)
+pins the recommended artifact locations and bounds. The separate
+[artifact research authorization](docs/phase-3/p3-5-artifact-research-authorization.md)
+permits only its seven exact external artifacts to enter a non-runtime local
+quarantine; it authorizes no extraction, execution, or implementation.
+The [runtime research authorization](docs/phase-3/p3-5-runtime-research-authorization.md)
+separately bounds external Python dependency evidence work. Its
+[runtime evidence](docs/phase-3/p3-5-runtime-research-evidence.md) records the
+exact non-runtime closure and remaining blocks. The
+[P3.5 start authorization](docs/phase-3/p3-5-start-authorization.md) records the
+exact implementation allowlist and continuing prohibitions. The
+[P3.5 W1 contracts and guardrails](docs/phase-3/p3-5-w1-contracts-guardrails.md)
+record the first bounded implementation slice. The
+[P3.5 W3 deterministic generator and sealed splits](docs/phase-3/p3-5-w3-generator-splits.md)
+record the next authorized local generated-only slice.
+The [P3.5 W4 ground-truth localization and crop](docs/phase-3/p3-5-w4-ground-truth-crop.md)
+records the procedural, model-free localization and zero-retention crop boundary.
+The [P3.5 W5 exact Latin PaddleOCR baseline](docs/phase-3/p3-5-w5-latin-ocr.md)
+records the generated-only baseline/challenger evaluation and its limitations.
+The [P3.5 W6 auxiliary scripts](docs/phase-3/p3-5-w6-auxiliary-scripts.md)
+records exact Devanagari OCR and Gujarati rendering-only evidence.
+The [P3.5 W7 normalization and abstention](docs/phase-3/p3-5-w7-normalization-abstention.md)
+records pinned Unicode/grapheme semantics, aggregate-only calibration fixtures,
+mandatory abstention, and zero-retention evidence.
+The [P3.5 W8 bounded consensus](docs/phase-3/p3-5-w8-bounded-consensus.md)
+records deterministic stream-local lifecycle, overload, ordering, isolation,
+mandatory-abstention, and aggregate-only zero-retention evidence.
+The [P3.5 W9 decision packet](docs/phase-3/p3-5-w9-decision-packet.md)
+records the selected narrow closure. The
+[W9 authorization](docs/phase-3/p3-5-w9-start-authorization.md) binds its exact
+scope, and the [W9 closure report](docs/phase-3/p3-5-w9-closure.md) records the
+aggregate evidence. The [P3.5 W10 acceptance](docs/phase-3/p3-5-acceptance.md)
+binds the immutable package, commit, evidence hash, and continuing limitations.
 
-### Key Features
+P3.1 planning and its generated-only implementation boundary are authorized
+under `D-P3.1-001`. The technical evidence package is implemented and verifies
+with zero failures. Clean-source regeneration is complete, and `mayank-admin`
+accepted the exact evidence package under `D-P3.1-ACCEPTANCE`. P3.2 is accepted
+under `D-P3.2-ACCEPTANCE`, and P3.3 is accepted under
+`D-P3.3-ACCEPTANCE`. Cameras, real media, external datasets, identity,
+cross-camera linkage, operational alerts, production use, and deployment remain
+unauthorized.
 
-| Area | Capability |
-|------|------------|
-| **Camera Registry** | Normalized metadata, department/ownership/type, health status, audit trail, optimistic locking |
-| **GIS / Spatial** | PostGIS geometry column, GIST index, bbox/radius/cluster queries, MVT vector tiles for web maps |
-| **Stream Management** | Multi-protocol endpoints (RTSP/HLS/ONVIF), metadata-only health probes, capability discovery |
-| **Security** | JWT auth, role-based access (viewer/editor/admin), department-scoped data isolation |
-| **Operations** | Prometheus metrics, structured logging, DB backup/restore/recovery drills |
-| **Scalability** | Connection pooling, async-ready, read-replica compatible, 80k+ camera target |
+Start here: [docs/phase-3/README.md](docs/phase-3/README.md)
 
----
+Contract snapshots and their review workflow are documented in
+[contracts/phase-3/README.md](contracts/phase-3/README.md).
 
-## Quick Start (Development)
+Generate the machine-readable P3.0 readiness report without activating any
+analytics runtime:
 
-### Prerequisites
-- Python 3.12+
-- `uv` package manager (`pip install uv`)
-- PostgreSQL 15+ with **PostGIS 3.4+** (required for GIS features)
-- `ffprobe` (for stream health probes)
-
-### 1. Install Dependencies
 ```powershell
-cd C:\Users\modas\OneDrive\Desktop\cctv-h\big push\model-m-1
-uv sync --locked --extra dev --extra gis
+uv run --locked --extra dev python tools/phase3_readiness.py
+uv run --locked --extra dev python tools/phase3_readiness.py --json
+uv run --locked --extra dev python tools/phase31_readiness.py --strict
+uv run --locked --extra dev python tools/phase31_readiness.py --json --strict
+uv run --locked --extra dev python tools/phase31_contracts.py check --require-clean-source
+uv run --locked --extra dev python tools/phase31_implementation_readiness.py --json --strict
+uv run --locked --extra dev python tools/phase32_entry_readiness.py --json
+uv run --locked --extra dev --extra analytics python tools/phase32_implementation_readiness.py
+uv run --locked --extra dev --extra analytics python tools/phase33_tracking_evidence.py check
+uv run --locked --extra dev --extra analytics python tools/phase33_sbom.py check
+uv run --locked --extra dev --extra analytics python tools/phase33_implementation_readiness.py --require-clean-source --require-acceptance --json
+uv run --locked --extra dev python tools/phase34_readiness.py --strict --json
+uv run --locked --extra dev --extra analytics python tools/phase34_c10_evidence.py check
+uv run --locked --extra dev --extra analytics python tools/phase34_supply_chain.py check
+uv run --locked --extra dev --extra analytics python tools/phase34_implementation_readiness.py --require-clean-source --require-acceptance --json
+uv run --locked --extra dev python tools/phase35_readiness.py --strict --require-clean-source --json
+uv run --locked --extra dev python tools/phase35_contracts.py check
+uv run --locked python tools/phase35_latin_ocr.py check-evidence
+uv run --locked python tools/phase35_auxiliary_ocr.py check-evidence
+uv run --locked python tools/phase35_normalization.py check-evidence
+uv run --locked python tools/phase35_consensus.py check-evidence
+uv run --locked --extra dev python tools/phase35_w9_closure.py check-evidence
+uv run --locked python tools/phase35_artifact_research.py --all --root 'E:\h-cam-research-cache\phase-3\p3-5'
+uv run --locked python tools/phase35_artifact_inspect.py --root 'E:\h-cam-research-cache\phase-3\p3-5'
+uv run --locked --extra dev python tools/phase35_runtime_research.py all --root 'E:\h-cam-research-cache\phase-3\p3-5-runtime'
 ```
 
-### 2. Configure Environment
-```powershell
-# PostgreSQL with PostGIS (required for GIS)
-$env:HCAM_DATABASE_URL = "postgresql://user:pass@localhost:5432/hcam"
-$env:HCAM_POSTGIS_ENABLED = "true"
-$env:HCAM_DB_POOL_SIZE = "10"
-$env:HCAM_DB_MAX_OVERFLOW = "20"
+The P3.3 readiness command should report `accepted` with zero technical
+failures and zero manual gates while the exact historical package acceptance
+record remains valid.
 
-# Development auth (disabled in production)
+The P3.4 entry command should report
+`implementation_authorized_generated_only`, zero technical failures, and zero
+manual gates. That authorization permits bounded implementation work but does
+not grant final acceptance.
+
+The P3.4 implementation verifier should report `accepted`, zero technical
+failures, and zero manual gates while preserving the immutable historical
+package binding. The PostGIS validation image remains deployment-blocked.
+
+The P3.5 verifier should report `accepted`, zero technical failures, and zero
+manual gates. It recomputes the immutable W10 package from the accepted Git
+commit and verifies the approved `A/A/A/A`
+baseline, exact artifact acceptance, completed restricted runtime evidence,
+digest-bound generated-only start authorization, and the exact W1/W3/W4/W5/W6/W7
+application and evidence boundary through W9. The verifier itself performs no download,
+extraction, synthetic generation, training, inference, media access, or model execution.
+The artifact-research command is separately gated and writes only the seven
+authorized files and receipts to the external local quarantine.
+
+## Phase 2.5 Sentinel Adapter And Test UI
+
+This branch includes the separate, read-only Sentinel compatibility lab under
+`app/hcam/labs/sentinel/`. It does not replace or modify H-CAM's main camera
+adapter or the Phase 3 analytics activation path.
+
+The same dashboard can switch between two resource profiles connected to the
+same public Sentinel catalogue:
+
+- `lab1highadapter`: native media quality, a 50-slot catalogue holder, up to 30
+  managed connections, and four concurrent previews.
+- `lab2lowadapter`: the same catalogue and native media quality, limited to four
+  managed connections and one concurrent preview.
+
+Both profiles keep recording, downloading, frame export, analytics, camera
+control, private endpoints, and Government data disabled. Generated fallback
+media remains explicit and isolated for offline testing.
+
+Start with [the Phase 2.5 guide](docs/phase-2-5/README.md) and
+[the teammate laptop runbook](docs/phase-2-5/teammate-laptop-runbook.md).
+
+```powershell
+uv sync --locked --extra dev
+uv run --locked --extra dev python tools/phase2_5_lab.py doctor --host-only --accelerator auto
+uv run --locked --extra dev python tools/phase2_5_lab.py start
+uv run --locked --extra dev python tools/phase2_5_lab.py verify
+```
+
+## Phase 2 camera and video ingestion
+
+Phase 2 adds stream endpoint management, metadata-only health workers, a
+controlled ONVIF simulator, authenticated background capability inventory,
+short-lived HLS authorization, and a disposable 50-stream synthetic lab. It
+does not discover camera networks, control cameras, capture images, or record
+video.
+
+Start here: [docs/phase-2/README.md](docs/phase-2/README.md)
+
+The accepted Phase 2 OpenAPI and database snapshots remain preserved in
+[contracts/phase-2/README.md](contracts/phase-2/README.md); the additive current
+baseline is under `contracts/phase-3/`.
+
+```powershell
+python tools/phase2_lab.py prepare
+python tools/phase2_lab.py config
+python tools/phase2_lab.py start
+python tools/phase2_lab.py verify --timeout 360
+python tools/phase2_lab.py stop
+```
+
+Capability refresh is opt-in for each ONVIF stream. The worker and detailed
+contract are documented in
+[ONVIF capability management](docs/phase-2/capability-management.md):
+
+```powershell
+hcam capability-worker --once
+hcam capability-worker --poll-seconds 5
+```
+
+## Phase 1 camera registry backend
+
+Phase 1 begins with the normalized camera registry, stream-state contract,
+health endpoints, local SQLite database, migration, and import audit trail.
+
+Start here: [docs/phase-1/README.md](docs/phase-1/README.md)
+
+```powershell
+uv sync --locked --extra dev
+$env:HCAM_DATABASE_URL = "sqlite:///./var/hcam.db"
 $env:HCAM_ENVIRONMENT = "development"
 $env:HCAM_DEV_AUTH_ENABLED = "true"
-$env:HCAM_CREATE_SCHEMA = "true"  # auto-create tables on startup
-
-# Stream probe
-$env:HCAM_FFPROBE_EXECUTABLE = "ffprobe"
-```
-
-### 3. Run Migrations
-```powershell
 uv run --locked --extra dev alembic upgrade head
-```
-This applies all migrations including **0008_postgis_gis** which:
-- Enables PostGIS extension
-- Adds `geometry` column (POINT, SRID 4326) to `cameras`
-- Creates GIST spatial index
-- Backfills geometry from existing lat/long
-
-### 4. Import Sample Data
-```powershell
 uv run --locked --extra dev hcam import-registry tests/fixtures/camera-registry-seed.json
-```
-
-### 5. Start Server
-```powershell
 uv run --locked --extra dev python -m uvicorn hcam.main:app --reload
 ```
-OpenAPI docs: `http://127.0.0.1:8000/docs`
 
----
+The synthetic seed above is for local development only. OpenAPI is available
+at `http://127.0.0.1:8000/docs` after startup.
 
-## GIS API Endpoints
+Registry endpoints require explicit local development identity headers. See
+[Phase 1 security and management](docs/phase-1/security-and-management.md) for
+the role matrix, write API, ETag, audit, and production identity boundaries.
+See [Phase 1 build and test](docs/phase-1/build-and-test.md) for the interpreter
+matrix, coverage, lint, migration, dependency-audit, and artifact checks.
+See [Phase 1 operations and observability](docs/phase-1/operations-and-observability.md)
+for request IDs, metadata-only access events, SQLite backup/recovery,
+PostgreSQL integration, protected Prometheus metrics, synthetic performance,
+and concurrent load smokes. See
+[Phase 1 service objectives](docs/phase-1/service-objectives.md) for metric
+labels, regression objectives, and the Grafana dashboard, and
+[deployment validation](deploy/README.md) for the non-root container stack.
 
-All endpoints require `CAMERA_VIEWER` role (or higher).
-
-### Bounding Box Query
-```http
-GET /cameras/geo/bbox?min_lon=72.5&min_lat=22.0&max_lon=73.5&max_lat=23.5&limit=500
-```
-Returns cameras within a rectangular bounds as GeoJSON FeatureCollection.
-
-### Radius Query
-```http
-GET /cameras/geo/radius?lon=72.571&lat=23.022&radius_m=5000&limit=200
-```
-Returns cameras within `radius_m` meters of a point (uses geography for accurate distance).
-
-### Clustered Points (for map rendering)
-```http
-GET /cameras/geo/cluster?min_lon=72.5&min_lat=22.0&max_lon=73.5&max_lat=23.5&zoom=12&grid_size=64
-```
-Returns grid-clustered points with counts and aggregated properties. Optimized for MapLibre/Leaflet clustering.
-
-### Vector Tile (MVT) — For MapLibre GL / Leaflet VectorGrid
-```http
-GET /cameras/geo/tile/{z}/{x}/{y}.pbf
-```
-Returns Mapbox Vector Tile (protobuf) for efficient rendering at scale. Configure tile layer:
-```js
-// MapLibre GL JS
-map.addSource('cameras', {
-  type: 'vector',
-  tiles: ['http://localhost:8000/cameras/geo/tile/{z}/{x}/{y}.pbf'],
-  minzoom: 0, maxzoom: 18
-});
-map.addLayer({
-  id: 'camera-points',
-  type: 'circle',
-  source: 'cameras',
-  'source-layer': 'cameras',
-  paint: { 'circle-radius': 4, 'circle-color': '#3b82f6' }
-});
-```
-
----
-
-## Project Structure
-
-```
-model-m-1/
-├── app/hcam/
-│   ├── __init__.py
-│   ├── main.py                 # FastAPI app factory
-│   ├── cli.py                  # CLI entry point (hcam command)
-│   ├── settings.py             # Configuration (env-driven)
-│   ├── database.py             # SQLAlchemy engine/session
-│   ├── metrics.py              # Prometheus metrics
-│   ├── observability.py        # Request ID, logging middleware
-│   ├── camera_registry/
-│   │   ├── models.py           # Camera ORM + geometry column
-│   │   ├── schemas.py          # Pydantic models (incl. GeoJSON)
-│   │   ├── routes.py           # REST API + GIS routes include
-│   │   ├── gis_routes.py       # Spatial queries + MVT tiles
-│   │   ├── repository.py       # DB queries
-│   │   ├── service.py          # Business logic + audit
-│   │   └── importer.py         # Seed file import
-│   ├── streams/
-│   │   ├── routes.py           # Stream endpoints API
-│   │   ├── worker.py           # Health probe worker
-│   │   ├── capability_worker.py# ONVIF capability refresh
-│   │   ├── lab.py              # Synthetic 50-camera lab
-│   │   └── network.py          # Network policy / egress rules
-│   ├── health/
-│   ├── security/
-│   ├── audit/
-│   └── operations/
-├── migrations/
-│   ├── versions/               # Alembic migrations (0001–0008)
-│   └── env.py
-├── tests/
-├── tools/
-│   ├── phase2_lab.py
-│   ├── sentinel_cctv_probe.py
-│   └── phase0_readiness.py
-├── docs/
-│   ├── phase-0/ through phase-3/
-│   └── phase-2/capability-management.md
-├── contracts/
-├── deploy/
-├── pyproject.toml
-├── alembic.ini
-└── README.md
-```
-
----
-
-## Configuration Reference
-
-### Core
-| Env Var | Default | Description |
-|---------|---------|-------------|
-| `HCAM_DATABASE_URL` | `sqlite:///./var/hcam.db` | PostgreSQL for production/GIS |
-| `HCAM_POSTGIS_ENABLED` | `false` | Enable PostGIS features (requires PG) |
-| `HCAM_ENVIRONMENT` | `development` | `development`, `test`, `production` |
-| `HCAM_DEV_AUTH_ENABLED` | `false` | Allow dev auth headers |
-| `HCAM_CREATE_SCHEMA` | `false` | Auto-create tables (dev only) |
-
-### Database Pool (PostgreSQL)
-| Env Var | Default | Description |
-|---------|---------|-------------|
-| `HCAM_DB_POOL_SIZE` | `5` | Persistent connections |
-| `HCAM_DB_MAX_OVERFLOW` | `10` | Extra connections under load |
-| `HCAM_DB_POOL_TIMEOUT` | `30.0` | Seconds to wait for connection |
-| `HCAM_DB_POOL_RECYCLE` | `1800` | Recycle connections (seconds) |
-
-### GIS / Vector Tiles
-| Env Var | Default | Description |
-|---------|---------|-------------|
-| `HCAM_GIS_TILE_EXTENT` | `4096` | MVT tile extent (256–8192) |
-| `HCAM_GIS_TILE_BUFFER` | `256` | Buffer around tile (0–1024) |
-| `HCAM_GIS_MAX_FEATURES_PER_TILE` | `10000` | Feature limit per tile |
-| `HCAM_GIS_CLUSTER_MIN_ZOOM` | `0` | Min zoom for clustering |
-| `HCAM_GIS_CLUSTER_MAX_ZOOM` | `20` | Max zoom for clustering |
-
-### Stream / ONVIF
-| Env Var | Default | Description |
-|---------|---------|-------------|
-| `HCAM_FFPROBE_EXECUTABLE` | `ffprobe` | Path to ffprobe |
-| `HCAM_STREAM_PROBE_TIMEOUT_SECONDS` | `8.0` | Probe timeout |
-| `HCAM_ONVIF_DISCOVERY_ENABLED` | `false` | Enable WS-Discovery |
-| `HCAM_ONVIF_EGRESS_RULES_FILE` | — | JSON egress rules file |
-
----
-
-## Running Tests
+Local SQLite recovery commands never overwrite existing files:
 
 ```powershell
-# Unit tests
-uv run --locked --extra dev pytest tests/ -v
-
-# With coverage
-uv run --locked --extra dev pytest tests/ --cov=hcam --cov-report=term-missing
-
-# Lint
-uv run --locked --extra dev ruff check .
-
-# Type check (if configured)
-uv run --locked --extra dev mypy app/hcam
+.\.venv\Scripts\hcam backup-database .\backups\hcam-phase1.db
+.\.venv\Scripts\hcam verify-backup .\backups\hcam-phase1.db
+.\.venv\Scripts\hcam restore-backup .\backups\hcam-phase1.db .\var\hcam-restored.db
+.\.venv\Scripts\hcam recovery-drill .\backups\drill-001
 ```
 
----
+## Phase 0 foundation
 
-## Production Deployment
+Phase 0 defines the H-CAM product baseline, requirements, architecture,
+governance, validation gates, and Phase 1 entry plan.
 
-### Docker
-```dockerfile
-# See deploy/Dockerfile for multi-stage build
-docker build -t hcam-core .
-docker run -p 8000:8000 \
-  -e HCAM_DATABASE_URL=postgresql://... \
-  -e HCAM_POSTGIS_ENABLED=true \
-  -e HCAM_ENVIRONMENT=production \
-  hcam-core
+Start here: [docs/phase-0/README.md](docs/phase-0/README.md)
+
+## Sentinel CCTV environment probe
+
+This repository includes a safe, read-only probe for the Sentinel Gujarat CCTV
+reference environment. It is for development planning and stream compatibility
+checks only; it does not bulk-download CCTV footage.
+
+```powershell
+python tools/sentinel_cctv_probe.py metadata
+python tools/sentinel_cctv_probe.py state --camera-id 1
+python tools/sentinel_cctv_probe.py stream-test --camera-id 1
+python tools/sentinel_cctv_probe.py snapshot
+python tools/sentinel_cctv_probe.py offline-summary
+python tools/sentinel_cctv_probe.py registry-export --output fixtures/sentinel/registry-seed.json
+python tools/sentinel_cctv_probe.py all
 ```
 
-### Required Production Settings
-- `HCAM_DATABASE_URL` pointing to PostgreSQL + PostGIS
-- `HCAM_POSTGIS_ENABLED=true`
-- `HCAM_ENVIRONMENT=production`
-- `HCAM_DEV_AUTH_ENABLED=false`
-- Valid JWT auth via `HCAM_AUTH_*` settings
-- TLS termination at load balancer
+Default target: `https://live.sentinelgujarat.in`
 
-### Scaling to 80,000 Cameras
-- **DB**: PostgreSQL 15+ with `pgvector` / partitioning by department
-- **Pool**: `HCAM_DB_POOL_SIZE=20`, `HCAM_DB_MAX_OVERFLOW=40`
-- **Read Replicas**: Route GIS queries to read replicas
-- **Caching**: Redis for tile caching (add `TileCacheMiddleware`)
-- **MVT**: Pre-generate tiles nightly for zoom 0–12; serve 13+ on-demand
-- **Workers**: Run `stream-worker` and `capability-worker` as separate services
+Offline regression checks:
 
----
+```powershell
+python -m py_compile tools/sentinel_cctv_probe.py tools/phase0_readiness.py
+python -m unittest discover -s tests -v
+python tools/phase0_readiness.py --run-validation
+```
 
-## Hackathon Context (Gujarat CCTV Integration)
+See [docs/phase-0/cctv-environment.md](docs/phase-0/cctv-environment.md) for
+the observed API shape, safety rules, and test workflow.
 
-This backend implements **Model 1** (Registry & GIS Foundation) per the problem statement:
-- Centralised camera metadata registry across 26+ departments
-- GIS mapping with PostGIS for ~80,000 cameras statewide
-- Interoperable APIs for Models 2/3/4 to build upon
-- ONVIF capability discovery for heterogeneous vendor integration
-- Synthetic lab (50 streams) for testing without live feeds
-
-### Next Phases (Roadmap)
-- **Phase 2+**: Stream gateway, HLS/WebRTC relay, ANPR metadata pipeline
-- **Phase 3**: AI analytics (vehicle/person detection, cross-camera tracking)
-- **Integration**: eGujCop, VAHAN, SARTHI, AFIS/NAFIS watchlist correlation
-
----
-
-## For New Developers / AI Agents
-
-### Key Entry Points
-- **App factory**: `app/hcam/main.py:create_app()`
-- **Settings**: `app/hcam/settings.py:Settings.from_environment()`
-- **Database**: `app/hcam/database.py:Database` + `build_engine()`
-- **Camera API**: `app/hcam/camera_registry/routes.py`
-- **GIS API**: `app/hcam/camera_registry/gis_routes.py`
-- **CLI**: `app/hcam/cli.py:main()`
-
-### Adding a New Feature
-1. Create migration in `migrations/versions/` (follow naming: `000X_feature.py`)
-2. Add ORM model in appropriate module (`models.py`)
-3. Add Pydantic schemas in `schemas.py`
-4. Add repository queries in `repository.py`
-5. Add business logic in `service.py`
-6. Add routes in `routes.py` (or new `*_routes.py`)
-7. Update `REQUIRED_*_COLUMNS` in `database.py` if new tables
-8. Write tests in `tests/`
-9. Run `alembic revision --autogenerate -m "description"` then edit
-
-### GIS-Specific Notes
-- Geometry column uses **SRID 4326** (WGS84 lat/long)
-- Always use `func.ST_*` functions for spatial queries (see `gis_routes.py`)
-- GIST index on `cameras.geometry` enables fast bbox/radius
-- MVT tiles use `ST_AsMVTGeom` with configurable extent/buffer
-- For clustering: `ST_SnapToGrid` + aggregation
-
----
-
-## License
-Government of Gujarat / Gujarat Police Innovation Hackathon 2026 — Internal use only.
+See [docs/phase-0/readiness-report.md](docs/phase-0/readiness-report.md) for
+the completed Phase 0 evidence map.

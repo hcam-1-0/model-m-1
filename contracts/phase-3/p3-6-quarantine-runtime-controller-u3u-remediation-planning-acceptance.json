@@ -1,0 +1,42 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3u_remediation_planning_acceptance.v1",
+  "decision_id": "D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS",
+  "status": "accepted_planning_choices_and_failed_evidence_for_proposal_preparation_only",
+  "accepted_on": "2026-09-02",
+  "accepted_by": "mayank-admin",
+  "accepted_package": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3u-remediation-planning-package.json",
+  "accepted_package_sha256": "C58B9291E06396374DE92308F2CC52CDB51824BFFDFD1958E4D655C75A894CCD",
+  "canonical_owner_statement": "D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS: I, mayank-admin, accept the sanitized U3T R1 failure-analysis planning package digest C58B9291E06396374DE92308F2CC52CDB51824BFFDFD1958E4D655C75A894CCD and select D-P3.6-U3U-001:A, D-P3.6-U3U-002:A, D-P3.6-U3U-003:A, and D-P3.6-U3U-004:A. This accepts the failed U3T R1 evidence for planning purposes and authorizes preparation only of a separate source-only additive H1 R1 diagnostic-harness implementation authorization proposal. It does not authorize harness, controller, test, model, or product implementation; PowerShell parsing, import, dot-sourcing, or execution; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, another attempt, U3K, or remote Git.",
+  "canonical_owner_statement_utf8_bytes": 853,
+  "canonical_owner_statement_sha256": "936964507E19F905390CD5A0AABE1547E3AF88E5EF6A19F9F22F429870A2D1DF",
+  "selected_decisions": {
+    "D-P3.6-U3U-001": "A",
+    "D-P3.6-U3U-002": "A",
+    "D-P3.6-U3U-003": "A",
+    "D-P3.6-U3U-004": "A"
+  },
+  "accepted_planning_effect": {
+    "first_remediation_surface": "additive_H1_R1_diagnostic_harness_preserving_accepted_controller_and_historical_H1",
+    "sanitized_diagnostic_contract": "typed_field_group_reason_taxonomy_without_raw_values_types_or_exceptions",
+    "source_validation_evidence": "generated_static_differential_suite_against_machine_disabled_policy_oracle",
+    "runtime_reentry_sequence": "separate_source_acceptance_then_one_separately_authorized_generated_only_diagnostic_before_U3K"
+  },
+  "authority_granted": {
+    "record_selected_planning_options": true,
+    "prepare_separate_source_only_H1_R1_implementation_authorization_proposal": true,
+    "harness_controller_test_model_or_product_implementation": false,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "runtime_manifest_hardware_or_machine_observation": false,
+    "another_attempt_or_U3K": false,
+    "deployment_or_remote_Git": false
+  },
+  "continuing_non_authorization": [
+    "no_H1_R1_harness_contract_vector_test_evidence_or_package_implementation",
+    "no_accepted_H1_or_controller_modification",
+    "no_PowerShell_parse_import_dot_source_or_execution",
+    "no_runtime_manifest_hardware_machine_storage_F_B_ACL_probe_cleanup_or_scanner_action",
+    "no_network_download_artifact_model_inference_camera_media_or_data_access",
+    "no_container_Kubernetes_profile_activation_deployment_retry_U3K_or_remote_Git"
+  ],
+  "authorization_may_be_inferred_for_source_implementation_runtime_retry_or_U3K": false
+}

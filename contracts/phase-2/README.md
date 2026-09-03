@@ -1,22 +1,27 @@
 # Phase 0-2 Release Contracts
 
-These reviewed snapshots protect the public HTTP API and the Alembic-migrated
-database schema from accidental drift across Phase 0, Phase 1, and Phase 2.
+These immutable historical snapshots record the accepted public HTTP API and
+Alembic-migrated database schema through Phase 2.
 
 - `openapi.json` is generated from the actual FastAPI application.
-- `database.json` is inspected from a disposable SQLite database upgraded to
-  the current Alembic head.
+- `database.json` was inspected from a disposable SQLite database at the
+  accepted Phase 2 Alembic head.
 
-Verify them with:
+The active release-contract verifier now targets the additive Phase 3 baseline
+under `contracts/phase-3/`. Do not regenerate these Phase 2 files with that
+tool. Their continued presence permits historical review and publication-
+evidence verification.
+
+Verify the current baseline with:
 
 ```powershell
 python tools/release_contracts.py check
 ```
 
-Contract changes require review of authentication, authorization, scope,
-request/response compatibility, migration safety, indexes, foreign keys,
-constraints, and downgrade implications. After that review, update both
-deterministically with:
+Current contract changes require review of authentication, authorization,
+scope, request/response compatibility, migration safety, indexes, foreign keys,
+constraints, and downgrade implications. After that review, update the Phase 3
+baseline deterministically with:
 
 ```powershell
 python tools/release_contracts.py write --acknowledge-reviewed-change

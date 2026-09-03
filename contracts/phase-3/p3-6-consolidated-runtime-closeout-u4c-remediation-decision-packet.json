@@ -1,0 +1,163 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_u4c_remediation_decision_packet.v1",
+  "packet_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-U4C-REMEDIATION-DECISIONS",
+  "status": "owner_decisions_pending_non_effective_planning_only",
+  "prepared_on": "2026-09-02",
+  "failure_analysis": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r1-failure-analysis.json",
+  "decision_scope": "select_a_source_only_process_output_contract_remediation_and_runtime_reentry_policy_without_authorizing_implementation_execution_retry_U3K_or_closeout",
+  "decisions": [
+    {
+      "decision_id": "D-P3.6-U4C-001",
+      "title": "Sanitized Process Failure Taxonomy",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Split typed output and exit classifications",
+          "effect": "separately_classify_process_start_timeout_exit_nonzero_stdout_limit_stderr_nonzero_empty_output_multi_line_output_JSON_parse_schema_and_identity failures",
+          "tradeoff": "maximizes_diagnostic_value_without_retaining_stream_content_paths_exceptions_environment_identity_or_security_material"
+        },
+        "B": {
+          "label": "Keep the combined output reason",
+          "effect": "retain_process_output_bounds_failed_for_every_stdout_or_stderr_violation",
+          "tradeoff": "smallest_change_but_can_consume_another_attempt_without_localizing_the_failed predicate"
+        },
+        "C": {
+          "label": "Hash raw process streams",
+          "effect": "retain_only_stdout_and_stderr_hashes",
+          "tradeoff": "does_not_explain_the_stream_shape_and_can_create_dictionary_or_content_correlation risk"
+        },
+        "D": {
+          "label": "Retain raw process diagnostics",
+          "effect": "persist_raw_stdout_stderr_or_exception_text",
+          "tradeoff": "breaks_the_existing_zero_retention_and_security_boundary"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U4C-002",
+      "title": "Generated Validation Child Surface",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Additive hash-bound validation harness",
+          "effect": "replace_the_unsealed_in_memory_driver_with_one_source_controlled_PowerShell_harness_bound_by_hash_and_limited_to_the_outer_controller_and_416 generated cases",
+          "tradeoff": "adds_one_reviewed_source_surface_but_makes_the_exact_executed_child_logic_reproducible_and_statically_testable"
+        },
+        "B": {
+          "label": "Harden the in-memory encoded command",
+          "effect": "retain_the_current_driver_shape_with_explicit_output_format_stream_preferences_and_console writes",
+          "tradeoff": "fewer_files_but_the_executed_driver_bytes_remain_less_visible_and_harder_to_bind_review_and_replay"
+        },
+        "C": {
+          "label": "Reuse the handler aggregate harness",
+          "effect": "extend_the_existing_84_case_harness_to_also_load_the_outer_controller_and_416 vectors",
+          "tradeoff": "reduces_process_surfaces_but_couples_independent_contract_layers_and_invalidates_more_accepted evidence"
+        },
+        "D": {
+          "label": "Skip outer generated validation",
+          "effect": "advance_to_handler_or_U3K_without_accepted_outer_controller evidence",
+          "tradeoff": "breaks_the_500_case_closeout_gate"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U4C-003",
+      "title": "Child Result Framing Protocol",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "One UTF-8 JSON line through Console.Out",
+          "effect": "emit_exactly_one_schema_bound_terminal_envelope_of_at_most_4096_bytes_with_no_BOM_no_CLIXML_no_progress_warning_verbose_debug_or_information stream and zero stderr",
+          "tradeoff": "strict_and_deterministic_while_preserving_the_existing_zero_stderr_contract"
+        },
+        "B": {
+          "label": "Allow PowerShell object serialization",
+          "effect": "accept_text_or_CLIXML_output_and_normalize_it_in_the_parent",
+          "tradeoff": "more_runtime_specific_and_expands_parser_and_output ambiguity"
+        },
+        "C": {
+          "label": "Write a temporary result file",
+          "effect": "move_the_terminal_envelope_from_stdout_to_a_machine_local temporary path",
+          "tradeoff": "adds_an_unnecessary_filesystem_surface_cleanup_problem_and_new exact-path authority"
+        },
+        "D": {
+          "label": "Use exit code only",
+          "effect": "drop_the_typed_terminal_result_and_use_process_exit_status",
+          "tradeoff": "cannot_attest_case_counts_zero_machine_actions_or_retention predicates"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U4C-004",
+      "title": "Pre-Runtime Validation Depth",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Full generated stream and contract matrix",
+          "effect": "require_at_least_320_generated_static_vectors_covering_success_each_failure_class_boundary_sizes_newline_BOM_CLIXML_schema_exit_consistency_identity_postflight_and_zero retention",
+          "tradeoff": "largest_static_suite_but_best_protection_against_consuming_another_runtime attempt"
+        },
+        "B": {
+          "label": "Focused 64-vector matrix",
+          "effect": "test_primary_success_and_failure_paths_only",
+          "tradeoff": "faster_to_build_but_leaves_more_serialization_and_boundary combinations untested"
+        },
+        "C": {
+          "label": "Source-text checks only",
+          "effect": "verify_allowlisted_tokens_hashes_and_paths_without_generated behavior vectors",
+          "tradeoff": "cannot_demonstrate_parent_child_result_contract behavior"
+        },
+        "D": {
+          "label": "Runtime-first validation",
+          "effect": "prepare_another_machine_attempt_without_new_generated evidence",
+          "tradeoff": "highest_risk_of_repeating_the_consumed failure"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U4C-005",
+      "title": "Authorization And Reentry Topology",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "One source-build authorization then one runtime authorization",
+          "effect": "use_one_bounded_source_only_authorization_for_harness_contract_vectors_tests_exact_historical_compatibility_transition_evidence_and_resealed_runtime_package_then_one_new_exact_digest_bound_single runtime closeout attempt",
+          "tradeoff": "keeps_only_two_owner_gates_while_preserving_a_reviewable_boundary_between_source_and_machine effects"
+        },
+        "B": {
+          "label": "Combine source build and runtime execution",
+          "effect": "authorize_implementation_validation_and_one_machine_attempt_in_one package",
+          "tradeoff": "faster_but_runtime_authority_would_exist_before_the_final_source_digest_and evidence are known"
+        },
+        "C": {
+          "label": "Reuse the consumed authorization",
+          "effect": "treat_attempt_two_as_authorized_under_the_existing package",
+          "tradeoff": "not_permitted_because_the_terminal_reason_is_not_retry_allowlisted_and_the authorization_record_is_closed"
+        },
+        "D": {
+          "label": "Stop Phase 3.6 runtime closeout",
+          "effect": "retain_the_current_source_build_and_failed_closed evidence without another attempt",
+          "tradeoff": "no_new_machine_risk_but_Phase_3_remains_incomplete"
+        }
+      }
+    }
+  ],
+  "recommended_selection": {
+    "D-P3.6-U4C-001": "A",
+    "D-P3.6-U4C-002": "A",
+    "D-P3.6-U4C-003": "A",
+    "D-P3.6-U4C-004": "A",
+    "D-P3.6-U4C-005": "A"
+  },
+  "effect_of_owner_selection": {
+    "prepare_separate_source_only_U4D_remediation_implementation_authorization_proposal": true,
+    "future_U4D_must_exactly_allowlist_the_single_obsolete_historical_test_transition": true,
+    "source_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "another_attempt_authorized": false,
+    "U3K_authorized": false,
+    "Phase_3_closeout_or_commit_authorized": false,
+    "push_or_remote_Git_authorized": false
+  }
+}

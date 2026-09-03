@@ -1,0 +1,105 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_failure_analysis_r2_owner_decisions.v1",
+  "record_id": "P36-QUARANTINE-FAILURE-ANALYSIS-R2-OWNER-DECISIONS-ACCEPTANCE",
+  "status": "accepted_planning_choices_non_effective_proposal_preparation_authorized",
+  "accepted_by": "mayank-admin",
+  "accepted_at": "2026-08-31T14:58:32.576Z",
+  "recorded_local_date": "2026-08-31",
+  "owner_statement_received": "D-P3.6-U3H-001: A\nD-P3.6-U3H-002: A\nD-P3.6-U3H-003: A\nD-P3.6-U3H-004: A\nD-P3.6-U3H-005: A\nD-P3.6-U3H-006: A",
+  "package_manifest": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-decision-package.json",
+  "package_digest_sha256": "19D4580E86AF04C0ABFB2D082678491F4551360A6A4C71DAE5C6481F98C32C7B",
+  "decision_packet": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-decision-packet.json",
+  "proposal": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-proposal.json",
+  "selections": [
+    {
+      "decision_id": "D-P3.6-U3H-001",
+      "selected_option": "A",
+      "accepted_policy": "exact_Modify_plus_automatic_Synchronize_only",
+      "effect": "require_the_current_process_allow_ACE_to_contain_exactly_Modify_plus_automatic_Synchronize_and_reject_ChangePermissions_TakeOwnership_FullControl_generic_all_and_unknown_bits"
+    },
+    {
+      "decision_id": "D-P3.6-U3H-002",
+      "selected_option": "A",
+      "accepted_policy": "independent_normalized_three_tuple_and_unauthorized_principal_checks",
+      "effect": "verify_exactly_three_explicit_allow_tuples_by_in_memory_SID_normalized_rights_inheritance_propagation_and_access_type_and_calculate_unauthorized_principal_absence_independently"
+    },
+    {
+      "decision_id": "D-P3.6-U3H-003",
+      "selected_option": "A",
+      "accepted_policy": "native_local_Windows_PowerShell_5_1_scalar_projection",
+      "effect": "require_a_future_separately_authorized_bounded_native_Windows_PowerShell_5_1_projection_that_returns_only_allowlisted_validated_JSON_scalars"
+    },
+    {
+      "decision_id": "D-P3.6-U3H-004",
+      "selected_option": "A",
+      "accepted_policy": "native_product_version_then_bounded_latest_directory_with_version_hash_and_cache_only_trust",
+      "effect": "use_valid_AMProductVersion_first_or_one_bounded_highest_version_regular_nonreparse_platform_candidate_that_passes_version_agreement_SHA_256_and_cache_only_WinVerifyTrust"
+    },
+    {
+      "decision_id": "D-P3.6-U3H-005",
+      "selected_option": "A",
+      "accepted_policy": "storage_first_then_separate_Defender_attempt",
+      "effect": "prepare_independently_digest_bound_storage_only_and_later_Defender_only_proposals_with_separate_exact_owner_authorizations_and_accept_storage_evidence_before_preparing_the_Defender_attempt"
+    },
+    {
+      "decision_id": "D-P3.6-U3H-006",
+      "selected_option": "A",
+      "accepted_policy": "content_hashed_reviewable_source_proposal_before_separate_implementation_and_execution_authority",
+      "effect": "require_human_reviewable_content_hashed_runner_source_exact_runtime_binding_generated_only_contract_tests_and_default_deny_dispatch_before_separate_implementation_and_execution_authority"
+    }
+  ],
+  "accepted_effect": {
+    "planning_choices_selected": true,
+    "transaction_runner_proposal_preparation_authorized": true,
+    "storage_only_action_and_authorization_proposal_preparation_authorized": true,
+    "future_Defender_only_proposal_policy_selected": true,
+    "Defender_only_proposal_preparation_authorized_now": false,
+    "another_attempt_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "Defender_query_hash_or_trust_action_authorized": false,
+    "scanner_query_install_or_execution_authorized": false,
+    "transaction_runner_implementation_authorized": false,
+    "artifact_or_dependency_acquisition_authorized": false,
+    "runtime_or_model_execution_authorized": false,
+    "profile_resolution_or_activation_authorized": false,
+    "implementation_or_deployment_authorized": false,
+    "remote_git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked",
+    "next_planning_output": "non_executable_content_hashed_transaction_runner_and_storage_only_action_authorization_proposals",
+    "next_executable_action": "none"
+  },
+  "continuing_non_authorization": [
+    "another_storage_or_Defender_attempt",
+    "F_volume_path_directory_or_ACL_access_or_modification",
+    "storage_probe_cleanup_or_retention",
+    "Defender_or_other_scanner_query_hash_signature_check_execution_installation_update_or_configuration",
+    "transaction_runner_implementation_or_execution",
+    "ModelScan_query_install_import_execution_or_hostile_fixture_bootstrap",
+    "artifact_model_dataset_dependency_driver_or_container_download",
+    "checkpoint_load_unpickle_import_conversion_export_or_execution",
+    "inference_calibration_validation_benchmark_or_hardware_test",
+    "profile_resolution_admission_activation_placement_or_scheduler_execution",
+    "container_Docker_Kubernetes_or_deployment_action",
+    "camera_stream_media_private_or_Government_data_access",
+    "product_or_dashboard_implementation",
+    "remote_git"
+  ],
+  "owner_selection_may_be_inferred_from_continue_or_prior_authorization": false,
+  "another_attempt_authorized": false,
+  "F_or_ACL_action_authorized": false,
+  "Defender_query_hash_or_trust_action_authorized": false,
+  "scanner_query_install_or_execution_authorized": false,
+  "transaction_runner_implementation_authorized": false,
+  "artifact_or_dependency_acquisition_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "profile_resolution_or_activation_authorized": false,
+  "container_or_kubernetes_action_authorized": false,
+  "camera_media_or_data_access_authorized": false,
+  "implementation_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

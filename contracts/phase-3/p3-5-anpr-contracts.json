@@ -1,0 +1,4870 @@
+{
+  "auxiliary_script_policy": {
+    "closed_internal_vocabulary": true,
+    "complex_shaping_used": false,
+    "devanagari_adapter_version": "sha256:26dec23ff166b4e83762195455fd23e91dfb37c493482513d08baa4ec7ff8ec4",
+    "devanagari_dictionary_version": "sha256:15dd5c96dabcc64d3d3bdfeefd7cdc71cffefe05e9598a07f767b23b8fe75184",
+    "font_candidates": {
+      "FONT-D0": "sha256:9ce7b04f60e363d8870e5997744cf85cf69d38a4d7d129d364d92a3b14b461d7",
+      "FONT-G0": "sha256:9901d8552f1dd5d2c50dbd4caa6f6e174e74e8264f06594ab259ae6e7b1ac428"
+    },
+    "generated_only": true,
+    "generator_version": "sha256:0af38df8b0859608da40d4f53b3e276785d229b2b7a18a2c55c6e50dc558eabe",
+    "gujarati_ocr_authorized": false,
+    "modifies_registration_mark": false,
+    "ocr_candidate": {
+      "OCR-D0": "sha256:ac8279d27fc7e8cda559364f9a3c506f43984cf6ba5e1b7a06450458bfe07dfb"
+    },
+    "promotion_authorized": false,
+    "renderer_version": "sha256:2bb485ef09242f0d38bdecc85771fbb0b54c479a0a06a1ea67beea13a945a138",
+    "standalone_graphemes_only": true,
+    "transliteration_allowed": false
+  },
+  "contract_format": "hcam.anpr.contract-bundle.v1",
+  "contracts": {
+    "auxiliary_script_generated_evaluation": {
+      "$defs": {
+        "AuxiliaryFailureCountsV1": {
+          "additionalProperties": false,
+          "properties": {
+            "engine_error": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Engine Error",
+              "type": "integer"
+            },
+            "invalid_confidence": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Invalid Confidence",
+              "type": "integer"
+            },
+            "invalid_output": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Invalid Output",
+              "type": "integer"
+            },
+            "malformed_result": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Malformed Result",
+              "type": "integer"
+            },
+            "no_result": {
+              "default": 0,
+              "minimum": 0,
+              "title": "No Result",
+              "type": "integer"
+            },
+            "output_too_long": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Output Too Long",
+              "type": "integer"
+            },
+            "unexpected_whitespace": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Unexpected Whitespace",
+              "type": "integer"
+            },
+            "unsupported_script": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Unsupported Script",
+              "type": "integer"
+            }
+          },
+          "title": "AuxiliaryFailureCountsV1",
+          "type": "object"
+        },
+        "AuxiliaryFontRenderingEvaluationV1": {
+          "additionalProperties": false,
+          "properties": {
+            "artifact_id": {
+              "enum": [
+                "FONT-D0-NOTO-SANS-DEVANAGARI-VARIABLE-PROPOSED",
+                "FONT-G0-NOTO-SANS-GUJARATI-VARIABLE-PROPOSED"
+              ],
+              "title": "Artifact Id",
+              "type": "string"
+            },
+            "artifact_sha256": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Artifact Sha256",
+              "type": "string"
+            },
+            "candidate_id": {
+              "enum": [
+                "FONT-D0",
+                "FONT-G0"
+              ],
+              "title": "Candidate Id",
+              "type": "string"
+            },
+            "complex_shaping_available": {
+              "const": false,
+              "default": false,
+              "title": "Complex Shaping Available",
+              "type": "boolean"
+            },
+            "complex_shaping_used": {
+              "const": false,
+              "default": false,
+              "title": "Complex Shaping Used",
+              "type": "boolean"
+            },
+            "failed": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Failed",
+              "type": "integer"
+            },
+            "font_family": {
+              "enum": [
+                "Noto Sans Devanagari",
+                "Noto Sans Gujarati"
+              ],
+              "title": "Font Family",
+              "type": "string"
+            },
+            "generated_grapheme_count": {
+              "minimum": 1,
+              "title": "Generated Grapheme Count",
+              "type": "integer"
+            },
+            "generated_text_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Generated Text Persisted",
+              "type": "boolean"
+            },
+            "identifiers_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Identifiers Persisted",
+              "type": "boolean"
+            },
+            "ocr_execution_performed": {
+              "title": "Ocr Execution Performed",
+              "type": "boolean"
+            },
+            "rendered_pixels_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Rendered Pixels Persisted",
+              "type": "boolean"
+            },
+            "renderer_version": {
+              "const": "sha256:2bb485ef09242f0d38bdecc85771fbb0b54c479a0a06a1ea67beea13a945a138",
+              "default": "sha256:2bb485ef09242f0d38bdecc85771fbb0b54c479a0a06a1ea67beea13a945a138",
+              "title": "Renderer Version",
+              "type": "string"
+            },
+            "replay_pixels_deterministic": {
+              "title": "Replay Pixels Deterministic",
+              "type": "boolean"
+            },
+            "replay_runs": {
+              "const": 20,
+              "default": 20,
+              "title": "Replay Runs",
+              "type": "integer"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 1,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "script_lane": {
+              "enum": [
+                "devanagari",
+                "gujarati"
+              ],
+              "title": "Script Lane",
+              "type": "string"
+            },
+            "shaping_backend": {
+              "const": "basic_freetype_no_raqm",
+              "default": "basic_freetype_no_raqm",
+              "title": "Shaping Backend",
+              "type": "string"
+            },
+            "slices": {
+              "items": {
+                "$ref": "#/$defs/AuxiliaryFontRenderingSliceV1"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "title": "Slices",
+              "type": "array"
+            },
+            "standalone_graphemes_only": {
+              "const": true,
+              "default": true,
+              "title": "Standalone Graphemes Only",
+              "type": "boolean"
+            },
+            "succeeded": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Succeeded",
+              "type": "integer"
+            },
+            "synthetic_only": {
+              "const": true,
+              "default": true,
+              "title": "Synthetic Only",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "candidate_id",
+            "artifact_id",
+            "artifact_sha256",
+            "script_lane",
+            "font_family",
+            "sample_count",
+            "generated_grapheme_count",
+            "succeeded",
+            "failed",
+            "slices",
+            "replay_pixels_deterministic",
+            "ocr_execution_performed"
+          ],
+          "title": "AuxiliaryFontRenderingEvaluationV1",
+          "type": "object"
+        },
+        "AuxiliaryFontRenderingSliceV1": {
+          "additionalProperties": false,
+          "properties": {
+            "degradation": {
+              "enum": [
+                "clean",
+                "low_contrast",
+                "downscaled"
+              ],
+              "title": "Degradation",
+              "type": "string"
+            },
+            "failed": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Failed",
+              "type": "integer"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "succeeded": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Succeeded",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "degradation",
+            "sample_count",
+            "succeeded",
+            "failed"
+          ],
+          "title": "AuxiliaryFontRenderingSliceV1",
+          "type": "object"
+        },
+        "AuxiliaryGeneratedSliceV1": {
+          "additionalProperties": false,
+          "properties": {
+            "degradation": {
+              "enum": [
+                "clean",
+                "low_contrast",
+                "downscaled"
+              ],
+              "title": "Degradation",
+              "type": "string"
+            },
+            "exact_matches": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Exact Matches",
+              "type": "integer"
+            },
+            "failed": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Failed",
+              "type": "integer"
+            },
+            "failure_counts": {
+              "$ref": "#/$defs/AuxiliaryFailureCountsV1"
+            },
+            "raw_edit_distance": {
+              "minimum": 0,
+              "title": "Raw Edit Distance",
+              "type": "integer"
+            },
+            "reference_grapheme_count": {
+              "minimum": 0,
+              "title": "Reference Grapheme Count",
+              "type": "integer"
+            },
+            "reference_scalar_count": {
+              "minimum": 0,
+              "title": "Reference Scalar Count",
+              "type": "integer"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "succeeded": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Succeeded",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "degradation",
+            "sample_count",
+            "succeeded",
+            "failed",
+            "exact_matches",
+            "reference_scalar_count",
+            "reference_grapheme_count",
+            "raw_edit_distance",
+            "failure_counts"
+          ],
+          "title": "AuxiliaryGeneratedSliceV1",
+          "type": "object"
+        },
+        "DevanagariOcrCandidateEvaluationV1": {
+          "additionalProperties": false,
+          "properties": {
+            "adapter_version": {
+              "const": "sha256:26dec23ff166b4e83762195455fd23e91dfb37c493482513d08baa4ec7ff8ec4",
+              "default": "sha256:26dec23ff166b4e83762195455fd23e91dfb37c493482513d08baa4ec7ff8ec4",
+              "title": "Adapter Version",
+              "type": "string"
+            },
+            "alternatives_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Alternatives Persisted",
+              "type": "boolean"
+            },
+            "artifact_id": {
+              "const": "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED",
+              "default": "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED",
+              "title": "Artifact Id",
+              "type": "string"
+            },
+            "artifact_sha256": {
+              "const": "sha256:ac8279d27fc7e8cda559364f9a3c506f43984cf6ba5e1b7a06450458bfe07dfb",
+              "default": "sha256:ac8279d27fc7e8cda559364f9a3c506f43984cf6ba5e1b7a06450458bfe07dfb",
+              "title": "Artifact Sha256",
+              "type": "string"
+            },
+            "candidate_id": {
+              "const": "OCR-D0",
+              "default": "OCR-D0",
+              "title": "Candidate Id",
+              "type": "string"
+            },
+            "confidence_distribution": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/LatinOcrDistributionV1"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "dictionary_version": {
+              "const": "sha256:15dd5c96dabcc64d3d3bdfeefd7cdc71cffefe05e9598a07f767b23b8fe75184",
+              "default": "sha256:15dd5c96dabcc64d3d3bdfeefd7cdc71cffefe05e9598a07f767b23b8fe75184",
+              "title": "Dictionary Version",
+              "type": "string"
+            },
+            "exact_matches": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Exact Matches",
+              "type": "integer"
+            },
+            "extracted_inventory_sha256": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Extracted Inventory Sha256",
+              "type": "string"
+            },
+            "failed": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Failed",
+              "type": "integer"
+            },
+            "failure_counts": {
+              "$ref": "#/$defs/AuxiliaryFailureCountsV1"
+            },
+            "final_test_used": {
+              "const": false,
+              "default": false,
+              "title": "Final Test Used",
+              "type": "boolean"
+            },
+            "font_artifact_sha256": {
+              "const": "sha256:9ce7b04f60e363d8870e5997744cf85cf69d38a4d7d129d364d92a3b14b461d7",
+              "default": "sha256:9ce7b04f60e363d8870e5997744cf85cf69d38a4d7d129d364d92a3b14b461d7",
+              "title": "Font Artifact Sha256",
+              "type": "string"
+            },
+            "font_candidate_id": {
+              "const": "FONT-D0",
+              "default": "FONT-D0",
+              "title": "Font Candidate Id",
+              "type": "string"
+            },
+            "identifiers_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Identifiers Persisted",
+              "type": "boolean"
+            },
+            "latency_ms_distribution": {
+              "$ref": "#/$defs/LatinOcrDistributionV1"
+            },
+            "model_name": {
+              "const": "devanagari_PP-OCRv5_mobile_rec",
+              "default": "devanagari_PP-OCRv5_mobile_rec",
+              "title": "Model Name",
+              "type": "string"
+            },
+            "modifies_registration_mark": {
+              "const": false,
+              "default": false,
+              "title": "Modifies Registration Mark",
+              "type": "boolean"
+            },
+            "network_access_performed": {
+              "const": false,
+              "default": false,
+              "title": "Network Access Performed",
+              "type": "boolean"
+            },
+            "network_attempt_count": {
+              "minimum": 0,
+              "title": "Network Attempt Count",
+              "type": "integer"
+            },
+            "promotion_authorized": {
+              "const": false,
+              "default": false,
+              "title": "Promotion Authorized",
+              "type": "boolean"
+            },
+            "raw_edit_distance": {
+              "minimum": 0,
+              "title": "Raw Edit Distance",
+              "type": "integer"
+            },
+            "raw_output_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Raw Output Persisted",
+              "type": "boolean"
+            },
+            "reference_grapheme_count": {
+              "minimum": 1,
+              "title": "Reference Grapheme Count",
+              "type": "integer"
+            },
+            "reference_scalar_count": {
+              "minimum": 1,
+              "title": "Reference Scalar Count",
+              "type": "integer"
+            },
+            "replay_output_deterministic": {
+              "title": "Replay Output Deterministic",
+              "type": "boolean"
+            },
+            "replay_runs": {
+              "const": 20,
+              "default": 20,
+              "title": "Replay Runs",
+              "type": "integer"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 1,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "slices": {
+              "items": {
+                "$ref": "#/$defs/AuxiliaryGeneratedSliceV1"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "title": "Slices",
+              "type": "array"
+            },
+            "succeeded": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Succeeded",
+              "type": "integer"
+            },
+            "synthetic_only": {
+              "const": true,
+              "default": true,
+              "title": "Synthetic Only",
+              "type": "boolean"
+            },
+            "transliteration_performed": {
+              "const": false,
+              "default": false,
+              "title": "Transliteration Performed",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "extracted_inventory_sha256",
+            "sample_count",
+            "succeeded",
+            "failed",
+            "exact_matches",
+            "reference_scalar_count",
+            "reference_grapheme_count",
+            "raw_edit_distance",
+            "failure_counts",
+            "slices",
+            "confidence_distribution",
+            "latency_ms_distribution",
+            "replay_output_deterministic",
+            "network_attempt_count"
+          ],
+          "title": "DevanagariOcrCandidateEvaluationV1",
+          "type": "object"
+        },
+        "LatinOcrDistributionV1": {
+          "additionalProperties": false,
+          "properties": {
+            "maximum": {
+              "minimum": 0,
+              "title": "Maximum",
+              "type": "number"
+            },
+            "mean": {
+              "minimum": 0,
+              "title": "Mean",
+              "type": "number"
+            },
+            "minimum": {
+              "minimum": 0,
+              "title": "Minimum",
+              "type": "number"
+            },
+            "p50": {
+              "minimum": 0,
+              "title": "P50",
+              "type": "number"
+            },
+            "p95": {
+              "minimum": 0,
+              "title": "P95",
+              "type": "number"
+            }
+          },
+          "required": [
+            "minimum",
+            "p50",
+            "p95",
+            "maximum",
+            "mean"
+          ],
+          "title": "LatinOcrDistributionV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "adapter_version": {
+          "const": "sha256:26dec23ff166b4e83762195455fd23e91dfb37c493482513d08baa4ec7ff8ec4",
+          "default": "sha256:26dec23ff166b4e83762195455fd23e91dfb37c493482513d08baa4ec7ff8ec4",
+          "title": "Adapter Version",
+          "type": "string"
+        },
+        "camera_or_media_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Camera Or Media Input Count",
+          "type": "integer"
+        },
+        "contract_type": {
+          "const": "hcam.phase3.p3_5.auxiliary-script-generated-evaluation.v1",
+          "default": "hcam.phase3.p3_5.auxiliary-script-generated-evaluation.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "deployment_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Deployment Authorized",
+          "type": "boolean"
+        },
+        "devanagari_ocr": {
+          "$ref": "#/$defs/DevanagariOcrCandidateEvaluationV1"
+        },
+        "external_text_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "External Text Input Count",
+          "type": "integer"
+        },
+        "font_rendering": {
+          "items": {
+            "$ref": "#/$defs/AuxiliaryFontRenderingEvaluationV1"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Font Rendering",
+          "type": "array"
+        },
+        "generated_sample_plan": {
+          "const": "internal_vocabulary_no_final_test",
+          "default": "internal_vocabulary_no_final_test",
+          "title": "Generated Sample Plan",
+          "type": "string"
+        },
+        "generated_text_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Generated Text Persisted",
+          "type": "boolean"
+        },
+        "generator_version": {
+          "const": "sha256:0af38df8b0859608da40d4f53b3e276785d229b2b7a18a2c55c6e50dc558eabe",
+          "default": "sha256:0af38df8b0859608da40d4f53b3e276785d229b2b7a18a2c55c6e50dc558eabe",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "gujarati_ocr_execution_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Gujarati Ocr Execution Count",
+          "type": "integer"
+        },
+        "model_download_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Model Download Count",
+          "type": "integer"
+        },
+        "modifies_registration_mark": {
+          "const": false,
+          "default": false,
+          "title": "Modifies Registration Mark",
+          "type": "boolean"
+        },
+        "paddleocr_version": {
+          "const": "3.7.0",
+          "default": "3.7.0",
+          "title": "Paddleocr Version",
+          "type": "string"
+        },
+        "paddlepaddle_version": {
+          "const": "3.3.1",
+          "default": "3.3.1",
+          "title": "Paddlepaddle Version",
+          "type": "string"
+        },
+        "pillow_version": {
+          "const": "12.3.0",
+          "default": "12.3.0",
+          "title": "Pillow Version",
+          "type": "string"
+        },
+        "plate_text_retention_hours": {
+          "const": 0,
+          "default": 0,
+          "title": "Plate Text Retention Hours",
+          "type": "integer"
+        },
+        "promotion_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Promotion Authorized",
+          "type": "boolean"
+        },
+        "quality_threshold_decided": {
+          "const": false,
+          "default": false,
+          "title": "Quality Threshold Decided",
+          "type": "boolean"
+        },
+        "raw_output_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Raw Output Persisted",
+          "type": "boolean"
+        },
+        "real_registration_mark_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Real Registration Mark Count",
+          "type": "integer"
+        },
+        "regex_version": {
+          "const": "2026.7.19",
+          "default": "2026.7.19",
+          "title": "Regex Version",
+          "type": "string"
+        },
+        "rendered_pixels_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Rendered Pixels Persisted",
+          "type": "boolean"
+        },
+        "renderer_version": {
+          "const": "sha256:2bb485ef09242f0d38bdecc85771fbb0b54c479a0a06a1ea67beea13a945a138",
+          "default": "sha256:2bb485ef09242f0d38bdecc85771fbb0b54c479a0a06a1ea67beea13a945a138",
+          "title": "Renderer Version",
+          "type": "string"
+        },
+        "runtime_id": {
+          "const": "cpython-3.12.13-windows-x86_64",
+          "default": "cpython-3.12.13-windows-x86_64",
+          "title": "Runtime Id",
+          "type": "string"
+        },
+        "sample_or_region_identifiers_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Sample Or Region Identifiers Persisted",
+          "type": "boolean"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "tesseract_execution_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Tesseract Execution Count",
+          "type": "integer"
+        },
+        "transliteration_performed": {
+          "const": false,
+          "default": false,
+          "title": "Transliteration Performed",
+          "type": "boolean"
+        },
+        "work_package": {
+          "const": "P35-W6_exact_Devanagari_Paddle_OCR_lane_and_Gujarati_font_rendering_only",
+          "default": "P35-W6_exact_Devanagari_Paddle_OCR_lane_and_Gujarati_font_rendering_only",
+          "title": "Work Package",
+          "type": "string"
+        }
+      },
+      "required": [
+        "devanagari_ocr",
+        "font_rendering"
+      ],
+      "title": "AuxiliaryScriptGeneratedEvaluationV1",
+      "type": "object"
+    },
+    "consensus_generated_evaluation": {
+      "$defs": {
+        "ConsensusGeneratedScenarioV1": {
+          "additionalProperties": false,
+          "properties": {
+            "abstained_result_count": {
+              "maximum": 100000,
+              "minimum": 0,
+              "title": "Abstained Result Count",
+              "type": "integer"
+            },
+            "closed_result_count": {
+              "maximum": 100000,
+              "minimum": 0,
+              "title": "Closed Result Count",
+              "type": "integer"
+            },
+            "execution_count": {
+              "maximum": 100000,
+              "minimum": 1,
+              "title": "Execution Count",
+              "type": "integer"
+            },
+            "scenario": {
+              "enum": [
+                "agreement",
+                "cross_boundary_isolation",
+                "disagreement",
+                "duplicate_rejection",
+                "epoch_reset",
+                "event_time_window",
+                "out_of_order_rejection",
+                "overload",
+                "track_end"
+              ],
+              "title": "Scenario",
+              "type": "string"
+            },
+            "violation_count": {
+              "maximum": 100000,
+              "minimum": 0,
+              "title": "Violation Count",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "scenario",
+            "execution_count",
+            "closed_result_count",
+            "abstained_result_count",
+            "violation_count"
+          ],
+          "title": "ConsensusGeneratedScenarioV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "accepted_value_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Accepted Value Count",
+          "type": "integer"
+        },
+        "camera_or_media_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Camera Or Media Input Count",
+          "type": "integer"
+        },
+        "consensus_abstained_result_count": {
+          "maximum": 100000,
+          "minimum": 1,
+          "title": "Consensus Abstained Result Count",
+          "type": "integer"
+        },
+        "consensus_closed_result_count": {
+          "maximum": 100000,
+          "minimum": 1,
+          "title": "Consensus Closed Result Count",
+          "type": "integer"
+        },
+        "consensus_execution_count": {
+          "maximum": 100000,
+          "minimum": 1,
+          "title": "Consensus Execution Count",
+          "type": "integer"
+        },
+        "consensus_policy_version": {
+          "const": "sha256:bf1fc270ac926af1e4e9d8465eb30025486e1c95b37c790bd6a36e8ed7b0f69d",
+          "default": "sha256:bf1fc270ac926af1e4e9d8465eb30025486e1c95b37c790bd6a36e8ed7b0f69d",
+          "title": "Consensus Policy Version",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.phase3.p3_5.consensus-generated-evaluation.v1",
+          "default": "hcam.phase3.p3_5.consensus-generated-evaluation.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "cross_stream_epoch_or_track_merge_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Cross Stream Epoch Or Track Merge Count",
+          "type": "integer"
+        },
+        "deployment_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Deployment Authorized",
+          "type": "boolean"
+        },
+        "duplicate_rejection_count": {
+          "maximum": 100000,
+          "minimum": 1,
+          "title": "Duplicate Rejection Count",
+          "type": "integer"
+        },
+        "external_text_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "External Text Input Count",
+          "type": "integer"
+        },
+        "grouping_key": {
+          "const": "stream_id_tracker_epoch_track_id",
+          "default": "stream_id_tracker_epoch_track_id",
+          "title": "Grouping Key",
+          "type": "string"
+        },
+        "maximum_active_states_observed": {
+          "maximum": 256,
+          "minimum": 0,
+          "title": "Maximum Active States Observed",
+          "type": "integer"
+        },
+        "maximum_active_states_per_stream": {
+          "const": 256,
+          "default": 256,
+          "title": "Maximum Active States Per Stream",
+          "type": "integer"
+        },
+        "maximum_event_time_window_ms": {
+          "const": 2000,
+          "default": 2000,
+          "title": "Maximum Event Time Window Ms",
+          "type": "integer"
+        },
+        "maximum_observations": {
+          "const": 5,
+          "default": 5,
+          "title": "Maximum Observations",
+          "type": "integer"
+        },
+        "minimum_margin": {
+          "default": null,
+          "title": "Minimum Margin",
+          "type": "null"
+        },
+        "minimum_support": {
+          "default": null,
+          "title": "Minimum Support",
+          "type": "null"
+        },
+        "model_download_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Model Download Count",
+          "type": "integer"
+        },
+        "model_execution_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Model Execution Count",
+          "type": "integer"
+        },
+        "network_access_performed": {
+          "const": false,
+          "default": false,
+          "title": "Network Access Performed",
+          "type": "boolean"
+        },
+        "network_attempt_count": {
+          "const": 1,
+          "default": 1,
+          "title": "Network Attempt Count",
+          "type": "integer"
+        },
+        "operational_event_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Operational Event Count",
+          "type": "integer"
+        },
+        "out_of_order_rejection_count": {
+          "maximum": 100000,
+          "minimum": 1,
+          "title": "Out Of Order Rejection Count",
+          "type": "integer"
+        },
+        "plate_or_normalized_text_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Plate Or Normalized Text Persisted",
+          "type": "boolean"
+        },
+        "plate_text_retention_hours": {
+          "const": 0,
+          "default": 0,
+          "title": "Plate Text Retention Hours",
+          "type": "integer"
+        },
+        "promotion_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Promotion Authorized",
+          "type": "boolean"
+        },
+        "ranked_votes_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Ranked Votes Persisted",
+          "type": "boolean"
+        },
+        "real_registration_mark_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Real Registration Mark Count",
+          "type": "integer"
+        },
+        "replay_output_deterministic": {
+          "title": "Replay Output Deterministic",
+          "type": "boolean"
+        },
+        "replay_runs": {
+          "const": 20,
+          "default": 20,
+          "title": "Replay Runs",
+          "type": "integer"
+        },
+        "scenario_evaluations": {
+          "items": {
+            "$ref": "#/$defs/ConsensusGeneratedScenarioV1"
+          },
+          "maxItems": 9,
+          "minItems": 9,
+          "title": "Scenario Evaluations",
+          "type": "array"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "stream_epoch_or_track_identifiers_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Stream Epoch Or Track Identifiers Persisted",
+          "type": "boolean"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "threshold_configuration_approved": {
+          "const": false,
+          "default": false,
+          "title": "Threshold Configuration Approved",
+          "type": "boolean"
+        },
+        "voting_method": {
+          "const": "exact_string_confidence_weighted",
+          "default": "exact_string_confidence_weighted",
+          "title": "Voting Method",
+          "type": "string"
+        },
+        "work_package": {
+          "const": "P35-W8_bounded_synthetic_track_local_consensus",
+          "default": "P35-W8_bounded_synthetic_track_local_consensus",
+          "title": "Work Package",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scenario_evaluations",
+        "replay_output_deterministic",
+        "maximum_active_states_observed",
+        "consensus_execution_count",
+        "consensus_closed_result_count",
+        "consensus_abstained_result_count",
+        "duplicate_rejection_count",
+        "out_of_order_rejection_count"
+      ],
+      "title": "ConsensusGeneratedEvaluationV1",
+      "type": "object"
+    },
+    "ephemeral_auxiliary_ocr_hypothesis": {
+      "additionalProperties": false,
+      "description": "Generated auxiliary-script OCR output that must remain process-local.",
+      "properties": {
+        "adapter_version": {
+          "const": "sha256:26dec23ff166b4e83762195455fd23e91dfb37c493482513d08baa4ec7ff8ec4",
+          "default": "sha256:26dec23ff166b4e83762195455fd23e91dfb37c493482513d08baa4ec7ff8ec4",
+          "title": "Adapter Version",
+          "type": "string"
+        },
+        "artifact_id": {
+          "const": "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED",
+          "default": "OCR-D0-PPOCRV5-DEVANAGARI-INFER-PROPOSED",
+          "title": "Artifact Id",
+          "type": "string"
+        },
+        "artifact_sha256": {
+          "const": "sha256:ac8279d27fc7e8cda559364f9a3c506f43984cf6ba5e1b7a06450458bfe07dfb",
+          "default": "sha256:ac8279d27fc7e8cda559364f9a3c506f43984cf6ba5e1b7a06450458bfe07dfb",
+          "title": "Artifact Sha256",
+          "type": "string"
+        },
+        "candidate_id": {
+          "const": "OCR-D0",
+          "default": "OCR-D0",
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.ephemeral-auxiliary-ocr-hypothesis.v1",
+          "default": "hcam.anpr.ephemeral-auxiliary-ocr-hypothesis.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "dictionary_version": {
+          "const": "sha256:15dd5c96dabcc64d3d3bdfeefd7cdc71cffefe05e9598a07f767b23b8fe75184",
+          "default": "sha256:15dd5c96dabcc64d3d3bdfeefd7cdc71cffefe05e9598a07f767b23b8fe75184",
+          "title": "Dictionary Version",
+          "type": "string"
+        },
+        "engine_id": {
+          "const": "paddleocr-text-recognition",
+          "default": "paddleocr-text-recognition",
+          "title": "Engine Id",
+          "type": "string"
+        },
+        "ephemeral_only": {
+          "const": true,
+          "default": true,
+          "title": "Ephemeral Only",
+          "type": "boolean"
+        },
+        "generator_version": {
+          "const": "sha256:0af38df8b0859608da40d4f53b3e276785d229b2b7a18a2c55c6e50dc558eabe",
+          "default": "sha256:0af38df8b0859608da40d4f53b3e276785d229b2b7a18a2c55c6e50dc558eabe",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "latency_ms": {
+          "maximum": 600000,
+          "minimum": 0,
+          "title": "Latency Ms",
+          "type": "number"
+        },
+        "modifies_registration_mark": {
+          "const": false,
+          "default": false,
+          "title": "Modifies Registration Mark",
+          "type": "boolean"
+        },
+        "raw_confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Raw Confidence",
+          "type": "number"
+        },
+        "raw_output_mutated": {
+          "const": false,
+          "default": false,
+          "title": "Raw Output Mutated",
+          "type": "boolean"
+        },
+        "raw_text": {
+          "maxLength": 16,
+          "minLength": 1,
+          "title": "Raw Text",
+          "type": "string"
+        },
+        "region_id": {
+          "pattern": "^anprauxregion_[0-9a-f]{32}$",
+          "title": "Region Id",
+          "type": "string"
+        },
+        "renderer_version": {
+          "const": "sha256:2bb485ef09242f0d38bdecc85771fbb0b54c479a0a06a1ea67beea13a945a138",
+          "default": "sha256:2bb485ef09242f0d38bdecc85771fbb0b54c479a0a06a1ea67beea13a945a138",
+          "title": "Renderer Version",
+          "type": "string"
+        },
+        "result_id": {
+          "pattern": "^anprauxocr_[0-9a-f]{32}$",
+          "title": "Result Id",
+          "type": "string"
+        },
+        "retained": {
+          "const": false,
+          "default": false,
+          "title": "Retained",
+          "type": "boolean"
+        },
+        "review_state": {
+          "const": "unreviewed",
+          "default": "unreviewed",
+          "title": "Review State",
+          "type": "string"
+        },
+        "runtime_id": {
+          "const": "paddleocr-3.7.0-paddlepaddle-3.3.1-cpu",
+          "default": "paddleocr-3.7.0-paddlepaddle-3.3.1-cpu",
+          "title": "Runtime Id",
+          "type": "string"
+        },
+        "sample_id": {
+          "pattern": "^anprauxsample_[0-9a-f]{32}$",
+          "title": "Sample Id",
+          "type": "string"
+        },
+        "script_lane": {
+          "const": "devanagari",
+          "default": "devanagari",
+          "title": "Script Lane",
+          "type": "string"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "transliteration_performed": {
+          "const": false,
+          "default": false,
+          "title": "Transliteration Performed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "result_id",
+        "region_id",
+        "sample_id",
+        "raw_text",
+        "raw_confidence",
+        "latency_ms"
+      ],
+      "title": "EphemeralAuxiliaryOcrHypothesisV1",
+      "type": "object"
+    },
+    "ephemeral_consensus_observation": {
+      "$defs": {
+        "EphemeralPlateNormalizationV1": {
+          "additionalProperties": false,
+          "description": "Derived text semantics that are valid only inside the generated harness.",
+          "properties": {
+            "abstain": {
+              "const": true,
+              "default": true,
+              "title": "Abstain",
+              "type": "boolean"
+            },
+            "abstention_policy_version": {
+              "const": "sha256:355dc7c8e5510a8223d84652ca9043efbd7aad93d722fb6be0f82eef7af24ded",
+              "default": "sha256:355dc7c8e5510a8223d84652ca9043efbd7aad93d722fb6be0f82eef7af24ded",
+              "title": "Abstention Policy Version",
+              "type": "string"
+            },
+            "abstention_reason": {
+              "enum": [
+                "auxiliary_observation_only",
+                "quality_threshold_unapproved",
+                "synthetic_grammar_rejected"
+              ],
+              "title": "Abstention Reason",
+              "type": "string"
+            },
+            "calibrated_confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Calibrated Confidence",
+              "type": "number"
+            },
+            "calibration_method": {
+              "const": "identity_generated_baseline",
+              "default": "identity_generated_baseline",
+              "title": "Calibration Method",
+              "type": "string"
+            },
+            "calibration_version": {
+              "const": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+              "default": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+              "title": "Calibration Version",
+              "type": "string"
+            },
+            "candidate_id": {
+              "enum": [
+                "OCR-L0",
+                "OCR-L1",
+                "OCR-D0"
+              ],
+              "title": "Candidate Id",
+              "type": "string"
+            },
+            "case_transform_performed": {
+              "title": "Case Transform Performed",
+              "type": "boolean"
+            },
+            "confusable_substitution_performed": {
+              "const": false,
+              "default": false,
+              "title": "Confusable Substitution Performed",
+              "type": "boolean"
+            },
+            "contract_type": {
+              "const": "hcam.anpr.ephemeral-plate-normalization.v1",
+              "default": "hcam.anpr.ephemeral-plate-normalization.v1",
+              "title": "Contract Type",
+              "type": "string"
+            },
+            "dictionary_completion_performed": {
+              "const": false,
+              "default": false,
+              "title": "Dictionary Completion Performed",
+              "type": "boolean"
+            },
+            "ephemeral_only": {
+              "const": true,
+              "default": true,
+              "title": "Ephemeral Only",
+              "type": "boolean"
+            },
+            "format_family": {
+              "enum": [
+                "synthetic_non_issuable",
+                "unrecognized"
+              ],
+              "title": "Format Family",
+              "type": "string"
+            },
+            "grapheme_count": {
+              "maximum": 16,
+              "minimum": 1,
+              "title": "Grapheme Count",
+              "type": "integer"
+            },
+            "grapheme_policy_version": {
+              "const": "sha256:f91b590006f16888e8dfd342d974eb2fea559701ce221d3563459e33eec0cd08",
+              "default": "sha256:f91b590006f16888e8dfd342d974eb2fea559701ce221d3563459e33eec0cd08",
+              "title": "Grapheme Policy Version",
+              "type": "string"
+            },
+            "graphemes": {
+              "items": {
+                "maxLength": 32,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 16,
+              "minItems": 1,
+              "title": "Graphemes",
+              "type": "array"
+            },
+            "nfc_scalar_count": {
+              "maximum": 32,
+              "minimum": 1,
+              "title": "Nfc Scalar Count",
+              "type": "integer"
+            },
+            "nfc_transform_performed": {
+              "title": "Nfc Transform Performed",
+              "type": "boolean"
+            },
+            "nfc_value": {
+              "maxLength": 32,
+              "minLength": 1,
+              "title": "Nfc Value",
+              "type": "string"
+            },
+            "normalization_version": {
+              "const": "sha256:3d1211dc3c3462014afec58f08b4ed66a73043838bf2975ae72049b22f093db6",
+              "default": "sha256:3d1211dc3c3462014afec58f08b4ed66a73043838bf2975ae72049b22f093db6",
+              "title": "Normalization Version",
+              "type": "string"
+            },
+            "normalized_display_candidate": {
+              "maxLength": 32,
+              "minLength": 1,
+              "title": "Normalized Display Candidate",
+              "type": "string"
+            },
+            "quality_threshold_approved": {
+              "const": false,
+              "default": false,
+              "title": "Quality Threshold Approved",
+              "type": "boolean"
+            },
+            "raw_confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Raw Confidence",
+              "type": "number"
+            },
+            "raw_hypothesis_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Raw Hypothesis Digest",
+              "type": "string"
+            },
+            "raw_output_mutated": {
+              "const": false,
+              "default": false,
+              "title": "Raw Output Mutated",
+              "type": "boolean"
+            },
+            "raw_scalar_count": {
+              "maximum": 32,
+              "minimum": 1,
+              "title": "Raw Scalar Count",
+              "type": "integer"
+            },
+            "record_lookup_performed": {
+              "const": false,
+              "default": false,
+              "title": "Record Lookup Performed",
+              "type": "boolean"
+            },
+            "regex_version": {
+              "const": "2026.7.19",
+              "default": "2026.7.19",
+              "title": "Regex Version",
+              "type": "string"
+            },
+            "retained": {
+              "const": false,
+              "default": false,
+              "title": "Retained",
+              "type": "boolean"
+            },
+            "script_lane": {
+              "enum": [
+                "latin",
+                "devanagari"
+              ],
+              "title": "Script Lane",
+              "type": "string"
+            },
+            "separator_transform_performed": {
+              "const": false,
+              "default": false,
+              "title": "Separator Transform Performed",
+              "type": "boolean"
+            },
+            "source_id": {
+              "const": "DATA-PLATE-GEN-R0",
+              "default": "DATA-PLATE-GEN-R0",
+              "title": "Source Id",
+              "type": "string"
+            },
+            "synthetic_only": {
+              "const": true,
+              "default": true,
+              "title": "Synthetic Only",
+              "type": "boolean"
+            },
+            "transliteration_performed": {
+              "const": false,
+              "default": false,
+              "title": "Transliteration Performed",
+              "type": "boolean"
+            },
+            "unicode_version": {
+              "const": "15.0.0",
+              "default": "15.0.0",
+              "title": "Unicode Version",
+              "type": "string"
+            },
+            "validation_outcomes": {
+              "items": {
+                "enum": [
+                  "allowlist_valid",
+                  "graphemes_segmented",
+                  "nfc_derived",
+                  "synthetic_grammar_rejected",
+                  "synthetic_grammar_valid",
+                  "unicode_scalar_valid",
+                  "utf8_valid"
+                ],
+                "type": "string"
+              },
+              "maxItems": 7,
+              "minItems": 6,
+              "title": "Validation Outcomes",
+              "type": "array"
+            }
+          },
+          "required": [
+            "candidate_id",
+            "script_lane",
+            "raw_hypothesis_digest",
+            "nfc_value",
+            "graphemes",
+            "normalized_display_candidate",
+            "raw_scalar_count",
+            "nfc_scalar_count",
+            "grapheme_count",
+            "format_family",
+            "validation_outcomes",
+            "nfc_transform_performed",
+            "case_transform_performed",
+            "raw_confidence",
+            "calibrated_confidence",
+            "abstention_reason"
+          ],
+          "title": "EphemeralPlateNormalizationV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "One typed W7 result scoped to an anonymous stream-local track.",
+      "properties": {
+        "contract_type": {
+          "const": "hcam.anpr.ephemeral-consensus-observation.v1",
+          "default": "hcam.anpr.ephemeral-consensus-observation.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "ephemeral_only": {
+          "const": true,
+          "default": true,
+          "title": "Ephemeral Only",
+          "type": "boolean"
+        },
+        "event_time_ms": {
+          "maximum": 9223372036854775807,
+          "minimum": 0,
+          "title": "Event Time Ms",
+          "type": "integer"
+        },
+        "normalization": {
+          "$ref": "#/$defs/EphemeralPlateNormalizationV1"
+        },
+        "retained": {
+          "const": false,
+          "default": false,
+          "title": "Retained",
+          "type": "boolean"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_sequence": {
+          "maximum": 9223372036854775807,
+          "minimum": 0,
+          "title": "Source Sequence",
+          "type": "integer"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "track_id": {
+          "pattern": "^trk_[0-9a-f]{32}$",
+          "title": "Track Id",
+          "type": "string"
+        },
+        "tracker_epoch": {
+          "pattern": "^epoch_[0-9a-f]{32}$",
+          "title": "Tracker Epoch",
+          "type": "string"
+        }
+      },
+      "required": [
+        "stream_id",
+        "tracker_epoch",
+        "track_id",
+        "event_time_ms",
+        "source_sequence",
+        "normalization"
+      ],
+      "title": "EphemeralConsensusObservationV1",
+      "type": "object"
+    },
+    "ephemeral_consensus_result": {
+      "$defs": {
+        "EphemeralConsensusVoteV1": {
+          "additionalProperties": false,
+          "description": "An exact-string vote that may exist only inside the bounded state machine.",
+          "properties": {
+            "confidence_weight": {
+              "maximum": 5,
+              "minimum": 0,
+              "title": "Confidence Weight",
+              "type": "number"
+            },
+            "first_event_time_ms": {
+              "minimum": 0,
+              "title": "First Event Time Ms",
+              "type": "integer"
+            },
+            "first_source_sequence": {
+              "minimum": 0,
+              "title": "First Source Sequence",
+              "type": "integer"
+            },
+            "normalized_display_candidate": {
+              "maxLength": 13,
+              "minLength": 13,
+              "pattern": "^SYN-[A-Z0-9]{4}-[A-Z0-9]{4}$",
+              "title": "Normalized Display Candidate",
+              "type": "string"
+            },
+            "observation_count": {
+              "maximum": 5,
+              "minimum": 1,
+              "title": "Observation Count",
+              "type": "integer"
+            },
+            "retained": {
+              "const": false,
+              "default": false,
+              "title": "Retained",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "normalized_display_candidate",
+            "observation_count",
+            "confidence_weight",
+            "first_event_time_ms",
+            "first_source_sequence"
+          ],
+          "title": "EphemeralConsensusVoteV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Closed consensus state; it is never eligible for evidence persistence.",
+      "properties": {
+        "abstain": {
+          "const": true,
+          "default": true,
+          "title": "Abstain",
+          "type": "boolean"
+        },
+        "abstention_reason": {
+          "enum": [
+            "consensus_thresholds_unapproved",
+            "overload_fail_closed"
+          ],
+          "title": "Abstention Reason",
+          "type": "string"
+        },
+        "accepted_value_emitted": {
+          "const": false,
+          "default": false,
+          "title": "Accepted Value Emitted",
+          "type": "boolean"
+        },
+        "close_reason": {
+          "enum": [
+            "count_limit",
+            "epoch_reset",
+            "event_time_window",
+            "overload",
+            "track_end"
+          ],
+          "title": "Close Reason",
+          "type": "string"
+        },
+        "confidence_margin": {
+          "maximum": 5,
+          "minimum": 0,
+          "title": "Confidence Margin",
+          "type": "number"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.ephemeral-consensus-result.v1",
+          "default": "hcam.anpr.ephemeral-consensus-result.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "ephemeral_only": {
+          "const": true,
+          "default": true,
+          "title": "Ephemeral Only",
+          "type": "boolean"
+        },
+        "first_event_time_ms": {
+          "minimum": 0,
+          "title": "First Event Time Ms",
+          "type": "integer"
+        },
+        "last_event_time_ms": {
+          "minimum": 0,
+          "title": "Last Event Time Ms",
+          "type": "integer"
+        },
+        "minimum_margin": {
+          "default": null,
+          "title": "Minimum Margin",
+          "type": "null"
+        },
+        "minimum_support": {
+          "default": null,
+          "title": "Minimum Support",
+          "type": "null"
+        },
+        "observation_count": {
+          "maximum": 5,
+          "minimum": 1,
+          "title": "Observation Count",
+          "type": "integer"
+        },
+        "operational_event_emitted": {
+          "const": false,
+          "default": false,
+          "title": "Operational Event Emitted",
+          "type": "boolean"
+        },
+        "persisted": {
+          "const": false,
+          "default": false,
+          "title": "Persisted",
+          "type": "boolean"
+        },
+        "policy_version": {
+          "const": "sha256:bf1fc270ac926af1e4e9d8465eb30025486e1c95b37c790bd6a36e8ed7b0f69d",
+          "default": "sha256:bf1fc270ac926af1e4e9d8465eb30025486e1c95b37c790bd6a36e8ed7b0f69d",
+          "title": "Policy Version",
+          "type": "string"
+        },
+        "ranked_votes": {
+          "items": {
+            "$ref": "#/$defs/EphemeralConsensusVoteV1"
+          },
+          "maxItems": 5,
+          "minItems": 1,
+          "title": "Ranked Votes",
+          "type": "array"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "stream_id": {
+          "pattern": "^str_[0-9a-f]{32}$",
+          "title": "Stream Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "thresholds_approved": {
+          "const": false,
+          "default": false,
+          "title": "Thresholds Approved",
+          "type": "boolean"
+        },
+        "track_id": {
+          "pattern": "^trk_[0-9a-f]{32}$",
+          "title": "Track Id",
+          "type": "string"
+        },
+        "tracker_epoch": {
+          "pattern": "^epoch_[0-9a-f]{32}$",
+          "title": "Tracker Epoch",
+          "type": "string"
+        },
+        "unique_candidate_count": {
+          "maximum": 5,
+          "minimum": 1,
+          "title": "Unique Candidate Count",
+          "type": "integer"
+        },
+        "winning_candidate": {
+          "maxLength": 13,
+          "minLength": 13,
+          "pattern": "^SYN-[A-Z0-9]{4}-[A-Z0-9]{4}$",
+          "title": "Winning Candidate",
+          "type": "string"
+        },
+        "winning_confidence_weight": {
+          "maximum": 5,
+          "minimum": 0,
+          "title": "Winning Confidence Weight",
+          "type": "number"
+        },
+        "winning_support": {
+          "maximum": 5,
+          "minimum": 1,
+          "title": "Winning Support",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "stream_id",
+        "tracker_epoch",
+        "track_id",
+        "close_reason",
+        "first_event_time_ms",
+        "last_event_time_ms",
+        "observation_count",
+        "unique_candidate_count",
+        "ranked_votes",
+        "winning_candidate",
+        "winning_support",
+        "winning_confidence_weight",
+        "confidence_margin",
+        "abstention_reason"
+      ],
+      "title": "EphemeralConsensusResultV1",
+      "type": "object"
+    },
+    "ephemeral_latin_ocr_hypothesis": {
+      "$defs": {
+        "LatinOcrAlternativeV1": {
+          "additionalProperties": false,
+          "properties": {
+            "rank": {
+              "maximum": 5,
+              "minimum": 1,
+              "title": "Rank",
+              "type": "integer"
+            },
+            "raw_confidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Raw Confidence",
+              "type": "number"
+            },
+            "raw_text": {
+              "maxLength": 16,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9-]+$",
+              "title": "Raw Text",
+              "type": "string"
+            }
+          },
+          "required": [
+            "rank",
+            "raw_text",
+            "raw_confidence"
+          ],
+          "title": "LatinOcrAlternativeV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Raw OCR output. It is valid only in memory and is never evidence-safe.",
+      "properties": {
+        "adapter_version": {
+          "const": "sha256:7e15ccd801d32f623d309541ae1c3186191801c204061c1a3e598347dfba8679",
+          "default": "sha256:7e15ccd801d32f623d309541ae1c3186191801c204061c1a3e598347dfba8679",
+          "title": "Adapter Version",
+          "type": "string"
+        },
+        "alternatives": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/LatinOcrAlternativeV1"
+          },
+          "maxItems": 5,
+          "title": "Alternatives",
+          "type": "array"
+        },
+        "artifact_id": {
+          "enum": [
+            "OCR-L0-PPOCRV6-SMALL-INFER-PROPOSED",
+            "OCR-L1-PPOCRV6-MEDIUM-INFER-PROPOSED"
+          ],
+          "title": "Artifact Id",
+          "type": "string"
+        },
+        "artifact_sha256": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Artifact Sha256",
+          "type": "string"
+        },
+        "candidate_id": {
+          "enum": [
+            "OCR-L0",
+            "OCR-L1"
+          ],
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.ephemeral-latin-ocr-hypothesis.v1",
+          "default": "hcam.anpr.ephemeral-latin-ocr-hypothesis.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "dictionary_version": {
+          "const": "sha256:a98ac29121eec9aef70836341b9d35806da7939b4f0fe1e20443acc00d915adc",
+          "default": "sha256:a98ac29121eec9aef70836341b9d35806da7939b4f0fe1e20443acc00d915adc",
+          "title": "Dictionary Version",
+          "type": "string"
+        },
+        "engine_id": {
+          "const": "paddleocr-text-recognition",
+          "default": "paddleocr-text-recognition",
+          "title": "Engine Id",
+          "type": "string"
+        },
+        "ephemeral_only": {
+          "const": true,
+          "default": true,
+          "title": "Ephemeral Only",
+          "type": "boolean"
+        },
+        "generator_version": {
+          "const": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "default": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "latency_ms": {
+          "maximum": 600000,
+          "minimum": 0,
+          "title": "Latency Ms",
+          "type": "number"
+        },
+        "preprocessing_version": {
+          "const": "sha256:9e162e160d6b760d429211556a1efd97cacbd60096b09b7dc4c4c1fdaa941879",
+          "default": "sha256:9e162e160d6b760d429211556a1efd97cacbd60096b09b7dc4c4c1fdaa941879",
+          "title": "Preprocessing Version",
+          "type": "string"
+        },
+        "raw_confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Raw Confidence",
+          "type": "number"
+        },
+        "raw_output_mutated": {
+          "const": false,
+          "default": false,
+          "title": "Raw Output Mutated",
+          "type": "boolean"
+        },
+        "raw_text": {
+          "maxLength": 16,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9-]+$",
+          "title": "Raw Text",
+          "type": "string"
+        },
+        "region_id": {
+          "pattern": "^anprregion_[0-9a-f]{32}$",
+          "title": "Region Id",
+          "type": "string"
+        },
+        "renderer_version": {
+          "const": "sha256:9e162e160d6b760d429211556a1efd97cacbd60096b09b7dc4c4c1fdaa941879",
+          "default": "sha256:9e162e160d6b760d429211556a1efd97cacbd60096b09b7dc4c4c1fdaa941879",
+          "title": "Renderer Version",
+          "type": "string"
+        },
+        "result_id": {
+          "pattern": "^anprocr_[0-9a-f]{32}$",
+          "title": "Result Id",
+          "type": "string"
+        },
+        "retained": {
+          "const": false,
+          "default": false,
+          "title": "Retained",
+          "type": "boolean"
+        },
+        "review_state": {
+          "const": "unreviewed",
+          "default": "unreviewed",
+          "title": "Review State",
+          "type": "string"
+        },
+        "runtime_id": {
+          "const": "paddleocr-3.7.0-paddlepaddle-3.3.1-cpu",
+          "default": "paddleocr-3.7.0-paddlepaddle-3.3.1-cpu",
+          "title": "Runtime Id",
+          "type": "string"
+        },
+        "sample_id": {
+          "pattern": "^anprsample_[0-9a-f]{32}$",
+          "title": "Sample Id",
+          "type": "string"
+        },
+        "script_lane": {
+          "const": "latin",
+          "default": "latin",
+          "title": "Script Lane",
+          "type": "string"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "result_id",
+        "region_id",
+        "sample_id",
+        "candidate_id",
+        "artifact_id",
+        "artifact_sha256",
+        "raw_text",
+        "raw_confidence",
+        "latency_ms"
+      ],
+      "title": "EphemeralLatinOcrHypothesisV1",
+      "type": "object"
+    },
+    "ephemeral_plate_normalization": {
+      "additionalProperties": false,
+      "description": "Derived text semantics that are valid only inside the generated harness.",
+      "properties": {
+        "abstain": {
+          "const": true,
+          "default": true,
+          "title": "Abstain",
+          "type": "boolean"
+        },
+        "abstention_policy_version": {
+          "const": "sha256:355dc7c8e5510a8223d84652ca9043efbd7aad93d722fb6be0f82eef7af24ded",
+          "default": "sha256:355dc7c8e5510a8223d84652ca9043efbd7aad93d722fb6be0f82eef7af24ded",
+          "title": "Abstention Policy Version",
+          "type": "string"
+        },
+        "abstention_reason": {
+          "enum": [
+            "auxiliary_observation_only",
+            "quality_threshold_unapproved",
+            "synthetic_grammar_rejected"
+          ],
+          "title": "Abstention Reason",
+          "type": "string"
+        },
+        "calibrated_confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Calibrated Confidence",
+          "type": "number"
+        },
+        "calibration_method": {
+          "const": "identity_generated_baseline",
+          "default": "identity_generated_baseline",
+          "title": "Calibration Method",
+          "type": "string"
+        },
+        "calibration_version": {
+          "const": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+          "default": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+          "title": "Calibration Version",
+          "type": "string"
+        },
+        "candidate_id": {
+          "enum": [
+            "OCR-L0",
+            "OCR-L1",
+            "OCR-D0"
+          ],
+          "title": "Candidate Id",
+          "type": "string"
+        },
+        "case_transform_performed": {
+          "title": "Case Transform Performed",
+          "type": "boolean"
+        },
+        "confusable_substitution_performed": {
+          "const": false,
+          "default": false,
+          "title": "Confusable Substitution Performed",
+          "type": "boolean"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.ephemeral-plate-normalization.v1",
+          "default": "hcam.anpr.ephemeral-plate-normalization.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "dictionary_completion_performed": {
+          "const": false,
+          "default": false,
+          "title": "Dictionary Completion Performed",
+          "type": "boolean"
+        },
+        "ephemeral_only": {
+          "const": true,
+          "default": true,
+          "title": "Ephemeral Only",
+          "type": "boolean"
+        },
+        "format_family": {
+          "enum": [
+            "synthetic_non_issuable",
+            "unrecognized"
+          ],
+          "title": "Format Family",
+          "type": "string"
+        },
+        "grapheme_count": {
+          "maximum": 16,
+          "minimum": 1,
+          "title": "Grapheme Count",
+          "type": "integer"
+        },
+        "grapheme_policy_version": {
+          "const": "sha256:f91b590006f16888e8dfd342d974eb2fea559701ce221d3563459e33eec0cd08",
+          "default": "sha256:f91b590006f16888e8dfd342d974eb2fea559701ce221d3563459e33eec0cd08",
+          "title": "Grapheme Policy Version",
+          "type": "string"
+        },
+        "graphemes": {
+          "items": {
+            "maxLength": 32,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Graphemes",
+          "type": "array"
+        },
+        "nfc_scalar_count": {
+          "maximum": 32,
+          "minimum": 1,
+          "title": "Nfc Scalar Count",
+          "type": "integer"
+        },
+        "nfc_transform_performed": {
+          "title": "Nfc Transform Performed",
+          "type": "boolean"
+        },
+        "nfc_value": {
+          "maxLength": 32,
+          "minLength": 1,
+          "title": "Nfc Value",
+          "type": "string"
+        },
+        "normalization_version": {
+          "const": "sha256:3d1211dc3c3462014afec58f08b4ed66a73043838bf2975ae72049b22f093db6",
+          "default": "sha256:3d1211dc3c3462014afec58f08b4ed66a73043838bf2975ae72049b22f093db6",
+          "title": "Normalization Version",
+          "type": "string"
+        },
+        "normalized_display_candidate": {
+          "maxLength": 32,
+          "minLength": 1,
+          "title": "Normalized Display Candidate",
+          "type": "string"
+        },
+        "quality_threshold_approved": {
+          "const": false,
+          "default": false,
+          "title": "Quality Threshold Approved",
+          "type": "boolean"
+        },
+        "raw_confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Raw Confidence",
+          "type": "number"
+        },
+        "raw_hypothesis_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Raw Hypothesis Digest",
+          "type": "string"
+        },
+        "raw_output_mutated": {
+          "const": false,
+          "default": false,
+          "title": "Raw Output Mutated",
+          "type": "boolean"
+        },
+        "raw_scalar_count": {
+          "maximum": 32,
+          "minimum": 1,
+          "title": "Raw Scalar Count",
+          "type": "integer"
+        },
+        "record_lookup_performed": {
+          "const": false,
+          "default": false,
+          "title": "Record Lookup Performed",
+          "type": "boolean"
+        },
+        "regex_version": {
+          "const": "2026.7.19",
+          "default": "2026.7.19",
+          "title": "Regex Version",
+          "type": "string"
+        },
+        "retained": {
+          "const": false,
+          "default": false,
+          "title": "Retained",
+          "type": "boolean"
+        },
+        "script_lane": {
+          "enum": [
+            "latin",
+            "devanagari"
+          ],
+          "title": "Script Lane",
+          "type": "string"
+        },
+        "separator_transform_performed": {
+          "const": false,
+          "default": false,
+          "title": "Separator Transform Performed",
+          "type": "boolean"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "transliteration_performed": {
+          "const": false,
+          "default": false,
+          "title": "Transliteration Performed",
+          "type": "boolean"
+        },
+        "unicode_version": {
+          "const": "15.0.0",
+          "default": "15.0.0",
+          "title": "Unicode Version",
+          "type": "string"
+        },
+        "validation_outcomes": {
+          "items": {
+            "enum": [
+              "allowlist_valid",
+              "graphemes_segmented",
+              "nfc_derived",
+              "synthetic_grammar_rejected",
+              "synthetic_grammar_valid",
+              "unicode_scalar_valid",
+              "utf8_valid"
+            ],
+            "type": "string"
+          },
+          "maxItems": 7,
+          "minItems": 6,
+          "title": "Validation Outcomes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "script_lane",
+        "raw_hypothesis_digest",
+        "nfc_value",
+        "graphemes",
+        "normalized_display_candidate",
+        "raw_scalar_count",
+        "nfc_scalar_count",
+        "grapheme_count",
+        "format_family",
+        "validation_outcomes",
+        "nfc_transform_performed",
+        "case_transform_performed",
+        "raw_confidence",
+        "calibrated_confidence",
+        "abstention_reason"
+      ],
+      "title": "EphemeralPlateNormalizationV1",
+      "type": "object"
+    },
+    "ephemeral_token": {
+      "additionalProperties": false,
+      "description": "In-memory ground truth that must never enter evidence or persistence.",
+      "properties": {
+        "contract_type": {
+          "const": "hcam.anpr.ephemeral-synthetic-token.v1",
+          "default": "hcam.anpr.ephemeral-synthetic-token.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "layout": {
+          "enum": [
+            "single_line",
+            "two_line"
+          ],
+          "title": "Layout",
+          "type": "string"
+        },
+        "persistence": {
+          "const": "prohibited",
+          "default": "prohibited",
+          "title": "Persistence",
+          "type": "string"
+        },
+        "request_id": {
+          "pattern": "^anprreq_[0-9a-f]{32}$",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "script": {
+          "const": "latin",
+          "default": "latin",
+          "title": "Script",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "token": {
+          "maxLength": 13,
+          "minLength": 13,
+          "pattern": "^SYN-[A-Z0-9]{4}-[A-Z0-9]{4}$",
+          "title": "Token",
+          "type": "string"
+        },
+        "token_class": {
+          "const": "synthetic_non_issuable",
+          "default": "synthetic_non_issuable",
+          "title": "Token Class",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "token",
+        "layout"
+      ],
+      "title": "EphemeralSyntheticTokenV1",
+      "type": "object"
+    },
+    "execution_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "arbitrary_input": {
+          "const": "denied",
+          "default": "denied",
+          "title": "Arbitrary Input",
+          "type": "string"
+        },
+        "artifact_download": {
+          "const": "denied",
+          "default": "denied",
+          "title": "Artifact Download",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.execution-policy.v1",
+          "default": "hcam.anpr.execution-policy.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "enabled": {
+          "default": false,
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "environment": {
+          "default": "development",
+          "enum": [
+            "development",
+            "test",
+            "production"
+          ],
+          "title": "Environment",
+          "type": "string"
+        },
+        "execution_scope": {
+          "const": "generated_only",
+          "default": "generated_only",
+          "title": "Execution Scope",
+          "type": "string"
+        },
+        "input_mode": {
+          "const": "deterministic_seed_only",
+          "default": "deterministic_seed_only",
+          "title": "Input Mode",
+          "type": "string"
+        },
+        "maximum_request_bytes": {
+          "const": 4096,
+          "default": 4096,
+          "title": "Maximum Request Bytes",
+          "type": "integer"
+        },
+        "network_access": {
+          "const": "denied",
+          "default": "denied",
+          "title": "Network Access",
+          "type": "string"
+        },
+        "plate_text_persistence": {
+          "const": "denied",
+          "default": "denied",
+          "title": "Plate Text Persistence",
+          "type": "string"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        }
+      },
+      "title": "SyntheticAnprExecutionPolicyV1",
+      "type": "object"
+    },
+    "generated_request": {
+      "additionalProperties": false,
+      "description": "Seed-only request; it deliberately has no text, file, media, or URL field.",
+      "properties": {
+        "contract_type": {
+          "const": "hcam.anpr.generated-token-request.v1",
+          "default": "hcam.anpr.generated-token-request.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "generator_version": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "input_mode": {
+          "const": "deterministic_seed_only",
+          "default": "deterministic_seed_only",
+          "title": "Input Mode",
+          "type": "string"
+        },
+        "layout": {
+          "enum": [
+            "single_line",
+            "two_line"
+          ],
+          "title": "Layout",
+          "type": "string"
+        },
+        "policy_id": {
+          "const": "hcam.anpr.synthetic-non-issuable.v1",
+          "default": "hcam.anpr.synthetic-non-issuable.v1",
+          "title": "Policy Id",
+          "type": "string"
+        },
+        "policy_version": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Policy Version",
+          "type": "string"
+        },
+        "request_id": {
+          "pattern": "^anprreq_[0-9a-f]{32}$",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "sample_index": {
+          "exclusiveMaximum": 10000,
+          "minimum": 0,
+          "title": "Sample Index",
+          "type": "integer"
+        },
+        "script": {
+          "const": "latin",
+          "default": "latin",
+          "title": "Script",
+          "type": "string"
+        },
+        "seed": {
+          "maximum": 4294967295,
+          "minimum": 0,
+          "title": "Seed",
+          "type": "integer"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "token_class": {
+          "const": "synthetic_non_issuable",
+          "default": "synthetic_non_issuable",
+          "title": "Token Class",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "generator_version",
+        "policy_version",
+        "seed",
+        "sample_index",
+        "layout"
+      ],
+      "title": "GeneratedTokenRequestV1",
+      "type": "object"
+    },
+    "ground_truth_crop_descriptor": {
+      "additionalProperties": false,
+      "properties": {
+        "contract_type": {
+          "const": "hcam.anpr.ground-truth-crop-descriptor.v1",
+          "default": "hcam.anpr.ground-truth-crop-descriptor.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "crop_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Crop Digest",
+          "type": "string"
+        },
+        "crop_id": {
+          "pattern": "^anprcrop_[0-9a-f]{32}$",
+          "title": "Crop Id",
+          "type": "string"
+        },
+        "frame_generator_version": {
+          "const": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+          "default": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+          "title": "Frame Generator Version",
+          "type": "string"
+        },
+        "generator_version": {
+          "const": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "default": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "height": {
+          "maximum": 128,
+          "minimum": 1,
+          "title": "Height",
+          "type": "integer"
+        },
+        "method": {
+          "const": "axis_aligned_generated_ground_truth",
+          "default": "axis_aligned_generated_ground_truth",
+          "title": "Method",
+          "type": "string"
+        },
+        "model_execution_performed": {
+          "const": false,
+          "default": false,
+          "title": "Model Execution Performed",
+          "type": "boolean"
+        },
+        "pixel_format": {
+          "const": "bgr8",
+          "default": "bgr8",
+          "title": "Pixel Format",
+          "type": "string"
+        },
+        "pixels_ephemeral": {
+          "const": true,
+          "default": true,
+          "title": "Pixels Ephemeral",
+          "type": "boolean"
+        },
+        "pixels_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Pixels Persisted",
+          "type": "boolean"
+        },
+        "rectifier_version": {
+          "const": "sha256:39194faa2bccb7ca3f4060aeb51130d733aab1fec54e14b5985b70958c475c2f",
+          "default": "sha256:39194faa2bccb7ca3f4060aeb51130d733aab1fec54e14b5985b70958c475c2f",
+          "title": "Rectifier Version",
+          "type": "string"
+        },
+        "region_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Region Digest",
+          "type": "string"
+        },
+        "sample_id": {
+          "pattern": "^anprsample_[0-9a-f]{32}$",
+          "title": "Sample Id",
+          "type": "string"
+        },
+        "source_frame_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Source Frame Digest",
+          "type": "string"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "token_text_in_contract": {
+          "const": false,
+          "default": false,
+          "title": "Token Text In Contract",
+          "type": "boolean"
+        },
+        "transform_matrix": {
+          "maxItems": 9,
+          "minItems": 9,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Transform Matrix",
+          "type": "array"
+        },
+        "width": {
+          "maximum": 512,
+          "minimum": 1,
+          "title": "Width",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "crop_id",
+        "sample_id",
+        "region_digest",
+        "source_frame_digest",
+        "crop_digest",
+        "width",
+        "height",
+        "transform_matrix"
+      ],
+      "title": "GroundTruthCropDescriptorV1",
+      "type": "object"
+    },
+    "ground_truth_region": {
+      "$defs": {
+        "GroundTruthPlateRegionContentV1": {
+          "additionalProperties": false,
+          "properties": {
+            "bbox": {
+              "$ref": "#/$defs/NormalizedBoundingBox"
+            },
+            "class_id": {
+              "const": "vehicle.registration_plate_region",
+              "default": "vehicle.registration_plate_region",
+              "title": "Class Id",
+              "type": "string"
+            },
+            "contract_type": {
+              "const": "hcam.anpr.ground-truth-region-content.v1",
+              "default": "hcam.anpr.ground-truth-region-content.v1",
+              "title": "Contract Type",
+              "type": "string"
+            },
+            "frame_generator_version": {
+              "const": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+              "default": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+              "title": "Frame Generator Version",
+              "type": "string"
+            },
+            "generator_version": {
+              "const": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+              "default": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+              "title": "Generator Version",
+              "type": "string"
+            },
+            "ground_truth_only": {
+              "const": true,
+              "default": true,
+              "title": "Ground Truth Only",
+              "type": "boolean"
+            },
+            "layout": {
+              "enum": [
+                "single_line",
+                "two_line"
+              ],
+              "title": "Layout",
+              "type": "string"
+            },
+            "quadrilateral": {
+              "maxItems": 4,
+              "minItems": 4,
+              "prefixItems": [
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                },
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                },
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                },
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                }
+              ],
+              "title": "Quadrilateral",
+              "type": "array"
+            },
+            "region_id": {
+              "pattern": "^anprregion_[0-9a-f]{32}$",
+              "title": "Region Id",
+              "type": "string"
+            },
+            "sample_id": {
+              "pattern": "^anprsample_[0-9a-f]{32}$",
+              "title": "Sample Id",
+              "type": "string"
+            },
+            "source_id": {
+              "const": "DATA-PLATE-GEN-R0",
+              "default": "DATA-PLATE-GEN-R0",
+              "title": "Source Id",
+              "type": "string"
+            },
+            "synthetic_only": {
+              "const": true,
+              "default": true,
+              "title": "Synthetic Only",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "region_id",
+            "sample_id",
+            "layout",
+            "bbox",
+            "quadrilateral"
+          ],
+          "title": "GroundTruthPlateRegionContentV1",
+          "type": "object"
+        },
+        "NormalizedBoundingBox": {
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Height",
+              "type": "number"
+            },
+            "width": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Width",
+              "type": "number"
+            },
+            "x": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "title": "NormalizedBoundingBox",
+          "type": "object"
+        },
+        "NormalizedPointV1": {
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ],
+          "title": "NormalizedPointV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "$ref": "#/$defs/GroundTruthPlateRegionContentV1"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.sealed-ground-truth-region.v1",
+          "default": "hcam.anpr.sealed-ground-truth-region.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "region_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Region Digest",
+          "type": "string"
+        }
+      },
+      "required": [
+        "content",
+        "region_digest"
+      ],
+      "title": "SealedGroundTruthPlateRegionV1",
+      "type": "object"
+    },
+    "latin_ocr_generated_evaluation": {
+      "$defs": {
+        "LatinOcrCandidateEvaluationV1": {
+          "additionalProperties": false,
+          "properties": {
+            "adapter_version": {
+              "const": "sha256:7e15ccd801d32f623d309541ae1c3186191801c204061c1a3e598347dfba8679",
+              "default": "sha256:7e15ccd801d32f623d309541ae1c3186191801c204061c1a3e598347dfba8679",
+              "title": "Adapter Version",
+              "type": "string"
+            },
+            "alternatives_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Alternatives Persisted",
+              "type": "boolean"
+            },
+            "artifact_id": {
+              "enum": [
+                "OCR-L0-PPOCRV6-SMALL-INFER-PROPOSED",
+                "OCR-L1-PPOCRV6-MEDIUM-INFER-PROPOSED"
+              ],
+              "title": "Artifact Id",
+              "type": "string"
+            },
+            "artifact_sha256": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Artifact Sha256",
+              "type": "string"
+            },
+            "candidate_id": {
+              "enum": [
+                "OCR-L0",
+                "OCR-L1"
+              ],
+              "title": "Candidate Id",
+              "type": "string"
+            },
+            "confidence_distribution": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/LatinOcrDistributionV1"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "dictionary_version": {
+              "const": "sha256:a98ac29121eec9aef70836341b9d35806da7939b4f0fe1e20443acc00d915adc",
+              "default": "sha256:a98ac29121eec9aef70836341b9d35806da7939b4f0fe1e20443acc00d915adc",
+              "title": "Dictionary Version",
+              "type": "string"
+            },
+            "exact_matches": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Exact Matches",
+              "type": "integer"
+            },
+            "extracted_inventory_sha256": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Extracted Inventory Sha256",
+              "type": "string"
+            },
+            "failed": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Failed",
+              "type": "integer"
+            },
+            "failure_counts": {
+              "$ref": "#/$defs/LatinOcrFailureCountsV1"
+            },
+            "final_test_used": {
+              "const": false,
+              "default": false,
+              "title": "Final Test Used",
+              "type": "boolean"
+            },
+            "identifiers_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Identifiers Persisted",
+              "type": "boolean"
+            },
+            "latency_ms_distribution": {
+              "$ref": "#/$defs/LatinOcrDistributionV1"
+            },
+            "model_name": {
+              "enum": [
+                "PP-OCRv6_small_rec",
+                "PP-OCRv6_medium_rec"
+              ],
+              "title": "Model Name",
+              "type": "string"
+            },
+            "network_access_performed": {
+              "const": false,
+              "default": false,
+              "title": "Network Access Performed",
+              "type": "boolean"
+            },
+            "network_attempt_count": {
+              "minimum": 0,
+              "title": "Network Attempt Count",
+              "type": "integer"
+            },
+            "promotion_authorized": {
+              "const": false,
+              "default": false,
+              "title": "Promotion Authorized",
+              "type": "boolean"
+            },
+            "raw_edit_distance": {
+              "minimum": 0,
+              "title": "Raw Edit Distance",
+              "type": "integer"
+            },
+            "raw_output_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Raw Output Persisted",
+              "type": "boolean"
+            },
+            "reference_scalar_count": {
+              "minimum": 1,
+              "title": "Reference Scalar Count",
+              "type": "integer"
+            },
+            "replay_output_deterministic": {
+              "title": "Replay Output Deterministic",
+              "type": "boolean"
+            },
+            "replay_runs": {
+              "const": 20,
+              "default": 20,
+              "title": "Replay Runs",
+              "type": "integer"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 1,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "slices": {
+              "items": {
+                "$ref": "#/$defs/LatinOcrGeneratedSliceV1"
+              },
+              "maxItems": 2,
+              "minItems": 2,
+              "title": "Slices",
+              "type": "array"
+            },
+            "succeeded": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Succeeded",
+              "type": "integer"
+            },
+            "synthetic_only": {
+              "const": true,
+              "default": true,
+              "title": "Synthetic Only",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "candidate_id",
+            "artifact_id",
+            "artifact_sha256",
+            "extracted_inventory_sha256",
+            "model_name",
+            "sample_count",
+            "succeeded",
+            "failed",
+            "exact_matches",
+            "reference_scalar_count",
+            "raw_edit_distance",
+            "failure_counts",
+            "slices",
+            "confidence_distribution",
+            "latency_ms_distribution",
+            "replay_output_deterministic",
+            "network_attempt_count"
+          ],
+          "title": "LatinOcrCandidateEvaluationV1",
+          "type": "object"
+        },
+        "LatinOcrDistributionV1": {
+          "additionalProperties": false,
+          "properties": {
+            "maximum": {
+              "minimum": 0,
+              "title": "Maximum",
+              "type": "number"
+            },
+            "mean": {
+              "minimum": 0,
+              "title": "Mean",
+              "type": "number"
+            },
+            "minimum": {
+              "minimum": 0,
+              "title": "Minimum",
+              "type": "number"
+            },
+            "p50": {
+              "minimum": 0,
+              "title": "P50",
+              "type": "number"
+            },
+            "p95": {
+              "minimum": 0,
+              "title": "P95",
+              "type": "number"
+            }
+          },
+          "required": [
+            "minimum",
+            "p50",
+            "p95",
+            "maximum",
+            "mean"
+          ],
+          "title": "LatinOcrDistributionV1",
+          "type": "object"
+        },
+        "LatinOcrFailureCountsV1": {
+          "additionalProperties": false,
+          "properties": {
+            "engine_error": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Engine Error",
+              "type": "integer"
+            },
+            "invalid_confidence": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Invalid Confidence",
+              "type": "integer"
+            },
+            "invalid_output": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Invalid Output",
+              "type": "integer"
+            },
+            "malformed_result": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Malformed Result",
+              "type": "integer"
+            },
+            "no_result": {
+              "default": 0,
+              "minimum": 0,
+              "title": "No Result",
+              "type": "integer"
+            },
+            "output_too_long": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Output Too Long",
+              "type": "integer"
+            },
+            "unexpected_whitespace": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Unexpected Whitespace",
+              "type": "integer"
+            },
+            "unsupported_script": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Unsupported Script",
+              "type": "integer"
+            }
+          },
+          "title": "LatinOcrFailureCountsV1",
+          "type": "object"
+        },
+        "LatinOcrGeneratedSliceV1": {
+          "additionalProperties": false,
+          "properties": {
+            "exact_matches": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Exact Matches",
+              "type": "integer"
+            },
+            "failed": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Failed",
+              "type": "integer"
+            },
+            "failure_counts": {
+              "$ref": "#/$defs/LatinOcrFailureCountsV1"
+            },
+            "layout": {
+              "enum": [
+                "single_line",
+                "two_line"
+              ],
+              "title": "Layout",
+              "type": "string"
+            },
+            "raw_edit_distance": {
+              "minimum": 0,
+              "title": "Raw Edit Distance",
+              "type": "integer"
+            },
+            "reference_scalar_count": {
+              "minimum": 0,
+              "title": "Reference Scalar Count",
+              "type": "integer"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "succeeded": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Succeeded",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "layout",
+            "sample_count",
+            "succeeded",
+            "failed",
+            "exact_matches",
+            "reference_scalar_count",
+            "raw_edit_distance",
+            "failure_counts"
+          ],
+          "title": "LatinOcrGeneratedSliceV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "adapter_version": {
+          "const": "sha256:7e15ccd801d32f623d309541ae1c3186191801c204061c1a3e598347dfba8679",
+          "default": "sha256:7e15ccd801d32f623d309541ae1c3186191801c204061c1a3e598347dfba8679",
+          "title": "Adapter Version",
+          "type": "string"
+        },
+        "alternatives_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Alternatives Persisted",
+          "type": "boolean"
+        },
+        "camera_or_media_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Camera Or Media Input Count",
+          "type": "integer"
+        },
+        "candidate_evaluations": {
+          "items": {
+            "$ref": "#/$defs/LatinOcrCandidateEvaluationV1"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Candidate Evaluations",
+          "type": "array"
+        },
+        "contract_type": {
+          "const": "hcam.phase3.p3_5.latin-ocr-generated-evaluation.v1",
+          "default": "hcam.phase3.p3_5.latin-ocr-generated-evaluation.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "deployment_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Deployment Authorized",
+          "type": "boolean"
+        },
+        "external_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "External Input Count",
+          "type": "integer"
+        },
+        "generated_sample_plan": {
+          "const": "development_then_validation_no_final_test",
+          "default": "development_then_validation_no_final_test",
+          "title": "Generated Sample Plan",
+          "type": "string"
+        },
+        "generator_version": {
+          "const": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "default": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "model_download_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Model Download Count",
+          "type": "integer"
+        },
+        "paddleocr_version": {
+          "const": "3.7.0",
+          "default": "3.7.0",
+          "title": "Paddleocr Version",
+          "type": "string"
+        },
+        "paddlepaddle_version": {
+          "const": "3.3.1",
+          "default": "3.3.1",
+          "title": "Paddlepaddle Version",
+          "type": "string"
+        },
+        "pillow_version": {
+          "const": "12.3.0",
+          "default": "12.3.0",
+          "title": "Pillow Version",
+          "type": "string"
+        },
+        "plate_text_retention_hours": {
+          "const": 0,
+          "default": 0,
+          "title": "Plate Text Retention Hours",
+          "type": "integer"
+        },
+        "promotion_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Promotion Authorized",
+          "type": "boolean"
+        },
+        "quality_threshold_decided": {
+          "const": false,
+          "default": false,
+          "title": "Quality Threshold Decided",
+          "type": "boolean"
+        },
+        "raw_output_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Raw Output Persisted",
+          "type": "boolean"
+        },
+        "real_registration_mark_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Real Registration Mark Count",
+          "type": "integer"
+        },
+        "regex_version": {
+          "const": "2026.7.19",
+          "default": "2026.7.19",
+          "title": "Regex Version",
+          "type": "string"
+        },
+        "renderer_version": {
+          "const": "sha256:9e162e160d6b760d429211556a1efd97cacbd60096b09b7dc4c4c1fdaa941879",
+          "default": "sha256:9e162e160d6b760d429211556a1efd97cacbd60096b09b7dc4c4c1fdaa941879",
+          "title": "Renderer Version",
+          "type": "string"
+        },
+        "runtime_id": {
+          "const": "cpython-3.12.13-windows-x86_64",
+          "default": "cpython-3.12.13-windows-x86_64",
+          "title": "Runtime Id",
+          "type": "string"
+        },
+        "sample_or_region_identifiers_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Sample Or Region Identifiers Persisted",
+          "type": "boolean"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "work_package": {
+          "const": "P35-W5_exact_Latin_Paddle_OCR_adapters_and_generated_evaluation",
+          "default": "P35-W5_exact_Latin_Paddle_OCR_adapters_and_generated_evaluation",
+          "title": "Work Package",
+          "type": "string"
+        }
+      },
+      "required": [
+        "candidate_evaluations"
+      ],
+      "title": "LatinOcrGeneratedEvaluationV1",
+      "type": "object"
+    },
+    "normalization_generated_evaluation": {
+      "$defs": {
+        "CalibrationBinV1": {
+          "additionalProperties": false,
+          "properties": {
+            "absolute_calibration_gap": {
+              "anyOf": [
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Absolute Calibration Gap"
+            },
+            "accuracy": {
+              "anyOf": [
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Accuracy"
+            },
+            "bin_index": {
+              "maximum": 4,
+              "minimum": 0,
+              "title": "Bin Index",
+              "type": "integer"
+            },
+            "correct_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Correct Count",
+              "type": "integer"
+            },
+            "lower_bound": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Lower Bound",
+              "type": "number"
+            },
+            "mean_confidence": {
+              "anyOf": [
+                {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Mean Confidence"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "upper_bound": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Upper Bound",
+              "type": "number"
+            }
+          },
+          "required": [
+            "bin_index",
+            "lower_bound",
+            "upper_bound",
+            "sample_count",
+            "correct_count",
+            "mean_confidence",
+            "accuracy",
+            "absolute_calibration_gap"
+          ],
+          "title": "CalibrationBinV1",
+          "type": "object"
+        },
+        "CandidateCalibrationEvaluationV1": {
+          "additionalProperties": false,
+          "properties": {
+            "bins": {
+              "items": {
+                "$ref": "#/$defs/CalibrationBinV1"
+              },
+              "maxItems": 5,
+              "minItems": 5,
+              "title": "Bins",
+              "type": "array"
+            },
+            "brier_score": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Brier Score",
+              "type": "number"
+            },
+            "calibration_version": {
+              "const": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+              "default": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+              "title": "Calibration Version",
+              "type": "string"
+            },
+            "candidate_id": {
+              "enum": [
+                "OCR-L0",
+                "OCR-L1",
+                "OCR-D0"
+              ],
+              "title": "Candidate Id",
+              "type": "string"
+            },
+            "correct_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Correct Count",
+              "type": "integer"
+            },
+            "expected_calibration_error": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Expected Calibration Error",
+              "type": "number"
+            },
+            "fixture_kind": {
+              "const": "deterministic_contract_semantics_not_model_quality",
+              "default": "deterministic_contract_semantics_not_model_quality",
+              "title": "Fixture Kind",
+              "type": "string"
+            },
+            "method": {
+              "const": "identity_generated_baseline_five_equal_width_bins",
+              "default": "identity_generated_baseline_five_equal_width_bins",
+              "title": "Method",
+              "type": "string"
+            },
+            "promotion_authorized": {
+              "const": false,
+              "default": false,
+              "title": "Promotion Authorized",
+              "type": "boolean"
+            },
+            "quality_threshold_approved": {
+              "const": false,
+              "default": false,
+              "title": "Quality Threshold Approved",
+              "type": "boolean"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 1,
+              "title": "Sample Count",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "candidate_id",
+            "sample_count",
+            "correct_count",
+            "bins",
+            "expected_calibration_error",
+            "brier_score"
+          ],
+          "title": "CandidateCalibrationEvaluationV1",
+          "type": "object"
+        },
+        "NormalizationGeneratedSliceV1": {
+          "additionalProperties": false,
+          "properties": {
+            "abstained_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Abstained Count",
+              "type": "integer"
+            },
+            "case_transform_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Case Transform Count",
+              "type": "integer"
+            },
+            "code_point_edit_distance": {
+              "minimum": 0,
+              "title": "Code Point Edit Distance",
+              "type": "integer"
+            },
+            "fixture_kind": {
+              "enum": [
+                "deterministic_hypothesis_contract_fixture",
+                "generated_render_reference_only"
+              ],
+              "title": "Fixture Kind",
+              "type": "string"
+            },
+            "grapheme_edit_distance": {
+              "minimum": 0,
+              "title": "Grapheme Edit Distance",
+              "type": "integer"
+            },
+            "hypothesis_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Hypothesis Count",
+              "type": "integer"
+            },
+            "nfc_transform_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Nfc Transform Count",
+              "type": "integer"
+            },
+            "normalized_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Normalized Count",
+              "type": "integer"
+            },
+            "observed_grapheme_count": {
+              "minimum": 0,
+              "title": "Observed Grapheme Count",
+              "type": "integer"
+            },
+            "observed_scalar_count": {
+              "minimum": 0,
+              "title": "Observed Scalar Count",
+              "type": "integer"
+            },
+            "ocr_execution_performed": {
+              "const": false,
+              "default": false,
+              "title": "Ocr Execution Performed",
+              "type": "boolean"
+            },
+            "reference_grapheme_count": {
+              "minimum": 1,
+              "title": "Reference Grapheme Count",
+              "type": "integer"
+            },
+            "reference_scalar_count": {
+              "minimum": 1,
+              "title": "Reference Scalar Count",
+              "type": "integer"
+            },
+            "sample_count": {
+              "maximum": 10000,
+              "minimum": 1,
+              "title": "Sample Count",
+              "type": "integer"
+            },
+            "script_lane": {
+              "enum": [
+                "latin",
+                "devanagari",
+                "gujarati"
+              ],
+              "title": "Script Lane",
+              "type": "string"
+            },
+            "separator_transform_count": {
+              "const": 0,
+              "default": 0,
+              "title": "Separator Transform Count",
+              "type": "integer"
+            },
+            "synthetic_format_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Synthetic Format Count",
+              "type": "integer"
+            },
+            "unrecognized_format_count": {
+              "maximum": 10000,
+              "minimum": 0,
+              "title": "Unrecognized Format Count",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "script_lane",
+            "fixture_kind",
+            "sample_count",
+            "hypothesis_count",
+            "normalized_count",
+            "abstained_count",
+            "synthetic_format_count",
+            "unrecognized_format_count",
+            "nfc_transform_count",
+            "case_transform_count",
+            "reference_scalar_count",
+            "reference_grapheme_count",
+            "observed_scalar_count",
+            "observed_grapheme_count",
+            "code_point_edit_distance",
+            "grapheme_edit_distance"
+          ],
+          "title": "NormalizationGeneratedSliceV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "abstention_policy_version": {
+          "const": "sha256:355dc7c8e5510a8223d84652ca9043efbd7aad93d722fb6be0f82eef7af24ded",
+          "default": "sha256:355dc7c8e5510a8223d84652ca9043efbd7aad93d722fb6be0f82eef7af24ded",
+          "title": "Abstention Policy Version",
+          "type": "string"
+        },
+        "alternatives_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Alternatives Persisted",
+          "type": "boolean"
+        },
+        "calibration_evaluations": {
+          "items": {
+            "$ref": "#/$defs/CandidateCalibrationEvaluationV1"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Calibration Evaluations",
+          "type": "array"
+        },
+        "calibration_version": {
+          "const": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+          "default": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+          "title": "Calibration Version",
+          "type": "string"
+        },
+        "camera_or_media_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Camera Or Media Input Count",
+          "type": "integer"
+        },
+        "consensus_execution_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Consensus Execution Count",
+          "type": "integer"
+        },
+        "contract_type": {
+          "const": "hcam.phase3.p3_5.normalization-generated-evaluation.v1",
+          "default": "hcam.phase3.p3_5.normalization-generated-evaluation.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "deployment_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Deployment Authorized",
+          "type": "boolean"
+        },
+        "external_text_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "External Text Input Count",
+          "type": "integer"
+        },
+        "grapheme_policy_version": {
+          "const": "sha256:f91b590006f16888e8dfd342d974eb2fea559701ce221d3563459e33eec0cd08",
+          "default": "sha256:f91b590006f16888e8dfd342d974eb2fea559701ce221d3563459e33eec0cd08",
+          "title": "Grapheme Policy Version",
+          "type": "string"
+        },
+        "grapheme_values_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Grapheme Values Persisted",
+          "type": "boolean"
+        },
+        "gujarati_ocr_execution_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Gujarati Ocr Execution Count",
+          "type": "integer"
+        },
+        "model_download_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Model Download Count",
+          "type": "integer"
+        },
+        "model_execution_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Model Execution Count",
+          "type": "integer"
+        },
+        "network_access_performed": {
+          "const": false,
+          "default": false,
+          "title": "Network Access Performed",
+          "type": "boolean"
+        },
+        "network_attempt_count": {
+          "const": 1,
+          "default": 1,
+          "title": "Network Attempt Count",
+          "type": "integer"
+        },
+        "normalization_version": {
+          "const": "sha256:3d1211dc3c3462014afec58f08b4ed66a73043838bf2975ae72049b22f093db6",
+          "default": "sha256:3d1211dc3c3462014afec58f08b4ed66a73043838bf2975ae72049b22f093db6",
+          "title": "Normalization Version",
+          "type": "string"
+        },
+        "normalized_output_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Normalized Output Persisted",
+          "type": "boolean"
+        },
+        "operational_acceptance_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Operational Acceptance Count",
+          "type": "integer"
+        },
+        "plate_text_retention_hours": {
+          "const": 0,
+          "default": 0,
+          "title": "Plate Text Retention Hours",
+          "type": "integer"
+        },
+        "promotion_authorized": {
+          "const": false,
+          "default": false,
+          "title": "Promotion Authorized",
+          "type": "boolean"
+        },
+        "python_version": {
+          "const": "3.12.13",
+          "default": "3.12.13",
+          "title": "Python Version",
+          "type": "string"
+        },
+        "quality_threshold_decided": {
+          "const": false,
+          "default": false,
+          "title": "Quality Threshold Decided",
+          "type": "boolean"
+        },
+        "raw_output_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Raw Output Persisted",
+          "type": "boolean"
+        },
+        "real_registration_mark_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Real Registration Mark Count",
+          "type": "integer"
+        },
+        "regex_version": {
+          "const": "2026.7.19",
+          "default": "2026.7.19",
+          "title": "Regex Version",
+          "type": "string"
+        },
+        "replay_output_deterministic": {
+          "title": "Replay Output Deterministic",
+          "type": "boolean"
+        },
+        "replay_runs": {
+          "const": 20,
+          "default": 20,
+          "title": "Replay Runs",
+          "type": "integer"
+        },
+        "runtime_id": {
+          "const": "cpython-3.12.13-windows-x86_64",
+          "default": "cpython-3.12.13-windows-x86_64",
+          "title": "Runtime Id",
+          "type": "string"
+        },
+        "sample_region_or_result_identifiers_persisted": {
+          "const": false,
+          "default": false,
+          "title": "Sample Region Or Result Identifiers Persisted",
+          "type": "boolean"
+        },
+        "slices": {
+          "items": {
+            "$ref": "#/$defs/NormalizationGeneratedSliceV1"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "title": "Slices",
+          "type": "array"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "tesseract_execution_count": {
+          "const": 0,
+          "default": 0,
+          "title": "Tesseract Execution Count",
+          "type": "integer"
+        },
+        "unicode_version": {
+          "const": "15.0.0",
+          "default": "15.0.0",
+          "title": "Unicode Version",
+          "type": "string"
+        },
+        "work_package": {
+          "const": "P35-W7_normalization_grapheme_metrics_calibration_and_abstention",
+          "default": "P35-W7_normalization_grapheme_metrics_calibration_and_abstention",
+          "title": "Work Package",
+          "type": "string"
+        }
+      },
+      "required": [
+        "slices",
+        "calibration_evaluations",
+        "replay_output_deterministic"
+      ],
+      "title": "NormalizationGeneratedEvaluationV1",
+      "type": "object"
+    },
+    "plate_localization_result": {
+      "$defs": {
+        "NormalizedBoundingBox": {
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Height",
+              "type": "number"
+            },
+            "width": {
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "title": "Width",
+              "type": "number"
+            },
+            "x": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "title": "NormalizedBoundingBox",
+          "type": "object"
+        },
+        "NormalizedPointV1": {
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "X",
+              "type": "number"
+            },
+            "y": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Y",
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ],
+          "title": "NormalizedPointV1",
+          "type": "object"
+        },
+        "PlateLocalizationHypothesisV1": {
+          "additionalProperties": false,
+          "properties": {
+            "bbox": {
+              "$ref": "#/$defs/NormalizedBoundingBox"
+            },
+            "class_id": {
+              "const": "vehicle.registration_plate_region",
+              "default": "vehicle.registration_plate_region",
+              "title": "Class Id",
+              "type": "string"
+            },
+            "confidence": {
+              "const": 1.0,
+              "default": 1.0,
+              "title": "Confidence",
+              "type": "number"
+            },
+            "hypothesis_id": {
+              "pattern": "^anprhyp_[0-9a-f]{32}$",
+              "title": "Hypothesis Id",
+              "type": "string"
+            },
+            "quadrilateral": {
+              "maxItems": 4,
+              "minItems": 4,
+              "prefixItems": [
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                },
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                },
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                },
+                {
+                  "$ref": "#/$defs/NormalizedPointV1"
+                }
+              ],
+              "title": "Quadrilateral",
+              "type": "array"
+            },
+            "quality": {
+              "const": "generated_ground_truth_exact",
+              "default": "generated_ground_truth_exact",
+              "title": "Quality",
+              "type": "string"
+            },
+            "reason_code": {
+              "const": "ground_truth_only",
+              "default": "ground_truth_only",
+              "title": "Reason Code",
+              "type": "string"
+            },
+            "region_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Region Digest",
+              "type": "string"
+            }
+          },
+          "required": [
+            "hypothesis_id",
+            "bbox",
+            "quadrilateral",
+            "region_digest"
+          ],
+          "title": "PlateLocalizationHypothesisV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "candidate_id": {
+          "const": null,
+          "default": null,
+          "title": "Candidate Id",
+          "type": "null"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.plate-localization-result.v1",
+          "default": "hcam.anpr.plate-localization-result.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "crop_bytes_returned": {
+          "const": false,
+          "default": false,
+          "title": "Crop Bytes Returned",
+          "type": "boolean"
+        },
+        "execution_mode": {
+          "const": "generated_ground_truth_only",
+          "default": "generated_ground_truth_only",
+          "title": "Execution Mode",
+          "type": "string"
+        },
+        "frame_generator_version": {
+          "const": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+          "default": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+          "title": "Frame Generator Version",
+          "type": "string"
+        },
+        "generator_version": {
+          "const": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "default": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "hypotheses": {
+          "items": {
+            "$ref": "#/$defs/PlateLocalizationHypothesisV1"
+          },
+          "maxItems": 8,
+          "title": "Hypotheses",
+          "type": "array"
+        },
+        "hypothesis_count": {
+          "maximum": 8,
+          "minimum": 0,
+          "title": "Hypothesis Count",
+          "type": "integer"
+        },
+        "image_path_returned": {
+          "const": false,
+          "default": false,
+          "title": "Image Path Returned",
+          "type": "boolean"
+        },
+        "localizer_id": {
+          "const": "GT-PLATE-R0",
+          "default": "GT-PLATE-R0",
+          "title": "Localizer Id",
+          "type": "string"
+        },
+        "localizer_version": {
+          "const": "sha256:8699654aa285b98dc88198d1a177fa013076d02888578530b15d1077f6434c50",
+          "default": "sha256:8699654aa285b98dc88198d1a177fa013076d02888578530b15d1077f6434c50",
+          "title": "Localizer Version",
+          "type": "string"
+        },
+        "media_url_returned": {
+          "const": false,
+          "default": false,
+          "title": "Media Url Returned",
+          "type": "boolean"
+        },
+        "model_execution_performed": {
+          "const": false,
+          "default": false,
+          "title": "Model Execution Performed",
+          "type": "boolean"
+        },
+        "plate_text_returned": {
+          "const": false,
+          "default": false,
+          "title": "Plate Text Returned",
+          "type": "boolean"
+        },
+        "postprocessing_version": {
+          "const": "sha256:8699654aa285b98dc88198d1a177fa013076d02888578530b15d1077f6434c50",
+          "default": "sha256:8699654aa285b98dc88198d1a177fa013076d02888578530b15d1077f6434c50",
+          "title": "Postprocessing Version",
+          "type": "string"
+        },
+        "preprocessing_version": {
+          "const": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+          "default": "sha256:1f7cebaf4b18ec96684d768695bfadc8fd2119ce0c2e0d57e25e1a94461acd95",
+          "title": "Preprocessing Version",
+          "type": "string"
+        },
+        "result_id": {
+          "pattern": "^anprloc_[0-9a-f]{32}$",
+          "title": "Result Id",
+          "type": "string"
+        },
+        "runtime_contract_version": {
+          "const": "sha256:8699654aa285b98dc88198d1a177fa013076d02888578530b15d1077f6434c50",
+          "default": "sha256:8699654aa285b98dc88198d1a177fa013076d02888578530b15d1077f6434c50",
+          "title": "Runtime Contract Version",
+          "type": "string"
+        },
+        "runtime_id": {
+          "const": "python-stdlib-reference",
+          "default": "python-stdlib-reference",
+          "title": "Runtime Id",
+          "type": "string"
+        },
+        "sample_id": {
+          "pattern": "^anprsample_[0-9a-f]{32}$",
+          "title": "Sample Id",
+          "type": "string"
+        },
+        "source_frame_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Source Frame Digest",
+          "type": "string"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "taxonomy_version": {
+          "const": "hcam.taxonomy.vehicle-registration-plate-region.v1",
+          "default": "hcam.taxonomy.vehicle-registration-plate-region.v1",
+          "title": "Taxonomy Version",
+          "type": "string"
+        },
+        "weights_loaded": {
+          "const": false,
+          "default": false,
+          "title": "Weights Loaded",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "result_id",
+        "sample_id",
+        "source_frame_digest",
+        "hypothesis_count",
+        "hypotheses"
+      ],
+      "title": "PlateLocalizationResultV1",
+      "type": "object"
+    },
+    "sealed_split_manifest": {
+      "$defs": {
+        "SyntheticCorpusSplitCountsV1": {
+          "additionalProperties": false,
+          "properties": {
+            "contract_fixture": {
+              "maximum": 128,
+              "minimum": 1,
+              "title": "Contract Fixture",
+              "type": "integer"
+            },
+            "development": {
+              "maximum": 9997,
+              "minimum": 1,
+              "title": "Development",
+              "type": "integer"
+            },
+            "final_test": {
+              "maximum": 9997,
+              "minimum": 1,
+              "title": "Final Test",
+              "type": "integer"
+            },
+            "validation": {
+              "maximum": 9997,
+              "minimum": 1,
+              "title": "Validation",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "contract_fixture",
+            "development",
+            "validation",
+            "final_test"
+          ],
+          "title": "SyntheticCorpusSplitCountsV1",
+          "type": "object"
+        },
+        "SyntheticSplitManifestContentV1": {
+          "additionalProperties": false,
+          "properties": {
+            "contract_type": {
+              "const": "hcam.anpr.synthetic-split-manifest-content.v1",
+              "default": "hcam.anpr.synthetic-split-manifest-content.v1",
+              "title": "Contract Type",
+              "type": "string"
+            },
+            "counts": {
+              "$ref": "#/$defs/SyntheticCorpusSplitCountsV1"
+            },
+            "duplicate_token_count": {
+              "const": 0,
+              "default": 0,
+              "title": "Duplicate Token Count",
+              "type": "integer"
+            },
+            "entries": {
+              "items": {
+                "$ref": "#/$defs/SyntheticSplitManifestEntryV1"
+              },
+              "maxItems": 10000,
+              "minItems": 4,
+              "title": "Entries",
+              "type": "array"
+            },
+            "external_input_count": {
+              "const": 0,
+              "default": 0,
+              "title": "External Input Count",
+              "type": "integer"
+            },
+            "final_test_access_count": {
+              "const": 0,
+              "default": 0,
+              "title": "Final Test Access Count",
+              "type": "integer"
+            },
+            "final_test_frozen": {
+              "const": true,
+              "default": true,
+              "title": "Final Test Frozen",
+              "type": "boolean"
+            },
+            "final_test_tuning_allowed": {
+              "const": false,
+              "default": false,
+              "title": "Final Test Tuning Allowed",
+              "type": "boolean"
+            },
+            "generator_version": {
+              "const": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+              "default": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+              "title": "Generator Version",
+              "type": "string"
+            },
+            "manifest_id": {
+              "pattern": "^anprmanifest_[0-9a-f]{32}$",
+              "title": "Manifest Id",
+              "type": "string"
+            },
+            "plan_id": {
+              "pattern": "^anprplan_[0-9a-f]{32}$",
+              "title": "Plan Id",
+              "type": "string"
+            },
+            "policy_id": {
+              "const": "hcam.anpr.synthetic-non-issuable.v1",
+              "default": "hcam.anpr.synthetic-non-issuable.v1",
+              "title": "Policy Id",
+              "type": "string"
+            },
+            "policy_version": {
+              "const": "sha256:08403d0ba1a037cb88a90aacc470d65e5dbe943e7b0c5f8bccf0e684898cfd9b",
+              "default": "sha256:08403d0ba1a037cb88a90aacc470d65e5dbe943e7b0c5f8bccf0e684898cfd9b",
+              "title": "Policy Version",
+              "type": "string"
+            },
+            "root_seed": {
+              "maximum": 4294967295,
+              "minimum": 0,
+              "title": "Root Seed",
+              "type": "integer"
+            },
+            "sealed": {
+              "const": true,
+              "default": true,
+              "title": "Sealed",
+              "type": "boolean"
+            },
+            "source_id": {
+              "const": "DATA-PLATE-GEN-R0",
+              "default": "DATA-PLATE-GEN-R0",
+              "title": "Source Id",
+              "type": "string"
+            },
+            "split_policy_id": {
+              "const": "hcam.anpr.sealed-splits.v1",
+              "default": "hcam.anpr.sealed-splits.v1",
+              "title": "Split Policy Id",
+              "type": "string"
+            },
+            "split_policy_version": {
+              "const": "sha256:e070a5434006aee89905b9039ce18747525b317099c5235d67b89a5d10538288",
+              "default": "sha256:e070a5434006aee89905b9039ce18747525b317099c5235d67b89a5d10538288",
+              "title": "Split Policy Version",
+              "type": "string"
+            },
+            "synthetic_only": {
+              "const": true,
+              "default": true,
+              "title": "Synthetic Only",
+              "type": "boolean"
+            },
+            "token_commitment_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Token Commitment Persisted",
+              "type": "boolean"
+            },
+            "token_text_persisted": {
+              "const": false,
+              "default": false,
+              "title": "Token Text Persisted",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "manifest_id",
+            "plan_id",
+            "root_seed",
+            "counts",
+            "entries"
+          ],
+          "title": "SyntheticSplitManifestContentV1",
+          "type": "object"
+        },
+        "SyntheticSplitManifestEntryV1": {
+          "additionalProperties": false,
+          "properties": {
+            "font_partition": {
+              "enum": [
+                "primary",
+                "holdout"
+              ],
+              "title": "Font Partition",
+              "type": "string"
+            },
+            "generator_profile": {
+              "enum": [
+                "primary",
+                "holdout"
+              ],
+              "title": "Generator Profile",
+              "type": "string"
+            },
+            "layout": {
+              "enum": [
+                "single_line",
+                "two_line"
+              ],
+              "title": "Layout",
+              "type": "string"
+            },
+            "request_id": {
+              "pattern": "^anprreq_[0-9a-f]{32}$",
+              "title": "Request Id",
+              "type": "string"
+            },
+            "sample_id": {
+              "pattern": "^anprsample_[0-9a-f]{32}$",
+              "title": "Sample Id",
+              "type": "string"
+            },
+            "sample_index": {
+              "exclusiveMaximum": 10000,
+              "minimum": 0,
+              "title": "Sample Index",
+              "type": "integer"
+            },
+            "sample_spec_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Sample Spec Digest",
+              "type": "string"
+            },
+            "seed_namespace": {
+              "pattern": "^p35w3:(?:contract_fixture|development|validation|final_test):v1$",
+              "title": "Seed Namespace",
+              "type": "string"
+            },
+            "split": {
+              "enum": [
+                "contract_fixture",
+                "development",
+                "validation",
+                "final_test"
+              ],
+              "title": "Split",
+              "type": "string"
+            },
+            "synthetic_only": {
+              "const": true,
+              "default": true,
+              "title": "Synthetic Only",
+              "type": "boolean"
+            },
+            "token_class": {
+              "const": "synthetic_non_issuable",
+              "default": "synthetic_non_issuable",
+              "title": "Token Class",
+              "type": "string"
+            }
+          },
+          "required": [
+            "sample_id",
+            "request_id",
+            "sample_spec_digest",
+            "split",
+            "seed_namespace",
+            "sample_index",
+            "layout",
+            "generator_profile",
+            "font_partition"
+          ],
+          "title": "SyntheticSplitManifestEntryV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "$ref": "#/$defs/SyntheticSplitManifestContentV1"
+        },
+        "contract_type": {
+          "const": "hcam.anpr.sealed-split-manifest.v1",
+          "default": "hcam.anpr.sealed-split-manifest.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "manifest_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Manifest Digest",
+          "type": "string"
+        }
+      },
+      "required": [
+        "content",
+        "manifest_digest"
+      ],
+      "title": "SealedSyntheticSplitManifestV1",
+      "type": "object"
+    },
+    "synthetic_consensus_policy": {
+      "additionalProperties": false,
+      "description": "Default-off policy for generated, in-memory temporal consensus only.",
+      "properties": {
+        "contract_type": {
+          "const": "hcam.anpr.synthetic-consensus-policy.v1",
+          "default": "hcam.anpr.synthetic-consensus-policy.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "enabled": {
+          "default": false,
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "environment": {
+          "default": "development",
+          "enum": [
+            "development",
+            "test",
+            "production"
+          ],
+          "title": "Environment",
+          "type": "string"
+        },
+        "grouping_key": {
+          "const": "stream_id_tracker_epoch_track_id",
+          "default": "stream_id_tracker_epoch_track_id",
+          "title": "Grouping Key",
+          "type": "string"
+        },
+        "maximum_active_states_per_stream": {
+          "const": 256,
+          "default": 256,
+          "title": "Maximum Active States Per Stream",
+          "type": "integer"
+        },
+        "maximum_event_time_window_ms": {
+          "const": 2000,
+          "default": 2000,
+          "title": "Maximum Event Time Window Ms",
+          "type": "integer"
+        },
+        "maximum_observations": {
+          "const": 5,
+          "default": 5,
+          "title": "Maximum Observations",
+          "type": "integer"
+        },
+        "minimum_margin": {
+          "default": null,
+          "title": "Minimum Margin",
+          "type": "null"
+        },
+        "minimum_support": {
+          "default": null,
+          "title": "Minimum Support",
+          "type": "null"
+        },
+        "network_access": {
+          "const": "denied",
+          "default": "denied",
+          "title": "Network Access",
+          "type": "string"
+        },
+        "persistence": {
+          "const": "denied",
+          "default": "denied",
+          "title": "Persistence",
+          "type": "string"
+        },
+        "policy_version": {
+          "const": "sha256:bf1fc270ac926af1e4e9d8465eb30025486e1c95b37c790bd6a36e8ed7b0f69d",
+          "default": "sha256:bf1fc270ac926af1e4e9d8465eb30025486e1c95b37c790bd6a36e8ed7b0f69d",
+          "title": "Policy Version",
+          "type": "string"
+        },
+        "result_acceptance": {
+          "const": "prohibited",
+          "default": "prohibited",
+          "title": "Result Acceptance",
+          "type": "string"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        },
+        "thresholds_approved": {
+          "const": false,
+          "default": false,
+          "title": "Thresholds Approved",
+          "type": "boolean"
+        },
+        "voting_method": {
+          "const": "exact_string_confidence_weighted",
+          "default": "exact_string_confidence_weighted",
+          "title": "Voting Method",
+          "type": "string"
+        }
+      },
+      "title": "SyntheticConsensusPolicyV1",
+      "type": "object"
+    },
+    "synthetic_corpus_plan": {
+      "$defs": {
+        "SyntheticCorpusSplitCountsV1": {
+          "additionalProperties": false,
+          "properties": {
+            "contract_fixture": {
+              "maximum": 128,
+              "minimum": 1,
+              "title": "Contract Fixture",
+              "type": "integer"
+            },
+            "development": {
+              "maximum": 9997,
+              "minimum": 1,
+              "title": "Development",
+              "type": "integer"
+            },
+            "final_test": {
+              "maximum": 9997,
+              "minimum": 1,
+              "title": "Final Test",
+              "type": "integer"
+            },
+            "validation": {
+              "maximum": 9997,
+              "minimum": 1,
+              "title": "Validation",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "contract_fixture",
+            "development",
+            "validation",
+            "final_test"
+          ],
+          "title": "SyntheticCorpusSplitCountsV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "contract_type": {
+          "const": "hcam.anpr.synthetic-corpus-plan.v1",
+          "default": "hcam.anpr.synthetic-corpus-plan.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "counts": {
+          "$ref": "#/$defs/SyntheticCorpusSplitCountsV1"
+        },
+        "external_input_count": {
+          "const": 0,
+          "default": 0,
+          "title": "External Input Count",
+          "type": "integer"
+        },
+        "final_test_frozen": {
+          "const": true,
+          "default": true,
+          "title": "Final Test Frozen",
+          "type": "boolean"
+        },
+        "final_test_tuning_allowed": {
+          "const": false,
+          "default": false,
+          "title": "Final Test Tuning Allowed",
+          "type": "boolean"
+        },
+        "generator_version": {
+          "const": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "default": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+          "title": "Generator Version",
+          "type": "string"
+        },
+        "input_mode": {
+          "const": "deterministic_seed_only",
+          "default": "deterministic_seed_only",
+          "title": "Input Mode",
+          "type": "string"
+        },
+        "plan_id": {
+          "pattern": "^anprplan_[0-9a-f]{32}$",
+          "title": "Plan Id",
+          "type": "string"
+        },
+        "policy_id": {
+          "const": "hcam.anpr.synthetic-non-issuable.v1",
+          "default": "hcam.anpr.synthetic-non-issuable.v1",
+          "title": "Policy Id",
+          "type": "string"
+        },
+        "policy_version": {
+          "const": "sha256:08403d0ba1a037cb88a90aacc470d65e5dbe943e7b0c5f8bccf0e684898cfd9b",
+          "default": "sha256:08403d0ba1a037cb88a90aacc470d65e5dbe943e7b0c5f8bccf0e684898cfd9b",
+          "title": "Policy Version",
+          "type": "string"
+        },
+        "root_seed": {
+          "maximum": 4294967295,
+          "minimum": 0,
+          "title": "Root Seed",
+          "type": "integer"
+        },
+        "source_id": {
+          "const": "DATA-PLATE-GEN-R0",
+          "default": "DATA-PLATE-GEN-R0",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "split_policy_id": {
+          "const": "hcam.anpr.sealed-splits.v1",
+          "default": "hcam.anpr.sealed-splits.v1",
+          "title": "Split Policy Id",
+          "type": "string"
+        },
+        "split_policy_version": {
+          "const": "sha256:e070a5434006aee89905b9039ce18747525b317099c5235d67b89a5d10538288",
+          "default": "sha256:e070a5434006aee89905b9039ce18747525b317099c5235d67b89a5d10538288",
+          "title": "Split Policy Version",
+          "type": "string"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "plan_id",
+        "root_seed",
+        "counts"
+      ],
+      "title": "SyntheticCorpusPlanV1",
+      "type": "object"
+    }
+  },
+  "generator_policy": {
+    "algorithm": "sha256_domain_separated_platform_independent",
+    "external_entropy": false,
+    "generator_version": "sha256:2f4e6eaa8005b63ffd5b00ef9a12e298ea7212ca97bec772a70b4c0eca2addb8",
+    "hidden_random_augmentation": false
+  },
+  "latin_ocr_policy": {
+    "adapter_version": "sha256:7e15ccd801d32f623d309541ae1c3186191801c204061c1a3e598347dfba8679",
+    "candidates": {
+      "OCR-L0": "sha256:da460f968ce9f88325ac3a34fa302077d6e9b0dcefb16ba3137cd7796f879d06",
+      "OCR-L1": "sha256:4eecc1c6a4623765042e6fc15446da0da110b7d875b6b72b2d351d2b2dbd4da6"
+    },
+    "dictionary_version": "sha256:a98ac29121eec9aef70836341b9d35806da7939b4f0fe1e20443acc00d915adc",
+    "generated_only": true,
+    "maximum_alternatives": 5,
+    "maximum_grapheme_clusters": 16,
+    "maximum_unicode_scalars": 32,
+    "promotion_authorized": false,
+    "raw_output_ephemeral_only": true,
+    "renderer_version": "sha256:9e162e160d6b760d429211556a1efd97cacbd60096b09b7dc4c4c1fdaa941879"
+  },
+  "localization_policy": {
+    "candidate_id": null,
+    "crop_pixels_in_contracts": false,
+    "execution_mode": "generated_ground_truth_only",
+    "localizer_id": "GT-PLATE-R0",
+    "localizer_version": "sha256:8699654aa285b98dc88198d1a177fa013076d02888578530b15d1077f6434c50",
+    "model_execution_performed": false,
+    "plate_text_in_contracts": false,
+    "rectifier_version": "sha256:39194faa2bccb7ca3f4060aeb51130d733aab1fec54e14b5985b70958c475c2f",
+    "weights_loaded": false
+  },
+  "normalization_policy": {
+    "abstention_policy_version": "sha256:355dc7c8e5510a8223d84652ca9043efbd7aad93d722fb6be0f82eef7af24ded",
+    "calibration_method": "identity_generated_baseline",
+    "calibration_version": "sha256:b221499e79bd34552b0e199418209f32db151358df6e9640b34d43b247b9e7b9",
+    "compatibility_normalization_allowed": false,
+    "confusable_autocorrection_allowed": false,
+    "dictionary_completion_allowed": false,
+    "generated_only": true,
+    "grapheme_policy_version": "sha256:f91b590006f16888e8dfd342d974eb2fea559701ce221d3563459e33eec0cd08",
+    "normalization_form": "NFC",
+    "normalization_version": "sha256:3d1211dc3c3462014afec58f08b4ed66a73043838bf2975ae72049b22f093db6",
+    "operational_acceptance_allowed": false,
+    "python_version": "3.12.13",
+    "quality_threshold_approved": false,
+    "raw_output_mutation_allowed": false,
+    "record_lookup_allowed": false,
+    "regex_version": "2026.7.19",
+    "transliteration_allowed": false,
+    "unicode_version": "15.0.0"
+  },
+  "persistence_policy": {
+    "identifier_free_aggregate_evidence_only": true,
+    "plate_text_retention_hours": 0,
+    "token_or_alternative_in_evidence": false
+  },
+  "resource_limits": {
+    "maximum_crop_height": 128,
+    "maximum_crop_width": 512,
+    "maximum_document_depth": 8,
+    "maximum_document_nodes": 256,
+    "maximum_frame_height": 720,
+    "maximum_frame_width": 1280,
+    "maximum_local_samples": 10000,
+    "maximum_plate_regions_per_frame": 8,
+    "maximum_request_bytes": 4096
+  },
+  "source_policy": {
+    "allowed_source_id": "DATA-PLATE-GEN-R0",
+    "external_text_allowed": false,
+    "file_url_upload_or_media_allowed": false,
+    "input_mode": "deterministic_seed_only",
+    "synthetic_only": true
+  },
+  "split_policy": {
+    "final_test_frozen": true,
+    "final_test_tuning_allowed": false,
+    "holdout_font_partition_required": true,
+    "holdout_generator_profile_required": true,
+    "independent_seed_namespaces": true,
+    "manifest_token_commitment_allowed": false,
+    "manifest_token_text_allowed": false,
+    "ordered_splits": [
+      "contract_fixture",
+      "development",
+      "validation",
+      "final_test"
+    ],
+    "policy_id": "hcam.anpr.sealed-splits.v1",
+    "policy_version": "sha256:e070a5434006aee89905b9039ce18747525b317099c5235d67b89a5d10538288"
+  },
+  "token_policy": {
+    "classification": "synthetic_non_issuable",
+    "normalization_or_lookup": "prohibited",
+    "pattern": "^SYN-[A-Z0-9]{4}-[A-Z0-9]{4}$",
+    "policy_id": "hcam.anpr.synthetic-non-issuable.v1",
+    "policy_version": "sha256:08403d0ba1a037cb88a90aacc470d65e5dbe943e7b0c5f8bccf0e684898cfd9b",
+    "production_grammar_strategy": "deny_every_value_outside_the_disjoint_visible_synthetic_namespace",
+    "required_character_classes": [
+      "ascii_uppercase",
+      "ascii_digit"
+    ],
+    "visible_namespace": "SYN-"
+  }
+}

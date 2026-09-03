@@ -1,0 +1,291 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_r1_admission_gap.v1",
+  "record_id": "P36-PORTABLE-R1-ADMISSION-GAP-R0",
+  "status": "complete_planning_only_owner_policy_selection_pending",
+  "prepared_on": "2026-08-30",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "scope": "static_contract_reconciliation_only_no_collection_execution_or_implementation",
+  "inputs": {
+    "inventory_R1": {
+      "path": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json",
+      "sha256": "FB061C906D1CE5F7FE3B32B70F6CA5134C486F474E2618B23884466C2E58C76F",
+      "schema_validation_status": "passed_exact_shared_v1alpha1",
+      "observed_at": "2026-08-30T17:57:26.397Z",
+      "valid_until": "2026-08-31T17:57:26.397Z",
+      "use_after_expiry": "immutable_historical_evidence_only_not_new_admission"
+    },
+    "inventory_collection_evidence": {
+      "path": "contracts/phase-3/p3-6-inventory-r1-collection-evidence.json",
+      "sha256": "3658758FCC7342B7865C7C0FD340FD408B38562BB1D365B757A74C8B6347FA72"
+    },
+    "accepted_portable_R0_package": {
+      "manifest": "contracts/phase-3/p3-6-portable-cpu-profile-package.json",
+      "sha256": "56A7C816C108802948E24C84D481572D8EF10CA7B1EAE1AA3D389B4234A51D7B",
+      "acceptance": "D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE",
+      "effect": "planning_baseline_only_not_profile_activation"
+    },
+    "phase_minus_1_contracts": {
+      "repository": "hcam-2-0/hcam-protos",
+      "revision": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+      "schemas": [
+        {
+          "path": "schemas/platform/v1alpha1/node-capability-inventory.schema.json",
+          "sha256": "C9947BE12888C0A05B29DA0266E2359B107024AF07E536AE10BAC55457C5C7D3"
+        },
+        {
+          "path": "schemas/platform/v1alpha1/model-runtime-compatibility.schema.json",
+          "sha256": "1AAD0E2FE16D7F203134B235C345E12094E1B8C19F0F33B738C23FC6B7B124E7"
+        },
+        {
+          "path": "schemas/platform/v1alpha1/execution-profile-resolution.schema.json",
+          "sha256": "4A3EB2A8C1B1B23EE3F8048B23507977CD9D85E294CBE20C3AAE0C282B780E5D"
+        },
+        {
+          "path": "schemas/platform/v1alpha1/workload-placement.schema.json",
+          "sha256": "2E8D8E68CDBB1D588FC23C2BC06769614A4610CA012B139DDF2054508DE70D3D"
+        },
+        {
+          "path": "schemas/platform/v1alpha1/adaptive-selection-evidence.schema.json",
+          "sha256": "D0DA68253DA1A5B78489189F766542BFE72060DDF1031F4B53ED9D61FAB76947"
+        }
+      ]
+    },
+    "phase_minus_1_deployment": {
+      "repository": "hcam-2-0/hcam-deployment",
+      "revision": "71095fe89d2b711e4982ddc0130fcaedda8703e7",
+      "schema_sha256": "C53DDAE926B9CB40A36EB37241D75EAD726E9A39EA72B199A5F9556C1FE134E4",
+      "base_profile_sha256": "5B8AE5C4B8DCFCFDFB6A542E562E40E4A8C4C118739858DF0BA135121FAABCCE",
+      "portable_overlay_sha256": "63F7B692AA1EA5A4B83C8FA12FBF74DF64962DA145AF585F64369E41A6E0F125",
+      "portable_overlay": "profiles/v1alpha1/overlays/portable-cpu.json"
+    }
+  },
+  "R1_satisfied_facts": [
+    "shared_node_capability_inventory_shape",
+    "opaque_inventory_identity",
+    "cpu_laptop_node_class",
+    "windows_operating_system_family",
+    "amd64_operating_system_and_cpu_architecture",
+    "physical_and_logical_cpu_counts",
+    "observed_total_and_available_memory",
+    "local_read_only_observed_provenance",
+    "explicit_redaction_categories",
+    "bounded_observation_and_validity_timestamps",
+    "explicit_unknown_accelerator_container_scheduler_and_runtime_compatibility_values"
+  ],
+  "resolver_input_matrix": [
+    {
+      "kind": "capability_inventory",
+      "state": "available_only_within_recorded_validity_or_as_historical_evidence_after_expiry",
+      "evidence_quality": "observed",
+      "blocking_reason_after_expiry": "input_stale"
+    },
+    {
+      "kind": "authorization_context",
+      "state": "missing_for_profile_admission_and_execution",
+      "blocking_reason": "authorization_denied"
+    },
+    {
+      "kind": "policy_snapshot",
+      "state": "planning_policy_exists_but_no_admission_time_immutable_snapshot",
+      "blocking_reason": "policy_denied"
+    },
+    {
+      "kind": "compatibility_snapshot",
+      "state": "missing",
+      "blocking_reason": "compatibility_missing"
+    },
+    {
+      "kind": "workload_requirements",
+      "state": "proposed_shape_only_exact_digest_and_numeric_bounds_missing",
+      "blocking_reason": "capacity_unavailable"
+    },
+    {
+      "kind": "pipeline_graph",
+      "state": "missing_exact_input_output_preprocessing_postprocessing_and_stage_digests",
+      "blocking_reason": "contract_invalid"
+    },
+    {
+      "kind": "capacity_snapshot",
+      "state": "missing_allocatable_reserved_and_fresh_capacity_evidence",
+      "blocking_reason": "capacity_unavailable"
+    }
+  ],
+  "gap_count": 22,
+  "gaps": [
+    {
+      "gap_id": "P36-R1-GAP-01",
+      "category": "inventory",
+      "requirement": "fresh_capability_inventory_at_admission_evaluation",
+      "current_state": "R1_has_a_24_hour_window_and_becomes_historical_only_after_valid_until",
+      "closure": "new_digest_bound_refresh_authorization_timed_to_a_future_admission_review"
+    },
+    {
+      "gap_id": "P36-R1-GAP-02",
+      "category": "authorization",
+      "requirement": "immutable_authorization_context_input",
+      "current_state": "inventory_attempt_authority_is_consumed_and_grants_no_profile_authority",
+      "closure": "separate_future_profile_validation_and_admission_authority"
+    },
+    {
+      "gap_id": "P36-R1-GAP-03",
+      "category": "policy",
+      "requirement": "admission_time_policy_snapshot_digest_and_expiry",
+      "current_state": "planning_policy_is_accepted_but_no_executable_policy_snapshot_exists",
+      "closure": "immutable_fail_closed_policy_snapshot_in_a_future_start_package"
+    },
+    {
+      "gap_id": "P36-R1-GAP-04",
+      "category": "compatibility",
+      "requirement": "shared_model_runtime_compatibility_snapshot",
+      "current_state": "absent",
+      "closure": "schema_valid_content_addressed_candidate_snapshot"
+    },
+    {
+      "gap_id": "P36-R1-GAP-05",
+      "category": "model",
+      "requirement": "approved_exact_model_revision_and_champion_fallback_pair",
+      "current_state": "DET_R0_is_a_restricted_reference_and_P36_G1_is_blocked",
+      "closure": "separate_model_comparison_and_promotion_evidence"
+    },
+    {
+      "gap_id": "P36-R1-GAP-06",
+      "category": "artifacts",
+      "requirement": "content_addressed_model_runtime_sbom_signature_vulnerability_and_provenance_artifacts",
+      "current_state": "no_P3_6_compatibility_artifact_bundle_exists",
+      "closure": "immutable_reviewed_artifact_references_and_digests"
+    },
+    {
+      "gap_id": "P36-R1-GAP-07",
+      "category": "pipeline",
+      "requirement": "exact_input_output_preprocessing_postprocessing_and_semantic_capability_digests",
+      "current_state": "not_bound_for_the_portable_candidate",
+      "closure": "shared_pipeline_contract_manifest"
+    },
+    {
+      "gap_id": "P36-R1-GAP-08",
+      "category": "governance",
+      "requirement": "license_and_security_review_with_expiry",
+      "current_state": "historical_component_records_do_not_form_a_P3_6_compatibility_review",
+      "closure": "exact_license_notice_SBOM_signature_vulnerability_and_security_review"
+    },
+    {
+      "gap_id": "P36-R1-GAP-09",
+      "category": "resilience",
+      "requirement": "validated_fallback_and_rollback_manifest_references",
+      "current_state": "planning_semantics_only_no_accepted_bundle",
+      "closure": "generated_validation_and_immutable_fallback_rollback_references"
+    },
+    {
+      "gap_id": "P36-R1-GAP-10",
+      "category": "runtime",
+      "requirement": "exact_runtime_provider_precision_and_model_format_compatibility",
+      "current_state": "R1_reports_no_onnxruntime_distribution_and_makes_no_runtime_compatibility_claim",
+      "closure": "separately_authorized_dependency_research_then_generated_only_compatibility_evidence"
+    },
+    {
+      "gap_id": "P36-R1-GAP-11",
+      "category": "runtime",
+      "requirement": "threading_memory_arena_optimization_and_fallback_configuration",
+      "current_state": "thread_spinning_and_memory_arena_are_unresolved",
+      "closure": "exact_candidate_configuration_before_execution_authority"
+    },
+    {
+      "gap_id": "P36-R1-GAP-12",
+      "category": "resources",
+      "requirement": "allocatable_and_reserved_CPU_budget",
+      "current_state": "R1_observes_core_counts_but_not_allocatable_or_reserved_capacity",
+      "closure": "bounded_resource_proposal_then_generated_measurement"
+    },
+    {
+      "gap_id": "P36-R1-GAP-13",
+      "category": "resources",
+      "requirement": "allocatable_reserved_and_minimum_memory_budget",
+      "current_state": "R1_observes_memory_but_does_not_establish_reservation_or_safe_minimum",
+      "closure": "bounded_resource_proposal_then_generated_measurement"
+    },
+    {
+      "gap_id": "P36-R1-GAP-14",
+      "category": "workload",
+      "requirement": "immutable_workload_requirements_digest",
+      "current_state": "C1_INFER_shape_is_proposed_without_an_exact_manifest_digest",
+      "closure": "deterministic_generated_only_workload_manifest"
+    },
+    {
+      "gap_id": "P36-R1-GAP-15",
+      "category": "workload",
+      "requirement": "exact_seed_warmup_measured_iteration_repetition_duration_and_scenario_values",
+      "current_state": "all_values_are_unresolved",
+      "closure": "owner_selected_non_executable_C1_validation_design"
+    },
+    {
+      "gap_id": "P36-R1-GAP-16",
+      "category": "acceptance",
+      "requirement": "numeric_quality_latency_throughput_freshness_resource_and_recovery_gates",
+      "current_state": "absent_and_no_performance_claim_is_allowed",
+      "closure": "predeclared_thresholds_before_generated_execution"
+    },
+    {
+      "gap_id": "P36-R1-GAP-17",
+      "category": "resolver",
+      "requirement": "exact_pipeline_graph_input",
+      "current_state": "missing",
+      "closure": "content_addressed_pipeline_graph"
+    },
+    {
+      "gap_id": "P36-R1-GAP-18",
+      "category": "resolver",
+      "requirement": "fresh_capacity_snapshot_input",
+      "current_state": "missing_and_R1_is_not_a_capacity_claim",
+      "closure": "bounded_capacity_snapshot_after_separate_validation_authority"
+    },
+    {
+      "gap_id": "P36-R1-GAP-19",
+      "category": "resolver",
+      "requirement": "immutable_candidate_set_and_candidate_digests",
+      "current_state": "no_resolver_candidate_is_eligible",
+      "closure": "candidate_set_built_only_from_validated_compatibility_and_profile_records"
+    },
+    {
+      "gap_id": "P36-R1-GAP-20",
+      "category": "evidence",
+      "requirement": "adaptive_selection_and_replay_evidence",
+      "current_state": "missing",
+      "closure": "generated_only_contract_and_INFER_evidence_with_stable_input_digests"
+    },
+    {
+      "gap_id": "P36-R1-GAP-21",
+      "category": "deployment_profile",
+      "requirement": "secret_provider_observability_immutable_release_health_and_rollback_prerequisite_evidence",
+      "current_state": "portable_overlay_is_planned_only",
+      "closure": "future_non_deployment_compatibility_bundle_then_separate_deployment_authority"
+    },
+    {
+      "gap_id": "P36-R1-GAP-22",
+      "category": "global_P36_G2",
+      "requirement": "owned_GPU_lab_and_capacity_target_disposition",
+      "current_state": "owned_GPU_lab_inventory_is_missing_and_capacity_target_profile_is_undeclared_or_deferred",
+      "closure": "separate_owned_GPU_inventory_and_standalone_server_or_kubernetes_cluster_choice_or_explicit_C1_only_deferral"
+    }
+  ],
+  "gate_effect": {
+    "P36_G2": "blocked",
+    "portable_profile_resolver_eligible": false,
+    "portable_profile_activation_authorized": false,
+    "inventory_collection_authorized": false,
+    "runtime_execution_authorized": false,
+    "implementation_authorized": false
+  },
+  "next_owner_decision_packet": "contracts/phase-3/p3-6-portable-r1-decision-packet.json",
+  "continuing_non_authorization": [
+    "inventory_recollection_or_reusable_collector",
+    "artifact_dependency_model_dataset_driver_or_container_download",
+    "runtime_model_inference_or_benchmark_execution",
+    "hardware_accelerator_performance_stress_capacity_or_thermal_test",
+    "profile_resolution_admission_activation_or_placement",
+    "container_Docker_Kubernetes_or_scheduler_action",
+    "camera_stream_media_private_or_Government_data_access",
+    "application_product_or_dashboard_implementation",
+    "deployment",
+    "remote_git"
+  ]
+}

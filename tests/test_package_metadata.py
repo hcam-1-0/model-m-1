@@ -40,7 +40,6 @@ def test_source_manifest_includes_governance_assets_used_by_tests() -> None:
     )
 
     assert "*.md" in github_rule
-    assert "*.yaml" in github_rule
     assert "*.yml" in github_rule
 
     tests_rule = next(

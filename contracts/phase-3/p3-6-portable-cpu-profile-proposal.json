@@ -1,0 +1,241 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_cpu_profile_proposal.v1",
+  "record_id": "P36-PROFILE-PORTABLE-CPU-R0-PROPOSAL",
+  "status": "sealed_non_executable_owner_review_pending",
+  "prepared_on": "2026-08-30",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "owner_review_decision_id": "D-P3.6-PORTABLE-PROPOSAL-R0-ACCEPTANCE",
+  "owner_review_effect": "accept_planning_record_only_without_profile_activation_or_execution_authority",
+  "profile_identity": {
+    "profile_class": "portable_cpu",
+    "profile_id": "hcam-portable-cpu",
+    "proposed_revision": "P36-PROFILE-PORTABLE-CPU-R0",
+    "lifecycle": "proposal",
+    "resolver_eligible": false,
+    "activation_authorized": false
+  },
+  "phase_minus_1_binding": {
+    "shared_contracts_repository": "hcam-2-0/hcam-protos",
+    "shared_contracts_merge_commit": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+    "deployment_repository": "hcam-2-0/hcam-deployment",
+    "deployment_merge_commit": "71095fe89d2b711e4982ddc0130fcaedda8703e7",
+    "deployment_overlay": "profiles/v1alpha1/overlays/portable-cpu.json",
+    "deployment_base_digest": "sha256:db776a7432e46dcbf0f170efde428002d656faf3b4cc278fc776c8aabd6c94cf",
+    "alignment_record": "contracts/phase-3/p3-6-phase-minus-1-alignment.json"
+  },
+  "inventory_binding": {
+    "node_id": "LAB-LAPTOP-01",
+    "record": "contracts/phase-3/p3-6-inventory-lab-laptop-01-r0.json",
+    "sha256": "0E702718390FB6C373F0FC189CB58D0E79BB7FE3B3EA39B5E5AFE0DE4D47CA1F",
+    "collected_at_utc": "2026-08-28T21:10:51Z",
+    "freshness_policy": "unresolved_no_activation_expiry_approved",
+    "trust_zone": "unresolved_requires_owner_binding",
+    "facts": {
+      "operating_system": "Microsoft Windows 10 Pro 10.0.19045 64-bit",
+      "processor": "Intel Core i5-8365U 4 physical cores 8 logical processors",
+      "memory_gib": 8,
+      "accelerator": "none_required_for_portable_cpu",
+      "observed_graphics": "Intel UHD Graphics 620 not used by this profile",
+      "storage_state": "all_observed_fixed_volumes_below_seven_percent_free"
+    }
+  },
+  "reference_model": {
+    "candidate_id": "DET-R0",
+    "artifact_id": "DET-R0-ONNX-UPSTREAM-0.1.1RC0",
+    "artifact_sha256": "427CC366D34E27FF7A03E2899B5E3671425C262EA2291F88BB942BC1CC70B0F7",
+    "artifact_bytes": 20219662,
+    "model_family": "YOLOX-Tiny",
+    "input_shape": [
+      1,
+      3,
+      416,
+      416
+    ],
+    "input_dtype": "float32",
+    "onnx_ir_version": 6,
+    "onnx_opset": 11,
+    "source_record": "contracts/phase-3/p3-2-model-card.json",
+    "current_artifact_presence": "not_revalidated_for_p3_6",
+    "p3_6_promotion_state": "not_promoted_g1_blocked"
+  },
+  "candidate_runtime": {
+    "role": "portable_behavior_reference_candidate",
+    "python": "3.14.6",
+    "onnxruntime": "1.29.0",
+    "onnx": "1.22.0",
+    "numpy": "2.5.2",
+    "execution_providers": [
+      "CPUExecutionProvider"
+    ],
+    "provider_priority_must_match_exactly": true,
+    "precision": "float32",
+    "execution_mode": "sequential",
+    "intra_op_threads": 1,
+    "inter_op_threads": 1,
+    "graph_optimization": "basic",
+    "thread_spinning": "unresolved_must_be_explicit_before_validation",
+    "memory_arena_configuration": "unresolved",
+    "profiling": "disabled_until_separately_authorized_generated_only_validation",
+    "offline_optimized_graph": "prohibited_not_an_approved_derived_artifact",
+    "dependency_lock": "uv.lock",
+    "current_installation_state": "not_established_default_python_inventory_reports_ai_runtime_packages_not_present",
+    "candidate_windows_wheel": {
+      "filename": "onnxruntime-1.29.0-cp314-cp314-win_amd64.whl",
+      "url_from_existing_lock": "https://files.pythonhosted.org/packages/24/53/4616a55d2495679cfd0195f968feb3d74fe30e26467d168ee243ac97c089/onnxruntime-1.29.0-cp314-cp314-win_amd64.whl",
+      "sha256_from_existing_lock": "4a3129ae56e70d2618ff773920166916310370a7e3cacb60b9e0e8910092725f",
+      "bytes_from_existing_lock": 14350643,
+      "artifact_acquired_or_verified_for_p3_6": false
+    }
+  },
+  "historical_reference_evidence": {
+    "source": "contracts/phase-3/p3-2-local-e2e-evidence.json",
+    "status": "accepted_p3_2_structural_smoke_only",
+    "duration_ms": 206,
+    "repeat_output_sha256": "3562559CAD2DCD1AD0A15C74E3425A371B1725BA5574CDADF5FDB375FE3A519C",
+    "allowed_reuse": "behavior_and_contract_reference_only",
+    "not_valid_for": [
+      "p3_6_latency_threshold",
+      "p3_6_throughput_threshold",
+      "p3_6_freshness_threshold",
+      "p3_6_capacity_claim",
+      "real_world_quality_claim",
+      "production_or_deployment_claim"
+    ]
+  },
+  "proposed_conservative_envelope": {
+    "status": "planning_values_not_performance_approved",
+    "active_assignments": 1,
+    "worker_processes": 1,
+    "worker_concurrency": 1,
+    "detector_batch_size": 1,
+    "in_flight_inference_requests": 1,
+    "queue_capacity_items": 2,
+    "oversubscription": "forbidden",
+    "optional_enrichment": "off",
+    "required_pipeline_stages_may_be_bypassed": false,
+    "unexpected_provider_or_precision_fallback": "reject_and_safe_pause",
+    "queue_age_limit_ms": "unresolved_requires_generated_measurement",
+    "memory_reservation_bytes": "unresolved_requires_generated_measurement",
+    "cpu_reservation": "unresolved_requires_generated_measurement",
+    "sampling_floor": "unresolved_requires_quality_and_freshness_decision",
+    "thermal_or_power_policy": "unresolved_no_thermal_test_authorized"
+  },
+  "proposed_workload": {
+    "evidence_tier": "C1",
+    "evidence_layer": "INFER",
+    "source": "deterministic_generated_in_memory_tensor_only",
+    "external_media": false,
+    "decode_stage": false,
+    "camera_or_stream": false,
+    "input_shape": [
+      1,
+      3,
+      416,
+      416
+    ],
+    "input_dtype": "float32",
+    "scenarios": [
+      "cold_start",
+      "warm_steady",
+      "bounded_burst",
+      "dependency_loss",
+      "safe_shutdown"
+    ],
+    "duration_seconds": "unresolved",
+    "warmup_iterations": "unresolved",
+    "measured_iterations": "unresolved",
+    "repetitions": "unresolved",
+    "seed_manifest": "unresolved",
+    "background_load": "none_unless_separately_declared",
+    "execution_authorized": false
+  },
+  "objective_policy": {
+    "default_objective": "balanced",
+    "balanced": "proposal_default_no_numeric_score_or_claim",
+    "throughput": "disabled_until_exact_fresh_throughput_and_tail_latency_evidence",
+    "latency": "disabled_until_exact_tail_latency_quality_and_capacity_evidence"
+  },
+  "degradation_and_rollback": {
+    "ordered_actions": [
+      "bypass_optional_stages",
+      "reduce_unvalidated_load_to_single_assignment_single_batch",
+      "bounded_backpressure",
+      "reject_stale_or_excess_work",
+      "safe_pause"
+    ],
+    "cpu_fallback": "not_applicable_profile_is_cpu_reference",
+    "source_rollback": "exact_prior_accepted_det_r0_cpu_bundle_only_after_validation",
+    "silent_fallback": false,
+    "quality_contract_relaxation": false
+  },
+  "observability_proposal": {
+    "allowed_low_cardinality_dimensions": [
+      "profile_class",
+      "objective_mode",
+      "evidence_layer",
+      "outcome",
+      "safe_reason_code"
+    ],
+    "required_measurements_after_authorization": [
+      "startup_duration",
+      "warmup_duration",
+      "inference_latency_p50_p95_p99",
+      "fresh_throughput",
+      "queue_depth_and_age",
+      "process_cpu_and_memory",
+      "provider_and_precision_identity",
+      "failure_and_recovery_duration"
+    ],
+    "prohibited_labels": [
+      "camera_id",
+      "stream_id",
+      "user",
+      "hostname",
+      "raw_device_identifier",
+      "artifact_path"
+    ],
+    "profiling_artifact_retention": "unresolved_separate_policy_required"
+  },
+  "blocked_reasons": [
+    "p36_g1_model_champion_and_fallback_not_approved",
+    "inventory_expiry_and_trust_zone_not_approved",
+    "candidate_runtime_not_established_as_currently_installed",
+    "candidate_runtime_dependency_closure_not_sealed_as_p3_6_bundle",
+    "det_r0_artifact_presence_and_scan_not_revalidated_for_p3_6",
+    "thread_spinning_memory_arena_and_resource_bounds_unresolved",
+    "generated_workload_duration_iterations_repetitions_and_seeds_unresolved",
+    "numeric_quality_latency_throughput_freshness_resource_and_recovery_gates_unresolved",
+    "p36_g4_artifact_and_dependency_authority_blocked",
+    "p36_g5_implementation_and_runtime_execution_authority_blocked"
+  ],
+  "next_required_outputs": [
+    "owner_review_of_this_non_executable_proposal",
+    "exact_inventory_freshness_and_trust_zone_policy",
+    "digest_bound_runtime_dependency_and_artifact_research_proposal",
+    "exact_generated_c1_workload_manifest_and_numeric_acceptance_gates",
+    "later_separately_authorized_generated_only_runtime_evidence",
+    "immutable_accepted_profile_and_compatibility_bundle"
+  ],
+  "non_authorization": [
+    "dependency_model_dataset_driver_container_or_artifact_download",
+    "runtime_model_or_inference_execution",
+    "hardware_performance_stress_capacity_or_thermal_test",
+    "container_or_kubernetes_action",
+    "profile_resolver_scheduler_pipeline_dashboard_or_application_implementation",
+    "camera_media_sentinel_onvif_or_stream_access",
+    "real_private_government_police_or_scraped_data",
+    "training_fine_tuning_or_model_promotion",
+    "identity_biometric_reidentification_or_cross_camera_linkage",
+    "watchlist_vehicle_owner_or_government_database_matching",
+    "operational_alerting_autonomous_action_or_enforcement",
+    "pilot_production_or_statewide_deployment",
+    "remote_git_push_pull_request_or_merge",
+    "p3_7_or_later_work"
+  ],
+  "artifact_download_authorized": false,
+  "profile_activation_authorized": false,
+  "implementation_authorized": false,
+  "runtime_execution_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

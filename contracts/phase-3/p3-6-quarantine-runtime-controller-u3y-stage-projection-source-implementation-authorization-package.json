@@ -1,0 +1,109 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3y_stage_projection_source_implementation_authorization_package.v1",
+  "package_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3Y-STAGE-PROJECTION-SOURCE-IMPLEMENTATION-AUTHORIZATION-PACKAGE",
+  "decision_id": "D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-AUTH",
+  "status": "sealed_non_effective_owner_authorization_pending_no_implementation_performed",
+  "sealed_on": "2026-09-02",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3X-FAILURE-ANALYSIS-DECISIONS",
+    "acceptance_record_sha256": "56FE994A8F3EDCB17B673E63CB3773B17EB63FA8B3E23F04A3A58A9E7105D91E",
+    "accepted_U3X_planning_package_sha256": "80CA25BC1F1EE77E5A9ED8ADEF76C695D5169544CB75B6A57A03692463FFA460",
+    "selected_options": "A/A/A/A",
+    "effect": "prepare_this_non_effective_U3Y_source_implementation_authorization_package_only"
+  },
+  "core_file_count": 11,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3x-stage-projection-remediation-planning-package.json",
+      "sha256": "80CA25BC1F1EE77E5A9ED8ADEF76C695D5169544CB75B6A57A03692463FFA460",
+      "role": "accepted_failure_analysis_decisions_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3x-stage-projection-remediation-planning-acceptance.json",
+      "sha256": "56FE994A8F3EDCB17B673E63CB3773B17EB63FA8B3E23F04A3A58A9E7105D91E",
+      "role": "exact_owner_A_A_A_A_acceptance_and_proposal_preparation_authority"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-failure-analysis-r0.json",
+      "sha256": "B88F943B9F1D1B31B7C8F91449B338F9B225FA3DAB4C58BC19586C43A90244B6",
+      "role": "sanitized_failure_analysis_and_inference_boundaries"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3x-stage-projection-remediation-decision-packet.json",
+      "sha256": "B225C8F4909ADE591AC968D29F98E1C604337AB9CB4ACAA6C7F28FCCE139DBF6",
+      "role": "accepted_four_option_remediation_direction"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-source-implementation-contract.json",
+      "sha256": "87DEBD70B317A2A9307079B28A5983E17B9F33AD4F2B77162EEF258087002F6E",
+      "role": "exact_additive_paths_wire_semantics_and_generated_static_evidence_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3y-stage-projection-source-implementation-authorization-proposal.json",
+      "sha256": "9FFB759DC82615213AD13ACC75A5FC1424546CE3C9136C071E81DE0ED26D1A53",
+      "role": "machine_readable_future_digest_bound_implementation_authorization_request"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-u3y-stage-projection-source-implementation-authorization-proposal.md",
+      "sha256": "B6A2578A0832BA1285C0C27B04B036E09E0C6058C7D3CAFD86EC2C0ACA3332C5",
+      "role": "human_reviewable_scope_semantics_evidence_and_closed_gates"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller.ps1",
+      "sha256": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB",
+      "role": "immutable_accepted_historical_controller"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_u3v_h1_r1_diagnostic.ps1",
+      "sha256": "CD868E3F06CA12AC424B2C4C221F6425FCD0DA289C527DED462121333513B1C9",
+      "role": "immutable_accepted_historical_diagnostic"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3v-h1-r1-diagnostic-contract.json",
+      "sha256": "F0E41634760E3697F74EA2DEA44E7B2004392557E3167504BD69F2D78A4DC3CB",
+      "role": "immutable_exact_null_wire_semantics"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-evidence.json",
+      "sha256": "84DC68C3800983AFA65EBB19C99A36D02C3D97CD28F6D937C43CF5292AF12A45",
+      "role": "immutable_consumed_failed_closed_attempt_evidence"
+    }
+  ],
+  "exact_future_implementation_path_count": 11,
+  "required_generated_vector_minimum": 256,
+  "required_machine_disabled_Python_reference_branch_coverage_percent": 95,
+  "wire_contract_version": "1.0.0",
+  "policy_valid_stage_projection": {
+    "completed_actions": 18,
+    "failed_action": null,
+    "failed_stage": null
+  },
+  "future_authorization_effect_if_exactly_accepted": {
+    "implement_only_eleven_bound_additive_paths": true,
+    "run_generated_fixture_and_machine_disabled_Python_static_validation": true,
+    "preserve_four_immutable_historical_inputs_byte_exact": true,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_manifest_hardware_machine_storage_scanner_or_network_observation": false,
+    "another_attempt_U3K_deployment_or_remote_Git": false
+  },
+  "future_owner_authorization_statement_template": "D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only implementation of the additive controller R1 stage-projection remediation against package digest <U3Y_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact eleven additive paths and immutable inputs bound by that package. It must preserve the accepted controller, diagnostic, diagnostic contract, and U3W evidence byte-exact; retain wire contract version 1.0.0; construct policy-valid stage projection as completed_actions 18, failed_action null, and failed_stage null without a string-typed nullable boundary; preserve exact nonempty allowlisted failure actions and reasons; generate at least 256 synthetic static vectors; achieve at least 95 percent branch coverage for the machine-disabled Python reference; pass generated cross-language and static validation; and seal source-only evidence for separate acceptance. Python may execute generated fixtures and machine-disabled reference/static tests only, with no filesystem runtime, registry, environment, network, native API, subprocess, machine-controller, or fallback access. PowerShell must not be parsed, imported, dot-sourced, or executed. This does not authorize runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, another attempt, U3K, or remote Git.",
+  "current_gate_effect": {
+    "U3X_owner_decisions_accepted": true,
+    "U3Y_authorization_package_prepared": true,
+    "owner_U3Y_source_implementation_authorization_pending": true,
+    "D_P3_6_U3Y_CONTROLLER_R1_STAGE_PROJECTION_IMPLEMENTATION_AUTH_requestable": true,
+    "source_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "another_attempt_or_U3K_authorized": false,
+    "deployment_or_remote_Git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "authorization_may_be_inferred_from_U3X_acceptance_continue_package_preparation_or_static_validation": false,
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U3Y_authorization_package_digest_and_is_not_self_embedded"
+}

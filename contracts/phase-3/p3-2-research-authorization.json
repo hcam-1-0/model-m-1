@@ -1,0 +1,44 @@
+{
+  "authorization_effect": "research_only_no_p3_2_implementation",
+  "authorized_activities": [
+    "official_or_public_model_and_dataset_downloads_after_manifest_preflight",
+    "quarantine_storage_outside_the_git_worktree",
+    "sha256_size_and_source_receipt_generation",
+    "license_provenance_lineage_and_sbom_research",
+    "cpu_only_offline_model_inspection_and_inference",
+    "generated_fixture_and_license_cleared_public_dataset_experiments"
+  ],
+  "authorized_at": "2026-08-24T16:13:11Z",
+  "authorized_by": "mayank-admin",
+  "contract_format": "hcam.phase3.p3_2.research-authorization.v1",
+  "decision_id": "D-P3.2-001",
+  "execution_controls": {
+    "archive_extraction": "prohibited_until_separate_path_file_count_symlink_and_expanded_size_validation",
+    "cumulative_artifact_limit_bytes": 2147483648,
+    "default_machine_root": "F:\\h cam\\research-cache\\phase-3\\p3-2",
+    "downloaded_code_execution": "prohibited",
+    "experiment_network_access": "prohibited",
+    "maximum_artifact_bytes": 536870912,
+    "output_media": "prohibited",
+    "repository_storage": "metadata_receipts_and_sanitized_results_only",
+    "source_policy": "exact_manifested_https_urls_from_official_or_reviewed_public_publishers",
+    "training_or_finetuning": "prohibited"
+  },
+  "owner_statements": [
+    "D-P3.2-001 - Authorize broader research",
+    "controlled model/dataset downloads and offline experiments"
+  ],
+  "record_id": "D-P3.2-001-2026-08-24",
+  "review_due_on": "2026-09-24",
+  "status": "owner_authorized",
+  "still_prohibited": [
+    "p3_2_product_implementation_or_d_p3_2_start",
+    "training_finetuning_or_model_modification",
+    "camera_sentinel_stream_or_media_access",
+    "government_private_scraped_or_unreviewed_data",
+    "identity_face_watchlist_or_vehicle_owner_lookup",
+    "operational_alerting_or_autonomous_action",
+    "pilot_production_or_statewide_deployment",
+    "remote_git_push_pull_request_or_merge"
+  ]
+}

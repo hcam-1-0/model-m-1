@@ -1,0 +1,58 @@
+name: Architecture Decision
+description: Capture a technical decision before it becomes implementation work.
+title: "[ADR]: "
+labels:
+  - architecture
+  - decision
+body:
+  - type: dropdown
+    id: status
+    attributes:
+      label: Decision Status
+      options:
+        - Proposed
+        - Accepted
+        - Rejected
+        - Superseded
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Describe the requirement, constraint, risk, or tradeoff.
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: Options Considered
+      description: List realistic options and why each was accepted or rejected.
+    validations:
+      required: true
+  - type: textarea
+    id: decision
+    attributes:
+      label: Decision
+      description: State the chosen approach clearly.
+    validations:
+      required: true
+  - type: textarea
+    id: consequences
+    attributes:
+      label: Consequences
+      description: Explain operational, security, reliability, cost, and team impact.
+    validations:
+      required: true
+  - type: textarea
+    id: data_impact
+    attributes:
+      label: Safety And Data Impact
+      description: Explain whether this affects CCTV video, metadata, government data, police records, PII, credentials, audit logs, or retention.
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: Links
+      description: Link related docs, issues, PRs, or evidence.

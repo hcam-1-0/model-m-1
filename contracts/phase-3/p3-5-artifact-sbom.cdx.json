@@ -1,0 +1,236 @@
+{
+  "bomFormat": "CycloneDX",
+  "components": [
+    {
+      "bom-ref": "hcam:p3.5:OCR-L0",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0.0/PP-OCRv6_small_rec_infer.tar"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "DA460F968CE9F88325AC3A34FA302077D6E9B0DCEFB16BA3137CD7796F879D06"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "name": "PP-OCRv6 small recognition inference archive",
+      "properties": [
+        {
+          "name": "hcam:licenseEvidenceScope",
+          "value": "publisher-project-license-not-embedded"
+        },
+        {
+          "name": "hcam:runtimeAuthorized",
+          "value": "false"
+        }
+      ],
+      "type": "machine-learning-model",
+      "version": "source-doc-2661c7c0ef5c613e8f93c6e93b2e052399f0f854"
+    },
+    {
+      "bom-ref": "hcam:p3.5:OCR-L1",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0.0/PP-OCRv6_medium_rec_infer.tar"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4EECC1C6A4623765042E6FC15446DA0DA110B7D875B6B72B2D351D2B2DBD4DA6"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "name": "PP-OCRv6 medium recognition inference archive",
+      "properties": [
+        {
+          "name": "hcam:licenseEvidenceScope",
+          "value": "publisher-project-license-not-embedded"
+        },
+        {
+          "name": "hcam:runtimeAuthorized",
+          "value": "false"
+        }
+      ],
+      "type": "machine-learning-model",
+      "version": "source-doc-2661c7c0ef5c613e8f93c6e93b2e052399f0f854"
+    },
+    {
+      "bom-ref": "hcam:p3.5:OCR-D0",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0.0/devanagari_PP-OCRv5_mobile_rec_infer.tar"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "AC8279D27FC7E8CDA559364F9A3C506F43984CF6BA5E1B7A06450458BFE07DFB"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "name": "PP-OCRv5 Devanagari recognition inference archive",
+      "properties": [
+        {
+          "name": "hcam:licenseEvidenceScope",
+          "value": "publisher-project-license-not-embedded"
+        },
+        {
+          "name": "hcam:runtimeAuthorized",
+          "value": "false"
+        }
+      ],
+      "type": "machine-learning-model",
+      "version": "source-doc-2661c7c0ef5c613e8f93c6e93b2e052399f0f854"
+    },
+    {
+      "bom-ref": "hcam:p3.5:OCR-G0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "FA69658614B4946A9AFAE8853D67E0689838803DFA3D12C2E35EC53EE6F8DF34"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "name": "Tesseract Gujarati fast traineddata",
+      "properties": [
+        {
+          "name": "hcam:gitBlobSha1",
+          "value": "151b9aad2945e3103118e5d36eee288f631d985a"
+        },
+        {
+          "name": "hcam:runtimeAuthorized",
+          "value": "false"
+        }
+      ],
+      "type": "machine-learning-model",
+      "version": "87416418657359cb625c412a48b6e1d6d41c29bd"
+    },
+    {
+      "bom-ref": "hcam:p3.5:OCR-G1",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8CBB1D139B63434B9E1154A3B51930A74EC1C9A6251B95D86D74D7F1CD706ED6"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "name": "Tesseract Gujarati best traineddata",
+      "properties": [
+        {
+          "name": "hcam:gitBlobSha1",
+          "value": "2284f7e1c8aeecd01cc1a4c01315b1d739ba762a"
+        },
+        {
+          "name": "hcam:runtimeAuthorized",
+          "value": "false"
+        }
+      ],
+      "type": "machine-learning-model",
+      "version": "e12c65a915945e4c28e237a9b52bc4a8f39a0cec"
+    },
+    {
+      "bom-ref": "hcam:p3.5:FONT-G0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9901D8552F1DD5D2C50DBD4CAA6F6E174E74E8264F06594AB259AE6E7B1AC428"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "OFL-1.1"
+          }
+        }
+      ],
+      "name": "Noto Sans Gujarati variable font",
+      "properties": [
+        {
+          "name": "hcam:gitBlobSha1",
+          "value": "3c760c2d69bf49c43d6fa2a0bed24c1b59263b43"
+        },
+        {
+          "name": "hcam:runtimeAuthorized",
+          "value": "false"
+        }
+      ],
+      "type": "file",
+      "version": "6a003b5eb672dc8bf5bff5937cf5863f8b175445"
+    },
+    {
+      "bom-ref": "hcam:p3.5:FONT-D0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9CE7B04F60E363D8870E5997744CF85CF69D38A4D7D129D364D92A3B14B461D7"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "OFL-1.1"
+          }
+        }
+      ],
+      "name": "Noto Sans Devanagari variable font",
+      "properties": [
+        {
+          "name": "hcam:gitBlobSha1",
+          "value": "e703d5282088c4b7787b1a4c5f057cf18f0998d6"
+        },
+        {
+          "name": "hcam:runtimeAuthorized",
+          "value": "false"
+        }
+      ],
+      "type": "file",
+      "version": "6a003b5eb672dc8bf5bff5937cf5863f8b175445"
+    }
+  ],
+  "metadata": {
+    "component": {
+      "name": "H-CAM P3.5 exact quarantine artifacts",
+      "type": "application",
+      "version": "P3.5-EXACT-ARTIFACT-REVIEW-R1"
+    },
+    "timestamp": "2026-08-26T12:39:49Z"
+  },
+  "specVersion": "1.6",
+  "version": 1
+}

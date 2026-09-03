@@ -1,0 +1,53 @@
+{
+  "access": {
+    "allowed_roles": [
+      "local_developer",
+      "automated_test_runner"
+    ],
+    "external_sharing": "prohibited"
+  },
+  "approval_effect": "generated_only_inputs_approved_for_p3_2_implementation_and_tests",
+  "approved_at": "2026-08-24T16:50:00Z",
+  "approved_by": "mayank-admin",
+  "candidate_id": "DATA-GEN-R0",
+  "consent_or_license": "not_applicable_programmatically_generated_no_external_rightsholder",
+  "contract_format": "hcam.phase3.p3_2.dataset-approval.v1",
+  "decision_id": "D-P3.2-003",
+  "deletion": {
+    "method": "delete_generated_outputs_and_recreate_from_versioned_generator",
+    "proof": "metadata_only_test_and_audit_evidence"
+  },
+  "generator_sources": [
+    "contracts/phase-3/p3-1/fixture-manifest-v1.json",
+    "contracts/phase-3/p3-1/generated/detection-v1.json",
+    "tools/phase32_offline_experiment.py"
+  ],
+  "integrity": {
+    "reference_output_sha256": "3562559CAD2DCD1AD0A15C74E3425A371B1725BA5574CDADF5FDB375FE3A519C",
+    "source_package_digest": "956F6521E21BF0FB43741F97768194617DE881B1BD1644E03DDC33ED5FDC0618"
+  },
+  "leakage_control": "grouped generated fixture IDs and deterministic split contracts; no external samples",
+  "owner_statement": "d-p3.2 start",
+  "permitted_claims": [
+    "contract_correctness",
+    "determinism",
+    "runtime_loadability",
+    "failure_and_resource_behavior",
+    "synthetic_end_to_end_behavior"
+  ],
+  "prohibited_claims": [
+    "accuracy",
+    "fairness",
+    "representativeness",
+    "real_world_readiness",
+    "deployment_readiness"
+  ],
+  "provenance": "H-CAM deterministic programmatic generation with no camera image clip video private Government or scraped source",
+  "purpose": "Generated-only P3.2 detector adapter integration and failure testing",
+  "retention": {
+    "generated_media_hours": 0,
+    "metadata_maximum_hours": 168,
+    "raw_media_persistence": "prohibited"
+  },
+  "status": "owner_approved_generated_only"
+}

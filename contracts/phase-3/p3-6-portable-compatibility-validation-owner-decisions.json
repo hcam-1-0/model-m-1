@@ -1,0 +1,76 @@
+{
+  "contract_format": "hcam.phase3.p3_6.portable_compatibility_validation_owner_decisions.v1",
+  "record_id": "P36-PORTABLE-COMPATIBILITY-VALIDATION-OWNER-DECISIONS-R0-ACCEPTANCE",
+  "status": "accepted_planning_policy_only_non_effective",
+  "accepted_by": "mayank-admin",
+  "accepted_at": "2026-08-30T19:07:46.761Z",
+  "recorded_local_date": "2026-08-31",
+  "owner_statement_received": "D-P3.6-U3C-001: A\nD-P3.6-U3C-002: A\nD-P3.6-U3C-003: A\nD-P3.6-U3C-004: A",
+  "package_manifest": "contracts/phase-3/p3-6-portable-compatibility-validation-package.json",
+  "package_digest_sha256": "9727D15FDAA49A0DEE06327A41E772762F3D7A2560A5F4BDEFAA6EC3FDEFCD3A",
+  "decision_packet": "contracts/phase-3/p3-6-portable-compatibility-validation-decision-packet.json",
+  "proposal": "contracts/phase-3/p3-6-portable-compatibility-validation-proposal.json",
+  "selections": [
+    {
+      "decision_id": "D-P3.6-U3C-001",
+      "selected_option": "A",
+      "accepted_policy": "deterministic_low_contention_CPU_reference",
+      "effect": "future_portable_CPU_candidate_uses_CPUExecutionProvider_FP32_sequential_one_plus_one_threads_no_spinning_OS_affinity_basic_optimization_no_profiling_batch_one_one_inflight_and_queue_two_until_later_evidence_justifies_change"
+    },
+    {
+      "decision_id": "D-P3.6-U3C-002",
+      "selected_option": "A",
+      "accepted_policy": "bounded_three_seed_CONTRACT_plus_C1_INFER_matrix",
+      "effect": "future_separately_authorized_generated_validation_uses_the_exact_bounded_contract_tensor_seed_warmup_measurement_burst_dependency_loss_shutdown_timeout_and_zero_retention_dimensions_in_the_proposal"
+    },
+    {
+      "decision_id": "D-P3.6-U3C-003",
+      "selected_option": "A",
+      "accepted_policy": "hard_safety_then_non_promotional_calibration_then_sealed_held_out_validation",
+      "effect": "future_execution_requires_separate_digest_bound_authority_for_non_promotional_calibration_and_another_sealed_threshold_and_held_out_seed_review_before_validation_or_promotion"
+    },
+    {
+      "decision_id": "D-P3.6-U3C-004",
+      "selected_option": "A",
+      "accepted_policy": "five_revision_immutable_compatibility_lifecycle",
+      "effect": "compatibility_evidence_advances_only_through_immutable_R0_planning_R1_supply_chain_R2_calibration_R3_held_out_validation_and_R4_eligible_or_rejected_records_with_explicit_authority_at_each_transition"
+    }
+  ],
+  "accepted_effect": {
+    "planning_policy_selected": true,
+    "runtime_configuration_approved_for_future_proposal": true,
+    "generated_workload_approved_for_future_proposal": true,
+    "gate_architecture_approved_for_future_proposal": true,
+    "compatibility_lifecycle_approved_for_future_proposal": true,
+    "compatibility_manifest_exists": false,
+    "generated_validation_evidence_exists": false,
+    "numeric_promotional_thresholds_exist": false,
+    "portable_profile_resolver_eligible": false,
+    "portable_profile_activation_authorized": false,
+    "P36_G2": "blocked",
+    "next_planning_output": "non_executable_R1_artifact_supply_chain_and_generated_calibration_authorization_prerequisites",
+    "next_executable_action": "none"
+  },
+  "continuing_non_authorization": [
+    "inventory_recollection_or_reusable_collector",
+    "artifact_dependency_model_dataset_driver_or_container_download",
+    "runtime_model_import_loading_inference_calibration_validation_or_benchmark",
+    "hardware_accelerator_performance_stress_capacity_or_thermal_test",
+    "profile_resolution_admission_activation_placement_or_scheduler_execution",
+    "container_Docker_Kubernetes_or_deployment_action",
+    "camera_stream_media_private_or_Government_data_access",
+    "application_product_or_dashboard_implementation",
+    "deployment",
+    "remote_git"
+  ],
+  "inventory_collection_authorized": false,
+  "artifact_or_dependency_acquisition_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "profile_resolution_or_activation_authorized": false,
+  "container_or_kubernetes_action_authorized": false,
+  "camera_media_or_data_access_authorized": false,
+  "implementation_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

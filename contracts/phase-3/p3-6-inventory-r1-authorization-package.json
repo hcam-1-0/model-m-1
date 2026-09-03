@@ -1,0 +1,74 @@
+{
+  "contract_format": "hcam.phase3.p3_6.inventory_r1_authorization_package.v1",
+  "package_id": "P3.6-INVENTORY-R1-AUTHORIZATION-PACKAGE-R0",
+  "status": "sealed_non_effective_owner_authorization_pending",
+  "sealed_on": "2026-08-30",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "owner_decision_id": "D-P3.6-INVENTORY-R1-AUTH",
+  "owner_decision_effect_if_exactly_accepted": "accept_digest_bound_owned_local_generated_only_trust_snapshot_and_authorize_one_minimized_local_read_only_R1_collection_attempt_within_24_hours",
+  "core_file_count": 5,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-inventory-r1-research-sources.json",
+      "sha256": "16C3A0D92C0BBE0877ED5AC154089E9003AF367A24F31BFF7068BC154881E154",
+      "role": "official_primary_source_and_exact_local_contract_ledger"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-inventory-r1-trust-policy.json",
+      "sha256": "E76D0C56476A98AADDBC7880AD75858B5B61D45CE95802E3FB39557E226C6106",
+      "role": "proposed_owned_local_generated_only_trust_policy_snapshot"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-inventory-r1-collector-spec.json",
+      "sha256": "31FA80AA79B90AEA32CED930FA535BA03C96A39469F2E8AE2DD00D45060BDDC6",
+      "role": "exact_minimized_actions_fields_projection_timeouts_failures_redaction_and_outputs"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-inventory-r1-authorization-proposal.json",
+      "sha256": "69129669E7E1D092CE4753ADF6150EE7C50C542D4A83CBD9397D063FB1E0C3B9",
+      "role": "non_effective_owner_authorization_proposal_and_acceptance_statement_template"
+    },
+    {
+      "path": "docs/phase-3/p3-6-inventory-r1-authorization-proposal.md",
+      "sha256": "D8846924B5B383DF3F6A981E6437898597A85256589A37994D13AE1514252403",
+      "role": "human_owner_review_document"
+    }
+  ],
+  "external_contract_binding": {
+    "repository": "hcam-2-0/hcam-protos",
+    "revision": "d71cdc9c51d01d746d5195bcb2ac639e0fdf11c8",
+    "path": "schemas/platform/v1alpha1/node-capability-inventory.schema.json",
+    "sha256": "C9947BE12888C0A05B29DA0266E2359B107024AF07E536AE10BAC55457C5C7D3"
+  },
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_package_digest_and_is_not_self_embedded",
+  "collection_scope_if_accepted": {
+    "logical_node_id": "LAB-LAPTOP-01",
+    "maximum_attempts": 1,
+    "authorization_use_window_seconds": 86400,
+    "per_action_timeout_seconds": 10,
+    "total_transaction_timeout_seconds": 60,
+    "network_access": false,
+    "exact_output_paths": [
+      "contracts/phase-3/p3-6-inventory-r1-authorization.json",
+      "contracts/phase-3/p3-6-inventory-lab-laptop-01-r1.json",
+      "contracts/phase-3/p3-6-inventory-r1-collection-evidence.json"
+    ]
+  },
+  "current_gate_effect": {
+    "p36_g2": "blocked_authorization_package_is_not_owner_acceptance_and_no_fresh_R1_exists",
+    "profile_resolver_eligible": false,
+    "inventory_collection_authorized": false
+  },
+  "owner_acceptance_may_be_inferred_from_continue_or_prior_decision": false,
+  "implementation_authorized": false,
+  "inventory_collection_authorized": false,
+  "profile_activation_authorized": false,
+  "runtime_or_model_execution_authorized": false,
+  "hardware_testing_authorized": false,
+  "accelerator_probe_authorized": false,
+  "container_or_kubernetes_action_authorized": false,
+  "camera_media_or_data_access_authorized": false,
+  "network_access_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false
+}

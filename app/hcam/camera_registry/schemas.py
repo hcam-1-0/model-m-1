@@ -266,9 +266,9 @@ class RegistryImportResult(BaseModel):
     audit_event_id: str
 
 
-class GeoJSONGeometry(BaseModel):
-    type: Literal["Point"]
-    coordinates: list[float]  # [lon, lat]
+class GeoJSONPoint(BaseModel):
+    type: Literal["Point"] = "Point"
+    coordinates: tuple[float, float]
 
 
 class CameraGeoProperties(BaseModel):
@@ -286,13 +286,13 @@ class CameraGeoProperties(BaseModel):
     timezone_name: str | None = None
 
 
-class CameraGeoOut(BaseModel):
+class CameraGeoFeature(BaseModel):
     type: Literal["Feature"] = "Feature"
-    geometry: GeoJSONGeometry | None = None
+    geometry: GeoJSONPoint
     properties: CameraGeoProperties
     id: str
 
 
 class CameraGeoCollection(BaseModel):
     type: Literal["FeatureCollection"] = "FeatureCollection"
-    features: list[CameraGeoOut]
+    features: list[CameraGeoFeature]

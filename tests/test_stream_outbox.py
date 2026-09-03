@@ -55,6 +55,7 @@ def test_dispatcher_delivers_and_marks_event_after_sink_success(app) -> None:
     assert dispatcher.run_once() is True
     assert dispatcher.run_once() is False
     assert sink.events[0]["event_id"] == "evt_test"
+    assert sink.events[0]["partition_key"] == synthetic_stream_id(1)
     assert sink.events[0]["payload"] == {"state": "healthy"}
     with app.state.database.session_factory() as session:
         stored = session.get(StreamEventOutbox, "evt_test")

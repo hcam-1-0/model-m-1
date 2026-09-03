@@ -1,0 +1,149 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_r1_dual_architecture_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-R1-DUAL-ARCHITECTURE-PROPOSAL",
+  "status": "non_effective_source_only_architecture_owner_acceptance_pending",
+  "prepared_on": "2026-09-01",
+  "decision_basis": {
+    "owner_selection_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-dual-architecture-owner-selections.json",
+    "selected_options": "A+B/A/A/A",
+    "R0_package_accepted": false,
+    "R1_package_required": true
+  },
+  "architecture_principles": [
+    "one_canonical_shared_contract",
+    "one_default_machine_action_authority",
+    "two_independently_package_bound_implementations",
+    "generated_cross_language_conformance_before_runtime",
+    "fail_closed_on_projection_or_policy_divergence",
+    "no_runtime_fallback_without_separate_binding_and_authorization"
+  ],
+  "shared_contract_layer": {
+    "responsibilities": [
+      "typed_request_envelope",
+      "typed_sanitized_stage_reason_codes",
+      "bounded_result_and_evidence_schemas",
+      "action_sequence_and_state_machine",
+      "resource_time_and_output_limits",
+      "redaction_and_prohibited_field_policy",
+      "generated_conformance_vector_manifest"
+    ],
+    "authoritative_format": "versioned_JSON_Schema_and_generated_vector_manifest",
+    "implementation_specific_schema_extensions_allowed": false,
+    "unknown_field_policy": "reject",
+    "unknown_reason_code_policy": "fail_closed_as_result_contract_invalid"
+  },
+  "PowerShell_controller": {
+    "role": "authoritative_Windows_machine_controller",
+    "future_source_path": "tools/phase36_quarantine_runtime_controller.ps1",
+    "pre_Utility_dependency_policy": "PowerShell_language_and_dotnet_only",
+    "machine_API_boundary": "exact_allowlisted_Windows_and_dotnet_operations_only",
+    "default_machine_action_authority": true,
+    "runtime_manifest_and_generated_validation_orchestration": true,
+    "exact_source_hash_binding_required": true,
+    "source_only_generated_static_acceptance_required_before_execution": true
+  },
+  "Python_controller": {
+    "role": "portable_policy_reference_controller_and_cross_language_oracle",
+    "future_source_path": "tools/phase36_quarantine_runtime_controller_reference.py",
+    "default_dependencies": "Python_standard_library_only",
+    "default_machine_API_access": false,
+    "default_subprocess_execution": false,
+    "responsibilities": [
+      "validate_typed_request_envelopes",
+      "evaluate_action_state_transitions",
+      "validate_sanitized_results_and_evidence",
+      "execute_generated_reference_vectors",
+      "compare_PowerShell_projection_to_canonical_expected_projection"
+    ],
+    "exact_source_hash_binding_required": true,
+    "machine_enabled_fallback_in_current_scope": false,
+    "future_machine_enablement_requirements": [
+      "separate_Python_runtime_and_dependency_binding",
+      "separate_machine_API_security_review",
+      "separate_generated_and_owned_lab_evidence",
+      "separate_exact_owner_authorization"
+    ]
+  },
+  "authority_and_failover_policy": {
+    "default_executor": "PowerShell_controller",
+    "Python_controller_is_runtime_fallback": false,
+    "simultaneous_machine_execution": false,
+    "automatic_failover": false,
+    "automatic_retry": false,
+    "PowerShell_Python_policy_disagreement": "terminal_fail_closed",
+    "PowerShell_result_missing_or_malformed": "terminal_result_contract_invalid",
+    "Python_reference_unavailable": "source_or_preflight_gate_blocked_no_machine_action",
+    "human_override_without_new_authorization": false
+  },
+  "typed_sanitized_stage_taxonomy": [
+    "request_contract_failed",
+    "authorization_binding_failed",
+    "runtime_path_classification_failed",
+    "runtime_metadata_failed",
+    "runtime_hash_failed",
+    "runtime_trust_initialization_failed",
+    "runtime_trust_verification_failed",
+    "runtime_trust_close_failed",
+    "runtime_identity_changed",
+    "utility_manifest_path_failed",
+    "utility_manifest_parser_failed",
+    "utility_manifest_closure_failed",
+    "source_binding_failed",
+    "process_start_failed",
+    "process_timeout",
+    "process_output_bounds_failed",
+    "result_contract_invalid",
+    "cross_language_projection_diverged"
+  ],
+  "diagnostic_redaction_policy": {
+    "raw_exception_message_type_stack_or_invocation": false,
+    "raw_native_status_or_security_structure": false,
+    "raw_manifest_tokens_text_or_parser_objects": false,
+    "hostname_user_serial_MAC_IP_or_personal_path": false,
+    "stdout_stderr_or_fixture_payload": false,
+    "credentials_secrets_or_environment": false,
+    "allowed_projection": "typed_reason_booleans_counts_durations_hashes_and_allowlisted_exact_paths_only"
+  },
+  "generated_validation_policy": {
+    "shared_vector_suite_required": true,
+    "PowerShell_controller_generated_static_vectors_required": true,
+    "Python_reference_vectors_required": true,
+    "cross_language_projection_equivalence_required": true,
+    "native_interop_structure_layout_simulation_required": true,
+    "trust_verify_and_close_transition_simulation_required": true,
+    "timeout_output_bound_and_process_cleanup_simulation_required": true,
+    "forbidden_surface_static_checks_required": true,
+    "machine_API_or_runtime_execution_in_source_acceptance_suite": false
+  },
+  "three_gate_reentry_sequence": [
+    {
+      "gate": "U3S_SOURCE_IMPLEMENTATION",
+      "scope": "shared_contract_PowerShell_controller_Python_reference_and_generated_static_tests_only",
+      "runtime_or_machine_observation": false,
+      "separate_owner_acceptance_required": true
+    },
+    {
+      "gate": "U3T_PREFLIGHT_ONLY_RUNTIME_DIAGNOSTIC",
+      "scope": "PowerShell_controller_exact_runtime_path_hash_trust_and_sanitized_stage_projection_only",
+      "manifest_or_Aggregate_validation": false,
+      "Python_machine_execution": false,
+      "separate_digest_bound_authorization_and_evidence_acceptance_required": true
+    },
+    {
+      "gate": "LATER_FULL_GENERATED_VALIDATION",
+      "scope": "manifest_closure_binding_and_84_generated_vectors_only_after_successful_U3T_acceptance",
+      "separate_digest_bound_authorization_required": true,
+      "U3K_authority": false
+    }
+  ],
+  "effect_if_R1_package_accepted": {
+    "prepare_separate_source_only_dual_controller_implementation_authorization_proposal": true,
+    "implementation_authorized": false,
+    "PowerShell_or_Python_execution_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "retry_or_generated_validation_authorized": false,
+    "Python_machine_controller_authorized": false,
+    "U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_generated_validation_harness_r0_implementation_package.v1",
+  "package_id": "P36-QUARANTINE-GENERATED-VALIDATION-HARNESS-R0-IMPLEMENTATION-PACKAGE-1.0.0",
+  "status": "sealed_source_only_generated_static_validated_owner_acceptance_pending",
+  "sealed_on": "2026-09-01",
+  "implementation_authority_decision_id": "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-AUTH",
+  "implementation_authorization_package_digest_sha256": "F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1",
+  "future_acceptance_decision_id": "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE",
+  "core_file_count": 11,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-authorization-package.json",
+      "sha256": "F92CB073156BDEFF1832D2BB0634D25005E89D58EE01CA130073F2466A0DCEE1",
+      "role": "exact_digest_bound_source_only_implementation_authority"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-acceptance.json",
+      "sha256": "06085F3E296B450204FC0E8171314581F40853A11B0AA74161238C390A05B631",
+      "role": "accepted_source_and_planning_authority"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-runtime-binding-r1-plan.json",
+      "sha256": "C99E421B6997C71916AFB1766D51DE29A5C0CA74C71DB3028CDFAE533FC93388",
+      "role": "bound_validation_layers_process_bounds_and_gate_sequence"
+    },
+    {
+      "path": "tools/phase36_quarantine_transaction_runner.ps1",
+      "sha256": "22F2A530C5D1CFC8109F2F3A2F8D7458A3E035A12DD7CFFF00EE49CA0E2C212A",
+      "role": "accepted_immutable_future_Contract_only_runner_target"
+    },
+    {
+      "path": "tools/phase36_quarantine_machine_handlers.psm1",
+      "sha256": "41C93756BDDFDFE55B99CC6C1308FAD5EE34E2962BA99D40B9EFEDEDDDC9A721",
+      "role": "accepted_immutable_future_local_scope_pure_handler_target"
+    },
+    {
+      "path": "tools/phase36_quarantine_windows_storage_adapter.psm1",
+      "sha256": "232F21819F845E35C6D576AA499B05699033E439CB9223742C21FD08FFF262A9",
+      "role": "accepted_immutable_future_parser_only_adapter_target"
+    },
+    {
+      "path": "tools/phase36_quarantine_generated_validation.ps1",
+      "sha256": "48FC33E1928BA186C11005DBDEC055E5558D58677D51EB864D3740BCFBA208C1",
+      "role": "exact_inert_future_four_mode_validation_harness_source"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-powershell-validation-r0-vectors.json",
+      "sha256": "5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C",
+      "role": "exact_generated_only_twenty_plus_sixty_four_vector_manifest"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_generated_powershell_validation_harness.py",
+      "sha256": "E177E6B45D2C9F1E527EA888C0621DCEAAC079F0909178D3D1C9FFA96B6263DB",
+      "role": "exact_Python_only_reference_and_source_text_static_verifier"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-evidence.json",
+      "sha256": "1217BF898F17ECE307B2E48EA873873ACBEB2603AC1BD785E270810388FFAA15",
+      "role": "exact_non_observational_implementation_and_validation_evidence"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-generated-validation-harness-r0-implementation-evidence-review.md",
+      "sha256": "AB1E4F7A951A1BE86044EA4700C966BA88374526282675AAE94F4CB16AACB4D2",
+      "role": "human_reviewable_implementation_scope_evidence_and_limitations"
+    }
+  ],
+  "sealed_effect_if_exactly_accepted": {
+    "harness_source_accepted": true,
+    "generated_vector_manifest_accepted": true,
+    "Python_reference_and_static_evidence_accepted": true,
+    "accepted_runner_handler_or_adapter_change_accepted": false,
+    "PowerShell_parser_import_or_execution_authorized": false,
+    "runtime_or_hardware_observation_authorized": false,
+    "runner_Contract_or_Storage_mode_execution_authorized": false,
+    "pure_handler_or_windows_adapter_import_or_execution_authorized": false,
+    "machine_storage_F_ACL_probe_cleanup_or_scanner_action_authorized": false,
+    "network_download_artifact_model_media_or_data_action_authorized": false,
+    "container_Kubernetes_deployment_or_remote_git_authorized": false,
+    "preparation_of_separate_non_effective_U3N_authorization_package_authorized": true,
+    "U3N_validation_attempt_authorized": false
+  },
+  "owner_acceptance_statement_template": "D-P3.6-U3M-VALIDATION-HARNESS-R0-IMPLEMENTATION-ACCEPTANCE: I, mayank-admin, accept the P3.6 U3M generated validation harness R0 implementation package digest <U3M_IMPLEMENTATION_PACKAGE_DIGEST_SHA256>, including exact harness SHA-256 48FC33E1928BA186C11005DBDEC055E5558D58677D51EB864D3740BCFBA208C1, vector-manifest SHA-256 5C9C9CF9AF61D7AE6F20B4150592B57A4AC540AA983A35CB8384BBD82C764C0C, Python-test SHA-256 E177E6B45D2C9F1E527EA888C0621DCEAAC079F0909178D3D1C9FFA96B6263DB, accepted byte-exact runner, pure-handler, and Windows-adapter sources, generated/static evidence, and documented limitations. This accepts source and generated/static evidence only and authorizes preparation only of a separate non-effective U3N generated-validation and fresh-runtime-binding authorization package. It does not authorize PowerShell parsing, import, or execution; runner or module execution; runtime or hardware observation; machine, storage, F:, ACL, probe, cleanup, or scanner action; network, download, artifact, model, inference, camera/media/data, container/Kubernetes, deployment, or remote Git. Any validation attempt requires a later current digest-bound D-P3.6-U3N-GENERATED-VALIDATION-RUNTIME-BINDING-R1-AUTH.",
+  "sequence_after_exact_acceptance": [
+    "record_exact_U3M_implementation_acceptance",
+    "prepare_a_separate_non_effective_U3N_generated_validation_and_fresh_runtime_binding_authorization_package",
+    "bind_exact_runtime_candidate_harness_vectors_sources_limits_and_outputs",
+    "obtain_separate_digest_bound_U3N_authorization_before_any_PowerShell_parser_import_execution_or_runtime_observation",
+    "seal_and_separately_accept_any_U3N_evidence_before_preparing_a_new_U3K_storage_package"
+  ],
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_implementation_package_digest_and_is_not_self_embedded",
+  "current_gate_effect": {
+    "source_only_implementation_complete": true,
+    "owner_implementation_acceptance_pending": true,
+    "harness_or_generated_static_evidence_accepted": false,
+    "PowerShell_parser_import_or_execution_authorized": false,
+    "runtime_or_hardware_observation_authorized": false,
+    "runner_or_module_execution_authorized": false,
+    "machine_storage_F_ACL_probe_cleanup_or_scanner_action_authorized": false,
+    "D_P3_6_U3N_GENERATED_VALIDATION_RUNTIME_BINDING_R1_AUTH_requestable": false,
+    "D_P3_6_U3K_STORAGE_R2_AUTH_requestable": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "acceptance_may_be_inferred_from_authorization_continue_or_package_preparation": false
+}

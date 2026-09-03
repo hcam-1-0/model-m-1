@@ -1,0 +1,337 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_machine_handlers_r0_implementation_contract.v1",
+  "contract_id": "P36-QUARANTINE-MACHINE-HANDLERS-R0-IMPLEMENTATION-CONTRACT-1.0.0",
+  "status": "proposed_non_effective_owner_implementation_authorization_pending",
+  "prepared_on": "2026-09-01",
+  "planning_authorization": "D-P3.6-PLAN-AUTH",
+  "future_implementation_authorization_decision": "D-P3.6-U3L-MACHINE-HANDLERS-R0-IMPLEMENTATION-AUTH",
+  "bound_accepted_inputs": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-failure-analysis-r2-owner-decisions.json",
+      "sha256": "802497CFBBF2279D91170DCD777A828A1E38BBC20A7E01EE2C1A41490E35EBE3",
+      "role": "accepted_U3H_AAAAAA_failure_storage_and_runner_policy"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-storage-r2-action-spec.json",
+      "sha256": "1825C65DFEEEF02EA12AF3D506385657870DCB631D2CDB157DB0F9C919C2DE2A",
+      "role": "accepted_U3J_ten_action_storage_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-package.json",
+      "sha256": "71F85A03157FB48EB7BC8950BD618BF7C00718F8602F75C29F5E069E0EB7DE67",
+      "role": "accepted_contract_only_runner_implementation_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-implementation-acceptance.json",
+      "sha256": "70F2EE1133648F16CA6298C25FB6C46F56AA7C88FBA97553BDD0A2F55D90C63A",
+      "role": "accepted_contract_only_runner_evidence_and_limitations"
+    },
+    {
+      "path": "tools/phase36_quarantine_transaction_runner.ps1",
+      "sha256": "C0020A4C53B59486CE8842302C918821F145F0228F4006C3D6B67BF594DB5B15",
+      "role": "current_static_default_deny_runner_source_to_be_replaced_only_after_exact_authorization"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-transaction-runner-r0-runtime-binding-acceptance.json",
+      "sha256": "F19E6660FBD9545F74B8B532F6A9EB4D01ACF0543DE45CD54C8CB41C868DB54E",
+      "role": "historical_exact_runtime_binding_evidence_acceptance_not_reusable_as_implementation_or_execution_authority"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-storage-r2-final-u3k-authorization-package.json",
+      "sha256": "4120AFF4823B1F10AC0BE902BCE7D3709EE02DFA5202A6B8A954EF83C69B837E",
+      "role": "non_effective_U3K_preparation_package_recording_the_machine_handler_blocker"
+    }
+  ],
+  "proposed_source_architecture": {
+    "orchestrator": {
+      "path": "tools/phase36_quarantine_transaction_runner.ps1",
+      "responsibilities": [
+        "parse_and_size_bound_the_exact_input",
+        "retain_the_existing_Contract_mode",
+        "add_a_default_off_Storage_mode_that_requires_exact_package_authorization_runtime_and_source_preflight_before_windows_adapter_import",
+        "dispatch_exactly_U3K_A01_through_U3K_A10_in_order",
+        "enforce_single_attempt_and_no_retry",
+        "normalize_terminal_state_without_raw_error_output"
+      ],
+      "prohibited": [
+        "dynamic_action_discovery",
+        "environment_defined_handlers",
+        "Invoke_Expression_or_command_string_execution",
+        "plugins_or_reflection_based_dispatch",
+        "implicit_fallback_paths",
+        "machine_access_before_U3K_A03_is_durably_written"
+      ]
+    },
+    "pure_handler_state_machine": {
+      "path": "tools/phase36_quarantine_machine_handlers.psm1",
+      "responsibilities": [
+        "define_one_typed_input_and_one_sanitized_output_contract_per_action",
+        "enforce_exact_order_and_transition_invariants",
+        "classify_allowlisted_adapter_results_into_stable_reason_codes",
+        "track_attempt_created_objects_and_cleanup_eligibility_in_memory",
+        "never_call_a_machine_API_or_read_an_environment_variable"
+      ],
+      "direct_machine_APIs_allowed": false,
+      "filesystem_or_registry_access_allowed": false,
+      "network_access_allowed": false
+    },
+    "windows_storage_adapter": {
+      "path": "tools/phase36_quarantine_windows_storage_adapter.psm1",
+      "responsibilities": [
+        "implement_only_the_allowlisted_windows_and_dotnet_operations_needed_by_U3K_A01_through_U3K_A10",
+        "return_typed_bounded_values_or_allowlisted_reason_codes",
+        "contain_all_PInvoke_and_direct_machine_API_references",
+        "never_format_or_persist_raw_exceptions_identifiers_or_security_material"
+      ],
+      "import_policy": "the_runner_may_import_this_exact_hash_only_after_U3K_A02_preflight_succeeds_and_only_in_a_later_separately_authorized_Storage_execution",
+      "test_policy": "generated_tests_must_fail_if_this_module_is_imported_or_any_exported_operation_is_called",
+      "network_registry_process_service_and_scanner_APIs_allowed": false
+    },
+    "generated_reference_verifier": {
+      "path": "tests/test_phase36_quarantine_machine_handlers_generated.py",
+      "responsibilities": [
+        "evaluate_all_64_generated_vectors_against_a_machine_independent_reference_state_machine",
+        "verify_static_source_allowlists_exports_and_forbidden_constructs",
+        "verify_that_fake_adapter_transcripts_match_exact_action_order_and_cleanup_bounds",
+        "never_execute_PowerShell_or_import_the_windows_adapter"
+      ],
+      "generated_only": true,
+      "machine_access_allowed": false,
+      "PowerShell_execution_allowed": false
+    }
+  },
+  "action_implementation_contracts": [
+    {
+      "action_id": "U3K-A01-UTC-CLOCK-START",
+      "adapter_operation": "read_UTC_start_time_once",
+      "allowed_API": "System.DateTimeOffset.UtcNow",
+      "persisted_projection": [
+        "attempt_started_at"
+      ],
+      "failure_reason_codes": [
+        "clock_unavailable",
+        "clock_read_count_invalid"
+      ]
+    },
+    {
+      "action_id": "U3K-A02-PACKAGE-RUNNER-AUTHORITY-VERIFY",
+      "adapter_operation": "read_only_exact_files_and_compute_SHA_256",
+      "allowed_APIs": [
+        "System.IO.File.OpenRead",
+        "System.Security.Cryptography.SHA256"
+      ],
+      "required_checks": [
+        "owner_statement_exact_match",
+        "authorization_window_current",
+        "attempt_unused",
+        "future_executable_package_and_every_core_hash_match",
+        "runner_handlers_adapter_and_test_source_hashes_match",
+        "exact_running_runtime_path_and_hash_match_current_accepted_binding",
+        "logical_node_candidate_root_action_order_limits_and_output_paths_match"
+      ],
+      "failure_effect": "abort_before_authorization_record_or_machine_access",
+      "raw_file_content_persisted": false
+    },
+    {
+      "action_id": "U3K-A03-AUTHORIZATION-RECORD",
+      "adapter_operation": "write_exact_sanitized_pre_action_authorization_record",
+      "allowed_output": "contracts/phase-3/p3-6-quarantine-storage-r2-authorization.json",
+      "write_policy": "same_directory_CreateNew_Flush_true_nonreplacement_rename_and_fail_if_destination_exists",
+      "failure_effect": "abort_before_F_or_ACL_access"
+    },
+    {
+      "action_id": "U3K-A04-F-DRIVE-INFO",
+      "adapter_operation": "read_exact_F_drive_allowlisted_properties",
+      "allowed_API": "System.IO.DriveInfo",
+      "allowed_properties": [
+        "IsReady",
+        "DriveType",
+        "DriveFormat",
+        "TotalSize",
+        "AvailableFreeSpace"
+      ],
+      "property_exception_policy": "catch_each_getter_and_return_an_allowlisted_reason_code_without_raw_text",
+      "forbidden_properties": [
+        "VolumeLabel",
+        "TotalFreeSpace",
+        "volume_serial",
+        "device_identifier"
+      ]
+    },
+    {
+      "action_id": "U3K-A05-CANONICAL-PATH-AND-ABSENCE",
+      "adapter_operation": "verify_exact_candidate_and_parent_without_traversal",
+      "allowed_APIs": [
+        "System.IO.Path.GetFullPath_with_fixed_base",
+        "GetFileAttributesW"
+      ],
+      "required_checks": [
+        "exact_ordinal_ignore_case_path_equals_F_HCAM_Quarantine",
+        "path_is_not_equal_to_or_beneath_F_h_cam",
+        "F_root_is_not_a_reparse_point",
+        "candidate_returns_only_ERROR_FILE_NOT_FOUND_or_ERROR_PATH_NOT_FOUND",
+        "no_case_folded_alias_or_alternate_path_is_accepted"
+      ],
+      "directory_enumeration_allowed": false,
+      "symlink_junction_mountpoint_or_reparse_follow_allowed": false
+    },
+    {
+      "action_id": "U3K-A06-PROTECTED-DACL-CONSTRUCT",
+      "adapter_operation": "construct_exact_protected_security_descriptor_in_memory",
+      "allowed_APIs": [
+        "WindowsIdentity.GetCurrent",
+        "DirectorySecurity.SetAccessRuleProtection_true_false",
+        "FileSystemAccessRule",
+        "DirectorySecurity.GetSecurityDescriptorBinaryForm"
+      ],
+      "required_explicit_allow_tuples": [
+        "ephemeral_current_process_SID_Modify_ContainerInherit_ObjectInherit_None_Allow",
+        "S_1_5_18_FullControl_ContainerInherit_ObjectInherit_None_Allow",
+        "S_1_5_32_544_FullControl_ContainerInherit_ObjectInherit_None_Allow"
+      ],
+      "identity_or_security_material_persisted": false,
+      "account_name_translation_allowed": false,
+      "unmanaged_memory_policy": "allocate_only_the_bounded_self_relative_descriptor_and_SECURITY_ATTRIBUTES_then_zero_and_free_in_finally"
+    },
+    {
+      "action_id": "U3K-A07-SECURITY-AT-CREATE-ROOT",
+      "adapter_operation": "exclusive_security_at_create_for_exact_absent_root",
+      "required_API": "CreateDirectoryW_with_nonnull_SECURITY_ATTRIBUTES",
+      "accepted_design_correction": "supersede_the_managed_FileSystemAclExtensions_CreateDirectory_call_only_for_exclusive_attempt_ownership_because_that_managed_API_returns_an_existing_directory",
+      "required_success_semantics": [
+        "CreateDirectoryW_returns_nonzero",
+        "ERROR_ALREADY_EXISTS_is_a_terminal_preexisting_target_failure",
+        "only_the_exact_final_directory_can_be_created",
+        "no_plain_create_then_acl_rewrite_fallback",
+        "root_created_by_attempt_is_true_only_after_exclusive_native_success"
+      ],
+      "existing_root_or_race_effect": "fail_closed_without_modification_or_cleanup",
+      "other_directory_creation_allowed": false
+    },
+    {
+      "action_id": "U3K-A08-NORMALIZED-DACL-VERIFY",
+      "adapter_operation": "read_and_classify_exact_candidate_DACL_once",
+      "allowed_API": "FileSystemAclExtensions.GetAccessControl",
+      "required_independent_checks": [
+        "access_rules_protected",
+        "exactly_three_explicit_rules",
+        "current_process_SID_tuple",
+        "current_process_rights_exactly_Modify_plus_automatic_Synchronize",
+        "LocalSystem_exact_FullControl_tuple",
+        "Administrators_exact_FullControl_tuple",
+        "inheritance_flags",
+        "propagation_flags",
+        "access_types",
+        "no_inherited_rule",
+        "no_deny_rule",
+        "no_unauthorized_principal",
+        "no_unknown_or_excessive_rights"
+      ],
+      "failure_effect": "skip_probe_and_remove_only_the_attempt_created_root_if_it_is_still_empty_nonreparse_and_exact",
+      "raw_ACL_SDDL_descriptor_SID_or_account_name_persisted": false
+    },
+    {
+      "action_id": "U3K-A09-ATOMIC-CAPABILITY-PROBE",
+      "adapter_operation": "exclusive_write_flush_two_readbacks_same_directory_rename_and_cleanup",
+      "allowed_APIs": [
+        "System.IO.FileStream_with_FileMode_CreateNew_FileShare_None_FileOptions_WriteThrough",
+        "System.IO.FileStream.Flush_true",
+        "System.Security.Cryptography.SHA256.HashData",
+        "MoveFileExW_with_MOVEFILE_WRITE_THROUGH_only",
+        "System.IO.File.Delete"
+      ],
+      "required_paths": [
+        "F:\\HCAM-Quarantine\\.hcam-storage-attestation.partial",
+        "F:\\HCAM-Quarantine\\.hcam-storage-attestation.verified"
+      ],
+      "probe_policy": {
+        "bytes": 4096,
+        "content": "deterministic_generated_nonsecret_nonmedia_bytes",
+        "destination_overwrite": false,
+        "cross_volume_move": false,
+        "MOVEFILE_COPY_ALLOWED": false,
+        "MOVEFILE_REPLACE_EXISTING": false,
+        "retention_after_success": 0
+      },
+      "failure_cleanup": "delete_only_probe_files_created_by_this_attempt_then_remove_only_the_attempt_created_exact_root_if_empty_and_nonreparse",
+      "recursive_delete_allowed": false
+    },
+    {
+      "action_id": "U3K-A10-NORMALIZE-HASH-WRITE",
+      "adapter_operation": "write_bounded_sanitized_result_and_evidence",
+      "allowed_outputs": [
+        "contracts/phase-3/p3-6-quarantine-storage-r2-result.json",
+        "contracts/phase-3/p3-6-quarantine-storage-r2-evidence.json"
+      ],
+      "completion_clock_reads": 1,
+      "write_policy": "canonical_JSON_SHA_256_same_directory_CreateNew_Flush_true_nonreplacement_rename",
+      "maximum_output_bytes_each": 65536,
+      "raw_stdout_stderr_exception_stack_or_identifier_persisted": false
+    }
+  ],
+  "transaction_invariants": {
+    "exact_action_count": 10,
+    "fixed_order": true,
+    "parallel_actions": false,
+    "maximum_attempts": 1,
+    "automatic_retry": false,
+    "per_action_timeout_seconds": 30,
+    "total_timeout_seconds": 120,
+    "timeout_semantics": "check_monotonic_deadline_before_and_after_each_synchronous_allowlisted_call_abort_future_actions_on_expiry_and_rely_on_a_separately_reviewed_outer_process_deadline_for_hard_termination",
+    "raw_error_persistence": false,
+    "network_access": false,
+    "environment_proxy_or_variable_use": false,
+    "interactive_prompt_or_UI": false,
+    "cleanup_scope_expansion_on_failure": false,
+    "manual_override": false
+  },
+  "future_implementation_outputs_if_exactly_authorized": [
+    "tools/phase36_quarantine_transaction_runner.ps1",
+    "tools/phase36_quarantine_machine_handlers.psm1",
+    "tools/phase36_quarantine_windows_storage_adapter.psm1",
+    "tests/test_phase36_quarantine_machine_handlers_generated.py",
+    "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-evidence.json",
+    "contracts/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-package.json",
+    "docs/phase-3/p3-6-quarantine-machine-handlers-r0-implementation-evidence-review.md"
+  ],
+  "implementation_validation_if_exactly_authorized": {
+    "Python_generated_reference_vectors_may_execute": true,
+    "Python_static_source_checks_may_execute": true,
+    "PowerShell_parser_or_source_execution_may_execute": false,
+    "runner_or_module_execution_may_execute": false,
+    "windows_adapter_import_or_execution_may_execute": false,
+    "machine_storage_ACL_or_runtime_observation_may_execute": false,
+    "all_64_generated_vectors_required": true,
+    "full_Phase_3_6_regression_required": true,
+    "Ruff_and_strict_JSON_required": true,
+    "exact_source_hashes_and_evidence_package_required": true
+  },
+  "required_sequence_after_future_implementation": [
+    "seal_exact_source_generated_test_results_and_non_observational_evidence",
+    "obtain_exact_owner_acceptance_of_the_implemented_handler_package",
+    "prepare_and_separately_authorize_any_PowerShell_generated_handler_runtime_test_if_required",
+    "obtain_a_fresh_exact_runtime_binding_for_the_future_execution_window",
+    "regenerate_a_new_executable_U3K_package_with_the_corrected_action_spec_and_all_exact_source_runtime_and_test_hashes",
+    "obtain_separate_D_P3_6_U3K_STORAGE_R2_AUTH_against_that_new_package_before_any_machine_or_F_access"
+  ],
+  "current_effect": {
+    "owner_implementation_authorization_pending": true,
+    "machine_handler_implementation_authorized": false,
+    "source_or_test_file_change_authorized": false,
+    "PowerShell_or_runner_execution_authorized": false,
+    "windows_adapter_import_or_execution_authorized": false,
+    "storage_or_machine_access_authorized": false,
+    "F_or_ACL_action_authorized": false,
+    "storage_probe_authorized": false,
+    "Defender_or_scanner_action_authorized": false,
+    "artifact_or_dependency_acquisition_authorized": false,
+    "model_inference_media_or_data_access_authorized": false,
+    "container_or_Kubernetes_action_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  }
+}
