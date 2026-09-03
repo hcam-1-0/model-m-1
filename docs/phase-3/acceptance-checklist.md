@@ -185,8 +185,9 @@ Current P3.5 status:
 Artifact and runtime evidence are accepted. Five exact artifacts and the exact
 external runtime may be used for generated-only local work with zero network
 actions. Tesseract OCR, training, cameras/media, real data, persistent plate
-text, operational behavior, deployment, and P3.6 implementation remain
-unauthorized. The later `D-P3.6-PLAN-AUTH` grants only P3.6 planning/research.
+text, operational behavior, and deployment remained unauthorized at that
+gate. P3.5 acceptance did not authorize P3.6 implementation; the later P3.6
+decision chain and R5 closeout govern that work independently.
 
 ## P3.6 Planning Decision Status
 
@@ -519,9 +520,172 @@ Python machine access, runtime observation, U3R retry, U3T, or U3K.
 - [x] Exact `D-P3.6-U3V-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` recorded and
   limited to the obsolete U3V proposal-state assertions; statement SHA-256
   `9BE9C3F3D2BB9ABE11A84CCCE2E4DDF79B3370AF017AD9E0B56E29C2426B541E`.
-- [ ] Separate exact owner U3V source implementation acceptance against package
+- [x] Separate exact owner U3V source implementation acceptance against package
   SHA-256
   `AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`.
+- [x] Record `D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-ACCEPTANCE` in
+  acceptance record SHA-256
+  `5B8847FF5E484C40D0630C2E9B91D41D877662D27648BCB951962117C25B7DD5`.
+- [x] Seal the separate non-effective U3W authorization proposal package at
+  SHA-256
+  `DDCB7A9C4E6E93BF5252FAFF840E3841C1B9080FE5657AA0037532EE2037B760`.
+- [x] Obtain exact digest-bound
+  `D-P3.6-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-AUTH` before any attempt.
+- [x] Consume exactly one U3W attempt and seal failed-closed reason
+  `controller_stage_projection_invalid` with no retry or raw retention.
+- [x] Seal the non-effective U3X failure-analysis planning package at SHA-256
+  `80CA25BC1F1EE77E5A9ED8ADEF76C695D5169544CB75B6A57A03692463FFA460`.
+- [x] Record explicit `D-P3.6-U3X-FAILURE-ANALYSIS-DECISIONS` selections as
+  `A/A/A/A` in acceptance record SHA-256
+  `56FE994A8F3EDCB17B673E63CB3773B17EB63FA8B3E23F04A3A58A9E7105D91E`.
+- [x] Seal the non-effective U3Y source-implementation authorization package at
+  SHA-256
+  `35086DDC152DDF659097F6841AA364B965E0851833C339DCF2736BEF1AA0940A`.
+- [ ] Record exact digest-bound
+  `D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-AUTH`.
 
-No PowerShell execution, runtime diagnostic, retry, U3K, deployment, or remote
-Git is authorized by source implementation completion.
+The U3W authorization is consumed and not reusable. U3X authorizes proposal
+preparation only, while U3Y remains pending. No controller, diagnostic,
+contract, vector, or test implementation, PowerShell execution, retry, U3K,
+deployment, or remote Git is currently authorized.
+
+## U3Y Acceptance And U3Z Proposal
+
+- [x] Record exact
+  `D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-ACCEPTANCE`
+  against package SHA-256
+  `ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78`.
+- [x] Seal non-effective U3Z planning package SHA-256
+  `B9696A95EF14D186C7D2CC8D949EE711C2621E907DAD28AF4FC192B2A1A1F09A`.
+- [x] Record exact
+  `D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-AUTH`.
+- [x] Verify the exact 1,465-byte owner statement at SHA-256
+  `5136263DC036CD37AAEB7EEBA05076C5567761246F59566EB12B4DBA9AE1DA5C`.
+- [x] Implement the additive source-only harness, exactly 288 materialized
+  generated cases, and one Python generated/static test module.
+- [x] Seal current implementation package SHA-256
+  `47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF`.
+- [x] Record and apply exact
+  `D-P3.6-U3Z-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT`; 1,704-byte owner
+  statement SHA-256
+  `E7F7B483EBF3DABD46CA213CB6773582CE23542BB3EA8BB8FBB535F212327692`.
+- [x] Pass 303 focused and all 1,503 full Phase 3.6 generated/static checks.
+- [x] Record exact
+  `D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-ACCEPTANCE`
+  against package SHA-256
+  `47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF`;
+  acceptance record SHA-256
+  `38B89E53B46F921663879DE0614AF318EDF9B66AB36120663D14F61070AD8477`.
+- [x] Seal separate non-effective runtime-binding R1 authorization package
+  SHA-256
+  `3348ECB80895806A2E63610088EF3178CE38B715910C3B1463D97CB2E8F3C6C5`.
+- [x] Obtain exact
+  `D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-AUTH`.
+- [x] Seal consumed authorization, result, and evidence records at SHA-256
+  `FC1AE35876012CEFDCB52AE5A274FC5787FAE1AE722A9709AC76782C78C530D1`,
+  `C9743F0FC8906E46701E07A01A1C651F4B4B2C0517FAB722A97C1396F40F7303`,
+  and `34BDA40E4450F35AF4A86E3C7566B9AFCA01413D70FE9CA9EB70B35A1B921BFF`.
+- [x] Record terminal `binding_failed` before runtime or source binding, with
+  zero PowerShell invocations, zero cases executed, and zero retries.
+- [x] Seal U4A failure-analysis package SHA-256
+  `0918CD9775DA870C530233BD8728325164159A53777A42FAA8DB5B4A7C8DA5D9`.
+- [x] Obtain exact `D-P3.6-U4A-U3Z-R1-FAILURE-ANALYSIS-DECISIONS` selections
+  as `A/A/A/A`; acceptance record SHA-256
+  `F8C39C761A8B0359CDB50F13AF0935A481C8A881A02A6F325E722137FCB75E36`.
+- [x] Seal the non-effective U4B source-implementation authorization package
+  SHA-256
+  `E52680B8314FA9A4FC862510BC9570DE3942A791952F22425E61ED61723222AE`.
+- [x] Verify 17 unique package bindings, 11 future implementation paths, 13
+  bounded synchronization paths, and a 384-vector minimum.
+- [ ] Obtain exact
+  `D-P3.6-U4B-OUTER-ATTEMPT-CONTROLLER-R0-IMPLEMENTATION-AUTH`.
+- [x] Keep source implementation, PowerShell execution, another attempt, U3K,
+  deployment, commit, push, and remote Git blocked while U4B is pending.
+
+## Consolidated Authorization Option
+
+- [x] Seal two-authorization decision packet and non-effective consolidated
+  build package SHA-256
+  `DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C`.
+- [x] Verify 9 unique core bindings, 20 absent future additive paths, 13 bounded
+  synchronization paths, eight source cycles, and three maximum later runtime
+  attempts.
+- [ ] Select `D-P3.6-CA-001` through `D-P3.6-CA-006` and authorize exact
+  `D-P3.6-CONSOLIDATED-BUILD-AUTH`.
+- [ ] After successful build evidence, obtain exact digest-bound
+  `D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH`.
+- [x] Keep U4B as the granular fallback and keep every implementation,
+  execution, machine, U3K, closeout, commit, push, and remote Git gate closed.
+
+## Consolidated Build Checkpoint
+
+- [x] Accept `D-P3.6-CONSOLIDATED-BUILD-AUTH` for package SHA-256
+  `DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C`.
+- [x] Complete the 20-path source-only build, two-test compatibility transition,
+  generated/static validation, and resealed build package SHA-256
+  `A006B6A1D7AA59F8A67BC8AD24B280D546397F921AF0111E366ACF38DD21A766`.
+- [ ] Accept exact `D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH` package
+  SHA-256 `B7AB81130213AADD907055B75D795D59864AD2C91A2D876B7A267407CA289CD3`.
+- [x] Keep runtime, machine, storage, U3K, commit, push, and remote Git blocked
+  until the exact runtime-closeout authorization is accepted.
+
+## Runtime-Closeout R1 Failure
+
+- [x] Record one consumed failed-closed closeout attempt with sanitized reason
+  `process_output_bounds_failed`.
+- [x] Confirm runtime trust, fixed parents, and all eleven source bindings
+  passed before the failed output-contract gate.
+- [x] Confirm handler validation and U3K did not start and `F:` was not
+  accessed.
+- [x] Select `D-P3.6-U4C-001` through `D-P3.6-U4C-005` against planning package
+  SHA-256 `26182B3EFB369C56741DFCEC51DCE412DB3EC4EF5170C0741847F1ADAE4481C0`.
+- [x] Keep implementation, runtime retry, U3K, Phase 3 completion, commit, push,
+  and remote Git blocked.
+- [x] Record exact U4C `A/A/A/A/A` acceptance and seal non-effective U4D
+  package SHA-256
+  `2DAD142AE31D5A3738ABADD0098512B61C0BC2C3A5C7C915BF99DE8D40FB7F74`.
+- [x] Obtain exact
+  `D-P3.6-U4D-PROCESS-OUTPUT-REMEDIATION-IMPLEMENTATION-AUTH` before changing
+  the harness, contract, vectors, tests, evidence, or R2 package.
+- [x] Bind both authorized compatibility transitions: historical test
+  `E8001AFD...` to `E685F22E...`, and U4D proposal test `BC591EBE...` to
+  `53F90E18...`.
+- [x] Seal U4D source package
+  `288F275345E2586E05BE14EC964CA77EF7503A0BE70D88C6C5696BB4655C612A`
+  after 384 generated vectors, 97 percent branch coverage, and 2,042 passing
+  Phase 3.6 checks.
+- [x] Prepare non-effective R2 authorization package
+  `3712793C5A57E66E39C8A804E162A4680EA92024682BDDF2A54573E1622C541E`.
+- [x] Record exact `D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-AUTH` before the
+  single bounded R2 attempt.
+- [x] Keep PowerShell execution, runtime/machine/storage access, retry, U3K,
+  closeout, commit, push, and remote Git blocked.
+
+## Runtime-Closeout R2 Failure And U4E Planning Gate
+
+- [x] Seal the consumed R2 authorization, result, and evidence records.
+- [x] Confirm R2 passed package authority, authorization recording, runtime
+  binding, fixed-parent checks, cache-only trust, and literal manifest parsing.
+- [x] Record terminal reason `utility_closure_declared_target_missing` at
+  `R2-A04-UTILITY-MANIFEST-AND-CLOSURE-BINDING`.
+- [x] Confirm zero PowerShell generated-validation processes, zero generated
+  cases, zero U3K/storage attempts, and zero `F:` accesses.
+- [x] Seal official-source research, sanitized failure analysis, and U4E
+  planning package SHA-256
+  `C0BF901B7D66BE11A250F9369C5CE564A59A726E88877E4A77CD36F310997B7D`.
+- [ ] Select `D-P3.6-U4E-001` through `D-P3.6-U4E-005`; recommendation
+  `A/A/A/A/A`.
+- [x] Keep source implementation, PowerShell execution, Python machine access,
+  another attempt, U3K, closeout, commit, push, and remote Git blocked.
+
+## R5 Closeout Acceptance
+
+- [x] U4E decision consolidation complete.
+- [x] U4F manifest-closure resolver complete.
+- [x] Current generated runtime validation passed 500 of 500 cases.
+- [x] R5 successor changes are additive and hash-bound.
+- [x] Full Phase 3.6 suite passed 2,597 of 2,597 tests.
+- [x] One bounded U3K attempt passed actions A01 through A10.
+- [x] Retained quarantine root is empty; probe retention is zero.
+- [x] Phase 3 and Phase 3.6 accepted at generated-only nondeployment scope.
+- [ ] Model/artifact acquisition, inference, camera/media/data access, profile activation, and deployment remain future separately authorized work.

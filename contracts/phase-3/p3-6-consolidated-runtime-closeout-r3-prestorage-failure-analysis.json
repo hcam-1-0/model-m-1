@@ -1,0 +1,70 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_r3_prestorage_failure_analysis.v1",
+  "analysis_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-R3-PRESTORAGE-FAILURE-ANALYSIS",
+  "status": "attempt_consumed_failed_closed_before_authorization_record_or_target_access",
+  "recorded_on": "2026-09-03",
+  "execution_package": {
+    "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r3-storage-execution-package.json",
+    "sha256": "7BB899A148F929F41253145B1D95FF9CBBB8392DBDCBD1D69BFD6F026553AE3C",
+    "same_package_retry_allowed": false
+  },
+  "sanitized_runner_result": {
+    "contract_id": "P36-QUARANTINE-TRANSACTION-RUNNER-R0-1.0.0",
+    "succeeded": false,
+    "reason_code": "sanitized_runner_failure",
+    "raw_error_persisted": false,
+    "automatic_retry_authorized": false,
+    "execution_authorized": false,
+    "profile_activation_authorized": false,
+    "deployment_authorized": false,
+    "remote_git_authorized": false
+  },
+  "post_attempt_state": {
+    "authorization_record_exists": false,
+    "result_record_exists": false,
+    "evidence_record_exists": false,
+    "candidate_root_exists": false,
+    "partial_probe_exists": false,
+    "verified_probe_exists": false,
+    "A03_authorization_write_started": false,
+    "F_target_access_started": false,
+    "cleanup_required": false
+  },
+  "bounded_read_only_replay": {
+    "serialized_request_bytes": 4292,
+    "preimport_keys_present": true,
+    "owner_statement_exact": true,
+    "handler_hash_exact": true,
+    "adapter_hash_exact": true,
+    "storage_envelope_valid": true,
+    "A01_clock_adapter_passed": true,
+    "A01_handler_transition_passed": true,
+    "A02_execution_binding_passed": false,
+    "A02_handler_reason": "authority_binding_invalid",
+    "machine_write_count": 0
+  },
+  "root_cause": {
+    "category": "authorization_timestamp_wire_format",
+    "cause": "PowerShell_hashtable_expression_method_chains_were_not_parenthesized_before_JSON_serialization",
+    "observed_wire_shape": "culture_formatted_date_time_without_round_trip_offset",
+    "required_wire_shape": "precomputed_ISO_8601_round_trip_string",
+    "affected_fields": [
+      "authorization_not_before",
+      "authorization_expires_at",
+      "runtime_binding.valid_until"
+    ]
+  },
+  "remediation": {
+    "use_precomputed_literal_ISO_8601_strings": true,
+    "validate_the_serialized_round_trip_request_before_runner_start": true,
+    "require_A01_and_A02_read_only_preflight_on_the_exact_round_trip_request": true,
+    "prepare_new_execution_package_and_new_single_attempt": true,
+    "modify_historical_runner_handler_adapter_or_R3_package": false
+  },
+  "continuing_exclusions": {
+    "same_package_retry": false,
+    "existing_root_change": false,
+    "security_bypass_or_privilege_escalation": false,
+    "scanner_network_model_media_data_container_deployment_or_remote_Git": false
+  }
+}

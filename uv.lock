@@ -644,6 +644,7 @@ dependencies = [
     { name = "pydantic" },
     { name = "pyjwt", extra = ["crypto"] },
     { name = "sqlalchemy" },
+    { name = "tzdata", marker = "sys_platform == 'win32'" },
     { name = "uvicorn" },
 ]
 
@@ -696,6 +697,7 @@ requires-dist = [
     { name = "setuptools", marker = "extra == 'dev'", specifier = ">=83.0,<85.0" },
     { name = "shapely", marker = "extra == 'analytics'", specifier = "==2.1.2" },
     { name = "sqlalchemy", specifier = ">=2.0.51,<3.0" },
+    { name = "tzdata", marker = "sys_platform == 'win32'", specifier = ">=2026.3,<2027" },
     { name = "uvicorn", specifier = ">=0.35.0,<1.0" },
 ]
 provides-extras = ["analytics", "dev", "postgres"]

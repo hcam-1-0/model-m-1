@@ -1,0 +1,58 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u4a_binding_classification_remediation_planning_acceptance.v1",
+  "record_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U4A-BINDING-CLASSIFICATION-REMEDIATION-PLANNING-ACCEPTANCE",
+  "decision_id": "D-P3.6-U4A-U3Z-R1-FAILURE-ANALYSIS-DECISIONS",
+  "status": "accepted_A_A_A_A_outer_attempt_controller_implementation_authorization_proposal_preparation_only",
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-02",
+  "canonical_owner_statement_utf8_bytes": 966,
+  "canonical_owner_statement_sha256": "EE16DBC0A50E6B0CC9C4A656988F37C5C1236C3F7EEB1A79F5B7D12021502927",
+  "canonical_owner_statement": "D-P3.6-U4A-U3Z-R1-FAILURE-ANALYSIS-DECISIONS: I, mayank-admin, accept the sanitized U3Z R1 binding-failure planning package digest 0918CD9775DA870C530233BD8728325164159A53777A42FAA8DB5B4A7C8DA5D9 and select D-P3.6-U4A-001:A, D-P3.6-U4A-002:A, D-P3.6-U4A-003:A, and D-P3.6-U4A-004:A. This accepts the failed U3Z R1 evidence for planning purposes and authorizes preparation only of a separate source-only additive outer attempt-controller remediation implementation authorization proposal. It does not authorize outer controller, harness, contract, vector, test, model, or product implementation; PowerShell parsing, import, dot-sourcing, or execution; Python machine access or fallback; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, private or Government data, container, Kubernetes, profile activation, deployment, another attempt, U3K, commit, push, or remote Git.",
+  "accepted_package": {
+    "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u4a-binding-classification-remediation-planning-package.json",
+    "sha256": "0918CD9775DA870C530233BD8728325164159A53777A42FAA8DB5B4A7C8DA5D9",
+    "mutated_by_this_acceptance": false
+  },
+  "accepted_failure_analysis": {
+    "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-failure-analysis-r0.json",
+    "sha256": "F8ED63FB9410B6DCBB37A82A9CF667FF09067CBB502B8F23A213B784DD431667",
+    "accepted_for_planning_only": true,
+    "fixed_parent_set_aggregation_hypothesis_confirmed_as_runtime_fact": false,
+    "specific_invalid_parent_predicate_confirmed_as_runtime_fact": false
+  },
+  "selected_decisions": {
+    "D-P3.6-U4A-001": "A",
+    "D-P3.6-U4A-002": "A",
+    "D-P3.6-U4A-003": "A",
+    "D-P3.6-U4A-004": "A"
+  },
+  "authority_granted": {
+    "prepare_separate_source_only_additive_outer_attempt_controller_implementation_authorization_proposal": true,
+    "outer_controller_harness_contract_vector_test_model_or_product_implementation": false,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_manifest_hardware_or_machine_observation": false,
+    "machine_storage_scanner_network_model_media_private_or_Government_data_action": false,
+    "container_Kubernetes_profile_activation_deployment_another_attempt_U3K_commit_push_or_remote_Git": false
+  },
+  "accepted_design_direction": {
+    "additive_source_controlled_outer_attempt_controller": true,
+    "accepted_U3Y_U3Z_and_consumed_attempt_artifacts_preserved_byte_exact": true,
+    "typed_stage_and_fixed_parent_index_reasons": true,
+    "exactly_three_ordered_typed_parent_records": true,
+    "explicit_all_valid_reduction_without_pipeline_null_or_scalar_cardinality_semantics": true,
+    "no_paths_raw_attributes_exceptions_identities_or_security_material_retained": true,
+    "source_acceptance_before_generated_controller_validation": true,
+    "generated_controller_validation_acceptance_before_new_runtime_attempt": true,
+    "blind_retry_or_direct_U3K_progression": false
+  },
+  "next_required_sequence": [
+    "prepare_non_effective_U4B_outer_attempt_controller_source_implementation_authorization_proposal",
+    "obtain_exact_digest_bound_D_P3_6_U4B_OUTER_ATTEMPT_CONTROLLER_R0_IMPLEMENTATION_AUTH",
+    "implement_only_the_exact_source_and_generated_static_paths_if_authorized",
+    "seal_and_separately_accept_source_and_generated_static_evidence",
+    "prepare_separate_generated_only_controller_validation_package_and_authorization_after_source_acceptance",
+    "prepare_no_new_runtime_attempt_or_U3K_without_later_successful_accepted_evidence_and_explicit_authority"
+  ],
+  "acceptance_may_be_inferred_as_implementation_PowerShell_runtime_retry_U3K_deployment_commit_push_or_remote_Git_authority": false
+}

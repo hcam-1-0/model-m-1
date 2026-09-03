@@ -1,0 +1,31 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_acceptance.v1",
+  "decision_id": "D-P3.6-CONSOLIDATED-CLOSEOUT",
+  "status": "accepted_via_combined_execution_delegation",
+  "accepted_on": "2026-09-03",
+  "accepted_by": "mayank-admin_via_prior_combined_execution_delegation",
+  "acceptance_basis": {
+    "path": "contracts/phase-3/p3-6-combined-execution-delegation.json",
+    "sha256": "24A5D29CBA1B6DA990207EE2C4E7BD8DF8CB0DC2D36AD526461E494F8E5C3C09",
+    "owner_direction": "continue_Phase_3_6_in_extensive_combined_batches_without_separate_routine_approval_messages_and_report_each_active_task_with_exact_completion_percentage"
+  },
+  "accepted_evidence": {
+    "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r5-success-evidence.json",
+    "sha256": "8E6567507FCCA1439FA6AC7C9C384721D98A51EDE989706152CFDE886F6FFD67"
+  },
+  "accepted_scope": {
+    "Phase_3_complete": true,
+    "Phase_3_6_complete": true,
+    "generated_only_contract_and_runtime_validation_complete": true,
+    "bounded_local_storage_readiness_complete": true,
+    "zero_retention_probe_complete": true,
+    "deployment_or_operational_readiness_claimed": false
+  },
+  "continuing_non_authorization": [
+    "no_model_or_artifact_download_loading_or_inference",
+    "no_camera_media_private_or_Government_data",
+    "no_scanner_network_container_Kubernetes_profile_activation_or_deployment",
+    "no_security_bypass_or_privilege_escalation",
+    "no_push_pull_fetch_PR_merge_or_other_remote_Git"
+  ]
+}

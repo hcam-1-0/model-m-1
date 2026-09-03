@@ -402,10 +402,119 @@ was accepted under `D-P3.6-U3U-FAILURE-ANALYSIS-DECISIONS` with `A/A/A/A`.
 The U3V source authorization package SHA-256 is
 `745C50AEB4DB61147C541F897F5E78987F64D9C3B137559F7CA811C0A6A5FD33`.
 Exact `D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH` was recorded and its
-source-only implementation is complete; exact owner source acceptance remains
-pending against package SHA-256
+source-only implementation is complete. Exact
+`D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-ACCEPTANCE` accepted package SHA-256
 `AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`.
 No capability profile becomes resolver-eligible, and no runtime or accelerator
 evidence is added.
 The U3V compatibility amendment changes static state assertions only and does
 not alter any capability profile or runtime eligibility gate.
+
+The U3W non-effective runtime-diagnostic authorization package SHA-256 is
+`DDCB7A9C4E6E93BF5252FAFF840E3841C1B9080FE5657AA0037532EE2037B760`.
+`D-P3.6-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-AUTH` was recorded and its one
+attempt was consumed with `controller_stage_projection_invalid`. No successful
+runtime evidence or profile eligibility was created. The U3X planning package
+SHA-256 is
+`80CA25BC1F1EE77E5A9ED8ADEF76C695D5169544CB75B6A57A03692463FFA460`;
+`D-P3.6-U3X-FAILURE-ANALYSIS-DECISIONS` is accepted as `A/A/A/A` for proposal
+preparation only. The resulting non-effective U3Y package SHA-256 is
+`35086DDC152DDF659097F6841AA364B965E0851833C339DCF2736BEF1AA0940A`.
+`D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-AUTH` remains pending
+and neither acceptance nor package preparation changes any profile ranking,
+selection, or activation state.
+
+U3Y source and generated/static evidence package SHA-256
+`ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78`
+is accepted under
+`D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-ACCEPTANCE`.
+The resulting non-effective U3Z package SHA-256 is
+`B9696A95EF14D186C7D2CC8D949EE711C2621E907DAD28AF4FC192B2A1A1F09A`.
+Authorized decision
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-AUTH`
+has canonical owner statement SHA-256
+`5136263DC036CD37AAEB7EEBA05076C5567761246F59566EB12B4DBA9AE1DA5C`.
+Its current source-only implementation package SHA-256 is
+`47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF`.
+Exact `D-P3.6-U3Z-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` is recorded with
+owner statement SHA-256
+`E7F7B483EBF3DABD46CA213CB6773582CE23542BB3EA8BB8FBB535F212327692`,
+and all 1,503 Phase 3.6 checks pass.
+The source result and 288 generated cases do not make any profile eligible and
+grant no runtime, accelerator, U3K, deployment, commit, push, or remote Git
+authority. Separate exact owner source acceptance remains pending.
+
+Exact
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-ACCEPTANCE`
+now accepts source package SHA-256
+`47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF`.
+The separate R1 request package SHA-256 is
+`3348ECB80895806A2E63610088EF3178CE38B715910C3B1463D97CB2E8F3C6C5`.
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-AUTH`
+was accepted and its one attempt was consumed with terminal `binding_failed`
+before runtime metadata, source binding, or PowerShell invocation. This result
+does not change profile ordering, eligibility, selection, or activation.
+
+U4A failure-analysis package SHA-256
+`0918CD9775DA870C530233BD8728325164159A53777A42FAA8DB5B4A7C8DA5D9`
+is accepted as `A/A/A/A` under
+`D-P3.6-U4A-U3Z-R1-FAILURE-ANALYSIS-DECISIONS`. The resulting non-effective
+U4B package SHA-256 is
+`E52680B8314FA9A4FC862510BC9570DE3942A791952F22425E61ED61723222AE`.
+Pending `D-P3.6-U4B-OUTER-ATTEMPT-CONTROLLER-R0-IMPLEMENTATION-AUTH` does not
+change any profile ordering, eligibility, selection, activation, or capacity
+claim. No profile, implementation, retry, U3K, deployment, or Git authority
+exists.
+
+The optional consolidated package SHA-256
+`DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C`
+introduces only an approval-topology change. Pending
+`D-P3.6-CONSOLIDATED-BUILD-AUTH` and future
+`D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH` do not change profile order,
+eligibility, provider selection, activation, capacity claims, or deployment
+authority. U4B remains the granular fallback.
+
+## Consolidated Build Synchronization
+
+The source-only consolidated build is complete under package SHA-256
+`DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C`;
+the resulting build package SHA-256 is
+`A006B6A1D7AA59F8A67BC8AD24B280D546397F921AF0111E366ACF38DD21A766`.
+This changes no capability profile, profile order, resolver eligibility,
+provider selection, capacity claim, or deployment authority. Runtime closeout
+package SHA-256
+`B7AB81130213AADD907055B75D795D59864AD2C91A2D876B7A267407CA289CD3`
+remains pending owner authorization.
+
+## Failed-Closeout Profile Effect
+
+The consumed R1 closeout attempt changes no capability profile, provider,
+resolver eligibility, placement rule, capacity claim, or activation state.
+Failure reason `process_output_bounds_failed` occurred before handler or U3K
+work. U4C planning package SHA-256
+`26182B3EFB369C56741DFCEC51DCE412DB3EC4EF5170C0741847F1ADAE4481C0`
+under `D-P3.6-U4C` is planning-only; profile activation, runtime retry, deployment, and Phase 3
+completion remain blocked.
+
+## U4D Profile Neutrality
+
+U4C `A/A/A/A/A` acceptance and U4D package SHA-256
+`2DAD142AE31D5A3738ABADD0098512B61C0BC2C3A5C7C915BF99DE8D40FB7F74`
+change no capability profile, model placement, provider eligibility, or
+deployment setting. The
+`D-P3.6-U4D-PROCESS-OUTPUT-REMEDIATION-IMPLEMENTATION-AUTH` source-only build
+is complete at package SHA-256
+`288F275345E2586E05BE14EC964CA77EF7503A0BE70D88C6C5696BB4655C612A`.
+The separate R2 package was accepted and its only attempt failed closed during
+manifest closure binding. Profile activation and runtime remain blocked.
+
+## U4E Profile Neutrality
+
+The consumed R2 failure `utility_closure_declared_target_missing` changes no
+profile, runtime provider, model selection, placement, capacity claim, or
+activation state. U4E package SHA-256
+`C0BF901B7D66BE11A250F9369C5CE564A59A726E88877E4A77CD36F310997B7D`
+contains planning decisions only. Its recommended field-aware manifest
+resolver and generated evidence plan remain non-effective until explicit owner
+selection and later source authorization. No profile or runtime is eligible or
+active.

@@ -1,0 +1,78 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3z_generated_contract_validation_r0_harness_implementation_acceptance.v1",
+  "acceptance_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3Z-GENERATED-CONTRACT-VALIDATION-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE",
+  "decision_id": "D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-ACCEPTANCE",
+  "status": "accepted_source_and_generated_static_evidence_runtime_proposal_preparation_only",
+  "accepted_on": "2026-09-02",
+  "accepted_package": {
+    "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-harness-implementation-package.json",
+    "sha256": "47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF",
+    "core_file_count": 16
+  },
+  "canonical_owner_statement": "D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-ACCEPTANCE: I, mayank-admin, accept the P3.6 U3Z controller R1 generated contract-validation harness source implementation package digest 47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF, including exact harness SHA-256 D9EE5CC7599AACCE3363CE5C29EE479D777F94CF886AE779390B7027C40FA382, materialized 288-vector manifest SHA-256 7BCDFCA583644BD4ED5F4B747C3969B4C9FF4029B48734F8BD4D90BA5D600A21, static-test SHA-256 C633E51B7246975992CE3EAD107ADED94C9132A95F821ED8BAA40B8BEAD169A7, compatibility-test SHA-256 42FF55E604C3CE0490F30619D8A043FF48408CB63F97CB256565F555ED2C99E1, evidence SHA-256 660E3C6F0EAEC98464215EEAC1CB4F946C76FC5FD6D44EC27C05F51F641B3E8F, exact one-to-one provenance, accepted byte-exact U3Y inputs, clean 1,503-check Phase 3.6 generated/static validation, and documented limitations. This accepts source and generated/static evidence only and permits preparation only of a separate non-effective U3Z R1 runtime-binding and generated-validation authorization proposal. It does not authorize PowerShell parsing, import, dot-sourcing, or execution; Python machine access or fallback; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, another attempt, U3K, commit, push, or remote Git.",
+  "canonical_owner_statement_utf8_bytes": 1450,
+  "canonical_owner_statement_sha256": "2E1141B3EB2FE91D1208C4E249919023CA81B6810BA66BA76495639CAAC384C5",
+  "accepted_artifacts": [
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1_generated_validation.ps1",
+      "sha256": "D9EE5CC7599AACCE3363CE5C29EE479D777F94CF886AE779390B7027C40FA382",
+      "role": "accepted_exact_hash_bound_generated_contract_validation_harness"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-vectors.json",
+      "sha256": "7BCDFCA583644BD4ED5F4B747C3969B4C9FF4029B48734F8BD4D90BA5D600A21",
+      "role": "accepted_exactly_288_materialized_generated_only_cases"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_controller_u3z_generated_contract_validation_static.py",
+      "sha256": "C633E51B7246975992CE3EAD107ADED94C9132A95F821ED8BAA40B8BEAD169A7",
+      "role": "accepted_generated_reference_and_source_text_static_test"
+    },
+    {
+      "path": "tests/test_phase36_quarantine_runtime_controller_u3z_generated_contract_validation_proposal.py",
+      "sha256": "42FF55E604C3CE0490F30619D8A043FF48408CB63F97CB256565F555ED2C99E1",
+      "role": "accepted_transition_aware_planning_compatibility_test"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-harness-implementation-evidence.json",
+      "sha256": "660E3C6F0EAEC98464215EEAC1CB4F946C76FC5FD6D44EC27C05F51F641B3E8F",
+      "role": "accepted_nonobservational_source_and_generated_static_evidence"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-harness-evidence-review.md",
+      "sha256": "613CBFAC2892B9CBC07A65E02F17ABEA7A5D3EE9CCA30CC5072884088BB0BC73",
+      "role": "accepted_human_evidence_review_and_limitations"
+    }
+  ],
+  "accepted_validation": {
+    "materialized_generated_cases": 288,
+    "focused_transition_and_implementation_checks_passed": 303,
+    "full_Phase_3_6_test_files": 56,
+    "full_Phase_3_6_checks_passed": 1503,
+    "failed_checks": 0,
+    "strict_JSON_files_passed": 271,
+    "Ruff_passed": true,
+    "Git_diff_check_passed": true,
+    "PowerShell_parse_import_dot_source_or_execution_count": 0,
+    "runtime_or_machine_observation_count": 0
+  },
+  "accepted_effect": {
+    "U3Z_H1_source_and_generated_static_evidence_accepted": true,
+    "prepare_separate_non_effective_U3Z_R1_runtime_binding_and_generated_validation_authorization_proposal": true,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_machine_storage_or_network_observation_authorized": false,
+    "generated_validation_attempt_or_another_attempt_authorized": false,
+    "U3K_profile_activation_or_deployment_authorized": false,
+    "commit_push_or_remote_Git_authorized": false
+  },
+  "limitations": [
+    "acceptance_is_source_and_generated_static_evidence_only",
+    "the_PowerShell_harness_and_controller_have_not_been_parsed_imported_dot_sourced_or_executed_by_U3Z",
+    "the_288_materialized_cases_have_not_been_executed_by_the_PowerShell_controller",
+    "runtime_identity_hash_version_and_trust_are_not_observed_or_bound",
+    "no_generated_validation_runtime_result_exists",
+    "no_attempt_U3K_machine_storage_profile_activation_deployment_commit_push_or_remote_Git_authority_is_created"
+  ],
+  "acceptance_may_be_inferred_from_continue_silence_validation_or_package_preparation": false
+}

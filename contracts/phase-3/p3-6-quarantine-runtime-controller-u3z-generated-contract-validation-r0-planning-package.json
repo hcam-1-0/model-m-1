@@ -1,0 +1,112 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3z_generated_contract_validation_r0_planning_package.v1",
+  "package_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3Z-GENERATED-CONTRACT-VALIDATION-R0-PLANNING-PACKAGE",
+  "decision_id": "D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-AUTH",
+  "status": "sealed_non_effective_owner_U3Z_H1_source_harness_implementation_authorization_pending",
+  "sealed_on": "2026-09-02",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-implementation-acceptance.json",
+    "acceptance_record_sha256": "1D4F58F792CDA447E0DB369924BB2004F6CC7300484D2660755FC545ABC3C1F5",
+    "accepted_source_package_sha256": "ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78",
+    "authority_effect": "prepare_this_separate_non_effective_U3Z_generated_contract_validation_planning_and_H1_source_harness_authorization_package"
+  },
+  "core_file_count": 11,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-implementation-package.json",
+      "sha256": "ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78",
+      "role": "accepted_immutable_U3Y_source_implementation_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-implementation-acceptance.json",
+      "sha256": "1D4F58F792CDA447E0DB369924BB2004F6CC7300484D2660755FC545ABC3C1F5",
+      "role": "exact_owner_U3Y_source_implementation_acceptance_and_U3Z_preparation_authority"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-implementation-evidence.json",
+      "sha256": "157B10A8EC0260DC59C6EBECF9B385C1BE67E7EC12FBA7B38B8307673703C73B",
+      "role": "accepted_nonobservational_U3Y_source_and_generated_static_evidence"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-evidence-review.md",
+      "sha256": "1F17C14382A265C29C97343B9C2DF67AA85457F35172C95F6CDED6E26A9DCA97",
+      "role": "accepted_human_review_of_U3Y_source_and_generated_static_evidence"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-contract.json",
+      "sha256": "637C5400122874149D9835CC6BC521E5EEC9160222F4A7AC5CA1F6CD99E1BCC4",
+      "role": "accepted_exact_null_stage_projection_contract"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1.ps1",
+      "sha256": "787655BAC55DDF563E9D1DC43EC37F010C271AB381E541B0734028E3F2B90B31",
+      "role": "accepted_definition_only_PowerShell_R1_controller_source"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1_reference.py",
+      "sha256": "B5C7328CD666E0A8988F9B616C5B2A914D690A40BF2EA289C1F1C755E42B86F0",
+      "role": "accepted_machine_disabled_Python_reference_and_materialization_oracle"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-vectors.json",
+      "sha256": "D8EDF5C0255B40FB6C28BB014C09DC503D2B53665E69C5AA5AB65C744AEA81E4",
+      "role": "accepted_exact_288_vector_generated_only_source_manifest"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-planning-contract.json",
+      "sha256": "BD986A692E08B423EAA9CC546393E9C2E9D95A876BC23123A5603699E97A1542",
+      "role": "two_gate_U3Z_H1_source_and_R1_runtime_validation_planning_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-source-implementation-authorization-proposal.json",
+      "sha256": "7B2E8A961AAECE9E0BB7ABD8A1EB873851FE4C03A2CBF4E3BFD4A0AF0C29DF8C",
+      "role": "exact_non_effective_owner_U3Z_H1_source_harness_implementation_request"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-proposal.md",
+      "sha256": "27455FB4CD4D951BAFC05F2CF6C7DBE3F91F624686D4BAA27136E4F525ACB784",
+      "role": "human_owner_review_of_U3Z_scope_gates_evidence_and_prohibitions"
+    }
+  ],
+  "future_H1_scope_if_exactly_authorized": {
+    "new_PowerShell_harness_sources": 1,
+    "exact_materialized_generated_vectors": 288,
+    "new_Python_generated_static_test_modules": 1,
+    "nonobservational_evidence_package_and_review": true,
+    "generated_Policy_requests_only": true,
+    "accepted_U3Y_package_and_core_files_modified": false,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_manifest_hardware_or_machine_observation": false,
+    "local_commit_push_or_remote_Git": false
+  },
+  "future_owner_authorization_statement_template": "D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only implementation of the U3Z controller R1 generated contract-validation harness package against digest <U3Z_H1_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact additive PowerShell harness source, exactly 288 materialized generated-only vectors with one-to-one provenance from the accepted manifest, one Python generated/static test module, nonobservational evidence and package, canonical ledgers, documentation, and line-ending records. The accepted U3Y implementation package digest ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78 and all sixteen core files must remain byte-exact. Python may execute generated fixture materialization, reference, source-text, and static tests only. PowerShell must not be parsed, imported, dot-sourced, or executed. This does not authorize Python machine access or fallback; runtime path, metadata, hash, trust, identity, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, another attempt, U3K, commit, push, or remote Git. Seal the U3Z harness source and generated/static evidence for separate exact owner acceptance before preparing any runtime-binding or generated-validation attempt package.",
+  "sequence_after_exact_owner_H1_authorization": [
+    "record_exact_digest_bound_U3Z_H1_source_harness_implementation_authorization",
+    "implement_only_the_six_exact_U3Z_H1_paths_and_authorized_ledgers_docs_and_LF_records",
+    "run_only_generated_Python_fixture_reference_and_source_text_static_validation",
+    "seal_exact_U3Z_H1_source_test_and_nonobservational_evidence",
+    "obtain_separate_exact_owner_U3Z_H1_source_implementation_acceptance",
+    "prepare_no_runtime_binding_or_generated_validation_attempt_package_before_H1_acceptance"
+  ],
+  "current_gate_effect": {
+    "package_prepared": true,
+    "U3Y_source_implementation_accepted": true,
+    "owner_U3Z_H1_source_harness_implementation_authorization_pending": true,
+    "D_P3_6_U3Z_CONTROLLER_R1_GENERATED_CONTRACT_VALIDATION_HARNESS_IMPLEMENTATION_AUTH_requestable": true,
+    "U3Z_H1_source_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "generated_validation_attempt_or_U3K_authorized": false,
+    "deployment_commit_push_or_remote_Git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U3Z_H1_source_harness_implementation_authorization_package_digest_and_is_not_self_embedded",
+  "synchronized_ledgers_indexes_and_static_test_excluded_from_core_hashes_to_avoid_recursive_digest_binding": true,
+  "authorization_may_be_inferred_from_U3Y_acceptance_continue_silence_package_preparation_or_static_validation": false
+}

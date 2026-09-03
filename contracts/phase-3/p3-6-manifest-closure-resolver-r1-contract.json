@@ -1,0 +1,87 @@
+{
+  "contract_format": "hcam.phase3.p3_6.manifest_closure_resolver_r1_contract.v1",
+  "contract_id": "P36-MANIFEST-CLOSURE-RESOLVER-R1",
+  "contract_version": "1.1.0",
+  "status": "implemented_local_generated_validation_pending",
+  "operation": "resolve_manifest_closure_v1",
+  "decision_binding": {
+    "delegation": "contracts/phase-3/p3-6-combined-execution-delegation.json",
+    "selected_options": "D-P3.6-U4E-001:A,D-P3.6-U4E-002:A,D-P3.6-U4E-003:A,D-P3.6-U4E-004:A,D-P3.6-U4E-005:A"
+  },
+  "field_policies": {
+    "RootModule": "required_manifest_relative_path",
+    "NestedModules": "required_manifest_relative_path_or_bounded_bare_binary_name_with_exact_PSHome_fallback",
+    "RequiredAssemblies": "required_manifest_relative_path_or_bounded_bare_binary_name_with_exact_PSHome_fallback",
+    "ScriptsToProcess": "must_be_empty",
+    "TypesToProcess": "required_manifest_relative_path",
+    "FormatsToProcess": "required_manifest_relative_path",
+    "FileList": "informational_manifest_relative_inventory_with_code_like_entries_required"
+  },
+  "bounds": {
+    "maximum_entries": 64,
+    "maximum_individual_file_bytes": 67108864,
+    "maximum_total_selected_file_bytes": 134217728,
+    "maximum_reference_characters": 260,
+    "maximum_candidate_count_per_entry": 2
+  },
+  "resolution_order": {
+    "path_valued_entry": [
+      "manifest_directory"
+    ],
+    "bare_NestedModules_or_RequiredAssemblies_binary_name": [
+      "manifest_directory",
+      "ps_home"
+    ],
+    "multiple_present_candidates": "fail_closed_as_ambiguous",
+    "missing_load_bearing_target": "fail_closed",
+    "missing_non_code_FileList_entry": "count_and_continue_without_path_retention"
+  },
+  "forbidden_references": [
+    "absolute",
+    "UNC_or_device",
+    "URI",
+    "wildcard",
+    "environment_or_variable_expansion",
+    "expression",
+    "parent_traversal",
+    "out_of_PSHome",
+    "out_of_module_root"
+  ],
+  "observation_requirements": {
+    "selected_target_regular": true,
+    "selected_target_nonreparse": true,
+    "selected_target_trusted": true,
+    "selected_target_size_bounded": true,
+    "duplicate_canonical_target_allowed": false
+  },
+  "sanitized_terminal_reason_codes": [
+    "manifest_closure_accepted",
+    "resolver_input_invalid",
+    "manifest_path_context_invalid",
+    "manifest_entry_count_exceeded",
+    "manifest_field_unsupported",
+    "scripts_to_process_forbidden",
+    "manifest_reference_forbidden",
+    "manifest_reference_escape",
+    "manifest_observation_invalid",
+    "manifest_candidate_ambiguous",
+    "load_bearing_target_missing",
+    "load_bearing_target_invalid",
+    "load_bearing_target_untrusted",
+    "filelist_code_target_missing",
+    "duplicate_canonical_target",
+    "aggregate_file_bytes_exceeded"
+  ],
+  "result_retention": {
+    "raw_path_or_reference_retained": false,
+    "manifest_text_or_parser_token_retained": false,
+    "exception_or_security_material_retained": false,
+    "allowed": [
+      "terminal_status",
+      "reason_code",
+      "failing_field_class",
+      "candidate_base_class",
+      "bounded_counts"
+    ]
+  }
+}

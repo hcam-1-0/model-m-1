@@ -1,0 +1,81 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3x_stage_projection_remediation_planning_package.v1",
+  "package_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3X-STAGE-PROJECTION-REMEDIATION-PLANNING-PACKAGE",
+  "acceptance_decision_id": "D-P3.6-U3X-FAILURE-ANALYSIS-DECISIONS",
+  "status": "sealed_non_effective_owner_decisions_pending",
+  "sealed_on": "2026-09-02",
+  "preparation_authority": "user_continue_after_sealed_consumed_U3W_attempt_for_planning_only",
+  "core_file_count": 6,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-authorization.json",
+      "sha256": "6471C2CBB298D2090B789037FDCBFB20B843A565D470E0D8C2D0609DE71A0E7D"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-result.json",
+      "sha256": "1B2DA0107938D21AF003DE40CC9B1405D81A5B9C00843B2D7FBB1867F17926EE"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-evidence.json",
+      "sha256": "84DC68C3800983AFA65EBB19C99A36D02C3D97CD28F6D937C43CF5292AF12A45"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-failure-analysis-r0.json",
+      "sha256": "B88F943B9F1D1B31B7C8F91449B338F9B225FA3DAB4C58BC19586C43A90244B6"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3x-stage-projection-remediation-decision-packet.json",
+      "sha256": "B225C8F4909ADE591AC968D29F98E1C604337AB9CB4ACAA6C7F28FCCE139DBF6"
+    },
+    {
+      "path": "docs/phase-3/p3-6-quarantine-runtime-controller-u3x-stage-projection-remediation-decision-packet.md",
+      "sha256": "DD04958CE3C0986ED1D9743BB31350980892E81501041825936AA80BE4E1B2FC"
+    }
+  ],
+  "owner_decisions": [
+    {
+      "decision_id": "D-P3.6-U3X-001",
+      "title": "First Remediation Surface",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U3X-002",
+      "title": "Canonical Stage Projection Semantics",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U3X-003",
+      "title": "Validation Ladder",
+      "recommended_option": "A",
+      "selected_option": null
+    },
+    {
+      "decision_id": "D-P3.6-U3X-004",
+      "title": "Runtime Reentry Sequence",
+      "recommended_option": "A",
+      "selected_option": null
+    }
+  ],
+  "recommended_selection": "A/A/A/A",
+  "future_owner_acceptance_statement_template": "D-P3.6-U3X-FAILURE-ANALYSIS-DECISIONS: I, mayank-admin, accept the sanitized U3W failure-analysis planning package digest <U3X_PLANNING_PACKAGE_DIGEST_SHA256> and select D-P3.6-U3X-001:A, D-P3.6-U3X-002:A, D-P3.6-U3X-003:A, and D-P3.6-U3X-004:A. This accepts the failed U3W evidence for planning purposes and authorizes preparation only of a separate source-only additive controller R1 remediation implementation authorization proposal. It does not authorize controller, diagnostic, contract, vector, test, model, or product implementation; PowerShell parsing, import, dot-sourcing, or execution; Python machine access or fallback; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, another attempt, U3K, or remote Git.",
+  "current_gate_effect": {
+    "owner_decisions_pending": true,
+    "D_P3_6_U3X_FAILURE_ANALYSIS_DECISIONS_requestable": true,
+    "attempts_authorized": 0,
+    "controller_harness_contract_vector_or_test_modification_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "deployment_or_remote_git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "owner_selection_may_be_inferred_from_continue_package_preparation_static_analysis_or_recommendation": false,
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U3X_planning_package_digest_and_is_not_self_embedded"
+}

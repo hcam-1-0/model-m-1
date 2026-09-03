@@ -1,0 +1,94 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_u4d_process_output_remediation_source_implementation_authorization_proposal.v1",
+  "proposal_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-U4D-PROCESS-OUTPUT-REMEDIATION-SOURCE-IMPLEMENTATION-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U4D-PROCESS-OUTPUT-REMEDIATION-IMPLEMENTATION-AUTH",
+  "status": "non_effective_owner_source_implementation_authorization_pending",
+  "prepared_on": "2026-09-03",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U4C-CLOSEOUT-R1-FAILURE-ANALYSIS-DECISIONS",
+    "acceptance_record": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4c-remediation-planning-acceptance.json",
+    "acceptance_record_sha256": "722B4180D7FD81CAC3CB829C1F9A901705DC7EF87E86E1527F5E18D00926330C",
+    "accepted_U4C_planning_package_sha256": "26182B3EFB369C56741DFCEC51DCE412DB3EC4EF5170C0741847F1ADAE4481C0",
+    "selected_options": "A/A/A/A/A",
+    "effect": "prepare_only_this_separate_non_effective_U4D_source_implementation_authorization_proposal_and_package"
+  },
+  "proposed_scope_if_exactly_authorized": {
+    "implement_only_the_seventeen_exact_additive_paths": true,
+    "edit_only_the_one_exact_hash_bound_historical_compatibility_test": true,
+    "synchronize_only_the_thirteen_bounded_ledgers_indexes_and_LF_registry": true,
+    "maximum_in_scope_source_revision_and_reseal_cycles": 6,
+    "preserve_all_sixteen_immutable_accepted_inputs_byte_exact": true,
+    "implement_one_additive_hash_bound_PowerShell_child_validation_harness": true,
+    "implement_one_typed_process_output_contract_and_machine_disabled_Python_reference": true,
+    "materialize_at_least_320_generated_static_vectors": true,
+    "enforce_one_UTF8_JSON_line_maximum_4096_bytes_zero_stderr_no_BOM_or_CLIXML": true,
+    "seal_source_and_generated_static_evidence": true,
+    "prepare_one_non_effective_exact_digest_bound_runtime_closeout_R2_package_after_all_source_gates_pass": true
+  },
+  "required_failure_taxonomy": [
+    "process_start_failed",
+    "process_timeout",
+    "process_exit_nonzero",
+    "process_stdout_limit_exceeded",
+    "process_stderr_nonzero",
+    "process_output_empty",
+    "process_output_multiple_lines",
+    "process_output_BOM_detected",
+    "process_output_CLIXML_detected",
+    "process_output_JSON_invalid",
+    "process_output_schema_invalid",
+    "process_output_identity_invalid",
+    "process_result_accepted",
+    "terminal_default_deny_internal_failure"
+  ],
+  "implementation_invariants": {
+    "outer_generated_policy_case_count": 416,
+    "handler_generated_case_count": 84,
+    "total_generated_closeout_case_count": 500,
+    "PowerShell_result_emission_API": "System.Console.Out.WriteLine",
+    "terminal_result_line_count": 1,
+    "maximum_stdout_bytes": 4096,
+    "maximum_stderr_bytes": 0,
+    "raw_process_stream_content_or_hash_retained": false,
+    "raw_exception_fixture_path_environment_identity_or_security_material_retained": false,
+    "unknown_output_shape_reason_or_field_default_denied": true,
+    "runtime_closeout_R2_attempt_count_authorized_by_source_build": 0,
+    "U3K_attempt_count_authorized_by_source_build": 0
+  },
+  "permitted_validation_if_exactly_authorized": {
+    "generated_fixture_and_machine_disabled_Python_reference_execution": true,
+    "contract_source_text_hash_projection_cross_language_JSON_Ruff_and_diff_checks": true,
+    "minimum_generated_vector_count": 320,
+    "minimum_machine_disabled_Python_reference_branch_coverage_percent": 95,
+    "PowerShell_parser_import_dot_source_or_execution": false,
+    "Python_filesystem_runtime_registry_environment_network_native_API_subprocess_machine_controller_or_fallback_access": false,
+    "external_fixture_artifact_model_camera_media_private_or_Government_data": false
+  },
+  "exact_compatibility_transition": {
+    "path": "tests/test_phase36_consolidated_runtime_closeout_authorization_proposal.py",
+    "pre_edit_sha256": "E8001AFD5B558EEBA51A0714C02DCD2C9F22B65F93A74AF4D3323130983B82EF",
+    "permitted_change": "replace_only_the_obsolete_all_seven_future_outputs_absent_assertion_with_the_documented_consumed_R1_state_assertions",
+    "unrelated_assertions_may_change": false
+  },
+  "hard_boundaries": {
+    "accepted_controller_vector_handler_runner_adapter_U3K_or_consumed_attempt_artifacts_modified": false,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_manifest_hardware_machine_storage_F_B_ACL_probe_cleanup_scanner_or_network_observation": false,
+    "trust_retrieval_install_update_download_artifact_model_inference_camera_media_private_or_Government_data_access": false,
+    "container_Kubernetes_profile_activation_deployment_another_attempt_U3K_Phase_3_closeout_commit_push_or_remote_Git": false
+  },
+  "future_owner_authorization_statement_template": "D-P3.6-U4D-PROCESS-OUTPUT-REMEDIATION-IMPLEMENTATION-AUTH: I, mayank-admin, authorize the source-only U4D process-output remediation build against package digest <U4D_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact seventeen additive paths, one hash-bound historical compatibility-test transition, thirteen bounded synchronization paths, and at most six in-scope source revision, generated/static validation, and reseal cycles in that package. Preserve all sixteen immutable accepted inputs byte-exact. Implement the additive hash-bound PowerShell child harness, typed process-output contract, machine-disabled Python reference, at least 320 generated vectors, one UTF-8 JSON line of at most 4096 bytes with zero stderr and no BOM or CLIXML, the selected split sanitized failure taxonomy, source evidence, and one non-effective exact digest-bound D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-AUTH package. Python may execute generated fixtures and machine-disabled reference, static, cross-language, hash, JSON, Ruff, and diff checks only, without filesystem runtime, registry, environment, network, native API, subprocess, machine-controller, or fallback access. PowerShell must not be parsed, imported, dot-sourced, or executed. This does not authorize runtime, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, trust retrieval, installation, update, download, artifact, model, inference, camera, media, private or Government data, container, Kubernetes, profile activation, deployment, another attempt, U3K, Phase 3 closeout, commit, push, or remote Git. Any path, scope, immutable-hash, or six-cycle exhaustion failure stops closed and requires new exact authorization.",
+  "current_effect": {
+    "owner_U4D_source_implementation_authorization_pending": true,
+    "D_P3_6_U4D_PROCESS_OUTPUT_REMEDIATION_IMPLEMENTATION_AUTH_requestable": true,
+    "source_harness_contract_vector_test_or_evidence_implementation_authorized": false,
+    "historical_compatibility_test_edit_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "another_attempt_or_U3K_authorized": false,
+    "Phase_3_closeout_commit_push_or_remote_Git_authorized": false
+  },
+  "authorization_may_be_inferred_from_U4C_acceptance_continue_package_preparation_static_validation_or_recommendation": false
+}

@@ -63,6 +63,17 @@ Status: metadata planning package owner accepted under
 `D-P3.6-MODEL-PROPOSAL-R0-ACCEPTANCE`; acquisition, execution, and promotion
 remain blocked.
 
+Exact
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-ACCEPTANCE`
+is now recorded for package SHA-256
+`47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF`.
+The next requestable action is
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-AUTH`
+against package SHA-256
+`3348ECB80895806A2E63610088EF3178CE38B715910C3B1463D97CB2E8F3C6C5`.
+It would permit at most one 24-hour, hash-bound, generated-only attempt. At
+present zero attempts are authorized and U3K remains blocked.
+
 ## Current U3T R1 authorization gate
 
 Exact `D-P3.6-U3T-PREFLIGHT-R0-HARNESS-IMPLEMENTATION-ACCEPTANCE` is recorded.
@@ -431,11 +442,125 @@ U3V source authorization package SHA-256
 `745C50AEB4DB61147C541F897F5E78987F64D9C3B137559F7CA811C0A6A5FD33`
 was authorized under `D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH` on
 2026-09-02. The eight source implementation paths and generated/static evidence
-are complete. The current next action is exact owner source implementation
-acceptance against package SHA-256
+are complete. Exact `D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-ACCEPTANCE`
+accepted package SHA-256
 `AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`.
-PowerShell execution, runtime diagnostic work, another attempt, U3K,
-deployment, and remote Git remain blocked.
 The exact U3V proposal-test compatibility transition is complete under
 `D-P3.6-U3V-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT`; it does not change those
 closed gates.
+
+Exact `D-P3.6-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-AUTH` was recorded and
+its one attempt against package SHA-256
+`DDCB7A9C4E6E93BF5252FAFF840E3841C1B9080FE5657AA0037532EE2037B760`
+is consumed. The failed-closed reason is
+`controller_stage_projection_invalid`; no retry occurred and U3K remains
+blocked. `D-P3.6-U3X-FAILURE-ANALYSIS-DECISIONS` is explicitly accepted as
+`A/A/A/A` against non-effective package SHA-256
+`80CA25BC1F1EE77E5A9ED8ADEF76C695D5169544CB75B6A57A03692463FFA460`.
+The acceptance record SHA-256 is
+`56FE994A8F3EDCB17B673E63CB3773B17EB63FA8B3E23F04A3A58A9E7105D91E`.
+The current next action is exact digest-bound
+`D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-AUTH` against the
+non-effective package SHA-256
+`35086DDC152DDF659097F6841AA364B965E0851833C339DCF2736BEF1AA0940A`.
+Until U3Y is explicitly authorized, controller remediation, PowerShell
+execution, another attempt, U3K, deployment, and remote Git remain blocked.
+
+U3Y source and generated/static evidence package SHA-256
+`ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78`
+is now accepted under
+`D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-ACCEPTANCE`.
+The exact digest-bound
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-AUTH`
+against non-effective U3Z package SHA-256
+`B9696A95EF14D186C7D2CC8D949EE711C2621E907DAD28AF4FC192B2A1A1F09A`
+is now recorded. The canonical owner statement SHA-256 is
+`5136263DC036CD37AAEB7EEBA05076C5567761246F59566EB12B4DBA9AE1DA5C`.
+The source-only harness and 288 generated cases are implemented in current
+package SHA-256
+`47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF`.
+Exact `D-P3.6-U3Z-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` is recorded with
+owner statement SHA-256
+`E7F7B483EBF3DABD46CA213CB6773582CE23542BB3EA8BB8FBB535F212327692`.
+The transition is complete and all 1,503 Phase 3.6 checks passed at that source
+checkpoint. Exact source acceptance and the later U3Z R1 authorization were
+received. Its one attempt is now consumed with terminal `binding_failed` before
+runtime metadata, source binding, PowerShell invocation, or generated cases.
+
+`D-P3.6-U4A-U3Z-R1-FAILURE-ANALYSIS-DECISIONS` is accepted as `A/A/A/A`
+against package SHA-256
+`0918CD9775DA870C530233BD8728325164159A53777A42FAA8DB5B4A7C8DA5D9`.
+
+The current next action is exact
+`D-P3.6-U4B-OUTER-ATTEMPT-CONTROLLER-R0-IMPLEMENTATION-AUTH` against the
+non-effective package SHA-256
+`E52680B8314FA9A4FC862510BC9570DE3942A791952F22425E61ED61723222AE`.
+Until explicit authorization, outer-controller implementation, PowerShell
+execution, another attempt, machine actions, U3K, deployment, commit, push, and
+remote Git remain blocked.
+
+## U4D Unblock Gate
+
+U4C failure-analysis choices are accepted as `A/A/A/A/A`. The next exact
+requestable decision is
+`D-P3.6-U4D-PROCESS-OUTPUT-REMEDIATION-IMPLEMENTATION-AUTH` against package
+SHA-256 `2DAD142AE31D5A3738ABADD0098512B61C0BC2C3A5C7C915BF99DE8D40FB7F74`.
+Only that decision can open the bounded source build. A successful build may
+prepare, but cannot authorize, an exact R2 runtime package. Runtime, machine,
+storage, U3K, closeout, commit, push, and remote Git remain blocked.
+
+## U4C Failed-Closeout Decision Gate
+
+Attempt 1 stopped before handler validation and U3K with reason
+`process_output_bounds_failed`; no existing authorization permits another
+attempt. The next unblock action is owner review of package SHA-256
+`26182B3EFB369C56741DFCEC51DCE412DB3EC4EF5170C0741847F1ADAE4481C0`
+and explicit selection of `D-P3.6-U4C-001` through `D-P3.6-U4C-005`.
+Recommended selection is `A/A/A/A/A`. A selection permits only preparation of
+a separate U4D source implementation authorization proposal; all source,
+PowerShell, runtime, machine, storage, U3K, closeout, commit, push, and remote
+Git gates remain blocked.
+
+The recommended current action is now the optional consolidated package
+SHA-256 `DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C`.
+Exact `D-P3.6-CONSOLIDATED-BUILD-AUTH` selects the two-authorization policy and
+would replace the remaining source/intermediate approval messages. A successful
+build would produce the separate exact-digest
+`D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH` request. Until the first statement
+is received, U4B remains the granular fallback and every implementation,
+PowerShell, runtime, machine, U3K, closeout, commit, push, and remote Git gate
+remains blocked.
+
+## Consolidated Source Build Completed
+
+The source-only build authorized by
+`D-P3.6-CONSOLIDATED-BUILD-AUTH` completed and was resealed as build package
+SHA-256 `A006B6A1D7AA59F8A67BC8AD24B280D546397F921AF0111E366ACF38DD21A766`.
+The consumed R1 authorization remains closed and cannot be reused. U4D
+source/generated-static remediation is sealed under package SHA-256
+`288F275345E2586E05BE14EC964CA77EF7503A0BE70D88C6C5696BB4655C612A`.
+
+The exact R2 package was accepted and its single attempt consumed. It passed
+runtime binding and literal manifest parsing, then failed closed at declared
+target closure resolution with `utility_closure_declared_target_missing`. The
+prior authorization is no longer effective.
+
+## U4E Manifest-Closure Decision Gate
+
+The next unblock action is owner review of
+`D-P3.6-U4E-CLOSEOUT-R2-FAILURE-ANALYSIS-DECISIONS`, package SHA-256
+`C0BF901B7D66BE11A250F9369C5CE564A59A726E88877E4A77CD36F310997B7D`.
+Recommended selection is `A/A/A/A/A`. Acceptance permits preparation only of
+a separate U4F source-build authorization proposal. Until explicit selection,
+all source implementation, PowerShell execution, Python machine access,
+runtime or manifest observation, machine/storage, U3K, closeout, commit, push,
+and remote Git actions remain blocked.
+
+## R5 Closeout
+
+No Phase 3.6 unblock action remains inside the accepted scope. The R5 package
+passed all 500 generated runtime cases, 2,597 Phase 3.6 tests, and the single
+bounded U3K A01-A10 transaction. Future operational work remains blocked until
+separately scoped: model/artifact acquisition and inference, camera/media/data
+access, scanner/network action, profile activation, containers/Kubernetes,
+deployment, and remote Git.

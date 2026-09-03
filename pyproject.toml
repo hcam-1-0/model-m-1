@@ -17,6 +17,7 @@ dependencies = [
   "prometheus-client>=0.26.0,<1.0",
   "PyJWT[crypto]>=2.10.0,<3.0",
   "sqlalchemy>=2.0.51,<3.0",
+  "tzdata>=2026.3,<2027; sys_platform == 'win32'",
   "uvicorn>=0.35.0,<1.0",
 ]
 

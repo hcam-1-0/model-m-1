@@ -1,0 +1,80 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3z_generated_contract_validation_r0_source_implementation_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3Z-GENERATED-CONTRACT-VALIDATION-R0-SOURCE-IMPLEMENTATION-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-AUTH",
+  "status": "non_effective_owner_source_harness_implementation_authorization_pending",
+  "prepared_on": "2026-09-02",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-ACCEPTANCE",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-implementation-acceptance.json",
+    "acceptance_record_sha256": "1D4F58F792CDA447E0DB369924BB2004F6CC7300484D2660755FC545ABC3C1F5",
+    "accepted_source_package_sha256": "ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78",
+    "effect": "prepare_this_non_effective_U3Z_generated_contract_validation_source_harness_implementation_authorization_proposal"
+  },
+  "implementation_request": {
+    "additive_PowerShell_generated_validation_harness_source": true,
+    "exactly_288_materialized_generated_only_vectors": true,
+    "one_Python_generated_static_test_module": true,
+    "nonobservational_evidence_package_and_review": true,
+    "canonical_ledgers_documentation_and_line_ending_sync": true,
+    "local_commit_push_or_remote_Git": false,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "runtime_or_machine_observation": false
+  },
+  "exact_future_implementation_paths": [
+    "tools/phase36_quarantine_runtime_controller_r1_generated_validation.ps1",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-vectors.json",
+    "tests/test_phase36_quarantine_runtime_controller_u3z_generated_contract_validation_static.py",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-harness-implementation-evidence.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-harness-implementation-package.json",
+    "docs/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-harness-evidence-review.md"
+  ],
+  "permitted_future_H1_validation_if_exactly_authorized": {
+    "Python_generated_fixture_materialization_and_static_source_tests": true,
+    "strict_JSON_hash_Ruff_line_ending_scope_and_diff_checks": true,
+    "PowerShell_parser_import_dot_source_or_execution": false,
+    "runtime_manifest_hardware_machine_storage_or_network_access": false
+  },
+  "required_H1_invariants": {
+    "accepted_U3Y_package_and_all_sixteen_core_files_remain_byte_exact": true,
+    "harness_is_additive_and_exact_hash_bound": true,
+    "materialized_vector_count_is_exactly_288": true,
+    "materialized_vectors_have_one_to_one_accepted_vector_provenance": true,
+    "generated_Policy_request_only": true,
+    "external_request_result_or_expected_projection_input": false,
+    "controller_Preflight_machine_authority": false,
+    "dynamic_command_eval_plugin_module_or_fallback_surface": false,
+    "literal_null_success_and_all_eighteen_failure_mappings_covered": true,
+    "all_runtime_machine_retry_deployment_and_Git_gates_remain_closed": true
+  },
+  "explicitly_not_authorized": [
+    "PowerShell_parsing_import_dot_sourcing_or_execution",
+    "Python_machine_access_or_fallback",
+    "runtime_path_metadata_hash_trust_identity_manifest_or_hardware_observation",
+    "machine_storage_F_B_ACL_probe_cleanup_or_scanner_action",
+    "network_download_install_update_artifact_model_or_data_access",
+    "camera_media_private_or_Government_data",
+    "container_Kubernetes_profile_activation_deployment_another_attempt_or_U3K",
+    "commit_push_or_remote_Git"
+  ],
+  "future_owner_authorization_statement_template": "D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only implementation of the U3Z controller R1 generated contract-validation harness package against digest <U3Z_H1_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact additive PowerShell harness source, exactly 288 materialized generated-only vectors with one-to-one provenance from the accepted manifest, one Python generated/static test module, nonobservational evidence and package, canonical ledgers, documentation, and line-ending records. The accepted U3Y implementation package digest ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78 and all sixteen core files must remain byte-exact. Python may execute generated fixture materialization, reference, source-text, and static tests only. PowerShell must not be parsed, imported, dot-sourced, or executed. This does not authorize Python machine access or fallback; runtime path, metadata, hash, trust, identity, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, another attempt, U3K, commit, push, or remote Git. Seal the U3Z harness source and generated/static evidence for separate exact owner acceptance before preparing any runtime-binding or generated-validation attempt package.",
+  "sequence_after_exact_authorization": [
+    "record_exact_digest_bound_U3Z_H1_source_implementation_authorization",
+    "implement_only_the_six_exact_future_paths_and_authorized_ledgers_docs_and_LF_records",
+    "run_only_generated_Python_fixture_reference_and_source_text_static_validation",
+    "seal_exact_U3Z_H1_source_test_and_nonobservational_evidence",
+    "obtain_separate_exact_owner_U3Z_H1_source_implementation_acceptance",
+    "prepare_no_runtime_binding_or_generated_validation_attempt_package_before_H1_acceptance"
+  ],
+  "current_effect": {
+    "proposal_prepared": true,
+    "owner_U3Z_H1_source_implementation_authorization_pending": true,
+    "U3Z_H1_source_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_manifest_hardware_or_machine_observation_authorized": false,
+    "generated_validation_attempt_or_U3K_authorized": false,
+    "deployment_commit_push_or_remote_Git_authorized": false
+  },
+  "authorization_may_be_inferred_from_U3Y_acceptance_continue_silence_or_proposal_preparation": false
+}

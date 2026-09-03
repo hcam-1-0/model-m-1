@@ -1,0 +1,125 @@
+{
+  "contract_format": "hcam.phase3.p3_6.consolidated_runtime_closeout_u4d_process_output_remediation_source_implementation_authorization_package.v1",
+  "package_id": "P36-CONSOLIDATED-RUNTIME-CLOSEOUT-U4D-PROCESS-OUTPUT-REMEDIATION-SOURCE-IMPLEMENTATION-AUTHORIZATION-PACKAGE",
+  "decision_id": "D-P3.6-U4D-PROCESS-OUTPUT-REMEDIATION-IMPLEMENTATION-AUTH",
+  "status": "sealed_non_effective_owner_source_implementation_authorization_pending_no_implementation_performed",
+  "sealed_on": "2026-09-03",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U4C-CLOSEOUT-R1-FAILURE-ANALYSIS-DECISIONS",
+    "acceptance_record_sha256": "722B4180D7FD81CAC3CB829C1F9A901705DC7EF87E86E1527F5E18D00926330C",
+    "accepted_U4C_planning_package_sha256": "26182B3EFB369C56741DFCEC51DCE412DB3EC4EF5170C0741847F1ADAE4481C0",
+    "selected_options": "A/A/A/A/A",
+    "effect": "prepare_this_non_effective_U4D_source_implementation_authorization_package_only"
+  },
+  "core_file_count": 12,
+  "core_files": [
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4c-remediation-planning-package.json",
+      "sha256": "26182B3EFB369C56741DFCEC51DCE412DB3EC4EF5170C0741847F1ADAE4481C0",
+      "role": "accepted_U4C_failure_analysis_and_decision_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4c-remediation-planning-acceptance.json",
+      "sha256": "722B4180D7FD81CAC3CB829C1F9A901705DC7EF87E86E1527F5E18D00926330C",
+      "role": "exact_owner_A_A_A_A_A_acceptance_and_U4D_proposal_preparation_authority"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-r1-failure-analysis.json",
+      "sha256": "C6A9A35548DD212D47698A5C4C8845E42AF7A75B572ECDBA84E199F63A3331D2",
+      "role": "accepted_sanitized_failure_analysis_and_inference_boundaries"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-authorization.json",
+      "sha256": "53EC06DD2968A5BC733D701A421B15FE8934A7BF9946654133D7DFEBDCE67542",
+      "role": "immutable_consumed_runtime_closeout_R1_authorization"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-result.json",
+      "sha256": "4AB72B831F96E996F5F90199443AE9D747A7F55804112E7291313048506E6B41",
+      "role": "immutable_terminal_failed_closed_runtime_closeout_R1_result"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-evidence.json",
+      "sha256": "DCFF4345885F5E40B6B8E7427CF4BB0528493EF2401B275D2039F9998AFFF479",
+      "role": "immutable_sanitized_runtime_closeout_R1_evidence"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-build-package.json",
+      "sha256": "A006B6A1D7AA59F8A67BC8AD24B280D546397F921AF0111E366ACF38DD21A766",
+      "role": "accepted_consolidated_source_build_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-action-spec.json",
+      "sha256": "6284ADFD21A87EFEF34A42214447242E62F5B458886AD00C9E7C4551FC6BB55B",
+      "role": "immutable_consumed_runtime_closeout_R1_action_spec"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-authorization-package.json",
+      "sha256": "B7AB81130213AADD907055B75D795D59864AD2C91A2D876B7A267407CA289CD3",
+      "role": "immutable_consumed_runtime_closeout_R1_authorization_package"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4d-process-output-remediation-source-implementation-contract.json",
+      "sha256": "D6FCBCE5D4E80529C204B0E7CC951B7A065914E14F8454849BA3E9CCEA229DFB",
+      "role": "exact_future_paths_output_protocol_taxonomy_validation_and_reentry_contract"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-consolidated-runtime-closeout-u4d-process-output-remediation-source-implementation-authorization-proposal.json",
+      "sha256": "59FBB5645BB7407B329F44303C16800580BE41CCA4E02D3010851086D3FD8E46",
+      "role": "machine_readable_future_digest_bound_source_build_authorization_request"
+    },
+    {
+      "path": "docs/phase-3/p3-6-consolidated-runtime-closeout-u4d-process-output-remediation-authorization-proposal.md",
+      "sha256": "8CE668C418CD834837A6CE7D454FF70AF5CB04B1343903497F2E97FF5C96D5E1",
+      "role": "human_reviewable_scope_protocol_compatibility_validation_and_closed_gates"
+    }
+  ],
+  "exact_future_additive_path_count": 17,
+  "exact_compatibility_transition_path_count": 1,
+  "bounded_existing_synchronization_path_count": 13,
+  "maximum_in_scope_source_revision_and_reseal_cycles": 6,
+  "required_generated_vector_minimum": 320,
+  "required_machine_disabled_Python_reference_branch_coverage_percent": 95,
+  "outer_generated_policy_case_count": 416,
+  "total_generated_closeout_case_count": 500,
+  "child_terminal_stdout_maximum_bytes": 4096,
+  "child_terminal_stderr_maximum_bytes": 0,
+  "future_source_build_effect_if_exactly_authorized": {
+    "implement_only_seventeen_additive_paths_one_compatibility_transition_and_thirteen_synchronization_paths": true,
+    "run_only_generated_fixture_and_machine_disabled_Python_static_validation": true,
+    "preserve_sixteen_immutable_accepted_inputs_byte_exact": true,
+    "seal_source_and_generated_static_evidence": true,
+    "prepare_one_non_effective_exact_digest_bound_runtime_closeout_R2_package": true,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_hardware_machine_storage_scanner_or_network_observation": false,
+    "another_attempt_U3K_Phase_3_closeout_commit_push_or_remote_Git": false
+  },
+  "future_runtime_gate": {
+    "decision_id": "D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-AUTH",
+    "maximum_attempts": 1,
+    "must_bind_final_U4D_source_evidence_action_spec_runtime_identity_output_paths_and_zero_retention_policy": true,
+    "owner_authorization_required_after_final_package_digest_is_known": true,
+    "not_authorized_by_this_package": true
+  },
+  "future_owner_authorization_statement_template": "D-P3.6-U4D-PROCESS-OUTPUT-REMEDIATION-IMPLEMENTATION-AUTH: I, mayank-admin, authorize the source-only U4D process-output remediation build against package digest <U4D_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact seventeen additive paths, one hash-bound historical compatibility-test transition, thirteen bounded synchronization paths, and at most six in-scope source revision, generated/static validation, and reseal cycles in that package. Preserve all sixteen immutable accepted inputs byte-exact. Implement the additive hash-bound PowerShell child harness, typed process-output contract, machine-disabled Python reference, at least 320 generated vectors, one UTF-8 JSON line of at most 4096 bytes with zero stderr and no BOM or CLIXML, the selected split sanitized failure taxonomy, source evidence, and one non-effective exact digest-bound D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-AUTH package. Python may execute generated fixtures and machine-disabled reference, static, cross-language, hash, JSON, Ruff, and diff checks only, without filesystem runtime, registry, environment, network, native API, subprocess, machine-controller, or fallback access. PowerShell must not be parsed, imported, dot-sourced, or executed. This does not authorize runtime, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, trust retrieval, installation, update, download, artifact, model, inference, camera, media, private or Government data, container, Kubernetes, profile activation, deployment, another attempt, U3K, Phase 3 closeout, commit, push, or remote Git. Any path, scope, immutable-hash, or six-cycle exhaustion failure stops closed and requires new exact authorization.",
+  "current_gate_effect": {
+    "U4C_owner_decisions_accepted": true,
+    "U4D_authorization_package_prepared": true,
+    "owner_U4D_source_implementation_authorization_pending": true,
+    "D_P3_6_U4D_PROCESS_OUTPUT_REMEDIATION_IMPLEMENTATION_AUTH_requestable": true,
+    "source_harness_contract_vector_test_or_evidence_implementation_authorized": false,
+    "historical_compatibility_test_edit_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "another_attempt_or_U3K_authorized": false,
+    "Phase_3_closeout_commit_push_or_remote_Git_authorized": false,
+    "P36_G1": "blocked",
+    "P36_G2": "blocked",
+    "P36_G4": "blocked",
+    "P36_G5": "blocked"
+  },
+  "authorization_may_be_inferred_from_U4C_acceptance_continue_package_preparation_or_static_validation": false,
+  "manifest_hash_rule": "the_uppercase_SHA_256_of_this_exact_file_is_the_U4D_authorization_package_digest_and_is_not_self_embedded"
+}

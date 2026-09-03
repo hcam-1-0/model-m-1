@@ -1,0 +1,289 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_r1_stage_projection_contract.v1",
+  "contract_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-R1-STAGE-PROJECTION-1.0.0",
+  "contract_version": "1.0.0",
+  "status": "implemented_source_only_non_executable_owner_acceptance_pending",
+  "implemented_on": "2026-09-02",
+  "implementation_authorization": {
+    "decision_id": "D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-AUTH",
+    "authorization_package": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3y-stage-projection-source-implementation-authorization-package.json",
+    "authorization_package_sha256": "35086DDC152DDF659097F6841AA364B965E0851833C339DCF2736BEF1AA0940A",
+    "canonical_owner_statement_utf8_bytes": 1514,
+    "canonical_owner_statement_sha256": "5E242109BAB696D21AEE880AC019F7CB68535E9238F156946ADB2B3F5C8C3C83"
+  },
+  "successor_relationship": {
+    "predecessor": "tools/phase36_quarantine_runtime_controller.ps1",
+    "predecessor_sha256": "78EE382E1538E8E1E482598A812B3CF32C2C75C4B4D324F34C368849217290EB",
+    "additive_successor": "tools/phase36_quarantine_runtime_controller_r1.ps1",
+    "predecessor_modified": false,
+    "diagnostic_modified": false,
+    "diagnostic_contract_modified": false,
+    "U3W_evidence_modified": false
+  },
+  "controller_roles": {
+    "PowerShell": "authoritative_Windows_machine_controller_source_not_executed",
+    "Python": "machine_disabled_portable_policy_reference_and_cross_language_oracle",
+    "default_machine_controller": "PowerShell_only",
+    "automatic_failover": false,
+    "simultaneous_machine_execution": false,
+    "Python_machine_fallback": false
+  },
+  "canonical_serialization": {
+    "encoding": "UTF-8",
+    "object_keys": "sorted_ascending",
+    "separators": "compact_comma_and_colon",
+    "allow_NaN_or_infinity": false,
+    "digest": "uppercase_SHA-256"
+  },
+  "request_schema": {
+    "additional_properties": false,
+    "required_fields": [
+      "contract_version",
+      "mode",
+      "authorization_binding",
+      "declared_bounds",
+      "action_plan",
+      "input_bindings"
+    ],
+    "modes": [
+      "Policy",
+      "Preflight"
+    ],
+    "Preflight_machine_authority_in_R1_source": false,
+    "authorization_binding": {
+      "additional_properties": false,
+      "required_fields": [
+        "decision_id",
+        "package_digest_sha256",
+        "attempt_index",
+        "attempt_state",
+        "expires_at_utc",
+        "authorization_window_state",
+        "source_hashes",
+        "machine_authority",
+        "automatic_retry"
+      ],
+      "decision_id": "D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-AUTH",
+      "attempt_index": 1,
+      "attempt_state": "unused",
+      "authorization_window_states": [
+        "synthetic_valid",
+        "expired",
+        "consumed"
+      ],
+      "machine_authority": false,
+      "automatic_retry": false,
+      "source_hash_fields": [
+        "contract",
+        "vectors",
+        "powershell",
+        "python"
+      ]
+    },
+    "declared_bounds": {
+      "additional_properties": false,
+      "fields": {
+        "per_action_timeout_ms": {
+          "minimum": 1,
+          "maximum": 30000
+        },
+        "total_timeout_ms": {
+          "minimum": 1,
+          "maximum": 120000
+        },
+        "max_stdout_bytes": {
+          "minimum": 0,
+          "maximum": 65536
+        },
+        "max_stderr_bytes": {
+          "minimum": 0,
+          "maximum": 65536
+        },
+        "max_result_bytes": {
+          "minimum": 1024,
+          "maximum": 65536
+        },
+        "max_closure_files": {
+          "minimum": 0,
+          "maximum": 64
+        },
+        "max_closure_bytes": {
+          "minimum": 0,
+          "maximum": 134217728
+        },
+        "max_processes": {
+          "minimum": 0,
+          "maximum": 1
+        },
+        "max_cleanup_actions": {
+          "minimum": 0,
+          "maximum": 4
+        }
+      }
+    },
+    "input_bindings": {
+      "additional_properties": false,
+      "required_fields": [
+        "stage_outcomes",
+        "elapsed_ms",
+        "stdout_bytes",
+        "stderr_bytes",
+        "result_bytes",
+        "closure_file_count",
+        "closure_total_bytes",
+        "retained_raw_bytes",
+        "cleanup_count",
+        "process_count",
+        "source_binding_match",
+        "cross_language_match"
+      ],
+      "stage_outcomes": "zero_or_more_exact_action_to_pass_or_matching_reason_entries",
+      "all_numeric_fields": "nonnegative_integers",
+      "source_binding_match": "boolean",
+      "cross_language_match": "boolean"
+    }
+  },
+  "result_schema": {
+    "additional_properties": false,
+    "required_fields": [
+      "contract_version",
+      "terminal",
+      "succeeded",
+      "reason_code",
+      "stage_projection",
+      "action_counts",
+      "retention_projection",
+      "gate_effect"
+    ],
+    "success_reason": "policy_valid",
+    "terminal_is_always_true": true,
+    "raw_or_unbounded_material_allowed": false
+  },
+  "stage_projection_schema": {
+    "additional_properties": false,
+    "required_fields": [
+      "completed_actions",
+      "failed_action",
+      "failed_stage"
+    ],
+    "policy_valid": {
+      "completed_actions": 18,
+      "failed_action": null,
+      "failed_stage": null,
+      "literal_nulls_constructed_without_string_typed_nullable_boundary": true
+    },
+    "failure": {
+      "completed_actions": "zero_based_index_of_failed_action",
+      "failed_action": "exact_nonempty_allowlisted_action",
+      "failed_stage": "exact_nonempty_reason_mapped_from_failed_action"
+    },
+    "null_and_empty_string_equivalent": false,
+    "empty_string_valid_on_success": false,
+    "field_omission_valid": false
+  },
+  "action_order": [
+    "validate_request_contract",
+    "validate_authorization_binding",
+    "classify_runtime_path",
+    "read_runtime_metadata",
+    "hash_runtime",
+    "initialize_runtime_trust",
+    "verify_runtime_trust",
+    "close_runtime_trust",
+    "reverify_runtime_identity",
+    "classify_utility_manifest_path",
+    "parse_utility_manifest",
+    "bind_utility_manifest_closure",
+    "bind_sources",
+    "start_validation_process",
+    "enforce_process_timeout",
+    "validate_process_output_bounds",
+    "validate_result_contract",
+    "compare_cross_language_projection"
+  ],
+  "action_failure_reasons": {
+    "validate_request_contract": "request_contract_failed",
+    "validate_authorization_binding": "authorization_binding_failed",
+    "classify_runtime_path": "runtime_path_classification_failed",
+    "read_runtime_metadata": "runtime_metadata_failed",
+    "hash_runtime": "runtime_hash_failed",
+    "initialize_runtime_trust": "runtime_trust_initialization_failed",
+    "verify_runtime_trust": "runtime_trust_verification_failed",
+    "close_runtime_trust": "runtime_trust_close_failed",
+    "reverify_runtime_identity": "runtime_identity_changed",
+    "classify_utility_manifest_path": "utility_manifest_path_failed",
+    "parse_utility_manifest": "utility_manifest_parser_failed",
+    "bind_utility_manifest_closure": "utility_manifest_closure_failed",
+    "bind_sources": "source_binding_failed",
+    "start_validation_process": "process_start_failed",
+    "enforce_process_timeout": "process_timeout",
+    "validate_process_output_bounds": "process_output_bounds_failed",
+    "validate_result_contract": "result_contract_invalid",
+    "compare_cross_language_projection": "cross_language_projection_diverged"
+  },
+  "failure_reason_codes": [
+    "request_contract_failed",
+    "authorization_binding_failed",
+    "runtime_path_classification_failed",
+    "runtime_metadata_failed",
+    "runtime_hash_failed",
+    "runtime_trust_initialization_failed",
+    "runtime_trust_verification_failed",
+    "runtime_trust_close_failed",
+    "runtime_identity_changed",
+    "utility_manifest_path_failed",
+    "utility_manifest_parser_failed",
+    "utility_manifest_closure_failed",
+    "source_binding_failed",
+    "process_start_failed",
+    "process_timeout",
+    "process_output_bounds_failed",
+    "result_contract_invalid",
+    "cross_language_projection_diverged"
+  ],
+  "prohibited_field_names": [
+    "raw_exception",
+    "exception",
+    "stack",
+    "native_status",
+    "manifest_text",
+    "manifest_tokens",
+    "parser_objects",
+    "stdout",
+    "stderr",
+    "fixture_payload",
+    "hostname",
+    "username",
+    "user",
+    "serial",
+    "mac",
+    "ip_address",
+    "personal_path",
+    "credentials",
+    "password",
+    "secret",
+    "environment",
+    "sid",
+    "acl",
+    "sddl"
+  ],
+  "terminal_gate_effect": {
+    "machine_action_authorized": false,
+    "python_machine_fallback": false,
+    "retry_authorized": false,
+    "U3T_preflight_authorized": false,
+    "U3K_authorized": false,
+    "deployment_authorized": false,
+    "next_gate_on_success": "owner_source_implementation_acceptance_required",
+    "next_gate_on_failure": "blocked"
+  },
+  "implementation_boundaries": {
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "Python_machine_filesystem_registry_environment_network_native_or_subprocess_access": false,
+    "runtime_manifest_hardware_or_machine_observation": false,
+    "external_fixture_model_camera_media_private_or_Government_data_access": false,
+    "automatic_retry_or_fallback": false,
+    "another_attempt_or_U3K": false,
+    "remote_Git": false
+  }
+}

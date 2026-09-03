@@ -1,0 +1,202 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_binding_outer_attempt_controller_r0_source_implementation_contract.v1",
+  "contract_id": "P36-QUARANTINE-RUNTIME-BINDING-OUTER-ATTEMPT-CONTROLLER-R0-SOURCE-IMPLEMENTATION-CONTRACT",
+  "future_authorization_decision_id": "D-P3.6-U4B-OUTER-ATTEMPT-CONTROLLER-R0-IMPLEMENTATION-AUTH",
+  "status": "proposal_only_no_source_contract_vector_test_or_runtime_implementation_authorized",
+  "prepared_on": "2026-09-02",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U4A-U3Z-R1-FAILURE-ANALYSIS-DECISIONS",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-u4a-binding-classification-remediation-planning-acceptance.json",
+    "acceptance_record_sha256": "F8C39C761A8B0359CDB50F13AF0935A481C8A881A02A6F325E722137FCB75E36",
+    "accepted_package_sha256": "0918CD9775DA870C530233BD8728325164159A53777A42FAA8DB5B4A7C8DA5D9",
+    "selected_options": "A/A/A/A",
+    "effect": "prepare_this_non_effective_U4B_source_implementation_authorization_proposal_only"
+  },
+  "immutable_accepted_inputs": [
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1_generated_validation.ps1",
+      "sha256": "D9EE5CC7599AACCE3363CE5C29EE479D777F94CF886AE779390B7027C40FA382",
+      "role": "accepted_U3Z_generated_validation_harness_preserved_byte_exact"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-r0-vectors.json",
+      "sha256": "7BCDFCA583644BD4ED5F4B747C3969B4C9FF4029B48734F8BD4D90BA5D600A21",
+      "role": "accepted_U3Z_materialized_vectors_preserved_byte_exact"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1.ps1",
+      "sha256": "787655BAC55DDF563E9D1DC43EC37F010C271AB381E541B0734028E3F2B90B31",
+      "role": "accepted_controller_R1_preserved_byte_exact"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-contract.json",
+      "sha256": "637C5400122874149D9835CC6BC521E5EEC9160222F4A7AC5CA1F6CD99E1BCC4",
+      "role": "accepted_controller_R1_contract_preserved_byte_exact"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-r1-stage-projection-vectors.json",
+      "sha256": "D8EDF5C0255B40FB6C28BB014C09DC503D2B53665E69C5AA5AB65C744AEA81E4",
+      "role": "accepted_controller_R1_source_vectors_preserved_byte_exact"
+    },
+    {
+      "path": "tools/phase36_quarantine_runtime_controller_r1_reference.py",
+      "sha256": "B5C7328CD666E0A8988F9B616C5B2A914D690A40BF2EA289C1F1C755E42B86F0",
+      "role": "accepted_machine_disabled_controller_R1_reference_preserved_byte_exact"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-authorization.json",
+      "sha256": "FC1AE35876012CEFDCB52AE5A274FC5787FAE1AE722A9709AC76782C78C530D1",
+      "role": "consumed_U3Z_R1_authorization_preserved_byte_exact"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-result.json",
+      "sha256": "C9743F0FC8906E46701E07A01A1C651F4B4B2C0517FAB722A97C1396F40F7303",
+      "role": "terminal_failed_closed_U3Z_R1_result_preserved_byte_exact"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-evidence.json",
+      "sha256": "34BDA40E4450F35AF4A86E3C7566B9AFCA01413D70FE9CA9EB70B35A1B921BFF",
+      "role": "sanitized_U3Z_R1_evidence_preserved_byte_exact"
+    },
+    {
+      "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-failure-analysis-r0.json",
+      "sha256": "F8ED63FB9410B6DCBB37A82A9CF667FF09067CBB502B8F23A213B784DD431667",
+      "role": "accepted_planning_only_failure_analysis_preserved_byte_exact"
+    }
+  ],
+  "exact_future_implementation_paths": [
+    "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-contract.json",
+    "tools/phase36_quarantine_runtime_binding_outer_attempt_controller_r0.ps1",
+    "tools/phase36_quarantine_runtime_binding_outer_attempt_controller_r0_reference.py",
+    "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-vectors.json",
+    "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_r0_contract.py",
+    "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_r0_reference.py",
+    "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_r0_powershell_static.py",
+    "tests/test_phase36_quarantine_runtime_binding_outer_attempt_controller_r0_cross_language.py",
+    "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-implementation-evidence.json",
+    "contracts/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-implementation-package.json",
+    "docs/phase-3/p3-6-quarantine-runtime-binding-outer-attempt-controller-r0-evidence-review.md"
+  ],
+  "bounded_existing_synchronization_paths": [
+    ".gitattributes",
+    "contracts/phase-3/README.md",
+    "contracts/phase-3/p3-6-entry-gates.json",
+    "contracts/phase-3/p3-6-capability-profile-policy.json",
+    "contracts/phase-3/p3-6-unblock-plan.json",
+    "docs/phase-3/README.md",
+    "docs/phase-3/acceptance-checklist.md",
+    "docs/phase-3/decision-register.md",
+    "docs/phase-3/implementation-backlog.md",
+    "docs/phase-3/p3-6-capability-profiles.md",
+    "docs/phase-3/p3-6-plan.md",
+    "docs/phase-3/p3-6-planning-acceptances.md",
+    "docs/phase-3/p3-6-unblock-plan.md"
+  ],
+  "required_controller_architecture": {
+    "PowerShell_is_authoritative_Windows_machine_controller": true,
+    "Python_is_machine_disabled_policy_reference_and_cross_language_oracle": true,
+    "additive_successor_not_in_place_edit": true,
+    "supported_operation_allowlist": [
+      "generated_contract_validation_v1"
+    ],
+    "unknown_operation_or_stage_default_denied": true,
+    "dynamic_code_evaluation_or_unbounded_dispatch": false,
+    "runtime_attempt_execution_during_source_implementation": false
+  },
+  "required_typed_state_machine": {
+    "ordered_stages": [
+      "authorization",
+      "fixed_parent_set",
+      "runtime_candidate",
+      "runtime_hash",
+      "runtime_trust",
+      "source_preflight",
+      "process",
+      "result_validation",
+      "source_postflight",
+      "runtime_postflight",
+      "evidence_seal"
+    ],
+    "stage_skipping": false,
+    "terminal_result_exactly_once": true,
+    "attempt_count_monotonic_and_bounded": true,
+    "retry_requires_new_digest_bound_authorization": true
+  },
+  "required_fixed_parent_contract": {
+    "exact_record_count": 3,
+    "ordered_parent_indexes": [
+      0,
+      1,
+      2
+    ],
+    "record_fields": [
+      "parent_index",
+      "present",
+      "regular_directory",
+      "nonreparse",
+      "canonical_match",
+      "valid",
+      "reason_code"
+    ],
+    "all_predicates_boolean_typed": true,
+    "all_valid_reduction": "record_count_equals_three_and_every_record_valid_is_literal_true",
+    "pipeline_filter_count_null_or_scalar_cardinality_semantics_used": false,
+    "paths_ACLs_owner_identity_raw_attributes_or_exceptions_retained": false
+  },
+  "required_sanitized_taxonomy": {
+    "result_fields": [
+      "terminal",
+      "succeeded",
+      "stage",
+      "reason_code",
+      "parent_index",
+      "predicate_flags",
+      "attempts_consumed"
+    ],
+    "allowlisted_stages_only": true,
+    "parent_index_allowed_only_for_fixed_parent_set_stage": true,
+    "parent_index_values": [
+      0,
+      1,
+      2
+    ],
+    "raw_path_output_exception_fixture_environment_identity_or_security_material": false,
+    "unrecognized_internal_failure_projection": "terminal_default_deny_internal_failure"
+  },
+  "required_generated_static_evidence": {
+    "minimum_generated_vector_count": 384,
+    "required_vector_groups": [
+      "exact_three_parent_all_valid",
+      "each_single_invalid_parent_index",
+      "multiple_invalid_parents",
+      "zero_one_two_and_four_record_cardinality_rejected",
+      "missing_wrong_type_and_unknown_parent_fields_rejected",
+      "unknown_stage_operation_and_reason_default_denied",
+      "ordered_stage_transition_and_no_stage_skipping",
+      "attempt_count_and_retry_authority_bounds",
+      "process_timeout_stdout_stderr_result_size_bounds",
+      "source_and_runtime_preflight_postflight_identity_failures",
+      "sanitized_terminal_projection_and_zero_raw_retention",
+      "PowerShell_Python_canonical_projection_equivalence",
+      "all_runtime_machine_U3K_deployment_and_Git_gates_closed"
+    ],
+    "minimum_machine_disabled_Python_reference_branch_coverage_percent": 95,
+    "immutable_input_hashes_reverified": true,
+    "PowerShell_source_parsing_import_dot_source_or_execution_as_implementation_evidence": false,
+    "external_fixture_artifact_model_camera_media_private_or_Government_data": false
+  },
+  "later_separate_gates": {
+    "owner_source_implementation_acceptance_required": true,
+    "generated_only_PowerShell_controller_contract_validation_requires_separate_package_and_authorization": true,
+    "new_runtime_attempt_requires_successful_generated_validation_acceptance_and_separate_digest_bound_authorization": true,
+    "U3K_requires_successful_new_runtime_evidence_acceptance_and_later_explicit_authority": true
+  },
+  "current_effect": {
+    "source_contract_vector_test_or_product_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "another_attempt_or_U3K_authorized": false,
+    "deployment_commit_push_or_remote_Git_authorized": false
+  }
+}

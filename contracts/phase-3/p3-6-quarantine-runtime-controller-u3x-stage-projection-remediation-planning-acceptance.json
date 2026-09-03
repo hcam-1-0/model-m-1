@@ -1,0 +1,56 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3x_stage_projection_remediation_planning_acceptance.v1",
+  "record_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3X-STAGE-PROJECTION-REMEDIATION-PLANNING-ACCEPTANCE",
+  "decision_id": "D-P3.6-U3X-FAILURE-ANALYSIS-DECISIONS",
+  "status": "accepted_A_A_A_A_controller_R1_implementation_authorization_proposal_preparation_only",
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-02",
+  "canonical_owner_statement_utf8_bytes": 904,
+  "canonical_owner_statement_sha256": "26536D7D4921317528A8F2ED72F6D3D6720CAE767AF2E3531C7B19FFEA26670B",
+  "canonical_owner_statement": "D-P3.6-U3X-FAILURE-ANALYSIS-DECISIONS: I, mayank-admin, accept the sanitized U3W failure-analysis planning package digest 80CA25BC1F1EE77E5A9ED8ADEF76C695D5169544CB75B6A57A03692463FFA460 and select D-P3.6-U3X-001:A, D-P3.6-U3X-002:A, D-P3.6-U3X-003:A, and D-P3.6-U3X-004:A. This accepts the failed U3W evidence for planning purposes and authorizes preparation only of a separate source-only additive controller R1 remediation implementation authorization proposal. It does not authorize controller, diagnostic, contract, vector, test, model, or product implementation; PowerShell parsing, import, dot-sourcing, or execution; Python machine access or fallback; runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, another attempt, U3K, or remote Git.",
+  "accepted_package": {
+    "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3x-stage-projection-remediation-planning-package.json",
+    "sha256": "80CA25BC1F1EE77E5A9ED8ADEF76C695D5169544CB75B6A57A03692463FFA460",
+    "mutated_by_this_acceptance": false
+  },
+  "accepted_failure_analysis": {
+    "path": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3w-h1-r1-diagnostic-runtime-binding-r1-failure-analysis-r0.json",
+    "sha256": "B88F943B9F1D1B31B7C8F91449B338F9B225FA3DAB4C58BC19586C43A90244B6",
+    "accepted_for_planning_only": true,
+    "null_to_empty_string_hypothesis_confirmed_as_runtime_fact": false
+  },
+  "selected_decisions": {
+    "D-P3.6-U3X-001": "A",
+    "D-P3.6-U3X-002": "A",
+    "D-P3.6-U3X-003": "A",
+    "D-P3.6-U3X-004": "A"
+  },
+  "authority_granted": {
+    "prepare_separate_source_only_additive_controller_R1_implementation_authorization_proposal": true,
+    "controller_diagnostic_contract_vector_test_model_or_product_implementation": false,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_manifest_hardware_or_machine_observation": false,
+    "machine_storage_scanner_network_model_media_or_data_action": false,
+    "container_Kubernetes_profile_activation_deployment_another_attempt_U3K_or_remote_Git": false
+  },
+  "accepted_design_direction": {
+    "additive_controller_R1_successor": true,
+    "accepted_controller_and_diagnostic_preserved_byte_exact": true,
+    "success_stage_projection_completed_actions": 18,
+    "success_stage_projection_failed_action": null,
+    "success_stage_projection_failed_stage": null,
+    "diagnostic_contract_accepts_empty_string_on_success": false,
+    "generated_static_evidence_before_source_acceptance": true,
+    "separate_generated_only_PowerShell_contract_validation_after_source_acceptance": true,
+    "separate_system_diagnostic_only_after_contract_validation_acceptance": true
+  },
+  "next_required_sequence": [
+    "prepare_non_effective_U3Y_source_implementation_authorization_proposal",
+    "obtain_exact_digest_bound_D_P3_6_U3Y_CONTROLLER_R1_STAGE_PROJECTION_IMPLEMENTATION_AUTH",
+    "implement_only_the_exact_source_and_generated_static_paths_if_authorized",
+    "seal_and_separately_accept_source_and_generated_static_evidence",
+    "prepare_no_PowerShell_contract_validation_system_attempt_or_U3K_without_later_explicit_authority"
+  ],
+  "acceptance_may_be_inferred_as_implementation_PowerShell_runtime_retry_U3K_deployment_or_remote_Git_authority": false
+}

@@ -1,0 +1,60 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u3y_stage_projection_source_implementation_authorization_proposal.v1",
+  "proposal_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U3Y-STAGE-PROJECTION-SOURCE-IMPLEMENTATION-AUTHORIZATION-PROPOSAL",
+  "decision_id": "D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-AUTH",
+  "status": "non_effective_owner_authorization_pending",
+  "prepared_on": "2026-09-02",
+  "preparation_authority": {
+    "decision_id": "D-P3.6-U3X-FAILURE-ANALYSIS-DECISIONS",
+    "acceptance_record": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3x-stage-projection-remediation-planning-acceptance.json",
+    "effect": "prepare_only_this_separate_non_effective_source_implementation_authorization_proposal_and_package"
+  },
+  "proposed_scope_if_exactly_authorized": {
+    "implement_only_the_eleven_exact_additive_paths_in_the_bound_source_implementation_contract": true,
+    "preserve_all_four_immutable_accepted_inputs_byte_exact": true,
+    "implement_explicit_null_preserving_policy_valid_stage_projection": true,
+    "preserve_exact_failure_action_and_reason_semantics": true,
+    "generate_at_least_256_synthetic_static_vectors": true,
+    "run_only_machine_disabled_Python_generated_and_static_validation": true,
+    "seal_source_and_generated_static_evidence_for_separate_owner_acceptance": true
+  },
+  "implementation_invariants": {
+    "wire_contract_version": "1.0.0",
+    "policy_valid_completed_actions": 18,
+    "policy_valid_failed_action": null,
+    "policy_valid_failed_stage": null,
+    "empty_string_accepted_as_no_failure": false,
+    "nullable_success_fields_pass_through_string_typed_parameter": false,
+    "all_failure_actions_and_reasons_are_nonempty_allowlisted_strings": true,
+    "raw_material_retained_bytes": 0,
+    "all_machine_retry_U3K_and_deployment_gates_false": true
+  },
+  "permitted_validation_if_exactly_authorized": {
+    "generated_fixture_and_machine_disabled_Python_reference_execution": true,
+    "source_text_hash_contract_projection_and_cross_language_static_checks": true,
+    "minimum_machine_disabled_Python_reference_branch_coverage_percent": 95,
+    "PowerShell_parser_import_dot_source_or_execution": false,
+    "filesystem_runtime_registry_environment_network_native_API_subprocess_machine_controller_or_fallback_access_by_reference": false,
+    "external_fixture_artifact_model_camera_media_private_or_Government_data": false
+  },
+  "hard_boundaries": {
+    "accepted_controller_diagnostic_contract_or_U3W_records_modified": false,
+    "PowerShell_parse_import_dot_source_or_execution": false,
+    "Python_machine_access_or_fallback": false,
+    "runtime_manifest_hardware_machine_storage_scanner_or_network_observation": false,
+    "download_artifact_model_inference_camera_media_or_data_access": false,
+    "container_Kubernetes_profile_activation_deployment_another_attempt_U3K_or_remote_Git": false
+  },
+  "future_owner_authorization_statement_template": "D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-AUTH: I, mayank-admin, authorize source-only implementation of the additive controller R1 stage-projection remediation against package digest <U3Y_AUTHORIZATION_PACKAGE_DIGEST_SHA256>. Implementation is limited to the exact eleven additive paths and immutable inputs bound by that package. It must preserve the accepted controller, diagnostic, diagnostic contract, and U3W evidence byte-exact; retain wire contract version 1.0.0; construct policy-valid stage projection as completed_actions 18, failed_action null, and failed_stage null without a string-typed nullable boundary; preserve exact nonempty allowlisted failure actions and reasons; generate at least 256 synthetic static vectors; achieve at least 95 percent branch coverage for the machine-disabled Python reference; pass generated cross-language and static validation; and seal source-only evidence for separate acceptance. Python may execute generated fixtures and machine-disabled reference/static tests only, with no filesystem runtime, registry, environment, network, native API, subprocess, machine-controller, or fallback access. PowerShell must not be parsed, imported, dot-sourced, or executed. This does not authorize runtime, manifest, hardware, machine, storage, F:, B:, ACL, probe, cleanup, scanner, network, download, artifact, model, inference, camera, media, data, container, Kubernetes, profile activation, deployment, another attempt, U3K, or remote Git.",
+  "current_effect": {
+    "owner_U3Y_source_implementation_authorization_pending": true,
+    "D_P3_6_U3Y_CONTROLLER_R1_STAGE_PROJECTION_IMPLEMENTATION_AUTH_requestable": true,
+    "source_or_test_implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "another_attempt_or_U3K_authorized": false,
+    "deployment_or_remote_Git_authorized": false
+  },
+  "authorization_may_be_inferred_from_U3X_acceptance_continue_package_preparation_or_static_validation": false
+}

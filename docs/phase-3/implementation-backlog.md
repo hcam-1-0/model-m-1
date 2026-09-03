@@ -797,7 +797,168 @@ and operational alerting are not Phase 3 backlog items.
 - **Compatibility synchronized:** exact U3V proposal-test amendment recorded at
   statement SHA-256
   `9BE9C3F3D2BB9ABE11A84CCCE2E4DDF79B3370AF017AD9E0B56E29C2426B541E`.
-- **Owner pending:** exact U3V source implementation acceptance against package
-  SHA-256 `AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`.
-- **Blocked:** PowerShell execution, runtime diagnostic package preparation,
+- **Accepted:** exact `D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-ACCEPTANCE`
+  against package SHA-256
+  `AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`.
+- **Prepared:** non-effective U3W authorization package SHA-256
+  `DDCB7A9C4E6E93BF5252FAFF840E3841C1B9080FE5657AA0037532EE2037B760`.
+- **Consumed:** exact
+  `D-P3.6-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-AUTH` produced one
+  failed-closed `controller_stage_projection_invalid` result; no retry is
+  authorized.
+- **Prepared:** non-effective U3X failure-analysis package SHA-256
+  `80CA25BC1F1EE77E5A9ED8ADEF76C695D5169544CB75B6A57A03692463FFA460`.
+- **Accepted:** `D-P3.6-U3X-FAILURE-ANALYSIS-DECISIONS` as `A/A/A/A`; exact
+  acceptance record SHA-256
+  `56FE994A8F3EDCB17B673E63CB3773B17EB63FA8B3E23F04A3A58A9E7105D91E`.
+- **Prepared:** non-effective U3Y source-implementation authorization package
+  SHA-256
+  `35086DDC152DDF659097F6841AA364B965E0851833C339DCF2736BEF1AA0940A`.
+- **Owner pending:** exact digest-bound
+  `D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-AUTH`.
+- **Blocked:** controller remediation implementation, PowerShell execution,
   another attempt, U3K, deployment, and remote Git.
+
+### U3Y Acceptance And U3Z Generated Validation
+
+- **Accepted:**
+  `D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-ACCEPTANCE`
+  against package SHA-256
+  `ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78`.
+- **Prepared:** non-effective U3Z planning package SHA-256
+  `B9696A95EF14D186C7D2CC8D949EE711C2621E907DAD28AF4FC192B2A1A1F09A`.
+- **Authorized:**
+  `D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-AUTH`;
+  canonical owner statement SHA-256
+  `5136263DC036CD37AAEB7EEBA05076C5567761246F59566EB12B4DBA9AE1DA5C`.
+- **Implemented:** additive source-only harness, exactly 288 materialized
+  generated cases, and one Python generated/static test module.
+- **Sealed:** current implementation package SHA-256
+  `47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF`.
+- **Completed:** exact `D-P3.6-U3Z-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT`
+  with owner statement SHA-256
+  `E7F7B483EBF3DABD46CA213CB6773582CE23542BB3EA8BB8FBB535F212327692`.
+- **Validated:** 303 focused checks and all 1,503 Phase 3.6 checks pass.
+- **Pending:** separate exact owner source acceptance.
+- **Blocked:** PowerShell execution, runtime validation, machine actions, U3K,
+  deployment, commit, push, and remote Git.
+
+### U3Z Runtime-Binding R1
+
+- **Accepted:**
+  `D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-ACCEPTANCE`
+  against package SHA-256
+  `47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF`.
+- **Prepared:** non-effective R1 authorization package SHA-256
+  `3348ECB80895806A2E63610088EF3178CE38B715910C3B1463D97CB2E8F3C6C5`.
+- **Consumed:** exact
+  `D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-AUTH`
+  produced terminal `binding_failed` before runtime metadata, source binding,
+  process invocation, or generated-case execution.
+- **Sealed:** authorization, result, and evidence SHA-256 values
+  `FC1AE35876012CEFDCB52AE5A274FC5787FAE1AE722A9709AC76782C78C530D1`,
+  `C9743F0FC8906E46701E07A01A1C651F4B4B2C0517FAB722A97C1396F40F7303`,
+  and `34BDA40E4450F35AF4A86E3C7566B9AFCA01413D70FE9CA9EB70B35A1B921BFF`.
+
+### U4A Binding Classification Remediation
+
+- **Prepared:** non-effective failure-analysis and decision package SHA-256
+  `0918CD9775DA870C530233BD8728325164159A53777A42FAA8DB5B4A7C8DA5D9`.
+- **Accepted:** `D-P3.6-U4A-U3Z-R1-FAILURE-ANALYSIS-DECISIONS` as `A/A/A/A`;
+  acceptance record SHA-256
+  `F8C39C761A8B0359CDB50F13AF0935A481C8A881A02A6F325E722137FCB75E36`.
+
+### U4B Outer Attempt Controller R0
+
+- **Prepared:** non-effective source-implementation authorization package
+  SHA-256
+  `E52680B8314FA9A4FC862510BC9570DE3942A791952F22425E61ED61723222AE`.
+- **Bound:** 17 unique core files, 11 future additive implementation paths, 13
+  bounded synchronization paths, 384 generated vectors minimum, and 95%
+  machine-disabled Python reference branch coverage.
+- **Pending:**
+  `D-P3.6-U4B-OUTER-ATTEMPT-CONTROLLER-R0-IMPLEMENTATION-AUTH`.
+- **Blocked:** source implementation, PowerShell execution, another attempt,
+  machine actions, U3K, deployment, commit, push, and remote Git.
+
+### Consolidated Completion Option
+
+- **Prepared:** two-authorization planning package SHA-256
+  `DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C`.
+- **Recommended:** `A/A/A/A/A/A` for `D-P3.6-CA-001` through
+  `D-P3.6-CA-006`.
+- **Authorization 1 pending:** `D-P3.6-CONSOLIDATED-BUILD-AUTH` for 20 exact
+  additive paths, 13 synchronization paths, and eight source revision cycles.
+- **Authorization 2 later:** `D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH`,
+  bound to the successful build/action digest and at most three same-digest
+  attempts.
+- **Blocked now:** all implementation, execution, machine, U3K, closeout,
+  commit, push, and remote Git actions. U4B remains the granular fallback.
+
+## Consolidated Build Checkpoint
+
+- **Completed:** the authorized U4B outer-controller source, 416 generated
+  vectors, generated/static tests, evidence, and the consolidated build bundle.
+- **Build package:** SHA-256
+  `A006B6A1D7AA59F8A67BC8AD24B280D546397F921AF0111E366ACF38DD21A766`.
+- **Next owner gate:** exact `D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH`
+  package SHA-256
+  `B7AB81130213AADD907055B75D795D59864AD2C91A2D876B7A267407CA289CD3`.
+- **Still blocked:** PowerShell/runtime execution, machine or storage actions,
+  U3K, models, media/data, deployment, commit, push, and remote Git.
+
+## U4C Failed-Closeout Backlog
+
+- **Consumed:** consolidated runtime-closeout attempt 1, terminal reason
+  `process_output_bounds_failed`.
+- **Preserved:** exact runtime trust, fixed-parent, source preflight, and source
+  postflight success evidence.
+- **Not started:** handler validation, U3K, `F:` access, storage, and closeout.
+- **Decision pending:** `D-P3.6-U4C-001` through `D-P3.6-U4C-005` in package
+  SHA-256 `26182B3EFB369C56741DFCEC51DCE412DB3EC4EF5170C0741847F1ADAE4481C0`.
+- **Recommended next design:** hash-bound child harness, one-line UTF-8 JSON,
+  split sanitized process classifications, full generated/static matrix, then
+  a separately digest-bound runtime attempt.
+
+## U4D Process-Output Remediation Backlog
+
+- **Completed:** Exact U4C `A/A/A/A/A` owner acceptance recorded.
+- **Prepared:** Non-effective U4D source-build authorization package SHA-256
+  `2DAD142AE31D5A3738ABADD0098512B61C0BC2C3A5C7C915BF99DE8D40FB7F74`.
+- **Completed:** `D-P3.6-U4D-PROCESS-OUTPUT-REMEDIATION-IMPLEMENTATION-AUTH`
+  produced the hash-bound child harness, typed output contract/reference,
+  384-vector generated matrix, two compatibility transitions, source evidence,
+  and non-effective R2 package are sealed under U4D package SHA-256
+  `288F275345E2586E05BE14EC964CA77EF7503A0BE70D88C6C5696BB4655C612A`.
+- **Consumed owner gate:**
+  `D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-AUTH` authorized one exact attempt;
+  it cannot be reused.
+- **Still blocked:** PowerShell execution, runtime/machine/storage access,
+  retry, U3K, Phase 3 closeout, commit, push, and remote Git.
+
+## U4E Manifest-Closure Failure Backlog
+
+- **Passed:** R2 authority, authorization record, exact runtime, three fixed
+  parents, cache-only trust, and literal Utility manifest parsing.
+- **Failed closed:** `R2-A04-UTILITY-MANIFEST-AND-CLOSURE-BINDING` with
+  `utility_closure_declared_target_missing`.
+- **Not started:** source preflight, both generated-validation processes, all
+  500 cases, U3K preflight, `F:` access, storage, final validation, and closeout.
+- **Completed planning:** official-source ledger, sanitized failure analysis,
+  five A-D decisions, integrity package, and canonical status synchronization.
+- **Current owner gate:**
+  `D-P3.6-U4E-CLOSEOUT-R2-FAILURE-ANALYSIS-DECISIONS` for package SHA-256
+  `C0BF901B7D66BE11A250F9369C5CE564A59A726E88877E4A77CD36F310997B7D`.
+- **Recommended:** `D-P3.6-U4E-001:A` through `005:A`.
+- **Blocked:** U4F implementation proposal preparation until owner selection;
+  all implementation, runtime, manifest observation, machine/storage, U3K,
+  closeout, commit, push, and remote Git actions.
+
+## Phase 3 Closeout Update
+
+The Phase 3.6 U4E, U4F, generated-validation, R5 remediation, U3K storage, and
+ledger-synchronization backlog is complete. There is no remaining Phase 3 task
+inside the accepted generated-only, zero-retention, nondeployment scope.
+Operational model acquisition/inference, cameras/media/data, accelerated profile
+activation, and deployment are intentionally deferred to separately scoped
+future phases rather than carried as incomplete Phase 3 work.

@@ -3203,7 +3203,7 @@ def check_documentation_sync() -> Check:
             "D-P3.5-W10-ACCEPTANCE",
             "Current P3.5 status:",
             "`accepted`",
-            "P3.6 remain unauthorized",
+            "P3.5 acceptance did not authorize P3.6 implementation",
         ),
         "docs/phase-3/p3-5-runtime-research-evidence.md": (
             "P3.5-RUNTIME-RESEARCH-EVIDENCE-R1",

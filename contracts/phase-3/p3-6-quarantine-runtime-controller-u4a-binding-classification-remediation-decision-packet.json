@@ -1,0 +1,134 @@
+{
+  "contract_format": "hcam.phase3.p3_6.quarantine_runtime_controller_u4a_binding_classification_remediation_decision_packet.v1",
+  "packet_id": "P36-QUARANTINE-RUNTIME-CONTROLLER-U4A-BINDING-CLASSIFICATION-REMEDIATION-DECISIONS",
+  "status": "owner_decisions_pending_non_effective_planning_only",
+  "prepared_on": "2026-09-02",
+  "failure_analysis": "contracts/phase-3/p3-6-quarantine-runtime-controller-u3z-generated-contract-validation-runtime-binding-r1-failure-analysis-r0.json",
+  "decision_scope": "select_source_only_outer_attempt_controller_binding_remediation_and_reentry_policy_without_authorizing_implementation_execution_retry_or_U3K",
+  "decisions": [
+    {
+      "decision_id": "D-P3.6-U4A-001",
+      "title": "First Remediation Surface",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Additive source-controlled outer attempt controller",
+          "effect": "preserve_all_accepted_and_consumed_artifacts_byte_exact_then_prepare_later_an_exact_package_bound_controller_for_authorization_binding_parent_runtime_source_process_and_evidence stages",
+          "tradeoff": "directly_closes_the_reproducibility_gap_and_avoids_unjustified_changes_to_the_unexecuted_U3Z_harness"
+        },
+        "B": {
+          "label": "Modify the U3Z generated-validation harness",
+          "effect": "move_outer_runtime_and_parent_binding_logic_into_the_accepted_harness_successor",
+          "tradeoff": "mixes_machine_binding_with_generated_contract_logic_and_invalidates_more_accepted_source_evidence"
+        },
+        "C": {
+          "label": "Change the exact runtime path or parent rules",
+          "effect": "select_a_different_runtime_candidate_or_weaken_fixed_parent_validation",
+          "tradeoff": "not_supported_by_the_current_coarse_failure_and_can_reduce_trust_without_identifying_the_controller_defect"
+        },
+        "D": {
+          "label": "Stop remediation",
+          "effect": "keep_U3Z_runtime_validation_and_U3K_blocked",
+          "tradeoff": "no_new_risk_but_no_Phase_3_6_runtime_progress"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U4A-002",
+      "title": "Sanitized Binding Diagnostic Taxonomy",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Typed stage and fixed-parent-index reasons",
+          "effect": "emit_only_allowlisted_stage_reason_parent_index_and_boolean_predicates_for_authorization_parent_set_runtime_metadata_hash_trust_source_preflight_process_result_and_postflight failures",
+          "tradeoff": "isolates_the_failed_boundary_without_retaining_paths_raw_attributes_exceptions_identities_or_security_material"
+        },
+        "B": {
+          "label": "Stage-only reason codes",
+          "effect": "separate_parent_runtime_source_process_and_result_stages_without_parent_index_or_predicate booleans",
+          "tradeoff": "simpler_but_may_require_another_consumed_attempt_to_distinguish_actual_parent_invalidity_from_set_aggregation"
+        },
+        "C": {
+          "label": "Keep binding_failed only",
+          "effect": "retain_the_existing_single_coarse_reason",
+          "tradeoff": "preserves_the_current_blind_spot_and_makes_another_attempt_low_value"
+        },
+        "D": {
+          "label": "Retain raw errors and paths",
+          "effect": "persist_exceptions_runtime_paths_and_parent_attributes",
+          "tradeoff": "highest_debug_detail_but_breaks_the_existing_sanitization_and_identity_boundary"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U4A-003",
+      "title": "Fixed-Parent Set Evaluation Contract",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Fixed three-record typed vector with explicit all-valid reduction",
+          "effect": "materialize_exactly_three_ordered_parent_results_require_each_result_to_exist_and_be_boolean_typed_then_compute_all_valid_without_pipeline_null_or_scalar_count behavior",
+          "tradeoff": "deterministic_under_strict_mode_and_directly_testable_for_zero_one_and_multiple_invalid_parent cases"
+        },
+        "B": {
+          "label": "Pipeline filtering with forced array materialization",
+          "effect": "retain_filter_semantics_but_wrap_results_in_an_explicit_array_before_counting",
+          "tradeoff": "smaller_change_but_leaves_collection_shape_and_filter_semantics_as_part_of_the_security boundary"
+        },
+        "C": {
+          "label": "Short-circuit each parent sequentially",
+          "effect": "stop_at_the_first_invalid_parent_and_emit_its_allowlisted index reason",
+          "tradeoff": "simple_but_does_not_produce_a_complete_bounded_three-parent_classification_for_one_attempt evidence"
+        },
+        "D": {
+          "label": "Remove fixed-parent validation",
+          "effect": "bind_only_the_runtime_file",
+          "tradeoff": "reduces_path_integrity_assurance_and_is_not_recommended"
+        }
+      }
+    },
+    {
+      "decision_id": "D-P3.6-U4A-004",
+      "title": "Validation And Runtime Reentry Sequence",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "label": "Source acceptance then generated controller validation then one new attempt",
+          "effect": "separately_authorize_and_accept_the_additive_controller_and_generated_static_vectors_then_authorize_generated_only_controller_contract_validation_then_prepare_one_new_digest_bound_runtime attempt",
+          "tradeoff": "adds_review_gates_but_tests_empty_collection_strict_mode_reason_taxonomy_and_record_sealing_before_consuming_another_machine attempt"
+        },
+        "B": {
+          "label": "Source acceptance then direct runtime retry",
+          "effect": "skip_generated_controller_contract_execution_and_move_from_static acceptance_to_one_new_runtime_attempt",
+          "tradeoff": "faster_but_can_repeat_a_PowerShell_specific_collection_or_serialization defect"
+        },
+        "C": {
+          "label": "Blind retry current package",
+          "effect": "authorize_the_same_attempt_design_again_without_source_controlled_remediation",
+          "tradeoff": "no_new_diagnostic_quality_and_not_supported_by_the_consumed_attempt"
+        },
+        "D": {
+          "label": "Advance directly to U3K",
+          "effect": "prepare_machine_or_storage_work_despite_missing_successful_U3Z_runtime evidence",
+          "tradeoff": "breaks_the_existing_gate_and_is_not_recommended"
+        }
+      }
+    }
+  ],
+  "recommended_selection": {
+    "D-P3.6-U4A-001": "A",
+    "D-P3.6-U4A-002": "A",
+    "D-P3.6-U4A-003": "A",
+    "D-P3.6-U4A-004": "A"
+  },
+  "effect_of_owner_selection": {
+    "prepare_separate_source_only_outer_attempt_controller_remediation_implementation_authorization_proposal": true,
+    "implementation_authorized": false,
+    "PowerShell_parse_import_dot_source_or_execution_authorized": false,
+    "Python_machine_access_or_fallback_authorized": false,
+    "runtime_or_machine_observation_authorized": false,
+    "retry_authorized": false,
+    "U3K_authorized": false,
+    "deployment_commit_push_or_remote_Git_authorized": false
+  }
+}

@@ -871,9 +871,154 @@ generated-only vectors, a machine-disabled Python reference classifier, and
 static differential validation. Exact
 `D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-AUTH` was recorded on 2026-09-02.
 The source implementation is complete with exactly 128 vectors and 99%
-Python-reference branch coverage. Exact owner source acceptance against package
-SHA-256 `AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`
-is the next gate; runtime execution and U3K remain separately blocked.
+Python-reference branch coverage. Exact
+`D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-ACCEPTANCE` accepted package
+SHA-256 `AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`.
 The exact compatibility-test amendment is recorded under
 `D-P3.6-U3V-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT`; it changes no runtime,
 machine, retry, U3K, deployment, or remote-Git authority.
+
+Exact `D-P3.6-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-AUTH` was recorded and
+one attempt was consumed against package SHA-256
+`DDCB7A9C4E6E93BF5252FAFF840E3841C1B9080FE5657AA0037532EE2037B760`.
+Runtime trust and source identity passed; the
+diagnostic failed closed with `controller_stage_projection_invalid` and no
+retry occurred. `D-P3.6-U3X-FAILURE-ANALYSIS-DECISIONS` is accepted as
+`A/A/A/A` against package SHA-256
+`80CA25BC1F1EE77E5A9ED8ADEF76C695D5169544CB75B6A57A03692463FFA460`.
+The next gate is exact digest-bound
+`D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-AUTH` against the
+non-effective package SHA-256
+`35086DDC152DDF659097F6841AA364B965E0851833C339DCF2736BEF1AA0940A`.
+Planning and proposal preparation do not authorize source changes, execution,
+retry, U3K, deployment, or remote Git.
+
+### U3Z generated contract validation
+
+U3Y source and generated/static evidence is accepted under
+`D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-ACCEPTANCE` for
+package SHA-256
+`ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78`.
+The non-effective U3Z planning package SHA-256 is
+`B9696A95EF14D186C7D2CC8D949EE711C2621E907DAD28AF4FC192B2A1A1F09A`.
+Its two gates separate source-only harness implementation from a later
+runtime-bound validation attempt.
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-AUTH`
+is authorized with canonical owner statement SHA-256
+`5136263DC036CD37AAEB7EEBA05076C5567761246F59566EB12B4DBA9AE1DA5C`.
+The H1 source and 288 generated cases are implemented in current package
+SHA-256 `47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF`.
+Exact `D-P3.6-U3Z-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` is recorded with
+owner statement SHA-256
+`E7F7B483EBF3DABD46CA213CB6773582CE23542BB3EA8BB8FBB535F212327692`.
+All 1,503 Phase 3.6 checks pass. Exact owner source acceptance remains before
+any runtime planning; no execution authority exists.
+
+The source/static gate is now accepted through
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-ACCEPTANCE`
+for package SHA-256
+`47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF`.
+The next two-gate step is the non-effective R1 package SHA-256
+`3348ECB80895806A2E63610088EF3178CE38B715910C3B1463D97CB2E8F3C6C5`
+and pending
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-AUTH`.
+That exact authorization was accepted and its one attempt is consumed. The
+attempt returned `binding_failed` during fixed-parent-set validation, before
+runtime metadata, source binding, PowerShell invocation, or any of 288 cases.
+
+### U4A binding classification remediation
+
+The sanitized failure-analysis package SHA-256 is
+`0918CD9775DA870C530233BD8728325164159A53777A42FAA8DB5B4A7C8DA5D9`.
+`D-P3.6-U4A-U3Z-R1-FAILURE-ANALYSIS-DECISIONS` accepts `A/A/A/A`: an additive
+immutable outer attempt controller, bounded typed binding taxonomy, explicit
+fixed three-parent reduction, and generated controller validation before any
+new attempt.
+
+### U4B outer attempt controller R0
+
+The non-effective source-implementation authorization package SHA-256 is
+`E52680B8314FA9A4FC862510BC9570DE3942A791952F22425E61ED61723222AE`.
+It binds a default-deny 11-stage design, exactly three typed parent records, 11
+future implementation paths, 13 synchronization paths, at least 384 generated
+vectors, and at least 95% machine-disabled Python branch coverage. Exact
+`D-P3.6-U4B-OUTER-ATTEMPT-CONTROLLER-R0-IMPLEMENTATION-AUTH` remains pending.
+No implementation, PowerShell execution, retry, U3K, deployment, or Git action
+is authorized.
+
+### Consolidated two-authorization execution plan
+
+Non-effective package SHA-256
+`DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C`
+offers a faster path without removing internal gates. Exact
+`D-P3.6-CONSOLIDATED-BUILD-AUTH` would cover every remaining source-only build,
+static evidence, and preparation of the immutable second package. Exact future
+`D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH` would cover bounded generated
+validation, runtime binding, U3K, and conditional closeout. Both remain
+ungranted; U4B remains the granular fallback.
+
+## Consolidated Build Result
+
+The first authorization was accepted and its bounded source-only work is
+complete. Build package SHA-256:
+`A006B6A1D7AA59F8A67BC8AD24B280D546397F921AF0111E366ACF38DD21A766`.
+The exact second authorization is now prepared as package SHA-256
+`B7AB81130213AADD907055B75D795D59864AD2C91A2D876B7A267407CA289CD3`,
+bound to action-spec SHA-256
+`6284ADFD21A87EFEF34A42214447242E62F5B458886AD00C9E7C4551FC6BB55B`.
+It remains non-effective until explicitly accepted; no runtime, machine,
+storage, U3K, closeout, commit, push, or remote Git action is authorized.
+
+## U4C Reentry Plan
+
+The first closeout attempt is consumed after
+`process_output_bounds_failed`; the prior authorization is not reusable. The
+next planning gate is package SHA-256
+`26182B3EFB369C56741DFCEC51DCE412DB3EC4EF5170C0741847F1ADAE4481C0`.
+`D-P3.6-U4C` recommends `A/A/A/A/A`, selecting an additive hash-bound child harness, typed
+sanitized process reasons, one-line UTF-8 JSON framing, at least 320 generated
+static vectors, and a two-authorization source-build/runtime-reentry sequence.
+No selection or authority is inferred from package preparation or `continue`.
+
+## U4D Current Plan
+
+U4C `A/A/A/A/A` is accepted. Non-effective U4D package SHA-256
+`2DAD142AE31D5A3738ABADD0098512B61C0BC2C3A5C7C915BF99DE8D40FB7F74`
+was completed under
+`D-P3.6-U4D-PROCESS-OUTPUT-REMEDIATION-IMPLEMENTATION-AUTH`. The bounded build
+produced the hash-bound one-line JSON child surface, typed sanitized process
+taxonomy, 384 generated vectors, 97 percent branch coverage, clean source
+evidence, and one non-effective R2 authorization package. R2 was subsequently
+authorized and consumed; it passed runtime and manifest parse gates but failed
+closed during declared-target closure binding with
+`utility_closure_declared_target_missing`.
+
+## U4E Manifest-Closure Remediation Plan
+
+Planning package SHA-256
+`C0BF901B7D66BE11A250F9369C5CE564A59A726E88877E4A77CD36F310997B7D`
+binds the consumed R2 records, official Microsoft manifest-path guidance,
+sanitized failure analysis, five A-D choices, and the human review record. The
+recommended `A/A/A/A/A` direction is:
+
+1. resolve direct relative file references from the exact manifest directory;
+2. preserve exact module-root and `PSHOME` containment and all fail-closed
+   bounds;
+3. separate strict load-bearing closure from bounded `FileList` inventory;
+4. validate an additive resolver contract with at least 512 generated vectors
+   and a machine-disabled Python oracle; and
+5. use one source-build authorization followed by one final-digest R3 runtime
+   authorization.
+
+This plan does not itself authorize U4F source implementation, PowerShell or
+Python machine execution, runtime or manifest observation, storage, U3K,
+closeout, commit, push, or remote Git.
+
+## Authoritative Closeout State
+
+Phase 3.6 is complete at the accepted generated-only, zero-retention,
+nondeployment scope. R5 passed 500 generated runtime cases, all 2,597 Phase 3.6
+tests, and one bounded U3K A01-A10 storage transaction. See
+[`p3-6-consolidated-runtime-closeout-r5.md`](p3-6-consolidated-runtime-closeout-r5.md).
+Older pending-gate language is retained as historical chronology and is
+superseded by the R5 closeout for current status only.

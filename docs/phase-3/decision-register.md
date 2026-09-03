@@ -1948,3 +1948,238 @@ remain unauthorized.
 `9BE9C3F3D2BB9ABE11A84CCCE2E4DDF79B3370AF017AD9E0B56E29C2426B541E`.
 It transitions only the named U3V proposal test from obsolete pre-authorization
 assertions to source complete, owner acceptance pending, and runtime closed.
+
+### D-P3.6-U3V-H1-R1-DIAGNOSTIC-IMPLEMENTATION-ACCEPTANCE
+
+**Status:** Accepted on 2026-09-02 by `mayank-admin`.
+
+Accepted package SHA-256:
+`AB6861A7A3074BD12B36AFE7B8B88BE58EB0A643583D577E586BE1B785E6F0BD`.
+Acceptance record SHA-256:
+`5B8847FF5E484C40D0630C2E9B91D41D877662D27648BCB951962117C25B7DD5`.
+This acceptance permits only preparation of a separate non-effective runtime
+diagnostic authorization proposal.
+
+### D-P3.6-U3W-H1-R1-DIAGNOSTIC-RUNTIME-BINDING-R1-AUTH
+
+**Status:** Requestable; exact owner authorization pending.
+
+The non-effective package SHA-256 is
+`DDCB7A9C4E6E93BF5252FAFF840E3841C1B9080FE5657AA0037532EE2037B760`.
+It authorizes zero attempts. PowerShell execution, runtime or machine
+observation, Python machine access, U3K, deployment, and remote Git remain
+closed until a matching digest-bound owner authorization is recorded.
+
+**Result:** One attempt consumed on 2026-09-02. Runtime trust and all five
+source bindings succeeded, but the diagnostic failed closed with
+`controller_stage_projection_invalid`. The authorization is not reusable.
+
+### D-P3.6-U3X-FAILURE-ANALYSIS-DECISIONS
+
+**Status:** Accepted `A/A/A/A` for proposal preparation only.
+
+The non-effective planning package SHA-256 is
+`80CA25BC1F1EE77E5A9ED8ADEF76C695D5169544CB75B6A57A03692463FFA460`.
+Selected options are `D-P3.6-U3X-001:A`, `002:A`, `003:A`, and `004:A`:
+an additive controller successor, exact null semantics, static then bounded
+PowerShell contract validation, and two-gate reentry before one new diagnostic.
+Selection permits only preparation of a later source-only implementation
+authorization proposal; it grants no implementation or execution authority.
+
+The exact acceptance record SHA-256 is
+`56FE994A8F3EDCB17B673E63CB3773B17EB63FA8B3E23F04A3A58A9E7105D91E`.
+
+### D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-AUTH
+
+**Status:** Requestable; explicit digest-bound owner authorization pending.
+
+The non-effective authorization package SHA-256 is
+`35086DDC152DDF659097F6841AA364B965E0851833C339DCF2736BEF1AA0940A`.
+If exactly accepted, U3Y permits implementation only of the eleven additive
+source, generated-vector, generated/static-test, evidence, package, and review
+paths bound by the package. It requires at least 256 generated vectors and at
+least 95 percent branch coverage for the machine-disabled Python reference.
+It does not authorize PowerShell parsing or execution, runtime or machine
+access, another attempt, U3K, deployment, or remote Git.
+
+## D-P3.6-U3Y Source Acceptance
+
+`D-P3.6-U3Y-CONTROLLER-R1-STAGE-PROJECTION-IMPLEMENTATION-ACCEPTANCE` is
+accepted against package SHA-256
+`ED306CDFAA604675DAC42AF3137C566EC82EC2BEBCA9B68BE60DE4B8D6D1DC78`.
+It authorizes preparation only of the non-effective U3Z planning package
+SHA-256
+`B9696A95EF14D186C7D2CC8D949EE711C2621E907DAD28AF4FC192B2A1A1F09A`.
+
+## D-P3.6-U3Z H1 Source Implementation
+
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-AUTH`
+is authorized against planning package SHA-256
+`B9696A95EF14D186C7D2CC8D949EE711C2621E907DAD28AF4FC192B2A1A1F09A`.
+The canonical 1,465-byte owner statement SHA-256 is
+`5136263DC036CD37AAEB7EEBA05076C5567761246F59566EB12B4DBA9AE1DA5C`.
+The source-only result is sealed in implementation package SHA-256
+`47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF`.
+Exact `D-P3.6-U3Z-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT` is recorded with
+owner statement SHA-256
+`E7F7B483EBF3DABD46CA213CB6773582CE23542BB3EA8BB8FBB535F212327692`.
+The one allowed historical test transitioned and all 1,503 Phase 3.6 checks
+pass. Separate exact owner source acceptance is now requestable. These
+decisions grant no PowerShell execution, runtime attempt, U3K, deployment,
+commit, push, or remote Git authority.
+
+## D-P3.6-U3Z H1 Acceptance And Runtime R1 Request
+
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-HARNESS-IMPLEMENTATION-ACCEPTANCE`
+is accepted against package SHA-256
+`47344ECB697AF05C361D52B3CF05DE6E730B8AF4FC1E91C3AAD682FA514727AF`.
+The canonical owner statement is 1,450 UTF-8 bytes with SHA-256
+`2E1141B3EB2FE91D1208C4E249919023CA81B6810BA66BA76495639CAAC384C5`;
+the acceptance record SHA-256 is
+`38B89E53B46F921663879DE0614AF318EDF9B66AB36120663D14F61070AD8477`.
+
+The resulting authorization package SHA-256 is
+`3348ECB80895806A2E63610088EF3178CE38B715910C3B1463D97CB2E8F3C6C5`.
+`D-P3.6-U3Z-CONTROLLER-R1-GENERATED-CONTRACT-VALIDATION-RUNTIME-BINDING-R1-AUTH`
+was accepted and its one attempt is consumed. It failed closed with
+`binding_failed` at fixed-parent-set validation before any runtime process or
+generated case executed; the authorization is not reusable.
+
+## D-P3.6-U4A Binding Classification Remediation
+
+Non-effective package SHA-256
+`0918CD9775DA870C530233BD8728325164159A53777A42FAA8DB5B4A7C8DA5D9`
+presents `D-P3.6-U4A-001` through `D-P3.6-U4A-004`, each with options `A-D`
+and recommendation `A`. The aggregate decision
+`D-P3.6-U4A-U3Z-R1-FAILURE-ANALYSIS-DECISIONS` is accepted as `A/A/A/A`.
+Its canonical statement is 966 UTF-8 bytes with SHA-256
+`EE16DBC0A50E6B0CC9C4A656988F37C5C1236C3F7EEB1A79F5B7D12021502927`;
+acceptance record SHA-256 is
+`F8C39C761A8B0359CDB50F13AF0935A481C8A881A02A6F325E722137FCB75E36`.
+
+## D-P3.6-U4B Outer Attempt Controller R0
+
+Non-effective package SHA-256
+`E52680B8314FA9A4FC862510BC9570DE3942A791952F22425E61ED61723222AE`
+defines the separately gated source implementation. Pending decision
+`D-P3.6-U4B-OUTER-ATTEMPT-CONTROLLER-R0-IMPLEMENTATION-AUTH` grants no source,
+contract, vector, or test implementation, no execution or retry, and no U3K,
+deployment, commit, push, or remote Git authority.
+
+## D-P3.6 Consolidated Two-Authorization Policy
+
+Non-effective package SHA-256
+`DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C`
+presents `D-P3.6-CA-001` through `D-P3.6-CA-006`, each with options `A-D` and
+recommendation `A`. Recommended authorization one is
+`D-P3.6-CONSOLIDATED-BUILD-AUTH`; authorization two will be
+`D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH` after an exact successful build
+bundle exists. No selection or authority is inferred from preparation or
+`continue`; U4B remains the fallback.
+
+## Consolidated Build Decision Result
+
+`D-P3.6-CONSOLIDATED-BUILD-AUTH` is accepted with `A/A/A/A/A/A` against
+package SHA-256
+`DC0C28564207F87E64441CEF146CB711E203B11694D08997E82C1962CCD0414C`.
+The separately authorized compatibility transition is recorded under
+`D-P3.6-CONSOLIDATED-COMPATIBILITY-TEST-ALLOWLIST-AMENDMENT`. The resulting
+source build package SHA-256 is
+`A006B6A1D7AA59F8A67BC8AD24B280D546397F921AF0111E366ACF38DD21A766`.
+`D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-AUTH` is now requestable against package
+SHA-256 `B7AB81130213AADD907055B75D795D59864AD2C91A2D876B7A267407CA289CD3`
+but remains pending and non-effective.
+
+## D-P3.6-U4C Runtime-Closeout Remediation
+
+The first consolidated runtime-closeout attempt is consumed and cannot be
+retried under its existing authorization. Sanitized reason:
+`process_output_bounds_failed`. U4C planning package SHA-256
+`26182B3EFB369C56741DFCEC51DCE412DB3EC4EF5170C0741847F1ADAE4481C0`
+defines decisions `D-P3.6-U4C-001` through `D-P3.6-U4C-005`, each with options
+`A-D`; recommendation `A/A/A/A/A`. Selection would authorize preparation only
+of a separate non-effective U4D source implementation authorization proposal.
+
+### D-P3.6-U4C-CLOSEOUT-R1-FAILURE-ANALYSIS-DECISIONS
+
+- **Status:** Accepted `A/A/A/A/A` by `mayank-admin`.
+- **Package:** SHA-256
+  `26182B3EFB369C56741DFCEC51DCE412DB3EC4EF5170C0741847F1ADAE4481C0`.
+- **Acceptance:** SHA-256
+  `722B4180D7FD81CAC3CB829C1F9A901705DC7EF87E86E1527F5E18D00926330C`.
+- **Effect:** Prepare only the separate U4D source-build authorization
+  proposal; no implementation or execution authority.
+
+### D-P3.6-U4D-PROCESS-OUTPUT-REMEDIATION-IMPLEMENTATION-AUTH
+
+- **Status:** Requestable, owner authorization pending.
+- **Package:** SHA-256
+  `2DAD142AE31D5A3738ABADD0098512B61C0BC2C3A5C7C915BF99DE8D40FB7F74`.
+- **Proposed scope:** Seventeen additive paths, one exact compatibility edit,
+  thirteen synchronization paths, at least 320 generated vectors, and six
+  bounded source cycles.
+- **Current effect:** No source implementation, PowerShell execution, runtime
+  attempt, U3K, closeout, commit, push, or remote Git authority.
+
+#### U4D Source-Build Authorization
+
+`mayank-admin` authorized the exact source-only U4D build against package
+SHA-256
+`2DAD142AE31D5A3738ABADD0098512B61C0BC2C3A5C7C915BF99DE8D40FB7F74`.
+The canonical 1,745-byte owner statement SHA-256 is
+`0238D5D659F9D35068C9949DAB57DD8D72A88F624847A7593263CE767E3C51B5`.
+This opens only the bounded source/generated-static work. PowerShell execution,
+runtime or machine actions, U3K, closeout, commit, push, and remote Git remain
+unauthorized.
+
+### D-P3.6-U4D compatibility amendments and source completion
+
+`mayank-admin` authorized the exact historical self-binding amendment with
+statement SHA-256
+`2D3BA9EC453CFCF8BFEF18B72A8FAB67E49AC1C2E929BA106BAA6E80C419CA0F`
+and the U4D proposal-test amendment with canonical statement SHA-256
+`24A39807CC463909BF342C36B931FD220FF3003F64774C90D32374C13758088E`.
+The sealed source/generated-static U4D package SHA-256 is
+`288F275345E2586E05BE14EC964CA77EF7503A0BE70D88C6C5696BB4655C612A`.
+
+### D-P3.6-CONSOLIDATED-RUNTIME-CLOSEOUT-R2-AUTH
+
+The exact non-effective authorization package SHA-256 is
+`3712793C5A57E66E39C8A804E162A4680EA92024682BDDF2A54573E1622C541E`,
+bound to action-spec SHA-256
+`917ABC07DAFA9C148B37BBD7E049267E98D95BEB4534674ABA070D747E5B3F81`.
+Owner authorization was recorded and the exact single attempt was consumed.
+It failed closed at `R2-A04-UTILITY-MANIFEST-AND-CLOSURE-BINDING` with
+`utility_closure_declared_target_missing`. No generated validation, U3K,
+storage, closeout, commit, push, or remote Git action occurred.
+
+### D-P3.6-U4E-001 through D-P3.6-U4E-005
+
+- **Status:** Owner selections pending; planning only.
+- **Package:** SHA-256
+  `C0BF901B7D66BE11A250F9369C5CE564A59A726E88877E4A77CD36F310997B7D`.
+- **Recommendation:** `A/A/A/A/A`.
+- **Topics:** manifest-relative resolution; load-bearing closure versus
+  `FileList` inventory; generated resolver evidence; additive immutable
+  remediation; and two-gate runtime reentry.
+- **Effect if selected:** prepare only a separate non-effective U4F source
+  implementation authorization proposal. No implementation or execution
+  authority is granted by package preparation or selection.
+
+### D-P3.6-U4E-CLOSEOUT-R2-FAILURE-ANALYSIS-DECISIONS
+
+- **Status:** Requestable and pending exact owner selection.
+- **Boundary:** Acceptance cannot be inferred from `continue`, recommendation,
+  planning work, or silence.
+
+## D-P3.6-CONSOLIDATED-CLOSEOUT
+
+Accepted through the recorded combined-execution delegation on 2026-09-03.
+Phase 3 and Phase 3.6 are complete at the generated-only, zero-retention,
+nondeployment scope. Evidence SHA-256 is
+`8E6567507FCCA1439FA6AC7C9C384721D98A51EDE989706152CFDE886F6FFD67`;
+acceptance SHA-256 is
+`21C442B3B0B4EC2E719DD2DCB9C882174ED7AF4425518D1CCB730A82284EFFA1`.
+This decision does not authorize operational models, cameras, media, private or
+Government data, scanners, network activity, profile activation, deployment,
+or remote Git.
