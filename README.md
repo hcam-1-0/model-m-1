@@ -1,19 +1,40 @@
 # H-CAM 2.0
 
-Primary integrated implementation and validation repository for the H-CAM
-resource-adaptive video intelligence platform.
+[![Python CI](https://github.com/hcam-2-0/h-cam-2.0/actions/workflows/python-ci.yml/badge.svg)](https://github.com/hcam-2-0/h-cam-2.0/actions/workflows/python-ci.yml)
 
-## GitHub Coordination
+H-CAM is a resource-adaptive video-intelligence platform designed to progress
+from CPU-only developer laptops to owned GPU labs and future server or
+Kubernetes deployments without changing its core contracts. This repository is
+the primary integrated implementation, validation, migration, and evidence
+workspace.
+
+> **Current boundary:** development is generated-only, zero-retention, and
+> non-deployment. A merged change does not authorize real camera control,
+> private or Government data, operational identification, model or dataset
+> acquisition, alerts, enforcement, or production deployment.
+
+[Project](https://github.com/orgs/hcam-2-0/projects/1) | [Architecture](https://github.com/hcam-2-0/hcam-docs) | [Governance](https://github.com/hcam-2-0/.github/blob/main/GOVERNANCE.md) | [Contracts](https://github.com/hcam-2-0/hcam-protos) | [Phase 3](docs/phase-3/README.md)
+
+## Project Navigation
 
 - [Platform Delivery Project](https://github.com/orgs/hcam-2-0/projects/1)
 - [Architecture and repository catalogue](https://github.com/hcam-2-0/hcam-docs)
 - [Organization governance](https://github.com/hcam-2-0/.github/blob/main/GOVERNANCE.md)
 - [Cross-service contracts](https://github.com/hcam-2-0/hcam-protos)
 
-Phase, priority, target hardware profile, authorization gate, and current owner
-belong on the linked Project item. A merged change does not by itself authorize
-camera control, private/Government data, model or dataset acquisition,
-deployment, or phase acceptance.
+Phase, priority, target hardware profile, authorization gate, and owner belong
+on the linked Project item. Source, tests, immutable decisions, evidence, and
+migrations remain in Git.
+
+## Delivery Status
+
+| Phase | Status | Primary result | Details |
+| --- | --- | --- | --- |
+| Phase 0 | Complete and accepted | Product, architecture, governance, and validation baseline | [Phase 0](docs/phase-0/README.md) |
+| Phase 1 | Complete and accepted | Camera registry, APIs, audit, migrations, and operational foundation | [Phase 1](docs/phase-1/README.md) |
+| Phase 2 | Complete and accepted | Stream control, metadata health, ONVIF capability inventory, and synthetic lab | [Phase 2](docs/phase-2/README.md) |
+| Phase 3 | Complete at bounded scope | Generated-only analytics, tracking, events, synthetic ANPR, and runtime validation | [Phase 3](docs/phase-3/README.md) |
+| Phase -1 | Platform foundation tracked | Adaptive capability profiles, placement, compatibility, and rollback contracts | [Delivery project](https://github.com/orgs/hcam-2-0/projects/1) |
 
 ## Phase -1 Adaptive Platform Foundation
 
@@ -26,7 +47,51 @@ developer laptops through owned GPU labs and future server/cluster deployments.
 Phase -1 is tracked in the Platform Delivery Project before implementation;
 existing Phase 0-3 code and evidence remain preserved.
 
-## Phase 3 AI analytics
+## Phase 3 AI Analytics
+
+Phase 3 is complete at its bounded **generated-only, zero-retention,
+non-deployment** scope. It establishes model-independent analytics contracts
+and validates the path from generated observations to anonymous tracks,
+line/zone events, synthetic ANPR evidence, and resource-aware runtime
+selection.
+
+### Subphase Overview
+
+| Subphase | Status | Delivered capability |
+| --- | --- | --- |
+| P3.0 | Accepted | Analytics taxonomy, contracts, guardrails, assignments, RBAC, revisions, audit, and transactional outbox |
+| P3.1 | Accepted | Generated data/evaluation records, QA, split-leakage checks, metric goldens, and evidence packaging |
+| P3.2 | Accepted | Default-off generated-input detector reference, normalized observations, retention, and local E2E validation |
+| P3.3 | Accepted | Anonymous stream-local tracking, lifecycle persistence, generated HOTA/IDF1, and TrackEval parity |
+| P3.4 | Accepted | Hybrid geometry, line/zone/dwell/occupancy events, deterministic replay, and bounded PostGIS state |
+| P3.5 | Accepted | Synthetic ANPR contracts, OCR adapters, normalization, abstention, bounded consensus, and W10 closure |
+| P3.6 | Complete at bounded scope | Adaptive runtime policy, generated controller validation, 500 generated runtime cases, and bounded U3K closeout |
+
+### Closeout Evidence
+
+- [Authoritative Phase 3.6 R5 closeout](docs/phase-3/p3-6-consolidated-runtime-closeout-r5.md)
+- **2,597 tests** recorded in the Phase 3.6 closeout result
+- **500 generated runtime cases** validated without real camera or private data
+- Successful bounded U3K storage transaction with documented cleanup and
+  retention controls
+- Detailed decisions, packages, failures, remediations, and hashes remain in
+  the [Phase 3 evidence index](docs/phase-3/README.md)
+
+### Safety Boundary
+
+- Generated inputs only; no real CCTV media path
+- Anonymous, stream-local tracking; no person identification or cross-camera
+  identity linkage
+- No Government/private datasets, operational watchlists, notifications,
+  dispatch, or enforcement
+- No production model promotion, Kubernetes activation, or deployment claim
+
+<details>
+<summary><strong>Historical milestones, authorization records, and validation commands</strong></summary>
+
+> The following chronology is retained for traceability. Some statements
+> describe earlier gates and are superseded by the current closeout above and
+> the authoritative Phase 3 evidence index.
 
 Phase 3 planning defines anonymous detection, per-camera tracking, line/zone
 events, synthetic ANPR, runtime selection, data/model governance, security, and
@@ -189,7 +254,9 @@ extraction, synthetic generation, training, inference, media access, or model ex
 The artifact-research command is separately gated and writes only the seven
 authorized files and receipts to the external local quarantine.
 
-## Phase 2 camera and video ingestion
+</details>
+
+## Phase 2 Camera And Video Ingestion
 
 Phase 2 adds stream endpoint management, metadata-only health workers, a
 controlled ONVIF simulator, authenticated background capability inventory,
@@ -220,7 +287,7 @@ hcam capability-worker --once
 hcam capability-worker --poll-seconds 5
 ```
 
-## Phase 1 camera registry backend
+## Phase 1 Camera Registry Backend
 
 Phase 1 begins with the normalized camera registry, stream-state contract,
 health endpoints, local SQLite database, migration, and import audit trail.
@@ -262,14 +329,14 @@ Local SQLite recovery commands never overwrite existing files:
 .\.venv\Scripts\hcam recovery-drill .\backups\drill-001
 ```
 
-## Phase 0 foundation
+## Phase 0 Foundation
 
 Phase 0 defines the H-CAM product baseline, requirements, architecture,
 governance, validation gates, and Phase 1 entry plan.
 
 Start here: [docs/phase-0/README.md](docs/phase-0/README.md)
 
-## Sentinel CCTV environment probe
+## Sentinel CCTV Environment Probe
 
 This repository includes a safe, read-only probe for the Sentinel Gujarat CCTV
 reference environment. It is for development planning and stream compatibility
