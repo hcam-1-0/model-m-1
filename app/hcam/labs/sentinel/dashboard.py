@@ -467,14 +467,19 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                         requester="phase2-5-dashboard",
                         reason=reason,
                     )
-                except CatalogAdapterError:
-                    observability.observe("catalogue", "catalog_upstream_failed", "degraded")
+                except CatalogAdapterError as exc:
+                    code = "catalog_schema_rejected" if exc.code in {"invalid_catalog_json", "catalog_schema_invalid"} else "catalog_upstream_failed"
+                    observability.observe("catalogue", code, "degraded")
                     refresh_counter.labels(profile.adapter_id, "failed").inc()
                     raise
                 refresh_counter.labels(
                     profile.adapter_id,
                     "unchanged" if result.unchanged else "succeeded",
                 ).inc()
+                if result.record_count == 0:
+                    observability.observe("catalogue", "catalog_empty", "degraded")
+                else:
+                    observability.observe("catalogue", "none", "healthy")
                 counts = store.summary(profile.adapter_id)["counts"]
                 for state in ("active", "inactive", "missing", "tombstoned"):
                     camera_gauge.labels(profile.adapter_id, state).set(  # type: ignore[index]
@@ -925,6 +930,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                 session_id, bearer_token(request), bytes(body)
             )
         except WhepProxyError as exc:
+            request.app.state.observability.observe("preview", "preview_timeout" if "timeout" in exc.code else "mediamtx_unavailable", "failed")
             raise whep_error(exc) from exc
         return Response(
             content=answer,
@@ -941,6 +947,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
         try:
             await request.app.state.whep_proxy.delete(session_id, bearer_token(request))
         except WhepProxyError as exc:
+            request.app.state.observability.observe("cleanup", "cleanup_failed", "failed")
             raise whep_error(exc) from exc
         return Response(status_code=204)
 
@@ -951,6 +958,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
         try:
             await request.app.state.hls_relay.delete(session_id, bearer_token(request))
         except HlsRelayError as exc:
+            request.app.state.observability.observe("cleanup", "cleanup_failed", "failed")
             status = 401 if exc.code == "hls_relay_unauthorized" else 404
             raise HTTPException(
                 status, f"HLS relay cleanup failed ({exc.code})"
