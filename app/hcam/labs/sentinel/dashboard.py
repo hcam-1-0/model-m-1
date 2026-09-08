@@ -34,6 +34,7 @@ from hcam.labs.sentinel.lab_adapters import (
     read_active_lab_adapter,
     write_active_lab_adapter,
 )
+from hcam.labs.sentinel.observability import LabObservability
 from hcam.labs.sentinel.models import ExactNetworkPolicy, NetworkRule
 from hcam.labs.sentinel.store import CatalogStore
 from hcam.labs.sentinel.whep_proxy import SentinelWhepProxy, WhepProxyError
@@ -441,6 +442,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
             ttl_seconds=configured.whep_session_ttl_seconds,
         )
         registry = CollectorRegistry()
+        observability = LabObservability(registry, version="phase2-5-lab")
         refresh_counter = Counter(
             "hcam_phase2_5_catalog_refresh_total",
             "Generated Phase 2.5 catalogue refreshes",
@@ -466,6 +468,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                         reason=reason,
                     )
                 except CatalogAdapterError:
+                    observability.observe("catalogue", "catalog_upstream_failed", "degraded")
                     refresh_counter.labels(profile.adapter_id, "failed").inc()
                     raise
                 refresh_counter.labels(
@@ -483,6 +486,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
         app.state.catalog_adapters = adapters
         app.state.perform_catalog_refresh = perform_refresh
         app.state.metrics_registry = registry
+        app.state.observability = observability
         app.state.dashboard_settings = configured
         app.state.adapter_state_path = adapter_state_path
         app.state.publisher_state_path = publisher_state_path
@@ -608,7 +612,13 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
             "initial_refresh_error": request.app.state.initial_refresh_errors.get(
                 profile.adapter_id
             ),
+            "checks": request.app.state.observability.health(app_ready=True),
         }
+
+    @app.get("/api/support-bundle")
+    def support_bundle(request: Request) -> dict[str, object]:
+        """LAB-only bounded diagnostic bundle; never includes media/provider data."""
+        return request.app.state.observability.support_bundle(app_ready=True)
 
     @app.get("/metrics", include_in_schema=False)
     def metrics(request: Request) -> Response:
