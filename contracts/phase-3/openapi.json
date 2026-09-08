@@ -8997,6 +8997,52 @@
           ]
         }
       },
+      "/api/cameras/{camera_id}/playback": {
+        "post": {
+          "operationId": "lab_playback_api_cameras__camera_id__playback_post",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "camera_id",
+              "required": true,
+              "schema": {
+                "title": "Camera Id",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "title": "Response Lab Playback Api Cameras  Camera Id  Playback Post",
+                    "type": "object"
+                  }
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Lab Playback",
+          "tags": [
+            "lab-sandbox"
+          ]
+        }
+      },
       "/camera-imports": {
         "post": {
           "operationId": "import_camera_registry_camera_imports_post",

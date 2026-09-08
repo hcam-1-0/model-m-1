@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 from contextlib import asynccontextmanager
+import os
 
 from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
+from starlette.middleware.cors import CORSMiddleware
 
 from hcam import __version__
 from hcam.analytics.bootstrap import build_analytics_runtime
@@ -18,6 +20,7 @@ from hcam.camera_registry.gis_routes import router as gis_router
 from hcam.camera_registry.routes import router as camera_router
 from hcam.database import Database
 from hcam.health.routes import router as health_router
+from hcam.sandbox_playback import router as sandbox_playback_router
 from hcam.metrics import RequestMetrics, router as metrics_router
 from hcam.observability import RequestContextMiddleware
 from hcam.security.auth import build_authenticator
@@ -86,7 +89,16 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         access_log_enabled=resolved_settings.access_log_enabled,
         metrics_recorder=application.state.request_metrics,
     )
+    if os.getenv("HCAM_ALLOW_LAB_WHEP_SANDBOX", "").lower() == "true":
+        # LAB / SANDBOX / LOCAL TEST ONLY. The production application never adds CORS.
+        application.add_middleware(
+            CORSMiddleware,
+            allow_origins=["http://127.0.0.1:3001"],
+            allow_methods=["POST", "OPTIONS"],
+            allow_headers=["Content-Type"],
+        )
     application.include_router(health_router)
+    application.include_router(sandbox_playback_router)
     application.include_router(metrics_router)
     application.include_router(camera_router)
     application.include_router(gis_router)
