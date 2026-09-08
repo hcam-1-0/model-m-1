@@ -37,6 +37,10 @@ def _scope_conditions(principal: Principal) -> list[object]:
 
 
 def _camera_feature(camera: Camera) -> dict[str, object]:
+    # This is the browser-facing GIS boundary.  Do not add registry transport,
+    # ownership, storage, or provider fields here: GIS selection is not a media
+    # authorization decision.  A live handoff stays session-authorized by the
+    # playback endpoint, so catalogue records are deliberately registry-only.
     return {
         "type": "Feature",
         "geometry": {
@@ -46,16 +50,11 @@ def _camera_feature(camera: Camera) -> dict[str, object]:
         "properties": {
             "camera_id": camera.camera_id,
             "display_name": camera.display_name,
-            "location_label": camera.location_label,
             "department": camera.department,
-            "ownership": camera.ownership,
             "camera_type": camera.camera_type,
-            "connectivity_status": camera.connectivity_status,
-            "storage_status": camera.storage_status,
             "health_status": camera.health_status,
-            "maintenance_status": camera.maintenance_status,
-            "operational_status": camera.operational_status,
-            "timezone_name": camera.timezone_name,
+            "approved_live": False,
+            "stale": (camera.health_status or "").strip().lower() == "stale",
         },
         "id": camera.camera_id,
     }
@@ -200,22 +199,9 @@ def cameras_clustered(
     for members in clusters.values():
         longitude = sum(float(camera.longitude) for camera in members) / len(members)
         latitude = sum(float(camera.latitude) for camera in members) / len(members)
-        features.append(
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": (longitude, latitude)},
-                "properties": {
-                    "camera_id": members[0].camera_id,
-                    "display_name": members[0].display_name,
-                    "location_label": members[0].location_label,
-                    "department": members[0].department,
-                    "camera_type": members[0].camera_type,
-                    "health_status": members[0].health_status,
-                    "operational_status": members[0].operational_status,
-                },
-                "id": members[0].camera_id,
-            }
-        )
+        feature = _camera_feature(members[0])
+        feature["geometry"] = {"type": "Point", "coordinates": (longitude, latitude)}
+        features.append(feature)
     return {"type": "FeatureCollection", "features": features}
 
 
@@ -259,7 +245,8 @@ def camera_vector_tile(
             SELECT ST_TileEnvelope(:z, :x, :y) AS geom
         ), tile_rows AS (
             SELECT c.camera_id, c.display_name, c.department, c.camera_type,
-                   c.health_status, c.operational_status,
+                   c.health_status, false AS approved_live,
+                   CASE WHEN c.health_status = 'stale' THEN true ELSE false END AS stale,
                    ST_AsMVTGeom(ST_Transform(c.geometry, 3857), bounds.geom,
                                 :extent, :buffer, true) AS geom
             FROM cameras AS c, bounds

@@ -274,16 +274,11 @@ class GeoJSONPoint(BaseModel):
 class CameraGeoProperties(BaseModel):
     camera_id: str
     display_name: str
-    location_label: str | None = None
     department: str | None = None
-    ownership: str | None = None
     camera_type: str | None = None
-    connectivity_status: str | None = None
-    storage_status: str | None = None
     health_status: str | None = None
-    maintenance_status: str | None = None
-    operational_status: str | None = None
-    timezone_name: str | None = None
+    approved_live: bool = False
+    stale: bool = False
 
 
 class CameraGeoFeature(BaseModel):

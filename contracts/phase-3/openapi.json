@@ -1277,6 +1277,11 @@
         },
         "CameraGeoProperties": {
           "properties": {
+            "approved_live": {
+              "default": false,
+              "title": "Approved Live",
+              "type": "boolean"
+            },
             "camera_id": {
               "title": "Camera Id",
               "type": "string"
@@ -1291,17 +1296,6 @@
                 }
               ],
               "title": "Camera Type"
-            },
-            "connectivity_status": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Connectivity Status"
             },
             "department": {
               "anyOf": [
@@ -1329,71 +1323,10 @@
               ],
               "title": "Health Status"
             },
-            "location_label": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Location Label"
-            },
-            "maintenance_status": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Maintenance Status"
-            },
-            "operational_status": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Operational Status"
-            },
-            "ownership": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Ownership"
-            },
-            "storage_status": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Storage Status"
-            },
-            "timezone_name": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Timezone Name"
+            "stale": {
+              "default": false,
+              "title": "Stale",
+              "type": "boolean"
             }
           },
           "required": [

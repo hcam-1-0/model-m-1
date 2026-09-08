@@ -60,6 +60,45 @@ def test_camera_gis_bbox_radius_and_cluster_are_scoped(
     assert blocked.json()["features"] == []
 
 
+def test_camera_gis_features_are_display_safe_and_registry_only(
+    imported_app: FastAPI,
+    viewer_headers: dict[str, str],
+) -> None:
+    with TestClient(imported_app) as client:
+        response = client.get(
+            "/cameras/geo/bbox",
+            params={
+                "min_lon": 72.0,
+                "min_lat": 22.0,
+                "max_lon": 73.0,
+                "max_lat": 24.0,
+            },
+            headers=viewer_headers,
+        )
+
+    assert response.status_code == 200
+    properties = response.json()["features"][0]["properties"]
+    assert set(properties) == {
+        "camera_id",
+        "display_name",
+        "department",
+        "camera_type",
+        "health_status",
+        "approved_live",
+        "stale",
+    }
+    assert properties["approved_live"] is False
+    for forbidden in (
+        "ownership",
+        "storage_status",
+        "stream_path",
+        "hls_path",
+        "selected_url",
+        "timezone_name",
+    ):
+        assert forbidden not in properties
+
+
 def test_camera_gis_rejects_invalid_bounds_and_requires_postgis_for_tiles(
     imported_app: FastAPI,
     viewer_headers: dict[str, str],
