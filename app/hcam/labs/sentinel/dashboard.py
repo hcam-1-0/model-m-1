@@ -567,6 +567,9 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
             else "generated-only"
         )
 
+    def local_ready(request: Request) -> bool:
+        return all(hasattr(request.app.state, name) for name in ("catalog_store", "metrics_registry", "observability"))
+
     def require_lab_confirmation(value: str) -> None:
         if value != data_classification():
             raise HTTPException(403, "Active lab-source confirmation required")
@@ -617,8 +620,16 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
             "initial_refresh_error": request.app.state.initial_refresh_errors.get(
                 profile.adapter_id
             ),
-            "checks": request.app.state.observability.health(app_ready=True),
+            "checks": request.app.state.observability.health(app_ready=local_ready(request)),
         }
+
+    @app.get("/health/live")
+    def health_live() -> dict[str, str]:
+        return {"status":"live","dependency":"process"}
+
+    @app.get("/health/ready")
+    def health_ready(request: Request) -> dict[str, str]:
+        return {"status":"ready" if local_ready(request) else "not_ready","dependency":"local_store_and_metrics"}
 
     @app.get("/api/support-bundle")
     def support_bundle(request: Request) -> dict[str, object]:
@@ -658,6 +669,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
         result["initial_refresh_error"] = request.app.state.initial_refresh_errors.get(
             profile.adapter_id
         )
+        result["observability"] = request.app.state.observability.health(app_ready=local_ready(request))
         result["boundaries"] = {
             "test_dashboard_only": True,
             "main_dashboard": False,
