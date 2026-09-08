@@ -14,7 +14,7 @@ from uuid import uuid4
 
 from prometheus_client import Counter, Gauge, Histogram, CollectorRegistry
 
-_FORBIDDEN = compile(r"(?i)(https?://|rtsp://|whep|sdp|token|secret|password|authorization|camera[_ -]?id)")
+_FORBIDDEN = compile(r"(?i)(https?://|rtsp://|whep|sdp|token|secret|password|authorization|camera[_ -]?id|provider[_ -]?(payload|locator))")
 _CODES = frozenset({"catalog_upstream_failed", "catalog_empty", "catalog_schema_rejected", "mediamtx_unavailable", "preview_timeout", "cleanup_failed"})
 
 @dataclass(frozen=True, slots=True)
@@ -50,7 +50,7 @@ class LabObservability:
         return {"liveness":{"state":"live","dependency":"process"}, "readiness":{"state":"ready" if app_ready else "not_ready","dependency":"database_and_auth"}, "catalogue":{"dependency":"provider"}, "provider":{"dependency":"external"}, "relay":{"dependency":"mediamtx"}, "gateway":{"dependency":"gateway"}, "browser_media":{"dependency":"browser_only"}}
 
     def support_bundle(self, *, app_ready: bool) -> dict[str, object]:
-        bundle={"format":"hcam.phase2_5.support.v1","version":self.version,"health":self.health(app_ready=app_ready),"events":[asdict(event) for event in self.events],"retention":"none"}
+        bundle={"format":"hcam.phase2_5.support.v1","versions":{"lab":self.version},"safe_settings":{"mode":"lab","metrics":"bounded","retention":"none"},"health":self.health(app_ready=app_ready),"listeners":[{"component":"dashboard","state":"local"},{"component":"metrics","state":"protected"}],"recent_errors":[asdict(event) for event in self.events],"retention":"none"}
         scan_support_bundle(bundle)
         bundle["checksum"]=sha256(repr(bundle).encode()).hexdigest()
         return bundle

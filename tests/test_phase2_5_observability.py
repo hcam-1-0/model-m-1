@@ -8,9 +8,11 @@ def test_faults_are_independent_and_provider_failure_keeps_process_live():
         event=observability.observe(component,code,state)
         assert event.correlation_id and len(event.correlation_id)==32
     bundle=observability.support_bundle(app_ready=True)
-    assert bundle["retention"]=="none" and len(bundle["events"])==6
+    assert bundle["retention"]=="none" and len(bundle["recent_errors"])==6
+    assert set(bundle) >= {"versions","checksum","safe_settings","health","listeners","recent_errors"}
 
 def test_support_bundle_rejects_sensitive_values():
-    try: scan_support_bundle({"value":"rtsp://private"})
-    except ValueError as error: assert str(error)=="support_bundle_privacy_violation"
-    else: raise AssertionError("privacy scan must fail")
+    for unsafe in ("http://x","https://x","rtsp://x","token=x","secret=x","password=x","Authorization: x","v=0\\r\\nsdp","camera_id=x","provider_payload=x"):
+        try: scan_support_bundle({"value":unsafe})
+        except ValueError as error: assert str(error)=="support_bundle_privacy_violation"
+        else: raise AssertionError("privacy scan must fail")
