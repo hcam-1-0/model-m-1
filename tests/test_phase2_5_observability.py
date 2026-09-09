@@ -23,3 +23,9 @@ def test_status_is_bounded_and_browser_media_is_not_fabricated():
     status=observability.status(app_ready=True)
     assert status["checks"]["browser_media"]["state"]=="not_started"
     assert status["errors"]==[{"component":"preview","error_code":"preview_timeout"}]
+
+def test_zero_retention_is_metadata_only_and_bounded():
+    observability=LabObservability(CollectorRegistry(),version="test")
+    assert observability.check_zero_retention(None)=="not_checked"
+    assert observability.check_zero_retention(0)=="pass"
+    assert observability.check_zero_retention(1)=="fail"

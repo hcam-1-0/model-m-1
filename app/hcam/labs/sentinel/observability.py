@@ -34,6 +34,7 @@ class LabObservability:
         self.failures = Counter("hcam_phase2_5_failures_total", "Bounded Phase 2.5 failures.", ("component", "error_code"), registry=registry)
         self.duration = Histogram("hcam_phase2_5_operation_duration_seconds", "Phase 2.5 operation latency.", ("component", "outcome"), registry=registry)
         self.current: dict[str, str] = {}
+        self.zero_retention = "not_checked"
 
     def correlation_id(self) -> str:
         return uuid4().hex
@@ -59,10 +60,14 @@ class LabObservability:
         """Safe status DTO for the lab dashboard; codes are never free-form."""
         checks=self.health(app_ready=app_ready)
         latest={event.component:event.error_code for event in self.events if event.error_code != "none"}
-        return {"checks":checks,"errors":[{"component":component,"error_code":code} for component,code in sorted(latest.items())]}
+        return {"checks":checks,"errors":[{"component":component,"error_code":code} for component,code in sorted(latest.items())],"zero_retention":{"state":self.zero_retention}}
+
+    def check_zero_retention(self, retained_artifacts: int | None) -> str:
+        self.zero_retention = "not_checked" if retained_artifacts is None else ("pass" if retained_artifacts == 0 else "fail")
+        return self.zero_retention
 
     def support_bundle(self, *, app_ready: bool) -> dict[str, object]:
-        bundle={"format":"hcam.phase2_5.support.v1","versions":{"lab":self.version},"safe_settings":{"mode":"lab","metrics":"bounded","retention":"none"},"health":self.health(app_ready=app_ready),"listeners":[{"component":"dashboard","state":"local"},{"component":"metrics","state":"protected"}],"recent_errors":[asdict(event) for event in self.events if event.error_code!="none"],"retention":"none"}
+        bundle={"format":"hcam.phase2_5.support.v1","versions":{"lab":self.version},"safe_settings":{"mode":"lab","metrics":"bounded","retention":"none"},"health":self.health(app_ready=app_ready),"listeners":[{"component":"dashboard","state":"local"},{"component":"metrics","state":"protected"}],"recent_errors":[asdict(event) for event in self.events if event.error_code!="none"],"zero_retention":{"state":self.zero_retention},"retention":"none"}
         scan_support_bundle(bundle)
         bundle["checksum"]=sha256(json.dumps(bundle,sort_keys=True,separators=(",",":"),ensure_ascii=True).encode()).hexdigest()
         return bundle
