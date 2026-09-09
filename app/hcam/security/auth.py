@@ -213,6 +213,8 @@ def build_authenticator(settings: Settings) -> Authenticator:
         if settings.environment.lower() not in {"development", "test"}:
             raise RuntimeError("Local development authentication is forbidden in production")
         return DevHeaderAuthenticator()
+    if settings.environment.lower() == "production":
+        raise RuntimeError("Cloudflare Access authentication is required in production")
     return UnconfiguredAuthenticator()
 
 
