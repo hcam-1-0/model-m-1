@@ -23,6 +23,7 @@ def upgrade() -> None:
     bind = op.get_bind()
     if bind.dialect.name != "postgresql":
         op.add_column("cameras", sa.Column("geometry", sa.LargeBinary(), nullable=True))
+        op.create_index("ix_cameras_geometry", "cameras", ["geometry"])
         return
 
     op.execute("CREATE EXTENSION IF NOT EXISTS postgis")
