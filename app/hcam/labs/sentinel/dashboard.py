@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+from time import perf_counter
 import json
 import os
 import re
@@ -461,6 +462,8 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
         async def perform_refresh(adapter_id: str, reason: str):
             profile = lab_adapter_profile(adapter_id)
             async with refresh_lock:
+                correlation_id = observability.correlation_id()
+                started = perf_counter()
                 try:
                     result = await adapters[profile.adapter_id].refresh(
                         profile.adapter_id,
@@ -469,7 +472,8 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                     )
                 except CatalogAdapterError as exc:
                     code = "catalog_schema_rejected" if exc.code in {"invalid_catalog_json", "catalog_schema_invalid"} else "catalog_upstream_failed"
-                    observability.observe("catalogue", code, "degraded")
+                    observability.observe("provider" if code == "catalog_upstream_failed" else "catalogue", code, "degraded" if code == "catalog_upstream_failed" else "failed", correlation_id)
+                    observability.duration.labels(component="catalogue", outcome="failed").observe(perf_counter() - started)
                     refresh_counter.labels(profile.adapter_id, "failed").inc()
                     raise
                 refresh_counter.labels(
@@ -477,9 +481,12 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                     "unchanged" if result.unchanged else "succeeded",
                 ).inc()
                 if result.record_count == 0:
-                    observability.observe("catalogue", "catalog_empty", "degraded")
+                    observability.observe("provider", "none", "healthy", correlation_id)
+                    observability.observe("catalogue", "catalog_empty", "degraded", correlation_id)
                 else:
-                    observability.observe("catalogue", "none", "healthy")
+                    observability.observe("provider", "none", "healthy", correlation_id)
+                    observability.observe("catalogue", "none", "healthy", correlation_id)
+                observability.duration.labels(component="catalogue", outcome="healthy" if result.record_count else "degraded").observe(perf_counter() - started)
                 counts = store.summary(profile.adapter_id)["counts"]
                 for state in ("active", "inactive", "missing", "tombstoned"):
                     camera_gauge.labels(profile.adapter_id, state).set(  # type: ignore[index]
