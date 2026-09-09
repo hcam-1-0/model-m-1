@@ -679,7 +679,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
         result["initial_refresh_error"] = request.app.state.initial_refresh_errors.get(
             profile.adapter_id
         )
-        result["observability"] = request.app.state.observability.health(app_ready=local_ready(request))
+        result["observability"] = request.app.state.observability.status(app_ready=local_ready(request))
         result["boundaries"] = {
             "test_dashboard_only": True,
             "main_dashboard": False,

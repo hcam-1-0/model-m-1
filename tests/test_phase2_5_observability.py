@@ -16,3 +16,10 @@ def test_support_bundle_rejects_sensitive_values():
         try: scan_support_bundle({"value":unsafe})
         except ValueError as error: assert str(error)=="support_bundle_privacy_violation"
         else: raise AssertionError("privacy scan must fail")
+
+def test_status_is_bounded_and_browser_media_is_not_fabricated():
+    observability=LabObservability(CollectorRegistry(),version="test")
+    observability.observe("preview","preview_timeout","failed")
+    status=observability.status(app_ready=True)
+    assert status["checks"]["browser_media"]["state"]=="not_started"
+    assert status["errors"]==[{"component":"preview","error_code":"preview_timeout"}]

@@ -55,6 +55,12 @@ class LabObservability:
         state=lambda component, default: {"state":self.current.get(component,default),"dependency":component}
         return {"liveness":{"state":"live","dependency":"process"}, "readiness":{"state":"ready" if app_ready else "not_ready","dependency":"local_store_and_metrics"}, "catalogue":state("catalogue","unknown"), "provider":state("provider","unknown"), "relay":state("relay","not_started"), "gateway":state("gateway","not_started"), "browser_media":{"state":"not_started","dependency":"browser_decode_evidence"}}
 
+    def status(self, *, app_ready: bool) -> dict[str, object]:
+        """Safe status DTO for the lab dashboard; codes are never free-form."""
+        checks=self.health(app_ready=app_ready)
+        latest={event.component:event.error_code for event in self.events if event.error_code != "none"}
+        return {"checks":checks,"errors":[{"component":component,"error_code":code} for component,code in sorted(latest.items())]}
+
     def support_bundle(self, *, app_ready: bool) -> dict[str, object]:
         bundle={"format":"hcam.phase2_5.support.v1","versions":{"lab":self.version},"safe_settings":{"mode":"lab","metrics":"bounded","retention":"none"},"health":self.health(app_ready=app_ready),"listeners":[{"component":"dashboard","state":"local"},{"component":"metrics","state":"protected"}],"recent_errors":[asdict(event) for event in self.events if event.error_code!="none"],"retention":"none"}
         scan_support_bundle(bundle)
