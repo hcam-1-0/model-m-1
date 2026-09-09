@@ -9,6 +9,7 @@ from fastapi.testclient import TestClient
 from prometheus_client import generate_latest
 
 from hcam.labs.sentinel import dashboard
+from hcam.labs.sentinel.adapter import CatalogAdapterError
 from hcam.labs.sentinel.dashboard import (
     DashboardSettings,
     create_dashboard_app,
@@ -355,6 +356,110 @@ def test_whep_cleanup_failure_is_observed_through_runtime_route(
         assert event.component == "cleanup"
         assert event.error_code == "cleanup_failed"
         assert len(event.correlation_id) == 32
+
+
+def test_operational_status_is_bounded_private_and_tracks_catalogue_freshness(
+    tmp_path, monkeypatch
+) -> None:
+    monkeypatch.setenv("HCAM_ALLOW_SENTINEL_SANDBOX", "true")
+    monkeypatch.setattr(dashboard, "SentinelCatalogAdapter", FakeOnlineAdapter)
+    with TestClient(create_dashboard_app(online_settings(tmp_path))) as client:
+        with client.app.state.catalog_store._connect() as connection:
+            connection.execute(
+                "UPDATE catalog_sources SET last_refresh_at=?",
+                ("2100-01-01T00:00:00Z",),
+            )
+        fresh = client.get("/api/status")
+        with client.app.state.catalog_store._connect() as connection:
+            connection.execute(
+                "UPDATE catalog_sources SET last_refresh_at=?",
+                ("2000-01-01T00:00:00Z",),
+            )
+        stale = client.get("/api/status")
+        recovered = client.post(
+            "/api/refresh",
+            headers={
+                "X-HCAM-Lab-Confirm": "sentinel-sandbox",
+                "X-HCAM-Reason": "Restore bounded catalogue freshness",
+            },
+        )
+        with client.app.state.catalog_store._connect() as connection:
+            connection.execute(
+                "UPDATE catalog_sources SET last_refresh_at=?",
+                ("2100-01-01T00:00:00Z",),
+            )
+        current = client.get("/api/status")
+
+    assert fresh.status_code == 200
+    assert fresh.json()["observability"]["checks"]["browser_media"]["state"] == "not_started"
+    assert {item["component"] for item in fresh.json()["observability"]["components"]} == {
+        "provider", "catalogue", "relay", "gateway", "preview", "cleanup"
+    }
+    assert any(item == {"signal": "catalogue_freshness", "state": "fresh"} for item in fresh.json()["observability"]["signals"])
+    assert any(item == {"signal": "catalogue_freshness", "state": "stale"} for item in stale.json()["observability"]["signals"])
+    assert recovered.status_code == 200
+    assert any(item == {"signal": "catalogue_freshness", "state": "fresh"} for item in current.json()["observability"]["signals"])
+    rendered = repr(current.json())
+    assert "live.corp8.cloud" not in rendered
+    assert "rtsp://" not in rendered
+    assert "whep_url" not in rendered.lower()
+    assert "authorization" not in rendered.lower()
+
+
+def test_schema_rejection_threshold_and_recovery_use_refresh_runtime(
+    tmp_path, monkeypatch
+) -> None:
+    monkeypatch.setenv("HCAM_ALLOW_SENTINEL_SANDBOX", "true")
+    monkeypatch.setattr(dashboard, "SentinelCatalogAdapter", FakeOnlineAdapter)
+    with TestClient(create_dashboard_app(online_settings(tmp_path))) as client:
+        adapter = client.app.state.catalog_adapters["lab1highadapter"]
+
+        async def reject_schema(*_args, **_kwargs):
+            raise CatalogAdapterError("catalog_schema_invalid")
+
+        adapter.refresh = reject_schema
+        headers = {
+            "X-HCAM-Lab-Confirm": "sentinel-sandbox",
+            "X-HCAM-Reason": "Exercise bounded schema rejection signal",
+        }
+        responses = [client.post("/api/refresh", headers=headers) for _ in range(3)]
+        threshold = client.get("/api/status")
+        adapter.refresh = FakeOnlineAdapter.refresh.__get__(adapter, FakeOnlineAdapter)
+        recovered = client.post("/api/refresh", headers=headers)
+        current = client.get("/api/status")
+
+    assert [response.status_code for response in responses] == [502, 502, 502]
+    assert any(item == {"signal": "schema_rejection_threshold", "state": "active"} for item in threshold.json()["observability"]["signals"])
+    assert {"component": "catalogue", "error_code": "catalog_schema_rejected"} in threshold.json()["observability"]["errors"]
+    assert recovered.status_code == 200
+    assert any(item == {"signal": "schema_rejection_threshold", "state": "inactive"} for item in current.json()["observability"]["signals"])
+    assert {"component": "catalogue", "error_code": "catalog_schema_rejected"} not in current.json()["observability"]["errors"]
+
+
+def test_preview_capacity_signal_recovers_after_real_session_cleanup(
+    tmp_path, monkeypatch
+) -> None:
+    monkeypatch.setenv("HCAM_ALLOW_SENTINEL_SANDBOX", "true")
+    monkeypatch.setattr(dashboard, "SentinelCatalogAdapter", FakeOnlineAdapter)
+    with TestClient(create_dashboard_app(online_settings(tmp_path))) as client:
+        sessions = [_runtime_whep_session(client) for _ in range(4)]
+        exhausted = client.post("/api/cameras/1/playback?transport=direct-whep")
+        at_limit = client.get("/api/status")
+        released = client.delete(
+            sessions[0]["cleanup_url"],
+            headers={"Authorization": f"Bearer {sessions[0]['access_token']}"},
+        )
+        replacement = _runtime_whep_session(client)
+        recovered = client.get("/api/status")
+
+    assert exhausted.status_code == 429
+    assert any(item == {"signal": "capacity_exhaustion", "state": "active"} for item in at_limit.json()["observability"]["signals"])
+    assert {"component": "relay", "error_code": "mediamtx_unavailable"} not in at_limit.json()["observability"]["errors"]
+    assert released.status_code == 204
+    assert replacement["whep_url"].startswith("/api/whep/")
+    assert any(item == {"signal": "capacity_exhaustion", "state": "inactive"} for item in recovered.json()["observability"]["signals"])
+    assert any(item == {"signal": "cleanup_failure", "state": "inactive"} for item in recovered.json()["observability"]["signals"])
+    assert any(item == {"signal": "relay_leakage", "state": "inactive"} for item in recovered.json()["observability"]["signals"])
 
 
 def test_hls_relay_uses_stream_copy_and_terminates_without_media_files(

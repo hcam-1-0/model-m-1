@@ -8,6 +8,7 @@ import re
 from collections.abc import AsyncIterator, Sequence
 from contextlib import asynccontextmanager, suppress
 from dataclasses import dataclass
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Literal
 from urllib.parse import urlsplit, urlunsplit
@@ -486,6 +487,9 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                 else:
                     observability.observe("provider", "none", "healthy", correlation_id)
                     observability.observe("catalogue", "none", "healthy", correlation_id)
+                observability.catalogue_freshness(
+                    0.0, max(60.0, configured.refresh_interval_seconds * 2)
+                )
                 observability.duration.labels(component="catalogue", outcome="healthy" if result.record_count else "degraded").observe(perf_counter() - started)
                 counts = store.summary(profile.adapter_id)["counts"]
                 for state in ("active", "inactive", "missing", "tombstoned"):
@@ -588,6 +592,21 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
             return ("relay", "mediamtx_unavailable", "degraded")
         return None
 
+    def update_catalogue_freshness(request: Request, source: object) -> None:
+        """Refresh cadence, not provider configuration, determines staleness."""
+        last_refresh = source.get("last_refresh_at") if isinstance(source, dict) else None
+        age_seconds: float | None = None
+        if isinstance(last_refresh, str):
+            try:
+                refreshed_at = datetime.fromisoformat(last_refresh.replace("Z", "+00:00"))
+                age_seconds = max(0.0, (datetime.now(UTC) - refreshed_at).total_seconds())
+            except ValueError:
+                age_seconds = None
+        if age_seconds is not None:
+            request.app.state.observability.catalogue_freshness(
+                age_seconds, max(60.0, configured.refresh_interval_seconds * 2)
+            )
+
     def require_lab_confirmation(value: str) -> None:
         if value != data_classification():
             raise HTTPException(403, "Active lab-source confirmation required")
@@ -666,6 +685,14 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
         profile = active_profile(request)
         store: CatalogStore = request.app.state.catalog_store
         result = store.summary(profile.adapter_id)
+        update_catalogue_freshness(request, result.get("source"))
+        source = result.get("source")
+        if isinstance(source, dict):
+            result["source"] = {
+                "state": source.get("state"),
+                "enabled": source.get("enabled"),
+                "last_refresh_at": source.get("last_refresh_at"),
+            }
         result["classification"] = data_classification()
         result["media_preparation"] = (
             _safe_media_evidence(configured.media_evidence_path)
@@ -684,9 +711,6 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
         )
         result["catalog_mode"] = configured.catalog_mode
         result["runtime_connection_limit"] = profile.active_stream_count
-        result["initial_refresh_error"] = request.app.state.initial_refresh_errors.get(
-            profile.adapter_id
-        )
         result["observability"] = request.app.state.observability.status(app_ready=local_ready(request))
         result["boundaries"] = {
             "test_dashboard_only": True,
@@ -848,6 +872,8 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                         fallback, limit=profile.preview_session_limit
                     )
                 except HlsRelayError as exc:
+                    if exc.code == "hls_relay_limit_reached":
+                        request.app.state.observability.capacity(True)
                     stable = relay_failure_code(exc.code)
                     if stable:
                         request.app.state.observability.observe(
@@ -857,6 +883,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                     raise HTTPException(
                         status_code, f"Sentinel HLS relay unavailable ({exc.code})"
                     ) from exc
+                request.app.state.observability.capacity(False)
                 return {
                     "stream_id": camera["camera_id"],
                     "whep_url": relay.whep_url,
@@ -868,6 +895,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                     "retention": "none",
                     "media_path": "hls-stream-copy-to-local-whep",
                 }
+            request.app.state.observability.capacity(False)
             endpoint = store.get_camera_endpoint(
                 profile.adapter_id, external_id, role="preview"
             )
@@ -878,6 +906,8 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                     endpoint, limit=profile.preview_session_limit
                 )
             except WhepProxyError as exc:
+                if exc.code == "whep_session_limit_reached":
+                    request.app.state.observability.capacity(True)
                 stable = relay_failure_code(exc.code)
                 if stable:
                     request.app.state.observability.observe(
@@ -887,6 +917,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                 raise HTTPException(
                     status_code, f"Sentinel preview unavailable ({exc.code})"
                 ) from exc
+            request.app.state.observability.capacity(False)
             local_whep_url = f"/api/whep/{ticket.session_id}"
             return {
                 "stream_id": camera["camera_id"],
@@ -994,6 +1025,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                     "cleanup", "cleanup_failed", "failed"
                 )
             raise whep_error(exc) from exc
+        request.app.state.observability.observe("cleanup", "none", "healthy")
         return Response(status_code=204)
 
     @app.delete("/api/relays/{session_id}", status_code=204)
@@ -1008,6 +1040,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
             raise HTTPException(
                 status, f"HLS relay cleanup failed ({exc.code})"
             ) from exc
+        request.app.state.observability.observe("cleanup", "none", "healthy")
         return Response(status_code=204)
 
     return app
