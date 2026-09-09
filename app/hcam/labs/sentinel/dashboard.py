@@ -577,6 +577,9 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
     def local_ready(request: Request) -> bool:
         return all(hasattr(request.app.state, name) for name in ("catalog_store", "metrics_registry", "observability"))
 
+    def relay_failure_code(code: str) -> str | None:
+        return "mediamtx_unavailable" if code in {"hls_relay_start_failed", "hls_relay_health_failed", "whep_upstream_failed", "whep_upstream_timeout"} else None
+
     def require_lab_confirmation(value: str) -> None:
         if value != data_classification():
             raise HTTPException(403, "Active lab-source confirmation required")
@@ -837,6 +840,8 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                         fallback, limit=profile.preview_session_limit
                     )
                 except HlsRelayError as exc:
+                    stable=relay_failure_code(exc.code)
+                    if stable: request.app.state.observability.observe("relay", stable, "degraded")
                     status_code = 429 if exc.code == "hls_relay_limit_reached" else 502
                     raise HTTPException(
                         status_code, f"Sentinel HLS relay unavailable ({exc.code})"
@@ -862,6 +867,8 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                     endpoint, limit=profile.preview_session_limit
                 )
             except WhepProxyError as exc:
+                stable=relay_failure_code(exc.code)
+                if stable: request.app.state.observability.observe("relay", stable, "degraded")
                 status_code = 429 if exc.code == "whep_session_limit_reached" else 502
                 raise HTTPException(
                     status_code, f"Sentinel preview unavailable ({exc.code})"
@@ -949,7 +956,9 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                 session_id, bearer_token(request), bytes(body)
             )
         except WhepProxyError as exc:
-            request.app.state.observability.observe("preview", "preview_timeout" if "timeout" in exc.code else "mediamtx_unavailable", "failed")
+            stable=relay_failure_code(exc.code)
+            if exc.code == "whep_upstream_timeout": request.app.state.observability.observe("preview", "preview_timeout", "failed")
+            elif stable: request.app.state.observability.observe("relay", stable, "degraded")
             raise whep_error(exc) from exc
         return Response(
             content=answer,
