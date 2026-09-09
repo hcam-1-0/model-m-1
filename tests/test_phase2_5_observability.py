@@ -12,13 +12,61 @@ def test_faults_are_independent_and_provider_failure_keeps_process_live():
     assert set(bundle) >= {"versions","checksum","safe_settings","health","listeners","recent_errors"}
 
 def test_support_bundle_rejects_sensitive_values():
-    for unsafe in ("http://x","https://x","rtsp://x","token=x","secret=x","password=x","Authorization: x","v=0\\r\\nsdp","camera_id=x","provider_payload=x"):
+    for unsafe in (
+        "http://provider.internal/live",
+        "https://provider.example/api",
+        "rtsp://user:pass@host/path",
+        "access_token=secret",
+        "token=secret",
+        "api_key=secret",
+        "password=secret",
+        "Authorization: Bearer secret",
+        "Bearer secret-value",
+        "provider_locator=value",
+        "provider_payload=value",
+        "camera_id=value",
+        "stream_id=value",
+        "session_id=value",
+        "v=0\\r\\nsdp",
+    ):
         try:
             scan_support_bundle({"value": unsafe})
         except ValueError as error:
             assert str(error) == "support_bundle_privacy_violation"
         else:
             raise AssertionError("privacy scan must fail")
+
+
+def test_support_bundle_scanner_allows_fixed_safe_vocabulary_and_is_deterministic():
+    registry = CollectorRegistry()
+    observability = LabObservability(registry, version="test")
+    observability.observe("preview", "preview_timeout", "failed")
+    first = observability.support_bundle(app_ready=True)
+    second = observability.support_bundle(app_ready=True)
+    scan_support_bundle({"words": "WHEP HLS MediaMTX provider camera tokenization"})
+
+    assert first["checksum"] == second["checksum"]
+    assert set(first) >= {"format", "versions", "safe_settings", "health", "listeners", "recent_errors", "signals", "zero_retention", "checksum"}
+    assert first["safe_settings"] == {"mode": "lab", "metrics": "bounded", "retention": "none"}
+    assert len(first["recent_errors"]) == 1
+    assert set(first["recent_errors"][0]) == {"correlation_id", "component", "error_code", "outcome"}
+    observability.check_zero_retention(0)
+    changed = observability.support_bundle(app_ready=True)
+    assert first["checksum"] != changed["checksum"]
+
+
+def test_recent_error_ring_and_zero_retention_signal_are_bounded_and_recover():
+    observability = LabObservability(CollectorRegistry(), version="test")
+    assert observability.check_zero_retention(None) == "not_checked"
+    assert observability.status(app_ready=True)["zero_retention"]["state"] == "not_checked"
+    assert observability.check_zero_retention(1) == "fail"
+    assert {"signal": "retained_media", "state": "active"} in observability.status(app_ready=True)["signals"]
+    assert observability.check_zero_retention(0) == "pass"
+    assert {"signal": "retained_media", "state": "inactive"} in observability.status(app_ready=True)["signals"]
+    for _ in range(60):
+        observability.observe("preview", "preview_timeout", "failed")
+    bundle = observability.support_bundle(app_ready=True)
+    assert len(bundle["recent_errors"]) == 50
 
 def test_status_is_bounded_and_browser_media_is_not_fabricated():
     observability=LabObservability(CollectorRegistry(),version="test")

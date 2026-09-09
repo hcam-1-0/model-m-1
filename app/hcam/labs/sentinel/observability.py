@@ -10,9 +10,13 @@ from uuid import uuid4
 
 from prometheus_client import CollectorRegistry, Counter, Gauge, Histogram
 
-_FORBIDDEN = compile(
-    r"(?i)(https?://|rtsp://|whep|sdp|token|secret|password|authorization|"
-    r"camera[_ -]?id|provider[_ -]?(payload|locator))"
+_FORBIDDEN = (
+    compile(r"(?i)(?:https?|rtsp)://"),
+    compile(r"(?i)\b(?:access[_ -]?token|api[_ -]?key|token|secret|password)\s*[:=]\s*\S+"),
+    compile(r"(?i)\bauthorization\s*:\s*\S+"),
+    compile(r"(?i)\bbearer\s+[a-z0-9._~+\-/=]+"),
+    compile(r"(?i)\b(?:provider[_ -]?(?:payload|locator)|camera[_ -]?id|stream[_ -]?id|session[_ -]?id)\s*[:=]\s*\S+"),
+    compile(r"(?i)v=0.*sdp"),
 )
 _CODES = frozenset(
     {
@@ -39,6 +43,7 @@ _SIGNALS = (
     "capacity_exhaustion",
     "cleanup_failure",
     "relay_leakage",
+    "retained_media",
 )
 
 
@@ -184,6 +189,12 @@ class LabObservability:
 
     def check_zero_retention(self, retained_artifacts: int | None) -> str:
         self.zero_retention = "not_checked" if retained_artifacts is None else ("pass" if retained_artifacts == 0 else "fail")
+        self._set_signal(
+            "retained_media",
+            "not_checked"
+            if retained_artifacts is None
+            else ("inactive" if retained_artifacts == 0 else "active"),
+        )
         return self.zero_retention
 
     def support_bundle(self, *, app_ready: bool) -> dict[str, object]:
@@ -219,7 +230,8 @@ class LabObservability:
 
 
 def scan_support_bundle(bundle: object) -> None:
-    if _FORBIDDEN.search(repr(bundle)):
+    rendered = repr(bundle)
+    if any(pattern.search(rendered) for pattern in _FORBIDDEN):
         raise ValueError("support_bundle_privacy_violation")
 
 

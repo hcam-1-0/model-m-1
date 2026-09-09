@@ -462,6 +462,32 @@ def test_preview_capacity_signal_recovers_after_real_session_cleanup(
     assert any(item == {"signal": "relay_leakage", "state": "inactive"} for item in recovered.json()["observability"]["signals"])
 
 
+def test_zero_retention_status_and_support_bundle_use_metadata_only_runtime_check(
+    tmp_path, monkeypatch
+) -> None:
+    monkeypatch.setenv("HCAM_ALLOW_SENTINEL_SANDBOX", "true")
+    monkeypatch.setattr(dashboard, "SentinelCatalogAdapter", FakeOnlineAdapter)
+    with TestClient(create_dashboard_app(online_settings(tmp_path))) as client:
+        passed = client.get("/api/status")
+        client.app.state.retained_media_artifact_count = 1
+        failed = client.get("/api/status")
+        failed_bundle = client.get("/api/support-bundle")
+        client.app.state.retained_media_artifact_count = 0
+        recovered = client.get("/api/status")
+
+    assert passed.json()["observability"]["zero_retention"] == {"state": "pass"}
+    assert {"signal": "retained_media", "state": "inactive"} in passed.json()["observability"]["signals"]
+    assert failed.json()["observability"]["zero_retention"] == {"state": "fail"}
+    assert {"signal": "retained_media", "state": "active"} in failed.json()["observability"]["signals"]
+    assert failed_bundle.status_code == 200
+    assert failed_bundle.json()["zero_retention"] == {"state": "fail"}
+    assert recovered.json()["observability"]["zero_retention"] == {"state": "pass"}
+    assert {"signal": "retained_media", "state": "inactive"} in recovered.json()["observability"]["signals"]
+    rendered = repr(failed.json()) + repr(failed_bundle.json())
+    assert "retained_media_artifact_count" not in rendered
+    assert "provider.internal" not in rendered
+
+
 def test_hls_relay_uses_stream_copy_and_terminates_without_media_files(
     monkeypatch,
 ) -> None:

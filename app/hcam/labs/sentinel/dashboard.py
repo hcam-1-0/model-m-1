@@ -511,6 +511,8 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
         app.state.whep_proxy = whep_proxy
         app.state.hls_relay = hls_relay
         app.state.initial_refresh_errors = {}
+        # Metadata-only lab retention inspector. It records no media, locator, or path.
+        app.state.retained_media_artifact_count = 0
         try:
             if configured.require_publisher_state:
                 await _await_publisher_profile(publisher_state_path, active_profile)
@@ -607,6 +609,12 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                 age_seconds, max(60.0, configured.refresh_interval_seconds * 2)
             )
 
+    def verify_zero_retention(request: Request) -> None:
+        count = getattr(request.app.state, "retained_media_artifact_count", None)
+        request.app.state.observability.check_zero_retention(
+            count if isinstance(count, int) and count >= 0 else None
+        )
+
     def require_lab_confirmation(value: str) -> None:
         if value != data_classification():
             raise HTTPException(403, "Active lab-source confirmation required")
@@ -671,7 +679,10 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
     @app.get("/api/support-bundle")
     def support_bundle(request: Request) -> dict[str, object]:
         """LAB-only bounded diagnostic bundle; never includes media/provider data."""
-        return request.app.state.observability.support_bundle(app_ready=True)
+        verify_zero_retention(request)
+        return request.app.state.observability.support_bundle(
+            app_ready=local_ready(request)
+        )
 
     @app.get("/metrics", include_in_schema=False)
     def metrics(request: Request) -> Response:
@@ -686,6 +697,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
         store: CatalogStore = request.app.state.catalog_store
         result = store.summary(profile.adapter_id)
         update_catalogue_freshness(request, result.get("source"))
+        verify_zero_retention(request)
         source = result.get("source")
         if isinstance(source, dict):
             result["source"] = {

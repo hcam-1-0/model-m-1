@@ -34,10 +34,31 @@ records acknowledgement/escalation there until an approved notifier exists.
 | Relay leakage | `relay_leakage=active` after cleanup reports an external cleanup failure | current cleanup result | critical / H-CAM platform operations / operations runbook | later successful cleanup clears it |
 | Cleanup failures | `cleanup_failure=active` with `cleanup_failed` | current cleanup result | warning / H-CAM platform operations / operations runbook | later successful cleanup clears it |
 | Capacity exhaustion | `capacity_exhaustion=active` when the bounded preview/relay limit rejects a request | current admission result | warning / H-CAM platform operations / operations runbook | next successful admission clears it |
+| Retained-media detection | `retained_media=active` when the metadata-only retention inspector reports a non-zero artifact count | each status/support-bundle check; no media is read | critical / H-CAM platform operations / operations runbook | a later zero count makes it inactive |
 
 These signals have only fixed `signal` and `state` labels. They contain no
 camera, stream, session, user, correlation, provider-locator, or exception-text
 labels. Capacity exhaustion is an admission condition, not `mediamtx_unavailable`.
+
+## Zero-retention check and support bundle
+
+The Phase 2.5 lab has no recording sink and keeps no media payload, SDP, media
+locator, or filesystem artifact in the diagnostic path. `/api/status` and the
+support bundle run the same metadata-only retention inspector. Its result is
+`pass` for zero reported artifacts, `fail` for a non-zero count, and
+`not_checked` when the safe aggregate is unavailable; it never reads media or
+exposes an artifact path. The zero-retention target is zero detected artifacts
+in every status/support-bundle evaluation over the current operational window;
+any `fail` consumes the lab's zero-retention error budget and is owned by
+H-CAM platform operations through the operations runbook.
+
+Support bundles are deterministic canonical JSON with a checksum over only
+allowlisted diagnostics: format/version, safe settings, logical listener
+states, bounded health/status signals, zero-retention state, and at most 50
+sanitized error records. The privacy scanner rejects actual locators,
+credentials, bearer values, identifiers, SDP-like content, and provider payload
+values, while allowing safe fixed terms such as WHEP, HLS, MediaMTX, provider,
+camera, and tokenization.
 
 | Fault | Local health | Stable UI/backend code | Metric/event | Recovery |
 |---|---|---|---|---|
