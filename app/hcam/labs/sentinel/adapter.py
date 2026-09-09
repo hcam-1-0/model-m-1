@@ -137,6 +137,26 @@ class SentinelCatalogAdapter:
                 network_policy=self.network_policy,
                 max_records=self.max_records,
             )
+            if not catalog.cameras:
+                # A valid empty upstream inventory is observable, but never deletes
+                # the last known-good catalogue merely because it is temporarily empty.
+                summary = self.store.summary(source_id)
+                latest = summary["latest_snapshot"]
+                snapshot_id = (
+                    str(latest["snapshot_id"])
+                    if isinstance(latest, dict) and latest.get("snapshot_id")
+                    else None
+                )
+                self.store.complete_refresh(
+                    refresh_id,
+                    snapshot_id=snapshot_id,
+                    response_bytes=len(payload),
+                    record_count=0,
+                    etag=etag,
+                )
+                return RefreshResult(
+                    refresh_id, "succeeded", snapshot_id, None, 0, 0, False, None
+                )
             if candidate_health is None and self.candidate_health_resolver is not None:
                 try:
                     candidate_health = await self.candidate_health_resolver(catalog)

@@ -472,7 +472,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                         reason=reason,
                     )
                 except CatalogAdapterError as exc:
-                    code = "catalog_schema_rejected" if exc.code in {"invalid_catalog_json", "catalog_schema_invalid"} else "catalog_upstream_failed"
+                    code = catalog_failure_code(exc.code)
                     observability.observe("provider" if code == "catalog_upstream_failed" else "catalogue", code, "degraded" if code == "catalog_upstream_failed" else "failed", correlation_id)
                     observability.duration.labels(component="catalogue", outcome="failed").observe(perf_counter() - started)
                     refresh_counter.labels(profile.adapter_id, "failed").inc()
@@ -584,7 +584,24 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
         return all(hasattr(request.app.state, name) for name in ("catalog_store", "metrics_registry", "observability"))
 
     def relay_failure_code(code: str) -> str | None:
-        return "mediamtx_unavailable" if code in {"hls_relay_start_failed", "hls_relay_health_failed"} else None
+        return "mediamtx_unavailable" if code in {
+            "hls_relay_start_failed",
+            "hls_relay_health_failed",
+            "hls_relay_ffmpeg_unavailable",
+            "hls_relay_process_failed",
+            "hls_relay_startup_timeout",
+        } else None
+
+    def catalog_failure_code(code: str) -> str:
+        return (
+            "catalog_schema_rejected"
+            if code in {"invalid_catalog_json", "catalog_schema_invalid"}
+            else "catalog_upstream_failed"
+        )
+
+    def initial_refresh_error(request: Request, adapter_id: str) -> str | None:
+        raw = request.app.state.initial_refresh_errors.get(adapter_id)
+        return catalog_failure_code(raw) if isinstance(raw, str) else None
 
     def whep_failure_observation(code: str) -> tuple[str, str, str] | None:
         """Map only verified upstream WHEP transport failures to safe states."""
@@ -662,9 +679,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
             "classification": data_classification(),
             "catalog_mode": configured.catalog_mode,
             "adapter_id": profile.adapter_id,
-            "initial_refresh_error": request.app.state.initial_refresh_errors.get(
-                profile.adapter_id
-            ),
+            "initial_refresh_error": initial_refresh_error(request, profile.adapter_id),
             "checks": request.app.state.observability.health(app_ready=local_ready(request)),
         }
 
@@ -1017,6 +1032,8 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
             if observation is not None:
                 request.app.state.observability.observe(*observation)
             raise whep_error(exc) from exc
+        # Signaling completed; browser decode remains independently not_started.
+        request.app.state.observability.observe("preview", "none", "healthy")
         return Response(
             content=answer,
             status_code=201,

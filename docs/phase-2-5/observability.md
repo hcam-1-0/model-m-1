@@ -60,6 +60,26 @@ credentials, bearer values, identifiers, SDP-like content, and provider payload
 values, while allowing safe fixed terms such as WHEP, HLS, MediaMTX, provider,
 camera, and tokenization.
 
+## Executable fault evidence
+
+Each row below names a test that crosses the real application/service boundary;
+the observability helper is not the sole source of evidence. Events contain only
+a random operation correlation, bounded component, stable code, and outcome.
+
+| Fault | Injected boundary and path | Status/health/metric/recovery evidence | Test |
+|---|---|---|---|
+| Provider 502 | mocked HTTP response through `SentinelCatalogAdapter.refresh` and `/api/refresh` | provider degraded with `catalog_upstream_failed`; live/ready unchanged; valid adapter response recovers | `test_real_catalogue_http_faults_have_distinct_status_metrics_and_recovery` |
+| Valid empty catalogue | mocked valid empty HTTP document through the same adapter | provider remains healthy; catalogue reports `catalog_empty`; last known-good snapshot remains | `test_real_catalogue_http_faults_have_distinct_status_metrics_and_recovery` |
+| Schema rejection | malformed HTTP document through parser and `/api/refresh` | catalogue reports `catalog_schema_rejected`; bounded counter/event; valid refresh resets state | `test_real_catalogue_http_faults_have_distinct_status_metrics_and_recovery`, `test_schema_rejection_threshold_and_recovery_use_refresh_runtime` |
+| MediaMTX unavailable | connection refusal at the WHEP upstream transport | relay reports `mediamtx_unavailable`; no client/validation error is reclassified | `test_whep_transport_failure_is_relay_unavailable_but_rejection_is_not` |
+| Preview timeout | timeout at WHEP offer transport | preview reports `preview_timeout`, increments bounded failure metric, then a successful offer recovers preview only | `test_whep_preview_timeout_is_observed_through_runtime_route` |
+| Cleanup failure | connection refusal at external WHEP resource deletion | cleanup reports `cleanup_failed` and leak signal; later successful cleanup clears current state | `test_whep_cleanup_failure_is_observed_through_runtime_route` |
+
+`hcam_phase2_5_operation_duration_seconds` receives refresh observations from
+the application refresh path. Preview success is signaling-only and does not
+change `browser_media`, which remains `not_started` without browser decode
+evidence.
+
 | Fault | Local health | Stable UI/backend code | Metric/event | Recovery |
 |---|---|---|---|---|
 | Provider 502 | live/ready unchanged; provider degraded | `catalog_upstream_failed` | provider failure counter/event | next bounded refresh |

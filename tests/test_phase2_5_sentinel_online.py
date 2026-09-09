@@ -9,7 +9,7 @@ from fastapi.testclient import TestClient
 from prometheus_client import generate_latest
 
 from hcam.labs.sentinel import dashboard
-from hcam.labs.sentinel.adapter import CatalogAdapterError
+from hcam.labs.sentinel.adapter import CatalogAdapterError, SentinelCatalogAdapter
 from hcam.labs.sentinel.dashboard import (
     DashboardSettings,
     create_dashboard_app,
@@ -90,6 +90,31 @@ class FakeOnlineAdapter:
         )
 
 
+class RealBoundaryAdapter(SentinelCatalogAdapter):
+    """Production adapter with only its HTTP boundary replaced in tests."""
+
+    mode = "valid"
+
+    def __init__(self, store, network_policy, **kwargs) -> None:
+        super().__init__(
+            store,
+            network_policy,
+            transport=httpx.MockTransport(self._handler),
+            retry_delays=(0.0,),
+            **kwargs,
+        )
+
+    @classmethod
+    def _handler(cls, request: httpx.Request) -> httpx.Response:
+        if cls.mode == "provider_502":
+            return httpx.Response(502, request=request)
+        if cls.mode == "empty":
+            return httpx.Response(200, json={"cameras": []}, request=request)
+        if cls.mode == "schema":
+            return httpx.Response(200, content=b"{", request=request)
+        return httpx.Response(200, json=sentinel_catalog_document(), request=request)
+
+
 def online_settings(tmp_path) -> DashboardSettings:
     return DashboardSettings(
         state_path=tmp_path / "sentinel-online.db",
@@ -100,6 +125,13 @@ def online_settings(tmp_path) -> DashboardSettings:
         media_evidence_path=None,
         catalog_mode="sentinel-online",
     )
+
+
+def _refresh_headers() -> dict[str, str]:
+    return {
+        "X-HCAM-Lab-Confirm": "sentinel-sandbox",
+        "X-HCAM-Reason": "Exercise production adapter boundary evidence",
+    }
 
 
 def test_both_lab_profiles_use_same_online_catalogue_with_different_limits(
@@ -174,6 +206,60 @@ def test_both_lab_profiles_use_same_online_catalogue_with_different_limits(
         "https://live.corp8.cloud/api/ingest",
         "https://live.corp8.cloud/api/ingest",
     ]
+
+
+def test_real_catalogue_http_faults_have_distinct_status_metrics_and_recovery(
+    tmp_path, monkeypatch
+) -> None:
+    monkeypatch.setenv("HCAM_ALLOW_SENTINEL_SANDBOX", "true")
+    monkeypatch.setattr(dashboard, "SentinelCatalogAdapter", RealBoundaryAdapter)
+    RealBoundaryAdapter.mode = "valid"
+    with TestClient(create_dashboard_app(online_settings(tmp_path))) as client:
+        RealBoundaryAdapter.mode = "provider_502"
+        provider = client.post("/api/refresh", headers=_refresh_headers())
+        provider_status = client.get("/api/status").json()["observability"]
+        live = client.get("/health/live")
+        ready = client.get("/health/ready")
+        provider_event = client.app.state.observability.events[-1]
+
+        RealBoundaryAdapter.mode = "valid"
+        provider_recovery = client.post("/api/refresh", headers=_refresh_headers())
+        recovered = client.get("/api/status").json()["observability"]
+
+        RealBoundaryAdapter.mode = "empty"
+        empty = client.post("/api/refresh", headers=_refresh_headers())
+        empty_status = client.get("/api/status").json()["observability"]
+        empty_events = list(client.app.state.observability.events)[-2:]
+
+        RealBoundaryAdapter.mode = "schema"
+        schema = client.post("/api/refresh", headers=_refresh_headers())
+        schema_status = client.get("/api/status").json()["observability"]
+        schema_event = client.app.state.observability.events[-1]
+        metrics = generate_latest(client.app.state.metrics_registry).decode("utf-8")
+
+    assert provider.status_code == 502
+    assert {"component": "provider", "error_code": "catalog_upstream_failed"} in provider_status["errors"]
+    assert provider_status["checks"]["provider"]["state"] == "degraded"
+    assert live.json() == {"status": "live", "dependency": "process"}
+    assert ready.json()["status"] == "ready"
+    assert provider_event.error_code == "catalog_upstream_failed"
+    assert len(provider_event.correlation_id) == 32
+    assert provider_recovery.status_code == 200
+    assert recovered["checks"]["provider"]["state"] == "healthy"
+    assert {"component": "provider", "error_code": "catalog_upstream_failed"} not in recovered["errors"]
+
+    assert empty.status_code == 200
+    assert empty_status["checks"]["provider"]["state"] == "healthy"
+    assert {"component": "catalogue", "error_code": "catalog_empty"} in empty_status["errors"]
+    assert empty_events[0].correlation_id == empty_events[1].correlation_id
+
+    assert schema.status_code == 502
+    assert schema_status["checks"]["provider"]["state"] == "healthy"
+    assert {"component": "catalogue", "error_code": "catalog_schema_rejected"} in schema_status["errors"]
+    assert schema_event.error_code == "catalog_schema_rejected"
+    assert schema_event.correlation_id != provider_event.correlation_id
+    assert 'hcam_phase2_5_failures_total{component="provider",error_code="catalog_upstream_failed"} 1.0' in metrics
+    assert 'hcam_phase2_5_operation_duration_seconds_count{component="catalogue",outcome="failed"}' in metrics
 
 
 def test_whep_proxy_is_bounded_authenticated_and_zero_retention() -> None:
@@ -265,6 +351,30 @@ def test_whep_preview_timeout_is_observed_through_runtime_route(
         assert len(event.correlation_id) == 32
         metrics = generate_latest(client.app.state.metrics_registry).decode("utf-8")
         assert 'hcam_phase2_5_failures_total{component="preview",error_code="preview_timeout"} 1.0' in metrics
+        client.app.state.whep_proxy.transport = httpx.MockTransport(
+            lambda request: httpx.Response(
+                201,
+                headers={
+                    "Content-Type": "application/sdp",
+                    "Location": "/stream/1/session/recovered",
+                },
+                content=b"v=0\r\n",
+                request=request,
+            )
+        )
+        recovered_session = _runtime_whep_session(client)
+        recovered = client.post(
+            recovered_session["whep_url"],
+            headers={
+                "Authorization": f"Bearer {recovered_session['access_token']}",
+                "Content-Type": "application/sdp",
+            },
+            content=b"v=0\r\n",
+        )
+        recovered_status = client.get("/api/status").json()["observability"]
+        assert recovered.status_code == 201
+        assert recovered_status["checks"]["preview"]["state"] == "healthy"
+        assert recovered_status["checks"]["browser_media"]["state"] == "not_started"
 
 
 def test_whep_transport_failure_is_relay_unavailable_but_rejection_is_not(
@@ -356,6 +466,18 @@ def test_whep_cleanup_failure_is_observed_through_runtime_route(
         assert event.component == "cleanup"
         assert event.error_code == "cleanup_failed"
         assert len(event.correlation_id) == 32
+        client.app.state.whep_proxy.transport = httpx.MockTransport(
+            lambda request: httpx.Response(204, request=request)
+        )
+        recovery_session = _runtime_whep_session(client)
+        recovered = client.delete(
+            recovery_session["cleanup_url"],
+            headers={"Authorization": f"Bearer {recovery_session['access_token']}"},
+        )
+        recovery_status = client.get("/api/status").json()["observability"]
+        assert recovered.status_code == 204
+        assert recovery_status["checks"]["cleanup"]["state"] == "healthy"
+        assert {"component": "cleanup", "error_code": "cleanup_failed"} not in recovery_status["errors"]
 
 
 def test_operational_status_is_bounded_private_and_tracks_catalogue_freshness(

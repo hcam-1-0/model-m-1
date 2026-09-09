@@ -385,7 +385,7 @@ def test_dashboard_startup_and_refresh_fail_closed(tmp_path, monkeypatch) -> Non
                 "X-HCAM-Reason": "Generated refresh dependency failure",
             },
         )
-    assert health.json()["initial_refresh_error"] == "generated_catalog_unavailable"
+    assert health.json()["initial_refresh_error"] == "catalog_upstream_failed"
     assert refresh.status_code == 502
 
 
