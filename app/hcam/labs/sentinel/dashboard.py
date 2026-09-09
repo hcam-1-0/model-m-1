@@ -578,7 +578,15 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
         return all(hasattr(request.app.state, name) for name in ("catalog_store", "metrics_registry", "observability"))
 
     def relay_failure_code(code: str) -> str | None:
-        return "mediamtx_unavailable" if code in {"hls_relay_start_failed", "hls_relay_health_failed", "whep_upstream_failed", "whep_upstream_timeout"} else None
+        return "mediamtx_unavailable" if code in {"hls_relay_start_failed", "hls_relay_health_failed"} else None
+
+    def whep_failure_observation(code: str) -> tuple[str, str, str] | None:
+        """Map only verified upstream WHEP transport failures to safe states."""
+        if code == "whep_upstream_timeout":
+            return ("preview", "preview_timeout", "failed")
+        if code == "whep_upstream_failed":
+            return ("relay", "mediamtx_unavailable", "degraded")
+        return None
 
     def require_lab_confirmation(value: str) -> None:
         if value != data_classification():
@@ -840,8 +848,11 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                         fallback, limit=profile.preview_session_limit
                     )
                 except HlsRelayError as exc:
-                    stable=relay_failure_code(exc.code)
-                    if stable: request.app.state.observability.observe("relay", stable, "degraded")
+                    stable = relay_failure_code(exc.code)
+                    if stable:
+                        request.app.state.observability.observe(
+                            "relay", stable, "degraded"
+                        )
                     status_code = 429 if exc.code == "hls_relay_limit_reached" else 502
                     raise HTTPException(
                         status_code, f"Sentinel HLS relay unavailable ({exc.code})"
@@ -867,8 +878,11 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                     endpoint, limit=profile.preview_session_limit
                 )
             except WhepProxyError as exc:
-                stable=relay_failure_code(exc.code)
-                if stable: request.app.state.observability.observe("relay", stable, "degraded")
+                stable = relay_failure_code(exc.code)
+                if stable:
+                    request.app.state.observability.observe(
+                        "relay", stable, "degraded"
+                    )
                 status_code = 429 if exc.code == "whep_session_limit_reached" else 502
                 raise HTTPException(
                     status_code, f"Sentinel preview unavailable ({exc.code})"
@@ -956,9 +970,9 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                 session_id, bearer_token(request), bytes(body)
             )
         except WhepProxyError as exc:
-            stable=relay_failure_code(exc.code)
-            if exc.code == "whep_upstream_timeout": request.app.state.observability.observe("preview", "preview_timeout", "failed")
-            elif stable: request.app.state.observability.observe("relay", stable, "degraded")
+            observation = whep_failure_observation(exc.code)
+            if observation is not None:
+                request.app.state.observability.observe(*observation)
             raise whep_error(exc) from exc
         return Response(
             content=answer,
@@ -975,7 +989,10 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
         try:
             await request.app.state.whep_proxy.delete(session_id, bearer_token(request))
         except WhepProxyError as exc:
-            request.app.state.observability.observe("cleanup", "cleanup_failed", "failed")
+            if exc.code == "whep_cleanup_failed":
+                request.app.state.observability.observe(
+                    "cleanup", "cleanup_failed", "failed"
+                )
             raise whep_error(exc) from exc
         return Response(status_code=204)
 

@@ -183,8 +183,10 @@ class SentinelWhepProxy:
                     location = response.headers.get("location")
         except WhepProxyError:
             raise
-        except (httpx.TimeoutException, httpx.NetworkError) as exc:
-            raise WhepProxyError("whep_transport_failed") from exc
+        except httpx.TimeoutException as exc:
+            raise WhepProxyError("whep_upstream_timeout") from exc
+        except httpx.NetworkError as exc:
+            raise WhepProxyError("whep_upstream_failed") from exc
         if not location:
             raise WhepProxyError("whep_resource_missing")
         absolute_location = urljoin(endpoint, location)
@@ -207,12 +209,16 @@ class SentinelWhepProxy:
                 trust_env=False,
                 transport=self.transport,
             ) as client:
-                await client.delete(
+                response = await client.delete(
                     trusted.locator,
                     headers={"User-Agent": "hcam-phase2-5-sentinel-lab/1"},
                 )
-        except (CatalogValidationError, httpx.HTTPError, WhepProxyError):
-            return
+                if not 200 <= response.status_code < 300:
+                    raise WhepProxyError("whep_cleanup_failed")
+        except WhepProxyError:
+            raise
+        except (CatalogValidationError, httpx.HTTPError) as exc:
+            raise WhepProxyError("whep_cleanup_failed") from exc
 
     @staticmethod
     def _token_digest(token: str) -> bytes:

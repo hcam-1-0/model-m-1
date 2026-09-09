@@ -6,6 +6,7 @@ from types import SimpleNamespace
 import httpx
 import pytest
 from fastapi.testclient import TestClient
+from prometheus_client import generate_latest
 
 from hcam.labs.sentinel import dashboard
 from hcam.labs.sentinel.dashboard import (
@@ -218,6 +219,142 @@ def test_whep_proxy_is_bounded_authenticated_and_zero_retention() -> None:
         ("POST", "/stream/1/whep"),
         ("DELETE", "/stream/1/session/abc"),
     ]
+
+
+def _runtime_whep_session(client: TestClient) -> dict[str, str]:
+    response = client.post("/api/cameras/1/playback?transport=direct-whep")
+    assert response.status_code == 200
+    return response.json()
+
+
+def _runtime_errors(client: TestClient) -> list[dict[str, str]]:
+    response = client.get("/api/status")
+    assert response.status_code == 200
+    return response.json()["observability"]["errors"]
+
+
+def test_whep_preview_timeout_is_observed_through_runtime_route(
+    tmp_path, monkeypatch
+) -> None:
+    monkeypatch.setenv("HCAM_ALLOW_SENTINEL_SANDBOX", "true")
+    monkeypatch.setattr(dashboard, "SentinelCatalogAdapter", FakeOnlineAdapter)
+
+    def timeout_handler(request: httpx.Request) -> httpx.Response:
+        raise httpx.ReadTimeout("controlled timeout", request=request)
+
+    with TestClient(create_dashboard_app(online_settings(tmp_path))) as client:
+        client.app.state.whep_proxy.transport = httpx.MockTransport(timeout_handler)
+        session = _runtime_whep_session(client)
+        response = client.post(
+            session["whep_url"],
+            headers={
+                "Authorization": f"Bearer {session['access_token']}",
+                "Content-Type": "application/sdp",
+            },
+            content=b"v=0\r\n",
+        )
+
+        assert response.status_code == 502
+        assert _runtime_errors(client) == [
+            {"component": "preview", "error_code": "preview_timeout"}
+        ]
+        event = client.app.state.observability.events[-1]
+        assert event.component == "preview"
+        assert event.error_code == "preview_timeout"
+        assert len(event.correlation_id) == 32
+        metrics = generate_latest(client.app.state.metrics_registry).decode("utf-8")
+        assert 'hcam_phase2_5_failures_total{component="preview",error_code="preview_timeout"} 1.0' in metrics
+
+
+def test_whep_transport_failure_is_relay_unavailable_but_rejection_is_not(
+    tmp_path, monkeypatch
+) -> None:
+    monkeypatch.setenv("HCAM_ALLOW_SENTINEL_SANDBOX", "true")
+    monkeypatch.setattr(dashboard, "SentinelCatalogAdapter", FakeOnlineAdapter)
+
+    def network_handler(request: httpx.Request) -> httpx.Response:
+        raise httpx.ConnectError("controlled connection refusal", request=request)
+
+    with TestClient(create_dashboard_app(online_settings(tmp_path))) as client:
+        client.app.state.whep_proxy.transport = httpx.MockTransport(network_handler)
+        session = _runtime_whep_session(client)
+        unavailable = client.post(
+            session["whep_url"],
+            headers={
+                "Authorization": f"Bearer {session['access_token']}",
+                "Content-Type": "application/sdp",
+            },
+            content=b"v=0\r\n",
+        )
+        assert unavailable.status_code == 502
+        assert _runtime_errors(client) == [
+            {"component": "relay", "error_code": "mediamtx_unavailable"}
+        ]
+
+        client.app.state.whep_proxy.transport = httpx.MockTransport(
+            lambda request: httpx.Response(502, request=request)
+        )
+        rejected_session = _runtime_whep_session(client)
+        rejected = client.post(
+            rejected_session["whep_url"],
+            headers={
+                "Authorization": f"Bearer {rejected_session['access_token']}",
+                "Content-Type": "application/sdp",
+            },
+            content=b"v=0\r\n",
+        )
+        assert rejected.status_code == 502
+        assert _runtime_errors(client) == [
+            {"component": "relay", "error_code": "mediamtx_unavailable"}
+        ]
+
+
+def test_whep_cleanup_failure_is_observed_through_runtime_route(
+    tmp_path, monkeypatch
+) -> None:
+    monkeypatch.setenv("HCAM_ALLOW_SENTINEL_SANDBOX", "true")
+    monkeypatch.setattr(dashboard, "SentinelCatalogAdapter", FakeOnlineAdapter)
+
+    def negotiate_then_fail_cleanup(request: httpx.Request) -> httpx.Response:
+        if request.method == "POST":
+            return httpx.Response(
+                201,
+                headers={
+                    "Content-Type": "application/sdp",
+                    "Location": "/stream/1/session/cleanup-test",
+                },
+                content=b"v=0\r\n",
+                request=request,
+            )
+        raise httpx.ConnectError("controlled cleanup refusal", request=request)
+
+    with TestClient(create_dashboard_app(online_settings(tmp_path))) as client:
+        client.app.state.whep_proxy.transport = httpx.MockTransport(
+            negotiate_then_fail_cleanup
+        )
+        session = _runtime_whep_session(client)
+        offer = client.post(
+            session["whep_url"],
+            headers={
+                "Authorization": f"Bearer {session['access_token']}",
+                "Content-Type": "application/sdp",
+            },
+            content=b"v=0\r\n",
+        )
+        assert offer.status_code == 201
+        cleanup = client.delete(
+            offer.headers["location"],
+            headers={"Authorization": f"Bearer {session['access_token']}"},
+        )
+
+        assert cleanup.status_code == 502
+        assert _runtime_errors(client) == [
+            {"component": "cleanup", "error_code": "cleanup_failed"}
+        ]
+        event = client.app.state.observability.events[-1]
+        assert event.component == "cleanup"
+        assert event.error_code == "cleanup_failed"
+        assert len(event.correlation_id) == 32
 
 
 def test_hls_relay_uses_stream_copy_and_terminates_without_media_files(
