@@ -28,10 +28,14 @@ jobs:
         env:
           OPTED_IN: ${{ inputs.run_external_provider || 'false' }}
           HCAM_PHASE2_5_EXTERNAL: ${{ vars.HCAM_PHASE2_5_EXTERNAL || 'false' }}
+          SENTINEL_BASE_URL: ${{ vars.HCAM_SENTINEL_PROVIDER_URL || '' }}
         run: |
           if [ "$OPTED_IN" != "true" ] || [ "$HCAM_PHASE2_5_EXTERNAL" != "true" ]; then
             echo 'External provider evidence skipped: no explicit opt-in.'
             exit 0
           fi
-          echo 'External provider evidence was explicitly enabled; provider-specific runner belongs in protected environment.'
-          exit 1
+          if [ -z "$SENTINEL_BASE_URL" ]; then
+            echo 'External provider evidence requested but protected provider configuration is absent.'
+            exit 1
+          fi
+          python tools/sentinel_cctv_probe.py metadata --base-url "$SENTINEL_BASE_URL"

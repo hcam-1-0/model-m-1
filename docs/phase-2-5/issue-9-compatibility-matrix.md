@@ -50,6 +50,9 @@ matrix** workflow and existing Python CI checks for pull requests to `main`.
 Require one approving review, dismiss stale approvals, require branch-up-to-date,
 and prohibit force pushes/deletions. The **Sentinel external provider (opt-in)**
 workflow is informational: it is dispatched manually or scheduled, receives no
-provider URL by default, and is not a merge requirement. GPU preparation is
-required configuration validation; hardware evidence remains informational and
-capability-detected.
+provider URL by default, and is not a merge requirement. When both its manual
+input and protected `HCAM_PHASE2_5_EXTERNAL` repository variable are true, it
+runs the existing read-only metadata probe against protected
+`HCAM_SENTINEL_PROVIDER_URL`; missing configuration fails the informational job
+honestly. GPU preparation is required configuration validation; hardware
+evidence remains informational and capability-detected.
