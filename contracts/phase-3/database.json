@@ -4010,6 +4010,13 @@
         },
         {
           "columns": [
+            "geometry"
+          ],
+          "name": "ix_cameras_geometry",
+          "unique": false
+        },
+        {
+          "columns": [
             "health_status"
           ],
           "name": "ix_cameras_health_status",
