@@ -1,0 +1,41 @@
+name: Sentinel external provider (opt-in)
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_external_provider:
+        description: Explicitly run external/provider-dependent evidence
+        required: true
+        type: boolean
+        default: false
+  schedule:
+    - cron: '17 4 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  external-provider:
+    name: External/provider evidence (informational)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with: { python-version: '3.12' }
+      - name: Verify explicit provider opt-in
+        env:
+          OPTED_IN: ${{ inputs.run_external_provider || 'false' }}
+          HCAM_PHASE2_5_EXTERNAL: ${{ vars.HCAM_PHASE2_5_EXTERNAL || 'false' }}
+          SENTINEL_BASE_URL: ${{ vars.HCAM_SENTINEL_PROVIDER_URL || '' }}
+        run: |
+          if [ "$OPTED_IN" != "true" ] || [ "$HCAM_PHASE2_5_EXTERNAL" != "true" ]; then
+            echo 'External provider evidence skipped: no explicit opt-in.'
+            exit 0
+          fi
+          if [ -z "$SENTINEL_BASE_URL" ]; then
+            echo 'External provider evidence requested but protected provider configuration is absent.'
+            exit 1
+          fi
+          python tools/sentinel_cctv_probe.py metadata --base-url "$SENTINEL_BASE_URL"

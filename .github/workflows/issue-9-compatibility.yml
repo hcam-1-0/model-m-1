@@ -1,0 +1,82 @@
+name: Issue 9 offline compatibility matrix
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  linux-offline-browser:
+    name: Linux offline browser media (Python 3.12)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with: { python-version: '3.12' }
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with: { version: '0.12.3', enable-cache: true, cache-dependency-glob: uv.lock }
+      - name: Install locked dependencies
+        run: uv sync --locked --extra dev --extra analytics
+      - name: Install local browser-media prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends ffmpeg
+      - name: Verify local-only UI assets and syntax
+        run: |
+          uv run --locked --extra dev pytest tests/test_issue9_browser_evidence.py -q
+          node --check app/hcam/labs/sentinel/static/dashboard.js
+          google-chrome --headless=new --version
+      - name: Prove decoded H.264 browser media and dashboard viewports
+        run: uv run --locked --extra dev python tools/issue9_browser_evidence.py --output "$RUNNER_TEMP/issue9-browser.json"
+      - name: Scan browser evidence before publication
+        run: uv run --locked --extra dev python tools/issue9_evidence_safety.py "$RUNNER_TEMP/issue9-browser.json"
+      - name: Validate Compose CPU/GPU preparation models
+        run: |
+          uv run --locked --extra dev python tools/phase2_5_lab.py --secret-root "$RUNNER_TEMP/issue9-secrets" --state-root "$RUNNER_TEMP/issue9-state" config
+          uv run --locked --extra dev python tools/phase2_5_lab.py --secret-root "$RUNNER_TEMP/issue9-secrets" --state-root "$RUNNER_TEMP/issue9-state" --container-gpu nvidia config
+          uv run --locked --extra dev python tools/phase2_5_lab.py --secret-root "$RUNNER_TEMP/issue9-secrets" --state-root "$RUNNER_TEMP/issue9-state" --container-gpu vaapi config
+      - name: Upload sanitized browser evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: issue9-browser-evidence
+          path: ${{ runner.temp }}/issue9-browser.json
+          retention-days: 7
+
+  windows-host-native:
+    name: Windows host-native compatibility (Python 3.12)
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with: { python-version: '3.12' }
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with: { version: '0.12.3', enable-cache: true, cache-dependency-glob: uv.lock }
+      - name: Install locked dependencies
+        run: uv sync --locked --extra dev --extra analytics
+      - name: Install pinned local media prerequisite
+        shell: pwsh
+        run: |
+          choco install ffmpeg --version=8.0.1 --no-progress --yes
+          ffmpeg -version
+      - name: Validate host-native matrix contracts
+        run: |
+          uv run --locked --extra dev pytest tests/test_issue9_browser_evidence.py tests/test_phase2_5_evidence.py -q
+          uv run --locked --extra dev python -m py_compile tools/issue9_browser_evidence.py
+          node --check app/hcam/labs/sentinel/static/dashboard.js
+      - name: Prove host-native Edge H.264 decode and compact dashboard
+        shell: pwsh
+        run: |
+          uv run --locked --extra dev python tools/issue9_browser_evidence.py --output "$env:RUNNER_TEMP\issue9-browser.json"
+          uv run --locked --extra dev python tools/issue9_evidence_safety.py "$env:RUNNER_TEMP\issue9-browser.json"
+      - name: Upload sanitized browser evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: issue9-windows-browser-evidence
+          path: ${{ runner.temp }}\issue9-browser.json
+          retention-days: 7
