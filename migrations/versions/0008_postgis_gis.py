@@ -73,4 +73,6 @@ def downgrade() -> None:
         )
         op.execute("DROP TRIGGER trg_hcam_sync_camera_geometry ON cameras")
         op.execute("DROP FUNCTION hcam_sync_camera_geometry()")
+    else:
+        op.drop_index("ix_cameras_geometry", table_name="cameras")
     op.drop_column("cameras", "geometry")
