@@ -59,6 +59,11 @@ jobs:
         with: { version: '0.12.3', enable-cache: true, cache-dependency-glob: uv.lock }
       - name: Install locked dependencies
         run: uv sync --locked --extra dev --extra analytics
+      - name: Install pinned local media prerequisite
+        shell: pwsh
+        run: |
+          choco install ffmpeg --version=8.0.1 --no-progress --yes
+          ffmpeg -version
       - name: Validate host-native matrix contracts
         run: |
           uv run --locked --extra dev pytest tests/test_issue9_browser_evidence.py tests/test_phase2_5_evidence.py -q
