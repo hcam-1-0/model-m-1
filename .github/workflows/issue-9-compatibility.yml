@@ -25,14 +25,14 @@ jobs:
       - name: Install local browser-media prerequisites
         run: |
           sudo apt-get update
-          sudo apt-get install --yes --no-install-recommends ffmpeg chromium
+          sudo apt-get install --yes --no-install-recommends ffmpeg
       - name: Verify local-only UI assets and syntax
         run: |
           uv run --locked --extra dev pytest tests/test_issue9_browser_evidence.py -q
           node --check app/hcam/labs/sentinel/static/dashboard.js
-          chromium --headless=new --version
+          google-chrome --headless=new --version
       - name: Prove decoded H.264 browser media and dashboard viewports
-        run: uv run --locked --extra dev python tools/issue9_browser_evidence.py --browser "$(command -v chromium)" --output "$RUNNER_TEMP/issue9-browser.json"
+        run: uv run --locked --extra dev python tools/issue9_browser_evidence.py --output "$RUNNER_TEMP/issue9-browser.json"
       - name: Scan browser evidence before publication
         run: uv run --locked --extra dev python tools/issue9_evidence_safety.py "$RUNNER_TEMP/issue9-browser.json"
       - name: Validate Compose CPU/GPU preparation models
