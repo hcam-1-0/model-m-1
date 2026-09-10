@@ -67,9 +67,7 @@ jobs:
       - name: Prove host-native Edge H.264 decode and compact dashboard
         shell: pwsh
         run: |
-          $edge = (Get-Command msedge.exe -ErrorAction Stop).Source
-          $ffmpeg = (Get-Command ffmpeg.exe -ErrorAction Stop).Source
-          uv run --locked --extra dev python tools/issue9_browser_evidence.py --browser $edge --ffmpeg $ffmpeg --output "$env:RUNNER_TEMP\issue9-browser.json"
+          uv run --locked --extra dev python tools/issue9_browser_evidence.py --output "$env:RUNNER_TEMP\issue9-browser.json"
           uv run --locked --extra dev python tools/issue9_evidence_safety.py "$env:RUNNER_TEMP\issue9-browser.json"
       - name: Upload sanitized browser evidence
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
