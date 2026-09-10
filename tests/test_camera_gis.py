@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from sqlalchemy import inspect
 
+from hcam.camera_registry.models import Camera
 from hcam.database import CURRENT_SCHEMA_REVISION
 
 
@@ -133,3 +134,4 @@ def test_camera_gis_schema_has_one_merged_head(app: FastAPI) -> None:
         for column in inspect(app.state.database.engine).get_columns("cameras")
     }
     assert "geometry" in columns
+    assert "ix_cameras_geometry" in {index.name for index in Camera.__table__.indexes}

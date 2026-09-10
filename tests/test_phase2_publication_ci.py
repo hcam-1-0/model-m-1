@@ -8,9 +8,9 @@ ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "python-ci.yml"
 UPLOAD_ARTIFACT_SHA = "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
 SETUP_UV_SHA = "20cfd1bf945f4377ade1205e4dbc17946fc9a30d"
-POSTGRES_IMAGE = (
-    "postgres:18-alpine@sha256:"
-    "d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2"
+POSTGIS_IMAGE = (
+    "postgis/postgis:18-3.6-alpine@sha256:"
+    "eb2e8b8afd9b0ecee83bc20fd01aca62a5071bada2c0f38763174b653f8eed42"
 )
 SOURCE_REPOSITORY_EXPRESSION = (
     "${{ github.event.pull_request.head.repo.full_name || github.repository }}"
@@ -69,7 +69,7 @@ def test_package_job_builds_and_installs_from_locked_hashes() -> None:
 def test_postgres_job_generates_commit_named_p2_g1_artifact() -> None:
     job = _job(_workflow(), "postgres-integration")
 
-    assert f"image: {POSTGRES_IMAGE}" in job
+    assert f"image: {POSTGIS_IMAGE}" in job
     assert "HCAM_POSTGRES_TEST_URL:" in job
     assert "phase2_publication_evidence.py postgres" in job
     assert "--confirm-disposable-database" in job
@@ -80,7 +80,7 @@ def test_postgres_job_generates_commit_named_p2_g1_artifact() -> None:
     assert "path: var/evidence/p2-g1.json" in job
     assert "alembic downgrade base &&" not in job
     assert "pytest -q -m postgres" not in job
-    assert "uv sync --locked --extra dev --extra postgres" in job
+    assert "uv sync --locked --extra dev --extra analytics --extra postgres" in job
 
 
 def test_compose_job_generates_evidence_and_keeps_defensive_cleanup() -> None:

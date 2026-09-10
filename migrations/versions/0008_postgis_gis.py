@@ -23,6 +23,7 @@ def upgrade() -> None:
     bind = op.get_bind()
     if bind.dialect.name != "postgresql":
         op.add_column("cameras", sa.Column("geometry", sa.LargeBinary(), nullable=True))
+        op.create_index("ix_cameras_geometry", "cameras", ["geometry"])
         return
 
     op.execute("CREATE EXTENSION IF NOT EXISTS postgis")
@@ -72,4 +73,6 @@ def downgrade() -> None:
         )
         op.execute("DROP TRIGGER trg_hcam_sync_camera_geometry ON cameras")
         op.execute("DROP FUNCTION hcam_sync_camera_geometry()")
+    else:
+        op.drop_index("ix_cameras_geometry", table_name="cameras")
     op.drop_column("cameras", "geometry")

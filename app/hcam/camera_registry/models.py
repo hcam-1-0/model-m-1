@@ -7,6 +7,7 @@ from sqlalchemy import (
     JSON,
     CheckConstraint,
     Float,
+    Index,
     Integer,
     String,
     Text,
@@ -26,6 +27,7 @@ def utc_now() -> datetime:
 class Camera(Base):
     __tablename__ = "cameras"
     __table_args__ = (
+        Index("ix_cameras_geometry", "geometry", postgresql_using="gist"),
         UniqueConstraint("source_id", "external_id", name="uq_camera_source_external"),
         CheckConstraint(
             "(latitude IS NULL AND longitude IS NULL) OR "

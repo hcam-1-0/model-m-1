@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
+import tools.phase34_supply_chain as supply_chain
 from tools.phase34_supply_chain import (
     CONTAINER_REVIEW,
     SBOM,
@@ -22,6 +24,21 @@ def test_phase34_dependency_record_binds_lock_and_native_runtime() -> None:
     assert document["postgis"]["postgis_runtime_version"] == "3.6.4"
     assert document["postgis"]["geos_runtime_version"] == "3.14.1"
     assert document["audit_boundary"]["container_vulnerability_scan_included"] is True
+
+
+def test_phase34_lock_digest_is_stable_across_windows_line_endings(
+    monkeypatch, tmp_path: Path
+) -> None:
+    lock = tmp_path / "uv.lock"
+    source_lock = (ROOT / "uv.lock").read_bytes().replace(b"\r\n", b"\n")
+    lock.write_bytes(source_lock.replace(b"\n", b"\r\n"))
+    monkeypatch.setattr(supply_chain, "ROOT", tmp_path)
+
+    document = supply_chain.build_dependencies()
+
+    assert document["lockfile"]["sha256"] == hashlib.sha256(
+        source_lock
+    ).hexdigest()
 
 
 def test_phase34_sbom_normalization_is_deterministic_and_complete() -> None:

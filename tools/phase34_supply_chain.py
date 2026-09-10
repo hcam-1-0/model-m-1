@@ -144,7 +144,9 @@ def build_dependencies() -> dict[str, object]:
         "generated_at_policy": "deterministic_no_wall_clock_timestamp",
         "lockfile": {
             "path": "uv.lock",
-            "sha256": hashlib.sha256((ROOT / "uv.lock").read_bytes()).hexdigest(),
+            "sha256": hashlib.sha256(
+                (ROOT / "uv.lock").read_bytes().replace(b"\r\n", b"\n")
+            ).hexdigest(),
             "uv_version": "0.12.3",
         },
         "postgis": {

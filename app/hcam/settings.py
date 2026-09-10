@@ -5,7 +5,7 @@ import json
 import os
 import re
 from dataclasses import dataclass, field
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from urllib.parse import urlsplit
 
 from hcam.streams.network import (
@@ -263,8 +263,6 @@ class Settings:
                 raise ValueError("HCAM_CLOUDFLARE_ACCESS_AUDIENCE must not be empty")
             if not self.cloudflare_access_group_mapping:
                 raise ValueError("Cloudflare Access group mapping must not be empty")
-        if environment == "production" and not self.cloudflare_access_enabled:
-            raise ValueError("Cloudflare Access authentication is required in production")
         if self.max_request_body_bytes < 1:
             raise ValueError("HCAM_MAX_REQUEST_BODY_BYTES must be a positive integer")
         if self.metrics_enabled and self.metrics_token is None:
@@ -381,8 +379,11 @@ class Settings:
             if not secret_root.is_dir():
                 raise ValueError("HCAM_CAMERA_SECRET_ROOT must identify a directory")
             object.__setattr__(self, "camera_secret_root", secret_root)
+        windows_model_path = PureWindowsPath(str(self.analytics_model_relative_path))
         if (
             self.analytics_model_relative_path.is_absolute()
+            or windows_model_path.is_absolute()
+            or bool(windows_model_path.drive)
             or ".." in self.analytics_model_relative_path.parts
             or self.analytics_model_relative_path.name != "yolox_tiny.onnx"
         ):

@@ -40,6 +40,7 @@ def test_generated_runtime_is_forbidden_in_production(tmp_path: Path) -> None:
     (
         Path("../yolox_tiny.onnx"),
         Path("C:/tmp/yolox_tiny.onnx"),
+        Path(r"\\server\share\yolox_tiny.onnx"),
         Path("DET-R0/model.onnx"),
     ),
 )
