@@ -1,19 +1,22 @@
-# H-CAM 2.0
+# H-CAM Model M-1
 
-Primary integrated implementation and validation repository for the H-CAM
-resource-adaptive video intelligence platform.
+Collaborator workspace for the H-CAM resource-adaptive video intelligence
+platform. This repository is maintained independently for the `hcam-1-0`
+collaboration team; the owner platform under `hcam-2-0` remains separate and
+is not automatically synchronized with this repository.
 
-## GitHub Coordination
+## Collaborator Coordination
 
-- [Platform Delivery Project](https://github.com/orgs/hcam-2-0/projects/1)
-- [Architecture and repository catalogue](https://github.com/hcam-2-0/hcam-docs)
-- [Organization governance](https://github.com/hcam-2-0/.github/blob/main/GOVERNANCE.md)
-- [Cross-service contracts](https://github.com/hcam-2-0/hcam-protos)
+- [Collaborator issues](https://github.com/hcam-1-0/model-m-1/issues)
+- [Collaborator setup](TEAMMATE_SETUP.md)
+- [Contributor onboarding](ONBOARDING.md)
+- [Architecture and phase documentation](docs/)
+- [Local contract catalogue](contracts/)
 
-Phase, priority, target hardware profile, authorization gate, and current owner
-belong on the linked Project item. A merged change does not by itself authorize
-camera control, private/Government data, model or dataset acquisition,
-deployment, or phase acceptance.
+Collaborator changes, issues, and validation belong in this repository. A
+copied or merged change does not by itself synchronize the owner platform or
+authorize camera control, private/Government data, model or dataset
+acquisition, deployment, or phase acceptance.
 
 ## Phase -1 Adaptive Platform Foundation
 

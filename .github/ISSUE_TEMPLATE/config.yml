@@ -1,11 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: H-CAM Platform Delivery project
-    url: https://github.com/orgs/hcam-2-0/projects/1
-    about: Review current phases, priorities, gates, and delivery status.
-  - name: H-CAM architecture and planning
-    url: https://github.com/hcam-2-0/hcam-docs/discussions
-    about: Discuss cross-repository ideas before implementation.
-  - name: Security reporting policy
-    url: https://github.com/hcam-2-0/.github/security/policy
-    about: Do not disclose vulnerabilities or sensitive evidence in an issue.
+  - name: Model M-1 collaborator workspace
+    url: https://github.com/hcam-1-0/model-m-1
+    about: Review the collaborator workspace, documentation, and current code.
+  - name: Model M-1 collaborator issues
+    url: https://github.com/hcam-1-0/model-m-1/issues
+    about: Review current collaborator tasks and open a structured issue.
