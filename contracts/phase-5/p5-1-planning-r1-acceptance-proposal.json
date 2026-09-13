@@ -1,0 +1,50 @@
+{
+  "schema_version": "hcam.phase5.p5_1.planning_acceptance_proposal.v1",
+  "proposal_id": "P5.1-PLANNING-R1-ACCEPTANCE-PROPOSAL",
+  "decision_id": "D-P5.1-PLANNING-R1-ACCEPTANCE",
+  "status": "non_effective_owner_acceptance_pending",
+  "effective": false,
+  "prepared_on": "2026-09-06",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_package": {
+    "package_id": "P5.1-PLANNING-R1",
+    "path": "contracts/phase-5/p5-1-planning-package-r1.json",
+    "bytes": 6500,
+    "sha256": "5ECEC0B67BE3DE64518F6D3C9D7B221C449C4B2E6E0C5A23306AF0738C55A008",
+    "canonical_component_digest": "0AF30783F7E80A8CB57141745BE964D5E3F4779D6DBDF996404AE5FDF76A2F4B"
+  },
+  "recorded_profile": "B/A/A/A/A/A/A/A/A/A/A/A",
+  "decision_count": 12,
+  "workstream_count": 8,
+  "P5_1_points": 12,
+  "effect_if_accepted": [
+    "freeze_P5_1_PLANNING_R1_as_the_current_shared_application_foundation_planning_baseline",
+    "preserve_the_Gujarat_GIS_parity_first_no_downgrade_contract",
+    "preserve_the_eight_frozen_P5_1_implementation_workstreams",
+    "permit_preparation_only_of_one_separate_non_effective_exact_digest_bound_P5_1_start_package"
+  ],
+  "acceptance_does_not_authorize": [
+    "source_import",
+    "product_or_test_implementation",
+    "dependency_download_installation_or_lockfile_changes",
+    "build_or_runtime_execution",
+    "API_routes_or_migrations",
+    "map_tile_provider_camera_media_or_network_access",
+    "Government_or_private_data",
+    "models_datasets_artifacts_or_inference",
+    "operational_actions",
+    "containers_or_Kubernetes",
+    "deployment",
+    "P5_2",
+    "commit_push_or_remote_Git"
+  ],
+  "progress_if_accepted": {
+    "P5_1_planning_acceptance_percent": 100.0,
+    "P5_1_product_percent": 0.0,
+    "phase_5_product_percent": 8.0
+  },
+  "proposed_owner_statement_normalization": "Exact ASCII text shown below, UTF-8 without BOM, no terminal newline.",
+  "proposed_owner_statement_utf8_length": 1033,
+  "proposed_owner_statement_sha256": "C4B65BC3D4D064F4D3F67F0B5F5CC65551AE01E520303B447FC23CF7EDE214CF",
+  "proposed_owner_statement": "D-P5.1-PLANNING-R1-ACCEPTANCE: I, mayank-admin, accept reconciled P5.1 Shared Application Foundation planning package P5.1-PLANNING-R1 with SHA-256 5ECEC0B67BE3DE64518F6D3C9D7B221C449C4B2E6E0C5A23306AF0738C55A008 and canonical component digest 0AF30783F7E80A8CB57141745BE964D5E3F4779D6DBDF996404AE5FDF76A2F4B, including the recorded B/A/A/A/A/A/A/A/A/A/A/A profile, preserved Gujarat GIS parity-first no-downgrade contract, eight frozen implementation workstreams, and all documented planning-only limitations. This accepts planning only and authorizes preparation only of one separate non-effective exact digest-bound P5.1 start package. It does not authorize source import, product or test implementation, dependency downloads, installation or lockfile changes, build or runtime execution, API routes or migrations, map, tile, provider, camera, media or network access, Government or private data, models, datasets, artifacts or inference, operational actions, containers, Kubernetes, deployment, P5.2, commit, push, or remote Git."
+}

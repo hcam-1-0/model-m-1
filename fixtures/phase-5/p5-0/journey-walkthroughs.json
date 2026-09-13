@@ -1,0 +1,11 @@
+{
+  "fixture_type": "hcam.operator.generated-journey-walkthroughs.v1",
+  "generated_only": true,
+  "walkthroughs": [
+    {"walkthrough_id": "walkthrough.camera_ready", "journey_id": "journey.camera_to_live", "states": ["loading", "ready"], "actions": ["view"], "server_confirmations": [true]},
+    {"walkthrough_id": "walkthrough.camera_recovery", "journey_id": "journey.camera_to_live", "states": ["loading", "failure", "recovery", "ready"], "actions": ["view", "retry", "refresh"], "server_confirmations": [true, true, true]},
+    {"walkthrough_id": "walkthrough.review_conflict", "journey_id": "journey.alert_review", "states": ["loading", "ready", "conflict", "recovery", "ready"], "actions": ["view", "review", "refresh", "view"], "server_confirmations": [true, true, true, true]},
+    {"walkthrough_id": "walkthrough.correction", "journey_id": "journey.correction_reconstruction", "states": ["loading", "ready", "correction"], "actions": ["view", "propose"], "server_confirmations": [true, true]}
+  ],
+  "operational": false
+}

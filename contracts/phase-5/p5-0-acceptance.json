@@ -1,0 +1,40 @@
+{
+  "schema_version": "hcam.phase5.p5_0.acceptance.v1",
+  "decision_id": "D-P5.0-ACCEPTANCE",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-06",
+  "accepted_branch": "codex/phase5-product-ux-contracts",
+  "accepted_implementation_commit": "8d6ff70dfb0f6c7a6b9a50ce6db03d14f46256ae",
+  "accepted_evidence_seal_commit": "35fd0fb4b872b1c3d00667e932b903c36f32cdd3",
+  "evidence_package": {
+    "package_id": "P5.0-EVIDENCE-PACKAGE-R0",
+    "path": "contracts/phase-5/p5-0-evidence-package.json",
+    "sha256": "5A2857352974B541AC942ADA521A680B3D5D23B20B765882F8A94759B457E6C2",
+    "canonical_component_digest": "56229E40C1C374683956E344B7D08AF3F44D58208CB50B9C523A875F7FD846A7"
+  },
+  "accepted_progress": {
+    "phase_5_points": 8,
+    "phase_5_total_points": 100,
+    "phase_5_percent": 8.0,
+    "p5_0_points": 8,
+    "p5_0_total_points": 8,
+    "p5_0_percent": 100.0
+  },
+  "scope_effect": "Completes P5.0 only under the sealed generated-only operator-contract, GIS-parity, accessibility, security, fixture, validation, compatibility-transition, and documented limitation evidence.",
+  "continuing_prohibitions": [
+    "P5_1_planning_or_implementation",
+    "source_import_frontend_or_map_runtime",
+    "new_dependencies_migrations_or_API_routes",
+    "cameras_or_media",
+    "providers_or_network_access",
+    "Government_or_private_data",
+    "models_or_inference",
+    "operational_actions",
+    "containers_Kubernetes_or_deployment",
+    "remote_Git"
+  ],
+  "owner_statement_sha256": "50E565E1981209EB80216341D7AF004220A05A6E1C052833B859771538E59D42",
+  "owner_statement": "D-P5.0-ACCEPTANCE: I, mayank-admin, accept P5.0 evidence package P5.0-EVIDENCE-PACKAGE-R0 with SHA-256 5A2857352974B541AC942ADA521A680B3D5D23B20B765882F8A94759B457E6C2 and canonical component digest 56229E40C1C374683956E344B7D08AF3F44D58208CB50B9C523A875F7FD846A7 at technical commit 8d6ff70dfb0f6c7a6b9a50ce6db03d14f46256ae, including its generated-only implementation evidence, validation results, authorized Phase 4 historical-readiness compatibility transition, explicit environment limitations, and documented safety boundaries. This acceptance completes P5.0 only. It does not authorize P5.1, source import, frontend or map runtime, new dependencies, migrations or API routes, cameras or media, providers or network access, Government or private data, models or inference, operational actions, containers, Kubernetes, deployment, or remote Git."
+}

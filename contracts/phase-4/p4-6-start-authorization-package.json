@@ -1,0 +1,558 @@
+{
+  "schema_version": "hcam.phase4.p4_6.start-authorization-package.v1",
+  "package_id": "P4.6-START-R0",
+  "decision_id": "D-P4.6-START",
+  "status": "owner_authorization_required",
+  "effective": false,
+  "prepared_on": "2026-09-05",
+  "expires_on_if_accepted": "2026-10-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-operations-security-scale-planning",
+  "planning_base_commit": "4100dc148b1a0728ccaed5bac07ba67913951ee6",
+  "planned_implementation_branch": "codex/phase4-operations-security-scale",
+  "implementation_branch_base_policy": "clean_descendant_of_planning_base_containing_only_exact_P4_6_decisions_planning_acceptance_start_package_and_status_transitions_before_start_acceptance",
+  "accepted_predecessor": {
+    "phase": "P4.5",
+    "decision_id": "D-P4.5-ACCEPTANCE",
+    "acceptance_path": "contracts/phase-4/p4-5/acceptance.json",
+    "acceptance_sha256": "856484AA45BB0775DD1A967AE1AFC0135E64ADC826DAE339A31FB1806CF26AB2",
+    "evidence_package_sha256": "02F0439B2034ECBB0481E854236DAE0991C6A5DC9A3B04AD3AA3E5C03507D980",
+    "accepted_implementation_commit": "9eb3d2fb3a3fc68b8722d7c4a70369e6f1a8d41e",
+    "acceptance_commit": "1b54aafc252248eb502cd04ebd2130b0cf1684bf"
+  },
+  "accepted_reconciled_planning": {
+    "package_id": "P4.6-PLANNING-R1",
+    "path": "contracts/phase-4/p4-6-planning-r1-package.json",
+    "sha256": "5EF1814AE432FD7C15E3A9BD92EF6344CDA210A2D872A362C45D10CCADA411F5",
+    "reconciled_component_digest": "07717C1641AAE57F1C58D7B6FEB18B16C825F7B94E963DDD951A14AEC598BEA9"
+  },
+  "planning_acceptance": {
+    "decision_id": "D-P4.6-PLANNING-R1-ACCEPTANCE",
+    "path": "contracts/phase-4/p4-6-planning-r1-acceptance.json",
+    "sha256": "F56FC37C6711AA3704145450FC7F8225C24340331A642F8ECD59561944837D9E",
+    "owner_statement_sha256": "52D55E3BA0DA455E9626772C6296EFA43477BD889410449F3EFDF7B7E3D2C5D9"
+  },
+  "binding_decisions": {
+    "record_path": "contracts/phase-4/p4-6-owner-decisions.json",
+    "record_sha256": "44364BAF1A90C89566CFA6C4BE66FE8EAF72A8F8BFE17A6762E0849913DFE501",
+    "explanation_path": "docs/phase-4/p4-6-owner-decisions.md",
+    "explanation_sha256": "32EAC3531D4762A64D32A4C9F11425DD5830AF8D8C3E7ED33E9F8C6873310E8E",
+    "selected_profile": "C/A/A_with_guarded_C_capability/A/A/A/A/A/A/A/C/C",
+    "authoritative_signal_model": "independently_governed_operational_security_audit_and_evidence_lanes",
+    "optional_signal_capability": "disabled_sanitized_non_authoritative_UnifiedSignalSearchProjection",
+    "telemetry_model": "existing_Prometheus_authority_plus_default_off_OTel_compatible_adapters",
+    "capacity_model": "generated_C1_C10_C50_latency_balanced_and_throughput_simulation",
+    "placement_model": "platform_neutral_plan_with_standalone_and_optional_disabled_Kubernetes_projections"
+  },
+  "authorization_effect_if_owner_accepts_exact_digest": [
+    "record_the_exact_D_P4_6_START_owner_statement_without_expanding_scope",
+    "create_or_switch_to_the_exact_local_implementation_branch_from_the_clean_planning_checkpoint",
+    "commit_the_exact_P4_6_decision_acceptance_start_and_status_records_locally_without_push",
+    "implement_only_the_allowlisted_generated_only_operations_observability_reliability_security_supply_chain_recovery_capacity_placement_API_persistence_and_evidence_scope",
+    "define_but_do_not_activate_the_unified_signal_search_OTel_export_external_broker_or_Kubernetes_adapter_surfaces",
+    "use_only_deterministic_non_issuable_generated_contract_event_queue_security_supply_chain_recovery_capacity_and_placement_fixtures",
+    "run_local_generated_only_validation_with_existing_locked_dependencies_and_at_most_ten_bounded_in_scope_remediation_and_reseal_cycles",
+    "use_local_SQLite_and_optionally_an_already_available_local_PostgreSQL_PostGIS_test_database_with_generated_data_without_container_service_install_update_or_network_configuration_changes",
+    "create_local_checkpoint_commits_without_push",
+    "prepare_one_non_effective_exact_P4_6_owner_acceptance_proposal"
+  ],
+  "work_packages": [
+    {
+      "id": "P4.6-W1",
+      "name": "canonical_contracts_registries_bounds_and_generated_fixtures",
+      "scope": [
+        "closed_versioned_telemetry_trace_signal_failure_objective_budget_degradation_worker_circuit_kill_switch_recovery_security_supply_chain_capacity_placement_health_and_unified_search_contracts",
+        "central_closed_registries_for_metric_labels_failures_service_classes_worker_classes_recovery_tiers_capacity_modes_and_placement_reasons",
+        "strict_unknown_field_enum_value_size_count_depth_cardinality_version_digest_and_prohibited_content_bounds",
+        "at_least_1024_deterministic_non_issuable_generated_scenarios_with_byte_exact_regeneration"
+      ]
+    },
+    {
+      "id": "P4.6-W2",
+      "name": "telemetry_trace_signal_separation_and_guarded_unified_search",
+      "scope": [
+        "register_existing_Prometheus_metrics_and_require_governed_names_units_labels_histograms_cardinality_and_deprecation",
+        "validated_W3C_trace_context_and_opaque_correlation_propagation_without_authorization_or_baggage_semantics",
+        "independent_operational_security_audit_and_evidence_lanes_with_typed_non_authoritative_projections",
+        "disabled_UnifiedSignalSearchProjection_over_sanitized_allowlisted_inputs_with_no_raw_or_authoritative_store"
+      ]
+    },
+    {
+      "id": "P4.6-W3",
+      "name": "failure_objective_budget_health_and_degradation_kernel",
+      "scope": [
+        "closed_sanitized_failure_codes_classes_retry_dispositions_safe_parameters_and_cross_transport_mappings",
+        "versioned_SLI_SLO_good_valid_bad_unknown_exclusion_window_data_quality_and_target_state_contracts",
+        "deterministic_error_budget_and_burn_calculation_with_targets_unset_by_default",
+        "hierarchical_degradation_state_and_safe_health_projection_without_automatic_operational_authority"
+      ]
+    },
+    {
+      "id": "P4.6-W4",
+      "name": "worker_resilience_circuits_kill_switches_and_recovery_conformance",
+      "scope": [
+        "shared_conformance_adapters_for_existing_domain_owned_database_jobs_without_replacing_their_truth",
+        "claim_heartbeat_lease_loss_retry_backoff_jitter_cooldown_dead_letter_idempotency_outbox_and_late_commit_denial",
+        "bounded_dependency_class_circuit_state_half_open_probes_shutdown_and_abandoned_work_recovery",
+        "hierarchical_revisioned_attributable_expiring_kill_switches_with_deny_precedence_and_mandatory_control_protection"
+      ]
+    },
+    {
+      "id": "P4.6-W5",
+      "name": "application_authorization_PostgreSQL_RLS_and_abuse_assurance",
+      "scope": [
+        "application_role_department_scope_purpose_reason_revision_ETag_idempotency_and_audit_controls",
+        "forced_PostgreSQL_RLS_for_new_department_scoped_tables_with_independent_application_and_database_oracles",
+        "ordinary_owner_superuser_BYPASSRLS_absent_policy_unset_scope_pool_reset_prepared_query_retry_race_and_cross_department_negatives",
+        "bounded_adversarial_contract_header_trace_JSON_timestamp_counter_identifier_pagination_policy_and_concurrency_tests"
+      ]
+    },
+    {
+      "id": "P4.6-W6",
+      "name": "supply_chain_inventory_projections_and_policy",
+      "scope": [
+        "canonical_internal_source_dependency_artifact_license_vulnerability_provenance_build_exception_freshness_and_unknown_inventory",
+        "deterministic_loss_accounted_SPDX_CycloneDX_and_SLSA_projections_without_conformance_level_signature_or_attestation_claim",
+        "explicit_not_observed_unknown_stale_failed_not_applicable_and_verified_states",
+        "source_commit_lockfile_contract_fixture_package_and_evidence_digest_binding_without_scanner_or_registry_access"
+      ]
+    },
+    {
+      "id": "P4.6-W7",
+      "name": "restore_first_recovery_contracts_and_generated_drills",
+      "scope": [
+        "database_object_configuration_contract_secret_reference_key_reference_audit_and_evidence_dependency_classification",
+        "versioned_recovery_plans_with_target_RPO_RTO_unset_provisional_or_approved_and_separate_observed_results",
+        "generated_manifest_interruption_corruption_missing_dependency_restore_order_integrity_cleanup_and_partial_outcome_simulation",
+        "preserve_existing_backup_verify_restore_and_recovery_drill_behavior_without_real_storage_or_machine_actions"
+      ]
+    },
+    {
+      "id": "P4.6-W8",
+      "name": "dynamic_profiles_capacity_methodology_and_portable_placement",
+      "scope": [
+        "developer_laptop_owned_GPU_lab_server_node_and_Kubernetes_node_class_profiles_without_machine_identity_or_hardware probing",
+        "declared_observed_attested_stale_unsupported_and_unknown_capability_states_with_mandatory_control_rejection_and_visible_optional_lane_bypass",
+        "generated_C1_C10_C50_latency_balanced_and_throughput_simulations_with_latency_throughput_backlog_saturation_loss_recovery_resource_and_limitation outputs",
+        "platform_neutral_immutable_placement_plan_with_machine_disabled_standalone_and_Kubernetes_projections_and_no_scheduler_or_cluster execution"
+      ]
+    },
+    {
+      "id": "P4.6-W9",
+      "name": "persistence_migration_read_APIs_UI_support_and_observability",
+      "scope": [
+        "additive_0018_operations_security_scale_migration_descending_from_0017_investigation_evidence",
+        "bounded_revisioned_PostgreSQL_stores_for_objectives_budgets_degradation_circuits_kill_switches_recovery_capacity_supply_chain_security_evidence_and_outbox",
+        "default_off_sanitized_department_or_platform_scoped_read_APIs_with_no_store_pagination_freshness_and_unknown_state",
+        "future_Phase_5_UI_support_contracts_without_mutation_activation_backend_connection_or_operational action"
+      ]
+    },
+    {
+      "id": "P4.6-W10",
+      "name": "compatibility_validation_evidence_and_acceptance",
+      "scope": [
+        "preserve_accepted_Phase_0_through_P4_5_artifacts_and_validate_0017_to_0018_to_0017_to_0018_migration_compatibility",
+        "focused_full_PostgreSQL_RLS_concurrency_security_generated_capacity_Ruff_compile_build_dependency_historical_and_readiness_validation",
+        "new_logic_branch_coverage_at_least_90_percent_and_critical_failure_authorization_policy_logic_at_least_95_percent",
+        "seal_exact_source_fixture_contract_OpenAPI_migration_supply_chain_capacity_security_evidence_limitations_and_non_effective_owner_acceptance_proposal"
+      ]
+    }
+  ],
+  "exact_additive_implementation_paths": [
+    "app/hcam/operations/platform/__init__.py",
+    "app/hcam/operations/platform/bounds.py",
+    "app/hcam/operations/platform/contracts.py",
+    "app/hcam/operations/platform/canonical.py",
+    "app/hcam/operations/platform/registry.py",
+    "app/hcam/operations/platform/tracing.py",
+    "app/hcam/operations/platform/signals.py",
+    "app/hcam/operations/platform/unified_search.py",
+    "app/hcam/operations/platform/failures.py",
+    "app/hcam/operations/platform/objectives.py",
+    "app/hcam/operations/platform/budgets.py",
+    "app/hcam/operations/platform/degradation.py",
+    "app/hcam/operations/platform/workers.py",
+    "app/hcam/operations/platform/circuits.py",
+    "app/hcam/operations/platform/controls.py",
+    "app/hcam/operations/platform/security.py",
+    "app/hcam/operations/platform/supply_chain.py",
+    "app/hcam/operations/platform/recovery.py",
+    "app/hcam/operations/platform/capacity.py",
+    "app/hcam/operations/platform/placement.py",
+    "app/hcam/operations/platform/standalone_projection.py",
+    "app/hcam/operations/platform/kubernetes_projection.py",
+    "app/hcam/operations/platform/models.py",
+    "app/hcam/operations/platform/persistence.py",
+    "app/hcam/operations/platform/service.py",
+    "app/hcam/operations/platform/routes.py",
+    "app/hcam/operations/platform/metrics.py",
+    "app/hcam/operations/platform/runtime.py",
+    "migrations/versions/0018_operations_security_scale.py",
+    "contracts/phase-4/p4-6-start-authorization.json",
+    "contracts/phase-4/p4-6/operations-contracts.json",
+    "contracts/phase-4/p4-6/database.json",
+    "contracts/phase-4/p4-6/openapi.json",
+    "contracts/phase-4/p4-6/fixtures/generated-telemetry-registry-v1.json",
+    "contracts/phase-4/p4-6/fixtures/generated-trace-context-v1.json",
+    "contracts/phase-4/p4-6/fixtures/generated-signal-separation-v1.json",
+    "contracts/phase-4/p4-6/fixtures/generated-unified-search-v1.json",
+    "contracts/phase-4/p4-6/fixtures/generated-failure-taxonomy-v1.json",
+    "contracts/phase-4/p4-6/fixtures/generated-service-objectives-v1.json",
+    "contracts/phase-4/p4-6/fixtures/generated-worker-conformance-v1.json",
+    "contracts/phase-4/p4-6/fixtures/generated-control-hierarchy-v1.json",
+    "contracts/phase-4/p4-6/fixtures/generated-security-isolation-v1.json",
+    "contracts/phase-4/p4-6/fixtures/generated-supply-chain-v1.json",
+    "contracts/phase-4/p4-6/fixtures/generated-recovery-drills-v1.json",
+    "contracts/phase-4/p4-6/fixtures/generated-capacity-runs-v1.json",
+    "contracts/phase-4/p4-6/fixtures/generated-placement-plans-v1.json",
+    "contracts/phase-4/p4-6/fixtures/generated-abuse-v1.json",
+    "contracts/phase-4/p4-6/evidence.json",
+    "contracts/phase-4/p4-6/evidence-package.json",
+    "contracts/phase-4/p4-6/acceptance-proposal.json",
+    "docs/phase-4/p4-6-evidence-review.md",
+    "tests/test_phase46_contracts.py",
+    "tests/test_phase46_canonical.py",
+    "tests/test_phase46_telemetry.py",
+    "tests/test_phase46_tracing.py",
+    "tests/test_phase46_signals.py",
+    "tests/test_phase46_unified_search.py",
+    "tests/test_phase46_failures.py",
+    "tests/test_phase46_objectives.py",
+    "tests/test_phase46_workers.py",
+    "tests/test_phase46_controls.py",
+    "tests/test_phase46_security.py",
+    "tests/test_phase46_supply_chain.py",
+    "tests/test_phase46_recovery.py",
+    "tests/test_phase46_capacity.py",
+    "tests/test_phase46_placement.py",
+    "tests/test_phase46_persistence.py",
+    "tests/test_phase46_migration.py",
+    "tests/test_phase46_api.py",
+    "tests/test_phase46_postgres.py",
+    "tests/test_phase46_readiness.py",
+    "tools/phase46_generated_operations.py",
+    "tools/phase46_readiness.py"
+  ],
+  "exact_existing_paths_allowed_to_change": [
+    {
+      "path": ".github/workflows/python-ci.yml",
+      "pre_change_sha256": "435705E6B5E19CB3C07F33AFBF4131E95446F633E1B73BC6B5E22947EEEA106F",
+      "reason": "add_P4_6_generated_contract_migration_security_capacity_and_optional_existing_PostgreSQL_validation_without_removing_prior_jobs"
+    },
+    {
+      "path": "app/hcam/database.py",
+      "pre_change_sha256": "1856EC1FB4DD5313F99D024E5365E857478E3A1E79105E74B1F8645D7B9B26A8",
+      "reason": "advance_current_schema_to_0018_and_require_P4_6_tables"
+    },
+    {
+      "path": "app/hcam/main.py",
+      "pre_change_sha256": "1212B060D788A898DDE95FFDAB09CDC44BD66475A243BF1AF590EB843F118B78",
+      "reason": "register_default_off_generated_only_operations_router_and_state"
+    },
+    {
+      "path": "app/hcam/metrics.py",
+      "pre_change_sha256": "8EF4B83EC3CCFF5334F664F5943C676EC7546F92B2CB900F07BE5ED44E9D7C8C",
+      "reason": "bind_existing_metrics_to_the_versioned_low_cardinality_registry_and_add_safe_platform_aggregates"
+    },
+    {
+      "path": "app/hcam/observability.py",
+      "pre_change_sha256": "D0933234FB4DBE89477C883B9C301E5FC1C75C8DC54FD4A797C7EDAF418C38BE",
+      "reason": "add_validated_trace_context_and_opaque_correlation_propagation_without_authorization_or_raw_context_logging"
+    },
+    {
+      "path": "app/hcam/security/auth.py",
+      "pre_change_sha256": "DE8D1127629ADD8F524A7219FF9316357605F3A78B2EA72B2B1D699DB04A2F0D",
+      "reason": "add_separated_operations_security_objective_recovery_capacity_supply_chain_and_control_evidence_permissions_without_operational_action_authority"
+    },
+    {
+      "path": "app/hcam/settings.py",
+      "pre_change_sha256": "1B58ACA1EB9661F7BA0C38B8A9B0F069A4208721F396061E8904D5C985B0D085",
+      "reason": "add_default_false_production_forbidden_generated_operations_and_adapter_settings"
+    },
+    {
+      "path": "contracts/phase-4/database.json",
+      "pre_change_sha256": "4D344B88E9A92EC5A29C05D0613C9C1F27B39A8815A70161E27E8EE86BC86C40",
+      "reason": "advance_combined_database_snapshot_to_0018"
+    },
+    {
+      "path": "contracts/phase-4/openapi.json",
+      "pre_change_sha256": "940FC9EEA81963AE99D7E0AC05DA8E3A57B7A75FFC30AF2AA42480B592394E65",
+      "reason": "add_bounded_default_off_sanitized_operations_security_recovery_capacity_and_supply_chain_read_routes"
+    },
+    {
+      "path": "tests/conftest.py",
+      "pre_change_sha256": "5C19D2D47E94A7B75B979611CF2EC1658D9F5675DCB69ECC29EC5F49C343950B",
+      "reason": "add_generated_only_P4_6_principals_policy_profiles_and_fixtures"
+    },
+    {
+      "path": "tests/test_analytics_assignment_migration.py",
+      "pre_change_sha256": "ED4F684BAC37F015BD53D1A0BC2B5778BC6C43E06607DEC0D052311EF775B4B2",
+      "reason": "update_only_current_repository_head_assertion_to_0018_while_preserving_Phase_3_behavior"
+    },
+    {
+      "path": "tests/test_phase40_migration.py",
+      "pre_change_sha256": "039C338454B9110DDF66227F9DC7D98077126A36897A9527A4CFE7B84CB87A0F",
+      "reason": "preserve_0012_validation_while_recognizing_0018_as_current_head"
+    },
+    {
+      "path": "tests/test_phase41_migration.py",
+      "pre_change_sha256": "8C6456538054F429887A36959D29EB4D08868CCB27083262B2F7731B7082FDCA",
+      "reason": "preserve_0013_validation_while_recognizing_0018_as_current_head"
+    },
+    {
+      "path": "tests/test_phase42_migration.py",
+      "pre_change_sha256": "78BCFE9D623149AFC4A9F6ADBB85B3AC65B70AE89E872012A68993FE6C731169",
+      "reason": "preserve_0014_validation_while_recognizing_0018_as_current_head"
+    },
+    {
+      "path": "tests/test_phase43_migration.py",
+      "pre_change_sha256": "B3C72229D7330771F446C194051C27F994C787FFCE6FD978F3EA22478E34120A",
+      "reason": "preserve_0015_validation_while_recognizing_0018_as_current_head"
+    },
+    {
+      "path": "tests/test_phase44_migration.py",
+      "pre_change_sha256": "FC45BDEDDC27FC1292A47D9CEF39B728D813964109AB74C3EFA0EF21229A50AB",
+      "reason": "preserve_0016_validation_while_recognizing_0018_as_current_head"
+    },
+    {
+      "path": "tests/test_phase45_migration.py",
+      "pre_change_sha256": "AB5E533C2CE85A17472AD1CF0ECEC04CB4A24E70552D1919D33E11B3F6BBF2B3",
+      "reason": "preserve_0017_validation_and_add_the_0017_to_0018_to_0017_to_0018_cycle"
+    },
+    {
+      "path": "tests/test_phase45_readiness.py",
+      "pre_change_sha256": "5571A9E63BB13E2334B73C74C353C1F10C2AED2DBA759A64E394B57342091799",
+      "reason": "exact_hash_bound_historical_acceptance_transition_for_the_later_P4_6_branch"
+    },
+    {
+      "path": "tools/phase45_readiness.py",
+      "pre_change_sha256": "81E1A61365914CC5137DFDF3FF67AA02AB6D07D73F2A078573B2E8D63845816E",
+      "reason": "validate_accepted_P4_5_from_immutable_Git_objects_while_excluding_only_exact_P4_6_paths"
+    },
+    {
+      "path": "README.md",
+      "pre_change_sha256": "9021D0427F1EC289E21FCD2DF1DCA69342A76D30EBC38C897EE172FBD66B0133",
+      "reason": "record_effective_P4_6_start_technical_progress_evidence_and_acceptance_without_rewriting_prior_phase_history"
+    },
+    {
+      "path": "docs/phase-4/README.md",
+      "pre_change_sha256": "FE4BD80166786822F1CE893EEA24C3DE927F4EDE989E7B21676C394FB63110D3",
+      "reason": "index_effective_P4_6_start_implementation_evidence_and_acceptance_records"
+    },
+    {
+      "path": "docs/phase-4/status.md",
+      "pre_change_sha256": "79084102A6F320CACE27716C2CDBFA67663877D4883ECF1D2C9A0DC44B0F2022",
+      "reason": "record_effective_P4_6_start_work_package_evidence_limitations_progress_and_acceptance_state"
+    }
+  ],
+  "immutable_dependency_bindings": [
+    {
+      "path": "pyproject.toml",
+      "sha256": "B2740298D7D1E5D147CC48E21750966EB0B765376853F27ACDA990D70F328605"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "69CB301D0F8D97BC0973C620F47FB0D84BFAAE25A1D405E067B15005994F55EF"
+    }
+  ],
+  "immutable_scope": [
+    "all_existing_Phase_0_through_Phase_3_contracts_evidence_decisions_packages_migrations_source_tests_and_Git_objects",
+    "all_accepted_P4_0_through_P4_5_packages_evidence_acceptance_and_specialized_source_behavior_except_exact_hash_bound_compatibility_paths",
+    "all_existing_migrations_through_0017_investigation_evidence",
+    "contracts/phase-4/p4-6-plan-authorization.json",
+    "contracts/phase-4/p4-6-planning-package.json",
+    "contracts/phase-4/p4-6-owner-decisions.json",
+    "contracts/phase-4/p4-6-planning-r1-package.json",
+    "contracts/phase-4/p4-6-planning-r1-acceptance-proposal.json",
+    "contracts/phase-4/p4-6-planning-r1-acceptance.json",
+    "docs/phase-4/p4-6-research-record.md",
+    "docs/phase-4/p4-6-threat-model.md",
+    "docs/phase-4/p4-6-contract-catalog.md",
+    "docs/phase-4/p4-6-decision-packet.md",
+    "docs/phase-4/p4-6-owner-decisions.md",
+    "docs/phase-4/p4-6-implementation-plan.md"
+  ],
+  "bounded_generated_runtime_contract_after_authorization": {
+    "generated_only": true,
+    "operational": false,
+    "default_off": true,
+    "production_forbidden": true,
+    "existing_Prometheus_metrics_remain_authoritative": true,
+    "OTel_compatible_export_adapters_defined": true,
+    "OTel_exporter_or_collector_connection": false,
+    "independent_signal_lanes_authoritative": true,
+    "unified_signal_search_projection_generated_and_disabled": true,
+    "central_search_log_or_security_backend": false,
+    "external_broker": false,
+    "production_SLO_RPO_RTO_or_capacity_target": false,
+    "generated_recovery_simulation_only": true,
+    "real_backup_restore_scanner_or_recovery_action": false,
+    "generated_C1_C10_C50_simulation_only": true,
+    "hardware_probe_performance_stress_or_thermal_test": false,
+    "platform_neutral_placement_projection_only": true,
+    "container_or_Kubernetes_execution": false,
+    "operational_alert_notification_dispatch_enforcement_or_autonomous_action": false
+  },
+  "contract_and_resource_bounds": {
+    "unknown_fields": "forbidden",
+    "canonical_encoding": "UTF_8_ASCII_JSON_sorted_keys_compact_separators",
+    "digest": "SHA_256",
+    "maximum_contract_bytes": 65536,
+    "maximum_string_bytes": 4096,
+    "maximum_safe_failure_parameters": 16,
+    "maximum_metric_definitions": 2048,
+    "maximum_labels_per_metric": 8,
+    "maximum_closed_values_per_label": 64,
+    "maximum_generated_series": 32768,
+    "maximum_trace_state_bytes": 512,
+    "maximum_log_event_bytes": 16384,
+    "maximum_objectives": 256,
+    "maximum_burn_windows_per_objective": 8,
+    "maximum_worker_classes": 64,
+    "maximum_job_payload_bytes": 65536,
+    "maximum_job_attempts": 3,
+    "worker_lease_seconds": 90,
+    "maximum_generated_attempt_duration_seconds": 30,
+    "maximum_dead_letter_projection_items": 10000,
+    "maximum_circuit_classes": 64,
+    "maximum_control_hierarchy_depth": 8,
+    "maximum_recovery_assets": 256,
+    "maximum_recovery_dependencies": 1024,
+    "maximum_supply_chain_components": 10000,
+    "maximum_capacity_profiles": 64,
+    "capacity_scenarios": ["C1", "C10", "C50"],
+    "capacity_workload_modes": ["latency", "balanced", "throughput"],
+    "capacity_stream_equivalents": {"C1": 1, "C10": 10, "C50": 50},
+    "maximum_generated_capacity_steps": 100000,
+    "maximum_placement_nodes": 256,
+    "maximum_placement_services": 256,
+    "maximum_unified_search_projection_items": 10000,
+    "minimum_generated_scenario_vectors": 1024,
+    "raw_signal_audit_evidence_media_or_source_payload_retention": "zero",
+    "production_targets": "unset",
+    "runtime_default": "disabled"
+  },
+  "allowed_local_execution_after_authorization": {
+    "repository_owned_generated_ASCII_JSON_only": true,
+    "existing_locked_dependencies_only": true,
+    "dependency_install_update_or_download": false,
+    "local_Python_generated_static_unit_integration_and_coverage_tests": true,
+    "local_SQLite_generated_only_validation": true,
+    "already_available_local_PostgreSQL_PostGIS_generated_only_validation": true,
+    "PostgreSQL_connection_policy": "loopback_or_preconfigured_test_endpoint_only_no_service_container_schema_outside_test_database_or_network_configuration_change_and_no_DSN_logging",
+    "generated_telemetry_trace_signal_failure_worker_security_supply_chain_recovery_capacity_and_placement_evaluation": true,
+    "generated_unified_search_OTel_Kubernetes_and_standalone_projection_validation": true,
+    "real_exporter_search_backend_broker_backup_restore_scanner_hardware_or_cluster_execution": false,
+    "model_dataset_artifact_camera_media_private_or_Government_data_access": false,
+    "source_test_documentation_and_evidence_cycles_maximum": 10,
+    "local_checkpoint_commits": true,
+    "remote_git": false
+  },
+  "validation_gates": [
+    "accepted_P4_6_PLANNING_R1_planning_acceptance_and_start_authorization_hashes_remain_exact",
+    "all_accepted_Phase_0_through_P4_5_histories_remain_verifiable_and_immutable",
+    "at_least_1024_generated_non_issuable_scenarios_reproduce_byte_exact",
+    "all_contract_version_canonical_bounds_enum_unknown_cardinality_and_prohibited_content_tests_pass",
+    "existing_Prometheus_behavior_remains_compatible_and_every_new_metric_label_is_registry_allowlisted_and_bounded",
+    "trace_context_never_grants_authority_and_malformed_oversized_or_disallowed_context_fails_safe",
+    "operational_security_audit_and_evidence_lanes_remain_independently_authoritative_and_search_projection_remains_sanitized_disabled_and_non_authoritative",
+    "unknown_failure_SLI_vulnerability_provenance_capability_recovery_and_capacity_states_never_become_success",
+    "worker_claim_lease_heartbeat_retry_dead_letter_idempotency_late_commit_shutdown_circuit_kill_switch_and_abandonment_tests_pass",
+    "application_authorization_and_PostgreSQL_forced_RLS_oracles_deny_cross_scope_and_cover_owner_superuser_BYPASSRLS_absent_policy_pool_reset_and_race_cases",
+    "SPDX_CycloneDX_and_SLSA_projections_are_deterministic_loss_accounted_and_make_no_unproven_conformance_or_assurance_claim",
+    "recovery_validation_is_generated_simulation_only_and_never_conflates_backup_creation_with_successful_restore",
+    "C1_C10_C50_latency_balanced_and_throughput_results_are_deterministic_loss_accounted_profile_specific_and_never_universal_capacity claims",
+    "standalone_and_Kubernetes_projections_consume_the_same_platform_neutral_plan_and_no_machine_container_cluster_or scheduler action occurs",
+    "SQLite_0017_to_0018_to_0017_to_0018_cycle_passes",
+    "when_available_local_PostgreSQL_forced_RLS_cross_department_concurrent_claim_outbox_control_and_isolation_tests_pass",
+    "new_or_materially_changed_P4_6_modules_achieve_at_least_90_percent_branch_coverage_and_critical_failure_authorization_policy_modules_at_least_95_percent",
+    "unconditional_repository_suite_Ruff_compile_build_lock_dependency_historical_and_readiness_checks_pass",
+    "evidence_and_package_digests_reproduce_from_clean_local_source",
+    "no_unsupported_observability_security_compliance_recovery_SLO_RPO_RTO_capacity_hardware_Kubernetes_operational_or_deployment_claim_is_made"
+  ],
+  "stop_conditions": [
+    "path_or_scope_outside_this_package",
+    "immutable_hash_accepted_history_planning_acceptance_or_branch_ancestry_mismatch",
+    "new_or_changed_dependency_install_update_download_lockfile_dynamic_import_or_external_service_is_required",
+    "raw_signal_audit_evidence_identity_case_media_secret_destination_topology_exception_or_unbounded_text_reaches_the_wrong_lane_projection_log_metric_trace_error_or_fixture",
+    "unified_search_projection_can_become_authoritative_ingest_raw_records_override_source_policy_or_join_lanes_without_a_named_profile",
+    "trace_or_correlation_context_can_change_authorization_scope_purpose_or_capability",
+    "unknown_failure_vulnerability_provenance_capability_recovery_or_capacity_state_becomes_retryable_clean_supported_recovered_or_successful",
+    "worker_can_commit_after_lease_loss_or_retry_policy_can_retry_authorization_policy_validation_or_integrity_failure",
+    "kill_switch_or_degradation_can_grant_capability_weaken_a_mandatory_control_or_hide_bypass_provenance",
+    "cross_department_visibility_or_application_PostgreSQL_RLS_policy_divergence",
+    "backup_creation_is_reported_as_recovery_or_generated_recovery_reaches_filesystem_database_service_or_machine action",
+    "incomplete_generated_capacity_run_is_reported_as_capacity_or_hardware_city_camera_model_GPU_server_cluster_or production performance is inferred",
+    "standalone_or_Kubernetes_projection_can_start_a_process_container_cluster_scheduler_device_plugin_DRA_network_or deployment action",
+    "real_provider_Sentinel_camera_media_private_Government_model_dataset_operational_action_or_credential_is_required",
+    "ten_in_scope_remediation_cycles_are_exhausted",
+    "remote_Git_becomes_necessary"
+  ],
+  "explicitly_not_authorized": [
+    "P4_6_implementation_before_exact_start_package_acceptance",
+    "new_or_changed_dependencies_lockfiles_installation_updates_downloads_or_dynamic_plugins",
+    "real_OpenTelemetry_collector_exporter_search_log_security_or_observability_backend",
+    "central_authoritative_signal_store_or_shared_access_retention_deletion_hold_or_export_policy",
+    "external_queue_broker_workflow_engine_or_callback",
+    "production_SLI_SLO_error_budget_alert_threshold_RPO_RTO_capacity_hardware_or_deployment_target",
+    "real_backup_restore_disaster_recovery_scanner_vulnerability_refresh_hardware_capacity_performance_stress_thermal_or recovery execution",
+    "provider_Sentinel_camera_ONVIF_stream_frame_image_recording_playback_or_media_access",
+    "credential_secret_token_certificate_key_or_non_test_database_DSN_access",
+    "real_private_personal_biometric_vehicle_owner_registration_case_watchlist_evidence_Government_or_police_data",
+    "models_datasets_checkpoints_artifacts_embeddings_inference_training_accelerators_or_benchmarks",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "container_Kubernetes_cluster_cloud_pilot_production_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "frozen_progress": {
+    "phase4_before": {
+      "earned_points": 85,
+      "total_points": 100,
+      "percentage": "85.00%"
+    },
+    "p4_6_before": {
+      "earned_points": 0,
+      "total_points": 10,
+      "percentage": "0.0000%"
+    },
+    "after_observability_reliability_and_failure_completion": {
+      "phase4_earned_points": 88,
+      "phase4_percentage": "88.00%",
+      "p4_6_earned_points": 3,
+      "p4_6_percentage": "30.0000%"
+    },
+    "after_worker_resilience_and_recovery_completion": {
+      "phase4_earned_points": 90,
+      "phase4_percentage": "90.00%",
+      "p4_6_earned_points": 5,
+      "p4_6_percentage": "50.0000%"
+    },
+    "after_security_isolation_and_supply_chain_completion": {
+      "phase4_earned_points": 93,
+      "phase4_percentage": "93.00%",
+      "p4_6_earned_points": 8,
+      "p4_6_percentage": "80.0000%"
+    },
+    "after_capacity_and_topology_methodology_completion": {
+      "phase4_earned_points": 94,
+      "phase4_percentage": "94.00%",
+      "p4_6_earned_points": 9,
+      "p4_6_percentage": "90.0000%"
+    },
+    "after_exact_P4_6_acceptance": {
+      "phase4_earned_points": 95,
+      "phase4_percentage": "95.00%",
+      "p4_6_earned_points": 10,
+      "p4_6_percentage": "100.0000%"
+    },
+    "planning_points_awarded": 0,
+    "partial_item_credit": false
+  },
+  "required_acceptance_sequence": [
+    "owner_accepts_exact_SHA_256_of_this_package_as_D_P4_6_START",
+    "implementation_records_effective_start_without_changing_scope",
+    "bounded_local_generated_only_build_validation_and_evidence_complete",
+    "owner_separately_accepts_exact_P4_6_evidence_package_and_technical_commit"
+  ],
+  "owner_authorization_statement_template": "D-P4.6-START: I, mayank-admin, accept P4.6 start package P4.6-START-R0 with SHA-256 {PACKAGE_SHA256} and authorize its exact bounded local generated-only implementation scope, including the disabled unified-signal search projection, default-off OpenTelemetry-compatible adapters, generated C1/C10/C50 simulations, platform-neutral standalone/Kubernetes projections without Kubernetes execution, optional generated-only use of an already available local PostgreSQL/PostGIS test database, and local checkpoint commits without push. This does not authorize real telemetry, search, security, observability, or broker backends; production SLO/RPO/RTO/capacity targets; scanners; backup, restore, or recovery execution; hardware, performance, stress, or thermal testing; providers or operational network access; cameras or media; credentials or secrets beyond an opaque local test-database DSN; Government or private data; models, datasets, or inference; operational alerts or actions; containers or Kubernetes execution; deployment; or remote Git."
+}

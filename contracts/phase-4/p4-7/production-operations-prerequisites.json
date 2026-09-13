@@ -1,0 +1,104 @@
+{
+  "contract_type": "hcam.acceptance.production-prerequisites.v1",
+  "executable": false,
+  "generated_only": true,
+  "operationally_validated": false,
+  "prerequisites": [
+    {
+      "accountable_owner_required": true,
+      "category": "authorization",
+      "environment_specific_content_present": false,
+      "executable": false,
+      "prerequisite_id": "p47_6997d5a850bb53e4b4df7df83cfb3f26",
+      "required_evidence": [
+        "approved_role_matrix",
+        "department_isolation_evidence"
+      ],
+      "status": "not_operationally_validated"
+    },
+    {
+      "accountable_owner_required": true,
+      "category": "data_governance",
+      "environment_specific_content_present": false,
+      "executable": false,
+      "prerequisite_id": "p47_a2523f3965f54b1383dd3cb372245aa4",
+      "required_evidence": [
+        "approved_data_classes",
+        "retention_and_hold_policy"
+      ],
+      "status": "not_operationally_validated"
+    },
+    {
+      "accountable_owner_required": true,
+      "category": "operations",
+      "environment_specific_content_present": false,
+      "executable": false,
+      "prerequisite_id": "p47_bf0c53ce1c9ffc35e4f3db23a5ee3199",
+      "required_evidence": [
+        "owned_runbook",
+        "incident_response_drill"
+      ],
+      "status": "not_operationally_validated"
+    },
+    {
+      "accountable_owner_required": true,
+      "category": "reliability",
+      "environment_specific_content_present": false,
+      "executable": false,
+      "prerequisite_id": "p47_86cc78bfe17cb9fef6145c87e9214beb",
+      "required_evidence": [
+        "accepted_slo",
+        "recovery_validation"
+      ],
+      "status": "not_operationally_validated"
+    },
+    {
+      "accountable_owner_required": true,
+      "category": "security",
+      "environment_specific_content_present": false,
+      "executable": false,
+      "prerequisite_id": "p47_5103a6140521c55015ad35ffa5a32453",
+      "required_evidence": [
+        "threat_review",
+        "supply_chain_review"
+      ],
+      "status": "not_operationally_validated"
+    },
+    {
+      "accountable_owner_required": true,
+      "category": "integrations",
+      "environment_specific_content_present": false,
+      "executable": false,
+      "prerequisite_id": "p47_c7b56ca7401b2778723c99966589c205",
+      "required_evidence": [
+        "provider_authorization",
+        "destination_and_secret_controls"
+      ],
+      "status": "not_operationally_validated"
+    },
+    {
+      "accountable_owner_required": true,
+      "category": "accessibility",
+      "environment_specific_content_present": false,
+      "executable": false,
+      "prerequisite_id": "p47_5b363a5576b448658920f819eb9e3623",
+      "required_evidence": [
+        "manual_accessibility_review",
+        "assistive_technology_validation"
+      ],
+      "status": "not_operationally_validated"
+    },
+    {
+      "accountable_owner_required": true,
+      "category": "deployment",
+      "environment_specific_content_present": false,
+      "executable": false,
+      "prerequisite_id": "p47_804cdea57e4825825d670dc6837d33b0",
+      "required_evidence": [
+        "approved_topology",
+        "rollback_validation"
+      ],
+      "status": "not_operationally_validated"
+    }
+  ]
+}

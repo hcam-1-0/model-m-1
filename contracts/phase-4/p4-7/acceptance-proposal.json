@@ -1,0 +1,17 @@
+{
+  "canonical_component_digest": "75D0A3B7667C25BF8B5180639F5B8F3937A734FAA2B2BB63CB9FE9914182A875",
+  "decision_id": "D-P4.7-ACCEPTANCE",
+  "does_not_authorize": [
+    "phase5_planning_or_implementation",
+    "real_providers_network_or_credentials",
+    "government_private_camera_or_media_data",
+    "models_datasets_artifacts_or_inference",
+    "operational_actions_containers_kubernetes_or_deployment",
+    "remote_git"
+  ],
+  "effect_if_exactly_accepted": "complete_P4_7_and_Phase4_only",
+  "effective": false,
+  "evidence_package_sha256": "B739251D7D86A265DE60BA9B9943A1D0002B515C68AA1297D8B1378ADF1C8FBC",
+  "schema_version": "hcam.phase4.p4_7.acceptance-proposal.v1",
+  "technical_commit": "6ad9ff4b06b5f5516e5b346408807a70fe6466a0"
+}

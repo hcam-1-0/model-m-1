@@ -1,0 +1,21 @@
+{
+  "schema_version": "hcam.phase5.p5_7.dependency_baseline.v1",
+  "status": "preserved_not_refreshed",
+  "lockfile": {
+    "path": "frontend/pnpm-lock.yaml",
+    "bytes": 187653,
+    "sha256": "7F3E3F0A8B29C5083E300641A68F0325D8D2E8BD2ADE940E2B6D03C3CDEBBB62"
+  },
+  "sbom": {
+    "path": "frontend/sbom.cdx.json",
+    "bytes": 108496,
+    "sha256": "D0F1F1180716383334BDF9C1F6FA9A9F129EED4D7D6F297C893AD5F7D6C29D00"
+  },
+  "dependency_evidence": {
+    "path": "frontend/dependency-evidence.json",
+    "bytes": 2623,
+    "sha256": "9E1D68EF30C844605FFBAC4FBCD9604505B34DFDD8838BFCD0ACF94404367346"
+  },
+  "resolution_download_install_update_or_lockfile_change": false,
+  "vulnerability_refresh": false
+}

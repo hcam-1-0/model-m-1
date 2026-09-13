@@ -1,0 +1,81 @@
+{
+  "schema_version": "hcam.phase4.p4_3.owner-decisions.v1",
+  "decision_record_id": "P4.3-OWNER-DECISIONS-R0",
+  "recorded_on": "2026-09-04",
+  "effective_for_planning": true,
+  "effective_for_implementation": false,
+  "effective_for_runtime": false,
+  "selections": {
+    "D-P4.3-001": [
+      "A"
+    ],
+    "D-P4.3-002": [
+      "A"
+    ],
+    "D-P4.3-003": [
+      "A",
+      "B"
+    ],
+    "D-P4.3-004": [
+      "A"
+    ],
+    "D-P4.3-005": [
+      "A",
+      "C",
+      "D"
+    ],
+    "D-P4.3-006": [
+      "A",
+      "C"
+    ],
+    "D-P4.3-007": [
+      "A",
+      "C"
+    ]
+  },
+  "reconciled_profile": {
+    "identity": "semantic_identity_plus_delivery_idempotency",
+    "lifecycle": "orthogonal_aggregate_with_small_state_machine",
+    "authority": "mandatory_review_police_intelligence_plus_generated_system_health_bounded_automation_with_future_autonomous_action_denied",
+    "budgets": "hierarchical_budgets_plus_loss_accounted_deterministic_collapse",
+    "timers": "PostgreSQL_authoritative_timer_truth_plus_local_executor_generated_external_executor_simulator_and_future_default_off_workflow_adapter",
+    "review": "append_only_evidence_bound_decisions_plus_policy_configurable_distinct_reviewer_quorum",
+    "validation": "generated_only_default_off_production_forbidden_plus_isolated_sanitized_Sentinel_lab_metadata_adapter_contract"
+  },
+  "sentinel_boundary": {
+    "direct_site_or_camera_access": false,
+    "network_access": false,
+    "media_access": false,
+    "credentials": false,
+    "private_or_Government_data": false,
+    "generated_contract_fixtures": true,
+    "sanitized_metadata_adapter_contract": true,
+    "future_real_lab_validation_requires_separate_authorization": true
+  },
+  "workflow_engine_boundary": {
+    "PostgreSQL_is_business_truth": true,
+    "bounded_local_executor": true,
+    "generated_external_executor_simulator": true,
+    "typed_future_adapter_contract": true,
+    "external_dependency_or_service": false,
+    "network_or_credentials": false,
+    "future_activation_requires_separate_authorization": true
+  },
+  "review_quorum_boundary": {
+    "single_reviewer_default": true,
+    "configurable_distinct_reviewer_quorum": true,
+    "universal_quorum": false,
+    "self_satisfaction_of_multiple_slots": false,
+    "operational_or_enforcement_authority": false
+  },
+  "explicitly_not_authorized": [
+    "P4_3_implementation_or_runtime",
+    "external_workflow_engine_connection_installation_or_deployment",
+    "direct_Sentinel_access_camera_stream_image_recording_or_media",
+    "real_private_personal_Government_or_police_data",
+    "operational_alert_notification_dispatch_enforcement_or_autonomous_action",
+    "containers_Kubernetes_cloud_or_production_deployment",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "next_gate": "separate_exact_digest_bound_D_P4_3_START_acceptance"
+}

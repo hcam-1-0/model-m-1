@@ -1,0 +1,23 @@
+{
+  "authority_change": false,
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "profile": "C1",
+  "queue_items": [
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "urgent_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0000",
+      "revision": 1,
+      "state": "correction_pending"
+    }
+  ],
+  "relationship_limits": {
+    "edges": 24,
+    "nodes": 12
+  },
+  "rendering_only_profile_change": true,
+  "schema_version": "hcam.phase5.p5_4.scale_fixture.v1"
+}

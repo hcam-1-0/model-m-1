@@ -1,0 +1,40 @@
+{
+  "schema_version": "hcam.phase4.p4_6.acceptance.v1",
+  "decision_id": "D-P4.6-ACCEPTANCE",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-05",
+  "accepted_branch": "codex/phase4-operations-security-scale",
+  "accepted_implementation_commit": "dee768edf449eadf9b5c309209af9866fd392a43",
+  "evidence_package": {
+    "package_id": "P4.6-EVIDENCE-PACKAGE-R0",
+    "path": "contracts/phase-4/p4-6/evidence-package.json",
+    "sha256": "362E5B1A08438A75DD9FBD32662F9A95ACF42D59BB0E3017818B9862F131C949",
+    "canonical_component_digest": "5E9ED1932FA002ABB3E89BDAC00562D8C0AC42548B5F0B569FFEF4544F6AFE57"
+  },
+  "accepted_progress": {
+    "phase_4_points": 95,
+    "phase_4_total_points": 100,
+    "phase_4_percent": 95.0,
+    "p4_6_points": 10,
+    "p4_6_total_points": 10,
+    "p4_6_percent": 100.0
+  },
+  "scope_effect": "Completes P4.6 only under its generated-only implementation evidence, validation results, explicit PostgreSQL, vulnerability-refresh, hardware-capacity, backup-restore, and Kubernetes-execution limitations, and documented safety boundaries.",
+  "continuing_prohibitions": [
+    "P4_7_or_later_implementation",
+    "real_telemetry_search_security_observability_or_broker_backends",
+    "production_SLO_RPO_RTO_or_capacity_targets",
+    "scanners_backup_restore_recovery_hardware_performance_stress_or_thermal_execution",
+    "providers_or_operational_network_access",
+    "cameras_media_credentials_or_secrets",
+    "Government_private_or_operational_data",
+    "models_datasets_artifacts_inference_or_training",
+    "operational_alerts_notifications_actions_dispatch_or_enforcement",
+    "containers_Kubernetes_cloud_pilot_production_release_or_deployment",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "owner_statement_sha256": "4E90034876CC6DA31FC0A58FFA85CD4FA0209146A64208A191E7E43203D99FE5",
+  "owner_statement": "D-P4.6-ACCEPTANCE: I, mayank-admin, accept P4.6 evidence package P4.6-EVIDENCE-PACKAGE-R0 with SHA-256 362E5B1A08438A75DD9FBD32662F9A95ACF42D59BB0E3017818B9862F131C949, canonical component digest 5E9ED1932FA002ABB3E89BDAC00562D8C0AC42548B5F0B569FFEF4544F6AFE57, and technical commit dee768edf449eadf9b5c309209af9866fd392a43, including its generated-only implementation evidence, validation results, explicit PostgreSQL, vulnerability-refresh, hardware-capacity, backup-restore, and Kubernetes-execution limitations, and documented safety boundaries. This acceptance completes P4.6 only. It does not authorize P4.7, real telemetry, search, security, observability, or broker backends; production SLO/RPO/RTO/capacity targets; scanners; backup, restore, recovery, hardware, performance, stress, or thermal execution; providers or operational network access; cameras or media; credentials or secrets; Government or private data; models, datasets, or inference; operational alerts or actions; containers, Kubernetes execution, deployment, or remote Git."
+}

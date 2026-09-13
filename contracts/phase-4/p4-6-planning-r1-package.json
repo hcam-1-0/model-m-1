@@ -1,0 +1,281 @@
+{
+  "schema_version": "hcam.phase4.p4_6.planning-package.v2",
+  "package_id": "P4.6-PLANNING-R1",
+  "status": "owner_decisions_recorded_exact_planning_acceptance_pending",
+  "effective": false,
+  "prepared_on": "2026-09-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-operations-security-scale-planning",
+  "planning_checkpoint": "4100dc148b1a0728ccaed5bac07ba67913951ee6",
+  "supersedes": {
+    "package_id": "P4.6-PLANNING-R0",
+    "path": "contracts/phase-4/p4-6-planning-package.json",
+    "sha256": "6DD1D92BCF98A36DF398E981A435180FABFF3D4CD2D4E19D11657A5ABF8FDAE5",
+    "reason": "owner_selected_recommended_profile_with_guarded_unified_signal_search_projection_capability"
+  },
+  "planning_authorization": {
+    "decision_id": "D-P4.6-PLAN-AUTH",
+    "path": "contracts/phase-4/p4-6-plan-authorization.json",
+    "sha256": "BBFFEE74602C6EE82A93606A18A4D492DE0034600BD57CBB8650895544761CEE",
+    "owner_statement_sha256": "4DBC5B6D54FF5BC1624FA0932FBFD5BFD85F2A34D00D882D9A2F7144D1A53082",
+    "scope_unchanged": true,
+    "authorized_checkpoint_commit_consumed": true,
+    "additional_commit_authorized": false
+  },
+  "accepted_predecessor": {
+    "subphase": "P4.5",
+    "decision_id": "D-P4.5-ACCEPTANCE",
+    "path": "contracts/phase-4/p4-5/acceptance.json",
+    "sha256": "856484AA45BB0775DD1A967AE1AFC0135E64ADC826DAE339A31FB1806CF26AB2",
+    "evidence_package_sha256": "02F0439B2034ECBB0481E854236DAE0991C6A5DC9A3B04AD3AA3E5C03507D980",
+    "canonical_component_digest": "118C40D319653F8D9E6CD21CB216F7F43B073BE58823CA36A96ACE9AE36986C2",
+    "accepted_implementation_commit": "9eb3d2fb3a3fc68b8722d7c4a70369e6f1a8d41e",
+    "acceptance_commit": "1b54aafc252248eb502cd04ebd2130b0cf1684bf"
+  },
+  "reconciled_component_digest": {
+    "algorithm": "SHA-256",
+    "normalization": "UTF_8_path_vertical_bar_uppercase_sha256_LF_join_without_terminal_newline_in_listed_order",
+    "value": "07717C1641AAE57F1C58D7B6FEB18B16C825F7B94E963DDD951A14AEC598BEA9"
+  },
+  "reconciled_components": [
+    {
+      "path": "contracts/phase-4/p4-6-planning-package.json",
+      "sha256": "6DD1D92BCF98A36DF398E981A435180FABFF3D4CD2D4E19D11657A5ABF8FDAE5"
+    },
+    {
+      "path": "contracts/phase-4/p4-6-owner-decisions.json",
+      "sha256": "44364BAF1A90C89566CFA6C4BE66FE8EAF72A8F8BFE17A6762E0849913DFE501"
+    },
+    {
+      "path": "docs/phase-4/p4-6-owner-decisions.md",
+      "sha256": "32EAC3531D4762A64D32A4C9F11425DD5830AF8D8C3E7ED33E9F8C6873310E8E"
+    }
+  ],
+  "immutable_r0_artifacts": [
+    {
+      "path": "contracts/phase-4/p4-6-plan-authorization.json",
+      "sha256": "BBFFEE74602C6EE82A93606A18A4D492DE0034600BD57CBB8650895544761CEE"
+    },
+    {
+      "path": "docs/phase-4/p4-6-research-record.md",
+      "sha256": "77D7ED0748BB947F8AB224E91D47DFD4C45F679326E32E97D52A11376DB4EDC4"
+    },
+    {
+      "path": "docs/phase-4/p4-6-threat-model.md",
+      "sha256": "1AD394C8AAB28FBF772467DE7DDA14ABDF3453CD6B738B9B62808A3F298B0E5D"
+    },
+    {
+      "path": "docs/phase-4/p4-6-contract-catalog.md",
+      "sha256": "C7B604B65F5C911ADC38865C04FE81B6D129DE4AB5264377B6149323D319F482"
+    },
+    {
+      "path": "docs/phase-4/p4-6-decision-packet.md",
+      "sha256": "ADCEA064F99A43E6155F0E1C6502C81DD5CFA363C6632088B561370C6541F0B2"
+    },
+    {
+      "path": "docs/phase-4/p4-6-implementation-plan.md",
+      "sha256": "5D7F5586FC077941E99FCF7131B41D964EC6484AFAD133E1E3FD1A2FB9600FC5"
+    }
+  ],
+  "owner_decisions": {
+    "recorded": true,
+    "record_path": "contracts/phase-4/p4-6-owner-decisions.json",
+    "record_sha256": "44364BAF1A90C89566CFA6C4BE66FE8EAF72A8F8BFE17A6762E0849913DFE501",
+    "owner_statement_sha256": "3CD75E0DD1D9697A97DC1E6C17817646413B9F0E54F0B2CB0C9B4C8769DA0145",
+    "D-P4.6-001": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.6-002": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-003": {
+      "selected": ["A"],
+      "capability_requested": ["C"]
+    },
+    "D-P4.6-004": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-005": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-006": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-007": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-008": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-009": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-010": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-011": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.6-012": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "selected_profile": "C/A/A_with_guarded_C_capability/A/A/A/A/A/A/A/C/C",
+    "recommendations_are_decisions": false,
+    "continue_or_silence_is_acceptance": false
+  },
+  "composite_interpretation": {
+    "D-P4.6-003": {
+      "canonical_option": "A",
+      "C_capability": "disabled_read_only_UnifiedSignalSearchProjection_over_allowlisted_sanitized_lane_specific_projections",
+      "canonical_source_lanes_remain_separate_and_authoritative": true,
+      "shared_physical_authoritative_store": false,
+      "shared_access_retention_deletion_or_export_policy": false,
+      "raw_audit_or_evidence_indexing": false,
+      "cross_lane_join_by_default": false,
+      "search_result_as_authorization_audit_or_evidence": false,
+      "real_backend_connection_or_activation": false,
+      "future_real_use_requires_separate_security_privacy_retention_infrastructure_runtime_network_and_deployment_authorization": true
+    }
+  },
+  "reconciled_architecture": {
+    "telemetry_boundary": "existing_Prometheus_authority_with_versioned_low_cardinality_registry_and_default_off_OTel_compatible_adapters",
+    "context_boundary": "validated_W3C_trace_context_and_opaque_correlation_ID_without_authorization_semantics",
+    "signal_boundary": "independent_operations_security_audit_and_evidence_lanes_with_disabled_sanitized_unified_search_projection",
+    "objective_boundary": "user_journey_and_service_class_SLIs_with_explicit_unknowns_evidence_gated_targets_and_controlled_budget_reactions",
+    "failure_boundary": "closed_sanitized_taxonomy_with_bounded_domain_extensions_and_non_retryable_unknowns",
+    "worker_boundary": "domain_owned_database_jobs_and_results_with_shared_resilience_conformance_and_optional_disabled_broker_adapter",
+    "control_boundary": "hierarchical_revisioned_kill_switch_circuit_and_degradation_policy_with_deny_precedence",
+    "isolation_boundary": "application_authorization_and_PostgreSQL_forced_RLS_as_independent_oracles_with_privileged_negatives",
+    "supply_chain_boundary": "canonical_internal_inventory_with_loss_accounted_SPDX_CycloneDX_and_SLSA_projections_and_no_conformance_claim",
+    "recovery_boundary": "restore_first_dependency_ordered_plans_generated_drills_and_separate_target_observed_RPO_RTO",
+    "capacity_boundary": "capability_aware_profiles_and_generated_C1_C10_C50_latency_balanced_throughput_evidence_with_declared_limits",
+    "placement_boundary": "platform_neutral_immutable_plan_with_first_class_standalone_and_optional_version_capability_gated_Kubernetes_adapters"
+  },
+  "implementation_plan_overlay": [
+    "W1_add_UnifiedSignalSearchProjection_as_a_disabled_generated_only_derived_contract_while_preserving_all_twenty_R0_contracts",
+    "W1_keep_separated_authoritative_signal_lanes_and_reject_raw_audit_evidence_media_identity_secret_topology_and_unbounded_text_fields",
+    "W2_register_existing_Prometheus_metrics_before_new_emission_and_define_default_off_OTel_compatible_adapters",
+    "W2_propagate_validated_W3C_trace_context_and_opaque_correlation_without_authorization_or_baggage_semantics",
+    "W2_implement_typed_failure_SLI_SLO_budget_degradation_and_health_projection_logic_with_targets_unset",
+    "W3_preserve_domain_queue_ownership_and_add_shared_lease_retry_dead_letter_circuit_idempotency_shutdown_kill_switch_and_abandonment_conformance",
+    "W4_validate_application_and_PostgreSQL_forced_RLS_independently_including_owner_superuser_BYPASSRLS_missing_policy_pool_reset_and_cross_scope_negatives",
+    "W5_build_canonical_supply_chain_inventory_and_generated_SPDX_CycloneDX_SLSA_projections_with_explicit_unknown_and_stale_states",
+    "W6_simulate_restore_first_recovery_manifests_dependency_order_integrity_observed_RPO_RTO_and_cleanup_without_machine_or_storage_actions",
+    "W7_add_portable_capability_profiles_optional_lane_bypass_mandatory_control_rejection_and_platform_neutral_placement_plans",
+    "W8_validate_generated_C1_C10_C50_latency_balanced_and_throughput_methods_without_hardware_or_universal_capacity_claims",
+    "W9_expose_default_off_sanitized_read_API_contracts_and_future_Phase_5_UI_projections_without_mutation_or_activation",
+    "W10_seal_generated_security_compatibility_PostgreSQL_package_and_acceptance_evidence_under_a_later_exact_start_package"
+  ],
+  "initial_generated_tier": {
+    "canonical_selected_profile": true,
+    "deterministic_non_issuable_fixtures": true,
+    "existing_Prometheus_compatibility": true,
+    "OTel_compatible_export_adapters_defined": true,
+    "OTel_exporters_enabled": false,
+    "unified_signal_search_projection_contract": true,
+    "unified_signal_search_projection_enabled": false,
+    "central_search_or_log_backend": false,
+    "raw_logs_audit_evidence_or_media": false,
+    "production_SLO_RPO_RTO_or_capacity_targets": false,
+    "external_broker_or_telemetry_service": false,
+    "real_backup_restore_or_recovery": false,
+    "hardware_probe_or_capacity_run": false,
+    "Kubernetes_execution": false,
+    "network_or_credentials": false,
+    "real_data_models_or_operational_actions": false
+  },
+  "frozen_progress": {
+    "phase4": {
+      "earned_points": 85,
+      "total_points": 100,
+      "percentage": "85.00%",
+      "change_percentage_points": "+0.00"
+    },
+    "p4_6": {
+      "earned_points": 0,
+      "total_points": 10,
+      "percentage": "0.0000%",
+      "change_percentage_points": "+0.0000"
+    },
+    "planning_and_research_gate": {
+      "completed_items": 5,
+      "total_items": 5,
+      "percentage": "100.0000%"
+    },
+    "owner_decision_gate": {
+      "completed_items": 12,
+      "total_items": 12,
+      "percentage": "100.0000%",
+      "change_percentage_points": "+100.0000"
+    },
+    "reconciled_package_preparation_gate": {
+      "completed_items": 1,
+      "total_items": 1,
+      "percentage": "100.0000%",
+      "change_percentage_points": "+100.0000"
+    },
+    "reconciled_package_acceptance_gate": {
+      "completed_items": 0,
+      "total_items": 1,
+      "percentage": "0.0000%"
+    },
+    "technical_ceiling_before_owner_acceptance": {
+      "phase4_earned_points": 94,
+      "phase4_percentage": "94.00%",
+      "p4_6_earned_points": 9,
+      "p4_6_percentage": "90.0000%"
+    },
+    "after_exact_p4_6_acceptance": {
+      "phase4_earned_points": 95,
+      "phase4_percentage": "95.00%",
+      "p4_6_earned_points": 10,
+      "p4_6_percentage": "100.0000%"
+    },
+    "planning_points_awarded": 0,
+    "partial_item_credit": false
+  },
+  "planning_package_acceptance_required": true,
+  "start_authorization_prepared": false,
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "central_signal_backend_authorized": false,
+  "production_SLO_RPO_RTO_or_capacity_target_authorized": false,
+  "backup_restore_scanner_hardware_capacity_or_recovery_execution_authorized": false,
+  "container_or_Kubernetes_execution_authorized": false,
+  "network_credentials_real_data_models_or_operational_actions_authorized": false,
+  "additional_commit_authorized": false,
+  "remote_git_authorized": false,
+  "explicitly_not_authorized": [
+    "P4_6_source_test_migration_dependency_API_worker_container_Kubernetes_deployment_or_runtime_implementation",
+    "effective_P4_6_start_record_or_implementation_before_exact_start_package_acceptance",
+    "central_log_search_observability_security_or_telemetry_backend_connection_activation_or_authoritative_use",
+    "combining_authoritative_signal_stores_or_weakening_lane_specific_access_retention_deletion_or_export_controls",
+    "production_SLI_SLO_error_budget_alert_threshold_RPO_RTO_capacity_or_deployment_target",
+    "process_service_container_cluster_backup_restore_scanner_hardware_capacity_performance_stress_or_recovery_execution",
+    "installation_update_download_or_artifact_acquisition",
+    "credential_secret_key_token_certificate_provider_private_CA_or_network_access",
+    "Sentinel_camera_media_private_Government_personal_biometric_vehicle_owner_registration_watchlist_case_or_evidence_data",
+    "model_dataset_checkpoint_artifact_training_or_inference",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "production_pilot_cloud_release_or_deployment",
+    "additional_checkpoint_commit_without_new_exact_authority",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "required_next_sequence": [
+    "owner_accepts_exact_P4_6_PLANNING_R1_package_SHA_256",
+    "one_non_effective_digest_bound_P4_6_START_R0_package_is_prepared",
+    "owner_separately_accepts_exact_P4_6_START_R0_SHA_256",
+    "only_then_may_bounded_local_generated_only_implementation_begin"
+  ]
+}

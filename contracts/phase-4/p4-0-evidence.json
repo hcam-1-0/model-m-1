@@ -1,0 +1,109 @@
+{
+  "schema_version": "hcam.phase4.p4_0.evidence.v1",
+  "evidence_id": "P4.0-EVIDENCE-R0",
+  "status": "technical_gates_passed_owner_acceptance_pending",
+  "evidence_date": "2026-09-04",
+  "scope": "local generated-only Phase 4.0 contracts, guardrails, persistence, and default-off control plane",
+  "base_checkpoint": "a00b677ac120c33c4045b37b8350e816b1e3b11b",
+  "branch": "codex/phase4-contracts-guardrails",
+  "authorizations": [
+    {
+      "decision_id": "D-P4.0-START",
+      "package_id": "P4.0-START-R0",
+      "package_sha256": "58E490D767B810743FAF47B3709DF12B0071EEDDD5E50C96A3A7D1CE8E38DFB2"
+    },
+    {
+      "decision_id": "D-P4.0-LEGACY-CONTRACT-CHECKER-AMENDMENT",
+      "authorized_path": "tools/release_contracts.py",
+      "owner_statement": "D-P4.0-LEGACY-CONTRACT-CHECKER-AMENDMENT: I, mayank-admin, authorize modifying only tools/release_contracts.py so the immutable Phase 0-3 release-contract checker renders its accepted database boundary at revision 0011_geometry_events, while the separate P4.0 snapshots and readiness verifier validate revision 0012_intelligence_control_plane. No accepted Phase 3 snapshot, evidence, decision, migration, or other historical artifact may be modified. This does not authorize models, datasets, inference, cameras or media, external providers, Government or private data, operational alerts, deployment, or remote Git."
+    }
+  ],
+  "validation": {
+    "focused_generated_suite": {
+      "status": "passed",
+      "passed": 129,
+      "skipped": 1,
+      "skip_reason": "HCAM_POSTGRES_TEST_URL is not configured in the local Python environment; PostgreSQL was validated separately with the cached PostGIS container",
+      "warning_count": 1
+    },
+    "coverage": {
+      "status": "passed",
+      "scope": "app/hcam/intelligence/*",
+      "branch_enabled_aggregate_percent": 97.41602067183463,
+      "statement_percent": 98.24046920821114,
+      "branch_outcome_percent": 91.30434782608695,
+      "required_branch_outcome_percent": 90.0
+    },
+    "legacy_release_contracts": {
+      "status": "passed",
+      "database_revision": "0011_geometry_events",
+      "openapi_sha256": "A7320BCCDCAC7A8E68D6D99C4FCFDD58BA299CBCFA8D4BCC893F23C767EFB945",
+      "database_sha256": "2FFC3DE25F060027E0F60492BAE4708D412380C0AD7896D372E15DF436D0A0A3",
+      "accepted_phase3_files_modified": false
+    },
+    "sqlite_migration_cycle": {
+      "status": "passed",
+      "sequence": [
+        "0011_geometry_events",
+        "0012_intelligence_control_plane",
+        "0011_geometry_events",
+        "0012_intelligence_control_plane"
+      ],
+      "alembic_check": "passed"
+    },
+    "postgresql_postgis": {
+      "status": "passed",
+      "validation_mode": "isolated cached-container P4 delta validation",
+      "docker_server_version": "29.7.2",
+      "image": "postgis/postgis:18-3.6-alpine",
+      "postgresql_major": 18,
+      "postgis_version": "3.6.4",
+      "applied_revision": "0012_intelligence_control_plane",
+      "forced_rls_tables": 10,
+      "department_policies": 10,
+      "cross_department_visible_provider_count": 1,
+      "cross_department_total_provider_count": 2,
+      "enabled_provider_constraint_negative": "passed",
+      "container_and_network_removed_after_validation": true
+    },
+    "legacy_and_phase4_contract_separation": {
+      "status": "passed",
+      "legacy_checker_revision": "0011_geometry_events",
+      "phase4_snapshot_revision": "0012_intelligence_control_plane"
+    },
+    "full_regression_suite": {
+      "status": "passed",
+      "passed": 3691,
+      "skipped": 9,
+      "subtests_passed": 119,
+      "warning_count": 1,
+      "duration_seconds": 705.56,
+      "skip_boundary": "PostgreSQL integration URLs are not configured in the local Python environment; the P4 database delta was validated separately against PostgreSQL/PostGIS"
+    },
+    "static_and_packaging": {
+      "ruff": "passed",
+      "compileall": "passed",
+      "build": "source_distribution_and_wheel_passed",
+      "dependency_check": "74_packages_compatible",
+      "phase40_readiness": "passed_after_final_evidence_seal"
+    }
+  },
+  "security_properties": [
+    "the Phase 4 route surface is absent unless the generated control plane is explicitly enabled",
+    "production rejects generated intelligence control-plane enablement",
+    "all Phase 4 records remain generated-only and nonoperational",
+    "provider transport is absent and provider state is disabled",
+    "department scope is enforced in application queries and PostgreSQL forced row security",
+    "mutations require role, department scope, audit reason, and optimistic version checks",
+    "outbox records remain unpublished",
+    "accepted Phase 3 contracts and migrations remain immutable"
+  ],
+  "known_limitations": [
+    "the local Python PostgreSQL test is skipped without HCAM_POSTGRES_TEST_URL and the psycopg development extra",
+    "the isolated PostgreSQL check validated the exact 0011-to-0012 delta rather than replaying older connection-bound migrations",
+    "the control plane is generated-only and has no inference, provider transport, camera, media, operational alert, dispatch, or enforcement capability",
+    "no model, dataset, private data, Government data, camera, media, deployment, Kubernetes, or remote Git action is covered",
+    "P4.0 owner acceptance and P4.1 remain separate closed gates"
+  ],
+  "remote_git_performed": false
+}

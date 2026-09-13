@@ -1,0 +1,24 @@
+{
+  "schema_version": "hcam.phase5.p5_7.security_report.v1",
+  "status": "pass_with_preserved_offline_supply_chain_limitations",
+  "generated_only": true,
+  "technical_commit": "6a5e1c700779dbc0edb6fdd1a8dc4c6132dd21d6",
+  "start_package_sha256": "77E3A7885AA1969A9F50AF9EB3FE8EE05DEEAB0374FB1F83C4DD51B860C5395C",
+  "bound_input_digest": "E5B65A6611C9ED90A33B156DA6D632859CBFFF4BE4781AA2E03F910F0AEA1B4B",
+  "generated_cases": 128,
+  "edge_browser_checks": 56,
+  "external_requests": 0,
+  "secret_or_prohibited_field_findings": 0,
+  "operational_or_administrative_action_paths": 0,
+  "lockfile": {
+    "path": "frontend/pnpm-lock.yaml",
+    "bytes": 187653,
+    "sha256": "7F3E3F0A8B29C5083E300641A68F0325D8D2E8BD2ADE940E2B6D03C3CDEBBB62"
+  },
+  "sbom": {
+    "path": "frontend/sbom.cdx.json",
+    "bytes": 108496,
+    "sha256": "D0F1F1180716383334BDF9C1F6FA9A9F129EED4D7D6F297C893AD5F7D6C29D00"
+  },
+  "vulnerability_refresh": false
+}

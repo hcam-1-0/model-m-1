@@ -1,0 +1,63 @@
+{
+  "schema_version": "hcam.phase5.p5_1.planning_validation.v1",
+  "record_id": "P5.1-PLANNING-VALIDATION-R0",
+  "status": "pass",
+  "validated_on": "2026-09-06",
+  "validation_boundary": "generated_and_static_planning_artifacts_only",
+  "authorization_decision_id": "D-P5.1-PLAN-AUTH",
+  "planning_package": {
+    "path": "contracts/phase-5/p5-1-planning-package.json",
+    "sha256": "588585D6F65150C48F8DE2F9E3F93A2624BDD0C380CD48A7D21A5AB29D6DA816",
+    "canonical_component_digest": "AE55552A4469F870651F91C544C5D88456A57A17C7CAABFAF76FE4F18CA696C1"
+  },
+  "checks": [
+    {"id": "authorization_json_parse", "status": "pass"},
+    {"id": "planning_package_json_parse", "status": "pass"},
+    {"id": "owner_statement_sha256", "status": "pass"},
+    {"id": "component_path_presence", "status": "pass", "count": 7},
+    {"id": "component_byte_length", "status": "pass", "count": 7},
+    {"id": "component_sha256", "status": "pass", "count": 7},
+    {"id": "canonical_component_digest", "status": "pass"},
+    {"id": "owner_decision_ids", "status": "pass", "count": 12},
+    {"id": "implementation_workstream_ids", "status": "pass", "count": 8},
+    {"id": "implementation_point_sum", "status": "pass", "points": 12.0},
+    {"id": "changed_path_scope", "status": "pass"},
+    {"id": "UTF8_ASCII_and_LF_text_policy", "status": "pass"},
+    {"id": "git_diff_check", "status": "pass"}
+  ],
+  "expected_changed_paths": [
+    "README.md",
+    "contracts/phase-5/p5-1-plan-authorization.json",
+    "contracts/phase-5/p5-1-planning-package.json",
+    "contracts/phase-5/p5-1-planning-validation.json",
+    "docs/phase-5/README.md",
+    "docs/phase-5/current-status-r4.md",
+    "docs/phase-5/p5-1-decision-packet.md",
+    "docs/phase-5/p5-1-foundation-architecture.md",
+    "docs/phase-5/p5-1-implementation-plan.md",
+    "docs/phase-5/p5-1-research-record.md",
+    "docs/phase-5/p5-1-threat-model.md",
+    "docs/phase-5/status.md"
+  ],
+  "execution_not_performed": [
+    "product_tests",
+    "frontend_or_map_build",
+    "frontend_map_or_media_runtime",
+    "dependency_or_lockfile_operation",
+    "source_import",
+    "API_route_or_migration_change",
+    "network_or_provider_access",
+    "camera_or_media_access",
+    "data_model_or_inference_access",
+    "container_Kubernetes_or_deployment",
+    "remote_Git"
+  ],
+  "result": {
+    "planning_complete": true,
+    "owner_decisions_pending": true,
+    "planning_acceptance_pending": true,
+    "implementation_authorized": false,
+    "P5_1_product_percent": 0.0,
+    "phase_5_product_percent": 8.0
+  }
+}

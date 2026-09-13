@@ -1,0 +1,111 @@
+{
+  "schema_version": "hcam.phase4.p4_6.owner-decisions.v1",
+  "decision_record_id": "P4.6-OWNER-DECISIONS-R0",
+  "recorded_on": "2026-09-05",
+  "recorded_by": "mayank-admin",
+  "effective_for_planning": true,
+  "effective_for_implementation": false,
+  "effective_for_runtime": false,
+  "selections": {
+    "D-P4.6-001": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.6-002": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-003": {
+      "selected": ["A"],
+      "capability_requested": ["C"]
+    },
+    "D-P4.6-004": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-005": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-006": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-007": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-008": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-009": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-010": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-011": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.6-012": {
+      "selected": ["C"],
+      "capability_requested": []
+    }
+  },
+  "selected_profile": "C/A/A_with_guarded_C_capability/A/A/A/A/A/A/A/C/C",
+  "reconciled_profile": {
+    "telemetry": "existing_Prometheus_authority_plus_versioned_low_cardinality_registry_and_default_off_OpenTelemetry_compatible_adapters",
+    "trace_context": "validated_W3C_Trace_Context_plus_opaque_HCAM_correlation_ID_without_authorization_semantics",
+    "signal_governance": "independently_governed_operational_security_audit_and_evidence_lanes_plus_disabled_sanitized_unified_search_projection",
+    "service_objectives": "user_journey_and_service_class_SLIs_with_evidence_gated_targets_error_budgets_and_degradation_policy",
+    "failure_taxonomy": "central_closed_sanitized_registry_with_bounded_domain_extensions_and_fail_closed_unknowns",
+    "worker_resilience": "domain_authoritative_database_jobs_plus_shared_lease_retry_dead_letter_idempotency_shutdown_and_recovery_conformance",
+    "kill_switches": "hierarchical_revisioned_attributable_expiring_fail_closed_controls_with_deny_precedence",
+    "security": "independent_application_authorization_and_PostgreSQL_forced_RLS_oracles_with_privileged_negative_tests",
+    "supply_chain": "canonical_internal_bundle_with_loss_accounted_SPDX_CycloneDX_and_SLSA_projections_without_conformance_claim",
+    "recovery": "restore_first_tiered_recovery_with_target_and_observed_RPO_RTO_separation",
+    "capacity": "capability_aware_profiles_plus_generated_C1_C10_C50_latency_balanced_and_throughput_methodology",
+    "placement": "platform_neutral_immutable_plan_with_first_class_standalone_and_optional_version_gated_Kubernetes_adapters"
+  },
+  "unified_signal_search_capability_boundary": {
+    "canonical_authority": "independently_governed_source_lanes_and_their_authoritative_stores",
+    "derived_projection_contract": "hcam.operations.unified-signal-search-projection.v1",
+    "projection_contract_allowed_after_exact_start_authorization": true,
+    "initial_state": "defined_disabled_generated_only",
+    "source_inputs": "only_allowlisted_sanitized_lane_specific_projections",
+    "raw_operational_or_security_log_ingest": false,
+    "audit_record_or_evidence_record_ingest": false,
+    "shared_physical_authoritative_store": false,
+    "shared_access_policy": false,
+    "shared_retention_or_deletion_policy": false,
+    "cross_lane_join_by_default": false,
+    "identity_case_evidence_media_secret_or_topology_indexing": false,
+    "search_result_as_authorization_audit_or_evidence": false,
+    "future_backend_connection_or_activation_requires_separate_exact_authorization": true
+  },
+  "explicitly_not_authorized": [
+    "P4_6_product_source_test_migration_dependency_API_worker_or_runtime_implementation",
+    "central_log_search_observability_or_security_backend_connection_or_activation",
+    "combining_authoritative_operational_security_audit_or_evidence_stores_access_or_retention",
+    "production_SLI_SLO_error_budget_alert_threshold_RPO_RTO_capacity_or_deployment_target",
+    "process_service_container_cluster_backup_restore_scanner_hardware_capacity_performance_stress_or_recovery_execution",
+    "installation_update_download_or_artifact_acquisition",
+    "credential_secret_key_token_certificate_provider_or_private_CA_access",
+    "provider_Sentinel_camera_media_or_operational_network_access",
+    "Government_police_private_personal_biometric_vehicle_owner_registration_watchlist_case_or_evidence_data",
+    "model_dataset_checkpoint_artifact_training_or_inference",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "production_pilot_container_Kubernetes_cloud_release_or_deployment",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git",
+    "additional_local_checkpoint_commit_without_new_explicit_authority"
+  ],
+  "next_gate": "exact_owner_acceptance_of_non_effective_P4_6_PLANNING_R1_package_digest",
+  "owner_statement_normalization": "UTF_8_LF_trimmed_trailing_line_whitespace_without_terminal_newline",
+  "owner_statement_utf8_length": 199,
+  "owner_statement_sha256": "3CD75E0DD1D9697A97DC1E6C17817646413B9F0E54F0B2CB0C9B4C8769DA0145",
+  "owner_statement": "D-P4.6-001: C\nD-P4.6-002: A\nD-P4.6-003: A and also if possible then add C\nD-P4.6-004: A\nD-P4.6-005: A\nD-P4.6-006: A\nD-P4.6-007: A\nD-P4.6-008: A\nD-P4.6-009: A\nD-P4.6-010: A\nD-P4.6-011: C\nD-P4.6-012: C"
+}

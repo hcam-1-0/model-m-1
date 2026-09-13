@@ -1,0 +1,53 @@
+{
+  "schema_version": "hcam.phase5.p5_1.start_acceptance.v1",
+  "decision_id": "D-P5.1-START",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-06",
+  "recorded_against_local_head": "b3ee98bbcb43e2d8093f7c2c4174d8cbc09cba32",
+  "accepted_package": {
+    "package_id": "P5.1-START-R0",
+    "path": "contracts/phase-5/p5-1-start-authorization-package.json",
+    "bytes": 26337,
+    "sha256": "3B4A0CDD44185A94E7C04FB9038032EDDB1EB145E3C551A5A12BA81BD4A2A66E",
+    "bound_input_digest": "4C44F600C3BAB1D7D997391BDF880AC2BD3CBEDA565A5DF274F5753B381DCFE2"
+  },
+  "authorized_scope": [
+    "record_exact_start_acceptance_and_create_one_local_pre_implementation_checkpoint_commit_without_push",
+    "guarded_allowlisted_frontend_dependency_resolution_and_lockfile_creation",
+    "eight_frozen_P5_1_generated_only_shared_application_foundation_workstreams",
+    "bounded_frontend_contract_fixture_test_evidence_and_status_paths",
+    "local_generated_only_build_browser_security_accessibility_and_repository_regression_validation",
+    "at_most_twelve_in_scope_remediation_validation_and_reseal_cycles",
+    "local_checkpoint_commits_without_push",
+    "one_separate_non_effective_P5_1_exit_acceptance_proposal"
+  ],
+  "continuing_prohibitions": [
+    "source_import",
+    "unapproved_dependencies_or_network_access",
+    "backend_API_routes_or_migrations",
+    "maps_tiles_providers_cameras_or_media",
+    "Government_or_private_data",
+    "models_datasets_artifacts_or_inference",
+    "operational_actions",
+    "containers_or_Kubernetes",
+    "deployment",
+    "P5_2",
+    "remote_Git"
+  ],
+  "progress_at_start": {
+    "P5_1_earned": 0,
+    "P5_1_total": 12,
+    "P5_1_percent": 0.0,
+    "P5_1_change_percentage_points": 0.0,
+    "phase_5_earned": 8,
+    "phase_5_total": 100,
+    "phase_5_percent": 8.0,
+    "phase_5_change_percentage_points": 0.0
+  },
+  "owner_statement_normalization": "Exact ASCII text shown below, UTF-8 without BOM, no terminal newline.",
+  "owner_statement_utf8_length": 847,
+  "owner_statement_sha256": "381A09196A9E742EB15ED485EED8EB16429C1F12A543BD3652EE12F8A7EB8C8B",
+  "owner_statement": "D-P5.1-START: I, mayank-admin, accept P5.1 start package P5.1-START-R0 with SHA-256 3B4A0CDD44185A94E7C04FB9038032EDDB1EB145E3C551A5A12BA81BD4A2A66E and bound-input digest 4C44F600C3BAB1D7D997391BDF880AC2BD3CBEDA565A5DF274F5753B381DCFE2 and authorize its exact bounded local generated-only Shared Application Foundation implementation scope, guarded allowlisted frontend dependency resolution and lockfile creation, source and test implementation, build and browser validation, evidence generation, and local checkpoint commits without push. This does not authorize source import, unapproved dependencies or network access, backend API routes or migrations, maps, tiles, providers, cameras or media, Government or private data, models, datasets, artifacts or inference, operational actions, containers, Kubernetes, deployment, P5.2, or remote Git."
+}

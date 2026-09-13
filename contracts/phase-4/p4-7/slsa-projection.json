@@ -1,0 +1,29 @@
+{
+  "_type": "https://in-toto.io/Statement/v1",
+  "boundary": {
+    "canonical": false,
+    "conformance_claim": false,
+    "generated_only": true,
+    "operational": false
+  },
+  "predicate": {
+    "buildDefinition": {
+      "buildType": "urn:hcam:generated:p47",
+      "externalParameters": {}
+    },
+    "runDetails": {
+      "builder": {
+        "id": "urn:hcam:generated:local"
+      }
+    }
+  },
+  "predicateType": "https://slsa.dev/provenance/v1",
+  "subject": [
+    {
+      "digest": {
+        "sha256": "d63a514216bbb5c4dfe52bd02b58ef3eb3009f3f1419e8e153a1bc9811c2a178"
+      },
+      "name": "handoff"
+    }
+  ]
+}

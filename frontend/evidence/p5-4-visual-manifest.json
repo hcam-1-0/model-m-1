@@ -1,0 +1,48 @@
+{
+  "schema_version": "hcam.phase5.p5_4.visual_manifest.v1",
+  "generated_on": "2026-09-09",
+  "generated_only": true,
+  "loopback_only": true,
+  "viewports": [
+    "390x844",
+    "768x1024",
+    "1366x768",
+    "1440x900",
+    "1920x1080",
+    "2560x1440"
+  ],
+  "profiles": [
+    "low_resource",
+    "enhanced_workstation",
+    "control_room",
+    "owned_gpu_lab",
+    "future_server"
+  ],
+  "manual_visual_review": {
+    "desktop": "pass",
+    "mobile": "pass",
+    "blank_renderer": false,
+    "incoherent_overlap": false,
+    "horizontal_clipping": false,
+    "full_page_fixed_navigation_capture_artifact_recorded": true
+  },
+  "captures": [
+    {
+      "profile": "desktop",
+      "path": "test-results/intelligence-center-Intell-c6f5c-es-and-bounded-human-review-desktop/intelligence-review-desktop.png",
+      "bytes": 93594,
+      "sha256": "66122531B2C9F205E83596966CA397B9586033D5A881DE7D06E3997D7156B98B",
+      "width": 1280,
+      "height": 858
+    },
+    {
+      "profile": "mobile",
+      "path": "test-results/intelligence-center-Intell-c6f5c-es-and-bounded-human-review-mobile/intelligence-review-mobile.png",
+      "bytes": 331553,
+      "sha256": "FB97E4FFEEBC7E320A9586FC55D21B66728838AEB1CA17D93C3E11440F67BA8C",
+      "width": 1082,
+      "height": 3785
+    }
+  ],
+  "result": "pass"
+}

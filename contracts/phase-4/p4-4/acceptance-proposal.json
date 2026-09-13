@@ -1,0 +1,16 @@
+{
+  "schema_version": "hcam.phase4.p4_4.acceptance-proposal.v1",
+  "decision_id": "D-P4.4-ACCEPTANCE",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "prepared_on": "2026-09-05",
+  "branch": "codex/phase4-reference-integrations",
+  "evidence_package_path": "contracts/phase-4/p4-4/evidence-package.json",
+  "evidence_package_sha256": "6AB08EC54C9197E4D96D57B5CEA5F7D87840A3EA16E02108D01CBBEEE574D98A",
+  "evidence_content_digest": "E42E15FEFA36ADC6B58A506BEDC97CC089E54916B04B33E88B4FC070479EFC37",
+  "owner_acceptance_statement_sha256": "523AAC5C49C483AE3C365A69EB5869762030B1FA6DABC3BE68963A446CFA0FE3",
+  "owner_acceptance_statement": "D-P4.4-ACCEPTANCE: I, mayank-admin, accept P4.4 evidence package P4.4-EVIDENCE-PACKAGE-R0 with SHA-256 6AB08EC54C9197E4D96D57B5CEA5F7D87840A3EA16E02108D01CBBEEE574D98A and canonical component digest E42E15FEFA36ADC6B58A506BEDC97CC089E54916B04B33E88B4FC070479EFC37, including its generated-only implementation evidence, validation results, authorized P4.3 historical readiness transition, explicit PostgreSQL and vulnerability-refresh limitations, and documented safety boundaries. This acceptance completes P4.4 only. It does not authorize P4.5, real providers, credentials or secrets, authentication extension loading, external workflow engines, provider or Sentinel network access, Government or private data, cameras or media, models or datasets, operational alerts or actions, containers, Kubernetes, deployment, or remote Git.",
+  "authorization_effect": "complete_P4_4_only_after_exact_owner_acceptance",
+  "generated_only": true,
+  "operational": false
+}

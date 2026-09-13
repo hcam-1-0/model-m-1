@@ -1,0 +1,145 @@
+{
+  "broker_selected": false,
+  "contract_type": "hcam.handoff.event-workflow.v1",
+  "events": [
+    {
+      "consumer_intent": "refresh_hypothesis_views",
+      "correction_supported": true,
+      "delivery": "transactional_outbox",
+      "event_type": "hcam.correlation.hypothesis.changed.v1",
+      "generated_only": true,
+      "grants_authority": false,
+      "ordering": "aggregate",
+      "producer": "correlation.service",
+      "unknown_version": "quarantine"
+    },
+    {
+      "consumer_intent": "refresh_alert_views",
+      "correction_supported": true,
+      "delivery": "transactional_outbox",
+      "event_type": "hcam.intelligence.alert.changed.v1",
+      "generated_only": true,
+      "grants_authority": false,
+      "ordering": "aggregate",
+      "producer": "alert.service",
+      "unknown_version": "quarantine"
+    },
+    {
+      "consumer_intent": "refresh_review_state",
+      "correction_supported": true,
+      "delivery": "transactional_outbox",
+      "event_type": "hcam.intelligence.review.recorded.v1",
+      "generated_only": true,
+      "grants_authority": false,
+      "ordering": "aggregate",
+      "producer": "review.service",
+      "unknown_version": "quarantine"
+    },
+    {
+      "consumer_intent": "refresh_timeline_views",
+      "correction_supported": true,
+      "delivery": "transactional_outbox",
+      "event_type": "hcam.investigation.timeline.changed.v1",
+      "generated_only": true,
+      "grants_authority": false,
+      "ordering": "aggregate",
+      "producer": "investigation.service",
+      "unknown_version": "quarantine"
+    },
+    {
+      "consumer_intent": "show_correction_state",
+      "correction_supported": true,
+      "delivery": "transactional_outbox",
+      "event_type": "hcam.investigation.correction.recorded.v1",
+      "generated_only": true,
+      "grants_authority": false,
+      "ordering": "aggregate",
+      "producer": "investigation.service",
+      "unknown_version": "quarantine"
+    },
+    {
+      "consumer_intent": "show_degradation_state",
+      "correction_supported": true,
+      "delivery": "transactional_outbox",
+      "event_type": "hcam.operations.degradation.changed.v1",
+      "generated_only": true,
+      "grants_authority": false,
+      "ordering": "aggregate",
+      "producer": "operations.service",
+      "unknown_version": "quarantine"
+    }
+  ],
+  "generated_only": true,
+  "workflow_engine_selected": false,
+  "workflows": [
+    {
+      "generated_only": true,
+      "operational": false,
+      "steps": [
+        {
+          "depends_on": [],
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found"
+          ],
+          "operation_ref": "alerts.detail",
+          "step_id": "load_alert",
+          "success_state": "success"
+        },
+        {
+          "depends_on": [
+            "load_alert"
+          ],
+          "failure_codes": [
+            "authorization.denied",
+            "request.invalid"
+          ],
+          "operation_ref": "alerts.review",
+          "step_id": "review_alert",
+          "success_state": "accepted"
+        },
+        {
+          "depends_on": [
+            "review_alert"
+          ],
+          "failure_codes": [
+            "resource.not_found",
+            "service.unavailable"
+          ],
+          "operation_ref": "timelines.detail",
+          "step_id": "load_timeline",
+          "success_state": "success"
+        },
+        {
+          "depends_on": [
+            "load_timeline"
+          ],
+          "failure_codes": [
+            "resource.not_found",
+            "service.unavailable"
+          ],
+          "operation_ref": "timelines.reconstruction",
+          "step_id": "reconstruct",
+          "success_state": "success"
+        }
+      ],
+      "workflow_id": "phase5.review_and_investigate"
+    },
+    {
+      "generated_only": true,
+      "operational": false,
+      "steps": [
+        {
+          "depends_on": [],
+          "failure_codes": [
+            "service.unavailable"
+          ],
+          "operation_ref": "operations.summary",
+          "step_id": "load_health",
+          "success_state": "partial"
+        }
+      ],
+      "workflow_id": "phase5.observe_degradation"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@hcam/test-fixtures",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@hcam/camera-live-domain": "workspace:*",
+    "@hcam/contracts": "workspace:*",
+    "@hcam/media-edge-contracts": "workspace:*"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}

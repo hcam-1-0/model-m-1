@@ -225,6 +225,26 @@ class Settings:
     analytics_generated_runtime_enabled: bool = False
     analytics_generated_tracking_enabled: bool = False
     analytics_generated_geometry_enabled: bool = False
+    intelligence_generated_control_plane_enabled: bool = False
+    intelligence_generated_correlation_enabled: bool = False
+    intelligence_generated_rule_evaluation_enabled: bool = False
+    intelligence_generated_alert_lifecycle_enabled: bool = False
+    intelligence_generated_reference_integrations_enabled: bool = False
+    intelligence_generated_reference_manual_queries_enabled: bool = False
+    intelligence_generated_reference_hypothesis_enrichment_enabled: bool = False
+    intelligence_generated_investigations_enabled: bool = False
+    operations_generated_platform_enabled: bool = False
+    operations_unified_search_enabled: bool = False
+    operations_otel_export_enabled: bool = False
+    operations_external_broker_enabled: bool = False
+    operations_kubernetes_execution_enabled: bool = False
+    intelligence_generated_high_impact_quorum: int = 2
+    correlation_events_per_batch: int = 100
+    correlation_active_partitions: int = 32
+    correlation_active_windows_per_partition: int = 32
+    correlation_events_per_window: int = 4_096
+    correlation_worker_lease_seconds: int = 30
+    correlation_retry_attempts: int = 1
     analytics_artifact_root: Path | None = field(default=None, repr=False)
     analytics_model_relative_path: Path = Path(
         "DET-R0-ONNX-UPSTREAM-0.1.1RC0/yolox_tiny.onnx"
@@ -313,6 +333,97 @@ class Settings:
             raise ValueError(
                 "the generated geometry runtime is forbidden in production"
             )
+        if (
+            environment == "production"
+            and self.intelligence_generated_control_plane_enabled
+        ):
+            raise ValueError(
+                "the generated intelligence control plane is forbidden in production"
+            )
+        if (
+            environment == "production"
+            and self.intelligence_generated_correlation_enabled
+        ):
+            raise ValueError(
+                "the generated P4.1 correlation runtime is forbidden in production"
+            )
+        if (
+            environment == "production"
+            and self.intelligence_generated_rule_evaluation_enabled
+        ):
+            raise ValueError(
+                "the generated P4.2 rule evaluation boundary is forbidden in production"
+            )
+        if (
+            environment == "production"
+            and self.intelligence_generated_alert_lifecycle_enabled
+        ):
+            raise ValueError(
+                "the generated P4.3 alert lifecycle is forbidden in production"
+            )
+        if (
+            environment == "production"
+            and self.intelligence_generated_reference_integrations_enabled
+        ):
+            raise ValueError(
+                "the generated P4.4 reference integration lane is forbidden in production"
+            )
+        if environment == "production" and (
+            self.intelligence_generated_reference_manual_queries_enabled
+            or self.intelligence_generated_reference_hypothesis_enrichment_enabled
+        ):
+            raise ValueError(
+                "generated P4.4 query lanes are forbidden in production"
+            )
+        if (
+            environment == "production"
+            and self.intelligence_generated_investigations_enabled
+        ):
+            raise ValueError(
+                "the generated P4.5 investigation runtime is forbidden in production"
+            )
+        if environment == "production" and self.operations_generated_platform_enabled:
+            raise ValueError("the generated P4.6 platform runtime is forbidden in production")
+        if (
+            self.operations_unified_search_enabled
+            or self.operations_otel_export_enabled
+            or self.operations_external_broker_enabled
+            or self.operations_kubernetes_execution_enabled
+        ):
+            raise ValueError("P4.6 external and execution adapters remain disabled")
+        if not 1 <= self.intelligence_generated_high_impact_quorum <= 5:
+            raise ValueError(
+                "HCAM_INTELLIGENCE_GENERATED_HIGH_IMPACT_QUORUM must be between 1 and 5"
+            )
+        correlation_bounds = {
+            "HCAM_CORRELATION_EVENTS_PER_BATCH": (
+                self.correlation_events_per_batch,
+                1_000,
+            ),
+            "HCAM_CORRELATION_ACTIVE_PARTITIONS": (
+                self.correlation_active_partitions,
+                128,
+            ),
+            "HCAM_CORRELATION_ACTIVE_WINDOWS_PER_PARTITION": (
+                self.correlation_active_windows_per_partition,
+                256,
+            ),
+            "HCAM_CORRELATION_EVENTS_PER_WINDOW": (
+                self.correlation_events_per_window,
+                4_096,
+            ),
+            "HCAM_CORRELATION_WORKER_LEASE_SECONDS": (
+                self.correlation_worker_lease_seconds,
+                90,
+            ),
+            "HCAM_CORRELATION_RETRY_ATTEMPTS": (
+                self.correlation_retry_attempts,
+                3,
+            ),
+        }
+        for name, (value, maximum) in correlation_bounds.items():
+            if not 1 <= value <= maximum:
+                raise ValueError(f"{name} must be between 1 and {maximum}")
         if environment == "production" and any(
             rule.scheme == "http" for rule in self.onvif_egress_rules
         ):
@@ -384,7 +495,9 @@ class Settings:
             self.analytics_model_relative_path.is_absolute()
             or windows_model_path.is_absolute()
             or bool(windows_model_path.drive)
+            or bool(windows_model_path.root)
             or ".." in self.analytics_model_relative_path.parts
+            or ".." in windows_model_path.parts
             or self.analytics_model_relative_path.name != "yolox_tiny.onnx"
         ):
             raise ValueError(
@@ -585,6 +698,73 @@ class Settings:
             ),
             analytics_generated_geometry_enabled=_environment_flag(
                 "HCAM_ANALYTICS_GENERATED_GEOMETRY_ENABLED"
+            ),
+            intelligence_generated_control_plane_enabled=_environment_flag(
+                "HCAM_INTELLIGENCE_GENERATED_CONTROL_PLANE_ENABLED"
+            ),
+            intelligence_generated_correlation_enabled=_environment_flag(
+                "HCAM_INTELLIGENCE_GENERATED_CORRELATION_ENABLED"
+            ),
+            intelligence_generated_rule_evaluation_enabled=_environment_flag(
+                "HCAM_INTELLIGENCE_GENERATED_RULE_EVALUATION_ENABLED"
+            ),
+            intelligence_generated_alert_lifecycle_enabled=_environment_flag(
+                "HCAM_INTELLIGENCE_GENERATED_ALERT_LIFECYCLE_ENABLED"
+            ),
+            intelligence_generated_reference_integrations_enabled=_environment_flag(
+                "HCAM_INTELLIGENCE_GENERATED_REFERENCE_INTEGRATIONS_ENABLED"
+            ),
+            intelligence_generated_reference_manual_queries_enabled=_environment_flag(
+                "HCAM_INTELLIGENCE_GENERATED_REFERENCE_MANUAL_QUERIES_ENABLED"
+            ),
+            intelligence_generated_reference_hypothesis_enrichment_enabled=_environment_flag(
+                "HCAM_INTELLIGENCE_GENERATED_REFERENCE_HYPOTHESIS_ENRICHMENT_ENABLED"
+            ),
+            intelligence_generated_investigations_enabled=_environment_flag(
+                "HCAM_INTELLIGENCE_GENERATED_INVESTIGATIONS_ENABLED"
+            ),
+            operations_generated_platform_enabled=_environment_flag(
+                "HCAM_OPERATIONS_GENERATED_PLATFORM_ENABLED"
+            ),
+            operations_unified_search_enabled=_environment_flag(
+                "HCAM_OPERATIONS_UNIFIED_SEARCH_ENABLED"
+            ),
+            operations_otel_export_enabled=_environment_flag(
+                "HCAM_OPERATIONS_OTEL_EXPORT_ENABLED"
+            ),
+            operations_external_broker_enabled=_environment_flag(
+                "HCAM_OPERATIONS_EXTERNAL_BROKER_ENABLED"
+            ),
+            operations_kubernetes_execution_enabled=_environment_flag(
+                "HCAM_OPERATIONS_KUBERNETES_EXECUTION_ENABLED"
+            ),
+            intelligence_generated_high_impact_quorum=_positive_environment_integer(
+                "HCAM_INTELLIGENCE_GENERATED_HIGH_IMPACT_QUORUM",
+                defaults.intelligence_generated_high_impact_quorum,
+            ),
+            correlation_events_per_batch=_positive_environment_integer(
+                "HCAM_CORRELATION_EVENTS_PER_BATCH",
+                defaults.correlation_events_per_batch,
+            ),
+            correlation_active_partitions=_positive_environment_integer(
+                "HCAM_CORRELATION_ACTIVE_PARTITIONS",
+                defaults.correlation_active_partitions,
+            ),
+            correlation_active_windows_per_partition=_positive_environment_integer(
+                "HCAM_CORRELATION_ACTIVE_WINDOWS_PER_PARTITION",
+                defaults.correlation_active_windows_per_partition,
+            ),
+            correlation_events_per_window=_positive_environment_integer(
+                "HCAM_CORRELATION_EVENTS_PER_WINDOW",
+                defaults.correlation_events_per_window,
+            ),
+            correlation_worker_lease_seconds=_positive_environment_integer(
+                "HCAM_CORRELATION_WORKER_LEASE_SECONDS",
+                defaults.correlation_worker_lease_seconds,
+            ),
+            correlation_retry_attempts=_positive_environment_integer(
+                "HCAM_CORRELATION_RETRY_ATTEMPTS",
+                defaults.correlation_retry_attempts,
             ),
             analytics_artifact_root=(
                 Path(value)

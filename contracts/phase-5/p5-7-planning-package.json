@@ -1,0 +1,229 @@
+{
+  "schema_version": "hcam.phase5.p5_7.planning_package.v1",
+  "package_id": "P5.7-PLANNING-R0",
+  "status": "research_complete_owner_decisions_pending",
+  "effective": false,
+  "prepared_on": "2026-09-12",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "7fc7f2a77dad9853c00b51905f616f8b74221ef4",
+  "planning_authority": {
+    "decision_id": "D-P5.7-PLAN-AUTH",
+    "path": "contracts/phase-5/p5-7-plan-authorization.json",
+    "sha256": "27E2175C0E830ECE3B56B4AB8A118E9249CA26875923D3C5C53CBE1AB3AAC708"
+  },
+  "accepted_predecessor": {
+    "subphase": "P5.6",
+    "acceptance_record": "contracts/phase-5/p5-6-acceptance.json",
+    "acceptance_record_sha256": "30AC608A0D0543DD7F6EF537931F8AD3F7903FB205AD13C049C3C50CEE82D15E",
+    "evidence_package_sha256": "42606AC3005D184AC241B5225D7AC1819044248A46A435AC91BDE72CC9C42B58",
+    "canonical_component_digest": "F7C1DB92A4E1C807895B79AA519508198B6AFCFBEC2B7251F0683FAF59633B35",
+    "technical_commit": "8c3645f1d91b6d444a63d5534a322ba181a931f1",
+    "evidence_seal_commit": "a49caa9f491cd983ac42e27728a7de9f1f68f668",
+    "acceptance_commit": "7fc7f2a77dad9853c00b51905f616f8b74221ef4"
+  },
+  "component_digest_algorithm": "Sort components by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "CDF93B75C12E78B8BED542025A6CFBE44BCFDE813B560C7C05EFF5F7D52A8495",
+  "components": [
+    {
+      "path": "contracts/phase-5/p5-7-plan-authorization.json",
+      "bytes": 6774,
+      "sha256": "27E2175C0E830ECE3B56B4AB8A118E9249CA26875923D3C5C53CBE1AB3AAC708"
+    },
+    {
+      "path": "docs/phase-5/current-status-r27.md",
+      "bytes": 4957,
+      "sha256": "21D19B9B310EB4C3FF8AC37D0CAAFD0EBE92A2666D418E166A3CFC8C0E4DEC16"
+    },
+    {
+      "path": "docs/phase-5/p5-7-contract-gap-matrix.md",
+      "bytes": 13187,
+      "sha256": "9479F066EEBBC671C41F80DA1009B305B43158554D55028DC553EBBEB620A1EF"
+    },
+    {
+      "path": "docs/phase-5/p5-7-decision-packet.md",
+      "bytes": 11928,
+      "sha256": "9F487505083A29F4D48250F6D4BBBD49198C31C599689E6F38A6F4AEBD778E76"
+    },
+    {
+      "path": "docs/phase-5/p5-7-dependency-evaluation.md",
+      "bytes": 8989,
+      "sha256": "5196499E341547D35D889E7D06DA4DE811D5402B29359BE602DBBDD22CCFE966"
+    },
+    {
+      "path": "docs/phase-5/p5-7-implementation-plan.md",
+      "bytes": 12542,
+      "sha256": "BEEB47639984E031C2F89AF7FB5EE0E7428EAC215BB927373732CE41E5659080"
+    },
+    {
+      "path": "docs/phase-5/p5-7-quality-architecture.md",
+      "bytes": 14385,
+      "sha256": "22D76C4C2BA4C02076D3D6B6EC2DD450085A1EE5D220E212156D22017D8224EA"
+    },
+    {
+      "path": "docs/phase-5/p5-7-research-record.md",
+      "bytes": 15516,
+      "sha256": "D0E60C11E14580453E0DF6B4417745E578C7213F72F82DFA9BF03A7B6CB46E77"
+    },
+    {
+      "path": "docs/phase-5/p5-7-threat-model.md",
+      "bytes": 12483,
+      "sha256": "5A3536C8DBC332565D6CF774C8655B288E6D5AC7FE36BDDF77E1B311542F07A1"
+    },
+    {
+      "path": "docs/phase-5/p5-7-validation-portfolio.md",
+      "bytes": 13643,
+      "sha256": "F894A135B798B57F6866E9BD769BC942969DCC5F5534CA7EE0FC918AA272450F"
+    }
+  ],
+  "research_result": {
+    "official_primary_sources_only": true,
+    "accessibility_baseline": "WCAG_2_2_AA_with_WCAG_EM_style_reporting_ACT_support_keyboard_focus_zoom_target_size_contrast_motion_and_error_evidence",
+    "India_government_accessibility_baseline": "GIGW_constraints_recorded_as_acceptance_inputs_without_conformance_claim",
+    "localization_baseline": "ECMA_402_and_W3C_i18n_explicit_en_IN_gu_IN_hi_IN_UTC_and_pseudo_expansion_profiles",
+    "browser_baseline": "Microsoft_Edge_primary_plus_tiered_Playwright_Chromium_Firefox_WebKit_compatibility",
+    "performance_baseline": "context_qualified_hard_budgets_Core_Web_Vitals_reference_thresholds_and_Long_Tasks_observation",
+    "API_error_baseline": "RFC_9110_and_RFC_9457_authoritative_HTTP_confirmation_and_typed_problem_details",
+    "web_security_baseline": "CSP3_and_OWASP_CSP_CSRF_HTML5_storage_controls_with_server_authority",
+    "supply_chain_baseline": "NIST_SSDF_SLSA_and_CycloneDX_hash_provenance_SBOM_license_vulnerability_and_reproducibility_evidence",
+    "observability_baseline": "OpenTelemetry_context_and_cardinality_limits_without_real_telemetry_backend",
+    "network_runtime_dependency_data_or_operational_action_performed": false
+  },
+  "recommended_architecture": {
+    "quality_control_plane": "manifest_driven_generated_only_cross_portal_validation_and_evidence_graph",
+    "surface_topology": "eight_applications_nine_logical_operator_surfaces_Command_Center_primary",
+    "journey_portfolio": "fourteen_canonical_cross_portal_journeys_plus_bounded_pairwise_variants",
+    "mandatory_states": 20,
+    "browser_strategy": "tiered_Edge_Chromium_Firefox_WebKit_without_automatic_browser_acquisition",
+    "accessibility_strategy": "layered_automated_semantic_keyboard_focus_zoom_contrast_motion_error_and_manual_evidence",
+    "localization_strategy": "en_IN_gu_IN_hi_IN_UTC_and_pseudo_expansion_with_long_text_and_Unicode",
+    "viewport_count": 7,
+    "resource_profile_count": 6,
+    "scale_strategy": "deterministic_generated_C1_C10_C50",
+    "resilience_strategy": "typed_deterministic_fault_matrix_with_fail_closed_convergence",
+    "acceptance_strategy": "digest_bound_evidence_graph_exact_release_manifest_and_separate_owner_acceptance",
+    "generated_only_evidence_is_production_evidence": false,
+    "resource_profiles_change_authority_scope_truth_or_security": false
+  },
+  "owner_decisions": [
+    { "id": "D-P5.7-001", "title": "final_acceptance_policy", "selected": null, "recommended": "A" },
+    { "id": "D-P5.7-002", "title": "cross_portal_journey_portfolio", "selected": null, "recommended": "A" },
+    { "id": "D-P5.7-003", "title": "browser_compatibility_baseline", "selected": null, "recommended": "A" },
+    { "id": "D-P5.7-004", "title": "accessibility_evidence_baseline", "selected": null, "recommended": "A" },
+    { "id": "D-P5.7-005", "title": "localization_and_time_baseline", "selected": null, "recommended": "A" },
+    { "id": "D-P5.7-006", "title": "viewport_device_and_profile_matrix", "selected": null, "recommended": "A" },
+    { "id": "D-P5.7-007", "title": "performance_and_bundle_gates", "selected": null, "recommended": "A" },
+    { "id": "D-P5.7-008", "title": "scale_methodology", "selected": null, "recommended": "A" },
+    { "id": "D-P5.7-009", "title": "resilience_and_recovery_validation", "selected": null, "recommended": "A" },
+    { "id": "D-P5.7-010", "title": "security_and_privacy_validation", "selected": null, "recommended": "A" },
+    { "id": "D-P5.7-011", "title": "build_SBOM_and_provenance_baseline", "selected": null, "recommended": "A" },
+    { "id": "D-P5.7-012", "title": "evidence_seal_and_final_owner_gate", "selected": null, "recommended": "A" }
+  ],
+  "recommended_profile": "A/A/A/A/A/A/A/A/A/A/A/A",
+  "gap_ids": [
+    "P5.7-G01", "P5.7-G02", "P5.7-G03", "P5.7-G04", "P5.7-G05", "P5.7-G06", "P5.7-G07", "P5.7-G08",
+    "P5.7-G09", "P5.7-G10", "P5.7-G11", "P5.7-G12", "P5.7-G13", "P5.7-G14", "P5.7-G15", "P5.7-G16",
+    "P5.7-G17", "P5.7-G18", "P5.7-G19", "P5.7-G20", "P5.7-G21", "P5.7-G22", "P5.7-G23", "P5.7-G24",
+    "P5.7-G25", "P5.7-G26", "P5.7-G27", "P5.7-G28", "P5.7-G29", "P5.7-G30", "P5.7-G31", "P5.7-G32",
+    "P5.7-G33", "P5.7-G34", "P5.7-G35", "P5.7-G36", "P5.7-G37", "P5.7-G38", "P5.7-G39", "P5.7-G40",
+    "P5.7-G41", "P5.7-G42", "P5.7-G43", "P5.7-G44", "P5.7-G45", "P5.7-G46", "P5.7-G47", "P5.7-G48",
+    "P5.7-G49", "P5.7-G50", "P5.7-G51", "P5.7-G52", "P5.7-G53", "P5.7-G54", "P5.7-G55", "P5.7-G56",
+    "P5.7-G57", "P5.7-G58", "P5.7-G59", "P5.7-G60", "P5.7-G61", "P5.7-G62", "P5.7-G63", "P5.7-G64"
+  ],
+  "gap_summary": {
+    "blocking": 59,
+    "conditional": 4,
+    "limitation": 1,
+    "total": 64
+  },
+  "threat_ids": [
+    "P5.7-T01", "P5.7-T02", "P5.7-T03", "P5.7-T04", "P5.7-T05", "P5.7-T06", "P5.7-T07", "P5.7-T08",
+    "P5.7-T09", "P5.7-T10", "P5.7-T11", "P5.7-T12", "P5.7-T13", "P5.7-T14", "P5.7-T15", "P5.7-T16",
+    "P5.7-T17", "P5.7-T18", "P5.7-T19", "P5.7-T20", "P5.7-T21", "P5.7-T22", "P5.7-T23", "P5.7-T24",
+    "P5.7-T25", "P5.7-T26", "P5.7-T27", "P5.7-T28", "P5.7-T29", "P5.7-T30", "P5.7-T31", "P5.7-T32",
+    "P5.7-T33", "P5.7-T34", "P5.7-T35", "P5.7-T36", "P5.7-T37", "P5.7-T38", "P5.7-T39", "P5.7-T40",
+    "P5.7-T41", "P5.7-T42", "P5.7-T43", "P5.7-T44", "P5.7-T45", "P5.7-T46", "P5.7-T47", "P5.7-T48",
+    "P5.7-T49", "P5.7-T50", "P5.7-T51", "P5.7-T52", "P5.7-T53", "P5.7-T54", "P5.7-T55", "P5.7-T56",
+    "P5.7-T57", "P5.7-T58", "P5.7-T59", "P5.7-T60", "P5.7-T61", "P5.7-T62", "P5.7-T63", "P5.7-T64"
+  ],
+  "implementation_workstreams": [
+    { "id": "P5.7-W1", "title": "final_quality_contracts_manifests_and_generated_fixtures", "weight": 1.25 },
+    { "id": "P5.7-W2", "title": "cross_portal_journeys_chronology_and_deterministic_replay", "weight": 2.0 },
+    { "id": "P5.7-W3", "title": "accessibility_localization_time_and_Unicode_validation", "weight": 1.5 },
+    { "id": "P5.7-W4", "title": "browser_viewport_device_and_resource_profile_compatibility", "weight": 1.25 },
+    { "id": "P5.7-W5", "title": "C1_C10_C50_scale_performance_memory_media_and_bundle_budgets", "weight": 1.5 },
+    { "id": "P5.7-W6", "title": "resilience_security_privacy_and_supply_chain_validation", "weight": 1.5 },
+    { "id": "P5.7-W7", "title": "full_regression_history_repeatability_evidence_and_release_manifest", "weight": 2.0 },
+    { "id": "P5.7-W8", "title": "exact_owner_final_acceptance", "weight": 1.0 }
+  ],
+  "proposed_generated_cases": {
+    "cross_portal_journeys_and_replay": 512,
+    "contract_API_event_and_concurrency": 320,
+    "accessibility": 256,
+    "localization_time_and_Unicode": 192,
+    "browser_layout_and_resource_profiles": 256,
+    "performance_scale_and_bundles": 192,
+    "resilience": 192,
+    "security_privacy_and_supply_chain": 128,
+    "total": 2048
+  },
+  "proposed_workloads": ["C1", "C10", "C50"],
+  "frozen_progress_model": {
+    "P5_7_total_product_points": 12,
+    "P5_7_technical_cap_points": 11,
+    "P5_7_owner_acceptance_points": 1,
+    "phase_5_total_product_points": 100,
+    "phase_5_predecessor_points": 88,
+    "planning_items": 8,
+    "planning_awards_product_points": false
+  },
+  "progress": {
+    "P5_7_planning": {
+      "earned": 8,
+      "total": 8,
+      "percent": 100.0,
+      "change_percentage_points": 100.0,
+      "awards_product_points": false
+    },
+    "P5_7_owner_decisions": {
+      "earned": 0,
+      "total": 12,
+      "percent": 0.0,
+      "change_percentage_points": 0.0,
+      "awards_product_points": false
+    },
+    "P5_7_product": {
+      "earned": 0,
+      "total": 12,
+      "percent": 0.0,
+      "change_percentage_points": 0.0
+    },
+    "phase_5_product": {
+      "earned": 88,
+      "total": 100,
+      "percent": 88.0,
+      "change_percentage_points": 0.0
+    }
+  },
+  "next_gate": {
+    "owner_selects_D_P5_7_001_through_012": true,
+    "reconciled_planning_package_required": true,
+    "exact_owner_planning_acceptance_required": true,
+    "bounded_start_package_required": true,
+    "exact_start_authorization_required": true
+  },
+  "owner_decisions_recorded": false,
+  "owner_planning_acceptance_recorded": false,
+  "start_package_preparation_authorized": false,
+  "start_authorization_recorded": false,
+  "product_or_test_implementation_authorized": false,
+  "source_import_authorized": false,
+  "dependency_install_or_lockfile_change_authorized": false,
+  "backend_route_or_migration_authorized": false,
+  "frontend_or_browser_runtime_authorized": false,
+  "provider_network_camera_media_or_real_data_authorized": false,
+  "model_dataset_artifact_or_inference_authorized": false,
+  "operational_action_authorized": false,
+  "container_Kubernetes_or_deployment_authorized": false,
+  "final_phase_5_acceptance_authorized": false,
+  "remote_git_authorized": false
+}

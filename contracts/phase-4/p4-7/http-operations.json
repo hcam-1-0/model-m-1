@@ -1,0 +1,510 @@
+{
+  "contract_type": "hcam.handoff.http-operation.v1",
+  "generated_only": true,
+  "operations": [
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.viewer",
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "response",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "fresh_stale_unknown",
+      "generated_only": true,
+      "idempotency_mode": "none",
+      "method": "GET",
+      "operation_id": "intelligence.health.read",
+      "pagination": "none",
+      "path_template": "/intelligence-health",
+      "purpose": "read_intelligence_health",
+      "reason_required": false,
+      "success_states": [
+        "success",
+        "empty",
+        "partial"
+      ]
+    },
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.viewer",
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "response",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "fresh_stale_unknown",
+      "generated_only": true,
+      "idempotency_mode": "none",
+      "method": "GET",
+      "operation_id": "hypotheses.list",
+      "pagination": "cursor",
+      "path_template": "/correlation-hypotheses",
+      "purpose": "list_hypotheses",
+      "reason_required": false,
+      "success_states": [
+        "success",
+        "empty",
+        "partial"
+      ]
+    },
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.viewer",
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "response",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "current",
+      "generated_only": true,
+      "idempotency_mode": "none",
+      "method": "GET",
+      "operation_id": "runs.list",
+      "pagination": "cursor",
+      "path_template": "/correlation-runs",
+      "purpose": "list_correlation_runs",
+      "reason_required": false,
+      "success_states": [
+        "success",
+        "empty",
+        "partial"
+      ]
+    },
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.viewer",
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "response",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "current",
+      "generated_only": true,
+      "idempotency_mode": "none",
+      "method": "GET",
+      "operation_id": "runs.detail",
+      "pagination": "none",
+      "path_template": "/correlation-runs/{run_id}",
+      "purpose": "read_correlation_run",
+      "reason_required": false,
+      "success_states": [
+        "success",
+        "empty",
+        "partial"
+      ]
+    },
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.viewer",
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "response",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "fresh_stale_unknown",
+      "generated_only": true,
+      "idempotency_mode": "none",
+      "method": "GET",
+      "operation_id": "alerts.list",
+      "pagination": "cursor",
+      "path_template": "/generated-alerts",
+      "purpose": "list_generated_alerts",
+      "reason_required": false,
+      "success_states": [
+        "success",
+        "empty",
+        "partial"
+      ]
+    },
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.viewer",
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "response",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "current",
+      "generated_only": true,
+      "idempotency_mode": "none",
+      "method": "GET",
+      "operation_id": "alerts.detail",
+      "pagination": "none",
+      "path_template": "/generated-alerts/{alert_id}",
+      "purpose": "read_generated_alert",
+      "reason_required": false,
+      "success_states": [
+        "success",
+        "empty",
+        "partial"
+      ]
+    },
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "if_match",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "current",
+      "generated_only": true,
+      "idempotency_mode": "required",
+      "method": "POST",
+      "operation_id": "alerts.review",
+      "pagination": "none",
+      "path_template": "/generated-alerts/{alert_id}/reviews",
+      "purpose": "review_generated_alert",
+      "reason_required": true,
+      "success_states": [
+        "accepted",
+        "conflict"
+      ]
+    },
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "if_match",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "current",
+      "generated_only": true,
+      "idempotency_mode": "required",
+      "method": "POST",
+      "operation_id": "alerts.lifecycle",
+      "pagination": "none",
+      "path_template": "/generated-alerts/{alert_id}/lifecycle",
+      "purpose": "transition_generated_alert",
+      "reason_required": true,
+      "success_states": [
+        "accepted",
+        "conflict"
+      ]
+    },
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.viewer",
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "response",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "fresh_stale_unknown",
+      "generated_only": true,
+      "idempotency_mode": "none",
+      "method": "GET",
+      "operation_id": "reference.health",
+      "pagination": "none",
+      "path_template": "/reference-integrations/health",
+      "purpose": "read_reference_health",
+      "reason_required": false,
+      "success_states": [
+        "success",
+        "empty",
+        "partial"
+      ]
+    },
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.viewer",
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "response",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "fresh_stale_unknown",
+      "generated_only": true,
+      "idempotency_mode": "none",
+      "method": "GET",
+      "operation_id": "reference.queries.detail",
+      "pagination": "none",
+      "path_template": "/reference-integrations/queries/{job_id}",
+      "purpose": "read_reference_query",
+      "reason_required": false,
+      "success_states": [
+        "success",
+        "empty",
+        "partial"
+      ]
+    },
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.viewer",
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "response",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "current",
+      "generated_only": true,
+      "idempotency_mode": "none",
+      "method": "GET",
+      "operation_id": "timelines.list",
+      "pagination": "cursor",
+      "path_template": "/timelines",
+      "purpose": "list_investigation_timelines",
+      "reason_required": false,
+      "success_states": [
+        "success",
+        "empty",
+        "partial"
+      ]
+    },
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.viewer",
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "response",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "current",
+      "generated_only": true,
+      "idempotency_mode": "none",
+      "method": "GET",
+      "operation_id": "timelines.detail",
+      "pagination": "none",
+      "path_template": "/timelines/{timeline_id}",
+      "purpose": "read_investigation_timeline",
+      "reason_required": false,
+      "success_states": [
+        "success",
+        "empty",
+        "partial"
+      ]
+    },
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.viewer",
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "response",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "current",
+      "generated_only": true,
+      "idempotency_mode": "none",
+      "method": "GET",
+      "operation_id": "timelines.reconstruction",
+      "pagination": "none",
+      "path_template": "/timelines/{timeline_id}/reconstruction",
+      "purpose": "read_timeline_reconstruction",
+      "reason_required": false,
+      "success_states": [
+        "success",
+        "empty",
+        "partial"
+      ]
+    },
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "if_match",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "current",
+      "generated_only": true,
+      "idempotency_mode": "required",
+      "method": "POST",
+      "operation_id": "timelines.entries.create",
+      "pagination": "none",
+      "path_template": "/timelines/{timeline_id}/entries",
+      "purpose": "append_timeline_entry",
+      "reason_required": true,
+      "success_states": [
+        "accepted",
+        "conflict"
+      ]
+    },
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "if_match",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "current",
+      "generated_only": true,
+      "idempotency_mode": "required",
+      "method": "POST",
+      "operation_id": "timelines.corrections.create",
+      "pagination": "none",
+      "path_template": "/timelines/{timeline_id}/corrections",
+      "purpose": "append_timeline_correction",
+      "reason_required": true,
+      "success_states": [
+        "accepted",
+        "conflict"
+      ]
+    },
+    {
+      "audience": [
+        "phase5.operator_ui"
+      ],
+      "authorization_roles": [
+        "intelligence.viewer",
+        "intelligence.reviewer"
+      ],
+      "compatibility_class": "stable",
+      "department_scope_required": true,
+      "etag_mode": "response",
+      "failure_codes": [
+        "authorization.denied",
+        "resource.not_found",
+        "request.invalid",
+        "service.unavailable"
+      ],
+      "freshness": "fresh_stale_unknown",
+      "generated_only": true,
+      "idempotency_mode": "none",
+      "method": "GET",
+      "operation_id": "operations.summary",
+      "pagination": "none",
+      "path_template": "/operations/summary",
+      "purpose": "read_operations_summary",
+      "reason_required": false,
+      "success_states": [
+        "success",
+        "empty",
+        "partial"
+      ]
+    }
+  ]
+}

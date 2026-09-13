@@ -1,0 +1,143 @@
+{
+  "schema_version": "hcam.phase5.p5_5.planning_package.v1",
+  "package_id": "P5.5-PLANNING-R0",
+  "status": "research_complete_owner_decisions_pending",
+  "effective": false,
+  "prepared_on": "2026-09-09",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "fd165c85e5f91a42925f3a2d558766181f791d90",
+  "planning_authority": {
+    "decision_id": "D-P5.5-PLAN-AUTH",
+    "path": "contracts/phase-5/p5-5-plan-authorization.json",
+    "sha256": "C83F9791B5BD0BA3CEDFFCED8D91D8201B6E2318FC37D73D72EA998DD58D2BDC"
+  },
+  "accepted_predecessor": {
+    "subphase": "P5.4",
+    "acceptance_record": "contracts/phase-5/p5-4-acceptance.json",
+    "acceptance_record_sha256": "1B7C631F1DF2890A01DBD3048F3D95CDE3E8096A6C381370542FA83C68BAD2D7",
+    "evidence_package_sha256": "3D18E7435434270C64242FBF4B727D9DA080E4E5F832B5C63C42BDD069C9850D",
+    "canonical_component_digest": "65041C5D116E9B0AFA63EB011226E3F1D2190BDBDD50B158F9437DC4CDD6EC7B",
+    "technical_commit": "fc5b7f9aa682b68c83e53c558e8c08bf35ee7480",
+    "evidence_seal_commit": "841f6da340e9bf28ea71b6c1da734f96c97499aa",
+    "acceptance_commit": "fd165c85e5f91a42925f3a2d558766181f791d90"
+  },
+  "component_digest_algorithm": "Sort components by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "3AE03AE73838389C5AAAF43A469016F047B78D730B5A7C97F6F8A0A9E2506558",
+  "components": [
+    {"path": "contracts/phase-5/p5-5-plan-authorization.json", "bytes": 8124, "sha256": "C83F9791B5BD0BA3CEDFFCED8D91D8201B6E2318FC37D73D72EA998DD58D2BDC"},
+    {"path": "docs/phase-5/current-status-r21.md", "bytes": 3491, "sha256": "C10940F17495806D8EFA4821A9E4E3337662DDD7A80058B7E5D59EF8FFA4CC7D"},
+    {"path": "docs/phase-5/p5-5-investigation-evidence-architecture.md", "bytes": 13109, "sha256": "4935092FFF41E6EC1204C7D66EABF8DFDCE38061A2CC21BDB0ABF87932B4466F"},
+    {"path": "docs/phase-5/p5-5-contract-gap-matrix.md", "bytes": 8061, "sha256": "A01AEC89B9A6D82522F89756F24F5A2ADDC7FABC40DA79642F6F1A0ADE0FB8F4"},
+    {"path": "docs/phase-5/p5-5-decision-packet.md", "bytes": 9911, "sha256": "925788CBD90914AC01D00E3694DC856CDEEA50D2389668147A07FEE7E455D944"},
+    {"path": "docs/phase-5/p5-5-dependency-evaluation.md", "bytes": 5290, "sha256": "E92BEEEDB3FC007EC6E4048EE21D81E9E6746C837055EA7FB3183255A0C75D83"},
+    {"path": "docs/phase-5/p5-5-implementation-plan.md", "bytes": 12141, "sha256": "6D232159A480C589FBBB94A7CB97BB493F98FD664B7676A17F2F942F7EB513B3"},
+    {"path": "docs/phase-5/p5-5-research-record.md", "bytes": 12528, "sha256": "73FF00E85B98CE4CC9583C969CA19D58B80F77793767C4F738BEB2234F3E9C14"},
+    {"path": "docs/phase-5/p5-5-threat-model.md", "bytes": 12776, "sha256": "E5714D076FFF5AE03CFCF0596CB7249E5E8D39A320676438D9BAAD743CB8F20F"},
+    {"path": "docs/phase-5/p5-5-workflow-feature-catalogue.md", "bytes": 12001, "sha256": "E8C62F3BC9A7B03B14CCEF35BC44AE5D707EE72F01B74ADB4E6F57298E7EF01F"}
+  ],
+  "research_result": {
+    "official_primary_sources_only": true,
+    "provenance_baseline": "W3C_PROV_entities_activities_agents_derivations_and_constraint_qualified_consistency",
+    "digital_evidence_baseline": "NISTIR_8387_reference_preservation_integrity_provenance_custody_and_legal_state_separated",
+    "India_legal_source_baseline": "BSA_IT_Act_DPDP_and_CERT_In_constraints_recorded_without_legal_conclusion_or_period_selection",
+    "accessibility_baseline": "WCAG_2_2_native_semantic_paginated_tables_logical_focus_and_complete_visual_alternatives",
+    "concurrency_baseline": "RFC_9110_strong_ETag_If_Match_expected_revision_and_idempotency_receipt",
+    "problem_baseline": "RFC_9457_typed_problem_details_with_detail_not_parsed_for_behavior",
+    "canonicalization_baseline": "RFC_8785_informational_profile_evaluated_but_no_browser_crypto_or_new_dependency",
+    "records_baseline": "policy_references_and_explicit_disposition_not_client_defaults",
+    "network_runtime_dependency_or_data_action_performed": false
+  },
+  "recommended_architecture": {
+    "product_hierarchy": "Command_Center_primary_with_connected_Investigation_Center_and_independently_authorized_Evidence_Desk",
+    "chronology": "record_sequence_authoritative_with_qualified_event_time_view",
+    "reconstruction": "exact_revision_digest_profile_entries_late_changes_completeness_and_limitations",
+    "corrections": "append_only_predecessor_successor_and_per_target_impact_closure",
+    "evidence_state": "orthogonal_identity_availability_integrity_provenance_custody_access_signature_and_legal_assessment",
+    "provenance": "bounded_typed_graph_with_authoritative_tables_and_lossy_generated_PROV_projection",
+    "source_resolution_or_rendering": false,
+    "policy_actions": false,
+    "policy_preview": "generated_only_nonoperative",
+    "case_bridge": "typed_disabled",
+    "event_authority": false,
+    "existing_locked_dependencies_sufficient": true,
+    "optional_virtualization": "future_adapter_evaluation_only",
+    "low_resource_mode_functionally_complete": true,
+    "hardware_changes_authority_or_truth": false
+  },
+  "owner_decisions": [
+    {"id": "D-P5.5-001", "title": "product_and_portal_topology", "selected": null, "recommended": "A"},
+    {"id": "D-P5.5-002", "title": "investigation_work_organization", "selected": null, "recommended": "A"},
+    {"id": "D-P5.5-003", "title": "chronology_authority", "selected": null, "recommended": "A"},
+    {"id": "D-P5.5-004", "title": "large_timeline_rendering", "selected": null, "recommended": "A"},
+    {"id": "D-P5.5-005", "title": "reconstruction_and_comparison", "selected": null, "recommended": "A"},
+    {"id": "D-P5.5-006", "title": "correction_retraction_and_impact_presentation", "selected": null, "recommended": "A"},
+    {"id": "D-P5.5-007", "title": "evidence_state_presentation", "selected": null, "recommended": "A"},
+    {"id": "D-P5.5-008", "title": "provenance_and_custody_visualization", "selected": null, "recommended": "A"},
+    {"id": "D-P5.5-009", "title": "source_and_media_boundary", "selected": null, "recommended": "A"},
+    {"id": "D-P5.5-010", "title": "retention_hold_deletion_and_export_experience", "selected": null, "recommended": "A"},
+    {"id": "D-P5.5-011", "title": "concurrency_events_and_draft_recovery", "selected": null, "recommended": "A"},
+    {"id": "D-P5.5-012", "title": "dependency_accessibility_security_and_validation_baseline", "selected": null, "recommended": "A"}
+  ],
+  "recommended_profile": "A/A/A/A/A/A/A/A/A/A/A/A",
+  "producer_gaps": [
+    "P5.5-G01", "P5.5-G02", "P5.5-G03", "P5.5-G04", "P5.5-G05", "P5.5-G06",
+    "P5.5-G07", "P5.5-G08", "P5.5-G09", "P5.5-G10", "P5.5-G11", "P5.5-G12",
+    "P5.5-G13", "P5.5-G14", "P5.5-G15", "P5.5-G16", "P5.5-G17", "P5.5-G18",
+    "P5.5-G19", "P5.5-G20", "P5.5-G21", "P5.5-G22", "P5.5-G23", "P5.5-G24",
+    "P5.5-G25", "P5.5-G26", "P5.5-G27", "P5.5-G28", "P5.5-G29", "P5.5-G30",
+    "P5.5-G31", "P5.5-G32", "P5.5-G33", "P5.5-G34", "P5.5-G35", "P5.5-G36"
+  ],
+  "threat_ids": [
+    "T01", "T02", "T03", "T04", "T05", "T06", "T07", "T08", "T09", "T10",
+    "T11", "T12", "T13", "T14", "T15", "T16", "T17", "T18", "T19", "T20",
+    "T21", "T22", "T23", "T24", "T25", "T26", "T27", "T28", "T29", "T30",
+    "T31", "T32", "T33", "T34", "T35", "T36", "T37", "T38", "T39", "T40",
+    "T41", "T42", "T43", "T44", "T45", "T46", "T47", "T48", "T49", "T50",
+    "T51", "T52", "T53", "T54", "T55", "T56"
+  ],
+  "implementation_workstreams": [
+    {"id": "P5.5-W1", "title": "consumer_contracts_and_generated_fixtures", "weight": 2.0},
+    {"id": "P5.5-W2", "title": "investigation_overview_and_authoritative_timeline", "weight": 2.5},
+    {"id": "P5.5-W3", "title": "reconstruction_comparison_corrections_and_relationships", "weight": 2.5},
+    {"id": "P5.5-W4", "title": "evidence_integrity_provenance_and_custody", "weight": 2.5},
+    {"id": "P5.5-W5", "title": "nonoperative_policy_previews_and_disabled_bridges", "weight": 1.5},
+    {"id": "P5.5-W6", "title": "authorization_concurrency_invalidation_and_handoffs", "weight": 1.5},
+    {"id": "P5.5-W7", "title": "accessibility_security_profiles_and_signals", "weight": 1.0},
+    {"id": "P5.5-W8", "title": "validation_evidence_and_acceptance", "weight": 1.5}
+  ],
+  "frozen_progress_model": {
+    "P5_5_total_product_points": 15,
+    "P5_5_technical_cap_points": 14,
+    "P5_5_owner_acceptance_points": 1,
+    "phase_5_total_product_points": 100,
+    "planning_items": 8,
+    "planning_awards_product_points": false
+  },
+  "progress": {
+    "P5_5_planning": {"earned": 8, "total": 8, "percent": 100.0, "change_percentage_points": 100.0, "awards_product_points": false},
+    "P5_5_owner_decisions": {"earned": 0, "total": 12, "percent": 0.0, "change_percentage_points": 0.0, "awards_product_points": false},
+    "P5_5_product": {"earned": 0, "total": 15, "percent": 0.0, "change_percentage_points": 0.0},
+    "phase_5_product": {"earned": 63, "total": 100, "percent": 63.0, "change_percentage_points": 0.0}
+  },
+  "next_gate": {
+    "owner_selects_D_P5_5_001_through_012": true,
+    "reconciled_planning_package": true,
+    "exact_owner_planning_acceptance": true,
+    "bounded_start_package": true,
+    "exact_start_authorization": true
+  },
+  "owner_decisions_recorded": false,
+  "owner_planning_acceptance_recorded": false,
+  "start_package_preparation_authorized": false,
+  "start_authorization_recorded": false,
+  "product_or_test_implementation_authorized": false,
+  "source_import_authorized": false,
+  "dependency_install_or_lockfile_change_authorized": false,
+  "backend_route_or_migration_authorized": false,
+  "frontend_or_browser_runtime_authorized": false,
+  "source_evidence_operation_or_legal_policy_authorized": false,
+  "provider_network_camera_media_or_real_data_authorized": false,
+  "model_dataset_artifact_or_inference_authorized": false,
+  "operational_action_container_Kubernetes_deployment_or_P5_6_authorized": false,
+  "remote_git_authorized": false
+}

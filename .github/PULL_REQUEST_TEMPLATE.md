@@ -5,8 +5,18 @@ Explain what changed and why it belongs in this phase.
 ## Scope
 
 - Phase / backlog item:
+- Platform Delivery Project item:
+- Decision / authorization ID:
+- Target profile (laptop, GPU lab, server, Kubernetes, portable):
 - Main files changed:
 - Out of scope:
+
+## Compatibility And Fallback
+
+- [ ] Existing contracts remain compatible or the migration is documented.
+- [ ] Hardware/runtime capability checks and resource bounds are defined where relevant.
+- [ ] Missing acceleration, model, service, or infrastructure layers fail closed or use a documented bypass/fallback.
+- [ ] Rollback behavior is documented.
 
 ## Safety And Data Handling
 
@@ -27,9 +37,10 @@ git diff --check
 
 ## Documentation And Backlog Impact
 
-- [ ] Related Phase 0 docs are updated, or this PR does not require doc changes.
+- [ ] Related phase and architecture docs are updated, or this PR does not require doc changes.
+- [ ] The linked Project fields and milestone remain accurate.
 - [ ] Related backlog, review question, or decision record is updated when scope changes.
-- [ ] Phase movement is not implied unless the Phase 0 acceptance checklist is reviewed.
+- [ ] Phase movement or expanded authority is not implied without explicit acceptance.
 
 ## Reviewer Notes
 

@@ -1,0 +1,32 @@
+{
+  "schema_version": "hcam.phase5.p5_5.investigation_contracts.v1",
+  "marker": "HCAM_GENERATED_ONLY_P5_5",
+  "generated_only": true,
+  "chronology_authority": "record_sequence",
+  "event_time_qualification": "informational_with_freshness_and_limitations",
+  "contracts": [
+    "investigation_page",
+    "timeline_entry",
+    "qualified_chronology",
+    "exact_revision_reconstruction",
+    "revision_comparison",
+    "correction_retraction_record",
+    "impact_closure",
+    "relationship_projection",
+    "command_receipt",
+    "safe_problem"
+  ],
+  "concurrency": {
+    "etag_required": true,
+    "revision_required": true,
+    "idempotency_key_required": true,
+    "deliberate_reconsideration_after_conflict": true
+  },
+  "boundaries": {
+    "append_only_history": true,
+    "exact_revision_only": true,
+    "relationship_table_authoritative": true,
+    "real_investigations_or_identities": false,
+    "operational_actions": false
+  }
+}

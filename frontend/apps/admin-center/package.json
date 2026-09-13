@@ -1,0 +1,27 @@
+{
+  "name": "@hcam/admin-center",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@hcam/app-shell": "workspace:*",
+    "@hcam/design-tokens": "workspace:*",
+    "@hcam/navigation": "workspace:*",
+    "@hcam/test-fixtures": "workspace:*",
+    "@hcam/ui": "workspace:*",
+    "lucide-react": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-router": "catalog:"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "catalog:",
+    "vite": "catalog:"
+  }
+}

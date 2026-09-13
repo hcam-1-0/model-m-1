@@ -1,0 +1,15 @@
+{
+  "actions": [
+    "route",
+    "suppress_duplicate",
+    "resolve_synthetic_health"
+  ],
+  "denied_police_actions": [
+    "accept",
+    "reject",
+    "dispatch",
+    "enforce"
+  ],
+  "generated_only": true,
+  "schema_version": "hcam.p4-3.generated-system-health-cases.v1"
+}

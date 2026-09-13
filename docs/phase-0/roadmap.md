@@ -58,24 +58,40 @@ analytics.
 
 ## Phase 3: AI Analytics
 
-Status: planning baseline ready for owner review. Implementation is not yet
-authorized.
+Status: complete and accepted at generated-only, zero-retention,
+nondeployment scope on 2026-09-03. The authoritative closeout is recorded in
+`docs/phase-3/p3-6-consolidated-runtime-closeout-r5.md` and local commit
+`3ca0436`.
 
-- Model pipeline interface.
-- Detection and tracking event schemas.
-- Initial vehicle/person/object detection proof with test media.
-- Confidence, model versioning, and human review metadata.
+- Model-independent analytics contracts and generated evaluation foundation.
+- Generated-only CPU detection, anonymous stream-local tracking, deterministic
+  line/zone/dwell/occupancy events, and synthetic ANPR.
+- Dynamic runtime capability and scheduling contracts with generated runtime
+  validation and bounded storage-transaction evidence.
+- Confidence, immutable lineage, event delivery, privacy, safety, and human
+  review boundaries.
 
-The detailed planning package is in `docs/phase-3/README.md`. Phase 3 is limited
-to synthetic or explicitly authorized media and anonymous per-camera analytics.
-Cross-camera identity, watchlists, Government matching, and operational alerts
-remain Phase 4 or later work.
+The detailed package is in `docs/phase-3/README.md`. Model acquisition,
+inference, cameras/media/data, accelerated-profile activation, and deployment
+remain separately gated future work. Cross-camera identity, real watchlists,
+Government matching, and operational alerts were not authorized by Phase 3.
 
 ## Phase 4: Intelligence And Alerts
 
-- Event correlation.
-- Watchlist integration only after authorization and governance.
-- Alert rules, escalation, investigation timeline, and evidence records.
+Status: planning baseline R2 prepared and composite owner decisions recorded;
+planning acceptance and implementation authorization remain pending. Current
+exact implementation progress is 3.00% under the frozen work breakdown in
+`docs/phase-4/implementation-plan.md`.
+
+- Adaptive multi-engine correlation with a mandatory deterministic CPU lane and
+  separately gated probabilistic, temporal-graph, and ensemble lanes.
+- Typed provider readiness and generated simulation now; real watchlist or
+  external integration only after provider-specific authorization and
+  governance.
+- Alert rules, tiered authority contracts, escalation, investigation timeline,
+  and evidence records.
+- Police-intelligence proposed alerts and candidate matches require attributable
+  human review; autonomous enforcement remains future-gated and disabled.
 
 ## Phase 5: Operator Applications
 

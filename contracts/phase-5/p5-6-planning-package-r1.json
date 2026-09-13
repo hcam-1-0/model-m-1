@@ -1,0 +1,175 @@
+{
+  "schema_version": "hcam.phase5.p5_6.reconciled_planning_package.v1",
+  "package_id": "P5.6-PLANNING-R1",
+  "status": "non_effective_owner_acceptance_pending",
+  "effective": false,
+  "prepared_on": "2026-09-10",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "98692d83bc307307c4ae19119888c18a0c0fe7e5",
+  "reconciliation_checkpoint_commit": "9b4216dcb56987654026a71250bc35ebbfb02f99",
+  "base_planning_package": {
+    "package_id": "P5.6-PLANNING-R0",
+    "path": "contracts/phase-5/p5-6-planning-package.json",
+    "sha256": "C2FA536DCB9C816AEF0BF04C141F0C2DE35071ABEAEA8A9B86231CB8F83F813C",
+    "canonical_component_digest": "0D4271FABC2BB97D0FEA645A8867E8CF45EFB9920BB9CF6B75F07FB711D61FC2",
+    "preserved_byte_exact": true
+  },
+  "owner_decisions": {
+    "record_id": "P5.6-OWNER-DECISIONS-R0",
+    "path": "contracts/phase-5/p5-6-owner-decisions.json",
+    "sha256": "C920B797BEAD3FCFAFE223A63DD12D01376A310F7C3886FE03AE6903F35DED91",
+    "normalized_statement_sha256": "F721E4C48F274BB3DB422293135325AB0C2C78A3C3B4DD64EDD221442A9CDE25",
+    "selected_by": "mayank-admin",
+    "selection_profile": "A/A/A/A/A/A/A/A/A/A/A/A",
+    "selection_count": 12
+  },
+  "component_digest_algorithm": "Sort components by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "37C854FE07C998AB8E21B3BC41C0FA12D427F430409E82176BEC4CA43FA89E64",
+  "components": [
+    {
+      "path": "contracts/phase-5/p5-6-owner-decisions.json",
+      "bytes": 7603,
+      "sha256": "C920B797BEAD3FCFAFE223A63DD12D01376A310F7C3886FE03AE6903F35DED91"
+    },
+    {
+      "path": "contracts/phase-5/p5-6-planning-package.json",
+      "bytes": 10655,
+      "sha256": "C2FA536DCB9C816AEF0BF04C141F0C2DE35071ABEAEA8A9B86231CB8F83F813C"
+    },
+    {
+      "path": "docs/phase-5/current-status-r25.md",
+      "bytes": 3409,
+      "sha256": "12884FBB5FD51D9B5A5E7ED0870D5E48FBF5EEBBFB09E34A6066D0030F33DED2"
+    },
+    {
+      "path": "docs/phase-5/p5-6-reconciled-planning-r1.md",
+      "bytes": 13391,
+      "sha256": "650E632BAE51413F165A544C106E7441666C442FAC3DB028860F983AC72B0B3E"
+    }
+  ],
+  "selected_architecture": {
+    "product_hierarchy": "Command_Center_primary_with_connected_Admin_Center_Security_Center_and_Operations_Center",
+    "portal_ownership": "Admin_governance_Security_assurance_Operations_camera_live_plus_separate_platform_operations",
+    "shared_packages": "shared_without_collapsing_portal_route_authorization_or_failure_boundaries",
+    "authorization": "server_authoritative_RBAC_plus_constrained_ABAC_default_deny_and_independent_PostgreSQL_RLS",
+    "unknown_or_conflicting_context": "deny_without_cross_scope_existence_disclosure",
+    "change_lifecycle": "typed_revisioned_draft_validate_review_approve_schedule_effect_result_supersede_and_append_only_rollback",
+    "separation_of_duty": "static_and_dynamic_self_approval_denied",
+    "change_effective_in_P5_6": false,
+    "break_glass": "contract_defined_but_unavailable_with_no_bypass",
+    "signal_lanes": "operational_security_audit_evidence_and_administrative_authorities_remain_separate",
+    "unified_search": "future_default_off_derived_bounded_projection_with_source_confirmation",
+    "operations_truth": "source_observed_at_freshness_completeness_policy_revision_unknown_and_limitations_required",
+    "production_target_or_claim_from_generated_evidence": false,
+    "secret_values_in_browser": false,
+    "secret_governance": "opaque_reference_and_minimized_metadata_only_without_resolution_reveal_test_rotation_entry_or_transmission",
+    "configuration": "typed_revisioned_proposals_with_dependency_impact_approval_and_authoritative_effective_state",
+    "generic_editor_or_direct_toggle": false,
+    "retention_recovery_compliance": "generated_nonoperative_policy_and_evidence_previews_only",
+    "supply_chain": "read_only_subject_and_digest_bound_SBOM_license_vulnerability_provenance_and_exception_projections",
+    "resource_profiles": "shared_dynamic_profiles_change_presentation_capacity_only",
+    "topology": "standalone_GPU_lab_server_and_Kubernetes_non_effective_projections",
+    "low_resource_mode_functionally_complete": true,
+    "hardware_changes_authority_scope_truth_action_accessibility_or_security": false,
+    "accessibility": "authoritative_table_and_list_equivalence_keyboard_focus_reflow_zoom_non_color_reduced_motion_and_bounded_announcements",
+    "dependencies": "existing_locked_frontend_dependency_baseline",
+    "validation": "exactly_1120_generated_contract_cases_C1_C10_C50_all_portal_build_loopback_browser_accessibility_security_supply_chain_and_full_regression"
+  },
+  "selected_decisions": [
+    {"id": "D-P5.6-001", "selected": "A", "title": "portal_ownership_and_topology"},
+    {"id": "D-P5.6-002", "selected": "A", "title": "authorization_model"},
+    {"id": "D-P5.6-003", "selected": "A", "title": "administrative_change_lifecycle"},
+    {"id": "D-P5.6-004", "selected": "A", "title": "privileged_and_break_glass_access"},
+    {"id": "D-P5.6-005", "selected": "A", "title": "security_audit_evidence_and_search_lanes"},
+    {"id": "D-P5.6-006", "selected": "A", "title": "operations_health_SLO_and_degradation"},
+    {"id": "D-P5.6-007", "selected": "A", "title": "secret_and_provider_governance"},
+    {"id": "D-P5.6-008", "selected": "A", "title": "features_configuration_profiles_and_kill_switches"},
+    {"id": "D-P5.6-009", "selected": "A", "title": "retention_recovery_and_compliance"},
+    {"id": "D-P5.6-010", "selected": "A", "title": "supply_chain_assurance"},
+    {"id": "D-P5.6-011", "selected": "A", "title": "resource_and_deployment_profiles"},
+    {"id": "D-P5.6-012", "selected": "A", "title": "dependency_accessibility_security_and_validation_baseline"}
+  ],
+  "preserved_contracts": [
+    "accepted_Phase_0_through_P5_5_contracts_evidence_acceptance_and_safety_boundaries",
+    "Command_Center_primary_and_connected_specialist_portal_hierarchy",
+    "P5_3_Operations_camera_catalogue_detail_diagnostics_live_workspace_and_monitor_wall",
+    "P4_6_low_cardinality_signal_reliability_degradation_recovery_capacity_and_topology_contracts",
+    "browser_never_grants_authority_and_HTTP_server_state_remains_authoritative",
+    "no_secret_value_raw_log_private_record_media_model_artifact_or_executable_instruction_in_browser_contracts",
+    "administrative_controls_nonoperative_until_separately_authorized_backend_producers_enforcement_and_deployment_exist",
+    "forty_eight_producer_gaps_and_seventy_two_threats_remain_open_until_evidenced",
+    "generated_only_validation_until_separate_later_authority"
+  ],
+  "producer_gap_count": 48,
+  "threat_count": 72,
+  "implementation_workstreams": [
+    {"id": "P5.6-W1", "title": "shared_contracts_domains_and_generated_fixtures", "weight": 1.5},
+    {"id": "P5.6-W2", "title": "Admin_Center_governance_and_approval_experience", "weight": 1.5},
+    {"id": "P5.6-W3", "title": "Security_Center_posture_access_audit_and_compliance_experience", "weight": 1.5},
+    {"id": "P5.6-W4", "title": "Platform_Operations_health_queues_SLO_recovery_and_topology_experience", "weight": 1.5},
+    {"id": "P5.6-W5", "title": "authorization_SoD_concurrency_redaction_and_non_effective_safety", "weight": 1.25},
+    {"id": "P5.6-W6", "title": "handoffs_accessibility_localization_and_dynamic_profiles", "weight": 0.75},
+    {"id": "P5.6-W7", "title": "threat_dependency_build_browser_compatibility_and_regression_validation", "weight": 1.0},
+    {"id": "P5.6-W8", "title": "evidence_sealing_and_exact_owner_acceptance", "weight": 1.0}
+  ],
+  "generated_contract_cases": 1120,
+  "generated_workloads": ["C1", "C10", "C50"],
+  "frozen_progress_model": {
+    "P5_6_total_product_points": 10,
+    "P5_6_technical_cap_points": 9,
+    "P5_6_owner_acceptance_points": 1,
+    "phase_5_total_product_points": 100,
+    "planning_items": 8,
+    "owner_decision_items": 12,
+    "planning_and_decisions_award_product_points": false,
+    "scope_or_weight_rebaseline": false
+  },
+  "progress": {
+    "owner_decisions": {
+      "earned": 12,
+      "total": 12,
+      "percent": 100.0,
+      "change_percentage_points": 100.0,
+      "awards_product_points": false
+    },
+    "P5_6_planning": {
+      "earned": 8,
+      "total": 8,
+      "percent": 100.0,
+      "change_percentage_points": 0.0,
+      "awards_product_points": false
+    },
+    "P5_6_product": {
+      "earned": 0,
+      "total": 10,
+      "percent": 0.0,
+      "change_percentage_points": 0.0
+    },
+    "phase_5_product": {
+      "earned": 78,
+      "total": 100,
+      "percent": 78.0,
+      "change_percentage_points": 0.0
+    }
+  },
+  "next_gate": {
+    "exact_owner_planning_acceptance": true,
+    "non_effective_exact_start_package_after_acceptance": true,
+    "separate_exact_start_authorization_before_implementation": true
+  },
+  "owner_planning_acceptance_recorded": false,
+  "start_package_preparation_authorized": false,
+  "start_authorization_recorded": false,
+  "product_or_test_implementation_authorized": false,
+  "source_import_authorized": false,
+  "dependency_resolution_install_or_lockfile_change_authorized": false,
+  "backend_route_or_migration_authorized": false,
+  "frontend_browser_or_map_runtime_authorized": false,
+  "credential_secret_resolution_or_administrative_mutation_authorized": false,
+  "telemetry_scanner_backup_restore_or_recovery_execution_authorized": false,
+  "provider_network_camera_media_or_real_data_authorized": false,
+  "model_dataset_artifact_or_inference_authorized": false,
+  "operational_action_container_Kubernetes_deployment_or_P5_7_authorized": false,
+  "additional_commit_authorized": false,
+  "remote_git_authorized": false
+}

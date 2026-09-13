@@ -1,0 +1,40 @@
+{
+  "schema_version": "hcam.phase4.p4_6.openapi-surface.v1",
+  "feature_flags": [
+    "HCAM_OPERATIONS_GENERATED_PLATFORM_ENABLED"
+  ],
+  "default_enabled": false,
+  "production_allowed": false,
+  "paths": {
+    "/platform/operations/summary": [
+      "GET"
+    ],
+    "/platform/operations/{view}": [
+      "GET"
+    ]
+  },
+  "views": [
+    "objectives",
+    "budgets",
+    "degradation",
+    "controls",
+    "recovery",
+    "capacity",
+    "supply-chain",
+    "security"
+  ],
+  "request_requirements": [
+    "authenticated exact read role",
+    "authorized department scope",
+    "bounded pagination",
+    "Cache-Control no-store",
+    "generated-only nonoperational responses"
+  ],
+  "absent_surfaces": [
+    "mutations or activation",
+    "real telemetry search security or broker backends",
+    "backup restore scanner or recovery execution",
+    "hardware capacity process container or Kubernetes execution",
+    "camera media provider model data or operational action access"
+  ]
+}

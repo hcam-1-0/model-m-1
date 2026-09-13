@@ -1,0 +1,158 @@
+{
+  "contract_type": "hcam.operator.contract-catalogue.v1",
+  "catalogue_version": "phase5.0.v1",
+  "generated_only": true,
+  "views": [
+    {
+      "contract_type": "hcam.operator.view-contract.v1",
+      "view_id": "command.overview",
+      "portal_id": "command",
+      "route_id": "command.overview",
+      "title_key": "view.command.overview",
+      "required_roles": ["command.viewer", "administrator"],
+      "supported_states": ["loading", "empty", "ready", "partial", "stale", "degraded", "denied", "conflict", "failure", "recovery", "correction"],
+      "actions": [
+        {"action_id": "view", "command_kind": "query", "required_roles": ["command.viewer", "administrator"], "requires_reason": false, "requires_etag": false, "operational": false}
+      ],
+      "producer": {"contract_type": "hcam.operator.producer-binding.v1", "operation_id": "operations.summary", "schema_version": "phase4.7.handoff.v1", "source_kind": "http", "freshness_seconds": 30, "department_scoped": true, "authoritative": true, "gap_class": "ready_for_generated_consumer"},
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "contract_type": "hcam.operator.view-contract.v1",
+      "view_id": "operations.camera_catalogue",
+      "portal_id": "operations",
+      "route_id": "operations.cameras",
+      "title_key": "view.operations.cameras",
+      "required_roles": ["camera.viewer", "administrator"],
+      "supported_states": ["loading", "empty", "ready", "partial", "stale", "degraded", "denied", "conflict", "failure", "recovery", "correction"],
+      "actions": [
+        {"action_id": "view", "command_kind": "query", "required_roles": ["camera.viewer", "administrator"], "requires_reason": false, "requires_etag": false, "operational": false}
+      ],
+      "producer": {"contract_type": "hcam.operator.producer-binding.v1", "operation_id": "cameras.list", "schema_version": "phase2.camera.v1", "source_kind": "http", "freshness_seconds": 60, "department_scoped": true, "authoritative": true, "gap_class": "ready_for_generated_consumer"},
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "contract_type": "hcam.operator.view-contract.v1",
+      "view_id": "operations.live_workspace",
+      "portal_id": "operations",
+      "route_id": "operations.live",
+      "title_key": "view.operations.live",
+      "required_roles": ["camera.viewer", "administrator"],
+      "supported_states": ["loading", "empty", "ready", "partial", "stale", "degraded", "denied", "conflict", "failure", "recovery", "correction"],
+      "actions": [
+        {"action_id": "preview_single", "command_kind": "preview", "required_roles": ["camera.viewer", "administrator"], "requires_reason": true, "requires_etag": false, "operational": false}
+      ],
+      "producer": {"contract_type": "hcam.operator.producer-binding.v1", "operation_id": "playback.session.proposal", "schema_version": "phase2.playback.v1", "source_kind": "http", "freshness_seconds": 15, "department_scoped": true, "authoritative": true, "gap_class": "partial"},
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "contract_type": "hcam.operator.view-contract.v1",
+      "view_id": "operations.gis_workspace",
+      "portal_id": "operations",
+      "route_id": "operations.gis",
+      "title_key": "view.operations.gis",
+      "required_roles": ["camera.viewer", "intelligence.viewer", "administrator"],
+      "supported_states": ["loading", "empty", "ready", "partial", "stale", "degraded", "denied", "conflict", "failure", "recovery", "correction"],
+      "actions": [
+        {"action_id": "query", "command_kind": "query", "required_roles": ["camera.viewer", "intelligence.viewer", "administrator"], "requires_reason": false, "requires_etag": false, "operational": false},
+        {"action_id": "preview_single", "command_kind": "preview", "required_roles": ["camera.viewer", "administrator"], "requires_reason": true, "requires_etag": false, "operational": false}
+      ],
+      "producer": {"contract_type": "hcam.operator.producer-binding.v1", "operation_id": "gis.viewport.generated", "schema_version": "phase5.0.v1", "source_kind": "generated_projection", "freshness_seconds": 60, "department_scoped": true, "authoritative": false, "gap_class": "blocked"},
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "contract_type": "hcam.operator.view-contract.v1",
+      "view_id": "intelligence.hypotheses",
+      "portal_id": "intelligence",
+      "route_id": "intelligence.hypotheses",
+      "title_key": "view.intelligence.hypotheses",
+      "required_roles": ["intelligence.viewer", "administrator"],
+      "supported_states": ["loading", "empty", "ready", "partial", "stale", "degraded", "denied", "conflict", "failure", "recovery", "correction"],
+      "actions": [
+        {"action_id": "view", "command_kind": "query", "required_roles": ["intelligence.viewer", "administrator"], "requires_reason": false, "requires_etag": false, "operational": false}
+      ],
+      "producer": {"contract_type": "hcam.operator.producer-binding.v1", "operation_id": "hypotheses.list", "schema_version": "phase4.7.handoff.v1", "source_kind": "http", "freshness_seconds": 30, "department_scoped": true, "authoritative": true, "gap_class": "ready_for_generated_consumer"},
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "contract_type": "hcam.operator.view-contract.v1",
+      "view_id": "intelligence.alert_review",
+      "portal_id": "intelligence",
+      "route_id": "intelligence.alerts",
+      "title_key": "view.intelligence.alerts",
+      "required_roles": ["intelligence.reviewer", "administrator"],
+      "supported_states": ["loading", "empty", "ready", "partial", "stale", "degraded", "denied", "conflict", "failure", "recovery", "correction"],
+      "actions": [
+        {"action_id": "review", "command_kind": "review", "required_roles": ["intelligence.reviewer", "administrator"], "requires_reason": true, "requires_etag": true, "operational": false}
+      ],
+      "producer": {"contract_type": "hcam.operator.producer-binding.v1", "operation_id": "alerts.review", "schema_version": "phase4.7.handoff.v1", "source_kind": "http", "freshness_seconds": 15, "department_scoped": true, "authoritative": true, "gap_class": "ready_for_generated_consumer"},
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "contract_type": "hcam.operator.view-contract.v1",
+      "view_id": "investigations.timeline",
+      "portal_id": "investigations",
+      "route_id": "investigations.timeline",
+      "title_key": "view.investigations.timeline",
+      "required_roles": ["investigation.viewer", "administrator"],
+      "supported_states": ["loading", "empty", "ready", "partial", "stale", "degraded", "denied", "conflict", "failure", "recovery", "correction"],
+      "actions": [
+        {"action_id": "view", "command_kind": "query", "required_roles": ["investigation.viewer", "administrator"], "requires_reason": false, "requires_etag": false, "operational": false}
+      ],
+      "producer": {"contract_type": "hcam.operator.producer-binding.v1", "operation_id": "timelines.list", "schema_version": "phase4.7.handoff.v1", "source_kind": "http", "freshness_seconds": 60, "department_scoped": true, "authoritative": true, "gap_class": "ready_for_generated_consumer"},
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "contract_type": "hcam.operator.view-contract.v1",
+      "view_id": "evidence.references",
+      "portal_id": "evidence",
+      "route_id": "evidence.references",
+      "title_key": "view.evidence.references",
+      "required_roles": ["evidence.viewer", "administrator"],
+      "supported_states": ["loading", "empty", "ready", "partial", "stale", "degraded", "denied", "conflict", "failure", "recovery", "correction"],
+      "actions": [
+        {"action_id": "view", "command_kind": "query", "required_roles": ["evidence.viewer", "administrator"], "requires_reason": false, "requires_etag": false, "operational": false}
+      ],
+      "producer": {"contract_type": "hcam.operator.producer-binding.v1", "operation_id": "evidence.references.list", "schema_version": "phase4.7.handoff.v1", "source_kind": "http", "freshness_seconds": 300, "department_scoped": true, "authoritative": true, "gap_class": "partial"},
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "contract_type": "hcam.operator.view-contract.v1",
+      "view_id": "admin.platform",
+      "portal_id": "admin",
+      "route_id": "admin.platform",
+      "title_key": "view.admin.platform",
+      "required_roles": ["administrator"],
+      "supported_states": ["loading", "empty", "ready", "partial", "stale", "degraded", "denied", "conflict", "failure", "recovery", "correction"],
+      "actions": [
+        {"action_id": "view", "command_kind": "query", "required_roles": ["administrator"], "requires_reason": false, "requires_etag": false, "operational": false}
+      ],
+      "producer": {"contract_type": "hcam.operator.producer-binding.v1", "operation_id": "platform.controls.list", "schema_version": "phase4.6.v1", "source_kind": "http", "freshness_seconds": 60, "department_scoped": true, "authoritative": true, "gap_class": "partial"},
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "contract_type": "hcam.operator.view-contract.v1",
+      "view_id": "security.audit",
+      "portal_id": "security",
+      "route_id": "security.audit",
+      "title_key": "view.security.audit",
+      "required_roles": ["security.viewer", "administrator"],
+      "supported_states": ["loading", "empty", "ready", "partial", "stale", "degraded", "denied", "conflict", "failure", "recovery", "correction"],
+      "actions": [
+        {"action_id": "view", "command_kind": "query", "required_roles": ["security.viewer", "administrator"], "requires_reason": false, "requires_etag": false, "operational": false}
+      ],
+      "producer": {"contract_type": "hcam.operator.producer-binding.v1", "operation_id": "audit.generated_projection", "schema_version": "phase5.0.v1", "source_kind": "generated_projection", "freshness_seconds": 60, "department_scoped": true, "authoritative": false, "gap_class": "blocked"},
+      "generated_only": true,
+      "operational": false
+    }
+  ]
+}

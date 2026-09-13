@@ -1,0 +1,172 @@
+{
+  "schema_version": "hcam.phase5.p5_2.reconciled_planning_package.v1",
+  "package_id": "P5.2-PLANNING-R1",
+  "status": "non_effective_owner_acceptance_pending",
+  "effective": false,
+  "prepared_on": "2026-09-07",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "196d4b2465a731d1b1760e87300e88089a752930",
+  "planning_authority": {
+    "decision_id": "D-P5.2-PLAN-AUTH",
+    "path": "contracts/phase-5/p5-2-plan-authorization.json",
+    "owner_statement_sha256": "3512578B9FD1118D46ECD665D7A06B05207F52C623D4B04AD7B8999DACE449BB",
+    "single_checkpoint_commit_consumed_by": "196d4b2465a731d1b1760e87300e88089a752930"
+  },
+  "supersedes_for_current_planning": {
+    "package_id": "P5.2-PLANNING-R0",
+    "path": "contracts/phase-5/p5-2-planning-package.json",
+    "sha256": "4B6EAD658A6D72E98929527B8020E4C79FD47E7AB82D7F05B6376D3E2E086BA4",
+    "canonical_component_digest": "FF4A3399EA25C47A2059FE38EFF81BBCA64C77BE377B22A80AF1F0F2874E7744",
+    "history_preserved": true,
+    "reason": "Record all twelve owner selections, establish Command Center as primary, define GIS Center as a connected specialist dashboard, and resolve the adaptive MapLibre plus deck.gl option."
+  },
+  "accepted_predecessor": {
+    "subphase": "P5.1",
+    "acceptance_record": "contracts/phase-5/p5-1-acceptance.json",
+    "acceptance_record_sha256": "EACCF1BB39B2910F6272FE06266A8C9ED59378326B0AFFCF50A978127618F6E0",
+    "evidence_package_sha256": "74953D5E9239A17E8A4173B72CF7A485BC4B7FDBC0503A31787F2EFE9C1767BC",
+    "canonical_component_digest": "74E4C87B11FDAA8CB2DC94D922F330B44DD551D9F3CB587673B394488A8321F4",
+    "technical_commit": "394e9d2701c9b63ca92dad8398607dfa918be7c3",
+    "acceptance_commit": "d8de9ce43cdd02315f688a9f06a51b53e338d5c5"
+  },
+  "component_digest_algorithm": "Sort components by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "ECDDB46A74CBBDED24EEAB39DE1E854C987E54C8E3FF77817C8C06358AE70D5A",
+  "components": [
+    {
+      "path": "contracts/phase-5/p5-2-owner-decisions.json",
+      "bytes": 6341,
+      "sha256": "9EF2747FAA47230EECF86FBF97407AC575108B6CCED509855312D685C69733F8"
+    },
+    {
+      "path": "contracts/phase-5/p5-2-planning-package.json",
+      "bytes": 8601,
+      "sha256": "4B6EAD658A6D72E98929527B8020E4C79FD47E7AB82D7F05B6376D3E2E086BA4"
+    },
+    {
+      "path": "docs/phase-5/current-status-r9.md",
+      "bytes": 3447,
+      "sha256": "0FF5F1AA59400FD1FE5B06E78F05A876DA0886A10757688937431D9F7F10F6E6"
+    },
+    {
+      "path": "docs/phase-5/p5-2-command-gis-feature-catalogue.md",
+      "bytes": 13416,
+      "sha256": "8312E2A3D24F5755EF8872FE41E6965314DF1C3760600FC9212409E727444047"
+    },
+    {
+      "path": "docs/phase-5/p5-2-reconciled-planning-r1.md",
+      "bytes": 10509,
+      "sha256": "D989805F6FD4EA303986B3969D59744D5B2B6E3CC118FC6F5DA6A0DBA3D75BAC"
+    }
+  ],
+  "owner_decisions": {
+    "record_id": "P5.2-OWNER-DECISIONS-R0",
+    "path": "contracts/phase-5/p5-2-owner-decisions.json",
+    "record_sha256": "9EF2747FAA47230EECF86FBF97407AC575108B6CCED509855312D685C69733F8",
+    "combined_owner_statement_sha256": "4BFF69F53D2B731D63EA5C5FFFBC065979F28B6C2F43A0D455CB35921DECC540",
+    "selection_profile": "B+GIS/C/A+guarded-D/A/A/A/A/A/A/A/D/A",
+    "selection_count": 12,
+    "composites_resolved": true,
+    "conflicts_remaining": false
+  },
+  "resolved_product_hierarchy": {
+    "primary_dashboard": "H_CAM_Command_Center",
+    "default_landing": "command_overview",
+    "primary_page_group_count": 10,
+    "connected_specialist_dashboard": "H_CAM_GIS_Center",
+    "specialist_page_group_count": 9,
+    "shared_domain": "one_GIS_contract_layer_registry_data_selection_time_workspace_security_and_renderer_domain",
+    "truth_authority": "server_authoritative_HTTP_state_with_events_as_invalidation_only"
+  },
+  "resolved_architecture": {
+    "command_workspace": "dense_primary_workspace_with_status_summary_embedded_GIS_workload_coverage_health_chronology_and_authoritative_drilldown",
+    "GIS_center": "connected_non_primary_specialist_dashboard_for_operational_map_camera_geography_coverage_alert_investigation_time_layers_workspaces_and_GIS_health",
+    "GIS_delivery": "hybrid_bounded_viewport_features_vector_tiles_authoritative_lists_and_typed_details",
+    "map_network": "local_or_offline_default_with_disabled_typed_exact_destination_provider_registry",
+    "aggregation": "server_authoritative_with_deterministic_display_only_clustering",
+    "situation_truth": "versioned_snapshot_with_per_source_freshness_completeness_loss_degradation_revision_and_drilldown",
+    "time": "bounded_UTC_window_operational_timezone_event_and_recorded_time_corrections_and_retractions",
+    "workload": "server_safe_priority_band_age_authority_class_and_stable_tie_breaker_without_client_risk_score",
+    "state_persistence": "opaque_bounded_URL_context_memory_selection_and_future_server_ETag_workspaces",
+    "accessibility": "synchronized_map_and_authoritative_list_or_table_with_keyboard_focus_non_color_and_bounded_announcements",
+    "profiles": "one_capability_and_truth_model_with_density_concurrency_renderer_quality_and_layout_adaptation_only",
+    "renderer": "MapLibre_2D_core_with_optional_deck_gl_overlaid_or_interleaved_admitted_by_policy_capability_and_health",
+    "renderer_fallback": "interleaved_to_overlaid_to_MapLibre_only_to_authoritative_list_table",
+    "excluded_renderer_modes": ["reverse_controlled_deck_gl", "custom_WebGL", "initial_operational_3D"],
+    "testing": "generated_contract_unit_component_story_browser_visual_accessibility_security_replay_C1_C10_C50_GIS_parity_and_later_manual_AT"
+  },
+  "preserved_contracts": [
+    "Command_Center_is_primary_and_GIS_Center_is_connected_not_competing",
+    "accepted_Gujarat_GIS_parity_first_no_downgrade",
+    "one_shared_GIS_domain_and_one_server_truth",
+    "authoritative_list_and_table_survive_map_failure",
+    "local_or_offline_map_resources_by_default",
+    "provider_registry_is_disabled_by_default_and_exact_destination",
+    "low_resource_profile_is_functionally_complete",
+    "dynamic_rendering_never_changes_authority_truth_review_freshness_completeness_correction_or_safety",
+    "no_client_operational_risk_identity_coverage_health_or_threat_conclusions",
+    "all_fourteen_producer_gaps_remain_blocked_until_separately_accepted",
+    "generated_only_non_issuable_fixtures",
+    "planning_does_not_award_product_points"
+  ],
+  "implementation_workstreams": [
+    {"id": "P5.2-W1", "title": "command_and_GIS_projection_contracts_and_fixtures", "weight": 1.5},
+    {"id": "P5.2-W2", "title": "primary_Command_overview_and_truthful_situation_states", "weight": 1.5},
+    {"id": "P5.2-W3", "title": "shared_GIS_domain_data_lanes_and_adaptive_renderer_adapters", "weight": 2.0},
+    {"id": "P5.2-W4", "title": "embedded_Command_GIS_connected_GIS_Center_and_Gujarat_parity", "weight": 2.0},
+    {"id": "P5.2-W5", "title": "Command_detail_pages_coverage_health_workload_time_and_drilldown", "weight": 1.5},
+    {"id": "P5.2-W6", "title": "cross_dashboard_accessibility_localization_responsive_and_multi_monitor", "weight": 1.5},
+    {"id": "P5.2-W7", "title": "security_provider_controls_profiles_observability_and_resource_bounds", "weight": 1.0},
+    {"id": "P5.2-W8", "title": "validation_evidence_and_exact_exit_acceptance", "weight": 1.0}
+  ],
+  "frozen_progress_model": {
+    "P5_2_total_points": 12,
+    "workstream_count": 8,
+    "partial_credit_inside_workstream": false,
+    "rebaseline_required": false
+  },
+  "progress": {
+    "owner_decisions": {
+      "earned": 12,
+      "total": 12,
+      "percent": 100.0,
+      "change_percentage_points": 8.3333,
+      "awards_product_points": false
+    },
+    "planning_reconciliation": {
+      "status": "complete_owner_acceptance_pending",
+      "awards_product_points": false
+    },
+    "P5_2_product": {
+      "earned": 0,
+      "total": 12,
+      "percent": 0.0,
+      "change_percentage_points": 0.0
+    },
+    "phase_5_product": {
+      "earned": 20,
+      "total": 100,
+      "percent": 20.0,
+      "change_percentage_points": 0.0
+    }
+  },
+  "next_gate": {
+    "decision_id": "D-P5.2-PLANNING-R1-ACCEPTANCE",
+    "effect_if_accepted": "Permit preparation only of one separate non-effective exact digest-bound P5.2 start package.",
+    "implementation_authorized_by_acceptance": false
+  },
+  "owner_planning_acceptance_recorded": false,
+  "start_package_preparation_authorized": false,
+  "start_authorization_recorded": false,
+  "source_import_authorized": false,
+  "product_or_test_implementation_authorized": false,
+  "dependency_download_install_or_lockfile_change_authorized": false,
+  "backend_route_or_migration_authorized": false,
+  "frontend_map_or_GIS_runtime_authorized": false,
+  "provider_tile_camera_media_or_network_authorized": false,
+  "Government_or_private_data_authorized": false,
+  "model_dataset_artifact_or_inference_authorized": false,
+  "operational_alert_or_action_authorized": false,
+  "container_Kubernetes_deployment_or_P5_3_authorized": false,
+  "commit_authorized": false,
+  "remote_git_authorized": false
+}

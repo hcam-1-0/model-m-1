@@ -2,8 +2,8 @@ name: Architecture Decision
 description: Capture a technical decision before it becomes implementation work.
 title: "[ADR]: "
 labels:
-  - architecture
-  - decision
+  - "type: decision"
+  - "area: architecture"
 body:
   - type: dropdown
     id: status

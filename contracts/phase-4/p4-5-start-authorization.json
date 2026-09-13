@@ -1,0 +1,89 @@
+{
+  "schema_version": "hcam.phase4.p4_5.start-authorization.v1",
+  "decision_id": "D-P4.5-START",
+  "status": "authorized",
+  "effective": true,
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-09-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "implementation_branch": "codex/phase4-investigation-evidence",
+  "implementation_base_commit": "9a6fece64e0234e1cb819d633d537a5f66343cc5",
+  "accepted_package": {
+    "package_id": "P4.5-START-R0",
+    "path": "contracts/phase-4/p4-5-start-authorization-package.json",
+    "sha256": "7DC272A5017C54EC83380A2BD2301CAA737EAB1D196045B9A5D1F40F232F34CF"
+  },
+  "accepted_reconciled_planning": {
+    "package_id": "P4.5-PLANNING-R1",
+    "path": "contracts/phase-4/p4-5-planning-r1-package.json",
+    "sha256": "1E32E73885C81499117D84E9F15C5A038066B9BC22C17D1F58F98FBE6A6FEDE4",
+    "acceptance_path": "contracts/phase-4/p4-5-planning-r1-acceptance.json",
+    "acceptance_sha256": "006FF8AD8B769C243C97DDF29E1CCB4F6CFE88CDD067AAA1D679B35752326282"
+  },
+  "authorized_scope": [
+    "exact_allowlisted_local_source_test_migration_contract_documentation_and_evidence_changes",
+    "generated_only_non_issuable_case_neutral_timelines_evidence_references_integrity_assessments_and_provenance",
+    "append_only_correction_retraction_review_disposition_merge_reopen_and_impact_job_workflows",
+    "advisory_retention_generated_hold_deletion_and_reference_only_export_simulation",
+    "disabled_case_management_bridge_contract_and_generated_only_PROV_projection",
+    "SQLite_and_optional_already_available_local_PostgreSQL_PostGIS_generated_only_validation",
+    "at_most_eight_bounded_in_scope_remediation_and_reseal_cycles",
+    "local_checkpoint_commits_without_push"
+  ],
+  "disabled_capability_surfaces": [
+    "external_case_management_connection_import_export_or_legal_workflow",
+    "external_PROV_bundle_import_dynamic_parser_or_conformance_claim",
+    "source_reference_resolution_fetch_copy_or_real_integrity_verification",
+    "retention_period_selection_hold_activation_or_release",
+    "deletion_execution_export_payload_signature_timestamp_delivery_or_receipt"
+  ],
+  "runtime_boundary": {
+    "generated_only": true,
+    "non_issuable": true,
+    "operational": false,
+    "default_off": true,
+    "production_forbidden": true,
+    "source_reference_only": true,
+    "source_resolution_or_copy": false,
+    "real_integrity_verification": false,
+    "case_management_bridge_enabled": false,
+    "PROV_import_enabled": false,
+    "PROV_conformance_state": "not_claimed",
+    "real_hold_deletion_or_export": false,
+    "network": false,
+    "real_credentials_or_secrets": false,
+    "operational_action": false
+  },
+  "frozen_progress_at_start": {
+    "phase4_earned_points": 70,
+    "phase4_total_points": 100,
+    "phase4_percentage": "70.00%",
+    "phase4_change_percentage_points": "+0.00",
+    "p4_5_earned_points": 0,
+    "p4_5_total_points": 15,
+    "p4_5_percentage": "0.0000%",
+    "p4_5_change_percentage_points": "+0.0000",
+    "start_package_acceptance_gate": "1/1 (100.0000%)",
+    "start_package_acceptance_change_percentage_points": "+100.0000"
+  },
+  "explicitly_not_authorized": [
+    "new_or_changed_dependencies_lockfiles_installs_downloads_or_network_egress",
+    "source_media_document_or_evidence_resolution_fetch_copy_retention_or_real_integrity_verification",
+    "real_investigation_case_identifier_case_narrative_case_management_system_or_legal_workflow",
+    "external_PROV_bundle_import_dynamic_parser_network_vocabulary_formal_conformance_suite_or_conformance_claim",
+    "retention_period_legal_policy_admissibility_authenticity_custody_or_certification_decision",
+    "hold_activation_release_deletion_execution_export_payload_signature_timestamp_delivery_or_recipient_receipt",
+    "provider_or_Sentinel_network_DNS_redirect_proxy_callback_or_socket_access",
+    "credential_secret_key_token_certificate_timestamp_authority_or_private_CA_access",
+    "Government_police_private_personal_biometric_vehicle_owner_case_watchlist_or_provider_data",
+    "models_datasets_checkpoints_artifacts_embeddings_inference_training_accelerators_or_benchmarks",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "container_Kubernetes_cloud_pilot_production_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "owner_statement_normalization": "UTF_8_LF_without_terminal_newline",
+  "owner_statement_utf8_length": 787,
+  "owner_statement_sha256": "C666FAD76EA24B276109707FD25B50909550FBC7821052C8C88EFA11B22BFA2D",
+  "owner_statement": "D-P4.5-START: I, mayank-admin, accept P4.5 start package P4.5-START-R0 with SHA-256 7DC272A5017C54EC83380A2BD2301CAA737EAB1D196045B9A5D1F40F232F34CF and authorize its exact bounded local generated-only implementation scope, including the disabled case-management bridge contract and generated-only PROV interchange projection. This does not authorize source or evidence copying or resolution, real investigations or case systems, external PROV import or conformance claims, retention-period or legal-policy decisions, hold activation or release, deletion or export execution, providers or network access, credentials or secrets, Government or private data, cameras or media, models or datasets, inference, operational alerts or actions, containers, Kubernetes, deployment, or remote Git.",
+  "separate_exit_acceptance_required": true
+}

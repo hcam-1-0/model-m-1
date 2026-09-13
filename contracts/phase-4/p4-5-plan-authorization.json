@@ -1,0 +1,65 @@
+{
+  "schema_version": "hcam.phase4.p4_5.plan-authorization.v1",
+  "decision_id": "D-P4.5-PLAN-AUTH",
+  "status": "planning_and_official_primary_source_research_authorized",
+  "effective": true,
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-09-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-investigation-evidence-planning",
+  "planning_base_commit": "c8d80bf25d089969f411170ce640b6c373f5e017",
+  "accepted_predecessor": {
+    "decision_id": "D-P4.4-ACCEPTANCE",
+    "path": "contracts/phase-4/p4-4/acceptance.json",
+    "sha256": "2E298EAA88E9F2586633955838FBC367641A807F4635866BCE488DC1E60936AD"
+  },
+  "authorized_scope": [
+    "read_only_repository_analysis",
+    "official_primary_source_technical_security_privacy_records_management_digital_evidence_and_standards_research",
+    "local_P4_5_planning_documentation",
+    "append_only_typed_investigation_timeline_design",
+    "immutable_evidence_reference_integrity_and_provenance_graph_design",
+    "source_event_hypothesis_alert_review_action_correction_and_retraction_chronology_design",
+    "correction_propagation_and_reconstruction_design",
+    "review_disposition_merge_reopen_and_concurrency_design",
+    "retention_class_hold_overlay_deletion_evidence_and_export_manifest_design_without_policy_period_decisions",
+    "purpose_access_audit_and_media_reference_without_copying_design",
+    "generated_only_validation_design",
+    "non_effective_owner_decision_options_and_planning_package",
+    "local_document_validation_and_checkpoint_commit_without_push"
+  ],
+  "research_source_policy": {
+    "internet_access": "official_primary_sources_only",
+    "permitted_source_classes": [
+      "official_standards_body_specifications",
+      "official_government_statutes_rules_directions_and_technical_guidance",
+      "official_digital_evidence_and_records_management_guidance",
+      "official_security_and_privacy_frameworks"
+    ],
+    "legal_conclusion_or_retention_period_selection": false,
+    "real_investigation_or_evidence_access": false,
+    "external_provider_or_operational_network_access": false,
+    "credential_use": false,
+    "data_or_media_acquisition": false
+  },
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "remote_git_authorized": false,
+  "explicitly_not_authorized": [
+    "product_source_test_migration_dependency_or_runtime_implementation",
+    "source_media_document_or_evidence_copying",
+    "retention_period_legal_policy_or_evidentiary_admissibility_decision",
+    "hold_activation_release_deletion_or_export_execution",
+    "real_investigation_case_or_evidence_work",
+    "external_provider_Sentinel_camera_media_or_other_operational_network_access",
+    "credential_secret_key_token_or_certificate_access",
+    "Government_police_private_personal_biometric_vehicle_owner_case_watchlist_or_provider_data",
+    "model_dataset_checkpoint_artifact_download_training_or_inference",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "container_Kubernetes_cloud_pilot_production_or_deployment_work",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "owner_statement_normalization": "UTF_8_LF_without_terminal_newline",
+  "owner_statement_sha256": "0B7C85170F1B3469CEEAEE916A411D5FEBCDE42D04C433025F2B2812E6AB947A",
+  "owner_statement": "D-P4.5-PLAN-AUTH: I, mayank-admin, authorize planning and official primary-source research only for P4.5 Investigation Timeline and Evidence, including local documentation for append-only typed investigation timelines; immutable evidence references and integrity states; evidence provenance and derivation graphs; source, event, hypothesis, alert, review, action, correction, and retraction chronology; correction propagation; review, disposition, merge, reopen, and reconstruction workflows; retention classes; separately controlled hold overlays; deletion evidence; purpose-bound integrity-protected export manifests; access and audit controls; media-reference-without-copying defaults; and generated-only validation.\n\nInternet research is limited to official primary technical, security, privacy, records-management, digital-evidence, and standards sources. This does not authorize product implementation, source-media or evidence copying, retention-period or legal-policy decisions, hold activation, deletion or export execution, real investigations, external providers or network access, credentials or secrets, Government or private data, cameras or media, models or datasets, inference, operational alerts or actions, containers, Kubernetes, deployment, or remote Git."
+}

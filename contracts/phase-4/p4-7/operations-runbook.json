@@ -1,0 +1,87 @@
+{
+  "cleanup_required": true,
+  "contract_type": "hcam.acceptance.operations-runbook.v1",
+  "generated_only": true,
+  "preconditions": [
+    "owner_start_authorization_exact",
+    "generated_only_inputs",
+    "network_disabled",
+    "production_environment_denied"
+  ],
+  "production_use": false,
+  "purpose": "generated_acceptance_only",
+  "runbook_id": "p47_3fcc9a07f552c0d8d8922856a97a4e58",
+  "steps": [
+    {
+      "action": "verify_authorization",
+      "expected_reason": "runbook.authorization_verified",
+      "failure_reason": "runbook.authorization_invalid",
+      "order": 1,
+      "resumable": false
+    },
+    {
+      "action": "verify_sources",
+      "expected_reason": "runbook.sources_verified",
+      "failure_reason": "runbook.source_mismatch",
+      "order": 2,
+      "resumable": false
+    },
+    {
+      "action": "lint_fixtures",
+      "expected_reason": "runbook.fixtures_linted",
+      "failure_reason": "runbook.fixture_invalid",
+      "order": 3,
+      "resumable": false
+    },
+    {
+      "action": "execute_first_replay",
+      "expected_reason": "runbook.first_replay_complete",
+      "failure_reason": "runbook.replay_failed",
+      "order": 4,
+      "resumable": true
+    },
+    {
+      "action": "reset_generated_state",
+      "expected_reason": "runbook.state_reset",
+      "failure_reason": "runbook.cleanup_failed",
+      "order": 5,
+      "resumable": false
+    },
+    {
+      "action": "execute_second_replay",
+      "expected_reason": "runbook.second_replay_complete",
+      "failure_reason": "runbook.replay_failed",
+      "order": 6,
+      "resumable": true
+    },
+    {
+      "action": "compare_semantics",
+      "expected_reason": "runbook.replays_equal",
+      "failure_reason": "runbook.replays_diverged",
+      "order": 7,
+      "resumable": false
+    },
+    {
+      "action": "validate_handoff",
+      "expected_reason": "runbook.handoff_valid",
+      "failure_reason": "runbook.handoff_invalid",
+      "order": 8,
+      "resumable": false
+    },
+    {
+      "action": "seal_evidence",
+      "expected_reason": "runbook.evidence_sealed",
+      "failure_reason": "runbook.evidence_incomplete",
+      "order": 9,
+      "resumable": false
+    },
+    {
+      "action": "verify_zero_retention",
+      "expected_reason": "runbook.zero_retention_verified",
+      "failure_reason": "runbook.retention_detected",
+      "order": 10,
+      "resumable": false
+    }
+  ],
+  "zero_retention_required": true
+}

@@ -1,0 +1,727 @@
+{
+  "category": "worker-conformance",
+  "scenario_count": 80,
+  "scenarios": [
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0000",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0001",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0002",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0003",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0004",
+      "state": "dead_letter"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0005",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0006",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0007",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0008",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0009",
+      "state": "dead_letter"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0010",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0011",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0012",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0013",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0014",
+      "state": "dead_letter"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0015",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0016",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0017",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0018",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0019",
+      "state": "dead_letter"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0020",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0021",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0022",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0023",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0024",
+      "state": "dead_letter"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0025",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0026",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0027",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0028",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0029",
+      "state": "dead_letter"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0030",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0031",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0032",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0033",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0034",
+      "state": "dead_letter"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0035",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0036",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0037",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0038",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0039",
+      "state": "dead_letter"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0040",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0041",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0042",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0043",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0044",
+      "state": "dead_letter"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0045",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0046",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0047",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0048",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0049",
+      "state": "dead_letter"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0050",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0051",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0052",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0053",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0054",
+      "state": "dead_letter"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0055",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0056",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0057",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0058",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0059",
+      "state": "dead_letter"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0060",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0061",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0062",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0063",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0064",
+      "state": "dead_letter"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0065",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0066",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0067",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0068",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0069",
+      "state": "dead_letter"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0070",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0071",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0072",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0073",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0074",
+      "state": "dead_letter"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0075",
+      "state": "queued"
+    },
+    {
+      "attempt_count": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0076",
+      "state": "leased"
+    },
+    {
+      "attempt_count": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0077",
+      "state": "succeeded"
+    },
+    {
+      "attempt_count": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0078",
+      "state": "failed"
+    },
+    {
+      "attempt_count": 3,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lease_seconds": 90,
+      "operational": false,
+      "scenario_id": "p46.worker-conformance.0079",
+      "state": "dead_letter"
+    }
+  ],
+  "schema_version": "hcam.phase4.p4_6.fixture.worker-conformance.v1"
+}

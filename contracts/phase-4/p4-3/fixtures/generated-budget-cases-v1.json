@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "admitted": true,
+      "count": 0,
+      "limit": 2
+    },
+    {
+      "admitted": true,
+      "count": 1,
+      "limit": 2
+    },
+    {
+      "admitted": false,
+      "count": 2,
+      "limit": 2
+    },
+    {
+      "admitted": false,
+      "count": 9,
+      "limit": 2
+    }
+  ],
+  "generated_only": true,
+  "schema_version": "hcam.p4-3.generated-budget-cases.v1"
+}

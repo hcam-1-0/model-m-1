@@ -1,0 +1,16 @@
+{
+  "version": 8,
+  "name": "H-CAM Gujarat operational fallback",
+  "metadata": {
+    "hcam:contract": "v1",
+    "hcam:mode": "local-reference-fallback"
+  },
+  "sources": {},
+  "layers": [
+    {
+      "id": "hcam-operational-background",
+      "type": "background",
+      "paint": { "background-color": "#070b11" }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "hcam.phase4.p4_4.openapi-surface.v1",
+  "feature_flags": [
+    "HCAM_INTELLIGENCE_GENERATED_REFERENCE_INTEGRATIONS_ENABLED",
+    "HCAM_INTELLIGENCE_GENERATED_REFERENCE_MANUAL_QUERIES_ENABLED",
+    "HCAM_INTELLIGENCE_GENERATED_REFERENCE_HYPOTHESIS_ENRICHMENT_ENABLED"
+  ],
+  "default_enabled": false,
+  "production_allowed": false,
+  "paths": {
+    "/reference-integrations/candidate-sets/{candidate_set_id}": [
+      "GET"
+    ],
+    "/reference-integrations/controls": [
+      "GET",
+      "POST"
+    ],
+    "/reference-integrations/health": [
+      "GET"
+    ],
+    "/reference-integrations/providers": [
+      "GET",
+      "POST"
+    ],
+    "/reference-integrations/providers/{provider_version_id}": [
+      "GET"
+    ],
+    "/reference-integrations/queries": [
+      "POST"
+    ],
+    "/reference-integrations/queries/{job_id}": [
+      "GET"
+    ],
+    "/reference-integrations/queries/{job_id}/cancel": [
+      "POST"
+    ]
+  },
+  "request_requirements": [
+    "authenticated exact capability role",
+    "authorized department",
+    "X-HCAM-Reason for mutations",
+    "If-Match for control mutations",
+    "bounded request and pagination",
+    "Cache-Control no-store",
+    "generated-only nonoperational contracts"
+  ],
+  "absent_surfaces": [
+    "public worker execution or scheduler endpoint",
+    "real provider destination or credential configuration",
+    "authentication extension loading",
+    "external workflow dispatch",
+    "identity confirmation",
+    "P4.3 lifecycle mutation",
+    "notification dispatch enforcement or autonomous action",
+    "camera media or Sentinel network access"
+  ]
+}

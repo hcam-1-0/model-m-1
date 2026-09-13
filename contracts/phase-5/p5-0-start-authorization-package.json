@@ -1,0 +1,269 @@
+{
+  "schema_version": "hcam.phase5.p5_0.start-authorization-package.v1",
+  "package_id": "P5.0-START-R0",
+  "decision_id": "D-P5.0-START",
+  "status": "owner_authorization_required",
+  "effective": false,
+  "prepared_on": "2026-09-06",
+  "expires_on_if_accepted": "2026-10-06",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase5-operator-application-planning",
+  "planning_base_commit": "96a902315e78c184e92df9ebe5bcef1e336eab38",
+  "planned_implementation_branch": "codex/phase5-product-ux-contracts",
+  "implementation_branch_base_policy": "clean_descendant_of_planning_base_containing_only_the_exact_phase5_planning_records_acceptance_start_package_and_status_transition_before_start_acceptance",
+  "accepted_predecessor": {
+    "phase": "Phase_4",
+    "acceptance_path": "contracts/phase-4/p4-7/acceptance.json",
+    "acceptance_sha256": "47E3556CB2BDD2D0ADCD8C5494A15B78093D36B51525651950F1058948858687",
+    "handoff_path": "contracts/phase-4/p4-7/handoff-package.json",
+    "handoff_sha256": "CB2E4F9067EB8B78C5A38AE8FC95379C945FBDC26029CB75AE94B9768C3C98E7",
+    "accepted_commit": "96a902315e78c184e92df9ebe5bcef1e336eab38"
+  },
+  "accepted_reconciled_planning": {
+    "package_id": "P5.0-PLANNING-R2",
+    "path": "contracts/phase-5/planning-package-r2.json",
+    "sha256": "CA13BB9D897A7815E89BE4F71240855C4F9392A55133DE99282EE59728A082F3",
+    "canonical_component_digest": "E4F6A6DCEADEB98DF7E753E5EFE173C9D4DA31447A90B713CDC91DCE5D01E3C0"
+  },
+  "planning_acceptance": {
+    "decision_id": "D-P5.0-PLANNING-R2-ACCEPTANCE",
+    "path": "contracts/phase-5/planning-r2-acceptance.json",
+    "sha256": "21673E437772966FBD848C6AA90DA35D0A5FCAE7CEFA58DEF9538E81DBA7955D"
+  },
+  "bound_input_digest_algorithm": "Sort inputs by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "bound_input_digest": "F5A64B55E0AD11456ECD8E1FD61A300A25FEA4F2E6240A4475BD7C0E0EDFECD9",
+  "bound_inputs": [
+    {"path": "contracts/phase-4/p4-7/acceptance.json", "bytes": 2612, "sha256": "47E3556CB2BDD2D0ADCD8C5494A15B78093D36B51525651950F1058948858687"},
+    {"path": "contracts/phase-4/p4-7/handoff-package.json", "bytes": 50319, "sha256": "CB2E4F9067EB8B78C5A38AE8FC95379C945FBDC26029CB75AE94B9768C3C98E7"},
+    {"path": "contracts/phase-5/final-ui-repository-snapshot.json", "bytes": 9392, "sha256": "A27A657640DED34B159A6AEE57480190DE666BC1209682E1EEE3135A022B26C7"},
+    {"path": "contracts/phase-5/gis-adoption-directive.json", "bytes": 3320, "sha256": "5BCF8C37E78CFFE78D042C95CB123F5B4DFC362BB9D8421E3F205E1C78CE970A"},
+    {"path": "contracts/phase-5/owner-decisions.json", "bytes": 2853, "sha256": "392AA1FF5735D66B8C1A2EA0BFFFB9363AC86E227160DADDE1E8B9B820274E62"},
+    {"path": "contracts/phase-5/planning-package-r2.json", "bytes": 3695, "sha256": "CA13BB9D897A7815E89BE4F71240855C4F9392A55133DE99282EE59728A082F3"},
+    {"path": "contracts/phase-5/planning-r2-acceptance.json", "bytes": 2967, "sha256": "21673E437772966FBD848C6AA90DA35D0A5FCAE7CEFA58DEF9538E81DBA7955D"},
+    {"path": "docs/phase-5/architecture.md", "bytes": 16086, "sha256": "29574F416532AC3905964A20B78421E3A48F14D4DACB4AB273032DDDBCB1497E"},
+    {"path": "docs/phase-5/gis-adoption-contract.md", "bytes": 6705, "sha256": "38A0DEB34FE3E8A3D3E2BC5238F50E56F96C7B17082DD1189DCEE6B6F803018A"},
+    {"path": "docs/phase-5/implementation-plan.md", "bytes": 16615, "sha256": "991DA7AFF555DAEFADAC1DA5DF6B1B6A3C243D926BD7D8828532757224AC9806"}
+  ],
+  "binding_profile": {
+    "owner_decisions": "B/A/A/A+B/D/C/A/A/A/A/A/A",
+    "existing_UI_role": "audited_visual_interaction_and_workflow_baseline_not_imported_source",
+    "GIS_role": "canonical_operator_experience_with_parity_first_no_downgrade_contract",
+    "GIS_renderer_target": "MapLibre_2D_behind_renderer_neutral_contracts",
+    "optional_3D_role": "guarded_supplementary_analysis_with_authoritative_2D_and_accessible_list_equivalence",
+    "authentication": "same_origin_BFF_server_managed_session_contract_only",
+    "realtime": "bounded_non_authoritative_event_projection_contract_with_polling_fallback",
+    "localization": ["English", "Gujarati", "Hindi"],
+    "resource_profiles": ["low_resource", "enhanced", "control_room"],
+    "framework_or_UI_runtime_in_P5_0": false
+  },
+  "authorization_effect_if_owner_accepts_exact_digest": [
+    "record_the_exact_D_P5_0_START_owner_statement_without_expanding_scope",
+    "create_or_switch_to_the_exact_local_implementation_branch_from_the_clean_planning_checkpoint",
+    "implement_only_the_allowlisted_generated_only_operator_contract_architecture_GIS_parity_accessibility_security_fixture_validation_and_evidence_scope",
+    "use_only_existing_locked_Python_dependencies_and_no_new_dependency_or_lockfile_change",
+    "run_local_generated_only_validation_with_at_most_eight_bounded_in_scope_remediation_and_reseal_cycles",
+    "create_local_checkpoint_commits_without_push",
+    "prepare_one_non_effective_exact_P5_0_owner_acceptance_proposal"
+  ],
+  "work_packages": [
+    {
+      "id": "P5.0-W1",
+      "name": "canonical_UI_contracts_and_bounds",
+      "scope": [
+        "typed_portal_route_view_panel_action_field_filter_sort_page_query_event_command_state_error_focus_keyboard_locale_capability_telemetry_and_compatibility_contracts",
+        "strict_size_count_depth_time_string_geometry_and_unknown_field_bounds",
+        "producer_operation_event_and_schema_version references",
+        "static_rejection_of_credentials_locators_raw_media_real_identifiers_and_operational_actions"
+      ]
+    },
+    {
+      "id": "P5.0-W2",
+      "name": "information_architecture_roles_capabilities_and_journeys",
+      "scope": [
+        "multi_portal_navigation_and_safe_URL_state_catalogue",
+        "role_department_and_server_authoritative_capability_matrix",
+        "camera_to_live_alert_review_review_to_investigation_correction_reconstruction_degradation_and_session_expiry_state machines",
+        "loading_empty_partial_stale_degraded_denied_conflict_failure_recovery_and_correction states"
+      ]
+    },
+    {
+      "id": "P5.0-W3",
+      "name": "design_localization_and_accessibility_contracts",
+      "scope": [
+        "semantic_token_theme_density_responsive_zoom_multi_monitor_and_reduced_motion contracts",
+        "English_Gujarati_Hindi locale key fallback formatting and canonical audit-value rules",
+        "WCAG_2_2_AA_target_and_APG_informed_keyboard_focus contracts",
+        "map_graph_timeline_data_grid_and_media accessible alternative requirements"
+      ]
+    },
+    {
+      "id": "P5.0-W4",
+      "name": "canonical_Gujarat_GIS_parity_contract",
+      "scope": [
+        "preserved_GisWorkspace_information_architecture_controls_layers_filters_selection_focus_drawers_labels_and_preview gate",
+        "renderer_neutral_feature_view_camera_layer_cluster_viewport_selection_and_degradation models",
+        "Point_LineString_Polygon_MultiPolygon_temporal_uncertainty_and_correction projection contracts",
+        "MapLibre_2D_target_and_guarded_optional_3D_contract_without_renderer_or_network runtime",
+        "behavioral_visual_responsive_localization_accessibility_and_low_resource parity matrix"
+      ]
+    },
+    {
+      "id": "P5.0-W5",
+      "name": "browser_security_and_architecture_seal",
+      "scope": [
+        "BFF_session_CSRF_CSP_browser_storage_event_telemetry_GIS_and_media boundary contracts",
+        "safe_problem_capability_freshness_concurrency_and unsupported_feature semantics",
+        "threat_model_mapping_for_spoofed_state_cross_department_leakage_locator_secret_media_and_action risks",
+        "dependency_and_runtime proposals remain non_executable until P5_1"
+      ]
+    },
+    {
+      "id": "P5.0-W6",
+      "name": "generated_fixtures_validation_evidence_and_readiness",
+      "scope": [
+        "at_least_320_deterministic_non_issuable_generated_contract cases",
+        "at_least_96_GIS_parity_and_hostile_boundary vectors",
+        "positive_negative_cross_contract_snapshot_prohibited_field_and producer coverage validation",
+        "reproducible_evidence_package_and_separate_owner_acceptance proposal"
+      ]
+    }
+  ],
+  "exact_additive_implementation_paths": [
+    "app/hcam/operator_application/__init__.py",
+    "app/hcam/operator_application/accessibility.py",
+    "app/hcam/operator_application/bounds.py",
+    "app/hcam/operator_application/capabilities.py",
+    "app/hcam/operator_application/catalogue.py",
+    "app/hcam/operator_application/contracts.py",
+    "app/hcam/operator_application/design_tokens.py",
+    "app/hcam/operator_application/generated.py",
+    "app/hcam/operator_application/gis_contracts.py",
+    "app/hcam/operator_application/journeys.py",
+    "app/hcam/operator_application/navigation.py",
+    "app/hcam/operator_application/security.py",
+    "app/hcam/operator_application/validation.py",
+    "contracts/phase-5/operator-ui-accessibility.v1.json",
+    "contracts/phase-5/operator-ui-capability-matrix.v1.json",
+    "contracts/phase-5/operator-ui-contract-catalogue.v1.json",
+    "contracts/phase-5/operator-ui-gis-parity.v1.json",
+    "contracts/phase-5/operator-ui-producer-coverage.v1.json",
+    "contracts/phase-5/operator-ui-route-journeys.v1.json",
+    "contracts/phase-5/p5-0-acceptance-proposal.json",
+    "contracts/phase-5/p5-0-evidence-package.json",
+    "contracts/phase-5/p5-0-evidence.json",
+    "docs/phase-5/p5-0-evidence.md",
+    "docs/phase-5/p5-0-implementation.md",
+    "docs/phase-5/p5-0-security-controls.md",
+    "docs/phase-5/p5-0-validation.md",
+    "fixtures/phase-5/p5-0/canonical-negative.json",
+    "fixtures/phase-5/p5-0/canonical-positive.json",
+    "fixtures/phase-5/p5-0/gis-parity-vectors.json",
+    "fixtures/phase-5/p5-0/journey-walkthroughs.json",
+    "tests/test_phase50_accessibility.py",
+    "tests/test_phase50_contract_bounds.py",
+    "tests/test_phase50_contract_catalogue.py",
+    "tests/test_phase50_generated_fixtures.py",
+    "tests/test_phase50_gis_contracts.py",
+    "tests/test_phase50_journeys.py",
+    "tests/test_phase50_readiness.py",
+    "tests/test_phase50_security.py",
+    "tools/phase50_evidence.py",
+    "tools/phase50_readiness.py"
+  ],
+  "bounded_existing_file_synchronization": [
+    {"path": "README.md", "pre_edit_sha256": "48983346C5B94C0E0A7E5B5093A32C15648FC63A394179E2542056FD62A700F3", "purpose": "Phase_5_status_and_navigation_only"},
+    {"path": "docs/phase-5/README.md", "pre_edit_sha256": "A33344759ABEA75995936CD2C8DAF4A6ED9BAF89516AD1EFEF5B360ACE81627C", "purpose": "P5_0_records_and_status_navigation_only"},
+    {"path": "docs/phase-5/current-status-r3.md", "pre_edit_sha256": "9DC1355A9EFD7619355F1AC46BE64E3FB3DBDAC2300E698DB2B1F2AEAFFA1934", "purpose": "accepted_planning_and_start_gate_status_only"},
+    {"path": "docs/phase-5/implementation-plan.md", "pre_edit_sha256": "991DA7AFF555DAEFADAC1DA5DF6B1B6A3C243D926BD7D8828532757224AC9806", "purpose": "exact_progress_and_P5_0_evidence_status_only"},
+    {"path": "docs/phase-5/status.md", "pre_edit_sha256": "F58E1166D8D132E605ED20755394DA35E7A646BA65ED7E0338A5E98D4A8355B2", "purpose": "accepted_decisions_planning_and_next_gate_status_only"}
+  ],
+  "immutable_inputs_and_history": [
+    "all_Phase_0_through_Phase_4_source_contract_migration_evidence_acceptance_and_documentation artifacts",
+    "all_P5_0_planning_authorization_decision_snapshot_R0_R1_R2_package_GIS_directive_and_planning_acceptance artifacts",
+    "hcam_1_0_final_ui_remote_repository_and_its_history",
+    "pyproject_toml_uv_lock_MANIFEST_in_and_all_existing_dependencies",
+    "all_existing_app_migration_test_tool_deploy_and_CI files_except_the_five_exact_status_synchronization paths"
+  ],
+  "explicit_non_goals": [
+    "React_TypeScript_Vite_workspace_or_UI_component implementation",
+    "copy_import_subtree_merge_or_history_rewrite_from_hcam_1_0_final_ui",
+    "Leaflet_MapLibre_OpenLayers_Cesium_deck_gl_or_other_renderer execution",
+    "map_tile_style_sprite_glyph_geocoder_routing_or provider access",
+    "backend_API_route_event_worker_migration_or database implementation",
+    "camera_ONVIF_stream_HLS_WHEP_playback_snapshot_recording_export_or media access",
+    "model_dataset_artifact_inference_training_or AI runtime",
+    "operational_alert_notification_dispatch_enforcement_hold_delete_export_or autonomous action"
+  ],
+  "validation_commands_if_authorized": [
+    "uv run --locked --extra dev pytest -q tests/test_phase50_contract_bounds.py tests/test_phase50_contract_catalogue.py tests/test_phase50_journeys.py tests/test_phase50_gis_contracts.py tests/test_phase50_accessibility.py tests/test_phase50_security.py tests/test_phase50_generated_fixtures.py tests/test_phase50_readiness.py",
+    "uv run --locked --extra dev pytest -q",
+    "uv run --locked --extra dev ruff check app/hcam/operator_application tests/test_phase50_accessibility.py tests/test_phase50_contract_bounds.py tests/test_phase50_contract_catalogue.py tests/test_phase50_generated_fixtures.py tests/test_phase50_gis_contracts.py tests/test_phase50_journeys.py tests/test_phase50_readiness.py tests/test_phase50_security.py tools/phase50_evidence.py tools/phase50_readiness.py",
+    "uv run --locked --extra dev python -m build"
+  ],
+  "validation_environment_policy": {
+    "network": "disabled",
+    "downloads_or_installs": "forbidden",
+    "dependency_or_lockfile_changes": "forbidden",
+    "data": "generated_non_issuable_only",
+    "map_or_media_runtime": "forbidden",
+    "database": "not_required_and_not_authorized",
+    "containers_or_Kubernetes": "forbidden",
+    "missing_local_tool_or_dependency": "stop_and_report_without_installing"
+  },
+  "completion_gates": [
+    "all_exact_additive_paths_are_present_and_no_unallowlisted_path_changed",
+    "at_least_320_generated_contract_cases_and_96_GIS_parity_vectors_pass",
+    "new_operator_application_package_has_at_least_90_percent_branch coverage",
+    "all_focused_full_Ruff_build_and_readiness_checks_pass_offline",
+    "contract_catalogue_has_exact_producer_version_role_department_freshness_bound_failure_and_gap classification",
+    "GIS_parity_matrix_preserves_every_owner_approved_existing_workflow_and_no_downgrade rule",
+    "2D_and_accessible_list_paths_are_authoritative_and_optional_3D_is_non_effective",
+    "real_identifiers_credentials_locators_media_provider_addresses_and operational actions are rejected",
+    "all_accepted_Phase_0_through_Phase_5_planning artifacts remain byte exact",
+    "P5_0_evidence_is_reproducible_from_a_clean_local_checkout",
+    "separate_exact_owner_acceptance_remains_required_before_awarding_product points"
+  ],
+  "maximum_local_revision_validation_reseal_cycles": 8,
+  "local_checkpoint_commits_if_authorized": true,
+  "remote_git_authorized": false,
+  "separate_exit_acceptance_required": true,
+  "maximum_progress_before_exit_acceptance": {
+    "P5_0_earned": 7,
+    "P5_0_total": 8,
+    "P5_0_percent": 87.5,
+    "Phase_5_earned": 7,
+    "Phase_5_total": 100,
+    "Phase_5_percent": 7.0
+  },
+  "progress_after_exact_exit_acceptance": {
+    "P5_0_earned": 8,
+    "P5_0_total": 8,
+    "P5_0_percent": 100.0,
+    "Phase_5_earned": 8,
+    "Phase_5_total": 100,
+    "Phase_5_percent": 8.0
+  },
+  "stop_conditions": [
+    "any_bound_input_or_pre_edit_hash_mismatch",
+    "any_path_outside_the_additive_or_synchronization allowlists",
+    "any_need_for_new_dependency_lockfile_migration_API_route_runtime_or source import",
+    "any_real_identifier_data_media_locator_credential_provider_or network requirement",
+    "any_attempt_to_remove_or_downgrade_an_owner_approved_GIS workflow",
+    "any_generated_fixture_that_could_be_mistaken_for_a_real record",
+    "any_failed_validation_after_eight_bounded_cycles"
+  ],
+  "continuing_prohibitions": [
+    "source_import_copy_subtree_merge_or_remote_history access",
+    "new_dependency_install_update_download_or lockfile change",
+    "frontend_framework_renderer_player_or browser runtime",
+    "backend_route_migration_database_worker_service_or operational runtime",
+    "map_tile_provider_camera_ONVIF_stream_playback_media_recording_snapshot_or export access",
+    "Government_police_private_personal_biometric_vehicle_owner_registration_watchlist_case_investigation_or evidence data",
+    "models_datasets_artifacts_inference_training_or AI runtime",
+    "operational_alert_notification_dispatch_enforcement_hold_delete_export_or autonomous action",
+    "container_Kubernetes_cloud_pilot_production_deployment_or release",
+    "push_pull_fetch_PR_merge_release_or other remote Git",
+    "P5_1_or_later implementation"
+  ],
+  "owner_statement_template": "D-P5.0-START: I, mayank-admin, accept P5.0 start package P5.0-START-R0 with SHA-256 {{PACKAGE_SHA256}} and authorize its exact bounded local generated-only operator-contract, GIS-parity, accessibility, security, fixture, validation, and evidence implementation scope, including local checkpoint commits without push. This does not authorize source import, frontend or map runtime, new dependencies, migrations or API routes, cameras or media, map or provider network access, Government or private data, models or inference, operational actions, containers, Kubernetes, deployment, P5.1, or remote Git."
+}

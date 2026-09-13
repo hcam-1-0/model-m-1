@@ -1,0 +1,16 @@
+{
+  "schema_version": "hcam.phase4.p4_5.acceptance-proposal.v1",
+  "decision_id": "D-P4.5-ACCEPTANCE",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "prepared_on": "2026-09-05",
+  "branch": "codex/phase4-investigation-evidence",
+  "evidence_package_path": "contracts/phase-4/p4-5/evidence-package.json",
+  "evidence_package_sha256": "02F0439B2034ECBB0481E854236DAE0991C6A5DC9A3B04AD3AA3E5C03507D980",
+  "evidence_content_digest": "118C40D319653F8D9E6CD21CB216F7F43B073BE58823CA36A96ACE9AE36986C2",
+  "owner_acceptance_statement_sha256": "32452039FA7260AE3E85A670DB3D17008BF516309C7F3ADB064B7A30E3FA073D",
+  "owner_acceptance_statement": "D-P4.5-ACCEPTANCE: I, mayank-admin, accept P4.5 evidence package P4.5-EVIDENCE-PACKAGE-R0 with SHA-256 02F0439B2034ECBB0481E854236DAE0991C6A5DC9A3B04AD3AA3E5C03507D980 and canonical component digest 118C40D319653F8D9E6CD21CB216F7F43B073BE58823CA36A96ACE9AE36986C2, including its generated-only implementation evidence, validation results, authorized P4.4 historical readiness transition, explicit PostgreSQL and vulnerability-refresh limitations, and documented safety boundaries. This acceptance completes P4.5 only. It does not authorize P4.6, source or evidence copying or resolution, real investigations or case systems, external PROV import or conformance claims, retention-period or legal-policy decisions, hold activation or release, deletion or export execution, providers or network access, credentials or secrets, Government or private data, cameras or media, models or datasets, inference, operational alerts or actions, containers, Kubernetes, deployment, or remote Git.",
+  "authorization_effect": "complete_P4_5_only_after_exact_owner_acceptance",
+  "generated_only": true,
+  "operational": false
+}

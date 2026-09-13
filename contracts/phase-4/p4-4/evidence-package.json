@@ -1,0 +1,336 @@
+{
+  "schema_version": "hcam.phase4.p4_4.evidence-package.v1",
+  "package_id": "P4.4-EVIDENCE-PACKAGE-R0",
+  "status": "technical_validation_passed_owner_acceptance_pending",
+  "generated_on": "2026-09-05",
+  "branch": "codex/phase4-reference-integrations",
+  "start_package_sha256": "FBEB48A115ED952945045E8945DE7E27E518915E85605A3247ADBAEA701FDF34",
+  "component_digest_mode": "utf8_text_normalized_lf",
+  "component_count": 80,
+  "components": [
+    {
+      "path": ".github/workflows/python-ci.yml",
+      "sha256": "4D35C710802B129F408D3EDC6FB03A5175A98829F28567AE619FFC77113F3EB8"
+    },
+    {
+      "path": "app/hcam/database.py",
+      "sha256": "3B380F2D19C4FB4E2B310BBB18733105D6CD7E9E80460EF7315ACB7390E7884A"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/__init__.py",
+      "sha256": "467E6CBF5880E47695FDA723D231B1E16BBC6E41DFEFDB28D92D9CCEB58CABCE"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/auth.py",
+      "sha256": "75106C0E12A0CE0ED913C55D1975B03FA16327E89B6D539E1D0E0801EEA543DB"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/bounds.py",
+      "sha256": "8315F8794EC64903D327FCF88660620451CFE23174FD493DC07749472AB7E00D"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/canonical.py",
+      "sha256": "0AAE01931341217B9DDC77C0384C08B29EC1A6FB0A87980D7CF992FD695AC9C3"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/catalogue.py",
+      "sha256": "30EB9E7F53D0D9F89AFE3AA909A1365877F9888204C7CD4B0A1BE7C339A2B578"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/contracts.py",
+      "sha256": "A38C64E72BA53B3B16DB928656005B9100B7B4F551A4B9B140A7DFF04A9D0066"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/destinations.py",
+      "sha256": "C750CD555E5888D07A12C907243D9FD628D307F86C439B56C661946B04CB7CC7"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/generated_provider.py",
+      "sha256": "8AA4D92EA0BEF10CB58821D3C521389278EB59ED97481F7EBF4EF6DCCB353D32"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/governance.py",
+      "sha256": "5F2B94C192E74FAA28CE6FE1FC7EFEC3BA0F8B9E5EE27F9FB0895477C7A21830"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/jobs.py",
+      "sha256": "0B0D6855F4BA00B1FB57F755AEA0282B823B78CA6427F898274929740A1F4D71"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/manifests.py",
+      "sha256": "FF48B47469BB7C1E3CC7EB5B7DD8005BA5EF776B555A545E0679A204F574A9F7"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/matching.py",
+      "sha256": "5030DECE48A8F550368A0FE0C26169E740284BCEEF7BC651A296FA4DD178E2E5"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/metrics.py",
+      "sha256": "1E8956F331B4DF802AC4C4B5878DE04AF1453E7C74139957985398AE7165B529"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/parser.py",
+      "sha256": "E7BF1066B06262E04D64B63CBBB24FC05BE7CC20A46CF09B20B66E8E5A054864"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/persistence.py",
+      "sha256": "708ABA628DEAC50E2D2011021A0AC315D7581D5F47EAC0A422919972B35E439B"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/policy.py",
+      "sha256": "CEC6F5112AB6F5A9F47DBB3589B424459B23835DB5649ADD1AF2D98F970C504D"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/providers.py",
+      "sha256": "16D34E881B12D7424B97B39F360B1B390591BEF6FCC542146DF18B51FA50C26D"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/review.py",
+      "sha256": "E0E1DECFC41B8F2EA9EB37ABAB32D1212785C84ABE5123A59399280610A8E0FA"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/routes.py",
+      "sha256": "81159585A270E0DD153A62801CDBC20FC46AD6D4A46C8A2EA620C3217404C0D4"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/runtime.py",
+      "sha256": "C9A0ADDA2A0A10A4BAB3CFF8DFF7D456048EBC2DC2E903802DF7AB901CC8E0DA"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/secrets.py",
+      "sha256": "860B026B57E5B643EE2FA2F2B71949AC79B0F47E159B96DD86F79177C4FD80A3"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/service.py",
+      "sha256": "F1DF0E4167F73363262976CAFD2FC9306FAB1921597B8E967A6187D86D739C47"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/transport.py",
+      "sha256": "574005185A7F7CC9B658EF4B2D2DBA562A4E48F56F3A310EEFB68D52688AD128"
+    },
+    {
+      "path": "app/hcam/intelligence/integrations/workflow.py",
+      "sha256": "991569D63334194D970EE4DB1BD1C263BFC8A33A4C0E2999F5DC8B900BE207A7"
+    },
+    {
+      "path": "app/hcam/intelligence/row_security.py",
+      "sha256": "54D2AA9CB60A4E770B4CE552853AB2CAAEB936437EDEF0F49195EFBF657FE291"
+    },
+    {
+      "path": "app/hcam/main.py",
+      "sha256": "D1D8967EE7F055C6F175EDA2DC4F41A61837B0FE6548A69F3500F8342502AFBA"
+    },
+    {
+      "path": "app/hcam/security/auth.py",
+      "sha256": "6395445EABA21CB3B9B15E851E9B5459C636DAEA748C84CFBE68CB807E82478B"
+    },
+    {
+      "path": "app/hcam/settings.py",
+      "sha256": "E5E974DAD88A3979515A3840B3E02CA35A7C89AE18DDACA5541F9ED6360C66CE"
+    },
+    {
+      "path": "contracts/phase-4/database.json",
+      "sha256": "13276B117143C57ED09BBFA6FFA7F21E6927B166592B7A5C58772A5E084C75C2"
+    },
+    {
+      "path": "contracts/phase-4/intelligence-contracts.json",
+      "sha256": "E5A8B141F1CFB682E0299F64E4B182ACB52A81DFE1A974FBEEC8914A293AC588"
+    },
+    {
+      "path": "contracts/phase-4/openapi.json",
+      "sha256": "7A28024146D2064CDCA8F1D98ABBC1C9DD414F9EE0CD1BA5AE0D90670B4D45AA"
+    },
+    {
+      "path": "contracts/phase-4/p4-4-start-authorization.json",
+      "sha256": "E2B27F06E7D4BC9A4389094DAB0947F828417BF0593D58B64EDB61EF20A08755"
+    },
+    {
+      "path": "contracts/phase-4/p4-4/database.json",
+      "sha256": "2DB380BE22218DEE9BE665A01E2E56DDEC3B3C690662744BC15A650B44B90C05"
+    },
+    {
+      "path": "contracts/phase-4/p4-4/evidence.json",
+      "sha256": "09EE79D4ABDE85E369A9A19B0D2EA956DEF246F42470B4103249537E7AFEE319"
+    },
+    {
+      "path": "contracts/phase-4/p4-4/fixtures/generated-abstention-cases-v1.json",
+      "sha256": "371D9986FF4D683A47DD2B0332732969B1634490592420971007AFEF3F2CEB37"
+    },
+    {
+      "path": "contracts/phase-4/p4-4/fixtures/generated-auth-profile-cases-v1.json",
+      "sha256": "B4DF13ACC1AD1D626CCFA20B2AE8FCF054A65D08E3F1A9768103C121BC6DDDDD"
+    },
+    {
+      "path": "contracts/phase-4/p4-4/fixtures/generated-candidate-evidence-v1.json",
+      "sha256": "6003311F3E9F8F19D4CA520D3DA429F17049693B001628EC954B5194AF38D5E8"
+    },
+    {
+      "path": "contracts/phase-4/p4-4/fixtures/generated-catalogue-snapshots-v1.json",
+      "sha256": "26F878512D91B17E59692AE0DFC508CB1219748A5C5DEF2123D51FF7B45F8A9E"
+    },
+    {
+      "path": "contracts/phase-4/p4-4/fixtures/generated-hypothesis-enrichment-v1.json",
+      "sha256": "19CADDA8D0E9775C8BAD7E44DC4036989DB850E3A3360ED5710BEE1376FBAA03"
+    },
+    {
+      "path": "contracts/phase-4/p4-4/fixtures/generated-provider-manifests-v1.json",
+      "sha256": "85EA7A7756FB9BE6AC20EFB3C05FF1E38DB9CB2C1C7B9054CE8D4A8695563309"
+    },
+    {
+      "path": "contracts/phase-4/p4-4/fixtures/generated-provider-responses-v1.json",
+      "sha256": "E5EE09C1F0B47B0701E5FF4980F7A9A2AED787D9E12FCF5E3F3FCE97E9B0467C"
+    },
+    {
+      "path": "contracts/phase-4/p4-4/fixtures/generated-query-jobs-v1.json",
+      "sha256": "E74A618BC01AE986EA909B0058535FF4FF9D74F9EAC9E1C430D2978DCC8E3440"
+    },
+    {
+      "path": "contracts/phase-4/p4-4/fixtures/generated-redaction-cases-v1.json",
+      "sha256": "64588A1BEBCFCC318B7B9E83780A34AA658E4A856A6DDE3A198EFE178E684CA6"
+    },
+    {
+      "path": "contracts/phase-4/p4-4/fixtures/generated-revocation-cases-v1.json",
+      "sha256": "F265EC0DD526DAF33C1BBD2E1EECDA93D05DB19030410C51410CEB6A57D885FA"
+    },
+    {
+      "path": "contracts/phase-4/p4-4/fixtures/generated-workflow-executor-cases-v1.json",
+      "sha256": "0A90EA1E6B5FC5A555B682679E0741B06409432C23B3CAF4749C26154379531F"
+    },
+    {
+      "path": "contracts/phase-4/p4-4/openapi.json",
+      "sha256": "E47E861EC67006CCFD5572C0673CAFC44BC516C89FF4F53986FF577F6C5D20A0"
+    },
+    {
+      "path": "contracts/phase-4/p4-4/reference-integration-contracts.json",
+      "sha256": "4349A57D97D6F3C54C9E044993EC82BA8492D79ECC58B228FBA8B4D5F49B0005"
+    },
+    {
+      "path": "docs/phase-4/p4-4-evidence-review.md",
+      "sha256": "E3091F3256E3FBDDE98E2B1ACC0BA3AF1751CC2766AFDE869048342DE66A5D08"
+    },
+    {
+      "path": "docs/phase-4/status.md",
+      "sha256": "13E719F3F3CB260993CE357DF26B8F98C8AD12470E289EE815D2A9E9F6F0F34F"
+    },
+    {
+      "path": "migrations/versions/0016_reference_integrations.py",
+      "sha256": "DCF1F23AC9331DA2B68F49B8F2C850FA5F3E44A02479DD0DFE393969F51C5098"
+    },
+    {
+      "path": "tests/test_analytics_assignment_migration.py",
+      "sha256": "3D41DC69E651452326BD2A36C7CA74C834A89159B659E3E80B3D0CDDCF81C2A7"
+    },
+    {
+      "path": "tests/test_phase40_migration.py",
+      "sha256": "B8DFB207FBAB4A3C567B83A006E343D77840EAFE81D93119F58896ECD4DA6A20"
+    },
+    {
+      "path": "tests/test_phase41_migration.py",
+      "sha256": "1D46E04105B5BD1E32898AAEFC4D1397CDD0BF026716B56D3C791E7E591AF8BB"
+    },
+    {
+      "path": "tests/test_phase42_migration.py",
+      "sha256": "2DA5830AE181836D99ABB6F36A80D7B4A3CB8AA4A20FF938F022174D6811C080"
+    },
+    {
+      "path": "tests/test_phase43_migration.py",
+      "sha256": "A9297C86E30F235E31A57FD6874D7D4A47E8AE147076CBE532925F2CDD7B7248"
+    },
+    {
+      "path": "tests/test_phase43_readiness.py",
+      "sha256": "29808B965CD0FFD73332CA5690D4ADD1BBE6350DB7DBFB678924514E0CE848B8"
+    },
+    {
+      "path": "tests/test_phase44_api.py",
+      "sha256": "BADEF85CE992A62323201BB2FAE346718BEC41F73A281EBCF523644F08F3D732"
+    },
+    {
+      "path": "tests/test_phase44_auth.py",
+      "sha256": "71C90BC8D101379B5F98ED4BC208649395C41D4CA4CEC66E62097B4362CBCE4C"
+    },
+    {
+      "path": "tests/test_phase44_canonical.py",
+      "sha256": "F60C2046B24A31D63A5D751C7F2814277DD89EF9BA7CD7BDDA414698B76467D4"
+    },
+    {
+      "path": "tests/test_phase44_catalogue.py",
+      "sha256": "6F678D2D35AE9E465E0FA1272918619EFE4BED86504CA3DA534BEAB01704142F"
+    },
+    {
+      "path": "tests/test_phase44_contracts.py",
+      "sha256": "937B6E50B35A8B43A0D78D7D63F2BE97D17C0F9B003E68F16C4373B5BCE24E8B"
+    },
+    {
+      "path": "tests/test_phase44_destinations.py",
+      "sha256": "3143E0EF195AFFF31F8BF4294C47D415EF20AAA5D5D6161028298F420FE2ED74"
+    },
+    {
+      "path": "tests/test_phase44_governance.py",
+      "sha256": "9C9853BC9EDBED46EB1185444045CB6D9D2A809BC2EE409D4BBBFE9221221F90"
+    },
+    {
+      "path": "tests/test_phase44_jobs.py",
+      "sha256": "FFC6E5AF4746116D342005D0300F927DE252BF6F56B967174D858B9F3660F42B"
+    },
+    {
+      "path": "tests/test_phase44_matching.py",
+      "sha256": "41108182933132FF4EFF44F5551378FC9B0540ED70392FF956D0B0835682CBA5"
+    },
+    {
+      "path": "tests/test_phase44_migration.py",
+      "sha256": "3116415BD1CAC572DD32FCEC10DE03178990AAF89AA33EF4A709C4DBEB3F6C7F"
+    },
+    {
+      "path": "tests/test_phase44_parser.py",
+      "sha256": "15AEC2EBCEFCD572F82E2F9D5C3B16FA1943B546A4C641A4F6FB3629E27DF976"
+    },
+    {
+      "path": "tests/test_phase44_persistence.py",
+      "sha256": "1A752E601994A02F82FE3653DDD20056492741FD414A1BC6AE6F9A6021B0EA47"
+    },
+    {
+      "path": "tests/test_phase44_policy.py",
+      "sha256": "1E7967AC7EC2713EBE69BB4B47AC455324223A1B418260F181B9B69E6E667E2B"
+    },
+    {
+      "path": "tests/test_phase44_postgres.py",
+      "sha256": "91BFB5018D8E644B8AA7F28E12CF8CF787E187C29236EACDD461518EF0B02D67"
+    },
+    {
+      "path": "tests/test_phase44_provider.py",
+      "sha256": "DD58894251EAE68FFE82E08A805079BB15EF32D9E10812DE7E3B11AB04060C8F"
+    },
+    {
+      "path": "tests/test_phase44_readiness.py",
+      "sha256": "D30822E278C9CB72E70E467C32EA9687E2155567693CA686487B218DDA7D1458"
+    },
+    {
+      "path": "tests/test_phase44_review.py",
+      "sha256": "D0FC3A09F6A28DC1921F164FB7D3BED7651FA355017741061CF85A80C94C9838"
+    },
+    {
+      "path": "tests/test_phase44_security.py",
+      "sha256": "DA8E5A3665FBAD6B8957ABB2061C3874B6AD328254510AB35E343A810F61CFE0"
+    },
+    {
+      "path": "tests/test_phase44_workflow.py",
+      "sha256": "8E0B09145070E9146A8D603F32E05380C824D58B811663E3E673844E2F5A205D"
+    },
+    {
+      "path": "tools/phase43_readiness.py",
+      "sha256": "A5AD2DEF8072A3537DC84E36779BD1827CA2D2A869B4EF5AC9500B98C8AAD708"
+    },
+    {
+      "path": "tools/phase44_generated_integrations.py",
+      "sha256": "B503E74FC23A4C38FEA19017F1772FF373530A90F5868788C80D56F46E0053E4"
+    },
+    {
+      "path": "tools/phase44_readiness.py",
+      "sha256": "30F823FAB19AB4F16BF171E54262249C7C5039498798FD4AD4F4CCDC3F899540"
+    }
+  ],
+  "content_digest": "E42E15FEFA36ADC6B58A506BEDC97CC089E54916B04B33E88B4FC070479EFC37",
+  "generated_only": true,
+  "operational": false,
+  "remote_git_performed": false
+}

@@ -1,0 +1,161 @@
+{
+  "schema_version": "hcam.phase5.p5_5.reconciled_planning_package.v1",
+  "package_id": "P5.5-PLANNING-R1",
+  "status": "non_effective_owner_acceptance_pending",
+  "effective": false,
+  "prepared_on": "2026-09-09",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "7bd579cf8a42fafd48f9cc1752bb12656587b19d",
+  "planning_authority": {
+    "decision_id": "D-P5.5-PLAN-AUTH",
+    "path": "contracts/phase-5/p5-5-plan-authorization.json",
+    "sha256": "C83F9791B5BD0BA3CEDFFCED8D91D8201B6E2318FC37D73D72EA998DD58D2BDC",
+    "single_checkpoint_commit_consumed_by": "7bd579cf8a42fafd48f9cc1752bb12656587b19d"
+  },
+  "supersedes_for_current_planning": {
+    "package_id": "P5.5-PLANNING-R0",
+    "path": "contracts/phase-5/p5-5-planning-package.json",
+    "sha256": "6163927BD3C5E7649E7114A63C449839141D38BA6E2DD9CA87889E759DB4A84A",
+    "preserved_byte_exact": true
+  },
+  "accepted_predecessor": {
+    "subphase": "P5.4",
+    "acceptance_record": "contracts/phase-5/p5-4-acceptance.json",
+    "acceptance_record_sha256": "1B7C631F1DF2890A01DBD3048F3D95CDE3E8096A6C381370542FA83C68BAD2D7",
+    "evidence_package_sha256": "3D18E7435434270C64242FBF4B727D9DA080E4E5F832B5C63C42BDD069C9850D",
+    "canonical_component_digest": "65041C5D116E9B0AFA63EB011226E3F1D2190BDBDD50B158F9437DC4CDD6EC7B",
+    "technical_commit": "fc5b7f9aa682b68c83e53c558e8c08bf35ee7480",
+    "evidence_seal_commit": "841f6da340e9bf28ea71b6c1da734f96c97499aa",
+    "acceptance_commit": "fd165c85e5f91a42925f3a2d558766181f791d90"
+  },
+  "component_digest_algorithm": "Sort components by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "6F4CE5FADCE748884253928984B1B0AFCC1A7391B09D3061F5D6C2A4703952F8",
+  "components": [
+    {
+      "path": "contracts/phase-5/p5-5-owner-decisions.json",
+      "bytes": 7128,
+      "sha256": "4E5A427FE96750C090C95AC648021892614304FFF8FC89684052647AACB4A859"
+    },
+    {
+      "path": "contracts/phase-5/p5-5-planning-package.json",
+      "bytes": 9971,
+      "sha256": "6163927BD3C5E7649E7114A63C449839141D38BA6E2DD9CA87889E759DB4A84A"
+    },
+    {
+      "path": "docs/phase-5/current-status-r22.md",
+      "bytes": 3036,
+      "sha256": "0ED1F90C80D45E52E8E950E5B2543DF360E91B87E6DA1FE9CF3646C582EADBF2"
+    },
+    {
+      "path": "docs/phase-5/p5-5-reconciled-planning-r1.md",
+      "bytes": 13793,
+      "sha256": "AC7AD23D19E05945A37658CFFB250FA6EB6177B66F1A0E3A445B99F5A1913E87"
+    }
+  ],
+  "owner_decisions": {
+    "record_id": "P5.5-OWNER-DECISIONS-R0",
+    "path": "contracts/phase-5/p5-5-owner-decisions.json",
+    "sha256": "4E5A427FE96750C090C95AC648021892614304FFF8FC89684052647AACB4A859",
+    "source_statement_sha256": "EC3725EE9605DFF74F600E7C28B3C2960C29EF4DE194CB07CA29979FB9F32AB4",
+    "selection_profile": "A/A/A/A/A/A/A/A/A/A/A/A",
+    "selection_count": 12
+  },
+  "resolved_product_hierarchy": {
+    "primary_dashboard": "Command_Center",
+    "specialist_portal": "Investigation_Center",
+    "independently_authorized_connected_domain": "Evidence_Desk",
+    "page_families": [
+      "Investigation_Overview",
+      "Investigation_Timeline",
+      "Revision_Reconstruction",
+      "Revision_Comparison",
+      "Corrections_And_Retractions",
+      "Investigation_Relationships",
+      "Evidence_Reference_Queue",
+      "Evidence_Reference_Detail",
+      "Integrity_History",
+      "Provenance_And_Custody",
+      "Policy_Preview_Studio",
+      "Investigation_Health"
+    ],
+    "separate_truth_source_created": false,
+    "evidence_access_inherited_from_investigation": false
+  },
+  "resolved_architecture": {
+    "work_organization": "bounded_typed_server_aggregated_paginated_views_with_guarded_saved_filters",
+    "chronology": "record_sequence_authoritative_with_qualified_event_time",
+    "timeline": "server_paginated_semantic_table_with_stable_anchors_and_optional_bounded_visual_lane",
+    "reconstruction": "server_authoritative_exact_revision_digest_completeness_limitations_and_late_change_warnings",
+    "comparison": "typed_base_and_target_revision_difference_without_narrative_authority",
+    "correction_retraction": "append_only_predecessor_successor_with_per_target_impact_closure",
+    "evidence_state": "orthogonal_identity_availability_integrity_provenance_custody_signature_access_and_legal_assessment",
+    "provenance": "bounded_typed_graph_with_authoritative_node_edge_and_custody_tables",
+    "PROV": "generated_lossy_projection_only_with_import_and_conformance_claims_disabled",
+    "source_boundary": "opaque_minimized_reference_only_without_resolution_copy_render_download_print_export_delete_hold_release_or_modify",
+    "policy_preview": "generated_only_nonoperative_without_action_approval_signing_delivery_download_or_print",
+    "concurrency": "strong_ETag_If_Match_expected_revision_idempotency_fingerprint_receipt_refetch_and_deliberate_reconsideration",
+    "events": "versioned_scoped_invalidation_only_with_HTTP_authority",
+    "accessibility": "authoritative_table_and_list_equivalence_keyboard_focus_non_color_reflow_reduced_motion_and_bounded_announcements",
+    "profiles": "rendering_capacity_only_without_authority_semantic_safety_legal_or_accessibility_change",
+    "dependencies": "existing_locked_baseline_with_no_immediate_virtualization_graph_crypto_document_export_or_media_dependency",
+    "validation": "deterministic_generated_layered_C1_C10_C50_two_replays_and_full_regression_without_real_data_or_production_claims"
+  },
+  "preserved_contracts": [
+    "accepted_Phase_4_5_append_only_timeline_evidence_provenance_correction_and_nonoperative_policy_preview_contracts",
+    "accepted_P5_1_shell_session_capability_query_invalidation_accessibility_security_and_observability_boundaries",
+    "accepted_P5_2_Command_primary_GIS_connected_shared_domain_and_table_equivalence",
+    "accepted_P5_3_Operations_camera_live_opaque_handoff_and_profile_boundaries",
+    "accepted_P5_4_analytical_truth_separation_review_correction_and_no_external_action_boundaries",
+    "evidence_integrity_never_establishes_factual_truth_identity_guilt_admissibility_or_proof_of_event",
+    "corrections_and_retractions_never_erase_historical_state",
+    "thirty_six_producer_gaps_and_fifty_six_threats_remain_open_until_evidenced",
+    "generated_only_validation_until_separate_later_authority"
+  ],
+  "producer_gap_count": 36,
+  "threat_count": 56,
+  "implementation_workstreams": [
+    {"id": "P5.5-W1", "title": "consumer_contracts_and_generated_fixtures", "weight": 2.0},
+    {"id": "P5.5-W2", "title": "investigation_overview_and_authoritative_timeline", "weight": 2.5},
+    {"id": "P5.5-W3", "title": "reconstruction_comparison_corrections_and_relationships", "weight": 2.5},
+    {"id": "P5.5-W4", "title": "evidence_integrity_provenance_and_custody", "weight": 2.5},
+    {"id": "P5.5-W5", "title": "nonoperative_policy_previews_and_disabled_bridges", "weight": 1.5},
+    {"id": "P5.5-W6", "title": "authorization_concurrency_invalidation_and_handoffs", "weight": 1.5},
+    {"id": "P5.5-W7", "title": "accessibility_security_profiles_and_signals", "weight": 1.0},
+    {"id": "P5.5-W8", "title": "validation_evidence_and_acceptance", "weight": 1.5}
+  ],
+  "frozen_progress_model": {
+    "P5_5_total_product_points": 15,
+    "P5_5_technical_cap_points": 14,
+    "P5_5_owner_acceptance_points": 1,
+    "phase_5_total_product_points": 100,
+    "planning_items": 8,
+    "owner_decision_items": 12,
+    "planning_and_decisions_award_product_points": false,
+    "scope_or_weight_rebaseline": false
+  },
+  "progress": {
+    "owner_decisions": {"earned": 12, "total": 12, "percent": 100.0, "change_percentage_points": 100.0, "awards_product_points": false},
+    "P5_5_planning": {"earned": 8, "total": 8, "percent": 100.0, "change_percentage_points": 0.0, "awards_product_points": false},
+    "P5_5_product": {"earned": 0, "total": 15, "percent": 0.0, "change_percentage_points": 0.0},
+    "phase_5_product": {"earned": 63, "total": 100, "percent": 63.0, "change_percentage_points": 0.0}
+  },
+  "next_gate": {
+    "exact_owner_planning_acceptance": true,
+    "non_effective_exact_start_package_after_acceptance": true,
+    "separate_exact_start_authorization_before_implementation": true
+  },
+  "owner_planning_acceptance_recorded": false,
+  "start_package_preparation_authorized": false,
+  "start_authorization_recorded": false,
+  "product_or_test_implementation_authorized": false,
+  "source_import_authorized": false,
+  "dependency_resolution_install_or_lockfile_change_authorized": false,
+  "backend_route_or_migration_authorized": false,
+  "frontend_or_browser_runtime_authorized": false,
+  "source_or_evidence_operation_or_legal_policy_authorized": false,
+  "provider_network_camera_media_or_real_data_authorized": false,
+  "model_dataset_artifact_or_inference_authorized": false,
+  "operational_action_container_Kubernetes_deployment_or_P5_6_authorized": false,
+  "additional_commit_authorized": false,
+  "remote_git_authorized": false
+}

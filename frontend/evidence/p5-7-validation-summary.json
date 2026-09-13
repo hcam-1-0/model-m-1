@@ -1,0 +1,80 @@
+{
+  "schema_version": "hcam.phase5.p5_7.validation_summary.v1",
+  "validation_id": "P5.7-VALIDATION-R0",
+  "status": "pass_with_explicit_environment_limitations",
+  "generated_only": true,
+  "technical_commit": "6a5e1c700779dbc0edb6fdd1a8dc4c6132dd21d6",
+  "start_package_sha256": "77E3A7885AA1969A9F50AF9EB3FE8EE05DEEAB0374FB1F83C4DD51B860C5395C",
+  "bound_input_digest": "E5B65A6611C9ED90A33B156DA6D632859CBFFF4BE4781AA2E03F910F0AEA1B4B",
+  "generated_contract_cases": 2048,
+  "canonical_journeys": 14,
+  "mandatory_states": 20,
+  "deterministic_replays": 2,
+  "unit_tests": {
+    "suites": 225,
+    "passed": 273,
+    "failed": 0,
+    "raw_result": {
+      "path": "frontend/test-results/unit-results-p57.json",
+      "bytes": 103302,
+      "sha256": "44651313C35E6F57140A2522D0E331AECA3712540AC0267A904758C79FF16D8C"
+    }
+  },
+  "coverage": {
+    "branches": 92,
+    "functions": 95.07,
+    "lines": 96.14,
+    "statements": 94.26
+  },
+  "browser": {
+    "edge_checks_passed": 392,
+    "edge_checks_failed": 0,
+    "screenshots": 56
+  },
+  "python_regression": {
+    "passed": 4258,
+    "skipped": 16,
+    "subtests_passed": 119,
+    "failures": 0,
+    "duration_seconds": 1701.43,
+    "junit_record_available": false,
+    "skipped_scope": "PostgreSQL_integration_only"
+  },
+  "static": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "workspace": "pass",
+    "bundles": "pass"
+  },
+  "amendments": [
+    "D-P5.7-INVESTIGATION-COMPATIBILITY-AMENDMENT",
+    "D-P5.7-EVIDENCE-COMPATIBILITY-AMENDMENT",
+    "P5.7_allowlisted_Phase_5_2_topology_compatibility_transition"
+  ],
+  "producer_gaps": {
+    "tracked": 64,
+    "unknown": 0,
+    "release_limitations": 64
+  },
+  "threats": {
+    "tracked": 64,
+    "unknown": 0,
+    "evidence_or_explicit_limitation": 64
+  },
+  "limitations": [
+    "All product, browser, workload, and evidence inputs are generated-only; no Government, police, private, identity, biometric, vehicle, watchlist, case, investigation, or real evidence data was used.",
+    "Validation used local loopback static bundles and installed Microsoft Edge only; it is not physical-device, assistive-technology, multi-monitor, server, cluster, hardware-capacity, or production evidence.",
+    "Playwright Chromium revision 1243, Firefox, and WebKit were unavailable. An incompatible cached Chromium revision 1223 was not executed, and no browser was downloaded.",
+    "Manual WCAG protocols and independent WCAG-EM-style evaluation remain required; automated accessibility checks are not a conformance claim.",
+    "Sixteen PostgreSQL integration tests were skipped because HCAM_POSTGRES_TEST_URL was not configured; no database, RLS, backup, restore, or recovery execution is claimed.",
+    "The dependency lockfile, SBOM, and prior vulnerability evidence were preserved without refresh; no scanner, install, update, download, SLSA, or independent reproducibility claim is made.",
+    "Two broad non-evidentiary Playwright invocations selected unrelated legacy specs and exceeded outer shell bounds; they were discarded and replaced by explicit P5.7 per-spec runs with 392 of 392 checks passing.",
+    "No provider, Sentinel, camera, tile, media, model, inference, telemetry backend, operational action, container, Kubernetes, deployment, release, or remote Git action was authorized or executed."
+  ],
+  "progress": {
+    "P5_7_technical": "11/12 (91.6667%)",
+    "percentage_point_change_from_pre_remediation": "+81.2500",
+    "phase_5_technical": "99/100 (99.0000%)",
+    "owner_acceptance_pending": true
+  }
+}

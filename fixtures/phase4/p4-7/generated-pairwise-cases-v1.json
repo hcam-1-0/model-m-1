@@ -1,0 +1,6664 @@
+{
+  "case_count": 512,
+  "cases": [
+    {
+      "case_id": "p47.pairwise.0000",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0001",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0002",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0003",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0004",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0005",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0006",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0007",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0008",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0009",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0010",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0011",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0012",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0013",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0014",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0015",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0016",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0017",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0018",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0019",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0020",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0021",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0022",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0023",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0024",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0025",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0026",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0027",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0028",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0029",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0030",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0031",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0032",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0033",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0034",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0035",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0036",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0037",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0038",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0039",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0040",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0041",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0042",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0043",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0044",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0045",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0046",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0047",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0048",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0049",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0050",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0051",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0052",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0053",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0054",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0055",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0056",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0057",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0058",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0059",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0060",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0061",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0062",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0063",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0064",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0065",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0066",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0067",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0068",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0069",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0070",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0071",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0072",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0073",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0074",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0075",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0076",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0077",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0078",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0079",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0080",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0081",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0082",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0083",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0084",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0085",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0086",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0087",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0088",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0089",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0090",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0091",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0092",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0093",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0094",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0095",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0096",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0097",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0098",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0099",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0100",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0101",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0102",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0103",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0104",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0105",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0106",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0107",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0108",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0109",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0110",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0111",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0112",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0113",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0114",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0115",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0116",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0117",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0118",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0119",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0120",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0121",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0122",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0123",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0124",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0125",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0126",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0127",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0128",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0129",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0130",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0131",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0132",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0133",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0134",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0135",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0136",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0137",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0138",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0139",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0140",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0141",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0142",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0143",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0144",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0145",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0146",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0147",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0148",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0149",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0150",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0151",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0152",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0153",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0154",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0155",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0156",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0157",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0158",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0159",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0160",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0161",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0162",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0163",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0164",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0165",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0166",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0167",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0168",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0169",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0170",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0171",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0172",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0173",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0174",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0175",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0176",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0177",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0178",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0179",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0180",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0181",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0182",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0183",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0184",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0185",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0186",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0187",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0188",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0189",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0190",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0191",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0192",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0193",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0194",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0195",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0196",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0197",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0198",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0199",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0200",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0201",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0202",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0203",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0204",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0205",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0206",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0207",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0208",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0209",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0210",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0211",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0212",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0213",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0214",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0215",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0216",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0217",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0218",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0219",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0220",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0221",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0222",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0223",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0224",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0225",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0226",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0227",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0228",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0229",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0230",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0231",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0232",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0233",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0234",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0235",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0236",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0237",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0238",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0239",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0240",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0241",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0242",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0243",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0244",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0245",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0246",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0247",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0248",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "accepted_or_degraded",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0249",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0250",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0251",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0252",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0253",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0254",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0255",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "current",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0256",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0257",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0258",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0259",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0260",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0261",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0262",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0263",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0264",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0265",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0266",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0267",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0268",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0269",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0270",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0271",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0272",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0273",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0274",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0275",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0276",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0277",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0278",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0279",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0280",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0281",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0282",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0283",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0284",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0285",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0286",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0287",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0288",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0289",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0290",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0291",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0292",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0293",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0294",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0295",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0296",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0297",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0298",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0299",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0300",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0301",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0302",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0303",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0304",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0305",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0306",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0307",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0308",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0309",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0310",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0311",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0312",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0313",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0314",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0315",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0316",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0317",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0318",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0319",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "available"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0320",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0321",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0322",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0323",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0324",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0325",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0326",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0327",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0328",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0329",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0330",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0331",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0332",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0333",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0334",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0335",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0336",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0337",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0338",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0339",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0340",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0341",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0342",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0343",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0344",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0345",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0346",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0347",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0348",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0349",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0350",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0351",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0352",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0353",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0354",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0355",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0356",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0357",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0358",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0359",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0360",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0361",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0362",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0363",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0364",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0365",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0366",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0367",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0368",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0369",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0370",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0371",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0372",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0373",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0374",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0375",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0376",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0377",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0378",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0379",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0380",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0381",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0382",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0383",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "stale"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0384",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0385",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0386",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0387",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0388",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0389",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0390",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0391",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0392",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0393",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0394",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0395",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0396",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0397",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0398",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0399",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0400",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0401",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0402",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0403",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0404",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0405",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0406",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0407",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0408",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0409",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0410",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0411",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0412",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0413",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0414",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0415",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0416",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0417",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0418",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0419",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0420",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0421",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0422",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0423",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0424",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0425",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0426",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0427",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0428",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0429",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0430",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0431",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0432",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0433",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0434",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0435",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0436",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0437",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0438",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0439",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0440",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0441",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0442",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0443",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0444",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0445",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0446",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0447",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unavailable"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0448",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0449",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0450",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0451",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0452",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0453",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0454",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0455",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0456",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0457",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0458",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0459",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0460",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0461",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0462",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0463",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "ordered",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0464",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0465",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0466",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0467",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0468",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0469",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0470",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0471",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0472",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0473",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0474",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0475",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0476",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0477",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0478",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0479",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "late",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0480",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0481",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0482",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0483",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0484",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0485",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0486",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0487",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0488",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0489",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0490",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0491",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0492",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0493",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0494",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0495",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "conflict",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0496",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0497",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0498",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0499",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_match",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0500",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0501",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0502",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0503",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "etag_stale",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0504",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0505",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0506",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0507",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "duplicate_delivery",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0508",
+      "dimensions": {
+        "authorization": "allowed",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0509",
+      "dimensions": {
+        "authorization": "cross_scope",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0510",
+      "dimensions": {
+        "authorization": "missing_reason",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "case_id": "p47.pairwise.0511",
+      "dimensions": {
+        "authorization": "role_denied",
+        "chronology": "unknown_clock",
+        "concurrency": "late_commit",
+        "contract": "unknown_version",
+        "dependency": "unknown"
+      },
+      "expected": "denied",
+      "generated_only": true,
+      "operational": false
+    }
+  ],
+  "contract_type": "hcam.acceptance.pairwise-cases.v1",
+  "generated_only": true,
+  "operational": false
+}

@@ -1,0 +1,132 @@
+{
+  "schema_version": "hcam.phase5.p5_3.owner_decisions.v1",
+  "record_id": "P5.3-OWNER-DECISIONS-R0",
+  "status": "owner_selected_for_reconciliation",
+  "effective_for_reconciliation": true,
+  "implementation_effective": false,
+  "selected_by": "mayank-admin",
+  "selected_on": "2026-09-08",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "392a52ce982dd90b5a30de44843a5dfa552956c1",
+  "source_statement": {
+    "normalized_statement": "D-P5.3-001: D D-P5.3-002: A D-P5.3-003: A D-P5.3-004: A D-P5.3-005: A D-P5.3-006: A D-P5.3-007: A D-P5.3-008: A D-P5.3-009: A D-P5.3-010: A D-P5.3-011: A D-P5.3-012: A",
+    "sha256": "7C5FE386091FFD8F6ED82354372A87547DD477BF9C3EF4A3D7FAA69F23352692",
+    "normalization": "Paragraph whitespace collapsed to one ASCII space; UTF-8 without BOM; no terminal newline."
+  },
+  "selection_profile": "D/A/A/A/A/A/A/A/A/A/A/A",
+  "selection_count": 12,
+  "selections": [
+    {
+      "id": "D-P5.3-001",
+      "selected": "D",
+      "resolved_meaning": "Operations owns Camera Catalogue, Camera Detail, and Stream Diagnostics; connected Live Workspace and Monitor Wall surfaces handle media while Command Center remains the primary dashboard."
+    },
+    {
+      "id": "D-P5.3-002",
+      "selected": "A",
+      "resolved_meaning": "Use a same-origin H-CAM media edge with opaque short-lived grants; internal MediaMTX, camera locators, management locators, credentials, and reusable tokens remain server-only."
+    },
+    {
+      "id": "D-P5.3-003",
+      "selected": "A",
+      "resolved_meaning": "Use a typed hls.js and MSE baseline adapter, with native HLS admitted only through a safe same-origin authentication path that does not place bearer material in URLs."
+    },
+    {
+      "id": "D-P5.3-004",
+      "selected": "A",
+      "resolved_meaning": "Keep WHEP optional, default-off, pinned to draft-ietf-wish-whep-04 for this planning baseline, protected by an HLS fallback and kill switch, with no conformance claim."
+    },
+    {
+      "id": "D-P5.3-005",
+      "selected": "A",
+      "resolved_meaning": "Resolve the effective media profile as the fail-closed intersection of server, role/session, workspace, stream, browser, advisory capability, and measured resource ceilings."
+    },
+    {
+      "id": "D-P5.3-006",
+      "selected": "A",
+      "resolved_meaning": "Use a weighted deterministic scheduler based on explicit intent, pin and focus, visibility, health, and bounded stream, decode, and network budgets; never autoplay every saved tile."
+    },
+    {
+      "id": "D-P5.3-007",
+      "selected": "A",
+      "resolved_meaning": "Use a typed deterministic recovery state machine with bounded in-transport recovery, jittered reconnect, cooldown, circuit breaker, optional WHEP-to-HLS fallback, and manual terminal recovery."
+    },
+    {
+      "id": "D-P5.3-008",
+      "selected": "A",
+      "resolved_meaning": "Use one opaque short-lived grant per stream with bounded renewal, immediate revocation, idempotent close, and abandoned-session lease recovery."
+    },
+    {
+      "id": "D-P5.3-009",
+      "selected": "A",
+      "resolved_meaning": "Use revisioned server-side department and user layouts with opaque camera references and ETags; use memory-only state until the producer exists and prohibit protected browser persistence."
+    },
+    {
+      "id": "D-P5.3-010",
+      "selected": "A",
+      "resolved_meaning": "Provide view-only controls for open, pause/resume, mute, allowed quality, pin/focus/reorder/release, fullscreen, diagnostics, and reference-only handoff; recording, snapshots, downloads, exports, print, PTZ, and analytics remain absent."
+    },
+    {
+      "id": "D-P5.3-011",
+      "selected": "A",
+      "resolved_meaning": "Provide synchronized authoritative list, table, and status equivalence with complete keyboard, focus, non-color, announcement, pause/stop, stable-dimension, and reduced-motion behavior."
+    },
+    {
+      "id": "D-P5.3-012",
+      "selected": "A",
+      "resolved_meaning": "Require deterministic generated C1, C4, and C10 contract, browser, profile, security, accessibility, recovery, teardown, replay, hash, environment, and limitation evidence, followed only by a separately authorized owned-lab gate."
+    }
+  ],
+  "precedence_rules": [
+    "The selected D-P5.3-001 topology keeps Command Center primary and places camera management under Operations with connected specialist media workspaces.",
+    "The selected HLS and WHEP choices do not authorize an exact dependency version, dependency resolution, media runtime, network destination, or provider.",
+    "The selected dynamic profile and scheduler choices change capacity and quality only; they never change operator authority, security, retention, or feature semantics.",
+    "The selected validation choice remains generated-only; Sentinel, real cameras, media, private data, and Government data remain prohibited.",
+    "The selected view-only controls do not activate Phase 2 PTZ or any recording, snapshot, download, export, print, analytics, or operational action."
+  ],
+  "progress": {
+    "owner_decisions": {
+      "earned": 12,
+      "total": 12,
+      "percent": 100.0,
+      "change_percentage_points": 100.0,
+      "awards_product_points": false
+    },
+    "P5_3_planning": {
+      "earned": 8,
+      "total": 8,
+      "percent": 100.0,
+      "change_percentage_points": 0.0,
+      "awards_product_points": false
+    },
+    "P5_3_product": {
+      "earned": 0,
+      "total": 16,
+      "percent": 0.0
+    },
+    "phase_5_product": {
+      "earned": 32,
+      "total": 100,
+      "percent": 32.0
+    }
+  },
+  "continuing_prohibitions": [
+    "planning_acceptance_by_implication",
+    "start_authorization_by_implication",
+    "product_or_test_implementation",
+    "dependency_resolution_installation_or_lockfile_change",
+    "source_import",
+    "backend_route_or_migration",
+    "frontend_browser_or_media_runtime",
+    "playback_session_issuance",
+    "provider_network_Sentinel_camera_or_media_access",
+    "recording_snapshot_download_export_print_or_PTZ",
+    "Government_or_private_data",
+    "model_dataset_artifact_or_inference",
+    "operational_action",
+    "container_Kubernetes_or_deployment",
+    "P5_4",
+    "additional_commit_without_new_authority",
+    "remote_Git"
+  ]
+}

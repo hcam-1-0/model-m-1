@@ -1,0 +1,19 @@
+{
+  "schema_version": "hcam.phase5.p5_3.camera_catalogue.v1",
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "department_ref": "SYN-DEPT-01",
+  "observed_at": "2026-09-08T09:00:00.000Z",
+  "cameras": [
+    { "id": "SYN-CAM-0001", "stream_ref": "SYN-STREAM-0001", "location": "North gate", "zone": "Sector A", "state": "online", "health": "healthy", "transport": "whep", "renditions": ["low", "medium"] },
+    { "id": "SYN-CAM-0002", "stream_ref": "SYN-STREAM-0002", "location": "Transit entry", "zone": "Sector B", "state": "online", "health": "healthy", "transport": "hls", "renditions": ["low", "medium", "high"] },
+    { "id": "SYN-CAM-0003", "stream_ref": "SYN-STREAM-0003", "location": "Service lane", "zone": "Sector C", "state": "online", "health": "healthy", "transport": "hls", "renditions": ["low"] },
+    { "id": "SYN-CAM-0004", "stream_ref": "SYN-STREAM-0004", "location": "Public concourse", "zone": "Sector D", "state": "online", "health": "healthy", "transport": "hls", "renditions": ["low", "medium"] },
+    { "id": "SYN-CAM-0005", "stream_ref": "SYN-STREAM-0005", "location": "Parking entry", "zone": "Sector E", "state": "online", "health": "healthy", "transport": "whep", "renditions": ["low", "medium", "high"] },
+    { "id": "SYN-CAM-0006", "stream_ref": "SYN-STREAM-0006", "location": "Loading area", "zone": "Sector F", "state": "degraded", "health": "attention", "transport": "hls", "renditions": ["low"] },
+    { "id": "SYN-CAM-0007", "stream_ref": "SYN-STREAM-0007", "location": "East gate", "zone": "Sector A", "state": "online", "health": "healthy", "transport": "hls", "renditions": ["low", "medium"] },
+    { "id": "SYN-CAM-0008", "stream_ref": "SYN-STREAM-0008", "location": "West passage", "zone": "Sector B", "state": "offline", "health": "critical", "transport": "hls", "renditions": ["low", "medium", "high"] },
+    { "id": "SYN-CAM-0009", "stream_ref": "SYN-STREAM-0009", "location": "South gate", "zone": "Sector C", "state": "online", "health": "healthy", "transport": "whep", "renditions": ["low"] },
+    { "id": "SYN-CAM-0010", "stream_ref": "SYN-STREAM-0010", "location": "Control perimeter", "zone": "Sector D", "state": "unknown", "health": "unknown", "transport": "hls", "renditions": ["low", "medium"] }
+  ],
+  "forbidden": ["real_camera_ids", "coordinates", "locators", "credentials", "tokens", "Government_data", "private_data"]
+}

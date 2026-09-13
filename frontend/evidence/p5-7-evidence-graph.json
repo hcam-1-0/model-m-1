@@ -1,0 +1,142 @@
+{
+  "schema_version": "hcam.phase5.p5_7.evidence_graph.v1",
+  "status": "pass",
+  "generated_only": true,
+  "acyclic": true,
+  "nodes": [
+    {
+      "id": "source",
+      "artifact": {
+        "path": "frontend/evidence/p5-7-source-manifest.json",
+        "bytes": 1096,
+        "sha256": "F14AB7B4C281B61286CCFE52F611FB16AFC37C34877E25441E3F0DCCA91B1DE5"
+      },
+      "depends_on": []
+    },
+    {
+      "id": "fixtures",
+      "artifact": {
+        "path": "frontend/evidence/p5-7-fixture-manifest.json",
+        "bytes": 626,
+        "sha256": "80CA76C6974A048F5AF6436A2CF3A5003610D01173E49679EA34133271EA2BD4"
+      },
+      "depends_on": []
+    },
+    {
+      "id": "dependencies",
+      "artifact": {
+        "path": "frontend/evidence/p5-7-dependency-baseline.json",
+        "bytes": 705,
+        "sha256": "CC4BFDCA630652979F1145F15F2B86C4F6395BFDB449841351A87814880CB1F7"
+      },
+      "depends_on": []
+    },
+    {
+      "id": "browser",
+      "artifact": {
+        "path": "frontend/evidence/p5-7-browser-matrix.json",
+        "bytes": 24857,
+        "sha256": "6FFEDD25AAEA5B49424B7D6BEF859DD584523B4C1D1E0BAC6147407955CF3ED9"
+      },
+      "depends_on": [
+        "source",
+        "fixtures"
+      ]
+    },
+    {
+      "id": "accessibility",
+      "artifact": {
+        "path": "frontend/evidence/p5-7-accessibility-report.json",
+        "bytes": 724,
+        "sha256": "767FCA0DF1B6BD0C0783929D8A4B97D96CE0878C981B8DCEBF4CF1DFC4FE6CF2"
+      },
+      "depends_on": [
+        "browser"
+      ]
+    },
+    {
+      "id": "localization",
+      "artifact": {
+        "path": "frontend/evidence/p5-7-localization-report.json",
+        "bytes": 603,
+        "sha256": "58E7AE9394375B5C2118561EAABEDBFAE7B9D4C15A05D6631BAE95C2A8ADAC89"
+      },
+      "depends_on": [
+        "browser"
+      ]
+    },
+    {
+      "id": "performance",
+      "artifact": {
+        "path": "frontend/evidence/p5-7-performance-report.json",
+        "bytes": 1575,
+        "sha256": "A5D394F9DB89121C21AC872FD4F6DF258D0742C3CA54A1444A5E199B9F0917D3"
+      },
+      "depends_on": [
+        "browser"
+      ]
+    },
+    {
+      "id": "resilience",
+      "artifact": {
+        "path": "frontend/evidence/p5-7-resilience-report.json",
+        "bytes": 640,
+        "sha256": "4C04DBDAAD98BAE58C917380A270E4B402F9D0391F081BC7ACB4665507C04A8C"
+      },
+      "depends_on": [
+        "browser"
+      ]
+    },
+    {
+      "id": "security",
+      "artifact": {
+        "path": "frontend/evidence/p5-7-security-report.json",
+        "bytes": 937,
+        "sha256": "60869740938DCECFFDCD775B1BF1729C39F84775D0A9FD64637A74AA6B77052F"
+      },
+      "depends_on": [
+        "browser",
+        "dependencies"
+      ]
+    },
+    {
+      "id": "repeatability",
+      "artifact": {
+        "path": "frontend/evidence/p5-7-repeatability-report.json",
+        "bytes": 1389,
+        "sha256": "49BBB8062D450522977D7F3125474E0B65E978D5F058510814B2B13DCE7926DD"
+      },
+      "depends_on": [
+        "source",
+        "fixtures"
+      ]
+    },
+    {
+      "id": "validation",
+      "artifact": {
+        "path": "frontend/evidence/p5-7-validation-summary.json",
+        "bytes": 3534,
+        "sha256": "356B5ACAF77E530F73C6EF392D7C6AAFE6DAE7A3522DDDCB84F1D16863F4CBFE"
+      },
+      "depends_on": [
+        "accessibility",
+        "localization",
+        "performance",
+        "resilience",
+        "security",
+        "repeatability"
+      ]
+    },
+    {
+      "id": "release_candidate",
+      "artifact": {
+        "path": "frontend/evidence/p5-7-release-manifest.json",
+        "bytes": 2896,
+        "sha256": "075F08494D331B3F2F0502FA2ECC57E759CECDF55927E91CB7728C278C454AD6"
+      },
+      "depends_on": [
+        "validation"
+      ]
+    }
+  ]
+}

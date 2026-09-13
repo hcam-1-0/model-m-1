@@ -1,0 +1,107 @@
+{
+  "schema_version": "hcam.phase5.p5_6.visual_manifest.v1",
+  "status": "pass",
+  "target_count": 3,
+  "viewport_count": 6,
+  "screenshot_count": 18,
+  "checks": [
+    "no_page_level_horizontal_overflow",
+    "no_unintended_overlap",
+    "navigation_and_primary_content_visible",
+    "generated_and_non_effective_boundaries_visible",
+    "keyboard_focus_visible",
+    "axe_critical_and_serious_violations_zero"
+  ],
+  "screenshots": [
+    {
+      "path": "frontend/test-results/artifacts-p56-admin/admin-center-Admin-Center--a88e0-e-and-independent-approvals-compact-desktop-1280x720/admin-change-control-compact-desktop-1280x720.png",
+      "bytes": 104653,
+      "sha256": "4EDFF8D6A78F3A01AEBA5D1E7E30F14CDBE0930D6C149E8760E8DEB90AC2713B"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-admin/admin-center-Admin-Center--a88e0-e-and-independent-approvals-compact-mobile-390x844/admin-change-control-compact-mobile-390x844.png",
+      "bytes": 351441,
+      "sha256": "C9DC2B08179865E7C9BDD3FF6B619B4495C6C0F582E0C7D2D05546BCFC341886"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-admin/admin-center-Admin-Center--a88e0-e-and-independent-approvals-control-room-2560x1440/admin-change-control-control-room-2560x1440.png",
+      "bytes": 117124,
+      "sha256": "0C179A8A830AECB6C5FFCC94B114117B633449AE98057D49774AF988D2FD3E06"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-admin/admin-center-Admin-Center--a88e0-e-and-independent-approvals-desktop-1440x900/admin-change-control-desktop-1440x900.png",
+      "bytes": 107049,
+      "sha256": "E7E75D798C4DD689CFE36593B74CF8CC462457576AF88B824A77A7421C0939F1"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-admin/admin-center-Admin-Center--a88e0-e-and-independent-approvals-full-hd-1920x1080/admin-change-control-full-hd-1920x1080.png",
+      "bytes": 110518,
+      "sha256": "AA7D7C6282B9D5E92867BCBBC24085DED95DD316C0729DEBB22D6112E9FB0520"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-admin/admin-center-Admin-Center--a88e0-e-and-independent-approvals-tablet-768x1024/admin-change-control-tablet-768x1024.png",
+      "bytes": 86436,
+      "sha256": "B8B81C3916E819B8045A845CADEA0D1244985E831808CAB44DDC68FD54016E50"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-security/security-center-Security-C-8661b-s-assurance-and-audit-lanes-compact-desktop-1280x720/security-supply-chain-compact-desktop-1280x720.png",
+      "bytes": 112276,
+      "sha256": "506E4221212DE834B3834EBE7D9BAA9F452D51047E5890990C0FAAB39AB0FB49"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-security/security-center-Security-C-8661b-s-assurance-and-audit-lanes-compact-mobile-390x844/security-supply-chain-compact-mobile-390x844.png",
+      "bytes": 312546,
+      "sha256": "CE0654CCDE756857F1AE9988B8C328FC2C03100ED6464A245621C77971B1813C"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-security/security-center-Security-C-8661b-s-assurance-and-audit-lanes-control-room-2560x1440/security-supply-chain-control-room-2560x1440.png",
+      "bytes": 123586,
+      "sha256": "D785A96F9923FD7E5C565D1E2CF673714A89F9244857D04CB7D9E101CD82B8FD"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-security/security-center-Security-C-8661b-s-assurance-and-audit-lanes-desktop-1440x900/security-supply-chain-desktop-1440x900.png",
+      "bytes": 114500,
+      "sha256": "DF5EF6E401EA9A0617703C3EEAAFEE2EF36F868C9B2A3902B761CE55CBE7C0D0"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-security/security-center-Security-C-8661b-s-assurance-and-audit-lanes-full-hd-1920x1080/security-supply-chain-full-hd-1920x1080.png",
+      "bytes": 116668,
+      "sha256": "4D6BA6FCD72008B1B7F2167E25281AAEFB078078E178A4572A110AA1BD257FF1"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-security/security-center-Security-C-8661b-s-assurance-and-audit-lanes-tablet-768x1024/security-supply-chain-tablet-768x1024.png",
+      "bytes": 86399,
+      "sha256": "B6C5BC4CF681DE3D886D335E5A3E599496BCC8C3466C4303A974DA94263081AA"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-operations/platform-operations-Platfo-912aa-s-qualified-platform-health-compact-desktop-1280x720/platform-queues-compact-desktop-1280x720.png",
+      "bytes": 119769,
+      "sha256": "692B928B38BEA77933846547B55D3C72A9957A23AD06FDBB82963E344C6695BA"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-operations/platform-operations-Platfo-912aa-s-qualified-platform-health-compact-mobile-390x844/platform-queues-compact-mobile-390x844.png",
+      "bytes": 312557,
+      "sha256": "6D7943F50DB24BE3C5571A86B705436622A42964F88DBC998888F8B146D54BEC"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-operations/platform-operations-Platfo-912aa-s-qualified-platform-health-control-room-2560x1440/platform-queues-control-room-2560x1440.png",
+      "bytes": 132067,
+      "sha256": "C4155B6A87AA77106E472B5D19D11386DA11E045D3CA3835B5B6A571806C4216"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-operations/platform-operations-Platfo-912aa-s-qualified-platform-health-desktop-1440x900/platform-queues-desktop-1440x900.png",
+      "bytes": 121945,
+      "sha256": "1F136F5BBA3AC84C70A1E8A29E44822EA02A8093383B72335ED0E9ECD097A59D"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-operations/platform-operations-Platfo-912aa-s-qualified-platform-health-full-hd-1920x1080/platform-queues-full-hd-1920x1080.png",
+      "bytes": 125167,
+      "sha256": "08094598B6CDD4DE552907F64733476530C544E11439FE39AF9177D3BED5F05D"
+    },
+    {
+      "path": "frontend/test-results/artifacts-p56-operations/platform-operations-Platfo-912aa-s-qualified-platform-health-tablet-768x1024/platform-queues-tablet-768x1024.png",
+      "bytes": 90956,
+      "sha256": "68064E76FF4A7A1F5CB5E22584A31E999F4DC70876B84B8581FAA23421ED9D8B"
+    }
+  ]
+}

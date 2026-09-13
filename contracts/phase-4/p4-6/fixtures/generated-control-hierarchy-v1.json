@@ -1,0 +1,727 @@
+{
+  "category": "control-hierarchy",
+  "scenario_count": 80,
+  "scenarios": [
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0000",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0001",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0002",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0003",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0004",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0005",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0006",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0007",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0008",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0009",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0010",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0011",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0012",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0013",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0014",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0015",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0016",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0017",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0018",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0019",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0020",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0021",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0022",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0023",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0024",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0025",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0026",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0027",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0028",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0029",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0030",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0031",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0032",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0033",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0034",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0035",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0036",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0037",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0038",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0039",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0040",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0041",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0042",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0043",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0044",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0045",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0046",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0047",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0048",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0049",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0050",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0051",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0052",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0053",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0054",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0055",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0056",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0057",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0058",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0059",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0060",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0061",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0062",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0063",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0064",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0065",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0066",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0067",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0068",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0069",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0070",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0071",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0072",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0073",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0074",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0075",
+      "scope": "lane",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0076",
+      "scope": "platform",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0077",
+      "scope": "department",
+      "state": "allow"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0078",
+      "scope": "service",
+      "state": "deny"
+    },
+    {
+      "deny_precedence": true,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.control-hierarchy.0079",
+      "scope": "lane",
+      "state": "allow"
+    }
+  ],
+  "schema_version": "hcam.phase4.p4_6.fixture.control-hierarchy.v1"
+}

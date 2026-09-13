@@ -1,0 +1,60 @@
+{
+  "authorization_digest": "39AF9D9DA00DB7806195B4BA2B5512B238A94E7BC41C3F8270431AA2A87EE168",
+  "boundaries": {
+    "camera_media_model_data_attempts": 0,
+    "container_kubernetes_deployment_attempts": 0,
+    "generated_only": true,
+    "network_attempts": 0,
+    "operational": false,
+    "phase5_implemented": false
+  },
+  "evidence_index_digest": "FAAFE9F8DC1245470052E57EF17E2797498F5E38888B3B8FB4FAE7E1BE1C1272",
+  "generated_only": true,
+  "planning_digest": "A226D7E8E3AB01C240D2692E95DAD5BB051ABB4D015B907BC9197BE835895F9C",
+  "portfolio": {
+    "comparisons": 9,
+    "complete": true,
+    "runs": 18,
+    "scenarios": 9
+  },
+  "schema_version": "hcam.phase4.p4_7.evidence.v1",
+  "source_commit": "6ad9ff4b06b5f5516e5b346408807a70fe6466a0",
+  "validation": {
+    "focused_phase47": {
+      "branch_coverage_percent": 98.16,
+      "coverage_threshold_percent": 90,
+      "failed": 0,
+      "passed": 46
+    },
+    "full_repository": {
+      "failed": 0,
+      "passed": 4171,
+      "postgresql_integration_skips": 16,
+      "skipped": 16,
+      "subtests_passed": 119,
+      "warnings": 1
+    },
+    "migration": {
+      "head": "0018_operations_security_scale",
+      "head_count": 1
+    },
+    "quality_gates": {
+      "compileall": "passed",
+      "offline_lock_check": "passed",
+      "phase46_historical_readiness": "passed",
+      "phase47_readiness": "passed",
+      "release_contract_check": "passed",
+      "ruff": "passed",
+      "source_distribution_build": "passed",
+      "wheel_build": "passed"
+    },
+    "unperformed_environment_validation": [
+      "postgresql_integration",
+      "vulnerability_refresh",
+      "hardware_capacity",
+      "backup_restore_recovery",
+      "container_kubernetes_execution",
+      "production_or_pilot_deployment"
+    ]
+  }
+}

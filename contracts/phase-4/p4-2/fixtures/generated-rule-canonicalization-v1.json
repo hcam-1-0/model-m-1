@@ -1,0 +1,12 @@
+{
+  "schema_version": "hcam.p4-2.generated-rule-canonicalization.v1",
+  "generated_only": true,
+  "invariants": [
+    "presentation_changes_do_not_change_semantics",
+    "authoring_identifiers_do_not_change_semantics",
+    "commutative_inputs_are_sorted",
+    "ordered_inputs_are_preserved",
+    "all_nodes_are_reachable",
+    "one_nonoperational_output_is_required"
+  ]
+}

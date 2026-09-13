@@ -1,0 +1,383 @@
+{
+  "authorization_digest": "39AF9D9DA00DB7806195B4BA2B5512B238A94E7BC41C3F8270431AA2A87EE168",
+  "completeness": "complete",
+  "components": [
+    {
+      "byte_length": 102908,
+      "completeness": "complete",
+      "component_id": "p47_db8354f8060d78b81f8e1cead7c0347a",
+      "generated_only": true,
+      "kind": "contract",
+      "path": "contracts/phase-4/p4-7/acceptance-contracts.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "C9A6E498EF778C1ADE25DF1A68FF04CE2C7EA3A352921DBF41D69D7191CC581C",
+      "verified": true
+    },
+    {
+      "byte_length": 1827,
+      "completeness": "complete",
+      "component_id": "p47_4f69031fb603ecec6261bf79ffb71d76",
+      "generated_only": true,
+      "kind": "projection",
+      "path": "contracts/phase-4/p4-7/arazzo.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "A15E5D1FC83AF9B682392D4D0F3D658CFDD578F5121B50FE3440F3380E5B07C0",
+      "verified": true
+    },
+    {
+      "byte_length": 3385,
+      "completeness": "complete",
+      "component_id": "p47_2f36083f4d99a30ee2c5f164406c90d6",
+      "generated_only": true,
+      "kind": "projection",
+      "path": "contracts/phase-4/p4-7/asyncapi.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "39C28E90F1BD9CFFE676E887C59AF8F4816A658B982D2FDE41AD940F6008D99F",
+      "verified": true
+    },
+    {
+      "byte_length": 1930,
+      "completeness": "complete",
+      "component_id": "p47_7f073abe93e564b8b18dbb3f01d0322a",
+      "generated_only": true,
+      "kind": "contract",
+      "path": "contracts/phase-4/p4-7/claim-register.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "2332566F758F3A0F021215CB7958EAA1B451F169C1844088AE08470A66099965",
+      "verified": true
+    },
+    {
+      "byte_length": 1405,
+      "completeness": "complete",
+      "component_id": "p47_1d56d1658ec39e23702cd7c8f7a76fa2",
+      "generated_only": true,
+      "kind": "projection",
+      "path": "contracts/phase-4/p4-7/cloudevents.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "4098E983BAD3B683284573A69FAC78AAA65852D84C6962A2AD62B4703E14A645",
+      "verified": true
+    },
+    {
+      "byte_length": 1841,
+      "completeness": "complete",
+      "component_id": "p47_44a7469721942ac4dc666cae748e4247",
+      "generated_only": true,
+      "kind": "contract",
+      "path": "contracts/phase-4/p4-7/compatibility.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "61B9C2873591178A44888759CC104C5BAEE721029CC94C23F2D9E32F72E2D41A",
+      "verified": true
+    },
+    {
+      "byte_length": 4208,
+      "completeness": "complete",
+      "component_id": "p47_f50349f04af1a283043fcf1ab7b46995",
+      "generated_only": true,
+      "kind": "contract",
+      "path": "contracts/phase-4/p4-7/event-workflows.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "54A58B7EEAD72BDED01FC97C0B5AA28D85D2BBA4963431FFA4F46AC0231952A9",
+      "verified": true
+    },
+    {
+      "byte_length": 50319,
+      "completeness": "complete",
+      "component_id": "p47_27ec018333f88c8df37aa7fb188ecfba",
+      "generated_only": true,
+      "kind": "contract",
+      "path": "contracts/phase-4/p4-7/handoff-package.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "CB2E4F9067EB8B78C5A38AE8FC95379C945FBDC26029CB75AE94B9768C3C98E7",
+      "verified": true
+    },
+    {
+      "byte_length": 13522,
+      "completeness": "complete",
+      "component_id": "p47_02a5597c14f864198dc1be6b1384078f",
+      "generated_only": true,
+      "kind": "contract",
+      "path": "contracts/phase-4/p4-7/http-operations.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "8A4F818D644DB07A931A3056B7848CDC29895B25F61B4E9FB3A56FF9E0D5923B",
+      "verified": true
+    },
+    {
+      "byte_length": 1915,
+      "completeness": "complete",
+      "component_id": "p47_7d30c6723d644b6ed0ed895d3bd6e4e6",
+      "generated_only": true,
+      "kind": "contract",
+      "path": "contracts/phase-4/p4-7/limitation-register.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "7716A11DF61E0ED6824C3D0A62389A9C03B44A50005A3952AB7F38C746B55414",
+      "verified": true
+    },
+    {
+      "byte_length": 7296,
+      "completeness": "complete",
+      "component_id": "p47_f64da18dc02e0b9ce0d4345c04f5ca46",
+      "generated_only": true,
+      "kind": "projection",
+      "path": "contracts/phase-4/p4-7/openapi.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "97434AC7E377FA5B7351A8CF3AF00D01E893D293FBEBA9A86A14D196A8645A7E",
+      "verified": true
+    },
+    {
+      "byte_length": 2443,
+      "completeness": "complete",
+      "component_id": "p47_0e5c64a4dce916801a396719416a0838",
+      "generated_only": true,
+      "kind": "contract",
+      "path": "contracts/phase-4/p4-7/operations-runbook.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "C529AE95DE45367A45CDE5041E18985727965D3CA1359DFF6BB8C6B35657FF11",
+      "verified": true
+    },
+    {
+      "byte_length": 3244,
+      "completeness": "complete",
+      "component_id": "p47_70fd5df0e0a5438fbdd34018d89427df",
+      "generated_only": true,
+      "kind": "contract",
+      "path": "contracts/phase-4/p4-7/production-operations-prerequisites.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "EC1D51113CCFF5FA15CD2E9B01B1B100CF56EBB0E3005B320562D802F175B06B",
+      "verified": true
+    },
+    {
+      "byte_length": 552,
+      "completeness": "complete",
+      "component_id": "p47_8070e205884e8496a0c57bf2877052f9",
+      "generated_only": true,
+      "kind": "projection",
+      "path": "contracts/phase-4/p4-7/prov-projection.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "3A09A566A38BF89AC2A90C94FA5ABB3E89220024B4A7F03476D76FE626510EAE",
+      "verified": true
+    },
+    {
+      "byte_length": 19905,
+      "completeness": "complete",
+      "component_id": "p47_894c7e6dba06017e538b2b897bf2b564",
+      "generated_only": true,
+      "kind": "result",
+      "path": "contracts/phase-4/p4-7/reconstruction-manifest.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "4197F3367CEE75684937C315BF52BF5226F33026637F0DD7842C52D06E46CA89",
+      "verified": true
+    },
+    {
+      "byte_length": 319,
+      "completeness": "complete",
+      "component_id": "p47_d174a33937e6d6b067d1aa345f6405ba",
+      "generated_only": true,
+      "kind": "projection",
+      "path": "contracts/phase-4/p4-7/rfc8785-projection.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "DA116DE4E4214C1C0A110A246769D512FA6FD1537CC799A5D3566B50D6087029",
+      "verified": true
+    },
+    {
+      "byte_length": 22785,
+      "completeness": "complete",
+      "component_id": "p47_7cfe3ad1cad24bd25576b7aba33791ec",
+      "generated_only": true,
+      "kind": "contract",
+      "path": "contracts/phase-4/p4-7/scenario-manifest.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "20E62E09DA60AB3D2A3E88EA9EC1CBF3F717463D041486A59CB712B508822A6C",
+      "verified": true
+    },
+    {
+      "byte_length": 219829,
+      "completeness": "complete",
+      "component_id": "p47_e88945d62b6cfddc9718e378be7823a2",
+      "generated_only": true,
+      "kind": "result",
+      "path": "contracts/phase-4/p4-7/scenario-results.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "86CA4DF3182FC0214A0E53FF4106713BE49121C1022C2045B2E8BE9F3901D8B9",
+      "verified": true
+    },
+    {
+      "byte_length": 624,
+      "completeness": "complete",
+      "component_id": "p47_bce8f825b25a53ed8c43f344135c7ba4",
+      "generated_only": true,
+      "kind": "projection",
+      "path": "contracts/phase-4/p4-7/slsa-projection.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "231E7AA7C827760B860686BC5BCF0410D8BC3D55D5EDE80D1BE795F45244E6DB",
+      "verified": true
+    },
+    {
+      "byte_length": 7628,
+      "completeness": "complete",
+      "component_id": "p47_fa55872c17733556ec8009cc967abfaf",
+      "generated_only": true,
+      "kind": "contract",
+      "path": "contracts/phase-4/p4-7/ui-accessibility.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "2109E6369F5E55887E5BAA997D4A0BC3F9E4DECB5F6ECD37AA8B03FC749187F2",
+      "verified": true
+    },
+    {
+      "byte_length": 1236,
+      "completeness": "complete",
+      "component_id": "p47_ba7c246d0996afaa110e307719c0b499",
+      "generated_only": true,
+      "kind": "document",
+      "path": "docs/phase-4/p4-7-evidence-review.md",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "B3AFA2F29A3D51ED22F4B2B67258DC21C0C2C834B0B8BB4CC0F70848754FF560",
+      "verified": true
+    },
+    {
+      "byte_length": 1287,
+      "completeness": "complete",
+      "component_id": "p47_1e820adb36a61a7347587952ab870174",
+      "generated_only": true,
+      "kind": "document",
+      "path": "docs/phase-4/p4-7-generated-operations.md",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "71751C4404226582970C7EFBCBADFA906FD0F37CF0605034C1FA79B4330B4388",
+      "verified": true
+    },
+    {
+      "byte_length": 435,
+      "completeness": "complete",
+      "component_id": "p47_318d3b1a48f6d2cd84b796106b56e040",
+      "generated_only": true,
+      "kind": "document",
+      "path": "docs/phase-4/p4-7-handoff.md",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "5AF57C8DBB9AC0B7DB9DBC174F1C8012203A451DD66ABE48CED7C86212345789",
+      "verified": true
+    },
+    {
+      "byte_length": 446,
+      "completeness": "complete",
+      "component_id": "p47_3055c07ff5593c780b80fd29fedf56e3",
+      "generated_only": true,
+      "kind": "document",
+      "path": "docs/phase-4/p4-7-production-prerequisites.md",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "68D67BE1171D314BF057A6DB91CFE1F115B063B31F431B6E44B579D34872B9BF",
+      "verified": true
+    },
+    {
+      "byte_length": 8644,
+      "completeness": "complete",
+      "component_id": "p47_6f052d9d1ac73544d71ed7fcac059ee3",
+      "generated_only": true,
+      "kind": "fixture",
+      "path": "fixtures/phase4/p4-7/generated-expected-outcomes-v1.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "06244AB15BDA0D5D666367C413F8440E3CCF66B571B9EBA9E94C8EDFC13CA696",
+      "verified": true
+    },
+    {
+      "byte_length": 178771,
+      "completeness": "complete",
+      "component_id": "p47_b6f4d7812565bdd236ea16121451c137",
+      "generated_only": true,
+      "kind": "fixture",
+      "path": "fixtures/phase4/p4-7/generated-pairwise-cases-v1.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "EFC4E5B337045462BEFF5FA6E6E80FA88CB490F7405D8B91634C2B625014096F",
+      "verified": true
+    },
+    {
+      "byte_length": 21278,
+      "completeness": "complete",
+      "component_id": "p47_d1b8bcfa411ffd63a751d4c4ebbfb5f4",
+      "generated_only": true,
+      "kind": "fixture",
+      "path": "fixtures/phase4/p4-7/generated-scenario-fixtures-v1.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "D018D6EC9E55B05A376BB9D09732016A9F59C24CBE0678F19E01891992BB7E73",
+      "verified": true
+    },
+    {
+      "byte_length": 22785,
+      "completeness": "complete",
+      "component_id": "p47_7bfaebcc3bc43cec1da0c9634812476f",
+      "generated_only": true,
+      "kind": "fixture",
+      "path": "fixtures/phase4/p4-7/generated-scenario-manifest-v1.json",
+      "producer": "phase47.generator",
+      "producer_version": "1.0.0",
+      "sha256": "20E62E09DA60AB3D2A3E88EA9EC1CBF3F717463D041486A59CB712B508822A6C",
+      "verified": true
+    }
+  ],
+  "contract_type": "hcam.acceptance.evidence-index.v1",
+  "edges": [
+    {
+      "edge_id": "edge_d64eef189701306f90f55ad304789dd0",
+      "relation": "derived_from",
+      "source_component_id": "p47_7bfaebcc3bc43cec1da0c9634812476f",
+      "target_component_id": "p47_e88945d62b6cfddc9718e378be7823a2"
+    },
+    {
+      "edge_id": "edge_12c33b115a7f7ac7863f2a5776e407f5",
+      "relation": "supports",
+      "source_component_id": "p47_e88945d62b6cfddc9718e378be7823a2",
+      "target_component_id": "p47_7f073abe93e564b8b18dbb3f01d0322a"
+    },
+    {
+      "edge_id": "edge_bea581596c006d7961949003a6b3837e",
+      "relation": "limits",
+      "source_component_id": "p47_7d30c6723d644b6ed0ed895d3bd6e4e6",
+      "target_component_id": "p47_7f073abe93e564b8b18dbb3f01d0322a"
+    },
+    {
+      "edge_id": "edge_aa18fcab1742ce865348e021a515109c",
+      "relation": "derived_from",
+      "source_component_id": "p47_02a5597c14f864198dc1be6b1384078f",
+      "target_component_id": "p47_f64da18dc02e0b9ce0d4345c04f5ca46"
+    },
+    {
+      "edge_id": "edge_b5d3f985b6a30192835399a85490fc76",
+      "relation": "derived_from",
+      "source_component_id": "p47_f50349f04af1a283043fcf1ab7b46995",
+      "target_component_id": "p47_2f36083f4d99a30ee2c5f164406c90d6"
+    },
+    {
+      "edge_id": "edge_78f4c4806f13d15ef94e2ca234aa41ec",
+      "relation": "supports",
+      "source_component_id": "p47_fa55872c17733556ec8009cc967abfaf",
+      "target_component_id": "p47_27ec018333f88c8df37aa7fb188ecfba"
+    }
+  ],
+  "generated_only": true,
+  "source_commit": "6ad9ff4b06b5f5516e5b346408807a70fe6466a0"
+}

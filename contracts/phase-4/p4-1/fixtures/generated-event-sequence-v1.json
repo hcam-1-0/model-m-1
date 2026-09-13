@@ -1,0 +1,691 @@
+{
+  "events": [
+    {
+      "camera_id": "generated-camera-07",
+      "chronology": {
+        "corrected_at": null,
+        "observed_at": "2026-01-01T00:00:01Z",
+        "occurred_at": "2026-01-01T00:00:01Z",
+        "received_at": "2026-01-01T00:00:01Z",
+        "recorded_at": "2026-01-01T00:00:01Z"
+      },
+      "contract_type": "hcam.intelligence.correlation-ingress-event.v1",
+      "department": "generated-lab",
+      "event_id": "generated-event-1",
+      "event_type": "hcam.analytics.observation.created.v1",
+      "generated_only": true,
+      "operational": false,
+      "profile_id": "generated-vehicle-correlation",
+      "schema_version": 1,
+      "signals": {
+        "confidence": 0.9,
+        "direction": null,
+        "generated_reference": "generated-vehicle-a",
+        "local_track_id": null,
+        "location_relation": null,
+        "object_class": "car",
+        "signal_kind": "observation",
+        "source_sequence": 1,
+        "tracker_epoch": null
+      },
+      "stream_id": "str_77777777777777777777777777777777",
+      "subject_kind": "vehicle"
+    },
+    {
+      "camera_id": "generated-camera-07",
+      "chronology": {
+        "corrected_at": null,
+        "observed_at": "2026-01-01T00:00:02Z",
+        "occurred_at": "2026-01-01T00:00:02Z",
+        "received_at": "2026-01-01T00:00:02Z",
+        "recorded_at": "2026-01-01T00:00:02Z"
+      },
+      "contract_type": "hcam.intelligence.correlation-ingress-event.v1",
+      "department": "generated-lab",
+      "event_id": "generated-event-2",
+      "event_type": "hcam.analytics.observation.created.v1",
+      "generated_only": true,
+      "operational": false,
+      "profile_id": "generated-vehicle-correlation",
+      "schema_version": 1,
+      "signals": {
+        "confidence": 0.9,
+        "direction": null,
+        "generated_reference": "generated-vehicle-a",
+        "local_track_id": null,
+        "location_relation": null,
+        "object_class": "car",
+        "signal_kind": "observation",
+        "source_sequence": 2,
+        "tracker_epoch": null
+      },
+      "stream_id": "str_77777777777777777777777777777777",
+      "subject_kind": "vehicle"
+    },
+    {
+      "camera_id": "generated-camera-07",
+      "chronology": {
+        "corrected_at": null,
+        "observed_at": "2026-01-01T00:00:20Z",
+        "occurred_at": "2026-01-01T00:00:20Z",
+        "received_at": "2026-01-01T00:00:20Z",
+        "recorded_at": "2026-01-01T00:00:20Z"
+      },
+      "contract_type": "hcam.intelligence.correlation-ingress-event.v1",
+      "department": "generated-lab",
+      "event_id": "generated-event-3",
+      "event_type": "hcam.analytics.observation.created.v1",
+      "generated_only": true,
+      "operational": false,
+      "profile_id": "generated-vehicle-correlation",
+      "schema_version": 1,
+      "signals": {
+        "confidence": 0.9,
+        "direction": null,
+        "generated_reference": "generated-vehicle-a",
+        "local_track_id": null,
+        "location_relation": null,
+        "object_class": "car",
+        "signal_kind": "observation",
+        "source_sequence": 3,
+        "tracker_epoch": null
+      },
+      "stream_id": "str_77777777777777777777777777777777",
+      "subject_kind": "vehicle"
+    }
+  ],
+  "expected": {
+    "accepted_count": 3,
+    "checkpoints": [
+      {
+        "active_window_count": 2,
+        "contract_type": "hcam.intelligence.partition-checkpoint.v1",
+        "department": "generated-lab",
+        "generated_only": true,
+        "last_source_sequence": 3,
+        "maximum_occurred_at": "2026-01-01T00:00:20Z",
+        "partition_digest": "sha256:835ac1671a4f85c7fb03d0d267cb8c93ba40c198bee77540a63f40d2a6cfe5d7",
+        "profile_id": "generated-vehicle-correlation",
+        "receipt_sequence": 2,
+        "version": 1,
+        "watermark_at": "2026-01-01T00:00:18Z"
+      }
+    ],
+    "contract_type": "hcam.intelligence.correlation-batch-result.v1",
+    "duplicate_count": 0,
+    "generated_only": true,
+    "hypotheses": [
+      {
+        "abstained": false,
+        "abstention_reason": null,
+        "arbitration_digest": "sha256:54f4224e7b8d5029716bb4644bab373886ed9d4bf19a28d816668c4b1a06287b",
+        "authority_class": "mandatory_review",
+        "chronology": {
+          "corrected_at": null,
+          "observed_at": "2026-01-01T00:00:02Z",
+          "occurred_at": "2026-01-01T00:00:01Z",
+          "received_at": "2026-01-01T00:00:02Z",
+          "recorded_at": "2026-01-01T00:00:02Z"
+        },
+        "confidence": 1.0,
+        "contract_type": "hcam.intelligence.correlation-hypothesis.v2",
+        "contradiction_count": 0,
+        "department": "generated-lab",
+        "evidence": [
+          {
+            "chronology": {
+              "corrected_at": null,
+              "observed_at": "2026-01-01T00:00:01Z",
+              "occurred_at": "2026-01-01T00:00:01Z",
+              "received_at": "2026-01-01T00:00:01Z",
+              "recorded_at": "2026-01-01T00:00:01Z"
+            },
+            "event_id": "generated-event-1",
+            "evidence_id": "evid_3fb7404ca15ffe1cf5580dc94cdc1467",
+            "role": "supports",
+            "sequence": 0,
+            "source_digest": "sha256:975bd2b3eda783e4ce1dc439f493a356b9a6fa22f76f237603b68b543aac88f9"
+          },
+          {
+            "chronology": {
+              "corrected_at": null,
+              "observed_at": "2026-01-01T00:00:02Z",
+              "occurred_at": "2026-01-01T00:00:02Z",
+              "received_at": "2026-01-01T00:00:02Z",
+              "recorded_at": "2026-01-01T00:00:02Z"
+            },
+            "event_id": "generated-event-2",
+            "evidence_id": "evid_50bf41124ab9a37376ce468ffaea3869",
+            "role": "supports",
+            "sequence": 1,
+            "source_digest": "sha256:c43a2834aeaaf456511ceff70bcb689cb74b30859396636f0b5e2cd4c1bc9b5c"
+          }
+        ],
+        "flat_projection": {
+          "contract_type": "hcam.intelligence.correlation-flat-projection.v1",
+          "contradiction_count": 0,
+          "event_count": 2,
+          "graph_digest": "sha256:efdbdd2b62252bd79e56b866c89b670a05816310926be2fe9a4ef54dc3d177c8",
+          "hypothesis_id": "hyp_31dfb23b2104ccfcba54451e5cc23085",
+          "missing_evidence_count": 0,
+          "projection_digest": "sha256:c4470e24e0843ca9d2532452fa4ecf4e538a905e589af580724bcaf453dfde06",
+          "projection_version": "hcam.intelligence.correlation-flat-projection.v1",
+          "summary_code": "hypothesis.proposed",
+          "supporting_evidence_count": 2
+        },
+        "generated_only": true,
+        "graph": {
+          "edges": [
+            {
+              "edge_id": "edge_5e94a23ee0488188fdb8bea5b1dc7bf2",
+              "role": "supports",
+              "source_node_id": "event_5cca943a906a6e0f4c606ce80e9feaf3",
+              "target_node_id": "hypothesis"
+            },
+            {
+              "edge_id": "edge_037b0988f75335224df09ab0b48f06c3",
+              "role": "supports",
+              "source_node_id": "event_7cb493a5b7044057bca51054d1323036",
+              "target_node_id": "hypothesis"
+            }
+          ],
+          "nodes": [
+            {
+              "kind": "hypothesis",
+              "node_id": "hypothesis",
+              "reference_digest": "sha256:39d1e8855bbdd82c5edd8194f3802d8ea88ee4f574e7922550f1419409aed38f",
+              "reference_id": "hyp_31dfb23b2104ccfcba54451e5cc23085"
+            },
+            {
+              "kind": "event",
+              "node_id": "event_5cca943a906a6e0f4c606ce80e9feaf3",
+              "reference_digest": "sha256:975bd2b3eda783e4ce1dc439f493a356b9a6fa22f76f237603b68b543aac88f9",
+              "reference_id": "generated-event-1"
+            },
+            {
+              "kind": "event",
+              "node_id": "event_7cb493a5b7044057bca51054d1323036",
+              "reference_digest": "sha256:c43a2834aeaaf456511ceff70bcb689cb74b30859396636f0b5e2cd4c1bc9b5c",
+              "reference_id": "generated-event-2"
+            },
+            {
+              "kind": "lane",
+              "node_id": "lane_2e3831587eb8f297fec45ecf3619ee3d",
+              "reference_digest": "sha256:202047815572b5f66706b7862ceb69505eaa831d0f44dcb27812a4f4fc8c1b2c",
+              "reference_id": "deterministic_cpu"
+            },
+            {
+              "kind": "lane",
+              "node_id": "lane_7739e009a15f14fb8c16d8a227434234",
+              "reference_digest": "sha256:35a7f6bf67024004b373e99a1ffb7ce6a39bd9c9413421c430988a3d03db17b5",
+              "reference_id": "model_first_shadow"
+            },
+            {
+              "kind": "lane",
+              "node_id": "lane_a8d7a27f05e915b9058abe09cbc589c4",
+              "reference_digest": "sha256:b89089f44b3c047563d5616f854979493a30b3c43fce609e433ac93912718224",
+              "reference_id": "probabilistic"
+            },
+            {
+              "kind": "lane",
+              "node_id": "lane_330d9b3c00cecde224290d48c12a2745",
+              "reference_digest": "sha256:0b9aabc462f3d3d44cbee456070eadfe3e6971a4d008a572de58524be10c7c17",
+              "reference_id": "temporal_graph"
+            },
+            {
+              "kind": "lane",
+              "node_id": "lane_be6db6260538373641e0663d985a6e9b",
+              "reference_digest": "sha256:cc3105c8644382d59495e35e3c0cefe8d9cf844b95925b5b265523fd937ae3c9",
+              "reference_id": "uncertainty_ensemble"
+            }
+          ]
+        },
+        "graph_digest": "sha256:efdbdd2b62252bd79e56b866c89b670a05816310926be2fe9a4ef54dc3d177c8",
+        "hypothesis_id": "hyp_31dfb23b2104ccfcba54451e5cc23085",
+        "hypothesis_key": "sha256:39d1e8855bbdd82c5edd8194f3802d8ea88ee4f574e7922550f1419409aed38f",
+        "lane_results": [
+          {
+            "abstained": false,
+            "contract_type": "hcam.intelligence.lane-result.v1",
+            "contradiction_count": 0,
+            "evidence_ids": [
+              "generated-event-1",
+              "generated-event-2"
+            ],
+            "failure_code": null,
+            "generated_fixture_result": false,
+            "generated_only": true,
+            "lane": "deterministic_cpu",
+            "lineage_digest": "sha256:202047815572b5f66706b7862ceb69505eaa831d0f44dcb27812a4f4fc8c1b2c",
+            "operational": false,
+            "score": 1.0,
+            "status": "completed",
+            "uncertainty": 0.0
+          },
+          {
+            "abstained": true,
+            "contract_type": "hcam.intelligence.lane-result.v1",
+            "contradiction_count": 0,
+            "evidence_ids": [],
+            "failure_code": "capability_unavailable",
+            "generated_fixture_result": false,
+            "generated_only": true,
+            "lane": "model_first_shadow",
+            "lineage_digest": "sha256:35a7f6bf67024004b373e99a1ffb7ce6a39bd9c9413421c430988a3d03db17b5",
+            "operational": false,
+            "score": null,
+            "status": "unavailable",
+            "uncertainty": null
+          },
+          {
+            "abstained": true,
+            "contract_type": "hcam.intelligence.lane-result.v1",
+            "contradiction_count": 0,
+            "evidence_ids": [],
+            "failure_code": "capability_unavailable",
+            "generated_fixture_result": false,
+            "generated_only": true,
+            "lane": "probabilistic",
+            "lineage_digest": "sha256:b89089f44b3c047563d5616f854979493a30b3c43fce609e433ac93912718224",
+            "operational": false,
+            "score": null,
+            "status": "unavailable",
+            "uncertainty": null
+          },
+          {
+            "abstained": true,
+            "contract_type": "hcam.intelligence.lane-result.v1",
+            "contradiction_count": 0,
+            "evidence_ids": [],
+            "failure_code": "capability_unavailable",
+            "generated_fixture_result": false,
+            "generated_only": true,
+            "lane": "temporal_graph",
+            "lineage_digest": "sha256:0b9aabc462f3d3d44cbee456070eadfe3e6971a4d008a572de58524be10c7c17",
+            "operational": false,
+            "score": null,
+            "status": "unavailable",
+            "uncertainty": null
+          },
+          {
+            "abstained": true,
+            "contract_type": "hcam.intelligence.lane-result.v1",
+            "contradiction_count": 0,
+            "evidence_ids": [],
+            "failure_code": "capability_unavailable",
+            "generated_fixture_result": false,
+            "generated_only": true,
+            "lane": "uncertainty_ensemble",
+            "lineage_digest": "sha256:cc3105c8644382d59495e35e3c0cefe8d9cf844b95925b5b265523fd937ae3c9",
+            "operational": false,
+            "score": null,
+            "status": "unavailable",
+            "uncertainty": null
+          }
+        ],
+        "operational": false,
+        "partition_digest": "sha256:835ac1671a4f85c7fb03d0d267cb8c93ba40c198bee77540a63f40d2a6cfe5d7",
+        "profile_id": "generated-vehicle-correlation",
+        "profile_version": "sha256:639f38592d6a5ae787091988cee2e17435c51c4b283b4ff735f48eb82d85d9bd",
+        "retention_class": "derived.intelligence.standard",
+        "revision": 1,
+        "run_id": "crun_970dedffa63afd6c563d3f40ef00e680",
+        "state": "proposed",
+        "subject_kind": "vehicle",
+        "uncertainty": 0.0,
+        "window": {
+          "completeness": "complete",
+          "contract_type": "hcam.intelligence.correlation-window.v1",
+          "department": "generated-lab",
+          "event_ids": [
+            "generated-event-1",
+            "generated-event-2"
+          ],
+          "generated_only": true,
+          "partition_digest": "sha256:835ac1671a4f85c7fb03d0d267cb8c93ba40c198bee77540a63f40d2a6cfe5d7",
+          "profile_id": "generated-vehicle-correlation",
+          "watermark_at": "2026-01-01T00:00:18Z",
+          "window_end": "2026-01-01T00:00:10Z",
+          "window_id": "cwin_701dff5df4c48a32fd4399071414f5ad",
+          "window_kind": "tumbling",
+          "window_start": "2026-01-01T00:00:00Z"
+        }
+      },
+      {
+        "abstained": true,
+        "abstention_reason": "insufficient_deterministic_evidence",
+        "arbitration_digest": "sha256:36ecd5d22ba207ef0d84fef0ff38abccf33a53785e08f3447a473b4c2d65a0a6",
+        "authority_class": "mandatory_review",
+        "chronology": {
+          "corrected_at": null,
+          "observed_at": "2026-01-01T00:00:20Z",
+          "occurred_at": "2026-01-01T00:00:20Z",
+          "received_at": "2026-01-01T00:00:20Z",
+          "recorded_at": "2026-01-01T00:00:20Z"
+        },
+        "confidence": 1.0,
+        "contract_type": "hcam.intelligence.correlation-hypothesis.v2",
+        "contradiction_count": 0,
+        "department": "generated-lab",
+        "evidence": [
+          {
+            "chronology": {
+              "corrected_at": null,
+              "observed_at": "2026-01-01T00:00:20Z",
+              "occurred_at": "2026-01-01T00:00:20Z",
+              "received_at": "2026-01-01T00:00:20Z",
+              "recorded_at": "2026-01-01T00:00:20Z"
+            },
+            "event_id": "generated-event-3",
+            "evidence_id": "evid_d63a3ae050ad526885596488c6d7e165",
+            "role": "supports",
+            "sequence": 0,
+            "source_digest": "sha256:4f831c8f23d57ca0c516efcd3fd08a62120f61e968dabd7caa8622d0218275da"
+          }
+        ],
+        "flat_projection": {
+          "contract_type": "hcam.intelligence.correlation-flat-projection.v1",
+          "contradiction_count": 0,
+          "event_count": 1,
+          "graph_digest": "sha256:b64e93ead4c289788220e04619186d7c9dc1fa795e59f05213d8034452734081",
+          "hypothesis_id": "hyp_93905f0eccf394cfeae65e2ec5968d4c",
+          "missing_evidence_count": 0,
+          "projection_digest": "sha256:a90243566b2c7ca0f0b07c873fd43a4d5a1a618c4074b0704f1783f5250f3e96",
+          "projection_version": "hcam.intelligence.correlation-flat-projection.v1",
+          "summary_code": "hypothesis.abstained",
+          "supporting_evidence_count": 1
+        },
+        "generated_only": true,
+        "graph": {
+          "edges": [
+            {
+              "edge_id": "edge_f44481d3066ca25fda652e60d1ee3810",
+              "role": "supports",
+              "source_node_id": "event_d4aa602af2fe85ba056c5e8a3ba48930",
+              "target_node_id": "hypothesis"
+            }
+          ],
+          "nodes": [
+            {
+              "kind": "hypothesis",
+              "node_id": "hypothesis",
+              "reference_digest": "sha256:639e1e33191346ffe67937ce80de9ea6d89b59e6a98a893d6bc25bf748ae496d",
+              "reference_id": "hyp_93905f0eccf394cfeae65e2ec5968d4c"
+            },
+            {
+              "kind": "event",
+              "node_id": "event_d4aa602af2fe85ba056c5e8a3ba48930",
+              "reference_digest": "sha256:4f831c8f23d57ca0c516efcd3fd08a62120f61e968dabd7caa8622d0218275da",
+              "reference_id": "generated-event-3"
+            },
+            {
+              "kind": "lane",
+              "node_id": "lane_2e3831587eb8f297fec45ecf3619ee3d",
+              "reference_digest": "sha256:fe85c3d5f49609cbddb62870bc6e758cf8cb269247ed0f8019bcbba176fd153f",
+              "reference_id": "deterministic_cpu"
+            },
+            {
+              "kind": "lane",
+              "node_id": "lane_7739e009a15f14fb8c16d8a227434234",
+              "reference_digest": "sha256:35a7f6bf67024004b373e99a1ffb7ce6a39bd9c9413421c430988a3d03db17b5",
+              "reference_id": "model_first_shadow"
+            },
+            {
+              "kind": "lane",
+              "node_id": "lane_a8d7a27f05e915b9058abe09cbc589c4",
+              "reference_digest": "sha256:b89089f44b3c047563d5616f854979493a30b3c43fce609e433ac93912718224",
+              "reference_id": "probabilistic"
+            },
+            {
+              "kind": "lane",
+              "node_id": "lane_330d9b3c00cecde224290d48c12a2745",
+              "reference_digest": "sha256:0b9aabc462f3d3d44cbee456070eadfe3e6971a4d008a572de58524be10c7c17",
+              "reference_id": "temporal_graph"
+            },
+            {
+              "kind": "lane",
+              "node_id": "lane_be6db6260538373641e0663d985a6e9b",
+              "reference_digest": "sha256:cc3105c8644382d59495e35e3c0cefe8d9cf844b95925b5b265523fd937ae3c9",
+              "reference_id": "uncertainty_ensemble"
+            }
+          ]
+        },
+        "graph_digest": "sha256:b64e93ead4c289788220e04619186d7c9dc1fa795e59f05213d8034452734081",
+        "hypothesis_id": "hyp_93905f0eccf394cfeae65e2ec5968d4c",
+        "hypothesis_key": "sha256:639e1e33191346ffe67937ce80de9ea6d89b59e6a98a893d6bc25bf748ae496d",
+        "lane_results": [
+          {
+            "abstained": true,
+            "contract_type": "hcam.intelligence.lane-result.v1",
+            "contradiction_count": 0,
+            "evidence_ids": [
+              "generated-event-3"
+            ],
+            "failure_code": null,
+            "generated_fixture_result": false,
+            "generated_only": true,
+            "lane": "deterministic_cpu",
+            "lineage_digest": "sha256:fe85c3d5f49609cbddb62870bc6e758cf8cb269247ed0f8019bcbba176fd153f",
+            "operational": false,
+            "score": 1.0,
+            "status": "completed",
+            "uncertainty": 1.0
+          },
+          {
+            "abstained": true,
+            "contract_type": "hcam.intelligence.lane-result.v1",
+            "contradiction_count": 0,
+            "evidence_ids": [],
+            "failure_code": "capability_unavailable",
+            "generated_fixture_result": false,
+            "generated_only": true,
+            "lane": "model_first_shadow",
+            "lineage_digest": "sha256:35a7f6bf67024004b373e99a1ffb7ce6a39bd9c9413421c430988a3d03db17b5",
+            "operational": false,
+            "score": null,
+            "status": "unavailable",
+            "uncertainty": null
+          },
+          {
+            "abstained": true,
+            "contract_type": "hcam.intelligence.lane-result.v1",
+            "contradiction_count": 0,
+            "evidence_ids": [],
+            "failure_code": "capability_unavailable",
+            "generated_fixture_result": false,
+            "generated_only": true,
+            "lane": "probabilistic",
+            "lineage_digest": "sha256:b89089f44b3c047563d5616f854979493a30b3c43fce609e433ac93912718224",
+            "operational": false,
+            "score": null,
+            "status": "unavailable",
+            "uncertainty": null
+          },
+          {
+            "abstained": true,
+            "contract_type": "hcam.intelligence.lane-result.v1",
+            "contradiction_count": 0,
+            "evidence_ids": [],
+            "failure_code": "capability_unavailable",
+            "generated_fixture_result": false,
+            "generated_only": true,
+            "lane": "temporal_graph",
+            "lineage_digest": "sha256:0b9aabc462f3d3d44cbee456070eadfe3e6971a4d008a572de58524be10c7c17",
+            "operational": false,
+            "score": null,
+            "status": "unavailable",
+            "uncertainty": null
+          },
+          {
+            "abstained": true,
+            "contract_type": "hcam.intelligence.lane-result.v1",
+            "contradiction_count": 0,
+            "evidence_ids": [],
+            "failure_code": "capability_unavailable",
+            "generated_fixture_result": false,
+            "generated_only": true,
+            "lane": "uncertainty_ensemble",
+            "lineage_digest": "sha256:cc3105c8644382d59495e35e3c0cefe8d9cf844b95925b5b265523fd937ae3c9",
+            "operational": false,
+            "score": null,
+            "status": "unavailable",
+            "uncertainty": null
+          }
+        ],
+        "operational": false,
+        "partition_digest": "sha256:835ac1671a4f85c7fb03d0d267cb8c93ba40c198bee77540a63f40d2a6cfe5d7",
+        "profile_id": "generated-vehicle-correlation",
+        "profile_version": "sha256:639f38592d6a5ae787091988cee2e17435c51c4b283b4ff735f48eb82d85d9bd",
+        "retention_class": "derived.intelligence.standard",
+        "revision": 1,
+        "run_id": "crun_970dedffa63afd6c563d3f40ef00e680",
+        "state": "abstained",
+        "subject_kind": "vehicle",
+        "uncertainty": 1.0,
+        "window": {
+          "completeness": "open",
+          "contract_type": "hcam.intelligence.correlation-window.v1",
+          "department": "generated-lab",
+          "event_ids": [
+            "generated-event-3"
+          ],
+          "generated_only": true,
+          "partition_digest": "sha256:835ac1671a4f85c7fb03d0d267cb8c93ba40c198bee77540a63f40d2a6cfe5d7",
+          "profile_id": "generated-vehicle-correlation",
+          "watermark_at": "2026-01-01T00:00:18Z",
+          "window_end": "2026-01-01T00:00:30Z",
+          "window_id": "cwin_3f43eed088664067de49a07a1ff7e1dd",
+          "window_kind": "tumbling",
+          "window_start": "2026-01-01T00:00:20Z"
+        }
+      }
+    ],
+    "input_count": 3,
+    "operational": false,
+    "profile_id": "generated-vehicle-correlation",
+    "receipts": [
+      {
+        "accepted": true,
+        "contract_type": "hcam.intelligence.correlation-receipt.v1",
+        "department": "generated-lab",
+        "disposition": "accepted",
+        "event_digest": "sha256:975bd2b3eda783e4ce1dc439f493a356b9a6fa22f76f237603b68b543aac88f9",
+        "event_id": "generated-event-1",
+        "generated_only": true,
+        "occurred_at": "2026-01-01T00:00:01Z",
+        "partition_digest": "sha256:835ac1671a4f85c7fb03d0d267cb8c93ba40c198bee77540a63f40d2a6cfe5d7",
+        "reason_code": "accepted",
+        "receipt_id": "crec_bd7866dc505b2a679a2386d3bc8ca54c",
+        "receipt_sequence": 0,
+        "recorded_at": "2026-01-01T00:00:01Z"
+      },
+      {
+        "accepted": true,
+        "contract_type": "hcam.intelligence.correlation-receipt.v1",
+        "department": "generated-lab",
+        "disposition": "accepted",
+        "event_digest": "sha256:c43a2834aeaaf456511ceff70bcb689cb74b30859396636f0b5e2cd4c1bc9b5c",
+        "event_id": "generated-event-2",
+        "generated_only": true,
+        "occurred_at": "2026-01-01T00:00:02Z",
+        "partition_digest": "sha256:835ac1671a4f85c7fb03d0d267cb8c93ba40c198bee77540a63f40d2a6cfe5d7",
+        "reason_code": "accepted",
+        "receipt_id": "crec_b8cc7d85ea7820272a80f68a748d1cb1",
+        "receipt_sequence": 1,
+        "recorded_at": "2026-01-01T00:00:02Z"
+      },
+      {
+        "accepted": true,
+        "contract_type": "hcam.intelligence.correlation-receipt.v1",
+        "department": "generated-lab",
+        "disposition": "accepted",
+        "event_digest": "sha256:4f831c8f23d57ca0c516efcd3fd08a62120f61e968dabd7caa8622d0218275da",
+        "event_id": "generated-event-3",
+        "generated_only": true,
+        "occurred_at": "2026-01-01T00:00:20Z",
+        "partition_digest": "sha256:835ac1671a4f85c7fb03d0d267cb8c93ba40c198bee77540a63f40d2a6cfe5d7",
+        "reason_code": "accepted",
+        "receipt_id": "crec_ca285a568fa1878d9bb311d44a22b626",
+        "receipt_sequence": 2,
+        "recorded_at": "2026-01-01T00:00:20Z"
+      }
+    ],
+    "rejected_count": 0,
+    "replay_binding": {
+      "clock_semantics_version": "hcam.intelligence.event-time-watermark.v1",
+      "contract_type": "hcam.intelligence.correlation-replay-binding.v1",
+      "event_contract_version": "hcam.intelligence.correlation-ingress-event.v1",
+      "ordered_event_digests": [
+        "sha256:975bd2b3eda783e4ce1dc439f493a356b9a6fa22f76f237603b68b543aac88f9",
+        "sha256:c43a2834aeaaf456511ceff70bcb689cb74b30859396636f0b5e2cd4c1bc9b5c",
+        "sha256:4f831c8f23d57ca0c516efcd3fd08a62120f61e968dabd7caa8622d0218275da"
+      ],
+      "partition_semantics_version": "hcam.intelligence.partitioning.v1",
+      "profile_configuration_digest": "sha256:6e20813b7040cbc16b34b1fa073052db7cd838443d93bff5cb9b6a91d72e93a8",
+      "profile_id": "generated-vehicle-correlation",
+      "profile_version": "sha256:639f38592d6a5ae787091988cee2e17435c51c4b283b4ff735f48eb82d85d9bd",
+      "window_semantics_version": "hcam.intelligence.windows.v1"
+    },
+    "result_digest": "sha256:6e9235ba8a2fdf54e2adecdff8ac2c4ff54d6a9dace0bc475a5b74fee813dd1d",
+    "run_id": "crun_970dedffa63afd6c563d3f40ef00e680",
+    "windows": [
+      {
+        "completeness": "complete",
+        "contract_type": "hcam.intelligence.correlation-window.v1",
+        "department": "generated-lab",
+        "event_ids": [
+          "generated-event-1",
+          "generated-event-2"
+        ],
+        "generated_only": true,
+        "partition_digest": "sha256:835ac1671a4f85c7fb03d0d267cb8c93ba40c198bee77540a63f40d2a6cfe5d7",
+        "profile_id": "generated-vehicle-correlation",
+        "watermark_at": "2026-01-01T00:00:18Z",
+        "window_end": "2026-01-01T00:00:10Z",
+        "window_id": "cwin_701dff5df4c48a32fd4399071414f5ad",
+        "window_kind": "tumbling",
+        "window_start": "2026-01-01T00:00:00Z"
+      },
+      {
+        "completeness": "open",
+        "contract_type": "hcam.intelligence.correlation-window.v1",
+        "department": "generated-lab",
+        "event_ids": [
+          "generated-event-3"
+        ],
+        "generated_only": true,
+        "partition_digest": "sha256:835ac1671a4f85c7fb03d0d267cb8c93ba40c198bee77540a63f40d2a6cfe5d7",
+        "profile_id": "generated-vehicle-correlation",
+        "watermark_at": "2026-01-01T00:00:18Z",
+        "window_end": "2026-01-01T00:00:30Z",
+        "window_id": "cwin_3f43eed088664067de49a07a1ff7e1dd",
+        "window_kind": "tumbling",
+        "window_start": "2026-01-01T00:00:20Z"
+      }
+    ]
+  },
+  "profile": {
+    "allowed_event_types": [
+      "hcam.analytics.observation.created.v1"
+    ],
+    "allowed_lateness_seconds": 2,
+    "contract_type": "hcam.intelligence.correlation-profile.v1",
+    "future_clock_skew_seconds": 5,
+    "generated_only": true,
+    "maximum_active_windows": 8,
+    "maximum_contradictions": 0,
+    "maximum_events_per_window": 100,
+    "minimum_supporting_events": 2,
+    "operational": false,
+    "partition_dimensions": [
+      "generated_reference"
+    ],
+    "profile_id": "generated-vehicle-correlation",
+    "profile_version": "sha256:639f38592d6a5ae787091988cee2e17435c51c4b283b4ff735f48eb82d85d9bd",
+    "session_gap_seconds": null,
+    "subject_kind": "vehicle",
+    "window_kind": "tumbling",
+    "window_seconds": 10
+  },
+  "schema_version": "hcam.phase4.p4_1.generated-event-sequence.v1"
+}

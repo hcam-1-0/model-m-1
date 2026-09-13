@@ -1,0 +1,149 @@
+{
+  "schema_version": "hcam.phase4.p4_2.evidence.v1",
+  "evidence_id": "P4.2-EVIDENCE-R0",
+  "status": "technical_gates_passed_owner_acceptance_pending",
+  "evidence_date": "2026-09-04",
+  "scope": "local generated-only Phase 4.2 rule authoring, canonical compilation, constrained CEL, temporal evaluation, immutable lifecycle, persistence, and non-operational control-plane projections",
+  "base_checkpoint": "c7c2cb084e53d010ac7b54b0ea67e2eba53943bc",
+  "branch": "codex/phase4-rule-authoring-evaluation",
+  "authorizations": [
+    {
+      "decision_id": "D-P4.2-START",
+      "package_id": "P4.2-START-R0",
+      "package_sha256": "F1C4B64883A23240FB787E5203CD62395AA025304247028392BCF20218C3D263"
+    },
+    {
+      "decision_id": "D-P4.2-HISTORICAL-COMPATIBILITY-TEST-AMENDMENT",
+      "authorized_pre_change_paths": [
+        {
+          "path": "tests/test_phase40_migration.py",
+          "sha256": "E748B7E8C4D11E0CE7A02E58135D1AFED30D662F84D7306F20231C6931BC9867"
+        },
+        {
+          "path": "tests/test_phase41_migration.py",
+          "sha256": "1561B3DBF0DCE197FFD2BAC82074B7648C2C5CB0EDB9D1A58D96DC709E60A109"
+        },
+        {
+          "path": "tests/test_phase40_readiness.py",
+          "sha256": "51A4B45A8D2332FCD3CFA58183ADB8E3FE868635DA9D8D9AE149163A63F205F3"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "focused_generated_suite": {
+      "status": "passed",
+      "passed": 110,
+      "skipped": 0,
+      "warning_count": 1,
+      "duration_seconds": 105.98,
+      "scope": "all test_phase42 modules except the separately gated PostgreSQL module"
+    },
+    "coverage": {
+      "status": "passed",
+      "scope": "app/hcam/intelligence/rules/*",
+      "branch_enabled_aggregate_percent": 90.19,
+      "required_percent": 90.0,
+      "statements": 1293,
+      "missed_statements": 89,
+      "branches": 430,
+      "partial_branches": 76
+    },
+    "sqlite_migration_cycle": {
+      "status": "passed",
+      "current_revision": "0014_rule_authoring_evaluation",
+      "historical_revisions": [
+        "0012_intelligence_control_plane",
+        "0013_correlation_foundation"
+      ],
+      "validated_sequence": [
+        "0012_intelligence_control_plane",
+        "0013_correlation_foundation",
+        "0014_rule_authoring_evaluation",
+        "0013_correlation_foundation",
+        "0012_intelligence_control_plane",
+        "0013_correlation_foundation",
+        "0014_rule_authoring_evaluation"
+      ],
+      "alembic_check": "passed",
+      "historical_store_preservation": "passed"
+    },
+    "postgresql_rls": {
+      "status": "not_available",
+      "reason": "HCAM_POSTGRES_TEST_URL is not configured and containers are outside D-P4.2-START",
+      "test_source": "tests/test_phase42_postgres.py",
+      "ci_job_present": true,
+      "local_claim_made": false
+    },
+    "full_regression_suite": {
+      "status": "passed",
+      "passed": 3862,
+      "skipped": 12,
+      "subtests_passed": 119,
+      "warning_count": 1,
+      "duration_seconds": 736.05,
+      "deselected": 0,
+      "skip_boundary": "all twelve skips require an explicit PostgreSQL integration URL, including the P4.2 PostgreSQL row-security test"
+    },
+    "static_and_packaging": {
+      "status": "passed",
+      "ruff": "passed",
+      "compileall": "passed",
+      "git_diff_check": "passed",
+      "build": "offline_source_distribution_and_wheel_passed",
+      "wheel": "hcam_core-0.2.0-py3-none-any.whl",
+      "source_distribution": "hcam_core-0.2.0.tar.gz",
+      "dependency_check": "74_packages_compatible",
+      "dependency_files_immutable": true,
+      "generated_fixture_check": "7_fixture_documents_exact",
+      "existing_supply_chain_evidence_check": "phase34_supply_chain_passed",
+      "fresh_vulnerability_refresh": "not_performed_scope_prohibited"
+    },
+    "historical_regression": {
+      "status": "passed",
+      "p4_0_historical_readiness": "passed_from_accepted_P4_0_evidence_and_source_commit",
+      "p4_1_historical_readiness": "passed_from_accepted_P4_1_evidence_and_source_commit",
+      "historical_compatibility_and_readiness_tests": "22_passed",
+      "phase3_release_contracts": "passed",
+      "phase3_analytics_contracts": "passed",
+      "accepted_p4_0_or_p4_1_evidence_modified": false,
+      "accepted_phase3_files_modified": false
+    }
+  },
+  "security_properties": [
+    "visual presentation fields are separated from executable semantics and receive an independent digest",
+    "rule graphs are typed, bounded, canonicalized, versioned, and rejected on cycles, ambiguity, unreachable nodes, invalid ports, or excessive cost",
+    "CEL accepts only a hash-bound constrained scalar Boolean environment with checked-structure validation and no custom extensions",
+    "temporal evaluation uses event time, deterministic ordering, watermarks, explicit pending states, bounded state, and append-only corrections",
+    "rule versions, compilations, lifecycle events, checkpoints, evaluation revisions, and shadow comparisons are immutable or append-only under their documented contracts",
+    "all generated evaluation outputs are non-operational and mandatory-review; active rule state and autonomous dispatch are rejected",
+    "application queries enforce department scope and the PostgreSQL migration defines forced row-security policies for the seven new stores",
+    "SQLite remains a documented single-worker development boundary while PostgreSQL claim paths use bounded leases and skip-locked semantics",
+    "the public API exposes bounded authoring, validation, lifecycle, and read projections but no public evaluation-start or operational activation route",
+    "P4.2 is disabled by default, forbidden in production, and application startup starts no P4.2 worker",
+    "metrics and failures use bounded low-cardinality labels and sanitized reason codes",
+    "accepted Phase 3, P4.0, and P4.1 contracts, migrations, evidence, and acceptance records remain immutable"
+  ],
+  "known_limitations": [
+    "P4.2 PostgreSQL forced-row-security and concurrency tests were not executed locally because HCAM_POSTGRES_TEST_URL is absent and container execution is outside this authorization",
+    "the unconditional suite therefore contains twelve expected PostgreSQL-URL-dependent skips, including one P4.2 test",
+    "the PostgreSQL migration and CI job are present, but this package makes no local PostgreSQL execution claim",
+    "a fresh vulnerability database refresh or new SBOM generation was not performed because network access, installs, downloads, and dependency changes are prohibited; immutable lock bindings and existing repository supply-chain evidence were checked offline",
+    "the Starlette TestClient emits one known deprecation warning for the repository's locked HTTP client boundary",
+    "the rule runtime remains generated-only, disabled by default, forbidden in production, and has no startup worker or public execution endpoint",
+    "no model, dataset, artifact, inference, camera, media, provider, private data, Government data, operational alert, dispatch, deployment, Kubernetes, or remote Git action is covered",
+    "P4.2 owner acceptance and P4.3 remain separate closed gates"
+  ],
+  "progress_after_technical_validation": {
+    "phase_4_points": 38,
+    "phase_4_total_points": 100,
+    "phase_4_percent": 38.0,
+    "phase_4_percentage_point_change": 13.0,
+    "p4_2_points": 13,
+    "p4_2_total_points": 15,
+    "p4_2_percent": 86.6667,
+    "p4_2_percentage_point_change": 86.6667,
+    "owner_acceptance_points_pending": 2
+  },
+  "remote_git_performed": false
+}

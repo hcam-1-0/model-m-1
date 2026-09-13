@@ -1,0 +1,33 @@
+{
+  "schema_version": "hcam.phase5.p5_5.evidence_contracts.v1",
+  "marker": "HCAM_GENERATED_ONLY_P5_5",
+  "generated_only": true,
+  "contracts": [
+    "evidence_reference",
+    "evidence_state_matrix",
+    "integrity_observation",
+    "verification_history",
+    "bounded_provenance_projection",
+    "custody_record",
+    "opaque_source_reference",
+    "nonoperative_policy_preview"
+  ],
+  "orthogonal_state_axes": [
+    "availability",
+    "integrity",
+    "provenance",
+    "custody",
+    "signature",
+    "access",
+    "legalAssessment"
+  ],
+  "boundaries": {
+    "integrity_is_not_truth": true,
+    "provenance_is_not_custody": true,
+    "external_prov_import": false,
+    "prov_conformance_claim": false,
+    "source_resolution": false,
+    "media_rendering": false,
+    "source_copy_download_print_export_delete_hold_release_or_modify": false
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "hcam.phase4.p4_4.planning-acceptance-proposal.v1",
+  "decision_id": "D-P4.4-PLANNING-R1-ACCEPTANCE",
+  "package_id": "P4.4-PLANNING-R1",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "prepared_on": "2026-09-05",
+  "planning_package_path": "contracts/phase-4/p4-4-planning-r1-package.json",
+  "planning_package_sha256": "42C37E17C73C4708FF3FB6B41532085995C514BA251BAC545DEF2E19632A0205",
+  "recorded_profile": "C/D/A_with_guarded_C_and_D_capability/A/A/A_with_bounded_D_capability/A/C/A/A",
+  "decision_record_path": "contracts/phase-4/p4-4-owner-decisions.json",
+  "decision_record_sha256": "3D5A09C2AA5E282A204D8F87B71257AC2D83343CD9F16A48A804098F3BC58095",
+  "proposed_owner_acceptance_statement": "D-P4.4-PLANNING-R1-ACCEPTANCE: I, mayank-admin, accept reconciled P4.4 planning package P4.4-PLANNING-R1 with SHA-256 42C37E17C73C4708FF3FB6B41532085995C514BA251BAC545DEF2E19632A0205, including the recorded C/D/A with guarded C and D capability/A/A/A with bounded D capability/A/C/A/A profile and all documented planning-only limitations. This accepts planning only. It does not authorize P4.4 implementation, runtime execution, real providers, credentials or secrets, authentication extension loading, external workflow engines, network access, Government or private data, cameras or media, models or datasets, operational actions, containers, Kubernetes, deployment, or remote Git.",
+  "proposed_owner_acceptance_statement_utf8_length": 683,
+  "proposed_owner_acceptance_statement_sha256": "801998514D261B229440AEA134EE059A56F092B25AFDBECFA308F4B7C3503B3C",
+  "acceptance_effect": [
+    "records_exact_owner_acceptance_of_the_reconciled_non_effective_P4_4_plan",
+    "permits_preparation_only_of_one_non_effective_digest_bound_P4_4_START_R0_package",
+    "does_not_award_P4_4_implementation_points",
+    "does_not_authorize_implementation_or_runtime"
+  ],
+  "frozen_progress_after_acceptance": {
+    "phase4_earned_points": 55,
+    "phase4_total_points": 100,
+    "phase4_percentage": "55.00%",
+    "phase4_change_percentage_points": "+0.00",
+    "p4_4_earned_points": 0,
+    "p4_4_total_points": 15,
+    "p4_4_percentage": "0.0000%",
+    "p4_4_change_percentage_points": "+0.0000",
+    "planning_and_research_gate": "5/5 (100.0000%)",
+    "owner_decision_gate": "10/10 (100.0000%)",
+    "reconciled_package_acceptance_gate": "1/1 (100.0000%)"
+  },
+  "continuing_prohibitions": [
+    "P4_4_source_test_migration_API_worker_or_runtime_implementation",
+    "effective_start_record_or_implementation_before_exact_start_package_acceptance",
+    "real_provider_connection_catalogue_query_or_candidate_matching",
+    "credential_secret_key_database_secret_backend_or_authentication_extension_use",
+    "external_workflow_engine_dependency_connection_credential_callback_or_deployment",
+    "loopback_or_external_network_process",
+    "Sentinel_camera_stream_image_recording_playback_or_media_access",
+    "real_private_personal_biometric_vehicle_owner_case_watchlist_Government_or_police_data",
+    "models_datasets_checkpoints_artifacts_inference_training_or_benchmarks",
+    "operational_alert_notification_dispatch_enforcement_or_autonomous_action",
+    "containers_Kubernetes_cloud_production_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "next_gate": "exact_owner_acceptance_of_this_statement_then_prepare_non_effective_P4_4_START_R0"
+}

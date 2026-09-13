@@ -1,0 +1,12 @@
+{
+  "contract_type": "hcam.intelligence.retention-hold.v1",
+  "generated_only": true,
+  "hold_id": "generated-hold-0001",
+  "purpose_code": "generated.validation",
+  "reason": "Exercise proposed retention hold contract without activating a hold",
+  "requested_at": "2026-09-04T00:00:05Z",
+  "requested_by": "mayank-admin",
+  "retention_class": "derived.intelligence.restricted",
+  "status": "proposed",
+  "target_ref": "ref_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+}

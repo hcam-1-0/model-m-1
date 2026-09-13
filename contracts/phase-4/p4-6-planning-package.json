@@ -1,0 +1,345 @@
+{
+  "schema_version": "hcam.phase4.p4_6.planning-package.v1",
+  "package_id": "P4.6-PLANNING-R0",
+  "status": "research_complete_owner_decisions_pending",
+  "effective": false,
+  "prepared_on": "2026-09-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-operations-security-scale-planning",
+  "planning_base_commit": "1b54aafc252248eb502cd04ebd2130b0cf1684bf",
+  "planning_authorization": {
+    "decision_id": "D-P4.6-PLAN-AUTH",
+    "path": "contracts/phase-4/p4-6-plan-authorization.json",
+    "sha256": "BBFFEE74602C6EE82A93606A18A4D492DE0034600BD57CBB8650895544761CEE",
+    "owner_statement_sha256": "4DBC5B6D54FF5BC1624FA0932FBFD5BFD85F2A34D00D882D9A2F7144D1A53082"
+  },
+  "accepted_predecessor": {
+    "subphase": "P4.5",
+    "decision_id": "D-P4.5-ACCEPTANCE",
+    "acceptance_path": "contracts/phase-4/p4-5/acceptance.json",
+    "acceptance_sha256": "856484AA45BB0775DD1A967AE1AFC0135E64ADC826DAE339A31FB1806CF26AB2",
+    "evidence_package_sha256": "02F0439B2034ECBB0481E854236DAE0991C6A5DC9A3B04AD3AA3E5C03507D980",
+    "canonical_component_digest": "118C40D319653F8D9E6CD21CB216F7F43B073BE58823CA36A96ACE9AE36986C2",
+    "technical_commit": "9eb3d2fb3a3fc68b8722d7c4a70369e6f1a8d41e",
+    "acceptance_commit": "1b54aafc252248eb502cd04ebd2130b0cf1684bf"
+  },
+  "existing_foundation_inventory": {
+    "current_repository_migration_head": "0017_investigation_evidence",
+    "observed_components": [
+      "Prometheus_metrics_and_token_protected_metrics_endpoint",
+      "request_ID_and_sanitized_access_log_middleware",
+      "domain_specific_tracking_evaluation_alert_correlation_integration_investigation_and_rule_metrics",
+      "typed_principals_roles_department_scopes_and_request_limits",
+      "append_only_audit_records_and_repositories",
+      "domain_owned_database_backed_workers_and_transactional_outbox_patterns",
+      "SQLite_backup_verify_restore_and_recovery_drill_commands",
+      "CI_for_tests_dependency_audit_package_build_synthetic_load_container_and_PostgreSQL_PostGIS_validation"
+    ],
+    "interpretation": "P4_6_unifies_governs_and_hardens_existing_foundations_without_replacing_domain_ownership_or_claiming_runtime_readiness"
+  },
+  "planning_authority": [
+    "read_only_repository_analysis",
+    "official_primary_source_research",
+    "local_planning_documentation",
+    "non_effective_contract_threat_capacity_recovery_topology_and_implementation_design",
+    "owner_decision_options",
+    "local_document_validation_and_one_checkpoint_commit_without_push"
+  ],
+  "canonical_component_digest": {
+    "algorithm": "SHA-256",
+    "normalization": "UTF_8_path_vertical_bar_uppercase_sha256_LF_join_without_terminal_newline_in_listed_order",
+    "value": "65BAAACFF67EC77B7BC5CBAA56A2A341DBE2835F90DCC901EC136134B1487797"
+  },
+  "planning_artifacts": [
+    {
+      "path": "contracts/phase-4/p4-6-plan-authorization.json",
+      "sha256": "BBFFEE74602C6EE82A93606A18A4D492DE0034600BD57CBB8650895544761CEE"
+    },
+    {
+      "path": "docs/phase-4/p4-6-research-record.md",
+      "sha256": "77D7ED0748BB947F8AB224E91D47DFD4C45F679326E32E97D52A11376DB4EDC4"
+    },
+    {
+      "path": "docs/phase-4/p4-6-threat-model.md",
+      "sha256": "1AD394C8AAB28FBF772467DE7DDA14ABDF3453CD6B738B9B62808A3F298B0E5D"
+    },
+    {
+      "path": "docs/phase-4/p4-6-contract-catalog.md",
+      "sha256": "C7B604B65F5C911ADC38865C04FE81B6D129DE4AB5264377B6149323D319F482"
+    },
+    {
+      "path": "docs/phase-4/p4-6-decision-packet.md",
+      "sha256": "ADCEA064F99A43E6155F0E1C6502C81DD5CFA363C6632088B561370C6541F0B2"
+    },
+    {
+      "path": "docs/phase-4/p4-6-implementation-plan.md",
+      "sha256": "5D7F5586FC077941E99FCF7131B41D964EC6484AFAD133E1E3FD1A2FB9600FC5"
+    }
+  ],
+  "mutable_indexes_not_digest_bound": [
+    "README.md",
+    "docs/phase-4/README.md",
+    "docs/phase-4/status.md"
+  ],
+  "research_sources": [
+    {
+      "name": "OpenTelemetry Specification",
+      "url": "https://opentelemetry.io/docs/specs/otel/",
+      "bounded_use": "typed_vendor_neutral_telemetry_contracts_and_default_off_export_adapters"
+    },
+    {
+      "name": "OpenTelemetry Versioning And Stability",
+      "url": "https://opentelemetry.io/docs/specs/otel/versioning-and-stability/",
+      "bounded_use": "versioned_projection_and_semantic_stability_design"
+    },
+    {
+      "name": "W3C Trace Context",
+      "url": "https://www.w3.org/TR/trace-context/",
+      "bounded_use": "validated_traceparent_and_bounded_tracestate_without_authorization_semantics"
+    },
+    {
+      "name": "Prometheus Metric Naming",
+      "url": "https://prometheus.io/docs/practices/naming/",
+      "bounded_use": "metric_unit_name_and_low_cardinality_registry_design"
+    },
+    {
+      "name": "Prometheus Instrumentation",
+      "url": "https://prometheus.io/docs/practices/instrumentation/",
+      "bounded_use": "service_class_signal_and_unbounded_label_avoidance"
+    },
+    {
+      "name": "Prometheus Alerting",
+      "url": "https://prometheus.io/docs/practices/alerting/",
+      "bounded_use": "symptom_actionability_and_internal_reliability_alert_design"
+    },
+    {
+      "name": "Google SRE Service Level Objectives",
+      "url": "https://sre.google/sre-book/service-level-objectives/",
+      "bounded_use": "user_journey_SLI_SLO_error_budget_and_evidence_gated_target_design"
+    },
+    {
+      "name": "NIST SP 800-92",
+      "url": "https://csrc.nist.gov/pubs/sp/800/92/final",
+      "bounded_use": "purpose_separated_log_generation_transport_storage_access_retention_and_disposal_design"
+    },
+    {
+      "name": "NIST SP 800-53 Revision 5 Update 1",
+      "url": "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final",
+      "bounded_use": "control_traceability_without_compliance_or_baseline_claim"
+    },
+    {
+      "name": "NIST SP 800-61 Revision 3",
+      "url": "https://csrc.nist.gov/pubs/sp/800/61/r3/final",
+      "bounded_use": "security_incident_preparation_detection_response_and_recovery_lifecycle"
+    },
+    {
+      "name": "NIST SP 800-34 Revision 1",
+      "url": "https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final",
+      "bounded_use": "service_tier_recovery_strategy_exercise_and_maintenance_design"
+    },
+    {
+      "name": "NIST SP 800-218 SSDF",
+      "url": "https://csrc.nist.gov/pubs/sp/800/218/final",
+      "bounded_use": "source_build_dependency_test_review_and_vulnerability_evidence_binding"
+    },
+    {
+      "name": "NIST SP 800-161 Revision 1 Update 1",
+      "url": "https://csrc.nist.gov/pubs/sp/800/161/r1/upd1/final",
+      "bounded_use": "supplier_component_provenance_risk_exception_and_review_state_design"
+    },
+    {
+      "name": "PostgreSQL 18 Row Security",
+      "url": "https://www.postgresql.org/docs/18/ddl-rowsecurity.html",
+      "bounded_use": "forced_RLS_default_deny_privileged_role_race_and_policy_negative_test_design"
+    },
+    {
+      "name": "PostgreSQL 18 SELECT Locking",
+      "url": "https://www.postgresql.org/docs/18/sql-select.html",
+      "bounded_use": "SKIP_LOCKED_queue_claim_lease_idempotency_and_recovery_boundary"
+    },
+    {
+      "name": "PostgreSQL 18 Continuous Archiving And PITR",
+      "url": "https://www.postgresql.org/docs/18/continuous-archiving.html",
+      "bounded_use": "base_backup_WAL_restore_and_recoverability_evidence_design"
+    },
+    {
+      "name": "SLSA 1.2",
+      "url": "https://slsa.dev/spec/v1.2/",
+      "bounded_use": "provenance_tracks_levels_and_verification_expectations_without_claim"
+    },
+    {
+      "name": "SLSA Provenance",
+      "url": "https://slsa.dev/spec/v1.2/provenance",
+      "bounded_use": "artifact_source_builder_parameter_dependency_and_digest_binding"
+    },
+    {
+      "name": "SPDX 3.0.1",
+      "url": "https://spdx.github.io/spdx-spec/",
+      "bounded_use": "versioned_BOM_license_security_build_AI_dataset_and_provenance_projection"
+    },
+    {
+      "name": "SPDX 3.0.1 Conformance",
+      "url": "https://spdx.github.io/spdx-spec/v3.0.1/conformance/",
+      "bounded_use": "mandatory_core_and_profile_requirements_without_conformance_claim"
+    },
+    {
+      "name": "CycloneDX Specification Overview",
+      "url": "https://cyclonedx.org/specification/overview/",
+      "bounded_use": "component_service_dependency_formulation_vulnerability_and_VEX_projection"
+    },
+    {
+      "name": "Kubernetes Observability",
+      "url": "https://kubernetes.io/docs/concepts/cluster-administration/observability/",
+      "bounded_use": "metric_log_trace_mapping_without_signal_authority_convergence"
+    },
+    {
+      "name": "Kubernetes Logging Architecture",
+      "url": "https://kubernetes.io/docs/concepts/cluster-administration/logging/",
+      "bounded_use": "explicit_external_sink_capability_and_retention_requirement"
+    },
+    {
+      "name": "Kubernetes Probes",
+      "url": "https://kubernetes.io/docs/concepts/workloads/pods/probes/",
+      "bounded_use": "distinct_startup_readiness_and_liveness_projection_design"
+    },
+    {
+      "name": "Kubernetes Disruptions",
+      "url": "https://kubernetes.io/docs/concepts/workloads/pods/disruptions/",
+      "bounded_use": "PDB_limitation_and_graceful_shutdown_design"
+    },
+    {
+      "name": "Kubernetes Topology Spread Constraints",
+      "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/",
+      "bounded_use": "declared_failure_domain_placement_projection"
+    },
+    {
+      "name": "Kubernetes Pod Security Standards",
+      "url": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+      "bounded_use": "restricted_profile_target_and_explicit_exception_design"
+    },
+    {
+      "name": "Kubernetes NetworkPolicy",
+      "url": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+      "bounded_use": "CNI_capability_and_default_deny_L4_policy_design"
+    },
+    {
+      "name": "Kubernetes Dynamic Resource Allocation",
+      "url": "https://kubernetes.io/docs/concepts/resource-management/dynamic-resource-allocation/",
+      "bounded_use": "version_and_driver_gated_accelerator_claim_projection"
+    },
+    {
+      "name": "Kubernetes Device Plugins",
+      "url": "https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/",
+      "bounded_use": "declared_specialized_resource_compatibility_projection"
+    }
+  ],
+  "proposed_contracts": [
+    "hcam.operations.telemetry-registry.v1",
+    "hcam.operations.telemetry-envelope.v1",
+    "hcam.operations.trace-context.v1",
+    "hcam.operations.log-event.v1",
+    "hcam.operations.failure.v1",
+    "hcam.operations.service-objective.v1",
+    "hcam.operations.error-budget-state.v1",
+    "hcam.operations.degradation-state.v1",
+    "hcam.operations.worker-policy.v1",
+    "hcam.operations.worker-attempt.v1",
+    "hcam.operations.circuit-state.v1",
+    "hcam.operations.kill-switch-revision.v1",
+    "hcam.operations.recovery-plan.v1",
+    "hcam.operations.recovery-drill.v1",
+    "hcam.security.control-evidence.v1",
+    "hcam.supply-chain.bundle.v1",
+    "hcam.capacity.profile.v1",
+    "hcam.capacity.run.v1",
+    "hcam.placement.plan.v1",
+    "hcam.operations.health-projection.v1"
+  ],
+  "decision_packet": {
+    "path": "docs/phase-4/p4-6-decision-packet.md",
+    "decision_ids": [
+      "D-P4.6-001",
+      "D-P4.6-002",
+      "D-P4.6-003",
+      "D-P4.6-004",
+      "D-P4.6-005",
+      "D-P4.6-006",
+      "D-P4.6-007",
+      "D-P4.6-008",
+      "D-P4.6-009",
+      "D-P4.6-010",
+      "D-P4.6-011",
+      "D-P4.6-012"
+    ],
+    "recommended_profile": "C/A/A/A/A/A/A/A/A/A/C/C",
+    "owner_decisions_recorded": false,
+    "recommendations_are_decisions": false,
+    "continue_or_silence_is_acceptance": false
+  },
+  "frozen_progress": {
+    "phase4": {
+      "earned_points": 85,
+      "total_points": 100,
+      "percentage": "85.00%",
+      "change_percentage_points": "+0.00"
+    },
+    "p4_6": {
+      "earned_points": 0,
+      "total_points": 10,
+      "percentage": "0.0000%",
+      "change_percentage_points": "+0.0000"
+    },
+    "work_breakdown": {
+      "P4_6_A_observability_SLOs_and_failures": 3,
+      "P4_6_B_worker_resilience_and_recovery": 2,
+      "P4_6_C_security_isolation_and_supply_chain": 3,
+      "P4_6_D_capacity_and_topology_methodology": 1,
+      "P4_6_E_owner_acceptance": 1
+    },
+    "technical_ceiling_before_owner_acceptance": {
+      "phase4_earned_points": 94,
+      "phase4_percentage": "94.00%",
+      "p4_6_earned_points": 9,
+      "p4_6_percentage": "90.0000%"
+    },
+    "after_exact_p4_6_acceptance": {
+      "phase4_earned_points": 95,
+      "phase4_percentage": "95.00%",
+      "p4_6_earned_points": 10,
+      "p4_6_percentage": "100.0000%"
+    },
+    "planning_and_research_completeness": "100.0000%",
+    "planning_points_awarded": 0,
+    "partial_item_credit": false
+  },
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "process_service_container_or_cluster_execution_authorized": false,
+  "backup_restore_scanner_hardware_capacity_performance_stress_or_recovery_execution_authorized": false,
+  "credential_secret_provider_camera_media_or_operational_network_access_authorized": false,
+  "Government_private_personal_biometric_vehicle_owner_registration_watchlist_case_or_evidence_data_authorized": false,
+  "model_dataset_artifact_training_or_inference_authorized": false,
+  "operational_alert_notification_dispatch_enforcement_or_autonomous_action_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false,
+  "explicitly_not_authorized": [
+    "P4_6_product_test_migration_dependency_container_Kubernetes_deployment_or_runtime_implementation",
+    "process_service_container_cluster_backup_restore_scanner_hardware_capacity_performance_stress_or_recovery_execution",
+    "installation_update_download_or_artifact_acquisition",
+    "credential_secret_key_token_certificate_provider_or_private_CA_access",
+    "provider_Sentinel_camera_media_or_operational_network_access",
+    "Government_police_private_personal_biometric_vehicle_owner_registration_watchlist_case_or_evidence_data",
+    "model_dataset_checkpoint_artifact_training_or_inference",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "production_pilot_container_Kubernetes_cloud_release_or_deployment",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "required_next_sequence": [
+    "owner_selects_D_P4_6_001_through_D_P4_6_012",
+    "selections_are_reconciled_into_non_effective_P4_6_PLANNING_R1",
+    "owner_accepts_exact_reconciled_planning_package_digest",
+    "one_non_effective_generated_only_P4_6_START_R0_package_is_prepared",
+    "owner_separately_accepts_exact_P4_6_START_R0_SHA_256",
+    "only_then_may_bounded_local_generated_only_implementation_begin"
+  ]
+}

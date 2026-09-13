@@ -1,0 +1,20 @@
+{
+  "schema_version": "hcam.phase5.p5_4.acceptance_proposal.v1",
+  "decision_id": "D-P5.4-ACCEPTANCE",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "evidence_package": {
+    "package_id": "P5.4-EVIDENCE-PACKAGE-R0",
+    "path": "contracts/phase-5/p5-4-evidence-package.json",
+    "sha256": "3D18E7435434270C64242FBF4B727D9DA080E4E5F832B5C63C42BDD069C9850D",
+    "canonical_component_digest": "65041C5D116E9B0AFA63EB011226E3F1D2190BDBDD50B158F9437DC4CDD6EC7B"
+  },
+  "technical_commit": "fc5b7f9aa682b68c83e53c558e8c08bf35ee7480",
+  "accepted_progress_if_approved": {
+    "P5_4": "15/15 (100.0000%)",
+    "Phase_5": "63/100 (63.0000%)"
+  },
+  "owner_acceptance_statement": "D-P5.4-ACCEPTANCE: I, mayank-admin, accept P5.4 evidence package P5.4-EVIDENCE-PACKAGE-R0 with SHA-256 3D18E7435434270C64242FBF4B727D9DA080E4E5F832B5C63C42BDD069C9850D and canonical component digest 65041C5D116E9B0AFA63EB011226E3F1D2190BDBDD50B158F9437DC4CDD6EC7B at technical commit fc5b7f9aa682b68c83e53c558e8c08bf35ee7480, including its generated-only Intelligence Center, mandatory human-review workflows, validation results, preserved dependency baseline, explicit environment limitations, and documented safety boundaries. This acceptance completes P5.4 only. It does not authorize P5.5, real providers or network access, cameras or media, Government or private data, real investigations or identities, models or inference, operational alerts, notifications, dispatch, enforcement or autonomous actions, containers, Kubernetes, deployment, or remote Git.",
+  "P5_5_authorized": false,
+  "remote_Git_authorized": false
+}

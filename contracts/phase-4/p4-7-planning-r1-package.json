@@ -1,0 +1,279 @@
+{
+  "schema_version": "hcam.phase4.p4_7.planning-package.v2",
+  "package_id": "P4.7-PLANNING-R1",
+  "status": "owner_decisions_recorded_exact_planning_acceptance_pending",
+  "effective": false,
+  "prepared_on": "2026-09-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-operations-security-scale",
+  "planning_checkpoint": "d1735f5cd7dc5af6ca97e07089db0f13f1e4acdf",
+  "supersedes": {
+    "package_id": "P4.7-PLANNING-R0",
+    "path": "contracts/phase-4/p4-7-planning-package.json",
+    "sha256": "BFC360F466A45E8830AAF0547083A10EF49E55C7792A2E2E67DB9211E215FBC1",
+    "reason": "owner_selected_recommended_profile_and_requested_guarded_future_production_operations_capability"
+  },
+  "planning_authorization": {
+    "decision_id": "D-P4.7-PLAN-AUTH",
+    "path": "contracts/phase-4/p4-7-plan-authorization.json",
+    "sha256": "E31C550994C175096079DC5A9F61AB3EB24C6E2D4CCBBAE263F461A2C7818BBE",
+    "owner_statement_sha256": "F38C078D139E3153FA654279FDD8F6B63A805542334BE3D6A20D41089EE7FAEC",
+    "scope_unchanged": true,
+    "authorized_checkpoint_commit_consumed": true,
+    "additional_commit_authorized": false
+  },
+  "accepted_predecessor": {
+    "subphase": "P4.6",
+    "decision_id": "D-P4.6-ACCEPTANCE",
+    "path": "contracts/phase-4/p4-6/acceptance.json",
+    "sha256": "81009FCF742CA73A6DFAB6821DF2D77C3DDC617CB0B95BC8ED51B3348FF5E71E",
+    "evidence_package_sha256": "362E5B1A08438A75DD9FBD32662F9A95ACF42D59BB0E3017818B9862F131C949",
+    "canonical_component_digest": "5E9ED1932FA002ABB3E89BDAC00562D8C0AC42548B5F0B569FFEF4544F6AFE57",
+    "accepted_implementation_commit": "dee768edf449eadf9b5c309209af9866fd392a43",
+    "acceptance_commit": "98234e475e938d7ca1dee5558d2088dabc187845"
+  },
+  "reconciled_component_digest": {
+    "algorithm": "SHA-256",
+    "normalization": "UTF_8_path_vertical_bar_uppercase_sha256_LF_join_without_terminal_newline_in_listed_order",
+    "value": "0E3152BBCF41454BC6A286A3AFB67722E533B157AC9F5C39E780A3FD9B0208D3"
+  },
+  "reconciled_components": [
+    {
+      "path": "contracts/phase-4/p4-7-planning-package.json",
+      "sha256": "BFC360F466A45E8830AAF0547083A10EF49E55C7792A2E2E67DB9211E215FBC1"
+    },
+    {
+      "path": "contracts/phase-4/p4-7-owner-decisions.json",
+      "sha256": "560B05473058E49B7B1355752A85463261EA09B435A42C396D2DE393D358FE49"
+    },
+    {
+      "path": "docs/phase-4/p4-7-owner-decisions.md",
+      "sha256": "F2636F37339D5AE88D82438B60CBF2C082B46928D7B8815E6B252AD53DCAE553"
+    }
+  ],
+  "immutable_r0_artifacts": [
+    {
+      "path": "contracts/phase-4/p4-7-plan-authorization.json",
+      "sha256": "E31C550994C175096079DC5A9F61AB3EB24C6E2D4CCBBAE263F461A2C7818BBE"
+    },
+    {
+      "path": "docs/phase-4/p4-7-research-record.md",
+      "sha256": "AE6CDAFFB536872D10D90E22A29CEB25B33E7C22C9F6F61A3D2A664F48CF782F"
+    },
+    {
+      "path": "docs/phase-4/p4-7-threat-model.md",
+      "sha256": "FB1BDFC174D99427AAB9FC9A7AAA7DF57BCB45B23B1EDE03101AB39A9FD1E4ED"
+    },
+    {
+      "path": "docs/phase-4/p4-7-contract-catalog.md",
+      "sha256": "03D2EB13FFE6991A033066B82E3ABF63598A0F5CB3A94ED32D53E97B8EA83449"
+    },
+    {
+      "path": "docs/phase-4/p4-7-decision-packet.md",
+      "sha256": "442E4598CE3429A71CECC7E7BAA134F018FF544A4AA85501F9798C3DAC8A33B1"
+    },
+    {
+      "path": "docs/phase-4/p4-7-implementation-plan.md",
+      "sha256": "671286D3C9E86EA8C2882A2C074626711D763A975FE29FBF570E433236F4290D"
+    }
+  ],
+  "owner_decisions": {
+    "recorded": true,
+    "record_path": "contracts/phase-4/p4-7-owner-decisions.json",
+    "record_sha256": "560B05473058E49B7B1355752A85463261EA09B435A42C396D2DE393D358FE49",
+    "owner_statement_sha256": "B3777BBD6B2A4EA82872BE3A8CCE6C68CFDED9F20D9464DF4986DAC076D7D45F",
+    "D-P4.7-001": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.7-002": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.7-003": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.7-004": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.7-005": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.7-006": {
+      "selected": ["B"],
+      "capability_requested": []
+    },
+    "D-P4.7-007": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.7-008": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.7-009": {
+      "selected": ["B"],
+      "capability_requested": []
+    },
+    "D-P4.7-010": {
+      "selected": ["B"],
+      "capability_requested": []
+    },
+    "D-P4.7-011": {
+      "selected": ["B"],
+      "capability_requested": ["C"]
+    },
+    "D-P4.7-012": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "selected_profile": "C/C/C/C/C/B/C/C/B/B/B_with_guarded_C_capability/A",
+    "recommendations_are_decisions": false,
+    "continue_or_silence_is_acceptance": false
+  },
+  "composite_interpretation": {
+    "D-P4.7-011": {
+      "canonical_option": "B",
+      "canonical_executable_capability": "typed_generated_only_non_operational_runbook_plus_concise_human_guide",
+      "guarded_C_capability": "non_effective_future_production_operations_prerequisite_outline",
+      "all_categories_marked_not_operationally_validated": true,
+      "environment_specific_commands_values_credentials_destinations_targets_or_claims": false,
+      "use_as_Phase4_acceptance_oracle": false,
+      "production_procedure_execution_or_deployment": false,
+      "future_executable_production_content_requires_operational_evidence_and_separate_exact_authorization": true
+    }
+  },
+  "reconciled_architecture": {
+    "orchestration_boundary": "canonical_scenario_engine_with_bounded_application_service_adapter_and_separate_HTTP_event_projection_validation",
+    "portfolio_boundary": "golden_plus_eight_mandatory_variants_and_bounded_pairwise_cases_without_exhaustiveness_claim",
+    "determinism_boundary": "manifest_derived_time_identity_order_policy_inputs_normalization_and_two_clean_semantic_replays",
+    "oracle_boundary": "exact_inputs_and_independent_mandatory_semantic_assertions_with_skip_unknown_incomplete_fail_closed",
+    "evidence_boundary": "acyclic_HCAM_evidence_DAG_with_optional_non_authoritative_standards_shaped_projections",
+    "claim_boundary": "machine_readable_claim_and_limitation_registers_with_derived_human_summary_and_unsupported_claim_denial",
+    "http_boundary": "canonical_operation_catalogue_with_pinned_OpenAPI_and_RFC9457_compatible_projection",
+    "event_workflow_boundary": "canonical_HCAM_semantics_with_optional_pinned_AsyncAPI_CloudEvents_and_Arazzo_projections",
+    "UI_boundary": "typed_backend_to_UI_state_action_accessibility_matrix_without_UI_implementation_or_conformance_claim",
+    "compatibility_boundary": "versioned_change_classification_consumer_support_deprecation_migration_and_security_boundary_policy",
+    "runbook_boundary": "generated_only_non_operational_runbook_plus_guarded_future_production_prerequisite_outline",
+    "phase_boundary": "exact_Phase4_closeout_is_separate_from_Phase5_planning_authority"
+  },
+  "implementation_plan_overlay": [
+    "W1_define_canonical_scenario_manifest_fixture_step_run_observation_and_side_effect_contracts",
+    "W1_implement_bounded_application_service_adapter_and_independent_HTTP_event_projection_equivalence_checks_without_direct_persistence",
+    "W2_materialize_one_golden_scenario_eight_mandatory_variants_and_bounded_pairwise_contract_cases_from_generated_non_issuable_inputs",
+    "W2_bind_logical_time_identity_order_policy_revision_fixture_hash_normalization_and_allowed_variance_then_compare_two_clean_semantic_replays",
+    "W3_implement_independent_schema_authorization_chronology_identity_rule_review_integrity_redaction_recovery_side_effect_replay_handoff_and_accessibility_assertion_families",
+    "W4_build_acyclic_evidence_index_claim_register_limitation_register_and_optional_validated_non_authoritative_RFC8785_PROV_and_SLSA_shaped_projections",
+    "W5_build_canonical_HTTP_event_and_workflow_handoff_catalogues_with_pinned_OpenAPI_RFC9457_AsyncAPI_CloudEvents_and_Arazzo_projections",
+    "W5_build_typed_UI_state_action_accessibility_and_consumer_compatibility_matrices_for_Phase5_without_implementing_Phase5",
+    "W6_build_typed_generated_only_non_operational_runbook_and_human_guide_plus_guarded_not_operationally_validated_future_production_prerequisite_outline",
+    "W7_run_only_the_separately_authorized_generated_scenarios_replays_projection_checks_full_regression_and_evidence_sealing",
+    "W7_prepare_exact_claims_limitations_handoff_evidence_and_source_commit_bound_Phase4_acceptance_package",
+    "W7_keep_Phase5_planning_and_implementation_behind_a_separate_future_explicit_authorization"
+  ],
+  "initial_generated_tier": {
+    "canonical_selected_profile": true,
+    "deterministic_non_issuable_fixtures": true,
+    "direct_persistence_access": false,
+    "real_provider_camera_media_model_dataset_or_network": false,
+    "production_operations_outline_defined": true,
+    "production_operations_outline_effective_or_executable": false,
+    "environment_specific_production_content": false,
+    "standards_accessibility_legal_evidentiary_operational_accuracy_scale_or_conformance_claim": false,
+    "Phase5_planning_or_implementation": false,
+    "remote_Git": false
+  },
+  "frozen_progress": {
+    "phase4": {
+      "earned_points": 95,
+      "total_points": 100,
+      "percentage": "95.00%",
+      "change_percentage_points": "+0.00"
+    },
+    "p4_7": {
+      "earned_points": 0,
+      "total_points": 5,
+      "percentage": "0.0000%",
+      "change_percentage_points": "+0.0000"
+    },
+    "work_breakdown": {
+      "P4_7_A_controlled_generated_end_to_end_demonstration": 2,
+      "P4_7_B_evidence_limitations_claims_and_operations_pack": 1,
+      "P4_7_C_Phase5_HTTP_event_workflow_UI_and_compatibility_handoff": 1,
+      "P4_7_D_final_Phase4_owner_acceptance": 1
+    },
+    "planning_and_research_gate": {
+      "completed_items": 5,
+      "total_items": 5,
+      "percentage": "100.0000%"
+    },
+    "owner_decision_gate": {
+      "completed_items": 12,
+      "total_items": 12,
+      "percentage": "100.0000%",
+      "change_percentage_points": "+100.0000"
+    },
+    "reconciled_package_preparation_gate": {
+      "completed_items": 1,
+      "total_items": 1,
+      "percentage": "100.0000%",
+      "change_percentage_points": "+100.0000"
+    },
+    "reconciled_package_acceptance_gate": {
+      "completed_items": 0,
+      "total_items": 1,
+      "percentage": "0.0000%"
+    },
+    "technical_ceiling_before_owner_acceptance": {
+      "phase4_earned_points": 99,
+      "phase4_percentage": "99.00%",
+      "p4_7_earned_points": 4,
+      "p4_7_percentage": "80.0000%"
+    },
+    "after_exact_p4_7_acceptance": {
+      "phase4_earned_points": 100,
+      "phase4_percentage": "100.00%",
+      "p4_7_earned_points": 5,
+      "p4_7_percentage": "100.0000%"
+    },
+    "planning_points_awarded": 0,
+    "partial_item_credit": false
+  },
+  "planning_package_acceptance_required": true,
+  "start_authorization_prepared": false,
+  "implementation_authorized": false,
+  "runtime_or_scenario_execution_authorized": false,
+  "production_operations_manual_or_execution_authorized": false,
+  "credentials_data_media_models_providers_network_or_operational_actions_authorized": false,
+  "containers_Kubernetes_or_deployment_authorized": false,
+  "phase4_final_acceptance_authorized": false,
+  "phase5_planning_or_implementation_authorized": false,
+  "additional_commit_authorized": false,
+  "remote_git_authorized": false,
+  "explicitly_not_authorized": [
+    "P4_7_source_test_migration_dependency_model_dataset_inference_camera_media_provider_network_telemetry_backend_workflow_engine_container_Kubernetes_deployment_or_runtime_implementation",
+    "effective_P4_7_start_record_or_any_scenario_run_before_exact_start_package_acceptance",
+    "production_operations_manual_claim_command_value_target_or_execution",
+    "credential_secret_key_token_certificate_private_CA_or_network_access",
+    "Government_police_private_personal_biometric_vehicle_owner_registration_watchlist_investigation_case_or_evidence_data",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "installation_update_download_or_artifact_acquisition",
+    "hardware_performance_stress_backup_restore_or_recovery_execution",
+    "standards_accessibility_legal_evidentiary_operational_production_accuracy_scale_or_conformance_claim",
+    "Phase4_final_acceptance_or_Phase5_planning_implementation_or_deployment",
+    "additional_checkpoint_commit_without_new_exact_authority",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "required_next_sequence": [
+    "owner_accepts_exact_P4_7_PLANNING_R1_package_SHA_256",
+    "one_non_effective_digest_bound_generated_only_P4_7_START_R0_package_is_prepared",
+    "owner_separately_accepts_exact_P4_7_START_R0_SHA_256",
+    "only_then_may_bounded_local_generated_only_implementation_and_scenario_execution_begin",
+    "technical_evidence_is_sealed_against_an_exact_commit",
+    "owner_separately_accepts_exact_P4_7_evidence_to_close_Phase4",
+    "Phase5_planning_requires_another_explicit_authorization"
+  ]
+}

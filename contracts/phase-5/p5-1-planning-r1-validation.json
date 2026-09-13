@@ -1,0 +1,94 @@
+{
+  "schema_version": "hcam.phase5.p5_1.reconciled_planning_validation.v1",
+  "record_id": "P5.1-PLANNING-R1-VALIDATION-R0",
+  "status": "pass",
+  "validated_on": "2026-09-06",
+  "validation_boundary": "planning_reconciliation_and_static_integrity_only",
+  "owner_decisions": {
+    "path": "contracts/phase-5/p5-1-owner-decisions.json",
+    "selection_count": 12,
+    "selection_profile": "B/A/A/A/A/A/A/A/A/A/A/A",
+    "owner_statement_sha256": "68D35D7392C02D30697A95B18DBD353255CEC7644CA2B1ECF3C1F2BD6A8D85E0"
+  },
+  "reconciled_planning_package": {
+    "package_id": "P5.1-PLANNING-R1",
+    "path": "contracts/phase-5/p5-1-planning-package-r1.json",
+    "bytes": 6500,
+    "sha256": "5ECEC0B67BE3DE64518F6D3C9D7B221C449C4B2E6E0C5A23306AF0738C55A008",
+    "canonical_component_digest": "0AF30783F7E80A8CB57141745BE964D5E3F4779D6DBDF996404AE5FDF76A2F4B",
+    "component_count": 4
+  },
+  "acceptance_proposal": {
+    "path": "contracts/phase-5/p5-1-planning-r1-acceptance-proposal.json",
+    "decision_id": "D-P5.1-PLANNING-R1-ACCEPTANCE",
+    "proposed_owner_statement_sha256": "C4B65BC3D4D064F4D3F67F0B5F5CC65551AE01E520303B447FC23CF7EDE214CF"
+  },
+  "preserved_inputs": [
+    {
+      "path": "contracts/phase-5/p5-1-planning-package.json",
+      "sha256": "588585D6F65150C48F8DE2F9E3F93A2624BDD0C380CD48A7D21A5AB29D6DA816"
+    },
+    {
+      "path": "contracts/phase-5/p5-0-acceptance.json",
+      "sha256": "BD11D1281AF692F420AA5FD56FA3EFA9659F9C3E8B304EB31AB5A68044F35BB8"
+    }
+  ],
+  "checks": [
+    {"id": "all_JSON_records_parse", "status": "pass"},
+    {"id": "exact_changed_path_scope", "status": "pass"},
+    {"id": "owner_selection_count_and_uniqueness", "status": "pass", "count": 12},
+    {"id": "owner_selection_profile_matches_R0_recommendation", "status": "pass"},
+    {"id": "owner_statement_length_and_sha256", "status": "pass"},
+    {"id": "R1_component_paths_bytes_and_sha256", "status": "pass", "count": 4},
+    {"id": "R1_canonical_component_digest", "status": "pass"},
+    {"id": "R1_package_bytes_and_sha256", "status": "pass"},
+    {"id": "acceptance_statement_length_and_sha256", "status": "pass"},
+    {"id": "R0_planning_package_immutable", "status": "pass"},
+    {"id": "P5_0_acceptance_record_immutable", "status": "pass"},
+    {"id": "P5_1_frozen_weight_and_product_progress", "status": "pass"},
+    {"id": "relative_document_links", "status": "pass"},
+    {"id": "UTF8_ASCII_and_LF_text_policy", "status": "pass"},
+    {"id": "git_diff_check", "status": "pass"}
+  ],
+  "expected_changed_paths": [
+    "README.md",
+    "contracts/phase-5/p5-1-owner-decisions.json",
+    "contracts/phase-5/p5-1-planning-package-r1.json",
+    "contracts/phase-5/p5-1-planning-r1-acceptance-proposal.json",
+    "contracts/phase-5/p5-1-planning-r1-validation.json",
+    "docs/phase-5/README.md",
+    "docs/phase-5/current-status-r5.md",
+    "docs/phase-5/p5-1-planning-r1-acceptance-proposal.md",
+    "docs/phase-5/p5-1-reconciled-planning-r1.md",
+    "docs/phase-5/status.md"
+  ],
+  "progress": {
+    "P5_1_decisions_percent": 100.0,
+    "P5_1_reconciliation_status": "complete_owner_acceptance_pending",
+    "P5_1_product_percent": 0.0,
+    "P5_1_product_change_percentage_points": 0.0,
+    "phase_5_product_percent": 8.0,
+    "phase_5_product_change_percentage_points": 0.0
+  },
+  "execution_not_performed": [
+    "source_import",
+    "product_or_test_implementation",
+    "dependency_download_installation_or_lockfile_change",
+    "lint_typecheck_build_or_runtime",
+    "API_route_or_migration_change",
+    "network_provider_map_tile_camera_or_media_access",
+    "Government_or_private_data_access",
+    "model_dataset_artifact_or_inference_access",
+    "operational_action",
+    "container_Kubernetes_or_deployment",
+    "P5_2",
+    "commit",
+    "remote_Git"
+  ],
+  "result": {
+    "reconciliation_valid": true,
+    "owner_planning_acceptance_pending": true,
+    "start_package_preparation_authorized": false,
+    "implementation_authorized": false
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "family": "auth_profile",
+  "fixture_digest": "sha256:f593719fb3f469e622df48644110a8f12b687da9bbe42517602b13ed1d6fdb6b",
+  "generator_version": "p4.4.generated-integrations.v1",
+  "scenario_count": 12,
+  "schema_version": "hcam.p4-4.generated-fixture-set.v1",
+  "vectors": [
+    {
+      "department": "Generated-Department-0",
+      "expected_outcome": "accepted",
+      "family": "auth_profile",
+      "generated_key": "gen_auth_profile_000",
+      "generated_only": true,
+      "generated_value": "gen_value_000",
+      "index": 0,
+      "operational": false,
+      "scenario_digest": "sha256:4aacf712f24a523d6f3957dbb6fe702f4f642e781a20341e3d57366d521566a3",
+      "scenario_id": "p44-auth_profile-000"
+    },
+    {
+      "department": "Generated-Department-1",
+      "expected_outcome": "denied",
+      "family": "auth_profile",
+      "generated_key": "gen_auth_profile_001",
+      "generated_only": true,
+      "generated_value": "gen_value_001",
+      "index": 1,
+      "operational": false,
+      "scenario_digest": "sha256:b8816d03e9ba5361bd5b48705db1242689a8a21776a76e5701809b543754cab0",
+      "scenario_id": "p44-auth_profile-001"
+    },
+    {
+      "department": "Generated-Department-2",
+      "expected_outcome": "disabled",
+      "family": "auth_profile",
+      "generated_key": "gen_auth_profile_002",
+      "generated_only": true,
+      "generated_value": "gen_value_002",
+      "index": 2,
+      "operational": false,
+      "scenario_digest": "sha256:0c1c7b4762f81d82ae243a48c51985956287242e483b557faba0e16fb13f13d9",
+      "scenario_id": "p44-auth_profile-002"
+    },
+    {
+      "department": "Generated-Department-0",
+      "expected_outcome": "accepted",
+      "family": "auth_profile",
+      "generated_key": "gen_auth_profile_003",
+      "generated_only": true,
+      "generated_value": "gen_value_003",
+      "index": 3,
+      "operational": false,
+      "scenario_digest": "sha256:471dabbbd7519968624207de00b72bc15381e934f140a4aabb6983e560395949",
+      "scenario_id": "p44-auth_profile-003"
+    },
+    {
+      "department": "Generated-Department-1",
+      "expected_outcome": "denied",
+      "family": "auth_profile",
+      "generated_key": "gen_auth_profile_004",
+      "generated_only": true,
+      "generated_value": "gen_value_004",
+      "index": 4,
+      "operational": false,
+      "scenario_digest": "sha256:c7476baed34d0250329e37318fd1d326675b2fdb250e4c04afa66ef90cb7cfbf",
+      "scenario_id": "p44-auth_profile-004"
+    },
+    {
+      "department": "Generated-Department-2",
+      "expected_outcome": "disabled",
+      "family": "auth_profile",
+      "generated_key": "gen_auth_profile_005",
+      "generated_only": true,
+      "generated_value": "gen_value_005",
+      "index": 5,
+      "operational": false,
+      "scenario_digest": "sha256:c9cc4c5052b069a45fef099c9c8522de4629a8bed579c2ab4c676037a1ed0505",
+      "scenario_id": "p44-auth_profile-005"
+    },
+    {
+      "department": "Generated-Department-0",
+      "expected_outcome": "accepted",
+      "family": "auth_profile",
+      "generated_key": "gen_auth_profile_006",
+      "generated_only": true,
+      "generated_value": "gen_value_006",
+      "index": 6,
+      "operational": false,
+      "scenario_digest": "sha256:5a2c0f5420148d381f3b35c57faedda35269e439494f108643e087c646a213f4",
+      "scenario_id": "p44-auth_profile-006"
+    },
+    {
+      "department": "Generated-Department-1",
+      "expected_outcome": "denied",
+      "family": "auth_profile",
+      "generated_key": "gen_auth_profile_007",
+      "generated_only": true,
+      "generated_value": "gen_value_007",
+      "index": 7,
+      "operational": false,
+      "scenario_digest": "sha256:84724e88cf3c498adb62b6b7621de54ece92430e3f45fff4fc1246f06629385c",
+      "scenario_id": "p44-auth_profile-007"
+    },
+    {
+      "department": "Generated-Department-2",
+      "expected_outcome": "disabled",
+      "family": "auth_profile",
+      "generated_key": "gen_auth_profile_008",
+      "generated_only": true,
+      "generated_value": "gen_value_008",
+      "index": 8,
+      "operational": false,
+      "scenario_digest": "sha256:a5e5381b323dac01de988cf454b750c4c5506b25bd8e401076698d39081deade",
+      "scenario_id": "p44-auth_profile-008"
+    },
+    {
+      "department": "Generated-Department-0",
+      "expected_outcome": "accepted",
+      "family": "auth_profile",
+      "generated_key": "gen_auth_profile_009",
+      "generated_only": true,
+      "generated_value": "gen_value_009",
+      "index": 9,
+      "operational": false,
+      "scenario_digest": "sha256:f6d6b38d4b922ae139269e7011b6318930e40e9754e9020cf69ebbc87d0f02e8",
+      "scenario_id": "p44-auth_profile-009"
+    },
+    {
+      "department": "Generated-Department-1",
+      "expected_outcome": "denied",
+      "family": "auth_profile",
+      "generated_key": "gen_auth_profile_010",
+      "generated_only": true,
+      "generated_value": "gen_value_010",
+      "index": 10,
+      "operational": false,
+      "scenario_digest": "sha256:e0143352b27ec7312674a4266c0f8de91b999c1d109f4752453166e50efc4927",
+      "scenario_id": "p44-auth_profile-010"
+    },
+    {
+      "department": "Generated-Department-2",
+      "expected_outcome": "disabled",
+      "family": "auth_profile",
+      "generated_key": "gen_auth_profile_011",
+      "generated_only": true,
+      "generated_value": "gen_value_011",
+      "index": 11,
+      "operational": false,
+      "scenario_digest": "sha256:975a49c7b0180167764236b44f3b87c78dc475acf4fb0172ce03cf8490e468bd",
+      "scenario_id": "p44-auth_profile-011"
+    }
+  ]
+}

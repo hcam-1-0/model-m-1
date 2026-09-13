@@ -1,0 +1,807 @@
+{
+  "category": "service-objectives",
+  "scenario_count": 80,
+  "scenarios": [
+    {
+      "bad": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 0,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0000",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 1,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0001",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 2,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0002",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 3,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0003",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 4,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0004",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 5,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0005",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 6,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0006",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 7,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0007",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 8,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0008",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 9,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0009",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 10,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0010",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 0,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0011",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 1,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0012",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 2,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0013",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 3,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0014",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 4,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0015",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 5,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0016",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 6,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0017",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 7,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0018",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 8,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0019",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 9,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0020",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 10,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0021",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 0,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0022",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 1,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0023",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 2,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0024",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 3,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0025",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 4,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0026",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 5,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0027",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 6,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0028",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 7,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0029",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 8,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0030",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 9,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0031",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 10,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0032",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 0,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0033",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 1,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0034",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 2,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0035",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 3,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0036",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 4,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0037",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 5,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0038",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 6,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0039",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 7,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0040",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 8,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0041",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 9,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0042",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 10,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0043",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 0,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0044",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 1,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0045",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 2,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0046",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 3,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0047",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 4,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0048",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 5,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0049",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 6,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0050",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 7,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0051",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 8,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0052",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 9,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0053",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 10,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0054",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 0,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0055",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 1,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0056",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 2,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0057",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 3,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0058",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 4,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0059",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 5,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0060",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 6,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0061",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 7,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0062",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 8,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0063",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 9,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0064",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 10,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0065",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 0,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0066",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 1,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0067",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 2,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0068",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 3,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0069",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 4,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0070",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 5,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0071",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 6,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0072",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 7,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0073",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 8,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0074",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 9,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0075",
+      "target_state": "approved",
+      "unknown": 1
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "good": 10,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0076",
+      "target_state": "unset",
+      "unknown": 0
+    },
+    {
+      "bad": 2,
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "good": 0,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0077",
+      "target_state": "provisional",
+      "unknown": 1
+    },
+    {
+      "bad": 0,
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "good": 1,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0078",
+      "target_state": "approved",
+      "unknown": 0
+    },
+    {
+      "bad": 1,
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "good": 2,
+      "operational": false,
+      "scenario_id": "p46.service-objectives.0079",
+      "target_state": "approved",
+      "unknown": 1
+    }
+  ],
+  "schema_version": "hcam.phase4.p4_6.fixture.service-objectives.v1"
+}

@@ -1,0 +1,135 @@
+{
+  "schema_version": "hcam.phase5.p5_2.owner_decisions.v1",
+  "record_id": "P5.2-OWNER-DECISIONS-R0",
+  "status": "owner_selected_for_reconciliation",
+  "effective_for_reconciliation": true,
+  "implementation_effective": false,
+  "selected_by": "mayank-admin",
+  "selected_on": "2026-09-07",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "196d4b2465a731d1b1760e87300e88089a752930",
+  "source_statements": [
+    {
+      "sequence": 1,
+      "normalized_statement": "D-P5.2-001: B and i want gis as saprate domain or be more better , and i like more pages whith detailed things or grouped pages D-P5.2-002: C D-P5.2-003: A and if D is added then i like the idea D-P5.2-004: A D-P5.2-005: A D-P5.2-006: A D-P5.2-007: A D-P5.2-008: A D-P5.2-009: A D-P5.2-0010: A D-P5.2-0011: A + C and tell me more options and details because i want to get most better gis D-P5.2-0012: A",
+      "sha256": "61DC15A265BC093346F6DB6CE03C260E9D57D494EFE613511585EC8FFA0D8E12"
+    },
+    {
+      "sequence": 2,
+      "normalized_statement": "i want gis as other connected dashbord but dont make it main so command center is main so give it more details and things and features. D-P5.2-011 - D",
+      "sha256": "DAD250ED2FEFCE8AD7ABC7988D671489B56268437779D73FD1B00A1CC9F06930"
+    }
+  ],
+  "combined_owner_statement_sha256": "4BFF69F53D2B731D63EA5C5FFFBC065979F28B6C2F43A0D455CB35921DECC540",
+  "normalization": "Within each message, paragraph whitespace collapsed to one ASCII space; normalized messages joined with one ASCII space; UTF-8 without BOM; no terminal newline.",
+  "identifier_normalization": {
+    "D-P5.2-0010": "D-P5.2-010",
+    "D-P5.2-0011": "D-P5.2-011",
+    "D-P5.2-0012": "D-P5.2-012"
+  },
+  "selection_profile": "B+GIS/C/A+guarded-D/A/A/A/A/A/A/A/D/A",
+  "selection_count": 12,
+  "selections": [
+    {
+      "id": "D-P5.2-001",
+      "selected": "B+GIS",
+      "resolved_meaning": "Command Center remains the primary H-CAM operator dashboard with a dense command workspace and additional grouped detail pages. GIS Center is a connected specialist dashboard, not the main application."
+    },
+    {
+      "id": "D-P5.2-002",
+      "selected": "C",
+      "resolved_meaning": "Use hybrid bounded viewport features, vector tiles, authoritative paginated lists, and typed detail operations."
+    },
+    {
+      "id": "D-P5.2-003",
+      "selected": "A+guarded-D",
+      "resolved_meaning": "Use local or offline map resources by default and design a disabled-by-default typed provider registry for later exact allowlisted integrations."
+    },
+    {
+      "id": "D-P5.2-004",
+      "selected": "A",
+      "resolved_meaning": "Use server-authoritative spatial aggregates with deterministic display-only clustering."
+    },
+    {
+      "id": "D-P5.2-005",
+      "selected": "A",
+      "resolved_meaning": "Use a versioned server situation snapshot with per-source freshness, completeness, loss, degradation, revision, and drill-down."
+    },
+    {
+      "id": "D-P5.2-006",
+      "selected": "A",
+      "resolved_meaning": "Use bounded UTC windows, accepted operational timezone display, separate event and recorded time, and visible correction and retraction state."
+    },
+    {
+      "id": "D-P5.2-007",
+      "selected": "A",
+      "resolved_meaning": "Use server-provided safe priority bands, age, accepted authority class, and deterministic tie-breaking without client risk scoring."
+    },
+    {
+      "id": "D-P5.2-008",
+      "selected": "A",
+      "resolved_meaning": "Use opaque bounded URL filters, memory-only selection, and later server-owned workspaces protected by version and ETag."
+    },
+    {
+      "id": "D-P5.2-009",
+      "selected": "A",
+      "resolved_meaning": "Provide synchronized map and authoritative list or table equivalence with complete keyboard, focus, non-color, and bounded announcement behavior."
+    },
+    {
+      "id": "D-P5.2-010",
+      "selected": "A",
+      "resolved_meaning": "Keep one capability and truth model across hardware profiles while adapting only density, concurrency, rendering quality, and layout."
+    },
+    {
+      "id": "D-P5.2-011",
+      "selected": "D",
+      "option_source": "Revised adaptive renderer options presented after the R0 decision packet.",
+      "resolved_meaning": "Use MapLibre as the stable 2D GIS core with optional deck.gl overlaid or interleaved rendering selected through capability and policy. Low-resource systems use MapLibre-only; enhanced systems may use overlaid mode; qualified control-room systems may use interleaved WebGL2 mode. Reverse-controlled and custom WebGL modes are excluded."
+    },
+    {
+      "id": "D-P5.2-012",
+      "selected": "A",
+      "resolved_meaning": "Require generated unit, component, contract, story, browser, visual, accessibility, security, deterministic replay, C1/C10/C50, GIS parity, and later manual accessibility evidence."
+    }
+  ],
+  "precedence_rules": [
+    "The latest owner clarification makes Command Center primary and GIS Center a connected specialist dashboard.",
+    "D-P5.2-011 D refers to the revised adaptive MapLibre plus deck.gl option, not the original R0 custom-WebGL option.",
+    "The guarded provider registry in D-P5.2-003 does not activate any provider, network destination, credential, tile source, or external service.",
+    "The connected GIS dashboard shares domain contracts and authority with Command Center and is not a second source of operational truth."
+  ],
+  "progress": {
+    "owner_decisions": {
+      "earned": 12,
+      "total": 12,
+      "percent": 100.0,
+      "change_percentage_points": 8.3333,
+      "awards_product_points": false
+    },
+    "P5_2_product": {
+      "earned": 0,
+      "total": 12,
+      "percent": 0.0
+    },
+    "phase_5_product": {
+      "earned": 20,
+      "total": 100,
+      "percent": 20.0
+    }
+  },
+  "continuing_prohibitions": [
+    "planning_acceptance_by_implication",
+    "start_authorization_by_implication",
+    "source_import_or_product_implementation",
+    "dependency_or_lockfile_change",
+    "backend_route_or_migration",
+    "frontend_map_or_GIS_runtime",
+    "provider_tile_camera_media_or_network_access",
+    "Government_or_private_data",
+    "model_dataset_artifact_or_inference",
+    "operational_alert_or_action",
+    "container_Kubernetes_or_deployment",
+    "P5_3",
+    "remote_Git"
+  ]
+}

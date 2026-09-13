@@ -1,0 +1,49 @@
+{
+  "schema_version": "hcam.phase4.p4_4.database-snapshot.v1",
+  "revision": "0016_reference_integrations",
+  "parent_revision": "0015_alert_lifecycle_orchestration",
+  "prior_store_count": 33,
+  "new_stores": [
+    "reference_candidate_sets",
+    "reference_catalogue_records",
+    "reference_catalogue_snapshots",
+    "reference_circuit_states",
+    "reference_control_revisions",
+    "reference_integration_outbox",
+    "reference_provider_versions",
+    "reference_query_attempts",
+    "reference_query_jobs",
+    "reference_review_handoffs"
+  ],
+  "postgresql": {
+    "authoritative_job_truth": true,
+    "forced_row_security": true,
+    "policy_scope": "department",
+    "concurrent_claim": "FOR UPDATE SKIP LOCKED",
+    "protected_new_stores": [
+      "reference_candidate_sets",
+      "reference_catalogue_records",
+      "reference_catalogue_snapshots",
+      "reference_circuit_states",
+      "reference_control_revisions",
+      "reference_integration_outbox",
+      "reference_provider_versions",
+      "reference_query_attempts",
+      "reference_query_jobs",
+      "reference_review_handoffs"
+    ]
+  },
+  "sqlite": {
+    "purpose": "single-process generated development and tests",
+    "worker_limit": 1,
+    "row_security": "application department filters"
+  },
+  "database_invariants": [
+    "all provider and job state is generated-only and nonoperational",
+    "provider versions and controls are append-only revisions",
+    "semantic query identity is independent of delivery idempotency",
+    "attempts are leased bounded recoverable and attributable",
+    "candidate identity is never established and review is mandatory",
+    "raw provider responses credentials locators and destination material are not stored"
+  ]
+}

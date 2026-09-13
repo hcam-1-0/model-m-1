@@ -1,0 +1,161 @@
+{
+  "schema_version": "hcam.phase5.p5_1.planning_package.v1",
+  "package_id": "P5.1-PLANNING-R0",
+  "status": "research_complete_owner_decisions_pending",
+  "effective": false,
+  "prepared_on": "2026-09-06",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "db45a549d4dc6dd880a7cafaeb71f152b7af37ff",
+  "authority": {
+    "decision_id": "D-P5.1-PLAN-AUTH",
+    "path": "contracts/phase-5/p5-1-plan-authorization.json",
+    "record_sha256": "7D325D3D9ED42FA051305D91C091D05696FEC8DDCE6D35971BE59D400E735D89",
+    "owner_statement_sha256": "6FFACFC7AF580E8530433E8679A253824F475805F49944560DC51BAFC885FB0D"
+  },
+  "accepted_predecessor": {
+    "subphase": "P5.0",
+    "acceptance_record": "contracts/phase-5/p5-0-acceptance.json",
+    "evidence_package_sha256": "5A2857352974B541AC942ADA521A680B3D5D23B20B765882F8A94759B457E6C2",
+    "canonical_component_digest": "56229E40C1C374683956E344B7D08AF3F44D58208CB50B9C523A875F7FD846A7",
+    "technical_commit": "8d6ff70dfb0f6c7a6b9a50ce6db03d14f46256ae"
+  },
+  "component_digest_algorithm": "Sort components by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "AE55552A4469F870651F91C544C5D88456A57A17C7CAABFAF76FE4F18CA696C1",
+  "components": [
+    {
+      "path": "contracts/phase-5/p5-1-plan-authorization.json",
+      "bytes": 3898,
+      "sha256": "7D325D3D9ED42FA051305D91C091D05696FEC8DDCE6D35971BE59D400E735D89"
+    },
+    {
+      "path": "docs/phase-5/current-status-r4.md",
+      "bytes": 3935,
+      "sha256": "39DD5EE6AD5A9A88D950E9EE3EDFBCFD6D5EAD2F05C95E0283960FF04072CD6F"
+    },
+    {
+      "path": "docs/phase-5/p5-1-decision-packet.md",
+      "bytes": 13786,
+      "sha256": "71F6B0200535BB52B49B57FE243B3B3C57109F470FE27FD4260E3091D370BEA3"
+    },
+    {
+      "path": "docs/phase-5/p5-1-foundation-architecture.md",
+      "bytes": 18186,
+      "sha256": "B37C1E86D86342187FD36DDB71D6D0D2EC5315303DD8590DEB204E2F995F9FFE"
+    },
+    {
+      "path": "docs/phase-5/p5-1-implementation-plan.md",
+      "bytes": 15431,
+      "sha256": "020DB6CE3786E48587B7F069A1422929BB80D09EE80E27F18B76C6349A0A0BE5"
+    },
+    {
+      "path": "docs/phase-5/p5-1-research-record.md",
+      "bytes": 10982,
+      "sha256": "0C1D6776BA25744B3502A012B694D1A23985383E55C05C6C3E904AC7C3F334FE"
+    },
+    {
+      "path": "docs/phase-5/p5-1-threat-model.md",
+      "bytes": 9291,
+      "sha256": "798E3173C5A067360B32A50E0E90C3D7B2437172E6F9BE2465E5D6DEC16DA6A0"
+    }
+  ],
+  "owner_decisions": {
+    "decision_ids": [
+      "D-P5.1-001",
+      "D-P5.1-002",
+      "D-P5.1-003",
+      "D-P5.1-004",
+      "D-P5.1-005",
+      "D-P5.1-006",
+      "D-P5.1-007",
+      "D-P5.1-008",
+      "D-P5.1-009",
+      "D-P5.1-010",
+      "D-P5.1-011",
+      "D-P5.1-012"
+    ],
+    "recommended_profile": "B/A/A/A/A/A/A/A/A/A/A/A",
+    "selection_recorded": false,
+    "reconciled_package_required": true
+  },
+  "recommended_architecture": {
+    "workspace": "pnpm_workspace_with_catalogues_workspace_protocol_and_one_lockfile",
+    "applications": "independently_buildable_portals_without_runtime_federation",
+    "framework": "current_supported_React_with_strict_TypeScript_and_Vite",
+    "routing": "React_Router_Data_Mode_with_static_typed_manifests",
+    "components": "native_HTML_first_with_React_Aria_wrapped_by_HCAM_APIs",
+    "contracts": "pinned_OpenAPI_3_1_types_plus_strict_JSON_Schema_2020_12_runtime_validation",
+    "transport": "same_origin_typed_fetch_by_allowlisted_operation_ID",
+    "session": "BFF_Host_cookie_synchronizer_CSRF_and_explicit_reauthentication",
+    "server_state": "governed_TanStack_Query_with_operation_specific_policy",
+    "events": "typed_non_authoritative_invalidation_with_HTTP_revalidation_and_polling_fallback",
+    "localization": "React_Intl_ICU_English_Gujarati_Hindi_from_first_component",
+    "capabilities": "server_ceiling_coarse_browser_features_session_health_and_safe_low_default",
+    "persistence": "memory_default_typed_URL_harmless_local_preferences_and_server_workspaces",
+    "observability": "internal_low_cardinality_signals_with_default_off_OpenTelemetry_compatible_adapter",
+    "testing": "tiered_generated_unit_component_story_browser_visual_security_and_manual_evidence",
+    "source_adoption": "hash_bound_attributed_build_excluded_staged_parity_migration"
+  },
+  "preserved_constraints": [
+    "P5_0_accepted_contracts_and_evidence_remain_immutable",
+    "existing_Gujarat_GIS_is_the_canonical_operator_experience",
+    "GIS_adoption_is_parity_first_and_no_downgrade",
+    "HTTP_and_BFF_are_authoritative",
+    "events_do_not_grant_authority_or_confirm_mutations",
+    "browser_never_connects_directly_to_camera_ONVIF_database_broker_model_evidence_or_provider_systems",
+    "low_resource_profile_is_functionally_complete",
+    "enhancement_changes_quality_density_or_concurrency_not_authority",
+    "accessible_non_visual_alternatives_are_authoritative",
+    "English_Gujarati_and_Hindi_are_first_class",
+    "source_import_requires_later_exact_authorization_and_provenance"
+  ],
+  "implementation_workstreams": [
+    {"id": "P5.1-W1", "title": "workspace_and_build_policy", "points": 1.5},
+    {"id": "P5.1-W2", "title": "shell_navigation_and_routing", "points": 1.5},
+    {"id": "P5.1-W3", "title": "design_system_and_accessibility", "points": 1.5},
+    {"id": "P5.1-W4", "title": "typed_contracts_API_and_errors", "points": 1.5},
+    {"id": "P5.1-W5", "title": "session_authorization_and_context", "points": 1.5},
+    {"id": "P5.1-W6", "title": "server_state_concurrency_and_events", "points": 1.5},
+    {"id": "P5.1-W7", "title": "localization_profiles_and_windows", "points": 1.5},
+    {"id": "P5.1-W8", "title": "observability_adoption_validation_and_acceptance", "points": 1.5}
+  ],
+  "progress": {
+    "P5_1_planning": {
+      "status": "complete_owner_decisions_pending",
+      "awards_product_points": false
+    },
+    "P5_1_product": {
+      "earned": 0,
+      "total": 12,
+      "percent": 0.0,
+      "change_percentage_points": 0.0
+    },
+    "phase_5_product": {
+      "earned": 8,
+      "total": 100,
+      "percent": 8.0,
+      "change_percentage_points": 0.0
+    }
+  },
+  "next_gate": {
+    "owner_selects_decisions": true,
+    "reconciled_planning_package": true,
+    "exact_owner_planning_acceptance": true,
+    "bounded_start_package": true,
+    "exact_start_authorization": true
+  },
+  "owner_acceptance_recorded": false,
+  "start_package_prepared": false,
+  "implementation_authorized": false,
+  "source_import_authorized": false,
+  "dependency_installation_authorized": false,
+  "lockfile_change_authorized": false,
+  "build_or_runtime_authorized": false,
+  "new_API_route_or_migration_authorized": false,
+  "map_tile_provider_camera_media_or_network_authorized": false,
+  "Government_or_private_data_authorized": false,
+  "model_or_inference_authorized": false,
+  "operational_action_authorized": false,
+  "container_Kubernetes_or_deployment_authorized": false,
+  "P5_2_authorized": false,
+  "remote_git_authorized": false
+}

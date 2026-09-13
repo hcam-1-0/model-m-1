@@ -1,0 +1,9 @@
+{
+  "schema_version": "hcam.p4-2.generated-temporal-sequences.v1",
+  "generated_only": true,
+  "cases": [
+    {"case_id": "ordered-within-bound", "input_seconds": [[1, 2], [3, 4]], "maximum_span_ms": 5000, "expected": "sequence_matched"},
+    {"case_id": "missing-second-stage", "input_seconds": [[1, 2], []], "maximum_span_ms": 5000, "expected": "sequence_pending"},
+    {"case_id": "outside-bound", "input_seconds": [[1], [10]], "maximum_span_ms": 5000, "expected": "sequence_window_exceeded"}
+  ]
+}

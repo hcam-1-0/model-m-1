@@ -1,0 +1,172 @@
+{
+  "schema_version": "hcam.phase4.p4_6.operations-contract-catalog.v1",
+  "canonical_encoding": "UTF-8 ASCII JSON, sorted keys, compact separators",
+  "digest": "SHA-256",
+  "pydantic_models": [
+    "AuthorizationContextV1",
+    "BurnWindowV1",
+    "CapabilityProfileV1",
+    "CapacityRunV1",
+    "CircuitStateV1",
+    "CorrelationContextV1",
+    "DegradationDecisionV1",
+    "ErrorBudgetStateV1",
+    "FailureV1",
+    "HealthProjectionV1",
+    "KillSwitchRevisionV1",
+    "MetricDefinitionV1",
+    "PlacementDecisionV1",
+    "PlacementPlanV1",
+    "PlacementRequestV1",
+    "PlacementServiceV1",
+    "RecoveryAssetV1",
+    "RecoveryPlanV1",
+    "RecoverySimulationResultV1",
+    "ServiceObjectiveV1",
+    "SignalEnvelopeV1",
+    "SignalProjectionV1",
+    "SupplyChainComponentV1",
+    "SupplyChainInventoryV1",
+    "TraceContextV1",
+    "UnifiedSearchProjectionV1",
+    "WorkerJobV1"
+  ],
+  "bounds": {
+    "burn_windows": 8,
+    "capability_profiles": 64,
+    "capacity_steps": 100000,
+    "circuit_classes": 64,
+    "closed_values_per_label": 64,
+    "contract_bytes": 65536,
+    "control_depth": 8,
+    "document_depth": 16,
+    "document_items": 2048,
+    "generated_series": 32768,
+    "job_attempts": 3,
+    "job_payload_bytes": 65536,
+    "labels_per_metric": 8,
+    "metric_definitions": 2048,
+    "placement_nodes": 256,
+    "placement_services": 256,
+    "recovery_assets": 256,
+    "recovery_dependencies": 1024,
+    "safe_failure_parameters": 16,
+    "string_bytes": 4096,
+    "supply_chain_components": 10000,
+    "tracestate_bytes": 512,
+    "unified_search_items": 10000,
+    "worker_classes": 64,
+    "worker_lease_seconds": 90
+  },
+  "registries": {
+    "capacity_modes": [
+      "latency",
+      "balanced",
+      "throughput"
+    ],
+    "capacity_scales": {
+      "C1": 1,
+      "C10": 10,
+      "C50": 50
+    },
+    "failure_codes": [
+      "authorization.denied",
+      "capacity.incomplete",
+      "dependency.timeout",
+      "dependency.unavailable",
+      "integrity.failed",
+      "lease.lost",
+      "policy.denied",
+      "runtime.disabled",
+      "state.unknown",
+      "validation.invalid"
+    ],
+    "metric_definitions": [
+      "hcam_platform_capacity_steps",
+      "hcam_platform_circuits",
+      "hcam_platform_degradation",
+      "hcam_platform_job_duration_seconds",
+      "hcam_platform_jobs",
+      "hcam_platform_requests_total"
+    ],
+    "metric_label_values": {
+      "outcome": [
+        "accepted",
+        "denied",
+        "failed",
+        "unknown"
+      ],
+      "lane": [
+        "operational",
+        "security",
+        "audit",
+        "evidence"
+      ],
+      "worker_state": [
+        "queued",
+        "leased",
+        "succeeded",
+        "failed",
+        "dead_letter"
+      ],
+      "circuit_state": [
+        "closed",
+        "open",
+        "half_open"
+      ],
+      "degradation": [
+        "normal",
+        "constrained",
+        "degraded",
+        "stopped"
+      ],
+      "capacity_mode": [
+        "latency",
+        "balanced",
+        "throughput"
+      ],
+      "capacity_scale": [
+        "C1",
+        "C10",
+        "C50"
+      ],
+      "freshness": [
+        "fresh",
+        "stale",
+        "unknown"
+      ]
+    },
+    "placement_reasons": [
+      "placed",
+      "optional_lane_bypassed",
+      "mandatory_capability_missing",
+      "capacity_exhausted",
+      "capability_unknown"
+    ],
+    "recovery_tiers": [
+      "metadata",
+      "control_state",
+      "derived_state",
+      "reference_only"
+    ],
+    "service_classes": [
+      "api",
+      "worker",
+      "database",
+      "projection"
+    ],
+    "worker_classes": [
+      "telemetry",
+      "recovery",
+      "capacity",
+      "supply_chain"
+    ]
+  },
+  "signal_authority": "operational security audit and evidence lanes remain independent",
+  "unified_search": "disabled sanitized non-authoritative projection only",
+  "capacity": "deterministic generated C1 C10 C50 simulation, not a hardware claim",
+  "placement": "non-executable standalone and Kubernetes projections",
+  "generated_only": true,
+  "operational": false,
+  "runtime_state": "disabled_by_default_and_forbidden_in_production"
+}

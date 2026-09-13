@@ -1,0 +1,349 @@
+{
+  "schema_version": "hcam.phase4.p4_0.start-authorization-package.v1",
+  "package_id": "P4.0-START-R0",
+  "decision_id": "D-P4.0-START",
+  "status": "owner_authorization_required",
+  "effective": false,
+  "prepared_on": "2026-09-03",
+  "expires_on_if_accepted": "2026-10-03",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "source_branch": "codex/phase4-intelligence-alerts-planning",
+  "application_source_commit": "e2ba37b1d7be9f3186feab5b25ff3c9ad32c1990",
+  "implementation_branch_base_policy": "the_clean_local_planning_checkpoint_whose_first_parent_is_the_application_source_commit_and_that_adds_only_the_exact_R2_acceptance_and_P4_0_start_proposal_records",
+  "implementation_branch": "codex/phase4-contracts-guardrails",
+  "accepted_planning_baseline": {
+    "package_id": "P4-PLANNING-R2",
+    "path": "docs/phase-4/planning-package.json",
+    "sha256": "B8F4371A8DDD350F44321E70F5FB8CEE0DD27299A26082A40460086E80DDEA63"
+  },
+  "planning_acceptance": {
+    "decision_id": "D-P4-PLAN-ACCEPTANCE",
+    "path": "contracts/phase-4/p4-planning-r2-acceptance.json",
+    "sha256": "46749F00F04F2FA755136EBB524B2C16FCB2BC6DE63E49642BF64B182D642D87"
+  },
+  "selected_decisions": {
+    "D-P4.0-001": [
+      "A",
+      "B"
+    ],
+    "D-P4.0-002": [
+      "A",
+      "C",
+      "D"
+    ],
+    "D-P4.0-003": [
+      "A"
+    ],
+    "D-P4.0-004": [
+      "A",
+      "B",
+      "C"
+    ],
+    "D-P4.0-005": [
+      "A",
+      "B",
+      "D"
+    ],
+    "D-P4.0-006": [
+      "A"
+    ],
+    "D-P4.0-007": [
+      "A"
+    ],
+    "D-P4.0-008": [
+      "A"
+    ]
+  },
+  "authorization_effect_if_owner_accepts_exact_digest": [
+    "record_the_exact_D_P4_0_START_owner_statement",
+    "create_or_switch_to_the_exact_local_implementation_branch_from_the_clean_local_planning_checkpoint",
+    "implement_only_the_allowlisted_P4_0_contract_guardrail_control_plane_and_evidence_work",
+    "run_generated_only_local_validation_and_bounded_remediation_cycles",
+    "create_local_checkpoint_commits_without_push",
+    "prepare_a_non_effective_P4_0_acceptance_proposal_bound_to_exact_evidence"
+  ],
+  "work_packages": [
+    {
+      "id": "P4.0-W1",
+      "name": "machine_validated_contracts",
+      "scope": [
+        "closed_Pydantic_v2_contracts_with_forbid_unknown_fields",
+        "canonical_ASCII_JSON_and_SHA_256_identity",
+        "bounded_chronology_GeoJSON_provenance_retention_and_authority_profiles",
+        "hypothesis_graph_as_source_of_truth_with_flat_projection_contract",
+        "AMEC_lane_result_and_arbitration_contracts_without_lane_execution",
+        "alert_provider_timeline_review_and_operator_surface_state_contracts",
+        "positive_negative_boundary_and_canonicalization_tests"
+      ]
+    },
+    {
+      "id": "P4.0-W2",
+      "name": "fail_closed_guardrails",
+      "scope": [
+        "prohibited_identity_biometric_sensitive_trait_guilt_intent_and_raw_provider_fields",
+        "mandatory_review_for_all_police_intelligence_records",
+        "bounded_automation_only_for_generated_or_system_health_classes",
+        "future_autonomous_action_absent_or_hard_disabled",
+        "default_off_and_production_forbidden_generated_control_plane",
+        "department_purpose_reason_size_cost_and_retention_bounds",
+        "no_arbitrary_destination_secret_query_schema_code_or_expression_input"
+      ]
+    },
+    {
+      "id": "P4.0-W3",
+      "name": "additive_persistence_foundation",
+      "scope": [
+        "add_revision_0012_intelligence_control_plane_descending_from_0011_geometry_events",
+        "retain_revision_0011_and_all_accepted_Phase_3_artifacts_byte_exact",
+        "create_the_eleven_planned_intelligence_stores_with_constraints_indexes_and_foreign_keys",
+        "application_department_filters_plus_forced_PostgreSQL_row_security_defense_in_depth",
+        "SQLite_single_process_development_compatibility",
+        "optimistic_versions_append_only_revisions_integrity_digests_and_existing_transactional_outbox",
+        "upgrade_downgrade_drift_isolation_and_cross_department_negative_tests"
+      ]
+    },
+    {
+      "id": "P4.0-W4",
+      "name": "default_off_control_plane_API_skeleton",
+      "scope": [
+        "intelligence_viewer_editor_reviewer_and_approver_roles_with_platform_admin_compatibility",
+        "bounded_list_detail_and_draft_control_plane_endpoints",
+        "ETag_If_Match_X_HCAM_Reason_department_and_no_store_enforcement",
+        "audit_and_outbox_records_without_operational_publication",
+        "read_models_for_hypothesis_alert_and_timeline_UI_support_without_runtime_creation",
+        "provider_metadata_only_with_enabled_false_no_destination_no_credentials_and_no_transport",
+        "no_correlation_rule_evaluation_alert_transition_provider_call_worker_or_scheduler"
+      ]
+    },
+    {
+      "id": "P4.0-W5",
+      "name": "security_evidence_and_acceptance_preparation",
+      "scope": [
+        "threat_matrix_and_misuse_tests",
+        "schema_OpenAPI_and_database_snapshots",
+        "focused_full_suite_lint_build_dependency_and_migration_validation",
+        "new_module_branch_coverage_at_least_90_percent",
+        "immutable_R2_and_Phase_3_compatibility_checks",
+        "exact_evidence_package_known_limitations_and_non_effective_owner_acceptance_proposal"
+      ]
+    }
+  ],
+  "exact_additive_implementation_paths": [
+    "app/hcam/intelligence/__init__.py",
+    "app/hcam/intelligence/canonical.py",
+    "app/hcam/intelligence/contracts.py",
+    "app/hcam/intelligence/guardrails.py",
+    "app/hcam/intelligence/models.py",
+    "app/hcam/intelligence/repository.py",
+    "app/hcam/intelligence/routes.py",
+    "app/hcam/intelligence/row_security.py",
+    "app/hcam/intelligence/schemas.py",
+    "app/hcam/intelligence/service.py",
+    "migrations/versions/0012_intelligence_control_plane.py",
+    "contracts/phase-4/p4-0-start-authorization.json",
+    "contracts/phase-4/intelligence-contracts.json",
+    "contracts/phase-4/openapi.json",
+    "contracts/phase-4/database.json",
+    "contracts/phase-4/fixtures/adaptive-lane-result-v1.json",
+    "contracts/phase-4/fixtures/alert-aggregate-v1.json",
+    "contracts/phase-4/fixtures/alert-lifecycle-event-v1.json",
+    "contracts/phase-4/fixtures/chronology-v1.json",
+    "contracts/phase-4/fixtures/correlation-hypothesis-v1.json",
+    "contracts/phase-4/fixtures/evidence-reference-v1.json",
+    "contracts/phase-4/fixtures/geojson-profile-v1.json",
+    "contracts/phase-4/fixtures/intelligence-rule-v1.json",
+    "contracts/phase-4/fixtures/operator-surface-state-v1.json",
+    "contracts/phase-4/fixtures/provenance-v1.json",
+    "contracts/phase-4/fixtures/reference-provider-v1.json",
+    "contracts/phase-4/fixtures/reference-query-v1.json",
+    "contracts/phase-4/fixtures/retention-hold-v1.json",
+    "contracts/phase-4/fixtures/review-decision-v1.json",
+    "contracts/phase-4/fixtures/timeline-entry-v1.json",
+    "contracts/phase-4/p4-0-evidence.json",
+    "contracts/phase-4/p4-0-evidence-package.json",
+    "contracts/phase-4/p4-0-acceptance-proposal.json",
+    "docs/phase-4/status.md",
+    "docs/phase-4/p4-0-contract-catalog.md",
+    "docs/phase-4/p4-0-threat-model.md",
+    "docs/phase-4/p4-0-evidence-review.md",
+    "tests/test_phase40_contracts.py",
+    "tests/test_phase40_guardrails.py",
+    "tests/test_phase40_migration.py",
+    "tests/test_phase40_api.py",
+    "tests/test_phase40_security.py",
+    "tests/test_phase40_postgres.py",
+    "tests/test_phase40_readiness.py",
+    "tools/phase40_readiness.py"
+  ],
+  "exact_existing_paths_allowed_to_change": [
+    {
+      "path": ".github/workflows/python-ci.yml",
+      "pre_change_sha256": "7C1766A9B21C1C5330C1DDAC0EE33DB31345C80A66BE3EFB58B8F6158B512AA8",
+      "reason": "add_P4_0_contract_migration_security_and_PostgreSQL_validation_without_removing_Phase_3_jobs"
+    },
+    {
+      "path": "app/hcam/database.py",
+      "pre_change_sha256": "B419C0AF3C60AAEAA395A06AA1F4BDAF80509A928F517660B81154FF5DC1713F",
+      "reason": "advance_current_schema_to_0012_and_require_P4_0_tables_while_retaining_the_0011_boundary_constant"
+    },
+    {
+      "path": "app/hcam/main.py",
+      "pre_change_sha256": "F48B0E341226083705D1DBFDF3E07D491385EAD84570FC7DB284131451C829B5",
+      "reason": "register_models_router_and_default_off_control_plane_state"
+    },
+    {
+      "path": "app/hcam/security/auth.py",
+      "pre_change_sha256": "5D95E3A333708E2ADC5778D7979BFBA6D3983A479BEA980098B7A4BCBCE72ACC",
+      "reason": "add_typed_intelligence_roles_without_changing_camera_role_semantics"
+    },
+    {
+      "path": "app/hcam/settings.py",
+      "pre_change_sha256": "3BC74694E04962121B7C6BDFDB6731B6FC38D171C72F0903C11BB3E47C99A0D8",
+      "reason": "add_default_false_production_forbidden_generated_control_plane_flag"
+    },
+    {
+      "path": "tests/conftest.py",
+      "pre_change_sha256": "A2441C55D344962B7D7F729F1D56851BB94FD9E80A8959E8518DD92C793165DA",
+      "reason": "add_generated_only_P4_0_test_principals_and_fixtures"
+    },
+    {
+      "path": "tests/test_analytics_assignment_migration.py",
+      "pre_change_sha256": "9A013F865775A870BD9D9D385E5D7D991B7317A55B9C6CB23DDB985880CC1A76",
+      "reason": "transition_only_the_current_head_assertion_to_0012_while_preserving_Phase_3_table_and_constraint_checks"
+    }
+  ],
+  "immutable_paths": [
+    ".gitattributes",
+    "README.md",
+    "docs/phase-0/roadmap.md",
+    "docs/phase-4/README.md",
+    "docs/phase-4/product-scope.md",
+    "docs/phase-4/architecture.md",
+    "docs/phase-4/adaptive-correlation-research.md",
+    "docs/phase-4/implementation-plan.md",
+    "docs/phase-4/decision-packet.md",
+    "docs/phase-4/owner-decisions.md",
+    "docs/phase-4/acceptance-checklist.md",
+    "docs/phase-4/research-references.md",
+    "docs/phase-4/planning-package.json",
+    "contracts/phase-4/p4-planning-r2-acceptance.json",
+    "docs/phase-4/p4-planning-r2-acceptance.md",
+    "all_existing_contracts_phase_3_files",
+    "all_existing_docs_phase_3_files",
+    "all_existing_migrations_through_0011_geometry_events"
+  ],
+  "planned_persistence_stores": [
+    "intelligence_rules",
+    "correlation_runs",
+    "correlation_hypotheses",
+    "hypothesis_evidence_refs",
+    "reference_providers",
+    "reference_queries",
+    "alerts",
+    "alert_revisions",
+    "investigation_timelines",
+    "timeline_entries",
+    "existing_stream_event_outbox"
+  ],
+  "allowed_local_execution_after_authorization": {
+    "generated_or_synthetic_data_only": true,
+    "existing_locked_dependencies_only": true,
+    "dependency_install_or_download": false,
+    "network_egress": false,
+    "source_test_documentation_and_evidence_cycles_maximum": 8,
+    "local_checkpoint_commits": true,
+    "remote_git": false,
+    "optional_disposable_PostgreSQL_PostGIS_test_service": {
+      "allowed": true,
+      "conditions": [
+        "existing_local_Docker_engine_and_already_available_image_only",
+        "loopback_or_internal_bridge_access_only",
+        "generated_non_issuable_test_records_only",
+        "ephemeral_named_Phase_4_test_resources_only",
+        "no_image_pull_build_push_registry_or_external_network",
+        "remove_only_resources_created_by_the_P4_0_test_run"
+      ]
+    }
+  },
+  "contract_bounds": {
+    "unknown_fields": "forbidden",
+    "canonical_encoding": "UTF_8_ASCII_JSON_sorted_keys_compact_separators",
+    "digest": "SHA_256",
+    "maximum_contract_bytes": 65536,
+    "maximum_evidence_refs_per_hypothesis": 256,
+    "maximum_graph_nodes": 1024,
+    "maximum_graph_edges": 4096,
+    "maximum_rule_nodes": 320,
+    "maximum_timeline_entries_per_page": 500,
+    "maximum_list_page": 500,
+    "maximum_reason_characters": 1000,
+    "maximum_identifier_characters": 160,
+    "coordinate_reference_system": "WGS84_EPSG_4326_for_geographic_GeoJSON",
+    "authority_default": "mandatory_review",
+    "provider_default": "disabled",
+    "runtime_default": "disabled"
+  },
+  "validation_gates": [
+    "accepted_P4_PLANNING_R2_and_acceptance_record_hashes_remain_exact",
+    "all_accepted_Phase_3_files_and_migrations_through_0011_remain_byte_exact",
+    "JSON_contract_fixture_canonicalization_and_negative_tests_pass",
+    "prohibited_field_authority_escalation_and_arbitrary_provider_configuration_tests_fail_closed",
+    "SQLite_0011_to_0012_upgrade_downgrade_upgrade_and_schema_drift_checks_pass",
+    "PostgreSQL_PostGIS_constraints_forced_RLS_and_cross_department_negative_tests_pass",
+    "RBAC_department_ETag_reason_no_store_audit_and_outbox_API_tests_pass",
+    "production_configuration_rejects_P4_0_generated_control_plane_enablement",
+    "no_runtime_worker_scheduler_model_provider_transport_or_operational_alert_code_exists",
+    "new_intelligence_module_branch_coverage_is_at_least_90_percent",
+    "focused_and_full_test_suites_Ruff_build_and_dependency_checks_pass",
+    "phase40_readiness_reports_all_required_gates_passed",
+    "evidence_and_package_digests_are_reproducible_from_a_clean_local_checkout"
+  ],
+  "stop_conditions": [
+    "any_immutable_hash_application_source_commit_or_planning_checkpoint_ancestry_mismatch",
+    "any_required_path_outside_the_exact_allowlists",
+    "any_need_for_a_new_dependency_install_download_or_lockfile_change",
+    "any_real_external_private_or_Government_data_requirement",
+    "any_camera_stream_media_model_inference_or_provider_connection_requirement",
+    "any_operational_alert_dispatch_enforcement_or_autonomous_action_path",
+    "any_security_isolation_migration_or_generated_test_gate_that_cannot_be_repaired_within_eight_cycles",
+    "any_destructive_change_to_preexisting_local_Docker_or_Git_resources"
+  ],
+  "prohibited_actions": [
+    "modify_any_path_not_explicitly_allowlisted",
+    "rewrite_or_reseal_P4_PLANNING_R2_or_its_accepted_files",
+    "rewrite_accepted_Phase_3_evidence_decisions_packages_or_migrations",
+    "install_update_download_or_change_dependencies_or_uv_lock",
+    "model_dataset_artifact_checkpoint_font_or_inference_work",
+    "camera_ONVIF_Sentinel_stream_media_recording_snapshot_or_playback_access",
+    "external_provider_API_database_network_or_live_simulator_access",
+    "credential_secret_token_certificate_or_private_key_access",
+    "Government_police_private_personal_biometric_vehicle_owner_case_or_watchlist_data",
+    "face_identity_reidentification_sensitive_trait_intent_guilt_or_predictive_risk_inference",
+    "operational_alert_activation_notification_dispatch_enforcement_or_autonomous_action",
+    "background_correlation_rule_provider_alert_or_timeline_worker_execution",
+    "Kubernetes_cloud_pilot_production_or_other_deployment",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git",
+    "claim_Phase_4_or_P4_0_acceptance_without_exact_owner_acceptance_of_the_final_evidence_package"
+  ],
+  "exit_state": {
+    "maximum_progress_if_all_technical_gates_pass_before_owner_acceptance": {
+      "phase_points": 8,
+      "phase_total": 100,
+      "phase_percentage": 8.0,
+      "P4_0_points": 8,
+      "P4_0_total": 10,
+      "P4_0_percentage": 80.0
+    },
+    "progress_after_separate_exact_P4_0_owner_acceptance": {
+      "phase_points": 10,
+      "phase_total": 100,
+      "phase_percentage": 10.0,
+      "P4_0_points": 10,
+      "P4_0_total": 10,
+      "P4_0_percentage": 100.0
+    },
+    "P4_1_authorized": false,
+    "remote_git_authorized": false
+  },
+  "owner_authorization_statement_template": "D-P4.0-START: I, mayank-admin, accept P4.0 start package P4.0-START-R0 with SHA-256 {PACKAGE_SHA256} and authorize its exact bounded local generated-only implementation scope. This does not authorize models, datasets, inference, cameras or media, external providers, Government or private data, operational alerts, dispatch or enforcement, Kubernetes or deployment, or remote Git."
+}

@@ -1,0 +1,91 @@
+{
+  "schema_version": "hcam.phase5.p5_7.browser_matrix.v1",
+  "generated_only": true,
+  "primary": {
+    "engine": "chromium",
+    "channel": "msedge",
+    "automatic_download": false
+  },
+  "optional": [
+    "approved_existing_chromium",
+    "approved_existing_firefox",
+    "approved_existing_webkit"
+  ],
+  "missing_optional_policy": "blocked_or_unsupported_never_pass",
+  "viewports": [
+    [
+      "V01",
+      390,
+      844,
+      "compact_touch"
+    ],
+    [
+      "V02",
+      768,
+      1024,
+      "tablet_portrait"
+    ],
+    [
+      "V03",
+      1280,
+      720,
+      "constrained_laptop"
+    ],
+    [
+      "V04",
+      1440,
+      900,
+      "enhanced_workstation"
+    ],
+    [
+      "V05",
+      1920,
+      1080,
+      "full_hd_operations"
+    ],
+    [
+      "V06",
+      2560,
+      1440,
+      "control_room"
+    ],
+    [
+      "V07",
+      3840,
+      1080,
+      "logical_dual_display"
+    ]
+  ],
+  "resource_profiles": [
+    [
+      "R01",
+      "low_resource_laptop",
+      true
+    ],
+    [
+      "R02",
+      "enhanced_workstation",
+      true
+    ],
+    [
+      "R03",
+      "control_room",
+      true
+    ],
+    [
+      "R04",
+      "gpu_lab_projection",
+      false
+    ],
+    [
+      "R05",
+      "future_server_projection",
+      false
+    ],
+    [
+      "R06",
+      "kubernetes_projection",
+      false
+    ]
+  ]
+}

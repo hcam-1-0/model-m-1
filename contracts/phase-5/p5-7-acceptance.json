@@ -1,0 +1,40 @@
+{
+  "schema_version": "hcam.phase5.p5_7.acceptance.v1",
+  "decision_id": "D-P5.7-ACCEPTANCE",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-12",
+  "accepted_branch": "codex/phase5-product-ux-contracts",
+  "accepted_implementation_commit": "6a5e1c700779dbc0edb6fdd1a8dc4c6132dd21d6",
+  "accepted_evidence_seal_commit": "a1349857056c74f1116d418bce7f52bb7f8a3b42",
+  "evidence_package": {
+    "package_id": "P5.7-EVIDENCE-PACKAGE-R0",
+    "path": "contracts/phase-5/p5-7-evidence-package.json",
+    "sha256": "E5252E4AC87C17FB92C5811C023209B3B0F1D764FCB72DEB5797B19CCAFFB57F",
+    "canonical_component_digest": "883B380A2A37E11082B530EBDFCA080A6C792640AFCE9D4471F3A3AF3D00B58E"
+  },
+  "accepted_progress": {
+    "phase_5_points": 100,
+    "phase_5_total_points": 100,
+    "phase_5_percent": 100.0,
+    "p5_7_points": 12,
+    "p5_7_total_points": 12,
+    "p5_7_percent": 100.0
+  },
+  "scope_effect": "Completes P5.7 and Phase 5 only under the sealed generated-only quality implementation, deterministic validation corpus, installed-Edge browser evidence, explicit optional-browser and environment limitations, compatibility amendments, acyclic evidence graph, release manifest, and documented safety boundaries.",
+  "continuing_prohibitions": [
+    "Phase_6",
+    "release_or_deployment",
+    "real_providers_or_network_access",
+    "cameras_or_media",
+    "Government_or_private_data",
+    "identities_credentials_or_secrets",
+    "models_datasets_artifacts_or_inference",
+    "operational_or_administrative_actions",
+    "containers_or_Kubernetes_execution",
+    "remote_Git"
+  ],
+  "owner_statement_sha256": "9F086F12D1FCDD8FBEE49683CE6704F53A6ECC418A4C0D5BF688E35A1E5B2DD5",
+  "owner_statement": "D-P5.7-ACCEPTANCE: I, mayank-admin, accept P5.7 evidence package P5.7-EVIDENCE-PACKAGE-R0 with SHA-256 E5252E4AC87C17FB92C5811C023209B3B0F1D764FCB72DEB5797B19CCAFFB57F and canonical component digest 883B380A2A37E11082B530EBDFCA080A6C792640AFCE9D4471F3A3AF3D00B58E at technical commit 6a5e1c700779dbc0edb6fdd1a8dc4c6132dd21d6, including its generated-only quality implementation, 2,048-case deterministic corpus, 392/392 Edge browser checks, 56 visual records, complete local regression, explicit optional-browser and environment limitations, compatibility amendments, acyclic evidence graph, release manifest, and documented safety boundaries. This acceptance completes P5.7 and Phase 5 only. It does not authorize Phase 6, release, deployment, real providers or network access, cameras or media, Government or private data, identities, credentials or secrets, models, datasets, artifacts or inference, operational or administrative actions, containers, Kubernetes execution, or remote Git."
+}

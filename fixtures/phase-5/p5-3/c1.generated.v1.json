@@ -1,0 +1,8 @@
+{
+  "schema_version": "hcam.phase5.p5_3.capacity_fixture.v1",
+  "profile": "C1",
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "stream_refs": ["SYN-STREAM-0001"],
+  "resource_profile": "low_resource",
+  "expected": { "requested": 1, "admitted": 1, "held": 0, "columns": 1, "rendition_ceiling": "low", "authority": "view_only" }
+}

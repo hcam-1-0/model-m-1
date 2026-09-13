@@ -1,0 +1,23 @@
+{
+  "schema_version": "hcam.phase5.p5_7.accessibility_manifest.v1",
+  "target": "WCAG_2_2_AA",
+  "generated_only": true,
+  "automated_layers": [
+    "semantic",
+    "axe",
+    "keyboard",
+    "focus",
+    "zoom",
+    "reflow",
+    "target_size",
+    "reduced_motion",
+    "error_state"
+  ],
+  "manual_protocols_separately_required": [
+    "screen_reader",
+    "contrast_review",
+    "workflow_keyboard_review",
+    "WCAG_EM_style_sample_review"
+  ],
+  "conformance_claim_authorized": false
+}

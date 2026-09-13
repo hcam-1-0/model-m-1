@@ -1,0 +1,4307 @@
+.hcam-operations-root {
+  color-scheme: dark;
+  --ink: #e9f2f0;
+  --muted: #92a5a2;
+  --line: rgba(147, 189, 180, 0.16);
+  --panel: rgba(9, 23, 28, 0.94);
+  --canvas: #071018;
+  --green: #38e58b;
+  width: 100%;
+  color: var(--ink);
+  font-family: var(--hcam-font);
+}
+.hcam-operations-root button,
+.hcam-operations-root input,
+.hcam-operations-root select {
+  font: inherit;
+  letter-spacing: 0;
+}
+.hcam-operations-root button {
+  cursor: pointer;
+}
+.hcam-shell {
+  min-height: 100vh;
+  background: #071018;
+}
+.hcam-topbar {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 22px;
+  border-bottom: 1px solid var(--line);
+  background: #09161b;
+}
+.hcam-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 220px;
+}
+.hcam-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  color: #071018;
+  background: var(--green);
+}
+.hcam-brand p,
+.hcam-brand span {
+  margin: 0;
+}
+.hcam-brand p {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.hcam-brand span,
+.hcam-eyebrow,
+.hcam-detail-topline {
+  color: var(--muted);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.hcam-topbar-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+  font:
+    11px "IBM Plex Mono",
+    monospace;
+}
+.hcam-live-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 3px rgba(56, 229, 139, 0.12);
+}
+.hcam-live-dot.is-error {
+  background: #f36c6c;
+  box-shadow: 0 0 0 3px rgba(243, 108, 108, 0.12);
+}
+.hcam-separator {
+  width: 1px;
+  height: 14px;
+  background: var(--line);
+}
+.hcam-spin {
+  animation: hcam-spin 0.8s linear infinite;
+}
+@keyframes hcam-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.hcam-workspace {
+  display: grid;
+  grid-template-columns: 336px minmax(0, 1fr) 310px;
+  height: calc(100vh - 64px);
+  transition: grid-template-columns 0.22s ease;
+}
+.hcam-workspace.is-sidebar-collapsed {
+  grid-template-columns: 46px minmax(0, 1fr) 310px;
+}
+.hcam-sidebar-shell {
+  position: relative;
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  min-width: 0;
+  overflow: visible;
+  border-right: 1px solid var(--line);
+  background: var(--panel);
+  transition: grid-template-columns 0.22s ease;
+}
+.hcam-sidebar-shell.is-collapsed {
+  grid-template-columns: 46px 0;
+}
+.hcam-icon-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 0;
+  border-right: 1px solid #132126;
+  background: #060a0e;
+}
+.hcam-rail-mark {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 45px;
+  color: #0d1719;
+  background: #13a9ae;
+  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.12);
+}
+.hcam-rail-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding-top: 28px;
+}
+.hcam-rail-button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  color: #7b898e;
+  background: transparent;
+}
+.hcam-rail-button:hover {
+  color: #d0e0df;
+  background: rgba(102, 142, 148, 0.12);
+}
+.hcam-rail-button.is-active {
+  color: #c8fffd;
+  border-color: rgba(19, 169, 174, 0.42);
+  background: rgba(19, 169, 174, 0.15);
+  box-shadow: inset 3px 0 #18c8c8;
+}
+.hcam-rail-badge {
+  position: absolute;
+  top: -3px;
+  right: -5px;
+  display: grid;
+  place-items: center;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  border-radius: 99px;
+  color: #061114;
+  background: #18c8c8;
+  box-shadow: 0 0 0 2px #060a0e;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+}
+.hcam-rail-footer {
+  width: 100%;
+  margin-top: auto;
+  padding: 12px 0 14px;
+  border-top: 1px solid #132126;
+  text-align: center;
+}
+.hcam-sidebar-toggle {
+  position: absolute;
+  z-index: 5;
+  top: 13px;
+  right: -14px;
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  padding: 0;
+  border: 1px solid #24535a;
+  border-radius: 50%;
+  color: #b8eeeb;
+  background: #0b2529;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.hcam-sidebar-toggle:hover {
+  color: #e5fffd;
+  background: #104147;
+}
+.hcam-sidebar,
+.hcam-detail-rail {
+  overflow-y: auto;
+  background: var(--panel);
+}
+.hcam-sidebar {
+  min-width: 0;
+  scroll-behavior: smooth;
+  padding: 22px 16px;
+  transition:
+    opacity 0.16s ease,
+    padding 0.22s ease;
+}
+.hcam-sidebar-shell.is-collapsed .hcam-sidebar {
+  overflow: hidden;
+  padding-right: 0;
+  padding-left: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.hcam-detail-rail {
+  border-left: 1px solid var(--line);
+}
+.hcam-panel-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.hcam-panel-heading h1 {
+  margin: 4px 0 0;
+  font-size: 18px;
+  letter-spacing: -0.03em;
+}
+.hcam-count {
+  display: grid;
+  place-items: center;
+  min-width: 27px;
+  height: 27px;
+  border-radius: 7px;
+  background: rgba(56, 229, 139, 0.12);
+  color: var(--green);
+  font:
+    12px "IBM Plex Mono",
+    monospace;
+}
+.hcam-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 22px 0;
+  padding: 0 10px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  background: rgba(0, 0, 0, 0.12);
+}
+.hcam-search input {
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  color: var(--ink);
+  background: transparent;
+  font-size: 12px;
+}
+.hcam-search input::placeholder {
+  color: #617370;
+}
+.hcam-layer-section {
+  padding: 15px 0;
+  border-top: 1px solid var(--line);
+}
+.hcam-layer-section-last {
+  border-bottom: 1px solid var(--line);
+}
+.hcam-section-title,
+.hcam-layer-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #c6d5d1;
+  font:
+    11px "IBM Plex Mono",
+    monospace;
+}
+.hcam-section-title svg:last-child {
+  margin-left: auto;
+}
+.hcam-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 2px 0;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+}
+.hcam-filter input {
+  accent-color: var(--green);
+}
+.hcam-filter small {
+  margin-left: auto;
+  color: #657775;
+  font:
+    10px "IBM Plex Mono",
+    monospace;
+}
+.hcam-status-dot {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  flex: 0 0 auto;
+  border-radius: 50%;
+}
+.status-online {
+  background: #38e58b;
+}
+.status-degraded {
+  background: #f5bc4d;
+}
+.status-maintenance {
+  background: #72a7ff;
+}
+.status-offline {
+  background: #f36c6c;
+}
+.hcam-layer-row {
+  padding-top: 11px;
+  color: var(--muted);
+}
+.hcam-layer-row.muted {
+  color: #6f8580;
+}
+.hcam-layer-state {
+  margin-left: auto;
+  color: var(--green);
+  font-size: 9px;
+}
+.hcam-data-boundary {
+  margin: 18px 0 0;
+  color: #708581;
+  font-size: 11px;
+  line-height: 1.6;
+}
+.hcam-map-frame {
+  position: relative;
+  min-width: 0;
+}
+.hcam-map {
+  width: 100%;
+  height: 100%;
+  background: #0c2428;
+}
+.hcam-map-issue {
+  position: absolute;
+  z-index: 8;
+  top: 62px;
+  left: 50%;
+  max-width: min(460px, calc(100% - 40px));
+  margin: 0;
+  padding: 9px 12px;
+  border: 1px solid rgba(245, 188, 77, 0.55);
+  border-radius: 6px;
+  color: #ffdc8c;
+  background: rgba(25, 20, 10, 0.94);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
+  font-size: 11px;
+  line-height: 1.45;
+  text-align: center;
+  transform: translateX(-50%);
+}
+.hcam-map-caption {
+  position: absolute;
+  z-index: 2;
+  bottom: 17px;
+  left: 17px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid rgba(170, 205, 198, 0.15);
+  border-radius: 7px;
+  color: #bfceca;
+  background: rgba(7, 16, 24, 0.84);
+  font:
+    10px "IBM Plex Mono",
+    monospace;
+}
+.maplibregl-ctrl-group {
+  overflow: hidden;
+  border: 1px solid rgba(170, 205, 198, 0.2) !important;
+  border-radius: 7px !important;
+  box-shadow: none !important;
+}
+.maplibregl-ctrl button {
+  background-color: #0c1d24 !important;
+}
+.maplibregl-ctrl button span {
+  filter: invert(1) brightness(1.5);
+}
+.hcam-map-source-state {
+  position: absolute;
+  z-index: 4;
+  top: 16px;
+  left: 16px;
+  display: grid;
+  gap: 4px;
+  max-width: 340px;
+  padding: 11px 12px;
+  border: 1px solid rgba(245, 188, 77, 0.45);
+  border-left: 3px solid #f5bc4d;
+  border-radius: 7px;
+  color: #dce6e3;
+  background: rgba(12, 17, 24, 0.94);
+  font:
+    10px/1.45 "IBM Plex Mono",
+    monospace;
+}
+.hcam-map-source-state strong {
+  color: #ffd36e;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.hcam-map-source-state span {
+  color: #b5c2c0;
+}
+.hcam-map-source-state small {
+  color: #748b8e;
+  font-size: 9px;
+}
+.hcam-map-mode button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+.hcam-map-mode button.is-unavailable:hover {
+  color: inherit;
+  background: transparent;
+}
+.hcam-territory-inspector {
+  position: absolute;
+  z-index: 6;
+  top: 68px;
+  left: 16px;
+  display: grid;
+  gap: 5px;
+  width: min(252px, calc(100% - 32px));
+  padding: 10px;
+  border: 1px solid rgba(232, 93, 98, 0.45);
+  border-left: 3px solid #ed5960;
+  border-radius: 7px;
+  color: #dce7e4;
+  background: rgba(10, 17, 23, 0.95);
+  box-shadow: 0 13px 31px rgba(0, 0, 0, 0.34);
+  font-family: "IBM Plex Mono", monospace;
+}
+.hcam-territory-inspector header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #e18a8f;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.hcam-territory-inspector header button {
+  display: grid;
+  place-items: center;
+  padding: 1px;
+  border: 0;
+  color: #8fa3a4;
+  background: transparent;
+}
+.hcam-territory-inspector header button:hover {
+  color: #effffc;
+}
+.hcam-territory-inspector > strong {
+  color: #f0f6f4;
+  font-size: 13px;
+}
+.hcam-territory-inspector > small {
+  color: #809296;
+  font-size: 8px;
+}
+.hcam-territory-inspector dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 4px 0 2px;
+  background: rgba(102, 136, 140, 0.18);
+}
+.hcam-territory-inspector dl div {
+  padding: 6px;
+  background: rgba(5, 13, 18, 0.8);
+}
+.hcam-territory-inspector dt {
+  color: #72888b;
+  font-size: 8px;
+  text-transform: uppercase;
+}
+.hcam-territory-inspector dd {
+  margin: 3px 0 0;
+  color: #d7e7e3;
+  font-size: 12px;
+}
+.hcam-territory-inspector > button {
+  padding: 7px;
+  border: 1px solid rgba(237, 89, 96, 0.42);
+  border-radius: 4px;
+  color: #ffd9d9;
+  background: rgba(237, 89, 96, 0.1);
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hcam-territory-inspector > button:hover {
+  background: rgba(237, 89, 96, 0.18);
+}
+.hcam-map-mode {
+  position: absolute;
+  z-index: 3;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid rgba(203, 166, 61, 0.34);
+  border-radius: 9px;
+  background: rgba(8, 15, 18, 0.94);
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.32),
+    inset 0 1px rgba(255, 235, 172, 0.07);
+}
+.hcam-map-mode button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 27px;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: #99aaa6;
+  background: transparent;
+  font:
+    10px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.hcam-map-mode button:hover {
+  color: #e7d394;
+  background: rgba(203, 166, 61, 0.08);
+}
+.hcam-map-mode button.is-active {
+  border-color: rgba(203, 166, 61, 0.62);
+  color: #f0d47b;
+  background: rgba(203, 166, 61, 0.13);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 231, 139, 0.07),
+    0 0 13px rgba(203, 166, 61, 0.08);
+}
+.hcam-map-mode-divider {
+  width: 1px;
+  height: 22px;
+  margin: 0 3px;
+  background: rgba(203, 166, 61, 0.2);
+}
+.hcam-empty-detail {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-height: 100%;
+  padding: 34px;
+  text-align: center;
+}
+.hcam-empty-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--green);
+}
+.hcam-empty-detail h2 {
+  margin: 15px 0 7px;
+  font-size: 15px;
+}
+.hcam-empty-detail p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.hcam-camera-detail {
+  padding: 18px;
+}
+.hcam-detail-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hcam-detail-topline button {
+  display: grid;
+  place-items: center;
+  border: 0;
+  color: var(--muted);
+  background: transparent;
+}
+.hcam-camera-title {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 22px 0 12px;
+}
+.hcam-camera-title h2 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.25;
+}
+.hcam-camera-title p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font:
+    10px "IBM Plex Mono",
+    monospace;
+}
+.hcam-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+}
+.hcam-status-badge.status-online {
+  color: #91f8bf;
+  background: rgba(56, 229, 139, 0.12);
+}
+.hcam-status-badge.status-degraded {
+  color: #ffd984;
+  background: rgba(245, 188, 77, 0.12);
+}
+.hcam-status-badge.status-maintenance {
+  color: #b6d1ff;
+  background: rgba(114, 167, 255, 0.12);
+}
+.hcam-status-badge.status-offline {
+  color: #ffaaa5;
+  background: rgba(243, 108, 108, 0.12);
+}
+.hcam-detail-list {
+  margin: 22px 0;
+}
+.hcam-detail-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 0;
+  border-top: 1px solid var(--line);
+}
+.hcam-detail-list dt {
+  color: var(--muted);
+  font-size: 11px;
+}
+.hcam-detail-list dd {
+  margin: 0;
+  text-align: right;
+  color: #d5e2df;
+  font-size: 11px;
+}
+.hcam-preview-state {
+  display: flex;
+  gap: 9px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: #a5b9b4;
+  background: rgba(0, 0, 0, 0.12);
+}
+.hcam-preview-state strong,
+.hcam-preview-state span {
+  display: block;
+}
+.hcam-preview-state strong {
+  font-size: 11px;
+}
+.hcam-preview-state span {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.4;
+}
+@media (max-width: 1000px) {
+  .hcam-workspace {
+    grid-template-columns: 300px minmax(0, 1fr);
+  }
+  .hcam-detail-rail {
+    display: none;
+  }
+  .hcam-detail-rail.is-open {
+    display: block;
+    position: absolute;
+    z-index: 4;
+    top: 64px;
+    right: 0;
+    bottom: 0;
+    width: 310px;
+    box-shadow: -16px 0 30px rgba(0, 0, 0, 0.28);
+  }
+}
+@media (max-width: 700px) {
+  .hcam-topbar {
+    height: 56px;
+    padding: 0 14px;
+  }
+  .hcam-topbar-status {
+    display: none;
+  }
+  .hcam-workspace {
+    display: block;
+    height: calc(100vh - 56px);
+  }
+  .hcam-sidebar-shell {
+    display: none;
+  }
+  .hcam-map-frame {
+    height: 100%;
+  }
+  .hcam-detail-rail.is-open {
+    top: 56px;
+    width: min(330px, 88vw);
+  }
+  .hcam-brand {
+    min-width: auto;
+  }
+}
+
+.hcam-preview-state strong:has(svg) {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.hcam-shell {
+  min-width: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 58% 10%, rgba(15, 54, 59, 0.22), transparent 32%), #050b10;
+}
+.hcam-workspace {
+  grid-template-columns: minmax(290px, 336px) minmax(0, 1fr) minmax(278px, 310px);
+  height: calc(100dvh - 52px);
+}
+.hcam-workspace.is-sidebar-collapsed {
+  grid-template-columns: 46px minmax(0, 1fr) minmax(278px, 310px);
+}
+.hcam-sidebar {
+  padding: 18px 15px 28px;
+}
+.hcam-sidebar,
+.hcam-detail-rail {
+  scrollbar-color: rgba(68, 135, 135, 0.5) transparent;
+  scrollbar-width: thin;
+}
+.hcam-panel-heading h1 {
+  font-size: clamp(17px, 1.3vw, 21px);
+}
+.hcam-search {
+  height: 36px;
+  margin: 17px 0;
+}
+.hcam-layer-section {
+  padding: 13px 0;
+}
+.hcam-filter {
+  min-height: 29px;
+  padding-top: 6px;
+}
+.hcam-map-frame {
+  isolation: isolate;
+  background: #071018;
+}
+.hcam-map-mode {
+  top: 14px;
+  left: 14px;
+  max-width: calc(100% - 32px);
+}
+.hcam-map-utility-rail {
+  top: 78px;
+  right: 14px;
+}
+.hcam-map-readout {
+  right: 14px;
+  bottom: 13px;
+  max-width: calc(100% - 30px);
+}
+.hcam-map-caption {
+  left: 14px;
+  bottom: 14px;
+  max-width: min(480px, calc(100% - 32px));
+}
+.hcam-detail-rail {
+  background: linear-gradient(180deg, rgba(9, 22, 28, 0.98), rgba(5, 13, 18, 0.98));
+}
+.hcam-camera-detail {
+  padding: 20px 18px 28px;
+}
+.hcam-camera-title h2 {
+  font-size: 19px;
+}
+.hcam-detail-list div {
+  padding: 12px 0;
+}
+.hcam-drawing-panel {
+  top: 10px;
+  left: 55px;
+  width: min(300px, calc(100vw - 76px));
+  max-height: calc(100dvh - 76px);
+}
+.hcam-feature-flyout {
+  top: 10px;
+  left: 55px;
+  width: min(282px, calc(100vw - 76px));
+}
+@media (max-width: 1180px) {
+  .hcam-system-telemetry span:nth-last-child(-n + 2) {
+    display: none;
+  }
+  .hcam-workspace {
+    grid-template-columns: 300px minmax(0, 1fr) 284px;
+  }
+}
+@media (max-width: 900px) {
+  .hcam-workspace,
+  .hcam-workspace.is-sidebar-collapsed {
+    grid-template-columns: 46px minmax(0, 1fr);
+  }
+  .hcam-sidebar-shell {
+    grid-template-columns: 46px 0;
+  }
+  .hcam-sidebar {
+    opacity: 0;
+    pointer-events: none;
+    padding: 0;
+  }
+  .hcam-detail-rail.is-open {
+    top: 52px;
+    width: min(350px, 92vw);
+  }
+  .hcam-topbar-actions {
+    display: none;
+  }
+}
+@media (max-width: 620px) {
+  .hcam-topbar {
+    padding: 0 12px;
+  }
+  .hcam-brand p {
+    font-size: 13px;
+  }
+  .hcam-brand span {
+    display: none;
+  }
+  .hcam-system-telemetry {
+    display: none;
+  }
+  .hcam-map-mode button {
+    padding: 0 7px;
+  }
+  .hcam-map-mode button span {
+    display: none;
+  }
+  .hcam-map-mode-divider {
+    margin: 0 1px;
+  }
+  .hcam-map-utility-rail {
+    top: auto;
+    right: 12px;
+    bottom: 92px;
+  }
+  .hcam-map-readout {
+    display: none;
+  }
+  .hcam-map-caption {
+    font-size: 9px;
+  }
+  .hcam-camera-console {
+    left: 10px;
+    right: 10px;
+    width: auto;
+    bottom: 70px;
+  }
+}
+.hcam-preview-state.preview-available {
+  border-color: rgba(56, 229, 139, 0.32);
+}
+.hcam-preview-state.preview-degraded {
+  border-color: rgba(245, 188, 77, 0.32);
+}
+.hcam-preview-state.preview-unavailable,
+.hcam-preview-state.preview-registry-only {
+  border-color: rgba(243, 108, 108, 0.24);
+}
+.hcam-preview-button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 9px 10px;
+  border: 1px solid rgba(56, 229, 139, 0.35);
+  border-radius: 7px;
+  color: #bfffd9;
+  background: rgba(56, 229, 139, 0.1);
+  font:
+    10px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.hcam-preview-button:hover:not(:disabled) {
+  background: rgba(56, 229, 139, 0.18);
+}
+.hcam-preview-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+.hcam-display-summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  padding: 9px 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font:
+    10px "IBM Plex Mono",
+    monospace;
+  text-transform: uppercase;
+}
+.hcam-display-summary strong {
+  margin-left: auto;
+  color: #c6d5d1;
+  font-weight: 500;
+}
+.hcam-section-title small {
+  margin-left: auto;
+  color: var(--muted);
+  font:
+    10px "IBM Plex Mono",
+    monospace;
+}
+.hcam-alert {
+  margin-top: 9px;
+  padding: 8px;
+  border-left: 2px solid var(--line);
+  background: rgba(0, 0, 0, 0.1);
+}
+.hcam-alert strong,
+.hcam-alert span {
+  display: block;
+}
+.hcam-alert strong {
+  font-size: 10px;
+}
+.hcam-alert span,
+.hcam-empty-alerts {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.4;
+}
+.hcam-alert.alert-high {
+  border-color: #f36c6c;
+}
+.hcam-alert.alert-medium {
+  border-color: #f5bc4d;
+}
+.hcam-alert.alert-low {
+  border-color: #72a7ff;
+}
+.hcam-role {
+  display: block;
+  margin-top: 15px;
+  color: var(--muted);
+  font:
+    10px "IBM Plex Mono",
+    monospace;
+  text-transform: uppercase;
+}
+.hcam-role select {
+  width: 100%;
+  margin-top: 6px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  background: #0b1b20;
+  font:
+    11px Inter,
+    sans-serif;
+}
+
+/* Keep the panel control inside the operational navigation palette. */
+.hcam-sidebar-shell {
+  position: static;
+  overflow: hidden;
+}
+.hcam-sidebar-toggle {
+  position: static;
+  z-index: auto;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid rgba(19, 169, 174, 0.38);
+  border-radius: 7px;
+  color: #b8eeeb;
+  background: rgba(19, 169, 174, 0.1);
+  box-shadow: none;
+}
+.hcam-sidebar-toggle:hover {
+  color: #e5fffd;
+  border-color: rgba(19, 169, 174, 0.65);
+  background: rgba(19, 169, 174, 0.22);
+}
+.hcam-sidebar-shell {
+  position: relative;
+  overflow: visible;
+  z-index: 6;
+}
+.hcam-drawing-panel {
+  position: absolute;
+  z-index: 9;
+  top: 4px;
+  left: 56px;
+  width: 282px;
+  max-height: calc(100vh - 78px);
+  overflow-y: auto;
+  border: 1px solid rgba(112, 139, 150, 0.25);
+  border-radius: 13px;
+  color: #d6e0df;
+  background: rgba(7, 10, 16, 0.98);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.5);
+  font-family: "IBM Plex Mono", monospace;
+}
+.hcam-drawing-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 14px;
+  border-bottom: 1px solid rgba(112, 139, 150, 0.16);
+}
+.hcam-drawing-header span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e5f1ef;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.hcam-drawing-header span svg {
+  color: #00dbe5;
+}
+.hcam-drawing-header button,
+.hcam-drawing-saved-heading button,
+.hcam-drawing-saved li button {
+  display: grid;
+  place-items: center;
+  padding: 3px;
+  border: 0;
+  color: #788a8d;
+  background: transparent;
+}
+.hcam-drawing-header button:hover,
+.hcam-drawing-saved-heading button:hover,
+.hcam-drawing-saved li button:hover {
+  color: #d8f2ef;
+}
+.hcam-drawing-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 10px 14px 0;
+  overflow: hidden;
+  border: 1px solid rgba(112, 139, 150, 0.18);
+  border-radius: 5px;
+  background: rgba(112, 139, 150, 0.18);
+}
+.hcam-drawing-metrics div {
+  padding: 8px 9px;
+  background: #121821;
+}
+.hcam-drawing-metrics span,
+.hcam-drawing-saved-heading > span {
+  display: block;
+  color: #839397;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.hcam-drawing-metrics strong {
+  display: block;
+  margin-top: 4px;
+  color: #00e3ec;
+  font-size: 12px;
+}
+.hcam-drawing-step {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-top: 1px solid rgba(112, 139, 150, 0.13);
+  border-bottom: 1px solid rgba(112, 139, 150, 0.13);
+}
+.hcam-drawing-step > span {
+  color: #8d9a9e;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.hcam-drawing-modes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  margin-top: 9px;
+}
+.hcam-drawing-modes button {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: 2px 6px;
+  min-height: 68px;
+  padding: 9px;
+  border: 1px solid rgba(112, 139, 150, 0.22);
+  border-radius: 5px;
+  color: #b6c2c2;
+  background: rgba(255, 255, 255, 0.025);
+  text-align: left;
+}
+.hcam-drawing-modes button:hover,
+.hcam-drawing-modes button.is-active {
+  border-color: rgba(0, 219, 229, 0.52);
+  background: rgba(0, 219, 229, 0.08);
+  color: #e0ffff;
+}
+.hcam-drawing-modes button svg {
+  grid-row: span 2;
+  margin-top: 1px;
+}
+.hcam-drawing-modes button strong {
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.hcam-drawing-modes button small {
+  color: #77878b;
+  font:
+    9px/1.25 "IBM Plex Mono",
+    monospace;
+}
+.hcam-drawing-active {
+  margin: 10px 14px;
+  padding: 10px;
+  border: 1px solid rgba(0, 219, 229, 0.29);
+  border-radius: 6px;
+  background: rgba(0, 219, 229, 0.06);
+}
+.hcam-drawing-active > div:first-child {
+  display: flex;
+  gap: 7px;
+  color: #bfe7e8;
+  font-size: 10px;
+  line-height: 1.45;
+}
+.hcam-drawing-active p {
+  margin: 8px 0;
+  color: #00e3ec;
+  font-size: 10px;
+}
+.hcam-drawing-actions {
+  display: flex;
+  gap: 5px;
+}
+.hcam-drawing-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 7px;
+  border: 1px solid rgba(112, 139, 150, 0.25);
+  border-radius: 4px;
+  color: #abbcbd;
+  background: rgba(255, 255, 255, 0.035);
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+}
+.hcam-drawing-actions button:hover:not(:disabled) {
+  color: #e8ffff;
+  border-color: rgba(0, 219, 229, 0.5);
+}
+.hcam-drawing-actions button.is-primary {
+  color: #aaffd2;
+  border-color: rgba(56, 229, 139, 0.45);
+}
+.hcam-drawing-actions button:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+.hcam-drawing-active > small {
+  display: block;
+  margin-top: 8px;
+  color: #697d81;
+  font-size: 8px;
+}
+.hcam-drawing-saved {
+  padding: 12px 14px 14px;
+}
+.hcam-drawing-saved-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hcam-drawing-saved-heading > div {
+  display: flex;
+  gap: 5px;
+}
+.hcam-drawing-saved-heading button {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: #8fa4a5;
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+}
+.hcam-drawing-saved ul {
+  display: grid;
+  gap: 4px;
+  margin: 9px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.hcam-drawing-saved li {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr) 20px 20px;
+  gap: 6px;
+  align-items: center;
+  padding: 7px;
+  border: 1px solid rgba(112, 139, 150, 0.15);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.hcam-drawing-colour {
+  width: 7px;
+  height: 24px;
+  border-radius: 3px;
+}
+.hcam-drawing-saved li strong,
+.hcam-drawing-saved li small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hcam-drawing-saved li strong {
+  color: #cad9d7;
+  font-size: 10px;
+}
+.hcam-drawing-saved li small {
+  margin-top: 2px;
+  color: #708589;
+  font-size: 8px;
+}
+.hcam-drawing-empty {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  min-height: 105px;
+  margin: 8px 0 0;
+  color: #76898c;
+  font-size: 10px;
+  line-height: 1.6;
+  text-align: center;
+}
+.hcam-drawing-empty svg {
+  color: #516d70;
+}
+
+/* Command header populated only from the local H-CAM workspace. */
+.hcam-topbar {
+  position: relative;
+  height: 52px;
+  padding: 0 24px;
+  border-top: 2px solid #087d81;
+  border-bottom-color: rgba(81, 118, 122, 0.24);
+  background: linear-gradient(
+    90deg,
+    rgba(5, 7, 12, 0.99),
+    rgba(8, 13, 20, 0.96) 52%,
+    rgba(5, 8, 14, 0.99)
+  );
+}
+.hcam-topbar::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 20%, rgba(34, 71, 75, 0.12) 48%, transparent 77%);
+  content: "";
+}
+.hcam-brand,
+.hcam-system-telemetry,
+.hcam-topbar-actions {
+  position: relative;
+  z-index: 1;
+}
+.hcam-brand {
+  gap: 11px;
+  min-width: 230px;
+}
+.hcam-brand-mark {
+  width: 37px;
+  height: 32px;
+  border: 1px solid rgba(216, 173, 54, 0.42);
+  border-radius: 50%;
+  color: #e1b83f;
+  background: rgba(216, 173, 54, 0.07);
+}
+.hcam-brand p {
+  color: #e1b83f;
+  font-size: 18px;
+  letter-spacing: 0.34em;
+}
+.hcam-brand span {
+  color: #68787e;
+  font-size: 8px;
+  letter-spacing: 0.17em;
+}
+.hcam-system-telemetry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  flex: 1;
+  color: #59676d;
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.hcam-system-telemetry > span + span {
+  padding-left: 13px;
+  border-left: 1px solid rgba(110, 138, 141, 0.18);
+}
+.hcam-system-telemetry strong {
+  color: #39e69d;
+  font-weight: 600;
+}
+.hcam-system-telemetry strong.is-error {
+  color: #f36c6c;
+}
+.hcam-telemetry-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #00dfe7;
+}
+.hcam-topbar-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  min-width: 230px;
+}
+.hcam-topbar-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px;
+  border: 1px solid rgba(0, 218, 225, 0.24);
+  border-radius: 999px;
+  color: #56e5db;
+  background: rgba(0, 218, 225, 0.05);
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.hcam-topbar-chip-muted {
+  border-color: rgba(216, 173, 54, 0.25);
+  color: #d2af48;
+  background: rgba(216, 173, 54, 0.05);
+}
+.hcam-workspace {
+  height: calc(100vh - 52px);
+}
+.hcam-drawing-panel {
+  max-height: calc(100vh - 66px);
+}
+.hcam-map-utility-rail {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 7px;
+  border: 1px solid rgba(112, 139, 150, 0.22);
+  border-radius: 22px;
+  background: rgba(6, 10, 16, 0.9);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32);
+  transform: translateY(-50%);
+}
+.hcam-map-utility-button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: #a3b1b4;
+  background: transparent;
+}
+.hcam-map-utility-button:hover {
+  color: #e1f6f2;
+  background: rgba(129, 154, 160, 0.12);
+}
+.hcam-map-utility-button.is-active {
+  color: #00e6ec;
+  background: rgba(0, 220, 229, 0.15);
+  box-shadow: 0 0 0 1px rgba(0, 220, 229, 0.2);
+}
+.hcam-map-utility-panel {
+  position: absolute;
+  z-index: 6;
+  top: 50%;
+  right: 67px;
+  width: 254px;
+  padding: 12px;
+  border: 1px solid rgba(112, 139, 150, 0.26);
+  border-radius: 9px;
+  color: #c8d7d4;
+  background: rgba(7, 11, 17, 0.97);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.42);
+  font-family: "IBM Plex Mono", monospace;
+  transform: translateY(-50%);
+}
+.hcam-map-utility-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(112, 139, 150, 0.18);
+  color: #d9e7e4;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.hcam-map-utility-heading button {
+  display: grid;
+  place-items: center;
+  padding: 2px;
+  border: 0;
+  color: #799095;
+  background: transparent;
+}
+.hcam-map-utility-heading button:hover {
+  color: #e5fffb;
+}
+.hcam-map-utility-panel > p {
+  margin: 9px 0;
+  color: #73878b;
+  font-size: 9px;
+  line-height: 1.45;
+}
+.hcam-map-utility-search {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 8px;
+  height: 32px;
+  border: 1px solid rgba(112, 139, 150, 0.24);
+  border-radius: 5px;
+  color: #6f8589;
+  background: rgba(255, 255, 255, 0.025);
+}
+.hcam-map-utility-search input {
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  color: #dcebe8;
+  background: transparent;
+  font-size: 10px;
+}
+.hcam-locate-panel ul {
+  display: grid;
+  gap: 3px;
+  max-height: 186px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+.hcam-locate-panel li button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 4px;
+  border: 0;
+  border-radius: 4px;
+  color: #c5d4d1;
+  background: transparent;
+  text-align: left;
+}
+.hcam-locate-panel li button:hover {
+  background: rgba(99, 134, 139, 0.12);
+}
+.hcam-locate-panel strong,
+.hcam-locate-panel small {
+  display: block;
+}
+.hcam-locate-panel strong {
+  font-size: 10px;
+}
+.hcam-locate-panel small {
+  margin-top: 2px;
+  color: #718589;
+  font-size: 8px;
+}
+.hcam-data-panel dl {
+  margin: 10px 0;
+}
+.hcam-data-panel dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 0;
+  border-top: 1px solid rgba(112, 139, 150, 0.14);
+}
+.hcam-data-panel dt {
+  color: #819396;
+  font-size: 9px;
+}
+.hcam-data-panel dd {
+  margin: 0;
+  color: #c5d8d5;
+  font-size: 9px;
+  text-align: right;
+}
+.hcam-data-panel-action {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid rgba(0, 220, 229, 0.32);
+  border-radius: 5px;
+  color: #aefcf8;
+  background: rgba(0, 220, 229, 0.08);
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.hcam-data-panel-action:hover {
+  background: rgba(0, 220, 229, 0.16);
+}
+.hcam-map-fullscreen-button {
+  min-width: 28px;
+  justify-content: center;
+  padding: 0 !important;
+}
+.hcam-shell.is-map-fullscreen .hcam-topbar {
+  display: none;
+}
+.hcam-shell.is-map-fullscreen .hcam-workspace {
+  position: fixed;
+  z-index: 30;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  height: 100vh;
+  background: #060a0e;
+}
+.hcam-shell.is-map-fullscreen .hcam-sidebar-shell {
+  grid-template-columns: 46px 0;
+  border-right-color: rgba(78, 112, 118, 0.22);
+  background: transparent;
+}
+.hcam-shell.is-map-fullscreen .hcam-sidebar,
+.hcam-shell.is-map-fullscreen .hcam-detail-rail,
+.hcam-shell.is-map-fullscreen .hcam-feature-flyout,
+.hcam-shell.is-map-fullscreen .hcam-drawing-panel,
+.hcam-shell.is-map-fullscreen .hcam-map-utility-panel {
+  display: none;
+}
+.hcam-shell.is-map-fullscreen .hcam-icon-rail,
+.hcam-shell.is-map-fullscreen .hcam-map-utility-rail {
+  opacity: 0.5;
+  transition: opacity 0.18s ease;
+}
+.hcam-shell.is-map-fullscreen .hcam-icon-rail:hover,
+.hcam-shell.is-map-fullscreen .hcam-map-utility-rail:hover {
+  opacity: 1;
+}
+.hcam-shell.is-map-fullscreen .hcam-map-mode,
+.hcam-shell.is-map-fullscreen .maplibregl-ctrl-group {
+  opacity: 0.72;
+  transition: opacity 0.18s ease;
+}
+.hcam-shell.is-map-fullscreen .hcam-map-mode:hover,
+.hcam-shell.is-map-fullscreen .maplibregl-ctrl-group:hover {
+  opacity: 1;
+}
+.hcam-shell.is-map-fullscreen .hcam-map-frame {
+  min-height: 100vh;
+}
+.hcam-shell.is-map-fullscreen .hcam-map-caption {
+  opacity: 0.6;
+}
+.hcam-map-readout {
+  position: absolute;
+  z-index: 4;
+  right: 78px;
+  bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 9px;
+  border: 1px solid rgba(112, 139, 150, 0.17);
+  border-radius: 5px;
+  color: #63777c;
+  background: rgba(5, 9, 15, 0.8);
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hcam-map-readout strong {
+  color: #4db7cf;
+  font-weight: 600;
+  text-transform: none;
+}
+.hcam-map-readout span:not(:first-child) {
+  margin-left: 5px;
+  padding-left: 8px;
+  border-left: 1px solid rgba(112, 139, 150, 0.16);
+}
+.hcam-shell.is-map-fullscreen .hcam-map-readout {
+  opacity: 0.58;
+  transition: opacity 0.18s ease;
+}
+.hcam-shell.is-map-fullscreen .hcam-map-readout:hover {
+  opacity: 1;
+}
+.hcam-camera-console {
+  position: absolute;
+  z-index: 7;
+  top: 50%;
+  right: 68px;
+  width: min(410px, calc(100% - 140px));
+  overflow: hidden;
+  border: 1px solid rgba(0, 219, 229, 0.28);
+  border-radius: 8px;
+  color: #dbe9e7;
+  background: rgba(5, 9, 14, 0.98);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.52);
+  font-family: "IBM Plex Mono", monospace;
+  transform: translateY(-50%);
+}
+.hcam-camera-console header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 11px;
+  border-bottom: 1px solid rgba(112, 139, 150, 0.17);
+  color: #65bed0;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+.hcam-camera-console header span:nth-child(2) {
+  margin-left: auto;
+  color: #72858a;
+}
+.hcam-camera-console header button {
+  display: grid;
+  place-items: center;
+  padding: 2px;
+  border: 0;
+  color: #ff7474;
+  background: transparent;
+}
+.hcam-camera-console-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 12px;
+}
+.hcam-camera-console-title strong,
+.hcam-camera-console-title small {
+  display: block;
+}
+.hcam-camera-console-title strong {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+.hcam-camera-console-title small {
+  margin-top: 3px;
+  color: #71888b;
+  font-size: 8px;
+  text-transform: uppercase;
+}
+.hcam-camera-screen {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-height: 168px;
+  padding: 18px;
+  border-top: 1px solid rgba(112, 139, 150, 0.13);
+  border-bottom: 1px solid rgba(112, 139, 150, 0.13);
+  color: #55bec5;
+  background: radial-gradient(circle at 50% 40%, rgba(0, 214, 225, 0.08), transparent 35%), #020508;
+  text-align: center;
+}
+.hcam-camera-screen strong {
+  margin-top: 9px;
+  color: #b9dedd;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.hcam-camera-screen span {
+  max-width: 320px;
+  margin-top: 7px;
+  color: #7a9294;
+  font-size: 9px;
+  line-height: 1.5;
+}
+.hcam-camera-screen small {
+  margin-top: 10px;
+  color: #536b70;
+  font-size: 8px;
+  line-height: 1.4;
+}
+.hcam-camera-console-action {
+  width: calc(100% - 24px);
+  margin: 12px;
+  padding: 9px;
+  border: 1px solid rgba(0, 219, 229, 0.34);
+  border-radius: 5px;
+  color: #b8fffb;
+  background: rgba(0, 219, 229, 0.09);
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.hcam-camera-console-action:hover:not(:disabled) {
+  background: rgba(0, 219, 229, 0.17);
+}
+.hcam-camera-console-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.hcam-nearby-cameras {
+  padding: 0 12px 12px;
+}
+.hcam-nearby-cameras > span {
+  display: block;
+  margin-bottom: 7px;
+  color: #7e9496;
+  font-size: 9px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+.hcam-nearby-cameras > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.hcam-nearby-cameras button {
+  padding: 0 0 5px;
+  overflow: hidden;
+  border: 1px solid rgba(112, 139, 150, 0.2);
+  border-radius: 4px;
+  color: #b7c9c7;
+  background: #091217;
+  text-align: left;
+}
+.hcam-nearby-thumbnail {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 43px;
+  color: #598187;
+  background: linear-gradient(135deg, #101b21, #04080b);
+}
+.hcam-nearby-thumbnail i {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.hcam-nearby-cameras button strong,
+.hcam-nearby-cameras button small {
+  display: block;
+  overflow: hidden;
+  padding: 0 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hcam-nearby-cameras button strong {
+  margin-top: 5px;
+  font-size: 8px;
+}
+.hcam-nearby-cameras button small {
+  margin-top: 2px;
+  color: #6d8285;
+  font-size: 7px;
+}
+.hcam-shell.is-map-fullscreen .hcam-camera-console {
+  display: none;
+}
+@media (max-width: 900px) {
+  .hcam-system-telemetry span:nth-last-child(-n + 2) {
+    display: none;
+  }
+  .hcam-topbar-actions {
+    min-width: auto;
+  }
+  .hcam-brand {
+    min-width: 190px;
+  }
+}
+@media (max-width: 700px) {
+  .hcam-topbar {
+    height: 56px;
+    padding: 0 14px;
+  }
+  .hcam-system-telemetry,
+  .hcam-topbar-actions {
+    display: none;
+  }
+  .hcam-workspace {
+    height: calc(100vh - 56px);
+  }
+}
+.hcam-feature-flyout {
+  position: absolute;
+  z-index: 8;
+  top: 10px;
+  left: 56px;
+  width: 224px;
+  padding: 13px;
+  border: 1px solid rgba(102, 142, 148, 0.24);
+  border-radius: 10px;
+  color: #cedbd9;
+  background: rgba(6, 10, 14, 0.97);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.42),
+    inset 0 1px rgba(255, 255, 255, 0.035);
+  font-family: "IBM Plex Mono", monospace;
+}
+.hcam-feature-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(102, 142, 148, 0.18);
+  color: #e0edeb;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.hcam-feature-heading button {
+  display: grid;
+  place-items: center;
+  padding: 2px;
+  border: 0;
+  color: #7d8e91;
+  background: transparent;
+}
+.hcam-feature-heading button:hover {
+  color: #d9f3ef;
+}
+.hcam-feature-flyout > p {
+  margin: 9px 0 8px;
+  color: #708589;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hcam-feature-flyout > small {
+  display: block;
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px solid rgba(102, 142, 148, 0.18);
+  color: #567074;
+  font-size: 8px;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.hcam-feature-switch {
+  display: grid;
+  grid-template-columns: 27px minmax(0, 1fr) auto;
+  align-items: center;
+  width: 100%;
+  min-height: 32px;
+  padding: 0 3px;
+  border: 0;
+  border-radius: 5px;
+  color: #b8c8c6;
+  background: transparent;
+  text-align: left;
+}
+.hcam-feature-switch:hover {
+  color: #e1f4ef;
+  background: rgba(102, 142, 148, 0.1);
+}
+.hcam-feature-switch strong {
+  overflow: hidden;
+  font:
+    10px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.05em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hcam-feature-switch em {
+  color: #708589;
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+  font-style: normal;
+}
+.hcam-switch-track {
+  display: flex;
+  align-items: center;
+  width: 21px;
+  height: 12px;
+  padding: 2px;
+  border-radius: 99px;
+  background: #324047;
+  transition: background 0.15s ease;
+}
+.hcam-switch-track span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c3cece;
+  transition: transform 0.15s ease;
+}
+.hcam-switch-track.is-on {
+  background: #15969b;
+}
+.hcam-switch-track.is-on span {
+  transform: translateX(9px);
+  background: #e7fffc;
+}
+
+/* Final responsive pass: keep controls in the map perimeter and content dense. */
+.hcam-shell {
+  min-width: 0;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 58% 10%, rgba(15, 54, 59, 0.22), transparent 32%), #050b10;
+}
+.hcam-workspace {
+  grid-template-columns: minmax(280px, 312px) minmax(0, 1fr) minmax(256px, 288px);
+  height: calc(100dvh - 52px);
+}
+.hcam-workspace.is-sidebar-collapsed {
+  grid-template-columns: 46px minmax(0, 1fr) minmax(256px, 288px);
+}
+.hcam-workspace,
+.hcam-sidebar-shell,
+.hcam-sidebar,
+.hcam-detail-rail {
+  min-height: 0;
+}
+.hcam-sidebar {
+  padding: 18px 15px 28px;
+}
+.hcam-panel-heading h1 {
+  font-size: clamp(17px, 1.3vw, 21px);
+}
+.hcam-search {
+  height: 36px;
+  margin: 17px 0;
+}
+.hcam-layer-section {
+  padding: 13px 0;
+}
+.hcam-map-frame {
+  isolation: isolate;
+  background: #071018;
+}
+.hcam-map-mode {
+  top: 14px;
+  left: 14px;
+  max-width: calc(100% - 32px);
+}
+.hcam-map-utility-rail {
+  top: 78px;
+  right: 14px;
+}
+.hcam-map-readout {
+  right: 14px;
+  bottom: 13px;
+  max-width: calc(100% - 30px);
+}
+.hcam-map-caption {
+  left: 14px;
+  bottom: 14px;
+  max-width: min(480px, calc(100% - 32px));
+}
+.hcam-detail-rail {
+  background: linear-gradient(180deg, rgba(9, 22, 28, 0.98), rgba(5, 13, 18, 0.98));
+}
+.hcam-camera-detail {
+  padding: 20px 18px 28px;
+}
+.hcam-camera-title h2 {
+  font-size: 19px;
+}
+.hcam-drawing-panel {
+  top: 10px;
+  left: 55px;
+  width: min(300px, calc(100vw - 76px));
+  max-height: calc(100dvh - 76px);
+}
+.hcam-feature-flyout {
+  width: min(282px, calc(100vw - 76px));
+}
+@media (max-width: 1180px) {
+  .hcam-system-telemetry span:nth-last-child(-n + 2) {
+    display: none;
+  }
+  .hcam-workspace {
+    grid-template-columns: 282px minmax(0, 1fr) 268px;
+  }
+}
+@media (max-width: 900px) {
+  .hcam-workspace,
+  .hcam-workspace.is-sidebar-collapsed {
+    grid-template-columns: 46px minmax(0, 1fr);
+  }
+  .hcam-sidebar-shell {
+    grid-template-columns: 46px 0;
+  }
+  .hcam-sidebar {
+    opacity: 0;
+    pointer-events: none;
+    padding: 0;
+  }
+  .hcam-detail-rail.is-open {
+    top: 52px;
+    width: min(350px, 92vw);
+  }
+  .hcam-topbar-actions {
+    display: none;
+  }
+}
+@media (max-width: 620px) {
+  .hcam-topbar {
+    padding: 0 12px;
+  }
+  .hcam-brand p {
+    font-size: 13px;
+  }
+  .hcam-brand span,
+  .hcam-system-telemetry {
+    display: none;
+  }
+  .hcam-map-mode button {
+    padding: 0 7px;
+  }
+  .hcam-map-mode button span {
+    display: none;
+  }
+  .hcam-map-utility-rail {
+    top: auto;
+    right: 12px;
+    bottom: 92px;
+  }
+  .hcam-map-readout {
+    display: none;
+  }
+  .hcam-camera-console {
+    left: 10px;
+    right: 10px;
+    width: auto;
+    bottom: 70px;
+  }
+}
+
+/* Keep the catalogue-collapse control at the top of the operations rail. */
+.hcam-rail-footer-top {
+  flex: 0 0 auto;
+  margin-top: 0;
+  padding: 8px 0 7px;
+  border-top: 0;
+  border-bottom: 1px solid #132126;
+}
+
+/* The camera inspector is opt-in until an operator selects a camera. */
+.hcam-workspace {
+  grid-template-columns: minmax(280px, 312px) minmax(0, 1fr);
+}
+.hcam-workspace.has-detail {
+  grid-template-columns: minmax(280px, 312px) minmax(0, 1fr) minmax(256px, 288px);
+}
+.hcam-workspace.is-sidebar-collapsed {
+  grid-template-columns: 46px minmax(0, 1fr);
+}
+.hcam-workspace.is-sidebar-collapsed.has-detail {
+  grid-template-columns: 46px minmax(0, 1fr) minmax(256px, 288px);
+}
+.hcam-detail-rail:not(.is-open) {
+  display: none;
+}
+.hcam-detail-toggle {
+  position: absolute;
+  z-index: 6;
+  top: 50%;
+  right: 13px;
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  padding: 0;
+  border: 1px solid rgba(107, 143, 148, 0.34);
+  border-radius: 8px;
+  color: #9eb7b8;
+  background: rgba(6, 13, 18, 0.86);
+  box-shadow: 0 7px 19px rgba(0, 0, 0, 0.3);
+  transform: translateY(-50%);
+}
+.hcam-detail-toggle:hover,
+.hcam-detail-toggle.is-active {
+  border-color: rgba(0, 222, 230, 0.55);
+  color: #8cfff7;
+  background: rgba(0, 202, 211, 0.12);
+}
+@media (max-width: 1180px) {
+  .hcam-workspace.has-detail {
+    grid-template-columns: 282px minmax(0, 1fr) 268px;
+  }
+}
+@media (max-width: 900px) {
+  .hcam-workspace,
+  .hcam-workspace.is-sidebar-collapsed,
+  .hcam-workspace.has-detail,
+  .hcam-workspace.is-sidebar-collapsed.has-detail {
+    grid-template-columns: 46px minmax(0, 1fr);
+  }
+  .hcam-detail-toggle {
+    right: 12px;
+  }
+}
+
+/* Drawing is a map operation, so keep its full workspace beside the right map tools. */
+.hcam-drawing-panel {
+  position: fixed;
+  top: 66px;
+  right: 62px;
+  left: auto;
+  width: min(300px, calc(100vw - 84px));
+  max-height: calc(100dvh - 82px);
+}
+@media (max-width: 620px) {
+  .hcam-drawing-panel {
+    top: 62px;
+    right: 54px;
+    width: min(288px, calc(100vw - 68px));
+    max-height: calc(100dvh - 74px);
+  }
+}
+
+/* Dashboard switcher: compact entry point in the left rail, clear menu state. */
+.hcam-dashboard-trigger {
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+.hcam-dashboard-trigger:hover,
+.hcam-dashboard-trigger.is-active {
+  color: #d8fffc;
+  background: #0e6267;
+}
+.hcam-dashboard-menu {
+  position: absolute;
+  z-index: 14;
+  top: 7px;
+  left: 54px;
+  width: 258px;
+  padding: 11px;
+  border: 1px solid rgba(83, 135, 139, 0.32);
+  border-radius: 10px;
+  color: #cfdfdc;
+  background: rgba(5, 12, 17, 0.98);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.48);
+  font-family: "IBM Plex Mono", monospace;
+}
+.hcam-dashboard-menu-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1px 1px 10px;
+  border-bottom: 1px solid rgba(92, 128, 132, 0.2);
+  color: #e0efec;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.hcam-dashboard-menu-heading button {
+  display: grid;
+  place-items: center;
+  padding: 2px;
+  border: 0;
+  color: #758d91;
+  background: transparent;
+}
+.hcam-dashboard-menu-heading button:hover {
+  color: #ddfffa;
+}
+.hcam-dashboard-entry {
+  display: grid;
+  grid-template-columns: 19px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  margin-top: 6px;
+  padding: 9px 7px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: #9fb5b3;
+  background: transparent;
+  text-align: left;
+}
+.hcam-dashboard-entry:hover:not(:disabled) {
+  border-color: rgba(0, 219, 229, 0.28);
+  color: #e0f7f3;
+  background: rgba(0, 203, 216, 0.07);
+}
+.hcam-dashboard-entry.is-active {
+  border-color: rgba(0, 219, 229, 0.32);
+  color: #ccfffb;
+  background: rgba(0, 219, 229, 0.1);
+}
+.hcam-dashboard-entry:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+.hcam-dashboard-entry strong,
+.hcam-dashboard-entry small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hcam-dashboard-entry strong {
+  font:
+    10px "IBM Plex Mono",
+    monospace;
+}
+.hcam-dashboard-entry small {
+  margin-top: 3px;
+  color: #70878b;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+}
+.hcam-dashboard-entry em {
+  color: #5adfc5;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  font-style: normal;
+  text-transform: uppercase;
+}
+.hcam-dashboard-entry:disabled em {
+  color: #839295;
+}
+
+/* Each left-rail object owns one connected operations panel. */
+.hcam-rail-button.is-active::after {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: -7px;
+  width: 8px;
+  height: 18px;
+  border-radius: 0 4px 4px 0;
+  background: #092229;
+  box-shadow: 1px 0 0 rgba(28, 198, 203, 0.56);
+  content: "";
+  transform: translateY(-50%);
+}
+.hcam-sidebar-panel {
+  position: relative;
+  isolation: isolate;
+  border-left: 1px solid rgba(24, 200, 200, 0.23);
+  background: linear-gradient(180deg, rgba(8, 28, 34, 0.99), rgba(5, 15, 20, 0.99));
+}
+.hcam-sidebar-panel::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 223, 231, 0.8),
+    rgba(0, 223, 231, 0.06) 42%,
+    transparent 72%
+  );
+  content: "";
+}
+.hcam-panel-note {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin: 16px 0 0;
+  padding: 10px;
+  border: 1px solid rgba(85, 135, 139, 0.2);
+  border-radius: 6px;
+  color: #7f9998;
+  background: rgba(0, 0, 0, 0.13);
+  font:
+    10px/1.5 "IBM Plex Mono",
+    monospace;
+}
+.hcam-panel-note svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: #32dfe2;
+}
+.hcam-status-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  margin: 13px 0 8px;
+}
+.hcam-status-overview > div {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 7px;
+  align-items: center;
+  min-height: 44px;
+  padding: 7px 8px;
+  border: 1px solid rgba(85, 135, 139, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.018);
+}
+.hcam-status-overview .hcam-status-dot {
+  grid-row: span 2;
+}
+.hcam-status-overview strong {
+  color: #d8eeea;
+  font:
+    15px "IBM Plex Mono",
+    monospace;
+  line-height: 1;
+}
+.hcam-status-overview small {
+  margin-top: 2px;
+  overflow: hidden;
+  color: #72888b;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.hcam-status-presets {
+  display: grid;
+  grid-template-columns: 1.05fr 1.35fr 0.75fr;
+  gap: 5px;
+  margin-bottom: 6px;
+}
+.hcam-status-presets button {
+  min-width: 0;
+  padding: 7px 4px;
+  border: 1px solid rgba(85, 135, 139, 0.25);
+  border-radius: 4px;
+  color: #94aeac;
+  background: rgba(255, 255, 255, 0.02);
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.hcam-status-presets button:hover,
+.hcam-status-presets button.is-active {
+  border-color: rgba(0, 220, 229, 0.46);
+  color: #d6fffb;
+  background: rgba(0, 220, 229, 0.09);
+}
+.hcam-panel-note strong {
+  color: #b9d4d0;
+  font-weight: 600;
+}
+.hcam-camera-list {
+  display: grid;
+  gap: 5px;
+  margin-top: 14px;
+}
+.hcam-camera-list button {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr) 14px;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  padding: 9px 8px;
+  border: 1px solid rgba(89, 126, 130, 0.17);
+  border-radius: 6px;
+  color: #c5d7d4;
+  background: rgba(255, 255, 255, 0.018);
+  text-align: left;
+}
+.hcam-camera-list button:hover {
+  border-color: rgba(0, 218, 226, 0.38);
+  background: rgba(0, 218, 226, 0.06);
+}
+.hcam-camera-list strong,
+.hcam-camera-list small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hcam-camera-list strong {
+  font-size: 11px;
+}
+.hcam-camera-list small {
+  margin-top: 3px;
+  color: #71888b;
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+}
+.hcam-camera-list button > svg {
+  color: #638287;
+}
+.hcam-sidebar-panel .hcam-feature-switch {
+  width: 100%;
+  margin-top: 8px;
+}
+.hcam-sidebar-panel .hcam-display-summary {
+  margin-top: 16px;
+}
+.hcam-panel-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  margin-top: 12px;
+}
+.hcam-panel-actions button {
+  padding: 9px 7px;
+  border: 1px solid rgba(85, 135, 139, 0.24);
+  border-radius: 5px;
+  color: #9cb5b3;
+  background: rgba(255, 255, 255, 0.025);
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.hcam-panel-actions button:hover,
+.hcam-panel-actions button.is-active {
+  border-color: rgba(0, 220, 229, 0.46);
+  color: #cbfffb;
+  background: rgba(0, 220, 229, 0.09);
+}
+.hcam-panel-actions .hcam-panel-action-wide {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-color: rgba(214, 177, 74, 0.36);
+  color: #d7c58e;
+}
+.hcam-panel-actions .hcam-panel-action-wide:hover {
+  border-color: rgba(229, 194, 84, 0.68);
+  color: #fff1bd;
+  background: rgba(214, 177, 74, 0.09);
+}
+.hcam-panel-action-wide kbd {
+  padding: 2px 4px;
+  border: 1px solid rgba(214, 177, 74, 0.3);
+  border-radius: 3px;
+  color: #e9d98f;
+  background: rgba(0, 0, 0, 0.18);
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+}
+.hcam-layer-palette {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 13px;
+}
+.hcam-layer-tile {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: 2px 7px;
+  min-height: 58px;
+  padding: 7px;
+  border: 1px solid rgba(85, 135, 139, 0.2);
+  border-radius: 7px;
+  color: #98adaa;
+  background: rgba(255, 255, 255, 0.018);
+  text-align: left;
+}
+.hcam-layer-tile:hover {
+  border-color: rgba(102, 186, 190, 0.42);
+  background: rgba(86, 154, 157, 0.08);
+}
+.hcam-layer-tile.is-active {
+  border-color: rgba(0, 220, 229, 0.45);
+  color: #d7fffb;
+  background: rgba(0, 220, 229, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(0, 220, 229, 0.07);
+}
+.hcam-layer-tile-preview {
+  position: relative;
+  grid-row: span 2;
+  display: block;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #152d34, #071116);
+}
+.hcam-layer-tile-preview::before,
+.hcam-layer-tile-preview::after {
+  position: absolute;
+  content: "";
+}
+.hcam-layer-tile-preview::before {
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 7px, rgba(184, 220, 218, 0.12) 7px 8px),
+    repeating-linear-gradient(90deg, transparent 0 7px, rgba(184, 220, 218, 0.1) 7px 8px);
+}
+.hcam-layer-tile-preview i,
+.hcam-layer-tile-preview b {
+  position: absolute;
+  display: block;
+}
+.tone-camera .hcam-layer-tile-preview i {
+  top: 11px;
+  left: 11px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #071116;
+  border-radius: 50%;
+  background: #37e38a;
+  box-shadow: 0 0 0 3px rgba(55, 227, 138, 0.18);
+}
+.tone-alert .hcam-layer-tile-preview i {
+  top: 7px;
+  left: 9px;
+  width: 0;
+  height: 0;
+  border-right: 7px solid transparent;
+  border-bottom: 13px solid #f05037;
+  border-left: 7px solid transparent;
+  filter: drop-shadow(0 0 3px rgba(240, 80, 55, 0.35));
+}
+.tone-territory .hcam-layer-tile-preview i {
+  inset: 5px;
+  border: 1px dashed #ef5257;
+  border-radius: 2px;
+}
+.tone-territory .hcam-layer-tile-preview b {
+  top: 14px;
+  right: 4px;
+  left: 4px;
+  height: 1px;
+  background: #ef5257;
+  transform: rotate(-29deg);
+}
+.tone-label .hcam-layer-tile-preview i {
+  top: 9px;
+  left: 6px;
+  width: 18px;
+  height: 11px;
+  border: 1px solid #77b4c9;
+  border-radius: 2px;
+}
+.tone-label .hcam-layer-tile-preview b {
+  top: 13px;
+  left: 9px;
+  width: 11px;
+  height: 1px;
+  background: #77b4c9;
+  box-shadow: 0 3px #77b4c9;
+}
+.hcam-layer-tile strong {
+  overflow: hidden;
+  font:
+    10px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.05em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hcam-layer-tile small {
+  overflow: hidden;
+  color: #71888b;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .hcam-rail-button.is-active::after {
+    display: none;
+  }
+}
+
+/* At tablet and phone widths, retain the selected rail panel as a connected
+   flyout instead of silently hiding the operator controls. */
+@media (max-width: 900px) {
+  .hcam-sidebar-shell:not(.is-collapsed) {
+    overflow: visible;
+  }
+  .hcam-sidebar-shell:not(.is-collapsed) .hcam-sidebar-panel {
+    position: absolute;
+    z-index: 8;
+    top: 0;
+    bottom: 0;
+    left: 46px;
+    width: min(282px, calc(100vw - 58px));
+    padding: 18px 15px 28px;
+    opacity: 1;
+    pointer-events: auto;
+    box-shadow: 16px 0 34px rgba(0, 0, 0, 0.42);
+  }
+  .hcam-sidebar-shell:not(.is-collapsed) .hcam-sidebar-panel::after {
+    position: absolute;
+    top: 88px;
+    left: -7px;
+    width: 8px;
+    height: 18px;
+    border-radius: 4px 0 0 4px;
+    background: #092229;
+    box-shadow: -1px 0 0 rgba(28, 198, 203, 0.56);
+    content: "";
+  }
+}
+
+/* A quiet edge tab: it stays in the original location but no longer reads as
+   a large, separate square action. */
+.hcam-rail-footer-top {
+  padding: 7px 0 9px;
+  border-bottom-color: rgba(65, 107, 111, 0.26);
+}
+.hcam-sidebar-toggle {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(55, 139, 144, 0.32);
+  border-radius: 8px;
+  color: #84b8ba;
+  background: linear-gradient(135deg, rgba(11, 35, 41, 0.96), rgba(6, 15, 20, 0.96));
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.22),
+    0 5px 12px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+.hcam-sidebar-toggle::before {
+  position: absolute;
+  top: 7px;
+  bottom: 7px;
+  left: 4px;
+  width: 2px;
+  border-radius: 2px;
+  background: rgba(0, 222, 229, 0.72);
+  box-shadow: 0 0 7px rgba(0, 222, 229, 0.28);
+  content: "";
+}
+.hcam-sidebar-toggle svg {
+  position: relative;
+  margin-left: 2px;
+  transition: transform 0.16s ease;
+}
+.hcam-sidebar-toggle:hover {
+  border-color: rgba(68, 213, 216, 0.64);
+  color: #d9fffd;
+  background: linear-gradient(135deg, rgba(12, 59, 64, 0.98), rgba(7, 25, 30, 0.98));
+  box-shadow:
+    inset 0 0 0 1px rgba(77, 232, 232, 0.12),
+    0 6px 15px rgba(0, 0, 0, 0.28);
+}
+.hcam-sidebar-toggle:hover svg {
+  transform: translateX(-1px);
+}
+.hcam-sidebar-shell.is-collapsed .hcam-sidebar-toggle::before {
+  background: rgba(216, 180, 73, 0.76);
+  box-shadow: 0 0 7px rgba(216, 180, 73, 0.23);
+}
+.hcam-sidebar-shell.is-collapsed .hcam-sidebar-toggle:hover svg {
+  transform: translateX(1px);
+}
+
+/* One alert queue only: removing the duplicate horizontal timeline also removes
+   its inner scroll bar while preserving the selected-alert workflow. */
+.hcam-alert-list {
+  display: grid;
+  gap: 6px;
+  margin-top: 13px;
+}
+.hcam-alert-list .hcam-alert {
+  width: 100%;
+  margin-top: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.hcam-alert-list .hcam-alert:hover {
+  background: rgba(0, 218, 226, 0.06);
+}
+.hcam-alert-list .hcam-alert:focus-visible {
+  outline: 1px solid #00dce5;
+  outline-offset: 2px;
+}
+.hcam-alert-list .hcam-alert.is-active {
+  border-color: #5dfff0;
+  box-shadow: inset 0 0 0 1px rgba(93, 255, 240, 0.17);
+  background: rgba(0, 218, 226, 0.09);
+}
+.hcam-alert-queue-controls {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 0.76fr;
+  gap: 5px;
+  margin-top: 12px;
+}
+.hcam-alert-queue-controls button {
+  min-width: 0;
+  padding: 7px 4px;
+  border: 1px solid rgba(85, 135, 139, 0.25);
+  border-radius: 4px;
+  color: #94aeac;
+  background: rgba(255, 255, 255, 0.02);
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.hcam-alert-queue-controls button:hover,
+.hcam-alert-queue-controls button.is-active {
+  border-color: rgba(0, 220, 229, 0.46);
+  color: #d6fffb;
+  background: rgba(0, 220, 229, 0.09);
+}
+.hcam-alert-severity-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+  margin-top: 8px;
+}
+.hcam-alert-severity-controls > span {
+  width: 100%;
+  color: #839a9a;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.hcam-alert-severity-controls button {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  min-width: 0;
+  padding: 5px 6px;
+  border: 1px solid rgba(85, 135, 139, 0.26);
+  border-radius: 4px;
+  color: #8fa6a5;
+  background: rgba(255, 255, 255, 0.018);
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+.hcam-alert-severity-controls button i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #798f94;
+}
+.hcam-alert-severity-controls button em {
+  color: #6c8286;
+  font-style: normal;
+}
+.hcam-alert-severity-controls button.severity-high i {
+  background: #f25755;
+}
+.hcam-alert-severity-controls button.severity-medium i {
+  background: #e4b243;
+}
+.hcam-alert-severity-controls button.severity-low i {
+  background: #27c8d2;
+}
+.hcam-alert-severity-controls button.is-active {
+  color: #d8f2ed;
+  background: rgba(255, 255, 255, 0.07);
+}
+.hcam-alert-severity-controls button.severity-high.is-active {
+  border-color: rgba(242, 87, 85, 0.58);
+}
+.hcam-alert-severity-controls button.severity-medium.is-active {
+  border-color: rgba(228, 178, 67, 0.58);
+}
+.hcam-alert-severity-controls button.severity-low.is-active {
+  border-color: rgba(39, 200, 210, 0.58);
+}
+.hcam-alert-severity-controls .hcam-alert-severity-reset {
+  margin-left: auto;
+  color: #82a0a0;
+}
+.hcam-alert-focus {
+  margin-top: 13px;
+  overflow: hidden;
+  border: 1px solid rgba(89, 149, 153, 0.34);
+  border-left: 3px solid #65b8c3;
+  border-radius: 7px;
+  background: linear-gradient(135deg, rgba(12, 33, 39, 0.98), rgba(8, 19, 26, 0.98));
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.025);
+}
+.hcam-alert-focus.severity-high {
+  border-left-color: #f25855;
+}
+.hcam-alert-focus.severity-medium {
+  border-left-color: #e5b243;
+}
+.hcam-alert-focus.severity-low {
+  border-left-color: #65b8c3;
+}
+.hcam-alert-focus header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 9px;
+  border-bottom: 1px solid rgba(100, 143, 147, 0.18);
+  color: #74d9d4;
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+.hcam-alert-focus header button {
+  display: grid;
+  place-items: center;
+  padding: 2px;
+  border: 0;
+  color: #82999a;
+  background: transparent;
+}
+.hcam-alert-focus header button:hover {
+  color: #dbfffb;
+}
+.hcam-alert-focus-title {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 10px 9px 8px;
+}
+.hcam-alert-focus-title > span {
+  color: #f0c052;
+  font:
+    17px "IBM Plex Mono",
+    monospace;
+}
+.hcam-alert-focus-title strong,
+.hcam-alert-focus-title small {
+  display: block;
+}
+.hcam-alert-focus-title strong {
+  color: #e3efec;
+  font-size: 11px;
+}
+.hcam-alert-focus-title small {
+  margin-top: 3px;
+  color: #809497;
+  font:
+    8px/1.35 "IBM Plex Mono",
+    monospace;
+}
+.hcam-alert-focus dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  border-top: 1px solid rgba(100, 143, 147, 0.16);
+  border-bottom: 1px solid rgba(100, 143, 147, 0.16);
+  background: rgba(100, 143, 147, 0.15);
+}
+.hcam-alert-focus dl div {
+  min-width: 0;
+  padding: 7px;
+  background: rgba(5, 13, 18, 0.75);
+}
+.hcam-alert-focus dt {
+  color: #688185;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hcam-alert-focus dd {
+  margin: 3px 0 0;
+  overflow: hidden;
+  color: #c8dcda;
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+.hcam-alert-focus-nearby {
+  display: grid;
+  gap: 4px;
+  padding: 9px;
+}
+.hcam-alert-focus-nearby > span {
+  margin-bottom: 1px;
+  color: #8ba2a0;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.hcam-alert-focus-nearby button {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr);
+  column-gap: 7px;
+  align-items: center;
+  width: 100%;
+  padding: 5px 3px;
+  border: 0;
+  border-radius: 3px;
+  color: #cadbd8;
+  background: transparent;
+  text-align: left;
+}
+.hcam-alert-focus-nearby button:hover {
+  background: rgba(0, 220, 229, 0.08);
+}
+.hcam-alert-focus-nearby button i {
+  grid-row: span 2;
+}
+.hcam-alert-focus-nearby strong,
+.hcam-alert-focus-nearby small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hcam-alert-focus-nearby strong {
+  font-size: 9px;
+}
+.hcam-alert-focus-nearby small {
+  margin-top: 2px;
+  color: #71888b;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+}
+.hcam-alert-workflow {
+  padding: 9px;
+  border-bottom: 1px solid rgba(100, 143, 147, 0.16);
+}
+.hcam-alert-workflow > span {
+  display: block;
+  color: #8ca4a2;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.hcam-alert-workflow > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  margin-top: 6px;
+}
+.hcam-alert-workflow button {
+  min-width: 0;
+  padding: 6px 3px;
+  border: 1px solid rgba(91, 139, 143, 0.25);
+  border-radius: 4px;
+  color: #a7c0bd;
+  background: rgba(255, 255, 255, 0.025);
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  text-transform: uppercase;
+}
+.hcam-alert-workflow button:hover:not(:disabled),
+.hcam-alert-workflow button.is-active {
+  border-color: rgba(0, 225, 231, 0.52);
+  color: #d5fffc;
+  background: rgba(0, 218, 226, 0.1);
+}
+.hcam-alert-workflow button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+.hcam-alert-workflow > small {
+  display: block;
+  margin-top: 6px;
+  color: #667e82;
+  font:
+    8px/1.35 "IBM Plex Mono",
+    monospace;
+}
+.hcam-alert-focus.lifecycle-resolved {
+  border-left-color: #61a68d;
+}
+.hcam-alert-focus.lifecycle-resolved .hcam-alert-focus-title > span {
+  color: #6ad69e;
+}
+.hcam-alert-list .hcam-alert.is-resolved {
+  opacity: 0.55;
+  filter: saturate(0.62);
+}
+
+/* Coverage is an explicitly local planning layer until approved device FOV
+   metadata exists; its palette stays visually distinct from alert sectors. */
+.tone-coverage .hcam-layer-tile-preview i {
+  top: 7px;
+  left: 7px;
+  width: 0;
+  height: 0;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 18px solid rgba(64, 227, 161, 0.82);
+  filter: drop-shadow(0 0 3px rgba(64, 227, 161, 0.3));
+}
+.tone-coverage .hcam-layer-tile-preview b {
+  top: 13px;
+  left: 5px;
+  width: 5px;
+  height: 5px;
+  border: 1px solid #071116;
+  border-radius: 50%;
+  background: #dffff4;
+}
+.hcam-map-legend {
+  margin-top: 14px;
+  padding: 9px;
+  border: 1px solid rgba(85, 135, 139, 0.2);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.13);
+}
+.hcam-map-legend > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #a4bcba;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.hcam-map-legend > div small {
+  color: #657d80;
+  font-size: 7px;
+  letter-spacing: 0.06em;
+}
+.hcam-map-legend dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px 11px;
+  margin: 9px 0 0;
+}
+.hcam-map-legend dl div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  min-width: 0;
+}
+.hcam-map-legend dt,
+.hcam-map-legend dd {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: #829899;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  white-space: nowrap;
+}
+.hcam-map-legend dd {
+  overflow: hidden;
+  color: #b6cbc8;
+  text-overflow: ellipsis;
+}
+.hcam-map-legend i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 4px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+}
+.hcam-map-legend .legend-alert-high,
+.hcam-map-legend .legend-alert-medium {
+  width: 0;
+  height: 0;
+  margin-right: 5px;
+  border-right: 4px solid transparent;
+  border-bottom: 8px solid #f25755;
+  border-left: 4px solid transparent;
+  border-radius: 0;
+}
+.hcam-map-legend .legend-alert-medium {
+  border-bottom-color: #e4b243;
+}
+.hcam-map-legend .legend-boundary {
+  width: 10px;
+  height: 0;
+  border-top: 1px dashed #ef5257;
+  border-radius: 0;
+}
+.hcam-map-legend .legend-coverage {
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 8px solid #4fe7a1;
+  border-radius: 0;
+}
+.hcam-source-status-list {
+  display: grid;
+  gap: 4px;
+  margin: 10px 0;
+  padding: 8px;
+  border: 1px solid rgba(112, 139, 150, 0.18);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.018);
+}
+.hcam-source-status-list > span {
+  margin-bottom: 2px;
+  color: #81989a;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.hcam-source-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  min-width: 0;
+  padding: 4px 0;
+  border-top: 1px solid rgba(112, 139, 150, 0.1);
+}
+.hcam-source-status span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  color: #a8bcb9;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+}
+.hcam-source-status i {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #6f8589;
+}
+.hcam-source-status strong {
+  overflow: hidden;
+  color: #73898c;
+  font:
+    7px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.04em;
+  text-align: right;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.hcam-source-status.state-live i {
+  background: #42e993;
+  box-shadow: 0 0 6px rgba(66, 233, 147, 0.28);
+}
+.hcam-source-status.state-development-fixture i {
+  background: #22cfda;
+}
+.hcam-source-status.state-stale i {
+  background: #e5b84d;
+}
+.hcam-source-status.state-unavailable i {
+  background: #f06262;
+}
+.hcam-source-status.state-loading i {
+  background: #7189a6;
+}
+.hcam-selection-context {
+  position: absolute;
+  z-index: 7;
+  left: 15px;
+  bottom: 48px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 8px;
+  width: min(390px, calc(100% - 112px));
+  padding: 7px 7px 7px 9px;
+  border: 1px solid rgba(0, 220, 229, 0.3);
+  border-left: 3px solid #00d9e1;
+  border-radius: 6px;
+  color: #b8cfcd;
+  background: rgba(5, 12, 17, 0.92);
+  box-shadow: 0 9px 22px rgba(0, 0, 0, 0.28);
+  font-family: "IBM Plex Mono", monospace;
+}
+.hcam-selection-context > span {
+  grid-column: 1;
+  grid-row: 1;
+  color: #5fd7da;
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.hcam-selection-context > strong {
+  grid-column: 2;
+  grid-row: 1;
+  overflow: hidden;
+  color: #e3f0ed;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hcam-selection-context > small {
+  grid-column: 1 / 3;
+  grid-row: 2;
+  overflow: hidden;
+  margin-top: 3px;
+  color: #718b8e;
+  font-size: 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hcam-selection-context > div {
+  grid-column: 3;
+  grid-row: 1 / 3;
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+.hcam-selection-context button {
+  min-height: 25px;
+  padding: 0 7px;
+  border: 1px solid rgba(110, 150, 153, 0.25);
+  border-radius: 4px;
+  color: #9ddedc;
+  background: rgba(63, 126, 130, 0.08);
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.hcam-selection-context button:hover {
+  color: #e6fffc;
+  border-color: rgba(0, 220, 229, 0.48);
+  background: rgba(0, 220, 229, 0.14);
+}
+.hcam-selection-context button:last-child {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  padding: 0;
+  color: #89a2a4;
+}
+.hcam-shell.is-map-fullscreen .hcam-selection-context {
+  opacity: 0.6;
+  transition: opacity 0.18s ease;
+}
+.hcam-shell.is-map-fullscreen .hcam-selection-context:hover {
+  opacity: 1;
+}
+.hcam-map-caption {
+  max-width: min(640px, calc(100% - 32px));
+}
+.hcam-active-layer-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  padding-left: 8px;
+  border-left: 1px solid rgba(112, 139, 150, 0.18);
+}
+.hcam-active-layer-summary em {
+  padding: 2px 4px;
+  border: 1px solid rgba(73, 147, 150, 0.22);
+  border-radius: 3px;
+  color: #86c8c5;
+  background: rgba(44, 120, 122, 0.08);
+  font:
+    7px "IBM Plex Mono",
+    monospace;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.hcam-active-layer-summary em.is-empty {
+  border-color: rgba(140, 148, 149, 0.18);
+  color: #738286;
+  background: transparent;
+}
+.hcam-panel-actions .hcam-panel-action-restore {
+  border-color: rgba(0, 220, 229, 0.38);
+  color: #aefcf8;
+  background: rgba(0, 220, 229, 0.07);
+}
+.hcam-panel-actions .hcam-panel-action-restore:hover {
+  border-color: rgba(0, 220, 229, 0.68);
+  color: #e0fffc;
+  background: rgba(0, 220, 229, 0.15);
+}
+.hcam-places-panel ul {
+  display: grid;
+  gap: 4px;
+  max-height: 270px;
+  margin: 0 0 10px;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+.hcam-places-panel li button {
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr) 13px;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  padding: 7px 4px;
+  border: 0;
+  border-radius: 4px;
+  color: #58cbd0;
+  background: transparent;
+  text-align: left;
+}
+.hcam-places-panel li button:hover {
+  color: #9ffffa;
+  background: rgba(42, 142, 147, 0.12);
+}
+.hcam-places-panel li button > svg:last-child {
+  color: #66868a;
+}
+.hcam-places-panel strong,
+.hcam-places-panel small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hcam-places-panel strong {
+  color: #cde2df;
+  font-size: 10px;
+}
+.hcam-places-panel small {
+  margin-top: 2px;
+  color: #71898c;
+  font-size: 8px;
+}
+.hcam-alert-focus-priority {
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  margin: 9px 0 3px;
+  padding: 8px;
+  border: 1px solid rgba(239, 98, 76, 0.3);
+  border-radius: 5px;
+  color: #ffd0c8;
+  background: rgba(239, 98, 76, 0.07);
+  text-align: left;
+}
+.hcam-alert-focus-priority:hover:not(:disabled) {
+  border-color: rgba(239, 98, 76, 0.6);
+  background: rgba(239, 98, 76, 0.14);
+}
+.hcam-alert-focus-priority:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+.hcam-alert-focus-priority span {
+  overflow: hidden;
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.05em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.hcam-alert-focus-priority strong {
+  padding: 2px 4px;
+  border-radius: 3px;
+  color: #ff9a86;
+  background: rgba(239, 98, 76, 0.13);
+  font:
+    7px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.hcam-alert-time-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 8px 0;
+  padding: 7px 0;
+  border-top: 1px solid rgba(112, 139, 150, 0.14);
+  border-bottom: 1px solid rgba(112, 139, 150, 0.14);
+}
+.hcam-alert-time-controls > span {
+  margin-right: auto;
+  color: #7c9294;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.hcam-alert-time-controls button {
+  padding: 5px 6px;
+  border: 1px solid rgba(85, 135, 139, 0.25);
+  border-radius: 4px;
+  color: #89a4a3;
+  background: rgba(255, 255, 255, 0.018);
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+}
+.hcam-alert-time-controls button:hover,
+.hcam-alert-time-controls button.is-active {
+  border-color: rgba(0, 220, 229, 0.45);
+  color: #cafffa;
+  background: rgba(0, 220, 229, 0.09);
+}
+.hcam-map-share-status {
+  position: absolute;
+  z-index: 8;
+  top: 76px;
+  right: 67px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 8px;
+  border: 1px solid rgba(0, 220, 229, 0.34);
+  border-radius: 5px;
+  color: #b9fffa;
+  background: rgba(6, 17, 22, 0.94);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+}
+.hcam-map-share-status button {
+  display: grid;
+  place-items: center;
+  padding: 1px;
+  border: 0;
+  color: #8da5a5;
+  background: transparent;
+}
+.hcam-map-share-status button:hover {
+  color: #eefffd;
+}
+.hcam-shell.is-map-fullscreen .hcam-map-share-status {
+  opacity: 0.65;
+}
+.hcam-coordinate-inspector {
+  position: absolute;
+  z-index: 8;
+  top: 116px;
+  right: 67px;
+  display: grid;
+  gap: 5px;
+  width: 218px;
+  padding: 9px;
+  border: 1px solid rgba(233, 194, 81, 0.4);
+  border-left: 3px solid #e8bd4d;
+  border-radius: 6px;
+  color: #d9e6e2;
+  background: rgba(7, 13, 18, 0.95);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  font-family: "IBM Plex Mono", monospace;
+}
+.hcam-coordinate-inspector header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #e6c667;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.hcam-coordinate-inspector header button {
+  display: grid;
+  place-items: center;
+  padding: 1px;
+  border: 0;
+  color: #8ca0a0;
+  background: transparent;
+}
+.hcam-coordinate-inspector header button:hover {
+  color: #f8fffc;
+}
+.hcam-coordinate-inspector strong {
+  color: #e6f5ef;
+  font-size: 10px;
+}
+.hcam-coordinate-inspector small {
+  color: #778e8f;
+  font-size: 8px;
+  line-height: 1.4;
+}
+.hcam-coordinate-inspector > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+  margin-top: 2px;
+  padding: 6px;
+  border: 1px solid rgba(232, 189, 77, 0.35);
+  border-radius: 4px;
+  color: #fae6a0;
+  background: rgba(232, 189, 77, 0.08);
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.hcam-coordinate-inspector > button:hover {
+  background: rgba(232, 189, 77, 0.16);
+}
+.hcam-shell.is-map-fullscreen .hcam-coordinate-inspector {
+  opacity: 0.62;
+  transition: opacity 0.18s ease;
+}
+.hcam-shell.is-map-fullscreen .hcam-coordinate-inspector:hover {
+  opacity: 1;
+}
+.hcam-map-help-panel {
+  width: 270px;
+}
+.hcam-map-help-panel dl {
+  display: grid;
+  gap: 2px;
+  margin: 9px 0;
+}
+.hcam-map-help-panel dl div {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  border-top: 1px solid rgba(112, 139, 150, 0.13);
+}
+.hcam-map-help-panel dt,
+.hcam-map-help-panel dd {
+  margin: 0;
+}
+.hcam-map-help-panel kbd {
+  display: inline-grid;
+  min-width: 22px;
+  place-items: center;
+  padding: 2px 4px;
+  border: 1px solid rgba(0, 220, 229, 0.26);
+  border-radius: 3px;
+  color: #a6efeb;
+  background: rgba(0, 220, 229, 0.06);
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+}
+.hcam-map-help-panel dd {
+  color: #a7bebb;
+  font-size: 9px;
+}
+.hcam-map-help-note {
+  display: grid;
+  gap: 2px;
+  padding: 7px;
+  border: 1px solid rgba(232, 189, 77, 0.22);
+  border-radius: 4px;
+  color: #d9bd66;
+  background: rgba(232, 189, 77, 0.05);
+}
+.hcam-map-help-note span {
+  font-size: 8px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.hcam-map-help-note strong {
+  color: #bbc9c6;
+  font-size: 9px;
+  font-weight: 500;
+}
+.hcam-coordinate-nearby {
+  display: grid;
+  gap: 2px;
+  margin-top: 4px;
+  padding-top: 7px;
+  border-top: 1px solid rgba(232, 189, 77, 0.18);
+}
+.hcam-coordinate-nearby > span {
+  padding-bottom: 2px;
+  color: #bca560;
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.hcam-coordinate-nearby button {
+  display: grid;
+  grid-template-columns: 7px minmax(0, 1fr) 12px;
+  grid-template-rows: auto auto;
+  column-gap: 6px;
+  width: 100%;
+  margin: 0;
+  padding: 5px 2px;
+  border: 0;
+  border-radius: 3px;
+  color: #bad0cd;
+  background: transparent;
+  text-align: left;
+}
+.hcam-coordinate-nearby button:hover {
+  background: rgba(232, 189, 77, 0.08);
+}
+.hcam-coordinate-nearby .hcam-status-dot {
+  grid-row: span 2;
+  width: 6px;
+  height: 6px;
+  margin-top: 4px;
+}
+.hcam-coordinate-nearby strong,
+.hcam-coordinate-nearby small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hcam-coordinate-nearby strong {
+  font-size: 8px;
+}
+.hcam-coordinate-nearby small {
+  margin: 1px 0 0;
+  color: #71898a;
+  font-size: 7px;
+}
+.hcam-coordinate-nearby svg {
+  grid-column: 3;
+  grid-row: span 2;
+  align-self: center;
+  color: #9d8543;
+}
+
+/* The utility rail used a centred transform even after its top anchor was
+   changed for the H-CAM shell. At ordinary laptop heights that pushed the
+   rail above the map frame and into the top bar. Keep the actions below the
+   map-mode palette, reserve the zoom-control corner, and only scroll inside
+   the rail when a short viewport cannot contain every action. */
+.hcam-map-utility-rail {
+  top: 74px;
+  right: 14px;
+  bottom: auto;
+  max-height: calc(100% - 142px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  transform: none;
+}
+.hcam-map-utility-rail::-webkit-scrollbar {
+  width: 3px;
+}
+.hcam-map-utility-rail::-webkit-scrollbar-thumb {
+  border-radius: 99px;
+  background: rgba(112, 139, 150, 0.45);
+}
+@media (max-width: 620px) {
+  .hcam-map-utility-rail {
+    top: auto;
+    right: 12px;
+    bottom: 82px;
+    max-height: calc(100% - 148px);
+  }
+}
+
+/* Keep the right rail icon-first, but reveal a compact label into the map on
+   hover or keyboard focus. This avoids permanently widening the map tools and
+   makes the operational controls discoverable without a second panel. */
+.hcam-map-utility-button::after {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: calc(100% + 8px);
+  width: max-content;
+  max-width: 176px;
+  padding: 5px 7px;
+  border: 1px solid rgba(79, 150, 154, 0.32);
+  border-radius: 4px;
+  color: #cbe8e4;
+  background: rgba(5, 12, 17, 0.96);
+  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.28);
+  content: attr(data-tool-label);
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.055em;
+  line-height: 1.2;
+  opacity: 0;
+  pointer-events: none;
+  text-transform: uppercase;
+  transform: translate(-4px, -50%);
+  transition:
+    opacity 0.14s ease,
+    transform 0.14s ease;
+}
+.hcam-map-utility-button:hover::after,
+.hcam-map-utility-button:focus-visible::after {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+.hcam-map-utility-button:focus-visible {
+  outline: 1px solid rgba(0, 226, 235, 0.78);
+  outline-offset: 2px;
+}
+@media (max-width: 620px) {
+  .hcam-map-utility-button::after {
+    display: none;
+  }
+}
+
+/* Right-side tool panels share the same safe band as the utility rail. The
+   earlier centred transform could place a tall search or data panel across the
+   header on short displays; anchor it below the map controls instead. */
+.hcam-map-utility-panel {
+  top: 74px;
+  right: 76px;
+  max-height: calc(100% - 142px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  transform: none;
+}
+.hcam-map-utility-panel::-webkit-scrollbar {
+  width: 4px;
+}
+.hcam-map-utility-panel::-webkit-scrollbar-thumb {
+  border-radius: 99px;
+  background: rgba(112, 139, 150, 0.42);
+}
+@media (max-width: 620px) {
+  .hcam-map-utility-panel {
+    top: auto;
+    right: 62px;
+    bottom: 82px;
+    max-height: calc(100% - 148px);
+  }
+}
+
+/* Put the icon-only action palette in a familiar operational-map position:
+   centred along the operational map edge, rather than competing with the
+   header. Short map frames keep the earlier safe top anchor. */
+.hcam-map-utility-rail {
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+}
+@media (max-height: 520px) and (min-width: 621px) {
+  .hcam-map-utility-rail {
+    top: 74px;
+    transform: none;
+  }
+}
+
+/* Map perimeter correction pass. The operational map owns the space below the
+   command header, while MapLibre keeps the lower-right corner for zoom. */
+.hcam-map-utility-rail {
+  top: 76px !important;
+  right: 14px;
+  bottom: auto;
+  transform: none !important;
+}
+.hcam-map-readout {
+  right: 72px !important;
+  bottom: 13px;
+}
+
+/* Keep the compact display choices available without leaving a permanent
+   opaque strip across the map. */
+.hcam-map-mode-toggle {
+  position: absolute;
+  z-index: 4;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 29px;
+  padding: 0 9px;
+  border: 1px solid rgba(203, 166, 61, 0.28);
+  border-radius: 7px;
+  color: #c7d2ce;
+  background: rgba(7, 13, 17, 0.58);
+  backdrop-filter: blur(8px);
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.hcam-map-mode-toggle:hover,
+.hcam-map-mode-toggle.is-open {
+  border-color: rgba(203, 166, 61, 0.54);
+  color: #efd47b;
+  background: rgba(22, 22, 17, 0.76);
+}
+.hcam-map-mode-toggle svg:last-child {
+  transition: transform 0.16s ease;
+}
+.hcam-map-mode-toggle.is-open svg:last-child {
+  transform: rotate(180deg);
+}
+.hcam-map-mode {
+  top: 14px !important;
+  left: 68px !important;
+  background: rgba(8, 15, 18, 0.74);
+  backdrop-filter: blur(8px);
+}
+
+/* The sidebar expand action is now the exact same footprint as the other
+   operational-rail buttons; only its chevron communicates its special role. */
+.hcam-sidebar-toggle {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  box-shadow: none;
+}
+.hcam-sidebar-toggle::before {
+  display: none;
+}
+.hcam-sidebar-toggle svg {
+  margin-left: 0;
+}
+
+/* Next's local-development badge is useful, but it should not sit in the
+   operating rail or obstruct map controls. This selector has no effect in a
+   production build because Next does not render the portal there. */
+nextjs-portal #next-logo {
+  position: fixed !important;
+  right: 72px !important;
+  bottom: 14px !important;
+  left: auto !important;
+}
+
+@media (max-width: 620px) {
+  .hcam-map-utility-rail {
+    top: auto !important;
+    right: 12px;
+    bottom: 82px;
+  }
+  .hcam-map-readout {
+    display: none;
+  }
+  .hcam-map-mode-toggle {
+    left: 56px;
+  }
+  .hcam-map-mode {
+    top: 49px !important;
+    left: 56px !important;
+    max-width: calc(100% - 68px);
+    flex-wrap: wrap;
+  }
+  .hcam-map-mode-toggle span {
+    display: none;
+  }
+}
+
+/* Access is an operational policy workspace, not a sparse setting screen. */
+.hcam-access-workspace {
+  display: grid;
+  gap: 12px;
+  margin-top: 15px;
+}
+.hcam-access-summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid rgba(0, 219, 229, 0.26);
+  border-radius: 8px;
+  color: #cbe3df;
+  background: linear-gradient(135deg, rgba(0, 219, 229, 0.09), rgba(10, 24, 29, 0.32));
+}
+.hcam-access-summary.role-operator {
+  border-color: rgba(56, 229, 139, 0.32);
+  background: linear-gradient(135deg, rgba(56, 229, 139, 0.1), rgba(10, 24, 29, 0.32));
+}
+.hcam-access-summary > svg {
+  flex: 0 0 auto;
+  color: #4ce4dd;
+}
+.hcam-access-summary.role-operator > svg {
+  color: #64e8a4;
+}
+.hcam-access-summary span,
+.hcam-access-summary strong,
+.hcam-access-summary small {
+  display: block;
+}
+.hcam-access-summary span {
+  color: #789397;
+  font:
+    8px "IBM Plex Mono",
+    monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.hcam-access-summary strong {
+  margin-top: 4px;
+  color: #e5f7f3;
+  font-size: 13px;
+}
+.hcam-access-summary small {
+  margin-top: 4px;
+  color: #93aead;
+  font:
+    9px/1.4 "IBM Plex Mono",
+    monospace;
+}
+.hcam-access-workspace .hcam-role {
+  margin: 0;
+}
+.hcam-access-capabilities {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(95, 135, 139, 0.2);
+  border-radius: 7px;
+  background: rgba(95, 135, 139, 0.13);
+}
+.hcam-access-capabilities div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 9px;
+  background: rgba(4, 13, 18, 0.62);
+}
+.hcam-access-capabilities dt {
+  color: #81989a;
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+}
+.hcam-access-capabilities dd {
+  margin: 0;
+  color: #c9ddd9;
+  font:
+    9px "IBM Plex Mono",
+    monospace;
+  text-align: right;
+}
+.hcam-access-workspace .hcam-panel-note {
+  margin: 0;
+}
+.hcam-access-boundary {
+  margin: 0;
+  padding: 0 2px;
+  color: #657e81;
+  font:
+    8px/1.55 "IBM Plex Mono",
+    monospace;
+}
+
+/* Tighten the command header into a stronger operational status strip. */
+.hcam-topbar {
+  box-shadow:
+    inset 0 -1px rgba(0, 222, 229, 0.12),
+    0 6px 20px rgba(0, 0, 0, 0.18);
+}
+.hcam-brand {
+  padding-left: 2px;
+}
+.hcam-system-telemetry {
+  gap: 10px;
+}
+.hcam-system-telemetry > span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+}
+.hcam-system-telemetry > span + span {
+  padding-left: 10px;
+}
+.hcam-topbar-actions {
+  gap: 7px;
+}
+.hcam-topbar-chip {
+  padding: 6px 9px;
+}
+
+/* Keep the sidebar expand action level with the panel rail and move the
+   opt-in camera inspector out of the centre of the map. */
+.hcam-rail-footer-top {
+  margin-top: -5px;
+  padding-top: 4px;
+}
+.hcam-detail-toggle {
+  top: auto;
+  right: 14px;
+  bottom: 132px;
+  transform: none;
+}
+
+/* Next's dev portal lives outside the application tree. Moving its host is
+   more reliable than styling the badge alone, including when the badge is
+   rendered in the portal's internal shadow tree. */
+nextjs-portal {
+  position: fixed !important;
+  top: auto !important;
+  right: 72px !important;
+  bottom: 14px !important;
+  left: auto !important;
+  width: auto !important;
+  height: auto !important;
+  z-index: 50 !important;
+}
+nextjs-portal #next-logo {
+  position: static !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+}
+@media (max-width: 620px) {
+  .hcam-detail-toggle {
+    right: 12px;
+    bottom: 128px;
+  }
+  nextjs-portal {
+    right: 58px !important;
+    bottom: 12px !important;
+  }
+}
+
+/* H-CAM portal integration overrides. */
+.hcam-operations-root {
+  height: calc(100dvh - 114px);
+  min-height: 640px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.hcam-operations-root * {
+  letter-spacing: 0 !important;
+}
+.hcam-operations-root.hcam-shell {
+  min-height: 640px;
+}
+.hcam-operations-root .hcam-workspace {
+  height: 100%;
+}
+.hcam-operations-root .hcam-panel-heading h1 {
+  font-size: 18px;
+}
+.hcam-profile-select {
+  display: grid;
+  gap: 2px;
+  color: #71898d;
+  font: 8px var(--hcam-mono);
+  text-transform: uppercase;
+}
+.hcam-profile-select select {
+  width: 116px;
+  height: 28px;
+  padding: 0 7px;
+  border: 1px solid rgba(112, 139, 150, 0.25);
+  border-radius: 4px;
+  color: #d9e8e5;
+  background: #0b171d;
+  font-size: 9px;
+}
+.hcam-display-config-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 7px;
+  margin-top: 12px;
+}
+.hcam-display-config-grid .hcam-profile-select select {
+  width: 100%;
+  min-width: 0;
+}
+.hcam-renderer-admission {
+  margin-top: 8px !important;
+}
+.hcam-list-only-map {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 8px;
+  padding: 24px;
+  overflow: auto;
+  color: #a7bab7;
+  background: #071018;
+  text-align: center;
+}
+.hcam-list-only-map h2,
+.hcam-list-only-map p {
+  margin: 0;
+}
+.hcam-list-only-map h2 {
+  color: #e7f1ef;
+  font-size: 18px;
+}
+.hcam-list-only-map > div {
+  width: min(560px, 100%);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 10px;
+}
+.hcam-list-only-map button {
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr);
+  gap: 2px 8px;
+  padding: 10px;
+  border: 1px solid rgba(112, 139, 150, 0.22);
+  border-radius: 5px;
+  color: #dce9e6;
+  background: #0c1b21;
+  text-align: left;
+}
+.hcam-list-only-map button .hcam-status-dot {
+  grid-row: 1/3;
+  align-self: center;
+}
+.hcam-list-only-map button small {
+  color: #789094;
+}
+.hcam-map-utility-rail {
+  right: 58px;
+}
+.hcam-map-utility-panel {
+  right: 110px;
+}
+
+@media (max-width: 1180px) {
+  .hcam-profile-select:first-child {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .hcam-operations-root {
+    height: calc(100dvh - 110px);
+    min-height: 600px;
+  }
+  .hcam-operations-root .hcam-workspace,
+  .hcam-operations-root .hcam-workspace.is-sidebar-collapsed {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .hcam-operations-root .hcam-sidebar-shell {
+    position: absolute;
+    z-index: 12;
+    inset: 0 auto 0 0;
+    display: grid;
+    grid-template-columns: 46px minmax(0, 278px);
+    width: min(324px, 92vw);
+    min-height: 0;
+    transform: none;
+    box-shadow: 10px 0 28px rgba(0, 0, 0, 0.34);
+  }
+  .hcam-operations-root .hcam-sidebar-shell.is-collapsed {
+    grid-template-columns: 46px 0;
+    width: 46px;
+    box-shadow: none;
+  }
+  .hcam-operations-root .hcam-sidebar-shell:not(.is-collapsed) .hcam-sidebar {
+    padding: 16px 14px 24px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .hcam-operations-root .hcam-map-frame {
+    grid-column: 1;
+    min-width: 0;
+  }
+  .hcam-operations-root .hcam-detail-rail.is-open {
+    top: 0;
+  }
+  .hcam-topbar-actions .hcam-topbar-chip {
+    display: none;
+  }
+}
+@media (max-width: 620px) {
+  .hcam-operations-root {
+    height: calc(100dvh - 108px);
+    min-height: 560px;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+  .hcam-operations-root .hcam-topbar {
+    height: 48px;
+    padding: 0 9px;
+  }
+  .hcam-operations-root .hcam-workspace {
+    height: calc(100% - 48px);
+  }
+  .hcam-operations-root .hcam-sidebar-shell {
+    display: grid;
+    width: min(318px, 94vw);
+  }
+  .hcam-operations-root .hcam-sidebar-shell.is-collapsed {
+    width: 46px;
+  }
+  .hcam-profile-select {
+    display: none;
+  }
+  .hcam-list-only-map > div {
+    grid-template-columns: 1fr;
+  }
+  .hcam-map-utility-rail {
+    right: 55px;
+    bottom: 78px;
+  }
+  .hcam-map-utility-panel {
+    top: auto;
+    right: 12px;
+    bottom: 128px;
+    width: min(280px, calc(100% - 66px));
+    transform: none;
+  }
+}

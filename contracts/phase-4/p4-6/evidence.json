@@ -1,0 +1,190 @@
+{
+  "schema_version": "hcam.phase4.p4_6.evidence.v1",
+  "package_id": "P4.6-EVIDENCE-R0",
+  "status": "technical_validation_passed_owner_acceptance_pending",
+  "evidence_date": "2026-09-05",
+  "branch": "codex/phase4-operations-security-scale",
+  "implementation_base_commit": "401418e09ca734a74ab30fed0d9c8fbcc53bedd2",
+  "start_authorization": {
+    "decision_id": "D-P4.6-START",
+    "package_id": "P4.6-START-R0",
+    "sha256": "2E1D5F921EB7C972192FE460D3B238F39D8D792C7869A8F338E291618314F779"
+  },
+  "implementation": {
+    "migration_revision": "0018_operations_security_scale",
+    "parent_revision": "0017_investigation_evidence",
+    "new_store_count": 10,
+    "forced_rls_store_count": 10,
+    "generated_fixture_documents": 14,
+    "generated_scenarios": 1120,
+    "contract_model_count": 27,
+    "closed_registry_count": 9,
+    "read_api_paths": 2,
+    "read_api_operations": 2,
+    "read_view_count": 8,
+    "signal_authority": "independent operational security audit and evidence lanes",
+    "unified_search_projection": "disabled sanitized derived non_authoritative",
+    "otel_compatible_adapters": "default_off contract surface only",
+    "capacity_methodology": "generated C1 C10 C50 with latency balanced and throughput modes",
+    "placement_methodology": "platform neutral with machine_disabled standalone and Kubernetes projections",
+    "runtime_default_enabled": false,
+    "production_allowed": false,
+    "external_backend_connection": false,
+    "machine_or_cluster_execution": false
+  },
+  "validation": {
+    "generated_contracts": {
+      "status": "passed",
+      "fixture_documents": 14,
+      "scenario_count": 1120,
+      "scenarios_per_document": 80,
+      "byte_exact_regeneration": "passed"
+    },
+    "focused_suite": {
+      "status": "passed",
+      "collected": 94,
+      "passed": 93,
+      "skipped": 1,
+      "warning_count": 1,
+      "duration_seconds": 129.85,
+      "scope": "all test_phase46 modules including readiness and opt_in PostgreSQL"
+    },
+    "coverage": {
+      "status": "passed",
+      "scope": "app/hcam/operations/platform/*",
+      "branch_enabled_aggregate_percent": 97.05,
+      "required_percent": 90.0,
+      "critical_module_minimum_percent": 95.0,
+      "critical_modules": {
+        "controls": 97,
+        "security": 100,
+        "workers": 100,
+        "circuits": 100,
+        "recovery": 100,
+        "placement": 100,
+        "tracing": 100,
+        "objectives": 95,
+        "persistence": 95
+      }
+    },
+    "sqlite_migration_cycle": {
+      "status": "passed",
+      "current_revision": "0018_operations_security_scale",
+      "parent_revision": "0017_investigation_evidence",
+      "validated_sequence": [
+        "0012_intelligence_control_plane",
+        "0013_correlation_foundation",
+        "0014_rule_authoring_evaluation",
+        "0015_alert_lifecycle_orchestration",
+        "0016_reference_integrations",
+        "0017_investigation_evidence",
+        "0018_operations_security_scale",
+        "0017_investigation_evidence",
+        "0018_operations_security_scale"
+      ],
+      "alembic_head": "single"
+    },
+    "postgresql_rls_and_isolation": {
+      "status": "not_available",
+      "reason": "HCAM_POSTGRES_TEST_URL is not configured and service or container changes are outside D-P4.6-START",
+      "test_source": "tests/test_phase46_postgres.py",
+      "ci_job_present": true,
+      "forced_rls_policy_count": 10,
+      "cross_department_isolation_test_present": true,
+      "concurrent_claim_and_outbox_tests_present": true,
+      "privileged_role_negative_tests_present": true,
+      "local_claim_made": false
+    },
+    "full_regression_suite": {
+      "status": "passed",
+      "passed": 4125,
+      "skipped": 16,
+      "subtests_passed": 119,
+      "warning_count": 1,
+      "duration_seconds": 1567.93,
+      "deselected": 0,
+      "skip_boundary": "all sixteen skips require an explicit PostgreSQL integration URL"
+    },
+    "static_and_packaging": {
+      "status": "passed",
+      "ruff": "passed",
+      "compileall": "passed",
+      "git_diff_check": "passed_with_line_ending_warnings_only",
+      "alembic_single_head": "0018_operations_security_scale",
+      "build": "offline source distribution and wheel passed",
+      "wheel": "hcam_core-0.2.0-py3-none-any.whl",
+      "source_distribution": "hcam_core-0.2.0.tar.gz",
+      "dependency_files_immutable": true
+    },
+    "historical_compatibility": {
+      "status": "passed",
+      "p4_5_readiness": "passed from accepted implementation and closeout commits",
+      "phase3_release_contracts": "passed via historical readiness",
+      "migration_head_transitions": "passed",
+      "accepted_phase3_or_p4_0_through_p4_5_evidence_modified": false
+    },
+    "security_recovery_capacity": {
+      "status": "passed",
+      "metric_and_label_cardinality_registry": "passed",
+      "trace_context_never_grants_authority": "passed",
+      "signal_lane_separation_and_prohibited_content": "passed",
+      "unknown_state_fail_closed": "passed",
+      "worker_lease_retry_dead_letter_and_late_commit": "passed",
+      "circuit_kill_switch_and_mandatory_control": "passed",
+      "application_scope_and_role_isolation": "passed",
+      "supply_chain_unknown_freshness_and_projection": "passed",
+      "generated_recovery_dependency_and_partial_outcome": "passed",
+      "generated_capacity_loss_and_limitation_accounting": "passed",
+      "portable_placement_and_optional_lane_bypass": "passed",
+      "real_machine_storage_backup_restore_scanner_or_cluster_action": false
+    },
+    "dependency_validation": {
+      "status": "passed",
+      "installed_packages_checked": 74,
+      "compatibility": "passed",
+      "lockfile_changed": false,
+      "dependency_added_or_changed": false,
+      "fresh_vulnerability_refresh": "not_performed_scope_prohibited"
+    }
+  },
+  "security_properties": [
+    "metric names labels values and cardinality are governed by closed bounded registries",
+    "trace and correlation context propagate observability only and never grant scope purpose role or capability",
+    "operational security audit and evidence lanes remain independently authoritative",
+    "unified signal search is disabled sanitized derived non_authoritative and cannot ingest raw records",
+    "unknown failure objective vulnerability provenance recovery capability and capacity states never become success",
+    "workers deny late commits after lease loss and bound retries dead letters abandonment and idempotency",
+    "kill switches and degradation revisions use deny precedence and cannot weaken mandatory controls",
+    "all ten new PostgreSQL stores declare forced department row security",
+    "supply chain projections preserve missing stale failed and unknown evidence without assurance claims",
+    "recovery capacity standalone and Kubernetes results are generated projections with no machine or cluster action",
+    "read APIs are default off no store department scoped role separated bounded and nonoperational",
+    "accepted Phase 3 and P4.0 through P4.5 history remains immutable"
+  ],
+  "known_limitations": [
+    "P4.6 PostgreSQL forced row security concurrency and privileged role tests were not executed locally because HCAM_POSTGRES_TEST_URL is absent",
+    "the PostgreSQL migration and existing CI service are configured but this evidence makes no local PostgreSQL execution claim",
+    "a fresh vulnerability database refresh scanner run and registry lookup were not performed because network scanner installation update and download actions are prohibited",
+    "capacity results use deterministic generated C1 C10 and C50 simulations and are not hardware performance city camera GPU server or production capacity claims",
+    "standalone and Kubernetes outputs are machine disabled platform neutral projections and no process container scheduler device cluster or deployment action occurred",
+    "recovery tests are generated simulations and no backup restore filesystem database service or disaster recovery action occurred",
+    "real telemetry search security observability broker or OpenTelemetry backends were not connected",
+    "production SLO error budget alert threshold RPO RTO and capacity targets remain unset",
+    "the Starlette TestClient emits one known warning for the locked HTTP client boundary",
+    "the unconditional suite required a secondary local temporary volume because the primary system temp volume had insufficient free space; no product source change was required",
+    "no provider Sentinel camera media private Government model dataset inference operational action container Kubernetes deployment or remote Git activity occurred",
+    "P4.6 owner acceptance and P4.7 remain separate closed gates"
+  ],
+  "progress_after_technical_validation": {
+    "phase_4_points": 94,
+    "phase_4_total_points": 100,
+    "phase_4_percent": 94.0,
+    "phase_4_percentage_point_change": 9.0,
+    "p4_6_points": 9,
+    "p4_6_total_points": 10,
+    "p4_6_percent": 90.0,
+    "p4_6_percentage_point_change": 90.0,
+    "owner_acceptance_points_pending": 1
+  },
+  "remote_git_performed": false
+}

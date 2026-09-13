@@ -1,0 +1,56 @@
+{
+  "schema_version": "hcam.phase5.gis-adoption-directive.v1",
+  "decision_id": "D-P5.0-GIS-ADOPTION-001",
+  "status": "owner_directed_planning_only",
+  "directed_by": "mayank-admin",
+  "directed_on": "2026-09-06",
+  "source_repository": "hcam-1-0/final-ui",
+  "source_branch": "main",
+  "source_commit": "cd21af3bef132b211bfe2860d25eaf38a94253df",
+  "source_component": "src/components/GisWorkspace.tsx",
+  "direction": "Adopt the existing Gujarat GIS as a primary Phase 5 product surface and preserve substantially more of its current operator experience.",
+  "adoption_class": "canonical_operator_experience_with_parity_first_internal_migration",
+  "preserve": [
+    "Gujarat_GIS_information_architecture",
+    "title_summary_toolbar_explorer_map_details_and_footer_regions",
+    "camera_incident_patrol_and_zone_layers",
+    "search_status_department_availability_protocol_and_camera_type_filters",
+    "neutral_grid_high_contrast_and_boundary_focus_display_modes",
+    "viewport_bounded_loading_and_local_clustering_behavior",
+    "feature_selection_and_display_safe_detail_inspector",
+    "approved_live_camera_gate_and_embedded_preview_workflow",
+    "fit_reset_focus_map_and_coordinate_feedback_controls",
+    "synthetic_lab_data_and_local_only_disclosures",
+    "mobile_explorer_and_details_drawer_workflow",
+    "no_external_basemap_default",
+    "responsive_control_room_visual_language"
+  ],
+  "additive_improvements": [
+    "typed_MapLibre_2D_renderer_adapter_with_behavioral_parity",
+    "guarded_optional_3D_analysis_adapter_with_2D_and_list_equivalence",
+    "complete_Point_LineString_Polygon_MultiPolygon_and_supported_geometry_handling",
+    "server_authoritative_spatial_queries_tiles_clustering_and_capabilities",
+    "fresh_stale_partial_degraded_denied_conflict_recovery_and_correction_states",
+    "temporal_event_hypothesis_alert_investigation_and_correction_overlays",
+    "keyboard_screen_reader_focus_contrast_zoom_reflow_and_reduced_motion_evidence",
+    "English_Gujarati_and_Hindi_localization",
+    "policy_ceiling_hardware_profile_and_resource_budget_controls",
+    "generated_only_contract_visual_browser_accessibility_and_scale_validation"
+  ],
+  "parity_gates": [
+    "No existing owner-approved GIS workflow or control may be removed without a later explicit decision.",
+    "The MapLibre implementation must pass an interaction and visual parity matrix before the current Leaflet implementation can be retired.",
+    "Performance adaptation may reduce optional visual cost, but must not reduce data scope, authorization, freshness, correction, evidence, or accessibility semantics.",
+    "Optional 3D must never replace the authoritative 2D and accessible list paths.",
+    "GIS changes must remain compatible with the Command Center and approved live-preview workflow.",
+    "No camera locator, credential, raw provider address, or unauthorized geometry may enter browser-visible state."
+  ],
+  "explicit_non_effects": [
+    "does_not_change_D-P5.0-005_selection_D",
+    "does_not_authorize_source_import_or_implementation",
+    "does_not_authorize_dependency_installation_build_test_or_runtime",
+    "does_not_authorize_map_tile_provider_camera_media_or_network_access",
+    "does_not_authorize_Government_or_private_data",
+    "does_not_authorize_deployment_or_remote_Git"
+  ]
+}

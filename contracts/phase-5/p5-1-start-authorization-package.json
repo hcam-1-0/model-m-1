@@ -1,0 +1,559 @@
+{
+  "schema_version": "hcam.phase5.p5_1.start_authorization_package.v1",
+  "package_id": "P5.1-START-R0",
+  "decision_id": "D-P5.1-START",
+  "status": "owner_authorization_required",
+  "effective": false,
+  "prepared_on": "2026-09-06",
+  "expires_on_if_accepted": "2026-10-06",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "b3ee98bbcb43e2d8093f7c2c4174d8cbc09cba32",
+  "planned_implementation_branch": "codex/phase5-product-ux-contracts",
+  "implementation_branch_base_policy": "retain_the_current_branch_and_first_create_one_local_checkpoint_containing_only_the_pending_P5_1_planning_acceptance_start_package_and_status_records_before_product_implementation",
+  "accepted_predecessor": {
+    "subphase": "P5.0",
+    "acceptance_path": "contracts/phase-5/p5-0-acceptance.json",
+    "acceptance_sha256": "BD11D1281AF692F420AA5FD56FA3EFA9659F9C3E8B304EB31AB5A68044F35BB8",
+    "evidence_package_sha256": "5A2857352974B541AC942ADA521A680B3D5D23B20B765882F8A94759B457E6C2",
+    "canonical_component_digest": "56229E40C1C374683956E344B7D08AF3F44D58208CB50B9C523A875F7FD846A7",
+    "technical_commit": "8d6ff70dfb0f6c7a6b9a50ce6db03d14f46256ae"
+  },
+  "accepted_reconciled_planning": {
+    "package_id": "P5.1-PLANNING-R1",
+    "path": "contracts/phase-5/p5-1-planning-package-r1.json",
+    "bytes": 6500,
+    "sha256": "5ECEC0B67BE3DE64518F6D3C9D7B221C449C4B2E6E0C5A23306AF0738C55A008",
+    "canonical_component_digest": "0AF30783F7E80A8CB57141745BE964D5E3F4779D6DBDF996404AE5FDF76A2F4B"
+  },
+  "planning_acceptance": {
+    "decision_id": "D-P5.1-PLANNING-R1-ACCEPTANCE",
+    "path": "contracts/phase-5/p5-1-planning-r1-acceptance.json",
+    "bytes": 3560,
+    "sha256": "7417873D0F0F54DE7C06BBF2CF6E46342950F72485EF7555FDE8F39D3C726D57",
+    "owner_statement_sha256": "C4B65BC3D4D064F4D3F67F0B5F5CC65551AE01E520303B447FC23CF7EDE214CF"
+  },
+  "bound_input_digest_algorithm": "Sort inputs by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "bound_input_digest": "4C44F600C3BAB1D7D997391BDF880AC2BD3CBEDA565A5DF274F5753B381DCFE2",
+  "bound_inputs": [
+    {
+      "path": "contracts/phase-5/final-ui-repository-snapshot.json",
+      "bytes": 9392,
+      "sha256": "A27A657640DED34B159A6AEE57480190DE666BC1209682E1EEE3135A022B26C7"
+    },
+    {
+      "path": "contracts/phase-5/gis-adoption-directive.json",
+      "bytes": 3320,
+      "sha256": "5BCF8C37E78CFFE78D042C95CB123F5B4DFC362BB9D8421E3F205E1C78CE970A"
+    },
+    {
+      "path": "contracts/phase-5/operator-ui-gis-parity.v1.json",
+      "bytes": 3512,
+      "sha256": "49906CEAB2704AF8B21AA6B33BAF6E41C1462475D0A821D87A31C913D213F90C"
+    },
+    {
+      "path": "contracts/phase-5/p5-0-acceptance.json",
+      "bytes": 2496,
+      "sha256": "BD11D1281AF692F420AA5FD56FA3EFA9659F9C3E8B304EB31AB5A68044F35BB8"
+    },
+    {
+      "path": "contracts/phase-5/p5-1-owner-decisions.json",
+      "bytes": 4962,
+      "sha256": "A474FCD2460B1F23EFF33C287921FBDF530EBEF832DC3D249D6D51CAD4ADCF48"
+    },
+    {
+      "path": "contracts/phase-5/p5-1-plan-authorization.json",
+      "bytes": 3898,
+      "sha256": "7D325D3D9ED42FA051305D91C091D05696FEC8DDCE6D35971BE59D400E735D89"
+    },
+    {
+      "path": "contracts/phase-5/p5-1-planning-package-r1.json",
+      "bytes": 6500,
+      "sha256": "5ECEC0B67BE3DE64518F6D3C9D7B221C449C4B2E6E0C5A23306AF0738C55A008"
+    },
+    {
+      "path": "contracts/phase-5/p5-1-planning-r1-acceptance.json",
+      "bytes": 3560,
+      "sha256": "7417873D0F0F54DE7C06BBF2CF6E46342950F72485EF7555FDE8F39D3C726D57"
+    },
+    {
+      "path": "docs/phase-5/p5-1-foundation-architecture.md",
+      "bytes": 18186,
+      "sha256": "B37C1E86D86342187FD36DDB71D6D0D2EC5315303DD8590DEB204E2F995F9FFE"
+    },
+    {
+      "path": "docs/phase-5/p5-1-implementation-plan.md",
+      "bytes": 15431,
+      "sha256": "020DB6CE3786E48587B7F069A1422929BB80D09EE80E27F18B76C6349A0A0BE5"
+    },
+    {
+      "path": "docs/phase-5/p5-1-reconciled-planning-r1.md",
+      "bytes": 10711,
+      "sha256": "AB62111AC7552692877A5C9B43F5D26ED35064B3F04E3935426F626EE0EB6095"
+    },
+    {
+      "path": "docs/phase-5/p5-1-threat-model.md",
+      "bytes": 9291,
+      "sha256": "798E3173C5A067360B32A50E0E90C3D7B2437172E6F9BE2465E5D6DEC16DA6A0"
+    }
+  ],
+  "binding_profile": {
+    "owner_decisions": "B/A/A/A/A/A/A/A/A/A/A/A",
+    "workspace": "pnpm_workspace_with_one_lockfile_catalogues_workspace_protocol_and_exact_locked_versions",
+    "portal_topology": "seven_independently_buildable_portals_without_runtime_federation",
+    "routing": "React_Router_Data_Mode_with_static_typed_route_manifests",
+    "design_system": "native_HTML_first_React_Aria_wrapped_by_HCAM_components_and_visual_tokens",
+    "contracts": "OpenAPI_3_1_generated_types_plus_strict_JSON_Schema_2020_12_boundary_validation",
+    "server_state": "TanStack_Query_with_operation_specific_HCAM_policy_registry",
+    "session": "same_origin_BFF_Host_cookie_synchronizer_CSRF_Origin_Fetch_Metadata_and_reauthentication",
+    "localization": [
+      "English",
+      "Gujarati",
+      "Hindi"
+    ],
+    "resource_profiles": [
+      "safe_low",
+      "enhanced_workstation",
+      "control_room",
+      "future_server"
+    ],
+    "GIS": "preserve_canonical_Gujarat_GIS_information_architecture_parity_and_no_downgrade_contract_without_renderer_runtime",
+    "source_adoption": "contracts_and_visual_behavior_only_with_no_final_ui_source_import_in_P5_1",
+    "runtime_data": "deterministic_generated_non_issuable_fixtures_only"
+  },
+  "authorization_effect_if_owner_accepts_exact_digest": [
+    "record_the_exact_D_P5_1_START_owner_statement_without_expanding_scope",
+    "create_one_local_planning_and_start_checkpoint_commit_before_product_implementation_without_push",
+    "perform_the_exact_guarded_dependency_resolution_lockfile_installation_and_supply_chain_checks_defined_by_this_package",
+    "implement_only_the_eight_frozen_P5_1_workstreams_inside_the_bounded_frontend_contract_fixture_test_evidence_and_status_paths",
+    "run_only_local_generated_only_lint_type_unit_component_story_build_browser_security_accessibility_and_repository_regression_validation",
+    "use_an_already_installed_compatible_system_browser_only_and_stop_if_none_is_available",
+    "perform_at_most_twelve_bounded_in_scope_remediation_validation_and_reseal_cycles",
+    "create_local_checkpoint_commits_without_push",
+    "prepare_one_non_effective_exact_P5_1_exit_acceptance_proposal"
+  ],
+  "workstreams": [
+    {
+      "id": "P5.1-W1",
+      "name": "workspace_build_and_dependency_policy",
+      "weight_points": 1.5,
+      "scope": [
+        "isolated_frontend_root_one_workspace_one_lockfile_catalogues_workspace_protocol_and_independent_portal_builds",
+        "strict_TypeScript_shared_build_lint_format_test_story_and_browser_configuration",
+        "exact_dependency_allowlist_integrity_license_peer_engine_advisory_SBOM_and_provenance_evidence",
+        "no_portal_cross_imports_no_runtime_federation_no_backend_dependency_changes"
+      ]
+    },
+    {
+      "id": "P5.1-W2",
+      "name": "shared_shell_navigation_and_routing",
+      "weight_points": 1.5,
+      "scope": [
+        "shared_application_shell_header_sidebar_breadcrumb_portal_switcher_context_and_command surfaces",
+        "static_typed_route_manifests_lazy_portal_loading_denied_not_found_and_recovery states",
+        "responsive_zoom_density_multi_monitor_and_independent_window contracts",
+        "keyboard_focus_skip_link_landmark_and_route_announcement behavior"
+      ]
+    },
+    {
+      "id": "P5.1-W3",
+      "name": "design_system_accessibility_and_visual_foundation",
+      "weight_points": 1.5,
+      "scope": [
+        "HCAM_owned_tokens_primitives_composites_forms_tables_status_feedback_overlays_and_layouts",
+        "native_semantics_first_React_Aria_wrappers_only_where_behavior_is_complex",
+        "light_dark_high_contrast_reduced_motion_and_200_percent_zoom support",
+        "Storybook_generated_states_automated_accessibility_visual_baselines_and_manual_evidence checklist"
+      ]
+    },
+    {
+      "id": "P5.1-W4",
+      "name": "typed_contracts_API_errors_and_adapter_boundaries",
+      "weight_points": 1.5,
+      "scope": [
+        "generated_OpenAPI_types_strict_runtime_schema_validation_and_bounded_RFC_9457 mapping",
+        "typed_pagination_filter_sort_freshness_concurrency_capability_and_problem contracts",
+        "same_origin_HTTP_client_with_timeout_abort_retry_idempotency_and_correlation policy",
+        "GIS_and_playback_adapter_interfaces_only_without_map_media_camera_or_provider runtime"
+      ]
+    },
+    {
+      "id": "P5.1-W5",
+      "name": "session_authorization_department_and_capability_context",
+      "weight_points": 1.5,
+      "scope": [
+        "same_origin_BFF_session_bootstrap_Host_cookie_and_synchronizer_CSRF token handling",
+        "Origin_Fetch_Metadata_reauthentication_expiry_revocation_and_safe_recovery states",
+        "server_authoritative_role_department_and_capability ceilings with fail_closed clients",
+        "no_secret_token_identity_or_sensitive_context_persistence_or_telemetry"
+      ]
+    },
+    {
+      "id": "P5.1-W6",
+      "name": "server_state_concurrency_events_and_offline_degradation",
+      "weight_points": 1.5,
+      "scope": [
+        "TanStack_Query_policy_registry_for_stale_cache_retry_poll_cancel_and_invalidation behavior",
+        "ETag_If_Match_conflict_idempotency_and_mutation_revalidation contracts",
+        "events_are_non_authoritative_invalidation_hints_with_bounded_reconnect_and_poll fallback",
+        "loading_empty_partial_stale_degraded_denied_conflict_failure_recovery_and_correction states"
+      ]
+    },
+    {
+      "id": "P5.1-W7",
+      "name": "localization_profiles_windows_and_preferences",
+      "weight_points": 1.5,
+      "scope": [
+        "ICU_catalogues_for_English_Gujarati_and_Hindi_with_complete_keys_and_fallback tests",
+        "canonical_time_zone_relative_time_number_date_and_audit_value projection",
+        "safe_low_default_intersected_with_server_ceiling_coarse_browser_support_and_session_health",
+        "memory_first_typed_URL_harmless_TTL_display_preferences_server_workspaces_and_independent windows"
+      ]
+    },
+    {
+      "id": "P5.1-W8",
+      "name": "observability_adoption_validation_evidence_and_acceptance",
+      "weight_points": 1.5,
+      "scope": [
+        "low_cardinality_minimized_internal_signals_and_default_off_OpenTelemetry_compatible adapter",
+        "hash_bound_attributed_build_excluded_visual_behavior_adoption records without source import",
+        "generated_unit_component_story_browser_visual_security_accessibility_and_clean_source validation",
+        "reproducible_evidence_readiness_known_limitations_and_separate_exact_owner acceptance"
+      ]
+    }
+  ],
+  "frontend_workspace_roots": [
+    "frontend/apps/command-center",
+    "frontend/apps/operations-center",
+    "frontend/apps/intelligence-center",
+    "frontend/apps/investigation-center",
+    "frontend/apps/evidence-center",
+    "frontend/apps/admin-center",
+    "frontend/apps/security-center",
+    "frontend/packages/app-shell",
+    "frontend/packages/navigation",
+    "frontend/packages/design-tokens",
+    "frontend/packages/ui",
+    "frontend/packages/contracts",
+    "frontend/packages/api-client",
+    "frontend/packages/auth-session",
+    "frontend/packages/query-policy",
+    "frontend/packages/event-invalidation",
+    "frontend/packages/capabilities",
+    "frontend/packages/i18n",
+    "frontend/packages/gis-contracts",
+    "frontend/packages/playback-contracts",
+    "frontend/packages/observability",
+    "frontend/packages/test-fixtures",
+    "frontend/packages/test-support",
+    "frontend/scripts",
+    "frontend/tests",
+    "frontend/evidence"
+  ],
+  "exact_workspace_control_paths": [
+    "frontend/.gitignore",
+    "frontend/.npmrc",
+    "frontend/package.json",
+    "frontend/pnpm-lock.yaml",
+    "frontend/pnpm-workspace.yaml",
+    "frontend/tsconfig.base.json",
+    "frontend/eslint.config.mjs",
+    "frontend/prettier.config.mjs",
+    "frontend/vitest.workspace.ts",
+    "frontend/playwright.config.ts",
+    "frontend/dependency-lock-candidate.json",
+    "frontend/dependency-evidence.json",
+    "frontend/sbom.cdx.json"
+  ],
+  "bounded_additive_path_policy": {
+    "allowed_roots": [
+      {
+        "root": "frontend/apps",
+        "maximum_files": 210,
+        "maximum_total_bytes": 1572864
+      },
+      {
+        "root": "frontend/packages",
+        "maximum_files": 360,
+        "maximum_total_bytes": 3145728
+      },
+      {
+        "root": "frontend/scripts",
+        "maximum_files": 24,
+        "maximum_total_bytes": 262144
+      },
+      {
+        "root": "frontend/tests",
+        "maximum_files": 96,
+        "maximum_total_bytes": 1048576
+      },
+      {
+        "root": "frontend/evidence",
+        "maximum_files": 48,
+        "maximum_total_bytes": 1048576
+      },
+      {
+        "root": "contracts/phase-5/p5-1",
+        "maximum_files": 48,
+        "maximum_total_bytes": 1048576
+      },
+      {
+        "root": "fixtures/phase-5/p5-1",
+        "maximum_files": 96,
+        "maximum_total_bytes": 2097152
+      },
+      {
+        "root": "docs/phase-5/p5-1",
+        "maximum_files": 32,
+        "maximum_total_bytes": 786432
+      },
+      {
+        "root": "tests/phase5_frontend",
+        "maximum_files": 32,
+        "maximum_total_bytes": 524288
+      },
+      {
+        "root": "tools/phase51",
+        "maximum_files": 16,
+        "maximum_total_bytes": 262144
+      },
+      {
+        "root": ".github/workflows/frontend-ci.yml",
+        "maximum_files": 1,
+        "maximum_total_bytes": 32768
+      }
+    ],
+    "allowed_extensions": [
+      ".css",
+      ".html",
+      ".json",
+      ".md",
+      ".mjs",
+      ".py",
+      ".ts",
+      ".tsx",
+      ".yaml",
+      ".yml"
+    ],
+    "path_requirements": [
+      "all_paths_are_repository_relative_canonical_and_non_reparse",
+      "no_generated_build_cache_coverage_browser_binary_media_archive_database_or_secret_files",
+      "no_path_may_escape_or_alias_an_allowed_root",
+      "all_text_is_UTF_8_without_BOM_LF_terminated_and_ASCII_except_approved_locale_catalogue_values_and_accessibility_fixtures"
+    ]
+  },
+  "exact_additive_phase_records": [
+    "contracts/phase-5/p5-1-start-acceptance.json",
+    "contracts/phase-5/p5-1-evidence.json",
+    "contracts/phase-5/p5-1-evidence-package.json",
+    "contracts/phase-5/p5-1-acceptance-proposal.json",
+    "docs/phase-5/current-status-r7.md",
+    "docs/phase-5/p5-1-implementation.md",
+    "docs/phase-5/p5-1-validation.md",
+    "docs/phase-5/p5-1-evidence.md",
+    "docs/phase-5/p5-1-acceptance-proposal.md"
+  ],
+  "bounded_existing_file_synchronization": [
+    {
+      "path": "README.md",
+      "pre_edit_sha256": "190F6FA09B2132D4A48F3187A144DD077B398DB075C7386C2A95FB6DE6D8CA95",
+      "purpose": "P5_1_accepted_planning_start_implementation_and_progress_navigation_only"
+    },
+    {
+      "path": "docs/phase-5/README.md",
+      "pre_edit_sha256": "A2954EBF51DD19F6182291111678689817F5C510B12A5D5E70BCA3FDB51121C0",
+      "purpose": "P5_1_record_navigation_and_status_only"
+    },
+    {
+      "path": "docs/phase-5/status.md",
+      "pre_edit_sha256": "78048195842A2052A47F79E9ED71EBF76CD6EB339CEA9F9CC7EBDD3C500FF22A",
+      "purpose": "P5_1_gate_and_exact_progress_only"
+    },
+    {
+      "path": "docs/phase-5/implementation-plan.md",
+      "pre_edit_sha256": "3DABCBAB4A5F1732483457358E71E8914043C94DF3883405E5F0F9323F4FD589",
+      "purpose": "P5_1_implementation_evidence_and_acceptance_status_only"
+    }
+  ],
+  "dependency_resolution": {
+    "authorized_only_after_exact_start_acceptance": true,
+    "node_runtime": {
+      "required_lane": "24.x_LTS",
+      "must_already_be_installed": true,
+      "installation_authorized": false,
+      "mismatch_behavior": "stop_closed"
+    },
+    "package_manager": {
+      "required_lane": "pnpm_12.x",
+      "preferred_source": "already_installed_or_already_cached_Corepack_activation",
+      "network_download_for_package_manager": false,
+      "mismatch_behavior": "stop_closed"
+    },
+    "registry": "https://registry.npmjs.org/",
+    "network_constraints": [
+      "clear_HTTP_PROXY_HTTPS_PROXY_ALL_PROXY_NPM_CONFIG_PROXY_and_NPM_CONFIG_HTTPS_PROXY",
+      "HTTPS_only_exact_registry_host",
+      "same_host_redirects_only",
+      "no_Git_file_HTTP_tarball_alternate_registry_or_unapproved_source",
+      "no_credentials_tokens_or_private_packages"
+    ],
+    "runtime_dependency_allowlist": [
+      "@tanstack/react-query",
+      "ajv",
+      "lucide-react",
+      "openapi-fetch",
+      "react",
+      "react-aria-components",
+      "react-dom",
+      "react-intl",
+      "react-router"
+    ],
+    "development_dependency_allowlist": [
+      "@eslint/js",
+      "@playwright/test",
+      "@storybook/addon-a11y",
+      "@storybook/react-vite",
+      "@testing-library/jest-dom",
+      "@testing-library/react",
+      "@testing-library/user-event",
+      "@types/node",
+      "@types/react",
+      "@types/react-dom",
+      "@vitejs/plugin-react",
+      "@vitest/coverage-v8",
+      "axe-core",
+      "eslint",
+      "eslint-plugin-jsx-a11y",
+      "eslint-plugin-react-hooks",
+      "jsdom",
+      "openapi-typescript",
+      "prettier",
+      "storybook",
+      "typescript",
+      "typescript-eslint",
+      "vite",
+      "vitest"
+    ],
+    "version_resolution_policy": [
+      "react_and_react_dom_must_resolve_to_the_same_stable_19_2_x_version",
+      "react_router_must_resolve_to_a_stable_8_3_x_version",
+      "all_other_packages_resolve_to_one_stable_non_prerelease_version_in_the_current_major_that_satisfies_all_peer_and_engine_constraints",
+      "record_exact_versions_metadata_integrity_peer_engine_license_and_advisory_results_before_installation",
+      "write_the_candidate_manifest_and_lockfile_before_materializing_dependencies",
+      "after_resolution_all_versions_are_exact_and_all_later_commands_use_the_frozen_lockfile"
+    ],
+    "install_policy": [
+      "pnpm_install_with_ignore_scripts_and_frozen_lockfile",
+      "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD_equals_1",
+      "no_lifecycle_scripts_native_builds_or_postinstall_network",
+      "no_package_outside_the_exact_allowlists",
+      "no_unresolved_high_or_critical_vulnerability",
+      "no_unknown_or_policy_denied_license",
+      "stop_before_installation_on_any_integrity_peer_engine_license_advisory_or_provenance_failure"
+    ],
+    "forbidden_dependencies": [
+      "MapLibre_Leaflet_OpenLayers_Cesium_deck_gl_or_other_GIS_renderer",
+      "HLS_WHEP_WebRTC_RTSP_ONVIF_or_media_runtime",
+      "runtime_federation_microfrontend_or_plugin_loader",
+      "direct_database_broker_model_provider_or_cloud_client",
+      "analytics_advertising_replay_fingerprinting_or_unapproved_telemetry_client"
+    ]
+  },
+  "runtime_and_validation_policy": {
+    "authorized_only_after_exact_start_acceptance": true,
+    "data": "deterministic_generated_non_issuable_fixtures_only",
+    "network_during_application_and_browser_tests": "loopback_only_to_the_bounded_generated_fixture_service",
+    "external_network_during_application_and_browser_tests": "forbidden",
+    "browser": "already_installed_compatible_system_browser_only_with_no_download",
+    "maps_media_cameras_providers_models_and_operational_backends": "forbidden",
+    "database": "not_required_and_not_authorized",
+    "containers_or_Kubernetes": "forbidden",
+    "missing_tool_runtime_browser_or_dependency": "stop_and_report_without_unapproved_installation_or_fallback"
+  },
+  "validation_gates": [
+    "all_seven_portals_build_independently_and_share_only_allowlisted_package_contracts",
+    "no_portal_cross_import_runtime_federation_dependency_cycle_or_backend_source modification",
+    "strict_TypeScript_lint_format_unit_component_story_and_build_checks pass",
+    "OpenAPI_generated_types_and_JSON_Schema_runtime_validation_are_consistent_and_fail_closed",
+    "same_origin_CSRF_session_reauthentication_department_capability_and_denial_tests pass",
+    "event_invalidation_never_confirms_authority_or_mutation_and_HTTP_revalidation_remains authoritative",
+    "loading_empty_partial_stale_degraded_denied_conflict_failure_recovery_and_correction states are implemented and tested",
+    "English_Gujarati_and_Hindi_catalogues_are_complete_and_canonical_values_remain stable",
+    "safe_low_profile_is_functionally_complete_and_enhanced_profiles_change_only_quality_density_or_bounded concurrency",
+    "GIS_parity_contract_and_accessible_nonvisual_equivalence_are_preserved_without_a_map renderer",
+    "playback_contract_has_no_media_transport_camera_or recording implementation",
+    "telemetry_has_no credentials_tokens_locators_identifiers_free_text_media_or high_cardinality labels",
+    "final_ui_source_is_not_imported_and_adoption_records_are_attributed_hash_bound_and build excluded",
+    "generated fixtures_are_non_issuable_and_cannot_be_confused_with_Government_police_private_or operational records",
+    "new_frontend_statements_reach_at_least_90_percent_branch_coverage_and_critical_session_authorization_contracts_reach_at_least_95_percent",
+    "automated_WCAG_checks_keyboard_navigation_zoom_reduced_motion_contrast_and_manual_evidence checklist pass_or_remain_explicitly_blocked",
+    "dependency_lock_SBOM_license_integrity_advisory_and_provenance evidence is complete",
+    "focused_frontend_validation_and_the_complete_existing_Python_repository_regression suite pass",
+    "clean_local_source_reproduction_matches_the_sealed_evidence_and_no_generated_build artifacts are tracked",
+    "separate_exact_owner_acceptance_remains_required_before_awarding_the_final_P5_1_workstream"
+  ],
+  "maximum_local_revision_validation_reseal_cycles": 12,
+  "local_checkpoint_commits_if_authorized": true,
+  "remote_git_authorized": false,
+  "separate_exit_acceptance_required": true,
+  "maximum_progress_before_exit_acceptance": {
+    "P5_1_earned": 10.5,
+    "P5_1_total": 12,
+    "P5_1_percent": 87.5,
+    "phase_5_earned": 18.5,
+    "phase_5_total": 100,
+    "phase_5_percent": 18.5
+  },
+  "progress_after_exact_exit_acceptance": {
+    "P5_1_earned": 12,
+    "P5_1_total": 12,
+    "P5_1_percent": 100.0,
+    "phase_5_earned": 20,
+    "phase_5_total": 100,
+    "phase_5_percent": 20.0
+  },
+  "immutable_inputs_and_history": [
+    "all_Phase_0_through_P5_0_source_contract_migration_evidence_acceptance_and_documentation artifacts",
+    "all_P5_1_planning_authorization_R0_R1_decision_validation_acceptance_and_start_package artifacts",
+    "hcam_1_0_final_ui_remote_repository_and_its_history",
+    "all_existing_backend_source_migrations_dependencies_lockfiles_tests_tools_deploy_and_CI_except_the_four_exact_status synchronization paths",
+    "all_untracked_local_outputs_caches_virtual_environments_build_artifacts_and_user files"
+  ],
+  "explicit_non_goals": [
+    "source_import_copy_subtree_merge_history_rewrite_or_code_reuse_from_hcam_1_0_final_ui",
+    "main_feature_portal_workflows_beyond_the_shared_shell_states_and_generated foundation fixtures",
+    "MapLibre_Leaflet_OpenLayers_Cesium_deck_gl_or_other_map_renderer implementation",
+    "HLS_WHEP_WebRTC_RTSP_ONVIF_playback_snapshot_recording_export_or media implementation",
+    "backend_API_route_event_worker_migration_database_or service implementation",
+    "camera_provider_tile_geocoder_routing_workflow_engine_broker_telemetry_or operational network access",
+    "model_dataset_artifact_inference_training_or_AI_runtime",
+    "operational_alert_notification_dispatch_enforcement_hold_delete_export_or autonomous action",
+    "container_Kubernetes_cloud_pilot_production_deployment_or release",
+    "P5_2_or_later_implementation"
+  ],
+  "stop_conditions": [
+    "any_bound_input_pre_edit_or_immutable_hash_mismatch",
+    "any_path_outside_the_exact_or_bounded_allowlists_or_any_reparse_alias_escape",
+    "any_required_Node_or_pnpm_runtime_is_absent_or_outside_the_approved lane",
+    "any_dependency_source_package_version_integrity_peer_engine_license_advisory_or_provenance_gate fails",
+    "any_dependency_lifecycle_script_native_build_browser_download_or_unapproved network requirement",
+    "any_need_for_backend_dependency_route_migration_database_process_container_Kubernetes_or deployment change",
+    "any_real_identifier_credential_secret_locator_camera_media_provider_model_operational_or non_generated_data requirement",
+    "any_attempt_to_remove_or_downgrade_an_owner_approved_Gujarat_GIS workflow_or_accessibility equivalence",
+    "any_generated_fixture_that_could_be_mistaken_for_a_real record",
+    "any_failed_validation_after_twelve_bounded_cycles"
+  ],
+  "continuing_prohibitions": [
+    "unbounded_dependency_selection_or_any_package_outside_the_allowlist",
+    "source_import_copy_subtree_merge_or_remote_history access",
+    "external_application_map_tile_provider_camera_media_model_broker_or operational network",
+    "Government_police_private_personal_biometric_vehicle_owner_registration_watchlist_case_investigation_or evidence data",
+    "operational_alert_notification_dispatch_enforcement_hold_delete_export_or autonomous action",
+    "backend_route_migration_database_worker_service_or operational runtime",
+    "map_media_camera_model_or inference runtime",
+    "container_Kubernetes_cloud_pilot_production_deployment_or release",
+    "P5_2_or_later implementation",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "owner_statement_template": "D-P5.1-START: I, mayank-admin, accept P5.1 start package P5.1-START-R0 with SHA-256 {{PACKAGE_SHA256}} and bound-input digest 4C44F600C3BAB1D7D997391BDF880AC2BD3CBEDA565A5DF274F5753B381DCFE2 and authorize its exact bounded local generated-only Shared Application Foundation implementation scope, guarded allowlisted frontend dependency resolution and lockfile creation, source and test implementation, build and browser validation, evidence generation, and local checkpoint commits without push. This does not authorize source import, unapproved dependencies or network access, backend API routes or migrations, maps, tiles, providers, cameras or media, Government or private data, models, datasets, artifacts or inference, operational actions, containers, Kubernetes, deployment, P5.2, or remote Git."
+}

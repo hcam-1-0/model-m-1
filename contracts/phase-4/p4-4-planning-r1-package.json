@@ -1,0 +1,264 @@
+{
+  "schema_version": "hcam.phase4.p4_4.planning-package.v2",
+  "package_id": "P4.4-PLANNING-R1",
+  "status": "owner_decisions_recorded_exact_planning_acceptance_pending",
+  "effective": false,
+  "prepared_on": "2026-09-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-reference-integrations-planning",
+  "planning_checkpoint": "822bd47cb118210e1eb2bc4b47d9b1f7ea238573",
+  "supersedes": {
+    "package_id": "P4.4-PLANNING-R0",
+    "path": "contracts/phase-4/p4-4-planning-package.json",
+    "sha256": "16CA0D6723AF2ACF32E68D834A7EFE2C557A408DD71EF82A9B2120CCE015C01E",
+    "reason": "owner_selections_add_bounded_authentication_secret_backend_extension_and_workflow_adapter_capabilities"
+  },
+  "planning_authorization": {
+    "decision_id": "D-P4.4-PLAN-AUTH",
+    "path": "contracts/phase-4/p4-4-plan-authorization.json",
+    "sha256": "27FEBCC7D1679D3C1BDC7B7E82A972DA338344ABE82EDAD279EAFA13640888C6",
+    "scope_unchanged": true
+  },
+  "accepted_predecessor": {
+    "phase": "P4.3",
+    "decision_id": "D-P4.3-ACCEPTANCE",
+    "path": "contracts/phase-4/p4-3/acceptance.json",
+    "sha256": "BDFF9678045E07749C65B523BEF06BE2C53D17CFD079A1FDF6AF20ED336BDA84",
+    "accepted_implementation_commit": "4ddd15ea9beb75d841f69aab7cea9dfaab6822f8"
+  },
+  "immutable_r0_artifacts": [
+    {
+      "path": "docs/phase-4/p4-4-research-record.md",
+      "sha256": "733EDB6637D298BA6AD915456E98C2ED634D23C8D6A5834F8963C6F6C335B481"
+    },
+    {
+      "path": "docs/phase-4/p4-4-threat-model.md",
+      "sha256": "115FA8E37C728B76EFD29CDC4EBBBB02144B3768D171FE27B3DC6F0B758475A7"
+    },
+    {
+      "path": "docs/phase-4/p4-4-contract-catalog.md",
+      "sha256": "95B3221D27767E4DB377F0825A60217EBA469875D0ED1F9AB3C4374007918E9A"
+    },
+    {
+      "path": "docs/phase-4/p4-4-decision-packet.md",
+      "sha256": "9C01EDC232A825DE80CB164DA6E00E02E5CF3CE91EB00F8C2AE08E46D1C9FD63"
+    },
+    {
+      "path": "docs/phase-4/p4-4-implementation-plan.md",
+      "sha256": "BE45997455A08FEA23CC1A96FCAEA9B88534D0C722CF01C43A85C886F524CAD3"
+    }
+  ],
+  "decision_artifacts": [
+    {
+      "path": "contracts/phase-4/p4-4-owner-decisions.json",
+      "sha256": "3D5A09C2AA5E282A204D8F87B71257AC2D83343CD9F16A48A804098F3BC58095"
+    },
+    {
+      "path": "docs/phase-4/p4-4-owner-decisions.md",
+      "sha256": "3FAD3A3B1F3B313C699B68E05BBF8604A165BE53B92ECC030005209203296653"
+    }
+  ],
+  "owner_decisions": {
+    "recorded": true,
+    "record_path": "contracts/phase-4/p4-4-owner-decisions.json",
+    "record_sha256": "3D5A09C2AA5E282A204D8F87B71257AC2D83343CD9F16A48A804098F3BC58095",
+    "D-P4.4-001": {
+      "selected": [
+        "C"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-002": {
+      "selected": [
+        "D"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-003": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": [
+        "C",
+        "D"
+      ]
+    },
+    "D-P4.4-004": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-005": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-006": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": [
+        "D"
+      ]
+    },
+    "D-P4.4-007": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-008": {
+      "selected": [
+        "C"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-009": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-010": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": []
+    },
+    "selected_profile": "C/D/A_with_C_and_D_capability/A/A/A_with_D_capability/A/C/A/A",
+    "recommendations_are_decisions": false,
+    "owner_continue_or_silence_is_acceptance": false
+  },
+  "composite_interpretation": {
+    "D-P4.4-003": {
+      "canonical_option": "A",
+      "C_capability": "disabled_database_envelope_secret_provider_behind_opaque_secret_reference_and_external_key_encryption_key",
+      "D_capability": "signed_allowlisted_versioned_typed_auth_profile_extension_behind_kernel_policy",
+      "unconstrained_plugin_authentication_selected": false,
+      "database_plaintext_secret_storage_selected": false,
+      "current_generated_tier_backend": "none_generated_and_fail_closed_unconfigured_provider_only",
+      "future_real_use_requires_separate_authorization": true
+    },
+    "D-P4.4-006": {
+      "canonical_option": "A",
+      "D_capability": "generated_workflow_executor_simulator_and_future_typed_workflow_dispatch_adapter",
+      "authoritative_truth": "PostgreSQL_job_lease_retry_circuit_revocation_and_terminal_state",
+      "external_engine_as_business_or_authority_truth": false,
+      "external_dependency_connection_credentials_or_deployment": false,
+      "future_real_use_requires_separate_authorization": true
+    }
+  },
+  "reconciled_architecture": {
+    "provider_boundary": "shared_typed_kernel_with_immutable_manifests_and_static_provider_adapters",
+    "transport_boundary": "generated_in_process_first_then_separately_authorized_loopback_HTTP_TLS",
+    "auth_boundary": "closed_profiles_opaque_attempt_leases_optional_disabled_database_envelopes_and_constrained_extensions",
+    "destination_boundary": "exact_compiled_routes_verified_identity_and_defense_in_depth_egress",
+    "catalogue_boundary": "normalized_deduplicated_freshness_explicit_snapshots_without_raw_response_retention",
+    "query_boundary": "durable_bounded_PostgreSQL_jobs_with_internal_worker_and_non_authoritative_workflow_adapter",
+    "matching_boundary": "field_specific_deterministic_evidence_contradiction_ranking_and_abstention",
+    "entry_boundary": "manual_and_generated_hypothesis_enrichment_lanes_separate_default_off",
+    "governance_boundary": "versioned_lifecycle_hierarchical_revocation_and_late_result_quarantine",
+    "evidence_boundary": "zero_raw_retention_minimized_audit_and_low_cardinality_telemetry"
+  },
+  "implementation_plan_overlay": [
+    "W1_add_closed_auth_profile_secret_lease_database_envelope_backend_and_auth_extension_contracts_without_real_backend_activation",
+    "W2_compile_provider_manifests_auth_profiles_exact_routes_fields_purposes_and_trust_into_immutable_policy",
+    "W3_validate_in_process_generated_provider_and_generated_workflow_executor_simulator_only",
+    "W4_persist_normalized_catalogue_freshness_query_job_lease_retry_circuit_revocation_and_quarantine_state",
+    "W5_generate_deterministic_field_evidence_contradiction_bounded_ranking_abstention_and_mandatory_review",
+    "W6_keep_manual_query_and_generated_hypothesis_enrichment_independently_default_off",
+    "W7_apply_versioned_provider_governance_hierarchical_kill_switches_zero_raw_retention_and_sanitized_observability",
+    "W8_validate_security_recovery_historical_compatibility_migrations_contract_snapshots_and_exact_acceptance_evidence"
+  ],
+  "initial_generated_tier": {
+    "in_process_generated_provider": true,
+    "invented_non_issuable_catalogue_and_query_records": true,
+    "generated_workflow_executor_simulator": true,
+    "generated_secret_canaries": true,
+    "loopback_HTTP_TLS": false,
+    "database_envelope_secret_backend_active": false,
+    "auth_profile_extension_loading": false,
+    "external_workflow_engine": false,
+    "network": false,
+    "real_credentials_or_secrets": false,
+    "real_provider_or_data": false,
+    "camera_or_media": false,
+    "operational_action": false
+  },
+  "frozen_progress": {
+    "phase4": {
+      "earned_points": 55,
+      "total_points": 100,
+      "percentage": "55.00%",
+      "change_percentage_points": "+0.00"
+    },
+    "p4_4": {
+      "earned_points": 0,
+      "total_points": 15,
+      "percentage": "0.0000%",
+      "change_percentage_points": "+0.0000"
+    },
+    "planning_and_research_gate": {
+      "completed_items": 5,
+      "total_items": 5,
+      "percentage": "100.0000%"
+    },
+    "owner_decision_gate": {
+      "completed_items": 10,
+      "total_items": 10,
+      "percentage": "100.0000%",
+      "change_percentage_points": "+100.0000"
+    },
+    "reconciled_package_acceptance_gate": {
+      "completed_items": 0,
+      "total_items": 1,
+      "percentage": "0.0000%"
+    },
+    "technical_ceiling_before_owner_acceptance": {
+      "phase4_earned_points": 69,
+      "phase4_percentage": "69.00%",
+      "p4_4_earned_points": 14,
+      "p4_4_percentage": "93.3333%"
+    },
+    "after_exact_p4_4_acceptance": {
+      "phase4_earned_points": 70,
+      "phase4_percentage": "70.00%",
+      "p4_4_earned_points": 15,
+      "p4_4_percentage": "100.0000%"
+    },
+    "planning_points_awarded": 0,
+    "partial_item_credit": false
+  },
+  "planning_package_acceptance_required": true,
+  "start_authorization_prepared": false,
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "real_provider_authorized": false,
+  "real_secret_backend_authorized": false,
+  "auth_extension_loading_authorized": false,
+  "external_workflow_engine_authorized": false,
+  "network_authorized": false,
+  "remote_git_authorized": false,
+  "explicitly_not_authorized": [
+    "P4_4_source_test_migration_API_worker_or_runtime_implementation",
+    "effective_P4_4_start_record_or_implementation_before_exact_start_package_acceptance",
+    "loopback_or_external_network_process",
+    "real_provider_connection_query_catalogue_or_candidate_matching",
+    "credential_secret_key_vault_database_secret_backend_or_auth_extension_use",
+    "external_workflow_engine_dependency_connection_credential_callback_or_deployment",
+    "Sentinel_camera_stream_image_recording_playback_or_media_access",
+    "real_private_personal_biometric_vehicle_owner_case_watchlist_Government_or_police_data",
+    "models_datasets_checkpoints_artifacts_inference_training_accelerators_or_benchmarks",
+    "operational_alert_notification_dispatch_enforcement_or_autonomous_action",
+    "containers_Kubernetes_cloud_production_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "required_next_sequence": [
+    "owner_accepts_exact_P4_4_PLANNING_R1_package_SHA_256",
+    "one_non_effective_digest_bound_P4_4_START_R0_package_is_prepared",
+    "owner_separately_accepts_the_exact_P4_4_START_R0_SHA_256",
+    "only_then_may_bounded_local_generated_only_implementation_begin"
+  ]
+}

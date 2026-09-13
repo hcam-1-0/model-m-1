@@ -1,0 +1,39 @@
+{
+  "schema_version": "hcam.phase5.p5_6.fixture_manifest.v1",
+  "marker": "HCAM_GENERATED_ONLY_P5_6",
+  "seed": "HCAM-P5.6-R0-2026-09-10",
+  "exact_case_count": 1120,
+  "generator": "frontend/scripts/generate-evidence.mjs",
+  "records": [
+    {
+      "path": "contracts/phase-5/p5-6/admin-contracts.v1.json",
+      "bytes": 1470,
+      "sha256": "129CB9FF3FCF83EAC65F816EEDCDECECF45188CC3144721EE8E085658A5392C4"
+    },
+    {
+      "path": "contracts/phase-5/p5-6/security-contracts.v1.json",
+      "bytes": 1161,
+      "sha256": "B82172EEA21E7514D064DC942D6D193A033CFE6DFCFDA951C31686F0A9685BF6"
+    },
+    {
+      "path": "contracts/phase-5/p5-6/operations-contracts.v1.json",
+      "bytes": 1399,
+      "sha256": "B92005E452115873FE5740EA16AF9421CB17D73295FE642C799CEE353C803B89"
+    },
+    {
+      "path": "contracts/phase-5/p5-6/generated-contract-cases.json",
+      "bytes": 349453,
+      "sha256": "1ED336A0187E0385F919C721CA7E90574C56B8EF900E0F125FA5A3D52221895F"
+    },
+    {
+      "path": "contracts/phase-5/p5-6/generated-workloads.json",
+      "bytes": 1317,
+      "sha256": "FA4CEB9063BCC239912552FDF9E8601F5AA46B0496DF4410D82C616442918B84"
+    },
+    {
+      "path": "contracts/phase-5/p5-6/prohibited-field-manifest.json",
+      "bytes": 678,
+      "sha256": "C854FBB62E94A7240E357F182B28E4B14968B8AEBF2EC7D5FD25DB61EEF14F4C"
+    }
+  ]
+}

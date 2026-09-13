@@ -1,0 +1,47 @@
+{
+  "approval_record_id": null,
+  "authority_class": "mandatory_review",
+  "contract_type": "hcam.intelligence.rule.v1",
+  "created_at": "2026-09-04T00:00:00Z",
+  "department": "Engineering Lab",
+  "generated_only": true,
+  "graph": {
+    "nodes": [
+      {
+        "duration_ms": null,
+        "field": null,
+        "inputs": [],
+        "kind": "event",
+        "node_id": "generated-event",
+        "operator": null,
+        "threshold": null,
+        "value": null
+      },
+      {
+        "duration_ms": null,
+        "field": "event.kind",
+        "inputs": [
+          "generated-event"
+        ],
+        "kind": "predicate",
+        "node_id": "generated-predicate",
+        "operator": "eq",
+        "threshold": null,
+        "value": "zone.entry"
+      }
+    ],
+    "output_node_id": "generated-predicate"
+  },
+  "graph_digest": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "intended_use": "Validate generated event grouping without operational activation",
+  "operational": false,
+  "owner_id": "mayank-admin",
+  "policy_version": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "retention_class": "derived.intelligence.standard",
+  "rule_id": "irule_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "rule_key": "generated-zone-activity",
+  "static_cost": 2,
+  "status": "draft",
+  "updated_at": "2026-09-04T00:00:00Z",
+  "version": 1
+}

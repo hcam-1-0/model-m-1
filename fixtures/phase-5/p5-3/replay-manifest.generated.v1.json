@@ -1,0 +1,10 @@
+{
+  "schema_version": "hcam.phase5.p5_3.replay_manifest.v1",
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "clock": "2026-09-08T09:02:00.000Z",
+  "seed": 5301,
+  "runs": ["clean-replay-1", "clean-replay-2"],
+  "ordered_inputs": ["camera_catalogue", "browser_capabilities", "resource_profile", "admission_requests", "layout", "playback_scenarios"],
+  "normalization": ["sort_object_keys", "sort_decisions_by_rank", "exclude_execution_timestamp", "exclude_random_ports", "exclude_binary_media_paths"],
+  "expected": "identical_canonical_sha256"
+}

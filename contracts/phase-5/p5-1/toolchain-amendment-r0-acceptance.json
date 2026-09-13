@@ -1,0 +1,32 @@
+{
+  "schema_version": "hcam.phase5.p5_1.toolchain_amendment_acceptance.v1",
+  "decision_id": "D-P5.1-TOOLCHAIN-AMENDMENT-R0-ACCEPTANCE",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-06",
+  "accepted_package": {
+    "package_id": "P5.1-TOOLCHAIN-AMENDMENT-R0",
+    "path": "contracts/phase-5/p5-1/toolchain-amendment-r0.json",
+    "bytes": 5668,
+    "sha256": "70494C243226BE574C6D779D7C03BA9287B3260F278B74B78ADA4D395FE959C6"
+  },
+  "effect": {
+    "node_runtime": "exact_installed_Node_24_18_0",
+    "package_manager": "exact_installed_pnpm_11_21_0",
+    "invocation": "hash_bound_direct_invocation_without_global_NVM_switch",
+    "download_install_copy_update_or_global_activation": false,
+    "all_other_P5_1_START_R0_controls_unchanged": true
+  },
+  "progress_effect": {
+    "awards_product_points": false,
+    "P5_1_percent": 0.0,
+    "P5_1_change_percentage_points": 0.0,
+    "phase_5_percent": 8.0,
+    "phase_5_change_percentage_points": 0.0
+  },
+  "owner_statement_normalization": "Exact ASCII text shown below, UTF-8 without BOM, no terminal newline.",
+  "owner_statement_utf8_length": 641,
+  "owner_statement_sha256": "F73D6E0C192AE261D49804948CA6BF99CA22CB2BEEAA23EE5C0E3CEB2F2AFD31",
+  "owner_statement": "D-P5.1-TOOLCHAIN-AMENDMENT-R0-ACCEPTANCE: I, mayank-admin, accept P5.1 toolchain amendment package P5.1-TOOLCHAIN-AMENDMENT-R0 with SHA-256 70494C243226BE574C6D779D7C03BA9287B3260F278B74B78ADA4D395FE959C6. For this local P5.1 implementation only, bind exact installed Node 24.18.0 to exact installed pnpm 11.21.0 using the hash-bound direct invocation and controls in that package, without download, installation, NVM switching, global activation, or package-manager self-update. Every other P5.1-START-R0 scope, dependency allowlist, security boundary, validation gate, stop condition, prohibition, and no-remote-Git rule remains unchanged."
+}

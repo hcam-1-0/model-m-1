@@ -1,0 +1,647 @@
+{
+  "category": "failure-taxonomy",
+  "scenario_count": 80,
+  "scenarios": [
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0000"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0001"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0002"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0003"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0004"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0005"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0006"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0007"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0008"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0009"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0010"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0011"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0012"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0013"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0014"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0015"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0016"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0017"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0018"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0019"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0020"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0021"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0022"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0023"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0024"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0025"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0026"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0027"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0028"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0029"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0030"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0031"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0032"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0033"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0034"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0035"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0036"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0037"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0038"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0039"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0040"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0041"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0042"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0043"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0044"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0045"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0046"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0047"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0048"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0049"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0050"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0051"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0052"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0053"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0054"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0055"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0056"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0057"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0058"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0059"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0060"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0061"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0062"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0063"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0064"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0065"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0066"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0067"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0068"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0069"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0070"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0071"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0072"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0073"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0074"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0075"
+    },
+    {
+      "code": "authorization.denied",
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0076"
+    },
+    {
+      "code": "policy.denied",
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0077"
+    },
+    {
+      "code": "dependency.timeout",
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "retry": "bounded",
+      "scenario_id": "p46.failure-taxonomy.0078"
+    },
+    {
+      "code": "state.unknown",
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "retry": "never",
+      "scenario_id": "p46.failure-taxonomy.0079"
+    }
+  ],
+  "schema_version": "hcam.phase4.p4_6.fixture.failure-taxonomy.v1"
+}

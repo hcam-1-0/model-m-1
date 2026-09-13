@@ -1,0 +1,384 @@
+{
+  "schema_version": "hcam.phase4.p4_2.start-authorization-package.v1",
+  "package_id": "P4.2-START-R0",
+  "decision_id": "D-P4.2-START",
+  "status": "owner_authorization_required",
+  "effective": false,
+  "prepared_on": "2026-09-04",
+  "expires_on_if_accepted": "2026-10-04",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-rule-authoring-planning",
+  "planning_base_commit": "53242f160e1d6f6d3913fd6479d1d4486f53d094",
+  "planned_implementation_branch": "codex/phase4-rule-authoring-evaluation",
+  "accepted_phase4_planning": {
+    "package_id": "P4-PLANNING-R2",
+    "path": "docs/phase-4/planning-package.json",
+    "sha256": "B8F4371A8DDD350F44321E70F5FB8CEE0DD27299A26082A40460086E80DDEA63"
+  },
+  "accepted_p4_1": {
+    "acceptance_path": "contracts/phase-4/p4-1/acceptance.json",
+    "acceptance_sha256": "6E709ADF3BC07904F6CAE3C97A9085B73880642A892569D86A92869C662F1EE3",
+    "evidence_package_path": "contracts/phase-4/p4-1/evidence-package.json",
+    "evidence_package_sha256": "D6302447DCF7C1ADB769E11FD36ACE1519552E0F982A23EDA86D64EC73351805",
+    "canonical_component_digest": "C3AD198C6EF8F9C49970B83F2B383F1C4F8D524C6085D115F392B54D2F348379",
+    "accepted_technical_commit": "ad44f3e3af292e5a134b45566fc16f09884861a2",
+    "acceptance_commit": "53242f160e1d6f6d3913fd6479d1d4486f53d094"
+  },
+  "binding_decisions": {
+    "D-P4.0-003": [
+      "A"
+    ],
+    "D-P4.0-004": [
+      "A",
+      "B",
+      "C"
+    ],
+    "interpretation": "visual_authoring_projection_plus_canonical_typed_AST_plus_stateful_temporal_nodes_plus_scalar_only_constrained_CEL_with_mandatory_review_and_no_autonomous_dispatch"
+  },
+  "planning_artifacts": [
+    {
+      "path": "docs/phase-4/p4-2-research-record.md",
+      "sha256": "B1CA641503889811DD3C496FD7528202E3B8302ECC35A73D08AE8F331FB43DE3"
+    },
+    {
+      "path": "docs/phase-4/p4-2-contract-catalog.md",
+      "sha256": "615EE374D041CD70796C7DAAD90740B202EE89E04ACC2DFC01033FA100EA7053"
+    },
+    {
+      "path": "docs/phase-4/p4-2-implementation-plan.md",
+      "sha256": "C182F0F02F7774A701E4008656F0D5EC6F6E18FA84AF8BC8785AF414491C42C4"
+    },
+    {
+      "path": "docs/phase-4/p4-2-threat-model.md",
+      "sha256": "428D684990F4D2D080ADBEA53084CC93E2C3FC7B1E41CE0C04197F082CACE1C4"
+    }
+  ],
+  "authorization_effect_if_owner_accepts_exact_digest": [
+    "record_the_exact_D_P4_2_START_owner_statement",
+    "create_or_switch_to_the_exact_local_implementation_branch_from_the_clean_accepted_P4_1_checkpoint_plus_this_planning_package",
+    "perform_the_hash_bound_P4_1_historical_readiness_transition",
+    "implement_only_the_allowlisted_generated_only_rule_authoring_compilation_temporal_evaluation_lifecycle_persistence_API_observability_and_evidence_scope",
+    "reuse_only_the_existing_locked_cel_expr_python_0_1_3_dependency_without_install_or_download",
+    "run_generated_only_local_validation_and_at_most_eight_bounded_in_scope_remediation_and_reseal_cycles",
+    "optionally_run_cached_local_PostgreSQL_PostGIS_validation_without_network_when_the_existing_test_service_is_available",
+    "create_local_checkpoint_commits_without_push",
+    "prepare_one_non_effective_exact_P4_2_owner_acceptance_proposal"
+  ],
+  "work_packages": [
+    {
+      "id": "P4.2-W1",
+      "name": "historical_verification_transition",
+      "scope": [
+        "preserve_all_accepted_P4_0_and_P4_1_artifacts_and_digests_byte_exact",
+        "verify_P4_1_implementation_sources_from_local_Git_objects_at_ad44f3e3af292e5a134b45566fc16f09884861a2",
+        "continue_current_tree_verification_of_immutable_P4_1_package_and_acceptance_records",
+        "fail_closed_on_missing_commit_object_path_hash_or_acceptance_binding"
+      ]
+    },
+    {
+      "id": "P4.2-W2",
+      "name": "contracts_and_generated_fixtures",
+      "scope": [
+        "strict_visual_semantic_AST_CEL_schedule_compilation_lifecycle_evaluation_revision_shadow_and_checkpoint_contracts",
+        "generated_positive_negative_metamorphic_temporal_DST_correction_overload_and_abuse_fixtures",
+        "no_real_identifiers_free_form_observations_camera_data_provider_records_or_sensitive_fields"
+      ]
+    },
+    {
+      "id": "P4.2-W3",
+      "name": "canonical_typed_compiler",
+      "scope": [
+        "presentation_semantics_separation",
+        "typed_DAG_cycle_reachability_arity_and_port_validation",
+        "canonical_node_renumbering_commutative_sorting_and_ordered_node_preservation",
+        "version_bound_canonical_UTF_8_bytes_and_SHA_256_digests",
+        "bounded_sanitized_diagnostics"
+      ]
+    },
+    {
+      "id": "P4.2-W4",
+      "name": "constrained_CEL_adapter",
+      "scope": [
+        "separate_hcam_p4_2_constrained_cel_v1_environment",
+        "existing_locked_official_cel_expr_python_0_1_3_only",
+        "scalar_only_variables_Boolean_result_and_no_extensions_or_custom_functions",
+        "structured_checked_AST_allowlist_and_static_cost_bound",
+        "compile_once_hash_bound_deserialization_and_fail_closed_evaluation",
+        "no_change_to_accepted_P3_4_CEL_behavior"
+      ]
+    },
+    {
+      "id": "P4.2-W5",
+      "name": "bounded_temporal_evaluator",
+      "scope": [
+        "sequence_within_until_for_at_least_absence_count_rate_distinct_stream_schedule_cooldown_and_repeat_limit_nodes",
+        "P4_1_event_time_sequence_watermark_lateness_partition_and_chronology_semantics",
+        "append_only_correction_supersession_retraction_and_shadow_evaluation_revisions",
+        "deterministic_replay_visible_pending_suppressed_abstained_and_exhausted_states",
+        "no_silent_eviction_or_wall_clock_substitution"
+      ]
+    },
+    {
+      "id": "P4.2-W6",
+      "name": "persistence_and_concurrency",
+      "scope": [
+        "add_revision_0014_rule_authoring_evaluation_descending_from_0013_correlation_foundation",
+        "evolve_intelligence_rules_for_immutable_versions_without_rewriting_accepted_rows",
+        "add_compilation_scope_schedule_lifecycle_checkpoint_evaluation_revision_and_shadow_comparison_stores",
+        "application_department_filters_and_forced_PostgreSQL_row_security",
+        "optimistic_concurrency_unique_idempotency_leases_transactions_and_outbox",
+        "SQLite_single_worker_development_boundary_and_full_migration_cycle"
+      ]
+    },
+    {
+      "id": "P4.2-W7",
+      "name": "control_plane_API_and_observability",
+      "scope": [
+        "bounded_draft_compile_preview_validate_approve_shadow_eligibility_suspend_retire_and_read_routes",
+        "department_RBAC_If_Match_reason_audit_and_no_store",
+        "default_false_production_forbidden_generated_harness_without_startup_worker_or_public_runtime_start",
+        "low_cardinality_metrics_and_sanitized_failures",
+        "active_operational_alert_provider_notification_routing_dispatch_and_action_paths_rejected"
+      ]
+    },
+    {
+      "id": "P4.2-W8",
+      "name": "validation_evidence_and_acceptance_preparation",
+      "scope": [
+        "focused_property_generated_abuse_migration_PostgreSQL_RLS_concurrency_and_historical_tests",
+        "full_regression_Ruff_compile_build_lock_SBOM_license_vulnerability_and_clean_source_checks",
+        "at_least_90_percent_branch_coverage_for_new_or_materially_changed_P4_2_modules",
+        "exact_evidence_known_limitations_and_non_effective_owner_acceptance_proposal"
+      ]
+    }
+  ],
+  "exact_additive_implementation_paths": [
+    "app/hcam/intelligence/rules/__init__.py",
+    "app/hcam/intelligence/rules/bounds.py",
+    "app/hcam/intelligence/rules/contracts.py",
+    "app/hcam/intelligence/rules/canonical.py",
+    "app/hcam/intelligence/rules/compiler.py",
+    "app/hcam/intelligence/rules/cel_adapter.py",
+    "app/hcam/intelligence/rules/temporal.py",
+    "app/hcam/intelligence/rules/evaluator.py",
+    "app/hcam/intelligence/rules/lifecycle.py",
+    "app/hcam/intelligence/rules/persistence.py",
+    "app/hcam/intelligence/rules/runtime.py",
+    "app/hcam/intelligence/rules/metrics.py",
+    "migrations/versions/0014_rule_authoring_evaluation.py",
+    "contracts/phase-4/p4-2-start-authorization.json",
+    "contracts/phase-4/p4-2/rule-contracts.json",
+    "contracts/phase-4/p4-2/database.json",
+    "contracts/phase-4/p4-2/openapi.json",
+    "contracts/phase-4/p4-2/fixtures/generated-rule-documents-v1.json",
+    "contracts/phase-4/p4-2/fixtures/generated-rule-canonicalization-v1.json",
+    "contracts/phase-4/p4-2/fixtures/generated-cel-cases-v1.json",
+    "contracts/phase-4/p4-2/fixtures/generated-temporal-sequences-v1.json",
+    "contracts/phase-4/p4-2/fixtures/generated-schedule-dst-v1.json",
+    "contracts/phase-4/p4-2/fixtures/generated-corrections-v1.json",
+    "contracts/phase-4/p4-2/fixtures/generated-shadow-comparisons-v1.json",
+    "contracts/phase-4/p4-2/evidence.json",
+    "contracts/phase-4/p4-2/evidence-package.json",
+    "contracts/phase-4/p4-2/acceptance-proposal.json",
+    "docs/phase-4/p4-2-evidence-review.md",
+    "tests/test_phase42_contracts.py",
+    "tests/test_phase42_canonical.py",
+    "tests/test_phase42_compiler.py",
+    "tests/test_phase42_cel.py",
+    "tests/test_phase42_temporal.py",
+    "tests/test_phase42_lifecycle.py",
+    "tests/test_phase42_migration.py",
+    "tests/test_phase42_api.py",
+    "tests/test_phase42_security.py",
+    "tests/test_phase42_postgres.py",
+    "tests/test_phase42_readiness.py",
+    "tools/phase42_generated_rules.py",
+    "tools/phase42_readiness.py"
+  ],
+  "exact_existing_paths_allowed_to_change": [
+    {
+      "path": ".github/workflows/python-ci.yml",
+      "pre_change_sha256": "D6DCF9697B61FCC9249433D6DB6E7D27FAB43148EB7C562EF5098B5FEC5C7FA3"
+    },
+    {
+      "path": "app/hcam/database.py",
+      "pre_change_sha256": "2B5F24E67F7C264DAD68BAA77498D5E7B67A122673896E7964CF061842A064E9"
+    },
+    {
+      "path": "app/hcam/main.py",
+      "pre_change_sha256": "E72930348E56F08F29563A5CD6FC24EA6783B8E6419DEA9712727761FB89EE51"
+    },
+    {
+      "path": "app/hcam/settings.py",
+      "pre_change_sha256": "9D89CD40F21CFE5B3CFDF798A2572638C3444539CE405FD9989488CADE2C86FC"
+    },
+    {
+      "path": "app/hcam/intelligence/canonical.py",
+      "pre_change_sha256": "334F3BD837F50B5FBD1D52A415734F49D7B13D02849C558D89F024B945303A29"
+    },
+    {
+      "path": "app/hcam/intelligence/contracts.py",
+      "pre_change_sha256": "A78848F1EEF3A9BC4E2E8B854193234328DFDE95F6A54E6F0138E2547DDB3D88"
+    },
+    {
+      "path": "app/hcam/intelligence/models.py",
+      "pre_change_sha256": "32ABBB30CE4D04297AA3D3026F86804F32CA40D5E28DD28E0747D65EF2AB579A"
+    },
+    {
+      "path": "app/hcam/intelligence/repository.py",
+      "pre_change_sha256": "29A8CA21F047E1A34FFC8D1B37340A6E88C39580893BFF364341F6BFB63DE043"
+    },
+    {
+      "path": "app/hcam/intelligence/routes.py",
+      "pre_change_sha256": "B2CD591E0F23710CA5E186F99FEA50F82289B2A6C38EFCD3CEC7F647BC4A6A03"
+    },
+    {
+      "path": "app/hcam/intelligence/row_security.py",
+      "pre_change_sha256": "0F3871B530C657781B95A58897366B64A83B9C1533B7351FF47595F9BA2F7418"
+    },
+    {
+      "path": "app/hcam/intelligence/schemas.py",
+      "pre_change_sha256": "9086DED74DC94BE2B95ECE4BCBC40BD421A497D8821BBC9AE3688B0B401618EC"
+    },
+    {
+      "path": "app/hcam/intelligence/service.py",
+      "pre_change_sha256": "E5A91C5B0F3DEF09E0A11BE15E89A5BB019765217B68D7D663BE3D3CEC4FACA9"
+    },
+    {
+      "path": "contracts/phase-4/database.json",
+      "pre_change_sha256": "DB88B2A0F1B72FAA190297454DE1F6859378A354D220DB2301826BD0ACAA355B"
+    },
+    {
+      "path": "contracts/phase-4/intelligence-contracts.json",
+      "pre_change_sha256": "F4CA16D2B536D805B1A5C71C76379EEF9B6F517FAF4547A3ECFDF62229618E1E"
+    },
+    {
+      "path": "contracts/phase-4/openapi.json",
+      "pre_change_sha256": "600F62502C83A97CD2C954DAAA3C47549468F9398F4CAD4E427544D367EFC3A1"
+    },
+    {
+      "path": "tests/conftest.py",
+      "pre_change_sha256": "A2441C55D344962B7D7F729F1D56851BB94FD9E80A8959E8518DD92C793165DA"
+    },
+    {
+      "path": "tests/test_analytics_assignment_migration.py",
+      "pre_change_sha256": "BDE2B951192D7A773590BC7E933CECD739F7E4EE52BAA4A9171876C00FFBE56C"
+    },
+    {
+      "path": "tests/test_phase41_readiness.py",
+      "pre_change_sha256": "5F81C011157FE20A563D19910337C0A5256CFA35F4CBA51CA13A168F387CE3A3"
+    },
+    {
+      "path": "tools/phase41_readiness.py",
+      "pre_change_sha256": "36FEB1D499FE55195650F8BD7D4DD322EF9588B70B33CEB2240D6A3885593E36"
+    },
+    {
+      "path": "docs/phase-4/status.md",
+      "pre_planning_sha256": "A2DF9595AB837CB2E7BD38CA1E36516AB709659CD1DE2A1BAE4EADC11C3C16C7",
+      "planning_transition_policy": "current_status_must_name_P4_2_START_R0_its_computed_package_digest_the_pending_start_gate_and_unchanged_25_of_100_progress"
+    }
+  ],
+  "immutable_dependency_bindings": [
+    {
+      "path": "pyproject.toml",
+      "sha256": "B2740298D7D1E5D147CC48E21750966EB0B765376853F27ACDA990D70F328605"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "69CB301D0F8D97BC0973C620F47FB0D84BFAAE25A1D405E067B15005994F55EF"
+    },
+    {
+      "path": "app/hcam/analytics/spatial/cel_policy.py",
+      "sha256": "F36DF8A817416486CA7D269EEA1EF83D9D8DB93E57027D0EEFD80EB16B51B487"
+    },
+    {
+      "path": "app/hcam/analytics/spatial/contracts.py",
+      "sha256": "8B3A26D35753A07423ABDF470BBF3C7D4EEA2D32E6A46E1BAC0F20E058D0884F"
+    }
+  ],
+  "immutable_scope": [
+    "all_existing_contracts_phase_3_files",
+    "all_existing_docs_phase_3_files",
+    "all_existing_migrations_through_0013_correlation_foundation",
+    "all_accepted_P4_0_packages_evidence_acceptance_and_source_objects",
+    "all_accepted_P4_1_packages_evidence_acceptance_and_source_objects",
+    "docs/phase-4/planning-package.json",
+    "contracts/phase-4/p4-planning-r2-acceptance.json",
+    "docs/phase-4/owner-decisions.md",
+    "docs/phase-4/implementation-plan.md",
+    "docs/phase-4/acceptance-checklist.md"
+  ],
+  "allowed_local_execution_after_authorization": {
+    "repository_owned_generated_JSON_only": true,
+    "existing_locked_dependencies_only": true,
+    "dependency_install_or_download": false,
+    "network_egress": false,
+    "CEL_compile_and_scalar_only_evaluation": true,
+    "typed_temporal_generated_evaluation": true,
+    "local_SQLite_validation": true,
+    "cached_local_PostgreSQL_PostGIS_validation": true,
+    "model_dataset_artifact_or_media_access": false,
+    "operational_rule_activation": false,
+    "alert_provider_notification_dispatch_or_enforcement": false,
+    "source_test_documentation_and_evidence_cycles_maximum": 8,
+    "local_checkpoint_commits": true,
+    "remote_git": false
+  },
+  "frozen_progress": {
+    "phase4_before": {
+      "earned_points": 25,
+      "total_points": 100,
+      "percentage": "25.00%"
+    },
+    "p4_2_before": {
+      "earned_points": 0,
+      "total_points": 15,
+      "percentage": "0.0000%"
+    },
+    "technical_ceiling_before_owner_acceptance": {
+      "phase4_earned_points": 38,
+      "phase4_percentage": "38.00%",
+      "p4_2_earned_points": 13,
+      "p4_2_percentage": "86.6667%"
+    },
+    "after_exact_p4_2_acceptance": {
+      "phase4_earned_points": 40,
+      "phase4_percentage": "40.00%",
+      "p4_2_earned_points": 15,
+      "p4_2_percentage": "100.0000%"
+    },
+    "partial_item_credit": false
+  },
+  "stop_conditions": [
+    "path_or_scope_outside_this_package",
+    "immutable_hash_or_accepted_history_mismatch",
+    "CEL_checked_AST_cannot_be_structurally_allowlisted_and_bounded",
+    "canonicalization_or_replay_nondeterminism",
+    "silent_temporal_state_loss_or_absence_before_watermark_closure",
+    "active_or_operational_rule_path_reachable",
+    "cross_department_visibility",
+    "prohibited_value_in_log_metric_or_exception",
+    "dependency_install_download_network_model_data_media_deployment_or_remote_Git_required",
+    "eight_in_scope_remediation_cycles_exhausted"
+  ],
+  "explicitly_not_authorized": [
+    "P4_2_implementation_before_exact_package_acceptance",
+    "new_or_changed_dependencies_lockfiles_or_artifact_downloads",
+    "unchecked_CEL_dynamic_values_collections_macros_comprehensions_extensions_or_custom_functions",
+    "real_private_personal_biometric_vehicle_owner_case_watchlist_Government_or_police_data",
+    "cameras_ONVIF_Sentinel_streams_frames_images_recording_playback_or_media",
+    "models_datasets_artifacts_inference_training_accelerators_or_benchmarks",
+    "provider_credentials_network_egress_external_lookup_or_integration",
+    "active_or_operational_rule_activation_or_startup_workers",
+    "alerts_notifications_routing_dispatch_enforcement_or_autonomous_action",
+    "production_cloud_containers_Kubernetes_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "required_acceptance_sequence": [
+    "owner_accepts_exact_SHA_256_of_this_package_as_D_P4_2_START",
+    "implementation_records_effective_authorization_without_changing_scope",
+    "bounded_local_generated_only_build_and_validation_complete",
+    "exact_evidence_package_and_known_limitations_are_sealed",
+    "owner_separately_accepts_exact_P4_2_evidence_package"
+  ]
+}

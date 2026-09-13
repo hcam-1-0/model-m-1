@@ -1,0 +1,24 @@
+{
+  "schema_version": "hcam.phase5.p5_4.dependency_baseline.v1",
+  "generated_on": "2026-09-09",
+  "existing_locked_dependencies_only": true,
+  "dependency_refresh_or_network_used": false,
+  "react_flow_present": false,
+  "lockfile": {
+    "sha256": "7F3E3F0A8B29C5083E300641A68F0325D8D2E8BD2ADE940E2B6D03C3CDEBBB62",
+    "unchanged_from_P5_3": true
+  },
+  "root_package_sha256": "463E480DD07547515021115FA619D44D7DCA151063B0E7A510F2C0E46D27D5B1",
+  "workspace_sha256": "79BF353A85BE2AC3CC69E607FD63FC65AC153AEE415C1CB55032A3418D11DE38",
+  "sbom_sha256": "D0F1F1180716383334BDF9C1F6FA9A9F129EED4D7D6F297C893AD5F7D6C29D00",
+  "accepted_dependency_evidence_sha256": "9E1D68EF30C844605FFBAC4FBCD9604505B34DFDD8838BFCD0ACF94404367346",
+  "recorded_advisory_baseline": {
+    "path": "evidence/p5-3-dependency-audit.json",
+    "sha256": "78D09751D593895B022F995E2C82761A872E1D4E628FAC7177C03A29B40EA78B",
+    "unresolved_high": 0,
+    "unresolved_critical": 0,
+    "result": "pass"
+  },
+  "current_vulnerability_refresh_claim": false,
+  "result": "pass"
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "hcam.phase5.p5_7.fixture_manifest.v1",
+  "generated_only": true,
+  "exact_case_count": 2048,
+  "corpus_sha256": "85BE94B0E7D43E6E688DD4CD7CD075E6B45F6866896B6B17F135D7D457564FB8",
+  "category_allocation": {
+    "cross_portal_journeys_and_replay": 512,
+    "contract_API_event_and_concurrency": 320,
+    "accessibility": 256,
+    "localization_time_and_Unicode": 192,
+    "browser_layout_and_resource_profiles": 256,
+    "performance_scale_and_bundles": 192,
+    "resilience": 192,
+    "security_privacy_and_supply_chain": 128
+  },
+  "first_ref": "SYN-P57-CASE-0001",
+  "last_ref": "SYN-P57-CASE-2048"
+}

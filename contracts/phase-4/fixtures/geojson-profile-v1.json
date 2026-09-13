@@ -1,0 +1,9 @@
+{
+  "contract_type": "hcam.intelligence.geojson-profile.v1",
+  "crs": "EPSG:4326",
+  "geometry": {
+    "coordinates": [72.5714, 23.0225],
+    "type": "Point"
+  },
+  "precision_decimal_places": 7
+}

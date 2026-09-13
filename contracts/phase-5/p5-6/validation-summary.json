@@ -1,0 +1,154 @@
+{
+  "schema_version": "hcam.phase5.p5_6.validation_summary.v1",
+  "validation_id": "P5.6-VALIDATION-R0",
+  "status": "pass",
+  "technical_commit": "8c3645f1d91b6d444a63d5534a322ba181a931f1",
+  "generated_contract_cases": 1120,
+  "deterministic_replays": 2,
+  "workloads": [
+    "C1",
+    "C10",
+    "C50"
+  ],
+  "unit_tests": {
+    "passed": 254,
+    "failed": 0,
+    "suites_passed": 193
+  },
+  "python_regression": {
+    "checks_total": 4385,
+    "checks_passed": 4369,
+    "skipped": 16,
+    "failures": 0,
+    "errors": 0,
+    "junit_sha256": "C8B383DF791C6ECB410562CF653075A6124EC590E3BFEE4D34110CD8A0B15342"
+  },
+  "coverage": {
+    "branches": 92.53,
+    "functions": 95.03,
+    "lines": 96.28,
+    "statements": 94.5
+  },
+  "browser": {
+    "admin": {
+      "expected": 30,
+      "unexpected": 0,
+      "flaky": 0,
+      "duration_ms": 51539,
+      "report_sha256": "4E6DE94BC579024D868D394990EF2DBF828BF0EB2EF0A89C7B3084A90EC9116C"
+    },
+    "security": {
+      "expected": 30,
+      "unexpected": 0,
+      "flaky": 0,
+      "duration_ms": 52154,
+      "report_sha256": "746C55B3042D705638B15D1C29F04D166FD7601B7FBA3D2279598C7C5D34780A"
+    },
+    "operations": {
+      "expected": 36,
+      "unexpected": 0,
+      "flaky": 0,
+      "duration_ms": 59046,
+      "report_sha256": "41DD3D84DAEE01CE32936F14A2E574FFAC532E749654AF46F56EDF36FC6743C8"
+    }
+  },
+  "viewports": [
+    "390x844",
+    "768x1024",
+    "1280x720",
+    "1440x900",
+    "1920x1080",
+    "2560x1440"
+  ],
+  "browser_checks": 96,
+  "visual_records": 18,
+  "bundles": {
+    "admin-center": {
+      "limits": {
+        "initialJavaScript": 327680,
+        "styles": 24576
+      },
+      "actual": {
+        "initialJavaScript": 273688,
+        "deferredHlsJavaScript": 0,
+        "styles": 13481
+      }
+    },
+    "operations-center": {
+      "limits": {
+        "initialJavaScript": 368640,
+        "deferredHlsJavaScript": 655360,
+        "styles": 40960
+      },
+      "actual": {
+        "initialJavaScript": 308529,
+        "deferredHlsJavaScript": 575516,
+        "styles": 29316
+      }
+    },
+    "security-center": {
+      "limits": {
+        "initialJavaScript": 327680,
+        "styles": 24576
+      },
+      "actual": {
+        "initialJavaScript": 263443,
+        "deferredHlsJavaScript": 0,
+        "styles": 11343
+      }
+    }
+  },
+  "generated_marker_apps": [
+    "admin-center",
+    "command-center",
+    "evidence-center",
+    "gis-center",
+    "intelligence-center",
+    "investigation-center",
+    "operations-center",
+    "security-center"
+  ],
+  "dependency_boundary": {
+    "schema_version": "hcam.phase5.p5_6.dependency_baseline.v1",
+    "result": "pass",
+    "node": "24.18.0",
+    "package_manager_executed": false,
+    "dependency_resolution": false,
+    "dependencies_added": 0,
+    "lockfile_sha256": "7F3E3F0A8B29C5083E300641A68F0325D8D2E8BD2ADE940E2B6D03C3CDEBBB62",
+    "sbom_sha256": "D0F1F1180716383334BDF9C1F6FA9A9F129EED4D7D6F297C893AD5F7D6C29D00",
+    "vulnerability_baseline_sha256": "9E1D68EF30C844605FFBAC4FBCD9604505B34DFDD8838BFCD0ACF94404367346",
+    "statement": "Existing locked dependencies and supply-chain baseline are preserved; no refresh or scanner execution was performed."
+  },
+  "gates": {
+    "allowlisted_paths_only": true,
+    "accepted_history_unchanged": true,
+    "typed_unknown_field_rejection": true,
+    "server_authoritative_default_deny_and_rls_equivalence": true,
+    "separation_of_duty_and_self_approval_denial": true,
+    "strong_concurrency_and_conflict_reconsideration": true,
+    "administrative_controls_non_effective": true,
+    "break_glass_unavailable": true,
+    "secret_values_unavailable": true,
+    "signal_authority_lanes_separate": true,
+    "source_freshness_and_limitations_explicit": true,
+    "event_invalidation_requires_http_authority": true,
+    "teardown_and_authority_loss_safe": true,
+    "accessibility_and_localization": true,
+    "profile_authority_invariance": true,
+    "operations_p5_3_preserved": true,
+    "no_real_or_issuable_data": true
+  },
+  "explicit_limitations": [
+    "generated-only projections; no real identities, administrative state, telemetry, providers, cameras, media, models, or Government/private data",
+    "no backend routes, migrations, database RLS execution, credentials, secret resolution, scanners, backup/restore, containers, Kubernetes, or deployment",
+    "SLO, recovery, supply-chain, capacity, topology, model-lane, and deployment views are qualified non-effective projections",
+    "dependency vulnerability evidence was preserved and not refreshed",
+    "browser validation is local loopback Microsoft Edge against generated static bundles"
+  ],
+  "progress": {
+    "P5_6_technical": "9/10 (90.0000%)",
+    "percentage_point_change_from_start": "+90.0000",
+    "owner_exit_acceptance_pending": true
+  }
+}

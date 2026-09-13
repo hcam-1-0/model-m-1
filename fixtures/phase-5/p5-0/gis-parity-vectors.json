@@ -1,0 +1,14 @@
+{
+  "fixture_type": "hcam.operator.gis-parity-seeds.v1",
+  "generated_only": true,
+  "source_component": "src/components/GisWorkspace.tsx",
+  "requirement_ids": ["gis.parity.composition", "gis.parity.filter", "gis.parity.layer", "gis.parity.selection", "gis.parity.focus", "gis.parity.responsive", "gis.parity.safety", "gis.parity.localization", "gis.parity.accessibility", "gis.parity.degradation", "gis.parity.performance", "gis.parity.preview_gate"],
+  "geometry_types": ["Point", "LineString", "Polygon", "MultiPolygon"],
+  "resource_profiles": ["low_resource", "control_room"],
+  "expected_materialized_case_count": 96,
+  "authoritative_2d": true,
+  "accessible_list_equivalent": true,
+  "optional_3d_default_enabled": false,
+  "provider_network_enabled": false,
+  "operational": false
+}

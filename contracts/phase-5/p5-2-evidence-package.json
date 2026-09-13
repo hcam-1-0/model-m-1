@@ -1,0 +1,704 @@
+{
+  "schema_version": "hcam.phase5.p5_2.evidence_package.v1",
+  "package_id": "P5.2-EVIDENCE-PACKAGE-R0",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "generated_on": "2026-09-08",
+  "technical_commit": "6b1a649bd6855efbdcfb6b7c79d708981077864b",
+  "start_package_sha256": "24F89F18D52404A4FF1AA4A8A52A9DA8E4D4619B7721107B1A82EEF389805B67",
+  "bound_input_digest": "3E070D61CC90E969E1A5FA91A9564D1FE151E88293904051B9B2763C5E27A74E",
+  "component_digest_algorithm": "Sort paths ordinally; render path|bytes|sha256 with LF separators and no terminal LF; SHA-256 the UTF-8 bytes.",
+  "canonical_component_digest": "FB4DCC36E49DECBF6247158BC5DBDA77868FCB0838545C03E230993262939270",
+  "components": [
+    {
+      "path": "README.md",
+      "bytes": 28708,
+      "sha256": "EDEC5AB0C1DE7824D3DA3B0AB3D5195F25AA87042D8E68ECAB2312672BA26F1C"
+    },
+    {
+      "path": "contracts/phase-5/p5-2-evidence.json",
+      "bytes": 6671,
+      "sha256": "6F09748C317B110760E7B80016C0DC7E2A733B057D30A6D46AAED8F58F1D9E96"
+    },
+    {
+      "path": "contracts/phase-5/p5-2/command-projection.v1.json",
+      "bytes": 793,
+      "sha256": "6A158EE598687F14D3B31D79135D6E94ED4E5D8791F0857A93A100977E16504D"
+    },
+    {
+      "path": "contracts/phase-5/p5-2/generated-resource-profile.v1.json",
+      "bytes": 519,
+      "sha256": "696C2C60898E86C341A04AD69FE5565AEB9BB09416560FCE152F9B0D1D7CB2DE"
+    },
+    {
+      "path": "contracts/phase-5/p5-2/gis-layer-registry.v1.json",
+      "bytes": 593,
+      "sha256": "FC76EB9509A44C3E3F99D13D4A2CF2BBF675FBB0728D92F20080400AB049647D"
+    },
+    {
+      "path": "contracts/phase-5/p5-2/gis-renderer-admission.v1.json",
+      "bytes": 564,
+      "sha256": "85ACFB969848ADE820F811C79744F01A69206AD19033D13816CCCDEAF0EAFC2A"
+    },
+    {
+      "path": "contracts/phase-5/p5-2/route-manifest.v1.json",
+      "bytes": 447,
+      "sha256": "4221B4104595BC1ABCF30A04F55C9E9FB1A5944A320ABDB34F591E157A19CAB8"
+    },
+    {
+      "path": "contracts/phase-5/p5-2/situation-snapshot.v1.json",
+      "bytes": 503,
+      "sha256": "33F917250F0B92D0C999048E715CBA22E62000BB1F5E9B28ACCE3A873AEDAC33"
+    },
+    {
+      "path": "docs/phase-5/README.md",
+      "bytes": 13842,
+      "sha256": "80BEF47CC06D4536ED13298CA2460230BCE1FE558E5A4AF1123D60157C9F9D12"
+    },
+    {
+      "path": "docs/phase-5/current-status-r11.md",
+      "bytes": 2341,
+      "sha256": "221CBE2265252C28D4A8A9CAB7F580DB70A98F537105D65F3043625D0D1F208D"
+    },
+    {
+      "path": "docs/phase-5/implementation-plan.md",
+      "bytes": 18082,
+      "sha256": "EF1B02EFF138B160BE5A669AD8020141D921A4BD05E46EEECBD07F13F8A63660"
+    },
+    {
+      "path": "docs/phase-5/p5-2/implementation.md",
+      "bytes": 3683,
+      "sha256": "4C4BE262F4523AE4DC7C0CB624A1CBCB38D3989BC1B522586D6FA80568406F8F"
+    },
+    {
+      "path": "docs/phase-5/p5-2/validation.md",
+      "bytes": 2644,
+      "sha256": "85E68932914EAA8AF8C48B8E315EC236020724FF8FBB7A82F24BBE4A75063B22"
+    },
+    {
+      "path": "docs/phase-5/status.md",
+      "bytes": 11190,
+      "sha256": "1FAE10A672EA2CA006165AFF7DE285E0E3CF96880EA530648F942C8A7EDC061F"
+    },
+    {
+      "path": "fixtures/phase-5/p5-2/c1.generated.v1.json",
+      "bytes": 180,
+      "sha256": "59C5A1EED29B8EC8B3DE5EFA9D8DF5953DCA8C073DB676C410EB576678D254D4"
+    },
+    {
+      "path": "fixtures/phase-5/p5-2/c10.generated.v1.json",
+      "bytes": 183,
+      "sha256": "CE7A8FD62C17F26D130927130FD7B7BF548DBF337192CF784D31EDC436CB78D1"
+    },
+    {
+      "path": "fixtures/phase-5/p5-2/c50.generated.v1.json",
+      "bytes": 275,
+      "sha256": "E6E8E21D2CB74A8A734FFF53C02AEA5599EFD863FD14211E28577BA035CD9132"
+    },
+    {
+      "path": "fixtures/phase-5/p5-2/command-scenarios.generated.v1.json",
+      "bytes": 378,
+      "sha256": "4F446B70D3BCA570DD96400A558F6C70CEEFC9EF8CA8D1A29A74FD8A32B59D01"
+    },
+    {
+      "path": "fixtures/phase-5/p5-2/gis-features.generated.v1.json",
+      "bytes": 527,
+      "sha256": "AF7190354C973DE65732419F60045074229D49E8BB51DF0BF5C0DD67978DB11A"
+    },
+    {
+      "path": "fixtures/phase-5/p5-2/gis-style.generated.v1.json",
+      "bytes": 321,
+      "sha256": "21A6F67E555AB7AE5F32AF043FDBC56CFB9E7B305F569C5F5339262F5239CB57"
+    },
+    {
+      "path": "fixtures/phase-5/p5-2/replay-manifest.generated.v1.json",
+      "bytes": 261,
+      "sha256": "BB501289DBAB44BD9652D5CB2B920FFB6DB048C441AF6E39C900D40B4C8122D8"
+    },
+    {
+      "path": "fixtures/phase-5/p5-2/security-cases.generated.v1.json",
+      "bytes": 380,
+      "sha256": "1E11BF5C4317557AB5D003D910474EAE304586E4FDE8A1B3DE3293BCC157B38C"
+    },
+    {
+      "path": "frontend/apps/command-center/package.json",
+      "bytes": 931,
+      "sha256": "70A0BA6FAA86D9B2335464D00E629F7C45E365DDAE6ABFD0013D0645592DE19B"
+    },
+    {
+      "path": "frontend/apps/command-center/src/app.tsx",
+      "bytes": 5394,
+      "sha256": "4AB89FF923F5266069C159F413F001D9C56DBC2785E9F6E202CAC02B31CD34D2"
+    },
+    {
+      "path": "frontend/apps/command-center/src/components/activity-timeline.tsx",
+      "bytes": 773,
+      "sha256": "86EF194140280646C56D4D9711D2DE1B488C58A418EA8E1E38BB9C393EB6BFA3"
+    },
+    {
+      "path": "frontend/apps/command-center/src/components/command-gis-panel.tsx",
+      "bytes": 2028,
+      "sha256": "18D45F4724C3E304624FD5D4EDF723C27AF8EB3C03971467C9B5C04E8ADFDA6E"
+    },
+    {
+      "path": "frontend/apps/command-center/src/components/coverage-health-band.tsx",
+      "bytes": 1136,
+      "sha256": "80CAD955ABB6D43BC905BDBC882FB4A7A22C9277118FF91BFCAA56E8D5B3CF83"
+    },
+    {
+      "path": "frontend/apps/command-center/src/components/source-status-strip.tsx",
+      "bytes": 626,
+      "sha256": "623E22CC776C551BD113D7405B3AC8B5D0C7D9870BAE7378682C0061D636CA86"
+    },
+    {
+      "path": "frontend/apps/command-center/src/components/state-boundary.tsx",
+      "bytes": 555,
+      "sha256": "9CD20FC912BB804A62227D4C78579DCD387A1BFAB0D4AE7544F8B83AA1C3C090"
+    },
+    {
+      "path": "frontend/apps/command-center/src/components/summary-band.tsx",
+      "bytes": 539,
+      "sha256": "673D02C227E4BCA087F1AB0F345F529C8551E7412AB7E5E3B1A2EA5A06A867C9"
+    },
+    {
+      "path": "frontend/apps/command-center/src/components/workload-rail.tsx",
+      "bytes": 832,
+      "sha256": "EDC480D6ECF46B18FD50E19A3583183899FA063D5C54DB9ED4A788602645CB26"
+    },
+    {
+      "path": "frontend/apps/command-center/src/data/command-projections.ts",
+      "bytes": 578,
+      "sha256": "ABEC31EAC948BA2D4E4378C48307FE2F2C1BD89B88BAA987B6F9E75D0D876808"
+    },
+    {
+      "path": "frontend/apps/command-center/src/main.tsx",
+      "bytes": 496,
+      "sha256": "803FEC9E76F383B729144EF8BE1DD6092E5FF768F17586D6D9C021005F96C437"
+    },
+    {
+      "path": "frontend/apps/command-center/src/pages/alerts-review-page.tsx",
+      "bytes": 286,
+      "sha256": "0E888570EA44538A0C6E0EABA98DF8544AE95AC6DE931173C7F7FA2B96A66AD5"
+    },
+    {
+      "path": "frontend/apps/command-center/src/pages/briefing-page.tsx",
+      "bytes": 277,
+      "sha256": "E10F5F8A9DFB3DEDC9F2D5A22FDA8CFC9FF8747041D98970E6BE1A8E5B338BA9"
+    },
+    {
+      "path": "frontend/apps/command-center/src/pages/camera-network-page.tsx",
+      "bytes": 299,
+      "sha256": "A62870E1C60462FE63565C53F3142FA01A9D3654E7F96BD24039D3259B7F949F"
+    },
+    {
+      "path": "frontend/apps/command-center/src/pages/coverage-page.tsx",
+      "bytes": 290,
+      "sha256": "24B03CE992EF7F153264376BB57BAD99ED4D9A05920253FD9B2CCABAEE12062D"
+    },
+    {
+      "path": "frontend/apps/command-center/src/pages/investigation-workload-page.tsx",
+      "bytes": 292,
+      "sha256": "484F425E330D50CB158B2821931D4524C42FF0061AB56F912D0AD2F86E16F8C3"
+    },
+    {
+      "path": "frontend/apps/command-center/src/pages/live-situation-page.tsx",
+      "bytes": 301,
+      "sha256": "E80261B9BDC2F0ADC627FE44A3825851AE55AB32280034746F708594CBFBCBDD"
+    },
+    {
+      "path": "frontend/apps/command-center/src/pages/operational-workload-page.tsx",
+      "bytes": 967,
+      "sha256": "25338E12DBCC96C1A248C4BEEF81E47CD4ADC2E29BCD90AF025D96593EF1B879"
+    },
+    {
+      "path": "frontend/apps/command-center/src/pages/overview-page.tsx",
+      "bytes": 1597,
+      "sha256": "A7DC0058E556C8FD3845A9A6E08F1C64DF7E7575461FDDBE8997737EB8A3D260"
+    },
+    {
+      "path": "frontend/apps/command-center/src/pages/platform-health-page.tsx",
+      "bytes": 292,
+      "sha256": "7CE67DB309E478051E98B8FB72AE422A8D36DB1BE8D842BD25C3055262B5AE37"
+    },
+    {
+      "path": "frontend/apps/command-center/src/pages/workspaces-page.tsx",
+      "bytes": 280,
+      "sha256": "EEDA993C666D9542242C237C183EFBE8DEE3FDE876AB02E6AE5428B333C56185"
+    },
+    {
+      "path": "frontend/apps/command-center/src/routes.tsx",
+      "bytes": 2020,
+      "sha256": "C85F66361ED1D5709B9CB6707E15DF67F81DF41FFFECAC04DD1AE48C848F7DFB"
+    },
+    {
+      "path": "frontend/apps/command-center/src/styles.css",
+      "bytes": 13471,
+      "sha256": "597EA120F18954406C89ED9E6D6ED5665733AD82027C7FF0533DC259792A6932"
+    },
+    {
+      "path": "frontend/apps/gis-center/index.html",
+      "bytes": 699,
+      "sha256": "0C22194AE2257E0F95A9BEC765C08F7F4363A7EDD6522333C1B2897505BEFE25"
+    },
+    {
+      "path": "frontend/apps/gis-center/package.json",
+      "bytes": 836,
+      "sha256": "FA2672B7BDADE360393603896DB8898FB9A26E36709CCAF968CB7D57EA0A7AD6"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/app.tsx",
+      "bytes": 2398,
+      "sha256": "11A6D6CA47F499752AA708D4743FAD24090C2EB7712F7A18858F96E18580CA79"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/components/accessible-feature-table.tsx",
+      "bytes": 1585,
+      "sha256": "A1E220E73B20BD7EF734EBF8BCD9CD56A46244BC195A4822FE4BB01C07DFF76A"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/components/feature-inspector.tsx",
+      "bytes": 1695,
+      "sha256": "E9D2D59CBB63BBB02CE151F8E8AE00939ED7F81C92CBB75D33B9CCD0C818FB48"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/components/gis-map-shell.tsx",
+      "bytes": 6978,
+      "sha256": "D9DD6FABDE38E983187D6EFBD002B227C4BF1370620F02AC03D04661E7BB2223"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/components/layer-explorer.tsx",
+      "bytes": 1013,
+      "sha256": "F6C559CE1F7405D55938E9471960DFC3EB694625532226811B721E8599BC5E86"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/components/renderer-health.tsx",
+      "bytes": 667,
+      "sha256": "DB709D7D1737038941EF138B1B2B0C9E1F04D7767C988327FB2B193974EE3589"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/components/source-status.tsx",
+      "bytes": 600,
+      "sha256": "1E8D468A0B1703BB13CAF78B9040D0DB728BF3C4388046BC44E63DD6E63CDF9A"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/components/spatial-filter-bar.tsx",
+      "bytes": 1572,
+      "sha256": "3E712D2897014B2BCD7A3FDBE2C6BEF3636D4B6D60679EB02AC3C8D070BFBCFC"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/components/temporal-controls.tsx",
+      "bytes": 771,
+      "sha256": "E6075290467FFF3CD79740E08482BC1A74183D7C1B6C9694E800CDE43E3E393A"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/components/workspace-strip.tsx",
+      "bytes": 597,
+      "sha256": "14F4C67DEB5E14EF3A58CC76D5227C7EC65D5B6EB65CF78BB8400AF184A007D5"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/main.tsx",
+      "bytes": 495,
+      "sha256": "99194A895F00633262648908EA090675FA3E7C6BF63908B77AD2590E2C041DB1"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/pages/alerts-investigations-page.tsx",
+      "bytes": 294,
+      "sha256": "3203F0DE1F97CF5DBE8BDDAC01CED77393275409FDA45BE37D397909D582F74A"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/pages/camera-geography-page.tsx",
+      "bytes": 285,
+      "sha256": "A279345411373C221CDE0E7645A8ABCE55574B10C03452696DA3333F0CB96E29"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/pages/coverage-page.tsx",
+      "bytes": 280,
+      "sha256": "DD746E85E6A661546246F77B14E7D99C5C252F5BCA35A4C481BB885B66E5A274"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/pages/data-renderer-health-page.tsx",
+      "bytes": 303,
+      "sha256": "CC4C61DDB889E9A353B2C49720DC1E4E9859A2FB375A761BE4EDA8201BEFA473"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/pages/layer-catalogue-page.tsx",
+      "bytes": 295,
+      "sha256": "984AA39CE43AA6F0BB88964A5D6A7B910940AEC32CF49CDE7862D6F626F01484"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/pages/movement-time-page.tsx",
+      "bytes": 281,
+      "sha256": "CDEF0A7959D3C9337564AD281D45C308CE406D4303557818938CCC35E5813501"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/pages/operational-map-page.tsx",
+      "bytes": 290,
+      "sha256": "FB422393E2A1FF324BD45DA018F0E829D2C4B61487DC391BBABAB96CFA16C2DF"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/pages/overview-page.tsx",
+      "bytes": 304,
+      "sha256": "07A535B5CBA4A0DA1141FF4A0BEDB2DF3C2DFD6565AD418574764B957FA07AE5"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/pages/spatial-workspaces-page.tsx",
+      "bytes": 292,
+      "sha256": "76594F4F7888E60D91E5E1C20C5EB9952EF7B18210CB4DDE3BA28466885E9787"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/routes.tsx",
+      "bytes": 1819,
+      "sha256": "8BFC1A55AAA38EDF8FFF786B329CA5F8600023DAF6EF371D1CEB38D8FFAFC7D1"
+    },
+    {
+      "path": "frontend/apps/gis-center/src/styles.css",
+      "bytes": 14293,
+      "sha256": "1A4D1F28732A44410E7528400DB41F6F71720DF474A2A573FEE0DD29217652B5"
+    },
+    {
+      "path": "frontend/apps/gis-center/tsconfig.json",
+      "bytes": 80,
+      "sha256": "FB0AFEA4888ABB1B80E5D883B4B07F66F1C42EEE7D6BF668C2649D2B50A20CFF"
+    },
+    {
+      "path": "frontend/apps/gis-center/vite.config.ts",
+      "bytes": 323,
+      "sha256": "501B52144BEF1D2AD4968A4CC1008B6ACA2B52154766E5369851C0CE217799EA"
+    },
+    {
+      "path": "frontend/dependency-evidence.json",
+      "bytes": 2500,
+      "sha256": "39BF1806AA36E127D8D389BCCCB92FF567501807231F567F950AC83D7E107D79"
+    },
+    {
+      "path": "frontend/dependency-lock-candidate.json",
+      "bytes": 22506,
+      "sha256": "B1C9123CDB7E6A22D8F90E4FA97A7F1A5233F46BBE161EE36C1D80BA57D860FA"
+    },
+    {
+      "path": "frontend/evidence/p5-2-dependency-audit.json",
+      "bytes": 639,
+      "sha256": "D7705E133F4A737BB25B5B5CF5AEC2416317FD2BE36382232B90BA0574C4A2F4"
+    },
+    {
+      "path": "frontend/evidence/p5-2-source-manifest.json",
+      "bytes": 34915,
+      "sha256": "363361F5C8DAF639916DA0346EE5B0D34CF6B2BB28D329AE86F22DB3D4D70535"
+    },
+    {
+      "path": "frontend/evidence/p5-2-validation-summary.json",
+      "bytes": 4955,
+      "sha256": "40C8B0D3518275C78442F6AEE47E98578AC7BC6327023DDDCAE232FF6737092D"
+    },
+    {
+      "path": "frontend/evidence/p5-2-visual-manifest.json",
+      "bytes": 1657,
+      "sha256": "C9F86F7DF277CF194B32D72AC7017C125865AC2D19F103FBE9EF9047BEA51C4B"
+    },
+    {
+      "path": "frontend/package.json",
+      "bytes": 3445,
+      "sha256": "3E6B259D56A17F55CC547CFAB3CB9873719B5B24B645A1A6D58EC8305BE25E56"
+    },
+    {
+      "path": "frontend/packages/capabilities/src/index.ts",
+      "bytes": 4388,
+      "sha256": "7B16723C58B5D903B4793A51664C5EEEF02EE233A81ECCBBCF7581A48B03D596"
+    },
+    {
+      "path": "frontend/packages/command-domain/package.json",
+      "bytes": 266,
+      "sha256": "E88A29ACB15757C21813654A4DC38880047F4E1416FAF92B7E3B03564E9002DA"
+    },
+    {
+      "path": "frontend/packages/command-domain/src/index.ts",
+      "bytes": 56,
+      "sha256": "EEA6E0AB362E6BD575DA6EA8968BD6C67961F2946683244D58D620815A0AC10C"
+    },
+    {
+      "path": "frontend/packages/command-domain/src/projections.ts",
+      "bytes": 2724,
+      "sha256": "AB9E1FC81D54DD7C555899E9A191F7BB3F4C314A43982FF3398CCD69B9300576"
+    },
+    {
+      "path": "frontend/packages/command-domain/src/state.ts",
+      "bytes": 852,
+      "sha256": "A73E6C2BCFE67CEE1E75FCF0C8189CCFC94D43723A3A02074E8DD5CDCA866EB9"
+    },
+    {
+      "path": "frontend/packages/command-domain/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/contracts/src/index.ts",
+      "bytes": 7340,
+      "sha256": "4EA30D80192F0C3B7A0412224029056299B95D04E50329EBF652E81C95979801"
+    },
+    {
+      "path": "frontend/packages/gis-contracts/package.json",
+      "bytes": 288,
+      "sha256": "00300AA5A02EA482BB73D8A91D9ED6B09F1EC85D861AE33585CB1455EA42E37A"
+    },
+    {
+      "path": "frontend/packages/gis-contracts/src/index.ts",
+      "bytes": 3827,
+      "sha256": "8DD3F59DF13B9A003DF75DA746E6178BED85CBA08FBCC1DF433367F6712D6818"
+    },
+    {
+      "path": "frontend/packages/gis-domain/package.json",
+      "bytes": 345,
+      "sha256": "F326043BE57E592C3DE3F0A20FE8A095BE14E205A8EF660B76A325BABD7D5CA0"
+    },
+    {
+      "path": "frontend/packages/gis-domain/src/admission.ts",
+      "bytes": 1762,
+      "sha256": "E049EB678D6E54B1A21D91F117AD6FCD92216C854D01E3CFD1E966BAF42BDC7C"
+    },
+    {
+      "path": "frontend/packages/gis-domain/src/index.ts",
+      "bytes": 133,
+      "sha256": "4735883A7170E63DF7E00C4BFA0FC0900E394F23D02D50451997F4F9B2301E17"
+    },
+    {
+      "path": "frontend/packages/gis-domain/src/layers.ts",
+      "bytes": 952,
+      "sha256": "03B739F4498DE7A24200451960CC2F3892708F3D157BED86D71F00E7FF2D5849"
+    },
+    {
+      "path": "frontend/packages/gis-domain/src/selection.ts",
+      "bytes": 597,
+      "sha256": "FDD9B073D797E240EBE67E314786E1381739D9C1F0A5667AF603AEB39AC9C87B"
+    },
+    {
+      "path": "frontend/packages/gis-domain/src/state.ts",
+      "bytes": 625,
+      "sha256": "D3A9DB921F93304AE50C6048F65A2698980F5C32993BB6AF1C8FEF0A10D5F7F6"
+    },
+    {
+      "path": "frontend/packages/gis-domain/src/time.ts",
+      "bytes": 802,
+      "sha256": "12611A4342DA05723510D5381D209C5E57F983163BBBDEC0311E5CA94E1F40BC"
+    },
+    {
+      "path": "frontend/packages/gis-domain/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/gis-renderers/package.json",
+      "bytes": 441,
+      "sha256": "4491CA13514032486835444D71498EEE8D92F6907FF6E42C1D49ED56B570C4BC"
+    },
+    {
+      "path": "frontend/packages/gis-renderers/src/deck-adapter.ts",
+      "bytes": 1158,
+      "sha256": "4E0F3C843B67D4B754B7A41A46F0A5B198F7FD20E29A9C07D0138986AFF00D54"
+    },
+    {
+      "path": "frontend/packages/gis-renderers/src/index.ts",
+      "bytes": 169,
+      "sha256": "B6BFE836EEC98964D2E1BA91EE7D72BB7272EE256BEA3967F505A763CF3FFCBA"
+    },
+    {
+      "path": "frontend/packages/gis-renderers/src/maplibre-adapter.ts",
+      "bytes": 2565,
+      "sha256": "457EA208FA7A58ED0F18604C85A996C3AA7704C12BF4EA1F63409DD2B13143AA"
+    },
+    {
+      "path": "frontend/packages/gis-renderers/src/no-map-adapter.ts",
+      "bytes": 710,
+      "sha256": "53DC7065B9DBBEDCA32164EFD80AFB14A943AA5B68E720D448FCBA567C4EC5EC"
+    },
+    {
+      "path": "frontend/packages/gis-renderers/src/provider-policy.ts",
+      "bytes": 684,
+      "sha256": "2BCB94DF234A438C97E9782EA03177A0C83DE0D83DC1654C8C84EBB2DA5A2953"
+    },
+    {
+      "path": "frontend/packages/gis-renderers/src/style-policy.ts",
+      "bytes": 2587,
+      "sha256": "CB88C64963D25FC32A0B34AB80C086FB9A81BEF214E95FE3B4201945FF7E68FC"
+    },
+    {
+      "path": "frontend/packages/gis-renderers/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/i18n/src/index.ts",
+      "bytes": 11383,
+      "sha256": "5498A6F1EEA222B30EFD2DE849E76AE0A64955742FE6E7E6E4E8151FEBDDF889"
+    },
+    {
+      "path": "frontend/packages/observability/src/index.ts",
+      "bytes": 1190,
+      "sha256": "46F176E64EC46FE9BF03A7152BD1EB41EF9A798A144796D25876647E6FF926FE"
+    },
+    {
+      "path": "frontend/packages/query-policy/src/index.ts",
+      "bytes": 3211,
+      "sha256": "B51F497C51709306F5FAB022DF7BF3F2486EEBF0C0568C52981146FBD56F7EAF"
+    },
+    {
+      "path": "frontend/packages/test-fixtures/src/index.ts",
+      "bytes": 1449,
+      "sha256": "DBE49F15EF1C0992EF7E6C3CAA464B0A9F9367144E9E483F8ECCD253ED66B854"
+    },
+    {
+      "path": "frontend/packages/test-fixtures/src/p5-2-fixtures.ts",
+      "bytes": 5143,
+      "sha256": "20D723714DB1CB8CE28E9BE2DC044FD43D06B07DB947F5D0BA4BA46981F14304"
+    },
+    {
+      "path": "frontend/packages/ui/src/command-gis.stories.tsx",
+      "bytes": 1391,
+      "sha256": "E173ECF2A4584360502CEEC9FFAF07C08558E62180131A441B0862B0919B9201"
+    },
+    {
+      "path": "frontend/packages/ui/src/index.tsx",
+      "bytes": 4837,
+      "sha256": "1AF0C58738BDFC4465E33A54F095EAA155D2BE01D49EF5640F4464EC91A1518A"
+    },
+    {
+      "path": "frontend/playwright.config.ts",
+      "bytes": 1183,
+      "sha256": "016796D66BE28D58E37AE773A6D334B2A03C9BAB2D69F4F82A04312B3620BA3C"
+    },
+    {
+      "path": "frontend/pnpm-lock.yaml",
+      "bytes": 197988,
+      "sha256": "10F9ECFDFED129C4E177F67DB1D4C31D36BC396F8C3161669D6855E6D0C1504E"
+    },
+    {
+      "path": "frontend/pnpm-workspace.yaml",
+      "bytes": 962,
+      "sha256": "9F4C5703B3E58F7312909A4C889845899C993C0A3EB9F82C8B6A03BC43715E3D"
+    },
+    {
+      "path": "frontend/sbom.cdx.json",
+      "bytes": 108259,
+      "sha256": "F37CEAC98FE346B4FF63BCCFD0270A364F9D2EDDE2E0A90543B712779E41C40D"
+    },
+    {
+      "path": "frontend/scripts/capture-dependency-audit.mjs",
+      "bytes": 2585,
+      "sha256": "F73839E4579047B2C1C3C739E9439A32BFAC6BB3E9BE195AAEC8F8A975F7EA94"
+    },
+    {
+      "path": "frontend/scripts/finalize-dependency-evidence.mjs",
+      "bytes": 4009,
+      "sha256": "BB097574AB4D41A0C65F7035D828C83DA2DD6D87CC209125E722C3A2D7E462B7"
+    },
+    {
+      "path": "frontend/scripts/generate-evidence.mjs",
+      "bytes": 4484,
+      "sha256": "DB859874A6686DA8CB048B204055676D5CC422A12295D1DBBE8FDEBD9EAD5EB8"
+    },
+    {
+      "path": "frontend/scripts/generate-validation-evidence.mjs",
+      "bytes": 4512,
+      "sha256": "856376BF48FA93F3152FC0C50D69AEF7EE444DF4BB81E7D0B43B0C9D728BB12D"
+    },
+    {
+      "path": "frontend/scripts/resolve-dependencies.mjs",
+      "bytes": 7990,
+      "sha256": "EFC12898C56A8BDC075A70EA071B8CB1B18A8B276D58361CBE69CE9CD5F9691F"
+    },
+    {
+      "path": "frontend/scripts/verify-bundles.mjs",
+      "bytes": 1963,
+      "sha256": "0CCC9270D943585D3F669B15F3792A57BDD5FAC8CBD19C7AB985A3581EAB19B5"
+    },
+    {
+      "path": "frontend/scripts/verify-workspace.mjs",
+      "bytes": 3832,
+      "sha256": "6EB7EF760DD8FBADD2CA8B72031E616F1A7AB40552F5E19879C98B0D203CD3A2"
+    },
+    {
+      "path": "frontend/tests/browser/command-gis-accessibility.spec.ts",
+      "bytes": 974,
+      "sha256": "50298436696C749A84657190C1C30E2D8975D1E0EE51469F78114847638EF636"
+    },
+    {
+      "path": "frontend/tests/browser/command-gis-multiwindow.spec.ts",
+      "bytes": 783,
+      "sha256": "408A770F0B0F91BAD3FEF88A583689C8EF39E18E63274C79BFF063BC1373424E"
+    },
+    {
+      "path": "frontend/tests/browser/command-gis.spec.ts",
+      "bytes": 1409,
+      "sha256": "7818BBC5F077EA6B2B54C86484275B4517D235FF7143EC02C6B05A5FFFC4F029"
+    },
+    {
+      "path": "frontend/tests/command-center.test.tsx",
+      "bytes": 1838,
+      "sha256": "F78605A23B55C15FECB4EC7EA81E7D2A87E36706866CCAF994424A8DA8689918"
+    },
+    {
+      "path": "frontend/tests/gis-center.test.tsx",
+      "bytes": 2995,
+      "sha256": "4490D87375FAE146A58F27C6E24053A1B14408C594E3FE398D12FA37B39FAB23"
+    },
+    {
+      "path": "frontend/tests/gis-domain.test.ts",
+      "bytes": 4413,
+      "sha256": "563B345A4E4610D3C49C8E626AB4192BF3886A81894E64428DB73A9365DDFE43"
+    },
+    {
+      "path": "frontend/tests/gis-renderer-admission.test.ts",
+      "bytes": 2171,
+      "sha256": "2A28DE561AF2EEAE48ABD9F30E8313FE7E3C0E8ADFD2FAD6F12D0DA370B8035E"
+    },
+    {
+      "path": "frontend/tests/p5-2-accessibility.test.tsx",
+      "bytes": 1005,
+      "sha256": "DF38AFD47E56AAF4714B8CE664094AEB34948DF0F754F95C2146CC9F83717CA6"
+    },
+    {
+      "path": "frontend/tests/p5-2-localization.test.ts",
+      "bytes": 757,
+      "sha256": "09E9AC13529765E4E77921BC6A5BC843605F062E0D2C2FD022B5EEA324EADC32"
+    },
+    {
+      "path": "frontend/tests/p5-2-replay.test.ts",
+      "bytes": 3676,
+      "sha256": "2DB1C7992C1D25E23EADACB64CA8BEB27A28CAD50A92FE3B4DB84F9DE78029F9"
+    },
+    {
+      "path": "frontend/tests/p5-2-security.test.ts",
+      "bytes": 8368,
+      "sha256": "72059CFE223E3AA15944A5FF9215D1E11A607CDB819BBCCE8E6EDA836FC5FA71"
+    },
+    {
+      "path": "tests/phase5_frontend/test_phase51_verifier.py",
+      "bytes": 3188,
+      "sha256": "FC9E37CE335BCE779847E867A80D4E9DA02552CD6776301E1E11D52A9F78E8FD"
+    },
+    {
+      "path": "tests/phase5_frontend/test_phase52_verifier.py",
+      "bytes": 1597,
+      "sha256": "78581AD7DA791462504CF68198E399FDF0A58FF6478B66FD3BB9E4A411D5E2A2"
+    },
+    {
+      "path": "tools/phase52/__init__.py",
+      "bytes": 63,
+      "sha256": "3D976505E377CED2D4411F7450FC4967492A75382789D74A8BF32EB7AFEAA3C5"
+    },
+    {
+      "path": "tools/phase52/generate_evidence.py",
+      "bytes": 15578,
+      "sha256": "6B15FAC01F148F873AB4D5CA8498703DBEC375A7F75510F8EFBB07ED6690FCB8"
+    },
+    {
+      "path": "tools/phase52/verify_p52.py",
+      "bytes": 17261,
+      "sha256": "F896A3A2A2E42B116664A066C82A74893E706DAA10A47C89CF9265F131DEEB38"
+    }
+  ],
+  "component_count": 137,
+  "generated_only": true,
+  "P5_2_complete": false,
+  "P5_3_authorized": false,
+  "remote_Git_authorized": false
+}

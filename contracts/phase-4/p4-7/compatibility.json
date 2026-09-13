@@ -1,0 +1,60 @@
+{
+  "contract_type": "hcam.handoff.compatibility.v1",
+  "entries": [
+    {
+      "change_class": "compatible_behavior",
+      "contract": "hcam.handoff.http-operation.v1",
+      "entry_id": "phase5.compatibility.1",
+      "evidence_ref": "p47_e88945d62b6cfddc9718e378be7823a2",
+      "from_version": "1.0.0",
+      "migration_required": false,
+      "security_review_required": false,
+      "supported_consumers": [
+        "phase5.consumer.v1"
+      ],
+      "to_version": "1.0.0"
+    },
+    {
+      "change_class": "optional_additive",
+      "contract": "hcam.handoff.event-workflow.v1",
+      "entry_id": "phase5.compatibility.2",
+      "evidence_ref": "p47_e88945d62b6cfddc9718e378be7823a2",
+      "from_version": "1.0.0",
+      "migration_required": false,
+      "security_review_required": false,
+      "supported_consumers": [
+        "phase5.consumer.v1"
+      ],
+      "to_version": "1.0.0"
+    },
+    {
+      "change_class": "new_capability",
+      "contract": "hcam.handoff.ui-accessibility.v1",
+      "entry_id": "phase5.compatibility.3",
+      "evidence_ref": "p47_e88945d62b6cfddc9718e378be7823a2",
+      "from_version": "1.0.0",
+      "migration_required": false,
+      "security_review_required": false,
+      "supported_consumers": [
+        "phase5.consumer.v1"
+      ],
+      "to_version": "1.0.0"
+    },
+    {
+      "change_class": "documentation",
+      "contract": "hcam.handoff.compatibility.v1",
+      "entry_id": "phase5.compatibility.4",
+      "evidence_ref": "p47_e88945d62b6cfddc9718e378be7823a2",
+      "from_version": "1.0.0",
+      "migration_required": false,
+      "security_review_required": false,
+      "supported_consumers": [
+        "phase5.consumer.v1"
+      ],
+      "to_version": "1.0.0"
+    }
+  ],
+  "generated_only": true,
+  "latest_only_policy": false,
+  "permanent_compatibility_claim": false
+}

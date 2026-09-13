@@ -1,0 +1,3753 @@
+{
+  "bounds": {
+    "claims": 512,
+    "compatibility_entries": 2048,
+    "evidence_components": 4096,
+    "evidence_edges": 16384,
+    "handoff_operations": 1024,
+    "limitations": 512,
+    "scenarios": 64,
+    "steps_per_scenario": 256,
+    "ui_states": 4096
+  },
+  "canonical_encoding": "UTF-8 ASCII JSON with sorted keys and compact separators",
+  "digest": "SHA-256",
+  "generated_only": true,
+  "models": {
+    "AccessibilityRequirementV1": {
+      "additionalProperties": false,
+      "properties": {
+        "applies_to": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Applies To",
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "keyboard",
+            "focus",
+            "name_role_value",
+            "status",
+            "error",
+            "non_color",
+            "target",
+            "contrast",
+            "motion"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "conformance_claim": {
+          "const": false,
+          "default": false,
+          "title": "Conformance Claim",
+          "type": "boolean"
+        },
+        "evidence_kind": {
+          "enum": [
+            "static",
+            "generated",
+            "future_manual"
+          ],
+          "title": "Evidence Kind",
+          "type": "string"
+        },
+        "requirement": {
+          "maxLength": 512,
+          "minLength": 8,
+          "title": "Requirement",
+          "type": "string"
+        },
+        "requirement_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Requirement Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "requirement_id",
+        "applies_to",
+        "category",
+        "requirement",
+        "evidence_kind"
+      ],
+      "title": "AccessibilityRequirementV1",
+      "type": "object"
+    },
+    "AdapterResponseV1": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "observe_event",
+            "correlate",
+            "evaluate_rule",
+            "propose_alert",
+            "query_reference",
+            "review_alert",
+            "transition_alert",
+            "open_investigation",
+            "append_evidence_reference",
+            "duplicate_event",
+            "record_late_conflict",
+            "deny_cross_scope",
+            "record_correction",
+            "record_retraction",
+            "degrade_worker",
+            "recover_worker",
+            "emit_signal"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "mutation_count": {
+          "maximum": 256,
+          "minimum": 0,
+          "title": "Mutation Count",
+          "type": "integer"
+        },
+        "outcome": {
+          "enum": [
+            "accepted",
+            "abstained",
+            "duplicate",
+            "denied",
+            "degraded",
+            "recovered"
+          ],
+          "title": "Outcome",
+          "type": "string"
+        },
+        "output": {
+          "additionalProperties": true,
+          "maxProperties": 64,
+          "title": "Output",
+          "type": "object"
+        },
+        "reason_code": {
+          "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "state": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "outcome",
+        "reason_code",
+        "state",
+        "output",
+        "mutation_count"
+      ],
+      "title": "AdapterResponseV1",
+      "type": "object"
+    },
+    "AssertionResultV1": {
+      "additionalProperties": false,
+      "properties": {
+        "assertion_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Assertion Id",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "items": {
+            "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+            "type": "string"
+          },
+          "maxItems": 128,
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "family": {
+          "enum": [
+            "schema",
+            "authorization",
+            "chronology",
+            "identity",
+            "rule",
+            "review",
+            "integrity",
+            "redaction",
+            "recovery",
+            "side_effect",
+            "replay",
+            "handoff",
+            "accessibility"
+          ],
+          "title": "Family",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "reason_code": {
+          "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "scenario_id": {
+          "pattern": "^S0[0-8]$",
+          "title": "Scenario Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "unknown",
+            "skipped",
+            "incomplete"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "assertion_id",
+        "scenario_id",
+        "family",
+        "status",
+        "reason_code",
+        "evidence_refs"
+      ],
+      "title": "AssertionResultV1",
+      "type": "object"
+    },
+    "ClaimRecordV1": {
+      "additionalProperties": false,
+      "properties": {
+        "claim_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "evidence_class": {
+          "enum": [
+            "generated_contract",
+            "generated_scenario",
+            "static_validation",
+            "not_observed"
+          ],
+          "title": "Evidence Class",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "limitation_ids": {
+          "items": {
+            "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "title": "Limitation Ids",
+          "type": "array"
+        },
+        "prohibited_interpretations": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 32,
+          "title": "Prohibited Interpretations",
+          "type": "array"
+        },
+        "scope": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Scope",
+          "type": "string"
+        },
+        "statement": {
+          "maxLength": 512,
+          "minLength": 8,
+          "title": "Statement",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "supported",
+            "limited",
+            "unsupported",
+            "withdrawn"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "supporting_component_ids": {
+          "items": {
+            "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+            "type": "string"
+          },
+          "maxItems": 128,
+          "title": "Supporting Component Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "claim_id",
+        "statement",
+        "scope",
+        "evidence_class",
+        "supporting_component_ids",
+        "limitation_ids",
+        "status",
+        "prohibited_interpretations"
+      ],
+      "title": "ClaimRecordV1",
+      "type": "object"
+    },
+    "ClaimRegisterV1": {
+      "$defs": {
+        "ClaimRecordV1": {
+          "additionalProperties": false,
+          "properties": {
+            "claim_id": {
+              "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+              "title": "Claim Id",
+              "type": "string"
+            },
+            "evidence_class": {
+              "enum": [
+                "generated_contract",
+                "generated_scenario",
+                "static_validation",
+                "not_observed"
+              ],
+              "title": "Evidence Class",
+              "type": "string"
+            },
+            "generated_only": {
+              "const": true,
+              "default": true,
+              "title": "Generated Only",
+              "type": "boolean"
+            },
+            "limitation_ids": {
+              "items": {
+                "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+                "type": "string"
+              },
+              "maxItems": 64,
+              "title": "Limitation Ids",
+              "type": "array"
+            },
+            "prohibited_interpretations": {
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 32,
+              "title": "Prohibited Interpretations",
+              "type": "array"
+            },
+            "scope": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Scope",
+              "type": "string"
+            },
+            "statement": {
+              "maxLength": 512,
+              "minLength": 8,
+              "title": "Statement",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "supported",
+                "limited",
+                "unsupported",
+                "withdrawn"
+              ],
+              "title": "Status",
+              "type": "string"
+            },
+            "supporting_component_ids": {
+              "items": {
+                "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+                "type": "string"
+              },
+              "maxItems": 128,
+              "title": "Supporting Component Ids",
+              "type": "array"
+            }
+          },
+          "required": [
+            "claim_id",
+            "statement",
+            "scope",
+            "evidence_class",
+            "supporting_component_ids",
+            "limitation_ids",
+            "status",
+            "prohibited_interpretations"
+          ],
+          "title": "ClaimRecordV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "claims": {
+          "items": {
+            "$ref": "#/$defs/ClaimRecordV1"
+          },
+          "maxItems": 512,
+          "title": "Claims",
+          "type": "array"
+        },
+        "contract_type": {
+          "const": "hcam.acceptance.claim-register.v1",
+          "default": "hcam.acceptance.claim-register.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "claims"
+      ],
+      "title": "ClaimRegisterV1",
+      "type": "object"
+    },
+    "CompatibilityEntryV1": {
+      "additionalProperties": false,
+      "properties": {
+        "change_class": {
+          "enum": [
+            "documentation",
+            "optional_additive",
+            "new_capability",
+            "compatible_behavior",
+            "deprecation",
+            "breaking_schema",
+            "breaking_semantic",
+            "security_boundary"
+          ],
+          "title": "Change Class",
+          "type": "string"
+        },
+        "contract": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Contract",
+          "type": "string"
+        },
+        "entry_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Entry Id",
+          "type": "string"
+        },
+        "evidence_ref": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Evidence Ref",
+          "type": "string"
+        },
+        "from_version": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "From Version",
+          "type": "string"
+        },
+        "migration_required": {
+          "title": "Migration Required",
+          "type": "boolean"
+        },
+        "security_review_required": {
+          "title": "Security Review Required",
+          "type": "boolean"
+        },
+        "supported_consumers": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "title": "Supported Consumers",
+          "type": "array"
+        },
+        "to_version": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "To Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "entry_id",
+        "contract",
+        "from_version",
+        "to_version",
+        "change_class",
+        "supported_consumers",
+        "migration_required",
+        "evidence_ref",
+        "security_review_required"
+      ],
+      "title": "CompatibilityEntryV1",
+      "type": "object"
+    },
+    "CompatibilityMatrixV1": {
+      "$defs": {
+        "CompatibilityEntryV1": {
+          "additionalProperties": false,
+          "properties": {
+            "change_class": {
+              "enum": [
+                "documentation",
+                "optional_additive",
+                "new_capability",
+                "compatible_behavior",
+                "deprecation",
+                "breaking_schema",
+                "breaking_semantic",
+                "security_boundary"
+              ],
+              "title": "Change Class",
+              "type": "string"
+            },
+            "contract": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Contract",
+              "type": "string"
+            },
+            "entry_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Entry Id",
+              "type": "string"
+            },
+            "evidence_ref": {
+              "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+              "title": "Evidence Ref",
+              "type": "string"
+            },
+            "from_version": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "From Version",
+              "type": "string"
+            },
+            "migration_required": {
+              "title": "Migration Required",
+              "type": "boolean"
+            },
+            "security_review_required": {
+              "title": "Security Review Required",
+              "type": "boolean"
+            },
+            "supported_consumers": {
+              "items": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                "type": "string"
+              },
+              "maxItems": 64,
+              "title": "Supported Consumers",
+              "type": "array"
+            },
+            "to_version": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "To Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "entry_id",
+            "contract",
+            "from_version",
+            "to_version",
+            "change_class",
+            "supported_consumers",
+            "migration_required",
+            "evidence_ref",
+            "security_review_required"
+          ],
+          "title": "CompatibilityEntryV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "contract_type": {
+          "const": "hcam.handoff.compatibility.v1",
+          "default": "hcam.handoff.compatibility.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/$defs/CompatibilityEntryV1"
+          },
+          "maxItems": 2048,
+          "title": "Entries",
+          "type": "array"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "latest_only_policy": {
+          "const": false,
+          "default": false,
+          "title": "Latest Only Policy",
+          "type": "boolean"
+        },
+        "permanent_compatibility_claim": {
+          "const": false,
+          "default": false,
+          "title": "Permanent Compatibility Claim",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "entries"
+      ],
+      "title": "CompatibilityMatrixV1",
+      "type": "object"
+    },
+    "EventOperationV1": {
+      "additionalProperties": false,
+      "properties": {
+        "consumer_intent": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Consumer Intent",
+          "type": "string"
+        },
+        "correction_supported": {
+          "title": "Correction Supported",
+          "type": "boolean"
+        },
+        "delivery": {
+          "enum": [
+            "at_least_once_projection",
+            "transactional_outbox"
+          ],
+          "title": "Delivery",
+          "type": "string"
+        },
+        "event_type": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Event Type",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "grants_authority": {
+          "const": false,
+          "default": false,
+          "title": "Grants Authority",
+          "type": "boolean"
+        },
+        "ordering": {
+          "enum": [
+            "aggregate",
+            "partition",
+            "none"
+          ],
+          "title": "Ordering",
+          "type": "string"
+        },
+        "producer": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Producer",
+          "type": "string"
+        },
+        "unknown_version": {
+          "enum": [
+            "reject",
+            "quarantine"
+          ],
+          "title": "Unknown Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "event_type",
+        "producer",
+        "consumer_intent",
+        "ordering",
+        "delivery",
+        "correction_supported",
+        "unknown_version"
+      ],
+      "title": "EventOperationV1",
+      "type": "object"
+    },
+    "EventWorkflowCatalogueV1": {
+      "$defs": {
+        "EventOperationV1": {
+          "additionalProperties": false,
+          "properties": {
+            "consumer_intent": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Consumer Intent",
+              "type": "string"
+            },
+            "correction_supported": {
+              "title": "Correction Supported",
+              "type": "boolean"
+            },
+            "delivery": {
+              "enum": [
+                "at_least_once_projection",
+                "transactional_outbox"
+              ],
+              "title": "Delivery",
+              "type": "string"
+            },
+            "event_type": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Event Type",
+              "type": "string"
+            },
+            "generated_only": {
+              "const": true,
+              "default": true,
+              "title": "Generated Only",
+              "type": "boolean"
+            },
+            "grants_authority": {
+              "const": false,
+              "default": false,
+              "title": "Grants Authority",
+              "type": "boolean"
+            },
+            "ordering": {
+              "enum": [
+                "aggregate",
+                "partition",
+                "none"
+              ],
+              "title": "Ordering",
+              "type": "string"
+            },
+            "producer": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Producer",
+              "type": "string"
+            },
+            "unknown_version": {
+              "enum": [
+                "reject",
+                "quarantine"
+              ],
+              "title": "Unknown Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "event_type",
+            "producer",
+            "consumer_intent",
+            "ordering",
+            "delivery",
+            "correction_supported",
+            "unknown_version"
+          ],
+          "title": "EventOperationV1",
+          "type": "object"
+        },
+        "WorkflowStepV1": {
+          "additionalProperties": false,
+          "properties": {
+            "depends_on": {
+              "items": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                "type": "string"
+              },
+              "maxItems": 16,
+              "title": "Depends On",
+              "type": "array"
+            },
+            "failure_codes": {
+              "items": {
+                "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+                "type": "string"
+              },
+              "maxItems": 16,
+              "minItems": 1,
+              "title": "Failure Codes",
+              "type": "array"
+            },
+            "operation_ref": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Operation Ref",
+              "type": "string"
+            },
+            "step_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Step Id",
+              "type": "string"
+            },
+            "success_state": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Success State",
+              "type": "string"
+            }
+          },
+          "required": [
+            "step_id",
+            "operation_ref",
+            "depends_on",
+            "success_state",
+            "failure_codes"
+          ],
+          "title": "WorkflowStepV1",
+          "type": "object"
+        },
+        "WorkflowV1": {
+          "additionalProperties": false,
+          "properties": {
+            "generated_only": {
+              "const": true,
+              "default": true,
+              "title": "Generated Only",
+              "type": "boolean"
+            },
+            "operational": {
+              "const": false,
+              "default": false,
+              "title": "Operational",
+              "type": "boolean"
+            },
+            "steps": {
+              "items": {
+                "$ref": "#/$defs/WorkflowStepV1"
+              },
+              "maxItems": 64,
+              "minItems": 1,
+              "title": "Steps",
+              "type": "array"
+            },
+            "workflow_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Workflow Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "workflow_id",
+            "steps"
+          ],
+          "title": "WorkflowV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "broker_selected": {
+          "const": false,
+          "default": false,
+          "title": "Broker Selected",
+          "type": "boolean"
+        },
+        "contract_type": {
+          "const": "hcam.handoff.event-workflow.v1",
+          "default": "hcam.handoff.event-workflow.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "events": {
+          "items": {
+            "$ref": "#/$defs/EventOperationV1"
+          },
+          "maxItems": 1024,
+          "title": "Events",
+          "type": "array"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "workflow_engine_selected": {
+          "const": false,
+          "default": false,
+          "title": "Workflow Engine Selected",
+          "type": "boolean"
+        },
+        "workflows": {
+          "items": {
+            "$ref": "#/$defs/WorkflowV1"
+          },
+          "maxItems": 128,
+          "title": "Workflows",
+          "type": "array"
+        }
+      },
+      "required": [
+        "events",
+        "workflows"
+      ],
+      "title": "EventWorkflowCatalogueV1",
+      "type": "object"
+    },
+    "EvidenceComponentV1": {
+      "additionalProperties": false,
+      "properties": {
+        "byte_length": {
+          "maximum": 268435456,
+          "minimum": 0,
+          "title": "Byte Length",
+          "type": "integer"
+        },
+        "completeness": {
+          "enum": [
+            "complete",
+            "partial",
+            "unknown"
+          ],
+          "title": "Completeness",
+          "type": "string"
+        },
+        "component_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Component Id",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "kind": {
+          "enum": [
+            "source",
+            "contract",
+            "fixture",
+            "result",
+            "projection",
+            "document",
+            "review"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "path": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "producer": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Producer",
+          "type": "string"
+        },
+        "producer_version": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Producer Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9A-F]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "verified": {
+          "title": "Verified",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "component_id",
+        "path",
+        "kind",
+        "byte_length",
+        "sha256",
+        "producer",
+        "producer_version",
+        "completeness",
+        "verified"
+      ],
+      "title": "EvidenceComponentV1",
+      "type": "object"
+    },
+    "EvidenceEdgeV1": {
+      "additionalProperties": false,
+      "properties": {
+        "edge_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Edge Id",
+          "type": "string"
+        },
+        "relation": {
+          "enum": [
+            "derived_from",
+            "validates",
+            "documents",
+            "supports",
+            "limits"
+          ],
+          "title": "Relation",
+          "type": "string"
+        },
+        "source_component_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Source Component Id",
+          "type": "string"
+        },
+        "target_component_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Target Component Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "edge_id",
+        "source_component_id",
+        "target_component_id",
+        "relation"
+      ],
+      "title": "EvidenceEdgeV1",
+      "type": "object"
+    },
+    "EvidenceIndexV1": {
+      "$defs": {
+        "EvidenceComponentV1": {
+          "additionalProperties": false,
+          "properties": {
+            "byte_length": {
+              "maximum": 268435456,
+              "minimum": 0,
+              "title": "Byte Length",
+              "type": "integer"
+            },
+            "completeness": {
+              "enum": [
+                "complete",
+                "partial",
+                "unknown"
+              ],
+              "title": "Completeness",
+              "type": "string"
+            },
+            "component_id": {
+              "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+              "title": "Component Id",
+              "type": "string"
+            },
+            "generated_only": {
+              "const": true,
+              "default": true,
+              "title": "Generated Only",
+              "type": "boolean"
+            },
+            "kind": {
+              "enum": [
+                "source",
+                "contract",
+                "fixture",
+                "result",
+                "projection",
+                "document",
+                "review"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "path": {
+              "maxLength": 512,
+              "minLength": 1,
+              "title": "Path",
+              "type": "string"
+            },
+            "producer": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Producer",
+              "type": "string"
+            },
+            "producer_version": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Producer Version",
+              "type": "string"
+            },
+            "sha256": {
+              "pattern": "^[0-9A-F]{64}$",
+              "title": "Sha256",
+              "type": "string"
+            },
+            "verified": {
+              "title": "Verified",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "component_id",
+            "path",
+            "kind",
+            "byte_length",
+            "sha256",
+            "producer",
+            "producer_version",
+            "completeness",
+            "verified"
+          ],
+          "title": "EvidenceComponentV1",
+          "type": "object"
+        },
+        "EvidenceEdgeV1": {
+          "additionalProperties": false,
+          "properties": {
+            "edge_id": {
+              "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+              "title": "Edge Id",
+              "type": "string"
+            },
+            "relation": {
+              "enum": [
+                "derived_from",
+                "validates",
+                "documents",
+                "supports",
+                "limits"
+              ],
+              "title": "Relation",
+              "type": "string"
+            },
+            "source_component_id": {
+              "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+              "title": "Source Component Id",
+              "type": "string"
+            },
+            "target_component_id": {
+              "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+              "title": "Target Component Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "edge_id",
+            "source_component_id",
+            "target_component_id",
+            "relation"
+          ],
+          "title": "EvidenceEdgeV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "authorization_digest": {
+          "pattern": "^[0-9A-F]{64}$",
+          "title": "Authorization Digest",
+          "type": "string"
+        },
+        "completeness": {
+          "enum": [
+            "complete",
+            "partial",
+            "unknown"
+          ],
+          "title": "Completeness",
+          "type": "string"
+        },
+        "components": {
+          "items": {
+            "$ref": "#/$defs/EvidenceComponentV1"
+          },
+          "maxItems": 4096,
+          "title": "Components",
+          "type": "array"
+        },
+        "contract_type": {
+          "const": "hcam.acceptance.evidence-index.v1",
+          "default": "hcam.acceptance.evidence-index.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "edges": {
+          "items": {
+            "$ref": "#/$defs/EvidenceEdgeV1"
+          },
+          "maxItems": 16384,
+          "title": "Edges",
+          "type": "array"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "source_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "title": "Source Commit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_commit",
+        "authorization_digest",
+        "components",
+        "edges",
+        "completeness"
+      ],
+      "title": "EvidenceIndexV1",
+      "type": "object"
+    },
+    "HttpCatalogueV1": {
+      "$defs": {
+        "HttpOperationV1": {
+          "additionalProperties": false,
+          "properties": {
+            "audience": {
+              "items": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                "type": "string"
+              },
+              "maxItems": 16,
+              "minItems": 1,
+              "title": "Audience",
+              "type": "array"
+            },
+            "authorization_roles": {
+              "items": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                "type": "string"
+              },
+              "maxItems": 32,
+              "minItems": 1,
+              "title": "Authorization Roles",
+              "type": "array"
+            },
+            "compatibility_class": {
+              "enum": [
+                "stable",
+                "additive",
+                "experimental"
+              ],
+              "title": "Compatibility Class",
+              "type": "string"
+            },
+            "department_scope_required": {
+              "title": "Department Scope Required",
+              "type": "boolean"
+            },
+            "etag_mode": {
+              "enum": [
+                "none",
+                "response",
+                "if_match"
+              ],
+              "title": "Etag Mode",
+              "type": "string"
+            },
+            "failure_codes": {
+              "items": {
+                "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+                "type": "string"
+              },
+              "maxItems": 32,
+              "minItems": 1,
+              "title": "Failure Codes",
+              "type": "array"
+            },
+            "freshness": {
+              "enum": [
+                "current",
+                "fresh_stale_unknown"
+              ],
+              "title": "Freshness",
+              "type": "string"
+            },
+            "generated_only": {
+              "const": true,
+              "default": true,
+              "title": "Generated Only",
+              "type": "boolean"
+            },
+            "idempotency_mode": {
+              "enum": [
+                "none",
+                "required",
+                "semantic_and_delivery"
+              ],
+              "title": "Idempotency Mode",
+              "type": "string"
+            },
+            "method": {
+              "enum": [
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE"
+              ],
+              "title": "Method",
+              "type": "string"
+            },
+            "operation_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Operation Id",
+              "type": "string"
+            },
+            "pagination": {
+              "enum": [
+                "none",
+                "cursor"
+              ],
+              "title": "Pagination",
+              "type": "string"
+            },
+            "path_template": {
+              "pattern": "^/[A-Za-z0-9_{}./-]+$",
+              "title": "Path Template",
+              "type": "string"
+            },
+            "purpose": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Purpose",
+              "type": "string"
+            },
+            "reason_required": {
+              "title": "Reason Required",
+              "type": "boolean"
+            },
+            "success_states": {
+              "items": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                "type": "string"
+              },
+              "maxItems": 32,
+              "minItems": 1,
+              "title": "Success States",
+              "type": "array"
+            }
+          },
+          "required": [
+            "operation_id",
+            "method",
+            "path_template",
+            "purpose",
+            "audience",
+            "authorization_roles",
+            "department_scope_required",
+            "reason_required",
+            "etag_mode",
+            "idempotency_mode",
+            "pagination",
+            "freshness",
+            "success_states",
+            "failure_codes",
+            "compatibility_class"
+          ],
+          "title": "HttpOperationV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "contract_type": {
+          "const": "hcam.handoff.http-operation.v1",
+          "default": "hcam.handoff.http-operation.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "operations": {
+          "items": {
+            "$ref": "#/$defs/HttpOperationV1"
+          },
+          "maxItems": 1024,
+          "title": "Operations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "operations"
+      ],
+      "title": "HttpCatalogueV1",
+      "type": "object"
+    },
+    "HttpOperationV1": {
+      "additionalProperties": false,
+      "properties": {
+        "audience": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "type": "string"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Audience",
+          "type": "array"
+        },
+        "authorization_roles": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Authorization Roles",
+          "type": "array"
+        },
+        "compatibility_class": {
+          "enum": [
+            "stable",
+            "additive",
+            "experimental"
+          ],
+          "title": "Compatibility Class",
+          "type": "string"
+        },
+        "department_scope_required": {
+          "title": "Department Scope Required",
+          "type": "boolean"
+        },
+        "etag_mode": {
+          "enum": [
+            "none",
+            "response",
+            "if_match"
+          ],
+          "title": "Etag Mode",
+          "type": "string"
+        },
+        "failure_codes": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Failure Codes",
+          "type": "array"
+        },
+        "freshness": {
+          "enum": [
+            "current",
+            "fresh_stale_unknown"
+          ],
+          "title": "Freshness",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "idempotency_mode": {
+          "enum": [
+            "none",
+            "required",
+            "semantic_and_delivery"
+          ],
+          "title": "Idempotency Mode",
+          "type": "string"
+        },
+        "method": {
+          "enum": [
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "operation_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "pagination": {
+          "enum": [
+            "none",
+            "cursor"
+          ],
+          "title": "Pagination",
+          "type": "string"
+        },
+        "path_template": {
+          "pattern": "^/[A-Za-z0-9_{}./-]+$",
+          "title": "Path Template",
+          "type": "string"
+        },
+        "purpose": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Purpose",
+          "type": "string"
+        },
+        "reason_required": {
+          "title": "Reason Required",
+          "type": "boolean"
+        },
+        "success_states": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Success States",
+          "type": "array"
+        }
+      },
+      "required": [
+        "operation_id",
+        "method",
+        "path_template",
+        "purpose",
+        "audience",
+        "authorization_roles",
+        "department_scope_required",
+        "reason_required",
+        "etag_mode",
+        "idempotency_mode",
+        "pagination",
+        "freshness",
+        "success_states",
+        "failure_codes",
+        "compatibility_class"
+      ],
+      "title": "HttpOperationV1",
+      "type": "object"
+    },
+    "LimitationRecordV1": {
+      "additionalProperties": false,
+      "properties": {
+        "affected_claim_ids": {
+          "items": {
+            "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+            "type": "string"
+          },
+          "maxItems": 128,
+          "title": "Affected Claim Ids",
+          "type": "array"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "impact": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "blocking"
+          ],
+          "title": "Impact",
+          "type": "string"
+        },
+        "limitation_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Limitation Id",
+          "type": "string"
+        },
+        "mitigation": {
+          "maxLength": 512,
+          "minLength": 8,
+          "title": "Mitigation",
+          "type": "string"
+        },
+        "owner": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Owner",
+          "type": "string"
+        },
+        "required_future_evidence": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Required Future Evidence",
+          "type": "array"
+        },
+        "statement": {
+          "maxLength": 512,
+          "minLength": 8,
+          "title": "Statement",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "open",
+            "accepted",
+            "resolved",
+            "withdrawn"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "limitation_id",
+        "statement",
+        "impact",
+        "mitigation",
+        "required_future_evidence",
+        "owner",
+        "affected_claim_ids",
+        "status"
+      ],
+      "title": "LimitationRecordV1",
+      "type": "object"
+    },
+    "LimitationRegisterV1": {
+      "$defs": {
+        "LimitationRecordV1": {
+          "additionalProperties": false,
+          "properties": {
+            "affected_claim_ids": {
+              "items": {
+                "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+                "type": "string"
+              },
+              "maxItems": 128,
+              "title": "Affected Claim Ids",
+              "type": "array"
+            },
+            "generated_only": {
+              "const": true,
+              "default": true,
+              "title": "Generated Only",
+              "type": "boolean"
+            },
+            "impact": {
+              "enum": [
+                "low",
+                "medium",
+                "high",
+                "blocking"
+              ],
+              "title": "Impact",
+              "type": "string"
+            },
+            "limitation_id": {
+              "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+              "title": "Limitation Id",
+              "type": "string"
+            },
+            "mitigation": {
+              "maxLength": 512,
+              "minLength": 8,
+              "title": "Mitigation",
+              "type": "string"
+            },
+            "owner": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Owner",
+              "type": "string"
+            },
+            "required_future_evidence": {
+              "items": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                "type": "string"
+              },
+              "maxItems": 32,
+              "minItems": 1,
+              "title": "Required Future Evidence",
+              "type": "array"
+            },
+            "statement": {
+              "maxLength": 512,
+              "minLength": 8,
+              "title": "Statement",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "open",
+                "accepted",
+                "resolved",
+                "withdrawn"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "limitation_id",
+            "statement",
+            "impact",
+            "mitigation",
+            "required_future_evidence",
+            "owner",
+            "affected_claim_ids",
+            "status"
+          ],
+          "title": "LimitationRecordV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "contract_type": {
+          "const": "hcam.acceptance.limitation-register.v1",
+          "default": "hcam.acceptance.limitation-register.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "limitations": {
+          "items": {
+            "$ref": "#/$defs/LimitationRecordV1"
+          },
+          "maxItems": 512,
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "limitations"
+      ],
+      "title": "LimitationRegisterV1",
+      "type": "object"
+    },
+    "OperationsRunbookV1": {
+      "$defs": {
+        "RunbookStepV1": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Action",
+              "type": "string"
+            },
+            "expected_reason": {
+              "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+              "title": "Expected Reason",
+              "type": "string"
+            },
+            "failure_reason": {
+              "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+              "title": "Failure Reason",
+              "type": "string"
+            },
+            "order": {
+              "maximum": 128,
+              "minimum": 1,
+              "title": "Order",
+              "type": "integer"
+            },
+            "resumable": {
+              "title": "Resumable",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "order",
+            "action",
+            "expected_reason",
+            "failure_reason",
+            "resumable"
+          ],
+          "title": "RunbookStepV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "cleanup_required": {
+          "const": true,
+          "default": true,
+          "title": "Cleanup Required",
+          "type": "boolean"
+        },
+        "contract_type": {
+          "const": "hcam.acceptance.operations-runbook.v1",
+          "default": "hcam.acceptance.operations-runbook.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "preconditions": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Preconditions",
+          "type": "array"
+        },
+        "production_use": {
+          "const": false,
+          "default": false,
+          "title": "Production Use",
+          "type": "boolean"
+        },
+        "purpose": {
+          "const": "generated_acceptance_only",
+          "default": "generated_acceptance_only",
+          "title": "Purpose",
+          "type": "string"
+        },
+        "runbook_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Runbook Id",
+          "type": "string"
+        },
+        "steps": {
+          "items": {
+            "$ref": "#/$defs/RunbookStepV1"
+          },
+          "maxItems": 128,
+          "minItems": 1,
+          "title": "Steps",
+          "type": "array"
+        },
+        "zero_retention_required": {
+          "const": true,
+          "default": true,
+          "title": "Zero Retention Required",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "runbook_id",
+        "preconditions",
+        "steps"
+      ],
+      "title": "OperationsRunbookV1",
+      "type": "object"
+    },
+    "ProductionPrerequisiteOutlineV1": {
+      "$defs": {
+        "ProductionPrerequisiteV1": {
+          "additionalProperties": false,
+          "properties": {
+            "accountable_owner_required": {
+              "const": true,
+              "default": true,
+              "title": "Accountable Owner Required",
+              "type": "boolean"
+            },
+            "category": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Category",
+              "type": "string"
+            },
+            "environment_specific_content_present": {
+              "const": false,
+              "default": false,
+              "title": "Environment Specific Content Present",
+              "type": "boolean"
+            },
+            "executable": {
+              "const": false,
+              "default": false,
+              "title": "Executable",
+              "type": "boolean"
+            },
+            "prerequisite_id": {
+              "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+              "title": "Prerequisite Id",
+              "type": "string"
+            },
+            "required_evidence": {
+              "items": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                "type": "string"
+              },
+              "maxItems": 32,
+              "minItems": 1,
+              "title": "Required Evidence",
+              "type": "array"
+            },
+            "status": {
+              "const": "not_operationally_validated",
+              "default": "not_operationally_validated",
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "prerequisite_id",
+            "category",
+            "required_evidence"
+          ],
+          "title": "ProductionPrerequisiteV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "contract_type": {
+          "const": "hcam.acceptance.production-prerequisites.v1",
+          "default": "hcam.acceptance.production-prerequisites.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "executable": {
+          "const": false,
+          "default": false,
+          "title": "Executable",
+          "type": "boolean"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "operationally_validated": {
+          "const": false,
+          "default": false,
+          "title": "Operationally Validated",
+          "type": "boolean"
+        },
+        "prerequisites": {
+          "items": {
+            "$ref": "#/$defs/ProductionPrerequisiteV1"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Prerequisites",
+          "type": "array"
+        }
+      },
+      "required": [
+        "prerequisites"
+      ],
+      "title": "ProductionPrerequisiteOutlineV1",
+      "type": "object"
+    },
+    "ProductionPrerequisiteV1": {
+      "additionalProperties": false,
+      "properties": {
+        "accountable_owner_required": {
+          "const": true,
+          "default": true,
+          "title": "Accountable Owner Required",
+          "type": "boolean"
+        },
+        "category": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Category",
+          "type": "string"
+        },
+        "environment_specific_content_present": {
+          "const": false,
+          "default": false,
+          "title": "Environment Specific Content Present",
+          "type": "boolean"
+        },
+        "executable": {
+          "const": false,
+          "default": false,
+          "title": "Executable",
+          "type": "boolean"
+        },
+        "prerequisite_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Prerequisite Id",
+          "type": "string"
+        },
+        "required_evidence": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "type": "string"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Required Evidence",
+          "type": "array"
+        },
+        "status": {
+          "const": "not_operationally_validated",
+          "default": "not_operationally_validated",
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "prerequisite_id",
+        "category",
+        "required_evidence"
+      ],
+      "title": "ProductionPrerequisiteV1",
+      "type": "object"
+    },
+    "ReconstructionEntryV1": {
+      "additionalProperties": false,
+      "properties": {
+        "correction_state": {
+          "enum": [
+            "original",
+            "corrected",
+            "retracted"
+          ],
+          "title": "Correction State",
+          "type": "string"
+        },
+        "entry_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Entry Id",
+          "type": "string"
+        },
+        "kind": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Kind",
+          "type": "string"
+        },
+        "order": {
+          "maximum": 256,
+          "minimum": 1,
+          "title": "Order",
+          "type": "integer"
+        },
+        "previous_entry_id": {
+          "anyOf": [
+            {
+              "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous Entry Id"
+        },
+        "source_ref": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Source Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "entry_id",
+        "order",
+        "kind",
+        "source_ref",
+        "correction_state"
+      ],
+      "title": "ReconstructionEntryV1",
+      "type": "object"
+    },
+    "ReconstructionManifestV1": {
+      "$defs": {
+        "ReconstructionEntryV1": {
+          "additionalProperties": false,
+          "properties": {
+            "correction_state": {
+              "enum": [
+                "original",
+                "corrected",
+                "retracted"
+              ],
+              "title": "Correction State",
+              "type": "string"
+            },
+            "entry_id": {
+              "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+              "title": "Entry Id",
+              "type": "string"
+            },
+            "kind": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Kind",
+              "type": "string"
+            },
+            "order": {
+              "maximum": 256,
+              "minimum": 1,
+              "title": "Order",
+              "type": "integer"
+            },
+            "previous_entry_id": {
+              "anyOf": [
+                {
+                  "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Previous Entry Id"
+            },
+            "source_ref": {
+              "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+              "title": "Source Ref",
+              "type": "string"
+            }
+          },
+          "required": [
+            "entry_id",
+            "order",
+            "kind",
+            "source_ref",
+            "correction_state"
+          ],
+          "title": "ReconstructionEntryV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "chronology_complete": {
+          "title": "Chronology Complete",
+          "type": "boolean"
+        },
+        "contract_type": {
+          "const": "hcam.acceptance.reconstruction-manifest.v1",
+          "default": "hcam.acceptance.reconstruction-manifest.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/$defs/ReconstructionEntryV1"
+          },
+          "maxItems": 256,
+          "minItems": 1,
+          "title": "Entries",
+          "type": "array"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "operational": {
+          "const": false,
+          "default": false,
+          "title": "Operational",
+          "type": "boolean"
+        },
+        "reconstruction_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Reconstruction Id",
+          "type": "string"
+        },
+        "scenario_id": {
+          "pattern": "^S0[0-8]$",
+          "title": "Scenario Id",
+          "type": "string"
+        },
+        "source_content_copied": {
+          "const": false,
+          "default": false,
+          "title": "Source Content Copied",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "reconstruction_id",
+        "scenario_id",
+        "entries",
+        "chronology_complete"
+      ],
+      "title": "ReconstructionManifestV1",
+      "type": "object"
+    },
+    "ReplayComparisonV1": {
+      "additionalProperties": false,
+      "properties": {
+        "contract_type": {
+          "const": "hcam.acceptance.replay-comparison.v1",
+          "default": "hcam.acceptance.replay-comparison.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "equal": {
+          "title": "Equal",
+          "type": "boolean"
+        },
+        "first_run_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "First Run Id",
+          "type": "string"
+        },
+        "first_semantic_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "First Semantic Digest",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "reason_code": {
+          "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "scenario_id": {
+          "pattern": "^S0[0-8]$",
+          "title": "Scenario Id",
+          "type": "string"
+        },
+        "second_run_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Second Run Id",
+          "type": "string"
+        },
+        "second_semantic_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Second Semantic Digest",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scenario_id",
+        "first_run_id",
+        "second_run_id",
+        "first_semantic_digest",
+        "second_semantic_digest",
+        "equal",
+        "status",
+        "reason_code"
+      ],
+      "title": "ReplayComparisonV1",
+      "type": "object"
+    },
+    "RunbookStepV1": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Action",
+          "type": "string"
+        },
+        "expected_reason": {
+          "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+          "title": "Expected Reason",
+          "type": "string"
+        },
+        "failure_reason": {
+          "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+          "title": "Failure Reason",
+          "type": "string"
+        },
+        "order": {
+          "maximum": 128,
+          "minimum": 1,
+          "title": "Order",
+          "type": "integer"
+        },
+        "resumable": {
+          "title": "Resumable",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "order",
+        "action",
+        "expected_reason",
+        "failure_reason",
+        "resumable"
+      ],
+      "title": "RunbookStepV1",
+      "type": "object"
+    },
+    "ScenarioDefinitionV1": {
+      "$defs": {
+        "ScenarioStepV1": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "enum": [
+                "observe_event",
+                "correlate",
+                "evaluate_rule",
+                "propose_alert",
+                "query_reference",
+                "review_alert",
+                "transition_alert",
+                "open_investigation",
+                "append_evidence_reference",
+                "duplicate_event",
+                "record_late_conflict",
+                "deny_cross_scope",
+                "record_correction",
+                "record_retraction",
+                "degrade_worker",
+                "recover_worker",
+                "emit_signal"
+              ],
+              "title": "Action",
+              "type": "string"
+            },
+            "advance_ms": {
+              "maximum": 86400000,
+              "minimum": 0,
+              "title": "Advance Ms",
+              "type": "integer"
+            },
+            "expected_outcome": {
+              "enum": [
+                "accepted",
+                "abstained",
+                "duplicate",
+                "denied",
+                "degraded",
+                "recovered"
+              ],
+              "title": "Expected Outcome",
+              "type": "string"
+            },
+            "expected_reason": {
+              "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+              "title": "Expected Reason",
+              "type": "string"
+            },
+            "input_data": {
+              "additionalProperties": true,
+              "maxProperties": 64,
+              "title": "Input Data",
+              "type": "object"
+            },
+            "sequence": {
+              "maximum": 256,
+              "minimum": 1,
+              "title": "Sequence",
+              "type": "integer"
+            },
+            "step_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Step Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "step_id",
+            "sequence",
+            "action",
+            "advance_ms",
+            "input_data",
+            "expected_outcome",
+            "expected_reason"
+          ],
+          "title": "ScenarioStepV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "enum": [
+            "golden",
+            "abstention",
+            "duplicate_replay",
+            "late_conflict",
+            "authorization_isolation",
+            "reference_degradation",
+            "review_lifecycle_denial",
+            "correction_retraction",
+            "worker_recovery"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "expected_terminal_state": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Expected Terminal State",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "operational": {
+          "const": false,
+          "default": false,
+          "title": "Operational",
+          "type": "boolean"
+        },
+        "scenario_id": {
+          "pattern": "^S0[0-8]$",
+          "title": "Scenario Id",
+          "type": "string"
+        },
+        "steps": {
+          "items": {
+            "$ref": "#/$defs/ScenarioStepV1"
+          },
+          "maxItems": 256,
+          "minItems": 1,
+          "title": "Steps",
+          "type": "array"
+        },
+        "title": {
+          "maxLength": 160,
+          "minLength": 8,
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scenario_id",
+        "category",
+        "title",
+        "steps",
+        "expected_terminal_state"
+      ],
+      "title": "ScenarioDefinitionV1",
+      "type": "object"
+    },
+    "ScenarioManifestV1": {
+      "$defs": {
+        "ScenarioDefinitionV1": {
+          "additionalProperties": false,
+          "properties": {
+            "category": {
+              "enum": [
+                "golden",
+                "abstention",
+                "duplicate_replay",
+                "late_conflict",
+                "authorization_isolation",
+                "reference_degradation",
+                "review_lifecycle_denial",
+                "correction_retraction",
+                "worker_recovery"
+              ],
+              "title": "Category",
+              "type": "string"
+            },
+            "expected_terminal_state": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Expected Terminal State",
+              "type": "string"
+            },
+            "generated_only": {
+              "const": true,
+              "default": true,
+              "title": "Generated Only",
+              "type": "boolean"
+            },
+            "operational": {
+              "const": false,
+              "default": false,
+              "title": "Operational",
+              "type": "boolean"
+            },
+            "scenario_id": {
+              "pattern": "^S0[0-8]$",
+              "title": "Scenario Id",
+              "type": "string"
+            },
+            "steps": {
+              "items": {
+                "$ref": "#/$defs/ScenarioStepV1"
+              },
+              "maxItems": 256,
+              "minItems": 1,
+              "title": "Steps",
+              "type": "array"
+            },
+            "title": {
+              "maxLength": 160,
+              "minLength": 8,
+              "title": "Title",
+              "type": "string"
+            }
+          },
+          "required": [
+            "scenario_id",
+            "category",
+            "title",
+            "steps",
+            "expected_terminal_state"
+          ],
+          "title": "ScenarioDefinitionV1",
+          "type": "object"
+        },
+        "ScenarioStepV1": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "enum": [
+                "observe_event",
+                "correlate",
+                "evaluate_rule",
+                "propose_alert",
+                "query_reference",
+                "review_alert",
+                "transition_alert",
+                "open_investigation",
+                "append_evidence_reference",
+                "duplicate_event",
+                "record_late_conflict",
+                "deny_cross_scope",
+                "record_correction",
+                "record_retraction",
+                "degrade_worker",
+                "recover_worker",
+                "emit_signal"
+              ],
+              "title": "Action",
+              "type": "string"
+            },
+            "advance_ms": {
+              "maximum": 86400000,
+              "minimum": 0,
+              "title": "Advance Ms",
+              "type": "integer"
+            },
+            "expected_outcome": {
+              "enum": [
+                "accepted",
+                "abstained",
+                "duplicate",
+                "denied",
+                "degraded",
+                "recovered"
+              ],
+              "title": "Expected Outcome",
+              "type": "string"
+            },
+            "expected_reason": {
+              "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+              "title": "Expected Reason",
+              "type": "string"
+            },
+            "input_data": {
+              "additionalProperties": true,
+              "maxProperties": 64,
+              "title": "Input Data",
+              "type": "object"
+            },
+            "sequence": {
+              "maximum": 256,
+              "minimum": 1,
+              "title": "Sequence",
+              "type": "integer"
+            },
+            "step_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Step Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "step_id",
+            "sequence",
+            "action",
+            "advance_ms",
+            "input_data",
+            "expected_outcome",
+            "expected_reason"
+          ],
+          "title": "ScenarioStepV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "allowed_variance": {
+          "default": [],
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "type": "string"
+          },
+          "maxItems": 16,
+          "title": "Allowed Variance",
+          "type": "array"
+        },
+        "contract_type": {
+          "const": "hcam.acceptance.scenario-manifest.v1",
+          "default": "hcam.acceptance.scenario-manifest.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "fixture_digests": {
+          "maxProperties": 64,
+          "patternProperties": {
+            "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "title": "Fixture Digests",
+          "type": "object"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "identifier_namespace": {
+          "const": "generated.p47",
+          "default": "generated.p47",
+          "title": "Identifier Namespace",
+          "type": "string"
+        },
+        "logical_epoch": {
+          "format": "date-time",
+          "title": "Logical Epoch",
+          "type": "string"
+        },
+        "manifest_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Manifest Id",
+          "type": "string"
+        },
+        "normalization_profile": {
+          "const": "hcam.acceptance.semantic.v1",
+          "default": "hcam.acceptance.semantic.v1",
+          "title": "Normalization Profile",
+          "type": "string"
+        },
+        "operational": {
+          "const": false,
+          "default": false,
+          "title": "Operational",
+          "type": "boolean"
+        },
+        "policy_revisions": {
+          "maxProperties": 64,
+          "minProperties": 1,
+          "patternProperties": {
+            "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "title": "Policy Revisions",
+          "type": "object"
+        },
+        "scenarios": {
+          "items": {
+            "$ref": "#/$defs/ScenarioDefinitionV1"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Scenarios",
+          "type": "array"
+        },
+        "seed": {
+          "maximum": 2147483647,
+          "minimum": 0,
+          "title": "Seed",
+          "type": "integer"
+        },
+        "source_order": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "type": "string"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Source Order",
+          "type": "array"
+        },
+        "step_quantum_ms": {
+          "maximum": 60000,
+          "minimum": 1,
+          "title": "Step Quantum Ms",
+          "type": "integer"
+        },
+        "timezone": {
+          "const": "UTC",
+          "default": "UTC",
+          "title": "Timezone",
+          "type": "string"
+        }
+      },
+      "required": [
+        "manifest_id",
+        "seed",
+        "logical_epoch",
+        "step_quantum_ms",
+        "source_order",
+        "policy_revisions",
+        "fixture_digests",
+        "scenarios"
+      ],
+      "title": "ScenarioManifestV1",
+      "type": "object"
+    },
+    "ScenarioRunV1": {
+      "$defs": {
+        "AssertionResultV1": {
+          "additionalProperties": false,
+          "properties": {
+            "assertion_id": {
+              "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+              "title": "Assertion Id",
+              "type": "string"
+            },
+            "evidence_refs": {
+              "items": {
+                "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+                "type": "string"
+              },
+              "maxItems": 128,
+              "title": "Evidence Refs",
+              "type": "array"
+            },
+            "family": {
+              "enum": [
+                "schema",
+                "authorization",
+                "chronology",
+                "identity",
+                "rule",
+                "review",
+                "integrity",
+                "redaction",
+                "recovery",
+                "side_effect",
+                "replay",
+                "handoff",
+                "accessibility"
+              ],
+              "title": "Family",
+              "type": "string"
+            },
+            "generated_only": {
+              "const": true,
+              "default": true,
+              "title": "Generated Only",
+              "type": "boolean"
+            },
+            "reason_code": {
+              "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+              "title": "Reason Code",
+              "type": "string"
+            },
+            "scenario_id": {
+              "pattern": "^S0[0-8]$",
+              "title": "Scenario Id",
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "passed",
+                "failed",
+                "unknown",
+                "skipped",
+                "incomplete"
+              ],
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "assertion_id",
+            "scenario_id",
+            "family",
+            "status",
+            "reason_code",
+            "evidence_refs"
+          ],
+          "title": "AssertionResultV1",
+          "type": "object"
+        },
+        "SideEffectLedgerV1": {
+          "additionalProperties": false,
+          "properties": {
+            "camera_or_media_attempts": {
+              "const": 0,
+              "default": 0,
+              "title": "Camera Or Media Attempts",
+              "type": "integer"
+            },
+            "container_or_kubernetes_attempts": {
+              "const": 0,
+              "default": 0,
+              "title": "Container Or Kubernetes Attempts",
+              "type": "integer"
+            },
+            "direct_persistence_attempts": {
+              "const": 0,
+              "default": 0,
+              "title": "Direct Persistence Attempts",
+              "type": "integer"
+            },
+            "generated_only": {
+              "const": true,
+              "default": true,
+              "title": "Generated Only",
+              "type": "boolean"
+            },
+            "model_or_dataset_attempts": {
+              "const": 0,
+              "default": 0,
+              "title": "Model Or Dataset Attempts",
+              "type": "integer"
+            },
+            "network_attempts": {
+              "const": 0,
+              "default": 0,
+              "title": "Network Attempts",
+              "type": "integer"
+            },
+            "process_attempts": {
+              "const": 0,
+              "default": 0,
+              "title": "Process Attempts",
+              "type": "integer"
+            },
+            "production_operation_attempts": {
+              "const": 0,
+              "default": 0,
+              "title": "Production Operation Attempts",
+              "type": "integer"
+            },
+            "provider_attempts": {
+              "const": 0,
+              "default": 0,
+              "title": "Provider Attempts",
+              "type": "integer"
+            },
+            "retained_external_bytes": {
+              "const": 0,
+              "default": 0,
+              "title": "Retained External Bytes",
+              "type": "integer"
+            }
+          },
+          "title": "SideEffectLedgerV1",
+          "type": "object"
+        },
+        "StepObservationV1": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "enum": [
+                "observe_event",
+                "correlate",
+                "evaluate_rule",
+                "propose_alert",
+                "query_reference",
+                "review_alert",
+                "transition_alert",
+                "open_investigation",
+                "append_evidence_reference",
+                "duplicate_event",
+                "record_late_conflict",
+                "deny_cross_scope",
+                "record_correction",
+                "record_retraction",
+                "degrade_worker",
+                "recover_worker",
+                "emit_signal"
+              ],
+              "title": "Action",
+              "type": "string"
+            },
+            "generated_only": {
+              "const": true,
+              "default": true,
+              "title": "Generated Only",
+              "type": "boolean"
+            },
+            "logical_at": {
+              "format": "date-time",
+              "title": "Logical At",
+              "type": "string"
+            },
+            "mutation_count": {
+              "maximum": 256,
+              "minimum": 0,
+              "title": "Mutation Count",
+              "type": "integer"
+            },
+            "observation_id": {
+              "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+              "title": "Observation Id",
+              "type": "string"
+            },
+            "outcome": {
+              "enum": [
+                "accepted",
+                "abstained",
+                "duplicate",
+                "denied",
+                "degraded",
+                "recovered"
+              ],
+              "title": "Outcome",
+              "type": "string"
+            },
+            "output_digest": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "title": "Output Digest",
+              "type": "string"
+            },
+            "reason_code": {
+              "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+              "title": "Reason Code",
+              "type": "string"
+            },
+            "scenario_id": {
+              "pattern": "^S0[0-8]$",
+              "title": "Scenario Id",
+              "type": "string"
+            },
+            "sequence": {
+              "maximum": 256,
+              "minimum": 1,
+              "title": "Sequence",
+              "type": "integer"
+            },
+            "state": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "State",
+              "type": "string"
+            },
+            "step_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Step Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "observation_id",
+            "scenario_id",
+            "step_id",
+            "sequence",
+            "logical_at",
+            "action",
+            "outcome",
+            "reason_code",
+            "state",
+            "output_digest",
+            "mutation_count"
+          ],
+          "title": "StepObservationV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "assertions": {
+          "items": {
+            "$ref": "#/$defs/AssertionResultV1"
+          },
+          "maxItems": 32,
+          "minItems": 1,
+          "title": "Assertions",
+          "type": "array"
+        },
+        "complete": {
+          "title": "Complete",
+          "type": "boolean"
+        },
+        "completed_at": {
+          "format": "date-time",
+          "title": "Completed At",
+          "type": "string"
+        },
+        "contract_type": {
+          "const": "hcam.acceptance.scenario-run.v1",
+          "default": "hcam.acceptance.scenario-run.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "manifest_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Manifest Digest",
+          "type": "string"
+        },
+        "observations": {
+          "items": {
+            "$ref": "#/$defs/StepObservationV1"
+          },
+          "maxItems": 256,
+          "minItems": 1,
+          "title": "Observations",
+          "type": "array"
+        },
+        "operational": {
+          "const": false,
+          "default": false,
+          "title": "Operational",
+          "type": "boolean"
+        },
+        "replay_index": {
+          "enum": [
+            1,
+            2
+          ],
+          "title": "Replay Index",
+          "type": "integer"
+        },
+        "run_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Run Id",
+          "type": "string"
+        },
+        "scenario_id": {
+          "pattern": "^S0[0-8]$",
+          "title": "Scenario Id",
+          "type": "string"
+        },
+        "semantic_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Semantic Digest",
+          "type": "string"
+        },
+        "side_effects": {
+          "$ref": "#/$defs/SideEffectLedgerV1"
+        },
+        "started_at": {
+          "format": "date-time",
+          "title": "Started At",
+          "type": "string"
+        },
+        "terminal_state": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Terminal State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id",
+        "scenario_id",
+        "replay_index",
+        "manifest_digest",
+        "started_at",
+        "completed_at",
+        "terminal_state",
+        "observations",
+        "assertions",
+        "side_effects",
+        "semantic_digest",
+        "complete"
+      ],
+      "title": "ScenarioRunV1",
+      "type": "object"
+    },
+    "ScenarioStepV1": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "observe_event",
+            "correlate",
+            "evaluate_rule",
+            "propose_alert",
+            "query_reference",
+            "review_alert",
+            "transition_alert",
+            "open_investigation",
+            "append_evidence_reference",
+            "duplicate_event",
+            "record_late_conflict",
+            "deny_cross_scope",
+            "record_correction",
+            "record_retraction",
+            "degrade_worker",
+            "recover_worker",
+            "emit_signal"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "advance_ms": {
+          "maximum": 86400000,
+          "minimum": 0,
+          "title": "Advance Ms",
+          "type": "integer"
+        },
+        "expected_outcome": {
+          "enum": [
+            "accepted",
+            "abstained",
+            "duplicate",
+            "denied",
+            "degraded",
+            "recovered"
+          ],
+          "title": "Expected Outcome",
+          "type": "string"
+        },
+        "expected_reason": {
+          "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+          "title": "Expected Reason",
+          "type": "string"
+        },
+        "input_data": {
+          "additionalProperties": true,
+          "maxProperties": 64,
+          "title": "Input Data",
+          "type": "object"
+        },
+        "sequence": {
+          "maximum": 256,
+          "minimum": 1,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "step_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Step Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "step_id",
+        "sequence",
+        "action",
+        "advance_ms",
+        "input_data",
+        "expected_outcome",
+        "expected_reason"
+      ],
+      "title": "ScenarioStepV1",
+      "type": "object"
+    },
+    "SideEffectLedgerV1": {
+      "additionalProperties": false,
+      "properties": {
+        "camera_or_media_attempts": {
+          "const": 0,
+          "default": 0,
+          "title": "Camera Or Media Attempts",
+          "type": "integer"
+        },
+        "container_or_kubernetes_attempts": {
+          "const": 0,
+          "default": 0,
+          "title": "Container Or Kubernetes Attempts",
+          "type": "integer"
+        },
+        "direct_persistence_attempts": {
+          "const": 0,
+          "default": 0,
+          "title": "Direct Persistence Attempts",
+          "type": "integer"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "model_or_dataset_attempts": {
+          "const": 0,
+          "default": 0,
+          "title": "Model Or Dataset Attempts",
+          "type": "integer"
+        },
+        "network_attempts": {
+          "const": 0,
+          "default": 0,
+          "title": "Network Attempts",
+          "type": "integer"
+        },
+        "process_attempts": {
+          "const": 0,
+          "default": 0,
+          "title": "Process Attempts",
+          "type": "integer"
+        },
+        "production_operation_attempts": {
+          "const": 0,
+          "default": 0,
+          "title": "Production Operation Attempts",
+          "type": "integer"
+        },
+        "provider_attempts": {
+          "const": 0,
+          "default": 0,
+          "title": "Provider Attempts",
+          "type": "integer"
+        },
+        "retained_external_bytes": {
+          "const": 0,
+          "default": 0,
+          "title": "Retained External Bytes",
+          "type": "integer"
+        }
+      },
+      "title": "SideEffectLedgerV1",
+      "type": "object"
+    },
+    "StepObservationV1": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "observe_event",
+            "correlate",
+            "evaluate_rule",
+            "propose_alert",
+            "query_reference",
+            "review_alert",
+            "transition_alert",
+            "open_investigation",
+            "append_evidence_reference",
+            "duplicate_event",
+            "record_late_conflict",
+            "deny_cross_scope",
+            "record_correction",
+            "record_retraction",
+            "degrade_worker",
+            "recover_worker",
+            "emit_signal"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "logical_at": {
+          "format": "date-time",
+          "title": "Logical At",
+          "type": "string"
+        },
+        "mutation_count": {
+          "maximum": 256,
+          "minimum": 0,
+          "title": "Mutation Count",
+          "type": "integer"
+        },
+        "observation_id": {
+          "pattern": "^(?:p47|ref|cmp|edge)_[0-9a-f]{32}$",
+          "title": "Observation Id",
+          "type": "string"
+        },
+        "outcome": {
+          "enum": [
+            "accepted",
+            "abstained",
+            "duplicate",
+            "denied",
+            "degraded",
+            "recovered"
+          ],
+          "title": "Outcome",
+          "type": "string"
+        },
+        "output_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Output Digest",
+          "type": "string"
+        },
+        "reason_code": {
+          "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "scenario_id": {
+          "pattern": "^S0[0-8]$",
+          "title": "Scenario Id",
+          "type": "string"
+        },
+        "sequence": {
+          "maximum": 256,
+          "minimum": 1,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "state": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "State",
+          "type": "string"
+        },
+        "step_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Step Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "observation_id",
+        "scenario_id",
+        "step_id",
+        "sequence",
+        "logical_at",
+        "action",
+        "outcome",
+        "reason_code",
+        "state",
+        "output_digest",
+        "mutation_count"
+      ],
+      "title": "StepObservationV1",
+      "type": "object"
+    },
+    "UiAccessibilityCatalogueV1": {
+      "$defs": {
+        "AccessibilityRequirementV1": {
+          "additionalProperties": false,
+          "properties": {
+            "applies_to": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Applies To",
+              "type": "string"
+            },
+            "category": {
+              "enum": [
+                "keyboard",
+                "focus",
+                "name_role_value",
+                "status",
+                "error",
+                "non_color",
+                "target",
+                "contrast",
+                "motion"
+              ],
+              "title": "Category",
+              "type": "string"
+            },
+            "conformance_claim": {
+              "const": false,
+              "default": false,
+              "title": "Conformance Claim",
+              "type": "boolean"
+            },
+            "evidence_kind": {
+              "enum": [
+                "static",
+                "generated",
+                "future_manual"
+              ],
+              "title": "Evidence Kind",
+              "type": "string"
+            },
+            "requirement": {
+              "maxLength": 512,
+              "minLength": 8,
+              "title": "Requirement",
+              "type": "string"
+            },
+            "requirement_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Requirement Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "requirement_id",
+            "applies_to",
+            "category",
+            "requirement",
+            "evidence_kind"
+          ],
+          "title": "AccessibilityRequirementV1",
+          "type": "object"
+        },
+        "UiStateV1": {
+          "additionalProperties": false,
+          "properties": {
+            "actions": {
+              "items": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                "type": "string"
+              },
+              "maxItems": 16,
+              "title": "Actions",
+              "type": "array"
+            },
+            "announcement": {
+              "enum": [
+                "none",
+                "polite",
+                "assertive"
+              ],
+              "title": "Announcement",
+              "type": "string"
+            },
+            "focus_rule": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Focus Rule",
+              "type": "string"
+            },
+            "generated_only": {
+              "const": true,
+              "default": true,
+              "title": "Generated Only",
+              "type": "boolean"
+            },
+            "non_color_indicator": {
+              "const": true,
+              "default": true,
+              "title": "Non Color Indicator",
+              "type": "boolean"
+            },
+            "source_fact": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Source Fact",
+              "type": "string"
+            },
+            "state": {
+              "enum": [
+                "loading",
+                "empty",
+                "partial",
+                "stale",
+                "degraded",
+                "denied",
+                "conflict",
+                "failure",
+                "recovery",
+                "correction",
+                "success"
+              ],
+              "title": "State",
+              "type": "string"
+            },
+            "state_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "State Id",
+              "type": "string"
+            },
+            "view": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "View",
+              "type": "string"
+            },
+            "visible_message": {
+              "maxLength": 256,
+              "minLength": 1,
+              "title": "Visible Message",
+              "type": "string"
+            }
+          },
+          "required": [
+            "state_id",
+            "view",
+            "state",
+            "source_fact",
+            "visible_message",
+            "actions",
+            "focus_rule",
+            "announcement"
+          ],
+          "title": "UiStateV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "UI_implemented": {
+          "const": false,
+          "default": false,
+          "title": "Ui Implemented",
+          "type": "boolean"
+        },
+        "accessibility_conformance_claim": {
+          "const": false,
+          "default": false,
+          "title": "Accessibility Conformance Claim",
+          "type": "boolean"
+        },
+        "contract_type": {
+          "const": "hcam.handoff.ui-accessibility.v1",
+          "default": "hcam.handoff.ui-accessibility.v1",
+          "title": "Contract Type",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "requirements": {
+          "items": {
+            "$ref": "#/$defs/AccessibilityRequirementV1"
+          },
+          "maxItems": 4096,
+          "title": "Requirements",
+          "type": "array"
+        },
+        "states": {
+          "items": {
+            "$ref": "#/$defs/UiStateV1"
+          },
+          "maxItems": 4096,
+          "title": "States",
+          "type": "array"
+        }
+      },
+      "required": [
+        "states",
+        "requirements"
+      ],
+      "title": "UiAccessibilityCatalogueV1",
+      "type": "object"
+    },
+    "UiStateV1": {
+      "additionalProperties": false,
+      "properties": {
+        "actions": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "type": "string"
+          },
+          "maxItems": 16,
+          "title": "Actions",
+          "type": "array"
+        },
+        "announcement": {
+          "enum": [
+            "none",
+            "polite",
+            "assertive"
+          ],
+          "title": "Announcement",
+          "type": "string"
+        },
+        "focus_rule": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Focus Rule",
+          "type": "string"
+        },
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "non_color_indicator": {
+          "const": true,
+          "default": true,
+          "title": "Non Color Indicator",
+          "type": "boolean"
+        },
+        "source_fact": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Source Fact",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "loading",
+            "empty",
+            "partial",
+            "stale",
+            "degraded",
+            "denied",
+            "conflict",
+            "failure",
+            "recovery",
+            "correction",
+            "success"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "state_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "State Id",
+          "type": "string"
+        },
+        "view": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "View",
+          "type": "string"
+        },
+        "visible_message": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Visible Message",
+          "type": "string"
+        }
+      },
+      "required": [
+        "state_id",
+        "view",
+        "state",
+        "source_fact",
+        "visible_message",
+        "actions",
+        "focus_rule",
+        "announcement"
+      ],
+      "title": "UiStateV1",
+      "type": "object"
+    },
+    "WorkflowStepV1": {
+      "additionalProperties": false,
+      "properties": {
+        "depends_on": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+            "type": "string"
+          },
+          "maxItems": 16,
+          "title": "Depends On",
+          "type": "array"
+        },
+        "failure_codes": {
+          "items": {
+            "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+            "type": "string"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Failure Codes",
+          "type": "array"
+        },
+        "operation_ref": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Operation Ref",
+          "type": "string"
+        },
+        "step_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Step Id",
+          "type": "string"
+        },
+        "success_state": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Success State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "step_id",
+        "operation_ref",
+        "depends_on",
+        "success_state",
+        "failure_codes"
+      ],
+      "title": "WorkflowStepV1",
+      "type": "object"
+    },
+    "WorkflowV1": {
+      "$defs": {
+        "WorkflowStepV1": {
+          "additionalProperties": false,
+          "properties": {
+            "depends_on": {
+              "items": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+                "type": "string"
+              },
+              "maxItems": 16,
+              "title": "Depends On",
+              "type": "array"
+            },
+            "failure_codes": {
+              "items": {
+                "pattern": "^[a-z][a-z0-9_.-]{0,95}$",
+                "type": "string"
+              },
+              "maxItems": 16,
+              "minItems": 1,
+              "title": "Failure Codes",
+              "type": "array"
+            },
+            "operation_ref": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Operation Ref",
+              "type": "string"
+            },
+            "step_id": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Step Id",
+              "type": "string"
+            },
+            "success_state": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+              "title": "Success State",
+              "type": "string"
+            }
+          },
+          "required": [
+            "step_id",
+            "operation_ref",
+            "depends_on",
+            "success_state",
+            "failure_codes"
+          ],
+          "title": "WorkflowStepV1",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "generated_only": {
+          "const": true,
+          "default": true,
+          "title": "Generated Only",
+          "type": "boolean"
+        },
+        "operational": {
+          "const": false,
+          "default": false,
+          "title": "Operational",
+          "type": "boolean"
+        },
+        "steps": {
+          "items": {
+            "$ref": "#/$defs/WorkflowStepV1"
+          },
+          "maxItems": 64,
+          "minItems": 1,
+          "title": "Steps",
+          "type": "array"
+        },
+        "workflow_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+          "title": "Workflow Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "workflow_id",
+        "steps"
+      ],
+      "title": "WorkflowV1",
+      "type": "object"
+    }
+  },
+  "operational": false,
+  "schema_version": "hcam.phase4.p4_7.acceptance-contracts.v1"
+}

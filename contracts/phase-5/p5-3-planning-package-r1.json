@@ -1,0 +1,142 @@
+{
+  "schema_version": "hcam.phase5.p5_3.reconciled_planning_package.v1",
+  "package_id": "P5.3-PLANNING-R1",
+  "status": "non_effective_owner_acceptance_pending",
+  "effective": false,
+  "prepared_on": "2026-09-08",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "392a52ce982dd90b5a30de44843a5dfa552956c1",
+  "planning_authority": {
+    "decision_id": "D-P5.3-PLAN-AUTH",
+    "path": "contracts/phase-5/p5-3-plan-authorization.json",
+    "sha256": "4A71F16477C3486954897FA7B93FF1C669E0BFDBD8636735AE04056C45A0C05E",
+    "single_checkpoint_commit_consumed_by": "392a52ce982dd90b5a30de44843a5dfa552956c1"
+  },
+  "supersedes_for_current_planning": {
+    "package_id": "P5.3-PLANNING-R0",
+    "path": "contracts/phase-5/p5-3-planning-package.json",
+    "sha256": "5EF0C24479157668C2236603B2177A5F38001BDF927EA249A1623D0EEB4D281B",
+    "preserved_byte_exact": true
+  },
+  "accepted_predecessor": {
+    "subphase": "P5.2",
+    "acceptance_record": "contracts/phase-5/p5-2-acceptance.json",
+    "acceptance_record_sha256": "86D53960D131056F83CA25C12B73D4BF12DD39817522902AC03A4AA20B9A448F",
+    "evidence_package_sha256": "6C58CFA4AB5076A28A1E6E43D8E9AD670D74C9398678402F11E5E7BF16E8B024",
+    "canonical_component_digest": "FB4DCC36E49DECBF6247158BC5DBDA77868FCB0838545C03E230993262939270",
+    "technical_commit": "6b1a649bd6855efbdcfb6b7c79d708981077864b",
+    "acceptance_commit": "eb08c3758733676d72678535d27c8512e75f9407"
+  },
+  "component_digest_algorithm": "Sort components by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "FA6A5E8A4BDC87F6F380B617B6AD521CD4225305E9CB9F54DD3CA91479A29707",
+  "components": [
+    {
+      "path": "contracts/phase-5/p5-3-owner-decisions.json",
+      "bytes": 6299,
+      "sha256": "E9473F1520CD9B6D647CC2A6D8A2BC07ECDBAC3A2B065175E7F165F93A169A8A"
+    },
+    {
+      "path": "contracts/phase-5/p5-3-planning-package.json",
+      "bytes": 8478,
+      "sha256": "5EF0C24479157668C2236603B2177A5F38001BDF927EA249A1623D0EEB4D281B"
+    },
+    {
+      "path": "docs/phase-5/current-status-r13.md",
+      "bytes": 2405,
+      "sha256": "B210F2DE702575502062605516FDD4F45FA0B075ED9627FBAF0587E815035AFF"
+    },
+    {
+      "path": "docs/phase-5/p5-3-reconciled-planning-r1.md",
+      "bytes": 9647,
+      "sha256": "208F175E1D39E84F84ECEE6F140EF7575A1812E5989CC6AC736B70B0B2803C60"
+    }
+  ],
+  "owner_decisions": {
+    "record_id": "P5.3-OWNER-DECISIONS-R0",
+    "path": "contracts/phase-5/p5-3-owner-decisions.json",
+    "sha256": "E9473F1520CD9B6D647CC2A6D8A2BC07ECDBAC3A2B065175E7F165F93A169A8A",
+    "source_statement_sha256": "7C5FE386091FFD8F6ED82354372A87547DD477BF9C3EF4A3D7FAA69F23352692",
+    "selection_profile": "D/A/A/A/A/A/A/A/A/A/A/A",
+    "selection_count": 12
+  },
+  "resolved_product_hierarchy": {
+    "primary_dashboard": "Command_Center",
+    "camera_owner": "Operations",
+    "Operations_pages": ["Camera_Catalogue", "Camera_Detail", "Stream_Diagnostics"],
+    "connected_media_surfaces": ["Live_Workspace", "Monitor_Wall"],
+    "shared_camera_live_domain": true,
+    "separate_source_of_truth_created": false
+  },
+  "resolved_architecture": {
+    "browser_media_boundary": "same_origin_HCAM_media_edge_with_opaque_short_lived_per_stream_grants",
+    "internal_locator_browser_exposure": false,
+    "HLS": "mandatory_typed_hls_js_MSE_baseline_with_guarded_safe_native_HLS",
+    "WHEP": "optional_default_off_draft_ietf_wish_whep_04_with_HLS_fallback_and_kill_switch",
+    "effective_profile": "minimum_of_server_role_workspace_stream_browser_advisory_and_measured_resource_ceilings",
+    "scheduler": "weighted_deterministic_intent_pin_focus_visibility_health_and_budget_admission",
+    "recovery": "typed_bounded_retry_cooldown_circuit_breaker_fallback_and_manual_terminal_recovery",
+    "session": "opaque_per_stream_short_expiry_renewal_revocation_idempotent_close_and_lease_recovery",
+    "layout": "revisioned_server_side_department_user_scope_with_ETag_and_memory_only_fallback",
+    "controls": "view_only_no_recording_snapshot_download_export_print_PTZ_or_analytics",
+    "accessibility": "synchronized_authoritative_list_table_status_equivalence",
+    "validation": "deterministic_generated_C1_C4_C10_with_later_separate_owned_lab_gate"
+  },
+  "preserved_contracts": [
+    "Phase_2_camera_stream_health_probe_capability_RBAC_audit_and_control_boundaries",
+    "isolated_Phase_2_5_Sentinel_lab_non_dependency_boundary",
+    "Phase_3_dynamic_profiles_change_capacity_and_quality_not_authority",
+    "P5_1_typed_client_session_storage_security_accessibility_and_observability_boundaries",
+    "P5_2_Command_primary_GIS_connected_opaque_handoff_contract",
+    "low_resource_functional_completeness",
+    "twenty_producer_gaps_remain_open_until_evidenced",
+    "generated_only_validation_until_separate_owned_lab_authority"
+  ],
+  "producer_gap_count": 20,
+  "threat_count": 30,
+  "implementation_workstreams": [
+    {"id": "P5.3-W1", "title": "contracts_and_generated_fixtures", "weight": 2.0},
+    {"id": "P5.3-W2", "title": "catalogue_detail_and_diagnostics", "weight": 2.0},
+    {"id": "P5.3-W3", "title": "playback_control_and_media_edge_contracts", "weight": 2.5},
+    {"id": "P5.3-W4", "title": "HLS_baseline_and_capability_selection", "weight": 2.5},
+    {"id": "P5.3-W5", "title": "provisional_WHEP_and_HLS_fallback", "weight": 1.5},
+    {"id": "P5.3-W6", "title": "live_workspace_monitor_wall_and_layouts", "weight": 2.5},
+    {"id": "P5.3-W7", "title": "accessibility_security_profiles_and_signals", "weight": 1.5},
+    {"id": "P5.3-W8", "title": "validation_evidence_and_acceptance", "weight": 1.5}
+  ],
+  "frozen_progress_model": {
+    "P5_3_total_product_points": 16,
+    "phase_5_total_product_points": 100,
+    "planning_items": 8,
+    "owner_decision_items": 12,
+    "planning_and_decisions_award_product_points": false,
+    "scope_or_weight_rebaseline": false
+  },
+  "progress": {
+    "owner_decisions": {"earned": 12, "total": 12, "percent": 100.0, "change_percentage_points": 100.0, "awards_product_points": false},
+    "P5_3_planning": {"earned": 8, "total": 8, "percent": 100.0, "change_percentage_points": 0.0, "awards_product_points": false},
+    "P5_3_product": {"earned": 0, "total": 16, "percent": 0.0, "change_percentage_points": 0.0},
+    "phase_5_product": {"earned": 32, "total": 100, "percent": 32.0, "change_percentage_points": 0.0}
+  },
+  "next_gate": {
+    "exact_owner_planning_acceptance": true,
+    "non_effective_exact_start_package_after_acceptance": true,
+    "separate_exact_start_authorization_before_implementation": true
+  },
+  "owner_planning_acceptance_recorded": false,
+  "start_package_preparation_authorized": false,
+  "start_authorization_recorded": false,
+  "product_or_test_implementation_authorized": false,
+  "dependency_resolution_install_or_lockfile_change_authorized": false,
+  "source_import_authorized": false,
+  "backend_route_or_migration_authorized": false,
+  "frontend_browser_or_media_runtime_authorized": false,
+  "playback_session_issuance_authorized": false,
+  "provider_network_Sentinel_camera_or_media_authorized": false,
+  "recording_snapshot_download_export_print_or_PTZ_authorized": false,
+  "Government_or_private_data_authorized": false,
+  "model_dataset_artifact_or_inference_authorized": false,
+  "operational_action_authorized": false,
+  "container_Kubernetes_deployment_or_P5_4_authorized": false,
+  "additional_commit_authorized": false,
+  "remote_git_authorized": false
+}

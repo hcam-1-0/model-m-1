@@ -1,0 +1,14 @@
+{
+  "schema_version": "hcam.phase5.p5_5.dependency_baseline.v1",
+  "generated_on": "2026-09-09",
+  "existing_locked_dependencies_only": true,
+  "lockfile_sha256": "7F3E3F0A8B29C5083E300641A68F0325D8D2E8BD2ADE940E2B6D03C3CDEBBB62",
+  "sbom_sha256": "D0F1F1180716383334BDF9C1F6FA9A9F129EED4D7D6F297C893AD5F7D6C29D00",
+  "expected_lockfile_sha256": "7F3E3F0A8B29C5083E300641A68F0325D8D2E8BD2ADE940E2B6D03C3CDEBBB62",
+  "lockfile_unchanged": true,
+  "package_manager_boundary_incident": "eight_existing_lockfile_cache_downloads_non_evidentiary",
+  "remediation": "direct_hash_bound_node_and_existing_node_modules_only",
+  "further_package_manager_execution": false,
+  "current_vulnerability_refresh_claim": false,
+  "result": "pass"
+}

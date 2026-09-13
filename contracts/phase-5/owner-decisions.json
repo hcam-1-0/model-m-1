@@ -1,0 +1,33 @@
+{
+  "schema_version": "hcam.phase5.owner-decisions.v1",
+  "record_id": "P5.0-OWNER-DECISIONS-R0",
+  "recorded_on": "2026-09-06",
+  "authorized_by": "mayank-admin",
+  "source_package_id": "P5.0-PLANNING-R0",
+  "source_package_sha256": "819BD11D580D82E64D9D67438B743D95430688A2C6AE7E436B489F9BCD9D2041",
+  "selections": [
+    {"decision_id": "D-P5.0-001", "selection": ["B"], "resolution": "independently_buildable_portal_apps_in_one_monorepo"},
+    {"decision_id": "D-P5.0-002", "selection": ["A"], "resolution": "react_typescript_vite"},
+    {"decision_id": "D-P5.0-003", "selection": ["A"], "resolution": "same_origin_backend_for_frontend_with_server_managed_session"},
+    {"decision_id": "D-P5.0-004", "selection": ["A", "B"], "resolution": "HTTP_authoritative_query_cache_with_bounded_event_invalidation_and_non_authoritative_WebSocket_projection"},
+    {"decision_id": "D-P5.0-005", "selection": ["D"], "resolution": "authoritative_MapLibre_2D_with_guarded_optional_3D_analysis_adapter"},
+    {"decision_id": "D-P5.0-006", "selection": ["C"], "resolution": "typed_playback_adapter_with_HLS_and_provisional_WHEP_lanes"},
+    {"decision_id": "D-P5.0-007", "selection": ["A"], "resolution": "HCAM_tokens_with_reviewed_accessible_headless_primitives"},
+    {"decision_id": "D-P5.0-008", "selection": ["A"], "resolution": "typed_server_workspaces_with_local_non_sensitive_display_preferences"},
+    {"decision_id": "D-P5.0-009", "selection": ["A"], "resolution": "English_Gujarati_Hindi_architecture_from_first_component"},
+    {"decision_id": "D-P5.0-010", "selection": ["A"], "resolution": "deterministic_policy_ceiling_capability_resolver"},
+    {"decision_id": "D-P5.0-011", "selection": ["A"], "resolution": "layered_automated_and_manual_evidence"},
+    {"decision_id": "D-P5.0-012", "selection": ["A"], "resolution": "shared_foundation_then_bounded_vertical_portal_slices"}
+  ],
+  "resolved_profile": "B/A/A/A+B/D/C/A/A/A/A/A/A",
+  "precedence_rules": [
+    "For D-P5.0-004, HTTP responses and server-enforced commands remain authoritative.",
+    "WebSocket messages are scoped freshness and invalidation hints plus ephemeral normalized projections; they never grant authority, confirm a mutation, or bypass an HTTP revalidation.",
+    "When the event channel is missing, duplicated, delayed, gapped, reordered, unknown-version, or degraded, the client falls back to bounded HTTP revalidation and visibly labels freshness.",
+    "The final-ui repository is the approved visual and interaction baseline for the command shell, live monitor, GIS workspace, and shared operational design language, but not a canonical API, security, accessibility, state-management, or packaging implementation."
+  ],
+  "planning_reconciliation_authorized": true,
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "remote_git_authorized": false
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "hcam.phase5.p5_6.admin_contracts.v1",
+  "marker": "HCAM_GENERATED_ONLY_P5_6",
+  "generated_at": "2026-09-10T09:00:00.000Z",
+  "primary_dashboard": "H_CAM_Command_Center",
+  "specialist_surface": "H_CAM_Admin_Center",
+  "resource_kinds": [
+    "organization",
+    "department",
+    "user",
+    "membership",
+    "role",
+    "permission",
+    "policy",
+    "camera",
+    "stream",
+    "provider",
+    "configuration",
+    "resource_profile",
+    "retention_policy"
+  ],
+  "change_lifecycle": [
+    "draft",
+    "submitted",
+    "independent_review",
+    "approved_non_effective",
+    "rejected",
+    "superseded"
+  ],
+  "authorization": {
+    "default_deny": true,
+    "server_authoritative_rbac": true,
+    "constrained_abac": true,
+    "postgresql_rls_equivalence": true,
+    "department_purpose_capability_and_object_scope": true
+  },
+  "concurrency": {
+    "strong_etag": true,
+    "revision": true,
+    "policy_revision": true,
+    "idempotency_key": true,
+    "receipt": true,
+    "deliberate_reconsideration_after_conflict": true
+  },
+  "separation_of_duty": {
+    "static_and_dynamic": true,
+    "self_approval_denied": true,
+    "independent_approval_required": true
+  },
+  "boundaries": {
+    "effective_mutation": false,
+    "automatic_activation": false,
+    "break_glass": false,
+    "secret_resolution": false,
+    "camera_stream_or_provider_operation": false,
+    "retention_hold_deletion_export_or_deployment_operation": false
+  }
+}

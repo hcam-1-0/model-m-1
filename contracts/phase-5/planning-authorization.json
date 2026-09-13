@@ -1,0 +1,39 @@
+{
+  "schema_version": "hcam.phase5.planning-authorization.v1",
+  "decision_id": "D-P5.0-PLAN-AUTH",
+  "status": "owner_authorized",
+  "effective": true,
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-09-06",
+  "planning_branch": "codex/phase5-operator-application-planning",
+  "accepted_predecessor_commit": "96a902315e78c184e92df9ebe5bcef1e336eab38",
+  "authorized_scope": [
+    "phase5_operator_application_planning",
+    "read_only_repository_analysis",
+    "official_primary_source_research",
+    "operator_workflows",
+    "multi_portal_ui_architecture",
+    "command_center",
+    "live_monitoring",
+    "GIS",
+    "alerts",
+    "investigations",
+    "evidence_views",
+    "accessibility",
+    "security",
+    "API_integration",
+    "degraded_states",
+    "implementation_sequencing"
+  ],
+  "continuing_prohibitions": [
+    "implementation",
+    "cameras_or_media",
+    "Government_or_private_data",
+    "models_or_inference",
+    "operational_actions",
+    "deployment",
+    "remote_Git"
+  ],
+  "owner_statement_sha256": "F8AFD9777FB07F9239C588BEE4BA71258249B23500FC3EC1BD3F4C2F0050AD44",
+  "owner_statement": "D-P5.0-PLAN-AUTH: I, mayank-admin, authorize planning, read-only repository analysis, and official primary-source research for Phase 5 Operator Application only. This includes operator workflows, multi-portal UI architecture, command center, live monitoring, GIS, alerts, investigations, evidence views, accessibility, security, API integration, degraded states, and implementation sequencing. It does not authorize implementation, cameras or media, Government or private data, models or inference, operational actions, deployment, or remote Git."
+}

@@ -1,0 +1,138 @@
+{
+  "schema_version": "hcam.phase5.p5_5.owner_decisions.v1",
+  "record_id": "P5.5-OWNER-DECISIONS-R0",
+  "status": "owner_selected_for_reconciliation",
+  "effective_for_reconciliation": true,
+  "implementation_effective": false,
+  "selected_by": "mayank-admin",
+  "selected_on": "2026-09-09",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "7bd579cf8a42fafd48f9cc1752bb12656587b19d",
+  "source_statement": {
+    "normalized_statement": "D-P5.5-001: A D-P5.5-002: A D-P5.5-003: A D-P5.5-004: A D-P5.5-005: A D-P5.5-006: A D-P5.5-007: A D-P5.5-008: A D-P5.5-009: A D-P5.5-010: A D-P5.5-011: A D-P5.5-012: A",
+    "sha256": "EC3725EE9605DFF74F600E7C28B3C2960C29EF4DE194CB07CA29979FB9F32AB4",
+    "normalization": "Paragraph whitespace collapsed to one ASCII space; UTF-8 without BOM; no terminal newline."
+  },
+  "selection_profile": "A/A/A/A/A/A/A/A/A/A/A/A",
+  "selection_count": 12,
+  "selections": [
+    {
+      "id": "D-P5.5-001",
+      "selected": "A",
+      "resolved_meaning": "Keep Command Center primary, add a connected Investigation Center for investigation workflows, and expose Evidence Desk as a connected domain requiring an independent authorization check."
+    },
+    {
+      "id": "D-P5.5-002",
+      "selected": "A",
+      "resolved_meaning": "Use bounded typed investigation views, server-authoritative aggregates and sorts, and guarded saved filters for recent changes, pending corrections, incomplete reconstruction, unavailable evidence, required review, and policy-preview states."
+    },
+    {
+      "id": "D-P5.5-003",
+      "selected": "A",
+      "resolved_meaning": "Make monotonic record sequence authoritative for append history and provide a separately labeled event-time view that preserves source, range or precision, clock state, ties, and unknown values."
+    },
+    {
+      "id": "D-P5.5-004",
+      "selected": "A",
+      "resolved_meaning": "Use a server-paginated semantic table or list with stable anchors as the authoritative timeline and permit only an optional bounded visual lane over the current page without requiring a new dependency."
+    },
+    {
+      "id": "D-P5.5-005",
+      "selected": "A",
+      "resolved_meaning": "Use server-authoritative exact-revision reconstruction with revision, digest, completeness and limitations, plus typed field comparison and explicit warnings for later corrections or missing components."
+    },
+    {
+      "id": "D-P5.5-006",
+      "selected": "A",
+      "resolved_meaning": "Present correction and retraction as append-only predecessor and successor records with exact changed fields and per-target pending, applied, blocked, failed, or superseded impact closure."
+    },
+    {
+      "id": "D-P5.5-007",
+      "selected": "A",
+      "resolved_meaning": "Present reference identity, availability, digest observation, provenance closure, custody history, signature or timestamp observation, access, and legal assessment as separate orthogonal states with source, time, method, freshness, and limitations."
+    },
+    {
+      "id": "D-P5.5-008",
+      "selected": "A",
+      "resolved_meaning": "Use a bounded typed provenance graph with authoritative node, edge, and custody tables; keep custody as a separate timeline and treat generated PROV as a lossy projection with import and conformance claims disabled."
+    },
+    {
+      "id": "D-P5.5-009",
+      "selected": "A",
+      "resolved_meaning": "Expose only minimized opaque source references and explicit source-not-resolved and media-not-rendered states; source resolution, rendering, copying, downloading, printing, exporting, deletion, and modification remain absent."
+    },
+    {
+      "id": "D-P5.5-010",
+      "selected": "A",
+      "resolved_meaning": "Use a generated-only non-operative Policy Preview Studio for policy references, targets, conflicts, simulated outcomes, residuals, inclusion or exclusion reasons, and completeness, with every action, approval, signing, delivery, download, and print control absent."
+    },
+    {
+      "id": "D-P5.5-011",
+      "selected": "A",
+      "resolved_meaning": "Require a strong ETag, expected revision, idempotency key and immutable receipt for consequential commands; bind drafts to exact state, use events only for invalidation, refetch HTTP authority on conflict, and require deliberate reconsideration."
+    },
+    {
+      "id": "D-P5.5-012",
+      "selected": "A",
+      "resolved_meaning": "Retain the existing locked dependency baseline and require deterministic generated-only contract, component, browser, accessibility, scope, teardown, threat, profile, C1, C10, C50, replay, hash, dependency, and repository validation."
+    }
+  ],
+  "precedence_rules": [
+    "Command_Center_remains_primary_Investigation_Center_is_connected_and_Evidence_Desk_requires_independent_authorization",
+    "record_sequence_is_authoritative_and_event_time_is_qualified_context",
+    "server_revision_digest_completeness_and_HTTP_state_override_client_cache_visualization_or_narrative",
+    "evidence_identity_availability_integrity_provenance_custody_access_signature_and_legal_assessment_remain_orthogonal",
+    "authoritative_tables_and_typed_records_override_visual_lane_graph_badge_score_or_summary",
+    "corrections_and_retractions_are_append_only_and_never_erase_historical_state",
+    "opaque_references_do_not_authorize_source_resolution_copy_render_download_print_export_delete_hold_release_or_modify",
+    "policy_views_are_generated_nonoperative_previews_and_never_execute_a_retention_hold_deletion_disposition_or_export_action",
+    "resource_profiles_may_change_rendering_capacity_but_never_authority_semantics_truth_safety_or_accessibility"
+  ],
+  "progress": {
+    "owner_decisions": {
+      "earned": 12,
+      "total": 12,
+      "percent": 100.0,
+      "change_percentage_points": 100.0,
+      "awards_product_points": false
+    },
+    "P5_5_planning": {
+      "earned": 8,
+      "total": 8,
+      "percent": 100.0,
+      "change_percentage_points": 0.0,
+      "awards_product_points": false
+    },
+    "P5_5_product": {
+      "earned": 0,
+      "total": 15,
+      "percent": 0.0,
+      "change_percentage_points": 0.0
+    },
+    "phase_5_product": {
+      "earned": 63,
+      "total": 100,
+      "percent": 63.0,
+      "change_percentage_points": 0.0
+    }
+  },
+  "continuing_prohibitions": [
+    "planning_acceptance_by_implication",
+    "start_authorization_by_implication",
+    "product_or_test_implementation",
+    "source_import",
+    "dependency_resolution_installation_or_lockfile_change",
+    "backend_route_or_migration",
+    "frontend_or_browser_runtime",
+    "source_or_evidence_resolution_copy_render_download_print_export_delete_modify_hold_or_release",
+    "retention_period_legal_policy_or_operational_policy_decision",
+    "real_investigation_case_identity_or_evidence_data",
+    "model_dataset_artifact_or_inference",
+    "provider_network_camera_or_media_access",
+    "operational_alert_notification_dispatch_enforcement_or_autonomous_action",
+    "container_Kubernetes_or_deployment",
+    "P5_6",
+    "additional_commit_without_new_authority",
+    "remote_Git"
+  ]
+}

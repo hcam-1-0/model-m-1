@@ -1,0 +1,639 @@
+{
+  "schema_version": "hcam.phase5.p5_3.evidence_package.v1",
+  "package_id": "P5.3-EVIDENCE-PACKAGE-R0",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "generated_on": "2026-09-08",
+  "technical_commit": "9d1604a62e4823644064e26d3b11771f8ae526fa",
+  "start_package_sha256": "03D87FD50A6A54619F2A7065809A88DA04BED95B2159B7EE178C41A03A1BDCCA",
+  "bound_input_digest": "8B6A77A935B30751B851F04FB4B5A8273CC1D01A7333F1A33A54E8FF6BDC80FB",
+  "component_digest_algorithm": "Sort paths ordinally; render path|bytes|sha256 with LF separators and no terminal LF; SHA-256 the UTF-8 bytes.",
+  "canonical_component_digest": "216750DA23B72DB31D2737278CCC610D84A2CEA059016CF818413704894EB17A",
+  "component_count": 124,
+  "components": [
+    {
+      "path": "README.md",
+      "bytes": 30927,
+      "sha256": "08072835FDBC156F85B5F8D85C9D48EEF9AFB902C3F624B6F5D8F61698655F1C"
+    },
+    {
+      "path": "contracts/phase-5/p5-3-evidence.json",
+      "bytes": 4845,
+      "sha256": "ABF9CD97F408EA00606A48EBEBE0B47B0B09C53B54D0259427423E83A18A84D5"
+    },
+    {
+      "path": "contracts/phase-5/p5-3/browser-camera-projection.v1.json",
+      "bytes": 2038,
+      "sha256": "42B442541C0DE88B3DA7A0D2B0768AFAF27B832114E465E2B57673B8AD2DAD8B"
+    },
+    {
+      "path": "contracts/phase-5/p5-3/client-media-signal.v1.json",
+      "bytes": 752,
+      "sha256": "781C64F68223391168C375767B7DFF052328B9DA4D3D0DFF2C62B0E3CDF3A46B"
+    },
+    {
+      "path": "contracts/phase-5/p5-3/cross-portal-handoff.v1.json",
+      "bytes": 591,
+      "sha256": "9F63FEEDD21490CAB4EEF8D559171AAA51F7BCD161BBD138543E24DC1718FAE0"
+    },
+    {
+      "path": "contracts/phase-5/p5-3/generated-media-manifest.v1.json",
+      "bytes": 1094,
+      "sha256": "2BDD5C4D3B177CB76F6872276B908C7EF34680F7FB0FAB1675AD519BA6AA61A2"
+    },
+    {
+      "path": "contracts/phase-5/p5-3/media-profile.v1.json",
+      "bytes": 757,
+      "sha256": "3443BD5FAD9C0B887E4F90E7F767B2026F186A7FF7C0D13F27587F2AED2D90DE"
+    },
+    {
+      "path": "contracts/phase-5/p5-3/playback-session.v1.json",
+      "bytes": 1128,
+      "sha256": "0D6186389CF8907C9A9E2A2F362AC7C80DEE90DE9204BB4996C6DD3ED6560219"
+    },
+    {
+      "path": "contracts/phase-5/p5-3/stream-diagnostics.v1.json",
+      "bytes": 835,
+      "sha256": "49CE8261A351EF026AA4CCB71604AC48CBCE1C47761E122F67600965EC6873C9"
+    },
+    {
+      "path": "contracts/phase-5/p5-3/workspace-layout.v1.json",
+      "bytes": 990,
+      "sha256": "BFF66E0545EA06CAB2A5EF123110E1770061ACA50D17013AA1E7EADDC6F1EA2A"
+    },
+    {
+      "path": "docs/phase-5/README.md",
+      "bytes": 17814,
+      "sha256": "501AC11FE793A3394491A628D325D43086C94B534753FE69596B7BAF3F943745"
+    },
+    {
+      "path": "docs/phase-5/current-status-r15.md",
+      "bytes": 2666,
+      "sha256": "9F6AC132EBB5BF09E43BE5360EC6B66BEB6C6C664D451AF7E2B39F86CBD1B5E2"
+    },
+    {
+      "path": "docs/phase-5/implementation-plan.md",
+      "bytes": 19359,
+      "sha256": "4B2632BAE48F346698E43337F3A61F1BCBBE83BADFD5559EF9F1E6AA20CCCDFE"
+    },
+    {
+      "path": "docs/phase-5/p5-3/evidence.md",
+      "bytes": 1717,
+      "sha256": "22F8C53E68E122A06F9F1230F899E531B5D090756FC6EF3351B5DE800A7FF7FF"
+    },
+    {
+      "path": "docs/phase-5/p5-3/implementation.md",
+      "bytes": 4095,
+      "sha256": "6F63F073CB85C110758E2E8AE73470530A81C3B1DC19FBBB7C47339768797CB9"
+    },
+    {
+      "path": "docs/phase-5/p5-3/validation.md",
+      "bytes": 3324,
+      "sha256": "4FFD102637D7DD40A7459A36366E2178568228A7BD1DBE755016F95901547C00"
+    },
+    {
+      "path": "docs/phase-5/status.md",
+      "bytes": 14120,
+      "sha256": "901DF6593C86766C2CE89B161D7233AE0A62D2AA3A26B0FD07C3C85DC2AFB164"
+    },
+    {
+      "path": "fixtures/phase-5/p5-3/c1.generated.v1.json",
+      "bytes": 332,
+      "sha256": "8CE040705DD5FDACB74385EC9BDC74886B131F357D605F46B2CA7A1CCEDBCBB1"
+    },
+    {
+      "path": "fixtures/phase-5/p5-3/c10.generated.v1.json",
+      "bytes": 507,
+      "sha256": "66408DCF9D66C7A586F7328F662C7F5C5932E9D7E52DF9FCA6E622E7A06BBF0A"
+    },
+    {
+      "path": "fixtures/phase-5/p5-3/c4.generated.v1.json",
+      "bytes": 400,
+      "sha256": "329EA718DA157D63D68F0EBEB4E72D4C11E0F2ADD528999CA86CD5A6841217C0"
+    },
+    {
+      "path": "fixtures/phase-5/p5-3/camera-catalogue.generated.v1.json",
+      "bytes": 2379,
+      "sha256": "391600E340C974EE7E1772ADED3491DE3211CA85827A171DC4FAAD360D477CEA"
+    },
+    {
+      "path": "fixtures/phase-5/p5-3/media-generation-plan.generated.v1.json",
+      "bytes": 1093,
+      "sha256": "8D5AD229058A5A8AC04DF2CAF93A9FE544C3A18098113C55747D8FE69A9B7CE6"
+    },
+    {
+      "path": "fixtures/phase-5/p5-3/playback-scenarios.generated.v1.json",
+      "bytes": 933,
+      "sha256": "60A8A82FBC2E97A2372C7B5671DA1771AD2DC8B8AD73B0808BC51D69C00C99AE"
+    },
+    {
+      "path": "fixtures/phase-5/p5-3/replay-manifest.generated.v1.json",
+      "bytes": 547,
+      "sha256": "775A32125A685B994F7CE321511AE4E0C747D9D323D3E7B05C668F2CB6181E0E"
+    },
+    {
+      "path": "fixtures/phase-5/p5-3/security-cases.generated.v1.json",
+      "bytes": 1282,
+      "sha256": "EEB4566E2C26C83DF38121093E7DB47F7F89309F47902F2906E59161A1EABA63"
+    },
+    {
+      "path": "frontend/apps/operations-center/package.json",
+      "bytes": 802,
+      "sha256": "C40174C1D58798C5521831DC2F5FE9746DB7885A9F3DD050FEB4559EF6703BBC"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/app.tsx",
+      "bytes": 5454,
+      "sha256": "77EDB89E6596888E0E993E70DF34949A63E999D8023CDDD20DB5128B5B441CDE"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/admission-budget-strip.tsx",
+      "bytes": 1092,
+      "sha256": "54C3142A734953399C8E91124560C9C1DF309138CFBA6AB0508EAFC8AD3AE220"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/camera-filter-rail.tsx",
+      "bytes": 1946,
+      "sha256": "ADA9A0EDD230614DDE6CFF73BA013D5414B340AA7EAFD0B3FBB8FE43BC1A3D4E"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/camera-health-badge.tsx",
+      "bytes": 213,
+      "sha256": "33E9FEB082B731E98482EE84E7E700EE1504CA545DDD4F6B1157290EF8A487B8"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/capability-summary.tsx",
+      "bytes": 1574,
+      "sha256": "A0870E97AAB3CBEB19E134E21F6228BD46A881117945132C0D4AE09C4BF9D92A"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/diagnostics-timeline.tsx",
+      "bytes": 1796,
+      "sha256": "E203C75216C0D35855871AB008E590F5C47978E05D6620903CC45E7570C10531"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/live-tile.tsx",
+      "bytes": 5678,
+      "sha256": "502F63A2BC8DB21C29865930B93B3CF615D9F5AB29EE53C6F0C5048E9DF76995"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/live-workspace-grid.tsx",
+      "bytes": 1110,
+      "sha256": "881E24751B9F7238FA81E1F1BB379E59F6FEAAB15C7D002C0AEF1EEF52DB031E"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/monitor-wall.tsx",
+      "bytes": 743,
+      "sha256": "56C1A5C1C1819426CD3932B76EDF11D0EFF52620BF545C6829E148F1507961E0"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/player-status.tsx",
+      "bytes": 857,
+      "sha256": "45DC37F85A831B87E4D05433CF1BD2140267428161AC12DBBE90C0AE2C3AED1D"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/state-boundary.tsx",
+      "bytes": 1040,
+      "sha256": "CFAC58EA774D4624B86B03DA6E6C82AAE8027C0190E9F96829F66E1586DAA7AD"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/synchronized-camera-table.tsx",
+      "bytes": 2497,
+      "sha256": "4FE0AA6BCFB691F83A6619CF52B8E3CABA37B6490BDB6E1D681F020628B36B22"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/workspace-toolbar.tsx",
+      "bytes": 1588,
+      "sha256": "BF2B4612AC6507EA99D0C8E3E6BEA157F9FE1E2F93B95E2E354D9A92F50A564E"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/data/camera-live-projections.ts",
+      "bytes": 1692,
+      "sha256": "B56A3C8ED10186B74D683D9DCCE2EBAF71C7293CC1A335E53B38F2DD2D6B9723"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/main.tsx",
+      "bytes": 453,
+      "sha256": "5C9B9D75D6DE7936F6F54EDCC82119F0C247B25075C09ACDF41C06A96CB96C7C"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/camera-catalogue-page.tsx",
+      "bytes": 3139,
+      "sha256": "F251A3B8DA0518C289BF099E673BA42A32F995BFA267D52DE05AC22B8A0FF8DD"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/camera-detail-page.tsx",
+      "bytes": 2680,
+      "sha256": "77D05BB9946765524C728BAB8ED7AE4C650BC83515CFF52F052701F334881245"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/live-workspace-page.tsx",
+      "bytes": 2182,
+      "sha256": "514772340054AEBEA5300F7A3C73A2229841883735BF8266DF4C20D1D48675F3"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/monitor-wall-page.tsx",
+      "bytes": 753,
+      "sha256": "E1B2B9355959DEDE9D12F88FA61A91BB48D3F259BFAA7B8E08427770FB7EF623"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/stream-diagnostics-page.tsx",
+      "bytes": 2333,
+      "sha256": "2310B80DFDC0A6EA7457C54372B4BD8DF76EB5A28996EB259442CFAE18EB004D"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/workspace-manager-page.tsx",
+      "bytes": 3553,
+      "sha256": "567C95BD40195662E0806A26CA4EFD942891350CCED2E1949BA54923530C6658"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/routes.tsx",
+      "bytes": 1407,
+      "sha256": "942F186A345E414BAB52B48632743A8B9713FD79D799DA0751405EC307BE8F20"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/styles.css",
+      "bytes": 25593,
+      "sha256": "40BBB6B526CA820C62CC21276458BD731892BA33F1DA27BC48F1A98207A0B2AA"
+    },
+    {
+      "path": "frontend/dependency-evidence.json",
+      "bytes": 2623,
+      "sha256": "9E1D68EF30C844605FFBAC4FBCD9604505B34DFDD8838BFCD0ACF94404367346"
+    },
+    {
+      "path": "frontend/dependency-lock-candidate.json",
+      "bytes": 23550,
+      "sha256": "7636C45EC457FB564AF71B4D80A9FD377E5D8BFD381821D630EBA9FCD662322A"
+    },
+    {
+      "path": "frontend/evidence/p5-3-dependency-audit.json",
+      "bytes": 686,
+      "sha256": "78D09751D593895B022F995E2C82761A872E1D4E628FAC7177C03A29B40EA78B"
+    },
+    {
+      "path": "frontend/evidence/p5-3-media-manifest.json",
+      "bytes": 997,
+      "sha256": "7C22C1E213D03CA3812BA9E9B15A8F010B646D76FE1E807D091B8744B93114A7"
+    },
+    {
+      "path": "frontend/evidence/p5-3-source-manifest.json",
+      "bytes": 45546,
+      "sha256": "C49573B334ED512610CC849128A05B75E3666C3E6DCF1699B8CEEEC81EDBE1B8"
+    },
+    {
+      "path": "frontend/evidence/p5-3-validation-summary.json",
+      "bytes": 7029,
+      "sha256": "F06C65D2FF53D6E4201C0F6FEAF488D185CEB9FAB885549F7959AF0AC1243533"
+    },
+    {
+      "path": "frontend/evidence/p5-3-visual-manifest.json",
+      "bytes": 1102,
+      "sha256": "8A6290BE0D9B631A336404AD4756A93517DC07A2AEF0F2969AC6C8768A953D38"
+    },
+    {
+      "path": "frontend/package.json",
+      "bytes": 3607,
+      "sha256": "463E480DD07547515021115FA619D44D7DCA151063B0E7A510F2C0E46D27D5B1"
+    },
+    {
+      "path": "frontend/packages/camera-live-domain/package.json",
+      "bytes": 270,
+      "sha256": "5EBEAF582FF2127D0EC53EBAEABFDD8F8E2567F67371722FB3A9ABF1305BBDB2"
+    },
+    {
+      "path": "frontend/packages/camera-live-domain/src/admission.ts",
+      "bytes": 3361,
+      "sha256": "E10E8EDB5DA2C22D0ABDC8309DEBBD3801625CA9A61BA1EBDDB18915D9C16D18"
+    },
+    {
+      "path": "frontend/packages/camera-live-domain/src/contracts.ts",
+      "bytes": 4733,
+      "sha256": "7BFD922CEA2C3DEF4C7896E5BEFDEC16BAE0915DF1158D61FCAC2CE802D45423"
+    },
+    {
+      "path": "frontend/packages/camera-live-domain/src/handoff.ts",
+      "bytes": 1341,
+      "sha256": "7B1987BCDAA41C0596D8190D9AAA301D23568A5812F9DCD9E8C6A10429B56863"
+    },
+    {
+      "path": "frontend/packages/camera-live-domain/src/index.ts",
+      "bytes": 221,
+      "sha256": "4E872A0A20FD918C506C0F11ECF2A5EA254318A8CF8D1F02A5E59E98F672BF15"
+    },
+    {
+      "path": "frontend/packages/camera-live-domain/src/layouts.ts",
+      "bytes": 1501,
+      "sha256": "7448B4AFE528B6577BA00ECD7FC266CE1387A508DE5D8293F9DE8EA45BA92B37"
+    },
+    {
+      "path": "frontend/packages/camera-live-domain/src/profiles.ts",
+      "bytes": 1593,
+      "sha256": "F94BE0BAE581EF660E61D94634200723644E8F213357D4ECAE106FDF48CADFB0"
+    },
+    {
+      "path": "frontend/packages/camera-live-domain/src/reasons.ts",
+      "bytes": 1003,
+      "sha256": "DBAD7774824A9D7E595DEAC09D5E6C3D4F648AA21AA46D967B9DF25BBB60C5E1"
+    },
+    {
+      "path": "frontend/packages/camera-live-domain/src/scheduler.ts",
+      "bytes": 1319,
+      "sha256": "0ABB1A1C705D76979DD8F4CF3077B16B951194727F4DD4BE724400F78D7CF439"
+    },
+    {
+      "path": "frontend/packages/camera-live-domain/src/state.ts",
+      "bytes": 1254,
+      "sha256": "17CF1AE7A3011AD6150AD952D1AB655F8E15B760CCD680370E5F95B0BAC28DEF"
+    },
+    {
+      "path": "frontend/packages/camera-live-domain/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/capabilities/src/index.ts",
+      "bytes": 5049,
+      "sha256": "A3AA274DD358DAB72791B1284BF505185C84350C063940EA93061193E36142FE"
+    },
+    {
+      "path": "frontend/packages/i18n/src/index.ts",
+      "bytes": 12737,
+      "sha256": "69FB6E55B98F24269AC03469C8153C41B2F73A61EC3FBB8E1E0ED565DED040AE"
+    },
+    {
+      "path": "frontend/packages/media-adapters/package.json",
+      "bytes": 350,
+      "sha256": "C5DD9664A3BD9111BAE034C264BE3D7E324BD67BC71EB4DDA1457D1570132C31"
+    },
+    {
+      "path": "frontend/packages/media-adapters/src/capabilities.ts",
+      "bytes": 691,
+      "sha256": "95A154A8D7C7BB89F04B69FBAAB184AAF55DA718F68D65C79BB3B0992E4CD8BF"
+    },
+    {
+      "path": "frontend/packages/media-adapters/src/hls-adapter.ts",
+      "bytes": 3638,
+      "sha256": "F0BEFDCEBAA8A3BC3374F3083B0B8E7754EEA819C2303186BBFF8C08C24D7CC7"
+    },
+    {
+      "path": "frontend/packages/media-adapters/src/index.ts",
+      "bytes": 540,
+      "sha256": "36548D06EEE3F372A3B49E6DB13B6CBFB296AF73386275189674BDAAE351F377"
+    },
+    {
+      "path": "frontend/packages/media-adapters/src/native-hls-adapter.ts",
+      "bytes": 1791,
+      "sha256": "C51124D0FBEA430D2DA45B802C0208C98F07F5B6910FE671BBF6C5C69B77A87C"
+    },
+    {
+      "path": "frontend/packages/media-adapters/src/no-media-adapter.ts",
+      "bytes": 306,
+      "sha256": "CC5368F1BFCA881A0B88B4DA6A3DC4CEF7AE141A81C3F8C56B8C92564D78171F"
+    },
+    {
+      "path": "frontend/packages/media-adapters/src/telemetry.ts",
+      "bytes": 756,
+      "sha256": "21EAD658E22C0A3D433E74A5837C30554E18CB47CA1EC4B9F9A3344B6F1CED48"
+    },
+    {
+      "path": "frontend/packages/media-adapters/src/whep-adapter.ts",
+      "bytes": 4878,
+      "sha256": "7D315FA36039D5034DF48DD28FF4E29336E6AC3440357EBBC1811902D38358AB"
+    },
+    {
+      "path": "frontend/packages/media-adapters/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/media-edge-contracts/package.json",
+      "bytes": 210,
+      "sha256": "BEAFB6898D53B88E8DFADA75F5B8D4B901C736E56685E69A5AC2B629A5E5391C"
+    },
+    {
+      "path": "frontend/packages/media-edge-contracts/src/index.ts",
+      "bytes": 6927,
+      "sha256": "11F9194645D328FD458DFDD77B1D86F9C8C584E7E48AB6D433808248FD0F1B64"
+    },
+    {
+      "path": "frontend/packages/media-edge-contracts/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/navigation/src/index.ts",
+      "bytes": 3864,
+      "sha256": "02ADD78168FDE3BA32AC67C8F65BCEB0973B94CFE4797E25545B3BA307F1AEF9"
+    },
+    {
+      "path": "frontend/packages/observability/src/index.ts",
+      "bytes": 2023,
+      "sha256": "C104A8641BEF6F99DE130332C7E209A2CAC53E5D6E4A268EEC2E448665101FC3"
+    },
+    {
+      "path": "frontend/packages/playback-contracts/src/index.ts",
+      "bytes": 1183,
+      "sha256": "4D2F72752E145C3611A8F022F4524545D7EECAB1E81CAF82C02324470396FD93"
+    },
+    {
+      "path": "frontend/packages/query-policy/src/index.ts",
+      "bytes": 4115,
+      "sha256": "FF5377BE8EF79358E370CE5CBC6D815B1AA2B9D0D3DBCD5BFBC6174149844B86"
+    },
+    {
+      "path": "frontend/packages/test-fixtures/package.json",
+      "bytes": 361,
+      "sha256": "F80B60563FD4CC89DFAD02FE6FB48A3BA888CF585AFA78974DD7296806D4C274"
+    },
+    {
+      "path": "frontend/packages/test-fixtures/src/index.ts",
+      "bytes": 1482,
+      "sha256": "FE4B06A33D7189C58B0A23984D3CE6DF5831312C3E2F646BD5FAF4DD5EAB8D0B"
+    },
+    {
+      "path": "frontend/packages/test-fixtures/src/p5-3-fixtures.ts",
+      "bytes": 6585,
+      "sha256": "125379360EA85FC4B8CD02D86E9B12402D3BBB654170544601CABB2F086734C9"
+    },
+    {
+      "path": "frontend/packages/ui/src/camera-live.stories.tsx",
+      "bytes": 1459,
+      "sha256": "A36B9B5B9C4D424464A2DFC9C8A224C32D26AB1AE83AC7BEB80D94BB7FEEC3A3"
+    },
+    {
+      "path": "frontend/pnpm-lock.yaml",
+      "bytes": 187653,
+      "sha256": "7F3E3F0A8B29C5083E300641A68F0325D8D2E8BD2ADE940E2B6D03C3CDEBBB62"
+    },
+    {
+      "path": "frontend/pnpm-workspace.yaml",
+      "bytes": 978,
+      "sha256": "79BF353A85BE2AC3CC69E607FD63FC65AC153AEE415C1CB55032A3418D11DE38"
+    },
+    {
+      "path": "frontend/sbom.cdx.json",
+      "bytes": 108496,
+      "sha256": "D0F1F1180716383334BDF9C1F6FA9A9F129EED4D7D6F297C893AD5F7D6C29D00"
+    },
+    {
+      "path": "frontend/scripts/capture-dependency-audit.mjs",
+      "bytes": 2785,
+      "sha256": "3ED57549C42D92598F3E5106D3A98B0F7E2D1A651FF72A15EC2DB2400CCE8744"
+    },
+    {
+      "path": "frontend/scripts/finalize-dependency-evidence.mjs",
+      "bytes": 4475,
+      "sha256": "E3037E100F1572B2065BAF1883B7AC43EF1B3166480AAE392858B8CD09E9B53C"
+    },
+    {
+      "path": "frontend/scripts/generate-evidence.mjs",
+      "bytes": 4493,
+      "sha256": "7EB446AA49E9C01D0E00A04D79A838784A466EB5356D82DFD37BC78E4791DD16"
+    },
+    {
+      "path": "frontend/scripts/generate-validation-evidence.mjs",
+      "bytes": 4572,
+      "sha256": "E0F9EBFDFC9B7071D5F6ABAB2A24948881D3DD16A7EF19FFEB62C1CA9A528205"
+    },
+    {
+      "path": "frontend/scripts/resolve-dependencies.mjs",
+      "bytes": 7828,
+      "sha256": "80AEA92369A4ECD29D384E57DCE5C540870EB533367AB72F0927F34438B897B6"
+    },
+    {
+      "path": "frontend/scripts/verify-bundles.mjs",
+      "bytes": 3282,
+      "sha256": "355BF126E5384F0107DF15CFB15FA236E75179CBEA3D98CD6D9FA48BF39049F7"
+    },
+    {
+      "path": "frontend/scripts/verify-workspace.mjs",
+      "bytes": 3902,
+      "sha256": "D1E12DDF5AEF9EFD9808D9858CEF9886B79BB4E66FB115C735BD2FF200E74105"
+    },
+    {
+      "path": "frontend/tests/browser/camera-live-accessibility.spec.ts",
+      "bytes": 990,
+      "sha256": "5592F6F3E63777D494525643405EC160738462BE151E23B8EC3D4818E38A3370"
+    },
+    {
+      "path": "frontend/tests/browser/camera-live-c1-c4-c10.spec.ts",
+      "bytes": 3215,
+      "sha256": "0418F36608A6F1C34E7923E13AEED86CB524D05169BE76DFEADA7D355B140ACC"
+    },
+    {
+      "path": "frontend/tests/browser/camera-live-multiwindow.spec.ts",
+      "bytes": 790,
+      "sha256": "F93C1E18B78C74039FE93070A718E710CF15007378FF8E3DE6E0CAA5BE139054"
+    },
+    {
+      "path": "frontend/tests/browser/camera-live-security.spec.ts",
+      "bytes": 709,
+      "sha256": "D99E1A422AEAAEDB1D9E215E29F6790C94493D2245DC944CE78986BD243A5502"
+    },
+    {
+      "path": "frontend/tests/browser/camera-live.spec.ts",
+      "bytes": 3789,
+      "sha256": "0461F4B118950E33C6DB1C35513B82C4D1FC97119E1B170F1B84D77E1B603C2C"
+    },
+    {
+      "path": "frontend/tests/camera-catalogue.test.tsx",
+      "bytes": 1221,
+      "sha256": "7448C4C64C9D064A8205CF85A148C67CE4DB31B26631EDFCCFFB66089CC0BACB"
+    },
+    {
+      "path": "frontend/tests/camera-detail-diagnostics.test.tsx",
+      "bytes": 1709,
+      "sha256": "CF3D74886AC0FCFF42613A3AC8370016F934E69C5995FEAAECF1913B10CA650C"
+    },
+    {
+      "path": "frontend/tests/camera-live-domain.test.ts",
+      "bytes": 5070,
+      "sha256": "B8CE6AE93D50C8117172BD9A44DEC15379211C9FB164AE997C982F418228CAB6"
+    },
+    {
+      "path": "frontend/tests/media-admission.test.ts",
+      "bytes": 4464,
+      "sha256": "2BA86707F2EB7BA76C773A44FE88B49DBC52724801CC53417E1A33B574C0C5CD"
+    },
+    {
+      "path": "frontend/tests/media-capabilities.test.ts",
+      "bytes": 1887,
+      "sha256": "4E2AF0B741B47A3304CB146A03173043BF9882D50D95937DBBF6EC9F74AF258E"
+    },
+    {
+      "path": "frontend/tests/media-hls-adapter.test.ts",
+      "bytes": 6022,
+      "sha256": "903DAAE0C04CB272D57F7BDEAB434C33AEEF7F9AA1C5B2792AC57982DB36F579"
+    },
+    {
+      "path": "frontend/tests/media-whep-adapter.test.ts",
+      "bytes": 8157,
+      "sha256": "1B084A5E4453198235AFDCBBFC5BBA0D3B20824656A06BC0F2B4648B8BAE3CD3"
+    },
+    {
+      "path": "frontend/tests/p5-3-accessibility.test.tsx",
+      "bytes": 1063,
+      "sha256": "2446938D866BEE171D3704F9782C5115E937BF0E43F6A20BCDAC443F33BCB4CC"
+    },
+    {
+      "path": "frontend/tests/p5-3-layouts.test.ts",
+      "bytes": 1796,
+      "sha256": "8B83BEBCF842EE2608F894518113A1D3F4758A1DEBFEB908A4533D769A5D7754"
+    },
+    {
+      "path": "frontend/tests/p5-3-localization.test.ts",
+      "bytes": 408,
+      "sha256": "D4E6AE9BFBF46CDF1C44F77EB19B4A522B3D3B14D9282167C80FFAA4517AB855"
+    },
+    {
+      "path": "frontend/tests/p5-3-replay.test.ts",
+      "bytes": 748,
+      "sha256": "F0B2F542EB6AB15385F03A8F92D9ADEF274FF69C762171F41417A31F16F8E018"
+    },
+    {
+      "path": "frontend/tests/p5-3-security.test.ts",
+      "bytes": 6046,
+      "sha256": "AEBB1F26C1EADB015CF00F9FD76F5A1292E28CB38A5FD9A1FEF0F3044BB4D36F"
+    },
+    {
+      "path": "frontend/tests/p5-3-teardown.test.ts",
+      "bytes": 3232,
+      "sha256": "4EE51D3870E9B640847B6617A36ECEA6E1624D5AFCCFC11BACB34662FAB71365"
+    },
+    {
+      "path": "tests/phase5_frontend/test_phase52_verifier.py",
+      "bytes": 5272,
+      "sha256": "EBD74A281B04C9C8C8D6AA7E5C9A321C6F749C9C5464777F4B35E266ABEE0C69"
+    },
+    {
+      "path": "tests/phase5_frontend/test_phase53_verifier.py",
+      "bytes": 989,
+      "sha256": "1C7C9955A1EBD83527644046B89821B9E2E34D170BDC1E1BF1575DACB1548B2A"
+    },
+    {
+      "path": "tools/phase53/__init__.py",
+      "bytes": 51,
+      "sha256": "7E1B401CE92A6FD0F68F307C2C3D055725B5AD9AFCBE002B87617321CFC47D63"
+    },
+    {
+      "path": "tools/phase53/generate_evidence.py",
+      "bytes": 3390,
+      "sha256": "949AD5615CD54333202964AEBA7A727222963A8D3D1746BB69F8B224B69D6B77"
+    },
+    {
+      "path": "tools/phase53/generate_media.py",
+      "bytes": 6860,
+      "sha256": "357C336FFC71835B9D8B94167CA1DD76AC6DC6A97FF38DE834FF8D8DBDF08DA5"
+    },
+    {
+      "path": "tools/phase53/verify_p53.py",
+      "bytes": 5100,
+      "sha256": "1984B43696B320C66285F889069584DCD25B7B21CDAE7120D02C2561B2C7BF0E"
+    }
+  ],
+  "generated_only": true,
+  "P5_3_complete": false,
+  "P5_4_authorized": false,
+  "remote_Git_authorized": false
+}

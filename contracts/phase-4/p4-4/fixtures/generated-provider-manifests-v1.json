@@ -1,0 +1,153 @@
+{
+  "family": "provider_manifest",
+  "fixture_digest": "sha256:507bf6f108fb0eb3ee30260a2304298bde44ef50464836d5d3f5046172544cb6",
+  "generator_version": "p4.4.generated-integrations.v1",
+  "scenario_count": 12,
+  "schema_version": "hcam.p4-4.generated-fixture-set.v1",
+  "vectors": [
+    {
+      "department": "Generated-Department-0",
+      "expected_outcome": "accepted",
+      "family": "provider_manifest",
+      "generated_key": "gen_provider_manifest_000",
+      "generated_only": true,
+      "generated_value": "gen_value_000",
+      "index": 0,
+      "operational": false,
+      "scenario_digest": "sha256:9d1c361658ab123d033ded7d8be3d8c293d0ee74e9ae322fdeb93ba2a5bbe8d7",
+      "scenario_id": "p44-provider_manifest-000"
+    },
+    {
+      "department": "Generated-Department-1",
+      "expected_outcome": "duplicate",
+      "family": "provider_manifest",
+      "generated_key": "gen_provider_manifest_001",
+      "generated_only": true,
+      "generated_value": "gen_value_001",
+      "index": 1,
+      "operational": false,
+      "scenario_digest": "sha256:9c1debf94a8eefbc6147793a26eecf6c2de9583dfe558fb7bb238d10fe5be003",
+      "scenario_id": "p44-provider_manifest-001"
+    },
+    {
+      "department": "Generated-Department-2",
+      "expected_outcome": "bounded",
+      "family": "provider_manifest",
+      "generated_key": "gen_provider_manifest_002",
+      "generated_only": true,
+      "generated_value": "gen_value_002",
+      "index": 2,
+      "operational": false,
+      "scenario_digest": "sha256:78f09090037536b9a554c0892b7eaf6a58a08f92da2731bd312ea5c3c8100665",
+      "scenario_id": "p44-provider_manifest-002"
+    },
+    {
+      "department": "Generated-Department-0",
+      "expected_outcome": "accepted",
+      "family": "provider_manifest",
+      "generated_key": "gen_provider_manifest_003",
+      "generated_only": true,
+      "generated_value": "gen_value_003",
+      "index": 3,
+      "operational": false,
+      "scenario_digest": "sha256:dfdc77b3a0483243f3da2aff282f71f077e03f0c29584a5a269529400cf4813b",
+      "scenario_id": "p44-provider_manifest-003"
+    },
+    {
+      "department": "Generated-Department-1",
+      "expected_outcome": "duplicate",
+      "family": "provider_manifest",
+      "generated_key": "gen_provider_manifest_004",
+      "generated_only": true,
+      "generated_value": "gen_value_004",
+      "index": 4,
+      "operational": false,
+      "scenario_digest": "sha256:62954f23d9c3fb4af8836a104dd553d4086caf7072caf6ab844683fbd4f0615f",
+      "scenario_id": "p44-provider_manifest-004"
+    },
+    {
+      "department": "Generated-Department-2",
+      "expected_outcome": "bounded",
+      "family": "provider_manifest",
+      "generated_key": "gen_provider_manifest_005",
+      "generated_only": true,
+      "generated_value": "gen_value_005",
+      "index": 5,
+      "operational": false,
+      "scenario_digest": "sha256:c107166c16e2d5eb4054f0c71860553a0cc6e015e8fe860e595287789604a33f",
+      "scenario_id": "p44-provider_manifest-005"
+    },
+    {
+      "department": "Generated-Department-0",
+      "expected_outcome": "accepted",
+      "family": "provider_manifest",
+      "generated_key": "gen_provider_manifest_006",
+      "generated_only": true,
+      "generated_value": "gen_value_006",
+      "index": 6,
+      "operational": false,
+      "scenario_digest": "sha256:a9d0e3943374e394195dfad694e6184abe971ca6c0e695a0ac0d411b6ce2467d",
+      "scenario_id": "p44-provider_manifest-006"
+    },
+    {
+      "department": "Generated-Department-1",
+      "expected_outcome": "duplicate",
+      "family": "provider_manifest",
+      "generated_key": "gen_provider_manifest_007",
+      "generated_only": true,
+      "generated_value": "gen_value_007",
+      "index": 7,
+      "operational": false,
+      "scenario_digest": "sha256:0775c6334c351c4b0dc70c8e5dd00101686cdf95c7fc168192458b358be629ad",
+      "scenario_id": "p44-provider_manifest-007"
+    },
+    {
+      "department": "Generated-Department-2",
+      "expected_outcome": "bounded",
+      "family": "provider_manifest",
+      "generated_key": "gen_provider_manifest_008",
+      "generated_only": true,
+      "generated_value": "gen_value_008",
+      "index": 8,
+      "operational": false,
+      "scenario_digest": "sha256:35d6f44d66118743b44d2ac8d13ab1a9a8825c3873ada834f34752d801feb504",
+      "scenario_id": "p44-provider_manifest-008"
+    },
+    {
+      "department": "Generated-Department-0",
+      "expected_outcome": "accepted",
+      "family": "provider_manifest",
+      "generated_key": "gen_provider_manifest_009",
+      "generated_only": true,
+      "generated_value": "gen_value_009",
+      "index": 9,
+      "operational": false,
+      "scenario_digest": "sha256:7df3a94702ab21290c276f36a01187fce0a25aed745d8474a72fb7a8a26868c2",
+      "scenario_id": "p44-provider_manifest-009"
+    },
+    {
+      "department": "Generated-Department-1",
+      "expected_outcome": "duplicate",
+      "family": "provider_manifest",
+      "generated_key": "gen_provider_manifest_010",
+      "generated_only": true,
+      "generated_value": "gen_value_010",
+      "index": 10,
+      "operational": false,
+      "scenario_digest": "sha256:292745cffa725578e701603a6739d780ad92fea621f73f884a8b4fba67c41a09",
+      "scenario_id": "p44-provider_manifest-010"
+    },
+    {
+      "department": "Generated-Department-2",
+      "expected_outcome": "bounded",
+      "family": "provider_manifest",
+      "generated_key": "gen_provider_manifest_011",
+      "generated_only": true,
+      "generated_value": "gen_value_011",
+      "index": 11,
+      "operational": false,
+      "scenario_digest": "sha256:1c2cac357cc2b5305e041c424af880136b08f59bca4b11e91188da6fda3cb141",
+      "scenario_id": "p44-provider_manifest-011"
+    }
+  ]
+}

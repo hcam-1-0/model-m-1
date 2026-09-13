@@ -1,0 +1,51 @@
+{
+  "schema_version": "hcam.phase5.p5_2.visual_manifest.v1",
+  "generated_on": "2026-09-08",
+  "generated_only": true,
+  "loopback_only": true,
+  "manual_visual_review": {
+    "overlap": false,
+    "horizontal_clipping": false,
+    "blank_renderer": false,
+    "map_and_table_visible": true
+  },
+  "captures": [
+    {
+      "portal": "command",
+      "profile": "desktop",
+      "path": "test-results/command-gis-Command-Center-1bf52-and-GIS-Center-is-connected-desktop/command-center.png",
+      "bytes": 129475,
+      "sha256": "6FCB4909BC5CF0CF2D1180900E0FEAE8CE50FC725B1AA68223D57C0E0AA750E0",
+      "width": 1280,
+      "height": 1376
+    },
+    {
+      "portal": "gis",
+      "profile": "desktop",
+      "path": "test-results/command-gis-Command-Center-1bf52-and-GIS-Center-is-connected-desktop/gis-center.png",
+      "bytes": 106869,
+      "sha256": "BDE4D1C457DD3E208D52BB9937B9BA1FFE9E086B85995BDAA6616D62D22186D2",
+      "width": 1280,
+      "height": 1243
+    },
+    {
+      "portal": "command",
+      "profile": "mobile",
+      "path": "test-results/command-gis-Command-Center-1bf52-and-GIS-Center-is-connected-mobile/command-center.png",
+      "bytes": 517664,
+      "sha256": "B0BAF5AF016C14E09BCBF30F07ADB1FC9D9E48A34554D9B77874922DF6D99E5B",
+      "width": 1082,
+      "height": 7164
+    },
+    {
+      "portal": "gis",
+      "profile": "mobile",
+      "path": "test-results/command-gis-Command-Center-1bf52-and-GIS-Center-is-connected-mobile/gis-center.png",
+      "bytes": 233894,
+      "sha256": "7ED9FA91FAB77FD515EFEBCAD9430D598FEBDBC827FBD94777091388A44C17C5",
+      "width": 1082,
+      "height": 3376
+    }
+  ],
+  "result": "pass"
+}

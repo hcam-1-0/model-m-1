@@ -1,0 +1,40 @@
+{
+  "schema_version": "hcam.phase5.p5_5.acceptance.v1",
+  "decision_id": "D-P5.5-ACCEPTANCE",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-10",
+  "accepted_branch": "codex/phase5-product-ux-contracts",
+  "accepted_implementation_commit": "b0ecf20dcaf36aae9856b3802d037656f0b053e7",
+  "accepted_evidence_seal_commit": "5b5c47c3d8674d7035e465839d7883a1cef6865a",
+  "evidence_package": {
+    "package_id": "P5.5-EVIDENCE-PACKAGE-R0",
+    "path": "contracts/phase-5/p5-5-evidence-package.json",
+    "sha256": "9E580AC0302C5F7368C21E884945DB0FAD94442A0D20B8179AAEE8AD4C099EDA",
+    "canonical_component_digest": "78ACB49CD110D2643688DAA05A6F1D1515C0FA6BE2EF9858C4315EB5A4D426A8"
+  },
+  "accepted_progress": {
+    "phase_5_points": 78,
+    "phase_5_total_points": 100,
+    "phase_5_percent": 78.0,
+    "p5_5_points": 15,
+    "p5_5_total_points": 15,
+    "p5_5_percent": 100.0
+  },
+  "scope_effect": "Completes P5.5 only under the sealed generated-only Investigation Center, independently authorized Evidence Desk, validation results, preserved dependency baseline, environment limitations, and documented safety boundaries.",
+  "continuing_prohibitions": [
+    "P5_6_planning_or_implementation",
+    "real_source_or_evidence_operations",
+    "real_investigations_or_case_systems",
+    "providers_or_network_access",
+    "cameras_or_media",
+    "Government_or_private_data_or_identities",
+    "models_datasets_artifacts_or_inference",
+    "operational_alerts_notifications_dispatch_enforcement_or_autonomous_actions",
+    "containers_Kubernetes_or_deployment",
+    "remote_Git"
+  ],
+  "owner_statement_sha256": "AFCB6A791A714251EA66F9FF407B2F397A97B02C6423C8F98C235B091332B31B",
+  "owner_statement": "D-P5.5-ACCEPTANCE: I, mayank-admin, accept P5.5 evidence package P5.5-EVIDENCE-PACKAGE-R0 with SHA-256 9E580AC0302C5F7368C21E884945DB0FAD94442A0D20B8179AAEE8AD4C099EDA and canonical component digest 78ACB49CD110D2643688DAA05A6F1D1515C0FA6BE2EF9858C4315EB5A4D426A8 at technical commit b0ecf20dcaf36aae9856b3802d037656f0b053e7, including its generated-only Investigation Center and independently authorized Evidence Desk, validation results, preserved dependency baseline, explicit environment limitations, and documented safety boundaries. This acceptance completes P5.5 only. It does not authorize P5.6, real source or evidence operations, real investigations or case systems, providers or network access, cameras or media, Government or private data, identities, models or inference, operational actions, containers, Kubernetes, deployment, or remote Git."
+}

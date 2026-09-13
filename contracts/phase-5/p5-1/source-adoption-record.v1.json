@@ -1,0 +1,13 @@
+{
+  "schema_version": "hcam.p5_1.source_adoption_record.v1",
+  "status": "reference_only_no_source_import",
+  "source_repository": "hcam-1-0/final-ui",
+  "source_commit": "cd21af3bef132b211bfe2860d25eaf38a94253df",
+  "snapshot_path": "contracts/phase-5/final-ui-repository-snapshot.json",
+  "snapshot_sha256": "A27A657640DED34B159A6AEE57480190DE666BC1209682E1EEE3135A022B26C7",
+  "imported_paths": [],
+  "build_included_paths": [],
+  "preserved_baseline": ["visual_identity", "interaction_intent", "responsive_behavior", "Gujarat_GIS_parity"],
+  "future_separate_gates": ["command_surface", "live_surface", "GIS_surface"],
+  "generated_only": true
+}

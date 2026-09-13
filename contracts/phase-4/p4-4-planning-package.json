@@ -1,0 +1,300 @@
+{
+  "schema_version": "hcam.phase4.p4_4.planning-package.v1",
+  "package_id": "P4.4-PLANNING-R0",
+  "status": "research_complete_owner_decisions_pending",
+  "effective": false,
+  "prepared_on": "2026-09-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-reference-integrations-planning",
+  "planning_base_commit": "c71a2290e123826ba2e9015dd412d94b543cad9d",
+  "planning_authorization": {
+    "decision_id": "D-P4.4-PLAN-AUTH",
+    "path": "contracts/phase-4/p4-4-plan-authorization.json",
+    "sha256": "27FEBCC7D1679D3C1BDC7B7E82A972DA338344ABE82EDAD279EAFA13640888C6",
+    "owner_statement_sha256": "87EBA3C544C2CAE56159A4C3A03A924E0658AD3BC5AAD4ECFE37E3258792E99C"
+  },
+  "accepted_phase4_planning": {
+    "package_id": "P4-PLANNING-R2",
+    "path": "docs/phase-4/planning-package.json",
+    "sha256": "B8F4371A8DDD350F44321E70F5FB8CEE0DD27299A26082A40460086E80DDEA63"
+  },
+  "accepted_p4_3": {
+    "decision_id": "D-P4.3-ACCEPTANCE",
+    "acceptance_path": "contracts/phase-4/p4-3/acceptance.json",
+    "acceptance_sha256": "BDFF9678045E07749C65B523BEF06BE2C53D17CFD079A1FDF6AF20ED336BDA84",
+    "evidence_package_path": "contracts/phase-4/p4-3/evidence-package.json",
+    "evidence_package_sha256": "EC68E3629C9D4036C154F7E587D52DB4611948AC0F129CA120BF03D9EC3E671C",
+    "canonical_component_digest": "8797AFFDA2A9CA2F74E78F612F0E4A6B58BAF3394ABA01685B0C64842C36DEE4",
+    "accepted_implementation_commit": "4ddd15ea9beb75d841f69aab7cea9dfaab6822f8",
+    "acceptance_commit": "c71a2290e123826ba2e9015dd412d94b543cad9d"
+  },
+  "binding_predecessor_decisions": {
+    "D-P4.0-005": [
+      "A",
+      "B",
+      "D"
+    ],
+    "D-P4.0-006": [
+      "A"
+    ],
+    "D-P4.0-007": [
+      "A"
+    ],
+    "D-P4.0-008": [
+      "A"
+    ],
+    "interpretation": "typed_provider_and_generic_transport_contracts_generated_provider_only_no_current_external_integration_multi_signal_candidates_with_abstention_PostgreSQL_PostGIS_forced_RLS_append_only_evidence_transactional_outbox_and_data_class_retention"
+  },
+  "planning_authority": [
+    "read_only_repository_analysis",
+    "official_primary_source_research",
+    "local_planning_documentation",
+    "owner_decision_options",
+    "non_effective_contract_and_implementation_design",
+    "local_document_validation_and_checkpoint_commit_without_push"
+  ],
+  "planning_artifacts": [
+    {
+      "path": "contracts/phase-4/p4-4-plan-authorization.json",
+      "sha256": "27FEBCC7D1679D3C1BDC7B7E82A972DA338344ABE82EDAD279EAFA13640888C6"
+    },
+    {
+      "path": "docs/phase-4/p4-4-research-record.md",
+      "sha256": "733EDB6637D298BA6AD915456E98C2ED634D23C8D6A5834F8963C6F6C335B481"
+    },
+    {
+      "path": "docs/phase-4/p4-4-threat-model.md",
+      "sha256": "115FA8E37C728B76EFD29CDC4EBBBB02144B3768D171FE27B3DC6F0B758475A7"
+    },
+    {
+      "path": "docs/phase-4/p4-4-contract-catalog.md",
+      "sha256": "95B3221D27767E4DB377F0825A60217EBA469875D0ED1F9AB3C4374007918E9A"
+    },
+    {
+      "path": "docs/phase-4/p4-4-decision-packet.md",
+      "sha256": "9C01EDC232A825DE80CB164DA6E00E02E5CF3CE91EB00F8C2AE08E46D1C9FD63"
+    },
+    {
+      "path": "docs/phase-4/p4-4-implementation-plan.md",
+      "sha256": "BE45997455A08FEA23CC1A96FCAEA9B88534D0C722CF01C43A85C886F524CAD3"
+    }
+  ],
+  "research_sources": [
+    {
+      "name": "OpenAPI Specification",
+      "version": "3.2.0_2025-09-19",
+      "url": "https://spec.openapis.org/oas/v3.2.0.html",
+      "bounded_use": "typed_API_description_external_reference_cycle_and_sanitization_risks_without_runtime_import_or_conformance_claim"
+    },
+    {
+      "name": "JSON Schema",
+      "version": "Draft_2020-12",
+      "url": "https://json-schema.org/draft/2020-12",
+      "bounded_use": "closed_bounded_generated_request_and_response_schema_design"
+    },
+    {
+      "name": "OAuth 2.0 Security Best Current Practice",
+      "version": "RFC_9700_BCP_240",
+      "url": "https://www.rfc-editor.org/rfc/rfc9700.html",
+      "bounded_use": "future_typed_client_authentication_sender_constraint_rotation_and_TLS_profile_design"
+    },
+    {
+      "name": "OAuth 2.0 Mutual TLS",
+      "version": "RFC_8705",
+      "url": "https://www.rfc-editor.org/rfc/rfc8705.html",
+      "bounded_use": "future_mTLS_client_authentication_and_certificate_bound_token_contract"
+    },
+    {
+      "name": "HTTP Message Signatures",
+      "version": "RFC_9421",
+      "url": "https://www.rfc-editor.org/rfc/rfc9421.html",
+      "bounded_use": "future_provider_specific_signed_request_profile_requirements"
+    },
+    {
+      "name": "Secure Use of TLS and DTLS",
+      "version": "RFC_9325_BCP_195",
+      "url": "https://www.rfc-editor.org/rfc/rfc9325.html",
+      "bounded_use": "future_verified_transport_policy"
+    },
+    {
+      "name": "Service Identity in TLS",
+      "version": "RFC_9525",
+      "url": "https://www.rfc-editor.org/rfc/rfc9525.html",
+      "bounded_use": "future_exact_service_identity_verification"
+    },
+    {
+      "name": "HTTP Semantics",
+      "version": "RFC_9110",
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "bounded_use": "safe_idempotent_retry_and_Retry_After_semantics"
+    },
+    {
+      "name": "HTTP Caching",
+      "version": "RFC_9111",
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.html",
+      "bounded_use": "explicit_fresh_and_stale_state_design"
+    },
+    {
+      "name": "HTTP Cache-Control Extensions for Stale Content",
+      "version": "RFC_5861",
+      "url": "https://www.rfc-editor.org/rfc/rfc5861.html",
+      "bounded_use": "bounded_stale_advisory_concepts_without_blind_provider_cache_inheritance"
+    },
+    {
+      "name": "Problem Details for HTTP APIs",
+      "version": "RFC_9457",
+      "url": "https://www.rfc-editor.org/rfc/rfc9457.html",
+      "bounded_use": "typed_sanitized_API_failure_contracts"
+    },
+    {
+      "name": "OWASP SSRF Prevention Cheat Sheet",
+      "version": "accessed_2026-09-05",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html",
+      "bounded_use": "exact_destination_validation_and_defense_in_depth"
+    },
+    {
+      "name": "OWASP Secrets Management Cheat Sheet",
+      "version": "accessed_2026-09-05",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html",
+      "bounded_use": "opaque_secret_reference_rotation_audit_and_no_hardcoding_design"
+    },
+    {
+      "name": "OWASP API4 Unrestricted Resource Consumption",
+      "version": "2023",
+      "url": "https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/",
+      "bounded_use": "request_response_time_page_rate_concurrency_and_cost_limits"
+    },
+    {
+      "name": "OWASP API7 Server Side Request Forgery",
+      "version": "2023",
+      "url": "https://owasp.org/API-Security/editions/2023/en/0xa7-server-side-request-forgery/",
+      "bounded_use": "generic_outbound_connector_threat_model"
+    },
+    {
+      "name": "OWASP API10 Unsafe Consumption of APIs",
+      "version": "2023",
+      "url": "https://owasp.org/API-Security/editions/2023/en/0xaa-unsafe-consumption-of-apis/",
+      "bounded_use": "hostile_provider_response_redirect_timeout_and_validation_controls"
+    },
+    {
+      "name": "NIST Zero Trust Architecture",
+      "version": "SP_800-207",
+      "url": "https://csrc.nist.gov/pubs/sp/800/207/final",
+      "bounded_use": "per_request_least_privilege_and_no_implicit_network_trust"
+    },
+    {
+      "name": "NIST Privacy Framework",
+      "version": "1.0_with_1.1_work_in_progress",
+      "url": "https://www.nist.gov/privacy-framework",
+      "bounded_use": "data_lifecycle_provider_relationship_purpose_and_minimization_design"
+    },
+    {
+      "name": "NIST Digital Identity Guidelines Federation and Assertions",
+      "version": "SP_800-63C-4",
+      "url": "https://pages.nist.gov/800-63-4/sp800-63c.html",
+      "bounded_use": "request_minimum_or_derived_attributes_where_feasible"
+    },
+    {
+      "name": "NIST AI Risk Management Framework",
+      "version": "1.0_revision_in_progress_at_access",
+      "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf",
+      "bounded_use": "validity_reliability_threshold_limitations_safe_failure_and_human_oversight"
+    },
+    {
+      "name": "W3C Privacy Principles",
+      "version": "Working_Group_Note_2024-07-11",
+      "url": "https://www.w3.org/TR/privacy-principles/",
+      "bounded_use": "minimize_API_data_transfer_and_exposure"
+    },
+    {
+      "name": "W3C PROV Overview and PROV-AQ",
+      "version": "2013",
+      "url": "https://www.w3.org/TR/prov-overview/",
+      "bounded_use": "typed_provenance_and_provenance_privacy_without_conformance_claim"
+    },
+    {
+      "name": "Government of India Open API Policy",
+      "version": "2014_policy_document_accessed_2026-09-05",
+      "url": "https://www.meity.gov.in/static/uploads/2024/03/Policy-Document.pdf",
+      "bounded_use": "interoperable_machine_readable_and_secure_Government_API_context_without_access_authority_claim"
+    },
+    {
+      "name": "OpenTelemetry HTTP Semantic Conventions",
+      "version": "1.44.0_mixed_stability",
+      "url": "https://opentelemetry.io/docs/specs/semconv/http/",
+      "bounded_use": "pinned_sanitized_HTTP_client_telemetry_and_sensitive_attribute_warnings"
+    }
+  ],
+  "decision_packet": {
+    "path": "docs/phase-4/p4-4-decision-packet.md",
+    "decision_ids": [
+      "D-P4.4-001",
+      "D-P4.4-002",
+      "D-P4.4-003",
+      "D-P4.4-004",
+      "D-P4.4-005",
+      "D-P4.4-006",
+      "D-P4.4-007",
+      "D-P4.4-008",
+      "D-P4.4-009",
+      "D-P4.4-010"
+    ],
+    "recommended_profile": "C/D/A/A/A/A/A/C/A/A",
+    "owner_decisions_recorded": false,
+    "recommendations_are_decisions": false,
+    "owner_continue_or_silence_is_acceptance": false
+  },
+  "frozen_progress": {
+    "phase4": {
+      "earned_points": 55,
+      "total_points": 100,
+      "percentage": "55.00%",
+      "change_percentage_points": "+0.00"
+    },
+    "p4_4": {
+      "earned_points": 0,
+      "total_points": 15,
+      "percentage": "0.0000%",
+      "change_percentage_points": "+0.0000"
+    },
+    "technical_ceiling_before_owner_acceptance": {
+      "phase4_earned_points": 69,
+      "phase4_percentage": "69.00%",
+      "p4_4_earned_points": 14,
+      "p4_4_percentage": "93.3333%"
+    },
+    "after_exact_p4_4_acceptance": {
+      "phase4_earned_points": 70,
+      "phase4_percentage": "70.00%",
+      "p4_4_earned_points": 15,
+      "p4_4_percentage": "100.0000%"
+    },
+    "planning_points_awarded": 0,
+    "partial_item_credit": false
+  },
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "real_provider_authorized": false,
+  "remote_git_authorized": false,
+  "explicitly_not_authorized": [
+    "P4_4_product_source_test_migration_dependency_API_worker_or_runtime_implementation",
+    "effective_P4_4_start_record_or_implementation_before_reconciled_planning_acceptance_and_exact_start_authorization",
+    "real_provider_connection_endpoint_enumeration_or_external_integration",
+    "credential_secret_key_token_certificate_or_private_CA_access",
+    "Sentinel_or_other_operational_network_access",
+    "Government_police_private_personal_biometric_vehicle_owner_case_or_watchlist_data",
+    "camera_ONVIF_stream_frame_image_recording_playback_or_media_access",
+    "model_dataset_checkpoint_artifact_download_training_inference_or_accelerator_work",
+    "identity_establishment_operational_alert_notification_dispatch_enforcement_or_autonomous_action",
+    "container_Kubernetes_cloud_pilot_production_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "required_next_sequence": [
+    "owner_selects_D_P4_4_001_through_D_P4_4_010",
+    "selections_are_reconciled_into_non_effective_P4_4_PLANNING_R1",
+    "owner_accepts_exact_reconciled_planning_package_digest",
+    "one_non_effective_generated_only_P4_4_START_R0_package_is_prepared",
+    "owner_separately_accepts_the_exact_P4_4_START_R0_SHA_256",
+    "only_then_may_bounded_local_generated_only_implementation_begin"
+  ]
+}

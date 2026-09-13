@@ -1,0 +1,268 @@
+{
+  "schema_version": "hcam.phase4.p4_5.planning-package.v1",
+  "package_id": "P4.5-PLANNING-R0",
+  "status": "research_complete_owner_decisions_pending",
+  "effective": false,
+  "prepared_on": "2026-09-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-investigation-evidence-planning",
+  "planning_base_commit": "c8d80bf25d089969f411170ce640b6c373f5e017",
+  "planning_authorization": {
+    "decision_id": "D-P4.5-PLAN-AUTH",
+    "path": "contracts/phase-4/p4-5-plan-authorization.json",
+    "sha256": "8772F1863453E69E576706C389B31246F265CA8E801A974A8E1AED3903831E88",
+    "owner_statement_sha256": "0B7C85170F1B3469CEEAEE916A411D5FEBCDE42D04C433025F2B2812E6AB947A"
+  },
+  "accepted_predecessor": {
+    "subphase": "P4.4",
+    "decision_id": "D-P4.4-ACCEPTANCE",
+    "acceptance_path": "contracts/phase-4/p4-4/acceptance.json",
+    "acceptance_sha256": "2E298EAA88E9F2586633955838FBC367641A807F4635866BCE488DC1E60936AD",
+    "evidence_package_sha256": "6AB08EC54C9197E4D96D57B5CEA5F7D87840A3EA16E02108D01CBBEEE574D98A",
+    "canonical_component_digest": "E42E15FEFA36ADC6B58A506BEDC97CC089E54916B04B33E88B4FC070479EFC37",
+    "technical_commit": "9efacc75336cc942db9615c21e371cb3322aea73",
+    "acceptance_commit": "c8d80bf25d089969f411170ce640b6c373f5e017"
+  },
+  "existing_accepted_foundation": {
+    "migration_revision": "0012_intelligence_control_plane",
+    "current_repository_head_revision": "0016_reference_integrations",
+    "timeline_contract": "hcam.intelligence.timeline-entry.v1",
+    "stores": [
+      "investigation_timelines",
+      "timeline_entries"
+    ],
+    "constraints": [
+      "generated_only",
+      "department_scoped",
+      "PostgreSQL_RLS",
+      "runtime_disabled",
+      "V1_read_compatibility_required"
+    ],
+    "interpretation": "P4_0_created_minimal_generated_only_placeholders_P4_5_is_an_additive_V2_extension_and_must_not_reinterpret_V1_as_stronger_evidence"
+  },
+  "planning_authority": [
+    "read_only_repository_analysis",
+    "official_primary_source_research",
+    "local_planning_documentation",
+    "owner_decision_options",
+    "non_effective_contract_and_implementation_design",
+    "local_document_validation_and_checkpoint_commit_without_push"
+  ],
+  "canonical_component_digest": {
+    "algorithm": "SHA-256",
+    "normalization": "UTF_8_path_vertical_bar_uppercase_sha256_LF_join_without_terminal_newline_in_listed_order",
+    "value": "ADC674E3E76C151A03F7CEFF55281315CE1AF619F24B98FBCC68A37156ECDD00"
+  },
+  "planning_artifacts": [
+    {
+      "path": "contracts/phase-4/p4-5-plan-authorization.json",
+      "sha256": "8772F1863453E69E576706C389B31246F265CA8E801A974A8E1AED3903831E88"
+    },
+    {
+      "path": "docs/phase-4/p4-5-research-record.md",
+      "sha256": "C32A45E3DFCD8C36BE757F26CDB62862A20A155A946B0903CAF8910D859EB48F"
+    },
+    {
+      "path": "docs/phase-4/p4-5-threat-model.md",
+      "sha256": "982BDECA6A1B6C936D713B6EA16DC9F925BD153CD5D3EAB111F58A6FA2F0C13A"
+    },
+    {
+      "path": "docs/phase-4/p4-5-contract-catalog.md",
+      "sha256": "4BAA03FCE192CEBB285A1D46A627437CD90610CAF3B1135B8CBD23499F33DA75"
+    },
+    {
+      "path": "docs/phase-4/p4-5-decision-packet.md",
+      "sha256": "D933288E2C758E0DA247884AF84AD618529ED2D235012F6D2890439842A4F457"
+    },
+    {
+      "path": "docs/phase-4/p4-5-implementation-plan.md",
+      "sha256": "9D560A76741437CBB54114BD64423D527C5B808721FCC3BEB5F1F88510125D5B"
+    }
+  ],
+  "mutable_indexes_not_digest_bound": [
+    "README.md",
+    "docs/phase-4/README.md",
+    "docs/phase-4/status.md"
+  ],
+  "research_sources": [
+    {
+      "name": "W3C PROV-DM",
+      "url": "https://www.w3.org/2012/10/prov-dm",
+      "bounded_use": "entity_activity_agent_derivation_revision_and_attribution_design_without_conformance_claim"
+    },
+    {
+      "name": "W3C PROV Constraints",
+      "url": "https://www.w3.org/TR/prov-constraints/",
+      "bounded_use": "provenance_uniqueness_ordering_typing_and_consistency_design"
+    },
+    {
+      "name": "W3C PROV-AQ",
+      "url": "https://www.w3.org/TR/prov-aq/",
+      "bounded_use": "purpose_bound_provenance_retrieval_separate_from_source_resource"
+    },
+    {
+      "name": "NIST IR 8387",
+      "url": "https://www.nist.gov/publications/digital-evidence-preservation-considerations-evidence-handlers",
+      "bounded_use": "digital_evidence_preservation_integrity_availability_and_law_enforcement_generated_evidence_considerations"
+    },
+    {
+      "name": "NIST SP 800-86",
+      "url": "https://csrc.nist.gov/pubs/sp/800/86/final",
+      "bounded_use": "technical_forensic_process_and_reproducibility_guidance_without_legal_advice"
+    },
+    {
+      "name": "ISO IEC 27037 2012 official abstract",
+      "url": "https://www.iso.org/standard/44381.html",
+      "bounded_use": "identification_collection_acquisition_and_preservation_concepts_without_conformance_claim"
+    },
+    {
+      "name": "NIST FIPS 180-4",
+      "url": "https://csrc.nist.gov/pubs/fips/180-4/upd1/final",
+      "bounded_use": "named_hash_algorithm_change_detection_and_algorithm_agility"
+    },
+    {
+      "name": "RFC 8785 JSON Canonicalization Scheme",
+      "url": "https://www.rfc-editor.org/rfc/rfc8785.html",
+      "bounded_use": "deterministic_hashable_JSON_manifest_representation"
+    },
+    {
+      "name": "RFC 3161 Time-Stamp Protocol",
+      "url": "https://www.rfc-editor.org/info/rfc3161/",
+      "bounded_use": "future_optional_trusted_timestamp_receipt_contract_only"
+    },
+    {
+      "name": "RFC 4998 Evidence Record Syntax",
+      "url": "https://www.rfc-editor.org/info/rfc4998/",
+      "bounded_use": "future_long_term_verification_and_renewal_metadata_without_implementation_claim"
+    },
+    {
+      "name": "RFC 8493 BagIt",
+      "url": "https://www.rfc-editor.org/info/rfc8493/",
+      "bounded_use": "future_separately_authorized_payload_package_profile_not_default_export"
+    },
+    {
+      "name": "Bharatiya Sakshya Adhiniyam 2023",
+      "url": "https://www.indiacode.nic.in/handle/123456789/20063?locale=en",
+      "bounded_use": "electronic_record_context_without_admissibility_or_certification_conclusion"
+    },
+    {
+      "name": "Digital Personal Data Protection Act 2023",
+      "url": "https://www.meity.gov.in/writereaddata/files/Digital%20Personal%20Data%20Protection%20Act%202023.pdf",
+      "bounded_use": "purpose_minimization_accountability_and_lifecycle_design_without_legal_interpretation"
+    },
+    {
+      "name": "Digital Personal Data Protection Rules 2025",
+      "url": "https://www.meity.gov.in/documents/act-and-policies/digital-personal-data-protection-rules-2025-gDOxUjMtQWa?pageTitle=Digital-Personal-Data-Protection-Rules-2025",
+      "bounded_use": "staged_commencement_and_policy_refresh_gate"
+    },
+    {
+      "name": "Public Records Act 1993",
+      "url": "https://www.indiacode.nic.in/handle/123456789/1921?locale=en",
+      "bounded_use": "records_officer_schedule_review_and_destruction_accountability_context_without_applicability_claim"
+    },
+    {
+      "name": "Public Records Rules 1997",
+      "url": "https://nationalarchives.nic.in/en/public-record-rules-1997",
+      "bounded_use": "recorded_review_destruction_list_and_retention_schedule_design_context"
+    },
+    {
+      "name": "National Archives Records Retention Schedule guidance",
+      "url": "https://www.nationalarchives.nic.in/en/record-management/records-retention-schedule-rrs",
+      "bounded_use": "organization_specific_schedule_and_periodic_review_context_without_period_selection"
+    },
+    {
+      "name": "CERT-In Directions under section 70B",
+      "url": "https://www.cert-in.org.in/PDF/CERT-In_Directions_70B_28.04.2022.pdf",
+      "bounded_use": "separate_security_log_and_investigation_evidence_retention_classes"
+    },
+    {
+      "name": "NIST SP 800-53 Rev 5",
+      "url": "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final",
+      "bounded_use": "access_audit_media_privacy_and_integrity_control_outcomes_without_baseline_claim"
+    },
+    {
+      "name": "NIST Privacy Framework",
+      "url": "https://www.nist.gov/privacy-framework",
+      "bounded_use": "purpose_data_lifecycle_minimization_and_accountability_design"
+    }
+  ],
+  "decision_packet": {
+    "path": "docs/phase-4/p4-5-decision-packet.md",
+    "decision_ids": [
+      "D-P4.5-001",
+      "D-P4.5-002",
+      "D-P4.5-003",
+      "D-P4.5-004",
+      "D-P4.5-005",
+      "D-P4.5-006",
+      "D-P4.5-007",
+      "D-P4.5-008",
+      "D-P4.5-009",
+      "D-P4.5-010"
+    ],
+    "recommended_profile": "A/A/A/A/A/A/A/A/A/A",
+    "owner_decisions_recorded": false,
+    "recommendations_are_decisions": false,
+    "continue_or_silence_is_acceptance": false
+  },
+  "frozen_progress": {
+    "phase4": {
+      "earned_points": 70,
+      "total_points": 100,
+      "percentage": "70.00%",
+      "change_percentage_points": "+0.00"
+    },
+    "p4_5": {
+      "earned_points": 0,
+      "total_points": 15,
+      "percentage": "0.0000%",
+      "change_percentage_points": "+0.0000"
+    },
+    "technical_ceiling_before_validation_and_owner_acceptance": {
+      "phase4_earned_points": 83,
+      "phase4_percentage": "83.00%",
+      "p4_5_earned_points": 13,
+      "p4_5_percentage": "86.6667%"
+    },
+    "validated_ceiling_before_owner_acceptance": {
+      "phase4_earned_points": 84,
+      "phase4_percentage": "84.00%",
+      "p4_5_earned_points": 14,
+      "p4_5_percentage": "93.3333%"
+    },
+    "after_exact_p4_5_acceptance": {
+      "phase4_earned_points": 85,
+      "phase4_percentage": "85.00%",
+      "p4_5_earned_points": 15,
+      "p4_5_percentage": "100.0000%"
+    },
+    "planning_points_awarded": 0,
+    "partial_item_credit": false
+  },
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "source_or_evidence_access_authorized": false,
+  "hold_deletion_or_export_execution_authorized": false,
+  "remote_git_authorized": false,
+  "explicitly_not_authorized": [
+    "P4_5_product_source_test_migration_dependency_API_worker_or_runtime_implementation",
+    "source_media_document_or_evidence_copying_or_resolution",
+    "retention_period_legal_policy_admissibility_authenticity_custody_or_certification_decision",
+    "hold_activation_release_deletion_execution_export_delivery_or_source_payload_package",
+    "real_investigation_case_evidence_provider_Sentinel_camera_media_or_operational_network_access",
+    "credential_secret_key_token_certificate_timestamp_authority_or_private_CA_access",
+    "Government_police_private_personal_biometric_vehicle_owner_case_watchlist_or_provider_data",
+    "model_dataset_checkpoint_artifact_download_training_or_inference",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "container_Kubernetes_cloud_pilot_production_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "required_next_sequence": [
+    "owner_selects_D_P4_5_001_through_D_P4_5_010",
+    "selections_are_reconciled_into_non_effective_P4_5_PLANNING_R1",
+    "owner_accepts_exact_reconciled_planning_package_digest",
+    "one_non_effective_generated_only_P4_5_START_R0_package_is_prepared",
+    "owner_separately_accepts_exact_P4_5_START_R0_SHA_256",
+    "only_then_may_bounded_local_generated_only_implementation_begin"
+  ]
+}

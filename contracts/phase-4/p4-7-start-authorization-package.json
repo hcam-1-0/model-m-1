@@ -1,0 +1,424 @@
+{
+  "schema_version": "hcam.phase4.p4_7.start-authorization-package.v1",
+  "package_id": "P4.7-START-R0",
+  "decision_id": "D-P4.7-START",
+  "status": "owner_authorization_required",
+  "effective": false,
+  "prepared_on": "2026-09-05",
+  "expires_on_if_accepted": "2026-10-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-operations-security-scale",
+  "planning_base_commit": "d1735f5cd7dc5af6ca97e07089db0f13f1e4acdf",
+  "planned_implementation_branch": "codex/phase4-operations-security-scale",
+  "implementation_branch_base_policy": "authorization_bound_checkout_containing_the_exact_P4_7_R1_decisions_planning_acceptance_start_package_and_status_transitions_with_all_unrelated_paths_untouched",
+  "accepted_predecessor": {
+    "subphase": "P4.6",
+    "decision_id": "D-P4.6-ACCEPTANCE",
+    "acceptance_path": "contracts/phase-4/p4-6/acceptance.json",
+    "acceptance_sha256": "81009FCF742CA73A6DFAB6821DF2D77C3DDC617CB0B95BC8ED51B3348FF5E71E",
+    "evidence_package_sha256": "362E5B1A08438A75DD9FBD32662F9A95ACF42D59BB0E3017818B9862F131C949",
+    "canonical_component_digest": "5E9ED1932FA002ABB3E89BDAC00562D8C0AC42548B5F0B569FFEF4544F6AFE57",
+    "accepted_implementation_commit": "dee768edf449eadf9b5c309209af9866fd392a43",
+    "acceptance_commit": "98234e475e938d7ca1dee5558d2088dabc187845"
+  },
+  "accepted_reconciled_planning": {
+    "package_id": "P4.7-PLANNING-R1",
+    "path": "contracts/phase-4/p4-7-planning-r1-package.json",
+    "sha256": "A226D7E8E3AB01C240D2692E95DAD5BB051ABB4D015B907BC9197BE835895F9C",
+    "reconciled_component_digest": "0E3152BBCF41454BC6A286A3AFB67722E533B157AC9F5C39E780A3FD9B0208D3"
+  },
+  "planning_acceptance": {
+    "decision_id": "D-P4.7-PLANNING-R1-ACCEPTANCE",
+    "path": "contracts/phase-4/p4-7-planning-r1-acceptance.json",
+    "sha256": "EF5C987B93B030B2089A6EFCDDF3D120DC4198FE9975CBD126F91248435503DD",
+    "owner_statement_sha256": "B5A42B86E64DBFAF1CE6B1BE2A6CFE7D41816587E01FCB114CD838FA46EE6750"
+  },
+  "binding_decisions": {
+    "record_path": "contracts/phase-4/p4-7-owner-decisions.json",
+    "record_sha256": "560B05473058E49B7B1355752A85463261EA09B435A42C396D2DE393D358FE49",
+    "explanation_path": "docs/phase-4/p4-7-owner-decisions.md",
+    "explanation_sha256": "F2636F37339D5AE88D82438B60CBF2C082B46928D7B8815E6B252AD53DCAE553",
+    "selected_profile": "C/C/C/C/C/B/C/C/B/B/B_with_guarded_C_capability/A",
+    "scenario_model": "canonical_scenario_engine_with_bounded_application_service_adapter_and_separate_HTTP_event_projection_checks",
+    "portfolio_model": "golden_plus_eight_mandatory_variants_and_bounded_pairwise_cases",
+    "evidence_model": "acyclic_HCAM_evidence_DAG_with_machine_readable_claims_and_limitations",
+    "handoff_model": "canonical_HTTP_event_workflow_UI_accessibility_and_compatibility_catalogues_with_optional_pinned_standard_projections",
+    "operations_model": "generated_only_non_operational_runbook_plus_guarded_future_production_operations_prerequisite_outline",
+    "phase_boundary": "exact_Phase4_closeout_then_separate_Phase5_planning_authorization"
+  },
+  "authorization_effect_if_owner_accepts_exact_digest": [
+    "record_the_exact_D_P4_7_START_owner_statement_without_expanding_scope",
+    "commit_the_exact_P4_7_decision_planning_acceptance_start_package_start_authorization_and_status_records_locally_without_push",
+    "implement_only_the_exact_allowlisted_generated_only_acceptance_scenario_evidence_claim_limitation_runbook_handoff_projection_compatibility_test_tool_and_documentation_scope",
+    "use_only_deterministic_anonymous_non_issuable_generated_contract_event_candidate_review_alert_timeline_evidence_signal_failure_and_recovery_fixtures",
+    "execute_the_mandatory_generated_scenario_portfolio_exactly_twice_through_bounded_application_service_adapters_and_pure_HTTP_event_projection_validation",
+    "use_only_in_memory_or_test_temporary_SQLite_state_owned_by_existing_application_services_with_zero_retention_and_no_direct_persistence_access_from_P4_7",
+    "generate_optional_RFC8785_PROV_SLSA_OpenAPI_AsyncAPI_CloudEvents_and_Arazzo_shaped_projections_without_external_tools_services_or_conformance_claims",
+    "generate_and_validate_the_typed_non_operational_runbook_human_guide_and_non_effective_future_production_prerequisite_outline_without_executing_production_procedures",
+    "run_local_generated_only_validation_with_existing_locked_dependencies_and_at_most_ten_bounded_in_scope_remediation_and_reseal_cycles",
+    "create_local_checkpoint_commits_without_push",
+    "prepare_one_non_effective_exact_D_P4_7_ACCEPTANCE_proposal_bound_to_the_technical_commit_evidence_claims_limitations_and_handoff_digest"
+  ],
+  "work_packages": [
+    {
+      "id": "P4.7-W1",
+      "name": "canonical_contracts_bounds_and_static_guardrails",
+      "scope": [
+        "implement_all_selected_scenario_step_run_observation_assertion_replay_side_effect_evidence_claim_limitation_runbook_reconstruction_handoff_UI_accessibility_compatibility_and_closeout_contracts",
+        "define_closed_enums_bounds_versions_generated_only_flags_logical_time_identity_chronology_evidence_claim_limitation_compatibility_and_UI_states",
+        "reject_unknown_fields_unsafe_strings_unbounded_collections_real_data_shaped_identifiers_credentials_locators_media_operational_flags_and_hidden_wall_clock_inputs",
+        "enforce_static_prohibition_of_socket_HTTP_client_provider_subprocess_camera_media_model_container_Kubernetes_deployment_and_direct_persistence_imports"
+      ]
+    },
+    {
+      "id": "P4.7-W2",
+      "name": "generated_fixture_and_scenario_portfolio",
+      "scope": [
+        "materialize_S00_golden_narrative_and_S01_through_S08_mandatory_abstention_replay_conflict_isolation_reference_degradation_review_denial_correction_and_worker_recovery_variants",
+        "bind_seed_logical_epoch_timezone_identifier_namespace_step_quantum_source_and_durable_order_policy_revisions_fixture_hashes_normalization_allowed_variance_and_expected_semantic_outcomes",
+        "generate_bounded_pairwise_negatives_for_role_scope_reason_ETag_idempotency_chronology_staleness_malformed_contract_unknown_version_and_prohibited_effect_interactions",
+        "lint_every_fixture_for_non_issuable_identity_zero_media_credentials_locators_hidden_randomness_wall_clock_and_prohibited_payload_shapes"
+      ]
+    },
+    {
+      "id": "P4.7-W3",
+      "name": "bounded_scenario_engine_and_adapters",
+      "scope": [
+        "implement_typed_fail_closed_scenario_state_machine_with_exact_step_allowlist_logical_clock_identifier_provider_and_resource_budgets",
+        "implement_in_process_generated_adapter_calling_existing_application_service_boundaries_without_direct_repository_or_database_writes",
+        "implement_pure_read_only_HTTP_and_event_projection_comparison_adapters_without_socket_listener_client_broker_or_network",
+        "retain_only_normalized_generated_observations_evidence_components_and_zero_prohibited_side_effects"
+      ]
+    },
+    {
+      "id": "P4.7-W4",
+      "name": "layered_assertions_deterministic_replay_and_loss_accounting",
+      "scope": [
+        "validate_exact_schema_fixture_source_policy_and_revision_identity_before_each_scenario",
+        "evaluate_independent_schema_authorization_department_reason_RLS_parity_ETag_idempotency_chronology_rule_candidate_review_quorum_lifecycle_integrity_redaction_correction_reconstruction_signal_failure_recovery_side_effect_handoff_and_accessibility_families",
+        "execute_each_mandatory_scenario_twice_from_clean_generated_state_and_compare_normalized_semantic_digests",
+        "fail_closed_on_skip_unknown_incomplete_missing_evidence_unaccounted_loss_prohibited_effect_or_optional_projection_presented_as_canonical"
+      ]
+    },
+    {
+      "id": "P4.7-W5",
+      "name": "evidence_claims_limitations_and_operations_pack",
+      "scope": [
+        "build_acyclic_evidence_index_binding_source_commit_authority_inputs_producer_version_parents_byte_lengths_hashes_completeness_verification_claims_limitations_and_review",
+        "generate_canonical_claim_and_limitation_registers_and_one_human_summary_with_unsupported_stale_contradicted_withdrawn_and_unresolved_states_visible",
+        "implement_typed_generated_only_preflight_execution_verification_failure_resume_cleanup_zero_retention_reconstruction_evidence_sealing_and_reviewer_runbook",
+        "define_guarded_future_production_operations_prerequisite_outline_only_with_every_category_not_operationally_validated_and_no_environment_specific_content"
+      ]
+    },
+    {
+      "id": "P4.7-W6",
+      "name": "Phase5_consumer_handoff_without_Phase5_implementation",
+      "scope": [
+        "inventory_accepted_Phase4_list_detail_command_health_reconstruction_and_operations_surfaces",
+        "build_canonical_HTTP_operation_event_operation_workflow_UI_state_UI_action_accessibility_requirement_and_compatibility_catalogues",
+        "generate_pinned_OpenAPI_RFC9457_AsyncAPI_CloudEvents_Arazzo_RFC8785_PROV_and_SLSA_shaped_projections_with_mapping_validation_and_no_conformance_claim",
+        "validate_loading_empty_partial_stale_degraded_denied_conflict_failure_recovery_correction_success_keyboard_focus_name_role_value_announcement_error_non_color_target_contrast_and_reduced_motion_requirements",
+        "publish_version_change_classification_supported_consumer_deprecation_migration_and_contract_test_policy_without_building_a_UI_SDK_broker_or_workflow_engine"
+      ]
+    },
+    {
+      "id": "P4.7-W7",
+      "name": "technical_evidence_seal_and_exact_Phase4_owner_gate",
+      "scope": [
+        "run_focused_generated_static_scenario_projection_handoff_security_compatibility_accessibility_and_full_repository_regression_validation",
+        "verify_accepted_Phase0_through_P4_6_history_one_migration_head_and_exact_unchanged_dependency_lock",
+        "seal_technical_commit_component_hashes_canonical_digest_test_coverage_results_claims_limitations_handoff_digest_closed_gates_and_known_environment_limitations",
+        "prepare_one_non_effective_exact_D_P4_7_ACCEPTANCE_proposal_without_closing_Phase4_or_authorizing_Phase5"
+      ]
+    }
+  ],
+  "exact_additive_implementation_paths": [
+    "app/hcam/acceptance/__init__.py",
+    "app/hcam/acceptance/bounds.py",
+    "app/hcam/acceptance/contracts.py",
+    "app/hcam/acceptance/canonical.py",
+    "app/hcam/acceptance/determinism.py",
+    "app/hcam/acceptance/fixtures.py",
+    "app/hcam/acceptance/scenarios.py",
+    "app/hcam/acceptance/adapters.py",
+    "app/hcam/acceptance/assertions.py",
+    "app/hcam/acceptance/replay.py",
+    "app/hcam/acceptance/evidence.py",
+    "app/hcam/acceptance/claims.py",
+    "app/hcam/acceptance/runbooks.py",
+    "app/hcam/acceptance/handoff.py",
+    "app/hcam/acceptance/projections.py",
+    "app/hcam/acceptance/compatibility.py",
+    "app/hcam/acceptance/service.py",
+    "fixtures/phase4/p4-7/generated-scenario-manifest-v1.json",
+    "fixtures/phase4/p4-7/generated-scenario-fixtures-v1.json",
+    "fixtures/phase4/p4-7/generated-expected-outcomes-v1.json",
+    "fixtures/phase4/p4-7/generated-pairwise-cases-v1.json",
+    "contracts/phase-4/p4-7-start-authorization.json",
+    "contracts/phase-4/p4-7/acceptance-contracts.json",
+    "contracts/phase-4/p4-7/scenario-manifest.json",
+    "contracts/phase-4/p4-7/scenario-results.json",
+    "contracts/phase-4/p4-7/evidence-index.json",
+    "contracts/phase-4/p4-7/claim-register.json",
+    "contracts/phase-4/p4-7/limitation-register.json",
+    "contracts/phase-4/p4-7/operations-runbook.json",
+    "contracts/phase-4/p4-7/production-operations-prerequisites.json",
+    "contracts/phase-4/p4-7/reconstruction-manifest.json",
+    "contracts/phase-4/p4-7/http-operations.json",
+    "contracts/phase-4/p4-7/event-workflows.json",
+    "contracts/phase-4/p4-7/ui-accessibility.json",
+    "contracts/phase-4/p4-7/compatibility.json",
+    "contracts/phase-4/p4-7/openapi.json",
+    "contracts/phase-4/p4-7/asyncapi.json",
+    "contracts/phase-4/p4-7/cloudevents.json",
+    "contracts/phase-4/p4-7/arazzo.json",
+    "contracts/phase-4/p4-7/rfc8785-projection.json",
+    "contracts/phase-4/p4-7/prov-projection.json",
+    "contracts/phase-4/p4-7/slsa-projection.json",
+    "contracts/phase-4/p4-7/handoff-package.json",
+    "contracts/phase-4/p4-7/evidence.json",
+    "contracts/phase-4/p4-7/evidence-package.json",
+    "contracts/phase-4/p4-7/acceptance-proposal.json",
+    "docs/phase-4/p4-7-generated-operations.md",
+    "docs/phase-4/p4-7-production-prerequisites.md",
+    "docs/phase-4/p4-7-handoff.md",
+    "docs/phase-4/p4-7-evidence-review.md",
+    "tests/test_phase47_contracts.py",
+    "tests/test_phase47_canonical.py",
+    "tests/test_phase47_determinism.py",
+    "tests/test_phase47_fixtures.py",
+    "tests/test_phase47_scenarios.py",
+    "tests/test_phase47_adapters.py",
+    "tests/test_phase47_assertions.py",
+    "tests/test_phase47_replay.py",
+    "tests/test_phase47_evidence.py",
+    "tests/test_phase47_claims.py",
+    "tests/test_phase47_runbooks.py",
+    "tests/test_phase47_handoff.py",
+    "tests/test_phase47_projections.py",
+    "tests/test_phase47_compatibility.py",
+    "tests/test_phase47_security.py",
+    "tests/test_phase47_readiness.py",
+    "tools/phase47_generated_acceptance.py",
+    "tools/phase47_readiness.py"
+  ],
+  "exact_pre_existing_synchronization_paths": [
+    {
+      "path": "README.md",
+      "pre_change_sha256": "799B1D7CE8788511F3739599D99D6FEBAA53DA7F3AEEF899CDCAEFF758F4CBE9",
+      "reason": "record_effective_P4_7_start_technical_progress_evidence_and_exact_owner_acceptance_without_rewriting_prior_phase_history"
+    },
+    {
+      "path": "docs/phase-4/README.md",
+      "pre_change_sha256": "1AE307DE71CAAAB06BCDA794228823E2FD6C81FCDCFBCA2FF95A4830A5B2CCBF",
+      "reason": "index_effective_P4_7_start_generated_acceptance_handoff_evidence_and_final_Phase4_records"
+    },
+    {
+      "path": "docs/phase-4/status.md",
+      "pre_change_sha256": "5AD68DDE32B09864D97223E01B4412E2E555645D0C37DB4DE3FF06D366E12B66",
+      "reason": "record_effective_P4_7_start_work_package_evidence_limitations_exact_progress_and_closed_Phase5_gate"
+    },
+    {
+      "path": "docs/phase-4/acceptance-checklist.md",
+      "pre_change_sha256": "ADFAED0237C86601E22726E275274045CD551F56CCE622DDB493903847558BF1",
+      "reason": "synchronize_the_final_Phase4_acceptance_checklist_to_exact_accepted_subphase_evidence_without_weakening_any_gate"
+    }
+  ],
+  "immutable_dependency_bindings": [
+    {
+      "path": "pyproject.toml",
+      "sha256": "B2740298D7D1E5D147CC48E21750966EB0B765376853F27ACDA990D70F328605"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "69CB301D0F8D97BC0973C620F47FB0D84BFAAE25A1D405E067B15005994F55EF"
+    }
+  ],
+  "immutable_scope": [
+    "all_existing_Phase0_through_Phase3_contracts_evidence_decisions_packages_migrations_source_tests_and_Git_objects",
+    "all_accepted_P4_0_through_P4_6_packages_evidence_acceptance_migrations_source_behavior_and_history",
+    "all_existing_migrations_through_0018_operations_security_scale_and_the_single_current_Alembic_head",
+    "contracts/phase-4/p4-7-plan-authorization.json",
+    "contracts/phase-4/p4-7-planning-package.json",
+    "contracts/phase-4/p4-7-owner-decisions.json",
+    "contracts/phase-4/p4-7-planning-r1-package.json",
+    "contracts/phase-4/p4-7-planning-r1-acceptance-proposal.json",
+    "contracts/phase-4/p4-7-planning-r1-acceptance.json",
+    "docs/phase-4/p4-7-research-record.md",
+    "docs/phase-4/p4-7-threat-model.md",
+    "docs/phase-4/p4-7-contract-catalog.md",
+    "docs/phase-4/p4-7-decision-packet.md",
+    "docs/phase-4/p4-7-owner-decisions.md",
+    "docs/phase-4/p4-7-implementation-plan.md",
+    "pyproject.toml",
+    "uv.lock"
+  ],
+  "bounded_generated_runtime_contract_after_authorization": {
+    "generated_only": true,
+    "anonymous": true,
+    "non_issuable": true,
+    "operational": false,
+    "default_off": true,
+    "production_forbidden": true,
+    "scenario_adapter": "bounded_in_process_application_service_calls_only",
+    "direct_repository_or_database_write": false,
+    "HTTP_event_and_workflow": "pure_projection_validation_only",
+    "socket_listener_client_broker_or_network": false,
+    "state": "in_memory_or_test_temporary_SQLite_owned_by_existing_services",
+    "state_retention_after_run": "zero",
+    "production_operations_manual": false,
+    "future_production_prerequisite_outline": "defined_non_effective_not_operationally_validated",
+    "external_provider_workflow_engine_telemetry_backend_or_service": false,
+    "camera_media_model_dataset_artifact_or_inference": false,
+    "operational_alert_notification_dispatch_enforcement_or_autonomous_action": false,
+    "container_or_Kubernetes_execution": false,
+    "Phase5_UI_SDK_or_application": false
+  },
+  "contract_and_resource_bounds": {
+    "unknown_fields": "forbidden",
+    "canonical_encoding": "UTF_8_ASCII_JSON_sorted_keys_compact_separators",
+    "digest": "SHA_256",
+    "required_scenarios": 9,
+    "required_replays_per_scenario": 2,
+    "maximum_scenarios": 64,
+    "maximum_pairwise_cases": 512,
+    "minimum_generated_boundary_and_pairwise_vectors": 512,
+    "maximum_steps_per_scenario": 256,
+    "maximum_logical_duration_seconds_per_scenario": 86400,
+    "maximum_records_per_scenario": 10000,
+    "maximum_bytes_per_scenario": 16777216,
+    "maximum_total_generated_evidence_bytes": 268435456,
+    "maximum_output_files": 512,
+    "maximum_string_bytes": 4096,
+    "maximum_collection_items": 10000,
+    "maximum_nested_depth": 16,
+    "maximum_adapters": 3,
+    "maximum_assertion_families": 32,
+    "maximum_claims": 512,
+    "maximum_limitations": 512,
+    "maximum_evidence_components": 4096,
+    "maximum_evidence_edges": 16384,
+    "maximum_handoff_operations": 1024,
+    "maximum_UI_states": 4096,
+    "maximum_compatibility_entries": 2048,
+    "maximum_generated_attempt_duration_seconds": 120,
+    "source_media_payload_or_real_identifier_retention": "zero",
+    "network_process_container_cluster_and_deployment_actions": "zero",
+    "runtime_default": "disabled"
+  },
+  "allowed_local_execution_after_authorization": {
+    "repository_owned_generated_ASCII_JSON_only": true,
+    "existing_locked_dependencies_only": true,
+    "dependency_install_update_or_download": false,
+    "local_Python_generated_static_unit_integration_scenario_replay_and_coverage_tests": true,
+    "in_memory_or_test_temporary_SQLite_generated_only_validation": true,
+    "direct_P4_7_persistence_access": false,
+    "pure_OpenAPI_AsyncAPI_CloudEvents_Arazzo_RFC8785_PROV_and_SLSA_projection_validation": true,
+    "local_socket_HTTP_client_server_broker_workflow_engine_or_subprocess": false,
+    "generated_non_operational_runbook_validation": true,
+    "production_operations_procedure_execution": false,
+    "real_provider_camera_media_model_dataset_private_or_Government_data_access": false,
+    "source_test_documentation_and_evidence_cycles_maximum": 10,
+    "local_checkpoint_commits": true,
+    "remote_git": false
+  },
+  "validation_gates": [
+    "accepted_P4_7_PLANNING_R1_planning_acceptance_and_start_authorization_hashes_remain_exact",
+    "all_accepted_Phase0_through_P4_6_histories_remain_verifiable_and_immutable",
+    "all_nine_mandatory_generated_scenarios_and_bounded_pairwise_cases_reproduce_from_exact_manifest_inputs",
+    "two_clean_replays_match_normalized_semantic_digests_for_every_mandatory_scenario",
+    "all_contract_version_canonical_bound_enum_unknown_prohibited_content_and_fixture_lint_tests_pass",
+    "scenario_engine_calls_only_allowlisted_application_service_boundaries_and_direct_persistence_socket_network_subprocess_provider_camera_media_model_container_and_Kubernetes_access_is_denied",
+    "schema_authorization_chronology_identity_rule_review_integrity_redaction_recovery_side_effect_replay_handoff_and_accessibility_assertion_families_pass_independently",
+    "skip_unknown_incomplete_missing_evidence_unaccounted_loss_and_prohibited_effect_never_become_success",
+    "evidence_graph_is_acyclic_complete_hash_bound_and_traceable_from_claim_and_limitation_records",
+    "unsupported_stale_contradicted_withdrawn_unresolved_or_evidence_free_claims_are_denied",
+    "generated_runbook_is_bounded_zero_retention_reconstructable_and_separate_from_the_non_effective_production_prerequisite_outline",
+    "every_production_prerequisite_category_is_not_operationally_validated_and_contains_no_environment_specific_command_value_credential_destination_or_readiness_claim",
+    "canonical_HTTP_event_workflow_UI_accessibility_and_compatibility_catalogues_have_complete_cross_references_and_deterministic_projections",
+    "optional_standard_shaped_projections_remain_derived_non_authoritative_loss_accounted_version_pinned_and_free_of_conformance_claims",
+    "no_frontend_SDK_broker_workflow_engine_public_route_migration_dependency_container_Kubernetes_or_deployment_change_is_introduced",
+    "new_or_materially_changed_P4_7_modules_achieve_at_least_90_percent_branch_coverage_and_critical_authorization_oracle_evidence_claim_and_side_effect_logic_at_least_95_percent",
+    "unconditional_repository_suite_Ruff_compile_build_lock_dependency_historical_migration_and_readiness_checks_pass",
+    "evidence_handoff_and_package_digests_reproduce_from_clean_local_source",
+    "no_unsupported_security_accessibility_legal_evidentiary_operational_production_accuracy_scale_performance_or_conformance_claim_is_made",
+    "Phase4_final_acceptance_and_Phase5_planning_implementation_and_deployment_remain_separate_closed_gates"
+  ],
+  "stop_conditions": [
+    "path_or_scope_outside_this_package",
+    "immutable_hash_accepted_history_planning_acceptance_dependency_lock_or_branch_ancestry_mismatch",
+    "new_or_changed_dependency_migration_public_route_frontend_SDK_install_update_download_dynamic_import_or_external_service_is_required",
+    "real_identifier_payload_media_credential_locator_wall_clock_randomness_or_unbound_revision_reaches_a_fixture_or_evidence_component",
+    "scenario_engine_or_adapter_can_write_directly_to_a_repository_or_database_bypass_application_authorization_or_access_network_subprocess_provider_camera_media_model_container_or_Kubernetes_surfaces",
+    "HTTP_event_workflow_or_standard_projection_becomes_semantic_authority_or_selects_a_listener_client_broker_workflow_engine_vendor_or_deployment",
+    "assertion_skip_unknown_incomplete_missing_evidence_unaccounted_loss_or_prohibited_side_effect_becomes_success",
+    "evidence_graph_cycle_hash_mismatch_missing_parent_unsupported_claim_hidden_limitation_or_non_reconstructable_result",
+    "production_operations_outline_contains_executable_commands_environment_values_credentials_destinations_targets_promises_or_claims_validated_readiness",
+    "generated_only_runbook_can_execute_a_production_machine_storage_backup_restore_recovery_network_scanner_container_cluster_or_deployment_action",
+    "real_provider_Sentinel_camera_media_private_Government_model_dataset_operational_action_or_credential_is_required",
+    "ten_in_scope_remediation_cycles_are_exhausted",
+    "commit_before_exact_start_acceptance_or_remote_Git_becomes_necessary"
+  ],
+  "explicitly_not_authorized": [
+    "P4_7_implementation_before_exact_start_package_acceptance",
+    "new_or_changed_dependencies_lockfiles_migrations_public_routes_frontend_apps_SDKs_installs_updates_downloads_dynamic_plugins_or_external_services",
+    "real_HTTP_listener_client_broker_workflow_engine_provider_Sentinel_camera_ONVIF_stream_frame_image_recording_playback_telemetry_or_operational_network_connection",
+    "production_operations_manual_environment_command_endpoint_destination_credential_secret_host_cluster_volume_threshold_SLI_SLO_RPO_RTO_capacity_retention_or_deployment_target",
+    "scanner_backup_restore_recovery_hardware_performance_stress_thermal_machine_storage_container_Kubernetes_cluster_cloud_pilot_production_deployment_or_release_execution",
+    "credential_secret_token_certificate_key_private_CA_or_non_test_database_DSN_access",
+    "real_private_personal_biometric_vehicle_owner_registration_case_watchlist_investigation_evidence_Government_or_police_data",
+    "models_datasets_checkpoints_artifacts_embeddings_inference_training_accelerators_or_benchmarks",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "standards_accessibility_legal_evidentiary_security_operational_readiness_accuracy_scale_performance_or_conformance_claim",
+    "Phase4_final_acceptance_without_exact_owner_evidence_acceptance",
+    "Phase5_planning_implementation_UI_deployment_or_release",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "frozen_progress": {
+    "phase4_before": {
+      "earned_points": 95,
+      "total_points": 100,
+      "percentage": "95.00%"
+    },
+    "p4_7_before": {
+      "earned_points": 0,
+      "total_points": 5,
+      "percentage": "0.0000%"
+    },
+    "after_controlled_generated_end_to_end_demonstration": {
+      "phase4_earned_points": 97,
+      "phase4_percentage": "97.00%",
+      "p4_7_earned_points": 2,
+      "p4_7_percentage": "40.0000%"
+    },
+    "after_evidence_claims_limitations_and_operations_pack": {
+      "phase4_earned_points": 98,
+      "phase4_percentage": "98.00%",
+      "p4_7_earned_points": 3,
+      "p4_7_percentage": "60.0000%"
+    },
+    "after_Phase5_consumer_handoff": {
+      "phase4_earned_points": 99,
+      "phase4_percentage": "99.00%",
+      "p4_7_earned_points": 4,
+      "p4_7_percentage": "80.0000%"
+    },
+    "after_exact_P4_7_acceptance": {
+      "phase4_earned_points": 100,
+      "phase4_percentage": "100.00%",
+      "p4_7_earned_points": 5,
+      "p4_7_percentage": "100.0000%"
+    },
+    "planning_points_awarded": 0,
+    "partial_item_credit": false
+  },
+  "required_acceptance_sequence": [
+    "owner_accepts_exact_SHA_256_of_this_package_as_D_P4_7_START",
+    "implementation_records_effective_start_without_changing_scope",
+    "bounded_local_generated_only_build_scenario_replay_validation_handoff_and_evidence_complete",
+    "technical_commit_and_evidence_package_are_sealed_without_push",
+    "owner_separately_accepts_exact_P4_7_evidence_package_and_technical_commit_to_close_Phase4",
+    "Phase5_planning_requires_a_separate_explicit_owner_authorization"
+  ],
+  "owner_authorization_statement_template": "D-P4.7-START: I, mayank-admin, accept P4.7 start package P4.7-START-R0 with SHA-256 {PACKAGE_SHA256} and authorize its exact bounded local generated-only implementation and scenario-validation scope, including the canonical scenario engine, one golden narrative plus eight mandatory variants and bounded pairwise cases, two clean deterministic replays, layered fail-closed assertions, acyclic evidence and claim/limitation records, the typed generated-only non-operational runbook, the guarded non-effective production-operations prerequisite outline, and canonical Phase 5 HTTP/event/workflow/UI/accessibility/compatibility handoff projections without Phase 5 implementation. Local checkpoint commits without push are authorized. This does not authorize new dependencies or migrations; real providers, network, credentials or secrets; Government or private data; cameras or media; models, datasets, artifacts, or inference; operational alerts or actions; executable production procedures; scanners, backup, restore, recovery, hardware, performance, or stress execution; containers, Kubernetes, deployment; Phase 4 final acceptance; Phase 5 planning or implementation; or remote Git."
+}

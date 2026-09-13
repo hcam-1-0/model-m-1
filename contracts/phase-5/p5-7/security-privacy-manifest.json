@@ -1,0 +1,22 @@
+{
+  "schema_version": "hcam.phase5.p5_7.security_privacy_manifest.v1",
+  "generated_only": true,
+  "gates": [
+    "CSP",
+    "CSRF",
+    "XSS_sinks",
+    "browser_storage",
+    "redaction",
+    "telemetry",
+    "authorization",
+    "department_isolation",
+    "dependency",
+    "SBOM",
+    "license",
+    "vulnerability",
+    "provenance"
+  ],
+  "external_network_authorized": false,
+  "real_data_authorized": false,
+  "production_security_or_compliance_claim_authorized": false
+}

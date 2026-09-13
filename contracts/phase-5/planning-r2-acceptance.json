@@ -1,0 +1,54 @@
+{
+  "schema_version": "hcam.phase5.planning-acceptance.v1",
+  "decision_id": "D-P5.0-PLANNING-R2-ACCEPTANCE",
+  "status": "accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-06",
+  "accepted_repository_head": "96a902315e78c184e92df9ebe5bcef1e336eab38",
+  "accepted_package": {
+    "package_id": "P5.0-PLANNING-R2",
+    "path": "contracts/phase-5/planning-package-r2.json",
+    "sha256": "CA13BB9D897A7815E89BE4F71240855C4F9392A55133DE99282EE59728A082F3",
+    "canonical_component_digest": "E4F6A6DCEADEB98DF7E753E5EFE173C9D4DA31447A90B713CDC91DCE5D01E3C0"
+  },
+  "recorded_profile": "B/A/A/A+B/D/C/A/A/A/A/A/A",
+  "GIS_direction": {
+    "decision_id": "D-P5.0-GIS-ADOPTION-001",
+    "source_repository": "hcam-1-0/final-ui",
+    "source_commit": "cd21af3bef132b211bfe2860d25eaf38a94253df",
+    "adoption_class": "canonical_operator_experience_with_parity_first_internal_migration",
+    "visual_or_functional_downgrade_permitted": false
+  },
+  "authority_effect": [
+    "freeze_P5_0_PLANNING_R2_as_the_accepted_Phase_5_planning_baseline",
+    "preserve_the_existing_Gujarat_GIS_as_the_canonical_operator_experience",
+    "prepare_one_separate_non_effective_digest_bound_P5_0_START_R0_authorization_proposal"
+  ],
+  "planning_progress": {
+    "earned": 8,
+    "total": 8,
+    "percent": 100.0,
+    "change_percentage_points": 0.0
+  },
+  "product_progress": {
+    "earned": 0,
+    "total": 100,
+    "percent": 0.0,
+    "change_percentage_points": 0.0
+  },
+  "source_import_authorized": false,
+  "implementation_authorized": false,
+  "dependency_installation_authorized": false,
+  "build_or_runtime_authorized": false,
+  "map_tile_camera_or_media_access_authorized": false,
+  "real_data_authorized": false,
+  "deployment_authorized": false,
+  "commit_authorized": false,
+  "remote_git_authorized": false,
+  "owner_statement_normalization": "UTF_8_LF_without_terminal_newline",
+  "owner_statement_utf8_length": 824,
+  "owner_statement_sha256": "399E2B77D5AF4F3F6AEAF8534B50E2640F24D0EBF84ACCD8E29731E57F1D43E6",
+  "owner_statement": "D-P5.0-PLANNING-R2-ACCEPTANCE: I, mayank-admin, accept reconciled P5.0 planning package P5.0-PLANNING-R2 with SHA-256 CA13BB9D897A7815E89BE4F71240855C4F9392A55133DE99282EE59728A082F3 and canonical component digest E4F6A6DCEADEB98DF7E753E5EFE173C9D4DA31447A90B713CDC91DCE5D01E3C0, including the recorded B/A/A/A+B/D/C/A/A/A/A/A/A decision profile and D-P5.0-GIS-ADOPTION-001, which establishes the existing Gujarat GIS as the canonical Phase 5 GIS operator experience under a parity-first, no-downgrade adoption strategy. This accepts planning only. It does not authorize source import, implementation, dependencies, build or runtime execution, map or tile network access, cameras or media, Government or private data, models or inference, operational actions, containers, Kubernetes, deployment, commit, push, or remote Git.",
+  "next_gate": "separate_exact_digest_bound_D_P5_0_START_acceptance"
+}

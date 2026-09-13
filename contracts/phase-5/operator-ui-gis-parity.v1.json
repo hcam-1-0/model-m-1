@@ -1,0 +1,24 @@
+{
+  "contract_type": "hcam.operator.gis-parity-matrix.v1",
+  "source_repository": "hcam-1-0/final-ui",
+  "source_commit": "cd21af3bef132b211bfe2860d25eaf38a94253df",
+  "source_component": "src/components/GisWorkspace.tsx",
+  "authoritative_2d": true,
+  "accessible_list_equivalent": true,
+  "optional_3d_default_enabled": false,
+  "generated_only": true,
+  "requirements": [
+    {"requirement_id": "gis.parity.composition", "category": "composition", "source_control": "gis.workspace.layout", "required_behavior": "preserve_workspace_regions", "visual_evidence_required": true, "interaction_evidence_required": true, "may_downgrade": false},
+    {"requirement_id": "gis.parity.filter", "category": "filter", "source_control": "gis.filter.explorer", "required_behavior": "preserve_filter_semantics", "visual_evidence_required": true, "interaction_evidence_required": true, "may_downgrade": false},
+    {"requirement_id": "gis.parity.layer", "category": "layer", "source_control": "gis.layer.controls", "required_behavior": "preserve_layer_controls", "visual_evidence_required": true, "interaction_evidence_required": true, "may_downgrade": false},
+    {"requirement_id": "gis.parity.selection", "category": "selection", "source_control": "gis.feature.selection", "required_behavior": "preserve_selection_state", "visual_evidence_required": true, "interaction_evidence_required": true, "may_downgrade": false},
+    {"requirement_id": "gis.parity.focus", "category": "focus", "source_control": "gis.map.focus", "required_behavior": "preserve_focus_controls", "visual_evidence_required": true, "interaction_evidence_required": true, "may_downgrade": false},
+    {"requirement_id": "gis.parity.responsive", "category": "responsive", "source_control": "gis.mobile.drawers", "required_behavior": "preserve_responsive_drawers", "visual_evidence_required": true, "interaction_evidence_required": true, "may_downgrade": false},
+    {"requirement_id": "gis.parity.safety", "category": "safety", "source_control": "gis.safety.labels", "required_behavior": "preserve_truthful_labels", "visual_evidence_required": true, "interaction_evidence_required": false, "may_downgrade": false},
+    {"requirement_id": "gis.parity.localization", "category": "localization", "source_control": "gis.localized.content", "required_behavior": "support_three_locales", "visual_evidence_required": true, "interaction_evidence_required": true, "may_downgrade": false},
+    {"requirement_id": "gis.parity.accessibility", "category": "accessibility", "source_control": "gis.list.alternative", "required_behavior": "preserve_accessible_equivalence", "visual_evidence_required": false, "interaction_evidence_required": true, "may_downgrade": false},
+    {"requirement_id": "gis.parity.degradation", "category": "degradation", "source_control": "gis.degraded.state", "required_behavior": "preserve_state_truthfulness", "visual_evidence_required": true, "interaction_evidence_required": true, "may_downgrade": false},
+    {"requirement_id": "gis.parity.performance", "category": "performance", "source_control": "gis.viewport.clustering", "required_behavior": "bound_viewport_work", "visual_evidence_required": true, "interaction_evidence_required": true, "may_downgrade": false},
+    {"requirement_id": "gis.parity.preview_gate", "category": "preview_gate", "source_control": "gis.preview.approval", "required_behavior": "preserve_approval_gate", "visual_evidence_required": true, "interaction_evidence_required": true, "may_downgrade": false}
+  ]
+}

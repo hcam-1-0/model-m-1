@@ -1,0 +1,73 @@
+{
+  "schema_version": "hcam.phase5.p5_4.start_acceptance.v1",
+  "decision_id": "D-P5.4-START",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-09",
+  "recorded_against_local_head": "16f9029e104cec40d06a3b9ce0eb0e2ec4e4d0ac",
+  "accepted_package": {
+    "package_id": "P5.4-START-R0",
+    "path": "contracts/phase-5/p5-4-start-authorization-package.json",
+    "bytes": 41030,
+    "sha256": "FC38A2A21119C501D1C09868C2AF8598297C7C81619D5F16B0A509B93A92DEA0",
+    "bound_input_digest": "26C20290D60A1418A36245C7C3671A13C46488A4BB4D94CC984337810B4CC4F2"
+  },
+  "authorized_scope": [
+    "record_exact_start_acceptance_and_create_one_local_pre_implementation_checkpoint_commit_without_push",
+    "eight_frozen_P5_4_generated_only_intelligence_alert_and_human_review_workstreams",
+    "26_named_existing_files_129_named_additive_implementation_paths_14_named_phase_evidence_records_and_four_bounded_status_navigation_transitions",
+    "exactly_832_deterministic_generated_contract_cases_and_C1_C10_C50_workloads",
+    "existing_locked_frontend_dependencies_only_with_no_dependency_or_lockfile_change",
+    "loopback_only_build_browser_accessibility_security_concurrency_replay_and_repository_validation",
+    "at_most_twelve_in_scope_remediation_validation_and_reseal_cycles",
+    "up_to_three_local_checkpoint_commits_without_push",
+    "one_separate_non_effective_P5_4_exit_acceptance_proposal"
+  ],
+  "mandatory_invariants": [
+    "Command_Center_remains_primary",
+    "Intelligence_Center_remains_a_connected_specialist_surface",
+    "strict_analytical_and_procedural_truth_separation",
+    "separate_typed_server_ordered_bounded_queues",
+    "authoritative_relationship_and_spatial_tables_and_exact_rule_traces",
+    "field_level_candidate_uncertainty_contradiction_missingness_staleness_calibration_provenance_and_abstention",
+    "identity_is_not_established",
+    "server_authoritative_independent_quorum_authorization_ETag_revision_idempotency_receipt_and_refetch",
+    "conflicts_require_explicit_reconsideration_without_automatic_mutation_retry",
+    "reviews_corrections_retractions_supersessions_and_reconsiderations_are_append_only",
+    "events_only_invalidate_and_HTTP_confirms_authority",
+    "accessibility_equivalence_is_authoritative",
+    "dynamic_profiles_never_change_operator_authority_or_safety",
+    "twenty_six_producer_gaps_and_forty_threats_remain_explicit",
+    "React_Flow_and_every_other_new_dependency_remain_blocked_pending_a_separate_exact_amendment",
+    "no_source_import_from_final_ui_Phase_2_5_or_other_repository"
+  ],
+  "continuing_prohibitions": [
+    "source_import",
+    "dependency_resolution_download_installation_or_lockfile_change",
+    "backend_API_routes_migrations_databases_workers_or_services",
+    "real_provider_workflow_map_tile_camera_media_or_network_access",
+    "Government_or_private_data_real_investigations_or_identities",
+    "models_datasets_artifacts_inference_training_or_AI_runtime",
+    "operational_alert_notification_dispatch_enforcement_provider_action_or_autonomous_action",
+    "hardware_performance_stress_thermal_conformance_or_production_claims",
+    "containers_or_Kubernetes",
+    "deployment",
+    "P5_5",
+    "remote_Git"
+  ],
+  "progress_at_start": {
+    "P5_4_earned": 0,
+    "P5_4_total": 15,
+    "P5_4_percent": 0.0,
+    "P5_4_change_percentage_points": 0.0,
+    "phase_5_earned": 48,
+    "phase_5_total": 100,
+    "phase_5_percent": 48.0,
+    "phase_5_change_percentage_points": 0.0
+  },
+  "owner_statement_normalization": "Exact ASCII text shown below, UTF-8 without BOM, no terminal newline.",
+  "owner_statement_utf8_length": 1698,
+  "owner_statement_sha256": "24CD02EB59B2AC2B19227D01762C2078DAD31602CE058474D3D16CD8AD615035",
+  "owner_statement": "D-P5.4-START: I, mayank-admin, accept P5.4 start package P5.4-START-R0 with SHA-256 FC38A2A21119C501D1C09868C2AF8598297C7C81619D5F16B0A509B93A92DEA0 and bound-input digest 26C20290D60A1418A36245C7C3671A13C46488A4BB4D94CC984337810B4CC4F2 and authorize its exact bounded local generated-only Intelligence, Alerts, And Human Review implementation scope, existing locked dependencies only, exactly 832 generated contract cases, deterministic C1/C10/C50 workloads, source and test implementation, loopback-only build and browser validation, evidence generation, and up to three local checkpoint commits without push. Command Center remains primary; Intelligence Center remains a connected specialist surface; strict analytical truth separation, separate typed queues, authoritative tables and exact rule traces, field-level uncertainty and abstention, server-authoritative independent quorum, strong ETag and idempotency controls, explicit conflict reconsideration, append-only corrections, HTTP-confirmed event invalidation, accessibility equivalence, dynamic profiles without authority changes, twenty-six producer gaps, forty threats, and all stop conditions remain mandatory. React Flow and every other new dependency remain blocked pending a separate exact amendment. This does not authorize source import, dependency resolution, downloads, installation or lockfile changes, backend routes or migrations, real providers or network access, cameras or media, Government or private data, real investigations or identities, models, datasets, artifacts or inference, operational alerts, notifications, dispatch, enforcement or autonomous actions, containers, Kubernetes, deployment, P5.5, or remote Git."
+}

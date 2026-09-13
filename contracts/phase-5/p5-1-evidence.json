@@ -1,0 +1,230 @@
+{
+  "schema_version": "hcam.phase5.p5_1.evidence.v1",
+  "evidence_id": "P5.1-EVIDENCE-R0",
+  "status": "technical_complete_owner_acceptance_pending",
+  "generated_on": "2026-09-07",
+  "technical_commit": "394e9d2701c9b63ca92dad8398607dfa918be7c3",
+  "start_package_sha256": "3B4A0CDD44185A94E7C04FB9038032EDDB1EB145E3C551A5A12BA81BD4A2A66E",
+  "bound_input_digest": "4C44F600C3BAB1D7D997391BDF880AC2BD3CBEDA565A5DF274F5753B381DCFE2",
+  "validation": {
+    "schema_version": "hcam.phase5.p5_1.validation_summary.v1",
+    "generated_on": "2026-09-06",
+    "generated_only": true,
+    "toolchain": {
+      "node": "24.18.0",
+      "pnpm": "11.21.0"
+    },
+    "workspace": {
+      "applications": 7,
+      "shared_packages": 16,
+      "dependency_edges": 39
+    },
+    "typecheck": "pass",
+    "lint": {
+      "result": "pass",
+      "warnings": 0
+    },
+    "formatting": "pass",
+    "unit_and_component": {
+      "files_passed": 11,
+      "tests_passed": 39,
+      "tests_failed": 0,
+      "tests_skipped": 0,
+      "result": "pass"
+    },
+    "coverage": {
+      "statements_percent": 98.51,
+      "branches_percent": 95.78,
+      "functions_percent": 98.88,
+      "lines_percent": 99.16,
+      "critical_contract_branch_coverage": [
+        {
+          "file": "auth-session/src/index.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "capabilities/src/index.ts",
+          "branches_percent": 96.55
+        },
+        {
+          "file": "contracts/src/index.ts",
+          "branches_percent": 97.22
+        },
+        {
+          "file": "gis-contracts/src/index.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "playback-contracts/src/index.ts",
+          "branches_percent": 100
+        }
+      ],
+      "result": "pass"
+    },
+    "browser": {
+      "system_browser": "Microsoft Edge",
+      "projects": [
+        "desktop",
+        "mobile"
+      ],
+      "passed": 5,
+      "skipped_by_project_design": 1,
+      "unexpected": 0,
+      "flaky": 0,
+      "loopback_only": true,
+      "axe_violations": 0,
+      "result": "pass"
+    },
+    "builds": {
+      "applications": [
+        {
+          "app": "admin-center",
+          "files": 3,
+          "bytes": 309447,
+          "source_maps": 0
+        },
+        {
+          "app": "command-center",
+          "files": 3,
+          "bytes": 309451,
+          "source_maps": 0
+        },
+        {
+          "app": "evidence-center",
+          "files": 3,
+          "bytes": 309452,
+          "source_maps": 0
+        },
+        {
+          "app": "intelligence-center",
+          "files": 3,
+          "bytes": 309465,
+          "source_maps": 0
+        },
+        {
+          "app": "investigation-center",
+          "files": 3,
+          "bytes": 309472,
+          "source_maps": 0
+        },
+        {
+          "app": "operations-center",
+          "files": 3,
+          "bytes": 309459,
+          "source_maps": 0
+        },
+        {
+          "app": "security-center",
+          "files": 3,
+          "bytes": 309452,
+          "source_maps": 0
+        }
+      ],
+      "total_bytes": 2166198,
+      "source_maps": 0,
+      "result": "pass"
+    },
+    "storybook": {
+      "stories": 6,
+      "build": "pass",
+      "telemetry": "disabled",
+      "production_bundle_budget_applicable": false
+    },
+    "visual_review": {
+      "desktop": "pass",
+      "mobile": "pass",
+      "mobile_navigation": "pass",
+      "overlap_or_horizontal_clipping": false
+    },
+    "manual_evidence": {
+      "screen_reader": "not_executed_explicitly_blocked",
+      "two_hundred_percent_zoom": "covered_by_reflow_automation_manual_confirmation_pending",
+      "production_accessibility_claim": false
+    },
+    "repository_regression": {
+      "generated_on": "2026-09-07",
+      "execution_mode": "bounded_subsystem_groups",
+      "python_test_modules": 299,
+      "tests_passed": 4223,
+      "tests_failed": 0,
+      "tests_skipped": 16,
+      "subtests_passed": 119,
+      "expected_skip_reason": "HCAM_POSTGRES_TEST_URL is not configured",
+      "groups": [
+        {
+          "name": "analytics",
+          "tests_passed": 325,
+          "tests_skipped": 0
+        },
+        {
+          "name": "phase_0_to_2_and_camera",
+          "tests_passed": 124,
+          "tests_skipped": 0,
+          "subtests_passed": 88
+        },
+        {
+          "name": "phase_3",
+          "tests_passed": 2810,
+          "tests_skipped": 2
+        },
+        {
+          "name": "phase_4",
+          "tests_passed": 610,
+          "tests_skipped": 8,
+          "note": "Six readiness checks were rerun successfully with the active worktree app path pinned ahead of the reused virtual environment."
+        },
+        {
+          "name": "phase_5_and_p5_1_verifier",
+          "tests_passed": 52,
+          "tests_skipped": 0
+        },
+        {
+          "name": "onvif_and_capability",
+          "tests_passed": 116,
+          "tests_skipped": 0
+        },
+        {
+          "name": "stream_and_playback",
+          "tests_passed": 88,
+          "tests_skipped": 0
+        },
+        {
+          "name": "infrastructure_security_and_other",
+          "tests_passed": 98,
+          "tests_skipped": 6,
+          "subtests_passed": 31
+        }
+      ],
+      "environment_controls": [
+        "PYTHONPATH pinned to the active worktree app and repository roots",
+        "pytest temporary roots placed under F:/HCAM-Task-Storage",
+        "network and remote Git remained closed"
+      ],
+      "result": "pass"
+    },
+    "result": "pass"
+  },
+  "environment": {
+    "generated_only": true,
+    "network_used_after_dependency_materialization": false,
+    "real_data_used": false,
+    "camera_or_media_used": false,
+    "map_or_provider_runtime_used": false,
+    "model_or_inference_used": false,
+    "container_or_kubernetes_used": false,
+    "remote_git_used": false
+  },
+  "limitations": [
+    "generated_only_operator_foundation",
+    "no_manual_screen_reader_or_separately_witnessed_200_percent_zoom_claim",
+    "no_configured_PostgreSQL_PostGIS_integration_database",
+    "no_map_tile_camera_media_provider_model_inference_or operational_runtime",
+    "no_Government_police_private_biometric_case_or evidence_data",
+    "generated_dependency_and_build_trees_preserved_outside_repository",
+    "P5_2_deployment_and_remote_Git_remain_closed"
+  ],
+  "product_progress_before_owner_acceptance": {
+    "P5_1": "10.5/12 (87.5000%)",
+    "Phase_5": "18.5/100 (18.5000%)"
+  }
+}

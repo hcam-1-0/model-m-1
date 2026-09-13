@@ -1,0 +1,12 @@
+{
+  "schema_version": "hcam.p5_1.foundation_scenarios.v1",
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "issuable": false,
+  "states": ["loading", "empty", "ready", "partial", "stale", "degraded", "denied", "conflict", "failure", "recovery", "correction", "success"],
+  "locales": ["en", "gu", "hi", "en-XA"],
+  "profiles": ["low_resource", "enhanced", "control_room", "future_server"],
+  "portal_ids": ["command", "operations", "intelligence", "investigations", "evidence", "admin", "security"],
+  "event_cases": ["accepted", "duplicate", "gap", "reordered", "wrong_department", "unknown_version", "reconnect", "poll_fallback"],
+  "security_cases": ["missing_session", "stale_session", "reauthentication", "capability_missing", "cross_scope", "unsafe_route", "oversized_response", "malformed_response", "conflict", "offline"],
+  "prohibited_content": ["real_identity", "real_department", "real_camera", "stream_locator", "credential", "Government_data", "private_data", "operational_action"]
+}

@@ -1,0 +1,47 @@
+{
+  "boundary": {
+    "canonical": false,
+    "conformance_claim": false,
+    "generated_only": true,
+    "operational": false
+  },
+  "mapping": [
+    {
+      "semantic_identity_remains_hcam_canonical": true,
+      "source": "urn:hcam:generated:p47",
+      "subject": "generated-contract",
+      "type": "hcam.correlation.hypothesis.changed.v1"
+    },
+    {
+      "semantic_identity_remains_hcam_canonical": true,
+      "source": "urn:hcam:generated:p47",
+      "subject": "generated-contract",
+      "type": "hcam.intelligence.alert.changed.v1"
+    },
+    {
+      "semantic_identity_remains_hcam_canonical": true,
+      "source": "urn:hcam:generated:p47",
+      "subject": "generated-contract",
+      "type": "hcam.intelligence.review.recorded.v1"
+    },
+    {
+      "semantic_identity_remains_hcam_canonical": true,
+      "source": "urn:hcam:generated:p47",
+      "subject": "generated-contract",
+      "type": "hcam.investigation.timeline.changed.v1"
+    },
+    {
+      "semantic_identity_remains_hcam_canonical": true,
+      "source": "urn:hcam:generated:p47",
+      "subject": "generated-contract",
+      "type": "hcam.investigation.correction.recorded.v1"
+    },
+    {
+      "semantic_identity_remains_hcam_canonical": true,
+      "source": "urn:hcam:generated:p47",
+      "subject": "generated-contract",
+      "type": "hcam.operations.degradation.changed.v1"
+    }
+  ],
+  "specversion": "1.0.2"
+}

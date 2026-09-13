@@ -1,0 +1,56 @@
+{
+  "schema_version": "hcam.phase5.p5_6.evidence.v1",
+  "evidence_id": "P5.6-EVIDENCE-R0",
+  "status": "technical_complete_owner_acceptance_pending",
+  "technical_commit": "8c3645f1d91b6d444a63d5534a322ba181a931f1",
+  "start_package_sha256": "B47BF7C8A7EB8005E7BE7D7EE77ADA1C5C8C3623071A26CBA4F9AC29199BC4EB",
+  "bound_input_digest": "412615496F731332EFA3E3D7AEF0E9C7B909F2545131A7E30F2BAAF871B2F992",
+  "evidence": {
+    "exact_generated_cases": 1120,
+    "generated_workloads": [
+      "C1",
+      "C10",
+      "C50"
+    ],
+    "portals": [
+      "H_CAM_Admin_Center",
+      "H_CAM_Security_Center",
+      "H_CAM_Operations_Center"
+    ],
+    "platform_operations_additive": true,
+    "P5_3_camera_live_surfaces_preserved": true,
+    "browser_checks": 96,
+    "viewports": [
+      "390x844",
+      "768x1024",
+      "1280x720",
+      "1440x900",
+      "1920x1080",
+      "2560x1440"
+    ],
+    "dependency_baseline_preserved": true,
+    "producer_gaps_preserved": 48,
+    "threats_covered": 72
+  },
+  "limitations": [
+    "generated-only projections; no real identities, administrative state, telemetry, providers, cameras, media, models, or Government/private data",
+    "no backend routes, migrations, database RLS execution, credentials, secret resolution, scanners, backup/restore, containers, Kubernetes, or deployment",
+    "SLO, recovery, supply-chain, capacity, topology, model-lane, and deployment views are qualified non-effective projections",
+    "dependency vulnerability evidence was preserved and not refreshed",
+    "browser validation is local loopback Microsoft Edge against generated static bundles"
+  ],
+  "permissions_not_granted": [
+    "P5.7",
+    "real_administrative_mutation_or_break_glass",
+    "credential_or_secret_resolution",
+    "real_telemetry_scanners_backup_restore_or_recovery",
+    "provider_camera_media_model_or_operational_network_access",
+    "Government_private_or_real_identity_data",
+    "containers_Kubernetes_deployment_or_remote_Git"
+  ],
+  "progress": {
+    "P5_6_technical": "9/10 (90.0000%)",
+    "percentage_point_change_from_start": "+90.0000",
+    "owner_exit_acceptance_pending": true
+  }
+}

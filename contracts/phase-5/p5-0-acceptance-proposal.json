@@ -1,0 +1,19 @@
+{
+  "schema_version": "hcam.phase5.p5_0.acceptance-proposal.v1",
+  "decision_id": "D-P5.0-ACCEPTANCE",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "evidence_package": {
+    "package_id": "P5.0-EVIDENCE-PACKAGE-R0",
+    "path": "contracts/phase-5/p5-0-evidence-package.json",
+    "sha256": "5A2857352974B541AC942ADA521A680B3D5D23B20B765882F8A94759B457E6C2",
+    "canonical_component_digest": "56229E40C1C374683956E344B7D08AF3F44D58208CB50B9C523A875F7FD846A7"
+  },
+  "technical_commit": "8d6ff70dfb0f6c7a6b9a50ce6db03d14f46256ae",
+  "accepted_progress_if_approved": {
+    "P5_0": "8/8 (100.0000%)",
+    "Phase_5": "8/100 (8.0000%)"
+  },
+  "P5_1_authorized": false,
+  "remote_Git_authorized": false
+}

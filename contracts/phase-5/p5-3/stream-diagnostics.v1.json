@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hcam:phase5:p5-3:stream-diagnostics:v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["stream_ref", "capability_status", "probe_state", "safe_reason", "observed_at", "generated"],
+  "properties": {
+    "stream_ref": { "type": "string", "pattern": "^SYN-[A-Z0-9-]{3,48}$" },
+    "capability_status": { "enum": ["fresh", "stale", "unavailable", "unknown"] },
+    "probe_state": { "enum": ["succeeded", "failed", "pending", "unavailable"] },
+    "safe_reason": { "type": ["string", "null"], "pattern": "^[a-z_]{1,48}$" },
+    "observed_at": { "type": ["string", "null"], "format": "date-time" },
+    "generated": { "const": true }
+  },
+  "x-hcam-forbidden-fields": ["locator", "credentials", "raw_response", "raw_address", "exception"]
+}

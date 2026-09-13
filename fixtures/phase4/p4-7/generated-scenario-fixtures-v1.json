@@ -1,0 +1,711 @@
+{
+  "contract_type": "hcam.acceptance.scenario-fixture-set.v1",
+  "generated_only": true,
+  "operational": false,
+  "scenario_count": 9,
+  "scenarios": [
+    {
+      "category": "golden",
+      "expected_terminal_state": "completed",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "S00",
+      "steps": [
+        {
+          "action": "observe_event",
+          "advance_ms": 1100,
+          "expected_outcome": "accepted",
+          "expected_reason": "event.observed",
+          "input_data": {
+            "event_kind": "generated.motion",
+            "generated_marker": "p47.s00"
+          },
+          "sequence": 1,
+          "step_id": "p47.s00.step.01"
+        },
+        {
+          "action": "correlate",
+          "advance_ms": 1200,
+          "expected_outcome": "accepted",
+          "expected_reason": "correlation.hypothesis_created",
+          "input_data": {
+            "generated_marker": "p47.s00"
+          },
+          "sequence": 2,
+          "step_id": "p47.s00.step.02"
+        },
+        {
+          "action": "evaluate_rule",
+          "advance_ms": 1300,
+          "expected_outcome": "accepted",
+          "expected_reason": "rule.matched",
+          "input_data": {
+            "generated_marker": "p47.s00"
+          },
+          "sequence": 3,
+          "step_id": "p47.s00.step.03"
+        },
+        {
+          "action": "propose_alert",
+          "advance_ms": 1400,
+          "expected_outcome": "accepted",
+          "expected_reason": "alert.proposed",
+          "input_data": {
+            "generated_marker": "p47.s00"
+          },
+          "sequence": 4,
+          "step_id": "p47.s00.step.04"
+        },
+        {
+          "action": "query_reference",
+          "advance_ms": 1500,
+          "expected_outcome": "accepted",
+          "expected_reason": "reference.candidate_set_created",
+          "input_data": {
+            "generated_marker": "p47.s00",
+            "reference_mode": "candidate"
+          },
+          "sequence": 5,
+          "step_id": "p47.s00.step.05"
+        },
+        {
+          "action": "review_alert",
+          "advance_ms": 1600,
+          "expected_outcome": "accepted",
+          "expected_reason": "review.approved",
+          "input_data": {
+            "decision": "approve",
+            "generated_marker": "p47.s00"
+          },
+          "sequence": 6,
+          "step_id": "p47.s00.step.06"
+        },
+        {
+          "action": "transition_alert",
+          "advance_ms": 1700,
+          "expected_outcome": "accepted",
+          "expected_reason": "alert.closed",
+          "input_data": {
+            "generated_marker": "p47.s00",
+            "target_state": "closed"
+          },
+          "sequence": 7,
+          "step_id": "p47.s00.step.07"
+        },
+        {
+          "action": "open_investigation",
+          "advance_ms": 1800,
+          "expected_outcome": "accepted",
+          "expected_reason": "investigation.opened",
+          "input_data": {
+            "generated_marker": "p47.s00"
+          },
+          "sequence": 8,
+          "step_id": "p47.s00.step.08"
+        },
+        {
+          "action": "append_evidence_reference",
+          "advance_ms": 1900,
+          "expected_outcome": "accepted",
+          "expected_reason": "evidence.reference_registered",
+          "input_data": {
+            "generated_marker": "p47.s00"
+          },
+          "sequence": 9,
+          "step_id": "p47.s00.step.09"
+        },
+        {
+          "action": "emit_signal",
+          "advance_ms": 2000,
+          "expected_outcome": "accepted",
+          "expected_reason": "signal.projected",
+          "input_data": {
+            "generated_marker": "p47.s00"
+          },
+          "sequence": 10,
+          "step_id": "p47.s00.step.10"
+        }
+      ],
+      "title": "Generated event through reviewed alert and evidence timeline"
+    },
+    {
+      "category": "abstention",
+      "expected_terminal_state": "abstained",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "S01",
+      "steps": [
+        {
+          "action": "observe_event",
+          "advance_ms": 1100,
+          "expected_outcome": "accepted",
+          "expected_reason": "event.observed",
+          "input_data": {
+            "event_kind": "generated.uncertain",
+            "generated_marker": "p47.s01"
+          },
+          "sequence": 1,
+          "step_id": "p47.s01.step.01"
+        },
+        {
+          "action": "correlate",
+          "advance_ms": 1200,
+          "expected_outcome": "abstained",
+          "expected_reason": "correlation.no_match",
+          "input_data": {
+            "generated_marker": "p47.s01",
+            "no_match": true
+          },
+          "sequence": 2,
+          "step_id": "p47.s01.step.02"
+        },
+        {
+          "action": "evaluate_rule",
+          "advance_ms": 1300,
+          "expected_outcome": "abstained",
+          "expected_reason": "rule.not_matched",
+          "input_data": {
+            "generated_marker": "p47.s01"
+          },
+          "sequence": 3,
+          "step_id": "p47.s01.step.03"
+        },
+        {
+          "action": "query_reference",
+          "advance_ms": 1400,
+          "expected_outcome": "abstained",
+          "expected_reason": "reference.abstained",
+          "input_data": {
+            "generated_marker": "p47.s01",
+            "reference_mode": "abstain"
+          },
+          "sequence": 4,
+          "step_id": "p47.s01.step.04"
+        },
+        {
+          "action": "emit_signal",
+          "advance_ms": 1500,
+          "expected_outcome": "accepted",
+          "expected_reason": "signal.projected",
+          "input_data": {
+            "generated_marker": "p47.s01"
+          },
+          "sequence": 5,
+          "step_id": "p47.s01.step.05"
+        }
+      ],
+      "title": "Generated non-match and reference abstention remain non-alerting"
+    },
+    {
+      "category": "duplicate_replay",
+      "expected_terminal_state": "accepted",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "S02",
+      "steps": [
+        {
+          "action": "observe_event",
+          "advance_ms": 1100,
+          "expected_outcome": "accepted",
+          "expected_reason": "event.observed",
+          "input_data": {
+            "event_kind": "generated.vehicle",
+            "generated_marker": "p47.s02"
+          },
+          "sequence": 1,
+          "step_id": "p47.s02.step.01"
+        },
+        {
+          "action": "duplicate_event",
+          "advance_ms": 1200,
+          "expected_outcome": "duplicate",
+          "expected_reason": "event.duplicate_suppressed",
+          "input_data": {
+            "generated_marker": "p47.s02"
+          },
+          "sequence": 2,
+          "step_id": "p47.s02.step.02"
+        },
+        {
+          "action": "correlate",
+          "advance_ms": 1300,
+          "expected_outcome": "accepted",
+          "expected_reason": "correlation.hypothesis_created",
+          "input_data": {
+            "generated_marker": "p47.s02"
+          },
+          "sequence": 3,
+          "step_id": "p47.s02.step.03"
+        },
+        {
+          "action": "evaluate_rule",
+          "advance_ms": 1400,
+          "expected_outcome": "accepted",
+          "expected_reason": "rule.matched",
+          "input_data": {
+            "generated_marker": "p47.s02"
+          },
+          "sequence": 4,
+          "step_id": "p47.s02.step.04"
+        },
+        {
+          "action": "propose_alert",
+          "advance_ms": 1500,
+          "expected_outcome": "accepted",
+          "expected_reason": "alert.proposed",
+          "input_data": {
+            "generated_marker": "p47.s02"
+          },
+          "sequence": 5,
+          "step_id": "p47.s02.step.05"
+        },
+        {
+          "action": "review_alert",
+          "advance_ms": 1600,
+          "expected_outcome": "accepted",
+          "expected_reason": "review.approved",
+          "input_data": {
+            "decision": "approve",
+            "generated_marker": "p47.s02"
+          },
+          "sequence": 6,
+          "step_id": "p47.s02.step.06"
+        }
+      ],
+      "title": "Generated duplicate delivery is suppressed without losing provenance"
+    },
+    {
+      "category": "late_conflict",
+      "expected_terminal_state": "conflict_recorded",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "S03",
+      "steps": [
+        {
+          "action": "observe_event",
+          "advance_ms": 1100,
+          "expected_outcome": "accepted",
+          "expected_reason": "event.observed",
+          "input_data": {
+            "event_kind": "generated.person",
+            "generated_marker": "p47.s03"
+          },
+          "sequence": 1,
+          "step_id": "p47.s03.step.01"
+        },
+        {
+          "action": "record_late_conflict",
+          "advance_ms": 1200,
+          "expected_outcome": "degraded",
+          "expected_reason": "chronology.conflict_recorded",
+          "input_data": {
+            "generated_marker": "p47.s03"
+          },
+          "sequence": 2,
+          "step_id": "p47.s03.step.02"
+        },
+        {
+          "action": "correlate",
+          "advance_ms": 1300,
+          "expected_outcome": "abstained",
+          "expected_reason": "correlation.conflict_abstained",
+          "input_data": {
+            "generated_marker": "p47.s03"
+          },
+          "sequence": 3,
+          "step_id": "p47.s03.step.03"
+        },
+        {
+          "action": "emit_signal",
+          "advance_ms": 1400,
+          "expected_outcome": "accepted",
+          "expected_reason": "signal.projected",
+          "input_data": {
+            "generated_marker": "p47.s03"
+          },
+          "sequence": 4,
+          "step_id": "p47.s03.step.04"
+        }
+      ],
+      "title": "Generated late conflict is retained and correlation abstains"
+    },
+    {
+      "category": "authorization_isolation",
+      "expected_terminal_state": "denied",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "S04",
+      "steps": [
+        {
+          "action": "observe_event",
+          "advance_ms": 1100,
+          "expected_outcome": "accepted",
+          "expected_reason": "event.observed",
+          "input_data": {
+            "event_kind": "generated.object",
+            "generated_marker": "p47.s04"
+          },
+          "sequence": 1,
+          "step_id": "p47.s04.step.01"
+        },
+        {
+          "action": "deny_cross_scope",
+          "advance_ms": 1200,
+          "expected_outcome": "denied",
+          "expected_reason": "authorization.cross_scope_denied",
+          "input_data": {
+            "generated_marker": "p47.s04"
+          },
+          "sequence": 2,
+          "step_id": "p47.s04.step.02"
+        },
+        {
+          "action": "emit_signal",
+          "advance_ms": 1300,
+          "expected_outcome": "accepted",
+          "expected_reason": "signal.projected",
+          "input_data": {
+            "generated_marker": "p47.s04"
+          },
+          "sequence": 3,
+          "step_id": "p47.s04.step.03"
+        }
+      ],
+      "title": "Generated cross-scope request is denied without resource disclosure"
+    },
+    {
+      "category": "reference_degradation",
+      "expected_terminal_state": "reference_degraded",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "S05",
+      "steps": [
+        {
+          "action": "observe_event",
+          "advance_ms": 1100,
+          "expected_outcome": "accepted",
+          "expected_reason": "event.observed",
+          "input_data": {
+            "event_kind": "generated.vehicle",
+            "generated_marker": "p47.s05"
+          },
+          "sequence": 1,
+          "step_id": "p47.s05.step.01"
+        },
+        {
+          "action": "correlate",
+          "advance_ms": 1200,
+          "expected_outcome": "accepted",
+          "expected_reason": "correlation.hypothesis_created",
+          "input_data": {
+            "generated_marker": "p47.s05"
+          },
+          "sequence": 2,
+          "step_id": "p47.s05.step.02"
+        },
+        {
+          "action": "evaluate_rule",
+          "advance_ms": 1300,
+          "expected_outcome": "accepted",
+          "expected_reason": "rule.matched",
+          "input_data": {
+            "generated_marker": "p47.s05"
+          },
+          "sequence": 3,
+          "step_id": "p47.s05.step.03"
+        },
+        {
+          "action": "query_reference",
+          "advance_ms": 1400,
+          "expected_outcome": "degraded",
+          "expected_reason": "reference.unavailable",
+          "input_data": {
+            "generated_marker": "p47.s05",
+            "reference_mode": "unavailable"
+          },
+          "sequence": 4,
+          "step_id": "p47.s05.step.04"
+        },
+        {
+          "action": "emit_signal",
+          "advance_ms": 1500,
+          "expected_outcome": "accepted",
+          "expected_reason": "signal.projected",
+          "input_data": {
+            "generated_marker": "p47.s05"
+          },
+          "sequence": 5,
+          "step_id": "p47.s05.step.05"
+        }
+      ],
+      "title": "Generated reference dependency failure stays visible and non-authoritative"
+    },
+    {
+      "category": "review_lifecycle_denial",
+      "expected_terminal_state": "review_denied",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "S06",
+      "steps": [
+        {
+          "action": "observe_event",
+          "advance_ms": 1100,
+          "expected_outcome": "accepted",
+          "expected_reason": "event.observed",
+          "input_data": {
+            "event_kind": "generated.motion",
+            "generated_marker": "p47.s06"
+          },
+          "sequence": 1,
+          "step_id": "p47.s06.step.01"
+        },
+        {
+          "action": "correlate",
+          "advance_ms": 1200,
+          "expected_outcome": "accepted",
+          "expected_reason": "correlation.hypothesis_created",
+          "input_data": {
+            "generated_marker": "p47.s06"
+          },
+          "sequence": 2,
+          "step_id": "p47.s06.step.02"
+        },
+        {
+          "action": "evaluate_rule",
+          "advance_ms": 1300,
+          "expected_outcome": "accepted",
+          "expected_reason": "rule.matched",
+          "input_data": {
+            "generated_marker": "p47.s06"
+          },
+          "sequence": 3,
+          "step_id": "p47.s06.step.03"
+        },
+        {
+          "action": "propose_alert",
+          "advance_ms": 1400,
+          "expected_outcome": "accepted",
+          "expected_reason": "alert.proposed",
+          "input_data": {
+            "generated_marker": "p47.s06"
+          },
+          "sequence": 4,
+          "step_id": "p47.s06.step.04"
+        },
+        {
+          "action": "review_alert",
+          "advance_ms": 1500,
+          "expected_outcome": "denied",
+          "expected_reason": "review.denied",
+          "input_data": {
+            "decision": "deny",
+            "generated_marker": "p47.s06"
+          },
+          "sequence": 5,
+          "step_id": "p47.s06.step.05"
+        },
+        {
+          "action": "transition_alert",
+          "advance_ms": 1600,
+          "expected_outcome": "denied",
+          "expected_reason": "alert.transition_denied",
+          "input_data": {
+            "generated_marker": "p47.s06",
+            "target_state": "closed"
+          },
+          "sequence": 6,
+          "step_id": "p47.s06.step.06"
+        }
+      ],
+      "title": "Generated mandatory review denial blocks alert lifecycle progress"
+    },
+    {
+      "category": "correction_retraction",
+      "expected_terminal_state": "retracted",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "S07",
+      "steps": [
+        {
+          "action": "observe_event",
+          "advance_ms": 1100,
+          "expected_outcome": "accepted",
+          "expected_reason": "event.observed",
+          "input_data": {
+            "event_kind": "generated.object",
+            "generated_marker": "p47.s07"
+          },
+          "sequence": 1,
+          "step_id": "p47.s07.step.01"
+        },
+        {
+          "action": "correlate",
+          "advance_ms": 1200,
+          "expected_outcome": "accepted",
+          "expected_reason": "correlation.hypothesis_created",
+          "input_data": {
+            "generated_marker": "p47.s07"
+          },
+          "sequence": 2,
+          "step_id": "p47.s07.step.02"
+        },
+        {
+          "action": "evaluate_rule",
+          "advance_ms": 1300,
+          "expected_outcome": "accepted",
+          "expected_reason": "rule.matched",
+          "input_data": {
+            "generated_marker": "p47.s07"
+          },
+          "sequence": 3,
+          "step_id": "p47.s07.step.03"
+        },
+        {
+          "action": "propose_alert",
+          "advance_ms": 1400,
+          "expected_outcome": "accepted",
+          "expected_reason": "alert.proposed",
+          "input_data": {
+            "generated_marker": "p47.s07"
+          },
+          "sequence": 4,
+          "step_id": "p47.s07.step.04"
+        },
+        {
+          "action": "review_alert",
+          "advance_ms": 1500,
+          "expected_outcome": "accepted",
+          "expected_reason": "review.approved",
+          "input_data": {
+            "decision": "approve",
+            "generated_marker": "p47.s07"
+          },
+          "sequence": 5,
+          "step_id": "p47.s07.step.05"
+        },
+        {
+          "action": "open_investigation",
+          "advance_ms": 1600,
+          "expected_outcome": "accepted",
+          "expected_reason": "investigation.opened",
+          "input_data": {
+            "generated_marker": "p47.s07"
+          },
+          "sequence": 6,
+          "step_id": "p47.s07.step.06"
+        },
+        {
+          "action": "append_evidence_reference",
+          "advance_ms": 1700,
+          "expected_outcome": "accepted",
+          "expected_reason": "evidence.reference_registered",
+          "input_data": {
+            "generated_marker": "p47.s07"
+          },
+          "sequence": 7,
+          "step_id": "p47.s07.step.07"
+        },
+        {
+          "action": "record_correction",
+          "advance_ms": 1800,
+          "expected_outcome": "accepted",
+          "expected_reason": "correction.recorded",
+          "input_data": {
+            "generated_marker": "p47.s07"
+          },
+          "sequence": 8,
+          "step_id": "p47.s07.step.08"
+        },
+        {
+          "action": "record_retraction",
+          "advance_ms": 1900,
+          "expected_outcome": "accepted",
+          "expected_reason": "retraction.recorded",
+          "input_data": {
+            "generated_marker": "p47.s07"
+          },
+          "sequence": 9,
+          "step_id": "p47.s07.step.09"
+        }
+      ],
+      "title": "Generated correction and retraction propagate through investigation evidence"
+    },
+    {
+      "category": "worker_recovery",
+      "expected_terminal_state": "recovered",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "S08",
+      "steps": [
+        {
+          "action": "observe_event",
+          "advance_ms": 1100,
+          "expected_outcome": "accepted",
+          "expected_reason": "event.observed",
+          "input_data": {
+            "event_kind": "generated.motion",
+            "generated_marker": "p47.s08"
+          },
+          "sequence": 1,
+          "step_id": "p47.s08.step.01"
+        },
+        {
+          "action": "degrade_worker",
+          "advance_ms": 1200,
+          "expected_outcome": "degraded",
+          "expected_reason": "worker.degraded",
+          "input_data": {
+            "generated_marker": "p47.s08"
+          },
+          "sequence": 2,
+          "step_id": "p47.s08.step.02"
+        },
+        {
+          "action": "emit_signal",
+          "advance_ms": 1300,
+          "expected_outcome": "accepted",
+          "expected_reason": "signal.projected",
+          "input_data": {
+            "generated_marker": "p47.s08"
+          },
+          "sequence": 3,
+          "step_id": "p47.s08.step.03"
+        },
+        {
+          "action": "recover_worker",
+          "advance_ms": 1400,
+          "expected_outcome": "recovered",
+          "expected_reason": "worker.recovered",
+          "input_data": {
+            "generated_marker": "p47.s08"
+          },
+          "sequence": 4,
+          "step_id": "p47.s08.step.04"
+        },
+        {
+          "action": "correlate",
+          "advance_ms": 1500,
+          "expected_outcome": "accepted",
+          "expected_reason": "correlation.hypothesis_created",
+          "input_data": {
+            "generated_marker": "p47.s08"
+          },
+          "sequence": 5,
+          "step_id": "p47.s08.step.05"
+        },
+        {
+          "action": "evaluate_rule",
+          "advance_ms": 1600,
+          "expected_outcome": "accepted",
+          "expected_reason": "rule.matched",
+          "input_data": {
+            "generated_marker": "p47.s08"
+          },
+          "sequence": 6,
+          "step_id": "p47.s08.step.06"
+        }
+      ],
+      "title": "Generated worker degradation and recovery preserve deterministic progress"
+    }
+  ]
+}

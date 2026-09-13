@@ -1,0 +1,106 @@
+{
+  "schema_version": "hcam.phase5.p5_1.owner_decisions.v1",
+  "record_id": "P5.1-OWNER-DECISIONS-R0",
+  "status": "owner_selected_reconciliation_authorized",
+  "effective_for_planning_reconciliation": true,
+  "recorded_on": "2026-09-06",
+  "authorized_by": "mayank-admin",
+  "source_package": {
+    "package_id": "P5.1-PLANNING-R0",
+    "path": "contracts/phase-5/p5-1-planning-package.json",
+    "sha256": "588585D6F65150C48F8DE2F9E3F93A2624BDD0C380CD48A7D21A5AB29D6DA816",
+    "canonical_component_digest": "AE55552A4469F870651F91C544C5D88456A57A17C7CAABFAF76FE4F18CA696C1"
+  },
+  "selection_profile": "B/A/A/A/A/A/A/A/A/A/A/A",
+  "matches_recommended_profile": true,
+  "selections": [
+    {
+      "decision_id": "D-P5.1-001",
+      "selection": ["B"],
+      "resolution": "pnpm_workspace_with_catalogues_workspace_protocol_one_lockfile_and_exact_start_time_toolchain_pins"
+    },
+    {
+      "decision_id": "D-P5.1-002",
+      "selection": ["A"],
+      "resolution": "React_Router_Data_Mode_with_static_typed_portal_route_manifests_and_resource_state_outside_route_loaders"
+    },
+    {
+      "decision_id": "D-P5.1-003",
+      "selection": ["A"],
+      "resolution": "native_HTML_first_with_React_Aria_Components_wrapped_by_HCAM_owned_accessible_APIs"
+    },
+    {
+      "decision_id": "D-P5.1-004",
+      "selection": ["A"],
+      "resolution": "pinned_OpenAPI_3_1_generated_types_and_fetch_client_plus_strict_JSON_Schema_2020_12_standalone_runtime_validation_and_safe_RFC_9457_mapping"
+    },
+    {
+      "decision_id": "D-P5.1-005",
+      "selection": ["A"],
+      "resolution": "TanStack_Query_with_an_HCAM_operation_policy_registry_HTTP_authority_typed_event_invalidation_and_complete_polling_fallback"
+    },
+    {
+      "decision_id": "D-P5.1-006",
+      "selection": ["A"],
+      "resolution": "same_origin_BFF_Secure_HttpOnly_SameSite_Host_cookie_memory_only_synchronizer_CSRF_token_Origin_Fetch_Metadata_and_explicit_reauthentication"
+    },
+    {
+      "decision_id": "D-P5.1-007",
+      "selection": ["A"],
+      "resolution": "React_Intl_ICU_catalogues_for_English_Gujarati_and_Hindi_with_canonical_time_and_operational_timezone_projection"
+    },
+    {
+      "decision_id": "D-P5.1-008",
+      "selection": ["A"],
+      "resolution": "safe_low_default_intersected_with_server_policy_operator_scope_build_support_coarse_browser_capabilities_and_session_local_health"
+    },
+    {
+      "decision_id": "D-P5.1-009",
+      "selection": ["A"],
+      "resolution": "memory_default_typed_URL_harmless_versioned_TTL_local_preferences_server_workspaces_and_independent_windows"
+    },
+    {
+      "decision_id": "D-P5.1-010",
+      "selection": ["A"],
+      "resolution": "HCAM_low_cardinality_minimized_client_signals_with_a_default_off_OpenTelemetry_compatible_adapter"
+    },
+    {
+      "decision_id": "D-P5.1-011",
+      "selection": ["A"],
+      "resolution": "tiered_generated_unit_component_story_contract_browser_visual_security_and_manual_accessibility_evidence"
+    },
+    {
+      "decision_id": "D-P5.1-012",
+      "selection": ["A"],
+      "resolution": "hash_bound_attributed_build_excluded_staged_final_UI_adoption_with_separate_command_live_and_GIS_parity_gates"
+    }
+  ],
+  "reconciliation_rules": [
+    "preserve_P5_0_accepted_architecture_and_evidence",
+    "preserve_Gujarat_GIS_as_canonical_operator_experience",
+    "preserve_parity_first_no_downgrade_GIS_adoption",
+    "preserve_HTTP_and_BFF_as_authoritative",
+    "preserve_events_as_invalidation_or_labeled_non_authoritative_projection_only",
+    "preserve_functionally_complete_low_resource_behavior",
+    "preserve_English_Gujarati_and_Hindi_first_class_support",
+    "preserve_source_import_dependency_runtime_network_data_media_model_deployment_and_remote_Git_closed_gates",
+    "resolve_exact_dependency_versions_integrity_licenses_scripts_vulnerabilities_and_browser_baselines_only_in_a_later_start_package"
+  ],
+  "P5_0_rebaseline_required": false,
+  "P5_1_weight_rebaseline_required": false,
+  "planning_reconciliation_authorized": true,
+  "reconciled_planning_acceptance_recorded": false,
+  "start_package_authorized": false,
+  "source_import_authorized": false,
+  "implementation_authorized": false,
+  "dependency_or_lockfile_change_authorized": false,
+  "build_or_runtime_authorized": false,
+  "network_data_media_model_or_operational_action_authorized": false,
+  "container_Kubernetes_deployment_or_P5_2_authorized": false,
+  "commit_authorized": false,
+  "remote_git_authorized": false,
+  "owner_statement_normalization": "One decision per line, trimmed ASCII text, UTF-8 without BOM, LF separators, no terminal newline.",
+  "owner_statement_utf8_length": 167,
+  "owner_statement_sha256": "68D35D7392C02D30697A95B18DBD353255CEC7644CA2B1ECF3C1F2BD6A8D85E0",
+  "owner_statement": "D-P5.1-001: B\nD-P5.1-002: A\nD-P5.1-003: A\nD-P5.1-004: A\nD-P5.1-005: A\nD-P5.1-006: A\nD-P5.1-007: A\nD-P5.1-008: A\nD-P5.1-009: A\nD-P5.1-010: A\nD-P5.1-011: A\nD-P5.1-012: A"
+}

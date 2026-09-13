@@ -1,0 +1,32 @@
+{
+  "schema_version": "hcam.phase4.p4_0.start-authorization.v1",
+  "decision_id": "D-P4.0-START",
+  "status": "owner_authorized",
+  "effective": true,
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-09-04",
+  "authorization_package": {
+    "package_id": "P4.0-START-R0",
+    "path": "contracts/phase-4/p4-0-start-authorization-package.json",
+    "sha256": "58E490D767B810743FAF47B3709DF12B0071EEDDD5E50C96A3A7D1CE8E38DFB2"
+  },
+  "planning_checkpoint": "a00b677ac120c33c4045b37b8350e816b1e3b11b",
+  "implementation_branch": "codex/phase4-contracts-guardrails",
+  "authorized_scope": "exact_bounded_local_generated_only_P4_0_implementation",
+  "combined_local_cycles_maximum": 8,
+  "local_checkpoint_commits_authorized": true,
+  "remote_git_authorized": false,
+  "separate_exit_acceptance_required": true,
+  "continuing_prohibitions": [
+    "models_datasets_artifacts_or_inference",
+    "cameras_ONVIF_Sentinel_streams_or_media",
+    "external_providers_or_network_egress",
+    "credentials_secrets_tokens_or_certificates",
+    "Government_police_private_personal_biometric_or_vehicle_owner_data",
+    "operational_alerts_notifications_dispatch_enforcement_or_autonomous_action",
+    "Kubernetes_cloud_pilot_production_or_deployment",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git",
+    "P4_1_or_later_implementation"
+  ],
+  "owner_statement": "D-P4.0-START: I, mayank-admin, accept P4.0 start package P4.0-START-R0 with SHA-256 58E490D767B810743FAF47B3709DF12B0071EEDDD5E50C96A3A7D1CE8E38DFB2 and authorize its exact bounded local generated-only implementation scope. This does not authorize models, datasets, inference, cameras or media, external providers, Government or private data, operational alerts, dispatch or enforcement, Kubernetes or deployment, or remote Git."
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "hcam.phase5.p5_6.security_contracts.v1",
+  "marker": "HCAM_GENERATED_ONLY_P5_6",
+  "generated_at": "2026-09-10T09:00:00.000Z",
+  "specialist_surface": "H_CAM_Security_Center",
+  "signal_lanes": [
+    "operational",
+    "security",
+    "audit",
+    "evidence",
+    "administrative"
+  ],
+  "views": [
+    "security_posture",
+    "access_assurance",
+    "privileged_activity",
+    "session_authentication",
+    "denied_activity",
+    "audit_references",
+    "compliance_exceptions_attestations",
+    "supply_chain_assurance",
+    "provider_destination_secret_posture",
+    "soc_handoff_unavailable"
+  ],
+  "truth_policy": {
+    "immutable_reference_is_not_evidence_truth": true,
+    "derived_search_requires_source_confirmation": true,
+    "unknown_stale_partial_and_unavailable_are_explicit": true,
+    "no_compliance_or_security_certification_claim": true
+  },
+  "boundaries": {
+    "secret_resolution": false,
+    "credential_operation": false,
+    "scanner_execution": false,
+    "attestation_signing": false,
+    "external_soc_handoff": false,
+    "provider_or_network_contact": false,
+    "raw_security_payload_retention": false
+  }
+}

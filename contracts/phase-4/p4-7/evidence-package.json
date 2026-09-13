@@ -1,0 +1,81 @@
+{
+  "authorization_digest": "39AF9D9DA00DB7806195B4BA2B5512B238A94E7BC41C3F8270431AA2A87EE168",
+  "canonical_component_digest": "75D0A3B7667C25BF8B5180639F5B8F3937A734FAA2B2BB63CB9FE9914182A875",
+  "components": {
+    "contracts/phase-4/p4-7/acceptance-contracts.json": "C9A6E498EF778C1ADE25DF1A68FF04CE2C7EA3A352921DBF41D69D7191CC581C",
+    "contracts/phase-4/p4-7/arazzo.json": "A15E5D1FC83AF9B682392D4D0F3D658CFDD578F5121B50FE3440F3380E5B07C0",
+    "contracts/phase-4/p4-7/asyncapi.json": "39C28E90F1BD9CFFE676E887C59AF8F4816A658B982D2FDE41AD940F6008D99F",
+    "contracts/phase-4/p4-7/claim-register.json": "2332566F758F3A0F021215CB7958EAA1B451F169C1844088AE08470A66099965",
+    "contracts/phase-4/p4-7/cloudevents.json": "4098E983BAD3B683284573A69FAC78AAA65852D84C6962A2AD62B4703E14A645",
+    "contracts/phase-4/p4-7/compatibility.json": "61B9C2873591178A44888759CC104C5BAEE721029CC94C23F2D9E32F72E2D41A",
+    "contracts/phase-4/p4-7/event-workflows.json": "54A58B7EEAD72BDED01FC97C0B5AA28D85D2BBA4963431FFA4F46AC0231952A9",
+    "contracts/phase-4/p4-7/evidence-index.json": "DF6BC6A90D82DC4D745AA8CBBF615CDA9598A236D609CAD298458A79B876666F",
+    "contracts/phase-4/p4-7/evidence.json": "D253C4DBD6ED3E3C37808E78680689BF7F35CBB781890F5AE09D8CEBBA487D7D",
+    "contracts/phase-4/p4-7/handoff-package.json": "CB2E4F9067EB8B78C5A38AE8FC95379C945FBDC26029CB75AE94B9768C3C98E7",
+    "contracts/phase-4/p4-7/http-operations.json": "8A4F818D644DB07A931A3056B7848CDC29895B25F61B4E9FB3A56FF9E0D5923B",
+    "contracts/phase-4/p4-7/limitation-register.json": "7716A11DF61E0ED6824C3D0A62389A9C03B44A50005A3952AB7F38C746B55414",
+    "contracts/phase-4/p4-7/openapi.json": "97434AC7E377FA5B7351A8CF3AF00D01E893D293FBEBA9A86A14D196A8645A7E",
+    "contracts/phase-4/p4-7/operations-runbook.json": "C529AE95DE45367A45CDE5041E18985727965D3CA1359DFF6BB8C6B35657FF11",
+    "contracts/phase-4/p4-7/production-operations-prerequisites.json": "EC1D51113CCFF5FA15CD2E9B01B1B100CF56EBB0E3005B320562D802F175B06B",
+    "contracts/phase-4/p4-7/prov-projection.json": "3A09A566A38BF89AC2A90C94FA5ABB3E89220024B4A7F03476D76FE626510EAE",
+    "contracts/phase-4/p4-7/reconstruction-manifest.json": "4197F3367CEE75684937C315BF52BF5226F33026637F0DD7842C52D06E46CA89",
+    "contracts/phase-4/p4-7/rfc8785-projection.json": "DA116DE4E4214C1C0A110A246769D512FA6FD1537CC799A5D3566B50D6087029",
+    "contracts/phase-4/p4-7/scenario-manifest.json": "20E62E09DA60AB3D2A3E88EA9EC1CBF3F717463D041486A59CB712B508822A6C",
+    "contracts/phase-4/p4-7/scenario-results.json": "86CA4DF3182FC0214A0E53FF4106713BE49121C1022C2045B2E8BE9F3901D8B9",
+    "contracts/phase-4/p4-7/slsa-projection.json": "231E7AA7C827760B860686BC5BCF0410D8BC3D55D5EDE80D1BE795F45244E6DB",
+    "contracts/phase-4/p4-7/ui-accessibility.json": "2109E6369F5E55887E5BAA997D4A0BC3F9E4DECB5F6ECD37AA8B03FC749187F2",
+    "docs/phase-4/p4-7-evidence-review.md": "B3AFA2F29A3D51ED22F4B2B67258DC21C0C2C834B0B8BB4CC0F70848754FF560",
+    "docs/phase-4/p4-7-generated-operations.md": "71751C4404226582970C7EFBCBADFA906FD0F37CF0605034C1FA79B4330B4388",
+    "docs/phase-4/p4-7-handoff.md": "5AF57C8DBB9AC0B7DB9DBC174F1C8012203A451DD66ABE48CED7C86212345789",
+    "docs/phase-4/p4-7-production-prerequisites.md": "68D67BE1171D314BF057A6DB91CFE1F115B063B31F431B6E44B579D34872B9BF",
+    "fixtures/phase4/p4-7/generated-expected-outcomes-v1.json": "06244AB15BDA0D5D666367C413F8440E3CCF66B571B9EBA9E94C8EDFC13CA696",
+    "fixtures/phase4/p4-7/generated-pairwise-cases-v1.json": "EFC4E5B337045462BEFF5FA6E6E80FA88CB490F7405D8B91634C2B625014096F",
+    "fixtures/phase4/p4-7/generated-scenario-fixtures-v1.json": "D018D6EC9E55B05A376BB9D09732016A9F59C24CBE0678F19E01891992BB7E73",
+    "fixtures/phase4/p4-7/generated-scenario-manifest-v1.json": "20E62E09DA60AB3D2A3E88EA9EC1CBF3F717463D041486A59CB712B508822A6C"
+  },
+  "generated_only": true,
+  "owner_acceptance_required": true,
+  "package_id": "P4.7-EVIDENCE-PACKAGE-R0",
+  "phase4_complete": false,
+  "phase5_authorized": false,
+  "schema_version": "hcam.phase4.p4_7.evidence-package.v1",
+  "technical_commit": "6ad9ff4b06b5f5516e5b346408807a70fe6466a0",
+  "validation": {
+    "focused_phase47": {
+      "branch_coverage_percent": 98.16,
+      "coverage_threshold_percent": 90,
+      "failed": 0,
+      "passed": 46
+    },
+    "full_repository": {
+      "failed": 0,
+      "passed": 4171,
+      "postgresql_integration_skips": 16,
+      "skipped": 16,
+      "subtests_passed": 119,
+      "warnings": 1
+    },
+    "migration": {
+      "head": "0018_operations_security_scale",
+      "head_count": 1
+    },
+    "quality_gates": {
+      "compileall": "passed",
+      "offline_lock_check": "passed",
+      "phase46_historical_readiness": "passed",
+      "phase47_readiness": "passed",
+      "release_contract_check": "passed",
+      "ruff": "passed",
+      "source_distribution_build": "passed",
+      "wheel_build": "passed"
+    },
+    "unperformed_environment_validation": [
+      "postgresql_integration",
+      "vulnerability_refresh",
+      "hardware_capacity",
+      "backup_restore_recovery",
+      "container_kubernetes_execution",
+      "production_or_pilot_deployment"
+    ]
+  }
+}

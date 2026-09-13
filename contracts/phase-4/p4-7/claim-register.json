@@ -1,0 +1,60 @@
+{
+  "claims": [
+    {
+      "claim_id": "p47_d4fd90d3f51754202010bd70a60548a6",
+      "evidence_class": "generated_scenario",
+      "generated_only": true,
+      "limitation_ids": [
+        "p47_b0111d93c09ad50623ee62ad50965bae"
+      ],
+      "prohibited_interpretations": [
+        "production_performance",
+        "external_system_behavior"
+      ],
+      "scope": "p4.7.generated_replay",
+      "statement": "The mandatory generated scenarios replay deterministically under the pinned manifest.",
+      "status": "limited",
+      "supporting_component_ids": [
+        "p47_e88945d62b6cfddc9718e378be7823a2"
+      ]
+    },
+    {
+      "claim_id": "p47_7e33d03336156cb95c7bf493e95f75a6",
+      "evidence_class": "generated_scenario",
+      "generated_only": true,
+      "limitation_ids": [
+        "p47_4f416b3e9e0c8b953b18b9fa370946e3"
+      ],
+      "prohibited_interpretations": [
+        "network_validation",
+        "provider_validation"
+      ],
+      "scope": "p4.7.generated_boundary",
+      "statement": "The generated scenario boundary records zero prohibited external side effects.",
+      "status": "limited",
+      "supporting_component_ids": [
+        "p47_e88945d62b6cfddc9718e378be7823a2"
+      ]
+    },
+    {
+      "claim_id": "p47_de82520eb8313bc8a9936dc2e99a5c03",
+      "evidence_class": "generated_contract",
+      "generated_only": true,
+      "limitation_ids": [
+        "p47_a1a7467212e6025de21b00ff8b8a46f2"
+      ],
+      "prohibited_interpretations": [
+        "ui_implementation",
+        "accessibility_conformance"
+      ],
+      "scope": "p4.7.consumer_handoff",
+      "statement": "The Phase 5 handoff catalogues are internally complete for the declared generated contract scope.",
+      "status": "limited",
+      "supporting_component_ids": [
+        "p47_e88945d62b6cfddc9718e378be7823a2"
+      ]
+    }
+  ],
+  "contract_type": "hcam.acceptance.claim-register.v1",
+  "generated_only": true
+}

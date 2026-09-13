@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+storybook-static/
+test-results/
+playwright-report/
+.vite/
+*.tsbuildinfo
+dependency-metadata.raw.json

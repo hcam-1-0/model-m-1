@@ -1,0 +1,60 @@
+{
+  "contract_type": "hcam.operator.route-journeys.v1",
+  "version": "phase5.0.v1",
+  "generated_only": true,
+  "routes": [
+    {"route_id": "command.overview", "path": "/command", "portal_id": "command", "required_roles": ["command.viewer", "administrator"], "allowed_query_keys": ["department", "window"], "sensitive_state_permitted": false},
+    {"route_id": "operations.cameras", "path": "/operations/cameras", "portal_id": "operations", "required_roles": ["camera.viewer", "administrator"], "allowed_query_keys": ["department", "status", "page"], "sensitive_state_permitted": false},
+    {"route_id": "operations.live", "path": "/operations/live", "portal_id": "operations", "required_roles": ["camera.viewer", "administrator"], "allowed_query_keys": ["workspace"], "sensitive_state_permitted": false},
+    {"route_id": "operations.gis", "path": "/operations/gis", "portal_id": "operations", "required_roles": ["camera.viewer", "intelligence.viewer", "administrator"], "allowed_query_keys": ["layer", "focus", "window"], "sensitive_state_permitted": false},
+    {"route_id": "intelligence.alerts", "path": "/intelligence/alerts", "portal_id": "intelligence", "required_roles": ["intelligence.reviewer", "administrator"], "allowed_query_keys": ["state", "priority", "page"], "sensitive_state_permitted": false},
+    {"route_id": "investigations.timeline", "path": "/investigations/timeline", "portal_id": "investigations", "required_roles": ["investigation.viewer", "administrator"], "allowed_query_keys": ["timeline", "order"], "sensitive_state_permitted": false}
+  ],
+  "journeys": [
+    {
+      "contract_type": "hcam.operator.journey.v1",
+      "journey_id": "journey.camera_to_live",
+      "initial_state": "loading",
+      "terminal_states": ["ready", "denied", "failure"],
+      "generated_only": true,
+      "operational": false,
+      "transitions": [
+        {"transition_id": "camera.loaded", "from_state": "loading", "to_state": "ready", "action_id": "view", "reason_code": "catalogue_loaded", "requires_server_confirmation": true},
+        {"transition_id": "camera.denied", "from_state": "loading", "to_state": "denied", "action_id": "view", "reason_code": "access_denied", "requires_server_confirmation": true},
+        {"transition_id": "camera.failed", "from_state": "loading", "to_state": "failure", "action_id": "view", "reason_code": "safe_failure", "requires_server_confirmation": true},
+        {"transition_id": "camera.recover", "from_state": "failure", "to_state": "recovery", "action_id": "retry", "reason_code": "retry_started", "requires_server_confirmation": true},
+        {"transition_id": "camera.recovered", "from_state": "recovery", "to_state": "ready", "action_id": "refresh", "reason_code": "recovery_complete", "requires_server_confirmation": true}
+      ]
+    },
+    {
+      "contract_type": "hcam.operator.journey.v1",
+      "journey_id": "journey.alert_review",
+      "initial_state": "loading",
+      "terminal_states": ["ready", "denied", "conflict", "failure"],
+      "generated_only": true,
+      "operational": false,
+      "transitions": [
+        {"transition_id": "review.loaded", "from_state": "loading", "to_state": "ready", "action_id": "view", "reason_code": "alert_loaded", "requires_server_confirmation": true},
+        {"transition_id": "review.denied", "from_state": "loading", "to_state": "denied", "action_id": "view", "reason_code": "access_denied", "requires_server_confirmation": true},
+        {"transition_id": "review.conflict", "from_state": "ready", "to_state": "conflict", "action_id": "review", "reason_code": "etag_conflict", "requires_server_confirmation": true},
+        {"transition_id": "review.refresh", "from_state": "conflict", "to_state": "recovery", "action_id": "refresh", "reason_code": "refresh_required", "requires_server_confirmation": true},
+        {"transition_id": "review.recovered", "from_state": "recovery", "to_state": "ready", "action_id": "view", "reason_code": "state_refreshed", "requires_server_confirmation": true},
+        {"transition_id": "review.failed", "from_state": "ready", "to_state": "failure", "action_id": "review", "reason_code": "safe_failure", "requires_server_confirmation": true}
+      ]
+    },
+    {
+      "contract_type": "hcam.operator.journey.v1",
+      "journey_id": "journey.correction_reconstruction",
+      "initial_state": "loading",
+      "terminal_states": ["correction", "denied", "failure"],
+      "generated_only": true,
+      "operational": false,
+      "transitions": [
+        {"transition_id": "correction.loaded", "from_state": "loading", "to_state": "ready", "action_id": "view", "reason_code": "timeline_loaded", "requires_server_confirmation": true},
+        {"transition_id": "correction.applied", "from_state": "ready", "to_state": "correction", "action_id": "propose", "reason_code": "correction_visible", "requires_server_confirmation": true},
+        {"transition_id": "correction.denied", "from_state": "loading", "to_state": "denied", "action_id": "view", "reason_code": "access_denied", "requires_server_confirmation": true},
+        {"transition_id": "correction.failed", "from_state": "ready", "to_state": "failure", "action_id": "propose", "reason_code": "safe_failure", "requires_server_confirmation": true}
+      ]
+    }
+  ]
+}

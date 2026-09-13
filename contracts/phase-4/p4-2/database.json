@@ -1,0 +1,40 @@
+{
+  "schema_version": "hcam.phase4.p4_2.database-delta.v1",
+  "revision": "0014_rule_authoring_evaluation",
+  "parent_revision": "0013_correlation_foundation",
+  "extended_stores": [
+    "intelligence_rules"
+  ],
+  "new_stores": [
+    "intelligence_rule_compilations",
+    "intelligence_rule_evaluation_revisions",
+    "intelligence_rule_lifecycle_events",
+    "intelligence_rule_schedules",
+    "intelligence_rule_scope_members",
+    "intelligence_rule_shadow_comparisons",
+    "intelligence_rule_state_checkpoints"
+  ],
+  "immutable_version_key": [
+    "department",
+    "rule_key",
+    "rule_version"
+  ],
+  "transactional_outbox": "stream_event_outbox",
+  "postgresql": {
+    "forced_rls_on_every_new_store": true,
+    "policy_scope": "department"
+  },
+  "sqlite": {
+    "worker_limit": 1,
+    "migration_cycle": "0013 -> 0014 -> 0013 -> 0014"
+  },
+  "stored_data": "generated_structured_metadata_only",
+  "prohibited_columns": [
+    "frame",
+    "image",
+    "media",
+    "locator",
+    "url",
+    "bytes"
+  ]
+}

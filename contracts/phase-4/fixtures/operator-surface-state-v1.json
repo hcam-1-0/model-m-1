@@ -1,0 +1,14 @@
+{
+  "authority_class": "mandatory_review",
+  "available_actions": [
+    "view",
+    "edit_draft",
+    "validate"
+  ],
+  "contract_type": "hcam.intelligence.operator-surface-state.v1",
+  "data_state": "generated_only",
+  "resource_ref": "ref_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "resource_type": "rule",
+  "runtime_state": "disabled",
+  "unavailable_reason": "p4_0_runtime_disabled"
+}

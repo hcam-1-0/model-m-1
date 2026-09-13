@@ -1,0 +1,21 @@
+{
+  "schema_version": "hcam.phase5.p5_2.command_scenarios.v1",
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "scenarios": [
+    "loading",
+    "empty",
+    "ready",
+    "partial",
+    "stale",
+    "degraded",
+    "denied",
+    "conflict",
+    "failure",
+    "recovery",
+    "correction",
+    "unknown",
+    "retracted",
+    "unsupported"
+  ],
+  "operational_actions": false
+}

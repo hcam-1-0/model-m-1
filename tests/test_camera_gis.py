@@ -128,7 +128,7 @@ def test_camera_gis_schema_has_one_merged_head(app: FastAPI) -> None:
     config = Config("alembic.ini")
     heads = ScriptDirectory.from_config(config).get_heads()
     assert heads == [CURRENT_SCHEMA_REVISION]
-    assert CURRENT_SCHEMA_REVISION == "0012_merge_camera_gis"
+    assert CURRENT_SCHEMA_REVISION == "0018_operations_security_scale"
     columns = {
         column["name"]
         for column in inspect(app.state.database.engine).get_columns("cameras")

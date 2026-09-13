@@ -1,0 +1,83 @@
+{
+  "schema_version": "hcam.phase4.p4_3.alert-contract-catalog.v1",
+  "canonical_encoding": "UTF-8 ASCII JSON, sorted keys, compact separators",
+  "digest": "SHA-256",
+  "contract_types": [
+    "hcam.intelligence.alert-lifecycle-event.v2",
+    "hcam.intelligence.alert.v2",
+    "hcam.p4-3.alert-budget-policy.v1",
+    "hcam.p4-3.alert-lifecycle-command.v1",
+    "hcam.p4-3.alert-review-decision.v1",
+    "hcam.p4-3.alert-timer-intent.v1",
+    "hcam.p4-3.lab-evaluation-ingress.v1",
+    "hcam.p4-3.proposed-alert-command.v1",
+    "hcam.p4-3.review-quorum-policy.v1",
+    "hcam.p4-3.system-health-action.v1",
+    "hcam.p4-3.workflow-execution-request.v1",
+    "hcam.p4-3.workflow-execution-result.v1"
+  ],
+  "identity": {
+    "semantic_key": "canonical occurrence independent of delivery mechanics",
+    "delivery_key": "department-scoped source delivery idempotency",
+    "alert_id": "deterministic from department and semantic key",
+    "collision_behavior": "same key with different material fails closed"
+  },
+  "lifecycle": {
+    "states": [
+      "proposed",
+      "queued_review",
+      "under_review",
+      "accepted",
+      "rejected",
+      "resolved",
+      "corrected",
+      "suppressed",
+      "merged"
+    ],
+    "optimistic_concurrency": "body expected_version plus mandatory If-Match",
+    "command_idempotency": "immutable command receipt and prior revision replay",
+    "review_decisions": "append-only"
+  },
+  "authority": {
+    "police_intelligence": "mandatory_review",
+    "system_health": "bounded_automation",
+    "system_health_actions": [
+      "route",
+      "suppress_duplicate",
+      "resolve_synthetic_health"
+    ],
+    "future_autonomous_action": false
+  },
+  "review": {
+    "ordinary_distinct_reviewers": 1,
+    "generated_high_impact_default_reviewers": 2,
+    "generated_high_impact_configurable_minimum": 1,
+    "generated_high_impact_configurable_maximum": 5,
+    "duplicate_actor_slots_allowed": false,
+    "stale_evidence_allowed": false
+  },
+  "timers": {
+    "authoritative_store": "PostgreSQL",
+    "lease_seconds": 90,
+    "attempts_maximum": 3,
+    "sqlite_worker_limit": 1,
+    "external_side_effects": false
+  },
+  "adapters": {
+    "local_bounded": "generated-only",
+    "generated_simulator": "generated-only",
+    "future_external": "disabled",
+    "lab_ingress": "sanitized generated metadata only"
+  },
+  "bounds": {
+    "contract_envelope_bytes": 65536,
+    "evidence_references": 128,
+    "page_size": 200,
+    "quorum": 5,
+    "reason_text_characters": 2000,
+    "timer_attempts": 3
+  },
+  "generated_only": true,
+  "operational": false,
+  "runtime_state": "disabled_by_default_and_forbidden_in_production"
+}

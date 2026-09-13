@@ -1,0 +1,65 @@
+{
+  "schema_version": "hcam.phase5.planning-package.v1",
+  "package_id": "P5.0-PLANNING-R2",
+  "status": "non_effective_owner_acceptance_pending",
+  "prepared_on": "2026-09-06",
+  "planning_branch": "codex/phase5-operator-application-planning",
+  "accepted_predecessor": {
+    "phase": "phase_4",
+    "commit": "96a902315e78c184e92df9ebe5bcef1e336eab38"
+  },
+  "supersedes_for_current_planning": {
+    "package_id": "P5.0-PLANNING-R1",
+    "path": "contracts/phase-5/planning-package-r1.json",
+    "sha256": "347CBDB181A08C66E63F670B2425BE986DC5AFC30F55E2C85BE515324E53F5A0",
+    "history_preserved": true,
+    "reason": "Owner directed stronger adoption of the existing Gujarat GIS."
+  },
+  "component_digest_algorithm": "Sort components by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "E4F6A6DCEADEB98DF7E753E5EFE173C9D4DA31447A90B713CDC91DCE5D01E3C0",
+  "components": [
+    {"path": "contracts/phase-5/gis-adoption-directive.json", "bytes": 3320, "sha256": "5BCF8C37E78CFFE78D042C95CB123F5B4DFC362BB9D8421E3F205E1C78CE970A"},
+    {"path": "contracts/phase-5/planning-package-r1.json", "bytes": 5981, "sha256": "347CBDB181A08C66E63F670B2425BE986DC5AFC30F55E2C85BE515324E53F5A0"},
+    {"path": "docs/phase-5/current-status-r2.md", "bytes": 862, "sha256": "7168155473E74A4D620E45452BE89130CB7C44B69AEAD16FE140B3671DA7699D"},
+    {"path": "docs/phase-5/gis-adoption-contract.md", "bytes": 6705, "sha256": "38A0DEB34FE3E8A3D3E2BC5238F50E56F96C7B17082DD1189DCEE6B6F803018A"},
+    {"path": "docs/phase-5/reconciled-planning-r2.md", "bytes": 2100, "sha256": "5FD54E77BE1FABA8C129F588DB0F5A9FBF39D308FB927DE18867A2A75A948FCE"}
+  ],
+  "owner_profile_preserved": "B/A/A/A+B/D/C/A/A/A/A/A/A",
+  "new_owner_direction": {
+    "decision_id": "D-P5.0-GIS-ADOPTION-001",
+    "adoption_class": "canonical_operator_experience_with_parity_first_internal_migration",
+    "source_repository": "hcam-1-0/final-ui",
+    "source_commit": "cd21af3bef132b211bfe2860d25eaf38a94253df",
+    "source_component": "src/components/GisWorkspace.tsx"
+  },
+  "GIS_resolution": {
+    "operator_experience": "existing_Gujarat_GIS_is_canonical_baseline",
+    "renderer_target": "MapLibre_2D",
+    "optional_adapter": "guarded_3D_with_authoritative_2D_and_accessible_list_equivalence",
+    "migration_strategy": "parity_first_renderer_neutral_and_additive",
+    "existing_workflow_removal_without_new_owner_decision": false,
+    "visual_or_functional_downgrade_permitted": false
+  },
+  "frozen_subphase_weights_changed": false,
+  "planning_progress": {"earned": 8, "total": 8, "percent": 100.0, "awards_product_points": false},
+  "product_progress": {"earned": 0, "total": 100, "percent": 0.0},
+  "owner_acceptance_recorded": false,
+  "P5_0_start_authorized": false,
+  "source_import_authorized": false,
+  "dependency_installation_authorized": false,
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "map_or_tile_network_authorized": false,
+  "camera_or_media_authorized": false,
+  "remote_git_authorized": false,
+  "continuing_prohibitions": [
+    "source_import_code_test_dependency_or_migration_implementation",
+    "build_test_runtime_or_process_execution",
+    "map_tile_provider_camera_ONVIF_stream_playback_or_media_access",
+    "Government_police_private_personal_biometric_vehicle_owner_registration_watchlist_case_investigation_or_evidence_data",
+    "models_datasets_artifacts_inference_training_or_AI_runtime",
+    "operational_alert_notification_dispatch_enforcement_deletion_export_hold_or_autonomous_action",
+    "container_Kubernetes_deployment_or_release",
+    "remote_Git"
+  ]
+}

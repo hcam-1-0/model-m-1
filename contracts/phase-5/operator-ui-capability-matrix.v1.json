@@ -1,0 +1,39 @@
+{
+  "contract_type": "hcam.operator.capability-matrix.v1",
+  "version": "phase5.0.v1",
+  "generated_only": true,
+  "server_authoritative": true,
+  "client_may_expand_server_authority": false,
+  "profiles": [
+    {
+      "profile": "low_resource",
+      "allowed_visual_actions": ["view", "query", "preview_single"],
+      "optional_visual_actions": [],
+      "policy_semantics_preserved": true,
+      "accessibility_semantics_preserved": true
+    },
+    {
+      "profile": "enhanced",
+      "allowed_visual_actions": ["view", "query", "preview_single", "visualize_dense"],
+      "optional_visual_actions": ["visualize_dense"],
+      "policy_semantics_preserved": true,
+      "accessibility_semantics_preserved": true
+    },
+    {
+      "profile": "control_room",
+      "allowed_visual_actions": ["view", "query", "preview_single", "visualize_dense", "multi_monitor"],
+      "optional_visual_actions": ["visualize_dense", "multi_monitor"],
+      "policy_semantics_preserved": true,
+      "accessibility_semantics_preserved": true
+    }
+  ],
+  "always_denied": [
+    "direct_camera_access",
+    "direct_provider_access",
+    "identity_confirmation",
+    "operational_dispatch",
+    "recording",
+    "snapshot",
+    "autonomous_action"
+  ]
+}

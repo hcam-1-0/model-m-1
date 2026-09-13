@@ -1,0 +1,22 @@
+{
+  "contract_type": "hcam.operator.accessibility-matrix.v1",
+  "generated_only": true,
+  "requirements": [
+    {"requirement_id": "a11y.keyboard", "category": "keyboard", "target": "APG_pattern", "automated_check": true, "manual_evidence_required": true},
+    {"requirement_id": "a11y.focus", "category": "focus", "target": "APG_pattern", "automated_check": true, "manual_evidence_required": true},
+    {"requirement_id": "a11y.name_role_value", "category": "name_role_value", "target": "WCAG_2_2_AA", "automated_check": true, "manual_evidence_required": true},
+    {"requirement_id": "a11y.contrast", "category": "contrast", "target": "WCAG_2_2_AA", "automated_check": true, "manual_evidence_required": true},
+    {"requirement_id": "a11y.zoom_reflow", "category": "zoom_reflow", "target": "WCAG_2_2_AA", "automated_check": false, "manual_evidence_required": true},
+    {"requirement_id": "a11y.localization", "category": "localization", "target": "HCAM_safety", "automated_check": true, "manual_evidence_required": true},
+    {"requirement_id": "a11y.reduced_motion", "category": "reduced_motion", "target": "WCAG_2_2_AA", "automated_check": true, "manual_evidence_required": true},
+    {"requirement_id": "a11y.alternative_view", "category": "alternative_view", "target": "HCAM_safety", "automated_check": true, "manual_evidence_required": true},
+    {"requirement_id": "a11y.status_announcement", "category": "status_announcement", "target": "WCAG_2_2_AA", "automated_check": true, "manual_evidence_required": true}
+  ],
+  "alternatives": [
+    {"source_view": "map", "alternative_view": "list", "preserves_selection": true, "preserves_order": true, "preserves_freshness": true, "preserves_corrections": true, "preserves_actions": true},
+    {"source_view": "graph", "alternative_view": "table", "preserves_selection": true, "preserves_order": true, "preserves_freshness": true, "preserves_corrections": true, "preserves_actions": true},
+    {"source_view": "timeline", "alternative_view": "list", "preserves_selection": true, "preserves_order": true, "preserves_freshness": true, "preserves_corrections": true, "preserves_actions": true},
+    {"source_view": "data_grid", "alternative_view": "table", "preserves_selection": true, "preserves_order": true, "preserves_freshness": true, "preserves_corrections": true, "preserves_actions": true},
+    {"source_view": "media", "alternative_view": "transcript", "preserves_selection": true, "preserves_order": true, "preserves_freshness": true, "preserves_corrections": true, "preserves_actions": true}
+  ]
+}

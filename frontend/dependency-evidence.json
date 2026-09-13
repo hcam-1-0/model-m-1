@@ -1,0 +1,83 @@
+{
+  "schema_version": "hcam.phase5.p5_3.dependency_evidence.v1",
+  "workstream": "P5.3-W4",
+  "stage": "materialization_and_validation_complete",
+  "toolchain": {
+    "node": "24.18.0",
+    "pnpm": "11.21.0",
+    "toolchain_amendment": "D-P5.1-TOOLCHAIN-AMENDMENT-R0-ACCEPTANCE",
+    "binding_reverified": true,
+    "dependency_download_and_materialization": "exact_hls_js_1_7_2_only",
+    "toolchain_download_install_update_or_global_activation": false
+  },
+  "inputs": [
+    {
+      "path": "dependency-lock-candidate.json",
+      "bytes": 23550,
+      "sha256": "7636C45EC457FB564AF71B4D80A9FD377E5D8BFD381821D630EBA9FCD662322A"
+    },
+    {
+      "path": "evidence/dependency-audit.json",
+      "bytes": 639,
+      "sha256": "BAD9F7DC799D3355F20B0D117EEFF829E573EEE92B7F6A7F5D46BF96AE75E0E8"
+    },
+    {
+      "path": "package.json",
+      "bytes": 3607,
+      "sha256": "463E480DD07547515021115FA619D44D7DCA151063B0E7A510F2C0E46D27D5B1"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "bytes": 187653,
+      "sha256": "7F3E3F0A8B29C5083E300641A68F0325D8D2E8BD2ADE940E2B6D03C3CDEBBB62"
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "bytes": 978,
+      "sha256": "79BF353A85BE2AC3CC69E607FD63FC65AC153AEE415C1CB55032A3418D11DE38"
+    }
+  ],
+  "direct_dependencies": {
+    "selected": 37,
+    "runtime": 14,
+    "development": 23,
+    "deprecated": 0,
+    "unapproved": 0,
+    "licenses": ["Apache-2.0", "BSD-3-Clause", "ISC", "MIT", "MPL-2.0"],
+    "newly_resolved": ["hls.js"]
+  },
+  "excluded_allowlisted_dependencies": [
+    {
+      "name": "eslint-plugin-jsx-a11y",
+      "reason": "latest_release_does_not_declare_ESLint_10_compatibility_and_the_compatible_ESLint_9_lane_is_deprecated",
+      "replacement_controls": [
+        "native_semantic_component_policy",
+        "generated_keyboard_and_focus_tests",
+        "Storybook_a11y",
+        "axe_core",
+        "browser_accessibility_checks"
+      ]
+    }
+  ],
+  "resolution": {
+    "lockfile_version": "9.0",
+    "workspace_projects": 31,
+    "materialized_direct_packages": 37,
+    "materialized_virtual_store_entries": 428,
+    "strict_peer_dependencies": true,
+    "engine_strict": true,
+    "ignore_scripts": true,
+    "browser_download_disabled": true,
+    "frozen_lockfile_recheck": "pass",
+    "candidate_tarball_origins": ["https://registry.npmjs.org"],
+    "alternate_source_count": 0
+  },
+  "audit": {
+    "path": "evidence/p5-3-dependency-audit.json",
+    "sha256": "78D09751D593895B022F995E2C82761A872E1D4E628FAC7177C03A29B40EA78B",
+    "unresolved_high": 0,
+    "unresolved_critical": 0,
+    "result": "pass"
+  },
+  "result": "pass"
+}

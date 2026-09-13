@@ -1,0 +1,38 @@
+{
+  "schema_version": "hcam.phase4.p4_1.database-delta.v1",
+  "revision": "0013_correlation_foundation",
+  "parent_revision": "0012_intelligence_control_plane",
+  "extended_stores": [
+    "correlation_hypotheses",
+    "correlation_runs",
+    "hypothesis_evidence_refs"
+  ],
+  "new_stores": [
+    "correlation_event_receipts",
+    "correlation_hypothesis_revisions",
+    "correlation_lane_results",
+    "correlation_partition_checkpoints",
+    "correlation_window_events"
+  ],
+  "run_extensions": [
+    "accepted_count",
+    "attempt_count",
+    "duplicate_count",
+    "input_count",
+    "lease_owner",
+    "lease_until",
+    "profile_id",
+    "profile_version",
+    "rejected_count",
+    "replay_binding",
+    "result_digest"
+  ],
+  "postgresql": {
+    "forced_rls_on_every_new_store": true,
+    "claim_mode": "FOR UPDATE SKIP LOCKED"
+  },
+  "sqlite": {
+    "worker_limit": 1,
+    "migration_cycle": "0012 -> 0013 -> 0012 -> 0013"
+  }
+}

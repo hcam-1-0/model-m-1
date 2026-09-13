@@ -1,0 +1,37 @@
+{
+  "schema_version": "hcam.phase4.p4_0.acceptance.v1",
+  "decision_id": "D-P4.0-ACCEPTANCE",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-04",
+  "accepted_branch": "codex/phase4-contracts-guardrails",
+  "accepted_implementation_commit": "2e35bd28aa33c2ebed6fa0bd6486fb26a7d9655d",
+  "evidence_package": {
+    "package_id": "P4.0-EVIDENCE-PACKAGE-R0",
+    "path": "contracts/phase-4/p4-0-evidence-package.json",
+    "sha256": "BB0E726F6C362F2AE29E6D78D36A5E3C289E28E4367DD9E057A092D195AEF5CB",
+    "canonical_component_digest": "28527B04231B00B93A7AFB1DAC8D95F3142B6ED88717CB0A9A8657E5E6DAC799"
+  },
+  "accepted_progress": {
+    "phase_4_points": 10,
+    "phase_4_total_points": 100,
+    "phase_4_percent": 10.0,
+    "p4_0_points": 10,
+    "p4_0_total_points": 10,
+    "p4_0_percent": 100.0
+  },
+  "scope_effect": "Completes P4.0 only under its generated-only implementation evidence and documented limitations.",
+  "continuing_prohibitions": [
+    "P4_1_or_later_implementation",
+    "models_datasets_artifacts_or_inference",
+    "cameras_ONVIF_Sentinel_streams_or_media",
+    "external_providers_or_network_egress",
+    "Government_police_private_personal_biometric_or_vehicle_owner_data",
+    "operational_alerts_notifications_dispatch_enforcement_or_autonomous_action",
+    "Kubernetes_cloud_pilot_production_or_deployment",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "owner_statement_sha256": "96E9D55DFD3F7D080E650A1023CA9202CC8CD949586C670C7F0D759B3D11EABA",
+  "owner_statement": "D-P4.0-ACCEPTANCE: I, mayank-admin, accept P4.0 evidence package P4.0-EVIDENCE-PACKAGE-R0 with SHA-256 BB0E726F6C362F2AE29E6D78D36A5E3C289E28E4367DD9E057A092D195AEF5CB and canonical component digest 28527B04231B00B93A7AFB1DAC8D95F3142B6ED88717CB0A9A8657E5E6DAC799, including its generated-only implementation evidence, validation results, and documented limitations. This acceptance completes P4.0 only. It does not authorize P4.1, models, datasets, inference, cameras or media, external providers, Government or private data, operational alerts, deployment, Kubernetes, or remote Git."
+}

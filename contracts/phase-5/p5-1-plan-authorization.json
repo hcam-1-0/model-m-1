@@ -1,0 +1,53 @@
+{
+  "schema_version": "hcam.phase5.p5_1.planning_authorization.v1",
+  "decision_id": "D-P5.1-PLAN-AUTH",
+  "status": "owner_authorized",
+  "effective": true,
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-09-06",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "db45a549d4dc6dd880a7cafaeb71f152b7af37ff",
+  "accepted_predecessor": {
+    "subphase": "P5.0",
+    "acceptance_record": "contracts/phase-5/p5-0-acceptance.json",
+    "evidence_package_sha256": "5A2857352974B541AC942ADA521A680B3D5D23B20B765882F8A94759B457E6C2",
+    "canonical_component_digest": "56229E40C1C374683956E344B7D08AF3F44D58208CB50B9C523A875F7FD846A7",
+    "technical_commit": "8d6ff70dfb0f6c7a6b9a50ce6db03d14f46256ae"
+  },
+  "authorized_scope": [
+    "P5_1_shared_application_foundation_planning",
+    "read_only_repository_analysis",
+    "official_primary_source_research",
+    "frontend_workspace_and_independently_buildable_portal_topology",
+    "shared_shell_navigation_design_system_and_accessibility_primitives",
+    "localization_responsive_and_multi_monitor_behavior",
+    "typed_API_session_authorization_department_capability_freshness_concurrency_error_event_and_client_state_contracts",
+    "low_resource_enhanced_workstation_control_room_and_future_server_profiles",
+    "security_observability_testing_dependency_build_compatibility_and_source_adoption_planning",
+    "Gujarat_GIS_parity_and_no_downgrade_preservation",
+    "owner_decision_options",
+    "bounded_P5_1_implementation_and_start_plan",
+    "local_planning_documentation",
+    "generated_and_static_planning_validation",
+    "one_local_checkpoint_commit_without_push"
+  ],
+  "continuing_prohibitions": [
+    "source_import",
+    "product_or_test_implementation",
+    "dependency_installation_or_lockfile_changes",
+    "downloads",
+    "build_or_runtime_execution",
+    "new_API_routes_or_migrations",
+    "map_tile_provider_camera_media_or_network_access",
+    "Government_or_private_data",
+    "models_or_inference",
+    "operational_actions",
+    "containers_or_Kubernetes",
+    "deployment",
+    "P5_2",
+    "remote_Git"
+  ],
+  "owner_statement_sha256": "6FFACFC7AF580E8530433E8679A253824F475805F49944560DC51BAFC885FB0D",
+  "owner_statement_normalization": "Paragraph whitespace collapsed to one ASCII space; UTF-8 without BOM; no terminal newline.",
+  "owner_statement": "D-P5.1-PLAN-AUTH: I, mayank-admin, authorize planning, read-only repository analysis, and official primary-source research only for P5.1 Shared Application Foundation. The authorized planning scope includes the frontend workspace and independently buildable portal topology; shared application shell, navigation, design system, accessibility primitives, localization, responsive and multi-monitor behavior; typed API, session, authorization, department, capability, freshness, concurrency, error, event-invalidation, and client-state contracts; low-resource, enhanced-workstation, control-room, and future server profiles; security, observability, testing, dependency evaluation, build, compatibility, and source-adoption planning; preservation of the accepted Gujarat GIS parity and no-downgrade contract; owner decision options; and a bounded P5.1 implementation and start plan. Internet research is limited to official primary technical, security, accessibility, browser, framework, standards, and dependency sources. Local planning documentation, generated/static planning validation, and one local checkpoint commit without push are authorized. This does not authorize source import, product or test implementation, dependency installation or lockfile changes, downloads, build or runtime execution, new API routes or migrations, map, tile, provider, camera, media, or network access, Government or private data, models or inference, operational actions, containers or Kubernetes, deployment, P5.2, or remote Git."
+}

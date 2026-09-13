@@ -1,0 +1,23 @@
+{
+  "schema_version": "hcam.phase5.p5_1.dependency_audit.v1",
+  "stage": "preinstall_lockfile_only",
+  "registry": "https://registry.npmjs.org/",
+  "audit_level": "high",
+  "advisories": {},
+  "vulnerabilities": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0
+  },
+  "graph": {
+    "dependencies": 36,
+    "dev_dependencies": 431,
+    "optional_dependencies": 100,
+    "total_dependencies": 467
+  },
+  "command_result": "pass",
+  "network_scope": "official_npm_registry_only",
+  "packages_materialized": false
+}

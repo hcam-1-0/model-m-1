@@ -1,0 +1,37 @@
+{
+  "schema_version": "hcam.phase5.p5_7.repeatability_report.v1",
+  "status": "local_repeatability_pass",
+  "generated_only": true,
+  "technical_commit": "6a5e1c700779dbc0edb6fdd1a8dc4c6132dd21d6",
+  "start_package_sha256": "77E3A7885AA1969A9F50AF9EB3FE8EE05DEEAB0374FB1F83C4DD51B860C5395C",
+  "bound_input_digest": "E5B65A6611C9ED90A33B156DA6D632859CBFFF4BE4781AA2E03F910F0AEA1B4B",
+  "exact_case_count": 2048,
+  "corpus_sha256": "85BE94B0E7D43E6E688DD4CD7CD075E6B45F6866896B6B17F135D7D457564FB8",
+  "deterministic_replays": [
+    {
+      "run": 1,
+      "sha256": "85BE94B0E7D43E6E688DD4CD7CD075E6B45F6866896B6B17F135D7D457564FB8"
+    },
+    {
+      "run": 2,
+      "sha256": "85BE94B0E7D43E6E688DD4CD7CD075E6B45F6866896B6B17F135D7D457564FB8"
+    }
+  ],
+  "unit_result": {
+    "path": "frontend/test-results/unit-results-p57.json",
+    "bytes": 103302,
+    "sha256": "44651313C35E6F57140A2522D0E331AECA3712540AC0267A904758C79FF16D8C"
+  },
+  "coverage_result": {
+    "path": "frontend/coverage/coverage-summary.json",
+    "bytes": 55823,
+    "sha256": "F87941258145DB471715E34D12CF358770E1AB962F2E6CC4087DDB93A70D7E37"
+  },
+  "workspace_result": {
+    "path": "frontend/test-results/workspace-verification.json",
+    "bytes": 106,
+    "sha256": "7BC550B9872399CA83C482A10B3C801647745E3BE16410FF1F6CBD9A1B099E35"
+  },
+  "independent_reproduction_performed": false,
+  "SLSA_claim": false
+}

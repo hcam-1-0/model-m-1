@@ -93,7 +93,7 @@ and recovery procedures and are not implemented by this local Phase 1 CLI.
 The optional package extra installs Psycopg 3:
 
 ```powershell
-uv sync --locked --extra dev --extra postgres
+uv sync --locked --extra dev --extra analytics --extra postgres
 ```
 
 CI starts an isolated PostgreSQL 18 service with synthetic credentials, applies

@@ -1,0 +1,39 @@
+{
+  "schema_version": "hcam.phase4.p4_1.acceptance-proposal.v1",
+  "decision_id": "D-P4.1-ACCEPTANCE",
+  "package_id": "P4.1-EVIDENCE-PACKAGE-R0",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "technical_gate_status": "passed",
+  "evidence_package_path": "contracts/phase-4/p4-1/evidence-package.json",
+  "evidence_package_sha256": "D6302447DCF7C1ADB769E11FD36ACE1519552E0F982A23EDA86D64EC73351805",
+  "evidence_content_digest": "C3AD198C6EF8F9C49970B83F2B383F1C4F8D524C6085D115F392B54D2F348379",
+  "current_technical_progress": {
+    "phase_4_points": 23,
+    "phase_4_total_points": 100,
+    "phase_4_percent": 23.0,
+    "p4_1_points": 13,
+    "p4_1_total_points": 15,
+    "p4_1_percent": 86.6667
+  },
+  "progress_after_exact_owner_acceptance": {
+    "phase_4_points": 25,
+    "phase_4_total_points": 100,
+    "phase_4_percent": 25.0,
+    "p4_1_points": 15,
+    "p4_1_total_points": 15,
+    "p4_1_percent": 100.0
+  },
+  "owner_acceptance_effect": "Exact acceptance of this package awards the final two P4.1-D points. It does not authorize P4.2 or any excluded runtime, data, operational, deployment, Kubernetes, or remote Git scope.",
+  "owner_acceptance_statement": "D-P4.1-ACCEPTANCE: I, mayank-admin, accept P4.1 evidence package P4.1-EVIDENCE-PACKAGE-R0 with SHA-256 D6302447DCF7C1ADB769E11FD36ACE1519552E0F982A23EDA86D64EC73351805 and canonical component digest C3AD198C6EF8F9C49970B83F2B383F1C4F8D524C6085D115F392B54D2F348379, including its generated-only implementation evidence, PostgreSQL/PostGIS validation, regression results, and documented limitations. This acceptance completes P4.1 only. It does not authorize P4.2, models, datasets, artifacts, inference, optional model lanes, cameras or media, external providers, Government or private data, rule activation, operational alerts, dispatch or enforcement, Kubernetes or deployment, or remote Git.",
+  "continuing_prohibitions": [
+    "P4_2_or_later_implementation",
+    "models_datasets_artifacts_inference_or_optional_model_lane_execution",
+    "cameras_ONVIF_Sentinel_streams_frames_images_recording_or_media",
+    "external_providers_credentials_network_egress_or_live_simulators",
+    "Government_police_private_personal_biometric_vehicle_owner_case_or_watchlist_data",
+    "rule_activation_operational_alerts_notifications_dispatch_enforcement_or_autonomous_action",
+    "Kubernetes_cloud_pilot_production_release_or_deployment",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ]
+}

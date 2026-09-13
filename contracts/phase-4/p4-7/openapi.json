@@ -1,0 +1,269 @@
+{
+  "components": {
+    "responses": {
+      "SafeProblem": {
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "description": "Sanitized RFC 9457-shaped problem projection"
+      }
+    }
+  },
+  "info": {
+    "title": "H-CAM Phase 5 handoff projection",
+    "version": "1.0.0"
+  },
+  "openapi": "3.2.0",
+  "paths": {
+    "/correlation-hypotheses": {
+      "get": {
+        "operationId": "hypotheses.list",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "list_hypotheses",
+        "x-hcam-generated-only": true
+      }
+    },
+    "/correlation-runs": {
+      "get": {
+        "operationId": "runs.list",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "list_correlation_runs",
+        "x-hcam-generated-only": true
+      }
+    },
+    "/correlation-runs/{run_id}": {
+      "get": {
+        "operationId": "runs.detail",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "read_correlation_run",
+        "x-hcam-generated-only": true
+      }
+    },
+    "/generated-alerts": {
+      "get": {
+        "operationId": "alerts.list",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "list_generated_alerts",
+        "x-hcam-generated-only": true
+      }
+    },
+    "/generated-alerts/{alert_id}": {
+      "get": {
+        "operationId": "alerts.detail",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "read_generated_alert",
+        "x-hcam-generated-only": true
+      }
+    },
+    "/generated-alerts/{alert_id}/lifecycle": {
+      "post": {
+        "operationId": "alerts.lifecycle",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "transition_generated_alert",
+        "x-hcam-generated-only": true
+      }
+    },
+    "/generated-alerts/{alert_id}/reviews": {
+      "post": {
+        "operationId": "alerts.review",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "review_generated_alert",
+        "x-hcam-generated-only": true
+      }
+    },
+    "/intelligence-health": {
+      "get": {
+        "operationId": "intelligence.health.read",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "read_intelligence_health",
+        "x-hcam-generated-only": true
+      }
+    },
+    "/operations/summary": {
+      "get": {
+        "operationId": "operations.summary",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "read_operations_summary",
+        "x-hcam-generated-only": true
+      }
+    },
+    "/reference-integrations/health": {
+      "get": {
+        "operationId": "reference.health",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "read_reference_health",
+        "x-hcam-generated-only": true
+      }
+    },
+    "/reference-integrations/queries/{job_id}": {
+      "get": {
+        "operationId": "reference.queries.detail",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "read_reference_query",
+        "x-hcam-generated-only": true
+      }
+    },
+    "/timelines": {
+      "get": {
+        "operationId": "timelines.list",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "list_investigation_timelines",
+        "x-hcam-generated-only": true
+      }
+    },
+    "/timelines/{timeline_id}": {
+      "get": {
+        "operationId": "timelines.detail",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "read_investigation_timeline",
+        "x-hcam-generated-only": true
+      }
+    },
+    "/timelines/{timeline_id}/corrections": {
+      "post": {
+        "operationId": "timelines.corrections.create",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "append_timeline_correction",
+        "x-hcam-generated-only": true
+      }
+    },
+    "/timelines/{timeline_id}/entries": {
+      "post": {
+        "operationId": "timelines.entries.create",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "append_timeline_entry",
+        "x-hcam-generated-only": true
+      }
+    },
+    "/timelines/{timeline_id}/reconstruction": {
+      "get": {
+        "operationId": "timelines.reconstruction",
+        "responses": {
+          "200": {
+            "description": "Generated contract success projection"
+          },
+          "default": {
+            "$ref": "#/components/responses/SafeProblem"
+          }
+        },
+        "summary": "read_timeline_reconstruction",
+        "x-hcam-generated-only": true
+      }
+    }
+  },
+  "x-hcam-boundary": {
+    "canonical": false,
+    "conformance_claim": false,
+    "generated_only": true,
+    "operational": false
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "schema_version": "hcam.phase5.p5_6.evidence_package.v1",
+  "package_id": "P5.6-EVIDENCE-PACKAGE-R0",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "prepared_on": "2026-09-10",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "branch": "codex/phase5-product-ux-contracts",
+  "technical_commit": "8c3645f1d91b6d444a63d5534a322ba181a931f1",
+  "start_package_sha256": "B47BF7C8A7EB8005E7BE7D7EE77ADA1C5C8C3623071A26CBA4F9AC29199BC4EB",
+  "bound_input_digest": "412615496F731332EFA3E3D7AEF0E9C7B909F2545131A7E30F2BAAF871B2F992",
+  "canonical_component_digest_algorithm": "Sort component paths ordinally, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "F7C1DB92A4E1C807895B79AA519508198B6AFCFBEC2B7251F0683FAF59633B35",
+  "components": [
+    {
+      "path": "contracts/phase-5/p5-6-evidence.json",
+      "bytes": 2147,
+      "sha256": "0BD38A87259C6D6F8159104EF1D5891CAA0918E9EEDE05C056139C0BCBF68900"
+    },
+    {
+      "path": "contracts/phase-5/p5-6/admin-contracts.v1.json",
+      "bytes": 1470,
+      "sha256": "129CB9FF3FCF83EAC65F816EEDCDECECF45188CC3144721EE8E085658A5392C4"
+    },
+    {
+      "path": "contracts/phase-5/p5-6/generated-contract-cases.json",
+      "bytes": 349453,
+      "sha256": "1ED336A0187E0385F919C721CA7E90574C56B8EF900E0F125FA5A3D52221895F"
+    },
+    {
+      "path": "contracts/phase-5/p5-6/generated-workloads.json",
+      "bytes": 1317,
+      "sha256": "FA4CEB9063BCC239912552FDF9E8601F5AA46B0496DF4410D82C616442918B84"
+    },
+    {
+      "path": "contracts/phase-5/p5-6/operations-contracts.v1.json",
+      "bytes": 1399,
+      "sha256": "B92005E452115873FE5740EA16AF9421CB17D73295FE642C799CEE353C803B89"
+    },
+    {
+      "path": "contracts/phase-5/p5-6/prohibited-field-manifest.json",
+      "bytes": 678,
+      "sha256": "C854FBB62E94A7240E357F182B28E4B14968B8AEBF2EC7D5FD25DB61EEF14F4C"
+    },
+    {
+      "path": "contracts/phase-5/p5-6/security-contracts.v1.json",
+      "bytes": 1161,
+      "sha256": "B82172EEA21E7514D064DC942D6D193A033CFE6DFCFDA951C31686F0A9685BF6"
+    },
+    {
+      "path": "contracts/phase-5/p5-6/source-manifest.json",
+      "bytes": 36492,
+      "sha256": "AC1EE227F0238F32CD5D9C3212533389FBF81A5C685E1E4A3215A9F4E68CB2BF"
+    },
+    {
+      "path": "contracts/phase-5/p5-6/validation-summary.json",
+      "bytes": 4815,
+      "sha256": "C6C5B616C68A7789A957D6FF3E8B1DADBA8FB8661998C6E3F8E79F23F2B5B2B0"
+    },
+    {
+      "path": "docs/phase-5/p5-6/evidence.md",
+      "bytes": 957,
+      "sha256": "1E51220B2F7163B6970EF902E37B8D14123767FDF8C07AA5445C750857EB3623"
+    },
+    {
+      "path": "docs/phase-5/p5-6/implementation.md",
+      "bytes": 2190,
+      "sha256": "BF903436ACCE7811251F145B096E106EC72198AE4C7042F4F377D78E5665638A"
+    },
+    {
+      "path": "docs/phase-5/p5-6/validation.md",
+      "bytes": 1167,
+      "sha256": "A96A3DADF7276109987C94644020FFD9846AFE53EFD4D642F71D702EC289DC0C"
+    },
+    {
+      "path": "frontend/evidence/p5-6-dependency-baseline.json",
+      "bytes": 617,
+      "sha256": "EBCDE4FDF596C19FD7F26415C9447F3E74419EBD73DDB80C9A73EC3C1DA1505D"
+    },
+    {
+      "path": "frontend/evidence/p5-6-fixture-manifest.json",
+      "bytes": 1353,
+      "sha256": "E9E03D59F5DC308C0DFB8B423449ABC2A40E626E9FA4DF88E68681DB5B792D92"
+    },
+    {
+      "path": "frontend/evidence/p5-6-source-manifest.json",
+      "bytes": 36492,
+      "sha256": "AC1EE227F0238F32CD5D9C3212533389FBF81A5C685E1E4A3215A9F4E68CB2BF"
+    },
+    {
+      "path": "frontend/evidence/p5-6-validation-summary.json",
+      "bytes": 4815,
+      "sha256": "C6C5B616C68A7789A957D6FF3E8B1DADBA8FB8661998C6E3F8E79F23F2B5B2B0"
+    },
+    {
+      "path": "frontend/evidence/p5-6-visual-manifest.json",
+      "bytes": 5946,
+      "sha256": "4717E013F1472AFB2E5A00CCB3B5A92F5D17FEA4CA84F90290A74A1705219F1A"
+    }
+  ],
+  "validation_status": "pass",
+  "technical_progress": "9/10 (90.0000%)",
+  "owner_acceptance_effect": "complete_P5_6_only",
+  "acceptance_record_path": "contracts/phase-5/p5-6-acceptance.json",
+  "continuing_prohibitions": [
+    "P5.7",
+    "real_administrative_mutation_or_break_glass",
+    "credential_or_secret_resolution",
+    "real_telemetry_scanners_backup_restore_or_recovery",
+    "provider_camera_media_model_or_operational_network_access",
+    "Government_private_or_real_identity_data",
+    "containers_Kubernetes_deployment_or_remote_Git"
+  ]
+}

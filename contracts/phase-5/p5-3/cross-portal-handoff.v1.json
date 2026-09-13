@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hcam:phase5:p5-3:cross-portal-handoff:v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["target", "resource_ref", "department_ref", "window", "generated"],
+  "properties": {
+    "target": { "enum": ["command", "gis", "investigations"] },
+    "resource_ref": { "type": "string", "pattern": "^SYN-[A-Z0-9-]{3,48}$" },
+    "department_ref": { "type": "string", "pattern": "^SYN-[A-Z0-9-]{3,48}$" },
+    "window": { "enum": ["15m", "1h", "4h", "24h"] },
+    "generated": { "const": true }
+  }
+}

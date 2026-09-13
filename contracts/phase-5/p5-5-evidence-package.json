@@ -1,0 +1,588 @@
+{
+  "schema_version": "hcam.phase5.p5_5.evidence_package.v1",
+  "package_id": "P5.5-EVIDENCE-PACKAGE-R0",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "generated_on": "2026-09-09",
+  "technical_commit": "b0ecf20dcaf36aae9856b3802d037656f0b053e7",
+  "start_package_sha256": "5761686969F0B0588437012C2419C008A7EF695D7CA38281362E490A5EB71CB1",
+  "bound_input_digest": "02B491F14615C24B0C45D59FE5C4C18C7DBF541CA3AA673D773B864B59DC646C",
+  "canonical_component_digest": "78ACB49CD110D2643688DAA05A6F1D1515C0FA6BE2EF9858C4315EB5A4D426A8",
+  "component_count": 114,
+  "components": [
+    {
+      "path": "contracts/phase-5/p5-5-evidence.json",
+      "bytes": 10770,
+      "sha256": "2DB78FC54D04797EF0F84FFBC2189D470B45F834EF85590DF156FAD314A80FD1"
+    },
+    {
+      "path": "contracts/phase-5/p5-5/evidence-contracts.v1.json",
+      "bytes": 855,
+      "sha256": "E64D4601059145F0EB4F2A64525CADFF25CD783A1B1FB575CDC717DAB617024E"
+    },
+    {
+      "path": "contracts/phase-5/p5-5/generated-contract-cases.json",
+      "bytes": 437807,
+      "sha256": "C7324E368357B9B346828DDB779E7F11669631C95B0E60457C87374D7D7DB5B6"
+    },
+    {
+      "path": "contracts/phase-5/p5-5/generated-workloads.json",
+      "bytes": 1482,
+      "sha256": "2E3AF65A8C186949B71F326C2DB9F629BFCC6AC6E3EB0860B09969C7E645047D"
+    },
+    {
+      "path": "contracts/phase-5/p5-5/investigation-contracts.v1.json",
+      "bytes": 942,
+      "sha256": "F6BC73A1C602E4D8797A3C58DD05DA19082BC53C75A35C281A7D1F7EC214DB96"
+    },
+    {
+      "path": "contracts/phase-5/p5-5/prohibited-field-manifest.json",
+      "bytes": 976,
+      "sha256": "3AEEB30FC37A3953D2429024A5E04204CC81553C3179F3E2EFCEFB4842280187"
+    },
+    {
+      "path": "contracts/phase-5/p5-5/source-manifest.json",
+      "bytes": 28363,
+      "sha256": "9001CDA281F195C64833B0EBF925CA088A5F97382D4B24DC0386C08B872F71F1"
+    },
+    {
+      "path": "contracts/phase-5/p5-5/validation-summary.json",
+      "bytes": 9066,
+      "sha256": "C762917CC92A1FEE5F4014A7B788ED405E9ACE6F5C000C563563C292C67F2628"
+    },
+    {
+      "path": "docs/phase-5/p5-5/implementation.md",
+      "bytes": 2128,
+      "sha256": "3802229B13774B3FA6E9BE0B7D45CC4EAE20B50DD8884F79BEB555F67113F8AA"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/app.tsx",
+      "bytes": 5500,
+      "sha256": "4C06511CAF2C5F86B995AF64A60E4550155A459DAD74AFB06CB970D9EBB877F3"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/components/custody-table.tsx",
+      "bytes": 1025,
+      "sha256": "BA23EED99A10726CD086004B812FB534123AD8F2816E3317DBADA8AFD527555D"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/components/custody-timeline.tsx",
+      "bytes": 555,
+      "sha256": "AA08C52A359C0AFFF1F7B2CAA16582B44D6F9460827415DA3F2D1302C8F71F06"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/components/evidence-conflict-recovery.tsx",
+      "bytes": 675,
+      "sha256": "DC5E5522A877D2CFB4271999FAD4DD6C79F6B4438D690A7EEB371882E5BFC5B5"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/components/evidence-filter-rail.tsx",
+      "bytes": 1067,
+      "sha256": "D44661436BEBA1730F5C93DB688E6818A5EECAF9C31B6674720D5BB06943AF08"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/components/evidence-identity-panel.tsx",
+      "bytes": 750,
+      "sha256": "0ADF4C8CED24CD5B236672028B8DDCC042324A0CC6E625C234D74FE6F3FD7809"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/components/evidence-limitations.tsx",
+      "bytes": 533,
+      "sha256": "57031FEA2E1C4B27F90394A716A7CDFE6CEDB8C2D029B977EE4894D0697EE0E8"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/components/evidence-reference-table.tsx",
+      "bytes": 1995,
+      "sha256": "F05F0E1FD274DC680DAE6FF9FE961B9F2B2BE73448E30C1C271D2F135C048D3F"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/components/evidence-state-boundary.tsx",
+      "bytes": 699,
+      "sha256": "36027887684D736DC9027C12C648F52D91170D5965B0465E503CFF5EC0E7FF71"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/components/evidence-state-matrix.tsx",
+      "bytes": 904,
+      "sha256": "BA16CB45E93A6475CF1E22DF43FE70F3E085189AD7F818B6B22B5AF470B13115"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/components/integrity-history.tsx",
+      "bytes": 1990,
+      "sha256": "C9F310B1001D04B15F09949C4855FF218C5AA8420AB0D2EC4DDA2C71B177C487"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/components/provenance-panel.tsx",
+      "bytes": 634,
+      "sha256": "E3E69BFFA22C87C1D200E25C5C23C30F3E075B862EEB36FF3E93B946A702AE08"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/components/provenance-table.tsx",
+      "bytes": 899,
+      "sha256": "D625DE8AA85D1625E7C7AB2B30E0CE13B6F1A3C41932BCDF885C6471D1F3C704"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/components/source-boundary-panel.tsx",
+      "bytes": 1261,
+      "sha256": "1A119C734101ABBC2B60F68ABF02458ED8875931744C10A0DA6DD8F6BB7BC473"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/data/evidence-projections.ts",
+      "bytes": 932,
+      "sha256": "D5922B198E592AE489A664E6001B14120E3E363F18B26142D757DBF0DF3CDFEB"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/main.tsx",
+      "bytes": 453,
+      "sha256": "5C9B9D75D6DE7936F6F54EDCC82119F0C247B25075C09ACDF41C06A96CB96C7C"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/pages/evidence-detail-page.tsx",
+      "bytes": 1747,
+      "sha256": "885E38CDBE28BE13384F492708D199EA09A77B198BAFF64F0CBDD303F3342993"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/pages/evidence-health-page.tsx",
+      "bytes": 2116,
+      "sha256": "BE237E6A8610BA1167B3214C09072ECCF631E49EEE8302119332D5139AF208D5"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/pages/evidence-overview-page.tsx",
+      "bytes": 3468,
+      "sha256": "AC7754A841ECF8CA364472EF8AB858A40F737F3578FDC17C88A81038E26E0D8E"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/pages/evidence-policy-preview-page.tsx",
+      "bytes": 1911,
+      "sha256": "81A3EE6C9A20E98EDF740EAFF576BEBED3C9BAEBA135300CE07133BE214A4BD0"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/pages/evidence-queue-page.tsx",
+      "bytes": 1297,
+      "sha256": "59C31F4C7C69CBE7B94ED257C05E7D78B07E8983241BBF23234107BFE8580C7D"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/pages/integrity-history-page.tsx",
+      "bytes": 964,
+      "sha256": "4FF220143DD44CB32DF7DCF9E0E9FE9DBB364D116E0227DF98858E6C5F40D38A"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/pages/provenance-custody-page.tsx",
+      "bytes": 2410,
+      "sha256": "2FFE0BD1F78159196017B0881BC88383AE05802B3A8084E2D7FA5158E78DDEFF"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/routes.tsx",
+      "bytes": 1572,
+      "sha256": "31CDCE614E968FA2363CDA632CB70C5A5B487AEBE2D426CB239E96A87EDE1025"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/styles.css",
+      "bytes": 17037,
+      "sha256": "AB21DA1074D03627B69EEEB8CD2FA9B3218851219BE57C98895893A38DECAC73"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/app.tsx",
+      "bytes": 5706,
+      "sha256": "79F44D6962F355CAF46E4D80A5DDF658763B4A76BBEB1DB2D9FAC54390BEFB4B"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/authority-limit.tsx",
+      "bytes": 523,
+      "sha256": "259CFBC133C5991360E13EB62BD19025C4761E2B4D95F1978F090097C7BC7EEB"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/chronology-switcher.tsx",
+      "bytes": 605,
+      "sha256": "371356477DAE68DD9BF835319629C17BA0E7F0A2E157212857F62F1A98822ABF"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/conflict-recovery-panel.tsx",
+      "bytes": 1027,
+      "sha256": "06C33F1A49379F1EC7AA17B1ED6F579BE80AA7BAE8CE9DFCD11559BCD3A942A8"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/correction-retraction-panel.tsx",
+      "bytes": 1354,
+      "sha256": "B2E1A6D76880D0CE9CD6EBF818639DAC1DDCF7F68B9D9CC619694B4687934A35"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/evidence-handoff.tsx",
+      "bytes": 950,
+      "sha256": "A0D882E83E5FB6325BBD74E521724796254BE6D34420C8DBE73BE9CF0795AD7D"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/impact-closure-table.tsx",
+      "bytes": 1976,
+      "sha256": "2D287E15872CF8DC110818E5C6730FE1CA14A1CF48B60CBCBE1A0C9C68C6A90D"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/investigation-filter-rail.tsx",
+      "bytes": 1965,
+      "sha256": "B323BE51306CB6D9BA4123214EF509A74FE175823A06586CF1BBE604145A9DD1"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/investigation-relationship-panel.tsx",
+      "bytes": 1277,
+      "sha256": "77C8BB20CE349B12505A36989BAD93BB9E4CC67CAF38B32FAA305E2FF6A8DDD4"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/investigation-relationship-table.tsx",
+      "bytes": 1721,
+      "sha256": "B40D17912DFB76885BBF9A98CB50FFBE09C6F49B01301250053C0C237036AC01"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/investigation-state-boundary.tsx",
+      "bytes": 1059,
+      "sha256": "EADA6684353B5CE0FC804C66E7E9BA554581ED4972DA564CA6A2846C2574484E"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/policy-preview-summary.tsx",
+      "bytes": 1580,
+      "sha256": "302FCAAAD36D79BA9EBAEB2D2D56B8EA3C66ED2E2D4CD788CE214EE3B54C2645"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/reconstruction-panel.tsx",
+      "bytes": 1586,
+      "sha256": "3DDD30D97C2C3D9E699DAE9ED16E9CBB0C590FCA5C8547204C26D36C8CD65F35"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/revision-comparison.tsx",
+      "bytes": 1480,
+      "sha256": "64F250F68B77DAAF1ED0DB3E0A9A847AE1B7F74DEAE70F689B637A71571156B7"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/timeline-table.tsx",
+      "bytes": 2374,
+      "sha256": "091A029F54001CAE2E4FD4C9D028596D0BF82A3A3ECD310C68165281BD087779"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/timeline-visual-lane.tsx",
+      "bytes": 702,
+      "sha256": "C4CD1F647972275D7174818EAEED4444A9AAA247EE1470B3BA54A1C2A5E2B84F"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/workload-strip.tsx",
+      "bytes": 1119,
+      "sha256": "1C228EC5FA30F23F18DD102099EBA5B8966297FFC1D4FCCF0B022006E619F027"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/data/investigation-projections.ts",
+      "bytes": 1677,
+      "sha256": "5E38E9E4699EC8E68942724C0402B708F789427725BDF9524C012C8F2B688CFB"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/main.tsx",
+      "bytes": 453,
+      "sha256": "5C9B9D75D6DE7936F6F54EDCC82119F0C247B25075C09ACDF41C06A96CB96C7C"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/pages/corrections-retractions-page.tsx",
+      "bytes": 1590,
+      "sha256": "E1265758D3C628E17699EDA7C014A379EFD3A77E7FFCF4ECF5E5E61B2D9E67C3"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/pages/evidence-references-page.tsx",
+      "bytes": 1059,
+      "sha256": "F9E688F28DDB5D322499B0D59EE15B0F889A44501EED9748093AC6EDCBBEBEAF"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/pages/investigation-detail-page.tsx",
+      "bytes": 1987,
+      "sha256": "F94A43D532DA49E3D446928B8B28405EDD45396102CC1019DB40615B8C0A0BF1"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/pages/investigation-health-page.tsx",
+      "bytes": 1839,
+      "sha256": "35DAA0C16007ECAB5132AD04AF41A9DFCADA008544E31AA99735156CE2289D40"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/pages/investigation-overview-page.tsx",
+      "bytes": 4408,
+      "sha256": "65C7542D1DCE7BCB7E351CA4C5C01257F91BF5811FC1139BE40CF89EA2346372"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/pages/investigation-queue-page.tsx",
+      "bytes": 3762,
+      "sha256": "EA81F518C329C5AB01BAA0B21A3FD6420AABEC7F43E40CA293C59F9FEE08D5A8"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/pages/investigation-relationships-page.tsx",
+      "bytes": 1030,
+      "sha256": "6456D775E9657D8A271BE3CD6FB75F0CA2D8B430A219E0B7DA02DE0E9D88DF48"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/pages/investigation-timeline-page.tsx",
+      "bytes": 2218,
+      "sha256": "D04B07E63133155DE45942EE9A204E769CD8DBCCF0D94306A029B93A9C0EDC66"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/pages/policy-previews-page.tsx",
+      "bytes": 1241,
+      "sha256": "D034CB6DEBF153C6D1F719539E5649AF0F6CF0A79C77D7291F6B4E87FCC9F5FA"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/pages/reconstruction-page.tsx",
+      "bytes": 1342,
+      "sha256": "CBB9850F55DD1B0DEA370CCB01E862E31BE008E133463684039C569C74951321"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/pages/revision-comparison-page.tsx",
+      "bytes": 1190,
+      "sha256": "2637C7184EDBD4DC72BDEB4FA27AAC1B9568BA73027378CB1F9C173D65F68B96"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/routes.tsx",
+      "bytes": 2634,
+      "sha256": "EEC5D9802F83B2C3910214844EB371B43EB179686C3D7390291481D6DBD2AADA"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/styles.css",
+      "bytes": 16621,
+      "sha256": "F5736C41219802305206975ED05D334B23C8E2252424F33071C1011CAC25C83B"
+    },
+    {
+      "path": "frontend/evidence/p5-5-dependency-baseline.json",
+      "bytes": 731,
+      "sha256": "1B3DC404E1D4ABEA1705CD250B968F637252E6C2BC4B5A0B4227633FB2BF5827"
+    },
+    {
+      "path": "frontend/evidence/p5-5-fixture-manifest.json",
+      "bytes": 1831,
+      "sha256": "2BE087FA5379E4DFE2E421A72138A89D767C04BE6FE69252C94E89A2E0FFD596"
+    },
+    {
+      "path": "frontend/evidence/p5-5-source-manifest.json",
+      "bytes": 28363,
+      "sha256": "9001CDA281F195C64833B0EBF925CA088A5F97382D4B24DC0386C08B872F71F1"
+    },
+    {
+      "path": "frontend/evidence/p5-5-validation-summary.json",
+      "bytes": 9066,
+      "sha256": "C762917CC92A1FEE5F4014A7B788ED405E9ACE6F5C000C563563C292C67F2628"
+    },
+    {
+      "path": "frontend/evidence/p5-5-visual-manifest.json",
+      "bytes": 1558,
+      "sha256": "F7E69F934790163663B385E01101F38B37D2E55F95BB2CA272E2219137723A11"
+    },
+    {
+      "path": "frontend/packages/evidence-domain/package.json",
+      "bytes": 319,
+      "sha256": "C211082DF755CFF9387E6C6150952265EF7AFF269EAA17C3FF0EE19392C04C3B"
+    },
+    {
+      "path": "frontend/packages/evidence-domain/src/access.ts",
+      "bytes": 924,
+      "sha256": "4ED53E1FD293AC60C8052E6D650114EA656D3E26082580D20B31F42FAD469CC3"
+    },
+    {
+      "path": "frontend/packages/evidence-domain/src/custody.ts",
+      "bytes": 646,
+      "sha256": "63E21D2B3EB22FB3882790385913EA3CD71AEAEB4549BA7A23FC728869A59AE9"
+    },
+    {
+      "path": "frontend/packages/evidence-domain/src/evidence-states.ts",
+      "bytes": 692,
+      "sha256": "81627393756CD92E01A52E66EC3616462CEF98B0849C586467F1ABD6504F90A7"
+    },
+    {
+      "path": "frontend/packages/evidence-domain/src/index.ts",
+      "bytes": 245,
+      "sha256": "5BE348E1367F07973C3473D745D88A19098F0F80A935B3C68DD10F4416FA26A5"
+    },
+    {
+      "path": "frontend/packages/evidence-domain/src/integrity.ts",
+      "bytes": 1008,
+      "sha256": "7991860BAFAD74AD0A30CF5C6506CCEAED8C4413E28AB45A243FECD177CB7FD3"
+    },
+    {
+      "path": "frontend/packages/evidence-domain/src/policy-previews.ts",
+      "bytes": 920,
+      "sha256": "E06A0B89BEDE3F6195D72FE6B59CE01C3D944D7FAE088D9CD6923B06885275F9"
+    },
+    {
+      "path": "frontend/packages/evidence-domain/src/profiles.ts",
+      "bytes": 1591,
+      "sha256": "C5502A1F102646068E909397C4F2A03B583B3F3611E70E219D010D0F5FD4C21A"
+    },
+    {
+      "path": "frontend/packages/evidence-domain/src/provenance.ts",
+      "bytes": 1000,
+      "sha256": "7ADD4180E09CCCB7D6AF6C735A10FF507E8A4D25139C3C9FE8A5793B09E1E596"
+    },
+    {
+      "path": "frontend/packages/evidence-domain/src/source-boundary.ts",
+      "bytes": 1169,
+      "sha256": "F3285CF0A4FBE000BB622A97A99C699AE45C1B4388DA62EF04044B77DC6915F5"
+    },
+    {
+      "path": "frontend/packages/evidence-domain/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/investigation-contracts/package.json",
+      "bytes": 275,
+      "sha256": "04D74D9C23893A32D265FCCA2E1FE632DCBD8AF8A96D545E6A21BF27C45A0F89"
+    },
+    {
+      "path": "frontend/packages/investigation-contracts/src/contracts.ts",
+      "bytes": 3398,
+      "sha256": "FCC75659F785EAD5F1F4BBF238E3D47FC26928B4D694CA15AB027B6A51295D3C"
+    },
+    {
+      "path": "frontend/packages/investigation-contracts/src/events.ts",
+      "bytes": 1495,
+      "sha256": "6394D94773F551B57CCE63CA19973D7D519B929DCF900F0D17802BDF4FE22E41"
+    },
+    {
+      "path": "frontend/packages/investigation-contracts/src/evidence.ts",
+      "bytes": 2309,
+      "sha256": "B70503F7F7C9DC90EC746DF090A3AB67A5D1E348E36654837653EE9370E88390"
+    },
+    {
+      "path": "frontend/packages/investigation-contracts/src/index.ts",
+      "bytes": 237,
+      "sha256": "9EFE423B54C9374DBB24C1E32A34444FF2F3CD4E5A34834E43B6CD585D4744C5"
+    },
+    {
+      "path": "frontend/packages/investigation-contracts/src/policy-previews.ts",
+      "bytes": 859,
+      "sha256": "2D1E57626EEC66F8EA93560712E4B52CED8682EA0EBF2770F1689011C9965163"
+    },
+    {
+      "path": "frontend/packages/investigation-contracts/src/problems.ts",
+      "bytes": 738,
+      "sha256": "5AA8D76B19DC057CB24C05E3F27368566F62E9C0FF0C6095793BA103D5C459E6"
+    },
+    {
+      "path": "frontend/packages/investigation-contracts/src/provenance.ts",
+      "bytes": 1273,
+      "sha256": "E789466DFD9EE47538505CDF1BD1F0FE2B77D2495138D8A8584ABB288D8930C1"
+    },
+    {
+      "path": "frontend/packages/investigation-contracts/src/queries.ts",
+      "bytes": 567,
+      "sha256": "0AD03763205FDBA7264BC151F4F46182E27F679CDD8AECA0703747EAFC426EBB"
+    },
+    {
+      "path": "frontend/packages/investigation-contracts/src/reconstruction.ts",
+      "bytes": 1968,
+      "sha256": "C876AEF4F040ACA0374B70F9549420950F2851F4FF05C8FD25B7669A2D865112"
+    },
+    {
+      "path": "frontend/packages/investigation-contracts/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/investigation-domain/package.json",
+      "bytes": 324,
+      "sha256": "468A3F2E1539E70818DF731EED18682DDE986C72994D928273E311148F836367"
+    },
+    {
+      "path": "frontend/packages/investigation-domain/src/chronology.ts",
+      "bytes": 1569,
+      "sha256": "F2A97B73BFE8EF6A761C00DFBE5662873E3C020FE03AA953E024885C56226695"
+    },
+    {
+      "path": "frontend/packages/investigation-domain/src/comparison.ts",
+      "bytes": 1525,
+      "sha256": "9957615EC9FC7D8EF67F98192E71A39BBF40CBAC56BF819F5595D31FA08519F8"
+    },
+    {
+      "path": "frontend/packages/investigation-domain/src/concurrency.ts",
+      "bytes": 1141,
+      "sha256": "D1D59AF0F7A8066E5B2DF5525486DAF73EA7C90C2BD964BF61C065E956CF51A6"
+    },
+    {
+      "path": "frontend/packages/investigation-domain/src/corrections.ts",
+      "bytes": 991,
+      "sha256": "8B4F23195F88DDE7BB3ED0989AF7BC05F3E7C6E0C44F5665FC975C48288DDF37"
+    },
+    {
+      "path": "frontend/packages/investigation-domain/src/impact.ts",
+      "bytes": 839,
+      "sha256": "8D631797E643C120FF4AB24D585C0EAD681E97B8A1D6A70AAC3E6F5CAE90740E"
+    },
+    {
+      "path": "frontend/packages/investigation-domain/src/index.ts",
+      "bytes": 298,
+      "sha256": "C045D17469AAE5005775B9D7924B61B485134BD5CD2A9798B582CCDE9FC10602"
+    },
+    {
+      "path": "frontend/packages/investigation-domain/src/pagination.ts",
+      "bytes": 917,
+      "sha256": "BAEC1013F60145F692FB15B6828CD2F16B6A73BF6C3CE8403E49AC334E576E89"
+    },
+    {
+      "path": "frontend/packages/investigation-domain/src/profiles.ts",
+      "bytes": 1834,
+      "sha256": "D2A837ED4370491510234899C2AC82A13399EFC69EF940A0FE75138027BBA1C5"
+    },
+    {
+      "path": "frontend/packages/investigation-domain/src/reconstruction.ts",
+      "bytes": 1238,
+      "sha256": "9CBB8F64E05BAE174BC40BD1E79A36E6C27AE69C5EF514713DAE30C0056F6769"
+    },
+    {
+      "path": "frontend/packages/investigation-domain/src/relationships.ts",
+      "bytes": 978,
+      "sha256": "770206E66C1A9A90F131374B0E67D9F03CA5721D0187D26D06CEB03CFE379920"
+    },
+    {
+      "path": "frontend/packages/investigation-domain/src/state.ts",
+      "bytes": 1380,
+      "sha256": "E0FDC88C3EF05A2DA572F1EBCCBD58B9929B946E0D388D3F34051B3C88D4F766"
+    },
+    {
+      "path": "frontend/packages/investigation-domain/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/investigation-fixtures/package.json",
+      "bytes": 326,
+      "sha256": "84A1AA1418A91C1B1286934F14EBF46DD9337BF37984E4B1C7948E6B717BD7E4"
+    },
+    {
+      "path": "frontend/packages/investigation-fixtures/src/cases.ts",
+      "bytes": 2389,
+      "sha256": "D42F69B887CD8DDFB09E4333073152FC12277B5585CDA4993E8F69ED2AEAE69F"
+    },
+    {
+      "path": "frontend/packages/investigation-fixtures/src/generator.ts",
+      "bytes": 13475,
+      "sha256": "5ABE1353B22A85A8572AD6232CD4E4A45CE524BBF703CE562B3A454471C9C7B7"
+    },
+    {
+      "path": "frontend/packages/investigation-fixtures/src/index.ts",
+      "bytes": 146,
+      "sha256": "34932ED435FF07D31C1A51ADBAA06450E85BA614AD09362DE8EDCBBA7DC96546"
+    },
+    {
+      "path": "frontend/packages/investigation-fixtures/src/prohibited-fields.ts",
+      "bytes": 1028,
+      "sha256": "D77741677A3BCBCD13E17B397F7C61A9FCB887CAC806C1C6261CB68DA746B470"
+    },
+    {
+      "path": "frontend/packages/investigation-fixtures/src/replay.ts",
+      "bytes": 1080,
+      "sha256": "8BACBD5E72F20F2E15DB9F6CDF65655EF67762B1F6FE67482DC0B966040760AD"
+    },
+    {
+      "path": "frontend/packages/investigation-fixtures/src/workloads.ts",
+      "bytes": 722,
+      "sha256": "FAE9FA04170FB06B5C95A9400614E74DDFCB62A4BBECB20E783CACB38090C229"
+    },
+    {
+      "path": "frontend/packages/investigation-fixtures/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    }
+  ],
+  "generated_only": true,
+  "P5_5_complete": false,
+  "P5_6_authorized": false,
+  "remote_Git_authorized": false
+}

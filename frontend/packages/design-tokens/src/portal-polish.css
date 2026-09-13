@@ -1,0 +1,556 @@
+/* Shared enterprise finishing layer for all independently built operator portals. */
+:root {
+  --portal-accent: var(--hcam-brand);
+  --portal-accent-strong: color-mix(in srgb, var(--portal-accent) 76%, #000);
+  --portal-accent-soft: color-mix(in srgb, var(--portal-accent) 12%, var(--hcam-surface));
+  --portal-nav-width: 252px;
+}
+
+.ops-shell {
+  --portal-accent: #087c78;
+}
+.gis-shell {
+  --portal-accent: #24689b;
+}
+.operations-shell {
+  --portal-accent: #007588;
+}
+.intelligence-shell {
+  --portal-accent: #9a5a00;
+}
+.investigation-shell {
+  --portal-accent: #38658f;
+}
+.evidence-shell {
+  --portal-accent: #397353;
+}
+.admin-shell {
+  --portal-accent: #8a5c13;
+}
+.security-shell {
+  --portal-accent: #9b443c;
+}
+.hcam-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+:is(.global-header, .gis-header) {
+  min-height: 60px;
+  padding: 0 14px;
+  gap: 12px;
+  background: var(--hcam-surface-strong);
+}
+.global-header {
+  display: grid;
+  grid-template-columns: 172px 230px minmax(260px, 560px) minmax(max-content, 1fr);
+}
+.gis-header {
+  display: grid;
+  grid-template-columns: 172px 230px minmax(220px, 1fr) 40px auto 40px;
+}
+:is(.brand, .gis-brand) {
+  min-width: 0;
+  width: auto;
+  color: #f5fbfc;
+  text-decoration: none;
+}
+:is(.brand, .gis-brand) strong {
+  font-weight: 780;
+}
+:is(.brand, .gis-brand) small {
+  color: #8fd8d0;
+  font-weight: 650;
+}
+.header-actions {
+  min-width: max-content;
+  justify-self: end;
+}
+
+.hcam-portal-switcher {
+  position: relative;
+  min-width: 0;
+  color: #f7fbfc;
+}
+.hcam-portal-switcher > summary {
+  min-width: 0;
+  height: 42px;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) 16px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  list-style: none;
+  cursor: pointer;
+  border: 1px solid #46636b;
+  border-radius: var(--hcam-radius);
+  background: #18343b;
+}
+.hcam-portal-switcher > summary:hover,
+.hcam-portal-switcher[open] > summary {
+  border-color: #729098;
+  background: #1f4048;
+}
+.hcam-portal-switcher > summary > span {
+  min-width: 0;
+  display: grid;
+  line-height: 1.12;
+}
+.hcam-portal-switcher > summary small {
+  color: #9fc0c6;
+  font-size: 9px;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+.hcam-portal-switcher > summary strong {
+  overflow: hidden;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hcam-portal-switcher__chevron {
+  transition: transform 140ms;
+}
+.hcam-portal-switcher[open] .hcam-portal-switcher__chevron {
+  transform: rotate(180deg);
+}
+.hcam-portal-menu {
+  position: absolute;
+  z-index: 120;
+  top: 50px;
+  left: 0;
+  width: min(640px, calc(100vw - 32px));
+  max-height: min(690px, calc(100vh - 86px));
+  overflow: auto;
+  padding: 8px;
+  color: var(--hcam-text);
+  background: var(--hcam-surface);
+  border: 1px solid var(--hcam-border-strong);
+  border-radius: var(--hcam-radius-panel);
+  box-shadow: 0 18px 48px rgb(3 20 26 / 24%);
+}
+.hcam-portal-menu > header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px;
+  border-bottom: 1px solid var(--hcam-border);
+}
+.hcam-portal-menu > header > div,
+.hcam-portal-menu a > span {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+.hcam-portal-menu > header strong {
+  font-size: 15px;
+}
+.hcam-portal-menu > header span,
+.hcam-portal-menu a small {
+  color: var(--hcam-text-muted);
+  font-size: 11px;
+}
+.hcam-portal-menu > section {
+  padding: 9px;
+}
+.hcam-portal-menu > section + section {
+  border-top: 1px solid var(--hcam-border);
+}
+.hcam-portal-menu h2,
+.hcam-nav-section > summary,
+.hcam-route-palette__results h3 {
+  margin: 0 6px 6px;
+  color: var(--hcam-text-muted);
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.hcam-nav-section > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.hcam-portal-menu section > div,
+.hcam-route-palette__results section > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+}
+.hcam-portal-menu a,
+.hcam-route-palette__results a {
+  min-width: 0;
+  min-height: 46px;
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) 16px;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 9px;
+  color: var(--hcam-text);
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--hcam-radius);
+}
+.hcam-portal-menu a:hover,
+.hcam-route-palette__results a:hover,
+.hcam-route-palette__results a:focus-visible {
+  border-color: var(--hcam-border);
+  background: var(--hcam-surface-raised);
+}
+.hcam-portal-menu a[aria-current="page"] {
+  color: var(--portal-accent-strong);
+  border-color: var(--hcam-border);
+  background: var(--portal-accent-soft);
+}
+.hcam-portal-menu a :is(strong, small) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hcam-portal-menu a strong {
+  font-size: 12px;
+}
+
+:is(.global-search, .gis-search-button) {
+  min-width: 0;
+  height: 40px;
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 9px;
+  padding: 0 10px;
+  color: #c6d7da;
+  text-align: left;
+  cursor: pointer;
+  border: 1px solid #46636b;
+  border-radius: var(--hcam-radius);
+  background: #132f36;
+}
+:is(.global-search, .gis-search-button) span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.global-search::after {
+  content: "Ctrl K";
+}
+:is(.global-search::after, .hcam-portal-menu kbd, .gis-search-button kbd, .hcam-route-palette kbd) {
+  min-width: max-content;
+  padding: 2px 5px;
+  color: #b9cdd1;
+  font: 700 10px/1.4 var(--hcam-mono);
+  border: 1px solid #506a71;
+  border-radius: var(--hcam-radius-tight);
+}
+
+:is(.side-nav, .gis-nav) {
+  min-width: 0;
+  overflow: hidden;
+  border-right: 1px solid var(--hcam-border);
+}
+:is(.side-nav, .gis-nav) > nav {
+  min-height: 0;
+  display: block;
+  overflow-y: auto;
+  padding: 12px 9px 18px;
+}
+.hcam-nav-section + .hcam-nav-section {
+  margin-top: 12px;
+  padding-top: 11px;
+  border-top: 1px solid var(--hcam-border);
+}
+.hcam-nav-section > div {
+  display: grid;
+  gap: 2px;
+}
+:is(.side-nav nav a, .gis-nav a) {
+  min-width: 0;
+  min-height: 35px;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  padding: 6px 9px;
+  color: var(--hcam-text-muted);
+  font-size: 12px;
+  font-weight: 640;
+  border-radius: var(--hcam-radius);
+}
+:is(.side-nav nav a, .gis-nav a) > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+:is(.side-nav nav a, .gis-nav a):hover {
+  color: var(--hcam-text);
+  background: var(--hcam-surface-raised);
+}
+:is(.side-nav nav a.active, .gis-nav a.active) {
+  color: var(--portal-accent-strong);
+  background: var(--portal-accent-soft);
+  border-left-color: var(--portal-accent);
+}
+.hcam-route-glyph {
+  color: var(--hcam-text-muted);
+}
+:is(.side-nav nav a, .gis-nav a).active .hcam-route-glyph {
+  color: var(--portal-accent);
+}
+:is(.admin-shell, .security-shell) :is(.side-nav nav a, .hcam-nav-section > summary) {
+  color: inherit;
+}
+:is(.admin-shell, .security-shell) .side-nav nav a.active {
+  color: #fff;
+  background: color-mix(in srgb, var(--portal-accent) 30%, #172d34);
+}
+.linked-centers::before {
+  display: block;
+  margin: 0 5px 6px;
+  color: var(--hcam-text-muted);
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  content: "Connected centers";
+}
+.workspace-meta {
+  position: sticky;
+  z-index: 18;
+  top: 90px;
+  min-height: 34px;
+  background: var(--hcam-bg);
+}
+.workspace-meta > span:first-child,
+:is(.eyebrow, .gis-page-heading .eyebrow) {
+  color: var(--portal-accent-strong) !important;
+  font-weight: 800;
+}
+.workspace-meta .status-current {
+  color: color-mix(in srgb, var(--hcam-success) 72%, #000);
+}
+[data-theme="dark"] .workspace-meta .status-current {
+  color: var(--hcam-success);
+}
+.nav-backdrop {
+  display: none;
+}
+
+.hcam-route-palette {
+  width: min(700px, calc(100vw - 32px));
+  color: var(--hcam-text);
+}
+.hcam-route-palette > header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px;
+  border-bottom: 1px solid var(--hcam-border);
+}
+.hcam-route-palette > header > div {
+  display: flex;
+  gap: 10px;
+}
+.hcam-route-palette h2 {
+  margin: 0;
+  font-size: 16px;
+}
+.hcam-route-palette header p {
+  margin: 3px 0 0;
+  color: var(--hcam-text-muted);
+  font-size: 11px;
+}
+.hcam-route-palette__search {
+  min-height: 48px;
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 9px;
+  margin: 12px;
+  padding: 0 12px;
+  border: 1px solid var(--hcam-border-strong);
+  border-radius: var(--hcam-radius);
+}
+.hcam-route-palette__search:focus-within {
+  border-color: var(--hcam-focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--hcam-focus) 18%, transparent);
+}
+.hcam-route-palette__search input {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  color: var(--hcam-text);
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+.hcam-route-palette__search > span {
+  color: var(--hcam-text-muted);
+  font-size: 10px;
+}
+.hcam-route-palette__results {
+  max-height: min(520px, calc(100vh - 220px));
+  overflow-y: auto;
+  padding: 0 12px 12px;
+}
+.hcam-route-palette__results section + section {
+  margin-top: 10px;
+}
+.hcam-route-palette__empty {
+  min-height: 150px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 6px;
+  color: var(--hcam-text-muted);
+  text-align: center;
+}
+@media (min-width: 901px) {
+  :is(.side-nav, .gis-nav) {
+    position: sticky;
+    top: 90px;
+    align-self: start;
+    max-height: calc(100dvh - 90px);
+    overflow-y: auto;
+  }
+}
+@media (max-width: 1180px) {
+  :root {
+    --portal-nav-width: 220px;
+  }
+  .global-header {
+    grid-template-columns: 150px 210px minmax(200px, 1fr) auto;
+  }
+  .gis-header {
+    grid-template-columns: 150px 210px minmax(180px, 1fr) 40px auto 40px;
+  }
+  :is(.summary-band, .source-strip, .workload-strip, .metric-strip) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .operations-shell .catalogue-layout {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 900px) {
+  :is(.global-header, .gis-header) {
+    min-height: 56px;
+  }
+  .global-header {
+    grid-template-columns: 150px minmax(150px, 220px) 1fr;
+  }
+  .gis-header {
+    grid-template-columns: 150px minmax(150px, 220px) 1fr 40px 40px;
+  }
+  :is(.global-search, .gis-search-button, .command-return) {
+    display: none;
+  }
+  :is(.side-nav, .gis-nav) {
+    position: fixed;
+    z-index: 90;
+    top: 86px;
+    bottom: 0;
+    left: 0;
+    width: min(320px, 88vw);
+    max-height: none;
+    visibility: hidden;
+    transform: translateX(-104%);
+    transition: transform 180ms;
+    box-shadow: 12px 0 34px var(--hcam-overlay);
+  }
+  :is(.side-nav, .gis-nav).open {
+    visibility: visible;
+    transform: translateX(0);
+  }
+  .nav-backdrop {
+    position: fixed;
+    z-index: 80;
+    inset: 86px 0 0;
+    display: block;
+    padding: 0;
+    background: var(--hcam-overlay);
+    border: 0;
+  }
+  :is(.page-heading, .gis-page-heading) h1 {
+    font-size: 24px;
+  }
+}
+@media (max-width: 640px) {
+  :is(.global-header, .gis-header) {
+    padding-inline: 10px;
+    gap: 7px;
+    grid-template-columns: 38px minmax(0, 1fr) auto;
+  }
+  :is(.brand, .gis-brand) {
+    width: 38px;
+  }
+  :is(.brand, .gis-brand) > span {
+    display: none;
+  }
+  .gis-header > .hcam-icon-button {
+    display: none;
+  }
+  .hcam-portal-switcher > summary {
+    height: 40px;
+  }
+  .hcam-portal-menu {
+    position: fixed;
+    top: 52px;
+    right: 8px;
+    left: 8px;
+    width: auto;
+    max-height: calc(100dvh - 62px);
+  }
+  .hcam-portal-menu section > div,
+  .hcam-route-palette__results section > div {
+    grid-template-columns: 1fr;
+  }
+  .header-actions > :is(.icon-link, .hcam-icon-button):not(.mobile-menu):not(:first-child) {
+    display: none;
+  }
+  :is(.page-heading, .gis-page-heading) h1 {
+    font-size: 22px;
+  }
+  .workspace-meta {
+    height: auto;
+    min-height: 34px;
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+  :is(.side-nav nav a, .gis-nav a, .linked-centers a, .hcam-nav-section > summary) {
+    min-height: 44px;
+  }
+  .hcam-route-palette {
+    width: calc(100vw - 18px);
+  }
+}
+@media (max-width: 380px) {
+  :is(.summary-band, .source-strip, .workload-strip, .metric-strip) {
+    grid-template-columns: 1fr;
+  }
+  .hcam-portal-switcher > summary small,
+  .hcam-route-palette > header kbd {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  button,
+  a,
+  input,
+  select,
+  .hcam-portal-switcher__chevron,
+  :is(.side-nav, .gis-nav) {
+    transition: none;
+  }
+}
+@media (prefers-contrast: more) {
+  :is(.panel, .detail-panel, .table-panel, .state-panel, .hcam-portal-menu) {
+    border-color: var(--hcam-border-strong);
+  }
+  :is(.side-nav nav a, .gis-nav a).active {
+    outline: 2px solid var(--portal-accent);
+    outline-offset: -2px;
+  }
+}

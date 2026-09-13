@@ -1,0 +1,647 @@
+{
+  "category": "abuse",
+  "scenario_count": 80,
+  "scenarios": [
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0000",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0001",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0002",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0003",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0004",
+      "vector": "retry_integrity"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0005",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0006",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0007",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0008",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0009",
+      "vector": "retry_integrity"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0010",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0011",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0012",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0013",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0014",
+      "vector": "retry_integrity"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0015",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0016",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0017",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0018",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0019",
+      "vector": "retry_integrity"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0020",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0021",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0022",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0023",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0024",
+      "vector": "retry_integrity"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0025",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0026",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0027",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0028",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0029",
+      "vector": "retry_integrity"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0030",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0031",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0032",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0033",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0034",
+      "vector": "retry_integrity"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0035",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0036",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0037",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0038",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0039",
+      "vector": "retry_integrity"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0040",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0041",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0042",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0043",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0044",
+      "vector": "retry_integrity"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0045",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0046",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0047",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0048",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0049",
+      "vector": "retry_integrity"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0050",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0051",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0052",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0053",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0054",
+      "vector": "retry_integrity"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0055",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0056",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0057",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0058",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0059",
+      "vector": "retry_integrity"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0060",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0061",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0062",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0063",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0064",
+      "vector": "retry_integrity"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0065",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0066",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0067",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0068",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0069",
+      "vector": "retry_integrity"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0070",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0071",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0072",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0073",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0074",
+      "vector": "retry_integrity"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0075",
+      "vector": "unknown_field"
+    },
+    {
+      "department": "Generated Department 0",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0076",
+      "vector": "oversized_value"
+    },
+    {
+      "department": "Generated Department 1",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0077",
+      "vector": "cross_scope"
+    },
+    {
+      "department": "Generated Department 2",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0078",
+      "vector": "malformed_trace"
+    },
+    {
+      "department": "Generated Department 3",
+      "expected": "rejected",
+      "generated_only": true,
+      "operational": false,
+      "scenario_id": "p46.abuse.0079",
+      "vector": "retry_integrity"
+    }
+  ],
+  "schema_version": "hcam.phase4.p4_6.fixture.abuse.v1"
+}

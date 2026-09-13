@@ -1,0 +1,19 @@
+{
+  "schema_version": "hcam.phase5.p5_3.security_cases.v1",
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "cases": [
+    { "id": "SYN-SEC-001", "input": "absolute_external_media_url", "expected": "denied" },
+    { "id": "SYN-SEC-002", "input": "credential_bearing_url", "expected": "denied" },
+    { "id": "SYN-SEC-003", "input": "expired_grant", "expected": "denied" },
+    { "id": "SYN-SEC-004", "input": "redirected_manifest", "expected": "denied" },
+    { "id": "SYN-SEC-005", "input": "cross_department_projection", "expected": "denied" },
+    { "id": "SYN-SEC-006", "input": "layout_contains_locator", "expected": "denied" },
+    { "id": "SYN-SEC-007", "input": "grant_in_query", "expected": "denied" },
+    { "id": "SYN-SEC-008", "input": "grant_in_storage", "expected": "denied" },
+    { "id": "SYN-SEC-009", "input": "raw_sdp_in_signal", "expected": "denied" },
+    { "id": "SYN-SEC-010", "input": "logout_with_active_session", "expected": "teardown_complete" },
+    { "id": "SYN-SEC-011", "input": "permission_loss", "expected": "teardown_complete" },
+    { "id": "SYN-SEC-012", "input": "unknown_camera_state", "expected": "abstain" }
+  ],
+  "forbidden_commands": ["record", "snapshot", "download", "export", "print", "ptz", "configure_camera", "activate_analytics"]
+}

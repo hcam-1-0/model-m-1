@@ -1,0 +1,727 @@
+{
+  "category": "security-isolation",
+  "scenario_count": 80,
+  "scenarios": [
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0000",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0001",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0002",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0003",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0004",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0005",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0006",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0007",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0008",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0009",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0010",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0011",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0012",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0013",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0014",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0015",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0016",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0017",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0018",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0019",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0020",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0021",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0022",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0023",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0024",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0025",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0026",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0027",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0028",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0029",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0030",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0031",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0032",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0033",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0034",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0035",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0036",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0037",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0038",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0039",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0040",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0041",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0042",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0043",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0044",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0045",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0046",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0047",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0048",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0049",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0050",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0051",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0052",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0053",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0054",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0055",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0056",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0057",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0058",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0059",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0060",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0061",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0062",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0063",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0064",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0065",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0066",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0067",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0068",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0069",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0070",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0071",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0072",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0073",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0074",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0075",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0076",
+      "subject_department": "Generated Department 0",
+      "target_department": "Generated Department 1"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0077",
+      "subject_department": "Generated Department 1",
+      "target_department": "Generated Department 2"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0078",
+      "subject_department": "Generated Department 2",
+      "target_department": "Generated Department 3"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "outcome": "denied",
+      "scenario_id": "p46.security-isolation.0079",
+      "subject_department": "Generated Department 3",
+      "target_department": "Generated Department 0"
+    }
+  ],
+  "schema_version": "hcam.phase4.p4_6.fixture.security-isolation.v1"
+}

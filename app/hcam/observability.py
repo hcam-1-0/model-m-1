@@ -11,8 +11,11 @@ from starlette.datastructures import MutableHeaders
 from starlette.responses import JSONResponse
 from starlette.types import ASGIApp, Message, Receive, Scope, Send
 
+from hcam.operations.platform.tracing import TraceContextError, correlation_context, parse_trace_context
+
 
 REQUEST_ID_HEADER = "X-Request-ID"
+CORRELATION_ID_HEADER = "X-Correlation-ID"
 _REQUEST_ID_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$")
 _ACCESS_LOGGER = logging.getLogger("hcam.access")
 _ERROR_LOGGER = logging.getLogger("hcam.error")
@@ -38,6 +41,19 @@ def _incoming_request_id(scope: Scope) -> str | None:
         except UnicodeDecodeError:
             return None
         return candidate if _REQUEST_ID_PATTERN.fullmatch(candidate) else None
+    return None
+
+
+def _incoming_ascii_header(scope: Scope, expected: bytes, *, maximum: int) -> str | None:
+    for name, value in scope.get("headers", []):
+        if name.lower() != expected:
+            continue
+        if len(value) > maximum:
+            return None
+        try:
+            return value.decode("ascii").strip()
+        except UnicodeDecodeError:
+            return None
     return None
 
 
@@ -69,7 +85,25 @@ class RequestContextMiddleware:
             return
 
         request_id = _incoming_request_id(scope) or str(uuid4())
-        scope.setdefault("state", {})["request_id"] = request_id
+        correlation_id = _incoming_ascii_header(
+            scope, b"x-correlation-id", maximum=128
+        )
+        if correlation_id is None or _REQUEST_ID_PATTERN.fullmatch(correlation_id) is None:
+            correlation_id = request_id
+        traceparent = _incoming_ascii_header(scope, b"traceparent", maximum=55)
+        tracestate = _incoming_ascii_header(scope, b"tracestate", maximum=512)
+        trace_context = None
+        if traceparent is not None:
+            try:
+                trace_context = parse_trace_context(traceparent, tracestate)
+            except TraceContextError:
+                trace_context = None
+        state = scope.setdefault("state", {})
+        state["request_id"] = request_id
+        state["correlation_context"] = correlation_context(correlation_id).model_dump(mode="json")
+        state["trace_context"] = (
+            trace_context.model_dump(mode="json") if trace_context is not None else None
+        )
         started = perf_counter()
         response_status = 500
         response_started = False
@@ -80,6 +114,7 @@ class RequestContextMiddleware:
                 response_started = True
                 response_status = int(message["status"])
                 MutableHeaders(scope=message)[REQUEST_ID_HEADER] = request_id
+                MutableHeaders(scope=message)[CORRELATION_ID_HEADER] = correlation_id
             await send(message)
 
         try:
