@@ -24,7 +24,7 @@ dependencies = [
 [project.optional-dependencies]
 analytics = [
   "cel-expr-python==0.1.3",
-  "numpy==2.5.2",
+  "numpy==2.5.3",
   "onnx==1.22.0",
   "onnxruntime==1.29.0",
   "scipy==1.18.1",
