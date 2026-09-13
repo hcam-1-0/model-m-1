@@ -7,9 +7,13 @@ is not automatically synchronized with this repository.
 
 ## Collaborator Coordination
 
+- [H-CAM Delivery Project](https://github.com/orgs/hcam-1-0/projects/1)
+- [Collaborator discussions](https://github.com/hcam-1-0/model-m-1/discussions)
 - [Collaborator issues](https://github.com/hcam-1-0/model-m-1/issues)
 - [Collaborator setup](TEAMMATE_SETUP.md)
 - [Contributor onboarding](ONBOARDING.md)
+- [Contribution guide](CONTRIBUTING.md)
+- [Repository governance](GOVERNANCE.md)
 - [Architecture and phase documentation](docs/)
 - [Local contract catalogue](contracts/)
 

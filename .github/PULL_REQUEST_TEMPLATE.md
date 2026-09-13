@@ -5,7 +5,7 @@ Explain what changed and why it belongs in this phase.
 ## Scope
 
 - Phase / backlog item:
-- Platform Delivery Project item:
+- H-CAM Delivery Project item:
 - Decision / authorization ID:
 - Target profile (laptop, GPU lab, server, Kubernetes, portable):
 - Main files changed:
@@ -41,6 +41,7 @@ git diff --check
 - [ ] The linked Project fields and milestone remain accurate.
 - [ ] Related backlog, review question, or decision record is updated when scope changes.
 - [ ] Phase movement or expanded authority is not implied without explicit acceptance.
+- [ ] This change stays within `hcam-1-0`; any transfer to or from `hcam-2-0` is separately authorized and documented.
 
 ## Reviewer Notes
 

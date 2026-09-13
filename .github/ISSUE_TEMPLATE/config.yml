@@ -1,8 +1,11 @@
 blank_issues_enabled: false
 contact_links:
+  - name: H-CAM Delivery project
+    url: https://github.com/orgs/hcam-1-0/projects/1
+    about: Review priorities, ownership, delivery status, and linked work.
   - name: Model M-1 collaborator workspace
     url: https://github.com/hcam-1-0/model-m-1
     about: Review the collaborator workspace, documentation, and current code.
-  - name: Model M-1 collaborator issues
-    url: https://github.com/hcam-1-0/model-m-1/issues
-    about: Review current collaborator tasks and open a structured issue.
+  - name: Model M-1 discussions
+    url: https://github.com/hcam-1-0/model-m-1/discussions
+    about: Ask a question or discuss an idea before opening implementation work.
