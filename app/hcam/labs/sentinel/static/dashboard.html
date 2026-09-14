@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>H-CAM Phase 2.5 Lab</title>
+  <title>H-CAM CORP8 Camera Grid</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="/static/dashboard.css">
   <script src="/static/dashboard.js" defer></script>
@@ -12,26 +12,33 @@
   <header class="topbar">
     <div>
       <p class="product">H-CAM</p>
-      <h1>Sentinel Compatibility Lab</h1>
+      <h1>CORP8 Camera Grid</h1>
     </div>
     <div class="topbar-actions">
-      <span id="classificationLabel" class="classification">SENTINEL SANDBOX</span>
-      <div class="adapter-switch" role="group" aria-label="Lab adapter">
-        <button type="button" data-adapter="lab1highadapter" title="Native quality with up to 30 active Sentinel connections">Lab 1 High</button>
-        <button type="button" data-adapter="lab2lowadapter" title="Native quality with up to 4 active Sentinel connections">Lab 2 Low</button>
-      </div>
+      <span id="classificationLabel" class="classification">CORP8 AUTHENTICATED GRID</span>
       <button id="refreshButton" type="button">Refresh catalogue</button>
     </div>
   </header>
 
   <main>
-    <section class="summary" aria-label="Lab summary">
+    <section class="adapter-switcher" aria-label="CORP8 resource profile">
+      <div>
+        <h2>Resource profile</h2>
+        <p>Choose the local connection budget for the CORP8 Camera Grid.</p>
+      </div>
+      <div class="adapter-options" role="group" aria-label="Resource profile selection">
+        <button type="button" data-adapter="lab1highadapter" aria-pressed="false">Lab 1 High</button>
+        <button type="button" data-adapter="lab2lowadapter" aria-pressed="false">Lab 2 Low</button>
+      </div>
+    </section>
+
+    <section class="summary" aria-label="CORP8 source summary">
       <div><span>Catalogue</span><strong id="catalogueState">Loading</strong></div>
       <div><span>Records</span><strong id="recordCount">0</strong></div>
       <div><span>Advertised live</span><strong id="liveCount">0</strong></div>
       <div><span>Observed online</span><strong id="onlineCount">0</strong></div>
       <div><span>Connection limit</span><strong id="runtimeCount">0</strong></div>
-      <div><span>Capacity</span><strong>50</strong></div>
+      <div><span>Source</span><strong>CORP8</strong></div>
       <div><span>Acceleration</span><strong id="acceleratorState">Pending</strong></div>
     </section>
 
@@ -39,8 +46,8 @@
       <div class="inventory">
         <div class="section-heading">
           <div>
-            <h2 id="inventoryTitle">Sentinel camera inventory</h2>
-            <p id="inventoryStatus" role="status">Loading lab state</p>
+          <h2 id="inventoryTitle">CORP8 camera inventory</h2>
+            <p id="inventoryStatus" role="status">Loading authenticated source state</p>
           </div>
           <label>
             <span>Filter</span>
@@ -64,35 +71,35 @@
         </div>
       </div>
 
-      <aside class="preview" aria-label="Sentinel stream preview">
+      <aside class="preview" aria-label="CORP8 stream preview">
         <div class="preview-heading">
           <div>
             <p class="eyebrow live-label">
               <span id="liveIndicator" class="live-indicator" data-state="idle" aria-hidden="true"></span>
-              <span id="liveFeedLabel">Sentinel online feed</span>
+              <span id="liveFeedLabel">CORP8 live feed</span>
             </p>
             <h2 id="previewTitle">No camera selected</h2>
           </div>
           <button id="stopPreview" type="button" disabled>Stop</button>
         </div>
         <div class="video-stage">
-          <video id="previewVideo" autoplay muted playsinline controls aria-label="Selected Sentinel camera live feed"></video>
-          <p id="previewEmpty">Connecting to an active Sentinel camera.</p>
+          <video id="previewVideo" autoplay muted playsinline controls aria-label="Selected CORP8 camera live feed"></video>
+          <p id="previewEmpty">Preview is disabled until the authenticated relay is configured.</p>
         </div>
         <dl id="previewDetails">
           <div><dt>Profile</dt><dd>-</dd></div>
           <div><dt>Transport</dt><dd id="previewTransport">WHEP</dd></div>
           <div><dt>Retention</dt><dd>None</dd></div>
         </dl>
-        <p id="previewStatus" role="status">Preparing Sentinel live feed.</p>
+        <p id="previewStatus" role="status">Preparing CORP8 source state.</p>
       </aside>
     </section>
 
     <section class="events">
       <div class="section-heading">
         <div>
-          <h2>Lab activity</h2>
-          <p>Sanitized catalogue and reconciliation events</p>
+          <h2>Source activity</h2>
+          <p>Sanitized catalogue and reconciliation events; no credentials or media are retained.</p>
         </div>
       </div>
       <ol id="eventList"></ol>

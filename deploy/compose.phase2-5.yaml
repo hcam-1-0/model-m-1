@@ -147,8 +147,12 @@ services:
     environment:
       HCAM_ALLOW_SYNTHETIC_LAB: "true"
       HCAM_ALLOW_SENTINEL_SANDBOX: "true"
-      HCAM_PHASE2_5_CATALOG_MODE: sentinel-online
-      HCAM_PHASE2_5_CATALOG_URL: https://live.corp8.cloud/api/ingest
+      HCAM_PHASE2_5_CATALOG_MODE: corp8-online
+      HCAM_PHASE2_5_CATALOG_URL: https://cctv.corp8.cloud/cameras.json
+      # Host secret paths are mounted read-only below. The app sees only these
+      # in-container paths; do not replace them with literal credentials.
+      HCAM_CORP8_EMAIL_FILE: /run/secrets/hcam-corp8-email
+      HCAM_CORP8_PASSWORD_FILE: /run/secrets/hcam-corp8-password
       HCAM_PHASE2_5_ADAPTER_STATE_PATH: /var/lib/hcam/phase2-5/active-lab-adapter.json
       HCAM_PHASE2_5_PUBLISHER_STATE_PATH: /var/lib/hcam/phase2-5/publisher-state.json
       HCAM_PHASE2_5_REQUIRE_PUBLISHER_STATE: "false"
@@ -163,6 +167,8 @@ services:
     volumes:
       - ${HCAM_PHASE2_5_STATE_DIR:?set HCAM_PHASE2_5_STATE_DIR}:/var/lib/hcam/phase2-5
       - ${HCAM_PHASE2_5_MEDIA_DIR:?set HCAM_PHASE2_5_MEDIA_DIR}:/var/lib/hcam/phase2-5-media:ro
+      - ${HCAM_CORP8_EMAIL_FILE:?set HCAM_CORP8_EMAIL_FILE}:/run/secrets/hcam-corp8-email:ro
+      - ${HCAM_CORP8_PASSWORD_FILE:?set HCAM_CORP8_PASSWORD_FILE}:/run/secrets/hcam-corp8-password:ro
     depends_on:
       api:
         condition: service_healthy

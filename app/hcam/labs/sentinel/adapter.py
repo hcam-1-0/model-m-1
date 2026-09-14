@@ -59,6 +59,7 @@ class SentinelCatalogAdapter:
             [NormalizedCatalog], Awaitable[Mapping[str, bool]]
         ]
         | None = None,
+        document_normalizer: Callable[..., NormalizedCatalog] = normalize_catalog_document,
     ) -> None:
         if not 1024 <= max_response_bytes <= 16 * 1024 * 1024:
             raise ValueError("max_response_bytes is outside the accepted lab range")
@@ -80,6 +81,7 @@ class SentinelCatalogAdapter:
         self.verify = verify
         self.retry_delays = retry_delays
         self.candidate_health_resolver = candidate_health_resolver
+        self.document_normalizer = document_normalizer
 
     async def refresh(
         self,
@@ -131,7 +133,7 @@ class SentinelCatalogAdapter:
                 document: Any = json.loads(payload.decode("utf-8"))
             except (UnicodeDecodeError, json.JSONDecodeError) as exc:
                 raise CatalogAdapterError("invalid_catalog_json") from exc
-            catalog = normalize_catalog_document(
+            catalog = self.document_normalizer(
                 document,
                 origin=locator,
                 network_policy=self.network_policy,

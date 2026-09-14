@@ -189,8 +189,8 @@ def test_dashboard_is_separate_generated_only_surface(tmp_path, monkeypatch) -> 
         assert "state.startAbortController.abort()" in dashboard_script.text
         assert "schedulePreviewReconnect" in dashboard_script.text
         assert "expiresAt - Date.now() - 10000" in dashboard_script.text
-    assert "Sentinel Compatibility Lab" in page.text
-    assert "Sentinel online feed" in page.text
+    assert "H-CAM CORP8 Camera Grid" in page.text
+    assert "CORP8 Camera Grid" in page.text
     assert "controls" in page.text
     assert "frame-ancestors 'none'" in page.headers["content-security-policy"]
     assert status.json()["boundaries"] == {

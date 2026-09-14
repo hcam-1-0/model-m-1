@@ -161,6 +161,18 @@ class CatalogStore:
                     "ALTER TABLE catalog_memberships "
                     "ADD COLUMN observed_health TEXT NOT NULL DEFAULT 'unknown'"
                 )
+            # A process can be terminated after a refresh is marked running but
+            # before it records its outcome.  That refresh cannot resume after
+            # restart, so close it safely rather than blocking every later refresh.
+            connection.execute(
+                """
+                UPDATE catalog_refreshes
+                SET status='failed', safe_failure_code='startup_recovery',
+                    completed_at=?
+                WHERE status IN ('queued', 'running')
+                """,
+                (_timestamp(),),
+            )
             connection.execute(
                 """
                 INSERT INTO lab_schema(singleton, schema_version, updated_at)

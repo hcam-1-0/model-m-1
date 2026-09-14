@@ -33,6 +33,7 @@ class WhepTicket:
 @dataclass(slots=True)
 class _Session:
     endpoint: CatalogEndpoint
+    upstream_auth: httpx.Auth | None
     token_digest: bytes
     expires_at: datetime
     external_resource: str | None = None
@@ -63,7 +64,13 @@ class SentinelWhepProxy:
         self._sessions: dict[str, _Session] = {}
         self._lock = asyncio.Lock()
 
-    async def issue(self, endpoint: CatalogEndpoint, *, limit: int) -> WhepTicket:
+    async def issue(
+        self,
+        endpoint: CatalogEndpoint,
+        *,
+        limit: int,
+        upstream_auth: httpx.Auth | None = None,
+    ) -> WhepTicket:
         if not 1 <= limit <= 8:
             raise WhepProxyError("whep_session_limit_invalid")
         validated = self.network_policy.validate(
@@ -78,6 +85,7 @@ class SentinelWhepProxy:
                 raise WhepProxyError("whep_session_limit_reached")
             self._sessions[session_id] = _Session(
                 endpoint=validated,
+                upstream_auth=upstream_auth,
                 token_digest=self._token_digest(token),
                 expires_at=expires_at,
             )
@@ -98,8 +106,9 @@ class SentinelWhepProxy:
                 raise WhepProxyError("whep_session_already_used")
             session.negotiating = True
             endpoint = session.endpoint.locator
+            upstream_auth = session.upstream_auth
         try:
-            answer, location = await self._post_offer(endpoint, offer)
+            answer, location = await self._post_offer(endpoint, offer, upstream_auth)
         except Exception:
             async with self._lock:
                 self._sessions.pop(session_id, None)
@@ -107,7 +116,7 @@ class SentinelWhepProxy:
         async with self._lock:
             current = self._sessions.get(session_id)
             if current is None:
-                await self._delete_external(location)
+                await self._delete_external(location, upstream_auth)
                 raise WhepProxyError("whep_session_expired")
             current.external_resource = location
             current.negotiating = False
@@ -118,7 +127,7 @@ class SentinelWhepProxy:
             session = self._authorized_session(session_id, bearer_token)
             self._sessions.pop(session_id, None)
         if session.external_resource is not None:
-            await self._delete_external(session.external_resource)
+            await self._delete_external(session.external_resource, session.upstream_auth)
 
     async def cleanup_expired(self) -> int:
         now = datetime.now(UTC)
@@ -131,7 +140,7 @@ class SentinelWhepProxy:
             sessions = [self._sessions.pop(session_id) for session_id in expired]
         for session in sessions:
             if session.external_resource is not None:
-                await self._delete_external(session.external_resource)
+                await self._delete_external(session.external_resource, session.upstream_auth)
         return len(sessions)
 
     async def close(self) -> None:
@@ -140,7 +149,7 @@ class SentinelWhepProxy:
             self._sessions.clear()
         for session in sessions:
             if session.external_resource is not None:
-                await self._delete_external(session.external_resource)
+                await self._delete_external(session.external_resource, session.upstream_auth)
 
     def _authorized_session(self, session_id: str, token: str) -> _Session:
         session = self._sessions.get(session_id)
@@ -151,7 +160,9 @@ class SentinelWhepProxy:
             raise WhepProxyError("whep_session_unauthorized")
         return session
 
-    async def _post_offer(self, endpoint: str, offer: bytes) -> tuple[bytes, str]:
+    async def _post_offer(
+        self, endpoint: str, offer: bytes, upstream_auth: httpx.Auth | None
+    ) -> tuple[bytes, str]:
         try:
             async with httpx.AsyncClient(
                 timeout=self.timeout_seconds,
@@ -168,6 +179,7 @@ class SentinelWhepProxy:
                         "User-Agent": "hcam-phase2-5-sentinel-lab/1",
                     },
                     content=offer,
+                    auth=upstream_auth,
                 ) as response:
                     if response.status_code not in {200, 201}:
                         raise WhepProxyError("whep_upstream_rejected")
@@ -196,7 +208,9 @@ class SentinelWhepProxy:
             raise WhepProxyError("whep_resource_untrusted") from exc
         return bytes(body), trusted.locator
 
-    async def _delete_external(self, locator: str) -> None:
+    async def _delete_external(
+        self, locator: str, upstream_auth: httpx.Auth | None
+    ) -> None:
         try:
             trusted = self.network_policy.validate(
                 locator, origin=locator, role="preview"
@@ -210,6 +224,7 @@ class SentinelWhepProxy:
                 await client.delete(
                     trusted.locator,
                     headers={"User-Agent": "hcam-phase2-5-sentinel-lab/1"},
+                    auth=upstream_auth,
                 )
         except (CatalogValidationError, httpx.HTTPError, WhepProxyError):
             return

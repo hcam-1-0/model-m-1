@@ -121,6 +121,13 @@ def _secret_environment(secret_root: Path, state_root: Path) -> dict[str, str]:
     }
     if any(not path.is_file() for path in required.values()):
         raise LabError("lab_secrets_missing")
+    corp8 = {
+        "HCAM_CORP8_EMAIL_FILE": secret_root / "corp8-email",
+        "HCAM_CORP8_PASSWORD_FILE": secret_root / "corp8-password",
+    }
+    available_corp8 = {name: path.is_file() for name, path in corp8.items()}
+    if any(available_corp8.values()) and not all(available_corp8.values()):
+        raise LabError("corp8_secrets_incomplete")
     state_root.mkdir(parents=True, exist_ok=True)
     media_root = state_root / "media"
     media_root.mkdir(parents=True, exist_ok=True)
@@ -132,6 +139,8 @@ def _secret_environment(secret_root: Path, state_root: Path) -> dict[str, str]:
             "HCAM_PHASE2_5_MEDIA_DIR": str(media_root.resolve()),
         }
     )
+    if all(available_corp8.values()):
+        environment.update({name: str(path.resolve()) for name, path in corp8.items()})
     return environment
 
 

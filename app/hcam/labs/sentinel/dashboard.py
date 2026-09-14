@@ -24,10 +24,12 @@ from prometheus_client import (
 )
 
 from hcam.labs.sentinel.adapter import CatalogAdapterError, SentinelCatalogAdapter
+from hcam.labs.sentinel.corp8 import Corp8CatalogAdapter, corp8_whep_auth
 from hcam.labs.sentinel.fixtures import generated_stream_id
 from hcam.labs.sentinel.hls_relay import HlsRelayError, SentinelHlsRelay
 from hcam.labs.sentinel.lab_adapters import (
     LAB_ADAPTERS,
+    CORP8_CAMERA_GRID_ADAPTER,
     LabAdapterProfile,
     LabAdapterStateError,
     lab_adapter_profile,
@@ -56,13 +58,16 @@ class DashboardSettings:
     adapter_state_path: Path | None = None
     publisher_state_path: Path | None = None
     require_publisher_state: bool = False
-    catalog_mode: Literal["sentinel-online", "generated-fallback"] = (
+    catalog_mode: Literal["sentinel-online", "generated-fallback", "corp8-online"] = (
         "generated-fallback"
     )
     whep_session_ttl_seconds: int = 60
     sentinel_mediamtx_api_url: str = "http://sentinel-mediamtx:9997"
     sentinel_publish_base_url: str = "rtsp://sentinel-mediamtx:8554/hcam-sentinel"
     sentinel_public_whep_base_url: str = "http://127.0.0.1:8890/hcam-sentinel"
+    corp8_login_url: str = "https://cctv.corp8.cloud/auth/login"
+    corp8_email_file: Path | None = None
+    corp8_password_file: Path | None = None
 
     @classmethod
     def from_environment(cls) -> "DashboardSettings":
@@ -119,6 +124,17 @@ class DashboardSettings:
                 "HCAM_PHASE2_5_SENTINEL_PUBLIC_WHEP_URL",
                 "http://127.0.0.1:8890/hcam-sentinel",
             ),
+            corp8_login_url=os.getenv(
+                "HCAM_CORP8_LOGIN_URL", "https://cctv.corp8.cloud/auth/login"
+            ),
+            corp8_email_file=(
+                Path(value) if (value := os.getenv("HCAM_CORP8_EMAIL_FILE")) else None
+            ),
+            corp8_password_file=(
+                Path(value)
+                if (value := os.getenv("HCAM_CORP8_PASSWORD_FILE"))
+                else None
+            ),
         )
 
 
@@ -142,6 +158,18 @@ def sentinel_online_policy() -> ExactNetworkPolicy:
             NetworkRule("http", "live.corp8.cloud", 8889, "/stream/"),
             NetworkRule("https", "live.corp8.cloud", 443, "/live/stream/"),
             NetworkRule("http", "live.corp8.cloud", 80, "/live/stream/"),
+        )
+    )
+
+
+def corp8_online_policy() -> ExactNetworkPolicy:
+    """The exact authenticated CORP8 guide contract; no redirect expansion."""
+    return ExactNetworkPolicy(
+        (
+            NetworkRule("https", "cctv.corp8.cloud", 443, "/cameras.json"),
+            NetworkRule("https", "cctv.corp8.cloud", 443, "/cam"),
+            NetworkRule("rtsp", "103.250.160.189", 8554, "/stream/cam"),
+            NetworkRule("http", "103.250.160.189", 8889, "/stream/cam"),
         )
     )
 
@@ -227,7 +255,7 @@ async def _await_publisher_profile(
 def _adapter_catalog_locator(
     base_locator: str,
     profile: LabAdapterProfile,
-    catalog_mode: Literal["sentinel-online", "generated-fallback"] = (
+    catalog_mode: Literal["sentinel-online", "generated-fallback", "corp8-online"] = (
         "generated-fallback"
     ),
 ) -> str:
@@ -236,7 +264,7 @@ def _adapter_catalog_locator(
         raise ValueError("catalog locator must be an HTTP(S) absolute URL")
     path = (
         profile.catalog_path
-        if catalog_mode == "sentinel-online"
+        if catalog_mode in {"sentinel-online", "corp8-online"}
         else profile.generated_catalog_path
     )
     return urlunsplit((parsed.scheme, parsed.netloc, path, "", ""))
@@ -280,14 +308,16 @@ def _with_observed_media(
     camera: dict[str, object],
     observed: dict[str, dict[str, object]],
     *,
-    catalog_mode: Literal["sentinel-online", "generated-fallback"] = (
+    catalog_mode: Literal["sentinel-online", "generated-fallback", "corp8-online"] = (
         "generated-fallback"
     ),
 ) -> dict[str, object]:
     result = dict(camera)
     media = observed.get(str(camera["external_camera_id"]))
     result["observed_media"] = media
-    if catalog_mode == "sentinel-online":
+    if catalog_mode == "corp8-online":
+        result["preview_compatible"] = False
+    elif catalog_mode == "sentinel-online":
         transports = camera.get("transports")
         has_whep = isinstance(transports, list) and any(
             isinstance(item, dict)
@@ -355,7 +385,11 @@ async def _candidate_health(
 
 def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
     configured = settings or DashboardSettings.from_environment()
-    if configured.catalog_mode not in {"sentinel-online", "generated-fallback"}:
+    if configured.catalog_mode not in {
+        "sentinel-online",
+        "generated-fallback",
+        "corp8-online",
+    }:
         raise ValueError("catalog mode is invalid")
     if not 10 <= configured.refresh_interval_seconds <= 3600:
         raise ValueError("refresh interval must be between 10 and 3600 seconds")
@@ -383,13 +417,18 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
-        if configured.catalog_mode == "sentinel-online":
+        if configured.catalog_mode == "corp8-online":
+            network_policy = corp8_online_policy()
+            active_profile = CORP8_CAMERA_GRID_ADAPTER
+            profiles = (CORP8_CAMERA_GRID_ADAPTER,)
+        elif configured.catalog_mode == "sentinel-online":
             if os.getenv("HCAM_ALLOW_SENTINEL_SANDBOX", "").lower() not in {
                 "1",
                 "true",
             }:
                 raise RuntimeError("HCAM_ALLOW_SENTINEL_SANDBOX=true is required")
             network_policy = sentinel_online_policy()
+            profiles = LAB_ADAPTERS
         else:
             if os.getenv("HCAM_ALLOW_SYNTHETIC_LAB", "").lower() not in {
                 "1",
@@ -397,16 +436,26 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
             }:
                 raise RuntimeError("HCAM_ALLOW_SYNTHETIC_LAB=true is required")
             network_policy = generated_lab_policy()
+            profiles = LAB_ADAPTERS
         store = CatalogStore(configured.state_path)
         store.initialize()
         try:
-            active_profile = read_active_lab_adapter(adapter_state_path)
-            if not adapter_state_path.exists():
-                write_active_lab_adapter(adapter_state_path, active_profile.adapter_id)
+            resource_profile = read_active_lab_adapter(adapter_state_path)
+            if resource_profile.adapter_id == CORP8_CAMERA_GRID_ADAPTER.adapter_id:
+                resource_profile = write_active_lab_adapter(
+                    adapter_state_path, LAB_ADAPTERS[0].adapter_id
+                )
+            elif not adapter_state_path.exists():
+                write_active_lab_adapter(adapter_state_path, resource_profile.adapter_id)
         except LabAdapterStateError as exc:
             raise RuntimeError(exc.code) from exc
+        if configured.catalog_mode != "corp8-online":
+            try:
+                active_profile = resource_profile
+            except LabAdapterStateError as exc:
+                raise RuntimeError(exc.code) from exc
         adapters: dict[str, SentinelCatalogAdapter] = {}
-        for profile in LAB_ADAPTERS:
+        for profile in profiles:
             store.upsert_source(
                 source_id=profile.adapter_id,
                 catalog_locator=_adapter_catalog_locator(
@@ -416,11 +465,9 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                 enabled=True,
                 auto_apply=True,
             )
-            adapters[profile.adapter_id] = SentinelCatalogAdapter(
-                store,
-                network_policy,
-                max_records=profile.catalog_capacity,
-                candidate_health_resolver=(
+            adapter_args = {
+                "max_records": profile.catalog_capacity,
+                "candidate_health_resolver": (
                     (
                         lambda catalog: _candidate_health(
                             catalog, mediamtx_api_url=configured.mediamtx_api_url
@@ -429,7 +476,20 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                     if configured.catalog_mode == "generated-fallback"
                     else None
                 ),
-            )
+            }
+            if configured.catalog_mode == "corp8-online":
+                adapters[profile.adapter_id] = Corp8CatalogAdapter(
+                    store,
+                    network_policy,
+                    login_url=configured.corp8_login_url,
+                    email_file=configured.corp8_email_file,
+                    password_file=configured.corp8_password_file,
+                    **adapter_args,
+                )
+            else:
+                adapters[profile.adapter_id] = SentinelCatalogAdapter(
+                    store, network_policy, **adapter_args
+                )
         whep_proxy = SentinelWhepProxy(
             network_policy, ttl_seconds=configured.whep_session_ttl_seconds
         )
@@ -512,7 +572,11 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                 except TimeoutError:
                     pass
                 try:
-                    profile = read_active_lab_adapter(adapter_state_path)
+                    profile = (
+                        CORP8_CAMERA_GRID_ADAPTER
+                        if configured.catalog_mode == "corp8-online"
+                        else read_active_lab_adapter(adapter_state_path)
+                    )
                     await perform_refresh(
                         profile.adapter_id,
                         f"Scheduled {profile.adapter_id} catalogue refresh",
@@ -544,6 +608,8 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
     )
 
     def active_profile(request: Request) -> LabAdapterProfile:
+        if configured.catalog_mode == "corp8-online":
+            return CORP8_CAMERA_GRID_ADAPTER
         try:
             return read_active_lab_adapter(request.app.state.adapter_state_path)
         except LabAdapterStateError as exc:
@@ -551,7 +617,20 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                 503, f"Lab adapter state unavailable ({exc.code})"
             ) from exc
 
+    def active_resource_profile(request: Request) -> LabAdapterProfile:
+        try:
+            profile = read_active_lab_adapter(request.app.state.adapter_state_path)
+            if profile.adapter_id == CORP8_CAMERA_GRID_ADAPTER.adapter_id:
+                raise LabAdapterStateError("lab_adapter_state_invalid")
+            return profile
+        except LabAdapterStateError as exc:
+            raise HTTPException(
+                503, f"Lab adapter state unavailable ({exc.code})"
+            ) from exc
+
     def data_classification() -> str:
+        if configured.catalog_mode == "corp8-online":
+            return "corp8-authenticated-grid"
         return (
             "sentinel-sandbox"
             if configured.catalog_mode == "sentinel-online"
@@ -620,6 +699,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
     @app.get("/api/status")
     def status(request: Request) -> dict[str, object]:
         profile = active_profile(request)
+        resource_profile = active_resource_profile(request)
         store: CatalogStore = request.app.state.catalog_store
         result = store.summary(profile.adapter_id)
         result["classification"] = data_classification()
@@ -630,16 +710,28 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
         )
         result["adapter"] = profile.document()
         result["adapters"] = [
-            {**item.document(), "active": item.adapter_id == profile.adapter_id}
-            for item in LAB_ADAPTERS
+            {
+                **item.document(),
+                "active": item.adapter_id == resource_profile.adapter_id,
+            }
+            for item in (
+                LAB_ADAPTERS
+                if configured.catalog_mode == "corp8-online"
+                else LAB_ADAPTERS
+            )
         ]
+        result["resource_profile"] = resource_profile.document()
         result["publisher"] = (
             _safe_publisher_state(request.app.state.publisher_state_path)
             if configured.catalog_mode == "generated-fallback"
             else None
         )
         result["catalog_mode"] = configured.catalog_mode
-        result["runtime_connection_limit"] = profile.active_stream_count
+        result["runtime_connection_limit"] = resource_profile.active_stream_count
+        result["preview_relay_configured"] = configured.catalog_mode != "corp8-online" or (
+            configured.corp8_email_file is not None
+            and configured.corp8_password_file is not None
+        )
         result["initial_refresh_error"] = request.app.state.initial_refresh_errors.get(
             profile.adapter_id
         )
@@ -647,7 +739,10 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
             "test_dashboard_only": True,
             "main_dashboard": False,
             "government_data": False,
-            "organizer_sandbox": configured.catalog_mode == "sentinel-online",
+            "organizer_sandbox": configured.catalog_mode in {
+                "sentinel-online",
+                "corp8-online",
+            },
             "recording": False,
             "analytics": False,
         }
@@ -722,6 +817,34 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
         reason: str = Header(alias="X-HCAM-Reason", min_length=8, max_length=240),
     ) -> dict[str, object]:
         require_lab_confirmation(confirmation)
+        if configured.catalog_mode == "corp8-online":
+            try:
+                profile = lab_adapter_profile(adapter_id)
+            except LabAdapterStateError as exc:
+                raise HTTPException(404, "Resource profile not found") from exc
+            if profile.adapter_id not in {item.adapter_id for item in LAB_ADAPTERS}:
+                raise HTTPException(404, "Resource profile not found")
+            async with request.app.state.adapter_switch_lock:
+                try:
+                    write_active_lab_adapter(
+                        request.app.state.adapter_state_path, profile.adapter_id
+                    )
+                except (LabAdapterStateError, OSError) as exc:
+                    code = getattr(exc, "code", "lab_adapter_state_unavailable")
+                    raise HTTPException(
+                        503, f"Resource profile switch failed ({code})"
+                    ) from exc
+            count = int(
+                request.app.state.catalog_store.summary(
+                    CORP8_CAMERA_GRID_ADAPTER.adapter_id
+                )["counts"]["total"]
+            )
+            return {
+                "adapter": profile.document(),
+                "status": "active",
+                "record_count": count,
+                "quality_downgraded": not profile.full_fidelity,
+            }
         try:
             profile = lab_adapter_profile(adapter_id)
         except LabAdapterStateError as exc:
@@ -845,6 +968,40 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
                 "media_path": "direct-webrtc",
             }
 
+        if configured.catalog_mode == "corp8-online":
+            endpoint = store.get_camera_endpoint(
+                profile.adapter_id, external_id, role="preview"
+            )
+            if endpoint is None or endpoint.protocol != "http":
+                raise HTTPException(409, "CORP8 WHEP preview is unavailable")
+            try:
+                ticket = await request.app.state.whep_proxy.issue(
+                    endpoint,
+                    limit=profile.preview_session_limit,
+                    upstream_auth=corp8_whep_auth(
+                        email_file=configured.corp8_email_file,
+                        password_file=configured.corp8_password_file,
+                    ),
+                )
+            except (CatalogAdapterError, WhepProxyError) as exc:
+                code = getattr(exc, "code", "corp8_preview_unavailable")
+                status_code = 429 if code == "whep_session_limit_reached" else 502
+                raise HTTPException(
+                    status_code, f"CORP8 preview unavailable ({code})"
+                ) from exc
+            local_whep_url = f"/api/whep/{ticket.session_id}"
+            return {
+                "stream_id": camera["camera_id"],
+                "whep_url": local_whep_url,
+                "cleanup_url": local_whep_url,
+                "hls_url": None,
+                "access_token": ticket.bearer_token,
+                "token_type": "Bearer",
+                "expires_at": ticket.expires_at,
+                "retention": "none",
+                "media_path": "direct-webrtc",
+            }
+
         assert match is not None
         observed = _observed_media(configured.media_evidence_path).get(external_id)
         if observed is None or observed["preview_compatible"] is not True:
@@ -899,7 +1056,7 @@ def create_dashboard_app(settings: DashboardSettings | None = None) -> FastAPI:
 
     @app.post("/api/whep/{session_id}")
     async def whep_negotiate(session_id: str, request: Request) -> Response:
-        if configured.catalog_mode != "sentinel-online":
+        if configured.catalog_mode not in {"sentinel-online", "corp8-online"}:
             raise HTTPException(404, "Sentinel WHEP proxy is disabled")
         if request.headers.get("content-type", "").split(";", 1)[0].lower() != (
             "application/sdp"

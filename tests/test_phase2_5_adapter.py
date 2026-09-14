@@ -70,6 +70,29 @@ def test_adapter_refreshes_then_reuses_etag(tmp_path) -> None:
     assert store.summary("generated-sentinel")["counts"]["advertised_live"] == 30
 
 
+def test_initialize_recovers_interrupted_refresh(tmp_path) -> None:
+    store = make_store(tmp_path)
+    refresh_id = store.begin_refresh(
+        "generated-sentinel", requester="pytest", reason="simulate interrupted startup"
+    )
+
+    store.initialize()
+
+    with store._connect() as connection:
+        recovered = connection.execute(
+            "SELECT status, safe_failure_code, completed_at FROM catalog_refreshes "
+            "WHERE refresh_id = ?",
+            (refresh_id,),
+        ).fetchone()
+    assert recovered["status"] == "failed"
+    assert recovered["safe_failure_code"] == "startup_recovery"
+    assert recovered["completed_at"] is not None
+
+    assert store.begin_refresh(
+        "generated-sentinel", requester="pytest", reason="refresh after recovery"
+    )
+
+
 def test_adapter_stops_reading_oversized_response(tmp_path) -> None:
     def handler(_request: httpx.Request) -> httpx.Response:
         return httpx.Response(200, content=b"{" + b"x" * 4096)

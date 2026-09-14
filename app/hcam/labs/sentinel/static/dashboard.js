@@ -17,8 +17,8 @@ const state = {
   starting: false,
   activeAdapter: null,
   autoStartAttempted: false,
-  classification: "sentinel-sandbox",
-  catalogMode: "sentinel-online",
+  classification: "corp8-authenticated-grid",
+  catalogMode: "corp8-online",
 };
 const byId = (id) => document.getElementById(id);
 
@@ -34,9 +34,9 @@ async function requestJson(url, options = {}) {
 
 function renderSummary(status) {
   const counts = status.counts || {};
-  const adapterId = status.adapter?.adapter_id || null;
-  state.classification = status.classification || "sentinel-sandbox";
-  state.catalogMode = status.catalog_mode || "sentinel-online";
+  const adapterId = status.resource_profile?.adapter_id || status.adapter?.adapter_id || null;
+  state.classification = status.classification || "corp8-authenticated-grid";
+  state.catalogMode = status.catalog_mode || "corp8-online";
   if (adapterId !== state.activeAdapter) {
     state.activeAdapter = adapterId;
     state.autoStartAttempted = false;
@@ -48,20 +48,20 @@ function renderSummary(status) {
   byId("runtimeCount").textContent = text(status.runtime_connection_limit, "0");
   const media = status.media_preparation;
   const encoder = media?.accelerator?.h264?.accelerator;
-  byId("acceleratorState").textContent = state.catalogMode === "sentinel-online"
-    ? "Native"
+  byId("acceleratorState").textContent = state.catalogMode === "corp8-online"
+    ? "External source"
     : (encoder ? encoder.toUpperCase() : "Not prepared");
-  byId("classificationLabel").textContent = state.catalogMode === "sentinel-online"
-    ? "SENTINEL SANDBOX"
+  byId("classificationLabel").textContent = state.catalogMode === "corp8-online"
+    ? "CORP8 AUTHENTICATED GRID"
     : "GENERATED FALLBACK";
-  byId("inventoryTitle").textContent = state.catalogMode === "sentinel-online"
-    ? "Sentinel camera inventory"
+  byId("inventoryTitle").textContent = state.catalogMode === "corp8-online"
+    ? "CORP8 camera inventory"
     : "Generated camera inventory";
-  byId("liveFeedLabel").textContent = state.catalogMode === "sentinel-online"
-    ? "Sentinel online feed"
+  byId("liveFeedLabel").textContent = state.catalogMode === "corp8-online"
+    ? "CORP8 live feed"
     : "Generated fallback feed";
   for (const button of document.querySelectorAll("[data-adapter]")) {
-    const active = button.dataset.adapter === status.adapter?.adapter_id;
+    const active = button.dataset.adapter === adapterId;
     button.setAttribute("aria-pressed", String(active));
     button.disabled = state.switching || active;
   }
@@ -225,14 +225,15 @@ async function stopPreview({ abortStart = true } = {}) {
 }
 
 function schedulePreviewReconnect(camera, peer) {
-  if (state.reconnectTimer || state.reconnectAttempts >= 3) return;
+  if (state.reconnectTimer) return;
+  const delayMs = Math.min(2000 * (2 ** state.reconnectAttempts), 30000);
   state.reconnectAttempts += 1;
   state.reconnectTimer = window.setTimeout(() => {
     state.reconnectTimer = null;
     if (peer === state.peer && state.selected === camera.external_camera_id) {
       startPreview(camera, true);
     }
-  }, 2000);
+  }, delayMs);
 }
 
 function trustedWhepResource(location, whepUrl) {
@@ -394,7 +395,7 @@ async function refreshCatalogue() {
       method: "POST",
       headers: {
         "X-HCAM-Lab-Confirm": state.classification,
-        "X-HCAM-Reason": "Manual active Sentinel lab catalogue refresh",
+        "X-HCAM-Reason": "Manual CORP8 camera grid catalogue refresh",
       },
     });
     await load();
@@ -416,7 +417,7 @@ async function activateAdapter(adapterId) {
       method: "POST",
       headers: {
         "X-HCAM-Lab-Confirm": state.classification,
-        "X-HCAM-Reason": "Operator selected Sentinel lab resource profile",
+        "X-HCAM-Reason": "Operator selected CORP8 resource profile",
       },
     });
     await new Promise((resolve) => window.setTimeout(resolve, 1500));

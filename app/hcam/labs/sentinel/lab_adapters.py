@@ -9,7 +9,7 @@ from typing import Literal
 from hcam.labs.sentinel.faults import atomic_write_json
 
 
-LabAdapterId = Literal["lab1highadapter", "lab2lowadapter"]
+LabAdapterId = Literal["lab1highadapter", "lab2lowadapter", "corp8-camera-grid"]
 
 
 class LabAdapterStateError(RuntimeError):
@@ -67,8 +67,26 @@ LAB2_LOW_ADAPTER = LabAdapterProfile(
     preview_session_limit=1,
 )
 
+# This is the only profile shown by the authenticated CORP8 runtime.  The two
+# generated profiles remain test infrastructure and are never selected by the
+# production-like dashboard path.
+CORP8_CAMERA_GRID_ADAPTER = LabAdapterProfile(
+    adapter_id="corp8-camera-grid",
+    label="CORP8 Camera Grid",
+    catalog_path="/cameras.json",
+    generated_catalog_path="/cameras.json",
+    record_count=30,
+    active_stream_count=1,
+    fixture_capacity=30,
+    resource_class="high",
+    full_fidelity=True,
+    catalog_capacity=50,
+    preview_session_limit=1,
+)
+
 LAB_ADAPTERS = (LAB1_HIGH_ADAPTER, LAB2_LOW_ADAPTER)
-LAB_ADAPTER_BY_ID = {profile.adapter_id: profile for profile in LAB_ADAPTERS}
+ALL_ADAPTERS = (CORP8_CAMERA_GRID_ADAPTER, *LAB_ADAPTERS)
+LAB_ADAPTER_BY_ID = {profile.adapter_id: profile for profile in ALL_ADAPTERS}
 DEFAULT_LAB_ADAPTER = LAB1_HIGH_ADAPTER
 LAB_ADAPTER_STATE_SCHEMA = "hcam.phase2_5.lab_adapter_state.v2"
 _LEGACY_LAB_ADAPTER_STATE_SCHEMA = "hcam.phase2_5.lab_adapter_state.v1"

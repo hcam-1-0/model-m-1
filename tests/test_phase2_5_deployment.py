@@ -55,8 +55,13 @@ def test_phase2_5_compose_is_additive_loopback_only_and_no_recording() -> None:
     assert "cleanup-request.json" not in compose
     assert "start_period: 240s" in compose
     assert 'HCAM_PHASE2_5_REQUIRE_PUBLISHER_STATE: "false"' in compose
-    assert "HCAM_PHASE2_5_CATALOG_MODE: sentinel-online" in compose
-    assert "https://live.corp8.cloud/api/ingest" in compose
+    assert "HCAM_PHASE2_5_CATALOG_MODE: corp8-online" in compose
+    assert "HCAM_PHASE2_5_CATALOG_URL: https://cctv.corp8.cloud/cameras.json" in compose
+    assert "HCAM_CORP8_EMAIL_FILE: /run/secrets/hcam-corp8-email" in compose
+    assert "HCAM_CORP8_PASSWORD_FILE: /run/secrets/hcam-corp8-password" in compose
+    assert "${HCAM_CORP8_EMAIL_FILE:?set HCAM_CORP8_EMAIL_FILE}:/run/secrets/hcam-corp8-email:ro" in compose
+    assert "${HCAM_CORP8_PASSWORD_FILE:?set HCAM_CORP8_PASSWORD_FILE}:/run/secrets/hcam-corp8-password:ro" in compose
+    assert "https://live.corp8.cloud/api/ingest" not in compose
     assert "hcam.labs.sentinel.standby" in compose
     assert "hcam.labs.sentinel.publisher" not in compose
 
