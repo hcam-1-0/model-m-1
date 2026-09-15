@@ -1,0 +1,63 @@
+{
+  "schema_version": "hcam.phase5.p5_3.planning_validation.v1",
+  "validation_id": "P5.3-PLANNING-VALIDATION-R0",
+  "status": "passed",
+  "validated_on": "2026-09-08",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "eb08c3758733676d72678535d27c8512e75f9407",
+  "planning_package": {
+    "package_id": "P5.3-PLANNING-R0",
+    "path": "contracts/phase-5/p5-3-planning-package.json",
+    "sha256": "5EF0C24479157668C2236603B2177A5F38001BDF927EA249A1623D0EEB4D281B",
+    "canonical_component_digest": "CE8584374DFB98B32987F15E682E150052C9030906FDC1263BBDFF57DF523668"
+  },
+  "method": "Local read-only PowerShell parsing, hashing, source-text, path, link, ASCII, and Git diff checks. No product test, dependency, media, browser, network, provider, camera, container, Kubernetes, deployment, or remote Git action was performed.",
+  "checks": [
+    {"id": "V01", "name": "authorization_JSON_parses", "result": "pass"},
+    {"id": "V02", "name": "authorization_owner_statement_hash_matches", "result": "pass"},
+    {"id": "V03", "name": "accepted_P5_2_acceptance_hash_matches", "result": "pass"},
+    {"id": "V04", "name": "planning_package_JSON_parses", "result": "pass"},
+    {"id": "V05", "name": "all_ten_components_exist", "result": "pass"},
+    {"id": "V06", "name": "component_bytes_and_sha256_match", "result": "pass"},
+    {"id": "V07", "name": "canonical_component_digest_matches", "result": "pass"},
+    {"id": "V08", "name": "twelve_decisions_exist_and_are_unselected", "result": "pass"},
+    {"id": "V09", "name": "recommended_profile_has_twelve_entries", "result": "pass"},
+    {"id": "V10", "name": "eight_workstreams_total_exactly_sixteen_points", "result": "pass"},
+    {"id": "V11", "name": "twenty_contract_gaps_are_documented", "result": "pass"},
+    {"id": "V12", "name": "thirty_threats_are_documented", "result": "pass"},
+    {"id": "V13", "name": "P5_3_product_progress_remains_zero_of_sixteen", "result": "pass"},
+    {"id": "V14", "name": "Phase_5_product_progress_remains_thirty_two_of_one_hundred", "result": "pass"},
+    {"id": "V15", "name": "implementation_runtime_data_deployment_and_remote_gates_are_closed", "result": "pass"},
+    {"id": "V16", "name": "changed_paths_are_planning_contract_documentation_and_navigation_only", "result": "pass"},
+    {"id": "V17", "name": "new_planning_files_are_ASCII_UTF8_without_BOM", "result": "pass"},
+    {"id": "V18", "name": "new_local_markdown_links_resolve_or_are_external", "result": "pass"},
+    {"id": "V19", "name": "Git_diff_has_no_whitespace_errors", "result": "pass"},
+    {"id": "V20", "name": "no_product_test_dependency_lockfile_migration_or_runtime_path_changed", "result": "pass"},
+    {"id": "V21", "name": "research_links_use_official_primary_source_domains", "result": "pass"}
+  ],
+  "result": {
+    "checks_passed": 21,
+    "checks_failed": 0,
+    "P5_3_planning_percent": 100.0,
+    "P5_3_planning_change_percentage_points": 100.0,
+    "P5_3_product_percent": 0.0,
+    "P5_3_product_change_percentage_points": 0.0,
+    "phase_5_product_percent": 32.0,
+    "phase_5_product_change_percentage_points": 0.0,
+    "next_gate": "owner_selects_D_P5_3_001_through_D_P5_3_012"
+  },
+  "limitations": [
+    "planning_validation_only",
+    "no_product_or_test_execution",
+    "no_dependency_resolution_install_or_lockfile_change",
+    "no_browser_or_media_runtime",
+    "no_playback_session_issuance",
+    "no_provider_network_Sentinel_camera_or_media_access",
+    "no_recording_snapshot_download_or_export",
+    "no_Government_or_private_data",
+    "no_models_datasets_artifacts_or_inference",
+    "no_operational_actions",
+    "no_containers_Kubernetes_or_deployment",
+    "no_remote_Git"
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "asyncapi": "3.1.0",
+  "channels": {
+    "hcam.correlation.hypothesis.changed.v1": {
+      "address": "hcam.correlation.hypothesis.changed.v1",
+      "messages": {
+        "generated": {
+          "$ref": "#/components/messages/hcam.correlation.hypothesis.changed.v1"
+        }
+      }
+    },
+    "hcam.intelligence.alert.changed.v1": {
+      "address": "hcam.intelligence.alert.changed.v1",
+      "messages": {
+        "generated": {
+          "$ref": "#/components/messages/hcam.intelligence.alert.changed.v1"
+        }
+      }
+    },
+    "hcam.intelligence.review.recorded.v1": {
+      "address": "hcam.intelligence.review.recorded.v1",
+      "messages": {
+        "generated": {
+          "$ref": "#/components/messages/hcam.intelligence.review.recorded.v1"
+        }
+      }
+    },
+    "hcam.investigation.correction.recorded.v1": {
+      "address": "hcam.investigation.correction.recorded.v1",
+      "messages": {
+        "generated": {
+          "$ref": "#/components/messages/hcam.investigation.correction.recorded.v1"
+        }
+      }
+    },
+    "hcam.investigation.timeline.changed.v1": {
+      "address": "hcam.investigation.timeline.changed.v1",
+      "messages": {
+        "generated": {
+          "$ref": "#/components/messages/hcam.investigation.timeline.changed.v1"
+        }
+      }
+    },
+    "hcam.operations.degradation.changed.v1": {
+      "address": "hcam.operations.degradation.changed.v1",
+      "messages": {
+        "generated": {
+          "$ref": "#/components/messages/hcam.operations.degradation.changed.v1"
+        }
+      }
+    }
+  },
+  "components": {
+    "messages": {
+      "hcam.correlation.hypothesis.changed.v1": {
+        "name": "hcam.correlation.hypothesis.changed.v1",
+        "payload": {
+          "additionalProperties": false,
+          "type": "object"
+        },
+        "x-hcam-grants-authority": false
+      },
+      "hcam.intelligence.alert.changed.v1": {
+        "name": "hcam.intelligence.alert.changed.v1",
+        "payload": {
+          "additionalProperties": false,
+          "type": "object"
+        },
+        "x-hcam-grants-authority": false
+      },
+      "hcam.intelligence.review.recorded.v1": {
+        "name": "hcam.intelligence.review.recorded.v1",
+        "payload": {
+          "additionalProperties": false,
+          "type": "object"
+        },
+        "x-hcam-grants-authority": false
+      },
+      "hcam.investigation.correction.recorded.v1": {
+        "name": "hcam.investigation.correction.recorded.v1",
+        "payload": {
+          "additionalProperties": false,
+          "type": "object"
+        },
+        "x-hcam-grants-authority": false
+      },
+      "hcam.investigation.timeline.changed.v1": {
+        "name": "hcam.investigation.timeline.changed.v1",
+        "payload": {
+          "additionalProperties": false,
+          "type": "object"
+        },
+        "x-hcam-grants-authority": false
+      },
+      "hcam.operations.degradation.changed.v1": {
+        "name": "hcam.operations.degradation.changed.v1",
+        "payload": {
+          "additionalProperties": false,
+          "type": "object"
+        },
+        "x-hcam-grants-authority": false
+      }
+    }
+  },
+  "info": {
+    "title": "H-CAM event handoff projection",
+    "version": "1.0.0"
+  },
+  "x-hcam-boundary": {
+    "canonical": false,
+    "conformance_claim": false,
+    "generated_only": true,
+    "operational": false
+  }
+}

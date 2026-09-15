@@ -1,0 +1,69 @@
+{
+  "schema_version": "hcam.phase5.p5_2.planning_validation.v1",
+  "validation_id": "P5.2-PLANNING-VALIDATION-R0",
+  "validated_on": "2026-09-07",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "d8de9ce43cdd02315f688a9f06a51b53e338d5c5",
+  "package": {
+    "path": "contracts/phase-5/p5-2-planning-package.json",
+    "sha256": "4B6EAD658A6D72E98929527B8020E4C79FD47E7AB82D7F05B6376D3E2E086BA4",
+    "canonical_component_digest": "FF4A3399EA25C47A2059FE38EFF81BBCA64C77BE377B22A80AF1F0F2874E7744",
+    "component_count": 8
+  },
+  "checks": [
+    {"id": "V01", "name": "authorization_JSON_parses", "result": "pass"},
+    {"id": "V02", "name": "authorization_owner_statement_hash_matches", "result": "pass"},
+    {"id": "V03", "name": "accepted_P5_1_acceptance_hash_matches", "result": "pass"},
+    {"id": "V04", "name": "planning_package_JSON_parses", "result": "pass"},
+    {"id": "V05", "name": "all_eight_components_exist", "result": "pass"},
+    {"id": "V06", "name": "component_bytes_and_sha256_match", "result": "pass"},
+    {"id": "V07", "name": "canonical_component_digest_matches", "result": "pass"},
+    {"id": "V08", "name": "twelve_decisions_exist_and_are_unselected", "result": "pass"},
+    {"id": "V09", "name": "recommended_profile_has_twelve_entries", "result": "pass"},
+    {"id": "V10", "name": "eight_workstreams_total_exactly_twelve_points", "result": "pass"},
+    {"id": "V11", "name": "fourteen_contract_gaps_are_documented", "result": "pass"},
+    {"id": "V12", "name": "eighteen_threats_are_documented", "result": "pass"},
+    {"id": "V13", "name": "P5_2_product_progress_remains_zero_of_twelve", "result": "pass"},
+    {"id": "V14", "name": "Phase_5_product_progress_remains_twenty_of_one_hundred", "result": "pass"},
+    {"id": "V15", "name": "implementation_runtime_data_deployment_and_remote_gates_are_closed", "result": "pass"},
+    {"id": "V16", "name": "changed_paths_are_planning_contract_documentation_and_navigation_only", "result": "pass"},
+    {"id": "V17", "name": "new_planning_files_are_ASCII_UTF8_without_BOM", "result": "pass"},
+    {"id": "V18", "name": "new_local_markdown_links_resolve_or_are_external", "result": "pass"},
+    {"id": "V19", "name": "Git_diff_has_no_whitespace_errors", "result": "pass"},
+    {"id": "V20", "name": "no_product_test_dependency_lockfile_migration_or_runtime_path_changed", "result": "pass"}
+  ],
+  "expected_changed_paths": [
+    "README.md",
+    "contracts/phase-5/p5-2-plan-authorization.json",
+    "contracts/phase-5/p5-2-planning-package.json",
+    "contracts/phase-5/p5-2-planning-validation.json",
+    "docs/phase-5/README.md",
+    "docs/phase-5/current-status-r8.md",
+    "docs/phase-5/implementation-plan.md",
+    "docs/phase-5/p5-2-command-architecture.md",
+    "docs/phase-5/p5-2-contract-gap-matrix.md",
+    "docs/phase-5/p5-2-decision-packet.md",
+    "docs/phase-5/p5-2-implementation-plan.md",
+    "docs/phase-5/p5-2-research-record.md",
+    "docs/phase-5/p5-2-threat-model.md",
+    "docs/phase-5/status.md"
+  ],
+  "execution": {
+    "product_code": "not_performed",
+    "frontend_or_map_runtime": "not_performed",
+    "dependency_or_lockfile_change": "not_performed",
+    "backend_route_or_migration": "not_performed",
+    "network_provider_camera_or_media": "not_performed",
+    "Government_or_private_data": "not_performed",
+    "model_dataset_artifact_or_inference": "not_performed",
+    "container_Kubernetes_or_deployment": "not_performed",
+    "remote_Git": "not_performed"
+  },
+  "result": "pass",
+  "limitations": [
+    "Planning validation does not prove product behavior, browser compatibility, map rendering, accessibility conformance, capacity, PostGIS query performance, or operational readiness.",
+    "Official-source research records design requirements but does not establish conformance to any cited specification.",
+    "Producer contract gaps remain blocked and must not be implemented or bypassed under this authorization.",
+    "No P5.2 product points are earned by this package."
+  ]
+}

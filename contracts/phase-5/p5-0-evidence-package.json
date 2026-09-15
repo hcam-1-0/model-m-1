@@ -1,0 +1,203 @@
+{
+  "schema_version": "hcam.phase5.p5_0.evidence-package.v1",
+  "package_id": "P5.0-EVIDENCE-PACKAGE-R0",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "generated_on": "2026-09-06",
+  "technical_commit": "8d6ff70dfb0f6c7a6b9a50ce6db03d14f46256ae",
+  "start_package_sha256": "66F40E71B2E96F2C61C267EF5A14CD709692A0C389AC23560651BC2B9C38B7F8",
+  "component_digest_algorithm": "Sort components by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "56229E40C1C374683956E344B7D08AF3F44D58208CB50B9C523A875F7FD846A7",
+  "components": [
+    {
+      "path": "app/hcam/operator_application/__init__.py",
+      "bytes": 2010,
+      "sha256": "12F7A028E0835B27212BD89EA24AC4B3E66E1FE983B1F3FF3A2766A93B8090CB"
+    },
+    {
+      "path": "app/hcam/operator_application/accessibility.py",
+      "bytes": 2325,
+      "sha256": "E672CC1C121E080D0D0D79176A3641C99D2BD50C1CBB6A6D77B0F7B572E07CC6"
+    },
+    {
+      "path": "app/hcam/operator_application/bounds.py",
+      "bytes": 1197,
+      "sha256": "1E691ADBCB81F3561DAF33FC9BFB13DB874AFCB797260C97F10CA7F68D228162"
+    },
+    {
+      "path": "app/hcam/operator_application/capabilities.py",
+      "bytes": 1460,
+      "sha256": "5A4869C7DBFE2A8A9744C50E9F785243F4B3FB81E59C7E0CD7CDA8F968C768A6"
+    },
+    {
+      "path": "app/hcam/operator_application/catalogue.py",
+      "bytes": 1341,
+      "sha256": "C478DB8DDC4378E45DC0EBEFF7C0FD31B4C1C6BA990BB542B71648CE2674591F"
+    },
+    {
+      "path": "app/hcam/operator_application/contracts.py",
+      "bytes": 6809,
+      "sha256": "EBDE8490184978C31B71CED6847F4C53315D65216CED4E9C14D20C35BA75C23A"
+    },
+    {
+      "path": "app/hcam/operator_application/design_tokens.py",
+      "bytes": 2843,
+      "sha256": "AEC58C4D1AC2203DB59BD6F9DBB9DE016E75909A8380BB5DDE148255C2AFA172"
+    },
+    {
+      "path": "app/hcam/operator_application/generated.py",
+      "bytes": 3265,
+      "sha256": "C583C25E7C9F43C419F46C6FEF26CF396032B13064B4E70EC90146FC5B8C9054"
+    },
+    {
+      "path": "app/hcam/operator_application/gis_contracts.py",
+      "bytes": 7742,
+      "sha256": "B8AC9A1FB3FC634F4E52D3B64CC78F6F26DD3CB2047EF2991C47FC732302E24B"
+    },
+    {
+      "path": "app/hcam/operator_application/journeys.py",
+      "bytes": 2435,
+      "sha256": "5AC6DD2D2D03CE4D6F894D4F74E66B1A40B30407F4993533A7BF0B1D7C4891D3"
+    },
+    {
+      "path": "app/hcam/operator_application/navigation.py",
+      "bytes": 2152,
+      "sha256": "A0D428B4BA1129F28F999FE8514670DB020E0A58B6F74477546B7E55C65DDAF4"
+    },
+    {
+      "path": "app/hcam/operator_application/security.py",
+      "bytes": 2943,
+      "sha256": "C5705E43F1E9CC48B6B25A3FDE80E315A406B7E94151187F7750EED458C47529"
+    },
+    {
+      "path": "app/hcam/operator_application/validation.py",
+      "bytes": 1662,
+      "sha256": "9F42F53EF72538125B0247299071EC7D5AD03CA2A08842C5FC439046C53ADB83"
+    },
+    {
+      "path": "contracts/phase-5/operator-ui-accessibility.v1.json",
+      "bytes": 2559,
+      "sha256": "AD3613D8F14D23DDC8A4DC70915772A144280A2401372102019D970731A25C92"
+    },
+    {
+      "path": "contracts/phase-5/operator-ui-capability-matrix.v1.json",
+      "bytes": 1239,
+      "sha256": "CFC5953A5256781756E4CBAD4FD1FA6CF76B9C72D9E2B2F8A8E20678A61AF199"
+    },
+    {
+      "path": "contracts/phase-5/operator-ui-contract-catalogue.v1.json",
+      "bytes": 10321,
+      "sha256": "244CB368EBA452409E97CC97AC7A5F1DDCAA21211A22E72CDC01EE67D33DABC6"
+    },
+    {
+      "path": "contracts/phase-5/operator-ui-gis-parity.v1.json",
+      "bytes": 3512,
+      "sha256": "49906CEAB2704AF8B21AA6B33BAF6E41C1462475D0A821D87A31C913D213F90C"
+    },
+    {
+      "path": "contracts/phase-5/operator-ui-producer-coverage.v1.json",
+      "bytes": 2851,
+      "sha256": "E12A231C8C51FF3E597FE07B83EEDFDE5D36F459E4F7911C2AFE5E6BE431D82D"
+    },
+    {
+      "path": "contracts/phase-5/operator-ui-route-journeys.v1.json",
+      "bytes": 5280,
+      "sha256": "82CD0E13955408795B42F5E006DA34F89D9109C94355914422B2309CA639630D"
+    },
+    {
+      "path": "docs/phase-5/p5-0-implementation.md",
+      "bytes": 7336,
+      "sha256": "3EB1A2D010FD937FA97BB9F7C854B9184A80EC3C8818AD34B45A1EA714254BCD"
+    },
+    {
+      "path": "docs/phase-5/p5-0-security-controls.md",
+      "bytes": 5612,
+      "sha256": "18A40A670C0E49DDFAC9AA8B7177DBE4EAD018DB736AE5D77C1B58667F4B3155"
+    },
+    {
+      "path": "docs/phase-5/p5-0-validation.md",
+      "bytes": 8532,
+      "sha256": "1F673F28BA0B2A4F895AF27F0670457CD25DF8EFA0D6C5438B3210FFD064FFC2"
+    },
+    {
+      "path": "fixtures/phase-5/p5-0/canonical-negative.json",
+      "bytes": 1196,
+      "sha256": "82CB99FE8EB7324319C386C7C060957CEB5A50D0D4F1A7AC7CA17D3D82AAED91"
+    },
+    {
+      "path": "fixtures/phase-5/p5-0/canonical-positive.json",
+      "bytes": 703,
+      "sha256": "27EFF0746E6515FE0C46E7DAD9A99D65D25AD68E9D71393A248C28967799EAE3"
+    },
+    {
+      "path": "fixtures/phase-5/p5-0/gis-parity-vectors.json",
+      "bytes": 793,
+      "sha256": "24BFEEF5218AC9F0F94B0726051814255CC93F67D8090FC2CE0DD98A77D75AB7"
+    },
+    {
+      "path": "fixtures/phase-5/p5-0/journey-walkthroughs.json",
+      "bytes": 1033,
+      "sha256": "2CE6F0ACFDF50761E835EBFDCFC622D9DDF46EA8EFFD65F7E24DB18A1148995A"
+    },
+    {
+      "path": "tests/test_phase50_accessibility.py",
+      "bytes": 4539,
+      "sha256": "D9F55550244A52DAE53DDD6371E9B4C914D2CF72179947AA715E05B500796407"
+    },
+    {
+      "path": "tests/test_phase50_contract_bounds.py",
+      "bytes": 4782,
+      "sha256": "33FE1BD9EF6177F374E9D3ACC11436410AEF112AB50038691F3782B0BB245E39"
+    },
+    {
+      "path": "tests/test_phase50_contract_catalogue.py",
+      "bytes": 3104,
+      "sha256": "1D6635BC12B0E51837B9642CAA1DAEC548E3D9D95D0F98F468D328BC2D4D9424"
+    },
+    {
+      "path": "tests/test_phase50_generated_fixtures.py",
+      "bytes": 3868,
+      "sha256": "68EB0F371E7C48A5C7B18DF5C4384907E2087FAF2127EB8113CACBB298575EB2"
+    },
+    {
+      "path": "tests/test_phase50_gis_contracts.py",
+      "bytes": 3860,
+      "sha256": "3A058AD56D8FCAD3E9410A27220ED2BFADFA514B171E585CA950D9D7C5BD17F9"
+    },
+    {
+      "path": "tests/test_phase50_journeys.py",
+      "bytes": 3212,
+      "sha256": "10C2F7AB34BC008CCCFD3E0AEFC69E260E199CBA2756FAEFAAAEBA375D7C7F8C"
+    },
+    {
+      "path": "tests/test_phase50_readiness.py",
+      "bytes": 2990,
+      "sha256": "A1DBB42E344530906E6E3F975DF1F7148E9B2086688C895A50A05EF83C2A0699"
+    },
+    {
+      "path": "tests/test_phase50_security.py",
+      "bytes": 4292,
+      "sha256": "36E5977F393386402E3B748603FEE7BE35B1955C8D84BD91E8C84FFCBBBCCED6"
+    },
+    {
+      "path": "tools/phase50_evidence.py",
+      "bytes": 8482,
+      "sha256": "BEDCD5E952DDB13F0416DB22C0ED3AE689C0CC94A9DA52BF0719EB81EC177DE6"
+    },
+    {
+      "path": "tools/phase50_readiness.py",
+      "bytes": 7751,
+      "sha256": "9627FCC807128596CA38CCC0C388DDE9D7142259A2095E403615F351F77FA688"
+    },
+    {
+      "path": "contracts/phase-5/p5-0-evidence.json",
+      "bytes": 2598,
+      "sha256": "290EFEC42F7175C7610210FD05571EAFB4853D8DEDC70817764390E5C3399F84"
+    }
+  ],
+  "component_count": 37,
+  "generated_only": true,
+  "P5_0_complete": false,
+  "P5_1_authorized": false,
+  "remote_Git_authorized": false
+}

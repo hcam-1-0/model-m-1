@@ -1,0 +1,217 @@
+{
+  "schema_version": "hcam.phase4.p4_3.planning-package.v1",
+  "package_id": "P4.3-PLANNING-R1",
+  "status": "owner_decisions_recorded_start_authorization_pending",
+  "effective": false,
+  "prepared_on": "2026-09-04",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-alert-lifecycle-planning",
+  "planning_base_commit": "c1c0a8a2860b6e21bbc2b65cd3618cbaa04e1483",
+  "supersedes": {
+    "package_id": "P4.3-PLANNING-R0",
+    "sha256": "E2F76A07A4F17DEFA1E7AF9C75EB838974930A3260F5D93401BDC0994EB4BD36",
+    "reason": "owner_selections_require_reconciled_contract_plan_threat_and_start_boundaries"
+  },
+  "planning_authority": [
+    "primary_source_research",
+    "read_only_repository_analysis",
+    "planning_documentation",
+    "owner_decision_options",
+    "owner_decision_reconciliation",
+    "non_effective_contract_and_implementation_design",
+    "local_document_validation_and_checkpoint_commit_without_push"
+  ],
+  "accepted_phase4_planning": {
+    "package_id": "P4-PLANNING-R2",
+    "path": "docs/phase-4/planning-package.json",
+    "sha256": "B8F4371A8DDD350F44321E70F5FB8CEE0DD27299A26082A40460086E80DDEA63"
+  },
+  "accepted_p4_2": {
+    "acceptance_path": "contracts/phase-4/p4-2/acceptance.json",
+    "acceptance_sha256": "B5E9AFC50A1D24209F48F1828D6104EC21FACD10A435B8DFBE20FB9EB065BDC6",
+    "evidence_package_path": "contracts/phase-4/p4-2/evidence-package.json",
+    "evidence_package_sha256": "A10CEAF5742A59EA54373ED5494A99A73F94FCD9D268C20C5752D753805320CA",
+    "canonical_component_digest": "635642E579ECD712271E6F86E42F594BA912047E30DB95C716D212C81B83ACBC",
+    "accepted_technical_commit": "393ae258e84df8ab542665144a45f8e9b0b83c5b",
+    "acceptance_commit": "1e6673be5fc684f6607794b6e6b462f5905850a6"
+  },
+  "binding_predecessor_decisions": {
+    "D-P4.0-004": [
+      "A",
+      "B",
+      "C"
+    ],
+    "D-P4.0-007": [
+      "A"
+    ],
+    "D-P4.0-008": [
+      "A"
+    ],
+    "interpretation": "mandatory_review_police_intelligence_with_class_scoped_bounded_automation_future_autonomous_action_hard_disabled_PostgreSQL_PostGIS_forced_RLS_append_only_evidence_transactional_outbox_and_data_class_retention"
+  },
+  "planning_artifacts": [
+    {
+      "path": "docs/phase-4/p4-3-research-record.md",
+      "sha256": "AF27970E77B038F55247E83E387ECB7F4CBA92FC0A39EB968207253985D4ABC9"
+    },
+    {
+      "path": "docs/phase-4/p4-3-decision-packet.md",
+      "sha256": "642FF3FDB7E9ED15660C94C36CD4F95B1F67E00669CDE8A6F7DDC4EA8F747054"
+    },
+    {
+      "path": "docs/phase-4/p4-3-owner-decisions.md",
+      "sha256": "89B37A83F764C4F069F987AE6288C44808BFE5593C3A829FCCAC6273642F5902"
+    },
+    {
+      "path": "contracts/phase-4/p4-3-owner-decisions.json",
+      "sha256": "EFB2F6C265CBF2DDF9D29A86740C26CABC4B9A5A5F4D2D00AEF86EEE7D2C494C"
+    },
+    {
+      "path": "docs/phase-4/p4-3-contract-catalog.md",
+      "sha256": "6BEBDBD42649645891C5B18A8EBF155AE5265A81EF8A7A31C87A8EDE859CD793"
+    },
+    {
+      "path": "docs/phase-4/p4-3-implementation-plan.md",
+      "sha256": "13E9D2D51437D15016725CB54BC438EA93FA44D6B779584F4485E4FEFC1B81A2"
+    },
+    {
+      "path": "docs/phase-4/p4-3-threat-model.md",
+      "sha256": "386446980716252026880B3BD9A14CAB11B8F22DCD5D894C367E143D6AE76B74"
+    }
+  ],
+  "research_sources": [
+    {
+      "name": "CloudEvents Specification",
+      "version": "1.0.2",
+      "url": "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md",
+      "bounded_use": "delivery_identity_and_duplicate_redelivery_principles"
+    },
+    {
+      "name": "NIST AI Risk Management Framework",
+      "version": "1.0",
+      "url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10",
+      "bounded_use": "human_oversight_accountability_roles_and_documented_decisions"
+    },
+    {
+      "name": "NIST AI RMF Playbook",
+      "version": "accessed_2026_09_04_revision_in_progress",
+      "url": "https://airc.nist.gov/airmf-resources/playbook/",
+      "bounded_use": "oversight_override_response_escalation_and_audit_measurement"
+    },
+    {
+      "name": "OASIS Common Alerting Protocol",
+      "version": "1.2",
+      "url": "https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.html",
+      "bounded_use": "separation_of_urgency_severity_and_certainty_without_conformance_claim"
+    },
+    {
+      "name": "PostgreSQL Row Security Policies",
+      "version": "18_current_at_access",
+      "url": "https://www.postgresql.org/docs/current/ddl-rowsecurity.html",
+      "bounded_use": "default_deny_RLS_and_role_bypass_risk"
+    },
+    {
+      "name": "PostgreSQL SELECT",
+      "version": "18_current_at_access",
+      "url": "https://www.postgresql.org/docs/current/sql-select.html",
+      "bounded_use": "SKIP_LOCKED_only_for_queue_like_worker_claims"
+    },
+    {
+      "name": "RFC 9457 Problem Details for HTTP APIs",
+      "version": "RFC_9457",
+      "url": "https://www.rfc-editor.org/rfc/rfc9457.html",
+      "bounded_use": "typed_bounded_extensible_API_errors"
+    },
+    {
+      "name": "OpenTelemetry Messaging Semantic Conventions",
+      "version": "1.44.0_development",
+      "url": "https://opentelemetry.io/docs/specs/semconv/messaging/",
+      "bounded_use": "pinned_low_cardinality_internal_message_observability_without_stability_claim"
+    },
+    {
+      "name": "OpenTelemetry Event Semantic Conventions",
+      "version": "1.44.0",
+      "url": "https://opentelemetry.io/docs/specs/semconv/general/events/",
+      "bounded_use": "occurrence_and_observation_time_separation"
+    }
+  ],
+  "owner_decisions": {
+    "record_path": "contracts/phase-4/p4-3-owner-decisions.json",
+    "record_sha256": "EFB2F6C265CBF2DDF9D29A86740C26CABC4B9A5A5F4D2D00AEF86EEE7D2C494C",
+    "D-P4.3-001": [
+      "A"
+    ],
+    "D-P4.3-002": [
+      "A"
+    ],
+    "D-P4.3-003": [
+      "A",
+      "B"
+    ],
+    "D-P4.3-004": [
+      "A"
+    ],
+    "D-P4.3-005": [
+      "A",
+      "C",
+      "D"
+    ],
+    "D-P4.3-006": [
+      "A",
+      "C"
+    ],
+    "D-P4.3-007": [
+      "A",
+      "C"
+    ]
+  },
+  "selected_composite_profile": "A/A/A+B/A/A+C+D/A+C/A+C",
+  "recommendations_are_decisions": false,
+  "owner_continue_or_silence_is_acceptance": false,
+  "start_authorization_package_path": "contracts/phase-4/p4-3-start-authorization-package.json",
+  "start_authorization_prepared": true,
+  "start_authorization_effective": false,
+  "frozen_progress": {
+    "phase4": {
+      "earned_points": 40,
+      "total_points": 100,
+      "percentage": "40.00%"
+    },
+    "p4_3": {
+      "earned_points": 0,
+      "total_points": 15,
+      "percentage": "0.0000%"
+    },
+    "technical_ceiling_before_owner_acceptance": {
+      "phase4_earned_points": 53,
+      "phase4_percentage": "53.00%",
+      "p4_3_earned_points": 13,
+      "p4_3_percentage": "86.6667%"
+    },
+    "after_exact_p4_3_acceptance": {
+      "phase4_earned_points": 55,
+      "phase4_percentage": "55.00%",
+      "p4_3_earned_points": 15,
+      "p4_3_percentage": "100.0000%"
+    },
+    "planning_points_awarded": 0,
+    "partial_item_credit": false
+  },
+  "explicitly_not_authorized": [
+    "P4_3_source_test_migration_API_worker_or_runtime_implementation",
+    "effective_P4_3_start_record_or_implementation_before_exact_start_package_acceptance",
+    "rule_activation_or_operational_alert_creation",
+    "notification_provider_dispatch_enforcement_or_autonomous_action",
+    "real_private_personal_biometric_vehicle_owner_case_watchlist_Government_or_police_data",
+    "cameras_ONVIF_Sentinel_streams_frames_images_recording_playback_or_media",
+    "models_datasets_checkpoints_artifacts_inference_training_accelerators_or_benchmarks",
+    "credentials_network_egress_external_lookup_or_integration",
+    "containers_Kubernetes_cloud_production_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "required_next_sequence": [
+    "one_non_effective_digest_bound_P4_3_START_R0_package_is_prepared",
+    "owner_separately_accepts_the_exact_P4_3_START_R0_SHA_256",
+    "only_then_may_bounded_local_generated_only_implementation_begin"
+  ]
+}

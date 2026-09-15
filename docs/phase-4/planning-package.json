@@ -1,0 +1,106 @@
+{
+  "schema_version": "hcam.phase4.planning-package.v1",
+  "package_id": "P4-PLANNING-R2",
+  "status": "owner_decisions_recorded_plan_acceptance_pending",
+  "created_at": "2026-09-03",
+  "supersedes": {
+    "package_id": "P4-PLANNING-R1",
+    "sha256": "E03286FEA45818221EE8E605E0623F93380680F85077080CFACAA4857B60F05D"
+  },
+  "base_commit": "ebb7566",
+  "branch": "codex/phase4-intelligence-alerts-planning",
+  "authority": "planning_and_documentation_only",
+  "implementation_authorized": false,
+  "remote_git_authorized": false,
+  "phase_progress": {
+    "earned_points": 3,
+    "total_points": 100,
+    "percentage": 3.0,
+    "change_percentage_points": 3.0
+  },
+  "recorded_decisions": {
+    "D-P4.0-001": ["A", "B"],
+    "D-P4.0-002": ["A", "C", "D"],
+    "D-P4.0-003": ["A"],
+    "D-P4.0-004": ["A", "B", "C"],
+    "D-P4.0-005": ["A", "B", "D"],
+    "D-P4.0-006": ["A"],
+    "D-P4.0-007": ["A"],
+    "D-P4.0-008": ["A"]
+  },
+  "pending_decisions": ["D-P4-PLAN-ACCEPTANCE"],
+  "prohibited_without_later_authorization": [
+    "application_or_test_implementation",
+    "migrations_apis_workers_or_dependencies",
+    "external_provider_or_network_access",
+    "credentials_or_secrets",
+    "government_police_private_or_biometric_data",
+    "cameras_streams_media_recording_or_inference",
+    "operational_alert_activation",
+    "dispatch_enforcement_or_autonomous_action",
+    "containers_kubernetes_or_deployment",
+    "push_pull_pr_merge_release_or_other_remote_git"
+  ],
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 39493,
+      "sha256": "8240B3C89A72A5D56AC5958F7EA9F796D2061B4BEC4CB9816B854CBBA8BA5667"
+    },
+    {
+      "path": "README.md",
+      "bytes": 18196,
+      "sha256": "993526DFB47831C16DD8B2ABBE279945FF9FD3C5847263038ACBF109EDC34B08"
+    },
+    {
+      "path": "docs/phase-0/roadmap.md",
+      "bytes": 4422,
+      "sha256": "28B8118C2C90C3D69CDAE63B7E0FA537544D36294BEE50BED5CE0D764CC64929"
+    },
+    {
+      "path": "docs/phase-4/README.md",
+      "bytes": 5508,
+      "sha256": "2D828C9C37E50CED150C0FC766A493092C5D9D08B678D6F6838993AC7974640B"
+    },
+    {
+      "path": "docs/phase-4/product-scope.md",
+      "bytes": 10501,
+      "sha256": "FF5083C1483D2867E7F4E870E766079AA7B33164DB1ED45F4B1E3C9FAF7C494F"
+    },
+    {
+      "path": "docs/phase-4/architecture.md",
+      "bytes": 20760,
+      "sha256": "3A44835ACB6AA6F012D663175720C6297D75DC200C0A894658034542B52FF0B1"
+    },
+    {
+      "path": "docs/phase-4/adaptive-correlation-research.md",
+      "bytes": 11866,
+      "sha256": "C9C5743115C5DA2A32AE6907CA752DCCD97E0F916B21D490793E957728EFECAD"
+    },
+    {
+      "path": "docs/phase-4/implementation-plan.md",
+      "bytes": 12908,
+      "sha256": "46AABF0AE5AC0E049CDC12D93831BF30DB01162F1B5EE3D9EDE1B392E9475EE9"
+    },
+    {
+      "path": "docs/phase-4/decision-packet.md",
+      "bytes": 9620,
+      "sha256": "3209BA8716B392B2F435A8F2A0638A36E4B49C139F226B0927D9EC2F220CCDE0"
+    },
+    {
+      "path": "docs/phase-4/owner-decisions.md",
+      "bytes": 6422,
+      "sha256": "B68A2A2F7E022219020E017E6C9ED0F756A3DCA20BBB7820C39B4B458D415911"
+    },
+    {
+      "path": "docs/phase-4/acceptance-checklist.md",
+      "bytes": 8739,
+      "sha256": "ADFAED0237C86601E22726E275274045CD551F56CCE622DDB493903847558BF1"
+    },
+    {
+      "path": "docs/phase-4/research-references.md",
+      "bytes": 11535,
+      "sha256": "F14521BA74611648CC68F491D6CDD32011A8F17FFE8D1FC7FE808F05896E0BF8"
+    }
+  ]
+}

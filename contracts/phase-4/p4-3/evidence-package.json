@@ -1,0 +1,278 @@
+{
+  "schema_version": "hcam.phase4.p4_3.evidence-package.v1",
+  "package_id": "P4.3-EVIDENCE-PACKAGE-R0",
+  "base_checkpoint": "ce42ee2822cc5be12cc46129c814cd99b799a552",
+  "branch": "codex/phase4-alert-lifecycle-orchestration",
+  "start_authorization_package_sha256": "FAFB505E5356808B083CE0EB42D1B5B63CF5E40556D2F077E0EF5B6A9783AFE1",
+  "legacy_analytics_migration_amendment": {
+    "decision_id": "D-P4.3-LEGACY-ANALYTICS-MIGRATION-TEST-AMENDMENT",
+    "owner_bound_pre_edit_worktree_sha256": "DF606D93E70EAB71316AA60E3F4079B30BEAA7BF91852834EA4D5E7ACB377006",
+    "normalized_pre_edit_git_sha256": "C6956211B51D0BC065D4279ED526BA4F7BE67BA668AE211FFB66F21EBB244882",
+    "pre_edit_git_blob": "74a004a065f53bceaf0a4d61e029b6dafe598bd1"
+  },
+  "component_digest_algorithm": "SHA-256",
+  "component_digest_mode": "utf8_text_normalized_lf",
+  "components": [
+    {
+      "path": ".github/workflows/python-ci.yml",
+      "sha256": "D0148943E224DFAB80DE017EAFF28E912CAE2348345970BE40F05A07A5DF5736"
+    },
+    {
+      "path": "app/hcam/database.py",
+      "sha256": "FE415AD4F53473A0206CB00BD9737BD3A8B222E3CCD76752763BF2CFADC44462"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/__init__.py",
+      "sha256": "231D029EE2C43F9225B1071D52F8329FA21661051C299A25078016D0423A8824"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/adapters.py",
+      "sha256": "EB29AB9B49B099B6E7456C18F433B531D0FCC233A3763EB9F917EFC63DC8D029"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/authority.py",
+      "sha256": "492F74CF3A8280CA9AFDDCA6CC2C041BA639CB9E2A616D6CD2E0D219A98B3053"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/bounds.py",
+      "sha256": "6AFE01F14369583404EC720B092C38FAD8562787F1AC0F33B1B3266AEED306C5"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/budgets.py",
+      "sha256": "118D871CFFE8F8779AB3443A75D635DD268A0A613045BCCFFF8EE0C4504FDCC3"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/canonical.py",
+      "sha256": "6E74D17466B24CF7276F4577473F2AF353BEAA26FB443F6A245C6133619D52D5"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/contracts.py",
+      "sha256": "E7290E5690481B8C528152C0DF9151031278DC4ED6B04EE75ADA028B429E4533"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/identity.py",
+      "sha256": "DEA7695898FE769685FFB78D54A86598614E1B27F0935DC2CBB90FA30D52014B"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/lifecycle.py",
+      "sha256": "89C6A1F714DDB907C96BDA191716370EDC2AB666D7125C78430B934DFBDE5251"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/metrics.py",
+      "sha256": "5FE5DF5DF449ACBBECE6DC33CE4FC0AFEEE9D14A5F1EB855D313511A3E1C9154"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/persistence.py",
+      "sha256": "6FCB422AE305DACE881BAB6234CB3A5B1ED0F96152E6CD74008E0E8AF458E4D7"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/review.py",
+      "sha256": "F22F88B1B0277814A9A93B8E41B5415D1A71A051AD2E2306EADEDFB7E2CE65CB"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/routes.py",
+      "sha256": "15BD5175BCE8B6D70685A80A72C9751C1A6A64521C5C867208E7DCCF8691848B"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/runtime.py",
+      "sha256": "7426F90D309B596E4C952B0B71718145ABC67AEFCBDAF490DCA0ABBDDD04DE75"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/service.py",
+      "sha256": "29303CD1173D6B856EF574C1EABF60C7DCFD14BF4B8CFF92DF1077DC1EDFF5AC"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/timers.py",
+      "sha256": "2917B9E56622CF2C824FF14174F11A05AC83A59114C5771A61A4FCC5BD075A46"
+    },
+    {
+      "path": "app/hcam/intelligence/models.py",
+      "sha256": "C14652341850E191A4CEECA7938386048BA10D16D6A2AD98879A162CEE2240B5"
+    },
+    {
+      "path": "app/hcam/intelligence/routes.py",
+      "sha256": "EBE6236E30621AD55EF767E25B85AC42A363893FA0E801E3C88F3B3D580451EC"
+    },
+    {
+      "path": "app/hcam/intelligence/schemas.py",
+      "sha256": "F6B4885016A7C3FC663A990E00B8E1CDE08D6A8A26E29CD3EB1DB929E62D4E1F"
+    },
+    {
+      "path": "app/hcam/main.py",
+      "sha256": "99B83E2187F2D993515E2838FF5C0AF84C12F369DE016EBD478026121E6919F5"
+    },
+    {
+      "path": "app/hcam/settings.py",
+      "sha256": "096025A74C03BDED980E1573E1ED36C355F659DECC7BBDC454B896720566ACA9"
+    },
+    {
+      "path": "contracts/phase-4/database.json",
+      "sha256": "7F12292510C29BCBF627BF4AB19C2BACBDFE699146F943C879DF3FC80C95A536"
+    },
+    {
+      "path": "contracts/phase-4/intelligence-contracts.json",
+      "sha256": "8025B606EC071109BFF017C8730505760DC8110E195C1B35AC1CE76D1386EA53"
+    },
+    {
+      "path": "contracts/phase-4/openapi.json",
+      "sha256": "A0BAA367BB67E5E355B7AD2FA5F87EBE109FCA1D8FB3509E6338B1607EA7B824"
+    },
+    {
+      "path": "contracts/phase-4/p4-3-start-authorization.json",
+      "sha256": "3698E6367EA9401CA620B67A8994F36DC25C3D531852E8616689469B19ECB9DC"
+    },
+    {
+      "path": "contracts/phase-4/p4-3/alert-contracts.json",
+      "sha256": "02B17D00690A934052037723B27564A4E86FA9A9A5B9E5687A1E031096E86FE2"
+    },
+    {
+      "path": "contracts/phase-4/p4-3/database.json",
+      "sha256": "A3B90F208FF20FBC1AD7299CE548419AFF96DFE7844B0F257D2C7BEAEF75CEEF"
+    },
+    {
+      "path": "contracts/phase-4/p4-3/evidence.json",
+      "sha256": "9AE6E773F492FB82E1406F983B2B1A9F95B431D2D50DCC44F9A157DA20635962"
+    },
+    {
+      "path": "contracts/phase-4/p4-3/fixtures/generated-alert-proposals-v1.json",
+      "sha256": "710EBD11DF46C5EDD797AD16F7C12F93B4564E7A16675A672DB6FC1BA9F982C1"
+    },
+    {
+      "path": "contracts/phase-4/p4-3/fixtures/generated-budget-cases-v1.json",
+      "sha256": "9CFF9D2332973816C5A1B812A60F936C2A8F0F5CA58E3483F6EA10D16A92F862"
+    },
+    {
+      "path": "contracts/phase-4/p4-3/fixtures/generated-lab-ingress-cases-v1.json",
+      "sha256": "94C173254B7BC99D9C0C2F12125DCFEBDD06AD97FE06E54C57DE777FEF189496"
+    },
+    {
+      "path": "contracts/phase-4/p4-3/fixtures/generated-lifecycle-cases-v1.json",
+      "sha256": "B3DBD765A0FE998FE020B1C5186D5B891FACF58604422D1FA7EE4F46D94DC63A"
+    },
+    {
+      "path": "contracts/phase-4/p4-3/fixtures/generated-quorum-cases-v1.json",
+      "sha256": "39688045E9E6BF8F60BCC9D75AE3CFE15FEAF3DC8CE3654348DBDBE1D1093073"
+    },
+    {
+      "path": "contracts/phase-4/p4-3/fixtures/generated-system-health-cases-v1.json",
+      "sha256": "6AE31FAA7AFA98F0968FBD9E6D656C7B2143FE0FED2503B14CFF214756EDEEBA"
+    },
+    {
+      "path": "contracts/phase-4/p4-3/fixtures/generated-timer-cases-v1.json",
+      "sha256": "12EAD1492711660CD751370B628F7A4380E368F5B65EA027BAC48B994E8C63D2"
+    },
+    {
+      "path": "contracts/phase-4/p4-3/fixtures/generated-workflow-adapter-cases-v1.json",
+      "sha256": "B77BA3ED94C0C59F76A869BCFEF72B4B2FC20AD316F271F8A6ECFD95DFB1D7A9"
+    },
+    {
+      "path": "contracts/phase-4/p4-3/openapi.json",
+      "sha256": "9BD854393E27121C87AB77D16103E00090EE5F8F693298D5DB95FBE31A4A49EA"
+    },
+    {
+      "path": "docs/phase-4/p4-3-evidence-review.md",
+      "sha256": "ED4FE6EEF57816C39F678DE4512C739624DB84D3505D239D8EB66463442CE0D1"
+    },
+    {
+      "path": "docs/phase-4/status.md",
+      "sha256": "B056B366527C6D4F6810BCB7A9A36D81740CAA279B53B20C305852282B4DD271"
+    },
+    {
+      "path": "migrations/versions/0015_alert_lifecycle_orchestration.py",
+      "sha256": "0745B008CFC19304FABCBAF5ECC3DA61DA6973DA7CD080FD676647EF56734FE4"
+    },
+    {
+      "path": "tests/test_analytics_assignment_migration.py",
+      "sha256": "EF292CF2DEE14D2A511A2010747F49C9F089897FEA699388DEB9FACA15E8A0C5"
+    },
+    {
+      "path": "tests/test_phase40_migration.py",
+      "sha256": "340F1EF413094FB5935FC31C7EA43AD07BB7F303FFE9955ADB85C06494A4FEBB"
+    },
+    {
+      "path": "tests/test_phase41_migration.py",
+      "sha256": "C199058DFC92C916F22353C94E7973F0D40B54C33F26479AC5AC7ECDEA3632C5"
+    },
+    {
+      "path": "tests/test_phase42_migration.py",
+      "sha256": "7AE5B99DD5F13165C0DE6C6C2C1178BF00A542EAB704C16066172557C457B3A3"
+    },
+    {
+      "path": "tests/test_phase42_readiness.py",
+      "sha256": "4FE3C903DAAACB060E08D954DB522BB7818E34CB613AF6068BFF22608E3CBF5B"
+    },
+    {
+      "path": "tests/test_phase43_adapters.py",
+      "sha256": "D6B61FF8DC1BCCBDFCBCDF26733D98D8A7CF236C77EEC1E97347F0B058449273"
+    },
+    {
+      "path": "tests/test_phase43_api.py",
+      "sha256": "2E9180C03545D9D2EDB6C1A46EFF6854F45BF15FAAA61D13AD4B11F64DBAD30D"
+    },
+    {
+      "path": "tests/test_phase43_authority.py",
+      "sha256": "D81E730B3EDC3D8D9C0AFD1DCC8DD3484C21940B1885A7C961A36C1C1E18F95D"
+    },
+    {
+      "path": "tests/test_phase43_budgets.py",
+      "sha256": "DC61707784FCA6C24EAD35C070AA459ED2B5B79648D87B223569A72419B91CDE"
+    },
+    {
+      "path": "tests/test_phase43_canonical.py",
+      "sha256": "EAD11BE6A71B98D4519BEC74D3C7289356CE9FE0B97871E421C9E99DF38FF7EB"
+    },
+    {
+      "path": "tests/test_phase43_contracts.py",
+      "sha256": "E26C10F1ECAF7D975021D5199E2123F74B1D66A1DDE9A1F62ADDED1040061B14"
+    },
+    {
+      "path": "tests/test_phase43_identity.py",
+      "sha256": "FABA0F4604AC4677803FD04EEA68759929D4525F52BD9003366538DEE20F0E17"
+    },
+    {
+      "path": "tests/test_phase43_lifecycle.py",
+      "sha256": "58CAACAFB368BA7EC4D0C05F8CE989BB11637168AD76B55595C88417F9A53884"
+    },
+    {
+      "path": "tests/test_phase43_migration.py",
+      "sha256": "CFA338A619433A3136F7CAD0F005C7337034699EF5A023737BEE29ED0DDD3561"
+    },
+    {
+      "path": "tests/test_phase43_persistence.py",
+      "sha256": "1510272C718E532113D94E9CC881CD1484298D783FA67A6C1F63CA566AAB353C"
+    },
+    {
+      "path": "tests/test_phase43_postgres.py",
+      "sha256": "8552630D731285B5160E0782B214BB6077E22B5C4194A43C3AE60C0EDBAA7AB4"
+    },
+    {
+      "path": "tests/test_phase43_quorum.py",
+      "sha256": "E44580105A36E34B6898174B0FDA9FFEE5AC66DB5F0A6A81B4014D7B116568CB"
+    },
+    {
+      "path": "tests/test_phase43_readiness.py",
+      "sha256": "5D350C9C01B9969515C376BD654407E1E42D2A7CF448C51314069F9B06FCB27A"
+    },
+    {
+      "path": "tests/test_phase43_security.py",
+      "sha256": "043B73D3D0AD8FF25CA3F05F569748D4D45A6745DA1963CAB503715FB7E519BC"
+    },
+    {
+      "path": "tests/test_phase43_timers.py",
+      "sha256": "E859E7C90560A9D2A5E96EA99B3E182B0BADEADF5FB89583C2FE3A37BC66D121"
+    },
+    {
+      "path": "tools/phase42_readiness.py",
+      "sha256": "5B60F8037091F458F09018986D05B6EF9DAE75A169F822546277FE503E3B69CE"
+    },
+    {
+      "path": "tools/phase43_generated_alerts.py",
+      "sha256": "5687D4346ABB2AF9D3FD81F03E05019D4D5D21CF72744386D23C0FAF399F9038"
+    },
+    {
+      "path": "tools/phase43_readiness.py",
+      "sha256": "226D6043E394FF070EA8038C719A92B6A5679EC5CE741E35D91B819A145543C2"
+    }
+  ],
+  "content_digest": "8797AFFDA2A9CA2F74E78F612F0E4A6B58BAF3394ABA01685B0C64842C36DEE4"
+}

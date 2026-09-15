@@ -1,0 +1,37 @@
+{
+  "schema_version": "hcam.phase4.p4_1.acceptance.v1",
+  "decision_id": "D-P4.1-ACCEPTANCE",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-04",
+  "accepted_branch": "codex/phase4-correlation-foundation",
+  "accepted_implementation_commit": "ad44f3e3af292e5a134b45566fc16f09884861a2",
+  "evidence_package": {
+    "package_id": "P4.1-EVIDENCE-PACKAGE-R0",
+    "path": "contracts/phase-4/p4-1/evidence-package.json",
+    "sha256": "D6302447DCF7C1ADB769E11FD36ACE1519552E0F982A23EDA86D64EC73351805",
+    "canonical_component_digest": "C3AD198C6EF8F9C49970B83F2B383F1C4F8D524C6085D115F392B54D2F348379"
+  },
+  "accepted_progress": {
+    "phase_4_points": 25,
+    "phase_4_total_points": 100,
+    "phase_4_percent": 25.0,
+    "p4_1_points": 15,
+    "p4_1_total_points": 15,
+    "p4_1_percent": 100.0
+  },
+  "scope_effect": "Completes P4.1 only under its generated-only implementation evidence, PostgreSQL/PostGIS validation, regression results, and documented limitations.",
+  "continuing_prohibitions": [
+    "P4_2_or_later_implementation",
+    "models_datasets_artifacts_inference_or_optional_model_lane_execution",
+    "cameras_ONVIF_Sentinel_streams_frames_images_recording_or_media",
+    "external_providers_credentials_network_egress_or_live_simulators",
+    "Government_police_private_personal_biometric_vehicle_owner_case_or_watchlist_data",
+    "rule_activation_operational_alerts_notifications_dispatch_enforcement_or_autonomous_action",
+    "Kubernetes_cloud_pilot_production_release_or_deployment",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "owner_statement_sha256": "F37B679A1C6ABD02DE9F1C3B8DC009FFB36180C75C0AE285BD87537FD16CDA0D",
+  "owner_statement": "D-P4.1-ACCEPTANCE: I, mayank-admin, accept P4.1 evidence package P4.1-EVIDENCE-PACKAGE-R0 with SHA-256 D6302447DCF7C1ADB769E11FD36ACE1519552E0F982A23EDA86D64EC73351805 and canonical component digest C3AD198C6EF8F9C49970B83F2B383F1C4F8D524C6085D115F392B54D2F348379, including its generated-only implementation evidence, PostgreSQL/PostGIS validation, regression results, and documented limitations. This acceptance completes P4.1 only. It does not authorize P4.2, models, datasets, artifacts, inference, optional model lanes, cameras or media, external providers, Government or private data, rule activation, operational alerts, dispatch or enforcement, Kubernetes or deployment, or remote Git."
+}

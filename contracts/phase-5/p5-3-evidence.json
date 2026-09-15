@@ -1,0 +1,154 @@
+{
+  "schema_version": "hcam.phase5.p5_3.evidence.v1",
+  "evidence_id": "P5.3-EVIDENCE-R0",
+  "status": "technical_complete_owner_acceptance_pending",
+  "generated_on": "2026-09-08",
+  "technical_commit": "9d1604a62e4823644064e26d3b11771f8ae526fa",
+  "start_package_sha256": "03D87FD50A6A54619F2A7065809A88DA04BED95B2159B7EE178C41A03A1BDCCA",
+  "bound_input_digest": "8B6A77A935B30751B851F04FB4B5A8273CC1D01A7333F1A33A54E8FF6BDC80FB",
+  "validation": {
+    "schema_version": "hcam.phase5.p5_3.validation_summary.v1",
+    "generated_on": "2026-09-08",
+    "generated_only": true,
+    "toolchain": {
+      "node": "24.18.0",
+      "pnpm": "11.21.0"
+    },
+    "workspace": {
+      "applications": 8,
+      "shared_packages": 22,
+      "dependency_edges": 73
+    },
+    "typecheck": "pass",
+    "lint": {
+      "result": "pass",
+      "warnings": 0
+    },
+    "formatting": {
+      "p5_3_scope": "pass",
+      "repository_wide": "baseline_warning",
+      "accepted_historical_files_modified": false,
+      "historical_generated_json_outside_p5_3": [
+        "frontend/evidence/dependency-audit.json",
+        "frontend/evidence/p5-2-dependency-audit.json",
+        "frontend/evidence/p5-2-source-manifest.json",
+        "frontend/evidence/source-manifest.json",
+        "frontend/evidence/validation-summary.json"
+      ]
+    },
+    "unit_and_component": {
+      "files_passed": 53,
+      "tests_passed": 123,
+      "tests_failed": 0,
+      "tests_skipped": 0,
+      "result": "pass"
+    },
+    "coverage": {
+      "statements_percent": 98.14,
+      "branches_percent": 97.03,
+      "functions_percent": 97.37,
+      "lines_percent": 98.56,
+      "critical_p5_3_branch_floor_percent": 95,
+      "critical_p5_3_branch_floor_met": true,
+      "result": "pass"
+    },
+    "browser": {
+      "system_browser": "Microsoft Edge",
+      "projects": [
+        "desktop",
+        "mobile"
+      ],
+      "passed": 27,
+      "skipped_by_project_design": 1,
+      "unexpected": 0,
+      "flaky": 0,
+      "loopback_only": true,
+      "axe_violations": 0,
+      "result": "pass"
+    },
+    "builds": {
+      "applications": 8,
+      "total_bytes": 6087117,
+      "source_maps": 0,
+      "operations_initial_javascript_bytes": 278555,
+      "operations_deferred_hls_javascript_bytes": 575516,
+      "operations_css_bytes": 22470,
+      "result": "pass"
+    },
+    "storybook": {
+      "stories": 14,
+      "build": "pass",
+      "telemetry": "disabled"
+    },
+    "synthetic_media": {
+      "profiles": [
+        "C1",
+        "C4",
+        "C10"
+      ],
+      "streams": 10,
+      "renditions": 30,
+      "assets": 480,
+      "bytes": 238578298,
+      "source": "lavfi_testsrc2_only",
+      "audio": false,
+      "binary_retention": "removed_after_evidence",
+      "result": "pass"
+    },
+    "visual_review": {
+      "desktop": "pass",
+      "mobile": "pass",
+      "mobile_navigation": "pass",
+      "blank_admitted_stream": false,
+      "overlap_or_horizontal_clipping": false,
+      "result": "pass"
+    },
+    "dependency_and_supply_chain": {
+      "hls_js": "1.7.2",
+      "lockfile_packages_before": 521,
+      "lockfile_packages_after": 522,
+      "lockfile_packages_removed": 0,
+      "audit_findings_total": 0,
+      "sbom_components": 427,
+      "source_manifest_files": 263,
+      "source_manifest_sha256": "1F2D45FD473A77E5D5911862E6A1E6D90983B0722432C6A7526F75D2324015FC",
+      "result": "pass"
+    },
+    "repository_regression": {
+      "execution_mode": "complete_local_repository_suite",
+      "tests_passed": 4232,
+      "tests_failed": 0,
+      "tests_skipped": 16,
+      "subtests_passed": 119,
+      "configured_postgresql_postgis": false,
+      "expected_skip_reason": "HCAM_POSTGRES_TEST_URL is not configured",
+      "warnings": 1,
+      "network_or_remote_git_used": false,
+      "result": "pass"
+    },
+    "result": "pass"
+  },
+  "environment": {
+    "generated_only": true,
+    "loopback_browser_only": true,
+    "real_playback_service_provider_camera_media_or_data_used": false,
+    "backend_route_or_migration_added": false,
+    "model_or_inference_used": false,
+    "container_or_kubernetes_used": false,
+    "remote_git_used": false
+  },
+  "limitations": [
+    "generated_only_non_operational_camera_and_live_workspace",
+    "twenty_missing_producers_remain_blocked_or_generated_only",
+    "WHEP_is_default_off_and_validated_only_through_generated_contracts",
+    "no_real_camera_codec_transport_latency_or_capacity_claim",
+    "no_manual_screen_reader_or_separately_witnessed_200_percent_zoom_claim",
+    "no_configured_PostgreSQL_PostGIS_integration_database",
+    "repository_formatter_has_five_unchanged_historical_generated_JSON_warnings",
+    "P5_4_deployment_and_remote_Git_remain_closed"
+  ],
+  "product_progress_before_owner_acceptance": {
+    "P5_3": "14.5/16 (90.6250%)",
+    "Phase_5": "46.5/100 (46.5000%)"
+  }
+}

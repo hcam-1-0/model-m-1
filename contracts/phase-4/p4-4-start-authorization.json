@@ -1,0 +1,77 @@
+{
+  "schema_version": "hcam.phase4.p4_4.start-authorization.v1",
+  "decision_id": "D-P4.4-START",
+  "status": "authorized",
+  "effective": true,
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-09-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "implementation_branch": "codex/phase4-reference-integrations",
+  "implementation_base_commit": "1907cee9f7b745959dacb9cbacc17ffdf3f60954",
+  "accepted_package": {
+    "package_id": "P4.4-START-R0",
+    "path": "contracts/phase-4/p4-4-start-authorization-package.json",
+    "sha256": "FBEB48A115ED952945045E8945DE7E27E518915E85605A3247ADBAEA701FDF34"
+  },
+  "accepted_reconciled_planning": {
+    "package_id": "P4.4-PLANNING-R1",
+    "path": "contracts/phase-4/p4-4-planning-r1-package.json",
+    "sha256": "42C37E17C73C4708FF3FB6B41532085995C514BA251BAC545DEF2E19632A0205",
+    "acceptance_path": "contracts/phase-4/p4-4-planning-r1-acceptance.json",
+    "acceptance_sha256": "2AF9E45AA0B98B7AB59108AD3685487093A31E8AFA458A9E2D2F2F3125637547"
+  },
+  "authorized_scope": [
+    "exact_allowlisted_local_source_test_migration_contract_documentation_and_evidence_changes",
+    "generated_only_static_in_process_provider_and_generated_workflow_executor_simulation",
+    "default_off_production_forbidden_manual_query_and_hypothesis_enrichment_lanes",
+    "bounded_catalogue_query_job_matching_review_governance_audit_outbox_and_observability_implementation",
+    "SQLite_and_optional_already_available_local_PostgreSQL_PostGIS_generated_only_validation",
+    "at_most_eight_bounded_in_scope_remediation_and_reseal_cycles",
+    "local_checkpoint_commits_without_push"
+  ],
+  "disabled_capability_surfaces": [
+    "database_envelope_secret_provider_backend",
+    "authentication_profile_extension_loader",
+    "loopback_HTTP_TLS_provider_transport",
+    "external_workflow_dispatch_engine"
+  ],
+  "runtime_boundary": {
+    "generated_only": true,
+    "operational": false,
+    "default_off": true,
+    "production_forbidden": true,
+    "provider_transport": "in_process_only",
+    "network": false,
+    "real_credentials_or_secrets": false,
+    "raw_provider_response_retention": false,
+    "identity_state": "not_established",
+    "human_review": "mandatory",
+    "operational_action": false
+  },
+  "frozen_progress_at_start": {
+    "phase4_earned_points": 55,
+    "phase4_total_points": 100,
+    "phase4_percentage": "55.00%",
+    "phase4_change_percentage_points": "+0.00",
+    "p4_4_earned_points": 0,
+    "p4_4_total_points": 15,
+    "p4_4_percentage": "0.0000%",
+    "p4_4_change_percentage_points": "+0.0000"
+  },
+  "explicitly_not_authorized": [
+    "real_provider_connection_catalogue_query_matching_or_interoperability_validation",
+    "credential_secret_token_certificate_key_database_secret_backend_or_authentication_extension_use",
+    "external_workflow_engine_dependency_connection_credential_callback_container_or_deployment",
+    "provider_or_Sentinel_network_DNS_redirect_proxy_callback_or_socket_access",
+    "Sentinel_camera_ONVIF_stream_frame_image_recording_playback_or_media_access",
+    "real_private_personal_biometric_vehicle_owner_case_watchlist_Government_police_or_provider_data",
+    "models_datasets_checkpoints_artifacts_embeddings_inference_training_accelerators_or_benchmarks",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "container_Kubernetes_cloud_pilot_production_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "owner_statement_normalization": "UTF_8_LF_without_terminal_newline",
+  "owner_statement_utf8_length": 533,
+  "owner_statement_sha256": "62BB7CCDA3955556EBB748BF05DC4CD5DCB52917167E4D9FAB36345A14DE2505",
+  "owner_statement": "D-P4.4-START: I, mayank-admin, accept P4.4 start package P4.4-START-R0 with SHA-256 FBEB48A115ED952945045E8945DE7E27E518915E85605A3247ADBAEA701FDF34 and authorize its exact bounded local generated-only implementation scope. This does not authorize real providers, credentials or secrets, authentication extension loading, external workflow engines, provider or Sentinel network access, Government or private data, cameras or media, models or datasets, operational alerts or actions, containers, Kubernetes, deployment, or remote Git."
+}

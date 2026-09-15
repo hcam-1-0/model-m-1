@@ -1,0 +1,138 @@
+{
+  "schema_version": "hcam.phase5.p5_6.owner_decisions.v1",
+  "record_id": "P5.6-OWNER-DECISIONS-R0",
+  "status": "owner_selected_for_reconciliation",
+  "effective_for_reconciliation": true,
+  "implementation_effective": false,
+  "selected_by": "mayank-admin",
+  "selected_on": "2026-09-10",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "98692d83bc307307c4ae19119888c18a0c0fe7e5",
+  "source_statement": {
+    "normalized_statement": "D-P5.6-001: A D-P5.6-002: A D-P5.6-003: A D-P5.6-004: A D-P5.6-005: A D-P5.6-006: A D-P5.6-007: A D-P5.6-008: A D-P5.6-009: A D-P5.6-010: A D-P5.6-011: A D-P5.6-012: A",
+    "sha256": "F721E4C48F274BB3DB422293135325AB0C2C78A3C3B4DD64EDD221442A9CDE25",
+    "normalization": "Paragraph whitespace collapsed to one ASCII space; UTF-8 without BOM; no terminal newline."
+  },
+  "selection_profile": "A/A/A/A/A/A/A/A/A/A/A/A",
+  "selection_count": 12,
+  "selections": [
+    {
+      "id": "D-P5.6-001",
+      "selected": "A",
+      "resolved_meaning": "Keep Command Center primary and use three connected specialist centers: Admin Center for governance and change workflows, Security Center for security and assurance, and Operations Center preserving P5.3 camera/live surfaces plus a separate Platform Operations domain."
+    },
+    {
+      "id": "D-P5.6-002",
+      "selected": "A",
+      "resolved_meaning": "Use server-authoritative RBAC refined by constrained ABAC with default deny, while PostgreSQL row security independently enforces organization and department data scope."
+    },
+    {
+      "id": "D-P5.6-003",
+      "selected": "A",
+      "resolved_meaning": "Use typed draft, validation, approval, scheduling, effect, and supersession stages with exact revisions, comparison, impact checks, strong ETags, idempotency, separation of duty, executor receipts, and append-only rollback by a new revision; P5.6 remains non-effective."
+    },
+    {
+      "id": "D-P5.6-004",
+      "selected": "A",
+      "resolved_meaning": "Define the future break-glass contract and its strong-authentication, bounded-scope, reason, expiry, alerting, audit, exception, and after-action-review requirements, but keep break-glass unavailable with no bypass in P5.6."
+    },
+    {
+      "id": "D-P5.6-005",
+      "selected": "A",
+      "resolved_meaning": "Keep operational signals, security events, audit records, evidence references, and administrative events in separate authoritative schemas, stores, authorization and retention lanes, joined only by bounded references and confirmed at source."
+    },
+    {
+      "id": "D-P5.6-006",
+      "selected": "A",
+      "resolved_meaning": "Reuse accepted P4.6 health, queue, SLO, error-budget, degradation, recovery, capacity, and supply-chain projections with explicit source, freshness, completeness, unknown, unset, policy-revision, and limitation states; generated evidence is not a production target or claim."
+    },
+    {
+      "id": "D-P5.6-007",
+      "selected": "A",
+      "resolved_meaning": "Expose only opaque secret references and provider-governance metadata, including destination-policy reference, rotation observation, certificate metadata, revocation, freshness, and access-review state; never reveal, resolve, copy, test, rotate, or transmit a secret in the browser."
+    },
+    {
+      "id": "D-P5.6-008",
+      "selected": "A",
+      "resolved_meaning": "Represent features, configuration, profiles, model lanes, and kill switches as typed revisioned proposals with validated defaults and overrides, scope, provenance, expiry, dependencies, impact, approval, and authoritative effective state; provide no generic editor or direct toggle."
+    },
+    {
+      "id": "D-P5.6-009",
+      "selected": "A",
+      "resolved_meaning": "Use non-operative retention, recovery, and compliance policy previews with jurisdiction and policy references, unresolved applicability, targets, evidence, exceptions, expiry, drill history, generated effects, residuals, limitations, and prerequisites; do not choose policy or execute any operation."
+    },
+    {
+      "id": "D-P5.6-010",
+      "selected": "A",
+      "resolved_meaning": "Use read-only SBOM, license, vulnerability, and provenance projections bound to exact release, subject, digest, source, observation time, freshness, coverage, applicability, exception, verification, and limitations without making unsupported conformance, license, or security claims."
+    },
+    {
+      "id": "D-P5.6-011",
+      "selected": "A",
+      "resolved_meaning": "Use shared dynamic low-resource, enhanced-workstation, control-room, GPU-lab, server, and Kubernetes profiles with non-effective topology projections; profiles may change presentation capacity only and never authority, scope, truth, action eligibility, accessibility, or security policy."
+    },
+    {
+      "id": "D-P5.6-012",
+      "selected": "A",
+      "resolved_meaning": "Retain the existing locked dependencies and require exactly 1,120 generated contract cases, C1/C10/C50 workloads, unit, component, all-portal build, loopback browser, accessibility, scope, concurrency, redaction, overclaim, profile-equivalence, supply-chain, and complete repository validation."
+    }
+  ],
+  "precedence_rules": [
+    "Command_Center_remains_primary_and_Admin_Security_Operations_are_connected_specialist_centers",
+    "server_authority_default_deny_and_PostgreSQL_RLS_override_client_capability_or_navigation_state",
+    "typed_revisioned_change_proposals_and_separation_of_duty_override_direct_mutation_or_self_approval",
+    "break_glass_is_documented_but_unavailable_and_creates_no_bypass",
+    "operational_security_audit_evidence_and_administrative_lanes_remain_distinct",
+    "opaque_secret_references_never_authorize_secret_resolution_reveal_test_rotation_or_browser_entry",
+    "health_security_compliance_integrity_and_readiness_states_require_source_freshness_completeness_and_limitations",
+    "retention_recovery_compliance_backup_restore_and_topology_views_are_nonoperative_projections",
+    "resource_profiles_change_presentation_capacity_only_and_never_authority_scope_truth_safety_accessibility_or_security",
+    "existing_locked_dependencies_and_generated_only_validation_remain_the_baseline"
+  ],
+  "progress": {
+    "owner_decisions": {
+      "earned": 12,
+      "total": 12,
+      "percent": 100.0,
+      "change_percentage_points": 100.0,
+      "awards_product_points": false
+    },
+    "P5_6_planning": {
+      "earned": 8,
+      "total": 8,
+      "percent": 100.0,
+      "change_percentage_points": 0.0,
+      "awards_product_points": false
+    },
+    "P5_6_product": {
+      "earned": 0,
+      "total": 10,
+      "percent": 0.0,
+      "change_percentage_points": 0.0
+    },
+    "phase_5_product": {
+      "earned": 78,
+      "total": 100,
+      "percent": 78.0,
+      "change_percentage_points": 0.0
+    }
+  },
+  "continuing_prohibitions": [
+    "planning_acceptance_by_implication",
+    "start_authorization_by_implication",
+    "product_or_test_implementation",
+    "source_import",
+    "dependency_resolution_installation_or_lockfile_change",
+    "backend_route_or_migration",
+    "frontend_browser_or_map_runtime",
+    "credential_secret_resolution_or_administrative_mutation",
+    "real_telemetry_scanner_backup_restore_or_recovery_execution",
+    "provider_network_camera_media_or_real_data_access",
+    "model_dataset_artifact_or_inference",
+    "operational_alert_notification_dispatch_enforcement_or_autonomous_action",
+    "container_Kubernetes_execution_or_deployment",
+    "P5_7",
+    "additional_commit_without_new_authority",
+    "remote_Git"
+  ]
+}

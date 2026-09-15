@@ -1,0 +1,211 @@
+{
+  "schema_version": "hcam.phase5.p5_2.validation_summary.v1",
+  "generated_on": "2026-09-08",
+  "generated_only": true,
+  "toolchain": {
+    "node": "24.18.0",
+    "pnpm": "11.21.0"
+  },
+  "workspace": {
+    "applications": 8,
+    "shared_packages": 19,
+    "dependency_edges": 62
+  },
+  "typecheck": "pass",
+  "lint": {
+    "result": "pass",
+    "warnings": 0
+  },
+  "formatting": "pass",
+  "unit_and_component": {
+    "files_passed": 27,
+    "tests_passed": 68,
+    "tests_failed": 0,
+    "tests_skipped": 0,
+    "result": "pass"
+  },
+  "coverage": {
+    "statements_percent": 98.9,
+    "branches_percent": 97.49,
+    "functions_percent": 99.35,
+    "lines_percent": 99.49,
+    "critical_contract_branch_coverage": [
+      {
+        "file": "auth-session/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "capabilities/src/index.ts",
+        "branches_percent": 96.55
+      },
+      {
+        "file": "command-domain/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "command-domain/src/projections.ts",
+        "branches_percent": 95.83
+      },
+      {
+        "file": "command-domain/src/state.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "contracts/src/index.ts",
+        "branches_percent": 98.78
+      },
+      {
+        "file": "gis-contracts/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-domain/src/admission.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-domain/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-domain/src/layers.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-domain/src/selection.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-domain/src/state.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-domain/src/time.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-renderers/src/deck-adapter.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-renderers/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-renderers/src/maplibre-adapter.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-renderers/src/no-map-adapter.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-renderers/src/provider-policy.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-renderers/src/style-policy.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "playback-contracts/src/index.ts",
+        "branches_percent": 100
+      }
+    ],
+    "result": "pass"
+  },
+  "browser": {
+    "system_browser": "Microsoft Edge",
+    "projects": ["desktop", "mobile"],
+    "passed": 15,
+    "skipped_by_project_design": 1,
+    "unexpected": 0,
+    "flaky": 0,
+    "loopback_only": true,
+    "axe_violations": 0,
+    "result": "pass"
+  },
+  "builds": {
+    "applications": [
+      {
+        "app": "admin-center",
+        "files": 3,
+        "bytes": 310487,
+        "source_maps": 0
+      },
+      {
+        "app": "command-center",
+        "files": 3,
+        "bytes": 1314278,
+        "source_maps": 0
+      },
+      {
+        "app": "evidence-center",
+        "files": 3,
+        "bytes": 310492,
+        "source_maps": 0
+      },
+      {
+        "app": "gis-center",
+        "files": 11,
+        "bytes": 2336782,
+        "source_maps": 0
+      },
+      {
+        "app": "intelligence-center",
+        "files": 3,
+        "bytes": 310505,
+        "source_maps": 0
+      },
+      {
+        "app": "investigation-center",
+        "files": 3,
+        "bytes": 310512,
+        "source_maps": 0
+      },
+      {
+        "app": "operations-center",
+        "files": 3,
+        "bytes": 310499,
+        "source_maps": 0
+      },
+      {
+        "app": "security-center",
+        "files": 3,
+        "bytes": 310492,
+        "source_maps": 0
+      }
+    ],
+    "total_bytes": 5514047,
+    "source_maps": 0,
+    "result": "pass"
+  },
+  "storybook": {
+    "stories": 10,
+    "build": "pass",
+    "telemetry": "disabled",
+    "production_bundle_budget_applicable": false
+  },
+  "visual_review": {
+    "desktop": "pass",
+    "mobile": "pass",
+    "mobile_navigation": "pass",
+    "overlap_or_horizontal_clipping": false
+  },
+  "manual_evidence": {
+    "screen_reader": "not_executed_explicitly_blocked",
+    "two_hundred_percent_zoom": "covered_by_reflow_automation_manual_confirmation_pending",
+    "production_accessibility_claim": false
+  },
+  "repository_regression": {
+    "execution_mode": "complete_local_repository_suite",
+    "tests_passed": 4223,
+    "tests_failed": 0,
+    "tests_skipped": 16,
+    "subtests_passed": 119,
+    "configured_postgresql_postgis": false,
+    "expected_skip_reason": "HCAM_POSTGRES_TEST_URL is not configured",
+    "network_or_remote_git_used": false,
+    "result": "pass"
+  },
+  "result": "pass"
+}

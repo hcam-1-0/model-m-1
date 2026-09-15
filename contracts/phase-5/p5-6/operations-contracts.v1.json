@@ -1,0 +1,45 @@
+{
+  "schema_version": "hcam.phase5.p5_6.operations_contracts.v1",
+  "marker": "HCAM_GENERATED_ONLY_P5_6",
+  "generated_at": "2026-09-10T09:00:00.000Z",
+  "specialist_surface": "H_CAM_Operations_Center",
+  "preserved_domain": "P5_3_camera_and_live_monitoring",
+  "additive_domain": "Platform_Operations",
+  "views": [
+    "services_and_dependencies",
+    "queues_workers_and_circuits",
+    "data_infrastructure",
+    "AI_runtime_scheduler_projection",
+    "SLO_and_error_budgets",
+    "degradation_and_kill_switch",
+    "maintenance_and_recovery_preview",
+    "capacity_evidence",
+    "topology_projections"
+  ],
+  "resource_profiles": [
+    "low_resource",
+    "enhanced_workstation",
+    "control_room",
+    "owned_GPU_lab",
+    "future_server",
+    "future_Kubernetes"
+  ],
+  "profile_authority_invariant": true,
+  "resilience_contracts": {
+    "bounded_queue_leases": true,
+    "typed_retries_and_backoff": true,
+    "dead_letter_projection": true,
+    "circuit_breaker_projection": true,
+    "graceful_shutdown_projection": true,
+    "abandoned_work_recovery_projection": true
+  },
+  "boundaries": {
+    "live_telemetry": false,
+    "runtime_profile_activation": false,
+    "kill_switch_operation": false,
+    "backup_restore_or_recovery_execution": false,
+    "hardware_capacity_claim": false,
+    "production_slo_rpo_or_rto_target": false,
+    "container_or_kubernetes_execution": false
+  }
+}

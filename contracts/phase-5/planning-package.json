@@ -1,0 +1,143 @@
+{
+  "schema_version": "hcam.phase5.planning-package.v1",
+  "package_id": "P5.0-PLANNING-R0",
+  "status": "non_effective_owner_decisions_pending",
+  "prepared_on": "2026-09-06",
+  "planning_branch": "codex/phase5-operator-application-planning",
+  "accepted_predecessor": {
+    "phase": "phase_4",
+    "commit": "96a902315e78c184e92df9ebe5bcef1e336eab38",
+    "evidence_package_sha256": "B739251D7D86A265DE60BA9B9943A1D0002B515C68AA1297D8B1378ADF1C8FBC",
+    "canonical_component_digest": "75D0A3B7667C25BF8B5180639F5B8F3937A734FAA2B2BB63CB9FE9914182A875"
+  },
+  "authority": {
+    "decision_id": "D-P5.0-PLAN-AUTH",
+    "path": "contracts/phase-5/planning-authorization.json",
+    "sha256": "F8BEA319D4AD19395DE48A18E7984E84B80D16D14123AD08F6EA9224BCFCA876",
+    "owner_statement_sha256": "F8AFD9777FB07F9239C588BEE4BA71258249B23500FC3EC1BD3F4C2F0050AD44"
+  },
+  "component_digest_algorithm": "Sort components by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "4FA5CC0A81D550AC79726C1C1145A58A663F4367FEB36E0F68EB67E35E445676",
+  "components": [
+    {
+      "path": "contracts/phase-5/planning-authorization.json",
+      "bytes": 1679,
+      "sha256": "F8BEA319D4AD19395DE48A18E7984E84B80D16D14123AD08F6EA9224BCFCA876"
+    },
+    {
+      "path": "docs/phase-5/architecture.md",
+      "bytes": 16086,
+      "sha256": "29574F416532AC3905964A20B78421E3A48F14D4DACB4AB273032DDDBCB1497E"
+    },
+    {
+      "path": "docs/phase-5/contract-gap-matrix.md",
+      "bytes": 11847,
+      "sha256": "F72AEF5B5CE1332A89E6B416E9B4B2A0590A90FE585A5997776852EF43BB6782"
+    },
+    {
+      "path": "docs/phase-5/decision-packet.md",
+      "bytes": 17458,
+      "sha256": "419AEA029987BF67FE08F3FD0E09493AB787334524FEEA244AB9932244F539DA"
+    },
+    {
+      "path": "docs/phase-5/implementation-plan.md",
+      "bytes": 16436,
+      "sha256": "02A55981ACB3EBD7F350AF53D3AE47CB3E03DAD9274EE1A6D596372FC10BE99B"
+    },
+    {
+      "path": "docs/phase-5/portal-workflow-catalogue.md",
+      "bytes": 15550,
+      "sha256": "93E8F415BE4DB494CE825FB2778DAEE50A46408324C0DA8D9A668A49238DCDAD"
+    },
+    {
+      "path": "docs/phase-5/product-scope.md",
+      "bytes": 10542,
+      "sha256": "0167C9A86CCBB3AE63389D33F612F37263EA1F4735D97B5459253B7A340CC5B4"
+    },
+    {
+      "path": "docs/phase-5/README.md",
+      "bytes": 7393,
+      "sha256": "AEBBE1C126C6443509145951AF427D20694DE870B9F3444724CC4EB9BEB41852"
+    },
+    {
+      "path": "docs/phase-5/repository-handoff-inventory.md",
+      "bytes": 11597,
+      "sha256": "130FA02F7FA67D83B704E2F661BFA36CD10B511BF2990E6FD43DD38BEFA398F2"
+    },
+    {
+      "path": "docs/phase-5/research-record.md",
+      "bytes": 13841,
+      "sha256": "74046984EE6FEF1FB3F31E546769072E649DD0091C4F3729341BF514BC9D63F8"
+    },
+    {
+      "path": "docs/phase-5/status.md",
+      "bytes": 3727,
+      "sha256": "9E65F9573AA62F2D6C07F46BC412847CB9CAD0A56667E041A02BC4C1AC694F1D"
+    },
+    {
+      "path": "docs/phase-5/threat-model.md",
+      "bytes": 12120,
+      "sha256": "F67C78F16CB59EC841353791E22713A9C488B4B3ECF42D95879970CDC00218D1"
+    }
+  ],
+  "proposed_portals": [
+    "command",
+    "operations",
+    "intelligence",
+    "investigations",
+    "evidence",
+    "admin",
+    "security"
+  ],
+  "frozen_subphase_weights": {
+    "P5.0": 8,
+    "P5.1": 12,
+    "P5.2": 12,
+    "P5.3": 16,
+    "P5.4": 15,
+    "P5.5": 15,
+    "P5.6": 10,
+    "P5.7": 12
+  },
+  "planning_progress": {
+    "earned": 8,
+    "total": 8,
+    "percent": 100.0,
+    "awards_product_points": false
+  },
+  "product_progress": {
+    "earned": 0,
+    "total": 100,
+    "percent": 0.0
+  },
+  "decision_ids": [
+    "D-P5.0-001",
+    "D-P5.0-002",
+    "D-P5.0-003",
+    "D-P5.0-004",
+    "D-P5.0-005",
+    "D-P5.0-006",
+    "D-P5.0-007",
+    "D-P5.0-008",
+    "D-P5.0-009",
+    "D-P5.0-010",
+    "D-P5.0-011",
+    "D-P5.0-012"
+  ],
+  "recommended_profile": "B/A/A/A/D/C/A/A/A/A/A/A",
+  "owner_selections_recorded": false,
+  "planning_reconciliation_authorized": false,
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "remote_git_authorized": false,
+  "continuing_prohibitions": [
+    "frontend_backend_test_migration_or_dependency_implementation",
+    "cameras_ONVIF_stream_playback_or_media_access",
+    "Government_police_private_personal_biometric_vehicle_owner_registration_watchlist_case_investigation_or_evidence_data",
+    "models_datasets_artifacts_inference_training_or_AI_runtime",
+    "operational_alert_notification_dispatch_enforcement_deletion_export_hold_or_autonomous_action",
+    "provider_broker_telemetry_map_tile_media_or_operational_network_access",
+    "process_container_Kubernetes_deployment_or_release",
+    "remote_Git"
+  ]
+}

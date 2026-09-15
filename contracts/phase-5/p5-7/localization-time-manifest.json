@@ -1,0 +1,37 @@
+{
+  "schema_version": "hcam.phase5.p5_7.localization_time_manifest.v1",
+  "generated_only": true,
+  "profiles": [
+    [
+      "L01",
+      "en-IN",
+      "Asia/Kolkata",
+      "operator"
+    ],
+    [
+      "L02",
+      "gu-IN",
+      "Asia/Kolkata",
+      "operator"
+    ],
+    [
+      "L03",
+      "hi-IN",
+      "Asia/Kolkata",
+      "operator"
+    ],
+    [
+      "L04",
+      "qps-ploc",
+      "Asia/Kolkata",
+      "pseudo_unicode"
+    ],
+    [
+      "L05",
+      "en",
+      "UTC",
+      "canonical"
+    ]
+  ],
+  "canonical_ordering": "locale_independent_record_sequence_then_identifier"
+}

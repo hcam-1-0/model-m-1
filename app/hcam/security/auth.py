@@ -15,10 +15,108 @@ from hcam.settings import Settings
 CAMERA_VIEWER = "camera.viewer"
 CAMERA_EDITOR = "camera.editor"
 CAMERA_CONTROLLER = "camera.controller"
+INTELLIGENCE_VIEWER = "intelligence.viewer"
+INTELLIGENCE_EDITOR = "intelligence.editor"
+INTELLIGENCE_REVIEWER = "intelligence.reviewer"
+INTELLIGENCE_APPROVER = "intelligence.approver"
+REFERENCE_PROVIDER_CREATE_GENERATED = "reference.provider.create_generated"
+REFERENCE_PROVIDER_VALIDATE = "reference.provider.validate"
+REFERENCE_PROVIDER_ENABLE_GENERATED = "reference.provider.enable_generated"
+REFERENCE_PROVIDER_SUSPEND = "reference.provider.suspend"
+REFERENCE_PROVIDER_REVOKE = "reference.provider.revoke"
+REFERENCE_PROVIDER_RETIRE = "reference.provider.retire"
+REFERENCE_PROVIDER_READ = "reference.provider.read"
+REFERENCE_QUERY_SUBMIT_GENERATED = "reference.query.submit_generated"
+REFERENCE_QUERY_READ = "reference.query.read"
+REFERENCE_QUERY_CANCEL = "reference.query.cancel"
+REFERENCE_CANDIDATE_READ = "reference.candidate.read"
+REFERENCE_CONTROL_READ = "reference.control.read"
+REFERENCE_CONTROL_MANAGE_GENERATED = "reference.control.manage_generated"
+INVESTIGATION_READ = "investigation.read"
+INVESTIGATION_WRITE_GENERATED = "investigation.write_generated"
+INVESTIGATION_EVIDENCE_READ = "investigation.evidence.read"
+INVESTIGATION_EVIDENCE_REFERENCE_CREATE_GENERATED = (
+    "investigation.evidence.reference_create_generated"
+)
+INVESTIGATION_EVIDENCE_ASSESS_GENERATED = (
+    "investigation.evidence.assess_generated"
+)
+INVESTIGATION_CORRECTION_CREATE_GENERATED = (
+    "investigation.correction.create_generated"
+)
+INVESTIGATION_REVIEW_CREATE_GENERATED = "investigation.review.create_generated"
+INVESTIGATION_RELATIONSHIP_MANAGE_GENERATED = (
+    "investigation.relationship.manage_generated"
+)
+INVESTIGATION_RETENTION_EVALUATE_GENERATED = (
+    "investigation.retention.evaluate_generated"
+)
+INVESTIGATION_EXPORT_PREVIEW_GENERATED = (
+    "investigation.export.preview_generated"
+)
+OPERATIONS_PLATFORM_READ = "operations.platform.read"
+OPERATIONS_SECURITY_READ = "operations.security.read"
+OPERATIONS_RECOVERY_READ = "operations.recovery.read"
+OPERATIONS_CAPACITY_READ = "operations.capacity.read"
+OPERATIONS_SUPPLY_CHAIN_READ = "operations.supply_chain.read"
+OPERATIONS_CONTROL_READ = "operations.control.read"
 PLATFORM_ADMIN = "platform.admin"
 KNOWN_ROLES = frozenset(
-    {CAMERA_VIEWER, CAMERA_EDITOR, CAMERA_CONTROLLER, PLATFORM_ADMIN}
+    {
+        CAMERA_VIEWER,
+        CAMERA_EDITOR,
+        CAMERA_CONTROLLER,
+        INTELLIGENCE_VIEWER,
+        INTELLIGENCE_EDITOR,
+        INTELLIGENCE_REVIEWER,
+        INTELLIGENCE_APPROVER,
+        PLATFORM_ADMIN,
+    }
 )
+REFERENCE_INTEGRATION_ROLES = frozenset(
+    {
+        REFERENCE_PROVIDER_CREATE_GENERATED,
+        REFERENCE_PROVIDER_VALIDATE,
+        REFERENCE_PROVIDER_ENABLE_GENERATED,
+        REFERENCE_PROVIDER_SUSPEND,
+        REFERENCE_PROVIDER_REVOKE,
+        REFERENCE_PROVIDER_RETIRE,
+        REFERENCE_PROVIDER_READ,
+        REFERENCE_QUERY_SUBMIT_GENERATED,
+        REFERENCE_QUERY_READ,
+        REFERENCE_QUERY_CANCEL,
+        REFERENCE_CANDIDATE_READ,
+        REFERENCE_CONTROL_READ,
+        REFERENCE_CONTROL_MANAGE_GENERATED,
+    }
+)
+INVESTIGATION_ROLES = frozenset(
+    {
+        INVESTIGATION_READ,
+        INVESTIGATION_WRITE_GENERATED,
+        INVESTIGATION_EVIDENCE_READ,
+        INVESTIGATION_EVIDENCE_REFERENCE_CREATE_GENERATED,
+        INVESTIGATION_EVIDENCE_ASSESS_GENERATED,
+        INVESTIGATION_CORRECTION_CREATE_GENERATED,
+        INVESTIGATION_REVIEW_CREATE_GENERATED,
+        INVESTIGATION_RELATIONSHIP_MANAGE_GENERATED,
+        INVESTIGATION_RETENTION_EVALUATE_GENERATED,
+        INVESTIGATION_EXPORT_PREVIEW_GENERATED,
+    }
+)
+OPERATIONS_PLATFORM_ROLES = frozenset(
+    {
+        OPERATIONS_PLATFORM_READ,
+        OPERATIONS_SECURITY_READ,
+        OPERATIONS_RECOVERY_READ,
+        OPERATIONS_CAPACITY_READ,
+        OPERATIONS_SUPPLY_CHAIN_READ,
+        OPERATIONS_CONTROL_READ,
+    }
+)
+AUTHENTICATION_ROLES = KNOWN_ROLES | REFERENCE_INTEGRATION_ROLES
+CURRENT_AUTHENTICATION_ROLES = AUTHENTICATION_ROLES | INVESTIGATION_ROLES
+PLATFORM_AUTHENTICATION_ROLES = CURRENT_AUTHENTICATION_ROLES | OPERATIONS_PLATFORM_ROLES
 _ACTOR_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:@-]{0,159}$")
 _DEPARTMENT_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 ._-]{0,119}$")
 
@@ -89,7 +187,7 @@ class DevHeaderAuthenticator:
                 detail="Valid local development actor header required",
                 headers={"WWW-Authenticate": "H-CAM-Dev"},
             )
-        if not roles or not roles.issubset(KNOWN_ROLES):
+        if not roles or not roles.issubset(PLATFORM_AUTHENTICATION_ROLES):
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Valid local development roles header required",
@@ -211,7 +309,9 @@ def build_authenticator(settings: Settings) -> Authenticator:
         return CloudflareAccessAuthenticator(settings)
     if settings.dev_auth_enabled:
         if settings.environment.lower() not in {"development", "test"}:
-            raise RuntimeError("Local development authentication is forbidden in production")
+            raise RuntimeError(
+                "Local development authentication is forbidden in production"
+            )
         return DevHeaderAuthenticator()
     if settings.environment.lower() == "production":
         raise RuntimeError("Cloudflare Access authentication is required in production")

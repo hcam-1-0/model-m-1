@@ -1,0 +1,12 @@
+{
+  "actor_id": "mayank-admin",
+  "contract_type": "hcam.intelligence.review-decision.v1",
+  "decided_at": "2026-09-04T00:00:04Z",
+  "decision": "needs_more_evidence",
+  "generated_only": true,
+  "policy_version": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "reason": "Generated fixture requires another independent supporting event",
+  "review_id": "generated-review-0001",
+  "target_ref": "ref_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "target_type": "hypothesis"
+}

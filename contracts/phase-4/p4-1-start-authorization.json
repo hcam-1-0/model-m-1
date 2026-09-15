@@ -1,0 +1,36 @@
+{
+  "schema_version": "hcam.phase4.p4_1.start-authorization.v1",
+  "decision_id": "D-P4.1-START",
+  "status": "owner_authorized",
+  "effective": true,
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-09-04",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "branch": "codex/phase4-correlation-foundation",
+  "planning_checkpoint_commit": "01d31b835b05b2a53e8f2d55895f4ceec87fe532",
+  "package": {
+    "package_id": "P4.1-START-R0",
+    "path": "contracts/phase-4/p4-1-start-authorization-package.json",
+    "sha256": "43EDF72ADE8328AEABE0F295ACC649F76229D233F8B0FB7E2D1D5C2E43B9ECA6"
+  },
+  "owner_statement_sha256": "B568E81542E873F70A617EA04063E28E40C2980515E5857274DFE3732CD931FA",
+  "owner_statement": "D-P4.1-START: I, mayank-admin, accept P4.1 start package P4.1-START-R0 with SHA-256 43EDF72ADE8328AEABE0F295ACC649F76229D233F8B0FB7E2D1D5C2E43B9ECA6 and authorize its exact bounded local generated-event correlation implementation scope, including the historical P4.0 verifier transition. This does not authorize models, datasets, artifacts, inference, optional model lanes, cameras or media, external providers, Government or private data, rule activation, operational alerts, dispatch or enforcement, Kubernetes or deployment, or remote Git.",
+  "authorized_effect": [
+    "implement_the_exact_allowlisted_local_generated_event_correlation_foundation",
+    "perform_the_exact_P4_0_historical_verifier_transition",
+    "run_generated_only_validation_and_up_to_eight_bounded_remediation_cycles",
+    "use_the_optional_cached_local_PostgreSQL_PostGIS_test_service_only_under_package_conditions",
+    "create_local_checkpoint_commits_without_push",
+    "prepare_a_non_effective_P4_1_acceptance_proposal"
+  ],
+  "continuing_prohibitions": [
+    "P4_2_or_later_implementation",
+    "models_datasets_artifacts_inference_or_optional_model_lane_execution",
+    "cameras_ONVIF_Sentinel_streams_frames_images_recording_or_media",
+    "external_providers_credentials_network_egress_or_live_simulators",
+    "Government_police_private_personal_biometric_vehicle_owner_case_or_watchlist_data",
+    "rule_activation_operational_alerts_notifications_dispatch_enforcement_or_autonomous_action",
+    "Kubernetes_cloud_pilot_production_release_or_deployment",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ]
+}

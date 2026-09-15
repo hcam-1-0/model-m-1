@@ -1,0 +1,58 @@
+{
+  "schema_version": "hcam.phase4.p4_4.plan-authorization.v1",
+  "decision_id": "D-P4.4-PLAN-AUTH",
+  "status": "planning_and_primary_source_research_authorized",
+  "effective": true,
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-09-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-reference-integrations-planning",
+  "planning_base_commit": "c71a2290e123826ba2e9015dd412d94b543cad9d",
+  "accepted_predecessor": {
+    "decision_id": "D-P4.3-ACCEPTANCE",
+    "path": "contracts/phase-4/p4-3/acceptance.json",
+    "sha256": "BDFF9678045E07749C65B523BEF06BE2C53D17CFD079A1FDF6AF20ED336BDA84"
+  },
+  "authorized_scope": [
+    "read_only_repository_analysis",
+    "official_primary_source_technical_security_and_standards_research",
+    "local_P4_4_planning_documentation",
+    "typed_provider_transport_and_secret_reference_design",
+    "exact_destination_and_field_minimization_design",
+    "generated_reference_catalogue_and_bounded_query_workflow_design",
+    "candidate_matching_calibration_contradiction_abstention_and_review_design",
+    "provider_governance_revocation_kill_switch_and_generated_validation_design",
+    "non_effective_owner_decision_options_and_planning_package",
+    "local_document_validation_and_checkpoint_commit_without_push"
+  ],
+  "research_source_policy": {
+    "internet_access": "official_primary_sources_only",
+    "permitted_source_classes": [
+      "standards_body_specifications",
+      "official_security_guidance",
+      "official_government_technical_policy",
+      "official_project_specifications"
+    ],
+    "real_provider_access": false,
+    "provider_endpoint_enumeration": false,
+    "credential_use": false,
+    "data_acquisition": false
+  },
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "remote_git_authorized": false,
+  "explicitly_not_authorized": [
+    "product_source_test_migration_dependency_or_runtime_implementation",
+    "real_provider_connection_or_external_integration",
+    "credential_secret_key_token_or_certificate_access",
+    "Sentinel_or_other_operational_network_access",
+    "Government_police_private_personal_biometric_vehicle_owner_case_or_watchlist_data",
+    "camera_ONVIF_stream_frame_image_recording_playback_or_media_access",
+    "model_dataset_checkpoint_artifact_download_training_or_inference",
+    "operational_alert_notification_dispatch_enforcement_or_autonomous_action",
+    "container_Kubernetes_cloud_pilot_production_or_deployment_work",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "owner_statement_sha256": "87EBA3C544C2CAE56159A4C3A03A924E0658AD3BC5AAD4ECFE37E3258792E99C",
+  "owner_statement": "D-P4.4-PLAN-AUTH: I, mayank-admin, authorize planning and primary-source\nresearch only for P4.4 Authorized Reference Integrations, including local\ndocumentation for typed provider and transport contracts, secret references,\nexact destination controls, field minimization, generated reference catalogues,\nbounded query workflows, candidate matching, calibration, contradiction,\nabstention, mandatory human review, provider governance, revocation, kill\nswitches, and generated-only validation. Internet research is limited to\nofficial primary technical, security, and standards sources. This does not\nauthorize product implementation, real provider connections, credentials or\nsecrets, Sentinel or other operational network access, Government or private\ndata, cameras or media, models, datasets, artifact downloads, inference,\noperational alerts, notifications, dispatch or enforcement, containers,\nKubernetes, deployment, or remote Git."
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "hcam.phase5.p5_3.media_generation_plan.v1",
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "generator": "ffmpeg-lavfi-only",
+  "profiles": {
+    "C1": { "streams": 1, "required_renditions": ["low", "medium"] },
+    "C4": { "streams": 4, "required_renditions": ["low", "medium", "high"] },
+    "C10": { "streams": 10, "required_renditions": ["low", "medium", "high"] }
+  },
+  "renditions": {
+    "low": { "width": 640, "height": 360, "fps": 10, "target_video_bitrate_kbps": 500 },
+    "medium": { "width": 1280, "height": 720, "fps": 20, "target_video_bitrate_kbps": 1500 },
+    "high": { "width": 1920, "height": 1080, "fps": 25, "target_video_bitrate_kbps": 4000 }
+  },
+  "duration_seconds": 30,
+  "segment_seconds": 2,
+  "visual_source": "generated test pattern, clock and stream reference only",
+  "audio": false,
+  "output_root": "output/p5-3/generated-media",
+  "retention": "remove all binary playlists and segments after sanitized hash evidence",
+  "prohibited_inputs": ["files", "URLs", "cameras", "microphones", "screens", "Government_data", "private_data"]
+}

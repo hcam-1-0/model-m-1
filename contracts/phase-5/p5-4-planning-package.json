@@ -1,0 +1,177 @@
+{
+  "schema_version": "hcam.phase5.p5_4.planning_package.v1",
+  "package_id": "P5.4-PLANNING-R0",
+  "status": "research_complete_owner_decisions_pending",
+  "effective": false,
+  "prepared_on": "2026-09-08",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "5051bae688183b86043de51ea72db24525e9fe41",
+  "planning_authority": {
+    "decision_id": "D-P5.4-PLAN-AUTH",
+    "path": "contracts/phase-5/p5-4-plan-authorization.json",
+    "sha256": "7B1A36AFC055859FA66F177957AB0A9F5B14DAD17060F409F3B21C04B2F67E46"
+  },
+  "accepted_predecessor": {
+    "subphase": "P5.3",
+    "acceptance_record": "contracts/phase-5/p5-3-acceptance.json",
+    "acceptance_record_sha256": "A20A8147B43D734747C4579457C2CB14CD3632BAD79E2B3349D4BE72A44EEDA9",
+    "evidence_package_sha256": "744F69E750BF7DB2DA3C3F613E149E70BBFBEB08B7F24B0BABB0D190FFF8257E",
+    "canonical_component_digest": "216750DA23B72DB31D2737278CCC610D84A2CEA059016CF818413704894EB17A",
+    "technical_commit": "9d1604a62e4823644064e26d3b11771f8ae526fa",
+    "evidence_seal_commit": "64bacb7a91e201ee47d704542f2a25e171578678",
+    "acceptance_commit": "5051bae688183b86043de51ea72db24525e9fe41"
+  },
+  "component_digest_algorithm": "Sort components by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "66899DA59FD9E90EC682038ADC359D2169D98ACF2D402B511808F630DB347BD0",
+  "components": [
+    {
+      "path": "contracts/phase-5/p5-4-plan-authorization.json",
+      "bytes": 6867,
+      "sha256": "7B1A36AFC055859FA66F177957AB0A9F5B14DAD17060F409F3B21C04B2F67E46"
+    },
+    {
+      "path": "docs/phase-5/current-status-r16.md",
+      "bytes": 3785,
+      "sha256": "4AA2891DA03FFBAFD4F9B1241FE444356E92BEFF5E4670C88C4D9F77A1CBB7E6"
+    },
+    {
+      "path": "docs/phase-5/p5-4-intelligence-review-architecture.md",
+      "bytes": 12431,
+      "sha256": "9B67C68FB12DF1613B2DFD4DC83D3E7524E7E81F6BF563F39E29059181EA8B34"
+    },
+    {
+      "path": "docs/phase-5/p5-4-contract-gap-matrix.md",
+      "bytes": 9738,
+      "sha256": "1AB21110D7096D782333A517AF7C8F48FAC3BE7463B2F4D0DB4F493F613780D6"
+    },
+    {
+      "path": "docs/phase-5/p5-4-decision-packet.md",
+      "bytes": 11005,
+      "sha256": "FA3A36CA11DAA8E2F0BA1E860009ED91D044A4D3C9E2428FC269039DCF2DCA61"
+    },
+    {
+      "path": "docs/phase-5/p5-4-dependency-evaluation.md",
+      "bytes": 5956,
+      "sha256": "9B84E204E6D2F6DF7E3664641EA10898F446C4066892EBD0110926B19B8E2896"
+    },
+    {
+      "path": "docs/phase-5/p5-4-implementation-plan.md",
+      "bytes": 11552,
+      "sha256": "B597974EF0735163BDD225D47CE226072FB9EF2184B59CE3AC03BA6A0C7EF5D8"
+    },
+    {
+      "path": "docs/phase-5/p5-4-research-record.md",
+      "bytes": 8917,
+      "sha256": "F2DD55F2B2F95EABEFE0E8CB4057C44230BDEABE0DD8A34AEDC4BBD432BD6064"
+    },
+    {
+      "path": "docs/phase-5/p5-4-threat-model.md",
+      "bytes": 9914,
+      "sha256": "82EEB0FE9B474360258DB08757F1FE88B46E122B06A007E4896137AB4849AAD5"
+    },
+    {
+      "path": "docs/phase-5/p5-4-workflow-feature-catalogue.md",
+      "bytes": 10804,
+      "sha256": "591C62C67D1005496EE55596A2EFDDE69D84CCF15F30BF756D3ABFBA7D15C5A4"
+    }
+  ],
+  "research_result": {
+    "official_primary_sources_only": true,
+    "accessibility_baseline": "WCAG_2_2_with_native_semantics_and_authoritative_table_equivalence",
+    "human_review_baseline": "meaningful_authorized_challengeable_review_with_independent_server_quorum",
+    "explanation_baseline": "exact_revisioned_trace_with_secondary_deterministic_summary",
+    "concurrency_baseline": "strong_ETag_If_Match_expected_revision_and_idempotency_receipt",
+    "event_baseline": "versioned_invalidation_hint_with_authoritative_HTTP_confirmation",
+    "spatial_baseline": "bounded_GeoJSON_WGS84_through_existing_P5_2_GIS_domain",
+    "idempotency_draft_status": "IETF_draft_expired_and_archived_not_an_RFC",
+    "dependency_candidate": "adapter_based_bounded_React_Flow_with_authoritative_table",
+    "network_runtime_or_dependency_action_performed": false
+  },
+  "recommended_architecture": {
+    "product_hierarchy": "Command_Center_primary_with_connected_specialist_Intelligence_Center",
+    "truth_model": "strict_typed_evidence_ladder",
+    "graph": "server_bounded_read_only_renderer_adapter_with_authoritative_tables",
+    "spatial": "reuse_P5_2_MapLibre_deck_gl_domain_with_table_parity",
+    "candidate_identity_state": "not_established",
+    "review_authority": "server_policy_quorum_ETag_idempotency_and_append_only_receipt",
+    "event_authority": false,
+    "external_action_from_review": false,
+    "low_resource_mode_functionally_complete": true,
+    "hardware_changes_authority_or_security": false
+  },
+  "owner_decisions": [
+    {"id": "D-P5.4-001", "title": "product_and_portal_topology", "selected": null, "recommended": "A"},
+    {"id": "D-P5.4-002", "title": "semantic_truth_presentation", "selected": null, "recommended": "A"},
+    {"id": "D-P5.4-003", "title": "queue_and_work_organization", "selected": null, "recommended": "A"},
+    {"id": "D-P5.4-004", "title": "relationship_graph_and_spatial_rendering", "selected": null, "recommended": "A"},
+    {"id": "D-P5.4-005", "title": "rule_and_evaluation_explanation", "selected": null, "recommended": "A"},
+    {"id": "D-P5.4-006", "title": "candidate_uncertainty_and_comparison", "selected": null, "recommended": "A"},
+    {"id": "D-P5.4-007", "title": "mandatory_review_and_quorum", "selected": null, "recommended": "A"},
+    {"id": "D-P5.4-008", "title": "mutation_concurrency_and_idempotency", "selected": null, "recommended": "A"},
+    {"id": "D-P5.4-009", "title": "event_and_refresh_strategy", "selected": null, "recommended": "A"},
+    {"id": "D-P5.4-010", "title": "correction_and_reconsideration", "selected": null, "recommended": "A"},
+    {"id": "D-P5.4-011", "title": "accessibility_and_human_factors", "selected": null, "recommended": "A"},
+    {"id": "D-P5.4-012", "title": "validation_and_evidence_standard", "selected": null, "recommended": "A"}
+  ],
+  "recommended_profile": "A/A/A/A/A/A/A/A/A/A/A/A",
+  "producer_gaps": [
+    "P5.4-G01", "P5.4-G02", "P5.4-G03", "P5.4-G04", "P5.4-G05",
+    "P5.4-G06", "P5.4-G07", "P5.4-G08", "P5.4-G09", "P5.4-G10",
+    "P5.4-G11", "P5.4-G12", "P5.4-G13", "P5.4-G14", "P5.4-G15",
+    "P5.4-G16", "P5.4-G17", "P5.4-G18", "P5.4-G19", "P5.4-G20",
+    "P5.4-G21", "P5.4-G22", "P5.4-G23", "P5.4-G24", "P5.4-G25",
+    "P5.4-G26"
+  ],
+  "threat_ids": [
+    "T01", "T02", "T03", "T04", "T05", "T06", "T07", "T08", "T09", "T10",
+    "T11", "T12", "T13", "T14", "T15", "T16", "T17", "T18", "T19", "T20",
+    "T21", "T22", "T23", "T24", "T25", "T26", "T27", "T28", "T29", "T30",
+    "T31", "T32", "T33", "T34", "T35", "T36", "T37", "T38", "T39", "T40"
+  ],
+  "implementation_workstreams": [
+    {"id": "P5.4-W1", "title": "consumer_contracts_and_generated_fixtures", "weight": 2.0},
+    {"id": "P5.4-W2", "title": "intelligence_overview_and_queues", "weight": 2.0},
+    {"id": "P5.4-W3", "title": "hypothesis_run_graph_spatial_and_rule_explanation", "weight": 2.5},
+    {"id": "P5.4-W4", "title": "proposed_alerts_and_candidate_uncertainty", "weight": 2.5},
+    {"id": "P5.4-W5", "title": "mandatory_review_quorum_and_concurrency", "weight": 2.5},
+    {"id": "P5.4-W6", "title": "lifecycle_corrections_and_event_invalidation", "weight": 1.5},
+    {"id": "P5.4-W7", "title": "accessibility_security_profiles_and_signals", "weight": 1.0},
+    {"id": "P5.4-W8", "title": "validation_evidence_and_acceptance", "weight": 1.0}
+  ],
+  "frozen_progress_model": {
+    "P5_4_total_product_points": 15,
+    "P5_4_technical_cap_points": 14,
+    "P5_4_owner_acceptance_points": 1,
+    "phase_5_total_product_points": 100,
+    "planning_items": 8,
+    "planning_awards_product_points": false
+  },
+  "progress": {
+    "P5_4_planning": {"earned": 8, "total": 8, "percent": 100.0, "change_percentage_points": 100.0, "awards_product_points": false},
+    "P5_4_owner_decisions": {"earned": 0, "total": 12, "percent": 0.0, "change_percentage_points": 0.0, "awards_product_points": false},
+    "P5_4_product": {"earned": 0, "total": 15, "percent": 0.0, "change_percentage_points": 0.0},
+    "phase_5_product": {"earned": 48, "total": 100, "percent": 48.0, "change_percentage_points": 0.0}
+  },
+  "next_gate": {
+    "owner_selects_D_P5_4_001_through_012": true,
+    "reconciled_planning_package": true,
+    "exact_owner_planning_acceptance": true,
+    "bounded_start_package": true,
+    "exact_start_authorization": true
+  },
+  "owner_decisions_recorded": false,
+  "owner_planning_acceptance_recorded": false,
+  "start_package_preparation_authorized": false,
+  "start_authorization_recorded": false,
+  "product_or_test_implementation_authorized": false,
+  "source_import_authorized": false,
+  "dependency_install_or_lockfile_change_authorized": false,
+  "backend_route_or_migration_authorized": false,
+  "frontend_or_browser_runtime_authorized": false,
+  "model_dataset_artifact_or_inference_authorized": false,
+  "provider_network_camera_or_media_authorized": false,
+  "Government_private_data_real_investigation_or_identity_authorized": false,
+  "operational_alert_notification_dispatch_enforcement_or_autonomous_action_authorized": false,
+  "container_Kubernetes_deployment_or_P5_5_authorized": false,
+  "remote_git_authorized": false
+}

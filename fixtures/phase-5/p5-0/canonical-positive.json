@@ -1,0 +1,13 @@
+{
+  "fixture_type": "hcam.operator.generated-positive-seeds.v1",
+  "generated_only": true,
+  "non_issuable_namespace": "syn_case_",
+  "dimensions": {
+    "views": ["command.overview", "operations.camera_catalogue", "operations.live_workspace", "operations.gis_workspace", "intelligence.hypotheses", "intelligence.alert_review", "investigations.timeline", "evidence.references", "admin.platform", "security.audit"],
+    "states": ["loading", "empty", "ready", "partial", "stale", "degraded", "denied", "correction"],
+    "resource_profiles": ["low_resource", "enhanced", "control_room"],
+    "locales": ["en-IN", "gu-IN", "hi-IN"]
+  },
+  "expected_materialized_case_count": 720,
+  "operational": false
+}

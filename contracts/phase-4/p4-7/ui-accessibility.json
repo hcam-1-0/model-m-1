@@ -1,0 +1,232 @@
+{
+  "UI_implemented": false,
+  "accessibility_conformance_claim": false,
+  "contract_type": "hcam.handoff.ui-accessibility.v1",
+  "generated_only": true,
+  "requirements": [
+    {
+      "applies_to": "phase5.operator_surfaces",
+      "category": "keyboard",
+      "conformance_claim": false,
+      "evidence_kind": "static",
+      "requirement": "Every action and state transition must be operable through a logical keyboard sequence.",
+      "requirement_id": "phase5.accessibility.keyboard"
+    },
+    {
+      "applies_to": "phase5.operator_surfaces",
+      "category": "focus",
+      "conformance_claim": false,
+      "evidence_kind": "static",
+      "requirement": "Focus must remain visible and return to the initiating control after bounded overlays close.",
+      "requirement_id": "phase5.accessibility.focus"
+    },
+    {
+      "applies_to": "phase5.operator_surfaces",
+      "category": "name_role_value",
+      "conformance_claim": false,
+      "evidence_kind": "static",
+      "requirement": "Controls and dynamic components must expose stable accessible names, roles, and values.",
+      "requirement_id": "phase5.accessibility.name_role_value"
+    },
+    {
+      "applies_to": "phase5.operator_surfaces",
+      "category": "status",
+      "conformance_claim": false,
+      "evidence_kind": "static",
+      "requirement": "Routine asynchronous updates must use non-interrupting status announcements.",
+      "requirement_id": "phase5.accessibility.status"
+    },
+    {
+      "applies_to": "phase5.operator_surfaces",
+      "category": "error",
+      "conformance_claim": false,
+      "evidence_kind": "static",
+      "requirement": "Errors must identify the affected field or operation and provide a recovery action.",
+      "requirement_id": "phase5.accessibility.error"
+    },
+    {
+      "applies_to": "phase5.operator_surfaces",
+      "category": "non_color",
+      "conformance_claim": false,
+      "evidence_kind": "static",
+      "requirement": "Severity and state must use text or icons in addition to color.",
+      "requirement_id": "phase5.accessibility.non_color"
+    },
+    {
+      "applies_to": "phase5.operator_surfaces",
+      "category": "target",
+      "conformance_claim": false,
+      "evidence_kind": "future_manual",
+      "requirement": "Interactive target dimensions and spacing require validation in the implemented interface.",
+      "requirement_id": "phase5.accessibility.target"
+    },
+    {
+      "applies_to": "phase5.operator_surfaces",
+      "category": "contrast",
+      "conformance_claim": false,
+      "evidence_kind": "future_manual",
+      "requirement": "Text, controls, focus indicators, and non-text content require measured contrast validation.",
+      "requirement_id": "phase5.accessibility.contrast"
+    },
+    {
+      "applies_to": "phase5.operator_surfaces",
+      "category": "motion",
+      "conformance_claim": false,
+      "evidence_kind": "future_manual",
+      "requirement": "The implemented interface must honor reduced-motion preferences without hiding state changes.",
+      "requirement_id": "phase5.accessibility.motion"
+    }
+  ],
+  "states": [
+    {
+      "actions": [],
+      "announcement": "none",
+      "focus_rule": "preserve_context",
+      "generated_only": true,
+      "non_color_indicator": true,
+      "source_fact": "alerts.loading",
+      "state": "loading",
+      "state_id": "phase5.alerts.loading",
+      "view": "phase5.alerts",
+      "visible_message": "Loading the latest generated intelligence state."
+    },
+    {
+      "actions": [
+        "refresh"
+      ],
+      "announcement": "polite",
+      "focus_rule": "preserve_context",
+      "generated_only": true,
+      "non_color_indicator": true,
+      "source_fact": "alerts.empty",
+      "state": "empty",
+      "state_id": "phase5.alerts.empty",
+      "view": "phase5.alerts",
+      "visible_message": "No records match the current bounded query."
+    },
+    {
+      "actions": [
+        "refresh"
+      ],
+      "announcement": "polite",
+      "focus_rule": "preserve_context",
+      "generated_only": true,
+      "non_color_indicator": true,
+      "source_fact": "alerts.partial",
+      "state": "partial",
+      "state_id": "phase5.alerts.partial",
+      "view": "phase5.alerts",
+      "visible_message": "Some generated results are available; completeness is limited."
+    },
+    {
+      "actions": [
+        "refresh"
+      ],
+      "announcement": "polite",
+      "focus_rule": "preserve_context",
+      "generated_only": true,
+      "non_color_indicator": true,
+      "source_fact": "alerts.stale",
+      "state": "stale",
+      "state_id": "phase5.alerts.stale",
+      "view": "phase5.alerts",
+      "visible_message": "The displayed generated state is stale."
+    },
+    {
+      "actions": [
+        "refresh"
+      ],
+      "announcement": "polite",
+      "focus_rule": "preserve_context",
+      "generated_only": true,
+      "non_color_indicator": true,
+      "source_fact": "alerts.degraded",
+      "state": "degraded",
+      "state_id": "phase5.alerts.degraded",
+      "view": "phase5.alerts",
+      "visible_message": "A supporting generated service is degraded."
+    },
+    {
+      "actions": [],
+      "announcement": "polite",
+      "focus_rule": "preserve_trigger_focus",
+      "generated_only": true,
+      "non_color_indicator": true,
+      "source_fact": "alerts.denied",
+      "state": "denied",
+      "state_id": "phase5.alerts.denied",
+      "view": "phase5.alerts",
+      "visible_message": "Access to this generated resource was denied."
+    },
+    {
+      "actions": [
+        "refresh"
+      ],
+      "announcement": "polite",
+      "focus_rule": "preserve_trigger_focus",
+      "generated_only": true,
+      "non_color_indicator": true,
+      "source_fact": "alerts.conflict",
+      "state": "conflict",
+      "state_id": "phase5.alerts.conflict",
+      "view": "phase5.alerts",
+      "visible_message": "The generated record changed before this action completed."
+    },
+    {
+      "actions": [
+        "refresh"
+      ],
+      "announcement": "assertive",
+      "focus_rule": "preserve_trigger_focus",
+      "generated_only": true,
+      "non_color_indicator": true,
+      "source_fact": "alerts.failure",
+      "state": "failure",
+      "state_id": "phase5.alerts.failure",
+      "view": "phase5.alerts",
+      "visible_message": "The generated request failed without exposing internal detail."
+    },
+    {
+      "actions": [
+        "refresh"
+      ],
+      "announcement": "polite",
+      "focus_rule": "preserve_context",
+      "generated_only": true,
+      "non_color_indicator": true,
+      "source_fact": "alerts.recovery",
+      "state": "recovery",
+      "state_id": "phase5.alerts.recovery",
+      "view": "phase5.alerts",
+      "visible_message": "The generated service recovered; refresh is available."
+    },
+    {
+      "actions": [
+        "refresh"
+      ],
+      "announcement": "polite",
+      "focus_rule": "preserve_context",
+      "generated_only": true,
+      "non_color_indicator": true,
+      "source_fact": "alerts.correction",
+      "state": "correction",
+      "state_id": "phase5.alerts.correction",
+      "view": "phase5.alerts",
+      "visible_message": "A correction changed the generated record chronology."
+    },
+    {
+      "actions": [
+        "refresh"
+      ],
+      "announcement": "none",
+      "focus_rule": "preserve_context",
+      "generated_only": true,
+      "non_color_indicator": true,
+      "source_fact": "alerts.success",
+      "state": "success",
+      "state_id": "phase5.alerts.success",
+      "view": "phase5.alerts",
+      "visible_message": "The generated operation completed."
+    }
+  ]
+}

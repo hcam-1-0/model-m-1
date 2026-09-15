@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "alert_version": 1,
+      "attempts": 0,
+      "expected": "completed"
+    },
+    {
+      "alert_version": 2,
+      "attempts": 1,
+      "expected": "cancelled"
+    }
+  ],
+  "generated_only": true,
+  "schema_version": "hcam.p4-3.generated-timer-cases.v1"
+}

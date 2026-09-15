@@ -1,0 +1,381 @@
+{
+  "schema_version": "hcam.phase4.p4_6.evidence-package.v1",
+  "package_id": "P4.6-EVIDENCE-PACKAGE-R0",
+  "status": "technical_validation_passed_owner_acceptance_pending",
+  "generated_on": "2026-09-05",
+  "branch": "codex/phase4-operations-security-scale",
+  "technical_commit": "dee768edf449eadf9b5c309209af9866fd392a43",
+  "start_package_sha256": "2E1D5F921EB7C972192FE460D3B238F39D8D792C7869A8F338E291618314F779",
+  "component_digest_mode": "utf8_text_normalized_lf",
+  "component_count": 91,
+  "components": [
+    {
+      "path": ".github/workflows/python-ci.yml",
+      "sha256": "15F0BED9850C18B6D53571AA1C1B6CF5E9EAE41983200C46F1EFD74C9E7568A5"
+    },
+    {
+      "path": "README.md",
+      "sha256": "05A05BB9E2BF0848416A87B427B549C3F15D7F8349EC7B259AF82A7FBC73FD25"
+    },
+    {
+      "path": "app/hcam/database.py",
+      "sha256": "EFB652ED67919F9870A8FA47E148B02D62F9F70C0B1341BA6A5170BE9F94A1B2"
+    },
+    {
+      "path": "app/hcam/main.py",
+      "sha256": "4987937D056D76EA2DCD570771CC168AB5193AE2A6E5298D1BDCA9F3DC8FF49E"
+    },
+    {
+      "path": "app/hcam/metrics.py",
+      "sha256": "237DB4932C80F3C2C7965CC79F6D9252CC88FC9B395373BB99B230B29C8D2A9C"
+    },
+    {
+      "path": "app/hcam/observability.py",
+      "sha256": "621FF9D371C3025B1BA05DFD1F53FD0FC22788E6A507665549778361D84C85E7"
+    },
+    {
+      "path": "app/hcam/operations/platform/__init__.py",
+      "sha256": "284DBA8E87F098224A0785184F03877A047CC39259EEB6617737BAB3098DB8D2"
+    },
+    {
+      "path": "app/hcam/operations/platform/bounds.py",
+      "sha256": "68F2416C8EF224FA10C9568CAD9024B1043F80B7182997A36474695E2319F95D"
+    },
+    {
+      "path": "app/hcam/operations/platform/budgets.py",
+      "sha256": "7671EFF985726228FC35FF4DE54D6562FD802DE79DB9DA63A5038C21582B366B"
+    },
+    {
+      "path": "app/hcam/operations/platform/canonical.py",
+      "sha256": "05CF102F8BCDA67D5F6700B590BF71D2257F87D8EF6B405E4BD32AA044978E70"
+    },
+    {
+      "path": "app/hcam/operations/platform/capacity.py",
+      "sha256": "6F213EF9AA5090DA0B8808FCB59395F801FDD8777C89E97333C81E821634DD84"
+    },
+    {
+      "path": "app/hcam/operations/platform/circuits.py",
+      "sha256": "20BF70C664AC87C9CBCBEB0B2E13B9C14ABBCEC23D3D1202F398530CCA3A9F5D"
+    },
+    {
+      "path": "app/hcam/operations/platform/contracts.py",
+      "sha256": "0626771DF1DD46768F50AD570ADEF2C0C8ADEF3012A175587DE7A1A9210D3811"
+    },
+    {
+      "path": "app/hcam/operations/platform/controls.py",
+      "sha256": "804CCCB4503ADBCA0A592ECA506BF61EB83EF3837686320A669A8F48FF48CDAF"
+    },
+    {
+      "path": "app/hcam/operations/platform/degradation.py",
+      "sha256": "E017AC5E9EFE2893482280A99E7C071BE021BBAD3C1B86DBAF7DCFA4D74400C0"
+    },
+    {
+      "path": "app/hcam/operations/platform/failures.py",
+      "sha256": "840F42CC546F5FF713CEC9327042416F21336E7031182171309ED7392F01D24D"
+    },
+    {
+      "path": "app/hcam/operations/platform/kubernetes_projection.py",
+      "sha256": "062CFC7FEEBCD01F1A432F4B31B0AE0F8E057997C5A3825BDC8296B6CC4F8028"
+    },
+    {
+      "path": "app/hcam/operations/platform/metrics.py",
+      "sha256": "6B82FB1BBE21BED207E1ED8DF91A4D7BED8D033CC72C7BF5723A84275AF7EED7"
+    },
+    {
+      "path": "app/hcam/operations/platform/models.py",
+      "sha256": "1ADDD45A8E3631F4EA0574E6C4667C70381B1D97A697D9E1DB0EE764B8663B30"
+    },
+    {
+      "path": "app/hcam/operations/platform/objectives.py",
+      "sha256": "013D75D6F9987232787B27F483E6D6721A2C19F58B83DCEF110C978D54563A96"
+    },
+    {
+      "path": "app/hcam/operations/platform/persistence.py",
+      "sha256": "DC3A3AD4A4E4C40B0533295ABF47BBD14A1115A977A36655318C8EF50943AA3A"
+    },
+    {
+      "path": "app/hcam/operations/platform/placement.py",
+      "sha256": "91B5C09F57C6E7285811D8B225F3E458DE08834A2E61C3BD0BF6211EFCD861EB"
+    },
+    {
+      "path": "app/hcam/operations/platform/recovery.py",
+      "sha256": "D289EAC5FEA73B0767AEB897FDA380449D9A4206E16C708A6F0309C7A67749EC"
+    },
+    {
+      "path": "app/hcam/operations/platform/registry.py",
+      "sha256": "9C6A4ABABDD5DADAF1586A99EB8B540FC3C37ADE1283E21AAED4E99C70C484F9"
+    },
+    {
+      "path": "app/hcam/operations/platform/routes.py",
+      "sha256": "1386E000E90CD9A6CD636D75B81BC521029800093FF8C9C0C144D3B7DB9DEC40"
+    },
+    {
+      "path": "app/hcam/operations/platform/runtime.py",
+      "sha256": "45F0DB7A22196F5CFFAC6BCBA74B29E5D195A298EBBEC424875384D762317F4F"
+    },
+    {
+      "path": "app/hcam/operations/platform/security.py",
+      "sha256": "37091086ECFC84B3E3C51B3F364BC8988BBF9103D9D528D90FE6F194F041FC94"
+    },
+    {
+      "path": "app/hcam/operations/platform/service.py",
+      "sha256": "87C2A7C478E79852EAAC8720B8AE7C286E777E125770BB097775532787A76A28"
+    },
+    {
+      "path": "app/hcam/operations/platform/signals.py",
+      "sha256": "AAD3EA990045E9F714A95A296BB1E093345980C8E14C826BFF91F60739DF751B"
+    },
+    {
+      "path": "app/hcam/operations/platform/standalone_projection.py",
+      "sha256": "2270686D1752182EA6332162B574FD7AF2FA1975441C995408212ABE0457C6F6"
+    },
+    {
+      "path": "app/hcam/operations/platform/supply_chain.py",
+      "sha256": "C60975E28BF407AB40DEB8D50D16DE7440F0CA77DCDE8ACCA4BFD92BC3DFADE3"
+    },
+    {
+      "path": "app/hcam/operations/platform/tracing.py",
+      "sha256": "5F263F299BF6A2BC844294267CC723556F630FEE90DA2BA10A3B897F30A016A8"
+    },
+    {
+      "path": "app/hcam/operations/platform/unified_search.py",
+      "sha256": "FD9E855A56BDE67EFD904E1AEEEC755F2EF024D380F526EC668B3D8FE45BF306"
+    },
+    {
+      "path": "app/hcam/operations/platform/workers.py",
+      "sha256": "550E3AA703F91528E5E213B7483E8EF972CC093719F346C4C5F3ECD5C19D98D4"
+    },
+    {
+      "path": "app/hcam/security/auth.py",
+      "sha256": "EE6CDCC7F5E184783988AB5A7C4A073CF554AD150029FF9133DB6CC647566669"
+    },
+    {
+      "path": "app/hcam/settings.py",
+      "sha256": "E8528C1410E7331AC9112259EBF9FF091D4582DC7D230A036F0C4BEB900CC3C3"
+    },
+    {
+      "path": "contracts/phase-4/database.json",
+      "sha256": "C1CF2C148D3B23200E0B70645408FC861648FE7F934E5584C9722C7F86BD0A26"
+    },
+    {
+      "path": "contracts/phase-4/openapi.json",
+      "sha256": "02D014AA071A6D90CFEE66745C6CC5BBA37341C02327F10B421229DDE030ED96"
+    },
+    {
+      "path": "contracts/phase-4/p4-6-start-authorization.json",
+      "sha256": "53DD2E497F36D0182E1FC52D37A0896735C3683EA5A381652E3E11125AD877CC"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/database.json",
+      "sha256": "262874863F398023C9D1E764E7634845443D518B992E62DD684A812B564F3A09"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/evidence.json",
+      "sha256": "B54FD3775D2CCA106D28D0FC6D566A7B068C3BDA9B116F30E1143BCCE0250135"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/fixtures/generated-abuse-v1.json",
+      "sha256": "84E085B28B416451F18AE5EBD3364236BA3F9E7424886B4A2B59C3D783F5F835"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/fixtures/generated-capacity-runs-v1.json",
+      "sha256": "4A8F56EF57B147F84DCAA90F3A3A3623082D0A75C46ECF8240FA138A19EB7C72"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/fixtures/generated-control-hierarchy-v1.json",
+      "sha256": "B1DB6177CC25A40FD7DB8E005326D91038F384725BB286E75875950273ACB14E"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/fixtures/generated-failure-taxonomy-v1.json",
+      "sha256": "46F1EABFF8811D7C66659C647FC76458DF4DCE356140AF396563C772B9BB80E2"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/fixtures/generated-placement-plans-v1.json",
+      "sha256": "31EF33ED19D72A80CF4958B6D198E36CE21B28C1D3812470A481977B04ACF04D"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/fixtures/generated-recovery-drills-v1.json",
+      "sha256": "2D46EF6422E00969B640B2D441B079B0F2C65C85872003FF40614FFFF1764702"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/fixtures/generated-security-isolation-v1.json",
+      "sha256": "8452C19FB9156A9E157373747E3DAF6886345B248E16108CA1F71E6047482FEC"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/fixtures/generated-service-objectives-v1.json",
+      "sha256": "202F0672093C7F83C822CE3434E5C9A44693435981F952F94004CEE2EBFE95FE"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/fixtures/generated-signal-separation-v1.json",
+      "sha256": "346D11D0BB316921D43E631CFB598C04778E79AD52B4D6C18BEE1A98D06A6A86"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/fixtures/generated-supply-chain-v1.json",
+      "sha256": "08D192AE45ACA0FCAA6AD1B393B9FE209E6BA090749F34D5B05FFF60A94F02AB"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/fixtures/generated-telemetry-registry-v1.json",
+      "sha256": "E4C45FC0AEAFC7CEAF0F6EFDFADB0F1741DC023ACE8C9B998A08EDDBFB5085B7"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/fixtures/generated-trace-context-v1.json",
+      "sha256": "94F9CD13E0360CB13AA1322DE71CC92D4EB7322650A3A569BCE3FFA8D029D98F"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/fixtures/generated-unified-search-v1.json",
+      "sha256": "6045ED7972C8FDF2B8C9AD11DE7A52D9D964F7B55178CC9285357E8BA63F3708"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/fixtures/generated-worker-conformance-v1.json",
+      "sha256": "47F5FB1000CB28D1BB3F26D285971C3789FE79DEE3B5340A3FC65443CB0D671D"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/openapi.json",
+      "sha256": "6AE58D3DF7979366BA1087A182E8B8681A60916324A0764AA6DCEF0A889EE2CE"
+    },
+    {
+      "path": "contracts/phase-4/p4-6/operations-contracts.json",
+      "sha256": "A585C5B0B22E9BFE6D0614ECFA1E6F66F2730E40F808A8EB49902B2FCD9BF536"
+    },
+    {
+      "path": "docs/phase-4/README.md",
+      "sha256": "DC545D3823129A2CD7591F8867C66C7229F64060245249D980B789713EBB2A5D"
+    },
+    {
+      "path": "docs/phase-4/p4-6-evidence-review.md",
+      "sha256": "1D43C4E999AAC3C892480D1614D9B88E21B80C6DE57043327AB90C7BD0758084"
+    },
+    {
+      "path": "docs/phase-4/status.md",
+      "sha256": "BF7D7AA1D29BAEDEC9FFA2DB6C35426FB589CACC7B7B60A114BC795FCAB7F31B"
+    },
+    {
+      "path": "migrations/versions/0018_operations_security_scale.py",
+      "sha256": "AD080542CCC6808B7AC17993C97430A9367ACCCE4917D355E324C1599B120136"
+    },
+    {
+      "path": "tests/test_analytics_assignment_migration.py",
+      "sha256": "C9CE7410C4D4852C7A23ED149FEB06D96A96466CDAB13DFF4191841BF4698E37"
+    },
+    {
+      "path": "tests/test_phase40_migration.py",
+      "sha256": "700B7DC73C885922B49750AB4B465642CA69866F0604A30C0D6EF99E04750BAF"
+    },
+    {
+      "path": "tests/test_phase41_migration.py",
+      "sha256": "8F9905A842A79A53B3A2C374C06A11A9B68015D305532B821648B5DD2DC9012D"
+    },
+    {
+      "path": "tests/test_phase42_migration.py",
+      "sha256": "1583494ACDCB7321799A311E43179A66133202A22CDEDB2C155C1FA73A2C7B76"
+    },
+    {
+      "path": "tests/test_phase43_migration.py",
+      "sha256": "8F26AB7FF9AE75DC5B27BB37110A96E4644DE7930D39995F0707E9E980F7481F"
+    },
+    {
+      "path": "tests/test_phase44_migration.py",
+      "sha256": "0A26506308A23F5E4863EE92A21FD4EE41E98A29FB33B9045A06579A2C185DBA"
+    },
+    {
+      "path": "tests/test_phase45_migration.py",
+      "sha256": "F7F332F5F6487A376FF7E936E3FE213357B6CFCF2B7D83A6BA93B0311998E2FC"
+    },
+    {
+      "path": "tests/test_phase46_api.py",
+      "sha256": "09E335B7295B66470BA592B2DC6C8E82AC320F195821C28148745D4DD55E8CFD"
+    },
+    {
+      "path": "tests/test_phase46_canonical.py",
+      "sha256": "07925D4AFA23BF49A69C7A86C9018694D38B2526F63BEEB382ECD077C9336F67"
+    },
+    {
+      "path": "tests/test_phase46_capacity.py",
+      "sha256": "A04C04C7E7656D3659C89016D30CA027E8E6ACEEF5F89D5BD0FCE08716F89BA8"
+    },
+    {
+      "path": "tests/test_phase46_contracts.py",
+      "sha256": "0538E5B336DE1A817C7F39EC7E991BFB2650A914953016560E82D444E0B96675"
+    },
+    {
+      "path": "tests/test_phase46_controls.py",
+      "sha256": "10C72B6C59F31C82E717A9CA8BC6EE39C454BF57DA77BB94A9C5E1EB58BF37F9"
+    },
+    {
+      "path": "tests/test_phase46_failures.py",
+      "sha256": "F9EBC1F817399862B29DB8964FBA0100D49AA58A5F3B821AE6AC9410BF607B79"
+    },
+    {
+      "path": "tests/test_phase46_migration.py",
+      "sha256": "E9F571479D23CCBC95ADEFE2E61F3979BB2C479D02B5B44536FC9D3C369A00CE"
+    },
+    {
+      "path": "tests/test_phase46_objectives.py",
+      "sha256": "ECBC31D2E3617F4EB829B841EE46BAB24BB577637F72D15478ACB892A1951867"
+    },
+    {
+      "path": "tests/test_phase46_persistence.py",
+      "sha256": "38D172E75337209BEFE90AFAAF9BA5E604009F5B00DEB114AC17345D5B64F703"
+    },
+    {
+      "path": "tests/test_phase46_placement.py",
+      "sha256": "0C361FF4494B591A28FE957F31B37B9A84006515C642C8329F813F1163ABD4E9"
+    },
+    {
+      "path": "tests/test_phase46_postgres.py",
+      "sha256": "65CFB7B3C78351B0F06428658D720A051A2343DC98BA5B28CD42C0578D5F3EB0"
+    },
+    {
+      "path": "tests/test_phase46_readiness.py",
+      "sha256": "3B58C44626DFDA68ECD6449311BAA7DD9D7092F4DA95A3B40EC8C48129E925B6"
+    },
+    {
+      "path": "tests/test_phase46_recovery.py",
+      "sha256": "D46B0740FF4E5394B37C32FE9CDFC0C31AD72A462DCC83DE26AD5A039C5CC8BC"
+    },
+    {
+      "path": "tests/test_phase46_security.py",
+      "sha256": "60AFED6338C59F38F98AA4E571614BC6B0CD47168130D569C4C905BE1CA86232"
+    },
+    {
+      "path": "tests/test_phase46_signals.py",
+      "sha256": "A57DBE1CB2E45DEE62A976224D9DB9D79E58593B7C6EBA677A166578B2045612"
+    },
+    {
+      "path": "tests/test_phase46_supply_chain.py",
+      "sha256": "60F3A94B102D212DE0FE299B1381AE9C8A7843506DB6604E4FDA354393DFB263"
+    },
+    {
+      "path": "tests/test_phase46_telemetry.py",
+      "sha256": "441F27AB4BE4059B9DC16EFA9906797C768BD3B2B9D4CF24E3C072F1FC8CAD64"
+    },
+    {
+      "path": "tests/test_phase46_tracing.py",
+      "sha256": "2F18947BE773AE3400EE115429704DBC8139A5304E58AC98953A5EB68E32A3E8"
+    },
+    {
+      "path": "tests/test_phase46_unified_search.py",
+      "sha256": "9FB9289C2AFAA725E674D986FEE7996EF16DDD9846C1D613A7AF73BE49E666D3"
+    },
+    {
+      "path": "tests/test_phase46_workers.py",
+      "sha256": "91FA4C1BB92E6E055A6C296B0F691FDBEABCFD6A7E0DE720B2D9146C16395C9C"
+    },
+    {
+      "path": "tools/phase45_readiness.py",
+      "sha256": "D4CF29BF2C018C6E27304802FB988B99F1F627C207467F3606CB7DBA0124BC11"
+    },
+    {
+      "path": "tools/phase46_generated_operations.py",
+      "sha256": "274CBB29FE3187C6D5CD6F973233096FC333EDDA3326EE27B63D2B1C5141D249"
+    },
+    {
+      "path": "tools/phase46_readiness.py",
+      "sha256": "E165F2BB3356C4D2F8BDD4C94CD9AAA65F05ED0F3518ACF9EC675A967D32A148"
+    }
+  ],
+  "content_digest": "5E9ED1932FA002ABB3E89BDAC00562D8C0AC42548B5F0B569FFEF4544F6AFE57",
+  "generated_only": true,
+  "operational": false,
+  "remote_git_performed": false
+}

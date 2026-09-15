@@ -1,0 +1,480 @@
+{
+  "schema_version": "hcam.phase4.p4_3.start-authorization-package.v1",
+  "package_id": "P4.3-START-R0",
+  "decision_id": "D-P4.3-START",
+  "status": "owner_authorization_required",
+  "effective": false,
+  "prepared_on": "2026-09-04",
+  "expires_on_if_accepted": "2026-10-04",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-alert-lifecycle-planning",
+  "planning_base_commit": "c1c0a8a2860b6e21bbc2b65cd3618cbaa04e1483",
+  "planned_implementation_branch": "codex/phase4-alert-lifecycle-orchestration",
+  "accepted_phase4_planning": {
+    "package_id": "P4-PLANNING-R2",
+    "path": "docs/phase-4/planning-package.json",
+    "sha256": "B8F4371A8DDD350F44321E70F5FB8CEE0DD27299A26082A40460086E80DDEA63"
+  },
+  "accepted_p4_2": {
+    "acceptance_path": "contracts/phase-4/p4-2/acceptance.json",
+    "acceptance_sha256": "B5E9AFC50A1D24209F48F1828D6104EC21FACD10A435B8DFBE20FB9EB065BDC6",
+    "evidence_package_path": "contracts/phase-4/p4-2/evidence-package.json",
+    "evidence_package_sha256": "A10CEAF5742A59EA54373ED5494A99A73F94FCD9D268C20C5752D753805320CA",
+    "canonical_component_digest": "635642E579ECD712271E6F86E42F594BA912047E30DB95C716D212C81B83ACBC",
+    "accepted_technical_commit": "393ae258e84df8ab542665144a45f8e9b0b83c5b",
+    "acceptance_commit": "1e6673be5fc684f6607794b6e6b462f5905850a6"
+  },
+  "reconciled_planning": {
+    "package_id": "P4.3-PLANNING-R1",
+    "path": "contracts/phase-4/p4-3-planning-package.json",
+    "sha256": "020CFE60BB4802E1D102FF78D3970DEC222C4258C07C94D67A11B45F7FADC05F",
+    "superseded_package_id": "P4.3-PLANNING-R0",
+    "superseded_sha256": "E2F76A07A4F17DEFA1E7AF9C75EB838974930A3260F5D93401BDC0994EB4BD36"
+  },
+  "binding_decisions": {
+    "record_path": "contracts/phase-4/p4-3-owner-decisions.json",
+    "record_sha256": "EFB2F6C265CBF2DDF9D29A86740C26CABC4B9A5A5F4D2D00AEF86EEE7D2C494C",
+    "explanation_path": "docs/phase-4/p4-3-owner-decisions.md",
+    "explanation_sha256": "89B37A83F764C4F069F987AE6288C44808BFE5593C3A829FCCAC6273642F5902",
+    "D-P4.3-001": [
+      "A"
+    ],
+    "D-P4.3-002": [
+      "A"
+    ],
+    "D-P4.3-003": [
+      "A",
+      "B"
+    ],
+    "D-P4.3-004": [
+      "A"
+    ],
+    "D-P4.3-005": [
+      "A",
+      "C",
+      "D"
+    ],
+    "D-P4.3-006": [
+      "A",
+      "C"
+    ],
+    "D-P4.3-007": [
+      "A",
+      "C"
+    ],
+    "selected_profile": "A/A/A+B/A/A+C+D/A+C/A+C",
+    "interpretation": "semantic_alert_identity_plus_delivery_idempotency_orthogonal_alert_aggregate_mandatory_review_police_intelligence_generated_system_health_bounded_automation_hierarchical_loss_accounted_budgets_PostgreSQL_timer_truth_local_and_simulated_executor_future_adapter_distinct_reviewer_quorum_and_isolated_generated_lab_metadata_contract"
+  },
+  "planning_artifacts": [
+    {
+      "path": "docs/phase-4/p4-3-research-record.md",
+      "sha256": "AF27970E77B038F55247E83E387ECB7F4CBA92FC0A39EB968207253985D4ABC9"
+    },
+    {
+      "path": "docs/phase-4/p4-3-decision-packet.md",
+      "sha256": "642FF3FDB7E9ED15660C94C36CD4F95B1F67E00669CDE8A6F7DDC4EA8F747054"
+    },
+    {
+      "path": "docs/phase-4/p4-3-owner-decisions.md",
+      "sha256": "89B37A83F764C4F069F987AE6288C44808BFE5593C3A829FCCAC6273642F5902"
+    },
+    {
+      "path": "contracts/phase-4/p4-3-owner-decisions.json",
+      "sha256": "EFB2F6C265CBF2DDF9D29A86740C26CABC4B9A5A5F4D2D00AEF86EEE7D2C494C"
+    },
+    {
+      "path": "docs/phase-4/p4-3-contract-catalog.md",
+      "sha256": "6BEBDBD42649645891C5B18A8EBF155AE5265A81EF8A7A31C87A8EDE859CD793"
+    },
+    {
+      "path": "docs/phase-4/p4-3-implementation-plan.md",
+      "sha256": "13E9D2D51437D15016725CB54BC438EA93FA44D6B779584F4485E4FEFC1B81A2"
+    },
+    {
+      "path": "docs/phase-4/p4-3-threat-model.md",
+      "sha256": "386446980716252026880B3BD9A14CAB11B8F22DCD5D894C367E143D6AE76B74"
+    }
+  ],
+  "authorization_effect_if_owner_accepts_exact_digest": [
+    "record_the_exact_D_P4_3_START_owner_statement_without_expanding_scope",
+    "create_or_switch_to_the_exact_local_implementation_branch_from_the_clean_accepted_P4_2_checkpoint_plus_this_reconciled_planning_commit",
+    "perform_only_the_hash_bound_P4_0_through_P4_2_historical_readiness_transitions",
+    "implement_only_the_allowlisted_generated_only_alert_identity_lifecycle_review_quorum_budget_timer_persistence_API_adapter_observability_and_evidence_scope",
+    "keep_police_intelligence_mandatory_review_and_isolate_bounded_automation_to_generated_system_health_records",
+    "keep_PostgreSQL_as_authoritative_business_truth_and_use_only_a_local_bounded_executor_generated_external_executor_simulator_and_default_off_future_adapter_contract",
+    "implement_only_a_generated_sanitized_lab_metadata_contract_and_fake_without_direct_Sentinel_camera_media_network_or_lab_runtime_dependency",
+    "run_local_generated_only_validation_with_existing_locked_dependencies_and_at_most_eight_bounded_in_scope_remediation_and_reseal_cycles",
+    "optionally_run_already_available_local_PostgreSQL_PostGIS_validation_without_network_or_container_changes",
+    "create_local_checkpoint_commits_without_push",
+    "prepare_one_non_effective_exact_P4_3_owner_acceptance_proposal"
+  ],
+  "work_packages": [
+    {
+      "id": "P4.3-W1",
+      "name": "decision_reconciliation_and_start_package",
+      "scope": [
+        "preserve_the_exact_owner_profile_and_reconciled_planning_hashes",
+        "record_effective_start_only_after_exact_digest_acceptance"
+      ]
+    },
+    {
+      "id": "P4.3-W2",
+      "name": "historical_verification_transition",
+      "scope": [
+        "preserve_accepted_P4_0_through_P4_2_artifacts_byte_exact",
+        "verify_historical_readiness_from_accepted_commits_and_evidence",
+        "fail_closed_on_missing_object_path_hash_or_acceptance_binding"
+      ]
+    },
+    {
+      "id": "P4.3-W3",
+      "name": "contracts_and_generated_fixtures",
+      "scope": [
+        "strict_alert_lifecycle_review_quorum_budget_timer_receipt_outbox_adapter_and_problem_contracts",
+        "deterministic_positive_negative_metamorphic_collision_replay_overload_cross_lane_and_abuse_fixtures",
+        "no_real_identifiers_camera_media_provider_private_or_Government_data"
+      ]
+    },
+    {
+      "id": "P4.3-W4",
+      "name": "proposal_and_identity_service",
+      "scope": [
+        "revalidate_immutable_P4_2_generated_evaluation_revisions",
+        "semantic_identity_delivery_idempotency_deterministic_alert_IDs_and_command_receipts",
+        "deny_same_key_different_material_and_expose_no_public_create_alert_route"
+      ]
+    },
+    {
+      "id": "P4.3-W5",
+      "name": "lifecycle_review_and_quorum",
+      "scope": [
+        "orthogonal_transition_matrix_and_append_only_workflow_decisions",
+        "single_reviewer_default_and_bounded_distinct_reviewer_quorum_for_generated_high_impact_workflows",
+        "ETag_RBAC_department_reason_audit_correction_merge_cycle_and_evidence_drift_controls"
+      ]
+    },
+    {
+      "id": "P4.3-W6",
+      "name": "budgets_routing_suppression_and_system_health",
+      "scope": [
+        "immutable_hierarchical_budget_policies_and_deterministic_loss_accounted_collapse",
+        "explicit_suppression_routing_and_no_drop_accounting",
+        "separately_typed_generated_system_health_lane_with_cross_lane_denial"
+      ]
+    },
+    {
+      "id": "P4.3-W7",
+      "name": "durable_timer_intents_and_bounded_execution",
+      "scope": [
+        "database_timer_intents_due_claims_leases_retries_stale_checks_and_crash_recovery",
+        "default_off_production_forbidden_local_executor",
+        "generated_external_executor_simulator_and_default_off_future_workflow_adapter_with_PostgreSQL_truth"
+      ]
+    },
+    {
+      "id": "P4.3-W8",
+      "name": "persistence_migration_and_row_security",
+      "scope": [
+        "add_revision_0015_alert_lifecycle_orchestration_descending_from_0014_rule_authoring_evaluation",
+        "add_workflow_receipt_budget_timer_merge_revision_quorum_and_adapter_state_without_rewriting_history",
+        "application_department_filters_forced_PostgreSQL_RLS_optimistic_versioning_unique_idempotency_and_transactional_outbox",
+        "SQLite_single_worker_development_boundary_and_full_migration_cycle"
+      ]
+    },
+    {
+      "id": "P4.3-W9",
+      "name": "API_observability_and_lab_contract",
+      "scope": [
+        "bounded_read_and_lifecycle_routes_with_no_store_ETag_reason_RBAC_and_typed_errors",
+        "low_cardinality_metrics_and_sanitized_failures",
+        "internal_generated_only_LabEvaluationIngressAdapter_contract_and_fake_without_public_route_direct_client_or_runtime_dependency",
+        "no_provider_notification_dispatch_enforcement_or_arbitrary_worker_start_route"
+      ]
+    },
+    {
+      "id": "P4.3-W10",
+      "name": "validation_evidence_and_acceptance",
+      "scope": [
+        "focused_generated_property_abuse_migration_RLS_concurrency_lease_recovery_and_historical_tests",
+        "full_regression_Ruff_compile_build_lock_SBOM_license_vulnerability_and_clean_source_checks",
+        "at_least_90_percent_branch_coverage_for_new_or_materially_changed_P4_3_modules",
+        "seal_exact_evidence_and_non_effective_owner_acceptance_proposal"
+      ]
+    }
+  ],
+  "exact_additive_implementation_paths": [
+    "app/hcam/intelligence/alerts/__init__.py",
+    "app/hcam/intelligence/alerts/bounds.py",
+    "app/hcam/intelligence/alerts/contracts.py",
+    "app/hcam/intelligence/alerts/canonical.py",
+    "app/hcam/intelligence/alerts/identity.py",
+    "app/hcam/intelligence/alerts/authority.py",
+    "app/hcam/intelligence/alerts/lifecycle.py",
+    "app/hcam/intelligence/alerts/review.py",
+    "app/hcam/intelligence/alerts/budgets.py",
+    "app/hcam/intelligence/alerts/timers.py",
+    "app/hcam/intelligence/alerts/adapters.py",
+    "app/hcam/intelligence/alerts/persistence.py",
+    "app/hcam/intelligence/alerts/service.py",
+    "app/hcam/intelligence/alerts/routes.py",
+    "app/hcam/intelligence/alerts/metrics.py",
+    "app/hcam/intelligence/alerts/runtime.py",
+    "migrations/versions/0015_alert_lifecycle_orchestration.py",
+    "contracts/phase-4/p4-3-start-authorization.json",
+    "contracts/phase-4/p4-3/alert-contracts.json",
+    "contracts/phase-4/p4-3/database.json",
+    "contracts/phase-4/p4-3/openapi.json",
+    "contracts/phase-4/p4-3/fixtures/generated-alert-proposals-v1.json",
+    "contracts/phase-4/p4-3/fixtures/generated-lifecycle-cases-v1.json",
+    "contracts/phase-4/p4-3/fixtures/generated-quorum-cases-v1.json",
+    "contracts/phase-4/p4-3/fixtures/generated-budget-cases-v1.json",
+    "contracts/phase-4/p4-3/fixtures/generated-timer-cases-v1.json",
+    "contracts/phase-4/p4-3/fixtures/generated-workflow-adapter-cases-v1.json",
+    "contracts/phase-4/p4-3/fixtures/generated-lab-ingress-cases-v1.json",
+    "contracts/phase-4/p4-3/fixtures/generated-system-health-cases-v1.json",
+    "contracts/phase-4/p4-3/evidence.json",
+    "contracts/phase-4/p4-3/evidence-package.json",
+    "contracts/phase-4/p4-3/acceptance-proposal.json",
+    "docs/phase-4/p4-3-evidence-review.md",
+    "tests/test_phase43_contracts.py",
+    "tests/test_phase43_canonical.py",
+    "tests/test_phase43_identity.py",
+    "tests/test_phase43_authority.py",
+    "tests/test_phase43_lifecycle.py",
+    "tests/test_phase43_quorum.py",
+    "tests/test_phase43_budgets.py",
+    "tests/test_phase43_timers.py",
+    "tests/test_phase43_adapters.py",
+    "tests/test_phase43_persistence.py",
+    "tests/test_phase43_migration.py",
+    "tests/test_phase43_api.py",
+    "tests/test_phase43_security.py",
+    "tests/test_phase43_postgres.py",
+    "tests/test_phase43_readiness.py",
+    "tools/phase43_generated_alerts.py",
+    "tools/phase43_readiness.py"
+  ],
+  "exact_existing_paths_allowed_to_change": [
+    {
+      "path": ".github/workflows/python-ci.yml",
+      "pre_change_sha256": "E03439338B9E719AD13334DBBDDFB4814440DD6B1A12552022AD4B07763A189E"
+    },
+    {
+      "path": "app/hcam/database.py",
+      "pre_change_sha256": "C523D18A67EDD2E91A58938B408DD989102DCD613CB286C6501BADAEC0415108"
+    },
+    {
+      "path": "app/hcam/main.py",
+      "pre_change_sha256": "0D9986BAB1A2849045A41EAE062FCDABB8D66840DF1AD76EFE067D445BAFACA3"
+    },
+    {
+      "path": "app/hcam/settings.py",
+      "pre_change_sha256": "3664DB57B7E455484BB58BCF158E3AC7E4AD9F480E96F077CEE07870BE52DD6A"
+    },
+    {
+      "path": "app/hcam/intelligence/contracts.py",
+      "pre_change_sha256": "A78848F1EEF3A9BC4E2E8B854193234328DFDE95F6A54E6F0138E2547DDB3D88"
+    },
+    {
+      "path": "app/hcam/intelligence/models.py",
+      "pre_change_sha256": "09E53DAF86E7C986AF568616D79A24B81FAD7B79244C062354248ADDF52283D1"
+    },
+    {
+      "path": "app/hcam/intelligence/repository.py",
+      "pre_change_sha256": "29A8CA21F047E1A34FFC8D1B37340A6E88C39580893BFF364341F6BFB63DE043"
+    },
+    {
+      "path": "app/hcam/intelligence/routes.py",
+      "pre_change_sha256": "876CE7EA846CCC46783A131530C79395B91E10B7C939E7C057187F45F33C09B0"
+    },
+    {
+      "path": "app/hcam/intelligence/row_security.py",
+      "pre_change_sha256": "0F3871B530C657781B95A58897366B64A83B9C1533B7351FF47595F9BA2F7418"
+    },
+    {
+      "path": "app/hcam/intelligence/schemas.py",
+      "pre_change_sha256": "C366A61809BA13A1728C1DC696802AAAB846FBDC14D2E274DE21E41072E41949"
+    },
+    {
+      "path": "app/hcam/intelligence/service.py",
+      "pre_change_sha256": "D77D9820D96C6530043F3B1A30EE7185B3FAEC97CCB2368CEA50D386772B6C17"
+    },
+    {
+      "path": "contracts/phase-4/database.json",
+      "pre_change_sha256": "DB7DB7C53DBA967842F304AE7548FE2FE159504B45732DEEEF9EDFEE85662658"
+    },
+    {
+      "path": "contracts/phase-4/intelligence-contracts.json",
+      "pre_change_sha256": "6B60D56DE3395BDE0215960C91F359CEE7DEEF43C078002210EB7D82A300365B"
+    },
+    {
+      "path": "contracts/phase-4/openapi.json",
+      "pre_change_sha256": "821EEF1D91DCB1A43DCEF1EAF20E7E20E926CCE4161F851EE33056BBBA493D07"
+    },
+    {
+      "path": "tests/conftest.py",
+      "pre_change_sha256": "A2441C55D344962B7D7F729F1D56851BB94FD9E80A8959E8518DD92C793165DA"
+    },
+    {
+      "path": "tests/test_phase40_migration.py",
+      "pre_change_sha256": "0D6842C83BEE4A2EEDCB71B45E74F0D65990BE4F34FF60A5257F136319BBCD15"
+    },
+    {
+      "path": "tests/test_phase41_migration.py",
+      "pre_change_sha256": "16213302A35BC55C072BD8B76618260D0883FB73EA9458B2E920A2CD0CA1DD49"
+    },
+    {
+      "path": "tests/test_phase42_migration.py",
+      "pre_change_sha256": "494DB20DF08C54727EBB97A66531C07D61C1DDB606BBF5D289C1C9B149D77EBB"
+    },
+    {
+      "path": "tests/test_phase42_readiness.py",
+      "pre_change_sha256": "B9F71FC1DD1DBAE9D68B83797DE777F243B30F15F64065ABDEA5D90324F0E927"
+    },
+    {
+      "path": "tools/phase42_readiness.py",
+      "pre_change_sha256": "B045A13ECC609D50D7A370C5537E19181C29DACDB04D24F992E253061265001A"
+    },
+    {
+      "path": "tools/release_contracts.py",
+      "pre_change_sha256": "CAF273449E1B275F4BC1FFE364D9638C53969FD83F35812D5CB6BFCD2FA39F7D"
+    },
+    {
+      "path": "docs/phase-4/status.md",
+      "pre_planning_sha256": "9D08975804043B0C4F28DC47461EDA53AC955A76540DAC59B7BEF005BA760851",
+      "planning_transition_policy": "current_status_must_name_P4_3_PLANNING_R1_and_P4_3_START_R0_digests_pending_start_acceptance_and_unchanged_40_of_100_progress"
+    }
+  ],
+  "immutable_dependency_bindings": [
+    {
+      "path": "pyproject.toml",
+      "sha256": "B2740298D7D1E5D147CC48E21750966EB0B765376853F27ACDA990D70F328605"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "69CB301D0F8D97BC0973C620F47FB0D84BFAAE25A1D405E067B15005994F55EF"
+    }
+  ],
+  "immutable_scope": [
+    "all_existing_contracts_phase_3_and_docs_phase_3_files",
+    "all_existing_migrations_through_0014_rule_authoring_evaluation",
+    "all_accepted_P4_0_P4_1_and_P4_2_packages_evidence_acceptance_and_source_objects",
+    "docs/phase-4/planning-package.json",
+    "contracts/phase-4/p4-planning-r2-acceptance.json",
+    "docs/phase-4/owner-decisions.md",
+    "docs/phase-4/implementation-plan.md",
+    "docs/phase-4/acceptance-checklist.md",
+    "contracts/phase-4/p4-3-planning-package.json",
+    "contracts/phase-4/p4-3-owner-decisions.json",
+    "docs/phase-4/p4-3-research-record.md",
+    "docs/phase-4/p4-3-decision-packet.md",
+    "docs/phase-4/p4-3-owner-decisions.md",
+    "docs/phase-4/p4-3-contract-catalog.md",
+    "docs/phase-4/p4-3-implementation-plan.md",
+    "docs/phase-4/p4-3-threat-model.md"
+  ],
+  "bounded_runtime_contract_after_authorization": {
+    "generated_only": true,
+    "operational": false,
+    "default_off": true,
+    "production_forbidden": true,
+    "internal_proposal_service_only": true,
+    "public_create_alert_route": false,
+    "police_intelligence_authority": "mandatory_review_only",
+    "generated_system_health_actions": [
+      "route",
+      "suppress_duplicate",
+      "resolve_synthetic_health"
+    ],
+    "future_autonomous_action": false,
+    "PostgreSQL_authoritative_business_truth": true,
+    "real_external_workflow_engine": false,
+    "direct_Sentinel_camera_or_media_access": false,
+    "lab_metadata_fields_must_be_sanitized_and_generated": true,
+    "single_reviewer_default": true,
+    "distinct_reviewer_quorum_minimum": 1,
+    "distinct_reviewer_quorum_maximum": 5,
+    "timer_worker_lease_seconds": 90,
+    "timer_attempts_maximum": 3,
+    "API_page_size_maximum": 200,
+    "reason_text_bytes_maximum": 2000,
+    "contract_envelope_bytes_maximum": 65536
+  },
+  "allowed_local_execution_after_authorization": {
+    "repository_owned_generated_JSON_only": true,
+    "existing_locked_dependencies_only": true,
+    "dependency_install_or_download": false,
+    "network_egress": false,
+    "generated_alert_identity_and_lifecycle_evaluation": true,
+    "generated_quorum_budget_timer_and_adapter_simulation": true,
+    "local_SQLite_validation": true,
+    "already_available_local_PostgreSQL_PostGIS_validation_without_network_or_container_change": true,
+    "external_workflow_engine_or_provider": false,
+    "Sentinel_camera_or_media_access": false,
+    "model_dataset_artifact_or_sensitive_data_access": false,
+    "operational_alert_notification_dispatch_or_enforcement": false,
+    "source_test_documentation_and_evidence_cycles_maximum": 8,
+    "local_checkpoint_commits": true,
+    "remote_git": false
+  },
+  "frozen_progress": {
+    "phase4_before": {
+      "earned_points": 40,
+      "total_points": 100,
+      "percentage": "40.00%"
+    },
+    "p4_3_before": {
+      "earned_points": 0,
+      "total_points": 15,
+      "percentage": "0.0000%"
+    },
+    "technical_ceiling_before_owner_acceptance": {
+      "phase4_earned_points": 53,
+      "phase4_percentage": "53.00%",
+      "p4_3_earned_points": 13,
+      "p4_3_percentage": "86.6667%"
+    },
+    "after_exact_p4_3_acceptance": {
+      "phase4_earned_points": 55,
+      "phase4_percentage": "55.00%",
+      "p4_3_earned_points": 15,
+      "p4_3_percentage": "100.0000%"
+    },
+    "planning_points_awarded": 0,
+    "partial_item_credit": false
+  },
+  "stop_conditions": [
+    "path_or_scope_outside_this_package",
+    "immutable_hash_or_accepted_history_mismatch",
+    "semantic_identity_collision_or_same_key_different_material_is_not_denied",
+    "police_intelligence_can_enter_system_health_bounded_automation",
+    "future_autonomous_action_or_operational_side_effect_is_reachable",
+    "PostgreSQL_is_not_authoritative_or_external_adapter_can_create_split_brain",
+    "quorum_allows_duplicate_actor_self_satisfaction_stale_evidence_or_cross_department_vote",
+    "budget_overflow_silently_drops_or_loses_alert_meaning",
+    "timer_claim_lease_retry_or_crash_recovery_is_nondeterministic_or_unbounded",
+    "direct_Sentinel_camera_media_network_credential_private_or_Government_data_path_exists",
+    "cross_department_visibility_or_forced_RLS_failure",
+    "prohibited_value_in_log_metric_exception_or_problem_response",
+    "dependency_install_download_network_model_data_media_container_deployment_or_remote_Git_required",
+    "eight_in_scope_remediation_cycles_exhausted"
+  ],
+  "explicitly_not_authorized": [
+    "P4_3_implementation_before_exact_package_acceptance",
+    "new_or_changed_dependencies_lockfiles_installation_or_downloads",
+    "real_external_workflow_engine_service_adapter_connection_credentials_or_network",
+    "direct_Sentinel_site_API_camera_stream_frame_image_recording_playback_or_media_access",
+    "real_private_personal_biometric_vehicle_owner_case_watchlist_Government_or_police_data",
+    "models_datasets_checkpoints_artifacts_inference_training_accelerators_or_benchmarks",
+    "operational_alerts_notifications_provider_routing_dispatch_enforcement_or_autonomous_action",
+    "production_cloud_containers_Kubernetes_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "required_acceptance_sequence": [
+    "owner_accepts_exact_SHA_256_of_this_package_as_D_P4_3_START",
+    "implementation_records_effective_authorization_without_changing_scope",
+    "bounded_local_generated_only_build_and_validation_complete",
+    "exact_evidence_package_and_known_limitations_are_sealed",
+    "owner_separately_accepts_exact_P4_3_evidence_package"
+  ]
+}

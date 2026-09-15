@@ -1,0 +1,807 @@
+{
+  "category": "telemetry-registry",
+  "scenario_count": 80,
+  "scenarios": [
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_0",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0000"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_1",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0001"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_2",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0002"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_3",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0003"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_4",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0004"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_5",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0005"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_6",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0006"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_7",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0007"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_8",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0008"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_9",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0009"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_10",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0010"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_11",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0011"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_12",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0012"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_13",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0013"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_14",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0014"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_15",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0015"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_0",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0016"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_1",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0017"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_2",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0018"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_3",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0019"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_4",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0020"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_5",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0021"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_6",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0022"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_7",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0023"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_8",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0024"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_9",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0025"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_10",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0026"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_11",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0027"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_12",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0028"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_13",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0029"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_14",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0030"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_15",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0031"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_0",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0032"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_1",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0033"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_2",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0034"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_3",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0035"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_4",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0036"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_5",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0037"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_6",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0038"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_7",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0039"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_8",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0040"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_9",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0041"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_10",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0042"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_11",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0043"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_12",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0044"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_13",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0045"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_14",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0046"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_15",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0047"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_0",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0048"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_1",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0049"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_2",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0050"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_3",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0051"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_4",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0052"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_5",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0053"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_6",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0054"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_7",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0055"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_8",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0056"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_9",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0057"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_10",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0058"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_11",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0059"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_12",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0060"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_13",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0061"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_14",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0062"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_15",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0063"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_0",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0064"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_1",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0065"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_2",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0066"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_3",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0067"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_4",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0068"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_5",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0069"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_6",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0070"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_7",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0071"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_8",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0072"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_9",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0073"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_10",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0074"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_11",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0075"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "labels": {
+        "outcome": "accepted"
+      },
+      "metric": "hcam_generated_metric_12",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0076"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "labels": {
+        "outcome": "denied"
+      },
+      "metric": "hcam_generated_metric_13",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0077"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "labels": {
+        "outcome": "failed"
+      },
+      "metric": "hcam_generated_metric_14",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0078"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "labels": {
+        "outcome": "unknown"
+      },
+      "metric": "hcam_generated_metric_15",
+      "operational": false,
+      "scenario_id": "p46.telemetry-registry.0079"
+    }
+  ],
+  "schema_version": "hcam.phase4.p4_6.fixture.telemetry-registry.v1"
+}

@@ -1,0 +1,131 @@
+{
+  "schema_version": "hcam.phase5.p5_4.owner_decisions.v1",
+  "record_id": "P5.4-OWNER-DECISIONS-R0",
+  "status": "owner_selected_for_reconciliation",
+  "effective_for_reconciliation": true,
+  "implementation_effective": false,
+  "selected_by": "mayank-admin",
+  "selected_on": "2026-09-08",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "16f9029e104cec40d06a3b9ce0eb0e2ec4e4d0ac",
+  "source_statement": {
+    "normalized_statement": "D-P5.4-001: A D-P5.4-002: A D-P5.4-003: A D-P5.4-004: A D-P5.4-005: A D-P5.4-006: A D-P5.4-007: A D-P5.4-008: A D-P5.4-009: A D-P5.4-010: A D-P5.4-011: A D-P5.4-012: A",
+    "sha256": "10B1AE65EF047B66B74ABE3F40C7CBC124B99FD7B499F79053171401E48F1B2D",
+    "normalization": "Paragraph whitespace collapsed to one ASCII space; UTF-8 without BOM; no terminal newline."
+  },
+  "selection_profile": "A/A/A/A/A/A/A/A/A/A/A/A",
+  "selection_count": 12,
+  "selections": [
+    {
+      "id": "D-P5.4-001",
+      "selected": "A",
+      "resolved_meaning": "Keep Command Center primary and add one connected specialist Intelligence Center with grouped overview, hypothesis, run, relationship, spatial, rule, candidate, proposed-alert, review, correction, and health pages."
+    },
+    {
+      "id": "D-P5.4-002",
+      "selected": "A",
+      "resolved_meaning": "Use separate schemas and visual vocabulary for observation, inference, hypothesis, candidate, proposed alert, review, correction, and lifecycle, with source, revision, freshness, completeness, provenance, and authority limits."
+    },
+    {
+      "id": "D-P5.4-003",
+      "selected": "A",
+      "resolved_meaning": "Use separate typed hypothesis, correlation-run, proposed-alert, mandatory-review, and correction queues with stable server ordering, cursor pagination, explicit filters, and guarded revisioned saved views."
+    },
+    {
+      "id": "D-P5.4-004",
+      "selected": "A",
+      "resolved_meaning": "Use an internal bounded relationship-renderer adapter, a later exact-version React Flow candidate for the read-only enhancement, authoritative node and edge tables, and the accepted P5.2 MapLibre and deck.gl GIS domain."
+    },
+    {
+      "id": "D-P5.4-005",
+      "selected": "A",
+      "resolved_meaning": "Make the exact immutable rule revision, normalized inputs, typed node trace, window and timer behavior, outcome, abstention, and limitations authoritative over any secondary deterministic prose summary."
+    },
+    {
+      "id": "D-P5.4-006",
+      "selected": "A",
+      "resolved_meaning": "Present candidate sets as field-level support, contradiction, ambiguity, missingness, staleness, calibration, provenance, and abstention matrices with identity explicitly not established."
+    },
+    {
+      "id": "D-P5.4-007",
+      "selected": "A",
+      "resolved_meaning": "Use server-authoritative configurable independent quorum, current policy and ETag, attributable append-only reviews, duplicate-actor denial, memory-only drafts, bounded reasons, and neutral explicit confirmation."
+    },
+    {
+      "id": "D-P5.4-008",
+      "selected": "A",
+      "resolved_meaning": "Require strong If-Match, expected revision, unique idempotency key, request fingerprint, immutable command receipt, server transaction, authoritative refetch, and deliberate reconsideration after conflicts without automatic resubmission."
+    },
+    {
+      "id": "D-P5.4-009",
+      "selected": "A",
+      "resolved_meaning": "Use versioned events only to invalidate scoped query keys, coalesce bursts, quarantine unknown versions, and confirm state and authority through HTTP with bounded polling or manual fallback."
+    },
+    {
+      "id": "D-P5.4-010",
+      "selected": "A",
+      "resolved_meaning": "Preserve append-only correction, retraction, and supersession lineage, mark all impacted views stale, disable stale mutation, refetch authority, and record reconsideration as a new attributable entry."
+    },
+    {
+      "id": "D-P5.4-011",
+      "selected": "A",
+      "resolved_meaning": "Require authoritative table equivalence, complete keyboard and focus behavior, non-color signals, bounded announcements, reflow, reduced motion, neutral confirmation, contradiction prominence, and workload safeguards."
+    },
+    {
+      "id": "D-P5.4-012",
+      "selected": "A",
+      "resolved_meaning": "Require deterministic generated-only contract, component, browser, accessibility, visual, security, concurrency, idempotency, correction, event, profile, hostile-input, C1/C10/C50, replay, hash, dependency, and repository evidence."
+    }
+  ],
+  "precedence_rules": [
+    "Command_Center_remains_primary_and_Intelligence_Center_is_a_connected_specialist_surface",
+    "authoritative_tables_and_exact_traces_override_visual_graph_map_or_prose_summaries",
+    "server_policy_authorization_quorum_ETag_idempotency_and_HTTP_state_override_client_projection",
+    "correction_contradiction_abstention_freshness_and_limitations_cannot_be_hidden_by_profile_or_layout",
+    "React_Flow_is_a_later_exact_dependency_candidate_not_an_installed_or_authorized_dependency",
+    "review_records_procedural_state_only_and_never_triggers_notification_dispatch_enforcement_or_external_action"
+  ],
+  "progress": {
+    "owner_decisions": {
+      "earned": 12,
+      "total": 12,
+      "percent": 100.0,
+      "change_percentage_points": 100.0,
+      "awards_product_points": false
+    },
+    "P5_4_planning": {
+      "earned": 8,
+      "total": 8,
+      "percent": 100.0,
+      "change_percentage_points": 0.0,
+      "awards_product_points": false
+    },
+    "P5_4_product": {
+      "earned": 0,
+      "total": 15,
+      "percent": 0.0
+    },
+    "phase_5_product": {
+      "earned": 48,
+      "total": 100,
+      "percent": 48.0
+    }
+  },
+  "continuing_prohibitions": [
+    "planning_acceptance_by_implication",
+    "start_authorization_by_implication",
+    "product_or_test_implementation",
+    "source_import",
+    "dependency_resolution_installation_or_lockfile_change",
+    "backend_route_or_migration",
+    "frontend_or_browser_runtime",
+    "model_dataset_artifact_or_inference",
+    "provider_network_camera_or_media_access",
+    "Government_private_data_real_investigation_or_identity",
+    "operational_alert_notification_dispatch_enforcement_or_autonomous_action",
+    "container_Kubernetes_or_deployment",
+    "P5_5",
+    "additional_commit_without_new_authority",
+    "remote_Git"
+  ]
+}

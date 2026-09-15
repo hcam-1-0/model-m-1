@@ -1,0 +1,34 @@
+{
+  "schema_version": "hcam.phase4.p4_2.start-authorization.v1",
+  "decision_id": "D-P4.2-START",
+  "status": "owner_authorized",
+  "effective": true,
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-09-04",
+  "authorization_package": {
+    "package_id": "P4.2-START-R0",
+    "path": "contracts/phase-4/p4-2-start-authorization-package.json",
+    "sha256": "F1C4B64883A23240FB787E5203CD62395AA025304247028392BCF20218C3D263"
+  },
+  "planning_checkpoint": "c7c2cb084e53d010ac7b54b0ea67e2eba53943bc",
+  "implementation_branch": "codex/phase4-rule-authoring-evaluation",
+  "authorized_scope": "exact_documented_bounded_local_generated_only_P4_2_implementation",
+  "combined_local_cycles_maximum": 8,
+  "local_checkpoint_commits_authorized": true,
+  "remote_git_authorized": false,
+  "separate_exit_acceptance_required": true,
+  "continuing_prohibitions": [
+    "new_or_changed_dependencies_lockfiles_installs_downloads_or_network_egress",
+    "models_datasets_artifacts_inference_training_accelerators_or_benchmarks",
+    "cameras_ONVIF_Sentinel_streams_frames_images_recording_playback_or_media",
+    "external_providers_credentials_or_external_lookups",
+    "Government_police_private_personal_biometric_vehicle_owner_case_or_watchlist_data",
+    "active_or_operational_rule_activation_or_startup_workers",
+    "alerts_notifications_routing_dispatch_enforcement_or_autonomous_action",
+    "containers_Kubernetes_cloud_pilot_production_release_or_deployment",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git",
+    "P4_3_or_later_implementation"
+  ],
+  "owner_statement_sha256": "FEFA8CED14B04DF0DE8C54886EF3BB55B34888A049D682FC6246915FB44332A0",
+  "owner_statement": "D-P4.2-START: I accept P4.2-START-R0 with SHA-256 F1C4B64883A23240FB787E5203CD62395AA025304247028392BCF20218C3D263 under its exact documented boundaries."
+}

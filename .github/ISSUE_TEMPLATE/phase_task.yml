@@ -3,6 +3,7 @@ description: Track implementation, documentation, validation, or research work f
 title: "[Phase Task]: "
 labels:
   - phase-task
+  - "type: feature"
 body:
   - type: dropdown
     id: phase
@@ -10,9 +11,11 @@ body:
       label: Phase
       description: Select the project phase this task belongs to.
       options:
+        - Phase -1 - adaptive platform foundation
         - Phase 0 - foundation and validation
         - Phase 1 - platform foundation
         - Phase 2 - camera and video ingestion
+        - Phase 2.5 - isolated Sentinel integration lab
         - Phase 3 - AI analytics engine
         - Phase 4 - intelligence and correlation
         - Phase 5 - operator applications
@@ -59,6 +62,26 @@ body:
       placeholder: |
         python -m unittest discover -s tests -v
         git diff --check
+    validations:
+      required: true
+  - type: dropdown
+    id: target_profile
+    attributes:
+      label: Target Execution Profile
+      description: Select the smallest required profile; portable work must define fallbacks.
+      options:
+        - Portable - laptop through Kubernetes
+        - CPU-only developer laptop
+        - Owned GPU lab
+        - Standalone server
+        - Kubernetes cluster
+    validations:
+      required: true
+  - type: textarea
+    id: fallback
+    attributes:
+      label: Fallback, Bypass, And Rollback
+      description: Explain behavior when hardware, acceleration, a model, or a service layer is unavailable.
     validations:
       required: true
   - type: input

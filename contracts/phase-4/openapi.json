@@ -1,0 +1,149 @@
+{
+  "schema_version": "hcam.phase4.p4_6.openapi-surface.v1",
+  "feature_flags": [
+    "HCAM_INTELLIGENCE_GENERATED_CONTROL_PLANE_ENABLED",
+    "HCAM_INTELLIGENCE_GENERATED_CORRELATION_ENABLED",
+    "HCAM_INTELLIGENCE_GENERATED_RULE_EVALUATION_ENABLED",
+    "HCAM_INTELLIGENCE_GENERATED_ALERT_LIFECYCLE_ENABLED",
+    "HCAM_INTELLIGENCE_GENERATED_REFERENCE_INTEGRATIONS_ENABLED",
+    "HCAM_INTELLIGENCE_GENERATED_REFERENCE_MANUAL_QUERIES_ENABLED",
+    "HCAM_INTELLIGENCE_GENERATED_REFERENCE_HYPOTHESIS_ENRICHMENT_ENABLED",
+    "HCAM_INTELLIGENCE_GENERATED_INVESTIGATIONS_ENABLED",
+    "HCAM_OPERATIONS_GENERATED_PLATFORM_ENABLED"
+  ],
+  "default_enabled": false,
+  "production_allowed": false,
+  "p4_3_paths": {
+    "/generated-alerts": [
+      "GET"
+    ],
+    "/generated-alerts/{alert_id}": [
+      "GET"
+    ],
+    "/generated-alerts/{alert_id}/lifecycle": [
+      "GET",
+      "POST"
+    ],
+    "/generated-alerts/{alert_id}/review-policy": [
+      "GET"
+    ],
+    "/generated-alerts/{alert_id}/reviews": [
+      "POST"
+    ]
+  },
+  "p4_4_paths": {
+    "/reference-integrations/candidate-sets/{candidate_set_id}": [
+      "GET"
+    ],
+    "/reference-integrations/controls": [
+      "GET",
+      "POST"
+    ],
+    "/reference-integrations/health": [
+      "GET"
+    ],
+    "/reference-integrations/providers": [
+      "GET",
+      "POST"
+    ],
+    "/reference-integrations/providers/{provider_version_id}": [
+      "GET"
+    ],
+    "/reference-integrations/queries": [
+      "POST"
+    ],
+    "/reference-integrations/queries/{job_id}": [
+      "GET"
+    ],
+    "/reference-integrations/queries/{job_id}/cancel": [
+      "POST"
+    ]
+  },
+  "preserved_p4_0_paths": 9,
+  "preserved_p4_1_read_paths": 5,
+  "preserved_p4_2_paths": 11,
+  "request_requirements": [
+    "authenticated role for every route",
+    "authorized department",
+    "X-HCAM-Reason for mutations",
+    "If-Match for every alert mutation",
+    "bounded request and pagination",
+    "Cache-Control no-store",
+    "generated-only nonoperational contracts",
+    "exact reference-integration capability roles",
+    "If-Match for reference control mutations"
+  ],
+  "absent_surfaces": [
+    "public generated alert proposal",
+    "active or operational rule activation",
+    "real external workflow executor transport",
+    "notification routing dispatch or enforcement",
+    "camera media or Sentinel network access",
+    "automatic external background scheduler",
+    "public reference worker execution",
+    "real provider destination or credential configuration",
+    "identity confirmation from candidate evidence"
+  ],
+  "p4_5_paths": {
+    "/investigations/health": [
+      "GET"
+    ],
+    "/investigations/relationships": [
+      "POST"
+    ],
+    "/investigations/timelines": [
+      "GET",
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}": [
+      "GET"
+    ],
+    "/investigations/timelines/{timeline_id}/corrections": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/deletion-simulations": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/entries": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/evidence": [
+      "GET",
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/export-previews": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/holds": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/integrity": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/lifecycle": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/provenance": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/reconstruction": [
+      "GET"
+    ],
+    "/investigations/timelines/{timeline_id}/retention-evaluations": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/reviews": [
+      "POST"
+    ]
+  },
+  "investigation_runtime_state": "disabled_by_default_and_forbidden_in_production",
+  "p4_6_paths": {
+    "/platform/operations/summary": [
+      "GET"
+    ],
+    "/platform/operations/{view}": [
+      "GET"
+    ]
+  },
+  "operations_runtime_state": "disabled_by_default_and_forbidden_in_production"
+}

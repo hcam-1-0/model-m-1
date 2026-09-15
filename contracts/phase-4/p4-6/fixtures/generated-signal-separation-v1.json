@@ -1,0 +1,647 @@
+{
+  "category": "signal-separation",
+  "scenario_count": 80,
+  "scenarios": [
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0000"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0001"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0002"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0003"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0004"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0005"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0006"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0007"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0008"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0009"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0010"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0011"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0012"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0013"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0014"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0015"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0016"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0017"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0018"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0019"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0020"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0021"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0022"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0023"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0024"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0025"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0026"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0027"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0028"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0029"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0030"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0031"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0032"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0033"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0034"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0035"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0036"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0037"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0038"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0039"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0040"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0041"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0042"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0043"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0044"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0045"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0046"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0047"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0048"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0049"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0050"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0051"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0052"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0053"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0054"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0055"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0056"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0057"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0058"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0059"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0060"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0061"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0062"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0063"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0064"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0065"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0066"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0067"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0068"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0069"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0070"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0071"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0072"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0073"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0074"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0075"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "lane": "operational",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0076"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "lane": "security",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0077"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "lane": "audit",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0078"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "lane": "evidence",
+      "operational": false,
+      "raw_retained": false,
+      "scenario_id": "p46.signal-separation.0079"
+    }
+  ],
+  "schema_version": "hcam.phase4.p4_6.fixture.signal-separation.v1"
+}

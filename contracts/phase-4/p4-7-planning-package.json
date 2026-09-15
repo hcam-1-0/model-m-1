@@ -1,0 +1,303 @@
+{
+  "schema_version": "hcam.phase4.p4_7.planning-package.v1",
+  "package_id": "P4.7-PLANNING-R0",
+  "status": "research_complete_owner_decisions_pending",
+  "effective": false,
+  "prepared_on": "2026-09-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-operations-security-scale",
+  "planning_base_commit": "98234e475e938d7ca1dee5558d2088dabc187845",
+  "planning_authorization": {
+    "decision_id": "D-P4.7-PLAN-AUTH",
+    "path": "contracts/phase-4/p4-7-plan-authorization.json",
+    "sha256": "E31C550994C175096079DC5A9F61AB3EB24C6E2D4CCBBAE263F461A2C7818BBE",
+    "owner_statement_sha256": "F38C078D139E3153FA654279FDD8F6B63A805542334BE3D6A20D41089EE7FAEC"
+  },
+  "accepted_predecessor": {
+    "subphase": "P4.6",
+    "decision_id": "D-P4.6-ACCEPTANCE",
+    "acceptance_path": "contracts/phase-4/p4-6/acceptance.json",
+    "acceptance_sha256": "81009FCF742CA73A6DFAB6821DF2D77C3DDC617CB0B95BC8ED51B3348FF5E71E",
+    "evidence_package_sha256": "362E5B1A08438A75DD9FBD32662F9A95ACF42D59BB0E3017818B9862F131C949",
+    "canonical_component_digest": "5E9ED1932FA002ABB3E89BDAC00562D8C0AC42548B5F0B569FFEF4544F6AFE57",
+    "technical_commit": "dee768edf449eadf9b5c309209af9866fd392a43",
+    "acceptance_commit": "98234e475e938d7ca1dee5558d2088dabc187845"
+  },
+  "existing_foundation_inventory": {
+    "current_repository_migration_head": "0018_operations_security_scale",
+    "accepted_phase4_subphases": [
+      "P4.0_contracts_and_guardrails",
+      "P4.1_correlation_foundation",
+      "P4.2_rule_authoring_and_evaluation",
+      "P4.3_alert_lifecycle_and_orchestration",
+      "P4.4_authorized_reference_integrations_generated_only",
+      "P4.5_investigation_timeline_and_evidence",
+      "P4.6_operations_security_and_scale"
+    ],
+    "observed_consumer_surfaces": [
+      "generated_alert_list_detail_lifecycle_review_and_review_policy",
+      "generated_reference_provider_control_query_job_and_candidate_set",
+      "generated_investigation_timeline_entry_evidence_review_correction_provenance_retention_hold_export_preview_deletion_simulation_and_reconstruction",
+      "generated_platform_operations_summary_and_bounded_views",
+      "preserved_P4_0_control_plane_P4_1_correlation_and_P4_2_rule_surfaces"
+    ],
+    "preserved_requirements": [
+      "authenticated_exact_roles",
+      "authorized_department_scope",
+      "X_HCAM_Reason_for_mutations",
+      "If_Match_for_revisioned_mutations",
+      "idempotency_where_effects_can_repeat",
+      "bounded_requests_pagination_and_outputs",
+      "Cache_Control_no_store",
+      "generated_only_default_off_production_forbidden_runtime",
+      "mandatory_review_and_no_identity_confirmation_from_candidates"
+    ],
+    "interpretation": "P4_7_validates_and_hands_off_accepted_contracts_without_adding_operational_authority_or_building_Phase_5"
+  },
+  "planning_authority": [
+    "read_only_repository_analysis",
+    "official_primary_source_research",
+    "local_planning_documentation",
+    "non_effective_scenario_evidence_claim_limitation_runbook_handoff_compatibility_accessibility_and_closeout_design",
+    "owner_decision_options",
+    "generated_static_planning_validation_and_one_local_checkpoint_commit_without_push"
+  ],
+  "canonical_component_digest": {
+    "algorithm": "SHA-256",
+    "normalization": "UTF_8_path_vertical_bar_uppercase_sha256_LF_join_without_terminal_newline_in_listed_order",
+    "value": "7EDC4C5C4EE60BB863588AE2C51906DAA72F95D6ED52CFCAF272E31BD6441375"
+  },
+  "planning_artifacts": [
+    {
+      "path": "contracts/phase-4/p4-7-plan-authorization.json",
+      "sha256": "E31C550994C175096079DC5A9F61AB3EB24C6E2D4CCBBAE263F461A2C7818BBE"
+    },
+    {
+      "path": "docs/phase-4/p4-7-research-record.md",
+      "sha256": "AE6CDAFFB536872D10D90E22A29CEB25B33E7C22C9F6F61A3D2A664F48CF782F"
+    },
+    {
+      "path": "docs/phase-4/p4-7-threat-model.md",
+      "sha256": "FB1BDFC174D99427AAB9FC9A7AAA7DF57BCB45B23B1EDE03101AB39A9FD1E4ED"
+    },
+    {
+      "path": "docs/phase-4/p4-7-contract-catalog.md",
+      "sha256": "03D2EB13FFE6991A033066B82E3ABF63598A0F5CB3A94ED32D53E97B8EA83449"
+    },
+    {
+      "path": "docs/phase-4/p4-7-decision-packet.md",
+      "sha256": "442E4598CE3429A71CECC7E7BAA134F018FF544A4AA85501F9798C3DAC8A33B1"
+    },
+    {
+      "path": "docs/phase-4/p4-7-implementation-plan.md",
+      "sha256": "671286D3C9E86EA8C2882A2C074626711D763A975FE29FBF570E433236F4290D"
+    }
+  ],
+  "mutable_indexes_not_digest_bound": [
+    "README.md",
+    "docs/phase-4/README.md",
+    "docs/phase-4/status.md"
+  ],
+  "research_sources": [
+    {
+      "name": "OpenAPI Specification 3.2.0",
+      "url": "https://spec.openapis.org/oas/v3.2.0.html",
+      "bounded_use": "HTTP_operation_schema_security_link_callback_and_projection_design"
+    },
+    {
+      "name": "AsyncAPI Specification 3.1.0",
+      "url": "https://www.asyncapi.com/docs/reference/specification/v3.1.0",
+      "bounded_use": "protocol_neutral_channel_operation_message_correlation_and_schema_projection"
+    },
+    {
+      "name": "Arazzo Specification 1.1.0",
+      "url": "https://spec.openapis.org/arazzo/latest.html",
+      "bounded_use": "generated_API_event_workflow_steps_dependencies_success_failure_and_output_projection"
+    },
+    {
+      "name": "CloudEvents 1.0.2",
+      "url": "https://github.com/cloudevents/spec/tree/v1.0.2",
+      "bounded_use": "optional_common_event_envelope_projection_without_semantic_authority"
+    },
+    {
+      "name": "RFC 9457 Problem Details",
+      "url": "https://www.rfc-editor.org/rfc/rfc9457.html",
+      "bounded_use": "typed_machine_readable_sanitized_HTTP_failure_projection"
+    },
+    {
+      "name": "RFC 9110 HTTP Semantics",
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "bounded_use": "ETag_If_Match_conditional_request_and_HTTP_semantic_handoff"
+    },
+    {
+      "name": "RFC 8785 JSON Canonicalization Scheme",
+      "url": "https://www.rfc-editor.org/rfc/rfc8785.html",
+      "bounded_use": "optional_invariant_JSON_evidence_projection_without_replacing_accepted_HCAM_encoding"
+    },
+    {
+      "name": "JSON Schema 2020-12",
+      "url": "https://json-schema.org/draft/2020-12",
+      "bounded_use": "pinned_schema_dialect_validation_and_bundling_design"
+    },
+    {
+      "name": "W3C PROV-O",
+      "url": "https://www.w3.org/TR/prov-o/",
+      "bounded_use": "fixture_step_output_assertion_evidence_and_reviewer_derivation_projection"
+    },
+    {
+      "name": "SLSA 1.2 Provenance",
+      "url": "https://slsa.dev/spec/v1.2/provenance",
+      "bounded_use": "optional_source_artifact_production_provenance_projection_without_level_claim"
+    },
+    {
+      "name": "NIST SP 800-86",
+      "url": "https://csrc.nist.gov/pubs/sp/800/86/final",
+      "bounded_use": "technical_collection_examination_analysis_and_reporting_concepts_without_legal_claim"
+    },
+    {
+      "name": "WCAG 2.2",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "bounded_use": "Phase_5_UI_accessibility_requirement_matrix_without_conformance_claim"
+    },
+    {
+      "name": "WAI_ARIA Authoring Practices",
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+      "bounded_use": "keyboard_focus_role_state_property_and_widget_behavior_handoff"
+    },
+    {
+      "name": "WAI_ARIA Alert Pattern",
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/alert/",
+      "bounded_use": "non_interrupting_status_and_alert_behavior"
+    },
+    {
+      "name": "WAI_ARIA Alert Dialog Pattern",
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/alertdialog/",
+      "bounded_use": "bounded_interrupting_confirmation_and_failure_dialog_behavior"
+    },
+    {
+      "name": "WCAG Status Messages Understanding",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/status-messages",
+      "bounded_use": "programmatic_async_status_announcement_without_focus_theft"
+    }
+  ],
+  "proposed_contracts": [
+    "hcam.acceptance.scenario-manifest.v1",
+    "hcam.acceptance.scenario-fixture-set.v1",
+    "hcam.acceptance.scenario-step.v1",
+    "hcam.acceptance.scenario-run.v1",
+    "hcam.acceptance.step-observation.v1",
+    "hcam.acceptance.assertion-result.v1",
+    "hcam.acceptance.replay-comparison.v1",
+    "hcam.acceptance.side-effect-ledger.v1",
+    "hcam.acceptance.evidence-index.v1",
+    "hcam.acceptance.claim-register.v1",
+    "hcam.acceptance.limitation-register.v1",
+    "hcam.acceptance.operations-runbook.v1",
+    "hcam.acceptance.reconstruction-manifest.v1",
+    "hcam.handoff.http-operation.v1",
+    "hcam.handoff.event-operation.v1",
+    "hcam.handoff.workflow.v1",
+    "hcam.handoff.ui-state.v1",
+    "hcam.handoff.ui-action.v1",
+    "hcam.handoff.accessibility-requirement.v1",
+    "hcam.handoff.compatibility.v1",
+    "hcam.phase4.closeout.v1"
+  ],
+  "proposed_scenario_portfolio": [
+    "S00_golden_narrative",
+    "S01_non_match_and_abstention",
+    "S02_duplicate_and_replay",
+    "S03_late_and_conflicting_event",
+    "S04_authorization_and_isolation_denial",
+    "S05_reference_degradation",
+    "S06_review_and_lifecycle_denial",
+    "S07_correction_and_retraction",
+    "S08_worker_and_recovery_degradation"
+  ],
+  "decision_packet": {
+    "path": "docs/phase-4/p4-7-decision-packet.md",
+    "decision_ids": [
+      "D-P4.7-001",
+      "D-P4.7-002",
+      "D-P4.7-003",
+      "D-P4.7-004",
+      "D-P4.7-005",
+      "D-P4.7-006",
+      "D-P4.7-007",
+      "D-P4.7-008",
+      "D-P4.7-009",
+      "D-P4.7-010",
+      "D-P4.7-011",
+      "D-P4.7-012"
+    ],
+    "recommended_profile": "C/C/C/C/C/B/C/C/B/B/B/A",
+    "owner_decisions_recorded": false,
+    "recommendations_are_decisions": false,
+    "continue_or_silence_is_acceptance": false
+  },
+  "frozen_progress": {
+    "phase4": {
+      "earned_points": 95,
+      "total_points": 100,
+      "percentage": "95.00%",
+      "change_percentage_points": "+0.00"
+    },
+    "p4_7": {
+      "earned_points": 0,
+      "total_points": 5,
+      "percentage": "0.0000%",
+      "change_percentage_points": "+0.0000"
+    },
+    "work_breakdown": {
+      "P4_7_A_controlled_generated_end_to_end_demonstration": 2,
+      "P4_7_B_evidence_limitations_claims_and_operations_pack": 1,
+      "P4_7_C_Phase_5_HTTP_event_workflow_UI_and_compatibility_handoff": 1,
+      "P4_7_D_final_Phase_4_owner_acceptance": 1
+    },
+    "technical_ceiling_before_owner_acceptance": {
+      "phase4_earned_points": 99,
+      "phase4_percentage": "99.00%",
+      "p4_7_earned_points": 4,
+      "p4_7_percentage": "80.0000%"
+    },
+    "after_exact_p4_7_acceptance": {
+      "phase4_earned_points": 100,
+      "phase4_percentage": "100.00%",
+      "p4_7_earned_points": 5,
+      "p4_7_percentage": "100.0000%"
+    },
+    "planning_and_research_completeness": "100.0000%",
+    "planning_points_awarded": 0,
+    "partial_item_credit": false
+  },
+  "implementation_authorized": false,
+  "runtime_or_scenario_execution_authorized": false,
+  "credentials_data_media_models_providers_network_or_operational_actions_authorized": false,
+  "containers_Kubernetes_or_deployment_authorized": false,
+  "phase4_final_acceptance_authorized": false,
+  "phase5_planning_or_implementation_authorized": false,
+  "remote_git_authorized": false,
+  "explicitly_not_authorized": [
+    "P4_7_product_test_migration_dependency_model_dataset_inference_camera_media_provider_network_telemetry_backend_workflow_engine_container_Kubernetes_deployment_or_runtime_implementation",
+    "execution_of_any_end_to_end_scenario_or_generated_workflow",
+    "credential_secret_key_token_certificate_or_private_CA_access",
+    "Government_police_private_personal_biometric_vehicle_owner_registration_watchlist_investigation_case_or_evidence_data",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "installation_update_download_or_artifact_acquisition",
+    "hardware_performance_stress_backup_restore_or_recovery_execution",
+    "standards_accessibility_legal_evidentiary_operational_production_accuracy_or_scale_claim",
+    "Phase_4_final_acceptance_or_Phase_5_planning_implementation_or_deployment",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "required_next_sequence": [
+    "owner_selects_D_P4_7_001_through_D_P4_7_012",
+    "selections_are_reconciled_into_non_effective_P4_7_PLANNING_R1",
+    "owner_accepts_exact_reconciled_planning_package_digest",
+    "one_non_effective_generated_only_P4_7_START_R0_package_is_prepared",
+    "owner_separately_accepts_exact_P4_7_START_R0_SHA_256",
+    "only_then_may_bounded_local_generated_only_implementation_and_scenario_execution_begin",
+    "technical_evidence_is_sealed_against_an_exact_commit",
+    "owner_separately_accepts_exact_P4_7_evidence_to_close_Phase_4",
+    "Phase_5_planning_requires_another_explicit_authorization"
+  ]
+}

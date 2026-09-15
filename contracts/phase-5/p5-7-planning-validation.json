@@ -1,0 +1,73 @@
+{
+  "schema_version": "hcam.phase5.p5_7.planning_validation.v1",
+  "validation_id": "P5.7-PLANNING-R0-VALIDATION",
+  "status": "passed",
+  "effective": false,
+  "validated_on": "2026-09-12",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "7fc7f2a77dad9853c00b51905f616f8b74221ef4",
+  "package": {
+    "path": "contracts/phase-5/p5-7-planning-package.json",
+    "sha256": "03E6C17946B5420396FDEAA00924D12C8013369B07C948925AB1D7D593BDB0E2",
+    "canonical_component_digest": "CDF93B75C12E78B8BED542025A6CFBE44BCFDE813B560C7C05EFF5F7D52A8495",
+    "component_count": 10
+  },
+  "checks": [
+    { "id": "P5.7-V01", "name": "authorization_JSON_parses", "status": "passed" },
+    { "id": "P5.7-V02", "name": "authorization_owner_statement_hash_matches", "status": "passed" },
+    { "id": "P5.7-V03", "name": "planning_package_JSON_parses", "status": "passed" },
+    { "id": "P5.7-V04", "name": "planning_authority_hash_matches", "status": "passed" },
+    { "id": "P5.7-V05", "name": "P5_6_acceptance_hash_matches", "status": "passed" },
+    { "id": "P5.7-V06", "name": "ten_dedicated_components_exist", "status": "passed" },
+    { "id": "P5.7-V07", "name": "component_byte_counts_match", "status": "passed" },
+    { "id": "P5.7-V08", "name": "component_SHA_256_values_match", "status": "passed" },
+    { "id": "P5.7-V09", "name": "canonical_component_digest_matches", "status": "passed" },
+    { "id": "P5.7-V10", "name": "twelve_owner_decisions_exist_and_are_unselected", "status": "passed" },
+    { "id": "P5.7-V11", "name": "sixty_four_gap_IDs_match_gap_document", "status": "passed" },
+    { "id": "P5.7-V12", "name": "sixty_four_threat_IDs_match_threat_document", "status": "passed" },
+    { "id": "P5.7-V13", "name": "fourteen_journeys_and_twenty_states_are_defined", "status": "passed" },
+    { "id": "P5.7-V14", "name": "eight_workstreams_total_twelve_points", "status": "passed" },
+    { "id": "P5.7-V15", "name": "generated_case_categories_total_2048", "status": "passed" },
+    { "id": "P5.7-V16", "name": "C1_C10_C50_workloads_are_declared", "status": "passed" },
+    { "id": "P5.7-V17", "name": "twenty_five_official_primary_source_links_are_recorded", "status": "passed" },
+    { "id": "P5.7-V18", "name": "all_local_markdown_links_resolve_after_validation_record_creation", "status": "passed" },
+    { "id": "P5.7-V19", "name": "all_planning_components_are_ASCII_without_UTF8_BOM", "status": "passed" },
+    { "id": "P5.7-V20", "name": "planning_progress_and_product_progress_are_separate", "status": "passed" },
+    { "id": "P5.7-V21", "name": "implementation_runtime_data_deployment_final_acceptance_and_remote_Git_gates_are_closed", "status": "passed" },
+    { "id": "P5.7-V22", "name": "four_shared_index_edits_are_validated_outside_the_immutable_component_set", "status": "passed" },
+    { "id": "P5.7-V23", "name": "changed_paths_are_within_authorized_planning_and_status_scope", "status": "passed" }
+  ],
+  "observed_counts": {
+    "applications": 8,
+    "logical_operator_surfaces": 9,
+    "shared_frontend_packages": 37,
+    "non_browser_TypeScript_test_files": 94,
+    "Playwright_spec_files": 29,
+    "canonical_journeys": 14,
+    "mandatory_states": 20,
+    "viewports": 7,
+    "locale_and_time_profiles": 5,
+    "resource_profiles": 6,
+    "proposed_generated_cases": 2048,
+    "contract_and_evidence_gaps": 64,
+    "quality_threats": 64,
+    "owner_decisions": 12,
+    "implementation_workstreams": 8,
+    "official_primary_source_links": 25
+  },
+  "progress": {
+    "P5_7_planning": "8/8 (100.0000%), change +100.0000 percentage points",
+    "P5_7_owner_decisions": "0/12 (0.0000%), change +0.0000 percentage points",
+    "P5_7_product": "0/12 (0.0000%), change +0.0000 percentage points",
+    "phase_5_product": "88/100 (88.0000%), change +0.0000 percentage points"
+  },
+  "limitations": [
+    "Planning and static consistency validation only.",
+    "No product source or test implementation was performed.",
+    "No dependency resolution, download, installation, update, or lockfile change was performed.",
+    "No frontend, browser, model, media, container, Kubernetes, hardware, or deployment runtime was executed.",
+    "No provider, Sentinel, camera, media, Government, private, identity, credential, secret, or operational data was accessed.",
+    "No production, conformance, performance, hardware-capacity, accessibility-conformance, security-assurance, deployment, or operational claim is made.",
+    "P5.7 decisions, implementation, final Phase 5 acceptance, and remote Git remain unauthorized."
+  ]
+}

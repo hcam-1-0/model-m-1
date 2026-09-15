@@ -1,0 +1,11 @@
+{
+  "boundary": {
+    "canonical": false,
+    "conformance_claim": false,
+    "generated_only": true,
+    "operational": false
+  },
+  "canonical_digest": "sha256:d63a514216bbb5c4dfe52bd02b58ef3eb3009f3f1419e8e153a1bc9811c2a178",
+  "external_conformance_validated": false,
+  "profile": "RFC8785-shaped-canonical-json"
+}

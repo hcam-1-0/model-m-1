@@ -1,0 +1,146 @@
+{
+  "schema_version": "hcam.phase4.p4_1.evidence.v1",
+  "evidence_id": "P4.1-EVIDENCE-R0",
+  "status": "technical_gates_passed_owner_acceptance_pending",
+  "evidence_date": "2026-09-04",
+  "scope": "local generated-only Phase 4.1 event correlation, deterministic arbitration, bounded persistence, and read-only projections",
+  "base_checkpoint": "01d31b835b05b2a53e8f2d55895f4ceec87fe532",
+  "branch": "codex/phase4-correlation-foundation",
+  "authorizations": [
+    {
+      "decision_id": "D-P4.1-START",
+      "package_id": "P4.1-START-R0",
+      "package_sha256": "43EDF72ADE8328AEABE0F295ACC649F76229D233F8B0FB7E2D1D5C2E43B9ECA6"
+    },
+    {
+      "decision_id": "D-P4.1-LEGACY-MIGRATION-TEST-AMENDMENT",
+      "authorized_path": "tests/test_phase40_migration.py",
+      "result_sha256": "E748B7E8C4D11E0CE7A02E58135D1AFED30D662F84D7306F20231C6931BC9867",
+      "owner_statement": "D-P4.1-LEGACY-MIGRATION-TEST-AMENDMENT: I, mayank-admin, authorize modifying only tests/test_phase40_migration.py to preserve explicit P4.0 validation at revision 0012 while recognizing 0013_correlation_foundation as the current repository head and validating the 0012 -> 0013 -> 0012 -> 0013 cycle. No accepted P4.0 or Phase 3 artifact, migration, evidence, digest, product behavior, runtime/data boundary, deployment, or remote Git permission is changed."
+    }
+  ],
+  "validation": {
+    "focused_generated_suite": {
+      "status": "passed",
+      "passed": 57,
+      "skipped": 2,
+      "skip_reason": "the locked local Python interpreter has no psycopg driver; the exact PostgreSQL test functions were executed separately in the cached isolated H-CAM runtime",
+      "warning_count": 1,
+      "duration_seconds": 54.10
+    },
+    "coverage": {
+      "status": "passed",
+      "scope": "app/hcam/intelligence/correlation/*",
+      "branch_enabled_aggregate_percent": 92.22,
+      "required_percent": 90.0,
+      "passed": 57,
+      "skipped": 2,
+      "warning_count": 1,
+      "duration_seconds": 64.79
+    },
+    "sqlite_migration_cycle": {
+      "status": "passed",
+      "sequence": [
+        "0012_intelligence_control_plane",
+        "0013_correlation_foundation",
+        "0012_intelligence_control_plane",
+        "0013_correlation_foundation"
+      ],
+      "legacy_p4_0_revision_assertion": "passed",
+      "repository_head_assertion": "0013_correlation_foundation",
+      "alembic_check": "passed"
+    },
+    "postgresql_postgis": {
+      "status": "passed",
+      "validation_mode": "isolated cached-container exact-source P4.1 validation",
+      "docker_server_version": "29.7.2",
+      "database_image": "postgis/postgis@sha256:eb2e8b8afd9b0ecee83bc20fd01aca62a5071bada2c0f38763174b653f8eed42",
+      "runner_image_id": "sha256:93acac65411ab8938552f0a2d45739fddf2c0d1dae1aae8c8d86c888a22284c9",
+      "postgresql_version": "18.6",
+      "postgis_version": "3.6.4",
+      "applied_revision": "0013_correlation_foundation",
+      "migration_sequence": [
+        "fresh_to_0013",
+        "alembic_check",
+        "0013_to_0012",
+        "0012_to_0013",
+        "alembic_check"
+      ],
+      "forced_rls_tables": 5,
+      "department_policies": 5,
+      "cross_department_visible_checkpoint_count": 1,
+      "cross_department_total_checkpoint_count": 2,
+      "skip_locked_claimed_unlocked_generated_run": true,
+      "claimed_attempt_count": 1,
+      "probe_role_privilege_cleanup": "passed",
+      "test_source": "tests/test_phase41_postgres.py",
+      "test_execution": "exact test functions loaded with a marker-only pytest shim because the cached runner intentionally contains no pytest installation",
+      "external_network_used": false,
+      "container_and_network_removed_after_validation": true,
+      "docker_kubernetes_setting_restored": true
+    },
+    "full_regression_suite": {
+      "status": "passed",
+      "passed": 3750,
+      "skipped": 11,
+      "subtests_passed": 119,
+      "warning_count": 1,
+      "duration_seconds": 629.30,
+      "deselected": 0,
+      "skip_boundary": "all skips require an explicit PostgreSQL integration URL; the P4.1 PostgreSQL delta was validated separately against the cached isolated PostgreSQL/PostGIS service"
+    },
+    "static_and_packaging": {
+      "status": "passed",
+      "ruff": "passed",
+      "compileall": "passed",
+      "git_diff_check": "passed",
+      "build": "source_distribution_and_wheel_passed",
+      "wheel": "hcam_core-0.2.0-py3-none-any.whl",
+      "source_distribution": "hcam_core-0.2.0.tar.gz",
+      "dependency_check": "74_packages_compatible",
+      "generated_fixture_check": "6_fixtures_exact"
+    },
+    "historical_regression": {
+      "status": "passed",
+      "p4_0_readiness": "20_of_20_checks_passed",
+      "p4_0_and_p4_1_migration_readiness_tests": "12_passed",
+      "phase3_release_contracts": "passed",
+      "phase3_analytics_contracts": "passed",
+      "phase3_readiness": "accepted_with_zero_failures_and_zero_manual_gates",
+      "phase3_documentation_digest": "4FDD9B7D53664F95334C758B6BC94AE0990C7CAFEFF672F74D456321CAEFF204",
+      "accepted_p4_0_evidence_modified": false,
+      "accepted_phase3_files_modified": false
+    }
+  },
+  "security_properties": [
+    "ingress accepts only typed generated Phase 3 outbox projections and never mutates or publishes the source outbox",
+    "event identities, receipts, ordering outcomes, windows, replay bindings, hypotheses, evidence graphs, and revisions are canonical and bounded",
+    "the deterministic CPU lane is mandatory while optional probabilistic and model lanes remain typed unavailable contracts",
+    "all P4.1 records remain generated-only and nonoperational",
+    "department scope is enforced in application queries and PostgreSQL forced row security",
+    "PostgreSQL workers use skip-locked leases while SQLite is constrained to one worker",
+    "the public P4.1 surface is read-only and adds no correlation mutation route",
+    "production rejects generated correlation runtime enablement and application startup does not start a worker",
+    "metrics and failures use bounded low-cardinality reason codes without raw payloads or identifier labels",
+    "accepted Phase 3 and P4.0 evidence, contracts, migrations, and digests remain immutable"
+  ],
+  "known_limitations": [
+    "the locked local Python environment lacks psycopg, so PostgreSQL tests are expected to skip in the unconditional suite",
+    "the cached H-CAM container lacks pytest; exact PostgreSQL test functions were loaded from the repository with a marker-only pytest shim and executed directly",
+    "Docker Desktop Kubernetes was temporarily disabled to prevent a host WSL backend crash during the isolated test and was restored after resource cleanup",
+    "optional probabilistic, temporal-graph, model-first-shadow, and uncertainty-ensemble lanes are contracts only and do not execute",
+    "the correlation runtime remains generated-only, disabled by default, and forbidden in production",
+    "no model, dataset, artifact, inference, camera, media, provider, private data, Government data, operational alert, deployment, Kubernetes workload, or remote Git action is covered",
+    "P4.1 owner acceptance and P4.2 remain separate closed gates"
+  ],
+  "progress_after_technical_validation": {
+    "phase_4_points": 23,
+    "phase_4_total_points": 100,
+    "phase_4_percent": 23.0,
+    "p4_1_points": 13,
+    "p4_1_total_points": 15,
+    "p4_1_percent": 86.6667,
+    "owner_acceptance_points_pending": 2
+  },
+  "remote_git_performed": false
+}

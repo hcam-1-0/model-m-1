@@ -32,6 +32,7 @@ from hcam.analytics.models import (
 )
 from hcam.audit.models import AuditEvent
 from hcam.camera_registry.models import utc_now
+from hcam.operations.platform.models import PlatformCircuitRecord, PlatformDegradationRecord, PlatformOutboxRecord
 from hcam.streams.models import (
     OnvifControlLease,
     OnvifOperationRun,
@@ -289,6 +290,42 @@ class RequestMetrics:
             ("resource",),
             registry=self.registry,
         )
+        self.platform_requests = Counter(
+            "hcam_platform_requests_total",
+            "Generated platform read requests by bounded outcome.",
+            ("outcome",),
+            registry=self.registry,
+        )
+        self.platform_jobs = Gauge(
+            "hcam_platform_jobs",
+            "Generated platform outbox jobs by bounded state.",
+            ("worker_state",),
+            registry=self.registry,
+        )
+        self.platform_job_duration = Histogram(
+            "hcam_platform_job_duration_seconds",
+            "Generated platform job duration by bounded outcome.",
+            ("outcome",),
+            registry=self.registry,
+        )
+        self.platform_circuits = Gauge(
+            "hcam_platform_circuits",
+            "Generated dependency circuits by bounded state.",
+            ("circuit_state",),
+            registry=self.registry,
+        )
+        self.platform_degradation = Gauge(
+            "hcam_platform_degradation",
+            "Generated services by bounded degradation state.",
+            ("degradation",),
+            registry=self.registry,
+        )
+        self.platform_capacity_steps = Counter(
+            "hcam_platform_capacity_steps",
+            "Generated capacity simulation steps by bounded scale and mode.",
+            ("capacity_scale", "capacity_mode"),
+            registry=self.registry,
+        )
 
     def observe(
         self,
@@ -305,6 +342,9 @@ class RequestMetrics:
             status_class=status_class,
         ).inc()
         self.duration.labels(method=method, route=route).observe(duration_seconds)
+        if route.startswith("/platform/operations"):
+            outcome = "accepted" if status_code < 400 else ("denied" if status_code in {401, 403, 404} else "failed")
+            self.platform_requests.labels(outcome=outcome).inc()
 
     def refresh_stream_metrics(self, session: Session) -> None:
         counts = dict(
@@ -346,6 +386,36 @@ class RequestMetrics:
         self._refresh_capability_metrics(session, now)
         self._refresh_onvif_operation_metrics(session, now)
         self._refresh_analytics_metrics(session, now)
+        self._refresh_platform_metrics(session)
+
+    def _refresh_platform_metrics(self, session: Session) -> None:
+        job_counts = dict(
+            session.execute(
+                select(PlatformOutboxRecord.state, func.count()).group_by(
+                    PlatformOutboxRecord.state
+                )
+            ).all()
+        )
+        for state in ("queued", "leased", "succeeded", "failed", "dead_letter"):
+            self.platform_jobs.labels(worker_state=state).set(job_counts.get(state, 0))
+        circuit_counts = dict(
+            session.execute(
+                select(PlatformCircuitRecord.state, func.count()).group_by(
+                    PlatformCircuitRecord.state
+                )
+            ).all()
+        )
+        for state in ("closed", "open", "half_open"):
+            self.platform_circuits.labels(circuit_state=state).set(circuit_counts.get(state, 0))
+        degradation_counts = dict(
+            session.execute(
+                select(PlatformDegradationRecord.state, func.count()).group_by(
+                    PlatformDegradationRecord.state
+                )
+            ).all()
+        )
+        for state in ("normal", "constrained", "degraded", "stopped"):
+            self.platform_degradation.labels(degradation=state).set(degradation_counts.get(state, 0))
 
     def _refresh_analytics_metrics(self, session: Session, now) -> None:
         assignment_count = session.scalar(

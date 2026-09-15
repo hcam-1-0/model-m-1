@@ -1,0 +1,55 @@
+{
+  "schema_version": "hcam.phase5.p5_6.generated_workloads.v1",
+  "marker": "HCAM_GENERATED_ONLY_P5_6",
+  "workloads": [
+    {
+      "profile": "C1",
+      "organizations": 1,
+      "departments": 2,
+      "users": 10,
+      "services": 10,
+      "queues": 4,
+      "change_requests": 8,
+      "functional_only": true,
+      "hardware_claim": false,
+      "production_claim": false,
+      "runtime_profile_activation": false
+    },
+    {
+      "profile": "C10",
+      "organizations": 1,
+      "departments": 10,
+      "users": 100,
+      "services": 50,
+      "queues": 20,
+      "change_requests": 100,
+      "functional_only": true,
+      "hardware_claim": false,
+      "production_claim": false,
+      "runtime_profile_activation": false
+    },
+    {
+      "profile": "C50",
+      "organizations": 5,
+      "departments": 50,
+      "users": 500,
+      "services": 200,
+      "queues": 100,
+      "change_requests": 500,
+      "functional_only": true,
+      "hardware_claim": false,
+      "production_claim": false,
+      "runtime_profile_activation": false
+    }
+  ],
+  "replays": [
+    {
+      "run": 1,
+      "sha256": "A9BD75385901FAA8332A1C68CF928928725DD9276A5460635041888D6F563F02"
+    },
+    {
+      "run": 2,
+      "sha256": "A9BD75385901FAA8332A1C68CF928928725DD9276A5460635041888D6F563F02"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "schema_version": "hcam.phase4.p4_6.database-snapshot.v1",
+  "revision": "0018_operations_security_scale",
+  "parent_revision": "0017_investigation_evidence",
+  "prior_store_count": 33,
+  "extended_stores": [],
+  "new_stores": [
+    "investigation_command_receipts",
+    "investigation_correction_impacts",
+    "investigation_corrections",
+    "investigation_deletion_receipts",
+    "investigation_evidence_references",
+    "investigation_export_manifests",
+    "investigation_hold_overlays",
+    "investigation_impact_jobs",
+    "investigation_integrity_assessments",
+    "investigation_outbox",
+    "investigation_provenance_bundles",
+    "investigation_relationships",
+    "investigation_retention_evaluations",
+    "investigation_reviews",
+    "investigation_timeline_entries_v2",
+    "investigation_timeline_revisions",
+    "investigation_timelines_v2"
+  ],
+  "read_only_input_store": "intelligence_hypothesis_revisions",
+  "transactional_output_store": "reference_integration_outbox",
+  "postgresql": {
+    "authoritative_business_truth": true,
+    "forced_row_security": true,
+    "policy_scope": "department",
+    "concurrent_impact_claim": "FOR UPDATE SKIP LOCKED",
+    "protected_new_stores": [
+      "investigation_command_receipts",
+      "investigation_correction_impacts",
+      "investigation_corrections",
+      "investigation_deletion_receipts",
+      "investigation_evidence_references",
+      "investigation_export_manifests",
+      "investigation_hold_overlays",
+      "investigation_impact_jobs",
+      "investigation_integrity_assessments",
+      "investigation_outbox",
+      "investigation_provenance_bundles",
+      "investigation_relationships",
+      "investigation_retention_evaluations",
+      "investigation_reviews",
+      "investigation_timeline_entries_v2",
+      "investigation_timeline_revisions",
+      "investigation_timelines_v2"
+    ]
+  },
+  "sqlite": {
+    "purpose": "single-process generated development and tests",
+    "worker_limit": 1,
+    "row_security": "application department filters"
+  },
+  "database_invariants": [
+    "all P4.5 state is generated-only and nonoperational",
+    "timeline revisions evidence assessments reviews corrections and receipts are append-only",
+    "semantic identity is separate from delivery idempotency",
+    "source payloads and locators are never persisted",
+    "deletion and export external actions are unavailable"
+  ],
+  "preserved_v1_stores": [
+    "investigation_timelines",
+    "timeline_entries"
+  ],
+  "p4_6": {
+    "schema_version": "hcam.phase4.p4_6.database-snapshot.v1",
+    "revision": "0018_operations_security_scale",
+    "parent_revision": "0017_investigation_evidence",
+    "new_stores": [
+      "platform_capacity_results",
+      "platform_circuit_states",
+      "platform_degradation_states",
+      "platform_error_budgets",
+      "platform_kill_switch_revisions",
+      "platform_operations_outbox",
+      "platform_recovery_results",
+      "platform_security_evidence",
+      "platform_service_objectives",
+      "platform_supply_chain_inventories"
+    ],
+    "postgresql": {
+      "authoritative_business_truth": true,
+      "forced_row_security": true,
+      "policy_scope": "department",
+      "protected_new_stores": [
+        "platform_capacity_results",
+        "platform_circuit_states",
+        "platform_degradation_states",
+        "platform_error_budgets",
+        "platform_kill_switch_revisions",
+        "platform_operations_outbox",
+        "platform_recovery_results",
+        "platform_security_evidence",
+        "platform_service_objectives",
+        "platform_supply_chain_inventories"
+      ]
+    },
+    "sqlite": {
+      "purpose": "single-process generated development and tests",
+      "row_security": "application department filters"
+    },
+    "database_invariants": [
+      "all P4.6 rows are generated-only and nonoperational",
+      "every P4.6 store is department scoped and forced-RLS protected on PostgreSQL",
+      "payloads are bounded and reject prohibited fields",
+      "outbox delivery identity is unique per department",
+      "no external backend or operational action is available"
+    ]
+  }
+}

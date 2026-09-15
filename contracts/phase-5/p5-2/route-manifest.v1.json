@@ -1,0 +1,13 @@
+{
+  "schema_version": "hcam.phase5.p5_2.route_manifest.v1",
+  "primary": { "portal": "command", "base": "/command", "page_families": 10 },
+  "connected": { "portal": "gis", "base": "/gis", "page_families": 9 },
+  "handoff": {
+    "opaque_resource_ref_only": true,
+    "fresh_session_required": true,
+    "fresh_department_required": true,
+    "fresh_capability_snapshot_required": true
+  },
+  "mutation_routes": [],
+  "backend_routes_added": []
+}

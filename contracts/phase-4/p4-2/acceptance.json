@@ -1,0 +1,37 @@
+{
+  "schema_version": "hcam.phase4.p4_2.acceptance.v1",
+  "decision_id": "D-P4.2-ACCEPTANCE",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-04",
+  "accepted_branch": "codex/phase4-rule-authoring-evaluation",
+  "accepted_implementation_commit": "393ae258e84df8ab542665144a45f8e9b0b83c5b",
+  "evidence_package": {
+    "package_id": "P4.2-EVIDENCE-PACKAGE-R0",
+    "path": "contracts/phase-4/p4-2/evidence-package.json",
+    "sha256": "A10CEAF5742A59EA54373ED5494A99A73F94FCD9D268C20C5752D753805320CA",
+    "canonical_component_digest": "635642E579ECD712271E6F86E42F594BA912047E30DB95C716D212C81B83ACBC"
+  },
+  "accepted_progress": {
+    "phase_4_points": 40,
+    "phase_4_total_points": 100,
+    "phase_4_percent": 40.0,
+    "p4_2_points": 15,
+    "p4_2_total_points": 15,
+    "p4_2_percent": 100.0
+  },
+  "scope_effect": "Completes P4.2 only under its generated-only implementation evidence, validation results, explicit PostgreSQL and vulnerability-refresh limitations, and documented safety boundaries.",
+  "continuing_prohibitions": [
+    "P4_3_or_later_implementation",
+    "models_datasets_artifacts_inference_training_accelerators_or_benchmarks",
+    "cameras_ONVIF_Sentinel_streams_frames_images_recording_playback_or_media",
+    "external_providers_credentials_network_egress_or_live_simulators",
+    "Government_police_private_personal_biometric_vehicle_owner_case_or_watchlist_data",
+    "active_or_operational_rule_activation_startup_workers_alerts_notifications_dispatch_enforcement_or_autonomous_action",
+    "containers_Kubernetes_cloud_pilot_production_release_or_deployment",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "owner_statement_sha256": "245A65F24451FF181184D21F466B06F32074D18B0802B94F1B64479166A5EB19",
+  "owner_statement": "D-P4.2-ACCEPTANCE: I, mayank-admin, accept P4.2 evidence package P4.2-EVIDENCE-PACKAGE-R0 with SHA-256 A10CEAF5742A59EA54373ED5494A99A73F94FCD9D268C20C5752D753805320CA and canonical component digest 635642E579ECD712271E6F86E42F594BA912047E30DB95C716D212C81B83ACBC, including its generated-only implementation evidence, validation results, explicit PostgreSQL and vulnerability-refresh limitations, and documented safety boundaries. This acceptance completes P4.2 only. It does not authorize P4.3, models, datasets, artifacts, inference, cameras or media, external providers, Government or private data, operational rule activation, alerts, notifications, dispatch or enforcement, containers, Kubernetes, deployment, or remote Git."
+}

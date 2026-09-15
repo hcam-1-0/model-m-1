@@ -1,0 +1,12 @@
+{
+  "schema_version": "hcam.phase5.p5_6.dependency_baseline.v1",
+  "result": "pass",
+  "node": "24.18.0",
+  "package_manager_executed": false,
+  "dependency_resolution": false,
+  "dependencies_added": 0,
+  "lockfile_sha256": "7F3E3F0A8B29C5083E300641A68F0325D8D2E8BD2ADE940E2B6D03C3CDEBBB62",
+  "sbom_sha256": "D0F1F1180716383334BDF9C1F6FA9A9F129EED4D7D6F297C893AD5F7D6C29D00",
+  "vulnerability_baseline_sha256": "9E1D68EF30C844605FFBAC4FBCD9604505B34DFDD8838BFCD0ACF94404367346",
+  "statement": "Existing locked dependencies and supply-chain baseline are preserved; no refresh or scanner execution was performed."
+}

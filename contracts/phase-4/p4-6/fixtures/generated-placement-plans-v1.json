@@ -1,0 +1,727 @@
+{
+  "category": "placement-plans",
+  "scenario_count": 80,
+  "scenarios": [
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0000"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0001"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0002"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0003"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0004"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0005"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0006"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0007"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0008"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0009"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0010"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0011"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0012"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0013"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0014"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0015"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0016"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0017"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0018"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0019"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0020"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0021"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0022"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0023"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0024"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0025"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0026"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0027"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0028"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0029"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0030"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0031"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0032"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0033"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0034"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0035"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0036"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0037"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0038"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0039"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0040"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0041"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0042"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0043"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0044"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0045"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0046"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0047"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0048"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0049"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0050"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0051"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0052"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0053"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0054"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0055"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0056"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0057"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0058"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0059"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0060"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0061"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0062"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0063"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0064"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0065"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0066"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0067"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0068"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0069"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0070"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0071"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0072"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0073"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0074"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0075"
+    },
+    {
+      "department": "Generated Department 0",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "developer_laptop",
+      "reason": "placed",
+      "scenario_id": "p46.placement-plans.0076"
+    },
+    {
+      "department": "Generated Department 1",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "owned_gpu_lab",
+      "reason": "optional_lane_bypassed",
+      "scenario_id": "p46.placement-plans.0077"
+    },
+    {
+      "department": "Generated Department 2",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "server_node",
+      "reason": "mandatory_capability_missing",
+      "scenario_id": "p46.placement-plans.0078"
+    },
+    {
+      "department": "Generated Department 3",
+      "executable": false,
+      "generated_only": true,
+      "operational": false,
+      "profile_class": "kubernetes_node_class",
+      "reason": "capacity_exhausted",
+      "scenario_id": "p46.placement-plans.0079"
+    }
+  ],
+  "schema_version": "hcam.phase4.p4_6.fixture.placement-plans.v1"
+}

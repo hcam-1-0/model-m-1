@@ -1,0 +1,19 @@
+{
+  "fixture_type": "hcam.operator.generated-negative-seeds.v1",
+  "generated_only": true,
+  "cases": [
+    {"case_id": "negative.unknown_field", "expected_reason": "extra_forbidden"},
+    {"case_id": "negative.duplicate_action", "expected_reason": "duplicate_identifier"},
+    {"case_id": "negative.unsafe_route", "expected_reason": "unsafe_url_state"},
+    {"case_id": "negative.server_denied", "expected_reason": "server_denied"},
+    {"case_id": "negative.policy_ceiling", "expected_reason": "policy_ceiling_denied"},
+    {"case_id": "negative.resource_profile", "expected_reason": "resource_profile_unavailable"},
+    {"case_id": "negative.prohibited_locator", "expected_reason": "prohibited_field"},
+    {"case_id": "negative.registration_like_text", "expected_reason": "issuable_identifier"},
+    {"case_id": "negative.unclosed_polygon", "expected_reason": "invalid_geometry"},
+    {"case_id": "negative.optional_3d_authority", "expected_reason": "authority_denied"},
+    {"case_id": "negative.missing_list_alternative", "expected_reason": "accessibility_incomplete"},
+    {"case_id": "negative.raw_problem_detail", "expected_reason": "raw_detail_forbidden"}
+  ],
+  "operational": false
+}

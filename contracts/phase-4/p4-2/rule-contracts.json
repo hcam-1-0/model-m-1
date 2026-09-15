@@ -1,0 +1,73 @@
+{
+  "schema_version": "hcam.phase4.p4_2.rule-contract-catalog.v1",
+  "canonical_encoding": "UTF-8 ASCII JSON, sorted keys, compact separators",
+  "digest": "SHA-256",
+  "compiler_version": "hcam.p4-2.compiler.v1",
+  "temporal_version": "hcam.p4-2.temporal.v1",
+  "cel_environment_version": "hcam.p4-2.constrained-cel.v1",
+  "contract_types": [
+    "hcam.p4-2.canonical-rule-ast.v1",
+    "hcam.p4-2.intelligence-rule-response.v1",
+    "hcam.p4-2.rule-compilation.v1",
+    "hcam.p4-2.rule-evaluation.v1",
+    "hcam.p4-2.rule-semantics.v1",
+    "hcam.p4-2.visual-rule-document.v1"
+  ],
+  "typed_auxiliary_contracts": [
+    "cel-compilation-v1",
+    "lifecycle-event-v1",
+    "rule-evaluation-revision-v1",
+    "rule-input-v1",
+    "rule-schedule-v1",
+    "rule-shadow-comparison-v1",
+    "rule-state-checkpoint-v1"
+  ],
+  "node_kinds": [
+    "absence",
+    "all",
+    "any",
+    "cel_predicate",
+    "cooldown",
+    "count",
+    "distinct_stream_count",
+    "event_match",
+    "for_at_least",
+    "hypothesis_match",
+    "not",
+    "propose_review_candidate",
+    "quorum",
+    "rate",
+    "repeat_limit",
+    "schedule_gate",
+    "sequence",
+    "until",
+    "within"
+  ],
+  "lifecycle": [
+    "draft",
+    "validated",
+    "approved",
+    "shadow",
+    "suspended",
+    "retired"
+  ],
+  "terminal_authority": "mandatory_review",
+  "generated_only": true,
+  "operational": false,
+  "runtime_state": "disabled_by_default_and_forbidden_in_production",
+  "bounds": {
+    "authoring_bytes": 131072,
+    "cel_ast_nodes": 128,
+    "cel_checked_bytes": 65536,
+    "cel_depth": 16,
+    "cel_source_bytes": 512,
+    "events_per_window": 4096,
+    "graph_depth": 16,
+    "inputs_per_batch": 1000,
+    "inputs_per_node": 16,
+    "rules_per_batch": 64,
+    "semantic_nodes": 128,
+    "state_keys": 16384,
+    "temporal_window_ms": 900000
+  }
+}

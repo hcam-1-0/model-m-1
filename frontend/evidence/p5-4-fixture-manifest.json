@@ -1,0 +1,50 @@
+{
+  "schema_version": "hcam.phase5.p5_4.fixture_manifest.v1",
+  "generated_on": "2026-09-09",
+  "generated_only": true,
+  "exact_case_count": 832,
+  "canonical_fixture_sha256": "740F0C4C9DAC707A652156096C0F64EE7DAB9EA9BF6ACE47B774762947E2B508",
+  "files": [
+    {
+      "path": "fixtures/phase-5/p5-4/c1.generated.v1.json",
+      "bytes": 588,
+      "sha256": "9AAC05761EF52E21371B6B9DBFC0A93783FFD9AC2E017FA5F8F6C225145429DF"
+    },
+    {
+      "path": "fixtures/phase-5/p5-4/c10.generated.v1.json",
+      "bytes": 3190,
+      "sha256": "6A054C293AB465729B1D543AE16B053048C55DD69FA1B3F057C1FA4B332F4C40"
+    },
+    {
+      "path": "fixtures/phase-5/p5-4/c50.generated.v1.json",
+      "bytes": 14783,
+      "sha256": "FFD04D71C82F2CD26CE5A2DA86C8CC8AC64E25C275E0D687A4855EFD52717297"
+    },
+    {
+      "path": "fixtures/phase-5/p5-4/intelligence-cases.generated.v1.json",
+      "bytes": 237212,
+      "sha256": "1604E1B272DF7A29977FB30A03BA6599C1C0A074CA856C2BD973959DDE7B5181"
+    },
+    {
+      "path": "fixtures/phase-5/p5-4/replay-manifest.generated.v1.json",
+      "bytes": 931,
+      "sha256": "DE01095BD9AEDEE3DEB76B9C04F8D4DEDA4FA179FF7DBDD7CC8E2DE429FEC422"
+    },
+    {
+      "path": "fixtures/phase-5/p5-4/review-cases.generated.v1.json",
+      "bytes": 5509,
+      "sha256": "78CA997F74C45E367AF6BF7F54E3BCCDC059A379FB3EECD41344B6F0F32E95E8"
+    },
+    {
+      "path": "fixtures/phase-5/p5-4/security-cases.generated.v1.json",
+      "bytes": 4030,
+      "sha256": "8F412F3B764D550110E724198A38160EE6C80719A648A70DFB26D61FAB9907A1"
+    },
+    {
+      "path": "fixtures/phase-5/p5-4/visual-cases.generated.v1.json",
+      "bytes": 5433,
+      "sha256": "7B3490F7CD142575EB2B31F508FA71E5C0F6051BEEC2FB6FDAE2B029601A776B"
+    }
+  ],
+  "result": "pass"
+}

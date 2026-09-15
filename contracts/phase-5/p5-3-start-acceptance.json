@@ -1,0 +1,71 @@
+{
+  "schema_version": "hcam.phase5.p5_3.start_acceptance.v1",
+  "decision_id": "D-P5.3-START",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-08",
+  "recorded_against_local_head": "392a52ce982dd90b5a30de44843a5dfa552956c1",
+  "accepted_package": {
+    "package_id": "P5.3-START-R0",
+    "path": "contracts/phase-5/p5-3-start-authorization-package.json",
+    "bytes": 34420,
+    "sha256": "03D87FD50A6A54619F2A7065809A88DA04BED95B2159B7EE178C41A03A1BDCCA",
+    "bound_input_digest": "8B6A77A935B30751B851F04FB4B5A8273CC1D01A7333F1A33A54E8FF6BDC80FB"
+  },
+  "authorized_scope": [
+    "record_exact_start_acceptance_and_create_one_local_pre_implementation_checkpoint_commit_without_push",
+    "exact_hls_js_1_7_2_dependency_resolution_lockfile_SBOM_and_supply_chain_evidence",
+    "eight_frozen_P5_3_generated_only_camera_and_live_monitoring_workstreams",
+    "24_named_existing_files_86_named_additive_implementation_paths_14_named_phase_evidence_records_and_four_bounded_status_navigation_transitions",
+    "deterministic_generated_non_issuable_camera_metadata_and_C1_C4_C10_synthetic_media",
+    "loopback_only_build_browser_HLS_default_off_WHEP_accessibility_security_recovery_teardown_and_repository_validation",
+    "at_most_twelve_in_scope_remediation_validation_and_reseal_cycles",
+    "up_to_three_local_checkpoint_commits_without_push",
+    "one_separate_non_effective_P5_3_exit_acceptance_proposal"
+  ],
+  "mandatory_invariants": [
+    "Command_Center_remains_primary",
+    "Operations_owns_Camera_Catalogue_Camera_Detail_and_Stream_Diagnostics",
+    "Live_Workspace_and_Monitor_Wall_are_connected_specialist_surfaces",
+    "same_origin_media_edge_uses_opaque_short_lived_one_stream_grants",
+    "browser_never_receives_RTSP_ONVIF_internal_gateway_secret_or_reusable_bearer_locators",
+    "HLS_is_the_baseline_and_all_enabled_WHEP_paths_have_HLS_fallback",
+    "WHEP_is_optional_default_off_pinned_to_draft_ietf_wish_whep_04_and_kill_switch_controlled",
+    "dynamic_profiles_do_not_change_operator_authority_security_or_accessibility",
+    "admission_recovery_revocation_and_teardown_are_deterministic_and_bounded",
+    "controls_remain_view_only_and_non_video_equivalence_is_authoritative",
+    "twenty_producer_gaps_and_thirty_threats_remain_explicit",
+    "no_source_import_from_final_ui_Phase_2_5_or_other_repository"
+  ],
+  "continuing_prohibitions": [
+    "source_import",
+    "unapproved_dependencies_or_network_access",
+    "backend_API_routes_migrations_databases_workers_or_services",
+    "real_playback_session_media_edge_provider_or_workflow_services",
+    "Sentinel_cameras_or_real_media",
+    "recording_snapshot_download_export_print_PTZ_or_camera_control",
+    "Government_or_private_data",
+    "models_datasets_artifacts_inference_training_or_AI_runtime",
+    "operational_alert_notification_dispatch_enforcement_or_autonomous_action",
+    "hardware_performance_stress_thermal_conformance_or_production_claims",
+    "containers_or_Kubernetes",
+    "deployment",
+    "P5_4",
+    "remote_Git"
+  ],
+  "progress_at_start": {
+    "P5_3_earned": 0,
+    "P5_3_total": 16,
+    "P5_3_percent": 0.0,
+    "P5_3_change_percentage_points": 0.0,
+    "phase_5_earned": 32,
+    "phase_5_total": 100,
+    "phase_5_percent": 32.0,
+    "phase_5_change_percentage_points": 0.0
+  },
+  "owner_statement_normalization": "Exact ASCII text shown below, UTF-8 without BOM, no terminal newline.",
+  "owner_statement_utf8_length": 1595,
+  "owner_statement_sha256": "117A5D77E8ACFFD03B963AFA1BDD08F744200726C00CFCA00C9375986AD8A8A5",
+  "owner_statement": "D-P5.3-START: I, mayank-admin, accept P5.3 start package P5.3-START-R0 with SHA-256 03D87FD50A6A54619F2A7065809A88DA04BED95B2159B7EE178C41A03A1BDCCA and bound-input digest 8B6A77A935B30751B851F04FB4B5A8273CC1D01A7333F1A33A54E8FF6BDC80FB and authorize its exact bounded local generated-only Camera And Live Monitoring Workspace implementation scope, exact hls.js 1.7.2 dependency resolution under the documented supply-chain policy, deterministic C1/C4/C10 synthetic-media generation, source and test implementation, loopback-only build and browser validation, evidence generation, and up to three local checkpoint commits without push. Command Center remains primary; Operations owns Camera Catalogue, Camera Detail, and Stream Diagnostics; Live Workspace and Monitor Wall remain connected specialist surfaces; the same-origin opaque-grant media-edge boundary, HLS baseline, optional default-off draft-ietf-wish-whep-04 WHEP with HLS fallback, dynamic profiles, deterministic admission, bounded recovery and teardown, view-only controls, authoritative accessibility equivalence, twenty producer gaps, thirty threats, and all stop conditions remain mandatory. This does not authorize source import, unapproved dependencies or network access, backend routes or migrations, real playback-session or media-edge services, providers, Sentinel, cameras or real media, recording, snapshots, downloads, exports, print or PTZ, Government or private data, models, datasets, artifacts or inference, operational actions, hardware or production claims, containers, Kubernetes, deployment, P5.4, or remote Git."
+}

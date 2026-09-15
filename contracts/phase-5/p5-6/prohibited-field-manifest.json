@@ -1,0 +1,27 @@
+{
+  "schema_version": "hcam.phase5.p5_6.prohibited_field_manifest.v1",
+  "marker": "HCAM_GENERATED_ONLY_P5_6",
+  "scanned_records": 1120,
+  "forbidden_keys": [
+    "password",
+    "secretValue",
+    "accessToken",
+    "refreshToken",
+    "privateKey",
+    "connectionString",
+    "rawLog",
+    "mediaUrl",
+    "modelArtifact",
+    "executableInstruction"
+  ],
+  "forbidden_value_classes": [
+    "credential_or_secret_material",
+    "raw_log_or_security_payload",
+    "provider_camera_media_or_model_locator",
+    "executable_machine_or_deployment_instruction"
+  ],
+  "findings": 0,
+  "secret_values_retained": 0,
+  "raw_logs_retained": 0,
+  "media_or_model_bytes_retained": 0
+}

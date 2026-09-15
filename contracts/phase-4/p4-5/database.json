@@ -1,0 +1,65 @@
+{
+  "schema_version": "hcam.phase4.p4_5.database-snapshot.v1",
+  "revision": "0017_investigation_evidence",
+  "parent_revision": "0016_reference_integrations",
+  "preserved_v1_stores": [
+    "investigation_timelines",
+    "timeline_entries"
+  ],
+  "new_stores": [
+    "investigation_command_receipts",
+    "investigation_correction_impacts",
+    "investigation_corrections",
+    "investigation_deletion_receipts",
+    "investigation_evidence_references",
+    "investigation_export_manifests",
+    "investigation_hold_overlays",
+    "investigation_impact_jobs",
+    "investigation_integrity_assessments",
+    "investigation_outbox",
+    "investigation_provenance_bundles",
+    "investigation_relationships",
+    "investigation_retention_evaluations",
+    "investigation_reviews",
+    "investigation_timeline_entries_v2",
+    "investigation_timeline_revisions",
+    "investigation_timelines_v2"
+  ],
+  "postgresql": {
+    "authoritative_business_truth": true,
+    "forced_row_security": true,
+    "policy_scope": "department",
+    "concurrent_impact_claim": "FOR UPDATE SKIP LOCKED",
+    "protected_new_stores": [
+      "investigation_command_receipts",
+      "investigation_correction_impacts",
+      "investigation_corrections",
+      "investigation_deletion_receipts",
+      "investigation_evidence_references",
+      "investigation_export_manifests",
+      "investigation_hold_overlays",
+      "investigation_impact_jobs",
+      "investigation_integrity_assessments",
+      "investigation_outbox",
+      "investigation_provenance_bundles",
+      "investigation_relationships",
+      "investigation_retention_evaluations",
+      "investigation_reviews",
+      "investigation_timeline_entries_v2",
+      "investigation_timeline_revisions",
+      "investigation_timelines_v2"
+    ]
+  },
+  "sqlite": {
+    "purpose": "single-process generated development and tests",
+    "worker_limit": 1,
+    "row_security": "application department filters"
+  },
+  "database_invariants": [
+    "all P4.5 state is generated-only and nonoperational",
+    "timeline revisions evidence assessments reviews corrections and receipts are append-only",
+    "semantic identity is separate from delivery idempotency",
+    "source payloads and locators are never persisted",
+    "deletion and export external actions are unavailable"
+  ]
+}

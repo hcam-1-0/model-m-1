@@ -1,0 +1,517 @@
+{
+  "schema_version": "hcam.phase5.p5_7.browser_matrix.v1",
+  "status": "pass_with_explicit_optional_runtime_blocks",
+  "generated_only": true,
+  "technical_commit": "6a5e1c700779dbc0edb6fdd1a8dc4c6132dd21d6",
+  "start_package_sha256": "77E3A7885AA1969A9F50AF9EB3FE8EE05DEEAB0374FB1F83C4DD51B860C5395C",
+  "bound_input_digest": "E5B65A6611C9ED90A33B156DA6D632859CBFFF4BE4781AA2E03F910F0AEA1B4B",
+  "edge": {
+    "status": "pass",
+    "version": "153.0.4234.32",
+    "portals": {
+      "command": {
+        "expected": 49,
+        "unexpected": 0,
+        "flaky": 0,
+        "skipped": 0,
+        "duration_ms": 87462,
+        "reports": [
+          {
+            "path": "frontend/test-results/browser-results-p57-command.json",
+            "bytes": 61285,
+            "sha256": "F5D629A981C0A753FD7D7D2FCEE8D44FF4B3E6BC54D319287C3BDC03D0F37853"
+          }
+        ]
+      },
+      "gis": {
+        "expected": 49,
+        "unexpected": 0,
+        "flaky": 0,
+        "skipped": 0,
+        "duration_ms": 90375,
+        "reports": [
+          {
+            "path": "frontend/test-results/browser-results-p57-gis.json",
+            "bytes": 61255,
+            "sha256": "9DA0755BE1899246911F35C343C881D8A8F47C840F70E212C53F65C8CD36033B"
+          }
+        ]
+      },
+      "operations": {
+        "expected": 49,
+        "unexpected": 0,
+        "flaky": 0,
+        "skipped": 0,
+        "duration_ms": 63677,
+        "reports": [
+          {
+            "path": "frontend/test-results/browser-results-p57-operations.json",
+            "bytes": 61272,
+            "sha256": "CA7AE66824386C8F42E430635EEA6792065A903C33E07C47B492A698987BA233"
+          }
+        ]
+      },
+      "intelligence": {
+        "expected": 49,
+        "unexpected": 0,
+        "flaky": 0,
+        "skipped": 0,
+        "duration_ms": 66326,
+        "reports": [
+          {
+            "path": "frontend/test-results/browser-results-p57-intelligence.json",
+            "bytes": 61290,
+            "sha256": "64B0B5097AF2EC8F716FBEA50DB471A2A40C2ACB75CA71AB730F87428DA1F2B2"
+          }
+        ]
+      },
+      "investigation": {
+        "expected": 49,
+        "unexpected": 0,
+        "flaky": 0,
+        "skipped": 0,
+        "duration_ms": 59855,
+        "reports": [
+          {
+            "path": "frontend/test-results/browser-results-p57-investigation.json",
+            "bytes": 61295,
+            "sha256": "DC57EDAA631B4A1B44A95363B63649DDC02AD12E5BE3A6F6AA7C5F928F061FF9"
+          }
+        ]
+      },
+      "evidence": {
+        "expected": 49,
+        "unexpected": 0,
+        "flaky": 0,
+        "skipped": 0,
+        "duration_ms": 176161,
+        "reports": [
+          {
+            "path": "frontend/test-results/browser-results-p57-evidence-accessibility.json",
+            "bytes": 14352,
+            "sha256": "E6AC5220546DF8F9DB9241BA5E2E3547E1A74F9C41A451C29A4088D689F5EA7B"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-evidence-viewport.json",
+            "bytes": 14546,
+            "sha256": "203D7C0A8010E2866341D1BAA1FE9340DF89D4B877E76A8E76238E8E5F797F86"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-evidence-cross-portal.json",
+            "bytes": 14384,
+            "sha256": "4BDEFCC467C97EC7FCF2CCCF6387414B4F145795B47D214AF6FAA1603EE702DD"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-evidence-localization.json",
+            "bytes": 14354,
+            "sha256": "8EDAAA3FD8410008AB3C8B8C92AFF940255DC9DEA990DDE12B9A399D894F8EA2"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-evidence-performance-scale.json",
+            "bytes": 14425,
+            "sha256": "BA4D52A1AF506B731CD9424F766EAE340713B2D23D70F3712CD063327434BBD6"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-evidence-resilience.json",
+            "bytes": 14481,
+            "sha256": "66367367BBE3D27447FAEACA2E88CF0F9DD5D3B1D93BB5749CB88068298CC82A"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-evidence-security.json",
+            "bytes": 14391,
+            "sha256": "46A7D8E39C93CF3663ED494289EEEAA415C2586BAADBAF4FE1303041C033246B"
+          }
+        ]
+      },
+      "admin": {
+        "expected": 49,
+        "unexpected": 0,
+        "flaky": 0,
+        "skipped": 0,
+        "duration_ms": 168464,
+        "reports": [
+          {
+            "path": "frontend/test-results/browser-results-p57-admin-accessibility.json",
+            "bytes": 14319,
+            "sha256": "42B478D450EA42EB065128D0416B9795CFA2EFEA07FFF7705FDCC23EEC9B3F6C"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-admin-browser-viewport-profile.json",
+            "bytes": 14513,
+            "sha256": "8150391C9901453FA3E273A24E908D0D7B3A34D7D43E1290A0971EA013D08780"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-admin-cross-portal.json",
+            "bytes": 14351,
+            "sha256": "F56F6553F5ADC785FCFDF430B8482A3250DD6A7C05F5AECC3C3E4F8130F6E764"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-admin-localization.json",
+            "bytes": 14330,
+            "sha256": "896625BB32332CD3D35BCB10B5BCBAE34547BEC706170A22677375B13B1D704A"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-admin-performance-scale.json",
+            "bytes": 14410,
+            "sha256": "A0707721A508CF20BB4C0BFBC41C94395449D9CCAD23F2BD7B674DB86C216862"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-admin-resilience.json",
+            "bytes": 14466,
+            "sha256": "AD40B8F7D5136D0BB668F29A9EBBE07E9F7A79A914EC54C720127DE0269749BD"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-admin-security.json",
+            "bytes": 14367,
+            "sha256": "E49159761C8E4810F46594E852C1339C1E3E921B369B129C346C35B3F14F6490"
+          }
+        ]
+      },
+      "security": {
+        "expected": 49,
+        "unexpected": 0,
+        "flaky": 0,
+        "skipped": 0,
+        "duration_ms": 175336,
+        "reports": [
+          {
+            "path": "frontend/test-results/browser-results-p57-security-accessibility.json",
+            "bytes": 14352,
+            "sha256": "12FA3E43B54B1E6C8EFF45714908913F0BB42C3AFA41C4F08C453897C93F6EB8"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-security-browser-viewport-profile.json",
+            "bytes": 14537,
+            "sha256": "AFF176C69695512918E414545B67AF5730057763F9983E68453C67D1665004C1"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-security-cross-portal.json",
+            "bytes": 14375,
+            "sha256": "963D96491BC013199D2649F46922871E9841B60DA61BF56CDF5C70985030238B"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-security-localization.json",
+            "bytes": 14354,
+            "sha256": "B69DD78FCE54129A4C1BA9D7843896659644D4BB8DBA2B5FD08A8715DC2C50BD"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-security-performance-scale.json",
+            "bytes": 14425,
+            "sha256": "1F098BE62F0C0B0ACF36AF7F0601A3C89F1201AF8ABE584B5C6ED7B69BD071C5"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-security-resilience.json",
+            "bytes": 14481,
+            "sha256": "C7B5F3F742A8D4C9CC551E4107B133C3E48A7326F41996FE2B43D27895E24D43"
+          },
+          {
+            "path": "frontend/test-results/browser-results-p57-security-security.json",
+            "bytes": 14400,
+            "sha256": "49B616E5073A822F2DEC06B50D956D5EBBC5A4AEE57A8EBB98B6822556D302AA"
+          }
+        ]
+      }
+    },
+    "checks_passed": 392,
+    "checks_failed": 0,
+    "screenshots": [
+      {
+        "path": "frontend/test-results/artifacts-p57-command/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V01-390x844/command-V01-390x844.png",
+        "bytes": 514856,
+        "sha256": "F5A07E0BBAB992B56E6237AE7CEFC432605E5DE7BD9782B9E855383DAD873AC9"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-command/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V02-768x1024/command-V02-768x1024.png",
+        "bytes": 133135,
+        "sha256": "D93995FCCACAE4A169E2E314BEA06085A3CA0034DC55136F0AF39B7EC6E31E89"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-command/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V03-1280x720/command-V03-1280x720.png",
+        "bytes": 129258,
+        "sha256": "E3545958D49ABCD6CBB33B245E5BB5DF7E1586CA6AE1BA55323662188B951732"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-command/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V04-1440x900/command-V04-1440x900.png",
+        "bytes": 130437,
+        "sha256": "EDE871DAF7E5EF0E257E7B4082CE5BB69FA7579D1D3036F60545E5B958B8A200"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-command/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V05-1920x1080/command-V05-1920x1080.png",
+        "bytes": 133924,
+        "sha256": "75C3A86104AC31805BA90EF09C9CDC9DBF6E104EAF998A64B1682CF11115E4E0"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-command/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V06-2560x1440/command-V06-2560x1440.png",
+        "bytes": 139806,
+        "sha256": "248DCE7FA40392824806E0CB1869287759EDFB9B3E396DDD0CC3A3E191F9C78E"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-command/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V07-3840x1080/command-V07-3840x1080.png",
+        "bytes": 149430,
+        "sha256": "C48E17FD2004A6C5ADF291D897A551E147408D00FA92E95CA8847B836A3EFB4D"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-gis/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V01-390x844/gis-V01-390x844.png",
+        "bytes": 233345,
+        "sha256": "508A4EADECF1F007E6E810AAA7606A8F53EFA4CF016C6AEF0F9A9BC502A5AF81"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-gis/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V02-768x1024/gis-V02-768x1024.png",
+        "bytes": 93573,
+        "sha256": "CD9D438622A22A7C6097215356375A9BF7F2AC9A0AE52FF8521111C224A75C1A"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-gis/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V03-1280x720/gis-V03-1280x720.png",
+        "bytes": 106577,
+        "sha256": "BD41AE723C7EF1305EA0696624E228DC7383A82F8D012B61A136F424DE0ECB92"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-gis/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V04-1440x900/gis-V04-1440x900.png",
+        "bytes": 107901,
+        "sha256": "AD7CD7BCC52A3A3679A615C8EB2A154F9CEC849DE7C872DF93344BC8A44AD56D"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-gis/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V05-1920x1080/gis-V05-1920x1080.png",
+        "bytes": 111062,
+        "sha256": "2AB11A73CA35E286E195FD9B262C1F164FA0447B9018FDD487BA387829F19359"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-gis/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V06-2560x1440/gis-V06-2560x1440.png",
+        "bytes": 117422,
+        "sha256": "A8F45060FC1329E006F5327F786523D828BEC5AC08699AC948076EDBBF9AA1C0"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-gis/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V07-3840x1080/gis-V07-3840x1080.png",
+        "bytes": 123982,
+        "sha256": "B4B2FF63B3CDBB0C556473B2D3D20E8F6C153303012A1AF05FC78F41D3F6606E"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-operations/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V01-390x844/operations-V01-390x844.png",
+        "bytes": 456315,
+        "sha256": "273B840DB6ED1B23778B9DC882CA2EBD3A02F3C08D14030D069B472A0FDC2CC9"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-operations/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V02-768x1024/operations-V02-768x1024.png",
+        "bytes": 97406,
+        "sha256": "BA0B19D190DA8F1881590F28B699567C86F35E7F9A430485B9899D274774316C"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-operations/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V03-1280x720/operations-V03-1280x720.png",
+        "bytes": 123784,
+        "sha256": "2318C175920F2B62ACA9D91D7F6E0F694002873053A0626B18F9B9710FEC9979"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-operations/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V04-1440x900/operations-V04-1440x900.png",
+        "bytes": 125107,
+        "sha256": "9283AD005D94050D69CFFD8EA16652C92DA62E692B722056F44F66E6CC17AB7D"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-operations/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V05-1920x1080/operations-V05-1920x1080.png",
+        "bytes": 129404,
+        "sha256": "E84D4D94CF8A21ABA1F26D1928474096FE74DECF2F086D57199289B45C483DC5"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-operations/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V06-2560x1440/operations-V06-2560x1440.png",
+        "bytes": 137417,
+        "sha256": "59403D7DBE7DD95B099C7A8B7F0E339CB986EA9D582320E54DBDEF5F2C0BE03E"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-operations/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V07-3840x1080/operations-V07-3840x1080.png",
+        "bytes": 143397,
+        "sha256": "5FB6CCBC67913AE5AE1C4C3D634747D3CB7655E36A898C8ED2E4427967075AD1"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-intelligence/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V01-390x844/intelligence-V01-390x844.png",
+        "bytes": 362406,
+        "sha256": "6A05014F33E7AB04C90C6C2426E5DFC19D2A61856E8DEAD9AD6543065B276130"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-intelligence/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V02-768x1024/intelligence-V02-768x1024.png",
+        "bytes": 83636,
+        "sha256": "E79DB73A2D40BEECC3FCA46ADE065C61FF525A7114B4E08378F641D97091E22C"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-intelligence/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V03-1280x720/intelligence-V03-1280x720.png",
+        "bytes": 98775,
+        "sha256": "A10BE3EB019C3FB5BBDFED554543F519463FAAB0FEE152370C7D93559B08C1D1"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-intelligence/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V04-1440x900/intelligence-V04-1440x900.png",
+        "bytes": 101476,
+        "sha256": "49BE58FF3391A17D2880531880437802038E2D4D69747C187BA49D45CB27CC0D"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-intelligence/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V05-1920x1080/intelligence-V05-1920x1080.png",
+        "bytes": 106296,
+        "sha256": "7BEE7733B5AF60A7B4725F097778A7AF68513F00B86983E8D99E6F5A2782AAF1"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-intelligence/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V06-2560x1440/intelligence-V06-2560x1440.png",
+        "bytes": 114527,
+        "sha256": "BCF542E5580A13FA20294534FF0CDD18334D731A0E62AD51FE220817A4401CF6"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-intelligence/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V07-3840x1080/intelligence-V07-3840x1080.png",
+        "bytes": 117927,
+        "sha256": "5681F17BC75581B79BCAAFFFE45303906899FB0BC9F56697AA9DE6A69003F2E0"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-investigation/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V01-390x844/investigation-V01-390x844.png",
+        "bytes": 398521,
+        "sha256": "D590B51507078ACE300AD18B5B6B15FA777BF9542814960D5B1209B736433637"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-investigation/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V02-768x1024/investigation-V02-768x1024.png",
+        "bytes": 126131,
+        "sha256": "3342C7460A721528B57E0790B5DD45D71C423899EC57F2CBB333C4D7C79E71AA"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-investigation/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V03-1280x720/investigation-V03-1280x720.png",
+        "bytes": 116359,
+        "sha256": "B2E905218EC70F073DDB4720857C008752A6361467DBB4CCE08EF36E5E32B984"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-investigation/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V04-1440x900/investigation-V04-1440x900.png",
+        "bytes": 117563,
+        "sha256": "AF33EEF60B7B55FB2C4AE8F49A2E7D0C930844EDCE01249093D7E0A381ED0FD2"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-investigation/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V05-1920x1080/investigation-V05-1920x1080.png",
+        "bytes": 122324,
+        "sha256": "DF6039694071DCF4107951C39D139884A4D136785F40A16DC191A4D0711AFE84"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-investigation/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V06-2560x1440/investigation-V06-2560x1440.png",
+        "bytes": 129582,
+        "sha256": "2C1C95A1BEA864B8430C51F16F97EF6BCD970FE6C1B434B10F106A709059CE8B"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-investigation/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V07-3840x1080/investigation-V07-3840x1080.png",
+        "bytes": 134344,
+        "sha256": "5E7F225E18A7608E7B28091E9D84C06028EE071F8BDACD80B445AE71599F3718"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-evidence/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V01-390x844/evidence-V01-390x844.png",
+        "bytes": 398224,
+        "sha256": "14A167998D78C914403F9FCCFE97CB2D661FF4FED9FC9B65CD32A88B6CAF7E4B"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-evidence/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V02-768x1024/evidence-V02-768x1024.png",
+        "bytes": 120388,
+        "sha256": "6C7FFECF9761C77123082666C528499A87242C0470A9D6E7AC6F04E80336627E"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-evidence/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V03-1280x720/evidence-V03-1280x720.png",
+        "bytes": 123376,
+        "sha256": "6B851D6827AEEC31C6274CB1B76EDC98C8CF2D539C1A4BF72E60E9EC12C1ED88"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-evidence/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V04-1440x900/evidence-V04-1440x900.png",
+        "bytes": 122197,
+        "sha256": "321D71CCA2560CC15050C9F2064890887DF52A70CC0C8B86D41835FEBA44BDE7"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-evidence/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V05-1920x1080/evidence-V05-1920x1080.png",
+        "bytes": 123026,
+        "sha256": "3DCF5D96D5E5C4F7F58628884450A4DEB7FD5549A68E88E7CA0B22A42ACC7D4E"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-evidence/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V06-2560x1440/evidence-V06-2560x1440.png",
+        "bytes": 130149,
+        "sha256": "ACB1F8333EA1D0B9681B1EA5CC7AEFC5F0E6FCFA06B1D8B796CD15BC04C8F88F"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-evidence/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V07-3840x1080/evidence-V07-3840x1080.png",
+        "bytes": 134905,
+        "sha256": "A43C014FE40AD54E8399FAC93B8A70FC5B7334A97DDBF29F6CC49542CD940714"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-admin/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V01-390x844/admin-V01-390x844.png",
+        "bytes": 206613,
+        "sha256": "EBC11CC0E1764E4B7E1C383F379D4508494D29BC539B73BE07BF0F0286DE7ECE"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-admin/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V02-768x1024/admin-V02-768x1024.png",
+        "bytes": 52623,
+        "sha256": "027D3C8C7F1C6E728FA275C708B9BD9798A8EA37482BC5798E7A0D39A182A92D"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-admin/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V03-1280x720/admin-V03-1280x720.png",
+        "bytes": 72776,
+        "sha256": "68B90EA0EB1E41B79434B30D8CDEE78C59F361822A4167C1491A3D5CC0551230"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-admin/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V04-1440x900/admin-V04-1440x900.png",
+        "bytes": 75049,
+        "sha256": "F95BB97BCB9D98D8EA80EFBC0DD97942471AB88FCB7E0B50877EE997ED1FE53F"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-admin/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V05-1920x1080/admin-V05-1920x1080.png",
+        "bytes": 79184,
+        "sha256": "B9FFB8AFC0C03CAFA9FD76D1D6E9E301C08F281F00CE713FB5C9D262FF8D9645"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-admin/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V06-2560x1440/admin-V06-2560x1440.png",
+        "bytes": 85255,
+        "sha256": "265FC47B6618EFB791F52F9B4E29D765F5897E46449E963CB35B86EC257A304A"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-admin/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V07-3840x1080/admin-V07-3840x1080.png",
+        "bytes": 88093,
+        "sha256": "CA4AAD325DE14EB4D28639517FEDE2C71A31E543D0C7F9CB95D437580D0BFCD9"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-security/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V01-390x844/security-V01-390x844.png",
+        "bytes": 355113,
+        "sha256": "6C44D89711BCEE557FFDE71AC42ABB91E9C5F548E0A4D4AA1A1085186F8DD640"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-security/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V02-768x1024/security-V02-768x1024.png",
+        "bytes": 91313,
+        "sha256": "6CDBBFC3D847C513FB2B693A028AB8F9455009A4EF552DD9ADBF5493B463B2B1"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-security/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V03-1280x720/security-V03-1280x720.png",
+        "bytes": 107417,
+        "sha256": "CCC3F409C65BED0657928A0C42110F22AFA97E43E7BCE0106B476E1F3E5594E6"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-security/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V04-1440x900/security-V04-1440x900.png",
+        "bytes": 113287,
+        "sha256": "85BD270FC2F84D5B5CD515C8AB31CB5E1D00CCCE15E18220FFD61D1C9F78F85B"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-security/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V05-1920x1080/security-V05-1920x1080.png",
+        "bytes": 118862,
+        "sha256": "D90DD2A10BFB11DE76440AF51BF9908F71F8219CC003EB170B17127D19A75E2B"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-security/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V06-2560x1440/security-V06-2560x1440.png",
+        "bytes": 125227,
+        "sha256": "B403E1DFC9686F6C8332E6040F1DDB8CB431431B6F8753786D87875FAFA5A1F9"
+      },
+      {
+        "path": "frontend/test-results/artifacts-p57-security/p5-7-cross-portal-authoriz-ba987--generated-operator-surface-V07-3840x1080/security-V07-3840x1080.png",
+        "bytes": 130643,
+        "sha256": "C8BB1844298033CBEBDC014CB84FD8DD0FBD1F777DFE9D8A51518A65BAEDE419"
+      }
+    ]
+  },
+  "optional_engines": {
+    "chromium": {
+      "status": "blocked_runtime_unavailable",
+      "reason": "required_Playwright_revision_1243_absent",
+      "incompatible_cached_revision_observed": "1223",
+      "downloaded": false
+    },
+    "firefox": {
+      "status": "blocked_runtime_unavailable",
+      "downloaded": false
+    },
+    "webkit": {
+      "status": "blocked_runtime_unavailable",
+      "downloaded": false
+    }
+  },
+  "emulation_not_physical_evidence": true
+}

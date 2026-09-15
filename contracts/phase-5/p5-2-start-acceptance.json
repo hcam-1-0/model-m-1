@@ -1,0 +1,65 @@
+{
+  "schema_version": "hcam.phase5.p5_2.start_acceptance.v1",
+  "decision_id": "D-P5.2-START",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-08",
+  "recorded_against_local_head": "196d4b2465a731d1b1760e87300e88089a752930",
+  "accepted_package": {
+    "package_id": "P5.2-START-R0",
+    "path": "contracts/phase-5/p5-2-start-authorization-package.json",
+    "bytes": 34226,
+    "sha256": "24F89F18D52404A4FF1AA4A8A52A9DA8E4D4619B7721107B1A82EEF389805B67",
+    "bound_input_digest": "3E070D61CC90E969E1A5FA91A9564D1FE151E88293904051B9B2763C5E27A74E"
+  },
+  "authorized_scope": [
+    "record_exact_start_acceptance_and_create_one_local_pre_implementation_checkpoint_commit_without_push",
+    "guarded_allowlisted_MapLibre_and_deck_gl_dependency_resolution_lockfile_SBOM_and_supply_chain_evidence",
+    "eight_frozen_P5_2_generated_only_Command_and_connected_GIS_workstreams",
+    "30_named_existing_files_99_named_additive_implementation_files_and_13_named_phase_evidence_records",
+    "local_loopback_generated_only_build_browser_visual_accessibility_security_replay_C1_C10_C50_and_repository_regression_validation",
+    "at_most_twelve_in_scope_remediation_validation_and_reseal_cycles",
+    "local_checkpoint_commits_without_push",
+    "one_separate_non_effective_P5_2_exit_acceptance_proposal"
+  ],
+  "mandatory_invariants": [
+    "Command_Center_is_primary",
+    "GIS_Center_is_connected_and_non_competing",
+    "one_shared_GIS_domain_and_one_server_authoritative_truth_model",
+    "authoritative_list_table_detail_fallback_survives_renderer_failure",
+    "dynamic_profiles_do_not_change_authority_truth_review_correction_safety_or_accessibility",
+    "all_fourteen_producer_gaps_remain_blocked_or_generated_only",
+    "Gujarat_GIS_parity_first_no_downgrade_contract",
+    "no_source_import_from_hcam_1_0_final_ui"
+  ],
+  "continuing_prohibitions": [
+    "source_import",
+    "unapproved_dependencies_or_network_access",
+    "backend_API_routes_migrations_databases_workers_or_services",
+    "real_providers_tiles_geocoders_or_routing",
+    "cameras_or_media",
+    "Government_or_private_data",
+    "models_datasets_artifacts_or_inference",
+    "operational_actions",
+    "hardware_performance_stress_thermal_or_production_claims",
+    "containers_or_Kubernetes",
+    "deployment",
+    "P5_3",
+    "remote_Git"
+  ],
+  "progress_at_start": {
+    "P5_2_earned": 0,
+    "P5_2_total": 12,
+    "P5_2_percent": 0.0,
+    "P5_2_change_percentage_points": 0.0,
+    "phase_5_earned": 20,
+    "phase_5_total": 100,
+    "phase_5_percent": 20.0,
+    "phase_5_change_percentage_points": 0.0
+  },
+  "owner_statement_normalization": "Exact ASCII text shown below, UTF-8 without BOM, no terminal newline.",
+  "owner_statement_utf8_length": 1164,
+  "owner_statement_sha256": "857539C261E566C362E02B25BCAFC6FBB39E66F982DE3E44BE5A0A99B0E1A0C1",
+  "owner_statement": "D-P5.2-START: I, mayank-admin, accept P5.2 start package P5.2-START-R0 with SHA-256 24F89F18D52404A4FF1AA4A8A52A9DA8E4D4619B7721107B1A82EEF389805B67 and bound-input digest 3E070D61CC90E969E1A5FA91A9564D1FE151E88293904051B9B2763C5E27A74E and authorize its exact bounded local generated-only Command Center and connected GIS Center implementation scope, guarded allowlisted MapLibre and deck.gl dependency resolution and lockfile creation, source and test implementation, local loopback build and browser validation, evidence generation, and local checkpoint commits without push. Command Center remains primary; GIS Center remains connected; one shared GIS domain, authoritative list/table fallback, dynamic resource profiles, fourteen blocked producer gaps, and the Gujarat GIS parity-first no-downgrade contract remain mandatory. This does not authorize source import, unapproved dependencies or network access, backend routes or migrations, real providers or tiles, cameras or media, Government or private data, models, datasets, artifacts or inference, operational actions, hardware or production claims, containers, Kubernetes, deployment, P5.3, or remote Git."
+}

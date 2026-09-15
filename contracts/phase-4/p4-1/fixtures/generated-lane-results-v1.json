@@ -1,0 +1,120 @@
+{
+  "arbitration": {
+    "abstained": false,
+    "arbitration_digest": "sha256:c5f7b33949c20d3172cf7d7fc3e6f5a4cb8018b4eae3e002de8e6239ae6c012e",
+    "confidence": 0.625,
+    "contract_type": "hcam.intelligence.arbitration-result.v1",
+    "contradiction_count": 0,
+    "generated_only": true,
+    "lane_results": [
+      {
+        "abstained": false,
+        "contract_type": "hcam.intelligence.lane-result.v1",
+        "contradiction_count": 0,
+        "evidence_ids": [
+          "generated-event-1",
+          "generated-event-2"
+        ],
+        "failure_code": null,
+        "generated_fixture_result": false,
+        "generated_only": true,
+        "lane": "deterministic_cpu",
+        "lineage_digest": "sha256:202047815572b5f66706b7862ceb69505eaa831d0f44dcb27812a4f4fc8c1b2c",
+        "operational": false,
+        "score": 1.0,
+        "status": "completed",
+        "uncertainty": 0.0
+      },
+      {
+        "abstained": false,
+        "contract_type": "hcam.intelligence.lane-result.v1",
+        "contradiction_count": 0,
+        "evidence_ids": [],
+        "failure_code": null,
+        "generated_fixture_result": true,
+        "generated_only": true,
+        "lane": "probabilistic",
+        "lineage_digest": "sha256:16a9445bd07adf0ba1c77a1ec2a463fcdaf066ef4607b0b9edb3ce06ebc80460",
+        "operational": false,
+        "score": 0.25,
+        "status": "completed",
+        "uncertainty": 0.15
+      }
+    ],
+    "operational": false,
+    "reason_codes": [
+      "deterministic_evidence_satisfied",
+      "lane_disagreement_preserved"
+    ],
+    "state": "proposed",
+    "uncertainty": 0.375
+  },
+  "capabilities": [
+    {
+      "contract_type": "hcam.intelligence.lane-capability.v1",
+      "deterministic": true,
+      "execution_state": "enabled_generated_only",
+      "generated_only": true,
+      "implementation_version": "sha256:e4d76bcf076992aca28ba06597e2c6dc0948d1152a76f3be33ff0183a5d95b71",
+      "lane": "deterministic_cpu",
+      "operational": false,
+      "resource_class": "cpu"
+    },
+    {
+      "contract_type": "hcam.intelligence.lane-capability.v1",
+      "deterministic": false,
+      "execution_state": "unavailable",
+      "generated_only": true,
+      "implementation_version": "sha256:b89089f44b3c047563d5616f854979493a30b3c43fce609e433ac93912718224",
+      "lane": "probabilistic",
+      "operational": false,
+      "resource_class": "accelerator_optional"
+    },
+    {
+      "contract_type": "hcam.intelligence.lane-capability.v1",
+      "deterministic": false,
+      "execution_state": "unavailable",
+      "generated_only": true,
+      "implementation_version": "sha256:0b9aabc462f3d3d44cbee456070eadfe3e6971a4d008a572de58524be10c7c17",
+      "lane": "temporal_graph",
+      "operational": false,
+      "resource_class": "accelerator_optional"
+    },
+    {
+      "contract_type": "hcam.intelligence.lane-capability.v1",
+      "deterministic": false,
+      "execution_state": "unavailable",
+      "generated_only": true,
+      "implementation_version": "sha256:35a7f6bf67024004b373e99a1ffb7ce6a39bd9c9413421c430988a3d03db17b5",
+      "lane": "model_first_shadow",
+      "operational": false,
+      "resource_class": "accelerator_optional"
+    },
+    {
+      "contract_type": "hcam.intelligence.lane-capability.v1",
+      "deterministic": false,
+      "execution_state": "unavailable",
+      "generated_only": true,
+      "implementation_version": "sha256:cc3105c8644382d59495e35e3c0cefe8d9cf844b95925b5b265523fd937ae3c9",
+      "lane": "uncertainty_ensemble",
+      "operational": false,
+      "resource_class": "contract_only"
+    }
+  ],
+  "generated_optional_input": {
+    "abstained": false,
+    "contract_type": "hcam.intelligence.lane-result.v1",
+    "contradiction_count": 0,
+    "evidence_ids": [],
+    "failure_code": null,
+    "generated_fixture_result": true,
+    "generated_only": true,
+    "lane": "probabilistic",
+    "lineage_digest": "sha256:16a9445bd07adf0ba1c77a1ec2a463fcdaf066ef4607b0b9edb3ce06ebc80460",
+    "operational": false,
+    "score": 0.25,
+    "status": "completed",
+    "uncertainty": 0.15
+  },
+  "schema_version": "hcam.phase4.p4_1.generated-lane-results.v1"
+}

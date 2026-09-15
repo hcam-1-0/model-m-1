@@ -1,0 +1,54 @@
+{
+  "contract_type": "hcam.acceptance.limitation-register.v1",
+  "generated_only": true,
+  "limitations": [
+    {
+      "affected_claim_ids": [
+        "p47_d4fd90d3f51754202010bd70a60548a6"
+      ],
+      "generated_only": true,
+      "impact": "high",
+      "limitation_id": "p47_b0111d93c09ad50623ee62ad50965bae",
+      "mitigation": "Keep all claims explicitly bounded to generated scenario evidence.",
+      "owner": "mayank-admin",
+      "required_future_evidence": [
+        "owned_runtime_validation",
+        "accepted_capacity_targets"
+      ],
+      "statement": "Validation uses deterministic generated state and does not measure a deployed runtime.",
+      "status": "accepted"
+    },
+    {
+      "affected_claim_ids": [
+        "p47_7e33d03336156cb95c7bf493e95f75a6"
+      ],
+      "generated_only": true,
+      "impact": "high",
+      "limitation_id": "p47_4f416b3e9e0c8b953b18b9fa370946e3",
+      "mitigation": "Retain default-off adapters and require later scoped integration authorization.",
+      "owner": "mayank-admin",
+      "required_future_evidence": [
+        "owned_integration_validation",
+        "approved_data_governance"
+      ],
+      "statement": "No provider, network, camera, media, model, or operational system is exercised.",
+      "status": "accepted"
+    },
+    {
+      "affected_claim_ids": [
+        "p47_de82520eb8313bc8a9936dc2e99a5c03"
+      ],
+      "generated_only": true,
+      "impact": "medium",
+      "limitation_id": "p47_a1a7467212e6025de21b00ff8b8a46f2",
+      "mitigation": "Require Phase 5 component, keyboard, screen-reader, contrast, and motion validation.",
+      "owner": "mayank-admin",
+      "required_future_evidence": [
+        "implemented_ui",
+        "manual_accessibility_review"
+      ],
+      "statement": "Accessibility requirements are handoff contracts and have no implemented user interface evidence.",
+      "status": "accepted"
+    }
+  ]
+}

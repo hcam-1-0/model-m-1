@@ -1,0 +1,28 @@
+{
+  "chronology": {
+    "corrected_at": null,
+    "occurred_at": "2026-09-04T00:00:00Z",
+    "observed_at": "2026-09-04T00:00:01Z",
+    "received_at": "2026-09-04T00:00:02Z",
+    "recorded_at": "2026-09-04T00:00:03Z"
+  },
+  "contract_type": "hcam.intelligence.evidence-reference.v1",
+  "evidence_id": "evid_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "provenance": {
+    "activity_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "activity_id": "generated-correlation-fixture",
+    "agent_id": "hcam-generated-fixture",
+    "agent_kind": "generated_fixture",
+    "contract_type": "hcam.intelligence.provenance.v1",
+    "generated_only": true,
+    "policy_version": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "source_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "source_ref": "ref_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "transaction_id": "txn-generated-0001"
+  },
+  "role": "supports",
+  "sequence": 1,
+  "source_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "source_ref": "ref_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "source_type": "analytics_event"
+}

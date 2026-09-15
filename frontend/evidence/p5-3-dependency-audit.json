@@ -1,0 +1,24 @@
+{
+  "schema_version": "hcam.phase5.p5_3.dependency_audit.v1",
+  "workstream": "P5.3-W4",
+  "generated_on": "2026-09-08",
+  "generated_only": true,
+  "registry": "https://registry.npmjs.org/",
+  "package_manager": "pnpm@11.21.0",
+  "node": "v24.18.0",
+  "pnpm_bound_to_invoking_process": true,
+  "lockfile_sha256": "7F3E3F0A8B29C5083E300641A68F0325D8D2E8BD2ADE940E2B6D03C3CDEBBB62",
+  "proxy_environment_cleared_for_audit": true,
+  "lifecycle_scripts_enabled": false,
+  "browser_download_enabled": false,
+  "vulnerabilities": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "unresolved_high_or_critical": 0,
+  "result": "pass"
+}

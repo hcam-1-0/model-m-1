@@ -1,0 +1,68 @@
+{
+  "schema_version": "hcam.phase4.p4_7.plan-authorization.v1",
+  "decision_id": "D-P4.7-PLAN-AUTH",
+  "status": "planning_read_only_analysis_and_official_primary_source_research_authorized",
+  "effective": true,
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-09-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-operations-security-scale",
+  "planning_base_commit": "98234e475e938d7ca1dee5558d2088dabc187845",
+  "accepted_predecessor": {
+    "decision_id": "D-P4.6-ACCEPTANCE",
+    "path": "contracts/phase-4/p4-6/acceptance.json",
+    "sha256": "81009FCF742CA73A6DFAB6821DF2D77C3DDC617CB0B95BC8ED51B3348FF5E71E",
+    "evidence_package_sha256": "362E5B1A08438A75DD9FBD32662F9A95ACF42D59BB0E3017818B9862F131C949",
+    "canonical_component_digest": "5E9ED1932FA002ABB3E89BDAC00562D8C0AC42548B5F0B569FFEF4544F6AFE57",
+    "technical_commit": "dee768edf449eadf9b5c309209af9866fd392a43",
+    "acceptance_commit": "98234e475e938d7ca1dee5558d2088dabc187845"
+  },
+  "authorized_scope": [
+    "read_only_repository_analysis",
+    "official_primary_source_technical_accessibility_API_event_contract_security_evidence_reliability_and_standards_research",
+    "local_P4_7_planning_documentation",
+    "deterministic_generated_only_end_to_end_demonstration_design",
+    "exact_generated_fixture_replay_assertion_and_chronology_manifest_design",
+    "cross_subphase_contract_and_state_transition_validation_design",
+    "evidence_index_provenance_traceability_known_limitation_and_claim_registry_design",
+    "generated_only_operations_reconstruction_and_failure_triage_runbook_design",
+    "Phase_5_HTTP_event_command_pagination_concurrency_error_and_compatibility_handoff_design",
+    "Phase_5_operator_UI_state_accessibility_and_degradation_inventory_design",
+    "P4_7_A_through_P4_7_D_acceptance_criteria_and_final_Phase_4_package_design",
+    "explicit_Phase_5_planning_prerequisite_design",
+    "generated_static_planning_validation_and_one_local_checkpoint_commit_without_push"
+  ],
+  "research_source_policy": {
+    "internet_access": "official_primary_sources_only",
+    "permitted_source_classes": [
+      "official_standards_body_specifications",
+      "official_accessibility_recommendations_and_authoring_practices",
+      "official_HTTP_API_event_and_workflow_specifications",
+      "official_security_evidence_provenance_and_reliability_guidance"
+    ],
+    "operational_network_access": false,
+    "credential_use": false,
+    "data_or_media_acquisition": false,
+    "artifact_download_or_runtime_execution": false
+  },
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "end_to_end_scenario_execution_authorized": false,
+  "phase4_final_acceptance_authorized": false,
+  "phase5_planning_or_implementation_authorized": false,
+  "remote_git_authorized": false,
+  "explicitly_not_authorized": [
+    "P4_7_product_test_migration_dependency_model_dataset_inference_camera_media_provider_network_telemetry_backend_workflow_engine_container_Kubernetes_deployment_or_runtime_implementation",
+    "execution_of_an_end_to_end_scenario",
+    "credential_secret_key_token_certificate_or_private_CA_access",
+    "Government_police_private_personal_biometric_vehicle_owner_registration_watchlist_investigation_case_or_evidence_data",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "installation_update_download_or_artifact_acquisition",
+    "hardware_performance_stress_backup_restore_or_recovery_execution",
+    "Phase_4_final_acceptance_or_Phase_5_planning_or_implementation",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "owner_statement_normalization": "UTF_8_LF_without_terminal_newline",
+  "owner_statement_sha256": "F38C078D139E3153FA654279FDD8F6B63A805542334BE3D6A20D41089EE7FAEC",
+  "owner_statement": "D-P4.7-PLAN-AUTH: I, mayank-admin, authorize planning, read-only repository analysis, and official primary-source research only for P4.7 Final Acceptance And Phase 5 Handoff.\n\nThe authorized planning scope includes local documentation for a deterministic generated-only end-to-end demonstration from accepted anonymous Phase 3 analytic events through Phase 4 correlation, rule evaluation, proposed-alert creation, mandatory human review, lifecycle transitions, generated reference-candidate workflows, investigation timelines, evidence references, corrections, operational signals, and degradation behavior; exact generated-fixture and replay manifests; cross-subphase contract and chronology validation; evidence indexes with hashes, provenance, traceability, and known limitations; unsupported-claim prevention; generated-only operations and reconstruction runbooks; Phase 5 API, event, command, list/detail, pagination, concurrency, error, and compatibility handoff contracts; Phase 5 operator UI-state inventory covering loading, empty, partial, stale, degraded, denied, conflict, failure, recovery, correction, and accessibility states; consumer compatibility and versioning strategy; acceptance criteria for P4.7-A through P4.7-D; final Phase 4 evidence and acceptance-package design; and explicit Phase 5 planning prerequisites.\n\nInternet research is limited to official primary technical, accessibility, API, event-contract, security, evidence, reliability, and standards sources. Local planning documentation, generated/static planning validation, and one local checkpoint commit without push are authorized.\n\nThis does not authorize P4.7 product, test, migration, dependency, model, dataset, inference, camera, media, provider, network, telemetry-backend, workflow-engine, container, Kubernetes, deployment, or runtime implementation; execution of an end-to-end scenario; credentials or secrets; Government, police, private, biometric, vehicle, owner, registration, watchlist, investigation, case, or evidence data; operational alerts, notifications, dispatch, enforcement, or autonomous actions; artifact acquisition; hardware, performance, stress, backup, restore, or recovery execution; Phase 4 final acceptance; Phase 5 planning or implementation; or push, pull, fetch, pull request, merge, release, or other remote Git activity."
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": "hcam.phase5.p5_7.resilience_manifest.v1",
+  "generated_only": true,
+  "faults": [
+    "event_gap",
+    "duplicate_event",
+    "out_of_order_event",
+    "API_degradation",
+    "session_expiry",
+    "scope_change",
+    "conflict",
+    "profile_downgrade"
+  ],
+  "required_recovery": "typed_bounded_authoritative_refetch_or_terminal_failure",
+  "automatic_consequential_retry": false
+}

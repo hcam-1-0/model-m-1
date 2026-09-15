@@ -1,0 +1,41 @@
+{
+  "schema_version": "hcam.phase5.p5_3.acceptance.v1",
+  "decision_id": "D-P5.3-ACCEPTANCE",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-08",
+  "accepted_branch": "codex/phase5-product-ux-contracts",
+  "accepted_implementation_commit": "9d1604a62e4823644064e26d3b11771f8ae526fa",
+  "accepted_evidence_seal_commit": "64bacb7a91e201ee47d704542f2a25e171578678",
+  "evidence_package": {
+    "package_id": "P5.3-EVIDENCE-PACKAGE-R0",
+    "path": "contracts/phase-5/p5-3-evidence-package.json",
+    "sha256": "744F69E750BF7DB2DA3C3F613E149E70BBFBEB08B7F24B0BABB0D190FFF8257E",
+    "canonical_component_digest": "216750DA23B72DB31D2737278CCC610D84A2CEA059016CF818413704894EB17A"
+  },
+  "accepted_progress": {
+    "phase_5_points": 48,
+    "phase_5_total_points": 100,
+    "phase_5_percent": 48.0,
+    "p5_3_points": 16,
+    "p5_3_total_points": 16,
+    "p5_3_percent": 100.0
+  },
+  "scope_effect": "Completes P5.3 only under the sealed generated-only Camera And Live Monitoring Workspace, deterministic C1/C4/C10 synthetic-media evidence, validation, dependency and supply-chain evidence, environment limitations, and documented safety boundaries.",
+  "continuing_prohibitions": [
+    "P5_4_planning_or_implementation",
+    "real_playback_session_or_media_edge_services",
+    "providers_or_network_access",
+    "Sentinel_access",
+    "cameras_or_real_media",
+    "recording_snapshots_downloads_exports_print_or_PTZ",
+    "Government_or_private_data",
+    "models_or_inference",
+    "operational_actions",
+    "containers_Kubernetes_or_deployment",
+    "remote_Git"
+  ],
+  "owner_statement_sha256": "F6AAC840F1904DC3765D330290BAA57441970D4D10A1BD71DD80A0D584BC3C42",
+  "owner_statement": "D-P5.3-ACCEPTANCE: I, mayank-admin, accept P5.3 evidence package P5.3-EVIDENCE-PACKAGE-R0 with SHA-256 744F69E750BF7DB2DA3C3F613E149E70BBFBEB08B7F24B0BABB0D190FFF8257E and canonical component digest 216750DA23B72DB31D2737278CCC610D84A2CEA059016CF818413704894EB17A at technical commit 9d1604a62e4823644064e26d3b11771f8ae526fa, including its generated-only Camera And Live Monitoring Workspace, deterministic C1/C4/C10 synthetic-media evidence, validation results, dependency and supply-chain evidence, authorized P5.2 historical-readiness compatibility transition, explicit environment limitations, and documented safety boundaries. This acceptance completes P5.3 only. It does not authorize P5.4, real playback-session or media-edge services, providers or network access, Sentinel, cameras or real media, recording, snapshots, downloads, exports, print or PTZ, Government or private data, models or inference, operational actions, containers, Kubernetes, deployment, or remote Git."
+}

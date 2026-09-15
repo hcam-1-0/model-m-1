@@ -1,0 +1,43 @@
+{
+  "schema_version": "hcam.phase4.p4_3.openapi-delta.v1",
+  "feature_flag": "HCAM_INTELLIGENCE_GENERATED_ALERT_LIFECYCLE_ENABLED",
+  "paths": {
+    "/generated-alerts": [
+      "GET"
+    ],
+    "/generated-alerts/{alert_id}": [
+      "GET"
+    ],
+    "/generated-alerts/{alert_id}/lifecycle": [
+      "GET",
+      "POST"
+    ],
+    "/generated-alerts/{alert_id}/review-policy": [
+      "GET"
+    ],
+    "/generated-alerts/{alert_id}/reviews": [
+      "POST"
+    ]
+  },
+  "public_proposal_route": false,
+  "mutation_requirements": [
+    "authenticated authorized role",
+    "department scope",
+    "X-HCAM-Reason",
+    "If-Match",
+    "typed bounded body"
+  ],
+  "cache_policy": "no-store",
+  "generated_only": true,
+  "operational": false,
+  "default_enabled": false,
+  "production_allowed": false,
+  "absent_surfaces": [
+    "public proposal or evaluation ingress",
+    "automatic rule activation",
+    "real workflow executor transport",
+    "notification delivery",
+    "dispatch or enforcement",
+    "camera media or Sentinel network access"
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "schema_version": "hcam.phase5.p5_1.toolchain_amendment.v1",
+  "package_id": "P5.1-TOOLCHAIN-AMENDMENT-R0",
+  "decision_id": "D-P5.1-TOOLCHAIN-AMENDMENT-R0-ACCEPTANCE",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "prepared_on": "2026-09-06",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "branch": "codex/phase5-product-ux-contracts",
+  "prepared_at_commit": "91ba5ce",
+  "accepted_start_package": {
+    "package_id": "P5.1-START-R0",
+    "path": "contracts/phase-5/p5-1-start-authorization-package.json",
+    "sha256": "3B4A0CDD44185A94E7C04FB9038032EDDB1EB145E3C551A5A12BA81BD4A2A66E",
+    "bound_input_digest": "4C44F600C3BAB1D7D997391BDF880AC2BD3CBEDA565A5DF274F5753B381DCFE2"
+  },
+  "trigger": {
+    "reason_code": "approved_pnpm_lane_not_locally_available",
+    "required_by_start_package": "pnpm_12_x_already_installed_or_cached_without_package_manager_download",
+    "observed_local_versions": [
+      "pnpm_9_15_0_corepack_cached",
+      "pnpm_10_33_0_corepack_cached",
+      "pnpm_11_21_0_installed",
+      "pnpm_12_x_absent"
+    ],
+    "stop_closed_applied": true,
+    "product_implementation_started": false
+  },
+  "proposed_change": {
+    "node_runtime": {
+      "from": "installed_24_x_LTS_lane",
+      "to": "exact_already_installed_24_18_0",
+      "installation": false,
+      "global_NVM_switch": false
+    },
+    "package_manager": {
+      "from": "pnpm_12_x_already_installed_or_cached",
+      "to": "exact_already_installed_pnpm_11_21_0_invoked_with_exact_Node_24_18_0",
+      "installation_or_download": false,
+      "global_activation_or_shim_change": false
+    },
+    "repository_package_manager_field": "pnpm@11.21.0",
+    "reason": "Use the newest already-installed compatible pnpm under the required installed Node 24 LTS without network, installation, global activation, or weakening any product boundary."
+  },
+  "sanitized_local_binding": {
+    "node": {
+      "logical_path": "$NVM_HOME/v24.18.0/node.exe",
+      "bytes": 92534088,
+      "sha256": "9A4EB5F1C29C6A2E93852EAD46B999E284A6A5CA8BAB4D4E241D587D025A52DE",
+      "reported_version": "v24.18.0"
+    },
+    "pnpm_package": {
+      "logical_path": "$NVM_HOME/v26.5.0/node_modules/pnpm/package.json",
+      "bytes": 2349,
+      "sha256": "D0FFE394C8507F627CCA00D09C690467EFD8138E78474330631C3B200AA2C56F",
+      "name": "pnpm",
+      "version": "11.21.0",
+      "license": "MIT",
+      "node_engine": ">=22.13"
+    },
+    "pnpm_entrypoint": {
+      "logical_path": "$NVM_HOME/v26.5.0/node_modules/pnpm/bin/pnpm.mjs",
+      "bytes": 1464,
+      "sha256": "FF3224D46B47FBB24A7E9FE15FEDEDEF7E00892D07D4E376B6762D4899906BFD"
+    },
+    "pnpm_bundle": {
+      "logical_path": "$NVM_HOME/v26.5.0/node_modules/pnpm/dist/pnpm.mjs",
+      "bytes": 12951274,
+      "sha256": "293DCCED3C77F5A633352076FE4C9A768E60C6992ED58BC695B465F839FE9615"
+    },
+    "compatibility_observation": {
+      "command_shape": "$NVM_HOME/v24.18.0/node.exe $NVM_HOME/v26.5.0/node_modules/pnpm/bin/pnpm.mjs --version",
+      "result": "11.21.0",
+      "network": false,
+      "filesystem_write": false
+    }
+  },
+  "required_execution_controls_if_accepted": [
+    "reverify_all_four_sanitized_local_binding_hashes_before_each_dependency_or_build_stage",
+    "prepend_only_the_exact_Node_24_18_0_directory_to_the_child_process_PATH",
+    "invoke_pnpm_only_through_the_exact_hash_bound_pnpm_mjs_entrypoint",
+    "set_COREPACK_ENABLE_DOWNLOAD_PROMPT_equals_0_and_disable_package_manager_self_update",
+    "retain_the_exact_official_registry_proxy_redirect_credential_and_source_controls",
+    "retain_ignore_scripts_frozen_lockfile_and_PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD_equals_1",
+    "stop_closed_if_any_runtime_path_hash_version_engine_or_output_changes"
+  ],
+  "unchanged_start_package_controls": [
+    "runtime_and_development_dependency_allowlists",
+    "official_npm_registry_only",
+    "dependency_exact_version_integrity_peer_engine_license_advisory_SBOM_and_provenance_gates",
+    "no_lifecycle_scripts_native_builds_browser_downloads_or_unapproved_sources",
+    "all_eight_workstreams_and_frozen_weights",
+    "all_exact_and_bounded_repository_paths",
+    "all_generated_only_runtime_data_and_loopback_test_boundaries",
+    "all_validation_coverage_accessibility_GIS_and_clean_source_gates",
+    "all_immutable_history_stop_conditions_continuing_prohibitions_and_remote_Git_closure"
+  ],
+  "does_not_authorize": [
+    "pnpm_or_Node_download_install_update_copy_or_global_activation",
+    "any_package_outside_the_accepted_dependency_allowlists",
+    "source_import",
+    "backend_API_routes_or_migrations",
+    "maps_tiles_providers_cameras_or_media",
+    "Government_or_private_data",
+    "models_datasets_artifacts_or_inference",
+    "operational_actions",
+    "containers_or_Kubernetes",
+    "deployment",
+    "P5_2",
+    "remote_Git"
+  ],
+  "progress_effect": {
+    "awards_product_points": false,
+    "P5_1_before_percent": 0.0,
+    "P5_1_after_acceptance_percent": 0.0,
+    "phase_5_before_percent": 8.0,
+    "phase_5_after_acceptance_percent": 8.0
+  },
+  "owner_statement_template": "D-P5.1-TOOLCHAIN-AMENDMENT-R0-ACCEPTANCE: I, mayank-admin, accept P5.1 toolchain amendment package P5.1-TOOLCHAIN-AMENDMENT-R0 with SHA-256 {{PACKAGE_SHA256}}. For this local P5.1 implementation only, bind exact installed Node 24.18.0 to exact installed pnpm 11.21.0 using the hash-bound direct invocation and controls in that package, without download, installation, NVM switching, global activation, or package-manager self-update. Every other P5.1-START-R0 scope, dependency allowlist, security boundary, validation gate, stop condition, prohibition, and no-remote-Git rule remains unchanged."
+}

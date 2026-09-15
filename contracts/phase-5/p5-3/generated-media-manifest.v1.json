@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hcam:phase5:p5-3:generated-media-manifest:v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "marker", "generated_at", "profiles", "assets", "retention"],
+  "properties": {
+    "schema_version": { "const": "hcam.phase5.p5_3.generated_media.v1" },
+    "marker": { "const": "HCAM-GENERATED-NON-OPERATIONAL" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "profiles": { "type": "array", "items": { "enum": ["C1", "C4", "C10"] }, "uniqueItems": true },
+    "assets": { "type": "array", "items": { "type": "object", "required": ["profile", "stream_ref", "sha256", "bytes", "duration_seconds"], "properties": { "profile": { "enum": ["C1", "C4", "C10"] }, "stream_ref": { "type": "string" }, "sha256": { "type": "string", "pattern": "^[A-F0-9]{64}$" }, "bytes": { "type": "integer", "minimum": 1 }, "duration_seconds": { "type": "integer", "minimum": 1, "maximum": 8 } } } },
+    "retention": { "const": "delete_binary_assets_after_sanitized_evidence" }
+  }
+}

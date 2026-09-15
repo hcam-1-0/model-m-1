@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hcam:phase5:p5-3:browser-camera-projection:v1",
+  "title": "Sanitized browser camera projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "label", "department_ref", "state", "health", "freshness", "streams", "generated"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^SYN-[A-Z0-9-]{3,48}$" },
+    "label": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "department_ref": { "type": "string", "pattern": "^SYN-[A-Z0-9-]{3,48}$" },
+    "state": { "enum": ["online", "degraded", "offline", "unknown"] },
+    "health": { "enum": ["healthy", "attention", "critical", "unknown"] },
+    "freshness": { "$ref": "#/$defs/freshness" },
+    "streams": { "type": "array", "maxItems": 4, "items": { "$ref": "#/$defs/stream" } },
+    "generated": { "const": true }
+  },
+  "$defs": {
+    "freshness": {
+      "type": "object", "additionalProperties": false,
+      "required": ["observed_at", "stale_at", "completeness"],
+      "properties": { "observed_at": { "type": "string", "format": "date-time" }, "stale_at": { "type": "string", "format": "date-time" }, "completeness": { "enum": ["complete", "partial", "unknown"] } }
+    },
+    "stream": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "state", "health", "preferred_transport", "capabilities", "probe", "generated"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^SYN-[A-Z0-9-]{3,48}$" },
+        "state": { "enum": ["available", "stale", "unavailable", "blocked"] },
+        "health": { "enum": ["healthy", "attention", "critical", "unknown"] },
+        "preferred_transport": { "enum": ["hls", "native_hls", "whep", "none"] },
+        "capabilities": { "type": "object" },
+        "probe": { "type": "object" },
+        "generated": { "const": true }
+      }
+    }
+  },
+  "x-hcam-forbidden-fields": ["locator", "url", "secret", "token", "username", "password", "raw_address", "raw_probe_payload"]
+}

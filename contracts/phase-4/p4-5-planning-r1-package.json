@@ -1,0 +1,247 @@
+{
+  "schema_version": "hcam.phase4.p4_5.planning-package.v2",
+  "package_id": "P4.5-PLANNING-R1",
+  "status": "owner_decisions_recorded_exact_planning_acceptance_pending",
+  "effective": false,
+  "prepared_on": "2026-09-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-investigation-evidence-planning",
+  "planning_checkpoint": "1da312e41e9341b4c42e609cbf328bf60f56e7da",
+  "supersedes": {
+    "package_id": "P4.5-PLANNING-R0",
+    "path": "contracts/phase-4/p4-5-planning-package.json",
+    "sha256": "B9BA1BB488EA631577AA78D97E190956B67C686C96C261AE641ACAA14C0C04A0",
+    "reason": "owner_selected_recommended_A_profile_with_guarded_future_case_management_and_PROV_interchange_capabilities"
+  },
+  "planning_authorization": {
+    "decision_id": "D-P4.5-PLAN-AUTH",
+    "path": "contracts/phase-4/p4-5-plan-authorization.json",
+    "sha256": "8772F1863453E69E576706C389B31246F265CA8E801A974A8E1AED3903831E88",
+    "scope_unchanged": true
+  },
+  "accepted_predecessor": {
+    "subphase": "P4.4",
+    "decision_id": "D-P4.4-ACCEPTANCE",
+    "path": "contracts/phase-4/p4-4/acceptance.json",
+    "sha256": "2E298EAA88E9F2586633955838FBC367641A807F4635866BCE488DC1E60936AD",
+    "accepted_implementation_commit": "9efacc75336cc942db9615c21e371cb3322aea73",
+    "acceptance_commit": "c8d80bf25d089969f411170ce640b6c373f5e017"
+  },
+  "reconciled_component_digest": {
+    "algorithm": "SHA-256",
+    "normalization": "UTF_8_path_vertical_bar_uppercase_sha256_LF_join_without_terminal_newline_in_listed_order",
+    "value": "988DC5E98E8074762AF828F13665E238D906B5B63D183390CC7EE6C3BE6B445D"
+  },
+  "reconciled_components": [
+    {
+      "path": "contracts/phase-4/p4-5-planning-package.json",
+      "sha256": "B9BA1BB488EA631577AA78D97E190956B67C686C96C261AE641ACAA14C0C04A0"
+    },
+    {
+      "path": "contracts/phase-4/p4-5-owner-decisions.json",
+      "sha256": "DF6ED4FCBF3C46DA9A57FE83AA1D47226F317C983598190FFE64F786B223FC11"
+    },
+    {
+      "path": "docs/phase-4/p4-5-owner-decisions.md",
+      "sha256": "969F461812319CAFA8746BE417C01213F0FC8CAAE5758A4B9E530C4AE8C61E54"
+    }
+  ],
+  "immutable_r0_artifacts": [
+    {
+      "path": "docs/phase-4/p4-5-research-record.md",
+      "sha256": "C32A45E3DFCD8C36BE757F26CDB62862A20A155A946B0903CAF8910D859EB48F"
+    },
+    {
+      "path": "docs/phase-4/p4-5-threat-model.md",
+      "sha256": "982BDECA6A1B6C936D713B6EA16DC9F925BD153CD5D3EAB111F58A6FA2F0C13A"
+    },
+    {
+      "path": "docs/phase-4/p4-5-contract-catalog.md",
+      "sha256": "4BAA03FCE192CEBB285A1D46A627437CD90610CAF3B1135B8CBD23499F33DA75"
+    },
+    {
+      "path": "docs/phase-4/p4-5-decision-packet.md",
+      "sha256": "D933288E2C758E0DA247884AF84AD618529ED2D235012F6D2890439842A4F457"
+    },
+    {
+      "path": "docs/phase-4/p4-5-implementation-plan.md",
+      "sha256": "9D560A76741437CBB54114BD64423D527C5B808721FCC3BEB5F1F88510125D5B"
+    }
+  ],
+  "owner_decisions": {
+    "recorded": true,
+    "record_path": "contracts/phase-4/p4-5-owner-decisions.json",
+    "record_sha256": "DF6ED4FCBF3C46DA9A57FE83AA1D47226F317C983598190FFE64F786B223FC11",
+    "owner_statement_sha256": "52A92647CBB1308220ED6202523A8EE06E37128BD7C868B5AFF2179DF476A89A",
+    "D-P4.5-001": {
+      "selected": ["A"],
+      "capability_requested": ["D"]
+    },
+    "D-P4.5-002": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-003": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-004": {
+      "selected": ["A"],
+      "capability_requested": ["C"]
+    },
+    "D-P4.5-005": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-006": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-007": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-008": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-009": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-010": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "selected_profile": "A_with_guarded_D_capability/A/A/A_with_guarded_C_capability/A/A/A/A/A/A",
+    "recommendations_are_decisions": false,
+    "continue_or_silence_is_acceptance": false
+  },
+  "composite_interpretation": {
+    "D-P4.5-001": {
+      "canonical_option": "A",
+      "D_capability": "disabled_typed_case_management_bridge_with_opaque_external_case_reference_and_immutable_mapping_profile",
+      "HCAM_timeline_remains_case_neutral_source_of_truth": true,
+      "external_case_system_as_HCAM_truth": false,
+      "legal_case_workflow_or_case_data": false,
+      "future_real_use_requires_separate_legal_policy_data_integration_runtime_and_deployment_authorization": true
+    },
+    "D-P4.5-004": {
+      "canonical_option": "A",
+      "C_capability": "derived_versioned_PROV_interchange_projection_contract_and_generated_mapping_tests",
+      "HCAM_constrained_graph_remains_source_of_truth": true,
+      "external_PROV_import_or_dynamic_parser": false,
+      "formal_PROV_conformance_claim": false,
+      "future_full_conformance_requires_separate_profile_scope_validation_and_owner_acceptance": true
+    }
+  },
+  "reconciled_architecture": {
+    "timeline_boundary": "case_neutral_dual_chronology_aggregate_with_immutable_sequence_and_disabled_case_bridge",
+    "entry_boundary": "closed_discriminated_source_event_hypothesis_alert_observation_review_action_correction_retraction_and_lifecycle_families",
+    "evidence_boundary": "immutable_reference_envelope_without_source_copy_and_separate_multi_state_assessments",
+    "provenance_boundary": "bounded_HCAM_entity_activity_agent_graph_with_derived_disabled_PROV_projection",
+    "correction_boundary": "append_only_correction_retraction_and_durable_bounded_impact_closure",
+    "workflow_boundary": "orthogonal_review_disposition_lifecycle_merge_alias_and_reopen_revisions",
+    "retention_boundary": "organization_owned_immutable_policy_versions_and_independent_scoped_hold_overlays",
+    "deletion_boundary": "exact_per_target_simulated_intents_receipts_and_residual_reporting_without_universal_claim",
+    "export_boundary": "purpose_recipient_bound_reference_only_canonical_manifest_with_optional_future_gated_profiles",
+    "platform_boundary": "bounded_PostgreSQL_forced_RLS_append_only_revisions_transactional_outbox_no_store_APIs_and_generated_only_validation"
+  },
+  "implementation_plan_overlay": [
+    "W1_add_CaseManagementBridgeContract_and_ProvInterchangeProjectionV1_as_disabled_generated_only_capability_contracts",
+    "W1_keep_all_canonical_A_contracts_authoritative_and_close_unknown_fields_versions_sizes_depth_and_content",
+    "W2_preserve_V1_read_compatibility_and_add_V2_append_only_PostgreSQL_RLS_stores_with_restrictive_relationships",
+    "W3_implement_case_neutral_timeline_commands_dual_chronology_idempotency_and_exact_reconstruction",
+    "W4_implement_reference_only_evidence_identity_integrity_assessments_bounded_HCAM_provenance_and_generated_PROV_projection",
+    "W5_implement_correction_retraction_impact_review_disposition_merge_alias_and_reopen_workflows",
+    "W6_simulate_retention_hold_deletion_and_reference_only_export_without_real_execution_or_source_access",
+    "W7_validate_generated_case_bridge_and_PROV_projection_are_disabled_non_authoritative_and_non_conformant",
+    "W7_seal_security_PostgreSQL_migration_reconstruction_provenance_correction_export_and_acceptance_evidence"
+  ],
+  "initial_generated_tier": {
+    "canonical_A_profile": true,
+    "deterministic_non_issuable_fixtures": true,
+    "source_reference_only": true,
+    "case_management_bridge_contract": true,
+    "case_management_bridge_enabled": false,
+    "external_case_system_or_case_data": false,
+    "PROV_interchange_projection_contract": true,
+    "generated_PROV_mapping_tests": true,
+    "external_PROV_import_or_dynamic_parser": false,
+    "PROV_conformance_claim": false,
+    "source_resolution_copy_or_verification": false,
+    "real_hold_deletion_or_export": false,
+    "network_or_credentials": false,
+    "real_investigation_or_data": false,
+    "operational_action": false
+  },
+  "frozen_progress": {
+    "phase4": {
+      "earned_points": 70,
+      "total_points": 100,
+      "percentage": "70.00%",
+      "change_percentage_points": "+0.00"
+    },
+    "p4_5": {
+      "earned_points": 0,
+      "total_points": 15,
+      "percentage": "0.0000%",
+      "change_percentage_points": "+0.0000"
+    },
+    "planning_and_research_gate": {
+      "completed_items": 5,
+      "total_items": 5,
+      "percentage": "100.0000%"
+    },
+    "owner_decision_gate": {
+      "completed_items": 10,
+      "total_items": 10,
+      "percentage": "100.0000%",
+      "change_percentage_points": "+100.0000"
+    },
+    "reconciled_package_preparation_gate": {
+      "completed_items": 1,
+      "total_items": 1,
+      "percentage": "100.0000%",
+      "change_percentage_points": "+100.0000"
+    },
+    "reconciled_package_acceptance_gate": {
+      "completed_items": 0,
+      "total_items": 1,
+      "percentage": "0.0000%"
+    },
+    "planning_points_awarded": 0,
+    "partial_item_credit": false
+  },
+  "planning_package_acceptance_required": true,
+  "start_authorization_prepared": false,
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "case_management_integration_authorized": false,
+  "PROV_conformance_or_import_authorized": false,
+  "source_or_evidence_access_authorized": false,
+  "hold_deletion_or_export_execution_authorized": false,
+  "remote_git_authorized": false,
+  "explicitly_not_authorized": [
+    "P4_5_source_test_migration_API_worker_or_runtime_implementation",
+    "effective_P4_5_start_record_or_implementation_before_exact_start_package_acceptance",
+    "legal_case_management_workflow_external_case_system_connection_or_case_data",
+    "external_PROV_bundle_import_dynamic_parser_network_vocabulary_or_formal_conformance_claim",
+    "source_media_document_or_evidence_copying_resolution_or_verification",
+    "retention_period_legal_policy_admissibility_authenticity_custody_or_certification_decision",
+    "hold_activation_release_deletion_execution_export_delivery_or_payload_package",
+    "real_investigation_provider_Sentinel_camera_media_or_operational_network_access",
+    "credential_secret_key_token_certificate_timestamp_authority_or_private_CA_access",
+    "Government_police_private_personal_biometric_vehicle_owner_case_watchlist_or_provider_data",
+    "model_dataset_checkpoint_artifact_download_training_or_inference",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "container_Kubernetes_cloud_pilot_production_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "required_next_sequence": [
+    "owner_accepts_exact_P4_5_PLANNING_R1_package_SHA_256",
+    "one_non_effective_digest_bound_P4_5_START_R0_package_is_prepared",
+    "owner_separately_accepts_exact_P4_5_START_R0_SHA_256",
+    "only_then_may_bounded_local_generated_only_implementation_begin"
+  ]
+}

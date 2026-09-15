@@ -1,0 +1,79 @@
+{
+  "arazzo": "1.1.0",
+  "info": {
+    "title": "H-CAM generated workflow projection",
+    "version": "1.0.0"
+  },
+  "sourceDescriptions": [
+    {
+      "name": "generatedOpenApi",
+      "type": "openapi",
+      "url": "urn:hcam:generated:openapi"
+    }
+  ],
+  "workflows": [
+    {
+      "steps": [
+        {
+          "operationId": "alerts.detail",
+          "stepId": "load_alert",
+          "successCriteria": [
+            {
+              "condition": "$statusCode != 500"
+            }
+          ]
+        },
+        {
+          "operationId": "alerts.review",
+          "stepId": "review_alert",
+          "successCriteria": [
+            {
+              "condition": "$statusCode != 500"
+            }
+          ]
+        },
+        {
+          "operationId": "timelines.detail",
+          "stepId": "load_timeline",
+          "successCriteria": [
+            {
+              "condition": "$statusCode != 500"
+            }
+          ]
+        },
+        {
+          "operationId": "timelines.reconstruction",
+          "stepId": "reconstruct",
+          "successCriteria": [
+            {
+              "condition": "$statusCode != 500"
+            }
+          ]
+        }
+      ],
+      "summary": "Generated non-operational consumer journey",
+      "workflowId": "phase5.review_and_investigate"
+    },
+    {
+      "steps": [
+        {
+          "operationId": "operations.summary",
+          "stepId": "load_health",
+          "successCriteria": [
+            {
+              "condition": "$statusCode != 500"
+            }
+          ]
+        }
+      ],
+      "summary": "Generated non-operational consumer journey",
+      "workflowId": "phase5.observe_degradation"
+    }
+  ],
+  "x-hcam-boundary": {
+    "canonical": false,
+    "conformance_claim": false,
+    "generated_only": true,
+    "operational": false
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "hcam.phase5.p5_5.generated_workloads.v1",
+  "marker": "HCAM_GENERATED_ONLY_P5_5",
+  "generated_only": true,
+  "workloads": [
+    {
+      "profile": "C1",
+      "generated_only": true,
+      "investigations": 1,
+      "timeline_entries": 12,
+      "evidence_references": 4,
+      "provenance_nodes": 8,
+      "custody_records": 3,
+      "retained_source_bytes": 0,
+      "operator_authority": "unchanged",
+      "capacity_claim": false
+    },
+    {
+      "profile": "C10",
+      "generated_only": true,
+      "investigations": 10,
+      "timeline_entries": 120,
+      "evidence_references": 40,
+      "provenance_nodes": 80,
+      "custody_records": 30,
+      "retained_source_bytes": 0,
+      "operator_authority": "unchanged",
+      "capacity_claim": false
+    },
+    {
+      "profile": "C50",
+      "generated_only": true,
+      "investigations": 50,
+      "timeline_entries": 600,
+      "evidence_references": 200,
+      "provenance_nodes": 400,
+      "custody_records": 150,
+      "retained_source_bytes": 0,
+      "operator_authority": "unchanged",
+      "capacity_claim": false
+    }
+  ],
+  "replays": [
+    {
+      "replay": 1,
+      "sha256": "C94C6AE38ED5665BF22D7713656C71117A3DD5A8E08E965B0E1410F7CAA3760F",
+      "result": "pass"
+    },
+    {
+      "replay": 2,
+      "sha256": "C94C6AE38ED5665BF22D7713656C71117A3DD5A8E08E965B0E1410F7CAA3760F",
+      "result": "pass"
+    }
+  ],
+  "deterministic": true,
+  "hardware_or_production_claim": false
+}

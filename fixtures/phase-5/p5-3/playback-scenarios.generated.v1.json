@@ -1,0 +1,14 @@
+{
+  "schema_version": "hcam.phase5.p5_3.playback_scenarios.v1",
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "scenarios": [
+    { "id": "SYN-SCENARIO-HLS-READY", "input": "valid_hls_grant", "expected": "attached" },
+    { "id": "SYN-SCENARIO-NATIVE", "input": "mse_unavailable_native_supported", "expected": "native_hls" },
+    { "id": "SYN-SCENARIO-WHEP-OFF", "input": "whep_requested_kill_switch_off", "expected": "fallback_to_hls" },
+    { "id": "SYN-SCENARIO-EXPIRED", "input": "expired_grant", "expected": "denied" },
+    { "id": "SYN-SCENARIO-REVOKED", "input": "revoked_grant", "expected": "released" },
+    { "id": "SYN-SCENARIO-STALL", "input": "three_fatal_media_errors", "expected": "circuit_open" },
+    { "id": "SYN-SCENARIO-SCOPE", "input": "department_transition", "expected": "teardown_complete" },
+    { "id": "SYN-SCENARIO-BUDGET", "input": "eleven_visible_requests", "expected": "ten_or_fewer_admitted" }
+  ]
+}

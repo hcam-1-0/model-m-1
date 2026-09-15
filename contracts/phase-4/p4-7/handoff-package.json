@@ -1,0 +1,1536 @@
+{
+  "canonical_component_digest": "4A733C481A8491CC33ED6EE31B4BE4089663E9D506D4A2C51E0DE93D79EFD2A8",
+  "components": {
+    "compatibility": {
+      "contract_type": "hcam.handoff.compatibility.v1",
+      "entries": [
+        {
+          "change_class": "compatible_behavior",
+          "contract": "hcam.handoff.http-operation.v1",
+          "entry_id": "phase5.compatibility.1",
+          "evidence_ref": "p47_e88945d62b6cfddc9718e378be7823a2",
+          "from_version": "1.0.0",
+          "migration_required": false,
+          "security_review_required": false,
+          "supported_consumers": [
+            "phase5.consumer.v1"
+          ],
+          "to_version": "1.0.0"
+        },
+        {
+          "change_class": "optional_additive",
+          "contract": "hcam.handoff.event-workflow.v1",
+          "entry_id": "phase5.compatibility.2",
+          "evidence_ref": "p47_e88945d62b6cfddc9718e378be7823a2",
+          "from_version": "1.0.0",
+          "migration_required": false,
+          "security_review_required": false,
+          "supported_consumers": [
+            "phase5.consumer.v1"
+          ],
+          "to_version": "1.0.0"
+        },
+        {
+          "change_class": "new_capability",
+          "contract": "hcam.handoff.ui-accessibility.v1",
+          "entry_id": "phase5.compatibility.3",
+          "evidence_ref": "p47_e88945d62b6cfddc9718e378be7823a2",
+          "from_version": "1.0.0",
+          "migration_required": false,
+          "security_review_required": false,
+          "supported_consumers": [
+            "phase5.consumer.v1"
+          ],
+          "to_version": "1.0.0"
+        },
+        {
+          "change_class": "documentation",
+          "contract": "hcam.handoff.compatibility.v1",
+          "entry_id": "phase5.compatibility.4",
+          "evidence_ref": "p47_e88945d62b6cfddc9718e378be7823a2",
+          "from_version": "1.0.0",
+          "migration_required": false,
+          "security_review_required": false,
+          "supported_consumers": [
+            "phase5.consumer.v1"
+          ],
+          "to_version": "1.0.0"
+        }
+      ],
+      "generated_only": true,
+      "latest_only_policy": false,
+      "permanent_compatibility_claim": false
+    },
+    "events": {
+      "broker_selected": false,
+      "contract_type": "hcam.handoff.event-workflow.v1",
+      "events": [
+        {
+          "consumer_intent": "refresh_hypothesis_views",
+          "correction_supported": true,
+          "delivery": "transactional_outbox",
+          "event_type": "hcam.correlation.hypothesis.changed.v1",
+          "generated_only": true,
+          "grants_authority": false,
+          "ordering": "aggregate",
+          "producer": "correlation.service",
+          "unknown_version": "quarantine"
+        },
+        {
+          "consumer_intent": "refresh_alert_views",
+          "correction_supported": true,
+          "delivery": "transactional_outbox",
+          "event_type": "hcam.intelligence.alert.changed.v1",
+          "generated_only": true,
+          "grants_authority": false,
+          "ordering": "aggregate",
+          "producer": "alert.service",
+          "unknown_version": "quarantine"
+        },
+        {
+          "consumer_intent": "refresh_review_state",
+          "correction_supported": true,
+          "delivery": "transactional_outbox",
+          "event_type": "hcam.intelligence.review.recorded.v1",
+          "generated_only": true,
+          "grants_authority": false,
+          "ordering": "aggregate",
+          "producer": "review.service",
+          "unknown_version": "quarantine"
+        },
+        {
+          "consumer_intent": "refresh_timeline_views",
+          "correction_supported": true,
+          "delivery": "transactional_outbox",
+          "event_type": "hcam.investigation.timeline.changed.v1",
+          "generated_only": true,
+          "grants_authority": false,
+          "ordering": "aggregate",
+          "producer": "investigation.service",
+          "unknown_version": "quarantine"
+        },
+        {
+          "consumer_intent": "show_correction_state",
+          "correction_supported": true,
+          "delivery": "transactional_outbox",
+          "event_type": "hcam.investigation.correction.recorded.v1",
+          "generated_only": true,
+          "grants_authority": false,
+          "ordering": "aggregate",
+          "producer": "investigation.service",
+          "unknown_version": "quarantine"
+        },
+        {
+          "consumer_intent": "show_degradation_state",
+          "correction_supported": true,
+          "delivery": "transactional_outbox",
+          "event_type": "hcam.operations.degradation.changed.v1",
+          "generated_only": true,
+          "grants_authority": false,
+          "ordering": "aggregate",
+          "producer": "operations.service",
+          "unknown_version": "quarantine"
+        }
+      ],
+      "generated_only": true,
+      "workflow_engine_selected": false,
+      "workflows": [
+        {
+          "generated_only": true,
+          "operational": false,
+          "steps": [
+            {
+              "depends_on": [],
+              "failure_codes": [
+                "authorization.denied",
+                "resource.not_found"
+              ],
+              "operation_ref": "alerts.detail",
+              "step_id": "load_alert",
+              "success_state": "success"
+            },
+            {
+              "depends_on": [
+                "load_alert"
+              ],
+              "failure_codes": [
+                "authorization.denied",
+                "request.invalid"
+              ],
+              "operation_ref": "alerts.review",
+              "step_id": "review_alert",
+              "success_state": "accepted"
+            },
+            {
+              "depends_on": [
+                "review_alert"
+              ],
+              "failure_codes": [
+                "resource.not_found",
+                "service.unavailable"
+              ],
+              "operation_ref": "timelines.detail",
+              "step_id": "load_timeline",
+              "success_state": "success"
+            },
+            {
+              "depends_on": [
+                "load_timeline"
+              ],
+              "failure_codes": [
+                "resource.not_found",
+                "service.unavailable"
+              ],
+              "operation_ref": "timelines.reconstruction",
+              "step_id": "reconstruct",
+              "success_state": "success"
+            }
+          ],
+          "workflow_id": "phase5.review_and_investigate"
+        },
+        {
+          "generated_only": true,
+          "operational": false,
+          "steps": [
+            {
+              "depends_on": [],
+              "failure_codes": [
+                "service.unavailable"
+              ],
+              "operation_ref": "operations.summary",
+              "step_id": "load_health",
+              "success_state": "partial"
+            }
+          ],
+          "workflow_id": "phase5.observe_degradation"
+        }
+      ]
+    },
+    "http": {
+      "contract_type": "hcam.handoff.http-operation.v1",
+      "generated_only": true,
+      "operations": [
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.viewer",
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "response",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "fresh_stale_unknown",
+          "generated_only": true,
+          "idempotency_mode": "none",
+          "method": "GET",
+          "operation_id": "intelligence.health.read",
+          "pagination": "none",
+          "path_template": "/intelligence-health",
+          "purpose": "read_intelligence_health",
+          "reason_required": false,
+          "success_states": [
+            "success",
+            "empty",
+            "partial"
+          ]
+        },
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.viewer",
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "response",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "fresh_stale_unknown",
+          "generated_only": true,
+          "idempotency_mode": "none",
+          "method": "GET",
+          "operation_id": "hypotheses.list",
+          "pagination": "cursor",
+          "path_template": "/correlation-hypotheses",
+          "purpose": "list_hypotheses",
+          "reason_required": false,
+          "success_states": [
+            "success",
+            "empty",
+            "partial"
+          ]
+        },
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.viewer",
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "response",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "current",
+          "generated_only": true,
+          "idempotency_mode": "none",
+          "method": "GET",
+          "operation_id": "runs.list",
+          "pagination": "cursor",
+          "path_template": "/correlation-runs",
+          "purpose": "list_correlation_runs",
+          "reason_required": false,
+          "success_states": [
+            "success",
+            "empty",
+            "partial"
+          ]
+        },
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.viewer",
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "response",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "current",
+          "generated_only": true,
+          "idempotency_mode": "none",
+          "method": "GET",
+          "operation_id": "runs.detail",
+          "pagination": "none",
+          "path_template": "/correlation-runs/{run_id}",
+          "purpose": "read_correlation_run",
+          "reason_required": false,
+          "success_states": [
+            "success",
+            "empty",
+            "partial"
+          ]
+        },
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.viewer",
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "response",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "fresh_stale_unknown",
+          "generated_only": true,
+          "idempotency_mode": "none",
+          "method": "GET",
+          "operation_id": "alerts.list",
+          "pagination": "cursor",
+          "path_template": "/generated-alerts",
+          "purpose": "list_generated_alerts",
+          "reason_required": false,
+          "success_states": [
+            "success",
+            "empty",
+            "partial"
+          ]
+        },
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.viewer",
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "response",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "current",
+          "generated_only": true,
+          "idempotency_mode": "none",
+          "method": "GET",
+          "operation_id": "alerts.detail",
+          "pagination": "none",
+          "path_template": "/generated-alerts/{alert_id}",
+          "purpose": "read_generated_alert",
+          "reason_required": false,
+          "success_states": [
+            "success",
+            "empty",
+            "partial"
+          ]
+        },
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "if_match",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "current",
+          "generated_only": true,
+          "idempotency_mode": "required",
+          "method": "POST",
+          "operation_id": "alerts.review",
+          "pagination": "none",
+          "path_template": "/generated-alerts/{alert_id}/reviews",
+          "purpose": "review_generated_alert",
+          "reason_required": true,
+          "success_states": [
+            "accepted",
+            "conflict"
+          ]
+        },
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "if_match",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "current",
+          "generated_only": true,
+          "idempotency_mode": "required",
+          "method": "POST",
+          "operation_id": "alerts.lifecycle",
+          "pagination": "none",
+          "path_template": "/generated-alerts/{alert_id}/lifecycle",
+          "purpose": "transition_generated_alert",
+          "reason_required": true,
+          "success_states": [
+            "accepted",
+            "conflict"
+          ]
+        },
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.viewer",
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "response",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "fresh_stale_unknown",
+          "generated_only": true,
+          "idempotency_mode": "none",
+          "method": "GET",
+          "operation_id": "reference.health",
+          "pagination": "none",
+          "path_template": "/reference-integrations/health",
+          "purpose": "read_reference_health",
+          "reason_required": false,
+          "success_states": [
+            "success",
+            "empty",
+            "partial"
+          ]
+        },
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.viewer",
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "response",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "fresh_stale_unknown",
+          "generated_only": true,
+          "idempotency_mode": "none",
+          "method": "GET",
+          "operation_id": "reference.queries.detail",
+          "pagination": "none",
+          "path_template": "/reference-integrations/queries/{job_id}",
+          "purpose": "read_reference_query",
+          "reason_required": false,
+          "success_states": [
+            "success",
+            "empty",
+            "partial"
+          ]
+        },
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.viewer",
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "response",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "current",
+          "generated_only": true,
+          "idempotency_mode": "none",
+          "method": "GET",
+          "operation_id": "timelines.list",
+          "pagination": "cursor",
+          "path_template": "/timelines",
+          "purpose": "list_investigation_timelines",
+          "reason_required": false,
+          "success_states": [
+            "success",
+            "empty",
+            "partial"
+          ]
+        },
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.viewer",
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "response",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "current",
+          "generated_only": true,
+          "idempotency_mode": "none",
+          "method": "GET",
+          "operation_id": "timelines.detail",
+          "pagination": "none",
+          "path_template": "/timelines/{timeline_id}",
+          "purpose": "read_investigation_timeline",
+          "reason_required": false,
+          "success_states": [
+            "success",
+            "empty",
+            "partial"
+          ]
+        },
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.viewer",
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "response",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "current",
+          "generated_only": true,
+          "idempotency_mode": "none",
+          "method": "GET",
+          "operation_id": "timelines.reconstruction",
+          "pagination": "none",
+          "path_template": "/timelines/{timeline_id}/reconstruction",
+          "purpose": "read_timeline_reconstruction",
+          "reason_required": false,
+          "success_states": [
+            "success",
+            "empty",
+            "partial"
+          ]
+        },
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "if_match",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "current",
+          "generated_only": true,
+          "idempotency_mode": "required",
+          "method": "POST",
+          "operation_id": "timelines.entries.create",
+          "pagination": "none",
+          "path_template": "/timelines/{timeline_id}/entries",
+          "purpose": "append_timeline_entry",
+          "reason_required": true,
+          "success_states": [
+            "accepted",
+            "conflict"
+          ]
+        },
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "if_match",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "current",
+          "generated_only": true,
+          "idempotency_mode": "required",
+          "method": "POST",
+          "operation_id": "timelines.corrections.create",
+          "pagination": "none",
+          "path_template": "/timelines/{timeline_id}/corrections",
+          "purpose": "append_timeline_correction",
+          "reason_required": true,
+          "success_states": [
+            "accepted",
+            "conflict"
+          ]
+        },
+        {
+          "audience": [
+            "phase5.operator_ui"
+          ],
+          "authorization_roles": [
+            "intelligence.viewer",
+            "intelligence.reviewer"
+          ],
+          "compatibility_class": "stable",
+          "department_scope_required": true,
+          "etag_mode": "response",
+          "failure_codes": [
+            "authorization.denied",
+            "resource.not_found",
+            "request.invalid",
+            "service.unavailable"
+          ],
+          "freshness": "fresh_stale_unknown",
+          "generated_only": true,
+          "idempotency_mode": "none",
+          "method": "GET",
+          "operation_id": "operations.summary",
+          "pagination": "none",
+          "path_template": "/operations/summary",
+          "purpose": "read_operations_summary",
+          "reason_required": false,
+          "success_states": [
+            "success",
+            "empty",
+            "partial"
+          ]
+        }
+      ]
+    },
+    "projections": {
+      "arazzo": {
+        "arazzo": "1.1.0",
+        "info": {
+          "title": "H-CAM generated workflow projection",
+          "version": "1.0.0"
+        },
+        "sourceDescriptions": [
+          {
+            "name": "generatedOpenApi",
+            "type": "openapi",
+            "url": "urn:hcam:generated:openapi"
+          }
+        ],
+        "workflows": [
+          {
+            "steps": [
+              {
+                "operationId": "alerts.detail",
+                "stepId": "load_alert",
+                "successCriteria": [
+                  {
+                    "condition": "$statusCode != 500"
+                  }
+                ]
+              },
+              {
+                "operationId": "alerts.review",
+                "stepId": "review_alert",
+                "successCriteria": [
+                  {
+                    "condition": "$statusCode != 500"
+                  }
+                ]
+              },
+              {
+                "operationId": "timelines.detail",
+                "stepId": "load_timeline",
+                "successCriteria": [
+                  {
+                    "condition": "$statusCode != 500"
+                  }
+                ]
+              },
+              {
+                "operationId": "timelines.reconstruction",
+                "stepId": "reconstruct",
+                "successCriteria": [
+                  {
+                    "condition": "$statusCode != 500"
+                  }
+                ]
+              }
+            ],
+            "summary": "Generated non-operational consumer journey",
+            "workflowId": "phase5.review_and_investigate"
+          },
+          {
+            "steps": [
+              {
+                "operationId": "operations.summary",
+                "stepId": "load_health",
+                "successCriteria": [
+                  {
+                    "condition": "$statusCode != 500"
+                  }
+                ]
+              }
+            ],
+            "summary": "Generated non-operational consumer journey",
+            "workflowId": "phase5.observe_degradation"
+          }
+        ],
+        "x-hcam-boundary": {
+          "canonical": false,
+          "conformance_claim": false,
+          "generated_only": true,
+          "operational": false
+        }
+      },
+      "asyncapi": {
+        "asyncapi": "3.1.0",
+        "channels": {
+          "hcam.correlation.hypothesis.changed.v1": {
+            "address": "hcam.correlation.hypothesis.changed.v1",
+            "messages": {
+              "generated": {
+                "$ref": "#/components/messages/hcam.correlation.hypothesis.changed.v1"
+              }
+            }
+          },
+          "hcam.intelligence.alert.changed.v1": {
+            "address": "hcam.intelligence.alert.changed.v1",
+            "messages": {
+              "generated": {
+                "$ref": "#/components/messages/hcam.intelligence.alert.changed.v1"
+              }
+            }
+          },
+          "hcam.intelligence.review.recorded.v1": {
+            "address": "hcam.intelligence.review.recorded.v1",
+            "messages": {
+              "generated": {
+                "$ref": "#/components/messages/hcam.intelligence.review.recorded.v1"
+              }
+            }
+          },
+          "hcam.investigation.correction.recorded.v1": {
+            "address": "hcam.investigation.correction.recorded.v1",
+            "messages": {
+              "generated": {
+                "$ref": "#/components/messages/hcam.investigation.correction.recorded.v1"
+              }
+            }
+          },
+          "hcam.investigation.timeline.changed.v1": {
+            "address": "hcam.investigation.timeline.changed.v1",
+            "messages": {
+              "generated": {
+                "$ref": "#/components/messages/hcam.investigation.timeline.changed.v1"
+              }
+            }
+          },
+          "hcam.operations.degradation.changed.v1": {
+            "address": "hcam.operations.degradation.changed.v1",
+            "messages": {
+              "generated": {
+                "$ref": "#/components/messages/hcam.operations.degradation.changed.v1"
+              }
+            }
+          }
+        },
+        "components": {
+          "messages": {
+            "hcam.correlation.hypothesis.changed.v1": {
+              "name": "hcam.correlation.hypothesis.changed.v1",
+              "payload": {
+                "additionalProperties": false,
+                "type": "object"
+              },
+              "x-hcam-grants-authority": false
+            },
+            "hcam.intelligence.alert.changed.v1": {
+              "name": "hcam.intelligence.alert.changed.v1",
+              "payload": {
+                "additionalProperties": false,
+                "type": "object"
+              },
+              "x-hcam-grants-authority": false
+            },
+            "hcam.intelligence.review.recorded.v1": {
+              "name": "hcam.intelligence.review.recorded.v1",
+              "payload": {
+                "additionalProperties": false,
+                "type": "object"
+              },
+              "x-hcam-grants-authority": false
+            },
+            "hcam.investigation.correction.recorded.v1": {
+              "name": "hcam.investigation.correction.recorded.v1",
+              "payload": {
+                "additionalProperties": false,
+                "type": "object"
+              },
+              "x-hcam-grants-authority": false
+            },
+            "hcam.investigation.timeline.changed.v1": {
+              "name": "hcam.investigation.timeline.changed.v1",
+              "payload": {
+                "additionalProperties": false,
+                "type": "object"
+              },
+              "x-hcam-grants-authority": false
+            },
+            "hcam.operations.degradation.changed.v1": {
+              "name": "hcam.operations.degradation.changed.v1",
+              "payload": {
+                "additionalProperties": false,
+                "type": "object"
+              },
+              "x-hcam-grants-authority": false
+            }
+          }
+        },
+        "info": {
+          "title": "H-CAM event handoff projection",
+          "version": "1.0.0"
+        },
+        "x-hcam-boundary": {
+          "canonical": false,
+          "conformance_claim": false,
+          "generated_only": true,
+          "operational": false
+        }
+      },
+      "cloudevents": {
+        "boundary": {
+          "canonical": false,
+          "conformance_claim": false,
+          "generated_only": true,
+          "operational": false
+        },
+        "mapping": [
+          {
+            "semantic_identity_remains_hcam_canonical": true,
+            "source": "urn:hcam:generated:p47",
+            "subject": "generated-contract",
+            "type": "hcam.correlation.hypothesis.changed.v1"
+          },
+          {
+            "semantic_identity_remains_hcam_canonical": true,
+            "source": "urn:hcam:generated:p47",
+            "subject": "generated-contract",
+            "type": "hcam.intelligence.alert.changed.v1"
+          },
+          {
+            "semantic_identity_remains_hcam_canonical": true,
+            "source": "urn:hcam:generated:p47",
+            "subject": "generated-contract",
+            "type": "hcam.intelligence.review.recorded.v1"
+          },
+          {
+            "semantic_identity_remains_hcam_canonical": true,
+            "source": "urn:hcam:generated:p47",
+            "subject": "generated-contract",
+            "type": "hcam.investigation.timeline.changed.v1"
+          },
+          {
+            "semantic_identity_remains_hcam_canonical": true,
+            "source": "urn:hcam:generated:p47",
+            "subject": "generated-contract",
+            "type": "hcam.investigation.correction.recorded.v1"
+          },
+          {
+            "semantic_identity_remains_hcam_canonical": true,
+            "source": "urn:hcam:generated:p47",
+            "subject": "generated-contract",
+            "type": "hcam.operations.degradation.changed.v1"
+          }
+        ],
+        "specversion": "1.0.2"
+      },
+      "openapi": {
+        "components": {
+          "responses": {
+            "SafeProblem": {
+              "content": {
+                "application/problem+json": {
+                  "schema": {
+                    "type": "object"
+                  }
+                }
+              },
+              "description": "Sanitized RFC 9457-shaped problem projection"
+            }
+          }
+        },
+        "info": {
+          "title": "H-CAM Phase 5 handoff projection",
+          "version": "1.0.0"
+        },
+        "openapi": "3.2.0",
+        "paths": {
+          "/correlation-hypotheses": {
+            "get": {
+              "operationId": "hypotheses.list",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "list_hypotheses",
+              "x-hcam-generated-only": true
+            }
+          },
+          "/correlation-runs": {
+            "get": {
+              "operationId": "runs.list",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "list_correlation_runs",
+              "x-hcam-generated-only": true
+            }
+          },
+          "/correlation-runs/{run_id}": {
+            "get": {
+              "operationId": "runs.detail",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "read_correlation_run",
+              "x-hcam-generated-only": true
+            }
+          },
+          "/generated-alerts": {
+            "get": {
+              "operationId": "alerts.list",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "list_generated_alerts",
+              "x-hcam-generated-only": true
+            }
+          },
+          "/generated-alerts/{alert_id}": {
+            "get": {
+              "operationId": "alerts.detail",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "read_generated_alert",
+              "x-hcam-generated-only": true
+            }
+          },
+          "/generated-alerts/{alert_id}/lifecycle": {
+            "post": {
+              "operationId": "alerts.lifecycle",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "transition_generated_alert",
+              "x-hcam-generated-only": true
+            }
+          },
+          "/generated-alerts/{alert_id}/reviews": {
+            "post": {
+              "operationId": "alerts.review",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "review_generated_alert",
+              "x-hcam-generated-only": true
+            }
+          },
+          "/intelligence-health": {
+            "get": {
+              "operationId": "intelligence.health.read",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "read_intelligence_health",
+              "x-hcam-generated-only": true
+            }
+          },
+          "/operations/summary": {
+            "get": {
+              "operationId": "operations.summary",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "read_operations_summary",
+              "x-hcam-generated-only": true
+            }
+          },
+          "/reference-integrations/health": {
+            "get": {
+              "operationId": "reference.health",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "read_reference_health",
+              "x-hcam-generated-only": true
+            }
+          },
+          "/reference-integrations/queries/{job_id}": {
+            "get": {
+              "operationId": "reference.queries.detail",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "read_reference_query",
+              "x-hcam-generated-only": true
+            }
+          },
+          "/timelines": {
+            "get": {
+              "operationId": "timelines.list",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "list_investigation_timelines",
+              "x-hcam-generated-only": true
+            }
+          },
+          "/timelines/{timeline_id}": {
+            "get": {
+              "operationId": "timelines.detail",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "read_investigation_timeline",
+              "x-hcam-generated-only": true
+            }
+          },
+          "/timelines/{timeline_id}/corrections": {
+            "post": {
+              "operationId": "timelines.corrections.create",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "append_timeline_correction",
+              "x-hcam-generated-only": true
+            }
+          },
+          "/timelines/{timeline_id}/entries": {
+            "post": {
+              "operationId": "timelines.entries.create",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "append_timeline_entry",
+              "x-hcam-generated-only": true
+            }
+          },
+          "/timelines/{timeline_id}/reconstruction": {
+            "get": {
+              "operationId": "timelines.reconstruction",
+              "responses": {
+                "200": {
+                  "description": "Generated contract success projection"
+                },
+                "default": {
+                  "$ref": "#/components/responses/SafeProblem"
+                }
+              },
+              "summary": "read_timeline_reconstruction",
+              "x-hcam-generated-only": true
+            }
+          }
+        },
+        "x-hcam-boundary": {
+          "canonical": false,
+          "conformance_claim": false,
+          "generated_only": true,
+          "operational": false
+        }
+      },
+      "prov": {
+        "activity": {
+          "hcam:deterministic-replay": {
+            "prov:type": "generated-validation"
+          }
+        },
+        "boundary": {
+          "canonical": false,
+          "conformance_claim": false,
+          "generated_only": true,
+          "operational": false
+        },
+        "entity": {
+          "hcam:scenario-results": {
+            "prov:type": "generated-scenario-evidence"
+          }
+        },
+        "prefix": {
+          "hcam": "urn:hcam:generated:p47:"
+        },
+        "wasGeneratedBy": {
+          "hcam:relation": {
+            "prov:activity": "hcam:deterministic-replay",
+            "prov:entity": "hcam:scenario-results"
+          }
+        }
+      },
+      "rfc8785": {
+        "boundary": {
+          "canonical": false,
+          "conformance_claim": false,
+          "generated_only": true,
+          "operational": false
+        },
+        "canonical_digest": "sha256:d63a514216bbb5c4dfe52bd02b58ef3eb3009f3f1419e8e153a1bc9811c2a178",
+        "external_conformance_validated": false,
+        "profile": "RFC8785-shaped-canonical-json"
+      },
+      "slsa": {
+        "_type": "https://in-toto.io/Statement/v1",
+        "boundary": {
+          "canonical": false,
+          "conformance_claim": false,
+          "generated_only": true,
+          "operational": false
+        },
+        "predicate": {
+          "buildDefinition": {
+            "buildType": "urn:hcam:generated:p47",
+            "externalParameters": {}
+          },
+          "runDetails": {
+            "builder": {
+              "id": "urn:hcam:generated:local"
+            }
+          }
+        },
+        "predicateType": "https://slsa.dev/provenance/v1",
+        "subject": [
+          {
+            "digest": {
+              "sha256": "d63a514216bbb5c4dfe52bd02b58ef3eb3009f3f1419e8e153a1bc9811c2a178"
+            },
+            "name": "handoff"
+          }
+        ]
+      }
+    },
+    "ui_accessibility": {
+      "UI_implemented": false,
+      "accessibility_conformance_claim": false,
+      "contract_type": "hcam.handoff.ui-accessibility.v1",
+      "generated_only": true,
+      "requirements": [
+        {
+          "applies_to": "phase5.operator_surfaces",
+          "category": "keyboard",
+          "conformance_claim": false,
+          "evidence_kind": "static",
+          "requirement": "Every action and state transition must be operable through a logical keyboard sequence.",
+          "requirement_id": "phase5.accessibility.keyboard"
+        },
+        {
+          "applies_to": "phase5.operator_surfaces",
+          "category": "focus",
+          "conformance_claim": false,
+          "evidence_kind": "static",
+          "requirement": "Focus must remain visible and return to the initiating control after bounded overlays close.",
+          "requirement_id": "phase5.accessibility.focus"
+        },
+        {
+          "applies_to": "phase5.operator_surfaces",
+          "category": "name_role_value",
+          "conformance_claim": false,
+          "evidence_kind": "static",
+          "requirement": "Controls and dynamic components must expose stable accessible names, roles, and values.",
+          "requirement_id": "phase5.accessibility.name_role_value"
+        },
+        {
+          "applies_to": "phase5.operator_surfaces",
+          "category": "status",
+          "conformance_claim": false,
+          "evidence_kind": "static",
+          "requirement": "Routine asynchronous updates must use non-interrupting status announcements.",
+          "requirement_id": "phase5.accessibility.status"
+        },
+        {
+          "applies_to": "phase5.operator_surfaces",
+          "category": "error",
+          "conformance_claim": false,
+          "evidence_kind": "static",
+          "requirement": "Errors must identify the affected field or operation and provide a recovery action.",
+          "requirement_id": "phase5.accessibility.error"
+        },
+        {
+          "applies_to": "phase5.operator_surfaces",
+          "category": "non_color",
+          "conformance_claim": false,
+          "evidence_kind": "static",
+          "requirement": "Severity and state must use text or icons in addition to color.",
+          "requirement_id": "phase5.accessibility.non_color"
+        },
+        {
+          "applies_to": "phase5.operator_surfaces",
+          "category": "target",
+          "conformance_claim": false,
+          "evidence_kind": "future_manual",
+          "requirement": "Interactive target dimensions and spacing require validation in the implemented interface.",
+          "requirement_id": "phase5.accessibility.target"
+        },
+        {
+          "applies_to": "phase5.operator_surfaces",
+          "category": "contrast",
+          "conformance_claim": false,
+          "evidence_kind": "future_manual",
+          "requirement": "Text, controls, focus indicators, and non-text content require measured contrast validation.",
+          "requirement_id": "phase5.accessibility.contrast"
+        },
+        {
+          "applies_to": "phase5.operator_surfaces",
+          "category": "motion",
+          "conformance_claim": false,
+          "evidence_kind": "future_manual",
+          "requirement": "The implemented interface must honor reduced-motion preferences without hiding state changes.",
+          "requirement_id": "phase5.accessibility.motion"
+        }
+      ],
+      "states": [
+        {
+          "actions": [],
+          "announcement": "none",
+          "focus_rule": "preserve_context",
+          "generated_only": true,
+          "non_color_indicator": true,
+          "source_fact": "alerts.loading",
+          "state": "loading",
+          "state_id": "phase5.alerts.loading",
+          "view": "phase5.alerts",
+          "visible_message": "Loading the latest generated intelligence state."
+        },
+        {
+          "actions": [
+            "refresh"
+          ],
+          "announcement": "polite",
+          "focus_rule": "preserve_context",
+          "generated_only": true,
+          "non_color_indicator": true,
+          "source_fact": "alerts.empty",
+          "state": "empty",
+          "state_id": "phase5.alerts.empty",
+          "view": "phase5.alerts",
+          "visible_message": "No records match the current bounded query."
+        },
+        {
+          "actions": [
+            "refresh"
+          ],
+          "announcement": "polite",
+          "focus_rule": "preserve_context",
+          "generated_only": true,
+          "non_color_indicator": true,
+          "source_fact": "alerts.partial",
+          "state": "partial",
+          "state_id": "phase5.alerts.partial",
+          "view": "phase5.alerts",
+          "visible_message": "Some generated results are available; completeness is limited."
+        },
+        {
+          "actions": [
+            "refresh"
+          ],
+          "announcement": "polite",
+          "focus_rule": "preserve_context",
+          "generated_only": true,
+          "non_color_indicator": true,
+          "source_fact": "alerts.stale",
+          "state": "stale",
+          "state_id": "phase5.alerts.stale",
+          "view": "phase5.alerts",
+          "visible_message": "The displayed generated state is stale."
+        },
+        {
+          "actions": [
+            "refresh"
+          ],
+          "announcement": "polite",
+          "focus_rule": "preserve_context",
+          "generated_only": true,
+          "non_color_indicator": true,
+          "source_fact": "alerts.degraded",
+          "state": "degraded",
+          "state_id": "phase5.alerts.degraded",
+          "view": "phase5.alerts",
+          "visible_message": "A supporting generated service is degraded."
+        },
+        {
+          "actions": [],
+          "announcement": "polite",
+          "focus_rule": "preserve_trigger_focus",
+          "generated_only": true,
+          "non_color_indicator": true,
+          "source_fact": "alerts.denied",
+          "state": "denied",
+          "state_id": "phase5.alerts.denied",
+          "view": "phase5.alerts",
+          "visible_message": "Access to this generated resource was denied."
+        },
+        {
+          "actions": [
+            "refresh"
+          ],
+          "announcement": "polite",
+          "focus_rule": "preserve_trigger_focus",
+          "generated_only": true,
+          "non_color_indicator": true,
+          "source_fact": "alerts.conflict",
+          "state": "conflict",
+          "state_id": "phase5.alerts.conflict",
+          "view": "phase5.alerts",
+          "visible_message": "The generated record changed before this action completed."
+        },
+        {
+          "actions": [
+            "refresh"
+          ],
+          "announcement": "assertive",
+          "focus_rule": "preserve_trigger_focus",
+          "generated_only": true,
+          "non_color_indicator": true,
+          "source_fact": "alerts.failure",
+          "state": "failure",
+          "state_id": "phase5.alerts.failure",
+          "view": "phase5.alerts",
+          "visible_message": "The generated request failed without exposing internal detail."
+        },
+        {
+          "actions": [
+            "refresh"
+          ],
+          "announcement": "polite",
+          "focus_rule": "preserve_context",
+          "generated_only": true,
+          "non_color_indicator": true,
+          "source_fact": "alerts.recovery",
+          "state": "recovery",
+          "state_id": "phase5.alerts.recovery",
+          "view": "phase5.alerts",
+          "visible_message": "The generated service recovered; refresh is available."
+        },
+        {
+          "actions": [
+            "refresh"
+          ],
+          "announcement": "polite",
+          "focus_rule": "preserve_context",
+          "generated_only": true,
+          "non_color_indicator": true,
+          "source_fact": "alerts.correction",
+          "state": "correction",
+          "state_id": "phase5.alerts.correction",
+          "view": "phase5.alerts",
+          "visible_message": "A correction changed the generated record chronology."
+        },
+        {
+          "actions": [
+            "refresh"
+          ],
+          "announcement": "none",
+          "focus_rule": "preserve_context",
+          "generated_only": true,
+          "non_color_indicator": true,
+          "source_fact": "alerts.success",
+          "state": "success",
+          "state_id": "phase5.alerts.success",
+          "view": "phase5.alerts",
+          "visible_message": "The generated operation completed."
+        }
+      ]
+    }
+  },
+  "generated_only": true,
+  "operational": false,
+  "phase5_authorized": false,
+  "phase5_implemented": false,
+  "schema_version": "hcam.phase4.p4_7.phase5-handoff.v1"
+}

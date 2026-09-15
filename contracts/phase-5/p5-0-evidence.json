@@ -1,0 +1,67 @@
+{
+  "schema_version": "hcam.phase5.p5_0.evidence.v1",
+  "evidence_id": "P5.0-EVIDENCE-R0",
+  "status": "technical_complete_owner_acceptance_pending",
+  "generated_on": "2026-09-06",
+  "technical_commit": "8d6ff70dfb0f6c7a6b9a50ce6db03d14f46256ae",
+  "start_package_sha256": "66F40E71B2E96F2C61C267EF5A14CD709692A0C389AC23560651BC2B9C38B7F8",
+  "validation": {
+    "readiness_checks": {
+      "planning_package_exact": true,
+      "start_package_exact": true,
+      "start_package_owner_authorized_externally": true,
+      "source_paths_exact": true,
+      "contract_paths_present": true,
+      "fixture_paths_present": true,
+      "implementation_paths_unique": true,
+      "catalogue_has_ten_unique_views": true,
+      "catalogue_routes_unique": true,
+      "producer_coverage_exact": true,
+      "all_views_generated_and_non_operational": true,
+      "route_contracts_bounded": true,
+      "journey_contracts_bounded": true,
+      "accessibility_categories_complete": true,
+      "GIS_parity_requirements_complete": true,
+      "generated_contract_cases_sufficient": true,
+      "generated_GIS_cases_exact": true,
+      "generated_identifiers_unique": true,
+      "generated_payloads_safe": true,
+      "capabilities_server_authoritative": true,
+      "three_resource_profiles_present": true,
+      "prohibited_imports_absent": true,
+      "frontend_and_map_runtime_absent": true,
+      "remote_Git_closed": true,
+      "P5_1_closed": true,
+      "evidence_paths_present": true
+    },
+    "focused_tests_passed": 47,
+    "full_tests_passed": 4218,
+    "branch_coverage_percent": 97.53,
+    "ruff": "passed",
+    "package_build": "passed",
+    "generated_contract_cases": 720,
+    "generated_GIS_parity_cases": 96
+  },
+  "environment": {
+    "network_used": false,
+    "real_data_used": false,
+    "camera_or_media_used": false,
+    "frontend_or_map_runtime_used": false,
+    "container_or_Kubernetes_used": false,
+    "local_uv_environment_materialized_from_cache": true
+  },
+  "limitations": [
+    "generated_only_contract_evidence",
+    "no_React_browser_renderer_or_visual_parity_execution",
+    "no_map_tile_provider_camera_stream_or_media_access",
+    "no_real_Government_police_private_or_personal_data",
+    "no_new_dependency_migration_API_route_database_or runtime",
+    "no_operational_accuracy_performance_accessibility_or deployment claim",
+    "local_uv_environment_was_materialized_from_existing_cache_without network",
+    "P5_1_and_remote_Git_remain_closed"
+  ],
+  "product_progress_before_owner_acceptance": {
+    "P5_0": "7/8 (87.5000%)",
+    "Phase_5": "7/100 (7.0000%)"
+  }
+}

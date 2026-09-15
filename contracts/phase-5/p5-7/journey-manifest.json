@@ -1,0 +1,147 @@
+{
+  "schema_version": "hcam.phase5.p5_7.journey_manifest.v1",
+  "generated_only": true,
+  "journey_count": 14,
+  "journeys": [
+    {
+      "id": "J01",
+      "title": "situation_to_mandatory_review",
+      "surfaces": [
+        "command",
+        "gis",
+        "intelligence"
+      ]
+    },
+    {
+      "id": "J02",
+      "title": "reviewed_proposal_to_investigation",
+      "surfaces": [
+        "intelligence",
+        "investigation"
+      ]
+    },
+    {
+      "id": "J03",
+      "title": "investigation_to_evidence_reference",
+      "surfaces": [
+        "investigation",
+        "evidence"
+      ]
+    },
+    {
+      "id": "J04",
+      "title": "correction_and_retraction_propagation",
+      "surfaces": [
+        "intelligence",
+        "investigation",
+        "evidence",
+        "command"
+      ]
+    },
+    {
+      "id": "J05",
+      "title": "gis_to_camera_diagnostics_to_live_workspace",
+      "surfaces": [
+        "gis",
+        "camera_live"
+      ]
+    },
+    {
+      "id": "J06",
+      "title": "monitor_wall_admission_and_profile_downgrade",
+      "surfaces": [
+        "camera_live",
+        "platform_operations"
+      ]
+    },
+    {
+      "id": "J07",
+      "title": "platform_degradation_response",
+      "surfaces": [
+        "command",
+        "platform_operations",
+        "security"
+      ]
+    },
+    {
+      "id": "J08",
+      "title": "administrative_proposal_and_separation_of_duty",
+      "surfaces": [
+        "admin",
+        "security"
+      ]
+    },
+    {
+      "id": "J09",
+      "title": "access_revocation_and_department_transition",
+      "surfaces": [
+        "command",
+        "gis",
+        "camera_live",
+        "intelligence",
+        "investigation",
+        "evidence",
+        "admin",
+        "security",
+        "platform_operations"
+      ]
+    },
+    {
+      "id": "J10",
+      "title": "event_gap_and_authoritative_recovery",
+      "surfaces": [
+        "command",
+        "gis",
+        "camera_live",
+        "intelligence",
+        "investigation",
+        "evidence",
+        "admin",
+        "security",
+        "platform_operations"
+      ]
+    },
+    {
+      "id": "J11",
+      "title": "session_expiry_during_consequential_review",
+      "surfaces": [
+        "intelligence",
+        "admin",
+        "investigation"
+      ]
+    },
+    {
+      "id": "J12",
+      "title": "localized_keyboard_only_command_workflow",
+      "surfaces": [
+        "command",
+        "gis",
+        "camera_live"
+      ]
+    },
+    {
+      "id": "J13",
+      "title": "security_finding_to_supply_chain_evidence",
+      "surfaces": [
+        "security",
+        "platform_operations"
+      ]
+    },
+    {
+      "id": "J14",
+      "title": "offline_no_provider_generated_demonstration",
+      "surfaces": [
+        "command",
+        "gis",
+        "camera_live",
+        "intelligence",
+        "investigation",
+        "evidence",
+        "admin",
+        "security",
+        "platform_operations"
+      ]
+    }
+  ],
+  "pairwise_policy": "bounded_deterministic_no_unbounded_Cartesian_product"
+}

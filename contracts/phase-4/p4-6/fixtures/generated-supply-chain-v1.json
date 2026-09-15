@@ -1,0 +1,647 @@
+{
+  "category": "supply-chain",
+  "scenario_count": 80,
+  "scenarios": [
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0000",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0001",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0002",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0003",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0004",
+      "vulnerability_state": "verified"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0005",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0006",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0007",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0008",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0009",
+      "vulnerability_state": "verified"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0010",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0011",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0012",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0013",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0014",
+      "vulnerability_state": "verified"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0015",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0016",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0017",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0018",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0019",
+      "vulnerability_state": "verified"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0020",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0021",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0022",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0023",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0024",
+      "vulnerability_state": "verified"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0025",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0026",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0027",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0028",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0029",
+      "vulnerability_state": "verified"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0030",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0031",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0032",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0033",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0034",
+      "vulnerability_state": "verified"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0035",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0036",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0037",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0038",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0039",
+      "vulnerability_state": "verified"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0040",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0041",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0042",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0043",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0044",
+      "vulnerability_state": "verified"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0045",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0046",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0047",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0048",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0049",
+      "vulnerability_state": "verified"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0050",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0051",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0052",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0053",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0054",
+      "vulnerability_state": "verified"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0055",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0056",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0057",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0058",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0059",
+      "vulnerability_state": "verified"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0060",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0061",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0062",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0063",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0064",
+      "vulnerability_state": "verified"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0065",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0066",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0067",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0068",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0069",
+      "vulnerability_state": "verified"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0070",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0071",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0072",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0073",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0074",
+      "vulnerability_state": "verified"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0075",
+      "vulnerability_state": "not_observed"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0076",
+      "vulnerability_state": "unknown"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0077",
+      "vulnerability_state": "stale"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0078",
+      "vulnerability_state": "failed"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "operational": false,
+      "scanners_executed": false,
+      "scenario_id": "p46.supply-chain.0079",
+      "vulnerability_state": "verified"
+    }
+  ],
+  "schema_version": "hcam.phase4.p4_6.fixture.supply-chain.v1"
+}

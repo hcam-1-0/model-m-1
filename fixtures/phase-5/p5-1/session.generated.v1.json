@@ -1,0 +1,16 @@
+{
+  "contractVersion": "1.0.0",
+  "operatorRef": "SYN-OPERATOR-0001",
+  "sessionRef": "SYN-SESSION-0001",
+  "department": {"id": "SYN-DEPT-01", "label": "Generated Department"},
+  "departments": [{"id": "SYN-DEPT-01", "label": "Generated Department"}],
+  "capabilities": ["administrator"],
+  "policyRevision": "SYN-POLICY-1",
+  "serverTime": "2026-09-06T10:00:00.000Z",
+  "staleAt": "2026-09-06T11:00:00.000Z",
+  "expiresAt": "2026-09-06T11:00:00.000Z",
+  "reauthenticationRequired": false,
+  "csrfToken": "SYN-CSRF-NON-ISSUABLE-0001",
+  "locale": "en",
+  "timezone": "Asia/Kolkata"
+}

@@ -1,0 +1,51 @@
+{
+  "cases": [
+    {
+      "expected": "approved",
+      "required": 1,
+      "votes": [
+        "approve"
+      ]
+    },
+    {
+      "expected": "rejected",
+      "required": 1,
+      "votes": [
+        "deny"
+      ]
+    },
+    {
+      "expected": "pending",
+      "required": 2,
+      "votes": [
+        "approve"
+      ]
+    },
+    {
+      "expected": "approved",
+      "required": 2,
+      "votes": [
+        "approve",
+        "approve"
+      ]
+    },
+    {
+      "expected": "rejected",
+      "required": 2,
+      "votes": [
+        "deny",
+        "deny"
+      ]
+    },
+    {
+      "expected": "disagreement",
+      "required": 2,
+      "votes": [
+        "approve",
+        "deny"
+      ]
+    }
+  ],
+  "generated_only": true,
+  "schema_version": "hcam.p4-3.generated-quorum-cases.v1"
+}

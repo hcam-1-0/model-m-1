@@ -1,0 +1,15 @@
+{
+  "contract_type": "hcam.intelligence.reference-query.v1",
+  "department": "Engineering Lab",
+  "generated_only": true,
+  "provider_id": "prov_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "purpose_code": "generated.contract.validation",
+  "query_id": "qry_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "reason_code": "provider_disabled",
+  "requested_at": "2026-09-04T00:00:00Z",
+  "requested_by": "mayank-admin",
+  "requested_fields": [
+    "vehicle.category"
+  ],
+  "status": "blocked"
+}

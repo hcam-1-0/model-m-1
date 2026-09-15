@@ -1,0 +1,537 @@
+{
+  "generated_only": true,
+  "reconstructions": [
+    {
+      "chronology_complete": true,
+      "contract_type": "hcam.acceptance.reconstruction-manifest.v1",
+      "entries": [
+        {
+          "correction_state": "original",
+          "entry_id": "p47_62b5400bd5d3ed969801c95c8aa1e716",
+          "kind": "observe_event",
+          "order": 1,
+          "previous_entry_id": null,
+          "source_ref": "p47_57cd5185d8fa07d91a09fc4676ba1f48"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_ab725d917065bb818bdd524950101c2b",
+          "kind": "correlate",
+          "order": 2,
+          "previous_entry_id": "p47_62b5400bd5d3ed969801c95c8aa1e716",
+          "source_ref": "p47_d759bf40a25bb29d599638c7cddf3363"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_7ec48b068e271def07588872f7f2cf1a",
+          "kind": "evaluate_rule",
+          "order": 3,
+          "previous_entry_id": "p47_ab725d917065bb818bdd524950101c2b",
+          "source_ref": "p47_a2c1ca60d24a124a67654fe3cbacb76b"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_c84f667874121bbeaf67b169609478e5",
+          "kind": "propose_alert",
+          "order": 4,
+          "previous_entry_id": "p47_7ec48b068e271def07588872f7f2cf1a",
+          "source_ref": "p47_135a4e6e6e7dd62553da4e656b89e540"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_39e14cee30c2e5b527605fdd0c7ea52e",
+          "kind": "query_reference",
+          "order": 5,
+          "previous_entry_id": "p47_c84f667874121bbeaf67b169609478e5",
+          "source_ref": "p47_afe3622b8d84c7b5c3334692441a1e43"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_f3cda211d349e9d2fc2c91395fb21702",
+          "kind": "review_alert",
+          "order": 6,
+          "previous_entry_id": "p47_39e14cee30c2e5b527605fdd0c7ea52e",
+          "source_ref": "p47_f5383033c27534a49137104ba940d766"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_cb0ae897703a8fae7d0e8ef87439fc96",
+          "kind": "transition_alert",
+          "order": 7,
+          "previous_entry_id": "p47_f3cda211d349e9d2fc2c91395fb21702",
+          "source_ref": "p47_fb0bfd94ff848f29598b1b90011b15ef"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_ef967b3d2008298621fc905483dcc85e",
+          "kind": "open_investigation",
+          "order": 8,
+          "previous_entry_id": "p47_cb0ae897703a8fae7d0e8ef87439fc96",
+          "source_ref": "p47_1a69c86a3aaa0a83ed9e56f5424d000a"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_36a841461c4249e1090a387c8a0ac1aa",
+          "kind": "append_evidence_reference",
+          "order": 9,
+          "previous_entry_id": "p47_ef967b3d2008298621fc905483dcc85e",
+          "source_ref": "p47_4d23ce5afc139688b8c334f86689348e"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_c895c2fea80333607c4c1fa31ca4f580",
+          "kind": "emit_signal",
+          "order": 10,
+          "previous_entry_id": "p47_36a841461c4249e1090a387c8a0ac1aa",
+          "source_ref": "p47_3324d497b53eefb7ea57f107472ca49f"
+        }
+      ],
+      "generated_only": true,
+      "operational": false,
+      "reconstruction_id": "p47_5d05f2ecb542764d73a10d0f02bf9586",
+      "scenario_id": "S00",
+      "source_content_copied": false
+    },
+    {
+      "chronology_complete": true,
+      "contract_type": "hcam.acceptance.reconstruction-manifest.v1",
+      "entries": [
+        {
+          "correction_state": "original",
+          "entry_id": "p47_1d4126072452f4e08351c2cee5e5f965",
+          "kind": "observe_event",
+          "order": 1,
+          "previous_entry_id": null,
+          "source_ref": "p47_e5184cb7f34e85bc218ca4da6c35e8a2"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_4f583c0085d9bcf5cabd4798939974a8",
+          "kind": "correlate",
+          "order": 2,
+          "previous_entry_id": "p47_1d4126072452f4e08351c2cee5e5f965",
+          "source_ref": "p47_2940071991d701031d060ee632f6d675"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_7b36c8eaf8d991b81365646a3d28ba4e",
+          "kind": "evaluate_rule",
+          "order": 3,
+          "previous_entry_id": "p47_4f583c0085d9bcf5cabd4798939974a8",
+          "source_ref": "p47_1fad728fe094264ce54764c76360754d"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_687e1a99fbef696ed67684743cfd6253",
+          "kind": "query_reference",
+          "order": 4,
+          "previous_entry_id": "p47_7b36c8eaf8d991b81365646a3d28ba4e",
+          "source_ref": "p47_0f9c69c611cc558a998111c6e9b9680f"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_7c2d936fd5d2d671b38b8433f2089131",
+          "kind": "emit_signal",
+          "order": 5,
+          "previous_entry_id": "p47_687e1a99fbef696ed67684743cfd6253",
+          "source_ref": "p47_5260c686cfe866d434a55f6dc90de24d"
+        }
+      ],
+      "generated_only": true,
+      "operational": false,
+      "reconstruction_id": "p47_f1f15ea7cccd3ac73f39ea8d86badb2e",
+      "scenario_id": "S01",
+      "source_content_copied": false
+    },
+    {
+      "chronology_complete": true,
+      "contract_type": "hcam.acceptance.reconstruction-manifest.v1",
+      "entries": [
+        {
+          "correction_state": "original",
+          "entry_id": "p47_bed9be89b34d0996298ee57ca829d941",
+          "kind": "observe_event",
+          "order": 1,
+          "previous_entry_id": null,
+          "source_ref": "p47_8b6c1a28fcd4c8eab715a4564c928318"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_8afb3422a35917bac564ee2e749d5f38",
+          "kind": "duplicate_event",
+          "order": 2,
+          "previous_entry_id": "p47_bed9be89b34d0996298ee57ca829d941",
+          "source_ref": "p47_8b08344173b9c7116c5e4580c585f38d"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_aee7f5fe36a579935dd1e5e262201b43",
+          "kind": "correlate",
+          "order": 3,
+          "previous_entry_id": "p47_8afb3422a35917bac564ee2e749d5f38",
+          "source_ref": "p47_c4a93c1f179943c3726fae59ad4a8b53"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_594e251992a8d0b1a0e26b2006643aa5",
+          "kind": "evaluate_rule",
+          "order": 4,
+          "previous_entry_id": "p47_aee7f5fe36a579935dd1e5e262201b43",
+          "source_ref": "p47_56d1b2734dedfcb708bb59ce94920686"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_29f299ebb9f7097f60944702f10bf7e7",
+          "kind": "propose_alert",
+          "order": 5,
+          "previous_entry_id": "p47_594e251992a8d0b1a0e26b2006643aa5",
+          "source_ref": "p47_e8ee40a9ad9e4bdcd54be9abf488a55f"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_914261897c6381528d7b4339fa02f1bb",
+          "kind": "review_alert",
+          "order": 6,
+          "previous_entry_id": "p47_29f299ebb9f7097f60944702f10bf7e7",
+          "source_ref": "p47_eed214a607d18c3b233aee48863d4510"
+        }
+      ],
+      "generated_only": true,
+      "operational": false,
+      "reconstruction_id": "p47_888a2aa9faa46a4a44df635525d12e10",
+      "scenario_id": "S02",
+      "source_content_copied": false
+    },
+    {
+      "chronology_complete": true,
+      "contract_type": "hcam.acceptance.reconstruction-manifest.v1",
+      "entries": [
+        {
+          "correction_state": "original",
+          "entry_id": "p47_6ac82de7b32c36e0b7cafe53eb41b1fa",
+          "kind": "observe_event",
+          "order": 1,
+          "previous_entry_id": null,
+          "source_ref": "p47_e53c01f311bda97cfb87659a7e30c829"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_c8d58a0569f32be14ed24806ef294c48",
+          "kind": "record_late_conflict",
+          "order": 2,
+          "previous_entry_id": "p47_6ac82de7b32c36e0b7cafe53eb41b1fa",
+          "source_ref": "p47_52404491f2e7aadd0edeb10a9ad09108"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_faa04fc25c6c6079eb902f56c8e0c23d",
+          "kind": "correlate",
+          "order": 3,
+          "previous_entry_id": "p47_c8d58a0569f32be14ed24806ef294c48",
+          "source_ref": "p47_ffac5fad4f7f9ecbd0403b1dfc2a2104"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_a5d64199dd920b84e4ca5364d74b29e4",
+          "kind": "emit_signal",
+          "order": 4,
+          "previous_entry_id": "p47_faa04fc25c6c6079eb902f56c8e0c23d",
+          "source_ref": "p47_33aa97110534bdfe2328be7cbc26c12b"
+        }
+      ],
+      "generated_only": true,
+      "operational": false,
+      "reconstruction_id": "p47_981b09a3159ecc5ebadeba9cdbe625d6",
+      "scenario_id": "S03",
+      "source_content_copied": false
+    },
+    {
+      "chronology_complete": true,
+      "contract_type": "hcam.acceptance.reconstruction-manifest.v1",
+      "entries": [
+        {
+          "correction_state": "original",
+          "entry_id": "p47_942b747142ab568b0bb88f59c08af538",
+          "kind": "observe_event",
+          "order": 1,
+          "previous_entry_id": null,
+          "source_ref": "p47_4695c8e15d3d4ddd1ec57f532fb9d344"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_3ff8bef035d94fe7cca454d1e048dd12",
+          "kind": "deny_cross_scope",
+          "order": 2,
+          "previous_entry_id": "p47_942b747142ab568b0bb88f59c08af538",
+          "source_ref": "p47_9fc0dff332f925c7ade62d3fb6504f54"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_559da65cd0eb46b9869f00aac474f583",
+          "kind": "emit_signal",
+          "order": 3,
+          "previous_entry_id": "p47_3ff8bef035d94fe7cca454d1e048dd12",
+          "source_ref": "p47_ef43c2cd78566250fc29a86a7bf40743"
+        }
+      ],
+      "generated_only": true,
+      "operational": false,
+      "reconstruction_id": "p47_f0f4df458fb7f999574c87c53e79d577",
+      "scenario_id": "S04",
+      "source_content_copied": false
+    },
+    {
+      "chronology_complete": true,
+      "contract_type": "hcam.acceptance.reconstruction-manifest.v1",
+      "entries": [
+        {
+          "correction_state": "original",
+          "entry_id": "p47_3ef124607f378524a9a5824f7a6256c0",
+          "kind": "observe_event",
+          "order": 1,
+          "previous_entry_id": null,
+          "source_ref": "p47_35bea377af0da5de43ec209b59640812"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_381aee9a00b39667a96b3fc97addd22b",
+          "kind": "correlate",
+          "order": 2,
+          "previous_entry_id": "p47_3ef124607f378524a9a5824f7a6256c0",
+          "source_ref": "p47_328dc7825d513d0937bac4395bc8af4a"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_15ff8ac74eabb951cfcc071b39e37e76",
+          "kind": "evaluate_rule",
+          "order": 3,
+          "previous_entry_id": "p47_381aee9a00b39667a96b3fc97addd22b",
+          "source_ref": "p47_d888376b076709bf08bcd839ad13dc82"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_ed7e809feb5da0926ce7532d3ae6c7b8",
+          "kind": "query_reference",
+          "order": 4,
+          "previous_entry_id": "p47_15ff8ac74eabb951cfcc071b39e37e76",
+          "source_ref": "p47_e22ee763f3f9b08e46fcdacc0f85bc47"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_ff48357c1e9f2cd29314b83710122818",
+          "kind": "emit_signal",
+          "order": 5,
+          "previous_entry_id": "p47_ed7e809feb5da0926ce7532d3ae6c7b8",
+          "source_ref": "p47_99551a99ba0916b6a88c039b4215d709"
+        }
+      ],
+      "generated_only": true,
+      "operational": false,
+      "reconstruction_id": "p47_6eb52be02892851801316a536ce5545b",
+      "scenario_id": "S05",
+      "source_content_copied": false
+    },
+    {
+      "chronology_complete": true,
+      "contract_type": "hcam.acceptance.reconstruction-manifest.v1",
+      "entries": [
+        {
+          "correction_state": "original",
+          "entry_id": "p47_9bd33cd76ba409d811087264743c1fee",
+          "kind": "observe_event",
+          "order": 1,
+          "previous_entry_id": null,
+          "source_ref": "p47_a8aec80377af8ebedb395172158dd163"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_a8492f036a6a59458cd1ce9ba37617dc",
+          "kind": "correlate",
+          "order": 2,
+          "previous_entry_id": "p47_9bd33cd76ba409d811087264743c1fee",
+          "source_ref": "p47_427ef687702ae843be65e983d0ec46a0"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_6ebf80bceedb49805f18a3547d073cd2",
+          "kind": "evaluate_rule",
+          "order": 3,
+          "previous_entry_id": "p47_a8492f036a6a59458cd1ce9ba37617dc",
+          "source_ref": "p47_df27f89cc8629cd5cf2a348c23cfd5fd"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_851a170cb57502030a098126bd9bac4d",
+          "kind": "propose_alert",
+          "order": 4,
+          "previous_entry_id": "p47_6ebf80bceedb49805f18a3547d073cd2",
+          "source_ref": "p47_52f1365c15f8371136d1bcb1e207d887"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_d4c846e9b4d3e40b1f0b082e007a75f7",
+          "kind": "review_alert",
+          "order": 5,
+          "previous_entry_id": "p47_851a170cb57502030a098126bd9bac4d",
+          "source_ref": "p47_77e39d656bf2698a3b2a0545c6bdce91"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_d358dfc9ec14d35fbcce34458f899373",
+          "kind": "transition_alert",
+          "order": 6,
+          "previous_entry_id": "p47_d4c846e9b4d3e40b1f0b082e007a75f7",
+          "source_ref": "p47_fa14a25057177627fb9ecfad0f2776de"
+        }
+      ],
+      "generated_only": true,
+      "operational": false,
+      "reconstruction_id": "p47_e5ef2378c01bfe3b32f26f61c75b7550",
+      "scenario_id": "S06",
+      "source_content_copied": false
+    },
+    {
+      "chronology_complete": true,
+      "contract_type": "hcam.acceptance.reconstruction-manifest.v1",
+      "entries": [
+        {
+          "correction_state": "original",
+          "entry_id": "p47_713012d555fbe3fc002b170e61efe54a",
+          "kind": "observe_event",
+          "order": 1,
+          "previous_entry_id": null,
+          "source_ref": "p47_b20db976fddf3d85fde2543f45eaa471"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_1a035f18726c04d58f11043d32c8ce2e",
+          "kind": "correlate",
+          "order": 2,
+          "previous_entry_id": "p47_713012d555fbe3fc002b170e61efe54a",
+          "source_ref": "p47_04aeeb92fe7f3c29200ca3d8fee1e00d"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_cfc3536f4ba8c0892a57501dc361dcad",
+          "kind": "evaluate_rule",
+          "order": 3,
+          "previous_entry_id": "p47_1a035f18726c04d58f11043d32c8ce2e",
+          "source_ref": "p47_041546da192d55f57e0cfedcda6cfef6"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_cce701f07301b0fae94cdc09193c0bc8",
+          "kind": "propose_alert",
+          "order": 4,
+          "previous_entry_id": "p47_cfc3536f4ba8c0892a57501dc361dcad",
+          "source_ref": "p47_740f756dbc7e3b6af5a9ed068bc99cd4"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_0ec9f11d8032fa4045967ef605db7aa1",
+          "kind": "review_alert",
+          "order": 5,
+          "previous_entry_id": "p47_cce701f07301b0fae94cdc09193c0bc8",
+          "source_ref": "p47_4a5a7ba3fc37d5f4aa97538ed2abf4af"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_dbfaa70afb0ba0928882fdf46c9efac1",
+          "kind": "open_investigation",
+          "order": 6,
+          "previous_entry_id": "p47_0ec9f11d8032fa4045967ef605db7aa1",
+          "source_ref": "p47_187e54cfbad796cf975ea46ad35b8868"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_34d7eca13d75ed65c9435c7dc73d2390",
+          "kind": "append_evidence_reference",
+          "order": 7,
+          "previous_entry_id": "p47_dbfaa70afb0ba0928882fdf46c9efac1",
+          "source_ref": "p47_396764021e715453d0c7b9a3522c62bf"
+        },
+        {
+          "correction_state": "corrected",
+          "entry_id": "p47_4d0ba4f505c91095b5eff46d49413ac9",
+          "kind": "record_correction",
+          "order": 8,
+          "previous_entry_id": "p47_34d7eca13d75ed65c9435c7dc73d2390",
+          "source_ref": "p47_5911d2b9cf40c79a4e9a19279213b1e5"
+        },
+        {
+          "correction_state": "retracted",
+          "entry_id": "p47_2c29727076b7498d8c346a866ea582c0",
+          "kind": "record_retraction",
+          "order": 9,
+          "previous_entry_id": "p47_4d0ba4f505c91095b5eff46d49413ac9",
+          "source_ref": "p47_4e1980027051f9127a2860613c2fb94d"
+        }
+      ],
+      "generated_only": true,
+      "operational": false,
+      "reconstruction_id": "p47_3188bc69ab09e6c1cb51612aafb5fdec",
+      "scenario_id": "S07",
+      "source_content_copied": false
+    },
+    {
+      "chronology_complete": true,
+      "contract_type": "hcam.acceptance.reconstruction-manifest.v1",
+      "entries": [
+        {
+          "correction_state": "original",
+          "entry_id": "p47_ace45a542dee58e74e2064b24f17baa9",
+          "kind": "observe_event",
+          "order": 1,
+          "previous_entry_id": null,
+          "source_ref": "p47_108cb8b40eda01d6bd6a6df1c2ebf4c5"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_66ed2ecf3cb398266cf5a589cccd1d12",
+          "kind": "degrade_worker",
+          "order": 2,
+          "previous_entry_id": "p47_ace45a542dee58e74e2064b24f17baa9",
+          "source_ref": "p47_a70e434bee011843ce8dd8a215ba20bd"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_3dce6ab7cdb716d65bc997f4180f5421",
+          "kind": "emit_signal",
+          "order": 3,
+          "previous_entry_id": "p47_66ed2ecf3cb398266cf5a589cccd1d12",
+          "source_ref": "p47_3aea70ab0f93bd054b5eac26b5bc6e51"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_94d8a157a4d238935cf7b0af23165190",
+          "kind": "recover_worker",
+          "order": 4,
+          "previous_entry_id": "p47_3dce6ab7cdb716d65bc997f4180f5421",
+          "source_ref": "p47_63ccc597a61b8b34ca969c2f6326282a"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_a0f0659e8da3f79cdd70bbe369f78ac0",
+          "kind": "correlate",
+          "order": 5,
+          "previous_entry_id": "p47_94d8a157a4d238935cf7b0af23165190",
+          "source_ref": "p47_92443b55c32f8c88752a9122ac4b3217"
+        },
+        {
+          "correction_state": "original",
+          "entry_id": "p47_d1adb1d67dd9fba5d79bf382b7f88356",
+          "kind": "evaluate_rule",
+          "order": 6,
+          "previous_entry_id": "p47_a0f0659e8da3f79cdd70bbe369f78ac0",
+          "source_ref": "p47_7abc076662e1dc0a28f105119322875d"
+        }
+      ],
+      "generated_only": true,
+      "operational": false,
+      "reconstruction_id": "p47_3db9d79c914a55a2b0a1251eec9c96fe",
+      "scenario_id": "S08",
+      "source_content_copied": false
+    }
+  ],
+  "schema_version": "hcam.phase4.p4_7.reconstruction-set.v1"
+}

@@ -1,0 +1,158 @@
+{
+  "schema_version": "hcam.phase5.p5_4.reconciled_planning_package.v1",
+  "package_id": "P5.4-PLANNING-R1",
+  "status": "non_effective_owner_acceptance_pending",
+  "effective": false,
+  "prepared_on": "2026-09-08",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "16f9029e104cec40d06a3b9ce0eb0e2ec4e4d0ac",
+  "planning_authority": {
+    "decision_id": "D-P5.4-PLAN-AUTH",
+    "path": "contracts/phase-5/p5-4-plan-authorization.json",
+    "sha256": "7B1A36AFC055859FA66F177957AB0A9F5B14DAD17060F409F3B21C04B2F67E46",
+    "single_checkpoint_commit_consumed_by": "16f9029e104cec40d06a3b9ce0eb0e2ec4e4d0ac"
+  },
+  "supersedes_for_current_planning": {
+    "package_id": "P5.4-PLANNING-R0",
+    "path": "contracts/phase-5/p5-4-planning-package.json",
+    "sha256": "1ACB4280AF7DC8F88B847D0906A6B97704AAF1E4EF6FB3DA32B979D030235451",
+    "preserved_byte_exact": true
+  },
+  "accepted_predecessor": {
+    "subphase": "P5.3",
+    "acceptance_record": "contracts/phase-5/p5-3-acceptance.json",
+    "acceptance_record_sha256": "A20A8147B43D734747C4579457C2CB14CD3632BAD79E2B3349D4BE72A44EEDA9",
+    "evidence_package_sha256": "744F69E750BF7DB2DA3C3F613E149E70BBFBEB08B7F24B0BABB0D190FFF8257E",
+    "canonical_component_digest": "216750DA23B72DB31D2737278CCC610D84A2CEA059016CF818413704894EB17A",
+    "technical_commit": "9d1604a62e4823644064e26d3b11771f8ae526fa",
+    "evidence_seal_commit": "64bacb7a91e201ee47d704542f2a25e171578678",
+    "acceptance_commit": "5051bae688183b86043de51ea72db24525e9fe41"
+  },
+  "component_digest_algorithm": "Sort components by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "5532AB831F42A4EDF9A64D3D4948396EFB6DAA7B4E0E2FA0933EF2AFCBFDBEA5",
+  "components": [
+    {
+      "path": "contracts/phase-5/p5-4-owner-decisions.json",
+      "bytes": 6412,
+      "sha256": "87351035B337D836AAB3C7A930DC0A81B9A09AE37D7EDFB924A522FB505CBA1F"
+    },
+    {
+      "path": "contracts/phase-5/p5-4-planning-package.json",
+      "bytes": 9375,
+      "sha256": "1ACB4280AF7DC8F88B847D0906A6B97704AAF1E4EF6FB3DA32B979D030235451"
+    },
+    {
+      "path": "docs/phase-5/current-status-r17.md",
+      "bytes": 2558,
+      "sha256": "3AD3D9C68F1360F3E89D8F3AF827922A54E572BD04BC7A86DEB056E5044D2333"
+    },
+    {
+      "path": "docs/phase-5/p5-4-reconciled-planning-r1.md",
+      "bytes": 11347,
+      "sha256": "E2236AC9A6AFFB5651A72915BF33A3B434C279F3EBF5FFCB2E614DBA148A9563"
+    }
+  ],
+  "owner_decisions": {
+    "record_id": "P5.4-OWNER-DECISIONS-R0",
+    "path": "contracts/phase-5/p5-4-owner-decisions.json",
+    "sha256": "87351035B337D836AAB3C7A930DC0A81B9A09AE37D7EDFB924A522FB505CBA1F",
+    "source_statement_sha256": "10B1AE65EF047B66B74ABE3F40C7CBC124B99FD7B499F79053171401E48F1B2D",
+    "selection_profile": "A/A/A/A/A/A/A/A/A/A/A/A",
+    "selection_count": 12
+  },
+  "resolved_product_hierarchy": {
+    "primary_dashboard": "Command_Center",
+    "specialist_portal": "Intelligence_Center",
+    "page_families": [
+      "Intelligence_Overview",
+      "Hypothesis_Queue",
+      "Correlation_Run_Queue",
+      "Relationship_Explorer",
+      "Spatial_Intelligence",
+      "Rule_And_Evaluation_Explorer",
+      "Candidate_Evidence_Workspace",
+      "Proposed_Alert_Queue",
+      "Mandatory_Review_Desk",
+      "Corrections_And_Reconsideration",
+      "Intelligence_Health"
+    ],
+    "GIS_domain": "shared_accepted_P5_2_domain",
+    "camera_live_domain": "connected_through_opaque_P5_3_handoffs",
+    "separate_truth_source_created": false
+  },
+  "resolved_architecture": {
+    "truth_model": "strict_typed_observation_inference_hypothesis_candidate_proposed_alert_review_correction_lifecycle_ladder",
+    "queues": "separate_server_ordered_cursor_paginated_typed_queues",
+    "relationship_graph": "bounded_read_only_renderer_adapter_with_later_exact_React_Flow_candidate_and_authoritative_tables",
+    "spatial": "bounded_GeoJSON_WGS84_through_P5_2_MapLibre_deck_gl_with_table_parity",
+    "rule_explanation": "exact_immutable_revision_and_typed_execution_trace_authoritative_over_secondary_summary",
+    "candidate_presentation": "field_level_evidence_contradiction_ambiguity_missingness_staleness_calibration_and_abstention",
+    "candidate_identity": "not_established",
+    "review": "server_authoritative_policy_independent_quorum_attributable_append_only_decisions_and_memory_only_drafts",
+    "concurrency": "strong_ETag_If_Match_expected_revision_idempotency_fingerprint_receipt_refetch_and_deliberate_reconsideration",
+    "events": "versioned_scoped_invalidation_with_unknown_version_quarantine_and_HTTP_authority",
+    "corrections": "append_only_impact_projection_stale_action_lock_refetch_and_new_reconsideration_entry",
+    "accessibility": "authoritative_table_first_equivalence_with_keyboard_focus_non_color_announcement_reflow_and_human_factors_controls",
+    "profiles": "rendering_capacity_only_without_authority_semantic_or_safety_change",
+    "validation": "deterministic_generated_C1_C10_C50_and_two_clean_replays_without_production_claims",
+    "review_external_action": false
+  },
+  "preserved_contracts": [
+    "accepted_Phase_3_anonymous_analytics_and_dynamic_profile_boundaries",
+    "accepted_Phase_4_intelligence_correlation_rule_alert_review_provider_correction_and_action_prohibitions",
+    "accepted_P5_1_shell_session_capability_query_invalidation_accessibility_security_and_observability_boundaries",
+    "accepted_P5_2_Command_primary_GIS_connected_shared_domain_and_table_equivalence",
+    "accepted_P5_3_Operations_camera_live_opaque_handoff_and_profile_boundaries",
+    "score_hypothesis_candidate_relationship_alert_review_or_quorum_never_establishes_identity_guilt_criminality_or_operational_truth",
+    "twenty_six_producer_gaps_and_forty_threats_remain_open_until_evidenced",
+    "generated_only_validation_until_separate_later_authority"
+  ],
+  "producer_gap_count": 26,
+  "threat_count": 40,
+  "implementation_workstreams": [
+    {"id": "P5.4-W1", "title": "consumer_contracts_and_generated_fixtures", "weight": 2.0},
+    {"id": "P5.4-W2", "title": "intelligence_overview_and_queues", "weight": 2.0},
+    {"id": "P5.4-W3", "title": "hypothesis_run_graph_spatial_and_rule_explanation", "weight": 2.5},
+    {"id": "P5.4-W4", "title": "proposed_alerts_and_candidate_uncertainty", "weight": 2.5},
+    {"id": "P5.4-W5", "title": "mandatory_review_quorum_and_concurrency", "weight": 2.5},
+    {"id": "P5.4-W6", "title": "lifecycle_corrections_and_event_invalidation", "weight": 1.5},
+    {"id": "P5.4-W7", "title": "accessibility_security_profiles_and_signals", "weight": 1.0},
+    {"id": "P5.4-W8", "title": "validation_evidence_and_acceptance", "weight": 1.0}
+  ],
+  "frozen_progress_model": {
+    "P5_4_total_product_points": 15,
+    "P5_4_technical_cap_points": 14,
+    "P5_4_owner_acceptance_points": 1,
+    "phase_5_total_product_points": 100,
+    "planning_items": 8,
+    "owner_decision_items": 12,
+    "planning_and_decisions_award_product_points": false,
+    "scope_or_weight_rebaseline": false
+  },
+  "progress": {
+    "owner_decisions": {"earned": 12, "total": 12, "percent": 100.0, "change_percentage_points": 100.0, "awards_product_points": false},
+    "P5_4_planning": {"earned": 8, "total": 8, "percent": 100.0, "change_percentage_points": 0.0, "awards_product_points": false},
+    "P5_4_product": {"earned": 0, "total": 15, "percent": 0.0, "change_percentage_points": 0.0},
+    "phase_5_product": {"earned": 48, "total": 100, "percent": 48.0, "change_percentage_points": 0.0}
+  },
+  "next_gate": {
+    "exact_owner_planning_acceptance": true,
+    "non_effective_exact_start_package_after_acceptance": true,
+    "separate_exact_start_authorization_before_implementation": true
+  },
+  "owner_planning_acceptance_recorded": false,
+  "start_package_preparation_authorized": false,
+  "start_authorization_recorded": false,
+  "product_or_test_implementation_authorized": false,
+  "source_import_authorized": false,
+  "dependency_resolution_install_or_lockfile_change_authorized": false,
+  "backend_route_or_migration_authorized": false,
+  "frontend_or_browser_runtime_authorized": false,
+  "model_dataset_artifact_or_inference_authorized": false,
+  "provider_network_camera_or_media_authorized": false,
+  "Government_private_data_real_investigation_or_identity_authorized": false,
+  "operational_alert_notification_dispatch_enforcement_or_autonomous_action_authorized": false,
+  "container_Kubernetes_deployment_or_P5_5_authorized": false,
+  "additional_commit_authorized": false,
+  "remote_git_authorized": false
+}

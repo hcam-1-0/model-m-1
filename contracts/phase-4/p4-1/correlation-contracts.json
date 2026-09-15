@@ -1,0 +1,74 @@
+{
+  "schema_version": "hcam.phase4.p4_1.correlation-contracts.v1",
+  "input_boundary": {
+    "source": "read-only stream_event_outbox projection",
+    "supported_generated_event_contracts": [
+      "hcam.analytics.observation.created.v1",
+      "hcam.analytics.track.lifecycle.v2",
+      "hcam.analytics.line.crossing.v1",
+      "hcam.analytics.zone.entry.v1",
+      "hcam.analytics.zone.exit.v1",
+      "hcam.analytics.zone.dwell.threshold_met.v1",
+      "hcam.analytics.zone.occupancy.threshold_entered.v1",
+      "hcam.analytics.zone.occupancy.threshold_exited.v1"
+    ],
+    "unknown_fields": "forbidden",
+    "maximum_bytes": 65536,
+    "canonical_digest": "SHA-256",
+    "generated_only": true,
+    "operational": false
+  },
+  "ordering": {
+    "clock": "event time",
+    "watermark": "explicit bounded lateness",
+    "windows": ["fixed", "tumbling", "generated session"],
+    "visible_outcomes": [
+      "accepted",
+      "capacity_rejected",
+      "conflict",
+      "duplicate",
+      "future_rejected",
+      "gap_accepted",
+      "late_accepted",
+      "late_rejected",
+      "policy_rejected"
+    ]
+  },
+  "lanes": {
+    "required_executable": "deterministic_cpu",
+    "contract_only_unavailable": [
+      "model_first_shadow",
+      "probabilistic",
+      "temporal_graph",
+      "uncertainty_ensemble"
+    ],
+    "arbitration": "deterministic veto, preserved disagreement, mandatory abstention"
+  },
+  "hypotheses": {
+    "source_of_truth": "bounded canonical evidence graph",
+    "projection": "digest-bound rebuildable flat read model",
+    "evidence_roles": [
+      "contradicts",
+      "missing",
+      "retracts",
+      "stale",
+      "supersedes",
+      "supports"
+    ],
+    "revision_states": [
+      "corrected",
+      "expired",
+      "retracted",
+      "superseded"
+    ],
+    "authority": "mandatory_review",
+    "operational": false
+  },
+  "prohibited_assertions": [
+    "biometric or identity match",
+    "guilt or intent",
+    "predictive risk",
+    "sensitive trait",
+    "vehicle owner identity"
+  ]
+}

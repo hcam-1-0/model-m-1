@@ -1,0 +1,22 @@
+{
+  "schema_version": "hcam.phase5.p5_7.resilience_report.v1",
+  "status": "pass",
+  "generated_only": true,
+  "technical_commit": "6a5e1c700779dbc0edb6fdd1a8dc4c6132dd21d6",
+  "start_package_sha256": "77E3A7885AA1969A9F50AF9EB3FE8EE05DEEAB0374FB1F83C4DD51B860C5395C",
+  "bound_input_digest": "E5B65A6611C9ED90A33B156DA6D632859CBFFF4BE4781AA2E03F910F0AEA1B4B",
+  "generated_cases": 192,
+  "edge_browser_checks": 56,
+  "typed_scenarios": [
+    "event_gap",
+    "duplicate",
+    "out_of_order",
+    "stale",
+    "conflict",
+    "session_expiry",
+    "reconnect",
+    "profile_transition",
+    "recovery"
+  ],
+  "unknown_terminal_states": 0
+}

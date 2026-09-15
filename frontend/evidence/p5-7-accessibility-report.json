@@ -1,0 +1,15 @@
+{
+  "schema_version": "hcam.phase5.p5_7.accessibility_report.v1",
+  "status": "automated_pass_manual_protocol_pending",
+  "generated_only": true,
+  "technical_commit": "6a5e1c700779dbc0edb6fdd1a8dc4c6132dd21d6",
+  "start_package_sha256": "77E3A7885AA1969A9F50AF9EB3FE8EE05DEEAB0374FB1F83C4DD51B860C5395C",
+  "bound_input_digest": "E5B65A6611C9ED90A33B156DA6D632859CBFFF4BE4781AA2E03F910F0AEA1B4B",
+  "generated_cases": 256,
+  "edge_browser_checks": 56,
+  "automated_critical_or_serious_findings": 0,
+  "keyboard_focus_reflow_zoom_target_contrast_reduced_motion_and_error_state_checks": "pass",
+  "authoritative_table_or_list_equivalence": "pass",
+  "manual_protocol": "required_not_executed",
+  "conformance_claim": false
+}

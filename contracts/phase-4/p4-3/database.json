@@ -1,0 +1,44 @@
+{
+  "schema_version": "hcam.phase4.p4_3.database-delta.v1",
+  "revision": "0015_alert_lifecycle_orchestration",
+  "parent_revision": "0014_rule_authoring_evaluation",
+  "extended_stores": [
+    "alerts"
+  ],
+  "new_stores": [
+    "alert_assignment_events",
+    "alert_budget_counters",
+    "alert_budget_policies",
+    "alert_command_receipts",
+    "alert_lifecycle_events",
+    "alert_merge_relations",
+    "alert_review_decisions",
+    "alert_review_quorum_policies",
+    "alert_suppression_events",
+    "alert_timer_intents",
+    "alert_workflow_executions"
+  ],
+  "transactional_outbox": "stream_event_outbox",
+  "postgresql": {
+    "authoritative_business_truth": true,
+    "forced_rls_on_every_new_store": true,
+    "policy_scope": "department",
+    "concurrent_timer_claim": "FOR UPDATE SKIP LOCKED"
+  },
+  "sqlite": {
+    "purpose": "single-process generated development and tests",
+    "worker_limit": 1,
+    "migration_cycle": "0014 -> 0015 -> 0014 -> 0015"
+  },
+  "stored_data": "generated structured alert and workflow metadata only",
+  "prohibited_columns": [
+    "credential",
+    "frame",
+    "image",
+    "locator",
+    "media",
+    "private_data",
+    "url",
+    "video"
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "schema_version": "hcam.phase4.p4_5.planning-acceptance.v1",
+  "decision_id": "D-P4.5-PLANNING-R1-ACCEPTANCE",
+  "status": "accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-05",
+  "accepted_repository_head": "22a4d9495e16768e44b744a1b8dd85c541688b65",
+  "accepted_package": {
+    "package_id": "P4.5-PLANNING-R1",
+    "path": "contracts/phase-4/p4-5-planning-r1-package.json",
+    "sha256": "1E32E73885C81499117D84E9F15C5A038066B9BC22C17D1F58F98FBE6A6FEDE4"
+  },
+  "acceptance_proposal": {
+    "path": "contracts/phase-4/p4-5-planning-r1-acceptance-proposal.json",
+    "sha256": "5F3663568DF3F81690C1432CAFABAD41E4302E997CB60098A503B50ACDDCBF8C"
+  },
+  "recorded_profile": "A_with_guarded_D_capability/A/A/A_with_guarded_C_capability/A/A/A/A/A/A",
+  "recorded_decisions": {
+    "D-P4.5-001": {
+      "selected": ["A"],
+      "capability_requested": ["D"]
+    },
+    "D-P4.5-002": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-003": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-004": {
+      "selected": ["A"],
+      "capability_requested": ["C"]
+    },
+    "D-P4.5-005": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-006": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-007": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-008": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-009": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-010": {
+      "selected": ["A"],
+      "capability_requested": []
+    }
+  },
+  "authority_effect": [
+    "freeze_P4_5_PLANNING_R1_as_the_accepted_reconciled_planning_baseline",
+    "preserve_the_case_management_bridge_and_PROV_interchange_projection_as_disabled_non_authoritative_capability_surfaces",
+    "prepare_one_separate_non_effective_digest_bound_P4_5_START_R0_authorization_package"
+  ],
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "source_or_evidence_access_authorized": false,
+  "case_management_integration_authorized": false,
+  "PROV_import_or_conformance_authorized": false,
+  "retention_hold_deletion_or_export_execution_authorized": false,
+  "network_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false,
+  "frozen_progress": {
+    "phase4_earned_points": 70,
+    "phase4_total_points": 100,
+    "phase4_percentage": "70.00%",
+    "phase4_change_percentage_points": "+0.00",
+    "p4_5_earned_points": 0,
+    "p4_5_total_points": 15,
+    "p4_5_percentage": "0.0000%",
+    "p4_5_change_percentage_points": "+0.0000",
+    "planning_and_research_gate": "5/5 (100.0000%)",
+    "owner_decision_gate": "10/10 (100.0000%)",
+    "reconciled_package_preparation_gate": "1/1 (100.0000%)",
+    "reconciled_package_acceptance_gate": "1/1 (100.0000%)",
+    "reconciled_package_acceptance_change_percentage_points": "+100.0000"
+  },
+  "non_authorization": [
+    "P4_5_source_test_migration_API_worker_or_runtime_implementation",
+    "source_media_document_or_evidence_copying_resolution_or_verification",
+    "real_investigation_case_identifier_case_narrative_or_case_management_system",
+    "external_PROV_import_dynamic_parser_formal_conformance_suite_or_conformance_claim",
+    "retention_period_legal_policy_admissibility_authenticity_custody_or_certification_decision",
+    "hold_activation_release_deletion_execution_export_delivery_payload_signature_or_timestamp",
+    "provider_Sentinel_camera_media_or_operational_network_access",
+    "credential_secret_key_token_certificate_timestamp_authority_or_private_CA_access",
+    "Government_police_private_personal_biometric_vehicle_owner_case_watchlist_or_provider_data",
+    "model_dataset_checkpoint_artifact_download_training_or_inference",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "container_Kubernetes_cloud_pilot_production_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "owner_statement_normalization": "UTF_8_LF_without_terminal_newline",
+  "owner_statement_utf8_length": 780,
+  "owner_statement_sha256": "551EE5A701A63DA472793782445A61B39FC01A456404C057CC34F1D99ED37D3B",
+  "owner_statement": "D-P4.5-PLANNING-R1-ACCEPTANCE: I, mayank-admin, accept reconciled P4.5 planning package P4.5-PLANNING-R1 with SHA-256 1E32E73885C81499117D84E9F15C5A038066B9BC22C17D1F58F98FBE6A6FEDE4, including the recorded A with guarded D capability/A/A/A with guarded C capability/A/A/A/A/A/A profile and all documented planning-only limitations. This accepts planning only. It does not authorize P4.5 implementation, source or evidence copying or resolution, real investigations, retention-period or legal-policy decisions, hold activation or release, deletion or export execution, providers or network access, credentials or secrets, Government or private data, cameras or media, models or datasets, inference, operational alerts or actions, containers, Kubernetes, deployment, or remote Git.",
+  "next_gate": "separate_exact_digest_bound_D_P4_5_START_acceptance"
+}

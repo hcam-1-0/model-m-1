@@ -1,0 +1,168 @@
+{
+  "version": 8,
+  "name": "H-CAM Gujarat operational dark",
+  "metadata": {
+    "hcam:contract": "v1",
+    "hcam:basemap": "gujarat-2026-09"
+  },
+  "sources": {
+    "hcam-gujarat-reference": {
+      "type": "geojson",
+      "data": "/gis/reference/gujarat-operational-context.geojson",
+      "attribution": "H-CAM local operational reference"
+    },
+    "hcam-gujarat-basemap": {
+      "type": "vector",
+      "tiles": ["/tiles/gujarat-2026-09/{z}/{x}/{y}"],
+      "minzoom": 4,
+      "maxzoom": 14,
+      "attribution": "© OpenStreetMap contributors"
+    },
+    "hcam-gujarat-terrain": {
+      "type": "raster-dem",
+      "tiles": ["/tiles/gujarat-terrain/{z}/{x}/{y}"],
+      "minzoom": 5,
+      "maxzoom": 9,
+      "tileSize": 256,
+      "encoding": "terrarium",
+      "bounds": [68, 20, 75, 25],
+      "attribution": "Terrain Tiles © Mapzen / AWS Open Data"
+    }
+  },
+  "layers": [
+    {
+      "id": "hcam-operational-background",
+      "type": "background",
+      "paint": { "background-color": "#070b11" }
+    },
+    {
+      "id": "hcam-reference-coverage",
+      "type": "fill",
+      "source": "hcam-gujarat-reference",
+      "filter": ["==", ["get", "kind"], "coverage"],
+      "paint": { "fill-color": "#0d2028", "fill-opacity": 0.92 }
+    },
+    {
+      "id": "hcam-reference-outline",
+      "type": "line",
+      "source": "hcam-gujarat-reference",
+      "filter": ["==", ["get", "kind"], "coverage"],
+      "paint": { "line-color": "#3b6471", "line-width": 1.2, "line-opacity": 0.86 }
+    },
+    {
+      "id": "hcam-reference-corridors",
+      "type": "line",
+      "source": "hcam-gujarat-reference",
+      "filter": ["==", ["get", "kind"], "corridor"],
+      "paint": {
+        "line-color": "#5a7280",
+        "line-width": ["interpolate", ["linear"], ["zoom"], 5, 0.7, 10, 1.8],
+        "line-opacity": 0.76,
+        "line-dasharray": [2, 1]
+      }
+    },
+    {
+      "id": "hcam-reference-cities",
+      "type": "circle",
+      "source": "hcam-gujarat-reference",
+      "filter": ["==", ["get", "kind"], "city"],
+      "paint": {
+        "circle-radius": ["interpolate", ["linear"], ["zoom"], 5, 2.2, 10, 4.5],
+        "circle-color": "#a9c6c4",
+        "circle-stroke-color": "#071018",
+        "circle-stroke-width": 1.2
+      }
+    },
+    {
+      "id": "hcam-terrain-hillshade",
+      "type": "hillshade",
+      "source": "hcam-gujarat-terrain",
+      "paint": {
+        "hillshade-exaggeration": 0.34,
+        "hillshade-shadow-color": "#05070b",
+        "hillshade-highlight-color": "#40545d"
+      }
+    },
+    {
+      "id": "hcam-landuse",
+      "type": "fill",
+      "source": "hcam-gujarat-basemap",
+      "source-layer": "landuse",
+      "paint": { "fill-color": "#101d22", "fill-opacity": 0.8 }
+    },
+    {
+      "id": "hcam-water-fill",
+      "type": "fill",
+      "source": "hcam-gujarat-basemap",
+      "source-layer": "water",
+      "paint": { "fill-color": "#1a3441", "fill-opacity": 0.85 }
+    },
+    {
+      "id": "hcam-water-line",
+      "type": "line",
+      "source": "hcam-gujarat-basemap",
+      "source-layer": "water",
+      "filter": ["==", "$type", "LineString"],
+      "paint": {
+        "line-color": "#315564",
+        "line-width": ["interpolate", ["linear"], ["zoom"], 6, 0.45, 12, 1.4]
+      }
+    },
+    {
+      "id": "hcam-boundaries",
+      "type": "line",
+      "source": "hcam-gujarat-basemap",
+      "source-layer": "boundaries",
+      "paint": {
+        "line-color": "#49616c",
+        "line-width": ["interpolate", ["linear"], ["zoom"], 5, 0.55, 12, 1.1],
+        "line-dasharray": [2, 1]
+      }
+    },
+    {
+      "id": "hcam-buildings",
+      "type": "fill",
+      "source": "hcam-gujarat-basemap",
+      "source-layer": "buildings",
+      "minzoom": 13,
+      "paint": { "fill-color": "#24343a", "fill-outline-color": "#38505a", "fill-opacity": 0.78 }
+    },
+    {
+      "id": "hcam-roads",
+      "type": "line",
+      "source": "hcam-gujarat-basemap",
+      "source-layer": "roads",
+      "paint": {
+        "line-color": [
+          "match",
+          ["get", "class"],
+          "motorway",
+          "#9c925d",
+          "trunk",
+          "#8b8157",
+          "primary",
+          "#74858a",
+          "secondary",
+          "#526d76",
+          "#324d56"
+        ],
+        "line-width": ["interpolate", ["linear"], ["zoom"], 5, 0.6, 10, 1.8, 14, 4.2],
+        "line-opacity": 0.92
+      }
+    },
+    {
+      "id": "hcam-place-labels",
+      "type": "symbol",
+      "source": "hcam-gujarat-basemap",
+      "source-layer": "places",
+      "layout": {
+        "text-field": ["get", "name"],
+        "text-size": ["interpolate", ["linear"], ["zoom"], 6, 10, 12, 15],
+        "text-font": ["Open Sans Regular"],
+        "text-offset": [0, 0.4],
+        "text-anchor": "top"
+      },
+      "paint": { "text-color": "#b7c6c4", "text-halo-color": "#071018", "text-halo-width": 1.2 }
+    }
+  ]
+}

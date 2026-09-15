@@ -1,0 +1,95 @@
+{
+  "schema_version": "hcam.p4-2.generated-rule-documents.v1",
+  "generated_only": true,
+  "documents": [
+    {
+      "contract_type": "hcam.p4-2.visual-rule-document.v1",
+      "department": "generated-lab",
+      "rule_key": "generated.vehicle-review",
+      "version": 1,
+      "semantics": {
+        "contract_type": "hcam.p4-2.rule-semantics.v1",
+        "nodes": [
+          {
+            "node_id": "vehicle-source",
+            "kind": "event_match",
+            "inputs": [],
+            "parameters": {
+              "event_types": ["generated.vehicle.observed"]
+            }
+          },
+          {
+            "node_id": "confidence-check",
+            "kind": "cel_predicate",
+            "inputs": ["vehicle-source"],
+            "parameters": {
+              "cel_source": "confidence >= 0.75 && chronology_complete"
+            }
+          },
+          {
+            "node_id": "review-output",
+            "kind": "propose_review_candidate",
+            "inputs": ["confidence-check"],
+            "parameters": {
+              "output_code": "generated.vehicle-review"
+            }
+          }
+        ],
+        "output_node_id": "review-output"
+      },
+      "presentation": {
+        "nodes": [
+          {"node_id": "vehicle-source", "x": 0, "y": 0, "label": "Generated source", "color_token": "source", "collapsed": false},
+          {"node_id": "confidence-check", "x": 240, "y": 0, "label": "Confidence gate", "color_token": "logic", "collapsed": false},
+          {"node_id": "review-output", "x": 480, "y": 0, "label": "Review candidate", "color_token": "output", "collapsed": false}
+        ],
+        "viewport_x": 0,
+        "viewport_y": 0,
+        "zoom_percent": 100
+      },
+      "schedule": null,
+      "generated_only": true,
+      "operational": false
+    },
+    {
+      "contract_type": "hcam.p4-2.visual-rule-document.v1",
+      "department": "generated-lab",
+      "rule_key": "generated.sequence-review",
+      "version": 1,
+      "semantics": {
+        "contract_type": "hcam.p4-2.rule-semantics.v1",
+        "nodes": [
+          {"node_id": "entry", "kind": "event_match", "inputs": [], "parameters": {"event_types": ["generated.zone.entry"]}},
+          {"node_id": "departure", "kind": "event_match", "inputs": [], "parameters": {"event_types": ["generated.zone.departure"]}},
+          {"node_id": "ordered", "kind": "sequence", "inputs": ["entry", "departure"], "parameters": {"duration_ms": 60000}},
+          {"node_id": "limited", "kind": "cooldown", "inputs": ["ordered"], "parameters": {"duration_ms": 30000}},
+          {"node_id": "review", "kind": "propose_review_candidate", "inputs": ["limited"], "parameters": {"output_code": "generated.sequence-review"}}
+        ],
+        "output_node_id": "review"
+      },
+      "presentation": {
+        "nodes": [
+          {"node_id": "entry", "x": 0, "y": -80, "label": "Generated entry", "color_token": "source", "collapsed": false},
+          {"node_id": "departure", "x": 0, "y": 80, "label": "Generated departure", "color_token": "source", "collapsed": false},
+          {"node_id": "ordered", "x": 240, "y": 0, "label": "Ordered sequence", "color_token": "temporal", "collapsed": false},
+          {"node_id": "limited", "x": 480, "y": 0, "label": "Cooldown", "color_token": "temporal", "collapsed": false},
+          {"node_id": "review", "x": 720, "y": 0, "label": "Review candidate", "color_token": "output", "collapsed": false}
+        ],
+        "viewport_x": 0,
+        "viewport_y": 0,
+        "zoom_percent": 90
+      },
+      "schedule": {
+        "schedule_id": "generated.weekday",
+        "timezone": "Asia/Kolkata",
+        "timezone_data_version": "tzdata.2026c",
+        "intervals": [
+          {"weekday": 0, "start_minute": 540, "end_minute": 1020},
+          {"weekday": 1, "start_minute": 540, "end_minute": 1020}
+        ]
+      },
+      "generated_only": true,
+      "operational": false
+    }
+  ]
+}

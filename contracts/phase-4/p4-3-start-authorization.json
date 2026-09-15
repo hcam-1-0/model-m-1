@@ -1,0 +1,34 @@
+{
+  "schema_version": "hcam.phase4.p4_3.start-authorization.v1",
+  "decision_id": "D-P4.3-START",
+  "status": "owner_authorized",
+  "effective": true,
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-09-04",
+  "authorization_package": {
+    "package_id": "P4.3-START-R0",
+    "path": "contracts/phase-4/p4-3-start-authorization-package.json",
+    "sha256": "FAFB505E5356808B083CE0EB42D1B5B63CF5E40556D2F077E0EF5B6A9783AFE1"
+  },
+  "planning_checkpoint": "ce42ee2822cc5be12cc46129c814cd99b799a552",
+  "implementation_branch": "codex/phase4-alert-lifecycle-orchestration",
+  "authorized_scope": "exact_documented_bounded_local_generated_only_P4_3_implementation",
+  "selected_profile": "A/A/A+B/A/A+C+D/A+C/A+C",
+  "combined_local_cycles_maximum": 8,
+  "local_checkpoint_commits_authorized": true,
+  "remote_git_authorized": false,
+  "separate_exit_acceptance_required": true,
+  "continuing_prohibitions": [
+    "new_or_changed_dependencies_lockfiles_installs_downloads_or_network_egress",
+    "real_external_workflow_engine_service_adapter_connection_or_credentials",
+    "direct_Sentinel_site_API_camera_stream_frame_image_recording_playback_or_media_access",
+    "Government_police_private_personal_biometric_vehicle_owner_case_or_watchlist_data",
+    "models_datasets_checkpoints_artifacts_inference_training_accelerators_or_benchmarks",
+    "operational_alerts_notifications_provider_routing_dispatch_enforcement_or_autonomous_action",
+    "containers_Kubernetes_cloud_pilot_production_release_or_deployment",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git",
+    "P4_4_or_later_implementation"
+  ],
+  "owner_statement_sha256": "453F89603F66145FEF1C79927BA4225CD737D88290AF01A5E44E9E5E30CF183B",
+  "owner_statement": "D-P4.3-START: I, mayank-admin, accept P4.3 start package P4.3-START-R0 with SHA-256 FAFB505E5356808B083CE0EB42D1B5B63CF5E40556D2F077E0EF5B6A9783AFE1 and authorize its exact bounded local generated-only implementation scope, including the isolated generated system-health lane, generated workflow-executor simulator and future adapter contract, configurable generated quorum, and generated Sentinel-lab metadata compatibility contract. This does not authorize real external workflow engines, Sentinel/network/camera/media access, private/Government data, operational alerts, notification, dispatch, enforcement, models/datasets, containers/Kubernetes/deployment, or remote Git."
+}

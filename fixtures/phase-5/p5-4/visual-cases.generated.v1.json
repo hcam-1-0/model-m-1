@@ -1,0 +1,186 @@
+{
+  "cases": [
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "low_resource",
+      "viewport": "360x800"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "enhanced_workstation",
+      "viewport": "360x800"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "control_room",
+      "viewport": "360x800"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "owned_gpu_lab",
+      "viewport": "360x800"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "future_server",
+      "viewport": "360x800"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "low_resource",
+      "viewport": "390x844"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "enhanced_workstation",
+      "viewport": "390x844"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "control_room",
+      "viewport": "390x844"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "owned_gpu_lab",
+      "viewport": "390x844"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "future_server",
+      "viewport": "390x844"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "low_resource",
+      "viewport": "768x1024"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "enhanced_workstation",
+      "viewport": "768x1024"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "control_room",
+      "viewport": "768x1024"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "owned_gpu_lab",
+      "viewport": "768x1024"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "future_server",
+      "viewport": "768x1024"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "low_resource",
+      "viewport": "1280x720"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "enhanced_workstation",
+      "viewport": "1280x720"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "control_room",
+      "viewport": "1280x720"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "owned_gpu_lab",
+      "viewport": "1280x720"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "future_server",
+      "viewport": "1280x720"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "low_resource",
+      "viewport": "1440x900"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "enhanced_workstation",
+      "viewport": "1440x900"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "control_room",
+      "viewport": "1440x900"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "owned_gpu_lab",
+      "viewport": "1440x900"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "future_server",
+      "viewport": "1440x900"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "low_resource",
+      "viewport": "1920x1080"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "enhanced_workstation",
+      "viewport": "1920x1080"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "control_room",
+      "viewport": "1920x1080"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "owned_gpu_lab",
+      "viewport": "1920x1080"
+    },
+    {
+      "expected": "stable_non_overlapping",
+      "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+      "profile": "future_server",
+      "viewport": "1920x1080"
+    }
+  ],
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "schema_version": "hcam.phase5.p5_4.visual_cases.v1"
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": "hcam.phase4.p4_6.start-authorization.v1",
+  "decision_id": "D-P4.6-START",
+  "status": "authorized",
+  "effective": true,
+  "authorized_by": "mayank-admin",
+  "authorized_on": "2026-09-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "implementation_branch": "codex/phase4-operations-security-scale",
+  "implementation_base_commit": "92a4aab4e1f6bf4ab361c882bf0431b284635ccb",
+  "accepted_package": {
+    "package_id": "P4.6-START-R0",
+    "path": "contracts/phase-4/p4-6-start-authorization-package.json",
+    "sha256": "2E1D5F921EB7C972192FE460D3B238F39D8D792C7869A8F338E291618314F779"
+  },
+  "accepted_reconciled_planning": {
+    "package_id": "P4.6-PLANNING-R1",
+    "path": "contracts/phase-4/p4-6-planning-r1-package.json",
+    "sha256": "5EF1814AE432FD7C15E3A9BD92EF6344CDA210A2D872A362C45D10CCADA411F5",
+    "acceptance_path": "contracts/phase-4/p4-6-planning-r1-acceptance.json",
+    "acceptance_sha256": "F56FC37C6711AA3704145450FC7F8225C24340331A642F8ECD59561944837D9E"
+  },
+  "authorized_scope": [
+    "exact_allowlisted_local_source_test_migration_contract_documentation_and_evidence_changes",
+    "deterministic_non_issuable_generated_only_operations_security_reliability_supply_chain_recovery_capacity_and_placement_fixtures",
+    "disabled_unified_signal_search_projection_and_default_off_OpenTelemetry_compatible_adapters",
+    "generated_C1_C10_C50_latency_balanced_and_throughput_simulations",
+    "platform_neutral_standalone_and_Kubernetes_projections_without_execution",
+    "local_SQLite_and_optional_already_available_local_PostgreSQL_PostGIS_generated_only_validation",
+    "at_most_ten_bounded_in_scope_remediation_and_reseal_cycles",
+    "local_checkpoint_commits_without_push"
+  ],
+  "runtime_boundary": {
+    "generated_only": true,
+    "non_issuable": true,
+    "operational": false,
+    "default_off": true,
+    "production_forbidden": true,
+    "unified_signal_search_enabled": false,
+    "OpenTelemetry_export_enabled": false,
+    "external_broker_enabled": false,
+    "Kubernetes_execution_enabled": false,
+    "real_backup_restore_or_recovery": false,
+    "real_hardware_or_capacity_testing": false,
+    "network": false,
+    "real_credentials_or_secrets": false,
+    "operational_action": false
+  },
+  "frozen_progress_at_start": {
+    "phase4_earned_points": 85,
+    "phase4_total_points": 100,
+    "phase4_percentage": "85.00%",
+    "phase4_change_percentage_points": "+0.00",
+    "p4_6_earned_points": 0,
+    "p4_6_total_points": 10,
+    "p4_6_percentage": "0.0000%",
+    "p4_6_change_percentage_points": "+0.0000",
+    "start_package_acceptance_gate": "1/1 (100.0000%)",
+    "start_package_acceptance_change_percentage_points": "+100.0000"
+  },
+  "explicitly_not_authorized": [
+    "new_or_changed_dependencies_lockfiles_installs_updates_downloads_dynamic_plugins_or_external_services",
+    "real_telemetry_search_security_observability_broker_provider_Sentinel_camera_or_media_connections",
+    "production_SLI_SLO_RPO_RTO_capacity_hardware_or_deployment_targets",
+    "scanner_backup_restore_recovery_hardware_performance_stress_or_thermal_execution",
+    "credentials_secrets_tokens_certificates_keys_or_non_test_database_DSN_access",
+    "Government_police_private_personal_biometric_vehicle_owner_case_watchlist_or_evidence_data",
+    "models_datasets_checkpoints_artifacts_embeddings_inference_training_accelerators_or_benchmarks",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "container_Kubernetes_cluster_cloud_pilot_production_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "owner_statement_normalization": "UTF_8_LF_without_terminal_newline",
+  "owner_statement_utf8_length": 1090,
+  "owner_statement_sha256": "030CA105A407FAD10ABD68F577F7CF38B9D1EC244B0AC3DED8B0E30ECCAC32A1",
+  "owner_statement": "D-P4.6-START: I, mayank-admin, accept P4.6 start package P4.6-START-R0 with SHA-256 2E1D5F921EB7C972192FE460D3B238F39D8D792C7869A8F338E291618314F779 and authorize its exact bounded local generated-only implementation scope, including the disabled unified-signal search projection, default-off OpenTelemetry-compatible adapters, generated C1/C10/C50 simulations, platform-neutral standalone/Kubernetes projections without Kubernetes execution, optional generated-only use of an already available local PostgreSQL/PostGIS test database, and local checkpoint commits without push. This does not authorize real telemetry, search, security, observability, or broker backends; production SLO/RPO/RTO/capacity targets; scanners; backup, restore, or recovery execution; hardware, performance, stress, or thermal testing; providers or operational network access; cameras or media; credentials or secrets beyond an opaque local test-database DSN; Government or private data; models, datasets, or inference; operational alerts or actions; containers or Kubernetes execution; deployment; or remote Git.",
+  "separate_exit_acceptance_required": true
+}

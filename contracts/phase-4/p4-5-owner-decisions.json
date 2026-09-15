@@ -1,0 +1,108 @@
+{
+  "schema_version": "hcam.phase4.p4_5.owner-decisions.v1",
+  "decision_record_id": "P4.5-OWNER-DECISIONS-R0",
+  "recorded_on": "2026-09-05",
+  "recorded_by": "mayank-admin",
+  "effective_for_planning": true,
+  "effective_for_implementation": false,
+  "effective_for_runtime": false,
+  "selections": {
+    "D-P4.5-001": {
+      "selected": ["A"],
+      "capability_requested": ["D"]
+    },
+    "D-P4.5-002": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-003": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-004": {
+      "selected": ["A"],
+      "capability_requested": ["C"]
+    },
+    "D-P4.5-005": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-006": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-007": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-008": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-009": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.5-010": {
+      "selected": ["A"],
+      "capability_requested": []
+    }
+  },
+  "selected_profile": "A_with_guarded_D_capability/A/A/A_with_guarded_C_capability/A/A/A/A/A/A",
+  "reconciled_profile": {
+    "timeline": "case_neutral_aggregate_with_dual_event_time_and_record_sequence_views_plus_disabled_typed_case_management_bridge",
+    "entry_semantics": "closed_typed_families_discriminated_payloads_and_causal_links",
+    "evidence_identity": "immutable_reference_envelopes_and_append_only_independent_integrity_assessments",
+    "provenance": "HCAM_constrained_PROV_inspired_graph_plus_derived_disabled_PROV_interchange_profile",
+    "correction": "append_only_correction_retraction_entities_and_durable_impact_closure",
+    "workflow": "orthogonal_review_disposition_merge_and_reopen_revisions_with_non_destructive_aliases",
+    "retention": "immutable_policy_references_and_separately_authorized_scoped_hold_overlays",
+    "deletion": "per_target_intents_and_receipts_with_explicit_residual_state_and_no_universal_claim",
+    "export": "reference_only_canonical_manifest_with_separately_gated_payload_and_crypto_profiles",
+    "platform": "bounded_PostgreSQL_RLS_append_only_stores_transactional_outbox_and_generated_only_validation"
+  },
+  "case_management_capability_boundary": {
+    "canonical_authority": "case_neutral_HCAM_investigation_timeline",
+    "typed_bridge_contract_allowed": true,
+    "bridge_direction": "derived_projection_and_future_explicit_import_reference_only",
+    "external_case_reference": "opaque_versioned_reference_only",
+    "legal_case_lifecycle_implemented": false,
+    "external_case_system_connection": false,
+    "case_data_import_or_export": false,
+    "case_identifier_as_timeline_identity": false,
+    "external_case_system_as_HCAM_truth": false,
+    "future_activation_requires_separate_legal_data_integration_and_runtime_authorization": true
+  },
+  "prov_capability_boundary": {
+    "canonical_authority": "HCAM_typed_entity_activity_agent_graph_and_domain_constraints",
+    "derived_interchange_projection_contract_allowed": true,
+    "generated_mapping_and_static_projection_tests_allowed_after_exact_start_authorization": true,
+    "RDF_JSONLD_XML_or_PROVN_runtime_parser_import": false,
+    "external_PROV_bundle_import": false,
+    "formal_conformance_suite_execution": false,
+    "PROV_conformance_claim": false,
+    "projection_as_authorization_or_source_truth": false,
+    "future_full_conformance_requires_separate_scope_profile_validation_and_owner_acceptance": true
+  },
+  "explicitly_not_authorized": [
+    "P4_5_product_source_test_migration_API_worker_or_runtime_implementation",
+    "legal_case_management_workflow_or_external_case_system_integration",
+    "real_case_identifier_narrative_record_or_case_data",
+    "PROV_runtime_import_external_bundle_or_formal_conformance_claim",
+    "source_media_document_or_evidence_copying_resolution_or_verification",
+    "retention_period_legal_policy_admissibility_authenticity_custody_or_certification_decision",
+    "hold_activation_release_deletion_execution_export_delivery_or_payload_package",
+    "real_investigation_provider_Sentinel_camera_media_or_operational_network_access",
+    "credential_secret_key_token_certificate_timestamp_authority_or_private_CA_access",
+    "Government_police_private_personal_biometric_vehicle_owner_case_watchlist_or_provider_data",
+    "model_dataset_checkpoint_artifact_download_training_or_inference",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "container_Kubernetes_cloud_pilot_production_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "next_gate": "exact_owner_acceptance_of_non_effective_P4_5_PLANNING_R1_package_digest",
+  "owner_statement_normalization": "UTF_8_LF_trimmed_trailing_line_whitespace_without_terminal_newline",
+  "owner_statement_utf8_length": 180,
+  "owner_statement_sha256": "52A92647CBB1308220ED6202523A8EE06E37128BD7C868B5AFF2179DF476A89A",
+  "owner_statement": "D-P4.5-001: A and try to do D as well\nD-P4.5-002: A\nD-P4.5-003: A\nD-P4.5-004: A and try to add C\nD-P4.5-005: A\nD-P4.5-006: A\nD-P4.5-007: A\nD-P4.5-008: A\nD-P4.5-009: A\nD-P4.5-010: A"
+}

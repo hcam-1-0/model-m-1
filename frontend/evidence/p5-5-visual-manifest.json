@@ -1,0 +1,54 @@
+{
+  "schema_version": "hcam.phase5.p5_5.visual_manifest.v1",
+  "generated_on": "2026-09-09",
+  "generated_only": true,
+  "loopback_only": true,
+  "viewports": [
+    "390x844",
+    "768x1024",
+    "1366x768",
+    "1440x900",
+    "1920x1080",
+    "2560x1440"
+  ],
+  "manual_visual_review": {
+    "investigation_desktop": "pass",
+    "investigation_mobile": "pass",
+    "evidence_desktop": "pass",
+    "evidence_mobile": "pass",
+    "blank_renderer": false,
+    "incoherent_overlap": false,
+    "horizontal_clipping": false
+  },
+  "captures": [
+    {
+      "profile": "investigation_desktop",
+      "capture": "validated_in_browser_without_retained_screenshot",
+      "width": 1280,
+      "height": 858
+    },
+    {
+      "profile": "investigation_mobile",
+      "capture": "validated_in_browser_without_retained_screenshot",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "profile": "evidence_desktop",
+      "path": "frontend/test-results/evidence-center-Evidence-D-dbbe5-nd-preserves-opaque-sources-desktop/evidence-detail-desktop.png",
+      "bytes": 76864,
+      "sha256": "3150C50875C8A77BB73ED32E7C7E13AF9AF88403607555DC634C1BEF6BCC93AF",
+      "width": 1280,
+      "height": 858
+    },
+    {
+      "profile": "evidence_mobile",
+      "path": "frontend/test-results/evidence-center-Evidence-D-dbbe5-nd-preserves-opaque-sources-mobile/evidence-detail-mobile.png",
+      "bytes": 249822,
+      "sha256": "ABB4D0867C8BCB20F2B15D9928BD29B8652041FBF73A5EE5AE3F2C05FB82D7B8",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "result": "pass"
+}

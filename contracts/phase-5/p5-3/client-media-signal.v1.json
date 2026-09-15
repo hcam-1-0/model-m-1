@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hcam:phase5:p5-3:client-media-signal:v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "transport", "reason", "duration_band"],
+  "properties": {
+    "name": { "enum": ["session_started", "manifest_loaded", "playing", "stalled", "fallback", "recovering", "teardown"] },
+    "transport": { "enum": ["hls", "native_hls", "whep", "none"] },
+    "reason": { "type": "string", "pattern": "^[a-z_]{1,48}$" },
+    "duration_band": { "enum": ["none", "under_1s", "1_to_5s", "over_5s"] }
+  },
+  "x-hcam-forbidden-dimensions": ["camera", "stream", "department", "user", "location", "coordinate", "locator", "sdp", "ice", "token", "query", "free_text"]
+}

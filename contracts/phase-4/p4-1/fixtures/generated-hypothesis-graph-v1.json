@@ -1,0 +1,83 @@
+{
+  "flat_projection": {
+    "contract_type": "hcam.intelligence.correlation-flat-projection.v1",
+    "contradiction_count": 0,
+    "event_count": 2,
+    "graph_digest": "sha256:efdbdd2b62252bd79e56b866c89b670a05816310926be2fe9a4ef54dc3d177c8",
+    "hypothesis_id": "hyp_31dfb23b2104ccfcba54451e5cc23085",
+    "missing_evidence_count": 0,
+    "projection_digest": "sha256:c4470e24e0843ca9d2532452fa4ecf4e538a905e589af580724bcaf453dfde06",
+    "projection_version": "hcam.intelligence.correlation-flat-projection.v1",
+    "summary_code": "hypothesis.proposed",
+    "supporting_evidence_count": 2
+  },
+  "graph": {
+    "edges": [
+      {
+        "edge_id": "edge_5e94a23ee0488188fdb8bea5b1dc7bf2",
+        "role": "supports",
+        "source_node_id": "event_5cca943a906a6e0f4c606ce80e9feaf3",
+        "target_node_id": "hypothesis"
+      },
+      {
+        "edge_id": "edge_037b0988f75335224df09ab0b48f06c3",
+        "role": "supports",
+        "source_node_id": "event_7cb493a5b7044057bca51054d1323036",
+        "target_node_id": "hypothesis"
+      }
+    ],
+    "nodes": [
+      {
+        "kind": "hypothesis",
+        "node_id": "hypothesis",
+        "reference_digest": "sha256:39d1e8855bbdd82c5edd8194f3802d8ea88ee4f574e7922550f1419409aed38f",
+        "reference_id": "hyp_31dfb23b2104ccfcba54451e5cc23085"
+      },
+      {
+        "kind": "event",
+        "node_id": "event_5cca943a906a6e0f4c606ce80e9feaf3",
+        "reference_digest": "sha256:975bd2b3eda783e4ce1dc439f493a356b9a6fa22f76f237603b68b543aac88f9",
+        "reference_id": "generated-event-1"
+      },
+      {
+        "kind": "event",
+        "node_id": "event_7cb493a5b7044057bca51054d1323036",
+        "reference_digest": "sha256:c43a2834aeaaf456511ceff70bcb689cb74b30859396636f0b5e2cd4c1bc9b5c",
+        "reference_id": "generated-event-2"
+      },
+      {
+        "kind": "lane",
+        "node_id": "lane_2e3831587eb8f297fec45ecf3619ee3d",
+        "reference_digest": "sha256:202047815572b5f66706b7862ceb69505eaa831d0f44dcb27812a4f4fc8c1b2c",
+        "reference_id": "deterministic_cpu"
+      },
+      {
+        "kind": "lane",
+        "node_id": "lane_7739e009a15f14fb8c16d8a227434234",
+        "reference_digest": "sha256:35a7f6bf67024004b373e99a1ffb7ce6a39bd9c9413421c430988a3d03db17b5",
+        "reference_id": "model_first_shadow"
+      },
+      {
+        "kind": "lane",
+        "node_id": "lane_a8d7a27f05e915b9058abe09cbc589c4",
+        "reference_digest": "sha256:b89089f44b3c047563d5616f854979493a30b3c43fce609e433ac93912718224",
+        "reference_id": "probabilistic"
+      },
+      {
+        "kind": "lane",
+        "node_id": "lane_330d9b3c00cecde224290d48c12a2745",
+        "reference_digest": "sha256:0b9aabc462f3d3d44cbee456070eadfe3e6971a4d008a572de58524be10c7c17",
+        "reference_id": "temporal_graph"
+      },
+      {
+        "kind": "lane",
+        "node_id": "lane_be6db6260538373641e0663d985a6e9b",
+        "reference_digest": "sha256:cc3105c8644382d59495e35e3c0cefe8d9cf844b95925b5b265523fd937ae3c9",
+        "reference_id": "uncertainty_ensemble"
+      }
+    ]
+  },
+  "graph_digest": "sha256:efdbdd2b62252bd79e56b866c89b670a05816310926be2fe9a4ef54dc3d177c8",
+  "hypothesis_id": "hyp_31dfb23b2104ccfcba54451e5cc23085",
+  "schema_version": "hcam.phase4.p4_1.generated-hypothesis-graph.v1"
+}

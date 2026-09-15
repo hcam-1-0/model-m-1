@@ -1,0 +1,30 @@
+{
+  "schema_version": "hcam.phase5.p5_7.generated_workloads.v1",
+  "generated_only": true,
+  "corpus_sha256": "85BE94B0E7D43E6E688DD4CD7CD075E6B45F6866896B6B17F135D7D457564FB8",
+  "replays": [
+    {
+      "run": 1,
+      "sha256": "85BE94B0E7D43E6E688DD4CD7CD075E6B45F6866896B6B17F135D7D457564FB8"
+    },
+    {
+      "run": 2,
+      "sha256": "85BE94B0E7D43E6E688DD4CD7CD075E6B45F6866896B6B17F135D7D457564FB8"
+    }
+  ],
+  "workloads": [
+    {
+      "id": "C1",
+      "case_count": 683
+    },
+    {
+      "id": "C10",
+      "case_count": 683
+    },
+    {
+      "id": "C50",
+      "case_count": 682
+    }
+  ],
+  "claim_boundary": "UI_and_workflow_scale_only_not_hardware_or_production_capacity"
+}

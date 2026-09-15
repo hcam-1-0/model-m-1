@@ -1,0 +1,338 @@
+{
+  "schema_version": "hcam.phase5.p5_5.validation_summary.v1",
+  "generated_on": "2026-09-09",
+  "generated_only": true,
+  "toolchain": {
+    "node": "24.18.0",
+    "execution": "hash_bound_direct_node_only",
+    "package_manager_used_for_evidence": false
+  },
+  "workspace": {
+    "status": "pass",
+    "apps": 8,
+    "packages": 31,
+    "edges": 97,
+    "lockfiles": 1,
+    "failures": []
+  },
+  "typecheck": "pass",
+  "lint": {
+    "result": "pass",
+    "warnings": 0
+  },
+  "formatting": "pass",
+  "unit_and_component": {
+    "files_passed": 129,
+    "tests_passed": 210,
+    "tests_failed": 0,
+    "result": "pass"
+  },
+  "coverage": {
+    "statements_percent": 97.72,
+    "branches_percent": 95.79,
+    "functions_percent": 95.92,
+    "lines_percent": 98.04,
+    "critical_branch_floor_percent": 95,
+    "critical_files": [
+      {
+        "file": "capabilities/src/index.ts",
+        "branches_percent": 98.24
+      },
+      {
+        "file": "contracts/src/index.ts",
+        "branches_percent": 98.78
+      },
+      {
+        "file": "event-invalidation/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "evidence-domain/src/access.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "evidence-domain/src/custody.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "evidence-domain/src/evidence-states.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "evidence-domain/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "evidence-domain/src/integrity.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "evidence-domain/src/policy-previews.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "evidence-domain/src/profiles.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "evidence-domain/src/provenance.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "evidence-domain/src/source-boundary.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-contracts/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "intelligence-contracts/src/contracts.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "intelligence-contracts/src/events.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "intelligence-contracts/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "intelligence-contracts/src/problems.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "intelligence-contracts/src/queries.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-contracts/src/contracts.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-contracts/src/events.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-contracts/src/evidence.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-contracts/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-contracts/src/policy-previews.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-contracts/src/problems.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-contracts/src/provenance.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-contracts/src/queries.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-contracts/src/reconstruction.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-domain/src/chronology.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-domain/src/comparison.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-domain/src/concurrency.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-domain/src/corrections.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-domain/src/impact.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-domain/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-domain/src/pagination.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-domain/src/profiles.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-domain/src/reconstruction.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-domain/src/relationships.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "investigation-domain/src/state.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "media-edge-contracts/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "playback-contracts/src/index.ts",
+        "branches_percent": 100
+      }
+    ],
+    "result": "pass"
+  },
+  "browser": {
+    "system_browser": "Microsoft Edge",
+    "passed": 65,
+    "skipped_by_project_design": 1,
+    "unexpected": 0,
+    "flaky": 0,
+    "loopback_only": true,
+    "result": "pass"
+  },
+  "builds": {
+    "applications": [
+      {
+        "app": "admin-center",
+        "files": 3,
+        "bytes": 314400,
+        "source_maps": 0
+      },
+      {
+        "app": "command-center",
+        "files": 3,
+        "bytes": 1316394,
+        "source_maps": 0
+      },
+      {
+        "app": "evidence-center",
+        "files": 3,
+        "bytes": 284133,
+        "source_maps": 0
+      },
+      {
+        "app": "gis-center",
+        "files": 11,
+        "bytes": 2338874,
+        "source_maps": 0
+      },
+      {
+        "app": "intelligence-center",
+        "files": 3,
+        "bytes": 315629,
+        "source_maps": 0
+      },
+      {
+        "app": "investigation-center",
+        "files": 3,
+        "bytes": 304838,
+        "source_maps": 0
+      },
+      {
+        "app": "operations-center",
+        "files": 4,
+        "bytes": 879367,
+        "source_maps": 0
+      },
+      {
+        "app": "security-center",
+        "files": 3,
+        "bytes": 314405,
+        "source_maps": 0
+      }
+    ],
+    "total_bytes": 6068040,
+    "source_maps": 0,
+    "bundle_gate": {
+      "status": "pass",
+      "apps": 8,
+      "outputBytes": 6068040,
+      "sourceMaps": 0,
+      "generatedMarkerApps": [
+        "command-center",
+        "evidence-center",
+        "gis-center",
+        "intelligence-center",
+        "investigation-center",
+        "operations-center"
+      ],
+      "applicationBudgets": {
+        "operations-center": {
+          "limits": {
+            "initialJavaScript": 368640,
+            "deferredHlsJavaScript": 655360,
+            "styles": 40960
+          },
+          "actual": {
+            "initialJavaScript": 280643,
+            "deferredHlsJavaScript": 575516,
+            "styles": 22470
+          }
+        }
+      },
+      "failures": []
+    },
+    "result": "pass"
+  },
+  "fixtures": {
+    "exact_case_count": 960,
+    "deterministic_replay_sha256": "C94C6AE38ED5665BF22D7713656C71117A3DD5A8E08E965B0E1410F7CAA3760F",
+    "result": "pass"
+  },
+  "dependency_and_supply_chain": {
+    "schema_version": "hcam.phase5.p5_5.dependency_baseline.v1",
+    "generated_on": "2026-09-09",
+    "existing_locked_dependencies_only": true,
+    "lockfile_sha256": "7F3E3F0A8B29C5083E300641A68F0325D8D2E8BD2ADE940E2B6D03C3CDEBBB62",
+    "sbom_sha256": "D0F1F1180716383334BDF9C1F6FA9A9F129EED4D7D6F297C893AD5F7D6C29D00",
+    "expected_lockfile_sha256": "7F3E3F0A8B29C5083E300641A68F0325D8D2E8BD2ADE940E2B6D03C3CDEBBB62",
+    "lockfile_unchanged": true,
+    "package_manager_boundary_incident": "eight_existing_lockfile_cache_downloads_non_evidentiary",
+    "remediation": "direct_hash_bound_node_and_existing_node_modules_only",
+    "further_package_manager_execution": false,
+    "current_vulnerability_refresh_claim": false,
+    "result": "pass"
+  },
+  "repository_regression": {
+    "result": "pass",
+    "test_files": 303,
+    "tests_passed": 4243,
+    "subtests_passed": 119,
+    "tests_skipped": 16,
+    "execution": "sixteen_sequential_isolated_batches",
+    "generated_only": true,
+    "configured_postgresql_postgis": false,
+    "network_or_remote_git_used": false,
+    "historical_compatibility_amendment": {
+      "decision_id": "D-P5.5-PHASE52-HISTORICAL-COMPATIBILITY-AMENDMENT",
+      "path": "tests/phase5_frontend/test_phase52_verifier.py",
+      "pre_edit_sha256": "9E6CC92228DFE183BD8029EC507FB60A9C76959D251E308CC9506A8EC0E3B0F8",
+      "result": "pass"
+    }
+  },
+  "limitations": [
+    "generated_only_non_operational_investigation_and_evidence_workspaces",
+    "thirty_six_producer_gaps_remain_blocked",
+    "no_source_or_media_resolution_rendering_copy_or_export",
+    "no_current_vulnerability_refresh_claim",
+    "no_manual_screen_reader_or_production_accessibility_claim",
+    "C1_C10_C50_are_not_hardware_or_production_capacity_claims"
+  ],
+  "result": "pass"
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": "hcam.phase5.p5_2.security_cases.v1",
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "cases": [
+    "department_change",
+    "capability_revoked",
+    "session_stale",
+    "provider_disabled",
+    "external_style_rejected",
+    "renderer_failed",
+    "opaque_reference_invalid",
+    "source_unknown",
+    "logout_cleanup"
+  ],
+  "expected": "fail_closed"
+}

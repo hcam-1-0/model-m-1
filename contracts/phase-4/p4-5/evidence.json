@@ -1,0 +1,188 @@
+{
+  "schema_version": "hcam.phase4.p4_5.evidence.v1",
+  "package_id": "P4.5-EVIDENCE-R0",
+  "status": "technical_validation_passed_owner_acceptance_pending",
+  "evidence_date": "2026-09-05",
+  "branch": "codex/phase4-investigation-evidence",
+  "implementation_base_commit": "9a6fece64e0234e1cb819d633d537a5f66343cc5",
+  "start_authorization": {
+    "decision_id": "D-P4.5-START",
+    "package_id": "P4.5-START-R0",
+    "sha256": "7DC272A5017C54EC83380A2BD2301CAA737EAB1D196045B9A5D1F40F232F34CF"
+  },
+  "authorized_compatibility_amendments": [
+    {
+      "decision_id": "D-P4.5-PHASE44-CLOCK-TEST-AMENDMENT",
+      "path": "tests/test_phase44_persistence.py",
+      "pre_change_normalized_sha256": "1A752E601994A02F82FE3653DDD20056492741FD414A1BC6AE6F9A6021B0EA47",
+      "change": "derive generated worker times from each persisted job created_at value",
+      "production_behavior_changed": false
+    }
+  ],
+  "implementation": {
+    "migration_revision": "0017_investigation_evidence",
+    "parent_revision": "0016_reference_integrations",
+    "preserved_v1_store_count": 2,
+    "new_store_count": 17,
+    "forced_rls_store_count": 17,
+    "generated_fixture_documents": 14,
+    "generated_scenarios": 552,
+    "contract_type_count": 20,
+    "investigation_api_paths": 16,
+    "investigation_api_operations": 18,
+    "timeline_contract": "append_only_v2_with_v1_read_compatibility",
+    "source_storage": "immutable_reference_only_no_resolution_or_copy",
+    "integrity_dimensions": "availability_provenance_preservation_authenticity_custody_and_legal_state_separate",
+    "correction_propagation": "bounded_durable_generated_impact_jobs",
+    "case_management_bridge": "disabled_generated_contract_only",
+    "prov_interchange": "disabled_derived_generated_projection_only",
+    "external_deletion_or_export_execution": false,
+    "runtime_default_enabled": false,
+    "production_allowed": false
+  },
+  "validation": {
+    "generated_contracts": {
+      "status": "passed",
+      "fixture_documents": 14,
+      "scenario_count": 552,
+      "byte_exact_regeneration": "passed"
+    },
+    "focused_suite": {
+      "status": "passed",
+      "collected": 62,
+      "passed": 61,
+      "skipped": 1,
+      "warning_count": 1,
+      "scope": "all test_phase45 modules including readiness and opt-in PostgreSQL"
+    },
+    "coverage": {
+      "status": "passed",
+      "scope": "app/hcam/intelligence/investigations/*",
+      "branch_enabled_aggregate_percent": 90.71,
+      "required_percent": 90.0,
+      "tests_passed": 61,
+      "tests_skipped": 1,
+      "statements": 1931,
+      "missed_statements": 128,
+      "branches": 372,
+      "partial_branches": 74
+    },
+    "sqlite_migration_cycle": {
+      "status": "passed",
+      "current_revision": "0017_investigation_evidence",
+      "parent_revision": "0016_reference_integrations",
+      "validated_sequence": [
+        "0012_intelligence_control_plane",
+        "0013_correlation_foundation",
+        "0014_rule_authoring_evaluation",
+        "0015_alert_lifecycle_orchestration",
+        "0016_reference_integrations",
+        "0017_investigation_evidence",
+        "0016_reference_integrations",
+        "0017_investigation_evidence"
+      ],
+      "v1_stores_preserved": true,
+      "alembic_head": "single"
+    },
+    "postgresql_rls_and_concurrency": {
+      "status": "not_available",
+      "reason": "HCAM_POSTGRES_TEST_URL is not configured and container or service changes are outside D-P4.5-START",
+      "test_source": "tests/test_phase45_postgres.py",
+      "ci_job_present": true,
+      "forced_rls_policy_count": 17,
+      "cross_department_isolation_test_present": true,
+      "skip_locked_impact_claim_test_present": true,
+      "correction_propagation_test_present": true,
+      "local_claim_made": false
+    },
+    "full_regression_suite": {
+      "status": "passed",
+      "passed": 4030,
+      "skipped": 15,
+      "subtests_passed": 119,
+      "warning_count": 1,
+      "duration_seconds": 1239.20,
+      "deselected": 0,
+      "skip_boundary": "all fifteen skips require an explicit PostgreSQL integration URL"
+    },
+    "static_and_packaging": {
+      "status": "passed",
+      "ruff": "passed",
+      "compileall": "passed",
+      "git_diff_check": "passed_with_line_ending_warnings_only",
+      "alembic_single_head": "0017_investigation_evidence",
+      "build": "offline_source_distribution_and_wheel_passed",
+      "wheel": "hcam_core-0.2.0-py3-none-any.whl",
+      "source_distribution": "hcam_core-0.2.0.tar.gz",
+      "dependency_files_immutable": true
+    },
+    "historical_compatibility": {
+      "status": "passed",
+      "p4_4_readiness": "passed_from_accepted_implementation_and_closeout_commits",
+      "phase44_focused_regression_passed": 58,
+      "phase44_postgresql_skip": 1,
+      "phase44_clock_test_amendment": "passed_and_hash_bound",
+      "phase3_release_contracts": "passed_via_historical_readiness",
+      "accepted_phase3_or_p4_0_through_p4_4_evidence_modified": false
+    },
+    "security_recovery": {
+      "status": "passed",
+      "source_locator_resolution_and_copy_absent": "passed",
+      "append_only_revision_and_exact_idempotency": "passed",
+      "delivery_and_semantic_collision_denial": "passed",
+      "correction_and_retraction_impact_closure": "passed",
+      "merge_cycle_and_multiple_active_target_denial": "passed",
+      "review_attribution_and_reopen_history": "passed",
+      "retention_hold_and_deletion_simulation": "passed",
+      "incomplete_or_denied_export_disclosure": "passed",
+      "api_department_scope_and_problem_sanitization": "passed",
+      "expired_lease_retry_and_dead_letter": "passed"
+    },
+    "dependency_validation": {
+      "status": "passed",
+      "installed_packages_checked": 74,
+      "compatibility": "passed",
+      "lockfile_changed": false,
+      "dependency_added_or_changed": false,
+      "fresh_vulnerability_refresh": "not_performed_scope_prohibited"
+    }
+  },
+  "security_properties": [
+    "timelines entries evidence references integrity assessments provenance reviews corrections and receipts are typed bounded and generated only",
+    "V1 timeline stores remain readable while V2 chronology and reconstruction are additive",
+    "source locators are classified and referenced but never resolved fetched copied or verified",
+    "integrity availability provenance preservation authenticity custody and legal state remain independent dimensions",
+    "semantic identity and delivery idempotency are independent and collision checked",
+    "correction retraction merge and reopen operations preserve historical entries and reviewer knowledge",
+    "retention uses policy references and separate hold overlays without choosing legal periods",
+    "deletion produces simulated residual-aware receipts and cannot execute external deletion",
+    "exports are purpose-bound reference-only manifests that disclose denied unresolved contradictory and incomplete closure",
+    "all seventeen new PostgreSQL stores define forced department row-security policies",
+    "runtime API workers case bridge and PROV projection remain disabled by default and forbidden in production",
+    "accepted Phase 3 and P4.0 through P4.4 history remains immutable"
+  ],
+  "known_limitations": [
+    "P4.5 PostgreSQL forced-row-security concurrency department-isolation and correction-propagation tests were not executed locally because HCAM_POSTGRES_TEST_URL is absent",
+    "the PostgreSQL migration and existing CI service are configured but this evidence makes no local PostgreSQL execution claim",
+    "a fresh vulnerability database refresh and new SBOM were not performed because network downloads installs and dependency changes are prohibited",
+    "the Starlette TestClient emits one known warning for the locked HTTP client boundary",
+    "the accepted start package pre_change_sha256 records are structurally valid planning records but do not all bind the implementation_base_commit; exact changed-path allowlisting immutable-history checks and the separately hash-bound clock-test amendment enforce the implemented scope",
+    "all investigations evidence references timelines reviews corrections holds deletion receipts and exports are generated and nonoperational",
+    "source references are not resolved and no evidence or media bytes are copied inspected verified or retained",
+    "the PROV projection and case-management bridge are disabled non-authoritative capability contracts and make no external conformance or integration claim",
+    "no legal admissibility authenticity custody certification retention-period deletion-completeness or deployment claim is made",
+    "P4.5 owner acceptance and P4.6 remain separate closed gates"
+  ],
+  "progress_after_technical_validation": {
+    "phase_4_points": 84,
+    "phase_4_total_points": 100,
+    "phase_4_percent": 84.0,
+    "phase_4_percentage_point_change": 14.0,
+    "p4_5_points": 14,
+    "p4_5_total_points": 15,
+    "p4_5_percent": 93.3333,
+    "p4_5_percentage_point_change": 93.3333,
+    "owner_acceptance_points_pending": 1
+  },
+  "remote_git_performed": false
+}

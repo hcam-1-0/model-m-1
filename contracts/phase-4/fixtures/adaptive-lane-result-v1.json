@@ -1,0 +1,13 @@
+{
+  "abstained": false,
+  "contract_type": "hcam.intelligence.adaptive-lane-result.v1",
+  "evidence_refs": [
+    "evid_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  ],
+  "failure_code": null,
+  "generated_only": true,
+  "lane": "deterministic",
+  "score": 0.75,
+  "status": "completed",
+  "uncertainty": 0.25
+}

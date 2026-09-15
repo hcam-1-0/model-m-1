@@ -1,0 +1,963 @@
+{
+  "schema_version": "hcam.phase5.p5_6.source_manifest.v1",
+  "marker": "HCAM_GENERATED_ONLY_P5_6",
+  "package_id": "P5.6-START-R0",
+  "source_file_count": 191,
+  "files": [
+    {
+      "path": "frontend/apps/admin-center/package.json",
+      "bytes": 658,
+      "sha256": "6A8BCFC9ABAF0CA7F7C602EFF02819577AA269F6D71B8F00413DD7BD848DA197"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/app.tsx",
+      "bytes": 5443,
+      "sha256": "E4F6FCD97DF41ADB32C6ECA0E285226FE62A17824A0080E4C0A05A459F7A0955"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/components/admin-filter-rail.tsx",
+      "bytes": 1278,
+      "sha256": "45983CAC908EF1635FCB91F0CACD9F077CAF88596E8A3B35F3ACC917C96F6927"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/components/admin-state-boundary.tsx",
+      "bytes": 1552,
+      "sha256": "302D5C752209B02BBE064BB9522AEF43FEDF0F44A8163FA9BFA06EC3F3DB71C4"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/components/approval-timeline.tsx",
+      "bytes": 1004,
+      "sha256": "BEF20FB983A2E6618FB04F2A5820EE0D576300BA1B04B00B3DAC160E051B8680"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/components/capability-matrix.tsx",
+      "bytes": 1311,
+      "sha256": "0D5540155E3FD5289DE214B7CE69139BA37FF27B5DDE623A06885504E01B19A7"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/components/change-impact-panel.tsx",
+      "bytes": 783,
+      "sha256": "48FA43A912CBB3E1740544FD76FE5E9A9D84C47558F8B15F48504042A5B37E6E"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/components/concurrency-recovery-panel.tsx",
+      "bytes": 963,
+      "sha256": "05CD2AE9AD8A3DDDB43634A1048CA64B751AB4E67F7568EAA995BBA2F384510E"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/components/non-effective-control.tsx",
+      "bytes": 470,
+      "sha256": "72A85894F96A677C51FFC51EA55F72A5E7FBE355DCEC14397481249B3846AFB1"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/components/policy-preview-panel.tsx",
+      "bytes": 828,
+      "sha256": "7E30E1530F807098D99258410F5823EBF22B040DCFA0FFC318AFE2B630022C31"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/components/resource-profile-panel.tsx",
+      "bytes": 856,
+      "sha256": "03C9342BD8B4D8BB4699C66C0DBAAB572040DE01111999BCC1112910316001F6"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/components/secret-reference-panel.tsx",
+      "bytes": 910,
+      "sha256": "10CB055440557488EF7A5FE9B647DEE91846D8E8D21F3D18980F331F242938AA"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/data/admin-projections.ts",
+      "bytes": 1539,
+      "sha256": "6A16111A6ADE9030CB4836929B57106F47D1B0098632A043B245AEBB1390B6D0"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/main.tsx",
+      "bytes": 452,
+      "sha256": "8BE5391EBD137D2A9BA7E2BF5F99D5FA3D7914E7216B9A2A0B144129D86EA81D"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/pages/admin-overview-page.tsx",
+      "bytes": 2582,
+      "sha256": "788939078E088316563C03F36BFBC9ADAD01C1537DDEBAA6C14CBA1BBCFF7784"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/pages/camera-stream-governance-page.tsx",
+      "bytes": 1711,
+      "sha256": "8AE11DBF4AAA5266D5EF3D87623D67BF7E6C058B31305ABEEC2090F9B164F94B"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/pages/features-configuration-page.tsx",
+      "bytes": 1216,
+      "sha256": "15DB05315BFEFFC9E237559410239E3BD0A9EA4BFE811DCE657DFCA9845E0F5F"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/pages/integration-provider-governance-page.tsx",
+      "bytes": 2344,
+      "sha256": "9C8237E0C91717AC7E479492D504ACE5772CFB3801F943E7A1674816983BBDC1"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/pages/organizations-departments-page.tsx",
+      "bytes": 2669,
+      "sha256": "999F194954EE346B88788B6533AD13E129983FAFC916E50ED95683BEF1C5DEA0"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/pages/policy-change-requests-page.tsx",
+      "bytes": 2861,
+      "sha256": "0E4B7B91F8BC1B1C5C859B654C77C2455AF3873151F1909F5D8E15F39AEE2D5E"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/pages/resource-model-deployment-profiles-page.tsx",
+      "bytes": 1117,
+      "sha256": "46D986225753B2D9631C13423D0771402F4E43D69FDD2DF90E67BD1F86DB8DE9"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/pages/retention-policy-projections-page.tsx",
+      "bytes": 1917,
+      "sha256": "222BB6512F1FA4166514EFA6DD7069666AF98306F2A7D66603EED2DDF3A57142"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/pages/roles-permissions-sod-page.tsx",
+      "bytes": 981,
+      "sha256": "E82B9D3F6AF9AD2FF433FE5F4163830466176F5CBC703709B3AC5AA2E145BCF1"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/pages/users-memberships-sessions-page.tsx",
+      "bytes": 2456,
+      "sha256": "86DA870DE95129189E1D84C758428F2ECD585BFECFEB939F83B054CA240C25E9"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/routes.tsx",
+      "bytes": 2388,
+      "sha256": "E8EF01A65598A0A7F6FE32A10C3B0C8669D9E8A36494F87BD42A80EE7A58E906"
+    },
+    {
+      "path": "frontend/apps/admin-center/src/styles.css",
+      "bytes": 14620,
+      "sha256": "A35685849AF03DE7684113780510AA2E9387CA9C17C48D14D80F12A128C6F5B1"
+    },
+    {
+      "path": "frontend/apps/operations-center/package.json",
+      "bytes": 802,
+      "sha256": "C40174C1D58798C5521831DC2F5FE9746DB7885A9F3DD050FEB4559EF6703BBC"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/app.tsx",
+      "bytes": 5829,
+      "sha256": "EAA295C1DE0CDEB2E0D770FC4470783D0C77785279A8906F2FFCE22B19A1226E"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/capacity-evidence-panel.tsx",
+      "bytes": 922,
+      "sha256": "82B561786C49E10D0B27C15679B64F03021EE710197BC7F98FA9AB0B53D058AD"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/degradation-panel.tsx",
+      "bytes": 796,
+      "sha256": "6A1C2EBE7BD992AC4F9B0E7D67A7AE3212A8C3364E378BEA1EFBAE749C27C7D3"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/dependency-health-panel.tsx",
+      "bytes": 758,
+      "sha256": "5DC9087126A5E87D84EBC9BD5C2C337625E4AFD032AF91E96A569A112613AF88"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/platform-operations-filter-rail.tsx",
+      "bytes": 1763,
+      "sha256": "C1FE1A3BB639BB8F512593BB5BB1351729C180CC41BB02FA67E68C174D83DD21"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/platform-operations-state-boundary.tsx",
+      "bytes": 1278,
+      "sha256": "5839638FA392160EA8ACBCEADA0EDA1D82AB6C6BADA040D351118409EDE79616"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/queue-worker-table.tsx",
+      "bytes": 1194,
+      "sha256": "96603EED4562383E3F63CFD6C401455C8D0D57834B1F5BE458879D173A6E3FD2"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/recovery-preview-panel.tsx",
+      "bytes": 924,
+      "sha256": "CAE8FEC8F61691763669AB7CBE8BAED78250AA96966862C1577F4C5795CB7045"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/service-health-table.tsx",
+      "bytes": 1185,
+      "sha256": "D128C3038206DB50ECFE34715124BA7FBC1CDE039AFBD28D28F20F5537FB3929"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/slo-budget-panel.tsx",
+      "bytes": 746,
+      "sha256": "FF82F975B7DA04FA8A9211A5C49A7440BDED868875CC99113274729C7E4C3E7E"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/components/topology-projection.tsx",
+      "bytes": 896,
+      "sha256": "78AED8AE041A9D5A0B65AB7E102F7290770665A720121860A2D882467C79C9D0"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/data/platform-operations-projections.ts",
+      "bytes": 1460,
+      "sha256": "E8118FBB023F700918F8C321EA1564AA861E8D354BA745A25868A18F29C42A63"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/main.tsx",
+      "bytes": 453,
+      "sha256": "5C9B9D75D6DE7936F6F54EDCC82119F0C247B25075C09ACDF41C06A96CB96C7C"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/ai-runtime-scheduler-page.tsx",
+      "bytes": 1983,
+      "sha256": "1723ECFA54976229EED8CCE218E29D4BD49B5237E003F5756020FAC7B464AA23"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/capacity-evidence-page.tsx",
+      "bytes": 584,
+      "sha256": "C50097BF45BC5426EA073E681194C527CA62A8F1DB59DCA0BC842E6AA5E7425F"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/data-infrastructure-page.tsx",
+      "bytes": 1453,
+      "sha256": "A1B1CD4845402BDF6D275978C27AF106389B597C2CBFDED6CA1DB6DBBE04254D"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/degradation-kill-switch-page.tsx",
+      "bytes": 1532,
+      "sha256": "6EAA57887C28E33D84BFF4A75E9E24EC699B4973C1922134358300AEE448899E"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/maintenance-recovery-preview-page.tsx",
+      "bytes": 594,
+      "sha256": "AD26CA96FF60A344B1694C23549FA3617F4042D8F45EA5E52090B2558BB14B70"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/platform-operations-overview-page.tsx",
+      "bytes": 3073,
+      "sha256": "B44FD76F91B35595B8F8EB83AAE3FD925C547E9628F833E1F41921B7CFFA547F"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/queues-workers-circuits-page.tsx",
+      "bytes": 1036,
+      "sha256": "297F98BC19C57DC280DED262418C71105F53FC7F109AFF797A747C57F76DBE0A"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/services-dependencies-page.tsx",
+      "bytes": 1973,
+      "sha256": "59701B801937C9DD2B422FE642888976DD3F0B40269CD39496C37C15CD722DC4"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/slo-error-budget-page.tsx",
+      "bytes": 558,
+      "sha256": "E8ACA08AF7B4D2E106971B7B3A00E3E12C2FD23B0AFE6345DADC2EFB3542A0AB"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/pages/topology-projections-page.tsx",
+      "bytes": 577,
+      "sha256": "D1A91A379D33033BE580305DD8D16A43E1A231C973251687FD2F412AF0F4341C"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/routes.tsx",
+      "bytes": 3652,
+      "sha256": "FC42F75C73FD3C2F7994443ED018ED50166CF2CA0ECC3942EF7A161BAEF8ADB4"
+    },
+    {
+      "path": "frontend/apps/operations-center/src/styles.css",
+      "bytes": 33966,
+      "sha256": "DC43885A99184442D146EDEAD5683075F013738CA25EA1D9087438EF5B495CAA"
+    },
+    {
+      "path": "frontend/apps/security-center/package.json",
+      "bytes": 661,
+      "sha256": "14727C4960487759C2B18D7314B31F7BE6B17F143910174D282CE71A1EBAF0B3"
+    },
+    {
+      "path": "frontend/apps/security-center/src/app.tsx",
+      "bytes": 5510,
+      "sha256": "C6EED972CB5031BB9C28C1944383E719B3F4329A6CB1F1A8601AE4D9B3A0CB2C"
+    },
+    {
+      "path": "frontend/apps/security-center/src/components/access-assurance-matrix.tsx",
+      "bytes": 1118,
+      "sha256": "1F61580939498AC8B69CF213EDF6D83F42CCDE8D6B5562517453C208A050E409"
+    },
+    {
+      "path": "frontend/apps/security-center/src/components/audit-reference-table.tsx",
+      "bytes": 1015,
+      "sha256": "5D1AA61114258B1396EBEBD20DA0988F33395A9165AEF34324352F1E97ACED3E"
+    },
+    {
+      "path": "frontend/apps/security-center/src/components/compliance-evidence-panel.tsx",
+      "bytes": 885,
+      "sha256": "6D4A638AF9AC666692E57C76E1998D42185549FFC4A002ACE95C4D4047FF9968"
+    },
+    {
+      "path": "frontend/apps/security-center/src/components/denial-activity-table.tsx",
+      "bytes": 987,
+      "sha256": "4501707F80FA5014ACEB10B2131FCCEDDB64DDD69B62D03EDD65ED76D68F0658"
+    },
+    {
+      "path": "frontend/apps/security-center/src/components/posture-summary.tsx",
+      "bytes": 1076,
+      "sha256": "F71002FDF5DB2F208B6BA27168B142870E1136C83F0D7FDEC1BA5548401CE9A4"
+    },
+    {
+      "path": "frontend/apps/security-center/src/components/provider-posture-panel.tsx",
+      "bytes": 871,
+      "sha256": "39A306F00F10A5BE0F56F629539D986AF0305B2BF8F022FF2D8FB61F3A7BC1EC"
+    },
+    {
+      "path": "frontend/apps/security-center/src/components/security-filter-rail.tsx",
+      "bytes": 1587,
+      "sha256": "06C2DB8975DE52D8AE703BB10F490F64ECDA51F5DEE8B0D443B7CF17CFCDD173"
+    },
+    {
+      "path": "frontend/apps/security-center/src/components/security-limitations.tsx",
+      "bytes": 441,
+      "sha256": "52E7AA273E33FB2D89DF1EDDC6206CE2478AC54E3B1DC5CBA61C0B38F896307D"
+    },
+    {
+      "path": "frontend/apps/security-center/src/components/security-state-boundary.tsx",
+      "bytes": 1544,
+      "sha256": "B15CD106B67BAA9E5A51FDE3D192572C39AF2C7277F84E0A7DA0C859D9CB2FE5"
+    },
+    {
+      "path": "frontend/apps/security-center/src/components/supply-chain-table.tsx",
+      "bytes": 1017,
+      "sha256": "0ED158535B480437A9584FCDDF3E1B160C44D6C6CE0B8AB99EDC928B95EC1025"
+    },
+    {
+      "path": "frontend/apps/security-center/src/data/security-projections.ts",
+      "bytes": 814,
+      "sha256": "E0EF86CE63FB696670EEC1C626FCCA03FFDE723FE6FD090329E43BB6AEA65A2C"
+    },
+    {
+      "path": "frontend/apps/security-center/src/main.tsx",
+      "bytes": 452,
+      "sha256": "8BE5391EBD137D2A9BA7E2BF5F99D5FA3D7914E7216B9A2A0B144129D86EA81D"
+    },
+    {
+      "path": "frontend/apps/security-center/src/pages/access-assurance-page.tsx",
+      "bytes": 934,
+      "sha256": "2704D239C95CD28F313275D0B52FC604E48905B41BFE934CDA2985ED563518AE"
+    },
+    {
+      "path": "frontend/apps/security-center/src/pages/audit-reference-explorer-page.tsx",
+      "bytes": 834,
+      "sha256": "079BDA16848EE2F3734D791D341D50EA3C02F89BC15D0149E454E16E393A334B"
+    },
+    {
+      "path": "frontend/apps/security-center/src/pages/denied-anomalous-activity-page.tsx",
+      "bytes": 1214,
+      "sha256": "4E05955E3B530CC6B20C19CC66ECAB6824FCD6B320F9D233C6382D6FA7A900E6"
+    },
+    {
+      "path": "frontend/apps/security-center/src/pages/policies-exceptions-attestations-page.tsx",
+      "bytes": 1601,
+      "sha256": "8B4756BF0D9D4B26B4D95BC61440E51EFC70A6B850F4E6DD5A3F8874E45C7255"
+    },
+    {
+      "path": "frontend/apps/security-center/src/pages/privileged-activity-page.tsx",
+      "bytes": 830,
+      "sha256": "28A22D64309000A91F1ABDFCE994D30C8D99D3A242B46AA4481A26D12D55F26D"
+    },
+    {
+      "path": "frontend/apps/security-center/src/pages/provider-destination-secret-posture-page.tsx",
+      "bytes": 1201,
+      "sha256": "3DC5248D68AAA03AF090283087B4CEA0FDBAF7B24AD100F2A40033F679830219"
+    },
+    {
+      "path": "frontend/apps/security-center/src/pages/security-overview-page.tsx",
+      "bytes": 1338,
+      "sha256": "B0A8E5AAD465FFEF6A5D8E7F7A11FFE31CFEF1871BE7BE8635E2B80C5ECD4403"
+    },
+    {
+      "path": "frontend/apps/security-center/src/pages/session-authentication-page.tsx",
+      "bytes": 2360,
+      "sha256": "5D546312F5B7E5C381F33030A94687D0CCC58C74554745011941CC03282F585B"
+    },
+    {
+      "path": "frontend/apps/security-center/src/pages/soc-handoff-unavailable-page.tsx",
+      "bytes": 842,
+      "sha256": "8E8D59BA6E3F2AE904F29DB7585C18F6EE1D38ACE6A3D321240FE26A5A71B7CC"
+    },
+    {
+      "path": "frontend/apps/security-center/src/pages/supply-chain-assurance-page.tsx",
+      "bytes": 959,
+      "sha256": "D963F2F301FF00A90275E46B54CCB9D238018B5152FC32D3BA54BA07D1745023"
+    },
+    {
+      "path": "frontend/apps/security-center/src/routes.tsx",
+      "bytes": 2375,
+      "sha256": "2C2576902FE3A70592A68699C99249B0954010EF30B14504B5C47647D719116B"
+    },
+    {
+      "path": "frontend/apps/security-center/src/styles.css",
+      "bytes": 11943,
+      "sha256": "9EE999974866DDE5485BF6FD761935D6BEEAD8BCA46332C8852F3148D5A38007"
+    },
+    {
+      "path": "frontend/packages/admin-contracts/package.json",
+      "bytes": 205,
+      "sha256": "6DCB9343DBB06B110ABFC6AE9DF93F0329D5B77B7F4266D9B8772D8C7F000EE6"
+    },
+    {
+      "path": "frontend/packages/admin-contracts/src/contracts.ts",
+      "bytes": 2730,
+      "sha256": "A2DC0B8BB6CD7D36389183D1C5F28584CEB76CDEAECBEBC99518001A3FCCF105"
+    },
+    {
+      "path": "frontend/packages/admin-contracts/src/events.ts",
+      "bytes": 970,
+      "sha256": "F9B693FCFC87430AFD51C261BCD855533D651ED7ADD451C31E2CBCAEB69D4E0D"
+    },
+    {
+      "path": "frontend/packages/admin-contracts/src/governance.ts",
+      "bytes": 1472,
+      "sha256": "660B8ED8C970AC924997A6B24517ABC9DF3ABBE2C1F6F6DC9E85CAD97AE0EE40"
+    },
+    {
+      "path": "frontend/packages/admin-contracts/src/index.ts",
+      "bytes": 140,
+      "sha256": "CB74E743B891E19EFA8C46B8C1F8A9E862C55063C2659B2E586F314563658A5C"
+    },
+    {
+      "path": "frontend/packages/admin-contracts/src/problems.ts",
+      "bytes": 515,
+      "sha256": "6FC08F274955DF2B0004A1D2103277376E15CD781107FF9FA9F36C081F1CCBBA"
+    },
+    {
+      "path": "frontend/packages/admin-contracts/src/queries.ts",
+      "bytes": 607,
+      "sha256": "4AA4C715266FB2FC2EF90F1264FEE550AC642889714A7E11114591AAB14A90F9"
+    },
+    {
+      "path": "frontend/packages/admin-contracts/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/admin-security-operations-fixtures/package.json",
+      "bytes": 224,
+      "sha256": "B01D452A31265690A5FB88E7ACC80FB2864FAAEE21EE497FF38E5F4E33F826EB"
+    },
+    {
+      "path": "frontend/packages/admin-security-operations-fixtures/src/cases.ts",
+      "bytes": 1953,
+      "sha256": "A723DD06652A971DE17AC189710B20016388CE892833848E82F172F27A5F9659"
+    },
+    {
+      "path": "frontend/packages/admin-security-operations-fixtures/src/generator.ts",
+      "bytes": 8913,
+      "sha256": "11318849DAD89BFEE1050B43B3BB117F20E3EF74F67C3117CBC40AA5CBFA7CF5"
+    },
+    {
+      "path": "frontend/packages/admin-security-operations-fixtures/src/index.ts",
+      "bytes": 146,
+      "sha256": "34932ED435FF07D31C1A51ADBAA06450E85BA614AD09362DE8EDCBBA7DC96546"
+    },
+    {
+      "path": "frontend/packages/admin-security-operations-fixtures/src/prohibited-fields.ts",
+      "bytes": 1074,
+      "sha256": "5C3B875DA5BD032EAF41658909FE2CAAADCD2F3F7E5435F01F7B069BCCE4E799"
+    },
+    {
+      "path": "frontend/packages/admin-security-operations-fixtures/src/replay.ts",
+      "bytes": 796,
+      "sha256": "89E067D905349F4B37321A88E0ED95B95A53D97E51A4BF4B838CFDDC30A3113A"
+    },
+    {
+      "path": "frontend/packages/admin-security-operations-fixtures/src/workloads.ts",
+      "bytes": 849,
+      "sha256": "383104F9E3E56F4105E4E4066EED9AED00E1632D04B4C8D8BCFB1F17C8AF32BD"
+    },
+    {
+      "path": "frontend/packages/admin-security-operations-fixtures/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/api-client/src/index.ts",
+      "bytes": 5834,
+      "sha256": "3986B337D1A9324022CC0DEA5E52BF38D260127AB48AC4BFCCFBA9B34C2E26B8"
+    },
+    {
+      "path": "frontend/packages/app-shell/src/index.tsx",
+      "bytes": 11734,
+      "sha256": "050B54475619B9FB0330DB19172B2EC8448034AAB94410F027695113F74950EE"
+    },
+    {
+      "path": "frontend/packages/capabilities/src/index.ts",
+      "bytes": 7566,
+      "sha256": "A94B812EC55FECC8A98CC0443BABAE137A3B817B09309FC6F51673B333073CF3"
+    },
+    {
+      "path": "frontend/packages/contracts/src/index.ts",
+      "bytes": 8225,
+      "sha256": "94324B86DD6D6BBFCA31C4599EA7E572C3F6CB0DB941536308A14966795BCA61"
+    },
+    {
+      "path": "frontend/packages/event-invalidation/src/index.ts",
+      "bytes": 3169,
+      "sha256": "460ED7476B4D54300222CA4B2EF191E2A16C5BBD59503673700785F76C5D464B"
+    },
+    {
+      "path": "frontend/packages/governance-domain/package.json",
+      "bytes": 207,
+      "sha256": "23699B9ACB73C347BA87044814AB182FEBAFBD891E2CD4C8995A3046909352E5"
+    },
+    {
+      "path": "frontend/packages/governance-domain/src/authorization.ts",
+      "bytes": 2014,
+      "sha256": "74454D89EB905495C8AEA8B36154E782BDFD35FC6B6D81706B978961A78BC69B"
+    },
+    {
+      "path": "frontend/packages/governance-domain/src/changes.ts",
+      "bytes": 900,
+      "sha256": "A2F0721B9F69AB48E408AE7C761E2539490E1CA4F74F850B820BC7A21B6BBB38"
+    },
+    {
+      "path": "frontend/packages/governance-domain/src/concurrency.ts",
+      "bytes": 980,
+      "sha256": "8C726AE84E0E9D3183F6125A56983DE8D1016693762E8E6DDF9DDD0A00F80A91"
+    },
+    {
+      "path": "frontend/packages/governance-domain/src/configuration.ts",
+      "bytes": 827,
+      "sha256": "3317BA9BE19858B141ECB9361E8343DDA7967AABFD2B9BE42DD9675A1C0F7659"
+    },
+    {
+      "path": "frontend/packages/governance-domain/src/index.ts",
+      "bytes": 271,
+      "sha256": "29496439294C29523EE59303018DB63B1FB9E6A648ABA04AA7F5CDCF257B16A1"
+    },
+    {
+      "path": "frontend/packages/governance-domain/src/profiles.ts",
+      "bytes": 1202,
+      "sha256": "6993D0190BB6F10BC7B546EF5012AA8AD159A1AB0A59938C07CC88511907368E"
+    },
+    {
+      "path": "frontend/packages/governance-domain/src/retention.ts",
+      "bytes": 856,
+      "sha256": "F3229A190C758AA6378B94EA0BE6623F35C7A927337168E2F41535EF798944EC"
+    },
+    {
+      "path": "frontend/packages/governance-domain/src/secrets.ts",
+      "bytes": 956,
+      "sha256": "D080E231EA4F731308BF7BC19C699915DD1B8D39F9E47CD476C90CFB22B6A53D"
+    },
+    {
+      "path": "frontend/packages/governance-domain/src/separation-of-duty.ts",
+      "bytes": 853,
+      "sha256": "9BC9C64CB4AACEFF53B88434FDE35FD04AB5A67421897B00EAB01247DE3DB8E0"
+    },
+    {
+      "path": "frontend/packages/governance-domain/src/state.ts",
+      "bytes": 680,
+      "sha256": "D4D26D261588B50751343E8F1790BE816F6731C00503EA19AD9718A5209F8E03"
+    },
+    {
+      "path": "frontend/packages/governance-domain/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/i18n/src/index.ts",
+      "bytes": 14118,
+      "sha256": "F75B942378E6CF38FABFE65E43AA3C7CD73C0CCC6B589C3F4C8929FF7EE520C3"
+    },
+    {
+      "path": "frontend/packages/navigation/src/index.ts",
+      "bytes": 8304,
+      "sha256": "3469F68A15B944F371AAEEC3229C8602B5CB50AD4EEAE13E712570E89E5505B5"
+    },
+    {
+      "path": "frontend/packages/observability/src/index.ts",
+      "bytes": 4941,
+      "sha256": "7CD81EA7911D184D48CAC7A72483BD137EFF028D2C3B51C6C9FC5D332A1C638A"
+    },
+    {
+      "path": "frontend/packages/operations-contracts/package.json",
+      "bytes": 210,
+      "sha256": "EBAF055C81D56741FF55CC6CA3191BFEA0275C1910E5BC077112E2BEE71D8F2F"
+    },
+    {
+      "path": "frontend/packages/operations-contracts/src/contracts.ts",
+      "bytes": 1636,
+      "sha256": "76C75EA56A7C2FAAD2FE8B1E574742D63598A18BC513792E2785D6083DAF5127"
+    },
+    {
+      "path": "frontend/packages/operations-contracts/src/events.ts",
+      "bytes": 842,
+      "sha256": "4316E16EE2C49E54BD29FD0474D0D328DC8EF4ABFBA4AA4592241C5514DBA859"
+    },
+    {
+      "path": "frontend/packages/operations-contracts/src/health.ts",
+      "bytes": 1053,
+      "sha256": "10B239B1C1018BF2C448E8B991C35E364C6A44FCAA070E9D22752AE2B6CB0E78"
+    },
+    {
+      "path": "frontend/packages/operations-contracts/src/index.ts",
+      "bytes": 136,
+      "sha256": "41839B3BE6613B2468154B430D76F6945BFC3A5C38304247E57B2DFF46371824"
+    },
+    {
+      "path": "frontend/packages/operations-contracts/src/problems.ts",
+      "bytes": 517,
+      "sha256": "98B9F8AA92E64FFA4330BE001796BD427C8A5499E0EE6AEBAEA382F035C6388B"
+    },
+    {
+      "path": "frontend/packages/operations-contracts/src/queries.ts",
+      "bytes": 432,
+      "sha256": "5C1A18B87582FE4C6C46DF2046E848D22631F14566EAB2F4ED04DEB0F31A30A9"
+    },
+    {
+      "path": "frontend/packages/operations-contracts/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/platform-operations-domain/package.json",
+      "bytes": 216,
+      "sha256": "140C1DB3B3773D2C6022C7736F4081822B65E671D9816A6B58C4AAC29858BF78"
+    },
+    {
+      "path": "frontend/packages/platform-operations-domain/src/degradation.ts",
+      "bytes": 601,
+      "sha256": "C3F86DB5E98D42C062E8896ADDBC81036F56F6411BA1D2EB5ED123516FFBC82D"
+    },
+    {
+      "path": "frontend/packages/platform-operations-domain/src/health.ts",
+      "bytes": 720,
+      "sha256": "22E38EC024742B1CCA15EDA3B0545055785E8CAB49B8FB6C4760A9316FEFC90B"
+    },
+    {
+      "path": "frontend/packages/platform-operations-domain/src/index.ts",
+      "bytes": 219,
+      "sha256": "0538E2E04EBAB7CDF9591A7C4603DB3FEA7CB96A68ECAA8C507208595A99EBFE"
+    },
+    {
+      "path": "frontend/packages/platform-operations-domain/src/profiles.ts",
+      "bytes": 727,
+      "sha256": "673DAAA7C683DCDE3D480C66E40EEADF8C17EA04583EE8D38E838D7E34FA16F3"
+    },
+    {
+      "path": "frontend/packages/platform-operations-domain/src/queues.ts",
+      "bytes": 774,
+      "sha256": "9936F0939FAF3CF401D2B2F5E399D732A42ED42FA741C1820BE33905573D642A"
+    },
+    {
+      "path": "frontend/packages/platform-operations-domain/src/recovery.ts",
+      "bytes": 521,
+      "sha256": "4F0ED6402E384494DED6E72EF4AC812E12620F9487F4B1D1F213C038481AAAC5"
+    },
+    {
+      "path": "frontend/packages/platform-operations-domain/src/slo.ts",
+      "bytes": 513,
+      "sha256": "DB06804EB33DB965DC8BFDADDE2D5416932A324FC0917E76EBEF186082AAD2AF"
+    },
+    {
+      "path": "frontend/packages/platform-operations-domain/src/state.ts",
+      "bytes": 743,
+      "sha256": "A7C361DE26B896DF97B3630FF762F824095BC96F85020CA9F021691C1398C141"
+    },
+    {
+      "path": "frontend/packages/platform-operations-domain/src/supply-chain.ts",
+      "bytes": 646,
+      "sha256": "54BD5162AF83355FA34D18423B0F7D04C2ECD621CBD083E03A4076D146B8AC83"
+    },
+    {
+      "path": "frontend/packages/platform-operations-domain/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/query-policy/src/index.ts",
+      "bytes": 7296,
+      "sha256": "4E1E7E66F7593640BAAD0157F9C5875E75C67E6379413999972EFBF2B335AD78"
+    },
+    {
+      "path": "frontend/packages/security-contracts/package.json",
+      "bytes": 208,
+      "sha256": "6E72D7AFFE7088DC3DBB98EF23FC585BC39A60E478105E48816C0A6CF68E999F"
+    },
+    {
+      "path": "frontend/packages/security-contracts/src/assurance.ts",
+      "bytes": 1156,
+      "sha256": "91107AF91B0B33A78B4BF86070416EBD31F01299DF46F32E0DA043638CEAE9A0"
+    },
+    {
+      "path": "frontend/packages/security-contracts/src/contracts.ts",
+      "bytes": 1679,
+      "sha256": "E69F619F32DF052DD597AEA1F9F3401C3993A4EE912B5512E72786653ADD9FD5"
+    },
+    {
+      "path": "frontend/packages/security-contracts/src/events.ts",
+      "bytes": 981,
+      "sha256": "D9654B443727A18F0E4D8D23F4EC7EED8FFDFB7EE0A66D3548F1B0816DA7B764"
+    },
+    {
+      "path": "frontend/packages/security-contracts/src/index.ts",
+      "bytes": 139,
+      "sha256": "149BA95C7514C775AC3FF726399B3A34FEEBCCC153B4DA4CADE852B5476C3179"
+    },
+    {
+      "path": "frontend/packages/security-contracts/src/problems.ts",
+      "bytes": 515,
+      "sha256": "537BE46ADA70DD46877261B8848EB445AC6D949DB48486CA29F9C37A14C2FB1F"
+    },
+    {
+      "path": "frontend/packages/security-contracts/src/queries.ts",
+      "bytes": 420,
+      "sha256": "77D0FDBD2F7F97F3EF3E62E7233E2A16DD325E6345558DB6F88D2F88A3AD2B74"
+    },
+    {
+      "path": "frontend/packages/security-contracts/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/test-fixtures/src/index.ts",
+      "bytes": 1627,
+      "sha256": "88A5372241472B06713940543F1C8E574432AE25D32AB27E506B33577A6B4D33"
+    },
+    {
+      "path": "frontend/packages/ui/src/index.tsx",
+      "bytes": 5626,
+      "sha256": "B798A7B074D61248BFCB720C16587CA775D51966210868569C16DA817FF32A1F"
+    },
+    {
+      "path": "frontend/playwright.config.ts",
+      "bytes": 5644,
+      "sha256": "C1E1865C83BD3FC8A4932566FDBDACA88166B4B173620CFF266F4276979FCF97"
+    },
+    {
+      "path": "frontend/scripts/generate-evidence.mjs",
+      "bytes": 13364,
+      "sha256": "9D936DCF787B59A1EC9F766F38384E87C6BCDED3BCAED43AF923C096104B329F"
+    },
+    {
+      "path": "frontend/scripts/generate-validation-evidence.mjs",
+      "bytes": 16875,
+      "sha256": "87BF4CBD7C1B2B2E50A67CDBF41EF72188FCD18F3A578A155A40C10D925DAE02"
+    },
+    {
+      "path": "frontend/scripts/verify-bundles.mjs",
+      "bytes": 3812,
+      "sha256": "3B2482C19D0FB01B029DDCC2CF422162E66D4D4CB682AB957AEA66952E4651AC"
+    },
+    {
+      "path": "frontend/scripts/verify-workspace.mjs",
+      "bytes": 4519,
+      "sha256": "E4B9DF49AE7BA767668307409298BFA49226D9DAED0E787161FF889518FB75CC"
+    },
+    {
+      "path": "frontend/tests/admin-approvals.test.tsx",
+      "bytes": 943,
+      "sha256": "A357FB12970584926CD15F79B7DFB4F53A5FFF38D9ADF646F06C8A9DB0F85239"
+    },
+    {
+      "path": "frontend/tests/admin-authorization.test.ts",
+      "bytes": 1127,
+      "sha256": "924948A9B4F74F867B3AF2CDFB26D32C62A114B551DA1FF0D18015728501B785"
+    },
+    {
+      "path": "frontend/tests/admin-center.test.tsx",
+      "bytes": 683,
+      "sha256": "F01C5A88F62D842CE6263CA193D904CAC291F02D0DA4F02B121E17737545C33C"
+    },
+    {
+      "path": "frontend/tests/admin-configuration.test.tsx",
+      "bytes": 576,
+      "sha256": "231DA19199956F0E7C5410C25CB9FBE3FEABE3A5BA65195F10E32E74F1A78F92"
+    },
+    {
+      "path": "frontend/tests/admin-contracts.test.ts",
+      "bytes": 1703,
+      "sha256": "250A7E9313611DBA555838AED1134E50CA487B5B424D21BBBE3BE63CBFA2F227"
+    },
+    {
+      "path": "frontend/tests/admin-retention-preview.test.tsx",
+      "bytes": 571,
+      "sha256": "723D9474F2721753EAA9495A7380E5ED3DD03866CF763DC24871BDB3D8826C5B"
+    },
+    {
+      "path": "frontend/tests/admin-secret-governance.test.tsx",
+      "bytes": 896,
+      "sha256": "384624DAEF6FC86A1422449765AE82A3E11EC2D05CEED69A9E623FA8F617FECE"
+    },
+    {
+      "path": "frontend/tests/browser/admin-center-accessibility.spec.ts",
+      "bytes": 925,
+      "sha256": "A402BA57A3528C12B9D7039E746A445CEC33C798FB900B5CED0BDB7AFEBE36AA"
+    },
+    {
+      "path": "frontend/tests/browser/admin-center.spec.ts",
+      "bytes": 889,
+      "sha256": "7FC9DD74F8CF1CC2E87042966799C2CC2BB12C281C5D2B94769129883B312A00"
+    },
+    {
+      "path": "frontend/tests/browser/admin-security-operations-security.spec.ts",
+      "bytes": 903,
+      "sha256": "5D076B436082D15CBFA81F3E509ED796C38CDCA2291B266FE451CA30C8419D7E"
+    },
+    {
+      "path": "frontend/tests/browser/p5-6-c1-c10-c50.spec.ts",
+      "bytes": 561,
+      "sha256": "68FB2602C6D7EDBA57E3117946A4D9B010411609FFC0A20B0A8461E6C2572B90"
+    },
+    {
+      "path": "frontend/tests/browser/platform-operations-accessibility.spec.ts",
+      "bytes": 992,
+      "sha256": "E8299A28F61ACE095D0982C1BDAE4FAEABAA78EEC4FDCA21880A45BD80B6D7BD"
+    },
+    {
+      "path": "frontend/tests/browser/platform-operations.spec.ts",
+      "bytes": 896,
+      "sha256": "63C5CC723C88DAB5D7CE0F3C36856DBAA5C3BE0EB7F35A2FF8F4FB8B5772D6B1"
+    },
+    {
+      "path": "frontend/tests/browser/security-center-accessibility.spec.ts",
+      "bytes": 945,
+      "sha256": "D30233FD987E43A461E4609A020C87FA20C290EFB4AC74546BD6B2D8571A9884"
+    },
+    {
+      "path": "frontend/tests/browser/security-center.spec.ts",
+      "bytes": 848,
+      "sha256": "4D884E4BFD6138CE9B5F9DE001AC9041FDC144ED15CCEEA4F3FF86837F124540"
+    },
+    {
+      "path": "frontend/tests/governance-domain.test.ts",
+      "bytes": 2027,
+      "sha256": "075009D2BAF0E170A4B63A53DB8CC78FB53A56506A40C7B1F768BCF9297A8099"
+    },
+    {
+      "path": "frontend/tests/operations-contracts.test.ts",
+      "bytes": 986,
+      "sha256": "435A7586707E98569ED33C64CE72A076302F7278634B77499BF64C14E003513C"
+    },
+    {
+      "path": "frontend/tests/p5-3-operations-preservation.test.tsx",
+      "bytes": 478,
+      "sha256": "0C4156D7D66D701B8B3911E5A3188517761E9C20D0226363DCDDB0F6558AEC8C"
+    },
+    {
+      "path": "frontend/tests/p5-6-accessibility.test.tsx",
+      "bytes": 667,
+      "sha256": "EDEC82A25F2711CF90D9A0FF3C266CFEF843DFE625FECA392C9E94980D8FCB00"
+    },
+    {
+      "path": "frontend/tests/p5-6-concurrency.test.ts",
+      "bytes": 1102,
+      "sha256": "13452032B3EE668F7560C23102D2604867ADF846DE3876F2732B11FDBAADC11F"
+    },
+    {
+      "path": "frontend/tests/p5-6-event-invalidation.test.ts",
+      "bytes": 502,
+      "sha256": "95AB2919A0120C006AB5A5D75B33EDA806C2984198507E0EA4BD1DD31D541A1A"
+    },
+    {
+      "path": "frontend/tests/p5-6-handoffs.test.tsx",
+      "bytes": 527,
+      "sha256": "31D84C09177D99C3CC36F4E15DB91BCD3084BA2D75F01A3E1D9723E42FB3AEF3"
+    },
+    {
+      "path": "frontend/tests/p5-6-localization.test.ts",
+      "bytes": 545,
+      "sha256": "4164B916AACA0DB21D74288D86B741F9FB0070F0FB74D819F3A80CD55A3134E3"
+    },
+    {
+      "path": "frontend/tests/p5-6-profiles.test.ts",
+      "bytes": 919,
+      "sha256": "3D03E6BF925BEC54392833B1C976911FEEB974F9324CE2D77D68F08DB81D4880"
+    },
+    {
+      "path": "frontend/tests/p5-6-replay.test.ts",
+      "bytes": 587,
+      "sha256": "336082814F84DD189922C18FADD77F040DFE93CFBAF8F2F42B4C456B98B8D6B1"
+    },
+    {
+      "path": "frontend/tests/p5-6-security.test.ts",
+      "bytes": 1065,
+      "sha256": "EDECB4C650FE791DB4F650BC2D2C65808E31573F0BBD33FF0F958CE9601E08E9"
+    },
+    {
+      "path": "frontend/tests/p5-6-teardown.test.ts",
+      "bytes": 343,
+      "sha256": "643B20B7E532E4B053E017C8B24256182D7007D44EC6FEDE898C8D2EDBE2E86F"
+    },
+    {
+      "path": "frontend/tests/platform-operations-center.test.tsx",
+      "bytes": 652,
+      "sha256": "EDF303AA7F535B3AF2A2C988E347E6D5ED3ACCAE594510547AEA4CBEF298B31B"
+    },
+    {
+      "path": "frontend/tests/platform-operations-degradation.test.tsx",
+      "bytes": 518,
+      "sha256": "F46234081EE6240D7F0E8A8C586209A035ADAB339A02084DA19D682E3391BDA4"
+    },
+    {
+      "path": "frontend/tests/platform-operations-domain.test.ts",
+      "bytes": 1437,
+      "sha256": "5041F1783D5D5C6610225448E4BAC555E968932944E1BC07E0215325E24C6910"
+    },
+    {
+      "path": "frontend/tests/platform-operations-queues.test.tsx",
+      "bytes": 550,
+      "sha256": "535CAF7524C918B6480A3B3B70A5A7CF936C3E95CF831E6ECE57BF0187C698C7"
+    },
+    {
+      "path": "frontend/tests/platform-operations-slo.test.tsx",
+      "bytes": 532,
+      "sha256": "AA8640FAADD310B90E76E0FBB831F354156972CA2DC15B231E45400C69A9C3CC"
+    },
+    {
+      "path": "frontend/tests/platform-operations-topology.test.tsx",
+      "bytes": 539,
+      "sha256": "BA33450664F614E2131AC17BFD52FBA1DE10D07E8783905C78E5B8358F73C52B"
+    },
+    {
+      "path": "frontend/tests/security-access-rls.test.ts",
+      "bytes": 914,
+      "sha256": "930E7FFF412A5102F4FD9794363F56CCE45B3A95268F83D380CC55246EC0EDE2"
+    },
+    {
+      "path": "frontend/tests/security-audit-lanes.test.tsx",
+      "bytes": 541,
+      "sha256": "EC5A19379F12D895C9C38D7D8C33E76DD1FD308513682F5E0B3569122C3B5EB1"
+    },
+    {
+      "path": "frontend/tests/security-center.test.tsx",
+      "bytes": 605,
+      "sha256": "16CE2C519C553E153DB6BD2DFF0E5C97CB459B74ED8C0FC0EB60C5FDC8F9BBA1"
+    },
+    {
+      "path": "frontend/tests/security-compliance.test.tsx",
+      "bytes": 545,
+      "sha256": "174E8A4928A87518238CD77A7F2DD2B12C885648E25DFAE793E23CEEABB38DEE"
+    },
+    {
+      "path": "frontend/tests/security-contracts.test.ts",
+      "bytes": 1132,
+      "sha256": "D4D55C38EC84891606D625D80A4E602D4024D299412886E30D63AEDAD36C952E"
+    },
+    {
+      "path": "frontend/tests/security-overclaim.test.ts",
+      "bytes": 463,
+      "sha256": "C56A1AAA152A7650CF94F04C5F6DC3B536E67DF24BCF66F502FE8A2B36EDB27A"
+    },
+    {
+      "path": "frontend/tests/security-supply-chain.test.tsx",
+      "bytes": 515,
+      "sha256": "DBB7E93D143322DD012E002DEE734F240514F38DEA7E093BEB8C00D419EAAD5A"
+    },
+    {
+      "path": "tests/phase5_frontend/test_phase55_verifier.py",
+      "bytes": 4918,
+      "sha256": "9E1F32310F2F4AC24DA3B75EBAC8555CB702B41E5DF10AF7472CA7146778447D"
+    },
+    {
+      "path": "tests/phase5_frontend/test_phase56_verifier.py",
+      "bytes": 6142,
+      "sha256": "F80114E21F9040444187CEE08FB88F9C6F6F5A30C0E1935A304DD1137E2DE45C"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "hcam.phase5.p5_7.performance_report.v1",
+  "status": "pass_with_local_environment_limitations",
+  "generated_only": true,
+  "technical_commit": "6a5e1c700779dbc0edb6fdd1a8dc4c6132dd21d6",
+  "start_package_sha256": "77E3A7885AA1969A9F50AF9EB3FE8EE05DEEAB0374FB1F83C4DD51B860C5395C",
+  "bound_input_digest": "E5B65A6611C9ED90A33B156DA6D632859CBFFF4BE4781AA2E03F910F0AEA1B4B",
+  "generated_cases": 192,
+  "workloads": [
+    "C1",
+    "C10",
+    "C50"
+  ],
+  "edge_browser_checks": 56,
+  "bundle_verification": {
+    "path": "frontend/test-results/bundle-verification.json",
+    "bytes": 1120,
+    "sha256": "BF5006966EBA7862D3464F3693E0E2A9FF3D64612EF768D838D9E7BD85186C7A"
+  },
+  "application_budgets": {
+    "admin-center": {
+      "limits": {
+        "initialJavaScript": 327680,
+        "styles": 24576
+      },
+      "actual": {
+        "initialJavaScript": 273688,
+        "deferredHlsJavaScript": 0,
+        "styles": 13481
+      }
+    },
+    "operations-center": {
+      "limits": {
+        "initialJavaScript": 368640,
+        "deferredHlsJavaScript": 655360,
+        "styles": 40960
+      },
+      "actual": {
+        "initialJavaScript": 308529,
+        "deferredHlsJavaScript": 575516,
+        "styles": 29316
+      }
+    },
+    "security-center": {
+      "limits": {
+        "initialJavaScript": 327680,
+        "styles": 24576
+      },
+      "actual": {
+        "initialJavaScript": 263443,
+        "deferredHlsJavaScript": 0,
+        "styles": 11343
+      }
+    }
+  },
+  "source_maps": 0,
+  "hardware_or_production_capacity_claim": false
+}

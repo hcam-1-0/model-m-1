@@ -1,0 +1,293 @@
+{
+  "schema_version": "hcam.phase5.p5_3.validation_summary.v1",
+  "generated_on": "2026-09-08",
+  "generated_only": true,
+  "toolchain": {
+    "node": "24.18.0",
+    "pnpm": "11.21.0"
+  },
+  "workspace": {
+    "applications": 8,
+    "shared_packages": 22,
+    "dependency_edges": 73
+  },
+  "typecheck": "pass",
+  "lint": {
+    "result": "pass",
+    "warnings": 0
+  },
+  "formatting": "pass",
+  "unit_and_component": {
+    "files_passed": 53,
+    "tests_passed": 123,
+    "tests_failed": 0,
+    "tests_skipped": 0,
+    "result": "pass"
+  },
+  "coverage": {
+    "statements_percent": 98.14,
+    "branches_percent": 97.03,
+    "functions_percent": 97.37,
+    "lines_percent": 98.56,
+    "critical_contract_branch_coverage": [
+      {
+        "file": "auth-session/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "camera-live-domain/src/admission.ts",
+        "branches_percent": 97.91
+      },
+      {
+        "file": "camera-live-domain/src/contracts.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "camera-live-domain/src/handoff.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "camera-live-domain/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "camera-live-domain/src/layouts.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "camera-live-domain/src/profiles.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "camera-live-domain/src/reasons.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "camera-live-domain/src/scheduler.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "camera-live-domain/src/state.ts",
+        "branches_percent": 96.15
+      },
+      {
+        "file": "capabilities/src/index.ts",
+        "branches_percent": 97.29
+      },
+      {
+        "file": "command-domain/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "command-domain/src/projections.ts",
+        "branches_percent": 95.83
+      },
+      {
+        "file": "command-domain/src/state.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "contracts/src/index.ts",
+        "branches_percent": 98.78
+      },
+      {
+        "file": "gis-contracts/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-domain/src/admission.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-domain/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-domain/src/layers.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-domain/src/selection.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-domain/src/state.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-domain/src/time.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-renderers/src/deck-adapter.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-renderers/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-renderers/src/maplibre-adapter.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-renderers/src/no-map-adapter.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-renderers/src/provider-policy.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "gis-renderers/src/style-policy.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "media-adapters/src/capabilities.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "media-adapters/src/hls-adapter.ts",
+        "branches_percent": 96.29
+      },
+      {
+        "file": "media-adapters/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "media-adapters/src/native-hls-adapter.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "media-adapters/src/no-media-adapter.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "media-adapters/src/telemetry.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "media-adapters/src/whep-adapter.ts",
+        "branches_percent": 98
+      },
+      {
+        "file": "media-edge-contracts/src/index.ts",
+        "branches_percent": 100
+      },
+      {
+        "file": "playback-contracts/src/index.ts",
+        "branches_percent": 100
+      }
+    ],
+    "result": "pass"
+  },
+  "browser": {
+    "system_browser": "Microsoft Edge",
+    "projects": ["desktop", "mobile"],
+    "passed": 27,
+    "skipped_by_project_design": 1,
+    "unexpected": 0,
+    "flaky": 0,
+    "loopback_only": true,
+    "axe_violations": 0,
+    "result": "pass"
+  },
+  "builds": {
+    "applications": [
+      {
+        "app": "admin-center",
+        "files": 3,
+        "bytes": 311745,
+        "source_maps": 0
+      },
+      {
+        "app": "command-center",
+        "files": 3,
+        "bytes": 1314278,
+        "source_maps": 0
+      },
+      {
+        "app": "evidence-center",
+        "files": 3,
+        "bytes": 311750,
+        "source_maps": 0
+      },
+      {
+        "app": "gis-center",
+        "files": 11,
+        "bytes": 2336782,
+        "source_maps": 0
+      },
+      {
+        "app": "intelligence-center",
+        "files": 3,
+        "bytes": 311763,
+        "source_maps": 0
+      },
+      {
+        "app": "investigation-center",
+        "files": 3,
+        "bytes": 311770,
+        "source_maps": 0
+      },
+      {
+        "app": "operations-center",
+        "files": 4,
+        "bytes": 877279,
+        "source_maps": 0
+      },
+      {
+        "app": "security-center",
+        "files": 3,
+        "bytes": 311750,
+        "source_maps": 0
+      }
+    ],
+    "total_bytes": 6087117,
+    "source_maps": 0,
+    "result": "pass"
+  },
+  "storybook": {
+    "stories": 14,
+    "build": "pass",
+    "telemetry": "disabled",
+    "production_bundle_budget_applicable": false
+  },
+  "visual_review": {
+    "desktop": "pass",
+    "mobile": "pass",
+    "mobile_navigation": "pass",
+    "overlap_or_horizontal_clipping": false
+  },
+  "manual_evidence": {
+    "screen_reader": "not_executed_explicitly_blocked",
+    "two_hundred_percent_zoom": "covered_by_reflow_automation_manual_confirmation_pending",
+    "production_accessibility_claim": false
+  },
+  "repository_regression": {
+    "tests_passed": 4232,
+    "tests_skipped_environment": 16,
+    "generated_subtests_passed": 119,
+    "warnings": 1,
+    "result": "pass"
+  },
+  "result": "pass",
+  "repository_verification": {
+    "schema_version": "hcam.phase5.p5_3.verification.v1",
+    "status": "pass",
+    "contracts": 8,
+    "fixtures": 8,
+    "generated_cameras": 10,
+    "producer_gaps": 20,
+    "canonical_fixture_sha256": "21CF52C7E30609C04918BC174ECA49CF82FB8A01EBC78246E8DE5D116FC50CFD",
+    "failures": []
+  },
+  "limitations": [
+    "generated_only",
+    "no_real_media",
+    "no_hardware_capacity_claim",
+    "no_provider_or_network_validation",
+    "WHEP_default_off",
+    "PostgreSQL_not_used"
+  ]
+}

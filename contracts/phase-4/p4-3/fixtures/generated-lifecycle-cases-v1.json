@@ -1,0 +1,91 @@
+{
+  "cases": [
+    {
+      "action": "queue_review",
+      "from": "proposed",
+      "to": "queued_review"
+    },
+    {
+      "action": "suppress",
+      "from": "proposed",
+      "to": "suppressed"
+    },
+    {
+      "action": "merge",
+      "from": "proposed",
+      "to": "merged"
+    },
+    {
+      "action": "start_review",
+      "from": "queued_review",
+      "to": "under_review"
+    },
+    {
+      "action": "suppress",
+      "from": "queued_review",
+      "to": "suppressed"
+    },
+    {
+      "action": "merge",
+      "from": "queued_review",
+      "to": "merged"
+    },
+    {
+      "action": "accept",
+      "from": "under_review",
+      "to": "accepted"
+    },
+    {
+      "action": "reject",
+      "from": "under_review",
+      "to": "rejected"
+    },
+    {
+      "action": "request_information",
+      "from": "under_review",
+      "to": "queued_review"
+    },
+    {
+      "action": "suppress",
+      "from": "under_review",
+      "to": "suppressed"
+    },
+    {
+      "action": "resolve",
+      "from": "accepted",
+      "to": "resolved"
+    },
+    {
+      "action": "correct",
+      "from": "accepted",
+      "to": "corrected"
+    },
+    {
+      "action": "correct",
+      "from": "rejected",
+      "to": "corrected"
+    },
+    {
+      "action": "reopen",
+      "from": "resolved",
+      "to": "queued_review"
+    },
+    {
+      "action": "correct",
+      "from": "resolved",
+      "to": "corrected"
+    },
+    {
+      "action": "queue_review",
+      "from": "corrected",
+      "to": "queued_review"
+    },
+    {
+      "action": "reopen",
+      "from": "suppressed",
+      "to": "queued_review"
+    }
+  ],
+  "generated_only": true,
+  "schema_version": "hcam.p4-3.generated-lifecycle-cases.v1"
+}

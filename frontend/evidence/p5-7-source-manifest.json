@@ -1,0 +1,32 @@
+{
+  "schema_version": "hcam.phase5.p5_7.source_evidence.v1",
+  "generated_only": true,
+  "sources": [
+    {
+      "path": "frontend/packages/quality-contracts/src/index.ts",
+      "bytes": 6875,
+      "sha256": "D3519AD51C8CDC61E95848DE148B6A56F21F1243091C8C069FEA7C83F40DFA37"
+    },
+    {
+      "path": "frontend/packages/quality-domain/src/index.ts",
+      "bytes": 7398,
+      "sha256": "56003ED3A11D149464B2ECC9E05B5449C782AE0E84662A6852AA81FC6B48B7C9"
+    },
+    {
+      "path": "frontend/packages/quality-fixtures/src/index.ts",
+      "bytes": 3989,
+      "sha256": "BACF8D72616D16C71A5892B0453141A7F1F8F209A1A9E5E04334EB6BCE5B44CE"
+    },
+    {
+      "path": "frontend/packages/quality-harness/src/index.ts",
+      "bytes": 3168,
+      "sha256": "1B12894488C33C90F4136D2EBD59D8E0B1A3127B89CC0120E3A6055285EA2912"
+    },
+    {
+      "path": "frontend/scripts/generate-p5-7-cases.mjs",
+      "bytes": 12149,
+      "sha256": "81B9CBD24E22E784E57F05F21C9FE631AA4155F39C5CD5B843BE402426678096"
+    }
+  ],
+  "source_digest": "DE523AAD912C7529B55C9C987B4EA183ACAC6541ED0BF42AD73E1AF1845D4450"
+}

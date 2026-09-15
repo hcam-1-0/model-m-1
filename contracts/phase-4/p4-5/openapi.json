@@ -1,0 +1,76 @@
+{
+  "schema_version": "hcam.phase4.p4_5.openapi-surface.v1",
+  "feature_flags": [
+    "HCAM_INTELLIGENCE_GENERATED_INVESTIGATIONS_ENABLED"
+  ],
+  "default_enabled": false,
+  "production_allowed": false,
+  "paths": {
+    "/investigations/health": [
+      "GET"
+    ],
+    "/investigations/relationships": [
+      "POST"
+    ],
+    "/investigations/timelines": [
+      "GET",
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}": [
+      "GET"
+    ],
+    "/investigations/timelines/{timeline_id}/corrections": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/deletion-simulations": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/entries": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/evidence": [
+      "GET",
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/export-previews": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/holds": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/integrity": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/lifecycle": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/provenance": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/reconstruction": [
+      "GET"
+    ],
+    "/investigations/timelines/{timeline_id}/retention-evaluations": [
+      "POST"
+    ],
+    "/investigations/timelines/{timeline_id}/reviews": [
+      "POST"
+    ]
+  },
+  "request_requirements": [
+    "authenticated exact capability role",
+    "authorized department scope",
+    "X-HCAM-Reason for mutations",
+    "If-Match for aggregate revisions",
+    "Cache-Control no-store",
+    "generated-only nonoperational contracts"
+  ],
+  "absent_surfaces": [
+    "source reference resolution fetch or copying",
+    "real case management or PROV import",
+    "hold activation or release",
+    "deletion execution",
+    "export payload signing timestamping delivery or receipt",
+    "camera media provider model or operational action access"
+  ]
+}

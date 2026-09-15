@@ -1,0 +1,513 @@
+{
+  "authority_change": false,
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "profile": "C50",
+  "queue_items": [
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "urgent_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0000",
+      "revision": 1,
+      "state": "correction_pending"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "elevated_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0001",
+      "revision": 2,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "standard_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0002",
+      "revision": 3,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "unknown",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0003",
+      "revision": 4,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "urgent_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0004",
+      "revision": 5,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "elevated_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0005",
+      "revision": 6,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "standard_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0006",
+      "revision": 7,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "unknown",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0007",
+      "revision": 8,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "urgent_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0008",
+      "revision": 9,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "elevated_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0009",
+      "revision": 10,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "standard_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0010",
+      "revision": 11,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "unknown",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0011",
+      "revision": 12,
+      "state": "correction_pending"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "urgent_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0012",
+      "revision": 13,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "elevated_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0013",
+      "revision": 14,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "standard_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0014",
+      "revision": 15,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "unknown",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0015",
+      "revision": 16,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "urgent_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0016",
+      "revision": 17,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "elevated_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0017",
+      "revision": 18,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "standard_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0018",
+      "revision": 19,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "unknown",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0019",
+      "revision": 20,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "urgent_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0020",
+      "revision": 21,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "elevated_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0021",
+      "revision": 22,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "standard_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0022",
+      "revision": 23,
+      "state": "correction_pending"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "unknown",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0023",
+      "revision": 24,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "urgent_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0024",
+      "revision": 25,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "elevated_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0025",
+      "revision": 26,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "standard_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0026",
+      "revision": 27,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "unknown",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0027",
+      "revision": 28,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "urgent_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0028",
+      "revision": 29,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "elevated_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0029",
+      "revision": 30,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "standard_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0030",
+      "revision": 31,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "unknown",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0031",
+      "revision": 32,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "urgent_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0032",
+      "revision": 33,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "elevated_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0033",
+      "revision": 34,
+      "state": "correction_pending"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "standard_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0034",
+      "revision": 35,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "unknown",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0035",
+      "revision": 36,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "urgent_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0036",
+      "revision": 37,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "elevated_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0037",
+      "revision": 38,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "standard_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0038",
+      "revision": 39,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "unknown",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0039",
+      "revision": 40,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "urgent_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0040",
+      "revision": 41,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "elevated_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0041",
+      "revision": 42,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "standard_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0042",
+      "revision": 43,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "unknown",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0043",
+      "revision": 44,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "urgent_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0044",
+      "revision": 45,
+      "state": "correction_pending"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "elevated_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0045",
+      "revision": 46,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "standard_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0046",
+      "revision": 47,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "unknown",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0047",
+      "revision": 48,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "urgent_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0048",
+      "revision": 49,
+      "state": "awaiting_review"
+    },
+    {
+      "generated": true,
+      "identity_established": false,
+      "operational_authority": false,
+      "priority": "elevated_review",
+      "queue": "mandatory_review",
+      "ref": "SYN-MANDATORY-REVIEW-0049",
+      "revision": 50,
+      "state": "awaiting_review"
+    }
+  ],
+  "relationship_limits": {
+    "edges": 200,
+    "nodes": 100
+  },
+  "rendering_only_profile_change": true,
+  "schema_version": "hcam.phase5.p5_4.scale_fixture.v1"
+}

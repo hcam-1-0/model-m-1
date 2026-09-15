@@ -1,0 +1,78 @@
+name: Bug Report
+description: Report a reproducible defect using sanitized or synthetic evidence.
+title: "[Bug]: "
+labels:
+  - "type: bug"
+  - "status: triage"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include credentials, private endpoints, live media, Government data, personal data, or exploitable security details. Follow SECURITY.md for sensitive reports.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Describe the defect and its operator or engineering impact.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Backend and API
+        - Camera and streaming
+        - AI and analytics
+        - GIS and mapping
+        - Frontend and accessibility
+        - Infrastructure and CI
+        - Documentation and contracts
+        - Unknown
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Sanitized Reproduction
+      description: Provide the smallest safe reproduction using synthetic data where possible.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Sanitized Environment
+      description: Include profile and relevant versions; exclude usernames, device IDs, addresses, secrets, and personal paths.
+      placeholder: CPU-only laptop; Windows; Python 3.12; generated fixture
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Validation Evidence
+      description: Provide bounded logs, test output, or screenshots after removing sensitive material.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety Confirmation
+      options:
+        - label: I removed credentials, private endpoints, live media, Government/private data, and personal identifiers.
+          required: true
+        - label: This report does not request or imply authorization for external-system testing or operational action.
+          required: true

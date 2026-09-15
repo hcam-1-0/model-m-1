@@ -1,0 +1,20 @@
+{
+  "schema_version": "hcam.p5_1.client_contract_manifest.v1",
+  "generated_only": true,
+  "http_authoritative": true,
+  "events_authoritative": false,
+  "inputs": [
+    {"path": "contracts/phase-4/p4-7/http-operations.json", "sha256": "8A4F818D644DB07A931A3056B7848CDC29895B25F61B4E9FB3A56FF9E0D5923B", "count": 16},
+    {"path": "contracts/phase-4/p4-7/event-workflows.json", "sha256": "54A58B7EEAD72BDED01FC97C0B5AA28D85D2BBA4963431FFA4F46AC0231952A9", "count": 6},
+    {"path": "contracts/phase-5/operator-ui-gis-parity.v1.json", "sha256": "49906CEAB2704AF8B21AA6B33BAF6E41C1462475D0A821D87A31C913D213F90C", "count": 12}
+  ],
+  "client_boundaries": [
+    "strict_runtime_validation_before_render",
+    "same_origin_registered_operations_only",
+    "RFC_9457_minimized_problem_projection",
+    "department_scoped_query_keys",
+    "events_invalidate_then_HTTP_revalidates",
+    "unknown_authority_or_state_enum_denies"
+  ],
+  "disabled_gaps": ["GIS_renderer", "playback_transport", "provider_connections", "operational_actions"]
+}

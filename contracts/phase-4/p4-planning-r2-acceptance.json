@@ -1,0 +1,71 @@
+{
+  "schema_version": "hcam.phase4.planning-acceptance.v1",
+  "decision_id": "D-P4-PLAN-ACCEPTANCE",
+  "status": "accepted",
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-03",
+  "accepted_repository_head": "e2ba37b1d7be9f3186feab5b25ff3c9ad32c1990",
+  "accepted_package": {
+    "package_id": "P4-PLANNING-R2",
+    "path": "docs/phase-4/planning-package.json",
+    "sha256": "B8F4371A8DDD350F44321E70F5FB8CEE0DD27299A26082A40460086E80DDEA63"
+  },
+  "recorded_decisions": {
+    "D-P4.0-001": [
+      "A",
+      "B"
+    ],
+    "D-P4.0-002": [
+      "A",
+      "C",
+      "D"
+    ],
+    "D-P4.0-003": [
+      "A"
+    ],
+    "D-P4.0-004": [
+      "A",
+      "B",
+      "C"
+    ],
+    "D-P4.0-005": [
+      "A",
+      "B",
+      "D"
+    ],
+    "D-P4.0-006": [
+      "A"
+    ],
+    "D-P4.0-007": [
+      "A"
+    ],
+    "D-P4.0-008": [
+      "A"
+    ]
+  },
+  "authority_effect": [
+    "freeze_P4_PLANNING_R2_as_the_accepted_Phase_4_planning_baseline",
+    "prepare_a_separate_non_effective_D_P4_0_START_authorization_proposal"
+  ],
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "remote_git_authorized": false,
+  "phase_progress": {
+    "earned_points": 3,
+    "total_points": 100,
+    "percentage": 3.0,
+    "change_percentage_points": 0.0
+  },
+  "non_authorization": [
+    "Phase_4_application_test_or_migration_implementation",
+    "dependency_installation_or_lockfile_change",
+    "model_dataset_artifact_or_inference_work",
+    "camera_stream_media_recording_or_playback_access",
+    "external_provider_network_credential_or_secret_access",
+    "Government_police_private_personal_biometric_or_vehicle_owner_data",
+    "operational_alert_activation_dispatch_enforcement_or_autonomous_action",
+    "container_Kubernetes_pilot_production_or_deployment_work",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "owner_statement": "D-P4-PLAN-ACCEPTANCE: I, mayank-admin, accept Phase 4 planning package P4-PLANNING-R2 with SHA-256 B8F4371A8DDD350F44321E70F5FB8CEE0DD27299A26082A40460086E80DDEA63, including the recorded composite decisions and documented planning-only limitations."
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "hcam.phase5.p5_1.acceptance.v1",
+  "decision_id": "D-P5.1-ACCEPTANCE",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-07",
+  "accepted_branch": "codex/phase5-product-ux-contracts",
+  "accepted_implementation_commit": "394e9d2701c9b63ca92dad8398607dfa918be7c3",
+  "accepted_evidence_seal_commit": "a6755bb4420f887deff04add7c01c82a6ba06e51",
+  "evidence_package": {
+    "package_id": "P5.1-EVIDENCE-PACKAGE-R0",
+    "path": "contracts/phase-5/p5-1-evidence-package.json",
+    "sha256": "74953D5E9239A17E8A4173B72CF7A485BC4B7FDBC0503A31787F2EFE9C1767BC",
+    "canonical_component_digest": "74E4C87B11FDAA8DB2DC94D922F330B44DD551D9F3CB587673B394488A8321F4"
+  },
+  "accepted_progress": {
+    "phase_5_points": 20,
+    "phase_5_total_points": 100,
+    "phase_5_percent": 20.0,
+    "p5_1_points": 12,
+    "p5_1_total_points": 12,
+    "p5_1_percent": 100.0
+  },
+  "scope_effect": "Completes P5.1 only under the sealed generated-only Shared Application Foundation, validation, dependency and supply-chain evidence, environment limitations, and documented safety boundaries.",
+  "continuing_prohibitions": [
+    "P5_2_planning_or_implementation",
+    "source_import",
+    "backend_routes_or_migrations",
+    "map_or_media_runtime",
+    "providers_or_operational_network_access",
+    "Government_or_private_data",
+    "models_or_inference",
+    "operational_actions",
+    "containers_Kubernetes_or_deployment",
+    "remote_Git"
+  ],
+  "owner_statement_sha256": "6E88941FE2004ABC772F78F9B9DCFF9D00F69F4AE1EF5852EED67DE747646560",
+  "owner_statement": "D-P5.1-ACCEPTANCE: I, mayank-admin, accept P5.1 evidence package P5.1-EVIDENCE-PACKAGE-R0 with SHA-256 74953D5E9239A17E8A4173B72CF7A485BC4B7FDBC0503A31787F2EFE9C1767BC and canonical component digest 74E4C87B11FDAA8DB2DC94D922F330B44DD551D9F3CB587673B394488A8321F4 at technical commit 394e9d2701c9b63ca92dad8398607dfa918be7c3, including its generated-only Shared Application Foundation, validation results, dependency and supply-chain evidence, explicit environment limitations, and documented safety boundaries. This acceptance completes P5.1 only. It does not authorize P5.2, source import, backend routes or migrations, map or media runtime, providers or operational network access, Government or private data, models or inference, operational actions, containers, Kubernetes, deployment, or remote Git."
+}

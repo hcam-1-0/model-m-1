@@ -1,0 +1,9 @@
+{
+  "schema_version": "hcam.phase5.p5_2.fixture.v1",
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "scale": "C50",
+  "records": 50,
+  "seed": "P5-2-C50-001",
+  "real_data": false,
+  "claim": "functional bounded fixture only; not a performance or production-scale result"
+}

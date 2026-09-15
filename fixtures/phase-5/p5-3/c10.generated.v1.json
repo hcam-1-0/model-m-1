@@ -1,0 +1,8 @@
+{
+  "schema_version": "hcam.phase5.p5_3.capacity_fixture.v1",
+  "profile": "C10",
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "stream_refs": ["SYN-STREAM-0001", "SYN-STREAM-0002", "SYN-STREAM-0003", "SYN-STREAM-0004", "SYN-STREAM-0005", "SYN-STREAM-0006", "SYN-STREAM-0007", "SYN-STREAM-0008", "SYN-STREAM-0009", "SYN-STREAM-0010"],
+  "resource_profile": "control_room",
+  "expected": { "requested": 10, "admitted": 10, "held": 0, "columns": 3, "rendition_ceiling": "high", "authority": "view_only" }
+}

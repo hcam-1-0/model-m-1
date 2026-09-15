@@ -1,0 +1,168 @@
+{
+  "schema_version": "hcam.phase5.p5_3.planning_package.v1",
+  "package_id": "P5.3-PLANNING-R0",
+  "status": "research_complete_owner_decisions_pending",
+  "effective": false,
+  "prepared_on": "2026-09-08",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "eb08c3758733676d72678535d27c8512e75f9407",
+  "planning_authority": {
+    "decision_id": "D-P5.3-PLAN-AUTH",
+    "path": "contracts/phase-5/p5-3-plan-authorization.json",
+    "sha256": "4A71F16477C3486954897FA7B93FF1C669E0BFDBD8636735AE04056C45A0C05E"
+  },
+  "accepted_predecessor": {
+    "subphase": "P5.2",
+    "acceptance_record": "contracts/phase-5/p5-2-acceptance.json",
+    "acceptance_record_sha256": "86D53960D131056F83CA25C12B73D4BF12DD39817522902AC03A4AA20B9A448F",
+    "evidence_package_sha256": "6C58CFA4AB5076A28A1E6E43D8E9AD670D74C9398678402F11E5E7BF16E8B024",
+    "canonical_component_digest": "FB4DCC36E49DECBF6247158BC5DBDA77868FCB0838545C03E230993262939270",
+    "technical_commit": "6b1a649bd6855efbdcfb6b7c79d708981077864b",
+    "acceptance_commit": "eb08c3758733676d72678535d27c8512e75f9407"
+  },
+  "component_digest_algorithm": "Sort components by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "CE8584374DFB98B32987F15E682E150052C9030906FDC1263BBDFF57DF523668",
+  "components": [
+    {
+      "path": "contracts/phase-5/p5-3-plan-authorization.json",
+      "bytes": 5925,
+      "sha256": "4A71F16477C3486954897FA7B93FF1C669E0BFDBD8636735AE04056C45A0C05E"
+    },
+    {
+      "path": "docs/phase-5/current-status-r12.md",
+      "bytes": 4011,
+      "sha256": "4742AA9E53DE9EFB828D314702D9DADAC857BE2E25CA135C076EC6D93FA152A9"
+    },
+    {
+      "path": "docs/phase-5/p5-3-camera-live-architecture.md",
+      "bytes": 12254,
+      "sha256": "4846AD2EE3A1A340327B4EB288EA8430CBAA9CFA8461422421A93B86EE3513C0"
+    },
+    {
+      "path": "docs/phase-5/p5-3-contract-gap-matrix.md",
+      "bytes": 8486,
+      "sha256": "0A8D5AF4CE576BD09C64B8A7044CC32F269A8E5E54E4FB39F48C9A2002791C7C"
+    },
+    {
+      "path": "docs/phase-5/p5-3-decision-packet.md",
+      "bytes": 9227,
+      "sha256": "BFA64F53373AE55306E103012CFA1E0B0849EBAB7B0332DD958EBF98875A1DE4"
+    },
+    {
+      "path": "docs/phase-5/p5-3-dependency-evaluation.md",
+      "bytes": 5735,
+      "sha256": "217D0E147035212A7D3D920A22F97AEBF35F3600F6ED02352CEB5710C2F953CC"
+    },
+    {
+      "path": "docs/phase-5/p5-3-implementation-plan.md",
+      "bytes": 10636,
+      "sha256": "B0A21469ADBA41D1FBB6425CE3111AE75F824CE00C2E45C1F3B2F24BBCAC09DA"
+    },
+    {
+      "path": "docs/phase-5/p5-3-research-record.md",
+      "bytes": 10858,
+      "sha256": "4802362F0B9377051F0E1286CC3C4CCA62D70275D53989B109A6FF2936028029"
+    },
+    {
+      "path": "docs/phase-5/p5-3-threat-model.md",
+      "bytes": 8797,
+      "sha256": "24AD1CE2C445D8CF005F2CD17E2C1E9E52538C995C817C2214CD360F91D45376"
+    },
+    {
+      "path": "docs/phase-5/p5-3-workflow-feature-catalogue.md",
+      "bytes": 9685,
+      "sha256": "6346DE31D01029FCDBC0457FBB677FB7170F27B176B468A9E0692E313FA94BF0"
+    }
+  ],
+  "research_result": {
+    "official_primary_sources_only": true,
+    "WHEP_bound_version": "draft-ietf-wish-whep-04",
+    "WHEP_status": "Internet-Draft_in_working_group_last_call_not_RFC",
+    "HLS_role": "baseline",
+    "WHEP_role": "optional_default_off_enhancement_with_HLS_fallback",
+    "preferred_HLS_dependency_candidate": "hls.js_exact_version_pending_start_package",
+    "media_network_or_runtime_action_performed": false
+  },
+  "recommended_architecture": {
+    "product_hierarchy": "Operations_owns_catalogue_detail_diagnostics_with_connected_live_workspace_and_monitor_wall",
+    "Command_Center_remains_primary": true,
+    "browser_media_boundary": "same_origin_media_edge_with_opaque_short_lived_grants",
+    "internal_camera_and_gateway_locators_browser_visible": false,
+    "baseline_transport": "HLS",
+    "optional_transport": "WHEP_draft_pinned_default_off",
+    "server_authority": "department_RBAC_admission_profile_session_and_revocation",
+    "low_resource_mode_functionally_complete": true,
+    "hardware_changes_authority_or_security": false,
+    "media_actions": "view_only_no_record_snapshot_download_export_print_PTZ_or_analytics"
+  },
+  "owner_decisions": [
+    {"id": "D-P5.3-001", "title": "workspace_topology", "selected": null, "recommended": "D"},
+    {"id": "D-P5.3-002", "title": "browser_and_media_security_boundary", "selected": null, "recommended": "A"},
+    {"id": "D-P5.3-003", "title": "HLS_playback_engine", "selected": null, "recommended": "A"},
+    {"id": "D-P5.3-004", "title": "WHEP_role", "selected": null, "recommended": "A"},
+    {"id": "D-P5.3-005", "title": "effective_media_profile", "selected": null, "recommended": "A"},
+    {"id": "D-P5.3-006", "title": "multi_stream_admission_and_scheduling", "selected": null, "recommended": "A"},
+    {"id": "D-P5.3-007", "title": "recovery_and_fallback", "selected": null, "recommended": "A"},
+    {"id": "D-P5.3-008", "title": "playback_session_lifecycle", "selected": null, "recommended": "A"},
+    {"id": "D-P5.3-009", "title": "layout_and_preference_persistence", "selected": null, "recommended": "A"},
+    {"id": "D-P5.3-010", "title": "authorized_media_controls", "selected": null, "recommended": "A"},
+    {"id": "D-P5.3-011", "title": "accessibility_equivalence", "selected": null, "recommended": "A"},
+    {"id": "D-P5.3-012", "title": "validation_and_evidence_standard", "selected": null, "recommended": "A"}
+  ],
+  "recommended_profile": "D/A/A/A/A/A/A/A/A/A/A/A",
+  "producer_gaps": [
+    "P5.3-G01", "P5.3-G02", "P5.3-G03", "P5.3-G04", "P5.3-G05",
+    "P5.3-G06", "P5.3-G07", "P5.3-G08", "P5.3-G09", "P5.3-G10",
+    "P5.3-G11", "P5.3-G12", "P5.3-G13", "P5.3-G14", "P5.3-G15",
+    "P5.3-G16", "P5.3-G17", "P5.3-G18", "P5.3-G19", "P5.3-G20"
+  ],
+  "threat_ids": [
+    "T01", "T02", "T03", "T04", "T05", "T06", "T07", "T08", "T09", "T10",
+    "T11", "T12", "T13", "T14", "T15", "T16", "T17", "T18", "T19", "T20",
+    "T21", "T22", "T23", "T24", "T25", "T26", "T27", "T28", "T29", "T30"
+  ],
+  "implementation_workstreams": [
+    {"id": "P5.3-W1", "title": "contracts_and_generated_fixtures", "weight": 2.0},
+    {"id": "P5.3-W2", "title": "catalogue_detail_and_diagnostics", "weight": 2.0},
+    {"id": "P5.3-W3", "title": "playback_control_and_media_edge_contracts", "weight": 2.5},
+    {"id": "P5.3-W4", "title": "HLS_baseline_and_capability_selection", "weight": 2.5},
+    {"id": "P5.3-W5", "title": "provisional_WHEP_and_HLS_fallback", "weight": 1.5},
+    {"id": "P5.3-W6", "title": "live_workspace_monitor_wall_and_layouts", "weight": 2.5},
+    {"id": "P5.3-W7", "title": "accessibility_security_profiles_and_signals", "weight": 1.5},
+    {"id": "P5.3-W8", "title": "validation_evidence_and_acceptance", "weight": 1.5}
+  ],
+  "frozen_progress_model": {
+    "P5_3_total_product_points": 16,
+    "phase_5_total_product_points": 100,
+    "planning_items": 8,
+    "planning_awards_product_points": false
+  },
+  "progress": {
+    "P5_3_planning": {"earned": 8, "total": 8, "percent": 100.0, "change_percentage_points": 100.0, "awards_product_points": false},
+    "P5_3_product": {"earned": 0, "total": 16, "percent": 0.0, "change_percentage_points": 0.0},
+    "phase_5_product": {"earned": 32, "total": 100, "percent": 32.0, "change_percentage_points": 0.0}
+  },
+  "next_gate": {
+    "owner_selects_D_P5_3_001_through_012": true,
+    "reconciled_planning_package": true,
+    "exact_owner_planning_acceptance": true,
+    "bounded_start_package": true,
+    "exact_start_authorization": true
+  },
+  "owner_decisions_recorded": false,
+  "owner_planning_acceptance_recorded": false,
+  "start_package_preparation_authorized": false,
+  "start_authorization_recorded": false,
+  "product_or_test_implementation_authorized": false,
+  "dependency_install_or_lockfile_change_authorized": false,
+  "backend_route_or_migration_authorized": false,
+  "frontend_or_media_runtime_authorized": false,
+  "playback_session_issuance_authorized": false,
+  "provider_network_Sentinel_camera_or_media_authorized": false,
+  "recording_snapshot_download_export_or_PTZ_authorized": false,
+  "Government_or_private_data_authorized": false,
+  "model_dataset_artifact_or_inference_authorized": false,
+  "operational_action_authorized": false,
+  "container_Kubernetes_deployment_or_P5_4_authorized": false,
+  "remote_git_authorized": false
+}

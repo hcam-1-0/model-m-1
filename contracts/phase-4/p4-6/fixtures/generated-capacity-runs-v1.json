@@ -1,0 +1,967 @@
+{
+  "category": "capacity-runs",
+  "scenario_count": 80,
+  "scenarios": [
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0000"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0001"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0002"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0003"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0004"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0005"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0006"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0007"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0008"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0009"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0010"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0011"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0012"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0013"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0014"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0015"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0016"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0017"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0018"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0019"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0020"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0021"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0022"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0023"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0024"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0025"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0026"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0027"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0028"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0029"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0030"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0031"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0032"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0033"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0034"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0035"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0036"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0037"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0038"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0039"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0040"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0041"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0042"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0043"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0044"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0045"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0046"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0047"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0048"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0049"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0050"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0051"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0052"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0053"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0054"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0055"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0056"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0057"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0058"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0059"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0060"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0061"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0062"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0063"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0064"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0065"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0066"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0067"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0068"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0069"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0070"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0071"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0072"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0073"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0074"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0075"
+    },
+    {
+      "department": "Generated Department 0",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0076"
+    },
+    {
+      "department": "Generated Department 1",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "throughput",
+      "operational": false,
+      "scale": "C50",
+      "scenario_id": "p46.capacity-runs.0077"
+    },
+    {
+      "department": "Generated Department 2",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "latency",
+      "operational": false,
+      "scale": "C1",
+      "scenario_id": "p46.capacity-runs.0078"
+    },
+    {
+      "department": "Generated Department 3",
+      "generated_only": true,
+      "hardware_tested": false,
+      "limitations": [
+        "capacity.generated_simulation_only"
+      ],
+      "mode": "balanced",
+      "operational": false,
+      "scale": "C10",
+      "scenario_id": "p46.capacity-runs.0079"
+    }
+  ],
+  "schema_version": "hcam.phase4.p4_6.fixture.capacity-runs.v1"
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "hcam.phase5.p5_2.acceptance.v1",
+  "decision_id": "D-P5.2-ACCEPTANCE",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-08",
+  "accepted_branch": "codex/phase5-product-ux-contracts",
+  "accepted_implementation_commit": "6b1a649bd6855efbdcfb6b7c79d708981077864b",
+  "accepted_evidence_seal_commit": "d75df00bb24a124b06a9960743d63da03017243a",
+  "evidence_package": {
+    "package_id": "P5.2-EVIDENCE-PACKAGE-R0",
+    "path": "contracts/phase-5/p5-2-evidence-package.json",
+    "sha256": "6C58CFA4AB5076A28A1E6E43D8E9AD670D74C9398678402F11E5E7BF16E8B024",
+    "canonical_component_digest": "FB4DCC36E49DECBF6247158BC5DBDA77868FCB0838545C03E230993262939270"
+  },
+  "accepted_progress": {
+    "phase_5_points": 32,
+    "phase_5_total_points": 100,
+    "phase_5_percent": 32.0,
+    "p5_2_points": 12,
+    "p5_2_total_points": 12,
+    "p5_2_percent": 100.0
+  },
+  "scope_effect": "Completes P5.2 only under the sealed generated-only Command Center and connected GIS Center implementation, validation, dependency and supply-chain evidence, environment limitations, and documented safety boundaries.",
+  "continuing_prohibitions": [
+    "P5_3_planning_or_implementation",
+    "source_import",
+    "backend_routes_or_migrations",
+    "real_providers_or_tiles",
+    "cameras_or_media",
+    "Government_or_private_data",
+    "models_or_inference",
+    "operational_actions",
+    "containers_Kubernetes_or_deployment",
+    "remote_Git"
+  ],
+  "owner_statement_sha256": "B28A794E9D7747A0F685227BD370E96394071F0F65E452DC79BC53D8B61FA63F",
+  "owner_statement": "D-P5.2-ACCEPTANCE: I, mayank-admin, accept P5.2 evidence package P5.2-EVIDENCE-PACKAGE-R0 with SHA-256 6C58CFA4AB5076A28A1E6E43D8E9AD670D74C9398678402F11E5E7BF16E8B024 and canonical component digest FB4DCC36E49DECBF6247158BC5DBDA77868FCB0838545C03E230993262939270 at technical commit 6b1a649bd6855efbdcfb6b7c79d708981077864b, including its generated-only Command Center and connected GIS Center, validation results, dependency and supply-chain evidence, explicit environment limitations, and documented safety boundaries. This acceptance completes P5.2 only. It does not authorize P5.3, source import, backend routes or migrations, real providers or tiles, cameras or media, Government or private data, models or inference, operational actions, containers, Kubernetes, deployment, or remote Git."
+}

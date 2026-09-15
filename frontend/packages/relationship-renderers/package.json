@@ -1,0 +1,16 @@
+{
+  "name": "@hcam/relationship-renderers",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@hcam/intelligence-contracts": "workspace:*",
+    "react": "catalog:"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}

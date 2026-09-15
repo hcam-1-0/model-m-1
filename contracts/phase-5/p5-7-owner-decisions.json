@@ -1,0 +1,140 @@
+{
+  "schema_version": "hcam.phase5.p5_7.owner_decisions.v1",
+  "record_id": "P5.7-OWNER-DECISIONS-R0",
+  "status": "owner_selected_for_reconciliation",
+  "effective_for_reconciliation": true,
+  "implementation_effective": false,
+  "selected_by": "mayank-admin",
+  "selected_on": "2026-09-12",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "fa570be85bd0b38c16609b8c9a583f86a01b1370",
+  "source_statement": {
+    "normalized_statement": "D-P5.7-001: A D-P5.7-002: A D-P5.7-003: A D-P5.7-004: A D-P5.7-005: A D-P5.7-006: A D-P5.7-007: A D-P5.7-008: A D-P5.7-009: A D-P5.7-010: A D-P5.7-011: A D-P5.7-012: A",
+    "sha256": "870EB0B4B487F77E03ADCCA3B2E9A21F4FFDD0504E2EB9E18C9C665F5F24E5EF",
+    "normalization": "Paragraph whitespace collapsed to one ASCII space; UTF-8 without BOM; no terminal newline."
+  },
+  "selection_profile": "A/A/A/A/A/A/A/A/A/A/A/A",
+  "selection_count": 12,
+  "selections": [
+    {
+      "id": "D-P5.7-001",
+      "selected": "A",
+      "resolved_meaning": "Require every selected mandatory cell to pass with zero unresolved blocker or critical failures, no unexplained skips, immutable predecessor evidence, and a complete limitation register; explicitly permitted unavailable environments remain blocked rather than passed."
+    },
+    {
+      "id": "D-P5.7-002",
+      "selected": "A",
+      "resolved_meaning": "Use all fourteen canonical cross-portal journeys, generated negative and recovery variants, and bounded pairwise browser, locale, viewport, profile, workload, and state coverage without an unbounded Cartesian matrix."
+    },
+    {
+      "id": "D-P5.7-003",
+      "selected": "A",
+      "resolved_meaning": "Use installed Microsoft Edge as the primary browser, add selected smoke and critical journeys for approved Playwright Chromium, Firefox, and WebKit runtimes, and expose unavailable or unsupported engines explicitly without automatic downloads."
+    },
+    {
+      "id": "D-P5.7-004",
+      "selected": "A",
+      "resolved_meaning": "Target WCAG 2.2 AA through layered automated, semantic, keyboard, focus, zoom and reflow, target-size, contrast, reduced-motion, error-state, authoritative-alternative, and separately recorded manual screen-reader evidence using a WCAG-EM-style reporting structure; no conformance claim is implied."
+    },
+    {
+      "id": "D-P5.7-005",
+      "selected": "A",
+      "resolved_meaning": "Require message completeness and semantic equivalence for en-IN, gu-IN, and hi-IN, deterministic 30, 60, and 100 percent expansion, hostile Unicode cases, Asia/Kolkata and UTC displays, explicit Intl formatting, and locale-independent canonical ordering."
+    },
+    {
+      "id": "D-P5.7-006",
+      "selected": "A",
+      "resolved_meaning": "Use seven deterministic mobile, tablet, constrained-laptop, desktop, full-HD, control-room, and logical dual-display viewports with bounded pairwise R01-R06 profiles, while distinguishing emulation from physical-device and physical multi-monitor evidence."
+    },
+    {
+      "id": "D-P5.7-007",
+      "selected": "A",
+      "resolved_meaning": "Apply context-qualified hard budgets to interaction, reference Web Vitals, long tasks, route, table and map readiness, query fan-out, recovery, generated-media admission and teardown, bounded heap diagnostics, bundles, and profile convergence, with recorded environment, workload, percentile, limitation, and no automatic relaxation."
+    },
+    {
+      "id": "D-P5.7-008",
+      "selected": "A",
+      "resolved_meaning": "Use deterministic generated C1, C10, and C50 work items, event bursts, paginated tables, bounded maps and graphs, and generated media admission, comparing stable state digests and budgets across profiles and describing results only as UI and workflow scale evidence."
+    },
+    {
+      "id": "D-P5.7-009",
+      "selected": "A",
+      "resolved_meaning": "Use a deterministic typed HTTP, event, session, concurrency, map, media, profile, and client-storage fault matrix requiring bounded retry, explicit degradation, authoritative refetch, teardown, focus recovery, and stable terminal state digests."
+    },
+    {
+      "id": "D-P5.7-010",
+      "selected": "A",
+      "resolved_meaning": "Use generated hostile inputs, rendering-sink and bundled-content inventories, CSP and CSRF expectation checks, browser-storage inspection, department and scope isolation, telemetry limits, private-field denial, dependency, SBOM and license checks, and an explicit stale-vulnerability limitation without production-security claims."
+    },
+    {
+      "id": "D-P5.7-011",
+      "selected": "A",
+      "resolved_meaning": "Bind the exact source commit, toolchain, lockfile, installed tree, build commands, environment, outputs, SBOM and license state, and artifact hashes; when later authorized, compare two clean same-environment builds and claim only local repeatability, not independent reproducibility or SLSA compliance."
+    },
+    {
+      "id": "D-P5.7-012",
+      "selected": "A",
+      "resolved_meaning": "Seal requirements, journeys, matrices, results, environment, artifacts, limitations, claims, release manifest, source and evidence commits, and canonical component digest, then require exact owner acceptance of that package for the final one of twelve P5.7 points."
+    }
+  ],
+  "precedence_rules": [
+    "a_single_unresolved_blocker_or_critical_failure_prevents_acceptance_regardless_of_aggregate_pass_count",
+    "blocked_unsupported_skipped_and_not_applicable_are_never_counted_as_passed",
+    "fourteen_cross_portal_journeys_and_bounded_pairwise_coverage_override_a_full_Cartesian_matrix",
+    "browser_runtime_unavailability_is_explicit_and_never_triggers_an_automatic_download_or_false_pass",
+    "automated_accessibility_checks_do_not_replace_manual_keyboard_screen_reader_focus_reflow_or_semantic_evidence",
+    "canonical_ordering_identifiers_and_decisions_are_locale_and_timezone_independent",
+    "viewport_emulation_does_not_claim_physical_device_or_physical_multi_monitor_validation",
+    "performance_budgets_are_environment_and_workload_qualified_and_never_relaxed_automatically",
+    "C1_C10_C50_results_are_generated_UI_and_workflow_scale_evidence_not_production_capacity_claims",
+    "deterministic_resilience_validation_precedes_any_non_gating_random_or_real_outage_exercise",
+    "generated_security_and_supply_chain_evidence_do_not_establish_production_security_or_conformance",
+    "local_repeatability_does_not_claim_independent_reproducibility_or_SLSA_compliance",
+    "final_owner_acceptance_is_exact_digest_bound_and_cannot_be_inferred_from_green_tests_or_an_aggregate_score"
+  ],
+  "progress": {
+    "owner_decisions": {
+      "earned": 12,
+      "total": 12,
+      "percent": 100.0,
+      "change_percentage_points": 100.0,
+      "awards_product_points": false
+    },
+    "P5_7_planning": {
+      "earned": 8,
+      "total": 8,
+      "percent": 100.0,
+      "change_percentage_points": 0.0,
+      "awards_product_points": false
+    },
+    "P5_7_product": {
+      "earned": 0,
+      "total": 12,
+      "percent": 0.0,
+      "change_percentage_points": 0.0
+    },
+    "phase_5_product": {
+      "earned": 88,
+      "total": 100,
+      "percent": 88.0,
+      "change_percentage_points": 0.0
+    }
+  },
+  "continuing_prohibitions": [
+    "planning_acceptance_by_implication",
+    "start_authorization_by_implication",
+    "product_or_test_implementation",
+    "source_import",
+    "dependency_resolution_download_installation_update_or_lockfile_change",
+    "backend_route_or_migration",
+    "frontend_browser_media_or_other_runtime_execution",
+    "real_provider_network_camera_media_or_data_access",
+    "Government_private_identity_credential_or_secret_data",
+    "model_dataset_artifact_or_inference",
+    "operational_alert_notification_dispatch_enforcement_or_autonomous_action",
+    "container_Kubernetes_execution_or_deployment",
+    "final_Phase_5_acceptance",
+    "additional_commit_without_new_authority",
+    "remote_Git_or_release_activity"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "hcam.phase4.p4_0.acceptance-proposal.v1",
+  "decision_id": "D-P4.0-ACCEPTANCE",
+  "package_id": "P4.0-EVIDENCE-PACKAGE-R0",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "technical_gate_status": "passed",
+  "evidence_package_path": "contracts/phase-4/p4-0-evidence-package.json",
+  "evidence_package_sha256": "BB0E726F6C362F2AE29E6D78D36A5E3C289E28E4367DD9E057A092D195AEF5CB",
+  "evidence_content_digest": "28527B04231B00B93A7AFB1DAC8D95F3142B6ED88717CB0A9A8657E5E6DAC799",
+  "proposed_progress": {
+    "phase_4_points": 8,
+    "phase_4_total_points": 100,
+    "phase_4_percent": 8.0,
+    "p4_0_points": 8,
+    "p4_0_total_points": 10,
+    "p4_0_percent": 80.0
+  },
+  "owner_acceptance_effect": "An exact owner acceptance may award the final two P4.0-D points; it does not authorize P4.1 or any excluded runtime, data, deployment, or remote Git scope.",
+  "continuing_prohibitions": [
+    "models_datasets_artifacts_or_inference",
+    "cameras_ONVIF_Sentinel_streams_or_media",
+    "external_providers_or_network_egress",
+    "Government_police_private_personal_biometric_or_vehicle_owner_data",
+    "operational_alerts_notifications_dispatch_enforcement_or_autonomous_action",
+    "Kubernetes_cloud_pilot_production_or_deployment",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git",
+    "P4_1_or_later_implementation"
+  ]
+}

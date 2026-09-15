@@ -2,8 +2,8 @@ name: Review Question
 description: Capture a project owner, product, legal, security, or architecture question.
 title: "[Question]: "
 labels:
-  - question
-  - needs-review
+  - "type: decision"
+  - decision-required
 body:
   - type: dropdown
     id: area

@@ -1,0 +1,98 @@
+:root {
+  color-scheme: light;
+  --hcam-font: Inter, "Segoe UI", Arial, sans-serif;
+  --hcam-mono: "Cascadia Code", Consolas, monospace;
+  --hcam-bg: #eef2f4;
+  --hcam-surface: #ffffff;
+  --hcam-surface-raised: #f6f8f9;
+  --hcam-surface-strong: #0d252b;
+  --hcam-text: #11262d;
+  --hcam-text-muted: #52666e;
+  --hcam-border: #cbd6da;
+  --hcam-border-strong: #82959d;
+  --hcam-brand: #087c78;
+  --hcam-brand-strong: #005e5b;
+  --hcam-accent: #c44320;
+  --hcam-info: #1c64a8;
+  --hcam-success: #187744;
+  --hcam-warning: #9a5a00;
+  --hcam-danger: #b42318;
+  --hcam-focus: #006fd6;
+  --hcam-shadow: 0 1px 2px rgb(14 30 37 / 10%);
+  --hcam-shadow-raised: 0 8px 22px rgb(18 42 50 / 8%);
+  --hcam-overlay: rgb(8 28 34 / 62%);
+  --hcam-info-surface: #eaf3fb;
+  --hcam-success-surface: #eaf5ee;
+  --hcam-warning-surface: #fff5df;
+  --hcam-danger-surface: #fff0ee;
+  --hcam-radius: 6px;
+  --hcam-radius-tight: 4px;
+  --hcam-radius-panel: 8px;
+  --hcam-space-1: 4px;
+  --hcam-space-2: 8px;
+  --hcam-space-3: 12px;
+  --hcam-space-4: 16px;
+  --hcam-space-5: 24px;
+  --hcam-space-6: 32px;
+  --hcam-control: 36px;
+  --hcam-header: 56px;
+  --hcam-nav: 248px;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --hcam-bg: #0f191d;
+  --hcam-surface: #17262b;
+  --hcam-surface-raised: #1d3036;
+  --hcam-surface-strong: #071519;
+  --hcam-text: #edf4f5;
+  --hcam-text-muted: #aebdc3;
+  --hcam-border: #364b52;
+  --hcam-border-strong: #718990;
+  --hcam-brand: #35b8b1;
+  --hcam-brand-strong: #64d6d0;
+  --hcam-accent: #ff8b6e;
+  --hcam-info: #7bbbf1;
+  --hcam-success: #66c88e;
+  --hcam-warning: #ffc160;
+  --hcam-danger: #ff8b82;
+  --hcam-focus: #68b7ff;
+  --hcam-shadow: 0 1px 3px rgb(0 0 0 / 32%);
+  --hcam-shadow-raised: 0 10px 28px rgb(0 0 0 / 28%);
+  --hcam-overlay: rgb(0 0 0 / 72%);
+  --hcam-info-surface: #172f43;
+  --hcam-success-surface: #17382a;
+  --hcam-warning-surface: #3d2d12;
+  --hcam-danger-surface: #412421;
+}
+
+[data-density="compact"] {
+  --hcam-control: 32px;
+}
+[data-density="spacious"] {
+  --hcam-control: 44px;
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --hcam-border: currentColor;
+    --hcam-border-strong: currentColor;
+  }
+}
+
+@media (forced-colors: active) {
+  :root {
+    --hcam-focus: Highlight;
+    --hcam-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+  }
+}

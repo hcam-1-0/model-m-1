@@ -12,8 +12,9 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 from sqlalchemy.types import TypeDecorator
 
 
-PHASE3_SCHEMA_BASE_REVISION = "0011_geometry_events"
-CURRENT_SCHEMA_REVISION = "0012_merge_camera_gis"
+PHASE3_SCHEMA_REVISION = "0011_geometry_events"
+CURRENT_SCHEMA_REVISION = "0018_operations_security_scale"
+PHASE3_SCHEMA_BASE_REVISION = PHASE3_SCHEMA_REVISION
 REQUIRED_CAMERA_COLUMNS = frozenset(
     {
         "camera_id",
@@ -82,6 +83,224 @@ REQUIRED_ANALYTICS_ASSIGNMENT_COLUMNS = frozenset(
         "updated_at",
     }
 )
+REQUIRED_INTELLIGENCE_RULE_COLUMNS = frozenset(
+    {
+        "rule_id",
+        "version_id",
+        "department",
+        "stream_id",
+        "camera_id",
+        "status",
+        "authority_class",
+        "operational",
+        "generated_only",
+        "definition",
+        "configuration_digest",
+        "created_at",
+        "updated_at",
+        "authoring_digest",
+        "semantic_digest",
+        "compilation_id",
+        "schedule_digest",
+    }
+)
+REQUIRED_REFERENCE_PROVIDER_COLUMNS = frozenset(
+    {
+        "provider_id",
+        "version_id",
+        "department",
+        "provider_kind",
+        "status",
+        "enabled",
+        "transport_state",
+        "credential_state",
+        "definition",
+        "configuration_digest",
+        "created_at",
+        "updated_at",
+    }
+)
+REQUIRED_CORRELATION_RUN_COLUMNS = frozenset(
+    {
+        "run_id",
+        "department",
+        "status",
+        "execution_scope",
+        "reason_code",
+        "generated_only",
+        "profile_id",
+        "profile_version",
+        "result_digest",
+        "replay_binding",
+        "input_count",
+        "accepted_count",
+        "duplicate_count",
+        "rejected_count",
+        "attempt_count",
+        "lease_owner",
+        "lease_until",
+        "watermark_at",
+        "created_at",
+        "updated_at",
+    }
+)
+REQUIRED_CORRELATION_HYPOTHESIS_COLUMNS = frozenset(
+    {
+        "hypothesis_id",
+        "version_id",
+        "department",
+        "run_id",
+        "hypothesis_key",
+        "profile_id",
+        "profile_version",
+        "partition_digest",
+        "revision",
+        "state",
+        "authority_class",
+        "operational",
+        "generated_only",
+        "graph_digest",
+        "arbitration_digest",
+        "projection",
+    }
+)
+REQUIRED_ALERT_COLUMNS = frozenset(
+    {
+        "alert_id",
+        "version_id",
+        "department",
+        "hypothesis_id",
+        "dedupe_key",
+        "semantic_key",
+        "delivery_key",
+        "source_evaluation_id",
+        "source_evaluation_revision",
+        "source_evaluation_digest",
+        "incident_key",
+        "domain",
+        "state",
+        "authority_class",
+        "operational",
+        "generated_only",
+        "severity",
+        "priority",
+        "confidence",
+        "certainty",
+        "chronology_confidence",
+        "disposition",
+        "assigned_to",
+        "suppression_code",
+        "merged_into",
+        "policy_digest",
+        "payload",
+        "content_digest",
+        "retention_class",
+        "created_at",
+        "updated_at",
+    }
+)
+REQUIRED_REFERENCE_INTEGRATION_COLUMNS = {
+    "reference_provider_versions": frozenset(
+        {
+            "provider_version_id",
+            "provider_id",
+            "department",
+            "status",
+            "manifest_digest",
+            "payload",
+            "version_id",
+            "generated_only",
+            "operational",
+        }
+    ),
+    "reference_catalogue_snapshots": frozenset(
+        {
+            "snapshot_id",
+            "provider_version_id",
+            "department",
+            "fingerprint",
+            "payload",
+            "stale_at",
+            "raw_response_retained",
+        }
+    ),
+    "reference_query_jobs": frozenset(
+        {
+            "job_id",
+            "query_id",
+            "provider_version_id",
+            "department",
+            "state",
+            "attempt_count",
+            "lease_owner",
+            "lease_until",
+            "semantic_key",
+            "delivery_key",
+            "intent_payload",
+            "plan_payload",
+            "generated_only",
+            "operational",
+        }
+    ),
+    "reference_candidate_sets": frozenset(
+        {
+            "candidate_set_id",
+            "query_id",
+            "department",
+            "outcome",
+            "identity_state",
+            "mandatory_review",
+            "payload",
+            "generated_only",
+            "operational",
+        }
+    ),
+    "reference_control_revisions": frozenset(
+        {
+            "revision_id",
+            "department",
+            "scope",
+            "scope_key",
+            "state",
+            "version",
+            "actor_id",
+            "reason",
+            "generated_only",
+        }
+    ),
+}
+REQUIRED_PLATFORM_COLUMNS = {
+    "platform_service_objectives": frozenset(
+        {"objective_id", "department", "service_class", "target_state", "revision", "content_digest", "payload"}
+    ),
+    "platform_error_budgets": frozenset(
+        {"budget_id", "objective_id", "department", "status", "content_digest", "payload", "observed_at"}
+    ),
+    "platform_degradation_states": frozenset(
+        {"degradation_id", "department", "state", "revision", "content_digest", "payload", "recorded_at"}
+    ),
+    "platform_circuit_states": frozenset(
+        {"circuit_id", "department", "dependency_class", "state", "content_digest", "payload", "updated_at"}
+    ),
+    "platform_kill_switch_revisions": frozenset(
+        {"record_id", "switch_id", "department", "scope", "scope_key", "state", "revision", "content_digest"}
+    ),
+    "platform_recovery_results": frozenset(
+        {"result_id", "plan_id", "department", "outcome", "content_digest", "payload", "recorded_at"}
+    ),
+    "platform_capacity_results": frozenset(
+        {"run_id", "department", "profile_id", "scale", "mode", "status", "content_digest", "payload"}
+    ),
+    "platform_supply_chain_inventories": frozenset(
+        {"inventory_id", "department", "freshness", "source_digest", "content_digest", "payload", "observed_at"}
+    ),
+    "platform_security_evidence": frozenset(
+        {"evidence_id", "department", "evidence_type", "outcome", "content_digest", "payload", "recorded_at"}
+    ),
+    "platform_operations_outbox": frozenset(
+        {"event_id", "department", "event_type", "state", "attempt_count", "idempotency_key", "payload", "available_at"}
+    ),
+}
 
 
 class Base(DeclarativeBase):
@@ -223,6 +442,56 @@ class Database:
                 if "analytics_assignments" in table_names
                 else set()
             )
+            intelligence_rule_columns = (
+                {
+                    column["name"]
+                    for column in inspector.get_columns("intelligence_rules")
+                }
+                if "intelligence_rules" in table_names
+                else set()
+            )
+            reference_provider_columns = (
+                {
+                    column["name"]
+                    for column in inspector.get_columns("reference_providers")
+                }
+                if "reference_providers" in table_names
+                else set()
+            )
+            correlation_run_columns = (
+                {column["name"] for column in inspector.get_columns("correlation_runs")}
+                if "correlation_runs" in table_names
+                else set()
+            )
+            correlation_hypothesis_columns = (
+                {
+                    column["name"]
+                    for column in inspector.get_columns("correlation_hypotheses")
+                }
+                if "correlation_hypotheses" in table_names
+                else set()
+            )
+            alert_columns = (
+                {column["name"] for column in inspector.get_columns("alerts")}
+                if "alerts" in table_names
+                else set()
+            )
+            reference_integration_columns = {
+                table: (
+                    {column["name"] for column in inspector.get_columns(table)}
+                    if table in table_names
+                    else set()
+                )
+                for table in REQUIRED_REFERENCE_INTEGRATION_COLUMNS
+            }
+            platform_columns = {
+                table: (
+                    {column["name"] for column in inspector.get_columns(table)}
+                    if table in table_names
+                    else set()
+                )
+                for table in REQUIRED_PLATFORM_COLUMNS
+            }
         required_tables = {
             "cameras",
             "audit_events",
@@ -248,6 +517,69 @@ class Database:
             "analytics_geometry_evaluator_runs",
             "analytics_track_rule_states",
             "analytics_events",
+            "intelligence_rules",
+            "correlation_runs",
+            "correlation_hypotheses",
+            "hypothesis_evidence_refs",
+            "reference_providers",
+            "reference_queries",
+            "alerts",
+            "alert_revisions",
+            "investigation_timelines",
+            "timeline_entries",
+            "correlation_event_receipts",
+            "correlation_partition_checkpoints",
+            "correlation_window_events",
+            "correlation_lane_results",
+            "correlation_hypothesis_revisions",
+            "alert_command_receipts",
+            "alert_lifecycle_events",
+            "alert_review_quorum_policies",
+            "alert_review_decisions",
+            "alert_assignment_events",
+            "alert_suppression_events",
+            "alert_merge_relations",
+            "alert_budget_policies",
+            "alert_budget_counters",
+            "alert_timer_intents",
+            "alert_workflow_executions",
+            "reference_provider_versions",
+            "reference_catalogue_snapshots",
+            "reference_catalogue_records",
+            "reference_query_jobs",
+            "reference_query_attempts",
+            "reference_candidate_sets",
+            "reference_review_handoffs",
+            "reference_control_revisions",
+            "reference_circuit_states",
+            "reference_integration_outbox",
+            "investigation_timelines_v2",
+            "investigation_timeline_revisions",
+            "investigation_timeline_entries_v2",
+            "investigation_evidence_references",
+            "investigation_integrity_assessments",
+            "investigation_provenance_bundles",
+            "investigation_corrections",
+            "investigation_correction_impacts",
+            "investigation_reviews",
+            "investigation_relationships",
+            "investigation_hold_overlays",
+            "investigation_retention_evaluations",
+            "investigation_deletion_receipts",
+            "investigation_export_manifests",
+            "investigation_impact_jobs",
+            "investigation_command_receipts",
+            "investigation_outbox",
+            "platform_service_objectives",
+            "platform_error_budgets",
+            "platform_degradation_states",
+            "platform_circuit_states",
+            "platform_kill_switch_revisions",
+            "platform_recovery_results",
+            "platform_capacity_results",
+            "platform_supply_chain_inventories",
+            "platform_security_evidence",
+            "platform_operations_outbox",
         }
         missing_tables = required_tables - table_names
         missing_columns = REQUIRED_CAMERA_COLUMNS - camera_columns
@@ -256,12 +588,42 @@ class Database:
         missing_analytics_assignment_columns = (
             REQUIRED_ANALYTICS_ASSIGNMENT_COLUMNS - analytics_assignment_columns
         )
+        missing_intelligence_rule_columns = (
+            REQUIRED_INTELLIGENCE_RULE_COLUMNS - intelligence_rule_columns
+        )
+        missing_reference_provider_columns = (
+            REQUIRED_REFERENCE_PROVIDER_COLUMNS - reference_provider_columns
+        )
+        missing_correlation_run_columns = (
+            REQUIRED_CORRELATION_RUN_COLUMNS - correlation_run_columns
+        )
+        missing_correlation_hypothesis_columns = (
+            REQUIRED_CORRELATION_HYPOTHESIS_COLUMNS - correlation_hypothesis_columns
+        )
+        missing_alert_columns = REQUIRED_ALERT_COLUMNS - alert_columns
+        missing_reference_integration_columns = {
+            table: required - reference_integration_columns[table]
+            for table, required in REQUIRED_REFERENCE_INTEGRATION_COLUMNS.items()
+            if required - reference_integration_columns[table]
+        }
+        missing_platform_columns = {
+            table: required - platform_columns[table]
+            for table, required in REQUIRED_PLATFORM_COLUMNS.items()
+            if required - platform_columns[table]
+        }
         if (
             missing_tables
             or missing_columns
             or missing_audit_columns
             or missing_stream_columns
             or missing_analytics_assignment_columns
+            or missing_intelligence_rule_columns
+            or missing_reference_provider_columns
+            or missing_correlation_run_columns
+            or missing_correlation_hypothesis_columns
+            or missing_alert_columns
+            or missing_reference_integration_columns
+            or missing_platform_columns
         ):
             raise DatabaseNotReadyError("database migrations are not current")
         if self.allow_unversioned_schema:
@@ -284,3 +646,10 @@ class Database:
 def get_session(request: Request) -> Iterator[Session]:
     with request.app.state.database.session_factory() as session:
         yield session
+
+
+# Alembic imports this module directly, so Phase 4 tables must register here.
+from hcam.intelligence import models as _intelligence_models  # noqa: E402,F401
+from hcam.intelligence.integrations import persistence as _integration_models  # noqa: E402,F401
+from hcam.intelligence.investigations import persistence as _investigation_models  # noqa: E402,F401
+from hcam.operations.platform import models as _platform_models  # noqa: E402,F401

@@ -1,0 +1,31 @@
+{
+  "name": "@hcam/gis-center",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 4174",
+    "build": "vite build",
+    "preview": "vite preview --port 4174",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@hcam/capabilities": "workspace:*",
+    "@hcam/contracts": "workspace:*",
+    "@hcam/design-tokens": "workspace:*",
+    "@hcam/gis-contracts": "workspace:*",
+    "@hcam/gis-domain": "workspace:*",
+    "@hcam/gis-renderers": "workspace:*",
+    "@hcam/test-fixtures": "workspace:*",
+    "@hcam/ui": "workspace:*",
+    "lucide-react": "catalog:",
+    "maplibre-gl": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-router": "catalog:"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "catalog:",
+    "vite": "catalog:"
+  }
+}

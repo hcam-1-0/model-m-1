@@ -1,0 +1,39 @@
+{
+  "schema_version": "hcam.phase4.p4_7.acceptance.v1",
+  "decision_id": "D-P4.7-ACCEPTANCE",
+  "status": "owner_accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-06",
+  "accepted_branch": "codex/phase4-operations-security-scale",
+  "accepted_implementation_commit": "6ad9ff4b06b5f5516e5b346408807a70fe6466a0",
+  "accepted_evidence_seal_commit": "9f96b7b2e642aa39d9b0473b84ee8f819938b04f",
+  "evidence_package": {
+    "package_id": "P4.7-EVIDENCE-PACKAGE-R0",
+    "path": "contracts/phase-4/p4-7/evidence-package.json",
+    "sha256": "B739251D7D86A265DE60BA9B9943A1D0002B515C68AA1297D8B1378ADF1C8FBC",
+    "canonical_component_digest": "75D0A3B7667C25BF8B5180639F5B8F3937A734FAA2B2BB63CB9FE9914182A875"
+  },
+  "accepted_progress": {
+    "phase_4_points": 100,
+    "phase_4_total_points": 100,
+    "phase_4_percent": 100.0,
+    "p4_7_points": 5,
+    "p4_7_total_points": 5,
+    "p4_7_percent": 100.0
+  },
+  "scope_effect": "Completes P4.7 and Phase 4 only under the sealed generated-only implementation evidence, deterministic replay, validation results, authorized P4.6 historical-readiness transition, explicit environment limitations, Phase 5 handoff contracts, and documented safety boundaries.",
+  "continuing_prohibitions": [
+    "phase5_planning_or_implementation",
+    "real_providers_or_network_access",
+    "credentials_or_secrets",
+    "Government_or_private_data",
+    "cameras_or_media",
+    "models_datasets_artifacts_or_inference",
+    "operational_alerts_or_actions",
+    "containers_Kubernetes_or_deployment",
+    "remote_Git"
+  ],
+  "owner_statement_sha256": "E2259AC928788615547B529210354DDB0CE5BEE14DF39EAE93B7F68B55B67957",
+  "owner_statement": "D-P4.7-ACCEPTANCE: I, mayank-admin, accept P4.7 evidence package P4.7-EVIDENCE-PACKAGE-R0 with SHA-256 B739251D7D86A265DE60BA9B9943A1D0002B515C68AA1297D8B1378ADF1C8FBC and canonical component digest 75D0A3B7667C25BF8B5180639F5B8F3937A734FAA2B2BB63CB9FE9914182A875, at technical commit 6ad9ff4b06b5f5516e5b346408807a70fe6466a0, including its generated-only implementation evidence, deterministic replay, validation results, authorized P4.6 historical-readiness transition, explicit environment limitations, Phase 5 handoff contracts, and documented safety boundaries. This acceptance completes P4.7 and Phase 4 only. It does not authorize Phase 5 planning or implementation, real providers or network access, credentials or secrets, Government or private data, cameras or media, models, datasets, artifacts or inference, operational alerts or actions, containers, Kubernetes, deployment, or remote Git."
+}

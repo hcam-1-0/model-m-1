@@ -1,0 +1,229 @@
+{
+  "schema_version": "hcam.phase5.p5_7.evidence_package.v1",
+  "package_id": "P5.7-EVIDENCE-PACKAGE-R0",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "prepared_on": "2026-09-12",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "branch": "codex/phase5-product-ux-contracts",
+  "technical_commit": "6a5e1c700779dbc0edb6fdd1a8dc4c6132dd21d6",
+  "start_package_sha256": "77E3A7885AA1969A9F50AF9EB3FE8EE05DEEAB0374FB1F83C4DD51B860C5395C",
+  "bound_input_digest": "E5B65A6611C9ED90A33B156DA6D632859CBFFF4BE4781AA2E03F910F0AEA1B4B",
+  "canonical_component_digest_algorithm": "Sort component paths ordinally, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "883B380A2A37E11082B530EBDFCA080A6C792640AFCE9D4471F3A3AF3D00B58E",
+  "components": [
+    {
+      "path": "contracts/phase-5/p5-7-evidence.json",
+      "bytes": 2823,
+      "sha256": "F1386E6ECFF4044BD4F5688B6008DB0BEE7B97C0B9CAA7A1C10BF1FC35E5C0B4"
+    },
+    {
+      "path": "contracts/phase-5/p5-7-release-manifest.json",
+      "bytes": 2896,
+      "sha256": "075F08494D331B3F2F0502FA2ECC57E759CECDF55927E91CB7728C278C454AD6"
+    },
+    {
+      "path": "contracts/phase-5/p5-7/accessibility-evidence-manifest.json",
+      "bytes": 492,
+      "sha256": "FA64C93087F7A9DB0A490889E406B7F05D6B7D5F59C6673B007AD01BCD6E7F8F"
+    },
+    {
+      "path": "contracts/phase-5/p5-7/browser-viewport-profile-matrix.json",
+      "bytes": 1348,
+      "sha256": "C50076F66ED1811E9BC58C9E3559900D68A259BB51E5DD4B6353F35A9538ACDB"
+    },
+    {
+      "path": "contracts/phase-5/p5-7/generated-contract-cases.json",
+      "bytes": 976260,
+      "sha256": "85BE94B0E7D43E6E688DD4CD7CD075E6B45F6866896B6B17F135D7D457564FB8"
+    },
+    {
+      "path": "contracts/phase-5/p5-7/generated-workloads.json",
+      "bytes": 696,
+      "sha256": "32CD94B22E85A672849B3DEC793E548968A6B212FB1F2B192906DDA07ABC6849"
+    },
+    {
+      "path": "contracts/phase-5/p5-7/journey-manifest.json",
+      "bytes": 3038,
+      "sha256": "6E207643A0685B4C94FB0FCF3667ECC50F380F32835C7B53F62C00142DF43012"
+    },
+    {
+      "path": "contracts/phase-5/p5-7/localization-time-manifest.json",
+      "bytes": 595,
+      "sha256": "F1556FD9E7F01AEA17DA79C32F4A91B198343383A72D87F66704CA148FA3FDB0"
+    },
+    {
+      "path": "contracts/phase-5/p5-7/performance-budget-manifest.json",
+      "bytes": 785,
+      "sha256": "5E7231E3D6809375ED423008262A14FC4C2F7EBCF891C9699B51BBC58242FC6F"
+    },
+    {
+      "path": "contracts/phase-5/p5-7/quality-contracts.v1.json",
+      "bytes": 2200,
+      "sha256": "E8A33C5B306B964693F537E79637B6B450EAA6FEC39A987D2FA9DDD558677E07"
+    },
+    {
+      "path": "contracts/phase-5/p5-7/resilience-fault-manifest.json",
+      "bytes": 406,
+      "sha256": "1DC968B850F4F29B455B5804921950BBA1E32D6D9EF4A6A38D6CEF968A82C990"
+    },
+    {
+      "path": "contracts/phase-5/p5-7/security-privacy-manifest.json",
+      "bytes": 481,
+      "sha256": "6301C791C47B021B6ACA2547CA46071C87A7C0E9A2F9E36EFF0E766EDBB79EA4"
+    },
+    {
+      "path": "contracts/phase-5/p5-7/source-manifest.json",
+      "bytes": 1035,
+      "sha256": "D74EE7425101892945C2AC40CEDD4A01F934DF0403B9FE9D51744AD234106744"
+    },
+    {
+      "path": "contracts/phase-5/p5-7/validation-summary.json",
+      "bytes": 3534,
+      "sha256": "356B5ACAF77E530F73C6EF392D7C6AAFE6DAE7A3522DDDCB84F1D16863F4CBFE"
+    },
+    {
+      "path": "docs/phase-5/p5-7/evidence.md",
+      "bytes": 678,
+      "sha256": "61BC8A455E9E2BEA7807ADA2024B285EBA220C0C70B62B84599CE342CE44B480"
+    },
+    {
+      "path": "docs/phase-5/p5-7/implementation.md",
+      "bytes": 1154,
+      "sha256": "275EBB6212EB98D089054E24ABC330D88E461C34C9588EDB00F10A9970580667"
+    },
+    {
+      "path": "docs/phase-5/p5-7/limitations.md",
+      "bytes": 1508,
+      "sha256": "DC5D180C079A9114F9357D996B8F2D8A6D6E385E1D8306DF4DD2927133F0FF30"
+    },
+    {
+      "path": "docs/phase-5/p5-7/validation.md",
+      "bytes": 996,
+      "sha256": "BB2E4414993CB19267318082FA320C59FF8D75B1BCE584A2BB2A17627AF9B6D9"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/app.tsx",
+      "bytes": 5563,
+      "sha256": "3C218C595B23817EB1B8F5D8DFDD90E69E66D7A65C099E9893E23F063A2BDC8F"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/components/evidence-limitations.tsx",
+      "bytes": 577,
+      "sha256": "7E43B072920271DC02746BC637BE2BEFB197849BBA1FE4DEE7882BC72877F984"
+    },
+    {
+      "path": "frontend/apps/evidence-center/src/styles.css",
+      "bytes": 17123,
+      "sha256": "DBC04DDFE6B70982ACA7463899052E57CD0978182DCDCC87DFF2D6CA164F1D4B"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/app.tsx",
+      "bytes": 5774,
+      "sha256": "F6D6D019D4B21CCE5C8E543FC88D4ACBE8B74ADBA2B6CFC73E800FD809C46DB6"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/components/authority-limit.tsx",
+      "bytes": 589,
+      "sha256": "EAD439A96223E1506547F7DD0ECAA7A4159BFCE0749BF423A77C71AAA2EBE654"
+    },
+    {
+      "path": "frontend/apps/investigation-center/src/styles.css",
+      "bytes": 16695,
+      "sha256": "526CB081EB480A709E233DD27B94F478F1BFAA6D0E8F717F2DA8971FE0CFE34C"
+    },
+    {
+      "path": "frontend/evidence/p5-7-accessibility-report.json",
+      "bytes": 724,
+      "sha256": "767FCA0DF1B6BD0C0783929D8A4B97D96CE0878C981B8DCEBF4CF1DFC4FE6CF2"
+    },
+    {
+      "path": "frontend/evidence/p5-7-browser-matrix.json",
+      "bytes": 24857,
+      "sha256": "6FFEDD25AAEA5B49424B7D6BEF859DD584523B4C1D1E0BAC6147407955CF3ED9"
+    },
+    {
+      "path": "frontend/evidence/p5-7-dependency-baseline.json",
+      "bytes": 705,
+      "sha256": "CC4BFDCA630652979F1145F15F2B86C4F6395BFDB449841351A87814880CB1F7"
+    },
+    {
+      "path": "frontend/evidence/p5-7-evidence-graph.json",
+      "bytes": 3726,
+      "sha256": "D12E6D15FFC61EA6CA29423DC1A8EB8F2E3E69F9718B3E08612F6C6600EC4E0E"
+    },
+    {
+      "path": "frontend/evidence/p5-7-fixture-manifest.json",
+      "bytes": 626,
+      "sha256": "80CA76C6974A048F5AF6436A2CF3A5003610D01173E49679EA34133271EA2BD4"
+    },
+    {
+      "path": "frontend/evidence/p5-7-localization-report.json",
+      "bytes": 603,
+      "sha256": "58E7AE9394375B5C2118561EAABEDBFAE7B9D4C15A05D6631BAE95C2A8ADAC89"
+    },
+    {
+      "path": "frontend/evidence/p5-7-performance-report.json",
+      "bytes": 1575,
+      "sha256": "A5D394F9DB89121C21AC872FD4F6DF258D0742C3CA54A1444A5E199B9F0917D3"
+    },
+    {
+      "path": "frontend/evidence/p5-7-release-manifest.json",
+      "bytes": 2896,
+      "sha256": "075F08494D331B3F2F0502FA2ECC57E759CECDF55927E91CB7728C278C454AD6"
+    },
+    {
+      "path": "frontend/evidence/p5-7-repeatability-report.json",
+      "bytes": 1389,
+      "sha256": "49BBB8062D450522977D7F3125474E0B65E978D5F058510814B2B13DCE7926DD"
+    },
+    {
+      "path": "frontend/evidence/p5-7-resilience-report.json",
+      "bytes": 640,
+      "sha256": "4C04DBDAAD98BAE58C917380A270E4B402F9D0391F081BC7ACB4665507C04A8C"
+    },
+    {
+      "path": "frontend/evidence/p5-7-security-report.json",
+      "bytes": 937,
+      "sha256": "60869740938DCECFFDCD775B1BF1729C39F84775D0A9FD64637A74AA6B77052F"
+    },
+    {
+      "path": "frontend/evidence/p5-7-source-manifest.json",
+      "bytes": 1096,
+      "sha256": "F14AB7B4C281B61286CCFE52F611FB16AFC37C34877E25441E3F0DCCA91B1DE5"
+    },
+    {
+      "path": "frontend/evidence/p5-7-validation-summary.json",
+      "bytes": 3534,
+      "sha256": "356B5ACAF77E530F73C6EF392D7C6AAFE6DAE7A3522DDDCB84F1D16863F4CBFE"
+    },
+    {
+      "path": "frontend/playwright.config.ts",
+      "bytes": 7327,
+      "sha256": "149F4239D8FEB24AC9B68F316DF290133443D68AF42A7AFC3B9FE050BAEAC568"
+    },
+    {
+      "path": "frontend/scripts/generate-validation-evidence.mjs",
+      "bytes": 42987,
+      "sha256": "7C778F18DDDA738BDD3A61BDB1BB7286ED6BCA14043766F25F57F51844BBB09A"
+    },
+    {
+      "path": "tests/phase5_frontend/test_phase52_verifier.py",
+      "bytes": 6898,
+      "sha256": "B010E94BCF5C2757A374512541F3E85C2E6FEB4F9BD23EAE5DE146520776CC01"
+    }
+  ],
+  "validation_status": "pass_with_explicit_environment_limitations",
+  "technical_progress": "11/12 (91.6667%)",
+  "phase_5_technical_progress": "99/100 (99.0000%)",
+  "owner_acceptance_effect": "complete_P5_7_and_Phase_5_only",
+  "acceptance_record_path": "contracts/phase-5/p5-7-acceptance.json",
+  "continuing_prohibitions": [
+    "release_or_deployment",
+    "Phase_6",
+    "real_provider_network_camera_media_or_data_access",
+    "models_datasets_artifacts_or_inference",
+    "operational_or_administrative_actions",
+    "containers_Kubernetes_or_remote_Git"
+  ]
+}

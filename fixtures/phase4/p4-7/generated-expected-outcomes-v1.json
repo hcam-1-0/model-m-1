@@ -1,0 +1,330 @@
+{
+  "contract_type": "hcam.acceptance.expected-outcomes.v1",
+  "generated_only": true,
+  "outcomes": [
+    {
+      "scenario_id": "S00",
+      "steps": [
+        {
+          "outcome": "accepted",
+          "reason_code": "event.observed",
+          "step_id": "p47.s00.step.01"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "correlation.hypothesis_created",
+          "step_id": "p47.s00.step.02"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "rule.matched",
+          "step_id": "p47.s00.step.03"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "alert.proposed",
+          "step_id": "p47.s00.step.04"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "reference.candidate_set_created",
+          "step_id": "p47.s00.step.05"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "review.approved",
+          "step_id": "p47.s00.step.06"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "alert.closed",
+          "step_id": "p47.s00.step.07"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "investigation.opened",
+          "step_id": "p47.s00.step.08"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "evidence.reference_registered",
+          "step_id": "p47.s00.step.09"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "signal.projected",
+          "step_id": "p47.s00.step.10"
+        }
+      ],
+      "terminal_state": "completed"
+    },
+    {
+      "scenario_id": "S01",
+      "steps": [
+        {
+          "outcome": "accepted",
+          "reason_code": "event.observed",
+          "step_id": "p47.s01.step.01"
+        },
+        {
+          "outcome": "abstained",
+          "reason_code": "correlation.no_match",
+          "step_id": "p47.s01.step.02"
+        },
+        {
+          "outcome": "abstained",
+          "reason_code": "rule.not_matched",
+          "step_id": "p47.s01.step.03"
+        },
+        {
+          "outcome": "abstained",
+          "reason_code": "reference.abstained",
+          "step_id": "p47.s01.step.04"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "signal.projected",
+          "step_id": "p47.s01.step.05"
+        }
+      ],
+      "terminal_state": "abstained"
+    },
+    {
+      "scenario_id": "S02",
+      "steps": [
+        {
+          "outcome": "accepted",
+          "reason_code": "event.observed",
+          "step_id": "p47.s02.step.01"
+        },
+        {
+          "outcome": "duplicate",
+          "reason_code": "event.duplicate_suppressed",
+          "step_id": "p47.s02.step.02"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "correlation.hypothesis_created",
+          "step_id": "p47.s02.step.03"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "rule.matched",
+          "step_id": "p47.s02.step.04"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "alert.proposed",
+          "step_id": "p47.s02.step.05"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "review.approved",
+          "step_id": "p47.s02.step.06"
+        }
+      ],
+      "terminal_state": "accepted"
+    },
+    {
+      "scenario_id": "S03",
+      "steps": [
+        {
+          "outcome": "accepted",
+          "reason_code": "event.observed",
+          "step_id": "p47.s03.step.01"
+        },
+        {
+          "outcome": "degraded",
+          "reason_code": "chronology.conflict_recorded",
+          "step_id": "p47.s03.step.02"
+        },
+        {
+          "outcome": "abstained",
+          "reason_code": "correlation.conflict_abstained",
+          "step_id": "p47.s03.step.03"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "signal.projected",
+          "step_id": "p47.s03.step.04"
+        }
+      ],
+      "terminal_state": "conflict_recorded"
+    },
+    {
+      "scenario_id": "S04",
+      "steps": [
+        {
+          "outcome": "accepted",
+          "reason_code": "event.observed",
+          "step_id": "p47.s04.step.01"
+        },
+        {
+          "outcome": "denied",
+          "reason_code": "authorization.cross_scope_denied",
+          "step_id": "p47.s04.step.02"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "signal.projected",
+          "step_id": "p47.s04.step.03"
+        }
+      ],
+      "terminal_state": "denied"
+    },
+    {
+      "scenario_id": "S05",
+      "steps": [
+        {
+          "outcome": "accepted",
+          "reason_code": "event.observed",
+          "step_id": "p47.s05.step.01"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "correlation.hypothesis_created",
+          "step_id": "p47.s05.step.02"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "rule.matched",
+          "step_id": "p47.s05.step.03"
+        },
+        {
+          "outcome": "degraded",
+          "reason_code": "reference.unavailable",
+          "step_id": "p47.s05.step.04"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "signal.projected",
+          "step_id": "p47.s05.step.05"
+        }
+      ],
+      "terminal_state": "reference_degraded"
+    },
+    {
+      "scenario_id": "S06",
+      "steps": [
+        {
+          "outcome": "accepted",
+          "reason_code": "event.observed",
+          "step_id": "p47.s06.step.01"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "correlation.hypothesis_created",
+          "step_id": "p47.s06.step.02"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "rule.matched",
+          "step_id": "p47.s06.step.03"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "alert.proposed",
+          "step_id": "p47.s06.step.04"
+        },
+        {
+          "outcome": "denied",
+          "reason_code": "review.denied",
+          "step_id": "p47.s06.step.05"
+        },
+        {
+          "outcome": "denied",
+          "reason_code": "alert.transition_denied",
+          "step_id": "p47.s06.step.06"
+        }
+      ],
+      "terminal_state": "review_denied"
+    },
+    {
+      "scenario_id": "S07",
+      "steps": [
+        {
+          "outcome": "accepted",
+          "reason_code": "event.observed",
+          "step_id": "p47.s07.step.01"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "correlation.hypothesis_created",
+          "step_id": "p47.s07.step.02"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "rule.matched",
+          "step_id": "p47.s07.step.03"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "alert.proposed",
+          "step_id": "p47.s07.step.04"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "review.approved",
+          "step_id": "p47.s07.step.05"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "investigation.opened",
+          "step_id": "p47.s07.step.06"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "evidence.reference_registered",
+          "step_id": "p47.s07.step.07"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "correction.recorded",
+          "step_id": "p47.s07.step.08"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "retraction.recorded",
+          "step_id": "p47.s07.step.09"
+        }
+      ],
+      "terminal_state": "retracted"
+    },
+    {
+      "scenario_id": "S08",
+      "steps": [
+        {
+          "outcome": "accepted",
+          "reason_code": "event.observed",
+          "step_id": "p47.s08.step.01"
+        },
+        {
+          "outcome": "degraded",
+          "reason_code": "worker.degraded",
+          "step_id": "p47.s08.step.02"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "signal.projected",
+          "step_id": "p47.s08.step.03"
+        },
+        {
+          "outcome": "recovered",
+          "reason_code": "worker.recovered",
+          "step_id": "p47.s08.step.04"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "correlation.hypothesis_created",
+          "step_id": "p47.s08.step.05"
+        },
+        {
+          "outcome": "accepted",
+          "reason_code": "rule.matched",
+          "step_id": "p47.s08.step.06"
+        }
+      ],
+      "terminal_state": "recovered"
+    }
+  ]
+}

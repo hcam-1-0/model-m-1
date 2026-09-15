@@ -1,0 +1,508 @@
+{
+  "schema_version": "hcam.phase4.p4_5.start-authorization-package.v1",
+  "package_id": "P4.5-START-R0",
+  "decision_id": "D-P4.5-START",
+  "status": "owner_authorization_required",
+  "effective": false,
+  "prepared_on": "2026-09-05",
+  "expires_on_if_accepted": "2026-10-05",
+  "repository": "hcam-2-0/h-cam-2.0",
+  "planning_branch": "codex/phase4-investigation-evidence-planning",
+  "planning_base_commit": "22a4d9495e16768e44b744a1b8dd85c541688b65",
+  "planned_implementation_branch": "codex/phase4-investigation-evidence",
+  "implementation_branch_base_policy": "clean_descendant_of_planning_base_containing_only_the_exact_planning_acceptance_start_package_and_status_transition_before_start_acceptance",
+  "accepted_predecessor": {
+    "phase": "P4.4",
+    "acceptance_path": "contracts/phase-4/p4-4/acceptance.json",
+    "acceptance_sha256": "2E298EAA88E9F2586633955838FBC367641A807F4635866BCE488DC1E60936AD",
+    "accepted_implementation_commit": "9efacc75336cc942db9615c21e371cb3322aea73",
+    "acceptance_commit": "c8d80bf25d089969f411170ce640b6c373f5e017"
+  },
+  "accepted_reconciled_planning": {
+    "package_id": "P4.5-PLANNING-R1",
+    "path": "contracts/phase-4/p4-5-planning-r1-package.json",
+    "sha256": "1E32E73885C81499117D84E9F15C5A038066B9BC22C17D1F58F98FBE6A6FEDE4"
+  },
+  "planning_acceptance": {
+    "decision_id": "D-P4.5-PLANNING-R1-ACCEPTANCE",
+    "path": "contracts/phase-4/p4-5-planning-r1-acceptance.json",
+    "sha256": "006FF8AD8B769C243C97DDF29E1CCB4F6CFE88CDD067AAA1D679B35752326282"
+  },
+  "binding_decisions": {
+    "record_path": "contracts/phase-4/p4-5-owner-decisions.json",
+    "record_sha256": "DF6ED4FCBF3C46DA9A57FE83AA1D47226F317C983598190FFE64F786B223FC11",
+    "explanation_path": "docs/phase-4/p4-5-owner-decisions.md",
+    "explanation_sha256": "969F461812319CAFA8746BE417C01213F0FC8CAAE5758A4B9E530C4AE8C61E54",
+    "selected_profile": "A_with_guarded_D_capability/A/A/A_with_guarded_C_capability/A/A/A/A/A/A",
+    "canonical_timeline_authority": "case_neutral_HCAM_investigation_timeline",
+    "optional_case_management_capability": "disabled_typed_case_management_bridge_contract",
+    "canonical_provenance_authority": "bounded_HCAM_entity_activity_agent_graph",
+    "optional_PROV_capability": "derived_generated_only_disabled_PROV_interchange_projection"
+  },
+  "authorization_effect_if_owner_accepts_exact_digest": [
+    "record_the_exact_D_P4_5_START_owner_statement_without_expanding_scope",
+    "create_or_switch_to_the_exact_local_implementation_branch_from_the_clean_planning_checkpoint",
+    "implement_only_the_allowlisted_generated_only_investigation_timeline_evidence_reference_integrity_provenance_correction_review_retention_deletion_export_contract_API_persistence_and_evidence_scope",
+    "define_but_do_not_activate_the_case_management_bridge_or_external_PROV_import_surfaces",
+    "use_only_deterministic_non_issuable_generated_fixtures_without_source_locator_resolution_copying_or_verification",
+    "simulate_retention_hold_deletion_and_reference_only_export_results_without_selecting_legal_policy_or_executing_external_actions",
+    "run_local_generated_only_validation_with_existing_locked_dependencies_and_at_most_eight_bounded_in_scope_remediation_and_reseal_cycles",
+    "optionally_validate_against_an_already_available_local_PostgreSQL_PostGIS_test_database_without_container_service_or_network_changes",
+    "create_local_checkpoint_commits_without_push",
+    "prepare_one_non_effective_exact_P4_5_owner_acceptance_proposal"
+  ],
+  "work_packages": [
+    {
+      "id": "P4.5-W1",
+      "name": "contracts_guarded_capabilities_and_generated_fixtures",
+      "scope": [
+        "closed_V2_timeline_entry_temporal_evidence_integrity_provenance_correction_review_relationship_retention_hold_deletion_export_and_problem_contracts",
+        "disabled_CaseManagementBridgeContract_and_generated_only_ProvInterchangeProjectionV1_without_external_import_or_runtime",
+        "strict_unknown_field_value_size_count_depth_fanout_version_digest_and_prohibited_content_bounds",
+        "at_least_512_deterministic_non_issuable_generated_scenarios_with_byte_exact_regeneration"
+      ]
+    },
+    {
+      "id": "P4.5-W2",
+      "name": "persistence_migration_row_security_and_V1_compatibility",
+      "scope": [
+        "additive_0017_investigation_evidence_migration_descending_from_0016_reference_integrations",
+        "preserve_V1_tables_rows_and_read_projection_without_strengthening_historical_integrity_claims",
+        "append_only_revisions_restrictive_relationships_semantic_and_delivery_idempotency_and_optimistic_concurrency",
+        "application_department_filters_and_forced_PostgreSQL_RLS_with_explicit_SQLite_single_writer_boundary"
+      ]
+    },
+    {
+      "id": "P4.5-W3",
+      "name": "timeline_command_kernel_chronology_and_reconstruction",
+      "scope": [
+        "case_neutral_create_append_lifecycle_and_disposition_commands_with_exact_actor_purpose_reason_policy_and_revision",
+        "monotonic_record_sequence_dual_event_time_and_record_time_views_and_deterministic_idempotency_conflict_denial",
+        "exact_revision_and_trusted_record_time_reconstruction_with_later_correction_overlay",
+        "transactional_aggregate_entry_audit_and_outbox_commit_without_import_startup_worker_or_network_side_effects"
+      ]
+    },
+    {
+      "id": "P4.5-W4",
+      "name": "evidence_reference_integrity_and_provenance",
+      "scope": [
+        "immutable_reference_registration_without_locator_resolution_fetch_or_source_copy",
+        "append_only_integrity_availability_preservation_and_provenance_assessments_without authenticity_custody_or_legal inference",
+        "bounded_same_department_entity_activity_agent_graph_with_allowed_endpoint_order_cycle_depth_fanout_and_size constraints",
+        "deterministic_generated_PROV_projection_with_explicit_lossy_mapping_and_conformance_not_claimed"
+      ]
+    },
+    {
+      "id": "P4.5-W5",
+      "name": "correction_retraction_review_merge_reopen_and_impact_jobs",
+      "scope": [
+        "append_only_correction_and_retraction_entities_bound_to_exact_target_versions",
+        "bounded_deterministic_impact_closure_for_investigation_hypothesis_alert_review_search_and_export references",
+        "orthogonal_attributable_review_disposition_merge_alias_and_reopen_revisions_without_history deletion",
+        "PostgreSQL_SKIP_LOCKED_leases_deadlines_bounded_retries_recovery_dead_letters_and_per_timeline_serialization"
+      ]
+    },
+    {
+      "id": "P4.5-W6",
+      "name": "retention_hold_deletion_and_export_simulation",
+      "scope": [
+        "immutable_retention_policy_references_and_advisory_evaluation_without_builtin_period_or legal selection",
+        "separately_authorized_hold_overlay_contracts_that_never_grant_access_with_generated states only",
+        "dry_run_per_target_deletion_intents_and_generated_receipts_with_explicit residuals and universal_deletion_proven_false",
+        "purpose_recipient_bound_reference_only_canonical_export_manifests_without payload signature timestamp delivery or source access"
+      ]
+    },
+    {
+      "id": "P4.5-W7",
+      "name": "API_observability_security_compatibility_evidence_and_acceptance",
+      "scope": [
+        "department_role_purpose_reason_ETag_no_store_pagination_graph_reconstruction_and_export closure enforcement",
+        "low_cardinality_metrics_sanitized_traces_append_only_audit_transactional_outbox_replay_and recovery",
+        "focused_full_PostgreSQL_RLS_concurrency_security_migration_compatibility_Ruff_compile_build_lock_dependency_and readiness validation",
+        "seal_exact_source_fixture_contract_OpenAPI_migration_evidence_limitations_and_non_effective owner acceptance proposal"
+      ]
+    }
+  ],
+  "exact_additive_implementation_paths": [
+    "app/hcam/intelligence/investigations/__init__.py",
+    "app/hcam/intelligence/investigations/bounds.py",
+    "app/hcam/intelligence/investigations/contracts.py",
+    "app/hcam/intelligence/investigations/canonical.py",
+    "app/hcam/intelligence/investigations/chronology.py",
+    "app/hcam/intelligence/investigations/evidence.py",
+    "app/hcam/intelligence/investigations/integrity.py",
+    "app/hcam/intelligence/investigations/provenance.py",
+    "app/hcam/intelligence/investigations/corrections.py",
+    "app/hcam/intelligence/investigations/review.py",
+    "app/hcam/intelligence/investigations/relationships.py",
+    "app/hcam/intelligence/investigations/retention.py",
+    "app/hcam/intelligence/investigations/deletion.py",
+    "app/hcam/intelligence/investigations/exports.py",
+    "app/hcam/intelligence/investigations/case_bridge.py",
+    "app/hcam/intelligence/investigations/prov_projection.py",
+    "app/hcam/intelligence/investigations/jobs.py",
+    "app/hcam/intelligence/investigations/persistence.py",
+    "app/hcam/intelligence/investigations/service.py",
+    "app/hcam/intelligence/investigations/routes.py",
+    "app/hcam/intelligence/investigations/metrics.py",
+    "app/hcam/intelligence/investigations/runtime.py",
+    "migrations/versions/0017_investigation_evidence.py",
+    "contracts/phase-4/p4-5-start-authorization.json",
+    "contracts/phase-4/p4-5/investigation-evidence-contracts.json",
+    "contracts/phase-4/p4-5/database.json",
+    "contracts/phase-4/p4-5/openapi.json",
+    "contracts/phase-4/p4-5/fixtures/generated-timelines-v2.json",
+    "contracts/phase-4/p4-5/fixtures/generated-temporal-assertions-v1.json",
+    "contracts/phase-4/p4-5/fixtures/generated-evidence-references-v1.json",
+    "contracts/phase-4/p4-5/fixtures/generated-integrity-assessments-v1.json",
+    "contracts/phase-4/p4-5/fixtures/generated-provenance-bundles-v1.json",
+    "contracts/phase-4/p4-5/fixtures/generated-correction-propagation-v1.json",
+    "contracts/phase-4/p4-5/fixtures/generated-review-disposition-v1.json",
+    "contracts/phase-4/p4-5/fixtures/generated-merge-reopen-v1.json",
+    "contracts/phase-4/p4-5/fixtures/generated-retention-hold-v1.json",
+    "contracts/phase-4/p4-5/fixtures/generated-deletion-receipts-v1.json",
+    "contracts/phase-4/p4-5/fixtures/generated-export-manifests-v1.json",
+    "contracts/phase-4/p4-5/fixtures/generated-case-bridge-v1.json",
+    "contracts/phase-4/p4-5/fixtures/generated-prov-projections-v1.json",
+    "contracts/phase-4/p4-5/fixtures/generated-security-abuse-v1.json",
+    "contracts/phase-4/p4-5/evidence.json",
+    "contracts/phase-4/p4-5/evidence-package.json",
+    "contracts/phase-4/p4-5/acceptance-proposal.json",
+    "docs/phase-4/p4-5-evidence-review.md",
+    "tests/test_phase45_contracts.py",
+    "tests/test_phase45_canonical.py",
+    "tests/test_phase45_chronology.py",
+    "tests/test_phase45_evidence.py",
+    "tests/test_phase45_integrity.py",
+    "tests/test_phase45_provenance.py",
+    "tests/test_phase45_corrections.py",
+    "tests/test_phase45_review.py",
+    "tests/test_phase45_relationships.py",
+    "tests/test_phase45_retention.py",
+    "tests/test_phase45_deletion.py",
+    "tests/test_phase45_exports.py",
+    "tests/test_phase45_bridges.py",
+    "tests/test_phase45_persistence.py",
+    "tests/test_phase45_migration.py",
+    "tests/test_phase45_api.py",
+    "tests/test_phase45_security.py",
+    "tests/test_phase45_postgres.py",
+    "tests/test_phase45_readiness.py",
+    "tools/phase45_generated_investigations.py",
+    "tools/phase45_readiness.py"
+  ],
+  "exact_existing_paths_allowed_to_change": [
+    {
+      "path": ".github/workflows/python-ci.yml",
+      "pre_change_sha256": "A0192D0773417ED56A9C1C1EB3B7B99F754A1393FDE3DD432413B51C3755D5E9",
+      "reason": "add_P4_5_generated_contract_migration_security_and_optional_existing_PostgreSQL_validation_without_removing_prior_jobs"
+    },
+    {
+      "path": "app/hcam/database.py",
+      "pre_change_sha256": "7E435DE4461901222979FA8E01FC0DAEF3823F8132219C3A7C037808C71597EE",
+      "reason": "advance_current_schema_to_0017_and_require_P4_5_tables"
+    },
+    {
+      "path": "app/hcam/main.py",
+      "pre_change_sha256": "9B9C89EF6495A0B9D861D97180887C715FFCB35878A9D4E0431733D0285A1F4C",
+      "reason": "register_default_off_generated_only_investigation_router_and_state"
+    },
+    {
+      "path": "app/hcam/security/auth.py",
+      "pre_change_sha256": "C5B4A187B58562F1B33C1F07CD6BD6F18FB18384555362C2F8DFF77BD341E176",
+      "reason": "add_separated_investigation_evidence_integrity_correction_records_and_export_permissions_without_hold_deletion_or_delivery authority"
+    },
+    {
+      "path": "app/hcam/settings.py",
+      "pre_change_sha256": "0558995D38740414077E4A1EC64C832A0BFB4F5E55A717398C8E8744DE661606",
+      "reason": "add_default_false_production_forbidden_generated_investigation_lane settings"
+    },
+    {
+      "path": "app/hcam/intelligence/models.py",
+      "pre_change_sha256": "C14652341850E191A4CEECA7938386048BA10D16D6A2AD98879A162CEE2240B5",
+      "reason": "register_additive_investigation_and_evidence_persistence metadata"
+    },
+    {
+      "path": "app/hcam/intelligence/routes.py",
+      "pre_change_sha256": "EBE6236E30621AD55EF767E25B85AC42A363893FA0E801E3C88F3B3D580451EC",
+      "reason": "compose_bounded_generated_only_investigation_surfaces_without_source_resolution_or operational action routes"
+    },
+    {
+      "path": "app/hcam/intelligence/row_security.py",
+      "pre_change_sha256": "54D2AA9CB60A4E770B4CE552853AB2CAAEB936437EDEF0F49195EFBF657FE291",
+      "reason": "include_new_department_scoped_append_only_tables_in_forced_RLS_readiness checks"
+    },
+    {
+      "path": "app/hcam/intelligence/schemas.py",
+      "pre_change_sha256": "F6B4885016A7C3FC663A990E00B8E1CDE08D6A8A26E29CD3EB1DB929E62D4E1F",
+      "reason": "add_minimized_generated_investigation_timeline_and_evidence projections"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/contracts.py",
+      "pre_change_sha256": "E7290E5690481B8C528152C0DF9151031278DC4ED6B04EE75ADA028B429E4533",
+      "reason": "add_immutable_reference_contract_for_visible_correction_impact_without_rewriting_alert history"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/persistence.py",
+      "pre_change_sha256": "6FCB422AE305DACE881BAB6234CB3A5B1ED0F96152E6CD74008E0E8AF458E4D7",
+      "reason": "append_correction_impact_reference_revisions_without_deleting_or_mutating_accepted alert records"
+    },
+    {
+      "path": "app/hcam/intelligence/alerts/service.py",
+      "pre_change_sha256": "29303CD1173D6B856EF574C1EABF60C7DCFD14BF4B8CFF92DF1077DC1EDFF5AC",
+      "reason": "accept_only_authorized_idempotent_investigation_correction_impact_commands_without operational side effects"
+    },
+    {
+      "path": "contracts/phase-4/database.json",
+      "pre_change_sha256": "13276B117143C57ED09BBFA6FFA7F21E6927B166592B7A5C58772A5E084C75C2",
+      "reason": "advance_combined_database_snapshot_to_0017"
+    },
+    {
+      "path": "contracts/phase-4/intelligence-contracts.json",
+      "pre_change_sha256": "E5A8B141F1CFB682E0299F64E4B182ACB52A81DFE1A974FBEEC8914A293AC588",
+      "reason": "add_generated_investigation_evidence_and_guarded_capability contract projections"
+    },
+    {
+      "path": "contracts/phase-4/openapi.json",
+      "pre_change_sha256": "7A28024146D2064CDCA8F1D98ABBC1C9DD414F9EE0CD1BA5AE0D90670B4D45AA",
+      "reason": "add_bounded_default_off_generated_only_investigation routes"
+    },
+    {
+      "path": "tests/conftest.py",
+      "pre_change_sha256": "A2441C55D344962B7D7F729F1D56851BB94FD9E80A8959E8518DD92C793165DA",
+      "reason": "add_generated_only_P4_5_principals_and fixtures"
+    },
+    {
+      "path": "tests/test_analytics_assignment_migration.py",
+      "pre_change_sha256": "D08B65B7B87CFD4176F78C9EE15F1695024438B2E5587740DAA7C083853B09FD",
+      "reason": "update_only_current_repository_head_assertion_to_0017_while_preserving_Phase_3 checks"
+    },
+    {
+      "path": "tests/test_phase40_migration.py",
+      "pre_change_sha256": "B8DFB207FBAB4A3C567B83A006E343D77840EAFE81D93119F58896ECD4DA6A20",
+      "reason": "preserve_historical_0012_validation_while_recognizing_0017_as_current_head"
+    },
+    {
+      "path": "tests/test_phase41_migration.py",
+      "pre_change_sha256": "1D46E04105B5BD1E32898AAEFC4D1397CDD0BF026716B56D3C791E7E591AF8BB",
+      "reason": "preserve_historical_0013_validation_while_recognizing_0017_as_current_head"
+    },
+    {
+      "path": "tests/test_phase42_migration.py",
+      "pre_change_sha256": "2DA5830AE181836D99ABB6F36A80D7B4A3CB8AA4A20FF938F022174D6811C080",
+      "reason": "preserve_historical_0014_validation_while_recognizing_0017_as_current_head"
+    },
+    {
+      "path": "tests/test_phase43_migration.py",
+      "pre_change_sha256": "A9297C86E30F235E31A57FD6874D7D4A47E8AE147076CBE532925F2CDD7B7248",
+      "reason": "preserve_historical_0015_validation_while_recognizing_0017_as_current_head"
+    },
+    {
+      "path": "tests/test_phase44_migration.py",
+      "pre_change_sha256": "3116415BD1CAC572DD32FCEC10DE03178990AAF89AA33EF4A709C4DBEB3F6C7F",
+      "reason": "preserve_historical_0016_validation_and_add_0016_to_0017_to_0016_to_0017_compatibility cycle"
+    },
+    {
+      "path": "tests/test_phase44_readiness.py",
+      "pre_change_sha256": "F37DE586C9F2A47DD207088E0D45330B70D253370E417FD3B996B9A5A83C0852",
+      "reason": "validate_P4_4_from_accepted_evidence_while_current_checkout_advances_to_P4_5"
+    },
+    {
+      "path": "tools/phase44_readiness.py",
+      "pre_change_sha256": "FAFCCBB552F0D1741A0634E361480E36B121F3AD358CD4273FDADEC48A39BEF9",
+      "reason": "preserve_P4_4_historical_readiness_without_requiring_current_P4_5_head"
+    },
+    {
+      "path": "docs/phase-4/README.md",
+      "pre_change_sha256": "F1BE8AF3C980C8EF8EE73B40625FF9D8755196C46BDCA36A7DF1773DBCA55093",
+      "reason": "record_P4_5_start_technical_progress_and_acceptance_state"
+    },
+    {
+      "path": "docs/phase-4/status.md",
+      "pre_change_sha256": "837DEE88AA4FB2AF0BD361B86160D81A9730C7C46F3466F53397F046C3FAE191",
+      "reason": "record_P4_5_start_technical_progress_and_acceptance_state"
+    }
+  ],
+  "immutable_dependency_bindings": [
+    {
+      "path": "pyproject.toml",
+      "sha256": "B2740298D7D1E5D147CC48E21750966EB0B765376853F27ACDA990D70F328605"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "69CB301D0F8D97BC0973C620F47FB0D84BFAAE25A1D405E067B15005994F55EF"
+    }
+  ],
+  "immutable_scope": [
+    "all_existing_contracts_phase_3_and_docs_phase_3_files",
+    "all_existing_migrations_through_0016_reference_integrations",
+    "all_accepted_P4_0_through_P4_4_packages_evidence_acceptance_and_source behavior_except_exact_hash_bound_compatibility_paths",
+    "contracts/phase-4/p4-5-plan-authorization.json",
+    "contracts/phase-4/p4-5-planning-package.json",
+    "contracts/phase-4/p4-5-owner-decisions.json",
+    "contracts/phase-4/p4-5-planning-r1-package.json",
+    "contracts/phase-4/p4-5-planning-r1-acceptance-proposal.json",
+    "contracts/phase-4/p4-5-planning-r1-acceptance.json",
+    "docs/phase-4/p4-5-research-record.md",
+    "docs/phase-4/p4-5-threat-model.md",
+    "docs/phase-4/p4-5-contract-catalog.md",
+    "docs/phase-4/p4-5-decision-packet.md",
+    "docs/phase-4/p4-5-owner-decisions.md",
+    "docs/phase-4/p4-5-implementation-plan.md"
+  ],
+  "bounded_generated_runtime_contract_after_authorization": {
+    "generated_only": true,
+    "non_issuable": true,
+    "operational": false,
+    "default_off": true,
+    "production_forbidden": true,
+    "source_reference_only": true,
+    "source_locator_resolution": false,
+    "source_byte_or_media_retention": false,
+    "real_integrity_verification": false,
+    "case_management_bridge_defined": true,
+    "case_management_bridge_enabled": false,
+    "external_case_system_or_case_data": false,
+    "generated_PROV_projection_defined": true,
+    "external_PROV_import_or_dynamic_parser": false,
+    "PROV_conformance_claim": false,
+    "retention_period_selected": false,
+    "hold_activation_or_release": false,
+    "deletion_execution": false,
+    "export_payload_signature_timestamp_delivery_or_receipt": false,
+    "legal_admissibility_authenticity_custody_or_certification_state": "not_established",
+    "PostgreSQL_authoritative_business_truth": true,
+    "startup_import_or_read_worker_side_effect": false,
+    "network_or_external_provider": false,
+    "operational_action": false
+  },
+  "contract_and_resource_bounds": {
+    "unknown_fields": "forbidden",
+    "canonical_encoding": "UTF_8_ASCII_JSON_sorted_keys_compact_separators",
+    "digest": "SHA_256",
+    "maximum_contract_bytes": 65536,
+    "maximum_entry_payload_bytes": 16384,
+    "maximum_string_bytes": 4096,
+    "maximum_page_size": 200,
+    "maximum_entries_per_timeline": 10000,
+    "maximum_relationship_depth": 32,
+    "maximum_correction_chain_depth": 64,
+    "maximum_provenance_nodes": 4096,
+    "maximum_provenance_edges": 8192,
+    "maximum_provenance_depth": 32,
+    "maximum_provenance_fanout": 256,
+    "maximum_impact_targets_per_job": 5000,
+    "maximum_export_references": 10000,
+    "maximum_job_attempts": 3,
+    "worker_lease_seconds": 90,
+    "maximum_generated_attempt_duration_seconds": 30,
+    "minimum_generated_scenario_vectors": 512,
+    "source_payload_retention": "zero",
+    "runtime_default": "disabled"
+  },
+  "allowed_local_execution_after_authorization": {
+    "repository_owned_generated_JSON_only": true,
+    "existing_locked_dependencies_only": true,
+    "dependency_install_or_download": false,
+    "network_egress": false,
+    "generated_timeline_evidence_provenance_correction_and_export_evaluation": true,
+    "generated_case_bridge_and_PROV_projection_static_validation": true,
+    "local_SQLite_validation": true,
+    "already_available_local_PostgreSQL_PostGIS_validation_without_network_container_or_service_change": true,
+    "source_reference_resolution_copy_or_verification": false,
+    "real_retention_hold_deletion_or_export_action": false,
+    "model_dataset_artifact_or_sensitive_data_access": false,
+    "source_test_documentation_and_evidence_cycles_maximum": 8,
+    "local_checkpoint_commits": true,
+    "remote_git": false
+  },
+  "validation_gates": [
+    "accepted_P4_5_PLANNING_R1_and_planning_acceptance_hashes_remain_exact",
+    "all_accepted_P4_0_through_P4_4_histories_remain_verifiable_and_immutable",
+    "at_least_512_generated_non_issuable_scenarios_reproduce_byte_exact",
+    "closed_contract_canonical_chronology_idempotency_reconstruction_and_prohibited_content_tests_pass",
+    "source_references_never_resolve_fetch_copy_or_retain_media_document_or_external bytes",
+    "integrity_availability_provenance_preservation_authenticity_custody_and_legal states remain separate",
+    "case_management_bridge_and_PROV_interchange_projection_remain_disabled_non_authoritative_and generated_only",
+    "correction_retraction_impact_review_disposition_merge_alias_reopen_retry_recovery_and_dead_letter tests pass",
+    "retention_policy_hold_access_deletion_residual_and_reference_only_export controls fail closed",
+    "SQLite_0016_to_0017_to_0016_to_0017_cycle_and_V1_read_compatibility pass",
+    "when_available_PostgreSQL_forced_RLS_cross_department_concurrent_sequence_worker_and correction_propagation tests pass",
+    "new_or_materially_changed_P4_5_modules_achieve_at_least_90_percent_branch coverage",
+    "unconditional_repository_suite_Ruff_compile_build_lock_dependency_historical_and readiness checks pass",
+    "evidence_reconstruction_and_export_manifest_digests_reproduce_from_clean_local source",
+    "no_unsupported_PROV_legal_admissibility_authenticity_custody_retention_deletion_export operational_scale_or_deployment_claim_is_made"
+  ],
+  "stop_conditions": [
+    "path_or_scope_outside_this_package",
+    "immutable_hash_or_accepted_history_mismatch",
+    "real_source_provider_camera_media_case_person_vehicle_private_or_Government_record_is_required",
+    "source_locator_resolution_fetch_copy_or_real_integrity_verification_is_reachable",
+    "case_management_bridge_or_PROV_import_can_activate_or_mutate_HCAM_truth",
+    "legal_admissibility_authenticity_custody_certification_or_retention_period_is_inferred_or selected",
+    "hold_can_grant_access_or_real_hold_deletion_export_signature_timestamp_delivery_or receipt action is reachable",
+    "append_only_history_exact_version_department_purpose_reason_policy_or_idempotency_is weakened",
+    "correction_retraction_merge_or_reopen_can_erase_history_or_hide_previous reviewer knowledge",
+    "deletion_receipt_omits_residuals_or_claims_universal_deletion",
+    "export_manifest_hides_incomplete_denied_contradictory_or_unresolved closure",
+    "cross_department_visibility_or_forced_RLS_failure",
+    "prohibited_value_in_log_metric_trace_exception_problem_or_generated fixture",
+    "dependency_install_download_network_model_data_media_container_deployment_or_remote Git required",
+    "eight_in_scope_remediation_cycles_exhausted"
+  ],
+  "explicitly_not_authorized": [
+    "P4_5_implementation_before_exact_start_package_acceptance",
+    "new_or_changed_dependencies_lockfiles_installation_or_downloads",
+    "source_media_document_or_evidence_resolution_fetch_copy_retention_or_real_integrity verification",
+    "real_investigation_case_identifier_case_narrative_case_management_system_or_legal workflow",
+    "external_PROV_bundle_import_dynamic_parser_network_vocabulary_formal_conformance_suite_or conformance claim",
+    "retention_period_legal_policy_admissibility_authenticity_custody_or_certification decision",
+    "hold_activation_release_deletion_execution_export_payload_signature_timestamp_delivery_or recipient receipt",
+    "provider_or_Sentinel_network_DNS_redirect_proxy_callback_or_socket access",
+    "credential_secret_key_token_certificate_timestamp_authority_or_private_CA access",
+    "Government_police_private_personal_biometric_vehicle_owner_case_watchlist_or_provider data",
+    "models_datasets_checkpoints_artifacts_embeddings_inference_training_accelerators_or benchmarks",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous action",
+    "container_Kubernetes_cloud_pilot_production_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "frozen_progress": {
+    "phase4_before": {
+      "earned_points": 70,
+      "total_points": 100,
+      "percentage": "70.00%"
+    },
+    "p4_5_before": {
+      "earned_points": 0,
+      "total_points": 15,
+      "percentage": "0.0000%"
+    },
+    "technical_ceiling_before_validation_and_owner_acceptance": {
+      "phase4_earned_points": 83,
+      "phase4_percentage": "83.00%",
+      "p4_5_earned_points": 13,
+      "p4_5_percentage": "86.6667%"
+    },
+    "after_exact_validation_evidence_completion": {
+      "phase4_earned_points": 84,
+      "phase4_percentage": "84.00%",
+      "p4_5_earned_points": 14,
+      "p4_5_percentage": "93.3333%"
+    },
+    "after_exact_p4_5_acceptance": {
+      "phase4_earned_points": 85,
+      "phase4_percentage": "85.00%",
+      "p4_5_earned_points": 15,
+      "p4_5_percentage": "100.0000%"
+    },
+    "planning_points_awarded": 0,
+    "partial_item_credit": false
+  },
+  "required_acceptance_sequence": [
+    "owner_accepts_exact_SHA_256_of_this_package_as_D_P4_5_START",
+    "implementation_records_effective_start_without_changing_scope",
+    "bounded_local_generated_only_build_validation_and_evidence_complete",
+    "owner_separately_accepts_exact_P4_5_evidence_package"
+  ],
+  "owner_authorization_statement_template": "D-P4.5-START: I, mayank-admin, accept P4.5 start package P4.5-START-R0 with SHA-256 {PACKAGE_SHA256} and authorize its exact bounded local generated-only implementation scope, including the disabled case-management bridge contract and generated-only PROV interchange projection. This does not authorize source or evidence copying or resolution, real investigations or case systems, external PROV import or conformance claims, retention-period or legal-policy decisions, hold activation or release, deletion or export execution, providers or network access, credentials or secrets, Government or private data, cameras or media, models or datasets, inference, operational alerts or actions, containers, Kubernetes, deployment, or remote Git."
+}

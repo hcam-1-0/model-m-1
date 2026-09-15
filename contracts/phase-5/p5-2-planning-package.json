@@ -1,0 +1,231 @@
+{
+  "schema_version": "hcam.phase5.p5_2.planning_package.v1",
+  "package_id": "P5.2-PLANNING-R0",
+  "status": "research_complete_owner_decisions_pending",
+  "effective": false,
+  "prepared_on": "2026-09-07",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_base_commit": "d8de9ce43cdd02315f688a9f06a51b53e338d5c5",
+  "authority": {
+    "decision_id": "D-P5.2-PLAN-AUTH",
+    "path": "contracts/phase-5/p5-2-plan-authorization.json",
+    "record_sha256": "E747F121715E14C975DB4F60532DDDD7AB497DC12E3097B3079A85B9E9CF8B86",
+    "owner_statement_sha256": "3512578B9FD1118D46ECD665D7A06B05207F52C623D4B04AD7B8999DACE449BB"
+  },
+  "accepted_predecessor": {
+    "subphase": "P5.1",
+    "acceptance_record": "contracts/phase-5/p5-1-acceptance.json",
+    "acceptance_record_sha256": "EACCF1BB39B2910F6272FE06266A8C9ED59378326B0AFFCF50A978127618F6E0",
+    "evidence_package_sha256": "74953D5E9239A17E8A4173B72CF7A485BC4B7FDBC0503A31787F2EFE9C1767BC",
+    "canonical_component_digest": "74E4C87B11FDAA8CB2DC94D922F330B44DD551D9F3CB587673B394488A8321F4",
+    "technical_commit": "394e9d2701c9b63ca92dad8398607dfa918be7c3",
+    "acceptance_commit": "d8de9ce43cdd02315f688a9f06a51b53e338d5c5"
+  },
+  "component_digest_algorithm": "Sort components by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "FF4A3399EA25C47A2059FE38EFF81BBCA64C77BE377B22A80AF1F0F2874E7744",
+  "components": [
+    {
+      "path": "contracts/phase-5/p5-2-plan-authorization.json",
+      "bytes": 4760,
+      "sha256": "E747F121715E14C975DB4F60532DDDD7AB497DC12E3097B3079A85B9E9CF8B86"
+    },
+    {
+      "path": "docs/phase-5/current-status-r8.md",
+      "bytes": 4585,
+      "sha256": "B817222A530DC5157A1D57D4D0987B7A96AC431BD504FB402513B8CD2A2D817B"
+    },
+    {
+      "path": "docs/phase-5/p5-2-command-architecture.md",
+      "bytes": 9908,
+      "sha256": "8D9DB3265524C8198E20CF8AE2316A3CC4B4771BE93E1E5E1C54AC56B5632608"
+    },
+    {
+      "path": "docs/phase-5/p5-2-contract-gap-matrix.md",
+      "bytes": 8106,
+      "sha256": "4682496708456594645757575CC2FDBC60A8BB243C4E8CCD864CD7EA8CDDF7B3"
+    },
+    {
+      "path": "docs/phase-5/p5-2-decision-packet.md",
+      "bytes": 7881,
+      "sha256": "78CE76191AB368352850B29C1A6F36CBA87204F93BF0CA778207AC7278F2F4C1"
+    },
+    {
+      "path": "docs/phase-5/p5-2-implementation-plan.md",
+      "bytes": 10400,
+      "sha256": "F785F691344EEB48EEA9019623720980334C83DF6CA4423B5CC00BDC551EB0E4"
+    },
+    {
+      "path": "docs/phase-5/p5-2-research-record.md",
+      "bytes": 9112,
+      "sha256": "ADC6462612EC1D931B2F3EB290FF6FA207D6DF8B19426A67163F4A970465D836"
+    },
+    {
+      "path": "docs/phase-5/p5-2-threat-model.md",
+      "bytes": 7491,
+      "sha256": "3559C2ACB02595B63135444011A98C861C2898AFE1ABEF45FB67C0719F12F5B8"
+    }
+  ],
+  "owner_decisions": [
+    {
+      "id": "D-P5.2-001",
+      "topic": "command_workspace_composition",
+      "recommended": "B",
+      "selected": null
+    },
+    {
+      "id": "D-P5.2-002",
+      "topic": "GIS_data_delivery",
+      "recommended": "C",
+      "selected": null
+    },
+    {
+      "id": "D-P5.2-003",
+      "topic": "basemap_and_network_policy",
+      "recommended": "A",
+      "selected": null
+    },
+    {
+      "id": "D-P5.2-004",
+      "topic": "spatial_aggregation_and_clustering",
+      "recommended": "A",
+      "selected": null
+    },
+    {
+      "id": "D-P5.2-005",
+      "topic": "situation_summary_semantics",
+      "recommended": "A",
+      "selected": null
+    },
+    {
+      "id": "D-P5.2-006",
+      "topic": "time_ordering_corrections_and_replay",
+      "recommended": "A",
+      "selected": null
+    },
+    {
+      "id": "D-P5.2-007",
+      "topic": "workload_prioritization",
+      "recommended": "A",
+      "selected": null
+    },
+    {
+      "id": "D-P5.2-008",
+      "topic": "drilldown_and_workspace_persistence",
+      "recommended": "A",
+      "selected": null
+    },
+    {
+      "id": "D-P5.2-009",
+      "topic": "accessibility_equivalence",
+      "recommended": "A",
+      "selected": null
+    },
+    {
+      "id": "D-P5.2-010",
+      "topic": "dynamic_profiles_and_multi_monitor",
+      "recommended": "A",
+      "selected": null
+    },
+    {
+      "id": "D-P5.2-011",
+      "topic": "GIS_renderer_and_dependency_scope",
+      "recommended": "A",
+      "selected": null
+    },
+    {
+      "id": "D-P5.2-012",
+      "topic": "validation_and_evidence_standard",
+      "recommended": "A",
+      "selected": null
+    }
+  ],
+  "recommended_architecture": {
+    "profile": "B/C/A/A/A/A/A/A/A/A/A/A",
+    "workspace": "dense_command_workspace",
+    "GIS_delivery": "hybrid_bounded_features_vector_tiles_and_authoritative_list",
+    "network": "local_or_offline_by_default_with_exact_future_allowlist",
+    "truth": "server_authoritative_revisioned_snapshot_with_per_source_state",
+    "map": "bounded_2D_renderer_neutral_MapLibre_candidate",
+    "accessibility": "synchronized_authoritative_list_and_table_equivalence",
+    "profiles": "same_capability_and_semantics_with_bounded_rendering_and_concurrency_variation",
+    "actions": "read_only_no_operational_action"
+  },
+  "producer_contract_gaps": {
+    "count": 14,
+    "highest_priority": [
+      "P5.2-G01_command_role_mismatch",
+      "P5.2-G02_bounded_viewport_feature_query",
+      "P5.2-G03_tile_set_and_style_manifest",
+      "P5.2-G04_authoritative_situation_snapshot",
+      "P5.2-G05_coverage_and_blind_spot_aggregate",
+      "P5.2-G06_cross_domain_workload_aggregate"
+    ],
+    "policy": "Missing or incompatible producer contracts keep the consumer capability blocked; no client-side authorization alias, operational inference, or fabricated truth."
+  },
+  "preserved_constraints": [
+    "accepted_Gujarat_GIS_is_the_canonical_parity_baseline",
+    "parity_first_no_downgrade",
+    "server_authorization_and_department_scope_are_authoritative",
+    "events_invalidate_HTTP_state_and_never_create_operational_truth",
+    "map_payloads_are_minimized_summaries_not_evidence_or_identity_records",
+    "accessible_list_and_table_remain_authoritative_when_map_is_unavailable",
+    "low_resource_mode_preserves_capabilities_safety_and_truth_semantics",
+    "local_or_offline_map_resources_by_default",
+    "no_client_risk_identity_coverage_or_health_conclusions",
+    "generated_only_non_issuable_fixtures",
+    "no_product_credit_for_planning"
+  ],
+  "implementation_workstreams": [
+    {"id": "P5.2-W1", "title": "command_projection_contracts_and_fixtures", "weight": 1.5},
+    {"id": "P5.2-W2", "title": "situational_overview_and_truthful_states", "weight": 1.5},
+    {"id": "P5.2-W3", "title": "GIS_domain_delivery_and_adapter_extension", "weight": 2.0},
+    {"id": "P5.2-W4", "title": "Gujarat_GIS_parity_workspace", "weight": 2.0},
+    {"id": "P5.2-W5", "title": "coverage_health_workload_time_and_drilldown", "weight": 1.5},
+    {"id": "P5.2-W6", "title": "accessibility_localization_responsive_and_multi_monitor", "weight": 1.5},
+    {"id": "P5.2-W7", "title": "security_profiles_observability_and_resource_bounds", "weight": 1.0},
+    {"id": "P5.2-W8", "title": "validation_evidence_and_exact_exit_acceptance", "weight": 1.0}
+  ],
+  "progress": {
+    "P5_2_planning": {
+      "earned": 8,
+      "total": 8,
+      "percent": 100.0,
+      "change_percentage_points": 100.0,
+      "awards_product_points": false
+    },
+    "P5_2_product": {
+      "earned": 0,
+      "total": 12,
+      "percent": 0.0,
+      "change_percentage_points": 0.0
+    },
+    "phase_5_product": {
+      "earned": 20,
+      "total": 100,
+      "percent": 20.0,
+      "change_percentage_points": 0.0
+    }
+  },
+  "next_gate": {
+    "owner_selects_D_P5_2_001_through_012": true,
+    "reconciled_planning_package": true,
+    "exact_owner_planning_acceptance": true,
+    "bounded_start_package": true,
+    "exact_start_authorization": true
+  },
+  "owner_decisions_recorded": false,
+  "owner_acceptance_recorded": false,
+  "start_package_prepared": false,
+  "implementation_authorized": false,
+  "source_import_authorized": false,
+  "dependency_installation_or_lockfile_change_authorized": false,
+  "backend_route_or_migration_authorized": false,
+  "frontend_or_map_runtime_authorized": false,
+  "map_tile_provider_camera_media_or_network_authorized": false,
+  "Government_or_private_data_authorized": false,
+  "model_dataset_artifact_or_inference_authorized": false,
+  "operational_alert_or_action_authorized": false,
+  "container_Kubernetes_or_deployment_authorized": false,
+  "P5_3_authorized": false,
+  "remote_git_authorized": false
+}

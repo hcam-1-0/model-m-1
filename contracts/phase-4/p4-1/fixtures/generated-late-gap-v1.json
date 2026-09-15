@@ -1,0 +1,160 @@
+{
+  "checkpoints": [
+    {
+      "active_window_count": 2,
+      "contract_type": "hcam.intelligence.partition-checkpoint.v1",
+      "department": "generated-lab",
+      "generated_only": true,
+      "last_source_sequence": 4,
+      "maximum_occurred_at": "2026-01-01T00:00:20Z",
+      "partition_digest": "sha256:835ac1671a4f85c7fb03d0d267cb8c93ba40c198bee77540a63f40d2a6cfe5d7",
+      "profile_id": "generated-vehicle-correlation",
+      "receipt_sequence": 1,
+      "version": 1,
+      "watermark_at": "2026-01-01T00:00:18Z"
+    }
+  ],
+  "events": [
+    {
+      "camera_id": "generated-camera-07",
+      "chronology": {
+        "corrected_at": null,
+        "observed_at": "2026-01-01T00:00:20Z",
+        "occurred_at": "2026-01-01T00:00:20Z",
+        "received_at": "2026-01-01T00:00:20Z",
+        "recorded_at": "2026-01-01T00:00:20Z"
+      },
+      "contract_type": "hcam.intelligence.correlation-ingress-event.v1",
+      "department": "generated-lab",
+      "event_id": "generated-event-20",
+      "event_type": "hcam.analytics.observation.created.v1",
+      "generated_only": true,
+      "operational": false,
+      "profile_id": "generated-vehicle-correlation",
+      "schema_version": 1,
+      "signals": {
+        "confidence": 0.9,
+        "direction": null,
+        "generated_reference": "generated-vehicle-a",
+        "local_track_id": null,
+        "location_relation": null,
+        "object_class": "car",
+        "signal_kind": "observation",
+        "source_sequence": 1,
+        "tracker_epoch": null
+      },
+      "stream_id": "str_77777777777777777777777777777777",
+      "subject_kind": "vehicle"
+    },
+    {
+      "camera_id": "generated-camera-07",
+      "chronology": {
+        "corrected_at": null,
+        "observed_at": "2026-01-01T00:00:18Z",
+        "occurred_at": "2026-01-01T00:00:18Z",
+        "received_at": "2026-01-01T00:00:18Z",
+        "recorded_at": "2026-01-01T00:00:18Z"
+      },
+      "contract_type": "hcam.intelligence.correlation-ingress-event.v1",
+      "department": "generated-lab",
+      "event_id": "generated-event-21",
+      "event_type": "hcam.analytics.observation.created.v1",
+      "generated_only": true,
+      "operational": false,
+      "profile_id": "generated-vehicle-correlation",
+      "schema_version": 1,
+      "signals": {
+        "confidence": 0.9,
+        "direction": null,
+        "generated_reference": "generated-vehicle-a",
+        "local_track_id": null,
+        "location_relation": null,
+        "object_class": "car",
+        "signal_kind": "observation",
+        "source_sequence": 4,
+        "tracker_epoch": null
+      },
+      "stream_id": "str_77777777777777777777777777777777",
+      "subject_kind": "vehicle"
+    },
+    {
+      "camera_id": "generated-camera-07",
+      "chronology": {
+        "corrected_at": null,
+        "observed_at": "2026-01-01T00:00:10Z",
+        "occurred_at": "2026-01-01T00:00:10Z",
+        "received_at": "2026-01-01T00:00:10Z",
+        "recorded_at": "2026-01-01T00:00:10Z"
+      },
+      "contract_type": "hcam.intelligence.correlation-ingress-event.v1",
+      "department": "generated-lab",
+      "event_id": "generated-event-22",
+      "event_type": "hcam.analytics.observation.created.v1",
+      "generated_only": true,
+      "operational": false,
+      "profile_id": "generated-vehicle-correlation",
+      "schema_version": 1,
+      "signals": {
+        "confidence": 0.9,
+        "direction": null,
+        "generated_reference": "generated-vehicle-a",
+        "local_track_id": null,
+        "location_relation": null,
+        "object_class": "car",
+        "signal_kind": "observation",
+        "source_sequence": 5,
+        "tracker_epoch": null
+      },
+      "stream_id": "str_77777777777777777777777777777777",
+      "subject_kind": "vehicle"
+    }
+  ],
+  "receipts": [
+    {
+      "accepted": true,
+      "contract_type": "hcam.intelligence.correlation-receipt.v1",
+      "department": "generated-lab",
+      "disposition": "accepted",
+      "event_digest": "sha256:ea474185b53b4ad4972bc5d7d5657a8c55dc408bc8c7007b37b32c997fc37f87",
+      "event_id": "generated-event-20",
+      "generated_only": true,
+      "occurred_at": "2026-01-01T00:00:20Z",
+      "partition_digest": "sha256:835ac1671a4f85c7fb03d0d267cb8c93ba40c198bee77540a63f40d2a6cfe5d7",
+      "reason_code": "accepted",
+      "receipt_id": "crec_a3fd52e960d99adb359064a1bf615b8a",
+      "receipt_sequence": 0,
+      "recorded_at": "2026-01-01T00:00:20Z"
+    },
+    {
+      "accepted": true,
+      "contract_type": "hcam.intelligence.correlation-receipt.v1",
+      "department": "generated-lab",
+      "disposition": "gap_accepted",
+      "event_digest": "sha256:18d38e023c60501b6d511794041e853623d9600bcc4ef4d1bd24181fc2d53813",
+      "event_id": "generated-event-21",
+      "generated_only": true,
+      "occurred_at": "2026-01-01T00:00:18Z",
+      "partition_digest": "sha256:835ac1671a4f85c7fb03d0d267cb8c93ba40c198bee77540a63f40d2a6cfe5d7",
+      "reason_code": "source_sequence_gap",
+      "receipt_id": "crec_8112abf8d322e16d757227d4801698bf",
+      "receipt_sequence": 1,
+      "recorded_at": "2026-01-01T00:00:18Z"
+    },
+    {
+      "accepted": false,
+      "contract_type": "hcam.intelligence.correlation-receipt.v1",
+      "department": "generated-lab",
+      "disposition": "late_rejected",
+      "event_digest": "sha256:98acb3f54634becfdb2856a88dba7a63db91dd8a299d2050905d782a52d8e3bc",
+      "event_id": "generated-event-22",
+      "generated_only": true,
+      "occurred_at": "2026-01-01T00:00:10Z",
+      "partition_digest": null,
+      "reason_code": "event_behind_watermark",
+      "receipt_id": "crec_654b649cb12d0091bd582efba2526a01",
+      "receipt_sequence": 2,
+      "recorded_at": "2026-01-01T00:00:10Z"
+    }
+  ],
+  "schema_version": "hcam.phase4.p4_1.generated-late-gap.v1"
+}

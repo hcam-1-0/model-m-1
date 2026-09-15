@@ -1,0 +1,769 @@
+{
+  "schema_version": "hcam.phase5.p5_4.evidence_package.v1",
+  "package_id": "P5.4-EVIDENCE-PACKAGE-R0",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "generated_on": "2026-09-09",
+  "technical_commit": "fc5b7f9aa682b68c83e53c558e8c08bf35ee7480",
+  "start_package_sha256": "FC38A2A21119C501D1C09868C2AF8598297C7C81619D5F16B0A509B93A92DEA0",
+  "bound_input_digest": "26C20290D60A1418A36245C7C3671A13C46488A4BB4D94CC984337810B4CC4F2",
+  "component_digest_algorithm": "Sort paths ordinally; render path|bytes|sha256 with LF separators and no terminal LF; SHA-256 the UTF-8 bytes.",
+  "canonical_component_digest": "65041C5D116E9B0AFA63EB011226E3F1D2190BDBDD50B158F9437DC4CDD6EC7B",
+  "component_count": 150,
+  "components": [
+    {
+      "path": "contracts/phase-5/p5-4-evidence.json",
+      "bytes": 9897,
+      "sha256": "FF10CAB77DAFD6BF7D6FCF3DF15B10416995CDD923499ED77C33D57C6AF4E782"
+    },
+    {
+      "path": "contracts/phase-5/p5-4/analytical-concept.v1.json",
+      "bytes": 544,
+      "sha256": "7C413CB9F8E1AD8A3D7DD7A2EEEA9767B361F1E8FD811DCBE67C919031F39EEC"
+    },
+    {
+      "path": "contracts/phase-5/p5-4/candidate-evidence.v1.json",
+      "bytes": 507,
+      "sha256": "60FD64452FE4A3A57184865A1A14BFF89BD1AFDCCC2088FB8A937363F3C0D0C1"
+    },
+    {
+      "path": "contracts/phase-5/p5-4/command-receipt.v1.json",
+      "bytes": 476,
+      "sha256": "07F792FF2AD80A100EB0838C0288D30242DDE62F20BCA07FCB1B7BA387154D34"
+    },
+    {
+      "path": "contracts/phase-5/p5-4/correction-impact.v1.json",
+      "bytes": 543,
+      "sha256": "B215660DE938A15C954D422B800C8F21FD75F0D9D94278B1D70B23F5FAEA6662"
+    },
+    {
+      "path": "contracts/phase-5/p5-4/intelligence-event.v1.json",
+      "bytes": 550,
+      "sha256": "FA7EA46DE63AD51ACEB4870C05C59A43C27BA13DF4B2BF083DFA8D1CD2ABAF0C"
+    },
+    {
+      "path": "contracts/phase-5/p5-4/intelligence-handoff.v1.json",
+      "bytes": 492,
+      "sha256": "AF9D2C3FBD998882C2DD520D20358E9E8174154736EE305900FC9A2A255AAAC6"
+    },
+    {
+      "path": "contracts/phase-5/p5-4/intelligence-page.v1.json",
+      "bytes": 399,
+      "sha256": "D33A532B2A09512DCC97D3C047B093DFCEC54195EEA6FF553C0965746FC648B6"
+    },
+    {
+      "path": "contracts/phase-5/p5-4/intelligence-queue.v1.json",
+      "bytes": 565,
+      "sha256": "D783D3386A7D7878CF8CCAF199C009DE6B16D3BA2CBF50DC3BE7633C54D00DA8"
+    },
+    {
+      "path": "contracts/phase-5/p5-4/relationship-projection.v1.json",
+      "bytes": 508,
+      "sha256": "CA5B78043F536D770AADB75C568CA981D30B8E67764330C2DD53B8E95A08CE97"
+    },
+    {
+      "path": "contracts/phase-5/p5-4/review-command.v1.json",
+      "bytes": 818,
+      "sha256": "78EE8459798084AF60BBE773438C0C9E36C4DD518CA02A3E99034955034B4054"
+    },
+    {
+      "path": "contracts/phase-5/p5-4/review-policy.v1.json",
+      "bytes": 667,
+      "sha256": "DD15A083EF0D934F7D36A44AA2AC3725C1405FE2A6B3DAF9A4A1476440F8384C"
+    },
+    {
+      "path": "contracts/phase-5/p5-4/rule-trace.v1.json",
+      "bytes": 565,
+      "sha256": "4EADD03A091CD35543A62D9693CFFC70F632495D3AB16D5DA411C2663CF251B5"
+    },
+    {
+      "path": "contracts/phase-5/p5-4/safe-problem.v1.json",
+      "bytes": 565,
+      "sha256": "F4E266E1D944BF3A00642511EE8A5D71FEF79E461CF430C657A7FE35756526E9"
+    },
+    {
+      "path": "contracts/phase-5/p5-4/spatial-projection.v1.json",
+      "bytes": 446,
+      "sha256": "16FCE1B9011FC21AA7539FE90F0FDAF3A371C0B7E6B2BE378E93B22BE9E7C3CC"
+    },
+    {
+      "path": "docs/phase-5/p5-4/implementation.md",
+      "bytes": 2180,
+      "sha256": "6E021FD21C080FB61ABEEA4081C721C7387D83F4891CFFEFD608A872CD92266B"
+    },
+    {
+      "path": "docs/phase-5/p5-4/validation.md",
+      "bytes": 1761,
+      "sha256": "C61C806D50C563227F4D37545C171FF9277AC39251DD223911E7285382499CF1"
+    },
+    {
+      "path": "fixtures/phase-5/p5-4/c1.generated.v1.json",
+      "bytes": 588,
+      "sha256": "9AAC05761EF52E21371B6B9DBFC0A93783FFD9AC2E017FA5F8F6C225145429DF"
+    },
+    {
+      "path": "fixtures/phase-5/p5-4/c10.generated.v1.json",
+      "bytes": 3190,
+      "sha256": "6A054C293AB465729B1D543AE16B053048C55DD69FA1B3F057C1FA4B332F4C40"
+    },
+    {
+      "path": "fixtures/phase-5/p5-4/c50.generated.v1.json",
+      "bytes": 14783,
+      "sha256": "FFD04D71C82F2CD26CE5A2DA86C8CC8AC64E25C275E0D687A4855EFD52717297"
+    },
+    {
+      "path": "fixtures/phase-5/p5-4/intelligence-cases.generated.v1.json",
+      "bytes": 237212,
+      "sha256": "1604E1B272DF7A29977FB30A03BA6599C1C0A074CA856C2BD973959DDE7B5181"
+    },
+    {
+      "path": "fixtures/phase-5/p5-4/replay-manifest.generated.v1.json",
+      "bytes": 931,
+      "sha256": "DE01095BD9AEDEE3DEB76B9C04F8D4DEDA4FA179FF7DBDD7CC8E2DE429FEC422"
+    },
+    {
+      "path": "fixtures/phase-5/p5-4/review-cases.generated.v1.json",
+      "bytes": 5509,
+      "sha256": "78CA997F74C45E367AF6BF7F54E3BCCDC059A379FB3EECD41344B6F0F32E95E8"
+    },
+    {
+      "path": "fixtures/phase-5/p5-4/security-cases.generated.v1.json",
+      "bytes": 4030,
+      "sha256": "8F412F3B764D550110E724198A38160EE6C80719A648A70DFB26D61FAB9907A1"
+    },
+    {
+      "path": "fixtures/phase-5/p5-4/visual-cases.generated.v1.json",
+      "bytes": 5433,
+      "sha256": "7B3490F7CD142575EB2B31F508FA71E5C0F6051BEEC2FB6FDAE2B029601A776B"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/package.json",
+      "bytes": 665,
+      "sha256": "5065F9E17FD444F966A8FA8595384C8C53B5EC2483E1E0A61ABC988447A94B79"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/app.tsx",
+      "bytes": 5378,
+      "sha256": "98EBB628BC6DA7BB1DBD8C228EEA70A52E206794C263933FCF57621F04A9946D"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/authority-badge.tsx",
+      "bytes": 477,
+      "sha256": "587384F79033A4B87E0E87E4B558F21C1B1B785EFB6D88654DDD95EF148AC9AE"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/candidate-matrix.tsx",
+      "bytes": 1951,
+      "sha256": "3815EB9C2FD8EA5003C44F36788529FEE05AA40890EEBD408F5D8B6A13292B8B"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/contradiction-panel.tsx",
+      "bytes": 879,
+      "sha256": "9FDEF88E5B32D1657DB9B68B53D82918FA334827CD2628BFC1D6E9FAE85296C7"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/correction-impact.tsx",
+      "bytes": 1128,
+      "sha256": "91D34027CC0303AC128BB30C297D15C944811BA12587BDFC10F76123E744FF7C"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/evidence-role-list.tsx",
+      "bytes": 564,
+      "sha256": "8BB473E4B6A9825FC9D4D994A06AAE70E0AFE1633BE4B77D4DC5C7C42DA850D2"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/graph-panel.tsx",
+      "bytes": 1475,
+      "sha256": "DFD9122FC0CAC6705C638490616B4024CC59ABC5AFB14A6F66B992A5C1D4D21F"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/graph-table.tsx",
+      "bytes": 348,
+      "sha256": "C0EAF86064B1E6BEB78283215B7B33D52EA6E5CB6FC2934874CE70AEC36533E5"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/hypothesis-summary.tsx",
+      "bytes": 699,
+      "sha256": "B77B093F6007CD8E58F82FE4EA9FDFC6D4C37AAE8B4EAB8030B17849FE03C4F5"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/intelligence-filter-rail.tsx",
+      "bytes": 1980,
+      "sha256": "FDEF6E2E440CACBAE40722E62D57DA3928D12C02242D5D685C2791E89CA4A577"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/intelligence-state-boundary.tsx",
+      "bytes": 969,
+      "sha256": "747B745F3A17E9C032938ED6D44AB64325C5158311FD58561C3C02345498A936"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/lifecycle-timeline.tsx",
+      "bytes": 974,
+      "sha256": "8C7DD0328EC2927B8FE6F349F5573FAD98FB555BFBC79DD199E794772D059BE2"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/priority-badge.tsx",
+      "bytes": 269,
+      "sha256": "4EC88291F85CAC287CB0C141D51E1499CB101F29C3E7E5AC5D2E9D7CA61F06B9"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/queue-table.tsx",
+      "bytes": 2232,
+      "sha256": "35D2A9AE5BEE33322B57BA84071557B38A332D965E39A918345735D00E33ECFD"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/reconsideration-panel.tsx",
+      "bytes": 854,
+      "sha256": "5B83066C483F4A5C8C7E1A402F438F09FAF21CAF2D1041102222B21950264458"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/review-confirmation-dialog.tsx",
+      "bytes": 2704,
+      "sha256": "73C6F5D0BE51D4EF72DA9FF1543B0EC3DAB52BE393EB300D4DBDC5EBCAA1F35B"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/review-policy-panel.tsx",
+      "bytes": 1376,
+      "sha256": "B8F73D486652BB70666021996E0DAC45B2C4EB03FE6448E5421A3F36CA26C377"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/rule-trace.tsx",
+      "bytes": 1387,
+      "sha256": "1B79F57D04008B78C4D7B2E39B57739C3BD258F82585A2C56813665077CE4293"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/spatial-intelligence-panel.tsx",
+      "bytes": 2329,
+      "sha256": "697F15C8707D24BF5A992507091DE543EBC67ABF553BE4D603CA73EE4FC1FF76"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/typed-concept-label.tsx",
+      "bytes": 495,
+      "sha256": "B7AACFC6829B9EEC01FEF6E02E9E4ED32FF3C2F61EC9A2E1A90ECC71BB9B0B2D"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/components/workload-strip.tsx",
+      "bytes": 708,
+      "sha256": "E4C59F6B798730ABC452B37D467AE7DB0F824061AB7B7E1C4F419B4CC7E5EA30"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/data/intelligence-projections.ts",
+      "bytes": 1299,
+      "sha256": "DD40DFB68E54BCAACACC5F02AA7FDEA746AC6CFCC7532022F40532BF34862834"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/main.tsx",
+      "bytes": 453,
+      "sha256": "5C9B9D75D6DE7936F6F54EDCC82119F0C247B25075C09ACDF41C06A96CB96C7C"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/pages/candidate-evidence-page.tsx",
+      "bytes": 1767,
+      "sha256": "920C95F94CB25A96D1CEDA7447746D32E70F01063C9C8A8627BB4620D35E8156"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/pages/corrections-page.tsx",
+      "bytes": 1777,
+      "sha256": "F7F9A71CCC8DBFE6ACE7B9F536AE876E4B134F6697163EB39D77822FDDA72F55"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/pages/correlation-run-detail-page.tsx",
+      "bytes": 2196,
+      "sha256": "9C4D58E0046990FAF2D497E0D17607CF9A7D1F8C6457B0B9A7FEE21444CC01C2"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/pages/correlation-run-queue-page.tsx",
+      "bytes": 1001,
+      "sha256": "0B341D179AF37E4DC25EAF4630A3796A6E3E94B9461306E09DD4233F23144EF3"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/pages/hypothesis-detail-page.tsx",
+      "bytes": 2119,
+      "sha256": "050B92566F246C0772E155E473257C82FE4A746156B73182D86CCE113282922E"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/pages/hypothesis-queue-page.tsx",
+      "bytes": 2079,
+      "sha256": "FB8E6205CA7730D8179681336165523A8514786DA04557B781A5E9C9273807C9"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/pages/intelligence-health-page.tsx",
+      "bytes": 2268,
+      "sha256": "212EC579090715564FE4D1B3897425F0C5DB0E8771762FF3219596DCE3818381"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/pages/intelligence-overview-page.tsx",
+      "bytes": 2904,
+      "sha256": "F25C7810FC6DD9AFBA401047DD0C8E7CED54D782B2F8023BDADB3BA540F635D7"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/pages/mandatory-review-desk-page.tsx",
+      "bytes": 2966,
+      "sha256": "8127D0CE760E39BEEAC21BAECE70BD1733D3AC5FEFBAD9D36053CCE6889B92B1"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/pages/proposed-alert-detail-page.tsx",
+      "bytes": 2861,
+      "sha256": "DEAFC0A498F56D54E8E94321CA025FA1E36A412CC98A1C95F8F634EFB6848AE3"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/pages/proposed-alert-queue-page.tsx",
+      "bytes": 1289,
+      "sha256": "36FCEB9A714F7299A43A0C50A8BB0940B2AFF3224DFCC392A89728E70490D283"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/pages/relationship-explorer-page.tsx",
+      "bytes": 1073,
+      "sha256": "5A1235CC36F2A3C8D166319CFC2B3DF4FAF6FDC58285659E4D21EA275B8704A8"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/pages/rule-evaluations-page.tsx",
+      "bytes": 638,
+      "sha256": "A6810B99E9221E591D75D9AF445B50C0D3C1F0964BBF84522E703D989805F60A"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/pages/spatial-intelligence-page.tsx",
+      "bytes": 905,
+      "sha256": "ADDB6488EEBF72D2CCE0C9C7ADE9F54152F77C2224680E2AF46ABFDD1FC8A615"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/routes.tsx",
+      "bytes": 3004,
+      "sha256": "E119F6C9AB632525F30C686ADB1AE437BDD2B8639DA02FED43CECA419C9760CF"
+    },
+    {
+      "path": "frontend/apps/intelligence-center/src/styles.css",
+      "bytes": 26182,
+      "sha256": "8964B0BF8D6C2EA82FC5926CD814BA2F43B1BFBF08E513080FEFCA529602CCF9"
+    },
+    {
+      "path": "frontend/evidence/p5-4-dependency-baseline.json",
+      "bytes": 1050,
+      "sha256": "8DFF0C7C922D4DCE8B537CEA1DAB0672772570B0CF9AA251FB36DD885F6CC3AA"
+    },
+    {
+      "path": "frontend/evidence/p5-4-fixture-manifest.json",
+      "bytes": 1763,
+      "sha256": "1255200E85B04A218D3A7468A7B95C69DAFF440F4D843C141EE5466CAB8A9858"
+    },
+    {
+      "path": "frontend/evidence/p5-4-source-manifest.json",
+      "bytes": 64345,
+      "sha256": "DE34469E9805D25405FB848CD7C0EC6DB452203B7401E43C8003A969E2D54529"
+    },
+    {
+      "path": "frontend/evidence/p5-4-validation-summary.json",
+      "bytes": 7610,
+      "sha256": "D69A6F1046D61F385BC1D738F838C6E8C0EAEA8F9B908F1DE44BAED6E28446EC"
+    },
+    {
+      "path": "frontend/evidence/p5-4-visual-manifest.json",
+      "bytes": 1309,
+      "sha256": "02E6E5520F9606EAB402ADECFA73CD4D128946197F71F0155577D55DBEA0DA0B"
+    },
+    {
+      "path": "frontend/packages/api-client/src/index.ts",
+      "bytes": 4453,
+      "sha256": "C1CA94AD97687E5068CA5F3686703285F1943A014C67B07482347BF883F46280"
+    },
+    {
+      "path": "frontend/packages/capabilities/src/index.ts",
+      "bytes": 5898,
+      "sha256": "AFDBDD689C59104327E84D0FCF094E836B50A035EEA23B78A061493BC3DD0DD7"
+    },
+    {
+      "path": "frontend/packages/event-invalidation/src/index.ts",
+      "bytes": 1939,
+      "sha256": "028A7A614B2189CF99D7626701F7FE362D7D2E6F06352BE8A48A96D967C6D2FF"
+    },
+    {
+      "path": "frontend/packages/intelligence-contracts/package.json",
+      "bytes": 274,
+      "sha256": "E3685EC70B0924DB62FE96D74E52B5DA89A2DDD2F86F9D5D41C4AE94D3BC4CA3"
+    },
+    {
+      "path": "frontend/packages/intelligence-contracts/src/contracts.ts",
+      "bytes": 5713,
+      "sha256": "79FEA6FCB1C859AA04C1096EB0B4B868480098A787D1C856470C86C95954942D"
+    },
+    {
+      "path": "frontend/packages/intelligence-contracts/src/events.ts",
+      "bytes": 1166,
+      "sha256": "F1F4D69F33FCD3A06FF1CC0BFA92B82AAC0D0CF7DA3FC5306A0BABD04B4CE97C"
+    },
+    {
+      "path": "frontend/packages/intelligence-contracts/src/index.ts",
+      "bytes": 110,
+      "sha256": "BA3C2370C5F95F724C446455AB531A6C8FE44A24AB4D39DC74449F1C87067323"
+    },
+    {
+      "path": "frontend/packages/intelligence-contracts/src/problems.ts",
+      "bytes": 595,
+      "sha256": "92C2F4EACFDAEC95298A3E19129D06D000967425A6DEBB2524E7927EEC7AD0D4"
+    },
+    {
+      "path": "frontend/packages/intelligence-contracts/src/queries.ts",
+      "bytes": 534,
+      "sha256": "3492DFF221256CB3B26E80B61DF282EFFA513633D17AACBA52B1BB0ADB1229A2"
+    },
+    {
+      "path": "frontend/packages/intelligence-contracts/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/intelligence-domain/package.json",
+      "bytes": 322,
+      "sha256": "B665AC188743E8148673946AB735A96853365A926E1829D3E5A2AB1091F17616"
+    },
+    {
+      "path": "frontend/packages/intelligence-domain/src/commands.ts",
+      "bytes": 1159,
+      "sha256": "200BA3976CDD038EFEC677130FBB7E9CCD55426D1BE751299EC5476D0F2A2634"
+    },
+    {
+      "path": "frontend/packages/intelligence-domain/src/corrections.ts",
+      "bytes": 574,
+      "sha256": "244B5F1F802D54C5E5675C5C3553CBD28D917974D8C670D73F4F0C08BAC6DD78"
+    },
+    {
+      "path": "frontend/packages/intelligence-domain/src/index.ts",
+      "bytes": 224,
+      "sha256": "936694C7AA60F5B39270621F31835B45B25E9D4578BD24BA75E250661F76A7B5"
+    },
+    {
+      "path": "frontend/packages/intelligence-domain/src/lifecycle.ts",
+      "bytes": 932,
+      "sha256": "D6669137BC0DD5AA7F5173F2E0F4F61696B6A46D2E0CCD01679BFDF021464E35"
+    },
+    {
+      "path": "frontend/packages/intelligence-domain/src/profiles.ts",
+      "bytes": 1417,
+      "sha256": "925DB259E1FE7888CA4124AD5FB18B85D6DA1E4769D88BFD813E7B64120F9C79"
+    },
+    {
+      "path": "frontend/packages/intelligence-domain/src/reasons.ts",
+      "bytes": 826,
+      "sha256": "CC134A9A1E967CD766FA10B6BC5BE96C334DF03EE10BB8943B50B6F182C7D389"
+    },
+    {
+      "path": "frontend/packages/intelligence-domain/src/receipts.ts",
+      "bytes": 724,
+      "sha256": "7152F45049E86BAE4DEB1FF660C35715475F8A10AAB4570FAFD3411CA75CEEA5"
+    },
+    {
+      "path": "frontend/packages/intelligence-domain/src/semantic.ts",
+      "bytes": 1961,
+      "sha256": "A7219A1AA855AC6C377665F8E7D9DE5B8085413562B875CD7666C762F011E555"
+    },
+    {
+      "path": "frontend/packages/intelligence-domain/src/state.ts",
+      "bytes": 916,
+      "sha256": "F93E4A2A5785B694B7F5D982FF27D883991E4ED4EBFE1B4BB89FC08153D8ACD0"
+    },
+    {
+      "path": "frontend/packages/intelligence-domain/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/intelligence-fixtures/package.json",
+      "bytes": 324,
+      "sha256": "0CE5CD5A652B723C9A8055483E13A500AB068D6F9077A3C0C19F2EAECC7A7769"
+    },
+    {
+      "path": "frontend/packages/intelligence-fixtures/src/cases.ts",
+      "bytes": 749,
+      "sha256": "F2E24A5728A52D38C350EC3986878D5F2B4E2983D1F0D6C422557BB760D94F8E"
+    },
+    {
+      "path": "frontend/packages/intelligence-fixtures/src/generator.ts",
+      "bytes": 7020,
+      "sha256": "D1FB48A0F4946FCF9250D30FCE0D53F855935625F98F49C856413F9D47F87674"
+    },
+    {
+      "path": "frontend/packages/intelligence-fixtures/src/index.ts",
+      "bytes": 54,
+      "sha256": "B6447A61C245034B555C6F88D2BF7655347EED9209EDFB735098486C3BE6B0B4"
+    },
+    {
+      "path": "frontend/packages/intelligence-fixtures/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/navigation/src/index.ts",
+      "bytes": 5216,
+      "sha256": "EC37BB38AB3211CBF7E85083B23C22A1F06A69B18A8259E70C0A4E5B382BACE9"
+    },
+    {
+      "path": "frontend/packages/observability/src/index.ts",
+      "bytes": 3081,
+      "sha256": "60E852F89C322251063C91C2AB89A08D047DD3A892FC93BD661C55D0EE44F75A"
+    },
+    {
+      "path": "frontend/packages/query-policy/src/index.ts",
+      "bytes": 5241,
+      "sha256": "427234251FEC323BFC6075C5D39FC679C3DA992EDDD04CCA97F2241B4DEBA719"
+    },
+    {
+      "path": "frontend/packages/relationship-renderers/package.json",
+      "bytes": 312,
+      "sha256": "F708E334DE13C988581930484C3E9039AB7C4A646D0ECEA6E5C1F1FDD9EE559C"
+    },
+    {
+      "path": "frontend/packages/relationship-renderers/src/adapter.ts",
+      "bytes": 284,
+      "sha256": "AB89ACB57CB8DF7B179FB3E6E62F8511FE6CF2351FCEEE96D246F2A2C9AF3C11"
+    },
+    {
+      "path": "frontend/packages/relationship-renderers/src/index.ts",
+      "bytes": 97,
+      "sha256": "0BABD28C15390BE484281EC3CEC0CF8AFEAC61746829AB8C998CB0B5D59C1922"
+    },
+    {
+      "path": "frontend/packages/relationship-renderers/src/no-graph-adapter.tsx",
+      "bytes": 523,
+      "sha256": "A1DF13F6A7F889F1BC6CB7663F9AF595C855645ECCB9A84ECB378C18B923E154"
+    },
+    {
+      "path": "frontend/packages/relationship-renderers/src/table-renderer.tsx",
+      "bytes": 1364,
+      "sha256": "5C08BDFD743B28DF961CE5F08A4F271B41F999A54F3776022609E5A17D1F7D4C"
+    },
+    {
+      "path": "frontend/packages/relationship-renderers/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/review-workflows/package.json",
+      "bytes": 329,
+      "sha256": "251EC55BBC6E554B229FADF034F983798C80DA0B79172DED1E9BED483FF5E833"
+    },
+    {
+      "path": "frontend/packages/review-workflows/src/concurrency.ts",
+      "bytes": 722,
+      "sha256": "069531B3AC2D15955CFC5E93AA83D3B8F01BE73958C49705BAAD44F42BE13C29"
+    },
+    {
+      "path": "frontend/packages/review-workflows/src/drafts.ts",
+      "bytes": 950,
+      "sha256": "65E6FE309B67801368DBE0280E1DA87DC2C2AE52A7E47C26F7EB20F516B48774"
+    },
+    {
+      "path": "frontend/packages/review-workflows/src/index.ts",
+      "bytes": 144,
+      "sha256": "D1D0C51660A59965AFAC41A1404ECAD7606D252F7DDDF2C124B79032A13B9323"
+    },
+    {
+      "path": "frontend/packages/review-workflows/src/policy.ts",
+      "bytes": 820,
+      "sha256": "4C65F3461F089ACA393120CBB62653415E1C17854D15AD3A5EA68E6A37B2D168"
+    },
+    {
+      "path": "frontend/packages/review-workflows/src/quorum.ts",
+      "bytes": 814,
+      "sha256": "A233405FD1D33C161EAC864F7E1B97B28BCF8D44A4638F43AE4CC99FBE0D433B"
+    },
+    {
+      "path": "frontend/packages/review-workflows/src/reconsideration.ts",
+      "bytes": 761,
+      "sha256": "7732B4F59E0510A0BEDAF7776F3438E1729EA33DDB77D881B19A0464B026DE80"
+    },
+    {
+      "path": "frontend/packages/review-workflows/tsconfig.json",
+      "bytes": 62,
+      "sha256": "A2C9D111AFBF0904AD59FA3F6C16196292E37C146FA3B73CD70AFFD8EF01CE21"
+    },
+    {
+      "path": "frontend/packages/test-fixtures/src/index.ts",
+      "bytes": 1515,
+      "sha256": "E8FA05DBED1DA17CB9DCD9BFFAA267C64857155F6D3AB52F0D196DC854DE7EBA"
+    },
+    {
+      "path": "frontend/packages/test-fixtures/src/p5-4-fixtures.ts",
+      "bytes": 262,
+      "sha256": "1C870F9043A51BF8731CA39890A279BE0F0F5FAAF0547B17246DDEB180EBECBC"
+    },
+    {
+      "path": "frontend/packages/ui/src/intelligence-review.stories.tsx",
+      "bytes": 846,
+      "sha256": "9244B367B6255F7F861EE4C938BC61425E738E38EFAA3A4161A39A004113FCAB"
+    },
+    {
+      "path": "frontend/playwright.config.ts",
+      "bytes": 1520,
+      "sha256": "313991F0A70859DB1439C61BF861823E6AEDFC25542ABD390309C8011D5AAA47"
+    },
+    {
+      "path": "frontend/scripts/verify-bundles.mjs",
+      "bytes": 3316,
+      "sha256": "04546C08083A4718FE7D23677FC14EB7208E44E89644BA94E73A97C55DAC3D56"
+    },
+    {
+      "path": "frontend/scripts/verify-workspace.mjs",
+      "bytes": 4032,
+      "sha256": "2C565A81BFAD021C8A379CE9DB8BE16422B526A85CA9D1FACAB12F1A9CFFB6E5"
+    },
+    {
+      "path": "frontend/tests/browser/intelligence-center-accessibility.spec.ts",
+      "bytes": 970,
+      "sha256": "C5EE1C0A5693BD0A77EC838956E20CD65ED7DD9B968791AA4EB9827DC061BCB0"
+    },
+    {
+      "path": "frontend/tests/browser/intelligence-center-c1-c10-c50.spec.ts",
+      "bytes": 812,
+      "sha256": "1F3B08E8DC07B892A48FD1AF9707E8FAE3F11BD4C312BDECF93C4970F6807CF4"
+    },
+    {
+      "path": "frontend/tests/browser/intelligence-center-concurrency.spec.ts",
+      "bytes": 691,
+      "sha256": "ADA9E90B8E1CD16787A50D36F71F82B73520E56AF326A67F0B5AEF0A01632C04"
+    },
+    {
+      "path": "frontend/tests/browser/intelligence-center-multiwindow.spec.ts",
+      "bytes": 774,
+      "sha256": "9FCB9D99D90F8A77CE90FB27492BCC6CEF03C0FDCBC130D5308388288CAFEBD0"
+    },
+    {
+      "path": "frontend/tests/browser/intelligence-center-security.spec.ts",
+      "bytes": 669,
+      "sha256": "25B483A460216F86ACEC3444185C8698B40325E334E5820C31B728502D9EAC21"
+    },
+    {
+      "path": "frontend/tests/browser/intelligence-center.spec.ts",
+      "bytes": 1638,
+      "sha256": "0C1BB1DFD40C3373909D111F7623669090B9E4DF872CEBCAD852E55D7730C7A3"
+    },
+    {
+      "path": "frontend/tests/candidate-uncertainty.test.tsx",
+      "bytes": 1024,
+      "sha256": "CD1A7BA2BD98D39234D07E21BEFA1CA4EA69AEA5EBF1EA0E3E4BA2A158C6AFC0"
+    },
+    {
+      "path": "frontend/tests/correction-impact.test.ts",
+      "bytes": 596,
+      "sha256": "6572077BEA8600AD76BACABF9078AAC86355E4548C78155D016045BD79B5FC7B"
+    },
+    {
+      "path": "frontend/tests/intelligence-contracts.test.ts",
+      "bytes": 4644,
+      "sha256": "D00C27053AA7A063293619AD28AFB66C5DFE519B4EBA4314E856B06C3D04D0B6"
+    },
+    {
+      "path": "frontend/tests/intelligence-detail.test.tsx",
+      "bytes": 778,
+      "sha256": "330866A40E288133243461C64721A719FD15314792712C750E5857F6D18B6E80"
+    },
+    {
+      "path": "frontend/tests/intelligence-domain.test.ts",
+      "bytes": 4215,
+      "sha256": "D1D4494718F8262F73FFD209A61AF0A9EF93B03C0FFFCEB87C795F1F3F05E46F"
+    },
+    {
+      "path": "frontend/tests/intelligence-queues.test.tsx",
+      "bytes": 1031,
+      "sha256": "F0313D2FD487092525599010A16E5EE83F9399ACEC210E723C7D6B17C5B14A89"
+    },
+    {
+      "path": "frontend/tests/p5-4-accessibility.test.tsx",
+      "bytes": 1054,
+      "sha256": "6654A271886E2CA90F6AA11D87294480BF3971C8D4AF343889CE787FE607C5A1"
+    },
+    {
+      "path": "frontend/tests/p5-4-event-invalidation.test.ts",
+      "bytes": 1160,
+      "sha256": "1DCB1EDA7AF8363C6CFB8C5D332F536D0815BD3849CE66715BDF5C9062BA5027"
+    },
+    {
+      "path": "frontend/tests/p5-4-localization.test.ts",
+      "bytes": 372,
+      "sha256": "73015DA2CDE9CEAA5B2AFFA93277C3C41EF0336D67D38AF71CF24007BEA6000B"
+    },
+    {
+      "path": "frontend/tests/p5-4-profiles.test.ts",
+      "bytes": 726,
+      "sha256": "42B1FE7C3924530F7019E8F00199CDD44E4973196E787B61E62A162669748A5E"
+    },
+    {
+      "path": "frontend/tests/p5-4-replay.test.ts",
+      "bytes": 534,
+      "sha256": "73E4D71B805756F88A79B09BDBC773F19DD48392F6E0910E60FE54C9A6A12DB9"
+    },
+    {
+      "path": "frontend/tests/p5-4-security.test.ts",
+      "bytes": 1045,
+      "sha256": "56D651680B184D9582B82FAB30DC8932BBFAB4356FABED81414D8173ACFF2072"
+    },
+    {
+      "path": "frontend/tests/proposed-alerts.test.tsx",
+      "bytes": 758,
+      "sha256": "49F91D7B4077DF51335C0DE77C61395044DEB54EF7A7AD7C3BD435433F51DC18"
+    },
+    {
+      "path": "frontend/tests/relationship-parity.test.tsx",
+      "bytes": 1177,
+      "sha256": "D18E51FF74ACBD71700002FC1A7A54385B4786D41AF673CD523462088F973B25"
+    },
+    {
+      "path": "frontend/tests/review-concurrency.test.ts",
+      "bytes": 2192,
+      "sha256": "E9A4319D62E7EF2C4728D2B5B188DC06248F90501DAB307602C02562E3BB1C18"
+    },
+    {
+      "path": "frontend/tests/review-drafts.test.ts",
+      "bytes": 810,
+      "sha256": "AFE65673FA4C80E04BC41977372DB97DE66707C00CB76547D578CC8CD0D84FAB"
+    },
+    {
+      "path": "frontend/tests/review-policy-quorum.test.ts",
+      "bytes": 2273,
+      "sha256": "90D03FC872DE0A3C1BFE21B1027D783070AEB8ABFCA247ADF420078F9E0376F9"
+    },
+    {
+      "path": "frontend/tests/rule-trace.test.tsx",
+      "bytes": 743,
+      "sha256": "6C5F3D8613102734D74D7371A41733E6DEFAB2E91ADC278713CD7742AFFDDAE3"
+    },
+    {
+      "path": "frontend/tests/spatial-intelligence.test.tsx",
+      "bytes": 954,
+      "sha256": "6E87F4E8C20A93CE0C352E296F696E27F8E7E1AF7370BC267981E7D8B908EC3A"
+    },
+    {
+      "path": "tests/phase5_frontend/test_phase52_verifier.py",
+      "bytes": 5464,
+      "sha256": "9E6CC92228DFE183BD8029EC507FB60A9C76959D251E308CC9506A8EC0E3B0F8"
+    },
+    {
+      "path": "tests/phase5_frontend/test_phase54_verifier.py",
+      "bytes": 1029,
+      "sha256": "0883DEE162D542397C34CAE6944124F72E0216A1E7B18CBC6B250FF2AEAE8277"
+    },
+    {
+      "path": "tools/phase54/__init__.py",
+      "bytes": 54,
+      "sha256": "0A9EEE8F90C2D6DA6C7FECFDCBC68022741718CDFF9C0CFC40934A3B58E0C9D5"
+    },
+    {
+      "path": "tools/phase54/generate_evidence.py",
+      "bytes": 27751,
+      "sha256": "B304C7A5C130CE719B98E99B359AACE106F546C4DC2770EDD804B39C6F893804"
+    },
+    {
+      "path": "tools/phase54/generate_fixtures.py",
+      "bytes": 5574,
+      "sha256": "CA90A8BD45078FCC51C38ACD32742C0E0D48A1FCE303963DA28A37FE94C4882A"
+    },
+    {
+      "path": "tools/phase54/verify_p54.py",
+      "bytes": 4427,
+      "sha256": "DB372425662535CB4588ACDBC678455F740C6BCC1FFE9C8AE57B8F59EF9E5DB7"
+    }
+  ],
+  "generated_only": true,
+  "P5_4_complete": false,
+  "P5_5_authorized": false,
+  "remote_Git_authorized": false
+}

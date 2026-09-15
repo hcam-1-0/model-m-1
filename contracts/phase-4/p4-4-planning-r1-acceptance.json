@@ -1,0 +1,128 @@
+{
+  "schema_version": "hcam.phase4.p4_4.planning-acceptance.v1",
+  "decision_id": "D-P4.4-PLANNING-R1-ACCEPTANCE",
+  "status": "accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-05",
+  "accepted_repository_head": "6a405b6fb91bebc0a54facde52e137b652e9acf4",
+  "accepted_package": {
+    "package_id": "P4.4-PLANNING-R1",
+    "path": "contracts/phase-4/p4-4-planning-r1-package.json",
+    "sha256": "42C37E17C73C4708FF3FB6B41532085995C514BA251BAC545DEF2E19632A0205"
+  },
+  "acceptance_proposal": {
+    "path": "contracts/phase-4/p4-4-planning-r1-acceptance-proposal.json",
+    "sha256": "825CD520F8CB4453E459CAE51AFC94CC74A5B2BDDBC18A7D2757D557FFBDD8AE"
+  },
+  "recorded_profile": "C/D/A_with_guarded_C_and_D_capability/A/A/A_with_bounded_D_capability/A/C/A/A",
+  "recorded_decisions": {
+    "D-P4.4-001": {
+      "selected": [
+        "C"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-002": {
+      "selected": [
+        "D"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-003": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": [
+        "C",
+        "D"
+      ]
+    },
+    "D-P4.4-004": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-005": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-006": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": [
+        "D"
+      ]
+    },
+    "D-P4.4-007": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-008": {
+      "selected": [
+        "C"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-009": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-010": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": []
+    }
+  },
+  "authority_effect": [
+    "freeze_P4_4_PLANNING_R1_as_the_accepted_reconciled_planning_baseline",
+    "preserve_guarded_authentication_secret_and_workflow_capabilities_as_disabled_extension_surfaces",
+    "prepare_one_separate_non_effective_digest_bound_P4_4_START_R0_authorization_package"
+  ],
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "provider_or_secret_use_authorized": false,
+  "network_authorized": false,
+  "deployment_authorized": false,
+  "remote_git_authorized": false,
+  "frozen_progress": {
+    "phase4_earned_points": 55,
+    "phase4_total_points": 100,
+    "phase4_percentage": "55.00%",
+    "phase4_change_percentage_points": "+0.00",
+    "p4_4_earned_points": 0,
+    "p4_4_total_points": 15,
+    "p4_4_percentage": "0.0000%",
+    "p4_4_change_percentage_points": "+0.0000",
+    "planning_and_research_gate": "5/5 (100.0000%)",
+    "owner_decision_gate": "10/10 (100.0000%)",
+    "reconciled_package_acceptance_gate": "1/1 (100.0000%)"
+  },
+  "non_authorization": [
+    "P4_4_source_test_migration_API_worker_or_runtime_implementation",
+    "real_provider_connection_catalogue_query_or_candidate_matching",
+    "credential_secret_key_database_secret_backend_or_authentication_extension_use",
+    "external_workflow_engine_dependency_connection_credential_callback_or_deployment",
+    "loopback_or_external_network_process",
+    "Sentinel_camera_stream_image_recording_playback_or_media_access",
+    "real_private_personal_biometric_vehicle_owner_case_watchlist_Government_or_police_data",
+    "models_datasets_checkpoints_artifacts_inference_training_or_benchmarks",
+    "operational_alert_notification_dispatch_enforcement_or_autonomous_action",
+    "containers_Kubernetes_cloud_production_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "owner_statement_normalization": "UTF_8_LF_without_terminal_newline",
+  "owner_statement_utf8_length": 683,
+  "owner_statement_sha256": "801998514D261B229440AEA134EE059A56F092B25AFDBECFA308F4B7C3503B3C",
+  "owner_statement": "D-P4.4-PLANNING-R1-ACCEPTANCE: I, mayank-admin, accept reconciled P4.4 planning package P4.4-PLANNING-R1 with SHA-256 42C37E17C73C4708FF3FB6B41532085995C514BA251BAC545DEF2E19632A0205, including the recorded C/D/A with guarded C and D capability/A/A/A with bounded D capability/A/C/A/A profile and all documented planning-only limitations. This accepts planning only. It does not authorize P4.4 implementation, runtime execution, real providers, credentials or secrets, authentication extension loading, external workflow engines, network access, Government or private data, cameras or media, models or datasets, operational actions, containers, Kubernetes, deployment, or remote Git.",
+  "next_gate": "separate_exact_digest_bound_D_P4_4_START_acceptance"
+}

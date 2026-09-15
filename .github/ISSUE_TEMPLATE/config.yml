@@ -1,5 +1,11 @@
 blank_issues_enabled: false
 contact_links:
-  - name: H-CAM Phase 0 Docs
-    url: https://github.com/mayankthakor227/h-cam-2.0/tree/main/docs/phase-0
-    about: Review the current planning baseline before opening a new issue.
+  - name: H-CAM Delivery project
+    url: https://github.com/orgs/hcam-1-0/projects/1
+    about: Review priorities, ownership, delivery status, and linked work.
+  - name: Model M-1 collaborator workspace
+    url: https://github.com/hcam-1-0/model-m-1
+    about: Review the collaborator workspace, documentation, and current code.
+  - name: Model M-1 discussions
+    url: https://github.com/hcam-1-0/model-m-1/discussions
+    about: Ask a question or discuss an idea before opening implementation work.

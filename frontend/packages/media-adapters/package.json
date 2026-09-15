@@ -1,0 +1,17 @@
+{
+  "name": "@hcam/media-adapters",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@hcam/camera-live-domain": "workspace:*",
+    "@hcam/media-edge-contracts": "workspace:*",
+    "hls.js": "catalog:"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}

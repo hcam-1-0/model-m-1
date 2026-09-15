@@ -21,8 +21,26 @@ from hcam.camera_registry.routes import router as camera_router
 from hcam.database import Database
 from hcam.health.routes import router as health_router
 from hcam.sandbox_playback import router as sandbox_playback_router
+from hcam.intelligence import models as _intelligence_models  # noqa: F401
+from hcam.intelligence.alerts.routes import (
+    _ProblemException,
+    problem_exception_handler,
+    router as alert_lifecycle_router,
+)
+from hcam.intelligence.routes import router as intelligence_router
+from hcam.intelligence.integrations.routes import router as reference_integration_router
+from hcam.intelligence.integrations.metrics import IntegrationMetrics
+from hcam.intelligence.integrations.providers import ProviderRegistry
+from hcam.intelligence.integrations.runtime import GeneratedIntegrationRuntime
+from hcam.intelligence.investigations import persistence as _investigation_models  # noqa: F401
+from hcam.intelligence.investigations.metrics import InvestigationMetrics
+from hcam.intelligence.investigations.routes import router as investigation_router
+from hcam.intelligence.investigations.runtime import GeneratedInvestigationRuntime
 from hcam.metrics import RequestMetrics, router as metrics_router
 from hcam.observability import RequestContextMiddleware
+from hcam.operations.platform import models as _platform_models  # noqa: F401
+from hcam.operations.platform.routes import router as operations_platform_router
+from hcam.operations.platform.runtime import GeneratedPlatformRuntime
 from hcam.security.auth import build_authenticator
 from hcam.security.errors import sanitized_request_validation_error
 from hcam.security.request_limits import (
@@ -71,6 +89,25 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         application.state.analytics_frame_leases,
     ) = build_analytics_runtime(resolved_settings)
     application.state.analytics_tracking_lanes = GeneratedTrackingLaneStore()
+    application.state.reference_integration_runtime = GeneratedIntegrationRuntime(
+        enabled=resolved_settings.intelligence_generated_reference_integrations_enabled,
+        environment=resolved_settings.environment,
+    )
+    application.state.reference_provider_registry = ProviderRegistry()
+    application.state.reference_integration_metrics = IntegrationMetrics()
+    application.state.investigation_runtime = GeneratedInvestigationRuntime(
+        enabled=resolved_settings.intelligence_generated_investigations_enabled,
+        environment=resolved_settings.environment,
+    )
+    application.state.investigation_metrics = InvestigationMetrics()
+    application.state.operations_platform_runtime = GeneratedPlatformRuntime(
+        enabled=resolved_settings.operations_generated_platform_enabled,
+        environment=resolved_settings.environment,
+        unified_search_enabled=resolved_settings.operations_unified_search_enabled,
+        otel_export_enabled=resolved_settings.operations_otel_export_enabled,
+        external_broker_enabled=resolved_settings.operations_external_broker_enabled,
+        kubernetes_execution_enabled=resolved_settings.operations_kubernetes_execution_enabled,
+    )
     application.state.request_metrics = RequestMetrics(
         service_name=resolved_settings.service_name,
         version=__version__,
@@ -79,6 +116,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         RequestValidationError,
         sanitized_request_validation_error,
     )
+    application.add_exception_handler(_ProblemException, problem_exception_handler)
     application.add_middleware(
         RequestBodyLimitMiddleware,
         max_bytes=resolved_settings.max_request_body_bytes,
@@ -106,6 +144,21 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     application.include_router(stream_router)
     application.include_router(analytics_router)
     application.include_router(analytics_spatial_router)
+    if (
+        resolved_settings.intelligence_generated_control_plane_enabled
+        or resolved_settings.intelligence_generated_correlation_enabled
+        or resolved_settings.intelligence_generated_rule_evaluation_enabled
+        or resolved_settings.intelligence_generated_alert_lifecycle_enabled
+    ):
+        application.include_router(intelligence_router)
+    if resolved_settings.intelligence_generated_alert_lifecycle_enabled:
+        application.include_router(alert_lifecycle_router)
+    if resolved_settings.intelligence_generated_reference_integrations_enabled:
+        application.include_router(reference_integration_router)
+    if resolved_settings.intelligence_generated_investigations_enabled:
+        application.include_router(investigation_router)
+    if resolved_settings.operations_generated_platform_enabled:
+        application.include_router(operations_platform_router)
     return application
 
 

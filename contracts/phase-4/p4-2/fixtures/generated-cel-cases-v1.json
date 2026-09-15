@@ -1,0 +1,15 @@
+{
+  "schema_version": "hcam.p4-2.generated-cel-cases.v1",
+  "generated_only": true,
+  "accepted": [
+    "confidence >= 0.75 && chronology_complete",
+    "count >= 2 && !contradiction",
+    "object_class == 'vehicle.car'"
+  ],
+  "rejected": [
+    "camera.owner == 'private'",
+    "[1, 2].exists(x, x > 0)",
+    "object_class.matches('car.*')",
+    "confidence"
+  ]
+}

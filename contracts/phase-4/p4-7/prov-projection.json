@@ -1,0 +1,27 @@
+{
+  "activity": {
+    "hcam:deterministic-replay": {
+      "prov:type": "generated-validation"
+    }
+  },
+  "boundary": {
+    "canonical": false,
+    "conformance_claim": false,
+    "generated_only": true,
+    "operational": false
+  },
+  "entity": {
+    "hcam:scenario-results": {
+      "prov:type": "generated-scenario-evidence"
+    }
+  },
+  "prefix": {
+    "hcam": "urn:hcam:generated:p47:"
+  },
+  "wasGeneratedBy": {
+    "hcam:relation": {
+      "prov:activity": "hcam:deterministic-replay",
+      "prov:entity": "hcam:scenario-results"
+    }
+  }
+}

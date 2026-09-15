@@ -1,0 +1,33 @@
+{
+  "schema_version": "hcam.phase5.p5_7.performance_budget_manifest.v1",
+  "generated_only": true,
+  "hard_budgets": [
+    {
+      "metric": "interaction_ms",
+      "maximum": 250,
+      "context": "local_Edge_generated_V04_C1"
+    },
+    {
+      "metric": "long_task_ms",
+      "maximum": 100,
+      "context": "local_Edge_generated_V04_C1"
+    },
+    {
+      "metric": "map_idle_ms",
+      "maximum": 5000,
+      "context": "local_Edge_generated_V04_C1"
+    },
+    {
+      "metric": "query_fanout",
+      "maximum": 12,
+      "context": "generated_cross_portal_journey"
+    },
+    {
+      "metric": "bundle_kib",
+      "maximum": 1900,
+      "context": "largest_uncompressed_portal_JS"
+    }
+  ],
+  "automatic_relaxation": false,
+  "production_or_hardware_claim_authorized": false
+}

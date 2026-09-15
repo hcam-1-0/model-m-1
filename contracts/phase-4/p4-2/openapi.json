@@ -1,0 +1,31 @@
+{
+  "schema_version": "hcam.phase4.p4_2.openapi-delta.v1",
+  "paths": {
+    "/intelligence-rule-compilations/{compilation_id}": ["GET"],
+    "/intelligence-rules": ["POST"],
+    "/intelligence-rules/compile-preview": ["POST"],
+    "/intelligence-rules/{record_id}/approve": ["POST"],
+    "/intelligence-rules/{record_id}/evaluations": ["GET"],
+    "/intelligence-rules/{record_id}/mark-shadow-eligible": ["POST"],
+    "/intelligence-rules/{record_id}/retire": ["POST"],
+    "/intelligence-rules/{record_id}/shadow-comparisons": ["GET"],
+    "/intelligence-rules/{record_id}/suspend": ["POST"],
+    "/intelligence-rules/{record_id}/validate": ["POST"],
+    "/intelligence-rules/{record_id}/versions": ["GET"]
+  },
+  "mutation_scope": "authoring_and_nonoperational_lifecycle_only",
+  "cache_policy": "no-store",
+  "department_scoped": true,
+  "rbac_and_reason_required": true,
+  "optimistic_concurrency": "If-Match",
+  "generated_only": true,
+  "operational": false,
+  "absent_surfaces": [
+    "public rule evaluation start",
+    "active rule state",
+    "operational alert creation",
+    "notification routing",
+    "dispatch or enforcement",
+    "background worker or scheduler"
+  ]
+}

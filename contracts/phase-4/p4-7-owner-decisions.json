@@ -1,0 +1,127 @@
+{
+  "schema_version": "hcam.phase4.p4_7.owner-decisions.v1",
+  "decision_record_id": "P4.7-OWNER-DECISIONS-R0",
+  "recorded_on": "2026-09-05",
+  "recorded_by": "mayank-admin",
+  "effective_for_planning": true,
+  "effective_for_implementation": false,
+  "effective_for_runtime_or_scenario_execution": false,
+  "selections": {
+    "D-P4.7-001": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.7-002": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.7-003": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.7-004": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.7-005": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.7-006": {
+      "selected": ["B"],
+      "capability_requested": []
+    },
+    "D-P4.7-007": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.7-008": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.7-009": {
+      "selected": ["B"],
+      "capability_requested": []
+    },
+    "D-P4.7-010": {
+      "selected": ["B"],
+      "capability_requested": []
+    },
+    "D-P4.7-011": {
+      "selected": ["B"],
+      "capability_requested": ["C"]
+    },
+    "D-P4.7-012": {
+      "selected": ["A"],
+      "capability_requested": []
+    }
+  },
+  "selected_profile": "C/C/C/C/C/B/C/C/B/B/B_with_guarded_C_capability/A",
+  "reconciled_profile": {
+    "scenario_engine": "canonical_scenario_and_step_model_with_bounded_application_service_adapter_and_separate_HTTP_event_projection_checks",
+    "scenario_portfolio": "one_golden_narrative_eight_mandatory_failure_recovery_variants_and_bounded_pairwise_contract_cases",
+    "determinism": "manifest_derived_time_identity_order_policy_hash_normalization_and_two_clean_semantic_replays",
+    "assertion_oracle": "exact_immutable_inputs_and_independent_mandatory_fail_closed_semantic_assertion_families",
+    "evidence": "acyclic_HCAM_canonical_evidence_DAG_with_optional_independently_validated_RFC8785_PROV_and_SLSA_shaped_projections",
+    "claims_and_limitations": "canonical_machine_readable_claim_and_limitation_registers_with_one_derived_human_summary",
+    "http_handoff": "canonical_HTTP_operation_catalogue_with_pinned_OpenAPI_projection_and_RFC9457_safe_failure_mapping",
+    "event_workflow_handoff": "canonical_HCAM_event_and_workflow_catalogues_with_optional_pinned_AsyncAPI_CloudEvents_and_Arazzo_projections",
+    "ui_accessibility_handoff": "typed_backend_to_UI_state_action_and_accessibility_matrix_without_conformance_claim",
+    "compatibility": "versioned_change_and_consumer_compatibility_matrix_with_migration_deprecation_and_security_boundary_rules",
+    "operations_pack": "typed_generated_only_non_operational_runbook_plus_human_guide_and_guarded_future_production_operations_prerequisite_outline",
+    "phase_boundary": "exact_Phase4_closeout_acceptance_then_separate_explicit_Phase5_planning_authorization"
+  },
+  "guarded_production_operations_capability_boundary": {
+    "decision_id": "D-P4.7-011",
+    "canonical_executable_baseline": "B_typed_non_operational_runbook_plus_concise_human_guide",
+    "requested_capability": "C_production_operations_manual",
+    "reconciled_capability": "non_effective_future_production_operations_prerequisite_outline_only",
+    "allowed_categories": [
+      "deployment",
+      "incident_response",
+      "backup_restore_and_recovery",
+      "capacity_and_scaling",
+      "observability_and_service_objectives",
+      "on_call_ownership",
+      "security_response",
+      "rollback_and_change_control",
+      "data_governance"
+    ],
+    "required_status_for_every_category": "not_operationally_validated",
+    "required_future_prerequisites": [
+      "named_accountable_owner",
+      "exact_target_environment",
+      "operational_evidence",
+      "approved_credentials_and_destination_controls",
+      "network_and_data_policy",
+      "measured_targets_and_limits",
+      "exercise_or_drill_evidence",
+      "rollback_and_stop_conditions",
+      "separate_implementation_validation_and_owner_acceptance"
+    ],
+    "environment_specific_commands_values_endpoints_credentials_or_destinations": false,
+    "production_procedure_or_readiness_claim": false,
+    "use_as_Phase4_acceptance_oracle": false,
+    "operational_execution_or_deployment": false,
+    "future_executable_procedure_requires_separate_exact_authorization": true
+  },
+  "explicitly_not_authorized": [
+    "P4_7_product_test_migration_dependency_model_dataset_inference_camera_media_provider_network_telemetry_backend_workflow_engine_container_Kubernetes_deployment_or_runtime_implementation",
+    "execution_of_any_end_to_end_scenario_generated_workflow_runbook_or_production_procedure",
+    "production_environment_specific_command_endpoint_destination_credential_secret_identity_host_cluster_volume_threshold_RPO_RTO_SLO_scale_or_retention_value",
+    "credential_secret_key_token_certificate_or_private_CA_access",
+    "Government_police_private_personal_biometric_vehicle_owner_registration_watchlist_investigation_case_or_evidence_data",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "installation_update_download_or_artifact_acquisition",
+    "hardware_performance_stress_backup_restore_or_recovery_execution",
+    "standards_accessibility_legal_evidentiary_operational_production_accuracy_scale_or_conformance_claim",
+    "Phase4_final_acceptance_or_Phase5_planning_implementation_or_deployment",
+    "additional_local_checkpoint_commit_without_new_explicit_authority",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "next_gate": "exact_owner_acceptance_of_non_effective_P4_7_PLANNING_R1_package_digest",
+  "owner_statement_normalization": "UTF_8_LF_trimmed_trailing_line_whitespace_without_terminal_newline",
+  "owner_statement_utf8_length": 183,
+  "owner_statement_sha256": "B3777BBD6B2A4EA82872BE3A8CCE6C68CFDED9F20D9464DF4986DAC076D7D45F",
+  "owner_statement": "D-P4.7-001: C\nD-P4.7-002: C\nD-P4.7-003: C\nD-P4.7-004: C\nD-P4.7-005: C\nD-P4.7-006: B\nD-P4.7-007: C\nD-P4.7-008: C\nD-P4.7-009: B\nD-P4.7-010: B\nD-P4.7-011: B + C if possible\nD-P4.7-012: A"
+}

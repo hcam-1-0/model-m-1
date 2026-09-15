@@ -1,0 +1,109 @@
+{
+  "schema_version": "hcam.phase5.planning-package.v1",
+  "package_id": "P5.0-PLANNING-R1",
+  "status": "non_effective_owner_acceptance_pending",
+  "prepared_on": "2026-09-06",
+  "planning_branch": "codex/phase5-operator-application-planning",
+  "accepted_predecessor": {
+    "phase": "phase_4",
+    "commit": "96a902315e78c184e92df9ebe5bcef1e336eab38",
+    "evidence_package_sha256": "B739251D7D86A265DE60BA9B9943A1D0002B515C68AA1297D8B1378ADF1C8FBC",
+    "canonical_component_digest": "75D0A3B7667C25BF8B5180639F5B8F3937A734FAA2B2BB63CB9FE9914182A875"
+  },
+  "planning_authority": {
+    "decision_id": "D-P5.0-PLAN-AUTH",
+    "path": "contracts/phase-5/planning-authorization.json",
+    "sha256": "F8BEA319D4AD19395DE48A18E7984E84B80D16D14123AD08F6EA9224BCFCA876"
+  },
+  "supersedes_for_current_planning": {
+    "package_id": "P5.0-PLANNING-R0",
+    "path": "contracts/phase-5/planning-package.json",
+    "sha256": "819BD11D580D82E64D9D67438B743D95430688A2C6AE7E436B489F9BCD9D2041",
+    "history_preserved": true
+  },
+  "component_digest_algorithm": "Sort components by path using ordinal path text, render path|bytes|sha256 with LF separators and no terminal LF, then SHA-256 over UTF-8 bytes.",
+  "canonical_component_digest": "D7F7D747EBB6622C40DCB48D1C75F542C8B5175592C3ECA9DD7BD65B8F355F21",
+  "components": [
+    {"path": "README.md", "bytes": 22576, "sha256": "103A57F0D7DBC2B8031116CFF17CE5C25E2797A2F00A98304988D56E8A606B8B"},
+    {"path": "contracts/phase-5/final-ui-repository-snapshot.json", "bytes": 9392, "sha256": "A27A657640DED34B159A6AEE57480190DE666BC1209682E1EEE3135A022B26C7"},
+    {"path": "contracts/phase-5/owner-decisions.json", "bytes": 2853, "sha256": "392AA1FF5735D66B8C1A2EA0BFFFB9363AC86E227160DADDE1E8B9B820274E62"},
+    {"path": "contracts/phase-5/planning-authorization.json", "bytes": 1679, "sha256": "F8BEA319D4AD19395DE48A18E7984E84B80D16D14123AD08F6EA9224BCFCA876"},
+    {"path": "contracts/phase-5/planning-package.json", "bytes": 4777, "sha256": "819BD11D580D82E64D9D67438B743D95430688A2C6AE7E436B489F9BCD9D2041"},
+    {"path": "docs/phase-5/current-status.md", "bytes": 1729, "sha256": "E572838D259FCD51E733E73A1FEFFDD6F7122C4EB7D3CFD51A6467A166F792B4"},
+    {"path": "docs/phase-5/final-ui-repository-assessment.md", "bytes": 16226, "sha256": "4AFA5AFDCAF60EBC10FC07B7035FF6ED473DEADCCC2C6CCD43A074123C386D47"},
+    {"path": "docs/phase-5/owner-decisions.md", "bytes": 2781, "sha256": "D038C764703DC2168F59818A7C5D127C19480B22585585310AB79A4B2633E8D7"},
+    {"path": "docs/phase-5/reconciled-planning-r1.md", "bytes": 4282, "sha256": "BD03481CD8EE3F9A8458F30B6CA1A94B69B76C52FBFB04709085279288BEDA60"},
+    {"path": "docs/phase-5/ui-adoption-plan.md", "bytes": 7732, "sha256": "2EBEA67C1E3CD75E3B65AD5007C8E730DC1269391B4C78F57BF277F14CC387C6"}
+  ],
+  "owner_decisions": {
+    "path": "contracts/phase-5/owner-decisions.json",
+    "selection_count": 12,
+    "resolved_profile": "B/A/A/A+B/D/C/A/A/A/A/A/A",
+    "all_decisions_recorded": true
+  },
+  "external_ui_baseline": {
+    "repository": "hcam-1-0/final-ui",
+    "commit": "cd21af3bef132b211bfe2860d25eaf38a94253df",
+    "tree_manifest_sha256": "D14594F633C8A894428AC79E1CA29F0BE8CE07A4EE89754D13976276776CFAD5",
+    "tracked_file_count": 24,
+    "remote_branches_inspected": ["api-doc-ui", "gis", "main"],
+    "branch_manifest_sha256": "8CE6D0175D493708B228C142CA8E3DB5201D6E02B636F2290E79F96CECBB3F77",
+    "api_documentation_branch_commit": "78b0d5184d1fe437642d3f1e61b046d0add9d1aa",
+    "api_documentation_branch_role": "future_Developer_Portal_seed",
+    "role": "visual_and_interaction_baseline",
+    "drop_in_production_implementation": false
+  },
+  "resolved_architecture": {
+    "packaging": "independently_buildable_portal_apps_in_one_monorepo",
+    "framework": "React_TypeScript_Vite",
+    "authentication": "same_origin_BFF_server_managed_session",
+    "resource_authority": "HTTP",
+    "browser_realtime": "bounded_non_authoritative_WebSocket_projection_and_invalidation",
+    "GIS": "authoritative_MapLibre_2D_with_guarded_optional_3D_adapter",
+    "playback": "typed_HLS_and_provisional_WHEP_adapter",
+    "design_system": "HCAM_tokens_and_reviewed_accessible_headless_primitives",
+    "workspace_persistence": "typed_server_workspaces_and_local_non_sensitive_preferences",
+    "localization": ["English", "Gujarati", "Hindi"],
+    "capability_resolution": "deterministic_policy_ceiling",
+    "validation": "layered_automated_and_manual_evidence",
+    "delivery": "shared_foundation_then_bounded_vertical_slices"
+  },
+  "phase4_7_handoff": {
+    "http_operations": 16,
+    "events": 6,
+    "workflows": 2,
+    "UI_states": 11,
+    "accessibility_requirements": 9,
+    "authoritative_over_external_UI_prototype": true
+  },
+  "frozen_subphase_weights": {
+    "P5.0": 8,
+    "P5.1": 12,
+    "P5.2": 12,
+    "P5.3": 16,
+    "P5.4": 15,
+    "P5.5": 15,
+    "P5.6": 10,
+    "P5.7": 12
+  },
+  "planning_progress": {"earned": 8, "total": 8, "percent": 100.0, "awards_product_points": false},
+  "product_progress": {"earned": 0, "total": 100, "percent": 0.0},
+  "owner_acceptance_recorded": false,
+  "P5_0_start_authorized": false,
+  "source_import_authorized": false,
+  "dependency_installation_authorized": false,
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "remote_git_authorized": false,
+  "continuing_prohibitions": [
+    "frontend_backend_test_migration_dependency_or_source_import_implementation",
+    "build_test_runtime_or_process_execution",
+    "cameras_ONVIF_stream_playback_or_media_access",
+    "Government_police_private_personal_biometric_vehicle_owner_registration_watchlist_case_investigation_or_evidence_data",
+    "models_datasets_artifacts_inference_training_or_AI_runtime",
+    "operational_alert_notification_dispatch_enforcement_deletion_export_hold_or_autonomous_action",
+    "provider_broker_telemetry_map_tile_media_or_operational_network_access",
+    "container_Kubernetes_deployment_or_release",
+    "remote_Git"
+  ]
+}

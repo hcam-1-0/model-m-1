@@ -1,0 +1,9 @@
+{
+  "schema_version": "hcam.p4-2.generated-shadow-comparisons.v1",
+  "generated_only": true,
+  "operational": false,
+  "cases": [
+    {"case_id": "equal-generated-results", "candidate_matches": 2, "baseline_matches": 2, "disagreement_count": 0},
+    {"case_id": "generated-disagreement", "candidate_matches": 3, "baseline_matches": 1, "disagreement_count": 2}
+  ]
+}

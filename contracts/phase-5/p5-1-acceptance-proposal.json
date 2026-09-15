@@ -1,0 +1,20 @@
+{
+  "schema_version": "hcam.phase5.p5_1.acceptance-proposal.v1",
+  "decision_id": "D-P5.1-ACCEPTANCE",
+  "status": "owner_acceptance_required",
+  "effective": false,
+  "evidence_package": {
+    "package_id": "P5.1-EVIDENCE-PACKAGE-R0",
+    "path": "contracts/phase-5/p5-1-evidence-package.json",
+    "sha256": "74953D5E9239A17E8A4173B72CF7A485BC4B7FDBC0503A31787F2EFE9C1767BC",
+    "canonical_component_digest": "74E4C87B11FDAA8DB2DC94D922F330B44DD551D9F3CB587673B394488A8321F4"
+  },
+  "technical_commit": "394e9d2701c9b63ca92dad8398607dfa918be7c3",
+  "accepted_progress_if_approved": {
+    "P5_1": "12/12 (100.0000%)",
+    "Phase_5": "20/100 (20.0000%)"
+  },
+  "owner_acceptance_statement": "D-P5.1-ACCEPTANCE: I, mayank-admin, accept P5.1 evidence package P5.1-EVIDENCE-PACKAGE-R0 with SHA-256 74953D5E9239A17E8A4173B72CF7A485BC4B7FDBC0503A31787F2EFE9C1767BC and canonical component digest 74E4C87B11FDAA8DB2DC94D922F330B44DD551D9F3CB587673B394488A8321F4 at technical commit 394e9d2701c9b63ca92dad8398607dfa918be7c3, including its generated-only Shared Application Foundation, validation results, dependency and supply-chain evidence, explicit environment limitations, and documented safety boundaries. This acceptance completes P5.1 only. It does not authorize P5.2, source import, backend routes or migrations, map or media runtime, providers or operational network access, Government or private data, models or inference, operational actions, containers, Kubernetes, deployment, or remote Git.",
+  "P5_2_authorized": false,
+  "remote_Git_authorized": false
+}

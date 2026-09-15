@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hcam:phase5:p5-3:playback-session:v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["session_ref", "stream_ref", "transport", "rendition", "media_path", "grant", "issued_at", "expires_at", "source_revision", "generated"],
+  "properties": {
+    "session_ref": { "type": "string", "pattern": "^SYN-[A-Z0-9-]{3,48}$" },
+    "stream_ref": { "type": "string", "pattern": "^SYN-[A-Z0-9-]{3,48}$" },
+    "transport": { "enum": ["hls", "native_hls", "whep"] },
+    "rendition": { "enum": ["low", "medium", "high"] },
+    "media_path": { "type": "string", "pattern": "^/media-edge/sessions/SYN-[A-Z0-9-]{3,48}/(master\\.m3u8|whep)$" },
+    "grant": { "type": "string", "pattern": "^g1_[A-Za-z0-9_-]{24,96}$" },
+    "issued_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "source_revision": { "type": "string", "pattern": "^SYN-[A-Z0-9-]{3,48}$" },
+    "generated": { "const": true }
+  },
+  "x-hcam-storage": "memory_only",
+  "x-hcam-url-policy": "grant_header_only"
+}

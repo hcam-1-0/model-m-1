@@ -1,0 +1,22 @@
+{
+  "allowed_fields": [
+    "vehicle.category",
+    "record.status"
+  ],
+  "contract_type": "hcam.intelligence.reference-provider.v1",
+  "created_at": "2026-09-04T00:00:00Z",
+  "credential_state": "none",
+  "department": "Engineering Lab",
+  "destination_policy_ref": "ref_bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "enabled": false,
+  "generated_only": true,
+  "owner_id": "mayank-admin",
+  "policy_ref": "ref_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "provider_id": "prov_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "provider_key": "generated-reference-catalogue",
+  "provider_kind": "generated_fixture",
+  "status": "disabled",
+  "transport_state": "absent",
+  "updated_at": "2026-09-04T00:00:00Z",
+  "version": 1
+}

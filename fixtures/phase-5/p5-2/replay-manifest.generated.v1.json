@@ -1,0 +1,8 @@
+{
+  "schema_version": "hcam.phase5.p5_2.replay_manifest.v1",
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "clock": "2026-09-08T00:20:00.000Z",
+  "seeds": ["P5-2-C1-001", "P5-2-C10-001", "P5-2-C50-001"],
+  "expected_digest_stable": true,
+  "network": false
+}

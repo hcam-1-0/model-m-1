@@ -1,0 +1,15 @@
+{
+  "schema_version": "hcam.phase4.p4_1.openapi-delta.v1",
+  "paths": {
+    "/correlation-hypotheses/{hypothesis_id}/graph": ["GET"],
+    "/correlation-hypotheses/{hypothesis_id}/projection": ["GET"],
+    "/correlation-hypotheses/{hypothesis_id}/revisions": ["GET"],
+    "/correlation-runs": ["GET"],
+    "/correlation-runs/{run_id}": ["GET"]
+  },
+  "mutation_paths_added": 0,
+  "cache_policy": "no-store",
+  "department_scoped": true,
+  "generated_only": true,
+  "operational": false
+}

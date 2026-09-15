@@ -1,0 +1,85 @@
+{
+  "schema_version": "hcam.phase5.p5_7.start_package_validation.v1",
+  "validation_id": "P5.7-START-PACKAGE-VALIDATION-R0",
+  "status": "passed",
+  "validated_on": "2026-09-12",
+  "planning_branch": "codex/phase5-product-ux-contracts",
+  "planning_head": "fa570be85bd0b38c16609b8c9a583f86a01b1370",
+  "package": {
+    "package_id": "P5.7-START-R0",
+    "path": "contracts/phase-5/p5-7-start-authorization-package.json",
+    "bytes": 22303,
+    "sha256": "77E3A7885AA1969A9F50AF9EB3FE8EE05DEEAB0374FB1F83C4DD51B860C5395C",
+    "status": "owner_authorization_required",
+    "effective": false,
+    "bound_input_digest": "E5B65A6611C9ED90A33B156DA6D632859CBFFF4BE4781AA2E03F910F0AEA1B4B"
+  },
+  "start_statement": {
+    "proposal_path": "docs/phase-5/p5-7-start-authorization-proposal.md",
+    "proposal_bytes": 4912,
+    "proposal_sha256": "19FBA8872DB6AD22B4C864A97EB5EC8A09F767108C993346487C924DB05CFA99",
+    "normalization": "Whitespace collapsed to single ASCII spaces, UTF-8 without BOM, no terminal newline.",
+    "normalized_bytes": 1957,
+    "normalized_sha256": "69E664F4C3B32A76D60839EC0FC4C2DDD138D25951C0B6BC0F6C1CE81C5480BD"
+  },
+  "checks": [
+    {"id": "V01", "result": "pass", "detail": "P5.7-START-R0 parses as JSON and remains non-effective."},
+    {"id": "V02", "result": "pass", "detail": "The exact planning package and canonical component digests match the owner-accepted P5.7 R1 baseline."},
+    {"id": "V03", "result": "pass", "detail": "The exact normalized owner planning-acceptance statement matches its recorded 2,078-byte SHA-256 identity."},
+    {"id": "V04", "result": "pass", "detail": "All 22 bound inputs exist and match exact path, byte count, and SHA-256."},
+    {"id": "V05", "result": "pass", "detail": "The canonical bound-input digest recomputes to E5B65A6611C9ED90A33B156DA6D632859CBFFF4BE4781AA2E03F910F0AEA1B4B."},
+    {"id": "V06", "result": "pass", "detail": "Eight workstreams total exactly 12 product points and preserve the 11-point technical cap plus one-point owner gate."},
+    {"id": "V07", "result": "pass", "detail": "Generated case allocation sums exactly to 2,048 across all eight frozen categories."},
+    {"id": "V08", "result": "pass", "detail": "Fourteen journeys, twenty mandatory states, C1/C10/C50 workloads, seven viewports, five locale/time profiles, and six resource profiles remain frozen."},
+    {"id": "V09", "result": "pass", "detail": "The allowlists contain 15 exact existing files, 40 exact additive implementation paths, 34 exact additive phase/evidence records, and five bounded status paths."},
+    {"id": "V10", "result": "pass", "detail": "Existing application and shared-package source remediation is excluded and requires a separate exact amendment."},
+    {"id": "V11", "result": "pass", "detail": "Dependency resolution, downloads, installation, update, lockfile/SBOM change, and automatic browser download remain forbidden."},
+    {"id": "V12", "result": "pass", "detail": "Runtime scope is local loopback, generated-only, sequential by default, and unavailable until exact owner start authorization."},
+    {"id": "V13", "result": "pass", "detail": "Provider, Sentinel, camera, media, Government/private data, identity, credential, secret, model, inference, and operational action gates remain closed."},
+    {"id": "V14", "result": "pass", "detail": "Containers, Kubernetes execution, deployment, release, final Phase 5 acceptance, and remote Git remain closed."},
+    {"id": "V15", "result": "pass", "detail": "The exact start statement binds package SHA-256, bound-input digest, allowlisted scope, stop conditions, and prohibitions."},
+    {"id": "V16", "result": "pass", "detail": "Start-package preparation and owner authorization award zero P5.7 or Phase 5 product points."}
+  ],
+  "counts": {
+    "bound_inputs": 22,
+    "workstreams": 8,
+    "product_points": 12,
+    "generated_cases": 2048,
+    "journeys": 14,
+    "mandatory_states": 20,
+    "workloads": 3,
+    "viewports": 7,
+    "locale_and_time_profiles": 5,
+    "resource_profiles": 6,
+    "existing_file_changes": 15,
+    "additive_implementation_paths": 40,
+    "additive_phase_and_evidence_records": 34,
+    "bounded_status_transitions": 5,
+    "validation_gates": 38,
+    "stop_conditions": 12,
+    "checks_passed": 16,
+    "checks_failed": 0
+  },
+  "actions_not_performed": [
+    "source_import_or_product_or_test_implementation",
+    "dependency_resolution_download_install_update_or_lockfile_change",
+    "frontend_browser_media_model_container_Kubernetes_hardware_performance_or_other_runtime",
+    "provider_network_Sentinel_camera_media_or_real_data_access",
+    "credential_secret_identity_model_dataset_artifact_or_inference_access",
+    "operational_action_deployment_release_or_final_Phase_5_acceptance",
+    "stage_commit_push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "progress": {
+    "P5_7_owner_decisions": "12/12 (100.0000%), change +0.0000 percentage points",
+    "P5_7_planning": "8/8 (100.0000%), change +0.0000 percentage points",
+    "P5_7_planning_acceptance": "100.0000%, change +100.0000 percentage points",
+    "P5_7_product": "0/12 (0.0000%), change +0.0000 percentage points",
+    "phase_5_product": "88/100 (88.0000%), change +0.0000 percentage points"
+  },
+  "limitations": [
+    "This is static planning-package validation, not implementation or runtime evidence.",
+    "No browser, accessibility, localization, performance, resilience, security, supply-chain, or cross-portal product validation has run under this package.",
+    "The package is non-effective until the owner supplies the exact digest-bound D-P5.7-START statement.",
+    "The current planning and start-package records remain intentionally uncommitted because no additional commit authority exists."
+  ]
+}

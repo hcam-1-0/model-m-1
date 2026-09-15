@@ -1,0 +1,29 @@
+{
+  "schema_version": "hcam.phase5.p5_3.media_evidence.v1",
+  "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+  "profiles": ["C1", "C4", "C10"],
+  "aggregate": {
+    "stream_count": 10,
+    "rendition_count": 30,
+    "asset_count": 480,
+    "bytes": 238578298
+  },
+  "asset_manifest_sha256": "AC09C4A8C89D4E80746B064F2E4C5CD5F056DDDAD8FCC6694269EB06A952D093",
+  "tools": [
+    {
+      "name": "ffmpeg",
+      "bytes": 148234240,
+      "sha256": "B1383F5D07470D503EDECDAEE4BDDC5891E986E916A698299B357F79CFE445FD",
+      "version": "ffmpeg version 7.1.1-full_build-www.gyan.dev Copyright (c) 2000-2025 the FFmpeg developers"
+    },
+    {
+      "name": "ffprobe",
+      "bytes": 148097536,
+      "sha256": "012BDDDED3CBC5204055210D7FF4F0B3F7521BCA441A694939856D01909F5756",
+      "version": "ffprobe version 7.1.1-full_build-www.gyan.dev Copyright (c) 2007-2025 the FFmpeg developers"
+    }
+  ],
+  "source": "lavfi_testsrc2_only",
+  "audio": false,
+  "retention": "binary_media_removed_after_evidence"
+}

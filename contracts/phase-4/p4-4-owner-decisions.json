@@ -1,0 +1,130 @@
+{
+  "schema_version": "hcam.phase4.p4_4.owner-decisions.v1",
+  "decision_record_id": "P4.4-OWNER-DECISIONS-R0",
+  "recorded_on": "2026-09-05",
+  "recorded_by": "mayank-admin",
+  "effective_for_planning": true,
+  "effective_for_implementation": false,
+  "effective_for_runtime": false,
+  "selections": {
+    "D-P4.4-001": {
+      "selected": [
+        "C"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-002": {
+      "selected": [
+        "D"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-003": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": [
+        "C",
+        "D"
+      ]
+    },
+    "D-P4.4-004": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-005": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-006": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": [
+        "D"
+      ]
+    },
+    "D-P4.4-007": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-008": {
+      "selected": [
+        "C"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-009": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": []
+    },
+    "D-P4.4-010": {
+      "selected": [
+        "A"
+      ],
+      "capability_requested": []
+    }
+  },
+  "selected_profile": "C/D/A_with_C_and_D_capability/A/A/A_with_D_capability/A/C/A/A",
+  "reconciled_profile": {
+    "provider_composition": "shared_typed_kernel_immutable_manifests_and_provider_specific_adapters",
+    "transport_validation": "in_process_generated_provider_then_separately_authorized_loopback_HTTP_TLS_simulator",
+    "authentication": "closed_typed_profiles_and_opaque_per_attempt_leases_with_optional_encrypted_database_envelope_backend_and_constrained_extension_profiles",
+    "destination_and_trust": "exact_compiled_route_application_validation_and_network_egress_policy",
+    "catalogue": "dedicated_normalized_snapshots_and_minimized_result_cache",
+    "orchestration": "durable_bounded_PostgreSQL_jobs_with_generated_external_executor_simulator_and_future_typed_workflow_adapter",
+    "matching": "deterministic_field_specific_evidence_bounded_ranking_contradiction_and_abstention",
+    "correlation_and_alerts": "manual_and_generated_hypothesis_enrichment_lanes_independently_switchable_and_default_off",
+    "governance": "versioned_provider_lifecycle_and_hierarchical_durable_kill_switches",
+    "retention_and_telemetry": "zero_durable_raw_response_minimized_evidence_and_split_sanitized_telemetry"
+  },
+  "authentication_capability_boundary": {
+    "canonical_authority": "closed_typed_auth_profiles_with_opaque_per_attempt_secret_leases",
+    "provider_configuration_contains_only_secret_references": true,
+    "generated_tier_uses_only_none_generated_and_unconfigured_secret_provider": true,
+    "encrypted_database_envelope_backend_contract_allowed": true,
+    "encrypted_database_envelope_backend_enabled": false,
+    "database_plaintext_or_recoverable_log_storage": false,
+    "external_key_encryption_key_and_separation_of_duties_required": true,
+    "constrained_extension_auth_profile_contract_allowed": true,
+    "runtime_arbitrary_auth_code_headers_or_bypass": false,
+    "signed_allowlisted_versioned_extension_required": true,
+    "future_backend_or_extension_activation_requires_separate_authorization": true
+  },
+  "workflow_capability_boundary": {
+    "PostgreSQL_is_authoritative_job_lease_retry_circuit_and_revocation_truth": true,
+    "bounded_internal_worker": true,
+    "generated_external_executor_simulator": true,
+    "typed_future_workflow_dispatch_adapter": true,
+    "external_engine_is_business_or_authority_truth": false,
+    "external_engine_receives_raw_provider_values_or_secrets": false,
+    "external_engine_dependency_connection_credentials_or_deployment": false,
+    "future_external_engine_activation_requires_separate_authorization": true
+  },
+  "explicitly_not_authorized": [
+    "P4_4_source_test_migration_API_worker_or_runtime_implementation",
+    "effective_P4_4_start_record_or_implementation_before_exact_start_package_acceptance",
+    "real_provider_connection_query_or_catalogue",
+    "credential_secret_key_vault_or_encrypted_database_secret_backend_access",
+    "dynamic_plugin_loading_arbitrary_auth_headers_or_policy_bypass",
+    "external_workflow_engine_dependency_connection_credential_or_deployment",
+    "Sentinel_camera_stream_image_recording_playback_or_media_access",
+    "real_private_personal_biometric_vehicle_owner_case_watchlist_Government_or_police_data",
+    "models_datasets_checkpoints_artifacts_inference_training_or_accelerators",
+    "operational_alert_notification_dispatch_enforcement_or_autonomous_action",
+    "containers_Kubernetes_cloud_production_deployment_or_release",
+    "push_pull_fetch_PR_merge_or_other_remote_Git"
+  ],
+  "next_gate": "exact_owner_acceptance_of_non_effective_P4_4_PLANNING_R1_package_digest",
+  "owner_statement_normalization": "UTF_8_LF_without_terminal_newline",
+  "owner_statement": "D-P4.4-001: C\nD-P4.4-002: D\nD-P4.4-003: A and also capable of C and D.\nD-P4.4-004: A\nD-P4.4-005: A\nD-P4.4-006: A and also try to do D \nD-P4.4-007: A\nD-P4.4-008: C\nD-P4.4-009: A\nD-P4.4-010: A",
+  "owner_statement_sha256": "E4A376DDD4014A2E3CC5D433D2B4165BFA6541BA6BC9E2862162D2D177432A64"
+}

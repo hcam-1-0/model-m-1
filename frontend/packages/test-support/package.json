@@ -1,0 +1,17 @@
+{
+  "name": "@hcam/test-support",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@hcam/test-fixtures": "workspace:*",
+    "@testing-library/react": "catalog:",
+    "react": "catalog:"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}

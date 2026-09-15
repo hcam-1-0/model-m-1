@@ -1,0 +1,123 @@
+{
+  "schema_version": "hcam.phase4.p4_6.planning-acceptance.v1",
+  "decision_id": "D-P4.6-PLANNING-R1-ACCEPTANCE",
+  "status": "accepted",
+  "effective": true,
+  "accepted_by": "mayank-admin",
+  "accepted_on": "2026-09-05",
+  "accepted_repository_head": "4100dc148b1a0728ccaed5bac07ba67913951ee6",
+  "accepted_package": {
+    "package_id": "P4.6-PLANNING-R1",
+    "path": "contracts/phase-4/p4-6-planning-r1-package.json",
+    "sha256": "5EF1814AE432FD7C15E3A9BD92EF6344CDA210A2D872A362C45D10CCADA411F5",
+    "reconciled_component_digest": "07717C1641AAE57F1C58D7B6FEB18B16C825F7B94E963DDD951A14AEC598BEA9"
+  },
+  "acceptance_proposal": {
+    "path": "contracts/phase-4/p4-6-planning-r1-acceptance-proposal.json",
+    "sha256": "E3A7B89B2B611E0C4994F19DCE6C98B4E1D085B729A9B379E68B0DD2B8530ED5"
+  },
+  "recorded_profile": "C/A/A_with_guarded_C_capability/A/A/A/A/A/A/A/C/C",
+  "recorded_decisions": {
+    "D-P4.6-001": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.6-002": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-003": {
+      "selected": ["A"],
+      "capability_requested": ["C"]
+    },
+    "D-P4.6-004": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-005": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-006": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-007": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-008": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-009": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-010": {
+      "selected": ["A"],
+      "capability_requested": []
+    },
+    "D-P4.6-011": {
+      "selected": ["C"],
+      "capability_requested": []
+    },
+    "D-P4.6-012": {
+      "selected": ["C"],
+      "capability_requested": []
+    }
+  },
+  "authority_effect": [
+    "freeze_P4_6_PLANNING_R1_as_the_accepted_reconciled_planning_baseline",
+    "preserve_independent_authoritative_operational_security_audit_and_evidence_lanes",
+    "preserve_UnifiedSignalSearchProjection_as_a_disabled_sanitized_non_authoritative_capability_surface",
+    "prepare_one_separate_non_effective_digest_bound_P4_6_START_R0_authorization_package"
+  ],
+  "implementation_authorized": false,
+  "runtime_authorized": false,
+  "central_signal_or_telemetry_backend_authorized": false,
+  "production_SLO_RPO_RTO_or_capacity_target_authorized": false,
+  "process_service_container_or_Kubernetes_execution_authorized": false,
+  "hardware_capacity_scanner_backup_restore_or_recovery_execution_authorized": false,
+  "network_credentials_or_secret_access_authorized": false,
+  "real_data_camera_media_model_or_inference_authorized": false,
+  "operational_action_authorized": false,
+  "deployment_authorized": false,
+  "additional_commit_authorized": false,
+  "remote_git_authorized": false,
+  "frozen_progress": {
+    "phase4_earned_points": 85,
+    "phase4_total_points": 100,
+    "phase4_percentage": "85.00%",
+    "phase4_change_percentage_points": "+0.00",
+    "p4_6_earned_points": 0,
+    "p4_6_total_points": 10,
+    "p4_6_percentage": "0.0000%",
+    "p4_6_change_percentage_points": "+0.0000",
+    "planning_and_research_gate": "5/5 (100.0000%)",
+    "owner_decision_gate": "12/12 (100.0000%)",
+    "reconciled_package_preparation_gate": "1/1 (100.0000%)",
+    "reconciled_package_acceptance_gate": "1/1 (100.0000%)",
+    "reconciled_package_acceptance_change_percentage_points": "+100.0000"
+  },
+  "non_authorization": [
+    "P4_6_source_test_migration_dependency_API_worker_container_Kubernetes_deployment_or_runtime_implementation",
+    "central_log_search_observability_security_or_telemetry_backend_connection_activation_or_authoritative_use",
+    "combining_authoritative_signal_stores_or_weakening_lane_specific_access_retention_deletion_or_export_controls",
+    "production_SLI_SLO_error_budget_alert_threshold_RPO_RTO_capacity_or_deployment_target",
+    "process_service_container_cluster_backup_restore_scanner_hardware_capacity_performance_stress_or_recovery_execution",
+    "installation_update_download_or_artifact_acquisition",
+    "credential_secret_key_token_certificate_provider_private_CA_or_network_access",
+    "Sentinel_camera_media_private_Government_personal_biometric_vehicle_owner_registration_watchlist_case_or_evidence_data",
+    "model_dataset_checkpoint_artifact_training_or_inference",
+    "operational_alert_notification_dispatch_enforcement_identity_decision_or_autonomous_action",
+    "production_pilot_cloud_release_or_deployment",
+    "additional_checkpoint_commit_without_new_exact_authority",
+    "push_pull_fetch_PR_merge_release_or_other_remote_Git"
+  ],
+  "owner_statement_normalization": "UTF_8_LF_without_terminal_newline",
+  "owner_statement_utf8_length": 771,
+  "owner_statement_sha256": "52D55E3BA0DA455E9626772C6296EFA43477BD889410449F3EFDF7B7E3D2C5D9",
+  "owner_statement": "D-P4.6-PLANNING-R1-ACCEPTANCE: I, mayank-admin, accept reconciled P4.6 planning package P4.6-PLANNING-R1 with SHA-256 5EF1814AE432FD7C15E3A9BD92EF6344CDA210A2D872A362C45D10CCADA411F5, including the recorded C/A/A with guarded C capability/A/A/A/A/A/A/A/C/C profile and all documented planning-only limitations. This accepts planning only. It does not authorize P4.6 implementation, central signal or telemetry backends, production SLO/RPO/RTO/capacity targets, processes, services, containers, Kubernetes execution, hardware or capacity testing, backup or restore, scanners, network access, credentials or secrets, Government or private data, cameras or media, models or datasets, inference, operational alerts or actions, deployment, an additional commit, or remote Git.",
+  "next_gate": "separate_exact_digest_bound_D_P4_6_START_acceptance"
+}

@@ -1,0 +1,13 @@
+{
+  "actor_id": "hcam-generated-fixture",
+  "alert_id": "alt_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "authority_class": "mandatory_review",
+  "contract_type": "hcam.intelligence.alert-lifecycle-event.v1",
+  "generated_only": true,
+  "new_state": "proposed",
+  "operational": false,
+  "previous_state": "none",
+  "reason": "Create generated-only proposed alert fixture for contract validation",
+  "recorded_at": "2026-09-04T00:00:03Z",
+  "revision": 1
+}

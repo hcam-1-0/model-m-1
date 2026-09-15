@@ -1,0 +1,356 @@
+{
+  "schema_version": "hcam.phase4.p4_5.evidence-package.v1",
+  "package_id": "P4.5-EVIDENCE-PACKAGE-R0",
+  "status": "technical_validation_passed_owner_acceptance_pending",
+  "generated_on": "2026-09-05",
+  "branch": "codex/phase4-investigation-evidence",
+  "start_package_sha256": "7DC272A5017C54EC83380A2BD2301CAA737EAB1D196045B9A5D1F40F232F34CF",
+  "component_digest_mode": "utf8_text_normalized_lf",
+  "component_count": 85,
+  "components": [
+    {
+      "path": ".github/workflows/python-ci.yml",
+      "sha256": "F64E3CC5688903BAED5DFBF95DFB8931889FC9E0A278B13FBEC761BC26261D9F"
+    },
+    {
+      "path": "app/hcam/database.py",
+      "sha256": "C4280FF8CD2116D9714435294E6BC01C7383268FE34148FECF3FD352AB188518"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/__init__.py",
+      "sha256": "0D54F78E4F3F5D7E90ABC4EC0C1AAE907623EE240DDF5338C733ED5E6AA7AFD4"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/bounds.py",
+      "sha256": "736F1BF50D5464CF7F913DBE8771ED107494A431C0247E8C2C9EFCE83B82A561"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/canonical.py",
+      "sha256": "7C08EDD31B74BCB49B3F15788B01A46DB2A84420C317A3F667D8A6E859EE5704"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/case_bridge.py",
+      "sha256": "215BCACC1C2E190A13AF9A16025F52CBEA9315CD99A56082AF8A52B88AD7A15B"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/chronology.py",
+      "sha256": "926C18DD78FBD16ECFA3C5BC4A70CFA6F376A6828FA33B417F46DCEC10B470FE"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/contracts.py",
+      "sha256": "CB390BD18F18E4BC95C365A9C1CD704549132C318F86E28B4A2303AA4DE025E3"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/corrections.py",
+      "sha256": "5B4BF0C981F0BD72E8355B45D4A4E9B13B32C9A41C2502BC1DDCB0E5C51F6543"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/deletion.py",
+      "sha256": "6C00B78D9FE2856E330D7CE3739A61B9D273453B23EDF9D8B4E809E5344C8868"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/evidence.py",
+      "sha256": "91F6C1010BA47937AA88F1FDB6932701EDA4784A102FEC804DFFCF7D7E977B95"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/exports.py",
+      "sha256": "8CAD6B6F3ECBEF2CA49CD18A821B0ED299314ADDBE79843E060A702AB0109647"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/integrity.py",
+      "sha256": "ED5B19876B2084FE36437E7C71358F1D1781ABD64FD26E00A0C68BF4A55E265D"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/jobs.py",
+      "sha256": "2EDCC2D5FEE39EAE0869BD044D116F4048C1E3D5D8992F7011CD90A142D2F39F"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/metrics.py",
+      "sha256": "655A7C660F7504EF6F83A89B6E2C2A939D90228675741D22CA03227EE2FC497B"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/persistence.py",
+      "sha256": "D2C46D01295A32FF58FFB25CF83AC203DFBC9F135DD9236C819BCD146E1F8955"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/prov_projection.py",
+      "sha256": "A061384F84B58148ADF87176CA31FD1466C925AD0AAEAAC4905F396E6344DA47"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/provenance.py",
+      "sha256": "687744CDF985873E8CD373B4FA72BD15D80046BC985B1A2B3D4FE32F293380CC"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/relationships.py",
+      "sha256": "C5916EB66C7ABC9F5B87EF4061AFA6E91A20491769FB7DA9152B62036E565F99"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/retention.py",
+      "sha256": "D241B59916046ABB6C594B30AC7723B0173BFEEAE50EE518DD8A5599A79385E8"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/review.py",
+      "sha256": "3380A62824C410F0B81EC6BCA07BDD4DE8726304B401F0CC42E42F845E7B28A4"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/routes.py",
+      "sha256": "72E679C18BF57FC446D438A5F08A2E739800C283ECD53F3194EABF25B5449F8A"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/runtime.py",
+      "sha256": "3883F517D9931D3AA9E29ACDFFB28FA8E841EBD0F6D75410F3B42D6B48ADC86A"
+    },
+    {
+      "path": "app/hcam/intelligence/investigations/service.py",
+      "sha256": "78F6DA1D6C14F62ACA0DF8EEBD4D58AA4FD2C6111295A2F8E450E2D617610469"
+    },
+    {
+      "path": "app/hcam/intelligence/row_security.py",
+      "sha256": "41AA27578E16C69B85AF75FB54293E792470E0234687C4C1C3A5BAFA33EEBD00"
+    },
+    {
+      "path": "app/hcam/main.py",
+      "sha256": "041BDDA5750EFB80BEA91E20F50E4C4C9F1A4C90598007DF0702DD159CBFC93B"
+    },
+    {
+      "path": "app/hcam/security/auth.py",
+      "sha256": "764FF3EBC4285FA3E118B90EF33FE8B41CB875A4766042B472D10240EAFB7FA9"
+    },
+    {
+      "path": "app/hcam/settings.py",
+      "sha256": "A987C5E617C0582593B4967E08CFBEFFCFDC9D014BCEF9F18BFEB47AB0B90D87"
+    },
+    {
+      "path": "contracts/phase-4/database.json",
+      "sha256": "4D344B88E9A92EC5A29C05D0613C9C1F27B39A8815A70161E27E8EE86BC86C40"
+    },
+    {
+      "path": "contracts/phase-4/intelligence-contracts.json",
+      "sha256": "EEABF16AEB2C4C8C541B6C05D96FF7652311589798F7F6A4D1EC1E2DFECADC6D"
+    },
+    {
+      "path": "contracts/phase-4/openapi.json",
+      "sha256": "940FC9EEA81963AE99D7E0AC05DA8E3A57B7A75FFC30AF2AA42480B592394E65"
+    },
+    {
+      "path": "contracts/phase-4/p4-5-start-authorization.json",
+      "sha256": "10ED5279F880D28D74FC0DE86E959BAB84E48D16042A28F7E5EBEE3C011A135E"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/database.json",
+      "sha256": "8D97E1A68D4BE4E4360F98C5BB14CD474419A8FB904ED2DF2DD13E2B159C661F"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/evidence.json",
+      "sha256": "B1B184A119407BBB2C37D158E790049ECEAA2F446095AF738511A4CE881032BC"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/fixtures/generated-case-bridge-v1.json",
+      "sha256": "CFBE1EC7E9BE6B6A06328268915AF7A6FFE11B8D08658F19733D8DB5A9C057BA"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/fixtures/generated-correction-propagation-v1.json",
+      "sha256": "FA22CE954203625C7ECC3F978960DA3DF54A6E89E738B3D5F84A0F891A0B2C22"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/fixtures/generated-deletion-receipts-v1.json",
+      "sha256": "5CE68F6424FFC6DC34BE95D1F9567E3A07B2EE5FDFF0893BBDB2C1B50B5FD0ED"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/fixtures/generated-evidence-references-v1.json",
+      "sha256": "39326E0BE6F0440B148072AD9468CE832BF6964795CA2D7DC3041DE676A37F7F"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/fixtures/generated-export-manifests-v1.json",
+      "sha256": "3C9DE083B6A9EBD0BE1582AF417FFBA5F263D600D612928899B6A378AFFEE9F7"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/fixtures/generated-integrity-assessments-v1.json",
+      "sha256": "4397689DDCD5B9F7ECABE10B357DEC6E3026B50EBCDD60B7F7F27A6E32C262DC"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/fixtures/generated-merge-reopen-v1.json",
+      "sha256": "05A3213DF4DFF6234063BC8FB7B4BC3A50490215EDCB65820F717A01A3FFCB08"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/fixtures/generated-prov-projections-v1.json",
+      "sha256": "911D1425830B616AF0DF6E58EDEB7B6E5C3752D07751A0C2A9CD1DE91607D600"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/fixtures/generated-provenance-bundles-v1.json",
+      "sha256": "E0BC7CDB68579E1B8F8284F11B03E7B98C82835B6660F33578D83DF144CFFD18"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/fixtures/generated-retention-hold-v1.json",
+      "sha256": "081D65B963C43830BC9107DE5643E44DB2922296D7ED64044C55BB2C99B65DED"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/fixtures/generated-review-disposition-v1.json",
+      "sha256": "46C95AC11E2C13B8A36C8727BC0137B9917971811510EBEDB5E111004116286B"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/fixtures/generated-security-abuse-v1.json",
+      "sha256": "04AAF1F004B9105AAB66C099E72BB9483038DB31EDE9877371446B478ED103BC"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/fixtures/generated-temporal-assertions-v1.json",
+      "sha256": "EF6F01DED212395714D570BB02B8A74641EDE498FAD2CCD64E871147BE804444"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/fixtures/generated-timelines-v2.json",
+      "sha256": "8E091B2F5F0C5D450C5FC52EF6E0C00247ECFC112A8C4FA1A3F1B3B23732FCFB"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/investigation-evidence-contracts.json",
+      "sha256": "27396CD0BBA5C1E0957C3CA1F4F5B1E98C63F98B3DBFB2135EFAC0E0812BD921"
+    },
+    {
+      "path": "contracts/phase-4/p4-5/openapi.json",
+      "sha256": "B8617F224BA634A0DC0B626D8CEDEF64421D0322F45529B87101D48BE48CEC7D"
+    },
+    {
+      "path": "docs/phase-4/README.md",
+      "sha256": "8089EE0B575ED6D33A81D9E61B519245A7D4BF818AF729B196B74064FAF39BD8"
+    },
+    {
+      "path": "docs/phase-4/p4-5-evidence-review.md",
+      "sha256": "D5E465AD642556C72231F1DD9530214F8AFC47EEA360AC5020399BAEF34286B9"
+    },
+    {
+      "path": "docs/phase-4/status.md",
+      "sha256": "7F83D47EC9395D4B5CCF6F9B94938246A1B4BED98F398F330CB48697274C403D"
+    },
+    {
+      "path": "migrations/versions/0017_investigation_evidence.py",
+      "sha256": "09AE8DBF03EF5A3FA99ECEB797312C259AD0CAE04DC6293BF265C008D3C2F431"
+    },
+    {
+      "path": "tests/conftest.py",
+      "sha256": "CC72FAC402B94DC7129CF5E6082DA5C1C143991E191E9E42F793EA4291E523B2"
+    },
+    {
+      "path": "tests/test_analytics_assignment_migration.py",
+      "sha256": "EF729D236EB2ED2DCE8E12D4005D0D57C2C4567236F8861E1B2CEA9D507549DF"
+    },
+    {
+      "path": "tests/test_phase40_migration.py",
+      "sha256": "039C338454B9110DDF66227F9DC7D98077126A36897A9527A4CFE7B84CB87A0F"
+    },
+    {
+      "path": "tests/test_phase41_migration.py",
+      "sha256": "8C6456538054F429887A36959D29EB4D08868CCB27083262B2F7731B7082FDCA"
+    },
+    {
+      "path": "tests/test_phase42_migration.py",
+      "sha256": "78BCFE9D623149AFC4A9F6ADBB85B3AC65B70AE89E872012A68993FE6C731169"
+    },
+    {
+      "path": "tests/test_phase43_migration.py",
+      "sha256": "B3C72229D7330771F446C194051C27F994C787FFCE6FD978F3EA22478E34120A"
+    },
+    {
+      "path": "tests/test_phase44_migration.py",
+      "sha256": "FC45BDEDDC27FC1292A47D9CEF39B728D813964109AB74C3EFA0EF21229A50AB"
+    },
+    {
+      "path": "tests/test_phase44_persistence.py",
+      "sha256": "DA5CBBF1DBD633DE0CAB7CD5A00945A2175C1A9B7A8C7B4EFEA2A6762CC47928"
+    },
+    {
+      "path": "tests/test_phase44_readiness.py",
+      "sha256": "BA07245275991F27F0B08BD8766DE26EEC6B26C399BAEE9CADFE0A3A673B428B"
+    },
+    {
+      "path": "tests/test_phase45_api.py",
+      "sha256": "3014B77001764254E6E13F41670DE170B0BC15828CF3608511DF8BB99C2ADD7C"
+    },
+    {
+      "path": "tests/test_phase45_bridges.py",
+      "sha256": "37B2914205FBCD613D38ED4A28C81FE90327D0672DE63BF73438A78FDEA06BC9"
+    },
+    {
+      "path": "tests/test_phase45_canonical.py",
+      "sha256": "D12BF747FFB9C87601104722957B121ACE26EBB754EF088D136E5E55A321296B"
+    },
+    {
+      "path": "tests/test_phase45_chronology.py",
+      "sha256": "DB583542015F2F3B11C6C68178A13191BD99FA8B8F6FF261E12B941BD3DBF94A"
+    },
+    {
+      "path": "tests/test_phase45_contracts.py",
+      "sha256": "5B2ADD842DD79CB5BE81D7C4F19DB70C0B7694FD76AF5850FBA7149C34306108"
+    },
+    {
+      "path": "tests/test_phase45_corrections.py",
+      "sha256": "696F0B8597BED93FAA46EA74068D6F77B6291D575AAF7EA00BABA6E39F706F1B"
+    },
+    {
+      "path": "tests/test_phase45_deletion.py",
+      "sha256": "E459A401B2C059FE82B46E08E5AA9359EB59E978CB90E54CBD50AF693EB3930F"
+    },
+    {
+      "path": "tests/test_phase45_evidence.py",
+      "sha256": "A3B3D172853072EAD8D670EF2B00C8EEF55059197081FA2E45E01CAECD99C60E"
+    },
+    {
+      "path": "tests/test_phase45_exports.py",
+      "sha256": "0DFB85670749B09E8A8C3F95854C68AE96F724EE6ADC56081E0A957AB5FDD4FD"
+    },
+    {
+      "path": "tests/test_phase45_integrity.py",
+      "sha256": "D90A7E831CCDBF69E316223B49ADEA8A9A3C8F203F7D837092F5167D852381F8"
+    },
+    {
+      "path": "tests/test_phase45_migration.py",
+      "sha256": "AB5E533C2CE85A17472AD1CF0ECEC04CB4A24E70552D1919D33E11B3F6BBF2B3"
+    },
+    {
+      "path": "tests/test_phase45_persistence.py",
+      "sha256": "45DE4B72F9AF52E702CE122261BFB7DE095A4996A711CE48D7629876511FD76D"
+    },
+    {
+      "path": "tests/test_phase45_postgres.py",
+      "sha256": "DD59107983F8D9329897096CA6954EC9E73E21308241CAC237FC262578F75639"
+    },
+    {
+      "path": "tests/test_phase45_provenance.py",
+      "sha256": "A44F313699F36636260F4F300672AA561F889FF05AACD2D569F98560E4E07E0C"
+    },
+    {
+      "path": "tests/test_phase45_readiness.py",
+      "sha256": "7C64895A55C7987B2DA89655C8EC6DB8BB1E58CB5EEA42BD265EC7F6975E9BD2"
+    },
+    {
+      "path": "tests/test_phase45_relationships.py",
+      "sha256": "357FED4A52C5AAEFC58304ECDBF8BE3CCF146619CC964238A9F2CB82CA64F4EE"
+    },
+    {
+      "path": "tests/test_phase45_retention.py",
+      "sha256": "436EB2F06D800D0E1DA45BCF1779947343FAA7FB196CD555330E4B77116503FC"
+    },
+    {
+      "path": "tests/test_phase45_review.py",
+      "sha256": "168B2B9B22504AE234023455BAF1F038AE71D68B3652B833081F7857432CAD33"
+    },
+    {
+      "path": "tests/test_phase45_security.py",
+      "sha256": "7FC7BB395D19C6D1F500470F4387BB4FB6221BB5461F0E1E47FAF9F2DC87BD80"
+    },
+    {
+      "path": "tools/phase44_readiness.py",
+      "sha256": "41ABAB10E24A7EDD81D97335355E591A9DDA4F43C5C8FE96B316D0E7F3D88DA0"
+    },
+    {
+      "path": "tools/phase45_generated_investigations.py",
+      "sha256": "23E5B07436D8C5BEA0EE39845783CA984D5390856546EB794835AF3692A0C291"
+    },
+    {
+      "path": "tools/phase45_readiness.py",
+      "sha256": "F6F9AAAB511E1728E694F448A008A760865BC6043BB87FF7AA955BF76169A197"
+    }
+  ],
+  "content_digest": "118C40D319653F8D9E6CD21CB216F7F43B073BE58823CA36A96ACE9AE36986C2",
+  "generated_only": true,
+  "operational": false,
+  "remote_git_performed": false
+}

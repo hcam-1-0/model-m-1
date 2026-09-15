@@ -1,0 +1,70 @@
+{
+  "schema_version": "hcam.phase5.p5_5.fixture_manifest.v1",
+  "generated_on": "2026-09-09",
+  "generated_only": true,
+  "seed": "hcam-p5.5-generated-fixtures-v1",
+  "exact_case_count": 960,
+  "groups": [
+    {
+      "group": "chronology",
+      "count": 128
+    },
+    {
+      "group": "reconstruction_comparison",
+      "count": 128
+    },
+    {
+      "group": "correction_retraction",
+      "count": 128
+    },
+    {
+      "group": "evidence_state_matrix",
+      "count": 160
+    },
+    {
+      "group": "provenance_custody",
+      "count": 128
+    },
+    {
+      "group": "authorization_concurrency",
+      "count": 96
+    },
+    {
+      "group": "accessibility_localization",
+      "count": 96
+    },
+    {
+      "group": "handoff_teardown",
+      "count": 96
+    }
+  ],
+  "replay_sha256": "C94C6AE38ED5665BF22D7713656C71117A3DD5A8E08E965B0E1410F7CAA3760F",
+  "files": [
+    {
+      "path": "contracts/phase-5/p5-5/investigation-contracts.v1.json",
+      "bytes": 942,
+      "sha256": "F6BC73A1C602E4D8797A3C58DD05DA19082BC53C75A35C281A7D1F7EC214DB96"
+    },
+    {
+      "path": "contracts/phase-5/p5-5/evidence-contracts.v1.json",
+      "bytes": 855,
+      "sha256": "E64D4601059145F0EB4F2A64525CADFF25CD783A1B1FB575CDC717DAB617024E"
+    },
+    {
+      "path": "contracts/phase-5/p5-5/generated-contract-cases.json",
+      "bytes": 437807,
+      "sha256": "C7324E368357B9B346828DDB779E7F11669631C95B0E60457C87374D7D7DB5B6"
+    },
+    {
+      "path": "contracts/phase-5/p5-5/generated-workloads.json",
+      "bytes": 1482,
+      "sha256": "2E3AF65A8C186949B71F326C2DB9F629BFCC6AC6E3EB0860B09969C7E645047D"
+    },
+    {
+      "path": "contracts/phase-5/p5-5/prohibited-field-manifest.json",
+      "bytes": 976,
+      "sha256": "3AEEB30FC37A3953D2429024A5E04204CC81553C3179F3E2EFCEFB4842280187"
+    }
+  ],
+  "result": "pass"
+}

@@ -1,0 +1,321 @@
+{
+  "schema_version": "hcam.phase5.p5_4.evidence.v1",
+  "evidence_id": "P5.4-EVIDENCE-R0",
+  "status": "technical_complete_owner_acceptance_pending",
+  "generated_on": "2026-09-09",
+  "technical_commit": "fc5b7f9aa682b68c83e53c558e8c08bf35ee7480",
+  "start_package_sha256": "FC38A2A21119C501D1C09868C2AF8598297C7C81619D5F16B0A509B93A92DEA0",
+  "bound_input_digest": "26C20290D60A1418A36245C7C3671A13C46488A4BB4D94CC984337810B4CC4F2",
+  "validation": {
+    "schema_version": "hcam.phase5.p5_4.validation_summary.v1",
+    "generated_on": "2026-09-09",
+    "generated_only": true,
+    "toolchain": {
+      "status": "pass",
+      "node": "v24.18.0",
+      "pnpm": "11.21.0"
+    },
+    "workspace": {
+      "status": "pass",
+      "apps": 8,
+      "packages": 27,
+      "edges": 84,
+      "lockfiles": 1,
+      "failures": []
+    },
+    "typecheck": "pass",
+    "lint": {
+      "result": "pass",
+      "warnings": 0
+    },
+    "formatting": "pass",
+    "unit_and_component": {
+      "files_passed": 43,
+      "tests_passed": 168,
+      "tests_failed": 0,
+      "result": "pass"
+    },
+    "coverage": {
+      "statements_percent": 98.44,
+      "branches_percent": 96.75,
+      "functions_percent": 97.95,
+      "lines_percent": 98.78,
+      "critical_branch_floor_percent": 95,
+      "critical_files": [
+        {
+          "file": "packages/capabilities/src/index.ts",
+          "branches_percent": 97.87
+        },
+        {
+          "file": "packages/event-invalidation/src/index.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/intelligence-contracts/src/contracts.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/intelligence-contracts/src/events.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/intelligence-contracts/src/index.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/intelligence-contracts/src/problems.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/intelligence-contracts/src/queries.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/intelligence-domain/src/commands.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/intelligence-domain/src/corrections.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/intelligence-domain/src/index.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/intelligence-domain/src/lifecycle.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/intelligence-domain/src/profiles.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/intelligence-domain/src/reasons.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/intelligence-domain/src/receipts.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/intelligence-domain/src/semantic.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/intelligence-domain/src/state.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/review-workflows/src/concurrency.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/review-workflows/src/drafts.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/review-workflows/src/index.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/review-workflows/src/policy.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/review-workflows/src/quorum.ts",
+          "branches_percent": 100
+        },
+        {
+          "file": "packages/review-workflows/src/reconsideration.ts",
+          "branches_percent": 100
+        }
+      ],
+      "result": "pass"
+    },
+    "browser": {
+      "system_browser": "Microsoft Edge",
+      "passed": 49,
+      "skipped_by_project_design": 1,
+      "unexpected": 0,
+      "flaky": 0,
+      "loopback_only": true,
+      "axe_violations": 0,
+      "result": "pass"
+    },
+    "builds": {
+      "applications": [
+        {
+          "app": "admin-center",
+          "files": 3,
+          "bytes": 312759,
+          "source_maps": 0
+        },
+        {
+          "app": "command-center",
+          "files": 3,
+          "bytes": 1314573,
+          "source_maps": 0
+        },
+        {
+          "app": "evidence-center",
+          "files": 3,
+          "bytes": 312764,
+          "source_maps": 0
+        },
+        {
+          "app": "gis-center",
+          "files": 11,
+          "bytes": 2337075,
+          "source_maps": 0
+        },
+        {
+          "app": "intelligence-center",
+          "files": 3,
+          "bytes": 313821,
+          "source_maps": 0
+        },
+        {
+          "app": "investigation-center",
+          "files": 3,
+          "bytes": 312784,
+          "source_maps": 0
+        },
+        {
+          "app": "operations-center",
+          "files": 4,
+          "bytes": 877574,
+          "source_maps": 0
+        },
+        {
+          "app": "security-center",
+          "files": 3,
+          "bytes": 312764,
+          "source_maps": 0
+        }
+      ],
+      "total_bytes": 6094114,
+      "source_maps": 0,
+      "bundle_gate": {
+        "status": "pass",
+        "apps": 8,
+        "outputBytes": 6094114,
+        "sourceMaps": 0,
+        "generatedMarkerApps": [
+          "command-center",
+          "intelligence-center"
+        ],
+        "applicationBudgets": {
+          "operations-center": {
+            "limits": {
+              "initialJavaScript": 368640,
+              "deferredHlsJavaScript": 655360,
+              "styles": 40960
+            },
+            "actual": {
+              "initialJavaScript": 278850,
+              "deferredHlsJavaScript": 575516,
+              "styles": 22470
+            }
+          }
+        },
+        "failures": []
+      },
+      "result": "pass"
+    },
+    "storybook": {
+      "stories": 17,
+      "build": "pass",
+      "telemetry": "disabled"
+    },
+    "fixtures": {
+      "schema_version": "hcam.phase5.p5_4.verification.v1",
+      "status": "pass",
+      "contracts": 14,
+      "fixtures": 8,
+      "generated_cases": 832,
+      "canonical_fixture_sha256": "740F0C4C9DAC707A652156096C0F64EE7DAB9EA9BF6ACE47B774762947E2B508",
+      "failures": []
+    },
+    "dependency_and_supply_chain": {
+      "schema_version": "hcam.phase5.p5_4.dependency_baseline.v1",
+      "generated_on": "2026-09-09",
+      "existing_locked_dependencies_only": true,
+      "dependency_refresh_or_network_used": false,
+      "react_flow_present": false,
+      "lockfile": {
+        "sha256": "7F3E3F0A8B29C5083E300641A68F0325D8D2E8BD2ADE940E2B6D03C3CDEBBB62",
+        "unchanged_from_P5_3": true
+      },
+      "root_package_sha256": "463E480DD07547515021115FA619D44D7DCA151063B0E7A510F2C0E46D27D5B1",
+      "workspace_sha256": "79BF353A85BE2AC3CC69E607FD63FC65AC153AEE415C1CB55032A3418D11DE38",
+      "sbom_sha256": "D0F1F1180716383334BDF9C1F6FA9A9F129EED4D7D6F297C893AD5F7D6C29D00",
+      "accepted_dependency_evidence_sha256": "9E1D68EF30C844605FFBAC4FBCD9604505B34DFDD8838BFCD0ACF94404367346",
+      "recorded_advisory_baseline": {
+        "path": "evidence/p5-3-dependency-audit.json",
+        "sha256": "78D09751D593895B022F995E2C82761A872E1D4E628FAC7177C03A29B40EA78B",
+        "unresolved_high": 0,
+        "unresolved_critical": 0,
+        "result": "pass"
+      },
+      "current_vulnerability_refresh_claim": false,
+      "result": "pass"
+    },
+    "visual_review": {
+      "desktop": "pass",
+      "mobile": "pass",
+      "blank_renderer": false,
+      "incoherent_overlap": false,
+      "horizontal_clipping": false,
+      "full_page_fixed_navigation_capture_artifact_recorded": true
+    },
+    "repository_regression": {
+      "tests_passed": 4236,
+      "tests_skipped": 16,
+      "subtests_passed": 119,
+      "configured_postgresql_postgis": false,
+      "network_or_remote_git_used": false,
+      "result": "pass"
+    },
+    "limitations": [
+      "generated_only_non_operational_intelligence_and_review_workspace",
+      "twenty_six_producer_gaps_remain_generated_simulated_bridged_or_blocked",
+      "no_current_vulnerability_refresh_claim",
+      "no_manual_screen_reader_or_separately_witnessed_200_percent_zoom_claim",
+      "no_configured_PostgreSQL_PostGIS_integration_database",
+      "C1_C10_C50_are_not_hardware_or_production_capacity_claims"
+    ],
+    "result": "pass"
+  },
+  "environment": {
+    "generated_only": true,
+    "loopback_browser_only": true,
+    "real_provider_camera_media_identity_or_data_used": false,
+    "backend_route_or_migration_added": false,
+    "model_or_inference_used": false,
+    "operational_side_effect_used": false,
+    "container_or_kubernetes_used": false,
+    "remote_git_used": false
+  },
+  "compatibility_transition": {
+    "classification": "post_start_user_directed_narrow_checker_sync",
+    "paths": [
+      "frontend/scripts/verify-bundles.mjs",
+      "frontend/scripts/verify-workspace.mjs"
+    ],
+    "purpose": "Recognize the Intelligence Center and five P5.4 packages in existing topology and generated-marker checks.",
+    "gate_or_budget_weakened": false
+  },
+  "limitations": [
+    "generated_only_non_operational_intelligence_and_review_workspace",
+    "twenty_six_producer_gaps_remain_generated_simulated_bridged_or_blocked",
+    "no_current_vulnerability_refresh_claim",
+    "no_manual_screen_reader_or_separately_witnessed_200_percent_zoom_claim",
+    "no_configured_PostgreSQL_PostGIS_integration_database",
+    "C1_C10_C50_are_not_hardware_or_production_capacity_claims"
+  ],
+  "product_progress_before_owner_acceptance": {
+    "P5_4": "14/15 (93.3333%)",
+    "Phase_5": "62/100 (62.0000%)"
+  }
+}

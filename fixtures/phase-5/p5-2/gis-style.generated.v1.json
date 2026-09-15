@@ -1,0 +1,16 @@
+{
+  "version": 8,
+  "name": "HCAM generated local style",
+  "metadata": {
+    "marker": "HCAM-GENERATED-NON-OPERATIONAL",
+    "external_resources": false
+  },
+  "sources": {},
+  "layers": [
+    {
+      "id": "generated-background",
+      "type": "background",
+      "paint": { "background-color": "#e8edef" }
+    }
+  ]
+}
