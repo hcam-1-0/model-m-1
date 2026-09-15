@@ -1,7 +1,7 @@
 """Add the generated-only Phase 4.3 alert lifecycle stores.
 
 Revision ID: 0015_alert_lifecycle_orchestration
-Revises: 0014_rule_authoring_evaluation
+Revises: 0014b_alembic_version_width
 Create Date: 2026-09-04
 """
 
@@ -14,7 +14,7 @@ from alembic import op
 
 
 revision: str = "0015_alert_lifecycle_orchestration"
-down_revision: str | None = "0014_rule_authoring_evaluation"
+down_revision: str | None = "0014b_alembic_version_width"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
