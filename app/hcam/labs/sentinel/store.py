@@ -448,6 +448,25 @@ class CatalogStore:
             incoming = {camera.external_id: camera for camera in catalog.cameras}
             changed_ids = set(existing) ^ set(incoming)
             for external_id in set(existing) & set(incoming):
+                previous_semantic = json.loads(existing[external_id]["semantic_json"])
+                previous_updated_at = _parse_timestamp(
+                    previous_semantic.get("catalog_updated_at")
+                )
+                incoming_updated_at = incoming[external_id].catalog_updated_at
+                if (
+                    previous_updated_at is not None
+                    and incoming_updated_at is not None
+                    and incoming_updated_at < previous_updated_at
+                ):
+                    self._event(
+                        connection,
+                        source_id,
+                        "stream_catalog.reconciliation.apply",
+                        "rejected",
+                        {"code": "out_of_order_record", "change_count": 1},
+                    )
+                    connection.commit()
+                    raise CatalogStoreError("out_of_order_record")
                 if existing[external_id]["semantic_json"] != _json(
                     incoming[external_id].canonical()
                 ):

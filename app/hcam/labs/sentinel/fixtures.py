@@ -184,6 +184,8 @@ def generated_catalog_document(
     elif scenario != "base":
         raise ValueError("unsupported generated catalogue scenario")
     return {
+        "contract": "sentinel_sandbox_catalog_v1",
+        "schema_version": 1,
         "schema": LAB_SCHEMA_VERSION,
         "mode": mode,
         "scenario": scenario,
