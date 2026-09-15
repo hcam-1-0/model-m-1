@@ -229,6 +229,18 @@ def check_contract_snapshots() -> CheckResult:
         ("0009_generated_analytics",),
         ("0010_generated_tracking",),
         ("0011_geometry_events",),
+        # Later Phase 4 migrations extend the merged Phase 3 schema.  A
+        # current release contract is still valid for the Phase 3 guardrails
+        # when that lineage is preserved; requiring the historical P3.4 head
+        # would incorrectly reject a freshly generated contract at HEAD.
+        ("0012_intelligence_control_plane",),
+        ("0013_correlation_foundation",),
+        ("0014_rule_authoring_evaluation",),
+        ("0014b_alembic_version_width",),
+        ("0015_alert_lifecycle_orchestration",),
+        ("0016_reference_integrations",),
+        ("0017_investigation_evidence",),
+        ("0018_operations_security_scale",),
     }
     heads = database.get("alembic_heads")
     lineage = database.get("alembic_lineage", [])
