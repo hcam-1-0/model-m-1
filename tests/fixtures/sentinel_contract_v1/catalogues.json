@@ -1,0 +1,20 @@
+{
+  "valid": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"cameras":[{"id":"LAB-001","name":"Redacted Lab Camera","live":true,"longitude":-97.7431,"latitude":30.2672,"source_provider":"sandbox","department":"lab","camera_type":"fixed","updated_at":"2026-01-01T00:00:00Z","transports":[{"kind":"rtsp_tcp","url":"rtsp://contract-media.invalid:8554/hcam/lab-001"},{"kind":"whep","url":"http://contract-media.invalid:8889/hcam/lab-001/whep"},{"kind":"hls","url":"http://contract-media.invalid:8888/hcam/lab-001/index.m3u8"}]}]},
+  "additive": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"extension":{"reviewed":true},"cameras":[{"id":"LAB-001","live":true,"vendor_additive":{"ignored":true},"rtsp_url":"rtsp://contract-media.invalid:8554/hcam/lab-001"}]},
+  "missing_transport": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"cameras":[{"id":"LAB-001","live":true}]},
+  "malformed_transport": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"cameras":[{"id":"LAB-001","live":true,"transports":[{"kind":"rtsp_tcp","url":5}]}]},
+  "duplicate_identifier": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"cameras":[{"id":"LAB-001","live":true,"rtsp_url":"rtsp://contract-media.invalid:8554/hcam/lab-001"},{"id":"LAB-001","live":true,"rtsp_url":"rtsp://contract-media.invalid:8554/hcam/lab-002"}]},
+  "invalid_identifier": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"cameras":[{"id":" ","live":true,"rtsp_url":"rtsp://contract-media.invalid:8554/hcam/lab-001"}]},
+  "unsafe_locator": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"cameras":[{"id":"LAB-001","live":true,"rtsp_url":"rtsp://user:password@contract-media.invalid:8554/hcam/lab-001"}]},
+  "query_locator": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"cameras":[{"id":"LAB-001","live":true,"rtsp_url":"rtsp://contract-media.invalid:8554/hcam/lab-001?token=redacted"}]},
+  "fragment_locator": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"cameras":[{"id":"LAB-001","live":true,"rtsp_url":"rtsp://contract-media.invalid:8554/hcam/lab-001#fragment"}]},
+  "unapproved_host": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"cameras":[{"id":"LAB-001","live":true,"rtsp_url":"rtsp://not-approved.invalid:8554/hcam/lab-001"}]},
+  "unapproved_port": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"cameras":[{"id":"LAB-001","live":true,"rtsp_url":"rtsp://contract-media.invalid:9554/hcam/lab-001"}]},
+  "invalid_geometry": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"cameras":[{"id":"LAB-001","live":true,"longitude":181,"latitude":0,"rtsp_url":"rtsp://contract-media.invalid:8554/hcam/lab-001"}]},
+  "invalid_timestamp": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"cameras":[{"id":"LAB-001","live":true,"updated_at":"not-a-time","rtsp_url":"rtsp://contract-media.invalid:8554/hcam/lab-001"}]},
+  "unsupported_version": {"contract":"sentinel_sandbox_catalog_v1","schema_version":2,"cameras":[]},
+  "schema_drift": {"contract":"other_catalogue","schema_version":1,"cameras":[]},
+  "partial": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"cameras":[{"id":"LAB-002","live":false,"rtsp_url":"rtsp://contract-media.invalid:8554/hcam/lab-002"}]},
+  "tombstone": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"cameras":[]},
+  "over_capacity": {"contract":"sentinel_sandbox_catalog_v1","schema_version":1,"cameras":[{"id":"LAB-001","live":true,"rtsp_url":"rtsp://contract-media.invalid:8554/hcam/lab-001"},{"id":"LAB-002","live":true,"rtsp_url":"rtsp://contract-media.invalid:8554/hcam/lab-002"}]}
+}

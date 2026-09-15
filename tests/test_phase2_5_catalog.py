@@ -79,7 +79,7 @@ def test_catalogue_mutations_cover_unknown_new_endpoint_and_codec_changes() -> N
 
 
 def test_malformed_catalogue_value_is_rejected() -> None:
-    with pytest.raises(CatalogValidationError, match="invalid_live_state"):
+    with pytest.raises(CatalogValidationError, match="invalid_field_type"):
         normalized("malformed")
 
 
@@ -92,7 +92,7 @@ def test_empty_catalogue_is_a_valid_bounded_snapshot() -> None:
 
 @pytest.mark.parametrize(
     ("scenario", "code"),
-    (("duplicate", "duplicate_camera_id"), ("hostile", "credential_bearing_url")),
+    (("duplicate", "duplicate_identifier"), ("hostile", "unsafe_locator")),
 )
 def test_catalog_rejects_ambiguous_or_hostile_records(scenario: str, code: str) -> None:
     with pytest.raises(CatalogValidationError, match=code) as caught:
@@ -102,7 +102,7 @@ def test_catalog_rejects_ambiguous_or_hostile_records(scenario: str, code: str) 
 
 
 def test_catalog_enforces_record_limit() -> None:
-    with pytest.raises(CatalogValidationError, match="catalog_record_limit_exceeded"):
+    with pytest.raises(CatalogValidationError, match="over_capacity"):
         normalize_catalog_document(
             generated_catalog_document(),
             origin="http://catalog-simulator:8090/api/ingest",

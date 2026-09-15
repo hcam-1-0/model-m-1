@@ -5,10 +5,38 @@ import json
 import math
 import unicodedata
 from dataclasses import dataclass
+from datetime import UTC, datetime, timedelta
 from typing import Any, Literal
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
 from pydantic import BaseModel, ConfigDict, Field
+
+
+SENTINEL_CATALOG_CONTRACT = "sentinel_sandbox_catalog_v1"
+SENTINEL_CATALOG_SCHEMA_VERSION = 1
+SUPPORTED_SENTINEL_CATALOG_SCHEMA_VERSIONS = frozenset({1})
+
+# These values are intentionally stable: they are suitable for safe diagnostics
+# and bounded metrics, but never include an upstream value or locator.
+CONTRACT_ERROR_CODES = frozenset(
+    {
+        "schema_version_unsupported",
+        "schema_drift",
+        "required_field_missing",
+        "invalid_field_type",
+        "invalid_identifier",
+        "duplicate_identifier",
+        "unsafe_locator",
+        "invalid_transport",
+        "transport_missing",
+        "invalid_geometry",
+        "invalid_timestamp",
+        "stale_catalogue",
+        "out_of_order_record",
+        "over_capacity",
+        "ambiguous_payload",
+    }
+)
 
 
 class CatalogValidationError(ValueError):
@@ -125,6 +153,12 @@ class CatalogCamera(BaseModel):
     bits_per_pixel: float | None = Field(default=None, le=64)
     profile_id: str | None = Field(default=None, max_length=80)
     capacity_holder: bool = False
+    longitude: float | None = Field(default=None, ge=-180, le=180)
+    latitude: float | None = Field(default=None, ge=-90, le=90)
+    source_provider: str | None = Field(default=None, max_length=80)
+    department: str | None = Field(default=None, max_length=80)
+    camera_type: str | None = Field(default=None, max_length=80)
+    catalog_updated_at: datetime | None = None
     endpoints: tuple[CatalogEndpoint, ...]
     warning_codes: tuple[str, ...] = ()
 
@@ -135,15 +169,51 @@ class CatalogCamera(BaseModel):
             "bitrate_kbps": self.bitrate_kbps,
             "bits_per_pixel": self.bits_per_pixel,
             "capacity_holder": self.capacity_holder,
+            "camera_type": self.camera_type,
+            "catalog_updated_at": (
+                self.catalog_updated_at.astimezone(UTC).isoformat().replace("+00:00", "Z")
+                if self.catalog_updated_at is not None
+                else None
+            ),
+            "department": self.department,
             "endpoints": [endpoint.canonical() for endpoint in self.endpoints],
             "external_id": self.external_id,
             "fps": self.fps,
             "height": self.height,
             "location": self.location,
+            "longitude": self.longitude,
+            "latitude": self.latitude,
             "name": self.name,
             "number": self.number,
             "profile_id": self.profile_id,
+            "source_provider": self.source_provider,
             "width": self.width,
+        }
+
+    def browser_safe(self) -> dict[str, object]:
+        """Explicit browser DTO allowlist; endpoints and source locators stay internal."""
+        return {
+            "id": self.external_id,
+            "name": self.name,
+            "advertised_live": self.advertised_live,
+            "advertised_codec": self.advertised_codec,
+            "profile_id": self.profile_id,
+            "preview_compatible": any(endpoint.role == "preview" for endpoint in self.endpoints),
+            "registry_state": "catalogued",
+        }
+
+    def gis_safe(self) -> dict[str, object]:
+        """Explicit GIS DTO allowlist. Geometry is display-only and never a locator."""
+        return {
+            "id": self.external_id,
+            "name": self.name,
+            "department": self.department,
+            "camera_type": self.camera_type,
+            "longitude": self.longitude,
+            "latitude": self.latitude,
+            "advertised_live": self.advertised_live,
+            "registry_state": "catalogued",
+            "preview_compatible": any(endpoint.role == "preview" for endpoint in self.endpoints),
         }
 
     def endpoint_document(self) -> list[dict[str, str]]:
@@ -176,7 +246,91 @@ _KNOWN_CAMERA_FIELDS = {
     "hls_live_url",
     "lab_profile",
     "capacity_holder",
+    "source_provider",
+    "department",
+    "camera_type",
+    "longitude",
+    "latitude",
+    "updated_at",
+    "transports",
+    "tombstone",
 }
+
+
+def _contract_version(document: dict[str, object]) -> None:
+    """Validate the explicit v1 envelope without accepting an ambiguous version."""
+    # The legacy generated-lab envelope carried only `schema`; it remains a
+    # bounded v1 compatibility form. New publishers must include `contract`.
+    name = document.get("contract")
+    if name is None and "schema" in document:
+        name = SENTINEL_CATALOG_CONTRACT
+    version = document.get("schema_version", document.get("schema"))
+    if name != SENTINEL_CATALOG_CONTRACT:
+        raise CatalogValidationError("schema_drift")
+    if isinstance(version, bool) or not isinstance(version, int):
+        raise CatalogValidationError("schema_version_unsupported")
+    if version not in SUPPORTED_SENTINEL_CATALOG_SCHEMA_VERSIONS:
+        raise CatalogValidationError("schema_version_unsupported")
+
+
+def _coordinate(value: Any, *, minimum: float, maximum: float) -> float | None:
+    if value is None:
+        return None
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise CatalogValidationError("invalid_geometry")
+    normalized = float(value)
+    if not math.isfinite(normalized) or not minimum <= normalized <= maximum:
+        raise CatalogValidationError("invalid_geometry")
+    return normalized
+
+
+def _timestamp(value: Any) -> datetime | None:
+    if value is None:
+        return None
+    if not isinstance(value, str) or len(value) > 64:
+        raise CatalogValidationError("invalid_timestamp")
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise CatalogValidationError("invalid_timestamp") from exc
+    if parsed.tzinfo is None:
+        raise CatalogValidationError("invalid_timestamp")
+    normalized = parsed.astimezone(UTC)
+    if normalized > datetime.now(UTC) + timedelta(minutes=5):
+        raise CatalogValidationError("invalid_timestamp")
+    return normalized
+
+
+def _transport_values(raw: dict[str, Any]) -> tuple[tuple[str, TransportRole], ...]:
+    """Accept legacy three-url records or an unambiguous typed transport list."""
+    legacy = (("rtsp_url", "inference"), ("webrtc_url", "preview"), ("hls_live_url", "fallback"))
+    if "transports" not in raw:
+        return legacy
+    transports = raw["transports"]
+    if any(raw.get(field) not in {None, ""} for field, _ in legacy):
+        raise CatalogValidationError("ambiguous_payload")
+    if not isinstance(transports, list):
+        raise CatalogValidationError("invalid_transport")
+    values: list[tuple[str, TransportRole]] = []
+    roles: set[TransportRole] = set()
+    protocol_roles: dict[str, TransportRole] = {
+        "rtsp": "inference", "rtsp_tcp": "inference", "whep": "preview",
+        "webrtc": "preview", "hls": "fallback",
+    }
+    for item in transports:
+        if not isinstance(item, dict) or set(item) - {"kind", "url"}:
+            raise CatalogValidationError("invalid_transport")
+        kind, value = item.get("kind"), item.get("url")
+        if not isinstance(kind, str) or kind.strip().lower() not in protocol_roles:
+            raise CatalogValidationError("invalid_transport")
+        if not isinstance(value, str):
+            raise CatalogValidationError("invalid_transport")
+        role = protocol_roles[kind.strip().lower()]
+        if role in roles:
+            raise CatalogValidationError("ambiguous_payload")
+        roles.add(role)
+        values.append((value, role))
+    return tuple(values)
 
 
 def _text(value: Any, *, code: str, maximum: int, required: bool = False) -> str | None:
@@ -232,26 +386,33 @@ def normalize_catalog_document(
     network_policy: ExactNetworkPolicy,
     max_records: int = 500,
 ) -> NormalizedCatalog:
-    if not isinstance(document, dict) or not isinstance(document.get("cameras"), list):
-        raise CatalogValidationError("invalid_catalog_root")
+    if not isinstance(document, dict):
+        raise CatalogValidationError("invalid_field_type")
+    if "cameras" not in document:
+        raise CatalogValidationError("required_field_missing")
+    if not isinstance(document["cameras"], list):
+        raise CatalogValidationError("invalid_field_type")
+    _contract_version(document)
     raw_cameras = document["cameras"]
     if len(raw_cameras) > max_records:
-        raise CatalogValidationError("catalog_record_limit_exceeded")
+        raise CatalogValidationError("over_capacity")
     cameras: list[CatalogCamera] = []
     seen: set[str] = set()
     for raw in raw_cameras:
         if not isinstance(raw, dict):
-            raise CatalogValidationError("invalid_camera_record")
-        external_id = _text(
-            raw.get("id"), code="invalid_camera_id", maximum=160, required=True
-        )
+            raise CatalogValidationError("invalid_field_type")
+        if "id" not in raw:
+            raise CatalogValidationError("required_field_missing")
+        external_id = _text(raw.get("id"), code="invalid_identifier", maximum=160, required=True)
         assert external_id is not None
         if external_id in seen:
-            raise CatalogValidationError("duplicate_camera_id")
+            raise CatalogValidationError("duplicate_identifier")
         seen.add(external_id)
+        if "live" not in raw:
+            raise CatalogValidationError("required_field_missing")
         live = raw.get("live")
         if not isinstance(live, bool):
-            raise CatalogValidationError("invalid_live_state")
+            raise CatalogValidationError("invalid_field_type")
         warnings: set[str] = set()
         unknown = set(raw) - _KNOWN_CAMERA_FIELDS
         if unknown:
@@ -280,23 +441,32 @@ def normalize_catalog_document(
         if invalid:
             warnings.add("unknown_number")
         endpoints: list[CatalogEndpoint] = []
-        for field, role in (
-            ("rtsp_url", "inference"),
-            ("webrtc_url", "preview"),
-            ("hls_live_url", "fallback"),
-        ):
-            value = raw.get(field)
+        for field, role in _transport_values(raw):
+            value = (
+                raw.get(field)
+                if field in {"rtsp_url", "webrtc_url", "hls_live_url"}
+                else field
+            )
             if value in {None, ""}:
                 continue
-            endpoints.append(
-                network_policy.validate(value, origin=origin, role=role)  # type: ignore[arg-type]
-            )
+            try:
+                endpoints.append(
+                    network_policy.validate(value, origin=origin, role=role)  # type: ignore[arg-type]
+                )
+            except CatalogValidationError as exc:
+                raise CatalogValidationError("unsafe_locator") from exc
         if not endpoints:
-            raise CatalogValidationError("camera_has_no_approved_transport")
+            raise CatalogValidationError("transport_missing")
         profile = _text(raw.get("lab_profile"), code="invalid_profile_id", maximum=80)
         capacity_holder = raw.get("capacity_holder", False)
         if not isinstance(capacity_holder, bool):
             raise CatalogValidationError("invalid_capacity_holder")
+        longitude = _coordinate(raw.get("longitude"), minimum=-180, maximum=180)
+        latitude = _coordinate(raw.get("latitude"), minimum=-90, maximum=90)
+        if (longitude is None) != (latitude is None):
+            raise CatalogValidationError("invalid_geometry")
+        if longitude is not None and latitude is not None and abs(longitude) <= 90 and abs(latitude) > 90:
+            raise CatalogValidationError("ambiguous_payload")
         cameras.append(
             CatalogCamera(
                 external_id=external_id,
@@ -314,6 +484,12 @@ def normalize_catalog_document(
                 bits_per_pixel=float(bpp) if bpp is not None else None,
                 profile_id=profile,
                 capacity_holder=capacity_holder,
+                longitude=longitude,
+                latitude=latitude,
+                source_provider=_text(raw.get("source_provider"), code="invalid_field_type", maximum=80),
+                department=_text(raw.get("department"), code="invalid_field_type", maximum=80),
+                camera_type=_text(raw.get("camera_type"), code="invalid_field_type", maximum=80),
+                catalog_updated_at=_timestamp(raw.get("updated_at")),
                 endpoints=tuple(sorted(endpoints, key=lambda item: item.role)),
                 warning_codes=tuple(sorted(warnings)),
             )

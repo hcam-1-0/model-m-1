@@ -16,6 +16,8 @@ downloads, analytics, Government/private data, or deployment.
 - [Phase 2.5 master plan](plan.md)
 - [Lab topology and test matrix](lab-topology-and-test-matrix.md)
 - [`sentinel_sandbox_catalog_v1` adapter contract](catalog-adapter-contract.md)
+- [Versioned Sentinel catalogue v1 compatibility contract](sentinel-catalogue-contract-v1.md)
+- [Sentinel catalogue v1 compatibility/rejection report](sentinel-catalogue-contract-v1-report.md)
 - [Security and validation gates](security-and-validation-gates.md)
 - [Backlog and owner decisions](backlog-and-owner-decisions.md)
 - [Official Sentinel sandbox integrator-guide notes](official-sentinel-sandbox-notes.md)
