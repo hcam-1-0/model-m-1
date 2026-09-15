@@ -75,7 +75,10 @@ def test_analytics_assignment_migration_round_trip_and_constraints(
         _check(database_url)
         inspector = inspect(database.engine)
         tables = set(inspector.get_table_names())
-        assert CURRENT_SCHEMA_REVISION == "0012_merge_camera_gis"
+        # Analytics assignments remain part of the current schema after the
+        # later Phase 4 migrations; the integration test must assert the
+        # actual release head rather than the historical merge milestone.
+        assert CURRENT_SCHEMA_REVISION == "0018_operations_security_scale"
         assert {
             "analytics_assignments",
             "analytics_assignment_revisions",
