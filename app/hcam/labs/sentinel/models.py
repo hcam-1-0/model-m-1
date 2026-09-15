@@ -260,11 +260,15 @@ _KNOWN_CAMERA_FIELDS = {
 def _contract_version(document: dict[str, object]) -> None:
     """Validate the explicit v1 envelope without accepting an ambiguous version."""
     # The legacy generated-lab envelope carried only `schema`; it remains a
-    # bounded v1 compatibility form. New publishers must include `contract`.
+    # bounded v1 compatibility form. The observed legacy upstream had neither
+    # envelope field; its strict record grammar is accepted during migration.
+    # New publishers must include `contract` and `schema_version`.
     name = document.get("contract")
+    version = document.get("schema_version", document.get("schema"))
+    if name is None and version is None:
+        return
     if name is None and "schema" in document:
         name = SENTINEL_CATALOG_CONTRACT
-    version = document.get("schema_version", document.get("schema"))
     if name != SENTINEL_CATALOG_CONTRACT:
         raise CatalogValidationError("schema_drift")
     if isinstance(version, bool) or not isinstance(version, int):

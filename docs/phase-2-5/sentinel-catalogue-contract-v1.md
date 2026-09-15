@@ -5,8 +5,10 @@
 Canonical name: `sentinel_sandbox_catalog_v1`. Current schema version: **1**.
 Only version 1 is supported. A document must carry `contract` equal to that
 name and integer `schema_version` 1. The existing generated-lab `schema` field
-is accepted as the version during the migration window. Other names, absent or
-non-integral versions, and unsupported versions fail closed with
+is accepted as the version during the migration window. The historical strict
+unversioned envelope is accepted only for backward compatibility at this
+adapter boundary; unknown names, non-integral versions, and unsupported
+versions fail closed with
 `schema_drift` or `schema_version_unsupported`.
 
 Forward compatible changes are additive fields that do not alter a defined

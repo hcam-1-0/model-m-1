@@ -70,6 +70,18 @@ def test_additive_fields_are_ignored_without_becoming_a_dto_or_diagnostic() -> N
     assert "vendor_additive" not in rendered
 
 
+def test_strict_legacy_unversioned_envelope_remains_backward_compatible() -> None:
+    legacy = json.loads(json.dumps(CASES["valid"]))
+    legacy.pop("contract")
+    legacy.pop("schema_version")
+    catalog = normalize_catalog_document(
+        legacy,
+        origin="https://catalog.invalid/api/ingest",
+        network_policy=policy(),
+    )
+    assert catalog.cameras[0].external_id == "LAB-001"
+
+
 @pytest.mark.parametrize(
     ("case", "code"),
     (
