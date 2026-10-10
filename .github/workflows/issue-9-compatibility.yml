@@ -41,7 +41,7 @@ jobs:
           uv run --locked --extra dev python tools/phase2_5_lab.py --secret-root "$RUNNER_TEMP/issue9-secrets" --state-root "$RUNNER_TEMP/issue9-state" --container-gpu nvidia config
           uv run --locked --extra dev python tools/phase2_5_lab.py --secret-root "$RUNNER_TEMP/issue9-secrets" --state-root "$RUNNER_TEMP/issue9-state" --container-gpu vaapi config
       - name: Upload sanitized browser evidence
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: issue9-browser-evidence
           path: ${{ runner.temp }}/issue9-browser.json
@@ -75,7 +75,7 @@ jobs:
           uv run --locked --extra dev python tools/issue9_browser_evidence.py --output "$env:RUNNER_TEMP\issue9-browser.json"
           uv run --locked --extra dev python tools/issue9_evidence_safety.py "$env:RUNNER_TEMP\issue9-browser.json"
       - name: Upload sanitized browser evidence
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: issue9-windows-browser-evidence
           path: ${{ runner.temp }}\issue9-browser.json

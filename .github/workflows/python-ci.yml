@@ -342,7 +342,7 @@ jobs:
 
       - name: Upload P2-G1 publication evidence
         if: always()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: phase2-p2-g1-${{ github.event.pull_request.head.sha || github.sha }}
           path: var/evidence/p2-g1.json
@@ -452,7 +452,7 @@ jobs:
 
       - name: Upload P2-G2 publication evidence
         if: always()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: phase2-p2-g2-${{ github.event.pull_request.head.sha || github.sha }}
           path: var/evidence/p2-g2.json
